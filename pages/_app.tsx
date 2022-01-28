@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/global.scss';
 
 import Layout from '../components/layout';
+import { useEffect, useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
   return <Layout>
