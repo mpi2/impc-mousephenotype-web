@@ -8,6 +8,22 @@ $navy-light: #ebf0ff;
 $purple: #750065;
 $lime: #97cd2a;
 $grey: #8e8e8e;
+$bg: #ececec;
 
 $font-md: 1rem;
 $font-sm: 0.875rem;
+
+// Bootstrap override scss variables
+
+$body-bg: $bg;
+
+$theme-colors: (
+  'primary': $orange,
+  'secondary': $blue,
+  'danger': $red,
+  'success': $lime,
+);
+
+$container-max-widths: (
+  '': 1240px,
+);

@@ -1,3 +1,6 @@
+@import './vars.scss';
+@import '~bootstrap/scss/bootstrap';
+@import './bootstrap-overwrite.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 html,
@@ -14,4 +17,8 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.text-right {
+  text-align: right;
 }
