@@ -1,5 +1,6 @@
 $orange: #ed7b25;
 $orange-light: #fdf0e5;
+$orange-dark: #b65a15;
 $blue: #00b0b0;
 $blue-light: #e1f6f6;
 $red: #c30000;
@@ -19,6 +20,7 @@ $body-bg: $bg;
 
 $theme-colors: (
   'primary': $orange,
+  'primary-dark': $orange-dark,
   'secondary': $blue,
   'danger': $red,
   'success': $lime,
