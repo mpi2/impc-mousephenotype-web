@@ -4,6 +4,9 @@ import '../styles/global.scss';
 
 import Layout from '../components/layout';
 import { useEffect, useState } from 'react';
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 function MyApp({ Component, pageProps }) {
   return <Layout>

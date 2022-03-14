@@ -1,8 +1,14 @@
-import { faCreativeCommons, faCreativeCommonsBy, faFacebook, faFacebookF, faFacebookSquare, faReddit, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
-import footerCss from './styles/Footer.module.scss';
+import {
+  faCreativeCommons,
+  faCreativeCommonsBy,
+  faFacebookSquare,
+  faReddit,
+  faTwitter,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Container, Row } from "react-bootstrap";
+import footerCss from "./styles/Footer.module.scss";
 
 const Footer = () => {
   // TODO: this doesn't work on localhost
@@ -23,13 +29,17 @@ const Footer = () => {
         <Row>
           <div className="col-12 col-md-6 footer-text mb-3">
             <p>
-              <FontAwesomeIcon icon={faCreativeCommons} size="2x" className="me-2" />{' '}
-              <FontAwesomeIcon icon={faCreativeCommonsBy}  size="2x" />
+              <FontAwesomeIcon
+                icon={faCreativeCommons}
+                size="2x"
+                className="me-2"
+              />{" "}
+              <FontAwesomeIcon icon={faCreativeCommonsBy} size="2x" />
               {/* <i className="fab fa-creative-commons fa-2x mr-2"></i>{' '}
               <i className="fab fa-creative-commons-by fa-2x"></i> */}
             </p>
             <p>
-              Content on this site is licensed under a<br/>
+              Content on this site is licensed under a<br />
               <a href="//www.mousephenotype.org/help/faqs/is-impc-data-freely-available/">
                 Creative Commons Attribution 4.0 International license
               </a>
@@ -37,7 +47,8 @@ const Footer = () => {
             <p>
               <a href="//www.mousephenotype.org/about-impc/accessibility-cookies/">
                 Privacy &amp; Cookies
-              </a><br/>
+              </a>
+              <br />
               <a href="//www.mousephenotype.org/about-impc/terms-of-use/">
                 Terms of use
               </a>
