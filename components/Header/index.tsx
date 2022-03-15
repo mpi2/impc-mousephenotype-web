@@ -1,7 +1,5 @@
-// import Link from 'next/link';
-// import { Container, Dropdown, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import headerCss from './styles/Header.module.scss';
+import headerCss from './styles.module.scss';
 
 export interface MenuItem {
   name: string;

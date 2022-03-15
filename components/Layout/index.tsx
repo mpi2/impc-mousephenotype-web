@@ -1,6 +1,6 @@
-import Footer from "./Footer";
-import Header from "./Header";
-import Newsletter from "./Newsletter";
+import Footer from "../Footer";
+import Header from "../Header";
+import Newsletter from "../Newsletter";
 
 
 const Layout = ({children}) => {

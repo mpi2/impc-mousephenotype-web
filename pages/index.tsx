@@ -1,27 +1,25 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>International Mouse Phenotyping Consortium</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Homepage
         </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <Link href="/gene" >
+            <div className="card">
+              <h3>Documentation &rarr;</h3>
+              <p>Find in-depth information about Next.js features and API.</p>
+            </div>
+          </Link>
 
           <a href="https://nextjs.org/learn" className="card">
             <h3>Learn &rarr;</h3>
@@ -47,16 +45,6 @@ export default function Home() {
           </a>
         </div>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
 
       <style jsx>{`
         .container {
