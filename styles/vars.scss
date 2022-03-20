@@ -9,7 +9,10 @@ $navy-light: #ebf0ff;
 $purple: #750065;
 $lime: #97cd2a;
 $grey: #8e8e8e;
+$grey-light: #e8e8e8;
 $bg: #ececec;
+$white: #fff;
+$black: #000;
 
 $font-md: 1rem;
 $font-sm: 0.875rem;
@@ -19,13 +22,13 @@ $font-sm: 0.875rem;
 $body-bg: $bg;
 
 $theme-colors: (
-  'primary': $orange,
-  'primary-dark': $orange-dark,
-  'secondary': $blue,
-  'danger': $red,
-  'success': $lime,
+  "primary": $orange,
+  "primary-dark": $orange-dark,
+  "secondary": $blue,
+  "danger": $red,
+  "success": $lime,
 );
 
 $container-max-widths: (
-  '': 1240px,
+  "": 1240px,
 );
