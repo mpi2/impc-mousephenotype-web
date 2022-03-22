@@ -14,8 +14,52 @@ $bg: #ececec;
 $white: #fff;
 $black: #000;
 
+$primary: $orange;
+$secondary: $blue;
+
 $font-md: 1rem;
 $font-sm: 0.875rem;
+
+$spacing: 0.5rem;
+
+//spacing
+$xxl: $spacing * 15;
+$xl: $spacing * 8;
+$lg: $spacing * 6;
+$md: $spacing * 4;
+$sm: $spacing * 3;
+$xs: $spacing * 2;
+$xxs: $spacing;
+$searchOffset: 80px;
+
+$colors: (
+  "orange": $orange,
+  "orange-light": $orange-light,
+  "orange-dark": $orange-dark,
+  "blue": $blue,
+  "blue-light": $blue-light,
+  "red": $red,
+  "navy": $navy,
+  "navy-light": $navy-light,
+  "purple": $purple,
+  "lime": $lime,
+  "grey": $grey,
+  "grey-light": $grey-light,
+  "bg": $bg,
+  "white": $white,
+  "black": $black,
+  "primary": $primary,
+  "secondary": $secondary,
+);
+
+@each $name, $color in $colors {
+  .#{$name} {
+    color: $color;
+  }
+  .bg-#{$name} {
+    background-color: $color;
+  }
+}
 
 // Bootstrap override scss variables
 

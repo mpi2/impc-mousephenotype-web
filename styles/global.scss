@@ -1,13 +1,15 @@
-@import './vars.scss';
-@import '~bootstrap/scss/bootstrap';
-@import './bootstrap-overwrite.scss';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "./vars.scss";
+@import "~bootstrap/scss/bootstrap";
+@import "./bootstrap-overwrite.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import "./components/_card";
 
 html,
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
+  font-size: 16px;
 }
 
 * {
@@ -23,6 +25,23 @@ a {
   text-align: right;
 }
 
+.thin {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: $md;
+}
+
 h2 {
+  font-size: 1.625rem;
   font-weight: bold;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: $xs;
 }

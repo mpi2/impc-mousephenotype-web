@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+To deploy to Vercel, use the CLI tool: https://vercel.com/docs/cli

@@ -1,17 +1,20 @@
 // import App from 'next/app'
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/global.scss';
+import "../styles/global.scss";
 
-import Layout from '../components/layout';
-import { useEffect, useState } from 'react';
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-config.autoAddCss = false
+import Layout from "../components/Layout";
+import { useEffect, useState } from "react";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import "react-circular-progressbar/dist/styles.css";
+config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
-  return <Layout>
-    <Component {...pageProps} />
-  </Layout>;
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
 // Only uncomment this method if you have blocking data requirements for

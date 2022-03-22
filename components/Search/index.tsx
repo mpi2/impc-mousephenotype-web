@@ -37,8 +37,8 @@ const Search = () => {
     setTabIndex(isPhenotype ? 1 : 0);
   }, [type]);
   return (
-    <div className={`${styles.banner} pb-5 -mb-5`}>
-      <Container className={`pb-5 pt-5 ${styles.container}`}>
+    <div className={`${styles.banner}`}>
+      <Container className={`pb-4 pt-5 ${styles.container}`}>
         <div className="col-12 col-md-8 ps-4 pe-4">
           <div className={styles.tabs}>
             {tabs.map((tab, i) => {
