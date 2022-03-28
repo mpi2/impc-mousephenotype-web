@@ -9,7 +9,7 @@ const Phenotypes = ({ data }) => {
       <h2>Phenotypes</h2>
       <Tabs defaultActiveKey="significantPhenotypes" id="phenotypes">
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
-          <SignificantPhenotypes />
+          <SignificantPhenotypes data={data} />
         </Tab>
         <Tab eventKey="measurementsChart" title="Measurements Chart">
           <p>Measurements chart</p>

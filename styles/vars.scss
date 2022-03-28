@@ -56,23 +56,21 @@ $colors: (
   .#{$name} {
     color: $color;
   }
+  .#{$name}-x {
+    color: $color !important;
+  }
   .bg-#{$name} {
     background-color: $color;
   }
+  .bg-#{$name}-x {
+    background-color: $color !important;
+  }
 }
-
-// Bootstrap override scss variables
 
 $body-bg: $bg;
 
-$theme-colors: (
-  "primary": $orange,
-  "primary-dark": $orange-dark,
-  "secondary": $blue,
-  "danger": $red,
-  "success": $lime,
-);
+// Bootstrap override scss variables
 
 $container-max-widths: (
-  "": 1240px,
+  "": 1440px,
 );

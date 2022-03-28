@@ -1,4 +1,4 @@
-@import '../../styles/vars';
+@import "../../styles/vars";
 
 .header {
   --border-color: #{$grey};
@@ -51,7 +51,6 @@
   }
   :global(.container) {
     position: relative;
-    max-width: 1240px;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
