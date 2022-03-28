@@ -1,58 +1,73 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowDown,
-  faBone,
   faCartPlus,
   faCheckCircle,
-  faChevronDown,
   faChevronRight,
   faExternalLinkAlt,
   faSkullCrossbones,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { Col, Container, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import {
-  Col,
-  Container,
-  OverlayTrigger,
-  Popover,
-  Row,
-  Tooltip,
-} from "react-bootstrap";
-import {
-  CircularProgressbar,
   buildStyles,
   CircularProgressbarWithChildren,
 } from "react-circular-progressbar";
+import BodySystemIcon, { IconName } from "../../components/BodySystemIcon";
 import Search from "../../components/Search";
 import styles from "./styles.module.scss";
+import geneData from "./data.json";
+import _ from "lodash";
+
+const allBodySystems = [
+  "mortality/aging",
+  "embryo phenotype",
+  "reproductive system phenotype",
+  "growth/size/body region phenotype",
+  "homeostasis/metabolism phenotype or adipose tissue phenotype",
+  "behavior/neurological phenotype or nervous system phenotype",
+  "cardiovascular system phenotype",
+  "respiratory system phenotype",
+  "digestive/alimentary phenotype or liver/biliary system phenotype",
+  "renal/urinary system phenotype",
+  "limbs/digits/tail phenotype",
+  "skeleton phenotype",
+  "immune system phenotype or hematopoietic system phenotype",
+  "muscle phenotype",
+  "integument phenotype or pigmentation phenotype",
+  "craniofacial phenotype",
+  "hearing/vestibular/ear phenotype",
+  "taste/olfaction phenotype",
+  "endocrine/exocrine gland phenotype",
+  "vision/eye phenotype",
+];
 
 const BodySystem = ({
-  name,
+  name = "mortality/aging",
   isSignificant = false,
   color = "grey",
 }: {
   isSignificant?: boolean;
-  name: string;
+  name: IconName;
   color?: string;
 }) => {
+  // const label = _.capitalize(name.replace(/ phenotype/g, ""));
+  const label = name;
   return isSignificant ? (
     <span className={styles.bodySystem}>
-      <FontAwesomeIcon size="2x" icon={faBone} className={color} /> {name}
+      <BodySystemIcon name={name} color={color} /> {label}
     </span>
   ) : (
     <OverlayTrigger
       placement="top"
-      trigger="hover"
-      overlay={<Tooltip>{name}</Tooltip>}
+      trigger={["hover", "focus"]}
+      overlay={<Tooltip>{label}</Tooltip>}
     >
       {({ ref, ...triggerHandler }) => (
         <span {...triggerHandler} ref={ref} className={styles.bodySystem}>
-          <FontAwesomeIcon
-            size="2x"
-            icon={faSkullCrossbones}
-            className={color}
-          />
+          <BodySystemIcon name={name} color={color} />
         </span>
       )}
     </OverlayTrigger>
@@ -96,6 +111,28 @@ const Metric = ({
 };
 
 const Gene = () => {
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    (async () => {
+      setData(geneData);
+    })();
+  }, []);
+
+  if (!data) {
+    return <p>Loading...</p>;
+  }
+
+  const joined = [
+    ...data.significantPhenotypeSystem,
+    ...data.nonSignificantPhenotypeSystem,
+  ];
+
+  const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
+  const significantCount = data.significantPhenotypeSystem.length;
+  const nonSignificantCount = data.nonSignificantPhenotypeSystem.length;
+  const notTestedCount = notTested.length;
+  const allCount = allBodySystems.length;
+
   return (
     <>
       <Search />
@@ -134,8 +171,10 @@ const Gene = () => {
               <h3>Impacted physiological systems</h3>
               <div className={styles.progressHeader}>
                 <div>
-                  <span className="secondary">15</span> /20 physiological
-                  systems tested
+                  <span className="secondary">
+                    {significantCount + nonSignificantCount}
+                  </span>{" "}
+                  /{allCount} physiological systems tested
                 </div>
                 <a href="#data" className="secondary">
                   View data <FontAwesomeIcon icon={faArrowDown} />
@@ -144,69 +183,58 @@ const Gene = () => {
               <div className={styles.progressContainer}>
                 <div
                   className={styles.progressSegmentPrimary}
-                  style={{ width: `${(1 / 20) * 100}%` }}
+                  style={{ width: `${(significantCount / allCount) * 100}%` }}
                 />
                 <div
                   className={styles.progressSegment}
-                  style={{ width: `${((15 - 1) / 20) * 100}%` }}
+                  style={{
+                    width: `${(nonSignificantCount / allCount) * 100}%`,
+                  }}
                 />
               </div>
-              <div className={styles.bodySystemGroupSignificant}>
-                <p className={styles.bodySystemGroupSummary}>
-                  <span className={`${styles.pill} bg-primary white`}>1</span>{" "}
-                  <span>
-                    <strong>Significantly</strong> impacted by the knock-out
-                  </span>
-                </p>
-                <div className={styles.bodySystems}>
-                  <BodySystem name="Skeleton" isSignificant color="primary" />
+              {!!significantCount && (
+                <div className={styles.bodySystemGroupSignificant}>
+                  <p className={styles.bodySystemGroupSummary}>
+                    <span className={`${styles.pill} bg-primary white`}>1</span>{" "}
+                    <span>
+                      <strong>Significantly</strong> impacted by the knock-out
+                    </span>
+                  </p>
+                  <div className={styles.bodySystems}>
+                    {data.significantPhenotypeSystem.map((x) => (
+                      <BodySystem name={x} isSignificant color="primary" />
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className={styles.bodySystemGroup}>
-                <p className={styles.bodySystemGroupSummary}>
-                  <span className={`${styles.pill} bg-secondary white`}>
-                    15
-                  </span>{" "}
-                  <span>
-                    <strong>No significant</strong> impact
-                  </span>
-                </p>
-                <div className={styles.bodySystems}>
-                  {[
-                    "motality/aging",
-                    "reproductive system",
-                    "growth/size/body region",
-                    "homeostasis/metabolism",
-                    "behaviour/neurological system",
-                    "cardiovescular system",
-                    "renal/urinal system",
-                    "limbs/digits/tail",
-                    "immune system",
-                    "integument or pigmentation",
-                    "craniofacial",
-                    "hearing/vestibular/ear",
-                    "endocrine/exocrine",
-                    "vision/eye",
-                  ].map((system) => (
-                    <BodySystem name={system} color="secondary" />
+              )}
+              {!!nonSignificantCount && (
+                <div className={styles.bodySystemGroup}>
+                  <p className={styles.bodySystemGroupSummary}>
+                    <span className={`${styles.pill} bg-secondary white`}>
+                      15
+                    </span>{" "}
+                    <span>
+                      <strong>No significant</strong> impact
+                    </span>
+                  </p>
+                  <div className={styles.bodySystems}>
+                    {data.nonSignificantPhenotypeSystem.map((x) => (
+                      <BodySystem name={x} color="secondary" />
+                    ))}
+                  </div>
+                </div>
+              )}
+              {!!notTestedCount && (
+                <div className={styles.bodySystemGroup}>
+                  <p className={styles.bodySystemGroupSummary}>
+                    <span className={`${styles.pill} bg-grey white`}>15</span>{" "}
+                    <strong>No tested</strong>
+                  </p>
+                  {notTested.map((system) => (
+                    <BodySystem name={system} />
                   ))}
                 </div>
-              </div>
-              <div className={styles.bodySystemGroup}>
-                <p className={styles.bodySystemGroupSummary}>
-                  <span className={`${styles.pill} bg-grey white`}>15</span>{" "}
-                  <strong>No tested</strong>
-                </p>
-                {[
-                  "motality/aging",
-                  "reproductive system",
-                  "growth/size/body region",
-                  "homeostasis/metabolism",
-                  "behaviour/neurological system",
-                ].map((system) => (
-                  <BodySystem name={system} />
-                ))}
-              </div>
+              )}
             </Col>
             <Col style={{ position: "relative" }}>
               <h3>
