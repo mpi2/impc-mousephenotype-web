@@ -17,6 +17,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import styles from "./styles.module.scss";
 
 export type IconName =
   | "mortality/aging"
@@ -262,6 +264,44 @@ const BodySystemIcon = ({ name, color }: { name: string; color: string }) => {
       />
     );
   }
+};
+
+export const BodySystem = ({
+  name = "mortality/aging",
+  isSignificant = false,
+  color = "grey",
+  noSpacing,
+}: {
+  isSignificant?: boolean;
+  name: string;
+  color?: string;
+  noSpacing?: boolean;
+}) => {
+  // const label = _.capitalize(name.replace(/ phenotype/g, ""));
+  const label = name;
+  return isSignificant ? (
+    <span
+      className={noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem}
+    >
+      <BodySystemIcon name={name} color={color} /> <span>{label}</span>
+    </span>
+  ) : (
+    <OverlayTrigger
+      placement="top"
+      trigger={["hover", "focus"]}
+      overlay={<Tooltip>{label}</Tooltip>}
+    >
+      {({ ref, ...triggerHandler }) => (
+        <span
+          {...triggerHandler}
+          ref={ref}
+          className={noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem}
+        >
+          <BodySystemIcon name={name} color={color} />
+        </span>
+      )}
+    </OverlayTrigger>
+  );
 };
 
 export default BodySystemIcon;

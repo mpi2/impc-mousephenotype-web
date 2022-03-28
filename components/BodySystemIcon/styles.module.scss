@@ -1,0 +1,17 @@
+@import "../../styles/vars.scss";
+.bodySystemNoSpacing {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: inherit;
+  svg {
+    width: 2rem;
+    height: 2rem;
+    margin-right: $xxs;
+  }
+}
+
+.bodySystem {
+  @extend .bodySystemNoSpacing;
+  margin-right: $xs;
+  margin-bottom: $xs;
+}
