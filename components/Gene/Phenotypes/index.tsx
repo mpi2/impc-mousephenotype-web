@@ -11,8 +11,8 @@ const Phenotypes = ({ data }) => {
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
           <SignificantPhenotypes data={data} />
         </Tab>
-        <Tab eventKey="measurementsChart" title="Measurements Chart">
-          <p>Measurements chart</p>
+        <Tab eventKey="measurementsChart" title="Statistical Analysis">
+          <p>Statistical Analysis</p>
         </Tab>
         <Tab eventKey="allData" title="All data">
           <p>All data</p>

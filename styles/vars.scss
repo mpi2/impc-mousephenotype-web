@@ -71,6 +71,14 @@ $body-bg: $bg;
 
 // Bootstrap override scss variables
 
+$theme-colors: (
+  "primary": $orange,
+  "primary-dark": $orange-dark,
+  "secondary": $blue,
+  "danger": $red,
+  "success": $lime,
+);
+
 $container-max-widths: (
   "": 1440px,
 );

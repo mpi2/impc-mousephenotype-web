@@ -20,27 +20,32 @@ import _ from "lodash";
 import Card from "../../Card";
 
 const allBodySystems = [
-  "mortality/aging",
-  "embryo phenotype",
-  "reproductive system phenotype",
-  "growth/size/body region phenotype",
-  "homeostasis/metabolism phenotype or adipose tissue phenotype",
-  "behavior/neurological phenotype or nervous system phenotype",
+  "adipose tissue phenotype",
+  "behavior/neurological phenotype",
   "cardiovascular system phenotype",
-  "respiratory system phenotype",
-  "digestive/alimentary phenotype or liver/biliary system phenotype",
-  "renal/urinary system phenotype",
-  "limbs/digits/tail phenotype",
-  "skeleton phenotype",
-  "immune system phenotype or hematopoietic system phenotype",
-  "muscle phenotype",
-  "integument phenotype or pigmentation phenotype",
   "craniofacial phenotype",
-  "hearing/vestibular/ear phenotype",
-  "taste/olfaction phenotype",
+  "digestive/alimentary phenotype",
+  "embryo phenotype",
   "endocrine/exocrine gland phenotype",
+  "growth/size/body region phenotype",
+  "hearing/vestibular/ear phenotype",
+  "hematopoietic system phenotype",
+  "homeostasis/metabolism phenotype",
+  "immune system phenotype",
+  "integument phenotype",
+  "limbs/digits/tail phenotype",
+  "liver/biliary system phenotype",
+  "mortality/aging",
+  "muscle phenotype",
+  "nervous system phenotype",
+  "pigmentation phenotype",
+  "renal/urinary system phenotype",
+  "reproductive system phenotype",
+  "respiratory system phenotype",
+  "skeleton phenotype",
   "vision/eye phenotype",
 ];
+
 import { BodySystem } from "../../BodySystemIcon";
 
 const Metric = ({
@@ -165,7 +170,9 @@ const Summary = ({ data }) => {
           {!!nonSignificantCount && (
             <div className={styles.bodySystemGroup}>
               <p className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-secondary white`}>15</span>{" "}
+                <span className={`${styles.pill} bg-secondary white`}>
+                  {nonSignificantCount}
+                </span>{" "}
                 <span>
                   <strong>No significant</strong> impact
                 </span>
@@ -180,7 +187,9 @@ const Summary = ({ data }) => {
           {!!notTestedCount && (
             <div className={styles.bodySystemGroup}>
               <p className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-grey white`}>15</span>{" "}
+                <span className={`${styles.pill} bg-grey white`}>
+                  {notTestedCount}
+                </span>{" "}
                 <strong>No tested</strong>
               </p>
               {notTested.map((system) => (
