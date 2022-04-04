@@ -1,5 +1,6 @@
 import { Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
+import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
 import StatisticalAnalysis from "./StatisticalAnalysis";
 
@@ -15,7 +16,7 @@ const Phenotypes = ({ phenotypes, gene }) => {
           <StatisticalAnalysis data={gene} />
         </Tab>
         <Tab eventKey="allData" title="All data">
-          <p>All data</p>
+          <AllData data={gene} />
         </Tab>
       </Tabs>
     </Card>

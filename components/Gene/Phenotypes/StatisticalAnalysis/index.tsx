@@ -5,8 +5,19 @@ import {
   LineElement,
   PointElement,
   LinearScale,
+  Tooltip,
+  Title,
+  Legend,
 } from "chart.js";
-Chart.register([CategoryScale, PointElement, LineElement, LinearScale]);
+Chart.register([
+  CategoryScale,
+  PointElement,
+  LineElement,
+  LinearScale,
+  Tooltip,
+  Title,
+  Legend,
+]);
 import { allBodySystems } from "../../Summary";
 import _ from "lodash";
 import { useState } from "react";
@@ -184,7 +195,15 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
           responsive: true,
           plugins: {
             legend: {
-              position: "top" as const,
+              position: "bottom" as const,
+            },
+            tooltip: {
+              callbacks: {
+                afterBody: (context) => {
+                  console.log(context);
+                  return "Test";
+                },
+              },
             },
           },
         }}
@@ -196,6 +215,8 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
               data: values,
               backgroundColor: colors,
               showLine: false,
+              pointRadius: 5,
+              pointHoverRadius: 8,
             },
           ],
         }}

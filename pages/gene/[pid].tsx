@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Search from "../../components/Search";
 import styles from "./styles.module.scss";
-import pData from "./data.json";
+import pData from "./data2.json";
 import gData from "./gene.json";
 import _ from "lodash";
 import Summary from "../../components/Gene/Summary";

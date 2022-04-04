@@ -155,7 +155,9 @@ const Summary = ({ data }) => {
           {!!significantCount && (
             <div className={styles.bodySystemGroupSignificant}>
               <p className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-primary white`}>1</span>{" "}
+                <span className={`${styles.pill} bg-primary white`}>
+                  {significantCount}
+                </span>{" "}
                 <span>
                   <strong>Significantly</strong> impacted by the knock-out
                 </span>
