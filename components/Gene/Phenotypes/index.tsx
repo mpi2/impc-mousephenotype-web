@@ -1,18 +1,18 @@
 import { Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import SignificantPhenotypes from "./SignificantPhenotypes";
+import StatisticalAnalysis from "./StatisticalAnalysis";
 
-const Phenotypes = ({ data }) => {
-  console.log(data);
+const Phenotypes = ({ phenotypes, gene }) => {
   return (
-    <Card>
+    <Card id="data">
       <h2>Phenotypes</h2>
-      <Tabs defaultActiveKey="significantPhenotypes" id="phenotypes">
+      <Tabs defaultActiveKey="significantPhenotypes">
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
-          <SignificantPhenotypes data={data} />
+          <SignificantPhenotypes data={phenotypes} />
         </Tab>
         <Tab eventKey="measurementsChart" title="Statistical Analysis">
-          <p>Statistical Analysis</p>
+          <StatisticalAnalysis data={gene} />
         </Tab>
         <Tab eventKey="allData" title="All data">
           <p>All data</p>

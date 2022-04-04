@@ -19,7 +19,7 @@ import styles from "./styles.module.scss";
 import _ from "lodash";
 import Card from "../../Card";
 
-const allBodySystems = [
+export const allBodySystems = [
   "adipose tissue phenotype",
   "behavior/neurological phenotype",
   "cardiovascular system phenotype",
