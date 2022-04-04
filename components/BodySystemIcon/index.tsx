@@ -20,6 +20,7 @@ import React from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import _ from "lodash";
+import { SizeProp } from "@fortawesome/fontawesome-svg-core";
 
 export type IconName =
   | "mortality/aging"
@@ -64,19 +65,21 @@ const faIcons = {
 const SVG = ({
   children,
   color,
+  size = "2x",
 }: {
   children: React.ReactChild;
   color: string;
+  size?: SizeProp;
 }) => {
   return (
     <svg
-      width="2rem"
-      height="2rem"
+      width={size.replace("x", "rem")}
+      height={size.replace("x", "rem")}
       version="1.1"
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
       className={color}
-      style={{ fill: "currentColor" }}
+      style={{ color, fill: "currentColor" }}
     >
       {children}
     </svg>
@@ -253,14 +256,27 @@ const customIcon = (name) => {
   }
 };
 
-const BodySystemIcon = ({ name, color }: { name: string; color: string }) => {
+const BodySystemIcon = ({
+  name,
+  color,
+  size = "2x",
+}: {
+  name: string;
+  color: string;
+  size?: SizeProp;
+}) => {
   if (customIcon(name)) {
-    return <SVG color={color}>{customIcon(name)}</SVG>;
+    return (
+      <SVG color={color} size={size}>
+        {customIcon(name)}
+      </SVG>
+    );
   } else {
     return (
       <FontAwesomeIcon
-        size="2x"
+        size={size}
         className={color}
+        style={{ color: color }}
         icon={faIcons[name] ?? faQuestion}
       />
     );

@@ -34,11 +34,9 @@ const AllData = ({ data }: { data: any }) => {
       <th {...(!!width ? { width: `${(width / 12) * 100}%` } : {})}>
         <button
           style={{
-            background: "none",
-            appearance: "none",
-            border: "none",
             fontWeight: selected ? "bold" : "normal",
           }}
+          className={styles.inlineButton}
           onClick={handleSelect}
         >
           {label}{" "}

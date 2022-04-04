@@ -22,8 +22,20 @@ import { allBodySystems } from "../../Summary";
 import _ from "lodash";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
-import { faSquare } from "@fortawesome/free-regular-svg-icons";
+import {
+  faArrowCircleLeft,
+  faArrowLeft,
+  faArrowLeftLong,
+  faCheckSquare,
+  faChevronRight,
+  faSquareFull,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowAltCircleLeft,
+  faSquare,
+} from "@fortawesome/free-regular-svg-icons";
+import styles from "./styles.module.scss";
+import BodySystemIcon from "../../../BodySystemIcon";
 
 var colorArray = [
   "#FF6633",
@@ -95,7 +107,6 @@ const cats: { [key: string]: CatType } = {
 };
 
 const options = [
-  { label: "Sort by significance", category: cats.ALL },
   {
     label: "Show significant phenotypes only",
     category: cats.SIGNIFICANT,
@@ -113,6 +124,7 @@ const options = [
     category: cats.SIGNIFICANT_PROCEDURES,
   },
   // { label: "All data grouped by procedures", category: cats.PROCEDURES },
+  { label: "Sort by significance", category: cats.ALL },
 ];
 
 type Cat = { type: CatType; meta?: any };
@@ -174,28 +186,64 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
   if (isByProcedure) {
     colorByArray = _.uniq(processed.map((x) => x.procedureName));
   } else {
-    colorByArray = allBodySystems;
+    colorByArray = _.uniq(processed.map((x) => x.topLevelPhenotypeTermName[0]));
   }
   const colors = processed.map((x) => {
     let index = 0;
     if (isByProcedure) {
       index = colorByArray.indexOf(x.procedureName);
-      console.log(index, colorByArray, x.procedureName);
     } else {
       index = colorByArray.indexOf(x.topLevelPhenotypeTermName[0]);
-      console.log(index, colorByArray, x.topLevelPhenotypeTermName[0]);
     }
     return colorArray[index];
   });
 
   return (
     <div>
+      <div style={{ paddingLeft: "1rem", marginBottom: 30 }}>
+        {colorByArray.map((item, index) => {
+          if (!item) {
+            return;
+          }
+          const color = colorArray[index];
+          return (
+            <span
+              style={{
+                marginRight: "2rem",
+                whiteSpace: "nowrap",
+                marginBlock: 3,
+                display: "inline-block",
+              }}
+              className="grey"
+            >
+              <span
+                style={{
+                  display: "inline-flex",
+                  width: "1.4em",
+                  height: "1.4em",
+                  backgroundColor: color,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 3,
+                  verticalAlign: "middle",
+                  marginRight: 3,
+                }}
+              >
+                {isByProcedure ? null : (
+                  <BodySystemIcon name={item} color="white" size="1x" />
+                )}
+              </span>{" "}
+              <small>{_.capitalize(item)}</small>
+            </span>
+          );
+        })}
+      </div>
       <Line
         options={{
           responsive: true,
           plugins: {
             legend: {
-              position: "bottom" as const,
+              display: false,
             },
             tooltip: {
               callbacks: {
@@ -252,30 +300,54 @@ const StatisticalAnalysis = ({ data }) => {
       : "Measurements";
     return (
       <>
-        <h4>{title}</h4>
-        <p>
-          <button onClick={() => setCat(null)}>Back</button>
-          {
-            <button onClick={handleToggle}>
-              <FontAwesomeIcon
-                icon={isSignificant ? faCheckSquare : faSquare}
-              />{" "}
-              Only show significant
+        <div style={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
+          <p>
+            <button
+              onClick={() => setCat(null)}
+              className={`grey ${styles.inlineButton}`}
+            >
+              <FontAwesomeIcon icon={faArrowLeftLong} /> Back
             </button>
-          }
-        </p>
+          </p>
+          <h4>{title}</h4>
+          <p>
+            {
+              <button onClick={handleToggle} className={styles.inlineButton}>
+                <FontAwesomeIcon
+                  icon={isSignificant ? faCheckSquare : faSquare}
+                  className={isSignificant ? "secondary" : "grey"}
+                />{" "}
+                Only show significant
+              </button>
+            }
+          </p>
+        </div>
         <StatisticalAnalysisChart data={data} cat={cat} />
       </>
     );
   } else {
     return (
-      <div style={{ paddingTop: "3rem" }}>
-        <h4>How would you like to view your data?</h4>
-        <ul style={{ padding: 0, marginTop: "2rem" }}>
+      <div style={{ paddingTop: "2rem", paddingLeft: "1rem" }}>
+        <h4>Explore the analysis of measurements we have collected</h4>
+        <p className="grey" style={{ maxWidth: 900 }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+          mollitia ab quisquam sunt magnam aperiam sapiente, delectus incidunt
+          qui ad laborum impedit unde dolores architecto, velit dolor officia
+          doloremque id.
+        </p>
+        <p>
+          <strong>
+            Get started by selecting how you would like to view the data:
+          </strong>
+        </p>
+        <ul style={{ padding: 0, marginTop: "1rem" }}>
           {options.map(({ label, category }) => (
             <li style={{ listStyle: "none", marginBottom: "1rem" }}>
-              <button onClick={() => setCat({ type: category })}>
-                {label}
+              <button
+                onClick={() => setCat({ type: category })}
+                className={`${styles.inlineButton} secondary`}
+              >
+                {label} <FontAwesomeIcon icon={faChevronRight} />
               </button>
             </li>
           ))}
