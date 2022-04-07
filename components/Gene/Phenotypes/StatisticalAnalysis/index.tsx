@@ -120,11 +120,11 @@ const options = [
   //   category: cats.BODY_SYSTEMS,
   // },
   {
-    label: "Group by precedures",
+    label: "Group by procedures",
     category: cats.SIGNIFICANT_PROCEDURES,
   },
   // { label: "All data grouped by procedures", category: cats.PROCEDURES },
-  { label: "Sort by significance", category: cats.ALL },
+  { label: "Sort all by significance", category: cats.ALL },
 ];
 
 type Cat = { type: CatType; meta?: any };
