@@ -18,24 +18,18 @@ Chart.register([
   Title,
   Legend,
 ]);
-import { allBodySystems } from "../../Summary";
 import _ from "lodash";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowCircleLeft,
-  faArrowLeft,
   faArrowLeftLong,
   faCheckSquare,
   faChevronRight,
-  faSquareFull,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faArrowAltCircleLeft,
-  faSquare,
-} from "@fortawesome/free-regular-svg-icons";
+import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "../../../BodySystemIcon";
+import { formatBodySystems } from "../../../../utils";
 
 var colorArray = [
   "#FF6633",
@@ -233,7 +227,7 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
                   <BodySystemIcon name={item} color="white" size="1x" />
                 )}
               </span>{" "}
-              <small>{_.capitalize(item)}</small>
+              <small>{formatBodySystems(item)}</small>
             </span>
           );
         })}
@@ -246,10 +240,26 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
               display: false,
             },
             tooltip: {
+              bodySpacing: 12,
+              padding: 12,
+              titleMarginBottom: 6,
+              titleFont: { size: 16 },
+              displayColors: false,
               callbacks: {
+                beforeBody: (context) => {
+                  const data = processed[context[0].dataIndex];
+                  return formatBodySystems(data.topLevelPhenotypeTermName);
+                },
+                label: () => "",
                 afterBody: (context) => {
-                  console.log(context);
-                  return "Test";
+                  const data = processed[context[0].dataIndex];
+                  return [
+                    `Zygosity: ${_.capitalize(data.zygosity)}`,
+                    `Procedure: ${data.procedureName}`,
+                    `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,
+                    `Effect size: ${data.effectSize}`,
+                    `Metadata group: ${data.metadataGroup}`,
+                  ];
                 },
               },
             },

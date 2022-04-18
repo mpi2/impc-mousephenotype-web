@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 import Search from "../../components/Search";
-import styles from "./styles.module.scss";
 import pData from "./data2.json";
 import gData from "./gene.json";
 import _ from "lodash";
 import Summary from "../../components/Gene/Summary";
 import Phenotypes from "../../components/Gene/Phenotypes";
 import Card from "../../components/Card";
+import Images from "../../components/Gene/Images";
 
 const Gene = () => {
   const [phenotypeData, setphenotypeData] = useState(null);
@@ -22,12 +22,14 @@ const Gene = () => {
   return (
     <>
       <Search />
-      <Container className={styles.page}>
+      <Container className="page">
         <Summary data={phenotypeData} />
         <Phenotypes phenotypes={phenotypeData} gene={geneData} />
         <Card>
           <h2>lacZ Expression</h2>
+          <Alert variant="primary">Expression data not available</Alert>
         </Card>
+        <Images data={geneData?.geneImages} />
         <Card>
           <h2>Associated Images</h2>
         </Card>
