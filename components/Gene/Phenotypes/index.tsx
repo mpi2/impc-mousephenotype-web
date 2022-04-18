@@ -2,7 +2,12 @@ import { Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
-import StatisticalAnalysis from "./StatisticalAnalysis";
+// import StatisticalAnalysis from "./StatisticalAnalysis";
+import dynamic from "next/dynamic";
+
+const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
+  ssr: false,
+});
 
 const Phenotypes = ({ phenotypes, gene }) => {
   return (

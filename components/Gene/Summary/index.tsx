@@ -5,16 +5,14 @@ import {
   faCheckCircle,
   faChevronRight,
   faExternalLinkAlt,
-  faSkullCrossbones,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import {
   buildStyles,
   CircularProgressbarWithChildren,
 } from "react-circular-progressbar";
-import BodySystemIcon from "../../BodySystemIcon";
 import styles from "./styles.module.scss";
 import _ from "lodash";
 import Card from "../../Card";

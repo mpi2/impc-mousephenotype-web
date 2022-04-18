@@ -1,4 +1,4 @@
-import { Line } from "react-chartjs-2";
+import { Chart as ChartEl } from "react-chartjs-2";
 import {
   Chart,
   CategoryScale,
@@ -9,6 +9,8 @@ import {
   Title,
   Legend,
 } from "chart.js";
+import annotationPlugin from "chartjs-plugin-annotation";
+import zoomPlugin from "chartjs-plugin-zoom";
 Chart.register([
   CategoryScale,
   PointElement,
@@ -17,9 +19,11 @@ Chart.register([
   Tooltip,
   Title,
   Legend,
+  annotationPlugin,
+  zoomPlugin,
 ]);
 import _ from "lodash";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeftLong,
@@ -30,6 +34,7 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "../../../BodySystemIcon";
 import { formatBodySystems } from "../../../../utils";
+import { Button } from "react-bootstrap";
 
 var colorArray = [
   "#FF6633",
@@ -165,6 +170,7 @@ const processData = (data: any, { type, meta }: Cat) => {
 };
 
 const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
+  const chartRef = useRef<Chart>(null);
   if (!data) {
     return null;
   }
@@ -191,6 +197,80 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
     }
     return colorArray[index];
   });
+
+  const chartOptions = {
+    responsive: true,
+    indexAxis: "y" as const,
+    maintainAspectRatio: false,
+    animation: {
+      duration: 0,
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        bodySpacing: 12,
+        padding: 12,
+        titleMarginBottom: 6,
+        titleFont: { size: 16 },
+        labelFont: { size: 14 },
+        displayColors: false,
+        callbacks: {
+          beforeBody: (context) => {
+            const data = processed[context[0].dataIndex];
+            return formatBodySystems(data.topLevelPhenotypeTermName);
+          },
+          // label: () => "",
+          afterBody: (context) => {
+            const data = processed[context[0].dataIndex];
+            return [
+              `Zygosity: ${_.capitalize(data.zygosity)}`,
+              `Procedure: ${data.procedureName}`,
+              `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,
+              `Effect size: ${data.effectSize}`,
+              `Metadata group: ${data.metadataGroup}`,
+            ];
+          },
+        },
+      },
+      annotation: {
+        annotations: {
+          line1: {
+            drawTime: "afterDraw" as const,
+            type: "line" as const,
+            xMin: 4,
+            xMax: 4,
+            borderColor: "#aaa",
+            borderWidth: 2,
+            borderDash: [2, 6],
+            label: {
+              content: "Significant threshold 1.0E-4",
+              enabled: true,
+              rotation: "auto" as const,
+              backgroundColor: "#aaa",
+            },
+          },
+        },
+      },
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: "y" as const,
+          modifierKey: "alt" as const,
+        },
+        zoom: {
+          drag: {
+            enabled: true,
+          },
+          pinch: {
+            enabled: true,
+          },
+          mode: "y" as const,
+        },
+      },
+    },
+  };
 
   return (
     <div>
@@ -232,53 +312,48 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
           );
         })}
       </div>
-      <Line
-        options={{
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false,
-            },
-            tooltip: {
-              bodySpacing: 12,
-              padding: 12,
-              titleMarginBottom: 6,
-              titleFont: { size: 16 },
-              displayColors: false,
-              callbacks: {
-                beforeBody: (context) => {
-                  const data = processed[context[0].dataIndex];
-                  return formatBodySystems(data.topLevelPhenotypeTermName);
-                },
-                label: () => "",
-                afterBody: (context) => {
-                  const data = processed[context[0].dataIndex];
-                  return [
-                    `Zygosity: ${_.capitalize(data.zygosity)}`,
-                    `Procedure: ${data.procedureName}`,
-                    `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,
-                    `Effect size: ${data.effectSize}`,
-                    `Metadata group: ${data.metadataGroup}`,
-                  ];
-                },
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: processed.length * (processed.length > 30 ? 10 : 20),
+        }}
+      >
+        <ChartEl
+          type="line"
+          ref={chartRef}
+          options={chartOptions}
+          data={{
+            labels,
+            datasets: [
+              {
+                label: "P-value",
+                data: values,
+                backgroundColor: colors,
+                showLine: false,
+                pointRadius: 5,
+                pointHoverRadius: 8,
               },
-            },
-          },
+            ],
+          }}
+        />
+      </div>
+
+      <Button
+        onClick={() => {
+          if (chartRef.current) {
+            chartRef.current.resetZoom();
+          }
         }}
-        data={{
-          labels,
-          datasets: [
-            {
-              label: "P-value",
-              data: values,
-              backgroundColor: colors,
-              showLine: false,
-              pointRadius: 5,
-              pointHoverRadius: 8,
-            },
-          ],
+        style={{
+          position: "sticky",
+          bottom: "1rem",
+          float: "right",
+          marginTop: "1rem",
         }}
-      />
+      >
+        Reset zoom
+      </Button>
     </div>
   );
 };
