@@ -2,17 +2,26 @@
 import "../styles/global.scss";
 
 import Layout from "../components/Layout";
-import { useEffect, useState } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
+import { SSRProvider } from "react-bootstrap";
 config.autoAddCss = false;
 
+console.log("test:", process.env.NEXT_PUBLIC_API_MOCKING);
+if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
+  console.log("requiring mocks");
+  require("../mocks");
+}
+
 function MyApp({ Component, pageProps }) {
+  console.log("env in app:", process.env.NEXT_PUBLIC_API_MOCKING);
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SSRProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SSRProvider>
   );
 }
 

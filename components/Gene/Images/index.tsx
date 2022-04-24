@@ -42,7 +42,6 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
 
 const Images = ({ data }) => {
   const groups = Object.entries(_.groupBy(data, "parameterName"));
-  console.log(groups);
   return (
     <Card id="data">
       <h2>Images</h2>

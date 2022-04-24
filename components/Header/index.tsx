@@ -20,7 +20,6 @@ const Header = () => {
     (async () => {
       const response = await fetch("https://www.mousephenotype.org/jsonmenu/");
       const data = await response.json();
-      console.log(data);
       setMenuItems(data);
     })();
   }, []);
@@ -71,10 +70,10 @@ const Header = () => {
                 <div className="d-none d-lg-block">
                   <div className="menu-main-nav-container">
                     <ul id="menu-main-nav" className="menu">
-                      {menuItems.map((menuItem) => {
+                      {menuItems.map((menuItem, i) => {
                         return (
                           <li
-                            key={`menu-item-${menuItem.id}`}
+                            key={`menu-item-${menuItem.id}-${i}`}
                             id={`menu-item-${menuItem.id}`}
                             className={`${
                               menuItem.classes

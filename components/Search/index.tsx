@@ -16,6 +16,7 @@ const Search = () => {
   const router = useRouter();
   const { type } = router.query;
   const isPhenotype = type === "phenotype";
+  console.log("env in search:", process.env.NEXT_PUBLIC_NEWS_SEARCH);
 
   const tabs: Tab[] = [
     {
@@ -48,13 +49,14 @@ const Search = () => {
                   <a
                     className={isActive ? styles.tab__active : styles.tab}
                     href={tab.link}
+                    key={`tab-${tab.name}`}
                   >
                     {tab.name}
                   </a>
                 );
               } else {
                 return (
-                  <Link href={tab.link}>
+                  <Link href={tab.link} key={`tab-${tab.name}`}>
                     <a
                       className={isActive ? styles.tab__active : styles.tab}
                       href="#"
