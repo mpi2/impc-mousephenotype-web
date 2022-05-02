@@ -56,3 +56,7 @@ h4 {
 .page {
   margin-top: -$searchOffset;
 }
+
+p:last-child {
+  margin: 0;
+}

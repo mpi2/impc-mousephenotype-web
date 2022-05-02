@@ -44,7 +44,7 @@ const Images = ({ data }) => {
   const groups = Object.entries(_.groupBy(data, "parameterName"));
   return (
     <Card id="data">
-      <h2>Images</h2>
+      <h2>Associated Images</h2>
       <div>
         <Row>
           {groups.map(([key, group]) => (

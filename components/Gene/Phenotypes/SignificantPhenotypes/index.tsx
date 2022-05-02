@@ -20,7 +20,9 @@ const SignificantPhenotypes = ({ data }) => {
       </thead>
       <tbody>
         <tr>
-          <td>Decreased bone mineral content</td>
+          <td>
+            <strong>Decreased bone mineral content</strong>
+          </td>
           <td>
             <BodySystem name="skeleton phenotype" color="primary" noSpacing />
           </td>
@@ -37,7 +39,9 @@ const SignificantPhenotypes = ({ data }) => {
           </td>
         </tr>
         <tr>
-          <td>Decreased bone mineral density</td>
+          <td>
+            <strong>Decreased bone mineral density</strong>
+          </td>
           <td>
             <BodySystem name="skeleton phenotype" color="primary" noSpacing />
           </td>

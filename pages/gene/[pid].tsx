@@ -8,6 +8,7 @@ import Summary from "../../components/Gene/Summary";
 import Phenotypes from "../../components/Gene/Phenotypes";
 import Card from "../../components/Card";
 import Images from "../../components/Gene/Images";
+import HumanDiseases from "../../components/Gene/HumanDiseases";
 
 const Gene = () => {
   const [phenotypeData, setphenotypeData] = useState(null);
@@ -30,12 +31,7 @@ const Gene = () => {
           <Alert variant="primary">Expression data not available</Alert>
         </Card>
         <Images data={geneData?.geneImages} />
-        <Card>
-          <h2>Associated Images</h2>
-        </Card>
-        <Card>
-          <h2>Human diseases caused by Mavs mutations</h2>
-        </Card>
+        <HumanDiseases />
         <Card>
           <h2>Histopathology</h2>
         </Card>
