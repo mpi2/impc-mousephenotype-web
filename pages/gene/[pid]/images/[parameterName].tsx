@@ -53,9 +53,15 @@ const Column = ({ images }) => {
         <ImageViewer image={images[selected]?.jpegUrl} />
       </Col>
       {images.map((image, i) => (
-        <Col md={4} lg={3} className="mb-3">
+        <Col md={4} lg={3} className="mb-2">
           <div
-            style={{ minHeight: 50, backgroundColor: "#ddd" }}
+            style={{
+              minHeight: 50,
+              backgroundColor: "#ddd",
+              borderRadius: 5,
+              overflow: "hidden",
+              opacity: i === selected ? 0.5 : 1,
+            }}
             onClick={() => {
               setSelected(i);
             }}
