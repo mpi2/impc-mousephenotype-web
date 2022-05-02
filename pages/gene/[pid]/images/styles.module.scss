@@ -1,0 +1,31 @@
+@import "../../../../styles/vars.scss";
+.images {
+  --bs-gutter-x: 0.5rem;
+}
+
+.viewer {
+  display: flex;
+  width: 100%;
+  border-radius: 5;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.tools {
+  position: absolute;
+  top: $xxs;
+  left: $xxs;
+  z-index: 100;
+  button {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    appearance: none;
+    border: 0;
+    outline: none;
+    background-color: $white;
+    border-radius: 5px;
+    margin-bottom: $xxs;
+  }
+}
