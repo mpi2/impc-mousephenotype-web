@@ -1,27 +1,8 @@
+import "chart.js/auto";
+import { Chart } from "chart.js";
 import { Chart as ChartEl } from "react-chartjs-2";
-import {
-  Chart,
-  CategoryScale,
-  LineElement,
-  PointElement,
-  LinearScale,
-  Tooltip,
-  Title,
-  Legend,
-} from "chart.js";
 import annotationPlugin from "chartjs-plugin-annotation";
 import zoomPlugin from "chartjs-plugin-zoom";
-Chart.register([
-  CategoryScale,
-  PointElement,
-  LineElement,
-  LinearScale,
-  Tooltip,
-  Title,
-  Legend,
-  annotationPlugin,
-  zoomPlugin,
-]);
 import _ from "lodash";
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,6 +16,8 @@ import styles from "./styles.module.scss";
 import BodySystemIcon from "../../../BodySystemIcon";
 import { formatBodySystems } from "../../../../utils";
 import { Button } from "react-bootstrap";
+
+Chart.register([annotationPlugin, zoomPlugin]);
 
 var colorArray = [
   "#FF6633",
@@ -427,7 +410,10 @@ const StatisticalAnalysis = ({ data }) => {
         </p>
         <ul style={{ padding: 0, marginTop: "1rem" }}>
           {options.map(({ label, category }) => (
-            <li style={{ listStyle: "none", marginBottom: "1rem" }}>
+            <li
+              style={{ listStyle: "none", marginBottom: "1rem" }}
+              key={`label-${label}-${category}`}
+            >
               <button
                 onClick={() => setCat({ type: category })}
                 className={`${styles.inlineButton} secondary`}

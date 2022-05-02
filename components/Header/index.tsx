@@ -116,11 +116,11 @@ const Header = () => {
           .filter(
             (menuItem) => menuItem.children && menuItem.children.length > 0
           )
-          .map((menuItem) => {
+          .map((menuItem, i) => {
             const itemId = `${menuItem.classes?.split("-")[0]}-menu`;
             return (
               <div
-                key={`subMenu-${menuItem.id}`}
+                key={`subMenu-${menuItem.id}-${i}`}
                 className={`${itemId} sub-menu d-none d-lg-block ${
                   activeMenuId == menuItem.id ? "active" : "collapse"
                 }`}

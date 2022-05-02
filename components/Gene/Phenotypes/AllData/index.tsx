@@ -82,7 +82,7 @@ const AllData = ({ data }: { data: any }) => {
               pvalue,
               topLevelPhenotypeTermName,
             }) => (
-              <tr>
+              <tr key={`tr-${parameterName}`}>
                 <td className={styles.procedureName}>
                   <small className="grey">{procedureName} /</small>
                   <br />
