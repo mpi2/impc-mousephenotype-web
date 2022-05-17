@@ -1,4 +1,6 @@
 import { rest } from "msw";
+
+
 export const handlers = [
   rest.post("/api/login", (req, res, ctx) => {
     // Persist user's authentication in the session
@@ -27,5 +29,15 @@ export const handlers = [
         username: "admin",
       })
     );
+  }),
+  rest.get("/api/genes/:geneId/:section", (req, res, ctx) => {
+    const { geneId, section } = req.params;
+    const genes = require.context(
+      `./data/genes/`,
+      true,
+      /\.json$/
+    );
+    const geneSectionData = genes(`./${geneId}/${section}.json`);
+    return res(ctx.status(200), ctx.json(geneSectionData));
   }),
 ];
