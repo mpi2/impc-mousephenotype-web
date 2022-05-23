@@ -12,7 +12,7 @@ export type Tab = {
   external?: boolean;
 };
 
-const Search = ({ isPhenotype = false }: { isPhenotype: boolean }) => {
+const Search = ({ isPhenotype = false }: { isPhenotype?: boolean }) => {
   const router = useRouter();
   const { type } = router.query;
   isPhenotype = isPhenotype ?? type === "phenotype";
