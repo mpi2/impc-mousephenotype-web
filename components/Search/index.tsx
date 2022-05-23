@@ -12,11 +12,10 @@ export type Tab = {
   external?: boolean;
 };
 
-const Search = () => {
+const Search = ({ isPhenotype = false }: { isPhenotype: boolean }) => {
   const router = useRouter();
   const { type } = router.query;
-  const isPhenotype = type === "phenotype";
-  console.log("env in search:", process.env.NEXT_PUBLIC_NEWS_SEARCH);
+  isPhenotype = isPhenotype ?? type === "phenotype";
 
   const tabs: Tab[] = [
     {

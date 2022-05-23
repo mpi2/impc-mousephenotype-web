@@ -6,3 +6,10 @@
     line-height: 2rem;
   }
 }
+
+.link {
+  cursor: pointer;
+  &:hover {
+    color: $primary;
+  }
+}

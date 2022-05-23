@@ -1,5 +1,6 @@
 import { faFemale, faMars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { Table } from "react-bootstrap";
 import { BodySystem } from "../../../BodySystemIcon";
 import styles from "./styles.module.scss";
@@ -21,7 +22,11 @@ const SignificantPhenotypes = ({ data }) => {
       <tbody>
         <tr>
           <td>
-            <strong>Decreased bone mineral content</strong>
+            <Link href="/phenotypes/123">
+              <strong className={styles.link}>
+                Decreased bone mineral content
+              </strong>
+            </Link>
           </td>
           <td>
             <BodySystem name="skeleton phenotype" color="primary" noSpacing />
@@ -40,7 +45,11 @@ const SignificantPhenotypes = ({ data }) => {
         </tr>
         <tr>
           <td>
-            <strong>Decreased bone mineral density</strong>
+            <Link href="/phenotypes/123">
+              <strong className={styles.link}>
+                Decreased bone mineral density
+              </strong>
+            </Link>
           </td>
           <td>
             <BodySystem name="skeleton phenotype" color="primary" noSpacing />

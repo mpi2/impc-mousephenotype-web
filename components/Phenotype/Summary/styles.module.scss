@@ -1,0 +1,40 @@
+@import "../../../styles/vars.scss";
+.subheadingCont {
+  margin-bottom: $xs;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey;
+}
+
+.subheadingSection {
+  margin-right: $md;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.stats {
+  display: flex;
+  gap: $md;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.chart {
+  width: 100px;
+}
+
+.progressCircleText {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.summaryContent {
+  display: flex;
+  justify-content: space-between;
+}
