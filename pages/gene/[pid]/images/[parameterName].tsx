@@ -108,9 +108,11 @@ const ImagesCompare = () => {
           <div>
             <Row>
               <Col sm={6}>
+                <h3>WT Images</h3>
                 <Column images={images} />
               </Col>
               <Col sm={6}>
+                <h3>Mutant Images</h3>
                 <Column images={images} />
               </Col>
             </Row>

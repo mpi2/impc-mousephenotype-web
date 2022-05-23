@@ -190,7 +190,7 @@ const Summary = ({ data }) => {
                 <span className={`${styles.pill} bg-grey white`}>
                   {notTestedCount}
                 </span>{" "}
-                <strong>No tested</strong>
+                <strong>Not tested</strong>
               </p>
               {notTested.map((system) => (
                 <BodySystem name={system} />
