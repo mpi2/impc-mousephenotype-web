@@ -37,7 +37,16 @@ export const handlers = [
       true,
       /\.json$/
     );
-    const geneSectionData = genes(`./${geneId}/${section}.json`);
-    return res(ctx.status(200), ctx.json(geneSectionData));
+    try {
+      const geneSectionData = genes(`./${geneId}/${section}.json`);
+      const sectionKeyMap = { expression: "expressionData", statisticalResults: "statisticalResults", phenotypes: "significantPhenotypes", publications: "publications" };
+      const sectionData = sectionKeyMap.hasOwnProperty(section) ? geneSectionData[sectionKeyMap[section]] : geneSectionData;
+
+      return res(ctx.status(200), ctx.json(sectionData));
+    } catch (e) {
+      return res(ctx.status(404));
+    }
+
+
   }),
 ];

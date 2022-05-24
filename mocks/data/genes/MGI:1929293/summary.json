@@ -1,57 +1,64 @@
 {
-    "geneAccessionId": "MGI:1923401",
-    "geneName": "centrosomal protein 76",
-    "geneSymbol": "Cep76",
+    "geneAccessionId": "MGI:1929293",
+    "geneName": "calcium and integrin binding family member 2",
+    "geneSymbol": "Cib2",
     "markerType": "Gene",
     "synonyms": [
-        "6230425F05Rik"
+        "calcium binding protein Kip2",
+        "2810434I23Rik"
     ],
     "humanGeneSymbol": [
-        "CEP76"
+        "CIB2"
     ],
     "humanSymbolSynonym": [
-        "HsT1705",
-        "FLJ12542",
-        "C18orf9"
+        "USH1J",
+        "KIP2",
+        "DFNB48"
     ],
     "productionCentre": [
-        "BCM"
+        "MRC Harwell"
     ],
     "phenotypingCentre": [
-        "BCM"
+        "MRC Harwell"
     ],
     "alleleName": [
-        "gene trap OST311562, Lexicon Genetics",
-        "targeted mutation 1a, Helmholtz Zentrum Muenchen GmbH",
-        "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH"
+        "targeted mutation 1a, Wellcome Trust Sanger Institute",
+        "targeted mutation 1c, Wellcome Trust Sanger Institute",
+        "targeted mutation 1, Aziz El-Amraoui",
+        "targeted mutation 1.1, Aziz El-Amraoui",
+        "targeted mutation 1.1, Zubair M Ahmed",
+        "targeted mutation 1b, Wellcome Trust Sanger Institute"
     ],
     "isUmassGene": false,
     "isIdgGene": false,
     "hasEmbryoImagingData": false,
-    "chrName": "18",
-    "seqRegionStart": "67750870",
-    "seqRegionEnd": "67774406",
+    "chrName": "9",
+    "seqRegionStart": "54452078",
+    "seqRegionEnd": "54467502",
     "chrStrand": "-",
-    "seqRegionId": "18",
-    "entrezgeneId": "225659",
+    "seqRegionId": "9",
+    "entrezgeneId": "56506",
     "ensemblGeneId": [
-        "ENSMUSG00000073542"
+        "ENSMUSG00000037493"
     ],
-    "ccdsIds": "CCDS37850.1",
+    "ccdsIds": "CCDS40642.1",
     "ccdsId": [
-        "CCDS37850.1"
+        "CCDS40642.1"
     ],
-    "ncbiId": "225659",
+    "ncbiId": "56506",
     "assignmentStatus": "Selected for production",
     "nullAlleleProductionStatus": "Genotype confirmed mice",
     "conditionalAlleleProductionStatus": "Genotype confirmed mice",
     "esCellProductionStatus": "ES Cells Produced",
-    "mouseProductionStatus": "Mice Produced",
     "phenotypeStatus": "Phenotyping data available",
     "phenotypingDataAvailable": true,
     "significantTopLevelPhenotypes": [
+        "homeostasis/metabolism phenotype",
         "immune system phenotype",
-        "hematopoietic system phenotype"
+        "nervous system phenotype",
+        "hearing/vestibular/ear phenotype",
+        "hematopoietic system phenotype",
+        "behavior/neurological phenotype"
     ],
     "notSignificantTopLevelPhenotypes": [
         "reproductive system phenotype",
@@ -59,20 +66,19 @@
         "adipose tissue phenotype",
         "growth/size/body region phenotype",
         "muscle phenotype",
-        "hearing/vestibular/ear phenotype",
         "cardiovascular system phenotype",
         "craniofacial phenotype",
-        "homeostasis/metabolism phenotype",
+        "renal/urinary system phenotype",
         "pigmentation phenotype",
         "limbs/digits/tail phenotype",
-        "nervous system phenotype",
         "vision/eye phenotype",
-        "behavior/neurological phenotype",
         "skeleton phenotype",
         "mortality/aging"
     ],
-    "significantPhenotypesCount": 1,
-    "adultExpressionObservationsCount": 49,
+    "significantPhenotypesCount": 25,
+    "adultExpressionObservationsCount": 46,
+    "embryoExpressionObservationsCount": 42,
+    "associatedDiseasesCount": 4,
     "hasLacZData": true,
     "hasImagingData": true,
     "hasViabilityData": true,

@@ -1,0 +1,48 @@
+{
+    "order": [
+        {
+            "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+            "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+            "productTypes": [
+                "mouse"
+            ]
+        },
+        {
+            "alleleSymbol": "Cib2<tm1e(EUCOMM)Wtsi>",
+            "alleleDescription": "Targeted, non-conditional allele",
+            "productTypes": [
+                "es_cell"
+            ]
+        },
+        {
+            "alleleSymbol": "Cib2<tm1(KOMP)Vlcg>",
+            "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+            "productTypes": [
+                "es_cell"
+            ]
+        },
+        {
+            "alleleSymbol": "Cib2<tm48714(L1L2_Bact_P)>",
+            "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+            "productTypes": [
+                "intermediate_vector"
+            ]
+        },
+        {
+            "alleleSymbol": "Cib2<tm1a(EUCOMM)Wtsi>",
+            "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+            "productTypes": [
+                "targeting_vector",
+                "es_cell",
+                "mouse"
+            ]
+        },
+        {
+            "alleleSymbol": "Cib2<tm1c(EUCOMM)Wtsi>",
+            "alleleDescription": "Wild type floxed exon (post-Flp)",
+            "productTypes": [
+                "mouse"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "significantPhenotypes": [
+        {
+            "geneAccessionId": "MGI:1923401",
+            "pipelineStableId": "BCM_001",
+            "procedureStableId": "IMPC_PAT_002",
+            "procedureName": "Gross Pathology and Tissue Collection",
+            "parameterStableId": "IMPC_PAT_016_002",
+            "parameterName": "Spleen",
+            "alleleAccessionId": "MGI:5561564",
+            "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+            "alleleSymbol": "Cep76<tm1b(EUCOMM)Hmgu>",
+            "zygosity": "homozygote",
+            "phenotypingCenter": "BCM",
+            "sex": "female",
+            "projectName": "BaSH",
+            "pValue": "0.0",
+            "lifeStageName": [
+                "Early adult"
+            ],
+            "effectSize": "1.0",
+            "phenotype": {
+                "id": "MP:0000689",
+                "name": "abnormal spleen morphology"
+            },
+            "topLevelPhenotype": [
+                {
+                    "id": "MP:0005387",
+                    "name": "immune system phenotype"
+                },
+                {
+                    "id": "MP:0005397",
+                    "name": "hematopoietic system phenotype"
+                }
+            ]
+        }
+    ]
+}

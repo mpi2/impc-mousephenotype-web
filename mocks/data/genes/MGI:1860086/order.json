@@ -1,0 +1,64 @@
+{
+    "order": [
+        {
+            "alleleSymbol": "Crlf3<tm1e(KOMP)Wtsi>",
+            "alleleDescription": "Targeted, non-conditional allele",
+            "productTypes": [
+                "es_cell"
+            ]
+        },
+        {
+            "alleleSymbol": "Crlf3<tm1b(KOMP)Wtsi>",
+            "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+            "productTypes": [
+                "mouse"
+            ]
+        },
+        {
+            "alleleSymbol": "Crlf3<em1(IMPC)Wtsi>",
+            "alleleDescription": "Deletion",
+            "productTypes": [
+                "mouse"
+            ]
+        },
+        {
+            "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
+            "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+            "productTypes": [
+                "targeting_vector",
+                "es_cell",
+                "mouse"
+            ]
+        },
+        {
+            "alleleSymbol": "Crlf3<tm356713(L1L2_Bact_P)>",
+            "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+            "productTypes": [
+                "intermediate_vector",
+                "targeting_vector"
+            ]
+        },
+        {
+            "alleleSymbol": "Crlf3<tm38187(L1L2_gt0)>",
+            "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+            "productTypes": [
+                "intermediate_vector"
+            ]
+        },
+        {
+            "alleleSymbol": "Crlf3<tm38187(L1L2_Bact_P)>",
+            "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+            "productTypes": [
+                "intermediate_vector",
+                "targeting_vector"
+            ]
+        },
+        {
+            "alleleSymbol": "Crlf3<tm1c(KOMP)Wtsi>",
+            "alleleDescription": "Wild type floxed exon (post-Flp)",
+            "productTypes": [
+                "mouse"
+            ]
+        }
+    ]
+}
