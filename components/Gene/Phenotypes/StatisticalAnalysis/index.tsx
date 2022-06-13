@@ -122,16 +122,17 @@ const processData = (data: any, { type, meta }: Cat) => {
     PROCEDURES,
   } = cats;
   const significants = getSignificants(data);
+  console.log("processing", type);
   switch (type) {
     case ALL:
-      return _.sortBy(data, "pValue");
+      return _.sortBy(data, "pValue", "desc");
     case SIGNIFICANT:
       return _.sortBy(getSignificants(data), "pValue");
     case SIGNIFICANT_BODY_SYSTEMS:
-      const bodySystems = significants.map((x) => x.topLevelPhenotype[0].name);
+      const bodySystems = significants.map((x) => x.topLevelPhenotype[0]);
       const flattend = [].concat.apply([], bodySystems);
       const filtered = data.filter((x) => {
-        return x.topLevelPhenotype[0].some((y) => flattend.includes(y));
+        return x.topLevelPhenotype.some((y) => flattend.includes(y));
       });
       return _.sortBy(filtered, "topLevelPhenotype");
     case SIGNIFICANT_PROCEDURES:
@@ -154,6 +155,7 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
   if (!data) {
     return null;
   }
+
   const hasPValue = data
     .filter(
       (x) =>
@@ -161,8 +163,14 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
         x.pValue !== undefined &&
         x.topLevelPhenotype.length
     )
-    .sort((a, b) => a.topLevelPhenotype[0].name - b.topLevelPhenotype[0].name);
+    .map((x) => ({
+      ...x,
+      pValue: Number(x.pValue),
+      topLevelPhenotype: x.topLevelPhenotype.map((y) => y.name),
+    }));
+  // .sort((a, b) => a.topLevelPhenotype[0] - b.topLevelPhenotype[0]);
   const processed = processData(hasPValue, cat);
+  console.log(processed);
   const labels = processed.map((x) => x.parameterName);
   const values = processed.map((x) => -Math.log10(Number(x.pValue)));
   const isByProcedure =
@@ -171,14 +179,14 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
   if (isByProcedure) {
     colorByArray = _.uniq(processed.map((x) => x.procedureName));
   } else {
-    colorByArray = _.uniq(processed.map((x) => x.topLevelPhenotype[0].name));
+    colorByArray = _.uniq(processed.map((x) => x.topLevelPhenotype[0]));
   }
   const colors = processed.map((x) => {
     let index = 0;
     if (isByProcedure) {
       index = colorByArray.indexOf(x.procedureName);
     } else {
-      index = colorByArray.indexOf(x.topLevelPhenotype[0].name);
+      index = colorByArray.indexOf(x.topLevelPhenotype[0]);
     }
     return colorArray[index];
   });
@@ -204,7 +212,7 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
         callbacks: {
           beforeBody: (context) => {
             const data = processed[context[0].dataIndex];
-            return formatBodySystems(data.topLevelPhenotype[0].name);
+            return formatBodySystems(data.topLevelPhenotype[0]);
           },
           // label: () => "",
           afterBody: (context) => {
@@ -301,7 +309,10 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
         style={{
           position: "relative",
           width: "100%",
-          height: processed.length * (processed.length > 30 ? 10 : 20),
+          height: Math.min(
+            processed.length * (processed.length > 30 ? 10 : 20),
+            1600
+          ),
         }}
       >
         <ChartEl
