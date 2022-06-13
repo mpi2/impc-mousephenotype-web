@@ -1,6 +1,8 @@
 import styles from "./styles.module.scss";
 import _ from "lodash";
 import Card from "../../Card";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const Summary = () => {
   return (

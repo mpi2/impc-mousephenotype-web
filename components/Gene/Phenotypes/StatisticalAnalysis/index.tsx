@@ -4,7 +4,8 @@ import { Chart as ChartEl } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
 import zoomPlugin from "chartjs-plugin-zoom";
 import _ from "lodash";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeftLong,
@@ -97,22 +98,18 @@ const options = [
     label: "Group by physiological systems",
     category: cats.SIGNIFICANT_BODY_SYSTEMS,
   },
-  // {
-  //   label: "All data grouped by physiological systems",
-  //   category: cats.BODY_SYSTEMS,
-  // },
+
   {
     label: "Group by procedures",
     category: cats.SIGNIFICANT_PROCEDURES,
   },
-  // { label: "All data grouped by procedures", category: cats.PROCEDURES },
   { label: "Sort all by significance", category: cats.ALL },
 ];
 
 type Cat = { type: CatType; meta?: any };
 
 const getSignificants = (data: any) => {
-  return data.filter((x) => -Math.log10(x.pvalue) >= 4);
+  return data.filter((x) => -Math.log10(Number(x.pValue)) >= 4);
 };
 
 const processData = (data: any, { type, meta }: Cat) => {
@@ -127,16 +124,16 @@ const processData = (data: any, { type, meta }: Cat) => {
   const significants = getSignificants(data);
   switch (type) {
     case ALL:
-      return _.sortBy(data, "pvalue");
+      return _.sortBy(data, "pValue");
     case SIGNIFICANT:
-      return _.sortBy(getSignificants(data), "pvalue");
+      return _.sortBy(getSignificants(data), "pValue");
     case SIGNIFICANT_BODY_SYSTEMS:
-      const bodySystems = significants.map((x) => x.topLevelPhenotypeTermName);
+      const bodySystems = significants.map((x) => x.topLevelPhenotype[0].name);
       const flattend = [].concat.apply([], bodySystems);
       const filtered = data.filter((x) => {
-        return x.topLevelPhenotypeTermName.some((y) => flattend.includes(y));
+        return x.topLevelPhenotype[0].some((y) => flattend.includes(y));
       });
-      return _.sortBy(filtered, "topLevelPhenotypeTermName");
+      return _.sortBy(filtered, "topLevelPhenotype");
     case SIGNIFICANT_PROCEDURES:
       const procedures = significants.map((x) => x.procedureName);
       const filtered2 = data.filter((x) => {
@@ -144,7 +141,7 @@ const processData = (data: any, { type, meta }: Cat) => {
       });
       return _.sortBy(filtered2, "procedureName");
     case BODY_SYSTEMS:
-      return _.sortBy(data, "topLevelPhenotypeTermName");
+      return _.sortBy(data, "topLevelPhenotype");
     case PROCEDURES:
       return _.sortBy(data, "procedureName");
     default:
@@ -157,26 +154,31 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
   if (!data) {
     return null;
   }
-  const hasPValue = data.geneStatisticalResults
-    .filter((x) => x.pvalue !== null && x.pvalue !== undefined)
-    .sort((a, b) => a.topLevelPhenotypeTermName - b.topLevelPhenotypeTermName);
+  const hasPValue = data
+    .filter(
+      (x) =>
+        x.pValue !== null &&
+        x.pValue !== undefined &&
+        x.topLevelPhenotype.length
+    )
+    .sort((a, b) => a.topLevelPhenotype[0].name - b.topLevelPhenotype[0].name);
   const processed = processData(hasPValue, cat);
   const labels = processed.map((x) => x.parameterName);
-  const values = processed.map((x) => -Math.log10(Number(x.pvalue)));
+  const values = processed.map((x) => -Math.log10(Number(x.pValue)));
   const isByProcedure =
     cat.type === cats.SIGNIFICANT_PROCEDURES || cat.type === cats.PROCEDURES;
   let colorByArray = [];
   if (isByProcedure) {
     colorByArray = _.uniq(processed.map((x) => x.procedureName));
   } else {
-    colorByArray = _.uniq(processed.map((x) => x.topLevelPhenotypeTermName[0]));
+    colorByArray = _.uniq(processed.map((x) => x.topLevelPhenotype[0].name));
   }
   const colors = processed.map((x) => {
     let index = 0;
     if (isByProcedure) {
       index = colorByArray.indexOf(x.procedureName);
     } else {
-      index = colorByArray.indexOf(x.topLevelPhenotypeTermName[0]);
+      index = colorByArray.indexOf(x.topLevelPhenotype[0].name);
     }
     return colorArray[index];
   });
@@ -202,7 +204,7 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
         callbacks: {
           beforeBody: (context) => {
             const data = processed[context[0].dataIndex];
-            return formatBodySystems(data.topLevelPhenotypeTermName);
+            return formatBodySystems(data.topLevelPhenotype[0].name);
           },
           // label: () => "",
           afterBody: (context) => {

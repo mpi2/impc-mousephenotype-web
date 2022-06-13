@@ -43,7 +43,7 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
 const Images = ({ data }) => {
   const groups = Object.entries(_.groupBy(data, "parameterName"));
   return (
-    <Card id="data">
+    <Card id="images">
       <h2>Associated Images</h2>
       <div>
         <Row>

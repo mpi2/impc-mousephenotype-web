@@ -18,7 +18,7 @@ const Scale = ({ children = 5 }: { children: number }) => {
 
 const HumanDiseases = () => {
   return (
-    <Card id="data">
+    <Card id="human-diseases">
       <h2>Human diseases caused by Mavs mutations </h2>
       <Alert variant="secondary">
         <p>

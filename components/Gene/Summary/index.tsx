@@ -45,6 +45,32 @@ export const allBodySystems = [
 ];
 
 import { BodySystem } from "../../BodySystemIcon";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Check from "../../Check";
+
+const CollectionItem = ({
+  name,
+  link,
+  hasData,
+  isExternal,
+}: {
+  name: string;
+  link: string;
+  hasData: boolean;
+  isExternal?: boolean;
+}) => (
+  <a
+    href={link}
+    className={hasData ? styles.dataCollection : styles.dataCollectionInactive}
+  >
+    <Check isChecked={hasData} />
+    {name}{" "}
+    {isExternal && (
+      <FontAwesomeIcon icon={faExternalLinkAlt} className="grey" />
+    )}
+  </a>
+);
 
 const Metric = ({
   children,
@@ -81,19 +107,30 @@ const Metric = ({
     </div>
   );
 };
-const Summary = ({ data }) => {
+const Summary = () => {
+  const router = useRouter();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (!router.query.pid) return;
+      const pData = await fetch(`/api/genes/${router.query.pid}/summary`);
+      setData(await pData.json());
+    })();
+  }, [router.query.pid]);
+
   if (!data) {
     return <p>Loading...</p>;
   }
 
   const joined = [
-    ...data.significantPhenotypeSystem,
-    ...data.nonSignificantPhenotypeSystem,
+    ...data.significantTopLevelPhenotypes,
+    ...data.notSignificantTopLevelPhenotypes,
   ];
 
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
-  const significantCount = data.significantPhenotypeSystem.length;
-  const nonSignificantCount = data.nonSignificantPhenotypeSystem.length;
+  const significantCount = data.significantTopLevelPhenotypes.length;
+  const nonSignificantCount = data.notSignificantTopLevelPhenotypes.length;
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
@@ -103,14 +140,22 @@ const Summary = ({ data }) => {
           <span className={`${styles.subheadingSection} primary`}>Gene</span>
           <a
             className={`${styles.subheadingSection}`}
-            href="http://www.informatics.jax.org/marker/MGI:2444773"
+            href={`http://www.informatics.jax.org/marker/${data.geneAccessionId}`}
             target="_blank"
           >
-            MGI:2444773 <FontAwesomeIcon icon={faExternalLinkAlt} />
+            {data.geneAccessionId} <FontAwesomeIcon icon={faExternalLinkAlt} />
           </a>
           <a className={styles.subheadingSection} href="#">
-            Synonyms: IPS-1, D430028G21Rik, +3 more{" "}
-            <FontAwesomeIcon icon={faCaretSquareDown} />
+            Synonyms:{" "}
+            {data.synonyms
+              .slice(0, 2)
+              .map((s, i) => `${i > 0 ? ", " : ""}${s}`)}
+            {data.synonyms.length >= 3 && (
+              <>
+                +${data.synonyms.length - 2} more{" "}
+                <FontAwesomeIcon icon={faCaretSquareDown} />
+              </>
+            )}
           </a>
         </div>
         <a
@@ -121,8 +166,8 @@ const Summary = ({ data }) => {
         </a>
       </div>
       <h1>
-        <strong>Mavs</strong> <span className="grey">|</span> mitochondrial
-        antiviral signaling protein
+        <strong>{data.geneSymbol}</strong> <span className="grey">|</span>{" "}
+        {data.geneName}
       </h1>
       <Row className={styles.gap}>
         <Col>
@@ -161,7 +206,7 @@ const Summary = ({ data }) => {
                 </span>
               </p>
               <div className={styles.bodySystems}>
-                {data.significantPhenotypeSystem.map((x) => (
+                {data.significantTopLevelPhenotypes.map((x) => (
                   <BodySystem name={x} isSignificant color="primary" />
                 ))}
               </div>
@@ -178,7 +223,7 @@ const Summary = ({ data }) => {
                 </span>
               </p>
               <div className={styles.bodySystems}>
-                {data.nonSignificantPhenotypeSystem.map((x) => (
+                {data.notSignificantTopLevelPhenotypes.map((x) => (
                   <BodySystem name={x} color="secondary" />
                 ))}
               </div>
@@ -204,69 +249,78 @@ const Summary = ({ data }) => {
           </h3>
           <Row>
             <Col md={6}>
-              <Metric value={2} average={7}>
+              <Metric value={data.significantPhenotypesCount ?? 0} average={7}>
                 Significant phenotypes
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric value={67} average={97}>
-                Expressions
+              <Metric
+                value={data.adultExpressionObservationsCount ?? 0}
+                average={97}
+              >
+                Adult expressions
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric value={3} average={8}>
+              <Metric value={data.associatedDiseasesCount ?? 0} average={8}>
                 Associated disease
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric value={3} average={23}>
-                Significant phenotypes
+              <Metric
+                value={data.embryoExpressionObservationsCount ?? 0}
+                average={23}
+              >
+                Embryo expressions
               </Metric>
             </Col>
           </Row>
           <h3 className="mt-3">Data collections</h3>
-          <Row>
+          <Row className="mb-5">
             <Col md={5} className="pe-0">
-              <a href="#lacz" className={styles.dataCollection}>
-                <FontAwesomeIcon icon={faCheckCircle} />
-                Lacz expression
-              </a>
+              <CollectionItem
+                link="#lacz"
+                name="Lacz expression"
+                hasData={data.hasLacZData}
+              />
             </Col>
             <Col md={6} className="pe-0">
-              <a href="#histopathology" className={styles.dataCollection}>
-                <FontAwesomeIcon icon={faCheckCircle} />
-                Histopathology
-              </a>
+              <CollectionItem
+                link="#histopathology"
+                name="Histopathology"
+                hasData={true}
+              />
             </Col>
             <Col md={5} className="pe-0">
-              <a href="#images" className={styles.dataCollection}>
-                <FontAwesomeIcon icon={faCheckCircle} />
-                Images (x-rays)
-              </a>
+              <CollectionItem
+                link="#images"
+                name="Images"
+                hasData={data.hasImagingData}
+              />
             </Col>
             <Col md={7}>
-              <a
-                href="https://www.mousephenotype.org/data/charts?accession=MGI:2444773&parameter_stable_id=IMPC_BWT_008_001&procedure_stable_id=IMPC_BWT_001&chart_type=TIME_SERIES_LINE"
-                target="_blank"
-                className={styles.dataCollection}
-              >
-                <FontAwesomeIcon icon={faCheckCircle} />
-                Body Weight Measurements{" "}
-                <FontAwesomeIcon icon={faExternalLinkAlt} className="grey" />
-              </a>
+              <CollectionItem
+                link="https://www.mousephenotype.org/data/charts?accession=MGI:2444773&parameter_stable_id=IMPC_BWT_008_001&procedure_stable_id=IMPC_BWT_001&chart_type=TIME_SERIES_LINE"
+                name="Body weight measurements"
+                hasData={data.hasBodyWeightData}
+                isExternal
+              />
             </Col>
             <Col md={5} className="pe-0">
-              <a href="#lacz" className={styles.dataCollection}>
-                <FontAwesomeIcon icon={faCheckCircle} />
-                Viability Data{" "}
-                <FontAwesomeIcon icon={faExternalLinkAlt} className="grey" />
-              </a>
+              <CollectionItem
+                link="#viability-data"
+                name="Viability data"
+                hasData={data.hasViabilityData}
+                isExternal
+              />
             </Col>
             <Col md={7}>
-              <span className={styles.dataCollectionInactive}>
-                <FontAwesomeIcon icon={faTimesCircle} className="grey" />
-                Embryo Imaging Data
-              </span>
+              <CollectionItem
+                link="#embro-images"
+                name="Embryo imaging data"
+                hasData={data.hasEmbryoImagingData}
+                isExternal
+              />
             </Col>
           </Row>
           <div className={styles.purchaseBanner}>
