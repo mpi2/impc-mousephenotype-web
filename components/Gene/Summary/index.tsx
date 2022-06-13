@@ -114,8 +114,10 @@ const Summary = () => {
   useEffect(() => {
     (async () => {
       if (!router.query.pid) return;
-      const pData = await fetch(`/api/genes/${router.query.pid}/summary`);
-      setData(await pData.json());
+      const res = await fetch(`/api/genes/${router.query.pid}/summary`);
+      if (res.ok) {
+        setData(await res.json());
+      }
     })();
   }, [router.query.pid]);
 

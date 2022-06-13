@@ -12,8 +12,10 @@ const Publications = () => {
     if (!router.isReady) return;
 
     (async () => {
-      const pData = await fetch(`/api/genes/${router.query.pid}/publications`);
-      setPublicationData(await pData.json());
+      const res = await fetch(`/api/genes/${router.query.pid}/publications`);
+      if (res.ok) {
+        setPublicationData(await res.json());
+      }
     })();
   }, [router.isReady]);
 

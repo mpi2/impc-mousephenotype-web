@@ -7,6 +7,7 @@ import Card from "../../components/Card";
 import Images from "../../components/Gene/Images";
 import HumanDiseases from "../../components/Gene/HumanDiseases";
 import Publications from "../../components/Gene/Publications";
+import Expressions from "../../components/Gene/Expressions";
 
 const Gene = () => {
   return (
@@ -15,10 +16,7 @@ const Gene = () => {
       <Container className="page">
         <Summary />
         <Phenotypes />
-        <Card>
-          <h2>lacZ Expression</h2>
-          <Alert variant="primary">Expression data not available</Alert>
-        </Card>
+        <Expressions />
         <Images />
         <HumanDiseases />
         <Publications />

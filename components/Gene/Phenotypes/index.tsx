@@ -18,12 +18,16 @@ const Phenotypes = () => {
     if (!router.isReady) return;
 
     (async () => {
-      const pData = await fetch(`/api/genes/${router.query.pid}/phenotypes`);
-      setphenotypeData(await pData.json());
-      const gData = await fetch(
+      const pRes = await fetch(`/api/genes/${router.query.pid}/phenotypes`);
+      if (pRes.ok) {
+        setphenotypeData(await pRes.json());
+      }
+      const gRes = await fetch(
         `/api/genes/${router.query.pid}/statistical-results`
       );
-      setGeneData(await gData.json());
+      if (gRes.ok) {
+        setGeneData(await gRes.json());
+      }
     })();
   }, [router.isReady]);
 

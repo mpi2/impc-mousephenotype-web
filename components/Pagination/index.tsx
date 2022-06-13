@@ -1,14 +1,13 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 
 const Pagination = ({ data, children }) => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
 
-  const currentPage = data.slice(pageSize * page, pageSize * (page + 1));
-  const totalPages = Math.ceil(data.length / pageSize);
+  const currentPage = data?.slice(pageSize * page, pageSize * (page + 1)) || [];
+  const totalPages = data ? Math.ceil(data.length / pageSize) : 1;
 
   const canGoBack = page >= 1;
   const canGoForward = page + 1 < totalPages;
@@ -19,7 +18,7 @@ const Pagination = ({ data, children }) => {
 
   return (
     <>
-      {data ? children(currentPage) : null}
+      {children(currentPage)}
       <div
         style={{
           marginTop: 30,
