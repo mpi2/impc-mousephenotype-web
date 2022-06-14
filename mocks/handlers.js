@@ -39,7 +39,14 @@ export const handlers = [
     );
     try {
       const geneSectionData = genes(`./${geneId}/${section}.json`);
-      const sectionKeyMap = { expression: "expressionData", statisticalResults: "statisticalResults", phenotypes: "significantPhenotypes", publications: "publications" };
+      const sectionKeyMap = {
+        expression: "expressionData",
+        statisticalResults: "statisticalResults",
+        phenotypes: "significantPhenotypes",
+        publications: "publications",
+        images: "gene_images",
+        diseases: "gene_diseases"
+      };
       const sectionData = sectionKeyMap.hasOwnProperty(section) ? geneSectionData[sectionKeyMap[section]] : geneSectionData;
 
       return res(ctx.status(200), ctx.json(sectionData));
