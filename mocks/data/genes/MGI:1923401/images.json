@@ -1,0 +1,84 @@
+{
+    "gene_images": [
+        {
+            "strainAccessionId": "MGI:2159965",
+            "procedureStableId": "IMPC_XRY_001",
+            "procedureName": "X-ray",
+            "parameterStableId": "IMPC_XRY_048_001",
+            "parameterName": "XRay Images Whole Body Lateral Orientation",
+            "count": 10,
+            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/612778",
+            "fileType": "image/jpg"
+        },
+        {
+            "strainAccessionId": "MGI:2159965",
+            "procedureStableId": "IMPC_IMM_001",
+            "procedureName": "Immunophenotyping",
+            "parameterStableId": "IMPC_IMM_107_001",
+            "parameterName": "Panel A FCS file(s)",
+            "count": 6,
+            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/-1",
+            "fileType": "bin/fcs"
+        },
+        {
+            "strainAccessionId": "MGI:2159965",
+            "procedureStableId": "IMPC_XRY_001",
+            "procedureName": "X-ray",
+            "parameterStableId": "IMPC_XRY_050_001",
+            "parameterName": "XRay Images Skull Lateral Orientation",
+            "count": 10,
+            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/641067",
+            "fileType": "image/jpg"
+        },
+        {
+            "strainAccessionId": "MGI:2159965",
+            "procedureStableId": "IMPC_XRY_001",
+            "procedureName": "X-ray",
+            "parameterStableId": "IMPC_XRY_034_001",
+            "parameterName": "XRay Images Whole Body Dorso Ventral",
+            "count": 10,
+            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/597895",
+            "fileType": "image/jpg"
+        },
+        {
+            "strainAccessionId": "MGI:2159965",
+            "procedureStableId": "IMPC_ALZ_001",
+            "procedureName": "Adult LacZ",
+            "parameterStableId": "IMPC_ALZ_076_001",
+            "parameterName": "LacZ Images Wholemount",
+            "count": 3,
+            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/212291",
+            "fileType": "image/tif"
+        },
+        {
+            "strainAccessionId": "MGI:2159965",
+            "procedureStableId": "IMPC_XRY_001",
+            "procedureName": "X-ray",
+            "parameterStableId": "IMPC_XRY_049_001",
+            "parameterName": "XRay Images Forepaw",
+            "count": 10,
+            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/637988",
+            "fileType": "image/jpg"
+        },
+        {
+            "strainAccessionId": "MGI:2159965",
+            "procedureStableId": "IMPC_IMM_001",
+            "procedureName": "Immunophenotyping",
+            "parameterStableId": "IMPC_IMM_108_001",
+            "parameterName": "Panel B FCS file(s)",
+            "count": 6,
+            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/-1",
+            "fileType": "bin/fcs"
+        },
+        {
+            "strainAccessionId": "MGI:2159965",
+            "procedureStableId": "IMPC_XRY_001",
+            "procedureName": "X-ray",
+            "parameterStableId": "IMPC_XRY_051_001",
+            "parameterName": "XRay Images Skull Dorso Ventral Orientation",
+            "count": 10,
+            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/619959",
+            "fileType": "image/jpg"
+        }
+    ]
+}
