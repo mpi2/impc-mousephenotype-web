@@ -1,4 +1,4 @@
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt, faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -76,7 +76,11 @@ const Expressions = () => {
               defaultSort={["parameterName", "asc"]}
               headers={[
                 { width: 4, label: "Anatomy", field: "parameterName" },
-                { width: 2, label: "Images", field: "imageOnly" },
+                {
+                  width: 4,
+                  label: "Images",
+                  field: "expressionImageParameters",
+                },
                 { width: 2, label: "Zygosity", field: "zygosity" },
                 { width: 2, label: "Mutant Expr", field: "expressionRate" },
               ]}
@@ -88,7 +92,19 @@ const Expressions = () => {
                       <strong className={styles.link}>{d.parameterName}</strong>
                     </Link>
                   </td>
-                  <td>{d.imageOnly > 0 ? "Wholemount images" : "n/a"}</td>
+                  <td>
+                    {!!d.expressionImageParameters
+                      ? d.expressionImageParameters.map((p) => (
+                          <a
+                            className="primary small"
+                            href={`https://www.mousephenotype.org/data/imageComparator?acc=${router.query.pid}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
+                          >
+                            <FontAwesomeIcon icon={faImage} />{" "}
+                            {p.parameter_name}
+                          </a>
+                        ))
+                      : "n/a"}
+                  </td>
                   <td>{d.zygosity}</td>
                   <td>
                     {d.expression || d.noExpression

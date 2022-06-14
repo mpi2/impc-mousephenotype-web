@@ -43,6 +43,7 @@ const AllData = ({ data }: { data: any }) => {
               },
               { width: 1, label: "P value", field: "pValue" },
               { width: 2, label: "Life stage", field: "lifeStageName" },
+              { width: 2, label: "Allele", field: "alleleSymbol" },
               { width: 1, label: "Xygosity", field: "zygosity" },
               { width: 2, label: "Significance", field: "significant" },
             ]}
@@ -57,6 +58,7 @@ const AllData = ({ data }: { data: any }) => {
                   significant,
                   pValue,
                   topLevelPhenotype,
+                  alleleSymbol,
                 },
                 i
               ) => (
@@ -82,6 +84,8 @@ const AllData = ({ data }: { data: any }) => {
                       : "-"}
                   </td>
                   <td>{lifeStageName}</td>
+                  {/* TODO: put stuff in bracket in superscript */}
+                  <td>{alleleSymbol}</td>
                   <td style={{ textTransform: "capitalize" }}>{zygosity}</td>
                   <td>{significant ? "Yes" : "No"}</td>
                 </tr>

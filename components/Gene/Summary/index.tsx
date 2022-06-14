@@ -290,7 +290,7 @@ const Summary = () => {
               <CollectionItem
                 link="#histopathology"
                 name="Histopathology"
-                hasData={true}
+                hasData={data.hasHistopathologyData}
               />
             </Col>
             <Col md={5} className="pe-0">

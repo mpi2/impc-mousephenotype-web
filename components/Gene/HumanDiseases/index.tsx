@@ -16,6 +16,8 @@ const Scale = ({ children = 5 }: { children: number }) => {
   );
 };
 
+// Add the graph: https://github.com/monarch-initiative/phenogrid
+
 const HumanDiseases = () => {
   return (
     <Card id="human-diseases">
