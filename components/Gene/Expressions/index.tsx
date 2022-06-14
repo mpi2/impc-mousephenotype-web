@@ -14,6 +14,7 @@ const Expressions = () => {
   const router = useRouter();
   const [data, setData] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
+  const [tab, setTab] = useState("adultExpressions");
   useEffect(() => {
     (async () => {
       if (!router.query.pid) return;
@@ -35,13 +36,38 @@ const Expressions = () => {
       }
     })();
   }, [router.query.pid]);
+
+  const adultData = sorted
+    ? sorted.filter((x) => x.lacZLifestage === "adult")
+    : [];
+  const embryoData = sorted
+    ? sorted.filter((x) => x.lacZLifestage === "embryo")
+    : [];
+
+  const selectedData = tab === "adultExpressions" ? adultData : embryoData;
+
   return (
     <Card id="human-diseases">
       <h2>lacZ Expression</h2>
-      {!data ? (
-        <Alert variant="primary">Expression data not available</Alert>
+
+      <Tabs defaultActiveKey="adultExpressions" onSelect={(e) => setTab(e)}>
+        <Tab
+          eventKey="adultExpressions"
+          title={`Adult expressions (${adultData.length})`}
+        ></Tab>
+        <Tab
+          eventKey="embryoExpressions"
+          title={`Embryo expressions (${embryoData.length})`}
+        ></Tab>
+        <Tab eventKey="adultWT" title="Background staining WT adult"></Tab>
+        <Tab eventKey="embryoWT" title="Background staining WT embryo"></Tab>
+      </Tabs>
+      {!selectedData || !selectedData.length ? (
+        <Alert variant="primary" style={{ marginTop: "1em" }}>
+          Expression data not available
+        </Alert>
       ) : (
-        <Pagination data={sorted}>
+        <Pagination data={selectedData}>
           {(pageData) => (
             <SortableTable
               doSort={(sort) => {

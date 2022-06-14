@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Col, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
 import styles from "./styles.module.scss";
 
@@ -40,25 +41,44 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
   );
 };
 
-const Images = ({ data }) => {
+const Images = () => {
+  const router = useRouter();
+  const [data, setData] = useState(null);
+  const { pid } = router.query;
+
+  useEffect(() => {
+    (async () => {
+      if (!pid) return;
+      const res = await fetch(`/api/genes/${pid}/images`);
+      if (res.ok) {
+        const images = await res.json();
+        setData(images);
+      }
+    })();
+  }, [pid]);
+
   const groups = Object.entries(_.groupBy(data, "parameterName"));
   return (
     <Card id="images">
       <h2>Associated Images</h2>
-      <div>
-        <Row>
-          {groups.map(([key, group]) => (
-            <Col md={4} lg={3}>
-              <Image
-                parameterName={key}
-                procedureName={group[0].procedureName}
-                image={group[0].thumbnailUrl}
-                length={group.length}
-              />
-            </Col>
-          ))}
-        </Row>
-      </div>
+      {data ? (
+        <div>
+          <Row>
+            {groups.map(([key, group]) => (
+              <Col md={4} lg={3}>
+                <Image
+                  parameterName={key}
+                  procedureName={group[0].procedureName}
+                  image={group[0].thumbnailUrl}
+                  length={group.length}
+                />
+              </Col>
+            ))}
+          </Row>
+        </div>
+      ) : (
+        <Alert variant="primary">Images not available</Alert>
+      )}
     </Card>
   );
 };

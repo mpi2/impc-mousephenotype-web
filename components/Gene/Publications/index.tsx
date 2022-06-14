@@ -25,7 +25,12 @@ const Publications = () => {
 
   return (
     <Card id="publications">
-      <h2>Publications</h2>
+      <h2>IMPC related publications</h2>
+      <p>
+        The table below lists publications which used either products generated
+        by the IMPC or data produced by the phenotyping efforts of the IMPC.
+        These publications have also been associated to the gene.
+      </p>
       <Table striped bordered className={styles.table}>
         <thead>
           <tr>

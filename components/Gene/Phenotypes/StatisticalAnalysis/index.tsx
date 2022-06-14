@@ -16,7 +16,7 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "../../../BodySystemIcon";
 import { formatBodySystems } from "../../../../utils";
-import { Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 
 Chart.register([annotationPlugin, zoomPlugin]);
 
@@ -168,9 +168,10 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
       pValue: Number(x.pValue),
       topLevelPhenotype: x.topLevelPhenotype.map((y) => y.name),
     }));
+
   // .sort((a, b) => a.topLevelPhenotype[0] - b.topLevelPhenotype[0]);
   const processed = processData(hasPValue, cat);
-  console.log(processed);
+
   const labels = processed.map((x) => x.parameterName);
   const values = processed.map((x) => -Math.log10(Number(x.pValue)));
   const isByProcedure =
@@ -356,6 +357,22 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
 
 const StatisticalAnalysis = ({ data }) => {
   const [cat, setCat] = useState<Cat | null>(null);
+  if (
+    !data ||
+    !data.some(
+      (x) =>
+        x.pValue !== null &&
+        x.pValue !== undefined &&
+        x.topLevelPhenotype.length
+    )
+  ) {
+    return (
+      <Alert style={{ marginTop: "1em" }} variant="primary">
+        Statistical analysis not available
+      </Alert>
+    );
+  }
+
   const setCatType = (type: CatType) => {
     setCat({
       type,

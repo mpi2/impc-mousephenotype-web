@@ -4,6 +4,7 @@ import _ from "lodash";
 import { useEffect, useState } from "react";
 import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
+import { Alert } from "react-bootstrap";
 
 const AllData = ({ data }: { data: any }) => {
   const [sorted, setSorted] = useState<any[]>(null);
@@ -13,7 +14,11 @@ const AllData = ({ data }: { data: any }) => {
   }, [data]);
 
   if (!data) {
-    return null;
+    return (
+      <Alert style={{ marginTop: "1em" }} variant="primary">
+        All data not available
+      </Alert>
+    );
   }
 
   return (
