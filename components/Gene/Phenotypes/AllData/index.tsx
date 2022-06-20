@@ -61,35 +61,42 @@ const AllData = ({ data }: { data: any }) => {
                   alleleSymbol,
                 },
                 i
-              ) => (
-                <tr key={`tr-${parameterName}-${i}`}>
-                  <td className={styles.procedureName}>
-                    <small className="grey">{procedureName} /</small>
-                    <br />
-                    <strong>{parameterName}</strong>
-                  </td>
-                  <td>
-                    {(topLevelPhenotype || []).map((x) => (
-                      <BodySystem
-                        name={x.name}
-                        key={x.id}
-                        color="primary"
-                        noSpacing
-                      />
-                    ))}
-                  </td>
-                  <td>
-                    {!!pValue
-                      ? Math.round(-Math.log10(Number(pValue)) * 1000) / 1000
-                      : "-"}
-                  </td>
-                  <td>{lifeStageName}</td>
-                  {/* TODO: put stuff in bracket in superscript */}
-                  <td>{alleleSymbol}</td>
-                  <td style={{ textTransform: "capitalize" }}>{zygosity}</td>
-                  <td>{significant ? "Yes" : "No"}</td>
-                </tr>
-              )
+              ) => {
+                const allele = alleleSymbol
+                  .slice(0, alleleSymbol.length - 1)
+                  .split("<");
+                return (
+                  <tr key={`tr-${parameterName}-${i}`}>
+                    <td className={styles.procedureName}>
+                      <small className="grey">{procedureName} /</small>
+                      <br />
+                      <strong>{parameterName}</strong>
+                    </td>
+                    <td>
+                      {(topLevelPhenotype || []).map((x) => (
+                        <BodySystem
+                          name={x.name}
+                          key={x.id}
+                          color="primary"
+                          noSpacing
+                        />
+                      ))}
+                    </td>
+                    <td>
+                      {!!pValue
+                        ? Math.round(-Math.log10(Number(pValue)) * 1000) / 1000
+                        : "-"}
+                    </td>
+                    <td>{lifeStageName}</td>
+                    <td>
+                      {allele[0]}
+                      <sup>{allele[1]}</sup>
+                    </td>
+                    <td style={{ textTransform: "capitalize" }}>{zygosity}</td>
+                    <td>{significant ? "Yes" : "No"}</td>
+                  </tr>
+                );
+              }
             )}
           </SortableTable>
         )}

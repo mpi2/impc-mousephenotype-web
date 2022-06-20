@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Table } from "react-bootstrap";
 import Card from "../../Card";
-import styles from "./styles.module.scss";
+import Pagination from "../../Pagination";
+import SortableTable from "../../SortableTable";
 
 const Publications = () => {
   const router = useRouter();
 
   const [publicationData, setPublicationData] = useState(null);
+  const [sorted, setSorted] = useState<any[]>(null);
   useEffect(() => {
     if (!router.isReady) return;
 
     (async () => {
       const res = await fetch(`/api/genes/${router.query.pid}/publications`);
       if (res.ok) {
-        setPublicationData(await res.json());
+        const data = await res.json();
+        setPublicationData(data);
+        setSorted(_.orderBy(data, "title", "asc"));
       }
     })();
   }, [router.isReady]);
@@ -31,33 +34,57 @@ const Publications = () => {
         by the IMPC or data produced by the phenotyping efforts of the IMPC.
         These publications have also been associated to the gene.
       </p>
-      <Table striped bordered className={styles.table}>
-        <thead>
-          <tr>
-            <th>Allele</th>
-            <th>Journal</th>
-            <th>Title</th>
-            <th>Date</th>
-            <th>DOI</th>
-          </tr>
-        </thead>
-        <tbody>
-          {publicationData.map((p) => (
-            <tr>
-              <td>
-                {p.alleleSymbol.split("<")[0]}
-                <sup>{p.alleleSymbol.split("<")[1].replace(">", "")}</sup>
-              </td>
-              <td>{p.journalTitle}</td>
-              <td>{p.title}</td>
-              <td>
-                {p.monthOfPublication}/{p.yearOfPublication}
-              </td>
-              <td>{p.doi}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <Pagination data={sorted}>
+        {(pageData) => (
+          <SortableTable
+            doSort={(sort) => {
+              setSorted(_.orderBy(publicationData, sort[0], sort[1]));
+            }}
+            defaultSort={["title", "asc"]}
+            headers={[
+              { width: 5, label: "Title", field: "title" },
+              {
+                width: 3,
+                label: "Journal",
+                field: "journalTitle",
+              },
+              { width: 2, label: "IMPC Allele", field: "alleleSymbol" },
+              { width: 2, label: "PubMed ID", field: "pmcid" },
+            ]}
+          >
+            {pageData.map((p) => (
+              <tr>
+                <td>
+                  <a
+                    className="primary"
+                    target="_blank"
+                    href={`https://www.doi.org/${p.doi}`}
+                  >
+                    {p.title}
+                  </a>
+                </td>
+                <td>
+                  {p.journalTitle} ({p.monthOfPublication}/{p.yearOfPublication}
+                  )
+                </td>
+                <td>
+                  {p.alleleSymbol.split("<")[0]}
+                  <sup>{p.alleleSymbol.split("<")[1].replace(">", "")}</sup>
+                </td>
+                <td>
+                  <a
+                    href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}`}
+                    target="_blank"
+                    className="primary"
+                  >
+                    {p.pmcid}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </SortableTable>
+        )}
+      </Pagination>
     </Card>
   );
 };
