@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Publications = () => {
   const router = useRouter();
@@ -56,11 +58,15 @@ const Publications = () => {
               <tr>
                 <td>
                   <a
-                    className="primary"
+                    className="link"
                     target="_blank"
                     href={`https://www.doi.org/${p.doi}`}
                   >
-                    {p.title}
+                    <strong>{p.title}</strong>{" "}
+                    <FontAwesomeIcon
+                      className="grey"
+                      icon={faExternalLinkAlt}
+                    />
                   </a>
                 </td>
                 <td>

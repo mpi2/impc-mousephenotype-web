@@ -65,7 +65,7 @@ const Images = () => {
         <div>
           <Row>
             {groups.map(([key, group]) => (
-              <Col md={4} lg={3}>
+              <Col md={4} lg={3} key={key + group[0].precedureName}>
                 <Image
                   parameterName={key}
                   procedureName={group[0].procedureName}

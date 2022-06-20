@@ -31,7 +31,17 @@ const SortableTable = ({
     doSort(sort);
   }, [sort]);
 
-  const SortableTh = ({ label, field, width, disabled = false }) => {
+  const SortableTh = ({
+    label,
+    field,
+    width,
+    disabled = false,
+  }: {
+    label: string;
+    field?: string;
+    width?: number;
+    disabled?: boolean;
+  }) => {
     const selected = field === sort[0];
     const handleSelect = () => {
       if (disabled) return;
@@ -53,7 +63,7 @@ const SortableTable = ({
           {label}{" "}
           {selected && (
             <FontAwesomeIcon
-              icon={sort[1] === "asc" ? faCaretDown : faCaretUp}
+              icon={sort[1] === "asc" ? faCaretUp : faCaretDown}
             />
           )}
         </button>
