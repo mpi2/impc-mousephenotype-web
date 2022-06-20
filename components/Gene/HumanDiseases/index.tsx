@@ -6,12 +6,18 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import Script from "next/script";
+import { useEffect, useRef, useState } from "react";
 import { Alert, Tab, Tabs, Table } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
+declare global {
+  interface Window {
+    Phenogrid: any;
+  }
+}
 
 const Scale = ({ children = 5 }: { children: number }) => {
   return (
@@ -25,7 +31,52 @@ const Scale = ({ children = 5 }: { children: number }) => {
   );
 };
 
-// Add the graph: https://github.com/monarch-initiative/phenogrid
+const PhenoGridEl = ({ phenotypes }) => {
+  const cont = useRef(null);
+  const yAxis =
+    phenotypes?.split(",").map((x) => {
+      const processed = x.replace(" ", "**").split("**");
+      return {
+        id: processed[0],
+        term: processed[1],
+      };
+    }) ?? [];
+  console.log(yAxis);
+  var data = {
+    title:
+      "Diseases, Mouse and Fish models compared to Pfeiffer Syndrome (OMIM:101600)",
+    xAxis: [
+      {
+        groupId: "9606",
+        groupName: "Homo sapiens",
+      },
+      {
+        groupId: "10090",
+        groupName: "Mus musculus",
+      },
+      {
+        groupId: "7955",
+        groupName: "Danio rerio",
+      },
+    ],
+    yAxis,
+  };
+  useEffect(() => {
+    if (cont.current && window.Phenogrid) {
+      window.Phenogrid.createPhenogridForElement(cont.current, {
+        serverURL: "https://monarchinitiative.org",
+        gridSkeletonData: data,
+      });
+    }
+  }, [cont.current]);
+
+  return (
+    <>
+      <Script src="/phenogrid.js" />
+      <div ref={cont}></div>
+    </>
+  );
+};
 
 const Row = ({ data }) => {
   const [open, setOpen] = useState(false);
@@ -62,7 +113,7 @@ const Row = ({ data }) => {
           />
         </td>
       </tr>
-      {open && <tr>Insert phenoGrid here</tr>}
+      {open && <PhenoGridEl phenotypes={data.diseaseMatchedPhenotypes} />}
     </>
   );
 };

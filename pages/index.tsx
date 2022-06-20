@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -7,14 +7,13 @@ export default function Home() {
       <Head>
         <title>International Mouse Phenotyping Consortium</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta charSet="UTF-8" />
       </Head>
 
       <main>
-        <h1 className="title">
-          Homepage
-        </h1>
+        <h1 className="title">Homepage</h1>
         <div className="grid">
-          <Link href="/gene" >
+          <Link href="/gene">
             <div className="card">
               <h3>Documentation &rarr;</h3>
               <p>Find in-depth information about Next.js features and API.</p>

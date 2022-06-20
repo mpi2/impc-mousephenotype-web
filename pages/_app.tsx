@@ -5,6 +5,8 @@ import Layout from "../components/Layout";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
+import "phenogrid/dist/phenogrid-bundle.css";
+// import "phenogrid/dist/phenogrid-bundle";
 import { SSRProvider } from "react-bootstrap";
 config.autoAddCss = false;
 
