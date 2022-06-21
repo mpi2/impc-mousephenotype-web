@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
 import { Alert } from "react-bootstrap";
+import { formatAlleleSymbol } from "../../../../utils";
 
 const AllData = ({ data }: { data: any }) => {
   const [sorted, setSorted] = useState<any[]>(null);
@@ -62,9 +63,7 @@ const AllData = ({ data }: { data: any }) => {
                 },
                 i
               ) => {
-                const allele = alleleSymbol
-                  .slice(0, alleleSymbol.length - 1)
-                  .split("<");
+                const allele = formatAlleleSymbol(alleleSymbol);
                 return (
                   <tr key={`tr-${parameterName}-${i}`}>
                     <td className={styles.procedureName}>

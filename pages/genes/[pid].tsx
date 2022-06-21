@@ -8,6 +8,7 @@ import Images from "../../components/Gene/Images";
 import HumanDiseases from "../../components/Gene/HumanDiseases";
 import Publications from "../../components/Gene/Publications";
 import Expressions from "../../components/Gene/Expressions";
+import Order from "../../components/Gene/Order";
 
 const Gene = () => {
   return (
@@ -32,22 +33,7 @@ const Gene = () => {
             There is no histopathology data for Mavs
           </Alert>
         </Card>
-
-        <Card>
-          <h2>Order Mouse and ES Cells</h2>
-          <p>
-            All available products are supplied via our member's centres or
-            partnerships. When ordering a product from the IMPC you will be
-            redirected to one of their websites or prompted to start an email.
-          </p>
-
-          <Alert variant="primary">
-            This service may be affected by the Covid-19 pandemic.{" "}
-            <a href="https://www.mousephenotype.org/news/impc-covid-19-update/">
-              <strong>See how</strong>
-            </a>
-          </Alert>
-        </Card>
+        <Order />
       </Container>
     </>
   );

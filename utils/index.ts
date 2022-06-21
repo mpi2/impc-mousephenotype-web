@@ -7,3 +7,7 @@ export const formatBodySystems = (systems: string[] | string = []) => {
       .replace(/\//g, " / ")
   );
 };
+
+export const formatAlleleSymbol = (allele: string) => {
+  return allele.slice(0, allele.length - 1).split("<");
+};

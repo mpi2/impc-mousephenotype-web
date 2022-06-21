@@ -8,6 +8,7 @@ import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
 import styles from "./styles.module.scss";
 import _ from "lodash";
+import { formatAlleleSymbol } from "../../../../utils";
 
 const SignificantPhenotypes = ({ data }) => {
   const processed =
@@ -48,37 +49,42 @@ const SignificantPhenotypes = ({ data }) => {
             { width: 2, label: "P Value", field: "pValue" },
           ]}
         >
-          {pageData.map((d) => (
-            <tr>
-              <td>
-                <Link href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis">
-                  <strong className={styles.link}>{d.parameterName}</strong>
-                </Link>
-              </td>
-              <td>
-                <BodySystem
-                  name={d.topLevelPhenotype[0]}
-                  color="primary"
-                  noSpacing
-                />
-              </td>
-              <td>
-                {d.alleleSymbol.split("<")[0]}
-                <sup>{d.alleleSymbol.split("<")[1].replace(">", "")}</sup>
-              </td>
-              <td>{d.zygosity}</td>
-              <td>
-                <FontAwesomeIcon icon={d.sex == "female" ? faVenus : faMars} />{" "}
-                {d.sex}
-              </td>
-              <td>{d.lifeStageName[0]}</td>
-              <td>
-                {!!d.pValue
-                  ? Math.round(-Math.log10(Number(d.pValue)) * 1000) / 1000
-                  : "-"}
-              </td>
-            </tr>
-          ))}
+          {pageData.map((d) => {
+            const allele = formatAlleleSymbol(d.alleleSymbol);
+            return (
+              <tr>
+                <td>
+                  <Link href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis">
+                    <strong className={styles.link}>{d.parameterName}</strong>
+                  </Link>
+                </td>
+                <td>
+                  <BodySystem
+                    name={d.topLevelPhenotype[0]}
+                    color="primary"
+                    noSpacing
+                  />
+                </td>
+                <td>
+                  {allele[0]}
+                  <sup>{allele[1]}</sup>
+                </td>
+                <td>{d.zygosity}</td>
+                <td>
+                  <FontAwesomeIcon
+                    icon={d.sex == "female" ? faVenus : faMars}
+                  />{" "}
+                  {d.sex}
+                </td>
+                <td>{d.lifeStageName[0]}</td>
+                <td>
+                  {!!d.pValue
+                    ? Math.round(-Math.log10(Number(d.pValue)) * 1000) / 1000
+                    : "-"}
+                </td>
+              </tr>
+            );
+          })}
         </SortableTable>
       )}
     </Pagination>

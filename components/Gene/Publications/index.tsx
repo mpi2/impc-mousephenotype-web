@@ -5,6 +5,7 @@ import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { formatAlleleSymbol } from "../../../utils";
 
 const Publications = () => {
   const router = useRouter();
@@ -54,40 +55,43 @@ const Publications = () => {
               { width: 2, label: "PubMed ID", field: "pmcid" },
             ]}
           >
-            {pageData.map((p) => (
-              <tr>
-                <td>
-                  <a
-                    className="link"
-                    target="_blank"
-                    href={`https://www.doi.org/${p.doi}`}
-                  >
-                    <strong>{p.title}</strong>{" "}
-                    <FontAwesomeIcon
-                      className="grey"
-                      icon={faExternalLinkAlt}
-                    />
-                  </a>
-                </td>
-                <td>
-                  {p.journalTitle} ({p.monthOfPublication}/{p.yearOfPublication}
-                  )
-                </td>
-                <td>
-                  {p.alleleSymbol.split("<")[0]}
-                  <sup>{p.alleleSymbol.split("<")[1].replace(">", "")}</sup>
-                </td>
-                <td>
-                  <a
-                    href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}`}
-                    target="_blank"
-                    className="primary"
-                  >
-                    {p.pmcid}
-                  </a>
-                </td>
-              </tr>
-            ))}
+            {pageData.map((p) => {
+              const allele = formatAlleleSymbol(p.alleleSymbol);
+              return (
+                <tr>
+                  <td>
+                    <a
+                      className="link"
+                      target="_blank"
+                      href={`https://www.doi.org/${p.doi}`}
+                    >
+                      <strong>{p.title}</strong>{" "}
+                      <FontAwesomeIcon
+                        className="grey"
+                        icon={faExternalLinkAlt}
+                      />
+                    </a>
+                  </td>
+                  <td>
+                    {p.journalTitle} ({p.monthOfPublication}/
+                    {p.yearOfPublication})
+                  </td>
+                  <td>
+                    {allele[0]}
+                    <sup>{allele[1]}</sup>
+                  </td>
+                  <td>
+                    <a
+                      href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}`}
+                      target="_blank"
+                      className="primary"
+                    >
+                      {p.pmcid}
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
           </SortableTable>
         )}
       </Pagination>
