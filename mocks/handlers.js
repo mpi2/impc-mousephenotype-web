@@ -45,7 +45,8 @@ export const handlers = [
         phenotypes: "significantPhenotypes",
         publications: "publications",
         images: "gene_images",
-        diseases: "gene_diseases"
+        diseases: "gene_diseases",
+        histopathology: "gene_histopathology"
       };
       const sectionData = sectionKeyMap.hasOwnProperty(section) ? geneSectionData[sectionKeyMap[section]] : geneSectionData;
 
