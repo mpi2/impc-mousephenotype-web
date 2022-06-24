@@ -12,7 +12,14 @@ export type Tab = {
   external?: boolean;
 };
 
-const Search = ({ isPhenotype = false }: { isPhenotype?: boolean }) => {
+const Search = ({
+  isPhenotype = false,
+  onChange,
+}: {
+  isPhenotype?: boolean;
+  onChange?: (val: string) => void;
+}) => {
+  const [query, setQuery] = useState("");
   const router = useRouter();
   const { type } = router.query;
   isPhenotype = isPhenotype ?? type === "phenotype";
@@ -72,8 +79,19 @@ const Search = ({ isPhenotype = false }: { isPhenotype?: boolean }) => {
               className={styles.input}
               type="text"
               placeholder="Search All 7824 Knockout Data..."
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  onChange(query);
+                }
+              }}
             />
-            <button className={styles.searchBtn}>
+            <button
+              className={styles.searchBtn}
+              onClick={() => {
+                onChange(query);
+              }}
+            >
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>

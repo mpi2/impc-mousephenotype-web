@@ -57,7 +57,7 @@ const PhenotypeResult = ({ results = 0 }: { results?: number }) => {
   );
 };
 
-const PhenotypeResults = () => {
+const PhenotypeResults = ({ query }: { query?: string }) => {
   return (
     <Container>
       <Card
@@ -68,6 +68,13 @@ const PhenotypeResults = () => {
         <h1 className="mb-1">
           <strong>Phenotype Search results</strong>
         </h1>
+        {!!query && (
+          <p className="grey mb-0">
+            <small>
+              Search <strong>{query}</strong>
+            </small>
+          </p>
+        )}
         <p className="grey">
           <small>Showing 1 to 10 of 22947 entries</small>
         </p>

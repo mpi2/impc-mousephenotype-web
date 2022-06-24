@@ -1,6 +1,5 @@
 import { rest } from "msw";
 
-
 export const handlers = [
   rest.post("/api/login", (req, res, ctx) => {
     // Persist user's authentication in the session
@@ -30,13 +29,37 @@ export const handlers = [
       })
     );
   }),
+  rest.get("/api/genes/search", (req, res, ctx) => {
+    try {
+      const results = require("./data/search.json");
+      return res(ctx.status(200), ctx.json(results));
+    } catch (e) {
+      return res(ctx.status(404));
+    }
+  }),
+  rest.get("/api/genes/search/:query?", (req, res, ctx) => {
+    console.log("search");
+    const { query } = req.params;
+    try {
+      const results = require("./data/search.json");
+      if (!query) {
+        return res(ctx.status(200), ctx.json(results));
+      }
+      const filteredResults = results.filter(
+        (r) =>
+          `${r.marker_name} ${r.marker_symbol} ${(r.marker_synonym ?? []).join(
+            " "
+          )}`.indexOf(query) >= 0
+      );
+      return res(ctx.status(200), ctx.json(filteredResults));
+    } catch (e) {
+      console.log(e);
+      return res(ctx.status(404));
+    }
+  }),
   rest.get("/api/genes/:geneId/:section", (req, res, ctx) => {
     const { geneId, section } = req.params;
-    const genes = require.context(
-      `./data/genes/`,
-      true,
-      /\.json$/
-    );
+    const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
       const geneSectionData = genes(`./${geneId}/${section}.json`);
       const sectionKeyMap = {
@@ -45,15 +68,15 @@ export const handlers = [
         phenotypes: "significantPhenotypes",
         publications: "publications",
         images: "gene_images",
-        diseases: "gene_diseases"
+        diseases: "gene_diseases",
       };
-      const sectionData = sectionKeyMap.hasOwnProperty(section) ? geneSectionData[sectionKeyMap[section]] : geneSectionData;
+      const sectionData = sectionKeyMap.hasOwnProperty(section)
+        ? geneSectionData[sectionKeyMap[section]]
+        : geneSectionData;
 
       return res(ctx.status(200), ctx.json(sectionData));
     } catch (e) {
       return res(ctx.status(404));
     }
-
-
   }),
 ];
