@@ -167,7 +167,7 @@ const Summary = () => {
           How IMPC generates data <FontAwesomeIcon icon={faChevronRight} />
         </a>
       </div>
-      <h1>
+      <h1 className="mb-5 mt-2">
         <strong>{data.geneSymbol}</strong> <span className="grey">|</span>{" "}
         {data.geneName}
       </h1>

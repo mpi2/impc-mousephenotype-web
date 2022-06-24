@@ -4,59 +4,78 @@ import {
   faChartColumn,
   faCheckCircle,
   faShoppingCart,
-  faTimes,
+  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Card from "../Card";
+import { useEffect, useState } from "react";
+import Pagination from "../Pagination";
 
-const GeneResult = ({ progress = true }: { progress?: boolean }) => {
+const GeneResult = ({
+  gene: {
+    marker_symbol,
+    marker_name,
+    marker_synonym,
+    mgi_accession_id,
+    es_cell_production_status,
+    mouse_production_status,
+    phenotype_status,
+    phenotyping_data_available,
+  },
+}: {
+  gene: any;
+}) => {
   const router = useRouter();
   return (
     <>
       <Row
         className={styles.result}
         onClick={() => {
-          router.push("/gene/12345");
+          router.push(`/genes/${mgi_accession_id}`);
         }}
       >
-        <Col sm={4}>
-          <h2 className="mb-2">Mavs</h2>
-          <p className="grey mb-0">
-            <small>
-              <strong>Name:</strong> mitochondrial antiviral signaling protein
-            </small>
-          </p>
-          <p className="grey">
-            <small>
-              <strong>Synomyms:</strong> IPS-1, D430028G21Rik
-            </small>
-          </p>
-        </Col>
         <Col sm={5}>
+          <p className="secondary">{marker_symbol}</p>
+          <h3 className="mb-1 text-capitalize">{marker_name}</h3>
+          {!!marker_synonym && marker_synonym.length && (
+            <p className="grey text-capitalize">
+              {/* Synomyms:{" "} */}
+              {(marker_synonym || []).slice(0, 10).join(", ") || "None"}
+            </p>
+          )}
+        </Col>
+        <Col sm={4}>
           <p>
-            {progress ? (
-              <small>
-                <FontAwesomeIcon className="secondary" icon={faCheckCircle} />{" "}
-                ES Cells produced<span className="me-4"></span>
+            {phenotyping_data_available ? (
+              <span>
                 <FontAwesomeIcon
-                  className="secondary"
-                  icon={faCheckCircle}
+                  className={!!phenotype_status ? "secondary" : "grey"}
+                  icon={!!phenotype_status ? faCheckCircle : faTimesCircle}
                 />{" "}
-                Mice produced<span className="me-4"></span>
+                <span className="me-4">Phenotyping data</span>
                 <FontAwesomeIcon
-                  className="secondary"
-                  icon={faCheckCircle}
+                  className={!!es_cell_production_status ? "secondary" : "grey"}
+                  icon={
+                    !!es_cell_production_status ? faCheckCircle : faTimesCircle
+                  }
                 />{" "}
-                Phenotyping data
-              </small>
+                <span className="me-4">ES Cells</span>
+                <FontAwesomeIcon
+                  className={!!mouse_production_status ? "secondary" : "grey"}
+                  icon={
+                    !!mouse_production_status ? faCheckCircle : faTimesCircle
+                  }
+                />{" "}
+                <span className="me-4">Mice</span>
+              </span>
             ) : (
-              <small className="grey">
-                <FontAwesomeIcon icon={faTimes} /> Production and phenotyping
-                currently not planned.
-              </small>
+              <span className="grey">
+                <FontAwesomeIcon className="grey" icon={faTimesCircle} />{" "}
+                Phenotyping data not yet available
+              </span>
             )}
           </p>
         </Col>
@@ -64,15 +83,13 @@ const GeneResult = ({ progress = true }: { progress?: boolean }) => {
           <span className="primary">
             <FontAwesomeIcon icon={faChartColumn} /> View data
           </span>{" "}
-          {progress && (
-            <span onClick={(e) => e.stopPropagation()} className="ms-4">
-              <Link href="/">
-                <a href="#" className="primary">
-                  <FontAwesomeIcon icon={faShoppingCart} /> Order mice
-                </a>
-              </Link>
-            </span>
-          )}
+          <span onClick={(e) => e.stopPropagation()} className="ms-4">
+            <Link href="/">
+              <a href="#" className="primary">
+                <FontAwesomeIcon icon={faShoppingCart} /> Order mice
+              </a>
+            </Link>
+          </span>
         </Col>
       </Row>
       <hr className="mt-0 mb-0" />
@@ -80,7 +97,18 @@ const GeneResult = ({ progress = true }: { progress?: boolean }) => {
   );
 };
 
-const GeneResults = () => {
+const GeneResults = ({ query }: { query?: string }) => {
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    console.log("query changed");
+    (async () => {
+      const res = await fetch(`/api/genes/search/${query}`);
+      if (res.ok) {
+        const result = await res.json();
+        setData(result);
+      }
+    })();
+  }, [query]);
   return (
     <Container>
       <Card
@@ -91,19 +119,28 @@ const GeneResults = () => {
         <h1 className="mb-1">
           <strong>Gene Search results</strong>
         </h1>
+
         <p className="grey">
-          <small>Showing 1 to 10 of 22947 entries</small>
+          <small>
+            Found {data?.length || 0} entries{" "}
+            {!!query && (
+              <>
+                matching <strong>"{query}"</strong>
+              </>
+            )}
+          </small>
         </p>
-        <GeneResult />
-        <GeneResult />
-        <GeneResult />
-        <GeneResult />
-        <GeneResult />
-        <GeneResult />
-        <GeneResult />
-        <GeneResult />
-        <GeneResult progress={false} />
-        <GeneResult progress={false} />
+        <Pagination data={data}>
+          {(pageData) => {
+            return (
+              <>
+                {pageData.map((p) => (
+                  <GeneResult gene={p} />
+                ))}
+              </>
+            );
+          }}
+        </Pagination>
       </Card>
     </Container>
   );
