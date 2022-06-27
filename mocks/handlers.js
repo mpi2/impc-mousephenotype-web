@@ -80,4 +80,26 @@ export const handlers = [
       return res(ctx.status(404));
     }
   }),
+  rest.get("/api/supporting-data/:geneId/", (req, res, ctx) => {
+    const { geneId } = req.params;
+    const genes = require.context(`./data/genes/`, true, /\.json$/);
+    try {
+      const geneSectionData = genes(`./${geneId}/supporting-data.json`);
+      const sectionData = geneSectionData["supporting-data"];
+
+      return res(ctx.status(200), ctx.json(sectionData));
+    } catch (e) {
+      return res(ctx.status(404));
+    }
+  }),
+  rest.get("/api/products/:geneId/:alleleName", (req, res, ctx) => {
+    const { geneId, alleleName } = req.params;
+    const genes = require.context(`./data/genes/`, true, /\.json$/);
+    try {
+      const geneSectionData = genes(`./${geneId}/alleles/${alleleName}.json`);
+      return res(ctx.status(200), ctx.json(geneSectionData));
+    } catch (e) {
+      return res(ctx.status(404));
+    }
+  }),
 ];
