@@ -48,6 +48,7 @@ import { BodySystem } from "../../BodySystemIcon";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Check from "../../Check";
+import Head from "next/head";
 
 const CollectionItem = ({
   name,
@@ -137,6 +138,12 @@ const Summary = () => {
   const allCount = allBodySystems.length;
   return (
     <Card>
+      <Head>
+        <title>
+          {data.geneSymbol} Mouse Gene Details | {data.geneName} | International
+          Mouse Phenotyping Consortium
+        </title>
+      </Head>
       <div className={styles.subheadingCont}>
         <div className={styles.subheading}>
           <span className={`${styles.subheadingSection} primary`}>Gene</span>

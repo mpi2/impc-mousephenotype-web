@@ -6,6 +6,7 @@ import SortableTable from "../../SortableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "../../../utils";
+import { Alert } from "react-bootstrap";
 
 const Publications = () => {
   const router = useRouter();
@@ -25,10 +26,6 @@ const Publications = () => {
     })();
   }, [router.isReady]);
 
-  if (!publicationData) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <Card id="publications">
       <h2>IMPC related publications</h2>
@@ -37,68 +34,74 @@ const Publications = () => {
         by the IMPC or data produced by the phenotyping efforts of the IMPC.
         These publications have also been associated to the gene.
       </p>
-      <Pagination data={sorted}>
-        {(pageData) => (
-          <SortableTable
-            doSort={(sort) => {
-              setSorted(_.orderBy(publicationData, sort[0], sort[1]));
-            }}
-            defaultSort={["title", "asc"]}
-            headers={[
-              { width: 5, label: "Title", field: "title" },
-              {
-                width: 3,
-                label: "Journal",
-                field: "journalTitle",
-              },
-              { width: 2, label: "IMPC Allele", field: "alleleSymbol" },
-              { width: 2, label: "PubMed ID", field: "pmcid" },
-            ]}
-          >
-            {pageData.map((p) => {
-              const allele = formatAlleleSymbol(p.alleleSymbol);
-              return (
-                <tr>
-                  <td>
-                    <a
-                      className="link"
-                      target="_blank"
-                      href={`https://www.doi.org/${p.doi}`}
-                    >
-                      <strong>{p.title}</strong>{" "}
-                      <FontAwesomeIcon
-                        className="grey"
-                        icon={faExternalLinkAlt}
-                      />
-                    </a>
-                  </td>
-                  <td>
-                    {p.journalTitle} ({p.monthOfPublication}/
-                    {p.yearOfPublication})
-                  </td>
-                  <td>
-                    {allele[0]}
-                    <sup>{allele[1]}</sup>
-                  </td>
-                  <td>
-                    <a
-                      href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}`}
-                      target="_blank"
-                      className="link"
-                    >
-                      {p.pmcid}{" "}
-                      <FontAwesomeIcon
-                        icon={faExternalLinkAlt}
-                        className="grey"
-                      />
-                    </a>
-                  </td>
-                </tr>
-              );
-            })}
-          </SortableTable>
-        )}
-      </Pagination>
+      {publicationData ? (
+        <Pagination data={sorted}>
+          {(pageData) => (
+            <SortableTable
+              doSort={(sort) => {
+                setSorted(_.orderBy(publicationData, sort[0], sort[1]));
+              }}
+              defaultSort={["title", "asc"]}
+              headers={[
+                { width: 5, label: "Title", field: "title" },
+                {
+                  width: 3,
+                  label: "Journal",
+                  field: "journalTitle",
+                },
+                { width: 2, label: "IMPC Allele", field: "alleleSymbol" },
+                { width: 2, label: "PubMed ID", field: "pmcid" },
+              ]}
+            >
+              {pageData.map((p) => {
+                const allele = formatAlleleSymbol(p.alleleSymbol);
+                return (
+                  <tr>
+                    <td>
+                      <a
+                        className="link"
+                        target="_blank"
+                        href={`https://www.doi.org/${p.doi}`}
+                      >
+                        <strong>{p.title}</strong>{" "}
+                        <FontAwesomeIcon
+                          className="grey"
+                          icon={faExternalLinkAlt}
+                        />
+                      </a>
+                    </td>
+                    <td>
+                      {p.journalTitle} ({p.monthOfPublication}/
+                      {p.yearOfPublication})
+                    </td>
+                    <td>
+                      {allele[0]}
+                      <sup>{allele[1]}</sup>
+                    </td>
+                    <td>
+                      <a
+                        href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}`}
+                        target="_blank"
+                        className="link"
+                      >
+                        {p.pmcid}{" "}
+                        <FontAwesomeIcon
+                          icon={faExternalLinkAlt}
+                          className="grey"
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </SortableTable>
+          )}
+        </Pagination>
+      ) : (
+        <Alert variant="primary">
+          No publications found that use IMPC mice or data for this gene.
+        </Alert>
+      )}
     </Card>
   );
 };
