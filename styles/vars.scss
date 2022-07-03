@@ -3,7 +3,7 @@ $orange-light: #fdf0e5;
 $orange-dark: #b65a15;
 $blue: #00b0b0;
 $blue-light: #e1f6f6;
-$red: #c30000;
+$red: #dc3545;
 $navy: #2962ff;
 $navy-light: #ebf0ff;
 $purple: #750065;
@@ -77,6 +77,15 @@ $theme-colors: (
   "secondary": $blue,
   "danger": $red,
   "success": $lime,
+  "blue": $navy,
+  "indigo": #6610f2,
+  "purple": #6f42c1,
+  "pink": #e83e8c,
+  "red": $red,
+  "orange": $orange,
+  "yellow": #ffc107,
+  "green": $lime,
+  "teal": $blue,
 );
 
 $container-max-widths: (

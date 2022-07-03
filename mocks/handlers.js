@@ -1,4 +1,5 @@
 import { rest } from "msw";
+import searchResults from "./data/search.json";
 
 export const handlers = [
   rest.post("/api/login", (req, res, ctx) => {
@@ -31,7 +32,8 @@ export const handlers = [
   }),
   rest.get("/api/genes/search", (req, res, ctx) => {
     try {
-      const results = require("./data/search.json");
+      // const results = require("./data/search.json");
+      const results = searchResults;
       return res(ctx.status(200), ctx.json(results));
     } catch (e) {
       return res(ctx.status(404));
@@ -69,7 +71,7 @@ export const handlers = [
         publications: "publications",
         images: "gene_images",
         diseases: "gene_diseases",
-        histopathology: "gene_histopathology"
+        histopathology: "gene_histopathology",
       };
       const sectionData = sectionKeyMap.hasOwnProperty(section)
         ? geneSectionData[sectionKeyMap[section]]
@@ -102,4 +104,15 @@ export const handlers = [
       return res(ctx.status(404));
     }
   }),
+  rest.post(
+    "https://monarchinitiative.org/simsearch/phenotype",
+    (req, res, ctx) => {
+      const test = require(`./data/simsearch/test.json`);
+      return res(
+        // Respond with a 200 status code
+        ctx.status(200),
+        ctx.json(test)
+      );
+    }
+  ),
 ];

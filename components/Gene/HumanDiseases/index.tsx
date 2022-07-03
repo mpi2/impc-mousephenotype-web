@@ -8,7 +8,7 @@ import _ from "lodash";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
-import { Alert, Tab, Tabs, Table } from "react-bootstrap";
+import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
@@ -54,17 +54,13 @@ const PhenoGridEl = ({ phenotypes }) => {
         groupId: "10090",
         groupName: "Mus musculus",
       },
-      {
-        groupId: "7955",
-        groupName: "Danio rerio",
-      },
     ],
     yAxis,
   };
   useEffect(() => {
     if (cont.current && window.Phenogrid) {
       window.Phenogrid.createPhenogridForElement(cont.current, {
-        serverURL: "https://monarchinitiative.org",
+        serverURL: "http://beta.monarchinitiative.org",
         gridSkeletonData: data,
       });
     }
@@ -72,7 +68,6 @@ const PhenoGridEl = ({ phenotypes }) => {
 
   return (
     <>
-      <Script src="/phenogrid.js" />
       <div ref={cont}></div>
     </>
   );
@@ -90,7 +85,7 @@ const Row = ({ data }) => {
         <td>
           <Scale>{Math.round((data.phenodigmScore / 100) * 5)}</Scale>
         </td>
-        <td onClick={() => setOpen(!open)} className="link">
+        <td>
           {data.diseaseMatchedPhenotypes
             .split(",")
             .map((x) => x.replace(" ", "**").split("**")[1])
@@ -109,7 +104,7 @@ const Row = ({ data }) => {
         <td onClick={() => setOpen(!open)}>
           <FontAwesomeIcon
             className="link"
-            icon={open ? faChevronDown : faChevronUp}
+            icon={open ? faChevronUp : faChevronDown}
           />
         </td>
       </tr>

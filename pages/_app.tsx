@@ -6,8 +6,8 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
 import "phenogrid/dist/phenogrid-bundle.css";
-// import "phenogrid/dist/phenogrid-bundle";
 import { SSRProvider } from "react-bootstrap";
+import Script from "next/script";
 config.autoAddCss = false;
 
 console.log("test:", process.env.NEXT_PUBLIC_API_MOCKING);
@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <SSRProvider>
       <Layout>
+        <Script src="/phenogrid.js" />
         <Component {...pageProps} />
       </Layout>
     </SSRProvider>

@@ -84,9 +84,13 @@ const Publications = () => {
                     <a
                       href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}`}
                       target="_blank"
-                      className="primary"
+                      className="link"
                     >
-                      {p.pmcid}
+                      {p.pmcid}{" "}
+                      <FontAwesomeIcon
+                        icon={faExternalLinkAlt}
+                        className="grey"
+                      />
                     </a>
                   </td>
                 </tr>

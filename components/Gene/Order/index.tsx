@@ -38,7 +38,7 @@ const Order = () => {
           partnerships. When ordering a product from the IMPC you will be
           redirected to one of their websites or prompted to start an email.
         </p>
-        <Alert variant="primary">
+        <Alert variant="yellow">
           This service may be affected by the Covid-19 pandemic.{" "}
           <a href="https://www.mousephenotype.org/news/impc-covid-19-update/">
             <strong>See how</strong>
