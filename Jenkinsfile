@@ -24,7 +24,7 @@ pipeline {
       steps {
         script {
           sh 'kubectl get pods -o wide'
-          sh 'kubectl delete deploy impc-nextjs-frontend-service'
+          sh 'kubectl delete deploy impc-nextjs-frontend'
           sh 'kubectl apply -f impc-nextjs-frontend-deployment.yaml'
           sleep 3
           sh 'kubectl get pods -o wide'
