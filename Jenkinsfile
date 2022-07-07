@@ -1,6 +1,9 @@
 pipeline {
   agent any
-
+  tools {
+    node 'v16.15.1'
+    yarn '1.22.19'
+  }
   stages {
     stage('Build Frontend') {
       steps {
