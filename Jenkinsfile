@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools {
-    NodeJS '1.5.1'
+    NodeJS 'v16.15.1'
   }
   stages {
     stage('Build Frontend') {
