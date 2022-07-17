@@ -125,7 +125,6 @@ const Gene = () => {
           </Link>
           <p className={styles.subheading}>ALLELE</p>
           <h1 className="mb-2 mt-2">
-            Allele Products |{" "}
             <strong>
               {gene.geneSymbol}
               <sup>{alleleSymbol}</sup>
