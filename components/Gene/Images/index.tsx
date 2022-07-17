@@ -20,7 +20,7 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
   const { pid } = router.query;
 
   return (
-    <Link href={`/gene/${pid}/images/${parameterName}`}>
+    <Link href={`/genes/${pid}/images/${parameterName}`}>
       <div className={styles.card}>
         <div
           className={styles.cardImage}

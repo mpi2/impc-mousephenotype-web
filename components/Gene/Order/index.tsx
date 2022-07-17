@@ -4,6 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
@@ -94,9 +95,11 @@ const Order = () => {
                       )}
                     </td>
                     <td className="text-capitalize">
-                      <a className="link primary">
-                        View products <FontAwesomeIcon icon={faArrowRight} />
-                      </a>
+                      <Link href={`/alleles/${router.query.pid}/${allele[1]}`}>
+                        <a className="link primary">
+                          View products <FontAwesomeIcon icon={faArrowRight} />
+                        </a>
+                      </Link>
                     </td>
                   </tr>
                 );

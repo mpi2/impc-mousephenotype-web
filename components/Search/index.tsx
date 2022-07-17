@@ -13,7 +13,7 @@ export type Tab = {
 };
 
 const Search = ({
-  isPhenotype = false,
+  isPhenotype,
   onChange,
 }: {
   isPhenotype?: boolean;
@@ -23,6 +23,7 @@ const Search = ({
   const router = useRouter();
   const { type } = router.query;
   isPhenotype = isPhenotype ?? type === "phenotype";
+  console.log("type:", type, isPhenotype);
 
   const tabs: Tab[] = [
     {

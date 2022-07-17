@@ -2,10 +2,8 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowDown,
   faCartPlus,
-  faCheckCircle,
   faChevronRight,
   faExternalLinkAlt,
-  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, Row } from "react-bootstrap";
