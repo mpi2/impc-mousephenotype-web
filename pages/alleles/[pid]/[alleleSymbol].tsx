@@ -405,7 +405,7 @@ const Gene = () => {
           )}
         </Card>
         <Card>
-          <Link href={`/genes/${pid}/#purchase`}>
+          <Link href={`/genes/${pid}/#purchase`} scroll={false}>
             <a href="#" className="secondary">
               See all alleles for {gene.geneSymbol}{" "}
               <FontAwesomeIcon icon={faArrowRightLong} />
