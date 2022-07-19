@@ -84,7 +84,7 @@ const GeneResult = ({
             <FontAwesomeIcon icon={faChartColumn} /> View data
           </span>{" "}
           <span onClick={(e) => e.stopPropagation()} className="ms-4">
-            <Link href="/">
+            <Link href={`/genes/${mgi_accession_id}/#purchase`} scroll={false}>
               <a href="#" className="primary">
                 <FontAwesomeIcon icon={faShoppingCart} /> Order mice
               </a>
