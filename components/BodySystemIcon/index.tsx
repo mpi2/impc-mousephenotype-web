@@ -288,11 +288,13 @@ export const BodySystem = ({
   isSignificant = false,
   color = "grey",
   noSpacing,
+  appendLabel,
 }: {
   isSignificant?: boolean;
   name: string;
   color?: string;
   noSpacing?: boolean;
+  appendLabel?: string;
 }) => {
   const label = _.capitalize(name.replace(/ phenotype/g, ""));
   // const label = name;
@@ -307,7 +309,12 @@ export const BodySystem = ({
     <OverlayTrigger
       placement="top"
       trigger={["hover", "focus"]}
-      overlay={<Tooltip>{label}</Tooltip>}
+      overlay={
+        <Tooltip>
+          {label}
+          {appendLabel ? `: ${appendLabel}` : ""}
+        </Tooltip>
+      }
     >
       {({ ref, ...triggerHandler }) => (
         <span

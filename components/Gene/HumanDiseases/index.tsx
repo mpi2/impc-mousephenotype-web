@@ -41,7 +41,6 @@ const PhenoGridEl = ({ phenotypes }) => {
         term: processed[1],
       };
     }) ?? [];
-  console.log(yAxis);
   var data = {
     title:
       "Diseases, Mouse and Fish models compared to Pfeiffer Syndrome (OMIM:101600)",

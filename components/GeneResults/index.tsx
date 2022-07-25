@@ -1,8 +1,10 @@
 import styles from "./styles.module.scss";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import {
   faChartColumn,
+  faCheck,
   faCheckCircle,
+  faPlusCircle,
   faShoppingCart,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +15,7 @@ import { useRouter } from "next/router";
 import Card from "../Card";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination";
+import { GeneComparatorTrigger, useGeneComparator } from "../GeneComparator";
 
 const GeneResult = ({
   gene: {
@@ -29,6 +32,8 @@ const GeneResult = ({
   gene: any;
 }) => {
   const router = useRouter();
+  const { addGene, genes } = useGeneComparator();
+  const IsInCompare = genes.includes(mgi_accession_id);
   return (
     <>
       <Row
@@ -38,11 +43,28 @@ const GeneResult = ({
         }}
       >
         <Col sm={5}>
-          <p className="secondary">{marker_symbol}</p>
+          <p className="secondary">
+            {IsInCompare ? (
+              <span>
+                <FontAwesomeIcon icon={faCheck} className="secondary" />{" "}
+              </span>
+            ) : (
+              <Button
+                variant="secondary"
+                className={styles.addToCompareBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addGene(mgi_accession_id);
+                }}
+              >
+                <FontAwesomeIcon icon={faPlusCircle} /> Compare
+              </Button>
+            )}
+            {marker_symbol}
+          </p>
           <h3 className="mb-1 text-capitalize">{marker_name}</h3>
           {!!marker_synonym && marker_synonym.length && (
             <p className="grey text-capitalize">
-              {/* Synomyms:{" "} */}
               {(marker_synonym || []).slice(0, 10).join(", ") || "None"}
             </p>
           )}
@@ -100,7 +122,6 @@ const GeneResult = ({
 const GeneResults = ({ query }: { query?: string }) => {
   const [data, setData] = useState(null);
   useEffect(() => {
-    console.log("query changed");
     (async () => {
       const res = await fetch(`/api/genes/search/${query}`);
       if (res.ok) {
@@ -110,39 +131,42 @@ const GeneResults = ({ query }: { query?: string }) => {
     })();
   }, [query]);
   return (
-    <Container>
-      <Card
-        style={{
-          marginTop: -80,
-        }}
-      >
-        <h1 className="mb-1">
-          <strong>Gene Search results</strong>
-        </h1>
-
-        <p className="grey">
-          <small>
-            Found {data?.length || 0} entries{" "}
-            {!!query && (
-              <>
-                matching <strong>"{query}"</strong>
-              </>
-            )}
-          </small>
-        </p>
-        <Pagination data={data}>
-          {(pageData) => {
-            return (
-              <>
-                {pageData.map((p) => (
-                  <GeneResult gene={p} />
-                ))}
-              </>
-            );
+    <>
+      <GeneComparatorTrigger />
+      <Container>
+        <Card
+          style={{
+            marginTop: -80,
           }}
-        </Pagination>
-      </Card>
-    </Container>
+        >
+          <h1 className="mb-1">
+            <strong>Gene Search results</strong>
+          </h1>
+
+          <p className="grey">
+            <small>
+              Found {data?.length || 0} entries{" "}
+              {!!query && (
+                <>
+                  matching <strong>"{query}"</strong>
+                </>
+              )}
+            </small>
+          </p>
+          <Pagination data={data}>
+            {(pageData) => {
+              return (
+                <>
+                  {pageData.map((p) => (
+                    <GeneResult gene={p} />
+                  ))}
+                </>
+              );
+            }}
+          </Pagination>
+        </Card>
+      </Container>
+    </>
   );
 };
 

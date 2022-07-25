@@ -8,22 +8,22 @@ import "react-circular-progressbar/dist/styles.css";
 import "phenogrid/dist/phenogrid-bundle.css";
 import { SSRProvider } from "react-bootstrap";
 import Script from "next/script";
+import { GeneComparatorProvider } from "../components/GeneComparator";
 config.autoAddCss = false;
 
-console.log("test:", process.env.NEXT_PUBLIC_API_MOCKING);
 if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
-  console.log("requiring mocks");
   require("../mocks");
 }
 
 function MyApp({ Component, pageProps }) {
-  console.log("env in app:", process.env.NEXT_PUBLIC_API_MOCKING);
   return (
     <SSRProvider>
-      <Layout>
-        <Script src="/phenogrid.js" />
-        <Component {...pageProps} />
-      </Layout>
+      <GeneComparatorProvider>
+        <Layout>
+          <Script src="/phenogrid.js" />
+          <Component {...pageProps} />
+        </Layout>
+      </GeneComparatorProvider>
     </SSRProvider>
   );
 }

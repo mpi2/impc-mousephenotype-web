@@ -33,4 +33,22 @@
   p {
     margin-bottom: $xxs / 2;
   }
+  .addToCompareBtn {
+    display: none;
+  }
+  &:hover {
+    .addToCompareBtn {
+      display: inline-block;
+    }
+  }
+}
+
+.addToCompareBtn {
+  border-radius: 1rem;
+  color: $white;
+  font-size: 0.75rem;
+  padding: 3px 6px 3px 3px;
+  line-height: 1em;
+  margin-right: 1em;
+  vertical-align: middle;
 }

@@ -40,7 +40,6 @@ export const handlers = [
     }
   }),
   rest.get("/api/genes/search/:query?", (req, res, ctx) => {
-    console.log("search");
     const { query } = req.params;
     try {
       const results = require("./data/search.json");
@@ -55,7 +54,6 @@ export const handlers = [
       );
       return res(ctx.status(200), ctx.json(filteredResults));
     } catch (e) {
-      console.log(e);
       return res(ctx.status(404));
     }
   }),

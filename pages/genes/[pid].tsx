@@ -10,8 +10,11 @@ import Histopathology from "../../components/Gene/Histopathology";
 import Expressions from "../../components/Gene/Expressions";
 import Order from "../../components/Gene/Order";
 import { useEffect } from "react";
+import { GeneComparatorTrigger } from "../../components/GeneComparator";
+import { useRouter } from "next/router";
 
 const Gene = () => {
+  const router = useRouter();
   useEffect(() => {
     const hash = window.location.hash;
     if (hash.length > 0) {
@@ -22,6 +25,7 @@ const Gene = () => {
   }, []);
   return (
     <>
+      <GeneComparatorTrigger current={router.query.pid} />
       <Search />
       <Container className="page">
         <Summary />
