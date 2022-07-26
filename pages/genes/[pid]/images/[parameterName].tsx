@@ -45,7 +45,7 @@ const ImageViewer = ({ image }) => {
   );
 };
 
-const Column = ({ images }) => {
+const WTColumn = ({ images }) => {
   const [selected, setSelected] = useState(0);
   return (
     <Row className={`mt-3 ${styles.images}`}>
@@ -74,23 +74,66 @@ const Column = ({ images }) => {
   );
 };
 
+const Column = ({ images }) => {
+  const [selected, setSelected] = useState(0);
+  return (
+    <Row className={`mt-3 ${styles.images}`}>
+      <Col xs={12} style={{ display: "flex" }}>
+        <ImageViewer image={images[selected]?.fullFileUrl} />
+      </Col>
+      {images.map((image, i) => (
+        <Col md={4} lg={3} className="mb-2">
+          <div
+            style={{
+              minHeight: 50,
+              backgroundColor: "#ddd",
+              borderRadius: 5,
+              overflow: "hidden",
+              opacity: i === selected ? 0.5 : 1,
+            }}
+            onClick={() => {
+              setSelected(i);
+            }}
+          >
+            <img src={image.thumbnailUrl} style={{ width: "100%" }} />
+          </div>
+        </Col>
+      ))}
+    </Row>
+  );
+};
+
 const ImagesCompare = () => {
-  const [geneData, setGeneData] = useState(null);
+  const [wt, setWt] = useState(null);
+  const [images, setImages] = useState(null);
   useEffect(() => {
+    setWt(gData);
     (async () => {
-      setGeneData(gData);
+      try {
+        const res = await fetch(
+          `https://nginx.mousephenotype-dev.org/api/imaging/v1/thumbnails?genotype=PMAV`
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setImages(data);
+        } else {
+          console.error("not ok");
+        }
+      } catch (e) {
+        console.error(e);
+      }
     })();
   }, []);
   const router = useRouter();
   const { parameterName = "", pid } = router.query;
-  if (!geneData) return null;
+  if (!wt) return null;
 
-  const groups = _.groupBy(geneData.geneImages, "parameterName");
-  const images = groups?.[parameterName as string];
+  const groups = _.groupBy(wt.geneImages, "parameterName");
+  const wtImages = groups?.[parameterName as string];
 
-  if (!images) return null;
+  if (!wtImages || !images) return null;
 
-  const procedureName = images?.[0].procedureName;
+  const procedureName = wtImages?.[0].procedureName;
 
   return (
     <>
@@ -110,7 +153,7 @@ const ImagesCompare = () => {
             <Row>
               <Col sm={6}>
                 <h3>WT Images</h3>
-                <Column images={images} />
+                <WTColumn images={wtImages} />
               </Col>
               <Col sm={6}>
                 <h3>Mutant Images</h3>
