@@ -1,50 +1,86 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Container } from "react-bootstrap";
 import Card from "../../components/Card";
 import Search from "../../components/Search";
+import Unidimensional from "../../components/Data/Unidemensional";
+import Viability from "../../components/Data/Viability";
+import Categorical from "../../components/Data/Categorical";
+import TimeSeries from "../../components/Data/TimeSeries";
+import Embryo from "../../components/Data/Embryo";
+import Histopathology from "../../components/Data/Histopathology";
 
 const Charts = () => {
+  const [mode, setMode] = useState("Unidimensional");
+  const getPage = () => {
+    switch (mode) {
+      case "Unidimensional":
+        return <Unidimensional />;
+      case "Categorical":
+        return <Categorical />;
+      case "Viability":
+        return <Viability />;
+      case "Time series":
+        return <TimeSeries />;
+      case "Embryo":
+        return <Embryo />;
+      case "Histopathology":
+        return <Histopathology />;
+
+      default:
+        return null;
+    }
+  };
   return (
     <>
       <Search />
       <Container className="page">
+        {getPage()}
         <Card>
-          <h2>Mavs data charts</h2>
-        </Card>
-        <Card>
-          <h2>Description of the experiments performed</h2>
-          <Row>
-            <Col md={6}>
-              <p>
-                A Body Composition (DEXA lean/fat) phenotypic assay was
-                performed on 802 mice. The charts show the results of measuring
-                Bone Mineral Density (excluding skull) in 8 female, 8 male
-                mutants compared to 395 female, 391 male controls. The mutants
-                are for the Mavsem1(IMPC)Mbp allele.
-              </p>
-              <p className="small">
-                * The high throughput nature of the IMPC means that large
-                control sample sizes may accumulate over a long period of time.
-                See the animal welfare guidelines for more information.
-              </p>
-            </Col>
-            <Col md={6}>
-              <p className="mb-0">
-                Testing protocol: Body Composition (DEXA lean/fat)
-              </p>
-              <p className="mb-0">
-                Testing environment: Lab conditions and equipment
-              </p>
-              <p className="mb-0">
-                Measured value: Bone Mineral Density (excluding skull)
-              </p>
-              <p className="mb-0">Life stage: Early adult</p>
-              <p className="mb-0">Background Strain: involves: C57BL/6NCrl</p>
-              <p className="mb-0">Phenotyping center: UC Davis</p>
-              <p className="mb-0">
-                Associated Phenotype: decreased bone mineral density
-              </p>
-            </Col>
-          </Row>
+          <p>Current mode: {mode}</p>
+          <div style={{ display: "flex" }}>
+            <button
+              onClick={() => {
+                setMode("Unidimensional");
+              }}
+            >
+              Unidimensional
+            </button>
+            <button
+              onClick={() => {
+                setMode("Categorical");
+              }}
+            >
+              Categorical
+            </button>
+            <button
+              onClick={() => {
+                setMode("Viability");
+              }}
+            >
+              Viability
+            </button>
+            <button
+              onClick={() => {
+                setMode("Time series");
+              }}
+            >
+              Time series
+            </button>
+            <button
+              onClick={() => {
+                setMode("Embryo");
+              }}
+            >
+              Embryo
+            </button>
+            <button
+              onClick={() => {
+                setMode("Histopathology");
+              }}
+            >
+              Histopathology
+            </button>
+          </div>
         </Card>
       </Container>
     </>

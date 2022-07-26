@@ -130,7 +130,8 @@ const ImagesCompare = () => {
 
   const groups = _.groupBy(wt.geneImages, "parameterName");
   const wtImages = groups?.[parameterName as string];
-
+  console.log(wt, wtImages, images);
+  // TODO: add an Error page here.
   if (!wtImages || !images) return null;
 
   const procedureName = wtImages?.[0].procedureName;
