@@ -4,6 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
@@ -38,7 +39,7 @@ const Order = () => {
           partnerships. When ordering a product from the IMPC you will be
           redirected to one of their websites or prompted to start an email.
         </p>
-        <Alert variant="primary">
+        <Alert variant="yellow">
           This service may be affected by the Covid-19 pandemic.{" "}
           <a href="https://www.mousephenotype.org/news/impc-covid-19-update/">
             <strong>See how</strong>
@@ -94,9 +95,11 @@ const Order = () => {
                       )}
                     </td>
                     <td className="text-capitalize">
-                      <a className="link primary">
-                        View products <FontAwesomeIcon icon={faArrowRight} />
-                      </a>
+                      <Link href={`/alleles/${router.query.pid}/${allele[1]}`}>
+                        <a className="link primary">
+                          View products <FontAwesomeIcon icon={faArrowRight} />
+                        </a>
+                      </Link>
                     </td>
                   </tr>
                 );

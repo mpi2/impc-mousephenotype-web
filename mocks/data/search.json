@@ -39,6 +39,16 @@
     "phenotyping_data_available": true
   },
   {
+    "mgi_accession_id": "MGI:2143539",
+    "marker_name": "glutaminase 2 (liver, mitochondrial)",
+    "marker_symbol": "Gls2",
+    "marker_synonym": ["A330074B06Rik", "Lga"],
+    "es_cell_production_status": "ES Cells Produced",
+    "mouse_production_status": "Mice Produced",
+    "phenotype_status": "Phenotyping data available",
+    "phenotyping_data_available": true
+  },
+  {
     "mgi_accession_id": "MGI:3705243",
     "marker_name": "predicted gene 14569",
     "marker_symbol": "Gm14569",

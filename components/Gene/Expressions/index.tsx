@@ -1,14 +1,20 @@
-import { faExternalLinkAlt, faImage } from "@fortawesome/free-solid-svg-icons";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Alert, Tab, Tabs, Table } from "react-bootstrap";
+import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import styles from "./styles.module.scss";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import Link from "next/link";
+
+const getExpressionRate = (p) => {
+  return p.expression || p.noExpression
+    ? Math.round((p.expression * 10000) / (p.expression + p.noExpression)) / 100
+    : -1;
+};
 
 const Expressions = () => {
   const router = useRouter();
@@ -24,12 +30,8 @@ const Expressions = () => {
         const processed =
           expressions?.map((d) => ({
             ...d,
-            expressionRate:
-              d.expression || d.noExpression
-                ? Math.round(
-                    (d.expression * 10000) / (d.expression + d.noExpression)
-                  ) / 100
-                : -1,
+            expressionRate: getExpressionRate(d.mutantCounts),
+            wtExpressionRate: getExpressionRate(d.controlCounts),
           })) || [];
         setData(processed);
         setSorted(_.orderBy(processed, "parameterName", "asc"));
@@ -59,8 +61,6 @@ const Expressions = () => {
           eventKey="embryoExpressions"
           title={`Embryo expressions (${embryoData.length})`}
         ></Tab>
-        <Tab eventKey="adultWT" title="Background staining WT adult"></Tab>
-        <Tab eventKey="embryoWT" title="Background staining WT embryo"></Tab>
       </Tabs>
       {!selectedData || !selectedData.length ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>
@@ -75,21 +75,26 @@ const Expressions = () => {
               }}
               defaultSort={["parameterName", "asc"]}
               headers={[
-                { width: 4, label: "Anatomy", field: "parameterName" },
+                { width: 3, label: "Anatomy", field: "parameterName" },
                 {
-                  width: 4,
+                  width: 3,
                   label: "Images",
                   field: "expressionImageParameters",
                 },
                 { width: 2, label: "Zygosity", field: "zygosity" },
-                { width: 2, label: "Mutant Expr", field: "expressionRate" },
+                { width: 1, label: "Mutant Expr", field: "expressionRate" },
+                {
+                  width: 3,
+                  label: "Background staining in controls (WT)",
+                  field: "expressionRate",
+                },
               ]}
             >
               {pageData.map((d) => (
                 <tr>
                   <td>
                     <Link href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis">
-                      <strong className={styles.link}>{d.parameterName}</strong>
+                      <strong className="link">{d.parameterName}</strong>
                     </Link>
                   </td>
                   <td>
@@ -107,9 +112,20 @@ const Expressions = () => {
                   </td>
                   <td>{d.zygosity}</td>
                   <td>
-                    {d.expression || d.noExpression
-                      ? `${d.expressionRate}% (${d.expression} of ${
-                          d.noExpression + d.expression
+                    {d.expressionRate >= 0
+                      ? `${d.expressionRate}% (${d.mutantCounts.expression}/${
+                          d.mutantCounts.expression +
+                          d.mutantCounts.noExpression
+                        })`
+                      : "n/a"}
+                  </td>
+                  <td>
+                    {d.wtExpressionRate >= 0
+                      ? `${d.wtExpressionRate}% (${
+                          d.controlCounts.expression
+                        }/${
+                          d.controlCounts.expression +
+                          d.controlCounts.noExpression
                         })`
                       : "n/a"}
                   </td>

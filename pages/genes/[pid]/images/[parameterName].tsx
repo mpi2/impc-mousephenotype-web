@@ -97,12 +97,13 @@ const ImagesCompare = () => {
       <Search />
       <Container className="page">
         <Card>
-          <Link href={`/gene/${pid}`}>
-            <a href="#" className="secondary mb-3">
+          <Link href={`/genes/${pid}`}>
+            <a href="#" className="grey mb-3 small">
               <FontAwesomeIcon icon={faArrowLeftLong} /> BACK TO GENE
             </a>
           </Link>
-          <h1 style={{ marginBottom: "1rem" }}>
+          <p className={styles.subheading}>Images</p>
+          <h1 className="mb-4 mt-2">
             <strong>{procedureName}</strong> / {parameterName}
           </h1>
           <div>

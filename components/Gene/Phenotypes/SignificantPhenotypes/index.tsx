@@ -36,7 +36,7 @@ const SignificantPhenotypes = ({ data }) => {
           }}
           defaultSort={["parameterName", "asc"]}
           headers={[
-            { width: 2, label: "Phenotype", field: "parameterName" },
+            { width: 3, label: "Phenotype", field: "parameterName" },
             {
               width: 1,
               label: "System",
@@ -44,7 +44,7 @@ const SignificantPhenotypes = ({ data }) => {
             },
             { width: 2, label: "Allele", field: "alleleSymbol" },
             { width: 2, label: "Zyg", field: "zygosity" },
-            { width: 2, label: "Sex", field: "sex" },
+            { width: 1, label: "Sex", field: "sex" },
             { width: 1, label: "Life Stage", field: "lifeStageName" },
             { width: 2, label: "P Value", field: "pValue" },
           ]}

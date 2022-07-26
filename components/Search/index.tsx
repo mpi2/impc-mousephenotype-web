@@ -13,7 +13,7 @@ export type Tab = {
 };
 
 const Search = ({
-  isPhenotype = false,
+  isPhenotype,
   onChange,
 }: {
   isPhenotype?: boolean;

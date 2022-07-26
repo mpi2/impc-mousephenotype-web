@@ -2,10 +2,8 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowDown,
   faCartPlus,
-  faCheckCircle,
   faChevronRight,
   faExternalLinkAlt,
-  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, Row } from "react-bootstrap";
@@ -18,36 +16,37 @@ import _ from "lodash";
 import Card from "../../Card";
 
 export const allBodySystems = [
-  "adipose tissue phenotype",
+  "mortality/aging",
+  "embryo phenotype",
+  "reproductive system phenotype",
+  "growth/size/body region phenotype",
+  "homeostasis/metabolism phenotype",
   "behavior/neurological phenotype",
   "cardiovascular system phenotype",
-  "craniofacial phenotype",
+  "respiratory system phenotype",
   "digestive/alimentary phenotype",
-  "embryo phenotype",
-  "endocrine/exocrine gland phenotype",
-  "growth/size/body region phenotype",
-  "hearing/vestibular/ear phenotype",
-  "hematopoietic system phenotype",
-  "homeostasis/metabolism phenotype",
-  "immune system phenotype",
-  "integument phenotype",
+  "renal/urinary system phenotype",
   "limbs/digits/tail phenotype",
-  "liver/biliary system phenotype",
-  "mortality/aging",
+  "skeleton phenotype",
+  "immune system phenotype",
   "muscle phenotype",
+  "integument phenotype",
+  "craniofacial phenotype",
+  "hearing/vestibular/ear phenotype",
+  "adipose tissue phenotype",
+  "endocrine/exocrine gland phenotype",
+  "vision/eye phenotype",
+  "hematopoietic system phenotype",
+  "liver/biliary system phenotype",
   "nervous system phenotype",
   "pigmentation phenotype",
-  "renal/urinary system phenotype",
-  "reproductive system phenotype",
-  "respiratory system phenotype",
-  "skeleton phenotype",
-  "vision/eye phenotype",
 ];
 
 import { BodySystem } from "../../BodySystemIcon";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Check from "../../Check";
+import Head from "next/head";
 
 const CollectionItem = ({
   name,
@@ -137,6 +136,12 @@ const Summary = () => {
   const allCount = allBodySystems.length;
   return (
     <Card>
+      <Head>
+        <title>
+          {data.geneSymbol} Mouse Gene Details | {data.geneName} | International
+          Mouse Phenotyping Consortium
+        </title>
+      </Head>
       <div className={styles.subheadingCont}>
         <div className={styles.subheading}>
           <span className={`${styles.subheadingSection} primary`}>Gene</span>
@@ -234,7 +239,7 @@ const Summary = () => {
           {!!notTestedCount && (
             <div className={styles.bodySystemGroup}>
               <p className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-grey white`}>
+                <span className={`${styles.pill} bg-grey`}>
                   {notTestedCount}
                 </span>{" "}
                 <strong>Not tested</strong>

@@ -122,7 +122,6 @@ const processData = (data: any, { type, meta }: Cat) => {
     PROCEDURES,
   } = cats;
   const significants = getSignificants(data);
-  console.log("processing", type);
   switch (type) {
     case ALL:
       return _.sortBy(data, "pValue", "desc");
