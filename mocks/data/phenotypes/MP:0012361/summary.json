@@ -1,0 +1,8 @@
+{
+    "phenotype": "decreased large unstained cell number",
+    "mpId": "MP:0012361",
+    "definition": "decreased number of larger than normal cells which are unstained using routine blood count methodologies; large unstained cells (LUC) are larger than normal lymphocytes, and may be atypical lymphocytes, myeloperoxidase deficient cells or peroxidase negative blasts",
+    "synonyms": ["decreased LUC number"],
+    "testedGenes": 978,
+    "significantGenes": 17
+}

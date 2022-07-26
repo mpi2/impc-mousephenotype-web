@@ -1,0 +1,172 @@
+[
+    {
+      "alleleSymbol": "Rab19<Rab19tm1b(EUCOMM)Hmgu>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) differential count / Hematology",
+      "phenotypingCenter": "ICS / IMPC",
+      "pValue": "1.43×10-08"
+    },
+    {
+      "alleleSymbol": "Pdpr<Pdprtm1b(EUCOMM)Wtsi>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) differential count / Hematology",
+      "phenotypingCenter": "ICS / IMPC",
+      "pValue": "1.69×10-07"
+    },
+    {
+      "alleleSymbol": "Pkn1<Pkn1tm1b(KOMP)Wtsi>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "2.52×10-07"
+    },
+    {
+      "alleleSymbol": "Dyrk1b<Dyrk1btm1b(EUCOMM)Wtsi>",
+      "zygosity": "HET",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) differential count / Hematology",
+      "phenotypingCenter": "ICS / IMPC",
+      "pValue": "7.55×10-07"
+    },
+    {
+      "alleleSymbol": "Dyrk2<Dyrk2em1(IMPC)Ics>",
+      "zygosity": "HET",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) differential count / Hematology",
+      "phenotypingCenter": "ICS / IMPC",
+      "pValue": "1.31×10-06"
+    },
+    {
+      "alleleSymbol": "Fabp1<Fabp1tm1b(EUCOMM)Hmgu>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) differential count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "2.43×10-06"
+    },
+    {
+      "alleleSymbol": "Itgae<Itgaetm1b(EUCOMM)Wtsi>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "3.30×10-06"
+    },
+    {
+      "alleleSymbol": "Avp<Avptm1b(EUCOMM)Wtsi>",
+      "zygosity": "HET",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "7.96×10-06"
+    },
+    {
+      "alleleSymbol": "Xbp1<Xbp1tm1b(EUCOMM)Wtsi>",
+      "zygosity": "HET",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "1.27×10-05"
+    },
+    {
+      "alleleSymbol": "Ikzf3<Ikzf3tm1(KOMP)Vlcg>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "RBRC / IMPC",
+      "pValue": "3.32×10-05"
+    },
+    {
+      "alleleSymbol": "Stx7<Stx7em1(IMPC)Rbrc>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) differential count / Hematology",
+      "phenotypingCenter": "RBRC / IMPC",
+      "pValue": "3.99×10-05"
+    },
+    {
+      "alleleSymbol": "Ppm1m<Ppm1mtm2b(EUCOMM)Hmgu>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) differential count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "5.00×10-05"
+    },
+    {
+      "alleleSymbol": "Elmod1<Elmod1tm1b(EUCOMM)Hmgu>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "5.93×10-05"
+    },
+    {
+      "alleleSymbol": "Cd46<Cd46em1(IMPC)H>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "5.94×10-05"
+    },
+    {
+      "alleleSymbol": "Ptdss1<Ptdss1tm1b(EUCOMM)Hmgu>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) differential count / Hematology",
+      "phenotypingCenter": "ICS / IMPC",
+      "pValue": "7.25×10-05"
+    },
+    {
+      "alleleSymbol": "Blnk<Blnkem1(IMPC)H>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "MRC Harwell / IMPC",
+      "pValue": "8.32×10-05"
+    },
+    {
+      "alleleSymbol": "Ecrg4<Ecrg4tm1b(EUCOMM)Hmgu>",
+      "zygosity": "HOM",
+      "sex": "",
+      "lifeStage": "Early adult",
+      "phenotype": "decreased large unstained cell number",
+      "parameter": "Large Unstained Cell (LUC) count / Hematology",
+      "phenotypingCenter": "ICS / IMPC",
+      "pValue": "9.63×10-05"
+    }
+   ]
