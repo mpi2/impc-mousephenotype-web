@@ -13,11 +13,13 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
-declare global {
-  interface Window {
-    Phenogrid: any;
-  }
-}
+import Phenogrid from "phenogrid";
+import Head from "next/head";
+// declare global {
+//   interface Window {
+//     Phenogrid: any;
+//   }
+// }
 
 const Scale = ({ children = 5 }: { children: number }) => {
   return (
@@ -31,7 +33,10 @@ const Scale = ({ children = 5 }: { children: number }) => {
   );
 };
 
-const PhenoGridEl = ({ phenotypes }) => {
+const PhenoGridEl = ({ phenotypes, id }) => {
+  const {
+    query: { pid },
+  } = useRouter();
   const cont = useRef(null);
   const yAxis =
     phenotypes?.split(",").map((x) => {
@@ -42,33 +47,27 @@ const PhenoGridEl = ({ phenotypes }) => {
       };
     }) ?? [];
   var data = {
-    title:
-      "Diseases, Mouse and Fish models compared to Pfeiffer Syndrome (OMIM:101600)",
-    xAxis: [
-      {
-        groupId: "9606",
-        groupName: "Homo sapiens",
-      },
-      {
-        groupId: "10090",
-        groupName: "Mus musculus",
-      },
-    ],
+    title: " ",
+    xAxis: [[pid]],
     yAxis,
   };
   useEffect(() => {
-    if (cont.current && window.Phenogrid) {
-      window.Phenogrid.createPhenogridForElement(cont.current, {
-        serverURL: "http://beta.monarchinitiative.org",
+    if (cont.current && Phenogrid) {
+      Phenogrid.createPhenogridForElement(cont.current, {
+        serverURL: "https://api.monarchinitiative.org/api/",
         gridSkeletonData: data,
+        geneList: [[pid]],
+        owlSimFunction: "compare",
       });
     }
   }, [cont.current]);
 
   return (
-    <>
-      <div ref={cont}></div>
-    </>
+    <tr>
+      <td colSpan={6}>
+        <div style={{ width: "100%" }} ref={cont} id={`phenogrid${id}`}></div>
+      </td>
+    </tr>
   );
 };
 
@@ -107,7 +106,12 @@ const Row = ({ data }) => {
           />
         </td>
       </tr>
-      {open && <PhenoGridEl phenotypes={data.diseaseMatchedPhenotypes} />}
+      {open && (
+        <PhenoGridEl
+          phenotypes={data.diseaseMatchedPhenotypes}
+          id={data.diseaseId.split(":")[1]}
+        />
+      )}
     </>
   );
 };
@@ -139,65 +143,71 @@ const HumanDiseases = () => {
   const selectedData = tab === "associated" ? associatedData : predictedData;
 
   return (
-    <Card id="human-diseases">
-      <h2>Human diseases caused by Mavs mutations </h2>
-      <div className="mb-4">
-        <p>
-          The analysis uses data from IMPC, along with published data on other
-          mouse mutants, in comparison to human disease reports in OMIM,
-          Orphanet, and DECIPHER.
-        </p>
-        <p>
-          Phenotype comparisons summarize the similarity of mouse phenotypes
-          with human disease phenotypes.
-        </p>
-      </div>
-      <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
-        <Tab
-          eventKey="associated"
-          title={`Human diseases associated with Mavs (${associatedData.length})`}
-        ></Tab>
-        <Tab
-          eventKey="predicted"
-          title={`Human diseases predicted to be associated with Mavs (${predictedData.length})`}
-        ></Tab>
-      </Tabs>
-      {!selectedData || !selectedData.length ? (
-        <Alert className={styles.table}>
-          No human diseases associated to this gene by orthology or annotation.
-        </Alert>
-      ) : (
-        <Pagination data={selectedData}>
-          {(pageData) => (
-            <SortableTable
-              doSort={(sort) => {
-                setSorted(_.orderBy(data, sort[0], sort[1]));
-              }}
-              defaultSort={["parameterName", "asc"]}
-              headers={[
-                { width: 5, label: "Disease", field: "diseaseTerm" },
-                {
-                  width: 2,
-                  label: "Similarity of phenotypes",
-                  field: "phenodigmScore",
-                },
-                {
-                  width: 3,
-                  label: "Matching phenotypes",
-                  field: "diseaseMatchedPhenotypes",
-                },
-                { width: 2, label: "Source", field: "diseaseId" },
-                { width: 1, label: "Expand", disabled: true },
-              ]}
-            >
-              {pageData.map((d) => (
-                <Row data={d} />
-              ))}
-            </SortableTable>
-          )}
-        </Pagination>
-      )}
-    </Card>
+    <>
+      {/* <Head>
+        <Script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />
+      </Head> */}
+      <Card id="human-diseases">
+        <h2>Human diseases caused by Mavs mutations </h2>
+        <div className="mb-4">
+          <p>
+            The analysis uses data from IMPC, along with published data on other
+            mouse mutants, in comparison to human disease reports in OMIM,
+            Orphanet, and DECIPHER.
+          </p>
+          <p>
+            Phenotype comparisons summarize the similarity of mouse phenotypes
+            with human disease phenotypes.
+          </p>
+        </div>
+        <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
+          <Tab
+            eventKey="associated"
+            title={`Human diseases associated with Mavs (${associatedData.length})`}
+          ></Tab>
+          <Tab
+            eventKey="predicted"
+            title={`Human diseases predicted to be associated with Mavs (${predictedData.length})`}
+          ></Tab>
+        </Tabs>
+        {!selectedData || !selectedData.length ? (
+          <Alert className={styles.table}>
+            No human diseases associated to this gene by orthology or
+            annotation.
+          </Alert>
+        ) : (
+          <Pagination data={selectedData}>
+            {(pageData) => (
+              <SortableTable
+                doSort={(sort) => {
+                  setSorted(_.orderBy(data, sort[0], sort[1]));
+                }}
+                defaultSort={["phenodigmScore", "desc"]}
+                headers={[
+                  { width: 5, label: "Disease", field: "diseaseTerm" },
+                  {
+                    width: 2,
+                    label: "Similarity of phenotypes",
+                    field: "phenodigmScore",
+                  },
+                  {
+                    width: 3,
+                    label: "Matching phenotypes",
+                    field: "diseaseMatchedPhenotypes",
+                  },
+                  { width: 2, label: "Source", field: "diseaseId" },
+                  { width: 1, label: "Expand", disabled: true },
+                ]}
+              >
+                {pageData.map((d) => (
+                  <Row data={d} />
+                ))}
+              </SortableTable>
+            )}
+          </Pagination>
+        )}
+      </Card>
+    </>
   );
 };
 

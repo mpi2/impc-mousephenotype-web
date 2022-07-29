@@ -102,15 +102,15 @@ export const handlers = [
       return res(ctx.status(404));
     }
   }),
-  rest.post(
-    "https://monarchinitiative.org/simsearch/phenotype",
-    (req, res, ctx) => {
-      const test = require(`./data/simsearch/test.json`);
-      return res(
-        // Respond with a 200 status code
-        ctx.status(200),
-        ctx.json(test)
-      );
-    }
-  ),
+  // rest.post(
+  //   "https://monarchinitiative.org/simsearch/phenotype",
+  //   (req, res, ctx) => {
+  //     const test = require(`./data/simsearch/test.json`);
+  //     return res(
+  //       // Respond with a 200 status code
+  //       ctx.status(200),
+  //       ctx.json(test)
+  //     );
+  //   }
+  // ),
 ];
