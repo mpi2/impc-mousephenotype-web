@@ -66,6 +66,7 @@ const WTColumn = ({ images }) => {
               setSelected(i);
             }}
           >
+            // TODO: decode url if it's base64
             <img src={image.thumbnailUrl} style={{ width: "100%" }} />
           </div>
         </Col>
