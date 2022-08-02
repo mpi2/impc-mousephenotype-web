@@ -7,7 +7,9 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
 import "phenogrid/dist/phenogrid-bundle.css";
 import { SSRProvider } from "react-bootstrap";
-import Script from "next/script";
+
+import $ from "jquery";
+// import Script from "next/script";
 import { GeneComparatorProvider } from "../components/GeneComparator";
 config.autoAddCss = false;
 
@@ -20,7 +22,7 @@ function MyApp({ Component, pageProps }) {
     <SSRProvider>
       <GeneComparatorProvider>
         <Layout>
-          <Script src="/phenogrid.js" />
+          {/* <Script src="/phenogrid.js" /> */}
           <Component {...pageProps} />
         </Layout>
       </GeneComparatorProvider>

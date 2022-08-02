@@ -17,6 +17,7 @@
     "chartjs-adapter-moment": "^1.0.0",
     "chartjs-plugin-annotation": "^1.4.0",
     "chartjs-plugin-zoom": "^1.2.1",
+    "file-saver": "^2.0.5",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "msw": "^0.39.2",
