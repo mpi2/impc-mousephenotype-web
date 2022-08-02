@@ -85,8 +85,8 @@ export const handlers = [
     const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
       const geneSectionData = genes(`./${geneId}/supporting-data.json`);
-      const sectionData = geneSectionData["supporting-data"];
-
+      const sectionData = geneSectionData['dataStatsResults'][0];
+      
       return res(ctx.status(200), ctx.json(sectionData));
     } catch (e) {
       return res(ctx.status(404));
