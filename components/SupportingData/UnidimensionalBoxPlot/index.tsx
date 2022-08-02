@@ -2,7 +2,6 @@ import {
   Chart as ChartJS,
   LinearScale,
   CategoryScale,
-  BarElement,
   PointElement,
   LineElement,
   Legend,
@@ -14,6 +13,13 @@ import {
   BoxAndWiskers,
 } from "@sgratzl/chartjs-chart-boxplot";
 import { Chart } from "react-chartjs-2";
+import { FC } from "react";
+
+interface UnidimensionalSeries {
+  sex: "male" | "female";
+  sampleGroup: "experimental" | "control";
+  data: Array<number>;
+}
 
 ChartJS.register(
   LinearScale,
@@ -65,13 +71,12 @@ const getBoxPlotDataset = (series, zygosity) => {
   };
 };
 
-const UnidimensionalBoxPlot = ({ series, zygosity }) => {
-  //   const values: number[] =
-  //     series && series.datasets.length > 0
-  //       ? series?.datasets[0]?.data.flatMap((d) => d)
-  //       : [];
-  //   const max = values.length > 0 ? Math.max(...values) : 0;
-  //   const min = values.length > 0 ? Math.min(...values) : 0;
+interface IUnidimensionalBoxPlotProps {
+  series: Array<UnidimensionalSeries>;
+  zygosity: "homozygote" | "heterozygote" | "hemizygote";
+}
+
+const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps>  = ({ series, zygosity }) => {
 
   return (
     <Chart

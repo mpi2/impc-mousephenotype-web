@@ -2,7 +2,6 @@ import {
   Chart as ChartJS,
   LinearScale,
   CategoryScale,
-  BarElement,
   PointElement,
   LineElement,
   Legend,
@@ -11,8 +10,10 @@ import {
 } from "chart.js";
 
 import "chartjs-adapter-moment";
+import { FC } from "react";
 
 import { Chart } from "react-chartjs-2";
+import { UnidimensionalSeries } from "..";
 
 ChartJS.register(
   LinearScale,
@@ -23,6 +24,14 @@ ChartJS.register(
   Tooltip,
   CategoryScale
 );
+
+interface IUnidimensionalScatterPlotProps {
+  scatterSeries: Array<UnidimensionalSeries>;
+  lineSeries: Array<UnidimensionalSeries>;
+  zygosity: "homozygote" | "heterozygote" | "hemizygote";
+  parameterName: string;
+  unit: string;
+}
 
 const bgColors = {
   control: "rgba(239, 123, 11, 0.2)",
@@ -35,30 +44,20 @@ const boderColors = {
 const shapes = { male: "triangle", female: "circle" };
 const pointRadius = 5;
 
-const getScatterDataset = ({
-  sex,
-  sampleGroup,
-  zygosity,
-  data,
-}: {
-  sex: string;
-  sampleGroup: string;
-  zygosity: string;
-  data: any[];
-}) => {
-  const labelSex = sex[0].toUpperCase() + sex.slice(1);
+const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
+  const labelSex = series.sex[0].toUpperCase() + series.sex.slice(1);
   const labelZyg = zygosity === "homozygote" ? "HOM" : "HET";
-  const labelGroup = sampleGroup == "experimental" ? labelZyg : "WT";
+  const labelGroup = series.sampleGroup == "experimental" ? labelZyg : "WT";
   const label = `${labelSex} ${labelGroup}`;
 
   return {
     type: "scatter" as const,
     label,
-    backgroundColor: bgColors[sampleGroup],
-    data,
-    borderColor: boderColors[sampleGroup],
+    backgroundColor: bgColors[series.sampleGroup],
+    data: series.data,
+    borderColor: boderColors[series.sampleGroup],
     borderWidth: 1,
-    pointStyle: shapes[sex],
+    pointStyle: shapes[series.sex],
     radius: pointRadius,
     yAxisID: "y",
   };
@@ -79,11 +78,22 @@ const getSWindowDataset = (data) => {
   };
 };
 
-const UnidimensionalScatterPlot = ({ scatterSeries, lineSeries, unit }) => {
+const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
+  scatterSeries,
+  lineSeries,
+  zygosity,
+  parameterName,
+  unit,
+}) => {
   return (
     <Chart
       type="scatter"
-      data={{datasets: [...scatterSeries.map(getScatterDataset),  ...lineSeries.map(getSWindowDataset)]}}
+      data={{
+        datasets: [
+          ...scatterSeries.map((s) => getScatterDataset(s, zygosity)),
+          ...lineSeries.map(getSWindowDataset),
+        ],
+      }}
       options={{
         maintainAspectRatio: true,
         plugins: {
@@ -115,15 +125,17 @@ const UnidimensionalScatterPlot = ({ scatterSeries, lineSeries, unit }) => {
             type: "linear",
             display: true,
             position: "left",
+            title: {
+              text: `${parameterName} (${unit})`,
+            },
           },
           y1: {
             type: "linear",
-            display: false, 
+            display: false,
             position: "right",
 
-            // grid line settings
             grid: {
-              drawOnChartArea: false, // only want the grid lines for one axis to show up
+              drawOnChartArea: false,
             },
           },
         },
