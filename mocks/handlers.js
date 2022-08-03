@@ -80,11 +80,23 @@ export const handlers = [
       return res(ctx.status(404));
     }
   }),
-  rest.get("/api/supporting-data/:geneId/", (req, res, ctx) => {
+  rest.get("/api/supporting-data-unidimensional/:geneId/", (req, res, ctx) => {
     const { geneId } = req.params;
     const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
-      const geneSectionData = genes(`./${geneId}/supporting-data.json`);
+      const geneSectionData = genes(`./${geneId}/supporting-data-unidimensional.json`);
+      const sectionData = geneSectionData['dataStatsResults'][0];
+      
+      return res(ctx.status(200), ctx.json(sectionData));
+    } catch (e) {
+      return res(ctx.status(404));
+    }
+  }),
+  rest.get("/api/supporting-data-categorical/:geneId/", (req, res, ctx) => {
+    const { geneId } = req.params;
+    const genes = require.context(`./data/genes/`, true, /\.json$/);
+    try {
+      const geneSectionData = genes(`./${geneId}/supporting-data-categorical.json`);
       const sectionData = geneSectionData['dataStatsResults'][0];
       
       return res(ctx.status(200), ctx.json(sectionData));

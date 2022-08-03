@@ -1,11 +1,63 @@
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
+import CategoricalBarPlot from "./Plots/CategoricalBarPlot";
 
-const Unidimensional = () => {
+const Categorical = () => {
   const router = useRouter();
+  const [categoricalSeries, setCategoricalSeries] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(`/api/supporting-data-categorical/MGI:1929293/`);
+      if (res.ok) {
+        const response = await res.json();
+        console.log(response);
+        const dataPoints: Array<any> = response.dataPoints;
+        const index = {};
+        const categories = [];
+        dataPoints.forEach((p) => {
+          if (!index[p.specimenSex]) index[p.specimenSex] = {};
+          if (!index[p.specimenSex][p.biologicalSampleGroup]) {
+            index[p.specimenSex][p.biologicalSampleGroup] = { total: 0 };
+          }
+          if (!index[p.specimenSex][p.biologicalSampleGroup][p.category]) {
+            index[p.specimenSex][p.biologicalSampleGroup][p.category] = 0;
+          }
+          index[p.specimenSex][p.biologicalSampleGroup].total += 1;
+          index[p.specimenSex][p.biologicalSampleGroup][p.category] += 1;
+          if(!categories.includes(p.category))
+          categories.push(p.category);
+        });
+        console.log(index);
+        
+
+        const series = [];
+        Object.keys(index).forEach((sex) =>
+          Object.keys(index[sex]).forEach((sampleGroup) => {
+            categories.forEach((category) => {
+              series.push({
+                sex,
+                sampleGroup,
+                category,
+                value:
+                  ((index[sex][sampleGroup][category] || 0 )/
+                    index[sex][sampleGroup].total) *
+                  100,
+              });
+            });
+          })
+        );
+        console.log(series);
+        
+        setCategoricalSeries(series);
+      }
+    })();
+  }, []);
+
   return (
     <>
       <Card>
@@ -89,7 +141,9 @@ const Unidimensional = () => {
       <Row>
         <Col lg={12}>
           <Card>
-            <h2 className="primary">[Insert categorical plot]</h2>
+            <h2 className="primary">
+              <CategoricalBarPlot series={categoricalSeries} zygosity="homozygote" />
+            </h2>
           </Card>
         </Col>
         <Col lg={6}>
@@ -125,4 +179,4 @@ const Unidimensional = () => {
   );
 };
 
-export default Unidimensional;
+export default Categorical;

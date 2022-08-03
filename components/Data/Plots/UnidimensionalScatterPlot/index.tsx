@@ -13,7 +13,7 @@ import "chartjs-adapter-moment";
 import { FC } from "react";
 
 import { Chart } from "react-chartjs-2";
-import { UnidimensionalSeries } from "..";
+import { bgColors, boderColors, pointRadius, shapes, UnidimensionalSeries } from "..";
 
 ChartJS.register(
   LinearScale,
@@ -33,16 +33,7 @@ interface IUnidimensionalScatterPlotProps {
   unit: string;
 }
 
-const bgColors = {
-  control: "rgba(239, 123, 11, 0.2)",
-  experimental: "rgba(9, 120, 161, 0.7)",
-};
-const boderColors = {
-  control: "rgba(239, 123, 11, 0.5)",
-  experimental: "rgba(9, 120, 161, 0.7)",
-};
-const shapes = { male: "triangle", female: "circle" };
-const pointRadius = 5;
+
 
 const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
   const labelSex = series.sex[0].toUpperCase() + series.sex.slice(1);
