@@ -21,7 +21,7 @@ const Unidimensional = () => {
             </a>
           </button>
           <h1>
-            <strong>Mavs data charts [Catagorical]</strong>
+            <strong>Mavs data charts [Categorical]</strong>
           </h1>
         </div>
         <h2>Description of the experiments performed</h2>
@@ -87,14 +87,9 @@ const Unidimensional = () => {
         </Row>
       </Card>
       <Row>
-        <Col lg={5}>
+        <Col lg={12}>
           <Card>
-            <h2 className="primary">[Insert box plot]</h2>
-          </Card>
-        </Col>
-        <Col lg={7}>
-          <Card>
-            <h2 className="primary">[Insert scatter plot]</h2>
+            <h2 className="primary">[Insert categorical plot]</h2>
           </Card>
         </Col>
         <Col lg={6}>

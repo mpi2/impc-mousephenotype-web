@@ -1,11 +1,90 @@
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import moment from "moment";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
-import Card from "../../components/Card";
+import Card from "../Card";
+import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
+import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 
 const Unidimensional = () => {
   const router = useRouter();
+  const [scatterSeries, setScatterSeries] = useState([]);
+  const [lineSeries, setLineSeries] = useState([]);
+  const [boxPlotSeries, setBoxPlotSeries] = useState([]);
+
+  const getScatterSeries = (dataPoints, sex, sampleGroup) => {
+    const data = dataPoints
+      .filter(
+        (p) => p.biologicalSampleGroup === sampleGroup && p.specimenSex === sex
+      )
+      .map((p) => {
+        p.x = moment(p.dateOfExperiment);
+        p.y = +p.dataPoint;
+        return p;
+      });
+    return {
+      sex,
+      sampleGroup,
+      data,
+    };
+  };
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(`/api/supporting-data/MGI:1929293/`);
+      if (res.ok) {
+        const response = await res.json();
+        console.log(response);
+        const dataPoints = response.dataPoints;
+
+        const femaleWTPoints = getScatterSeries(
+          dataPoints,
+          "female",
+          "control"
+        );
+        const maleWTPoints = getScatterSeries(dataPoints, "male", "control");
+        const femaleHomPoints = getScatterSeries(
+          dataPoints,
+          "female",
+          "experimental"
+        );
+        const maleHomPoints = getScatterSeries(
+          dataPoints,
+          "male",
+          "experimental"
+        );
+        const windowPoints = [...dataPoints].map((p) => {
+          const windowP = { ...p };
+          windowP.x = moment(p.dateOfExperiment);
+          const weigth = p.windowWeight ? +p.windowWeight : 1;
+          windowP.y = weigth;
+          return windowP;
+        });
+
+        setBoxPlotSeries([
+          femaleWTPoints,
+          maleWTPoints,
+          femaleHomPoints,
+          maleHomPoints,
+        ]);
+
+        setScatterSeries([
+          femaleWTPoints,
+          maleWTPoints,
+          femaleHomPoints,
+          maleHomPoints,
+        ]);
+        setLineSeries([windowPoints]);
+      }
+    })();
+  }, []);
+
+  if (!scatterSeries) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
       <Card>
@@ -89,12 +168,21 @@ const Unidimensional = () => {
       <Row>
         <Col lg={5}>
           <Card>
-            <h2 className="primary">[Insert box plot]</h2>
+            <UnidimensionalBoxPlot
+              series={boxPlotSeries}
+              zygosity="homozygote"
+            />
           </Card>
         </Col>
         <Col lg={7}>
           <Card>
-            <h2 className="primary">[Insert scatter plot]</h2>
+            <UnidimensionalScatterPlot
+              scatterSeries={scatterSeries}
+              lineSeries={lineSeries}
+              zygosity="homozygote"
+              parameterName="Bone Mineral Density (excluding skull)"
+              unit="sm"
+            />
           </Card>
         </Col>
         <Col lg={6}>

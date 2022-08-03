@@ -84,6 +84,7 @@ const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps>  = ({ series, zygos
       data={getBoxPlotDataset(series, zygosity)}
       options={{
         maintainAspectRatio: false,
+        aspectRatio: 2,
         scales: {
           y: {
             type: "linear",

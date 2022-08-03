@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container } from "react-bootstrap";
 import Card from "../../components/Card";
 import Search from "../../components/Search";
-import Unidimensional from "../../components/Data/Unidemensional";
+import Unidimensional from "../../components/Data/Unidimensional";
 import Viability from "../../components/Data/Viability";
 import Categorical from "../../components/Data/Categorical";
 import TimeSeries from "../../components/Data/TimeSeries";

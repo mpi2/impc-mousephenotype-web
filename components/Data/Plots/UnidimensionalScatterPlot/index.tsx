@@ -96,6 +96,7 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
       }}
       options={{
         maintainAspectRatio: true,
+        aspectRatio: 2,
         plugins: {
           tooltip: {
             usePointStyle: true,
@@ -127,6 +128,9 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
             position: "left",
             title: {
               text: `${parameterName} (${unit})`,
+              display: true,
+              align: "center",
+              padding: 5
             },
           },
           y1: {
