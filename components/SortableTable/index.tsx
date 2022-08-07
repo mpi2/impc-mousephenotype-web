@@ -20,15 +20,17 @@ const SortableTable = ({
     disabled?: boolean;
   }[];
   defaultSort?: sortType;
-  doSort: (s: sortType) => void;
-  children: React.ReactChildren;
+  doSort?: (s: sortType) => void;
+  children: React.ReactNode;
 }) => {
   const [sort, setSort] = useState<[string, "asc" | "desc"]>(
     defaultSort || [headers[0].field, "asc"]
   );
 
   useEffect(() => {
-    doSort(sort);
+    if (doSort) {
+      doSort(sort);
+    }
   }, [sort]);
 
   const SortableTh = ({
@@ -55,13 +57,13 @@ const SortableTable = ({
       <th {...(!!width ? { width: `${(width / 12) * 100}%` } : {})}>
         <button
           style={{
-            fontWeight: selected ? "bold" : "normal",
+            fontWeight: !disabled && selected ? "bold" : "normal",
           }}
           className={styles.inlineButton}
           onClick={handleSelect}
         >
           {label}{" "}
-          {selected && (
+          {!disabled && selected && (
             <FontAwesomeIcon
               icon={sort[1] === "asc" ? faCaretUp : faCaretDown}
             />

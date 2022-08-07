@@ -1,10 +1,18 @@
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeftLong,
+  faChevronRight,
+  faDownload,
+  faExternalLinkAlt,
+  faInfo,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Alert, Button, Col, Row } from "react-bootstrap";
 import Card from "../Card";
+import SortableTable from "../SortableTable";
 import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 
@@ -33,7 +41,9 @@ const Unidimensional = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/api/supporting-data-unidimensional/MGI:1929293/`);
+      const res = await fetch(
+        `/api/supporting-data-unidimensional/MGI:1929293/`
+      );
       if (res.ok) {
         const response = await res.json();
         console.log(response);
@@ -188,29 +198,215 @@ const Unidimensional = () => {
         <Col lg={6}>
           <Card>
             <h2>Results of statistical analysis</h2>
+
+            <Alert variant="green">
+              <p className="mb-0">
+                <strong>Genotype P value</strong>
+              </p>
+              <p>0.604</p>
+              <p className="mb-0">
+                <strong>Genotype*Female P value</strong>
+              </p>
+              <p>0.651</p>
+              <p className="mb-0">
+                <strong>Genotype*Male P value</strong>
+              </p>
+              <p>8.59×10-05</p>
+              <p className="mb-0">
+                <strong>Classification</strong>
+              </p>
+              <p>
+                With phenotype threshold value 1e-04 - Significant for males
+                only
+              </p>
+            </Alert>
           </Card>
         </Col>
         <Col lg={6}>
           <Card>
             <h2>Summary statistics of all data in the dataset</h2>
+            <SortableTable
+              headers={[
+                { width: 5, label: "", disabled: true },
+                { width: 2, label: "Mean", disabled: true },
+                { width: 2, label: "Stddev", disabled: true },
+                { width: 3, label: "# Samples", disabled: true },
+              ]}
+            >
+              <tr>
+                <td>Female Control</td>
+                <td>0.05</td>
+                <td>0.03</td>
+                <td>205</td>
+              </tr>
+              <tr>
+                <td>Female homozygote</td>
+                <td>0.06</td>
+                <td>0.02</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>Male Control</td>
+                <td>0.06</td>
+                <td>0.04</td>
+                <td>251</td>
+              </tr>
+              <tr>
+                <td>Male homozygote </td>
+                <td>0.15 </td>
+                <td>0.09</td>
+                <td>13</td>
+              </tr>
+            </SortableTable>
           </Card>
         </Col>
         <Col lg={6}>
           <Card>
             <h2>Statistical method</h2>
+            <SortableTable
+              headers={[
+                { width: 8, label: "Model attribute", disabled: true },
+                { width: 4, label: "Value", disabled: true },
+              ]}
+            >
+              <tr>
+                <td>Batch effect significant </td>
+                <td>true</td>
+              </tr>
+              <tr>
+                <td>Variance significant </td>
+                <td>true</td>
+              </tr>
+              <tr>
+                <td>Genotype*Sex interaction effect p value </td>
+                <td>0.00590</td>
+              </tr>
+              <tr>
+                <td>Genotype parameter estimate </td>
+                <td>-0.00837</td>
+              </tr>
+              <tr>
+                <td>Genotype standard error estimate </td>
+                <td>0.0161</td>
+              </tr>
+              <tr>
+                <td>Genotype Effect P Value </td>
+                <td>0.604</td>
+              </tr>
+              <tr>
+                <td>Sex Parameter Estimate </td>
+                <td>0.00194</td>
+              </tr>
+              <tr>
+                <td>Sex Standard Error Estimate </td>
+                <td>0.00623</td>
+              </tr>
+              <tr>
+                <td>Sex Effect P Value </td>
+                <td>0.756</td>
+              </tr>
+              <tr>
+                <td>Intercept Estimate </td>
+                <td>0.0669</td>
+              </tr>
+              <tr>
+                <td>Intercept Estimate Standard Error </td>
+                <td>0.0103</td>
+              </tr>
+              <tr>
+                <td>Sex Male KO P Value </td>
+                <td>8.59×10-05</td>
+              </tr>
+              <tr>
+                <td>Sex Female KO P Value </td>
+                <td>0.651</td>
+              </tr>
+              <tr>
+                <td>WT Residuals Normality Tests </td>
+                <td>6.98×10-10</td>
+              </tr>
+              <tr>
+                <td>KO Residuals Normality Tests </td>
+                <td>0.255</td>
+              </tr>
+            </SortableTable>
           </Card>
         </Col>
         <Col lg={6}>
           <Card>
             <h2>Windowing parameters</h2>
+            <a
+              className="link"
+              href="https://www.mousephenotype.org/help/data-visualization/chart-pages/"
+            >
+              {" "}
+              View documentation about soft windowing{" "}
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+            <SortableTable
+              headers={[
+                { width: 8, label: "Parameter", disabled: true },
+                { width: 4, label: "Value", disabled: true },
+              ]}
+            >
+              <tr>
+                <td>Sharpness (k) </td>
+                <td>1.041</td>
+              </tr>
+              <tr>
+                <td>Bandwidth (l)</td>
+                <td>110</td>
+              </tr>
+            </SortableTable>
           </Card>
           <Card>
             <h2>Access the results programmatically</h2>
+            <p>
+              <a
+                className="link"
+                href="https://www.ebi.ac.uk/mi/impc/solr/statistical-result/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:1929293%22&fq=phenotyping_center:(%22MRC+Harwell%22)&fq=metadata_group:a8ee4a7178561c567069d111ea7338b8&fq=allele_accession_id:%22MGI:5548707%22&fq=pipeline_stable_id:HRWL_001&fq=parameter_stable_id:IMPC_HEM_037_001&fq=zygosity:homozygote&fq=strain_accession_id:MGI\:2164831"
+              >
+                Statistical result raw XML{" "}
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+              </a>
+            </p>
+            <p>
+              <a
+                className="link"
+                href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:1929293%22&fq=phenotyping_center:(%22MRC+Harwell%22)&fq=allele_accession_id:%22MGI:5548707%22&fq=pipeline_stable_id:HRWL_001&fq=parameter_stable_id:IMPC_HEM_037_001&fq=zygosity:homozygote&fq=strain_accession_id:MGI\:2164831"
+              >
+                Genotype phenotype raw XML{" "}
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+              </a>
+            </p>
+            <p>
+              <a
+                className="link"
+                href="https://www.mousephenotype.org/data/exportraw?phenotyping_center=MRC%20Harwell&parameter_stable_id=IMPC_HEM_037_001&allele_accession_id=MGI:5548707&strain=MGI:2164831&pipeline_stable_id=HRWL_001&&zygosity=homozygote&"
+              >
+                PhenStat-ready raw experiment data{" "}
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+              </a>
+            </p>
           </Card>
         </Col>
         <Col>
           <Card>
             <h2>Download all the data</h2>
+            <p>
+              Export data as:{" "}
+              <Button>
+                <FontAwesomeIcon icon={faDownload} /> TSV
+              </Button>{" "}
+              or{" "}
+              <Button>
+                <FontAwesomeIcon icon={faDownload} /> XLS
+              </Button>{" "}
+            </p>
+            <p className="grey">
+              <FontAwesomeIcon icon={faInfoCircle} /> NOTE: Data from all charts
+              will be aggregated into one download file.
+            </p>
           </Card>
         </Col>
       </Row>
