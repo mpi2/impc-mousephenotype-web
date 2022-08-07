@@ -45,7 +45,7 @@ const AllData = ({ data }: { data: any }) => {
               { width: 1, label: "P value", field: "pValue" },
               { width: 2, label: "Life stage", field: "lifeStageName" },
               { width: 2, label: "Allele", field: "alleleSymbol" },
-              { width: 1, label: "Xygosity", field: "zygosity" },
+              { width: 1, label: "Zygosity", field: "zygosity" },
               { width: 2, label: "Significance", field: "significant" },
             ]}
           >

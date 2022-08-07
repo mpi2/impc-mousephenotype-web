@@ -84,9 +84,11 @@ export const handlers = [
     const { geneId } = req.params;
     const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
-      const geneSectionData = genes(`./${geneId}/supporting-data-unidimensional.json`);
-      const sectionData = geneSectionData['dataStatsResults'][0];
-      
+      const geneSectionData = genes(
+        `./${geneId}/supporting-data-unidimensional.json`
+      );
+      const sectionData = geneSectionData["dataStatsResults"][0];
+
       return res(ctx.status(200), ctx.json(sectionData));
     } catch (e) {
       return res(ctx.status(404));
@@ -96,9 +98,11 @@ export const handlers = [
     const { geneId } = req.params;
     const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
-      const geneSectionData = genes(`./${geneId}/supporting-data-categorical.json`);
-      const sectionData = geneSectionData['dataStatsResults'][0];
-      
+      const geneSectionData = genes(
+        `./${geneId}/supporting-data-categorical.json`
+      );
+      const sectionData = geneSectionData["dataStatsResults"][0];
+
       return res(ctx.status(200), ctx.json(sectionData));
     } catch (e) {
       return res(ctx.status(404));
@@ -112,6 +116,25 @@ export const handlers = [
       return res(ctx.status(200), ctx.json(geneSectionData));
     } catch (e) {
       return res(ctx.status(404));
+    }
+  }),
+  rest.get("/api/phenotypes/:phenotypeId/:section", (req, res, ctx) => {
+    const { phenotypeId, section } = req.params;
+    const phenotypes = require.context(`./data/phenotypes/`, true, /\.json$/);
+    try {
+      const sectionKeyMap = {
+        geneAssociations: "gene-associations",
+        procedures: "procedures",
+        stats: "stats",
+        summary: "summary",
+      };
+      const phenotypeSectionData = phenotypes(
+        `./${phenotypeId}/${sectionKeyMap[section]}.json`
+      );
+
+      return res(ctx.status(200), ctx.json(phenotypeSectionData));
+    } catch (e) {
+      return res(ctx.status(404), e);
     }
   }),
   // rest.post(
