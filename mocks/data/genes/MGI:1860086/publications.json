@@ -1,94 +1,102 @@
-{
-    "publications": [
-        {
-            "alleleSymbol": "Crlf3<tm1b(KOMP)Wtsi>",
-            "doi": "10.1371/journal.pbio.3000194",
-            "monthOfPublication": 4,
-            "yearOfPublication": 2019,
-            "journalTitle": "PLoS biology",
-            "title": "Mouse screen reveals multiple new genes underlying mouse and human hearing loss.",
-            "pmcid": "PMC6459510"
-        },
-        {
-            "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
-            "doi": "10.1534/g3.120.401128",
-            "monthOfPublication": 6,
-            "yearOfPublication": 2020,
-            "journalTitle": "G3 (Bethesda, Md.)",
-            "title": "A Genome-Wide Screen in Mice To Identify Cell-Extrinsic Regulators of Pulmonary Metastatic Colonisation.",
-            "pmcid": "PMC7263671"
-        },
-        {
-            "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
-            "doi": "10.1371/journal.pbio.3000194",
-            "monthOfPublication": 4,
-            "yearOfPublication": 2019,
-            "journalTitle": "PLoS biology",
-            "title": "Mouse screen reveals multiple new genes underlying mouse and human hearing loss.",
-            "pmcid": "PMC6459510"
-        },
-        {
-            "alleleSymbol": "Crlf3<em1(IMPC)Wtsi>",
-            "doi": "10.1038/s41590-019-0549-0",
-            "monthOfPublication": 1,
-            "yearOfPublication": 2020,
-            "journalTitle": "Nature immunology",
-            "title": "High-throughput phenotyping reveals expansive genetic and structural underpinnings of immune variation.",
-            "pmcid": "PMC7338221"
-        },
-        {
-            "alleleSymbol": "Crlf3<tm1b(KOMP)Wtsi>",
-            "doi": "10.1007/s11248-013-9764-x",
-            "monthOfPublication": 2,
-            "yearOfPublication": 2014,
-            "journalTitle": "Transgenic research",
-            "title": "Rapid conversion of EUCOMM/KOMP-CSD alleles in mouse embryos using a cell-permeable Cre recombinase.",
-            "pmcid": "PMC3890051"
-        },
-        {
-            "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
-            "doi": "10.1007/s11248-013-9764-x",
-            "monthOfPublication": 2,
-            "yearOfPublication": 2014,
-            "journalTitle": "Transgenic research",
-            "title": "Rapid conversion of EUCOMM/KOMP-CSD alleles in mouse embryos using a cell-permeable Cre recombinase.",
-            "pmcid": "PMC3890051"
-        },
-        {
-            "alleleSymbol": "Crlf3<tm1b(KOMP)Wtsi>",
-            "doi": "10.1038/s41467-019-11431-2",
-            "monthOfPublication": 8,
-            "yearOfPublication": 2019,
-            "journalTitle": "Nature communications",
-            "title": "Large-scale neuroanatomical study uncovers 198 gene associations in mouse brain morphogenesis.",
-            "pmcid": "PMC6671969"
-        },
-        {
-            "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
-            "doi": "10.1038/sdata.2017.129",
-            "monthOfPublication": 9,
-            "yearOfPublication": 2017,
-            "journalTitle": "Scientific data",
-            "title": "Genome wide in vivo mouse screen data from studies to assess host regulation of metastatic colonisation.",
-            "pmcid": "PMC5827107"
-        },
-        {
-            "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
-            "doi": "10.1016/j.cell.2013.06.022",
-            "monthOfPublication": 7,
-            "yearOfPublication": 2013,
-            "journalTitle": "Cell",
-            "title": "Genome-wide generation and systematic phenotyping of knockout mice reveals new roles for many genes.",
-            "pmcid": "PMC3717207"
-        },
-        {
-            "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
-            "doi": "10.1038/s41467-019-11431-2",
-            "monthOfPublication": 8,
-            "yearOfPublication": 2019,
-            "journalTitle": "Nature communications",
-            "title": "Large-scale neuroanatomical study uncovers 198 gene associations in mouse brain morphogenesis.",
-            "pmcid": "PMC6671969"
-        }
-    ]
-}
+[
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1b(KOMP)Wtsi>",
+    "doi": "10.1371/journal.pbio.3000194",
+    "monthOfPublication": 4,
+    "yearOfPublication": 2019,
+    "journalTitle": "PLoS biology",
+    "title": "Mouse screen reveals multiple new genes underlying mouse and human hearing loss.",
+    "pmcid": "PMC6459510"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
+    "doi": "10.1534/g3.120.401128",
+    "monthOfPublication": 6,
+    "yearOfPublication": 2020,
+    "journalTitle": "G3 (Bethesda, Md.)",
+    "title": "A Genome-Wide Screen in Mice To Identify Cell-Extrinsic Regulators of Pulmonary Metastatic Colonisation.",
+    "pmcid": "PMC7263671"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
+    "doi": "10.1371/journal.pbio.3000194",
+    "monthOfPublication": 4,
+    "yearOfPublication": 2019,
+    "journalTitle": "PLoS biology",
+    "title": "Mouse screen reveals multiple new genes underlying mouse and human hearing loss.",
+    "pmcid": "PMC6459510"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<em1(IMPC)Wtsi>",
+    "doi": "10.1038/s41590-019-0549-0",
+    "monthOfPublication": 1,
+    "yearOfPublication": 2020,
+    "journalTitle": "Nature immunology",
+    "title": "High-throughput phenotyping reveals expansive genetic and structural underpinnings of immune variation.",
+    "pmcid": "PMC7338221"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1b(KOMP)Wtsi>",
+    "doi": "10.1007/s11248-013-9764-x",
+    "monthOfPublication": 2,
+    "yearOfPublication": 2014,
+    "journalTitle": "Transgenic research",
+    "title": "Rapid conversion of EUCOMM/KOMP-CSD alleles in mouse embryos using a cell-permeable Cre recombinase.",
+    "pmcid": "PMC3890051"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
+    "doi": "10.1007/s11248-013-9764-x",
+    "monthOfPublication": 2,
+    "yearOfPublication": 2014,
+    "journalTitle": "Transgenic research",
+    "title": "Rapid conversion of EUCOMM/KOMP-CSD alleles in mouse embryos using a cell-permeable Cre recombinase.",
+    "pmcid": "PMC3890051"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1b(KOMP)Wtsi>",
+    "doi": "10.1038/s41467-019-11431-2",
+    "monthOfPublication": 8,
+    "yearOfPublication": 2019,
+    "journalTitle": "Nature communications",
+    "title": "Large-scale neuroanatomical study uncovers 198 gene associations in mouse brain morphogenesis.",
+    "pmcid": "PMC6671969"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
+    "doi": "10.1038/sdata.2017.129",
+    "monthOfPublication": 9,
+    "yearOfPublication": 2017,
+    "journalTitle": "Scientific data",
+    "title": "Genome wide in vivo mouse screen data from studies to assess host regulation of metastatic colonisation.",
+    "pmcid": "PMC5827107"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
+    "doi": "10.1016/j.cell.2013.06.022",
+    "monthOfPublication": 7,
+    "yearOfPublication": 2013,
+    "journalTitle": "Cell",
+    "title": "Genome-wide generation and systematic phenotyping of knockout mice reveals new roles for many genes.",
+    "pmcid": "PMC3717207"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "alleleSymbol": "Crlf3<tm1a(KOMP)Wtsi>",
+    "doi": "10.1038/s41467-019-11431-2",
+    "monthOfPublication": 8,
+    "yearOfPublication": 2019,
+    "journalTitle": "Nature communications",
+    "title": "Large-scale neuroanatomical study uncovers 198 gene associations in mouse brain morphogenesis.",
+    "pmcid": "PMC6671969"
+  }
+]

@@ -1,26 +1,20 @@
-{
-    "order": [
-        {
-            "alleleSymbol": "Mavs<tm301336(L1L2_NTARU-0)>",
-            "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
-            "productTypes": [
-                "intermediate_vector"
-            ]
-        },
-        {
-            "alleleSymbol": "Mavs<em1(IMPC)Mbp>",
-            "alleleDescription": "Exon Deletion",
-            "productTypes": [
-                "mouse"
-            ]
-        },
-        {
-            "alleleSymbol": "Mavs<tm1(NCOM)Cmhd>",
-            "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
-            "productTypes": [
-                "targeting_vector",
-                "es_cell"
-            ]
-        }
-    ]
-}
+[
+  {
+    "mgiGeneAccessionId": "MGI:2444773",
+    "alleleSymbol": "Mavs<tm301336(L1L2_NTARU-0)>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": ["intermediate_vector"]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2444773",
+    "alleleSymbol": "Mavs<em1(IMPC)Mbp>",
+    "alleleDescription": "Exon Deletion",
+    "productTypes": ["mouse"]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2444773",
+    "alleleSymbol": "Mavs<tm1(NCOM)Cmhd>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": ["targeting_vector", "es_cell"]
+  }
+]

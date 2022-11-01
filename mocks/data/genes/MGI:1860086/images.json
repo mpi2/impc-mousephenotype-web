@@ -1,104 +1,112 @@
-{
-    "gene_images": [
-        {
-            "strainAccessionId": "MGI:5446362",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_034_001",
-            "parameterName": "XRay Images Whole Body Dorso Ventral",
-            "count": 14,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/901114",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:5446362",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_051_001",
-            "parameterName": "XRay Images Skull Dorso Ventral Orientation",
-            "count": 14,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/976262",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:2159965",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_050_001",
-            "parameterName": "XRay Images Skull Lateral Orientation",
-            "count": 9,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/889391",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:2159965",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_034_001",
-            "parameterName": "XRay Images Whole Body Dorso Ventral",
-            "count": 9,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/907208",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:5446362",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_048_001",
-            "parameterName": "XRay Images Whole Body Lateral Orientation",
-            "count": 14,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/879880",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:2159965",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_049_001",
-            "parameterName": "XRay Images Forepaw",
-            "count": 9,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1127504",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:5446362",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_050_001",
-            "parameterName": "XRay Images Skull Lateral Orientation",
-            "count": 14,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/889420",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:2159965",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_051_001",
-            "parameterName": "XRay Images Skull Dorso Ventral Orientation",
-            "count": 9,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/942806",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:2159965",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_048_001",
-            "parameterName": "XRay Images Whole Body Lateral Orientation",
-            "count": 9,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/871766",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:5446362",
-            "procedureStableId": "MGP_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_049_001",
-            "parameterName": "XRay Images Forepaw",
-            "count": 14,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1137212",
-            "fileType": "application/dicom"
-        }
-    ]
-}
+[
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:5446362",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_034_001",
+    "parameterName": "XRay Images Whole Body Dorso Ventral",
+    "count": 14,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/901114",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:5446362",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_051_001",
+    "parameterName": "XRay Images Skull Dorso Ventral Orientation",
+    "count": 14,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/976262",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_050_001",
+    "parameterName": "XRay Images Skull Lateral Orientation",
+    "count": 9,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/889391",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_034_001",
+    "parameterName": "XRay Images Whole Body Dorso Ventral",
+    "count": 9,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/907208",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:5446362",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_048_001",
+    "parameterName": "XRay Images Whole Body Lateral Orientation",
+    "count": 14,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/879880",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_049_001",
+    "parameterName": "XRay Images Forepaw",
+    "count": 9,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1127504",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:5446362",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_050_001",
+    "parameterName": "XRay Images Skull Lateral Orientation",
+    "count": 14,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/889420",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_051_001",
+    "parameterName": "XRay Images Skull Dorso Ventral Orientation",
+    "count": 9,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/942806",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_048_001",
+    "parameterName": "XRay Images Whole Body Lateral Orientation",
+    "count": 9,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/871766",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "strainAccessionId": "MGI:5446362",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_049_001",
+    "parameterName": "XRay Images Forepaw",
+    "count": 14,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1137212",
+    "fileType": "application/dicom"
+  }
+]

@@ -1,49 +1,52 @@
-{
-    "publications": [
-        {
-            "alleleSymbol": "Cib2<tm1a(EUCOMM)Wtsi>",
-            "doi": "10.1016/j.biocel.2013.11.001",
-            "monthOfPublication": 1,
-            "yearOfPublication": 2014,
-            "journalTitle": "The international journal of biochemistry & cell biology",
-            "title": "Usher protein functions in hair cells and photoreceptors.",
-            "pmcid": "PMC3971483"
-        },
-        {
-            "alleleSymbol": "Cib2<tm1a(EUCOMM)Wtsi>",
-            "doi": "10.1093/hmg/ddw421",
-            "monthOfPublication": 2,
-            "yearOfPublication": 2017,
-            "journalTitle": "Human molecular genetics",
-            "title": "The roles of USH1 proteins and PDZ domain-containing USH proteins in USH2 complex integrity in cochlear hair cells.",
-            "pmcid": "PMC6075602"
-        },
-        {
-            "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
-            "doi": "10.1038/s41467-017-00061-1",
-            "monthOfPublication": 6,
-            "yearOfPublication": 2017,
-            "journalTitle": "Nature communications",
-            "title": "CIB2 interacts with TMC1 and TMC2 and is essential for mechanotransduction in auditory hair cells.",
-            "pmcid": "PMC5491523"
-        },
-        {
-            "alleleSymbol": "Cib2<tm1a(EUCOMM)Wtsi>",
-            "doi": "10.1038/s41467-017-00061-1",
-            "monthOfPublication": 6,
-            "yearOfPublication": 2017,
-            "journalTitle": "Nature communications",
-            "title": "CIB2 interacts with TMC1 and TMC2 and is essential for mechanotransduction in auditory hair cells.",
-            "pmcid": "PMC5491523"
-        },
-        {
-            "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
-            "doi": "10.1038/s41467-017-00595-4",
-            "monthOfPublication": 10,
-            "yearOfPublication": 2017,
-            "journalTitle": "Nature communications",
-            "title": "A large scale hearing loss screen reveals an extensive unexplored genetic landscape for auditory dysfunction.",
-            "pmcid": "PMC5638796"
-        }
-    ]
-}
+[
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "alleleSymbol": "Cib2<tm1a(EUCOMM)Wtsi>",
+    "doi": "10.1016/j.biocel.2013.11.001",
+    "monthOfPublication": 1,
+    "yearOfPublication": 2014,
+    "journalTitle": "The international journal of biochemistry & cell biology",
+    "title": "Usher protein functions in hair cells and photoreceptors.",
+    "pmcid": "PMC3971483"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "alleleSymbol": "Cib2<tm1a(EUCOMM)Wtsi>",
+    "doi": "10.1093/hmg/ddw421",
+    "monthOfPublication": 2,
+    "yearOfPublication": 2017,
+    "journalTitle": "Human molecular genetics",
+    "title": "The roles of USH1 proteins and PDZ domain-containing USH proteins in USH2 complex integrity in cochlear hair cells.",
+    "pmcid": "PMC6075602"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "doi": "10.1038/s41467-017-00061-1",
+    "monthOfPublication": 6,
+    "yearOfPublication": 2017,
+    "journalTitle": "Nature communications",
+    "title": "CIB2 interacts with TMC1 and TMC2 and is essential for mechanotransduction in auditory hair cells.",
+    "pmcid": "PMC5491523"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "alleleSymbol": "Cib2<tm1a(EUCOMM)Wtsi>",
+    "doi": "10.1038/s41467-017-00061-1",
+    "monthOfPublication": 6,
+    "yearOfPublication": 2017,
+    "journalTitle": "Nature communications",
+    "title": "CIB2 interacts with TMC1 and TMC2 and is essential for mechanotransduction in auditory hair cells.",
+    "pmcid": "PMC5491523"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "doi": "10.1038/s41467-017-00595-4",
+    "monthOfPublication": 10,
+    "yearOfPublication": 2017,
+    "journalTitle": "Nature communications",
+    "title": "A large scale hearing loss screen reveals an extensive unexplored genetic landscape for auditory dysfunction.",
+    "pmcid": "PMC5638796"
+  }
+]

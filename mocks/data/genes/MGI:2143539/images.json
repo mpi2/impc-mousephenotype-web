@@ -1,1 +1,178 @@
-{"gene_images":[{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_XRY_001","procedureName":"X-ray","parameterStableId":"TCPLA_XRY_034_001","parameterName":"XRay Images Whole Body Dorso Ventral","count":10,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/599818","fileType":"image/dicom"},{"strainAccessionId":"MGI:2683688","procedureStableId":"IMPC_XRY_001","procedureName":"X-ray","parameterStableId":"IMPC_XRY_048_001","parameterName":"XRay Images Whole Body Lateral Orientation","count":10,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/616316","fileType":"image/dicom"},{"strainAccessionId":"MGI:2683688","procedureStableId":"IMPC_PAT_002","procedureName":"Gross Pathology and Tissue Collection","parameterStableId":"IMPC_PAT_057_002","parameterName":"Images","count":8,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1193459","fileType":"image/jpeg"},{"strainAccessionId":"MGI:2683688","procedureStableId":"IMPC_HIS_003","procedureName":"Histopathology","parameterStableId":"IMPC_HIS_177_001","parameterName":"Images","count":5,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1193945","fileType":"image/tiff"},{"strainAccessionId":"MGI:2683688","procedureStableId":"IMPC_XRY_001","procedureName":"X-ray","parameterStableId":"IMPC_XRY_034_001","parameterName":"XRay Images Whole Body Dorso Ventral","count":10,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/648358","fileType":"image/dicom"},{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_EYE_003","procedureName":"Eye Morphology","parameterStableId":"TCPLA_EYE_051_001","parameterName":"Images Slit Lamp","count":114,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1202681","fileType":"image/tiff"},{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_XRY_001","procedureName":"X-ray","parameterStableId":"TCPLA_XRY_048_001","parameterName":"XRay Images Whole Body Lateral Orientation","count":10,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/619016","fileType":"image/dicom"},{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_XRY_001","procedureName":"X-ray","parameterStableId":"TCPLA_XRY_050_001","parameterName":"XRay Images Skull Lateral Orientation","count":10,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/607400","fileType":"image/dicom"},{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_HIS_003","procedureName":"Histopathology","parameterStableId":"TCPLA_HIS_177_001","parameterName":"Images","count":17,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1266389","fileType":"image/tiff"},{"strainAccessionId":"MGI:2683688","procedureStableId":"IMPC_XRY_001","procedureName":"X-ray","parameterStableId":"IMPC_XRY_050_001","parameterName":"XRay Images Skull Lateral Orientation","count":10,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/702570","fileType":"image/dicom"},{"strainAccessionId":"MGI:2683688","procedureStableId":"IMPC_XRY_001","procedureName":"X-ray","parameterStableId":"IMPC_XRY_051_001","parameterName":"XRay Images Skull Dorso Ventral Orientation","count":10,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/632881","fileType":"image/dicom"},{"strainAccessionId":"MGI:2683688","procedureStableId":"IMPC_EYE_003","procedureName":"Eye Morphology","parameterStableId":"IMPC_EYE_050_001","parameterName":"Images Ophthalmoscopy","count":104,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1222374","fileType":"image/bmp"},{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_EYE_003","procedureName":"Eye Morphology","parameterStableId":"TCPLA_EYE_050_001","parameterName":"Images Ophthalmoscopy","count":147,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1274493","fileType":"image/bmp"},{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_XRY_001","procedureName":"X-ray","parameterStableId":"TCPLA_XRY_051_001","parameterName":"XRay Images Skull Dorso Ventral Orientation","count":10,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/600469","fileType":"image/dicom"},{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_ECG_003","procedureName":"Electrocardiogram (ECG)","parameterStableId":"TCPLA_ECG_025_001","parameterName":"Waveform Image","count":2,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1302016","fileType":"image/png"},{"strainAccessionId":"MGI:2683688","procedureStableId":"TCPLA_PAT_002","procedureName":"Gross Pathology and Tissue Collection","parameterStableId":"TCPLA_PAT_057_002","parameterName":"Images","count":12,"thumbnailUrl":"//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1280408","fileType":"image/jpeg"}]}
+[
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "TCPLA_XRY_034_001",
+    "parameterName": "XRay Images Whole Body Dorso Ventral",
+    "count": 10,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/599818",
+    "fileType": "image/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_048_001",
+    "parameterName": "XRay Images Whole Body Lateral Orientation",
+    "count": 10,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/616316",
+    "fileType": "image/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_PAT_002",
+    "procedureName": "Gross Pathology and Tissue Collection",
+    "parameterStableId": "IMPC_PAT_057_002",
+    "parameterName": "Images",
+    "count": 8,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1193459",
+    "fileType": "image/jpeg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_HIS_003",
+    "procedureName": "Histopathology",
+    "parameterStableId": "IMPC_HIS_177_001",
+    "parameterName": "Images",
+    "count": 5,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1193945",
+    "fileType": "image/tiff"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_034_001",
+    "parameterName": "XRay Images Whole Body Dorso Ventral",
+    "count": 10,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/648358",
+    "fileType": "image/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "TCPLA_EYE_051_001",
+    "parameterName": "Images Slit Lamp",
+    "count": 114,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1202681",
+    "fileType": "image/tiff"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "TCPLA_XRY_048_001",
+    "parameterName": "XRay Images Whole Body Lateral Orientation",
+    "count": 10,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/619016",
+    "fileType": "image/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "TCPLA_XRY_050_001",
+    "parameterName": "XRay Images Skull Lateral Orientation",
+    "count": 10,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/607400",
+    "fileType": "image/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_HIS_003",
+    "procedureName": "Histopathology",
+    "parameterStableId": "TCPLA_HIS_177_001",
+    "parameterName": "Images",
+    "count": 17,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1266389",
+    "fileType": "image/tiff"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_050_001",
+    "parameterName": "XRay Images Skull Lateral Orientation",
+    "count": 10,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/702570",
+    "fileType": "image/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_051_001",
+    "parameterName": "XRay Images Skull Dorso Ventral Orientation",
+    "count": 10,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/632881",
+    "fileType": "image/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_050_001",
+    "parameterName": "Images Ophthalmoscopy",
+    "count": 104,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1222374",
+    "fileType": "image/bmp"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "TCPLA_EYE_050_001",
+    "parameterName": "Images Ophthalmoscopy",
+    "count": 147,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1274493",
+    "fileType": "image/bmp"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "TCPLA_XRY_051_001",
+    "parameterName": "XRay Images Skull Dorso Ventral Orientation",
+    "count": 10,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/600469",
+    "fileType": "image/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_ECG_003",
+    "procedureName": "Electrocardiogram (ECG)",
+    "parameterStableId": "TCPLA_ECG_025_001",
+    "parameterName": "Waveform Image",
+    "count": 2,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1302016",
+    "fileType": "image/png"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2143539",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "TCPLA_PAT_002",
+    "procedureName": "Gross Pathology and Tissue Collection",
+    "parameterStableId": "TCPLA_PAT_057_002",
+    "parameterName": "Images",
+    "count": 12,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1280408",
+    "fileType": "image/jpeg"
+  }
+]

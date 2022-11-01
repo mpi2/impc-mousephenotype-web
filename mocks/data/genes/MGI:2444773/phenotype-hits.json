@@ -1,0 +1,58 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:2444773",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_005_001",
+    "parameterName": "Bone Mineral Content (excluding skull)",
+    "alleleAccessionId": "MGI:6276904",
+    "alleleName": "endonuclease-mediated mutation 1, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Mavs<em1(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 3.16171307034787e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -4.70894527260235,
+    "phenotype": {
+      "id": "MP:0010124",
+      "name": "decreased bone mineral content"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2444773",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_004_001",
+    "parameterName": "Bone Mineral Density (excluding skull)",
+    "alleleAccessionId": "MGI:6276904",
+    "alleleName": "endonuclease-mediated mutation 1, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Mavs<em1(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 2.7164501491721e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -5.30700379847678,
+    "phenotype": {
+      "id": "MP:0000063",
+      "name": "decreased bone mineral density"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ]
+  }
+]

@@ -1,86 +1,69 @@
 {
-    "geneAccessionId": "MGI:1929293",
-    "geneName": "calcium and integrin binding family member 2",
-    "geneSymbol": "Cib2",
-    "markerType": "Gene",
-    "synonyms": [
-        "calcium binding protein Kip2",
-        "2810434I23Rik"
-    ],
-    "humanGeneSymbol": [
-        "CIB2"
-    ],
-    "humanSymbolSynonym": [
-        "USH1J",
-        "KIP2",
-        "DFNB48"
-    ],
-    "productionCentre": [
-        "MRC Harwell"
-    ],
-    "phenotypingCentre": [
-        "MRC Harwell"
-    ],
-    "alleleName": [
-        "targeted mutation 1a, Wellcome Trust Sanger Institute",
-        "targeted mutation 1c, Wellcome Trust Sanger Institute",
-        "targeted mutation 1, Aziz El-Amraoui",
-        "targeted mutation 1.1, Aziz El-Amraoui",
-        "targeted mutation 1.1, Zubair M Ahmed",
-        "targeted mutation 1b, Wellcome Trust Sanger Institute"
-    ],
-    "isUmassGene": false,
-    "isIdgGene": false,
-    "hasEmbryoImagingData": false,
-    "chrName": "9",
-    "seqRegionStart": "54452078",
-    "seqRegionEnd": "54467502",
-    "chrStrand": "-",
-    "seqRegionId": "9",
-    "entrezgeneId": "56506",
-    "ensemblGeneId": [
-        "ENSMUSG00000037493"
-    ],
-    "ccdsIds": "CCDS40642.1",
-    "ccdsId": [
-        "CCDS40642.1"
-    ],
-    "ncbiId": "56506",
-    "assignmentStatus": "Selected for production",
-    "nullAlleleProductionStatus": "Genotype confirmed mice",
-    "conditionalAlleleProductionStatus": "Genotype confirmed mice",
-    "esCellProductionStatus": "ES Cells Produced",
-    "phenotypeStatus": "Phenotyping data available",
-    "phenotypingDataAvailable": true,
-    "significantTopLevelPhenotypes": [
-        "homeostasis/metabolism phenotype",
-        "immune system phenotype",
-        "nervous system phenotype",
-        "hearing/vestibular/ear phenotype",
-        "hematopoietic system phenotype",
-        "behavior/neurological phenotype"
-    ],
-    "notSignificantTopLevelPhenotypes": [
-        "reproductive system phenotype",
-        "integument phenotype",
-        "adipose tissue phenotype",
-        "growth/size/body region phenotype",
-        "muscle phenotype",
-        "cardiovascular system phenotype",
-        "craniofacial phenotype",
-        "renal/urinary system phenotype",
-        "pigmentation phenotype",
-        "limbs/digits/tail phenotype",
-        "vision/eye phenotype",
-        "skeleton phenotype",
-        "mortality/aging"
-    ],
-    "significantPhenotypesCount": 25,
-    "adultExpressionObservationsCount": 46,
-    "embryoExpressionObservationsCount": 42,
-    "associatedDiseasesCount": 4,
-    "hasLacZData": true,
-    "hasImagingData": true,
-    "hasViabilityData": true,
-    "hasBodyWeightData": true
+  "id": "6352ac3258a9a161b5073005",
+  "mgiGeneAccessionId": "MGI:1929293",
+  "geneName": "calcium and integrin binding family member 2",
+  "geneSymbol": "Cib2",
+  "markerType": "Gene",
+  "synonyms": ["calcium binding protein Kip2", "2810434I23Rik"],
+  "humanGeneSymbols": ["CIB2"],
+  "humanSymbolSynonyms": ["USH1J", "KIP2", "DFNB48"],
+  "productionCentres": ["MRC Harwell"],
+  "phenotypingCentres": ["MRC Harwell"],
+  "alleleNames": [
+    "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "targeted mutation 1c, Wellcome Trust Sanger Institute",
+    "targeted mutation 1, Aziz El-Amraoui",
+    "targeted mutation 1.1, Aziz El-Amraoui",
+    "targeted mutation 1.1, Zubair M Ahmed",
+    "targeted mutation 1b, Wellcome Trust Sanger Institute"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "9",
+  "seqRegionStart": "54452078",
+  "seqRegionEnd": "54467502",
+  "chrStrand": "-",
+  "seqRegionId": "9",
+  "entrezgeneId": "56506",
+  "ensemblGeneIds": ["ENSMUSG00000037493"],
+  "ccdsIds": ["CCDS40642.1"],
+  "ncbiId": "56506",
+  "assignmentStatus": "Selected for production",
+  "nullAlleleProductionStatus": "Genotype confirmed mice",
+  "conditionalAlleleProductionStatus": "Genotype confirmed mice",
+  "esCellProductionStatus": "ES Cells Produced",
+  "phenotypeStatus": "Phenotyping data available",
+  "phenotypingDataAvailable": true,
+  "significantTopLevelPhenotypes": [
+    "homeostasis/metabolism phenotype",
+    "immune system phenotype",
+    "nervous system phenotype",
+    "hearing/vestibular/ear phenotype",
+    "hematopoietic system phenotype",
+    "behavior/neurological phenotype"
+  ],
+  "notSignificantTopLevelPhenotypes": [
+    "reproductive system phenotype",
+    "integument phenotype",
+    "adipose tissue phenotype",
+    "growth/size/body region phenotype",
+    "muscle phenotype",
+    "cardiovascular system phenotype",
+    "craniofacial phenotype",
+    "renal/urinary system phenotype",
+    "pigmentation phenotype",
+    "limbs/digits/tail phenotype",
+    "vision/eye phenotype",
+    "skeleton phenotype",
+    "mortality/aging"
+  ],
+  "significantPhenotypesCount": 25,
+  "adultExpressionObservationsCount": 46,
+  "embryoExpressionObservationsCount": 42,
+  "associatedDiseasesCount": 4,
+  "hasLacZData": true,
+  "hasImagingData": true,
+  "hasViabilityData": true,
+  "hasBodyWeightData": true
 }

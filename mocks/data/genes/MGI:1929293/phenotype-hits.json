@@ -1,0 +1,700 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_006_001",
+    "parameterName": "Response amplitude - S",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 4.42718461537162e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.45771957428109,
+    "phenotype": {
+      "id": "MP:0001489",
+      "name": "decreased startle reflex"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_034_001",
+    "parameterName": "% Pre-pulse inhibition - PPI2",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 1.13684152413648e-11,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.39310091354683,
+    "phenotype": {
+      "id": "MP:0009142",
+      "name": "decreased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_027_001",
+    "parameterName": "Ears",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 5.88584538586626e-5,
+    "lifeStageName": "Early adult",
+    "phenotype": {
+      "id": "MP:0002102",
+      "name": "abnormal ear morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005377",
+        "name": "hearing/vestibular/ear phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_037_001",
+    "parameterName": "% Pre-pulse inhibition - Global",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 4.79839317253529e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.6142198361195,
+    "phenotype": {
+      "id": "MP:0009142",
+      "name": "decreased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CBC_002",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_015_001",
+    "parameterName": "Total cholesterol",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "MRC",
+    "pValue": 2.48594864649619e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.20569725492556,
+    "phenotype": {
+      "id": "MP:0005178",
+      "name": "increased circulating cholesterol level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CBC_002",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_020_001",
+    "parameterName": "Fructosamine",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "MRC",
+    "pValue": 2.85086555764215e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.97381395569607,
+    "phenotype": {
+      "id": "MP:0010087",
+      "name": "increased circulating fructosamine level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_035_001",
+    "parameterName": "% Pre-pulse inhibition - PPI3",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 3.24270219065874e-10,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.23381821006283,
+    "phenotype": {
+      "id": "MP:0009142",
+      "name": "decreased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_027_001",
+    "parameterName": "Ears",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 3.06906239504408e-10,
+    "lifeStageName": "Early adult",
+    "phenotype": {
+      "id": "MP:0002102",
+      "name": "abnormal ear morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005377",
+        "name": "hearing/vestibular/ear phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_039_001",
+    "parameterName": "Limb grasp",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 1.00055101599781e-6,
+    "lifeStageName": "Early adult",
+    "phenotype": {
+      "id": "MP:0001513",
+      "name": "limb grasping"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CBC_002",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_015_001",
+    "parameterName": "Total cholesterol",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "MRC",
+    "pValue": 2.13685567998102e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.04707368770701,
+    "phenotype": {
+      "id": "MP:0005178",
+      "name": "increased circulating cholesterol level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_036_001",
+    "parameterName": "Startle response",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.05914537203274e-20,
+    "lifeStageName": "Early adult",
+    "phenotype": {
+      "id": "MP:0001486",
+      "name": "abnormal startle reflex"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_037_001",
+    "parameterName": "% Pre-pulse inhibition - Global",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.00934117933703e-13,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.03615719466833,
+    "phenotype": {
+      "id": "MP:0009142",
+      "name": "decreased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CBC_002",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_016_001",
+    "parameterName": "HDL-cholesterol",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "MRC",
+    "pValue": 9.99035965691424e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.06209037931634,
+    "phenotype": {
+      "id": "MP:0001556",
+      "name": "increased circulating HDL cholesterol level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_034_001",
+    "parameterName": "% Pre-pulse inhibition - PPI2",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 6.99875102373325e-21,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.58759466888043,
+    "phenotype": {
+      "id": "MP:0009142",
+      "name": "decreased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ABR_002",
+    "procedureName": "Auditory Brain Stem Response",
+    "parameterStableId": "IMPC_ABR_010_001",
+    "parameterName": "24kHz-evoked ABR Threshold",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "not_considered",
+    "projectName": "MRC",
+    "pValue": 4.21914224838091e-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.973913043478261,
+    "phenotype": {
+      "id": "MP:0004738",
+      "name": "abnormal auditory brainstem response"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005377",
+        "name": "hearing/vestibular/ear phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_036_001",
+    "parameterName": "% Pre-pulse inhibition - PPI4",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 1.92937354218676e-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.72171246216699,
+    "phenotype": {
+      "id": "MP:0009142",
+      "name": "decreased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_035_001",
+    "parameterName": "% Pre-pulse inhibition - PPI3",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.39106178204705e-18,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.40527338802393,
+    "phenotype": {
+      "id": "MP:0009142",
+      "name": "decreased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ABR_002",
+    "procedureName": "Auditory Brain Stem Response",
+    "parameterStableId": "IMPC_ABR_008_001",
+    "parameterName": "18kHz-evoked ABR Threshold",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "not_considered",
+    "projectName": "MRC",
+    "pValue": 3.47458773396074e-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.973568281938326,
+    "phenotype": {
+      "id": "MP:0004738",
+      "name": "abnormal auditory brainstem response"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005377",
+        "name": "hearing/vestibular/ear phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ABR_002",
+    "procedureName": "Auditory Brain Stem Response",
+    "parameterStableId": "IMPC_ABR_004_001",
+    "parameterName": "6kHz-evoked ABR Threshold",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "not_considered",
+    "projectName": "MRC",
+    "pValue": 2.80473093383979e-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.973799126637555,
+    "phenotype": {
+      "id": "MP:0004738",
+      "name": "abnormal auditory brainstem response"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005377",
+        "name": "hearing/vestibular/ear phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_036_001",
+    "parameterName": "% Pre-pulse inhibition - PPI4",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 4.98555209801524e-14,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.14159404588968,
+    "phenotype": {
+      "id": "MP:0009142",
+      "name": "decreased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CBC_002",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_017_001",
+    "parameterName": "Triglycerides",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "MRC",
+    "pValue": 1.16736728782684e-7,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.35120958729092,
+    "phenotype": {
+      "id": "MP:0001552",
+      "name": "increased circulating triglyceride level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_HEM_002",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_037_001",
+    "parameterName": "Basophil cell count",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "MRC",
+    "pValue": 8.5900013922149e-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.11836375815516,
+    "phenotype": {
+      "id": "MP:0002606",
+      "name": "increased basophil cell number"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005387",
+        "name": "immune system phenotype"
+      },
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_ABR_002",
+    "procedureName": "Auditory Brain Stem Response",
+    "parameterStableId": "IMPC_ABR_006_001",
+    "parameterName": "12kHz-evoked ABR Threshold",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "not_considered",
+    "projectName": "MRC",
+    "pValue": 4.19168579123309e-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.969565217391304,
+    "phenotype": {
+      "id": "MP:0004738",
+      "name": "abnormal auditory brainstem response"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005377",
+        "name": "hearing/vestibular/ear phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_030_001",
+    "parameterName": "Tremor",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 2.93339443537005e-5,
+    "lifeStageName": "Early adult",
+    "phenotype": {
+      "id": "MP:0000745",
+      "name": "tremors"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_036_001",
+    "parameterName": "Startle response",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 5.92582895173399e-16,
+    "lifeStageName": "Early adult",
+    "phenotype": {
+      "id": "MP:0001486",
+      "name": "abnormal startle reflex"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ]
+  }
+]

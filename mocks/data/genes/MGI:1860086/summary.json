@@ -1,86 +1,69 @@
 {
-    "geneAccessionId": "MGI:1860086",
-    "geneName": "cytokine receptor-like factor 3",
-    "geneSymbol": "Crlf3",
-    "markerType": "Gene",
-    "synonyms": [
-        "Creme9",
-        "cytor4"
-    ],
-    "humanGeneSymbol": [
-        "CRLF3"
-    ],
-    "humanSymbolSynonym": [
-        "CREME9",
-        "CYTOR4"
-    ],
-    "productionCentre": [
-        "WTSI"
-    ],
-    "phenotypingCentre": [
-        "WTSI"
-    ],
-    "alleleName": [
-        "targeted mutation 1a, Wellcome Trust Sanger Institute",
-        "endonuclease mediated mutation 1, Wellcome Trust Sanger Institute",
-        "targeted mutation 1c, Wellcome Trust Sanger Institute",
-        "targeted mutation 1, Lexicon Pharmaceuticals",
-        "targeted mutation 1b, Wellcome Trust Sanger Institute"
-    ],
-    "isUmassGene": false,
-    "isIdgGene": false,
-    "hasEmbryoImagingData": false,
-    "chrName": "11",
-    "seqRegionStart": "79937319",
-    "seqRegionEnd": "79971817",
-    "chrStrand": "-",
-    "seqRegionId": "11",
-    "entrezgeneId": "54394",
-    "ensemblGeneId": [
-        "ENSMUSG00000017561"
-    ],
-    "ccdsIds": "CCDS25126.1|CCDS70260.1",
-    "ccdsId": [
-        "CCDS25126.1|CCDS70260.1"
-    ],
-    "ncbiId": "54394",
-    "assignmentStatus": "Selected for production",
-    "nullAlleleProductionStatus": "Started",
-    "conditionalAlleleProductionStatus": "Started",
-    "crisprAlleleProductionStatus": "Genotype confirmed mice",
-    "esCellProductionStatus": "ES Cells Produced",
-    "mouseProductionStatus": "Mice Produced",
-    "phenotypeStatus": "Phenotyping data available",
-    "phenotypingDataAvailable": true,
-    "significantTopLevelPhenotypes": [
-        "growth/size/body region phenotype",
-        "hematopoietic system phenotype",
-        "behavior/neurological phenotype"
-    ],
-    "notSignificantTopLevelPhenotypes": [
-        "reproductive system phenotype",
-        "immune system phenotype",
-        "integument phenotype",
-        "endocrine/exocrine gland phenotype",
-        "adipose tissue phenotype",
-        "digestive/alimentary phenotype",
-        "hearing/vestibular/ear phenotype",
-        "muscle phenotype",
-        "cardiovascular system phenotype",
-        "craniofacial phenotype",
-        "renal/urinary system phenotype",
-        "homeostasis/metabolism phenotype",
-        "pigmentation phenotype",
-        "limbs/digits/tail phenotype",
-        "nervous system phenotype",
-        "vision/eye phenotype",
-        "skeleton phenotype",
-        "mortality/aging"
-    ],
-    "significantPhenotypesCount": 15,
-    "adultExpressionObservationsCount": 45,
-    "hasLacZData": true,
-    "hasImagingData": true,
-    "hasViabilityData": true,
-    "hasBodyWeightData": true
+  "mgiGeneAccessionId": "MGI:1860086",
+  "geneName": "cytokine receptor-like factor 3",
+  "geneSymbol": "Crlf3",
+  "markerType": "Gene",
+  "synonyms": ["Creme9", "cytor4"],
+  "humanGeneSymbols": ["CRLF3"],
+  "humanSymbolSynonyms": ["CREME9", "CYTOR4"],
+  "productionCentres": ["WTSI"],
+  "phenotypingCentres": ["WTSI"],
+  "alleleNames": [
+    "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "endonuclease mediated mutation 1, Wellcome Trust Sanger Institute",
+    "targeted mutation 1c, Wellcome Trust Sanger Institute",
+    "targeted mutation 1, Lexicon Pharmaceuticals",
+    "targeted mutation 1b, Wellcome Trust Sanger Institute"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "11",
+  "seqRegionStart": "79937319",
+  "seqRegionEnd": "79971817",
+  "chrStrand": "-",
+  "seqRegionId": "11",
+  "entrezgeneId": "54394",
+  "ensemblGeneIds": ["ENSMUSG00000017561"],
+  "ccdsIds": ["CCDS25126.1", "CCDS70260.1"],
+  "ncbiId": "54394",
+  "assignmentStatus": "Selected for production",
+  "nullAlleleProductionStatus": "Started",
+  "conditionalAlleleProductionStatus": "Started",
+  "crisprAlleleProductionStatus": "Genotype confirmed mice",
+  "esCellProductionStatus": "ES Cells Produced",
+  "mouseProductionStatus": "Mice Produced",
+  "phenotypeStatus": "Phenotyping data available",
+  "phenotypingDataAvailable": true,
+  "significantTopLevelPhenotypes": [
+    "growth/size/body region phenotype",
+    "hematopoietic system phenotype",
+    "behavior/neurological phenotype"
+  ],
+  "notSignificantTopLevelPhenotypes": [
+    "reproductive system phenotype",
+    "immune system phenotype",
+    "integument phenotype",
+    "endocrine/exocrine gland phenotype",
+    "adipose tissue phenotype",
+    "digestive/alimentary phenotype",
+    "hearing/vestibular/ear phenotype",
+    "muscle phenotype",
+    "cardiovascular system phenotype",
+    "craniofacial phenotype",
+    "renal/urinary system phenotype",
+    "homeostasis/metabolism phenotype",
+    "pigmentation phenotype",
+    "limbs/digits/tail phenotype",
+    "nervous system phenotype",
+    "vision/eye phenotype",
+    "skeleton phenotype",
+    "mortality/aging"
+  ],
+  "significantPhenotypesCount": 15,
+  "adultExpressionObservationsCount": 45,
+  "hasLacZData": true,
+  "hasImagingData": true,
+  "hasViabilityData": true,
+  "hasBodyWeightData": true
 }

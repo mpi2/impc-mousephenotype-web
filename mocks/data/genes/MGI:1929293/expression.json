@@ -1,1906 +1,992 @@
-{
-    "expressionData": [
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Tail",
-            "parameterStableId": "IMPC_ELZ_060_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 1
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 293,
-                "imageOnly": 208,
-                "ambiguous": 6
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Skeletal Muscle",
-            "parameterStableId": "IMPC_ALZ_023_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 380,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Kidney",
-            "parameterStableId": "IMPC_ALZ_006_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 18,
-                "tissueNotAvailable": 0,
-                "noExpression": 293,
-                "imageOnly": 0,
-                "ambiguous": 98
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Forelimb",
-            "parameterStableId": "IMPC_ELZ_003_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 296,
-                "imageOnly": 208,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Hindlimb",
-            "parameterStableId": "IMPC_ELZ_009_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 296,
-                "imageOnly": 208,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Mammary gland",
-            "parameterStableId": "IMPC_ALZ_009_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 111,
-                "noExpression": 298,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Maxillary process",
-            "parameterStableId": "IMPC_ELZ_022_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Skin",
-            "parameterStableId": "IMPC_ELZ_017_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 1
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 299,
-                "imageOnly": 208,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Handplate",
-            "parameterStableId": "IMPC_ELZ_008_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 293,
-                "imageOnly": 208,
-                "ambiguous": 6
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Eye",
-            "parameterStableId": "IMPC_ALZ_004_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 256,
-                "noExpression": 153,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Spinal cord",
-            "parameterStableId": "IMPC_ALZ_020_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 409,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Trachea",
-            "parameterStableId": "IMPC_ALZ_016_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 401,
-                "imageOnly": 0,
-                "ambiguous": 7
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Parathyroid gland",
-            "parameterStableId": "IMPC_ALZ_060_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 17,
-                "noExpression": 346,
-                "imageOnly": 0,
-                "ambiguous": 24
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Large Intestine",
-            "parameterStableId": "IMPC_ALZ_018_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 10,
-                "tissueNotAvailable": 29,
-                "noExpression": 272,
-                "imageOnly": 0,
-                "ambiguous": 98
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Pancreas",
-            "parameterStableId": "IMPC_ALZ_028_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 5,
-                "tissueNotAvailable": 0,
-                "noExpression": 400,
-                "imageOnly": 0,
-                "ambiguous": 4
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Lung",
-            "parameterStableId": "IMPC_ELZ_033_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 208,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Footplate",
-            "parameterStableId": "IMPC_ELZ_010_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 293,
-                "imageOnly": 208,
-                "ambiguous": 6
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Forebrain",
-            "parameterStableId": "IMPC_ELZ_043_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Brain",
-            "parameterStableId": "IMPC_ALZ_003_001",
-            "mutantCounts": {
-                "expression": 3,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 18,
-                "noExpression": 379,
-                "imageOnly": 0,
-                "ambiguous": 12
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Gall Bladder",
-            "parameterStableId": "IMPC_ALZ_056_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 260,
-                "imageOnly": 0,
-                "ambiguous": 98
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Hindlimb",
-            "parameterStableId": "IMPC_ELZ_009_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 296,
-                "imageOnly": 208,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Skin",
-            "parameterStableId": "IMPC_ELZ_017_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 299,
-                "imageOnly": 208,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Thymus",
-            "parameterStableId": "IMPC_ALZ_015_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 377,
-                "imageOnly": 0,
-                "ambiguous": 32
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Cartilage tissue",
-            "parameterStableId": "IMPC_ALZ_032_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 284,
-                "imageOnly": 0,
-                "ambiguous": 96
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Stomach",
-            "parameterStableId": "IMPC_ALZ_013_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 12,
-                "tissueNotAvailable": 0,
-                "noExpression": 299,
-                "imageOnly": 0,
-                "ambiguous": 98
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Ear",
-            "parameterStableId": "IMPC_ELZ_048_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Hindbrain",
-            "parameterStableId": "IMPC_ELZ_092_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 6,
-                "tissueNotAvailable": 0,
-                "noExpression": 286,
-                "imageOnly": 213,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Thyroid gland",
-            "parameterStableId": "IMPC_ALZ_021_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 15,
-                "tissueNotAvailable": 0,
-                "noExpression": 296,
-                "imageOnly": 0,
-                "ambiguous": 98
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Small Intestine",
-            "parameterStableId": "IMPC_ALZ_024_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 9,
-                "tissueNotAvailable": 29,
-                "noExpression": 274,
-                "imageOnly": 0,
-                "ambiguous": 97
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Heart",
-            "parameterStableId": "IMPC_ELZ_036_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 1,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 234,
-                "imageOnly": 213,
-                "ambiguous": 60
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Uterus",
-            "parameterStableId": "IMPC_ALZ_017_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 206,
-                "noExpression": 155,
-                "imageOnly": 0,
-                "ambiguous": 48
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Embryo",
-            "parameterStableId": "IMPC_ELZ_001_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 1
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 269,
-                "imageOnly": 165,
-                "ambiguous": 74
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Lower Urinary Tract",
-            "parameterStableId": "IMPC_ALZ_002_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 35,
-                "noExpression": 282,
-                "imageOnly": 0,
-                "ambiguous": 92
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Spleen",
-            "parameterStableId": "IMPC_ALZ_030_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 322,
-                "imageOnly": 0,
-                "ambiguous": 85
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Heart",
-            "parameterStableId": "IMPC_ELZ_036_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 1,
-                "imageOnly": 2,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 234,
-                "imageOnly": 213,
-                "ambiguous": 60
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Midbrain",
-            "parameterStableId": "IMPC_ELZ_044_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 291,
-                "imageOnly": 213,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Hippocampus",
-            "parameterStableId": "IMPC_ALZ_035_001",
-            "mutantCounts": {
-                "expression": 3,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 30,
-                "noExpression": 379,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Mandibular process",
-            "parameterStableId": "IMPC_ELZ_020_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Vascular System",
-            "parameterStableId": "IMPC_ALZ_041_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 380,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Hindbrain",
-            "parameterStableId": "IMPC_ELZ_092_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 6,
-                "tissueNotAvailable": 0,
-                "noExpression": 286,
-                "imageOnly": 213,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Peyers Patch",
-            "parameterStableId": "IMPC_ALZ_039_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 377,
-                "imageOnly": 0,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Handplate",
-            "parameterStableId": "IMPC_ELZ_008_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 293,
-                "imageOnly": 208,
-                "ambiguous": 6
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Adrenal gland",
-            "parameterStableId": "IMPC_ALZ_001_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 1,
-                "noExpression": 387,
-                "imageOnly": 0,
-                "ambiguous": 19
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Liver",
-            "parameterStableId": "IMPC_ALZ_007_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 356,
-                "imageOnly": 0,
-                "ambiguous": 53
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Brain",
-            "parameterStableId": "IMPC_ELZ_042_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 6,
-                "tissueNotAvailable": 0,
-                "noExpression": 285,
-                "imageOnly": 211,
-                "ambiguous": 6
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Cerebral Cortex",
-            "parameterStableId": "IMPC_ALZ_033_001",
-            "mutantCounts": {
-                "expression": 3,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 30,
-                "noExpression": 379,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Liver",
-            "parameterStableId": "IMPC_ELZ_028_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 208,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Striatum",
-            "parameterStableId": "IMPC_ALZ_040_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 3,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 30,
-                "noExpression": 379,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Maxillary process",
-            "parameterStableId": "IMPC_ELZ_022_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Bone",
-            "parameterStableId": "IMPC_ALZ_043_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 271,
-                "imageOnly": 0,
-                "ambiguous": 87
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Brainstem",
-            "parameterStableId": "IMPC_ALZ_031_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 1
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 30,
-                "noExpression": 379,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Forelimb",
-            "parameterStableId": "IMPC_ELZ_003_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 296,
-                "imageOnly": 208,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Lung",
-            "parameterStableId": "IMPC_ELZ_033_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 208,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Ovary",
-            "parameterStableId": "IMPC_ALZ_010_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 207,
-                "noExpression": 152,
-                "imageOnly": 0,
-                "ambiguous": 49
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "White Adipose Tissue",
-            "parameterStableId": "IMPC_ALZ_025_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 380,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Midbrain",
-            "parameterStableId": "IMPC_ELZ_044_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 291,
-                "imageOnly": 213,
-                "ambiguous": 3
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Mandibular process",
-            "parameterStableId": "IMPC_ELZ_020_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Tail somite group",
-            "parameterStableId": "IMPC_ELZ_061_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 2
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Footplate",
-            "parameterStableId": "IMPC_ELZ_010_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 293,
-                "imageOnly": 208,
-                "ambiguous": 6
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Cerebellum",
-            "parameterStableId": "IMPC_ALZ_034_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 3,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 408,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Forebrain",
-            "parameterStableId": "IMPC_ELZ_043_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Prostate gland",
-            "parameterStableId": "IMPC_ALZ_029_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 12,
-                "tissueNotAvailable": 206,
-                "noExpression": 140,
-                "imageOnly": 1,
-                "ambiguous": 50
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Brain",
-            "parameterStableId": "IMPC_ELZ_042_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 6,
-                "tissueNotAvailable": 0,
-                "noExpression": 285,
-                "imageOnly": 211,
-                "ambiguous": 6
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Eye",
-            "parameterStableId": "IMPC_ELZ_051_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 2
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 297,
-                "imageOnly": 210,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Testis",
-            "parameterStableId": "IMPC_ALZ_014_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 2,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 203,
-                "noExpression": 154,
-                "imageOnly": 1,
-                "ambiguous": 49
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Oviduct",
-            "parameterStableId": "IMPC_ALZ_011_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 206,
-                "noExpression": 156,
-                "imageOnly": 0,
-                "ambiguous": 47
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Hypothalamus",
-            "parameterStableId": "IMPC_ALZ_036_001",
-            "mutantCounts": {
-                "expression": 3,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 30,
-                "noExpression": 379,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Esophagus",
-            "parameterStableId": "IMPC_ALZ_019_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 7,
-                "tissueNotAvailable": 1,
-                "noExpression": 401,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Oral cavity",
-            "parameterStableId": "IMPC_ELZ_019_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 208,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Tail somite group",
-            "parameterStableId": "IMPC_ELZ_061_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Embryo",
-            "parameterStableId": "IMPC_ELZ_001_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 269,
-                "imageOnly": 165,
-                "ambiguous": 74
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Heart",
-            "parameterStableId": "IMPC_ALZ_005_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 380,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Olfactory Lobe",
-            "parameterStableId": "IMPC_ALZ_037_001",
-            "mutantCounts": {
-                "expression": 3,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 6,
-                "noExpression": 403,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Brown adipose tissue",
-            "parameterStableId": "IMPC_ALZ_052_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 407,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "expressionImageParameters": [
-                {
-                    "parameter_stable_id": "IMPC_ALZ_076_001",
-                    "parameter_name": "LacZ Images Wholemount"
-                }
-            ],
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Eye",
-            "parameterStableId": "IMPC_ELZ_051_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 1,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 297,
-                "imageOnly": 210,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Ear",
-            "parameterStableId": "IMPC_ELZ_048_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 213,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Head",
-            "parameterStableId": "IMPC_ELZ_002_001",
-            "mutantCounts": {
-                "expression": 2,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 5,
-                "tissueNotAvailable": 0,
-                "noExpression": 285,
-                "imageOnly": 208,
-                "ambiguous": 10
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Lung",
-            "parameterStableId": "IMPC_ALZ_026_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 360,
-                "imageOnly": 0,
-                "ambiguous": 49
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Liver",
-            "parameterStableId": "IMPC_ELZ_028_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 208,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Tail",
-            "parameterStableId": "IMPC_ELZ_060_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 2
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 293,
-                "imageOnly": 208,
-                "ambiguous": 6
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Oral epithelium",
-            "parameterStableId": "IMPC_ALZ_074_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 358,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Oral cavity",
-            "parameterStableId": "IMPC_ELZ_019_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 2,
-                "noExpression": 0,
-                "imageOnly": 1,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 294,
-                "imageOnly": 208,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "embryo"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Aorta",
-            "parameterStableId": "IMPC_ALZ_027_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 3,
-                "noExpression": 0,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 408,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Peripheral Nervous System",
-            "parameterStableId": "IMPC_ALZ_038_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 380,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Skin",
-            "parameterStableId": "IMPC_ALZ_012_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 0,
-                "noExpression": 371,
-                "imageOnly": 0,
-                "ambiguous": 38
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Lymph Node",
-            "parameterStableId": "IMPC_ALZ_008_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 29,
-                "noExpression": 331,
-                "imageOnly": 0,
-                "ambiguous": 49
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "heterozygote",
-            "parameterName": "Pituitary gland",
-            "parameterStableId": "IMPC_ALZ_022_001",
-            "mutantCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 1,
-                "noExpression": 2,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 0,
-                "tissueNotAvailable": 8,
-                "noExpression": 372,
-                "imageOnly": 0,
-                "ambiguous": 29
-            },
-            "lacZLifestage": "adult"
-        },
-        {
-            "geneAccessionId": "MGI:1929293",
-            "zygosity": "homozygote",
-            "parameterName": "Head",
-            "parameterStableId": "IMPC_ELZ_002_001",
-            "mutantCounts": {
-                "expression": 1,
-                "tissueNotAvailable": 0,
-                "noExpression": 1,
-                "imageOnly": 0,
-                "ambiguous": 0
-            },
-            "controlCounts": {
-                "expression": 5,
-                "tissueNotAvailable": 0,
-                "noExpression": 285,
-                "imageOnly": 208,
-                "ambiguous": 10
-            },
-            "lacZLifestage": "embryo"
-        }
-    ]
-}
+[
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Spleen",
+    "parameterStableId": "MGP_ALZ_111_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 3,
+      "noExpression": 170,
+      "imageOnly": 0,
+      "ambiguous": 2
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Ovary",
+    "parameterStableId": "MGP_ALZ_091_001",
+    "mutantCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 1,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 92,
+      "noExpression": 56,
+      "imageOnly": 0,
+      "ambiguous": 28
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Cartilage tissue",
+    "parameterStableId": "MGP_ALZ_113_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 3,
+      "noExpression": 169,
+      "imageOnly": 0,
+      "ambiguous": 3
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Olfactory lobe",
+    "parameterStableId": "MGP_ALZ_126_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 62,
+      "noExpression": 112,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Oesophagus",
+    "parameterStableId": "MGP_ALZ_100_001",
+    "mutantCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 0,
+      "noExpression": 2,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 173,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Large Intestine",
+    "parameterStableId": "MGP_ALZ_099_001",
+    "mutantCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 0,
+      "noExpression": 1,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 4,
+      "noExpression": 169,
+      "imageOnly": 0,
+      "ambiguous": 3
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Small Intestine",
+    "parameterStableId": "MGP_ALZ_105_001",
+    "mutantCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 0,
+      "noExpression": 1,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 4,
+      "noExpression": 162,
+      "imageOnly": 0,
+      "ambiguous": 10
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Prostate gland",
+    "parameterStableId": "MGP_ALZ_110_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 2,
+      "noExpression": 1,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 89,
+      "noExpression": 77,
+      "imageOnly": 0,
+      "ambiguous": 10
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Cerebellum",
+    "parameterStableId": "MGP_ALZ_115_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 63,
+      "noExpression": 110,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Skin",
+    "parameterStableId": "MGP_ALZ_093_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 3,
+      "noExpression": 171,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Liver",
+    "parameterStableId": "MGP_ALZ_088_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 173,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "White Adipose Tissue",
+    "parameterStableId": "MGP_ALZ_106_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 172,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Stomach",
+    "parameterStableId": "MGP_ALZ_094_001",
+    "mutantCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 0,
+      "noExpression": 2,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 4,
+      "noExpression": 31,
+      "imageOnly": 0,
+      "ambiguous": 140
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Brown Adipose Tissue",
+    "parameterStableId": "MGP_ALZ_123_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 1,
+      "noExpression": 2,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 6,
+      "noExpression": 170,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Testis",
+    "parameterStableId": "MGP_ALZ_095_001",
+    "mutantCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 2,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 4,
+      "tissueNotAvailable": 89,
+      "noExpression": 64,
+      "imageOnly": 0,
+      "ambiguous": 19
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Spinal cord",
+    "parameterStableId": "MGP_ALZ_101_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 4,
+      "noExpression": 169,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Thyroid gland",
+    "parameterStableId": "MGP_ALZ_102_001",
+    "mutantCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 2
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 5,
+      "noExpression": 95,
+      "imageOnly": 0,
+      "ambiguous": 74
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Pancreas",
+    "parameterStableId": "MGP_ALZ_109_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 5,
+      "noExpression": 168,
+      "imageOnly": 0,
+      "ambiguous": 3
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Hypothalamus",
+    "parameterStableId": "MGP_ALZ_117_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 64,
+      "noExpression": 109,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Blood vessel",
+    "parameterStableId": "MGP_ALZ_121_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 173,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Lung",
+    "parameterStableId": "MGP_ALZ_107_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 3,
+      "noExpression": 170,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Eye",
+    "parameterStableId": "MGP_ALZ_085_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 5,
+      "noExpression": 171,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Aorta",
+    "parameterStableId": "MGP_ALZ_108_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 62,
+      "noExpression": 113,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Bone",
+    "parameterStableId": "MGP_ALZ_122_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 123,
+      "imageOnly": 0,
+      "ambiguous": 50
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Gall Bladder",
+    "parameterStableId": "MGP_ALZ_124_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 4,
+      "noExpression": 171,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Uterus",
+    "parameterStableId": "MGP_ALZ_098_001",
+    "mutantCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 1,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 90,
+      "noExpression": 75,
+      "imageOnly": 0,
+      "ambiguous": 11
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Mammary gland",
+    "parameterStableId": "MGP_ALZ_090_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 5,
+      "noExpression": 171,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Lymph Node",
+    "parameterStableId": "MGP_ALZ_089_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 6,
+      "noExpression": 127,
+      "imageOnly": 0,
+      "ambiguous": 42
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Peyer's Patch",
+    "parameterStableId": "MGP_ALZ_119_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 5,
+      "noExpression": 170,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Skeletal muscle tissue",
+    "parameterStableId": "MGP_ALZ_104_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 0,
+      "noExpression": 3,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 173,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Parathyroid gland",
+    "parameterStableId": "MGP_ALZ_125_001",
+    "mutantCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 2
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 7,
+      "noExpression": 165,
+      "imageOnly": 0,
+      "ambiguous": 3
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Oviduct",
+    "parameterStableId": "MGP_ALZ_092_001",
+    "mutantCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 1,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 92,
+      "noExpression": 82,
+      "imageOnly": 0,
+      "ambiguous": 2
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Cerebral Cortex",
+    "parameterStableId": "MGP_ALZ_114_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 62,
+      "noExpression": 112,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Peripheral Nervous System",
+    "parameterStableId": "MGP_ALZ_118_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 4,
+      "noExpression": 169,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Heart",
+    "parameterStableId": "MGP_ALZ_086_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 4,
+      "noExpression": 170,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Hippocampus",
+    "parameterStableId": "MGP_ALZ_116_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 63,
+      "noExpression": 110,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Kidney",
+    "parameterStableId": "MGP_ALZ_087_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 5,
+      "noExpression": 95,
+      "imageOnly": 0,
+      "ambiguous": 73
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Adrenal Gland",
+    "parameterStableId": "MGP_ALZ_082_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 6,
+      "noExpression": 167,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Striatum",
+    "parameterStableId": "MGP_ALZ_120_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 62,
+      "noExpression": 111,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Brainstem",
+    "parameterStableId": "MGP_ALZ_112_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 3,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 63,
+      "noExpression": 111,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Lower Urinary Tract",
+    "parameterStableId": "MGP_ALZ_083_001",
+    "mutantCounts": {
+      "expression": 2,
+      "tissueNotAvailable": 0,
+      "noExpression": 1,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 6,
+      "noExpression": 145,
+      "imageOnly": 0,
+      "ambiguous": 24
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Trachea",
+    "parameterStableId": "MGP_ALZ_097_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 5,
+      "noExpression": 167,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Brain",
+    "parameterStableId": "MGP_ALZ_084_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 4,
+      "tissueNotAvailable": 3,
+      "noExpression": 168,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Pituitary gland",
+    "parameterStableId": "MGP_ALZ_103_001",
+    "mutantCounts": {
+      "expression": 0,
+      "tissueNotAvailable": 1,
+      "noExpression": 2,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 28,
+      "noExpression": 146,
+      "imageOnly": 0,
+      "ambiguous": 1
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1860086",
+    "zygosity": "heterozygote",
+    "parameterName": "Thymus",
+    "parameterStableId": "MGP_ALZ_096_001",
+    "mutantCounts": {
+      "expression": 3,
+      "tissueNotAvailable": 0,
+      "noExpression": 0,
+      "imageOnly": 0,
+      "ambiguous": 0
+    },
+    "controlCounts": {
+      "expression": 1,
+      "tissueNotAvailable": 5,
+      "noExpression": 144,
+      "imageOnly": 0,
+      "ambiguous": 26
+    },
+    "lacZLifestage": "adult",
+    "expressionImageParameters": null
+  }
+]

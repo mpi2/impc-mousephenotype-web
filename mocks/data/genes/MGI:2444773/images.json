@@ -1,24 +1,24 @@
-{
-    "gene_images": [
-        {
-            "strainAccessionId": "MGI:2683688",
-            "procedureStableId": "IMPC_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_034_001",
-            "parameterName": "XRay Images Whole Body Dorso Ventral",
-            "count": 59,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1033515",
-            "fileType": "image/png"
-        },
-        {
-            "strainAccessionId": "MGI:2683688",
-            "procedureStableId": "IMPC_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_048_001",
-            "parameterName": "XRay Images Whole Body Lateral Orientation",
-            "count": 21,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1065929",
-            "fileType": "image/png"
-        }
-    ]
-}
+[
+  {
+    "mgiGeneAccessionId": "MGI:2444773",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_034_001",
+    "parameterName": "XRay Images Whole Body Dorso Ventral",
+    "count": 59,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1033515",
+    "fileType": "image/png"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2444773",
+    "strainAccessionId": "MGI:2683688",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_048_001",
+    "parameterName": "XRay Images Whole Body Lateral Orientation",
+    "count": 21,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1065929",
+    "fileType": "image/png"
+  }
+]

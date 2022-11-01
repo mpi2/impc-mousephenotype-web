@@ -1,74 +1,79 @@
-{
-    "gene_images": [
-        {
-            "strainAccessionId": "MGI:2164831",
-            "procedureStableId": "IMPC_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_034_001",
-            "parameterName": "XRay Images Whole Body Dorso Ventral",
-            "count": 32,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/63809",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:2164831",
-            "procedureStableId": "IMPC_ELZ_001",
-            "procedureName": "Embryo LacZ",
-            "parameterStableId": "IMPC_ELZ_064_001",
-            "parameterName": "LacZ images wholemount",
-            "count": 8,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/735783",
-            "fileType": "image/jpeg"
-        },
-        {
-            "strainAccessionId": "MGI:2164831",
-            "procedureStableId": "IMPC_ABR_002",
-            "procedureName": "Auditory Brain Stem Response",
-            "parameterStableId": "IMPC_ABR_014_001",
-            "parameterName": "Click-evoked + 6 to 30kHz tone waveforms (pdf format)",
-            "count": 3,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/63829",
-            "fileType": "application/pdf"
-        },
-        {
-            "strainAccessionId": "MGI:2164831",
-            "procedureStableId": "IMPC_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_048_001",
-            "parameterName": "XRay Images Whole Body Lateral Orientation",
-            "count": 21,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/69998",
-            "fileType": "application/dicom"
-        },
-        {
-            "strainAccessionId": "MGI:2164831",
-            "procedureStableId": "IMPC_ALZ_001",
-            "procedureName": "Adult LacZ",
-            "parameterStableId": "IMPC_ALZ_076_001",
-            "parameterName": "LacZ Images Wholemount",
-            "count": 7,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/42517",
-            "fileType": "image/jpeg"
-        },
-        {
-            "strainAccessionId": "MGI:2164831",
-            "procedureStableId": "IMPC_ECH_001",
-            "procedureName": "Echo",
-            "parameterStableId": "IMPC_ECH_025_001",
-            "parameterName": "M-Mode Images",
-            "count": 79,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/43405",
-            "fileType": "image/tiff"
-        },
-        {
-            "strainAccessionId": "MGI:2164831",
-            "procedureStableId": "IMPC_XRY_001",
-            "procedureName": "X-ray",
-            "parameterStableId": "IMPC_XRY_052_001",
-            "parameterName": "XRay Images Hind Leg and Hip",
-            "count": 12,
-            "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/77105",
-            "fileType": "application/dicom"
-        }
-    ]
-}
+[
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "strainAccessionId": "MGI:2164831",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_034_001",
+    "parameterName": "XRay Images Whole Body Dorso Ventral",
+    "count": 32,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/63809",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "strainAccessionId": "MGI:2164831",
+    "procedureStableId": "IMPC_ELZ_001",
+    "procedureName": "Embryo LacZ",
+    "parameterStableId": "IMPC_ELZ_064_001",
+    "parameterName": "LacZ images wholemount",
+    "count": 8,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/735783",
+    "fileType": "image/jpeg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "strainAccessionId": "MGI:2164831",
+    "procedureStableId": "IMPC_ABR_002",
+    "procedureName": "Auditory Brain Stem Response",
+    "parameterStableId": "IMPC_ABR_014_001",
+    "parameterName": "Click-evoked + 6 to 30kHz tone waveforms (pdf format)",
+    "count": 3,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/63829",
+    "fileType": "application/pdf"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "strainAccessionId": "MGI:2164831",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_048_001",
+    "parameterName": "XRay Images Whole Body Lateral Orientation",
+    "count": 21,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/69998",
+    "fileType": "application/dicom"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "strainAccessionId": "MGI:2164831",
+    "procedureStableId": "IMPC_ALZ_001",
+    "procedureName": "Adult LacZ",
+    "parameterStableId": "IMPC_ALZ_076_001",
+    "parameterName": "LacZ Images Wholemount",
+    "count": 7,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/42517",
+    "fileType": "image/jpeg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "strainAccessionId": "MGI:2164831",
+    "procedureStableId": "IMPC_ECH_001",
+    "procedureName": "Echo",
+    "parameterStableId": "IMPC_ECH_025_001",
+    "parameterName": "M-Mode Images",
+    "count": 79,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/43405",
+    "fileType": "image/tiff"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1929293",
+    "strainAccessionId": "MGI:2164831",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_052_001",
+    "parameterName": "XRay Images Hind Leg and Hip",
+    "count": 12,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/77105",
+    "fileType": "application/dicom"
+  }
+]
