@@ -26,7 +26,9 @@ const GeneColumn = ({
   useEffect(() => {
     (async () => {
       if (!geneId) return;
-      const res = await fetch(`/api/genes/${geneId}/summary`);
+      const res = await fetch(
+        `/api/v1/genes/${"MGI:1929293" || geneId}/summary`
+      );
       if (res.ok) {
         setData(await res.json());
       }

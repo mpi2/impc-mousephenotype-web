@@ -21,7 +21,9 @@ const Order = () => {
   useEffect(() => {
     (async () => {
       if (!router.query.pid) return;
-      const res = await fetch(`/api/genes/${router.query.pid}/order`);
+      const res = await fetch(
+        `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`
+      );
       if (res.ok) {
         const { order } = await res.json();
         setData(order);
@@ -95,7 +97,11 @@ const Order = () => {
                       )}
                     </td>
                     <td className="text-capitalize">
-                      <Link href={`/alleles/${router.query.pid}/${allele[1]}`}>
+                      <Link
+                        href={`/alleles/${"MGI:1929293" || router.query.pid}/${
+                          allele[1]
+                        }`}
+                      >
                         <a className="link primary">
                           View products <FontAwesomeIcon icon={faArrowRight} />
                         </a>

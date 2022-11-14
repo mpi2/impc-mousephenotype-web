@@ -15,7 +15,7 @@ const SignificantPhenotypes = ({ data }) => {
     data?.map((d) => ({
       ...d,
       pValue: Number(d.pValue),
-      topLevelPhenotype: d.topLevelPhenotype.map((t) => t.name),
+      topLevelPhenotype: d.topLevelPhenotype?.map((t) => t.name),
     })) || [];
   const [sorted, setSorted] = useState<any[]>(null);
 
@@ -60,7 +60,7 @@ const SignificantPhenotypes = ({ data }) => {
                 </td>
                 <td>
                   <BodySystem
-                    name={d.topLevelPhenotype[0]}
+                    name={d.topLevelPhenotype?.[0]}
                     color="primary"
                     noSpacing
                   />

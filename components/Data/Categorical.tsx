@@ -18,7 +18,9 @@ const Categorical = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/api/supporting-data-categorical/MGI:1929293/`);
+      const res = await fetch(
+        `/api/v1/supporting-data-categorical/MGI:1929293/`
+      );
       if (res.ok) {
         const response = await res.json();
         console.log(response);

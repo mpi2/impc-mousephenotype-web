@@ -123,7 +123,7 @@ const GeneResults = ({ query }: { query?: string }) => {
   const [data, setData] = useState(null);
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/api/genes/search/${query}`);
+      const res = await fetch(`/api/v1/genes/search/${query}`);
       if (res.ok) {
         const result = await res.json();
         setData(result);

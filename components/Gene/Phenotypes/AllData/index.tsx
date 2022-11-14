@@ -58,7 +58,7 @@ const AllData = ({ data }: { data: any }) => {
                   zygosity,
                   significant,
                   pValue,
-                  topLevelPhenotype,
+                  topLevelPhenotypes,
                   alleleSymbol,
                 },
                 i
@@ -72,7 +72,7 @@ const AllData = ({ data }: { data: any }) => {
                       <strong>{parameterName}</strong>
                     </td>
                     <td>
-                      {(topLevelPhenotype || []).map((x) => (
+                      {(topLevelPhenotypes || []).map((x) => (
                         <BodySystem
                           name={x.name}
                           key={x.id}

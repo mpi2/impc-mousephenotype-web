@@ -49,7 +49,7 @@ const Images = () => {
   useEffect(() => {
     (async () => {
       if (!pid) return;
-      const res = await fetch(`/api/genes/${pid}/images`);
+      const res = await fetch(`/api/v1/genes/${pid}/images`);
       if (res.ok) {
         const images = await res.json();
         setData(images);

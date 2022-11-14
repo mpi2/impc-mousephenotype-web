@@ -124,7 +124,9 @@ const HumanDiseases = () => {
   useEffect(() => {
     (async () => {
       if (!router.query.pid) return;
-      const res = await fetch(`/api/genes/${router.query.pid}/diseases`);
+      const res = await fetch(
+        `/api/v1/genes/${"MGI:1929293" || router.query.pid}/disease`
+      );
       if (res.ok) {
         const diseases = await res.json();
         setData(diseases);

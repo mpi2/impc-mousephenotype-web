@@ -102,7 +102,9 @@ const Phenotype = () => {
     (async () => {
       if (!router.query.id) return;
       try {
-        const res = await fetch(`/api/phenotypes/MP:0012361/geneAssociations`);
+        const res = await fetch(
+          `/api/v1/phenotypes/MP:0012361/geneAssociations`
+        );
         if (res.ok) {
           const associatsions = await res.json();
           setData(associatsions);

@@ -24,7 +24,9 @@ const Expressions = () => {
   useEffect(() => {
     (async () => {
       if (!router.query.pid) return;
-      const res = await fetch(`/api/genes/${router.query.pid}/expression`);
+      const res = await fetch(
+        `/api/v1/genes/${"MGI:1929293" || router.query.pid}/expression`
+      );
       if (res.ok) {
         const expressions = await res.json();
         const processed =
@@ -102,7 +104,11 @@ const Expressions = () => {
                       ? d.expressionImageParameters.map((p) => (
                           <a
                             className="primary small"
-                            href={`https://www.mousephenotype.org/data/imageComparator?acc=${router.query.pid}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
+                            href={`https://www.mousephenotype.org/data/imageComparator?acc=${
+                              "MGI:1929293" || router.query.pid
+                            }&anatomy_id=MA:0000168&parameter_stable_id=${
+                              p.parameter_stable_id
+                            }`}
                           >
                             <FontAwesomeIcon icon={faImage} />{" "}
                             {p.parameter_name}

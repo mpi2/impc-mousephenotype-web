@@ -4,11 +4,7 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faExternalLinkAlt,
-  faMars,
-  faVenus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "../../../utils";
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
@@ -22,7 +18,9 @@ const Histopathology = () => {
     if (!router.isReady) return;
 
     (async () => {
-      const res = await fetch(`/api/genes/${router.query.pid}/histopathology`);
+      const res = await fetch(
+        `/api/v1/genes/${"MGI:1929293" || router.query.pid}/histopathology`
+      );
       if (res.ok) {
         const data = await res.json();
         setData(data);
@@ -66,7 +64,9 @@ const Histopathology = () => {
                   <tr>
                     <td>
                       <Link
-                        href={`/histopath/${router.query.pid}?anatomy=${(
+                        href={`/histopath/${
+                          "MGI:1929293" || router.query.pid
+                        }?anatomy=${(
                           p.parameterName.split(" -")[0] || ""
                         ).toLowerCase()}`}
                       >

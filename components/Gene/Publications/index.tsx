@@ -17,7 +17,9 @@ const Publications = () => {
     if (!router.isReady) return;
 
     (async () => {
-      const res = await fetch(`/api/genes/${router.query.pid}/publications`);
+      const res = await fetch(
+        `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publications`
+      );
       if (res.ok) {
         const data = await res.json();
         setPublicationData(data);

@@ -63,12 +63,12 @@ const Gene = () => {
   useEffect(() => {
     (async () => {
       if (!pid) return;
-      const res = await fetch(`/api/genes/${pid}/summary`);
+      const res = await fetch(`/api/v1/genes/${"MGI:1929293" || pid}/summary`);
       if (res.ok) {
         setGene(await res.json());
       }
 
-      const res2 = await fetch(`/api/products/${pid}/${alleleSymbol}`);
+      const res2 = await fetch(`/api/v1/products/${pid}/${alleleSymbol}`);
       if (res2.ok) {
         setAllele(await res2.json());
       }

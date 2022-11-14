@@ -4,9 +4,10 @@ import {
   faCartPlus,
   faChevronRight,
   faExternalLinkAlt,
+  faWarning,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, Row } from "react-bootstrap";
+import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import {
   buildStyles,
   CircularProgressbarWithChildren,
@@ -109,19 +110,43 @@ const Metric = ({
 const Summary = () => {
   const router = useRouter();
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const SYNONYMS_COUNT = 2;
 
   useEffect(() => {
     (async () => {
       if (!router.query.pid) return;
-      const res = await fetch(`/api/genes/${router.query.pid}/summary`);
-      if (res.ok) {
-        setData(await res.json());
+      try {
+        const res = await fetch(
+          `/api/v1/genes/${"MGI:1929293" || router.query.pid}/summary`
+        );
+        if (res.ok) {
+          setData(await res.json());
+        }
+      } catch (e) {
+        setError(e.message);
       }
     })();
   }, [router.query.pid]);
 
+  if (error) {
+    return (
+      <Card>
+        <p className="grey">
+          <FontAwesomeIcon icon={faWarning} /> Failed to fetch the gene summary:{" "}
+          {error}
+        </p>
+      </Card>
+    );
+  }
+
   if (!data) {
-    return <p>Loading...</p>;
+    return (
+      <Card>
+        <p>Loading...</p>
+      </Card>
+    );
   }
 
   const joined = [
@@ -147,23 +172,48 @@ const Summary = () => {
           <span className={`${styles.subheadingSection} primary`}>Gene</span>
           <a
             className={`${styles.subheadingSection}`}
-            href={`http://www.informatics.jax.org/marker/${data.geneAccessionId}`}
+            href={`http://www.informatics.jax.org/marker/${data.mgiGeneAccessionId}`}
             target="_blank"
           >
-            {data.geneAccessionId} <FontAwesomeIcon icon={faExternalLinkAlt} />
+            {data.mgiGeneAccessionId}{" "}
+            <FontAwesomeIcon icon={faExternalLinkAlt} />
           </a>
-          <a className={styles.subheadingSection} href="#">
+          <span className={styles.subheadingSection}>
             Synonyms:{" "}
             {data.synonyms
-              .slice(0, 2)
-              .map((s, i) => `${i > 0 ? ", " : ""}${s}`)}
-            {data.synonyms.length >= 3 && (
-              <>
-                +${data.synonyms.length - 2} more{" "}
-                <FontAwesomeIcon icon={faCaretSquareDown} />
-              </>
+              .slice(0, SYNONYMS_COUNT)
+              .map((s, i) => `${s}${i < SYNONYMS_COUNT ? ", " : ""}`)}
+            {data.synonyms.length > SYNONYMS_COUNT && (
+              <OverlayTrigger
+                placement="bottom"
+                trigger={["hover", "focus"]}
+                overlay={
+                  <Tooltip>
+                    <div style={{ textAlign: "left" }}>
+                      {data.synonyms
+                        .slice(SYNONYMS_COUNT, data.synonyms.length)
+                        .map((s, i) => (
+                          <>
+                            <span style={{ whiteSpace: "nowrap" }}>
+                              {s}
+                              {i < data.synonyms.length ? ", " : ""}
+                            </span>
+                            <br />
+                          </>
+                        ))}
+                    </div>
+                  </Tooltip>
+                }
+              >
+                {({ ref, ...triggerHandler }) => (
+                  <span {...triggerHandler} ref={ref} className="link">
+                    +{data.synonyms.length - SYNONYMS_COUNT} more{" "}
+                    <FontAwesomeIcon icon={faCaretSquareDown} />
+                  </span>
+                )}
+              </OverlayTrigger>
             )}
-          </a>
+          </span>
         </div>
         <a
           className={`${styles.howLink} secondary`}
