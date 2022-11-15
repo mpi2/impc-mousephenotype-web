@@ -28,6 +28,8 @@ const Phenotypes = () => {
         );
         if (pRes.ok) {
           setPhenotypeData(await pRes.json());
+        } else {
+          throw new Error("Failed to load the phenotype");
         }
       } catch (e) {
         setPhenotypeError(e.message);
@@ -40,6 +42,8 @@ const Phenotypes = () => {
         );
         if (gRes.ok) {
           setGeneData(await gRes.json());
+        } else {
+          throw new Error("Failed to load the gene");
         }
       } catch (e) {
         setGeneError(e.message);
