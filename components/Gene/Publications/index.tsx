@@ -21,7 +21,7 @@ const Publications = () => {
     (async () => {
       try {
         const res = await fetch(
-          `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publications`
+          `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publication`
         );
         if (res.ok) {
           const data = await res.json();
