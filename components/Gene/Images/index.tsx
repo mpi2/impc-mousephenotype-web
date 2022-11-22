@@ -70,7 +70,7 @@ const Images = () => {
   if (loading) {
     return (
       <Card id="images">
-        <h2>Phenotypes</h2>
+        <h2>Associated Images</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -79,10 +79,8 @@ const Images = () => {
   if (error) {
     return (
       <Card id="images">
-        <h2>Phenotypes</h2>
-        <Alert variant="primary">
-          Error loading the gene expressions: {error}
-        </Alert>
+        <h2>Associated Images</h2>
+        <Alert variant="primary">Error loading the images: {error}</Alert>
       </Card>
     );
   }

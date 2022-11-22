@@ -12,25 +12,54 @@ import Link from "next/link";
 const Histopathology = () => {
   const router = useRouter();
 
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
   useEffect(() => {
     if (!router.isReady) return;
 
     (async () => {
-      const res = await fetch(
-        `/api/v1/genes/${"MGI:1929293" || router.query.pid}/histopathology`
-      );
-      if (res.ok) {
-        const data = await res.json();
-        setData(data);
-        setSorted(_.orderBy(data, "parameterName", "asc"));
+      try {
+        const res = await fetch(
+          `/api/v1/genes/${"MGI:2143539" || router.query.pid}/histopathology`
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setData(data);
+          setSorted(_.orderBy(data, "parameterName", "asc"));
+        } else {
+          throw new Error("Could not fetch histopathology.");
+        }
+      } catch (e) {
+        setError(e.message);
       }
+      setLoading(false);
     })();
   }, [router.isReady]);
 
+  if (loading) {
+    return (
+      <Card id="histopathology">
+        <h2>Histopathology</h2>
+        <p className="grey">Loading...</p>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card id="histopathology">
+        <h2>Histopathology</h2>
+        <Alert variant="primary">
+          Error loading the histopathology data: {error}
+        </Alert>
+      </Card>
+    );
+  }
+
   return (
-    <Card id="publications">
+    <Card id="histopathology">
       <h2>Histopathology</h2>
       <p>
         Summary table of phenotypes displayed during the Histopathology
@@ -65,7 +94,7 @@ const Histopathology = () => {
                     <td>
                       <Link
                         href={`/histopath/${
-                          "MGI:1929293" || router.query.pid
+                          "MGI:2143539" || router.query.pid
                         }?anatomy=${(
                           p.parameterName.split(" -")[0] || ""
                         ).toLowerCase()}`}

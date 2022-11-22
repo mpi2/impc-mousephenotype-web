@@ -16,21 +16,48 @@ import styles from "./styles.module.scss";
 
 const Order = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
   useEffect(() => {
+    if (!router.isReady || !router.query.pid) return;
     (async () => {
-      if (!router.query.pid) return;
-      const res = await fetch(
-        `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`
-      );
-      if (res.ok) {
-        const { order } = await res.json();
-        setData(order);
-        setSorted(_.orderBy(order, "alleleSymbol", "asc"));
+      try {
+        const res = await fetch(
+          `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setData(data);
+          setSorted(_.orderBy(data, "alleleSymbol", "asc"));
+        } else {
+          throw new Error("Could not fetch alleles.");
+        }
+      } catch (e) {
+        setError(e.message);
       }
+      setLoading(false);
     })();
-  }, [router.query.pid]);
+  }, [router.isReady, router.query.pid]);
+
+  if (loading) {
+    return (
+      <Card id="purchase">
+        <h2>Order Mouse and ES Cells</h2>
+        <p className="grey">Loading...</p>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card id="purchase">
+        <h2>Order Mouse and ES Cells</h2>
+        <Alert variant="primary">Error loading the alleles: {error}</Alert>
+      </Card>
+    );
+  }
 
   return (
     <Card id="purchase">
