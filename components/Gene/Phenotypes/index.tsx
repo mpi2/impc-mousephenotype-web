@@ -1,4 +1,4 @@
-import { Tab, Tabs } from "react-bootstrap";
+import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
@@ -14,6 +14,7 @@ const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
 
 const Phenotypes = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [phenotypeData, setPhenotypeData] = useState(null);
   const [phenotypeError, setPhenotypeError] = useState(null);
   const [geneData, setGeneData] = useState(null);
@@ -48,22 +49,14 @@ const Phenotypes = () => {
       } catch (e) {
         setGeneError(e.message);
       }
+      setLoading(false);
     })();
   }, [router.isReady]);
 
-  if (geneError || phenotypeError) {
+  if (loading) {
     return (
       <Card id="data">
-        <p className="grey">
-          <FontAwesomeIcon icon={faWarning} /> Failed to load phenotype data.
-        </p>
-      </Card>
-    );
-  }
-
-  if (!geneData || !phenotypeData) {
-    return (
-      <Card id="data">
+        <h2>Phenotypes</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -74,13 +67,31 @@ const Phenotypes = () => {
       <h2>Phenotypes</h2>
       <Tabs defaultActiveKey="significantPhenotypes">
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
-          <SignificantPhenotypes data={phenotypeData} />
+          {!!phenotypeError ? (
+            <Alert variant="primary">
+              Error loading phenotypes for this gene: {phenotypeError}
+            </Alert>
+          ) : (
+            <SignificantPhenotypes data={phenotypeData} />
+          )}
         </Tab>
         <Tab eventKey="measurementsChart" title="Statistical Analysis">
-          <StatisticalAnalysis data={geneData} />
+          {!!geneError ? (
+            <Alert variant="primary">
+              Error loading phenotypes for this gene: {geneError}
+            </Alert>
+          ) : (
+            <StatisticalAnalysis data={geneData} />
+          )}
         </Tab>
         <Tab eventKey="allData" title="All data">
-          <AllData data={geneData} />
+          {!!geneError ? (
+            <Alert variant="primary">
+              Error loading phenotypes for this gene: {geneError}
+            </Alert>
+          ) : (
+            <AllData data={geneData} />
+          )}
         </Tab>
       </Tabs>
     </Card>

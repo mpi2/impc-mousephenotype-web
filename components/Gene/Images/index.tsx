@@ -43,19 +43,49 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
 
 const Images = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const { pid } = router.query;
 
   useEffect(() => {
+    if (!router.isReady || !pid) return;
+
     (async () => {
-      if (!pid) return;
-      const res = await fetch(`/api/v1/genes/${pid}/images`);
-      if (res.ok) {
-        const images = await res.json();
-        setData(images);
+      try {
+        const res = await fetch(`/api/v1/genes/${pid}/images`);
+        if (res.ok) {
+          const images = await res.json();
+          setData(images);
+        } else {
+          throw new Error("Could not fetch images.");
+        }
+      } catch (e) {
+        setError(e.message);
       }
+      setLoading(false);
     })();
-  }, [pid]);
+  }, [router.isReady, pid]);
+
+  if (loading) {
+    return (
+      <Card id="images">
+        <h2>Phenotypes</h2>
+        <p className="grey">Loading...</p>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card id="images">
+        <h2>Phenotypes</h2>
+        <Alert variant="primary">
+          Error loading the gene expressions: {error}
+        </Alert>
+      </Card>
+    );
+  }
 
   const groups = Object.entries(_.groupBy(data, "parameterName"));
   return (

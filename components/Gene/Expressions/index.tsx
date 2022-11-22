@@ -18,26 +18,35 @@ const getExpressionRate = (p) => {
 
 const Expressions = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
   const [tab, setTab] = useState("adultExpressions");
   useEffect(() => {
     (async () => {
       if (!router.query.pid) return;
-      const res = await fetch(
-        `/api/v1/genes/${"MGI:1929293" || router.query.pid}/expression`
-      );
-      if (res.ok) {
-        const expressions = await res.json();
-        const processed =
-          expressions?.map((d) => ({
-            ...d,
-            expressionRate: getExpressionRate(d.mutantCounts),
-            wtExpressionRate: getExpressionRate(d.controlCounts),
-          })) || [];
-        setData(processed);
-        setSorted(_.orderBy(processed, "parameterName", "asc"));
+      try {
+        const res = await fetch(
+          `/api/v1/genes/${"MGI:1929293" || router.query.pid}/expression`
+        );
+        if (res.ok) {
+          const expressions = await res.json();
+          const processed =
+            expressions?.map((d) => ({
+              ...d,
+              expressionRate: getExpressionRate(d.mutantCounts),
+              wtExpressionRate: getExpressionRate(d.controlCounts),
+            })) || [];
+          setData(processed);
+          setSorted(_.orderBy(processed, "parameterName", "asc"));
+        } else {
+          throw new Error("Failed to load the gene expressions");
+        }
+      } catch (e) {
+        setError(e.message);
       }
+      setLoading(false);
     })();
   }, [router.query.pid]);
 
@@ -49,6 +58,26 @@ const Expressions = () => {
     : [];
 
   const selectedData = tab === "adultExpressions" ? adultData : embryoData;
+
+  if (loading) {
+    return (
+      <Card id="data">
+        <h2>lacZ Expression</h2>
+        <p className="grey">Loading...</p>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card id="data">
+        <h2>lacZ Expression</h2>
+        <Alert variant="primary">
+          Error loading the gene expressions: {error}
+        </Alert>
+      </Card>
+    );
+  }
 
   return (
     <Card id="human-diseases">

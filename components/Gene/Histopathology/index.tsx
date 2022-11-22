@@ -94,7 +94,7 @@ const Histopathology = () => {
         </Pagination>
       ) : (
         <Alert variant="primary">
-          There is no histopathology data for Mavs
+          There is no histopathology data found for this gene.
         </Alert>
       )}
     </Card>

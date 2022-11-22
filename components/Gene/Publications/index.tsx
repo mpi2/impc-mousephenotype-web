@@ -11,22 +11,49 @@ import { Alert } from "react-bootstrap";
 const Publications = () => {
   const router = useRouter();
 
+  const [loading, setLoading] = useState(true);
   const [publicationData, setPublicationData] = useState(null);
+  const [error, setError] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
   useEffect(() => {
     if (!router.isReady) return;
 
     (async () => {
-      const res = await fetch(
-        `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publications`
-      );
-      if (res.ok) {
-        const data = await res.json();
-        setPublicationData(data);
-        setSorted(_.orderBy(data, "title", "asc"));
+      try {
+        const res = await fetch(
+          `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publications`
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setPublicationData(data);
+          setSorted(_.orderBy(data, "title", "asc"));
+        } else {
+          throw new Error("Could not fetch publications.");
+        }
+      } catch (e) {
+        setError(e.message);
       }
+      setLoading(false);
     })();
   }, [router.isReady]);
+
+  if (loading) {
+    return (
+      <Card id="publications">
+        <h2>IMPC related publications</h2>
+        <p className="grey">Loading...</p>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card id="publications">
+        <h2>IMPC related publications</h2>
+        <Alert variant="primary">Error loading publications: {error}</Alert>
+      </Card>
+    );
+  }
 
   return (
     <Card id="publications">
