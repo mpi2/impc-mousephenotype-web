@@ -39,7 +39,7 @@ const Phenotypes = () => {
         const gRes = await fetch(
           `/api/v1/genes/${
             "MGI:1860086" || router.query.pid
-          }/statistical-results`
+          }/statistical-result`
         );
         if (gRes.ok) {
           setGeneData(await gRes.json());

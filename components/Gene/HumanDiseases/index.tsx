@@ -150,7 +150,7 @@ const HumanDiseases = () => {
         <Script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />
       </Head> */}
       <Card id="human-diseases">
-        <h2>Human diseases caused by Mavs mutations </h2>
+        <h2>Human diseases caused by [gene] mutations </h2>
         <div className="mb-4">
           <p>
             The analysis uses data from IMPC, along with published data on other
@@ -165,11 +165,11 @@ const HumanDiseases = () => {
         <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
           <Tab
             eventKey="associated"
-            title={`Human diseases associated with Mavs (${associatedData.length})`}
+            title={`Human diseases associated with [gene] (${associatedData.length})`}
           ></Tab>
           <Tab
             eventKey="predicted"
-            title={`Human diseases predicted to be associated with Mavs (${predictedData.length})`}
+            title={`Human diseases predicted to be associated with [gene] (${predictedData.length})`}
           ></Tab>
         </Tabs>
         {!selectedData || !selectedData.length ? (
