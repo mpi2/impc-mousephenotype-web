@@ -65,7 +65,7 @@ export const handlers = [
       const sectionKeyMap = {
         statisticalResults: "statisticalResults",
         phenotypes: "significantPhenotypes",
-        diseases: "gene_diseases",
+        // diseases: "gene_diseases",
       };
       const sectionData = sectionKeyMap.hasOwnProperty(section)
         ? geneSectionData[sectionKeyMap[section]]
