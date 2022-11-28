@@ -16,6 +16,7 @@ import Head from "next/head";
 import styles from "./styles.module.scss";
 import Pagination from "../../../components/Pagination";
 import SortableTable from "../../../components/SortableTable";
+import useQuery from "../../../components/useQuery";
 
 const ProductItem = ({
   name,
@@ -53,40 +54,37 @@ const ProductItem = ({
 );
 
 const Gene = () => {
-  const [gene, setGene] = useState(null);
-  const [allele, setAllele] = useState(null);
-  const [loading, setLoading] = useState(true);
   const {
     query: { pid, alleleSymbol },
   } = useRouter();
+  const [gene, loadingGene, errorGene] = useQuery({
+    query: `/api/v1/genes/${"MGI:1929293" || pid}/summary`,
+  });
+  const [allele, loadingAllele, errorAllele] = useQuery({
+    query: `/api/v1/products/${"MGI:1929293" || pid}/${
+      "tm1a(EUCOMM)Wtsi" || alleleSymbol
+    }`,
+  });
 
-  useEffect(() => {
-    (async () => {
-      if (!pid) return;
-      const res = await fetch(`/api/v1/genes/${"MGI:1929293" || pid}/summary`);
-      if (res.ok) {
-        setGene(await res.json());
-      }
-
-      const res2 = await fetch(`/api/v1/products/${pid}/${alleleSymbol}`);
-      if (res2.ok) {
-        setAllele(await res2.json());
-      }
-      setLoading(false);
-    })();
-  }, [pid]);
-
-  if (loading) {
+  if (loadingGene || loadingAllele) {
     return (
       <>
         <Search />
         <Container className="page">
-          <Card>Loading...</Card>
+          <Card>
+            <Link href={`/genes/${pid}`}>
+              <a href="#" className="grey mb-3 small">
+                <FontAwesomeIcon icon={faArrowLeftLong} /> BACK TO GENE
+              </a>
+            </Link>
+            <br />
+            <p className="grey">Loading...</p>
+          </Card>
         </Container>
       </>
     );
   }
-  if (!gene || !allele) {
+  if (errorGene || errorAllele) {
     return (
       <>
         <Search />
@@ -101,6 +99,7 @@ const Gene = () => {
             <p className="grey mb-4">
               Something went wrong. Please try again later.
             </p>
+            <p className="grey mb-4">Error: {errorGene || errorAllele}</p>
           </Card>
         </Container>
       </>
