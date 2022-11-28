@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -7,35 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "../../../utils";
 import { Alert } from "react-bootstrap";
+import useQuery from "../../useQuery";
+import _ from "lodash";
 
-const Publications = () => {
+const Publications = ({ gene }: { gene: any }) => {
   const router = useRouter();
-
-  const [loading, setLoading] = useState(true);
-  const [publicationData, setPublicationData] = useState(null);
-  const [error, setError] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
-  useEffect(() => {
-    if (!router.isReady) return;
-
-    (async () => {
-      try {
-        const res = await fetch(
-          `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publication`
-        );
-        if (res.ok) {
-          const data = await res.json();
-          setPublicationData(data);
-          setSorted(_.orderBy(data, "title", "asc"));
-        } else {
-          throw new Error("Could not fetch publications.");
-        }
-      } catch (e) {
-        setError(e.message);
-      }
-      setLoading(false);
-    })();
-  }, [router.isReady]);
+  const [data, loading, error] = useQuery({
+    query: `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publication`,
+    afterSuccess: (data) => {
+      setSorted(_.orderBy(data, "title", "asc"));
+    },
+  });
 
   if (loading) {
     return (
@@ -61,14 +44,15 @@ const Publications = () => {
       <p>
         The table below lists publications which used either products generated
         by the IMPC or data produced by the phenotyping efforts of the IMPC.
-        These publications have also been associated to the gene.
+        These publications have also been associated to the {gene.geneSymbol}{" "}
+        gene.
       </p>
-      {publicationData ? (
+      {data ? (
         <Pagination data={sorted}>
           {(pageData) => (
             <SortableTable
               doSort={(sort) => {
-                setSorted(_.orderBy(publicationData, sort[0], sort[1]));
+                setSorted(_.orderBy(data, sort[0], sort[1]));
               }}
               defaultSort={["title", "asc"]}
               headers={[
@@ -128,7 +112,8 @@ const Publications = () => {
         </Pagination>
       ) : (
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for this gene.
+          No publications found that use IMPC mice or data for the{" "}
+          {gene.geneSymbol} gene.
         </Alert>
       )}
     </Card>

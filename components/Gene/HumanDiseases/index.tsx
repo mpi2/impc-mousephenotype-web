@@ -6,7 +6,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import { useRouter } from "next/router";
-import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
@@ -14,12 +13,7 @@ import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
 import Phenogrid from "phenogrid";
-import Head from "next/head";
-// declare global {
-//   interface Window {
-//     Phenogrid: any;
-//   }
-// }
+import useQuery from "../../useQuery";
 
 const Scale = ({ children = 5 }: { children: number }) => {
   return (
@@ -116,24 +110,36 @@ const Row = ({ data }) => {
   );
 };
 
-const HumanDiseases = () => {
+const HumanDiseases = ({ gene }: { gene: any }) => {
   const router = useRouter();
-  const [data, setData] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
+  const [data, loading, error] = useQuery({
+    query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/disease`,
+    afterSuccess: (diseases) => {
+      setSorted(_.orderBy(diseases, "diseaseTerm", "asc"));
+    },
+  });
   const [tab, setTab] = useState("associated");
-  useEffect(() => {
-    (async () => {
-      if (!router.query.pid) return;
-      const res = await fetch(
-        `/api/v1/genes/${"MGI:1929293" || router.query.pid}/disease`
-      );
-      if (res.ok) {
-        const diseases = await res.json();
-        setData(diseases);
-        setSorted(_.orderBy(diseases, "diseaseTerm", "asc"));
-      }
-    })();
-  }, [router.query.pid]);
+
+  if (loading) {
+    return (
+      <Card id="human-diseases">
+        <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
+        <p className="grey">Loading...</p>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card id="human-diseases">
+        <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
+        <Alert variant="primary">
+          Error loading the histopathology data: {error}
+        </Alert>
+      </Card>
+    );
+  }
 
   const associatedData = sorted
     ? sorted.filter((x) => x.associationCurated === "true")
@@ -146,11 +152,8 @@ const HumanDiseases = () => {
 
   return (
     <>
-      {/* <Head>
-        <Script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />
-      </Head> */}
       <Card id="human-diseases">
-        <h2>Human diseases caused by [gene] mutations </h2>
+        <h2>Human diseases caused by {gene.geneSymbol} mutations </h2>
         <div className="mb-4">
           <p>
             The analysis uses data from IMPC, along with published data on other
@@ -165,17 +168,17 @@ const HumanDiseases = () => {
         <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
           <Tab
             eventKey="associated"
-            title={`Human diseases associated with [gene] (${associatedData.length})`}
+            title={`Human diseases associated with ${gene.geneSymbol} (${associatedData.length})`}
           ></Tab>
           <Tab
             eventKey="predicted"
-            title={`Human diseases predicted to be associated with [gene] (${predictedData.length})`}
+            title={`Human diseases predicted to be associated with ${gene.geneSymbol} (${predictedData.length})`}
           ></Tab>
         </Tabs>
         {!selectedData || !selectedData.length ? (
           <Alert className={styles.table}>
-            No human diseases associated to this gene by orthology or
-            annotation.
+            No human diseases associated to the {gene.geneSymbol} gene by
+            orthology or annotation.
           </Alert>
         ) : (
           <Pagination data={selectedData}>

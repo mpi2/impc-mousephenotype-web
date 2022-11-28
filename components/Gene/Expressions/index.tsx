@@ -1,14 +1,14 @@
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
-import styles from "./styles.module.scss";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import Link from "next/link";
+import useQuery from "../../useQuery";
 
 const getExpressionRate = (p) => {
   return p.expression || p.noExpression
@@ -18,37 +18,22 @@ const getExpressionRate = (p) => {
 
 const Expressions = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
   const [tab, setTab] = useState("adultExpressions");
-  useEffect(() => {
-    (async () => {
-      if (!router.query.pid) return;
-      try {
-        const res = await fetch(
-          `/api/v1/genes/${"MGI:1929293" || router.query.pid}/expression`
-        );
-        if (res.ok) {
-          const expressions = await res.json();
-          const processed =
-            expressions?.map((d) => ({
-              ...d,
-              expressionRate: getExpressionRate(d.mutantCounts),
-              wtExpressionRate: getExpressionRate(d.controlCounts),
-            })) || [];
-          setData(processed);
-          setSorted(_.orderBy(processed, "parameterName", "asc"));
-        } else {
-          throw new Error("Failed to load the gene expressions");
-        }
-      } catch (e) {
-        setError(e.message);
-      }
-      setLoading(false);
-    })();
-  }, [router.query.pid]);
+  const [__, loading, error] = useQuery({
+    query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/expression`,
+    afterSuccess: (raw) => {
+      const processed =
+        raw?.map((d) => ({
+          ...d,
+          expressionRate: getExpressionRate(d.mutantCounts),
+          wtExpressionRate: getExpressionRate(d.controlCounts),
+        })) || [];
+      setData(processed);
+      setSorted(_.orderBy(processed, "parameterName", "asc"));
+    },
+  });
 
   const adultData = sorted
     ? sorted.filter((x) => x.lacZLifestage === "adult")
@@ -61,7 +46,7 @@ const Expressions = () => {
 
   if (loading) {
     return (
-      <Card id="data">
+      <Card id="expressions">
         <h2>lacZ Expression</h2>
         <p className="grey">Loading...</p>
       </Card>
@@ -70,7 +55,7 @@ const Expressions = () => {
 
   if (error) {
     return (
-      <Card id="data">
+      <Card id="expressions">
         <h2>lacZ Expression</h2>
         <Alert variant="primary">
           Error loading the gene expressions: {error}
@@ -80,7 +65,7 @@ const Expressions = () => {
   }
 
   return (
-    <Card id="human-diseases">
+    <Card id="expressions">
       <h2>lacZ Expression</h2>
 
       <Tabs defaultActiveKey="adultExpressions" onSelect={(e) => setTab(e)}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -8,35 +8,19 @@ import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "../../../utils";
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
+import useQuery from "../../useQuery";
+import _ from "lodash";
 
-const Histopathology = () => {
+const Histopathology = ({ gene }: { gene: any }) => {
   const router = useRouter();
 
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
-  useEffect(() => {
-    if (!router.isReady) return;
-
-    (async () => {
-      try {
-        const res = await fetch(
-          `/api/v1/genes/${"MGI:2143539" || router.query.pid}/histopathology`
-        );
-        if (res.ok) {
-          const data = await res.json();
-          setData(data);
-          setSorted(_.orderBy(data, "parameterName", "asc"));
-        } else {
-          throw new Error("Could not fetch histopathology.");
-        }
-      } catch (e) {
-        setError(e.message);
-      }
-      setLoading(false);
-    })();
-  }, [router.isReady]);
+  const [data, loading, error] = useQuery({
+    query: `/api/v1/genes/${"MGI:2143539" || router.query.pid}/histopathology`,
+    afterSuccess: (data) => {
+      setSorted(_.orderBy(data, "parameterName", "asc"));
+    },
+  });
 
   if (loading) {
     return (
@@ -123,7 +107,7 @@ const Histopathology = () => {
         </Pagination>
       ) : (
         <Alert variant="primary">
-          There is no histopathology data found for this gene.
+          There is no histopathology data found for {gene.geneSymbol}.
         </Alert>
       )}
     </Card>

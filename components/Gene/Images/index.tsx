@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
+import useQuery from "../../useQuery";
 import styles from "./styles.module.scss";
 
 interface Props {
@@ -43,29 +43,9 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
 
 const Images = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const { pid } = router.query;
-
-  useEffect(() => {
-    if (!router.isReady || !pid) return;
-
-    (async () => {
-      try {
-        const res = await fetch(`/api/v1/genes/${pid}/images`);
-        if (res.ok) {
-          const images = await res.json();
-          setData(images);
-        } else {
-          throw new Error("Could not fetch images.");
-        }
-      } catch (e) {
-        setError(e.message);
-      }
-      setLoading(false);
-    })();
-  }, [router.isReady, pid]);
+  const [data, loading, error] = useQuery({
+    query: `/api/v1/genes/${"MGI:2444773" || router.query.pid}/images`,
+  });
 
   if (loading) {
     return (

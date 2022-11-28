@@ -45,9 +45,9 @@ export const allBodySystems = [
 
 import { BodySystem } from "../../BodySystemIcon";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import Check from "../../Check";
 import Head from "next/head";
+import useQuery from "../../useQuery";
 
 const CollectionItem = ({
   name,
@@ -107,32 +107,47 @@ const Metric = ({
     </div>
   );
 };
-const Summary = () => {
+const Summary = ({
+  gene,
+  loading,
+  error,
+}: {
+  gene: any;
+  loading: boolean;
+  error: string;
+}) => {
   const router = useRouter();
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
 
   const SYNONYMS_COUNT = 2;
 
-  useEffect(() => {
-    (async () => {
-      if (!router.query.pid) return;
-      try {
-        const res = await fetch(
-          `/api/v1/genes/${"MGI:1929293" || router.query.pid}/summary`
-        );
-        if (res.ok) {
-          setData(await res.json());
-        }
-      } catch (e) {
-        setError(e.message);
-      }
-    })();
-  }, [router.query.pid]);
+  if (loading) {
+    return (
+      <Card>
+        <div className={styles.subheadingCont}>
+          <div className={styles.subheading}>
+            <span className={`${styles.subheadingSection} primary`}>Gene</span>
+            <span className={`${styles.subheadingSection}`}>
+              {router.query.pid}
+            </span>
+          </div>
+        </div>
+        <br />
+        <p className="grey">Loading...</p>
+      </Card>
+    );
+  }
 
   if (error) {
     return (
       <Card>
+        <div className={styles.subheadingCont}>
+          <div className={styles.subheading}>
+            <span className={`${styles.subheadingSection} primary`}>Gene</span>
+            <span className={`${styles.subheadingSection}`}>
+              {router.query.pid}
+            </span>
+          </div>
+        </div>
         <p className="grey">
           <FontAwesomeIcon icon={faWarning} /> Failed to fetch the gene summary:{" "}
           {error}
@@ -141,29 +156,21 @@ const Summary = () => {
     );
   }
 
-  if (!data) {
-    return (
-      <Card>
-        <p>Loading...</p>
-      </Card>
-    );
-  }
-
   const joined = [
-    ...data.significantTopLevelPhenotypes,
-    ...data.notSignificantTopLevelPhenotypes,
+    ...gene.significantTopLevelPhenotypes,
+    ...gene.notSignificantTopLevelPhenotypes,
   ];
 
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
-  const significantCount = data.significantTopLevelPhenotypes.length;
-  const nonSignificantCount = data.notSignificantTopLevelPhenotypes.length;
+  const significantCount = gene.significantTopLevelPhenotypes.length;
+  const nonSignificantCount = gene.notSignificantTopLevelPhenotypes.length;
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
     <Card>
       <Head>
         <title>
-          {data.geneSymbol} Mouse Gene Details | {data.geneName} | International
+          {gene.geneSymbol} Mouse Gene Details | {gene.geneName} | International
           Mouse Phenotyping Consortium
         </title>
       </Head>
@@ -172,31 +179,31 @@ const Summary = () => {
           <span className={`${styles.subheadingSection} primary`}>Gene</span>
           <a
             className={`${styles.subheadingSection}`}
-            href={`http://www.informatics.jax.org/marker/${data.mgiGeneAccessionId}`}
+            href={`http://www.informatics.jax.org/marker/${gene.mgiGeneAccessionId}`}
             target="_blank"
           >
-            {data.mgiGeneAccessionId}{" "}
+            {gene.mgiGeneAccessionId}{" "}
             <FontAwesomeIcon icon={faExternalLinkAlt} />
           </a>
           <span className={styles.subheadingSection}>
             Synonyms:{" "}
-            {data.synonyms
+            {gene.synonyms
               .slice(0, SYNONYMS_COUNT)
               .map((s, i) => `${s}${i < SYNONYMS_COUNT ? ", " : ""}`)}
-            {data.synonyms.length > SYNONYMS_COUNT && (
+            {gene.synonyms.length > SYNONYMS_COUNT && (
               <OverlayTrigger
                 placement="bottom"
                 trigger={["hover", "focus"]}
                 overlay={
                   <Tooltip>
                     <div style={{ textAlign: "left" }}>
-                      {data.synonyms
-                        .slice(SYNONYMS_COUNT, data.synonyms.length)
+                      {gene.synonyms
+                        .slice(SYNONYMS_COUNT, gene.synonyms.length)
                         .map((s, i) => (
                           <>
                             <span style={{ whiteSpace: "nowrap" }}>
                               {s}
-                              {i < data.synonyms.length ? ", " : ""}
+                              {i < gene.synonyms.length ? ", " : ""}
                             </span>
                             <br />
                           </>
@@ -207,7 +214,7 @@ const Summary = () => {
               >
                 {({ ref, ...triggerHandler }) => (
                   <span {...triggerHandler} ref={ref} className="link">
-                    +{data.synonyms.length - SYNONYMS_COUNT} more{" "}
+                    +{gene.synonyms.length - SYNONYMS_COUNT} more{" "}
                     <FontAwesomeIcon icon={faCaretSquareDown} />
                   </span>
                 )}
@@ -223,8 +230,8 @@ const Summary = () => {
         </a>
       </div>
       <h1 className="mb-5 mt-2">
-        <strong>{data.geneSymbol}</strong> <span className="grey">|</span>{" "}
-        {data.geneName}
+        <strong>{gene.geneSymbol}</strong> <span className="grey">|</span>{" "}
+        {gene.geneName}
       </h1>
       <Row className={styles.gap}>
         <Col>
@@ -263,7 +270,7 @@ const Summary = () => {
                 </span>
               </p>
               <div className={styles.bodySystems}>
-                {data.significantTopLevelPhenotypes.map((x) => (
+                {gene.significantTopLevelPhenotypes.map((x) => (
                   <BodySystem name={x} isSignificant color="primary" />
                 ))}
               </div>
@@ -280,7 +287,7 @@ const Summary = () => {
                 </span>
               </p>
               <div className={styles.bodySystems}>
-                {data.notSignificantTopLevelPhenotypes.map((x) => (
+                {gene.notSignificantTopLevelPhenotypes.map((x) => (
                   <BodySystem name={x} color="secondary" />
                 ))}
               </div>
@@ -306,26 +313,26 @@ const Summary = () => {
           </h3>
           <Row>
             <Col md={6}>
-              <Metric value={data.significantPhenotypesCount ?? 0} average={7}>
+              <Metric value={gene.significantPhenotypesCount ?? 0} average={7}>
                 Significant phenotypes
               </Metric>
             </Col>
             <Col md={6}>
               <Metric
-                value={data.adultExpressionObservationsCount ?? 0}
+                value={gene.adultExpressionObservationsCount ?? 0}
                 average={97}
               >
                 Adult expressions
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric value={data.associatedDiseasesCount ?? 0} average={8}>
+              <Metric value={gene.associatedDiseasesCount ?? 0} average={8}>
                 Associated disease
               </Metric>
             </Col>
             <Col md={6}>
               <Metric
-                value={data.embryoExpressionObservationsCount ?? 0}
+                value={gene.embryoExpressionObservationsCount ?? 0}
                 average={23}
               >
                 Embryo expressions
@@ -338,28 +345,28 @@ const Summary = () => {
               <CollectionItem
                 link="#lacz"
                 name="Lacz expression"
-                hasData={data.hasLacZData}
+                hasData={gene.hasLacZData}
               />
             </Col>
             <Col md={6} className="pe-0">
               <CollectionItem
                 link="#histopathology"
                 name="Histopathology"
-                hasData={data.hasHistopathologyData}
+                hasData={gene.hasHistopathologyData}
               />
             </Col>
             <Col md={5} className="pe-0">
               <CollectionItem
                 link="#images"
                 name="Images"
-                hasData={data.hasImagingData}
+                hasData={gene.hasImagingData}
               />
             </Col>
             <Col md={7}>
               <CollectionItem
                 link="https://www.mousephenotype.org/data/charts?accession=MGI:2444773&parameter_stable_id=IMPC_BWT_008_001&procedure_stable_id=IMPC_BWT_001&chart_type=TIME_SERIES_LINE"
                 name="Body weight measurements"
-                hasData={data.hasBodyWeightData}
+                hasData={gene.hasBodyWeightData}
                 isExternal
               />
             </Col>
@@ -367,7 +374,7 @@ const Summary = () => {
               <CollectionItem
                 link="#viability-data"
                 name="Viability data"
-                hasData={data.hasViabilityData}
+                hasData={gene.hasViabilityData}
                 isExternal
               />
             </Col>
@@ -375,7 +382,7 @@ const Summary = () => {
               <CollectionItem
                 link="#embro-images"
                 name="Embryo imaging data"
-                hasData={data.hasEmbryoImagingData}
+                hasData={gene.hasEmbryoImagingData}
                 isExternal
               />
             </Col>

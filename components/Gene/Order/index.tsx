@@ -1,45 +1,26 @@
-import {
-  faArrowRight,
-  faExternalLinkAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "../../../utils";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
+import useQuery from "../../useQuery";
 import styles from "./styles.module.scss";
 
-const Order = () => {
+const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
-  useEffect(() => {
-    if (!router.isReady || !router.query.pid) return;
-    (async () => {
-      try {
-        const res = await fetch(
-          `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`
-        );
-        if (res.ok) {
-          const data = await res.json();
-          setData(data);
-          setSorted(_.orderBy(data, "alleleSymbol", "asc"));
-        } else {
-          throw new Error("Could not fetch alleles.");
-        }
-      } catch (e) {
-        setError(e.message);
-      }
-      setLoading(false);
-    })();
-  }, [router.isReady, router.query.pid]);
+  const [data, loading, error] = useQuery({
+    query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`,
+    afterSuccess: (data) => {
+      setSorted(_.orderBy(data, "alleleSymbol", "asc"));
+    },
+  });
 
   if (loading) {
     return (
@@ -77,7 +58,8 @@ const Order = () => {
       </div>
       {!sorted || !sorted.length ? (
         <Alert className={styles.table}>
-          No human diseases associated to this gene by orthology or annotation.
+          No human diseases associated to {gene.geneSymbol} by orthology or
+          annotation.
         </Alert>
       ) : (
         <Pagination data={sorted}>
