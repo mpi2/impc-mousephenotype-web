@@ -107,7 +107,7 @@ export const handlers = [
       return res(ctx.status(404));
     }
   }),
-  rest.get("/api/v1/products/:geneId/:alleleName", (req, res, ctx) => {
+  rest.get("/api/v1/alleles/:geneId/:alleleName", (req, res, ctx) => {
     const { geneId, alleleName } = req.params;
     const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {

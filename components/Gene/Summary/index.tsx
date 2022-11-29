@@ -344,7 +344,7 @@ const Summary = ({
             <Col md={5} className="pe-0">
               <CollectionItem
                 link="#lacz"
-                name="Lacz expression"
+                name="LacZ expression"
                 hasData={gene.hasLacZData}
               />
             </Col>

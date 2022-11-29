@@ -61,7 +61,7 @@ const Gene = () => {
     query: `/api/v1/genes/${"MGI:1929293" || pid}/summary`,
   });
   const [allele, loadingAllele, errorAllele] = useQuery({
-    query: `/api/v1/products/${"MGI:1929293" || pid}/${
+    query: `/api/v1/alleles/${"MGI:1929293" || pid}/${
       "tm1a(EUCOMM)Wtsi" || alleleSymbol
     }`,
   });
