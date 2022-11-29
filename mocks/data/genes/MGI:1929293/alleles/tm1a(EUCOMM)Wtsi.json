@@ -3,6 +3,7 @@
   "alleleMapUrl": "https://www.i-dcc.org/imits/targ_rep/alleles/11268/allele-image?simple=true.jpg",
   "genbankFileUrl": "https://www.i-dcc.org/imits/targ_rep/alleles/11268/escell-clone-genbank-file",
   "emsembleUrl": "http://www.ensembl.org/Mus_musculus/Location/View?g=ENSMUSG00000037493",
+  "geneSymbol": "Cib2",
   "miceProducts": [
     {
       "colonyName": "MRC - Harwell-EPD0337_2_D04-1",

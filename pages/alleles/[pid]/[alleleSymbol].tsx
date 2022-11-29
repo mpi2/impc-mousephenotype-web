@@ -1,4 +1,4 @@
-import { Alert, Button, Col, Container, Row } from "react-bootstrap";
+import { Alert, Button, Container } from "react-bootstrap";
 import Search from "../../../components/Search";
 import _ from "lodash";
 import Card from "../../../components/Card";
@@ -11,7 +11,6 @@ import {
   faCartShopping,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "./styles.module.scss";
 import Pagination from "../../../components/Pagination";
@@ -57,16 +56,14 @@ const Gene = () => {
   const {
     query: { pid, alleleSymbol },
   } = useRouter();
-  const [gene, loadingGene, errorGene] = useQuery({
-    query: `/api/v1/genes/${"MGI:1929293" || pid}/summary`,
-  });
-  const [allele, loadingAllele, errorAllele] = useQuery({
+
+  const [allele, loading, error] = useQuery({
     query: `/api/v1/alleles/${"MGI:1929293" || pid}/${
       "tm1a(EUCOMM)Wtsi" || alleleSymbol
     }`,
   });
 
-  if (loadingGene || loadingAllele) {
+  if (loading) {
     return (
       <>
         <Search />
@@ -84,7 +81,7 @@ const Gene = () => {
       </>
     );
   }
-  if (errorGene || errorAllele) {
+  if (error) {
     return (
       <>
         <Search />
@@ -99,7 +96,7 @@ const Gene = () => {
             <p className="grey mb-4">
               Something went wrong. Please try again later.
             </p>
-            <p className="grey mb-4">Error: {errorGene || errorAllele}</p>
+            <p className="grey mb-4">Error: {error}</p>
           </Card>
         </Container>
       </>
@@ -110,7 +107,7 @@ const Gene = () => {
     <>
       <Head>
         <title>
-          Allele Details | {gene.geneSymbol}-{alleleSymbol} | International
+          Allele Details | {allele.geneSymbol}-{alleleSymbol} | International
           Mouse Phenotyping Consortium
         </title>
       </Head>
@@ -125,7 +122,7 @@ const Gene = () => {
           <p className={styles.subheading}>ALLELE</p>
           <h1 className="mb-2 mt-2">
             <strong>
-              {gene.geneSymbol}
+              {allele.geneSymbol}
               <sup>{alleleSymbol}</sup>
             </strong>{" "}
           </h1>
@@ -406,7 +403,7 @@ const Gene = () => {
         <Card>
           <Link href={`/genes/${pid}/#purchase`} scroll={false}>
             <a href="#" className="secondary">
-              See all alleles for {gene.geneSymbol}{" "}
+              See all alleles for {allele.geneSymbol}{" "}
               <FontAwesomeIcon icon={faArrowRightLong} />
             </a>
           </Link>
