@@ -1,7 +1,7 @@
 @import "./vars.scss";
 @import "~bootstrap/scss/bootstrap";
 @import "./bootstrap-overwrite.scss";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 @import "./components/_card";
 
 html,
@@ -49,7 +49,7 @@ h3 {
 
 h4 {
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: $xxs;
 }
 
@@ -66,8 +66,4 @@ p:last-child {
   &:hover {
     color: $primary;
   }
-}
-
-.capitalize {
-  text-transform: capitalize;
 }

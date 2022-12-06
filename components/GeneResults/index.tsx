@@ -66,9 +66,10 @@ const GeneResult = ({
             )}
             {geneSymbol}
           </p>
-          <h3 className="mb-1 text-capitalize">{geneName}</h3>
+          <h4 className="mb-2 text-capitalize">{geneName}</h4>
           {!!synonymsArray && synonymsArray.length && (
-            <p className="grey text-capitalize">
+            <p className="grey text-capitalize small">
+              <strong>Synonyms:</strong>{" "}
               {(synonymsArray || []).slice(0, 10).join(", ") || "None"}
             </p>
           )}

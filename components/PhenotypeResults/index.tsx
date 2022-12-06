@@ -28,7 +28,7 @@ const PhenotypeResult = ({
         }}
       >
         <Col sm={6}>
-          <h3 className="mb-2 capitalize">{phenotypeName}</h3>
+          <h4 className="mb-2 text-capitalize">{phenotypeName}</h4>
           <p className="grey mb-0">
             <small>
               <strong>Description:</strong> ???
@@ -113,7 +113,6 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
             }}
           </Pagination>
         )}
-        =
       </Card>
     </Container>
   );

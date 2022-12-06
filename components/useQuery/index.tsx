@@ -32,7 +32,7 @@ export default ({
       }
       setLoading(false);
     })();
-  }, [router.isReady]);
+  }, [router.isReady, query]);
 
   return [data, loading, error];
 };
