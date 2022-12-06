@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import {
   faChartColumn,
   faCheckCircle,
@@ -103,6 +103,13 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
         ) : (
           <Pagination data={data}>
             {(pageData) => {
+              if (pageData.length === 0) {
+                return (
+                  <Alert variant="yellow">
+                    <p>No results found.</p>
+                  </Alert>
+                );
+              }
               return (
                 <>
                   {pageData.map((p) => (

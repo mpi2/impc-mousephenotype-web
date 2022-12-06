@@ -17,6 +17,7 @@ export default ({
     if (!router.isReady) return;
 
     (async () => {
+      setLoading(true);
       try {
         if (!query) throw new Error("API url not found");
         const res = await fetch(query);
