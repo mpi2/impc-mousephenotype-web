@@ -1,0 +1,85 @@
+{
+  "numResults": 10,
+  "results": [
+    {
+      "entityId": "MP:0031246",
+      "entityProperties": {
+        "mpId": "MP:0031246",
+        "phenotypeName": "abnormal CCL3 level",
+        "synonyms": "abnormal C-C motif chemokine 3 level;abnormal MIP-1alpha level;abnormal MIP1A level;abnormal macrophage inflammatory protein 1-alpha level;abnormal MIP-1 alpha level;abnormal MIP1-alpha level"
+      }
+    },
+    {
+      "entityId": "MP:0031247",
+      "entityProperties": {
+        "mpId": "MP:0031247",
+        "phenotypeName": "decreased CCL3 level",
+        "synonyms": "decreased MIP-1alpha level;decreased C-C motif chemokine 3 level;decreased macrophage inflammatory protein 1-alpha level;reduced macrophage inflammatory protein 1-alpha level;decreased MIP-1 alpha level;decreased MIP1A level;reduced MIP1A level;decreased MIP1-alpha level;reduced MIP-1alpha level;reduced C-C motif chemokine 3 level;reduced MIP-1 alpha level;reduced MIP1-alpha level"
+      }
+    },
+    {
+      "entityId": "MP:0031247",
+      "entityProperties": {
+        "mpId": "MP:0031247",
+        "phenotypeName": "decreased CCL3 level",
+        "synonyms": "decreased MIP-1alpha level;decreased C-C motif chemokine 3 level;decreased macrophage inflammatory protein 1-alpha level;reduced macrophage inflammatory protein 1-alpha level;decreased MIP-1 alpha level;decreased MIP1A level;reduced MIP1A level;decreased MIP1-alpha level;reduced MIP-1alpha level;reduced C-C motif chemokine 3 level;reduced MIP-1 alpha level;reduced MIP1-alpha level"
+      }
+    },
+    {
+      "entityId": "MP:0031248",
+      "entityProperties": {
+        "mpId": "MP:0031248",
+        "phenotypeName": "increased CCL3 level",
+        "synonyms": "increased MIP1-alpha level;increased MIP1A level;increased macrophage inflammatory protein 1-alpha level;increased MIP-1alpha level;increased C-C motif chemokine 3 level;increased MIP-1 alpha level"
+      }
+    },
+    {
+      "entityId": "MP:0004661",
+      "entityProperties": {
+        "mpId": "MP:0004661",
+        "phenotypeName": "absent thyroid parafollicular C-cells",
+        "synonyms": "absent C cells of thyroid gland;absent parafollicular cells of thyroid gland;absent thyroid clear cells;absent thyroid parafollicular cells;absent clear cells of thyroid gland;absent C cells"
+      }
+    },
+    {
+      "entityId": "MP:0031249",
+      "entityProperties": {
+        "mpId": "MP:0031249",
+        "phenotypeName": "abnormal circulating CCL3 level",
+        "synonyms": "abnormal circulating MIP-1 alpha level;abnormal circulating MIP1-alpha level;abnormal circulating MIP1A level;abnormal circulating MIP-1alpha level;abnormal circulating C-C motif chemokine 3 level;abnormal circulating macrophage inflammatory protein 1-alpha level"
+      }
+    },
+    {
+      "entityId": "MP:0031250",
+      "entityProperties": {
+        "mpId": "MP:0031250",
+        "phenotypeName": "decreased circulating CCL3 level",
+        "synonyms": "reduced circulating MIP-1 alpha level;decreased circulating MIP-1 alpha level;reduced circulating MIP1-alpha level;decreased circulating C-C motif chemokine 3 level;decreased circulating MIP1A level;reduced circulating macrophage inflammatory protein 1-alpha level;reduced circulating MIP1A level;decreased circulating MIP-1alpha level;decreased circulating MIP1-alpha level;reduced circulating C-C motif chemokine 3 level;decreased circulating macrophage inflammatory protein 1-alpha level;reduced circulating MIP-1alpha level"
+      }
+    },
+    {
+      "entityId": "MP:0031250",
+      "entityProperties": {
+        "mpId": "MP:0031250",
+        "phenotypeName": "decreased circulating CCL3 level",
+        "synonyms": "reduced circulating MIP-1 alpha level;decreased circulating MIP-1 alpha level;reduced circulating MIP1-alpha level;decreased circulating C-C motif chemokine 3 level;decreased circulating MIP1A level;reduced circulating macrophage inflammatory protein 1-alpha level;reduced circulating MIP1A level;decreased circulating MIP-1alpha level;decreased circulating MIP1-alpha level;reduced circulating C-C motif chemokine 3 level;decreased circulating macrophage inflammatory protein 1-alpha level;reduced circulating MIP-1alpha level"
+      }
+    },
+    {
+      "entityId": "MP:0031251",
+      "entityProperties": {
+        "mpId": "MP:0031251",
+        "phenotypeName": "increased circulating CCL3 level",
+        "synonyms": "increased circulating MIP-1alpha level;increased circulating C-C motif chemokine 3 level;increased circulating macrophage inflammatory protein 1-alpha level;increased circulating MIP-1 alpha level;increased circulating MIP1A level;increased circulating MIP1-alpha level"
+      }
+    },
+    {
+      "entityId": "MP:0031221",
+      "entityProperties": {
+        "mpId": "MP:0031221",
+        "phenotypeName": "abnormal CXCL10 secretion",
+        "synonyms": "abnormal small-inducible cytokine B10 secretion;abnormal IFN gamma-inducible protein 10 secretion;abnormal IP10 secretion;abnormal C-X-C motif chemokine ligand 10 secretion;abnormal IP-10 secretion;abnormal interferon gamma-induced protein 10 secretion;abnormal gamma-IP10 secretion"
+      }
+    }
+  ]
+}

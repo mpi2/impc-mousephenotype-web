@@ -67,3 +67,7 @@ p:last-child {
     color: $primary;
   }
 }
+
+.capitalize {
+  text-transform: capitalize;
+}

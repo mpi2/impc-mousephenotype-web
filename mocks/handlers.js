@@ -30,30 +30,24 @@ export const handlers = [
       })
     );
   }),
-  rest.get("/api/v1/genes/search", (req, res, ctx) => {
+  rest.get("/api/search/v1/search", (req, res, ctx) => {
+    const prefix = req.url.searchParams.get("prefix");
+    const type = req.url.searchParams.get("type");
+    const { query } = req.params;
+    console.table({ prefix, type, query });
     try {
-      // const results = require("./data/search.json");
-      const results = searchResults;
+      let results;
+      if (!type || type === "GENE") {
+        console.log("gene");
+        results = require("./data/search_new.json");
+      } else {
+        console.log("phenotype");
+        results = require("./data/search_phenotypes.json");
+      }
+      console.log("result:", results);
       return res(ctx.status(200), ctx.json(results));
     } catch (e) {
-      return res(ctx.status(404));
-    }
-  }),
-  rest.get("/api/v1/genes/search/:query?", (req, res, ctx) => {
-    const { query } = req.params;
-    try {
-      const results = require("./data/search.json");
-      if (!query) {
-        return res(ctx.status(200), ctx.json(results));
-      }
-      const filteredResults = results.filter(
-        (r) =>
-          `${r.marker_name} ${r.marker_symbol} ${(r.marker_synonym ?? []).join(
-            " "
-          )}`.indexOf(query) >= 0
-      );
-      return res(ctx.status(200), ctx.json(filteredResults));
-    } catch (e) {
+      console.error(e);
       return res(ctx.status(404));
     }
   }),

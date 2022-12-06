@@ -16,30 +16,34 @@ import Card from "../Card";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination";
 import { GeneComparatorTrigger, useGeneComparator } from "../GeneComparator";
+import useQuery from "../useQuery";
 
 const GeneResult = ({
   gene: {
-    marker_symbol,
-    marker_name,
-    marker_synonym,
-    mgi_accession_id,
-    es_cell_production_status,
-    mouse_production_status,
-    phenotype_status,
-    phenotyping_data_available,
+    entityProperties: {
+      geneSymbol,
+      geneName,
+      synonyms = "",
+      mgiGeneAccessionId,
+      esCellProductionStatus,
+      mouseProductionStatus,
+      phenotypeStatus,
+      phenotypingDataAvailable,
+    },
   },
 }: {
   gene: any;
 }) => {
   const router = useRouter();
   const { addGene, genes } = useGeneComparator();
-  const IsInCompare = genes.includes(mgi_accession_id);
+  const IsInCompare = genes.includes(mgiGeneAccessionId);
+  const synonymsArray = synonyms.split(";");
   return (
     <>
       <Row
         className={styles.result}
         onClick={() => {
-          router.push(`/genes/${mgi_accession_id}`);
+          router.push(`/genes/${mgiGeneAccessionId}`);
         }}
       >
         <Col sm={5}>
@@ -54,42 +58,40 @@ const GeneResult = ({
                 className={styles.addToCompareBtn}
                 onClick={(e) => {
                   e.stopPropagation();
-                  addGene(mgi_accession_id);
+                  addGene(mgiGeneAccessionId);
                 }}
               >
                 <FontAwesomeIcon icon={faPlusCircle} /> Compare
               </Button>
             )}
-            {marker_symbol}
+            {geneSymbol}
           </p>
-          <h3 className="mb-1 text-capitalize">{marker_name}</h3>
-          {!!marker_synonym && marker_synonym.length && (
+          <h3 className="mb-1 text-capitalize">{geneName}</h3>
+          {!!synonymsArray && synonymsArray.length && (
             <p className="grey text-capitalize">
-              {(marker_synonym || []).slice(0, 10).join(", ") || "None"}
+              {(synonymsArray || []).slice(0, 10).join(", ") || "None"}
             </p>
           )}
         </Col>
         <Col sm={4}>
           <p>
-            {phenotyping_data_available ? (
+            {phenotypingDataAvailable ? (
               <span>
                 <FontAwesomeIcon
-                  className={!!phenotype_status ? "secondary" : "grey"}
-                  icon={!!phenotype_status ? faCheckCircle : faTimesCircle}
+                  className={!!phenotypeStatus ? "secondary" : "grey"}
+                  icon={!!phenotypeStatus ? faCheckCircle : faTimesCircle}
                 />{" "}
                 <span className="me-4">Phenotyping data</span>
                 <FontAwesomeIcon
-                  className={!!es_cell_production_status ? "secondary" : "grey"}
+                  className={!!esCellProductionStatus ? "secondary" : "grey"}
                   icon={
-                    !!es_cell_production_status ? faCheckCircle : faTimesCircle
+                    !!esCellProductionStatus ? faCheckCircle : faTimesCircle
                   }
                 />{" "}
                 <span className="me-4">ES Cells</span>
                 <FontAwesomeIcon
-                  className={!!mouse_production_status ? "secondary" : "grey"}
-                  icon={
-                    !!mouse_production_status ? faCheckCircle : faTimesCircle
-                  }
+                  className={!!mouseProductionStatus ? "secondary" : "grey"}
+                  icon={!!mouseProductionStatus ? faCheckCircle : faTimesCircle}
                 />{" "}
                 <span className="me-4">Mice</span>
               </span>
@@ -106,7 +108,10 @@ const GeneResult = ({
             <FontAwesomeIcon icon={faChartColumn} /> View data
           </span>{" "}
           <span onClick={(e) => e.stopPropagation()} className="ms-4">
-            <Link href={`/genes/${mgi_accession_id}/#purchase`} scroll={false}>
+            <Link
+              href={`/genes/${mgiGeneAccessionId}/#purchase`}
+              scroll={false}
+            >
               <a href="#" className="primary">
                 <FontAwesomeIcon icon={faShoppingCart} /> Order mice
               </a>
@@ -121,15 +126,11 @@ const GeneResult = ({
 
 const GeneResults = ({ query }: { query?: string }) => {
   const [data, setData] = useState(null);
-  useEffect(() => {
-    (async () => {
-      const res = await fetch(`/api/v1/genes/search/${query}`);
-      if (res.ok) {
-        const result = await res.json();
-        setData(result);
-      }
-    })();
-  }, [query]);
+  const [_, loading, error] = useQuery({
+    query: `/api/search/v1/search/?prefix=${query}`,
+    afterSuccess: (result) => setData(result.results),
+  });
+
   return (
     <>
       <GeneComparatorTrigger />
@@ -139,31 +140,43 @@ const GeneResults = ({ query }: { query?: string }) => {
             marginTop: -80,
           }}
         >
-          <h1 className="mb-1">
-            <strong>Gene Search results</strong>
-          </h1>
+          {query ? (
+            <>
+              <h1 className="mb-1">
+                <strong>Gene Search results</strong>
+              </h1>
 
-          <p className="grey">
-            <small>
-              Found {data?.length || 0} entries{" "}
-              {!!query && (
-                <>
-                  matching <strong>"{query}"</strong>
-                </>
-              )}
-            </small>
-          </p>
-          <Pagination data={data}>
-            {(pageData) => {
-              return (
-                <>
-                  {pageData.map((p) => (
-                    <GeneResult gene={p} />
-                  ))}
-                </>
-              );
-            }}
-          </Pagination>
+              <p className="grey">
+                <small>
+                  Found {data?.length || 0} entries{" "}
+                  {!!query && (
+                    <>
+                      matching <strong>"{query}"</strong>
+                    </>
+                  )}
+                </small>
+              </p>
+            </>
+          ) : (
+            <h1>
+              <strong>Top 10 most searched genes</strong>
+            </h1>
+          )}
+          {loading ? (
+            <p className="grey mt-3 mb-3">Loading...</p>
+          ) : (
+            <Pagination data={data}>
+              {(pageData) => {
+                return (
+                  <>
+                    {pageData.map((p) => (
+                      <GeneResult gene={p} key={p.entityId} />
+                    ))}
+                  </>
+                );
+              }}
+            </Pagination>
+          )}
         </Card>
       </Container>
     </>

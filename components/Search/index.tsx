@@ -2,9 +2,10 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
+import { debounce } from "lodash";
 
 export type Tab = {
   name: string;
@@ -21,6 +22,9 @@ const Search = ({
 }) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
+  const delayedOnChange = useRef(
+    debounce((q: string) => onChange(q), 500)
+  ).current;
   const { type } = router.query;
   isPhenotype = isPhenotype ?? type === "phenotype";
 
@@ -79,7 +83,10 @@ const Search = ({
               className={styles.input}
               type="text"
               placeholder="Search All 7824 Knockout Data..."
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                delayedOnChange(e.target.value);
+              }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   onChange(query);
