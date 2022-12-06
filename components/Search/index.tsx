@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { debounce } from "lodash";
+import { route } from "next/dist/server/router";
 
 export type Tab = {
   name: string;
@@ -20,10 +21,20 @@ const Search = ({
   isPhenotype?: boolean;
   onChange?: (val: string) => void;
 }) => {
-  const [query, setQuery] = useState("");
   const router = useRouter();
+  const [query, setQuery] = useState<string>(
+    (router.query.query as string) || ""
+  );
+
+  const handleInput = (val: string) => {
+    if (onChange) onChange(val);
+    router.replace({
+      query: { ...router.query, query: val },
+    });
+  };
+
   const delayedOnChange = useRef(
-    debounce((q: string) => onChange(q), 500)
+    debounce((q: string) => handleInput(q), 500)
   ).current;
   const { type } = router.query;
   isPhenotype = isPhenotype ?? type === "phenotype";
@@ -47,6 +58,14 @@ const Search = ({
   useEffect(() => {
     setTabIndex(isPhenotype ? 1 : 0);
   }, [type]);
+
+  useEffect(() => {
+    if (router.isReady && router.query.query) {
+      setQuery(router.query.query as string);
+      handleInput(router.query.query as string);
+    }
+  }, [router.isReady]);
+
   return (
     <div className={`${styles.banner}`}>
       <Container className={`pb-4 pt-5 ${styles.container}`}>
@@ -83,20 +102,25 @@ const Search = ({
               className={styles.input}
               type="text"
               placeholder="Search All 7824 Knockout Data..."
+              value={query}
               onChange={(e) => {
                 setQuery(e.target.value);
                 delayedOnChange(e.target.value);
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  onChange(query);
+                  handleInput(query);
+                  console.log(router.route);
+                  if (router.route !== "/search") {
+                    router.push("/search");
+                  }
                 }
               }}
             />
             <button
               className={styles.searchBtn}
               onClick={() => {
-                onChange(query);
+                handleInput(query);
               }}
             >
               <FontAwesomeIcon icon={faSearch} />

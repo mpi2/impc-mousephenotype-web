@@ -148,10 +148,13 @@ const Summary = ({
             </span>
           </div>
         </div>
-        <p className="grey">
-          <FontAwesomeIcon icon={faWarning} /> Failed to fetch the gene summary:{" "}
-          {error}
-        </p>
+        <div className="mt-5 mb-5 text-center grey">
+          <h1>
+            <FontAwesomeIcon icon={faWarning} className="mb-4" /> <br />
+            <strong>Sorry, we didn't find anything.</strong>
+          </h1>
+          <p className="grey">Please check your url or try again later.</p>
+        </div>
       </Card>
     );
   }

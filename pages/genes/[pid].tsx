@@ -33,7 +33,7 @@ const Gene = () => {
       if (hash.length > 0) {
         setTimeout(() => {
           document.querySelector(window.location.hash).scrollIntoView();
-        }, 200);
+        }, 500);
       }
     }
   }, [gene]);

@@ -34,17 +34,13 @@ export const handlers = [
     const prefix = req.url.searchParams.get("prefix");
     const type = req.url.searchParams.get("type");
     const { query } = req.params;
-    console.table({ prefix, type, query });
     try {
       let results;
       if (!type || type === "GENE") {
-        console.log("gene");
         results = require("./data/search_new.json");
       } else {
-        console.log("phenotype");
         results = require("./data/search_phenotypes.json");
       }
-      console.log("result:", results);
       return res(ctx.status(200), ctx.json(results));
     } catch (e) {
       console.error(e);
