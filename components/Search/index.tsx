@@ -112,7 +112,7 @@ const Search = ({
                   handleInput(query);
                   console.log(router.route);
                   if (router.route !== "/search") {
-                    router.push("/search");
+                    router.push(`/search?query=${query}`);
                   }
                 }
               }}
