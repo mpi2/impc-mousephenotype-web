@@ -27,7 +27,8 @@ const GeneColumn = ({
     (async () => {
       if (!geneId) return;
       const res = await fetch(
-        `/api/v1/genes/${"MGI:1929293" || geneId}/summary`
+        // `/api/v1/genes/${"MGI:1929293" || geneId}/summary`
+        `/api/v1/genes/${geneId}/summary`
       );
       if (res.ok) {
         setData(await res.json());

@@ -14,7 +14,8 @@ const Publications = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const [data, loading, error] = useQuery({
-    query: `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publication`,
+    // query: `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publication`,
+    query: `/api/v1/genes/${router.query.pid}/publication`,
     afterSuccess: (data) => {
       setSorted(_.orderBy(data, "title", "asc"));
     },

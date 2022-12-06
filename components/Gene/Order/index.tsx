@@ -16,7 +16,8 @@ const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const [data, loading, error] = useQuery({
-    query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`,
+    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`,
+    query: `/api/v1/genes/${router.query.pid}/order`,
     afterSuccess: (data) => {
       setSorted(_.orderBy(data, "alleleSymbol", "asc"));
     },
@@ -106,11 +107,7 @@ const Order = ({ gene }: { gene: any }) => {
                       )}
                     </td>
                     <td className="text-capitalize">
-                      <Link
-                        href={`/alleles/${"MGI:1929293" || router.query.pid}/${
-                          allele[1]
-                        }`}
-                      >
+                      <Link href={`/alleles/${router.query.pid}/${allele[1]}`}>
                         <a className="link primary">
                           View products <FontAwesomeIcon icon={faArrowRight} />
                         </a>

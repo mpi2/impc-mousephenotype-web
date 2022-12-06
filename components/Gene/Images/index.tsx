@@ -44,7 +44,8 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
 const Images = () => {
   const router = useRouter();
   const [data, loading, error] = useQuery({
-    query: `/api/v1/genes/${"MGI:2444773" || router.query.pid}/images`,
+    // query: `/api/v1/genes/${"MGI:2444773" || router.query.pid}/images`,
+    query: `/api/v1/genes/${router.query.pid}/images`,
   });
 
   if (loading) {

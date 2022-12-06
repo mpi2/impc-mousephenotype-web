@@ -114,7 +114,8 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const [data, loading, error] = useQuery({
-    query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/disease`,
+    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/disease`,
+    query: `/api/v1/genes/${router.query.pid}/disease`,
     afterSuccess: (diseases) => {
       setSorted(_.orderBy(diseases, "diseaseTerm", "asc"));
     },

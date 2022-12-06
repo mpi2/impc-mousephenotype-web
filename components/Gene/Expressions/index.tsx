@@ -22,7 +22,8 @@ const Expressions = () => {
   const [sorted, setSorted] = useState<any[]>(null);
   const [tab, setTab] = useState("adultExpressions");
   const [__, loading, error] = useQuery({
-    query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/expression`,
+    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/expression`,
+    query: `/api/v1/genes/${router.query.pid}/expression`,
     afterSuccess: (raw) => {
       const processed =
         raw?.map((d) => ({
@@ -118,11 +119,7 @@ const Expressions = () => {
                       ? d.expressionImageParameters.map((p) => (
                           <a
                             className="primary small"
-                            href={`https://www.mousephenotype.org/data/imageComparator?acc=${
-                              "MGI:1929293" || router.query.pid
-                            }&anatomy_id=MA:0000168&parameter_stable_id=${
-                              p.parameter_stable_id
-                            }`}
+                            href={`https://www.mousephenotype.org/data/imageComparator?acc=${router.query.pid}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
                           >
                             <FontAwesomeIcon icon={faImage} />{" "}
                             {p.parameter_name}

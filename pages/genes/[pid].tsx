@@ -24,7 +24,8 @@ const HumanDiseases = dynamic(
 const Gene = () => {
   const router = useRouter();
   const [gene, loading, error] = useQuery({
-    query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/summary`,
+    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/summary`,
+    query: `/api/v1/genes/${router.query.pid}/summary`,
   });
   useEffect(() => {
     if (gene) {

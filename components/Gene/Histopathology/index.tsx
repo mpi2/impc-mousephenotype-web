@@ -16,7 +16,8 @@ const Histopathology = ({ gene }: { gene: any }) => {
 
   const [sorted, setSorted] = useState<any[]>(null);
   const [data, loading, error] = useQuery({
-    query: `/api/v1/genes/${"MGI:2143539" || router.query.pid}/histopathology`,
+    // query: `/api/v1/genes/${"MGI:2143539" || router.query.pid}/histopathology`,
+    query: `/api/v1/genes/${router.query.pid}/histopathology`,
     afterSuccess: (data) => {
       setSorted(_.orderBy(data, "parameterName", "asc"));
     },
@@ -77,9 +78,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
                   <tr>
                     <td>
                       <Link
-                        href={`/histopath/${
-                          "MGI:2143539" || router.query.pid
-                        }?anatomy=${(
+                        href={`/histopath/${router.query.pid}?anatomy=${(
                           p.parameterName.split(" -")[0] || ""
                         ).toLowerCase()}`}
                       >

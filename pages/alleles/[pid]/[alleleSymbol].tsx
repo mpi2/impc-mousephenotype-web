@@ -58,9 +58,8 @@ const Gene = () => {
   } = useRouter();
 
   const [allele, loading, error] = useQuery({
-    query: `/api/v1/alleles/${"MGI:1929293" || pid}/${
-      "tm1a(EUCOMM)Wtsi" || alleleSymbol
-    }`,
+    // query: `/api/v1/alleles/${pid}/${"tm1a(EUCOMM)Wtsi" || alleleSymbol}`,
+    query: `/api/v1/alleles/${pid}/${alleleSymbol}`,
   });
 
   if (loading) {

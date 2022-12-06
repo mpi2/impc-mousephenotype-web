@@ -13,11 +13,13 @@ const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
 const Phenotypes = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [phenotypeData, phenotypeLoading, phenotypeError] = useQuery({
-    query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/phenotype-hits`,
+    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/phenotype-hits`,
+    query: `/api/v1/genes/${router.query.pid}/phenotype-hits`,
   });
   const [geneData, geneLoading, geneError] = useQuery({
     query: `/api/v1/genes/${
-      "MGI:1860086" || router.query.pid
+      // "MGI:1860086" || router.query.pid
+      router.query.pid
     }/statistical-result`,
   });
 
