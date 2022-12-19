@@ -10,6 +10,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: $grey;
+  font-size: 0.9rem;
 }
 
 .subheadingSection {
@@ -40,7 +41,7 @@
 }
 
 .progressContainer {
-  height: $spacing * 2;
+  height: $spacing;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -75,6 +76,7 @@
 .bodySystemGroupSummary {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .bodySystems {
@@ -110,18 +112,22 @@
 }
 
 .dataCollection {
-  color: $secondary;
-  font-weight: bold;
+  color: $black;
+  // font-weight: bold;
   margin-bottom: $xs;
   display: inline-block;
-  svg {
+  svg:first-child {
+    color: $secondary;
     margin-right: $xxs;
   }
 }
 
 .dataCollectionInactive {
   @extend .dataCollection;
-  color: $grey;
+  color: $grey !important;
+  svg:first-child {
+    color: $grey;
+  }
 }
 
 .purchaseBanner {

@@ -2,6 +2,8 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowDown,
   faCartPlus,
+  faChevronCircleDown,
+  faChevronDown,
   faChevronRight,
   faExternalLinkAlt,
   faWarning,
@@ -67,7 +69,7 @@ const CollectionItem = ({
     <Check isChecked={hasData} />
     {name}{" "}
     {isExternal && (
-      <FontAwesomeIcon icon={faExternalLinkAlt} className="grey" />
+      <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" className="grey" />
     )}
   </a>
 );
@@ -85,12 +87,12 @@ const Metric = ({
     <div className={styles.metric}>
       <div className={styles.progressCircleCont}>
         <CircularProgressbarWithChildren
-          strokeWidth={13}
+          strokeWidth={8}
           value={(value * 100) / average}
           styles={buildStyles({
             strokeLinecap: "butt",
             pathTransitionDuration: 0.5,
-            pathColor: `#00b0b0`,
+            pathColor: value >= average ? "#ed7b25" : `#00b0b0`,
             trailColor: "#e8e8e8",
             backgroundColor: "#3e98c7",
           })}
@@ -192,7 +194,14 @@ const Summary = ({
             Synonyms:{" "}
             {gene.synonyms
               .slice(0, SYNONYMS_COUNT)
-              .map((s, i) => `${s}${i < SYNONYMS_COUNT ? ", " : ""}`)}
+              .map(
+                (s, i) =>
+                  `${s}${
+                    i < Math.min(gene.synonyms.length - 1, SYNONYMS_COUNT)
+                      ? ", "
+                      : ""
+                  }`
+              )}
             {gene.synonyms.length > SYNONYMS_COUNT && (
               <OverlayTrigger
                 placement="bottom"
@@ -246,8 +255,8 @@ const Summary = ({
               </span>{" "}
               /{allCount} physiological systems tested
             </div>
-            <a href="#data" className="secondary">
-              View data <FontAwesomeIcon icon={faArrowDown} />
+            <a href="#data" className="link">
+              View data <FontAwesomeIcon icon={faChevronCircleDown} />
             </a>
           </div>
           <div className={styles.progressContainer}>
@@ -264,14 +273,12 @@ const Summary = ({
           </div>
           {!!significantCount && (
             <div className={styles.bodySystemGroupSignificant}>
-              <p className={styles.bodySystemGroupSummary}>
+              <h5 className={styles.bodySystemGroupSummary}>
                 <span className={`${styles.pill} bg-primary white`}>
                   {significantCount}
                 </span>{" "}
-                <span>
-                  <strong>Significantly</strong> impacted by the knock-out
-                </span>
-              </p>
+                Significantly impacted by the knock-out
+              </h5>
               <div className={styles.bodySystems}>
                 {gene.significantTopLevelPhenotypes.map((x) => (
                   <BodySystem name={x} isSignificant color="primary" />
@@ -281,68 +288,68 @@ const Summary = ({
           )}
           {!!nonSignificantCount && (
             <div className={styles.bodySystemGroup}>
-              <p className={styles.bodySystemGroupSummary}>
+              <h5 className={styles.bodySystemGroupSummary}>
                 <span className={`${styles.pill} bg-secondary white`}>
                   {nonSignificantCount}
                 </span>{" "}
-                <span>
-                  <strong>No significant</strong> impact
-                </span>
-              </p>
+                No significant impact
+              </h5>
               <div className={styles.bodySystems}>
                 {gene.notSignificantTopLevelPhenotypes.map((x) => (
-                  <BodySystem name={x} color="secondary" />
+                  <BodySystem name={x} color="grey" hoverColor="secondary" />
                 ))}
               </div>
             </div>
           )}
           {!!notTestedCount && (
             <div className={styles.bodySystemGroup}>
-              <p className={styles.bodySystemGroupSummary}>
+              <h5 className={styles.bodySystemGroupSummary}>
                 <span className={`${styles.pill} bg-grey`}>
                   {notTestedCount}
                 </span>{" "}
-                <strong>Not tested</strong>
-              </p>
+                Not tested
+              </h5>
               {notTested.map((system) => (
-                <BodySystem name={system} />
+                <BodySystem
+                  name={system}
+                  hoverColor="grey"
+                  color="grey-light"
+                />
               ))}
             </div>
           )}
         </Col>
         <Col style={{ position: "relative" }}>
-          <h3>
-            Gene metrics <span className="thin">compared to IMPC average</span>
-          </h3>
+          <h3>Gene metrics compared to IMPC average</h3>
           <Row>
             <Col md={6}>
-              <Metric value={gene.significantPhenotypesCount ?? 0} average={7}>
+              <Metric value={gene.significantPhenotypesCount ?? 0} average={8}>
                 Significant phenotypes
               </Metric>
             </Col>
             <Col md={6}>
               <Metric
                 value={gene.adultExpressionObservationsCount ?? 0}
-                average={97}
+                average={57}
               >
                 Adult expressions
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric value={gene.associatedDiseasesCount ?? 0} average={8}>
+              <Metric value={gene.associatedDiseasesCount ?? 0} average={3}>
                 Associated disease
               </Metric>
             </Col>
             <Col md={6}>
               <Metric
                 value={gene.embryoExpressionObservationsCount ?? 0}
-                average={23}
+                average={42}
               >
                 Embryo expressions
               </Metric>
             </Col>
           </Row>
-          <h3 className="mt-3">Data collections</h3>
+          <h3 className="mt-5">Data collections</h3>
           <Row className="mb-5">
             <Col md={5} className="pe-0">
               <CollectionItem

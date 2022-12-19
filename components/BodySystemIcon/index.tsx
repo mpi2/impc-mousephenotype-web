@@ -16,7 +16,7 @@ import {
   faHandPaper,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import _ from "lodash";
@@ -287,16 +287,19 @@ export const BodySystem = ({
   name = "mortality/aging",
   isSignificant = false,
   color = "grey",
+  hoverColor,
   noSpacing,
   appendLabel,
 }: {
   isSignificant?: boolean;
   name: string;
   color?: string;
+  hoverColor?: string;
   noSpacing?: boolean;
   appendLabel?: string;
 }) => {
   const label = _.capitalize(name.replace(/ phenotype/g, ""));
+  const [hovered, setHovered] = useState<boolean>(false);
   // const label = name;
   return isSignificant ? (
     <span
@@ -309,6 +312,9 @@ export const BodySystem = ({
     <OverlayTrigger
       placement="top"
       trigger={["hover", "focus"]}
+      onToggle={(e: boolean) => {
+        setHovered(e);
+      }}
       overlay={
         <Tooltip>
           {label}
@@ -320,9 +326,11 @@ export const BodySystem = ({
         <span
           {...triggerHandler}
           ref={ref}
-          className={noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem}
+          className={`${
+            noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem
+          } ${!!hoverColor && hovered ? hoverColor : color}`}
         >
-          <BodySystemIcon name={name} color={color} />
+          <BodySystemIcon name={name} color="currentColor" />
         </span>
       )}
     </OverlayTrigger>
