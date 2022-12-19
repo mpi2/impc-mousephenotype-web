@@ -40,7 +40,32 @@
     .addToCompareBtn {
       display: inline-block;
     }
+    .shortcuts {
+      opacity: 1;
+      pointer-events: unset;
+    }
   }
+}
+
+.row {
+  &:hover {
+    .shortcuts > * {
+      pointer-events: unset;
+      display: block;
+    }
+  }
+}
+
+.shortcuts {
+  // transition: 0.3s ease all;
+  margin-top: $spacing * 3;
+  & > * {
+    display: none;
+  }
+}
+
+.addedToComparison {
+  display: block !important;
 }
 
 .addToCompareBtn {

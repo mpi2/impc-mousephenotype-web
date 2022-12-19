@@ -6,6 +6,7 @@ import {
   faCheckCircle,
   faPlusCircle,
   faShoppingCart,
+  faTimes,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -40,84 +41,93 @@ const GeneResult = ({
   const synonymsArray = synonyms.split(";");
   return (
     <>
-      <Row
-        className={styles.result}
-        onClick={() => {
-          router.push(`/genes/${mgiGeneAccessionId}`);
-        }}
-      >
-        <Col sm={5}>
-          <p className="secondary">
-            {IsInCompare ? (
-              <span>
-                <FontAwesomeIcon icon={faCheck} className="secondary" />{" "}
-              </span>
-            ) : (
-              <Button
-                variant="secondary"
-                className={styles.addToCompareBtn}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  addGene(mgiGeneAccessionId);
-                }}
-              >
-                <FontAwesomeIcon icon={faPlusCircle} /> Compare
-              </Button>
-            )}
-            {geneSymbol}
-          </p>
-          <h4 className="mb-2 text-capitalize">{geneName}</h4>
+      <Row className={styles.row}>
+        <Col
+          sm={8}
+          className={styles.result}
+          onClick={() => {
+            router.push(`/genes/${mgiGeneAccessionId}`);
+          }}
+        >
+          <h4 className="mb-2 text-capitalize">
+            <span className="secondary">{geneSymbol}</span>{" "}
+            <span className="grey">|</span> {geneName}
+          </h4>
           {!!synonymsArray && synonymsArray.length && (
             <p className="grey text-capitalize small">
               <strong>Synonyms:</strong>{" "}
               {(synonymsArray || []).slice(0, 10).join(", ") || "None"}
             </p>
           )}
-        </Col>
-        <Col sm={4}>
-          <p>
+
+          <p className="small grey">
             {phenotypingDataAvailable ? (
-              <span>
+              <p>
                 <FontAwesomeIcon
                   className={!!phenotypeStatus ? "secondary" : "grey"}
-                  icon={!!phenotypeStatus ? faCheckCircle : faTimesCircle}
+                  icon={!!phenotypeStatus ? faCheck : faTimes}
                 />{" "}
-                <span className="me-4">Phenotyping data</span>
+                <span className={`me-4 ${!phenotypeStatus ? "grey" : ""}`}>
+                  {phenotypeStatus || "No phenotyping data"}
+                </span>
                 <FontAwesomeIcon
-                  className={!!esCellProductionStatus ? "secondary" : "grey"}
-                  icon={
-                    !!esCellProductionStatus ? faCheckCircle : faTimesCircle
-                  }
+                  className={!!esCellProductionStatus ? "secondary" : "gret"}
+                  icon={!!esCellProductionStatus ? faCheck : faTimes}
                 />{" "}
-                <span className="me-4">ES Cells</span>
+                <span
+                  className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}
+                >
+                  {esCellProductionStatus || "No ES cells"}
+                </span>
                 <FontAwesomeIcon
-                  className={!!mouseProductionStatus ? "secondary" : "grey"}
-                  icon={!!mouseProductionStatus ? faCheckCircle : faTimesCircle}
+                  className={!!mouseProductionStatus ? "secondary" : "gret"}
+                  icon={!!mouseProductionStatus ? faCheck : faTimes}
                 />{" "}
-                <span className="me-4">Mice</span>
-              </span>
+                <span
+                  className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}
+                >
+                  {mouseProductionStatus || "No mice"}
+                </span>
+              </p>
             ) : (
               <span className="grey">
-                <FontAwesomeIcon className="grey" icon={faTimesCircle} />{" "}
-                Phenotyping data not yet available
+                <FontAwesomeIcon className="grey" icon={faTimes} /> Phenotyping
+                data not yet available
               </span>
             )}
           </p>
         </Col>
-        <Col sm={3} className="text-right">
-          <span className="primary">
-            <FontAwesomeIcon icon={faChartColumn} /> View data
-          </span>{" "}
-          <span onClick={(e) => e.stopPropagation()} className="ms-4">
+        <Col sm={4} className={styles.shortcuts}>
+          <h5 className="grey text-uppercase">
+            <small>Shortcuts</small>
+          </h5>
+          <div
+            className={`grey mb-1 ${
+              IsInCompare ? styles.addedToComparison : "link"
+            }`}
+            onClick={(e) => {
+              e.stopPropagation();
+              addGene(mgiGeneAccessionId);
+            }}
+          >
+            <FontAwesomeIcon
+              className={IsInCompare ? "secondary" : ""}
+              icon={IsInCompare ? faCheckCircle : faPlusCircle}
+            />{" "}
+            Add
+            {IsInCompare ? "ed " : " "}
+            to comparison
+          </div>
+          <p className="grey">
             <Link
               href={`/genes/${mgiGeneAccessionId}/#purchase`}
               scroll={false}
             >
-              <a href="#" className="primary">
+              <a href="#" className="link">
                 <FontAwesomeIcon icon={faShoppingCart} /> Order mice
               </a>
             </Link>
-          </span>
+          </p>
         </Col>
       </Row>
       <hr className="mt-0 mb-0" />
