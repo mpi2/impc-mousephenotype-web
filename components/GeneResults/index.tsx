@@ -187,8 +187,8 @@ const GeneResults = ({ query }: { query?: string }) => {
                 }
                 return (
                   <>
-                    {pageData.map((p) => (
-                      <GeneResult gene={p} key={p.entityId} />
+                    {pageData.map((p, i) => (
+                      <GeneResult gene={p} key={p.entityId + i} />
                     ))}
                   </>
                 );
