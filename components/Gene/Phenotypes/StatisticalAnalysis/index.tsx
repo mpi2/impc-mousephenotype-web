@@ -4,19 +4,18 @@ import { Chart as ChartEl } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
 import zoomPlugin from "chartjs-plugin-zoom";
 import _ from "lodash";
-import { useRef, useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowLeftLong,
+  // faArrowLeftLong,
   faCheckSquare,
-  faChevronRight,
+  // faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "../../../BodySystemIcon";
 import { formatBodySystems } from "../../../../utils";
-import { Alert, Button } from "react-bootstrap";
+import { Alert, Button, Form } from "react-bootstrap";
 
 Chart.register([annotationPlugin, zoomPlugin]);
 
@@ -91,19 +90,19 @@ const cats: { [key: string]: CatType } = {
 
 const options = [
   {
-    label: "Show significant phenotypes only",
+    label: "None",
     category: cats.SIGNIFICANT,
   },
   {
-    label: "Group by physiological systems",
+    label: "Physiological systems",
     category: cats.SIGNIFICANT_BODY_SYSTEMS,
   },
 
   {
-    label: "Group by procedures",
+    label: "Procedures",
     category: cats.SIGNIFICANT_PROCEDURES,
   },
-  { label: "Sort all by significance", category: cats.ALL },
+  // { label: "Sort all by significance", category: cats.ALL },
 ];
 
 type Cat = { type: CatType; meta?: any };
@@ -267,7 +266,7 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
 
   return (
     <div>
-      <div style={{ paddingLeft: "1rem", marginBottom: 30 }}>
+      <div style={{ paddingLeft: "0.5rem", marginBottom: 30 }}>
         {colorByArray.map((item, index) => {
           if (!item) {
             return;
@@ -355,7 +354,9 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
 };
 
 const StatisticalAnalysis = ({ data }) => {
-  const [cat, setCat] = useState<Cat | null>(null);
+  const [cat, setCat] = useState<Cat | null>({
+    type: cats.SIGNIFICANT_BODY_SYSTEMS,
+  });
   if (
     !data ||
     !data.some(
@@ -389,72 +390,99 @@ const StatisticalAnalysis = ({ data }) => {
       setCatType(cats[`SIGNIFICANT_${cat.type}`]);
     }
   };
-  if (cat) {
-    const title = cat.type.includes("PROCEDURE")
-      ? "Measurements by Procedures"
-      : cat.type.includes("SYSTEM")
-      ? "Measurements by Physiological Systems"
-      : "Measurements";
-    return (
-      <>
-        <div style={{ paddingTop: "1rem", paddingLeft: "1rem" }}>
-          <p>
+  // if (cat) {
+  // const title = cat.type.includes("PROCEDURE")
+  //   ? "Measurements by Procedures"
+  //   : cat.type.includes("SYSTEM")
+  //   ? "Measurements by Physiological Systems"
+  //   : "Measurements";
+  return (
+    <>
+      <div
+        style={{
+          paddingLeft: "0.5rem",
+          paddingTop: "1rem",
+          marginBottom: "1rem",
+        }}
+      >
+        {/* <p>
             <button
               onClick={() => setCat(null)}
               className={`grey ${styles.inlineButton}`}
             >
               <FontAwesomeIcon icon={faArrowLeftLong} /> Back
             </button>
-          </p>
-          <h4>{title}</h4>
-          <p>
-            {
-              <button onClick={handleToggle} className={styles.inlineButton}>
-                <FontAwesomeIcon
-                  icon={isSignificant ? faCheckSquare : faSquare}
-                  className={isSignificant ? "secondary" : "grey"}
-                />{" "}
-                Only show significant
-              </button>
-            }
-          </p>
-        </div>
-        <StatisticalAnalysisChart data={data} cat={cat} />
-      </>
-    );
-  } else {
-    return (
-      <div style={{ paddingTop: "2rem", paddingLeft: "1rem" }}>
-        <h4>Explore the analysis of measurements we have collected</h4>
-        <p className="grey" style={{ maxWidth: 900 }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-          mollitia ab quisquam sunt magnam aperiam sapiente, delectus incidunt
-          qui ad laborum impedit unde dolores architecto, velit dolor officia
-          doloremque id.
-        </p>
+          </p> */}
+        {/* <h4>{title}</h4> */}
         <p>
-          <strong>
-            Get started by selecting how you would like to view the data:
-          </strong>
+          <label
+            htmlFor="groupBy"
+            className="grey"
+            style={{ marginRight: "0.5rem" }}
+          >
+            Include in groups:
+          </label>
+          <Form.Select
+            style={{ display: "inline-block", width: 280, marginRight: "2rem" }}
+            aria-label="Default select example"
+            // value={cat.type}
+            defaultValue={cat.type}
+            id="groupBy"
+            className="bg-white"
+            onChange={(el) => {
+              console.log(el);
+              setCat({ type: el.target.value as CatType });
+            }}
+          >
+            {options.map(({ label, category }) => (
+              <option value={category}>{label}</option>
+            ))}
+          </Form.Select>
+          <button onClick={handleToggle} className={styles.inlineButton}>
+            <FontAwesomeIcon
+              icon={isSignificant ? faCheckSquare : faSquare}
+              className={isSignificant ? "primary" : "grey"}
+            />{" "}
+            Only show significant
+          </button>
         </p>
-        <ul style={{ padding: 0, marginTop: "1rem" }}>
-          {options.map(({ label, category }) => (
-            <li
-              style={{ listStyle: "none", marginBottom: "1rem" }}
-              key={`label-${label}-${category}`}
-            >
-              <button
-                onClick={() => setCat({ type: category })}
-                className={`${styles.inlineButton} secondary`}
-              >
-                {label} <FontAwesomeIcon icon={faChevronRight} />
-              </button>
-            </li>
-          ))}
-        </ul>
       </div>
-    );
-  }
+      <StatisticalAnalysisChart data={data} cat={cat} />
+    </>
+  );
+  // } else {
+  //   return (
+  //     <div style={{ paddingTop: "2rem", paddingLeft: "1rem" }}>
+  //       <h4>Explore the analysis of measurements we have collected</h4>
+  //       <p className="grey" style={{ maxWidth: 900 }}>
+  //         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+  //         mollitia ab quisquam sunt magnam aperiam sapiente, delectus incidunt
+  //         qui ad laborum impedit unde dolores architecto, velit dolor officia
+  //         doloremque id.
+  //       </p>
+  //       <p>
+  //         <strong>
+  //           Get started by selecting how you would like to view the data:
+  //         </strong>
+  //       </p>
+  //       <ul style={{ padding: 0, marginTop: "1rem" }}>
+  //         {options.map(({ label, category }) => (
+  //           <li
+  //             style={{ listStyle: "none", marginBottom: "1rem" }}
+  //             key={`label-${label}-${category}`}
+  //           >
+  //             <button
+  //               onClick={() => setCat({ type: category })}
+  //               className={`${styles.inlineButton} secondary`}
+  //             >
+  //               {label} <FontAwesomeIcon icon={faChevronRight} />
+  //             </button>
+  //           </li>
+  //         ))}
+  //       </ul>
+  //     </div>
+  //   );
+  // }
 };
 
 export default StatisticalAnalysis;

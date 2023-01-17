@@ -35,16 +35,7 @@ const Phenotypes = ({ gene }: { gene: any }) => {
   return (
     <Card id="data">
       <h2>Phenotypes</h2>
-      <Tabs defaultActiveKey="significantPhenotypes">
-        <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
-          {!!phenotypeError ? (
-            <Alert variant="primary">
-              Error loading phenotypes for {gene.geneSymbol}: {phenotypeError}
-            </Alert>
-          ) : (
-            <SignificantPhenotypes data={phenotypeData} />
-          )}
-        </Tab>
+      <Tabs defaultActiveKey="measurementsChart">
         <Tab eventKey="measurementsChart" title="Statistical Analysis">
           {!!geneError ? (
             <Alert variant="primary">
@@ -52,6 +43,15 @@ const Phenotypes = ({ gene }: { gene: any }) => {
             </Alert>
           ) : (
             <StatisticalAnalysis data={geneData} />
+          )}
+        </Tab>
+        <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
+          {!!phenotypeError ? (
+            <Alert variant="primary">
+              Error loading phenotypes for {gene.geneSymbol}: {phenotypeError}
+            </Alert>
+          ) : (
+            <SignificantPhenotypes data={phenotypeData} />
           )}
         </Tab>
         <Tab eventKey="allData" title="All data">
