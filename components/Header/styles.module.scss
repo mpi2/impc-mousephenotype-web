@@ -14,8 +14,10 @@
   }
   :global(.header__logo) {
     width: 140px;
+    height: auto;
+    display: block;
     @media (min-width: 768px) {
-      width: 190px;
+      width: 168px;
     }
   }
   ul {

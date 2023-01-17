@@ -54,15 +54,20 @@ const Header = () => {
         <div className="header__nav">
           <div className="container">
             <div className="row">
-              <div className="col-6 col-md-3 ps-0">
+              <div
+                className="col-6 col-md-3"
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <a
                   href={process.env.REACT_APP_BASE_URL}
                   className="header__logo-link active"
                 >
                   <img
                     className="header__logo"
-                    src="https://www.mousephenotype.org/wp-content/themes/impc/images/IMPC_10_YEAR_Logo.svg"
+                    src="/logo.svg"
                     alt="International Mouse Phenotyping Consortium Office Logo"
+                    width={355}
+                    height={105}
                   />
                 </a>
               </div>

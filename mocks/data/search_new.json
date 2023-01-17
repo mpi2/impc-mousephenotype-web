@@ -1,45 +1,45 @@
 {
-  "numResults": 10,
+  "numResults": 100,
   "results": [
     {
-      "entityId": "MGI:103159",
+      "entityId": "MGI:3039623",
       "entityProperties": {
-        "mgiGeneAccessionId": "MGI:103159",
-        "geneName": "cytokine inducible SH2-containing protein",
-        "geneSymbol": "Cish",
-        "synonyms": "CIS1;Cis;F23;cytokine-inducible SH2 protein",
-        "humanGeneSymbols": "CISH",
-        "humanSymbolSynonyms": "G18;SOCS;CIS-1;CIS",
+        "mgiGeneAccessionId": "MGI:3039623",
+        "geneName": "thyroid adenoma associated",
+        "geneSymbol": "Thada",
+        "synonyms": "",
+        "humanGeneSymbols": "THADA",
+        "humanSymbolSynonyms": "",
         "esCellProductionStatus": "ES Cells Produced",
         "mouseProductionStatus": "Mice Produced",
-        "phenotypeStatus": "Phenotyping finished",
-        "phenotypingDataAvailable": "true"
-      }
-    },
-    {
-      "entityId": "MGI:88529",
-      "entityProperties": {
-        "mgiGeneAccessionId": "MGI:88529",
-        "geneName": "citrate synthase",
-        "geneSymbol": "Cs",
-        "synonyms": "9030605P22Rik;Cis;ahl4;2610511A05Rik",
-        "humanGeneSymbols": "CS",
-        "humanSymbolSynonyms": "N/A",
-        "esCellProductionStatus": "ES Cells Produced",
-        "mouseProductionStatus": null,
         "phenotypeStatus": "Phenotyping data available",
         "phenotypingDataAvailable": "true"
       }
     },
     {
-      "entityId": "MGI:1914186",
+      "entityId": "MGI:3039623",
       "entityProperties": {
-        "mgiGeneAccessionId": "MGI:1914186",
-        "geneName": "aspartate-beta-hydroxylase",
-        "geneSymbol": "Asph",
-        "synonyms": "Junctin;BAH;jumbug;2310005F16Rik;aspartyl beta-hydroxylase;junctate;cI-37;calsequestrin-binding protein;3110001L23Rik",
-        "humanGeneSymbols": "ASPH",
-        "humanSymbolSynonyms": "HAAH;BAH;JCTN;CASQ2BP1",
+        "mgiGeneAccessionId": "MGI:3039623",
+        "geneName": "thyroid adenoma associated",
+        "geneSymbol": "Thada",
+        "synonyms": "",
+        "humanGeneSymbols": "THADA",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1914273",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1914273",
+        "geneName": "unconventional SNARE in the ER 1 homolog (S. cerevisiae)",
+        "geneSymbol": "Use1",
+        "synonyms": "mED2;2010315L10Rik;D12;5730403H22Rik;Q-SNARE",
+        "humanGeneSymbols": "USE1",
+        "humanSymbolSynonyms": "",
         "esCellProductionStatus": null,
         "mouseProductionStatus": null,
         "phenotypeStatus": null,
@@ -47,74 +47,14 @@
       }
     },
     {
-      "entityId": "MGI:1922257",
+      "entityId": "MGI:1919026",
       "entityProperties": {
-        "mgiGeneAccessionId": "MGI:1922257",
-        "geneName": "MINDY lysine 48 deubiquitinase 1",
-        "geneSymbol": "Mindy1",
-        "synonyms": "NF-E2 inducible protein;1810005H09Rik;4930504E06Rik;Fam63a;cI-40",
-        "humanGeneSymbols": "MINDY1",
-        "humanSymbolSynonyms": "FLJ11280;FAM63A;MINDY-1",
-        "esCellProductionStatus": "ES Cells Produced",
-        "mouseProductionStatus": "Mice Produced",
-        "phenotypeStatus": "Phenotyping finished",
-        "phenotypingDataAvailable": "true"
-      }
-    },
-    {
-      "entityId": "MGI:1917362",
-      "entityProperties": {
-        "mgiGeneAccessionId": "MGI:1917362",
-        "geneName": "SFT2 domain containing 2",
-        "geneSymbol": "Sft2d2",
-        "synonyms": "2010005O13Rik;cI-45",
-        "humanGeneSymbols": "SFT2D2",
-        "humanSymbolSynonyms": "UNQ512;dJ747L4.C1.2",
-        "esCellProductionStatus": "ES Cells Produced",
-        "mouseProductionStatus": "Mice Produced",
-        "phenotypeStatus": "Phenotyping data available",
-        "phenotypingDataAvailable": "true"
-      }
-    },
-    {
-      "entityId": "MGI:1929693",
-      "entityProperties": {
-        "mgiGeneAccessionId": "MGI:1929693",
-        "geneName": "solute carrier family 37 (glycerol-3-phosphate transporter), member 2",
-        "geneSymbol": "Slc37a2",
-        "synonyms": "G3PP;Slc37a1;cI-2;ci2",
-        "humanGeneSymbols": "SLC37A2",
-        "humanSymbolSynonyms": "FLJ00171;SPX2",
-        "esCellProductionStatus": "ES Cells Produced",
-        "mouseProductionStatus": "Mice Produced",
-        "phenotypeStatus": "Phenotyping data available",
-        "phenotypingDataAvailable": "true"
-      }
-    },
-    {
-      "entityId": "MGI:1913975",
-      "entityProperties": {
-        "mgiGeneAccessionId": "MGI:1913975",
-        "geneName": "leucine-rich repeat kinase 2",
-        "geneSymbol": "Lrrk2",
-        "synonyms": "cI-46;4921513O20Rik;LOC381026;9330188B09Rik;D630001M17Rik",
-        "humanGeneSymbols": "LRRK2",
-        "humanSymbolSynonyms": "DKFZp434H2111;FLJ45829;PARK8;RIPK7;ROCO2",
-        "esCellProductionStatus": "ES Cells Produced",
-        "mouseProductionStatus": "Mice Produced",
-        "phenotypeStatus": "Phenotyping finished",
-        "phenotypingDataAvailable": "true"
-      }
-    },
-    {
-      "entityId": "MGI:96435",
-      "entityProperties": {
-        "mgiGeneAccessionId": "MGI:96435",
-        "geneName": "insulin-like growth factor 2 receptor",
-        "geneSymbol": "Igf2r",
-        "synonyms": "IGF-II/CI-MPR;Mpr300;CI-MPR;M6P/IGF2R;mannose-6-phosphate receptor, cation independent;CD222",
-        "humanGeneSymbols": "IGF2R",
-        "humanSymbolSynonyms": "CIMPR;CI-M6PR;CI-MPR;MPR1;MPRI;M6P-R;MPR300;CD222",
+        "mgiGeneAccessionId": "MGI:1919026",
+        "geneName": "threonine aldolase 1",
+        "geneSymbol": "Tha1",
+        "synonyms": "GLY1;1300017K07Rik",
+        "humanGeneSymbols": "",
+        "humanSymbolSynonyms": "",
         "esCellProductionStatus": null,
         "mouseProductionStatus": null,
         "phenotypeStatus": null,
@@ -122,33 +62,1443 @@
       }
     },
     {
-      "entityId": "MGI:1914370",
+      "entityId": "MGI:1919026",
       "entityProperties": {
-        "mgiGeneAccessionId": "MGI:1914370",
-        "geneName": "tetratricopeptide repeat domain 14",
-        "geneSymbol": "Ttc14",
-        "synonyms": "2700016E08Rik;4931403I22Rik;4933402I15Rik;cI-44;4930434D01Rik",
-        "humanGeneSymbols": "TTC14",
-        "humanSymbolSynonyms": "KIAA1980;FLJ00166",
-        "esCellProductionStatus": "ES Cells Produced",
-        "mouseProductionStatus": "Mice Produced",
-        "phenotypeStatus": "Phenotyping started",
+        "mgiGeneAccessionId": "MGI:1919026",
+        "geneName": "threonine aldolase 1",
+        "geneSymbol": "Tha1",
+        "synonyms": "GLY1;1300017K07Rik",
+        "humanGeneSymbols": "",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
         "phenotypingDataAvailable": "false"
       }
     },
     {
-      "entityId": "MGI:894668",
+      "entityId": "MGI:99422",
       "entityProperties": {
-        "mgiGeneAccessionId": "MGI:894668",
-        "geneName": "serine (or cysteine) peptidase inhibitor, clade B, member 9b",
-        "geneSymbol": "Serpinb9b",
-        "synonyms": "R86;ovalbumin;SPI-CI;1600019A21Rik;Spi10",
-        "humanGeneSymbols": "SERPINB9",
-        "humanSymbolSynonyms": "PI9;CAP3",
+        "mgiGeneAccessionId": "MGI:99422",
+        "geneName": "receptor-associated protein of the synapse",
+        "geneSymbol": "Rapsn",
+        "synonyms": "Raps;Nraps;rapsyn;43kDa acetylcholine receptor-associated protein",
+        "humanGeneSymbols": "RAPSN",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1913878",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1913878",
+        "geneName": "tRNA-histidine guanylyltransferase 1-like (S. cerevisiae)",
+        "geneSymbol": "Thg1l",
+        "synonyms": "1700121M19Rik;5730409G07Rik",
+        "humanGeneSymbols": "THG1L",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1891740",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1891740",
+        "geneName": "dishevelled-binding antagonist of beta-catenin 1",
+        "geneSymbol": "Dact1",
+        "synonyms": "THYEX3;Frodo;Dapper1;Frd1;Frodo1",
+        "humanGeneSymbols": "DACT1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1347356",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1347356",
+        "geneName": "a disintegrin-like and metallopeptidase (reprolysin type) with thrombospondin type 1 motif, 2",
+        "geneSymbol": "Adamts2",
+        "synonyms": "a disintegrin and metalloproteinase with thrombospondin repeats;procollagen N-proteinase;hPCPNI;ADAM-TS2",
+        "humanGeneSymbols": "ADAMTS2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1347356",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1347356",
+        "geneName": "a disintegrin-like and metallopeptidase (reprolysin type) with thrombospondin type 1 motif, 2",
+        "geneSymbol": "Adamts2",
+        "synonyms": "a disintegrin and metalloproteinase with thrombospondin repeats;procollagen N-proteinase;hPCPNI;ADAM-TS2",
+        "humanGeneSymbols": "ADAMTS2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1914652",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1914652",
+        "geneName": "thioredoxin domain containing 8",
+        "geneSymbol": "Txndc8",
+        "synonyms": "4930429J24Rik;Sptrx-3;Sptrx3",
+        "humanGeneSymbols": "TXNDC8",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1353500",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1353500",
+        "geneName": "forkhead box E1",
+        "geneSymbol": "Foxe1",
+        "synonyms": "Titf2;thyroid transcription factor 2",
+        "humanGeneSymbols": "FOXE1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1916966",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1916966",
+        "geneName": "thyroid hormone receptor interactor 13",
+        "geneSymbol": "Trip13",
+        "synonyms": "2410002G23Rik;D13Ertd328e",
+        "humanGeneSymbols": "TRIP13",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1921302",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1921302",
+        "geneName": "tetratricopeptide repeat domain 21A",
+        "geneSymbol": "Ttc21a",
+        "synonyms": "Thm2;4921538N17Rik",
+        "humanGeneSymbols": "TTC21A",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98813",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98813",
+        "geneName": "thyroid peroxidase",
+        "geneSymbol": "Tpo",
+        "synonyms": "",
+        "humanGeneSymbols": "TPO",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1929096",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1929096",
+        "geneName": "thrombospondin, type I, domain 1",
+        "geneSymbol": "Thsd1",
+        "synonyms": "Tmtsp;4833423O18Rik",
+        "humanGeneSymbols": "THSD1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1929096",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1929096",
+        "geneName": "thrombospondin, type I, domain 1",
+        "geneSymbol": "Thsd1",
+        "synonyms": "Tmtsp;4833423O18Rik",
+        "humanGeneSymbols": "THSD1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2146901",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2146901",
+        "geneName": "thyroid hormone receptor interactor 10",
+        "geneSymbol": "Trip10",
+        "synonyms": "Cip4",
+        "humanGeneSymbols": "TRIP10",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1914526",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1914526",
+        "geneName": "exoribonuclease 1",
+        "geneSymbol": "Eri1",
+        "synonyms": "Eri1;Thex1;3110010F15Rik",
+        "humanGeneSymbols": "ERI1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1349396",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1349396",
+        "geneName": "acyl-CoA thioesterase 1",
+        "geneSymbol": "Acot1",
+        "synonyms": "CTE-1;CTE-I;Cte1;ACH2;D12Ucla1",
+        "humanGeneSymbols": "ACOT1;ACOT2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:3033336",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:3033336",
+        "geneName": "SZT2 subunit of KICSTOR complex",
+        "geneSymbol": "Szt2",
+        "synonyms": "seaizure threshold 2",
+        "humanGeneSymbols": "SZT2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:107201",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:107201",
+        "geneName": "zinc finger protein of the cerebellum 4",
+        "geneSymbol": "Zic4",
+        "synonyms": "",
+        "humanGeneSymbols": "ZIC4",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1351613",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1351613",
+        "geneName": "thioredoxin-like 4A",
+        "geneSymbol": "Txnl4a",
+        "synonyms": "ENSMUSG00000057130;U5-15kDa;D18Wsu98e;Txnl4",
+        "humanGeneSymbols": "TXNL4A",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2442637",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2442637",
+        "geneName": "thyroid hormone receptor associated protein 3",
+        "geneSymbol": "Thrap3",
+        "synonyms": "9330151F09Rik;B230333E16Rik;Trap150",
+        "humanGeneSymbols": "THRAP3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2442637",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2442637",
+        "geneName": "thyroid hormone receptor associated protein 3",
+        "geneSymbol": "Thrap3",
+        "synonyms": "9330151F09Rik;B230333E16Rik;Trap150",
+        "humanGeneSymbols": "THRAP3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1918575",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1918575",
+        "geneName": "trichohyalin-like 1",
+        "geneSymbol": "Tchhl1",
+        "synonyms": "S100a17;Thhl1",
+        "humanGeneSymbols": "TCHHL1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:97896",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:97896",
+        "geneName": "regenerating islet-derived 2",
+        "geneSymbol": "Reg2",
+        "synonyms": "pancreatic thread protein",
+        "humanGeneSymbols": "REG1A;REG1B",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:104735",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:104735",
+        "geneName": "gene trap ROSA 26, Philippe Soriano",
+        "geneSymbol": "Gt(ROSA)26Sor",
+        "synonyms": "Thumpd3as1;Gtrgeo26;beta geo;R26;ROSA26;Gtrosa26",
+        "humanGeneSymbols": "",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:101875",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:101875",
+        "geneName": "thrombopoietin",
+        "geneSymbol": "Thpo",
+        "synonyms": "TPO-2;TPO-3;TPO-1;myeloproliferative leukemia virus oncogene ligand;TPO-4;TPO;Mpllg",
+        "humanGeneSymbols": "THPO",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:101875",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:101875",
+        "geneName": "thrombopoietin",
+        "geneSymbol": "Thpo",
+        "synonyms": "TPO-2;TPO-3;TPO-1;myeloproliferative leukemia virus oncogene ligand;TPO-4;TPO;Mpllg",
+        "humanGeneSymbols": "THPO",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1920212",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1920212",
+        "geneName": "thymidine phosphorylase",
+        "geneSymbol": "Tymp",
+        "synonyms": "PD-ECGF;Pdgfec;2900072D10Rik;Ecgf1;PDECGF;gliostatin",
+        "humanGeneSymbols": "TYMP",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1921287",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1921287",
+        "geneName": "acyl-CoA thioesterase 6",
+        "geneSymbol": "Acot6",
+        "synonyms": "4632408A20Rik",
+        "humanGeneSymbols": "ACOT6",
+        "humanSymbolSynonyms": "",
         "esCellProductionStatus": "ES Cells Produced",
         "mouseProductionStatus": "Mice Produced",
         "phenotypeStatus": "Phenotyping finished",
         "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:98733",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98733",
+        "geneName": "thyroglobulin",
+        "geneSymbol": "Tg",
+        "synonyms": "Tgn",
+        "humanGeneSymbols": "TG",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:3612791",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:3612791",
+        "geneName": "killer cell immunoglobulin-like receptor, three domains, long cytoplasmic tail, 2",
+        "geneSymbol": "Kir3dl2",
+        "synonyms": "Kirl2",
+        "humanGeneSymbols": "KIR3DL1;KIR3DL3;KIR2DL1;KIR2DL4;KIR3DL2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1346321",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1346321",
+        "geneName": "a disintegrin-like and metallopeptidase (reprolysin type) with thrombospondin type 1 motif, 5 (aggrecanase-2)",
+        "geneSymbol": "Adamts5",
+        "synonyms": "ADAM-TS5;9530092O11Rik",
+        "humanGeneSymbols": "ADAMTS5",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1913481",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1913481",
+        "geneName": "THO complex 7",
+        "geneSymbol": "Thoc7",
+        "synonyms": "1500006O09Rik;9230101K24Rik",
+        "humanGeneSymbols": "THOC7",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1913481",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1913481",
+        "geneName": "THO complex 7",
+        "geneSymbol": "Thoc7",
+        "synonyms": "1500006O09Rik;9230101K24Rik",
+        "humanGeneSymbols": "THOC7",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2139422",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2139422",
+        "geneName": "dual oxidase 1",
+        "geneSymbol": "Duox1",
+        "synonyms": "LNOX1;THOX1;9930101G15Rik;NOXEF1",
+        "humanGeneSymbols": "DUOX1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:98824",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98824",
+        "geneName": "thyrotropin releasing hormone receptor",
+        "geneSymbol": "Trhr",
+        "synonyms": "TRH-R1",
+        "humanGeneSymbols": "TRHR",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1922689",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1922689",
+        "geneName": "cysteine-rich perinuclear theca 12",
+        "geneSymbol": "Cypt12",
+        "synonyms": "1700001F04Rik",
+        "humanGeneSymbols": "",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1354165",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1354165",
+        "geneName": "thimet oligopeptidase 1",
+        "geneSymbol": "Thop1",
+        "synonyms": "EP24.15",
+        "humanGeneSymbols": "THOP1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1354165",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1354165",
+        "geneName": "thimet oligopeptidase 1",
+        "geneSymbol": "Thop1",
+        "synonyms": "EP24.15",
+        "humanGeneSymbols": "THOP1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:3045353",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:3045353",
+        "geneName": "a disintegrin-like and metallopeptidase (reprolysin type) with thrombospondin type 1 motif, 3",
+        "geneSymbol": "Adamts3",
+        "synonyms": "1100001H14Rik;6330442E02Rik",
+        "humanGeneSymbols": "ADAMTS3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping finished",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2684952",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2684952",
+        "geneName": "somatomedin B and thrombospondin, type 1 domain containing",
+        "geneSymbol": "Sbspon",
+        "synonyms": "Gm106;LOC226866",
+        "humanGeneSymbols": "SBSPON",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:102755",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:102755",
+        "geneName": "zinc finger and BTB domain containing 7B",
+        "geneSymbol": "Zbtb7b",
+        "synonyms": "Zfp67;Thpok;c-Krox",
+        "humanGeneSymbols": "ZBTB7B",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1928761",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1928761",
+        "geneName": "solute carrier family 19 (thiamine transporter), member 2",
+        "geneSymbol": "Slc19a2",
+        "synonyms": "DDA1;THTR1;TRMA",
+        "humanGeneSymbols": "SLC19A2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1916611",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1916611",
+        "geneName": "cysteine-rich perinuclear theca 3",
+        "geneSymbol": "Cypt3",
+        "synonyms": "1700006H02Rik;Ckt1r1",
+        "humanGeneSymbols": "",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1925301",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1925301",
+        "geneName": "thioesterase superfamily member 6",
+        "geneSymbol": "Them6",
+        "synonyms": "4930572J05Rik",
+        "humanGeneSymbols": "THEM6",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1925301",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1925301",
+        "geneName": "thioesterase superfamily member 6",
+        "geneSymbol": "Them6",
+        "synonyms": "4930572J05Rik",
+        "humanGeneSymbols": "THEM6",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:3039624",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:3039624",
+        "geneName": "thiosulfate sulfurtransferase (rhodanese)-like domain containing 2",
+        "geneSymbol": "Tstd2",
+        "synonyms": "",
+        "humanGeneSymbols": "TSTD2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:109486",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:109486",
+        "geneName": "peroxiredoxin 2",
+        "geneSymbol": "Prdx2",
+        "synonyms": "Trx dependent peroxide reductase 1;thioredoxin dependent peroxide reductase 1;Tdpx1;TR;Prx II-1;TSA;protector protein;thioredoxin reductase;PrxII;thioredoxin peroxidase;TDX1;PRP;thiol specific antioxidant protein;TPx",
+        "humanGeneSymbols": "PRDX2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:109486",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:109486",
+        "geneName": "peroxiredoxin 2",
+        "geneSymbol": "Prdx2",
+        "synonyms": "Trx dependent peroxide reductase 1;thioredoxin dependent peroxide reductase 1;Tdpx1;TR;Prx II-1;TSA;protector protein;thioredoxin reductase;PrxII;thioredoxin peroxidase;TDX1;PRP;thiol specific antioxidant protein;TPx",
+        "humanGeneSymbols": "PRDX2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:109486",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:109486",
+        "geneName": "peroxiredoxin 2",
+        "geneSymbol": "Prdx2",
+        "synonyms": "Trx dependent peroxide reductase 1;thioredoxin dependent peroxide reductase 1;Tdpx1;TR;Prx II-1;TSA;protector protein;thioredoxin reductase;PrxII;thioredoxin peroxidase;TDX1;PRP;thiol specific antioxidant protein;TPx",
+        "humanGeneSymbols": "PRDX2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:109486",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:109486",
+        "geneName": "peroxiredoxin 2",
+        "geneSymbol": "Prdx2",
+        "synonyms": "Trx dependent peroxide reductase 1;thioredoxin dependent peroxide reductase 1;Tdpx1;TR;Prx II-1;TSA;protector protein;thioredoxin reductase;PrxII;thioredoxin peroxidase;TDX1;PRP;thiol specific antioxidant protein;TPx",
+        "humanGeneSymbols": "PRDX2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:106920",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:106920",
+        "geneName": "thymopoietin",
+        "geneSymbol": "Tmpo",
+        "synonyms": "5630400D24Rik;LAP2;TP;lamina-associated polypeptide 2",
+        "humanGeneSymbols": "TMPO",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98739",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98739",
+        "geneName": "thrombospondin 3",
+        "geneSymbol": "Thbs3",
+        "synonyms": "TSP3;Thbs-3",
+        "humanGeneSymbols": "THBS3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98739",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98739",
+        "geneName": "thrombospondin 3",
+        "geneSymbol": "Thbs3",
+        "synonyms": "TSP3;Thbs-3",
+        "humanGeneSymbols": "THBS3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98739",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98739",
+        "geneName": "thrombospondin 3",
+        "geneSymbol": "Thbs3",
+        "synonyms": "TSP3;Thbs-3",
+        "humanGeneSymbols": "THBS3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2446213",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2446213",
+        "geneName": "thymocyte selection associated family member 2",
+        "geneSymbol": "Themis2",
+        "synonyms": "BC013712;ICB-1",
+        "humanGeneSymbols": "THEMIS2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping finished",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2446213",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2446213",
+        "geneName": "thymocyte selection associated family member 2",
+        "geneSymbol": "Themis2",
+        "synonyms": "BC013712;ICB-1",
+        "humanGeneSymbols": "THEMIS2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping finished",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1929468",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1929468",
+        "geneName": "thioredoxin 2",
+        "geneSymbol": "Txn2",
+        "synonyms": "Trx2;2510006J11Rik",
+        "humanGeneSymbols": "TXN2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98763",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98763",
+        "geneName": "thymidine kinase 1",
+        "geneSymbol": "Tk1",
+        "synonyms": "Tk-1;D530002A18Rik",
+        "humanGeneSymbols": "TK1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1923820",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1923820",
+        "geneName": "thymus, brain and testes associated",
+        "geneSymbol": "Tbata",
+        "synonyms": "Spatial;1700021K02Rik",
+        "humanGeneSymbols": "TBATA",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1914208",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1914208",
+        "geneName": "thioredoxin-related transmembrane protein 2",
+        "geneSymbol": "Tmx2",
+        "synonyms": "Txndc14;2310042M24Rik",
+        "humanGeneSymbols": "TMX2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1353653",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1353653",
+        "geneName": "glutaredoxin 3",
+        "geneSymbol": "Glrx3",
+        "synonyms": "PKC interacting cousin of thioredoxin;Txnl2;PICOT",
+        "humanGeneSymbols": "GLRX3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2685110",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2685110",
+        "geneName": "isthmin 2",
+        "geneSymbol": "Ism2",
+        "synonyms": "Thsd3;LOC217738",
+        "humanGeneSymbols": "ISM2",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1888498",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1888498",
+        "geneName": "gamma-aminobutyric acid (GABA) A receptor, subunit theta",
+        "geneSymbol": "Gabrq",
+        "synonyms": "",
+        "humanGeneSymbols": "GABRQ",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98849",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98849",
+        "geneName": "thyroid stimulating hormone receptor",
+        "geneSymbol": "Tshr",
+        "synonyms": "hyt;hypothroid;pet",
+        "humanGeneSymbols": "TSHR",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1916922",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1916922",
+        "geneName": "thioredoxin domain containing 15",
+        "geneSymbol": "Txndc15",
+        "synonyms": "2310047H23Rik",
+        "humanGeneSymbols": "TXNDC15",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98812",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98812",
+        "geneName": "thiopurine methyltransferase",
+        "geneSymbol": "Tpmt",
+        "synonyms": "",
+        "humanGeneSymbols": "TPMT",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:108067",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:108067",
+        "geneName": "NK2 homeobox 1",
+        "geneSymbol": "Nkx2-1",
+        "synonyms": "T/EBP;Ttf-1;thyroid transcription factor-1;tinman;Titf1;thyroid-specific enhancer-binding protein",
+        "humanGeneSymbols": "NKX2-1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:108067",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:108067",
+        "geneName": "NK2 homeobox 1",
+        "geneSymbol": "Nkx2-1",
+        "synonyms": "T/EBP;Ttf-1;thyroid transcription factor-1;tinman;Titf1;thyroid-specific enhancer-binding protein",
+        "humanGeneSymbols": "NKX2-1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2444486",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2444486",
+        "geneName": "threonyl-tRNA synthetase-like 2",
+        "geneSymbol": "Tarsl2",
+        "synonyms": "A530046H20Rik",
+        "humanGeneSymbols": "TARS3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1926424",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1926424",
+        "geneName": "negative elongation factor complex member C/D, Th1l",
+        "geneSymbol": "Nelfcd",
+        "synonyms": "2410003I03Rik;trihydrophobin 1;Th1l",
+        "humanGeneSymbols": "NELFCD",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1926424",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1926424",
+        "geneName": "negative elongation factor complex member C/D, Th1l",
+        "geneSymbol": "Nelfcd",
+        "synonyms": "2410003I03Rik;trihydrophobin 1;Th1l",
+        "humanGeneSymbols": "NELFCD",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1920918",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1920918",
+        "geneName": "tetratricopeptide repeat domain 21B",
+        "geneSymbol": "Ttc21b",
+        "synonyms": "2410066K11Rik;line 158;Thm1;aln",
+        "humanGeneSymbols": "TTC21B",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98736",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98736",
+        "geneName": "thrombomodulin",
+        "geneSymbol": "Thbd",
+        "synonyms": "CD141;TM",
+        "humanGeneSymbols": "THBD",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:98736",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98736",
+        "geneName": "thrombomodulin",
+        "geneSymbol": "Thbd",
+        "synonyms": "CD141;TM",
+        "humanGeneSymbols": "THBD",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1915229",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1915229",
+        "geneName": "ATPase family, AAA domain containing 1",
+        "geneSymbol": "Atad1",
+        "synonyms": "4921525H23Rik;Thorase",
+        "humanGeneSymbols": "ATAD1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1345147",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1345147",
+        "geneName": "thymoma viral proto-oncogene 3",
+        "geneSymbol": "Akt3",
+        "synonyms": "Nmf350;PKB gamma;D930002M15Rik",
+        "humanGeneSymbols": "AKT3",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2685355",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2685355",
+        "geneName": "hephaestin-like 1",
+        "geneSymbol": "Hephl1",
+        "synonyms": "thd;Zp;cw;LOC244698;zyklopen",
+        "humanGeneSymbols": "HEPHL1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1343458",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1343458",
+        "geneName": "thyroid hormone receptor interactor 6",
+        "geneSymbol": "Trip6",
+        "synonyms": "",
+        "humanGeneSymbols": "TRIP6",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2449112",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2449112",
+        "geneName": "a disintegrin-like and metallopeptidase (reprolysin type) with thrombospondin type 1 motif, 10",
+        "geneSymbol": "Adamts10",
+        "synonyms": "ZnMP",
+        "humanGeneSymbols": "ADAMTS10",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:3616441",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:3616441",
+        "geneName": "cysteine-rich perinuclear theca 1",
+        "geneSymbol": "Cypt1",
+        "synonyms": "TISP55;CYPT1;Cypt6;Cypt5;4931420D14Rik;Ckt1r3",
+        "humanGeneSymbols": "",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:98823",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:98823",
+        "geneName": "thyrotropin releasing hormone",
+        "geneSymbol": "Trh",
+        "synonyms": "",
+        "humanGeneSymbols": "TRH",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1921004",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1921004",
+        "geneName": "THAP domain containing, apoptosis associated protein 1",
+        "geneSymbol": "Thap1",
+        "synonyms": "4833431A01Rik",
+        "humanGeneSymbols": "THAP1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1921004",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1921004",
+        "geneName": "THAP domain containing, apoptosis associated protein 1",
+        "geneSymbol": "Thap1",
+        "synonyms": "4833431A01Rik",
+        "humanGeneSymbols": "THAP1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:1914084",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1914084",
+        "geneName": "acyl-CoA thioesterase 13",
+        "geneSymbol": "Acot13",
+        "synonyms": "Them2;0610006O17Rik",
+        "humanGeneSymbols": "ACOT13",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1914084",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1914084",
+        "geneName": "acyl-CoA thioesterase 13",
+        "geneSymbol": "Acot13",
+        "synonyms": "Them2;0610006O17Rik",
+        "humanGeneSymbols": "ACOT13",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:3616461",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:3616461",
+        "geneName": "cysteine-rich perinuclear theca 15",
+        "geneSymbol": "Cypt15",
+        "synonyms": "1700085A12Rik",
+        "humanGeneSymbols": "",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1924393",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1924393",
+        "geneName": "thyroid hormone receptor interactor 11",
+        "geneSymbol": "Trip11",
+        "synonyms": "GMAP-210;3110031G15Rik;6030460N08Rik;TRIP230;2610511G22Rik",
+        "humanGeneSymbols": "TRIP11",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2444479",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2444479",
+        "geneName": "THUMP domain containing 1",
+        "geneSymbol": "Thumpd1",
+        "synonyms": "6330575P11Rik",
+        "humanGeneSymbols": "THUMPD1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2444479",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2444479",
+        "geneName": "THUMP domain containing 1",
+        "geneSymbol": "Thumpd1",
+        "synonyms": "6330575P11Rik",
+        "humanGeneSymbols": "THUMPD1",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2138153",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2138153",
+        "geneName": "thioredoxin domain containing 9",
+        "geneSymbol": "Txndc9",
+        "synonyms": "Apacd;ATP binding protein associated with cell differentiation",
+        "humanGeneSymbols": "TXNDC9",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:1928940",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1928940",
+        "geneName": "acyl-CoA thioesterase 10",
+        "geneSymbol": "Acot10",
+        "synonyms": "MT-ACT48;p48;Acate3",
+        "humanGeneSymbols": "ACOT9",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2384976",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2384976",
+        "geneName": "potassium channel, subfamily K, member 13",
+        "geneSymbol": "Kcnk13",
+        "synonyms": "F730021E22Rik;LOC381712;THIK-1;LOC380778",
+        "humanGeneSymbols": "KCNK13",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2685556",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2685556",
+        "geneName": "a disintegrin-like and metallopeptidase (reprolysin type) with thrombospondin type 1 motif, 13",
+        "geneSymbol": "Adamts13",
+        "synonyms": "LOC279028;vWF-CP mRNA for von Willebrand factor-cleaving",
+        "humanGeneSymbols": "ADAMTS13",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2158394",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2158394",
+        "geneName": "mediator complex subunit 16",
+        "geneSymbol": "Med16",
+        "synonyms": "Trap95;Thrap5;95kDa",
+        "humanGeneSymbols": "MED16",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
+    {
+      "entityId": "MGI:2143526",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2143526",
+        "geneName": "glutathione S-transferase, theta 3",
+        "geneSymbol": "Gstt3",
+        "synonyms": "",
+        "humanGeneSymbols": "",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": null,
+        "mouseProductionStatus": null,
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
+      }
+    },
+    {
+      "entityId": "MGI:2671932",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2671932",
+        "geneName": "thrombospondin type laminin G domain and EAR repeats",
+        "geneSymbol": "Tspear",
+        "synonyms": "C330046G03Rik;ORF65",
+        "humanGeneSymbols": "TSPEAR",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": null,
+        "phenotypingDataAvailable": "false"
       }
     }
   ]
