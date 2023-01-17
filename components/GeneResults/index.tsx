@@ -145,7 +145,7 @@ const GeneResults = ({ query }: { query?: string }) => {
   return (
     <>
       <GeneComparatorTrigger />
-      <Container>
+      <Container style={{ maxWidth: 1240 }}>
         <Card
           style={{
             marginTop: -80,

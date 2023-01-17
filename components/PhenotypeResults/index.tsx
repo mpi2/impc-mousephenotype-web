@@ -70,7 +70,7 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
     afterSuccess: (result) => setData(result.results),
   });
   return (
-    <Container>
+    <Container style={{ maxWidth: 1240 }}>
       <Card
         style={{
           marginTop: -80,
