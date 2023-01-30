@@ -138,7 +138,7 @@ const GeneResult = ({
 const GeneResults = ({ query }: { query?: string }) => {
   const [data, setData] = useState(null);
   const [_, loading, error] = useQuery({
-    query: `/api/search/v1/search/?prefix=${query}`,
+    query: `/api/search/v1/search/${query ? `?prefix=${query}` : ""}`,
     afterSuccess: (result) => setData(result.results),
   });
 
@@ -170,7 +170,7 @@ const GeneResults = ({ query }: { query?: string }) => {
             </>
           ) : (
             <h1>
-              <strong>Top 10 most searched genes</strong>
+              <strong>Most searched genes</strong>
             </h1>
           )}
           {loading ? (
