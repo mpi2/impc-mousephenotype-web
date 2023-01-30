@@ -37,7 +37,7 @@ const SignificantPhenotypes = ({ data }) => {
           }}
           defaultSort={["phenotype", "asc"]}
           headers={[
-            { width: 3, label: "Phenotype", field: "phenotype" },
+            { width: 4, label: "Phenotype", field: "phenotype" },
             {
               width: 2,
               label: "System",
@@ -47,7 +47,7 @@ const SignificantPhenotypes = ({ data }) => {
             { width: 1, label: "Zyg", field: "zygosity" },
             { width: 1, label: "Sex", field: "sex" },
             { width: 1, label: "Life Stage", field: "lifeStageName" },
-            { width: 2, label: "P Value", field: "pValue" },
+            { width: 1, label: "P Value", field: "pValue" },
           ]}
         >
           {pageData.map((d) => {
