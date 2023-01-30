@@ -61,7 +61,7 @@ const Images = () => {
     return (
       <Card id="images">
         <h2>Associated Images</h2>
-        <Alert variant="primary">Error loading the images: {error}</Alert>
+        <Alert variant="yellow">No data available for this section.</Alert>
       </Card>
     );
   }

@@ -162,13 +162,14 @@ const Summary = ({
   }
 
   const joined = [
-    ...gene.significantTopLevelPhenotypes,
-    ...gene.notSignificantTopLevelPhenotypes,
+    ...(gene.significantTopLevelPhenotypes ?? []),
+    ...(gene.notSignificantTopLevelPhenotypes ?? []),
   ];
 
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
-  const significantCount = gene.significantTopLevelPhenotypes.length;
-  const nonSignificantCount = gene.notSignificantTopLevelPhenotypes.length;
+  const significantCount = gene.significantTopLevelPhenotypes?.length ?? 0;
+  const nonSignificantCount =
+    gene.notSignificantTopLevelPhenotypes?.length ?? 0;
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (

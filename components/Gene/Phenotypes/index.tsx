@@ -38,8 +38,8 @@ const Phenotypes = ({ gene }: { gene: any }) => {
       <Tabs defaultActiveKey="measurementsChart">
         <Tab eventKey="measurementsChart" title="Statistical Analysis">
           {!!geneError ? (
-            <Alert variant="primary">
-              Error loading phenotypes for {gene.geneSymbol}: {geneError}
+            <Alert variant="yellow" className="mt-3">
+              No phenotypes data available for {gene.geneSymbol}.
             </Alert>
           ) : (
             <StatisticalAnalysis data={geneData} />
@@ -47,8 +47,8 @@ const Phenotypes = ({ gene }: { gene: any }) => {
         </Tab>
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
           {!!phenotypeError ? (
-            <Alert variant="primary">
-              Error loading phenotypes for {gene.geneSymbol}: {phenotypeError}
+            <Alert variant="yellow" className="mt-3">
+              No phenotypes data available for {gene.geneSymbol}.
             </Alert>
           ) : (
             <SignificantPhenotypes data={phenotypeData} />
@@ -56,8 +56,8 @@ const Phenotypes = ({ gene }: { gene: any }) => {
         </Tab>
         <Tab eventKey="allData" title="All data">
           {!!geneError ? (
-            <Alert variant="primary">
-              Error loading phenotypes for {gene.geneSymbol}: {geneError}
+            <Alert variant="yellow" className="mt-3">
+              No phenotypes data available for {gene.geneSymbol}.
             </Alert>
           ) : (
             <AllData data={geneData} />

@@ -36,7 +36,7 @@ const Order = ({ gene }: { gene: any }) => {
     return (
       <Card id="purchase">
         <h2>Order Mouse and ES Cells</h2>
-        <Alert variant="primary">Error loading the alleles: {error}</Alert>
+        <Alert variant="primary">No data available for this section.</Alert>
       </Card>
     );
   }
@@ -58,9 +58,8 @@ const Order = ({ gene }: { gene: any }) => {
         </Alert>
       </div>
       {!sorted || !sorted.length ? (
-        <Alert className={styles.table}>
-          No human diseases associated to {gene.geneSymbol} by orthology or
-          annotation.
+        <Alert className={styles.table} variant="yellow">
+          No product found for this gene.
         </Alert>
       ) : (
         <Pagination data={sorted}>

@@ -135,9 +135,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
     return (
       <Card id="human-diseases">
         <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
-        <Alert variant="primary">
-          Error loading the histopathology data: {error}
-        </Alert>
+        <Alert variant="yellow">No data available for this section</Alert>
       </Card>
     );
   }
@@ -177,9 +175,8 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
           ></Tab>
         </Tabs>
         {!selectedData || !selectedData.length ? (
-          <Alert className={styles.table}>
-            No human diseases associated to the {gene.geneSymbol} gene by
-            orthology or annotation.
+          <Alert className={styles.table} variant="yellow">
+            No data available for this section.
           </Alert>
         ) : (
           <Pagination data={selectedData}>

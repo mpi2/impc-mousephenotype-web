@@ -58,9 +58,7 @@ const Expressions = () => {
     return (
       <Card id="expressions">
         <h2>lacZ Expression</h2>
-        <Alert variant="primary">
-          Error loading the gene expressions: {error}
-        </Alert>
+        <Alert variant="yellow">No data available for this section.</Alert>
       </Card>
     );
   }

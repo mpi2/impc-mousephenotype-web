@@ -34,7 +34,7 @@ const Publications = ({ gene }: { gene: any }) => {
     return (
       <Card id="publications">
         <h2>IMPC related publications</h2>
-        <Alert variant="primary">Error loading publications: {error}</Alert>
+        <Alert variant="yellow">No data available for this section</Alert>
       </Card>
     );
   }

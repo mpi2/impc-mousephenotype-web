@@ -36,9 +36,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
     return (
       <Card id="histopathology">
         <h2>Histopathology</h2>
-        <Alert variant="primary">
-          Error loading the histopathology data: {error}
-        </Alert>
+        <Alert variant="yellow">No data available for this section.</Alert>
       </Card>
     );
   }

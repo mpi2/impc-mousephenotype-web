@@ -20,7 +20,9 @@ export default ({
       setLoading(true);
       try {
         if (!query) throw new Error("API url not found");
-        const res = await fetch(query);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_ROOT ?? ""}${query}`
+        );
         if (res.ok) {
           const data = await res.json();
           setData(data);
