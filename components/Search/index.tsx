@@ -28,9 +28,6 @@ const Search = ({
 
   const handleInput = (val: string) => {
     if (onChange) onChange(val);
-    router.replace({
-      query: { ...router.query, query: val },
-    });
   };
 
   const delayedOnChange = useRef(
@@ -109,10 +106,12 @@ const Search = ({
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  handleInput(query);
-                  console.log(router.route);
                   if (router.route !== "/search") {
-                    router.push(`/search?query=${query}`);
+                    router.push(`/search?query=${e.currentTarget.value}`);
+                  } else {
+                    router.replace({
+                      query: { ...router.query, query: e.currentTarget.value },
+                    });
                   }
                 }
               }}
