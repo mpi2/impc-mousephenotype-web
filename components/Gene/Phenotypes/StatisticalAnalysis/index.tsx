@@ -71,19 +71,10 @@ var colorArray = [
   "#6666FF",
 ];
 
-type CatType =
-  | "ALL"
-  | "SIGNIFICANT"
-  | "SIGNIFICANT_BODY_SYSTEMS"
-  | "SIGNIFICANT_PROCEDURES"
-  | "BODY_SYSTEMS"
-  | "PROCEDURES";
+type CatType = "ALL" | "BODY_SYSTEMS" | "PROCEDURES";
 
 const cats: { [key: string]: CatType } = {
   ALL: "ALL",
-  SIGNIFICANT: "SIGNIFICANT",
-  SIGNIFICANT_BODY_SYSTEMS: "SIGNIFICANT_BODY_SYSTEMS",
-  SIGNIFICANT_PROCEDURES: "SIGNIFICANT_PROCEDURES",
   BODY_SYSTEMS: "BODY_SYSTEMS",
   PROCEDURES: "PROCEDURES",
 };
@@ -95,12 +86,12 @@ const options = [
   },
   {
     label: "Physiological systems",
-    category: cats.SIGNIFICANT_BODY_SYSTEMS,
+    category: cats.BODY_SYSTEMS,
   },
 
   {
     label: "Procedures",
-    category: cats.SIGNIFICANT_PROCEDURES,
+    category: cats.PROCEDURES,
   },
   // { label: "Sort all by significance", category: cats.ALL },
 ];
@@ -111,44 +102,46 @@ const getSignificants = (data: any) => {
   return data.filter((x) => -Math.log10(Number(x.pValue)) >= 4);
 };
 
-const processData = (data: any, { type, meta }: Cat) => {
-  const {
-    ALL,
-    SIGNIFICANT,
-    SIGNIFICANT_BODY_SYSTEMS,
-    SIGNIFICANT_PROCEDURES,
-    BODY_SYSTEMS,
-    PROCEDURES,
-  } = cats;
+const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
+  const { ALL, BODY_SYSTEMS, PROCEDURES } = cats;
   const significants = getSignificants(data);
   switch (type) {
     case ALL:
-      return _.sortBy(data, "pValue", "desc");
-    case SIGNIFICANT:
-      return _.sortBy(getSignificants(data), "pValue");
-    case SIGNIFICANT_BODY_SYSTEMS:
-      const bodySystems = significants.map((x) => x.topLevelPhenotypes[0]);
-      const flattend = [].concat.apply([], bodySystems);
-      const filtered = data.filter((x) => {
-        return x.topLevelPhenotypes.some((y) => flattend.includes(y));
-      });
-      return _.sortBy(filtered, "topLevelPhenotypes");
-    case SIGNIFICANT_PROCEDURES:
-      const procedures = significants.map((x) => x.procedureName);
-      const filtered2 = data.filter((x) => {
-        return procedures.includes(x.procedureName);
-      });
-      return _.sortBy(filtered2, "procedureName");
+      return _.sortBy(significantOnly ? significants : data, "pValue", "desc");
+
     case BODY_SYSTEMS:
+      if (significantOnly) {
+        const bodySystems = significants.map((x) => x.topLevelPhenotypes[0]);
+        const flattend = [].concat.apply([], bodySystems);
+        const filtered = data.filter((x) => {
+          return x.topLevelPhenotypes.some((y) => flattend.includes(y));
+        });
+        return _.sortBy(filtered, "topLevelPhenotypes");
+      }
       return _.sortBy(data, "topLevelPhenotypes");
     case PROCEDURES:
+      if (significantOnly) {
+        const procedures = significants.map((x) => x.procedureName);
+        const filtered = data.filter((x) => {
+          return procedures.includes(x.procedureName);
+        });
+        return _.sortBy(filtered, "procedureName");
+      }
       return _.sortBy(data, "procedureName");
     default:
       return data;
   }
 };
 
-const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
+const StatisticalAnalysisChart = ({
+  data,
+  cat,
+  sig,
+}: {
+  data: any;
+  cat: Cat;
+  sig: boolean;
+}) => {
   const chartRef = useRef<Chart>(null);
   if (!data) {
     return null;
@@ -168,12 +161,11 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
     }));
 
   // .sort((a, b) => a.topLevelPhenotypes[0] - b.topLevelPhenotypes[0]);
-  const processed = processData(hasPValue, cat);
+  const processed = processData(hasPValue, cat, sig);
 
   const labels = processed.map((x) => x.parameterName);
   const values = processed.map((x) => -Math.log10(Number(x.pValue)));
-  const isByProcedure =
-    cat.type === cats.SIGNIFICANT_PROCEDURES || cat.type === cats.PROCEDURES;
+  const isByProcedure = cat.type === cats.PROCEDURES;
   let colorByArray = [];
   if (isByProcedure) {
     colorByArray = _.uniq(processed.map((x) => x.procedureName));
@@ -355,8 +347,9 @@ const StatisticalAnalysisChart = ({ data, cat }: { data: any; cat: Cat }) => {
 
 const StatisticalAnalysis = ({ data }) => {
   const [cat, setCat] = useState<Cat | null>({
-    type: cats.SIGNIFICANT_BODY_SYSTEMS,
+    type: cats.BODY_SYSTEMS,
   });
+  const [significantOnly, setSignificantOnly] = useState<boolean>(true);
   if (
     !data ||
     !data.some(
@@ -378,18 +371,20 @@ const StatisticalAnalysis = ({ data }) => {
       type,
     });
   };
-  const isSignificant = cat && cat.type.includes("SIGNIFICANT");
   const handleToggle = () => {
-    if (cat.type === cats.SIGNIFICANT) {
-      setCatType(cats.ALL);
-    } else if (isSignificant) {
-      setCatType(cats[cat.type.replace("SIGNIFICANT_", "")]);
-    } else if (cat.type === cats.ALL) {
-      setCatType(cats.SIGNIFICANT);
-    } else {
-      setCatType(cats[`SIGNIFICANT_${cat.type}`]);
-    }
+    setSignificantOnly(!significantOnly);
   };
+
+  const significantSuffix = (() => {
+    console.log(cat.type);
+    if (cat.type === cats.BODY_SYSTEMS) {
+      return "physiological systems";
+    } else if (cat.type === cats.PROCEDURES) {
+      return "procedures";
+    }
+    return "";
+  })();
+  console.log(significantSuffix);
   // if (cat) {
   // const title = cat.type.includes("PROCEDURE")
   //   ? "Measurements by Procedures"
@@ -440,14 +435,14 @@ const StatisticalAnalysis = ({ data }) => {
           </Form.Select>
           <button onClick={handleToggle} className={styles.inlineButton}>
             <FontAwesomeIcon
-              icon={isSignificant ? faCheckSquare : faSquare}
-              className={isSignificant ? "primary" : "grey"}
+              icon={significantOnly ? faCheckSquare : faSquare}
+              className={significantOnly ? "primary" : "grey"}
             />{" "}
-            Only show significant
+            Only show significant {significantSuffix}
           </button>
         </p>
       </div>
-      <StatisticalAnalysisChart data={data} cat={cat} />
+      <StatisticalAnalysisChart data={data} cat={cat} sig={significantOnly} />
     </>
   );
   // } else {
