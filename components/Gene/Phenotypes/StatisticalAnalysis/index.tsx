@@ -327,6 +327,7 @@ const StatisticalAnalysisChart = ({
       </div>
 
       <Button
+        variant="secondary"
         onClick={() => {
           if (chartRef.current) {
             chartRef.current.resetZoom();
@@ -334,9 +335,10 @@ const StatisticalAnalysisChart = ({
         }}
         style={{
           position: "sticky",
-          bottom: "1rem",
+          bottom: "3rem",
           float: "right",
           marginTop: "1rem",
+          color: "white",
         }}
       >
         Reset zoom
