@@ -103,12 +103,9 @@ const getSignificants = (data: any) => {
 };
 
 const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
-  const { ALL, BODY_SYSTEMS, PROCEDURES } = cats;
+  const { BODY_SYSTEMS, PROCEDURES } = cats;
   const significants = getSignificants(data);
   switch (type) {
-    case ALL:
-      return _.sortBy(significantOnly ? significants : data, "pValue", "desc");
-
     case BODY_SYSTEMS:
       if (significantOnly) {
         const bodySystems = significants.map((x) => x.topLevelPhenotypes[0]);
@@ -129,7 +126,7 @@ const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
       }
       return _.sortBy(data, "procedureName");
     default:
-      return data;
+      return _.sortBy(significantOnly ? significants : data, "pValue", "desc");
   }
 };
 
@@ -368,11 +365,6 @@ const StatisticalAnalysis = ({ data }) => {
     );
   }
 
-  const setCatType = (type: CatType) => {
-    setCat({
-      type,
-    });
-  };
   const handleToggle = () => {
     setSignificantOnly(!significantOnly);
   };
