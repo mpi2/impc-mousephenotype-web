@@ -7,7 +7,7 @@
     "yearOfPublication": 2019,
     "journalTitle": "PLoS biology",
     "title": "Mouse screen reveals multiple new genes underlying mouse and human hearing loss.",
-    "pmcid": "PMC6459510"
+    "pmid": "PMC6459510"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -17,7 +17,7 @@
     "yearOfPublication": 2020,
     "journalTitle": "G3 (Bethesda, Md.)",
     "title": "A Genome-Wide Screen in Mice To Identify Cell-Extrinsic Regulators of Pulmonary Metastatic Colonisation.",
-    "pmcid": "PMC7263671"
+    "pmid": "PMC7263671"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -27,7 +27,7 @@
     "yearOfPublication": 2019,
     "journalTitle": "PLoS biology",
     "title": "Mouse screen reveals multiple new genes underlying mouse and human hearing loss.",
-    "pmcid": "PMC6459510"
+    "pmid": "PMC6459510"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -37,7 +37,7 @@
     "yearOfPublication": 2020,
     "journalTitle": "Nature immunology",
     "title": "High-throughput phenotyping reveals expansive genetic and structural underpinnings of immune variation.",
-    "pmcid": "PMC7338221"
+    "pmid": "PMC7338221"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -47,7 +47,7 @@
     "yearOfPublication": 2014,
     "journalTitle": "Transgenic research",
     "title": "Rapid conversion of EUCOMM/KOMP-CSD alleles in mouse embryos using a cell-permeable Cre recombinase.",
-    "pmcid": "PMC3890051"
+    "pmid": "PMC3890051"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -57,7 +57,7 @@
     "yearOfPublication": 2014,
     "journalTitle": "Transgenic research",
     "title": "Rapid conversion of EUCOMM/KOMP-CSD alleles in mouse embryos using a cell-permeable Cre recombinase.",
-    "pmcid": "PMC3890051"
+    "pmid": "PMC3890051"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -67,7 +67,7 @@
     "yearOfPublication": 2019,
     "journalTitle": "Nature communications",
     "title": "Large-scale neuroanatomical study uncovers 198 gene associations in mouse brain morphogenesis.",
-    "pmcid": "PMC6671969"
+    "pmid": "PMC6671969"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -77,7 +77,7 @@
     "yearOfPublication": 2017,
     "journalTitle": "Scientific data",
     "title": "Genome wide in vivo mouse screen data from studies to assess host regulation of metastatic colonisation.",
-    "pmcid": "PMC5827107"
+    "pmid": "PMC5827107"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -87,7 +87,7 @@
     "yearOfPublication": 2013,
     "journalTitle": "Cell",
     "title": "Genome-wide generation and systematic phenotyping of knockout mice reveals new roles for many genes.",
-    "pmcid": "PMC3717207"
+    "pmid": "PMC3717207"
   },
   {
     "mgiGeneAccessionId": "MGI:1860086",
@@ -97,6 +97,6 @@
     "yearOfPublication": 2019,
     "journalTitle": "Nature communications",
     "title": "Large-scale neuroanatomical study uncovers 198 gene associations in mouse brain morphogenesis.",
-    "pmcid": "PMC6671969"
+    "pmid": "PMC6671969"
   }
 ]

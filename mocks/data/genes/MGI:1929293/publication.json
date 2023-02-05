@@ -7,7 +7,7 @@
     "yearOfPublication": 2014,
     "journalTitle": "The international journal of biochemistry & cell biology",
     "title": "Usher protein functions in hair cells and photoreceptors.",
-    "pmcid": "PMC3971483"
+    "pmid": "PMC3971483"
   },
   {
     "mgiGeneAccessionId": "MGI:1929293",
@@ -17,7 +17,7 @@
     "yearOfPublication": 2017,
     "journalTitle": "Human molecular genetics",
     "title": "The roles of USH1 proteins and PDZ domain-containing USH proteins in USH2 complex integrity in cochlear hair cells.",
-    "pmcid": "PMC6075602"
+    "pmid": "PMC6075602"
   },
   {
     "mgiGeneAccessionId": "MGI:1929293",
@@ -27,7 +27,7 @@
     "yearOfPublication": 2017,
     "journalTitle": "Nature communications",
     "title": "CIB2 interacts with TMC1 and TMC2 and is essential for mechanotransduction in auditory hair cells.",
-    "pmcid": "PMC5491523"
+    "pmid": "PMC5491523"
   },
   {
     "mgiGeneAccessionId": "MGI:1929293",
@@ -37,7 +37,7 @@
     "yearOfPublication": 2017,
     "journalTitle": "Nature communications",
     "title": "CIB2 interacts with TMC1 and TMC2 and is essential for mechanotransduction in auditory hair cells.",
-    "pmcid": "PMC5491523"
+    "pmid": "PMC5491523"
   },
   {
     "mgiGeneAccessionId": "MGI:1929293",
@@ -47,6 +47,6 @@
     "yearOfPublication": 2017,
     "journalTitle": "Nature communications",
     "title": "A large scale hearing loss screen reveals an extensive unexplored genetic landscape for auditory dysfunction.",
-    "pmcid": "PMC5638796"
+    "pmid": "PMC5638796"
   }
 ]

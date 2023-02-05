@@ -64,7 +64,7 @@ const Publications = ({ gene }: { gene: any }) => {
                   field: "journalTitle",
                 },
                 { width: 2, label: "IMPC Allele", field: "alleleSymbol" },
-                { width: 2, label: "PubMed ID", field: "pmcid" },
+                { width: 2, label: "PubMed ID", field: "pmid" },
               ]}
             >
               {pageData.map((p) => {
@@ -94,14 +94,15 @@ const Publications = ({ gene }: { gene: any }) => {
                     </td>
                     <td>
                       <a
-                        href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmcid}`}
+                        href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmid}`}
                         target="_blank"
                         className="link"
                       >
-                        {p.pmcid}{" "}
+                        {p.pmid}{" "}
                         <FontAwesomeIcon
                           icon={faExternalLinkAlt}
                           className="grey"
+                          size="sm"
                         />
                       </a>
                     </td>

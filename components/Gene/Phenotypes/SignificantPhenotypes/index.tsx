@@ -10,14 +10,38 @@ import _ from "lodash";
 import { formatAlleleSymbol } from "../../../../utils";
 
 const SignificantPhenotypes = ({ data }) => {
+  const groups = data?.reduce((acc, d) => {
+    const {
+      phenotype: { id },
+      alleleAccessionId,
+      parameterStableId,
+      zygosity,
+      sex,
+      pValue,
+    } = d;
+
+    const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}`;
+    if (acc[key]) {
+      if (acc[key].pValue < pValue) {
+        acc[key].pValue = Number(pValue);
+        acc[key].sex = sex;
+      }
+    } else {
+      acc[key] = { ...d };
+    }
+    acc[key][`pValue_${sex}`] = Number(pValue);
+
+    return acc;
+  }, {});
+
   const processed =
-    data?.map((d) => ({
+    (groups ? Object.values(groups) : []).map((d: any) => ({
       ...d,
-      pValue: Number(d.pValue),
       topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
       phenotype: d.phenotype.name,
       id: d.phenotype.id,
     })) || [];
+
   const [sorted, setSorted] = useState<any[]>(null);
 
   useEffect(() => {
@@ -28,6 +52,12 @@ const SignificantPhenotypes = ({ data }) => {
     return <p>Loading...</p>;
   }
 
+  const getPValueSortFn = (key: string) => {
+    return (d) => {
+      return d[`pValue_${key}`] ?? 0;
+    };
+  };
+
   return (
     <Pagination data={sorted}>
       {(pageData) => (
@@ -37,17 +67,40 @@ const SignificantPhenotypes = ({ data }) => {
           }}
           defaultSort={["phenotype", "asc"]}
           headers={[
-            { width: 4, label: "Phenotype", field: "phenotype" },
+            { width: 3, label: "Parameter/Phenotype", field: "phenotype" },
             {
-              width: 2,
+              width: 1,
               label: "System",
               field: "topLevelPhenotype",
             },
             { width: 2, label: "Allele", field: "alleleSymbol" },
             { width: 1, label: "Zyg", field: "zygosity" },
-            { width: 1, label: "Sex", field: "sex" },
             { width: 1, label: "Life Stage", field: "lifeStageName" },
-            { width: 1, label: "P Value", field: "pValue" },
+            {
+              width: 3,
+              label: "P Value",
+              field: "pValue",
+              children: [
+                {
+                  width: 1,
+                  label: "Male",
+                  field: "pValue_male",
+                  sortFn: getPValueSortFn("male"),
+                },
+                {
+                  width: 1,
+                  label: "Female",
+                  field: "pValue_female",
+                  sortFn: getPValueSortFn("female"),
+                },
+                {
+                  width: 1,
+                  label: "Combined",
+                  field: "pValue_not_considered",
+                  sortFn: getPValueSortFn("not_considered"),
+                },
+              ],
+            },
           ]}
         >
           {pageData.map((d) => {
@@ -55,6 +108,8 @@ const SignificantPhenotypes = ({ data }) => {
             return (
               <tr>
                 <td>
+                  <small className="grey">{d.parameterName} /</small>
+                  <br />
                   <Link href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis">
                     <strong className={styles.link}>
                       {_.capitalize(d.phenotype)}
@@ -71,22 +126,26 @@ const SignificantPhenotypes = ({ data }) => {
                   <sup>{allele[1]}</sup>
                 </td>
                 <td>{d.zygosity}</td>
-                <td>
-                  {(d.sex === "male" || d.sex === "female") && (
-                    <>
-                      <FontAwesomeIcon
-                        icon={d.sex == "female" ? faVenus : faMars}
-                      />{" "}
-                    </>
-                  )}
-                  {d.sex}
-                </td>
                 <td>{d.lifeStageName}</td>
-                <td>
-                  {!!d.pValue
-                    ? Math.round(-Math.log10(Number(d.pValue)) * 1000) / 1000
-                    : "-"}
-                </td>
+                {["male", "female", "not_considered"].map((col) => {
+                  const isMostSignificant = d.sex === col;
+                  return (
+                    <td
+                      className={
+                        isMostSignificant
+                          ? "bold orange-dark-x bg-orange-light-x"
+                          : ""
+                      }
+                    >
+                      {!!d[`pValue_${col}`] ? (
+                        Math.round(-Math.log10(d[`pValue_${col}`]) * 1000) /
+                        1000
+                      ) : (
+                        <small className="grey">Not significant</small>
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
             );
           })}
