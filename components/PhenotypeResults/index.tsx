@@ -66,7 +66,7 @@ const PhenotypeResult = ({
 const PhenotypeResults = ({ query }: { query?: string }) => {
   const [data, setData] = useState(null);
   const [_, loading, error] = useQuery({
-    query: `/api/search/v1/search/?prefix=${query}&type=PHENOTYPE`,
+    query: `/api/search/v1/search?prefix=${query}&type=PHENOTYPE`,
     afterSuccess: (result) => setData(result.results),
   });
   return (
