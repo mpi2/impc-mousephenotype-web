@@ -98,7 +98,7 @@ const SortableTable = ({
           {label}{" "}
           {!disabled && selected && (
             <FontAwesomeIcon
-              icon={sort[1] === "asc" ? faCaretUp : faCaretDown}
+              icon={sort.order === "asc" ? faCaretUp : faCaretDown}
             />
           )}
         </button>
