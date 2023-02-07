@@ -8,6 +8,7 @@ import SortableTable from "../../../SortableTable";
 import styles from "./styles.module.scss";
 import _ from "lodash";
 import { formatAlleleSymbol } from "../../../../utils";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const SignificantPhenotypes = ({ data }) => {
   const groups = data?.reduce((acc, d) => {
@@ -141,7 +142,15 @@ const SignificantPhenotypes = ({ data }) => {
                         Math.round(-Math.log10(d[`pValue_${col}`]) * 1000) /
                         1000
                       ) : (
-                        <small className="grey">Not significant</small>
+                        <OverlayTrigger
+                          placement="top"
+                          trigger={["hover", "focus"]}
+                          overlay={
+                            <Tooltip>Not significant or not tested</Tooltip>
+                          }
+                        >
+                          <span className="grey">—</span>
+                        </OverlayTrigger>
                       )}
                     </td>
                   );
