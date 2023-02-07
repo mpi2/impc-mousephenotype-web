@@ -118,7 +118,7 @@ const SignificantPhenotypes = ({ data }) => {
                 </td>
                 <td>
                   {d.topLevelPhenotypes?.map(({ name }) => (
-                    <BodySystem name={name} color="primary" noSpacing />
+                    <BodySystem name={name} color="black" noSpacing />
                   ))}
                 </td>
                 <td>

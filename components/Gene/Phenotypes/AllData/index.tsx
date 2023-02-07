@@ -76,12 +76,12 @@ const AllData = ({ data }: { data: any }) => {
                         <BodySystem
                           name={x.name}
                           key={x.id}
-                          color="primary"
+                          color="black"
                           noSpacing
                         />
                       ))}
                     </td>
-                    <td>
+                    <td className="orange-dark-x bold">
                       {!!pValue
                         ? Math.round(-Math.log10(Number(pValue)) * 1000) / 1000
                         : "-"}

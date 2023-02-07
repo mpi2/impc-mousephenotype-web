@@ -76,20 +76,20 @@ const SignificantPhenotypes = ({ data }) => {
           }}
           defaultSort={["phenotype", "asc"]}
           headers={[
-            { width: 4, label: "Parameter/Phenotype", field: "phenotype" },
+            { width: 3, label: "Parameter/Phenotype", field: "phenotype" },
             {
               width: 1,
               label: "System",
               field: "topLevelPhenotype",
             },
-            { width: 2, label: "Allele", field: "alleleSymbol" },
-            { width: 1, label: "Zyg", field: "zygosity" },
-            { width: 1, label: "Life stage", field: "lifeStageName" },
             {
               width: 2,
               label: "Most significant P value",
               field: "pValue",
             },
+            { width: 2, label: "Allele", field: "alleleSymbol" },
+            { width: 1, label: "Zyg", field: "zygosity" },
+            { width: 1, label: "Life stage", field: "lifeStageName" },
           ]}
         >
           {pageData.map((d) => {
@@ -107,18 +107,12 @@ const SignificantPhenotypes = ({ data }) => {
                 </td>
                 <td>
                   {d.topLevelPhenotypes?.map(({ name }) => (
-                    <BodySystem name={name} color="primary" noSpacing />
+                    <BodySystem name={name} color="black" noSpacing />
                   ))}
                 </td>
-                <td>
-                  {allele[0]}
-                  <sup>{allele[1]}</sup>
-                </td>
-                <td>{d.zygosity}</td>
-                <td>{d.lifeStageName}</td>
 
                 <td>
-                  <span className="me-2">
+                  <span className="me-2 orange-dark bold">
                     <FontAwesomeIcon icon={getIcon(d.sex)} />{" "}
                     {Math.round(-Math.log10(d.pValue) * 1000) / 1000}
                   </span>
@@ -133,6 +127,12 @@ const SignificantPhenotypes = ({ data }) => {
                     ) : null;
                   })}
                 </td>
+                <td>
+                  {allele[0]}
+                  <sup>{allele[1]}</sup>
+                </td>
+                <td>{d.zygosity}</td>
+                <td>{d.lifeStageName}</td>
               </tr>
             );
           })}
