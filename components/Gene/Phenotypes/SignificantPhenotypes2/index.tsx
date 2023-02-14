@@ -2,6 +2,7 @@ import {
   faVenus,
   faMars,
   faMarsAndVenus,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -11,22 +12,22 @@ import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
 import styles from "./styles.module.scss";
 import _ from "lodash";
-import { formatAlleleSymbol } from "../../../../utils";
+import { formatAlleleSymbol, formatPValue } from "../../../../utils";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const SignificantPhenotypes = ({ data }) => {
   const groups = data?.reduce((acc, d) => {
     const {
       phenotype: { id },
       alleleAccessionId,
-      parameterStableId,
       zygosity,
       sex,
       pValue,
     } = d;
 
-    const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}`;
+    const key = `${id}-${alleleAccessionId}-${zygosity}`;
     if (acc[key]) {
-      if (acc[key].pValue < pValue) {
+      if (acc[key].pValue > pValue) {
         acc[key].pValue = Number(pValue);
         acc[key].sex = sex;
       }
@@ -67,6 +68,17 @@ const SignificantPhenotypes = ({ data }) => {
     }
   };
 
+  const getSexLabel = (sex) => {
+    switch (sex) {
+      case "male":
+        return "Male";
+      case "female":
+        return "Female";
+      default:
+        return "Combined";
+    }
+  };
+
   return (
     <Pagination data={sorted}>
       {(pageData) => (
@@ -76,20 +88,25 @@ const SignificantPhenotypes = ({ data }) => {
           }}
           defaultSort={["phenotype", "asc"]}
           headers={[
-            { width: 3, label: "Parameter/Phenotype", field: "phenotype" },
+            { width: 2, label: "Parameter/Phenotype", field: "phenotype" },
             {
               width: 1,
               label: "System",
               field: "topLevelPhenotype",
             },
-            {
-              width: 2,
-              label: "Most significant P value",
-              field: "pValue",
-            },
-            { width: 2, label: "Allele", field: "alleleSymbol" },
+            { width: 1, label: "Allele", field: "alleleSymbol" },
             { width: 1, label: "Zyg", field: "zygosity" },
             { width: 1, label: "Life stage", field: "lifeStageName" },
+            {
+              width: 1,
+              label: "Significant sexes",
+              field: "pValue",
+            },
+            {
+              width: 2,
+              label: "Most significant P-value",
+              field: "sex",
+            },
           ]}
         >
           {pageData.map((d) => {
@@ -110,29 +127,40 @@ const SignificantPhenotypes = ({ data }) => {
                     <BodySystem name={name} color="black" noSpacing />
                   ))}
                 </td>
-
-                <td>
-                  <span className="me-2 orange-dark bold">
-                    <FontAwesomeIcon icon={getIcon(d.sex)} />{" "}
-                    {Math.round(-Math.log10(d.pValue) * 1000) / 1000}
-                  </span>
-                  {["male", "female", "not_considered"].map((col) => {
-                    const isMostSignificant = d.sex === col;
-                    return !isMostSignificant && !!d[`pValue_${col}`] ? (
-                      <small className="grey">
-                        / <FontAwesomeIcon icon={getIcon(col)} />{" "}
-                        {Math.round(-Math.log10(d[`pValue_${col}`]) * 1000) /
-                          1000}
-                      </small>
-                    ) : null;
-                  })}
-                </td>
                 <td>
                   {allele[0]}
                   <sup>{allele[1]}</sup>
                 </td>
                 <td>{d.zygosity}</td>
                 <td>{d.lifeStageName}</td>
+                <td>
+                  {["male", "female", "not_considered"].map((col) => {
+                    const hasSignificant = d[`pValue_${col}`];
+                    return hasSignificant ? (
+                      <OverlayTrigger
+                        placement="top"
+                        trigger={["hover", "focus"]}
+                        overlay={<Tooltip>{getSexLabel(col)}</Tooltip>}
+                      >
+                        <span className="me-2">
+                          <FontAwesomeIcon icon={getIcon(col)} size="lg" />
+                        </span>
+                      </OverlayTrigger>
+                    ) : null;
+                  })}
+                </td>
+                <td>
+                  <span className={`me-2 bold ${styles.pValueCell}`}>
+                    <span className="orange-dark">
+                      {formatPValue(d.pValue)}{" "}
+                    </span>
+                    <Link href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis">
+                      <strong className={`link small float-right`}>
+                        View breakdown <FontAwesomeIcon icon={faChevronRight} />
+                      </strong>
+                    </Link>
+                  </span>
+                </td>
               </tr>
             );
           })}

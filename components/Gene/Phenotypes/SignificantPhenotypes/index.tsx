@@ -7,7 +7,7 @@ import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
 import styles from "./styles.module.scss";
 import _ from "lodash";
-import { formatAlleleSymbol } from "../../../../utils";
+import { formatAlleleSymbol, formatPValue } from "../../../../utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const SignificantPhenotypes = ({ data }) => {
@@ -139,8 +139,7 @@ const SignificantPhenotypes = ({ data }) => {
                       }
                     >
                       {!!d[`pValue_${col}`] ? (
-                        Math.round(-Math.log10(d[`pValue_${col}`]) * 1000) /
-                        1000
+                        formatPValue(d[`pValue_${col}`])
                       ) : (
                         <OverlayTrigger
                           placement="top"

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
 import { Alert } from "react-bootstrap";
-import { formatAlleleSymbol } from "../../../../utils";
+import { formatAlleleSymbol, formatPValue } from "../../../../utils";
 
 const AllData = ({ data }: { data: any }) => {
   const [sorted, setSorted] = useState<any[]>(null);
@@ -82,9 +82,7 @@ const AllData = ({ data }: { data: any }) => {
                       ))}
                     </td>
                     <td className="orange-dark-x bold">
-                      {!!pValue
-                        ? Math.round(-Math.log10(Number(pValue)) * 1000) / 1000
-                        : "-"}
+                      {!!pValue ? formatPValue(pValue) : "-"}
                     </td>
                     <td>{lifeStageName}</td>
                     <td>

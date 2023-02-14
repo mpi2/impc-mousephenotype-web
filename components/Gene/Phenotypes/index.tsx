@@ -1,7 +1,6 @@
 import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import AllData from "./AllData";
-import SignificantPhenotypes from "./SignificantPhenotypes";
 import SignificantPhenotypes2 from "./SignificantPhenotypes2";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -47,15 +46,6 @@ const Phenotypes = ({ gene }: { gene: any }) => {
           )}
         </Tab>
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
-          {!!phenotypeError ? (
-            <Alert variant="yellow" className="mt-3">
-              No phenotypes data available for {gene.geneSymbol}.
-            </Alert>
-          ) : (
-            <SignificantPhenotypes data={phenotypeData} />
-          )}
-        </Tab>
-        <Tab eventKey="significantPhenotypes2" title="Significant Phenotypes2">
           {!!phenotypeError ? (
             <Alert variant="yellow" className="mt-3">
               No phenotypes data available for {gene.geneSymbol}.

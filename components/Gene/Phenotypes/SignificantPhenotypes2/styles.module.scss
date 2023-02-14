@@ -10,6 +10,23 @@
 .link {
   cursor: pointer;
   &:hover {
-    color: $primary;
+    color: $orange-dark;
   }
+}
+
+.hoverLink {
+  display: none;
+  white-space: nowrap;
+}
+
+tr {
+  &:hover .hoverLink {
+    display: block;
+  }
+}
+
+.pValueCell {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
