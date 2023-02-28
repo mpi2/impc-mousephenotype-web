@@ -48,7 +48,7 @@ const Phenotypes = ({ gene }: { gene: any }) => {
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
           {!!phenotypeError ? (
             <Alert variant="yellow" className="mt-3">
-              No phenotypes data available for {gene.geneSymbol}.
+              No significant phenotypes for {gene.geneSymbol}.
             </Alert>
           ) : (
             <SignificantPhenotypes2 data={phenotypeData} />

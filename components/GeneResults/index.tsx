@@ -139,7 +139,10 @@ const GeneResults = ({ query }: { query?: string }) => {
   const [data, setData] = useState(null);
   const [_, loading, error] = useQuery({
     query: `/api/search/v1/search${query ? `?prefix=${query}` : ""}`,
-    afterSuccess: (result) => setData(result.results),
+    afterSuccess: (result) => {
+      console.log("after success", result);
+      setData(result.results);
+    },
   });
 
   return (
