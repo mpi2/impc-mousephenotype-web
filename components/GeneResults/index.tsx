@@ -1,20 +1,18 @@
 import styles from "./styles.module.scss";
-import { Alert, Button, Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import {
-  faChartColumn,
   faCheck,
   faCheckCircle,
   faPlusCircle,
   faShoppingCart,
   faTimes,
-  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Card from "../Card";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Pagination from "../Pagination";
 import { GeneComparatorTrigger, useGeneComparator } from "../GeneComparator";
 import useQuery from "../useQuery";
@@ -50,7 +48,7 @@ const GeneResult = ({
           }}
         >
           <h4 className="mb-2 text-capitalize">
-            <span className="secondary">{geneSymbol}</span>{" "}
+            <span className="blue-dark">{geneSymbol}</span>{" "}
             <span className="grey">|</span> {geneName}
           </h4>
           {!!synonymsArray && synonymsArray.length && (
@@ -156,10 +154,6 @@ const GeneResults = ({ query }: { query?: string }) => {
         >
           {query ? (
             <>
-              <h1 className="mb-1">
-                <strong>Gene Search results</strong>
-              </h1>
-
               <p className="grey">
                 <small>
                   Found {data?.length || 0} entries{" "}

@@ -1,9 +1,6 @@
 import styles from "./styles.module.scss";
 import { Alert, Col, Container, Row } from "react-bootstrap";
-import {
-  faChartColumn,
-  faCheckCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faCross } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useRouter } from "next/router";
@@ -27,35 +24,25 @@ const PhenotypeResult = ({
           router.push(`/phenotypes/${mpId}`);
         }}
       >
-        <Col sm={6}>
-          <h4 className="mb-2 text-capitalize">{phenotypeName}</h4>
-          <p className="grey mb-0">
-            <small>
-              <strong>Description:</strong> ???
-            </small>
+        <Col sm={12}>
+          <h4 className="mb-2 text-capitalize blue-dark">{phenotypeName}</h4>
+          {/* <p className="grey mb-0 small">
+            <strong>Definition:</strong> ???
+          </p> */}
+          <p className="grey small">
+            <strong>Synomyms:</strong> {synonymsArray.join(", ")}
           </p>
-          <p className="grey">
-            <small>
-              <strong>Synomyms:</strong> {synonymsArray.join(", ")}
-            </small>
-          </p>
-        </Col>
-        <Col sm={4}>
           {1 > 0 ? (
-            <p className="small">
-              <FontAwesomeIcon className="secondary" icon={faCheckCircle} />{" "}
+            <p className="small grey">
+              <FontAwesomeIcon className="secondary" icon={faCheck} />{" "}
               <strong>??</strong> genes associated with this phenotype
             </p>
           ) : (
             <p className="grey small">
-              No IMPC genes currently associated with this phenotype
+              <FontAwesomeIcon className="grey" icon={faCross} /> No IMPC genes
+              currently associated with this phenotype
             </p>
           )}
-        </Col>
-        <Col sm={2} className="text-right">
-          <span className="primary">
-            <FontAwesomeIcon icon={faChartColumn} /> View data
-          </span>
         </Col>
       </Row>
       <hr className="mt-0 mb-0" />
@@ -78,10 +65,6 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
       >
         {query ? (
           <>
-            <h1 className="mb-1">
-              <strong>Phenotype Search results</strong>
-            </h1>
-
             <p className="grey">
               <small>
                 Found {data?.length || 0} entries{" "}
