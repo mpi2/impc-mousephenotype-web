@@ -338,6 +338,14 @@ const Gene = () => {
                     return (
                       <tr>
                         <td>
+                          <Link
+                            href={`/designs/${p.designOligos}?accession=${pid}`}
+                            scroll={false}
+                          >
+                            <a href="#" className="secondary">
+                              {p.designOligos ?? "View design oligo"}{" "}
+                            </a>
+                          </Link>
                           <strong>{p.designOligos}</strong>
                         </td>
                         <td>{p.targetingVector}</td>

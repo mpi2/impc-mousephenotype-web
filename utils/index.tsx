@@ -14,10 +14,15 @@ export const formatAlleleSymbol = (allele: string) => {
 };
 
 export const formatPValue = (pValue: number) => {
-  const pValueArray = Number.parseFloat(pValue).toExponential(2).split("e");
+  const pValueArray = Number.parseFloat(String(pValue))
+    .toExponential(2)
+    .split("e");
   return (
     <>
       {pValueArray[0]}x10<sup>{pValueArray[1].replace("+", "")}</sup>
     </>
   );
 };
+
+const fetchCache = {};
+export { fetchCache };
