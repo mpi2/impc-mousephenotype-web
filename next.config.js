@@ -20,9 +20,10 @@ module.exports = {
   //   );
   //   return config;
   // },
-  experimental: {
-    outputStandalone: true,
-  },
+  // experimental: {
+  //   outputStandalone: true,
+  // },
+  output: "standalone",
 
   typescript: {
     // !! WARN !!

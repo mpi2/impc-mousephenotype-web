@@ -7792,14 +7792,12 @@
                     34 === t.charCodeAt(++u);
 
                   );
-                  return (
-                    (i = u) >= o
-                      ? (l = !0)
-                      : 10 === (r = t.charCodeAt(u++))
-                      ? (h = !0)
-                      : 13 === r && ((h = !0), 10 === t.charCodeAt(u) && ++u),
-                    t.slice(a + 1, i - 1).replace(/""/g, '"')
-                  );
+                  return (i = u) >= o
+                    ? (l = !0)
+                    : 10 === (r = t.charCodeAt(u++))
+                    ? (h = !0)
+                    : 13 === r && ((h = !0), 10 === t.charCodeAt(u) && ++u),
+                  t.slice(a + 1, i - 1).replace(/""/g, '"');
                 }
                 for (; u < o; ) {
                   if (10 === (r = t.charCodeAt((i = u++)))) h = !0;
@@ -9119,18 +9117,16 @@
                 }
                 return p(t);
               }
-              return (
-                (_ =
-                  void 0 === _
-                    ? 6
-                    : /[gprs]/.test(M)
-                    ? Math.max(1, Math.min(21, _))
-                    : Math.max(0, Math.min(20, _))),
-                (C.toString = function () {
-                  return t + "";
-                }),
-                C
-              );
+              return (_ =
+                void 0 === _
+                  ? 6
+                  : /[gprs]/.test(M)
+                  ? Math.max(1, Math.min(21, _))
+                  : Math.max(0, Math.min(20, _))),
+              (C.toString = function () {
+                return t + "";
+              }),
+              C;
             }
             return {
               format: m,
@@ -22985,21 +22981,19 @@
                           )
                             navigator.msSaveOrOpenBlob(
                               (function (t, e) {
-                                return (
-                                  void 0 === e
-                                    ? (e = { autoBom: !1 })
-                                    : "object" != typeof e &&
-                                      (console.warn(
-                                        "Deprecated: Expected third argument to be a object"
-                                      ),
-                                      (e = { autoBom: !e })),
-                                  e.autoBom &&
-                                  /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(
-                                    t.type
-                                  )
-                                    ? new Blob(["\ufeff", t], { type: t.type })
-                                    : t
-                                );
+                                return void 0 === e
+                                  ? (e = { autoBom: !1 })
+                                  : "object" != typeof e &&
+                                    (console.warn(
+                                      "Deprecated: Expected third argument to be a object"
+                                    ),
+                                    (e = { autoBom: !e })),
+                                e.autoBom &&
+                                /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(
+                                  t.type
+                                )
+                                  ? new Blob(["\ufeff", t], { type: t.type })
+                                  : t;
                               })(t, a),
                               e
                             );
@@ -23112,39 +23106,37 @@
          * http://jquery.org/license
          */ var i;
         (i = function (t) {
-          return (
-            (t.ui.focusable = function (e, n) {
-              var i,
-                r,
-                a,
-                o,
-                s,
-                u = e.nodeName.toLowerCase();
-              return "area" === u
-                ? ((r = (i = e.parentNode).name),
-                  !(!e.href || !r || "map" !== i.nodeName.toLowerCase()) &&
-                    (a = t("img[usemap='#" + r + "']")).length > 0 &&
-                    a.is(":visible"))
-                : (/^(input|select|textarea|button|object)$/.test(u)
-                    ? (o = !e.disabled) &&
-                      (s = t(e).closest("fieldset")[0]) &&
-                      (o = !s.disabled)
-                    : (o = ("a" === u && e.href) || n),
-                  o &&
-                    t(e).is(":visible") &&
-                    (function (t) {
-                      for (var e = t.css("visibility"); "inherit" === e; )
-                        e = (t = t.parent()).css("visibility");
-                      return "hidden" !== e;
-                    })(t(e)));
-            }),
-            t.extend(t.expr[":"], {
-              focusable: function (e) {
-                return t.ui.focusable(e, null != t.attr(e, "tabindex"));
-              },
-            }),
-            t.ui.focusable
-          );
+          return (t.ui.focusable = function (e, n) {
+            var i,
+              r,
+              a,
+              o,
+              s,
+              u = e.nodeName.toLowerCase();
+            return "area" === u
+              ? ((r = (i = e.parentNode).name),
+                !(!e.href || !r || "map" !== i.nodeName.toLowerCase()) &&
+                  (a = t("img[usemap='#" + r + "']")).length > 0 &&
+                  a.is(":visible"))
+              : (/^(input|select|textarea|button|object)$/.test(u)
+                  ? (o = !e.disabled) &&
+                    (s = t(e).closest("fieldset")[0]) &&
+                    (o = !s.disabled)
+                  : (o = ("a" === u && e.href) || n),
+                o &&
+                  t(e).is(":visible") &&
+                  (function (t) {
+                    for (var e = t.css("visibility"); "inherit" === e; )
+                      e = (t = t.parent()).css("visibility");
+                    return "hidden" !== e;
+                  })(t(e)));
+          }),
+          t.extend(t.expr[":"], {
+            focusable: function (e) {
+              return t.ui.focusable(e, null != t.attr(e, "tabindex"));
+            },
+          }),
+          t.ui.focusable;
         }),
           "function" == typeof define && define.amd
             ? define(["jquery", "./version"], i)
@@ -23201,375 +23193,373 @@
          * http://api.jqueryui.com/position/
          */ var i;
         (i = function (t) {
-          return (
-            (function () {
-              var e,
-                n = Math.max,
-                i = Math.abs,
-                r = /left|center|right/,
-                a = /top|center|bottom/,
-                o = /[\+\-]\d+(\.[\d]+)?%?/,
-                s = /^\w+/,
-                u = /%$/,
-                c = t.fn.position;
-              function l(t, e, n) {
-                return [
-                  parseFloat(t[0]) * (u.test(t[0]) ? e / 100 : 1),
-                  parseFloat(t[1]) * (u.test(t[1]) ? n / 100 : 1),
-                ];
-              }
-              function h(e, n) {
-                return parseInt(t.css(e, n), 10) || 0;
-              }
-              function f(e) {
-                var n = e[0];
-                return 9 === n.nodeType
-                  ? {
-                      width: e.width(),
-                      height: e.height(),
-                      offset: { top: 0, left: 0 },
-                    }
-                  : t.isWindow(n)
-                  ? {
-                      width: e.width(),
-                      height: e.height(),
-                      offset: { top: e.scrollTop(), left: e.scrollLeft() },
-                    }
-                  : n.preventDefault
-                  ? {
-                      width: 0,
-                      height: 0,
-                      offset: { top: n.pageY, left: n.pageX },
-                    }
-                  : {
-                      width: e.outerWidth(),
-                      height: e.outerHeight(),
-                      offset: e.offset(),
-                    };
-              }
-              (t.position = {
-                scrollbarWidth: function () {
-                  if (void 0 !== e) return e;
-                  var n,
-                    i,
-                    r = t(
-                      "<div style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'><div style='height:100px;width:auto;'></div></div>"
-                    ),
-                    a = r.children()[0];
-                  return (
-                    t("body").append(r),
-                    (n = a.offsetWidth),
-                    r.css("overflow", "scroll"),
-                    n === (i = a.offsetWidth) && (i = r[0].clientWidth),
-                    r.remove(),
-                    (e = n - i)
-                  );
-                },
-                getScrollInfo: function (e) {
-                  var n =
-                      e.isWindow || e.isDocument
-                        ? ""
-                        : e.element.css("overflow-x"),
-                    i =
-                      e.isWindow || e.isDocument
-                        ? ""
-                        : e.element.css("overflow-y"),
-                    r =
-                      "scroll" === n ||
-                      ("auto" === n && e.width < e.element[0].scrollWidth);
-                  return {
-                    width:
-                      "scroll" === i ||
-                      ("auto" === i && e.height < e.element[0].scrollHeight)
-                        ? t.position.scrollbarWidth()
-                        : 0,
-                    height: r ? t.position.scrollbarWidth() : 0,
+          return (function () {
+            var e,
+              n = Math.max,
+              i = Math.abs,
+              r = /left|center|right/,
+              a = /top|center|bottom/,
+              o = /[\+\-]\d+(\.[\d]+)?%?/,
+              s = /^\w+/,
+              u = /%$/,
+              c = t.fn.position;
+            function l(t, e, n) {
+              return [
+                parseFloat(t[0]) * (u.test(t[0]) ? e / 100 : 1),
+                parseFloat(t[1]) * (u.test(t[1]) ? n / 100 : 1),
+              ];
+            }
+            function h(e, n) {
+              return parseInt(t.css(e, n), 10) || 0;
+            }
+            function f(e) {
+              var n = e[0];
+              return 9 === n.nodeType
+                ? {
+                    width: e.width(),
+                    height: e.height(),
+                    offset: { top: 0, left: 0 },
+                  }
+                : t.isWindow(n)
+                ? {
+                    width: e.width(),
+                    height: e.height(),
+                    offset: { top: e.scrollTop(), left: e.scrollLeft() },
+                  }
+                : n.preventDefault
+                ? {
+                    width: 0,
+                    height: 0,
+                    offset: { top: n.pageY, left: n.pageX },
+                  }
+                : {
+                    width: e.outerWidth(),
+                    height: e.outerHeight(),
+                    offset: e.offset(),
                   };
-                },
-                getWithinInfo: function (e) {
-                  var n = t(e || window),
-                    i = t.isWindow(n[0]),
-                    r = !!n[0] && 9 === n[0].nodeType;
-                  return {
-                    element: n,
-                    isWindow: i,
-                    isDocument: r,
-                    offset: i || r ? { left: 0, top: 0 } : t(e).offset(),
-                    scrollLeft: n.scrollLeft(),
-                    scrollTop: n.scrollTop(),
-                    width: n.outerWidth(),
-                    height: n.outerHeight(),
-                  };
-                },
-              }),
-                (t.fn.position = function (e) {
-                  if (!e || !e.of) return c.apply(this, arguments);
-                  e = t.extend({}, e);
-                  var u,
-                    d,
-                    p,
-                    g,
-                    v,
-                    y,
-                    m = t(e.of),
-                    b = t.position.getWithinInfo(e.within),
-                    _ = t.position.getScrollInfo(b),
-                    x = (e.collision || "flip").split(" "),
-                    M = {};
-                  return (
-                    (y = f(m)),
-                    m[0].preventDefault && (e.at = "left top"),
-                    (d = y.width),
-                    (p = y.height),
-                    (g = y.offset),
-                    (v = t.extend({}, g)),
-                    t.each(["my", "at"], function () {
-                      var t,
-                        n,
-                        i = (e[this] || "").split(" ");
-                      1 === i.length &&
-                        (i = r.test(i[0])
-                          ? i.concat(["center"])
-                          : a.test(i[0])
-                          ? ["center"].concat(i)
-                          : ["center", "center"]),
-                        (i[0] = r.test(i[0]) ? i[0] : "center"),
-                        (i[1] = a.test(i[1]) ? i[1] : "center"),
-                        (t = o.exec(i[0])),
-                        (n = o.exec(i[1])),
-                        (M[this] = [t ? t[0] : 0, n ? n[0] : 0]),
-                        (e[this] = [s.exec(i[0])[0], s.exec(i[1])[0]]);
-                    }),
-                    1 === x.length && (x[1] = x[0]),
-                    "right" === e.at[0]
-                      ? (v.left += d)
-                      : "center" === e.at[0] && (v.left += d / 2),
-                    "bottom" === e.at[1]
-                      ? (v.top += p)
-                      : "center" === e.at[1] && (v.top += p / 2),
-                    (u = l(M.at, d, p)),
-                    (v.left += u[0]),
-                    (v.top += u[1]),
-                    this.each(function () {
-                      var r,
-                        a,
-                        o = t(this),
-                        s = o.outerWidth(),
-                        c = o.outerHeight(),
-                        f = h(this, "marginLeft"),
-                        y = h(this, "marginTop"),
-                        w = s + f + h(this, "marginRight") + _.width,
-                        L = c + y + h(this, "marginBottom") + _.height,
-                        T = t.extend({}, v),
-                        N = l(M.my, o.outerWidth(), o.outerHeight());
-                      "right" === e.my[0]
-                        ? (T.left -= s)
-                        : "center" === e.my[0] && (T.left -= s / 2),
-                        "bottom" === e.my[1]
-                          ? (T.top -= c)
-                          : "center" === e.my[1] && (T.top -= c / 2),
-                        (T.left += N[0]),
-                        (T.top += N[1]),
-                        (r = { marginLeft: f, marginTop: y }),
-                        t.each(["left", "top"], function (n, i) {
-                          t.ui.position[x[n]] &&
-                            t.ui.position[x[n]][i](T, {
-                              targetWidth: d,
-                              targetHeight: p,
-                              elemWidth: s,
-                              elemHeight: c,
-                              collisionPosition: r,
-                              collisionWidth: w,
-                              collisionHeight: L,
-                              offset: [u[0] + N[0], u[1] + N[1]],
-                              my: e.my,
-                              at: e.at,
-                              within: b,
-                              elem: o,
-                            });
+            }
+            (t.position = {
+              scrollbarWidth: function () {
+                if (void 0 !== e) return e;
+                var n,
+                  i,
+                  r = t(
+                    "<div style='display:block;position:absolute;width:50px;height:50px;overflow:hidden;'><div style='height:100px;width:auto;'></div></div>"
+                  ),
+                  a = r.children()[0];
+                return (
+                  t("body").append(r),
+                  (n = a.offsetWidth),
+                  r.css("overflow", "scroll"),
+                  n === (i = a.offsetWidth) && (i = r[0].clientWidth),
+                  r.remove(),
+                  (e = n - i)
+                );
+              },
+              getScrollInfo: function (e) {
+                var n =
+                    e.isWindow || e.isDocument
+                      ? ""
+                      : e.element.css("overflow-x"),
+                  i =
+                    e.isWindow || e.isDocument
+                      ? ""
+                      : e.element.css("overflow-y"),
+                  r =
+                    "scroll" === n ||
+                    ("auto" === n && e.width < e.element[0].scrollWidth);
+                return {
+                  width:
+                    "scroll" === i ||
+                    ("auto" === i && e.height < e.element[0].scrollHeight)
+                      ? t.position.scrollbarWidth()
+                      : 0,
+                  height: r ? t.position.scrollbarWidth() : 0,
+                };
+              },
+              getWithinInfo: function (e) {
+                var n = t(e || window),
+                  i = t.isWindow(n[0]),
+                  r = !!n[0] && 9 === n[0].nodeType;
+                return {
+                  element: n,
+                  isWindow: i,
+                  isDocument: r,
+                  offset: i || r ? { left: 0, top: 0 } : t(e).offset(),
+                  scrollLeft: n.scrollLeft(),
+                  scrollTop: n.scrollTop(),
+                  width: n.outerWidth(),
+                  height: n.outerHeight(),
+                };
+              },
+            }),
+              (t.fn.position = function (e) {
+                if (!e || !e.of) return c.apply(this, arguments);
+                e = t.extend({}, e);
+                var u,
+                  d,
+                  p,
+                  g,
+                  v,
+                  y,
+                  m = t(e.of),
+                  b = t.position.getWithinInfo(e.within),
+                  _ = t.position.getScrollInfo(b),
+                  x = (e.collision || "flip").split(" "),
+                  M = {};
+                return (
+                  (y = f(m)),
+                  m[0].preventDefault && (e.at = "left top"),
+                  (d = y.width),
+                  (p = y.height),
+                  (g = y.offset),
+                  (v = t.extend({}, g)),
+                  t.each(["my", "at"], function () {
+                    var t,
+                      n,
+                      i = (e[this] || "").split(" ");
+                    1 === i.length &&
+                      (i = r.test(i[0])
+                        ? i.concat(["center"])
+                        : a.test(i[0])
+                        ? ["center"].concat(i)
+                        : ["center", "center"]),
+                      (i[0] = r.test(i[0]) ? i[0] : "center"),
+                      (i[1] = a.test(i[1]) ? i[1] : "center"),
+                      (t = o.exec(i[0])),
+                      (n = o.exec(i[1])),
+                      (M[this] = [t ? t[0] : 0, n ? n[0] : 0]),
+                      (e[this] = [s.exec(i[0])[0], s.exec(i[1])[0]]);
+                  }),
+                  1 === x.length && (x[1] = x[0]),
+                  "right" === e.at[0]
+                    ? (v.left += d)
+                    : "center" === e.at[0] && (v.left += d / 2),
+                  "bottom" === e.at[1]
+                    ? (v.top += p)
+                    : "center" === e.at[1] && (v.top += p / 2),
+                  (u = l(M.at, d, p)),
+                  (v.left += u[0]),
+                  (v.top += u[1]),
+                  this.each(function () {
+                    var r,
+                      a,
+                      o = t(this),
+                      s = o.outerWidth(),
+                      c = o.outerHeight(),
+                      f = h(this, "marginLeft"),
+                      y = h(this, "marginTop"),
+                      w = s + f + h(this, "marginRight") + _.width,
+                      L = c + y + h(this, "marginBottom") + _.height,
+                      T = t.extend({}, v),
+                      N = l(M.my, o.outerWidth(), o.outerHeight());
+                    "right" === e.my[0]
+                      ? (T.left -= s)
+                      : "center" === e.my[0] && (T.left -= s / 2),
+                      "bottom" === e.my[1]
+                        ? (T.top -= c)
+                        : "center" === e.my[1] && (T.top -= c / 2),
+                      (T.left += N[0]),
+                      (T.top += N[1]),
+                      (r = { marginLeft: f, marginTop: y }),
+                      t.each(["left", "top"], function (n, i) {
+                        t.ui.position[x[n]] &&
+                          t.ui.position[x[n]][i](T, {
+                            targetWidth: d,
+                            targetHeight: p,
+                            elemWidth: s,
+                            elemHeight: c,
+                            collisionPosition: r,
+                            collisionWidth: w,
+                            collisionHeight: L,
+                            offset: [u[0] + N[0], u[1] + N[1]],
+                            my: e.my,
+                            at: e.at,
+                            within: b,
+                            elem: o,
+                          });
+                      }),
+                      e.using &&
+                        (a = function (t) {
+                          var r = g.left - T.left,
+                            a = r + d - s,
+                            u = g.top - T.top,
+                            l = u + p - c,
+                            h = {
+                              target: {
+                                element: m,
+                                left: g.left,
+                                top: g.top,
+                                width: d,
+                                height: p,
+                              },
+                              element: {
+                                element: o,
+                                left: T.left,
+                                top: T.top,
+                                width: s,
+                                height: c,
+                              },
+                              horizontal:
+                                a < 0 ? "left" : r > 0 ? "right" : "center",
+                              vertical:
+                                l < 0 ? "top" : u > 0 ? "bottom" : "middle",
+                            };
+                          d < s && i(r + a) < d && (h.horizontal = "center"),
+                            p < c && i(u + l) < p && (h.vertical = "middle"),
+                            n(i(r), i(a)) > n(i(u), i(l))
+                              ? (h.important = "horizontal")
+                              : (h.important = "vertical"),
+                            e.using.call(this, t, h);
                         }),
-                        e.using &&
-                          (a = function (t) {
-                            var r = g.left - T.left,
-                              a = r + d - s,
-                              u = g.top - T.top,
-                              l = u + p - c,
-                              h = {
-                                target: {
-                                  element: m,
-                                  left: g.left,
-                                  top: g.top,
-                                  width: d,
-                                  height: p,
-                                },
-                                element: {
-                                  element: o,
-                                  left: T.left,
-                                  top: T.top,
-                                  width: s,
-                                  height: c,
-                                },
-                                horizontal:
-                                  a < 0 ? "left" : r > 0 ? "right" : "center",
-                                vertical:
-                                  l < 0 ? "top" : u > 0 ? "bottom" : "middle",
-                              };
-                            d < s && i(r + a) < d && (h.horizontal = "center"),
-                              p < c && i(u + l) < p && (h.vertical = "middle"),
-                              n(i(r), i(a)) > n(i(u), i(l))
-                                ? (h.important = "horizontal")
-                                : (h.important = "vertical"),
-                              e.using.call(this, t, h);
-                          }),
-                        o.offset(t.extend(T, { using: a }));
-                    })
-                  );
-                }),
-                (t.ui.position = {
-                  fit: {
-                    left: function (t, e) {
-                      var i,
-                        r = e.within,
-                        a = r.isWindow ? r.scrollLeft : r.offset.left,
-                        o = r.width,
-                        s = t.left - e.collisionPosition.marginLeft,
-                        u = a - s,
-                        c = s + e.collisionWidth - o - a;
-                      e.collisionWidth > o
-                        ? u > 0 && c <= 0
-                          ? ((i = t.left + u + e.collisionWidth - o - a),
-                            (t.left += u - i))
-                          : (t.left =
-                              c > 0 && u <= 0
-                                ? a
-                                : u > c
-                                ? a + o - e.collisionWidth
-                                : a)
-                        : u > 0
-                        ? (t.left += u)
-                        : c > 0
-                        ? (t.left -= c)
-                        : (t.left = n(t.left - s, t.left));
-                    },
-                    top: function (t, e) {
-                      var i,
-                        r = e.within,
-                        a = r.isWindow ? r.scrollTop : r.offset.top,
-                        o = e.within.height,
-                        s = t.top - e.collisionPosition.marginTop,
-                        u = a - s,
-                        c = s + e.collisionHeight - o - a;
-                      e.collisionHeight > o
-                        ? u > 0 && c <= 0
-                          ? ((i = t.top + u + e.collisionHeight - o - a),
-                            (t.top += u - i))
-                          : (t.top =
-                              c > 0 && u <= 0
-                                ? a
-                                : u > c
-                                ? a + o - e.collisionHeight
-                                : a)
-                        : u > 0
-                        ? (t.top += u)
-                        : c > 0
-                        ? (t.top -= c)
-                        : (t.top = n(t.top - s, t.top));
-                    },
+                      o.offset(t.extend(T, { using: a }));
+                  })
+                );
+              }),
+              (t.ui.position = {
+                fit: {
+                  left: function (t, e) {
+                    var i,
+                      r = e.within,
+                      a = r.isWindow ? r.scrollLeft : r.offset.left,
+                      o = r.width,
+                      s = t.left - e.collisionPosition.marginLeft,
+                      u = a - s,
+                      c = s + e.collisionWidth - o - a;
+                    e.collisionWidth > o
+                      ? u > 0 && c <= 0
+                        ? ((i = t.left + u + e.collisionWidth - o - a),
+                          (t.left += u - i))
+                        : (t.left =
+                            c > 0 && u <= 0
+                              ? a
+                              : u > c
+                              ? a + o - e.collisionWidth
+                              : a)
+                      : u > 0
+                      ? (t.left += u)
+                      : c > 0
+                      ? (t.left -= c)
+                      : (t.left = n(t.left - s, t.left));
                   },
-                  flip: {
-                    left: function (t, e) {
-                      var n,
-                        r,
-                        a = e.within,
-                        o = a.offset.left + a.scrollLeft,
-                        s = a.width,
-                        u = a.isWindow ? a.scrollLeft : a.offset.left,
-                        c = t.left - e.collisionPosition.marginLeft,
-                        l = c - u,
-                        h = c + e.collisionWidth - s - u,
-                        f =
-                          "left" === e.my[0]
-                            ? -e.elemWidth
-                            : "right" === e.my[0]
-                            ? e.elemWidth
-                            : 0,
-                        d =
-                          "left" === e.at[0]
-                            ? e.targetWidth
-                            : "right" === e.at[0]
-                            ? -e.targetWidth
-                            : 0,
-                        p = -2 * e.offset[0];
-                      l < 0
-                        ? ((n = t.left + f + d + p + e.collisionWidth - s - o) <
-                            0 ||
-                            n < i(l)) &&
-                          (t.left += f + d + p)
-                        : h > 0 &&
-                          ((r =
-                            t.left -
-                            e.collisionPosition.marginLeft +
-                            f +
-                            d +
-                            p -
-                            u) > 0 ||
-                            i(r) < h) &&
-                          (t.left += f + d + p);
-                    },
-                    top: function (t, e) {
-                      var n,
-                        r,
-                        a = e.within,
-                        o = a.offset.top + a.scrollTop,
-                        s = a.height,
-                        u = a.isWindow ? a.scrollTop : a.offset.top,
-                        c = t.top - e.collisionPosition.marginTop,
-                        l = c - u,
-                        h = c + e.collisionHeight - s - u,
-                        f =
-                          "top" === e.my[1]
-                            ? -e.elemHeight
-                            : "bottom" === e.my[1]
-                            ? e.elemHeight
-                            : 0,
-                        d =
-                          "top" === e.at[1]
-                            ? e.targetHeight
-                            : "bottom" === e.at[1]
-                            ? -e.targetHeight
-                            : 0,
-                        p = -2 * e.offset[1];
-                      l < 0
-                        ? ((r = t.top + f + d + p + e.collisionHeight - s - o) <
-                            0 ||
-                            r < i(l)) &&
-                          (t.top += f + d + p)
-                        : h > 0 &&
-                          ((n =
-                            t.top -
-                            e.collisionPosition.marginTop +
-                            f +
-                            d +
-                            p -
-                            u) > 0 ||
-                            i(n) < h) &&
-                          (t.top += f + d + p);
-                    },
+                  top: function (t, e) {
+                    var i,
+                      r = e.within,
+                      a = r.isWindow ? r.scrollTop : r.offset.top,
+                      o = e.within.height,
+                      s = t.top - e.collisionPosition.marginTop,
+                      u = a - s,
+                      c = s + e.collisionHeight - o - a;
+                    e.collisionHeight > o
+                      ? u > 0 && c <= 0
+                        ? ((i = t.top + u + e.collisionHeight - o - a),
+                          (t.top += u - i))
+                        : (t.top =
+                            c > 0 && u <= 0
+                              ? a
+                              : u > c
+                              ? a + o - e.collisionHeight
+                              : a)
+                      : u > 0
+                      ? (t.top += u)
+                      : c > 0
+                      ? (t.top -= c)
+                      : (t.top = n(t.top - s, t.top));
                   },
-                  flipfit: {
-                    left: function () {
-                      t.ui.position.flip.left.apply(this, arguments),
-                        t.ui.position.fit.left.apply(this, arguments);
-                    },
-                    top: function () {
-                      t.ui.position.flip.top.apply(this, arguments),
-                        t.ui.position.fit.top.apply(this, arguments);
-                    },
+                },
+                flip: {
+                  left: function (t, e) {
+                    var n,
+                      r,
+                      a = e.within,
+                      o = a.offset.left + a.scrollLeft,
+                      s = a.width,
+                      u = a.isWindow ? a.scrollLeft : a.offset.left,
+                      c = t.left - e.collisionPosition.marginLeft,
+                      l = c - u,
+                      h = c + e.collisionWidth - s - u,
+                      f =
+                        "left" === e.my[0]
+                          ? -e.elemWidth
+                          : "right" === e.my[0]
+                          ? e.elemWidth
+                          : 0,
+                      d =
+                        "left" === e.at[0]
+                          ? e.targetWidth
+                          : "right" === e.at[0]
+                          ? -e.targetWidth
+                          : 0,
+                      p = -2 * e.offset[0];
+                    l < 0
+                      ? ((n = t.left + f + d + p + e.collisionWidth - s - o) <
+                          0 ||
+                          n < i(l)) &&
+                        (t.left += f + d + p)
+                      : h > 0 &&
+                        ((r =
+                          t.left -
+                          e.collisionPosition.marginLeft +
+                          f +
+                          d +
+                          p -
+                          u) > 0 ||
+                          i(r) < h) &&
+                        (t.left += f + d + p);
                   },
-                });
-            })(),
-            t.ui.position
-          );
+                  top: function (t, e) {
+                    var n,
+                      r,
+                      a = e.within,
+                      o = a.offset.top + a.scrollTop,
+                      s = a.height,
+                      u = a.isWindow ? a.scrollTop : a.offset.top,
+                      c = t.top - e.collisionPosition.marginTop,
+                      l = c - u,
+                      h = c + e.collisionHeight - s - u,
+                      f =
+                        "top" === e.my[1]
+                          ? -e.elemHeight
+                          : "bottom" === e.my[1]
+                          ? e.elemHeight
+                          : 0,
+                      d =
+                        "top" === e.at[1]
+                          ? e.targetHeight
+                          : "bottom" === e.at[1]
+                          ? -e.targetHeight
+                          : 0,
+                      p = -2 * e.offset[1];
+                    l < 0
+                      ? ((r = t.top + f + d + p + e.collisionHeight - s - o) <
+                          0 ||
+                          r < i(l)) &&
+                        (t.top += f + d + p)
+                      : h > 0 &&
+                        ((n =
+                          t.top -
+                          e.collisionPosition.marginTop +
+                          f +
+                          d +
+                          p -
+                          u) > 0 ||
+                          i(n) < h) &&
+                        (t.top += f + d + p);
+                  },
+                },
+                flipfit: {
+                  left: function () {
+                    t.ui.position.flip.left.apply(this, arguments),
+                      t.ui.position.fit.left.apply(this, arguments);
+                  },
+                  top: function () {
+                    t.ui.position.flip.top.apply(this, arguments),
+                      t.ui.position.fit.top.apply(this, arguments);
+                  },
+                },
+              });
+          })(),
+          t.ui.position;
         }),
           "function" == typeof define && define.amd
             ? define(["jquery", "./version"], i)
@@ -23683,482 +23673,478 @@
           var e,
             n = 0,
             i = Array.prototype.slice;
-          return (
-            (t.cleanData =
-              ((e = t.cleanData),
-              function (n) {
-                var i, r, a;
-                for (a = 0; null != (r = n[a]); a++)
-                  try {
-                    (i = t._data(r, "events")) &&
-                      i.remove &&
-                      t(r).triggerHandler("remove");
-                  } catch (t) {}
-                e(n);
-              })),
-            (t.widget = function (e, n, i) {
+          return (t.cleanData =
+            ((e = t.cleanData),
+            function (n) {
+              var i, r, a;
+              for (a = 0; null != (r = n[a]); a++)
+                try {
+                  (i = t._data(r, "events")) &&
+                    i.remove &&
+                    t(r).triggerHandler("remove");
+                } catch (t) {}
+              e(n);
+            })),
+          (t.widget = function (e, n, i) {
+            var r,
+              a,
+              o,
+              s = {},
+              u = e.split(".")[0],
+              c = u + "-" + (e = e.split(".")[1]);
+            return (
+              i || ((i = n), (n = t.Widget)),
+              t.isArray(i) && (i = t.extend.apply(null, [{}].concat(i))),
+              (t.expr[":"][c.toLowerCase()] = function (e) {
+                return !!t.data(e, c);
+              }),
+              (t[u] = t[u] || {}),
+              (r = t[u][e]),
+              (a = t[u][e] =
+                function (t, e) {
+                  if (!this._createWidget) return new a(t, e);
+                  arguments.length && this._createWidget(t, e);
+                }),
+              t.extend(a, r, {
+                version: i.version,
+                _proto: t.extend({}, i),
+                _childConstructors: [],
+              }),
+              ((o = new n()).options = t.widget.extend({}, o.options)),
+              t.each(i, function (e, i) {
+                t.isFunction(i)
+                  ? (s[e] = (function () {
+                      function t() {
+                        return n.prototype[e].apply(this, arguments);
+                      }
+                      function r(t) {
+                        return n.prototype[e].apply(this, t);
+                      }
+                      return function () {
+                        var e,
+                          n = this._super,
+                          a = this._superApply;
+                        return (
+                          (this._super = t),
+                          (this._superApply = r),
+                          (e = i.apply(this, arguments)),
+                          (this._super = n),
+                          (this._superApply = a),
+                          e
+                        );
+                      };
+                    })())
+                  : (s[e] = i);
+              }),
+              (a.prototype = t.widget.extend(
+                o,
+                { widgetEventPrefix: (r && o.widgetEventPrefix) || e },
+                s,
+                {
+                  constructor: a,
+                  namespace: u,
+                  widgetName: e,
+                  widgetFullName: c,
+                }
+              )),
+              r
+                ? (t.each(r._childConstructors, function (e, n) {
+                    var i = n.prototype;
+                    t.widget(i.namespace + "." + i.widgetName, a, n._proto);
+                  }),
+                  delete r._childConstructors)
+                : n._childConstructors.push(a),
+              t.widget.bridge(e, a),
+              a
+            );
+          }),
+          (t.widget.extend = function (e) {
+            for (
+              var n, r, a = i.call(arguments, 1), o = 0, s = a.length;
+              o < s;
+              o++
+            )
+              for (n in a[o])
+                (r = a[o][n]),
+                  a[o].hasOwnProperty(n) &&
+                    void 0 !== r &&
+                    (t.isPlainObject(r)
+                      ? (e[n] = t.isPlainObject(e[n])
+                          ? t.widget.extend({}, e[n], r)
+                          : t.widget.extend({}, r))
+                      : (e[n] = r));
+            return e;
+          }),
+          (t.widget.bridge = function (e, n) {
+            var r = n.prototype.widgetFullName || e;
+            t.fn[e] = function (a) {
+              var o = "string" == typeof a,
+                s = i.call(arguments, 1),
+                u = this;
+              return (
+                o
+                  ? this.length || "instance" !== a
+                    ? this.each(function () {
+                        var n,
+                          i = t.data(this, r);
+                        return "instance" === a
+                          ? ((u = i), !1)
+                          : i
+                          ? t.isFunction(i[a]) && "_" !== a.charAt(0)
+                            ? (n = i[a].apply(i, s)) !== i && void 0 !== n
+                              ? ((u =
+                                  n && n.jquery ? u.pushStack(n.get()) : n),
+                                !1)
+                              : void 0
+                            : t.error(
+                                "no such method '" +
+                                  a +
+                                  "' for " +
+                                  e +
+                                  " widget instance"
+                              )
+                          : t.error(
+                              "cannot call methods on " +
+                                e +
+                                " prior to initialization; attempted to call method '" +
+                                a +
+                                "'"
+                            );
+                      })
+                    : (u = void 0)
+                  : (s.length &&
+                      (a = t.widget.extend.apply(null, [a].concat(s))),
+                    this.each(function () {
+                      var e = t.data(this, r);
+                      e
+                        ? (e.option(a || {}), e._init && e._init())
+                        : t.data(this, r, new n(a, this));
+                    })),
+                u
+              );
+            };
+          }),
+          (t.Widget = function () {}),
+          (t.Widget._childConstructors = []),
+          (t.Widget.prototype = {
+            widgetName: "widget",
+            widgetEventPrefix: "",
+            defaultElement: "<div>",
+            options: { classes: {}, disabled: !1, create: null },
+            _createWidget: function (e, i) {
+              (i = t(i || this.defaultElement || this)[0]),
+                (this.element = t(i)),
+                (this.uuid = n++),
+                (this.eventNamespace = "." + this.widgetName + this.uuid),
+                (this.bindings = t()),
+                (this.hoverable = t()),
+                (this.focusable = t()),
+                (this.classesElementLookup = {}),
+                i !== this &&
+                  (t.data(i, this.widgetFullName, this),
+                  this._on(!0, this.element, {
+                    remove: function (t) {
+                      t.target === i && this.destroy();
+                    },
+                  }),
+                  (this.document = t(
+                    i.style ? i.ownerDocument : i.document || i
+                  )),
+                  (this.window = t(
+                    this.document[0].defaultView ||
+                      this.document[0].parentWindow
+                  ))),
+                (this.options = t.widget.extend(
+                  {},
+                  this.options,
+                  this._getCreateOptions(),
+                  e
+                )),
+                this._create(),
+                this.options.disabled &&
+                  this._setOptionDisabled(this.options.disabled),
+                this._trigger("create", null, this._getCreateEventData()),
+                this._init();
+            },
+            _getCreateOptions: function () {
+              return {};
+            },
+            _getCreateEventData: t.noop,
+            _create: t.noop,
+            _init: t.noop,
+            destroy: function () {
+              var e = this;
+              this._destroy(),
+                t.each(this.classesElementLookup, function (t, n) {
+                  e._removeClass(n, t);
+                }),
+                this.element
+                  .off(this.eventNamespace)
+                  .removeData(this.widgetFullName),
+                this.widget()
+                  .off(this.eventNamespace)
+                  .removeAttr("aria-disabled"),
+                this.bindings.off(this.eventNamespace);
+            },
+            _destroy: t.noop,
+            widget: function () {
+              return this.element;
+            },
+            option: function (e, n) {
+              var i,
+                r,
+                a,
+                o = e;
+              if (0 === arguments.length)
+                return t.widget.extend({}, this.options);
+              if ("string" == typeof e)
+                if (
+                  ((o = {}), (i = e.split(".")), (e = i.shift()), i.length)
+                ) {
+                  for (
+                    r = o[e] = t.widget.extend({}, this.options[e]), a = 0;
+                    a < i.length - 1;
+                    a++
+                  )
+                    (r[i[a]] = r[i[a]] || {}), (r = r[i[a]]);
+                  if (((e = i.pop()), 1 === arguments.length))
+                    return void 0 === r[e] ? null : r[e];
+                  r[e] = n;
+                } else {
+                  if (1 === arguments.length)
+                    return void 0 === this.options[e]
+                      ? null
+                      : this.options[e];
+                  o[e] = n;
+                }
+              return this._setOptions(o), this;
+            },
+            _setOptions: function (t) {
+              var e;
+              for (e in t) this._setOption(e, t[e]);
+              return this;
+            },
+            _setOption: function (t, e) {
+              return (
+                "classes" === t && this._setOptionClasses(e),
+                (this.options[t] = e),
+                "disabled" === t && this._setOptionDisabled(e),
+                this
+              );
+            },
+            _setOptionClasses: function (e) {
+              var n, i, r;
+              for (n in e)
+                (r = this.classesElementLookup[n]),
+                  e[n] !== this.options.classes[n] &&
+                    r &&
+                    r.length &&
+                    ((i = t(r.get())),
+                    this._removeClass(r, n),
+                    i.addClass(
+                      this._classes({
+                        element: i,
+                        keys: n,
+                        classes: e,
+                        add: !0,
+                      })
+                    ));
+            },
+            _setOptionDisabled: function (t) {
+              this._toggleClass(
+                this.widget(),
+                this.widgetFullName + "-disabled",
+                null,
+                !!t
+              ),
+                t &&
+                  (this._removeClass(this.hoverable, null, "ui-state-hover"),
+                  this._removeClass(this.focusable, null, "ui-state-focus"));
+            },
+            enable: function () {
+              return this._setOptions({ disabled: !1 });
+            },
+            disable: function () {
+              return this._setOptions({ disabled: !0 });
+            },
+            _classes: function (e) {
+              var n = [],
+                i = this;
+              function r(r, a) {
+                var o, s;
+                for (s = 0; s < r.length; s++)
+                  (o = i.classesElementLookup[r[s]] || t()),
+                    (o = e.add
+                      ? t(t.unique(o.get().concat(e.element.get())))
+                      : t(o.not(e.element).get())),
+                    (i.classesElementLookup[r[s]] = o),
+                    n.push(r[s]),
+                    a && e.classes[r[s]] && n.push(e.classes[r[s]]);
+              }
+              return (e = t.extend(
+                {
+                  element: this.element,
+                  classes: this.options.classes || {},
+                },
+                e
+              )),
+              this._on(e.element, { remove: "_untrackClassesElement" }),
+              e.keys && r(e.keys.match(/\S+/g) || [], !0),
+              e.extra && r(e.extra.match(/\S+/g) || []),
+              n.join(" ");
+            },
+            _untrackClassesElement: function (e) {
+              var n = this;
+              t.each(n.classesElementLookup, function (i, r) {
+                -1 !== t.inArray(e.target, r) &&
+                  (n.classesElementLookup[i] = t(r.not(e.target).get()));
+              });
+            },
+            _removeClass: function (t, e, n) {
+              return this._toggleClass(t, e, n, !1);
+            },
+            _addClass: function (t, e, n) {
+              return this._toggleClass(t, e, n, !0);
+            },
+            _toggleClass: function (t, e, n, i) {
+              i = "boolean" == typeof i ? i : n;
+              var r = "string" == typeof t || null === t,
+                a = {
+                  extra: r ? e : n,
+                  keys: r ? t : e,
+                  element: r ? this.element : t,
+                  add: i,
+                };
+              return a.element.toggleClass(this._classes(a), i), this;
+            },
+            _on: function (e, n, i) {
+              var r,
+                a = this;
+              "boolean" != typeof e && ((i = n), (n = e), (e = !1)),
+                i
+                  ? ((n = r = t(n)), (this.bindings = this.bindings.add(n)))
+                  : ((i = n), (n = this.element), (r = this.widget())),
+                t.each(i, function (i, o) {
+                  function s() {
+                    if (
+                      e ||
+                      (!0 !== a.options.disabled &&
+                        !t(this).hasClass("ui-state-disabled"))
+                    )
+                      return ("string" == typeof o ? a[o] : o).apply(
+                        a,
+                        arguments
+                      );
+                  }
+                  "string" != typeof o &&
+                    (s.guid = o.guid = o.guid || s.guid || t.guid++);
+                  var u = i.match(/^([\w:-]*)\s*(.*)$/),
+                    c = u[1] + a.eventNamespace,
+                    l = u[2];
+                  l ? r.on(c, l, s) : n.on(c, s);
+                });
+            },
+            _off: function (e, n) {
+              (n =
+                (n || "").split(" ").join(this.eventNamespace + " ") +
+                this.eventNamespace),
+                e.off(n).off(n),
+                (this.bindings = t(this.bindings.not(e).get())),
+                (this.focusable = t(this.focusable.not(e).get())),
+                (this.hoverable = t(this.hoverable.not(e).get()));
+            },
+            _delay: function (t, e) {
+              var n = this;
+              return setTimeout(function () {
+                return ("string" == typeof t ? n[t] : t).apply(n, arguments);
+              }, e || 0);
+            },
+            _hoverable: function (e) {
+              (this.hoverable = this.hoverable.add(e)),
+                this._on(e, {
+                  mouseenter: function (e) {
+                    this._addClass(
+                      t(e.currentTarget),
+                      null,
+                      "ui-state-hover"
+                    );
+                  },
+                  mouseleave: function (e) {
+                    this._removeClass(
+                      t(e.currentTarget),
+                      null,
+                      "ui-state-hover"
+                    );
+                  },
+                });
+            },
+            _focusable: function (e) {
+              (this.focusable = this.focusable.add(e)),
+                this._on(e, {
+                  focusin: function (e) {
+                    this._addClass(
+                      t(e.currentTarget),
+                      null,
+                      "ui-state-focus"
+                    );
+                  },
+                  focusout: function (e) {
+                    this._removeClass(
+                      t(e.currentTarget),
+                      null,
+                      "ui-state-focus"
+                    );
+                  },
+                });
+            },
+            _trigger: function (e, n, i) {
               var r,
                 a,
-                o,
-                s = {},
-                u = e.split(".")[0],
-                c = u + "-" + (e = e.split(".")[1]);
-              return (
-                i || ((i = n), (n = t.Widget)),
-                t.isArray(i) && (i = t.extend.apply(null, [{}].concat(i))),
-                (t.expr[":"][c.toLowerCase()] = function (e) {
-                  return !!t.data(e, c);
-                }),
-                (t[u] = t[u] || {}),
-                (r = t[u][e]),
-                (a = t[u][e] =
-                  function (t, e) {
-                    if (!this._createWidget) return new a(t, e);
-                    arguments.length && this._createWidget(t, e);
-                  }),
-                t.extend(a, r, {
-                  version: i.version,
-                  _proto: t.extend({}, i),
-                  _childConstructors: [],
-                }),
-                ((o = new n()).options = t.widget.extend({}, o.options)),
-                t.each(i, function (e, i) {
-                  t.isFunction(i)
-                    ? (s[e] = (function () {
-                        function t() {
-                          return n.prototype[e].apply(this, arguments);
-                        }
-                        function r(t) {
-                          return n.prototype[e].apply(this, t);
-                        }
-                        return function () {
-                          var e,
-                            n = this._super,
-                            a = this._superApply;
-                          return (
-                            (this._super = t),
-                            (this._superApply = r),
-                            (e = i.apply(this, arguments)),
-                            (this._super = n),
-                            (this._superApply = a),
-                            e
-                          );
-                        };
-                      })())
-                    : (s[e] = i);
-                }),
-                (a.prototype = t.widget.extend(
-                  o,
-                  { widgetEventPrefix: (r && o.widgetEventPrefix) || e },
-                  s,
-                  {
-                    constructor: a,
-                    namespace: u,
-                    widgetName: e,
-                    widgetFullName: c,
-                  }
-                )),
-                r
-                  ? (t.each(r._childConstructors, function (e, n) {
-                      var i = n.prototype;
-                      t.widget(i.namespace + "." + i.widgetName, a, n._proto);
-                    }),
-                    delete r._childConstructors)
-                  : n._childConstructors.push(a),
-                t.widget.bridge(e, a),
-                a
-              );
-            }),
-            (t.widget.extend = function (e) {
-              for (
-                var n, r, a = i.call(arguments, 1), o = 0, s = a.length;
-                o < s;
-                o++
+                o = this.options[e];
+              if (
+                ((i = i || {}),
+                ((n = t.Event(n)).type = (
+                  e === this.widgetEventPrefix
+                    ? e
+                    : this.widgetEventPrefix + e
+                ).toLowerCase()),
+                (n.target = this.element[0]),
+                (a = n.originalEvent))
               )
-                for (n in a[o])
-                  (r = a[o][n]),
-                    a[o].hasOwnProperty(n) &&
-                      void 0 !== r &&
-                      (t.isPlainObject(r)
-                        ? (e[n] = t.isPlainObject(e[n])
-                            ? t.widget.extend({}, e[n], r)
-                            : t.widget.extend({}, r))
-                        : (e[n] = r));
-              return e;
-            }),
-            (t.widget.bridge = function (e, n) {
-              var r = n.prototype.widgetFullName || e;
-              t.fn[e] = function (a) {
-                var o = "string" == typeof a,
-                  s = i.call(arguments, 1),
-                  u = this;
-                return (
-                  o
-                    ? this.length || "instance" !== a
-                      ? this.each(function () {
-                          var n,
-                            i = t.data(this, r);
-                          return "instance" === a
-                            ? ((u = i), !1)
-                            : i
-                            ? t.isFunction(i[a]) && "_" !== a.charAt(0)
-                              ? (n = i[a].apply(i, s)) !== i && void 0 !== n
-                                ? ((u =
-                                    n && n.jquery ? u.pushStack(n.get()) : n),
-                                  !1)
-                                : void 0
-                              : t.error(
-                                  "no such method '" +
-                                    a +
-                                    "' for " +
-                                    e +
-                                    " widget instance"
-                                )
-                            : t.error(
-                                "cannot call methods on " +
-                                  e +
-                                  " prior to initialization; attempted to call method '" +
-                                  a +
-                                  "'"
-                              );
-                        })
-                      : (u = void 0)
-                    : (s.length &&
-                        (a = t.widget.extend.apply(null, [a].concat(s))),
-                      this.each(function () {
-                        var e = t.data(this, r);
-                        e
-                          ? (e.option(a || {}), e._init && e._init())
-                          : t.data(this, r, new n(a, this));
-                      })),
-                  u
-                );
-              };
-            }),
-            (t.Widget = function () {}),
-            (t.Widget._childConstructors = []),
-            (t.Widget.prototype = {
-              widgetName: "widget",
-              widgetEventPrefix: "",
-              defaultElement: "<div>",
-              options: { classes: {}, disabled: !1, create: null },
-              _createWidget: function (e, i) {
-                (i = t(i || this.defaultElement || this)[0]),
-                  (this.element = t(i)),
-                  (this.uuid = n++),
-                  (this.eventNamespace = "." + this.widgetName + this.uuid),
-                  (this.bindings = t()),
-                  (this.hoverable = t()),
-                  (this.focusable = t()),
-                  (this.classesElementLookup = {}),
-                  i !== this &&
-                    (t.data(i, this.widgetFullName, this),
-                    this._on(!0, this.element, {
-                      remove: function (t) {
-                        t.target === i && this.destroy();
-                      },
-                    }),
-                    (this.document = t(
-                      i.style ? i.ownerDocument : i.document || i
-                    )),
-                    (this.window = t(
-                      this.document[0].defaultView ||
-                        this.document[0].parentWindow
-                    ))),
-                  (this.options = t.widget.extend(
-                    {},
-                    this.options,
-                    this._getCreateOptions(),
-                    e
-                  )),
-                  this._create(),
-                  this.options.disabled &&
-                    this._setOptionDisabled(this.options.disabled),
-                  this._trigger("create", null, this._getCreateEventData()),
-                  this._init();
-              },
-              _getCreateOptions: function () {
-                return {};
-              },
-              _getCreateEventData: t.noop,
-              _create: t.noop,
-              _init: t.noop,
-              destroy: function () {
-                var e = this;
-                this._destroy(),
-                  t.each(this.classesElementLookup, function (t, n) {
-                    e._removeClass(n, t);
-                  }),
-                  this.element
-                    .off(this.eventNamespace)
-                    .removeData(this.widgetFullName),
-                  this.widget()
-                    .off(this.eventNamespace)
-                    .removeAttr("aria-disabled"),
-                  this.bindings.off(this.eventNamespace);
-              },
-              _destroy: t.noop,
-              widget: function () {
-                return this.element;
-              },
-              option: function (e, n) {
-                var i,
-                  r,
-                  a,
-                  o = e;
-                if (0 === arguments.length)
-                  return t.widget.extend({}, this.options);
-                if ("string" == typeof e)
-                  if (
-                    ((o = {}), (i = e.split(".")), (e = i.shift()), i.length)
-                  ) {
-                    for (
-                      r = o[e] = t.widget.extend({}, this.options[e]), a = 0;
-                      a < i.length - 1;
-                      a++
-                    )
-                      (r[i[a]] = r[i[a]] || {}), (r = r[i[a]]);
-                    if (((e = i.pop()), 1 === arguments.length))
-                      return void 0 === r[e] ? null : r[e];
-                    r[e] = n;
-                  } else {
-                    if (1 === arguments.length)
-                      return void 0 === this.options[e]
-                        ? null
-                        : this.options[e];
-                    o[e] = n;
-                  }
-                return this._setOptions(o), this;
-              },
-              _setOptions: function (t) {
-                var e;
-                for (e in t) this._setOption(e, t[e]);
-                return this;
-              },
-              _setOption: function (t, e) {
-                return (
-                  "classes" === t && this._setOptionClasses(e),
-                  (this.options[t] = e),
-                  "disabled" === t && this._setOptionDisabled(e),
-                  this
-                );
-              },
-              _setOptionClasses: function (e) {
-                var n, i, r;
-                for (n in e)
-                  (r = this.classesElementLookup[n]),
-                    e[n] !== this.options.classes[n] &&
-                      r &&
-                      r.length &&
-                      ((i = t(r.get())),
-                      this._removeClass(r, n),
-                      i.addClass(
-                        this._classes({
-                          element: i,
-                          keys: n,
-                          classes: e,
-                          add: !0,
-                        })
-                      ));
-              },
-              _setOptionDisabled: function (t) {
-                this._toggleClass(
-                  this.widget(),
-                  this.widgetFullName + "-disabled",
-                  null,
-                  !!t
-                ),
-                  t &&
-                    (this._removeClass(this.hoverable, null, "ui-state-hover"),
-                    this._removeClass(this.focusable, null, "ui-state-focus"));
-              },
-              enable: function () {
-                return this._setOptions({ disabled: !1 });
-              },
-              disable: function () {
-                return this._setOptions({ disabled: !0 });
-              },
-              _classes: function (e) {
-                var n = [],
-                  i = this;
-                function r(r, a) {
-                  var o, s;
-                  for (s = 0; s < r.length; s++)
-                    (o = i.classesElementLookup[r[s]] || t()),
-                      (o = e.add
-                        ? t(t.unique(o.get().concat(e.element.get())))
-                        : t(o.not(e.element).get())),
-                      (i.classesElementLookup[r[s]] = o),
-                      n.push(r[s]),
-                      a && e.classes[r[s]] && n.push(e.classes[r[s]]);
-                }
-                return (
-                  (e = t.extend(
-                    {
-                      element: this.element,
-                      classes: this.options.classes || {},
-                    },
-                    e
-                  )),
-                  this._on(e.element, { remove: "_untrackClassesElement" }),
-                  e.keys && r(e.keys.match(/\S+/g) || [], !0),
-                  e.extra && r(e.extra.match(/\S+/g) || []),
-                  n.join(" ")
-                );
-              },
-              _untrackClassesElement: function (e) {
-                var n = this;
-                t.each(n.classesElementLookup, function (i, r) {
-                  -1 !== t.inArray(e.target, r) &&
-                    (n.classesElementLookup[i] = t(r.not(e.target).get()));
-                });
-              },
-              _removeClass: function (t, e, n) {
-                return this._toggleClass(t, e, n, !1);
-              },
-              _addClass: function (t, e, n) {
-                return this._toggleClass(t, e, n, !0);
-              },
-              _toggleClass: function (t, e, n, i) {
-                i = "boolean" == typeof i ? i : n;
-                var r = "string" == typeof t || null === t,
-                  a = {
-                    extra: r ? e : n,
-                    keys: r ? t : e,
-                    element: r ? this.element : t,
-                    add: i,
-                  };
-                return a.element.toggleClass(this._classes(a), i), this;
-              },
-              _on: function (e, n, i) {
-                var r,
-                  a = this;
-                "boolean" != typeof e && ((i = n), (n = e), (e = !1)),
-                  i
-                    ? ((n = r = t(n)), (this.bindings = this.bindings.add(n)))
-                    : ((i = n), (n = this.element), (r = this.widget())),
-                  t.each(i, function (i, o) {
-                    function s() {
-                      if (
-                        e ||
-                        (!0 !== a.options.disabled &&
-                          !t(this).hasClass("ui-state-disabled"))
-                      )
-                        return ("string" == typeof o ? a[o] : o).apply(
-                          a,
-                          arguments
-                        );
-                    }
-                    "string" != typeof o &&
-                      (s.guid = o.guid = o.guid || s.guid || t.guid++);
-                    var u = i.match(/^([\w:-]*)\s*(.*)$/),
-                      c = u[1] + a.eventNamespace,
-                      l = u[2];
-                    l ? r.on(c, l, s) : n.on(c, s);
-                  });
-              },
-              _off: function (e, n) {
-                (n =
-                  (n || "").split(" ").join(this.eventNamespace + " ") +
-                  this.eventNamespace),
-                  e.off(n).off(n),
-                  (this.bindings = t(this.bindings.not(e).get())),
-                  (this.focusable = t(this.focusable.not(e).get())),
-                  (this.hoverable = t(this.hoverable.not(e).get()));
-              },
-              _delay: function (t, e) {
-                var n = this;
-                return setTimeout(function () {
-                  return ("string" == typeof t ? n[t] : t).apply(n, arguments);
-                }, e || 0);
-              },
-              _hoverable: function (e) {
-                (this.hoverable = this.hoverable.add(e)),
-                  this._on(e, {
-                    mouseenter: function (e) {
-                      this._addClass(
-                        t(e.currentTarget),
-                        null,
-                        "ui-state-hover"
-                      );
-                    },
-                    mouseleave: function (e) {
-                      this._removeClass(
-                        t(e.currentTarget),
-                        null,
-                        "ui-state-hover"
-                      );
-                    },
-                  });
-              },
-              _focusable: function (e) {
-                (this.focusable = this.focusable.add(e)),
-                  this._on(e, {
-                    focusin: function (e) {
-                      this._addClass(
-                        t(e.currentTarget),
-                        null,
-                        "ui-state-focus"
-                      );
-                    },
-                    focusout: function (e) {
-                      this._removeClass(
-                        t(e.currentTarget),
-                        null,
-                        "ui-state-focus"
-                      );
-                    },
-                  });
-              },
-              _trigger: function (e, n, i) {
-                var r,
-                  a,
-                  o = this.options[e];
-                if (
-                  ((i = i || {}),
-                  ((n = t.Event(n)).type = (
-                    e === this.widgetEventPrefix
-                      ? e
-                      : this.widgetEventPrefix + e
-                  ).toLowerCase()),
-                  (n.target = this.element[0]),
-                  (a = n.originalEvent))
+                for (r in a) r in n || (n[r] = a[r]);
+              return (
+                this.element.trigger(n, i),
+                !(
+                  (t.isFunction(o) &&
+                    !1 === o.apply(this.element[0], [n].concat(i))) ||
+                  n.isDefaultPrevented()
                 )
-                  for (r in a) r in n || (n[r] = a[r]);
-                return (
-                  this.element.trigger(n, i),
-                  !(
-                    (t.isFunction(o) &&
-                      !1 === o.apply(this.element[0], [n].concat(i))) ||
-                    n.isDefaultPrevented()
-                  )
-                );
-              },
-            }),
-            t.each({ show: "fadeIn", hide: "fadeOut" }, function (e, n) {
-              t.Widget.prototype["_" + e] = function (i, r, a) {
-                var o;
-                "string" == typeof r && (r = { effect: r });
-                var s = r
-                  ? !0 === r || "number" == typeof r
-                    ? n
-                    : r.effect || n
-                  : e;
-                "number" == typeof (r = r || {}) && (r = { duration: r }),
-                  (o = !t.isEmptyObject(r)),
-                  (r.complete = a),
-                  r.delay && i.delay(r.delay),
-                  o && t.effects && t.effects.effect[s]
-                    ? i[e](r)
-                    : s !== e && i[s]
-                    ? i[s](r.duration, r.easing, a)
-                    : i.queue(function (n) {
-                        t(this)[e](), a && a.call(i[0]), n();
-                      });
-              };
-            }),
-            t.widget
-          );
+              );
+            },
+          }),
+          t.each({ show: "fadeIn", hide: "fadeOut" }, function (e, n) {
+            t.Widget.prototype["_" + e] = function (i, r, a) {
+              var o;
+              "string" == typeof r && (r = { effect: r });
+              var s = r
+                ? !0 === r || "number" == typeof r
+                  ? n
+                  : r.effect || n
+                : e;
+              "number" == typeof (r = r || {}) && (r = { duration: r }),
+                (o = !t.isEmptyObject(r)),
+                (r.complete = a),
+                r.delay && i.delay(r.delay),
+                o && t.effects && t.effects.effect[s]
+                  ? i[e](r)
+                  : s !== e && i[s]
+                  ? i[s](r.duration, r.easing, a)
+                  : i.queue(function (n) {
+                      t(this)[e](), a && a.call(i[0]), n();
+                    });
+            };
+          }),
+          t.widget;
         }),
           "function" == typeof define && define.amd
             ? define(["jquery", "./version"], i)
@@ -24178,226 +24164,224 @@
          */ var i;
         (i = function (t) {
           var e;
-          return (
-            t.widget("ui.button", {
-              version: "1.12.1",
-              defaultElement: "<button>",
+          return t.widget("ui.button", {
+            version: "1.12.1",
+            defaultElement: "<button>",
+            options: {
+              classes: { "ui-button": "ui-corner-all" },
+              disabled: null,
+              icon: null,
+              iconPosition: "beginning",
+              label: null,
+              showLabel: !0,
+            },
+            _getCreateOptions: function () {
+              var t,
+                e = this._super() || {};
+              return (
+                (this.isInput = this.element.is("input")),
+                null != (t = this.element[0].disabled) && (e.disabled = t),
+                (this.originalLabel = this.isInput
+                  ? this.element.val()
+                  : this.element.html()),
+                this.originalLabel && (e.label = this.originalLabel),
+                e
+              );
+            },
+            _create: function () {
+              !this.option.showLabel & !this.options.icon &&
+                (this.options.showLabel = !0),
+                null == this.options.disabled &&
+                  (this.options.disabled = this.element[0].disabled || !1),
+                (this.hasTitle = !!this.element.attr("title")),
+                this.options.label &&
+                  this.options.label !== this.originalLabel &&
+                  (this.isInput
+                    ? this.element.val(this.options.label)
+                    : this.element.html(this.options.label)),
+                this._addClass("ui-button", "ui-widget"),
+                this._setOption("disabled", this.options.disabled),
+                this._enhance(),
+                this.element.is("a") &&
+                  this._on({
+                    keyup: function (e) {
+                      e.keyCode === t.ui.keyCode.SPACE &&
+                        (e.preventDefault(),
+                        this.element[0].click
+                          ? this.element[0].click()
+                          : this.element.trigger("click"));
+                    },
+                  });
+            },
+            _enhance: function () {
+              this.element.is("button") ||
+                this.element.attr("role", "button"),
+                this.options.icon &&
+                  (this._updateIcon("icon", this.options.icon),
+                  this._updateTooltip());
+            },
+            _updateTooltip: function () {
+              (this.title = this.element.attr("title")),
+                this.options.showLabel ||
+                  this.title ||
+                  this.element.attr("title", this.options.label);
+            },
+            _updateIcon: function (e, n) {
+              var i = "iconPosition" !== e,
+                r = i ? this.options.iconPosition : n,
+                a = "top" === r || "bottom" === r;
+              this.icon
+                ? i && this._removeClass(this.icon, null, this.options.icon)
+                : ((this.icon = t("<span>")),
+                  this._addClass(this.icon, "ui-button-icon", "ui-icon"),
+                  this.options.showLabel ||
+                    this._addClass("ui-button-icon-only")),
+                i && this._addClass(this.icon, null, n),
+                this._attachIcon(r),
+                a
+                  ? (this._addClass(this.icon, null, "ui-widget-icon-block"),
+                    this.iconSpace && this.iconSpace.remove())
+                  : (this.iconSpace ||
+                      ((this.iconSpace = t("<span> </span>")),
+                      this._addClass(this.iconSpace, "ui-button-icon-space")),
+                    this._removeClass(this.icon, null, "ui-wiget-icon-block"),
+                    this._attachIconSpace(r));
+            },
+            _destroy: function () {
+              this.element.removeAttr("role"),
+                this.icon && this.icon.remove(),
+                this.iconSpace && this.iconSpace.remove(),
+                this.hasTitle || this.element.removeAttr("title");
+            },
+            _attachIconSpace: function (t) {
+              this.icon[/^(?:end|bottom)/.test(t) ? "before" : "after"](
+                this.iconSpace
+              );
+            },
+            _attachIcon: function (t) {
+              this.element[/^(?:end|bottom)/.test(t) ? "append" : "prepend"](
+                this.icon
+              );
+            },
+            _setOptions: function (t) {
+              var e =
+                  void 0 === t.showLabel
+                    ? this.options.showLabel
+                    : t.showLabel,
+                n = void 0 === t.icon ? this.options.icon : t.icon;
+              e || n || (t.showLabel = !0), this._super(t);
+            },
+            _setOption: function (t, e) {
+              "icon" === t &&
+                (e
+                  ? this._updateIcon(t, e)
+                  : this.icon &&
+                    (this.icon.remove(),
+                    this.iconSpace && this.iconSpace.remove())),
+                "iconPosition" === t && this._updateIcon(t, e),
+                "showLabel" === t &&
+                  (this._toggleClass("ui-button-icon-only", null, !e),
+                  this._updateTooltip()),
+                "label" === t &&
+                  (this.isInput
+                    ? this.element.val(e)
+                    : (this.element.html(e),
+                      this.icon &&
+                        (this._attachIcon(this.options.iconPosition),
+                        this._attachIconSpace(this.options.iconPosition)))),
+                this._super(t, e),
+                "disabled" === t &&
+                  (this._toggleClass(null, "ui-state-disabled", e),
+                  (this.element[0].disabled = e),
+                  e && this.element.blur());
+            },
+            refresh: function () {
+              var t = this.element.is("input, button")
+                ? this.element[0].disabled
+                : this.element.hasClass("ui-button-disabled");
+              t !== this.options.disabled &&
+                this._setOptions({ disabled: t }),
+                this._updateTooltip();
+            },
+          }),
+          !1 !== t.uiBackCompat &&
+            (t.widget("ui.button", t.ui.button, {
               options: {
-                classes: { "ui-button": "ui-corner-all" },
-                disabled: null,
-                icon: null,
-                iconPosition: "beginning",
-                label: null,
-                showLabel: !0,
-              },
-              _getCreateOptions: function () {
-                var t,
-                  e = this._super() || {};
-                return (
-                  (this.isInput = this.element.is("input")),
-                  null != (t = this.element[0].disabled) && (e.disabled = t),
-                  (this.originalLabel = this.isInput
-                    ? this.element.val()
-                    : this.element.html()),
-                  this.originalLabel && (e.label = this.originalLabel),
-                  e
-                );
+                text: !0,
+                icons: { primary: null, secondary: null },
               },
               _create: function () {
-                !this.option.showLabel & !this.options.icon &&
-                  (this.options.showLabel = !0),
-                  null == this.options.disabled &&
-                    (this.options.disabled = this.element[0].disabled || !1),
-                  (this.hasTitle = !!this.element.attr("title")),
-                  this.options.label &&
-                    this.options.label !== this.originalLabel &&
-                    (this.isInput
-                      ? this.element.val(this.options.label)
-                      : this.element.html(this.options.label)),
-                  this._addClass("ui-button", "ui-widget"),
-                  this._setOption("disabled", this.options.disabled),
-                  this._enhance(),
-                  this.element.is("a") &&
-                    this._on({
-                      keyup: function (e) {
-                        e.keyCode === t.ui.keyCode.SPACE &&
-                          (e.preventDefault(),
-                          this.element[0].click
-                            ? this.element[0].click()
-                            : this.element.trigger("click"));
-                      },
-                    });
-              },
-              _enhance: function () {
-                this.element.is("button") ||
-                  this.element.attr("role", "button"),
-                  this.options.icon &&
-                    (this._updateIcon("icon", this.options.icon),
-                    this._updateTooltip());
-              },
-              _updateTooltip: function () {
-                (this.title = this.element.attr("title")),
-                  this.options.showLabel ||
-                    this.title ||
-                    this.element.attr("title", this.options.label);
-              },
-              _updateIcon: function (e, n) {
-                var i = "iconPosition" !== e,
-                  r = i ? this.options.iconPosition : n,
-                  a = "top" === r || "bottom" === r;
-                this.icon
-                  ? i && this._removeClass(this.icon, null, this.options.icon)
-                  : ((this.icon = t("<span>")),
-                    this._addClass(this.icon, "ui-button-icon", "ui-icon"),
-                    this.options.showLabel ||
-                      this._addClass("ui-button-icon-only")),
-                  i && this._addClass(this.icon, null, n),
-                  this._attachIcon(r),
-                  a
-                    ? (this._addClass(this.icon, null, "ui-widget-icon-block"),
-                      this.iconSpace && this.iconSpace.remove())
-                    : (this.iconSpace ||
-                        ((this.iconSpace = t("<span> </span>")),
-                        this._addClass(this.iconSpace, "ui-button-icon-space")),
-                      this._removeClass(this.icon, null, "ui-wiget-icon-block"),
-                      this._attachIconSpace(r));
-              },
-              _destroy: function () {
-                this.element.removeAttr("role"),
-                  this.icon && this.icon.remove(),
-                  this.iconSpace && this.iconSpace.remove(),
-                  this.hasTitle || this.element.removeAttr("title");
-              },
-              _attachIconSpace: function (t) {
-                this.icon[/^(?:end|bottom)/.test(t) ? "before" : "after"](
-                  this.iconSpace
-                );
-              },
-              _attachIcon: function (t) {
-                this.element[/^(?:end|bottom)/.test(t) ? "append" : "prepend"](
-                  this.icon
-                );
-              },
-              _setOptions: function (t) {
-                var e =
-                    void 0 === t.showLabel
-                      ? this.options.showLabel
-                      : t.showLabel,
-                  n = void 0 === t.icon ? this.options.icon : t.icon;
-                e || n || (t.showLabel = !0), this._super(t);
+                this.options.showLabel &&
+                  !this.options.text &&
+                  (this.options.showLabel = this.options.text),
+                  !this.options.showLabel &&
+                    this.options.text &&
+                    (this.options.text = this.options.showLabel),
+                  this.options.icon ||
+                  (!this.options.icons.primary &&
+                    !this.options.icons.secondary)
+                    ? this.options.icon &&
+                      (this.options.icons.primary = this.options.icon)
+                    : this.options.icons.primary
+                    ? (this.options.icon = this.options.icons.primary)
+                    : ((this.options.icon = this.options.icons.secondary),
+                      (this.options.iconPosition = "end")),
+                  this._super();
               },
               _setOption: function (t, e) {
-                "icon" === t &&
-                  (e
-                    ? this._updateIcon(t, e)
-                    : this.icon &&
-                      (this.icon.remove(),
-                      this.iconSpace && this.iconSpace.remove())),
-                  "iconPosition" === t && this._updateIcon(t, e),
-                  "showLabel" === t &&
-                    (this._toggleClass("ui-button-icon-only", null, !e),
-                    this._updateTooltip()),
-                  "label" === t &&
-                    (this.isInput
-                      ? this.element.val(e)
-                      : (this.element.html(e),
-                        this.icon &&
-                          (this._attachIcon(this.options.iconPosition),
-                          this._attachIconSpace(this.options.iconPosition)))),
-                  this._super(t, e),
-                  "disabled" === t &&
-                    (this._toggleClass(null, "ui-state-disabled", e),
-                    (this.element[0].disabled = e),
-                    e && this.element.blur());
-              },
-              refresh: function () {
-                var t = this.element.is("input, button")
-                  ? this.element[0].disabled
-                  : this.element.hasClass("ui-button-disabled");
-                t !== this.options.disabled &&
-                  this._setOptions({ disabled: t }),
-                  this._updateTooltip();
+                "text" !== t
+                  ? ("showLabel" === t && (this.options.text = e),
+                    "icon" === t && (this.options.icons.primary = e),
+                    "icons" === t &&
+                      (e.primary
+                        ? (this._super("icon", e.primary),
+                          this._super("iconPosition", "beginning"))
+                        : e.secondary &&
+                          (this._super("icon", e.secondary),
+                          this._super("iconPosition", "end"))),
+                    this._superApply(arguments))
+                  : this._super("showLabel", e);
               },
             }),
-            !1 !== t.uiBackCompat &&
-              (t.widget("ui.button", t.ui.button, {
-                options: {
-                  text: !0,
-                  icons: { primary: null, secondary: null },
-                },
-                _create: function () {
-                  this.options.showLabel &&
-                    !this.options.text &&
-                    (this.options.showLabel = this.options.text),
-                    !this.options.showLabel &&
-                      this.options.text &&
-                      (this.options.text = this.options.showLabel),
-                    this.options.icon ||
-                    (!this.options.icons.primary &&
-                      !this.options.icons.secondary)
-                      ? this.options.icon &&
-                        (this.options.icons.primary = this.options.icon)
-                      : this.options.icons.primary
-                      ? (this.options.icon = this.options.icons.primary)
-                      : ((this.options.icon = this.options.icons.secondary),
-                        (this.options.iconPosition = "end")),
-                    this._super();
-                },
-                _setOption: function (t, e) {
-                  "text" !== t
-                    ? ("showLabel" === t && (this.options.text = e),
-                      "icon" === t && (this.options.icons.primary = e),
-                      "icons" === t &&
-                        (e.primary
-                          ? (this._super("icon", e.primary),
-                            this._super("iconPosition", "beginning"))
-                          : e.secondary &&
-                            (this._super("icon", e.secondary),
-                            this._super("iconPosition", "end"))),
-                      this._superApply(arguments))
-                    : this._super("showLabel", e);
-                },
-              }),
-              (t.fn.button =
-                ((e = t.fn.button),
-                function () {
-                  return !this.length ||
-                    (this.length && "INPUT" !== this[0].tagName) ||
-                    (this.length &&
-                      "INPUT" === this[0].tagName &&
-                      "checkbox" !== this.attr("type") &&
-                      "radio" !== this.attr("type"))
-                    ? e.apply(this, arguments)
-                    : (t.ui.checkboxradio ||
-                        t.error("Checkboxradio widget missing"),
-                      0 === arguments.length
-                        ? this.checkboxradio({ icon: !1 })
-                        : this.checkboxradio.apply(this, arguments));
-                })),
-              (t.fn.buttonset = function () {
-                return (
-                  t.ui.controlgroup || t.error("Controlgroup widget missing"),
-                  "option" === arguments[0] &&
-                  "items" === arguments[1] &&
-                  arguments[2]
-                    ? this.controlgroup.apply(this, [
-                        arguments[0],
-                        "items.button",
-                        arguments[2],
-                      ])
-                    : "option" === arguments[0] && "items" === arguments[1]
-                    ? this.controlgroup.apply(this, [
-                        arguments[0],
-                        "items.button",
-                      ])
-                    : ("object" == typeof arguments[0] &&
-                        arguments[0].items &&
-                        (arguments[0].items = { button: arguments[0].items }),
-                      this.controlgroup.apply(this, arguments))
-                );
+            (t.fn.button =
+              ((e = t.fn.button),
+              function () {
+                return !this.length ||
+                  (this.length && "INPUT" !== this[0].tagName) ||
+                  (this.length &&
+                    "INPUT" === this[0].tagName &&
+                    "checkbox" !== this.attr("type") &&
+                    "radio" !== this.attr("type"))
+                  ? e.apply(this, arguments)
+                  : (t.ui.checkboxradio ||
+                      t.error("Checkboxradio widget missing"),
+                    0 === arguments.length
+                      ? this.checkboxradio({ icon: !1 })
+                      : this.checkboxradio.apply(this, arguments));
               })),
-            t.ui.button
-          );
+            (t.fn.buttonset = function () {
+              return (
+                t.ui.controlgroup || t.error("Controlgroup widget missing"),
+                "option" === arguments[0] &&
+                "items" === arguments[1] &&
+                arguments[2]
+                  ? this.controlgroup.apply(this, [
+                      arguments[0],
+                      "items.button",
+                      arguments[2],
+                    ])
+                  : "option" === arguments[0] && "items" === arguments[1]
+                  ? this.controlgroup.apply(this, [
+                      arguments[0],
+                      "items.button",
+                    ])
+                  : ("object" == typeof arguments[0] &&
+                      arguments[0].items &&
+                      (arguments[0].items = { button: arguments[0].items }),
+                    this.controlgroup.apply(this, arguments))
+              );
+            })),
+          t.ui.button;
         }),
           "function" == typeof define && define.amd
             ? define(
@@ -26079,635 +26063,633 @@
          */ var i;
         (i = function (t) {
           var e;
-          return (
-            t.widget("ui.tabs", {
-              version: "1.12.1",
-              delay: 300,
-              options: {
-                active: null,
-                classes: {
-                  "ui-tabs": "ui-corner-all",
-                  "ui-tabs-nav": "ui-corner-all",
-                  "ui-tabs-panel": "ui-corner-bottom",
-                  "ui-tabs-tab": "ui-corner-top",
-                },
-                collapsible: !1,
-                event: "click",
-                heightStyle: "content",
-                hide: null,
-                show: null,
-                activate: null,
-                beforeActivate: null,
-                beforeLoad: null,
-                load: null,
+          return t.widget("ui.tabs", {
+            version: "1.12.1",
+            delay: 300,
+            options: {
+              active: null,
+              classes: {
+                "ui-tabs": "ui-corner-all",
+                "ui-tabs-nav": "ui-corner-all",
+                "ui-tabs-panel": "ui-corner-bottom",
+                "ui-tabs-tab": "ui-corner-top",
               },
-              _isLocal:
-                ((e = /#.*$/),
-                function (t) {
-                  var n, i;
-                  (n = t.href.replace(e, "")),
-                    (i = location.href.replace(e, ""));
-                  try {
-                    n = decodeURIComponent(n);
-                  } catch (t) {}
-                  try {
-                    i = decodeURIComponent(i);
-                  } catch (t) {}
-                  return t.hash.length > 1 && n === i;
-                }),
-              _create: function () {
-                var e = this,
-                  n = this.options;
-                (this.running = !1),
-                  this._addClass("ui-tabs", "ui-widget ui-widget-content"),
-                  this._toggleClass("ui-tabs-collapsible", null, n.collapsible),
-                  this._processTabs(),
-                  (n.active = this._initialActive()),
-                  t.isArray(n.disabled) &&
-                    (n.disabled = t
-                      .unique(
-                        n.disabled.concat(
-                          t.map(
-                            this.tabs.filter(".ui-state-disabled"),
-                            function (t) {
-                              return e.tabs.index(t);
-                            }
-                          )
+              collapsible: !1,
+              event: "click",
+              heightStyle: "content",
+              hide: null,
+              show: null,
+              activate: null,
+              beforeActivate: null,
+              beforeLoad: null,
+              load: null,
+            },
+            _isLocal:
+              ((e = /#.*$/),
+              function (t) {
+                var n, i;
+                (n = t.href.replace(e, "")),
+                  (i = location.href.replace(e, ""));
+                try {
+                  n = decodeURIComponent(n);
+                } catch (t) {}
+                try {
+                  i = decodeURIComponent(i);
+                } catch (t) {}
+                return t.hash.length > 1 && n === i;
+              }),
+            _create: function () {
+              var e = this,
+                n = this.options;
+              (this.running = !1),
+                this._addClass("ui-tabs", "ui-widget ui-widget-content"),
+                this._toggleClass("ui-tabs-collapsible", null, n.collapsible),
+                this._processTabs(),
+                (n.active = this._initialActive()),
+                t.isArray(n.disabled) &&
+                  (n.disabled = t
+                    .unique(
+                      n.disabled.concat(
+                        t.map(
+                          this.tabs.filter(".ui-state-disabled"),
+                          function (t) {
+                            return e.tabs.index(t);
+                          }
                         )
                       )
-                      .sort()),
-                  !1 !== this.options.active && this.anchors.length
-                    ? (this.active = this._findActive(n.active))
-                    : (this.active = t()),
-                  this._refresh(),
-                  this.active.length && this.load(n.active);
-              },
-              _initialActive: function () {
-                var e = this.options.active,
-                  n = this.options.collapsible,
-                  i = location.hash.substring(1);
-                return (
+                    )
+                    .sort()),
+                !1 !== this.options.active && this.anchors.length
+                  ? (this.active = this._findActive(n.active))
+                  : (this.active = t()),
+                this._refresh(),
+                this.active.length && this.load(n.active);
+            },
+            _initialActive: function () {
+              var e = this.options.active,
+                n = this.options.collapsible,
+                i = location.hash.substring(1);
+              return (
+                null === e &&
+                  (i &&
+                    this.tabs.each(function (n, r) {
+                      if (t(r).attr("aria-controls") === i)
+                        return (e = n), !1;
+                    }),
                   null === e &&
-                    (i &&
-                      this.tabs.each(function (n, r) {
-                        if (t(r).attr("aria-controls") === i)
-                          return (e = n), !1;
-                      }),
-                    null === e &&
-                      (e = this.tabs.index(
-                        this.tabs.filter(".ui-tabs-active")
-                      )),
-                    (null !== e && -1 !== e) || (e = !!this.tabs.length && 0)),
-                  !1 !== e &&
-                    -1 === (e = this.tabs.index(this.tabs.eq(e))) &&
-                    (e = !n && 0),
-                  !n && !1 === e && this.anchors.length && (e = 0),
-                  e
-                );
-              },
-              _getCreateEventData: function () {
-                return {
-                  tab: this.active,
-                  panel: this.active.length
-                    ? this._getPanelForTab(this.active)
-                    : t(),
-                };
-              },
-              _tabKeydown: function (e) {
-                var n = t(t.ui.safeActiveElement(this.document[0])).closest(
-                    "li"
-                  ),
-                  i = this.tabs.index(n),
-                  r = !0;
-                if (!this._handlePageNav(e)) {
-                  switch (e.keyCode) {
-                    case t.ui.keyCode.RIGHT:
-                    case t.ui.keyCode.DOWN:
-                      i++;
-                      break;
-                    case t.ui.keyCode.UP:
-                    case t.ui.keyCode.LEFT:
-                      (r = !1), i--;
-                      break;
-                    case t.ui.keyCode.END:
-                      i = this.anchors.length - 1;
-                      break;
-                    case t.ui.keyCode.HOME:
-                      i = 0;
-                      break;
-                    case t.ui.keyCode.SPACE:
-                      return (
-                        e.preventDefault(),
-                        clearTimeout(this.activating),
-                        void this._activate(i)
-                      );
-                    case t.ui.keyCode.ENTER:
-                      return (
-                        e.preventDefault(),
-                        clearTimeout(this.activating),
-                        void this._activate(i !== this.options.active && i)
-                      );
-                    default:
-                      return;
-                  }
-                  e.preventDefault(),
-                    clearTimeout(this.activating),
-                    (i = this._focusNextTab(i, r)),
-                    e.ctrlKey ||
-                      e.metaKey ||
-                      (n.attr("aria-selected", "false"),
-                      this.tabs.eq(i).attr("aria-selected", "true"),
-                      (this.activating = this._delay(function () {
-                        this.option("active", i);
-                      }, this.delay)));
+                    (e = this.tabs.index(
+                      this.tabs.filter(".ui-tabs-active")
+                    )),
+                  (null !== e && -1 !== e) || (e = !!this.tabs.length && 0)),
+                !1 !== e &&
+                  -1 === (e = this.tabs.index(this.tabs.eq(e))) &&
+                  (e = !n && 0),
+                !n && !1 === e && this.anchors.length && (e = 0),
+                e
+              );
+            },
+            _getCreateEventData: function () {
+              return {
+                tab: this.active,
+                panel: this.active.length
+                  ? this._getPanelForTab(this.active)
+                  : t(),
+              };
+            },
+            _tabKeydown: function (e) {
+              var n = t(t.ui.safeActiveElement(this.document[0])).closest(
+                  "li"
+                ),
+                i = this.tabs.index(n),
+                r = !0;
+              if (!this._handlePageNav(e)) {
+                switch (e.keyCode) {
+                  case t.ui.keyCode.RIGHT:
+                  case t.ui.keyCode.DOWN:
+                    i++;
+                    break;
+                  case t.ui.keyCode.UP:
+                  case t.ui.keyCode.LEFT:
+                    (r = !1), i--;
+                    break;
+                  case t.ui.keyCode.END:
+                    i = this.anchors.length - 1;
+                    break;
+                  case t.ui.keyCode.HOME:
+                    i = 0;
+                    break;
+                  case t.ui.keyCode.SPACE:
+                    return (
+                      e.preventDefault(),
+                      clearTimeout(this.activating),
+                      void this._activate(i)
+                    );
+                  case t.ui.keyCode.ENTER:
+                    return (
+                      e.preventDefault(),
+                      clearTimeout(this.activating),
+                      void this._activate(i !== this.options.active && i)
+                    );
+                  default:
+                    return;
                 }
-              },
-              _panelKeydown: function (e) {
-                this._handlePageNav(e) ||
-                  (e.ctrlKey &&
-                    e.keyCode === t.ui.keyCode.UP &&
-                    (e.preventDefault(), this.active.trigger("focus")));
-              },
-              _handlePageNav: function (e) {
-                return e.altKey && e.keyCode === t.ui.keyCode.PAGE_UP
-                  ? (this._activate(
-                      this._focusNextTab(this.options.active - 1, !1)
-                    ),
-                    !0)
-                  : e.altKey && e.keyCode === t.ui.keyCode.PAGE_DOWN
-                  ? (this._activate(
-                      this._focusNextTab(this.options.active + 1, !0)
-                    ),
-                    !0)
-                  : void 0;
-              },
-              _findNextTab: function (e, n) {
-                for (
-                  var i = this.tabs.length - 1;
-                  -1 !==
-                  t.inArray(
-                    (e > i && (e = 0), e < 0 && (e = i), e),
-                    this.options.disabled
-                  );
-
-                )
-                  e = n ? e + 1 : e - 1;
-                return e;
-              },
-              _focusNextTab: function (t, e) {
-                return (
-                  (t = this._findNextTab(t, e)),
-                  this.tabs.eq(t).trigger("focus"),
-                  t
+                e.preventDefault(),
+                  clearTimeout(this.activating),
+                  (i = this._focusNextTab(i, r)),
+                  e.ctrlKey ||
+                    e.metaKey ||
+                    (n.attr("aria-selected", "false"),
+                    this.tabs.eq(i).attr("aria-selected", "true"),
+                    (this.activating = this._delay(function () {
+                      this.option("active", i);
+                    }, this.delay)));
+              }
+            },
+            _panelKeydown: function (e) {
+              this._handlePageNav(e) ||
+                (e.ctrlKey &&
+                  e.keyCode === t.ui.keyCode.UP &&
+                  (e.preventDefault(), this.active.trigger("focus")));
+            },
+            _handlePageNav: function (e) {
+              return e.altKey && e.keyCode === t.ui.keyCode.PAGE_UP
+                ? (this._activate(
+                    this._focusNextTab(this.options.active - 1, !1)
+                  ),
+                  !0)
+                : e.altKey && e.keyCode === t.ui.keyCode.PAGE_DOWN
+                ? (this._activate(
+                    this._focusNextTab(this.options.active + 1, !0)
+                  ),
+                  !0)
+                : void 0;
+            },
+            _findNextTab: function (e, n) {
+              for (
+                var i = this.tabs.length - 1;
+                -1 !==
+                t.inArray(
+                  (e > i && (e = 0), e < 0 && (e = i), e),
+                  this.options.disabled
                 );
-              },
-              _setOption: function (t, e) {
-                "active" !== t
-                  ? (this._super(t, e),
-                    "collapsible" === t &&
-                      (this._toggleClass("ui-tabs-collapsible", null, e),
-                      e || !1 !== this.options.active || this._activate(0)),
-                    "event" === t && this._setupEvents(e),
-                    "heightStyle" === t && this._setupHeightStyle(e))
-                  : this._activate(e);
-              },
-              _sanitizeSelector: function (t) {
-                return t
-                  ? t.replace(/[!"$%&'()*+,.\/:;<=>?@\[\]\^`{|}~]/g, "\\$&")
-                  : "";
-              },
-              refresh: function () {
-                var e = this.options,
-                  n = this.tablist.children(":has(a[href])");
-                (e.disabled = t.map(
-                  n.filter(".ui-state-disabled"),
-                  function (t) {
-                    return n.index(t);
-                  }
-                )),
-                  this._processTabs(),
-                  !1 !== e.active && this.anchors.length
-                    ? this.active.length &&
-                      !t.contains(this.tablist[0], this.active[0])
-                      ? this.tabs.length === e.disabled.length
-                        ? ((e.active = !1), (this.active = t()))
-                        : this._activate(
-                            this._findNextTab(Math.max(0, e.active - 1), !1)
-                          )
-                      : (e.active = this.tabs.index(this.active))
-                    : ((e.active = !1), (this.active = t())),
-                  this._refresh();
-              },
-              _refresh: function () {
-                this._setOptionDisabled(this.options.disabled),
-                  this._setupEvents(this.options.event),
-                  this._setupHeightStyle(this.options.heightStyle),
-                  this.tabs
-                    .not(this.active)
-                    .attr({
-                      "aria-selected": "false",
-                      "aria-expanded": "false",
-                      tabIndex: -1,
+
+              )
+                e = n ? e + 1 : e - 1;
+              return e;
+            },
+            _focusNextTab: function (t, e) {
+              return (
+                (t = this._findNextTab(t, e)),
+                this.tabs.eq(t).trigger("focus"),
+                t
+              );
+            },
+            _setOption: function (t, e) {
+              "active" !== t
+                ? (this._super(t, e),
+                  "collapsible" === t &&
+                    (this._toggleClass("ui-tabs-collapsible", null, e),
+                    e || !1 !== this.options.active || this._activate(0)),
+                  "event" === t && this._setupEvents(e),
+                  "heightStyle" === t && this._setupHeightStyle(e))
+                : this._activate(e);
+            },
+            _sanitizeSelector: function (t) {
+              return t
+                ? t.replace(/[!"$%&'()*+,.\/:;<=>?@\[\]\^`{|}~]/g, "\\$&")
+                : "";
+            },
+            refresh: function () {
+              var e = this.options,
+                n = this.tablist.children(":has(a[href])");
+              (e.disabled = t.map(
+                n.filter(".ui-state-disabled"),
+                function (t) {
+                  return n.index(t);
+                }
+              )),
+                this._processTabs(),
+                !1 !== e.active && this.anchors.length
+                  ? this.active.length &&
+                    !t.contains(this.tablist[0], this.active[0])
+                    ? this.tabs.length === e.disabled.length
+                      ? ((e.active = !1), (this.active = t()))
+                      : this._activate(
+                          this._findNextTab(Math.max(0, e.active - 1), !1)
+                        )
+                    : (e.active = this.tabs.index(this.active))
+                  : ((e.active = !1), (this.active = t())),
+                this._refresh();
+            },
+            _refresh: function () {
+              this._setOptionDisabled(this.options.disabled),
+                this._setupEvents(this.options.event),
+                this._setupHeightStyle(this.options.heightStyle),
+                this.tabs
+                  .not(this.active)
+                  .attr({
+                    "aria-selected": "false",
+                    "aria-expanded": "false",
+                    tabIndex: -1,
+                  }),
+                this.panels
+                  .not(this._getPanelForTab(this.active))
+                  .hide()
+                  .attr({ "aria-hidden": "true" }),
+                this.active.length
+                  ? (this.active.attr({
+                      "aria-selected": "true",
+                      "aria-expanded": "true",
+                      tabIndex: 0,
+                    }),
+                    this._addClass(
+                      this.active,
+                      "ui-tabs-active",
+                      "ui-state-active"
+                    ),
+                    this._getPanelForTab(this.active)
+                      .show()
+                      .attr({ "aria-hidden": "false" }))
+                  : this.tabs.eq(0).attr("tabIndex", 0);
+            },
+            _processTabs: function () {
+              var e = this,
+                n = this.tabs,
+                i = this.anchors,
+                r = this.panels;
+              (this.tablist = this._getList().attr("role", "tablist")),
+                this._addClass(
+                  this.tablist,
+                  "ui-tabs-nav",
+                  "ui-helper-reset ui-helper-clearfix ui-widget-header"
+                ),
+                this.tablist
+                  .on(
+                    "mousedown" + this.eventNamespace,
+                    "> li",
+                    function (e) {
+                      t(this).is(".ui-state-disabled") && e.preventDefault();
+                    }
+                  )
+                  .on(
+                    "focus" + this.eventNamespace,
+                    ".ui-tabs-anchor",
+                    function () {
+                      t(this).closest("li").is(".ui-state-disabled") &&
+                        this.blur();
+                    }
+                  ),
+                (this.tabs = this.tablist
+                  .find("> li:has(a[href])")
+                  .attr({ role: "tab", tabIndex: -1 })),
+                this._addClass(this.tabs, "ui-tabs-tab", "ui-state-default"),
+                (this.anchors = this.tabs
+                  .map(function () {
+                    return t("a", this)[0];
+                  })
+                  .attr({ role: "presentation", tabIndex: -1 })),
+                this._addClass(this.anchors, "ui-tabs-anchor"),
+                (this.panels = t()),
+                this.anchors.each(function (n, i) {
+                  var r,
+                    a,
+                    o,
+                    s = t(i).uniqueId().attr("id"),
+                    u = t(i).closest("li"),
+                    c = u.attr("aria-controls");
+                  e._isLocal(i)
+                    ? ((o = (r = i.hash).substring(1)),
+                      (a = e.element.find(e._sanitizeSelector(r))))
+                    : ((r =
+                        "#" +
+                        (o =
+                          u.attr("aria-controls") || t({}).uniqueId()[0].id)),
+                      (a = e.element.find(r)).length ||
+                        (a = e._createPanel(o)).insertAfter(
+                          e.panels[n - 1] || e.tablist
+                        ),
+                      a.attr("aria-live", "polite")),
+                    a.length && (e.panels = e.panels.add(a)),
+                    c && u.data("ui-tabs-aria-controls", c),
+                    u.attr({ "aria-controls": o, "aria-labelledby": s }),
+                    a.attr("aria-labelledby", s);
+                }),
+                this.panels.attr("role", "tabpanel"),
+                this._addClass(
+                  this.panels,
+                  "ui-tabs-panel",
+                  "ui-widget-content"
+                ),
+                n &&
+                  (this._off(n.not(this.tabs)),
+                  this._off(i.not(this.anchors)),
+                  this._off(r.not(this.panels)));
+            },
+            _getList: function () {
+              return this.tablist || this.element.find("ol, ul").eq(0);
+            },
+            _createPanel: function (e) {
+              return t("<div>").attr("id", e).data("ui-tabs-destroy", !0);
+            },
+            _setOptionDisabled: function (e) {
+              var n, i, r;
+              for (
+                t.isArray(e) &&
+                  (e.length
+                    ? e.length === this.anchors.length && (e = !0)
+                    : (e = !1)),
+                  r = 0;
+                (i = this.tabs[r]);
+                r++
+              )
+                (n = t(i)),
+                  !0 === e || -1 !== t.inArray(r, e)
+                    ? (n.attr("aria-disabled", "true"),
+                      this._addClass(n, null, "ui-state-disabled"))
+                    : (n.removeAttr("aria-disabled"),
+                      this._removeClass(n, null, "ui-state-disabled"));
+              (this.options.disabled = e),
+                this._toggleClass(
+                  this.widget(),
+                  this.widgetFullName + "-disabled",
+                  null,
+                  !0 === e
+                );
+            },
+            _setupEvents: function (e) {
+              var n = {};
+              e &&
+                t.each(e.split(" "), function (t, e) {
+                  n[e] = "_eventHandler";
+                }),
+                this._off(this.anchors.add(this.tabs).add(this.panels)),
+                this._on(!0, this.anchors, {
+                  click: function (t) {
+                    t.preventDefault();
+                  },
+                }),
+                this._on(this.anchors, n),
+                this._on(this.tabs, { keydown: "_tabKeydown" }),
+                this._on(this.panels, { keydown: "_panelKeydown" }),
+                this._focusable(this.tabs),
+                this._hoverable(this.tabs);
+            },
+            _setupHeightStyle: function (e) {
+              var n,
+                i = this.element.parent();
+              "fill" === e
+                ? ((n = i.height()),
+                  (n -= this.element.outerHeight() - this.element.height()),
+                  this.element.siblings(":visible").each(function () {
+                    var e = t(this),
+                      i = e.css("position");
+                    "absolute" !== i &&
+                      "fixed" !== i &&
+                      (n -= e.outerHeight(!0));
+                  }),
+                  this.element
+                    .children()
+                    .not(this.panels)
+                    .each(function () {
+                      n -= t(this).outerHeight(!0);
                     }),
                   this.panels
-                    .not(this._getPanelForTab(this.active))
-                    .hide()
-                    .attr({ "aria-hidden": "true" }),
-                  this.active.length
-                    ? (this.active.attr({
-                        "aria-selected": "true",
-                        "aria-expanded": "true",
-                        tabIndex: 0,
-                      }),
-                      this._addClass(
-                        this.active,
-                        "ui-tabs-active",
-                        "ui-state-active"
-                      ),
-                      this._getPanelForTab(this.active)
-                        .show()
-                        .attr({ "aria-hidden": "false" }))
-                    : this.tabs.eq(0).attr("tabIndex", 0);
-              },
-              _processTabs: function () {
-                var e = this,
-                  n = this.tabs,
-                  i = this.anchors,
-                  r = this.panels;
-                (this.tablist = this._getList().attr("role", "tablist")),
-                  this._addClass(
-                    this.tablist,
-                    "ui-tabs-nav",
-                    "ui-helper-reset ui-helper-clearfix ui-widget-header"
-                  ),
-                  this.tablist
-                    .on(
-                      "mousedown" + this.eventNamespace,
-                      "> li",
-                      function (e) {
-                        t(this).is(".ui-state-disabled") && e.preventDefault();
-                      }
-                    )
-                    .on(
-                      "focus" + this.eventNamespace,
-                      ".ui-tabs-anchor",
-                      function () {
-                        t(this).closest("li").is(".ui-state-disabled") &&
-                          this.blur();
-                      }
-                    ),
-                  (this.tabs = this.tablist
-                    .find("> li:has(a[href])")
-                    .attr({ role: "tab", tabIndex: -1 })),
-                  this._addClass(this.tabs, "ui-tabs-tab", "ui-state-default"),
-                  (this.anchors = this.tabs
-                    .map(function () {
-                      return t("a", this)[0];
+                    .each(function () {
+                      t(this).height(
+                        Math.max(
+                          0,
+                          n - t(this).innerHeight() + t(this).height()
+                        )
+                      );
                     })
-                    .attr({ role: "presentation", tabIndex: -1 })),
-                  this._addClass(this.anchors, "ui-tabs-anchor"),
-                  (this.panels = t()),
-                  this.anchors.each(function (n, i) {
-                    var r,
-                      a,
-                      o,
-                      s = t(i).uniqueId().attr("id"),
-                      u = t(i).closest("li"),
-                      c = u.attr("aria-controls");
-                    e._isLocal(i)
-                      ? ((o = (r = i.hash).substring(1)),
-                        (a = e.element.find(e._sanitizeSelector(r))))
-                      : ((r =
-                          "#" +
-                          (o =
-                            u.attr("aria-controls") || t({}).uniqueId()[0].id)),
-                        (a = e.element.find(r)).length ||
-                          (a = e._createPanel(o)).insertAfter(
-                            e.panels[n - 1] || e.tablist
-                          ),
-                        a.attr("aria-live", "polite")),
-                      a.length && (e.panels = e.panels.add(a)),
-                      c && u.data("ui-tabs-aria-controls", c),
-                      u.attr({ "aria-controls": o, "aria-labelledby": s }),
-                      a.attr("aria-labelledby", s);
-                  }),
-                  this.panels.attr("role", "tabpanel"),
-                  this._addClass(
-                    this.panels,
-                    "ui-tabs-panel",
-                    "ui-widget-content"
-                  ),
-                  n &&
-                    (this._off(n.not(this.tabs)),
-                    this._off(i.not(this.anchors)),
-                    this._off(r.not(this.panels)));
-              },
-              _getList: function () {
-                return this.tablist || this.element.find("ol, ul").eq(0);
-              },
-              _createPanel: function (e) {
-                return t("<div>").attr("id", e).data("ui-tabs-destroy", !0);
-              },
-              _setOptionDisabled: function (e) {
-                var n, i, r;
-                for (
-                  t.isArray(e) &&
-                    (e.length
-                      ? e.length === this.anchors.length && (e = !0)
-                      : (e = !1)),
-                    r = 0;
-                  (i = this.tabs[r]);
-                  r++
-                )
-                  (n = t(i)),
-                    !0 === e || -1 !== t.inArray(r, e)
-                      ? (n.attr("aria-disabled", "true"),
-                        this._addClass(n, null, "ui-state-disabled"))
-                      : (n.removeAttr("aria-disabled"),
-                        this._removeClass(n, null, "ui-state-disabled"));
-                (this.options.disabled = e),
-                  this._toggleClass(
-                    this.widget(),
-                    this.widgetFullName + "-disabled",
-                    null,
-                    !0 === e
-                  );
-              },
-              _setupEvents: function (e) {
-                var n = {};
-                e &&
-                  t.each(e.split(" "), function (t, e) {
-                    n[e] = "_eventHandler";
-                  }),
-                  this._off(this.anchors.add(this.tabs).add(this.panels)),
-                  this._on(!0, this.anchors, {
-                    click: function (t) {
-                      t.preventDefault();
-                    },
-                  }),
-                  this._on(this.anchors, n),
-                  this._on(this.tabs, { keydown: "_tabKeydown" }),
-                  this._on(this.panels, { keydown: "_panelKeydown" }),
-                  this._focusable(this.tabs),
-                  this._hoverable(this.tabs);
-              },
-              _setupHeightStyle: function (e) {
-                var n,
-                  i = this.element.parent();
-                "fill" === e
-                  ? ((n = i.height()),
-                    (n -= this.element.outerHeight() - this.element.height()),
-                    this.element.siblings(":visible").each(function () {
-                      var e = t(this),
-                        i = e.css("position");
-                      "absolute" !== i &&
-                        "fixed" !== i &&
-                        (n -= e.outerHeight(!0));
-                    }),
-                    this.element
-                      .children()
-                      .not(this.panels)
-                      .each(function () {
-                        n -= t(this).outerHeight(!0);
-                      }),
-                    this.panels
-                      .each(function () {
-                        t(this).height(
-                          Math.max(
-                            0,
-                            n - t(this).innerHeight() + t(this).height()
-                          )
-                        );
-                      })
-                      .css("overflow", "auto"))
-                  : "auto" === e &&
-                    ((n = 0),
-                    this.panels
-                      .each(function () {
-                        n = Math.max(n, t(this).height("").height());
-                      })
-                      .height(n));
-              },
-              _eventHandler: function (e) {
-                var n = this.options,
-                  i = this.active,
-                  r = t(e.currentTarget).closest("li"),
-                  a = r[0] === i[0],
-                  o = a && n.collapsible,
-                  s = o ? t() : this._getPanelForTab(r),
-                  u = i.length ? this._getPanelForTab(i) : t(),
-                  c = {
-                    oldTab: i,
-                    oldPanel: u,
-                    newTab: o ? t() : r,
-                    newPanel: s,
-                  };
-                e.preventDefault(),
-                  r.hasClass("ui-state-disabled") ||
-                    r.hasClass("ui-tabs-loading") ||
-                    this.running ||
-                    (a && !n.collapsible) ||
-                    !1 === this._trigger("beforeActivate", e, c) ||
-                    ((n.active = !o && this.tabs.index(r)),
-                    (this.active = a ? t() : r),
-                    this.xhr && this.xhr.abort(),
-                    u.length ||
-                      s.length ||
-                      t.error(
-                        "jQuery UI Tabs: Mismatching fragment identifier."
-                      ),
-                    s.length && this.load(this.tabs.index(r), e),
-                    this._toggle(e, c));
-              },
-              _toggle: function (e, n) {
-                var i = this,
-                  r = n.newPanel,
-                  a = n.oldPanel;
-                function o() {
-                  (i.running = !1), i._trigger("activate", e, n);
-                }
-                function s() {
-                  i._addClass(
-                    n.newTab.closest("li"),
-                    "ui-tabs-active",
-                    "ui-state-active"
-                  ),
-                    r.length && i.options.show
-                      ? i._show(r, i.options.show, o)
-                      : (r.show(), o());
-                }
-                (this.running = !0),
-                  a.length && this.options.hide
-                    ? this._hide(a, this.options.hide, function () {
-                        i._removeClass(
-                          n.oldTab.closest("li"),
-                          "ui-tabs-active",
-                          "ui-state-active"
-                        ),
-                          s();
-                      })
-                    : (this._removeClass(
+                    .css("overflow", "auto"))
+                : "auto" === e &&
+                  ((n = 0),
+                  this.panels
+                    .each(function () {
+                      n = Math.max(n, t(this).height("").height());
+                    })
+                    .height(n));
+            },
+            _eventHandler: function (e) {
+              var n = this.options,
+                i = this.active,
+                r = t(e.currentTarget).closest("li"),
+                a = r[0] === i[0],
+                o = a && n.collapsible,
+                s = o ? t() : this._getPanelForTab(r),
+                u = i.length ? this._getPanelForTab(i) : t(),
+                c = {
+                  oldTab: i,
+                  oldPanel: u,
+                  newTab: o ? t() : r,
+                  newPanel: s,
+                };
+              e.preventDefault(),
+                r.hasClass("ui-state-disabled") ||
+                  r.hasClass("ui-tabs-loading") ||
+                  this.running ||
+                  (a && !n.collapsible) ||
+                  !1 === this._trigger("beforeActivate", e, c) ||
+                  ((n.active = !o && this.tabs.index(r)),
+                  (this.active = a ? t() : r),
+                  this.xhr && this.xhr.abort(),
+                  u.length ||
+                    s.length ||
+                    t.error(
+                      "jQuery UI Tabs: Mismatching fragment identifier."
+                    ),
+                  s.length && this.load(this.tabs.index(r), e),
+                  this._toggle(e, c));
+            },
+            _toggle: function (e, n) {
+              var i = this,
+                r = n.newPanel,
+                a = n.oldPanel;
+              function o() {
+                (i.running = !1), i._trigger("activate", e, n);
+              }
+              function s() {
+                i._addClass(
+                  n.newTab.closest("li"),
+                  "ui-tabs-active",
+                  "ui-state-active"
+                ),
+                  r.length && i.options.show
+                    ? i._show(r, i.options.show, o)
+                    : (r.show(), o());
+              }
+              (this.running = !0),
+                a.length && this.options.hide
+                  ? this._hide(a, this.options.hide, function () {
+                      i._removeClass(
                         n.oldTab.closest("li"),
                         "ui-tabs-active",
                         "ui-state-active"
                       ),
-                      a.hide(),
-                      s()),
-                  a.attr("aria-hidden", "true"),
-                  n.oldTab.attr({
-                    "aria-selected": "false",
-                    "aria-expanded": "false",
-                  }),
-                  r.length && a.length
-                    ? n.oldTab.attr("tabIndex", -1)
-                    : r.length &&
-                      this.tabs
-                        .filter(function () {
-                          return 0 === t(this).attr("tabIndex");
-                        })
-                        .attr("tabIndex", -1),
-                  r.attr("aria-hidden", "false"),
-                  n.newTab.attr({
-                    "aria-selected": "true",
-                    "aria-expanded": "true",
-                    tabIndex: 0,
-                  });
-              },
-              _activate: function (e) {
-                var n,
-                  i = this._findActive(e);
-                i[0] !== this.active[0] &&
-                  (i.length || (i = this.active),
-                  (n = i.find(".ui-tabs-anchor")[0]),
-                  this._eventHandler({
-                    target: n,
-                    currentTarget: n,
-                    preventDefault: t.noop,
-                  }));
-              },
-              _findActive: function (e) {
-                return !1 === e ? t() : this.tabs.eq(e);
-              },
-              _getIndex: function (e) {
-                return (
-                  "string" == typeof e &&
-                    (e = this.anchors.index(
-                      this.anchors.filter(
-                        "[href$='" + t.ui.escapeSelector(e) + "']"
-                      )
-                    )),
-                  e
-                );
-              },
-              _destroy: function () {
-                this.xhr && this.xhr.abort(),
-                  this.tablist.removeAttr("role").off(this.eventNamespace),
-                  this.anchors.removeAttr("role tabIndex").removeUniqueId(),
-                  this.tabs.add(this.panels).each(function () {
-                    t.data(this, "ui-tabs-destroy")
-                      ? t(this).remove()
-                      : t(this).removeAttr(
-                          "role tabIndex aria-live aria-busy aria-selected aria-labelledby aria-hidden aria-expanded"
-                        );
-                  }),
-                  this.tabs.each(function () {
-                    var e = t(this),
-                      n = e.data("ui-tabs-aria-controls");
-                    n
-                      ? e
-                          .attr("aria-controls", n)
-                          .removeData("ui-tabs-aria-controls")
-                      : e.removeAttr("aria-controls");
-                  }),
-                  this.panels.show(),
-                  "content" !== this.options.heightStyle &&
-                    this.panels.css("height", "");
-              },
-              enable: function (e) {
-                var n = this.options.disabled;
-                !1 !== n &&
-                  (void 0 === e
-                    ? (n = !1)
-                    : ((e = this._getIndex(e)),
-                      (n = t.isArray(n)
-                        ? t.map(n, function (t) {
-                            return t !== e ? t : null;
-                          })
-                        : t.map(this.tabs, function (t, n) {
-                            return n !== e ? n : null;
-                          }))),
-                  this._setOptionDisabled(n));
-              },
-              disable: function (e) {
-                var n = this.options.disabled;
-                if (!0 !== n) {
-                  if (void 0 === e) n = !0;
-                  else {
-                    if (((e = this._getIndex(e)), -1 !== t.inArray(e, n)))
-                      return;
-                    n = t.isArray(n) ? t.merge([e], n).sort() : [e];
-                  }
-                  this._setOptionDisabled(n);
-                }
-              },
-              load: function (e, n) {
-                e = this._getIndex(e);
-                var i = this,
-                  r = this.tabs.eq(e),
-                  a = r.find(".ui-tabs-anchor"),
-                  o = this._getPanelForTab(r),
-                  s = { tab: r, panel: o },
-                  u = function (t, e) {
-                    "abort" === e && i.panels.stop(!1, !0),
-                      i._removeClass(r, "ui-tabs-loading"),
-                      o.removeAttr("aria-busy"),
-                      t === i.xhr && delete i.xhr;
-                  };
-                this._isLocal(a[0]) ||
-                  ((this.xhr = t.ajax(this._ajaxSettings(a, n, s))),
-                  this.xhr &&
-                    "canceled" !== this.xhr.statusText &&
-                    (this._addClass(r, "ui-tabs-loading"),
-                    o.attr("aria-busy", "true"),
-                    this.xhr
-                      .done(function (t, e, r) {
-                        setTimeout(function () {
-                          o.html(t), i._trigger("load", n, s), u(r, e);
-                        }, 1);
+                        s();
+                    })
+                  : (this._removeClass(
+                      n.oldTab.closest("li"),
+                      "ui-tabs-active",
+                      "ui-state-active"
+                    ),
+                    a.hide(),
+                    s()),
+                a.attr("aria-hidden", "true"),
+                n.oldTab.attr({
+                  "aria-selected": "false",
+                  "aria-expanded": "false",
+                }),
+                r.length && a.length
+                  ? n.oldTab.attr("tabIndex", -1)
+                  : r.length &&
+                    this.tabs
+                      .filter(function () {
+                        return 0 === t(this).attr("tabIndex");
                       })
-                      .fail(function (t, e) {
-                        setTimeout(function () {
-                          u(t, e);
-                        }, 1);
-                      })));
-              },
-              _ajaxSettings: function (e, n, i) {
-                var r = this;
-                return {
-                  url: e.attr("href").replace(/#.*$/, ""),
-                  beforeSend: function (e, a) {
-                    return r._trigger(
-                      "beforeLoad",
-                      n,
-                      t.extend({ jqXHR: e, ajaxSettings: a }, i)
-                    );
-                  },
+                      .attr("tabIndex", -1),
+                r.attr("aria-hidden", "false"),
+                n.newTab.attr({
+                  "aria-selected": "true",
+                  "aria-expanded": "true",
+                  tabIndex: 0,
+                });
+            },
+            _activate: function (e) {
+              var n,
+                i = this._findActive(e);
+              i[0] !== this.active[0] &&
+                (i.length || (i = this.active),
+                (n = i.find(".ui-tabs-anchor")[0]),
+                this._eventHandler({
+                  target: n,
+                  currentTarget: n,
+                  preventDefault: t.noop,
+                }));
+            },
+            _findActive: function (e) {
+              return !1 === e ? t() : this.tabs.eq(e);
+            },
+            _getIndex: function (e) {
+              return (
+                "string" == typeof e &&
+                  (e = this.anchors.index(
+                    this.anchors.filter(
+                      "[href$='" + t.ui.escapeSelector(e) + "']"
+                    )
+                  )),
+                e
+              );
+            },
+            _destroy: function () {
+              this.xhr && this.xhr.abort(),
+                this.tablist.removeAttr("role").off(this.eventNamespace),
+                this.anchors.removeAttr("role tabIndex").removeUniqueId(),
+                this.tabs.add(this.panels).each(function () {
+                  t.data(this, "ui-tabs-destroy")
+                    ? t(this).remove()
+                    : t(this).removeAttr(
+                        "role tabIndex aria-live aria-busy aria-selected aria-labelledby aria-hidden aria-expanded"
+                      );
+                }),
+                this.tabs.each(function () {
+                  var e = t(this),
+                    n = e.data("ui-tabs-aria-controls");
+                  n
+                    ? e
+                        .attr("aria-controls", n)
+                        .removeData("ui-tabs-aria-controls")
+                    : e.removeAttr("aria-controls");
+                }),
+                this.panels.show(),
+                "content" !== this.options.heightStyle &&
+                  this.panels.css("height", "");
+            },
+            enable: function (e) {
+              var n = this.options.disabled;
+              !1 !== n &&
+                (void 0 === e
+                  ? (n = !1)
+                  : ((e = this._getIndex(e)),
+                    (n = t.isArray(n)
+                      ? t.map(n, function (t) {
+                          return t !== e ? t : null;
+                        })
+                      : t.map(this.tabs, function (t, n) {
+                          return n !== e ? n : null;
+                        }))),
+                this._setOptionDisabled(n));
+            },
+            disable: function (e) {
+              var n = this.options.disabled;
+              if (!0 !== n) {
+                if (void 0 === e) n = !0;
+                else {
+                  if (((e = this._getIndex(e)), -1 !== t.inArray(e, n)))
+                    return;
+                  n = t.isArray(n) ? t.merge([e], n).sort() : [e];
+                }
+                this._setOptionDisabled(n);
+              }
+            },
+            load: function (e, n) {
+              e = this._getIndex(e);
+              var i = this,
+                r = this.tabs.eq(e),
+                a = r.find(".ui-tabs-anchor"),
+                o = this._getPanelForTab(r),
+                s = { tab: r, panel: o },
+                u = function (t, e) {
+                  "abort" === e && i.panels.stop(!1, !0),
+                    i._removeClass(r, "ui-tabs-loading"),
+                    o.removeAttr("aria-busy"),
+                    t === i.xhr && delete i.xhr;
                 };
-              },
-              _getPanelForTab: function (e) {
-                var n = t(e).attr("aria-controls");
-                return this.element.find(this._sanitizeSelector("#" + n));
+              this._isLocal(a[0]) ||
+                ((this.xhr = t.ajax(this._ajaxSettings(a, n, s))),
+                this.xhr &&
+                  "canceled" !== this.xhr.statusText &&
+                  (this._addClass(r, "ui-tabs-loading"),
+                  o.attr("aria-busy", "true"),
+                  this.xhr
+                    .done(function (t, e, r) {
+                      setTimeout(function () {
+                        o.html(t), i._trigger("load", n, s), u(r, e);
+                      }, 1);
+                    })
+                    .fail(function (t, e) {
+                      setTimeout(function () {
+                        u(t, e);
+                      }, 1);
+                    })));
+            },
+            _ajaxSettings: function (e, n, i) {
+              var r = this;
+              return {
+                url: e.attr("href").replace(/#.*$/, ""),
+                beforeSend: function (e, a) {
+                  return r._trigger(
+                    "beforeLoad",
+                    n,
+                    t.extend({ jqXHR: e, ajaxSettings: a }, i)
+                  );
+                },
+              };
+            },
+            _getPanelForTab: function (e) {
+              var n = t(e).attr("aria-controls");
+              return this.element.find(this._sanitizeSelector("#" + n));
+            },
+          }),
+          !1 !== t.uiBackCompat &&
+            t.widget("ui.tabs", t.ui.tabs, {
+              _processTabs: function () {
+                this._superApply(arguments),
+                  this._addClass(this.tabs, "ui-tab");
               },
             }),
-            !1 !== t.uiBackCompat &&
-              t.widget("ui.tabs", t.ui.tabs, {
-                _processTabs: function () {
-                  this._superApply(arguments),
-                    this._addClass(this.tabs, "ui-tab");
-                },
-              }),
-            t.ui.tabs
-          );
+          t.ui.tabs;
         }),
           "function" == typeof define && define.amd
             ? define(
@@ -26737,295 +26719,293 @@
          * http://jquery.org/license
          */ var i;
         (i = function (t) {
-          return (
-            t.widget("ui.tooltip", {
-              version: "1.12.1",
-              options: {
-                classes: { "ui-tooltip": "ui-corner-all ui-widget-shadow" },
-                content: function () {
-                  var e = t(this).attr("title") || "";
-                  return t("<a>").text(e).html();
-                },
-                hide: !0,
-                items: "[title]:not([disabled])",
-                position: {
-                  my: "left top+15",
-                  at: "left bottom",
-                  collision: "flipfit flip",
-                },
-                show: !0,
-                track: !1,
-                close: null,
-                open: null,
+          return t.widget("ui.tooltip", {
+            version: "1.12.1",
+            options: {
+              classes: { "ui-tooltip": "ui-corner-all ui-widget-shadow" },
+              content: function () {
+                var e = t(this).attr("title") || "";
+                return t("<a>").text(e).html();
               },
-              _addDescribedBy: function (e, n) {
-                var i = (e.attr("aria-describedby") || "").split(/\s+/);
-                i.push(n),
-                  e
-                    .data("ui-tooltip-id", n)
-                    .attr("aria-describedby", t.trim(i.join(" ")));
+              hide: !0,
+              items: "[title]:not([disabled])",
+              position: {
+                my: "left top+15",
+                at: "left bottom",
+                collision: "flipfit flip",
               },
-              _removeDescribedBy: function (e) {
-                var n = e.data("ui-tooltip-id"),
-                  i = (e.attr("aria-describedby") || "").split(/\s+/),
-                  r = t.inArray(n, i);
-                -1 !== r && i.splice(r, 1),
-                  e.removeData("ui-tooltip-id"),
-                  (i = t.trim(i.join(" ")))
-                    ? e.attr("aria-describedby", i)
-                    : e.removeAttr("aria-describedby");
-              },
-              _create: function () {
-                this._on({ mouseover: "open", focusin: "open" }),
-                  (this.tooltips = {}),
-                  (this.parents = {}),
-                  (this.liveRegion = t("<div>")
-                    .attr({
-                      role: "log",
-                      "aria-live": "assertive",
-                      "aria-relevant": "additions",
-                    })
-                    .appendTo(this.document[0].body)),
-                  this._addClass(
-                    this.liveRegion,
-                    null,
-                    "ui-helper-hidden-accessible"
-                  ),
-                  (this.disabledTitles = t([]));
-              },
-              _setOption: function (e, n) {
-                var i = this;
-                this._super(e, n),
-                  "content" === e &&
-                    t.each(this.tooltips, function (t, e) {
-                      i._updateContent(e.element);
-                    });
-              },
-              _setOptionDisabled: function (t) {
-                this[t ? "_disable" : "_enable"]();
-              },
-              _disable: function () {
-                var e = this;
-                t.each(this.tooltips, function (n, i) {
-                  var r = t.Event("blur");
-                  (r.target = r.currentTarget = i.element[0]), e.close(r, !0);
-                }),
-                  (this.disabledTitles = this.disabledTitles.add(
-                    this.element
-                      .find(this.options.items)
-                      .addBack()
-                      .filter(function () {
-                        var e = t(this);
-                        if (e.is("[title]"))
-                          return e
-                            .data("ui-tooltip-title", e.attr("title"))
-                            .removeAttr("title");
-                      })
-                  ));
-              },
-              _enable: function () {
-                this.disabledTitles.each(function () {
-                  var e = t(this);
-                  e.data("ui-tooltip-title") &&
-                    e.attr("title", e.data("ui-tooltip-title"));
-                }),
-                  (this.disabledTitles = t([]));
-              },
-              open: function (e) {
-                var n = this,
-                  i = t(e ? e.target : this.element).closest(
-                    this.options.items
-                  );
-                i.length &&
-                  !i.data("ui-tooltip-id") &&
-                  (i.attr("title") &&
-                    i.data("ui-tooltip-title", i.attr("title")),
-                  i.data("ui-tooltip-open", !0),
-                  e &&
-                    "mouseover" === e.type &&
-                    i.parents().each(function () {
-                      var e,
-                        i = t(this);
-                      i.data("ui-tooltip-open") &&
-                        (((e = t.Event("blur")).target = e.currentTarget =
-                          this),
-                        n.close(e, !0)),
-                        i.attr("title") &&
-                          (i.uniqueId(),
-                          (n.parents[this.id] = {
-                            element: this,
-                            title: i.attr("title"),
-                          }),
-                          i.attr("title", ""));
-                    }),
-                  this._registerCloseHandlers(e, i),
-                  this._updateContent(i, e));
-              },
-              _updateContent: function (t, e) {
-                var n,
-                  i = this.options.content,
-                  r = this,
-                  a = e ? e.type : null;
-                if ("string" == typeof i || i.nodeType || i.jquery)
-                  return this._open(e, t, i);
-                (n = i.call(t[0], function (n) {
-                  r._delay(function () {
-                    t.data("ui-tooltip-open") &&
-                      (e && (e.type = a), this._open(e, t, n));
+              show: !0,
+              track: !1,
+              close: null,
+              open: null,
+            },
+            _addDescribedBy: function (e, n) {
+              var i = (e.attr("aria-describedby") || "").split(/\s+/);
+              i.push(n),
+                e
+                  .data("ui-tooltip-id", n)
+                  .attr("aria-describedby", t.trim(i.join(" ")));
+            },
+            _removeDescribedBy: function (e) {
+              var n = e.data("ui-tooltip-id"),
+                i = (e.attr("aria-describedby") || "").split(/\s+/),
+                r = t.inArray(n, i);
+              -1 !== r && i.splice(r, 1),
+                e.removeData("ui-tooltip-id"),
+                (i = t.trim(i.join(" ")))
+                  ? e.attr("aria-describedby", i)
+                  : e.removeAttr("aria-describedby");
+            },
+            _create: function () {
+              this._on({ mouseover: "open", focusin: "open" }),
+                (this.tooltips = {}),
+                (this.parents = {}),
+                (this.liveRegion = t("<div>")
+                  .attr({
+                    role: "log",
+                    "aria-live": "assertive",
+                    "aria-relevant": "additions",
+                  })
+                  .appendTo(this.document[0].body)),
+                this._addClass(
+                  this.liveRegion,
+                  null,
+                  "ui-helper-hidden-accessible"
+                ),
+                (this.disabledTitles = t([]));
+            },
+            _setOption: function (e, n) {
+              var i = this;
+              this._super(e, n),
+                "content" === e &&
+                  t.each(this.tooltips, function (t, e) {
+                    i._updateContent(e.element);
                   });
-                })) && this._open(e, t, n);
-              },
-              _open: function (e, n, i) {
-                var r,
-                  a,
-                  o,
-                  s,
-                  u = t.extend({}, this.options.position);
-                function c(t) {
-                  (u.of = t), a.is(":hidden") || a.position(u);
-                }
-                i &&
-                  ((r = this._find(n))
-                    ? r.tooltip.find(".ui-tooltip-content").html(i)
-                    : (n.is("[title]") &&
-                        (e && "mouseover" === e.type
-                          ? n.attr("title", "")
-                          : n.removeAttr("title")),
-                      (r = this._tooltip(n)),
-                      (a = r.tooltip),
-                      this._addDescribedBy(n, a.attr("id")),
-                      a.find(".ui-tooltip-content").html(i),
-                      this.liveRegion.children().hide(),
-                      (s = t("<div>").html(
-                        a.find(".ui-tooltip-content").html()
-                      ))
-                        .removeAttr("name")
-                        .find("[name]")
-                        .removeAttr("name"),
-                      s.removeAttr("id").find("[id]").removeAttr("id"),
-                      s.appendTo(this.liveRegion),
-                      this.options.track && e && /^mouse/.test(e.type)
-                        ? (this._on(this.document, { mousemove: c }), c(e))
-                        : a.position(
-                            t.extend({ of: n }, this.options.position)
-                          ),
-                      a.hide(),
-                      this._show(a, this.options.show),
-                      this.options.track &&
-                        this.options.show &&
-                        this.options.show.delay &&
-                        (o = this.delayedShow =
-                          setInterval(function () {
-                            a.is(":visible") && (c(u.of), clearInterval(o));
-                          }, t.fx.interval)),
-                      this._trigger("open", e, { tooltip: a })));
-              },
-              _registerCloseHandlers: function (e, n) {
-                var i = {
-                  keyup: function (e) {
-                    if (e.keyCode === t.ui.keyCode.ESCAPE) {
-                      var i = t.Event(e);
-                      (i.currentTarget = n[0]), this.close(i, !0);
-                    }
-                  },
-                };
-                n[0] !== this.element[0] &&
-                  (i.remove = function () {
-                    this._removeTooltip(this._find(n).tooltip);
-                  }),
-                  (e && "mouseover" !== e.type) || (i.mouseleave = "close"),
-                  (e && "focusin" !== e.type) || (i.focusout = "close"),
-                  this._on(!0, n, i);
-              },
-              close: function (e) {
-                var n,
-                  i = this,
-                  r = t(e ? e.currentTarget : this.element),
-                  a = this._find(r);
-                a
-                  ? ((n = a.tooltip),
-                    a.closing ||
-                      (clearInterval(this.delayedShow),
-                      r.data("ui-tooltip-title") &&
-                        !r.attr("title") &&
-                        r.attr("title", r.data("ui-tooltip-title")),
-                      this._removeDescribedBy(r),
-                      (a.hiding = !0),
-                      n.stop(!0),
-                      this._hide(n, this.options.hide, function () {
-                        i._removeTooltip(t(this));
-                      }),
-                      r.removeData("ui-tooltip-open"),
-                      this._off(r, "mouseleave focusout keyup"),
-                      r[0] !== this.element[0] && this._off(r, "remove"),
-                      this._off(this.document, "mousemove"),
-                      e &&
-                        "mouseleave" === e.type &&
-                        t.each(this.parents, function (e, n) {
-                          t(n.element).attr("title", n.title),
-                            delete i.parents[e];
+            },
+            _setOptionDisabled: function (t) {
+              this[t ? "_disable" : "_enable"]();
+            },
+            _disable: function () {
+              var e = this;
+              t.each(this.tooltips, function (n, i) {
+                var r = t.Event("blur");
+                (r.target = r.currentTarget = i.element[0]), e.close(r, !0);
+              }),
+                (this.disabledTitles = this.disabledTitles.add(
+                  this.element
+                    .find(this.options.items)
+                    .addBack()
+                    .filter(function () {
+                      var e = t(this);
+                      if (e.is("[title]"))
+                        return e
+                          .data("ui-tooltip-title", e.attr("title"))
+                          .removeAttr("title");
+                    })
+                ));
+            },
+            _enable: function () {
+              this.disabledTitles.each(function () {
+                var e = t(this);
+                e.data("ui-tooltip-title") &&
+                  e.attr("title", e.data("ui-tooltip-title"));
+              }),
+                (this.disabledTitles = t([]));
+            },
+            open: function (e) {
+              var n = this,
+                i = t(e ? e.target : this.element).closest(
+                  this.options.items
+                );
+              i.length &&
+                !i.data("ui-tooltip-id") &&
+                (i.attr("title") &&
+                  i.data("ui-tooltip-title", i.attr("title")),
+                i.data("ui-tooltip-open", !0),
+                e &&
+                  "mouseover" === e.type &&
+                  i.parents().each(function () {
+                    var e,
+                      i = t(this);
+                    i.data("ui-tooltip-open") &&
+                      (((e = t.Event("blur")).target = e.currentTarget =
+                        this),
+                      n.close(e, !0)),
+                      i.attr("title") &&
+                        (i.uniqueId(),
+                        (n.parents[this.id] = {
+                          element: this,
+                          title: i.attr("title"),
                         }),
-                      (a.closing = !0),
-                      this._trigger("close", e, { tooltip: n }),
-                      a.hiding || (a.closing = !1)))
-                  : r.removeData("ui-tooltip-open");
-              },
-              _tooltip: function (e) {
-                var n = t("<div>").attr("role", "tooltip"),
-                  i = t("<div>").appendTo(n),
-                  r = n.uniqueId().attr("id");
+                        i.attr("title", ""));
+                  }),
+                this._registerCloseHandlers(e, i),
+                this._updateContent(i, e));
+            },
+            _updateContent: function (t, e) {
+              var n,
+                i = this.options.content,
+                r = this,
+                a = e ? e.type : null;
+              if ("string" == typeof i || i.nodeType || i.jquery)
+                return this._open(e, t, i);
+              (n = i.call(t[0], function (n) {
+                r._delay(function () {
+                  t.data("ui-tooltip-open") &&
+                    (e && (e.type = a), this._open(e, t, n));
+                });
+              })) && this._open(e, t, n);
+            },
+            _open: function (e, n, i) {
+              var r,
+                a,
+                o,
+                s,
+                u = t.extend({}, this.options.position);
+              function c(t) {
+                (u.of = t), a.is(":hidden") || a.position(u);
+              }
+              i &&
+                ((r = this._find(n))
+                  ? r.tooltip.find(".ui-tooltip-content").html(i)
+                  : (n.is("[title]") &&
+                      (e && "mouseover" === e.type
+                        ? n.attr("title", "")
+                        : n.removeAttr("title")),
+                    (r = this._tooltip(n)),
+                    (a = r.tooltip),
+                    this._addDescribedBy(n, a.attr("id")),
+                    a.find(".ui-tooltip-content").html(i),
+                    this.liveRegion.children().hide(),
+                    (s = t("<div>").html(
+                      a.find(".ui-tooltip-content").html()
+                    ))
+                      .removeAttr("name")
+                      .find("[name]")
+                      .removeAttr("name"),
+                    s.removeAttr("id").find("[id]").removeAttr("id"),
+                    s.appendTo(this.liveRegion),
+                    this.options.track && e && /^mouse/.test(e.type)
+                      ? (this._on(this.document, { mousemove: c }), c(e))
+                      : a.position(
+                          t.extend({ of: n }, this.options.position)
+                        ),
+                    a.hide(),
+                    this._show(a, this.options.show),
+                    this.options.track &&
+                      this.options.show &&
+                      this.options.show.delay &&
+                      (o = this.delayedShow =
+                        setInterval(function () {
+                          a.is(":visible") && (c(u.of), clearInterval(o));
+                        }, t.fx.interval)),
+                    this._trigger("open", e, { tooltip: a })));
+            },
+            _registerCloseHandlers: function (e, n) {
+              var i = {
+                keyup: function (e) {
+                  if (e.keyCode === t.ui.keyCode.ESCAPE) {
+                    var i = t.Event(e);
+                    (i.currentTarget = n[0]), this.close(i, !0);
+                  }
+                },
+              };
+              n[0] !== this.element[0] &&
+                (i.remove = function () {
+                  this._removeTooltip(this._find(n).tooltip);
+                }),
+                (e && "mouseover" !== e.type) || (i.mouseleave = "close"),
+                (e && "focusin" !== e.type) || (i.focusout = "close"),
+                this._on(!0, n, i);
+            },
+            close: function (e) {
+              var n,
+                i = this,
+                r = t(e ? e.currentTarget : this.element),
+                a = this._find(r);
+              a
+                ? ((n = a.tooltip),
+                  a.closing ||
+                    (clearInterval(this.delayedShow),
+                    r.data("ui-tooltip-title") &&
+                      !r.attr("title") &&
+                      r.attr("title", r.data("ui-tooltip-title")),
+                    this._removeDescribedBy(r),
+                    (a.hiding = !0),
+                    n.stop(!0),
+                    this._hide(n, this.options.hide, function () {
+                      i._removeTooltip(t(this));
+                    }),
+                    r.removeData("ui-tooltip-open"),
+                    this._off(r, "mouseleave focusout keyup"),
+                    r[0] !== this.element[0] && this._off(r, "remove"),
+                    this._off(this.document, "mousemove"),
+                    e &&
+                      "mouseleave" === e.type &&
+                      t.each(this.parents, function (e, n) {
+                        t(n.element).attr("title", n.title),
+                          delete i.parents[e];
+                      }),
+                    (a.closing = !0),
+                    this._trigger("close", e, { tooltip: n }),
+                    a.hiding || (a.closing = !1)))
+                : r.removeData("ui-tooltip-open");
+            },
+            _tooltip: function (e) {
+              var n = t("<div>").attr("role", "tooltip"),
+                i = t("<div>").appendTo(n),
+                r = n.uniqueId().attr("id");
+              return (
+                this._addClass(i, "ui-tooltip-content"),
+                this._addClass(
+                  n,
+                  "ui-tooltip",
+                  "ui-widget ui-widget-content"
+                ),
+                n.appendTo(this._appendTo(e)),
+                (this.tooltips[r] = { element: e, tooltip: n })
+              );
+            },
+            _find: function (t) {
+              var e = t.data("ui-tooltip-id");
+              return e ? this.tooltips[e] : null;
+            },
+            _removeTooltip: function (t) {
+              t.remove(), delete this.tooltips[t.attr("id")];
+            },
+            _appendTo: function (t) {
+              var e = t.closest(".ui-front, dialog");
+              return e.length || (e = this.document[0].body), e;
+            },
+            _destroy: function () {
+              var e = this;
+              t.each(this.tooltips, function (n, i) {
+                var r = t.Event("blur"),
+                  a = i.element;
+                (r.target = r.currentTarget = a[0]),
+                  e.close(r, !0),
+                  t("#" + n).remove(),
+                  a.data("ui-tooltip-title") &&
+                    (a.attr("title") ||
+                      a.attr("title", a.data("ui-tooltip-title")),
+                    a.removeData("ui-tooltip-title"));
+              }),
+                this.liveRegion.remove();
+            },
+          }),
+          !1 !== t.uiBackCompat &&
+            t.widget("ui.tooltip", t.ui.tooltip, {
+              options: { tooltipClass: null },
+              _tooltip: function () {
+                var t = this._superApply(arguments);
                 return (
-                  this._addClass(i, "ui-tooltip-content"),
-                  this._addClass(
-                    n,
-                    "ui-tooltip",
-                    "ui-widget ui-widget-content"
-                  ),
-                  n.appendTo(this._appendTo(e)),
-                  (this.tooltips[r] = { element: e, tooltip: n })
+                  this.options.tooltipClass &&
+                    t.tooltip.addClass(this.options.tooltipClass),
+                  t
                 );
               },
-              _find: function (t) {
-                var e = t.data("ui-tooltip-id");
-                return e ? this.tooltips[e] : null;
-              },
-              _removeTooltip: function (t) {
-                t.remove(), delete this.tooltips[t.attr("id")];
-              },
-              _appendTo: function (t) {
-                var e = t.closest(".ui-front, dialog");
-                return e.length || (e = this.document[0].body), e;
-              },
-              _destroy: function () {
-                var e = this;
-                t.each(this.tooltips, function (n, i) {
-                  var r = t.Event("blur"),
-                    a = i.element;
-                  (r.target = r.currentTarget = a[0]),
-                    e.close(r, !0),
-                    t("#" + n).remove(),
-                    a.data("ui-tooltip-title") &&
-                      (a.attr("title") ||
-                        a.attr("title", a.data("ui-tooltip-title")),
-                      a.removeData("ui-tooltip-title"));
-                }),
-                  this.liveRegion.remove();
-              },
             }),
-            !1 !== t.uiBackCompat &&
-              t.widget("ui.tooltip", t.ui.tooltip, {
-                options: { tooltipClass: null },
-                _tooltip: function () {
-                  var t = this._superApply(arguments);
-                  return (
-                    this.options.tooltipClass &&
-                      t.tooltip.addClass(this.options.tooltipClass),
-                    t
-                  );
-                },
-              }),
-            t.ui.tooltip
-          );
+          t.ui.tooltip;
         }),
           "function" == typeof define && define.amd
             ? define(

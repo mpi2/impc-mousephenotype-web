@@ -79,7 +79,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
                         href={`/histopath/${router.query.pid}?anatomy=${(
                           p.parameterName.split(" -")[0] || ""
                         ).toLowerCase()}`}
-                      >
+                        legacyBehavior>
                         <strong className="link">{p.parameterName}</strong>
                       </Link>
                     </td>

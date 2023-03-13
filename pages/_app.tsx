@@ -1,4 +1,3 @@
-// import App from 'next/app'
 import "../styles/global.scss";
 
 import Layout from "../components/Layout";
@@ -8,21 +7,16 @@ import "react-circular-progressbar/dist/styles.css";
 import "phenogrid/dist/phenogrid-bundle.css";
 import { SSRProvider } from "react-bootstrap";
 
-import $ from "jquery";
-// import Script from "next/script";
 import { GeneComparatorProvider } from "../components/GeneComparator";
 config.autoAddCss = false;
-
-if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
-  require("../mocks");
-}
-
+// if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
+//   require("../mocks");
+// }
 function MyApp({ Component, pageProps }) {
   return (
     <SSRProvider>
       <GeneComparatorProvider>
         <Layout>
-          {/* <Script src="/phenogrid.js" /> */}
           <Component {...pageProps} />
         </Layout>
       </GeneComparatorProvider>

@@ -37,100 +37,97 @@ const GeneResult = ({
   const { addGene, genes } = useGeneComparator();
   const IsInCompare = genes.includes(mgiGeneAccessionId);
   const synonymsArray = synonyms.split(";");
-  return (
-    <>
-      <Row className={styles.row}>
-        <Col
-          sm={8}
-          className={styles.result}
-          onClick={() => {
-            router.push(`/genes/${mgiGeneAccessionId}`);
+  return <>
+    <Row className={styles.row}>
+      <Col
+        sm={8}
+        className={styles.result}
+        onClick={() => {
+          router.push(`/genes/${mgiGeneAccessionId}`);
+        }}
+      >
+        <h4 className="mb-2 text-capitalize">
+          <span className="blue-dark">{geneSymbol}</span>{" "}
+          <span className="grey">|</span> {geneName}
+        </h4>
+        {!!synonymsArray && synonymsArray.length && (
+          <p className="grey text-capitalize small">
+            <strong>Synonyms:</strong>{" "}
+            {(synonymsArray || []).slice(0, 10).join(", ") || "None"}
+          </p>
+        )}
+
+        <p className="small grey">
+          {phenotypingDataAvailable ? (
+            <p>
+              <FontAwesomeIcon
+                className={!!phenotypeStatus ? "secondary" : "grey"}
+                icon={!!phenotypeStatus ? faCheck : faTimes}
+              />{" "}
+              <span className={`me-4 ${!phenotypeStatus ? "grey" : ""}`}>
+                {phenotypeStatus || "No phenotyping data"}
+              </span>
+              <FontAwesomeIcon
+                className={!!esCellProductionStatus ? "secondary" : "gret"}
+                icon={!!esCellProductionStatus ? faCheck : faTimes}
+              />{" "}
+              <span
+                className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}
+              >
+                {esCellProductionStatus || "No ES cells"}
+              </span>
+              <FontAwesomeIcon
+                className={!!mouseProductionStatus ? "secondary" : "gret"}
+                icon={!!mouseProductionStatus ? faCheck : faTimes}
+              />{" "}
+              <span
+                className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}
+              >
+                {mouseProductionStatus || "No mice"}
+              </span>
+            </p>
+          ) : (
+            <span className="grey">
+              <FontAwesomeIcon className="grey" icon={faTimes} /> Phenotyping
+              data not yet available
+            </span>
+          )}
+        </p>
+      </Col>
+      <Col sm={4} className={styles.shortcuts}>
+        <h5 className="grey text-uppercase">
+          <small>Shortcuts</small>
+        </h5>
+        <div
+          className={`grey mb-1 ${
+            IsInCompare ? styles.addedToComparison : "link"
+          }`}
+          onClick={(e) => {
+            e.stopPropagation();
+            addGene(mgiGeneAccessionId);
           }}
         >
-          <h4 className="mb-2 text-capitalize">
-            <span className="blue-dark">{geneSymbol}</span>{" "}
-            <span className="grey">|</span> {geneName}
-          </h4>
-          {!!synonymsArray && synonymsArray.length && (
-            <p className="grey text-capitalize small">
-              <strong>Synonyms:</strong>{" "}
-              {(synonymsArray || []).slice(0, 10).join(", ") || "None"}
-            </p>
-          )}
+          <FontAwesomeIcon
+            className={IsInCompare ? "secondary" : ""}
+            icon={IsInCompare ? faCheckCircle : faPlusCircle}
+          />{" "}
+          Add
+          {IsInCompare ? "ed " : " "}
+          to comparison
+        </div>
+        <p className="grey">
+          <Link
+            href={`/genes/${mgiGeneAccessionId}/#purchase`}
+            scroll={false}
+            className="link">
 
-          <p className="small grey">
-            {phenotypingDataAvailable ? (
-              <p>
-                <FontAwesomeIcon
-                  className={!!phenotypeStatus ? "secondary" : "grey"}
-                  icon={!!phenotypeStatus ? faCheck : faTimes}
-                />{" "}
-                <span className={`me-4 ${!phenotypeStatus ? "grey" : ""}`}>
-                  {phenotypeStatus || "No phenotyping data"}
-                </span>
-                <FontAwesomeIcon
-                  className={!!esCellProductionStatus ? "secondary" : "gret"}
-                  icon={!!esCellProductionStatus ? faCheck : faTimes}
-                />{" "}
-                <span
-                  className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}
-                >
-                  {esCellProductionStatus || "No ES cells"}
-                </span>
-                <FontAwesomeIcon
-                  className={!!mouseProductionStatus ? "secondary" : "gret"}
-                  icon={!!mouseProductionStatus ? faCheck : faTimes}
-                />{" "}
-                <span
-                  className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}
-                >
-                  {mouseProductionStatus || "No mice"}
-                </span>
-              </p>
-            ) : (
-              <span className="grey">
-                <FontAwesomeIcon className="grey" icon={faTimes} /> Phenotyping
-                data not yet available
-              </span>
-            )}
-          </p>
-        </Col>
-        <Col sm={4} className={styles.shortcuts}>
-          <h5 className="grey text-uppercase">
-            <small>Shortcuts</small>
-          </h5>
-          <div
-            className={`grey mb-1 ${
-              IsInCompare ? styles.addedToComparison : "link"
-            }`}
-            onClick={(e) => {
-              e.stopPropagation();
-              addGene(mgiGeneAccessionId);
-            }}
-          >
-            <FontAwesomeIcon
-              className={IsInCompare ? "secondary" : ""}
-              icon={IsInCompare ? faCheckCircle : faPlusCircle}
-            />{" "}
-            Add
-            {IsInCompare ? "ed " : " "}
-            to comparison
-          </div>
-          <p className="grey">
-            <Link
-              href={`/genes/${mgiGeneAccessionId}/#purchase`}
-              scroll={false}
-            >
-              <a href="#" className="link">
-                <FontAwesomeIcon icon={faShoppingCart} /> Order mice
-              </a>
-            </Link>
-          </p>
-        </Col>
-      </Row>
-      <hr className="mt-0 mb-0" />
-    </>
-  );
+            <FontAwesomeIcon icon={faShoppingCart} />Order mice
+          </Link>
+        </p>
+      </Col>
+    </Row>
+    <hr className="mt-0 mb-0" />
+  </>;
 };
 
 const GeneResults = ({ query }: { query?: string }) => {

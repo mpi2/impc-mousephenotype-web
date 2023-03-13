@@ -137,36 +137,33 @@ const ImagesCompare = () => {
 
   const procedureName = wtImages?.[0].procedureName;
 
-  return (
-    <>
-      <Search />
-      <Container className="page">
-        <Card>
-          <Link href={`/genes/${pid}`}>
-            <a href="#" className="grey mb-3 small">
-              <FontAwesomeIcon icon={faArrowLeftLong} /> BACK TO GENE
-            </a>
-          </Link>
-          <p className={styles.subheading}>Images</p>
-          <h1 className="mb-4 mt-2">
-            <strong>{procedureName}</strong> / {parameterName}
-          </h1>
-          <div>
-            <Row>
-              <Col sm={6}>
-                <h3>WT Images</h3>
-                <WTColumn images={wtImages} />
-              </Col>
-              <Col sm={6}>
-                <h3>Mutant Images</h3>
-                <Column images={images} />
-              </Col>
-            </Row>
-          </div>
-        </Card>
-      </Container>
-    </>
-  );
+  return <>
+    <Search />
+    <Container className="page">
+      <Card>
+        <Link href={`/genes/${pid}`} className="grey mb-3 small">
+
+          <FontAwesomeIcon icon={faArrowLeftLong} />BACK TO GENE
+        </Link>
+        <p className={styles.subheading}>Images</p>
+        <h1 className="mb-4 mt-2">
+          <strong>{procedureName}</strong> / {parameterName}
+        </h1>
+        <div>
+          <Row>
+            <Col sm={6}>
+              <h3>WT Images</h3>
+              <WTColumn images={wtImages} />
+            </Col>
+            <Col sm={6}>
+              <h3>Mutant Images</h3>
+              <Column images={images} />
+            </Col>
+          </Row>
+        </div>
+      </Card>
+    </Container>
+  </>;
 };
 
 export default ImagesCompare;

@@ -106,10 +106,11 @@ const Order = ({ gene }: { gene: any }) => {
                       )}
                     </td>
                     <td className="text-capitalize">
-                      <Link href={`/alleles/${router.query.pid}/${allele[1]}`}>
-                        <a className="link primary">
-                          View products <FontAwesomeIcon icon={faArrowRight} />
-                        </a>
+                      <Link
+                        href={`/alleles/${router.query.pid}/${allele[1]}`}
+                        className="link primary">
+                        View products<FontAwesomeIcon icon={faArrowRight} />
+
                       </Link>
                     </td>
                   </tr>

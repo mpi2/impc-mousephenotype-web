@@ -82,14 +82,14 @@ const Search = ({
                 );
               } else {
                 return (
-                  <Link href={tab.link} key={`tab-${tab.name}`}>
-                    <a
-                      className={isActive ? styles.tab__active : styles.tab}
-                      href="#"
-                    >
-                      {tab.name}
-                    </a>
-                  </Link>
+                  (<Link
+                    href={tab.link}
+                    key={`tab-${tab.name}`}
+                    className={isActive ? styles.tab__active : styles.tab}>
+
+                    {tab.name}
+
+                  </Link>)
                 );
               }
             })}

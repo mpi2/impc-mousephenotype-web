@@ -13,7 +13,7 @@ export default function Home() {
       <main>
         <h1 className="title">Homepage</h1>
         <div className="grid">
-          <Link href="/gene">
+          <Link href="/gene" legacyBehavior>
             <div className="card">
               <h3>Documentation &rarr;</h3>
               <p>Find in-depth information about Next.js features and API.</p>

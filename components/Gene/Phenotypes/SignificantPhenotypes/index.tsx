@@ -111,7 +111,9 @@ const SignificantPhenotypes = ({ data }) => {
                 <td>
                   <small className="grey">{d.parameterName} /</small>
                   <br />
-                  <Link href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis">
+                  <Link
+                    href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
+                    legacyBehavior>
                     <strong className={styles.link}>
                       {_.capitalize(d.phenotype)}
                     </strong>
