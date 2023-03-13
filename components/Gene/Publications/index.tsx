@@ -80,6 +80,7 @@ const Publications = ({ gene }: { gene: any }) => {
                         <strong>{p.title}</strong>{" "}
                         <FontAwesomeIcon
                           className="grey"
+                          size="xs"
                           icon={faExternalLinkAlt}
                         />
                       </a>
@@ -102,7 +103,7 @@ const Publications = ({ gene }: { gene: any }) => {
                         <FontAwesomeIcon
                           icon={faExternalLinkAlt}
                           className="grey"
-                          size="sm"
+                          size="xs"
                         />
                       </a>
                     </td>

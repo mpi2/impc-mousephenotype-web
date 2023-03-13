@@ -107,31 +107,33 @@ const SortableTable = ({
   };
 
   return (
-    <Table striped bordered className={styles.table}>
-      {hasNested &&
-        headers.map(({ children: childHeaders }) => {
-          if (childHeaders && childHeaders.length) {
-            return <colgroup span={childHeaders.length} />;
-          }
-          return <col />;
-        })}
-      <thead>
-        <tr>
-          {headers.map((header) => (
-            <SortableTh {...header} />
-          ))}
-        </tr>
+    <div className={styles.tableWrapper}>
+      <Table striped bordered className={styles.table}>
         {hasNested &&
           headers.map(({ children: childHeaders }) => {
             if (childHeaders && childHeaders.length) {
-              return childHeaders.map((childHeader) => (
-                <SortableTh {...childHeader} />
-              ));
+              return <colgroup span={childHeaders.length} />;
             }
+            return <col />;
           })}
-      </thead>
-      <tbody>{children}</tbody>
-    </Table>
+        <thead>
+          <tr>
+            {headers.map((header) => (
+              <SortableTh {...header} />
+            ))}
+          </tr>
+          {hasNested &&
+            headers.map(({ children: childHeaders }) => {
+              if (childHeaders && childHeaders.length) {
+                return childHeaders.map((childHeader) => (
+                  <SortableTh {...childHeader} />
+                ));
+              }
+            })}
+        </thead>
+        <tbody>{children}</tbody>
+      </Table>
+    </div>
   );
 };
 

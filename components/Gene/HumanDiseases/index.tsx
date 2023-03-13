@@ -90,7 +90,11 @@ const Row = ({ data }) => {
             className="link primary"
           >
             {data.diseaseId}{" "}
-            <FontAwesomeIcon className="grey" icon={faExternalLinkAlt} />
+            <FontAwesomeIcon
+              className="grey"
+              size="xs"
+              icon={faExternalLinkAlt}
+            />
           </a>
         </td>
         <td onClick={() => setOpen(!open)}>

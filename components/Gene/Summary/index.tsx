@@ -189,7 +189,7 @@ const Summary = ({
             target="_blank"
           >
             {gene.mgiGeneAccessionId}{" "}
-            <FontAwesomeIcon icon={faExternalLinkAlt} />
+            <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" />
           </a>
           <span className={styles.subheadingSection}>
             Synonyms:{" "}
@@ -239,7 +239,8 @@ const Summary = ({
           className={`${styles.howLink} secondary`}
           href="https://www.mousephenotype.org/understand/data-collections/"
         >
-          How IMPC generates data <FontAwesomeIcon icon={faChevronRight} />
+          How IMPC generates&nbsp;data&nbsp;
+          <FontAwesomeIcon icon={faChevronRight} />
         </a>
       </div>
       <h1 className="mb-5 mt-2">
@@ -247,7 +248,7 @@ const Summary = ({
         {gene.geneName}
       </h1>
       <Row className={styles.gap}>
-        <Col>
+        <Col lg={6}>
           <h3>Impacted physiological systems</h3>
           <div className={styles.progressHeader}>
             <div>
@@ -320,7 +321,7 @@ const Summary = ({
             </div>
           )}
         </Col>
-        <Col style={{ position: "relative" }}>
+        <Col lg={6} style={{ position: "relative" }}>
           <h3>Gene metrics compared to IMPC average</h3>
           <Row>
             <Col md={6}>
