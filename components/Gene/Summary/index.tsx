@@ -17,6 +17,7 @@ import {
 import styles from "./styles.module.scss";
 import _ from "lodash";
 import Card from "../../Card";
+import FollowBtn from "./FollowBtn";
 
 export const allBodySystems = [
   "mortality/aging",
@@ -243,10 +244,13 @@ const Summary = ({
           <FontAwesomeIcon icon={faChevronRight} />
         </a>
       </div>
-      <h1 className="mb-5 mt-2">
-        <strong>{gene.geneSymbol}</strong> <span className="grey">|</span>{" "}
-        {gene.geneName}
-      </h1>
+      <div className={styles.headingCont}>
+        <h1 className="mb-5 mt-2">
+          <strong>{gene.geneSymbol}</strong> <span className="grey">|</span>{" "}
+          {gene.geneName}
+        </h1>
+        <FollowBtn />
+      </div>
       <Row className={styles.gap}>
         <Col lg={6}>
           <h3>Impacted physiological systems</h3>
