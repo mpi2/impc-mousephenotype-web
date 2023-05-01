@@ -16,6 +16,10 @@ import styles from "./styles.module.scss";
 import Pagination from "../../../components/Pagination";
 import SortableTable from "../../../components/SortableTable";
 import useQuery from "../../../components/useQuery";
+import Mice from "../../../components/Allele/Mice";
+import ESCell from "../../../components/Allele/ESCell";
+import TargetingVector from "../../../components/Allele/TVP";
+import IntermediateVector from "../../../components/Allele/IVP";
 
 const ProductItem = ({
   name,
@@ -58,8 +62,7 @@ const Gene = () => {
   } = useRouter();
 
   const [allele, loading, error] = useQuery({
-    // query: `/api/v1/alleles/${pid}/${"tm1a(EUCOMM)Wtsi" || alleleSymbol}`,
-    query: `/api/v1/alleles/${pid}/${alleleSymbol}`,
+    query: "/api/v1/alleles/MGI:1929293/tm1a(EUCOMM)Wtsi",
   });
 
   if (loading) {
@@ -96,16 +99,56 @@ const Gene = () => {
             <p className="grey mb-4">Error: {error}</p>
           </Card>
         </Container>
+        <Mice />
       </>
     );
   }
+
+  const {
+    mgiGeneAccessionId,
+    geneSymbol,
+    alleleName,
+    alleleDescription,
+    alleleMapUrl,
+    genbankFileUrl,
+    emsembleUrl,
+    doesMiceProductsExist,
+    doesEsCellProductsExist,
+    doesCrisprProductsExist,
+    doesIntermediateVectorProductsExist,
+    doesTargetingVectorProductsExist,
+  } = allele;
+
+  const productTypes = [
+    { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
+    {
+      name: "Targeted ES cells",
+      link: "#esCell",
+      hasData: doesEsCellProductsExist,
+    },
+    {
+      name: "Targeted vectors",
+      link: "#targetingVector",
+      hasData: doesTargetingVectorProductsExist,
+    },
+    {
+      name: "Intermediate vectors",
+      link: "#intermediateVector",
+      hasData: doesIntermediateVectorProductsExist,
+    },
+    {
+      name: "Crisprs",
+      link: "#crisprs",
+      hasData: doesCrisprProductsExist,
+    },
+  ];
 
   return (
     <>
       <Head>
         <title>
-          Allele Details | {allele.geneSymbol}-{alleleSymbol} | International
-          Mouse Phenotyping Consortium
+          Allele Details | {geneSymbol}-{alleleName} | International Mouse
+          Phenotyping Consortium
         </title>
       </Head>
       <Search />
@@ -118,298 +161,59 @@ const Gene = () => {
           <p className={styles.subheading}>ALLELE</p>
           <h1 className="mb-2 mt-2">
             <strong>
-              {allele.geneSymbol}
-              <sup>{alleleSymbol}</sup>
+              {geneSymbol}
+              <sup>{alleleName}</sup>
             </strong>{" "}
           </h1>
-          <p className="mb-4 grey">{allele.alleleDescription}</p>
+          <p className="mb-4 grey">{alleleDescription}</p>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
-            <ProductItem
-              hasData={allele.miceProducts && allele.miceProducts.length > 0}
-              name="Mice"
-              link="#mice"
-            />
-            <ProductItem
-              hasData={
-                allele.esCellProducts && allele.esCellProducts.length > 0
-              }
-              name="Targeted ES cells"
-              link="#esCell"
-            />
-            <ProductItem
-              hasData={
-                allele.targetingVectorProducts &&
-                allele.targetingVectorProducts.length > 0
-              }
-              name="Targeting vectors"
-              link="#targetingVector"
-            />
+            {productTypes.map((productType) => (
+              <ProductItem {...productType} />
+            ))}
           </div>
         </Card>
         <Card>
           <h2>Allele Map</h2>
           <p className="mb-0">
-            <a href={allele.genbankFileUrl} target="_blank">
+            <a href={genbankFileUrl} target="_blank">
               <FontAwesomeIcon icon={faExternalLinkAlt} /> Genbank
             </a>
             <span className="grey ms-2 me-2">|</span>
-            <a href={allele.emsembleUrl} target="_blank">
+            <a href={emsembleUrl} target="_blank">
               <FontAwesomeIcon icon={faExternalLinkAlt} /> Ensemble
             </a>
           </p>
           <div>
             <img
-              src={allele.alleleMapUrl}
+              src={alleleMapUrl}
               style={{ display: "block", maxWidth: "100%" }}
             />
           </div>
         </Card>
-        <Card id="mice">
-          <h2>Mice</h2>
-          {!!allele.miceProducts && allele.miceProducts.length > 0 ? (
-            <Pagination data={allele.miceProducts}>
-              {(pageData) => (
-                <SortableTable
-                  doSort={() => {}}
-                  defaultSort={["title", "asc"]}
-                  headers={[
-                    { width: 3, label: "Colony Name", disabled: true },
-                    {
-                      width: 2,
-                      label: "Genetic Background",
-                      disabled: true,
-                    },
-                    { width: 2, label: "Production Centre", disabled: true },
-                    { width: 1, label: "QC Data", disabled: true },
-                    {
-                      width: 2,
-                      label: "ES Cell/Parent Mouse Colony",
-                      disabled: true,
-                    },
-                    { width: 2, label: "Order / Contact", disabled: true },
-                  ]}
-                >
-                  {pageData.map((p) => {
-                    return (
-                      <tr>
-                        <td>
-                          <strong>{p.colonyName}</strong>
-                        </td>
-                        <td>{p.geneticBackground}</td>
-                        <td>{p.productionCentre}</td>
-                        <td>
-                          <a
-                            href={p.qcDataUrl}
-                            target="_blank"
-                            className="link"
-                          >
-                            QC data{" "}
-                            <FontAwesomeIcon
-                              icon={faExternalLinkAlt}
-                              className="grey"
-                              size="xs"
-                            />
-                          </a>
-                        </td>
-                        <td>{p.esCellParentColony}</td>
-                        <td>
-                          <a
-                            href={p.orderLink}
-                            target="_blank"
-                            className="link primary"
-                          >
-                            <FontAwesomeIcon icon={faCartShopping} /> Order
-                          </a>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </SortableTable>
-              )}
-            </Pagination>
-          ) : (
-            <Alert variant="primary">
-              No mice products found for this allele.
-            </Alert>
-          )}
-        </Card>
-        <Card id="esCell">
-          <h2>Es cells</h2>
-          {!!allele.esCellProducts && allele.esCellProducts.length > 0 ? (
-            <Pagination data={allele.esCellProducts}>
-              {(pageData) => (
-                <SortableTable
-                  doSort={() => {}}
-                  defaultSort={["title", "asc"]}
-                  headers={[
-                    { width: 2, label: "ES Cell Clone", disabled: true },
-                    {
-                      width: 2,
-                      label: "ES Cell strain",
-                      disabled: true,
-                    },
-                    { width: 2, label: "Parental Cell Line", disabled: true },
-                    { width: 1, label: "IKMC Project", disabled: true },
-                    { width: 1, label: "QC Data", disabled: true },
-                    {
-                      width: 2,
-                      label: "Targeting Vector",
-                      disabled: true,
-                    },
-                    { width: 2, label: "Order / Contact", disabled: true },
-                  ]}
-                >
-                  {pageData.map((p) => {
-                    return (
-                      <tr>
-                        <td>
-                          <strong>{p.esCellClone}</strong>
-                        </td>
-                        <td>{p.esCellStrain}</td>
-                        <td>{p.parentalCellLine}</td>
-                        <td>{p.ikmcProject}</td>
-                        <td>
-                          <a
-                            href={p.qcDataUrl}
-                            target="_blank"
-                            className="link"
-                          >
-                            QC data{" "}
-                            <FontAwesomeIcon
-                              icon={faExternalLinkAlt}
-                              className="grey"
-                              size="xs"
-                            />
-                          </a>
-                        </td>
-                        <td>{p.targetingVector}</td>
-                        <td>
-                          <a
-                            href={p.order}
-                            target="_blank"
-                            className="link primary"
-                          >
-                            <FontAwesomeIcon icon={faCartShopping} /> Order
-                          </a>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </SortableTable>
-              )}
-            </Pagination>
-          ) : (
-            <Alert variant="primary">
-              No ES cell products found for this allele.
-            </Alert>
-          )}
-        </Card>
-        <Card id="targetingVector">
-          <h2>Targeting vectors</h2>
-          {!!allele.targetingVectorProducts &&
-          allele.targetingVectorProducts.length > 0 ? (
-            <Pagination data={allele.targetingVectorProducts}>
-              {(pageData) => (
-                <SortableTable
-                  doSort={() => {}}
-                  defaultSort={["title", "asc"]}
-                  headers={[
-                    { width: 2, label: "Design Oligos", disabled: true },
-                    {
-                      width: 2,
-                      label: "Targeting Vector",
-                      disabled: true,
-                    },
-                    { width: 1, label: "Cassette", disabled: true },
-                    { width: 1, label: "Backbone", disabled: true },
-                    { width: 1.5, label: "IKMC Project", disabled: true },
-                    {
-                      width: 1.5,
-                      label: "Genbank File",
-                      disabled: true,
-                    },
-                    {
-                      width: 1,
-                      label: "Vector Map",
-                      disabled: true,
-                    },
-                    { width: 2, label: "Order", disabled: true },
-                  ]}
-                >
-                  {pageData.map((p) => {
-                    return (
-                      <tr>
-                        <td>
-                          <Link
-                            href={`/designs/${p.designOligos}?accession=${pid}`}
-                            scroll={false}
-                            className="secondary"
-                          >
-                            {p.designOligos ?? "View design oligo"}{" "}
-                          </Link>
-                          <strong>{p.designOligos}</strong>
-                        </td>
-                        <td>{p.targetingVector}</td>
-                        <td>{p.cassette}</td>
-                        <td>{p.backbone}</td>
-                        <td>{p.ikmcProject}</td>
-                        <td>
-                          {!!p.genbankFile ? (
-                            <a
-                              href={p.genbankFile}
-                              target="_blank"
-                              className="link"
-                            >
-                              Genbank{" "}
-                              <FontAwesomeIcon
-                                icon={faExternalLinkAlt}
-                                className="grey"
-                                size="xs"
-                              />
-                            </a>
-                          ) : (
-                            "None"
-                          )}
-                        </td>
-                        <td>
-                          {!!p.vectorMap ? (
-                            <a
-                              href={p.vectorMap}
-                              target="_blank"
-                              className="link"
-                            >
-                              Vector map{" "}
-                              <FontAwesomeIcon
-                                icon={faExternalLinkAlt}
-                                className="grey"
-                                size="xs"
-                              />
-                            </a>
-                          ) : (
-                            "None"
-                          )}
-                        </td>
-                        <td>
-                          <a
-                            href={p.order}
-                            target="_blank"
-                            className="link primary"
-                          >
-                            <FontAwesomeIcon icon={faCartShopping} /> Order
-                          </a>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </SortableTable>
-              )}
-            </Pagination>
-          ) : (
-            <Alert variant="primary">
-              No targeting vector products found for this allele.
-            </Alert>
-          )}
-        </Card>
+        {doesMiceProductsExist && (
+          <Mice
+            mgiGeneAccessionId={mgiGeneAccessionId}
+            alleleName={alleleName}
+          />
+        )}
+        {doesEsCellProductsExist && (
+          <ESCell
+            mgiGeneAccessionId={mgiGeneAccessionId}
+            alleleName={alleleName}
+          />
+        )}
+        {doesTargetingVectorProductsExist && (
+          <TargetingVector
+            mgiGeneAccessionId={mgiGeneAccessionId}
+            alleleName={alleleName}
+          />
+        )}
+        {!doesTargetingVectorProductsExist && (
+          <IntermediateVector
+            mgiGeneAccessionId={mgiGeneAccessionId}
+            alleleName={alleleName}
+          />
+        )}
         <Card>
           <Link
             href={`/genes/${pid}/#purchase`}
