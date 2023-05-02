@@ -11,6 +11,7 @@ import Pagination from "../../Pagination";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import useQuery from "../../useQuery";
+import { formatESCellName } from "../../../utils";
 
 const ESCell = ({
   mgiGeneAccessionId,
@@ -88,7 +89,7 @@ const ESCell = ({
                     <td>
                       <strong>{p.name}</strong>
                     </td>
-                    <td>{p.strain}</td>
+                    <td>{formatESCellName(p.strain)}</td>
                     <td>{p.parentEsCellLine}</td>
                     <td>{p.ikmcProjectId}</td>
                     <td>

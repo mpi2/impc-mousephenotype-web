@@ -62,7 +62,7 @@ const Gene = () => {
   } = useRouter();
 
   const [allele, loading, error] = useQuery({
-    query: "/api/v1/alleles/MGI:1929293/tm1a(EUCOMM)Wtsi",
+    query: `/api/v1/alleles/${pid}/${alleleSymbol}`,
   });
 
   if (loading) {
@@ -99,7 +99,6 @@ const Gene = () => {
             <p className="grey mb-4">Error: {error}</p>
           </Card>
         </Container>
-        <Mice />
       </>
     );
   }
@@ -119,7 +118,7 @@ const Gene = () => {
     doesTargetingVectorProductsExist,
   } = allele;
 
-  const productTypes = [
+  const esCellProductTypes = [
     { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
     {
       name: "Targeted ES cells",
@@ -131,16 +130,20 @@ const Gene = () => {
       link: "#targetingVector",
       hasData: doesTargetingVectorProductsExist,
     },
-    {
-      name: "Intermediate vectors",
-      link: "#intermediateVector",
-      hasData: doesIntermediateVectorProductsExist,
-    },
+    // {
+    //   name: "Intermediate vectors",
+    //   link: "#intermediateVector",
+    //   hasData: doesIntermediateVectorProductsExist,
+    // },
+  ];
+
+  const crisprProductTypes = [
     {
       name: "Crisprs",
-      link: "#crisprs",
+      link: "#CRISPR",
       hasData: doesCrisprProductsExist,
     },
+    { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
   ];
 
   return (
@@ -167,7 +170,10 @@ const Gene = () => {
           </h1>
           <p className="mb-4 grey">{alleleDescription}</p>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
-            {productTypes.map((productType) => (
+            {(doesCrisprProductsExist
+              ? crisprProductTypes
+              : esCellProductTypes
+            ).map((productType) => (
               <ProductItem {...productType} />
             ))}
           </div>
@@ -175,20 +181,29 @@ const Gene = () => {
         <Card>
           <h2>Allele Map</h2>
           <p className="mb-0">
-            <a href={genbankFileUrl} target="_blank">
-              <FontAwesomeIcon icon={faExternalLinkAlt} /> Genbank
-            </a>
-            <span className="grey ms-2 me-2">|</span>
-            <a href={emsembleUrl} target="_blank">
-              <FontAwesomeIcon icon={faExternalLinkAlt} /> Ensemble
-            </a>
+            {genbankFileUrl && (
+              <>
+                <a href={genbankFileUrl} target="_blank">
+                  <FontAwesomeIcon icon={faExternalLinkAlt} /> Genbank
+                </a>{" "}
+                <span className="grey ms-2 me-2">|</span>
+              </>
+            )}
+
+            {emsembleUrl && (
+              <a href={emsembleUrl} target="_blank">
+                <FontAwesomeIcon icon={faExternalLinkAlt} /> Ensemble
+              </a>
+            )}
           </p>
-          <div>
-            <img
-              src={alleleMapUrl}
-              style={{ display: "block", maxWidth: "100%" }}
-            />
-          </div>
+          {!!alleleMapUrl && (
+            <div>
+              <img
+                src={alleleMapUrl}
+                style={{ display: "block", maxWidth: "100%" }}
+              />
+            </div>
+          )}
         </Card>
         {doesMiceProductsExist && (
           <Mice
@@ -208,12 +223,12 @@ const Gene = () => {
             alleleName={alleleName}
           />
         )}
-        {!doesTargetingVectorProductsExist && (
+        {/* {!doesTargetingVectorProductsExist && (
           <IntermediateVector
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleName}
           />
-        )}
+        )} */}
         <Card>
           <Link
             href={`/genes/${pid}/#purchase`}

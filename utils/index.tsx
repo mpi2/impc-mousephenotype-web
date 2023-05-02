@@ -24,5 +24,16 @@ export const formatPValue = (pValue: number) => {
   );
 };
 
+export const formatESCellName = (src: string) => {
+  const [name, superscript, end] = src.split(/<|>/);
+  return (
+    <>
+      {name}
+      <sup>{superscript}</sup>
+      {end}
+    </>
+  );
+};
+
 const fetchCache = {};
 export { fetchCache };
