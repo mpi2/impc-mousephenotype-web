@@ -93,7 +93,7 @@ const TargetingVector = ({
                   <tr>
                     <td>
                       <Link
-                        href={`/designs/${p.designOligos}?accession=${mgiGeneAccessionId}`}
+                        href={p.designLink}
                         scroll={false}
                         className="secondary"
                       >

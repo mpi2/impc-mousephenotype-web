@@ -1,4 +1,4 @@
-import { Alert, Button, Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Search from "../../../components/Search";
 import _ from "lodash";
 import Card from "../../../components/Card";
@@ -13,13 +13,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import styles from "./styles.module.scss";
-import Pagination from "../../../components/Pagination";
-import SortableTable from "../../../components/SortableTable";
 import useQuery from "../../../components/useQuery";
 import Mice from "../../../components/Allele/Mice";
 import ESCell from "../../../components/Allele/ESCell";
 import TargetingVector from "../../../components/Allele/TVP";
-import IntermediateVector from "../../../components/Allele/IVP";
+import { formatAlleleSymbol } from "../../../utils";
 
 const ProductItem = ({
   name,
@@ -33,7 +31,6 @@ const ProductItem = ({
   <div
     className={hasData ? styles.dataCollection : styles.dataCollectionInactive}
   >
-    {/* <Check isChecked={hasData} /> */}
     {name}
     <p className="mt-2">
       <a href={link}>
@@ -61,9 +58,12 @@ const Gene = () => {
     query: { pid, alleleSymbol },
   } = useRouter();
 
-  const [allele, loading, error] = useQuery({
-    query: `/api/v1/alleles/${pid}/${alleleSymbol}`,
+  const [alleles, loading, error] = useQuery({
+    // genes/MGI:1922546/tm1a(EUCOMM)Hmgu/order/
+    query: `/api/v1/genes/${pid}/${alleleSymbol}/order`,
   });
+
+  const allele = (alleles ?? [])[0];
 
   if (loading) {
     return (
@@ -105,18 +105,19 @@ const Gene = () => {
 
   const {
     mgiGeneAccessionId,
-    geneSymbol,
-    alleleName,
+    alleleSymbol: geneAlleleSymbol,
     alleleDescription,
-    alleleMapUrl,
-    genbankFileUrl,
-    emsembleUrl,
-    doesMiceProductsExist,
-    doesEsCellProductsExist,
-    doesCrisprProductsExist,
-    doesIntermediateVectorProductsExist,
-    doesTargetingVectorProductsExist,
+    productTypes,
   } = allele;
+
+  const doesMiceProductsExist = productTypes.includes("mouse");
+  const doesEsCellProductsExist = productTypes.includes("es_cell");
+  const doesCrisprProductsExist = productTypes.includes("crispr");
+  const doesIntermediateVectorProductsExist = productTypes.includes(
+    "intermediate_vector"
+  );
+  const doesTargetingVectorProductsExist =
+    productTypes.includes("targeting_vector");
 
   const esCellProductTypes = [
     { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
@@ -139,18 +140,26 @@ const Gene = () => {
 
   const crisprProductTypes = [
     {
-      name: "Crisprs",
-      link: "#CRISPR",
+      name: "Sequences",
+      link: "#seque",
       hasData: doesCrisprProductsExist,
     },
     { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
+
+    {
+      name: "Crispr Info",
+      link: "#CRISPR",
+      hasData: doesCrisprProductsExist,
+    },
   ];
+
+  const [geneSymbol] = formatAlleleSymbol(geneAlleleSymbol);
 
   return (
     <>
       <Head>
         <title>
-          Allele Details | {geneSymbol}-{alleleName} | International Mouse
+          Allele Details | {geneSymbol} - {alleleSymbol} | International Mouse
           Phenotyping Consortium
         </title>
       </Head>
@@ -165,7 +174,7 @@ const Gene = () => {
           <h1 className="mb-2 mt-2">
             <strong>
               {geneSymbol}
-              <sup>{alleleName}</sup>
+              <sup>{alleleSymbol}</sup>
             </strong>{" "}
           </h1>
           <p className="mb-4 grey">{alleleDescription}</p>
@@ -178,7 +187,7 @@ const Gene = () => {
             ))}
           </div>
         </Card>
-        <Card>
+        {/* <Card>
           <h2>Allele Map</h2>
           <p className="mb-0">
             {genbankFileUrl && (
@@ -204,23 +213,23 @@ const Gene = () => {
               />
             </div>
           )}
-        </Card>
+        </Card> */}
         {doesMiceProductsExist && (
           <Mice
             mgiGeneAccessionId={mgiGeneAccessionId}
-            alleleName={alleleName}
+            alleleName={alleleSymbol as string}
           />
         )}
         {doesEsCellProductsExist && (
           <ESCell
             mgiGeneAccessionId={mgiGeneAccessionId}
-            alleleName={alleleName}
+            alleleName={alleleSymbol as string}
           />
         )}
         {doesTargetingVectorProductsExist && (
           <TargetingVector
             mgiGeneAccessionId={mgiGeneAccessionId}
-            alleleName={alleleName}
+            alleleName={alleleSymbol as string}
           />
         )}
         {/* {!doesTargetingVectorProductsExist && (
