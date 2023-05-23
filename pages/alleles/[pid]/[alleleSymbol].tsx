@@ -134,7 +134,7 @@ const Gene = () => {
       hasData: doesEsCellProductsExist,
     },
     {
-      name: "Targeted vectors",
+      name: "Targeting vectors",
       link: "#targetingVector",
       hasData: doesTargetingVectorProductsExist,
     },

@@ -107,10 +107,14 @@ const Order = ({ gene }: { gene: any }) => {
                     </td>
                     <td>{d.alleleDescription}</td>
                     <td className="text-capitalize">
-                      {(d.productTypes?.join(", ") || "None").replace(
-                        /_/g,
-                        " "
-                      )}
+                      {(
+                        (d.productTypes ?? [])
+                          .filter(
+                            (x) =>
+                              !(x === "intermediate_vector" || x === "crispr")
+                          )
+                          .join(", ") || "None"
+                      ).replace(/_/g, " ")}
                     </td>
                     <td className="text-capitalize">
                       <Link

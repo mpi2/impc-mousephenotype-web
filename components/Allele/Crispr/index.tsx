@@ -146,7 +146,7 @@ const Crispr = ({
         </p>
 
         <h3 className="mb-0 mt-1">Nucleases</h3>
-        {data.nucleases.map(({ nucleaseType, nucleaseClass }) => (
+        {data.nucleases?.map(({ nucleaseType, nucleaseClass }) => (
           <>
             <div className="mt-3">
               {valuePair("Type", nucleaseType)}
@@ -156,7 +156,7 @@ const Crispr = ({
         ))}
 
         <h3 className="mb-0 mt-4">Genotype primers</h3>
-        {data.genotypePrimers.map(({ name, sequence }) => (
+        {data.genotypePrimers?.map(({ name, sequence }) => (
           <>
             <div className="mt-3">
               {valuePair("Name", name)}

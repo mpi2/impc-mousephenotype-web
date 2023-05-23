@@ -68,24 +68,12 @@ const IntermediateVector = ({
               headers={[
                 { width: 2, label: "Design Oligos", disabled: true },
                 {
-                  width: 2,
+                  width: 4,
                   label: "Intermediate Vector",
                   disabled: true,
                 },
-                { width: 1, label: "Cassette", disabled: true },
-                { width: 1, label: "Backbone", disabled: true },
-                { width: 1.5, label: "IKMC Project", disabled: true },
-                {
-                  width: 1.5,
-                  label: "Genbank File",
-                  disabled: true,
-                },
-                {
-                  width: 1,
-                  label: "Vector Map",
-                  disabled: true,
-                },
-                { width: 2, label: "Order", disabled: true },
+                { width: 3, label: "Production pipeline", disabled: true },
+                { width: 2, label: "Completed", disabled: true },
               ]}
             >
               {pageData.map((p) => {
@@ -93,59 +81,16 @@ const IntermediateVector = ({
                   <tr>
                     <td>
                       <Link
-                        href={`/designs/${p.designOligos}?accession=${mgiGeneAccessionId}`}
+                        href={p.designLink}
                         scroll={false}
                         className="secondary"
                       >
                         {p.designOligos ?? "View design oligo"}{" "}
                       </Link>
-                      <strong>{p.designOligos}</strong>
                     </td>
-                    <td>{p.targetingVector}</td>
-                    <td>{p.cassette}</td>
-                    <td>{p.backbone}</td>
-                    <td>{p.ikmcProject}</td>
-                    <td>
-                      {!!p.genbankFile ? (
-                        <a
-                          href={p.genbankFile}
-                          target="_blank"
-                          className="link"
-                        >
-                          Genbank{" "}
-                          <FontAwesomeIcon
-                            icon={faExternalLinkAlt}
-                            className="grey"
-                            size="xs"
-                          />
-                        </a>
-                      ) : (
-                        "None"
-                      )}
-                    </td>
-                    <td>
-                      {!!p.vectorMap ? (
-                        <a href={p.vectorMap} target="_blank" className="link">
-                          Vector map{" "}
-                          <FontAwesomeIcon
-                            icon={faExternalLinkAlt}
-                            className="grey"
-                            size="xs"
-                          />
-                        </a>
-                      ) : (
-                        "None"
-                      )}
-                    </td>
-                    <td>
-                      <a
-                        href={p.order}
-                        target="_blank"
-                        className="link primary"
-                      >
-                        <FontAwesomeIcon icon={faCartShopping} /> Order
-                      </a>
-                    </td>
+                    <td>{p.name}</td>
+                    <td>{p.productionPipeline}</td>
+                    <td>{p.productionCompleted ? "Yes" : "No"}</td>
                   </tr>
                 );
               })}
