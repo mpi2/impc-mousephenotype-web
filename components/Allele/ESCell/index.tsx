@@ -12,13 +12,16 @@ import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import useQuery from "../../useQuery";
 import { formatESCellName } from "../../../utils";
+import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 
 const ESCell = ({
   mgiGeneAccessionId,
   alleleName,
+  setQcData,
 }: {
   mgiGeneAccessionId: string;
   alleleName: string;
+  setQcData: (any) => void;
 }) => {
   const [data, setData] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
@@ -94,10 +97,18 @@ const ESCell = ({
                     <td>{p.ikmcProjectId}</td>
                     <td>
                       {p.qcData.map(({ productionQC }) => (
-                        <a href={productionQC} target="_blank" className="link">
-                          QC data{" "}
+                        <a
+                          href="#"
+                          target="_blank"
+                          className="link"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setQcData(p.qcData);
+                          }}
+                        >
+                          View{" "}
                           <FontAwesomeIcon
-                            icon={faExternalLinkAlt}
+                            icon={faWindowMaximize}
                             className="grey"
                             size="xs"
                           />

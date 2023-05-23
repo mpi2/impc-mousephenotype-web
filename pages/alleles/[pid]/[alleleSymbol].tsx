@@ -18,6 +18,11 @@ import Mice from "../../../components/Allele/Mice";
 import ESCell from "../../../components/Allele/ESCell";
 import TargetingVector from "../../../components/Allele/TVP";
 import { formatAlleleSymbol } from "../../../utils";
+import Crispr from "../../../components/Allele/Crispr";
+import AlleleMap from "../../../components/Allele/AlleleMap.tsx";
+import { useState } from "react";
+import QCModal from "../../../components/Allele/QCModal.tsx";
+import IntermediateVector from "../../../components/Allele/IVP";
 
 const ProductItem = ({
   name,
@@ -62,6 +67,8 @@ const Gene = () => {
     // genes/MGI:1922546/tm1a(EUCOMM)Hmgu/order/
     query: `/api/v1/genes/${pid}/${alleleSymbol}/order`,
   });
+
+  const [qcData, setQcData] = useState<any[]>(null);
 
   const allele = (alleles ?? [])[0];
 
@@ -131,26 +138,15 @@ const Gene = () => {
       link: "#targetingVector",
       hasData: doesTargetingVectorProductsExist,
     },
-    // {
-    //   name: "Intermediate vectors",
-    //   link: "#intermediateVector",
-    //   hasData: doesIntermediateVectorProductsExist,
-    // },
+    {
+      name: "Intermediate vectors",
+      link: "#intermediateVector",
+      hasData: doesIntermediateVectorProductsExist,
+    },
   ];
 
   const crisprProductTypes = [
-    {
-      name: "Sequences",
-      link: "#seque",
-      hasData: doesCrisprProductsExist,
-    },
     { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
-
-    {
-      name: "Crispr Info",
-      link: "#CRISPR",
-      hasData: doesCrisprProductsExist,
-    },
   ];
 
   const [geneSymbol] = formatAlleleSymbol(geneAlleleSymbol);
@@ -187,6 +183,12 @@ const Gene = () => {
             ))}
           </div>
         </Card>
+        {doesEsCellProductsExist && (
+          <AlleleMap
+            mgiGeneAccessionId={mgiGeneAccessionId}
+            alleleName={alleleSymbol as string}
+          />
+        )}
         {/* <Card>
           <h2>Allele Map</h2>
           <p className="mb-0">
@@ -216,14 +218,17 @@ const Gene = () => {
         </Card> */}
         {doesMiceProductsExist && (
           <Mice
+            isCrispr={doesCrisprProductsExist}
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
+            setQcData={setQcData}
           />
         )}
         {doesEsCellProductsExist && (
           <ESCell
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
+            setQcData={setQcData}
           />
         )}
         {doesTargetingVectorProductsExist && (
@@ -232,23 +237,37 @@ const Gene = () => {
             alleleName={alleleSymbol as string}
           />
         )}
-        {/* {!doesTargetingVectorProductsExist && (
+        {doesIntermediateVectorProductsExist && (
           <IntermediateVector
             mgiGeneAccessionId={mgiGeneAccessionId}
-            alleleName={alleleName}
+            alleleName={alleleSymbol as string}
           />
-        )} */}
+        )}
+
+        {doesCrisprProductsExist && (
+          <Crispr
+            mgiGeneAccessionId={mgiGeneAccessionId}
+            alleleName={alleleSymbol as string}
+          />
+        )}
         <Card>
           <Link
             href={`/genes/${pid}/#purchase`}
             scroll={false}
             className="secondary"
           >
-            See all alleles for{allele.geneSymbol}{" "}
+            See all alleles for the gene{" "}
             <FontAwesomeIcon icon={faArrowRightLong} />
           </Link>
         </Card>
       </Container>
+
+      <QCModal
+        onClose={() => {
+          setQcData(null);
+        }}
+        qcData={qcData}
+      />
     </>
   );
 };

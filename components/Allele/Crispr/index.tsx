@@ -1,6 +1,7 @@
 import React from "react";
 import {
   faCartShopping,
+  faExternalLink,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,8 +32,8 @@ const Crispr = ({
 
   if (loading) {
     return (
-      <Card id="esCell">
-        <h2>ES Cells</h2>
+      <Card id="cripsr">
+        <h2>Crispr</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -40,25 +41,145 @@ const Crispr = ({
 
   if (error) {
     return (
-      <Card id="esCell">
-        <h2>ES Cells</h2>
+      <Card id="cripsr">
+        <h2>Crispr</h2>
         <Alert variant="primary">
-          No ES cell products found for this allele.
+          No Crispr products found for this allele.
         </Alert>
       </Card>
     );
   }
 
-  return (
-    <Card id="esCell">
-      <h2>ES Cells</h2>
-      {!data && data.length == 0 ? (
-        <Alert variant="primary" style={{ marginTop: "1em" }}>
-          No ES cell products found for this allele.
-        </Alert>
-      ) : (
-      )}
+  const valuePair = (key, value) => (
+    <div>
+      <span className="grey">{key}: </span>
+      <strong>{value}</strong>
+    </div>
+  );
+
+  // const printCriprData = (data: { [key: string]: any }, level: number) => {
+  //   const entries = Object.entries(data ?? {});
+  //   return entries.map(([key, value]) => {
+  //     return (
+  //       <div style={{ paddingLeft: level * 16 }}>
+  //         <span className="grey">{key}:</span>{" "}
+  //         <>
+  //           {typeof value === "string" || typeof value === "number" ? (
+  //             <strong>{value}</strong>
+  //           ) : Array.isArray(value) ? (
+  //             <>
+  //               [
+  //               {value.map((v, index) => (
+  //                 <div>
+  //                   {index > 0 && <div className="grey">,</div>}
+  //                   {printCriprData(v, level + 1)}
+  //                 </div>
+  //               ))}
+  //               ]
+  //             </>
+  //           ) : typeof value === "object" ? (
+  //             printCriprData(value, level + 1)
+  //           ) : (
+  //             "other"
+  //           )}
+  //         </>
+  //       </div>
+  //     );
+  //   });
+  // };
+
+  const tableHeaders = [
+    { field: "guideSequence", label: "Guide sequence", width: 2 },
+    { field: "pam", label: "PAM", width: 2 },
+    { field: "chr", label: "CHR", width: 2 },
+    { field: "start", label: "Start", width: 2 },
+    { field: "stop", label: "Stop", width: 2 },
+    { field: "strand", label: "Strand", width: 2 },
+    { field: "genomeBuild", label: "Genome build", width: 2 },
+    { field: "grnaConcentration", label: "GRNA concentration", width: 2 },
+    { field: "truncatedGuide", label: "Truncated guide", width: 2 },
+    { field: "reversed", label: "Reversed", width: 2 },
+    { field: "sangerService", label: "Sanger service", width: 2 },
+    { field: "guideFormat", label: "Guide format", width: 2 },
+    { field: "guideSource", label: "Guide source", width: 2 },
+  ];
+
+  return !data ? (
+    <Card id="crispr">
+      <h2>Crispr</h2>
+      <Alert variant="primary" style={{ marginTop: "1em" }}>
+        No Crispr products found for this allele.
+      </Alert>
     </Card>
+  ) : (
+    <>
+      <Card id="crispr">
+        <h2>Sequence</h2>
+        {data.fasta.map(
+          ({ sequence, sequenceType, sequenceCategory }, index) => (
+            <div
+              className={`bg-grey-light ${index > 0 && "mt-3"}`}
+              style={{ padding: "1rem" }}
+            >
+              {sequence}
+              <p className="grey mt-2 small">
+                Type: {sequenceType}
+                <span className="ms-3 me-3 ">|</span>Category:{" "}
+                {sequenceCategory}
+              </p>
+            </div>
+          )
+        )}
+      </Card>
+      <Card>
+        <h2>Cripr details</h2>
+        <p>
+          <a
+            href={`https://www.informatics.jax.org/allele/${data.mgiAlleleId}`}
+            target="_blank"
+          >
+            {data.mgiGeneAccessionId}{" "}
+            <span className="grey">
+              <FontAwesomeIcon size="xs" icon={faExternalLink} />
+            </span>
+          </a>
+        </p>
+
+        <h3 className="mb-0 mt-1">Nucleases</h3>
+        {data.nucleases.map(({ nucleaseType, nucleaseClass }) => (
+          <>
+            <div className="mt-3">
+              {valuePair("Type", nucleaseType)}
+              {valuePair("Class", nucleaseClass)}
+            </div>
+          </>
+        ))}
+
+        <h3 className="mb-0 mt-4">Genotype primers</h3>
+        {data.genotypePrimers.map(({ name, sequence }) => (
+          <>
+            <div className="mt-3">
+              {valuePair("Name", name)}
+              {valuePair("Sequence", sequence)}
+            </div>
+          </>
+        ))}
+
+        <h3 className="mb-0 mt-4">Guides</h3>
+        <SortableTable doSort={() => {}} headers={tableHeaders}>
+          {data.guides.map((guide) => {
+            return (
+              <tr>
+                {tableHeaders.map(({ field }) => (
+                  <td>{guide[field]}</td>
+                ))}
+              </tr>
+            );
+          })}
+        </SortableTable>
+        {/* {printCriprData(data, 0)} */}
+      </Card>
+    </>
   );
 };
 export default Crispr;

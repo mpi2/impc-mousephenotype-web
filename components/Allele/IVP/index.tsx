@@ -43,7 +43,7 @@ const IntermediateVector = ({
 
   if (error) {
     return (
-      <Card id="targetingVector">
+      <Card id="intermediateVector">
         <h2>Intermediate vectors</h2>
         <Alert variant="primary">
           No intermediate vector products found for this allele.
@@ -53,7 +53,7 @@ const IntermediateVector = ({
   }
 
   return (
-    <Card id="targetingVector">
+    <Card id="intermediateVector">
       <h2>Intermediate vectors</h2>
       {!data && data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>

@@ -15,11 +15,18 @@ import styles from "./styles.module.scss";
 const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
+  const [filtered, setFiltered] = useState<any[]>(null);
   const [data, loading, error] = useQuery({
     // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`,
     query: `/api/v1/genes/${router.query.pid}/order`,
     afterSuccess: (data) => {
-      setSorted(_.orderBy(data, "alleleSymbol", "asc"));
+      const filteredData = (data ?? []).filter(
+        (d) =>
+          d.productTypes.length > 1 ||
+          !["intermediate_vector", "crispr"].includes(d.productTypes[0])
+      );
+      setFiltered(filteredData);
+      setSorted(_.orderBy(filteredData, "alleleSymbol", "asc"));
     },
   });
 
@@ -66,7 +73,7 @@ const Order = ({ gene }: { gene: any }) => {
           {(pageData) => (
             <SortableTable
               doSort={(sort) => {
-                setSorted(_.orderBy(data, sort[0], sort[1]));
+                setSorted(_.orderBy(filtered, sort[0], sort[1]));
               }}
               defaultSort={["alleleSymbol", "asc"]}
               headers={[
@@ -108,9 +115,10 @@ const Order = ({ gene }: { gene: any }) => {
                     <td className="text-capitalize">
                       <Link
                         href={`/alleles/${router.query.pid}/${allele[1]}`}
-                        className="link primary">
-                        View products<FontAwesomeIcon icon={faArrowRight} />
-
+                        className="link primary"
+                      >
+                        View products
+                        <FontAwesomeIcon icon={faArrowRight} />
                       </Link>
                     </td>
                   </tr>
