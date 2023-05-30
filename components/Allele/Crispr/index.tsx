@@ -141,27 +141,29 @@ const Crispr = ({
     </Card>
   ) : (
     <>
-      <Card id="crispr">
-        <h2>Sequence</h2>
-        {data.fasta.map(
-          ({ sequence, sequenceType, sequenceCategory }, index) => (
-            <div
-              className={`bg-grey-light ${index > 0 && "mt-3"}`}
-              style={{ padding: "1rem", position: "relative" }}
-            >
-              {sequence}
-              <p className="grey mt-2 mb-0 small">
-                Type: {sequenceType}
-                <span className="ms-3 me-3 ">|</span>Category:{" "}
-                {sequenceCategory}
-              </p>
-              <div style={{ position: "absolute", bottom: 16, right: 16 }}>
-                <CopyButton sequence={sequence} />
+      {!!data.fasta && (
+        <Card id="crispr">
+          <h2>Sequence</h2>
+          {data.fasta.map(
+            ({ sequence, sequenceType, sequenceCategory }, index) => (
+              <div
+                className={`bg-grey-light ${index > 0 && "mt-3"}`}
+                style={{ padding: "1rem", position: "relative" }}
+              >
+                {sequence}
+                <p className="grey mt-2 mb-0 small">
+                  Type: {sequenceType}
+                  <span className="ms-3 me-3 ">|</span>Category:{" "}
+                  {sequenceCategory}
+                </p>
+                <div style={{ position: "absolute", bottom: 16, right: 16 }}>
+                  <CopyButton sequence={sequence} />
+                </div>
               </div>
-            </div>
-          )
-        )}
-      </Card>
+            )
+          )}
+        </Card>
+      )}
       <Card>
         <h2>Cripr details</h2>
         <p>

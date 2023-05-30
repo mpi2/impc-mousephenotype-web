@@ -77,8 +77,7 @@ const Oligo = () => {
             <strong>High Throughput Gene Targeting</strong>
             <span> | Design Id: {router.query.id}</span>
           </h1>
-          <p className="red">Missing image</p>
-          {/* <img src="https://www.mousephenotype.org/data/img/target_design_trimmed.png" /> */}
+          <img src="https://www.mousephenotype.org/data/img/target_design_trimmed.png" />
         </Card>
         <Card>
           <h2>Oligos</h2>

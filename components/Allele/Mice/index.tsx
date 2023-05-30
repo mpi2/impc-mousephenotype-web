@@ -120,23 +120,22 @@ const Mice = ({
                         </>
                       )}
                       <td>
-                        {!!p.orders && p.orders.length > 0 ? (
-                          p.orders.map(({ orderLink, orderName }) => (
-                            <a
-                              href={orderLink}
-                              target="_blank"
-                              className="link primary"
-                            >
-                              <FontAwesomeIcon icon={faCartShopping} />{" "}
-                              {orderName}
-                            </a>
-                          ))
-                        ) : (
-                          <a href={p.contactLinks} className="link primary">
-                            <FontAwesomeIcon icon={faEnvelope} />{" "}
-                            {p.contactNames}
+                        {p.orders.map(({ orderLink, orderName }) => (
+                          <a
+                            href={orderLink}
+                            target="_blank"
+                            className="link primary"
+                          >
+                            <FontAwesomeIcon
+                              icon={
+                                orderLink.includes("mailto:")
+                                  ? faEnvelope
+                                  : faCartShopping
+                              }
+                            />{" "}
+                            {orderName}
                           </a>
-                        )}
+                        ))}
                       </td>
                     </tr>
                   );
