@@ -1,17 +1,45 @@
 import React from "react";
 import {
   faCartShopping,
+  faCopy,
   faExternalLink,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import useQuery from "../../useQuery";
+
+const CopyButton = ({ sequence }) => {
+  const [clicked, setClicked] = useState(false);
+
+  function handleClick() {
+    if (clicked) return;
+    const storage = document.createElement("textarea");
+    storage.value = sequence;
+    document.body.appendChild(storage);
+
+    // Copy the text in the fake `textarea` and remove the `textarea`
+    storage.select();
+    storage.setSelectionRange(0, 999999);
+    document.execCommand("copy");
+    document.body.removeChild(storage);
+    setClicked(true);
+    setTimeout(() => {
+      setClicked(false);
+    }, 1000);
+  }
+
+  return (
+    <Button onClick={handleClick} variant="outline-secondary" size="sm">
+      <FontAwesomeIcon icon={faCopy} /> {clicked ? "Copied!" : "Copy"}
+    </Button>
+  );
+};
 
 const Crispr = ({
   mgiGeneAccessionId,
@@ -119,14 +147,17 @@ const Crispr = ({
           ({ sequence, sequenceType, sequenceCategory }, index) => (
             <div
               className={`bg-grey-light ${index > 0 && "mt-3"}`}
-              style={{ padding: "1rem" }}
+              style={{ padding: "1rem", position: "relative" }}
             >
               {sequence}
-              <p className="grey mt-2 small">
+              <p className="grey mt-2 mb-0 small">
                 Type: {sequenceType}
                 <span className="ms-3 me-3 ">|</span>Category:{" "}
                 {sequenceCategory}
               </p>
+              <div style={{ position: "absolute", bottom: 16, right: 16 }}>
+                <CopyButton sequence={sequence} />
+              </div>
             </div>
           )
         )}

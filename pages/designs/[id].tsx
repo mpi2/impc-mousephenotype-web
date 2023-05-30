@@ -6,24 +6,49 @@ import Search from "../../components/Search";
 import _ from "lodash";
 import SortableTable from "../../components/SortableTable";
 import styles from "./styles.module.scss";
+import useQuery from "../../components/useQuery";
 
 const Oligo = () => {
   const router = useRouter();
-  const [data, setData] = useState(null);
-  // useEffect(() => {
-  //   (async () => {
-  //     if (!router.query.id) return;
-  //     try {
-  //       const res = await fetch(`/api/v1/oligos/123`);
-  //       if (res.ok) {
-  //         const oligo = await res.json();
-  //         setData(oligo);
-  //       }
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   })();
-  // }, [router.query.id]);
+  const [data, loading, error] = useQuery({
+    query: `/api/v1/alleles/htgt/designId:${router.query.id}`,
+  });
+
+  if (loading) {
+    return (
+      <>
+        <Search />
+        <Container className="page"></Container>
+        <Card>
+          <div className={styles.subheading}>
+            <span className={`${styles.subheadingSection} primary`}>
+              <button
+                style={{
+                  border: 0,
+                  background: "none",
+                  padding: 0,
+                }}
+                onClick={() => {
+                  router.back();
+                }}
+              >
+                <a href="#" className="grey mb-3">
+                  MAVS
+                </a>
+              </button>{" "}
+              / DESIGN OLIGOS
+            </span>
+          </div>
+          <h1 className="mb-4 mt-2">
+            <strong>High Throughput Gene Targeting</strong>
+            <span> | Design Id: 48714</span>
+          </h1>
+          <p className="grey">Loading...</p>
+        </Card>
+      </>
+    );
+  }
+
   return (
     <>
       <Search />
@@ -50,9 +75,10 @@ const Oligo = () => {
           </div>
           <h1 className="mb-4 mt-2">
             <strong>High Throughput Gene Targeting</strong>
-            <span> | Design Id: 48714</span>
+            <span> | Design Id: {router.query.id}</span>
           </h1>
-          <img src="https://www.mousephenotype.org/data/img/target_design_trimmed.png" />
+          <p className="red">Missing image</p>
+          {/* <img src="https://www.mousephenotype.org/data/img/target_design_trimmed.png" /> */}
         </Card>
         <Card>
           <h2>Oligos</h2>
@@ -67,60 +93,27 @@ const Oligo = () => {
               { label: "Strand", width: 1, disabled: true },
             ]}
           >
-            <tr>
-              <td>D3</td>
-              <td>54548017</td>
-              <td>54548066</td>
-              <td>CCACCACATCCTAAACCTTCCTTATATTGGCAAGCCTTGCTGCGCACTCT</td>
-              <td>GRCm38</td>
-              <td>9</td>
-              <td>-1</td>
-            </tr>
-            <tr>
-              <td>D3</td>
-              <td>54548017</td>
-              <td>54548066</td>
-              <td>CCACCACATCCTAAACCTTCCTTATATTGGCAAGCCTTGCTGCGCACTCT</td>
-              <td>GRCm38</td>
-              <td>9</td>
-              <td>-1</td>
-            </tr>
-            <tr>
-              <td>D3</td>
-              <td>54548017</td>
-              <td>54548066</td>
-              <td>CCACCACATCCTAAACCTTCCTTATATTGGCAAGCCTTGCTGCGCACTCT</td>
-              <td>GRCm38</td>
-              <td>9</td>
-              <td>-1</td>
-            </tr>
-            <tr>
-              <td>D3</td>
-              <td>54548017</td>
-              <td>54548066</td>
-              <td>CCACCACATCCTAAACCTTCCTTATATTGGCAAGCCTTGCTGCGCACTCT</td>
-              <td>GRCm38</td>
-              <td>9</td>
-              <td>-1</td>
-            </tr>
-            <tr>
-              <td>D3</td>
-              <td>54548017</td>
-              <td>54548066</td>
-              <td>CCACCACATCCTAAACCTTCCTTATATTGGCAAGCCTTGCTGCGCACTCT</td>
-              <td>GRCm38</td>
-              <td>9</td>
-              <td>-1</td>
-            </tr>
-            <tr>
-              <td>D3</td>
-              <td>54548017</td>
-              <td>54548066</td>
-              <td>CCACCACATCCTAAACCTTCCTTATATTGGCAAGCCTTGCTGCGCACTCT</td>
-              <td>GRCm38</td>
-              <td>9</td>
-              <td>-1</td>
-            </tr>
+            {data.map(
+              ({
+                assembly,
+                chr,
+                strand,
+                oligoStart,
+                oligoStop,
+                featureType,
+                oligoSequence,
+              }) => (
+                <tr>
+                  <td>{featureType}</td>
+                  <td>{oligoStart}</td>
+                  <td>{oligoStop}</td>
+                  <td>{oligoSequence}</td>
+                  <td>{assembly}</td>
+                  <td>{chr}</td>
+                  <td>{strand}</td>
+                </tr>
+              )
+            )}
           </SortableTable>
         </Card>
       </Container>

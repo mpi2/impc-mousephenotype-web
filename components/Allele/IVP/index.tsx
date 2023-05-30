@@ -81,7 +81,7 @@ const IntermediateVector = ({
                   <tr>
                     <td>
                       <Link
-                        href={p.designLink}
+                        href={`/design/${p.designLink}`}
                         scroll={false}
                         className="secondary"
                       >
