@@ -13,7 +13,13 @@ import "chartjs-adapter-moment";
 import { FC } from "react";
 
 import { Chart } from "react-chartjs-2";
-import { bgColors, boderColors, pointRadius, shapes, UnidimensionalSeries } from "..";
+import {
+  bgColors,
+  boderColors,
+  pointRadius,
+  shapes,
+  UnidimensionalSeries,
+} from "..";
 
 ChartJS.register(
   LinearScale,
@@ -32,8 +38,6 @@ interface IUnidimensionalScatterPlotProps {
   parameterName: string;
   unit: string;
 }
-
-
 
 const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
   const labelSex = series.sex[0].toUpperCase() + series.sex.slice(1);
@@ -121,14 +125,14 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
               text: `${parameterName} (${unit})`,
               display: true,
               align: "center",
-              padding: 5
+              padding: 5,
             },
           },
           y1: {
             type: "linear",
             display: false,
             position: "right",
-
+            max: 1.1,
             grid: {
               drawOnChartArea: false,
             },

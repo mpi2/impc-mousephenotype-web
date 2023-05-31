@@ -11,24 +11,23 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 const DataComparison = ({ data }) => {
   const groups = data?.reduce((acc, d) => {
     const {
-      phenotype: { id },
       alleleAccessionId,
       parameterStableId,
       zygosity,
       sex,
-      pValue,
+      reportedPValue,
     } = d;
 
-    const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}`;
+    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}`;
     if (acc[key]) {
-      if (acc[key].pValue < pValue) {
-        acc[key].pValue = Number(pValue);
+      if (acc[key].reportedPValue < reportedPValue) {
+        acc[key].reportedPValue = Number(reportedPValue);
         acc[key].sex = sex;
       }
     } else {
       acc[key] = { ...d };
     }
-    acc[key][`pValue_${sex}`] = Number(pValue);
+    acc[key][`pValue_${sex}`] = Number(reportedPValue);
 
     return acc;
   }, {});
@@ -37,8 +36,8 @@ const DataComparison = ({ data }) => {
     (groups ? Object.values(groups) : []).map((d: any) => ({
       ...d,
       topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
-      phenotype: d.phenotype.name,
-      id: d.phenotype.id,
+      phenotype: d.significantPhenotype.name,
+      id: d.significantPhenotype.id,
     })) || [];
 
   const [sorted, setSorted] = useState<any[]>(null);
@@ -110,7 +109,7 @@ const DataComparison = ({ data }) => {
               <tr>
                 <td>{i + 1}</td>
                 <td>{d.parameterName}</td>
-                <td>Phenotyping centre 1</td>
+                <td>{d.phenotypingCentre}</td>
                 <td>
                   {allele[0]}
                   <sup>{allele[1]}</sup>

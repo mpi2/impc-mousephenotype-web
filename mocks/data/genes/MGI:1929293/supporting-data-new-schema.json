@@ -1,0 +1,199 @@
+[
+  {
+    "datasetId": "27b657a688e59ab284d9e710ec66d721",
+    "strainAccessionId": "MGI:2164831",
+    "strainName": "C57BL/6NTac",
+    "geneticBackground": "involves: C57BL/6NTac",
+    "colonyId": "H-CIB2-D04-TM1B",
+    "mgiGeneAccessionId": "MGI:1929293",
+    "geneSymbol": "Cib2",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "metadataGroup": "a8ee4a7178561c567069d111ea7338b8",
+    "metadataValues": [
+      "Anesthesia used for blood collection = Gas anaesthesia with Isofluorane|Anticoagulant = EDTA|Blood analysis experimenter ID = null|Blood collection experimenter ID = 1|Blood collection tubes = Kabe Labortechnik 200ul EDTA|Date and time of blood collection = 2012-10-16T00:00:00+0100|Date and time of sacrifice = 2012-10-16T00:00:00+0100|Equipment ID = Haematology analyser|Equipment manufacturer = Siemens Medical Solutions Diagnostics|Equipment model = Advia 2120|ID for blood collection SOP = ESLIM_024_001|Method of blood collection = Retro-orbital puncture|Samples kept on ice between collection and analysis = No|Service-related calibration start date = 2011-09-13|Storage temperature from blood collection until measurement = 18-22",
+      "Anesthesia used for blood collection = Gas anaesthesia with Isofluorane|Anticoagulant = EDTA|Blood analysis experimenter ID = 3641252|Blood collection experimenter ID = 1|Blood collection tubes = Kabe Labortechnik 200ul EDTA|Date and time of blood collection = 2012-10-09T00:00:00+0100|Date and time of sacrifice = 2012-10-09T00:00:00+0100|Equipment ID = Haematology analyser|Equipment manufacturer = Siemens Medical Solutions Diagnostics|Equipment model = Advia 2120|ID for blood collection SOP = ESLIM_024_001|Method of blood collection = Retro-orbital puncture|Samples kept on ice between collection and analysis = No|Service-related calibration start date = 2011-09-13|Storage temperature from blood collection until measurement = 18-22",
+      "Anesthesia used for blood collection = Gas anaesthesia with Isofluorane|Anticoagulant = EDTA|Blood analysis experimenter ID = 3641252|Blood collection experimenter ID = 1|Blood collection tubes = Kabe Labortechnik 200ul EDTA|Date and time of blood collection = 2012-10-16T00:00:00+0100|Date and time of sacrifice = 2012-10-16T00:00:00+0100|Equipment ID = Haematology analyser|Equipment manufacturer = Siemens Medical Solutions Diagnostics|Equipment model = Advia 2120|ID for blood collection SOP = ESLIM_024_001|Method of blood collection = Retro-orbital puncture|Samples kept on ice between collection and analysis = No|Service-related calibration start date = 2011-09-13|Storage temperature from blood collection until measurement = 18-22"
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "dataType": "unidimensional",
+    "productionCenter": "MRC Harwell",
+    "phenotypingCenter": "MRC Harwell",
+    "projectName": "MRC",
+    "resourceName": "IMPC",
+    "resourceFullname": "IMPC",
+    "pipelineStableKey": 8,
+    "pipelineStableId": "HRWL_001",
+    "pipelineName": "Harwell",
+    "procedureStableKey": 675,
+    "procedureStableId": "IMPC_HEM_002",
+    "procedureName": "Hematology",
+    "parameterStableKey": 29872,
+    "parameterStableId": "IMPC_HEM_037_001",
+    "parameterName": "Basophil cell count",
+    "summaryStatistics": {
+      "femaleControlCount": 205,
+      "femaleControlMean": 0.0468780487804878,
+      "femaleMutantCount": 6,
+      "femaleMutantMean": 0.0616666666666667,
+      "maleControlCount": 251,
+      "maleControlMean": 0.0619123505976096,
+      "maleMutantCount": 13,
+      "maleMutantMean": 0.153846153846154
+    },
+    "status": "Successful",
+    "testedSexes": ["male", "female"],
+    "phenotypeSex": "male",
+    "significant": true,
+    "classificationTag": "With phenotype threshold value 1e-04 - Significant for males only",
+    "reportedPValue": 0.604448492284445,
+    "reportedEffectSize": 1.63786815120672,
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, not including Weight",
+      "attributes": {
+        "femaleKoEffectPValue": 0.6507057018595,
+        "femaleKoEffectStderrEstimate": 0.0161151365129797,
+        "femaleKoParameterEstimate": -0.00730816634092395,
+        "femalePercentageChange": -1.79681770347269,
+        "genotypeEffectPValue": 0.604448492284445,
+        "genotypeEffectParameterEstimate": -0.0083742939959617,
+        "genotypeEffectStderrEstimate": 0.0161394645007291,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 6.98086813359277e-10,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.254972243907827,
+        "interactionEffectPValue": 0.00589816756855721,
+        "interactionSignificant": true,
+        "interceptEstimate": 0.066858382256446,
+        "interceptEstimateStderrEstimate": 0.0103192729095486,
+        "maleKoEffectPValue": 0.000085900013922149,
+        "maleKoEffectStderrEstimate": 0.0116096232226678,
+        "maleKoParameterEstimate": 0.0465937908267818,
+        "malePercentageChange": 82.4136213110961,
+        "sexEffectPValue": 0.756207236209936,
+        "sexEffectParameterEstimate": 0.00193815579518393,
+        "sexEffectStderrEstimate": 0.00623384035083421,
+        "maleEffectSize": 2.11836375815516,
+        "femaleEffectSize": 0.150037233659509
+      }
+    },
+    "softWindowing": {
+      "bandwidth": 110,
+      "shape": 1.04133291282715,
+      "peaks": [15622, 15629],
+      "minObsRequired": 140,
+      "totalObsOrWeight": 208,
+      "threshold": 1.49011611938477e-7,
+      "numberOfDoe": 2,
+      "doeNote": "no note available"
+    },
+    "significantPhenotype": {
+      "id": "MP:0002606",
+      "name": "increased basophil cell number"
+    },
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002422",
+        "name": "abnormal basophil morphology"
+      },
+      {
+        "id": "MP:0011180",
+        "name": "abnormal hematopoietic cell number"
+      },
+      {
+        "id": "MP:0000217",
+        "name": "abnormal leukocyte cell number"
+      },
+      {
+        "id": "MP:0000716",
+        "name": "abnormal immune system cell morphology"
+      },
+      {
+        "id": "MP:0013658",
+        "name": "abnormal myeloid cell morphology"
+      },
+      {
+        "id": "MP:0000322",
+        "name": "abnormal hematopoietic system morphology/development"
+      },
+      {
+        "id": "MP:0000218",
+        "name": "increased hematopoietic cell number"
+      },
+      {
+        "id": "MP:0002396",
+        "name": "abnormal myeloid leukocyte morphology"
+      },
+      {
+        "id": "MP:0011181",
+        "name": "abnormal granulocyte number"
+      },
+      {
+        "id": "MP:0008250",
+        "name": "abnormal hematopoietic cell morphology"
+      },
+      {
+        "id": "MP:0020201",
+        "name": "abnormal basophil cell number"
+      },
+      {
+        "id": "MP:0013656",
+        "name": "abnormal granulocyte morphology"
+      },
+      {
+        "id": "MP:0012442",
+        "name": "abnormal leukocyte morphology"
+      },
+      {
+        "id": "MP:0002441",
+        "name": "abnormal blood cell morphology"
+      },
+      {
+        "id": "MP:0008246",
+        "name": "abnormal immune system morphology"
+      },
+      {
+        "id": "MP:0013657",
+        "name": "abnormal myeloblast morphology/development"
+      },
+      {
+        "id": "MP:0000685",
+        "name": "abnormal bone marrow cell morphology/development"
+      },
+      {
+        "id": "MP:0002414",
+        "name": "abnormal myeloblast morphology/development"
+      },
+      {
+        "id": "MP:0002398",
+        "name": "abnormal bone marrow cell morphology/development"
+      }
+    ],
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005387",
+        "name": "immune system phenotype"
+      },
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ],
+    "potentialPhenotypes": [
+      {
+        "id": "MP:0002606",
+        "name": "abnormal basophil cell number"
+      },
+      {
+        "id": "MP:0012442",
+        "name": "increased basophil cell number"
+      },
+      {
+        "id": "MP:0002607",
+        "name": "decreased basophil cell number"
+      }
+    ]
+  }
+]

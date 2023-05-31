@@ -11,8 +11,14 @@ import Histopathology from "../../components/Data/Histopathology";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong, faTable } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeftLong,
+  faStar,
+  faTable,
+} from "@fortawesome/free-solid-svg-icons";
 import DataComparison from "../../components/Data/DataComparison";
+import useQuery from "../../components/useQuery";
+import { formatPValue } from "../../utils";
 
 const mockData = [
   {
@@ -103,13 +109,13 @@ const mockData = [
 
 const Charts = () => {
   const [mode, setMode] = useState("Unidimensional");
-  const [tab, setTab] = useState("a");
+  const [tab, setTab] = useState(0);
   const [showComparison, setShowComparison] = useState(false);
   const router = useRouter();
-  const getPage = () => {
-    switch (mode) {
-      case "Unidimensional":
-        return <Unidimensional />;
+  const getChartType = (datasetSummary: any) => {
+    switch (datasetSummary["dataType"]) {
+      case "unidimensional":
+        return <Unidimensional datasetSummary={datasetSummary} />;
       case "Categorical":
         return <Categorical />;
       case "Viability":
@@ -125,6 +131,16 @@ const Charts = () => {
         return null;
     }
   };
+
+  const [datasetSummaries, loading, error] = useQuery({
+    query: `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`,
+  });
+  datasetSummaries ? console.log(datasetSummaries) : null;
+  if (datasetSummaries) {
+    datasetSummaries.sort((a, b) => {
+      return a["reportedPValue"] - b["reportedPValue"];
+    });
+  }
   return (
     <>
       <Search />
@@ -143,14 +159,17 @@ const Charts = () => {
                 }}
               >
                 <a href="#" className="grey mb-3">
-                  MAVS
+                  {datasetSummaries && datasetSummaries[0]["geneSymbol"]}
                 </a>
               </button>{" "}
               / phenotype data breakdown
             </span>
           </div>
           <h1 className="mb-4 mt-2">
-            <strong>Decreased bone mineral content</strong>
+            <strong className="text-capitalize">
+              {datasetSummaries &&
+                datasetSummaries[0]["significantPhenotype"]["name"]}
+            </strong>
           </h1>
           <Alert variant="green" className="mb-0">
             <div
@@ -163,8 +182,18 @@ const Charts = () => {
               }}
             >
               <span>
-                3 parameter/something/something combinations tested, with the
-                highest p-value of <strong>2.80x10-5</strong>.
+                {datasetSummaries && datasetSummaries.length} parameter /
+                zygosity / metadata group combinations tested, with the lowest
+                p-value of{" "}
+                <strong>
+                  {datasetSummaries &&
+                    formatPValue(
+                      Math.min(
+                        ...datasetSummaries.map((d) => d["reportedPValue"])
+                      )
+                    )}
+                </strong>
+                .
               </span>
               <Button
                 variant="secondary"
@@ -178,7 +207,9 @@ const Charts = () => {
               </Button>
             </div>
           </Alert>
-          {showComparison && <DataComparison data={mockData} />}
+          {!loading && showComparison && (
+            <DataComparison data={datasetSummaries} />
+          )}
         </Card>
       </Container>
       <div
@@ -186,19 +217,27 @@ const Charts = () => {
         className="bg-grey pt-2"
       >
         <Container>
-          <Tabs defaultActiveKey={"a"} onSelect={(e) => setTab(e)}>
-            <Tab
-              eventKey="a"
-              title={`Combination 1 (2.80x10e-5 | highest)`}
-            ></Tab>
-            <Tab eventKey="b" title={`Combination 2 (2.14x10e-6)`}></Tab>
-            <Tab eventKey="c" title={`Combination 3 (2.14x10e-6)`}></Tab>
+          <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
+            {datasetSummaries &&
+              datasetSummaries.map((d, i) => (
+                <Tab
+                  eventKey={i}
+                  title={
+                    <>
+                      Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
+                      {i === 0 ? " | lowest" : null})
+                    </>
+                  }
+                  key={i}
+                >
+                  <div>{getChartType(d)}</div>
+                </Tab>
+              ))}
           </Tabs>
         </Container>
       </div>
       <Container>
-        {getPage()}
-        <Card>
+        {/* <Card>
           <p>Current mode: {mode}</p>
           <div style={{ display: "flex" }}>
             <button
@@ -244,7 +283,7 @@ const Charts = () => {
               Histopathology
             </button>
           </div>
-        </Card>
+        </Card> */}
       </Container>
     </>
   );

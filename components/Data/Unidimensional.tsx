@@ -14,22 +14,25 @@ import Card from "../Card";
 import SortableTable from "../SortableTable";
 import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
+import { formatAlleleSymbol } from "../../utils";
 
-const Unidimensional = () => {
+const Unidimensional = ({ datasetSummary }) => {
   const router = useRouter();
   const [scatterSeries, setScatterSeries] = useState([]);
   const [lineSeries, setLineSeries] = useState([]);
   const [boxPlotSeries, setBoxPlotSeries] = useState([]);
 
-  const getScatterSeries = (dataPoints, sex, sampleGroup) => {
-    const data = dataPoints
-      .filter(
-        (p) => p.biologicalSampleGroup === sampleGroup && p.specimenSex === sex
-      )
-      .map((p) => {
-        p.x = moment(p.dateOfExperiment);
-        p.y = +p.dataPoint;
-        return p;
+  const getScatterSeries = (dataSeries, sex, sampleGroup) => {
+    if (!dataSeries) {
+      return null;
+    }
+    const data = dataSeries
+      .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === sex)
+      ["observations"].map((p) => {
+        const p2 = { ...p };
+        p2.x = moment(p.dateOfExperiment);
+        p2.y = +p.dataPoint;
+        return p2;
       });
     return {
       sex,
@@ -38,39 +41,53 @@ const Unidimensional = () => {
     };
   };
 
+  const totalMice = Object.keys(datasetSummary["summaryStatistics"]).reduce(
+    (acc, key) => {
+      return (
+        acc +
+        (key.includes("Count") ? datasetSummary["summaryStatistics"][key] : 0)
+      );
+    },
+    0
+  );
+
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `/api/v1/supporting-data-unidimensional/MGI:1929293/`
+        `https://impc-datasets.s3.eu-west-2.amazonaws.com/latest/${datasetSummary["datasetId"]}.json`
       );
       if (res.ok) {
         const response = await res.json();
         console.log(response);
-        const dataPoints = response.dataPoints;
+        const dataSeries = response.series;
 
         const femaleWTPoints = getScatterSeries(
-          dataPoints,
+          dataSeries,
           "female",
           "control"
         );
-        const maleWTPoints = getScatterSeries(dataPoints, "male", "control");
+        const maleWTPoints = getScatterSeries(dataSeries, "male", "control");
         const femaleHomPoints = getScatterSeries(
-          dataPoints,
+          dataSeries,
           "female",
           "experimental"
         );
         const maleHomPoints = getScatterSeries(
-          dataPoints,
+          dataSeries,
           "male",
           "experimental"
         );
-        const windowPoints = [...dataPoints].map((p) => {
-          const windowP = { ...p };
-          windowP.x = moment(p.dateOfExperiment);
-          const weigth = p.windowWeight ? +p.windowWeight : 1;
-          windowP.y = weigth;
-          return windowP;
-        });
+        const windowPoints = [...dataSeries.flatMap((s) => s.observations)]
+          .filter((p) => p.windowWeight)
+          .map((p) => {
+            const windowP = { ...p };
+            windowP.x = moment(p.dateOfExperiment);
+            const weigth = p.windowWeight ? +p.windowWeight : null;
+            windowP.y = weigth;
+            return windowP;
+          });
+        windowPoints.sort((a, b) => a.x - b.x);
+        console.log(windowPoints);
 
         setBoxPlotSeries([
           femaleWTPoints,
@@ -94,6 +111,8 @@ const Unidimensional = () => {
     return <p>Loading...</p>;
   }
 
+  const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
+
   return (
     <>
       <Card>
@@ -109,18 +128,24 @@ const Unidimensional = () => {
             </a>
           </button>
           <h1>
-            <strong>Mavs data charts</strong>
+            <strong>{datasetSummary["geneSymbol"]} data charts</strong>
           </h1>
         </div>
         <h2>Description of the experiments performed</h2>
         <Row>
           <Col md={7} style={{ borderRight: "1px solid #ddd" }}>
             <p>
-              A Body Composition (DEXA lean/fat) phenotypic assay was performed
-              on 802 mice. The charts show the results of measuring Bone Mineral
-              Density (excluding skull) in 8 female, 8 male mutants compared to
-              395 female, 391 male controls. The mutants are for the
-              Mavsem1(IMPC)Mbp allele.
+              A <strong>{datasetSummary["procedureName"]}</strong> phenotypic
+              assay was performed on {totalMice} mice. The charts show the
+              results of measuring{" "}
+              <strong>{datasetSummary["parameterName"]}</strong> in{" "}
+              {datasetSummary["summaryStatistics"]["femaleMutantCount"]} female,{" "}
+              {datasetSummary["summaryStatistics"]["maleMutantCount"]} male
+              mutants compared to{" "}
+              {datasetSummary["summaryStatistics"]["femaleControlCount"]}{" "}
+              female, {datasetSummary["summaryStatistics"]["maleControlCount"]}{" "}
+              male controls. The mutants are for the {allele[0]}
+              <sup>{allele[1]}</sup> allele.
             </p>
             <p className="small">
               * The high throughput nature of the IMPC means that large control
@@ -133,7 +158,7 @@ const Unidimensional = () => {
               <span style={{ display: "inline-block", width: 180 }}>
                 Testing protocol
               </span>
-              <strong>Body Composition (DEXA lean/fat)</strong>
+              <strong>{datasetSummary["procedureName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
@@ -145,31 +170,31 @@ const Unidimensional = () => {
               <span style={{ display: "inline-block", width: 180 }}>
                 Measured value
               </span>
-              <strong>Bone Mineral Density (excluding skull)</strong>
+              <strong>{datasetSummary["parameterName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Life stage
               </span>
-              <strong>Early adult</strong>
+              <strong>{datasetSummary["lifeStageName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Background Strain
               </span>
-              <strong>involves C57BL/6NCrl</strong>
+              <strong>{datasetSummary["geneticBackground"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Phenotyping center
               </span>
-              <strong>UC Davis</strong>
+              <strong>{datasetSummary["phenotypingCentre"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Associated Phenotype
               </span>
-              <strong>decreased bone mineral density</strong>
+              <strong>{datasetSummary["significantPhenotype"]["name"]}</strong>
             </p>
           </Col>
         </Row>
@@ -189,8 +214,8 @@ const Unidimensional = () => {
               scatterSeries={scatterSeries}
               lineSeries={lineSeries}
               zygosity="homozygote"
-              parameterName="Bone Mineral Density (excluding skull)"
-              unit="sm"
+              parameterName={datasetSummary["parameterName"]}
+              unit={"sm"}
             />
           </Card>
         </Col>
@@ -214,10 +239,7 @@ const Unidimensional = () => {
               <p className="mb-0">
                 <strong>Classification</strong>
               </p>
-              <p>
-                With phenotype threshold value 1e-04 - Significant for males
-                only
-              </p>
+              <p>{datasetSummary["classificationTag"]}</p>
             </Alert>
           </Card>
         </Col>

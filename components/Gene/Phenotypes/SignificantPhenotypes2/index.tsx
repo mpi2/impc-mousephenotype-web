@@ -24,6 +24,7 @@ const SignificantPhenotypes = ({ data }) => {
       zygosity,
       sex,
       pValue,
+      datasetId,
     } = d;
 
     const key = `${id}-${alleleAccessionId}-${zygosity}`;
@@ -116,8 +117,9 @@ const SignificantPhenotypes = ({ data }) => {
               <tr>
                 <td>
                   <Link
-                    href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
-                    legacyBehavior>
+                    href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}
+                    legacyBehavior
+                  >
                     <strong className={styles.link}>
                       {_.capitalize(d.phenotype)}
                     </strong>
@@ -157,7 +159,8 @@ const SignificantPhenotypes = ({ data }) => {
                     </span>
                     <Link
                       href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
-                      legacyBehavior>
+                      legacyBehavior
+                    >
                       <strong className={`link small float-right`}>
                         <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
                         <FontAwesomeIcon icon={faChevronRight} />
