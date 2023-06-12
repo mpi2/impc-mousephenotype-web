@@ -14,7 +14,7 @@ import Card from "../Card";
 import SortableTable from "../SortableTable";
 import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
-import { formatAlleleSymbol } from "../../utils";
+import { formatAlleleSymbol, formatPValue } from "../../utils";
 
 const Unidimensional = ({ datasetSummary }) => {
   const router = useRouter();
@@ -58,7 +58,6 @@ const Unidimensional = ({ datasetSummary }) => {
       );
       if (res.ok) {
         const response = await res.json();
-        console.log(response);
         const dataSeries = response.series;
 
         const femaleWTPoints = getScatterSeries(
@@ -87,7 +86,6 @@ const Unidimensional = ({ datasetSummary }) => {
             return windowP;
           });
         windowPoints.sort((a, b) => a.x - b.x);
-        console.log(windowPoints);
 
         setBoxPlotSeries([
           femaleWTPoints,
@@ -112,6 +110,7 @@ const Unidimensional = ({ datasetSummary }) => {
   }
 
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
+  console.log(datasetSummary);
 
   return (
     <>
@@ -227,15 +226,43 @@ const Unidimensional = ({ datasetSummary }) => {
               <p className="mb-0">
                 <strong>Genotype P value</strong>
               </p>
-              <p>0.604</p>
+              <p>
+                {formatPValue(
+                  datasetSummary["statisticalMethod"]["attributes"][
+                    "genotypeEffectPValue"
+                  ]
+                ) || "NA"}
+              </p>
               <p className="mb-0">
                 <strong>Genotype*Female P value</strong>
               </p>
-              <p>0.651</p>
+              <p>
+                {" "}
+                {datasetSummary["statisticalMethod"]["attributes"][
+                  "femaleKoEffectPValue"
+                ]
+                  ? formatPValue(
+                      datasetSummary["statisticalMethod"]["attributes"][
+                        "femaleKoEffectPValue"
+                      ]
+                    )
+                  : "NA"}
+              </p>
               <p className="mb-0">
                 <strong>Genotype*Male P value</strong>
               </p>
-              <p>8.59×10-05</p>
+              <p>
+                {" "}
+                {datasetSummary["statisticalMethod"]["attributes"][
+                  "maleKoEffectPValue"
+                ]
+                  ? formatPValue(
+                      datasetSummary["statisticalMethod"]["attributes"][
+                        "maleKoEffectPValue"
+                      ]
+                    )
+                  : "NA"}
+              </p>
               <p className="mb-0">
                 <strong>Classification</strong>
               </p>
@@ -256,27 +283,85 @@ const Unidimensional = ({ datasetSummary }) => {
             >
               <tr>
                 <td>Female Control</td>
-                <td>0.05</td>
-                <td>0.03</td>
-                <td>205</td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["femaleControlMean"]
+                    ? datasetSummary["summaryStatistics"][
+                        "femaleControlMean"
+                      ].toFixed(3)
+                    : 0}
+                </td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["femaleControlSd"]
+                    ? datasetSummary["summaryStatistics"][
+                        "femaleControlSd"
+                      ].toFixed(3)
+                    : 0}
+                </td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["femaleControlCount"] ||
+                    0}
+                </td>
               </tr>
               <tr>
                 <td>Female homozygote</td>
-                <td>0.06</td>
-                <td>0.02</td>
-                <td>6</td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["femaleMutantSd"]
+                    ? datasetSummary["summaryStatistics"][
+                        "femaleMutantSd"
+                      ].toFixed(3)
+                    : 0}
+                </td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["femaleMutantlMean"]
+                    ? datasetSummary["summaryStatistics"][
+                        "femaleMutantlMean"
+                      ].toFixed(3)
+                    : 0}
+                </td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["femaleMutantCount"] ||
+                    0}
+                </td>
               </tr>
               <tr>
                 <td>Male Control</td>
-                <td>0.06</td>
-                <td>0.04</td>
-                <td>251</td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["maleControlMean"]
+                    ? datasetSummary["summaryStatistics"][
+                        "maleControlMean"
+                      ].toFixed(3)
+                    : 0}
+                </td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["maleControlSd"]
+                    ? datasetSummary["summaryStatistics"][
+                        "maleControlSd"
+                      ].toFixed(3)
+                    : 0}
+                </td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["maleControlCount"] || 0}
+                </td>
               </tr>
               <tr>
                 <td>Male homozygote </td>
-                <td>0.15 </td>
-                <td>0.09</td>
-                <td>13</td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["maleMutantSd"]
+                    ? datasetSummary["summaryStatistics"][
+                        "maleMutantSd"
+                      ].toFixed(3)
+                    : 0}
+                </td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["maleMutantlMean"]
+                    ? datasetSummary["summaryStatistics"][
+                        "maleMutantlMean"
+                      ].toFixed(3)
+                    : 0}
+                </td>
+                <td>
+                  {datasetSummary["summaryStatistics"]["maleMutantCount"] || 0}
+                </td>
               </tr>
             </SortableTable>
           </Card>
@@ -292,63 +377,201 @@ const Unidimensional = ({ datasetSummary }) => {
             >
               <tr>
                 <td>Batch effect significant </td>
-                <td>true</td>
+                <td>
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "batchSignificant"
+                  ]
+                    ? "true"
+                    : "false"}
+                </td>
               </tr>
               <tr>
                 <td>Variance significant </td>
-                <td>true</td>
+                <td>
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "varianceSignificant"
+                  ]
+                    ? "true"
+                    : "false"}
+                </td>
               </tr>
               <tr>
                 <td>Genotype*Sex interaction effect p value </td>
-                <td>0.00590</td>
+                <td>
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "sexEffectPValue"
+                  ]
+                    ? formatPValue(
+                        datasetSummary["statisticalMethod"]["attributes"][
+                          "sexEffectPValue"
+                        ]
+                      )
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Genotype parameter estimate </td>
-                <td>-0.00837</td>
+                <td>
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "sexEffectParameterEstimate"
+                  ]
+                    ? datasetSummary["statisticalMethod"]["attributes"][
+                        "sexEffectParameterEstimate"
+                      ].toFixed(3)
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Genotype standard error estimate </td>
-                <td>0.0161</td>
+                <td>
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "genotypeEffectStderrEstimate"
+                  ]
+                    ? datasetSummary["statisticalMethod"]["attributes"][
+                        "genotypeEffectStderrEstimate"
+                      ].toFixed(3)
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Genotype Effect P Value </td>
-                <td>0.604</td>
+                <td>
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "genotypeEffectPValue"
+                  ]
+                    ? formatPValue(
+                        datasetSummary["statisticalMethod"]["attributes"][
+                          "genotypeEffectPValue"
+                        ]
+                      )
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Sex Parameter Estimate </td>
-                <td>0.00194</td>
+                <td>
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "sexEffectParameterEstimate"
+                  ]
+                    ? datasetSummary["statisticalMethod"]["attributes"][
+                        "sexEffectParameterEstimate"
+                      ].toFixed(3)
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Sex Standard Error Estimate </td>
-                <td>0.00623</td>
+                <td>
+                  {" "}
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "sexEffectStderrEstimate"
+                  ]
+                    ? datasetSummary["statisticalMethod"]["attributes"][
+                        "sexEffectStderrEstimate"
+                      ].toFixed(3)
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Sex Effect P Value </td>
-                <td>0.756</td>
+                <td>
+                  {" "}
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "sexEffectPValue"
+                  ]
+                    ? formatPValue(
+                        datasetSummary["statisticalMethod"]["attributes"][
+                          "sexEffectPValue"
+                        ]
+                      )
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Intercept Estimate </td>
-                <td>0.0669</td>
+                <td>
+                  {" "}
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "interceptEstimate"
+                  ]
+                    ? datasetSummary["statisticalMethod"]["attributes"][
+                        "interceptEstimate"
+                      ].toFixed(3)
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Intercept Estimate Standard Error </td>
-                <td>0.0103</td>
+                <td>
+                  {" "}
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "interceptEstimateStderrEstimate"
+                  ]
+                    ? datasetSummary["statisticalMethod"]["attributes"][
+                        "interceptEstimateStderrEstimate"
+                      ].toFixed(3)
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Sex Male KO P Value </td>
-                <td>8.59×10-05</td>
+                <td>
+                  {" "}
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "maleKoEffectPValue"
+                  ]
+                    ? formatPValue(
+                        datasetSummary["statisticalMethod"]["attributes"][
+                          "maleKoEffectPValue"
+                        ]
+                      )
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Sex Female KO P Value </td>
-                <td>0.651</td>
+                <td>
+                  {" "}
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "femaleKoEffectPValue"
+                  ]
+                    ? formatPValue(
+                        datasetSummary["statisticalMethod"]["attributes"][
+                          "femaleKoEffectPValue"
+                        ]
+                      )
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>WT Residuals Normality Tests </td>
-                <td>6.98×10-10</td>
+                <td>
+                  {" "}
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "group1ResidualsNormalityTest"
+                  ]
+                    ? formatPValue(
+                        datasetSummary["statisticalMethod"]["attributes"][
+                          "group1ResidualsNormalityTest"
+                        ]
+                      )
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>KO Residuals Normality Tests </td>
-                <td>0.255</td>
+                <td>
+                  {" "}
+                  {datasetSummary["statisticalMethod"]["attributes"][
+                    "group2ResidualsNormalityTest"
+                  ]
+                    ? formatPValue(
+                        datasetSummary["statisticalMethod"]["attributes"][
+                          "group2ResidualsNormalityTest"
+                        ]
+                      )
+                    : "N/A"}
+                </td>
               </tr>
             </SortableTable>
           </Card>
@@ -372,11 +595,15 @@ const Unidimensional = ({ datasetSummary }) => {
             >
               <tr>
                 <td>Sharpness (k) </td>
-                <td>1.041</td>
+                <td>
+                  {datasetSummary["softWindowing"]["shape"]
+                    ? datasetSummary["softWindowing"]["shape"].toFixed(3)
+                    : "N/A"}
+                </td>
               </tr>
               <tr>
                 <td>Bandwidth (l)</td>
-                <td>110</td>
+                <td>{datasetSummary["softWindowing"]["bandwidth"]}</td>
               </tr>
             </SortableTable>
           </Card>
