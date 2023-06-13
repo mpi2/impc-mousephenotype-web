@@ -4,15 +4,28 @@ import _ from "lodash";
 import { useEffect, useState } from "react";
 import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
-import { Alert } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import { formatAlleleSymbol, formatPValue } from "../../../../utils";
+import { allBodySystems } from "../../Summary";
 
 const AllData = ({ data }: { data: any }) => {
   const [sorted, setSorted] = useState<any[]>(null);
+  const [procedure, setProcedure] = useState(undefined);
+  const [system, setSystem] = useState(undefined);
 
   useEffect(() => {
     setSorted(_.orderBy(data, "pValue", "asc"));
   }, [data]);
+
+  const filtered = (sorted ?? []).filter(
+    ({ procedureName, topLevelPhenotypes }) =>
+      (!procedure || procedureName === procedure) &&
+      (!system ||
+        (topLevelPhenotypes ?? []).some(({ name }) => name === system))
+  );
+
+  const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
+  const getLabel = (name) => _.capitalize(name.replace(/ phenotype/g, ""));
 
   if (!data) {
     return (
@@ -24,7 +37,65 @@ const AllData = ({ data }: { data: any }) => {
 
   return (
     <>
-      <Pagination data={sorted}>
+      <div
+        style={{
+          paddingLeft: "0.5rem",
+          paddingTop: "1rem",
+          marginBottom: "1rem",
+        }}
+      >
+        <p>
+          <label
+            htmlFor="procedureFilter"
+            className="grey"
+            style={{ marginRight: "0.5rem" }}
+          >
+            Procedure:
+          </label>
+          <Form.Select
+            style={{ display: "inline-block", width: 280, marginRight: "2rem" }}
+            aria-label="Filter by procedures"
+            defaultValue={undefined}
+            id="procedureFilter"
+            className="bg-white"
+            onChange={(el) => {
+              setProcedure(
+                el.target.value === "all" ? undefined : el.target.value
+              );
+            }}
+          >
+            <option value={"all"}>All</option>
+            {procedures.map((p) => (
+              <option value={p}>{p}</option>
+            ))}
+          </Form.Select>
+          <label
+            htmlFor="systemFilter"
+            className="grey"
+            style={{ marginRight: "0.5rem" }}
+          >
+            Physiological system:
+          </label>
+          <Form.Select
+            style={{ display: "inline-block", width: 280, marginRight: "2rem" }}
+            aria-label="Filter by physiological system"
+            defaultValue={undefined}
+            id="systemFilter"
+            className="bg-white"
+            onChange={(el) => {
+              setSystem(
+                el.target.value === "all" ? undefined : el.target.value
+              );
+            }}
+          >
+            <option value={"all"}>All</option>
+            {allBodySystems.map((p) => (
+              <option value={p}>{getLabel(p)}</option>
+            ))}
+          </Form.Select>
+        </p>
+      </div>
+      <Pagination data={filtered}>
         {(currentPage) => (
           <SortableTable
             doSort={(sort) => {
@@ -40,7 +111,7 @@ const AllData = ({ data }: { data: any }) => {
               {
                 width: 2,
                 label: "Physiological system",
-                field: "topLevelPhenotypeTermName",
+                field: "topLevelPhenotypes",
               },
               { width: 1, label: "P value", field: "pValue" },
               { width: 2, label: "Life stage", field: "lifeStageName" },

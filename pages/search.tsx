@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Search from "../components/Search";
 import GeneResults from "../components/GeneResults";
 import PhenotypeResults from "../components/PhenotypeResults";
+import AlleleResults from "../components/AlleleResults";
 import { useState } from "react";
 
 const SearchResults = () => {
@@ -9,14 +10,21 @@ const SearchResults = () => {
   const [query, setQuery] = useState("");
   const { type } = router.query;
 
+  const renderResults = () => {
+    switch (type) {
+      case "phenotype":
+        return <PhenotypeResults query={query} />;
+      case "allele":
+        return <AlleleResults query={query} />;
+      default:
+        return <GeneResults query={query} />;
+    }
+  };
+
   return (
     <>
       <Search onChange={setQuery} />
-      {type === "phenotype" ? (
-        <PhenotypeResults query={query} />
-      ) : (
-        <GeneResults query={query} />
-      )}
+      {renderResults()}
     </>
   );
 };
