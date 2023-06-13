@@ -22,10 +22,16 @@ const AllData = ({ data }: { data: any }) => {
   }, [data]);
 
   const filtered = (sorted ?? []).filter(
-    ({ procedureName, parameterName, parameterStableId, topLevelPhenotypes }) =>
+    ({
+      procedureName,
+      parameterName,
+      parameterStableId,
+      procedureStableId,
+      topLevelPhenotypes,
+    }) =>
       (!procedure || procedureName === procedure) &&
       (!query ||
-        `${procedureName} ${parameterName} ${parameterStableId}`
+        `${procedureName} ${parameterName} ${parameterStableId} ${procedureStableId}`
           .toLowerCase()
           .includes(query)) &&
       (!system ||
