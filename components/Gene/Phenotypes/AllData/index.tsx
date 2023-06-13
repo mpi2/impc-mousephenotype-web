@@ -14,7 +14,7 @@ import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 const AllData = ({ data }: { data: any }) => {
   const [sorted, setSorted] = useState<any[]>(null);
   const [procedure, setProcedure] = useState(undefined);
-  const [parameter, setParameter] = useState(undefined);
+  const [query, setQuery] = useState(undefined);
   const [system, setSystem] = useState(undefined);
 
   useEffect(() => {
@@ -22,15 +22,17 @@ const AllData = ({ data }: { data: any }) => {
   }, [data]);
 
   const filtered = (sorted ?? []).filter(
-    ({ procedureName, parameterName, topLevelPhenotypes }) =>
+    ({ procedureName, parameterName, parameterStableId, topLevelPhenotypes }) =>
       (!procedure || procedureName === procedure) &&
-      (!parameter || parameterName === parameter) &&
+      (!query ||
+        `${procedureName} ${parameterName} ${parameterStableId}`
+          .toLowerCase()
+          .includes(query)) &&
       (!system ||
         (topLevelPhenotypes ?? []).some(({ name }) => name === system))
   );
 
   const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
-  const parameters = _.sortBy(_.uniq(_.map(data, "parameterName")));
   const getLabel = (name) => _.capitalize(name.replace(/ phenotype/g, ""));
 
   if (!data) {
@@ -51,6 +53,17 @@ const AllData = ({ data }: { data: any }) => {
         }}
       >
         <p>
+          <Form.Control
+            type="text"
+            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+            aria-label="Filter by parameters"
+            id="parameterFilter"
+            className="bg-white"
+            placeholder="Search "
+            onChange={(el) => {
+              setQuery(el.target.value.toLowerCase() || undefined);
+            }}
+          ></Form.Control>
           <label
             htmlFor="procedureFilter"
             className="grey"
@@ -72,7 +85,9 @@ const AllData = ({ data }: { data: any }) => {
           >
             <option value={"all"}>All</option>
             {procedures.map((p) => (
-              <option value={p}>{p}</option>
+              <option value={p} key={`procedure_${p}`}>
+                {p}
+              </option>
             ))}
           </Form.Select>
           <label
@@ -96,31 +111,9 @@ const AllData = ({ data }: { data: any }) => {
           >
             <option value={"all"}>All</option>
             {allBodySystems.map((p) => (
-              <option value={p}>{getLabel(p)}</option>
-            ))}
-          </Form.Select>
-          <label
-            htmlFor="parameterFilter"
-            className="grey"
-            style={{ marginRight: "0.5rem" }}
-          >
-            Parameter:
-          </label>
-          <Form.Select
-            style={{ display: "inline-block", width: 250, marginRight: "2rem" }}
-            aria-label="Filter by parameters"
-            defaultValue={undefined}
-            id="parameterFilter"
-            className="bg-white"
-            onChange={(el) => {
-              setParameter(
-                el.target.value === "all" ? undefined : el.target.value
-              );
-            }}
-          >
-            <option value={"all"}>All</option>
-            {parameters.map((p) => (
-              <option value={p}>{p}</option>
+              <option value={p} key={`system_${p}`}>
+                {getLabel(p)}
+              </option>
             ))}
           </Form.Select>
         </p>
