@@ -38,8 +38,8 @@ const ReleaseNote = () => {
             </Col>
             <Col lg={6}>
               <h3 className="mb-0 mt-3 mb-2">Data access</h3>
-              <div>
-                <a href="#" className="link blue-dark bold">
+              <div className="mb-1">
+                <a href="#" className="link orange-dark ">
                   Ftp interface{" "}
                   <FontAwesomeIcon
                     icon={faExternalLink}
@@ -49,7 +49,7 @@ const ReleaseNote = () => {
                 </a>
               </div>
               <div>
-                <a href="#" className="link blue-dark bold">
+                <a href="#" className="link orange-dark ">
                   RESTful interfaces{" "}
                   <FontAwesomeIcon
                     icon={faExternalLink}
@@ -61,8 +61,8 @@ const ReleaseNote = () => {
             </Col>
           </Row>
 
-          {valuePair("Statistical package", "OpenStates v.1.12.0")}
-          {valuePair("Genome Assembly", "Mus musculus v.GRCm38")}
+          {valuePair("Statistical package", "OpenStats (1.12.0)")}
+          {valuePair("Genome Assembly", "Mus musculus (GRCm38)")}
 
           <h3 className="mb-0 mt-5 mb-2">Highlights</h3>
           <p>Includes approximately 2.1 million more data points.</p>
