@@ -98,8 +98,10 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
           tooltip: {
             usePointStyle: true,
             callbacks: {
-              label: ({ dataset, parsed }) =>
-                `${dataset.label}: ${parsed.y} ${unit} (${parsed.x})`,
+              label: ({ dataset, parsed, label }) => {
+                console.log(parsed);
+                return `${dataset.label}: ${parsed.y} ${unit} (${label})`;
+              },
             },
           },
           legend: {
@@ -117,6 +119,7 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
             offset: true,
             time: {
               unit: "month",
+              tooltipFormat: "DD MMM YYYY",
             },
           },
           y: {
