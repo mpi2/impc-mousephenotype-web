@@ -8,6 +8,7 @@ import {
   Tooltip,
   TimeScale,
   ScatterController,
+  LineController,
 } from "chart.js";
 
 import "chartjs-adapter-moment";
@@ -30,7 +31,8 @@ ChartJS.register(
   Legend,
   Tooltip,
   CategoryScale,
-  ScatterController
+  ScatterController,
+  LineController
 );
 
 interface IUnidimensionalScatterPlotProps {
@@ -98,10 +100,8 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
           tooltip: {
             usePointStyle: true,
             callbacks: {
-              label: ({ dataset, parsed, label }) => {
-                console.log(parsed);
-                return `${dataset.label}: ${parsed.y} ${unit} (${label})`;
-              },
+              label: ({ dataset, parsed, label }) =>
+                `${dataset.label}: ${parsed.y} ${unit} (${label})`,
             },
           },
           legend: {
