@@ -149,7 +149,7 @@ const StatisticalAnalysisChart = ({
       (x) =>
         x.pValue !== null &&
         x.pValue !== undefined &&
-        x.topLevelPhenotypes.length
+        x.topLevelPhenotypes?.length
     )
     .map((x) => ({
       ...x,
