@@ -11,37 +11,40 @@ import { Alert, Button, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
 import CategoricalBarPlot from "./Plots/CategoricalBarPlot";
+import { formatAlleleSymbol, formatPValue } from "../../utils";
+import { capitalize } from "lodash";
 
-const Categorical = () => {
+const Categorical = ({ datasetSummary }) => {
   const router = useRouter();
   const [categoricalSeries, setCategoricalSeries] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [categoryIndex, setCategoryIndex] = useState({});
 
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `/api/v1/supporting-data-categorical/MGI:1929293/`
+        `https://impc-datasets.s3.eu-west-2.amazonaws.com/latest/${datasetSummary["datasetId"]}.json`
       );
       if (res.ok) {
         const response = await res.json();
-        console.log(response);
-        const dataPoints: Array<any> = response.dataPoints;
+        const series: Array<any> = [];
         const index = {};
         const categories = [];
-        dataPoints.forEach((p) => {
-          if (!index[p.specimenSex]) index[p.specimenSex] = {};
-          if (!index[p.specimenSex][p.biologicalSampleGroup]) {
-            index[p.specimenSex][p.biologicalSampleGroup] = { total: 0 };
+        response.series.forEach((s) => {
+          if (!index[s.specimenSex]) index[s.specimenSex] = {};
+          if (!index[s.specimenSex][s.sampleGroup]) {
+            index[s.specimenSex][s.sampleGroup] = { total: 0 };
           }
-          if (!index[p.specimenSex][p.biologicalSampleGroup][p.category]) {
-            index[p.specimenSex][p.biologicalSampleGroup][p.category] = 0;
-          }
-          index[p.specimenSex][p.biologicalSampleGroup].total += 1;
-          index[p.specimenSex][p.biologicalSampleGroup][p.category] += 1;
-          if (!categories.includes(p.category)) categories.push(p.category);
+          s.observations.forEach((o) => {
+            if (!index[s.specimenSex][s.sampleGroup][o.category]) {
+              index[s.specimenSex][s.sampleGroup][o.category] = 0;
+            }
+            index[s.specimenSex][s.sampleGroup].total += 1;
+            index[s.specimenSex][s.sampleGroup][o.category] += 1;
+            if (!categories.includes(o.category)) categories.push(o.category);
+          });
         });
-        console.log(index);
 
-        const series = [];
         Object.keys(index).forEach((sex) =>
           Object.keys(index[sex]).forEach((sampleGroup) => {
             categories.forEach((category) => {
@@ -57,12 +60,25 @@ const Categorical = () => {
             });
           })
         );
-        console.log(series);
+        setCategories(categories);
 
         setCategoricalSeries(series);
+        setCategoryIndex(index);
+        console.log(datasetSummary);
       }
     })();
   }, []);
+
+  const totalMice = Object.keys(datasetSummary["summaryStatistics"]).reduce(
+    (acc, key) => {
+      return (
+        acc +
+        (key.includes("Count") ? datasetSummary["summaryStatistics"][key] : 0)
+      );
+    },
+    0
+  );
+  const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
 
   return (
     <>
@@ -79,18 +95,24 @@ const Categorical = () => {
             </a>
           </button>
           <h1>
-            <strong>Mavs data charts [Categorical]</strong>
+            <strong>{datasetSummary["geneSymbol"]} data charts</strong>
           </h1>
         </div>
         <h2>Description of the experiments performed</h2>
         <Row>
           <Col md={7} style={{ borderRight: "1px solid #ddd" }}>
             <p>
-              A Body Composition (DEXA lean/fat) phenotypic assay was performed
-              on 802 mice. The charts show the results of measuring Bone Mineral
-              Density (excluding skull) in 8 female, 8 male mutants compared to
-              395 female, 391 male controls. The mutants are for the
-              Mavsem1(IMPC)Mbp allele.
+              A <strong>{datasetSummary["procedureName"]}</strong> phenotypic
+              assay was performed on {totalMice} mice. The charts show the
+              results of measuring{" "}
+              <strong>{datasetSummary["parameterName"]}</strong> in{" "}
+              {datasetSummary["summaryStatistics"]["femaleMutantCount"]} female,{" "}
+              {datasetSummary["summaryStatistics"]["maleMutantCount"]} male
+              mutants compared to{" "}
+              {datasetSummary["summaryStatistics"]["femaleControlCount"]}{" "}
+              female, {datasetSummary["summaryStatistics"]["maleControlCount"]}{" "}
+              male controls. The mutants are for the {allele[0]}
+              <sup>{allele[1]}</sup> allele.
             </p>
             <p className="small">
               * The high throughput nature of the IMPC means that large control
@@ -103,7 +125,7 @@ const Categorical = () => {
               <span style={{ display: "inline-block", width: 180 }}>
                 Testing protocol
               </span>
-              <strong>Body Composition (DEXA lean/fat)</strong>
+              <strong>{datasetSummary["procedureName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
@@ -115,114 +137,139 @@ const Categorical = () => {
               <span style={{ display: "inline-block", width: 180 }}>
                 Measured value
               </span>
-              <strong>Bone Mineral Density (excluding skull)</strong>
+              <strong>{datasetSummary["parameterName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Life stage
               </span>
-              <strong>Early adult</strong>
+              <strong>{datasetSummary["lifeStageName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Background Strain
               </span>
-              <strong>involves C57BL/6NCrl</strong>
+              <strong>{datasetSummary["geneticBackground"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Phenotyping center
               </span>
-              <strong>UC Davis</strong>
+              <strong>{datasetSummary["phenotypingCentre"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Associated Phenotype
               </span>
-              <strong>decreased bone mineral density</strong>
+              <strong>{datasetSummary["significantPhenotype"]["name"]}</strong>
             </p>
           </Col>
         </Row>
       </Card>
       <Row>
-        <Col lg={12}>
+        <Col lg={8}>
           <Card>
             <h2 className="primary">
               <CategoricalBarPlot
                 series={categoricalSeries}
-                zygosity="homozygote"
+                zygosity={datasetSummary["zygosity"]}
               />
             </h2>
           </Card>
         </Col>
-        <Col lg={6}>
+        <Col lg={4}>
           <Card>
             <h2>Results of statistical analysis</h2>
             <Alert variant="green">
               <p className="mb-0">
                 <strong>Combined Male and Female P value</strong>
               </p>
-              <p>5.76×10-36</p>
+              <p>
+                {" "}
+                {datasetSummary["reportedPValue"]
+                  ? formatPValue(datasetSummary["reportedPValue"])
+                  : "NA"}
+              </p>
               <p className="mb-0">
                 <strong>Males only</strong>
               </p>
-              <p>7.57×10-21</p>
+              <p>
+                {datasetSummary["statisticalMethod"]["attributes"][
+                  "maleKoEffectPValue"
+                ]
+                  ? formatPValue(
+                      datasetSummary["statisticalMethod"]["attributes"][
+                        "maleKoEffectPValue"
+                      ]
+                    )
+                  : "NA"}
+              </p>
               <p className="mb-0">
                 <strong>Females only</strong>
               </p>
-              <p>4.60×10-16</p>
+              <p>
+                {" "}
+                {datasetSummary["statisticalMethod"]["attributes"][
+                  "femaleKoEffectPValue"
+                ]
+                  ? formatPValue(
+                      datasetSummary["statisticalMethod"]["attributes"][
+                        "femaleKoEffectPValue"
+                      ]
+                    )
+                  : "NA"}
+              </p>
               <p className="mb-0">
                 <strong>Classification</strong>
               </p>
-              <p>
-                With phenotype threshold value 1e-04 - significant in males,
-                females and in combined dataset
-              </p>
+              <p>{datasetSummary["classificationTag"]}</p>
             </Alert>
           </Card>
         </Col>
-        <Col lg={6}>
+        <Col lg={12}>
           <Card>
             <h2>Counts by sample type</h2>
             <SortableTable
               headers={[
-                { width: 5, label: "Sample type", disabled: true },
-                { width: 2, label: "Present", disabled: true },
-                { width: 2, label: "No data", disabled: true },
-                { width: 3, label: "None", disabled: true },
-              ]}
+                { width: 4, label: "Sample type / Category", disabled: true },
+              ].concat(
+                Object.keys(categoryIndex)
+                  .flatMap((sex) =>
+                    Object.keys(categoryIndex[sex]).map(
+                      (c) =>
+                        capitalize(sex) +
+                        " " +
+                        (c == "experimental" ? datasetSummary["zygosity"] : c)
+                    )
+                  )
+                  .map((c) => {
+                    return { width: 2, label: c, disabled: true };
+                  })
+              )}
             >
-              <tr>
-                <td>Female Control</td>
-                <td>2733 </td>
-                <td>1</td>
-                <td>20</td>
-              </tr>
-              <tr>
-                <td>Female homozygote</td>
-                <td>1</td>
-                <td>0</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <td>Male Control</td>
-                <td>2756</td>
-                <td>1</td>
-                <td>21</td>
-              </tr>
-              <tr>
-                <td>Male homozygote </td>
-                <td>2</td>
-                <td>0</td>
-                <td>11</td>
-              </tr>
+              {categories.map((category) => {
+                return (
+                  <tr>
+                    <td>{category}</td>
+                    {Object.keys(categoryIndex).flatMap((sex) =>
+                      Object.keys(categoryIndex[sex]).map((sampleGroup) =>
+                        !categoryIndex[sex][sampleGroup][category] ? (
+                          <td>0</td>
+                        ) : (
+                          <td>{categoryIndex[sex][sampleGroup][category]}</td>
+                        )
+                      )
+                    )}
+                  </tr>
+                );
+              })}
             </SortableTable>
           </Card>
         </Col>
         <Col lg={6}>
           <Card>
             <h2>Statistical method</h2>
-            <p>Fisher Exact Test framework</p>
+            <p>{datasetSummary["statisticalMethod"]["name"]}</p>
           </Card>
         </Col>
         <Col lg={6}>

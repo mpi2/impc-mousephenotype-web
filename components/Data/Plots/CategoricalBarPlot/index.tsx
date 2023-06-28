@@ -19,12 +19,7 @@ import {
   BarElement,
 } from "chart.js";
 
-var colorArray = [
-    "#ef7b0a",
-    "#0978a1",
-    "#809900",
-    "#E6B3B3",
-  ];
+var colorArray = ["#ef7b0a", "#0978a1", "#809900", "#E6B3B3"];
 
 ChartJS.register(
   LinearScale,
@@ -37,9 +32,11 @@ ChartJS.register(
   CategoryScale
 );
 
-const getCategoricalBarDataset = (series: CategoricalSeries, zygosity, categories) => {
-
-
+const getCategoricalBarDataset = (
+  series: CategoricalSeries,
+  zygosity,
+  categories
+) => {
   return {
     backgroundColor: colorArray[categories.indexOf(series.category)],
     label: series.category,
@@ -49,28 +46,30 @@ const getCategoricalBarDataset = (series: CategoricalSeries, zygosity, categorie
 };
 
 const CategoricalBarPlot = ({ series, zygosity }) => {
-    const datasets = {};
-    const categories = series.map(s => s.category);
-    series.forEach(s => {
-        if(!datasets[s.category]){
-            datasets[s.category] =  getCategoricalBarDataset(s, zygosity, categories);
-        } else {
-            datasets[s.category].data.push(s.value);
-        }
-    });
-    
+  const datasets = {};
+  const categories = series.map((s) => s.category);
+  series.forEach((s) => {
+    if (!datasets[s.category]) {
+      datasets[s.category] = getCategoricalBarDataset(s, zygosity, categories);
+    } else {
+      datasets[s.category].data.push(s.value);
+    }
+  });
 
   return (
     <Chart
       type="bar"
       data={{
         datasets: Object.values(datasets),
-        labels: series.map(s => {
+        labels: series
+          .map((s) => {
             const labelSex = s.sex[0].toUpperCase() + s.sex.slice(1);
             const labelZyg = zygosity === "homozygote" ? "HOM" : "HET";
-            const labelGroup = s.sampleGroup == "experimental" ? labelZyg : "WT";
+            const labelGroup =
+              s.sampleGroup == "experimental" ? labelZyg : "WT";
             return `${labelSex} ${labelGroup}`;
-        }).filter((value, index, self) => self.indexOf(value) === index),
+          })
+          .filter((value, index, self) => self.indexOf(value) === index),
       }}
       options={{
         maintainAspectRatio: true,
@@ -91,9 +90,9 @@ const CategoricalBarPlot = ({ series, zygosity }) => {
             position: "left",
             max: 100,
             min: 0,
-            title: { text: "Occurence percent", display: true },
+            title: { text: "Percent occurrence", display: true },
           },
-          x: {stacked: true, display: true, position: "bottom"}
+          x: { stacked: true, display: true, position: "bottom" },
         },
       }}
     />

@@ -17,9 +17,16 @@ export const formatPValue = (pValue: number) => {
   const pValueArray = Number.parseFloat(String(pValue))
     .toExponential(2)
     .split("e");
+  const base = Number(pValueArray[0]);
+  const exponent = Number(pValueArray[1]);
   return (
     <>
-      {pValueArray[0]}x10<sup>{pValueArray[1].replace("+", "")}</sup>
+      {base}
+      {exponent !== 0 ? (
+        <>
+          x10<sup>{pValueArray[1].replace("+", "")}</sup>
+        </>
+      ) : null}
     </>
   );
 };

@@ -212,9 +212,9 @@ const Unidimensional = ({ datasetSummary }) => {
             <UnidimensionalScatterPlot
               scatterSeries={scatterSeries}
               lineSeries={lineSeries}
-              zygosity="homozygote"
+              zygosity={datasetSummary["zygosity"]}
               parameterName={datasetSummary["parameterName"]}
-              unit={"sm"}
+              unit={datasetSummary["unit"]["x"]}
             />
           </Card>
         </Col>

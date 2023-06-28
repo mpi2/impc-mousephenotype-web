@@ -116,8 +116,8 @@ const Charts = () => {
     switch (datasetSummary["dataType"]) {
       case "unidimensional":
         return <Unidimensional datasetSummary={datasetSummary} />;
-      case "Categorical":
-        return <Categorical />;
+      case "categorical":
+        return <Categorical datasetSummary={datasetSummary} />;
       case "Viability":
         return <Viability />;
       case "Time series":
