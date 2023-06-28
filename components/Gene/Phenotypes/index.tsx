@@ -1,10 +1,12 @@
-import { Alert, Tab, Tabs } from "react-bootstrap";
+import { Alert, Button, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import AllData from "./AllData";
 import SignificantPhenotypes2 from "./SignificantPhenotypes2";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import useQuery from "../../useQuery";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,
@@ -51,7 +53,31 @@ const Phenotypes = ({ gene }: { gene: any }) => {
               No significant phenotypes for {gene.geneSymbol}.
             </Alert>
           ) : (
-            <SignificantPhenotypes2 data={phenotypeData} />
+            <>
+              <SignificantPhenotypes2 data={phenotypeData} />
+
+              <p className="mt-4 grey">
+                Download data as:{" "}
+                <Button
+                  size="sm"
+                  variant="outline-secondary"
+                  as="a"
+                  href={`https://www.mousephenotype.org/data/genes/export/${router.query.pid}?fileType=tsv&fileName=${gene.geneSymbol}`}
+                  target="_blank"
+                >
+                  <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
+                </Button>{" "}
+                <Button
+                  size="sm"
+                  variant="outline-secondary"
+                  as="a"
+                  href={`https://www.mousephenotype.org/data/genes/export/${router.query.pid}?fileType=xls&fileName=${gene.geneSymbol}`}
+                  target="_blank"
+                >
+                  <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
+                </Button>
+              </p>
+            </>
           )}
         </Tab>
         <Tab eventKey="allData" title="All data">
@@ -60,7 +86,30 @@ const Phenotypes = ({ gene }: { gene: any }) => {
               No phenotypes data available for {gene.geneSymbol}.
             </Alert>
           ) : (
-            <AllData data={geneData} />
+            <>
+              <AllData data={geneData} />
+              <p className="mt-4 grey">
+                Download data as:{" "}
+                <Button
+                  size="sm"
+                  variant="outline-secondary"
+                  as="a"
+                  href={`https://www.mousephenotype.org/data/experiments/export?geneAccession=${router.query.pid}&fileType=tsv&fileName=${router.query.pid}`}
+                  target="_blank"
+                >
+                  <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
+                </Button>{" "}
+                <Button
+                  size="sm"
+                  variant="outline-secondary"
+                  as="a"
+                  href={`https://www.mousephenotype.org/data/experiments/export?geneAccession=${router.query.pid}&fileType=xls&fileName=${router.query.pid}`}
+                  target="_blank"
+                >
+                  <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
+                </Button>
+              </p>
+            </>
           )}
         </Tab>
       </Tabs>

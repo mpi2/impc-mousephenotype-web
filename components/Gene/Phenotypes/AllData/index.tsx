@@ -4,15 +4,42 @@ import _ from "lodash";
 import { useEffect, useState } from "react";
 import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
-import { Alert } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import { formatAlleleSymbol, formatPValue } from "../../../../utils";
+import { allBodySystems } from "../../Summary";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const AllData = ({ data }: { data: any }) => {
   const [sorted, setSorted] = useState<any[]>(null);
+  const [procedure, setProcedure] = useState(undefined);
+  const [query, setQuery] = useState(undefined);
+  const [system, setSystem] = useState(undefined);
 
   useEffect(() => {
     setSorted(_.orderBy(data, "pValue", "asc"));
   }, [data]);
+
+  const filtered = (sorted ?? []).filter(
+    ({
+      procedureName,
+      parameterName,
+      parameterStableId,
+      procedureStableId,
+      topLevelPhenotypes,
+    }) =>
+      (!procedure || procedureName === procedure) &&
+      (!query ||
+        `${procedureName} ${parameterName} ${parameterStableId} ${procedureStableId}`
+          .toLowerCase()
+          .includes(query)) &&
+      (!system ||
+        (topLevelPhenotypes ?? []).some(({ name }) => name === system))
+  );
+
+  const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
+  const getLabel = (name) => _.capitalize(name.replace(/ phenotype/g, ""));
 
   if (!data) {
     return (
@@ -24,7 +51,80 @@ const AllData = ({ data }: { data: any }) => {
 
   return (
     <>
-      <Pagination data={sorted}>
+      <div
+        style={{
+          paddingLeft: "0.5rem",
+          paddingTop: "1rem",
+          marginBottom: "1rem",
+        }}
+      >
+        <p>
+          <Form.Control
+            type="text"
+            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+            aria-label="Filter by parameters"
+            id="parameterFilter"
+            className="bg-white"
+            placeholder="Search "
+            onChange={(el) => {
+              setQuery(el.target.value.toLowerCase() || undefined);
+            }}
+          ></Form.Control>
+          <label
+            htmlFor="procedureFilter"
+            className="grey"
+            style={{ marginRight: "0.5rem" }}
+          >
+            Procedure:
+          </label>
+          <Form.Select
+            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+            aria-label="Filter by procedures"
+            defaultValue={undefined}
+            id="procedureFilter"
+            className="bg-white"
+            onChange={(el) => {
+              setProcedure(
+                el.target.value === "all" ? undefined : el.target.value
+              );
+            }}
+          >
+            <option value={"all"}>All</option>
+            {procedures.map((p) => (
+              <option value={p} key={`procedure_${p}`}>
+                {p}
+              </option>
+            ))}
+          </Form.Select>
+          <label
+            htmlFor="systemFilter"
+            className="grey"
+            style={{ marginRight: "0.5rem" }}
+          >
+            Physiological system:
+          </label>
+          <Form.Select
+            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+            aria-label="Filter by physiological system"
+            defaultValue={undefined}
+            id="systemFilter"
+            className="bg-white"
+            onChange={(el) => {
+              setSystem(
+                el.target.value === "all" ? undefined : el.target.value
+              );
+            }}
+          >
+            <option value={"all"}>All</option>
+            {allBodySystems.map((p) => (
+              <option value={p} key={`system_${p}`}>
+                {getLabel(p)}
+              </option>
+            ))}
+          </Form.Select>
+        </p>
+      </div>
+      <Pagination data={filtered}>
         {(currentPage) => (
           <SortableTable
             doSort={(sort) => {
@@ -33,20 +133,20 @@ const AllData = ({ data }: { data: any }) => {
             defaultSort={["pValue", "asc"]}
             headers={[
               {
-                width: 4,
+                width: 3,
                 label: "Procedure/parameter",
                 field: "procedureName",
               },
               {
-                width: 2,
-                label: "Physiological system",
-                field: "topLevelPhenotypeTermName",
+                width: 1,
+                label: "Phy. system",
+                field: "topLevelPhenotypes",
               },
-              { width: 1, label: "P value", field: "pValue" },
-              { width: 2, label: "Life stage", field: "lifeStageName" },
-              { width: 2, label: "Allele", field: "alleleSymbol" },
+              { width: 1, label: "Life stage", field: "lifeStageName" },
+              { width: 1, label: "Allele", field: "alleleSymbol" },
               { width: 1, label: "Zygosity", field: "zygosity" },
-              { width: 2, label: "Significance", field: "significant" },
+              { width: 0.5, label: "Significant", field: "significant" },
+              { width: 2, label: "P value", field: "pValue" },
             ]}
           >
             {currentPage.map(
@@ -81,9 +181,6 @@ const AllData = ({ data }: { data: any }) => {
                         />
                       ))}
                     </td>
-                    <td className="orange-dark-x bold">
-                      {!!pValue ? formatPValue(pValue) : "-"}
-                    </td>
                     <td>{lifeStageName}</td>
                     <td>
                       {allele[0]}
@@ -91,6 +188,26 @@ const AllData = ({ data }: { data: any }) => {
                     </td>
                     <td style={{ textTransform: "capitalize" }}>{zygosity}</td>
                     <td>{significant ? "Yes" : "No"}</td>
+                    <td
+                      className="bold"
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <span className="orange-dark-x">
+                        {!!pValue ? formatPValue(pValue) : "-"}
+                      </span>
+                      <Link
+                        href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
+                        legacyBehavior
+                      >
+                        <strong className={`link small float-right`}>
+                          <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
+                          <FontAwesomeIcon icon={faChevronRight} />
+                        </strong>
+                      </Link>
+                    </td>
                   </tr>
                 );
               }

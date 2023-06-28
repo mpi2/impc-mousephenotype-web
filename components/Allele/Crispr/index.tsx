@@ -165,7 +165,7 @@ const Crispr = ({
         </Card>
       )}
       <Card>
-        <h2>Cripr details</h2>
+        <h2>Crispr details</h2>
         <p>
           <a
             href={`https://www.informatics.jax.org/allele/${data.mgiAlleleId}`}

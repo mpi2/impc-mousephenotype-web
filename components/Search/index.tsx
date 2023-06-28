@@ -6,19 +6,19 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { debounce } from "lodash";
-import { route } from "next/dist/server/router";
 
 export type Tab = {
   name: string;
   link: string;
   external?: boolean;
+  type?: string;
 };
 
 const Search = ({
-  isPhenotype,
+  defaultType = "",
   onChange,
 }: {
-  isPhenotype?: boolean;
+  defaultType?: string;
   onChange?: (val: string) => void;
 }) => {
   const router = useRouter();
@@ -34,26 +34,36 @@ const Search = ({
     debounce((q: string) => handleInput(q), 500)
   ).current;
   const { type } = router.query;
-  isPhenotype = isPhenotype ?? type === "phenotype";
+  console.log(type);
 
   const tabs: Tab[] = [
     {
       name: "Genes",
       link: "/search",
+      type: undefined,
     },
     {
       name: "Phenotypes",
       link: "/search?type=phenotype",
+      type: "phenotype",
+    },
+    {
+      name: "Products",
+      link: "/search?type=allele",
+      type: "allele",
     },
     {
       name: "Help, news, blog",
       link: `${process.env.NEXT_PUBLIC_NEWS_SEARCH}/?s=`,
       external: true,
+      type: "blog",
     },
   ];
-  const [tabIndex, setTabIndex] = useState(isPhenotype ? 1 : 0);
+  const getSelectedIndex = (typeInput) =>
+    tabs.findIndex((tab) => tab.type === typeInput);
+  const [tabIndex, setTabIndex] = useState(getSelectedIndex(defaultType));
   useEffect(() => {
-    setTabIndex(isPhenotype ? 1 : 0);
+    setTabIndex(getSelectedIndex(type));
   }, [type]);
 
   useEffect(() => {
@@ -82,14 +92,13 @@ const Search = ({
                 );
               } else {
                 return (
-                  (<Link
+                  <Link
                     href={tab.link}
                     key={`tab-${tab.name}`}
-                    className={isActive ? styles.tab__active : styles.tab}>
-
+                    className={isActive ? styles.tab__active : styles.tab}
+                  >
                     {tab.name}
-
-                  </Link>)
+                  </Link>
                 );
               }
             })}

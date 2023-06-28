@@ -413,13 +413,12 @@ const StatisticalAnalysis = ({ data }) => {
           </label>
           <Form.Select
             style={{ display: "inline-block", width: 280, marginRight: "2rem" }}
-            aria-label="Default select example"
+            aria-label="Group by"
             // value={cat.type}
             defaultValue={cat.type}
             id="groupBy"
             className="bg-white"
             onChange={(el) => {
-              console.log(el);
               setCat({ type: el.target.value as CatType });
             }}
           >
