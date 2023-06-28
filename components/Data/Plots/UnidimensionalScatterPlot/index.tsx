@@ -7,6 +7,7 @@ import {
   Legend,
   Tooltip,
   TimeScale,
+  ScatterController,
 } from "chart.js";
 
 import "chartjs-adapter-moment";
@@ -28,7 +29,8 @@ ChartJS.register(
   TimeScale,
   Legend,
   Tooltip,
-  CategoryScale
+  CategoryScale,
+  ScatterController
 );
 
 interface IUnidimensionalScatterPlotProps {
