@@ -126,6 +126,9 @@ export const handlers = [
       return res(ctx.status(404), e);
     }
   }),
+  rest.get('/api/v1/landing-pages-data/embryo', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(require('./data/landing-pages/embryo.json')));
+  })
   // rest.post(
   //   "https://monarchinitiative.org/simsearch/phenotype",
   //   (req, res, ctx) => {
