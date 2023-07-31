@@ -2,17 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { fetchCache } from "../../utils";
 
-export default ({
+export default function<T> ({
   query,
   afterSuccess,
 }: {
   query: string;
-  afterSuccess?: (data?: any) => void;
-}) => {
+  afterSuccess?: (data?: T) => void;
+}): [T, boolean, string] {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<T>(null);
+  const [error, setError] = useState<null | string>(null);
   const controllerRef = useRef() as any;
 
   useEffect(() => {
