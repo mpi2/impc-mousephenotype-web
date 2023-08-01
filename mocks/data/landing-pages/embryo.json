@@ -1,23 +1,23 @@
 {
-  "primary-viability": {
-    "viable": 4897,
-    "lethal": 1859,
-    "subviable": 886
-  },
-  "primary-viability-chart-data": [
-    { "name": "Hemizygous - Viable", "y": 82 },
-    { "name": "Homozygous - Viable", "y": 4816 },
-    { "name": "Hemizygous - Lethal", "y": 7 },
-    { "name": "Hemizygous - Subviable", "y": 3 },
-    { "name": "Homozygous - Lethal", "y": 1852 },
-    { "name": "Homozygous - Subviable", "y": 883 }
+  "primaryViability": [
+    {"label": "Viable", "value": 4897},
+    {"label": "Lethal", "value": 1859},
+    {"label": "Subviable", "value": 886}
   ],
-  "windows-of-lethality": {
-    "Perinatal lethal": 326,
-    "E9.5 lethal": 450,
-    "E12.5 lethal": 97,
-    "E15.5 lethal": 20,
-    "E18.5 lethal": 6,
-    "Lorem ipsum": 143
-  }
+  "primaryViabilityChartData": [
+    { "label": "Hemizygous - Viable", "value": 82 },
+    { "label": "Homozygous - Viable", "value": 4816 },
+    { "label": "Hemizygous - Lethal", "value": 7 },
+    { "label": "Hemizygous - Subviable", "value": 3 },
+    { "label": "Homozygous - Lethal", "value": 1852 },
+    { "label": "Homozygous - Subviable", "value": 883 }
+  ],
+  "windowsOfLethality": [
+    {"label": "Perinatal lethal", "value": 326},
+    {"label": "E9.5 lethal", "value": 450},
+    {"label": "E12.5 lethal", "value": 97},
+    {"label": "E15.5 lethal", "value": 20},
+    {"label": "E18.5 lethal", "value": 6},
+    {"label": "Lorem ipsum", "value": 143}
+  ]
 }
