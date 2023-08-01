@@ -14,6 +14,7 @@ $grey-light: #e8e8e8;
 $bg: #ececec;
 $white: #fff;
 $black: #000;
+$dark: #212529;
 
 $primary: $orange;
 $secondary: $blue;
@@ -89,6 +90,7 @@ $theme-colors: (
   "green": $lime,
   "teal": $blue,
   "grey": $grey-light,
+  "dark": $dark,
 );
 
 $container-max-widths: (
