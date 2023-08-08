@@ -1,0 +1,31 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:1915349",
+    "alleleSuperscript": "tm102606(L1L2_Bact_P)",
+    "alleleSymbol": "Cibar1<tm102606(L1L2_Bact_P)>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "intermediate_vector"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1915349",
+    "alleleSuperscript": "tm1b(KOMP)Wtsi",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "mouse"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1915349",
+    "alleleSuperscript": "tm1a(KOMP)Wtsi",
+    "alleleSymbol": "Cibar1<tm1a(KOMP)Wtsi>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell",
+      "mouse"
+    ]
+  }
+]

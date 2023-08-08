@@ -1,0 +1,67 @@
+{
+  "id": "63920ab595adb868f5ae558a",
+  "mgiGeneAccessionId": "MGI:1922546",
+  "geneName": "centrosomal protein 43",
+  "geneSymbol": "Cep43",
+  "markerType": "Gene",
+  "synonyms": [
+    "4930553O10Rik",
+    "Fop",
+    "Fgfr1op"
+  ],
+  "humanGeneSymbols": [
+    "CEP43"
+  ],
+  "humanSymbolSynonyms": [
+    "FOP",
+    "FGFR1OP"
+  ],
+  "alleleNames": [
+    "targeted mutation 1a, Helmholtz Zentrum Muenchen GmbH",
+    "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "endonuclease-mediated mutation 1, GemPharmatech Co., Ltd",
+    "endonuclease-mediated mutation 3, GemPharmatech Co., Ltd",
+    "gene trap AX0127, Wellcome Trust Sanger Institute"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "17",
+  "seqRegionStart": "8384333",
+  "seqRegionEnd": "8415636",
+  "chrStrand": "+",
+  "seqRegionId": "17",
+  "assignmentStatus": "Selected for production",
+  "nullAlleleProductionStatus": "Genotype confirmed mice",
+  "conditionalAlleleProductionStatus": "Genotype confirmed mice",
+  "esCellProductionStatus": "ES Cells Produced",
+  "phenotypeStatus": "Phenotyping data available",
+  "phenotypingDataAvailable": true,
+  "significantTopLevelPhenotypes": [
+    "homeostasis/metabolism phenotype",
+    "vision/eye phenotype",
+    "hematopoietic system phenotype",
+    "behavior/neurological phenotype",
+    "cardiovascular system phenotype",
+    "mortality/aging"
+  ],
+  "notSignificantTopLevelPhenotypes": [
+    "reproductive system phenotype",
+    "immune system phenotype",
+    "integument phenotype",
+    "adipose tissue phenotype",
+    "growth/size/body region phenotype",
+    "muscle phenotype",
+    "hearing/vestibular/ear phenotype",
+    "craniofacial phenotype",
+    "pigmentation phenotype",
+    "limbs/digits/tail phenotype",
+    "nervous system phenotype",
+    "respiratory system phenotype",
+    "skeleton phenotype"
+  ],
+  "significantPhenotypesCount": 13,
+  "hasImagingData": true,
+  "hasViabilityData": true,
+  "hasBodyWeightData": true
+}

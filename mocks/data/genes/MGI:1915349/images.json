@@ -1,0 +1,57 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:1915349",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "MGP_ANA_001",
+    "procedureName": "Anti-nuclear antibody assay",
+    "parameterStableId": "MGP_ANA_005_001",
+    "parameterName": "Images",
+    "count": 6,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/-1",
+    "fileType": "image/jpeg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1915349",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_051_001",
+    "parameterName": "Images Slit Lamp",
+    "count": 6,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/383427",
+    "fileType": "image/tiff"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1915349",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_050_001",
+    "parameterName": "Images Ophthalmoscopy",
+    "count": 1,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/383205",
+    "fileType": "image/jpeg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1915349",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "DSS_DSS_001",
+    "procedureName": "DSS Histology",
+    "parameterStableId": "DSS_DSS_018_001",
+    "parameterName": "Images",
+    "count": 6,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/-1",
+    "fileType": "image/jpeg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1915349",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "MGP_EEI_001",
+    "procedureName": "Ear epidermis immunophenotyping",
+    "parameterStableId": "MGP_EEI_114_001",
+    "parameterName": "Images",
+    "count": 9,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/-1",
+    "fileType": "application/octet-stream"
+  }
+]

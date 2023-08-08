@@ -1,0 +1,33 @@
+{
+  "id": "63920abf716f2a86c05e0753",
+  "mgiGeneAccessionId": "MGI:3588213",
+  "geneName": "CBY1 interacting BAR domain containing 2",
+  "geneSymbol": "Cibar2",
+  "markerType": "Gene",
+  "synonyms": [
+    "1700120B06Rik",
+    "Fam92b"
+  ],
+  "humanGeneSymbols": [
+    "CIBAR2"
+  ],
+  "humanSymbolSynonyms": [
+    "FLJ44299",
+    "FAM92B"
+  ],
+  "alleleNames": [
+    "targeted mutation 1e, Wellcome Trust Sanger Institute"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "8",
+  "seqRegionStart": "120893136",
+  "seqRegionEnd": "120904205",
+  "chrStrand": "-",
+  "seqRegionId": "8",
+  "assignmentStatus": "Selected for production",
+  "conditionalAlleleProductionStatus": "Genotype confirmed mice",
+  "esCellProductionStatus": "ES Cells Produced",
+  "phenotypingDataAvailable": false
+}

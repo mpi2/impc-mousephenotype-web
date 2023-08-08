@@ -1,0 +1,40 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:3588213",
+    "alleleSuperscript": "tm1a(EUCOMM)Wtsi",
+    "alleleSymbol": "Cibar2<tm1a(EUCOMM)Wtsi>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:3588213",
+    "alleleSuperscript": "tm1e(EUCOMM)Wtsi",
+    "alleleSymbol": "Cibar2<tm1e(EUCOMM)Wtsi>",
+    "alleleDescription": "Targeted, non-conditional allele",
+    "productTypes": [
+      "es_cell",
+      "mouse"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:3588213",
+    "alleleSuperscript": "tm1(KOMP)Vlcg",
+    "alleleSymbol": "Cibar2<tm1(KOMP)Vlcg>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "es_cell"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:3588213",
+    "alleleSuperscript": "tm106198(L1L2_Bact_P)",
+    "alleleSymbol": "Cibar2<tm106198(L1L2_Bact_P)>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "intermediate_vector"
+    ]
+  }
+]

@@ -1,5 +1,6 @@
 [
   {
+    "datasetId": "6c152ae1e9efe0f414284cb074396d9c",
     "mgiGeneAccessionId": "MGI:2444773",
     "pipelineStableId": "UCD_001",
     "procedureStableId": "IMPC_DXA_001",
@@ -13,9 +14,9 @@
     "phenotypingCentre": "UC Davis",
     "sex": "female",
     "projectName": "DTCC",
-    "pValue": 3.16171307034787e-6,
+    "pValue": 9.64586508221206E-6,
     "lifeStageName": "Early adult",
-    "effectSize": -4.70894527260235,
+    "effectSize": null,
     "phenotype": {
       "id": "MP:0010124",
       "name": "decreased bone mineral content"
@@ -28,6 +29,7 @@
     ]
   },
   {
+    "datasetId": "4d7b0a5cd875b413c5af6a5ab8f58c22",
     "mgiGeneAccessionId": "MGI:2444773",
     "pipelineStableId": "UCD_001",
     "procedureStableId": "IMPC_DXA_001",
@@ -41,9 +43,9 @@
     "phenotypingCentre": "UC Davis",
     "sex": "female",
     "projectName": "DTCC",
-    "pValue": 2.7164501491721e-6,
+    "pValue": 3.17922007884964E-7,
     "lifeStageName": "Early adult",
-    "effectSize": -5.30700379847678,
+    "effectSize": null,
     "phenotype": {
       "id": "MP:0000063",
       "name": "decreased bone mineral density"

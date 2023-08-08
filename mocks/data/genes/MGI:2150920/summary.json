@@ -1,0 +1,37 @@
+{
+  "id": "63920ab595adb868f5ae55ee",
+  "mgiGeneAccessionId": "MGI:2150920",
+  "geneName": "fibroblast growth factor receptor-like 1",
+  "geneSymbol": "Fgfrl1",
+  "markerType": "Gene",
+  "synonyms": [
+    "fibroblast growth factor receptor 5",
+    "FGFR5gamma",
+    "FGFR5beta",
+    "FGFR5"
+  ],
+  "humanGeneSymbols": [
+    "FGFRL1"
+  ],
+  "humanSymbolSynonyms": [],
+  "alleleNames": [
+    "targeted mutation 1, Beat Trueb",
+    "targeted mutation 1, Pascal te Welscher",
+    "endonuclease-mediated mutation 1, Shanghai Model Organisms Center",
+    "targeted mutation 2.1, Beat Trueb",
+    "targeted mutation 1, Lexicon Pharmaceuticals",
+    "targeted mutation 1.1, Pascal te Welscher"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "5",
+  "seqRegionStart": "108842051",
+  "seqRegionEnd": "108854816",
+  "chrStrand": "+",
+  "seqRegionId": "5",
+  "assignmentStatus": "Selected for production",
+  "nullAlleleProductionStatus": "Selected for production",
+  "esCellProductionStatus": "ES Cells Produced",
+  "phenotypingDataAvailable": false
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:1922546",
+    "alleleSuperscript": "tm91755(L1L2_Bact_P)",
+    "alleleSymbol": "Cep43<tm91755(L1L2_Bact_P)>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "intermediate_vector"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1922546",
+    "alleleSuperscript": "tm1a(EUCOMM)Hmgu",
+    "alleleSymbol": "Cep43<tm1a(EUCOMM)Hmgu>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell",
+      "mouse"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1922546",
+    "alleleSuperscript": "tm1b(EUCOMM)Hmgu",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "mouse"
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:1261436",
+    "alleleSuperscript": "tm380677(L1L2_Bact_P)",
+    "alleleSymbol": "Tbx10<tm380677(L1L2_Bact_P)>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "intermediate_vector"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1261436",
+    "alleleSuperscript": "tm1(KOMP)Vlcg",
+    "alleleSymbol": "Tbx10<tm1(KOMP)Vlcg>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "es_cell"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1261436",
+    "alleleSuperscript": "tm2a(EUCOMM)Hmgu",
+    "alleleSymbol": "Tbx10<tm2a(EUCOMM)Hmgu>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell",
+      "mouse"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1261436",
+    "alleleSuperscript": "tm2b(EUCOMM)Hmgu",
+    "alleleSymbol": "Tbx10<tm2b(EUCOMM)Hmgu>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "mouse"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1261436",
+    "alleleSuperscript": "tm2e(EUCOMM)Hmgu",
+    "alleleSymbol": "Tbx10<tm2e(EUCOMM)Hmgu>",
+    "alleleDescription": "Targeted, non-conditional allele",
+    "productTypes": [
+      "es_cell"
+    ]
+  }
+]

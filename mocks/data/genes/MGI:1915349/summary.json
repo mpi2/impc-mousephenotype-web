@@ -1,0 +1,69 @@
+{
+  "id": "63920aaa2354beca325c9569",
+  "mgiGeneAccessionId": "MGI:1915349",
+  "geneName": "CBY1 interacting BAR domain containing 1",
+  "geneSymbol": "Cibar1",
+  "markerType": "Gene",
+  "synonyms": [
+    "Fam92a",
+    "6720467C03Rik"
+  ],
+  "humanGeneSymbols": [
+    "CIBAR1"
+  ],
+  "humanSymbolSynonyms": [
+    "FLJ38979",
+    "FAM92A",
+    "FAM92A1",
+    "BARMR1"
+  ],
+  "alleleNames": [
+    "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "endonuclease-mediated mutation 1, Shanghai Model Organisms Center",
+    "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "endonuclease-mediated mutation 30, GemPharmatech Co., Ltd"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "4",
+  "seqRegionStart": "12153409",
+  "seqRegionEnd": "12172015",
+  "chrStrand": "-",
+  "seqRegionId": "4",
+  "assignmentStatus": "Selected for production",
+  "nullAlleleProductionStatus": "Started",
+  "conditionalAlleleProductionStatus": "Genotype confirmed mice",
+  "esCellProductionStatus": "ES Cells Produced",
+  "phenotypeStatus": "Phenotyping finished",
+  "phenotypingDataAvailable": true,
+  "significantTopLevelPhenotypes": [
+    "homeostasis/metabolism phenotype",
+    "immune system phenotype",
+    "adipose tissue phenotype",
+    "growth/size/body region phenotype",
+    "limbs/digits/tail phenotype",
+    "hematopoietic system phenotype",
+    "skeleton phenotype"
+  ],
+  "notSignificantTopLevelPhenotypes": [
+    "reproductive system phenotype",
+    "integument phenotype",
+    "digestive/alimentary phenotype",
+    "hearing/vestibular/ear phenotype",
+    "cardiovascular system phenotype",
+    "craniofacial phenotype",
+    "pigmentation phenotype",
+    "nervous system phenotype",
+    "vision/eye phenotype",
+    "behavior/neurological phenotype",
+    "mortality/aging"
+  ],
+  "significantPhenotypesCount": 12,
+  "adultExpressionObservationsCount": 45,
+  "associatedDiseasesCount": 2,
+  "hasLacZData": true,
+  "hasImagingData": true,
+  "hasViabilityData": true,
+  "hasBodyWeightData": true
+}

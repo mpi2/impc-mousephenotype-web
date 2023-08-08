@@ -1,0 +1,30 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:2150920",
+    "alleleSuperscript": "tm1a(EUCOMM)Wtsi",
+    "alleleSymbol": "Fgfrl1<tm1a(EUCOMM)Wtsi>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2150920",
+    "alleleSuperscript": "tm353028(L1L2_Bact_P)",
+    "alleleSymbol": "Fgfrl1<tm353028(L1L2_Bact_P)>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "intermediate_vector"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:2150920",
+    "alleleSuperscript": "tm1(KOMP)Vlcg",
+    "alleleSymbol": "Fgfrl1<tm1(KOMP)Vlcg>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "es_cell"
+    ]
+  }
+]

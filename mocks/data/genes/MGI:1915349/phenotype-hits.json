@@ -1,0 +1,362 @@
+[
+  {
+    "datasetId": "6f93d9d2c7372f48fa35f27cd0e3d12e",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_002_001",
+    "parameterName": "Fat mass",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.93441222162719E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.39275167055724,
+    "phenotype": {
+      "id": "MP:0010025",
+      "name": "decreased total body fat amount"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005375",
+        "name": "adipose tissue phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "8caa1e9493e4471cc09a64815514adea",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_021_001",
+    "parameterName": "Humerus",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 8.54185981542993E-10,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0005296",
+      "name": "abnormal humerus morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005371",
+        "name": "limbs/digits/tail phenotype"
+      },
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "6191becda2e4670297b19860d9b810a4",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_CBC_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_023_001",
+    "parameterName": "Alpha-amylase",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "not_considered",
+    "projectName": "BaSH",
+    "pValue": 5.66612524285359E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0008806",
+      "name": "increased circulating amylase level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "ec0fc3dd83b8b02a9e371850e3d4c46a",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_003_001",
+    "parameterName": "Lean mass",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.52701846507622E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.56359451806451,
+    "phenotype": {
+      "id": "MP:0003960",
+      "name": "increased lean body mass"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "6782420186827d49b5ddc6b7ab93f4d6",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_HEM_001",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_003_001",
+    "parameterName": "Hemoglobin",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 4.60388124212522E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.66128906821843,
+    "phenotype": {
+      "id": "MP:0002874",
+      "name": "decreased hemoglobin content"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "2bd237e64bd5e8992319595919f98e61",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_HEM_001",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_004_001",
+    "parameterName": "Hematocrit",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 6.90911481526654E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0000208",
+      "name": "decreased hematocrit"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "866a69225f83599a5c5e22451c3aa32c",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_HEM_001",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_002_001",
+    "parameterName": "Red blood cell count",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 5.33396369149705E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.69735273975429,
+    "phenotype": {
+      "id": "MP:0002875",
+      "name": "decreased erythrocyte cell number"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "8caa1e9493e4471cc09a64815514adea",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_021_001",
+    "parameterName": "Humerus",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 2.22184421217268E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0005296",
+      "name": "abnormal humerus morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005371",
+        "name": "limbs/digits/tail phenotype"
+      },
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "8873e403ffe3f562a4b61bf0000f34ab",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_CBC_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_014_001",
+    "parameterName": "Alkaline phosphatase",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "not_considered",
+    "projectName": "BaSH",
+    "pValue": 8.3800677807E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.635879597373938,
+    "phenotype": {
+      "id": "MP:0002968",
+      "name": "increased circulating alkaline phosphatase level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "57366e0c394c293d40d72204fa4aa12f",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_CBC_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_027_001",
+    "parameterName": "Glycerol",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 3.66546745142755E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.3846059417812,
+    "phenotype": {
+      "id": "MP:0003442",
+      "name": "decreased circulating glycerol level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "b81ec5a9a021ebadd8ade2b2f7f9be9e",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_IPG_001",
+    "procedureName": "Intraperitoneal glucose tolerance test (IPGTT)",
+    "parameterStableId": "IMPC_IPG_012_001",
+    "parameterName": "Area under glucose response curve",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 2.54270209834504E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.99546991720426,
+    "phenotype": {
+      "id": "MP:0005292",
+      "name": "improved glucose tolerance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "953f35eec8d118560fd505eb09aebb46",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_HEM_001",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_001_001",
+    "parameterName": "White blood cell count",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 8.62574023435689E-9,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.10170541191494,
+    "phenotype": {
+      "id": "MP:0000221",
+      "name": "decreased leukocyte cell number"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005387",
+        "name": "immune system phenotype"
+      },
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  }
+]
