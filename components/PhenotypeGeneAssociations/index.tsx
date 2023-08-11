@@ -111,8 +111,10 @@ const Associations = ({ data }: { data: any }) => {
               return (
                 <tr key={`tr-${d.alleleSymbol}-${i}`}>
                   <td>
-                    {allele[0]}
-                    <sup>{allele[1]}</sup>
+                    <strong>
+                      {allele[0]}
+                      <sup>{allele[1]}</sup>
+                    </strong>
                   </td>
                   <td>{d.zygosity}</td>
                   <td>
