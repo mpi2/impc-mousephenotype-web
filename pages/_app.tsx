@@ -1,5 +1,6 @@
 import "../styles/global.scss";
 
+import {useEffect, useState} from "react";
 import Layout from "../components/Layout";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -9,10 +10,19 @@ import { SSRProvider } from "react-bootstrap";
 
 import { GeneComparatorProvider } from "../components/GeneComparator";
 config.autoAddCss = false;
-// if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
-//   require("../mocks");
-// }
 function MyApp({ Component, pageProps }) {
+  const mockingEnabled = !!process.env.NEXT_PUBLIC_API_MOCKING;
+  const [shouldRender, setShouldRender] = useState(!mockingEnabled);
+  useEffect(() => {
+    if(mockingEnabled) {
+      import("../mocks")
+          .then(fn => fn.initMocks())
+          .then(() => setShouldRender(true));
+    }
+  }, []);
+  if (!shouldRender) {
+      return <></>;
+  }
   return (
     <SSRProvider>
       <GeneComparatorProvider>
