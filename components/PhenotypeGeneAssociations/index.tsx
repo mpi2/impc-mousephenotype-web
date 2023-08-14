@@ -77,12 +77,10 @@ const Associations = ({ data }: { data: any }) => {
 
   return (
     <>
-      <Pagination data={processed}>
+      <Pagination data={sorted}>
         {(currentPage) => (
           <SortableTable
-            doSort={(sort) => {
-              setSorted(_.orderBy(data, sort[0], sort[1]));
-            }}
+            doSort={(sort) => setSorted(_.orderBy(processed, sort[0], sort[1]))}
             defaultSort={["alleleSymbol", "asc"]}
             headers={[
               {
@@ -98,11 +96,11 @@ const Associations = ({ data }: { data: any }) => {
               { width: 0.7, label: "Sex", field: "sex" },
               { width: 1, label: "Life stage", field: "lifeStage" },
               { width: 1.3, label: "Phenotype", field: "phenotype" },
-              { width: 1.5, label: "Parameter", field: "parameter" },
+              { width: 1.5, label: "Parameter", field: "parameterName" },
               {
                 width: 1.5,
                 label: "Phenotyping Center",
-                field: "phephenotypingCenternotype",
+                field: "phenotypingCentre",
               },
               { width: 2, label: "Most significant P-value", field: "pValue" },
             ]}
