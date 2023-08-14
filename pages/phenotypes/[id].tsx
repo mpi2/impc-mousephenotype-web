@@ -83,15 +83,6 @@ const Phenotype = () => {
             </a>
           </p>
         </Card>
-        <Card>
-          <h2>Phenotype associations stats</h2>
-          <p>
-            0.78% of tested genes with null mutations on a B6N genetic
-            background have a phenotype association to abnormal stationary
-            movement (54/6907)
-          </p>
-          <p>1.07% females (15/1402) 1.00% males (14/1407)</p>
-        </Card>
       </Container>
     </>
   );
