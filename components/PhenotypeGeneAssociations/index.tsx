@@ -5,7 +5,8 @@ import Pagination from "../Pagination";
 import SortableTable from "../SortableTable";
 import {formatAlleleSymbol, formatPValue} from "../../utils";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMars, faMarsAndVenus, faVenus} from "@fortawesome/free-solid-svg-icons";
+import {faChartLine, faChevronRight, faMars, faMarsAndVenus, faVenus} from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const Associations = ({ data }: { data: any }) => {
   const groups = data?.reduce((acc, d) => {
@@ -94,16 +95,16 @@ const Associations = ({ data }: { data: any }) => {
                 label: "Zygosity",
                 field: "zygosity",
               },
-              { width: 1, label: "Sex", field: "sex" },
+              { width: 0.7, label: "Sex", field: "sex" },
               { width: 1, label: "Life stage", field: "lifeStage" },
-              { width: 2, label: "Phenotype", field: "phenotype" },
-              { width: 2, label: "Parameter", field: "parameter" },
+              { width: 1.3, label: "Phenotype", field: "phenotype" },
+              { width: 1.5, label: "Parameter", field: "parameter" },
               {
-                width: 2,
+                width: 1.5,
                 label: "Phenotyping Center",
                 field: "phephenotypingCenternotype",
               },
-              { width: 2, label: "P-value", field: "pValue" },
+              { width: 2, label: "Most significant P-value", field: "pValue" },
             ]}
           >
             {currentPage.map((d, i) => {
@@ -146,10 +147,19 @@ const Associations = ({ data }: { data: any }) => {
                     <span className="small">{d.projectName}</span>
                   </td>
                   <td>
-                    <span className="me2 bold">
+                    <span className="me-2 bold" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                       <span className="orange-dark">
-                        {formatPValue(d.pValue)}
+                        {formatPValue(d.pValue)}&nbsp;
                       </span>
+                      <Link
+                        href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
+                        legacyBehavior
+                      >
+                        <strong className="link small float-right">
+                          <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;
+                          <FontAwesomeIcon icon={faChevronRight} />
+                        </strong>
+                      </Link>
                     </span>
                   </td>
                 </tr>
