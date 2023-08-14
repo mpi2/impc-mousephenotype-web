@@ -4,16 +4,18 @@ import Script from "next/script";
 import Search from "../../components/Search";
 import Card from "../../components/Card";
 import styles from './styles.module.scss';
-import useQuery from "../../components/useQuery";
 import SortableTable from "../../components/SortableTable";
-import { EmbryoLandingPageData } from "./types";
-import ViabilityPieChart from "./viability-pie-chart";
+import ViabilityPieChart from "../../components/ViabilityPieChart";
 import PublicationsList from "../../components/PublicationsList";
+import data from '../../mocks/data/landing-pages/embryo.json';
+
+type EmbryoLandingPageData = {
+  primaryViability: Array<{ label: string; value: number }>;
+  primaryViabilityChartData: Array<{ label: string; value: number }>;
+  windowsOfLethality: Array<{ label: string; value: number }>;
+}
 
 const EmbryoLandingPage = () => {
-  const [data] = useQuery<EmbryoLandingPageData>({
-    query: "/api/v1/landing-pages-data/embryo"
-  });
   return (
     <>
       <Script src="https://ficolo.github.io/impc-labs/static/js/main.09f6f606.js" />
