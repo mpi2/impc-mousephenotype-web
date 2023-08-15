@@ -1,0 +1,74 @@
+{
+  "id": "63920ab40b4f0f82fa7e45d8",
+  "mgiGeneAccessionId": "MGI:95516",
+  "geneName": "fibroblast growth factor 2",
+  "geneSymbol": "Fgf2",
+  "markerType": "Gene",
+  "synonyms": [
+    "Fgf-2",
+    "Fgfb",
+    "bFGF"
+  ],
+  "humanGeneSymbols": [
+    "FGF2"
+  ],
+  "humanSymbolSynonyms": [
+    "FGFB"
+  ],
+  "alleleNames": [
+    "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "targeted mutation 3, Thomas Doetschman",
+    "targeted mutation 1, Claudio Basilico",
+    "targeted mutation 1, Rolf Zeller",
+    "targeted mutation 1, Friedrich Beerman",
+    "endonuclease-mediated mutation 1, Shanghai Model Organisms Center",
+    "targeted mutation 2, Thomas Doetschman",
+    "endonuclease-mediated mutation 1, GemPharmatech Co., Ltd",
+    "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "targeted mutation 1, Thomas Doetschman"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "3",
+  "seqRegionStart": "37402616",
+  "seqRegionEnd": "37464255",
+  "chrStrand": "+",
+  "seqRegionId": "3",
+  "assignmentStatus": "Selected for production",
+  "nullAlleleProductionStatus": "Genotype confirmed mice",
+  "conditionalAlleleProductionStatus": "Genotype confirmed mice",
+  "esCellProductionStatus": "ES Cells Produced",
+  "phenotypeStatus": "Phenotyping data available",
+  "phenotypingDataAvailable": true,
+  "significantTopLevelPhenotypes": [
+    "homeostasis/metabolism phenotype",
+    "vision/eye phenotype",
+    "behavior/neurological phenotype"
+  ],
+  "notSignificantTopLevelPhenotypes": [
+    "reproductive system phenotype",
+    "immune system phenotype",
+    "integument phenotype",
+    "adipose tissue phenotype",
+    "growth/size/body region phenotype",
+    "muscle phenotype",
+    "hearing/vestibular/ear phenotype",
+    "hematopoietic system phenotype",
+    "cardiovascular system phenotype",
+    "craniofacial phenotype",
+    "pigmentation phenotype",
+    "limbs/digits/tail phenotype",
+    "nervous system phenotype",
+    "respiratory system phenotype",
+    "skeleton phenotype",
+    "mortality/aging"
+  ],
+  "significantPhenotypesCount": 4,
+  "adultExpressionObservationsCount": 46,
+  "embryoExpressionObservationsCount": 42,
+  "hasLacZData": true,
+  "hasImagingData": true,
+  "hasViabilityData": true,
+  "hasBodyWeightData": true
+}

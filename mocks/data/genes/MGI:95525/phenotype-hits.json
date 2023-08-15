@@ -1,0 +1,31 @@
+[
+  {
+    "datasetId": "95d1c64d36128ef8dcf899422406bfe2",
+    "mgiGeneAccessionId": "MGI:95525",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_006_001",
+    "parameterName": "Body length",
+    "alleleAccessionId": "MGI:5548936",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Fgfr4<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.08720600078612E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.06184183459451,
+    "phenotype": {
+      "id": "MP:0001257",
+      "name": "increased body length"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ]
+  }
+]

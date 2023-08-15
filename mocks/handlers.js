@@ -112,7 +112,7 @@ export const handlers = [
     const phenotypes = require.context(`./data/phenotypes/`, true, /\.json$/);
     try {
       const sectionKeyMap = {
-        geneAssociations: "gene-associations",
+        "genotype-hits": "genotype-hits",
         procedures: "procedures",
         stats: "stats",
         summary: "summary",

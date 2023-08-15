@@ -1,0 +1,112 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_075_001",
+    "parameterName": "VIP of left fundus",
+    "count": 15,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1384428",
+    "fileType": "image/bmp"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_078_001",
+    "parameterName": "VIP of right eye",
+    "count": 15,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1396830",
+    "fileType": "image/bmp"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_ALZ_001",
+    "procedureName": "Adult LacZ",
+    "parameterStableId": "IMPC_ALZ_076_001",
+    "parameterName": "LacZ Images Wholemount",
+    "count": 3,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/212044",
+    "fileType": "image/tif"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_074_001",
+    "parameterName": "VIP of right fundus",
+    "count": 15,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1419913",
+    "fileType": "image/bmp"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_050_001",
+    "parameterName": "XRay Images Skull Lateral Orientation",
+    "count": 16,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/640565",
+    "fileType": "image/jpg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_034_001",
+    "parameterName": "XRay Images Whole Body Dorso Ventral",
+    "count": 16,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/214603",
+    "fileType": "image/jpg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_051_001",
+    "parameterName": "XRay Images Skull Dorso Ventral Orientation",
+    "count": 16,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/625119",
+    "fileType": "image/jpg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_079_001",
+    "parameterName": "VIP of left eye",
+    "count": 15,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1377986",
+    "fileType": "image/bmp"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_049_001",
+    "parameterName": "XRay Images Forepaw",
+    "count": 16,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/633841",
+    "fileType": "image/jpg"
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95525",
+    "strainAccessionId": "MGI:2159965",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_048_001",
+    "parameterName": "XRay Images Whole Body Lateral Orientation",
+    "count": 16,
+    "thumbnailUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/609606",
+    "fileType": "image/jpg"
+  }
+]

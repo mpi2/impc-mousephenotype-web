@@ -1,0 +1,395 @@
+[
+  {
+    "datasetId": "e94c176171a158974f2d6735d13e0c3b",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_026_001",
+    "parameterName": "Retinal Blood Vessels Pattern",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "male",
+    "projectName": "Helmholtz GMC",
+    "pValue": 4.66679500954711E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0010097",
+      "name": "abnormal retina blood vessel morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      },
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "1946b8fe32ac796315a5b0680985eaaa",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "not_considered",
+    "projectName": "Helmholtz GMC",
+    "pValue": 3.17479E-4,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011100",
+      "name": "preweaning lethality, complete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ]
+  },
+  {
+    "datasetId": "6ba72e7e13fe322873c3da948d86fcea",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_HEM_002",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_005_001",
+    "parameterName": "Mean cell volume",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "not_considered",
+    "projectName": "Helmholtz GMC",
+    "pValue": 3.62262503258437E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.32518524103225,
+    "phenotype": {
+      "id": "MP:0002591",
+      "name": "decreased mean corpuscular volume"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "483102cf2e5b978450d260d299be6165",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_059_001",
+    "parameterName": "Mean right eye lens density",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "not_considered",
+    "projectName": "Helmholtz GMC",
+    "pValue": 2.45440990351842E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -0.758659643555418,
+    "phenotype": {
+      "id": "MP:0001303",
+      "name": "abnormal lens morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "766ad0ee1391379f0651364c88442b28",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_016_001",
+    "parameterName": "Lens",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "female",
+    "projectName": "Helmholtz GMC",
+    "pValue": 3.40574915646579E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001303",
+      "name": "abnormal lens morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "e94c176171a158974f2d6735d13e0c3b",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_026_001",
+    "parameterName": "Retinal Blood Vessels Pattern",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "female",
+    "projectName": "Helmholtz GMC",
+    "pValue": 9.09682102451959E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0010097",
+      "name": "abnormal retina blood vessel morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      },
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "039919e86a99b0ccff2880e4f0abf489",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_017_001",
+    "parameterName": "Lens Opacity",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "male",
+    "projectName": "Helmholtz GMC",
+    "pValue": 2.66374781732395E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001304",
+      "name": "cataract"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "766ad0ee1391379f0651364c88442b28",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_016_001",
+    "parameterName": "Lens",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "male",
+    "projectName": "Helmholtz GMC",
+    "pValue": 1.50599088495647E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001303",
+      "name": "abnormal lens morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "bc9c6df3306857c7e9767b8f241455de",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_024_001",
+    "parameterName": "Retinal Blood Vessels",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "male",
+    "projectName": "Helmholtz GMC",
+    "pValue": 1.00046228385228E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0002792",
+      "name": "abnormal retina vasculature morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      },
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "bc9c6df3306857c7e9767b8f241455de",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_024_001",
+    "parameterName": "Retinal Blood Vessels",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "female",
+    "projectName": "Helmholtz GMC",
+    "pValue": 2.81444912410021E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0002792",
+      "name": "abnormal retina vasculature morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      },
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "aec31229346df11f60600a3f2b6b65cf",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "HMGU_ROT_001",
+    "procedureName": "Rotarod",
+    "parameterStableId": "HMGU_ROT_002_001",
+    "parameterName": "Latency to fall_Mean",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "not_considered",
+    "projectName": "Helmholtz GMC",
+    "pValue": 2.68613674414553E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.63147268496932,
+    "phenotype": {
+      "id": "MP:0001516",
+      "name": "abnormal motor coordination/balance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "039919e86a99b0ccff2880e4f0abf489",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_017_001",
+    "parameterName": "Lens Opacity",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "female",
+    "projectName": "Helmholtz GMC",
+    "pValue": 3.81360051042658E-7,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001304",
+      "name": "cataract"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "0cc91c52ee5ba3c78c1c7bf751af066a",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_CBC_002",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_014_001",
+    "parameterName": "Alkaline phosphatase",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "female",
+    "projectName": "Helmholtz GMC",
+    "pValue": 4.61457902389919E-9,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.9171987259037,
+    "phenotype": {
+      "id": "MP:0002968",
+      "name": "increased circulating alkaline phosphatase level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  }
+]

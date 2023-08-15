@@ -1,0 +1,65 @@
+{
+  "id": "63920aaffd94cda19e313241",
+  "mgiGeneAccessionId": "MGI:1261436",
+  "geneName": "T-box 10",
+  "geneSymbol": "Tbx10",
+  "markerType": "Gene",
+  "synonyms": [
+    "Tbx7",
+    "Tbx13"
+  ],
+  "humanGeneSymbols": [
+    "TBX10"
+  ],
+  "humanSymbolSynonyms": [
+    "TBX7",
+    "TBX13"
+  ],
+  "alleleNames": [
+    "targeted mutation 2b, Helmholtz Zentrum Muenchen GmbH",
+    "targeted mutation 2a, Helmholtz Zentrum Muenchen GmbH",
+    "dancer",
+    "targeted mutation 1.1, Naoyuki Miura",
+    "targeted mutation 1, Lexicon Genetics"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "19",
+  "seqRegionStart": "4042752",
+  "seqRegionEnd": "4049512",
+  "chrStrand": "+",
+  "seqRegionId": "19",
+  "assignmentStatus": "Selected for production",
+  "nullAlleleProductionStatus": "Genotype confirmed mice",
+  "conditionalAlleleProductionStatus": "Genotype confirmed mice",
+  "esCellProductionStatus": "ES Cells Produced",
+  "phenotypeStatus": "Phenotyping data available",
+  "phenotypingDataAvailable": true,
+  "significantTopLevelPhenotypes": [],
+  "notSignificantTopLevelPhenotypes": [
+    "reproductive system phenotype",
+    "immune system phenotype",
+    "integument phenotype",
+    "adipose tissue phenotype",
+    "growth/size/body region phenotype",
+    "muscle phenotype",
+    "hearing/vestibular/ear phenotype",
+    "hematopoietic system phenotype",
+    "craniofacial phenotype",
+    "cardiovascular system phenotype",
+    "homeostasis/metabolism phenotype",
+    "pigmentation phenotype",
+    "limbs/digits/tail phenotype",
+    "nervous system phenotype",
+    "vision/eye phenotype",
+    "behavior/neurological phenotype",
+    "skeleton phenotype",
+    "mortality/aging"
+  ],
+  "adultExpressionObservationsCount": 49,
+  "hasLacZData": true,
+  "hasImagingData": true,
+  "hasViabilityData": true,
+  "hasBodyWeightData": true
+}

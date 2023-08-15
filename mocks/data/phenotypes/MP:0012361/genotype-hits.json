@@ -1,0 +1,565 @@
+[
+  {
+    "datasetId": "e94c176171a158974f2d6735d13e0c3b",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_026_001",
+    "parameterName": "Retinal Blood Vessels Pattern",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "male",
+    "projectName": "Helmholtz GMC",
+    "pValue": 4.66679500954711E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0010097",
+      "name": "abnormal retina blood vessel morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      },
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "1946b8fe32ac796315a5b0680985eaaa",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "not_considered",
+    "projectName": "Helmholtz GMC",
+    "pValue": 3.17479E-4,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011100",
+      "name": "preweaning lethality, complete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ]
+  },
+  {
+    "datasetId": "6ba72e7e13fe322873c3da948d86fcea",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_HEM_002",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_005_001",
+    "parameterName": "Mean cell volume",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "not_considered",
+    "projectName": "Helmholtz GMC",
+    "pValue": 3.62262503258437E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.32518524103225,
+    "phenotype": {
+      "id": "MP:0002591",
+      "name": "decreased mean corpuscular volume"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "483102cf2e5b978450d260d299be6165",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_059_001",
+    "parameterName": "Mean right eye lens density",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "not_considered",
+    "projectName": "Helmholtz GMC",
+    "pValue": 2.45440990351842E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -0.758659643555418,
+    "phenotype": {
+      "id": "MP:0001303",
+      "name": "abnormal lens morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "766ad0ee1391379f0651364c88442b28",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_016_001",
+    "parameterName": "Lens",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "female",
+    "projectName": "Helmholtz GMC",
+    "pValue": 3.40574915646579E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001303",
+      "name": "abnormal lens morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "e94c176171a158974f2d6735d13e0c3b",
+    "mgiGeneAccessionId": "MGI:1922546",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_026_001",
+    "parameterName": "Retinal Blood Vessels Pattern",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "female",
+    "projectName": "Helmholtz GMC",
+    "pValue": 9.09682102451959E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0010097",
+      "name": "abnormal retina blood vessel morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      },
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "6c152ae1e9efe0f414284cb074396d9c",
+    "mgiGeneAccessionId": "MGI:2444773",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_005_001",
+    "parameterName": "Bone Mineral Content (excluding skull)",
+    "alleleAccessionId": "MGI:6276904",
+    "alleleName": "endonuclease-mediated mutation 1, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Mavs<em1(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 9.64586508221206E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0010124",
+      "name": "decreased bone mineral content"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "4d7b0a5cd875b413c5af6a5ab8f58c22",
+    "mgiGeneAccessionId": "MGI:2444773",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_004_001",
+    "parameterName": "Bone Mineral Density (excluding skull)",
+    "alleleAccessionId": "MGI:6276904",
+    "alleleName": "endonuclease-mediated mutation 1, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Mavs<em1(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 3.17922007884964E-7,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0000063",
+      "name": "decreased bone mineral density"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "7737a7e1077a7ec5c25c9ca36c8b8e47",
+    "mgiGeneAccessionId": "MGI:95516",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_039_001",
+    "parameterName": "Limb grasp",
+    "alleleAccessionId": "MGI:5637206",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Fgf2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "MRC",
+    "pValue": 9.41929000091351E-7,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001513",
+      "name": "limb grasping"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "48b936dfd17e105a5d4743032eaa0e98",
+    "mgiGeneAccessionId": "MGI:95516",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_CBC_002",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_007_001",
+    "parameterName": "Albumin",
+    "alleleAccessionId": "MGI:5637206",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Fgf2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "MRC",
+    "pValue": 1.77832147501213E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 3.31259258370624,
+    "phenotype": {
+      "id": "MP:0002965",
+      "name": "increased circulating serum albumin level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "50b50f5bee717d97c9c2c88c680d4e53",
+    "mgiGeneAccessionId": "MGI:95516",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_EYE_001",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_092_001",
+    "parameterName": "Retina (combined)",
+    "alleleAccessionId": "MGI:5637206",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Fgf2<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "MRC",
+    "pValue": 1.57256590299952E-7,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001325",
+      "name": "abnormal retina morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "6f93d9d2c7372f48fa35f27cd0e3d12e",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_002_001",
+    "parameterName": "Fat mass",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.93441222162719E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.39275167055724,
+    "phenotype": {
+      "id": "MP:0010025",
+      "name": "decreased total body fat amount"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005375",
+        "name": "adipose tissue phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "8caa1e9493e4471cc09a64815514adea",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "MGP_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_021_001",
+    "parameterName": "Humerus",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 8.54185981542993E-10,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0005296",
+      "name": "abnormal humerus morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005371",
+        "name": "limbs/digits/tail phenotype"
+      },
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "6191becda2e4670297b19860d9b810a4",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_CBC_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_023_001",
+    "parameterName": "Alpha-amylase",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "not_considered",
+    "projectName": "BaSH",
+    "pValue": 5.66612524285359E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0008806",
+      "name": "increased circulating amylase level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "ec0fc3dd83b8b02a9e371850e3d4c46a",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_003_001",
+    "parameterName": "Lean mass",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.52701846507622E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.56359451806451,
+    "phenotype": {
+      "id": "MP:0003960",
+      "name": "increased lean body mass"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "6782420186827d49b5ddc6b7ab93f4d6",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_HEM_001",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_003_001",
+    "parameterName": "Hemoglobin",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 4.60388124212522E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.66128906821843,
+    "phenotype": {
+      "id": "MP:0002874",
+      "name": "decreased hemoglobin content"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "2bd237e64bd5e8992319595919f98e61",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_HEM_001",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_004_001",
+    "parameterName": "Hematocrit",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 6.90911481526654E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0000208",
+      "name": "decreased hematocrit"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "866a69225f83599a5c5e22451c3aa32c",
+    "mgiGeneAccessionId": "MGI:1915349",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_HEM_001",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_002_001",
+    "parameterName": "Red blood cell count",
+    "alleleAccessionId": "MGI:5637028",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cibar1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 5.33396369149705E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.69735273975429,
+    "phenotype": {
+      "id": "MP:0002875",
+      "name": "decreased erythrocyte cell number"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ]
+  },
+  {
+    "datasetId": "95d1c64d36128ef8dcf899422406bfe2",
+    "mgiGeneAccessionId": "MGI:95525",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_006_001",
+    "parameterName": "Body length",
+    "alleleAccessionId": "MGI:5548936",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Fgfr4<tm1b(EUCOMM)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.08720600078612E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.06184183459451,
+    "phenotype": {
+      "id": "MP:0001257",
+      "name": "increased body length"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ]
+  }
+]

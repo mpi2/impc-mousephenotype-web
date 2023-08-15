@@ -1,0 +1,36 @@
+{
+  "id": "63920aaf5b65085d95a89150",
+  "mgiGeneAccessionId": "MGI:2442866",
+  "geneName": "zinc finger and BTB domain containing 38",
+  "geneSymbol": "Zbtb38",
+  "markerType": "Gene",
+  "synonyms": [
+    "CIBZ",
+    "Zenon homolog",
+    "A930014K01Rik"
+  ],
+  "humanGeneSymbols": [
+    "ZBTB38"
+  ],
+  "humanSymbolSynonyms": [
+    "CIBZ",
+    "FLJ35036",
+    "ZNF921",
+    "PPP1R171"
+  ],
+  "alleleNames": [
+    "endonuclease-mediated mutation 1, Deepta Bhattcharya",
+    "endonuclease-mediated mutation 1, Wellcome Trust Sanger Insititute",
+    "endonuclease-mediated mutation 1.1, Deepta Bhattcharya"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "9",
+  "seqRegionStart": "96564820",
+  "seqRegionEnd": "96613728",
+  "chrStrand": "-",
+  "seqRegionId": "9",
+  "assignmentStatus": "Withdrawn",
+  "phenotypingDataAvailable": false
+}

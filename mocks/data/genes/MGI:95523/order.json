@@ -1,0 +1,60 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:95523",
+    "alleleSuperscript": "tm114335(L1L2_GOHANU)",
+    "alleleSymbol": "Fgfr2<tm114335(L1L2_GOHANU)>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "intermediate_vector"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95523",
+    "alleleSuperscript": "tm1e(EUCOMM)Hmgu",
+    "alleleSymbol": "Fgfr2<tm1e(EUCOMM)Hmgu>",
+    "alleleDescription": "Targeted, non-conditional allele",
+    "productTypes": [
+      "es_cell"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95523",
+    "alleleSuperscript": "tm281768(L1L2_Bact_P)",
+    "alleleSymbol": "Fgfr2<tm281768(L1L2_Bact_P)>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "intermediate_vector"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95523",
+    "alleleSuperscript": "tm1(NCOM)Mfgc",
+    "alleleSymbol": "Fgfr2<tm1(NCOM)Mfgc>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95523",
+    "alleleSuperscript": "tm1(KOMP)Mbp",
+    "alleleSymbol": "Fgfr2<tm1(KOMP)Mbp>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:95523",
+    "alleleSuperscript": "tm1a(EUCOMM)Hmgu",
+    "alleleSymbol": "Fgfr2<tm1a(EUCOMM)Hmgu>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell",
+      "mouse"
+    ]
+  }
+]

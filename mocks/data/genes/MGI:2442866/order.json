@@ -1,0 +1,12 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:2442866",
+    "alleleSuperscript": "tm89579(L1L2_Bact_P)",
+    "alleleSymbol": "Zbtb38<tm89579(L1L2_Bact_P)>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "targeting_vector",
+      "intermediate_vector"
+    ]
+  }
+]
