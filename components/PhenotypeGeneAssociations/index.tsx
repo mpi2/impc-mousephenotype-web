@@ -83,19 +83,11 @@ const Associations = ({ data }: { data: any }) => {
             doSort={(sort) => setSorted(_.orderBy(processed, sort[0], sort[1]))}
             defaultSort={["alleleSymbol", "asc"]}
             headers={[
-              {
-                width: 2,
-                label: "Gene / allele",
-                field: "alleleSymbol",
-              },
-              {
-                width: 1,
-                label: "Zygosity",
-                field: "zygosity",
-              },
+              { width: 2, label: "Gene / allele", field: "alleleSymbol" },
+              { width: 1.3, label: "Phenotype", field: "phenotype" },
+              { width: 1, label: "Zygosity", field: "zygosity" },
               { width: 0.7, label: "Sex", field: "sex" },
               { width: 1, label: "Life stage", field: "lifeStage" },
-              { width: 1.3, label: "Phenotype", field: "phenotype" },
               { width: 1.5, label: "Parameter", field: "parameterName" },
               {
                 width: 1.5,
@@ -115,6 +107,7 @@ const Associations = ({ data }: { data: any }) => {
                       <sup>{allele[1]}</sup>
                     </strong>
                   </td>
+                  <td>{d.phenotype}</td>
                   <td>{d.zygosity}</td>
                   <td>
                     {["male", "female", "not_considered"].map((col) => {
@@ -133,7 +126,6 @@ const Associations = ({ data }: { data: any }) => {
                     })}
                   </td>
                   <td>{d.lifeStageName}</td>
-                  <td>{d.phenotype}</td>
                   <td>
                     {d.parameterName}
                     <br/>
