@@ -290,6 +290,7 @@ export const BodySystem = ({
   hoverColor,
   noSpacing,
   appendLabel,
+  prependLabel,
 }: {
   isSignificant?: boolean;
   name: string;
@@ -297,6 +298,7 @@ export const BodySystem = ({
   hoverColor?: string;
   noSpacing?: boolean;
   appendLabel?: string;
+  prependLabel?: string;
 }) => {
   const label = _.capitalize(name.replace(/ phenotype/g, ""));
   const [hovered, setHovered] = useState<boolean>(false);
@@ -317,6 +319,7 @@ export const BodySystem = ({
       }}
       overlay={
         <Tooltip>
+          {prependLabel ? `${prependLabel}: ` : ""}
           {label}
           {appendLabel ? `: ${appendLabel}` : ""}
         </Tooltip>

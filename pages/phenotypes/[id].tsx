@@ -7,6 +7,15 @@ import Search from "../../components/Search";
 import Associations from "../../components/PhenotypeGeneAssociations";
 
 const Phenotype = () => {
+  const phenotype = {
+    name: 'Abnormal stationary movement',
+    synonyms: 'movement abnormalities, abnormal movement',
+    description: 'Altered ability or inability to change body posture or shift a body part.',
+    noSignificantGenes: 54,
+    percentageTestedGenes: '0.78%',
+    noTestedGenes: 6907,
+    system: 'adipose tissue phenotype',
+  };
   const router = useRouter();
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -27,9 +36,9 @@ const Phenotype = () => {
   }, [router.query.id]);
   return (
     <>
-      <Search isPhenotype />
+      <Search />
       <Container className="page">
-        <Summary />
+        <Summary phenotype={phenotype}/>
 
         <Card>
           <h2>IMPC Gene variants with abnormal stationary movement</h2>
