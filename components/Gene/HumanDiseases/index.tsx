@@ -121,6 +121,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   const { isLoading, isError, data } = useQuery({
     queryKey: ['genes', router.query.pid, 'disease'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/disease`),
+    enabled: router.isReady,
   });
   const [tab, setTab] = useState("associated");
 

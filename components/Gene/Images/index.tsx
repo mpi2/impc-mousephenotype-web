@@ -47,6 +47,7 @@ const Images = () => {
   const { isLoading, isError, data } = useQuery({
     queryKey: ['genes', router.query.pid, 'images'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/images`),
+    enabled: router.isReady
   });
 
   if (isLoading) {

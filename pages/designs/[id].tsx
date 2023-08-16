@@ -11,7 +11,8 @@ const Oligo = () => {
   const router = useRouter();
   const { data, isLoading } = useQuery({
     queryKey: ['alleles', 'htgt', router.query.id],
-    queryFn: () => fetchAPI(`/api/v1/alleles/htgt/designId:${router.query.id}`)
+    queryFn: () => fetchAPI(`/api/v1/alleles/htgt/designId:${router.query.id}`),
+    enabled: router.isReady
   })
 
   if (isLoading) {

@@ -29,7 +29,8 @@ const Expressions = () => {
       ...d,
       expressionRate: getExpressionRate(d.mutantCounts),
       wtExpressionRate: getExpressionRate(d.controlCounts),
-    })) || []
+    })) || [],
+    enabled: router.isReady
   });
   useEffect(() => {
     if (data) {

@@ -135,7 +135,8 @@ const Charts = () => {
 
   const { data: datasetSummaries, isLoading } = useQuery({
     queryKey: ['genes', router.query.mgiGeneAccessionId, router.query.mpTermId, 'dataset'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`)
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`),
+    enabled: router.isReady
   });
   datasetSummaries ? console.log(datasetSummaries) : null;
   if (datasetSummaries) {

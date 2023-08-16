@@ -23,7 +23,8 @@ const Order = ({ gene }: { gene: any }) => {
       d =>
         d.productTypes.length > 1 ||
         !["intermediate_vector", "crispr"].includes(d.productTypes[0])
-    )
+    ),
+    enabled: router.isReady
   });
   useEffect(() => {
     if (filtered) {

@@ -20,7 +20,9 @@ const Phenotype = () => {
   const router = useRouter();
   const { data } = useQuery({
     queryKey: ['phenotype', router.query.id, 'genotype-hits'],
-    queryFn: () => fetchAPI(`/api/v1/phenotypes/MP:0012361/genotype-hits`)
+    // TODO: remove default after service is up and running
+    queryFn: () => fetchAPI(`/api/v1/phenotypes/${router.query.id || "MP:0012361"}/genotype-hits`),
+    enabled: router.isReady
   });
   return (
     <>

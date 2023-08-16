@@ -20,6 +20,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
     queryKey: ['genes', router.query.pid, 'histopathology'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/histopathology`),
     placeholderData: null,
+    enabled: router.isReady
   });
 
   useEffect(() => {

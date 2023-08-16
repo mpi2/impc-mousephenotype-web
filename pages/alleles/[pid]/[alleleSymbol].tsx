@@ -60,12 +60,14 @@ const ProductItem = ({
 
 const Gene = () => {
   const {
+    isReady,
     query: { pid, alleleSymbol },
   } = useRouter();
 
   const { data: alleles, isLoading, isError, error } = useQuery({
     queryKey: ['genes', pid, 'alleles', alleleSymbol, 'order'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${pid}/${alleleSymbol}/order`)
+    queryFn: () => fetchAPI(`/api/v1/genes/${pid}/${alleleSymbol}/order`),
+    enabled: isReady
   })
 
   const [qcData, setQcData] = useState<any[]>(null);
