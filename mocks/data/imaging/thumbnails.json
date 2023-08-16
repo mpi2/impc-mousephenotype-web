@@ -1,0 +1,346 @@
+[
+  {
+    "id": "62b06de56d32c097a22a2935",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2336896",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379926.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379926_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2936",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2319589",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379924.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379924_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2937",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2237059",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379923.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379923_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2938",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2237069",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379922.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379922_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2939",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2214900",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379921.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379921_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a293a",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2214899",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379920.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379920_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a293b",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2209653",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379918.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379918_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a293c",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2181602",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379915.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379915_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a293d",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2170440",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379914.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379914_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a293e",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2170438",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379913.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379913_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a293f",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2152603",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379912.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379912_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2940",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2152601",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379911.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_051_001/2379911_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2941",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2336896",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379894.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379894_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2942",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2336895",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379893.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379893_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2943",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2319589",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379892.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379892_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2944",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2237059",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379891.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379891_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2945",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2237069",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379890.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379890_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2946",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2214900",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379889.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379889_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2947",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2214899",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379888.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379888_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2948",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2209637",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379887.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379887_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2949",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2209653",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379886.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379886_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a294a",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2209643",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379885.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379885_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a294b",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2181605",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379884.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379884_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a294c",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2181602",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379883.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379883_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a294d",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2170440",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379882.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379882_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a294e",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2170438",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379881.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379881_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a294f",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2152603",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379880.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379880_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2950",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2152601",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379879.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_049_001/2379879_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2951",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2336896",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379878.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379878_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2952",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2336895",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379877.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379877_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2953",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2319589",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379876.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379876_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2954",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2237059",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379875.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379875_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2955",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2237069",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379874.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379874_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2956",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2214900",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379873.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379873_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2957",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2214899",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379872.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379872_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2958",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2209637",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379871.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379871_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a2959",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2209643",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379870.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379870_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a295a",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2181605",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379869.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379869_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a295b",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2181602",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379868.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379868_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a295c",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2170440",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379867.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379867_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a295d",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2170438",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379866.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379866_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a295e",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2152603",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379865.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379865_th.jpg"
+  },
+  {
+    "id": "62b06de56d32c097a22a295f",
+    "genotype": "PMAV",
+    "strain": "MGI:2159965",
+    "animalName": "2152601",
+    "fullFileUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379864.jpg",
+    "thumbnailUrl": "https://komp-data.s3.eu-west-2.amazonaws.com/komp-images-web/WTSI/MGP_001/MGP_XRY_001/IMPC_XRY_048_001/2379864_th.jpg"
+  }
+]
