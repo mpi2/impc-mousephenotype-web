@@ -17,8 +17,9 @@ import {
   faTable,
 } from "@fortawesome/free-solid-svg-icons";
 import DataComparison from "../../components/Data/DataComparison";
-import useQuery from "../../components/useQuery";
 import { formatPValue } from "../../utils";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../api-service";
 
 const mockData = [
   {
@@ -132,8 +133,9 @@ const Charts = () => {
     }
   };
 
-  const [datasetSummaries, loading, error] = useQuery({
-    query: `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`,
+  const { data: datasetSummaries, isLoading } = useQuery({
+    queryKey: ['genes', router.query.mgiGeneAccessionId, router.query.mpTermId, 'dataset'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`)
   });
   datasetSummaries ? console.log(datasetSummaries) : null;
   if (datasetSummaries) {
@@ -207,7 +209,7 @@ const Charts = () => {
               </Button>
             </div>
           </Alert>
-          {!loading && showComparison && (
+          {!isLoading && showComparison && (
             <DataComparison data={datasetSummaries} />
           )}
         </Card>

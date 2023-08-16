@@ -23,7 +23,6 @@ const Histopathology = ({ gene }: { gene: any }) => {
   });
 
   useEffect(() => {
-    console.log('data', data);
     if (data) {
       setSorted(_.orderBy(data, "parameterName", "asc"));
     }
@@ -77,7 +76,6 @@ const Histopathology = ({ gene }: { gene: any }) => {
               ]}
             >
               {pageData.map((p) => {
-                console.log('PAGE: ', pageData);
                 const allele = formatAlleleSymbol(p.alleleSymbol);
                 return (
                   <tr>

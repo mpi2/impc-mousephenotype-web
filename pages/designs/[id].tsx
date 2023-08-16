@@ -1,20 +1,20 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { Container } from "react-bootstrap";
 import Card from "../../components/Card";
 import Search from "../../components/Search";
-import _ from "lodash";
 import SortableTable from "../../components/SortableTable";
 import styles from "./styles.module.scss";
-import useQuery from "../../components/useQuery";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../api-service";
 
 const Oligo = () => {
   const router = useRouter();
-  const [data, loading, error] = useQuery({
-    query: `/api/v1/alleles/htgt/designId:${router.query.id}`,
-  });
+  const { data, isLoading } = useQuery({
+    queryKey: ['alleles', 'htgt', router.query.id],
+    queryFn: () => fetchAPI(`/api/v1/alleles/htgt/designId:${router.query.id}`)
+  })
 
-  if (loading) {
+  if (isLoading) {
     return (
       <>
         <Search />
