@@ -18,10 +18,12 @@ const Phenotypes = ({ gene }: { gene: any }) => {
   const {data: phenotypeData, isLoading: isPhenotypeLoading, isError: isPhenotypeError} = useQuery({
     queryKey: ['genes', router.query.pid, 'phenotype-hits'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/phenotype-hits`),
+    enabled: router.isReady
   });
   const {data: geneData, isLoading: isGeneLoading, isError: isGeneError} = useQuery({
     queryKey: ['genes', router.query.pid, 'statistical-result'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/statistical-result`),
+    enabled: router.isReady
   });
 
   if (isPhenotypeLoading || isGeneLoading) {

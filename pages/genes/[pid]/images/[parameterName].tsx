@@ -114,6 +114,7 @@ const ImagesCompare = () => {
   const { data: images } = useQuery({
     queryKey: ['genes', pid, 'images', parameterName],
     queryFn: () => fetchAPI(`/api/imaging/v1/thumbnails?genotype=PMAV`),
+    enabled: router.isReady,
   })
   if (!wt) return null;
 

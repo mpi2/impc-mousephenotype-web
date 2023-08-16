@@ -20,10 +20,10 @@ const Histopathology = ({ gene }: { gene: any }) => {
     queryKey: ['genes', router.query.pid, 'histopathology'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/histopathology`),
     placeholderData: null,
+    enabled: router.isReady
   });
 
   useEffect(() => {
-    console.log('data', data);
     if (data) {
       setSorted(_.orderBy(data, "parameterName", "asc"));
     }
@@ -77,7 +77,6 @@ const Histopathology = ({ gene }: { gene: any }) => {
               ]}
             >
               {pageData.map((p) => {
-                console.log('PAGE: ', pageData);
                 const allele = formatAlleleSymbol(p.alleleSymbol);
                 return (
                   <tr>

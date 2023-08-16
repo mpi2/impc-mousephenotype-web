@@ -1,8 +1,5 @@
-import React from "react";
-import {
-  faCartShopping,
-  faExternalLinkAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect } from "react";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
@@ -10,9 +7,10 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
-import useQuery from "../../useQuery";
 import { formatESCellName } from "../../../utils";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const ESCell = ({
   mgiGeneAccessionId,
@@ -23,19 +21,19 @@ const ESCell = ({
   alleleName: string;
   setQcData: (any) => void;
 }) => {
-  const [data, setData] = useState(null);
-  const [sorted, setSorted] = useState<any[]>(null);
-  const [__, loading, error] = useQuery({
-    query: `/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
-    afterSuccess: (raw) => {
-      console.log(raw);
-      const processed = raw || [];
-      setData(processed);
-      setSorted(_.orderBy(processed, "productId", "asc"));
-    },
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'es_cell', alleleName],
+    queryFn: () => fetchAPI(`/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
+    placeholderData: []
   });
+  const [sorted, setSorted] = useState<any[]>(null);
+  useEffect(() => {
+    if (data) {
+      setSorted(_.orderBy(data, "productId", "asc"));
+    }
+  }, [data]);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Card id="esCell">
         <h2>ES Cells</h2>
@@ -44,7 +42,7 @@ const ESCell = ({
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Card id="esCell">
         <h2>ES Cells</h2>

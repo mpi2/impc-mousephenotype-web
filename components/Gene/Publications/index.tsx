@@ -16,7 +16,8 @@ const Publications = ({ gene }: { gene: any }) => {
   const [sorted, setSorted] = useState<any[]>(null);
   const {data, isLoading, isError} = useQuery({
     queryKey: ['genes', router.query.pid, 'publication'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/publication`)
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/publication`),
+    enabled: router.isReady
   });
 
   useEffect(() => {

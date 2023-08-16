@@ -23,10 +23,13 @@ const HumanDiseases = dynamic(
 
 const Gene = () => {
   const router = useRouter();
+
   const { isLoading, isError, data: gene, error } = useQuery({
     queryKey: ['genes', router.query.pid, 'summary'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/summary`)
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/summary`),
+    enabled: router.isReady
   });
+
   useEffect(() => {
     if (gene) {
       const hash = window.location.hash;
