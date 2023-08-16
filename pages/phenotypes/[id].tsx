@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Card from "../../components/Card";
 import Summary from "../../components/Phenotype/Summary";
 import Search from "../../components/Search";
 import Associations from "../../components/PhenotypeGeneAssociations";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../api-service";
 
 const Phenotype = () => {
   const phenotype = {
@@ -17,23 +18,10 @@ const Phenotype = () => {
     system: 'adipose tissue phenotype',
   };
   const router = useRouter();
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    (async () => {
-      if (!router.query.id) return;
-      try {
-        const res = await fetch(
-          `/api/v1/phenotypes/MP:0012361/genotype-hits`
-        );
-        if (res.ok) {
-          const associatsions = await res.json();
-          setData(associatsions);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-  }, [router.query.id]);
+  const { data } = useQuery({
+    queryKey: ['phenotype', router.query.id, 'genotype-hits'],
+    queryFn: () => fetchAPI(`/api/v1/phenotypes/MP:0012361/genotype-hits`)
+  });
   return (
     <>
       <Search />

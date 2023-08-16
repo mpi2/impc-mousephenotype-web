@@ -1,14 +1,16 @@
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import Link from "next/link";
-import useQuery from "../../useQuery";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
+
 
 const getExpressionRate = (p) => {
   return p.expression || p.noExpression
@@ -18,24 +20,22 @@ const getExpressionRate = (p) => {
 
 const Expressions = () => {
   const router = useRouter();
-  const [data, setData] = useState(null);
   const [sorted, setSorted] = useState<any[]>(null);
   const [tab, setTab] = useState("adultExpressions");
-  const [__, loading, error] = useQuery({
-    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/expression`,
-    query: `/api/v1/genes/${router.query.pid}/expression`,
-    afterSuccess: (raw) => {
-      const processed =
-        raw?.map((d) => ({
-          ...d,
-          expressionRate: getExpressionRate(d.mutantCounts),
-          wtExpressionRate: getExpressionRate(d.controlCounts),
-        })) || [];
-      setData(processed);
-      setSorted(_.orderBy(processed, "parameterName", "asc"));
-    },
+  const { isLoading, isError, data, error } = useQuery({
+    queryKey: ['gene', router.query.pid, 'expression'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/expression`),
+    select: raw => raw?.map(d => ({
+      ...d,
+      expressionRate: getExpressionRate(d.mutantCounts),
+      wtExpressionRate: getExpressionRate(d.controlCounts),
+    })) || []
   });
-
+  useEffect(() => {
+    if (data) {
+      setSorted(_.orderBy(data, "parameterName", "asc"));
+    }
+  }, [data])
   const adultData = sorted
     ? sorted.filter((x) => x.lacZLifestage === "adult")
     : [];
@@ -45,7 +45,7 @@ const Expressions = () => {
 
   const selectedData = tab === "adultExpressions" ? adultData : embryoData;
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Card id="expressions">
         <h2>lacZ Expression</h2>

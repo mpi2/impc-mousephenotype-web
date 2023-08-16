@@ -4,9 +4,10 @@ import AllData from "./AllData";
 import SignificantPhenotypes2 from "./SignificantPhenotypes2";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import useQuery from "../../useQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,
@@ -14,18 +15,16 @@ const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
 
 const Phenotypes = ({ gene }: { gene: any }) => {
   const router = useRouter();
-  const [phenotypeData, phenotypeLoading, phenotypeError] = useQuery({
-    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/phenotype-hits`,
-    query: `/api/v1/genes/${router.query.pid}/phenotype-hits`,
+  const {data: phenotypeData, isLoading: isPhenotypeLoading, isError: isPhenotypeError} = useQuery({
+    queryKey: ['genes', router.query.pid, 'phenotype-hits'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/phenotype-hits`),
   });
-  const [geneData, geneLoading, geneError] = useQuery({
-    query: `/api/v1/genes/${
-      // "MGI:1860086" || router.query.pid
-      router.query.pid
-    }/statistical-result`,
+  const {data: geneData, isLoading: isGeneLoading, isError: isGeneError} = useQuery({
+    queryKey: ['genes', router.query.pid, 'statistical-result'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/statistical-result`),
   });
 
-  if (phenotypeLoading || geneLoading) {
+  if (isPhenotypeLoading || isGeneLoading) {
     return (
       <Card id="data">
         <h2>Phenotypes</h2>
@@ -39,7 +38,7 @@ const Phenotypes = ({ gene }: { gene: any }) => {
       <h2>Phenotypes</h2>
       <Tabs defaultActiveKey="measurementsChart">
         <Tab eventKey="measurementsChart" title="Statistical Analysis">
-          {!!geneError ? (
+          {!!isGeneError ? (
             <Alert variant="yellow" className="mt-3">
               No phenotypes data available for {gene.geneSymbol}.
             </Alert>
@@ -48,7 +47,7 @@ const Phenotypes = ({ gene }: { gene: any }) => {
           )}
         </Tab>
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
-          {!!phenotypeError ? (
+          {!!isPhenotypeError ? (
             <Alert variant="yellow" className="mt-3">
               No significant phenotypes for {gene.geneSymbol}.
             </Alert>
@@ -81,7 +80,7 @@ const Phenotypes = ({ gene }: { gene: any }) => {
           )}
         </Tab>
         <Tab eventKey="allData" title="All data">
-          {!!geneError ? (
+          {!!isGeneError ? (
             <Alert variant="yellow" className="mt-3">
               No phenotypes data available for {gene.geneSymbol}.
             </Alert>

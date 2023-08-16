@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -8,22 +8,28 @@ import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "../../../utils";
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
-import useQuery from "../../useQuery";
 import _ from "lodash";
+import { fetchAPI } from "../../../api-service";
+import { useQuery } from "@tanstack/react-query";
 
 const Histopathology = ({ gene }: { gene: any }) => {
   const router = useRouter();
-
   const [sorted, setSorted] = useState<any[]>(null);
-  const [data, loading, error] = useQuery({
-    // query: `/api/v1/genes/${"MGI:2143539" || router.query.pid}/histopathology`,
-    query: `/api/v1/genes/${router.query.pid}/histopathology`,
-    afterSuccess: (data) => {
-      setSorted(_.orderBy(data, "parameterName", "asc"));
-    },
+
+  const { isLoading, isError, data, error } = useQuery({
+    queryKey: ['genes', router.query.pid, 'histopathology'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/histopathology`),
+    placeholderData: null,
   });
 
-  if (loading) {
+  useEffect(() => {
+    console.log('data', data);
+    if (data) {
+      setSorted(_.orderBy(data, "parameterName", "asc"));
+    }
+  }, [data]);
+
+  if (isLoading) {
     return (
       <Card id="histopathology">
         <h2>Histopathology</h2>
@@ -32,7 +38,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Card id="histopathology">
         <h2>Histopathology</h2>
@@ -50,7 +56,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
         table, including submitted images, can be accessed by clicking any row
         in this table.
       </p>
-      {data ? (
+      {sorted ? (
         <Pagination data={sorted}>
           {(pageData) => (
             <SortableTable
@@ -71,6 +77,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
               ]}
             >
               {pageData.map((p) => {
+                console.log('PAGE: ', pageData);
                 const allele = formatAlleleSymbol(p.alleleSymbol);
                 return (
                   <tr>

@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useRouter } from "next/router";
 import Card from "../Card";
-import { useState } from "react";
 import Pagination from "../Pagination";
-import useQuery from "../useQuery";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../api-service";
 
 const AlleleResult = ({
   phenotype: {
@@ -51,10 +51,10 @@ const AlleleResult = ({
 };
 
 const AlleleResults = ({ query }: { query?: string }) => {
-  const [data, setData] = useState(null);
-  const [_, loading, error] = useQuery({
-    query: `/api/search/v1/search?prefix=${query}&type=PHENOTYPE`,
-    afterSuccess: (result) => setData(result.results),
+
+  const { isLoading, isError, data, error } = useQuery({
+    queryKey: ['search', 'alleles', query],
+    queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}&type=PHENOTYPE`)
   });
   return (
     <Container style={{ maxWidth: 1240 }}>
@@ -88,7 +88,7 @@ const AlleleResults = ({ query }: { query?: string }) => {
           <>
             <p className="grey">
               <small>
-                Found {data?.length || 0} entries{" "}
+                Found {data.results?.length || 0} entries{" "}
                 {!!query && (
                   <>
                     matching <strong>"{query}"</strong>
@@ -102,10 +102,10 @@ const AlleleResults = ({ query }: { query?: string }) => {
             <strong>Top 10 most searched allele products</strong>
           </h1>
         )}
-        {loading ? (
+        {isLoading ? (
           <p className="grey mt-3 mb-3">Loading...</p>
         ) : (
-          <Pagination data={data}>
+          <Pagination data={data.results}>
             {(pageData) => {
               if (pageData.length === 0) {
                 return (

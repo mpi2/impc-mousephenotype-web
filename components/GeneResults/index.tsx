@@ -15,7 +15,8 @@ import Card from "../Card";
 import { useState } from "react";
 import Pagination from "../Pagination";
 import { GeneComparatorTrigger, useGeneComparator } from "../GeneComparator";
-import useQuery from "../useQuery";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../api-service";
 
 const GeneResult = ({
   gene: {
@@ -58,7 +59,7 @@ const GeneResult = ({
             </p>
           )}
 
-          <p className="small grey">
+          <span className="small grey">
             {phenotypingDataAvailable ? (
               <p>
                 <FontAwesomeIcon
@@ -93,7 +94,7 @@ const GeneResult = ({
                 data not yet available
               </span>
             )}
-          </p>
+          </span>
         </Col>
         <Col sm={4} className={styles.shortcuts}>
           <h5 className="grey text-uppercase">
@@ -134,13 +135,10 @@ const GeneResult = ({
 };
 
 const GeneResults = ({ query }: { query?: string }) => {
-  const [data, setData] = useState(null);
-  const [_, loading, error] = useQuery({
-    query: `/api/search/v1/search${query ? `?prefix=${query}` : ""}`,
-    afterSuccess: (result) => {
-      console.log("after success", result);
-      setData(result.results);
-    },
+  const { data, isLoading, isError} = useQuery({
+    queryKey: ['search', 'genes', query],
+    queryFn: () => fetchAPI(`/api/search/v1/search${query ? `?prefix=${query}` : ""}`),
+    select: data => data.results
   });
 
   return (
@@ -170,7 +168,7 @@ const GeneResults = ({ query }: { query?: string }) => {
               <strong>Most searched genes</strong>
             </h1>
           )}
-          {loading ? (
+          {isLoading ? (
             <p className="grey mt-3 mb-3">Loading...</p>
           ) : (
             <Pagination data={data}>

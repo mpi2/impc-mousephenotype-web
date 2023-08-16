@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -7,21 +7,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "../../../utils";
 import { Alert } from "react-bootstrap";
-import useQuery from "../../useQuery";
 import _ from "lodash";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const Publications = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
-  const [data, loading, error] = useQuery({
-    // query: `/api/v1/genes/${"MGI:1860086" || router.query.pid}/publication`,
-    query: `/api/v1/genes/${router.query.pid}/publication`,
-    afterSuccess: (data) => {
-      setSorted(_.orderBy(data, "title", "asc"));
-    },
+  const {data, isLoading, isError} = useQuery({
+    queryKey: ['genes', router.query.pid, 'publication'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/publication`)
   });
 
-  if (loading) {
+  useEffect(() => {
+    if (data) {
+      setSorted(_.orderBy(data, "title", "asc"));
+    }
+  }, [data]);
+
+  if (isLoading) {
     return (
       <Card id="publications">
         <h2>IMPC related publications</h2>
@@ -30,7 +34,7 @@ const Publications = ({ gene }: { gene: any }) => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Card id="publications">
         <h2>IMPC related publications</h2>

@@ -34,7 +34,6 @@ const Search = ({
     debounce((q: string) => handleInput(q), 500)
   ).current;
   const { type } = router.query;
-  console.log(type);
 
   const tabs: Tab[] = [
     {

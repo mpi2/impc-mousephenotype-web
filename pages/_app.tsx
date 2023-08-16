@@ -9,7 +9,12 @@ import "phenogrid/dist/phenogrid-bundle.css";
 import { SSRProvider } from "react-bootstrap";
 
 import { GeneComparatorProvider } from "../components/GeneComparator";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 config.autoAddCss = false;
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: Infinity, refetchOnWindowFocus: true } },
+});
 function MyApp({ Component, pageProps }) {
   const mockingEnabled = !!process.env.NEXT_PUBLIC_API_MOCKING;
   const [shouldRender, setShouldRender] = useState(!mockingEnabled);
@@ -25,11 +30,13 @@ function MyApp({ Component, pageProps }) {
   }
   return (
     <SSRProvider>
-      <GeneComparatorProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </GeneComparatorProvider>
+      <QueryClientProvider client={queryClient}>
+        <GeneComparatorProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </GeneComparatorProvider>
+      </QueryClientProvider>
     </SSRProvider>
   );
 }

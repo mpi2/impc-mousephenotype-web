@@ -1,9 +1,7 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import {
-  faArrowDown,
   faCartPlus,
   faChevronCircleDown,
-  faChevronDown,
   faChevronRight,
   faExternalLinkAlt,
   faWarning,
@@ -50,7 +48,6 @@ import { BodySystem } from "../../BodySystemIcon";
 import { useRouter } from "next/router";
 import Check from "../../Check";
 import Head from "next/head";
-import useQuery from "../../useQuery";
 
 const CollectionItem = ({
   name,

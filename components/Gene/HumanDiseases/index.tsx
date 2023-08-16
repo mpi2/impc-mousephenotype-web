@@ -13,7 +13,8 @@ import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
 import Phenogrid from "phenogrid";
-import useQuery from "../../useQuery";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const Scale = ({ children = 5 }: { children: number }) => {
   return (
@@ -117,16 +118,19 @@ const Row = ({ data }) => {
 const HumanDiseases = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
-  const [data, loading, error] = useQuery({
-    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/disease`,
-    query: `/api/v1/genes/${router.query.pid}/disease`,
-    afterSuccess: (diseases) => {
-      setSorted(_.orderBy(diseases, "diseaseTerm", "asc"));
-    },
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ['genes', router.query.pid, 'disease'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/disease`),
   });
   const [tab, setTab] = useState("associated");
 
-  if (loading) {
+  useEffect(() => {
+    if (data) {
+      setSorted(_.orderBy(data, "diseaseTerm", "asc"));
+    }
+  }, [data]);
+
+  if (isLoading) {
     return (
       <Card id="human-diseases">
         <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
@@ -135,7 +139,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Card id="human-diseases">
         <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
