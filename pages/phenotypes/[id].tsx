@@ -6,27 +6,34 @@ import Search from "../../components/Search";
 import Associations from "../../components/PhenotypeGeneAssociations";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
+import { useEffect } from "react";
+import mockSummary from "../../mocks/data/phenotypes/MP:0012361/summary.json";
+import mockGenotypeHits from "../../mocks/data/phenotypes/MP:0012361/genotype-hits.json";
 
 const Phenotype = () => {
-  const phenotype = {
-    name: 'Abnormal stationary movement',
-    synonyms: 'movement abnormalities, abnormal movement',
-    description: 'Altered ability or inability to change body posture or shift a body part.',
-    noSignificantGenes: 54,
-    percentageTestedGenes: '0.78%',
-    noTestedGenes: 6907,
-    system: 'adipose tissue phenotype',
-  };
   const router = useRouter();
-  const { data } = useQuery({
-    queryKey: ['phenotype', router.query.id, 'genotype-hits'],
-    // TODO: remove default after service is up and running
-    queryFn: () => fetchAPI(`/api/v1/phenotypes/${router.query.id || "MP:0012361"}/genotype-hits`),
-    enabled: router.isReady
+  const phenotypeId = router.query.id;
+
+  // TODO: remove initial data after service is running
+  const { data: phenotype } = useQuery({
+    queryKey: ['phenotype', phenotypeId, 'summary'],
+    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
+    enabled: router.isReady,
+    select: data => ({...data, procedures: data.procedures.filter(p => p.pipelineStableId === "IMPC_001")}),
+    initialData: mockSummary,
   });
+
+  const { data } = useQuery({
+    queryKey: ['phenotype', phenotypeId, 'genotype-hits'],
+    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/genotype-hits`),
+    enabled: router.isReady,
+    initialData: mockGenotypeHits,
+  });
+
+
   return (
     <>
-      <Search />
+      <Search defaultType="phenotype" />
       <Container className="page">
         <Summary phenotype={phenotype}/>
 
@@ -41,46 +48,16 @@ const Phenotype = () => {
         <Card>
           <h2>The way we measure</h2>
           <p>Procedure</p>
-          <p>
-            <a
-              className="secondary"
-              href="https://www.mousephenotype.org/impress/ProcedureInfo?procID=1157"
-            >
-              Combined SHIRPA and Dysmorphology
-            </a>
-          </p>
-          <p>
-            <a
-              className="secondary"
-              href="https://www.mousephenotype.org/impress/ProcedureInfo?procID=72"
-            >
-              Click-box
-            </a>
-          </p>
-          <p>
-            <a
-              className="secondary"
-              href="https://www.mousephenotype.org/impress/ProcedureInfo?procID=11"
-            >
-              Modified SHIRPA
-            </a>
-          </p>
-          <p>
-            <a
-              className="secondary"
-              href="https://www.mousephenotype.org/impress/ProcedureInfo?procID=1213"
-            >
-              SHIRPA
-            </a>
-          </p>
-          <p>
-            <a
-              className="secondary"
-              href="https://www.mousephenotype.org/impress/ProcedureInfo?procID=27"
-            >
-              Shirpa (GMC)y
-            </a>
-          </p>
+          {phenotype?.procedures.map(prod => (
+            <p key={prod.procedureStableId}>
+              <a
+                className="secondary"
+                href={`https://www.mousephenotype.org/impress/ProcedureInfo?procID=${prod.procedureStableKey}`}
+              >
+                {prod.procedureName}
+              </a>
+            </p>
+          ))}
         </Card>
       </Container>
     </>
