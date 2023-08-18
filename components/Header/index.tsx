@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import headerCss from "./styles.module.scss";
+import { useQuery } from "@tanstack/react-query";
 
 export interface MenuItem {
   name: string;
@@ -15,14 +16,14 @@ export interface INavBarProps {
 }
 
 const Header = () => {
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  useEffect(() => {
-    (async () => {
+  const { data: menuItems } = useQuery({
+    queryKey: ['menu'],
+    queryFn: async () => {
       const response = await fetch("https://www.mousephenotype.org/jsonmenu/");
-      const data = await response.json();
-      setMenuItems(data);
-    })();
-  }, []);
+      return await response.json();
+    },
+    placeholderData: []
+  });
   const [activeMenuId, setActiveMenu] = useState(-1);
 
   return (
@@ -190,11 +191,11 @@ const Header = () => {
                             ?.sort((a, b) => a.sort - b.sort)
                             .map((subMenuItem) => {
                               return (
-                                <div className="col col-auto text-left">
-                                  <a
-                                    key={subMenuItem.link}
-                                    href={subMenuItem.link}
-                                  >
+                                <div
+                                  key={subMenuItem.link}
+                                  className="col col-auto text-left"
+                                >
+                                  <a href={subMenuItem.link}>
                                     {subMenuItem.name}
                                   </a>
                                 </div>

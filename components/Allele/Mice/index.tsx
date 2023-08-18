@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { faCartShopping, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -7,8 +7,9 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
-import useQuery from "../../useQuery";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const Mice = ({
   mgiGeneAccessionId,
@@ -21,18 +22,19 @@ const Mice = ({
   isCrispr: boolean;
   setQcData: (any) => void;
 }) => {
-  const [data, setData] = useState(null);
-  const [sorted, setSorted] = useState<any[]>(null);
-  const [__, loading, error] = useQuery({
-    query: `/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
-    afterSuccess: (raw) => {
-      const processed = raw || [];
-      setData(processed);
-      setSorted(_.orderBy(processed, "productId", "asc"));
-    },
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'mice', alleleName],
+    queryFn: () => fetchAPI(`/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
+    placeholderData: []
   });
+  const [sorted, setSorted] = useState<any[]>(null);
+  useEffect(() => {
+    if (data) {
+      setSorted(_.orderBy(data, "productId", "asc"));
+    }
+  }, [data]);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Card id="mice">
         <h2>Mice</h2>
@@ -41,7 +43,7 @@ const Mice = ({
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Card id="mice">
         <h2>Mice</h2>

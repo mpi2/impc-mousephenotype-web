@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useRouter } from "next/router";
 import Card from "../Card";
-import { useState } from "react";
+
 import Pagination from "../Pagination";
-import useQuery from "../useQuery";
+import { fetchAPI } from "../../api-service";
+import { useQuery } from "@tanstack/react-query";
 
 const PhenotypeResult = ({
   phenotype: {
@@ -51,10 +52,10 @@ const PhenotypeResult = ({
 };
 
 const PhenotypeResults = ({ query }: { query?: string }) => {
-  const [data, setData] = useState(null);
-  const [_, loading, error] = useQuery({
-    query: `/api/search/v1/search?prefix=${query}&type=PHENOTYPE`,
-    afterSuccess: (result) => setData(result.results),
+  const { data, isLoading, isError} = useQuery({
+    queryKey: ['search', 'phenotypes', query],
+    queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}&type=PHENOTYPE`),
+    select: data => data.results
   });
   return (
     <Container style={{ maxWidth: 1240 }}>
@@ -81,7 +82,7 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
             <strong>Top 10 most searched phenotypes</strong>
           </h1>
         )}
-        {loading ? (
+        {isLoading ? (
           <p className="grey mt-3 mb-3">Loading...</p>
         ) : (
           <Pagination data={data}>

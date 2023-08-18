@@ -3,34 +3,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "../../../utils";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
-import useQuery from "../../useQuery";
 import styles from "./styles.module.scss";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
-  const [filtered, setFiltered] = useState<any[]>(null);
-  const [data, loading, error] = useQuery({
-    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/order`,
-    query: `/api/v1/genes/${router.query.pid}/order`,
-    afterSuccess: (data) => {
-      const filteredData = (data ?? []).filter(
-        (d) =>
-          d.productTypes.length > 1 ||
-          !["intermediate_vector", "crispr"].includes(d.productTypes[0])
-      );
-      setFiltered(filteredData);
-      setSorted(_.orderBy(filteredData, "alleleSymbol", "asc"));
-    },
+  const { isLoading, isError, data: filtered } = useQuery({
+    queryKey: ['genes', router.query.pid, 'order'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/order`),
+    select: data => data.filter(
+      d =>
+        d.productTypes.length > 1 ||
+        !["intermediate_vector", "crispr"].includes(d.productTypes[0])
+    ),
+    enabled: router.isReady
   });
+  useEffect(() => {
+    if (filtered) {
+      setSorted(_.orderBy(filtered, "alleleSymbol", "asc"));
+    }
+  }, [filtered]);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Card id="purchase">
         <h2>Order Mouse and ES Cells</h2>
@@ -39,7 +41,7 @@ const Order = ({ gene }: { gene: any }) => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Card id="purchase">
         <h2>Order Mouse and ES Cells</h2>

@@ -1,6 +1,5 @@
 import { Button, Container } from "react-bootstrap";
 import Search from "../../../components/Search";
-import _ from "lodash";
 import Card from "../../../components/Card";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -13,7 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import styles from "./styles.module.scss";
-import useQuery from "../../../components/useQuery";
 import Mice from "../../../components/Allele/Mice";
 import ESCell from "../../../components/Allele/ESCell";
 import TargetingVector from "../../../components/Allele/TVP";
@@ -23,6 +21,8 @@ import AlleleMap from "../../../components/Allele/AlleleMap.tsx";
 import { useState } from "react";
 import QCModal from "../../../components/Allele/QCModal.tsx";
 import IntermediateVector from "../../../components/Allele/IVP";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const ProductItem = ({
   name,
@@ -60,19 +60,21 @@ const ProductItem = ({
 
 const Gene = () => {
   const {
+    isReady,
     query: { pid, alleleSymbol },
   } = useRouter();
 
-  const [alleles, loading, error] = useQuery({
-    // genes/MGI:1922546/tm1a(EUCOMM)Hmgu/order/
-    query: `/api/v1/genes/${pid}/${alleleSymbol}/order`,
-  });
+  const { data: alleles, isLoading, isError, error } = useQuery({
+    queryKey: ['genes', pid, 'alleles', alleleSymbol, 'order'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${pid}/${alleleSymbol}/order`),
+    enabled: isReady
+  })
 
   const [qcData, setQcData] = useState<any[]>(null);
 
   const allele = (alleles ?? [])[0];
 
-  if (loading) {
+  if (isLoading) {
     return (
       <>
         <Search />
@@ -89,7 +91,7 @@ const Gene = () => {
       </>
     );
   }
-  if (error) {
+  if (isError) {
     return (
       <>
         <Search />
@@ -103,7 +105,7 @@ const Gene = () => {
             <p className="grey mb-4">
               Something went wrong. Please try again later.
             </p>
-            <p className="grey mb-4">Error: {error}</p>
+            <p className="grey mb-4">Error: {error.toString()}</p>
           </Card>
         </Container>
       </>

@@ -1,11 +1,7 @@
-import {
-  faArrowLeftLong,
-  faTimes,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import { useGeneComparator } from "../../components/GeneComparator";
@@ -13,6 +9,8 @@ import Search from "../../components/Search";
 import { allBodySystems } from "../../components/Gene/Summary";
 import { BodySystem } from "../../components/BodySystemIcon";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../api-service";
 
 const GeneColumn = ({
   geneId,
@@ -21,22 +19,12 @@ const GeneColumn = ({
   geneId: string;
   handleRemove: (id: string) => void;
 }) => {
-  const [data, setData] = useState(null);
+  const { data, isLoading } = useQuery({
+    queryKey: ['genes', geneId, 'summary'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${geneId}/summary`)
+  });
 
-  useEffect(() => {
-    (async () => {
-      if (!geneId) return;
-      const res = await fetch(
-        // `/api/v1/genes/${"MGI:1929293" || geneId}/summary`
-        `/api/v1/genes/${geneId}/summary`
-      );
-      if (res.ok) {
-        setData(await res.json());
-      }
-    })();
-  }, [geneId]);
-
-  if (!data) {
+  if (isLoading) {
     return <Col>Loading...</Col>;
   }
 

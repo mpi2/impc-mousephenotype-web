@@ -1,8 +1,9 @@
 import React from "react";
 import Card from "../../Card";
-import useQuery from "../../useQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const AlleleMap = ({
   mgiGeneAccessionId,
@@ -11,8 +12,9 @@ const AlleleMap = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
-  const [data, loading, error] = useQuery({
-    query: `/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
+  const { data } = useQuery({
+    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'es_cell', alleleName],
+    queryFn: () => fetchAPI(`/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`)
   });
 
   if (!data || (Array.isArray(data) && data.length === 0)) {

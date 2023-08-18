@@ -1,18 +1,15 @@
 import React from "react";
 import {
-  faCartShopping,
   faCopy,
   faExternalLink,
-  faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
 import Card from "../../Card";
-import Pagination from "../../Pagination";
-import _ from "lodash";
 import SortableTable from "../../SortableTable";
-import useQuery from "../../useQuery";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const CopyButton = ({ sequence }) => {
   const [clicked, setClicked] = useState(false);
@@ -48,17 +45,13 @@ const Crispr = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
-  const [data, setData] = useState(null);
-  const [__, loading, error] = useQuery({
-    query: `/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`,
-    afterSuccess: (raw) => {
-      console.log(raw);
-      const processed = (raw ?? [])[0] || undefined;
-      setData(processed);
-    },
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'crispr', alleleName],
+    queryFn: () => fetchAPI(`/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`),
+    select: data => (data ?? [])[0] || undefined
   });
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Card id="cripsr">
         <h2>Crispr</h2>
@@ -67,7 +60,7 @@ const Crispr = ({
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Card id="cripsr">
         <h2>Crispr</h2>

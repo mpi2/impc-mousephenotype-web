@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
-import useQuery from "../../useQuery";
 import styles from "./styles.module.scss";
+import {useQuery} from "@tanstack/react-query";
+import {fetchAPI} from "../../../api-service";
 
 interface Props {
   parameterName: string;
@@ -43,12 +44,13 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
 
 const Images = () => {
   const router = useRouter();
-  const [data, loading, error] = useQuery({
-    // query: `/api/v1/genes/${"MGI:2444773" || router.query.pid}/images`,
-    query: `/api/v1/genes/${router.query.pid}/images`,
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ['genes', router.query.pid, 'images'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/images`),
+    enabled: router.isReady
   });
 
-  if (loading) {
+  if (isLoading) {
     return (
       <Card id="images">
         <h2>Associated Images</h2>
@@ -57,7 +59,7 @@ const Images = () => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Card id="images">
         <h2>Associated Images</h2>

@@ -15,6 +15,8 @@ import Search from "../../../../components/Search";
 import gData from "../../gene.json";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import styles from "./styles.module.scss";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../../api-service";
 
 const ImageViewer = ({ image }) => {
   return (
@@ -106,27 +108,14 @@ const Column = ({ images }) => {
 
 const ImagesCompare = () => {
   const [wt, setWt] = useState(null);
-  const [images, setImages] = useState(null);
-  useEffect(() => {
-    setWt(gData);
-    (async () => {
-      try {
-        const res = await fetch(
-          `https://nginx.mousephenotype-dev.org/api/imaging/v1/thumbnails?genotype=PMAV`
-        );
-        if (res.ok) {
-          const data = await res.json();
-          setImages(data);
-        } else {
-          console.error("not ok");
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-  }, []);
+  useEffect(() => setWt(gData), []);
   const router = useRouter();
   const { parameterName = "", pid } = router.query;
+  const { data: images } = useQuery({
+    queryKey: ['genes', pid, 'images', parameterName],
+    queryFn: () => fetchAPI(`/api/imaging/v1/thumbnails?genotype=PMAV`),
+    enabled: router.isReady,
+  })
   if (!wt) return null;
 
   const groups = _.groupBy(wt.geneImages, "parameterName");

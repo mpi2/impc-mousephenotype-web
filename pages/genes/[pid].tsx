@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
+import { useQuery } from '@tanstack/react-query';
 import Search from "../../components/Search";
-import _ from "lodash";
 import Summary from "../../components/Gene/Summary";
 import Phenotypes from "../../components/Gene/Phenotypes";
 import Images from "../../components/Gene/Images";
@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { GeneComparatorTrigger } from "../../components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import useQuery from "../../components/useQuery";
+import { fetchAPI } from "../../api-service";
 
 const HumanDiseases = dynamic(
   () => import("../../components/Gene/HumanDiseases"),
@@ -23,10 +23,13 @@ const HumanDiseases = dynamic(
 
 const Gene = () => {
   const router = useRouter();
-  const [gene, loading, error] = useQuery({
-    // query: `/api/v1/genes/${"MGI:1929293" || router.query.pid}/summary`,
-    query: `/api/v1/genes/${router.query.pid}/summary`,
+
+  const { isLoading, isError, data: gene, error } = useQuery({
+    queryKey: ['genes', router.query.pid, 'summary'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/summary`),
+    enabled: router.isReady
   });
+
   useEffect(() => {
     if (gene) {
       const hash = window.location.hash;
@@ -43,7 +46,7 @@ const Gene = () => {
       <GeneComparatorTrigger current={router.query.pid as string} />
       <Search />
       <Container className="page">
-        <Summary {...{ gene, loading, error }} />
+        <Summary {...{ gene, loading: isLoading, error: isError ? error.toString(): "" }} />
         {!!gene && (
           <>
             <Phenotypes gene={gene} />

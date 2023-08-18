@@ -1,9 +1,10 @@
 import { Col, Container, Form, InputGroup, Row, Table, Button } from "react-bootstrap";
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useQuery from "../useQuery";
 import { Publication } from "./types";
 import styles from './styles.module.scss';
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../api-service";
 
 
 const PublicationsList = () => {
@@ -15,10 +16,10 @@ const PublicationsList = () => {
     }
   }
 
-  const [ publications ] = useQuery<Array<Publication>>({
-    query: '/api/v1/publications'
+  const { data: publications } = useQuery<Array<Publication>>({
+    queryKey: ['publications'],
+    queryFn: () => fetchAPI('/api/v1/publications')
   });
-  console.log(publications);
   return (
     <Container>
       <Row>
