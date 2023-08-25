@@ -6,21 +6,17 @@ import Search from "../../components/Search";
 import Associations from "../../components/PhenotypeGeneAssociations";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
-import { useEffect } from "react";
-import mockSummary from "../../mocks/data/phenotypes/MP:0012361/summary.json";
 import mockGenotypeHits from "../../mocks/data/phenotypes/MP:0012361/genotype-hits.json";
 
 const Phenotype = () => {
   const router = useRouter();
   const phenotypeId = router.query.id;
 
-  // TODO: remove initial data after service is running
-  const { data: phenotype } = useQuery({
+  const { data: phenotype, isLoading, isError } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'summary'],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
     enabled: router.isReady,
     select: data => ({...data, procedures: data.procedures.filter(p => p.pipelineStableId === "IMPC_001")}),
-    initialData: mockSummary,
   });
 
   const { data } = useQuery({
@@ -35,7 +31,7 @@ const Phenotype = () => {
     <>
       <Search defaultType="phenotype" />
       <Container className="page">
-        <Summary phenotype={phenotype}/>
+        <Summary {...{ phenotype, isLoading, isError }}/>
 
         <Card>
           <h2>IMPC Gene variants with abnormal stationary movement</h2>
