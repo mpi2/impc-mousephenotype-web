@@ -1,0 +1,290 @@
+{
+  "genesTested": [
+    { "label": "Female only", "value": 379 },
+    { "label": "Male only", "value": 691 },
+    { "label": "Both sexes", "value": 377 },
+    { "label": "Phenotype not present", "value": 8761 }
+  ],
+  "phenotypes": [
+    { "id": "MP:0000266", "name": "abnormal heart morphology", "noOfGenes": 520 },
+    { "id": "MP:0000274", "name": "enlarged heart", "noOfGenes": 480 },
+    { "id": "MP:0002833", "name": "increased heart weight", "noOfGenes": 250 },
+    { "id": "MP:0010097", "name": "abnormal retina blood vessel morphology", "noOfGenes": 167 },
+    { "id": "MP:0002792", "name": "abnormal retina vasculature morphology", "noOfGenes": 144 },
+    { "id": "MP:0010506", "name": "prolonged RR interval", "noOfGenes": 110 },
+    { "id": "MP:0005333", "name": "decreased heart rate", "noOfGenes": 104 },
+    { "id": "MP:0001914", "name": "hemorrhage", "noOfGenes": 94 },
+    { "id": "MP:0002188", "name": "small heart", "noOfGenes": 73 },
+    { "id": "MP:0002834", "name": "decreased heart weight", "noOfGenes": 49 },
+    { "id": "MP:0003231", "name": "abnormal placenta vasculature", "noOfGenes": 42 },
+    { "id": "MP:0001614", "name": "abnormal blood vessel morphology", "noOfGenes": 41 },
+    { "id": "MP:0002953", "name": "thick ventricular wall", "noOfGenes": 40 },
+    { "id": "MP:0010392", "name": "prolonged QRS complex duration", "noOfGenes": 38 },
+    { "id": "MP:0002626", "name": "increased heart rate", "noOfGenes": 35 },
+    { "id": "MP:0003928", "name": "increased heart rate variability", "noOfGenes": 31 },
+    { "id": "MP:0004122", "name": "abnormal sinus arrhythmia", "noOfGenes": 28 },
+    { "id": "MP:0000288", "name": "abnormal pericardium morphology", "noOfGenes": 27 },
+    { "id": "MP:0005599", "name": "increased cardiac muscle contractility", "noOfGenes": 26 },
+    { "id": "MP:0000280", "name": "thin ventricular wall", "noOfGenes": 25 },
+    { "id": "MP:0003229", "name": "abnormal vitelline vasculature morphology", "noOfGenes": 24 },
+    { "id": "MP:0003921", "name": "abnormal heart left ventricle morphology", "noOfGenes": 23 },
+    { "id": "MP:0003233", "name": "prolonged QT interval", "noOfGenes": 22 },
+    { "id": "MP:0005385", "name": "cardiovascular system phenotype", "noOfGenes": 20 },
+    { "id": "MP:0000269", "name": "abnormal heart looping", "noOfGenes": 19 },
+    { "id": "MP:0003900", "name": "shortened QT interval", "noOfGenes": 17 },
+    { "id": "MP:0005542", "name": "corneal vascularization", "noOfGenes": 15 },
+    { "id": "MP:0000277", "name": "abnormal heart shape", "noOfGenes": 14 },
+    { "id": "MP:0003896", "name": "prolonged PR interval", "noOfGenes": 12 },
+    { "id": "MP:0004156", "name": "abnormal QT variability", "noOfGenes": 9 },
+    { "id": "MP:0008725", "name": "enlarged heart atrium", "noOfGenes": 7 },
+    { "id": "MP:0003394", "name": "increased cardiac output", "noOfGenes": 6 },
+    { "id": "MP:0010574", "name": "dilated aorta", "noOfGenes": 5 },
+    { "id": "MP:0003393", "name": "decreased cardiac output", "noOfGenes": 4 },
+    { "id": "MP:0004857", "name": "abnormal heart weight", "noOfGenes": 3 },
+    { "id": "MP:0006065", "name": "abnormal heart position or orientation", "noOfGenes": 2 }
+  ],
+  "procedures": {
+    "youngAdult": [
+      {
+        "name": "Echo",
+        "versions": [
+          { "name": "HMGULA v1", "impressId": "1256" },
+          { "name": "HRWLLA v1", "impressId": "1115" },
+          { "name": "HMGULA v1", "impressId": "450" },
+          { "name": "IMPC v1", "impressId": "656" },
+          { "name": "IMPC v1", "impressId": "654" },
+          { "name": "IMPC v1", "impressId": "655" },
+          { "name": "IMPC v1", "impressId": "109" },
+          { "name": "IMPC v1", "impressId": "658" },
+          { "name": "NINGLA v1", "impressId": "1082" },
+          { "name": "BCMLA v1", "impressId": "1046" },
+          { "name": "IMPC v1", "impressId": "657" },
+          { "name": "ICSLA v1", "impressId": "1065" }
+        ]
+      },
+      {
+        "name": "Electrocardiogram (ECG)",
+        "versions": [
+          { "name": "TCPLA v2", "impressId": "1031" },
+          { "name": "BCMLA v2", "impressId": "1049" },
+          { "name": "JAXLA v1", "impressId": "1134" },
+          { "name": "HMGULA v1", "impressId": "1256" },
+          { "name": "HRWLLA v1", "impressId": "1115" },
+          { "name": "HMGULA v1", "impressId": "450" },
+          { "name": "IMPC v1", "impressId": "656" },
+          { "name": "IMPC v1", "impressId": "654" },
+          { "name": "IMPC v1", "impressId": "655" },
+          { "name": "IMPC v1", "impressId": "109" },
+          { "name": "IMPC v1", "impressId": "658" },
+          { "name": "NINGLA v1", "impressId": "1082" },
+          { "name": "BCMLA v1", "impressId": "1046" },
+          { "name": "IMPC v1", "impressId": "657" },
+          { "name": "ICSLA v1", "impressId": "1065" }
+        ]
+      },
+      {
+        "name": "Eye Morphology",
+        "versions": [
+          { "name": "TCPLA v2", "impressId": "1031" },
+          { "name": "BCMLA v2", "impressId": "1049" },
+          { "name": "JAXLA v1", "impressId": "1134" },
+          { "name": "HMGULA v1", "impressId": "1256" },
+          { "name": "HRWLLA v1", "impressId": "1115" },
+          { "name": "HMGULA v1", "impressId": "450" },
+          { "name": "IMPC v1", "impressId": "656" },
+          { "name": "IMPC v1", "impressId": "654" },
+          { "name": "IMPC v1", "impressId": "655" },
+          { "name": "IMPC v1", "impressId": "109" },
+          { "name": "IMPC v1", "impressId": "658" },
+          { "name": "NINGLA v1", "impressId": "1082" },
+          { "name": "BCMLA v1", "impressId": "1046" },
+          { "name": "IMPC v1", "impressId": "657" },
+          { "name": "ICSLA v1", "impressId": "1065" }
+        ]
+      },
+      {
+        "name": "Heart Dissection",
+        "versions": [
+          { "name": "M-G-P v1", "impressId": "59" }
+        ]
+      },
+      {
+        "name": "Heart Weight",
+        "versions": [
+          { "name": "TCPLA v2", "impressId": "1031" },
+          { "name": "BCMLA v2", "impressId": "1049" },
+          { "name": "JAXLA v1", "impressId": "1134" },
+          { "name": "HMGULA v1", "impressId": "1256" },
+          { "name": "HRWLLA v1", "impressId": "1115" },
+          { "name": "HMGULA v1", "impressId": "450" },
+          { "name": "IMPC v1", "impressId": "656" },
+          { "name": "IMPC v1", "impressId": "654" },
+          { "name": "IMPC v1", "impressId": "655" },
+          { "name": "IMPC v1", "impressId": "109" },
+          { "name": "IMPC v1", "impressId": "658" },
+          { "name": "NINGLA v1", "impressId": "1082" },
+          { "name": "BCMLA v1", "impressId": "1046" },
+          { "name": "IMPC v1", "impressId": "657" },
+          { "name": "ICSLA v1", "impressId": "1065" }
+        ]
+      },
+      {
+        "name": "Heart weight/tibia length",
+        "versions": [
+          { "name": "ESLIM v1", "impressId": "9" }
+        ]
+      },
+      {
+        "name": "Indirect ophthalmoscopy",
+        "versions": [
+          { "name": "HAS v1", "impressId": "5" },
+          { "name": "ESLIM v1", "impressId": "16" }
+        ]
+      },
+      {
+        "name": "Non-Invasive blood pressure",
+        "versions": [
+          { "name": "ESLIM v1", "impressId": "3" }
+        ]
+      },
+      {
+        "name": "Ophthalmoscope",
+        "versions": [
+          { "name": "M-G-P v1", "impressId": "54" }
+        ]
+      },
+      {
+        "name": "Organ Weight",
+        "versions": [
+          { "name": "HRWL v1 ", "impressId": "106" },
+          { "name": "UCD v1", "impressId": "247" },
+          { "name": "HRWLLA v1", "impressId": "1125" }
+        ]
+      },
+      {
+        "name": "Slit Lamp",
+        "versions": [
+          { "name": "HAS v1 ", "impressId": "167" },
+          { "name": "ESLIM v1", "impressId": "17" },
+          { "name": "HAROLD v1", "impressId": "70" },
+          { "name": "M-G-P v1", "impressId": "53" }
+        ]
+      }
+    ],
+    "embryo": [
+      {
+        "name": "Gross Morphology Embryo E12.5",
+        "versions": [
+          {
+            "name": "IMPC v1",
+            "impressId": "879"
+          },
+          {
+            "name": "IMPC v3",
+            "impressId": "1175"
+          },
+          {
+            "name": "IMPC v3",
+            "impressId": "910"
+          },
+          {
+            "name": "IMPC v1",
+            "impressId": "253"
+          },
+          {
+            "name": "IMPC v3",
+            "impressId": "911"
+          },
+          {
+            "name": "IMPC v2",
+            "impressId": "256"
+          },
+          {
+            "name": "IMPC v2",
+            "impressId": "895"
+          },
+          {
+            "name": "IMPC v3",
+            "impressId": "909"
+          },
+          {
+            "name": "IMPC v3",
+            "impressId": "261"
+          },
+          {
+            "name": "IMPC v3",
+            "impressId": "908"
+          },
+          {
+            "name": "IMPC v1",
+            "impressId": "880"
+          },
+          {
+            "name": "IMPC v1",
+            "impressId": "876"
+          },
+          {
+            "name": "IMPC v3",
+            "impressId": "907"
+          },
+          {
+            "name": "IMPC v2",
+            "impressId": "892"
+          },
+          {
+            "name": "IMPC v2",
+            "impressId": "891"
+          },
+          {
+            "name": "IMPC v2",
+            "impressId": "893"
+          },
+          {
+            "name": "IMPC v1",
+            "impressId": "878"
+          },
+          {
+            "name": "IMPC v1",
+            "impressId": "877"
+          },
+          {
+            "name": "IMPC v3",
+            "impressId": "906"
+          },
+          {
+            "name": "IMPC v2",
+            "impressId": "894"
+          }
+        ]
+      },
+      {
+        "name": "VM4203:1 Gross Morphology Embryo E14.5-E15.5",
+        "versions": [{"name":"IMPC v3","impressId":"914"},{"name":"IMPC v2","impressId":"899"},{"name":"IMPC v3","impressId":"913"},{"name":"IMPC v1","impressId":"883"},{"name":"IMPC v2","impressId":"897"},{"name":"IMPC v1","impressId":"881"},{"name":"IMPC v3","impressId":"915"},{"name":"IMPC v1","impressId":"882"},{"name":"IMPC v2","impressId":"898"},{"name":"IMPC v3","impressId":"917"},{"name":"IMPC v1","impressId":"254"},{"name":"IMPC v3","impressId":"1176"},{"name":"IMPC v2","impressId":"257"},{"name":"IMPC v1","impressId":"885"},{"name":"IMPC v3","impressId":"262"},{"name":"IMPC v2","impressId":"900"},{"name":"IMPC v3","impressId":"916"},{"name":"IMPC v2","impressId":"896"},{"name":"IMPC v1","impressId":"884"},{"name":"IMPC v3","impressId":"912"}]
+      },
+      {
+        "name": "VM4203:1 Gross Morphology Embryo E18.5",
+        "versions": [{"name":"IMPC v2","impressId":"903"},{"name":"IMPC v2","impressId":"259"},{"name":"IMPC v3","impressId":"1177"},{"name":"IMPC v1","impressId":"887"},{"name":"IMPC v1","impressId":"255"},{"name":"IMPC v2","impressId":"902"},{"name":"IMPC v1","impressId":"888"},{"name":"IMPC v3","impressId":"918"},{"name":"IMPC v2","impressId":"904"},{"name":"IMPC v1","impressId":"886"},{"name":"IMPC v3","impressId":"923"},{"name":"IMPC v3","impressId":"920"},{"name":"IMPC v3","impressId":"263"},{"name":"IMPC v3","impressId":"919"},{"name":"IMPC v3","impressId":"922"},{"name":"IMPC v3","impressId":"921"},{"name":"IMPC v1","impressId":"890"},{"name":"IMPC v1","impressId":"889"},{"name":"IMPC v2","impressId":"901"},{"name":"IMPC v2","impressId":"905"}]
+      },
+      {
+        "name": "VM4203:1 Gross Morphology Embryo E9.5",
+        "versions": [{"name":"IMPC v1","impressId":"861"},{"name":"IMPC v3","impressId":"874"},{"name":"IMPC v3","impressId":"875"},{"name":"IMPC v1","impressId":"860"},{"name":"IMPC v3","impressId":"873"},{"name":"IMPC v2","impressId":"251"},{"name":"IMPC v1","impressId":"862"},{"name":"IMPC v3","impressId":"870"},{"name":"IMPC v3","impressId":"252"},{"name":"IMPC v1","impressId":"864"},{"name":"IMPC v3","impressId":"871"},{"name":"IMPC v1","impressId":"250"},{"name":"IMPC v2","impressId":"868"},{"name":"IMPC v2","impressId":"867"},{"name":"IMPC v2","impressId":"866"},{"name":"IMPC v2","impressId":"869"},{"name":"IMPC v3","impressId":"1174"},{"name":"IMPC v3","impressId":"872"},{"name":"IMPC v1","impressId":"863"},{"name":"IMPC v2","impressId":"865"}]
+      },
+      {
+        "name": "VM4203:1 Gross Morphology Placenta E12.5",
+        "versions": [{"name":"IMPC v1","impressId":"820"},{"name":"IMPC v1","impressId":"818"},{"name":"IMPC v1","impressId":"819"},{"name":"IMPC v1","impressId":"822"},{"name":"IMPC v1","impressId":"1179"},{"name":"IMPC v1","impressId":"821"},{"name":"IMPC v1","impressId":"194"}]
+      },
+      {
+        "name": "VM4203:1 Gross Morphology Placenta E14.5-E15.5",
+        "versions": [{"name":"IMPC v1","impressId":"828"},{"name":"IMPC v1","impressId":"825"},{"name":"IMPC v1","impressId":"824"},{"name":"IMPC v1","impressId":"1180"},{"name":"IMPC v1","impressId":"823"},{"name":"IMPC v1","impressId":"826"},{"name":"IMPC v1","impressId":"195"},{"name":"IMPC v1","impressId":"827"}]
+      },
+      {
+        "name": "VM4203:1 Gross Morphology Placenta E18.5",
+        "versions": [{"name":"IMPC v1","impressId":"196"},{"name":"IMPC v1","impressId":"829"},{"name":"IMPC v1","impressId":"1381"},{"name":"IMPC v1","impressId":"830"},{"name":"IMPC v1","impressId":"831"},{"name":"IMPC v1","impressId":"1181"},{"name":"IMPC v1","impressId":"832"}]
+      },
+      {
+        "name": "VM4203:1 Gross Morphology Placenta E9.5",
+        "versions": [{"name":"IMPC v1","impressId":"813"},{"name":"IMPC v1","impressId":"814"},{"name":"IMPC v1","impressId":"1178"},{"name":"IMPC v1","impressId":"190"},{"name":"IMPC v1","impressId":"815"},{"name":"IMPC v1","impressId":"816"},{"name":"IMPC v1","impressId":"817"},{"name":"IMPC v1","impressId":"812"}]
+      }
+    ]
+  }
+}

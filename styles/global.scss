@@ -76,3 +76,11 @@ p:last-child {
 .bold {
   font-weight: 600 !important;
 }
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey;
+  font-size: 0.9rem;
+}
