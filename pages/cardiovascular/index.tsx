@@ -7,6 +7,7 @@ import SortableTable from "../../components/SortableTable";
 import styles from './styles.module.scss';
 import { useState } from "react";
 import PublicationsList from "../../components/PublicationsList";
+import ScatterChart from "../../components/ScatterChart";
 
 
 const ProcedureWithVersions = ({ procedure }) => {
@@ -137,6 +138,26 @@ const CardiovascularLandingPage = () => {
                 </ul>
               </div>
             </Row>
+          </Container>
+        </Card>
+        <Card>
+          <Container>
+            <h1><strong>Phenotypes distribution</strong></h1>
+            <p>
+              This graph shows genes with a significant effect on at least one cardiovascular system phenotype.
+            </p>
+            <div className={styles.chartWrapper}>
+              <ScatterChart
+                title="Number of phenotype associations to Cardiovascular System"
+                data={data.genes}
+              />
+            </div>
+            <p>
+              The following diagram represents the various biological system phenotypes associations for genes
+              linked to cardiovascular system phenotypes.
+              The line thickness is correlated with the strength of the association. <br/><br/>
+              Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be downloaded using the download icon.
+            </p>
           </Container>
         </Card>
         <Card>
