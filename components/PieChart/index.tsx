@@ -11,7 +11,7 @@ interface Props  {
   title: string;
   data: DataArray;
 }
-const ViabilityPieChart = ({ title, data } : Props) => {
+const PieChart = ({ title, data } : Props) => {
   const [total, setTotal] = useState(1);
   useEffect(() => {
     setTotal(data.reduce((acc, data) => acc + data.value, 0))
@@ -49,4 +49,4 @@ const ViabilityPieChart = ({ title, data } : Props) => {
   )
 };
 
-export default ViabilityPieChart;
+export default PieChart;
