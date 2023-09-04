@@ -7,6 +7,7 @@ import Associations from "../../components/PhenotypeGeneAssociations";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
 import mockGenotypeHits from "../../mocks/data/phenotypes/MP:0012361/genotype-hits.json";
+import ManhattanPlot from "../../components/ManhattanPlot";
 
 const Phenotype = () => {
   const router = useRouter();
@@ -54,6 +55,9 @@ const Phenotype = () => {
               </a>
             </p>
           ))}
+        </Card>
+        <Card>
+          <ManhattanPlot phenotypeId={phenotypeId} />
         </Card>
       </Container>
     </>
