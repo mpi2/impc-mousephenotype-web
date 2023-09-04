@@ -116,6 +116,7 @@ export const handlers = [
         procedures: "procedures",
         stats: "stats",
         summary: "summary",
+        gwas: "gwas"
       };
       const phenotypeSectionData = phenotypes(
         `./${phenotypeId}/${sectionKeyMap[section]}.json`
