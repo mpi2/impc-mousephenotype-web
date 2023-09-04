@@ -72,7 +72,6 @@ const ManhattanPlot = ({ phenotypeId }) => {
     onClick: (e, elements) =>  {
       if (elements.length) {
         const gene = elements[0].element?.$context?.raw;
-        console.log(gene);
         router.push(`/genes/${gene.mgiGeneAccessionId}`);
       }
     }
@@ -84,7 +83,6 @@ const ManhattanPlot = ({ phenotypeId }) => {
     enabled: router.isReady,
     initialData: mockData,
     select: data => {
-      console.log(data);
       const groupedByChr = {};
       data.forEach(point => {
         if (point.chrName && !groupedByChr[point.chrName]) {
