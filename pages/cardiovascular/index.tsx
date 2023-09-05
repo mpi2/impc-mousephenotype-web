@@ -8,6 +8,7 @@ import styles from './styles.module.scss';
 import { useState } from "react";
 import PublicationsList from "../../components/PublicationsList";
 import ScatterChart from "../../components/ScatterChart";
+import ChordDiagram from "../../components/ChordDiagram";
 
 
 const ProcedureWithVersions = ({ procedure }) => {
@@ -61,6 +62,7 @@ const CardiovascularLandingPage = () => {
                     <PieChart
                       title=""
                       data={data.genesTested}
+                      chartColors={['rgba(239, 123, 11,1.0)', 'rgba(9, 120, 161,1.0)', 'rgba(119, 119, 119,1.0)', 'rgba(238, 238, 180,1.0)']}
                     />
                   )}
                 </div>
@@ -158,6 +160,7 @@ const CardiovascularLandingPage = () => {
               The line thickness is correlated with the strength of the association. <br/><br/>
               Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be downloaded using the download icon.
             </p>
+            <ChordDiagram width={960} height={960} topTerms={["cardiovascular system phenotype"]}/>
           </Container>
         </Card>
         <Card>
