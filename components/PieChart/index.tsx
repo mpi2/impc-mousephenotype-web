@@ -1,4 +1,4 @@
-import { chartColors } from "../../utils/chart";
+import { chartColors as defaultChartColors } from "../../utils/chart";
 import { Pie } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
@@ -10,8 +10,9 @@ type DataArray = Array<{ label: string; value: number }>;
 interface Props  {
   title: string;
   data: DataArray;
+  chartColors?: Array<string>
 }
-const PieChart = ({ title, data } : Props) => {
+const PieChart = ({ title, data, chartColors } : Props) => {
   const [total, setTotal] = useState(1);
   useEffect(() => {
     setTotal(data.reduce((acc, data) => acc + data.value, 0))
@@ -24,7 +25,7 @@ const PieChart = ({ title, data } : Props) => {
         datasets: [{
           label: title,
           data: data.map(({ value }) => Math.max(value / total * 100, 1)),
-          backgroundColor: chartColors,
+          backgroundColor: chartColors || defaultChartColors,
         }]
       }}
       options={{
