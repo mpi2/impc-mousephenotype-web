@@ -5,7 +5,7 @@ import Search from "../../components/Search";
 import Card from "../../components/Card";
 import styles from './styles.module.scss';
 import SortableTable from "../../components/SortableTable";
-import ViabilityPieChart from "../../components/ViabilityPieChart";
+import PieChart from "../../components/PieChart";
 import PublicationsList from "../../components/PublicationsList";
 import data from '../../mocks/data/landing-pages/embryo.json';
 
@@ -89,7 +89,7 @@ const EmbryoLandingPage = () => {
               <Col md={7}>
                 <div className={styles.chartWrapper}>
                   {data && (
-                    <ViabilityPieChart
+                    <PieChart
                       title="Primary Viability"
                       data={data.primaryViabilityChartData}
                     />
@@ -129,7 +129,7 @@ const EmbryoLandingPage = () => {
               <Col md={7}>
                 <div className={styles.chartWrapper}>
                   {data && (
-                    <ViabilityPieChart
+                    <PieChart
                       title="Secondary Viability / Windows of Lethality"
                       data={data.windowsOfLethality}
                     />
