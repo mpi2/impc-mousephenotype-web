@@ -1,25 +1,29 @@
-import { Col, Container, Form, InputGroup, Row, Table, Button } from "react-bootstrap";
+import { Col, Container, Form, InputGroup, Row, Table, Button, Alert } from "react-bootstrap";
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Publication } from "./types";
 import styles from './styles.module.scss';
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
-
+import data from '../../mocks/data/publications/index.json';
+import Pagination from "../Pagination";
 
 const PublicationsList = () => {
   const displayPubTitle = (pub: Publication) => {
-    if (pub.paperURL) {
-      return <p><a className="primary link" href={pub.paperURL}>{pub.paperTitle}</a></p>;
-    } else {
-      return <p>{pub.paperTitle}</p>
-    }
+    return <p>{pub.title}</p>;
   }
 
-  const { data: publications } = useQuery<Array<Publication>>({
+  const getGrantsList = (pub: Publication) => {
+    return pub.grantsList.map(grant => grant.agency).join(' ');
+  }
+
+  const { data: publications, error, isLoading } = useQuery({
     queryKey: ['publications'],
-    queryFn: () => fetchAPI('/api/v1/publications')
+    queryFn: () => fetchAPI<Array<Publication>>('/api/v1/publications'),
+    select: data => data as Array<Publication>,
+    initialData: data
   });
+
   return (
     <Container>
       <Row>
@@ -49,28 +53,38 @@ const PublicationsList = () => {
           </a>
         </Col>
       </Row>
-      <Table className={styles.pubTable} striped>
-        <tbody>
-        {publications && publications.length && publications.map(pub => (
-          <tr key={pub.pmid}>
-            <td>
-              {displayPubTitle(pub)}
-              <p><i>{pub.journalName}</i>, ({pub.firstPubDate})</p>
-              {!!pub.citatedBy.length && (
-                <Button variant="outline-dark" size="sm">Cited by ({pub.citatedBy.length})</Button>
-              )}
-              <p><b>{pub.author}</b></p>
-              <Button variant="outline-dark" size="sm">Show abstract</Button>
-              <p>PMID: {pub.pmid}</p>
-              {pub.grantAgency && (
-                <p>Grant agency: {pub.grantAgency}</p>
-              )}
-              <Button variant="outline-dark" size="sm">Show mesh terms</Button>
-            </td>
-          </tr>
-        ))}
-        </tbody>
-      </Table>
+      {
+        !!publications && publications.length ? (
+          <Pagination data={publications}>
+            {pageData => (
+              <Table className={styles.pubTable} striped>
+                <tbody>
+                {pageData.map(pub => (
+                  <tr key={pub.pmId}>
+                    <td>
+                      {displayPubTitle(pub)}
+                      <p><i>{pub.journalTitle}</i>, ({pub.publicationDate})</p>
+                      <p><b>{pub.authorString}</b></p>
+                      <Button variant="outline-dark" size="sm">Show abstract</Button>
+                      <p>PMID: {pub.pmId}</p>
+                      {!!pub.grantsList.length && (
+                        <p>Grant agency: {getGrantsList(pub)}</p>
+                      )}
+                      <Button variant="outline-dark" size="sm">Show mesh terms</Button>
+                    </td>
+                  </tr>
+                ))}
+                </tbody>
+              </Table>
+            )}
+          </Pagination>
+        ) : (
+          <Alert variant="primary">
+            No publications found that use IMPC mice or data for the filters
+          </Alert>
+        )
+      }
+
     </Container>
   );
 }
