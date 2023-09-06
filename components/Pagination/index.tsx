@@ -2,15 +2,30 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
-const Pagination = ({ data, children }) => {
+
+type Props = {
+  data: any;
+  children: any;
+  totalItems?: number;
+  onPageChange?: (newPage: number) => void;
+}
+const Pagination = ({ data, children, totalItems, onPageChange }: Props) => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
 
   const currentPage = data?.slice(pageSize * page, pageSize * (page + 1)) || [];
-  const totalPages = data ? Math.ceil(data.length / pageSize) : 1;
+  const noTotalItems = totalItems ? totalItems : data.length;
+  const totalPages = data ? Math.ceil(noTotalItems / pageSize) : 1;
 
   const canGoBack = page >= 1;
   const canGoForward = page + 1 < totalPages;
+
+  const updatePage = (value: number) => {
+    setPage(value);
+    if (onPageChange) {
+      onPageChange(value);
+    }
+  }
 
   useEffect(() => {
     setPage(0);
@@ -35,7 +50,7 @@ const Pagination = ({ data, children }) => {
               const value = Number(e.target.value);
               const newPage = Math.round((pageSize / value) * page);
               setPageSize(value);
-              setPage(newPage);
+              updatePage(newPage);
             }}
             value={pageSize}
           >
@@ -55,7 +70,7 @@ const Pagination = ({ data, children }) => {
               background: "transparent",
               padding: "0 10px",
             }}
-            onClick={() => setPage(page - 1)}
+            onClick={() => updatePage(page - 1)}
             disabled={!canGoBack}
             className={canGoBack ? "primary" : ""}
           >
@@ -69,7 +84,7 @@ const Pagination = ({ data, children }) => {
               background: "transparent",
               padding: "0 10px",
             }}
-            onClick={() => setPage(page + 1)}
+            onClick={() => updatePage(page + 1)}
             disabled={!canGoForward}
             className={canGoForward ? "primary" : ""}
           >
