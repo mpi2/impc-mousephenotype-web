@@ -7,19 +7,52 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
 import data from '../../mocks/data/publications/index.json';
 import Pagination from "../Pagination";
+import moment from "moment";
+import { useState } from "react";
+import { formatAlleleSymbol } from "../../utils";
 
 const PublicationsList = () => {
+
+  const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
+  const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
   const displayPubTitle = (pub: Publication) => {
-    return <p>{pub.title}</p>;
+    return <p>
+      <a className="primary link" target="_blank" href={`https://europepmc.org/article/MED/${pub.pmId}`}>
+        {pub.title}
+      </a>
+    </p>;
+  }
+
+  const displayPubDate = (pub: Publication) => {
+    return moment(pub.publicationDate).format("DD-MM-YYYY")
   }
 
   const getGrantsList = (pub: Publication) => {
-    return pub.grantsList.map(grant => grant.agency).join(' ');
+    if (pub.grantsList && pub.grantsList.length > 0) {
+      return <p>Grant agency: {pub.grantsList.map(grant => grant.agency).join(' ')}</p>
+    }
+    return null;
+  }
+
+  const isFieldVisible = (pub: Publication, type: 'abstract' | 'mesh-terms') => {
+    const map = type === 'abstract' ? abstractVisibilityMap : meshTermsVisibilityMap;
+    return !(!map.has(pub.pmId) || map.get(pub.pmId) === 'not-visible');
+
+  }
+  const toggleAbstractClass = (pub: Publication, type: 'abstract' | 'mesh-terms') => {
+    const map = type === 'abstract' ? abstractVisibilityMap : meshTermsVisibilityMap;
+    const setFn = type === 'abstract' ? setAbstractVisibilityMap : setMeshVisibilityMap;
+    if (!map.has(pub.pmId) || map.get(pub.pmId) === 'not-visible') {
+      map.set(pub.pmId, 'visible');
+    } else {
+      map.set(pub.pmId, 'not-visible');
+    }
+    setFn(new Map(map));
   }
 
   const { data: publications, error, isLoading } = useQuery({
     queryKey: ['publications'],
-    queryFn: () => fetchAPI<Array<Publication>>('/api/v1/publications'),
+    queryFn: () => fetchAPI('/api/v1/publications'),
     select: data => data as Array<Publication>,
     initialData: data
   });
@@ -59,18 +92,52 @@ const PublicationsList = () => {
             {pageData => (
               <Table className={styles.pubTable} striped>
                 <tbody>
-                {pageData.map(pub => (
-                  <tr key={pub.pmId}>
+                {pageData.map((pub: Publication) => (
+                  <tr key={pub.pmId} id={'pub-' + pub.pmId}>
                     <td>
                       {displayPubTitle(pub)}
-                      <p><i>{pub.journalTitle}</i>, ({pub.publicationDate})</p>
+                      <p><i>{pub.journalTitle}</i>, ({displayPubDate(pub)})</p>
                       <p><b>{pub.authorString}</b></p>
-                      <Button variant="outline-dark" size="sm">Show abstract</Button>
+                      <Button
+                        className="mt-1 mb-1"
+                        variant="outline-dark"
+                        size="sm"
+                        onClick={e => toggleAbstractClass(pub, 'abstract')}
+                      >
+                        <strong>{isFieldVisible(pub, 'abstract') ? 'Hide' : 'Show'} abstract</strong>
+                      </Button>
+                      <p className={`abstract ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
+                        {pub.abstractText}
+                      </p>
                       <p>PMID: {pub.pmId}</p>
-                      {!!pub.grantsList.length && (
-                        <p>Grant agency: {getGrantsList(pub)}</p>
+                      {!!pub.alleles && pub.alleles.length > 0 && (
+                        <p>IMPC allele: {pub.alleles.map(allele => {
+                          const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
+                          return (
+                            <>
+                              <a className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
+                                {formattedAllele[0]}
+                                <sup>{formattedAllele[1]}</sup>
+                              </a>
+                              &nbsp;
+                            </>
+                          )
+                        })}</p>
                       )}
-                      <Button variant="outline-dark" size="sm">Show mesh terms</Button>
+                      {getGrantsList(pub)}
+                      {!!pub.meshHeadingList && pub.meshHeadingList.length > 0 && (
+                        <Button
+                          className="mt-1 mb-1"
+                          variant="outline-dark"
+                          size="sm"
+                          onClick={e => toggleAbstractClass(pub, 'mesh-terms')}
+                        >
+                          <strong>{isFieldVisible(pub, 'mesh-terms') ? 'Hide' : 'Show'} mesh terms</strong>
+                        </Button>
+                      )}
+                      <p className={`abstract ${isFieldVisible(pub, 'mesh-terms') ? '' : 'visually-hidden'}`}>
+                        {pub.meshHeadingList.join(', ')}
+                      </p>
                     </td>
                   </tr>
                 ))}

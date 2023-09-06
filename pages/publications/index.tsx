@@ -15,7 +15,9 @@ const PublicationsPage = () => {
           </h1>
           <Tabs defaultActiveKey="all-publications">
             <Tab eventKey="all-publications" title="All publications">
-              <PublicationsList />
+              <div className="mt-5">
+                <PublicationsList />
+              </div>
             </Tab>
             <Tab eventKey="publications-stats" title="Publications stats">
               Tab content for publication stats
