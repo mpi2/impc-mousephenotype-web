@@ -2,18 +2,50 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
-const Pagination = ({ data, children }) => {
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
 
-  const currentPage = data?.slice(pageSize * page, pageSize * (page + 1)) || [];
-  const totalPages = data ? Math.ceil(data.length / pageSize) : 1;
+type Props = {
+  data: any;
+  children: any;
+  totalItems?: number;
+  onPageChange?: (newPage: number) => void;
+  onPageSizeChange?: (newPageSize: number) => void;
+  page?: number;
+  pageSize?: number;
+  controlled?: boolean;
+}
+const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange, page, pageSize, controlled = false }: Props) => {
+  const [internalPage, setInternalPage] = useState(page);
+  const [internalPageSize, setInternalPageSize] = useState(10);
 
-  const canGoBack = page >= 1;
-  const canGoForward = page + 1 < totalPages;
+  const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
+  const noTotalItems = controlled ? totalItems : (data?.length || 1);
+  let totalPages: number;
+  if (controlled) {
+    totalPages = data ? Math.ceil(noTotalItems / pageSize) : 1;
+  } else {
+    totalPages = data ? Math.ceil(noTotalItems / internalPageSize) : 1
+  }
+
+  const canGoBack = internalPage >= 1;
+  const canGoForward = internalPage + 1 < totalPages;
+
+  const updatePage = (value: number) => {
+    setInternalPage(value);
+    if (onPageChange) {
+      onPageChange(value);
+    }
+  }
+
+  const updatePageSize = (value: number) => {
+    setInternalPageSize(value);
+    if (onPageSizeChange) {
+      onPageSizeChange(value);
+    }
+  }
+
 
   useEffect(() => {
-    setPage(0);
+    setInternalPage(0);
   }, [data]);
 
   return (
@@ -29,13 +61,13 @@ const Pagination = ({ data, children }) => {
         }}
       >
         <div>
-          Rows per page:{" "}
+          Rows per page:&nbsp;
           <select
             onChange={(e) => {
               const value = Number(e.target.value);
-              const newPage = Math.round((pageSize / value) * page);
-              setPageSize(value);
-              setPage(newPage);
+              const newPage = Math.round((internalPageSize / value) * internalPage);
+              updatePage(newPage);
+              updatePageSize(value);
             }}
             value={pageSize}
           >
@@ -55,13 +87,13 @@ const Pagination = ({ data, children }) => {
               background: "transparent",
               padding: "0 10px",
             }}
-            onClick={() => setPage(page - 1)}
+            onClick={() => updatePage(internalPage - 1)}
             disabled={!canGoBack}
             className={canGoBack ? "primary" : ""}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
-          </button>{" "}
-          Page {page + 1} <span className="grey">/{totalPages}</span>
+          </button>&nbsp;
+          Page {internalPage + 1} <span className="grey">/{totalPages}</span>
           <button
             style={{
               outline: "none",
@@ -69,7 +101,7 @@ const Pagination = ({ data, children }) => {
               background: "transparent",
               padding: "0 10px",
             }}
-            onClick={() => setPage(page + 1)}
+            onClick={() => updatePage(internalPage + 1)}
             disabled={!canGoForward}
             className={canGoForward ? "primary" : ""}
           >
