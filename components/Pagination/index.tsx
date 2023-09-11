@@ -8,27 +8,44 @@ type Props = {
   children: any;
   totalItems?: number;
   onPageChange?: (newPage: number) => void;
+  onPageSizeChange?: (newPageSize: number) => void;
+  page?: number;
+  pageSize?: number;
+  controlled?: boolean;
 }
-const Pagination = ({ data, children, totalItems, onPageChange }: Props) => {
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange, page, pageSize, controlled = false }: Props) => {
+  const [internalPage, setInternalPage] = useState(page);
+  const [internalPageSize, setInternalPageSize] = useState(10);
 
-  const currentPage = data?.slice(pageSize * page, pageSize * (page + 1)) || [];
-  const noTotalItems = totalItems ? totalItems : data.length;
-  const totalPages = data ? Math.ceil(noTotalItems / pageSize) : 1;
+  const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
+  const noTotalItems = controlled ? totalItems : data.length;
+  let totalPages: number;
+  if (controlled) {
+    totalPages = data ? Math.ceil(noTotalItems / pageSize) : 1;
+  } else {
+    totalPages = data ? Math.ceil(noTotalItems / internalPageSize) : 1
+  }
 
   const canGoBack = page >= 1;
   const canGoForward = page + 1 < totalPages;
 
   const updatePage = (value: number) => {
-    setPage(value);
+    setInternalPage(value);
     if (onPageChange) {
       onPageChange(value);
     }
   }
 
+  const updatePageSize = (value: number) => {
+    setInternalPageSize(value);
+    if (onPageSizeChange) {
+      onPageSizeChange(value);
+    }
+  }
+
+
   useEffect(() => {
-    setPage(0);
+    setInternalPage(0);
   }, [data]);
 
   return (
@@ -49,8 +66,8 @@ const Pagination = ({ data, children, totalItems, onPageChange }: Props) => {
             onChange={(e) => {
               const value = Number(e.target.value);
               const newPage = Math.round((pageSize / value) * page);
-              setPageSize(value);
               updatePage(newPage);
+              updatePageSize(value);
             }}
             value={pageSize}
           >
