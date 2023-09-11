@@ -8,5 +8,8 @@ export async function fetchAPI(query: string) {
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);
   }
+  if (response.status === 204) {
+    return Promise.reject("No content");
+  }
   return await response.json();
 }
