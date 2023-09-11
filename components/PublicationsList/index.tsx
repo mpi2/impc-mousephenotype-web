@@ -22,7 +22,11 @@ const PublicationLoader = () => (
   </div>
 );
 
-const PublicationsList = () => {
+type Props = {
+  onlyConsortiumPublications?: boolean;
+}
+
+const PublicationsList = ({ onlyConsortiumPublications }: Props) => {
 
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
@@ -67,11 +71,14 @@ const PublicationsList = () => {
   const [totalItems, setTotalItems] = useState(0);
   const debounceQuery = useDebounce<string>(query, 500);
   const { data: publications, isError, isFetching } = useQuery({
-    queryKey: ['publications', debounceQuery, page, pageSize],
+    queryKey: ['publications', debounceQuery, page, pageSize, onlyConsortiumPublications],
     queryFn: () => {
       let url = `/api/v1/publications?page=${page}&size=${pageSize}`;
       if (debounceQuery) {
         url += `&query=${debounceQuery}`;
+      }
+      if (!!onlyConsortiumPublications) {
+        url += `&consortiumpaper=true`;
       }
       return fetchAPI(url);
     },

@@ -208,7 +208,9 @@ const PublicationsPage = () => {
               </div>
             </Tab>
             <Tab eventKey="consortium-publications" title="Consortium publications">
-              Tab content for consortium publications
+              <div className="mt-5">
+                <PublicationsList onlyConsortiumPublications />
+              </div>
             </Tab>
           </Tabs>
         </Card>
