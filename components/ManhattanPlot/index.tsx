@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
 import mockData from "../../mocks/data/phenotypes/MP:0012361/gwas.json";
 import { useRouter } from "next/router";
+import { element } from "prop-types";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, annotationPlugin);
 
@@ -25,9 +26,11 @@ const ManhattanPlot = ({ phenotypeId }) => {
   const options = {
     scales: {
       x: {
-        display: true, max: 0,
+        display: true,
+        max: 0,
         ticks: { autoSkip: false },
         grid: { display: false },
+        title: { display: true, text: 'chromosome' },
         afterBuildTicks: axis => {
           if (ticks.length) {
             axis.ticks = ticks;
@@ -41,6 +44,9 @@ const ManhattanPlot = ({ phenotypeId }) => {
           }
         }
       },
+      y: {
+        title: { display: true, text: '-log₁₀(P-value)' },
+      }
     },
     plugins: {
       legend: { display: false },
@@ -69,6 +75,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
         pointBackgroundColor: ctx => ctx.raw.y >= 4 ? '#FFA500' : '#00FFFF'
       }
     },
+    onHover:
+      (e, elements) => !!elements.length ? e.native.target.style.cursor = 'pointer' : e.native.target.style.cursor = 'auto',
     onClick: (e, elements) =>  {
       if (elements.length) {
         const gene = elements[0].element?.$context?.raw;
