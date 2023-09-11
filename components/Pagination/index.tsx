@@ -18,7 +18,7 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
   const [internalPageSize, setInternalPageSize] = useState(10);
 
   const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
-  const noTotalItems = controlled ? totalItems : data.length;
+  const noTotalItems = controlled ? totalItems : (data?.length || 1);
   let totalPages: number;
   if (controlled) {
     totalPages = data ? Math.ceil(noTotalItems / pageSize) : 1;
