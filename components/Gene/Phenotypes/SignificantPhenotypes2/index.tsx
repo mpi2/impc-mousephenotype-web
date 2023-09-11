@@ -44,7 +44,7 @@ const SignificantPhenotypes = ({ data }) => {
   const processed =
     (groups ? Object.values(groups) : []).map((d: any) => ({
       ...d,
-      topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
+      topLevelPhenotype: d?.topLevelPhenotypes?.[0]?.name,
       phenotype: d.phenotype.name,
       id: d.phenotype.id,
     })) || [];
@@ -55,7 +55,7 @@ const SignificantPhenotypes = ({ data }) => {
     setSorted(_.orderBy(processed, "phenotype", "asc"));
   }, [data]);
 
-  if (!data) {
+  if (!sorted) {
     return <p>Loading...</p>;
   }
 
