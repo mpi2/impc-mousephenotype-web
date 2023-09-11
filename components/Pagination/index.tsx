@@ -19,12 +19,7 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
 
   const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
   const noTotalItems = controlled ? totalItems : (data?.length || 1);
-  let totalPages: number;
-  if (controlled) {
-    totalPages = data ? Math.ceil(noTotalItems / pageSize) : 1;
-  } else {
-    totalPages = data ? Math.ceil(noTotalItems / internalPageSize) : 1
-  }
+  let totalPages = data ? Math.ceil(noTotalItems / internalPageSize) : 1;
 
   const canGoBack = internalPage >= 1;
   const canGoForward = internalPage + 1 < totalPages;
@@ -45,7 +40,12 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
 
 
   useEffect(() => {
-    setInternalPage(0);
+    // only set internal page as 0 if component is *uncontrolled*
+    // meaning it will receive all the data in one go and won't need to fetch data
+    // for each page
+    if (!controlled) {
+      setInternalPage(0);
+    }
   }, [data]);
 
   return (
