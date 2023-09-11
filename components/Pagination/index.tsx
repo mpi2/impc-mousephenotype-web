@@ -26,8 +26,8 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
     totalPages = data ? Math.ceil(noTotalItems / internalPageSize) : 1
   }
 
-  const canGoBack = page >= 1;
-  const canGoForward = page + 1 < totalPages;
+  const canGoBack = internalPage >= 1;
+  const canGoForward = internalPage + 1 < totalPages;
 
   const updatePage = (value: number) => {
     setInternalPage(value);
@@ -61,11 +61,11 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
         }}
       >
         <div>
-          Rows per page:{" "}
+          Rows per page:&nbsp;
           <select
             onChange={(e) => {
               const value = Number(e.target.value);
-              const newPage = Math.round((pageSize / value) * page);
+              const newPage = Math.round((internalPageSize / value) * internalPage);
               updatePage(newPage);
               updatePageSize(value);
             }}
@@ -87,13 +87,13 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
               background: "transparent",
               padding: "0 10px",
             }}
-            onClick={() => updatePage(page - 1)}
+            onClick={() => updatePage(internalPage - 1)}
             disabled={!canGoBack}
             className={canGoBack ? "primary" : ""}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
-          </button>{" "}
-          Page {page + 1} <span className="grey">/{totalPages}</span>
+          </button>&nbsp;
+          Page {internalPage + 1} <span className="grey">/{totalPages}</span>
           <button
             style={{
               outline: "none",
@@ -101,7 +101,7 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
               background: "transparent",
               padding: "0 10px",
             }}
-            onClick={() => updatePage(page + 1)}
+            onClick={() => updatePage(internalPage + 1)}
             disabled={!canGoForward}
             className={canGoForward ? "primary" : ""}
           >
