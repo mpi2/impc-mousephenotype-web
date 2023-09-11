@@ -29,7 +29,6 @@ type AggregationData = {
   publicationsByGrantAgency: Array<{ agency: string, count: number }>;
 }
 
-
 const PublicationsPage = () => {
   const [ pubByQuarterData, setPubByQuarterData ] = useState<ChartData<'bar'>>(null);
   const [ quarterChartView, setQuarterChartView ] = useState<'year'|'quarter'>('year')
