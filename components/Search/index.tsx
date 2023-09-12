@@ -62,8 +62,12 @@ const Search = ({
     tabs.findIndex((tab) => tab.type === typeInput);
   const [tabIndex, setTabIndex] = useState(getSelectedIndex(defaultType));
   useEffect(() => {
-    setTabIndex(getSelectedIndex(type));
-  }, [type]);
+    let tabType = type;
+    if (type === undefined && !!defaultType) {
+      tabType = defaultType;
+    }
+    setTabIndex(getSelectedIndex(tabType));
+  }, [type, defaultType]);
 
   useEffect(() => {
     if (router.isReady && router.query.query) {
