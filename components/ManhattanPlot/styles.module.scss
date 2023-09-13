@@ -1,0 +1,42 @@
+
+.chartWrapper {
+  position: relative;
+  canvas {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 1rem;
+  color: #FFF;
+  padding: 1.2em;
+  font-size: 85%;
+  transition: opacity 0.5s ease-out;
+  .closeBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border-radius: 30%;
+    border: 1px solid #DDD;
+    font-size: 16px;
+    color: #fff;
+    &:hover {
+      background-color: #CCC;
+      color: #000;
+    }
+  }
+  ul {
+    margin-bottom: 0;
+    padding-left: 1rem;
+  }
+  &.noVisible {
+    z-index: -1;
+  }
+  &.visible {
+    z-index: 2;
+  }
+}
