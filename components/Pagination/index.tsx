@@ -13,7 +13,7 @@ type Props = {
   pageSize?: number;
   controlled?: boolean;
 }
-const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange, page, pageSize, controlled = false }: Props) => {
+const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange, page = 0, pageSize, controlled = false }: Props) => {
   const [internalPage, setInternalPage] = useState(page);
   const [internalPageSize, setInternalPageSize] = useState(10);
 
@@ -79,7 +79,7 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
           </select>
         </div>
 
-        <div>
+        <div data-testid="current-page">
           <button
             style={{
               outline: "none",
@@ -90,6 +90,7 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
             onClick={() => updatePage(internalPage - 1)}
             disabled={!canGoBack}
             className={canGoBack ? "primary" : ""}
+            data-testid="prev-page"
           >
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>&nbsp;
@@ -104,6 +105,7 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
             onClick={() => updatePage(internalPage + 1)}
             disabled={!canGoForward}
             className={canGoForward ? "primary" : ""}
+            data-testid="next-page"
           >
             <FontAwesomeIcon icon={faArrowRight} />
           </button>
