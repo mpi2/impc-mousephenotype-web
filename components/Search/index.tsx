@@ -47,11 +47,6 @@ const Search = ({
       type: "phenotype",
     },
     {
-      name: "Products",
-      link: "/search?type=allele",
-      type: "allele",
-    },
-    {
       name: "Help, news, blog",
       link: `${process.env.NEXT_PUBLIC_NEWS_SEARCH}/?s=`,
       external: true,
