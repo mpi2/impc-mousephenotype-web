@@ -65,7 +65,7 @@ const Pagination = ({data, children, totalItems, onPageChange, onPageSizeChange,
           <select
             onChange={(e) => {
               const value = Number(e.target.value);
-              const newPage = Math.round((internalPageSize / value) * internalPage);
+              const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
               updatePage(newPage);
               updatePageSize(value);
             }}
