@@ -57,7 +57,7 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
               {gene.geneSymbol}
             </a>
             <br/>
-            P-value: {formatPValue(gene.pValue)}
+            P-value: {!!gene.pValue ? formatPValue(gene.pValue) : 0}
           </li>
         )) }
       </ul>
