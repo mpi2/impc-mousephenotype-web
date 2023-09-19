@@ -13,7 +13,6 @@ import {
   CircularProgressbarWithChildren,
 } from "react-circular-progressbar";
 import styles from "./styles.module.scss";
-import _ from "lodash";
 import Card from "../../Card";
 import FollowBtn from "./FollowBtn";
 
@@ -63,6 +62,7 @@ const CollectionItem = ({
   <a
     href={link}
     className={hasData ? styles.dataCollection : styles.dataCollectionInactive}
+    data-testid={name}
   >
     <Check isChecked={hasData} />
     {name}{" "}
@@ -212,7 +212,7 @@ const Summary = ({
                         .slice(SYNONYMS_COUNT, gene.synonyms.length)
                         .map((s, i) => (
                           <>
-                            <span style={{ whiteSpace: "nowrap" }}>
+                            <span key={s} style={{ whiteSpace: "nowrap" }}>
                               {s}
                               {i < gene.synonyms.length ? ", " : ""}
                             </span>
@@ -224,7 +224,7 @@ const Summary = ({
                 }
               >
                 {({ ref, ...triggerHandler }) => (
-                  <span {...triggerHandler} ref={ref} className="link">
+                  <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
                     +{gene.synonyms.length - SYNONYMS_COUNT} more{" "}
                     <FontAwesomeIcon icon={faCaretSquareDown} />
                   </span>
@@ -251,7 +251,7 @@ const Summary = ({
       <Row className={styles.gap}>
         <Col lg={6}>
           <h3>Impacted physiological systems</h3>
-          <div className={styles.progressHeader}>
+          <div data-testid="totalCount" className={styles.progressHeader}>
             <div>
               <span className="secondary">
                 {significantCount + nonSignificantCount}
@@ -277,14 +277,14 @@ const Summary = ({
           {!!significantCount && (
             <div className={styles.bodySystemGroupSignificant}>
               <h5 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-primary white`}>
+                <span className={`${styles.pill} bg-primary white`} data-testid="significantCount">
                   {significantCount}
                 </span>{" "}
                 Significantly impacted by the knock-out
               </h5>
-              <div className={styles.bodySystems}>
+              <div className={styles.bodySystems} data-testid="significantSystemIcons">
                 {gene.significantTopLevelPhenotypes.map((x) => (
-                  <BodySystem name={x} isSignificant color="primary" />
+                  <BodySystem key={x} name={x} isSignificant color="primary" />
                 ))}
               </div>
             </div>
@@ -292,14 +292,14 @@ const Summary = ({
           {!!nonSignificantCount && (
             <div className={styles.bodySystemGroup}>
               <h5 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-secondary white`}>
+                <span className={`${styles.pill} bg-secondary white`} data-testid="nonSignificantCount">
                   {nonSignificantCount}
                 </span>{" "}
                 No significant impact
               </h5>
-              <div className={styles.bodySystems}>
+              <div className={styles.bodySystems} data-testid="notSignificantSystemIcons">
                 {gene.notSignificantTopLevelPhenotypes.map((x) => (
-                  <BodySystem name={x} color="grey" hoverColor="secondary" />
+                  <BodySystem key={x} name={x} color="grey" hoverColor="secondary" />
                 ))}
               </div>
             </div>
@@ -307,18 +307,21 @@ const Summary = ({
           {!!notTestedCount && (
             <div className={styles.bodySystemGroup}>
               <h5 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-grey`}>
+                <span className={`${styles.pill} bg-grey`} data-testid="nonTestedCount">
                   {notTestedCount}
                 </span>{" "}
                 Not tested
               </h5>
-              {notTested.map((system) => (
-                <BodySystem
-                  name={system}
-                  hoverColor="grey"
-                  color="grey-light"
-                />
-              ))}
+              <div data-testid="notTestedSystemIcons">
+                {notTested.map((system) => (
+                  <BodySystem
+                    key={system}
+                    name={system}
+                    hoverColor="grey"
+                    color="grey-light"
+                  />
+                ))}
+              </div>
             </div>
           )}
         </Col>
