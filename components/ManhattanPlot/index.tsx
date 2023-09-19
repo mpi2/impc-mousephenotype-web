@@ -95,6 +95,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
   }
 
   const options = {
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       x: {
         display: true,

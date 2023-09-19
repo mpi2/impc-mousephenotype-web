@@ -55,6 +55,7 @@ const Phenotype = () => {
           ))}
         </Card>
         <Card>
+          <h2>Manhattan Plot</h2>
           <ManhattanPlot phenotypeId={phenotypeId} />
         </Card>
       </Container>

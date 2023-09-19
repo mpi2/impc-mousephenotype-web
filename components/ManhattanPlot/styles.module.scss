@@ -1,6 +1,8 @@
 
 .chartWrapper {
   position: relative;
+  max-height: 400px;
+  height: 400px;
   canvas {
     position: relative;
     z-index: 1;
@@ -32,6 +34,9 @@
   ul {
     margin-bottom: 0;
     padding-left: 1rem;
+    max-height: 100px;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
   }
   &.noVisible {
     z-index: -1;
