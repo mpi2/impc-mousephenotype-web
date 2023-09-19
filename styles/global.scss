@@ -84,3 +84,15 @@ p:last-child {
   color: $grey;
   font-size: 0.9rem;
 }
+
+.table.table-striped {
+  & > thead > tr > * {
+    --bs-table-bg-type: #FFF;
+  }
+  & > tbody > tr:nth-of-type(even) > * {
+    --bs-table-bg-type: #FFF;
+  }
+  & > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-bg-type: #EFEFEF;
+  }
+}
