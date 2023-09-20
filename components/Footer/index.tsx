@@ -5,6 +5,7 @@ import {
   faReddit,
   faTwitter,
   faYoutube,
+  faLinkedin
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row } from "react-bootstrap";
@@ -102,6 +103,16 @@ const Footer = () => {
         <Row className="mt-3">
           <div className="col-12 col-md-6">
             <ul className="footer__social">
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/impc--international-mouse-phenotyping-consortium/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="sr-only">IMPC LinkedIn</span>
+                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                </a>
+              </li>
               <li>
                 <a
                   href="https://twitter.com/impc"
