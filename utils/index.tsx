@@ -14,6 +14,9 @@ export const formatAlleleSymbol = (allele: string) => {
 };
 
 export const formatPValue = (pValue: number) => {
+  if (!pValue) {
+    return 0;
+  }
   const pValueArray = Number.parseFloat(String(pValue))
     .toExponential(2)
     .split("e");
