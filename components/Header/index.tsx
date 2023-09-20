@@ -15,6 +15,28 @@ export interface INavBarProps {
   menuItems: MenuItem[];
 }
 
+const rewriteMenu = (data) => {
+  return data.map(item => {
+    return {
+      ...item,
+      link: getInternalLink(item.name, item.link),
+      children: item.children && item.children.length > 0 ? rewriteMenu(item.children) : [],
+    }
+  })
+}
+const getInternalLink = (name: string, link: string) => {
+  switch (name) {
+    case 'Cardiovascular':
+      return '/cardiovascular';
+    case 'Embryo Development':
+      return '/embryo';
+    case 'Papers Using IMPC Resources':
+      return '/publications';
+    default:
+      return link;
+  }
+}
+
 const Header = () => {
   const { data: menuItems } = useQuery({
     queryKey: ['menu'],
@@ -22,7 +44,9 @@ const Header = () => {
       const response = await fetch("https://www.mousephenotype.org/jsonmenu/");
       return await response.json();
     },
-    placeholderData: []
+    placeholderData: [],
+    // TODO: to be removed after site is launched to production
+    select: rewriteMenu,
   });
   const [activeMenuId, setActiveMenu] = useState(-1);
 
