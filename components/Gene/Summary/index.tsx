@@ -164,6 +164,21 @@ const Summary = ({
     ...(gene.notSignificantTopLevelPhenotypes ?? []),
   ];
 
+  const displaySynonyms = () => {
+    return gene.synonyms.slice(0, SYNONYMS_COUNT).join(', ');
+  }
+  const displaySynonymsInTooltip = () => {
+    return gene.synonyms
+      .slice(SYNONYMS_COUNT, gene.synonyms.length)
+      .map((s, i) => (
+        <span key={s} style={{ whiteSpace: "nowrap" }}>
+          {s}
+          {i < gene.synonyms.length ? ", " : ""}
+          <br />
+        </span>
+      ))
+  }
+
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
   const significantCount = gene.significantTopLevelPhenotypes?.length ?? 0;
   const nonSignificantCount =
@@ -191,16 +206,7 @@ const Summary = ({
           </a>
           <span className={styles.subheadingSection}>
             Synonyms:{" "}
-            {gene.synonyms
-              .slice(0, SYNONYMS_COUNT)
-              .map(
-                (s, i) =>
-                  `${s}${
-                    i < Math.min(gene.synonyms.length - 1, SYNONYMS_COUNT)
-                      ? ", "
-                      : ""
-                  }`
-              )}
+            {displaySynonyms()}
             {gene.synonyms.length > SYNONYMS_COUNT && (
               <OverlayTrigger
                 placement="bottom"
@@ -208,24 +214,14 @@ const Summary = ({
                 overlay={
                   <Tooltip>
                     <div style={{ textAlign: "left" }}>
-                      {gene.synonyms
-                        .slice(SYNONYMS_COUNT, gene.synonyms.length)
-                        .map((s, i) => (
-                          <>
-                            <span key={s} style={{ whiteSpace: "nowrap" }}>
-                              {s}
-                              {i < gene.synonyms.length ? ", " : ""}
-                            </span>
-                            <br />
-                          </>
-                        ))}
+                      {displaySynonymsInTooltip()}
                     </div>
                   </Tooltip>
                 }
               >
                 {({ ref, ...triggerHandler }) => (
                   <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
-                    +{gene.synonyms.length - SYNONYMS_COUNT} more{" "}
+                    ,&nbsp;+{gene.synonyms.length - SYNONYMS_COUNT} more{" "}
                     <FontAwesomeIcon icon={faCaretSquareDown} />
                   </span>
                 )}
