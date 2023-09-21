@@ -21,6 +21,7 @@ import styles from './styles.module.scss';
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
+import SortableTable from "../../components/SortableTable";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
 type AggregationData = {
@@ -31,14 +32,16 @@ type AggregationData = {
 
 const PublicationsPage = () => {
   const [ pubByQuarterData, setPubByQuarterData ] = useState<ChartData<'bar'>>(null);
-  const [ quarterChartView, setQuarterChartView ] = useState<'year'|'quarter'>('year')
+  const [ quarterChartView, setQuarterChartView ] = useState<'year'|'quarter'>('year');
+  const [ expandedTable, setExpandedTable ] = useState(false);
   const quarterChartRef = useRef();
   const { data} = useQuery({
     queryKey: ['publications', 'aggregation'],
     queryFn: () => fetchAPI(`/api/v1/publications/aggregation`),
     select: (aggregationData: AggregationData) => {
       const yearlyIncrementData = aggregationData.incrementalCountsByYear
-      const publicationsByGrants = aggregationData.publicationsByGrantAgency.filter(pubCount => pubCount.count > 8);
+      const allGrantsData = aggregationData.publicationsByGrantAgency;
+      const publicationsByGrantsChart = allGrantsData.filter(pubCount => pubCount.count > 8);
       const publicationsByQuarter = aggregationData.publicationsByQuarter.map(year => {
         return {
           ...year,
@@ -89,10 +92,10 @@ const PublicationsPage = () => {
             }
           },
           data: {
-            labels: publicationsByGrants.map(pubCount => pubCount.agency),
+            labels: publicationsByGrantsChart.map(pubCount => pubCount.agency),
             datasets: [{
               label: 'Publications',
-              data: publicationsByGrants.map(pubCount => pubCount.count),
+              data: publicationsByGrantsChart.map(pubCount => pubCount.count),
             }]
           }
         },
@@ -151,7 +154,8 @@ const PublicationsPage = () => {
               data: yearlyIncrementData.map((pubCount) => pubCount.count),
             }],
           }
-        }
+        },
+        allGrantsData: allGrantsData.filter(pubCount => pubCount.count <= 8),
       }
     },
   });
@@ -204,6 +208,33 @@ const PublicationsPage = () => {
                       plugins={[ colorsPlugin ]}
                     />
                   )}
+                </div>
+                <div>
+                  <div className={styles.expandTableContainer}>
+                    <button
+                      className="btn impc-secondary-btn"
+                      onClick={() => setExpandedTable(prevState => !prevState)}
+                    >
+                      { !!expandedTable ? 'Hide' : 'View'  } remaining grant agencies
+                    </button>
+                  </div>
+                  { !!expandedTable ? (
+                    <div className={styles.tableWrapper}>
+                      <SortableTable
+                        headers={[
+                          { width: 1, label: "Grant agency", field: "key", disabled: true },
+                          { width: 1, label: "Number of publications", field: "value", disabled: true },
+                        ]}
+                      >
+                        {data?.allGrantsData && data.allGrantsData.map(row => (
+                          <tr key={row.agency}>
+                            <td>{row.agency}</td>
+                            <td>{row.count}</td>
+                          </tr>
+                        ))}
+                      </SortableTable>
+                    </div>
+                  ) : null }
                 </div>
               </div>
             </Tab>
