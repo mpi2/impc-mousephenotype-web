@@ -99,7 +99,7 @@ p:last-child {
 .impc-secondary-btn {
   background-color: $secondary;
   color: #FFF;
-  &:hover {
+  &:hover, &.active {
     background-color: $blue-dark;
     color: #FFF;
   }
