@@ -17,9 +17,11 @@ export type Tab = {
 const Search = ({
   defaultType = "",
   onChange,
+  updateURL = false,
 }: {
   defaultType?: string;
   onChange?: (val: string) => void;
+  updateURL?: boolean
 }) => {
   const router = useRouter();
   const [query, setQuery] = useState<string>(
@@ -53,8 +55,7 @@ const Search = ({
       type: "blog",
     },
   ];
-  const getSelectedIndex = (typeInput) =>
-    tabs.findIndex((tab) => tab.type === typeInput);
+  const getSelectedIndex = (typeInput) => tabs.findIndex((tab) => tab.type === typeInput);
   const [tabIndex, setTabIndex] = useState(getSelectedIndex(defaultType));
   useEffect(() => {
     let tabType = type;
@@ -70,6 +71,17 @@ const Search = ({
       handleInput(router.query.query as string);
     }
   }, [router.isReady]);
+
+  useEffect(() => {
+    if (updateURL) {
+      if (router.isReady && router.query.query !== query && query !== '') {
+        router.replace({query: { ...router.query, query },});
+      } else if (query === '') {
+        const { query: _, ...updatedQuery } = router.query;
+        router.push({ pathname: router.pathname, query: updatedQuery }, undefined, { shallow: true });
+      }
+    }
+  }, [query])
 
   return (
     <div className={`${styles.banner}`}>
