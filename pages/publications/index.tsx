@@ -1,7 +1,6 @@
 import Search from "../../components/Search";
 import { Container, Tab, Tabs } from "react-bootstrap";
 import Card from "../../components/Card";
-import PublicationsList from "../../components/PublicationsList";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -25,6 +24,8 @@ import SortableTable from "../../components/SortableTable";
 import { faTable, faChartBar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pagination from "../../components/Pagination";
+import dynamic from "next/dynamic";
+import { PublicationListProps } from "../../components/PublicationsList";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
 type AggregationData = {
@@ -32,6 +33,10 @@ type AggregationData = {
   publicationsByQuarter: Array<{ pubYear: number, count: number, byQuarter: Array<{ quarter: number, count: number }> }>;
   publicationsByGrantAgency: Array<{ agency: string, count: number }>;
 }
+
+const PublicationsList = dynamic<PublicationListProps>(
+  () => import("../../components/PublicationsList"), {ssr: false}
+);
 
 const PublicationsPage = () => {
   const [ pubByQuarterData, setPubByQuarterData ] = useState<ChartData<'bar'>>(null);
