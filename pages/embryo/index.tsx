@@ -6,8 +6,13 @@ import Card from "../../components/Card";
 import styles from './styles.module.scss';
 import SortableTable from "../../components/SortableTable";
 import PieChart from "../../components/PieChart";
-import PublicationsList from "../../components/PublicationsList";
+import { PublicationListProps } from "../../components/PublicationsList";
 import data from '../../mocks/data/landing-pages/embryo.json';
+import dynamic from "next/dynamic";
+
+const PublicationsList = dynamic<PublicationListProps>(
+  () => import("../../components/PublicationsList"), {ssr: false}
+);
 
 type EmbryoLandingPageData = {
   primaryViability: Array<{ label: string; value: number }>;
