@@ -24,9 +24,10 @@ const PublicationLoader = () => (
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
+  filterByGrantAgency?: string;
 }
 
-const PublicationsList = ({ onlyConsortiumPublications }: PublicationListProps) => {
+const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: PublicationListProps) => {
 
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
@@ -71,7 +72,7 @@ const PublicationsList = ({ onlyConsortiumPublications }: PublicationListProps) 
   const [totalItems, setTotalItems] = useState(0);
   const debounceQuery = useDebounce<string>(query, 500);
   const { data: publications, isError, isFetching } = useQuery({
-    queryKey: ['publications', debounceQuery, page, pageSize, onlyConsortiumPublications],
+    queryKey: ['publications', debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
     queryFn: () => {
       let url = `/api/v1/publications?page=${page}&size=${pageSize}`;
       if (debounceQuery) {
@@ -79,6 +80,9 @@ const PublicationsList = ({ onlyConsortiumPublications }: PublicationListProps) 
       }
       if (!!onlyConsortiumPublications) {
         url += `&consortiumpaper=true`;
+      }
+      if(!!filterByGrantAgency) {
+        url += `&grantagency=${filterByGrantAgency}`;
       }
       return fetchAPI(url);
     },
@@ -98,8 +102,6 @@ const PublicationsList = ({ onlyConsortiumPublications }: PublicationListProps) 
   const updatePageSize = (value: number) => {
     setPageSize(value);
   }
-
-  console.log(publications);
 
   return (
     <Container>

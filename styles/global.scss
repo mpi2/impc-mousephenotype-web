@@ -96,6 +96,7 @@ p:last-child {
     --bs-table-bg-type: #EFEFEF;
   }
 }
+
 .impc-secondary-btn {
   background-color: $secondary;
   color: #FFF;
@@ -103,4 +104,11 @@ p:last-child {
     background-color: $blue-dark;
     color: #FFF;
   }
+}
+.modal-dialog.publications .modal-content {
+  background-color: #FFF;
+}
+.modal-dialog.modal-85w {
+  width: 85%;
+  max-width: none !important;
 }

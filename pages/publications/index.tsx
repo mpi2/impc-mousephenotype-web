@@ -1,5 +1,5 @@
 import Search from "../../components/Search";
-import { Container, Tab, Tabs } from "react-bootstrap";
+import { Container, Tab, Tabs, Modal } from "react-bootstrap";
 import Card from "../../components/Card";
 import {
   Chart as ChartJS,
@@ -42,6 +42,8 @@ const PublicationsPage = () => {
   const [ pubByQuarterData, setPubByQuarterData ] = useState<ChartData<'bar'>>(null);
   const [ quarterChartView, setQuarterChartView ] = useState<'year'|'quarter'>('year');
   const [ grantAgencyView, setGrantAgencyView ] = useState<'chart' | 'table'>('chart');
+  const [ showModal, setShowModal ] = useState(false);
+  const [ selectedAgency, setSelectedAgency ] = useState('');
   const quarterChartRef = useRef();
   const { data} = useQuery({
     queryKey: ['publications', 'aggregation'],
@@ -94,6 +96,16 @@ const PublicationsPage = () => {
             plugins: {
               legend: { display: false },
               title: { display: false }
+            },
+            onHover: (e, elements) => {
+              elements.length ? e.native.target.style.cursor = 'pointer' : e.native.target.style.cursor = 'auto';
+            },
+            onClick: (e, elements) => {
+              if (elements.length > 0) {
+                const data = publicationsByGrantsChart[elements[0].index];
+                setSelectedAgency(data.agency);
+                setShowModal(true);
+              }
             }
           },
           data: {
@@ -274,6 +286,14 @@ const PublicationsPage = () => {
           </Tabs>
         </Card>
       </Container>
+      <Modal show={showModal} onHide={() => setShowModal(false)} dialogClassName="publications modal-85w">
+        <Modal.Header closeButton>
+          <Modal.Title>Publications funded by {selectedAgency}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <PublicationsList filterByGrantAgency={selectedAgency}></PublicationsList>
+        </Modal.Body>
+      </Modal>
     </>
   )
 }
