@@ -1,7 +1,6 @@
 import Search from "../../components/Search";
-import { Container, Tab, Tabs } from "react-bootstrap";
+import { Container, Tab, Tabs, Modal } from "react-bootstrap";
 import Card from "../../components/Card";
-import PublicationsList from "../../components/PublicationsList";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,6 +21,11 @@ import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
 import SortableTable from "../../components/SortableTable";
+import { faTable, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Pagination from "../../components/Pagination";
+import dynamic from "next/dynamic";
+import { PublicationListProps } from "../../components/PublicationsList";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
 type AggregationData = {
@@ -30,10 +34,16 @@ type AggregationData = {
   publicationsByGrantAgency: Array<{ agency: string, count: number }>;
 }
 
+const PublicationsList = dynamic<PublicationListProps>(
+  () => import("../../components/PublicationsList"), {ssr: false}
+);
+
 const PublicationsPage = () => {
   const [ pubByQuarterData, setPubByQuarterData ] = useState<ChartData<'bar'>>(null);
   const [ quarterChartView, setQuarterChartView ] = useState<'year'|'quarter'>('year');
-  const [ expandedTable, setExpandedTable ] = useState(false);
+  const [ grantAgencyView, setGrantAgencyView ] = useState<'chart' | 'table'>('chart');
+  const [ showModal, setShowModal ] = useState(false);
+  const [ selectedAgency, setSelectedAgency ] = useState('');
   const quarterChartRef = useRef();
   const { data} = useQuery({
     queryKey: ['publications', 'aggregation'],
@@ -47,7 +57,7 @@ const PublicationsPage = () => {
           ...year,
           byQuarter: year.byQuarter.sort((q1, q2) => q1.quarter - q2.quarter )
         }
-      })
+      });
 
       return {
         yearlyChart: {
@@ -58,10 +68,7 @@ const PublicationsPage = () => {
               legend: {
                 display: false,
               },
-              title: {
-                display: true,
-                text: 'Yearly increase of IKMC/IMPC related publications',
-              },
+              title: { display: false },
             },
             scales: {
               y: {
@@ -88,7 +95,17 @@ const PublicationsPage = () => {
             maintainAspectRatio: false,
             plugins: {
               legend: { display: false },
-              title: { display: true, text: "Grant agency funded IKMC/IMPC related publications" }
+              title: { display: false }
+            },
+            onHover: (e, elements) => {
+              elements.length ? e.native.target.style.cursor = 'pointer' : e.native.target.style.cursor = 'auto';
+            },
+            onClick: (e, elements) => {
+              if (elements.length > 0) {
+                const data = publicationsByGrantsChart[elements[0].index];
+                setSelectedAgency(data.agency);
+                setShowModal(true);
+              }
             }
           },
           data: {
@@ -107,10 +124,7 @@ const PublicationsPage = () => {
               legend: {
                 display: false,
               },
-              title: {
-                display: true,
-                text: 'IKMC/IMPC related publications by year of publication',
-              },
+              title: { display: true },
               datalabels: {
                 color: '#000',
                 align: 'top' as const,
@@ -155,7 +169,7 @@ const PublicationsPage = () => {
             }],
           }
         },
-        allGrantsData: allGrantsData.filter(pubCount => pubCount.count <= 8),
+        allGrantsData,
       }
     },
   });
@@ -181,62 +195,88 @@ const PublicationsPage = () => {
               </div>
             </Tab>
             <Tab eventKey="publications-stats" title="Publications stats">
-              <div className="tab-content-container mt-5">
-                <div className={styles.chartContainer}>
-                  {data && (
-                    <Line
-                      data={data.yearlyChart.data}
-                      options={data.yearlyChart.options}
-                    />
-                  )}
+              <Card>
+                <div className="tab-content-container">
+                  <h2>Yearly increase of IKMC/IMPC related publications</h2>
+                  <div className={styles.chartContainer}>
+                    {data && (
+                      <Line
+                        data={data.yearlyChart.data}
+                        options={data.yearlyChart.options}
+                      />
+                    )}
+                  </div>
                 </div>
-                <div className={styles.chartContainer}>
-                  {pubByQuarterData && (
-                    <Bar
-                      ref={quarterChartRef}
-                      data={pubByQuarterData}
-                      options={data.quartersChart.options}
-                      plugins={[ colorsPlugin, dataLabelsPlugin ]}
-                    />
-                  )}
+              </Card>
+              <Card>
+                <div className="tab-content-container">
+                  <h2>IKMC/IMPC related publications by year of publication</h2>
+                  <div className={styles.chartContainer}>
+                    {pubByQuarterData && (
+                      <Bar
+                        ref={quarterChartRef}
+                        data={pubByQuarterData}
+                        options={data.quartersChart.options}
+                        plugins={[ colorsPlugin, dataLabelsPlugin ]}
+                      />
+                    )}
+                  </div>
                 </div>
-                <div style={{ minHeight: "2000px" }} className="position-relative">
-                  {data && (
-                    <Bar
-                      data={data.grantsChart.data}
-                      options={data.grantsChart.options}
-                      plugins={[ colorsPlugin ]}
-                    />
-                  )}
-                </div>
-                <div>
-                  <div className={styles.expandTableContainer}>
+              </Card>
+              <Card>
+                <div className="tab-content-container">
+                  <div className={styles.changeViewWrapper}>
                     <button
-                      className="btn impc-secondary-btn"
-                      onClick={() => setExpandedTable(prevState => !prevState)}
+                      className={`btn btn-secondary btn-lg ${grantAgencyView === 'chart' ? 'active' : ''}`}
+                      onClick={() => setGrantAgencyView('chart')}
                     >
-                      { !!expandedTable ? 'Hide' : 'View'  } remaining grant agencies
+                      <FontAwesomeIcon icon={faChartBar} />
+                      Chart view
+                    </button>
+                    <button
+                      className={`btn btn-secondary btn-lg ${grantAgencyView === 'table' ? 'active' : ''}`}
+                      onClick={() => setGrantAgencyView('table')}
+                    >
+                      <FontAwesomeIcon icon={faTable} />
+                      Table view
                     </button>
                   </div>
-                  { !!expandedTable ? (
-                    <div className={styles.tableWrapper}>
-                      <SortableTable
-                        headers={[
-                          { width: 1, label: "Grant agency", field: "key", disabled: true },
-                          { width: 1, label: "Number of publications", field: "value", disabled: true },
-                        ]}
-                      >
-                        {data?.allGrantsData && data.allGrantsData.map(row => (
-                          <tr key={row.agency}>
-                            <td>{row.agency}</td>
-                            <td>{row.count}</td>
-                          </tr>
-                        ))}
-                      </SortableTable>
+                  <h2>{
+                    grantAgencyView === 'chart' ?
+                      'Top 100 grant agencies by number of publications' :
+                      'All grant agencies funded IKMC/IMPC related publications'
+                  }</h2>
+                  { grantAgencyView === 'chart' ? (
+                    <div style={{ minHeight: "2000px" }} className="position-relative">
+                      {data && (
+                        <Bar
+                          data={data.grantsChart.data}
+                          options={data.grantsChart.options}
+                          plugins={[ colorsPlugin ]}
+                        />
+                      )}
                     </div>
-                  ) : null }
+                  ) : (
+                    <Pagination data={data?.allGrantsData}>
+                      {pageData => (
+                        <SortableTable
+                          headers={[
+                            { width: 1, label: "Grant agency", field: "key", disabled: true },
+                            { width: 1, label: "Number of publications", field: "value", disabled: true },
+                          ]}
+                        >
+                          {pageData.map(row => (
+                            <tr key={row.agency}>
+                              <td>{row.agency}</td>
+                              <td>{row.count}</td>
+                            </tr>
+                          ))}
+                        </SortableTable>
+                      )}
+                    </Pagination>
+                  ) }
                 </div>
-              </div>
+              </Card>
             </Tab>
             <Tab eventKey="consortium-publications" title="Consortium publications">
               <div className="mt-5">
@@ -246,6 +286,14 @@ const PublicationsPage = () => {
           </Tabs>
         </Card>
       </Container>
+      <Modal show={showModal} onHide={() => setShowModal(false)} dialogClassName="publications modal-85w">
+        <Modal.Header closeButton>
+          <Modal.Title>Publications funded by {selectedAgency}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <PublicationsList filterByGrantAgency={selectedAgency}></PublicationsList>
+        </Modal.Body>
+      </Modal>
     </>
   )
 }

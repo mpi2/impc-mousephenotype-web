@@ -22,11 +22,12 @@ const PublicationLoader = () => (
   </div>
 );
 
-type Props = {
+export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
+  filterByGrantAgency?: string;
 }
 
-const PublicationsList = ({ onlyConsortiumPublications }: Props) => {
+const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: PublicationListProps) => {
 
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
@@ -71,7 +72,7 @@ const PublicationsList = ({ onlyConsortiumPublications }: Props) => {
   const [totalItems, setTotalItems] = useState(0);
   const debounceQuery = useDebounce<string>(query, 500);
   const { data: publications, isError, isFetching } = useQuery({
-    queryKey: ['publications', debounceQuery, page, pageSize, onlyConsortiumPublications],
+    queryKey: ['publications', debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
     queryFn: () => {
       let url = `/api/v1/publications?page=${page}&size=${pageSize}`;
       if (debounceQuery) {
@@ -79,6 +80,9 @@ const PublicationsList = ({ onlyConsortiumPublications }: Props) => {
       }
       if (!!onlyConsortiumPublications) {
         url += `&consortiumpaper=true`;
+      }
+      if(!!filterByGrantAgency) {
+        url += `&grantagency=${filterByGrantAgency}`;
       }
       return fetchAPI(url);
     },
@@ -103,34 +107,7 @@ const PublicationsList = ({ onlyConsortiumPublications }: Props) => {
     <Container>
       <Row>
         <Col xs={6} className="mb-3">
-          <p>Showing 1 to 10 of {totalItems} entries</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={3}>
-          <InputGroup className="mb-3">
-            <InputGroup.Text id="filter-label">Filter</InputGroup.Text>
-            <Form.Control
-              id="filter"
-              aria-describedby="filter-label"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-            />
-          </InputGroup>
-        </Col>
-        <Col xs={3}>
-          Export table:&nbsp;
-          <a href="#" className="primary link">
-            TSV
-            <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
-          </a>
-          &nbsp;
-          or
-          &nbsp;
-          <a href="#" className="primary link">
-            XLS
-            <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
-          </a>
+          <p>Showing 1 to 10 of {totalItems.toLocaleString()} entries</p>
         </Col>
       </Row>
       { !!isError && (
@@ -138,75 +115,106 @@ const PublicationsList = ({ onlyConsortiumPublications }: Props) => {
           No publications found that use IMPC mice or data for the filters
         </Alert>
       )}
-      {!!(publications && publications.length) && (
-        <Pagination
-          data={publications}
-          totalItems={totalItems}
-          page={page}
-          pageSize={pageSize}
-          onPageChange={updatePage}
-          onPageSizeChange={updatePageSize}
-          controlled
-        >
-          {pageData => (
-            <Table className={styles.pubTable} striped>
-              <tbody>
-              {pageData.map((pub: Publication) => (
-                <tr key={pub.pmId} id={'pub-' + pub.pmId}>
-                  <td>
-                    {displayPubTitle(pub)}
-                    <p><i>{pub.journalTitle}</i>, ({displayPubDate(pub)})</p>
-                    <p><b>{pub.authorString}</b></p>
+      <Pagination
+        data={publications}
+        totalItems={totalItems}
+        page={page}
+        pageSize={pageSize}
+        onPageChange={updatePage}
+        onPageSizeChange={updatePageSize}
+        controlled
+        buttonsPlacement="both"
+        additionalTopControls={
+          <>
+            <div>
+              <InputGroup>
+                <InputGroup.Text id="filter-label">Filter</InputGroup.Text>
+                <Form.Control
+                  id="filter"
+                  aria-describedby="filter-label"
+                  value={query}
+                  onChange={e => setQuery(e.target.value)}
+                />
+              </InputGroup>
+            </div>
+            <div>
+              Export table:&nbsp;
+              <a href="#" className="primary link">
+                TSV
+                <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
+              </a>
+              &nbsp;
+              or
+              &nbsp;
+              <a href="#" className="primary link">
+                XLS
+                <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
+              </a>
+            </div>
+          </>
+        }
+      >
+        {pageData => (
+          <Table className={styles.pubTable} striped>
+            <tbody>
+            {pageData?.map((pub: Publication) => (
+              <tr key={pub.pmId} id={'pub-' + pub.pmId}>
+                <td>
+                  {displayPubTitle(pub)}
+                  <p><i>{pub.journalTitle}</i>, ({displayPubDate(pub)})</p>
+                  <p><b>{pub.authorString}</b></p>
+                  <Button
+                    className="mt-1 mb-1"
+                    variant="outline-dark"
+                    size="sm"
+                    onClick={e => toggleAbstractClass(pub, 'abstract')}
+                  >
+                    <strong>{isFieldVisible(pub, 'abstract') ? 'Hide' : 'Show'} abstract</strong>
+                  </Button>
+                  <p className={`abstract ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
+                    {pub.abstractText}
+                  </p>
+                  <p>PMID: {pub.pmId}</p>
+                  {!!pub.alleles && pub.alleles.length > 0 && (
+                    <p className={styles.alleleList}>IMPC allele: {pub.alleles.map(allele => {
+                      const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
+                      return (
+                        <>
+                          <a className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
+                            {formattedAllele[0]}
+                            <sup>{formattedAllele[1]}</sup>
+                          </a>
+                          &nbsp;
+                        </>
+                      )
+                    })}</p>
+                  )}
+                  {getGrantsList(pub)}
+                  {!!pub.meshHeadingList && pub.meshHeadingList.length > 0 && (
                     <Button
                       className="mt-1 mb-1"
                       variant="outline-dark"
                       size="sm"
-                      onClick={e => toggleAbstractClass(pub, 'abstract')}
+                      onClick={e => toggleAbstractClass(pub, 'mesh-terms')}
                     >
-                      <strong>{isFieldVisible(pub, 'abstract') ? 'Hide' : 'Show'} abstract</strong>
+                      <strong>{isFieldVisible(pub, 'mesh-terms') ? 'Hide' : 'Show'} mesh terms</strong>
                     </Button>
-                    <p className={`abstract ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
-                      {pub.abstractText}
-                    </p>
-                    <p>PMID: {pub.pmId}</p>
-                    {!!pub.alleles && pub.alleles.length > 0 && (
-                      <p className={styles.alleleList}>IMPC allele: {pub.alleles.map(allele => {
-                        const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
-                        return (
-                          <>
-                            <a className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
-                              {formattedAllele[0]}
-                              <sup>{formattedAllele[1]}</sup>
-                            </a>
-                            &nbsp;
-                          </>
-                        )
-                      })}</p>
-                    )}
-                    {getGrantsList(pub)}
-                    {!!pub.meshHeadingList && pub.meshHeadingList.length > 0 && (
-                      <Button
-                        className="mt-1 mb-1"
-                        variant="outline-dark"
-                        size="sm"
-                        onClick={e => toggleAbstractClass(pub, 'mesh-terms')}
-                      >
-                        <strong>{isFieldVisible(pub, 'mesh-terms') ? 'Hide' : 'Show'} mesh terms</strong>
-                      </Button>
-                    )}
-                    <p className={`abstract ${isFieldVisible(pub, 'mesh-terms') ? '' : 'visually-hidden'}`}>
-                      {pub.meshHeadingList.join(', ')}
-                    </p>
-                  </td>
-                </tr>
-              ))}
-              </tbody>
-            </Table>
-          )}
-        </Pagination>
-      )}
-      { !!isFetching && ([...Array(10)].map((e, i) => <PublicationLoader key={i} /> )) }
-
+                  )}
+                  <p className={`abstract ${isFieldVisible(pub, 'mesh-terms') ? '' : 'visually-hidden'}`}>
+                    {pub.meshHeadingList.join(', ')}
+                  </p>
+                </td>
+              </tr>
+            ))}
+            { !!isFetching && ([...Array(10)].map((e, i) => (
+              <tr>
+                <PublicationLoader key={i} />
+              </tr>
+            ) )) }
+            </tbody>
+          </Table>
+        )}
+      </Pagination>
     </Container>
   );
 }
