@@ -29,7 +29,6 @@ const Pagination = (props: Props) => {
     buttonsPlacement = 'bottom',
     additionalTopControls: AdditionalTopControls = null,
   } = props;
-  console.log(data);
   const [internalPage, setInternalPage] = useState(page);
   const [internalPageSize, setInternalPageSize] = useState(10);
 
@@ -43,11 +42,12 @@ const Pagination = (props: Props) => {
   const NavButtons = ({ shouldBeDisplayed }: { shouldBeDisplayed: boolean }) => {
     if (shouldBeDisplayed) {
       return (
-        <div>
+        <div data-testid="current-page">
           <button
             onClick={() => updatePage(internalPage - 1)}
             disabled={!canGoBack}
             className={canGoBack ? "nav-btn primary" : "nav-btn"}
+            data-testid="prev-page"
           >
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>&nbsp;
@@ -56,6 +56,7 @@ const Pagination = (props: Props) => {
             onClick={() => updatePage(internalPage + 1)}
             disabled={!canGoForward}
             className={canGoForward ? "nav-btn primary" : "nav-btn"}
+            data-testid="next-page"
           >
             <FontAwesomeIcon icon={faArrowRight} />
           </button>
