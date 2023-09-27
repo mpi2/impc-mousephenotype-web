@@ -32,4 +32,6 @@ module.exports = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  transpilePackages: ["@nivo"],
+  experimental: { esmExternals: "loose" }
 };

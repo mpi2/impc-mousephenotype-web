@@ -9,6 +9,7 @@ import PieChart from "../../components/PieChart";
 import { PublicationListProps } from "../../components/PublicationsList";
 import data from '../../mocks/data/landing-pages/embryo.json';
 import dynamic from "next/dynamic";
+import EmbryoDataAvailabilityGrid from "../../components/EmbryoDataAvailabilityGrid";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("../../components/PublicationsList"), {ssr: false}
@@ -23,8 +24,6 @@ type EmbryoLandingPageData = {
 const EmbryoLandingPage = () => {
   return (
     <>
-      <Script src="https://ficolo.github.io/impc-labs/static/js/main.09f6f606.js" />
-      <link href="https://ficolo.github.io/impc-labs/static/css/main.073c9b0a.css" rel="stylesheet"/>
       <Search />
       <Container className="page" style={{lineHeight: 2}}>
         <Card>
@@ -172,7 +171,7 @@ const EmbryoLandingPage = () => {
             <Row>
               <Col>
                 <p>Filter by Window of Lethality</p>
-                <div id="root"></div>
+                <EmbryoDataAvailabilityGrid />
               </Col>
             </Row>
           </Container>
