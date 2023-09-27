@@ -20,6 +20,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@/api-service": ["api-service/index.ts"],
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
       "@/utils": ["utils/index.tsx"],
