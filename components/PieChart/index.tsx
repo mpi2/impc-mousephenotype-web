@@ -7,47 +7,53 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 type DataArray = Array<{ label: string; value: number }>;
 
-interface Props  {
-  title: string;
+interface Props {
+  title?: string;
   data: DataArray;
-  chartColors?: Array<string>
+  chartColors?: Array<string>;
 }
-const PieChart = ({ title, data, chartColors } : Props) => {
+const PieChart = ({ title, data, chartColors }: Props) => {
   const [total, setTotal] = useState(1);
   useEffect(() => {
-    setTotal(data.reduce((acc, data) => acc + data.value, 0))
+    setTotal(data.reduce((acc, data) => acc + data.value, 0));
   }, [data]);
 
   return (
     <Pie
       data={{
-        labels: data.map(value => value.label),
-        datasets: [{
-          label: title,
-          data: data.map(({ value }) => Math.max(value / total * 100, 1)),
-          backgroundColor: chartColors || defaultChartColors,
-        }]
+        labels: data.map((value) => value.label),
+        datasets: [
+          {
+            label: title,
+            data: data.map(({ value }) => Math.max((value / total) * 100, 1)),
+            backgroundColor: chartColors || defaultChartColors,
+          },
+        ],
       }}
       options={{
         maintainAspectRatio: false,
         plugins: {
-          title: { display: true, text: title},
-          legend: { position: 'bottom', align: 'start' },
+          title: { display: !!title, text: title },
+          legend: { position: "bottom", align: "start" },
           tooltip: {
-            mode: 'index',
+            mode: "index",
             callbacks: {
               label: (item) => {
                 const dataset = item.dataset;
-                const currentValue = data.find(val => val.label === item.label).value;
-                const percentage = parseFloat((currentValue / total * 100).toFixed(2));
+                const currentValue = data.find(
+                  (val) => val.label === item.label
+                ).value;
+                const percentage = parseFloat(
+                  ((currentValue / total) * 100).toFixed(2)
+                );
                 return `${item.label} - ${percentage}%`;
-              }
-            }
-          }
-        }
+              },
+            },
+          },
+        },
       }}
     />
-  )
+  );
 };
 
 export default PieChart;
