@@ -23,7 +23,7 @@ const SearchResults = () => {
 
   return (
     <>
-      <Search onChange={setQuery} />
+      <Search updateURL onChange={setQuery} />
       {renderResults()}
     </>
   );

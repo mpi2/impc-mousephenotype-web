@@ -1,41 +1,116 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import styles from './styles.module.scss';
 
-const Pagination = ({ data, children }) => {
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
 
-  const currentPage = data?.slice(pageSize * page, pageSize * (page + 1)) || [];
-  const totalPages = data ? Math.ceil(data.length / pageSize) : 1;
+type Props = {
+  data: any;
+  children: any;
+  totalItems?: number;
+  onPageChange?: (newPage: number) => void;
+  onPageSizeChange?: (newPageSize: number) => void;
+  page?: number;
+  pageSize?: number;
+  controlled?: boolean;
+  buttonsPlacement?: 'top' | 'bottom' | 'both'
+  additionalTopControls?: React.ReactElement | null,
+}
+const Pagination = (props: Props) => {
+  const {
+    data,
+    children,
+    totalItems,
+    onPageChange,
+    onPageSizeChange,
+    page,
+    pageSize,
+    controlled = false,
+    buttonsPlacement = 'bottom',
+    additionalTopControls: AdditionalTopControls = null,
+  } = props;
+  console.log(data);
+  const [internalPage, setInternalPage] = useState(page);
+  const [internalPageSize, setInternalPageSize] = useState(10);
 
-  const canGoBack = page >= 1;
-  const canGoForward = page + 1 < totalPages;
+  const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
+  const noTotalItems = controlled ? totalItems : (data?.length || 1);
+  let totalPages = data ? Math.ceil(noTotalItems / internalPageSize) : 1;
+
+  const canGoBack = internalPage >= 1;
+  const canGoForward = internalPage + 1 < totalPages;
+
+  const NavButtons = ({ shouldBeDisplayed }: { shouldBeDisplayed: boolean }) => {
+    if (shouldBeDisplayed) {
+      return (
+        <div>
+          <button
+            onClick={() => updatePage(internalPage - 1)}
+            disabled={!canGoBack}
+            className={canGoBack ? "nav-btn primary" : "nav-btn"}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>&nbsp;
+          Page {internalPage + 1} <span className="grey">/{totalPages}</span>
+          <button
+            onClick={() => updatePage(internalPage + 1)}
+            disabled={!canGoForward}
+            className={canGoForward ? "nav-btn primary" : "nav-btn"}
+          >
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  const updatePage = (value: number) => {
+    setInternalPage(value);
+    if (onPageChange) {
+      onPageChange(value);
+    }
+  }
+
+  const updatePageSize = (value: number) => {
+    setInternalPageSize(value);
+    if (onPageSizeChange) {
+      onPageSizeChange(value);
+    }
+  }
 
   useEffect(() => {
-    setPage(0);
+    // only set internal page as 0 if component is *uncontrolled*
+    // meaning it will receive all the data in one go and won't need to fetch data
+    // for each page
+    if (!controlled) {
+      setInternalPage(0);
+    }
   }, [data]);
+
+  const shouldDisplayTopButtons = buttonsPlacement === 'top' || buttonsPlacement === 'both';
+  const shouldDisplayBottomButtons = buttonsPlacement === 'bottom' || buttonsPlacement === 'both';
 
   return (
     <>
+      <div className={`${styles.buttonsWrapper} ${!!AdditionalTopControls ? styles.withControls : ''}`}>
+        { !!AdditionalTopControls && (
+          <div className={styles.additionalWrapper}>
+            { AdditionalTopControls }
+          </div>
+        )}
+        <NavButtons shouldBeDisplayed={shouldDisplayTopButtons} />
+      </div>
       {children(currentPage)}
-      <div
-        style={{
-          marginTop: 30,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
+      <div className={styles.buttonsWrapper}>
         <div>
-          Rows per page:{" "}
+          Rows per page:&nbsp;
           <select
             onChange={(e) => {
               const value = Number(e.target.value);
-              const newPage = Math.round((pageSize / value) * page);
-              setPageSize(value);
-              setPage(newPage);
+              const newPage = Math.round((internalPageSize / value) * internalPage);
+              updatePage(newPage);
+              updatePageSize(value);
             }}
             value={pageSize}
           >
@@ -46,36 +121,7 @@ const Pagination = ({ data, children }) => {
             <option value="100">100</option>
           </select>
         </div>
-
-        <div>
-          <button
-            style={{
-              outline: "none",
-              border: 0,
-              background: "transparent",
-              padding: "0 10px",
-            }}
-            onClick={() => setPage(page - 1)}
-            disabled={!canGoBack}
-            className={canGoBack ? "primary" : ""}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>{" "}
-          Page {page + 1} <span className="grey">/{totalPages}</span>
-          <button
-            style={{
-              outline: "none",
-              border: 0,
-              background: "transparent",
-              padding: "0 10px",
-            }}
-            onClick={() => setPage(page + 1)}
-            disabled={!canGoForward}
-            className={canGoForward ? "primary" : ""}
-          >
-            <FontAwesomeIcon icon={faArrowRight} />
-          </button>
-        </div>
+        <NavButtons shouldBeDisplayed={shouldDisplayBottomButtons} />
       </div>
     </>
   );

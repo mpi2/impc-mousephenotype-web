@@ -6,7 +6,6 @@ import Search from "../../components/Search";
 import Associations from "../../components/PhenotypeGeneAssociations";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
-import mockGenotypeHits from "../../mocks/data/phenotypes/MP:0012361/genotype-hits.json";
 import ManhattanPlot from "../../components/ManhattanPlot";
 
 const Phenotype = () => {
@@ -22,9 +21,8 @@ const Phenotype = () => {
 
   const { data } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'genotype-hits'],
-    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/genotype-hits`),
+    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`),
     enabled: router.isReady,
-    initialData: mockGenotypeHits,
   });
 
 
@@ -57,6 +55,7 @@ const Phenotype = () => {
           ))}
         </Card>
         <Card>
+          <h2>Manhattan Plot</h2>
           <ManhattanPlot phenotypeId={phenotypeId} />
         </Card>
       </Container>

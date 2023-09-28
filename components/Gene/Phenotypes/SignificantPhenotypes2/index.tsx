@@ -44,7 +44,7 @@ const SignificantPhenotypes = ({ data }) => {
   const processed =
     (groups ? Object.values(groups) : []).map((d: any) => ({
       ...d,
-      topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
+      topLevelPhenotype: d?.topLevelPhenotypes?.[0]?.name,
       phenotype: d.phenotype.name,
       id: d.phenotype.id,
     })) || [];
@@ -55,7 +55,7 @@ const SignificantPhenotypes = ({ data }) => {
     setSorted(_.orderBy(processed, "phenotype", "asc"));
   }, [data]);
 
-  if (!data) {
+  if (!sorted) {
     return <p>Loading...</p>;
   }
 
@@ -155,7 +155,7 @@ const SignificantPhenotypes = ({ data }) => {
                 <td>
                   <span className={`me-2 bold ${styles.pValueCell}`}>
                     <span className="orange-dark">
-                      {formatPValue(d.pValue)}{" "}
+                      {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                     </span>
                     <Link
                       href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"

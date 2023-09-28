@@ -6,6 +6,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
 import "phenogrid/dist/phenogrid-bundle.css";
+import "react-loading-skeleton/dist/skeleton.css";
 import { SSRProvider } from "react-bootstrap";
 
 import { GeneComparatorProvider } from "../components/GeneComparator";

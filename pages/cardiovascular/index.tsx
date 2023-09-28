@@ -6,9 +6,14 @@ import PieChart from "../../components/PieChart";
 import SortableTable from "../../components/SortableTable";
 import styles from './styles.module.scss';
 import { useState } from "react";
-import PublicationsList from "../../components/PublicationsList";
+import { PublicationListProps } from "../../components/PublicationsList";
 import ScatterChart from "../../components/ScatterChart";
 import ChordDiagram from "../../components/ChordDiagram";
+import dynamic from "next/dynamic";
+
+const PublicationsList = dynamic<PublicationListProps>(
+  () => import("../../components/PublicationsList"), {ssr: false}
+);
 
 
 const ProcedureWithVersions = ({ procedure }) => {
@@ -166,7 +171,7 @@ const CardiovascularLandingPage = () => {
         <Card>
           <Container>
             <h1><strong>Cardiovascular systemp IKMC/IMPC related publications</strong></h1>
-            <PublicationsList />
+            <PublicationsList prefixQuery="cardio cardia heart" />
           </Container>
         </Card>
       </Container>

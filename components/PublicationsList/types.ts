@@ -1,14 +1,13 @@
 
 export type Publication = {
-  paperTitle: string;
-  paperURL: string;
-  journalName: string;
-  firstPubDate: string;
-  citatedBy: Array<{ paperTitle: string; paperURL: string; pubDate: string }>;
-  author: string;
-  abstract: string;
-  pmid: string;
-  alleles: Array<{geneSymbol: string; alleleSymbol: string}>;
-  grantAgency: string;
-  meshTerms: string;
+  title: string;
+  authorString: string;
+  consortiumPaper: boolean;
+  publicationDate: string;
+  journalTitle: string;
+  abstractText: string;
+  pmId: string;
+  alleles: Array<{mgiGeneAccessionId: string; alleleSymbol: string}>;
+  meshHeadingList: Array<string>;
+  grantsList: Array<{ acronym: string; agency: string; grantId: string; orderIn: number }>;
 }

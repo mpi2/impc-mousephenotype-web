@@ -84,3 +84,31 @@ p:last-child {
   color: $grey;
   font-size: 0.9rem;
 }
+
+.table.table-striped {
+  & > thead > tr > * {
+    --bs-table-bg-type: #FFF;
+  }
+  & > tbody > tr:nth-of-type(even) > * {
+    --bs-table-bg-type: #FFF;
+  }
+  & > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-bg-type: #EFEFEF;
+  }
+}
+
+.impc-secondary-btn {
+  background-color: $secondary;
+  color: #FFF;
+  &:hover, &.active {
+    background-color: $blue-dark;
+    color: #FFF;
+  }
+}
+.modal-dialog.publications .modal-content {
+  background-color: #FFF;
+}
+.modal-dialog.modal-85w {
+  width: 85%;
+  max-width: none !important;
+}

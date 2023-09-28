@@ -139,7 +139,7 @@ const Associations = ({ data }: { data: any }) => {
                   <td>
                     <span className="me-2 bold" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                       <span className="orange-dark">
-                        {formatPValue(d.pValue)}&nbsp;
+                        {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                       </span>
                       <Link
                         href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
