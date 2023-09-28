@@ -21,7 +21,7 @@ const Phenotype = () => {
 
   const { data } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'genotype-hits'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`),
+    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`),
     enabled: router.isReady,
   });
 
