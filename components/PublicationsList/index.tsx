@@ -25,10 +25,15 @@ const PublicationLoader = () => (
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
   filterByGrantAgency?: string;
+  prefixQuery?: string;
 }
 
-const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: PublicationListProps) => {
-
+const PublicationsList = (props: PublicationListProps) => {
+  const {
+    onlyConsortiumPublications,
+    filterByGrantAgency,
+    prefixQuery = '',
+  } = props
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
   const displayPubTitle = (pub: Publication) => {
@@ -72,11 +77,13 @@ const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: P
   const [totalItems, setTotalItems] = useState(0);
   const debounceQuery = useDebounce<string>(query, 500);
   const { data: publications, isError, isFetching } = useQuery({
-    queryKey: ['publications', debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
+    queryKey: ['publications', prefixQuery, debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
     queryFn: () => {
       let url = `/api/v1/publications?page=${page}&size=${pageSize}`;
       if (debounceQuery) {
-        url += `&query=${debounceQuery}`;
+        url += `&query=${prefixQuery} ${debounceQuery}`;
+      } else if (prefixQuery) {
+        url += `&query=${prefixQuery}`;
       }
       if (!!onlyConsortiumPublications) {
         url += `&consortiumpaper=true`;
