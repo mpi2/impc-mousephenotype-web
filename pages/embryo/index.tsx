@@ -213,7 +213,7 @@ const EmbryoLandingPage = () => {
         <Card>
           <Container>
             <h1><strong>IKMC/IMPC related publications</strong></h1>
-            <PublicationsList />
+            <PublicationsList prefixQuery="embryo" />
           </Container>
         </Card>
       </Container>
