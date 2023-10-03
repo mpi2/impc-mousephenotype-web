@@ -32,6 +32,8 @@ const getInternalLink = (name: string, link: string) => {
       return '/embryo';
     case 'Papers Using IMPC Resources':
       return '/publications';
+    case 'Histopathology':
+      return '/histopath';
     default:
       return link;
   }
