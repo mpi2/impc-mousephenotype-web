@@ -85,6 +85,14 @@ const HistopathLandingPage = () => {
     return symbol;
   };
 
+  const displayFixedTissueColumn = (geneSymbol: string) => {
+    if (data.geneTissueMap[geneSymbol] !== undefined) {
+      const mgiID = data.geneTissueMap[geneSymbol];
+      return <a className="link primary" href={`/genes/${mgiID}#order`}>Yes</a>
+    }
+    return 'No';
+  };
+
   const sortByHeader = (index: number) => {
     let newSort: 'asc' | 'desc' | 'none';
     if (sort === 'asc') {
@@ -223,24 +231,27 @@ const HistopathLandingPage = () => {
                 </tr>
               </tfoot>
               <tbody>
-              {getDataSlice().map(gene => (
-                <tr key={gene.id}>
-                  <td dangerouslySetInnerHTML={{ __html: rewriteWithQuery(gene.id) }}></td>
-                  <td>{ data.geneSymbols[gene.id] ? 'Yes' : 'No' }</td>
-                  {gene && gene.data && gene.data.map(cell => (
-                    <td
-                      className={styles.cellData}
-                      key={`${gene.id}-${cell.x}`}
-                      style={{ '--bs-table-bg-type': getCellColor(cell.y), cursor: cell.y > 0 ? 'pointer': 'auto' } as any}
-                      onClick={() => {
-                        if (cell.y > 0) {
-                          window.open(`https://www.mousephenotype.org/data/histopath/${gene.id}?anatomy="${cell.x}"`);
-                        }
-                      }}
-                    />
-                  ))}
-                </tr>
-              ))}
+                {getDataSlice().map(gene => (
+                  <tr key={gene.id}>
+                    <td dangerouslySetInnerHTML={{ __html: rewriteWithQuery(gene.id) }}></td>
+                    <td>{ displayFixedTissueColumn(gene.id) }</td>
+                    {gene && gene.data && gene.data.map(cell => (
+                      <td
+                        className={styles.cellData}
+                        key={`${gene.id}-${cell.x}`}
+                        style={{ '--bs-table-bg-type': getCellColor(cell.y), cursor: cell.y > 0 ? 'pointer': 'auto' } as any}
+                        onClick={() => {
+                          if (cell.y > 0) {
+                            window.open(`https://www.mousephenotype.org/data/histopath/${gene.id}?anatomy="${cell.x}"`);
+                          }
+                        }}
+                      />
+                    ))}
+                  </tr>
+                ))}
+                {getDataSlice()?.length === 0 && (
+                  <tr><td colSpan={100} style={{ fontSize: 20, fontWeight: 'bold' }}>No results</td></tr>
+                )}
               </tbody>
             </table>
           </div>
