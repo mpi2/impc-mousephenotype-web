@@ -88,7 +88,7 @@ const HistopathLandingPage = () => {
   const displayFixedTissueColumn = (geneSymbol: string) => {
     if (data.geneTissueMap[geneSymbol] !== undefined) {
       const mgiID = data.geneTissueMap[geneSymbol];
-      return <a className="link primary" href={`/genes/${mgiID}#order`}>Yes</a>
+      return <a className="link primary" href={`/genes/${mgiID}#purchase`}>Yes</a>
     }
     return 'No';
   };
