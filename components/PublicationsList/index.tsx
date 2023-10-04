@@ -80,17 +80,18 @@ const PublicationsList = (props: PublicationListProps) => {
     queryKey: ['publications', prefixQuery, debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
     queryFn: () => {
       let url = `/api/v1/publications?page=${page}&size=${pageSize}`;
-      if (debounceQuery) {
-        url += `&query=${prefixQuery} ${debounceQuery}`;
-      } else if (prefixQuery) {
-        url += `&query=${prefixQuery}`;
-      }
       if (!!onlyConsortiumPublications) {
-        url += `&consortiumpaper=true`;
+        url = `/api/v1/publications/by_consortium_paper?consortiumPaper=true&page=${page}&size=${pageSize}`
       }
       if(!!filterByGrantAgency) {
-        url += `&grantagency=${filterByGrantAgency}`;
+        url = `/api/v1/publications/by_agency?grantAgency=${filterByGrantAgency}&page=${page}&size=${pageSize}`
       }
+      if (debounceQuery) {
+        url += `&searchQuery=${prefixQuery} ${debounceQuery}`;
+      } else if (prefixQuery) {
+        url += `&searchQuery=${prefixQuery}`;
+      }
+
       return fetchAPI(url);
     },
     select: response => {
@@ -114,7 +115,7 @@ const PublicationsList = (props: PublicationListProps) => {
     <Container>
       <Row>
         <Col xs={6} className="mb-3">
-          <p>Showing 1 to 10 of {totalItems.toLocaleString()} entries</p>
+          <p>Showing 1 to {Math.min(pageSize, totalItems)} of {totalItems.toLocaleString()} entries</p>
         </Col>
       </Row>
       { !!isError && (
