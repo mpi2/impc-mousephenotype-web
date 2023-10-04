@@ -21,7 +21,7 @@ import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
 import SortableTable from "../../components/SortableTable";
-import { faTable, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import { faTable, faChartBar, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pagination from "../../components/Pagination";
 import dynamic from "next/dynamic";
@@ -180,6 +180,19 @@ const PublicationsPage = () => {
     }
   }, [data]);
 
+  const onDownloadBtnClick = () => {
+    const fileData = data.allGrantsData.map(({ agency, count }) => [ agency, count ]);
+    fileData.splice(0, 0, ['Agency', 'Count']);
+    let tsvContent = '';
+    fileData.forEach(row => tsvContent += row.join('\t') + '\n');
+    const blob = new Blob([tsvContent], { type: 'text/tsv;charset=utf-8,' });
+    const objURL = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', objURL);
+    link.setAttribute('download', 'list-grant-agencies.tsv');
+    link.click();
+  };
+
   return (
     <>
       <Search />
@@ -257,23 +270,29 @@ const PublicationsPage = () => {
                       )}
                     </div>
                   ) : (
-                    <Pagination data={data?.allGrantsData}>
-                      {pageData => (
-                        <SortableTable
-                          headers={[
-                            { width: 1, label: "Grant agency", field: "key", disabled: true },
-                            { width: 1, label: "Number of publications", field: "value", disabled: true },
-                          ]}
-                        >
-                          {pageData.map(row => (
-                            <tr key={row.agency}>
-                              <td>{row.agency}</td>
-                              <td>{row.count}</td>
-                            </tr>
-                          ))}
-                        </SortableTable>
-                      )}
-                    </Pagination>
+                    <>
+                      <a className="primary link" onClick={onDownloadBtnClick}>
+                        Download list of agencies
+                        <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
+                      </a>
+                      <Pagination data={data?.allGrantsData}>
+                        {pageData => (
+                          <SortableTable
+                            headers={[
+                              { width: 1, label: "Grant agency", field: "key", disabled: true },
+                              { width: 1, label: "Number of publications", field: "value", disabled: true },
+                            ]}
+                          >
+                            {pageData.map(row => (
+                              <tr key={row.agency}>
+                                <td>{row.agency}</td>
+                                <td>{row.count}</td>
+                              </tr>
+                            ))}
+                          </SortableTable>
+                        )}
+                      </Pagination>
+                    </>
                   ) }
                 </div>
               </Card>
