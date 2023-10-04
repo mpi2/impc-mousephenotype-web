@@ -71,6 +71,16 @@ const PublicationsList = (props: PublicationListProps) => {
     setFn(new Map(map));
   }
 
+  const getDownloadLink = (type:  'tsv' | 'xls') => {
+    let url = `${process.env.NEXT_PUBLIC_API_ROOT}/api/v1/publications/${type}/download`;
+    if (debounceQuery) {
+      url += `?searchQuery=${prefixQuery} ${debounceQuery}`;
+    } else if (prefixQuery) {
+      url += `?searchQuery=${prefixQuery}`;
+    }
+    return url;
+  }
+
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [query, setQuery] = useState('');
@@ -147,14 +157,14 @@ const PublicationsList = (props: PublicationListProps) => {
             </div>
             <div>
               Export table:&nbsp;
-              <a href="#" className="primary link">
+              <a href={getDownloadLink('tsv')} className="primary link">
                 TSV
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
               &nbsp;
               or
               &nbsp;
-              <a href="#" className="primary link">
+              <a href={getDownloadLink('xls')} className="primary link">
                 XLS
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
