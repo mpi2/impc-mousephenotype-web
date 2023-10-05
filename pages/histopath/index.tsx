@@ -12,6 +12,20 @@ import { useRouter } from "next/router";
 const clone = obj => JSON.parse(JSON.stringify(obj));
 const geneMap = new Map();
 
+const SortIndicator = ({ sortStatus, sort}: { sortStatus: boolean, sort: 'asc' | 'desc' | 'none' }) => (
+  <>
+    {sortStatus && sort === 'desc' && (
+      <FontAwesomeIcon icon={faSortDown} />
+    )}
+    {sortStatus && sort === 'asc' && (
+      <FontAwesomeIcon icon={faSortUp} />
+    )}
+    {(!sortStatus || sort === 'none') && (
+      <FontAwesomeIcon icon={faSort} />
+    )}
+  </>
+)
+
 const HistopathLandingPage = () => {
   const router = useRouter();
   const [ heatmapData, setHeatmapData ] = useState([]);
@@ -20,6 +34,8 @@ const HistopathLandingPage = () => {
   const [ activePage, setActivePage ] = useState(1);
   const [ pageSize, setPageSize ] = useState(25);
   const [ selectedHeaderIndex, setSelectedHeaderIndex ] = useState<number>(null);
+  const [ sortingByFixedTissue, setSortingByFixedTissue ] = useState(false);
+  const [ sortingByGeneSymbol, setSortingByGeneSymbol ] = useState(false);
   const [ sort, setSort ] = useState<'asc' | 'desc' | 'none'>('none');
   const [ totalPages, setTotalPages ] = useState(Math.ceil(data.rows.length / pageSize));
 
@@ -93,7 +109,7 @@ const HistopathLandingPage = () => {
     return 'No';
   };
 
-  const sortByHeader = (index: number) => {
+  const getNewSort = () => {
     let newSort: 'asc' | 'desc' | 'none';
     if (sort === 'asc') {
       newSort = 'none';
@@ -102,8 +118,13 @@ const HistopathLandingPage = () => {
     } else {
       newSort = 'desc';
     }
+    return newSort;
+  }
+  const sortByHeader = (index: number) => {
+    let newSort = getNewSort();
     if (index !== selectedHeaderIndex) {
       newSort = 'desc';
+      setActivePage(1);
     }
     const currentData = clone(heatmapData);
     const newData = newSort !== 'none' ? currentData
@@ -122,7 +143,54 @@ const HistopathLandingPage = () => {
       clone(originalData);
 
     setSort(newSort);
+    setSortingByFixedTissue(false);
+    setSortingByGeneSymbol(false);
     setSelectedHeaderIndex(index);
+    setHeatmapData(newData);
+  };
+
+  const sortByFixedTissue = () => {
+    let newSort = getNewSort();
+    if ((selectedHeaderIndex !== null || sortingByGeneSymbol) && !sortingByFixedTissue) {
+      newSort = 'desc';
+      setActivePage(1);
+    }
+    const newData = clone(originalData);
+    newData.sort((gene1, gene2) => {
+      const gene1HasTissues = data.geneTissueMap[gene1.id] !== undefined;
+      const gene2HasTissues = data.geneTissueMap[gene2.id] !== undefined;
+      if ((gene1HasTissues && gene2HasTissues) || (!gene1HasTissues && !gene2HasTissues)) {
+        return newSort === 'desc' ? gene1.id.localeCompare(gene2.id) : gene2.id.localeCompare(gene1.id);
+      } else if (gene1HasTissues && !gene2HasTissues) {
+        return newSort === 'desc' ? -1 : 1;
+      } else if(!gene1HasTissues && gene2HasTissues) {
+        return newSort === 'desc' ? 1 : -1;
+      }
+    });
+    setSort(newSort);
+    setSortingByGeneSymbol(false);
+    setSortingByFixedTissue(true);
+    setSelectedHeaderIndex(null);
+    setHeatmapData(newData);
+  };
+
+  const sortByGeneSymbol = () => {
+    let newSort = getNewSort();
+    if ((selectedHeaderIndex !== null || sortingByFixedTissue) && !sortingByGeneSymbol) {
+      newSort = 'desc';
+      setActivePage(1);
+    }
+    const newData = clone(originalData);
+    if (newSort !== 'none') {
+      newData.sort((gene1, gene2) =>
+        newSort === 'desc' ? gene1.id.localeCompare(gene2.id) : gene2.id.localeCompare(gene1.id)
+      );
+    }
+
+    setSort(newSort);
+    setSortingByGeneSymbol(true);
+    setSortingByFixedTissue(false);
+    setSelectedHeaderIndex(null);
     setHeatmapData(newData);
   }
 
@@ -150,6 +218,9 @@ const HistopathLandingPage = () => {
                   <div title="No Data" className="mr-3">
                     <i className="fa fa-circle" style={{ color: '#FFF' }}></i>&nbsp;&nbsp;No Data
                   </div>
+                  <div title="Not Applicable" style={{color: '#808080'}} className="mr-3">
+                    <i className="fa fa-circle"></i>&nbsp;&nbsp;Not Applicable
+                  </div>
                   <div title="Not Significant" style={{color: '#17a2b8'}} className="mr-3">
                     <i className="fa fa-circle"></i>&nbsp;&nbsp;<b>Not Significant</b>&nbsp;
                     (histopathology finding that is interpreted by the
@@ -167,6 +238,15 @@ const HistopathLandingPage = () => {
           </Container>
           <div className={styles.topControls}>
             <div>
+              Gene search:
+              <input
+                className="form-control"
+                type="text"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+              />
+            </div>
+            <div>
               Show
               <select
                 name="pageSize"
@@ -181,36 +261,23 @@ const HistopathLandingPage = () => {
               </select>
               entries
             </div>
-            <div>
-              Search:
-              <input
-                className="form-control"
-                type="text"
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-              />
-            </div>
           </div>
           <div className={styles.tableWrapper}>
             <table className={`table table-striped table-bordered ${styles.heatMap}`}>
               <thead>
                 <tr>
-                  <th>
+                  <th onClick={sortByGeneSymbol}>
                     <div className={styles.header}>Gene</div>
+                    <SortIndicator sortStatus={sortingByGeneSymbol} sort={sort} />
                   </th>
-                  <th>Fixed tissue available</th>
+                  <th onClick={sortByFixedTissue}>
+                    Fixed tissue available
+                    <SortIndicator sortStatus={sortingByFixedTissue} sort={sort} />
+                  </th>
                   {data.columnHeaders.map((header, index) => (
                     <th key={header} onClick={() => sortByHeader(index)}>
                       <div className={styles.header}>{header}</div>
-                      {index === selectedHeaderIndex && sort === 'desc' && (
-                        <FontAwesomeIcon icon={faSortDown} />
-                      )}
-                      {index === selectedHeaderIndex && sort === 'asc' && (
-                        <FontAwesomeIcon icon={faSortUp} />
-                      )}
-                      {(index !== selectedHeaderIndex || sort === 'none') && (
-                        <FontAwesomeIcon icon={faSort} />
-                      )}
+                      <SortIndicator sortStatus={index === selectedHeaderIndex} sort={sort} />
                     </th>
                   ))}
                 </tr>
