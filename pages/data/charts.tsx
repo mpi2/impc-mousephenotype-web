@@ -70,7 +70,6 @@ const Charts = () => {
       ),
     enabled: router.isReady,
   });
-  datasetSummaries ? console.log(datasetSummaries) : null;
 
   if (datasetSummaries) {
     datasetSummaries.sort((a, b) => {

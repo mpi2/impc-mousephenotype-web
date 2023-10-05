@@ -110,7 +110,6 @@ const Unidimensional = ({ datasetSummary }) => {
   }
 
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
-  console.log(datasetSummary);
 
   return (
     <>
