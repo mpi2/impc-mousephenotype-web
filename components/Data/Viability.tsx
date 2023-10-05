@@ -10,151 +10,15 @@ import SortableTable from "../SortableTable";
 import { formatAlleleSymbol } from "../../utils";
 import PieChart from "../PieChart";
 import styles from "./styles.module.scss";
+import { useEffect, useState } from "react";
+import { fetchAPI } from "../../api-service";
+import { useQuery } from "@tanstack/react-query";
 
 const Viability = ({ datasetSummary }) => {
+  const [datasetSeries, setDataSetSeries] = useState([]);
   const router = useRouter();
-  const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
-  const datasetViaOne = {
-    datasetId: "1946b8fe32ac796315a5b0680985eaaa",
-    series: [
-      {
-        parameterStableId: "IMPC_VIA_005_001",
-        parameterName: "Total pups heterozygous",
-        dataPoint: 22.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_009_001",
-        parameterName: "Total male homozygous",
-        dataPoint: 0.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_008_001",
-        parameterName: "Total male heterozygous",
-        dataPoint: 10.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_006_001",
-        parameterName: "Total pups homozygous",
-        dataPoint: 0.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_010_001",
-        parameterName: "Total male pups",
-        dataPoint: 15.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_012_001",
-        parameterName: "Total female heterozygous",
-        dataPoint: 12.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_007_001",
-        parameterName: "Total male WT",
-        dataPoint: 5.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_004_001",
-        parameterName: "Total pups WT",
-        dataPoint: 6.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_011_001",
-        parameterName: "Total female WT",
-        dataPoint: 1.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_013_001",
-        parameterName: "Total female homozygous",
-        dataPoint: 0.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_014_001",
-        parameterName: "Total female pups",
-        dataPoint: 13.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_003_001",
-        parameterName: "Total pups",
-        dataPoint: 28.0,
-      },
-    ],
-  };
 
-  const datasetViaTwo = {
-    datasetId: "0ce669b4774e3391fdad46f68941d392",
-    series: [
-      {
-        parameterStableId: "IMPC_VIA_057_001",
-        parameterName: "Total pups",
-        dataPoint: 166.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_062_001",
-        parameterName: "Total females",
-        dataPoint: 77.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_051_001",
-        parameterName: "Total heterozygous males",
-        dataPoint: 51.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_056_001",
-        parameterName: "Total anzygous females",
-        dataPoint: 0.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_060_001",
-        parameterName: "Total homozygotes",
-        dataPoint: 23.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_055_001",
-        parameterName: "Total of hemizygous males",
-        dataPoint: 0.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_059_001",
-        parameterName: "Total heterozygotes",
-        dataPoint: 94.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_050_001",
-        parameterName: "Total WT females",
-        dataPoint: 20.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_052_001",
-        parameterName: "Total heterozygous females",
-        dataPoint: 43.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_054_001",
-        parameterName: "Total homozygous females",
-        dataPoint: 14.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_058_001",
-        parameterName: "Total WTs",
-        dataPoint: 49.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_049_001",
-        parameterName: "Total WT males",
-        dataPoint: 29.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_061_001",
-        parameterName: "Total males",
-        dataPoint: 89.0,
-      },
-      {
-        parameterStableId: "IMPC_VIA_053_001",
-        parameterName: "Total homozygous males",
-        dataPoint: 9.0,
-      },
-    ],
-  };
+  const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
 
   const viabilityOneParametersMap = {
     both: {
@@ -205,74 +69,86 @@ const Viability = ({ datasetSummary }) => {
       ? viabilityTwoParametersMap
       : viabilityOneParametersMap;
 
-  const datasetVia =
-    datasetSummary.procedureStableId === "IMPC_VIA_002"
-      ? datasetViaTwo
-      : datasetViaOne;
-  console.log(datasetSummary);
-  console.log(datasetVia);
-  console.log(viabilityParameterMap);
+  const { data, isLoading, error, isError } = useQuery({
+    queryKey: ["dataset", datasetSummary["datasetId"]],
+    queryFn: () =>
+      fetch(
+        `https://impc-datasets.s3.eu-west-2.amazonaws.com/latest/${datasetSummary["datasetId"]}.json`
+      ).then((res) => res.json()),
+  });
+
+  if (isLoading) return <Card>Loading...</Card>;
+
+  if (isError)
+    return (
+      <Card>
+        <Alert>
+          This phenotype call was made by our Phenotyiping Center experts,
+          currently we don't have any supporting data for this call.
+        </Alert>
+      </Card>
+    );
 
   const totalCountData = [
     {
       label: "Total WTs",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.both.wildtype
-      ).dataPoint,
+      )?.dataPoint,
     },
     {
       label: "Total Homozygotes",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.both.homozygote
-      ).dataPoint,
+      )?.dataPoint,
     },
     {
       label: "Total Heterozygotes",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.both.heterozygote
-      ).dataPoint,
+      )?.dataPoint,
     },
   ].filter((d) => d.value != 0);
 
   const maleCountData = [
     {
       label: "Total Male WT",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.male.wildtype
-      ).dataPoint,
+      )?.dataPoint,
     },
     {
       label: "Total Male Heterozygous",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.male.heterozygote
-      ).dataPoint,
+      )?.dataPoint,
     },
     {
       label: "Total Male Homozygous",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.male.homozygote
-      ).dataPoint,
+      )?.dataPoint,
     },
   ].filter((d) => d.value != 0);
 
   const femaleCountData = [
     {
       label: "Total Female WT",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.female.wildtype
-      ).dataPoint,
+      )?.dataPoint,
     },
     {
       label: "Total Female Heterozygous",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.female.heterozygote
-      ).dataPoint,
+      )?.dataPoint,
     },
     {
       label: "Total Female Homozygous",
-      value: datasetVia.series.find(
+      value: data.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.female.homozygote
-      ).dataPoint,
+      )?.dataPoint,
     },
   ].filter((d) => d.value != 0);
 
@@ -431,39 +307,39 @@ const Viability = ({ datasetSummary }) => {
                 <td>Male and female</td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.both.wildtype
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.both.heterozygote
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td>
                   {" "}
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.both.homozygote
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td></td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId == viabilityParameterMap.both.na
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
               </tr>
@@ -471,38 +347,38 @@ const Viability = ({ datasetSummary }) => {
                 <td>Male</td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.male.wildtype
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.male.heterozygote
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.male.homozygote
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td></td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId == viabilityParameterMap.male.na
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
               </tr>
@@ -510,38 +386,38 @@ const Viability = ({ datasetSummary }) => {
                 <td>Female</td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.female.wildtype
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.female.heterozygote
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.female.homozygote
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
                 <td>N/A</td>
                 <td>
                   {
-                    datasetVia.series.find(
+                    data.series.find(
                       (d) =>
                         d.parameterStableId == viabilityParameterMap.female.na
-                    ).dataPoint
+                    )?.dataPoint
                   }
                 </td>
               </tr>
