@@ -71,6 +71,16 @@ const PublicationsList = (props: PublicationListProps) => {
     setFn(new Map(map));
   }
 
+  const getDownloadLink = (type:  'tsv' | 'xls') => {
+    let url = `${process.env.NEXT_PUBLIC_API_ROOT}/api/v1/publications/${type}/download`;
+    if (debounceQuery) {
+      url += `?searchQuery=${prefixQuery} ${debounceQuery}`;
+    } else if (prefixQuery) {
+      url += `?searchQuery=${prefixQuery}`;
+    }
+    return url;
+  }
+
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [query, setQuery] = useState('');
@@ -80,17 +90,18 @@ const PublicationsList = (props: PublicationListProps) => {
     queryKey: ['publications', prefixQuery, debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
     queryFn: () => {
       let url = `/api/v1/publications?page=${page}&size=${pageSize}`;
-      if (debounceQuery) {
-        url += `&query=${prefixQuery} ${debounceQuery}`;
-      } else if (prefixQuery) {
-        url += `&query=${prefixQuery}`;
-      }
       if (!!onlyConsortiumPublications) {
-        url += `&consortiumpaper=true`;
+        url = `/api/v1/publications/by_consortium_paper?consortiumPaper=true&page=${page}&size=${pageSize}`
       }
       if(!!filterByGrantAgency) {
-        url += `&grantagency=${filterByGrantAgency}`;
+        url = `/api/v1/publications/by_agency?grantAgency=${filterByGrantAgency}&page=${page}&size=${pageSize}`
       }
+      if (debounceQuery) {
+        url += `&searchQuery=${prefixQuery} ${debounceQuery}`;
+      } else if (prefixQuery) {
+        url += `&searchQuery=${prefixQuery}`;
+      }
+
       return fetchAPI(url);
     },
     select: response => {
@@ -114,7 +125,7 @@ const PublicationsList = (props: PublicationListProps) => {
     <Container>
       <Row>
         <Col xs={6} className="mb-3">
-          <p>Showing 1 to 10 of {totalItems.toLocaleString()} entries</p>
+          <p>Showing 1 to {Math.min(pageSize, totalItems)} of {totalItems.toLocaleString()} entries</p>
         </Col>
       </Row>
       { !!isError && (
@@ -146,14 +157,14 @@ const PublicationsList = (props: PublicationListProps) => {
             </div>
             <div>
               Export table:&nbsp;
-              <a href="#" className="primary link">
+              <a href={getDownloadLink('tsv')} className="primary link">
                 TSV
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
               &nbsp;
               or
               &nbsp;
-              <a href="#" className="primary link">
+              <a href={getDownloadLink('xls')} className="primary link">
                 XLS
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>

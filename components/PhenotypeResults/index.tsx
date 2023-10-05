@@ -12,11 +12,12 @@ import { useQuery } from "@tanstack/react-query";
 
 const PhenotypeResult = ({
   phenotype: {
-    entityProperties: { mpId, phenotypeName, synonyms },
+    entityProperties: { mpId, phenotypeName, synonyms, geneCount },
   },
 }) => {
   const router = useRouter();
   const synonymsArray = synonyms.split(";");
+  const parsedGeneCount = geneCount.endsWith(';') ? geneCount.replace(';', '') : geneCount;
   return (
     <>
       <Row
@@ -33,10 +34,10 @@ const PhenotypeResult = ({
           <p className="grey small">
             <strong>Synomyms:</strong> {synonymsArray.join(", ")}
           </p>
-          {1 > 0 ? (
+          {!!parsedGeneCount && parsedGeneCount !== 'N/A' ? (
             <p className="small grey">
               <FontAwesomeIcon className="secondary" icon={faCheck} />{" "}
-              <strong>??</strong> genes associated with this phenotype
+              <strong>{parsedGeneCount}</strong> genes associated with this phenotype
             </p>
           ) : (
             <p className="grey small">
