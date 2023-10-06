@@ -111,6 +111,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: false,
     scales: {
       x: {
         display: true,
@@ -188,7 +189,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
             setHoverTooltip(newTooltipData);
           }
         },
-      }
+      },
     },
     elements: {
       point: {
@@ -264,6 +265,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
             chromosome: chr
           })),
           backgroundColor: chartColors[i],
+          parsing: false
         }))
       };
 
@@ -276,7 +278,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
   return (
     <div className={styles.chartWrapper}>
-      <Scatter ref={chartRef} options={options as any} data={data} />
+      <Scatter ref={chartRef} options={options as any} data={data as any} />
       <DataTooltip
         tooltip={clickTooltip}
         offsetX={0}
