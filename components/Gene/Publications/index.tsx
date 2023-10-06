@@ -106,18 +106,20 @@ const Publications = ({ gene }: { gene: any }) => {
                 return (
                   <tr>
                     <td>
-                      <a
-                        className="link"
-                        target="_blank"
-                        href={`https://www.doi.org/${p.doi}`}
-                      >
-                        <strong>{p.title}</strong>{" "}
-                        <FontAwesomeIcon
-                          className="grey"
-                          size="xs"
-                          icon={faExternalLinkAlt}
-                        />
-                      </a>
+                      {p.doi ? (
+                        <a
+                          className="link"
+                          target="_blank"
+                          href={`https://www.doi.org/${p.doi}`}
+                        >
+                          <strong>{p.title}</strong>&nbsp;
+                          <FontAwesomeIcon
+                            className="grey"
+                            size="xs"
+                            icon={faExternalLinkAlt}
+                          />
+                        </a>
+                      ) : <strong>{p.title}</strong>}
                     </td>
                     <td>
                       {p.journalTitle} ({getPubDate(p)})
@@ -127,7 +129,7 @@ const Publications = ({ gene }: { gene: any }) => {
                     </td>
                     <td>
                       <a
-                        href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmId}`}
+                        href={`https://pubmed.ncbi.nlm.nih.gov/${p.pmId}`}
                         target="_blank"
                         className="link"
                       >

@@ -246,7 +246,7 @@ const Summary = ({
           <strong>{gene.geneSymbol}</strong> <span className="grey">|</span>{" "}
           {gene.geneName}
         </h1>
-        <FollowBtn />
+        {/*<FollowBtn />*/}
       </div>
       <Row className={styles.gap}>
         <Col lg={6}>

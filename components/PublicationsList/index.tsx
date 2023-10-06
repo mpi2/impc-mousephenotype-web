@@ -1,5 +1,5 @@
 import { Col, Container, Form, InputGroup, Row, Table, Button, Alert } from "react-bootstrap";
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React, { useState } from "react";
@@ -37,11 +37,22 @@ const PublicationsList = (props: PublicationListProps) => {
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
   const displayPubTitle = (pub: Publication) => {
-    return <p>
-      <a className="primary link" target="_blank" href={`https://europepmc.org/article/MED/${pub.pmId}`}>
-        {pub.title}
-      </a>
-    </p>;
+    if (pub.doi) {
+      return <p>
+        <a
+          className="primary link"
+          target="_blank"
+          href={`https://doi.org/${pub.doi}`}
+          dangerouslySetInnerHTML={{ __html: pub.title }}
+        />
+        <FontAwesomeIcon
+          icon={faExternalLinkAlt}
+          className="grey"
+          size="xs"
+        />
+      </p>;
+    }
+    return <p dangerouslySetInnerHTML={{ __html: pub.title }} />;
   }
 
   const displayPubDate = (pub: Publication) => {
@@ -192,7 +203,18 @@ const PublicationsList = (props: PublicationListProps) => {
                   <p className={`abstract ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
                     {pub.abstractText}
                   </p>
-                  <p>PMID: {pub.pmId}</p>
+                  <p>
+                    PMID:&nbsp;
+                    <a className="primary link" target="_blank" href={`https://pubmed.ncbi.nlm.nih.gov/${pub.pmId}`}>
+                      {pub.pmId}
+                    </a>
+                    &nbsp;
+                    <FontAwesomeIcon
+                      icon={faExternalLinkAlt}
+                      className="grey"
+                      size="xs"
+                    />
+                  </p>
                   {!!pub.alleles && pub.alleles.length > 0 && (
                     <p className={styles.alleleList}>IMPC allele: {pub.alleles.map(allele => {
                       const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
