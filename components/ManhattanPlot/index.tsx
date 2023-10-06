@@ -33,6 +33,19 @@ type TooltipProps = {
   onClick: () => void;
 };
 
+type ChromosomeDataPoint = {
+  chrName: string;
+  markerSymbol: string;
+  mgiGeneAccessionId: string;
+  reportedPValue: number;
+  seqRegionStart: number;
+  seqRegionEnd: number;
+  // fields created by FE
+  pos?: number,
+};
+
+const clone = obj => JSON.parse(JSON.stringify(obj));
+
 const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
   const getChromosome = () => {
     if (tooltip.chromosome === '20') {
@@ -85,6 +98,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
   });
   const ticks = [];
   let originalTicks = [];
+  const validChromosomes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 'X'];
 
   const calculateTooltipXPos = (pos: number) => {
     const canvasWidth = chartRef.current.width;
@@ -210,42 +224,42 @@ const ManhattanPlot = ({ phenotypeId }) => {
     queryKey: ['phenotype', phenotypeId, 'gwas'],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/gwas`),
     enabled: router.isReady,
-    initialData: mockData,
-    select: data => {
-      const groupedByChr = {};
+    // @ts-ignore
+    initialData: mockData.results,
+    select: (data: Array<ChromosomeDataPoint>) => {
+      const groupedByChr: Record<string, Array<ChromosomeDataPoint>> = {};
       data.forEach(point => {
-        if (point.chrName && !groupedByChr[point.chrName]) {
-          groupedByChr[point.chrName] = [];
+        const chromosome = point.chrName;
+        const isAValidChromosome = validChromosomes.includes(chromosome);
+        if (chromosome&& !groupedByChr[chromosome] && isAValidChromosome) {
+          groupedByChr[chromosome] = [];
         }
-        if (point.chrName)
-          groupedByChr[point.chrName].push({
-            ...point,
-            seqRegionStart: parseInt(point.seqRegionStart, 10),
-          });
+        if (chromosome && isAValidChromosome)
+          groupedByChr[chromosome].push(point);
       });
       let basePoint = 0;
       Object.keys(groupedByChr).forEach(chr => {
         groupedByChr[chr].forEach(value => value.pos = value.seqRegionStart + basePoint);
         groupedByChr[chr].sort((g1, g2) => {
-          const { seqRegionStart: seqRegionStart1 } = g1;
-          const { seqRegionStart: seqRegionStart2 } = g2;
-          return seqRegionStart1 - seqRegionStart2;
+          const { seqRegionStart: seqRS1 } = g1;
+          const { seqRegionStart: seqRS2 } = g2;
+          return seqRS1 - seqRS2;
         });
         const maxPoint = groupedByChr[chr].slice(-1)[0];
         const minPoint = groupedByChr[chr][0];
         basePoint = maxPoint.pos;
         ticks.push({ value: ((maxPoint.pos + minPoint.pos) / 2) + 1, label: chr });
       });
-      originalTicks = JSON.parse(JSON.stringify(ticks));
+      originalTicks = clone(ticks);
       options.scales.x.max = basePoint;
       return {
         datasets: Object.keys(groupedByChr).map((chr, i) =>  ({
           label: chr,
-          data: groupedByChr[chr].map(({ pos, pValue, geneSymbol, mgiGeneAccessionId }) => ({
+          data: groupedByChr[chr].map(({ pos, reportedPValue, markerSymbol, mgiGeneAccessionId }) => ({
             x: pos,
-            y: transformPValue(pValue),
-            geneSymbol,
-            pValue,
+            y: transformPValue(reportedPValue),
+            geneSymbol: markerSymbol,
+            pValue: reportedPValue,
             mgiGeneAccessionId,
             chromosome: chr
           })),
