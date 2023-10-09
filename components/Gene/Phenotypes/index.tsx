@@ -26,29 +26,17 @@ const Phenotypes = ({ gene }: { gene: any }) => {
     enabled: router.isReady
   });
 
-  if (isPhenotypeLoading || isGeneLoading) {
-    return (
-      <Card id="data">
-        <h2>Phenotypes</h2>
-        <p className="grey">Loading...</p>
-      </Card>
-    );
-  }
-
+  console.log({ isGeneLoading, isGeneError });
   return (
     <Card id="data">
       <h2>Phenotypes</h2>
-      <Tabs defaultActiveKey="measurementsChart">
-        <Tab eventKey="measurementsChart" title="Statistical Analysis">
-          {!!isGeneError ? (
-            <Alert variant="yellow" className="mt-3">
-              No phenotypes data available for {gene.geneSymbol}.
-            </Alert>
-          ) : (
-            <StatisticalAnalysis data={geneData} />
-          )}
-        </Tab>
+      <Tabs defaultActiveKey="significantPhenotypes">
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
+          {isPhenotypeLoading && (
+            <Alert variant="light" className="mt-3">
+              Loading data...
+            </Alert>
+          )}
           {!!isPhenotypeError ? (
             <Alert variant="yellow" className="mt-3">
               No significant phenotypes for {gene.geneSymbol}.
@@ -82,6 +70,11 @@ const Phenotypes = ({ gene }: { gene: any }) => {
           )}
         </Tab>
         <Tab eventKey="allData" title="All data">
+          {isGeneLoading && (
+            <Alert variant="light" className="mt-3">
+              Loading data...
+            </Alert>
+          )}
           {!!isGeneError ? (
             <Alert variant="yellow" className="mt-3">
               No phenotypes data available for {gene.geneSymbol}.
@@ -111,6 +104,20 @@ const Phenotypes = ({ gene }: { gene: any }) => {
                 </Button>
               </p>
             </>
+          )}
+        </Tab>
+        <Tab eventKey="measurementsChart" title="Graphical Analysis">
+          {isGeneLoading && (
+            <Alert variant="light" className="mt-3">
+              Loading data...
+            </Alert>
+          )}
+          {isGeneError ? (
+            <Alert variant="yellow" className="mt-3">
+              No phenotypes data available for {gene.geneSymbol}.
+            </Alert>
+          ) : (
+            <StatisticalAnalysis data={geneData} />
           )}
         </Tab>
       </Tabs>
