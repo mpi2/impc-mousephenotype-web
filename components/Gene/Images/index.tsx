@@ -53,7 +53,7 @@ const Images = () => {
   if (isLoading) {
     return (
       <Card id="images">
-        <h2>Associated Images</h2>
+        <h2>Associated images</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -62,7 +62,7 @@ const Images = () => {
   if (isError) {
     return (
       <Card id="images">
-        <h2>Associated Images</h2>
+        <h2>Associated images</h2>
         <Alert variant="yellow">No data available for this section.</Alert>
       </Card>
     );
@@ -71,7 +71,7 @@ const Images = () => {
   const groups = Object.entries(_.groupBy(data, "parameterName"));
   return (
     <Card id="images">
-      <h2>Associated Images</h2>
+      <h2>Associated images</h2>
       {data ? (
         <div>
           <Row>

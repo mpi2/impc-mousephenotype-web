@@ -80,7 +80,7 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
           </>
         ) : (
           <h1>
-            <strong>Top 10 most searched phenotypes</strong>
+            <strong>Phenotype search results</strong>
           </h1>
         )}
         {isLoading ? (
