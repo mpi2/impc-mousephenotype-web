@@ -26,7 +26,6 @@ const Phenotypes = ({ gene }: { gene: any }) => {
     enabled: router.isReady
   });
 
-  console.log({ isGeneLoading, isGeneError });
   return (
     <Card id="data">
       <h2>Phenotypes</h2>
