@@ -38,11 +38,13 @@ const Histopathology = ({ gene }: { gene: any }) => {
     );
   }
 
-  if (isError) {
+  if (isError || !sorted) {
     return (
       <Card id="histopathology">
         <h2>Histopathology</h2>
-        <Alert variant="yellow">No data available for this section.</Alert>
+        <Alert variant="primary">
+          There is no histopathology data found for {gene.geneSymbol}.
+        </Alert>
       </Card>
     );
   }
@@ -50,13 +52,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
   return (
     <Card id="histopathology">
       <h2>Histopathology</h2>
-      <p>
-        Summary table of phenotypes displayed during the Histopathology
-        procedure which are considered significant. Full histopathology data
-        table, including submitted images, can be accessed by clicking any row
-        in this table.
-      </p>
-      {sorted ? (
+      {sorted ?? (
         <Pagination data={sorted}>
           {(pageData) => (
             <SortableTable
@@ -108,10 +104,6 @@ const Histopathology = ({ gene }: { gene: any }) => {
             </SortableTable>
           )}
         </Pagination>
-      ) : (
-        <Alert variant="primary">
-          There is no histopathology data found for {gene.geneSymbol}.
-        </Alert>
       )}
     </Card>
   );

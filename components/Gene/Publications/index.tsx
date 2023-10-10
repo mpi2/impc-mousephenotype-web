@@ -65,11 +65,13 @@ const Publications = ({ gene }: { gene: any }) => {
     );
   }
 
-  if (isError) {
+  if (isError || !sorted) {
     return (
       <Card id="publications">
         <h2>IMPC related publications</h2>
-        <Alert variant="yellow">No data available for this section</Alert>
+        <Alert variant="primary">
+          No publications found that use IMPC mice or data for the {gene.geneSymbol} gene.
+        </Alert>
       </Card>
     );
   }
@@ -149,8 +151,7 @@ const Publications = ({ gene }: { gene: any }) => {
         </Pagination>
       ) : (
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for the{" "}
-          {gene.geneSymbol} gene.
+          No publications found that use IMPC mice or data for the {gene.geneSymbol} gene.
         </Alert>
       )}
     </Card>
