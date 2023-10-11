@@ -80,77 +80,75 @@ const Expressions = ({ gene } : { gene: any }) => {
           title={`Embryo expressions (${embryoData.length})`}
         ></Tab>
       </Tabs>
-      {(selectedData && selectedData.length)?? (
-        <Pagination data={selectedData}>
-          {(pageData) => (
-            <SortableTable
-              doSort={(sort) => {
-                setSorted(_.orderBy(data, sort[0], sort[1]));
-              }}
-              defaultSort={["parameterName", "asc"]}
-              headers={[
-                { width: 3, label: "Anatomy", field: "parameterName" },
-                {
-                  width: 3,
-                  label: "Images",
-                  field: "expressionImageParameters",
-                },
-                { width: 2, label: "Zygosity", field: "zygosity" },
-                { width: 1, label: "Mutant Expr", field: "expressionRate" },
-                {
-                  width: 3,
-                  label: "Background staining in controls (WT)",
-                  field: "expressionRate",
-                },
-              ]}
-            >
-              {pageData.map((d) => (
-                <tr>
-                  <td>
-                    <Link
-                      href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
-                      legacyBehavior>
-                      <strong className="link">{d.parameterName}</strong>
-                    </Link>
-                  </td>
-                  <td>
-                    {!!d.expressionImageParameters
-                      ? d.expressionImageParameters.map((p) => (
-                        <a
-                          className="primary small"
-                          href={`https://www.mousephenotype.org/data/imageComparator?acc=${router.query.pid}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
-                        >
-                          <FontAwesomeIcon icon={faImage} />{" "}
-                          {p.parameter_name}
-                        </a>
-                      ))
-                      : "n/a"}
-                  </td>
-                  <td>{d.zygosity}</td>
-                  <td>
-                    {d.expressionRate >= 0
-                      ? `${d.expressionRate}% (${d.mutantCounts.expression}/${
-                        d.mutantCounts.expression +
-                        d.mutantCounts.noExpression
-                      })`
-                      : "n/a"}
-                  </td>
-                  <td>
-                    {d.wtExpressionRate >= 0
-                      ? `${d.wtExpressionRate}% (${
-                        d.controlCounts.expression
-                      }/${
-                        d.controlCounts.expression +
-                        d.controlCounts.noExpression
-                      })`
-                      : "n/a"}
-                  </td>
-                </tr>
-              ))}
-            </SortableTable>
-          )}
-        </Pagination>
-      )}
+      <Pagination data={selectedData}>
+        {(pageData) => (
+          <SortableTable
+            doSort={(sort) => {
+              setSorted(_.orderBy(data, sort[0], sort[1]));
+            }}
+            defaultSort={["parameterName", "asc"]}
+            headers={[
+              { width: 3, label: "Anatomy", field: "parameterName" },
+              {
+                width: 3,
+                label: "Images",
+                field: "expressionImageParameters",
+              },
+              { width: 2, label: "Zygosity", field: "zygosity" },
+              { width: 1, label: "Mutant Expr", field: "expressionRate" },
+              {
+                width: 3,
+                label: "Background staining in controls (WT)",
+                field: "expressionRate",
+              },
+            ]}
+          >
+            {pageData.map((d) => (
+              <tr>
+                <td>
+                  <Link
+                    href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
+                    legacyBehavior>
+                    <strong className="link">{d.parameterName}</strong>
+                  </Link>
+                </td>
+                <td>
+                  {!!d.expressionImageParameters
+                    ? d.expressionImageParameters.map((p) => (
+                      <a
+                        className="primary small"
+                        href={`https://www.mousephenotype.org/data/imageComparator?acc=${router.query.pid}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
+                      >
+                        <FontAwesomeIcon icon={faImage} />{" "}
+                        {p.parameter_name}
+                      </a>
+                    ))
+                    : "n/a"}
+                </td>
+                <td>{d.zygosity}</td>
+                <td>
+                  {d.expressionRate >= 0
+                    ? `${d.expressionRate}% (${d.mutantCounts.expression}/${
+                      d.mutantCounts.expression +
+                      d.mutantCounts.noExpression
+                    })`
+                    : "n/a"}
+                </td>
+                <td>
+                  {d.wtExpressionRate >= 0
+                    ? `${d.wtExpressionRate}% (${
+                      d.controlCounts.expression
+                    }/${
+                      d.controlCounts.expression +
+                      d.controlCounts.noExpression
+                    })`
+                    : "n/a"}
+                </td>
+              </tr>
+            ))}
+          </SortableTable>
+        )}
+      </Pagination>
     </Card>
   );
 };
