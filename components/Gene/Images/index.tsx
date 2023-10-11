@@ -74,22 +74,20 @@ const Images = ({ gene }: { gene: any }) => {
   return (
     <Card id="images">
       <h2>Associated images</h2>
-      {!!data ?? (
-        <div>
-          <Row>
-            {groups.map(([key, group]) => (
-              <Col md={4} lg={3} key={key + group[0].precedureName}>
-                <Image
-                  parameterName={key}
-                  procedureName={group[0].procedureName}
-                  image={group[0].thumbnailUrl}
-                  length={group.length}
-                />
-              </Col>
-            ))}
-          </Row>
-        </div>
-      )}
+      <div>
+        <Row>
+          {groups.map(([key, group]) => (
+            <Col md={4} lg={3} key={key + group[0].precedureName}>
+              <Image
+                parameterName={key}
+                procedureName={group[0].procedureName}
+                image={group[0].thumbnailUrl}
+                length={group.length}
+              />
+            </Col>
+          ))}
+        </Row>
+      </div>
     </Card>
   );
 };
