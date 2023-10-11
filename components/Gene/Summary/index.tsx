@@ -48,6 +48,8 @@ import { BodySystem } from "../../BodySystemIcon";
 import { useRouter } from "next/router";
 import Check from "../../Check";
 import Head from "next/head";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "../../../api-service";
 
 const CollectionItem = ({
   name,
@@ -117,6 +119,17 @@ const Summary = ({
   error: string;
 }) => {
   const router = useRouter();
+  const { data: averages, isLoading } = useQuery({
+    queryKey: ['gene', 'summary-averages'],
+    queryFn: () => fetchAPI('/api/v1/genes/all/summary-averages'),
+    enabled: router.isReady,
+    select: data => ({
+      significantPhenotypesAverage: Math.floor(data.significantPhenotypesAverage),
+      associatedDiseasesAverage: Math.floor(data.associatedDiseasesAverage),
+      adultExpressionObservationsAverage: Math.floor(data.adultExpressionObservationsAverage),
+      embryoExpressionObservationsAverage: Math.floor(data.embryoExpressionObservationsAverage),
+    })
+  });
 
   const SYNONYMS_COUNT = 2;
 
@@ -326,27 +339,33 @@ const Summary = ({
           <h3>Gene metrics compared to IMPC average</h3>
           <Row>
             <Col md={6}>
-              <Metric value={gene.significantPhenotypesCount ?? 0} average={8}>
+              <Metric
+                value={gene.significantPhenotypesCount || 0}
+                average={averages.significantPhenotypesAverage  || 0}
+              >
                 Significant phenotypes
               </Metric>
             </Col>
             <Col md={6}>
               <Metric
-                value={gene.adultExpressionObservationsCount ?? 0}
-                average={57}
+                value={gene.adultExpressionObservationsCount || 0}
+                average={averages.adultExpressionObservationsAverage || 0}
               >
                 Adult expressions
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric value={gene.associatedDiseasesCount ?? 0} average={3}>
+              <Metric
+                value={gene.associatedDiseasesCount || 0}
+                average={averages.associatedDiseasesAverage || 0}
+              >
                 Associated disease
               </Metric>
             </Col>
             <Col md={6}>
               <Metric
-                value={gene.embryoExpressionObservationsCount ?? 0}
-                average={42}
+                value={gene.embryoExpressionObservationsCount || 0}
+                average={averages.embryoExpressionObservationsAverage || 0}
               >
                 Embryo expressions
               </Metric>

@@ -144,7 +144,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
     return (
       <Card id="human-diseases">
         <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
-        <Alert variant="yellow">No data available for this section</Alert>
+        <Alert variant="primary">No data available for this section</Alert>
       </Card>
     );
   }
@@ -184,7 +184,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
           ></Tab>
         </Tabs>
         {!selectedData || !selectedData.length ? (
-          <Alert className={styles.table} variant="yellow">
+          <Alert className={styles.table} variant="primary">
             No data available for this section.
           </Alert>
         ) : (

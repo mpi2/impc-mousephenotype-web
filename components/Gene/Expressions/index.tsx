@@ -18,7 +18,7 @@ const getExpressionRate = (p) => {
     : -1;
 };
 
-const Expressions = () => {
+const Expressions = ({ gene } : { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const [tab, setTab] = useState("adultExpressions");
@@ -59,7 +59,9 @@ const Expressions = () => {
     return (
       <Card id="expressions">
         <h2>lacZ Expression</h2>
-        <Alert variant="yellow">No data available for this section.</Alert>
+        <Alert variant="primary">
+          No expression data available for {gene.geneSymbol}.
+        </Alert>
       </Card>
     );
   }
@@ -78,11 +80,7 @@ const Expressions = () => {
           title={`Embryo expressions (${embryoData.length})`}
         ></Tab>
       </Tabs>
-      {!selectedData || !selectedData.length ? (
-        <Alert variant="primary" style={{ marginTop: "1em" }}>
-          Expression data not available
-        </Alert>
-      ) : (
+      {(selectedData && selectedData.length)?? (
         <Pagination data={selectedData}>
           {(pageData) => (
             <SortableTable
@@ -118,33 +116,33 @@ const Expressions = () => {
                   <td>
                     {!!d.expressionImageParameters
                       ? d.expressionImageParameters.map((p) => (
-                          <a
-                            className="primary small"
-                            href={`https://www.mousephenotype.org/data/imageComparator?acc=${router.query.pid}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
-                          >
-                            <FontAwesomeIcon icon={faImage} />{" "}
-                            {p.parameter_name}
-                          </a>
-                        ))
+                        <a
+                          className="primary small"
+                          href={`https://www.mousephenotype.org/data/imageComparator?acc=${router.query.pid}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
+                        >
+                          <FontAwesomeIcon icon={faImage} />{" "}
+                          {p.parameter_name}
+                        </a>
+                      ))
                       : "n/a"}
                   </td>
                   <td>{d.zygosity}</td>
                   <td>
                     {d.expressionRate >= 0
                       ? `${d.expressionRate}% (${d.mutantCounts.expression}/${
-                          d.mutantCounts.expression +
-                          d.mutantCounts.noExpression
-                        })`
+                        d.mutantCounts.expression +
+                        d.mutantCounts.noExpression
+                      })`
                       : "n/a"}
                   </td>
                   <td>
                     {d.wtExpressionRate >= 0
                       ? `${d.wtExpressionRate}% (${
-                          d.controlCounts.expression
-                        }/${
-                          d.controlCounts.expression +
-                          d.controlCounts.noExpression
-                        })`
+                        d.controlCounts.expression
+                      }/${
+                        d.controlCounts.expression +
+                        d.controlCounts.noExpression
+                      })`
                       : "n/a"}
                   </td>
                 </tr>

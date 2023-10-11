@@ -42,7 +42,7 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
   );
 };
 
-const Images = () => {
+const Images = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const { isLoading, isError, data } = useQuery({
     queryKey: ['genes', router.query.pid, 'images'],
@@ -53,17 +53,19 @@ const Images = () => {
   if (isLoading) {
     return (
       <Card id="images">
-        <h2>Associated Images</h2>
+        <h2>Associated images</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
   }
 
-  if (isError) {
+  if (isError || !data) {
     return (
       <Card id="images">
-        <h2>Associated Images</h2>
-        <Alert variant="yellow">No data available for this section.</Alert>
+        <h2>Associated images</h2>
+        <Alert variant="primary">
+          There are no images available for {gene.geneSymbol}.
+        </Alert>
       </Card>
     );
   }
@@ -71,8 +73,8 @@ const Images = () => {
   const groups = Object.entries(_.groupBy(data, "parameterName"));
   return (
     <Card id="images">
-      <h2>Associated Images</h2>
-      {data ? (
+      <h2>Associated images</h2>
+      {data ?? (
         <div>
           <Row>
             {groups.map(([key, group]) => (
@@ -87,8 +89,6 @@ const Images = () => {
             ))}
           </Row>
         </div>
-      ) : (
-        <Alert variant="primary">Images not available</Alert>
       )}
     </Card>
   );

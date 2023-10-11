@@ -165,7 +165,7 @@ const GeneResults = ({ query }: { query?: string }) => {
             </>
           ) : (
             <h1>
-              <strong>Most searched genes</strong>
+              <strong>Gene search results</strong>
             </h1>
           )}
           {isLoading ? (
