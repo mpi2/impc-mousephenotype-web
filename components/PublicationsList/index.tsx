@@ -83,11 +83,14 @@ const PublicationsList = (props: PublicationListProps) => {
   }
 
   const getDownloadLink = (type:  'tsv' | 'xls') => {
-    let url = `${API_URL}/api/v1/publications/${type}/download`;
+    let url = `${API_URL}/api/v1/publications/download?contentType=${type}`;
     if (debounceQuery) {
-      url += `?searchQuery=${prefixQuery} ${debounceQuery}`;
+      url += `&searchQuery=${prefixQuery} ${debounceQuery}`;
     } else if (prefixQuery) {
-      url += `?searchQuery=${prefixQuery}`;
+      url += `&searchQuery=${prefixQuery}`;
+    }
+    if (onlyConsortiumPublications) {
+      url += `&consortiumPaper=true`;
     }
     return url;
   }
