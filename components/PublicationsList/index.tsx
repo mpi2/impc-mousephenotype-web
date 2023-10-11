@@ -7,7 +7,7 @@ import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
 import styles from './styles.module.scss';
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
+import { fetchAPI, API_URL } from "../../api-service";
 import Pagination from "../Pagination";
 import { formatAlleleSymbol } from "../../utils";
 import { useDebounce } from "usehooks-ts";
@@ -83,7 +83,7 @@ const PublicationsList = (props: PublicationListProps) => {
   }
 
   const getDownloadLink = (type:  'tsv' | 'xls') => {
-    let url = `${process.env.NEXT_PUBLIC_API_ROOT}/api/v1/publications/${type}/download`;
+    let url = `${API_URL}/api/v1/publications/${type}/download`;
     if (debounceQuery) {
       url += `?searchQuery=${prefixQuery} ${debounceQuery}`;
     } else if (prefixQuery) {

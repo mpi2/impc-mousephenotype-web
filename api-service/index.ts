@@ -1,5 +1,5 @@
 
-const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
+export const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
 const MOCKING_ENABLED = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
 
 export async function fetchAPI(query: string) {
