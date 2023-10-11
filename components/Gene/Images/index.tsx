@@ -74,7 +74,7 @@ const Images = ({ gene }: { gene: any }) => {
   return (
     <Card id="images">
       <h2>Associated images</h2>
-      {data ?? (
+      {!!data ?? (
         <div>
           <Row>
             {groups.map(([key, group]) => (
