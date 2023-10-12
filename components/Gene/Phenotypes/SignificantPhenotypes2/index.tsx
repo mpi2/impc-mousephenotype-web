@@ -49,16 +49,6 @@ const SignificantPhenotypes = ({ data }) => {
       id: d.phenotype.id,
     })) || [];
 
-  const [sorted, setSorted] = useState<any[]>(null);
-
-  useEffect(() => {
-    setSorted(_.orderBy(processed, "phenotype", "asc"));
-  }, [data]);
-
-  if (!sorted) {
-    return <p>Loading...</p>;
-  }
-
   const getIcon = (sex) => {
     switch (sex) {
       case "male":
@@ -80,6 +70,17 @@ const SignificantPhenotypes = ({ data }) => {
         return "Combined";
     }
   };
+
+  const [sorted, setSorted] = useState<any[]>(null);
+
+  useEffect(() => {
+    setSorted(_.orderBy(processed, "phenotype", "asc"));
+  }, [data]);
+
+
+  if (!sorted) {
+    return null;
+  }
 
   return (
     <Pagination data={sorted}>

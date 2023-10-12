@@ -42,11 +42,7 @@ const AllData = ({ data }: { data: any }) => {
   const getLabel = (name) => _.capitalize(name.replace(/ phenotype/g, ""));
 
   if (!data) {
-    return (
-      <Alert style={{ marginTop: "1em" }} variant="primary">
-        All data not available
-      </Alert>
-    );
+    return null;
   }
 
   return (
