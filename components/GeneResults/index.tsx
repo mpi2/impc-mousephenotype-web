@@ -150,23 +150,20 @@ const GeneResults = ({ query }: { query?: string }) => {
             marginTop: -80,
           }}
         >
-          {query ? (
-            <>
-              <p className="grey">
-                <small>
-                  Found {data?.length || 0} entries{" "}
-                  {!!query && (
-                    <>
-                      matching <strong>"{query}"</strong>
-                    </>
-                  )}
-                </small>
-              </p>
-            </>
-          ) : (
-            <h1>
-              <strong>Gene search results</strong>
-            </h1>
+          <h1>
+            <strong>Gene search results</strong>
+          </h1>
+          {!!query && (
+            <p className="grey mb-0">
+              <small>
+                Found {data?.length || 0} entries{" "}
+                {!!query && (
+                  <>
+                    matching <strong>"{query}"</strong>
+                  </>
+                )}
+              </small>
+            </p>
           )}
           {isLoading ? (
             <p className="grey mt-3 mb-3">Loading...</p>
