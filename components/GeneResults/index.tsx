@@ -48,12 +48,12 @@ const GeneResult = ({
             router.push(`/genes/${mgiGeneAccessionId}`);
           }}
         >
-          <h4 className="mb-2 text-capitalize">
+          <h4 className="mb-2">
             <span className="blue-dark">{geneSymbol}</span>{" "}
             <span className="grey">|</span> {geneName}
           </h4>
           {!!synonymsArray && synonymsArray.length && (
-            <p className="grey text-capitalize small">
+            <p className="grey small">
               <strong>Synonyms:</strong>{" "}
               {(synonymsArray || []).slice(0, 10).join(", ") || "None"}
             </p>

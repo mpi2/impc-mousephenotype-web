@@ -27,10 +27,7 @@ const PhenotypeResult = ({
         }}
       >
         <Col sm={12}>
-          <h4 className="mb-2 text-capitalize blue-dark">{phenotypeName}</h4>
-          {/* <p className="grey mb-0 small">
-            <strong>Definition:</strong> ???
-          </p> */}
+          <h4 className="mb-2 blue-dark">{phenotypeName}</h4>
           <p className="grey small">
             <strong>Synomyms:</strong> {synonymsArray.join(", ")}
           </p>
