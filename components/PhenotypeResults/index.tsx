@@ -27,10 +27,7 @@ const PhenotypeResult = ({
         }}
       >
         <Col sm={12}>
-          <h4 className="mb-2 text-capitalize blue-dark">{phenotypeName}</h4>
-          {/* <p className="grey mb-0 small">
-            <strong>Definition:</strong> ???
-          </p> */}
+          <h4 className="mb-2 blue-dark">{phenotypeName}</h4>
           <p className="grey small">
             <strong>Synomyms:</strong> {synonymsArray.join(", ")}
           </p>
@@ -65,23 +62,20 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
           marginTop: -80,
         }}
       >
-        {query ? (
-          <>
-            <p className="grey">
-              <small>
-                Found {data?.length || 0} entries{" "}
-                {!!query && (
-                  <>
-                    matching <strong>"{query}"</strong>
-                  </>
-                )}
-              </small>
-            </p>
-          </>
-        ) : (
-          <h1>
-            <strong>Phenotype search results</strong>
-          </h1>
+        <h1>
+          <strong>Phenotype search results</strong>
+        </h1>
+        {!!query && (
+          <p className="grey">
+            <small>
+              Found {data?.length || 0} entries{" "}
+              {!!query && (
+                <>
+                  matching <strong>"{query}"</strong>
+                </>
+              )}
+            </small>
+          </p>
         )}
         {isLoading ? (
           <p className="grey mt-3 mb-3">Loading...</p>

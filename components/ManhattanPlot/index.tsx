@@ -278,6 +278,10 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
   return (
     <div className={styles.chartWrapper}>
+      <div className={styles.labelsWrapper}>
+        <i className="fa fa-circle" style={{ color: '#00FFFF' }}></i>&nbsp;&nbsp;Not significant
+        <i className="fa fa-circle" style={{ color: '#FFA500', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
+      </div>
       <Scatter ref={chartRef} options={options as any} data={data as any} />
       <DataTooltip
         tooltip={clickTooltip}

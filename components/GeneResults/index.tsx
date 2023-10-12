@@ -48,12 +48,12 @@ const GeneResult = ({
             router.push(`/genes/${mgiGeneAccessionId}`);
           }}
         >
-          <h4 className="mb-2 text-capitalize">
+          <h4 className="mb-2">
             <span className="blue-dark">{geneSymbol}</span>{" "}
             <span className="grey">|</span> {geneName}
           </h4>
           {!!synonymsArray && synonymsArray.length && (
-            <p className="grey text-capitalize small">
+            <p className="grey small">
               <strong>Synonyms:</strong>{" "}
               {(synonymsArray || []).slice(0, 10).join(", ") || "None"}
             </p>
@@ -150,23 +150,20 @@ const GeneResults = ({ query }: { query?: string }) => {
             marginTop: -80,
           }}
         >
-          {query ? (
-            <>
-              <p className="grey">
-                <small>
-                  Found {data?.length || 0} entries{" "}
-                  {!!query && (
-                    <>
-                      matching <strong>"{query}"</strong>
-                    </>
-                  )}
-                </small>
-              </p>
-            </>
-          ) : (
-            <h1>
-              <strong>Gene search results</strong>
-            </h1>
+          <h1>
+            <strong>Gene search results</strong>
+          </h1>
+          {!!query && (
+            <p className="grey mb-0">
+              <small>
+                Found {data?.length || 0} entries{" "}
+                {!!query && (
+                  <>
+                    matching <strong>"{query}"</strong>
+                  </>
+                )}
+              </small>
+            </p>
           )}
           {isLoading ? (
             <p className="grey mt-3 mb-3">Loading...</p>

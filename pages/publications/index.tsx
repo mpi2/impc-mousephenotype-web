@@ -253,6 +253,10 @@ const PublicationsPage = () => {
                       <FontAwesomeIcon icon={faTable} />
                       Table view
                     </button>
+                    <a className="primary link" onClick={onDownloadBtnClick} style={{ marginLeft: "auto" }}>
+                      Download list of agencies&nbsp;
+                      <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
+                    </a>
                   </div>
                   <h2>{
                     grantAgencyView === 'chart' ?
@@ -270,29 +274,23 @@ const PublicationsPage = () => {
                       )}
                     </div>
                   ) : (
-                    <>
-                      <a className="primary link" onClick={onDownloadBtnClick}>
-                        Download list of agencies
-                        <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
-                      </a>
-                      <Pagination data={data?.allGrantsData}>
-                        {pageData => (
-                          <SortableTable
-                            headers={[
-                              { width: 1, label: "Grant agency", field: "key", disabled: true },
-                              { width: 1, label: "Number of publications", field: "value", disabled: true },
-                            ]}
-                          >
-                            {pageData.map(row => (
-                              <tr key={row.agency}>
-                                <td>{row.agency}</td>
-                                <td>{row.count}</td>
-                              </tr>
-                            ))}
-                          </SortableTable>
-                        )}
-                      </Pagination>
-                    </>
+                    <Pagination data={data?.allGrantsData}>
+                      {pageData => (
+                        <SortableTable
+                          headers={[
+                            { width: 1, label: "Grant agency", field: "key", disabled: true },
+                            { width: 1, label: "Number of publications", field: "value", disabled: true },
+                          ]}
+                        >
+                          {pageData.map(row => (
+                            <tr key={row.agency}>
+                              <td>{row.agency}</td>
+                              <td>{row.count}</td>
+                            </tr>
+                          ))}
+                        </SortableTable>
+                      )}
+                    </Pagination>
                   ) }
                 </div>
               </Card>
