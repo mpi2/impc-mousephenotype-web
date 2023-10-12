@@ -11,6 +11,7 @@ import { fetchAPI, API_URL } from "../../api-service";
 import Pagination from "../Pagination";
 import { formatAlleleSymbol } from "../../utils";
 import { useDebounce } from "usehooks-ts";
+import _ from "lodash";
 
 
 const PublicationLoader = () => (
@@ -36,6 +37,7 @@ const PublicationsList = (props: PublicationListProps) => {
   } = props
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
+  const [allelesVisibilityMap, setAllelesVisibilityMap] = useState(new Map());
   const displayPubTitle = (pub: Publication) => {
     if (pub.doi) {
       return <p>
@@ -61,19 +63,31 @@ const PublicationsList = (props: PublicationListProps) => {
 
   const getGrantsList = (pub: Publication) => {
     if (pub.grantsList && pub.grantsList.length > 0) {
-      return <p>Grant agency: {pub.grantsList.map(grant => grant.agency).join(' ')}</p>
+      return <p>Grant agency: {_.uniq(pub.grantsList.map(grant => grant.agency)).join(', ')}</p>
     }
     return null;
   }
 
-  const isFieldVisible = (pub: Publication, type: 'abstract' | 'mesh-terms') => {
-    const map = type === 'abstract' ? abstractVisibilityMap : meshTermsVisibilityMap;
+  const getListOfAlleles = (pub: Publication) => {
+    return isFieldVisible(pub, 'alleles') ? pub.alleles : pub.alleles.slice(0, 8);
+  }
+  const getMapByType = (type: 'abstract' | 'mesh-terms' | 'alleles') => {
+    switch (type) {
+      case "abstract":
+        return { map: abstractVisibilityMap, setFn: setAbstractVisibilityMap };
+      case "alleles":
+        return { map: allelesVisibilityMap, setFn: setAllelesVisibilityMap };
+      case "mesh-terms":
+        return { map: meshTermsVisibilityMap, setFn: setMeshVisibilityMap };
+    }
+  }
+  const isFieldVisible = (pub: Publication, type: 'abstract' | 'mesh-terms' | 'alleles') => {
+    const { map} = getMapByType(type);
     return !(!map.has(pub.pmId) || map.get(pub.pmId) === 'not-visible');
 
   }
-  const toggleAbstractClass = (pub: Publication, type: 'abstract' | 'mesh-terms') => {
-    const map = type === 'abstract' ? abstractVisibilityMap : meshTermsVisibilityMap;
-    const setFn = type === 'abstract' ? setAbstractVisibilityMap : setMeshVisibilityMap;
+  const toggleVisibility = (pub: Publication, type: 'abstract' | 'mesh-terms' | 'alleles') => {
+    const {map, setFn} = getMapByType(type);
     if (!map.has(pub.pmId) || map.get(pub.pmId) === 'not-visible') {
       map.set(pub.pmId, 'visible');
     } else {
@@ -81,7 +95,6 @@ const PublicationsList = (props: PublicationListProps) => {
     }
     setFn(new Map(map));
   }
-
   const getDownloadLink = (type:  'tsv' | 'xls') => {
     let url = `${API_URL}/api/v1/publications/download?contentType=${type}`;
     if (debounceQuery) {
@@ -138,7 +151,7 @@ const PublicationsList = (props: PublicationListProps) => {
   return (
     <Container>
       <Row>
-        <Col xs={6} className="mb-3">
+        <Col xs={6}>
           <p>Showing 1 to {Math.min(pageSize, totalItems)} of {totalItems.toLocaleString()} entries</p>
         </Col>
       </Row>
@@ -199,7 +212,7 @@ const PublicationsList = (props: PublicationListProps) => {
                     className="mt-1 mb-1"
                     variant="outline-dark"
                     size="sm"
-                    onClick={e => toggleAbstractClass(pub, 'abstract')}
+                    onClick={e => toggleVisibility(pub, 'abstract')}
                   >
                     <strong>{isFieldVisible(pub, 'abstract') ? 'Hide' : 'Show'} abstract</strong>
                   </Button>
@@ -219,18 +232,33 @@ const PublicationsList = (props: PublicationListProps) => {
                     />
                   </p>
                   {!!pub.alleles && pub.alleles.length > 0 && (
-                    <p className={styles.alleleList}>IMPC allele: {pub.alleles.map(allele => {
-                      const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
-                      return (
+                    <p className={styles.alleleList}>IMPC allele:&nbsp;
+                      {getListOfAlleles(pub).map(allele => {
+                        const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
+                        return (
+                          <>
+                            <a className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
+                              {formattedAllele[0]}
+                              <sup>{formattedAllele[1]}</sup>
+                            </a>
+                            &nbsp;
+                          </>
+                        )
+                      })}
+                      {pub.alleles.length > 9 && (
                         <>
-                          <a className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
-                            {formattedAllele[0]}
-                            <sup>{formattedAllele[1]}</sup>
-                          </a>
-                          &nbsp;
+                          <br/>
+                          <Button
+                            className="mt-1 mb-1"
+                            variant="outline-dark"
+                            size="sm"
+                            onClick={() => toggleVisibility(pub, "alleles")}
+                          >
+                            <strong>{isFieldVisible(pub, 'alleles') ? 'Hide' : 'Show'} all alleles</strong>
+                          </Button>
                         </>
-                      )
-                    })}</p>
+                      )}
+                    </p>
                   )}
                   {getGrantsList(pub)}
                   {!!pub.meshHeadingList && pub.meshHeadingList.length > 0 && (
@@ -238,7 +266,7 @@ const PublicationsList = (props: PublicationListProps) => {
                       className="mt-1 mb-1"
                       variant="outline-dark"
                       size="sm"
-                      onClick={e => toggleAbstractClass(pub, 'mesh-terms')}
+                      onClick={e => toggleVisibility(pub, 'mesh-terms')}
                     >
                       <strong>{isFieldVisible(pub, 'mesh-terms') ? 'Hide' : 'Show'} mesh terms</strong>
                     </Button>
@@ -250,7 +278,7 @@ const PublicationsList = (props: PublicationListProps) => {
               </tr>
             ))}
             { !!isFetching && ([...Array(10)].map((e, i) => (
-              <tr>
+              <tr key={i}>
                 <PublicationLoader key={i} />
               </tr>
             ) )) }
