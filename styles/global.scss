@@ -112,3 +112,7 @@ p:last-child {
   width: 85%;
   max-width: none !important;
 }
+ul.pagination .page-item.disabled .page-link {
+  background-color: #FFF;
+  border-color: #FFF;
+}
