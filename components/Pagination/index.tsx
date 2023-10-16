@@ -37,7 +37,7 @@ const Pagination = (props: Props) => {
 
   const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
   const noTotalItems = controlled ? totalItems : (data?.length || 1);
-  let totalPages = data ? Math.ceil(noTotalItems / internalPageSize) : 1;
+  let totalPages = Math.ceil(noTotalItems / internalPageSize) || 1;
   const updatePageRange = (page: number, totalPages: number) => {
     let rangeStart = Math.max(1, page - 1);
     let rangeEnd = Math.min(totalPages, page + 3);
@@ -49,7 +49,6 @@ const Pagination = (props: Props) => {
       }
     }
 
-    console.log({ rangeStart, rangeEnd });
     setPageRange(
       Array.from(
         { length: rangeEnd - rangeStart + 1},
@@ -66,10 +65,13 @@ const Pagination = (props: Props) => {
   }, [data, internalPage, internalPageSize]);
 
 
-  const NavButtons = ({ shouldBeDisplayed }: { shouldBeDisplayed: boolean }) => {
+  const NavButtons = ({ shouldBeDisplayed, placement }: { shouldBeDisplayed: boolean, placement: 'top' | 'bottom' }) => {
     if (shouldBeDisplayed) {
       return (
-        <ul className={`pagination justify-content-center ${styles.paginationNav}`}>
+        <ul
+          className={`pagination justify-content-center ${styles.paginationNav}`}
+          data-testid={`nav-buttons-${placement}`}
+        >
           <button
             onClick={() => updatePage(internalPage - 1)}
             disabled={!canGoBack}
@@ -80,7 +82,7 @@ const Pagination = (props: Props) => {
           </button>&nbsp;
           {pageRange[0] > 1 && (
             <>
-              <li className={`page-item first-page ${internalPage === 0 ? "active" : ""}`}>
+              <li className={`page-item first-page ${internalPage === 0 ? "active" : ""}`} data-testid="first-page">
                 <button
                   className="page-link"
                   aria-label="Previous"
@@ -106,6 +108,7 @@ const Pagination = (props: Props) => {
               <button
                 className="page-link"
                 onClick={() => updatePage(pageNumber - 1)}
+                data-test-id={`page-${pageNumber}`}
               >
                 {pageNumber}
               </button>
@@ -113,7 +116,7 @@ const Pagination = (props: Props) => {
           ))}
           {pageRange[pageRange.length - 1] < totalPages && (
             <>
-              {pageRange[pageRange.length - 1] < totalPages && (
+              {pageRange[pageRange.length - 2] < totalPages && (
                 <li className="page-item disabled">
                   <span className="page-link">...</span>
                 </li>
@@ -127,6 +130,7 @@ const Pagination = (props: Props) => {
                   className="page-link last-page"
                   aria-label="Previous"
                   onClick={() => updatePage(totalPages - 1)}
+                  data-testid="last-page"
                 >
                   <span aria-hidden="true">{totalPages}</span>
                 </button>
@@ -170,11 +174,9 @@ const Pagination = (props: Props) => {
     }
   }, [data]);
 
-  console.log({internalPage});
-
   const shouldDisplayTopButtons = buttonsPlacement === 'top' || buttonsPlacement === 'both';
   const shouldDisplayBottomButtons = buttonsPlacement === 'bottom' || buttonsPlacement === 'both';
-
+  
   return (
     <>
       <div className={`${styles.buttonsWrapper} ${!!AdditionalTopControls ? styles.withControls : ''}`}>
@@ -183,7 +185,7 @@ const Pagination = (props: Props) => {
             { AdditionalTopControls }
           </div>
         )}
-        <NavButtons shouldBeDisplayed={shouldDisplayTopButtons} />
+        <NavButtons placement="top" shouldBeDisplayed={shouldDisplayTopButtons} />
       </div>
       {children(currentPage)}
       <div className={styles.buttonsWrapper}>
@@ -205,7 +207,7 @@ const Pagination = (props: Props) => {
             <option value="100">100</option>
           </select>
         </div>
-        <NavButtons shouldBeDisplayed={shouldDisplayBottomButtons} />
+        <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons} />
       </div>
     </>
   );
