@@ -32,7 +32,7 @@ const Phenotype = () => {
       <Container className="page">
         <Summary {...{ phenotype, isLoading, isError }}/>
         <Card>
-          <h2>Most significant genotype-phenotype associations</h2>
+          <h2>Significant genotype-phenotype associations</h2>
           <ManhattanPlot phenotypeId={phenotypeId} />
         </Card>
         <Card>
