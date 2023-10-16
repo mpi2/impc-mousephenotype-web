@@ -1,5 +1,6 @@
-import { screen, render } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import GeneSummary from '@/components/Gene/Summary';
+import { renderWithClient } from "../../utils";
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
@@ -41,7 +42,7 @@ let gene = {
 
 describe('Gene summary component', () => {
   it('displays physiological systems correctly', async () => {
-    render(<GeneSummary gene={gene} error={''} loading={false} />);
+    renderWithClient(<GeneSummary gene={gene} error={''} loading={false} />);
     expect(screen.getByTestId('totalCount')).toHaveTextContent('19 /24 physiological systems tested');
     expect(screen.getByTestId('significantSystemIcons').children).toHaveLength(6);
     expect(screen.getByTestId('significantCount')).toHaveTextContent('6')
@@ -52,7 +53,7 @@ describe('Gene summary component', () => {
   });
 
   it('displays data collection status correctly',() => {
-    render(<GeneSummary gene={gene} error={''} loading={false} />);
+    renderWithClient(<GeneSummary gene={gene} error={''} loading={false} />);
     expect(screen.getByTestId('LacZ expression')).not.toHaveClass('dataCollectionInactive');
     expect(screen.getByTestId('Histopathology')).toHaveClass('dataCollectionInactive');
     expect(screen.getByTestId('Images')).not.toHaveClass('dataCollectionInactive');
@@ -62,7 +63,7 @@ describe('Gene summary component', () => {
   });
 
   it('should have synonyms tooltip if have 3 or more', () => {
-    render(
+    renderWithClient(
       <GeneSummary gene={{...gene, synonyms: ['1', '2', '3', '4']}} error={''} loading={false} />
     );
     expect(screen.getByTestId('synonyms')).toBeDefined();

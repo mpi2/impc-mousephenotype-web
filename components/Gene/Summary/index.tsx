@@ -340,7 +340,7 @@ const Summary = ({
             <Col md={6}>
               <Metric
                 value={gene.significantPhenotypesCount || 0}
-                average={averages.significantPhenotypesAverage  || 0}
+                average={averages?.significantPhenotypesAverage  || 0}
               >
                 Significant phenotypes
               </Metric>
@@ -348,7 +348,7 @@ const Summary = ({
             <Col md={6}>
               <Metric
                 value={gene.adultExpressionObservationsCount || 0}
-                average={averages.adultExpressionObservationsAverage || 0}
+                average={averages?.adultExpressionObservationsAverage || 0}
               >
                 Adult expressions
               </Metric>
@@ -356,7 +356,7 @@ const Summary = ({
             <Col md={6}>
               <Metric
                 value={gene.associatedDiseasesCount || 0}
-                average={averages.associatedDiseasesAverage || 0}
+                average={averages?.associatedDiseasesAverage || 0}
               >
                 Associated disease
               </Metric>
@@ -364,7 +364,7 @@ const Summary = ({
             <Col md={6}>
               <Metric
                 value={gene.embryoExpressionObservationsCount || 0}
-                average={averages.embryoExpressionObservationsAverage || 0}
+                average={averages?.embryoExpressionObservationsAverage || 0}
               >
                 Embryo expressions
               </Metric>
