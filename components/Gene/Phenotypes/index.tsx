@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,
