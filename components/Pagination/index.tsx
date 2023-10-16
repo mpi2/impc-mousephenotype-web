@@ -82,11 +82,15 @@ const Pagination = (props: Props) => {
           </button>&nbsp;
           {pageRange[0] > 1 && (
             <>
-              <li className={`page-item first-page ${internalPage === 0 ? "active" : ""}`} data-testid="first-page">
+              <li
+                className={`page-item first-page ${internalPage === 0 ? "active" : ""}`}
+                data-testid="first-page"
+              >
                 <button
                   className="page-link"
                   aria-label="Previous"
                   onClick={() => updatePage(0)}
+                  data-testid="first-page-btn"
                 >
                   <span aria-hidden="true">1</span>
                 </button>
@@ -104,11 +108,12 @@ const Pagination = (props: Props) => {
               className={`page-item ${
                 internalPage === (pageNumber - 1) ? "active" : ""
               }`}
+              data-testid={`page-${pageNumber}`}
             >
               <button
                 className="page-link"
                 onClick={() => updatePage(pageNumber - 1)}
-                data-test-id={`page-${pageNumber}`}
+                data-testid={`page-${pageNumber}-btn`}
               >
                 {pageNumber}
               </button>
@@ -125,12 +130,13 @@ const Pagination = (props: Props) => {
                 className={`page-item ${
                   internalPage === totalPages ? "active" : ""
                 }`}
+                data-testid="last-page"
               >
                 <button
                   className="page-link last-page"
                   aria-label="Previous"
                   onClick={() => updatePage(totalPages - 1)}
-                  data-testid="last-page"
+                  data-testid="last-page-btn"
                 >
                   <span aria-hidden="true">{totalPages}</span>
                 </button>
@@ -176,7 +182,7 @@ const Pagination = (props: Props) => {
 
   const shouldDisplayTopButtons = buttonsPlacement === 'top' || buttonsPlacement === 'both';
   const shouldDisplayBottomButtons = buttonsPlacement === 'bottom' || buttonsPlacement === 'both';
-  
+
   return (
     <>
       <div className={`${styles.buttonsWrapper} ${!!AdditionalTopControls ? styles.withControls : ''}`}>
