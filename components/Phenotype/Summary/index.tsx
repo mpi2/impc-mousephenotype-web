@@ -24,6 +24,21 @@ const Summary = ({ phenotype, isLoading, isError }) => {
     return Number((phenotype.significantGenes / getNoTotalGenes()) * 100).toFixed(2);
   }
 
+  const displaySynonyms = () => {
+    return phenotype.phenotypeSynonyms.slice(0, SYNONYMS_COUNT).join(',');
+  }
+  const displaySynonymsInTooltip = () => {
+    return phenotype.phenotypeSynonyms
+      .slice(SYNONYMS_COUNT, phenotype.phenotypeSynonyms.length)
+      .map((s, i) => (
+        <span key={s} style={{ whiteSpace: "nowrap" }}>
+          {s}
+          {i < phenotype.phenotypeSynonyms.length ? ", " : ""}
+          <br />
+        </span>
+      ))
+  }
+
   if (isLoading) {
     return (
       <Card>
@@ -72,16 +87,7 @@ const Summary = ({ phenotype, isLoading, isError }) => {
           </span>
           <a className={styles.subheadingSection} href="#">
             Synonyms:&nbsp;
-            {phenotype.phenotypeSynonyms
-              .slice(0, SYNONYMS_COUNT)
-              .map(
-                (s, i) =>
-                  `${s}${
-                    i < Math.min(phenotype.phenotypeSynonyms.length - 1, SYNONYMS_COUNT)
-                      ? ", "
-                      : ""
-                  }`
-              )}
+            {displaySynonyms()}
             {phenotype.phenotypeSynonyms.length > SYNONYMS_COUNT && (
               <OverlayTrigger
                 placement="bottom"
@@ -89,24 +95,14 @@ const Summary = ({ phenotype, isLoading, isError }) => {
                 overlay={
                   <Tooltip>
                     <div style={{ textAlign: "left" }}>
-                      {phenotype.phenotypeSynonyms
-                        .slice(SYNONYMS_COUNT, phenotype.phenotypeSynonyms.length)
-                        .map((s, i) => (
-                          <>
-                            <span style={{ whiteSpace: "nowrap" }}>
-                              {s}
-                              {i < phenotype.phenotypeSynonyms.length ? ", " : ""}
-                            </span>
-                            <br />
-                          </>
-                        ))}
+                      {displaySynonymsInTooltip()}
                     </div>
                   </Tooltip>
                 }
               >
                 {({ ref, ...triggerHandler }) => (
-                  <span {...triggerHandler} ref={ref} className="link">
-                    +{phenotype.phenotypeSynonyms.length - SYNONYMS_COUNT} more&nbsp;
+                  <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
+                    ,&nbsp;+{phenotype.phenotypeSynonyms.length - SYNONYMS_COUNT} more&nbsp;
                     <FontAwesomeIcon icon={faCaretSquareDown} />
                   </span>
                 )}
@@ -134,15 +130,15 @@ const Summary = ({ phenotype, isLoading, isError }) => {
           <p className="grey">{phenotype.phenotypeDefinition}</p>
         </div>
         <div className={styles.stats}>
-          <div>
+          <div data-testid="significant-genes">
             <p className="secondary h2 mb-2">{phenotype.significantGenes}</p>
             <span className="grey">significant genes</span>
           </div>
-          <div>
+          <div data-testid="tested-genes-percentage">
             <p className="secondary h2 mb-2">{calculatePercentageGenes()}%</p>
             <span className="grey">of tested genes</span>
           </div>
-          <div>
+          <div data-testid="total-genes-tested">
             <p className="h2 mb-2">{getNoTotalGenes()}</p>
             <span className="grey">tested genes</span>
           </div>
