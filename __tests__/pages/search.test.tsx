@@ -15,7 +15,7 @@ describe('Search Results', () => {
       </GeneComparatorProvider>
     );
     const heading = screen.getByRole('heading', {
-        name: /Most searched genes/i,
+        name: /Gene search results/i,
     });
     expect(heading).toBeInTheDocument();
   });
@@ -27,7 +27,7 @@ describe('Search Results', () => {
       </GeneComparatorProvider>
     );
     const heading = screen.getByRole('heading', {
-      name: /Top 10 most searched phenotypes/i,
+      name: /Phenotype search results/i,
     });
     expect(heading).toBeInTheDocument();
   })
