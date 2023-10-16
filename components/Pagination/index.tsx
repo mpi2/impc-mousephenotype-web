@@ -63,7 +63,7 @@ const Pagination = (props: Props) => {
 
   useEffect(() => {
     updatePageRange(internalPage, totalPages);
-  }, [data]);
+  }, [data, internalPage, internalPageSize]);
 
 
   const NavButtons = ({ shouldBeDisplayed }: { shouldBeDisplayed: boolean }) => {
