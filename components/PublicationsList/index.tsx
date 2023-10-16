@@ -1,5 +1,5 @@
 import { Col, Container, Form, InputGroup, Row, Table, Button, Alert } from "react-bootstrap";
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React, { useState } from "react";
@@ -7,10 +7,11 @@ import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
 import styles from './styles.module.scss';
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
+import { fetchAPI, API_URL } from "../../api-service";
 import Pagination from "../Pagination";
 import { formatAlleleSymbol } from "../../utils";
 import { useDebounce } from "usehooks-ts";
+import _ from "lodash";
 
 
 const PublicationLoader = () => (
@@ -25,18 +26,35 @@ const PublicationLoader = () => (
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
   filterByGrantAgency?: string;
+  prefixQuery?: string;
 }
 
-const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: PublicationListProps) => {
-
+const PublicationsList = (props: PublicationListProps) => {
+  const {
+    onlyConsortiumPublications,
+    filterByGrantAgency,
+    prefixQuery = '',
+  } = props
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
+  const [allelesVisibilityMap, setAllelesVisibilityMap] = useState(new Map());
   const displayPubTitle = (pub: Publication) => {
-    return <p>
-      <a className="primary link" target="_blank" href={`https://europepmc.org/article/MED/${pub.pmId}`}>
-        {pub.title}
-      </a>
-    </p>;
+    if (pub.doi) {
+      return <p>
+        <a
+          className="primary link"
+          target="_blank"
+          href={`https://doi.org/${pub.doi}`}
+          dangerouslySetInnerHTML={{ __html: pub.title }}
+        />
+        <FontAwesomeIcon
+          icon={faExternalLinkAlt}
+          className="grey"
+          size="xs"
+        />
+      </p>;
+    }
+    return <p dangerouslySetInnerHTML={{ __html: pub.title }} />;
   }
 
   const displayPubDate = (pub: Publication) => {
@@ -45,25 +63,49 @@ const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: P
 
   const getGrantsList = (pub: Publication) => {
     if (pub.grantsList && pub.grantsList.length > 0) {
-      return <p>Grant agency: {pub.grantsList.map(grant => grant.agency).join(' ')}</p>
+      return <p>Grant agency: {_.uniq(pub.grantsList.map(grant => grant.agency)).join(', ')}</p>
     }
     return null;
   }
 
-  const isFieldVisible = (pub: Publication, type: 'abstract' | 'mesh-terms') => {
-    const map = type === 'abstract' ? abstractVisibilityMap : meshTermsVisibilityMap;
+  const getListOfAlleles = (pub: Publication) => {
+    return isFieldVisible(pub, 'alleles') ? pub.alleles : pub.alleles.slice(0, 8);
+  }
+  const getMapByType = (type: 'abstract' | 'mesh-terms' | 'alleles') => {
+    switch (type) {
+      case "abstract":
+        return { map: abstractVisibilityMap, setFn: setAbstractVisibilityMap };
+      case "alleles":
+        return { map: allelesVisibilityMap, setFn: setAllelesVisibilityMap };
+      case "mesh-terms":
+        return { map: meshTermsVisibilityMap, setFn: setMeshVisibilityMap };
+    }
+  }
+  const isFieldVisible = (pub: Publication, type: 'abstract' | 'mesh-terms' | 'alleles') => {
+    const { map} = getMapByType(type);
     return !(!map.has(pub.pmId) || map.get(pub.pmId) === 'not-visible');
 
   }
-  const toggleAbstractClass = (pub: Publication, type: 'abstract' | 'mesh-terms') => {
-    const map = type === 'abstract' ? abstractVisibilityMap : meshTermsVisibilityMap;
-    const setFn = type === 'abstract' ? setAbstractVisibilityMap : setMeshVisibilityMap;
+  const toggleVisibility = (pub: Publication, type: 'abstract' | 'mesh-terms' | 'alleles') => {
+    const {map, setFn} = getMapByType(type);
     if (!map.has(pub.pmId) || map.get(pub.pmId) === 'not-visible') {
       map.set(pub.pmId, 'visible');
     } else {
       map.set(pub.pmId, 'not-visible');
     }
     setFn(new Map(map));
+  }
+  const getDownloadLink = (type:  'tsv' | 'xls') => {
+    let url = `${API_URL}/api/v1/publications/download?contentType=${type}`;
+    if (debounceQuery) {
+      url += `&searchQuery=${prefixQuery} ${debounceQuery}`;
+    } else if (prefixQuery) {
+      url += `&searchQuery=${prefixQuery}`;
+    }
+    if (onlyConsortiumPublications) {
+      url += `&consortiumPaper=true`;
+    }
+    return url;
   }
 
   const [page, setPage] = useState(0);
@@ -72,18 +114,21 @@ const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: P
   const [totalItems, setTotalItems] = useState(0);
   const debounceQuery = useDebounce<string>(query, 500);
   const { data: publications, isError, isFetching } = useQuery({
-    queryKey: ['publications', debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
+    queryKey: ['publications', prefixQuery, debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
     queryFn: () => {
       let url = `/api/v1/publications?page=${page}&size=${pageSize}`;
-      if (debounceQuery) {
-        url += `&query=${debounceQuery}`;
-      }
       if (!!onlyConsortiumPublications) {
-        url += `&consortiumpaper=true`;
+        url = `/api/v1/publications/by_consortium_paper?consortiumPaper=true&page=${page}&size=${pageSize}`
       }
       if(!!filterByGrantAgency) {
-        url += `&grantagency=${filterByGrantAgency}`;
+        url = `/api/v1/publications/by_agency?grantAgency=${filterByGrantAgency}&page=${page}&size=${pageSize}`
       }
+      if (debounceQuery) {
+        url += `&searchQuery=${prefixQuery} ${debounceQuery}`;
+      } else if (prefixQuery) {
+        url += `&searchQuery=${prefixQuery}`;
+      }
+
       return fetchAPI(url);
     },
     select: response => {
@@ -106,8 +151,8 @@ const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: P
   return (
     <Container>
       <Row>
-        <Col xs={6} className="mb-3">
-          <p>Showing 1 to 10 of {totalItems.toLocaleString()} entries</p>
+        <Col xs={6}>
+          <p>Showing 1 to {Math.min(pageSize, totalItems)} of {totalItems.toLocaleString()} entries</p>
         </Col>
       </Row>
       { !!isError && (
@@ -139,14 +184,14 @@ const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: P
             </div>
             <div>
               Export table:&nbsp;
-              <a href="#" className="primary link">
+              <a href={getDownloadLink('tsv')} className="primary link">
                 TSV
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
               &nbsp;
               or
               &nbsp;
-              <a href="#" className="primary link">
+              <a href={getDownloadLink('xls')} className="primary link">
                 XLS
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
@@ -167,27 +212,53 @@ const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: P
                     className="mt-1 mb-1"
                     variant="outline-dark"
                     size="sm"
-                    onClick={e => toggleAbstractClass(pub, 'abstract')}
+                    onClick={e => toggleVisibility(pub, 'abstract')}
                   >
                     <strong>{isFieldVisible(pub, 'abstract') ? 'Hide' : 'Show'} abstract</strong>
                   </Button>
                   <p className={`abstract ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
                     {pub.abstractText}
                   </p>
-                  <p>PMID: {pub.pmId}</p>
+                  <p>
+                    PMID:&nbsp;
+                    <a className="primary link" target="_blank" href={`https://pubmed.ncbi.nlm.nih.gov/${pub.pmId}`}>
+                      {pub.pmId}
+                    </a>
+                    &nbsp;
+                    <FontAwesomeIcon
+                      icon={faExternalLinkAlt}
+                      className="grey"
+                      size="xs"
+                    />
+                  </p>
                   {!!pub.alleles && pub.alleles.length > 0 && (
-                    <p className={styles.alleleList}>IMPC allele: {pub.alleles.map(allele => {
-                      const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
-                      return (
+                    <p className={styles.alleleList}>IMPC allele:&nbsp;
+                      {getListOfAlleles(pub).map(allele => {
+                        const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
+                        return (
+                          <>
+                            <a className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
+                              {formattedAllele[0]}
+                              <sup>{formattedAllele[1]}</sup>
+                            </a>
+                            &nbsp;
+                          </>
+                        )
+                      })}
+                      {pub.alleles.length > 9 && (
                         <>
-                          <a className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
-                            {formattedAllele[0]}
-                            <sup>{formattedAllele[1]}</sup>
-                          </a>
-                          &nbsp;
+                          <br/>
+                          <Button
+                            className="mt-1 mb-1"
+                            variant="outline-dark"
+                            size="sm"
+                            onClick={() => toggleVisibility(pub, "alleles")}
+                          >
+                            <strong>{isFieldVisible(pub, 'alleles') ? 'Hide' : 'Show'} all alleles</strong>
+                          </Button>
                         </>
-                      )
-                    })}</p>
+                      )}
+                    </p>
                   )}
                   {getGrantsList(pub)}
                   {!!pub.meshHeadingList && pub.meshHeadingList.length > 0 && (
@@ -195,7 +266,7 @@ const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: P
                       className="mt-1 mb-1"
                       variant="outline-dark"
                       size="sm"
-                      onClick={e => toggleAbstractClass(pub, 'mesh-terms')}
+                      onClick={e => toggleVisibility(pub, 'mesh-terms')}
                     >
                       <strong>{isFieldVisible(pub, 'mesh-terms') ? 'Hide' : 'Show'} mesh terms</strong>
                     </Button>
@@ -207,7 +278,7 @@ const PublicationsList = ({ onlyConsortiumPublications, filterByGrantAgency }: P
               </tr>
             ))}
             { !!isFetching && ([...Array(10)].map((e, i) => (
-              <tr>
+              <tr key={i}>
                 <PublicationLoader key={i} />
               </tr>
             ) )) }

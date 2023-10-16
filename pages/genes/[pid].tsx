@@ -50,8 +50,8 @@ const Gene = () => {
         {!!gene && (
           <>
             <Phenotypes gene={gene} />
-            <Expressions />
-            <Images />
+            <Expressions gene={gene} />
+            <Images gene={gene} />
             <HumanDiseases gene={gene} />
             <Publications gene={gene} />
             <Histopathology gene={gene} />

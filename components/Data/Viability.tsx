@@ -7,9 +7,151 @@ import { useRouter } from "next/router";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
+import { formatAlleleSymbol } from "../../utils";
+import PieChart from "../PieChart";
+import styles from "./styles.module.scss";
+import { useEffect, useState } from "react";
+import { fetchAPI } from "../../api-service";
+import { useQuery } from "@tanstack/react-query";
 
-const Unidimensional = () => {
+const Viability = ({ datasetSummary }) => {
+  const [datasetSeries, setDataSetSeries] = useState([]);
   const router = useRouter();
+
+  const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
+
+  const viabilityOneParametersMap = {
+    both: {
+      homozygote: "IMPC_VIA_006_001",
+      heterozygote: "IMPC_VIA_005_001",
+      wildtype: "IMPC_VIA_004_001",
+      na: "IMPC_VIA_003_001",
+    },
+    male: {
+      homozygote: "IMPC_VIA_009_001",
+      heterozygote: "IMPC_VIA_008_001",
+      wildtype: "IMPC_VIA_007_001",
+      na: "IMPC_VIA_010_001",
+    },
+    female: {
+      homozygote: "IMPC_VIA_013_001",
+      heterozygote: "IMPC_VIA_012_001",
+      wildtype: "IMPC_VIA_011_001",
+      na: "IMPC_VIA_014_001",
+    },
+  };
+
+  const viabilityTwoParametersMap = {
+    both: {
+      homozygote: "IMPC_VIA_060_001",
+      heterozygote: "IMPC_VIA_059_001",
+      wildtype: "IMPC_VIA_058_001",
+      na: "IMPC_VIA_057_001",
+    },
+    male: {
+      homozygote: "IMPC_VIA_053_001",
+      heterozygote: "IMPC_VIA_052_001",
+      wildtype: "IMPC_VIA_049_001",
+      hemizygote: "IMPC_VIA_055_001",
+      na: "IMPC_VIA_061_001",
+    },
+    female: {
+      homozygote: "IMPC_VIA_054_001",
+      heterozygote: "IMPC_VIA_052_001",
+      wildtype: "IMPC_VIA_050_001",
+      anzygote: "IMPC_VIA_056_001",
+      na: "IMPC_VIA_062_001",
+    },
+  };
+
+  const viabilityParameterMap =
+    datasetSummary.procedureStableId === "IMPC_VIA_002"
+      ? viabilityTwoParametersMap
+      : viabilityOneParametersMap;
+
+  const { data, isLoading, error, isError } = useQuery({
+    queryKey: ["dataset", datasetSummary["datasetId"]],
+    queryFn: () =>
+      fetch(
+        `https://impc-datasets.s3.eu-west-2.amazonaws.com/latest/${datasetSummary["datasetId"]}.json`
+      ).then((res) => res.json()),
+  });
+
+  if (isLoading) return <Card>Loading...</Card>;
+
+  if (isError)
+    return (
+      <Card>
+        <Alert>
+          This phenotype call was made by our Phenotyiping Center experts,
+          currently we don't have any supporting data for this call.
+        </Alert>
+      </Card>
+    );
+
+  const totalCountData = [
+    {
+      label: "Total WTs",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.both.wildtype
+      )?.dataPoint,
+    },
+    {
+      label: "Total Homozygotes",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.both.homozygote
+      )?.dataPoint,
+    },
+    {
+      label: "Total Heterozygotes",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.both.heterozygote
+      )?.dataPoint,
+    },
+  ].filter((d) => d.value != 0);
+
+  const maleCountData = [
+    {
+      label: "Total Male WT",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.male.wildtype
+      )?.dataPoint,
+    },
+    {
+      label: "Total Male Heterozygous",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.male.heterozygote
+      )?.dataPoint,
+    },
+    {
+      label: "Total Male Homozygous",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.male.homozygote
+      )?.dataPoint,
+    },
+  ].filter((d) => d.value != 0);
+
+  const femaleCountData = [
+    {
+      label: "Total Female WT",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.female.wildtype
+      )?.dataPoint,
+    },
+    {
+      label: "Total Female Heterozygous",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.female.heterozygote
+      )?.dataPoint,
+    },
+    {
+      label: "Total Female Homozygous",
+      value: data.series.find(
+        (d) => d.parameterStableId == viabilityParameterMap.female.homozygote
+      )?.dataPoint,
+    },
+  ].filter((d) => d.value != 0);
+
   return (
     <>
       <Card>
@@ -25,7 +167,10 @@ const Unidimensional = () => {
             </a>
           </button>
           <h1>
-            <strong>Mavs data chart [Viability]</strong>
+            <strong>
+              {datasetSummary["geneSymbol"]} {datasetSummary["parameterName"]}{" "}
+              data
+            </strong>
           </h1>
           <Alert variant="yellow">
             <p>Please note:</p>
@@ -48,16 +193,10 @@ const Unidimensional = () => {
         <Row>
           <Col md={7} style={{ borderRight: "1px solid #ddd" }}>
             <p>
-              A Body Composition (DEXA lean/fat) phenotypic assay was performed
-              on 802 mice. The charts show the results of measuring Bone Mineral
-              Density (excluding skull) in 8 female, 8 male mutants compared to
-              395 female, 391 male controls. The mutants are for the
-              Mavsem1(IMPC)Mbp allele.
-            </p>
-            <p className="small">
-              * The high throughput nature of the IMPC means that large control
-              sample sizes may accumulate over a long period of time. See the
-              animal welfare guidelines for more information.
+              A {datasetSummary["procedureName"]} phenotypic assay was performed
+              on a mutant strain carrying the {allele[0]}
+              <sup>{allele[1]}</sup> allele. The charts below show the
+              proportion of wild type, heterozygous, and homozygous offspring.
             </p>
           </Col>
           <Col md={5} className="small">
@@ -65,7 +204,7 @@ const Unidimensional = () => {
               <span style={{ display: "inline-block", width: 180 }}>
                 Testing protocol
               </span>
-              <strong>Body Composition (DEXA lean/fat)</strong>
+              <strong>{datasetSummary["procedureName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
@@ -77,31 +216,31 @@ const Unidimensional = () => {
               <span style={{ display: "inline-block", width: 180 }}>
                 Measured value
               </span>
-              <strong>Bone Mineral Density (excluding skull)</strong>
+              <strong>{datasetSummary["parameterName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Life stage
               </span>
-              <strong>Early adult</strong>
+              <strong>{datasetSummary["lifeStageName"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Background Strain
               </span>
-              <strong>involves C57BL/6NCrl</strong>
+              <strong>{datasetSummary["geneticBackground"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Phenotyping center
               </span>
-              <strong>UC Davis</strong>
+              <strong>{datasetSummary["phenotypingCentre"]}</strong>
             </p>
             <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Associated Phenotype
               </span>
-              <strong>decreased bone mineral density</strong>
+              <strong>{datasetSummary["significantPhenotype"]["name"]}</strong>
             </p>
           </Col>
         </Row>
@@ -109,24 +248,54 @@ const Unidimensional = () => {
       <Row>
         <Col lg={4}>
           <Card>
-            <h2 className="primary">[Insert total counts pie chart]</h2>
+            <h2 className="primary">Total counts (male and female)</h2>
+            <div className={styles.chartWrapper}>
+              <PieChart
+                data={totalCountData}
+                chartColors={[
+                  "rgba(239,123,10, 0.5)",
+                  "rgba(31,144,185, 0.5)",
+                  "rgba(119,119,119, 0.5)",
+                ]}
+              />
+            </div>
           </Card>
         </Col>
         <Col lg={4}>
           <Card>
-            <h2 className="primary">[Insert male counts pie chart]</h2>
+            <h2 className="primary">Male counts</h2>
+            <div className={styles.chartWrapper}>
+              <PieChart
+                data={maleCountData}
+                chartColors={[
+                  "rgba(239,123,10, 0.5)",
+                  "rgba(31,144,185, 0.5)",
+                  "rgba(119,119,119, 0.5)",
+                ]}
+              />
+            </div>
           </Card>
         </Col>
         <Col lg={4}>
           <Card>
-            <h2 className="primary">[Insert female counts pie chart]</h2>
+            <h2 className="primary">Female counts</h2>
+            <div className={styles.chartWrapper}>
+              <PieChart
+                data={femaleCountData}
+                chartColors={[
+                  "rgba(239,123,10, 0.5)",
+                  "rgba(31,144,185, 0.5)",
+                  "rgba(119,119,119, 0.5)",
+                ]}
+              />
+            </div>
           </Card>
         </Col>
         <Col lg={6}>
           <Card>
             <SortableTable
               headers={[
-                { width: 6, label: "", disabled: true },
+                { width: 6, label: "Sex", disabled: true },
                 { width: 1, label: "WT", disabled: true },
                 { width: 1, label: "Het", disabled: true },
                 { width: 1, label: "Hom", disabled: true },
@@ -136,27 +305,121 @@ const Unidimensional = () => {
             >
               <tr>
                 <td>Male and female</td>
-                <td>39</td>
-                <td>104</td>
-                <td>31</td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.both.wildtype
+                    )?.dataPoint
+                  }
+                </td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.both.heterozygote
+                    )?.dataPoint
+                  }
+                </td>
+                <td>
+                  {" "}
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.both.homozygote
+                    )?.dataPoint
+                  }
+                </td>
                 <td></td>
-                <td>174</td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId == viabilityParameterMap.both.na
+                    )?.dataPoint
+                  }
+                </td>
               </tr>
               <tr>
                 <td>Male</td>
-                <td>17</td>
-                <td>50</td>
-                <td>17</td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.male.wildtype
+                    )?.dataPoint
+                  }
+                </td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.male.heterozygote
+                    )?.dataPoint
+                  }
+                </td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.male.homozygote
+                    )?.dataPoint
+                  }
+                </td>
                 <td></td>
-                <td>84</td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId == viabilityParameterMap.male.na
+                    )?.dataPoint
+                  }
+                </td>
               </tr>
               <tr>
                 <td>Female</td>
-                <td>22</td>
-                <td>54</td>
-                <td>14</td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.female.wildtype
+                    )?.dataPoint
+                  }
+                </td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.female.heterozygote
+                    )?.dataPoint
+                  }
+                </td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap.female.homozygote
+                    )?.dataPoint
+                  }
+                </td>
                 <td>N/A</td>
-                <td>90</td>
+                <td>
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId == viabilityParameterMap.female.na
+                    )?.dataPoint
+                  }
+                </td>
               </tr>
             </SortableTable>
           </Card>
@@ -201,4 +464,4 @@ const Unidimensional = () => {
   );
 };
 
-export default Unidimensional;
+export default Viability;

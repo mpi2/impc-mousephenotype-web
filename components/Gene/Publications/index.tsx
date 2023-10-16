@@ -65,11 +65,13 @@ const Publications = ({ gene }: { gene: any }) => {
     );
   }
 
-  if (isError) {
+  if (isError || !sorted) {
     return (
       <Card id="publications">
         <h2>IMPC related publications</h2>
-        <Alert variant="yellow">No data available for this section</Alert>
+        <Alert variant="primary">
+          No publications found that use IMPC mice or data for the {gene.geneSymbol} gene.
+        </Alert>
       </Card>
     );
   }
@@ -106,18 +108,20 @@ const Publications = ({ gene }: { gene: any }) => {
                 return (
                   <tr>
                     <td>
-                      <a
-                        className="link"
-                        target="_blank"
-                        href={`https://www.doi.org/${p.doi}`}
-                      >
-                        <strong>{p.title}</strong>{" "}
-                        <FontAwesomeIcon
-                          className="grey"
-                          size="xs"
-                          icon={faExternalLinkAlt}
-                        />
-                      </a>
+                      {p.doi ? (
+                        <a
+                          className="link"
+                          target="_blank"
+                          href={`https://www.doi.org/${p.doi}`}
+                        >
+                          <strong>{p.title}</strong>&nbsp;
+                          <FontAwesomeIcon
+                            className="grey"
+                            size="xs"
+                            icon={faExternalLinkAlt}
+                          />
+                        </a>
+                      ) : <strong>{p.title}</strong>}
                     </td>
                     <td>
                       {p.journalTitle} ({getPubDate(p)})
@@ -127,7 +131,7 @@ const Publications = ({ gene }: { gene: any }) => {
                     </td>
                     <td>
                       <a
-                        href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${p.pmId}`}
+                        href={`https://pubmed.ncbi.nlm.nih.gov/${p.pmId}`}
                         target="_blank"
                         className="link"
                       >
@@ -147,8 +151,7 @@ const Publications = ({ gene }: { gene: any }) => {
         </Pagination>
       ) : (
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for the{" "}
-          {gene.geneSymbol} gene.
+          No publications found that use IMPC mice or data for the {gene.geneSymbol} gene.
         </Alert>
       )}
     </Card>

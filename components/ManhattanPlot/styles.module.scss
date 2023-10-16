@@ -8,7 +8,11 @@
     z-index: 1;
   }
 }
-
+.labelsWrapper {
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
 .tooltip {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
@@ -33,7 +37,7 @@
   }
   ul {
     margin-bottom: 0;
-    padding-left: 1rem;
+    padding: 0 1em;
     max-height: 100px;
     overflow-y: auto;
     scrollbar-gutter: stable;

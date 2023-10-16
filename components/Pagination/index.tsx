@@ -29,6 +29,7 @@ const Pagination = (props: Props) => {
     buttonsPlacement = 'bottom',
     additionalTopControls: AdditionalTopControls = null,
   } = props;
+
   const [internalPage, setInternalPage] = useState(page);
   const [internalPageSize, setInternalPageSize] = useState(10);
 

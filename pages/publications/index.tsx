@@ -21,7 +21,7 @@ import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
 import SortableTable from "../../components/SortableTable";
-import { faTable, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import { faTable, faChartBar, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pagination from "../../components/Pagination";
 import dynamic from "next/dynamic";
@@ -180,6 +180,19 @@ const PublicationsPage = () => {
     }
   }, [data]);
 
+  const onDownloadBtnClick = () => {
+    const fileData = data.allGrantsData.map(({ agency, count }) => [ agency, count ]);
+    fileData.splice(0, 0, ['Agency', 'Count']);
+    let tsvContent = '';
+    fileData.forEach(row => tsvContent += row.join('\t') + '\n');
+    const blob = new Blob([tsvContent], { type: 'text/tsv;charset=utf-8,' });
+    const objURL = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', objURL);
+    link.setAttribute('download', 'list-grant-agencies.tsv');
+    link.click();
+  };
+
   return (
     <>
       <Search />
@@ -240,6 +253,10 @@ const PublicationsPage = () => {
                       <FontAwesomeIcon icon={faTable} />
                       Table view
                     </button>
+                    <a className="primary link" onClick={onDownloadBtnClick} style={{ marginLeft: "auto" }}>
+                      Download list of agencies&nbsp;
+                      <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
+                    </a>
                   </div>
                   <h2>{
                     grantAgencyView === 'chart' ?

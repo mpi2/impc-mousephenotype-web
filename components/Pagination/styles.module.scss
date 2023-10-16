@@ -16,6 +16,9 @@
     background: transparent;
     padding: 0 10px;
   }
+  &:empty {
+    margin-top: 0;
+  }
 }
 
 .additionalWrapper {

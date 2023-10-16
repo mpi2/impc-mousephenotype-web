@@ -171,7 +171,7 @@ const CardiovascularLandingPage = () => {
         <Card>
           <Container>
             <h1><strong>Cardiovascular systemp IKMC/IMPC related publications</strong></h1>
-            <PublicationsList />
+            <PublicationsList prefixQuery="cardio cardia heart" />
           </Container>
         </Card>
       </Container>

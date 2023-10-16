@@ -21,111 +21,35 @@ import { formatPValue } from "../../utils";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
 
-const mockData = [
-  {
-    mgiGeneAccessionId: "MGI:1929293",
-    pipelineStableId: "HRWL_001",
-    procedureStableId: "IMPC_ABR_002",
-    procedureName: "Auditory Brain Stem Response",
-    parameterStableId: "IMPC_ABR_004_001",
-    parameterName: "6kHz-evoked ABR Threshold",
-    alleleAccessionId: "MGI:5548707",
-    alleleName: "targeted mutation 1b, Wellcome Trust Sanger Institute",
-    alleleSymbol: "Cib2<tm1b(EUCOMM)Wtsi>",
-    zygosity: "homozygote",
-    phenotypingCentre: "MRC Harwell",
-    sex: "not_considered",
-    projectName: "MRC",
-    pValue: 0.0000280473093383979,
-    lifeStageName: "Early adult",
-    effectSize: 0.973799126637555,
-    phenotype: {
-      id: "MP:0004738",
-      name: "abnormal auditory brainstem response",
-    },
-    topLevelPhenotypes: [
-      {
-        id: "MP:0005377",
-        name: "hearing/vestibular/ear phenotype",
-      },
-    ],
-  },
-  {
-    mgiGeneAccessionId: "MGI:1929293",
-    pipelineStableId: "HRWL_001",
-    procedureStableId: "IMPC_CSD_003",
-    procedureName: "Combined SHIRPA and Dysmorphology",
-    parameterStableId: "IMPC_CSD_039_001",
-    parameterName: "Limb grasp",
-    alleleAccessionId: "MGI:5548707",
-    alleleName: "targeted mutation 1b, Wellcome Trust Sanger Institute",
-    alleleSymbol: "Cib2<tm1b(EUCOMM)Wtsi>",
-    zygosity: "homozygote",
-    phenotypingCentre: "MRC Harwell",
-    sex: "female",
-    projectName: "BaSH",
-    pValue: 8.82567650351401e-7,
-    lifeStageName: "Early adult",
-    effectSize: null,
-    phenotype: {
-      id: "MP:0001513",
-      name: "limb grasping",
-    },
-    topLevelPhenotypes: [
-      {
-        id: "MP:0005386",
-        name: "behavior/neurological phenotype",
-      },
-    ],
-  },
-  {
-    mgiGeneAccessionId: "MGI:1929293",
-    pipelineStableId: "HRWL_001",
-    procedureStableId: "IMPC_CSD_003",
-    procedureName: "Combined SHIRPA and Dysmorphology",
-    parameterStableId: "IMPC_CSD_036_001",
-    parameterName: "Startle response",
-    alleleAccessionId: "MGI:5548707",
-    alleleName: "targeted mutation 1b, Wellcome Trust Sanger Institute",
-    alleleSymbol: "Cib2<tm1b(EUCOMM)Wtsi>",
-    zygosity: "homozygote",
-    phenotypingCentre: "MRC Harwell",
-    sex: "male",
-    projectName: "BaSH",
-    pValue: 7.56658247323517e-21,
-    lifeStageName: "Early adult",
-    effectSize: null,
-    phenotype: {
-      id: "MP:0001486",
-      name: "abnormal startle reflex",
-    },
-    topLevelPhenotypes: [
-      {
-        id: "MP:0005386",
-        name: "behavior/neurological phenotype",
-      },
-    ],
-  },
-];
-
 const Charts = () => {
   const [mode, setMode] = useState("Unidimensional");
   const [tab, setTab] = useState(0);
   const [showComparison, setShowComparison] = useState(false);
   const router = useRouter();
   const getChartType = (datasetSummary: any) => {
-    switch (datasetSummary["dataType"]) {
+    let chartType = datasetSummary["dataType"];
+    if (chartType == "line") {
+      chartType =
+        datasetSummary["procedureGroup"] == "IMPC_VIA"
+          ? "viability"
+          : datasetSummary["procedureGroup"] == "IMPC_FER"
+          ? "fertility"
+          : [""].includes(datasetSummary["procedureGroup"])
+          ? "embryo_viability"
+          : "line";
+    }
+    switch (chartType) {
       case "unidimensional":
         return <Unidimensional datasetSummary={datasetSummary} />;
       case "categorical":
         return <Categorical datasetSummary={datasetSummary} />;
-      case "Viability":
-        return <Viability />;
-      case "Time series":
+      case "viability":
+        return <Viability datasetSummary={datasetSummary} />;
+      case "time_series":
         return <TimeSeries />;
-      case "Embryo":
+      case "embryo":
         return <Embryo />;
-      case "Histopathology":
+      case "histopathology":
         return <Histopathology />;
 
       default:
@@ -133,17 +57,30 @@ const Charts = () => {
     }
   };
 
-  const { data: datasetSummaries, isLoading } = useQuery({
-    queryKey: ['genes', router.query.mgiGeneAccessionId, router.query.mpTermId, 'dataset'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`),
-    enabled: router.isReady
+  let { data: datasetSummaries, isLoading } = useQuery({
+    queryKey: [
+      "genes",
+      router.query.mgiGeneAccessionId,
+      router.query.mpTermId,
+      "dataset",
+    ],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
+      ),
+    enabled: router.isReady,
   });
-  datasetSummaries ? console.log(datasetSummaries) : null;
+
   if (datasetSummaries) {
     datasetSummaries.sort((a, b) => {
       return a["reportedPValue"] - b["reportedPValue"];
     });
+    datasetSummaries = datasetSummaries?.filter(
+      (value, index, self) =>
+        self.findIndex((v) => v.datasetId === value.datasetId) === index
+    );
   }
+
   return (
     <>
       <Search />

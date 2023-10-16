@@ -21,7 +21,7 @@ const Phenotype = () => {
 
   const { data } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'genotype-hits'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`),
+    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`),
     enabled: router.isReady,
   });
 
@@ -31,7 +31,10 @@ const Phenotype = () => {
       <Search defaultType="phenotype" />
       <Container className="page">
         <Summary {...{ phenotype, isLoading, isError }}/>
-
+        <Card>
+          <h2>Significant genotype-phenotype associations</h2>
+          <ManhattanPlot phenotypeId={phenotypeId} />
+        </Card>
         <Card>
           <h2>IMPC Gene variants with abnormal stationary movement</h2>
           <p>
@@ -53,10 +56,6 @@ const Phenotype = () => {
               </a>
             </p>
           ))}
-        </Card>
-        <Card>
-          <h2>Manhattan Plot</h2>
-          <ManhattanPlot phenotypeId={phenotypeId} />
         </Card>
       </Container>
     </>

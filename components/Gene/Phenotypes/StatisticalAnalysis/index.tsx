@@ -6,11 +6,7 @@ import zoomPlugin from "chartjs-plugin-zoom";
 import _ from "lodash";
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  // faArrowLeftLong,
-  faCheckSquare,
-  // faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "../../../BodySystemIcon";
@@ -358,11 +354,7 @@ const StatisticalAnalysis = ({ data }) => {
         x.topLevelPhenotypes?.length
     )
   ) {
-    return (
-      <Alert style={{ marginTop: "1em" }} variant="primary">
-        Statistical analysis not available
-      </Alert>
-    );
+    return null;
   }
 
   const handleToggle = () => {
@@ -370,7 +362,6 @@ const StatisticalAnalysis = ({ data }) => {
   };
 
   const significantSuffix = (() => {
-    console.log(cat.type);
     if (cat.type === cats.BODY_SYSTEMS) {
       return "physiological systems";
     } else if (cat.type === cats.PROCEDURES) {
@@ -378,13 +369,7 @@ const StatisticalAnalysis = ({ data }) => {
     }
     return "";
   })();
-  console.log(significantSuffix);
-  // if (cat) {
-  // const title = cat.type.includes("PROCEDURE")
-  //   ? "Measurements by Procedures"
-  //   : cat.type.includes("SYSTEM")
-  //   ? "Measurements by Physiological Systems"
-  //   : "Measurements";
+
   return (
     <>
       <div
@@ -394,15 +379,6 @@ const StatisticalAnalysis = ({ data }) => {
           marginBottom: "1rem",
         }}
       >
-        {/* <p>
-            <button
-              onClick={() => setCat(null)}
-              className={`grey ${styles.inlineButton}`}
-            >
-              <FontAwesomeIcon icon={faArrowLeftLong} /> Back
-            </button>
-          </p> */}
-        {/* <h4>{title}</h4> */}
         <p>
           <label
             htmlFor="groupBy"
@@ -438,39 +414,6 @@ const StatisticalAnalysis = ({ data }) => {
       <StatisticalAnalysisChart data={data} cat={cat} sig={significantOnly} />
     </>
   );
-  // } else {
-  //   return (
-  //     <div style={{ paddingTop: "2rem", paddingLeft: "1rem" }}>
-  //       <h4>Explore the analysis of measurements we have collected</h4>
-  //       <p className="grey" style={{ maxWidth: 900 }}>
-  //         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-  //         mollitia ab quisquam sunt magnam aperiam sapiente, delectus incidunt
-  //         qui ad laborum impedit unde dolores architecto, velit dolor officia
-  //         doloremque id.
-  //       </p>
-  //       <p>
-  //         <strong>
-  //           Get started by selecting how you would like to view the data:
-  //         </strong>
-  //       </p>
-  //       <ul style={{ padding: 0, marginTop: "1rem" }}>
-  //         {options.map(({ label, category }) => (
-  //           <li
-  //             style={{ listStyle: "none", marginBottom: "1rem" }}
-  //             key={`label-${label}-${category}`}
-  //           >
-  //             <button
-  //               onClick={() => setCat({ type: category })}
-  //               className={`${styles.inlineButton} secondary`}
-  //             >
-  //               {label} <FontAwesomeIcon icon={faChevronRight} />
-  //             </button>
-  //           </li>
-  //         ))}
-  //       </ul>
-  //     </div>
-  //   );
-  // }
 };
 
 export default StatisticalAnalysis;

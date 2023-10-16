@@ -49,16 +49,6 @@ const SignificantPhenotypes = ({ data }) => {
       id: d.phenotype.id,
     })) || [];
 
-  const [sorted, setSorted] = useState<any[]>(null);
-
-  useEffect(() => {
-    setSorted(_.orderBy(processed, "phenotype", "asc"));
-  }, [data]);
-
-  if (!sorted) {
-    return <p>Loading...</p>;
-  }
-
   const getIcon = (sex) => {
     switch (sex) {
       case "male":
@@ -80,6 +70,17 @@ const SignificantPhenotypes = ({ data }) => {
         return "Combined";
     }
   };
+
+  const [sorted, setSorted] = useState<any[]>(null);
+
+  useEffect(() => {
+    setSorted(_.orderBy(processed, "phenotype", "asc"));
+  }, [data]);
+
+
+  if (!sorted) {
+    return null;
+  }
 
   return (
     <Pagination data={sorted}>
@@ -158,11 +159,11 @@ const SignificantPhenotypes = ({ data }) => {
                       {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                     </span>
                     <Link
-                      href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
+                      href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}
                       legacyBehavior
                     >
                       <strong className={`link small float-right`}>
-                        <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
+                        <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;
                         <FontAwesomeIcon icon={faChevronRight} />
                       </strong>
                     </Link>
