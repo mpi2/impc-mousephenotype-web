@@ -7,16 +7,16 @@ import {
   Legend,
 } from 'chart.js';
 import { Scatter } from "react-chartjs-2";
-import { chartColors } from "../../utils/chart";
+import { chartColors } from "@/utils/chart";
 import annotationPlugin from "chartjs-plugin-annotation";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
+import { fetchAPI } from "@/api-service";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { isEqual } from 'lodash';
-import mockData from "../../mocks/data/phenotypes/MP:0012361/gwas.json";
 import styles from './styles.module.scss';
-import { formatPValue } from "../../utils";
+import { formatPValue } from "@/utils";
+import LoadingProgressBar from "@/components/LoadingProgressBar";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, annotationPlugin);
 
@@ -223,11 +223,10 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
   const { data } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'gwas'],
-    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/gwas`),
+    queryFn: () => fetchAPI(`/api/v1/phenotypestatsresults/${phenotypeId}/phenotype`),
     enabled: router.isReady,
-    // @ts-ignore
-    initialData: mockData.results,
-    select: (data: Array<ChromosomeDataPoint>) => {
+    select: (response) => {
+      const data = response.results;
       const groupedByChr: Record<string, Array<ChromosomeDataPoint>> = {};
       data.forEach(point => {
         const chromosome = point.chrName;
@@ -272,9 +271,6 @@ const ManhattanPlot = ({ phenotypeId }) => {
     }
   });
 
-  if (!data) {
-    return null;
-  }
 
   return (
     <div className={styles.chartWrapper}>
@@ -282,17 +278,26 @@ const ManhattanPlot = ({ phenotypeId }) => {
         <i className="fa fa-circle" style={{ color: '#00FFFF' }}></i>&nbsp;&nbsp;Not significant
         <i className="fa fa-circle" style={{ color: '#FFA500', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
       </div>
-      <Scatter ref={chartRef} options={options as any} data={data as any} />
-      <DataTooltip
-        tooltip={clickTooltip}
-        offsetX={0}
-        offsetY={10}
-        onClick={() =>
-          // reset genes and chromosome data to show hovering tooltip
-          setClickTooltip(prevState => ({ ...prevState, genes:[], chromosome: '', opacity: 0 })
-        )}
-      />
-      <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} />
+      {!!data ? (
+        <>
+          <Scatter ref={chartRef} options={options as any} data={data as any} />
+          <DataTooltip
+            tooltip={clickTooltip}
+            offsetX={0}
+            offsetY={10}
+            onClick={() =>
+              // reset genes and chromosome data to show hovering tooltip
+              setClickTooltip(prevState => ({ ...prevState, genes:[], chromosome: '', opacity: 0 })
+              )}
+          />
+          <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} />
+        </>
+      ): (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <LoadingProgressBar />
+        </div>
+      )}
+
     </div>
   )
 };
