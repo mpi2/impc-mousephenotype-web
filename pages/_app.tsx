@@ -14,7 +14,17 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 config.autoAddCss = false;
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { staleTime: Infinity, refetchOnWindowFocus: true } },
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      refetchOnWindowFocus: true,
+      retry: (count, error) => {
+        console.log('IN QUERY CLIENT: ', error);
+        console.log('IN QUERY CLIENT STRING: ', error.toString());
+        return true;
+      }
+    }
+  },
 });
 function MyApp({ Component, pageProps }) {
   const mockingEnabled = !!process.env.NEXT_PUBLIC_API_MOCKING;
