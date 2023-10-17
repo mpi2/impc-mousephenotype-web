@@ -18,11 +18,7 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: Infinity,
       refetchOnWindowFocus: true,
-      retry: (count, error) => {
-        console.log('IN QUERY CLIENT: ', error);
-        console.log('IN QUERY CLIENT STRING: ', error.toString());
-        return true;
-      }
+      retry: (_, error) => !(error && error.toString() === 'No content')
     }
   },
 });
