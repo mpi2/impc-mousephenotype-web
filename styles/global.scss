@@ -105,14 +105,20 @@ p:last-child {
     color: #FFF;
   }
 }
+
 .modal-dialog.publications .modal-content {
   background-color: #FFF;
 }
+
 .modal-dialog.modal-85w {
   width: 85%;
   max-width: none !important;
 }
+
 ul.pagination .page-item.disabled .page-link {
   background-color: #FFF;
   border-color: #FFF;
+}
+.system-icon.in-table svg {
+  font-size: 1.5em;
 }
