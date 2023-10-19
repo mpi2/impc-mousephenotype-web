@@ -135,7 +135,7 @@ const SignificantPhenotypes = ({ data }) => {
                   {allele[0]}
                   <sup>{allele[1]}</sup>
                 </td>
-                <td>{d.zygosity}</td>
+                <td style={{ textTransform: "capitalize" }}>{d.zygosity}</td>
                 <td>{d.lifeStageName}</td>
                 <td>
                   {["male", "female", "not_considered"].map((col) => {
