@@ -52,59 +52,57 @@ const Histopathology = ({ gene }: { gene: any }) => {
   return (
     <Card id="histopathology">
       <h2>Histopathology</h2>
-      {sorted ?? (
-        <Pagination data={sorted}>
-          {(pageData) => (
-            <SortableTable
-              doSort={(sort) => {
-                setSorted(_.orderBy(data, sort[0], sort[1]));
-              }}
-              defaultSort={["parameterName", "asc"]}
-              headers={[
-                { width: 4, label: "Phenotype", field: "parameterName" },
-                {
-                  width: 2,
-                  label: "Allele",
-                  field: "alleleSymbol",
-                },
-                { width: 2, label: "Zygosity", field: "zygosity" },
-                { width: 2, label: "Sex", field: "sex" },
-                { width: 2, label: "Life Stage", field: "lifeStageName" },
-              ]}
-            >
-              {pageData.map((p) => {
-                const allele = formatAlleleSymbol(p.alleleSymbol);
-                return (
-                  <tr>
-                    <td>
-                      <Link
-                        href={`/histopath/${router.query.pid}?anatomy=${(
-                          p.parameterName.split(" -")[0] || ""
-                        ).toLowerCase()}`}
-                        legacyBehavior>
-                        <strong className="link">{p.parameterName}</strong>
-                      </Link>
-                    </td>
-                    <td>
-                      {allele[0]}
-                      <sup>{allele[1]}</sup>
-                    </td>
+      <Pagination data={sorted}>
+        {(pageData) => (
+          <SortableTable
+            doSort={(sort) => {
+              setSorted(_.orderBy(data, sort[0], sort[1]));
+            }}
+            defaultSort={["parameterName", "asc"]}
+            headers={[
+              { width: 4, label: "Phenotype", field: "parameterName" },
+              {
+                width: 2,
+                label: "Allele",
+                field: "alleleSymbol",
+              },
+              { width: 2, label: "Zygosity", field: "zygosity" },
+              { width: 2, label: "Sex", field: "sex" },
+              { width: 2, label: "Life Stage", field: "lifeStageName" },
+            ]}
+          >
+            {pageData.map((p) => {
+              const allele = formatAlleleSymbol(p.alleleSymbol);
+              return (
+                <tr>
+                  <td>
+                    <Link
+                      href={`/histopath/${router.query.pid}?anatomy=${(
+                        p.parameterName.split(" -")[0] || ""
+                      ).toLowerCase()}`}
+                      legacyBehavior>
+                      <strong className="link">{p.parameterName}</strong>
+                    </Link>
+                  </td>
+                  <td>
+                    {allele[0]}
+                    <sup>{allele[1]}</sup>
+                  </td>
 
-                    <td>{p.zygosity}</td>
-                    <td>
-                      <FontAwesomeIcon
-                        icon={p.sex == "female" ? faVenus : faMars}
-                      />{" "}
-                      {p.sex}
-                    </td>
-                    <td>{p.lifeStageName}</td>
-                  </tr>
-                );
-              })}
-            </SortableTable>
-          )}
-        </Pagination>
-      )}
+                  <td>{p.zygosity}</td>
+                  <td>
+                    <FontAwesomeIcon
+                      icon={p.sex == "female" ? faVenus : faMars}
+                    />{" "}
+                    {p.sex}
+                  </td>
+                  <td>{p.lifeStageName}</td>
+                </tr>
+              );
+            })}
+          </SortableTable>
+        )}
+      </Pagination>
     </Card>
   );
 };
