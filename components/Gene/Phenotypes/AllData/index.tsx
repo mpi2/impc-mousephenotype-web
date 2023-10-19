@@ -174,7 +174,7 @@ const AllData = ({ data }: { data: any }) => {
                         <BodySystem
                           name={x.name}
                           key={x.id}
-                          color="black"
+                          color="system-icon black in-table"
                           noSpacing
                         />
                       ))}
@@ -191,14 +191,14 @@ const AllData = ({ data }: { data: any }) => {
                       className="bold"
                     >
                       <div style={{display: "flex", justifyContent: "space-between"}}>
-                        <span className="orange-dark-x">
+                        <span className="">
                           {!!pValue ? formatPValue(pValue) : "-"}
                         </span>
                           <Link
                             href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
                             legacyBehavior
                           >
-                            <strong className={`link small float-right`}>
+                            <strong className={`link primary small float-right`}>
                               <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
                               <FontAwesomeIcon icon={faChevronRight} />
                             </strong>

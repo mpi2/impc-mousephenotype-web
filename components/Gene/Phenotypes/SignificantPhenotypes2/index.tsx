@@ -128,7 +128,7 @@ const SignificantPhenotypes = ({ data }) => {
                 </td>
                 <td>
                   {d.topLevelPhenotypes?.map(({ name }) => (
-                    <BodySystem name={name} color="black" noSpacing />
+                    <BodySystem name={name} color="system-icon black in-table" noSpacing />
                   ))}
                 </td>
                 <td>
@@ -155,14 +155,14 @@ const SignificantPhenotypes = ({ data }) => {
                 </td>
                 <td>
                   <span className={`me-2 bold ${styles.pValueCell}`}>
-                    <span className="orange-dark">
+                    <span className="">
                       {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                     </span>
                     <Link
                       href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}
                       legacyBehavior
                     >
-                      <strong className={`link small float-right`}>
+                      <strong className={`link primary small float-right`}>
                         <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;
                         <FontAwesomeIcon icon={faChevronRight} />
                       </strong>

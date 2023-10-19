@@ -96,3 +96,10 @@ $theme-colors: (
 $container-max-widths: (
   "": 1440px,
 );
+
+.primary.link, a.primary {
+  &:hover {
+    color: $orange-dark;
+    text-decoration: underline;
+  }
+}
