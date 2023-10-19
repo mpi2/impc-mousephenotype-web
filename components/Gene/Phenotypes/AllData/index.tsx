@@ -47,80 +47,77 @@ const AllData = ({ data }: { data: any }) => {
 
   return (
     <>
-      <div
-        style={{
-          paddingLeft: "0.5rem",
-          paddingTop: "1rem",
-          marginBottom: "1rem",
-        }}
-      >
-        <p>
-          <Form.Control
-            type="text"
-            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
-            aria-label="Filter by parameters"
-            id="parameterFilter"
-            className="bg-white"
-            placeholder="Search "
-            onChange={(el) => {
-              setQuery(el.target.value.toLowerCase() || undefined);
-            }}
-          ></Form.Control>
-          <label
-            htmlFor="procedureFilter"
-            className="grey"
-            style={{ marginRight: "0.5rem" }}
-          >
-            Procedure:
-          </label>
-          <Form.Select
-            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
-            aria-label="Filter by procedures"
-            defaultValue={undefined}
-            id="procedureFilter"
-            className="bg-white"
-            onChange={(el) => {
-              setProcedure(
-                el.target.value === "all" ? undefined : el.target.value
-              );
-            }}
-          >
-            <option value={"all"}>All</option>
-            {procedures.map((p) => (
-              <option value={p} key={`procedure_${p}`}>
-                {p}
-              </option>
-            ))}
-          </Form.Select>
-          <label
-            htmlFor="systemFilter"
-            className="grey"
-            style={{ marginRight: "0.5rem" }}
-          >
-            Physiological system:
-          </label>
-          <Form.Select
-            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
-            aria-label="Filter by physiological system"
-            defaultValue={undefined}
-            id="systemFilter"
-            className="bg-white"
-            onChange={(el) => {
-              setSystem(
-                el.target.value === "all" ? undefined : el.target.value
-              );
-            }}
-          >
-            <option value={"all"}>All</option>
-            {allBodySystems.map((p) => (
-              <option value={p} key={`system_${p}`}>
-                {getLabel(p)}
-              </option>
-            ))}
-          </Form.Select>
-        </p>
-      </div>
-      <Pagination data={filtered}>
+      <Pagination
+        data={filtered}
+        additionalTopControls={
+          <div>
+            <p>
+              <Form.Control
+                type="text"
+                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                aria-label="Filter by parameters"
+                id="parameterFilter"
+                className="bg-white"
+                placeholder="Search "
+                onChange={(el) => {
+                  setQuery(el.target.value.toLowerCase() || undefined);
+                }}
+              ></Form.Control>
+              <label
+                htmlFor="procedureFilter"
+                className="grey"
+                style={{ marginRight: "0.5rem" }}
+              >
+                Procedure:
+              </label>
+              <Form.Select
+                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                aria-label="Filter by procedures"
+                defaultValue={undefined}
+                id="procedureFilter"
+                className="bg-white"
+                onChange={(el) => {
+                  setProcedure(
+                    el.target.value === "all" ? undefined : el.target.value
+                  );
+                }}
+              >
+                <option value={"all"}>All</option>
+                {procedures.map((p) => (
+                  <option value={p} key={`procedure_${p}`}>
+                    {p}
+                  </option>
+                ))}
+              </Form.Select>
+              <label
+                htmlFor="systemFilter"
+                className="grey"
+                style={{ marginRight: "0.5rem" }}
+              >
+                Physiological system:
+              </label>
+              <Form.Select
+                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                aria-label="Filter by physiological system"
+                defaultValue={undefined}
+                id="systemFilter"
+                className="bg-white"
+                onChange={(el) => {
+                  setSystem(
+                    el.target.value === "all" ? undefined : el.target.value
+                  );
+                }}
+              >
+                <option value={"all"}>All</option>
+                {allBodySystems.map((p) => (
+                  <option value={p} key={`system_${p}`}>
+                    {getLabel(p)}
+                  </option>
+                ))}
+              </Form.Select>
+            </p>
+          </div>
+        }>
         {(currentPage) => (
           <SortableTable
             doSort={(sort) => {

@@ -27,7 +27,7 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
     )
   }
   return (
-    <>{children}</>
+    <div className="mt-3">{children}</div>
   );
 }
 
