@@ -150,7 +150,7 @@ const GeneResults = ({ query }: { query?: string }) => {
             marginTop: -80,
           }}
         >
-          <h1>
+          <h1 style={{ marginBottom: 0 }}>
             <strong>Gene search results</strong>
           </h1>
           {!!query && (

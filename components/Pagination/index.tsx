@@ -185,7 +185,7 @@ const Pagination = (props: Props) => {
 
   return (
     <>
-      <div className={`${styles.buttonsWrapper} ${!!AdditionalTopControls ? styles.withControls : ''}`}>
+      <div className={`${styles.buttonsWrapper} ${styles.top} ${!!AdditionalTopControls ? styles.withControls : ''}`}>
         { !!AdditionalTopControls && (
           <div className={styles.additionalWrapper}>
             { AdditionalTopControls }
