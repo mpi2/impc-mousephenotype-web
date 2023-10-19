@@ -4,8 +4,8 @@
   align-items: center;
   vertical-align: inherit;
   svg {
-    width: 2rem;
-    height: 2rem;
+    max-width: 2rem;
+    max-height: 2rem;
     margin-right: $xxs;
   }
 }
