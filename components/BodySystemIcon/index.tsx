@@ -291,6 +291,7 @@ export const BodySystem = ({
   noSpacing,
   appendLabel,
   prependLabel,
+  size = '2x',
 }: {
   isSignificant?: boolean;
   name: string;
@@ -299,6 +300,7 @@ export const BodySystem = ({
   noSpacing?: boolean;
   appendLabel?: string;
   prependLabel?: string;
+  size?: SizeProp;
 }) => {
   const label = _.capitalize(name.replace(/ phenotype/g, ""));
   const [hovered, setHovered] = useState<boolean>(false);
@@ -307,7 +309,7 @@ export const BodySystem = ({
     <span
       className={noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem}
     >
-      <BodySystemIcon name={name} color={color} />{" "}
+      <BodySystemIcon name={name} color={color} size={size} />&nbsp;
       <span className="orange-dark">{label}</span>
     </span>
   ) : (
@@ -333,7 +335,7 @@ export const BodySystem = ({
             noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem
           } ${!!hoverColor && hovered ? hoverColor : color}`}
         >
-          <BodySystemIcon name={name} color="currentColor" />
+          <BodySystemIcon name={name} color="currentColor" size={size} />
         </span>
       )}
     </OverlayTrigger>

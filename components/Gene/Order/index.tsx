@@ -117,7 +117,7 @@ const Order = ({ gene }: { gene: any }) => {
                         href={`/alleles/${router.query.pid}/${allele[1]}`}
                         className="link primary"
                       >
-                        View products&nbsp;
+                        <strong>View products</strong>&nbsp;
                         <FontAwesomeIcon icon={faArrowRight} />
                       </Link>
                     </td>

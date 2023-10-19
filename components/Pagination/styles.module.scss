@@ -10,6 +10,10 @@
   align-items: center;
   flex-wrap: wrap;
 
+  &.top {
+    margin-top: 0;
+  }
+
   &.withControls {
     justify-content: space-between;
     padding-bottom: 1rem;

@@ -217,30 +217,32 @@ const Summary = ({
             {gene.mgiGeneAccessionId}{" "}
             <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" />
           </a>
-          <span className={styles.subheadingSection}>
+          {gene?.synonyms?.length > 0 && (
+            <span className={styles.subheadingSection}>
             Synonyms:{" "}
-            {displaySynonyms()}
-            {gene.synonyms.length > SYNONYMS_COUNT && (
-              <OverlayTrigger
-                placement="bottom"
-                trigger={["hover", "focus"]}
-                overlay={
-                  <Tooltip>
-                    <div style={{ textAlign: "left" }}>
-                      {displaySynonymsInTooltip()}
-                    </div>
-                  </Tooltip>
-                }
-              >
-                {({ ref, ...triggerHandler }) => (
-                  <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
+              {displaySynonyms()}
+              {gene.synonyms.length > SYNONYMS_COUNT && (
+                <OverlayTrigger
+                  placement="bottom"
+                  trigger={["hover", "focus"]}
+                  overlay={
+                    <Tooltip>
+                      <div style={{ textAlign: "left" }}>
+                        {displaySynonymsInTooltip()}
+                      </div>
+                    </Tooltip>
+                  }
+                >
+                  {({ ref, ...triggerHandler }) => (
+                    <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
                     ,&nbsp;+{gene.synonyms.length - SYNONYMS_COUNT} more{" "}
-                    <FontAwesomeIcon icon={faCaretSquareDown} />
+                      <FontAwesomeIcon icon={faCaretSquareDown} />
                   </span>
-                )}
-              </OverlayTrigger>
-            )}
+                  )}
+                </OverlayTrigger>
+              )}
           </span>
+          )}
         </div>
         <a
           className={`${styles.howLink} secondary`}

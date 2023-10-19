@@ -9,8 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
-import BodySystemIcon from "../../../BodySystemIcon";
-import { formatBodySystems } from "../../../../utils";
+import BodySystemIcon from "@/components/BodySystemIcon";
+import { formatBodySystems } from "@/utils";
 import { Alert, Button, Form } from "react-bootstrap";
 
 Chart.register([annotationPlugin, zoomPlugin]);
@@ -375,7 +375,6 @@ const StatisticalAnalysis = ({ data }) => {
       <div
         style={{
           paddingLeft: "0.5rem",
-          paddingTop: "1rem",
           marginBottom: "1rem",
         }}
       >

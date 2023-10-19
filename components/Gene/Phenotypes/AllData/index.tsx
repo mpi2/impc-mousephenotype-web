@@ -47,80 +47,77 @@ const AllData = ({ data }: { data: any }) => {
 
   return (
     <>
-      <div
-        style={{
-          paddingLeft: "0.5rem",
-          paddingTop: "1rem",
-          marginBottom: "1rem",
-        }}
-      >
-        <p>
-          <Form.Control
-            type="text"
-            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
-            aria-label="Filter by parameters"
-            id="parameterFilter"
-            className="bg-white"
-            placeholder="Search "
-            onChange={(el) => {
-              setQuery(el.target.value.toLowerCase() || undefined);
-            }}
-          ></Form.Control>
-          <label
-            htmlFor="procedureFilter"
-            className="grey"
-            style={{ marginRight: "0.5rem" }}
-          >
-            Procedure:
-          </label>
-          <Form.Select
-            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
-            aria-label="Filter by procedures"
-            defaultValue={undefined}
-            id="procedureFilter"
-            className="bg-white"
-            onChange={(el) => {
-              setProcedure(
-                el.target.value === "all" ? undefined : el.target.value
-              );
-            }}
-          >
-            <option value={"all"}>All</option>
-            {procedures.map((p) => (
-              <option value={p} key={`procedure_${p}`}>
-                {p}
-              </option>
-            ))}
-          </Form.Select>
-          <label
-            htmlFor="systemFilter"
-            className="grey"
-            style={{ marginRight: "0.5rem" }}
-          >
-            Physiological system:
-          </label>
-          <Form.Select
-            style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
-            aria-label="Filter by physiological system"
-            defaultValue={undefined}
-            id="systemFilter"
-            className="bg-white"
-            onChange={(el) => {
-              setSystem(
-                el.target.value === "all" ? undefined : el.target.value
-              );
-            }}
-          >
-            <option value={"all"}>All</option>
-            {allBodySystems.map((p) => (
-              <option value={p} key={`system_${p}`}>
-                {getLabel(p)}
-              </option>
-            ))}
-          </Form.Select>
-        </p>
-      </div>
-      <Pagination data={filtered}>
+      <Pagination
+        data={filtered}
+        additionalTopControls={
+          <div>
+            <p>
+              <Form.Control
+                type="text"
+                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                aria-label="Filter by parameters"
+                id="parameterFilter"
+                className="bg-white"
+                placeholder="Search "
+                onChange={(el) => {
+                  setQuery(el.target.value.toLowerCase() || undefined);
+                }}
+              ></Form.Control>
+              <label
+                htmlFor="procedureFilter"
+                className="grey"
+                style={{ marginRight: "0.5rem" }}
+              >
+                Procedure:
+              </label>
+              <Form.Select
+                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                aria-label="Filter by procedures"
+                defaultValue={undefined}
+                id="procedureFilter"
+                className="bg-white"
+                onChange={(el) => {
+                  setProcedure(
+                    el.target.value === "all" ? undefined : el.target.value
+                  );
+                }}
+              >
+                <option value={"all"}>All</option>
+                {procedures.map((p) => (
+                  <option value={p} key={`procedure_${p}`}>
+                    {p}
+                  </option>
+                ))}
+              </Form.Select>
+              <label
+                htmlFor="systemFilter"
+                className="grey"
+                style={{ marginRight: "0.5rem" }}
+              >
+                Physiological system:
+              </label>
+              <Form.Select
+                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                aria-label="Filter by physiological system"
+                defaultValue={undefined}
+                id="systemFilter"
+                className="bg-white"
+                onChange={(el) => {
+                  setSystem(
+                    el.target.value === "all" ? undefined : el.target.value
+                  );
+                }}
+              >
+                <option value={"all"}>All</option>
+                {allBodySystems.map((p) => (
+                  <option value={p} key={`system_${p}`}>
+                    {getLabel(p)}
+                  </option>
+                ))}
+              </Form.Select>
+            </p>
+          </div>
+        }>
         {(currentPage) => (
           <SortableTable
             doSort={(sort) => {
@@ -140,6 +137,7 @@ const AllData = ({ data }: { data: any }) => {
               },
               { width: 1, label: "Life stage", field: "lifeStageName" },
               { width: 1, label: "Allele", field: "alleleSymbol" },
+              { width: 1, label: "Center", field: "phenotypingCentre" },
               { width: 1, label: "Zygosity", field: "zygosity" },
               { width: 0.5, label: "Significant", field: "significant" },
               { width: 2, label: "P value", field: "pValue" },
@@ -156,6 +154,7 @@ const AllData = ({ data }: { data: any }) => {
                   pValue,
                   topLevelPhenotypes,
                   alleleSymbol,
+                  phenotypingCentre
                 },
                 i
               ) => {
@@ -172,7 +171,7 @@ const AllData = ({ data }: { data: any }) => {
                         <BodySystem
                           name={x.name}
                           key={x.id}
-                          color="black"
+                          color="system-icon black in-table"
                           noSpacing
                         />
                       ))}
@@ -182,20 +181,21 @@ const AllData = ({ data }: { data: any }) => {
                       {allele[0]}
                       <sup>{allele[1]}</sup>
                     </td>
+                    <td>{phenotypingCentre}</td>
                     <td style={{ textTransform: "capitalize" }}>{zygosity}</td>
                     <td>{significant ? "Yes" : "No"}</td>
                     <td
                       className="bold"
                     >
                       <div style={{display: "flex", justifyContent: "space-between"}}>
-                        <span className="orange-dark-x">
+                        <span className="">
                           {!!pValue ? formatPValue(pValue) : "-"}
                         </span>
                           <Link
                             href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
                             legacyBehavior
                           >
-                            <strong className={`link small float-right`}>
+                            <strong className={`link primary small float-right`}>
                               <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
                               <FontAwesomeIcon icon={faChevronRight} />
                             </strong>
