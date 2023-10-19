@@ -140,6 +140,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
       },
       y: {
         title: { display: true, text: '-log₁₀(P-value)' },
+        min: 0,
+        max: 45
       }
     },
     plugins: {
