@@ -5,11 +5,11 @@ import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { formatAlleleSymbol } from "../../../utils";
+import { formatAlleleSymbol } from "@/utils";
 import { Alert } from "react-bootstrap";
 import _ from "lodash";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 import { Publication } from "../../PublicationsList/types";
 import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
@@ -133,7 +133,7 @@ const Publications = ({ gene }: { gene: any }) => {
                       <a
                         href={`https://pubmed.ncbi.nlm.nih.gov/${p.pmId}`}
                         target="_blank"
-                        className="link"
+                        className="link primary"
                       >
                         {p.pmId}&nbsp;
                         <FontAwesomeIcon
