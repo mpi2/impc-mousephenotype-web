@@ -140,6 +140,7 @@ const AllData = ({ data }: { data: any }) => {
               },
               { width: 1, label: "Life stage", field: "lifeStageName" },
               { width: 1, label: "Allele", field: "alleleSymbol" },
+              { width: 1, label: "Center", field: "phenotypingCentre" },
               { width: 1, label: "Zygosity", field: "zygosity" },
               { width: 0.5, label: "Significant", field: "significant" },
               { width: 2, label: "P value", field: "pValue" },
@@ -156,6 +157,7 @@ const AllData = ({ data }: { data: any }) => {
                   pValue,
                   topLevelPhenotypes,
                   alleleSymbol,
+                  phenotypingCentre
                 },
                 i
               ) => {
@@ -182,6 +184,7 @@ const AllData = ({ data }: { data: any }) => {
                       {allele[0]}
                       <sup>{allele[1]}</sup>
                     </td>
+                    <td>{phenotypingCentre}</td>
                     <td style={{ textTransform: "capitalize" }}>{zygosity}</td>
                     <td>{significant ? "Yes" : "No"}</td>
                     <td
