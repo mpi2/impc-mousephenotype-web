@@ -26,7 +26,7 @@ const Pagination = (props: Props) => {
     page = 0,
     pageSize,
     controlled = false,
-    buttonsPlacement = 'bottom',
+    buttonsPlacement = 'both',
     additionalTopControls: AdditionalTopControls = null,
   } = props;
 
