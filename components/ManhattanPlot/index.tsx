@@ -17,6 +17,7 @@ import { isEqual } from 'lodash';
 import styles from './styles.module.scss';
 import { formatPValue } from "@/utils";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
+import Form from 'react-bootstrap/Form';
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, annotationPlugin);
 
@@ -110,6 +111,7 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
     chromosome: '',
     genes: [],
   });
+  const [geneSymbol, setGeneSymbol] = useState('');
   const ticks = [];
   let originalTicks = [];
   const validChromosomes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 'X'];
@@ -117,7 +119,7 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
   const calculateTooltipXPos = (pos: number) => {
     const canvasWidth = chartRef.current.width;
     if (pos >= canvasWidth / 2) {
-      return pos - (175 * 1.03);
+      return pos - (175 * 1.17);
     }
     return pos;
   }
@@ -209,7 +211,12 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
     },
     elements: {
       point: {
-        pointBackgroundColor: ctx => ctx.raw.y >= 4 ? '#FFA500' : '#00FFFF'
+        radius: ctx => !!geneSymbol && ctx.raw.geneSymbol.includes(geneSymbol) ? 7 : 3,
+        pointBackgroundColor: ctx => {
+          const shouldBeHighlighted = !!geneSymbol && ctx.raw.geneSymbol.includes(geneSymbol);
+          if (shouldBeHighlighted) return '#F7DC4A';
+          return ctx.raw.y >= 4 ? `#FFA500` : '#00FFFF';
+        },
       }
     },
     onHover: (e, elements) => !!elements.length ? e.native.target.style.cursor = 'pointer' : e.native.target.style.cursor = 'auto',
@@ -291,8 +298,18 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
   return (
     <div className={styles.chartWrapper}>
       <div className={styles.labelsWrapper}>
-        <i className="fa fa-circle" style={{ color: '#00FFFF' }}></i>&nbsp;&nbsp;Not significant
-        <i className="fa fa-circle" style={{ color: '#FFA500', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
+        <div>
+          <i className="fa fa-circle" style={{ color: '#00FFFF' }}></i>&nbsp;&nbsp;Not significant
+          <i className="fa fa-circle" style={{ color: '#FFA500', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
+        </div>
+        <div style={{ display: 'flex', whiteSpace: 'nowrap', alignItems: 'center' }}>
+          Filter by gene:&nbsp;
+          <Form.Control
+            type="text"
+            value={geneSymbol}
+            onChange={(e) => setGeneSymbol(e.target.value)}
+          />
+        </div>
       </div>
       {!!data ? (
         <>
