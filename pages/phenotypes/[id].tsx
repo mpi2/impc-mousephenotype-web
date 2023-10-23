@@ -49,7 +49,7 @@ const Phenotype = () => {
           <h2>Genotype-phenotype associations</h2>
           <ManhattanPlot phenotypeId={phenotypeId} onGeneClick={toggleGene} />
         </Card>
-        <Card>
+        <Card id="associations-table">
           <h2>IMPC Gene variants with abnormal stationary movement</h2>
           <p>
             Total number of significant genotype-phenotype associations:{" "}

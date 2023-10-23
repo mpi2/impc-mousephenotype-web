@@ -25,6 +25,7 @@
   gap: $md;
   align-items: center;
   flex-shrink: 0;
+  justify-content: flex-end;
 }
 
 .chart {
@@ -38,5 +39,5 @@
 
 .summaryContent {
   display: flex;
-  justify-content: space-between;
+  padding-bottom: 2.5rem;
 }
