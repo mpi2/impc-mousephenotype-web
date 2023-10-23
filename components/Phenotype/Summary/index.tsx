@@ -1,11 +1,11 @@
 import styles from "./styles.module.scss";
 import Card from "../../Card";
 import { BodySystem } from "../../BodySystemIcon";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { useRouter } from "next/router";
-import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus, faWarning } from "@fortawesome/free-solid-svg-icons";
 
 
 const Summary = ({ phenotype, isLoading, isError }) => {
@@ -121,27 +121,39 @@ const Summary = ({ phenotype, isLoading, isError }) => {
           ))}
         </div>
       </div>
-      <h1>
-        <strong>{phenotype.phenotypeName}</strong>
-      </h1>
+      <Row>
+        <Col lg={6}>
+          <h1 style={{ margin: 0 }}>
+            <strong>{phenotype.phenotypeName}</strong>
+          </h1>
+        </Col>
+        <Col lg={6}>
+          <div className={styles.stats}>
+            <div data-testid="significant-genes">
+              <p className="secondary h2 mb-0">{phenotype.significantGenes}</p>
+              <span className="grey">significant genes</span>
+            </div>
+            <div data-testid="tested-genes-percentage">
+              <p className="secondary h2 mb-0">{calculatePercentageGenes()}%</p>
+              <span className="grey">of tested genes</span>
+            </div>
+            <div data-testid="total-genes-tested">
+              <p className="h2 mb-0">{getNoTotalGenes()}</p>
+              <span className="grey">tested genes</span>
+            </div>
+          </div>
+        </Col>
+      </Row>
       <div className={styles.summaryContent}>
         <div>
           <h3>Description</h3>
           <p className="grey">{phenotype.phenotypeDefinition}</p>
         </div>
-        <div className={styles.stats}>
-          <div data-testid="significant-genes">
-            <p className="secondary h2 mb-2">{phenotype.significantGenes}</p>
-            <span className="grey">significant genes</span>
-          </div>
-          <div data-testid="tested-genes-percentage">
-            <p className="secondary h2 mb-2">{calculatePercentageGenes()}%</p>
-            <span className="grey">of tested genes</span>
-          </div>
-          <div data-testid="total-genes-tested">
-            <p className="h2 mb-2">{getNoTotalGenes()}</p>
-            <span className="grey">tested genes</span>
-          </div>
+        <div className="purchaseBanner phenotype-page">
+          <span>Significant gene-phenotype associations</span>
+          <a href="#associations-table" className="purchaseButton">
+             View data
+          </a>
         </div>
       </div>
     </Card>
