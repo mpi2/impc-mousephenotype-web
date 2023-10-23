@@ -420,9 +420,9 @@ const Summary = ({
               />
             </Col>
           </Row>
-          <div className={styles.purchaseBanner}>
+          <div className="purchaseBanner">
             <span>4 allele products available</span>
-            <a href="#purchase" className={styles.purchaseButton}>
+            <a href="#purchase" className="purchaseButton">
               <FontAwesomeIcon icon={faCartPlus} /> Order Alleles
             </a>
           </div>
