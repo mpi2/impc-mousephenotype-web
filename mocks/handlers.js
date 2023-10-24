@@ -59,9 +59,8 @@ export const handlers = [
   }),
   rest.get(`${API_URL}/api/v1/genes/:geneId/:section`, (req, res, ctx) => {
     const { geneId, section } = req.params;
-    const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
-      const geneSectionData = genes(`./${geneId}/${section}.json`);
+      const geneSectionData = require(`./data/genes/${geneId}/${section}.json`);
       const sectionKeyMap = {
         statisticalResults: "statisticalResults",
         phenotypes: "significantPhenotypes",
@@ -70,7 +69,6 @@ export const handlers = [
       const sectionData = sectionKeyMap.hasOwnProperty(section)
         ? geneSectionData[sectionKeyMap[section]]
         : geneSectionData;
-
       return res(ctx.status(200), ctx.json(sectionData));
     } catch (e) {
       return res(ctx.status(404));
