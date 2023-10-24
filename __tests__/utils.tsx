@@ -2,6 +2,8 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {render} from "@testing-library/react";
 import * as React from 'react';
 
+export const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
+
 const createTestQueryClient = () => new QueryClient({
   defaultOptions: {
     queries: {
