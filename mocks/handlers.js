@@ -1,8 +1,10 @@
 import { rest } from "msw";
 import searchResults from "./data/search.json";
 
+const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
+
 export const handlers = [
-  rest.post("/api/v1/login", (req, res, ctx) => {
+  rest.post(`${API_URL}/api/v1/login`, (req, res, ctx) => {
     // Persist user's authentication in the session
     sessionStorage.setItem("is-authenticated", "true");
     return res(
@@ -10,7 +12,15 @@ export const handlers = [
       ctx.status(200)
     );
   }),
-  rest.get("/api/v1/user", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/v1/genes/all/summary-averages`, (req, res ,ctx) => {
+    return res(ctx.status(200), ctx.json({
+      significantPhenotypesAverage: 8.280087527352297,
+      associatedDiseasesAverage: 2.867132867132867,
+      adultExpressionObservationsAverage :57.04410751206065,
+      embryoExpressionObservationsAverage: 42.84877384196185
+    }));
+  }),
+  rest.get(`${API_URL}/api/v1/user`, (req, res, ctx) => {
     // Check if the user is authenticated in this session
     const isAuthenticated = sessionStorage.getItem("is-authenticated");
     if (!isAuthenticated) {
@@ -30,7 +40,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get("/api/search/v1/search", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/search/v1/search`, (req, res, ctx) => {
     const prefix = req.url.searchParams.get("prefix");
     const type = req.url.searchParams.get("type");
     const { query } = req.params;
@@ -47,7 +57,7 @@ export const handlers = [
       return res(ctx.status(404));
     }
   }),
-  rest.get("/api/v1/genes/:geneId/:section", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/v1/genes/:geneId/:section`, (req, res, ctx) => {
     const { geneId, section } = req.params;
     const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
@@ -67,7 +77,7 @@ export const handlers = [
     }
   }),
   rest.get(
-    "/api/v1/supporting-data-unidimensional/:geneId/",
+      `${API_URL}/api/v1/supporting-data-unidimensional/:geneId/`,
     (req, res, ctx) => {
       const { geneId } = req.params;
       const genes = require.context(`./data/genes/`, true, /\.json$/);
@@ -83,12 +93,12 @@ export const handlers = [
       }
     }
   ),
-  rest.get("/api/v1/supporting-data-categorical/:geneId/", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/v1/supporting-data-categorical/:geneId/`, (req, res, ctx) => {
     const { geneId } = req.params;
     const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
       const geneSectionData = genes(
-        `./${geneId}/supporting-data-categorical.json`
+          `./${geneId}/supporting-data-categorical.json`
       );
       const sectionData = geneSectionData["dataStatsResults"][0];
 
@@ -97,7 +107,7 @@ export const handlers = [
       return res(ctx.status(404));
     }
   }),
-  rest.get("/api/v1/alleles/:geneId/:alleleName", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/v1/alleles/:geneId/:alleleName`, (req, res, ctx) => {
     const { geneId, alleleName } = req.params;
     const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
@@ -107,7 +117,7 @@ export const handlers = [
       return res(ctx.status(404));
     }
   }),
-  rest.get("/api/v1/phenotypes/:phenotypeId/:section", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/v1/phenotypes/:phenotypeId/:section`, (req, res, ctx) => {
     const { phenotypeId, section } = req.params;
     const phenotypes = require.context(`./data/phenotypes/`, true, /\.json$/);
     try {
@@ -127,13 +137,13 @@ export const handlers = [
       return res(ctx.status(404), e);
     }
   }),
-  rest.get("/api/v1/landing-pages-data/embryo", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/v1/landing-pages-data/embryo`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(require('./data/landing-pages/embryo.json')));
   }),
-  rest.get("/api/v1/publications", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/v1/publications`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(require('./data/publications')));
   }),
-  rest.get("/api/imaging/v1/thumbnails", (req, res, ctx) => {
+  rest.get(`${API_URL}/api/imaging/v1/thumbnails`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(require('./data/imaging/thumbnails.json')));
   }),
   // rest.post(

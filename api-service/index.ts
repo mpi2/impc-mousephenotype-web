@@ -1,9 +1,8 @@
 
 export const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
-const MOCKING_ENABLED = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
 
 export async function fetchAPI(query: string) {
-  const endpointURL = MOCKING_ENABLED ? query : API_URL + query;
+  const endpointURL = API_URL + query;
   const response = await fetch(endpointURL);
   if (response.status === 204 || response.status === 404) {
     return Promise.reject("No content");
