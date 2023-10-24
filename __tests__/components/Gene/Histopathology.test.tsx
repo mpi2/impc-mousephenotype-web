@@ -7,7 +7,7 @@ import { rest } from 'msw';
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
-describe('Gene expressions component', () => {
+describe('Gene histopathology component', () => {
   it('should display information', async () => {
     // misuse of query param :) to pass param to fetch function
     await mockRouter.push('/genes/MGI:2143539?pid=MGI:2143539');
