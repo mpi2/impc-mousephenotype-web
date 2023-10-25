@@ -13,7 +13,7 @@ import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
 import styles from "./styles.module.scss";
 import _ from "lodash";
-import { formatAlleleSymbol, formatPValue } from "../../../../utils";
+import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const SignificantPhenotypes = ({ data }) => {
@@ -158,10 +158,7 @@ const SignificantPhenotypes = ({ data }) => {
                     <span className="">
                       {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                     </span>
-                    <Link
-                      href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}
-                      legacyBehavior
-                    >
+                    <Link href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}>
                       <strong className={`link primary small float-right`}>
                         <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;
                         <FontAwesomeIcon icon={faChevronRight} />

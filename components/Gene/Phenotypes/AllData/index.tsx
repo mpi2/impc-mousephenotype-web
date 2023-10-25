@@ -4,8 +4,8 @@ import _ from "lodash";
 import { useEffect, useState } from "react";
 import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
-import { Alert, Form } from "react-bootstrap";
-import { formatAlleleSymbol, formatPValue } from "../../../../utils";
+import { Form } from "react-bootstrap";
+import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { allBodySystems } from "../../Summary";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -191,10 +191,7 @@ const AllData = ({ data }: { data: any }) => {
                         <span className="">
                           {!!pValue ? formatPValue(pValue) : "-"}
                         </span>
-                          <Link
-                            href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
-                            legacyBehavior
-                          >
+                          <Link href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis">
                             <strong className={`link primary small float-right`}>
                               <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
                               <FontAwesomeIcon icon={faChevronRight} />
