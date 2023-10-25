@@ -6,7 +6,6 @@ import Unidimensional from "../../components/Data/Unidimensional";
 import Viability from "../../components/Data/Viability";
 import Categorical from "../../components/Data/Categorical";
 import TimeSeries from "../../components/Data/TimeSeries";
-import Embryo from "../../components/Data/Embryo";
 import Histopathology from "../../components/Data/Histopathology";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
@@ -20,6 +19,7 @@ import DataComparison from "../../components/Data/DataComparison";
 import { formatPValue } from "../../utils";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../api-service";
+import EmbryoViability from "../../components/Data/EmbryoViability";
 
 const Charts = () => {
   const [mode, setMode] = useState("Unidimensional");
@@ -34,7 +34,12 @@ const Charts = () => {
           ? "viability"
           : datasetSummary["procedureGroup"] == "IMPC_FER"
           ? "fertility"
-          : [""].includes(datasetSummary["procedureGroup"])
+          : [
+              "IMPC_EVL_001_001",
+              "IMPC_EVM_001_001",
+              "IMPC_EVP_001_001",
+              "IMPC_EVO_001_001",
+            ].includes(datasetSummary["procedureGroup"])
           ? "embryo_viability"
           : "line";
     }
@@ -48,7 +53,7 @@ const Charts = () => {
       case "time_series":
         return <TimeSeries />;
       case "embryo":
-        return <Embryo />;
+        return <EmbryoViability datasetSummary={datasetSummary} />;
       case "histopathology":
         return <Histopathology />;
 
