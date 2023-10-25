@@ -19,6 +19,7 @@ const config = {
         "__tests__/utils.tsx",
     ],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+    setupFiles: ['<rootDir>/jest.polyfills.js'],
     moduleNameMapper: {
         '^@/components/(.*)$': '<rootDir>/components/$1',
         '^@/pages/(.*)$': '<rootDir>/pages/$1',

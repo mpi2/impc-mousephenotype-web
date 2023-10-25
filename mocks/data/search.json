@@ -2,6 +2,16 @@
   {
     "mgi_accession_id": "MGI:1860086",
     "marker_name": "cytokine receptor-like factor 3",
+    "marker_symbol": "Gls2",
+    "marker_synonym": ["A330074B06Rik", "Lga"],
+    "es_cell_production_status": "ES Cells Produced",
+    "mouse_production_status": "Mice Produced",
+    "phenotype_status": "Phenotyping data available",
+    "phenotyping_data_available": true
+  },
+  {
+    "mgi_accession_id": "MGI:1860086",
+    "marker_name": "cytokine receptor-like factor 3",
     "marker_symbol": "Crlf3",
     "marker_synonym": ["Creme9", "cytor4"],
     "es_cell_production_status": "ES Cells Produced",

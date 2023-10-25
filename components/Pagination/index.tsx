@@ -127,9 +127,7 @@ const Pagination = (props: Props) => {
                 </li>
               )}
               <li
-                className={`page-item ${
-                  internalPage === totalPages ? "active" : ""
-                }`}
+                className="page-item"
                 data-testid={`${placement}-last-page`}
               >
                 <button
@@ -185,7 +183,10 @@ const Pagination = (props: Props) => {
 
   return (
     <>
-      <div className={`${styles.buttonsWrapper} ${styles.top} ${!!AdditionalTopControls ? styles.withControls : ''}`}>
+      <div
+        className={`${styles.buttonsWrapper} ${styles.top} ${!!AdditionalTopControls ? styles.withControls : ''}`}
+        data-testid="top-controls-wrapper"
+      >
         { !!AdditionalTopControls && (
           <div className={styles.additionalWrapper}>
             { AdditionalTopControls }

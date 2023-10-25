@@ -1,6 +1,21 @@
 {
-  "numResults": 20,
+  "numResults": 21,
   "results": [
+    {
+      "entityId": "MGI:2143539",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:2143539",
+        "geneName": "glutaminase 2 (liver, mitochondrial)",
+        "geneSymbol": "Gls2",
+        "synonyms": "A330074B06Rik;Lga",
+        "humanGeneSymbols": "GLS",
+        "humanSymbolSynonyms": "",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping data available",
+        "phenotypingDataAvailable": "true"
+      }
+    },
     {
       "entityId": "MGI:1922546",
       "entityProperties": {
