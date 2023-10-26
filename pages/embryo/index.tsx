@@ -1,18 +1,17 @@
 import { Container, Breadcrumb, Row, Col, Image } from "react-bootstrap";
-import Script from "next/script";
 
-import Search from "../../components/Search";
-import Card from "../../components/Card";
+import Search from "@/components/Search";
+import Card from "@/components/Card";
 import styles from './styles.module.scss';
-import SortableTable from "../../components/SortableTable";
-import PieChart from "../../components/PieChart";
-import { PublicationListProps } from "../../components/PublicationsList";
+import SortableTable from "@/components/SortableTable";
+import PieChart from "@/components/PieChart";
+import { PublicationListProps } from "@/components/PublicationsList";
 import data from '../../mocks/data/landing-pages/embryo.json';
 import dynamic from "next/dynamic";
-import EmbryoDataAvailabilityGrid from "../../components/EmbryoDataAvailabilityGrid";
+import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 
 const PublicationsList = dynamic<PublicationListProps>(
-  () => import("../../components/PublicationsList"), {ssr: false}
+  () => import("@/components/PublicationsList"), {ssr: false}
 );
 
 type EmbryoLandingPageData = {

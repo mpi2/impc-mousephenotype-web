@@ -34,6 +34,8 @@ const getInternalLink = (name: string, link: string) => {
       return '/publications';
     case 'Histopathology':
       return '/histopath';
+    case 'Sexual Dimorphism':
+      return '/sexual-dimorphism';
     default:
       return link;
   }
