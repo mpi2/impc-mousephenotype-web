@@ -111,7 +111,7 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
     chromosome: '',
     genes: [],
   });
-  const [geneSymbol, setGeneSymbol] = useState('');
+  const [geneFilter, setGeneFilter] = useState('');
   const ticks = [];
   let originalTicks = [];
   const validChromosomes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 'X'];
@@ -122,6 +122,10 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
       return pos - (175 * 1.17);
     }
     return pos;
+  }
+
+  const associationMatchesFilter = (rawDataPoint) => {
+    return rawDataPoint.geneSymbol.includes(geneFilter) || rawDataPoint.mgiGeneAccessionId === geneFilter;
   }
 
   const options = {
@@ -211,9 +215,9 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
     },
     elements: {
       point: {
-        radius: ctx => !!geneSymbol && ctx.raw.geneSymbol.includes(geneSymbol) ? 7 : 3,
+        radius: ctx => !!geneFilter && associationMatchesFilter(ctx.raw) ? 7 : 3,
         pointBackgroundColor: ctx => {
-          const shouldBeHighlighted = !!geneSymbol && ctx.raw.geneSymbol.includes(geneSymbol);
+          const shouldBeHighlighted = !!geneFilter && associationMatchesFilter(ctx.raw);
           if (shouldBeHighlighted) return '#F7DC4A';
           return ctx.raw.y >= 4 ? `#FFA500` : '#00FFFF';
         },
@@ -306,8 +310,8 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
           Filter by gene:&nbsp;
           <Form.Control
             type="text"
-            value={geneSymbol}
-            onChange={(e) => setGeneSymbol(e.target.value)}
+            value={geneFilter}
+            onChange={(e) => setGeneFilter(e.target.value)}
           />
         </div>
       </div>
