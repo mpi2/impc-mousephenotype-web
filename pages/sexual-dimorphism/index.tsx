@@ -3,8 +3,78 @@ import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import data from '../../mocks/data/landing-pages/sexual-dimorphism.json';
 import PieChart from "@/components/PieChart";
+import {
+  Chart as ChartJS,
+  LinearScale,
+  CategoryScale,
+  PointElement,
+  LineElement,
+  Legend,
+  Tooltip,
+  TimeScale,
+} from "chart.js";
+import {
+  BoxPlotController,
+  BoxAndWiskers,
+} from "@sgratzl/chartjs-chart-boxplot";
+import { Chart } from "react-chartjs-2";
+import {
+  faArrowUpLong,
+  faArrowDownLong,
+  faMars,
+  faVenus,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { formatAlleleSymbol } from "@/utils";
+import Link from "next/link";
+import generate from "@babel/generator";
+
+ChartJS.register(
+  LinearScale,
+  PointElement,
+  LineElement,
+  TimeScale,
+  Legend,
+  Tooltip,
+  BoxPlotController,
+  BoxAndWiskers,
+  CategoryScale
+);
+
+const GeneLink = ({ gene }) => {
+  const allele = formatAlleleSymbol(gene.alleleSymbol);
+  return (
+    <Link className="primary link" href={`/genes/${gene.mgiGeneAccessionId}`}>
+      {allele[0]}
+      <sup>{allele[1]}</sup>
+    </Link>
+  )
+}
 
 const SexualDimorphismLandingPage = () => {
+
+  const getBackgroundColor = (label: string) => {
+    return label.includes('WT') ? "rgba(9, 120, 161, 0.7)" : "rgba(239, 123, 11, 0.2)";
+  }
+
+  const getBorderColor = (label: string) => {
+    return label.includes('WT') ? "rgba(9, 120, 161, 0.7)" : "rgba(239, 123, 11, 0.5)";
+  }
+  const prepareData = (rawData) => {
+    return {
+      labels: rawData.map(d => d.label),
+      datasets: [{
+        type: "boxplot" as const,
+        borderWidth: 2,
+        itemRadius: 0,
+        padding: 100,
+        data: rawData.map(d => d.values),
+        backgroundColor: (d) => getBackgroundColor(rawData[d.index].label),
+        borderColor: (d) => getBorderColor(rawData[d.index].label),
+      }]
+    }
+  }
+
   return (
     <>
       <Search />
@@ -141,6 +211,142 @@ const SexualDimorphismLandingPage = () => {
         </Card>
         <Card>
           <h1><strong>Vignettes</strong></h1>
+          <Row>
+            <Col>
+              <div style={{ textAlign: 'center' }}>
+                <h3>HDL Cholesterol</h3>
+                <span>
+                  <FontAwesomeIcon icon={faArrowUpLong} /> in <FontAwesomeIcon icon={faMars} />,
+                  no effect in <FontAwesomeIcon icon={faVenus} />
+                </span>
+              </div>
+              <div style={{ position: 'relative', width: '100%', height: '300px' }}>
+                <Chart
+                  type="boxplot"
+                  data={prepareData(data.hdlCholesterol.values)}
+                  options={{
+                    maintainAspectRatio: false,
+                    aspectRatio: 2,
+                    scales: {
+                      y: {
+                        type: "linear",
+                        beginAtZero: false,
+                        ticks: {
+                          align: "center",
+                          crossAlign: "center",
+                        },
+                        title: {
+                          display: true,
+                          text: 'mg/dl'
+                        },
+                      },
+                    },
+                    plugins: {
+                      legend: {
+                        display: false,
+                        position: "bottom",
+                        labels: {
+                          usePointStyle: false,
+                          padding: 0,
+                        },
+                      },
+                    },
+                  }}
+                />
+              </div>
+              <div className="mt-3" style={{ textAlign: 'center' }}>
+                <GeneLink gene={data.hdlCholesterol.gene} />
+              </div>
+            </Col>
+            <Col>
+              <div style={{ textAlign: 'center' }}>
+                <h3>Bone Mineral Density</h3>
+                <span>
+                  <FontAwesomeIcon icon={faArrowDownLong} /> in <FontAwesomeIcon icon={faMars} />,
+                  no effect in <FontAwesomeIcon icon={faVenus} />
+                </span>
+              </div>
+              <div style={{ position: 'relative', width: '100%', height: '300px' }}>
+                <Chart
+                  type="boxplot"
+                  data={prepareData(data.boneMineralDensity.values)}
+                  options={{
+                    maintainAspectRatio: false,
+                    aspectRatio: 2,
+                    scales: {
+                      y: {
+                        type: "linear",
+                        // max: max,
+                        // min: min,
+                        beginAtZero: false,
+                        ticks: {
+                          align: "center",
+                          crossAlign: "center",
+                        },
+                      },
+                    },
+                    plugins: {
+                      legend: {
+                        display: false,
+                        position: "bottom",
+                        labels: {
+                          usePointStyle: false,
+                          padding: 0,
+                        },
+                      },
+                    },
+                  }}
+                />
+              </div>
+              <div className="mt-3" style={{ textAlign: 'center' }}>
+                <GeneLink gene={data.boneMineralDensity.gene} />
+              </div>
+            </Col>
+            <Col>
+              <div style={{ textAlign: 'center' }}>
+                <h3>Fructosamine</h3>
+                <span>
+                  <FontAwesomeIcon icon={faArrowDownLong} /> in <FontAwesomeIcon icon={faMars} />,&nbsp;
+                  <FontAwesomeIcon icon={faArrowUpLong} />  in <FontAwesomeIcon icon={faVenus} />
+                </span>
+              </div>
+              <div style={{ position: 'relative', width: '100%', height: '300px' }}>
+                <Chart
+                  type="boxplot"
+                  data={prepareData(data.fructose.values)}
+                  options={{
+                    maintainAspectRatio: false,
+                    aspectRatio: 2,
+                    scales: {
+                      y: {
+                        type: "linear",
+                        // max: max,
+                        // min: min,
+                        beginAtZero: false,
+                        ticks: {
+                          align: "center",
+                          crossAlign: "center",
+                        },
+                      },
+                    },
+                    plugins: {
+                      legend: {
+                        display: false,
+                        position: "bottom",
+                        labels: {
+                          usePointStyle: false,
+                          padding: 0,
+                        },
+                      },
+                    },
+                  }}
+                />
+              </div>
+              <div className="mt-3" style={{ textAlign: 'center' }}>
+                <GeneLink gene={data.fructose.gene} />
+              </div>
+            </Col>
+          </Row>
         </Card>
       </Container>
     </>
