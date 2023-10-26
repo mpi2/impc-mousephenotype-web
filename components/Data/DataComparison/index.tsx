@@ -36,8 +36,8 @@ const DataComparison = ({ data }) => {
     (groups ? Object.values(groups) : []).map((d: any) => ({
       ...d,
       topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
-      phenotype: d.significantPhenotype.name,
-      id: d.significantPhenotype.id,
+      phenotype: d.significantPhenotype?.name,
+      id: d.significantPhenotype?.id,
     })) || [];
 
   const [sorted, setSorted] = useState<any[]>(null);
