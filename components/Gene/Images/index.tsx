@@ -26,6 +26,7 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
         <div
           className={styles.cardImage}
           style={{ backgroundImage: `url(${image})` }}
+          data-testid="image"
         >
           <div className={styles.cardImageOverlay}>
             <span>

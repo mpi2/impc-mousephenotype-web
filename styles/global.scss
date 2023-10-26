@@ -105,14 +105,52 @@ p:last-child {
     color: #FFF;
   }
 }
+
 .modal-dialog.publications .modal-content {
   background-color: #FFF;
 }
+
 .modal-dialog.modal-85w {
   width: 85%;
   max-width: none !important;
 }
+
 ul.pagination .page-item.disabled .page-link {
   background-color: #FFF;
   border-color: #FFF;
+}
+.system-icon.in-table svg {
+  font-size: 1.5em;
+}
+
+.purchaseBanner {
+  background-color: #e9f3f3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  width: calc(100% + 1.5rem);
+  bottom: -$md;
+  left: -0.75rem;
+  color: $grey;
+  border-bottom-right-radius: $spacing;
+  overflow: hidden;
+  .purchaseButton {
+    background-color: $secondary;
+    color: $white !important;
+    padding: $xs $md;
+    margin-left: $xs;
+    &:hover {
+      background-color: darken($color: $secondary, $amount: 5);
+    }
+    svg {
+      margin-right: $xxs;
+    }
+  }
+  &.phenotype-page {
+    width: calc(50% + 1.5rem);
+    left: initial;
+    right: 0;
+    bottom: 0;
+  }
 }

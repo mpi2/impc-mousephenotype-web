@@ -1,14 +1,22 @@
 import {useEffect, useState} from "react";
 import _ from "lodash";
-import {Alert, OverlayTrigger, Tooltip} from "react-bootstrap";
+import { Alert, Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Pagination from "../Pagination";
 import SortableTable from "../SortableTable";
-import {formatAlleleSymbol, formatPValue} from "../../utils";
+import {formatAlleleSymbol, formatPValue} from "@/utils";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChartLine, faChevronRight, faMars, faMarsAndVenus, faVenus} from "@fortawesome/free-solid-svg-icons";
+import {
+  faChartLine,
+  faChevronRight,
+  faMars,
+  faMarsAndVenus,
+  faVenus,
+  faXmark
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-const Associations = ({ data }: { data: any }) => {
+
+const Associations = ({ data, selectedGenes, onRemoveSelection }: { data: any, selectedGenes: Array<any>, onRemoveSelection: (gene: any) => void, }) => {
   const groups = data?.reduce((acc, d) => {
     const {
       phenotype: { id, name },
@@ -31,6 +39,7 @@ const Associations = ({ data }: { data: any }) => {
 
     return acc;
   }, {});
+  const isGeneSelected = selectedGenes.length > 0;
 
   const processed =
     (groups ? Object.values(groups) : []).map((d: any) => ({
@@ -42,8 +51,14 @@ const Associations = ({ data }: { data: any }) => {
   const [sorted, setSorted] = useState<any[]>(null);
 
   useEffect(() => {
-    setSorted(_.orderBy(processed, "alleleSymbol", "asc"));
-  }, [data]);
+    let orderedData = _.orderBy(processed, "alleleSymbol", "asc");
+
+    if (selectedGenes.length > 0) {
+      const listOfSymbols = selectedGenes.map(g => g.mgiGeneAccessionId);
+      orderedData = orderedData.filter(item => listOfSymbols.includes(item.mgiGeneAccessionId));
+    }
+    setSorted(orderedData);
+  }, [data, selectedGenes.length]);
 
   const getIcon = (sex) => {
     switch (sex) {
@@ -67,6 +82,25 @@ const Associations = ({ data }: { data: any }) => {
     }
   };
 
+  const GeneSelectedBadge = () => (
+    <>
+      Filtering data by gene{selectedGenes.length > 1 ? 's' : ''}:
+      {selectedGenes.map(gene => (
+        <Badge
+          key={gene.mgiGeneAccessionId}
+          style={{ fontSize: '1em', backgroundColor: '#00b0b0', fontWeight: 'normal', cursor: 'pointer' }}
+          pill
+          bg="light"
+          onClick={() => onRemoveSelection(gene)}
+        >
+          {gene.geneSymbol}
+          &nbsp;
+          <FontAwesomeIcon icon={faXmark} />
+        </Badge>
+      ))}
+    </>
+  );
+
   if (!data) {
     return (
       <Alert style={{ marginTop: "1em" }} variant="primary">
@@ -77,7 +111,10 @@ const Associations = ({ data }: { data: any }) => {
 
   return (
     <>
-      <Pagination data={sorted}>
+      <Pagination
+        data={sorted}
+        additionalTopControls={isGeneSelected ? <GeneSelectedBadge /> : null}
+      >
         {(currentPage) => (
           <SortableTable
             doSort={(sort) => setSorted(_.orderBy(processed, sort[0], sort[1]))}
@@ -138,14 +175,13 @@ const Associations = ({ data }: { data: any }) => {
                   </td>
                   <td>
                     <span className="me-2 bold" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-                      <span className="orange-dark">
+                      <span className="">
                         {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                       </span>
                       <Link
                         href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
-                        legacyBehavior
                       >
-                        <strong className="link small float-right">
+                        <strong className="link primary small float-right">
                           <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;
                           <FontAwesomeIcon icon={faChevronRight} />
                         </strong>

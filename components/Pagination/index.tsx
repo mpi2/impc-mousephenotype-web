@@ -26,7 +26,7 @@ const Pagination = (props: Props) => {
     page = 0,
     pageSize,
     controlled = false,
-    buttonsPlacement = 'bottom',
+    buttonsPlacement = 'both',
     additionalTopControls: AdditionalTopControls = null,
   } = props;
 
@@ -76,7 +76,7 @@ const Pagination = (props: Props) => {
             onClick={() => updatePage(internalPage - 1)}
             disabled={!canGoBack}
             className={canGoBack ? "nav-btn primary" : "nav-btn"}
-            data-testid="prev-page"
+            data-testid={`${placement}-prev-page`}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>&nbsp;
@@ -84,13 +84,13 @@ const Pagination = (props: Props) => {
             <>
               <li
                 className={`page-item first-page ${internalPage === 0 ? "active" : ""}`}
-                data-testid="first-page"
+                data-testid={`${placement}-first-page`}
               >
                 <button
                   className="page-link"
                   aria-label="Previous"
                   onClick={() => updatePage(0)}
-                  data-testid="first-page-btn"
+                  data-testid={`${placement}-first-page-btn`}
                 >
                   <span aria-hidden="true">1</span>
                 </button>
@@ -108,12 +108,12 @@ const Pagination = (props: Props) => {
               className={`page-item ${
                 internalPage === (pageNumber - 1) ? "active" : ""
               }`}
-              data-testid={`page-${pageNumber}`}
+              data-testid={`${placement}-page-${pageNumber}`}
             >
               <button
                 className="page-link"
                 onClick={() => updatePage(pageNumber - 1)}
-                data-testid={`page-${pageNumber}-btn`}
+                data-testid={`${placement}-page-${pageNumber}-btn`}
               >
                 {pageNumber}
               </button>
@@ -127,16 +127,14 @@ const Pagination = (props: Props) => {
                 </li>
               )}
               <li
-                className={`page-item ${
-                  internalPage === totalPages ? "active" : ""
-                }`}
-                data-testid="last-page"
+                className="page-item"
+                data-testid={`${placement}-last-page`}
               >
                 <button
                   className="page-link last-page"
                   aria-label="Previous"
                   onClick={() => updatePage(totalPages - 1)}
-                  data-testid="last-page-btn"
+                  data-testid={`${placement}-last-page-btn`}
                 >
                   <span aria-hidden="true">{totalPages}</span>
                 </button>
@@ -147,7 +145,7 @@ const Pagination = (props: Props) => {
             onClick={() => updatePage(internalPage + 1)}
             disabled={!canGoForward}
             className={canGoForward ? "nav-btn primary" : "nav-btn"}
-            data-testid="next-page"
+            data-testid={`${placement}-next-page`}
           >
             <FontAwesomeIcon icon={faArrowRight} />
           </button>
@@ -185,7 +183,10 @@ const Pagination = (props: Props) => {
 
   return (
     <>
-      <div className={`${styles.buttonsWrapper} ${!!AdditionalTopControls ? styles.withControls : ''}`}>
+      <div
+        className={`${styles.buttonsWrapper} ${styles.top} ${!!AdditionalTopControls ? styles.withControls : ''}`}
+        data-testid="top-controls-wrapper"
+      >
         { !!AdditionalTopControls && (
           <div className={styles.additionalWrapper}>
             { AdditionalTopControls }

@@ -5,13 +5,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import {useEffect, useState} from "react";
 import { Alert } from "react-bootstrap";
-import { formatAlleleSymbol } from "../../../utils";
+import { formatAlleleSymbol } from "@/utils";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
@@ -117,7 +117,7 @@ const Order = ({ gene }: { gene: any }) => {
                         href={`/alleles/${router.query.pid}/${allele[1]}`}
                         className="link primary"
                       >
-                        View products&nbsp;
+                        <strong>View products</strong>&nbsp;
                         <FontAwesomeIcon icon={faArrowRight} />
                       </Link>
                     </td>
