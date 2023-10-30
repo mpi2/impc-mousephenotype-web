@@ -55,7 +55,14 @@ const Phenotype = () => {
             Total number of significant genotype-phenotype associations:{" "}
             {data?.length ?? 0}
           </p>
-          {!!data && <Associations data={data} selectedGenes={selectedGenes} onRemoveSelection={toggleGene} />}
+          {!!data && (
+            <Associations
+              data={data}
+              selectedGenes={selectedGenes}
+              onRemoveSelection={toggleGene}
+              onRemoveAll={() => setSelectedGenes([])}
+            />
+          )}
         </Card>
         <Card>
           <h2>The way we measure</h2>
