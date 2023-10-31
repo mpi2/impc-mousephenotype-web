@@ -80,8 +80,8 @@ const Gene = () => {
         <Search />
         <Container className="page">
           <Card>
-            <Link href={`/genes/${pid}`} className="grey mb-3 small">
-              <FontAwesomeIcon icon={faArrowLeftLong} />
+            <Link href={`/genes/${pid}/#order`} className="grey mb-3 small">
+              <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
               BACK TO GENE
             </Link>
             <br />
@@ -97,8 +97,8 @@ const Gene = () => {
         <Search />
         <Container className="page">
           <Card>
-            <Link href={`/genes/${pid}`} className="grey mb-3 small">
-              <FontAwesomeIcon icon={faArrowLeftLong} />
+            <Link href={`/genes/${pid}#order`} className="grey mb-3 small">
+              <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
               BACK TO GENE
             </Link>
             <h2 className="mt-4 mb-2">Failed to load allele data</h2>
@@ -164,8 +164,8 @@ const Gene = () => {
       <Search />
       <Container className="page">
         <Card>
-          <Link href={`/genes/${pid}`} className="grey mb-3 small">
-            <FontAwesomeIcon icon={faArrowLeftLong} />
+          <Link href={`/genes/${pid}/#order`} className="grey mb-3 small">
+            <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
             BACK TO GENE
           </Link>
           <p className={styles.subheading}>ALLELE</p>
