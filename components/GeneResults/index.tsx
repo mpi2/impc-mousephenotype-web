@@ -119,7 +119,7 @@ const GeneResult = ({
           </div>
           <p className="grey">
             <Link
-              href={`/genes/${mgiGeneAccessionId}/#purchase`}
+              href={`/genes/${mgiGeneAccessionId}/#order`}
               scroll={false}
               className="link"
             >

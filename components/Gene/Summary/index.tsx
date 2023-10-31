@@ -14,7 +14,12 @@ import {
 } from "react-circular-progressbar";
 import styles from "./styles.module.scss";
 import Card from "../../Card";
-import FollowBtn from "./FollowBtn";
+import { BodySystem } from "../../BodySystemIcon";
+import { useRouter } from "next/router";
+import Check from "../../Check";
+import Head from "next/head";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "@/api-service";
 
 export const allBodySystems = [
   "mortality/aging",
@@ -42,13 +47,6 @@ export const allBodySystems = [
   "nervous system phenotype",
   "pigmentation phenotype",
 ];
-
-import { BodySystem } from "../../BodySystemIcon";
-import { useRouter } from "next/router";
-import Check from "../../Check";
-import Head from "next/head";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
 
 const CollectionItem = ({
   name,
@@ -376,7 +374,7 @@ const Summary = ({
           <Row className="mb-5">
             <Col md={5} className="pe-0">
               <CollectionItem
-                link="#lacz"
+                link="#expressions"
                 name="LacZ expression"
                 hasData={gene.hasLacZData}
               />
@@ -422,7 +420,7 @@ const Summary = ({
           </Row>
           <div className="purchaseBanner">
             <span>4 allele products available</span>
-            <a href="#purchase" className="purchaseButton">
+            <a href="#order" className="purchaseButton">
               <FontAwesomeIcon icon={faCartPlus} /> Order Alleles
             </a>
           </div>
