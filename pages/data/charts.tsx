@@ -59,7 +59,7 @@ const Charts = () => {
     }
   };
 
-  let { data: datasetSummaries, isLoading } = useQuery({
+  let { data: datasetSummaries, isLoading, isError } = useQuery({
     queryKey: [
       "genes",
       router.query.mgiGeneAccessionId,
@@ -72,6 +72,10 @@ const Charts = () => {
       ),
     enabled: router.isReady,
   });
+
+  console.log('DATA: ', datasetSummaries);
+  console.log('LOADING: ', isLoading);
+  console.log('ERROR: ', isError);
 
   if (datasetSummaries) {
     datasetSummaries.sort((a, b) => {
