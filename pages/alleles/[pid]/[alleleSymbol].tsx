@@ -1,6 +1,6 @@
 import { Button, Container } from "react-bootstrap";
-import Search from "../../../components/Search";
-import Card from "../../../components/Card";
+import Search from "@/components/Search";
+import Card from "@/components/Card";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,17 +12,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import styles from "./styles.module.scss";
-import Mice from "../../../components/Allele/Mice";
-import ESCell from "../../../components/Allele/ESCell";
-import TargetingVector from "../../../components/Allele/TVP";
-import { formatAlleleSymbol } from "../../../utils";
-import Crispr from "../../../components/Allele/Crispr";
-import AlleleMap from "../../../components/Allele/AlleleMap.tsx";
+import Mice from "@/components/Allele/Mice";
+import ESCell from "@/components/Allele/ESCell";
+import TargetingVector from "@/components/Allele/TVP";
+import { formatAlleleSymbol } from "@/utils";
+import Crispr from "@/components/Allele/Crispr";
+import AlleleMap from "@/components/Allele/AlleleMap.tsx";
 import { useState } from "react";
-import QCModal from "../../../components/Allele/QCModal.tsx";
-import IntermediateVector from "../../../components/Allele/IVP";
+import QCModal from "@/components/Allele/QCModal.tsx";
+import IntermediateVector from "@/components/Allele/IVP";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const ProductItem = ({
   name,
@@ -80,8 +80,8 @@ const Gene = () => {
         <Search />
         <Container className="page">
           <Card>
-            <Link href={`/genes/${pid}`} className="grey mb-3 small">
-              <FontAwesomeIcon icon={faArrowLeftLong} />
+            <Link href={`/genes/${pid}/#order`} className="grey mb-3 small">
+              <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
               BACK TO GENE
             </Link>
             <br />
@@ -97,8 +97,8 @@ const Gene = () => {
         <Search />
         <Container className="page">
           <Card>
-            <Link href={`/genes/${pid}`} className="grey mb-3 small">
-              <FontAwesomeIcon icon={faArrowLeftLong} />
+            <Link href={`/genes/${pid}#order`} className="grey mb-3 small">
+              <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
               BACK TO GENE
             </Link>
             <h2 className="mt-4 mb-2">Failed to load allele data</h2>
@@ -164,8 +164,8 @@ const Gene = () => {
       <Search />
       <Container className="page">
         <Card>
-          <Link href={`/genes/${pid}`} className="grey mb-3 small">
-            <FontAwesomeIcon icon={faArrowLeftLong} />
+          <Link href={`/genes/${pid}/#order`} className="grey mb-3 small">
+            <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
             BACK TO GENE
           </Link>
           <p className={styles.subheading}>ALLELE</p>
@@ -254,7 +254,7 @@ const Gene = () => {
         )}
         <Card>
           <Link
-            href={`/genes/${pid}/#purchase`}
+            href={`/genes/${pid}/#order`}
             scroll={false}
             className="secondary"
           >
