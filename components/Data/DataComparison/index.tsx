@@ -47,7 +47,7 @@ const DataComparison = ({ data }) => {
   }, [data]);
 
   if (!data) {
-    return <p>Loading...</p>;
+    return null;
   }
 
   const getPValueSortFn = (key: string) => {

@@ -9,14 +9,14 @@ import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import Card from "../../../../components/Card";
-import Search from "../../../../components/Search";
+import { Alert, Col, Container, Row } from "react-bootstrap";
+import Card from "@/components/Card";
+import Search from "@/components/Search";
 import gData from "../../gene.json";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const ImageViewer = ({ image }) => {
   return (
@@ -52,9 +52,9 @@ const WTColumn = ({ images }) => {
   return (
     <Row className={`mt-3 ${styles.images}`}>
       <Col xs={12} style={{ display: "flex" }}>
-        <ImageViewer image={images[selected]?.jpegUrl} />
+        <ImageViewer image={images?.[selected]?.jpegUrl} />
       </Col>
-      {images.map((image, i) => (
+      {images?.map((image, i) => (
         <Col md={4} lg={3} className="mb-2">
           <div
             style={{
@@ -82,9 +82,11 @@ const Column = ({ images }) => {
   return (
     <Row className={`mt-3 ${styles.images}`}>
       <Col xs={12} style={{ display: "flex" }}>
-        <ImageViewer image={images[selected]?.fullFileUrl} />
+        {!!images?.[selected]?.fullFileUrl && (
+          <ImageViewer image={images?.[selected]?.fullFileUrl} />
+        )}
       </Col>
-      {images.map((image, i) => (
+      {images?.map((image, i) => (
         <Col md={4} lg={3} className="mb-2">
           <div
             style={{
@@ -115,24 +117,25 @@ const ImagesCompare = () => {
     queryKey: ['genes', pid, 'images', parameterName],
     queryFn: () => fetchAPI(`/api/imaging/v1/thumbnails?genotype=PMAV`),
     enabled: router.isReady,
+    placeholderData: [],
   })
-  if (!wt) return null;
 
-  const groups = _.groupBy(wt.geneImages, "parameterName");
-  const wtImages = groups?.[parameterName as string];
-  console.log(wt, wtImages, images);
-  // TODO: add an Error page here.
-  if (!wtImages || !images) return null;
-
-  const procedureName = wtImages?.[0].procedureName;
+  let procedureName;
+  let wtImages = []
+  if (wt?.geneImages) {
+    const groups = _.groupBy(wt.geneImages, "parameterName");
+    wtImages = groups?.[parameterName as string];
+    procedureName = wtImages?.[0].procedureName;
+  }
 
   return <>
     <Search />
     <Container className="page">
       <Card>
-        <Link href={`/genes/${pid}`} className="grey mb-3 small">
+        <Link href={`/genes/${pid}#images`} className="grey mb-3 small">
 
-          <FontAwesomeIcon icon={faArrowLeftLong} />BACK TO GENE
+          <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
+          BACK TO GENE
         </Link>
         <p className={styles.subheading}>Images</p>
         <h1 className="mb-4 mt-2">
@@ -142,7 +145,13 @@ const ImagesCompare = () => {
           <Row>
             <Col sm={6}>
               <h3>WT Images</h3>
-              <WTColumn images={wtImages} />
+              {wtImages?.length > 0 ? (
+                <WTColumn images={wtImages} />
+              ) : (
+                <Alert variant="primary">
+                  There are no images for this procedure.
+                </Alert>
+              )}
             </Col>
             <Col sm={6}>
               <h3>Mutant Images</h3>

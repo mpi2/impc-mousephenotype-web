@@ -50,12 +50,19 @@ const Phenotype = () => {
           <ManhattanPlot phenotypeId={phenotypeId} onGeneClick={toggleGene} />
         </Card>
         <Card id="associations-table">
-          <h2>IMPC Gene variants with abnormal stationary movement</h2>
+          <h2>IMPC Gene variants with {phenotype?.phenotypeName}</h2>
           <p>
             Total number of significant genotype-phenotype associations:{" "}
             {data?.length ?? 0}
           </p>
-          {!!data && <Associations data={data} selectedGenes={selectedGenes} onRemoveSelection={toggleGene} />}
+          {!!data && (
+            <Associations
+              data={data}
+              selectedGenes={selectedGenes}
+              onRemoveSelection={toggleGene}
+              onRemoveAll={() => setSelectedGenes([])}
+            />
+          )}
         </Card>
         <Card>
           <h2>The way we measure</h2>

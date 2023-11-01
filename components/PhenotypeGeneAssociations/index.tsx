@@ -15,8 +15,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
+type Props = {
+  data: any;
+  selectedGenes: Array<any>;
+  onRemoveSelection: (gene: any) => void;
+  onRemoveAll: () => void;
+}
 
-const Associations = ({ data, selectedGenes, onRemoveSelection }: { data: any, selectedGenes: Array<any>, onRemoveSelection: (gene: any) => void, }) => {
+const Associations = ({ data, selectedGenes, onRemoveSelection, onRemoveAll }: Props) => {
   const groups = data?.reduce((acc, d) => {
     const {
       phenotype: { id, name },
@@ -82,8 +88,8 @@ const Associations = ({ data, selectedGenes, onRemoveSelection }: { data: any, s
     }
   };
 
-  const GeneSelectedBadge = () => (
-    <>
+  const GeneSelectedBadges = () => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', maxWidth: '85%' }}>
       Filtering data by gene{selectedGenes.length > 1 ? 's' : ''}:
       {selectedGenes.map(gene => (
         <Badge
@@ -98,7 +104,7 @@ const Associations = ({ data, selectedGenes, onRemoveSelection }: { data: any, s
           <FontAwesomeIcon icon={faXmark} />
         </Badge>
       ))}
-    </>
+    </div>
   );
 
   if (!data) {
@@ -113,7 +119,22 @@ const Associations = ({ data, selectedGenes, onRemoveSelection }: { data: any, s
     <>
       <Pagination
         data={sorted}
-        additionalTopControls={isGeneSelected ? <GeneSelectedBadge /> : null}
+        additionalTopControls={isGeneSelected ? (
+          <>
+            <GeneSelectedBadges/>
+            <Badge
+              style={{ fontSize: '1em', backgroundColor: '#00b0b0', fontWeight: 'normal', cursor: 'pointer', marginLeft: 'auto' }}
+              pill
+              bg="light"
+              onClick={onRemoveAll}
+            >
+              Clear all
+              &nbsp;
+              <FontAwesomeIcon icon={faXmark} />
+            </Badge>
+          </>
+          ) : null}
+        topControlsWrapperCSS={{ flexWrap: 'nowrap', alignItems: 'flex-start'}}
       >
         {(currentPage) => (
           <SortableTable
@@ -179,7 +200,7 @@ const Associations = ({ data, selectedGenes, onRemoveSelection }: { data: any, s
                         {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                       </span>
                       <Link
-                        href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
+                        href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}
                       >
                         <strong className="link primary small float-right">
                           <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;

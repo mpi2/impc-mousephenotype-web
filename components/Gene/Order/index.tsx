@@ -34,7 +34,7 @@ const Order = ({ gene }: { gene: any }) => {
 
   if (isLoading) {
     return (
-      <Card id="purchase">
+      <Card id="order">
         <h2>Order Mouse and ES Cells</h2>
         <p className="grey">Loading...</p>
       </Card>
@@ -43,7 +43,7 @@ const Order = ({ gene }: { gene: any }) => {
 
   if (isError) {
     return (
-      <Card id="purchase">
+      <Card id="order">
         <h2>Order Mouse and ES Cells</h2>
         <Alert variant="primary">No data available for this section.</Alert>
       </Card>
@@ -51,7 +51,7 @@ const Order = ({ gene }: { gene: any }) => {
   }
 
   return (
-    <Card id="purchase">
+    <Card id="order">
       <h2>Order Mouse and ES Cells</h2>
       <div className="mb-4">
         <p>

@@ -21,7 +21,7 @@ const Image = ({ parameterName, procedureName, image, length }: Props) => {
   const { pid } = router.query;
 
   return (
-    <Link href={`/genes/${pid}/images/${parameterName}`} legacyBehavior>
+    <Link href={`/genes/${pid}/images/${parameterName}`}>
       <div className={styles.card}>
         <div
           className={styles.cardImage}
@@ -78,7 +78,7 @@ const Images = ({ gene }: { gene: any }) => {
       <div>
         <Row>
           {groups.map(([key, group]) => (
-            <Col md={4} lg={3} key={key + group[0].precedureName}>
+            <Col md={4} lg={3} key={key + group[0].procedureName}>
               <Image
                 parameterName={key}
                 procedureName={group[0].procedureName}

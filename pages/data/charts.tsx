@@ -1,29 +1,26 @@
 import { useState } from "react";
 import { Alert, Button, Container, Tab, Tabs } from "react-bootstrap";
-import Card from "../../components/Card";
-import Search from "../../components/Search";
-import Unidimensional from "../../components/Data/Unidimensional";
-import Viability from "../../components/Data/Viability";
-import Categorical from "../../components/Data/Categorical";
-import TimeSeries from "../../components/Data/TimeSeries";
-import Histopathology from "../../components/Data/Histopathology";
+import Card from "@/components/Card";
+import Search from "@/components/Search";
+import Unidimensional from "@/components/Data/Unidimensional";
+import Viability from "@/components/Data/Viability";
+import Categorical from "@/components/Data/Categorical";
+import TimeSeries from "@/components/Data/TimeSeries";
+import Histopathology from "@/components/Data/Histopathology";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeftLong,
-  faStar,
-  faTable,
-} from "@fortawesome/free-solid-svg-icons";
-import DataComparison from "../../components/Data/DataComparison";
-import { formatPValue } from "../../utils";
+import { faTable } from "@fortawesome/free-solid-svg-icons";
+import DataComparison from "@/components/Data/DataComparison";
+import { formatPValue } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
-import EmbryoViability from "../../components/Data/EmbryoViability";
+import { fetchAPI } from "@/api-service";
+import EmbryoViability from "@/components/Data/EmbryoViability";
+import Skeleton from "react-loading-skeleton";
 
 const Charts = () => {
   const [tab, setTab] = useState(0);
-  const [showComparison, setShowComparison] = useState(false);
+  const [showComparison, setShowComparison] = useState(true);
   const router = useRouter();
   const getChartType = (datasetSummary: any) => {
     let chartType = datasetSummary["dataType"];
@@ -77,6 +74,10 @@ const Charts = () => {
     enabled: router.isReady,
   });
 
+  console.log('DATA: ', datasetSummaries);
+  console.log('LOADING: ', isLoading);
+  console.log('ERROR: ', isError);
+
   if (datasetSummaries) {
     datasetSummaries.sort((a, b) => {
       return a["reportedPValue"] - b["reportedPValue"];
@@ -105,12 +106,18 @@ const Charts = () => {
                 }}
               >
                 <a href="#" className="grey mb-3">
-                  {datasetSummaries && datasetSummaries[0]["geneSymbol"]}
+                  { datasetSummaries?.[0]["geneSymbol"] || <Skeleton />}
                 </a>
               </button>{" "}
               / phenotype data breakdown
             </span>
           </div>
+          {(!datasetSummaries && !isLoading) && (
+            <Alert variant="primary" className="mb-4 mt-2">
+              <Alert.Heading>No data available</Alert.Heading>
+              <p>We could not find the data to display this page.</p>
+            </Alert>
+          )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
               {datasetSummaries &&
@@ -118,16 +125,17 @@ const Charts = () => {
                 datasetSummaries[0]["significantPhenotype"]["name"]}
             </strong>
           </h1>
-          <Alert variant="green" className="mb-0">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-                gap: "1rem",
-              }}
-            >
+          {!!datasetSummaries && (
+            <Alert variant="green" className="mb-0">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: "1rem",
+                }}
+              >
               <span>
                 {datasetSummaries && datasetSummaries.length} parameter /
                 zygosity / metadata group combinations tested, with the lowest
@@ -142,18 +150,19 @@ const Charts = () => {
                 </strong>
                 .
               </span>
-              <Button
-                variant="secondary"
-                className="white-x"
-                onClick={() => {
-                  setShowComparison(!showComparison);
-                }}
-              >
-                <FontAwesomeIcon icon={faTable} />{" "}
-                {showComparison ? "Hide comparison" : "Compare combinations"}
-              </Button>
-            </div>
-          </Alert>
+                <Button
+                  variant="secondary"
+                  className="white-x"
+                  onClick={() => {
+                    setShowComparison(!showComparison);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTable} />{" "}
+                  {showComparison ? "Hide comparison" : "Compare combinations"}
+                </Button>
+              </div>
+            </Alert>
+          )}
           {!isLoading && showComparison && (
             <DataComparison data={datasetSummaries} />
           )}

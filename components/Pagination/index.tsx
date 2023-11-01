@@ -1,6 +1,6 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactElement, CSSProperties } from "react";
 import styles from './styles.module.scss';
 
 
@@ -14,8 +14,17 @@ type Props = {
   pageSize?: number;
   controlled?: boolean;
   buttonsPlacement?: 'top' | 'bottom' | 'both'
-  additionalTopControls?: React.ReactElement | null,
-}
+  additionalTopControls?: ReactElement | null,
+  topControlsWrapperCSS?: CSSProperties,
+};
+
+type NavButtonsProps = {
+  shouldBeDisplayed: boolean;
+  placement: 'top' | 'bottom';
+  style?: CSSProperties,
+};
+
+
 const Pagination = (props: Props) => {
   const {
     data,
@@ -28,6 +37,7 @@ const Pagination = (props: Props) => {
     controlled = false,
     buttonsPlacement = 'both',
     additionalTopControls: AdditionalTopControls = null,
+    topControlsWrapperCSS = {}
   } = props;
 
   const [internalPage, setInternalPage] = useState(page);
@@ -65,7 +75,7 @@ const Pagination = (props: Props) => {
   }, [data, internalPage, internalPageSize]);
 
 
-  const NavButtons = ({ shouldBeDisplayed, placement }: { shouldBeDisplayed: boolean, placement: 'top' | 'bottom' }) => {
+  const NavButtons = ({ shouldBeDisplayed, placement, style }: NavButtonsProps) => {
     if (shouldBeDisplayed) {
       return (
         <ul
@@ -186,6 +196,7 @@ const Pagination = (props: Props) => {
       <div
         className={`${styles.buttonsWrapper} ${styles.top} ${!!AdditionalTopControls ? styles.withControls : ''}`}
         data-testid="top-controls-wrapper"
+        style={topControlsWrapperCSS}
       >
         { !!AdditionalTopControls && (
           <div className={styles.additionalWrapper}>

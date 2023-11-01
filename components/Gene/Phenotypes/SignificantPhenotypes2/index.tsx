@@ -116,16 +116,7 @@ const SignificantPhenotypes = ({ data }) => {
             const allele = formatAlleleSymbol(d.alleleSymbol);
             return (
               <tr>
-                <td>
-                  <Link
-                    href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}
-                    legacyBehavior
-                  >
-                    <strong className={styles.link}>
-                      {_.capitalize(d.phenotype)}
-                    </strong>
-                  </Link>
-                </td>
+                <td><strong>{d.phenotype}</strong></td>
                 <td>
                   {d.topLevelPhenotypes?.map(({ name }) => (
                     <BodySystem name={name} color="system-icon black in-table" noSpacing />
