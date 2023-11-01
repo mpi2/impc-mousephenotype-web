@@ -52,57 +52,44 @@ const CollectionItem = ({
   name,
   link,
   hasData,
-  isExternal,
 }: {
   name: string;
   link: string;
   hasData: boolean;
-  isExternal?: boolean;
 }) => (
-  <a
-    href={link}
-    className={hasData ? styles.dataCollection : styles.dataCollectionInactive}
-    data-testid={name}
-  >
-    <Check isChecked={hasData} />
-    {name}{" "}
-    {isExternal && (
-      <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" className="grey" />
-    )}
-  </a>
+  hasData ? (
+    <a
+      href={link}
+      className={styles.dataCollection}
+      data-testid={name}
+    >
+      <Check isChecked={hasData} />
+      {name}&nbsp;
+    </a>
+  ) : (
+    <span className={styles.dataCollectionInactive}>
+      <Check isChecked={hasData} />
+      {name}&nbsp;
+    </span>
+  )
 );
 
 const Metric = ({
   children,
   value,
-  average,
 }: {
   children: string;
   value: number;
-  average: number;
 }) => {
   return (
     <div className={styles.metric}>
-      <div className={styles.progressCircleCont}>
-        <CircularProgressbarWithChildren
-          strokeWidth={8}
-          value={(value * 100) / average}
-          styles={buildStyles({
-            strokeLinecap: "butt",
-            pathTransitionDuration: 0.5,
-            pathColor: value >= average ? "#ed7b25" : `#00b0b0`,
-            trailColor: "#e8e8e8",
-            backgroundColor: "#3e98c7",
-          })}
-        >
-          <span className={styles.progressCircleText}>{value}</span>
-        </CircularProgressbarWithChildren>
+      <div>
+        <span className={styles.progressCircleText}>{value}</span>
       </div>
       <div className="ms-3">
         <p className="mb-0">
           <strong>{children}</strong>
         </p>
-        <p className="grey mb-0">{average} on average</p>
       </div>
     </div>
   );
@@ -117,17 +104,6 @@ const Summary = ({
   error: string;
 }) => {
   const router = useRouter();
-  const { data: averages, isLoading } = useQuery({
-    queryKey: ['gene', 'summary-averages'],
-    queryFn: () => fetchAPI('/api/v1/genes/all/summary-averages'),
-    enabled: router.isReady,
-    select: data => ({
-      significantPhenotypesAverage: Math.floor(data.significantPhenotypesAverage),
-      associatedDiseasesAverage: Math.floor(data.associatedDiseasesAverage),
-      adultExpressionObservationsAverage: Math.floor(data.adultExpressionObservationsAverage),
-      embryoExpressionObservationsAverage: Math.floor(data.embryoExpressionObservationsAverage),
-    })
-  });
 
   const SYNONYMS_COUNT = 2;
 
@@ -264,8 +240,7 @@ const Summary = ({
             <div>
               <span className="secondary">
                 {significantCount + nonSignificantCount}
-              </span>{" "}
-              /{allCount} physiological systems tested
+              </span>&nbsp;/&nbsp;{allCount} physiological systems tested
             </div>
             <a href="#data" className="link">
               View data <FontAwesomeIcon icon={faChevronCircleDown} />
@@ -335,86 +310,67 @@ const Summary = ({
           )}
         </Col>
         <Col lg={6} style={{ position: "relative" }}>
-          <h3>Gene metrics compared to IMPC average</h3>
+          <h3>Gene metrics</h3>
           <Row>
             <Col md={6}>
-              <Metric
-                value={gene.significantPhenotypesCount || 0}
-                average={averages?.significantPhenotypesAverage  || 0}
-              >
+              <Metric value={gene.significantPhenotypesCount || 0}>
                 Significant phenotypes
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric
-                value={gene.adultExpressionObservationsCount || 0}
-                average={averages?.adultExpressionObservationsAverage || 0}
-              >
+              <Metric value={gene.adultExpressionObservationsCount || 0}>
                 Adult expressions
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric
-                value={gene.associatedDiseasesCount || 0}
-                average={averages?.associatedDiseasesAverage || 0}
-              >
+              <Metric value={gene.associatedDiseasesCount || 0}>
                 Associated disease
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric
-                value={gene.embryoExpressionObservationsCount || 0}
-                average={averages?.embryoExpressionObservationsAverage || 0}
-              >
+              <Metric value={gene.embryoExpressionObservationsCount || 0}>
                 Embryo expressions
               </Metric>
             </Col>
           </Row>
           <h3 className="mt-5">Data collections</h3>
           <Row className="mb-5">
-            <Col md={5} className="pe-0">
+            <Col md={6} className="pe-0">
               <CollectionItem
                 link="#expressions"
                 name="LacZ expression"
                 hasData={gene.hasLacZData}
               />
-            </Col>
-            <Col md={6} className="pe-0">
+              <br/>
               <CollectionItem
                 link="#histopathology"
                 name="Histopathology"
                 hasData={gene.hasHistopathologyData}
               />
-            </Col>
-            <Col md={5} className="pe-0">
+              <br/>
               <CollectionItem
                 link="#images"
                 name="Images"
                 hasData={gene.hasImagingData}
               />
             </Col>
-            <Col md={7}>
+            <Col md={6}>
               <CollectionItem
-                link="https://www.mousephenotype.org/data/charts?accession=MGI:2444773&parameter_stable_id=IMPC_BWT_008_001&procedure_stable_id=IMPC_BWT_001&chart_type=TIME_SERIES_LINE"
-                name="Body weight measurements"
-                hasData={gene.hasBodyWeightData}
-                isExternal
-              />
-            </Col>
-            <Col md={5} className="pe-0">
-              <CollectionItem
-                link="#viability-data"
+                link={`/data/charts?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&parameter_stable_id=IMPC_VIA_001_001&&parameter_stable_id=IMPC_VIA_063_001&parameter_stable_id=IMPC_VIA_064_001&parameter_stable_id=IMPC_VIA_065_001&parameter_stable_id=IMPC_VIA_066_001&parameter_stable_id=IMPC_VIA_067_001`}
                 name="Viability data"
                 hasData={gene.hasViabilityData}
-                isExternal
               />
-            </Col>
-            <Col md={7}>
+              <br/>
               <CollectionItem
-                link="#embro-images"
+                link={`/data/charts?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&parameter_stable_id=IMPC_BWT_008_001&procedure_stable_id=IMPC_BWT_001&chart_type=TIME_SERIES_LINE`}
+                name="Body weight measurements"
+                hasData={gene.hasBodyWeightData}
+              />
+              <br/>
+              <CollectionItem
+                link={`//www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
                 name="Embryo imaging data"
                 hasData={gene.hasEmbryoImagingData}
-                isExternal
               />
             </Col>
           </Row>
