@@ -77,34 +77,19 @@ const CollectionItem = ({
 const Metric = ({
   children,
   value,
-  average,
 }: {
   children: string;
   value: number;
-  average: number;
 }) => {
   return (
     <div className={styles.metric}>
-      <div className={styles.progressCircleCont}>
-        <CircularProgressbarWithChildren
-          strokeWidth={8}
-          value={(value * 100) / average}
-          styles={buildStyles({
-            strokeLinecap: "butt",
-            pathTransitionDuration: 0.5,
-            pathColor: value >= average ? "#ed7b25" : `#00b0b0`,
-            trailColor: "#e8e8e8",
-            backgroundColor: "#3e98c7",
-          })}
-        >
-          <span className={styles.progressCircleText}>{value}</span>
-        </CircularProgressbarWithChildren>
+      <div>
+        <span className={styles.progressCircleText}>{value}</span>
       </div>
       <div className="ms-3">
         <p className="mb-0">
           <strong>{children}</strong>
         </p>
-        <p className="grey mb-0">{average} on average</p>
       </div>
     </div>
   );
@@ -119,17 +104,6 @@ const Summary = ({
   error: string;
 }) => {
   const router = useRouter();
-  const { data: averages, isLoading } = useQuery({
-    queryKey: ['gene', 'summary-averages'],
-    queryFn: () => fetchAPI('/api/v1/genes/all/summary-averages'),
-    enabled: router.isReady,
-    select: data => ({
-      significantPhenotypesAverage: Math.floor(data.significantPhenotypesAverage),
-      associatedDiseasesAverage: Math.floor(data.associatedDiseasesAverage),
-      adultExpressionObservationsAverage: Math.floor(data.adultExpressionObservationsAverage),
-      embryoExpressionObservationsAverage: Math.floor(data.embryoExpressionObservationsAverage),
-    })
-  });
 
   const SYNONYMS_COUNT = 2;
 
@@ -266,8 +240,7 @@ const Summary = ({
             <div>
               <span className="secondary">
                 {significantCount + nonSignificantCount}
-              </span>{" "}
-              /{allCount} physiological systems tested
+              </span>&nbsp;/&nbsp;{allCount} physiological systems tested
             </div>
             <a href="#data" className="link">
               View data <FontAwesomeIcon icon={faChevronCircleDown} />
@@ -337,37 +310,25 @@ const Summary = ({
           )}
         </Col>
         <Col lg={6} style={{ position: "relative" }}>
-          <h3>Gene metrics compared to IMPC average</h3>
+          <h3>Gene metrics</h3>
           <Row>
             <Col md={6}>
-              <Metric
-                value={gene.significantPhenotypesCount || 0}
-                average={averages?.significantPhenotypesAverage  || 0}
-              >
+              <Metric value={gene.significantPhenotypesCount || 0}>
                 Significant phenotypes
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric
-                value={gene.adultExpressionObservationsCount || 0}
-                average={averages?.adultExpressionObservationsAverage || 0}
-              >
+              <Metric value={gene.adultExpressionObservationsCount || 0}>
                 Adult expressions
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric
-                value={gene.associatedDiseasesCount || 0}
-                average={averages?.associatedDiseasesAverage || 0}
-              >
+              <Metric value={gene.associatedDiseasesCount || 0}>
                 Associated disease
               </Metric>
             </Col>
             <Col md={6}>
-              <Metric
-                value={gene.embryoExpressionObservationsCount || 0}
-                average={averages?.embryoExpressionObservationsAverage || 0}
-              >
+              <Metric value={gene.embryoExpressionObservationsCount || 0}>
                 Embryo expressions
               </Metric>
             </Col>
