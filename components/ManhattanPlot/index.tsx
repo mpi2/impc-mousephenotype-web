@@ -76,7 +76,7 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick, onGeneClick}: TooltipP
               <a
                 className="primary link"
                 target="_blank"
-                onClick={() => !!onGeneClick ? onGeneClick(gene): null }
+                href={`/genes/${gene.mgiGeneAccessionId}`}
               >
                 {gene.geneSymbol}
               </a>
@@ -307,8 +307,9 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
           <i className="fa fa-circle" style={{ color: '#FFA500', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
         </div>
         <div style={{ display: 'flex', whiteSpace: 'nowrap', alignItems: 'center' }}>
-          Filter by gene:&nbsp;
+          <label className="grey" htmlFor="geneHighlight" style={{ marginRight: "0.5rem" }}>Highlight gene:</label>
           <Form.Control
+            id="geneHighlight"
             type="text"
             value={geneFilter}
             onChange={(e) => setGeneFilter(e.target.value)}
