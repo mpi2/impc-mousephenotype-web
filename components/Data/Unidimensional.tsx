@@ -192,7 +192,7 @@ const Unidimensional = ({ datasetSummary }) => {
               <span style={{ display: "inline-block", width: 180 }}>
                 Associated Phenotype
               </span>
-              <strong>{datasetSummary["significantPhenotype"]["name"]}</strong>
+              <strong>{datasetSummary.significantPhenotype?.name}</strong>
             </p>
           </Col>
         </Row>

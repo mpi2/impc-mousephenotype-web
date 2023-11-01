@@ -19,7 +19,6 @@ import EmbryoViability from "@/components/Data/EmbryoViability";
 import Skeleton from "react-loading-skeleton";
 
 const Charts = () => {
-  const [mode, setMode] = useState("Unidimensional");
   const [tab, setTab] = useState(0);
   const [showComparison, setShowComparison] = useState(true);
   const router = useRouter();
@@ -59,17 +58,19 @@ const Charts = () => {
     }
   };
 
-  let { data: datasetSummaries, isLoading, isError } = useQuery({
+  const apiUrl = router.query.mpTermId
+    ? `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
+    : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${router.query.mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
+
+  let { data: datasetSummaries, isLoading } = useQuery({
     queryKey: [
       "genes",
       router.query.mgiGeneAccessionId,
       router.query.mpTermId,
+      apiUrl,
       "dataset",
     ],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
-      ),
+    queryFn: () => fetchAPI(apiUrl),
     enabled: router.isReady,
   });
 
@@ -119,7 +120,9 @@ const Charts = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              {datasetSummaries?.[0]["significantPhenotype"]["name"] || <Skeleton width="30%" />}
+              {datasetSummaries &&
+                datasetSummaries[0]["significantPhenotype"] &&
+                datasetSummaries[0]["significantPhenotype"]["name"]}
             </strong>
           </h1>
           {!!datasetSummaries && (
