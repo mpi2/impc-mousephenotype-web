@@ -174,7 +174,6 @@ const AllData = ({ data }: { data: any }) => {
                   pValue,
                   topLevelPhenotypes,
                   alleleSymbol,
-                  phenotypingCentre,
                 },
                 i
               ) => {
