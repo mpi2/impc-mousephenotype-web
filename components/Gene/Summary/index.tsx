@@ -52,24 +52,26 @@ const CollectionItem = ({
   name,
   link,
   hasData,
-  isExternal,
 }: {
   name: string;
   link: string;
   hasData: boolean;
-  isExternal?: boolean;
 }) => (
-  <a
-    href={link}
-    className={hasData ? styles.dataCollection : styles.dataCollectionInactive}
-    data-testid={name}
-  >
-    <Check isChecked={hasData} />
-    {name}{" "}
-    {isExternal && (
-      <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" className="grey" />
-    )}
-  </a>
+  hasData ? (
+    <a
+      href={link}
+      className={styles.dataCollection}
+      data-testid={name}
+    >
+      <Check isChecked={hasData} />
+      {name}&nbsp;
+    </a>
+  ) : (
+    <span className={styles.dataCollectionInactive}>
+      <Check isChecked={hasData} />
+      {name}&nbsp;
+    </span>
+  )
 );
 
 const Metric = ({
@@ -372,49 +374,42 @@ const Summary = ({
           </Row>
           <h3 className="mt-5">Data collections</h3>
           <Row className="mb-5">
-            <Col md={5} className="pe-0">
+            <Col md={6} className="pe-0">
               <CollectionItem
                 link="#expressions"
                 name="LacZ expression"
                 hasData={gene.hasLacZData}
               />
-            </Col>
-            <Col md={6} className="pe-0">
+              <br/>
               <CollectionItem
                 link="#histopathology"
                 name="Histopathology"
                 hasData={gene.hasHistopathologyData}
               />
-            </Col>
-            <Col md={5} className="pe-0">
+              <br/>
               <CollectionItem
                 link="#images"
                 name="Images"
                 hasData={gene.hasImagingData}
               />
             </Col>
-            <Col md={7}>
+            <Col md={6}>
               <CollectionItem
-                link="https://www.mousephenotype.org/data/charts?accession=MGI:2444773&parameter_stable_id=IMPC_BWT_008_001&procedure_stable_id=IMPC_BWT_001&chart_type=TIME_SERIES_LINE"
-                name="Body weight measurements"
-                hasData={gene.hasBodyWeightData}
-                isExternal
-              />
-            </Col>
-            <Col md={5} className="pe-0">
-              <CollectionItem
-                link="#viability-data"
+                link={`/data/charts?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&parameter_stable_id=IMPC_VIA_001_001&&parameter_stable_id=IMPC_VIA_063_001&parameter_stable_id=IMPC_VIA_064_001&parameter_stable_id=IMPC_VIA_065_001&parameter_stable_id=IMPC_VIA_066_001&parameter_stable_id=IMPC_VIA_067_001`}
                 name="Viability data"
                 hasData={gene.hasViabilityData}
-                isExternal
               />
-            </Col>
-            <Col md={7}>
+              <br/>
               <CollectionItem
-                link="#embro-images"
+                link={`/data/charts?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&parameter_stable_id=IMPC_BWT_008_001&procedure_stable_id=IMPC_BWT_001&chart_type=TIME_SERIES_LINE`}
+                name="Body weight measurements"
+                hasData={gene.hasBodyWeightData}
+              />
+              <br/>
+              <CollectionItem
+                link={`//www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
                 name="Embryo imaging data"
                 hasData={gene.hasEmbryoImagingData}
-                isExternal
               />
             </Col>
           </Row>
