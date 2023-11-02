@@ -157,19 +157,19 @@ const EmbryoViability = ({ datasetSummary }) => {
     {
       label: "Total Embryos WTs",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap.wildtype.total
+        (d) => d.parameterStableId == viabilityParameterMap?.wildtype.total
       )?.dataPoint,
     },
     {
       label: "Total Embryos Homozygotes",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap.homozygote.total
+        (d) => d.parameterStableId == viabilityParameterMap?.homozygote.total
       )?.dataPoint,
     },
     {
       label: "Total Embryos Heterozygotes",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap.heterozygote.total
+        (d) => d.parameterStableId == viabilityParameterMap?.heterozygote.total
       )?.dataPoint,
     },
   ].filter((d) => d.value != 0);
@@ -239,7 +239,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.wildtype.total
+                        viabilityParameterMap?.wildtype.total
                     )?.dataPoint
                   }
                 </td>
@@ -248,7 +248,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.heterozygote.total
+                        viabilityParameterMap?.heterozygote.total
                     )?.dataPoint
                   }
                 </td>
@@ -258,7 +258,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.homozygote.total
+                        viabilityParameterMap?.homozygote.total
                     )?.dataPoint
                   }
                 </td>
@@ -267,7 +267,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap.na.total
+                        d.parameterStableId == viabilityParameterMap?.na.total
                     )?.dataPoint
                   }
                 </td>
@@ -279,7 +279,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.wildtype.dead
+                        viabilityParameterMap?.wildtype.dead
                     )?.dataPoint
                   }
                 </td>
@@ -288,7 +288,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.heterozygote.dead
+                        viabilityParameterMap?.heterozygote.dead
                     )?.dataPoint
                   }
                 </td>
@@ -297,7 +297,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.homozygote.dead
+                        viabilityParameterMap?.homozygote.dead
                     )?.dataPoint
                   }
                 </td>
@@ -305,7 +305,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap.na.dead
+                        d.parameterStableId == viabilityParameterMap?.na.dead
                     )?.dataPoint
                   }
                 </td>
@@ -317,7 +317,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.wildtype.defect
+                        viabilityParameterMap?.wildtype.defect
                     )?.dataPoint
                   }
                 </td>
@@ -326,7 +326,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.heterozygote.defect
+                        viabilityParameterMap?.heterozygote.defect
                     )?.dataPoint
                   }
                 </td>
@@ -335,7 +335,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.homozygote.defect
+                        viabilityParameterMap?.homozygote.defect
                     )?.dataPoint
                   }
                 </td>
@@ -343,7 +343,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap.na.defect
+                        d.parameterStableId == viabilityParameterMap?.na.defect
                     )?.dataPoint
                   }
                 </td>
@@ -355,14 +355,14 @@ const EmbryoViability = ({ datasetSummary }) => {
                 {
                   data.series.find(
                     (d) =>
-                      d.parameterStableId == viabilityParameterMap.reabsorptions
+                      d.parameterStableId == viabilityParameterMap?.reabsorptions
                   )?.dataPoint
                 }
               </p>
               <p>
                 Average litter size:{" "}
                 {data.series.find(
-                  (d) => d.parameterStableId == viabilityParameterMap.litterSize
+                  (d) => d.parameterStableId == viabilityParameterMap?.litterSize
                 )?.dataPoint || "Not supplied"}
               </p>
             </div>
