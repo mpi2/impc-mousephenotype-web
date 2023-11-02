@@ -47,11 +47,11 @@ const Charts = () => {
       case "viability":
         return <Viability datasetSummary={datasetSummary} />;
       case "time_series":
-        return <TimeSeries />;
+        return <TimeSeries datasetSummary={datasetSummary} />;
       case "embryo":
         return <EmbryoViability datasetSummary={datasetSummary} />;
       case "histopathology":
-        return <Histopathology />;
+        return <Histopathology datasetSummary={datasetSummary} />;
 
       default:
         return null;
