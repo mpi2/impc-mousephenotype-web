@@ -39,7 +39,7 @@ const ChartSummary = ({ title, additionalContent = null, datasetSummary, childre
           </a>
         </button>
         <h1>
-          <strong>{!!title ? title : datasetSummary["geneSymbol"]} data charts</strong>
+          <strong>{!!title ? title : datasetSummary["geneSymbol"] + ' data charts'}</strong>
         </h1>
         {additionalContent}
       </div>
