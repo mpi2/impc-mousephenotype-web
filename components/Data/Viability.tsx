@@ -150,7 +150,7 @@ const Viability = ({ datasetSummary }) => {
         title={`${datasetSummary["geneSymbol"]} ${datasetSummary["parameterName"]} data`}
         datasetSummary={datasetSummary}
         additionalContent={
-          <Alert variant="yellow">
+          <Alert variant="primary">
             <p>Please note:</p>
             <ul>
               <li>
