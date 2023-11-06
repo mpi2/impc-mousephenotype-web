@@ -13,7 +13,8 @@ import {
   Tooltip,
   Legend,
   BarElement,
-  BarController
+  BarController,
+  LineController
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 ChartJS.register(
@@ -25,6 +26,7 @@ ChartJS.register(
   Tooltip,
   Legend,
   BarElement,
+  LineController,
   BarController,
 );
 
@@ -89,41 +91,81 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
       })
   }, [datasetSummaries]);
 
+
   const getChartLabels = () => {
     const labels = datasets.map(d => d.parameterName);
     // add the empty column to separate click from 6kHz
     labels.splice(1, 0, null);
     return labels;
   }
-  const getStatsData = (sex: 'fem' | 'male', zygLabel: 'Het' | 'Hom' | 'WT', value: 'mean' | 'sd') => {
+  const getStatsData = (sex: 'fem' | 'male', zygLabel: 'Het' | 'Hom' | 'WT') => {
     const data = clone(datasets);
     data.sort((d1, d2) => d1.parameterStableId.localeCompare(d2.parameterStableId));
     const sexKey = sex === 'fem' ? 'female' : 'male';
     const zygKey = zygLabel === 'WT' ? 'Control' : 'Mutant';
-    const valKey = value === 'mean' ? 'Mean' : 'Sd';
-    const propName = sexKey + zygKey + valKey;
-    const result = data.map(({ summaryStatistics }) => summaryStatistics[propName]);
+    const propName = sexKey + zygKey + 'Mean';
+    const propNameSD = sexKey + zygKey + 'Sd';
+    const result = data.map(({ summaryStatistics, parameterName }) => {
+      return {
+        y: summaryStatistics[propName],
+        yMin: summaryStatistics[propName] - summaryStatistics[propNameSD],
+        yMax: summaryStatistics[propName] + summaryStatistics[propNameSD],
+        x: parameterName
+      };
+    });
     // add the empty column to separate click from 6kHz
-    result.splice(1, 0, null);
+    result.splice(1, 0, { y: null, x: null});
     return result;
   }
   const processData = () => {
     const zygLabel = zygosity === 'heterozygote' ? 'Het' : 'Hom';
-    const mutantFemData = getStatsData('fem', zygLabel, 'mean');
-    const wtFemData = getStatsData('fem', 'WT', 'mean');
-    const mutantMaleData = getStatsData('male', zygLabel, 'mean');
-    const wtMaleData = getStatsData('male', 'WT', 'mean');
+    const mutantFemData = getStatsData('fem', zygLabel);
+    const wtFemData = getStatsData('fem', 'WT');
+    const mutantMaleData = getStatsData('male', zygLabel);
+    const wtMaleData = getStatsData('male', 'WT');
     return [
-      { type: 'line' as const, label: `Male ${zygLabel}.`, data: mutantMaleData},
-      { type: 'line' as const, label: `Male WT`, data: wtMaleData},
-      { type: 'line' as const, label: `Female ${zygLabel}.`, data: mutantFemData},
-      { type: 'line' as const, label: `Female WT`, data: wtFemData},
+      {
+        type: 'line' as const,
+        label: `Male ${zygLabel}.`,
+        data: mutantMaleData,
+        borderColor: 'rgb(214, 96, 77)',
+        backgroundColor: 'rgb(214, 96, 77, 0.5)',
+        pointStyle: 'circle',
+      },
+      {
+        type: 'line' as const,
+        label: `Male WT`,
+        data: wtMaleData,
+        borderColor: 'rgb(67, 147, 195)',
+        backgroundColor: 'rgb(67, 147, 195, 0.5)',
+        pointStyle: 'rectRot',
+      },
+      {
+        type: 'line' as const,
+        label: `Female ${zygLabel}.`,
+        data: mutantFemData,
+        borderColor: 'rgb(214, 96, 77)',
+        backgroundColor: 'rgb(214, 96, 77, 0.5)',
+        pointStyle: 'rect',
+      },
+      {
+        type: 'line' as const,
+        label: `Female WT`,
+        data: wtFemData,
+        borderColor: 'rgb(67, 147, 195)',
+        backgroundColor: 'rgb(67, 147, 195, 0.5)',
+        pointStyle: 'triangle',
+      },
     ]
   }
 
-  const chartOptions = {
+  const chartOptions= {
     responsive: true,
     maintainAspectRatio: false,
+    interaction: {
+      intersect: false,
+      mode: 'index' as const,
+    },
     scales: {
       yAxis: {
         min: 0,
@@ -142,6 +184,11 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
     plugins: {
       legend: {
         position: 'bottom' as const,
+        labels: { usePointStyle: true }
+      },
+      tooltip: {
+        usePointStyle: true,
+        title: { padding: { top: 10 } },
       }
     }
   };
@@ -151,12 +198,59 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
     datasets: processData(),
   };
 
+  const chartPlugins = [{
+    id: 'errorbars',
+    afterDatasetsDraw: (chart, _, opts) => {
+      const getBarchartBaseCoords = (chart) => {
+        return chart.data.datasets.flatMap((d, i) => {
+          const dsMeta = chart.getDatasetMeta(i);
+          const values = d.data;
+          return dsMeta.data.map((b, i) => {
+            return {
+              value: values[i].y,
+              x: b.x,
+              yMin: values[i].yMin,
+              yMax: values[i].yMax,
+              backgroundColor: d.backgroundColor,
+            };
+          }).filter(c => !!c.value);
+        });
+      };
+      const drawErrorBar = (ctx, point, maxValuePixel, minValuePixel) => {
+        const barWidth = 30;
+        ctx.save();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = point.backgroundColor;
+        ctx.beginPath();
+
+        ctx.moveTo(point.x - barWidth / 2, maxValuePixel);
+        ctx.lineTo(point.x + barWidth / 2, maxValuePixel);
+        ctx.moveTo(point.x, maxValuePixel);
+        ctx.lineTo(point.x, minValuePixel);
+        ctx.moveTo(point.x - barWidth / 2, minValuePixel);
+        ctx.lineTo(point.x + barWidth / 2, minValuePixel);
+
+        ctx.stroke();
+        ctx.restore();
+      };
+      const { ctx } = chart;
+      const barchartCoords = getBarchartBaseCoords(chart);
+      const scale = chart.scales.yAxis;
+      barchartCoords.forEach(point => {
+        const maxValuePixel = scale.getPixelForValue(point.yMax);
+        const minValuePixel = scale.getPixelForValue(point.yMin);
+        drawErrorBar(ctx, point, maxValuePixel, minValuePixel);
+      })
+    },
+  }]
+
+
   return (
     <>
       <ChartSummary datasetSummary={datasetSummaries[0]} />
       <Card>
-        <div style={{ position: 'relative', height: '300px' }}>
-          <Chart type='bar' data={chartData} options={chartOptions} />
+        <div style={{ position: 'relative', height: '400px' }}>
+          <Chart type="bar" data={chartData} options={chartOptions} plugins={chartPlugins} />
         </div>
       </Card>
     </>
