@@ -17,9 +17,10 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import EmbryoViability from "@/components/Data/EmbryoViability";
 import Skeleton from "react-loading-skeleton";
+import ABR from "@/components/Data/ABR";
 
 const Charts = () => {
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState('0');
   const [showComparison, setShowComparison] = useState(true);
   const router = useRouter();
   const getChartType = (datasetSummary: any) => {
@@ -72,21 +73,18 @@ const Charts = () => {
     ],
     queryFn: () => fetchAPI(apiUrl),
     enabled: router.isReady,
+    select: data => {
+      data.sort((a, b) => {
+        return a["reportedPValue"] - b["reportedPValue"];
+      });
+      return data?.filter(
+        (value, index, self) =>
+          self.findIndex((v) => v.datasetId === value.datasetId) === index
+      );
+    }
   });
 
-  console.log('DATA: ', datasetSummaries);
-  console.log('LOADING: ', isLoading);
-  console.log('ERROR: ', isError);
-
-  if (datasetSummaries) {
-    datasetSummaries.sort((a, b) => {
-      return a["reportedPValue"] - b["reportedPValue"];
-    });
-    datasetSummaries = datasetSummaries?.filter(
-      (value, index, self) =>
-        self.findIndex((v) => v.datasetId === value.datasetId) === index
-    );
-  }
+  const isABRChart = datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
 
   return (
     <>
@@ -173,23 +171,27 @@ const Charts = () => {
         className="bg-grey pt-2"
       >
         <Container>
-          <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
-            {datasetSummaries &&
-              datasetSummaries.map((d, i) => (
-                <Tab
-                  eventKey={i}
-                  title={
-                    <>
-                      Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
-                      {i === 0 ? " | lowest" : null})
-                    </>
-                  }
-                  key={i}
-                >
-                  <div>{getChartType(d)}</div>
-                </Tab>
-              ))}
-          </Tabs>
+          {!!isABRChart ? (
+            <ABR datasetSummaries={datasetSummaries} />
+          ) : (
+            <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
+              {datasetSummaries &&
+                datasetSummaries.map((d, i) => (
+                  <Tab
+                    eventKey={i}
+                    title={
+                      <>
+                        Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
+                        {i === 0 ? " | lowest" : null})
+                      </>
+                    }
+                    key={i}
+                  >
+                    <div>{getChartType(d)}</div>
+                  </Tab>
+                ))}
+            </Tabs>
+          )}
         </Container>
       </div>
       <Container>
