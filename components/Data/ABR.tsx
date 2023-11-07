@@ -189,6 +189,13 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
       tooltip: {
         usePointStyle: true,
         title: { padding: { top: 10 } },
+        callbacks: {
+          label: ctx => {
+            const minValue = ctx.raw.yMin.toFixed(2);
+            const maxValue = ctx.raw.yMax.toFixed(2);
+            return `${ctx.dataset.label}: ${ctx.formattedValue} (SD: ${minValue} - ${maxValue})`
+          }
+        }
       }
     }
   };
