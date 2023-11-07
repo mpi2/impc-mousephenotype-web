@@ -22,6 +22,7 @@ import ABR from "@/components/Data/ABR";
 const Charts = () => {
   const [tab, setTab] = useState('0');
   const [showComparison, setShowComparison] = useState(true);
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
   const getChartType = (datasetSummary: any) => {
     let chartType = datasetSummary["dataType"];
@@ -86,6 +87,8 @@ const Charts = () => {
 
   const isABRChart = datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
 
+  const allSummaries = datasetSummaries?.concat(additionalSummaries);
+
   return (
     <>
       <Search />
@@ -135,14 +138,14 @@ const Charts = () => {
                 }}
               >
               <span>
-                {datasetSummaries && datasetSummaries.length} parameter /
+                {allSummaries && allSummaries.length} parameter /
                 zygosity / metadata group combinations tested, with the lowest
                 p-value of{" "}
                 <strong>
-                  {datasetSummaries &&
+                  {allSummaries &&
                     formatPValue(
                       Math.min(
-                        ...datasetSummaries.map((d) => d["reportedPValue"])
+                        ...allSummaries.map((d) => d["reportedPValue"])
                       )
                     )}
                 </strong>
@@ -162,7 +165,7 @@ const Charts = () => {
             </Alert>
           )}
           {!isLoading && showComparison && (
-            <DataComparison data={datasetSummaries} />
+            <DataComparison data={allSummaries} />
           )}
         </Card>
       </Container>
@@ -172,7 +175,10 @@ const Charts = () => {
       >
         <Container>
           {!!isABRChart ? (
-            <ABR datasetSummaries={datasetSummaries} />
+            <ABR
+              datasetSummaries={datasetSummaries}
+              onNewSummariesFetched={setAdditionalSummaries}
+            />
           ) : (
             <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
               {datasetSummaries &&

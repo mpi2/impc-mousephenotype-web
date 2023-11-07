@@ -43,9 +43,14 @@ const parameterList = [
 
 type ABRProps = {
   datasetSummaries: Array<any>;
+  onNewSummariesFetched: (missingSummaries: Array<any>) => void;
 };
 
-const ABR = ({ datasetSummaries } : ABRProps) => {
+const ABR = (props : ABRProps) => {
+  const {
+    datasetSummaries,
+    onNewSummariesFetched,
+  } = props;
   const [datasets, setDatasets] = useState<Array<any>>(datasetSummaries);
   const [zygosity, setZygosity] = useState(datasetSummaries[0].zygosity);
   useEffect(() => {
@@ -87,6 +92,7 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
         const allData = clone(datasetSummaries);
         missingProcedureData.forEach(d => allData.push(d));
         allData.sort((d1, d2) => d1.parameterStableId.localeCompare(d2.parameterStableId));
+        onNewSummariesFetched(missingProcedureData);
         setDatasets(allData);
       })
   }, [datasetSummaries]);
@@ -261,7 +267,6 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
       })
     },
   }]
-
 
   return (
     <>
