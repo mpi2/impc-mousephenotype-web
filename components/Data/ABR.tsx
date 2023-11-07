@@ -93,10 +93,15 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
 
 
   const getChartLabels = () => {
-    const labels = datasets.map(d => d.parameterName);
-    // add the empty column to separate click from 6kHz
-    labels.splice(1, 0, null);
-    return labels;
+    return [
+      'Click-evoked ABR threshold',
+      null,
+      '6kHz-evoked ABR Threshold',
+      '12kHz-evoked ABR Threshold',
+      '18kHz-evoked ABR Threshold',
+      '24kHz-evoked ABR Threshold',
+      '30kHz-evoked ABR Threshold'
+    ];
   }
   const getStatsData = (sex: 'fem' | 'male', zygLabel: 'Het' | 'Hom' | 'WT') => {
     const data = clone(datasets);
@@ -114,7 +119,13 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
       };
     });
     // add the empty column to separate click from 6kHz
-    result.splice(1, 0, { y: null, x: null});
+    // be aware of difference in capitalisation of threshold word
+    if (result[0].x !== 'Click-evoked ABR threshold') {
+      result.splice(0, 0, { y: null, x: 'Click-evoked ABR threshold'});
+      result.splice(1, 0, { y: null, x: null});
+    } else {
+      result.splice(1, 0, { y: null, x: null});
+    }
     return result;
   }
   const processData = () => {
