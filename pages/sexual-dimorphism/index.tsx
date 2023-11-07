@@ -27,7 +27,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatAlleleSymbol } from "@/utils";
 import Link from "next/link";
-import generate from "@babel/generator";
 
 ChartJS.register(
   LinearScale,

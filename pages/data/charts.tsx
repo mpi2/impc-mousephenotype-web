@@ -17,10 +17,12 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import EmbryoViability from "@/components/Data/EmbryoViability";
 import Skeleton from "react-loading-skeleton";
+import ABR from "@/components/Data/ABR";
 
 const Charts = () => {
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState('0');
   const [showComparison, setShowComparison] = useState(true);
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
   const getChartType = (datasetSummary: any) => {
     let chartType = datasetSummary["dataType"];
@@ -47,11 +49,11 @@ const Charts = () => {
       case "viability":
         return <Viability datasetSummary={datasetSummary} />;
       case "time_series":
-        return <TimeSeries />;
+        return <TimeSeries datasetSummary={datasetSummary} />;
       case "embryo":
         return <EmbryoViability datasetSummary={datasetSummary} />;
       case "histopathology":
-        return <Histopathology />;
+        return <Histopathology datasetSummary={datasetSummary} />;
 
       default:
         return null;
@@ -61,6 +63,8 @@ const Charts = () => {
   const apiUrl = router.query.mpTermId
     ? `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
     : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${router.query.mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
+
+  const selectedParameterKey = !router.query.mpTermId ? `${router.query.alleleAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
 
   let { data: datasetSummaries, isLoading, isError } = useQuery({
     queryKey: [
@@ -72,21 +76,20 @@ const Charts = () => {
     ],
     queryFn: () => fetchAPI(apiUrl),
     enabled: router.isReady,
+    select: data => {
+      data.sort((a, b) => {
+        return a["reportedPValue"] - b["reportedPValue"];
+      });
+      return data?.filter(
+        (value, index, self) =>
+          self.findIndex((v) => v.datasetId === value.datasetId) === index
+      );
+    }
   });
 
-  console.log('DATA: ', datasetSummaries);
-  console.log('LOADING: ', isLoading);
-  console.log('ERROR: ', isError);
+  const isABRChart = datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
 
-  if (datasetSummaries) {
-    datasetSummaries.sort((a, b) => {
-      return a["reportedPValue"] - b["reportedPValue"];
-    });
-    datasetSummaries = datasetSummaries?.filter(
-      (value, index, self) =>
-        self.findIndex((v) => v.datasetId === value.datasetId) === index
-    );
-  }
+  const allSummaries = datasetSummaries?.concat(additionalSummaries);
 
   return (
     <>
@@ -137,14 +140,14 @@ const Charts = () => {
                 }}
               >
               <span>
-                {datasetSummaries && datasetSummaries.length} parameter /
+                {allSummaries && allSummaries.length} parameter /
                 zygosity / metadata group combinations tested, with the lowest
                 p-value of{" "}
                 <strong>
-                  {datasetSummaries &&
+                  {allSummaries &&
                     formatPValue(
                       Math.min(
-                        ...datasetSummaries.map((d) => d["reportedPValue"])
+                        ...allSummaries.map((d) => d["reportedPValue"])
                       )
                     )}
                 </strong>
@@ -164,7 +167,7 @@ const Charts = () => {
             </Alert>
           )}
           {!isLoading && showComparison && (
-            <DataComparison data={datasetSummaries} />
+            <DataComparison data={allSummaries} selectedParameter={selectedParameterKey} />
           )}
         </Card>
       </Container>
@@ -173,23 +176,30 @@ const Charts = () => {
         className="bg-grey pt-2"
       >
         <Container>
-          <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
-            {datasetSummaries &&
-              datasetSummaries.map((d, i) => (
-                <Tab
-                  eventKey={i}
-                  title={
-                    <>
-                      Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
-                      {i === 0 ? " | lowest" : null})
-                    </>
-                  }
-                  key={i}
-                >
-                  <div>{getChartType(d)}</div>
-                </Tab>
-              ))}
-          </Tabs>
+          {!!isABRChart ? (
+            <ABR
+              datasetSummaries={datasetSummaries}
+              onNewSummariesFetched={setAdditionalSummaries}
+            />
+          ) : (
+            <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
+              {datasetSummaries &&
+                datasetSummaries.map((d, i) => (
+                  <Tab
+                    eventKey={i}
+                    title={
+                      <>
+                        Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
+                        {i === 0 ? " | lowest" : null})
+                      </>
+                    }
+                    key={i}
+                  >
+                    <div>{getChartType(d)}</div>
+                  </Tab>
+                ))}
+            </Tabs>
+          )}
         </Container>
       </div>
       <Container>

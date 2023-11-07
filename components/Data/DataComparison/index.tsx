@@ -1,14 +1,11 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { BodySystem } from "../../BodySystemIcon";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
-import styles from "./styles.module.scss";
 import _ from "lodash";
-import { formatAlleleSymbol, formatPValue } from "../../../utils";
+import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-const DataComparison = ({ data }) => {
+const DataComparison = ({ data, selectedParameter }) => {
   const groups = data?.reduce((acc, d) => {
     const {
       alleleAccessionId,
@@ -16,6 +13,7 @@ const DataComparison = ({ data }) => {
       zygosity,
       sex,
       reportedPValue,
+      phenotypeSex,
     } = d;
 
     const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}`;
@@ -25,9 +23,15 @@ const DataComparison = ({ data }) => {
         acc[key].sex = sex;
       }
     } else {
-      acc[key] = { ...d };
+      acc[key] = { ...d, key };
     }
-    acc[key][`pValue_${sex}`] = Number(reportedPValue);
+    if (sex) {
+      acc[key][`pValue_${sex}`] = Number(reportedPValue);
+    } else if(phenotypeSex.length > 0) {
+      let sexValue = phenotypeSex.length >= 2 ? 'not_considered' : phenotypeSex[0];
+      acc[key][`pValue_${sexValue}`] = Number(reportedPValue);
+    }
+
 
     return acc;
   }, {});
@@ -55,6 +59,7 @@ const DataComparison = ({ data }) => {
       return d[`pValue_${key}`] ?? 0;
     };
   };
+
 
   return (
     <Pagination data={sorted}>
@@ -106,7 +111,7 @@ const DataComparison = ({ data }) => {
           {pageData.map((d, i) => {
             const allele = formatAlleleSymbol(d.alleleSymbol);
             return (
-              <tr>
+              <tr key={d.key} style={d.key === selectedParameter ? { borderWidth: 3, borderColor: '#00B0B0' } : {} }>
                 <td>{i + 1}</td>
                 <td>{d.parameterName}</td>
                 <td>{d.phenotypingCentre}</td>
@@ -124,7 +129,7 @@ const DataComparison = ({ data }) => {
                       className={
                         isMostSignificant
                           ? "bold orange-dark-x bg-orange-light-x"
-                          : ""
+                          : "bold"
                       }
                     >
                       {!!d[`pValue_${col}`] ? (

@@ -1,18 +1,14 @@
-import {
-  faArrowLeftLong,
-  faExternalLinkAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
-import { formatAlleleSymbol } from "../../utils";
+import { formatAlleleSymbol } from "@/utils";
 import PieChart from "../PieChart";
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
-import { fetchAPI } from "../../api-service";
 import { useQuery } from "@tanstack/react-query";
+import ChartSummary from "@/components/Data/ChartSummary";
 
 const EmbryoViability = ({ datasetSummary }) => {
   const router = useRouter();
@@ -161,44 +157,30 @@ const EmbryoViability = ({ datasetSummary }) => {
     {
       label: "Total Embryos WTs",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap.wildtype.total
+        (d) => d.parameterStableId == viabilityParameterMap?.wildtype.total
       )?.dataPoint,
     },
     {
       label: "Total Embryos Homozygotes",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap.homozygote.total
+        (d) => d.parameterStableId == viabilityParameterMap?.homozygote.total
       )?.dataPoint,
     },
     {
       label: "Total Embryos Heterozygotes",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap.heterozygote.total
+        (d) => d.parameterStableId == viabilityParameterMap?.heterozygote.total
       )?.dataPoint,
     },
   ].filter((d) => d.value != 0);
 
   return (
     <>
-      <Card>
-        <div>
-          <button
-            style={{ border: 0, background: "none", padding: 0 }}
-            onClick={() => {
-              router.back();
-            }}
-          >
-            <a href="#" className="grey mb-3 small">
-              <FontAwesomeIcon icon={faArrowLeftLong} /> GO BACK
-            </a>
-          </button>
-          <h1>
-            <strong>
-              {datasetSummary["geneSymbol"]} Secondary Viability{" "}
-              {datasetSummary["parameterName"]} data
-            </strong>
-          </h1>
-          <Alert variant="yellow">
+      <ChartSummary
+        title={`${datasetSummary["geneSymbol"]} ${datasetSummary["parameterName"]} data`}
+        datasetSummary={datasetSummary}
+        additionalContent={
+          <Alert variant="primary">
             <p>Please note:</p>
             <ul>
               <li>
@@ -214,70 +196,15 @@ const EmbryoViability = ({ datasetSummary }) => {
               </li>
             </ul>
           </Alert>
-        </div>
-        <h2>Description of the experiments performed</h2>
-        <Row>
-          <Col md={7} style={{ borderRight: "1px solid #ddd" }}>
-            <p>
-              A {datasetSummary["procedureName"]} phenotypic assay was performed
-              on a mutant strain carrying the {allele[0]}
-              <sup>{allele[1]}</sup> allele. The charts below show the
-              proportion of wild type, heterozygous, and homozygous offspring.
-            </p>
-          </Col>
-          <Col md={5} className="small">
-            <p className="mb-2">
-              <span style={{ display: "inline-block", width: 180 }}>
-                Testing protocol
-              </span>
-              <strong>{datasetSummary["procedureName"]}</strong>
-            </p>
-            <p className="mb-2">
-              <span style={{ display: "inline-block", width: 180 }}>
-                Testing environment
-              </span>
-              <strong>Lab conditions and equipment</strong>
-            </p>
-            <p className="mb-2">
-              <span style={{ display: "inline-block", width: 180 }}>
-                Measured value
-              </span>
-              <strong>{datasetSummary["parameterName"]}</strong>
-            </p>
-            <p className="mb-2">
-              <span style={{ display: "inline-block", width: 180 }}>
-                Life stage
-              </span>
-              <strong>{datasetSummary["lifeStageName"]}</strong>
-            </p>
-            <p className="mb-2">
-              <span style={{ display: "inline-block", width: 180 }}>
-                Background Strain
-              </span>
-              <strong>{datasetSummary["geneticBackground"]}</strong>
-            </p>
-            <p className="mb-2">
-              <span style={{ display: "inline-block", width: 180 }}>
-                Phenotyping center
-              </span>
-              <strong>{datasetSummary["phenotypingCentre"]}</strong>
-            </p>
-            <p className="mb-2">
-              <span style={{ display: "inline-block", width: 180 }}>
-                Associated Phenotype
-              </span>
-              <a
-                className="primary"
-                href={
-                  "/phenotypes/" + datasetSummary["significantPhenotype"]["id"]
-                }
-              >
-                {datasetSummary["significantPhenotype"]["name"]}
-              </a>
-            </p>
-          </Col>
-        </Row>
-      </Card>
+        }
+      >
+        <p>
+          A {datasetSummary["procedureName"]} phenotypic assay was performed
+          on a mutant strain carrying the {allele[0]}
+          <sup>{allele[1]}</sup> allele. The charts below show the
+          proportion of wild type, heterozygous, and homozygous offspring.
+        </p>
+      </ChartSummary>
       <Row>
         <Col lg={6}>
           <Card>
@@ -312,7 +239,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.wildtype.total
+                        viabilityParameterMap?.wildtype.total
                     )?.dataPoint
                   }
                 </td>
@@ -321,7 +248,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.heterozygote.total
+                        viabilityParameterMap?.heterozygote.total
                     )?.dataPoint
                   }
                 </td>
@@ -331,7 +258,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.homozygote.total
+                        viabilityParameterMap?.homozygote.total
                     )?.dataPoint
                   }
                 </td>
@@ -340,7 +267,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap.na.total
+                        d.parameterStableId == viabilityParameterMap?.na.total
                     )?.dataPoint
                   }
                 </td>
@@ -352,7 +279,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.wildtype.dead
+                        viabilityParameterMap?.wildtype.dead
                     )?.dataPoint
                   }
                 </td>
@@ -361,7 +288,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.heterozygote.dead
+                        viabilityParameterMap?.heterozygote.dead
                     )?.dataPoint
                   }
                 </td>
@@ -370,7 +297,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.homozygote.dead
+                        viabilityParameterMap?.homozygote.dead
                     )?.dataPoint
                   }
                 </td>
@@ -378,7 +305,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap.na.dead
+                        d.parameterStableId == viabilityParameterMap?.na.dead
                     )?.dataPoint
                   }
                 </td>
@@ -390,7 +317,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.wildtype.defect
+                        viabilityParameterMap?.wildtype.defect
                     )?.dataPoint
                   }
                 </td>
@@ -399,7 +326,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.heterozygote.defect
+                        viabilityParameterMap?.heterozygote.defect
                     )?.dataPoint
                   }
                 </td>
@@ -408,7 +335,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap.homozygote.defect
+                        viabilityParameterMap?.homozygote.defect
                     )?.dataPoint
                   }
                 </td>
@@ -416,7 +343,7 @@ const EmbryoViability = ({ datasetSummary }) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap.na.defect
+                        d.parameterStableId == viabilityParameterMap?.na.defect
                     )?.dataPoint
                   }
                 </td>
@@ -428,14 +355,14 @@ const EmbryoViability = ({ datasetSummary }) => {
                 {
                   data.series.find(
                     (d) =>
-                      d.parameterStableId == viabilityParameterMap.reabsorptions
+                      d.parameterStableId == viabilityParameterMap?.reabsorptions
                   )?.dataPoint
                 }
               </p>
               <p>
                 Average litter size:{" "}
                 {data.series.find(
-                  (d) => d.parameterStableId == viabilityParameterMap.litterSize
+                  (d) => d.parameterStableId == viabilityParameterMap?.litterSize
                 )?.dataPoint || "Not supplied"}
               </p>
             </div>
