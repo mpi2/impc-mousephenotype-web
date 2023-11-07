@@ -1,11 +1,8 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { BodySystem } from "../../BodySystemIcon";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
-import styles from "./styles.module.scss";
 import _ from "lodash";
-import { formatAlleleSymbol, formatPValue } from "../../../utils";
+import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const DataComparison = ({ data }) => {
@@ -16,6 +13,7 @@ const DataComparison = ({ data }) => {
       zygosity,
       sex,
       reportedPValue,
+      phenotypeSex,
     } = d;
 
     const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}`;
@@ -27,7 +25,13 @@ const DataComparison = ({ data }) => {
     } else {
       acc[key] = { ...d };
     }
-    acc[key][`pValue_${sex}`] = Number(reportedPValue);
+    if (sex) {
+      acc[key][`pValue_${sex}`] = Number(reportedPValue);
+    } else if(phenotypeSex.length > 0) {
+      let sexValue = phenotypeSex.length >= 2 ? 'not_considered' : phenotypeSex[0];
+      acc[key][`pValue_${sexValue}`] = Number(reportedPValue);
+    }
+
 
     return acc;
   }, {});
@@ -124,7 +128,7 @@ const DataComparison = ({ data }) => {
                       className={
                         isMostSignificant
                           ? "bold orange-dark-x bg-orange-light-x"
-                          : ""
+                          : "bold"
                       }
                     >
                       {!!d[`pValue_${col}`] ? (
