@@ -267,8 +267,19 @@ const ABR = ({ datasetSummaries } : ABRProps) => {
     <>
       <ChartSummary datasetSummary={datasetSummaries[0]} />
       <Card>
+        <div style={{ textAlign: 'center' }}>
+          <h2 style={{ marginBottom: '0.5rem' }}>Evoked ABR Threshold (6, 12, 18, 18, 24, 30 kHz)</h2>
+          <a className="primary link" href="//www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=670">
+            Auditory Brain Stem Response
+          </a>
+        </div>
         <div style={{ position: 'relative', height: '400px' }}>
-          <Chart type="bar" data={chartData} options={chartOptions} plugins={chartPlugins} />
+          <Chart
+            type="bar"
+            data={chartData}
+            options={chartOptions}
+            plugins={chartPlugins}
+          />
         </div>
       </Card>
     </>
