@@ -5,7 +5,7 @@ import _ from "lodash";
 import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-const DataComparison = ({ data }) => {
+const DataComparison = ({ data, selectedParameter }) => {
   const groups = data?.reduce((acc, d) => {
     const {
       alleleAccessionId,
@@ -23,7 +23,7 @@ const DataComparison = ({ data }) => {
         acc[key].sex = sex;
       }
     } else {
-      acc[key] = { ...d };
+      acc[key] = { ...d, key };
     }
     if (sex) {
       acc[key][`pValue_${sex}`] = Number(reportedPValue);
@@ -59,6 +59,7 @@ const DataComparison = ({ data }) => {
       return d[`pValue_${key}`] ?? 0;
     };
   };
+
 
   return (
     <Pagination data={sorted}>
@@ -110,7 +111,7 @@ const DataComparison = ({ data }) => {
           {pageData.map((d, i) => {
             const allele = formatAlleleSymbol(d.alleleSymbol);
             return (
-              <tr>
+              <tr key={d.key} style={d.key === selectedParameter ? { borderWidth: 3, borderColor: '#00B0B0' } : {} }>
                 <td>{i + 1}</td>
                 <td>{d.parameterName}</td>
                 <td>{d.phenotypingCentre}</td>

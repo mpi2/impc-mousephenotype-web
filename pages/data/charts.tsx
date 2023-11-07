@@ -64,6 +64,8 @@ const Charts = () => {
     ? `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
     : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${router.query.mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
 
+  const selectedParameterKey = !router.query.mpTermId ? `${router.query.alleleAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
+
   let { data: datasetSummaries, isLoading, isError } = useQuery({
     queryKey: [
       "genes",
@@ -165,7 +167,7 @@ const Charts = () => {
             </Alert>
           )}
           {!isLoading && showComparison && (
-            <DataComparison data={allSummaries} />
+            <DataComparison data={allSummaries} selectedParameter={selectedParameterKey} />
           )}
         </Card>
       </Container>
