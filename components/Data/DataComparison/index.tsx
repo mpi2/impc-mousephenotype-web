@@ -5,13 +5,62 @@ import _ from "lodash";
 import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
+type LastColumnProps = {
+  isViabilityChart: boolean,
+  dataset: any
+};
+
+const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
+  return isViabilityChart ? (
+    <td>
+      {dataset.viability}
+    </td>
+  ) : (
+    <>
+      {["male", "female", "not_considered"].map((col) => {
+        const isMostSignificant = dataset.sex === col;
+        return (
+          <td
+            className={
+              isMostSignificant
+                ? "bold orange-dark-x bg-orange-light-x"
+                : "bold"
+            }
+          >
+            {!!dataset[`pValue_${col}`] ? (
+              formatPValue(dataset[`pValue_${col}`])
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                trigger={["hover", "focus"]}
+                overlay={
+                  <Tooltip>Not significant or not tested</Tooltip>
+                }
+              >
+                <span className="grey">—</span>
+              </OverlayTrigger>
+            )}
+          </td>
+        );
+      })}
+    </>
+  );
+}
+
 
 type Props = {
   data: any;
   selectedParameter: string | null;
+  isViabilityChart: boolean;
   initialSortByProp?: string;
 }
-const DataComparison = ({ data, selectedParameter, initialSortByProp }: Props) => {
+const DataComparison = (props: Props) => {
+  const {
+    data,
+    selectedParameter,
+    isViabilityChart,
+    initialSortByProp
+  } = props;
   const groups = data?.reduce((acc, d) => {
     const {
       alleleAccessionId,
@@ -33,7 +82,7 @@ const DataComparison = ({ data, selectedParameter, initialSortByProp }: Props) =
     }
     if (sex) {
       acc[key][`pValue_${sex}`] = Number(reportedPValue);
-    } else if(phenotypeSex.length > 0) {
+    } else if(phenotypeSex?.length > 0) {
       let sexValue = phenotypeSex.length >= 2 ? 'not_considered' : phenotypeSex[0];
       acc[key][`pValue_${sexValue}`] = Number(reportedPValue);
     }
@@ -43,12 +92,28 @@ const DataComparison = ({ data, selectedParameter, initialSortByProp }: Props) =
   }, {});
 
   const processed =
-    (groups ? Object.values(groups) : []).map((d: any) => ({
-      ...d,
-      topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
-      phenotype: d.significantPhenotype?.name,
-      id: d.significantPhenotype?.id,
-    })) || [];
+    (groups ? Object.values(groups) : []).map((d: any) => {
+      const getLethality = () => {
+        if (!d.significant) {
+          return 'Viable';
+        }
+        if (d.significant && d.significantPhenotype?.id === 'MP:0011100') {
+          return 'Lethal';
+        }
+        if (d.significant && d.significantPhenotype?.id === 'MP:0011110') {
+          return 'Subviable'
+        }
+        return '-';
+      };
+
+      return {
+        ...d,
+        topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
+        phenotype: d.significantPhenotype?.name,
+        id: d.significantPhenotype?.id,
+        viability: getLethality(),
+      }
+    }) || [];
 
   const [sorted, setSorted] = useState<any[]>(null);
 
@@ -67,6 +132,35 @@ const DataComparison = ({ data, selectedParameter, initialSortByProp }: Props) =
     };
   };
 
+  const lastColumnHeader = isViabilityChart ? {
+    width: 2,
+    label: "Viability",
+    field: "viability"
+  } : {
+    width: 2,
+    label: "P Value",
+    field: "pValue",
+    children: [
+      {
+        width: 1,
+        label: "Male",
+        field: "pValue_male",
+        sortFn: getPValueSortFn("male"),
+      },
+      {
+        width: 1,
+        label: "Female",
+        field: "pValue_female",
+        sortFn: getPValueSortFn("female"),
+      },
+      {
+        width: 1,
+        label: "Combined",
+        field: "pValue_not_considered",
+        sortFn: getPValueSortFn("not_considered"),
+      },
+    ],
+  }
 
   return (
     <Pagination data={sorted}>
@@ -88,31 +182,7 @@ const DataComparison = ({ data, selectedParameter, initialSortByProp }: Props) =
             { width: 1, label: "Zyg", field: "zygosity" },
             { width: 1, label: "Life Stage", field: "lifeStageName" },
             { width: 1, label: "Metadata split flag", field: "flag" },
-            {
-              width: 2,
-              label: "P Value",
-              field: "pValue",
-              children: [
-                {
-                  width: 1,
-                  label: "Male",
-                  field: "pValue_male",
-                  sortFn: getPValueSortFn("male"),
-                },
-                {
-                  width: 1,
-                  label: "Female",
-                  field: "pValue_female",
-                  sortFn: getPValueSortFn("female"),
-                },
-                {
-                  width: 1,
-                  label: "Combined",
-                  field: "pValue_not_considered",
-                  sortFn: getPValueSortFn("not_considered"),
-                },
-              ],
-            },
+            lastColumnHeader,
           ]}
         >
           {pageData.map((d, i) => {
@@ -129,32 +199,7 @@ const DataComparison = ({ data, selectedParameter, initialSortByProp }: Props) =
                 <td>{d.zygosity}</td>
                 <td>{d.lifeStageName}</td>
                 <td>??</td>
-                {["male", "female", "not_considered"].map((col) => {
-                  const isMostSignificant = d.sex === col;
-                  return (
-                    <td
-                      className={
-                        isMostSignificant
-                          ? "bold orange-dark-x bg-orange-light-x"
-                          : "bold"
-                      }
-                    >
-                      {!!d[`pValue_${col}`] ? (
-                        formatPValue(d[`pValue_${col}`])
-                      ) : (
-                        <OverlayTrigger
-                          placement="top"
-                          trigger={["hover", "focus"]}
-                          overlay={
-                            <Tooltip>Not significant or not tested</Tooltip>
-                          }
-                        >
-                          <span className="grey">—</span>
-                        </OverlayTrigger>
-                      )}
-                    </td>
-                  );
-                })}
+                <LastColumn dataset={d} isViabilityChart={isViabilityChart} />
               </tr>
             );
           })}
