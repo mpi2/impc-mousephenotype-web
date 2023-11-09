@@ -87,7 +87,8 @@ const Charts = () => {
     }
   });
 
-  const isABRChart = datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
+  const isABRChart = !!datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
+  const isViabilityChart = !!datasetSummaries?.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
 
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
 
@@ -170,6 +171,7 @@ const Charts = () => {
             <DataComparison
               data={allSummaries}
               selectedParameter={selectedParameterKey}
+              isViabilityChart={isViabilityChart}
               {...(isABRChart && { initialSortByProp: 'parameterStableId' })}
             />
           )}
