@@ -167,7 +167,11 @@ const Charts = () => {
             </Alert>
           )}
           {!isLoading && showComparison && (
-            <DataComparison data={allSummaries} selectedParameter={selectedParameterKey} />
+            <DataComparison
+              data={allSummaries}
+              selectedParameter={selectedParameterKey}
+              {...(isABRChart && { initialSortByProp: 'parameterStableId' })}
+            />
           )}
         </Card>
       </Container>
