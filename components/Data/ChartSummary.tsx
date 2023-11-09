@@ -5,6 +5,7 @@ import Card from "@/components/Card";
 import { useRouter } from "next/router";
 import { formatAlleleSymbol } from "@/utils";
 import { PropsWithChildren, ReactNode } from "react";
+import Link from "next/link";
 
 
 type ChartSummaryProps = {
@@ -110,7 +111,13 @@ const ChartSummary = ({ title, additionalContent = null, datasetSummary, childre
               <span style={{ display: "inline-block", width: 180 }}>
                 Associated Phenotype
               </span>
-            <strong>{datasetSummary["significantPhenotype"]?.["name"]}</strong>
+            {!!datasetSummary["significantPhenotype"]?.["id"] ? (
+              <Link href={`/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}>
+                <strong className="link primary">{datasetSummary["significantPhenotype"]?.["name"]}</strong>
+              </Link>
+            ) : (
+              <strong>{datasetSummary["significantPhenotype"]?.["name"]}</strong>
+            )}
           </p>
         </Col>
       </Row>
