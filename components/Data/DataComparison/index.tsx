@@ -5,7 +5,13 @@ import _ from "lodash";
 import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-const DataComparison = ({ data, selectedParameter }) => {
+
+type Props = {
+  data: any;
+  selectedParameter: string | null;
+  initialSortByProp?: string;
+}
+const DataComparison = ({ data, selectedParameter, initialSortByProp }: Props) => {
   const groups = data?.reduce((acc, d) => {
     const {
       alleleAccessionId,
@@ -47,7 +53,8 @@ const DataComparison = ({ data, selectedParameter }) => {
   const [sorted, setSorted] = useState<any[]>(null);
 
   useEffect(() => {
-    setSorted(_.orderBy(processed, "phenotype", "asc"));
+    const prop = !!initialSortByProp ? initialSortByProp : 'phenotype';
+    setSorted(_.orderBy(processed, prop, "asc"));
   }, [data]);
 
   if (!data) {
