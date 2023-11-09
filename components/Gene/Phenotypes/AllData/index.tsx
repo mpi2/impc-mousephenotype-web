@@ -44,7 +44,6 @@ const AllData = ({ data }: { data: any }) => {
   if (!data) {
     return null;
   }
-  console.log(data[0]);
 
   return (
     <>
@@ -215,7 +214,6 @@ const AllData = ({ data }: { data: any }) => {
                         </span>
                         <Link
                           href={`/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`}
-                          legacyBehavior
                         >
                           <strong className={`link primary small float-right`}>
                             <FontAwesomeIcon icon={faChartLine} /> Supporting
