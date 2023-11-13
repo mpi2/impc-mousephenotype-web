@@ -38,3 +38,16 @@
     margin-bottom: $xxs;
   }
 }
+
+.filtersWrapper {
+  display: flex;
+  gap: 2rem;
+  .filter {
+    display: flex;
+    gap: 0.5rem;
+    .badge {
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  }
+}
