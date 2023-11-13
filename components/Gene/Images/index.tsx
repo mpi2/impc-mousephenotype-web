@@ -7,21 +7,22 @@ import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
 import styles from "./styles.module.scss";
 import {useQuery} from "@tanstack/react-query";
-import {fetchAPI} from "../../../api-service";
+import {fetchAPI} from "@/api-service";
 
 interface Props {
   parameterName: string;
   procedureName: string;
+  parameterStableId: string;
   image: string;
   length: number;
 }
 
-const Image = ({ parameterName, procedureName, image, length }: Props) => {
+const Image = ({ parameterName, procedureName, parameterStableId, image, length }: Props) => {
   const router = useRouter();
   const { pid } = router.query;
 
   return (
-    <Link href={`/genes/${pid}/images/${parameterName}`}>
+    <Link href={`/genes/${pid}/images/${parameterStableId}`}>
       <div className={styles.card}>
         <div
           className={styles.cardImage}
@@ -72,6 +73,7 @@ const Images = ({ gene }: { gene: any }) => {
   }
 
   const groups = Object.entries(_.groupBy(data, "parameterName"));
+  console.log(groups);
   return (
     <Card id="images">
       <h2>Associated images</h2>
@@ -82,8 +84,9 @@ const Images = ({ gene }: { gene: any }) => {
               <Image
                 parameterName={key}
                 procedureName={group[0].procedureName}
+                parameterStableId={group[0].parameterStableId}
                 image={group[0].thumbnailUrl}
-                length={group.length}
+                length={group[0].count}
               />
             </Col>
           ))}
