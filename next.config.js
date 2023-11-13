@@ -33,5 +33,6 @@ module.exports = {
     ignoreBuildErrors: true,
   },
   transpilePackages: ["@nivo"],
-  experimental: { esmExternals: "loose" }
+  experimental: { esmExternals: "loose" },
+  productionBrowserSourceMaps: true,
 };
