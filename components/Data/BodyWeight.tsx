@@ -4,7 +4,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import Card from "@/components/Card";
 import ChartSummary from "./ChartSummary";
 import { useQuery } from "@tanstack/react-query";
@@ -23,6 +23,8 @@ import {
   BarController,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
+import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
+import { useState } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -62,28 +64,59 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
         }
         result[label].push({
           y: point.mean,
-          x: point.ageInWeeks,
+          x: Number.parseInt(point.ageInWeeks, 10),
           yMin: point.mean - point.std,
           yMax: point.mean + point.std,
-          ageInWeeks: point.ageInWeeks,
+          ageInWeeks: Number.parseInt(point.ageInWeeks, 10),
+          count: point.count,
         });
       });
-      return {
-        datasets: Object.keys(result).map(key => {
-          return {
-            type: 'line' as const,
-            label: key,
-            data: result[key].sort((p1, p2) => p1.ageInWeeks - p2.ageInWeeks),
-            borderColor: key.includes('WT') ? 'rgb(67, 147, 195, 0.5)' : 'rgb(214, 96, 77, 0.5)',
-            backgroundColor: key.includes('WT') ? 'rgb(67, 147, 195, 0.5)' : 'rgb(214, 96, 77, 0.5)',
-            pointStyle: getPointStyle(key),
-          }
-        }),
-        labels: Array.from({ length: 81 }, (_, index) => (index + 1).toString(10)),
-      };
+      Object.keys(result).forEach(key => {
+        const values = result[key];
+        values.sort((p1, p2) => p1.ageInWeeks - p2.ageInWeeks);
+      })
+      return result;
     },
   });
-  console.log(data);
+  const [viewOnlyRangeForMutant, setViewOnlyRangeForMutant] = useState(true);
+
+  const getMaxAge = (absoluteAge: boolean) => {
+    if (data) {
+      return Object.keys(data)
+        .filter(key => (viewOnlyRangeForMutant && !absoluteAge) ? !key.includes('WT') : true)
+        .map(key => data[key])
+        .reduce((age, datasetValues) => {
+          const maxAgeByDataset = datasetValues.at(-1).ageInWeeks;
+          return maxAgeByDataset > age ? maxAgeByDataset : age;
+        }, 0)
+    }
+    return 0;
+  }
+
+  const getValuesForRow = (week: number) => {
+    return Object.keys(data).map(key => data[key]).map(dataset => {
+      const value = dataset.find(point => point.ageInWeeks === week);
+      return value === undefined ? '-' : `${value.y.toFixed(6)} (${value.count})`;
+    })
+  }
+
+  const processData = () => {
+    const maxAge = getMaxAge(false);
+    const datasets = Object.keys(data).map(key => {
+      return {
+        type: 'line' as const,
+        label: key,
+        data: data[key].filter(point => point.ageInWeeks <= maxAge),
+        borderColor: key.includes('WT') ? 'rgb(67, 147, 195, 0.5)' : 'rgb(214, 96, 77, 0.5)',
+        backgroundColor: key.includes('WT') ? 'rgb(67, 147, 195, 0.5)' : 'rgb(214, 96, 77, 0.5)',
+        pointStyle: getPointStyle(key),
+      }
+    });
+    return {
+      datasets,
+      labels: Array.from({ length: maxAge }, (_, index) => index + 1),
+    };
+  }
 
   const chartOptions= {
     responsive: true,
@@ -91,6 +124,7 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
     interaction: {
       intersect: false,
       mode: 'index' as const,
+      axis: 'y' as const
     },
     scales: {
       yAxis: {
@@ -120,19 +154,15 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
         usePointStyle: true,
         title: { padding: { top: 10 } },
         callbacks: {
-          label: ctx => {
-            const minValue = ctx.raw.yMin.toFixed(2);
-            const maxValue = ctx.raw.yMax.toFixed(2);
-            return `${ctx.dataset.label}: ${ctx.formattedValue} (SD: ${minValue} - ${maxValue})`
-          },
-          title: ctx => {
-            console.log(ctx);
-            return 'Age - Rounded to nearest week ' + ctx[0].label;
-          }
+
         }
       }
     },
   };
+
+  const chartPlugins = [errorbarsPlugin];
+
+  const maxAge = getMaxAge(true);
 
   return (
     <>
@@ -142,9 +172,42 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
           <Card>
             <div style={{ position: 'relative', height: '400px' }}>
               {!!data && (
-                <Chart type="bar" options={chartOptions} data={data} />
+                <>
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Form.Check // prettier-ignore
+                      type="switch"
+                      id="custom-switch"
+                      label="View data within mutants data range"
+                      onClick={e => setViewOnlyRangeForMutant(e.target.checked)}
+                      checked={viewOnlyRangeForMutant}
+                    />
+                  </div>
+                  <Chart type="bar" options={chartOptions} data={processData()} plugins={chartPlugins} />
+                </>
               )}
             </div>
+          </Card>
+          <Card>
+            {!!data && (
+              <Table striped>
+                <thead>
+                  <tr>
+                    <th>Week</th>
+                    {Object.keys(data).map(label => <th key={label}>{label + ' (count)'}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[...Array(maxAge)].map((week, i) => (
+                    <tr key={i}>
+                      <td>{i+1}</td>
+                      {getValuesForRow(i).map(value => (
+                        <td>{value}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
           </Card>
         </Col>
         <Col lg={6}>
