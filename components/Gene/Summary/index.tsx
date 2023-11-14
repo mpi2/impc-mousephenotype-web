@@ -83,8 +83,20 @@ const Metric = ({
 }) => {
   return (
     <div className={styles.metric}>
-      <div>
-        <span className={styles.progressCircleText}>{value}</span>
+      <div className={styles.progressCircleCont}>
+        <CircularProgressbarWithChildren
+          strokeWidth={8}
+          value={100}
+          styles={buildStyles({
+            strokeLinecap: "butt",
+            pathTransitionDuration: 0.5,
+            pathColor: "#BBB",
+            trailColor: "#e8e8e8",
+            backgroundColor: "#3e98c7",
+          })}
+        >
+          <span className={styles.progressCircleText}>{value}</span>
+        </CircularProgressbarWithChildren>
       </div>
       <div className="ms-3">
         <p className="mb-0">
