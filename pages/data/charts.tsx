@@ -18,6 +18,7 @@ import { fetchAPI } from "@/api-service";
 import EmbryoViability from "@/components/Data/EmbryoViability";
 import Skeleton from "react-loading-skeleton";
 import ABR from "@/components/Data/ABR";
+import BodyWeightChart from "@/components/Data/BodyWeight";
 
 const Charts = () => {
   const [tab, setTab] = useState('0');
@@ -41,6 +42,9 @@ const Charts = () => {
           ? "embryo_viability"
           : "line";
     }
+    if (chartType === "time_series" && datasetSummary.procedureGroup === "IMPC_BWT") {
+      chartType = "bodyweight";
+    }
     switch (chartType) {
       case "unidimensional":
         return <Unidimensional datasetSummary={datasetSummary} />;
@@ -54,7 +58,8 @@ const Charts = () => {
         return <EmbryoViability datasetSummary={datasetSummary} />;
       case "histopathology":
         return <Histopathology datasetSummary={datasetSummary} />;
-
+      case "bodyweight":
+        return <BodyWeightChart datasetSummary={datasetSummary} mgiGeneAccessionId={router.query.mgiGeneAccessionId} />
       default:
         return null;
     }
