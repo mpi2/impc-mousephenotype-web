@@ -11,20 +11,7 @@ import ChartSummary from "./ChartSummary";
 const TimeSeries = ({ datasetSummary }) => {
   return (
     <>
-      <ChartSummary datasetSummary={datasetSummary}>
-        <p>
-          A Body Composition (DEXA lean/fat) phenotypic assay was performed
-          on 802 mice. The charts show the results of measuring Bone Mineral
-          Density (excluding skull) in 8 female, 8 male mutants compared to
-          395 female, 391 male controls. The mutants are for the
-          Mavsem1(IMPC)Mbp allele.
-        </p>
-        <p className="small">
-          * The high throughput nature of the IMPC means that large control
-          sample sizes may accumulate over a long period of time. See the
-          animal welfare guidelines for more information.
-        </p>
-      </ChartSummary>
+      <ChartSummary datasetSummary={datasetSummary} />
       <Row>
         <Col lg={12}>
           <Card>
