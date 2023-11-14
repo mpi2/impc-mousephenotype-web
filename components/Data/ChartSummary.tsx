@@ -116,7 +116,7 @@ const ChartSummary = ({ title, additionalContent = null, datasetSummary, childre
                 <strong className="link primary">{datasetSummary["significantPhenotype"]?.["name"]}</strong>
               </Link>
             ) : (
-              <strong>{datasetSummary["significantPhenotype"]?.["name"]}</strong>
+              <strong>No significant association</strong>
             )}
           </p>
         </Col>
