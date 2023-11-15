@@ -7,6 +7,7 @@ import {
   faMars,
   faMarsAndVenus,
   faEye,
+  faGenderless,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -35,7 +36,6 @@ const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactN
 )
 
 const ImageViewer = ({ image }) => {
-  console.log('IMAGE VIEWER: ', image);
   if (!image) {
     return <Skeleton containerClassName="flex-1" style={{ flex: 1, height: '100%' }} />
   }
@@ -70,6 +70,17 @@ const ImageViewer = ({ image }) => {
 };
 
 const Column = ({ images, selected, onSelection }) => {
+  const getSexIcon = (sex: string) => {
+    switch (sex) {
+      case 'male':
+        return faMars;
+      case 'female':
+        return faVenus;
+      default:
+        return faGenderless;
+    }
+  }
+
   return (
     <Row className={`mt-3 ${styles.images}`}>
       {images?.map((image, i) => (
@@ -77,10 +88,13 @@ const Column = ({ images, selected, onSelection }) => {
           <div className={styles.singleImage} onClick={() => onSelection(i)}>
             <div className={styles.overlay}>
               {selected === i ? (
-                <div className={styles.checkIndicator}>
+                <div className={`${styles.indicator} ${styles.imageActiveIndicator}`}>
                   <FontAwesomeIcon icon={faEye} />
                 </div>
               ): null}
+              <div className={`${styles.indicator} ${styles.sexIndicator}`}>
+                <FontAwesomeIcon icon={getSexIcon(image.sex)} />
+              </div>
             </div>
             <LazyLoadImage
               src={addTrailingSlash(image.thumbnailUrl)}
