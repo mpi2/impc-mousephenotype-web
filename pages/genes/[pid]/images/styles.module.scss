@@ -26,14 +26,28 @@
       width: 100%;
       height: 100%;
     }
-    .checkIndicator {
-      background-color: $secondary;
-      color: #FFF;
+    .indicator {
+      display: flex;
       border-radius: 50%;
       position: absolute;
+    }
+    .imageActiveIndicator {
+      background-color: $secondary;
+      color: #FFF;
       top: 5px;
       right: 5px;
-      padding: 4px 7px;
+      padding: 5px;
+    }
+    .sexIndicator {
+      background-color: #000;
+      top: 5px;
+      left: 5px;
+      color: #FFF;
+      padding: 6px 7px;
+    }
+    .additionalInfo {
+      font-size: 0.75em;
+      padding: 0.5em;
     }
   }
 }
@@ -72,6 +86,7 @@
   .filter {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
     .badge {
       cursor: pointer;
       font-size: 1rem;
