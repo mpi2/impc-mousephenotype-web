@@ -14,6 +14,7 @@ import {
 } from "@sgratzl/chartjs-chart-boxplot";
 import { Chart } from "react-chartjs-2";
 import { FC } from "react";
+import { bgColors, borderColors } from "@/components/Data/Plots";
 
 interface UnidimensionalSeries {
   sex: "male" | "female";
@@ -33,14 +34,6 @@ ChartJS.register(
   CategoryScale
 );
 
-const bgColors = {
-  control: "rgba(239, 123, 11, 0.2)",
-  experimental: "rgba(9, 120, 161, 0.7)",
-};
-const boderColors = {
-  control: "rgba(239, 123, 11, 0.5)",
-  experimental: "rgba(9, 120, 161, 0.7)",
-};
 const shapes = { male: "triangle", female: "circle" };
 const pointRadius = 5;
 
@@ -60,7 +53,7 @@ const getBoxPlotDataset = (series, zygosity) => {
         type: "boxplot" as const,
         backgroundColor: (d) => bgColors[boxPlotSeries[d.index]?.sampleGroup],
         data: boxPlotSeries.map((s) => s.data.map((i) => +i.dataPoint)),
-        borderColor: (d) => boderColors[boxPlotSeries[d.index]?.sampleGroup],
+        borderColor: (d) => borderColors[boxPlotSeries[d.index]?.sampleGroup],
         itemStyle: (d) => shapes[boxPlotSeries[d.index]?.sex],
         borderWidth: 2,
         itemRadius: 0,

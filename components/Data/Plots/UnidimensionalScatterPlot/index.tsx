@@ -17,7 +17,7 @@ import { FC } from "react";
 import { Chart } from "react-chartjs-2";
 import {
   bgColors,
-  boderColors,
+  borderColors,
   pointRadius,
   shapes,
   UnidimensionalSeries,
@@ -54,7 +54,7 @@ const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
     label,
     backgroundColor: bgColors[series.sampleGroup],
     data: series.data,
-    borderColor: boderColors[series.sampleGroup],
+    borderColor: borderColors[series.sampleGroup],
     borderWidth: 1,
     pointStyle: shapes[series.sex],
     radius: pointRadius,

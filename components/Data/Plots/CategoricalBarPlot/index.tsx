@@ -2,7 +2,7 @@ import { Chart } from "react-chartjs-2";
 import {
   CategoricalSeries,
   bgColors,
-  boderColors,
+  borderColors,
   shapes,
   pointRadius,
 } from "..";
@@ -19,7 +19,7 @@ import {
   BarElement,
 } from "chart.js";
 
-var colorArray = ["#ef7b0a", "#0978a1", "#809900", "#E6B3B3"];
+const colorArray = ["#D41159", "#0978a1", "#117733", "#44AA99", "#88CCEE", "#DDCC77", "#CC6677", "#AA4499"];
 
 ChartJS.register(
   LinearScale,

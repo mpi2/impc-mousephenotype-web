@@ -24,7 +24,8 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
-import { useState } from "react";
+import { ChangeEvent, MouseEvent, MouseEventHandler, useState } from "react";
+import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 
 ChartJS.register(
   CategoryScale,
@@ -107,8 +108,8 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
         type: 'line' as const,
         label: key,
         data: data[key].filter(point => point.ageInWeeks <= maxAge),
-        borderColor: key.includes('WT') ? 'rgb(67, 147, 195, 0.5)' : 'rgb(214, 96, 77, 0.5)',
-        backgroundColor: key.includes('WT') ? 'rgb(67, 147, 195, 0.5)' : 'rgb(214, 96, 77, 0.5)',
+        borderColor: key.includes('WT') ? wildtypeChartColors.halfOpacity : mutantChartColors.halfOpacity,
+        backgroundColor: key.includes('WT') ? wildtypeChartColors.halfOpacity : mutantChartColors.halfOpacity,
         pointStyle: getPointStyle(key),
       }
     });
@@ -178,7 +179,7 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
                       type="switch"
                       id="custom-switch"
                       label="View data within mutants data range"
-                      onClick={e => setViewOnlyRangeForMutant(e.target.checked)}
+                      onClick={e => setViewOnlyRangeForMutant(e.target['checked'])}
                       checked={viewOnlyRangeForMutant}
                     />
                   </div>
