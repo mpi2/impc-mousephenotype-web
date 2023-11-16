@@ -18,6 +18,7 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
+import { significantChartColors, wildtypeChartColors } from "@/utils/chart";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -146,32 +147,32 @@ const ABR = (props : ABRProps) => {
         type: 'line' as const,
         label: `Male ${zygLabel}.`,
         data: mutantMaleData,
-        borderColor: 'rgb(214, 96, 77)',
-        backgroundColor: 'rgb(214, 96, 77, 0.5)',
+        borderColor: significantChartColors.fullOpacity,
+        backgroundColor: significantChartColors.halfOpacity,
         pointStyle: 'circle',
       },
       {
         type: 'line' as const,
         label: `Male WT`,
         data: wtMaleData,
-        borderColor: 'rgb(67, 147, 195)',
-        backgroundColor: 'rgb(67, 147, 195, 0.5)',
+        borderColor: wildtypeChartColors.fullOpacity,
+        backgroundColor: wildtypeChartColors.halfOpacity,
         pointStyle: 'rectRot',
       },
       {
         type: 'line' as const,
         label: `Female ${zygLabel}.`,
         data: mutantFemData,
-        borderColor: 'rgb(214, 96, 77)',
-        backgroundColor: 'rgb(214, 96, 77, 0.5)',
+        borderColor: significantChartColors.fullOpacity,
+        backgroundColor: significantChartColors.halfOpacity,
         pointStyle: 'rect',
       },
       {
         type: 'line' as const,
         label: `Female WT`,
         data: wtFemData,
-        borderColor: 'rgb(67, 147, 195)',
-        backgroundColor: 'rgb(67, 147, 195, 0.5)',
+        borderColor: wildtypeChartColors.fullOpacity,
+        backgroundColor: wildtypeChartColors.halfOpacity,
         pointStyle: 'triangle',
       },
     ]
