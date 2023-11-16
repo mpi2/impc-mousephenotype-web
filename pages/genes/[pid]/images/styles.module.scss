@@ -8,6 +8,14 @@
   margin-bottom: 0;
 }
 
+.legendsContainer {
+  padding: 1em;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  display: flex;
+  gap: 1.5em;
+}
+
 .images {
   --bs-gutter-x: 0.5rem;
   .singleImage {
@@ -31,6 +39,27 @@
       border-radius: 50%;
       position: absolute;
     }
+    .indicatorsContainer {
+      display: flex;
+      top: 5px;
+      left: 5px;
+      position: absolute;
+      .common {
+        background-color: #000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25px;
+        width: 25px;
+      }
+      .sexIndicator {
+        color: #FFF;
+      }
+      .zygosityIndicator {
+        font-size: 0.75em;
+      }
+    }
     .imageActiveIndicator {
       background-color: $secondary;
       color: #FFF;
@@ -38,16 +67,11 @@
       right: 5px;
       padding: 5px;
     }
-    .sexIndicator {
-      background-color: #000;
-      top: 5px;
-      left: 5px;
-      color: #FFF;
-      padding: 6px 7px;
-    }
     .additionalInfo {
       font-size: 0.75em;
-      padding: 0.5em;
+      &:not(:empty) {
+        padding: 0.5em;
+      }
     }
   }
 }
@@ -57,7 +81,6 @@
   width: 100%;
   border-radius: 5;
   overflow: hidden;
-  margin-bottom: 2rem;
   position: relative;
 }
 
@@ -82,7 +105,8 @@
 .filtersWrapper {
   display: flex;
   gap: 2rem;
-  padding-top: 0.5em;
+  padding: 1em 0;
+  align-items: center;
   .filter {
     display: flex;
     gap: 0.5rem;
