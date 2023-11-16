@@ -9,6 +9,7 @@ import PieChart from "../PieChart";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import ChartSummary from "@/components/Data/ChartSummary";
+import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 
 const EmbryoViability = ({ datasetSummary }) => {
   const router = useRouter();
@@ -213,8 +214,8 @@ const EmbryoViability = ({ datasetSummary }) => {
               <PieChart
                 data={totalCountData}
                 chartColors={[
-                  "rgba(239,123,10, 0.5)",
-                  "rgba(31,144,185, 0.5)",
+                  wildtypeChartColors.halfOpacity,
+                  mutantChartColors.halfOpacity,
                   "rgba(119,119,119, 0.5)",
                 ]}
               />
