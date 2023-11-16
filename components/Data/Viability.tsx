@@ -8,6 +8,7 @@ import PieChart from "../PieChart";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import ChartSummary from "./ChartSummary";
+import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 
 const Viability = ({ datasetSummary }) => {
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -183,8 +184,8 @@ const Viability = ({ datasetSummary }) => {
               <PieChart
                 data={totalCountData}
                 chartColors={[
-                  "rgba(239,123,10, 0.5)",
-                  "rgba(31,144,185, 0.5)",
+                  wildtypeChartColors.halfOpacity,
+                  mutantChartColors.halfOpacity,
                   "rgba(119,119,119, 0.5)",
                 ]}
               />
@@ -198,8 +199,8 @@ const Viability = ({ datasetSummary }) => {
               <PieChart
                 data={maleCountData}
                 chartColors={[
-                  "rgba(239,123,10, 0.5)",
-                  "rgba(31,144,185, 0.5)",
+                  wildtypeChartColors.halfOpacity,
+                  mutantChartColors.halfOpacity,
                   "rgba(119,119,119, 0.5)",
                 ]}
               />
@@ -213,8 +214,8 @@ const Viability = ({ datasetSummary }) => {
               <PieChart
                 data={femaleCountData}
                 chartColors={[
-                  "rgba(239,123,10, 0.5)",
-                  "rgba(31,144,185, 0.5)",
+                  wildtypeChartColors.halfOpacity,
+                  mutantChartColors.halfOpacity,
                   "rgba(119,119,119, 0.5)",
                 ]}
               />
