@@ -9,7 +9,7 @@ import "phenogrid/dist/phenogrid-bundle.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import { SSRProvider } from "react-bootstrap";
 
-import { GeneComparatorProvider } from "../components/GeneComparator";
+import { GeneComparatorProvider } from "@/components/GeneComparator";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 config.autoAddCss = false;
 
@@ -23,7 +23,7 @@ const queryClient = new QueryClient({
   },
 });
 function MyApp({ Component, pageProps }) {
-  const mockingEnabled = !!process.env.NEXT_PUBLIC_API_MOCKING;
+  const mockingEnabled = !!process.env.NEXT_PUBLIC_API_MOCKING && process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
   const [shouldRender, setShouldRender] = useState(!mockingEnabled);
   useEffect(() => {
     if(mockingEnabled) {

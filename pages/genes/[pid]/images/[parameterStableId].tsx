@@ -8,6 +8,7 @@ import {
   faMarsAndVenus,
   faEye,
   faGenderless,
+  faCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -85,10 +86,24 @@ const Column = ({ images, selected, onSelection }) => {
       default:
         return faGenderless;
     }
+  };
+
+  const getZygosityColor = (zygosity: string) => {
+    switch (zygosity) {
+      case 'heterozygote':
+        return '#88CCEE';
+      case 'homozygote':
+        return '#DDCC77';
+      case 'hemizygote':
+        return '#CC6677';
+
+      default:
+        return '#FFF';
+    }
   }
 
   return (
-    <Row className={`mt-3 ${styles.images}`}>
+    <Row className={styles.images}>
       {images?.map((image, i) => (
         <Col key={image.observationId} md={4} lg={3} className="mb-2">
           <div className={styles.singleImage} onClick={() => onSelection(i)}>
@@ -98,8 +113,13 @@ const Column = ({ images, selected, onSelection }) => {
                   <FontAwesomeIcon icon={faEye} />
                 </div>
               ): null}
-              <div className={`${styles.indicator} ${styles.sexIndicator}`}>
-                <FontAwesomeIcon icon={getSexIcon(image.sex)} />
+              <div className={`${styles.indicatorsContainer}`}>
+                <div className={`${styles.common} ${styles.sexIndicator}`}>
+                  <FontAwesomeIcon icon={getSexIcon(image.sex)} />
+                </div>
+                <div className={`${styles.common} ${styles.zygosityIndicator}`}>
+                  <FontAwesomeIcon icon={faCircle} style={{ color: getZygosityColor(image.zygosity) }} />
+                </div>
               </div>
             </div>
             <LazyLoadImage
@@ -110,7 +130,6 @@ const Column = ({ images, selected, onSelection }) => {
               wrapperProps={{ style: {width: '100%'} }}
             />
             <div className={styles.additionalInfo}>
-              <span>{image.zygosity}</span><br/>
               {!!image.ageInWeeks && (
                 <span>Age: {image.ageInWeeks} weeks <br/></span>
               )}
@@ -198,8 +217,27 @@ const ImagesCompare = () => {
                 <ImageViewer image={filteredMutantImages?.[selectedMutantImage]} />
               </Col>
             </Col>
+          </Row>
+          <Row className="mt-3 mb-3">
             <Col xs={12}>
-              <div className={`mb-4 ${styles.filtersWrapper}`}>
+              <div className={styles.legendsContainer}>
+                <span>Zygosity indicators</span>
+                <span>
+                  <FontAwesomeIcon style={{ color: '#88CCEE'}} icon={faCircle} />&nbsp;
+                  <b>Heterozygote</b>
+                </span>
+                <span>
+                  <FontAwesomeIcon style={{ color: '#DDCC77'}} icon={faCircle} />&nbsp;
+                  <b>Homozygote</b>
+                </span>
+                <span>
+                  <FontAwesomeIcon style={{ color: '#CC6677'}} icon={faCircle} />&nbsp;
+                  <b>Hemizygote</b>
+                </span>
+              </div>
+            </Col>
+            <Col xs={12}>
+              <div className={styles.filtersWrapper}>
                 Show by:
                 <div className={styles.filter}>
                   <strong>Sex:</strong>
@@ -239,6 +277,8 @@ const ImagesCompare = () => {
                 </div>
               </div>
             </Col>
+          </Row>
+          <Row>
             <Col sm={6}>
               <Column
                 selected={selectedWTImage}
