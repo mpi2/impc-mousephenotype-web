@@ -25,7 +25,7 @@ import {
 import { Chart } from 'react-chartjs-2';
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
 import { ChangeEvent, MouseEvent, MouseEventHandler, useState } from "react";
-import { significantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 
 ChartJS.register(
   CategoryScale,
@@ -108,8 +108,8 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
         type: 'line' as const,
         label: key,
         data: data[key].filter(point => point.ageInWeeks <= maxAge),
-        borderColor: key.includes('WT') ? wildtypeChartColors.halfOpacity : significantChartColors.halfOpacity,
-        backgroundColor: key.includes('WT') ? wildtypeChartColors.halfOpacity : significantChartColors.halfOpacity,
+        borderColor: key.includes('WT') ? wildtypeChartColors.halfOpacity : mutantChartColors.halfOpacity,
+        backgroundColor: key.includes('WT') ? wildtypeChartColors.halfOpacity : mutantChartColors.halfOpacity,
         pointStyle: getPointStyle(key),
       }
     });

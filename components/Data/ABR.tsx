@@ -18,7 +18,7 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
-import { significantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -147,8 +147,8 @@ const ABR = (props : ABRProps) => {
         type: 'line' as const,
         label: `Male ${zygLabel}.`,
         data: mutantMaleData,
-        borderColor: significantChartColors.fullOpacity,
-        backgroundColor: significantChartColors.halfOpacity,
+        borderColor: mutantChartColors.fullOpacity,
+        backgroundColor: mutantChartColors.halfOpacity,
         pointStyle: 'circle',
       },
       {
@@ -163,8 +163,8 @@ const ABR = (props : ABRProps) => {
         type: 'line' as const,
         label: `Female ${zygLabel}.`,
         data: mutantFemData,
-        borderColor: significantChartColors.fullOpacity,
-        backgroundColor: significantChartColors.halfOpacity,
+        borderColor: mutantChartColors.fullOpacity,
+        backgroundColor: mutantChartColors.halfOpacity,
         pointStyle: 'rect',
       },
       {

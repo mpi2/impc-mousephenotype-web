@@ -29,7 +29,7 @@ export const chartColors = [
   "rgb(144, 195, 212)"
 ];
 
-export const significantChartColors = {
+export const mutantChartColors = {
   fullOpacity: 'rgb(26, 133, 255)',
   halfOpacity: 'rgba(26, 133, 255, 0.5)'
 };
