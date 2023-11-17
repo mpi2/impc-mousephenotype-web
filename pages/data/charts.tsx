@@ -19,6 +19,7 @@ import EmbryoViability from "@/components/Data/EmbryoViability";
 import Skeleton from "react-loading-skeleton";
 import ABR from "@/components/Data/ABR";
 import BodyWeightChart from "@/components/Data/BodyWeight";
+import { useBodyWeightQuery } from "../../hooks/bodyweight.query";
 
 const Charts = () => {
   const [tab, setTab] = useState('0');
@@ -91,6 +92,8 @@ const Charts = () => {
       );
     }
   });
+
+  const { data: bodyWeightData } = useBodyWeightQuery(router.query.mgiGeneAccessionId as string, router.isReady);
 
   const isABRChart = !!datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
   const isViabilityChart = !!datasetSummaries?.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
