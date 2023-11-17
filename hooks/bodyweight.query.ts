@@ -13,10 +13,11 @@ export const useBodyWeightQuery = (mgiGeneAccessionId: string, routerIsReady: bo
       return allData.map((chartData, i) => {
         return {
           ...summariesRequest[i]['value'][0],
-          chartData,
+          chartData: chartData.dataPoints,
         };
       })
     },
     enabled: routerIsReady,
+    placeholderData: []
   })
 }

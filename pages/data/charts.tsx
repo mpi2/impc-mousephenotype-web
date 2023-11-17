@@ -11,7 +11,6 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTable } from "@fortawesome/free-solid-svg-icons";
-import DataComparison from "@/components/Data/DataComparison";
 import { formatPValue } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
@@ -20,6 +19,9 @@ import Skeleton from "react-loading-skeleton";
 import ABR from "@/components/Data/ABR";
 import BodyWeightChart from "@/components/Data/BodyWeight";
 import { useBodyWeightQuery } from "../../hooks/bodyweight.query";
+import dynamic from "next/dynamic";
+
+const DataComparison = dynamic(() => import("@/components/Data/DataComparison"), { ssr: false });
 
 const Charts = () => {
   const [tab, setTab] = useState('0');
@@ -70,6 +72,7 @@ const Charts = () => {
     ? `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
     : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${router.query.mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
 
+  const isBodyWeightChart = router.query.chartType === 'bodyweight';
   const selectedParameterKey = !router.query.mpTermId ? `${router.query.alleleAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
 
   let { data: datasetSummaries, isLoading, isError } = useQuery({
@@ -81,7 +84,7 @@ const Charts = () => {
       "dataset",
     ],
     queryFn: () => fetchAPI(apiUrl),
-    enabled: router.isReady,
+    enabled: router.isReady && !isBodyWeightChart,
     select: data => {
       data.sort((a, b) => {
         return a["reportedPValue"] - b["reportedPValue"];
@@ -90,7 +93,8 @@ const Charts = () => {
         (value, index, self) =>
           self.findIndex((v) => v.datasetId === value.datasetId) === index
       );
-    }
+    },
+    placeholderData: []
   });
 
   const { data: bodyWeightData } = useBodyWeightQuery(router.query.mgiGeneAccessionId as string, router.isReady);
@@ -98,7 +102,7 @@ const Charts = () => {
   const isABRChart = !!datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
   const isViabilityChart = !!datasetSummaries?.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
 
-  const allSummaries = datasetSummaries?.concat(additionalSummaries);
+  const allSummaries = datasetSummaries?.concat(additionalSummaries).concat(bodyWeightData);
 
   return (
     <>
@@ -118,7 +122,7 @@ const Charts = () => {
                 }}
               >
                 <a href="#" className="grey mb-3">
-                  { datasetSummaries?.[0]["geneSymbol"] || <Skeleton />}
+                  { allSummaries?.[0]?.["geneSymbol"] || <Skeleton />}
                 </a>
               </button>{" "}
               / phenotype data breakdown
@@ -132,9 +136,9 @@ const Charts = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              {datasetSummaries &&
-                datasetSummaries[0]["significantPhenotype"] &&
-                datasetSummaries[0]["significantPhenotype"]["name"]}
+              {allSummaries &&
+                allSummaries[0]?.["significantPhenotype"] &&
+                allSummaries[0]?.["significantPhenotype"]["name"]}
             </strong>
           </h1>
           {!!datasetSummaries && (
@@ -155,9 +159,7 @@ const Charts = () => {
                 <strong>
                   {allSummaries &&
                     formatPValue(
-                      Math.min(
-                        ...allSummaries.map((d) => d["reportedPValue"])
-                      )
+                      Math.min(...allSummaries.map(d => d?.["reportedPValue"]), 0)
                     )}
                 </strong>
                 .
@@ -197,74 +199,24 @@ const Charts = () => {
             />
           ) : (
             <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
-              {datasetSummaries &&
-                datasetSummaries.map((d, i) => (
-                  <Tab
-                    eventKey={i}
-                    title={
-                      <>
-                        Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
-                        {i === 0 ? " | lowest" : null})
-                      </>
-                    }
-                    key={i}
-                  >
-                    <div>{getChartType(d)}</div>
-                  </Tab>
-                ))}
+              {allSummaries && allSummaries.map((d, i) => (
+                <Tab
+                  eventKey={i}
+                  title={
+                    <>
+                      Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
+                      {i === 0 ? " | lowest" : null})
+                    </>
+                  }
+                  key={i}
+                >
+                  <div>{getChartType(d)}</div>
+                </Tab>
+              ))}
             </Tabs>
           )}
         </Container>
       </div>
-      <Container>
-        {/* <Card>
-          <p>Current mode: {mode}</p>
-          <div style={{ display: "flex" }}>
-            <button
-              onClick={() => {
-                setMode("Unidimensional");
-              }}
-            >
-              Unidimensional
-            </button>
-            <button
-              onClick={() => {
-                setMode("Categorical");
-              }}
-            >
-              Categorical
-            </button>
-            <button
-              onClick={() => {
-                setMode("Viability");
-              }}
-            >
-              Viability
-            </button>
-            <button
-              onClick={() => {
-                setMode("Time series");
-              }}
-            >
-              Time series
-            </button>
-            <button
-              onClick={() => {
-                setMode("Embryo");
-              }}
-            >
-              Embryo
-            </button>
-            <button
-              onClick={() => {
-                setMode("Histopathology");
-              }}
-            >
-              Histopathology
-            </button>
-          </div>
-        </Card> */}
-      </Container>
     </>
   );
 };
