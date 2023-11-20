@@ -49,9 +49,6 @@ type ChromosomeDataPoint = {
 const clone = obj => JSON.parse(JSON.stringify(obj));
 
 const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
-  const isPValueAboveThreshold = (gene: any) => {
-    return -Math.log10(gene.pValue) > 4;
-  }
   const getChromosome = () => {
     if (tooltip.chromosome === '20') {
       return 'X';
