@@ -33,7 +33,6 @@ type TooltipProps = {
   offsetX: number;
   offsetY: number;
   onClick: () => void;
-  onGeneClick: (gene: Gene) => void;
 };
 
 type ChromosomeDataPoint = {
@@ -49,7 +48,7 @@ type ChromosomeDataPoint = {
 
 const clone = obj => JSON.parse(JSON.stringify(obj));
 
-const DataTooltip = ({tooltip, offsetY, offsetX, onClick, onGeneClick}: TooltipProps) => {
+const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
   const isPValueAboveThreshold = (gene: any) => {
     return -Math.log10(gene.pValue) > 4;
   }
@@ -72,18 +71,9 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick, onGeneClick}: TooltipP
         { tooltip.genes.map(gene => (
           <li key={gene.mgiGeneAccessionId}>
             Gene:&nbsp;
-            {isPValueAboveThreshold(gene) ? (
-              <a
-                className="primary link"
-                target="_blank"
-                href={`/genes/${gene.mgiGeneAccessionId}`}
-              >
-                {gene.geneSymbol}
-              </a>
-            ) : (
-              <span>{gene.geneSymbol}</span>
-            )}
-
+            <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
+              {gene.geneSymbol}
+            </a>
             <br/>
             P-value: {!!gene.pValue ? formatPValue(gene.pValue) : 0}
           </li>
@@ -94,7 +84,7 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick, onGeneClick}: TooltipP
 }
 
 const transformPValue = (value: number) => -Math.log10(value);
-const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
+const ManhattanPlot = ({ phenotypeId }) => {
   const router = useRouter();
   const chartRef = useRef(null);
   const [hoverTooltip, setHoverTooltip] = useState({
@@ -327,9 +317,8 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
               // reset genes and chromosome data to show hovering tooltip
               setClickTooltip(prevState => ({ ...prevState, genes:[], chromosome: '', opacity: 0 })
             )}
-            onGeneClick={onGeneClick}
           />
-          <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} onGeneClick={onGeneClick} />
+          <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} />
         </>
       ): (
         <div style={{ display: 'flex', justifyContent: 'center' }}>

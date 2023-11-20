@@ -14,9 +14,10 @@ import SortableTable from "../../../SortableTable";
 import styles from "./styles.module.scss";
 import _ from "lodash";
 import { formatAlleleSymbol, formatPValue } from "@/utils";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const SignificantPhenotypes = ({ data }) => {
+  const [query, setQuery] = useState(undefined);
   const groups = data?.reduce((acc, d) => {
     const {
       phenotype: { id },
@@ -47,6 +48,7 @@ const SignificantPhenotypes = ({ data }) => {
       topLevelPhenotype: d?.topLevelPhenotypes?.[0]?.name,
       phenotype: d.phenotype.name,
       id: d.phenotype.id,
+      phenotypeId: d.phenotype.id,
     })) || [];
 
   const getIcon = (sex) => {
@@ -77,13 +79,35 @@ const SignificantPhenotypes = ({ data }) => {
     setSorted(_.orderBy(processed, "phenotype", "asc"));
   }, [data]);
 
+  const filtered = (sorted ?? []).filter(({phenotype, phenotypeId}) =>
+    (!query || `${phenotype} ${phenotypeId}`.toLowerCase().includes(query))
+  );
 
   if (!sorted) {
     return null;
   }
 
   return (
-    <Pagination data={sorted}>
+    <Pagination
+      data={filtered}
+      additionalTopControls={
+        <Form.Control
+          type="text"
+          style={{
+            display: "inline-block",
+            width: 200,
+            marginRight: "2rem",
+          }}
+          aria-label="Filter by parameters"
+          id="parameterFilter"
+          className="bg-white"
+          placeholder="Search "
+          onChange={(el) => {
+            setQuery(el.target.value.toLowerCase() || undefined);
+          }}
+        ></Form.Control>
+      }
+    >
       {(pageData) => (
         <SortableTable
           doSort={(sort) => {
