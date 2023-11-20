@@ -62,7 +62,7 @@ const Charts = () => {
       case "histopathology":
         return <Histopathology datasetSummary={datasetSummary} />;
       case "bodyweight":
-        return <BodyWeightChart datasetSummary={datasetSummary} mgiGeneAccessionId={router.query.mgiGeneAccessionId} />
+        return <BodyWeightChart datasetSummary={datasetSummary} />
       default:
         return null;
     }
@@ -102,8 +102,20 @@ const Charts = () => {
   const isABRChart = !!datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
   const isViabilityChart = !!datasetSummaries?.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
 
-  const allSummaries = datasetSummaries?.concat(additionalSummaries).concat(bodyWeightData);
+  let allSummaries = datasetSummaries?.concat(additionalSummaries)
 
+  if (isBodyWeightChart) {
+    allSummaries = bodyWeightData;
+  } else {
+    allSummaries = allSummaries.map(dataset => {
+      const bodyWeightDataForDataset = bodyWeightData.find(d => d.datasetId === dataset.datasetId);
+      if (bodyWeightDataForDataset) {
+        return {...dataset, chartData: bodyWeightDataForDataset.chartData};
+      }
+      return dataset;
+    })
+  }
+  
   return (
     <>
       <Search />

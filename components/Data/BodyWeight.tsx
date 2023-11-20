@@ -46,7 +46,7 @@ const getPointStyle = (key: string) => {
   }
 }
 
-const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
+const BodyWeightChart = ({ datasetSummary }) => {
   const router = useRouter();
   const [data, setData] = useState({});
   const [viewOnlyRangeForMutant, setViewOnlyRangeForMutant] = useState(true);
@@ -54,7 +54,7 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
   useEffect(() => {
     const result = {};
     const datasetClone = clone(datasetSummary);
-    datasetClone.chartData.forEach(point => {
+    datasetClone.chartData?.forEach(point => {
       let label = point.sex === 'male' ? 'Male' : 'Female';
       label += point.sampleGroup === 'control' ? ' WT' : (point.zygosity === 'homozygote' ? ' Hom.' : ' Het.');
       if (result[label] === undefined) {
