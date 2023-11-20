@@ -93,7 +93,7 @@ const DataComparison = (props: Props) => {
   }, {});
 
   const processed =
-    (groups ? Object.values(groups) : []).map((d: any) => {
+    (groups ? Object.values(groups) : []).map((d: any, index) => {
       const getLethality = () => {
         if (!d.significant) {
           return 'Viable';
@@ -109,6 +109,7 @@ const DataComparison = (props: Props) => {
 
       return {
         ...d,
+        datasetNum: index + 1,
         topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
         phenotype: d.significantPhenotype?.name,
         id: d.significantPhenotype?.id,
@@ -190,7 +191,7 @@ const DataComparison = (props: Props) => {
             const allele = formatAlleleSymbol(d.alleleSymbol);
             return (
               <tr key={d.key} style={d.key === selectedParameter ? { borderWidth: 3, borderColor: '#00B0B0' } : {} }>
-                <td>{i + 1}</td>
+                <td>{d.datasetNum}</td>
                 <td>{d.parameterName}</td>
                 <td>{d.phenotypingCentre}</td>
                 <td>
