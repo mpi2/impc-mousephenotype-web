@@ -79,7 +79,7 @@ const SignificantPhenotypes = ({ data }) => {
     setSorted(_.orderBy(processed, "phenotype", "asc"));
   }, [data]);
 
-  const filtered = (sorted ?? []).filter(({phenotype, phenotypeId,}) =>
+  const filtered = (sorted ?? []).filter(({phenotype, phenotypeId}) =>
     (!query || `${phenotype} ${phenotypeId}`.toLowerCase().includes(query))
   );
 
