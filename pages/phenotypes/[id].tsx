@@ -13,8 +13,6 @@ const Phenotype = () => {
   const router = useRouter();
   const phenotypeId = router.query.id;
 
-  const [ selectedGenes, setSelectedGenes ] = useState<Array<any>>([]);
-
   const { data: phenotype, isLoading, isError } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'summary'],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
@@ -28,18 +26,6 @@ const Phenotype = () => {
     enabled: router.isReady,
   });
 
-  const toggleGene = (gene: any) => {
-    const findCallback = g => g.mgiGeneAccessionId === gene.mgiGeneAccessionId;
-    const isGenePresent = !!selectedGenes.find(findCallback);
-    const tempGenes = [...selectedGenes];
-    if (isGenePresent) {
-      tempGenes.splice(selectedGenes.findIndex(findCallback), 1);
-    } else {
-      tempGenes.push(gene);
-    }
-    setSelectedGenes(tempGenes.sort((g1, g2) => g1.geneSymbol.localeCompare(g2.geneSymbol)));
-  }
-
   return (
     <>
       <Search defaultType="phenotype" />
@@ -47,7 +33,7 @@ const Phenotype = () => {
         <Summary {...{ phenotype, isLoading, isError }}/>
         <Card>
           <h2>Genotype-phenotype associations</h2>
-          <ManhattanPlot phenotypeId={phenotypeId} onGeneClick={toggleGene} />
+          <ManhattanPlot phenotypeId={phenotypeId}  />
         </Card>
         <Card id="associations-table">
           <h2>IMPC Gene variants with {phenotype?.phenotypeName}</h2>
@@ -55,14 +41,7 @@ const Phenotype = () => {
             Total number of significant genotype-phenotype associations:{" "}
             {data?.length ?? 0}
           </p>
-          {!!data && (
-            <Associations
-              data={data}
-              selectedGenes={selectedGenes}
-              onRemoveSelection={toggleGene}
-              onRemoveAll={() => setSelectedGenes([])}
-            />
-          )}
+          {!!data && <Associations data={data}/>}
         </Card>
         <Card>
           <h2>The way we measure</h2>
