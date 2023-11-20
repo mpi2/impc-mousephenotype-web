@@ -374,7 +374,7 @@ const Summary = ({
               />
               <br/>
               <CollectionItem
-                link={`/data/charts?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&parameter_stable_id=IMPC_BWT_008_001&procedure_stable_id=IMPC_BWT_001&chart_type=TIME_SERIES_LINE`}
+                link={`/data/charts?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&chartType=bodyweight`}
                 name="Body weight measurements"
                 hasData={gene.hasBodyWeightData}
               />

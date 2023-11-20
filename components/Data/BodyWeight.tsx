@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import Card from "@/components/Card";
 import ChartSummary from "./ChartSummary";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import { useRouter } from "next/router";
 import {
   Chart as ChartJS,
@@ -24,7 +22,7 @@ import {
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
-import { ChangeEvent, MouseEvent, MouseEventHandler, useState } from "react";
+import { useEffect, useState } from "react";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 
 ChartJS.register(
@@ -38,6 +36,7 @@ ChartJS.register(
   BarElement,
   BarController,
 );
+const clone = obj => JSON.parse(JSON.stringify(obj));
 
 const getPointStyle = (key: string) => {
   if (key.includes('WT')) {
@@ -47,39 +46,35 @@ const getPointStyle = (key: string) => {
   }
 }
 
-const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
+const BodyWeightChart = ({ datasetSummary }) => {
   const router = useRouter();
-  const { isLoading, data } = useQuery({
-    queryKey: ['genes', mgiGeneAccessionId, 'bodyweight'],
-    queryFn: () => fetchAPI(`/api/v1/bodyweight/byMgiGeneAccId?mgiGeneAccId=${mgiGeneAccessionId}`),
-    enabled: router.isReady && !!mgiGeneAccessionId,
-    placeholderData: () => { return { datasets: [], labels: [] }},
-    select: response => {
-      const result = {};
-      const data = response[0];
-      data.dataPoints.forEach(point => {
-        let label = point.sex === 'male' ? 'Male' : 'Female';
-        label += point.sampleGroup === 'control' ? ' WT' : (point.zygosity === 'homozygote' ? ' Hom.' : ' Het.');
-        if (result[label] === undefined) {
-          result[label] = [];
-        }
-        result[label].push({
-          y: point.mean,
-          x: Number.parseInt(point.ageInWeeks, 10),
-          yMin: point.mean - point.std,
-          yMax: point.mean + point.std,
-          ageInWeeks: Number.parseInt(point.ageInWeeks, 10),
-          count: point.count,
-        });
-      });
-      Object.keys(result).forEach(key => {
-        const values = result[key];
-        values.sort((p1, p2) => p1.ageInWeeks - p2.ageInWeeks);
-      })
-      return result;
-    },
-  });
+  const [data, setData] = useState({});
   const [viewOnlyRangeForMutant, setViewOnlyRangeForMutant] = useState(true);
+
+  useEffect(() => {
+    const result = {};
+    const datasetClone = clone(datasetSummary);
+    datasetClone.chartData?.forEach(point => {
+      let label = point.sex === 'male' ? 'Male' : 'Female';
+      label += point.sampleGroup === 'control' ? ' WT' : (point.zygosity === 'homozygote' ? ' Hom.' : ' Het.');
+      if (result[label] === undefined) {
+        result[label] = [];
+      }
+      result[label].push({
+        y: point.mean,
+        x: Number.parseInt(point.ageInWeeks, 10),
+        yMin: point.mean - point.std,
+        yMax: point.mean + point.std,
+        ageInWeeks: Number.parseInt(point.ageInWeeks, 10),
+        count: point.count,
+      });
+    });
+    Object.keys(result).forEach(key => {
+      const values = result[key];
+      values.sort((p1, p2) => p1.ageInWeeks - p2.ageInWeeks);
+    })
+    setData(result)
+  }, [datasetSummary]);
 
   const getMaxAge = (absoluteAge: boolean) => {
     if (data) {
@@ -179,7 +174,7 @@ const BodyWeightChart = ({ datasetSummary, mgiGeneAccessionId }) => {
                       type="switch"
                       id="custom-switch"
                       label="View data within mutants data range"
-                      onClick={e => setViewOnlyRangeForMutant(e.target['checked'])}
+                      onChange={() => setViewOnlyRangeForMutant(!viewOnlyRangeForMutant)}
                       checked={viewOnlyRangeForMutant}
                     />
                   </div>

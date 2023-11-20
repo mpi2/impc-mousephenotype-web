@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
 import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+
 
 type LastColumnProps = {
   isViabilityChart: boolean,
@@ -54,6 +55,11 @@ type Props = {
   isViabilityChart: boolean;
   initialSortByProp?: string;
 }
+
+type SortOptions = {
+  prop: string | ((any) => void);
+  order: 'asc' | 'desc',
+}
 const DataComparison = (props: Props) => {
   const {
     data,
@@ -69,9 +75,10 @@ const DataComparison = (props: Props) => {
       sex,
       reportedPValue,
       phenotypeSex,
+      productionCentre,
     } = d;
 
-    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}`;
+    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${productionCentre}`;
     if (acc[key]) {
       if (acc[key].reportedPValue < reportedPValue) {
         acc[key].reportedPValue = Number(reportedPValue);
@@ -91,8 +98,7 @@ const DataComparison = (props: Props) => {
     return acc;
   }, {});
 
-  const processed =
-    (groups ? Object.values(groups) : []).map((d: any) => {
+  const processed = (groups ? Object.values(groups) : []).map((d: any, index) => {
       const getLethality = () => {
         if (!d.significant) {
           return 'Viable';
@@ -108,20 +114,18 @@ const DataComparison = (props: Props) => {
 
       return {
         ...d,
+        datasetNum: index + 1,
         topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
         phenotype: d.significantPhenotype?.name,
         id: d.significantPhenotype?.id,
         viability: getLethality(),
       }
     }) || [];
-
-  const [sorted, setSorted] = useState<any[]>(null);
-
-  useEffect(() => {
-    const prop = !!initialSortByProp ? initialSortByProp : 'phenotype';
-    setSorted(_.orderBy(processed, prop, "asc"));
-  }, [data]);
-
+  const [sortOptions, setSortOptions] = useState<SortOptions>({
+    prop: !!initialSortByProp ? initialSortByProp : 'phenotype',
+    order: 'asc' as const,
+  })
+  const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
   if (!data) {
     return null;
   }
@@ -167,7 +171,10 @@ const DataComparison = (props: Props) => {
       {(pageData) => (
         <SortableTable
           doSort={(sort) => {
-            setSorted(_.orderBy(processed, sort[0], sort[1]));
+            setSortOptions({
+              prop: sort[0],
+              order: sort[1]
+            })
           }}
           defaultSort={["parameter", "asc"]}
           headers={[
@@ -189,7 +196,7 @@ const DataComparison = (props: Props) => {
             const allele = formatAlleleSymbol(d.alleleSymbol);
             return (
               <tr key={d.key} style={d.key === selectedParameter ? { borderWidth: 3, borderColor: '#00B0B0' } : {} }>
-                <td>{i + 1}</td>
+                <td>{d.datasetNum}</td>
                 <td>{d.parameterName}</td>
                 <td>{d.phenotypingCentre}</td>
                 <td>

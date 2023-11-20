@@ -73,6 +73,12 @@ const ChartSummary = ({ title, additionalContent = null, datasetSummary, childre
         <Col md={5} className="small">
           <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
+                Zygosity
+              </span>
+            <strong>{datasetSummary["zygosity"]}</strong>
+          </p>
+          <p className="mb-2">
+              <span style={{ display: "inline-block", width: 180 }}>
                 Testing protocol
               </span>
             <strong>{datasetSummary["procedureName"]}</strong>

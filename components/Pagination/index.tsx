@@ -42,11 +42,11 @@ const Pagination = (props: Props) => {
 
   const [internalPage, setInternalPage] = useState(page);
   const [internalPageSize, setInternalPageSize] = useState(10);
-  const [pageRange, setPageRange] = useState([1, 2, 3]);
+  const [pageRange, setPageRange] = useState([1]);
 
 
   const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
-  const noTotalItems = controlled ? totalItems : (data?.length || 1);
+  const noTotalItems = controlled ? totalItems : data?.length;
   let totalPages = Math.ceil(noTotalItems / internalPageSize) || 1;
   const updatePageRange = (page: number, totalPages: number) => {
     let rangeStart = Math.max(1, page - 1);
