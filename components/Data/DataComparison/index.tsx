@@ -5,6 +5,7 @@ import _ from "lodash";
 import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
+
 type LastColumnProps = {
   isViabilityChart: boolean,
   dataset: any
@@ -54,6 +55,11 @@ type Props = {
   isViabilityChart: boolean;
   initialSortByProp?: string;
 }
+
+type SortOptions = {
+  prop: string | ((any) => void);
+  order: 'asc' | 'desc',
+}
 const DataComparison = (props: Props) => {
   const {
     data,
@@ -92,8 +98,7 @@ const DataComparison = (props: Props) => {
     return acc;
   }, {});
 
-  const processed =
-    (groups ? Object.values(groups) : []).map((d: any, index) => {
+  const processed = (groups ? Object.values(groups) : []).map((d: any, index) => {
       const getLethality = () => {
         if (!d.significant) {
           return 'Viable';
@@ -116,14 +121,11 @@ const DataComparison = (props: Props) => {
         viability: getLethality(),
       }
     }) || [];
-
-  const [sorted, setSorted] = useState<any[]>(null);
-
-  useEffect(() => {
-    const prop = !!initialSortByProp ? initialSortByProp : 'phenotype';
-    setSorted(_.orderBy(processed, prop, "asc"));
-  }, [data]);
-
+  const [sortOptions, setSortOptions] = useState<SortOptions>({
+    prop: !!initialSortByProp ? initialSortByProp : 'phenotype',
+    order: 'asc' as const,
+  })
+  const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
   if (!data) {
     return null;
   }
@@ -169,7 +171,10 @@ const DataComparison = (props: Props) => {
       {(pageData) => (
         <SortableTable
           doSort={(sort) => {
-            setSorted(_.orderBy(processed, sort[0], sort[1]));
+            setSortOptions({
+              prop: sort[0],
+              order: sort[1]
+            })
           }}
           defaultSort={["parameter", "asc"]}
           headers={[
