@@ -90,7 +90,7 @@ const Metric = ({
           styles={buildStyles({
             strokeLinecap: "butt",
             pathTransitionDuration: 0.5,
-            pathColor: "#BBB",
+            pathColor: "#e8e8e8",
             trailColor: "#e8e8e8",
             backgroundColor: "#3e98c7",
           })}
