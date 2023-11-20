@@ -71,18 +71,9 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
         { tooltip.genes.map(gene => (
           <li key={gene.mgiGeneAccessionId}>
             Gene:&nbsp;
-            {isPValueAboveThreshold(gene) ? (
-              <a
-                className="primary link"
-                target="_blank"
-                href={`/genes/${gene.mgiGeneAccessionId}`}
-              >
-                {gene.geneSymbol}
-              </a>
-            ) : (
-              <span>{gene.geneSymbol}</span>
-            )}
-
+            <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
+              {gene.geneSymbol}
+            </a>
             <br/>
             P-value: {!!gene.pValue ? formatPValue(gene.pValue) : 0}
           </li>
