@@ -19,9 +19,9 @@ import Skeleton from "react-loading-skeleton";
 import ABR from "@/components/Data/ABR";
 import BodyWeightChart from "@/components/Data/BodyWeight";
 import { useBodyWeightQuery } from "../../hooks/bodyweight.query";
-import dynamic from "next/dynamic";
+import DataComparison from "@/components/Data/DataComparison";
+import SkeletonTable from "@/components/skeletons/table";
 
-const DataComparison = dynamic(() => import("@/components/Data/DataComparison"), { ssr: false });
 
 const Charts = () => {
   const [tab, setTab] = useState('0');
@@ -115,7 +115,7 @@ const Charts = () => {
       return dataset;
     })
   }
-  
+
   return (
     <>
       <Search />
@@ -189,14 +189,14 @@ const Charts = () => {
               </div>
             </Alert>
           )}
-          {!isLoading && showComparison && (
+          {(!isLoading && showComparison && allSummaries.length > 0) ? (
             <DataComparison
               data={allSummaries}
               selectedParameter={selectedParameterKey}
               isViabilityChart={isViabilityChart}
               {...(isABRChart && { initialSortByProp: 'parameterStableId' })}
             />
-          )}
+          ) : <SkeletonTable />}
         </Card>
       </Container>
       <div
