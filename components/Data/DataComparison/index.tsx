@@ -75,10 +75,10 @@ const DataComparison = (props: Props) => {
       sex,
       reportedPValue,
       phenotypeSex,
-      productionCentre,
+      phenotypingCentre
     } = d;
 
-    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${productionCentre}`;
+    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}`;
     if (acc[key]) {
       if (acc[key].reportedPValue < reportedPValue) {
         acc[key].reportedPValue = Number(reportedPValue);
