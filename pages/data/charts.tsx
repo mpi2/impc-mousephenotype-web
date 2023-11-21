@@ -190,8 +190,9 @@ const Charts = () => {
               </div>
             </Alert>
           )}
-          {(!isFetchingData && showComparison && allSummaries.length > 0) ? (
+          {(!isFetchingData && allSummaries.length > 0) ? (
             <DataComparison
+              visibility={showComparison}
               data={allSummaries}
               selectedParameter={selectedParameterKey}
               isViabilityChart={isViabilityChart}

@@ -54,6 +54,7 @@ type Props = {
   selectedParameter: string | null;
   isViabilityChart: boolean;
   initialSortByProp?: string;
+  visibility: boolean;
 }
 
 type SortOptions = {
@@ -65,7 +66,8 @@ const DataComparison = (props: Props) => {
     data,
     selectedParameter,
     isViabilityChart,
-    initialSortByProp
+    initialSortByProp,
+    visibility,
   } = props;
   const groups = data?.reduce((acc, d) => {
     const {
@@ -126,7 +128,7 @@ const DataComparison = (props: Props) => {
     order: 'asc' as const,
   })
   const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
-  if (!data) {
+  if (!data || !visibility) {
     return null;
   }
 
