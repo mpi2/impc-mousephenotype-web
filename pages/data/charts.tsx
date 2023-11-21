@@ -97,7 +97,8 @@ const Charts = () => {
     placeholderData: []
   });
 
-  const { data: bodyWeightData } = useBodyWeightQuery(router.query.mgiGeneAccessionId as string, router.isReady);
+  const { data: bodyWeightData, isLoading: isBodyWeightLoading } = useBodyWeightQuery(router.query.mgiGeneAccessionId as string, router.isReady);
+  const isFetchingData = isLoading || isBodyWeightLoading;
 
   const isABRChart = !!datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
   const isViabilityChart = !!datasetSummaries?.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
@@ -189,7 +190,7 @@ const Charts = () => {
               </div>
             </Alert>
           )}
-          {(!isLoading && showComparison && allSummaries.length > 0) ? (
+          {(!isFetchingData && showComparison && allSummaries.length > 0) ? (
             <DataComparison
               data={allSummaries}
               selectedParameter={selectedParameterKey}
