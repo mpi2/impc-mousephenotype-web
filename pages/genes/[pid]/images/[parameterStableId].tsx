@@ -223,6 +223,10 @@ const ImagesCompare = () => {
               <div className={styles.legendsContainer}>
                 <span>Zygosity indicators</span>
                 <span>
+                  <FontAwesomeIcon style={{ color: '#FFF'}} icon={faCircle} />&nbsp;
+                  <b>Wildtype</b>
+                </span>
+                <span>
                   <FontAwesomeIcon style={{ color: '#88CCEE'}} icon={faCircle} />&nbsp;
                   <b>Heterozygote</b>
                 </span>
@@ -246,7 +250,7 @@ const ImagesCompare = () => {
                     icon={faMarsAndVenus}
                     onClick={() => setSelectedSex('both')}
                   >
-                    Both
+                    All
                   </FilterBadge>
                   <FilterBadge
                     isSelected={selectedSex === 'female'}
@@ -266,13 +270,16 @@ const ImagesCompare = () => {
                 <div className={styles.filter}>
                   <strong>Zygosity:</strong>
                   <FilterBadge isSelected={selectedZyg === 'both'} onClick={() => setSelectedZyg('both')}>
-                    Both
+                    All
                   </FilterBadge>
                   <FilterBadge isSelected={selectedZyg === 'heterozygote'} onClick={() => setSelectedZyg('heterozygote')}>
                     Het.
                   </FilterBadge>
                   <FilterBadge isSelected={selectedZyg === 'homozygote'} onClick={() => setSelectedZyg('homozygote')}>
                     Hom.
+                  </FilterBadge>
+                  <FilterBadge isSelected={selectedZyg === 'hemizygote'} onClick={() => setSelectedZyg('hemizygote')}>
+                    Hem.
                   </FilterBadge>
                 </div>
               </div>
