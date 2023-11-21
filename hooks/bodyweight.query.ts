@@ -10,12 +10,17 @@ export const useBodyWeightQuery = (mgiGeneAccessionId: string, routerIsReady: bo
       const summariesRequest = await Promise.allSettled(allData.map(dataset =>
         fetchAPI(`/api/v1/genes/${dataset.datasetId}/dataset`)
       ));
-      return allData.map((chartData, i) => {
-        return {
-          ...summariesRequest[i]['value'][0],
-          chartData: chartData.dataPoints,
-        };
-      })
+
+      return summariesRequest
+        .filter(response => response.status === 'fulfilled')
+        .map((response: PromiseFulfilledResult<any>) => response.value[0])
+        .map(dataset => {
+          const chartData = allData.find(d => d.datasetId === dataset.datasetId);
+          return {
+            ...dataset,
+            chartData: chartData.dataPoints
+          }
+        })
     },
     enabled: routerIsReady,
     placeholderData: []
