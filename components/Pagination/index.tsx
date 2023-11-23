@@ -2,7 +2,6 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState, ReactElement, CSSProperties } from "react";
 import styles from './styles.module.scss';
-import { useEffectOnce } from "usehooks-ts";
 
 
 type Props = {
@@ -28,7 +27,7 @@ type NavButtonsProps = {
 
 const Pagination = (props: Props) => {
   const {
-    data,
+    data = [],
     children,
     totalItems,
     onPageChange,
@@ -180,14 +179,14 @@ const Pagination = (props: Props) => {
     }
   }
 
-  useEffectOnce(() => {
+  useEffect(() => {
     // only set internal page as 0 if component is *uncontrolled*
     // meaning it will receive all the data in one go and won't need to fetch data
     // for each page
     if (!controlled) {
       setInternalPage(0);
     }
-  });
+  }, [data.length]);
 
   const shouldDisplayTopButtons = buttonsPlacement === 'top' || buttonsPlacement === 'both';
   const shouldDisplayBottomButtons = buttonsPlacement === 'bottom' || buttonsPlacement === 'both';
