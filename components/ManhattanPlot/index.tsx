@@ -206,7 +206,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
         pointBackgroundColor: ctx => {
           const shouldBeHighlighted = !!geneFilter && associationMatchesFilter(ctx.raw);
           if (shouldBeHighlighted) return '#F7DC4A';
-          return ctx.raw.y >= 4 ? `#FFA500` : '#00FFFF';
+          return ctx.raw.y >= 4 ? 'rgba(26, 133, 255, 0.4)' : 'rgba(212, 17, 89, 0.3)';
         },
       }
     },
@@ -290,8 +290,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
     <div className={styles.chartWrapper}>
       <div className={styles.labelsWrapper}>
         <div>
-          <i className="fa fa-circle" style={{ color: '#00FFFF' }}></i>&nbsp;&nbsp;Not significant
-          <i className="fa fa-circle" style={{ color: '#FFA500', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
+          <i className="fa fa-circle" style={{ color: 'rgb(212, 17, 89)' }}></i>&nbsp;&nbsp;Not significant
+          <i className="fa fa-circle" style={{ color: 'rgb(26, 133, 255)', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
         </div>
         <div style={{ display: 'flex', whiteSpace: 'nowrap', alignItems: 'center' }}>
           <label className="grey" htmlFor="geneHighlight" style={{ marginRight: "0.5rem" }}>Highlight gene:</label>
