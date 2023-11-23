@@ -41,7 +41,7 @@ const AccountSummary = () => {
     TEXT: "text",
   };
   const [emailPref, setEmailPref] = useState(EMAIL_PREFS.HTML);
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>([]);
 
   useEffect(() => {
     setSorted(_.orderBy(subscriptions, "symbol", "asc"));
