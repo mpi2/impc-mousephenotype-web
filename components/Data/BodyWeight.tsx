@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import Card from "@/components/Card";
 import ChartSummary from "./ChartSummary";
-import { useRouter } from "next/router";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -47,7 +46,6 @@ const getPointStyle = (key: string) => {
 }
 
 const BodyWeightChart = ({ datasetSummary }) => {
-  const router = useRouter();
   const [data, setData] = useState({});
   const [viewOnlyRangeForMutant, setViewOnlyRangeForMutant] = useState(true);
 
@@ -125,7 +123,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
     scales: {
       yAxis: {
         min: 0,
-        max: 70,
+        max: 50,
         title: {
           display: true,
           text: 'Mass (g)',
