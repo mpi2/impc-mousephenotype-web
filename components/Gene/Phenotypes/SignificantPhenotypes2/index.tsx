@@ -184,6 +184,13 @@ const SignificantPhenotypes = ({ data }) => {
               </tr>
             );
           })}
+          {pageData.length === 0 && (
+            <tr>
+              <td colSpan={7}>
+                <b>We couldn't find any results matching the filter</b>
+              </td>
+            </tr>
+          )}
         </SortableTable>
       )}
     </Pagination>

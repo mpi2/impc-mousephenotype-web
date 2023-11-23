@@ -191,6 +191,13 @@ const Associations = ({ data }: Props) => {
               );
               }
             )}
+            {currentPage.length === 0 && (
+              <tr>
+                <td colSpan={8}>
+                  <b>We couldn't find any results matching the filter</b>
+                </td>
+              </tr>
+            )}
           </SortableTable>
         )}
       </Pagination>
