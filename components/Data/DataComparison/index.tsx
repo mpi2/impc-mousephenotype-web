@@ -77,10 +77,11 @@ const DataComparison = (props: Props) => {
       sex,
       reportedPValue,
       phenotypeSex,
-      phenotypingCentre
+      phenotypingCentre,
+      colonyId,
     } = d;
 
-    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}`;
+    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
     if (acc[key]) {
       if (acc[key].reportedPValue < reportedPValue) {
         acc[key].reportedPValue = Number(reportedPValue);
@@ -183,13 +184,14 @@ const DataComparison = (props: Props) => {
             { width: 0.5, label: "#", disabled: true },
             { width: 3, label: "Parameter", field: "parameter" },
             {
-              width: 2,
+              width: 1,
               label: "Phenotyping Centre",
               field: "phenotypingCentre",
             },
             { width: 2, label: "Allele", field: "alleleSymbol" },
             { width: 1, label: "Zyg", field: "zygosity" },
             { width: 1, label: "Life Stage", field: "lifeStageName" },
+            { width: 1, label: "Colony Id", field: "colonyId",},
             { width: 1, label: "Metadata split flag", field: "flag" },
             lastColumnHeader,
           ]}
@@ -207,6 +209,7 @@ const DataComparison = (props: Props) => {
                 </td>
                 <td>{d.zygosity}</td>
                 <td>{d.lifeStageName}</td>
+                <td>{d.colonyId}</td>
                 <td>??</td>
                 <LastColumn dataset={d} isViabilityChart={isViabilityChart} />
               </tr>
