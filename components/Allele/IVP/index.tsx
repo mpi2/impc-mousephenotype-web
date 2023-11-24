@@ -1,9 +1,4 @@
 import React, { useEffect } from "react";
-import {
-  faCartShopping,
-  faExternalLinkAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import Card from "../../Card";
@@ -12,7 +7,7 @@ import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const IntermediateVector = ({
   mgiGeneAccessionId,
@@ -26,7 +21,7 @@ const IntermediateVector = ({
     queryFn: () => fetchAPI(`/api/v1/alleles/ivp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
     placeholderData: []
   });
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
       setSorted(_.orderBy(data, "productId", "asc"));
