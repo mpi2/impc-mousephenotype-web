@@ -7,10 +7,10 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
-import { formatESCellName } from "../../../utils";
+import { formatESCellName } from "@/utils";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const ESCell = ({
   mgiGeneAccessionId,
@@ -26,7 +26,7 @@ const ESCell = ({
     queryFn: () => fetchAPI(`/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
     placeholderData: []
   });
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
       setSorted(_.orderBy(data, "productId", "asc"));
