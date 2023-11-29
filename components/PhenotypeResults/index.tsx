@@ -7,8 +7,9 @@ import { useRouter } from "next/router";
 import Card from "../Card";
 
 import Pagination from "../Pagination";
-import { fetchAPI } from "../../api-service";
+import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
+import { PhenotypeSearchResponse } from "@/models/phenotype.search.response";
 
 const PhenotypeResult = ({
   phenotype: {
@@ -53,7 +54,7 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
   const { data, isLoading, isError} = useQuery({
     queryKey: ['search', 'phenotypes', query],
     queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}&type=PHENOTYPE`),
-    select: data => data.results
+    select: (data: PhenotypeSearchResponse) => data.results
   });
   return (
     <Container style={{ maxWidth: 1240 }}>
