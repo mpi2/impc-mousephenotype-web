@@ -7,7 +7,7 @@ import Associations from "@/components/PhenotypeGeneAssociations";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import ManhattanPlot from "@/components/ManhattanPlot";
-import { useState } from "react";
+import { PhenotypeSummary } from "@/models/phenotype.summary";
 
 const Phenotype = () => {
   const router = useRouter();
@@ -17,7 +17,10 @@ const Phenotype = () => {
     queryKey: ['phenotype', phenotypeId, 'summary'],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
     enabled: router.isReady,
-    select: data => ({...data, procedures: data.procedures.filter(p => p.pipelineStableId === "IMPC_001")}),
+    select: (data: PhenotypeSummary) => ({
+      ...data,
+      procedures: data.procedures.filter(p => p.pipelineStableId === "IMPC_001")
+    }),
   });
 
   const { data } = useQuery({
