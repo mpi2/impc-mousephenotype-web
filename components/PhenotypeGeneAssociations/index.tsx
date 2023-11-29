@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import _ from "lodash";
-import { Alert, Badge, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Alert, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Pagination from "../Pagination";
 import SortableTable from "../SortableTable";
 import {formatAlleleSymbol, formatPValue} from "@/utils";
@@ -11,12 +11,12 @@ import {
   faMars,
   faMarsAndVenus,
   faVenus,
-  faXmark
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { PhenotypeGenotypes } from "@/models/phenotype.genotypes";
 
 type Props = {
-  data: any;
+  data: Array<PhenotypeGenotypes>;
 }
 
 const Associations = ({ data }: Props) => {
@@ -51,7 +51,7 @@ const Associations = ({ data }: Props) => {
       id: d.phenotype.id,
     })) || [];
 
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>([]);
 
   useEffect(() => {
     setSorted(_.orderBy(processed, "alleleSymbol", "asc"));

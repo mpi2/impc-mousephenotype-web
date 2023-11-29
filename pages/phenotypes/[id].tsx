@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import ManhattanPlot from "@/components/ManhattanPlot";
 import { PhenotypeSummary } from "@/models/phenotype.summary";
+import { PhenotypeGenotypes } from "@/models/phenotype.genotypes";
 
 const Phenotype = () => {
   const router = useRouter();
@@ -20,13 +21,14 @@ const Phenotype = () => {
     select: (data: PhenotypeSummary) => ({
       ...data,
       procedures: data.procedures.filter(p => p.pipelineStableId === "IMPC_001")
-    }),
+    } as PhenotypeSummary),
   });
 
   const { data } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'genotype-hits'],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`),
     enabled: router.isReady,
+    select: data => data as Array<PhenotypeGenotypes>,
   });
 
   return (
