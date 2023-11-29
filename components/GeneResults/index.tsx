@@ -12,14 +12,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Card from "../Card";
-import { useState } from "react";
 import Pagination from "../Pagination";
 import { GeneComparatorTrigger, useGeneComparator } from "../GeneComparator";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
+import { fetchAPI } from "@/api-service";
+import { GeneSearchResponse, SingleGeneSearchResponse } from "@/models/gene.search.response";
 
-const GeneResult = ({
-  gene: {
+const AvailabilityIcon = (props: { hasData: boolean }) => (
+  <FontAwesomeIcon
+    className={!!props.hasData ? "secondary" : "grey"}
+    icon={!!props.hasData ? faCheck : faTimes}
+  />
+)
+
+const GeneResult = ({gene}: { gene: SingleGeneSearchResponse}) => {
+  const {
     entityProperties: {
       geneSymbol,
       geneName,
@@ -30,10 +37,7 @@ const GeneResult = ({
       phenotypeStatus,
       phenotypingDataAvailable,
     },
-  },
-}: {
-  gene: any;
-}) => {
+  } = gene;
   const router = useRouter();
   const { addGene, genes } = useGeneComparator();
   const IsInCompare = genes.includes(mgiGeneAccessionId);
@@ -62,29 +66,16 @@ const GeneResult = ({
           <span className="small grey">
             {phenotypingDataAvailable ? (
               <p>
-                <FontAwesomeIcon
-                  className={!!phenotypeStatus ? "secondary" : "grey"}
-                  icon={!!phenotypeStatus ? faCheck : faTimes}
-                />{" "}
+                <AvailabilityIcon hasData={!!phenotypeStatus} />&nbsp;
                 <span className={`me-4 ${!phenotypeStatus ? "grey" : ""}`}>
                   {phenotypeStatus || "No phenotyping data"}
                 </span>
-                <FontAwesomeIcon
-                  className={!!esCellProductionStatus ? "secondary" : "gret"}
-                  icon={!!esCellProductionStatus ? faCheck : faTimes}
-                />{" "}
-                <span
-                  className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}
-                >
+                <AvailabilityIcon hasData={!!esCellProductionStatus} />&nbsp;
+                <span className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}>
                   {esCellProductionStatus || "No ES cells"}
                 </span>
-                <FontAwesomeIcon
-                  className={!!mouseProductionStatus ? "secondary" : "gret"}
-                  icon={!!mouseProductionStatus ? faCheck : faTimes}
-                />{" "}
-                <span
-                  className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}
-                >
+                <AvailabilityIcon hasData={!!mouseProductionStatus} />&nbsp;
+                <span className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}>
                   {mouseProductionStatus || "No mice"}
                 </span>
               </p>
@@ -135,10 +126,10 @@ const GeneResult = ({
 };
 
 const GeneResults = ({ query }: { query?: string }) => {
-  const { data, isLoading, isError} = useQuery({
+  const { data, isLoading} = useQuery({
     queryKey: ['search', 'genes', query],
     queryFn: () => fetchAPI(`/api/search/v1/search${query ? `?prefix=${query}` : ""}`),
-    select: data => data.results
+    select: (data: GeneSearchResponse) => data.results
   });
 
   return (
@@ -177,13 +168,9 @@ const GeneResults = ({ query }: { query?: string }) => {
                     </Alert>
                   );
                 }
-                return (
-                  <>
-                    {pageData.map((p, i) => (
-                      <GeneResult gene={p} key={p.entityId + i} />
-                    ))}
-                  </>
-                );
+                return (pageData.map((p, i) => (
+                  <GeneResult gene={p} key={p.entityId + i} />
+                )))
               }}
             </Pagination>
           )}
