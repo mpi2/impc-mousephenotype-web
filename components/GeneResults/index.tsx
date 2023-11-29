@@ -16,7 +16,7 @@ import Pagination from "../Pagination";
 import { GeneComparatorTrigger, useGeneComparator } from "../GeneComparator";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { GeneSearchResponse, SingleGeneSearchResponse } from "@/models/gene.search.response";
+import { GeneSearchResponse, GeneSearchResponseItem } from "@/models/gene.search.response";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -25,7 +25,7 @@ const AvailabilityIcon = (props: { hasData: boolean }) => (
   />
 )
 
-const GeneResult = ({gene}: { gene: SingleGeneSearchResponse}) => {
+const GeneResult = ({gene}: { gene: GeneSearchResponseItem}) => {
   const {
     entityProperties: {
       geneSymbol,

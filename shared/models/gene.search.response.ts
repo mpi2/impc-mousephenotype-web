@@ -1,5 +1,5 @@
 
-export type SingleGeneSearchResponse = {
+export type GeneSearchResponseItem = {
   entityId: string;
   entityProperties: {
     esCellProductionStatus: string;
@@ -17,5 +17,5 @@ export type SingleGeneSearchResponse = {
 
 export type GeneSearchResponse = {
   numResults: number;
-  results: Array<SingleGeneSearchResponse>;
+  results: Array<GeneSearchResponseItem>;
 }
