@@ -15,25 +15,13 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { isEqual } from 'lodash';
 import styles from './styles.module.scss';
-import { formatPValue } from "@/utils";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import Form from 'react-bootstrap/Form';
+import DataTooltip from "./DataTooltip";
+import { PhenotypeStatsResults } from "@/models/phenotype.statsresults";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, annotationPlugin);
 
-type Gene = { mgiGeneAccessionId: string, geneSymbol: string, pValue: number };
-type TooltipProps = {
-  tooltip: {
-    opacity: number;
-    top: number;
-    left: number;
-    chromosome: string,
-    genes: Array<Gene>,
-  };
-  offsetX: number;
-  offsetY: number;
-  onClick: () => void;
-};
 
 type ChromosomeDataPoint = {
   chrName: string;
@@ -47,38 +35,6 @@ type ChromosomeDataPoint = {
 };
 
 const clone = obj => JSON.parse(JSON.stringify(obj));
-
-const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
-  const getChromosome = () => {
-    if (tooltip.chromosome === '20') {
-      return 'X';
-    } else if (tooltip.chromosome === '21') {
-      return 'Y';
-    }
-    return tooltip.chromosome;
-  }
-  return (
-    <div
-      className={`${styles.tooltip} ${tooltip.opacity === 0 ? styles.noVisible: styles.visible }`}
-      style={{ top: tooltip.top + offsetX, left: tooltip.left + offsetY, opacity: tooltip.opacity }}
-    >
-      <button className={styles.closeBtn} onClick={onClick}>×</button>
-      <span><strong>Chr: </strong>{ getChromosome() }</span>
-      <ul>
-        { tooltip.genes.map(gene => (
-          <li key={gene.mgiGeneAccessionId}>
-            Gene:&nbsp;
-            <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
-              {gene.geneSymbol}
-            </a>
-            <br/>
-            P-value: {!!gene.pValue ? formatPValue(gene.pValue) : 0}
-          </li>
-        )) }
-      </ul>
-    </div>
-  )
-}
 
 const transformPValue = (value: number) => -Math.log10(value);
 const ManhattanPlot = ({ phenotypeId }) => {
@@ -239,7 +195,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
     queryKey: ['phenotype', phenotypeId, 'gwas'],
     queryFn: () => fetchAPI(`/api/v1/phenotypestatsresults/${phenotypeId}/phenotype`),
     enabled: router.isReady,
-    select: (response) => {
+    select: (response: PhenotypeStatsResults) => {
       const data = response.results;
       const groupedByChr: Record<string, Array<ChromosomeDataPoint>> = {};
       data.forEach(point => {
