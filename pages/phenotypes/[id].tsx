@@ -7,8 +7,7 @@ import Associations from "@/components/PhenotypeGeneAssociations";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import ManhattanPlot from "@/components/ManhattanPlot";
-import { PhenotypeSummary } from "@/models/phenotype.summary";
-import { PhenotypeGenotypes } from "@/models/phenotype.genotypes";
+import { PhenotypeSummary, PhenotypeGenotypes } from "@/models/phenotype";
 
 const Phenotype = () => {
   const router = useRouter();

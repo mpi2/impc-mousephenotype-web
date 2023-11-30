@@ -18,7 +18,7 @@ import styles from './styles.module.scss';
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import Form from 'react-bootstrap/Form';
 import DataTooltip from "./DataTooltip";
-import { PhenotypeStatsResults } from "@/models/phenotype.statsresults";
+import { PhenotypeStatsResults } from "@/models/phenotype";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, annotationPlugin);
 

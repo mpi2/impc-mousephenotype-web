@@ -13,7 +13,7 @@ import {
   faVenus,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { PhenotypeGenotypes } from "@/models/phenotype.genotypes";
+import { PhenotypeGenotypes } from "@/models/phenotype";
 
 type Props = {
   data: Array<PhenotypeGenotypes>;

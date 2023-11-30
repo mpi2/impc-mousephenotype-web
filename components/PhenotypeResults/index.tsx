@@ -9,7 +9,7 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
-import { PhenotypeSearchResponse } from "@/models/phenotype.search.response";
+import { PhenotypeSearchResponse } from "@/models/phenotype";
 
 const PhenotypeResult = ({
   phenotype: {

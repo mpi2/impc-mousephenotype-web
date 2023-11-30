@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { useRouter } from "next/router";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
-import { PhenotypeSummary } from "@/models/phenotype.summary";
+import { PhenotypeSummary } from "@/models/phenotype";
 
 type Props = {
   phenotype: PhenotypeSummary;
