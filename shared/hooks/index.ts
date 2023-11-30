@@ -1,0 +1,1 @@
+export { useBodyWeightQuery } from './bodyweight.query';
