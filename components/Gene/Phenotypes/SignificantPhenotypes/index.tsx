@@ -1,4 +1,10 @@
-import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faVenus,
+  faMars,
+  faMarsAndVenus,
+  faChevronRight,
+  faChartLine,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -7,23 +13,24 @@ import Pagination from "../../../Pagination";
 import SortableTable from "../../../SortableTable";
 import styles from "./styles.module.scss";
 import _ from "lodash";
-import { formatAlleleSymbol, formatPValue } from "../../../../utils";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { formatAlleleSymbol, formatPValue } from "@/utils";
+import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const SignificantPhenotypes = ({ data }) => {
+  const [query, setQuery] = useState(undefined);
   const groups = data?.reduce((acc, d) => {
     const {
       phenotype: { id },
       alleleAccessionId,
-      parameterStableId,
       zygosity,
       sex,
       pValue,
+      datasetId,
     } = d;
 
-    const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}`;
+    const key = `${id}-${alleleAccessionId}-${zygosity}`;
     if (acc[key]) {
-      if (acc[key].pValue < pValue) {
+      if (acc[key].pValue > pValue) {
         acc[key].pValue = Number(pValue);
         acc[key].sex = sex;
       }
@@ -38,10 +45,33 @@ const SignificantPhenotypes = ({ data }) => {
   const processed =
     (groups ? Object.values(groups) : []).map((d: any) => ({
       ...d,
-      topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
+      topLevelPhenotype: d?.topLevelPhenotypes?.[0]?.name,
       phenotype: d.phenotype.name,
       id: d.phenotype.id,
+      phenotypeId: d.phenotype.id,
     })) || [];
+
+  const getIcon = (sex) => {
+    switch (sex) {
+      case "male":
+        return faMars;
+      case "female":
+        return faVenus;
+      default:
+        return faMarsAndVenus;
+    }
+  };
+
+  const getSexLabel = (sex) => {
+    switch (sex) {
+      case "male":
+        return "Male";
+      case "female":
+        return "Female";
+      default:
+        return "Combined";
+    }
+  };
 
   const [sorted, setSorted] = useState<any[]>(null);
 
@@ -49,18 +79,35 @@ const SignificantPhenotypes = ({ data }) => {
     setSorted(_.orderBy(processed, "phenotype", "asc"));
   }, [data]);
 
-  if (!data) {
-    return <p>Loading...</p>;
+  const filtered = (sorted ?? []).filter(({phenotype, phenotypeId}) =>
+    (!query || `${phenotype} ${phenotypeId}`.toLowerCase().includes(query))
+  );
+
+  if (!sorted) {
+    return null;
   }
 
-  const getPValueSortFn = (key: string) => {
-    return (d) => {
-      return d[`pValue_${key}`] ?? 0;
-    };
-  };
-
   return (
-    <Pagination data={sorted}>
+    <Pagination
+      data={filtered}
+      additionalTopControls={
+        <Form.Control
+          type="text"
+          style={{
+            display: "inline-block",
+            width: 200,
+            marginRight: "2rem",
+          }}
+          aria-label="Filter by parameters"
+          id="parameterFilter"
+          className="bg-white"
+          placeholder="Search "
+          onChange={(el) => {
+            setQuery(el.target.value.toLowerCase() || undefined);
+          }}
+        ></Form.Control>
+      }
+    >
       {(pageData) => (
         <SortableTable
           doSort={(sort) => {
@@ -68,39 +115,24 @@ const SignificantPhenotypes = ({ data }) => {
           }}
           defaultSort={["phenotype", "asc"]}
           headers={[
-            { width: 3, label: "Parameter/Phenotype", field: "phenotype" },
+            { width: 2.2, label: "Phenotype", field: "phenotype" },
             {
               width: 1,
               label: "System",
               field: "topLevelPhenotype",
             },
-            { width: 2, label: "Allele", field: "alleleSymbol" },
+            { width: 1, label: "Allele", field: "alleleSymbol" },
             { width: 1, label: "Zyg", field: "zygosity" },
-            { width: 1, label: "Life Stage", field: "lifeStageName" },
+            { width: 1, label: "Life stage", field: "lifeStageName" },
             {
-              width: 3,
-              label: "P Value",
+              width: 1,
+              label: "Significant sexes",
               field: "pValue",
-              children: [
-                {
-                  width: 1,
-                  label: "Male",
-                  field: "pValue_male",
-                  sortFn: getPValueSortFn("male"),
-                },
-                {
-                  width: 1,
-                  label: "Female",
-                  field: "pValue_female",
-                  sortFn: getPValueSortFn("female"),
-                },
-                {
-                  width: 1,
-                  label: "Combined",
-                  field: "pValue_not_considered",
-                  sortFn: getPValueSortFn("not_considered"),
-                },
-              ],
+            },
+            {
+              width: 2,
+              label: "Most significant P-value",
+              field: "sex",
             },
           ]}
         >
@@ -108,57 +140,57 @@ const SignificantPhenotypes = ({ data }) => {
             const allele = formatAlleleSymbol(d.alleleSymbol);
             return (
               <tr>
-                <td>
-                  <small className="grey">{d.parameterName} /</small>
-                  <br />
-                  <Link
-                    href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
-                    legacyBehavior>
-                    <strong className={styles.link}>
-                      {_.capitalize(d.phenotype)}
-                    </strong>
-                  </Link>
-                </td>
+                <td><strong>{d.phenotype}</strong></td>
                 <td>
                   {d.topLevelPhenotypes?.map(({ name }) => (
-                    <BodySystem name={name} color="black" noSpacing />
+                    <BodySystem name={name} color="system-icon black in-table" noSpacing />
                   ))}
                 </td>
                 <td>
                   {allele[0]}
                   <sup>{allele[1]}</sup>
                 </td>
-                <td>{d.zygosity}</td>
+                <td style={{ textTransform: "capitalize" }}>{d.zygosity}</td>
                 <td>{d.lifeStageName}</td>
-                {["male", "female", "not_considered"].map((col) => {
-                  const isMostSignificant = d.sex === col;
-                  return (
-                    <td
-                      className={
-                        isMostSignificant
-                          ? "bold orange-dark-x bg-orange-light-x"
-                          : ""
-                      }
-                    >
-                      {!!d[`pValue_${col}`] ? (
-                        formatPValue(d[`pValue_${col}`])
-                      ) : (
-                        <OverlayTrigger
-                          placement="top"
-                          trigger={["hover", "focus"]}
-                          overlay={
-                            <Tooltip>Not significant or not tested</Tooltip>
-                          }
-                        >
-                          <span className="grey">—</span>
-                        </OverlayTrigger>
-                      )}
-                    </td>
-                  );
-                })}
+                <td>
+                  {["male", "female", "not_considered"].map((col) => {
+                    const hasSignificant = d[`pValue_${col}`];
+                    return hasSignificant ? (
+                      <OverlayTrigger
+                        placement="top"
+                        trigger={["hover", "focus"]}
+                        overlay={<Tooltip>{getSexLabel(col)}</Tooltip>}
+                      >
+                        <span className="me-2">
+                          <FontAwesomeIcon icon={getIcon(col)} size="lg" />
+                        </span>
+                      </OverlayTrigger>
+                    ) : null;
+                  })}
+                </td>
+                <td>
+                  <span className={`me-2 bold ${styles.pValueCell}`}>
+                    <span className="">
+                      {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
+                    </span>
+                    <Link href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}>
+                      <strong className={`link primary small float-right`}>
+                        <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;
+                        <FontAwesomeIcon icon={faChevronRight} />
+                      </strong>
+                    </Link>
+                  </span>
+                </td>
               </tr>
             );
           })}
+          {pageData.length === 0 && (
+            <tr>
+              <td colSpan={7}>
+                <b>We couldn't find any results matching the filter</b>
+              </td>
+            </tr>
+          )}
         </SortableTable>
       )}
     </Pagination>
