@@ -18,8 +18,7 @@ import { BodySystem } from "../../BodySystemIcon";
 import { useRouter } from "next/router";
 import Check from "../../Check";
 import Head from "next/head";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { GeneSummary } from "@/models/gene.summary";
 
 export const allBodySystems = [
   "mortality/aging",
@@ -106,17 +105,14 @@ const Metric = ({
     </div>
   );
 };
-const Summary = ({
-  gene,
-  loading,
-  error,
-}: {
-  gene: any;
+
+type SummaryProps = {
+  gene: GeneSummary;
   loading: boolean;
   error: string;
-}) => {
+}
+const Summary = ({ gene, loading, error }: SummaryProps) => {
   const router = useRouter();
-
   const SYNONYMS_COUNT = 2;
 
   if (loading) {
@@ -180,8 +176,7 @@ const Summary = ({
 
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
   const significantCount = gene.significantTopLevelPhenotypes?.length ?? 0;
-  const nonSignificantCount =
-    gene.notSignificantTopLevelPhenotypes?.length ?? 0;
+  const nonSignificantCount = gene.notSignificantTopLevelPhenotypes?.length ?? 0;
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
