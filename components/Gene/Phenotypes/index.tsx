@@ -1,14 +1,14 @@
 import { Alert, Button, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import AllData from "./AllData";
-import SignificantPhenotypes2 from "./SignificantPhenotypes2";
+import SignificantPhenotypes from "./SignificantPhenotypes";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { GeneSummary, GenePhenotypeHits } from "@/models/gene";
+import { GeneSummary, GenePhenotypeHits, GeneStatisticalResult } from "@/models/gene";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,
@@ -43,7 +43,8 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const {data: geneData, isLoading: isGeneLoading, isError: isGeneError} = useQuery({
     queryKey: ['genes', router.query.pid, 'statistical-result'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/statistical-result`),
-    enabled: router.isReady
+    enabled: router.isReady,
+    select: data => data as Array<GeneStatisticalResult>
   });
 
   return (
@@ -57,7 +58,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             errorMessage={`No significant phenotypes for ${gene.geneSymbol}.`}
             data={phenotypeData}
           >
-            <SignificantPhenotypes2 data={phenotypeData} />
+            <SignificantPhenotypes data={phenotypeData} />
             <p className="mt-4 grey">
               Download data as:{" "}
               <Button

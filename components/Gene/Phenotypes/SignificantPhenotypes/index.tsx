@@ -8,15 +8,20 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { BodySystem } from "../../../BodySystemIcon";
-import Pagination from "../../../Pagination";
-import SortableTable from "../../../SortableTable";
+import { BodySystem } from "@/components/BodySystemIcon";
+import Pagination from "@/components/Pagination";
+import SortableTable from "@/components/SortableTable";
 import styles from "./styles.module.scss";
 import _ from "lodash";
 import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { GenePhenotypeHits } from "@/models/gene";
 
-const SignificantPhenotypes = ({ data }) => {
+type Props = {
+  data: Array<GenePhenotypeHits>;
+};
+
+const SignificantPhenotypes = ({ data } : Props) => {
   const [query, setQuery] = useState(undefined);
   const groups = data?.reduce((acc, d) => {
     const {

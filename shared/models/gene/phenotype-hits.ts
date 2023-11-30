@@ -1,3 +1,4 @@
+import { PhenotypeRef } from "@/models/phenotype-ref";
 
 export type GenePhenotypeHits = {
   alleleAccessionId: string;
@@ -5,19 +6,19 @@ export type GenePhenotypeHits = {
   alleleSymbol: string;
   datasetId: string;
   effectSize: number;
-  intermediatePhenotypes: Array<{ id: string; name: string; }>;
+  intermediatePhenotypes: PhenotypeRef[];
   lifeStageName: string;
   mgiGeneAccessionId: string;
   pValue: number;
   parameterName: string;
   parameterSatableId: string;
-  phenotype: { id: string; name: string; };
+  phenotype: PhenotypeRef;
   phenotypingCentre: string;
   pipelineStableId: string;
   procedureName: string;
   procedureStableId: string;
   projectName: string;
   sex: string;
-  topLevelPhenotypes: Array<{ id: string; name: string; }>;
+  topLevelPhenotypes: PhenotypeRef[];
   zygosity: string;
 }
