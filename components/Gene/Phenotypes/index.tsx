@@ -8,8 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { GeneSummary } from "@/models/gene.summary";
-import { GenePhenotypeHits } from "@/models/gene.phenotypehits";
+import { GeneSummary, GenePhenotypeHits } from "@/models/gene";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,

@@ -13,7 +13,7 @@ import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { fetchAPI } from "@/api-service";
-import { GeneSummary } from "@/models/gene.summary";
+import { GeneSummary } from "@/models/gene";
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),

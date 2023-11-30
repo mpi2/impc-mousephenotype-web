@@ -18,7 +18,7 @@ import { BodySystem } from "../../BodySystemIcon";
 import { useRouter } from "next/router";
 import Check from "../../Check";
 import Head from "next/head";
-import { GeneSummary } from "@/models/gene.summary";
+import { GeneSummary } from "@/models/gene";
 
 export const allBodySystems = [
   "mortality/aging",
