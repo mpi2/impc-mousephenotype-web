@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { GeneSummary } from "@/models/gene.summary";
+import { GenePhenotypeHits } from "@/models/gene.phenotypehits";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,
@@ -31,12 +33,13 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
   );
 }
 
-const Phenotypes = ({ gene }: { gene: any }) => {
+const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
   const {data: phenotypeData, isLoading: isPhenotypeLoading, isError: isPhenotypeError} = useQuery({
     queryKey: ['genes', router.query.pid, 'phenotype-hits'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/phenotype-hits`),
-    enabled: router.isReady
+    enabled: router.isReady,
+    select: data => data as Array<GenePhenotypeHits>
   });
   const {data: geneData, isLoading: isGeneLoading, isError: isGeneError} = useQuery({
     queryKey: ['genes', router.query.pid, 'statistical-result'],
