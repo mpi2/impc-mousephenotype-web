@@ -22,6 +22,7 @@
     "paths": {
       "@/api-service": ["api-service/index.ts"],
       "@/components/*": ["components/*"],
+      "@/contexts": ["shared/contexts/index.ts"],
       "@/hooks": ["shared/hooks/index.ts"],
       "@/hooks/*": ["shared/hooks/*"],
       "@/models/*": ["shared/models/*"],
