@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import ManhattanPlot from "@/components/ManhattanPlot";
 import { PhenotypeSummary, PhenotypeGenotypes } from "@/models/phenotype";
+import { PhenotypeContext } from "../../shared/contexts";
 
 const Phenotype = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const Phenotype = () => {
   });
 
   return (
-    <>
+    <PhenotypeContext.Provider value={phenotype}>
       <Search defaultType="phenotype" />
       <Container className="page">
         <Summary {...{ phenotype, isLoading, isError }}/>
@@ -62,7 +63,7 @@ const Phenotype = () => {
           ))}
         </Card>
       </Container>
-    </>
+    </PhenotypeContext.Provider>
   );
 };
 

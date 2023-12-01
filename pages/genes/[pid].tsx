@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { fetchAPI } from "@/api-service";
 import { GeneSummary } from "@/models/gene";
+import { GeneContext } from "../../shared/contexts";
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),
@@ -44,7 +45,7 @@ const Gene = () => {
   }, [gene]);
 
   return (
-    <>
+    <GeneContext.Provider value={gene}>
       <GeneComparatorTrigger current={router.query.pid as string} />
       <Search />
       <Container className="page">
@@ -61,7 +62,7 @@ const Gene = () => {
           </>
         )}
       </Container>
-    </>
+    </GeneContext.Provider>
   );
 };
 
