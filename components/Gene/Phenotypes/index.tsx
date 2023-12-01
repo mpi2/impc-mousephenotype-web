@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { GeneSummary, GenePhenotypeHits, GeneStatisticalResult } from "@/models/gene";
+import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,
@@ -34,12 +34,7 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
 
 const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
-  const {data: phenotypeData, isLoading: isPhenotypeLoading, isError: isPhenotypeError} = useQuery({
-    queryKey: ['genes', router.query.pid, 'phenotype-hits'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/phenotype-hits`),
-    enabled: router.isReady,
-    select: data => data as Array<GenePhenotypeHits>
-  });
+
   const {data: geneData, isLoading: isGeneLoading, isError: isGeneError} = useQuery({
     queryKey: ['genes', router.query.pid, 'statistical-result'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/statistical-result`),
@@ -52,13 +47,8 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
       <h2>Phenotypes</h2>
       <Tabs defaultActiveKey="significantPhenotypes">
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
-          <TabContent
-            isLoading={isPhenotypeLoading}
-            isError={isPhenotypeError}
-            errorMessage={`No significant phenotypes for ${gene.geneSymbol}.`}
-            data={phenotypeData}
-          >
-            <SignificantPhenotypes data={phenotypeData} />
+          <div className="mt-3">
+            <SignificantPhenotypes />
             <p className="mt-4 grey">
               Download data as:{" "}
               <Button
@@ -80,7 +70,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
                 <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
               </Button>
             </p>
-          </TabContent>
+          </div>
         </Tab>
         <Tab eventKey="allData" title="All data">
           <TabContent

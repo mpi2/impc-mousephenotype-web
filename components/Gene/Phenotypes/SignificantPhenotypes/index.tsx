@@ -7,56 +7,30 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Pagination from "@/components/Pagination";
 import SortableTable from "@/components/SortableTable";
 import styles from "./styles.module.scss";
-import _ from "lodash";
 import { formatAlleleSymbol, formatPValue } from "@/utils";
-import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { GenePhenotypeHits } from "@/models/gene";
+import { Alert, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useSignificantPhenotypesQuery } from "@/hooks/significant-phenotypes.query";
+import { GeneContext } from "@/contexts";
+import { useRouter } from "next/router";
 
-type Props = {
-  data: Array<GenePhenotypeHits>;
-};
-
-const SignificantPhenotypes = ({ data } : Props) => {
+const SignificantPhenotypes = () => {
+  const router = useRouter();
+  const gene = useContext(GeneContext);
   const [query, setQuery] = useState(undefined);
-  const groups = data?.reduce((acc, d) => {
-    const {
-      phenotype: { id },
-      alleleAccessionId,
-      zygosity,
-      sex,
-      pValue,
-      datasetId,
-    } = d;
+  const [sort, setSort] = useState<string>('');
 
-    const key = `${id}-${alleleAccessionId}-${zygosity}`;
-    if (acc[key]) {
-      if (acc[key].pValue > pValue) {
-        acc[key].pValue = Number(pValue);
-        acc[key].sex = sex;
-      }
-    } else {
-      acc[key] = { ...d };
-    }
-    acc[key][`pValue_${sex}`] = Number(pValue);
+  const {
+    phenotypeData,
+    isPhenotypeLoading,
+    isPhenotypeError
+  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady);
 
-    return acc;
-  }, {});
-
-  const processed =
-    (groups ? Object.values(groups) : []).map((d: any) => ({
-      ...d,
-      topLevelPhenotype: d?.topLevelPhenotypes?.[0]?.name,
-      phenotype: d.phenotype.name,
-      id: d.phenotype.id,
-      phenotypeId: d.phenotype.id,
-    })) || [];
-
-  const getIcon = (sex) => {
+  const getIcon = (sex: string) => {
     switch (sex) {
       case "male":
         return faMars;
@@ -67,7 +41,7 @@ const SignificantPhenotypes = ({ data } : Props) => {
     }
   };
 
-  const getSexLabel = (sex) => {
+  const getSexLabel = (sex: string) => {
     switch (sex) {
       case "male":
         return "Male";
@@ -78,18 +52,19 @@ const SignificantPhenotypes = ({ data } : Props) => {
     }
   };
 
-  const [sorted, setSorted] = useState<any[]>(null);
-
-  useEffect(() => {
-    setSorted(_.orderBy(processed, "phenotype", "asc"));
-  }, [data]);
-
-  const filtered = (sorted ?? []).filter(({phenotype, phenotypeId}) =>
+  const filtered = phenotypeData.filter(({phenotype, phenotypeId}) =>
     (!query || `${phenotype} ${phenotypeId}`.toLowerCase().includes(query))
   );
 
-  if (!sorted) {
-    return null;
+  if (isPhenotypeLoading) {
+    return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
+  }
+  if (isPhenotypeError) {
+    return (
+      <Alert variant="primary" className="mt-3">
+        No significant phenotypes for {gene.geneSymbol}.
+      </Alert>
+    )
   }
 
   return (
@@ -115,8 +90,8 @@ const SignificantPhenotypes = ({ data } : Props) => {
     >
       {(pageData) => (
         <SortableTable
-          doSort={(sort) => {
-            setSorted(_.orderBy(processed, sort[0], sort[1]));
+          doSort={([field, order]) => {
+            setSort(`${field};${order}`);
           }}
           defaultSort={["phenotype", "asc"]}
           headers={[
@@ -145,7 +120,7 @@ const SignificantPhenotypes = ({ data } : Props) => {
             const allele = formatAlleleSymbol(d.alleleSymbol);
             return (
               <tr>
-                <td><strong>{d.phenotype}</strong></td>
+                <td><strong>{d.phenotypeName}</strong></td>
                 <td>
                   {d.topLevelPhenotypes?.map(({ name }) => (
                     <BodySystem name={name} color="system-icon black in-table" noSpacing />
