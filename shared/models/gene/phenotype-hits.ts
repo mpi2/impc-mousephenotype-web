@@ -21,4 +21,8 @@ export type GenePhenotypeHits = {
   sex: string;
   topLevelPhenotypes: PhenotypeRef[];
   zygosity: string;
+  topLevelPhenotypeName?: null | string;
+  phenotypeName?: null | string;
+  id?: null | string;
+  phenotypeId?: null | string;
 }
