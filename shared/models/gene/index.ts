@@ -2,3 +2,4 @@ export type { GeneSearchResponse, GeneSearchResponseItem } from './search-respon
 export type { GeneSummary } from './summary';
 export type { GenePhenotypeHits } from './phenotype-hits';
 export type { GeneStatisticalResult } from './statistical-result';
+export type { GeneExpression } from './expression';
