@@ -1,6 +1,5 @@
-import {useEffect, useState} from "react";
-import _ from "lodash";
-import { Alert, Badge, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Alert, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Pagination from "../Pagination";
 import SortableTable from "../SortableTable";
 import {formatAlleleSymbol, formatPValue} from "@/utils";
@@ -11,51 +10,21 @@ import {
   faMars,
   faMarsAndVenus,
   faVenus,
-  faXmark
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { useGeneAssociationsQuery } from "@/hooks";
+import { PhenotypeContext } from "@/contexts";
+import { useRouter } from "next/router";
 
-type Props = {
-  data: any;
-}
+type Props = {}
 
-const Associations = ({ data }: Props) => {
+const Associations = (props: Props) => {
+  const phenotype = useContext(PhenotypeContext);
+
+  const router = useRouter();
   const [query, setQuery] = useState(undefined);
-  const groups = data?.reduce((acc, d) => {
-    const {
-      phenotype: { id, name },
-      alleleAccessionId,
-      zygosity,
-      sex,
-      pValue,
-    } = d;
-
-    const key = `${id}-${alleleAccessionId}-${zygosity}`;
-    if (acc[key]) {
-      if (acc[key].pValue > pValue) {
-        acc[key].pValue = Number(pValue);
-        acc[key].sex = sex;
-      }
-    } else {
-      acc[key] = { ...d };
-    }
-    acc[key][`pValue_${sex}`] = Number(pValue);
-
-    return acc;
-  }, {});
-
-  const processed =
-    (groups ? Object.values(groups) : []).map((d: any) => ({
-      ...d,
-      phenotype: d.phenotype.name,
-      id: d.phenotype.id,
-    })) || [];
-
-  const [sorted, setSorted] = useState<any[]>(null);
-
-  useEffect(() => {
-    setSorted(_.orderBy(processed, "alleleSymbol", "asc"));
-  }, [data]);
+  const [sortOptions, setSortOptions] = useState<string>('');
+  const { data, isLoading } = useGeneAssociationsQuery(phenotype.phenotypeId, router.isReady, sortOptions);
 
   const getIcon = (sex) => {
     switch (sex) {
@@ -79,8 +48,8 @@ const Associations = ({ data }: Props) => {
     }
   };
 
-  const filtered = (sorted ?? []).filter(({phenotype, phenotypeId, alleleSymbol, mgiGeneAccessionId}) =>
-      (!query || `${mgiGeneAccessionId} ${alleleSymbol} ${phenotype} ${phenotypeId}`.toLowerCase().includes(query))
+  const filtered = data.filter(({phenotypeName, phenotypeId, alleleSymbol, mgiGeneAccessionId}) =>
+      (!query || `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query))
   );
 
   if (!data) {
@@ -93,6 +62,11 @@ const Associations = ({ data }: Props) => {
 
   return (
     <>
+      <h2>IMPC Gene variants with {phenotype.phenotypeName}</h2>
+      <p>
+        Total number of significant genotype-phenotype associations:&nbsp;
+        {data.length}
+      </p>
       <Pagination
         data={filtered}
         additionalTopControls={
@@ -116,7 +90,7 @@ const Associations = ({ data }: Props) => {
       >
         {(currentPage) => (
           <SortableTable
-            doSort={(sort) => setSorted(_.orderBy(processed, sort[0], sort[1]))}
+            doSort={([field, order]) => setSortOptions(`${field};${order}`)}
             defaultSort={["alleleSymbol", "asc"]}
             headers={[
               { width: 2, label: "Gene / allele", field: "alleleSymbol" },
@@ -143,7 +117,7 @@ const Associations = ({ data }: Props) => {
                       <sup>{allele[1]}</sup>
                     </strong>
                   </td>
-                  <td>{d.phenotype}</td>
+                  <td>{d.phenotypeName}</td>
                   <td>{d.zygosity}</td>
                   <td>
                     {["male", "female", "not_considered"].map((col) => {
@@ -178,7 +152,7 @@ const Associations = ({ data }: Props) => {
                         {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                       </span>
                       <Link
-                        href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}
+                        href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.phenotypeId}`}
                       >
                         <strong className="link primary small float-right">
                           <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;

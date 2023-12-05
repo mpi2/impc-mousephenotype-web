@@ -18,9 +18,9 @@ import EmbryoViability from "@/components/Data/EmbryoViability";
 import Skeleton from "react-loading-skeleton";
 import ABR from "@/components/Data/ABR";
 import BodyWeightChart from "@/components/Data/BodyWeight";
-import { useBodyWeightQuery } from "../../hooks/bodyweight.query";
 import DataComparison from "@/components/Data/DataComparison";
 import SkeletonTable from "@/components/skeletons/table";
+import { useBodyWeightQuery } from "@/hooks";
 
 
 const Charts = () => {

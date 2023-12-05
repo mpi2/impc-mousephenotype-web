@@ -12,6 +12,7 @@ import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { GeneOrder } from "@/models/gene";
 
 const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const Order = ({ gene }: { gene: any }) => {
       d =>
         d.productTypes.length > 1 ||
         !["intermediate_vector", "crispr"].includes(d.productTypes[0])
-    ),
+    ) as Array<GeneOrder>,
     enabled: router.isReady
   });
   useEffect(() => {

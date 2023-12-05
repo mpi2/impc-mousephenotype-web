@@ -5,10 +5,16 @@ import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { useRouter } from "next/router";
-import { faCartPlus, faWarning } from "@fortawesome/free-solid-svg-icons";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import { PhenotypeSummary } from "@/models/phenotype";
 
+type Props = {
+  phenotype: PhenotypeSummary;
+  isLoading: boolean;
+  isError: boolean;
+}
 
-const Summary = ({ phenotype, isLoading, isError }) => {
+const Summary = ({ phenotype, isLoading, isError }: Props) => {
   const router = useRouter();
 
   const SYNONYMS_COUNT = 2;

@@ -10,6 +10,7 @@ import SortableTable from "../../SortableTable";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { GeneExpression } from "@/models/gene";
 
 
 const getExpressionRate = (p) => {
@@ -25,12 +26,13 @@ const Expressions = ({ gene } : { gene: any }) => {
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ['gene', router.query.pid, 'expression'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/expression`),
-    select: raw => raw?.map(d => ({
+    select: raw => raw.map(d => ({
       ...d,
       expressionRate: getExpressionRate(d.mutantCounts),
       wtExpressionRate: getExpressionRate(d.controlCounts),
-    })) || [],
-    enabled: router.isReady
+    })) as Array<GeneExpression>,
+    enabled: router.isReady,
+    placeholderData: []
   });
   useEffect(() => {
     if (data) {

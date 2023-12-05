@@ -1,0 +1,1 @@
+export type { PhenotypeRef } from './phenotype-ref';

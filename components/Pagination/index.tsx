@@ -1,12 +1,12 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState, ReactElement, CSSProperties } from "react";
+import { useEffect, useState, ReactElement, CSSProperties, ReactNode } from "react";
 import styles from './styles.module.scss';
 
 
-type Props = {
-  data: any;
-  children: any;
+type Props<T> = {
+  data: Array<T>;
+  children: (pageData: Array<T>) => ReactNode;
   totalItems?: number;
   onPageChange?: (newPage: number) => void;
   onPageSizeChange?: (newPageSize: number) => void;
@@ -25,7 +25,7 @@ type NavButtonsProps = {
 };
 
 
-const Pagination = (props: Props) => {
+const Pagination = <T extends unknown>(props: Props<T>) => {
   const {
     data = [],
     children,

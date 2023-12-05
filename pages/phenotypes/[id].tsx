@@ -7,7 +7,8 @@ import Associations from "@/components/PhenotypeGeneAssociations";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import ManhattanPlot from "@/components/ManhattanPlot";
-import { useState } from "react";
+import { PhenotypeSummary } from "@/models/phenotype";
+import { PhenotypeContext } from "@/contexts";
 
 const Phenotype = () => {
   const router = useRouter();
@@ -17,17 +18,14 @@ const Phenotype = () => {
     queryKey: ['phenotype', phenotypeId, 'summary'],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
     enabled: router.isReady,
-    select: data => ({...data, procedures: data.procedures.filter(p => p.pipelineStableId === "IMPC_001")}),
-  });
-
-  const { data } = useQuery({
-    queryKey: ['phenotype', phenotypeId, 'genotype-hits'],
-    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`),
-    enabled: router.isReady,
+    select: (data: PhenotypeSummary) => ({
+      ...data,
+      procedures: data.procedures.filter(p => p.pipelineStableId === "IMPC_001")
+    } as PhenotypeSummary),
   });
 
   return (
-    <>
+    <PhenotypeContext.Provider value={phenotype}>
       <Search defaultType="phenotype" />
       <Container className="page">
         <Summary {...{ phenotype, isLoading, isError }}/>
@@ -36,12 +34,7 @@ const Phenotype = () => {
           <ManhattanPlot phenotypeId={phenotypeId}  />
         </Card>
         <Card id="associations-table">
-          <h2>IMPC Gene variants with {phenotype?.phenotypeName}</h2>
-          <p>
-            Total number of significant genotype-phenotype associations:{" "}
-            {data?.length ?? 0}
-          </p>
-          {!!data && <Associations data={data}/>}
+          {!!phenotype && <Associations />}
         </Card>
         <Card>
           <h2>The way we measure</h2>
@@ -58,7 +51,7 @@ const Phenotype = () => {
           ))}
         </Card>
       </Container>
-    </>
+    </PhenotypeContext.Provider>
   );
 };
 

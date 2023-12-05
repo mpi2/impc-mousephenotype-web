@@ -15,6 +15,7 @@ import styles from "./styles.module.scss";
 import Phenogrid from "phenogrid";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "../../../api-service";
+import { GeneDisease } from "@/models/gene";
 
 const Scale = ({ children = 5 }: { children: number }) => {
   return (
@@ -66,7 +67,7 @@ const PhenoGridEl = ({ phenotypes, id }) => {
   );
 };
 
-const Row = ({ data }) => {
+const Row = ({ data }: { data: GeneDisease }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -117,11 +118,12 @@ const Row = ({ data }) => {
 
 const HumanDiseases = ({ gene }: { gene: any }) => {
   const router = useRouter();
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<Array<GeneDisease>>([]);
   const { isLoading, isError, data } = useQuery({
     queryKey: ['genes', router.query.pid, 'disease'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/disease`),
     enabled: router.isReady,
+    select: data => data as Array<GeneDisease>,
   });
   const [tab, setTab] = useState("associated");
 
@@ -150,10 +152,10 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   }
 
   const associatedData = sorted
-    ? sorted.filter((x) => x.associationCurated === "true")
+    ? sorted.filter((x) => x.associationCurated === true)
     : [];
   const predictedData = sorted
-    ? sorted.filter((x) => x.associationCurated !== "true")
+    ? sorted.filter((x) => x.associationCurated !== true)
     : [];
 
   const selectedData = tab === "associated" ? associatedData : predictedData;
@@ -183,7 +185,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             title={`Human diseases predicted to be associated with ${gene.geneSymbol} (${predictedData.length})`}
           ></Tab>
         </Tabs>
-        {!selectedData || !selectedData.length ? (
+        {isError ? (
           <Alert className={styles.table} variant="primary">
             No data available for this section.
           </Alert>
