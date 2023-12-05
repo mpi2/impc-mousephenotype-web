@@ -8,8 +8,9 @@ import Card from "../../Card";
 import styles from "./styles.module.scss";
 import {useQuery} from "@tanstack/react-query";
 import {fetchAPI} from "@/api-service";
+import { GeneImage } from "@/models/gene";
 
-interface Props {
+interface ImageProps {
   parameterName: string;
   procedureName: string;
   parameterStableId: string;
@@ -17,7 +18,7 @@ interface Props {
   length: number;
 }
 
-const Image = ({ parameterName, procedureName, parameterStableId, image, length }: Props) => {
+const Image = ({ parameterName, procedureName, parameterStableId, image, length }: ImageProps) => {
   const router = useRouter();
   const { pid } = router.query;
 
@@ -49,7 +50,8 @@ const Images = ({ gene }: { gene: any }) => {
   const { isLoading, isError, data } = useQuery({
     queryKey: ['genes', router.query.pid, 'images'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/images`),
-    enabled: router.isReady
+    enabled: router.isReady,
+    select: data => data as Array<GeneImage>,
   });
 
   if (isLoading) {
@@ -73,7 +75,6 @@ const Images = ({ gene }: { gene: any }) => {
   }
 
   const groups = Object.entries(_.groupBy(data, "parameterName"));
-  console.log(groups);
   return (
     <Card id="images">
       <h2>Associated images</h2>
