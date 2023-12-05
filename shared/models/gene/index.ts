@@ -6,3 +6,4 @@ export type { GeneExpression } from './expression';
 export type { GeneImage } from './images';
 export type { GeneDisease } from './disease';
 export type { GeneHistopathology } from './histopathology';
+export type { GeneOrder } from './order';
