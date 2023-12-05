@@ -5,12 +5,13 @@ import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
-import { formatAlleleSymbol } from "../../../utils";
+import { formatAlleleSymbol } from "@/utils";
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
 import _ from "lodash";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
+import { GeneHistopathology } from "@/models/gene";
 
 const Histopathology = ({ gene }: { gene: any }) => {
   const router = useRouter();
@@ -20,7 +21,8 @@ const Histopathology = ({ gene }: { gene: any }) => {
     queryKey: ['genes', router.query.pid, 'histopathology'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/histopathology`),
     placeholderData: null,
-    enabled: router.isReady
+    enabled: router.isReady,
+    select: data => data as Array<GeneHistopathology>,
   });
 
   useEffect(() => {
