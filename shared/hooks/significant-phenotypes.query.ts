@@ -6,7 +6,7 @@ import _ from "lodash";
 export const useSignificantPhenotypesQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
-
+  sortOptions: string,
 ) => {
   const {
     data,
@@ -43,8 +43,8 @@ export const useSignificantPhenotypesQuery = (
         }
       });
       const result = Object.values(group);
-      console.log('RES', result);
-      return _.orderBy(result, "phenotypeName", "asc");
+      const [field, order] = sortOptions.split(';');
+      return _.orderBy(result, field, order as "asc" | "desc");
     },
     placeholderData: [],
   });

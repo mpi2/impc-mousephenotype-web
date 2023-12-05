@@ -22,13 +22,13 @@ const SignificantPhenotypes = () => {
   const router = useRouter();
   const gene = useContext(GeneContext);
   const [query, setQuery] = useState(undefined);
-  const [sort, setSort] = useState<string>('');
+  const [sortOptions, setSortOptions] = useState<string>('');
 
   const {
     phenotypeData,
     isPhenotypeLoading,
     isPhenotypeError
-  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady);
+  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady, sortOptions);
 
   const getIcon = (sex: string) => {
     switch (sex) {
@@ -91,15 +91,15 @@ const SignificantPhenotypes = () => {
       {(pageData) => (
         <SortableTable
           doSort={([field, order]) => {
-            setSort(`${field};${order}`);
+            setSortOptions(`${field};${order}`);
           }}
-          defaultSort={["phenotype", "asc"]}
+          defaultSort={["phenotypeName", "asc"]}
           headers={[
-            { width: 2.2, label: "Phenotype", field: "phenotype" },
+            { width: 2.2, label: "Phenotype", field: "phenotypeName" },
             {
               width: 1,
               label: "System",
-              field: "topLevelPhenotype",
+              field: "topLevelPhenotypeName",
             },
             { width: 1, label: "Allele", field: "alleleSymbol" },
             { width: 1, label: "Zyg", field: "zygosity" },
