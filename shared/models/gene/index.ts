@@ -4,3 +4,4 @@ export type { GenePhenotypeHits } from './phenotype-hits';
 export type { GeneStatisticalResult } from './statistical-result';
 export type { GeneExpression } from './expression';
 export type { GeneImage } from './images';
+export type { GeneDisease } from './disease';

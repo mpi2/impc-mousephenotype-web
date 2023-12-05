@@ -1,0 +1,21 @@
+export type GeneDisease = {
+  associationCurated: boolean;
+  diseaseId: string;
+  diseaseMatchedPhenotypes: string;
+  diseaseModelAvgNorm: number;
+  diseaseModelAvgRaw: number;
+  diseaseModelMaxNorm: number;
+  diseaseModelMaxRaw: number;
+  diseaseTerm: string;
+  markerLocus: string;
+  markerNumModels: number;
+  markerSymbol: string;
+  mgiGeneAccessionId: string;
+  modelDescription: string;
+  modelGeneticBackground: string;
+  modelId: string;
+  modelMatchedPhenotypes: string;
+  modelSource: string;
+  phenodigmScore: number;
+  type: string;
+};
