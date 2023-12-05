@@ -19,4 +19,6 @@ export type PhenotypeGenotypes = {
   sex: string;
   topLevelPhenotypes: Array<{ id: string | null; name: string; }>;
   zygosity: string;
+  phenotypeName?: string;
+  phenotypeId?: string;
 }
