@@ -36,15 +36,13 @@ function MyApp({ Component, pageProps }) {
       return <></>;
   }
   return (
-    <SSRProvider>
-      <QueryClientProvider client={queryClient}>
-        <GeneComparatorProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </GeneComparatorProvider>
-      </QueryClientProvider>
-    </SSRProvider>
+    <QueryClientProvider client={queryClient}>
+      <GeneComparatorProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </GeneComparatorProvider>
+    </QueryClientProvider>
   );
 }
 
