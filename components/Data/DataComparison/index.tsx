@@ -118,7 +118,7 @@ const DataComparison = (props: Props) => {
       return {
         ...d,
         datasetNum: index + 1,
-        topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
+        topLevelPhenotype: d.topLevelPhenotypes?.[0]?.name,
         phenotype: d.significantPhenotype?.name,
         id: d.significantPhenotype?.id,
         viability: getLethality(),
