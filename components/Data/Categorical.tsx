@@ -20,8 +20,9 @@ const Categorical = ({ datasetSummary }) => {
 
   useEffect(() => {
     (async () => {
+      const dataReleaseVersion = process.env.NEXT_PUBLIC_DR_DATASET_VERSION || 'latest';
       const res = await fetch(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/latest/${datasetSummary["datasetId"]}.json`
+        `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
       );
       if (res.ok) {
         const response = await res.json();
