@@ -29,7 +29,6 @@ const Charts = () => {
   const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
-  console.log('ID: ', mgiGeneAccessionId);
   const getChartType = (datasetSummary: any) => {
     let chartType = datasetSummary["dataType"];
     if (chartType == "line") {

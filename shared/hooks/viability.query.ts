@@ -25,9 +25,9 @@ export const useViabilityQuery = (mgiGeneAccessionId: string, routerIsReady: boo
         }
         return acc;
       }, {});
-      console.log(Object.values(groupedData));
       return Object.values(groupedData);
-    }
+    },
+    enabled: routerIsReady,
   });
   return {
     viabilityData: data,
