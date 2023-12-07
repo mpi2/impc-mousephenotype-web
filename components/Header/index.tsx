@@ -36,6 +36,8 @@ const getInternalLink = (name: string, link: string) => {
       return '/histopath';
     case 'Sexual Dimorphism':
       return '/sexual-dimorphism';
+    case 'Genes Critical for Hearing Identified':
+      return '/hearing'
     default:
       return link;
   }

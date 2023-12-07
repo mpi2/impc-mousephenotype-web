@@ -2,7 +2,14 @@ import Search from "@/components/Search";
 import Card from "@/components/Card";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from '../../mocks/data/landing-pages/hearing.json';
+import { SmartTable, SimpleTextCell } from "@/components/SmartTable";
 
+type GeneHearingData = {
+  geneSymbol: string;
+  zygosity: string;
+  status: string;
+  hearingLoss: string;
+};
 
 const HearingLandingPage = () => {
   return (
@@ -77,6 +84,59 @@ const HearingLandingPage = () => {
               </li>
             ))}
           </ul>
+        </Card>
+        <Card>
+          <h2>IMPC Deafness Publication</h2>
+          <h3>Hearing loss investigated in 3,006 knockout mouse lines</h3>
+          <p>
+            <a className="link primary" href="http://bit.ly/IMPCDeafness">A large scale hearing loss screen reveals an extensive unexplored genetic landscape for auditory dysfunction.</a>
+          </p>
+          <ul>
+            <li>67 genes identified as candidate hearing loss genes</li>
+            <li>52 genes are not previously associated with hearing loss and encompass a
+              wide
+              range of functions from structural proteins to transcription factors
+            </li>
+            <li>Among the novel candidate genes, <i>Atp2b1</i> is expressed in the inner
+              ear and
+              <i>Sema3f</i> plays a role in sensory hair cell innervation in the
+              cochlea
+            </li>
+            <li>The IMPC will continue screening for hearing loss mutants in its second
+              5 year
+              phase
+            </li>
+          </ul>
+          <h3>Methods</h3>
+          <p>Response data from the <a className="link primary" href="https://www.mousephenotype.org/impress/protocol/149/7">Auditory
+            Brain Stem response (ABR)</a> test was used – hearing at five frequencies,
+            6kHz, 12kHz, 18kHz,
+            24kHz and
+            30kHz was measured.
+          </p>
+          <ul>
+            <li>Control wildtype mice from each phenotypic centre included, matched for
+              gender, age,
+              phenotypic pipeline and metadata (e.g. instrument)
+            </li>
+            <li>Our production statistical approach that automatically detects mutants
+              with abnormal hearing
+              was manually curated to yield 67 genes with profound hearing loss
+            </li>
+          </ul>
+        </Card>
+        <Card>
+          <h2>Gene table</h2>
+          <SmartTable<GeneHearingData>
+            data={data.genes}
+            defaultSort={["geneSymbol", "asc"]}
+            columns={[
+              { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: SimpleTextCell },
+              { width: 1, label: "Zygosity", field: "zygosity", cmp: SimpleTextCell },
+              { width: 1, label: "Status", field: "status", cmp: SimpleTextCell },
+              { width: 1, label: "Hearing loss", field: "hearingLoss", cmp: SimpleTextCell },
+            ]}
+          />
         </Card>
       </Container>
     </>
