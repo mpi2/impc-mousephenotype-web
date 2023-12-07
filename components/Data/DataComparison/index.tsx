@@ -51,8 +51,8 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
 
 type Props = {
   data: any;
-  selectedParameter: string | null;
-  isViabilityChart: boolean;
+  selectedParameter?: string | null;
+  isViabilityChart?: boolean;
   initialSortByProp?: string;
   visibility: boolean;
 }
@@ -65,7 +65,7 @@ const DataComparison = (props: Props) => {
   const {
     data,
     selectedParameter,
-    isViabilityChart,
+    isViabilityChart = false,
     initialSortByProp,
     visibility,
   } = props;

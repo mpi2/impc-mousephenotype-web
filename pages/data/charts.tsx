@@ -73,8 +73,6 @@ const Charts = () => {
     ? `/api/v1/genes/${mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
     : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
 
-  const isBodyWeightChart = router.query.chartType === 'bodyweight';
-  const isAllViabilityChart = router.query.chartType === 'viability';
   const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
 
   let { data: datasetSummaries, isLoading, isError } = useQuery({
@@ -86,7 +84,7 @@ const Charts = () => {
       "dataset",
     ],
     queryFn: () => fetchAPI(apiUrl),
-    enabled: router.isReady && !isBodyWeightChart,
+    enabled: router.isReady,
     select: data => {
       data.sort((a, b) => {
         return a["reportedPValue"] - b["reportedPValue"];
@@ -99,16 +97,13 @@ const Charts = () => {
     placeholderData: []
   });
 
-  const { bodyWeightData, isBodyWeightLoading } = useBodyWeightQuery(mgiGeneAccessionId as string, router.isReady && isBodyWeightChart);
-  const { viabilityData, isViabilityLoading} = useViabilityQuery(mgiGeneAccessionId as string, router.isReady && isAllViabilityChart);
-  const isFetchingData = isLoading || isBodyWeightLoading || isViabilityLoading;
 
   const isABRChart = !!datasetSummaries.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
   const isViabilityChart = !!datasetSummaries.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
 
   let allSummaries = datasetSummaries.concat(additionalSummaries)
 
-  if (isBodyWeightChart) {
+  /*if (isBodyWeightChart) {
     allSummaries = bodyWeightData;
   } else if (isAllViabilityChart) {
     allSummaries = viabilityData;
@@ -120,7 +115,7 @@ const Charts = () => {
       }
       return dataset;
     })
-  }
+  }*/
 
   return (
     <>
@@ -195,7 +190,7 @@ const Charts = () => {
               </div>
             </Alert>
           )}
-          {(!isFetchingData && allSummaries.length > 0) ? (
+          {(!isLoading && allSummaries.length > 0) ? (
             <DataComparison
               visibility={showComparison}
               data={allSummaries}

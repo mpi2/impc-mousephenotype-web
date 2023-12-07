@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useViabilityQuery } from "@/hooks";
+import { useBodyWeightQuery } from "@/hooks";
 import { Card, Search } from "@/components";
 import { Alert, Button, Container, Tab, Tabs } from "react-bootstrap";
 import styles from "@/pages/data/styles.module.scss";
@@ -8,16 +8,16 @@ import Skeleton from "react-loading-skeleton";
 import { formatPValue } from "@/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTable } from "@fortawesome/free-solid-svg-icons";
-import { DataComparison, Viability } from "@/components/Data";
+import { ABR, BodyWeightChart, DataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 
-const ViabilityChartPage = () => {
+const BodyWeightChartPage = () => {
   const [tab, setTab] = useState('0');
   const [showComparison, setShowComparison] = useState(true);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
 
-  const { viabilityData, isViabilityLoading} = useViabilityQuery(mgiGeneAccessionId as string, router.isReady);
+  const { bodyWeightData, isBodyWeightLoading } = useBodyWeightQuery(mgiGeneAccessionId as string, router.isReady);
 
   return (
     <>
@@ -37,13 +37,13 @@ const ViabilityChartPage = () => {
                 }}
               >
                 <a href="#" className="grey mb-3">
-                  { viabilityData?.[0]?.["geneSymbol"] || <Skeleton />}
+                  { bodyWeightData?.[0]?.["geneSymbol"] || <Skeleton />}
                 </a>
               </button>{" "}
               / phenotype data breakdown
             </span>
           </div>
-          {(!viabilityData && !isViabilityLoading) && (
+          {(!bodyWeightData && !isBodyWeightLoading) && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>
               <p>We could not find the data to display this page.</p>
@@ -51,12 +51,12 @@ const ViabilityChartPage = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              {viabilityData &&
-                viabilityData[0]?.["significantPhenotype"] &&
-                viabilityData[0]?.["significantPhenotype"]["name"]}
+              {bodyWeightData &&
+                bodyWeightData[0]?.["significantPhenotype"] &&
+                bodyWeightData[0]?.["significantPhenotype"]["name"]}
             </strong>
           </h1>
-          {!!viabilityData && (
+          {!!bodyWeightData && (
             <Alert variant="green" className="mb-0">
               <div
                 style={{
@@ -68,13 +68,13 @@ const ViabilityChartPage = () => {
                 }}
               >
               <span>
-                {viabilityData && viabilityData.length} parameter /
+                {bodyWeightData && bodyWeightData.length} parameter /
                 zygosity / metadata group combinations tested, with the lowest
                 p-value of{" "}
                 <strong>
-                  {viabilityData &&
+                  {bodyWeightData &&
                     formatPValue(
-                      Math.min(...viabilityData.map(d => d?.["reportedPValue"]), 0)
+                      Math.min(...bodyWeightData.map(d => d?.["reportedPValue"]), 0)
                     )}
                 </strong>
                 .
@@ -92,11 +92,10 @@ const ViabilityChartPage = () => {
               </div>
             </Alert>
           )}
-          {(!isViabilityLoading && viabilityData.length > 0) ? (
+          {(!isBodyWeightLoading && bodyWeightData.length > 0) ? (
             <DataComparison
               visibility={showComparison}
-              data={viabilityData}
-              isViabilityChart={false}
+              data={bodyWeightData}
             />
           ) : <SkeletonTable />}
         </Card>
@@ -107,8 +106,9 @@ const ViabilityChartPage = () => {
       >
         <Container>
           <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
-            {viabilityData && viabilityData.map((d, i) => (
-              <Tab eventKey={i}
+            {bodyWeightData && bodyWeightData.map((d, i) => (
+              <Tab
+                eventKey={i}
                 title={
                   <>
                     Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
@@ -117,7 +117,7 @@ const ViabilityChartPage = () => {
                 }
                 key={i}
               >
-                <Viability datasetSummary={d} />
+                <BodyWeightChart datasetSummary={d} />
               </Tab>
             ))}
           </Tabs>
@@ -125,6 +125,6 @@ const ViabilityChartPage = () => {
       </div>
     </>
   );
-};
+}
 
-export default ViabilityChartPage;
+export default BodyWeightChartPage;
