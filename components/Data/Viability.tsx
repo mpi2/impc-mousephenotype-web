@@ -64,10 +64,12 @@ const Viability = ({ datasetSummary }) => {
 
   const { data, isLoading, error, isError } = useQuery({
     queryKey: ["dataset", datasetSummary["datasetId"]],
-    queryFn: () =>
-      fetch(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/latest/${datasetSummary["datasetId"]}.json`
-      ).then((res) => res.json()),
+    queryFn: () => {
+      const dataReleaseVersion = process.env.NEXT_PUBLIC_DR_DATASET_VERSION || 'latest';
+      return fetch(
+        `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
+      ).then((res) => res.json());
+    }
   });
 
   if (isLoading) return <Card>Loading...</Card>;
