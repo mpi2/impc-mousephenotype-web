@@ -8,8 +8,72 @@
   margin-bottom: 0;
 }
 
+.legendsContainer {
+  padding: 1em;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  display: flex;
+  gap: 1.5em;
+}
+
 .images {
   --bs-gutter-x: 0.5rem;
+  .singleImage {
+    position: relative;
+    min-height: 50px;
+    height: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    .overlay {
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .indicator {
+      display: flex;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .indicatorsContainer {
+      display: flex;
+      top: 5px;
+      left: 5px;
+      position: absolute;
+      .common {
+        background-color: #000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25px;
+        width: 25px;
+      }
+      .sexIndicator {
+        color: #FFF;
+      }
+      .zygosityIndicator {
+        font-size: 0.75em;
+      }
+    }
+    .imageActiveIndicator {
+      background-color: $secondary;
+      color: #FFF;
+      top: 5px;
+      right: 5px;
+      padding: 5px;
+    }
+    .additionalInfo {
+      font-size: 0.75em;
+      &:not(:empty) {
+        padding: 0.5em;
+      }
+    }
+  }
 }
 
 .viewer {
@@ -17,7 +81,6 @@
   width: 100%;
   border-radius: 5;
   overflow: hidden;
-  margin-bottom: 2rem;
   position: relative;
 }
 
@@ -36,5 +99,21 @@
     background-color: $white;
     border-radius: 5px;
     margin-bottom: $xxs;
+  }
+}
+
+.filtersWrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 1em 0;
+  align-items: center;
+  .filter {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    .badge {
+      cursor: pointer;
+      font-size: 1rem;
+    }
   }
 }

@@ -1,6 +1,5 @@
-import {useEffect, useState} from "react";
-import _ from "lodash";
-import { Alert, Badge, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Alert, Form, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Pagination from "../Pagination";
 import SortableTable from "../SortableTable";
 import {formatAlleleSymbol, formatPValue} from "@/utils";
@@ -11,60 +10,21 @@ import {
   faMars,
   faMarsAndVenus,
   faVenus,
-  faXmark
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { useGeneAssociationsQuery } from "@/hooks";
+import { PhenotypeContext } from "@/contexts";
+import { useRouter } from "next/router";
 
-type Props = {
-  data: any;
-  selectedGenes: Array<any>;
-  onRemoveSelection: (gene: any) => void;
-  onRemoveAll: () => void;
-}
+type Props = {}
 
-const Associations = ({ data, selectedGenes, onRemoveSelection, onRemoveAll }: Props) => {
-  const groups = data?.reduce((acc, d) => {
-    const {
-      phenotype: { id, name },
-      alleleAccessionId,
-      zygosity,
-      sex,
-      pValue,
-    } = d;
+const Associations = (props: Props) => {
+  const phenotype = useContext(PhenotypeContext);
 
-    const key = `${id}-${alleleAccessionId}-${zygosity}`;
-    if (acc[key]) {
-      if (acc[key].pValue > pValue) {
-        acc[key].pValue = Number(pValue);
-        acc[key].sex = sex;
-      }
-    } else {
-      acc[key] = { ...d };
-    }
-    acc[key][`pValue_${sex}`] = Number(pValue);
-
-    return acc;
-  }, {});
-  const isGeneSelected = selectedGenes.length > 0;
-
-  const processed =
-    (groups ? Object.values(groups) : []).map((d: any) => ({
-      ...d,
-      phenotype: d.phenotype.name,
-      id: d.phenotype.id,
-    })) || [];
-
-  const [sorted, setSorted] = useState<any[]>(null);
-
-  useEffect(() => {
-    let orderedData = _.orderBy(processed, "alleleSymbol", "asc");
-
-    if (selectedGenes.length > 0) {
-      const listOfSymbols = selectedGenes.map(g => g.mgiGeneAccessionId);
-      orderedData = orderedData.filter(item => listOfSymbols.includes(item.mgiGeneAccessionId));
-    }
-    setSorted(orderedData);
-  }, [data, selectedGenes.length]);
+  const router = useRouter();
+  const [query, setQuery] = useState(undefined);
+  const [sortOptions, setSortOptions] = useState<string>('');
+  const { data, isLoading } = useGeneAssociationsQuery(phenotype.phenotypeId, router.isReady, sortOptions);
 
   const getIcon = (sex) => {
     switch (sex) {
@@ -88,23 +48,8 @@ const Associations = ({ data, selectedGenes, onRemoveSelection, onRemoveAll }: P
     }
   };
 
-  const GeneSelectedBadges = () => (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', maxWidth: '85%' }}>
-      Filtering data by gene{selectedGenes.length > 1 ? 's' : ''}:
-      {selectedGenes.map(gene => (
-        <Badge
-          key={gene.mgiGeneAccessionId}
-          style={{ fontSize: '1em', backgroundColor: '#00b0b0', fontWeight: 'normal', cursor: 'pointer' }}
-          pill
-          bg="light"
-          onClick={() => onRemoveSelection(gene)}
-        >
-          {gene.geneSymbol}
-          &nbsp;
-          <FontAwesomeIcon icon={faXmark} />
-        </Badge>
-      ))}
-    </div>
+  const filtered = data.filter(({phenotypeName, phenotypeId, alleleSymbol, mgiGeneAccessionId}) =>
+      (!query || `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query))
   );
 
   if (!data) {
@@ -117,28 +62,35 @@ const Associations = ({ data, selectedGenes, onRemoveSelection, onRemoveAll }: P
 
   return (
     <>
+      <h2>IMPC Gene variants with {phenotype.phenotypeName}</h2>
+      <p>
+        Total number of significant genotype-phenotype associations:&nbsp;
+        {data.length}
+      </p>
       <Pagination
-        data={sorted}
-        additionalTopControls={isGeneSelected ? (
-          <>
-            <GeneSelectedBadges/>
-            <Badge
-              style={{ fontSize: '1em', backgroundColor: '#00b0b0', fontWeight: 'normal', cursor: 'pointer', marginLeft: 'auto' }}
-              pill
-              bg="light"
-              onClick={onRemoveAll}
-            >
-              Clear all
-              &nbsp;
-              <FontAwesomeIcon icon={faXmark} />
-            </Badge>
-          </>
-          ) : null}
+        data={filtered}
+        additionalTopControls={
+          <Form.Control
+            type="text"
+            style={{
+              display: "inline-block",
+              width: 200,
+              marginRight: "2rem",
+            }}
+            aria-label="Filter by parameters"
+            id="parameterFilter"
+            className="bg-white"
+            placeholder="Search "
+            onChange={(el) => {
+              setQuery(el.target.value.toLowerCase() || undefined);
+            }}
+          />
+        }
         topControlsWrapperCSS={{ flexWrap: 'nowrap', alignItems: 'flex-start'}}
       >
         {(currentPage) => (
           <SortableTable
-            doSort={(sort) => setSorted(_.orderBy(processed, sort[0], sort[1]))}
+            doSort={([field, order]) => setSortOptions(`${field};${order}`)}
             defaultSort={["alleleSymbol", "asc"]}
             headers={[
               { width: 2, label: "Gene / allele", field: "alleleSymbol" },
@@ -165,7 +117,7 @@ const Associations = ({ data, selectedGenes, onRemoveSelection, onRemoveAll }: P
                       <sup>{allele[1]}</sup>
                     </strong>
                   </td>
-                  <td>{d.phenotype}</td>
+                  <td>{d.phenotypeName}</td>
                   <td>{d.zygosity}</td>
                   <td>
                     {["male", "female", "not_considered"].map((col) => {
@@ -200,7 +152,7 @@ const Associations = ({ data, selectedGenes, onRemoveSelection, onRemoveAll }: P
                         {!!d.pValue ? formatPValue(d.pValue) : 0}&nbsp;
                       </span>
                       <Link
-                        href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.id}`}
+                        href={`/data/charts?mgiGeneAccessionId=${d.mgiGeneAccessionId}&mpTermId=${d.phenotypeId}`}
                       >
                         <strong className="link primary small float-right">
                           <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;
@@ -212,6 +164,13 @@ const Associations = ({ data, selectedGenes, onRemoveSelection, onRemoveAll }: P
                 </tr>
               );
               }
+            )}
+            {currentPage.length === 0 && (
+              <tr>
+                <td colSpan={8}>
+                  <b>We couldn't find any results matching the filter</b>
+                </td>
+              </tr>
             )}
           </SortableTable>
         )}

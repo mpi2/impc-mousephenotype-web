@@ -7,21 +7,23 @@ import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
 import styles from "./styles.module.scss";
 import {useQuery} from "@tanstack/react-query";
-import {fetchAPI} from "../../../api-service";
+import {fetchAPI} from "@/api-service";
+import { GeneImage } from "@/models/gene";
 
-interface Props {
+interface ImageProps {
   parameterName: string;
   procedureName: string;
+  parameterStableId: string;
   image: string;
   length: number;
 }
 
-const Image = ({ parameterName, procedureName, image, length }: Props) => {
+const Image = ({ parameterName, procedureName, parameterStableId, image, length }: ImageProps) => {
   const router = useRouter();
   const { pid } = router.query;
 
   return (
-    <Link href={`/genes/${pid}/images/${parameterName}`}>
+    <Link href={`/genes/${pid}/images/${parameterStableId}`}>
       <div className={styles.card}>
         <div
           className={styles.cardImage}
@@ -48,7 +50,8 @@ const Images = ({ gene }: { gene: any }) => {
   const { isLoading, isError, data } = useQuery({
     queryKey: ['genes', router.query.pid, 'images'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/images`),
-    enabled: router.isReady
+    enabled: router.isReady,
+    select: data => data as Array<GeneImage>,
   });
 
   if (isLoading) {
@@ -82,8 +85,9 @@ const Images = ({ gene }: { gene: any }) => {
               <Image
                 parameterName={key}
                 procedureName={group[0].procedureName}
+                parameterStableId={group[0].parameterStableId}
                 image={group[0].thumbnailUrl}
-                length={group.length}
+                length={group[0].count}
               />
             </Col>
           ))}

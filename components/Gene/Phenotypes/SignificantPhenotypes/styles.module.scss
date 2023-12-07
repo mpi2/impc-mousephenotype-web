@@ -10,6 +10,12 @@
 .link {
   cursor: pointer;
   &:hover {
-    color: $primary;
+    color: $orange-dark;
   }
+}
+
+.pValueCell {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

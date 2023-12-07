@@ -198,10 +198,11 @@ const StatisticalAnalysisChart = ({
             const data = processed[context[0].dataIndex];
             return formatBodySystems(data.topLevelPhenotypes[0]);
           },
-          // label: () => "",
+          label: () => "",
           afterBody: (context) => {
             const data = processed[context[0].dataIndex];
             return [
+              `P-value: ${parseFloat(data.pvalue).toExponential(3)}`,
               `Zygosity: ${_.capitalize(data.zygosity)}`,
               `Procedure: ${data.procedureName}`,
               `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,

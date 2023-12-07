@@ -54,7 +54,11 @@ const AllData = ({ data }: { data: any }) => {
             <p>
               <Form.Control
                 type="text"
-                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                style={{
+                  display: "inline-block",
+                  width: 200,
+                  marginRight: "2rem",
+                }}
                 aria-label="Filter by parameters"
                 id="parameterFilter"
                 className="bg-white"
@@ -71,7 +75,11 @@ const AllData = ({ data }: { data: any }) => {
                 Procedure:
               </label>
               <Form.Select
-                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                style={{
+                  display: "inline-block",
+                  width: 200,
+                  marginRight: "2rem",
+                }}
                 aria-label="Filter by procedures"
                 defaultValue={undefined}
                 id="procedureFilter"
@@ -97,7 +105,11 @@ const AllData = ({ data }: { data: any }) => {
                 Physiological system:
               </label>
               <Form.Select
-                style={{ display: "inline-block", width: 200, marginRight: "2rem" }}
+                style={{
+                  display: "inline-block",
+                  width: 200,
+                  marginRight: "2rem",
+                }}
                 aria-label="Filter by physiological system"
                 defaultValue={undefined}
                 id="systemFilter"
@@ -117,7 +129,8 @@ const AllData = ({ data }: { data: any }) => {
               </Form.Select>
             </p>
           </div>
-        }>
+        }
+      >
         {(currentPage) => (
           <SortableTable
             doSort={(sort) => {
@@ -146,6 +159,12 @@ const AllData = ({ data }: { data: any }) => {
             {currentPage.map(
               (
                 {
+                  mgiGeneAccessionId,
+                  alleleAccessionId,
+                  pipelineStableId,
+                  procedureStableId,
+                  parameterStableId,
+                  phenotypingCentre,
                   procedureName,
                   parameterName,
                   lifeStageName,
@@ -154,7 +173,6 @@ const AllData = ({ data }: { data: any }) => {
                   pValue,
                   topLevelPhenotypes,
                   alleleSymbol,
-                  phenotypingCentre
                 },
                 i
               ) => {
@@ -184,24 +202,36 @@ const AllData = ({ data }: { data: any }) => {
                     <td>{phenotypingCentre}</td>
                     <td style={{ textTransform: "capitalize" }}>{zygosity}</td>
                     <td>{significant ? "Yes" : "No"}</td>
-                    <td
-                      className="bold"
-                    >
-                      <div style={{display: "flex", justifyContent: "space-between"}}>
+                    <td className="bold">
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
                         <span className="">
                           {!!pValue ? formatPValue(pValue) : "-"}
                         </span>
-                          <Link href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis">
-                            <strong className={`link primary small float-right`}>
-                              <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
-                              <FontAwesomeIcon icon={faChevronRight} />
-                            </strong>
-                          </Link>
+                        <Link
+                          href={`/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`}
+                        >
+                          <strong className={`link primary small float-right`}>
+                            <FontAwesomeIcon icon={faChartLine} /> Supporting
+                            data <FontAwesomeIcon icon={faChevronRight} />
+                          </strong>
+                        </Link>
                       </div>
                     </td>
                   </tr>
                 );
               }
+            )}
+            {currentPage.length === 0 && (
+              <tr>
+                <td colSpan={8}>
+                  <b>We couldn't find any results matching the filter</b>
+                </td>
+              </tr>
             )}
           </SortableTable>
         )}

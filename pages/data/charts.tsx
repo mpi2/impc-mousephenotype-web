@@ -11,17 +11,22 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTable } from "@fortawesome/free-solid-svg-icons";
-import DataComparison from "@/components/Data/DataComparison";
 import { formatPValue } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import EmbryoViability from "@/components/Data/EmbryoViability";
 import Skeleton from "react-loading-skeleton";
+import ABR from "@/components/Data/ABR";
+import BodyWeightChart from "@/components/Data/BodyWeight";
+import DataComparison from "@/components/Data/DataComparison";
+import SkeletonTable from "@/components/skeletons/table";
+import { useBodyWeightQuery } from "@/hooks";
+
 
 const Charts = () => {
-  const [mode, setMode] = useState("Unidimensional");
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState('0');
   const [showComparison, setShowComparison] = useState(true);
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
   const getChartType = (datasetSummary: any) => {
     let chartType = datasetSummary["dataType"];
@@ -40,6 +45,9 @@ const Charts = () => {
           ? "embryo_viability"
           : "line";
     }
+    if (chartType === "time_series" && datasetSummary.procedureGroup === "IMPC_BWT") {
+      chartType = "bodyweight";
+    }
     switch (chartType) {
       case "unidimensional":
         return <Unidimensional datasetSummary={datasetSummary} />;
@@ -48,43 +56,65 @@ const Charts = () => {
       case "viability":
         return <Viability datasetSummary={datasetSummary} />;
       case "time_series":
-        return <TimeSeries />;
+        return <TimeSeries datasetSummary={datasetSummary} />;
       case "embryo":
         return <EmbryoViability datasetSummary={datasetSummary} />;
       case "histopathology":
-        return <Histopathology />;
-
+        return <Histopathology datasetSummary={datasetSummary} />;
+      case "bodyweight":
+        return <BodyWeightChart datasetSummary={datasetSummary} />
       default:
         return null;
     }
   };
+
+  const apiUrl = router.query.mpTermId
+    ? `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
+    : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${router.query.mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
+
+  const isBodyWeightChart = router.query.chartType === 'bodyweight';
+  const selectedParameterKey = !router.query.mpTermId ? `${router.query.alleleAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
 
   let { data: datasetSummaries, isLoading, isError } = useQuery({
     queryKey: [
       "genes",
       router.query.mgiGeneAccessionId,
       router.query.mpTermId,
+      apiUrl,
       "dataset",
     ],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
-      ),
-    enabled: router.isReady,
+    queryFn: () => fetchAPI(apiUrl),
+    enabled: router.isReady && !isBodyWeightChart,
+    select: data => {
+      data.sort((a, b) => {
+        return a["reportedPValue"] - b["reportedPValue"];
+      });
+      return data?.filter(
+        (value, index, self) =>
+          self.findIndex((v) => v.datasetId === value.datasetId) === index
+      );
+    },
+    placeholderData: []
   });
 
-  console.log('DATA: ', datasetSummaries);
-  console.log('LOADING: ', isLoading);
-  console.log('ERROR: ', isError);
+  const { data: bodyWeightData, isLoading: isBodyWeightLoading } = useBodyWeightQuery(router.query.mgiGeneAccessionId as string, router.isReady);
+  const isFetchingData = isLoading || isBodyWeightLoading;
 
-  if (datasetSummaries) {
-    datasetSummaries.sort((a, b) => {
-      return a["reportedPValue"] - b["reportedPValue"];
-    });
-    datasetSummaries = datasetSummaries?.filter(
-      (value, index, self) =>
-        self.findIndex((v) => v.datasetId === value.datasetId) === index
-    );
+  const isABRChart = !!datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
+  const isViabilityChart = !!datasetSummaries?.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
+
+  let allSummaries = datasetSummaries?.concat(additionalSummaries)
+
+  if (isBodyWeightChart) {
+    allSummaries = bodyWeightData;
+  } else {
+    allSummaries = allSummaries.map(dataset => {
+      const bodyWeightDataForDataset = bodyWeightData.find(d => d.datasetId === dataset.datasetId);
+      if (bodyWeightDataForDataset) {
+        return {...dataset, chartData: bodyWeightDataForDataset.chartData};
+      }
+      return dataset;
+    })
   }
 
   return (
@@ -105,7 +135,7 @@ const Charts = () => {
                 }}
               >
                 <a href="#" className="grey mb-3">
-                  { datasetSummaries?.[0]["geneSymbol"] || <Skeleton />}
+                  { allSummaries?.[0]?.["geneSymbol"] || <Skeleton />}
                 </a>
               </button>{" "}
               / phenotype data breakdown
@@ -119,7 +149,9 @@ const Charts = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              {datasetSummaries?.[0]["significantPhenotype"]["name"] || <Skeleton width="30%" />}
+              {allSummaries &&
+                allSummaries[0]?.["significantPhenotype"] &&
+                allSummaries[0]?.["significantPhenotype"]["name"]}
             </strong>
           </h1>
           {!!datasetSummaries && (
@@ -134,15 +166,13 @@ const Charts = () => {
                 }}
               >
               <span>
-                {datasetSummaries && datasetSummaries.length} parameter /
+                {allSummaries && allSummaries.length} parameter /
                 zygosity / metadata group combinations tested, with the lowest
                 p-value of{" "}
                 <strong>
-                  {datasetSummaries &&
+                  {allSummaries &&
                     formatPValue(
-                      Math.min(
-                        ...datasetSummaries.map((d) => d["reportedPValue"])
-                      )
+                      Math.min(...allSummaries.map(d => d?.["reportedPValue"]), 0)
                     )}
                 </strong>
                 .
@@ -160,9 +190,15 @@ const Charts = () => {
               </div>
             </Alert>
           )}
-          {!isLoading && showComparison && (
-            <DataComparison data={datasetSummaries} />
-          )}
+          {(!isFetchingData && allSummaries.length > 0) ? (
+            <DataComparison
+              visibility={showComparison}
+              data={allSummaries}
+              selectedParameter={selectedParameterKey}
+              isViabilityChart={isViabilityChart}
+              {...(isABRChart && { initialSortByProp: 'parameterStableId' })}
+            />
+          ) : <SkeletonTable />}
         </Card>
       </Container>
       <div
@@ -170,9 +206,14 @@ const Charts = () => {
         className="bg-grey pt-2"
       >
         <Container>
-          <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
-            {datasetSummaries &&
-              datasetSummaries.map((d, i) => (
+          {!!isABRChart ? (
+            <ABR
+              datasetSummaries={datasetSummaries}
+              onNewSummariesFetched={setAdditionalSummaries}
+            />
+          ) : (
+            <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
+              {allSummaries && allSummaries.map((d, i) => (
                 <Tab
                   eventKey={i}
                   title={
@@ -186,58 +227,10 @@ const Charts = () => {
                   <div>{getChartType(d)}</div>
                 </Tab>
               ))}
-          </Tabs>
+            </Tabs>
+          )}
         </Container>
       </div>
-      <Container>
-        {/* <Card>
-          <p>Current mode: {mode}</p>
-          <div style={{ display: "flex" }}>
-            <button
-              onClick={() => {
-                setMode("Unidimensional");
-              }}
-            >
-              Unidimensional
-            </button>
-            <button
-              onClick={() => {
-                setMode("Categorical");
-              }}
-            >
-              Categorical
-            </button>
-            <button
-              onClick={() => {
-                setMode("Viability");
-              }}
-            >
-              Viability
-            </button>
-            <button
-              onClick={() => {
-                setMode("Time series");
-              }}
-            >
-              Time series
-            </button>
-            <button
-              onClick={() => {
-                setMode("Embryo");
-              }}
-            >
-              Embryo
-            </button>
-            <button
-              onClick={() => {
-                setMode("Histopathology");
-              }}
-            >
-              Histopathology
-            </button>
-          </div>
-        </Card> */}
-      </Container>
     </>
   );
 };

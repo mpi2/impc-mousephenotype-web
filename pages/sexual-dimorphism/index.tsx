@@ -27,7 +27,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatAlleleSymbol } from "@/utils";
 import Link from "next/link";
-import generate from "@babel/generator";
 
 ChartJS.register(
   LinearScale,
@@ -54,11 +53,11 @@ const GeneLink = ({ gene }) => {
 const SexualDimorphismLandingPage = () => {
 
   const getBackgroundColor = (label: string) => {
-    return label.includes('WT') ? "rgba(9, 120, 161, 0.7)" : "rgba(239, 123, 11, 0.2)";
+    return label.includes('WT') ? "rgba(212, 17, 89, 0.2)" : "rgba(26, 133, 255, 0.2)";
   }
 
   const getBorderColor = (label: string) => {
-    return label.includes('WT') ? "rgba(9, 120, 161, 0.7)" : "rgba(239, 123, 11, 0.5)";
+    return label.includes('WT') ? "rgba(212, 17, 89, 0.7)" : "rgba(26, 133, 255, 0.5)";
   }
   const prepareData = (rawData) => {
     return {

@@ -12,7 +12,7 @@ import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const TargetingVector = ({
   mgiGeneAccessionId,
@@ -26,7 +26,7 @@ const TargetingVector = ({
     queryFn: () => fetchAPI(`/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
     placeholderData: []
   });
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
       setSorted(_.orderBy(data, "productId", "asc"));

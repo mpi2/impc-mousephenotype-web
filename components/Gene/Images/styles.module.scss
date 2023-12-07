@@ -1,10 +1,12 @@
 @import "../../../styles/vars.scss";
 .cardImage {
   height: 160px;
-  background-size: cover;
   background-position: center;
   border-radius: $xxs;
   position: relative;
+  background-repeat: no-repeat;
+  background-color: #000;
+  background-size: 50%;
 }
 
 .cardImageOverlay {

@@ -9,7 +9,7 @@ import _ from "lodash";
 import SortableTable from "../../SortableTable";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const Mice = ({
   mgiGeneAccessionId,
@@ -27,7 +27,7 @@ const Mice = ({
     queryFn: () => fetchAPI(`/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
     placeholderData: []
   });
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
       setSorted(_.orderBy(data, "productId", "asc"));

@@ -1,12 +1,12 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState, ReactElement, CSSProperties } from "react";
+import { useEffect, useState, ReactElement, CSSProperties, ReactNode } from "react";
 import styles from './styles.module.scss';
 
 
-type Props = {
-  data: any;
-  children: any;
+type Props<T> = {
+  data: Array<T>;
+  children: (pageData: Array<T>) => ReactNode;
   totalItems?: number;
   onPageChange?: (newPage: number) => void;
   onPageSizeChange?: (newPageSize: number) => void;
@@ -25,9 +25,9 @@ type NavButtonsProps = {
 };
 
 
-const Pagination = (props: Props) => {
+const Pagination = <T extends unknown>(props: Props<T>) => {
   const {
-    data,
+    data = [],
     children,
     totalItems,
     onPageChange,
@@ -42,11 +42,11 @@ const Pagination = (props: Props) => {
 
   const [internalPage, setInternalPage] = useState(page);
   const [internalPageSize, setInternalPageSize] = useState(10);
-  const [pageRange, setPageRange] = useState([1, 2, 3]);
+  const [pageRange, setPageRange] = useState([1]);
 
 
   const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
-  const noTotalItems = controlled ? totalItems : (data?.length || 1);
+  const noTotalItems = controlled ? totalItems : data?.length;
   let totalPages = Math.ceil(noTotalItems / internalPageSize) || 1;
   const updatePageRange = (page: number, totalPages: number) => {
     let rangeStart = Math.max(1, page - 1);
@@ -186,7 +186,7 @@ const Pagination = (props: Props) => {
     if (!controlled) {
       setInternalPage(0);
     }
-  }, [data]);
+  }, [data.length]);
 
   const shouldDisplayTopButtons = buttonsPlacement === 'top' || buttonsPlacement === 'both';
   const shouldDisplayBottomButtons = buttonsPlacement === 'bottom' || buttonsPlacement === 'both';

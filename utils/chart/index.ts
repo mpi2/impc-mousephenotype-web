@@ -28,3 +28,12 @@ export const chartColors = [
   "rgb(151, 51, 51)",
   "rgb(144, 195, 212)"
 ];
+
+export const mutantChartColors = {
+  fullOpacity: 'rgb(26, 133, 255)',
+  halfOpacity: 'rgba(26, 133, 255, 0.5)'
+};
+export const wildtypeChartColors = {
+  fullOpacity: 'rgb(212, 17, 89)',
+  halfOpacity: 'rgba(212, 17, 89, 0.5)',
+};

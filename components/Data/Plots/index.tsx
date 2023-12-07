@@ -11,12 +11,12 @@ export interface CategoricalSeries {
 }
 
 export const bgColors = {
-  control: "rgba(239, 123, 11, 0.2)",
-  experimental: "rgba(9, 120, 161, 0.7)",
+  control: "rgba(212, 17, 89, 0.2)",
+  experimental: "rgba(26, 133, 255, 0.7)",
 };
-export const boderColors = {
-  control: "rgba(239, 123, 11, 0.5)",
-  experimental: "rgba(9, 120, 161, 0.7)",
+export const borderColors = {
+  control: "rgba(212, 17, 89, 0.5)",
+  experimental: "rgba(26, 133, 255, 0.7)",
 };
 export const shapes = { male: "triangle", female: "circle" };
 export const pointRadius = 5;

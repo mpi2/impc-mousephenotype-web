@@ -15,26 +15,13 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { isEqual } from 'lodash';
 import styles from './styles.module.scss';
-import { formatPValue } from "@/utils";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import Form from 'react-bootstrap/Form';
+import DataTooltip from "./DataTooltip";
+import { PhenotypeStatsResults } from "@/models/phenotype";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, annotationPlugin);
 
-type Gene = { mgiGeneAccessionId: string, geneSymbol: string, pValue: number };
-type TooltipProps = {
-  tooltip: {
-    opacity: number;
-    top: number;
-    left: number;
-    chromosome: string,
-    genes: Array<Gene>,
-  };
-  offsetX: number;
-  offsetY: number;
-  onClick: () => void;
-  onGeneClick: (gene: Gene) => void;
-};
 
 type ChromosomeDataPoint = {
   chrName: string;
@@ -49,52 +36,8 @@ type ChromosomeDataPoint = {
 
 const clone = obj => JSON.parse(JSON.stringify(obj));
 
-const DataTooltip = ({tooltip, offsetY, offsetX, onClick, onGeneClick}: TooltipProps) => {
-  const isPValueAboveThreshold = (gene: any) => {
-    return -Math.log10(gene.pValue) > 4;
-  }
-  const getChromosome = () => {
-    if (tooltip.chromosome === '20') {
-      return 'X';
-    } else if (tooltip.chromosome === '21') {
-      return 'Y';
-    }
-    return tooltip.chromosome;
-  }
-  return (
-    <div
-      className={`${styles.tooltip} ${tooltip.opacity === 0 ? styles.noVisible: styles.visible }`}
-      style={{ top: tooltip.top + offsetX, left: tooltip.left + offsetY, opacity: tooltip.opacity }}
-    >
-      <button className={styles.closeBtn} onClick={onClick}>×</button>
-      <span><strong>Chr: </strong>{ getChromosome() }</span>
-      <ul>
-        { tooltip.genes.map(gene => (
-          <li key={gene.mgiGeneAccessionId}>
-            Gene:&nbsp;
-            {isPValueAboveThreshold(gene) ? (
-              <a
-                className="primary link"
-                target="_blank"
-                onClick={() => !!onGeneClick ? onGeneClick(gene): null }
-              >
-                {gene.geneSymbol}
-              </a>
-            ) : (
-              <span>{gene.geneSymbol}</span>
-            )}
-
-            <br/>
-            P-value: {!!gene.pValue ? formatPValue(gene.pValue) : 0}
-          </li>
-        )) }
-      </ul>
-    </div>
-  )
-}
-
 const transformPValue = (value: number) => -Math.log10(value);
-const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
+const ManhattanPlot = ({ phenotypeId }) => {
   const router = useRouter();
   const chartRef = useRef(null);
   const [hoverTooltip, setHoverTooltip] = useState({
@@ -219,7 +162,7 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
         pointBackgroundColor: ctx => {
           const shouldBeHighlighted = !!geneFilter && associationMatchesFilter(ctx.raw);
           if (shouldBeHighlighted) return '#F7DC4A';
-          return ctx.raw.y >= 4 ? `#FFA500` : '#00FFFF';
+          return ctx.raw.y >= 4 ? 'rgba(26, 133, 255, 0.4)' : 'rgba(212, 17, 89, 0.3)';
         },
       }
     },
@@ -252,7 +195,7 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
     queryKey: ['phenotype', phenotypeId, 'gwas'],
     queryFn: () => fetchAPI(`/api/v1/phenotypestatsresults/${phenotypeId}/phenotype`),
     enabled: router.isReady,
-    select: (response) => {
+    select: (response: PhenotypeStatsResults) => {
       const data = response.results;
       const groupedByChr: Record<string, Array<ChromosomeDataPoint>> = {};
       data.forEach(point => {
@@ -303,12 +246,13 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
     <div className={styles.chartWrapper}>
       <div className={styles.labelsWrapper}>
         <div>
-          <i className="fa fa-circle" style={{ color: '#00FFFF' }}></i>&nbsp;&nbsp;Not significant
-          <i className="fa fa-circle" style={{ color: '#FFA500', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
+          <i className="fa fa-circle" style={{ color: 'rgb(212, 17, 89)' }}></i>&nbsp;&nbsp;Not significant
+          <i className="fa fa-circle" style={{ color: 'rgb(26, 133, 255)', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
         </div>
         <div style={{ display: 'flex', whiteSpace: 'nowrap', alignItems: 'center' }}>
-          Filter by gene:&nbsp;
+          <label className="grey" htmlFor="geneHighlight" style={{ marginRight: "0.5rem" }}>Highlight gene:</label>
           <Form.Control
+            id="geneHighlight"
             type="text"
             value={geneFilter}
             onChange={(e) => setGeneFilter(e.target.value)}
@@ -326,9 +270,8 @@ const ManhattanPlot = ({ phenotypeId, onGeneClick }) => {
               // reset genes and chromosome data to show hovering tooltip
               setClickTooltip(prevState => ({ ...prevState, genes:[], chromosome: '', opacity: 0 })
             )}
-            onGeneClick={onGeneClick}
           />
-          <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} onGeneClick={onGeneClick} />
+          <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} />
         </>
       ): (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
