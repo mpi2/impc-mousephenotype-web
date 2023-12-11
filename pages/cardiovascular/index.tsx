@@ -1,18 +1,18 @@
-import Search from "../../components/Search";
+import Search from "@/components/Search";
 import { Breadcrumb, Col, Container, Image, Row } from "react-bootstrap";
-import Card from "../../components/Card";
+import Card from "@/components/Card";
 import data from '../../mocks/data/landing-pages/cardiovascular.json';
-import PieChart from "../../components/PieChart";
-import SortableTable from "../../components/SortableTable";
+import PieChart from "@/components/PieChart";
+import SortableTable from "@/components/SortableTable";
 import styles from './styles.module.scss';
 import { useState } from "react";
-import { PublicationListProps } from "../../components/PublicationsList";
-import ScatterChart from "../../components/ScatterChart";
-import ChordDiagram from "../../components/ChordDiagram";
+import { PublicationListProps } from "@/components/PublicationsList";
+import ScatterChart from "@/components/ScatterChart";
+import ChordDiagram from "@/components/ChordDiagram";
 import dynamic from "next/dynamic";
 
 const PublicationsList = dynamic<PublicationListProps>(
-  () => import("../../components/PublicationsList"), {ssr: false}
+  () => import("@/components/PublicationsList"), {ssr: false}
 );
 
 
