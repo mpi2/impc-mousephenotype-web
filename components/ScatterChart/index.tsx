@@ -12,8 +12,10 @@ ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 interface Props  {
   title: string;
   data: any;
+  xAxisTitle?: string;
+  yAxisTitle?: string
 }
-const ScatterChart = ({ title, data }: Props) => {
+const ScatterChart = ({ title, data, xAxisTitle, yAxisTitle }: Props) => {
   return (
     <Scatter
       data={{
@@ -26,7 +28,8 @@ const ScatterChart = ({ title, data }: Props) => {
       options={{
         maintainAspectRatio: false,
         scales: {
-          x: { beginAtZero: true, min: 0 }
+          x: { beginAtZero: true, min: 0, title: { display: !!xAxisTitle, text: xAxisTitle }},
+          y: { title: { display: !!yAxisTitle, text: yAxisTitle }},
         },
         plugins: {
           tooltip: {
