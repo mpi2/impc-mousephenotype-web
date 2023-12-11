@@ -3,6 +3,39 @@ import Card from "@/components/Card";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from '../../mocks/data/landing-pages/hearing.json';
 import { SmartTable, SimpleTextCell } from "@/components/SmartTable";
+import dynamic from "next/dynamic";
+import { PublicationListProps } from "@/components/PublicationsList";
+import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { Chart } from "react-chartjs-2";
+import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
+import {
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale, LineController,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip
+} from "chart.js";
+import Link from "next/link";
+import { formatAlleleSymbol } from "@/utils";
+import ScatterChart from "@/components/ScatterChart";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  LineController,
+  BarController,
+);
 
 type GeneHearingData = {
   geneSymbol: string;
@@ -10,6 +43,139 @@ type GeneHearingData = {
   status: string;
   hearingLoss: string;
 };
+
+const PublicationsList = dynamic<PublicationListProps>(
+  () => import("@/components/PublicationsList"), {ssr: false}
+);
+
+const Allele = ({alleleSymbol}) => {
+  const allele = formatAlleleSymbol(alleleSymbol);
+  return (
+    <>
+      {allele[0]}
+      <sup>{allele[1]}</sup>
+    </>
+  );
+}
+
+const ABRChart = ({ geneData }) => {
+  const getChartLabels = () => {
+    return [
+      'Click-evoked ABR threshold',
+      null,
+      '6kHz-evoked ABR Threshold',
+      '12kHz-evoked ABR Threshold',
+      '18kHz-evoked ABR Threshold',
+      '24kHz-evoked ABR Threshold',
+      '30kHz-evoked ABR Threshold'
+    ];
+  }
+
+  const getPointStyle = (zygosity, sex) => {
+    if (zygosity === 'WT' && sex === 'Male') {
+      return 'rectRot';
+    } else if (zygosity === 'WT' && sex === 'Female') {
+      return 'rect';
+    } else if (zygosity !== 'WT' && sex === 'Male') {
+      return 'circle';
+    } else if (zygosity !== 'WT' && sex === 'Female') {
+      return 'triangle';
+    }
+  }
+
+  const chartOptions= {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: {
+      intersect: false,
+      mode: 'index' as const,
+    },
+    scales: {
+      yAxis: {
+        min: 0,
+        max: 120,
+        title: {
+          display: true,
+          text: 'dB SPL',
+        },
+      },
+      xAxis: {
+        grid: {
+          display: false,
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        position: 'bottom' as const,
+        labels: { usePointStyle: true }
+      },
+      tooltip: {
+        usePointStyle: true,
+        title: { padding: { top: 10 } },
+        callbacks: {
+          label: ctx => {
+            const minValue = ctx.raw.yMin.toFixed(2);
+            const maxValue = ctx.raw.yMax.toFixed(2);
+            return `${ctx.dataset.label}: ${ctx.formattedValue} (SD: ${minValue} - ${maxValue})`
+          }
+        }
+      }
+    }
+  };
+  const processData = () => {
+    return geneData.map(dataset => {
+      const sexKey = dataset.sex === 'female' ? 'Female' : 'Male';
+      const zygLabel = dataset.zygosity === 'wildtype' ? 'WT' : dataset.zygosity === 'heterozygote' ? 'Het' : 'Hom';
+      const label = `${sexKey} ${zygLabel}`;
+      return {
+        type: 'line' as const,
+        label: label,
+        data: dataset.values.map((val, index) => {
+          if (val === null) {
+            return {x: null, y: null};
+          }
+          const { min, max } = dataset.sd[index];
+          return {
+            y: val,
+            yMin: min,
+            yMax: max,
+            x: getChartLabels()[index],
+          }
+        }),
+        borderColor: zygLabel === 'WT' ? wildtypeChartColors.fullOpacity : mutantChartColors.fullOpacity,
+        backgroundColor: zygLabel === 'WT' ? wildtypeChartColors.halfOpacity : mutantChartColors.halfOpacity,
+        pointStyle: getPointStyle(zygLabel, sexKey),
+      }
+    });
+  };
+
+  const chartData = {
+    labels: getChartLabels(),
+    datasets: processData(),
+  };
+
+  const chartPlugins = [errorbarsPlugin];
+
+  return (
+    <>
+      <div style={{ textAlign: 'center', marginTop: '1.5em' }}>
+        <h3 style={{ marginBottom: 0 }}>Evoked ABR Threshold (6, 12, 18, 24, 30kHz)</h3>
+        <a className="primary link" href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542">
+          Auditory Brain Stem Response
+        </a>
+      </div>
+      <div style={{ position: 'relative', height: '300px' }}>
+        <Chart
+          type="bar"
+          data={chartData}
+          options={chartOptions}
+          plugins={chartPlugins}
+        />
+      </div>
+    </>
+  )
+}
 
 const HearingLandingPage = () => {
   return (
@@ -137,6 +303,66 @@ const HearingLandingPage = () => {
               { width: 1, label: "Hearing loss", field: "hearingLoss", cmp: SimpleTextCell },
             ]}
           />
+        </Card>
+        <Card>
+          <h2>Vignettes</h2>
+          <Container>
+            <Row>
+              <Col>
+                <div style={{ textAlign: 'center' }}>
+                  <h2 style={{ marginBottom: 0 }}>Novel, mild hearing loss</h2>
+                  <Link className="primary link" href={`/genes/${data.adgrb1.mgiGeneAccessionId}`}>
+                    <Allele alleleSymbol={data.adgrb1.alleleSymbol} />
+                  </Link>
+                </div>
+                <ABRChart geneData={data.adgrb1.values}/>
+              </Col>
+              <Col>
+                <div style={{ textAlign: 'center' }}>
+                  <h2 style={{ marginBottom: 0 }}>Know, severe hearing loss</h2>
+                  <Link className="primary link" href={`/genes/${data.elmod1.mgiGeneAccessionId}`}>
+                    <Allele alleleSymbol={data.elmod1.alleleSymbol} />
+                  </Link>
+                </div>
+                <ABRChart geneData={data.elmod1.values}/>
+              </Col>
+            </Row>
+            <Row className="mt-5">
+              <Col>
+                <div style={{ textAlign: 'center' }}>
+                  <h2 style={{ marginBottom: 0 }}>Novel, high-frequency hearing loss</h2>
+                  <Link className="primary link" href={`/genes/${data.ccdc88c.mgiGeneAccessionId}`}>
+                    <Allele alleleSymbol={data.ccdc88c.alleleSymbol} />
+                  </Link>
+                </div>
+              </Col>
+              <Col>
+                <div style={{ textAlign: 'center' }}>
+                  <h2 style={{ marginBottom: 0 }}>Novel, severe hearing loss</h2>
+                  <Link className="primary link" href={`/genes/${data.zfp719.mgiGeneAccessionId}`}>
+                    <Allele alleleSymbol={data.zfp719.alleleSymbol} />
+                  </Link>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </Card>
+        <Card>
+          <h2>Phenotypes distribution</h2>
+          <div style={{ position: 'relative', height: '300px' }}>
+            <ScatterChart
+              title="Number of phenotype associations to Hearing"
+              data={data.distribution}
+              xAxisTitle="Number of associations to other phenotypes"
+              yAxisTitle="Number of phenotype associations to Hearing"
+            />
+          </div>
+        </Card>
+        <Card>
+          <Container>
+            <h1><strong>IKMC/IMPC related publications</strong></h1>
+            <PublicationsList prefixQuery="hearing" />
+          </Container>
         </Card>
       </Container>
     </>

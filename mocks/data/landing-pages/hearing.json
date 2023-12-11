@@ -271,5 +271,347 @@
     { "geneSymbol": "Wdtc1", "zygosity": "Hom", "status": "Novel", "hearingLoss": "High" },
     { "geneSymbol": "Zcchc14", "zygosity": "Hom", "status": "Novel", "hearingLoss": "Low" },
     { "geneSymbol": "Zfp719", "zygosity": "Hom", "status": "Novel", "hearingLoss": "Severe" }
+  ],
+  "adgrb1": {
+    "alleleSymbol": "Adgrb1<tm2a(EUCOMM)Wtsi>",
+    "mgiGeneAccessionId": "MGI:1933736",
+    "values": [
+      {
+        "sex": "male",
+        "zygosity": "homozygous",
+        "values": [42.5, null, 59.2, 54.2, 59.2, 80, 87.5],
+        "sd": [
+          {"min": 21.1, "max": 63.9},
+          null,
+          {"min": 49, "max": 69.4},
+          {"min": 37, "max": 71.4},
+          {"min": 46.8, "max": 71.5},
+          {"min": 60.29, "max": 99.69},
+          {"min": 71.5, "max": 103.5}
+        ]
+      },
+      {
+        "sex": "male",
+        "zygosity": "wildtype",
+        "values": [25, null, 32, 16.2, 19.3, 29.2, 38.8],
+        "sd": [
+          {"min": 21.8, "max": 28.2},
+          null,
+          {"min": 27, "max": 37},
+          {"min": 10.5, "max": 21.9},
+          {"min": 13.7, "max": 24.9},
+          {"min": 22.7, "max": 35.7},
+          {"min": 33.5, "max": 44.1}
+        ]
+      },
+      {
+        "sex": "female",
+        "zygosity": "homozygous",
+        "values": [40, null, 87.5, 57.5, 50, 60, 90],
+        "sd": [
+          {"min":  32.9, "max": 47.1},
+          null,
+          {"min": 84, "max": 91},
+          {"min": 54, "max": 61},
+          {"min": 50, "max": 50},
+          {"min": 38.8, "max": 81.2},
+          {"min": 82.9, "max": 97.1}
+        ]
+      },
+      {
+        "sex": "female",
+        "zygosity": "wildtype",
+        "values": [25.1, null, 31.9, 17.1, 20.2, 28.6, 39.3],
+        "sd": [
+          {"min":  22, "max": 28.2},
+          null,
+          {"min": 26.6, "max": 37.2},
+          {"min": 12.6, "max": 21.6},
+          {"min": 14.5, "max": 25.9},
+          {"min": 22.8, "max": 34.4},
+          {"min": 33, "max": 45.6}
+        ]
+      }
+    ]
+  },
+  "elmod1": {
+    "alleleSymbol": "Elmod1<tm1b(EUCOMM)Hmgu>",
+    "mgiGeneAccessionId": "MGI:3583900",
+    "values": [
+      {
+        "sex": "male",
+        "zygosity": "homozygous",
+        "values": [100, null, 100, 100, 100, 100, 100],
+        "sd": [
+          {"min": 100, "max": 100},
+          null,
+          {"min": 100, "max": 100},
+          {"min": 100, "max": 100},
+          {"min": 100, "max": 100},
+          {"min": 100, "max": 100},
+          {"min": 100, "max": 100}
+        ]
+      },
+      {
+        "sex": "male",
+        "zygosity": "wildtype",
+        "values": [35.9, null, 41.7, 37.1, 36.2, 36.8, 48.9],
+        "sd": [
+          {"min": 29.1, "max": 42.7},
+          null,
+          {"min": 30.9, "max": 52.5},
+          {"min": 26, "max": 48.2},
+          {"min": 24.9, "max": 47.4},
+          {"min": 22.7, "max": 35.7},
+          {"min": 34.3, "max": 63.5}
+        ]
+      },
+      {
+        "sex": "female",
+        "zygosity": "homozygous",
+        "values": [100, null, 100, 100, 100, 100, 100],
+        "sd": [
+          {"min": 100, "max": 100},
+          null,
+          {"min": 100, "max": 100},
+          {"min": 100, "max": 100},
+          {"min": 100, "max": 100},
+          {"min": 100, "max": 100},
+          {"min": 100, "max": 100}
+        ]
+      },
+      {
+        "sex": "female",
+        "zygosity": "wildtype",
+        "values": [34.7, null, 39.3, 35.1, 35.7, 35.1, 48.4],
+        "sd": [
+          {"min": 27.9, "max": 41.5},
+          null,
+          {"min": 29.5, "max": 49.1},
+          {"min": 24.9, "max": 45.3},
+          {"min": 24.7, "max": 46.7},
+          {"min": 25, "max": 45.2},
+          {"min": 34.1, "max": 62.7}
+        ]
+      }
+    ]
+  },
+  "ccdc88c": {
+    "alleleSymbol": "CCdc88c<tm1b(KOMP)Mbp>",
+    "mgiGeneAccessionId": "MGI:1915589",
+    "values": []
+  },
+  "zfp719": {
+    "alleleSymbol": "Zfp719<tm1b(EUCOMM)Wtsi>",
+    "mgiGeneAccessionId": "MGI:2444708",
+    "values": []
+  },
+  "distribution": [
+    {
+      "markerAcc": "MGI:103157",
+      "markerSymbol": "Dnase1",
+      "y": 2,
+      "x": 5
+    }, {
+      "markerAcc": "MGI:104653",
+      "markerSymbol": "Atp2b1",
+      "y": 0.95,
+      "x": 9
+    }, {
+      "markerAcc": "MGI:105108",
+      "markerSymbol": "Nin",
+      "y": 5,
+      "x": 24
+    }, {
+      "markerAcc": "MGI:106485",
+      "markerSymbol": "Ccdc92",
+      "y": 1,
+      "x": 10
+    }, {
+      "markerAcc": "MGI:107189",
+      "markerSymbol": "Ahsg",
+      "y": 2.05,
+      "x": 5
+    }, {
+      "markerAcc": "MGI:107953",
+      "markerSymbol": "Klc2",
+      "y": 6,
+      "x": 3
+    }, {
+      "markerAcc": "MGI:108077",
+      "markerSymbol": "Nptn",
+      "y": 7,
+      "x": 36
+    }, {
+      "markerAcc": "MGI:1098687",
+      "markerSymbol": "Aak1",
+      "y": 4,
+      "x": 28
+    }, {
+      "markerAcc": "MGI:1274784",
+      "markerSymbol": "Adgrv1",
+      "y": 6,
+      "x": 13
+    }, {
+      "markerAcc": "MGI:1339711",
+      "markerSymbol": "Myh1",
+      "y": 4,
+      "x": 40
+    }, {
+      "markerAcc": "MGI:1343489",
+      "markerSymbol": "Mpdz",
+      "y": 5,
+      "x": 13
+    }, {
+      "markerAcc": "MGI:1855699",
+      "markerSymbol": "Vti1a",
+      "y": 1,
+      "x": 18
+    }, {
+      "markerAcc": "MGI:1914061",
+      "markerSymbol": "Duoxa2",
+      "y": 6,
+      "x": 154
+    }, {
+      "markerAcc": "MGI:1914249",
+      "markerSymbol": "Med28",
+      "y": 0.8999999999999999,
+      "x": 14
+    }, {
+      "markerAcc": "MGI:1914378",
+      "markerSymbol": "Ube2g1",
+      "y": 3,
+      "x": 9
+    }, {
+      "markerAcc": "MGI:1915589",
+      "markerSymbol": "Ccdc88c",
+      "y": 3,
+      "x": 8
+    }, {
+      "markerAcc": "MGI:1918248",
+      "markerSymbol": "Phf6",
+      "y": 0.8999999999999999,
+      "x": 1
+    }, {
+      "markerAcc": "MGI:1921050",
+      "markerSymbol": "Tmtc4",
+      "y": 6,
+      "x": 8
+    }, {
+      "markerAcc": "MGI:1924337",
+      "markerSymbol": "Ankrd11",
+      "y": 4,
+      "x": 20
+    }, {
+      "markerAcc": "MGI:1929293",
+      "markerSymbol": "Cib2",
+      "y": 6,
+      "x": 19
+    }, {
+      "markerAcc": "MGI:1933754",
+      "markerSymbol": "Nedd4l",
+      "y": 6.05,
+      "x": 13.05
+    }, {
+      "markerAcc": "MGI:2139535",
+      "markerSymbol": "Tprn",
+      "y": 5.05,
+      "x": 2
+    }, {
+      "markerAcc": "MGI:2146207",
+      "markerSymbol": "Gga1",
+      "y": 1,
+      "x": 2.8500000000000005
+    }, {
+      "markerAcc": "MGI:2149209",
+      "markerSymbol": "Otoa",
+      "y": 6,
+      "x": 4
+    }, {
+      "markerAcc": "MGI:2149330",
+      "markerSymbol": "Slc5a5",
+      "y": 4,
+      "x": 22
+    }, {
+      "markerAcc": "MGI:2150150",
+      "markerSymbol": "Slc4a10",
+      "y": 3,
+      "x": 7
+    }, {
+      "markerAcc": "MGI:2181659",
+      "markerSymbol": "Tox",
+      "y": 4,
+      "x": 16
+    }, {
+      "markerAcc": "MGI:2387006",
+      "markerSymbol": "Gipc3",
+      "y": 5,
+      "x": 9
+    }, {
+      "markerAcc": "MGI:2388124",
+      "markerSymbol": "Clrn1",
+      "y": 5.95,
+      "x": 8
+    }, {
+      "markerAcc": "MGI:2442082",
+      "markerSymbol": "Tmem30b",
+      "y": 5,
+      "x": 9.05
+    }, {
+      "markerAcc": "MGI:2442934",
+      "markerSymbol": "Minar2",
+      "y": 6,
+      "x": 16
+    }, {
+      "markerAcc": "MGI:2444708",
+      "markerSymbol": "Zfp719",
+      "y": 12,
+      "x": 4
+    }, {
+      "markerAcc": "MGI:2446166",
+      "markerSymbol": "Marveld2",
+      "y": 7,
+      "x": 13
+    }, {
+      "markerAcc": "MGI:2652819",
+      "markerSymbol": "Baiap2l2",
+      "y": 9,
+      "x": 18
+    }, {
+      "markerAcc": "MGI:2685519",
+      "markerSymbol": "Gpr152",
+      "y": 1.05,
+      "x": 5.05
+    }, {
+      "markerAcc": "MGI:2686003",
+      "markerSymbol": "Cimap1d",
+      "y": 2.05,
+      "x": 8
+    }, {
+      "markerAcc": "MGI:3583900",
+      "markerSymbol": "Elmod1",
+      "y": 7,
+      "x": 129
+    }, {
+      "markerAcc": "MGI:3588238",
+      "markerSymbol": "Pramel17",
+      "y": 1,
+      "x": 3.1999999999999993
+    }, {
+      "markerAcc": "MGI:88466",
+      "markerSymbol": "Col9a2",
+      "y": 6,
+      "x": 20
+    }, {
+      "markerAcc": "MGI:95662",
+      "markerSymbol": "Gata2",
+      "y": 3,
+      "x": 16
+    }, {
+      "markerAcc": "MGI:96546",
+      "markerSymbol": "Il1r2",
+      "y": 1,
+      "x": 1.8499999999999999
+    }
   ]
 }
