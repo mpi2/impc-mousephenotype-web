@@ -1,14 +1,14 @@
 import { Form } from "react-bootstrap";
 import SortableTable from "@/components/SortableTable";
 import Pagination from "@/components/Pagination";
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { TableCellProps } from "@/models/TableCell";
 import _ from "lodash";
 import type { Model } from "@/models";
 
 
 const SmartTable = <T extends Model>(props: {
-  columns: Array<{ width: number; label: string; field: keyof T, cmp: React.FC<TableCellProps<T>> }>,
+  columns: Array<{ width: number; label: string; field: keyof T, cmp: ReactElement<TableCellProps<T>> }>,
   data: Array<T>,
   defaultSort: [string, "asc" | "desc"],
   zeroResulsText?: string;
@@ -53,15 +53,13 @@ const SmartTable = <T extends Model>(props: {
           defaultSort={props.defaultSort}
           headers={props.columns.map(({ field, cmp, ...rest }) => rest)}
         >
-          {pageData.map((d) => {
-            return (
-              <tr>
-                {props.columns.map(({ field, cmp: Cell }) => (
-                  <td><Cell value={d} field={field} /></td>
-                ))}
-              </tr>
-            );
-          })}
+          {pageData.map((d) => (
+            <tr>
+              {props.columns.map(({ field, cmp }) => (
+                <td>{React.cloneElement(cmp, { value: d, field })}</td>
+              ))}
+            </tr>
+          ))}
           {(pageData.length === 0 && !!props.zeroResulsText) && (
             <tr>
               <td colSpan={7}>

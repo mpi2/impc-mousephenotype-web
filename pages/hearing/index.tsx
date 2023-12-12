@@ -297,10 +297,10 @@ const HearingLandingPage = () => {
             data={data.genes}
             defaultSort={["geneSymbol", "asc"]}
             columns={[
-              { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: SimpleTextCell },
-              { width: 1, label: "Zygosity", field: "zygosity", cmp: SimpleTextCell },
-              { width: 1, label: "Status", field: "status", cmp: SimpleTextCell },
-              { width: 1, label: "Hearing loss", field: "hearingLoss", cmp: SimpleTextCell },
+              { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: <SimpleTextCell /> },
+              { width: 1, label: "Zygosity", field: "zygosity", cmp: <SimpleTextCell /> },
+              { width: 1, label: "Status", field: "status", cmp: <SimpleTextCell /> },
+              { width: 1, label: "Hearing loss", field: "hearingLoss", cmp: <SimpleTextCell /> },
             ]}
           />
         </Card>
