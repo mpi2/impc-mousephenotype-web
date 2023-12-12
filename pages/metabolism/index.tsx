@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import styles from './styles.module.scss';
 import { useState } from "react";
-import { SimpleTextCell, SmartTable, LinkCell, TransformCell } from "@/components/SmartTable";
+import { SimpleTextCell, SmartTable, LinkCell, OptionsCell } from "@/components/SmartTable";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -51,7 +51,7 @@ const MetabolismLandingPage = () => {
   }
 
   const getParameterLabelByIndex = (index: number) => {
-    const labels = ['t0', 'auc', 'tg', 'bm', 'rm', 'v02', 'rer'];
+    const labels = ['t0', 'auc', 'tg', 'bm', 'mr', 'vo2', 'rer'];
     return labels[index];
   }
 
@@ -64,12 +64,16 @@ const MetabolismLandingPage = () => {
   }
 
   const hasSelectedACell = parameter !== null && !!sex && !!outlier;
-  console.log({ parameter, sex, outlier });
   const filteredData = hasSelectedACell ? genesData.filter(item => {
     const isSameParameter = item.Parameter === getParameterLabelByIndex(parameter);
     const isSameSex = item.Sex === sex;
     const isSameOutlier = item.tag === getOutlierByState(outlier);
     return isSameParameter && isSameSex && isSameOutlier;
+  }).map(item => {
+    return {
+      ...item,
+      "Ratio_KO_WT": Number.parseFloat(item.Ratio_KO_WT).toFixed(3),
+    }
   }) : [];
 
   return (
@@ -185,7 +189,7 @@ const MetabolismLandingPage = () => {
             {!!hasSelectedACell ? (
               <SmartTable<MetabolismGeneData>
                 data={filteredData}
-                defaultSort={["Ratio_KO_WT", "desc"]}
+                defaultSort={["Ratio_KO_WT", "asc"]}
                 columns={[
                   { width: 1, label: "Parameter", field: "Parameter", cmp: <SimpleTextCell style={{ textTransform: 'uppercase' }} /> },
                   { width: 1, label: "Sex", field: "Sex", cmp: <SimpleTextCell /> },
@@ -194,7 +198,7 @@ const MetabolismLandingPage = () => {
                   { width: 1, label: "Center", field: "Center", cmp: <SimpleTextCell /> },
                   { width: 1, label: "Zygosity", field: "Zygosity", cmp: <SimpleTextCell /> },
                   { width: 1, label: "Ratio KO WT", field: "Ratio_KO_WT", cmp: <SimpleTextCell /> },
-                  { width: 1, label: "Tag", field: "tag", cmp: <TransformCell options={{ 'below5': '< 5%', 'above95': '> 95%' }} /> },
+                  { width: 1, label: "Tag", field: "tag", cmp: <OptionsCell options={{ 'below5': '< 5%', 'above95': '> 95%' }} /> },
                 ]}
               />
             ) : null}
