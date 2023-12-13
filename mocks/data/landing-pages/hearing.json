@@ -399,12 +399,126 @@
   "ccdc88c": {
     "alleleSymbol": "CCdc88c<tm1b(KOMP)Mbp>",
     "mgiGeneAccessionId": "MGI:1915589",
-    "values": []
+    "values": [
+      {
+        "sex": "male",
+        "zygosity": "homozygous",
+        "values": [20, null, 57.5, 37.5, 47.5, 82.5, 100],
+        "sd": [
+          {"min": 20, "max": 20},
+          null,
+          {"min": 46.9, "max": 68.1},
+          {"min": 26.9, "max": 48.1},
+          {"min": 36.9, "max": 58.1},
+          {"min": 57.8, "max": 107.2},
+          {"min": 100, "max": 100}
+        ]
+      },
+      {
+        "sex": "male",
+        "zygosity": "wildtype",
+        "values": [13.3, null, 43.4, 24, 25.3, 35.1, 49.8],
+        "sd": [
+          {"min": 10.6, "max": 16},
+          null,
+          {"min": 33.5, "max": 53.3},
+          {"min": 14.8, "max": 33.2},
+          {"min": 19, "max": 31.6},
+          {"min": 28, "max": 42.2},
+          {"min": 40.9, "max": 58.7}
+        ]
+      },
+      {
+        "sex": "female",
+        "zygosity": "homozygous",
+        "values": [17.5, null, 57.5, 35, 60, 75, 100],
+        "sd": [
+          {"min": 14, "max": 21},
+          null,
+          {"min": 39.8, "max": 75.2},
+          {"min": 27.9, "max": 42.1},
+          {"min": 38.8, "max": 81.2},
+          {"min": 39.6, "max": 110.4},
+          {"min": 100, "max": 100}
+        ]
+      },
+      {
+        "sex": "female",
+        "zygosity": "wildtype",
+        "values": [13.7, null, 42.5, 22.9, 25.9, 36.1, 52.8],
+        "sd": [
+          {"min": 10.7, "max": 16.7},
+          null,
+          {"min": 33.5, "max": 51.5},
+          {"min": 15.3, "max": 30.5},
+          {"min": 19.8, "max": 32},
+          {"min": 29.2, "max": 43},
+          {"min": 41.3, "max": 64.3}
+        ]
+      }
+    ]
   },
   "zfp719": {
     "alleleSymbol": "Zfp719<tm1b(EUCOMM)Wtsi>",
     "mgiGeneAccessionId": "MGI:2444708",
-    "values": []
+    "values": [
+      {
+        "sex": "male",
+        "zygosity": "homozygous",
+        "values": [68.6, null, 66.4, 90, 95, null, 95],
+        "sd": [
+          {"min": 55.8, "max": 81.4},
+          null,
+          {"min": 53.3, "max": 79.5},
+          {"min": 76.8, "max": 103.2},
+          {"min": 95, "max": 95},
+          null,
+          {"min": 95, "max": 95}
+        ]
+      },
+      {
+        "sex": "male",
+        "zygosity": "wildtype",
+        "values": [24.6, null, 31.8, 17.4, 20, null, 36.9],
+        "sd": [
+          {"min": 21.6, "max": 27.6},
+          null,
+          {"min": 26.6, "max": 37},
+          {"min": 12.3, "max": 22.5},
+          {"min": 15.3, "max": 24.7},
+          null,
+          {"min": 27.3, "max": 46.5}
+        ]
+      },
+      {
+        "sex": "female",
+        "zygosity": "homozygous",
+        "values": [85, null, 80, 95, 95, null, 95],
+        "sd": [
+          {"min": 70.9, "max": 99.1},
+          null,
+          {"min": 60.9, "max": 99.1},
+          {"min": 95, "max": 95},
+          {"min": 95, "max": 95},
+          null,
+          {"min": 95, "max": 95}
+        ]
+      },
+      {
+        "sex": "female",
+        "zygosity": "wildtype",
+        "values": [25.9, null, 31.6, 17.7, 21.4, null, 39.5],
+        "sd": [
+          {"min": 21.8, "max": 30},
+          null,
+          {"min": 26.3, "max": 36.9},
+          {"min": 12.3, "max": 23.1},
+          {"min": 16, "max": 26.8},
+          null,
+          {"min": 29.9, "max": 49.1}
+        ]
+      }
+    ]
   },
   "distribution": [
     {
