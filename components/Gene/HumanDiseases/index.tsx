@@ -14,7 +14,7 @@ import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
 import Phenogrid from "phenogrid";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 
 const Scale = ({ children = 5 }: { children: number }) => {
@@ -80,8 +80,8 @@ const Row = ({ data }: { data: GeneDisease }) => {
           <Scale>{Math.round((data.phenodigmScore / 100) * 5)}</Scale>
         </td>
         <td>
-          {data.diseaseMatchedPhenotypes
-            .split(",")
+          {data?.diseaseMatchedPhenotypes
+            ?.split(",")
             .map((x) => x.replace(" ", "**").split("**")[1])
             .join(", ")}
         </td>
