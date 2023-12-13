@@ -335,6 +335,7 @@ const HearingLandingPage = () => {
                     <Allele alleleSymbol={data.ccdc88c.alleleSymbol} />
                   </Link>
                 </div>
+                <ABRChart geneData={data.ccdc88c.values}/>
               </Col>
               <Col>
                 <div style={{ textAlign: 'center' }}>
@@ -343,6 +344,7 @@ const HearingLandingPage = () => {
                     <Allele alleleSymbol={data.zfp719.alleleSymbol} />
                   </Link>
                 </div>
+                <ABRChart geneData={data.zfp719.values}/>
               </Col>
             </Row>
           </Container>
