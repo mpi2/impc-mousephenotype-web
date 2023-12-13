@@ -3,7 +3,10 @@ export default {
   id: 'errorbars',
   afterDatasetsDraw: (chart, _, opts) => {
     const getBarchartBaseCoords = (chart) => {
-      return chart.data.datasets.flatMap((d, i) => {
+      return chart.data.datasets.filter((_, i) => {
+        const dsMeta = chart.getDatasetMeta(i);
+        return !dsMeta.hidden;
+      }).flatMap((d, i) => {
         const dsMeta = chart.getDatasetMeta(i);
         const values = d.data;
         return dsMeta.data.map((b, i) => {
@@ -18,7 +21,7 @@ export default {
       });
     };
     const drawErrorBar = (ctx, point, maxValuePixel, minValuePixel) => {
-      const barWidth = 30;
+      const barWidth = 10;
       ctx.save();
       ctx.lineWidth = 1;
       ctx.strokeStyle = point.backgroundColor;
