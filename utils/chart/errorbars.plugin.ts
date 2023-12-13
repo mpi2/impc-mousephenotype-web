@@ -21,7 +21,7 @@ export default {
       });
     };
     const drawErrorBar = (ctx, point, maxValuePixel, minValuePixel) => {
-      const barWidth = 30;
+      const barWidth = 10;
       ctx.save();
       ctx.lineWidth = 1;
       ctx.strokeStyle = point.backgroundColor;
