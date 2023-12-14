@@ -2,7 +2,7 @@ import Search from "@/components/Search";
 import Card from "@/components/Card";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from '../../mocks/data/landing-pages/hearing.json';
-import { SmartTable, SimpleTextCell } from "@/components/SmartTable";
+import { SmartTable, PlainTextCell } from "@/components/SmartTable";
 import dynamic from "next/dynamic";
 import { PublicationListProps } from "@/components/PublicationsList";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
@@ -297,10 +297,10 @@ const HearingLandingPage = () => {
             data={data.genes}
             defaultSort={["geneSymbol", "asc"]}
             columns={[
-              { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: <SimpleTextCell /> },
-              { width: 1, label: "Zygosity", field: "zygosity", cmp: <SimpleTextCell /> },
-              { width: 1, label: "Status", field: "status", cmp: <SimpleTextCell /> },
-              { width: 1, label: "Hearing loss", field: "hearingLoss", cmp: <SimpleTextCell /> },
+              { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: <PlainTextCell /> },
+              { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell /> },
+              { width: 1, label: "Status", field: "status", cmp: <PlainTextCell /> },
+              { width: 1, label: "Hearing loss", field: "hearingLoss", cmp: <PlainTextCell /> },
             ]}
           />
         </Card>
