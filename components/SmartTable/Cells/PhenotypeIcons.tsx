@@ -2,8 +2,8 @@ import { Model, TableCellProps } from "@/models";
 import _ from "lodash";
 import { BodySystem } from "@/components/BodySystemIcon";
 
-const PhenotypeIcons = <T extends Model>(props: TableCellProps<T>) => {
-  const phenotypes = (_.get(props.value, props.field) || []) as Array<{ name: string }>
+const PhenotypeIcons = <T extends Model>(props: TableCellProps<T> & { allPhenotypesField: keyof T }) => {
+  const phenotypes = (_.get(props.value, props.allPhenotypesField) || []) as Array<{ name: string }>
   return (
     <>
       {phenotypes.map(({ name }) => (
