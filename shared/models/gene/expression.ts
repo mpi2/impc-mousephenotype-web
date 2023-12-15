@@ -1,5 +1,5 @@
 
-type Counts = {
+export type GeneExpressionCounts = {
   ambiguous: number;
   expression: number;
   imageOnly: number;
@@ -8,11 +8,11 @@ type Counts = {
 };
 
 export type GeneExpression = {
-  controlCounts: Counts;
+  controlCounts: GeneExpressionCounts;
   expressionImageParameters: Array<{ parameter_name: string; parameter_stable_id: string; }>;
   lacZLifestage: string;
   mgiGeneAccessionId: string;
-  mutantCounts: Counts;
+  mutantCounts: GeneExpressionCounts;
   parameterName: string;
   parameterStableId: string;
   zygosity: string;
