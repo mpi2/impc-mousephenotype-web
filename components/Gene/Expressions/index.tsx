@@ -62,6 +62,7 @@ const Expressions = () => {
         <SmartTable<GeneExpression>
           data={selectedData}
           defaultSort={["parameterName", "asc"]}
+          filteringEnabled={false}
           columns={[
             { width: 3, label: "Anatomy", field: "parameterName", cmp: <AnatomyCell /> },
             {
