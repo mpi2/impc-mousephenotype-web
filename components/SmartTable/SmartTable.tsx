@@ -13,6 +13,7 @@ const SmartTable = <T extends Model>(props: {
   defaultSort: [string, "asc" | "desc"],
   zeroResulsText?: string;
   filterFn?: (item: T, query: string) => boolean,
+  additionalTopControls?: ReactElement,
 }) => {
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>('');
@@ -27,7 +28,7 @@ const SmartTable = <T extends Model>(props: {
   return (
     <Pagination
       data={mutatedData}
-      additionalTopControls={
+      additionalTopControls={!!props.additionalTopControls ? props.additionalTopControls : (
         <Form.Control
           type="text"
           style={{
@@ -43,7 +44,7 @@ const SmartTable = <T extends Model>(props: {
             setQuery(el.target.value.toLowerCase() || undefined);
           }}
         ></Form.Control>
-      }
+      )}
     >
       {(pageData) => (
         <SortableTable
