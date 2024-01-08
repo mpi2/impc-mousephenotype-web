@@ -56,7 +56,12 @@ const SmartTable = <T extends Model>(props: {
             setSortOptions(`${field};${order}`);
           }}
           defaultSort={props.defaultSort}
-          headers={props.columns.map(({ field, cmp, ...rest }) => rest)}
+          headers={props.columns.map(
+            ({ field, cmp, ...rest }) => ({
+              ...rest,
+              field: field as string,
+            }))
+          }
         >
           {pageData.map((d) => (
             <tr>
