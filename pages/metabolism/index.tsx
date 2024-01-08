@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import styles from './styles.module.scss';
 import { useState } from "react";
-import { SimpleTextCell, SmartTable, LinkCell, OptionsCell } from "@/components/SmartTable";
+import { PlainTextCell, SmartTable, LinkCell, OptionsCell } from "@/components/SmartTable";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -191,13 +191,13 @@ const MetabolismLandingPage = () => {
                 data={filteredData}
                 defaultSort={["Ratio_KO_WT", "asc"]}
                 columns={[
-                  { width: 1, label: "Parameter", field: "Parameter", cmp: <SimpleTextCell style={{ textTransform: 'uppercase' }} /> },
-                  { width: 1, label: "Sex", field: "Sex", cmp: <SimpleTextCell /> },
+                  { width: 1, label: "Parameter", field: "Parameter", cmp: <PlainTextCell style={{ textTransform: 'uppercase' }} /> },
+                  { width: 1, label: "Sex", field: "Sex", cmp: <PlainTextCell /> },
                   { width: 1, label: "MGI_ID", field: "MGI_ID", cmp: <LinkCell prefix="/genes" />  },
-                  { width: 1, label: "Gene symbol", field: "Gene_symbol", cmp: <SimpleTextCell /> },
-                  { width: 1, label: "Center", field: "Center", cmp: <SimpleTextCell /> },
-                  { width: 1, label: "Zygosity", field: "Zygosity", cmp: <SimpleTextCell /> },
-                  { width: 1, label: "Ratio KO WT", field: "Ratio_KO_WT", cmp: <SimpleTextCell /> },
+                  { width: 1, label: "Gene symbol", field: "Gene_symbol", cmp: <PlainTextCell /> },
+                  { width: 1, label: "Center", field: "Center", cmp: <PlainTextCell /> },
+                  { width: 1, label: "Zygosity", field: "Zygosity", cmp: <PlainTextCell /> },
+                  { width: 1, label: "Ratio KO WT", field: "Ratio_KO_WT", cmp: <PlainTextCell /> },
                   { width: 1, label: "Tag", field: "tag", cmp: <OptionsCell options={{ 'below5': '< 5%', 'above95': '> 95%' }} /> },
                 ]}
               />

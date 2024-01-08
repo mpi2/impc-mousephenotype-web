@@ -1,17 +1,65 @@
-import { BodySystem } from "../../../BodySystemIcon";
-import styles from "./styles.module.scss";
 import _ from "lodash";
 import { useEffect, useState } from "react";
-import Pagination from "../../../Pagination";
-import SortableTable from "../../../SortableTable";
+import {
+  AlleleCell, OptionsCell, PhenotypeIconsCell,
+  PlainTextCell,
+  SmartTable
+} from "@/components/SmartTable";
+import { GeneStatisticalResult } from "@/models/gene";
 import { Form } from "react-bootstrap";
-import { formatAlleleSymbol, formatPValue } from "@/utils";
 import { allBodySystems } from "../../Summary";
+import { TableCellProps } from "@/models";
+import { formatPValue } from "@/utils";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import styles from './styles.module.scss';
 
-const AllData = ({ data }: { data: any }) => {
+const ParameterCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+  return (
+    <span className={styles.procedureName}>
+      <small className="grey">{props.value.procedureName} /</small>
+      <br />
+      <strong>{props.value.parameterName}</strong>
+    </span>
+  )
+};
+
+const PValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+  const {
+    pValue,
+    mgiGeneAccessionId,
+    alleleAccessionId,
+    zygosity,
+    parameterStableId,
+    pipelineStableId,
+    procedureStableId,
+    phenotypingCentre,
+  } = props.value;
+  return (
+    <div
+      className="bold"
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+      }}
+    >
+      <span className="">
+        {!!pValue ? formatPValue(Number.parseFloat(pValue)) : "-"}
+      </span>
+      <Link
+        href={`/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`}
+      >
+        <strong className={`link primary small float-right`}>
+          <FontAwesomeIcon icon={faChartLine} /> Supporting
+          data <FontAwesomeIcon icon={faChevronRight} />
+        </strong>
+      </Link>
+    </div>
+  )
+}
+
+const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const [sorted, setSorted] = useState<any[]>(null);
   const [procedure, setProcedure] = useState(undefined);
   const [query, setQuery] = useState(undefined);
@@ -47,8 +95,9 @@ const AllData = ({ data }: { data: any }) => {
 
   return (
     <>
-      <Pagination
+      <SmartTable<GeneStatisticalResult>
         data={filtered}
+        defaultSort={["pValue", "asc"]}
         additionalTopControls={
           <div>
             <p>
@@ -130,112 +179,27 @@ const AllData = ({ data }: { data: any }) => {
             </p>
           </div>
         }
-      >
-        {(currentPage) => (
-          <SortableTable
-            doSort={(sort) => {
-              setSorted(_.orderBy(data, sort[0], sort[1]));
-            }}
-            defaultSort={["pValue", "asc"]}
-            headers={[
-              {
-                width: 3,
-                label: "Procedure/parameter",
-                field: "procedureName",
-              },
-              {
-                width: 1,
-                label: "Phy. system",
-                field: "topLevelPhenotypes",
-              },
-              { width: 1, label: "Life stage", field: "lifeStageName" },
-              { width: 1, label: "Allele", field: "alleleSymbol" },
-              { width: 1, label: "Center", field: "phenotypingCentre" },
-              { width: 1, label: "Zygosity", field: "zygosity" },
-              { width: 0.5, label: "Significant", field: "significant" },
-              { width: 2, label: "P value", field: "pValue" },
-            ]}
-          >
-            {currentPage.map(
-              (
-                {
-                  mgiGeneAccessionId,
-                  alleleAccessionId,
-                  pipelineStableId,
-                  procedureStableId,
-                  parameterStableId,
-                  phenotypingCentre,
-                  procedureName,
-                  parameterName,
-                  lifeStageName,
-                  zygosity,
-                  significant,
-                  pValue,
-                  topLevelPhenotypes,
-                  alleleSymbol,
-                },
-                i
-              ) => {
-                const allele = formatAlleleSymbol(alleleSymbol);
-                return (
-                  <tr key={`tr-${parameterName}-${i}`}>
-                    <td className={styles.procedureName}>
-                      <small className="grey">{procedureName} /</small>
-                      <br />
-                      <strong>{parameterName}</strong>
-                    </td>
-                    <td>
-                      {(topLevelPhenotypes || []).map((x) => (
-                        <BodySystem
-                          name={x.name}
-                          key={x.id}
-                          color="system-icon black in-table"
-                          noSpacing
-                        />
-                      ))}
-                    </td>
-                    <td>{lifeStageName}</td>
-                    <td>
-                      {allele[0]}
-                      <sup>{allele[1]}</sup>
-                    </td>
-                    <td>{phenotypingCentre}</td>
-                    <td style={{ textTransform: "capitalize" }}>{zygosity}</td>
-                    <td>{significant ? "Yes" : "No"}</td>
-                    <td className="bold">
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <span className="">
-                          {!!pValue ? formatPValue(pValue) : "-"}
-                        </span>
-                        <Link
-                          href={`/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`}
-                        >
-                          <strong className={`link primary small float-right`}>
-                            <FontAwesomeIcon icon={faChartLine} /> Supporting
-                            data <FontAwesomeIcon icon={faChevronRight} />
-                          </strong>
-                        </Link>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              }
-            )}
-            {currentPage.length === 0 && (
-              <tr>
-                <td colSpan={8}>
-                  <b>We couldn't find any results matching the filter</b>
-                </td>
-              </tr>
-            )}
-          </SortableTable>
-        )}
-      </Pagination>
+        columns={[
+          {
+            width: 3,
+            label: "Procedure/parameter",
+            field: "procedureName",
+            cmp: <ParameterCell />
+          },
+          {
+            width: 1,
+            label: "Phy. system",
+            field: "topLevelPhenotypes",
+            cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />
+          },
+          { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
+          { width: 1, label: "Allele", field: "alleleSymbol", cmp: <AlleleCell /> },
+          { width: 1, label: "Center", field: "phenotypingCentre", cmp: <PlainTextCell /> },
+          { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: "capitalize" }} /> },
+          { width: 0.5, label: "Significant", field: "significant", cmp: <OptionsCell options={{ true: 'Yes', false: 'No' }} /> },
+          { width: 2, label: "P value", field: "pValue", cmp: <PValueCell /> },
+        ]}
+      />
     </>
   );
 };

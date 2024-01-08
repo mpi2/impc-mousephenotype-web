@@ -13,9 +13,12 @@ const SmartTable = <T extends Model>(props: {
   defaultSort: [string, "asc" | "desc"],
   zeroResulsText?: string;
   filterFn?: (item: T, query: string) => boolean,
+  additionalTopControls?: ReactElement,
+  filteringEnabled?: boolean
 }) => {
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>('');
+  const { filteringEnabled = true } = props;
 
   let mutatedData = props.data;
   if (props.filterFn) {
@@ -24,26 +27,28 @@ const SmartTable = <T extends Model>(props: {
   const [field, order] = sortOptions.split(';');
   mutatedData = field && order ? _.orderBy(mutatedData, field, order as "asc" | "desc") : mutatedData ;
 
+  const additionalControls = !!props.additionalTopControls ? props.additionalTopControls : (
+    <Form.Control
+      type="text"
+      style={{
+        display: "inline-block",
+        width: 200,
+        marginRight: "2rem",
+      }}
+      aria-label="Filter by parameters"
+      id="parameterFilter"
+      className="bg-white"
+      placeholder="Search "
+      onChange={(el) => {
+        setQuery(el.target.value.toLowerCase() || undefined);
+      }}
+    ></Form.Control>
+  )
+
   return (
     <Pagination
       data={mutatedData}
-      additionalTopControls={
-        <Form.Control
-          type="text"
-          style={{
-            display: "inline-block",
-            width: 200,
-            marginRight: "2rem",
-          }}
-          aria-label="Filter by parameters"
-          id="parameterFilter"
-          className="bg-white"
-          placeholder="Search "
-          onChange={(el) => {
-            setQuery(el.target.value.toLowerCase() || undefined);
-          }}
-        ></Form.Control>
-      }
+      additionalTopControls={filteringEnabled ? additionalControls : null}
     >
       {(pageData) => (
         <SortableTable
@@ -51,7 +56,12 @@ const SmartTable = <T extends Model>(props: {
             setSortOptions(`${field};${order}`);
           }}
           defaultSort={props.defaultSort}
-          headers={props.columns.map(({ field, cmp, ...rest }) => rest)}
+          headers={props.columns.map(
+            ({ field, cmp, ...rest }) => ({
+              ...rest,
+              field: field as string,
+            }))
+          }
         >
           {pageData.map((d) => (
             <tr>

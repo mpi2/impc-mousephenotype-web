@@ -21,4 +21,7 @@ export type PhenotypeGenotypes = {
   zygosity: string;
   phenotypeName?: string;
   phenotypeId?: string;
+  "pValue_male"?: number;
+  "pValue_female"?: number;
+  "pValue_not_considered"?: number;
 }
