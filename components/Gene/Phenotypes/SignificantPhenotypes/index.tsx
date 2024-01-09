@@ -23,9 +23,9 @@ const SignificantPhenotypes = () => {
     isPhenotypeError
   } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady, sortOptions);
 
-  const filtered = phenotypeData.filter(({phenotype, phenotypeId}) =>
+  const filtered = !isPhenotypeError ? phenotypeData.filter(({phenotype, phenotypeId}) =>
     (!query || `${phenotype} ${phenotypeId}`.toLowerCase().includes(query))
-  );
+  ) : [];
 
   if (isPhenotypeLoading) {
     return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
