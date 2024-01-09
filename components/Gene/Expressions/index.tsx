@@ -19,8 +19,8 @@ const Expressions = () => {
     sortOptions,
   );
 
-  const adultData = data.filter((x) => x.lacZLifestage === "adult");
-  const embryoData = data.filter((x) => x.lacZLifestage === "embryo");
+  const adultData = !isError ? data.filter((x) => x.lacZLifestage === "adult") : [];
+  const embryoData = !isError ? data.filter((x) => x.lacZLifestage === "embryo"): [];
 
   const selectedData = tab === "adultExpressions" ? adultData : embryoData;
 
