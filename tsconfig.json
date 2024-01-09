@@ -26,6 +26,7 @@
       "@/contexts": ["shared/contexts/index.ts"],
       "@/hooks": ["shared/hooks/index.ts"],
       "@/hooks/*": ["shared/hooks/*"],
+      "@/models": ["shared/models/index.ts"],
       "@/models/*": ["shared/models/*"],
       "@/pages/*": ["pages/*"],
       "@/utils": ["utils/index.tsx"],

@@ -25,4 +25,7 @@ export type GenePhenotypeHits = {
   phenotypeName?: null | string;
   id?: null | string;
   phenotypeId?: null | string;
+  "pValue_male"?: number;
+  "pValue_female"?: number;
+  "pValue_not_considered"?: number;
 }

@@ -1,50 +1,26 @@
-import { faImage } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
-import Pagination from "../../Pagination";
-import _ from "lodash";
-import SortableTable from "../../SortableTable";
-import Link from "next/link";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import { GeneExpression } from "@/models/gene";
+import { PlainTextCell, SmartTable } from "@/components/SmartTable";
+import { useGeneExpressionQuery } from "@/hooks";
+import { GeneContext } from "@/contexts";
+import { useRouter } from "next/router";
+import { AnatomyCell, ExpressionCell, ImagesCell } from './custom-cells';
 
-
-const getExpressionRate = (p) => {
-  return p.expression || p.noExpression
-    ? Math.round((p.expression * 10000) / (p.expression + p.noExpression)) / 100
-    : -1;
-};
-
-const Expressions = ({ gene } : { gene: any }) => {
+const Expressions = () => {
   const router = useRouter();
-  const [sorted, setSorted] = useState<any[]>(null);
+  const gene = useContext(GeneContext);
   const [tab, setTab] = useState("adultExpressions");
-  const { isLoading, isError, data, error } = useQuery({
-    queryKey: ['gene', router.query.pid, 'expression'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/expression`),
-    select: raw => raw.map(d => ({
-      ...d,
-      expressionRate: getExpressionRate(d.mutantCounts),
-      wtExpressionRate: getExpressionRate(d.controlCounts),
-    })) as Array<GeneExpression>,
-    enabled: router.isReady,
-    placeholderData: []
-  });
-  useEffect(() => {
-    if (data) {
-      setSorted(_.orderBy(data, "parameterName", "asc"));
-    }
-  }, [data])
-  const adultData = sorted
-    ? sorted.filter((x) => x.lacZLifestage === "adult")
-    : [];
-  const embryoData = sorted
-    ? sorted.filter((x) => x.lacZLifestage === "embryo")
-    : [];
+  const [sortOptions, setSortOptions] = useState<string>('');
+  const { isLoading, isError, data, error } = useGeneExpressionQuery(
+    gene.mgiGeneAccessionId,
+    router.isReady,
+    sortOptions,
+  );
+
+  const adultData = !isError ? data.filter((x) => x.lacZLifestage === "adult") : [];
+  const embryoData = !isError ? data.filter((x) => x.lacZLifestage === "embryo"): [];
 
   const selectedData = tab === "adultExpressions" ? adultData : embryoData;
 
@@ -83,75 +59,33 @@ const Expressions = ({ gene } : { gene: any }) => {
         ></Tab>
       </Tabs>
       {selectedData.length > 0 ? (
-        <Pagination data={selectedData}>
-          {(pageData) => (
-            <SortableTable
-              doSort={(sort) => {
-                setSorted(_.orderBy(data, sort[0], sort[1]));
-              }}
-              defaultSort={["parameterName", "asc"]}
-              headers={[
-                { width: 3, label: "Anatomy", field: "parameterName" },
-                {
-                  width: 3,
-                  label: "Images",
-                  field: "expressionImageParameters",
-                },
-                { width: 2, label: "Zygosity", field: "zygosity" },
-                { width: 1, label: "Mutant Expr", field: "expressionRate" },
-                {
-                  width: 3,
-                  label: "Background staining in controls (WT)",
-                  field: "expressionRate",
-                },
-              ]}
-            >
-              {pageData.map((d) => (
-                <tr>
-                  <td>
-                    <Link
-                      href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
-                      legacyBehavior>
-                      <strong className="link">{d.parameterName}</strong>
-                    </Link>
-                  </td>
-                  <td>
-                    {!!d.expressionImageParameters
-                      ? d.expressionImageParameters.map((p) => (
-                        <a
-                          className="primary small"
-                          href={`https://www.mousephenotype.org/data/imageComparator?acc=${router.query.pid}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
-                        >
-                          <FontAwesomeIcon icon={faImage} />{" "}
-                          {p.parameter_name}
-                        </a>
-                      ))
-                      : "n/a"}
-                  </td>
-                  <td>{d.zygosity}</td>
-                  <td>
-                    {d.expressionRate >= 0
-                      ? `${d.expressionRate}% (${d.mutantCounts.expression}/${
-                        d.mutantCounts.expression +
-                        d.mutantCounts.noExpression
-                      })`
-                      : "n/a"}
-                  </td>
-                  <td>
-                    {d.wtExpressionRate >= 0
-                      ? `${d.wtExpressionRate}% (${
-                        d.controlCounts.expression
-                      }/${
-                        d.controlCounts.expression +
-                        d.controlCounts.noExpression
-                      })`
-                      : "n/a"}
-                  </td>
-                </tr>
-              ))}
-            </SortableTable>
-          )}
-        </Pagination>
+        <SmartTable<GeneExpression>
+          data={selectedData}
+          defaultSort={["parameterName", "asc"]}
+          filteringEnabled={false}
+          columns={[
+            { width: 3, label: "Anatomy", field: "parameterName", cmp: <AnatomyCell /> },
+            {
+              width: 3,
+              label: "Images",
+              field: "expressionImageParameters",
+              cmp: <ImagesCell mgiGeneAccessionId={gene.mgiGeneAccessionId}/>
+            },
+            { width: 2, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell /> },
+            {
+              width: 1,
+              label: "Mutant Expr",
+              field: "expressionRate",
+              cmp: <ExpressionCell expressionRateField="expressionRate" countsField="mutantCounts" />
+            },
+            {
+              width: 3,
+              label: "Background staining in controls (WT)",
+              field: "expressionRate",
+              cmp: <ExpressionCell expressionRateField="wtExpressionRate" countsField="controlCounts" />
+            },
+          ]}
+        />
       ) : (
         <Alert variant="primary">
           No {tab === 'adultExpressions' ? 'adult' : 'embryo'} expression data available for {gene.geneSymbol}.
