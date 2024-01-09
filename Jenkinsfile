@@ -6,8 +6,8 @@ pipeline {
   stages {
     stage('Build Frontend') {
       steps {
-        sh 'yarn'
-        sh 'yarn build'
+        //sh 'yarn'
+        //sh 'yarn build'
       }
     }
     stage('Push to ECR') {
