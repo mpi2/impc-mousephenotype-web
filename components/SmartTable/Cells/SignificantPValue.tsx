@@ -8,7 +8,7 @@ import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 const SignificantPValue = <T extends Model>(props: TableCellProps<T>) => {
   const pValue = _.get(props.value, props.field) as number;
   const mgiAccessionId = _.get(props.value, 'mgiGeneAccessionId') as string;
-  const mpTermpId = _.get(props.value, 'mgiGeneAccessionId') as string;
+  const mpTermpId = _.get(props.value, 'id') as string;
   return (
     <span className="me-2 bold" style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
       <span className="">
