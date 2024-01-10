@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "local": "NEXT_PUBLIC_PROXY_ENABLED=TRUE concurrently \"lcp --proxyUrl $(grep NEXT_PUBLIC_API_ROOT .env.development | cut -d '=' -f2)\" \"next dev\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.0",
