@@ -1,12 +1,5 @@
 import { useState } from "react";
 import { Alert, Button, Container, Tab, Tabs } from "react-bootstrap";
-import Card from "@/components/Card";
-import Search from "@/components/Search";
-import Unidimensional from "@/components/Data/Unidimensional";
-import Viability from "@/components/Data/Viability";
-import Categorical from "@/components/Data/Categorical";
-import TimeSeries from "@/components/Data/TimeSeries";
-import Histopathology from "@/components/Data/Histopathology";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,13 +7,20 @@ import { faTable } from "@fortawesome/free-solid-svg-icons";
 import { formatPValue } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import EmbryoViability from "@/components/Data/EmbryoViability";
 import Skeleton from "react-loading-skeleton";
-import ABR from "@/components/Data/ABR";
-import BodyWeightChart from "@/components/Data/BodyWeight";
-import DataComparison from "@/components/Data/DataComparison";
 import SkeletonTable from "@/components/skeletons/table";
-import { useBodyWeightQuery } from "@/hooks";
+import { useBodyWeightQuery, useViabilityQuery } from "@/hooks";
+import {
+  ABR,
+  BodyWeightChart,
+  Categorical, DataComparison,
+  EmbryoViability,
+  Histopathology,
+  TimeSeries,
+  Unidimensional,
+  Viability
+} from "@/components/Data";
+import { Card, Search } from "@/components";
 
 
 const Charts = () => {
@@ -28,6 +28,7 @@ const Charts = () => {
   const [showComparison, setShowComparison] = useState(true);
   const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
+  const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
   const getChartType = (datasetSummary: any) => {
     let chartType = datasetSummary["dataType"];
     if (chartType == "line") {
@@ -69,11 +70,10 @@ const Charts = () => {
   };
 
   const apiUrl = router.query.mpTermId
-    ? `/api/v1/genes/${router.query.mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
-    : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${router.query.mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
+    ? `/api/v1/genes/${mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
+    : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
 
-  const isBodyWeightChart = router.query.chartType === 'bodyweight';
-  const selectedParameterKey = !router.query.mpTermId ? `${router.query.alleleAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
+  const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
 
   let { data: datasetSummaries, isLoading, isError } = useQuery({
     queryKey: [
@@ -84,7 +84,7 @@ const Charts = () => {
       "dataset",
     ],
     queryFn: () => fetchAPI(apiUrl),
-    enabled: router.isReady && !isBodyWeightChart,
+    enabled: router.isReady,
     select: data => {
       data.sort((a, b) => {
         return a["reportedPValue"] - b["reportedPValue"];
@@ -97,16 +97,16 @@ const Charts = () => {
     placeholderData: []
   });
 
-  const { data: bodyWeightData, isLoading: isBodyWeightLoading } = useBodyWeightQuery(router.query.mgiGeneAccessionId as string, router.isReady);
-  const isFetchingData = isLoading || isBodyWeightLoading;
 
-  const isABRChart = !!datasetSummaries?.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
-  const isViabilityChart = !!datasetSummaries?.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
+  const isABRChart = !!datasetSummaries.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
+  const isViabilityChart = !!datasetSummaries.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
 
-  let allSummaries = datasetSummaries?.concat(additionalSummaries)
+  let allSummaries = datasetSummaries.concat(additionalSummaries)
 
-  if (isBodyWeightChart) {
+  /*if (isBodyWeightChart) {
     allSummaries = bodyWeightData;
+  } else if (isAllViabilityChart) {
+    allSummaries = viabilityData;
   } else {
     allSummaries = allSummaries.map(dataset => {
       const bodyWeightDataForDataset = bodyWeightData.find(d => d.datasetId === dataset.datasetId);
@@ -115,7 +115,7 @@ const Charts = () => {
       }
       return dataset;
     })
-  }
+  }*/
 
   return (
     <>
@@ -190,7 +190,7 @@ const Charts = () => {
               </div>
             </Alert>
           )}
-          {(!isFetchingData && allSummaries.length > 0) ? (
+          {(!isLoading && allSummaries.length > 0) ? (
             <DataComparison
               visibility={showComparison}
               data={allSummaries}

@@ -51,8 +51,8 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
 
 type Props = {
   data: any;
-  selectedParameter: string | null;
-  isViabilityChart: boolean;
+  selectedParameter?: string | null;
+  isViabilityChart?: boolean;
   initialSortByProp?: string;
   visibility: boolean;
 }
@@ -65,7 +65,7 @@ const DataComparison = (props: Props) => {
   const {
     data,
     selectedParameter,
-    isViabilityChart,
+    isViabilityChart = false,
     initialSortByProp,
     visibility,
   } = props;
@@ -118,7 +118,7 @@ const DataComparison = (props: Props) => {
       return {
         ...d,
         datasetNum: index + 1,
-        topLevelPhenotype: d.topLevelPhenotypes[0]?.name,
+        topLevelPhenotype: d.topLevelPhenotypes?.[0]?.name,
         phenotype: d.significantPhenotype?.name,
         id: d.significantPhenotype?.id,
         viability: getLethality(),

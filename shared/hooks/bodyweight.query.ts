@@ -3,7 +3,7 @@ import { fetchAPI } from "@/api-service";
 
 
 export const useBodyWeightQuery = (mgiGeneAccessionId: string, routerIsReady: boolean) => {
-  return useQuery({
+  const {data, isLoading, ...rest} = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "all", "bodyweight"],
     queryFn: async () => {
       const allData = await fetchAPI(`/api/v1/bodyweight/byMgiGeneAccId?mgiGeneAccId=${mgiGeneAccessionId}`);
@@ -24,5 +24,10 @@ export const useBodyWeightQuery = (mgiGeneAccessionId: string, routerIsReady: bo
     },
     enabled: routerIsReady,
     placeholderData: []
-  })
+  });
+  return {
+    bodyWeightData: data,
+    isBodyWeightLoading: isLoading,
+    ...rest,
+  }
 }

@@ -363,13 +363,13 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
             </Col>
             <Col md={6}>
               <CollectionItem
-                link={`/data/charts?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&parameter_stable_id=IMPC_VIA_001_001&&parameter_stable_id=IMPC_VIA_063_001&parameter_stable_id=IMPC_VIA_064_001&parameter_stable_id=IMPC_VIA_065_001&parameter_stable_id=IMPC_VIA_066_001&parameter_stable_id=IMPC_VIA_067_001`}
+                link={`/data/viability?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
                 name="Viability data"
                 hasData={gene.hasViabilityData}
               />
               <br/>
               <CollectionItem
-                link={`/data/charts?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&chartType=bodyweight`}
+                link={`/data/bodyweight?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
                 name="Body weight measurements"
                 hasData={gene.hasBodyWeightData}
               />
