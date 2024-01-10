@@ -64,17 +64,16 @@ const Gene = () => {
     query: { pid, alleleSymbol },
   } = useRouter();
 
-  const { data: alleles, isLoading, isError, error } = useQuery({
+  const { data: allele, isLoading, isError, error } = useQuery({
     queryKey: ['genes', pid, 'alleles', alleleSymbol, 'order'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${pid}/${alleleSymbol}/order`),
+    queryFn: () => fetchAPI(`/api/v1/alleles/${pid}/${alleleSymbol}`),
     enabled: isReady
   })
 
   const [qcData, setQcData] = useState<any[]>(null);
 
-  const allele = (alleles ?? [])[0];
 
-  if (isLoading) {
+  if (isLoading || !allele) {
     return (
       <>
         <Search />
@@ -114,19 +113,14 @@ const Gene = () => {
 
   const {
     mgiGeneAccessionId,
-    alleleSymbol: geneAlleleSymbol,
     alleleDescription,
-    productTypes,
+    doesMiceProductsExist,
+    doesEsCellProductsExist,
+    doesCrisprProductsExist,
+    doesIntermediateVectorProductsExist,
+    doesTargetingVectorProductsExist,
   } = allele;
 
-  const doesMiceProductsExist = productTypes.includes("mouse");
-  const doesEsCellProductsExist = productTypes.includes("es_cell");
-  const doesCrisprProductsExist = productTypes.includes("crispr");
-  const doesIntermediateVectorProductsExist = productTypes.includes(
-    "intermediate_vector"
-  );
-  const doesTargetingVectorProductsExist =
-    productTypes.includes("targeting_vector");
 
   const esCellProductTypes = [
     { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
@@ -151,13 +145,11 @@ const Gene = () => {
     { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
   ];
 
-  const [geneSymbol] = formatAlleleSymbol(geneAlleleSymbol);
-
   return (
     <>
       <Head>
         <title>
-          Allele Details | {geneSymbol} - {alleleSymbol} | International Mouse
+          Allele Details | {allele.geneSymbol} - {alleleSymbol} | International Mouse
           Phenotyping Consortium
         </title>
       </Head>
@@ -171,8 +163,8 @@ const Gene = () => {
           <p className={styles.subheading}>ALLELE</p>
           <h1 className="mb-2 mt-2">
             <strong>
-              {geneSymbol}
-              <sup>{alleleSymbol}</sup>
+              {allele.geneSymbol}
+              <sup>{allele.alleleName}</sup>
             </strong>{" "}
           </h1>
           <p className="mb-4 grey">{alleleDescription}</p>
