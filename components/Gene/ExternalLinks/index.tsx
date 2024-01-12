@@ -14,7 +14,6 @@ const ExternalLinks = () => {
 
   const { data: providers } = useGeneExternalLinksQuery(gene.mgiGeneAccessionId, router.isReady);
 
-
   return (
     <Card>
       <h2>External links</h2>
