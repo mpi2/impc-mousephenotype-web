@@ -9,7 +9,7 @@ export type GeneExpressionCounts = {
 
 export type GeneExpression = {
   controlCounts: GeneExpressionCounts;
-  expressionImageParameters: Array<{ parameter_name: string; parameter_stable_id: string; }>;
+  expressionImageParameters: Array<{ parameterName: string; parameterStableId: string; }>;
   lacZLifestage: string;
   mgiGeneAccessionId: string;
   mutantCounts: GeneExpressionCounts;
