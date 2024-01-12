@@ -22,10 +22,10 @@ export const ImagesCell = <T extends GeneExpression>(props: TableCellProps<T> & 
     ? imageParameters.map((p) => (
       <a
         className="primary small"
-        href={`https://www.mousephenotype.org/data/imageComparator?acc=${props.mgiGeneAccessionId}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameter_stable_id}`}
+        href={`https://www.mousephenotype.org/data/imageComparator?acc=${props.mgiGeneAccessionId}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameterStableId}`}
       >
         <FontAwesomeIcon icon={faImage} />{" "}
-        {p.parameter_name}
+        {p.parameterName}
       </a>
     ))
     : "n/a"

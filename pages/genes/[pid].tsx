@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap";
 import { useQuery } from '@tanstack/react-query';
 import Search from "@/components/Search";
 import Summary from "@/components/Gene/Summary";
+import ExternalLinks from "@/components/Gene/ExternalLinks";
 import Phenotypes from "@/components/Gene/Phenotypes";
 import Images from "@/components/Gene/Images";
 import Publications from "@/components/Gene/Publications";
@@ -53,11 +54,12 @@ const Gene = () => {
         {!!gene && (
           <>
             <Phenotypes gene={gene} />
-            <Expressions gene={gene} />
+            <Expressions />
             <Images gene={gene} />
             <HumanDiseases gene={gene} />
-            <Publications gene={gene} />
             <Histopathology gene={gene} />
+            <Publications gene={gene} />
+            <ExternalLinks />
             <Order gene={gene} />
           </>
         )}
