@@ -53,13 +53,13 @@ const Gene = () => {
         <Summary {...{ gene, loading: isLoading, error: isError ? error.toString(): "" }} />
         {!!gene && (
           <>
-            <ExternalLinks />
             <Phenotypes gene={gene} />
             <Expressions />
             <Images gene={gene} />
             <HumanDiseases gene={gene} />
-            <Publications gene={gene} />
             <Histopathology gene={gene} />
+            <Publications gene={gene} />
+            <ExternalLinks />
             <Order gene={gene} />
           </>
         )}
