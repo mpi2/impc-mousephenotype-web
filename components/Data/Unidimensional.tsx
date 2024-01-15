@@ -559,7 +559,7 @@ const Unidimensional = ({ datasetSummary }) => {
               </Button>{" "}
             </p>
             <p className="grey">
-              <FontAwesomeIcon icon={faInfoCircle} /> NOTE: Data from all charts
+              <FontAwesomeIcon icon={faInfoCircle} /> NOTE: Data from all combinations
               will be aggregated into one download file.
             </p>
           </Card>
