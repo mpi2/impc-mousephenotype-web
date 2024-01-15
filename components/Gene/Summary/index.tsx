@@ -317,26 +317,27 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
           )}
         </Col>
         <Col lg={6} style={{ position: "relative" }}>
-          <h3>Gene metrics</h3>
           <Row>
             <Col md={6}>
+              <h3>Gene metrics</h3>
               <Metric value={gene.significantPhenotypesCount || 0}>
                 Significant phenotypes
               </Metric>
             </Col>
             <Col md={6}>
+              <h3>Expressions examined in</h3>
               <Metric value={gene.adultExpressionObservationsCount || 0}>
-                Adult expressions
+                Adult tissues
               </Metric>
             </Col>
             <Col md={6}>
               <Metric value={gene.associatedDiseasesCount || 0}>
-                Associated disease
+                Associated diseases
               </Metric>
             </Col>
             <Col md={6}>
               <Metric value={gene.embryoExpressionObservationsCount || 0}>
-                Embryo expressions
+                Embryo tissues
               </Metric>
             </Col>
           </Row>
