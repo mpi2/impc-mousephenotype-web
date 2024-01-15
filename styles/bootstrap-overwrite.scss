@@ -24,3 +24,7 @@
   border-top-color: $primary;
   color: $black;
 }
+
+.breadcrumb .breadcrumb-item.active {
+  color: #8E8E8E;
+}

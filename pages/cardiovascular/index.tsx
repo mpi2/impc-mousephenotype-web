@@ -45,9 +45,9 @@ const CardiovascularLandingPage = () => {
         <Card>
           <div className="subheading">
             <Breadcrumb>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>IMPC data collections</Breadcrumb.Item>
-              <Breadcrumb.Item>Cardiovascular</Breadcrumb.Item>
+              <Breadcrumb.Item active>Home</Breadcrumb.Item>
+              <Breadcrumb.Item active>IMPC data collections</Breadcrumb.Item>
+              <Breadcrumb.Item active>Cardiovascular</Breadcrumb.Item>
             </Breadcrumb>
           </div>
           <h1 className="mb-4 mt-2">
