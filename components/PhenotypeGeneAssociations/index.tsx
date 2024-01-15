@@ -78,7 +78,7 @@ const Associations = (props: Props) => {
             field: "phenotypingCentre",
             cmp: <PhenotypingCentreCell />
           },
-          { width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell /> },
+          { width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell mpTermIdKey="phenotypeId" /> },
         ]}
       />
     </>
