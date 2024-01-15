@@ -111,7 +111,7 @@ const BodyWeightChartPage = () => {
                 eventKey={i}
                 title={
                   <>
-                    Combination {i + 1} ({formatPValue(d["reportedPValue"])}{" "}
+                    Combination #{i + 1} ({formatPValue(d["reportedPValue"])}{" "}
                     {i === 0 ? " | lowest" : null})
                   </>
                 }
