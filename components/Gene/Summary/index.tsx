@@ -227,7 +227,7 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
         </div>
         <a
           className={`${styles.howLink} secondary`}
-          href="https://www.mousephenotype.org/understand/data-collections/"
+          href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/"
         >
           How IMPC generates&nbsp;data&nbsp;
           <FontAwesomeIcon icon={faChevronRight} />
