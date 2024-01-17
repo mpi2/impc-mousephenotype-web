@@ -24,8 +24,7 @@ export const useGeneExternalLinksQuery = (mgiGeneAccessionId: string, routerIsRe
     queryKey: ['gene', mgiGeneAccessionId, 'external-links'],
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/gene_external_links`),
     enabled: routerIsReady && hasLoadedProvidersData,
-    select: (data) => {
-      const linkList: Array<ExternalLink> = Array.isArray(data) ? data : [data];
+    select: linkList => {
       const linksByProvider = _.groupBy(linkList, link => link.providerName);
       return Object.entries(linksByProvider).map(([providerName, links]) => ({
         providerName,
