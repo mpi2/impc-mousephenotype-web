@@ -61,6 +61,6 @@ describe('Gene expressions component', () => {
       </GeneContext.Provider>
     );
     expect(await screen.findByRole('alert')).toBeInTheDocument();
-    expect(screen.getByRole('alert')).toHaveTextContent('No expression data available for Fgf2');
+    expect(screen.getByRole('alert')).toHaveTextContent('No adult expression data available for Fgf2');
   });
 });
