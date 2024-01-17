@@ -1,10 +1,11 @@
 import { screen } from '@testing-library/react';
-import GeneSummary from '@/components/Gene/Summary';
+import Summary from '@/components/Gene/Summary';
 import { renderWithClient } from "../../utils";
+import { GeneSummary } from "@/models/gene";
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
-let gene = {
+let gene: GeneSummary = {
   geneName: "calcium and integrin binding family member 2",
   geneSymbol: "Cib2",
   mgiGeneAccessionId: "MGI:1929293",
@@ -38,12 +39,19 @@ let gene = {
   hasViabilityData: true,
   hasBodyWeightData: true,
   hasEmbryoImagingData: false,
+  hasHistopathologyData: false,
+  alleleNames: [],
+  assignmentStatus: '',
+  associatedDiseasesCount: 0,
+  humanGeneSymbols: [],
+  humanSymbolSynonyms: [],
+  id: 'GENE-0001',
 };
 
 describe('Gene summary component', () => {
   it('displays physiological systems correctly', async () => {
-    renderWithClient(<GeneSummary gene={gene} error={''} loading={false} />);
-    expect(screen.getByTestId('totalCount')).toHaveTextContent('19 /24 physiological systems tested');
+    renderWithClient(<Summary gene={gene} error={''} loading={false} />);
+    expect(screen.getByTestId('totalCount')).toHaveTextContent('19 / 24 physiological systems tested');
     expect(screen.getByTestId('significantSystemIcons').children).toHaveLength(6);
     expect(screen.getByTestId('significantCount')).toHaveTextContent('6')
     expect(screen.getByTestId('notSignificantSystemIcons').children).toHaveLength(13);
@@ -53,7 +61,7 @@ describe('Gene summary component', () => {
   });
 
   it('displays data collection status correctly',() => {
-    renderWithClient(<GeneSummary gene={gene} error={''} loading={false} />);
+    renderWithClient(<Summary gene={gene} error={''} loading={false} />);
     expect(screen.getByTestId('LacZ expression')).not.toHaveClass('dataCollectionInactive');
     expect(screen.getByTestId('Histopathology')).toHaveClass('dataCollectionInactive');
     expect(screen.getByTestId('Images')).not.toHaveClass('dataCollectionInactive');
@@ -64,7 +72,7 @@ describe('Gene summary component', () => {
 
   it('should have synonyms tooltip if have 3 or more', () => {
     renderWithClient(
-      <GeneSummary gene={{...gene, synonyms: ['1', '2', '3', '4']}} error={''} loading={false} />
+      <Summary gene={{...gene, synonyms: ['1', '2', '3', '4']}} error={''} loading={false} />
     );
     expect(screen.getByTestId('synonyms')).toBeDefined();
   });
