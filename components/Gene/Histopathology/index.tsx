@@ -12,6 +12,7 @@ import _ from "lodash";
 import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
 import { GeneHistopathology } from "@/models/gene";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 const Histopathology = ({ gene }: { gene: any }) => {
   const router = useRouter();
@@ -109,4 +110,4 @@ const Histopathology = ({ gene }: { gene: any }) => {
   );
 };
 
-export default Histopathology;
+export default sectionWithErrorBoundary(Histopathology, "Histopathology", "histopathology");
