@@ -11,9 +11,9 @@ jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 describe('Gene human diseases component', () => {
   it('should display information', async () => {
     // misuse of query param :) to pass param to fetch function
-    await mockRouter.push('/genes/MGI:1922546?pid=MGI:1922546');
-    renderWithClient(<GeneHumanDiseases gene={{ geneSymbol: 'Cep43' }} />);
-    expect(screen.getByRole('heading')).toHaveTextContent('Human diseases caused by Cep43 mutations');
+    await mockRouter.push('/genes/MGI:1202064?pid=MGI:1202064');
+    renderWithClient(<GeneHumanDiseases gene={{ geneSymbol: 'Otog' }} />);
+    expect(screen.getByRole('heading')).toHaveTextContent('Human diseases caused by Otog mutations');
     expect(await screen.findByRole('alert')).toBeInTheDocument();
     const assocDiseasesTab = screen.getByRole('tab', { name: /Human diseases associated/ });
     const predictedDiseasesTab = screen.getByRole('tab', { name: /Human diseases predicted/ });
@@ -21,7 +21,7 @@ describe('Gene human diseases component', () => {
     expect(predictedDiseasesTab).toBeInTheDocument();
   });
 
-  it('should be able to view content from the 3 tabs', async () => {
+  it('should be able to view content from the 2 tabs', async () => {
     const user = userEvent.setup();
     await mockRouter.push('/genes/MGI:1922546?pid=MGI:1922546');
     renderWithClient(<GeneHumanDiseases gene={{ geneSymbol: 'Cep43' }} />);
