@@ -63,10 +63,12 @@ const SmartTable = <T extends Model>(props: {
             }))
           }
         >
-          {pageData.map((d) => (
-            <tr>
-              {props.columns.map(({ field, cmp }) => (
-                <td>{React.cloneElement(cmp, { value: d, field })}</td>
+          {pageData.map((d, index) => (
+            <tr key={index}>
+              {props.columns.map(({ field, cmp }, index) => (
+                <td key={index}>
+                  {React.cloneElement(cmp, { value: d, field })}
+                </td>
               ))}
             </tr>
           ))}

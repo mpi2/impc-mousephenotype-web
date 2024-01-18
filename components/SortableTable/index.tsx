@@ -118,8 +118,8 @@ const SortableTable = ({
           })}
         <thead>
           <tr>
-            {headers.map((header) => (
-              <SortableTh {...header} />
+            {headers.map((header, index) => (
+              <SortableTh key={index} {...header} />
             ))}
           </tr>
           {hasNested &&

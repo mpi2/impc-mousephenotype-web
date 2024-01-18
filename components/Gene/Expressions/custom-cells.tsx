@@ -19,8 +19,9 @@ export const ImagesCell = <T extends GeneExpression>(props: TableCellProps<T> & 
   const imageParameters = props.value.expressionImageParameters;
   return (
     !!imageParameters
-    ? imageParameters.map((p) => (
+    ? imageParameters.map((p, index) => (
       <a
+        key={index}
         className="primary small"
         href={`https://www.mousephenotype.org/data/imageComparator?acc=${props.mgiGeneAccessionId}&anatomy_id=MA:0000168&parameter_stable_id=${p.parameterStableId}`}
       >

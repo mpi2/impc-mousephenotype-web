@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -19,12 +19,12 @@ const AllelesCell = ({ pub }: { pub: Publication }) => {
   const alleles = pub.alleles.map(allele => formatAlleleSymbol(allele.alleleSymbol));
   return (
     <>
-      {alleles.slice(0, ALLELES_COUNT).map(symbol => (
-        <>
+      {alleles.slice(0, ALLELES_COUNT).map((symbol, index) => (
+        <Fragment key={index}>
           {symbol[0]}
           <sup>{symbol[1]}</sup>
           &nbsp;
-        </>
+        </Fragment>
       ))}
       <MoreItemsTooltip items={pub.alleles.map(a => a.alleleSymbol)} maxItems={ALLELES_COUNT}/>
     </>
@@ -104,9 +104,9 @@ const Publications = ({ gene }: { gene: any }) => {
                 { width: 2, label: "PubMed ID", field: "pmId" },
               ]}
             >
-              {pageData.map(p => {
+              {pageData.map((p, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       {p.doi ? (
                         <a
