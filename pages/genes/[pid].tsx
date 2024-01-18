@@ -1,5 +1,4 @@
 import { Container } from "react-bootstrap";
-import { useQuery } from '@tanstack/react-query';
 import Search from "@/components/Search";
 import Summary from "@/components/Gene/Summary";
 import ExternalLinks from "@/components/Gene/ExternalLinks";
@@ -13,9 +12,8 @@ import { useEffect } from "react";
 import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { fetchAPI } from "@/api-service";
-import { GeneSummary } from "@/models/gene";
 import { GeneContext } from "@/contexts";
+import { useGeneSummaryQuery } from "@/hooks";
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),
@@ -27,12 +25,12 @@ const HumanDiseases = dynamic(
 const Gene = () => {
   const router = useRouter();
 
-  const { isLoading, isError, data: gene, error } = useQuery({
-    queryKey: ['genes', router.query.pid, 'summary'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/summary`),
-    enabled: router.isReady,
-    select: data => data as GeneSummary,
-  });
+  const {
+    isLoading,
+    isError,
+    data: gene,
+    error
+  } = useGeneSummaryQuery(router.query.pid as string, router.isReady);
 
   useEffect(() => {
     if (gene) {
