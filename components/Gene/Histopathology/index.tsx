@@ -20,7 +20,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
 
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ['genes', router.query.pid, 'histopathology'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/histopathology`),
+    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/gene_histopathology`),
     placeholderData: null,
     enabled: router.isReady,
     select: data => data as Array<GeneHistopathology>,
