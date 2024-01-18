@@ -84,7 +84,7 @@ const Histopathology = ({ gene }: { gene: any }) => {
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
                       legacyBehavior>
-                      <strong className="link">{p.parameterName}</strong>
+                      <strong className="link">{`${p.parameterName} ${p.mpathTermName}`}</strong>
                     </Link>
                   </td>
                   <td>
