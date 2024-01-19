@@ -1,18 +1,18 @@
 import { Card, Search } from "@/components";
 import styles from "../styles.module.scss";
-import Skeleton from "react-loading-skeleton";
 import { Alert, Button, Container } from "react-bootstrap";
 import { useRouter } from "next/router";
-import { useGeneSummaryQuery } from "@/hooks";
+import { useGeneSummaryQuery, useHistopathologyQuery } from "@/hooks";
+import { PlainTextCell, SmartTable } from "@/components/SmartTable";
+import { Histopathology } from "@/models";
 
 
 const HistopathChartPage = () => {
   const router = useRouter();
-  const {
-    isLoading,
-    isError,
-    data: gene
-  } = useGeneSummaryQuery(router.query.pid as string, router.isReady);
+  const mgiGeneAccessionId = router.query.pid as string;
+  const { data: gene} = useGeneSummaryQuery(mgiGeneAccessionId, router.isReady);
+  const { data } = useHistopathologyQuery(mgiGeneAccessionId, router.isReady && !!gene);
+  console.log(data);
 
   return (
     <>
@@ -32,7 +32,7 @@ const HistopathChartPage = () => {
                 }}
               >
                 <a href="#" className="grey mb-3">
-                  {gene.geneSymbol}
+                  {gene?.geneSymbol}
                 </a>
               </button>{" "}
               / Histopathology
@@ -40,11 +40,26 @@ const HistopathChartPage = () => {
           </div>
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              Histopathology data for {gene.geneSymbol}
+              Histopathology data for {gene?.geneSymbol}
             </strong>
           </h1>
+          <SmartTable<Histopathology>
+            data={data}
+            defaultSort={["phenotypeName", "asc"]}
+            columns={[
+              { width: 1, label: "Zyg", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: "capitalize" }} /> },
+              { width: 1, label: "Mouse", field: "specimenNumber", cmp: <PlainTextCell /> },
+              { width: 1, label: "Tissue", field: "tissue", cmp: <PlainTextCell /> },
+              { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
+              { width: 1, label: "MPATH Process Term", field: "mPathProcessTerm", cmp: <PlainTextCell /> },
+              { width: 1, label: "Severity Score", field: "severityScore", cmp: <PlainTextCell /> },
+              { width: 1, label: "Significance Score", field: "significanceScore", cmp: <PlainTextCell /> },
+            ]}
+          />
         </Card>
       </Container>
     </>
   )
 }
+
+export default HistopathChartPage;
