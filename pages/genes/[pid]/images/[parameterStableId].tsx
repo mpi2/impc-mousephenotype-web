@@ -24,16 +24,13 @@ import { fetchAPI } from "@/api-service";
 import Skeleton from "react-loading-skeleton";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { formatAlleleSymbol } from "@/utils";
+import { AlleleSymbol } from "@/components";
 
 
 const addTrailingSlash = (url) => !url.endsWith('/') ?  url + '/' : url;
 const SkeletonText = ({ width = '300px' }) => <Skeleton style={{ display: 'block', width }} inline />;
 
-const AlleleSymbol = ({ symbol }) => {
-  const allele = formatAlleleSymbol(symbol);
-  return <span>Allele: {allele[0]}<sup>{allele[1]}</sup></span>
-}
+
 
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
   <Badge className={`${styles.badge} ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
