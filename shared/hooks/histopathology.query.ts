@@ -8,7 +8,24 @@ type SpecimenData = {
   zygosity: string;
   alleleAccessionId: string;
   alleleSymbol: string;
-  tissues: Record<string, { maTerm: string, mPathProcessTerm: string, severityScore: string, significanceScore: string }>
+  tissues: Record<string, {
+    description: string;
+    maTerm: string;
+    mPathProcessTerm: string;
+    severityScore: string;
+    significanceScore: string;
+    descriptorPATO: string;
+    freeText: string;
+  }>
+};
+
+type HistopathologyImage = {
+  zygosity: string;
+  tissue: string;
+  alleleSymbol: string;
+  thumbnailUrl: string;
+  maTerm: string;
+  omeroId: string;
 }
 
 export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady: boolean) => {
@@ -17,7 +34,8 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/histopathology`),
     enabled: routerIsReady,
     select: (data: HistopathologyResponse) => {
-      const specimensData: Record<string, SpecimenData> = {}
+      const specimensData: Record<string, SpecimenData> = {};
+      const images: Array<HistopathologyImage> = [];
       data.datasets.forEach(dataset => {
         dataset.observations.forEach(observation => {
           if (specimensData[observation.specimenId] === undefined) {
@@ -32,26 +50,43 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
           }
           if (specimensData[observation.specimenId].tissues[dataset.tissue] === undefined) {
             specimensData[observation.specimenId].tissues[dataset.tissue] = {
+              description: 'N/A',
               maTerm: 'N/A',
               mPathProcessTerm: 'N/A',
               severityScore: '0',
               significanceScore: '0',
+              descriptorPATO: 'N/A',
+              freeText: 'N/A',
             }
           }
+          const specimenTissueData = specimensData[observation.specimenId].tissues[dataset.tissue];
           if (observation.parameterName.includes('MPATH pathological process term')) {
-            specimensData[observation.specimenId].tissues[dataset.tissue].mPathProcessTerm = observation.ontologyTerms[0].termId;
+            specimenTissueData.mPathProcessTerm = observation.ontologyTerms[0].termId;
           } else if (observation.parameterName.includes('MA term')) {
-            specimensData[observation.specimenId].tissues[dataset.tissue].maTerm = observation.ontologyTerms[0].termId;
+            specimenTissueData.maTerm = observation.ontologyTerms[0].termId;
           } else if (observation.parameterName.includes('Severity score')) {
-            const value = !!observation.ontologyTerms?.length ? observation.ontologyTerms[0].termId : '0';
-            specimensData[observation.specimenId].tissues[dataset.tissue].severityScore = value;
+            specimenTissueData.severityScore = observation.category;
           } else if (observation.parameterName.includes('Significance score')) {
-            const value = !!observation.ontologyTerms?.length ? observation.ontologyTerms[0].termId : '0';
-            specimensData[observation.specimenId].tissues[dataset.tissue].significanceScore = value;
+            specimenTissueData.severityScore = observation.category;
+          } else if (observation.parameterName.includes('Descriptor PATO')) {
+            specimenTissueData.descriptorPATO = observation.ontologyTerms.map(term => term.termName).join(' ');
+          } else if (observation.parameterName.includes('Free text diagnostic term')) {
+            specimenTissueData.freeText = observation.textValue;
+          } else if (observation.parameterName.includes('Description')) {
+            specimenTissueData.description = observation.textValue;
+          } else if (observation.parameterName.includes('Images')) {
+            images.push({
+              zygosity: observation.zygosity,
+              tissue: dataset.tissue,
+              alleleSymbol: observation.alleleSymbol,
+              thumbnailUrl: observation.thumbnailUrl,
+              omeroId: observation.omeroId,
+              maTerm: observation.ontologyTerms?.[0]?.termId || 'N/A'
+            })
           }
         });
       });
-      return Object.entries(specimensData).flatMap(([specimenId, specimen], index) => {
+      const histopathologyData = Object.entries(specimensData).flatMap(([specimenId, specimen], index) => {
         return Object.entries(specimen.tissues).map(([tissue, data]) => {
           return {
             ...data,
@@ -63,6 +98,10 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
           } as Histopathology;
         })
       });
+      return {
+        histopathologyData,
+        images,
+      }
     }
   });
 }
