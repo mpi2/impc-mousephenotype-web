@@ -1,0 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "@/api-service";
+import { GeneSummary } from "@/models/gene";
+
+export const useGeneSummaryQuery = (mgiGeneAccessionId: string, routerIsReady: boolean) => {
+  return useQuery({
+    queryKey: ['genes', mgiGeneAccessionId, 'summary'],
+    queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/summary`),
+    enabled: routerIsReady,
+    select: data => data as GeneSummary,
+  });
+}

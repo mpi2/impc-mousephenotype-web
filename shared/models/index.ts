@@ -4,9 +4,10 @@ import type { PhenotypeRef } from './phenotype-ref';
 import { MetabolismGeneData } from "@/pages/metabolism";
 
 export type { PhenotypeRef } from './phenotype-ref';
-export type { TableCellProps } from './TableCell'
+export type { TableCellProps } from './TableCell';
+export type { HistopathologyResponse, Histopathology } from './histopathology';
 export type { Gene };
 export type { Phenotype };
 
-type Model = PhenotypeRef | typeof Gene | typeof Phenotype | MetabolismGeneData;
+type Model = PhenotypeRef | typeof Gene | typeof Phenotype | MetabolismGeneData | HistopathologyResponse | Histopathology;
 export type { Model };
