@@ -67,7 +67,7 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
           } else if (observation.parameterName.includes('Severity score')) {
             specimenTissueData.severityScore = observation.category;
           } else if (observation.parameterName.includes('Significance score')) {
-            specimenTissueData.severityScore = observation.category;
+            specimenTissueData.significanceScore = observation.category;
           } else if (observation.parameterName.includes('Descriptor PATO')) {
             specimenTissueData.descriptorPATO = observation.ontologyTerms.map(term => term.termName).join(' ');
           } else if (observation.parameterName.includes('Free text diagnostic term')) {
