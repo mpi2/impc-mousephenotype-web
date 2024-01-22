@@ -1,18 +1,30 @@
 import { Card, Search } from "@/components";
 import styles from "../styles.module.scss";
-import { Alert, Button, Container } from "react-bootstrap";
+import { Badge, Container } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { useGeneSummaryQuery, useHistopathologyQuery } from "@/hooks";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 import { Histopathology } from "@/models";
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 
 const HistopathChartPage = () => {
   const router = useRouter();
   const mgiGeneAccessionId = router.query.pid as string;
   const { data: gene} = useGeneSummaryQuery(mgiGeneAccessionId, router.isReady);
+  const [selectedAnatomy, setSelectedAnatomy] = useState<string>(null);
   const { data } = useHistopathologyQuery(mgiGeneAccessionId, router.isReady && !!gene);
-  console.log(data);
+  const anatomyParam = router.query?.anatomy as string;
+
+  useEffect(() => {
+    setSelectedAnatomy(anatomyParam as string)
+  }, [anatomyParam]);
+
+  const filteredData = !!selectedAnatomy
+    ? data?.filter(item => item.tissue.toLowerCase().includes(anatomyParam))
+    : data;
 
   return (
     <>
@@ -44,8 +56,22 @@ const HistopathChartPage = () => {
             </strong>
           </h1>
           <SmartTable<Histopathology>
-            data={data}
+            data={filteredData}
             defaultSort={["phenotypeName", "asc"]}
+            additionalTopControls={
+              selectedAnatomy ? (
+                <span
+                  style={{ fontSize: '1.3rem', cursor: "pointer", textTransform: "capitalize" }}
+                  onClick={() => setSelectedAnatomy(null)}
+                >
+                  <Badge pill bg="secondary">
+                    {selectedAnatomy}
+                    &nbsp;
+                    <FontAwesomeIcon icon={faXmark} />
+                  </Badge>
+                </span>
+              ) : null
+            }
             columns={[
               { width: 1, label: "Zyg", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: "capitalize" }} /> },
               { width: 1, label: "Mouse", field: "specimenNumber", cmp: <PlainTextCell /> },
