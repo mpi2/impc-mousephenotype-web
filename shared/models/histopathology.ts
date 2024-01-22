@@ -17,7 +17,11 @@ export type HistopathologyResponse = {
       specimenId: string;
       tissue: string;
       zygosity: string;
-      ontologyTerms: Array<{ termId: string; termName: string }>
+      ontologyTerms: Array<{ termId: string; termName: string }>;
+      category: string | null;
+      textValue: string | null;
+      thumbnailUrl: string | null;
+      omeroId: string | null;
     }>
   }>
 }
@@ -30,8 +34,12 @@ export type Histopathology = {
   specimenNumber: string;
   tissue: string;
   zygosity: string;
+  description: string;
   maTerm: string;
   mPathProcessTerm: string;
   severityScore: string;
   significanceScore: string;
+  descriptorPATO: string;
+  freeText: string;
+  thumbnailUrl: string;
 }
