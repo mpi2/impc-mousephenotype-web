@@ -1,4 +1,4 @@
-import { Search } from "@/components";
+import { AlleleSymbol, Search } from "@/components";
 import styles from "../styles.module.scss";
 import { Badge, Card, Col, Container, Modal, Row } from "react-bootstrap";
 import { useRouter } from "next/router";
@@ -160,16 +160,19 @@ const HistopathChartPage = () => {
           <h2>Associated histopathology images</h2>
           <Row>
             {data?.images.map((image, index) => (
-              <Col style={{ textAlign: 'center' }} key={index} xs={3}>
+              <Col
+                style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', rowGap: '0.3rem', marginBottom: '1rem' }}
+                key={index}
+                xs={3}
+              >
                 <img
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: 'pointer', alignSelf: 'center' }}
                   src={image.thumbnailUrl} alt=""
                   onClick={() => displayFullImageModal(`//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/${image.omeroId}`)}
                 />
-                <br/>
-                Tissue: {image.tissue}
-                <br/>
-                MA term: {image.maTerm}
+                <AlleleSymbol symbol={image.alleleSymbol} withLabel={false} />
+                <span>Tissue: {image.tissue}</span>
+                <span>MA term: {image.maTerm}</span>
               </Col>
             ))}
           </Row>
