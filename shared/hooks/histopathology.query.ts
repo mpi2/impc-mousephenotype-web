@@ -11,7 +11,9 @@ type SpecimenData = {
   tissues: Record<string, {
     description: string;
     maTerm: string;
-    mPathProcessTerm: string;
+    maId: string;
+    mPathId: string;
+    mPathTerm: string;
     severityScore: string;
     significanceScore: string;
     descriptorPATO: string;
@@ -52,7 +54,9 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
             specimensData[observation.specimenId].tissues[dataset.tissue] = {
               description: 'N/A',
               maTerm: 'N/A',
-              mPathProcessTerm: 'N/A',
+              maId: 'N/A',
+              mPathId: 'N/A',
+              mPathTerm: 'N/A',
               severityScore: '0',
               significanceScore: '0',
               descriptorPATO: 'N/A',
@@ -60,10 +64,15 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
             }
           }
           const specimenTissueData = specimensData[observation.specimenId].tissues[dataset.tissue];
-          if (observation.parameterName.includes('MPATH pathological process term')) {
-            specimenTissueData.mPathProcessTerm = observation.ontologyTerms[0].termId;
+          if (
+            observation.parameterName.includes('MPATH pathological process term') ||
+            observation.parameterName.includes('MPATH pathological entity term')
+          ) {
+            specimenTissueData.mPathId = observation.ontologyTerms[0].termId;
+            specimenTissueData.mPathTerm = observation.ontologyTerms[0].termName;
           } else if (observation.parameterName.includes('MA term')) {
-            specimenTissueData.maTerm = observation.ontologyTerms[0].termId;
+            specimenTissueData.maId = observation.ontologyTerms[0].termId;
+            specimenTissueData.maTerm = observation.ontologyTerms[0].termName;
           } else if (observation.parameterName.includes('Severity score')) {
             specimenTissueData.severityScore = observation.category;
           } else if (observation.parameterName.includes('Significance score')) {

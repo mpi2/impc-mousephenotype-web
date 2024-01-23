@@ -1,6 +1,6 @@
 import { AlleleSymbol, Search } from "@/components";
 import styles from "../styles.module.scss";
-import { Badge, Card, Col, Container, Modal, Row } from "react-bootstrap";
+import { Accordion, Badge, Card, Col, Container, Modal, Row } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { useGeneSummaryQuery, useHistopathologyQuery } from "@/hooks";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
@@ -52,10 +52,13 @@ const HistopathChartPage = () => {
   const displayFullImageModal = (url: string) => {
     setSelectedImage(url);
     setShowFullImageModal(true);
-  }
+  };
   const hideFullImageModal = () => {
     setShowFullImageModal(false);
-  }
+  };
+
+  const filterHistopathology = ({tissue, freeText}: Histopathology, query: string) =>
+    (!query || `${tissue} ${freeText}`.toLowerCase().includes(query));
 
   const filteredData = !!selectedAnatomy
     ? data?.histopathologyData?.filter(item => item.tissue.toLowerCase() === anatomyParam)
@@ -90,74 +93,82 @@ const HistopathChartPage = () => {
               Histopathology data for {gene?.geneSymbol}
             </strong>
           </h1>
-          <Card style={{ padding: '0' }}>
-            <Card.Header>Score Definitions</Card.Header>
-            <Card.Body>
-              <b>Severity Score:</b>
-              <ul>
-                <li>0 = Normal</li>
-                <li>
-                  1 = Mild (observation barely perceptible and not believed to have clinical significance)
-                </li>
-                <li>
-                  2 = Moderate (observation visible but involves minor proportion of tissue and clinical
-                  consequences of observation are most likely subclinical)
-                </li>
-                <li>
-                  3 = Marked (observation clearly visible involves a significant proportion of tissue and
-                  is likely to have some clinical manifestations generally expected to be minor)
-                </li>
-                <li>
-                  4 = Severe (observation clearly visible involves a major proportion of tissue and clinical
-                  manifestations are likely associated with significant tissue dysfunction or damage)
-                </li>
-              </ul>
-              <b>Significance Score:</b>
-              <ul>
-                <li>
-                  0 = <i>Not significant</i>: Interpreted by the histopathologist to be a
-                  finding attributable to background strain (e.g. low-incidence hydrocephalus, microphthalmia) or
-                  incidental to mutant phenotype (e.g. hair-induced glossitis,
-                  focal hyperplasia, mild mononuclear cell infiltrate).
-                </li>
-                <li>
-                  1 = <i>Significant</i>: Interpreted by the histopathologist as a finding
-                  not attributable to background strain and not incidental to mutant phenotype.
-                </li>
-              </ul>
-            </Card.Body>
-          </Card>
+          <Accordion style={{ marginBottom: '1.5rem' }}>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Score Definitions</Accordion.Header>
+              <Accordion.Body>
+                <b>Severity Score:</b>
+                <ul>
+                  <li>0 = Normal</li>
+                  <li>
+                    1 = Mild (observation barely perceptible and not believed to have clinical significance)
+                  </li>
+                  <li>
+                    2 = Moderate (observation visible but involves minor proportion of tissue and clinical
+                    consequences of observation are most likely subclinical)
+                  </li>
+                  <li>
+                    3 = Marked (observation clearly visible involves a significant proportion of tissue and
+                    is likely to have some clinical manifestations generally expected to be minor)
+                  </li>
+                  <li>
+                    4 = Severe (observation clearly visible involves a major proportion of tissue and clinical
+                    manifestations are likely associated with significant tissue dysfunction or damage)
+                  </li>
+                </ul>
+                <b>Significance Score:</b>
+                <ul>
+                  <li>
+                    0 = <i>Not significant</i>: Interpreted by the histopathologist to be a
+                    finding attributable to background strain (e.g. low-incidence hydrocephalus, microphthalmia) or
+                    incidental to mutant phenotype (e.g. hair-induced glossitis,
+                    focal hyperplasia, mild mononuclear cell infiltrate).
+                  </li>
+                  <li>
+                    1 = <i>Significant</i>: Interpreted by the histopathologist as a finding
+                    not attributable to background strain and not incidental to mutant phenotype.
+                  </li>
+                </ul>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
           <SmartTable<Histopathology>
             data={filteredData}
-            defaultSort={["phenotypeName", "asc"]}
+            defaultSort={["tissue", "asc"]}
+            filterFn={filterHistopathology}
             additionalTopControls={
               selectedAnatomy ? (
                 <span
-                  style={{ cursor: "pointer" }}
+                  style={{cursor: "pointer"}}
                   onClick={() => setSelectedAnatomy(null)}
                 >
                   Showing only tissue data for:&nbsp;
-                  <Badge pill bg="secondary" style={{ fontSize: '1.1rem', textTransform: "capitalize" }}>
+                  <Badge pill bg="secondary" style={{fontSize: '1.1rem', textTransform: "capitalize"}}>
                     {selectedAnatomy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faXmark} />
+                    <FontAwesomeIcon icon={faXmark}/>
                   </Badge>
                 </span>
               ) : null
             }
             columns={[
-              { width: 1, label: "Zyg", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: "capitalize" }} /> },
-              { width: 1, label: "Mouse", field: "specimenNumber", cmp: <PlainTextCell /> },
-              { width: 1, label: "Tissue", field: "tissue", cmp: <PlainTextCell /> },
-              { width: 1, label: "Description", field: "description", cmp: <DescriptionCell onClick={displayDescriptionModal} /> },
-              { width: 1, label: "MPATH Process Term", field: "mPathProcessTerm", cmp: <PlainTextCell /> },
-              { width: 1, label: "Severity Score", field: "severityScore", cmp: <PlainTextCell /> },
-              { width: 1, label: "Significance Score", field: "significanceScore", cmp: <PlainTextCell /> },
-              { width: 1, label: "PATO Descriptor", field: "descriptorPATO", cmp: <PlainTextCell /> },
-              { width: 1, label: "Free Text", field: "freeText", cmp: <PlainTextCell /> },
+              {width: 1, label: "Tissue", field: "tissue", cmp: <PlainTextCell/>},
+              {width: 1, label: "Zyg", field: "zygosity", cmp: <PlainTextCell style={{textTransform: "capitalize"}}/>},
+              {width: 1, label: "Mouse", field: "specimenNumber", cmp: <PlainTextCell/>},
+              {
+                width: 1,
+                label: "Description",
+                field: "description",
+                cmp: <DescriptionCell onClick={displayDescriptionModal}/>
+              },
+              {width: 1, label: "MPATH Term", field: "mPathTerm", cmp: <PlainTextCell/>},
+              {width: 1, label: "Severity Score", field: "severityScore", cmp: <PlainTextCell/>},
+              {width: 1, label: "Significance Score", field: "significanceScore", cmp: <PlainTextCell/>},
+              {width: 1, label: "PATO Descriptor", field: "descriptorPATO", cmp: <PlainTextCell/>},
+              {width: 1, label: "Free Text", field: "freeText", cmp: <PlainTextCell /> },
             ]}
           />
-          <h2>Associated histopathology images</h2>
+          <h2>Histopathology images</h2>
           <Row>
             {data?.images.map((image, index) => (
               <Col
@@ -172,7 +183,9 @@ const HistopathChartPage = () => {
                 />
                 <AlleleSymbol symbol={image.alleleSymbol} withLabel={false} />
                 <span>Tissue: {image.tissue}</span>
-                <span>MA term: {image.maTerm}</span>
+                <span>
+                  <a href="">{image.maTerm}</a>
+                </span>
               </Col>
             ))}
           </Row>

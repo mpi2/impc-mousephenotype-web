@@ -36,7 +36,9 @@ export type Histopathology = {
   zygosity: string;
   description: string;
   maTerm: string;
-  mPathProcessTerm: string;
+  maId: string;
+  mPathId: string;
+  mPathTerm: string;
   severityScore: string;
   significanceScore: string;
   descriptorPATO: string;
