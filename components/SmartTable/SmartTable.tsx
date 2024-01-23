@@ -14,11 +14,18 @@ const SmartTable = <T extends Model>(props: {
   zeroResulsText?: string;
   filterFn?: (item: T, query: string) => boolean,
   additionalTopControls?: ReactElement,
-  filteringEnabled?: boolean
+  filteringEnabled?: boolean,
+  // set this to false if you need more specific filtering, check All Phenotypes section
+  customFiltering?: boolean,
 }) => {
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>('');
-  const { filteringEnabled = true } = props;
+  const {
+    filteringEnabled = true,
+    customFiltering = false
+  } = props;
+
+  const internalShowFilteringEnabled = filteringEnabled && !!props.filterFn && !customFiltering;
 
   let mutatedData = props.data;
   if (props.filterFn) {
@@ -27,7 +34,7 @@ const SmartTable = <T extends Model>(props: {
   const [field, order] = sortOptions.split(';');
   mutatedData = field && order ? _.orderBy(mutatedData, field, order as "asc" | "desc") : mutatedData ;
 
-  const additionalControls = !!props.additionalTopControls ? props.additionalTopControls : (
+  const additionalControls = internalShowFilteringEnabled ?  (
     <Form.Control
       type="text"
       style={{
@@ -43,12 +50,12 @@ const SmartTable = <T extends Model>(props: {
         setQuery(el.target.value.toLowerCase() || undefined);
       }}
     ></Form.Control>
-  )
+  ) : props.additionalTopControls
 
   return (
     <Pagination
       data={mutatedData}
-      additionalTopControls={filteringEnabled ? additionalControls : null}
+      additionalTopControls={additionalControls}
     >
       {(pageData) => (
         <SortableTable
