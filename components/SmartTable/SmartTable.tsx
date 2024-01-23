@@ -29,7 +29,7 @@ const SmartTable = <T extends Model>(props: {
 
   let mutatedData = props.data;
   if (props.filterFn) {
-    mutatedData = mutatedData.filter(item => props.filterFn(item, query));
+    mutatedData = mutatedData?.filter(item => props.filterFn(item, query));
   }
   const [field, order] = sortOptions.split(';');
   mutatedData = field && order ? _.orderBy(mutatedData, field, order as "asc" | "desc") : mutatedData ;
