@@ -309,7 +309,7 @@ const HistopathLandingPage = () => {
                         style={{ '--bs-table-bg-type': getCellColor(cell.y), cursor: cell.y > 0 ? 'pointer': 'auto' } as any}
                         onClick={() => {
                           if (cell.y > 0) {
-                            window.open(`https://www.mousephenotype.org/data/histopath/${gene.id}?anatomy="${cell.x}"`);
+                            window.open(`/data/histopath/${gene.id}?anatomy=${cell.x}`);
                           }
                         }}
                       />
