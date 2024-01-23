@@ -43,9 +43,9 @@ const Associations = (props: Props) => {
   const [sortOptions, setSortOptions] = useState<string>('');
   const { data, isLoading } = useGeneAssociationsQuery(phenotype.phenotypeId, router.isReady, sortOptions);
 
-  const filtered = data.filter(({phenotypeName, phenotypeId, alleleSymbol, mgiGeneAccessionId}) =>
-      (!query || `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query))
-  );
+  const filterPhenotype = (
+    {phenotypeName, phenotypeId, alleleSymbol, mgiGeneAccessionId}: PhenotypeGenotypes, query: string
+  ) => (!query || `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query));
 
   if (!data) {
     return (
@@ -63,7 +63,8 @@ const Associations = (props: Props) => {
         {data.length}
       </p>
       <SmartTable<PhenotypeGenotypes>
-        data={filtered}
+        data={data}
+        filterFn={filterPhenotype}
         defaultSort={["alleleSymbol", "asc"]}
         columns={[
           { width: 2, label: "Gene / allele", field: "alleleSymbol", cmp: <AlleleCell style={{ fontWeight: 'bold' }} /> },
