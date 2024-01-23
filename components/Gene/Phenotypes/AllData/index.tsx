@@ -98,6 +98,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
       <SmartTable<GeneStatisticalResult>
         data={filtered}
         defaultSort={["pValue", "asc"]}
+        customFiltering
         additionalTopControls={
           <div>
             <p>
