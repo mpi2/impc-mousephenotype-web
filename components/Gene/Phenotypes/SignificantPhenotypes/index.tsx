@@ -23,10 +23,6 @@ const SignificantPhenotypes = () => {
     isPhenotypeError
   } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady, sortOptions);
 
-  const filtered = !isPhenotypeError ? phenotypeData.filter(({phenotype, phenotypeId}) =>
-    (!query || `${phenotype} ${phenotypeId}`.toLowerCase().includes(query))
-  ) : [];
-
   if (isPhenotypeLoading) {
     return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
   }
@@ -38,10 +34,14 @@ const SignificantPhenotypes = () => {
     )
   }
 
+  const filterPhenotype = ({phenotypeName, phenotypeId}: GenePhenotypeHits, query: string) =>
+    (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query));
+
   return (
     <SmartTable<GenePhenotypeHits>
-      data={filtered}
+      data={phenotypeData}
       defaultSort={["phenotypeName", "asc"]}
+      filterFn={filterPhenotype}
       columns={[
         { width: 2.2, label: "Phenotype", field: "phenotypeName", cmp: <PlainTextCell style={{ fontWeight: 'bold' }} /> },
         { width: 1, label: "System", field: "topLevelPhenotypeName", cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" /> },
