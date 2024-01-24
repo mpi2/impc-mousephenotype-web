@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Histopathology, HistopathologyResponse } from "@/models";
+import _ from 'lodash';
 
 type SpecimenData = {
   lifeStageName: string;
@@ -27,7 +28,10 @@ type HistopathologyImage = {
   alleleSymbol: string;
   thumbnailUrl: string;
   maTerm: string;
+  maId: string;
   omeroId: string;
+  specimenNumber: string;
+  specimenId: string;
 }
 
 export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady: boolean) => {
@@ -37,7 +41,7 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
     enabled: routerIsReady,
     select: (data: HistopathologyResponse) => {
       const specimensData: Record<string, SpecimenData> = {};
-      const images: Array<HistopathologyImage> = [];
+      let images: Array<HistopathologyImage> = [];
       data.datasets.forEach(dataset => {
         dataset.observations.forEach(observation => {
           if (specimensData[observation.specimenId] === undefined) {
@@ -90,7 +94,10 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
               alleleSymbol: observation.alleleSymbol,
               thumbnailUrl: observation.thumbnailUrl,
               omeroId: observation.omeroId,
-              maTerm: observation.ontologyTerms?.[0]?.termId || 'N/A'
+              maId: observation.ontologyTerms?.[0]?.termId || 'N/A',
+              maTerm: observation.ontologyTerms?.[0]?.termName || 'N/A',
+              specimenId: observation.specimenId,
+              specimenNumber: '',
             })
           }
         });
@@ -107,9 +114,14 @@ export const useHistopathologyQuery = (mgiGeneAccessionId: string, routerIsReady
           } as Histopathology;
         })
       });
+      const specimenIds = Object.keys(specimensData);
+      images = images.map(image => ({
+        ...image,
+        specimenNumber: `#${specimenIds.findIndex(id => id === image.specimenId) + 1}`
+      }));
       return {
         histopathologyData,
-        images,
+        images: _.groupBy(images, image => image.tissue),
       }
     }
   });

@@ -5,9 +5,9 @@ import { useRouter } from "next/router";
 import { useGeneSummaryQuery, useHistopathologyQuery } from "@/hooks";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 import { Histopathology, TableCellProps } from "@/models";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const DescriptionCell = <T extends Histopathology>(props: TableCellProps<T> & {maxChars?: number, onClick: (data: T) => void}) => {
   const maxChars = props.maxChars || 50;
@@ -29,9 +29,7 @@ const HistopathChartPage = () => {
   const mgiGeneAccessionId = router.query.pid as string;
   const [selectedAnatomy, setSelectedAnatomy] = useState<string>(null);
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
-  const [showFullImageModal, setShowFullImageModal] = useState(false);
   const [selectedTissue, setSelectedTissue] = useState<Histopathology>(null);
-  const [selectedImage, setSelectedImage] = useState<string>(null);
   const { data: gene} = useGeneSummaryQuery(mgiGeneAccessionId, router.isReady);
   const { data } = useHistopathologyQuery(mgiGeneAccessionId, router.isReady && !!gene);
   const anatomyParam = router.query?.anatomy as string;
@@ -47,14 +45,6 @@ const HistopathChartPage = () => {
 
   const hideDescriptionModal = () => {
     setShowDescriptionModal(false);
-  };
-
-  const displayFullImageModal = (url: string) => {
-    setSelectedImage(url);
-    setShowFullImageModal(true);
-  };
-  const hideFullImageModal = () => {
-    setShowFullImageModal(false);
   };
 
   const filterHistopathology = ({tissue, freeText}: Histopathology, query: string) =>
@@ -94,7 +84,7 @@ const HistopathChartPage = () => {
             </strong>
           </h1>
           <Accordion style={{ marginBottom: '1.5rem' }}>
-            <Accordion.Item eventKey="0">
+            <Accordion.Item eventKey="score">
               <Accordion.Header>Score Definitions</Accordion.Header>
               <Accordion.Body>
                 <b>Severity Score:</b>
@@ -136,6 +126,7 @@ const HistopathChartPage = () => {
             data={filteredData}
             defaultSort={["tissue", "asc"]}
             filterFn={filterHistopathology}
+            customFiltering={!!selectedAnatomy}
             additionalTopControls={
               selectedAnatomy ? (
                 <span
@@ -170,24 +161,49 @@ const HistopathChartPage = () => {
           />
           <h2>Histopathology images</h2>
           <Row>
-            {data?.images.map((image, index) => (
-              <Col
-                style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', rowGap: '0.3rem', marginBottom: '1rem' }}
-                key={index}
-                xs={3}
-              >
-                <img
-                  style={{ cursor: 'pointer', alignSelf: 'center' }}
-                  src={image.thumbnailUrl} alt=""
-                  onClick={() => displayFullImageModal(`//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/${image.omeroId}`)}
-                />
-                <AlleleSymbol symbol={image.alleleSymbol} withLabel={false} />
-                <span>Tissue: {image.tissue}</span>
-                <span>
-                  <a href="">{image.maTerm}</a>
-                </span>
-              </Col>
-            ))}
+            <Accordion defaultActiveKey={['0']}>
+              {!!data?.images ? (
+                Object.keys(data.images).map((tissue, index) => (
+                  <Accordion.Item key={tissue} eventKey={index.toString()}>
+                    <Accordion.Header>{tissue}</Accordion.Header>
+                    <Accordion.Body>
+                      <Row>
+                        {data.images[tissue].map(image => (
+                          <Col
+                            style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', rowGap: '0.3rem', marginBottom: '1rem' }}
+                            xs={4}
+                          >
+                            <a href={`//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/${image.omeroId}`} target="_blank">
+                              <img
+                                style={{ cursor: 'pointer', alignSelf: 'center' }}
+                                src={image.thumbnailUrl} alt=""
+                              />
+                            </a>
+                            <AlleleSymbol symbol={image.alleleSymbol} withLabel={false} />
+                            <span>Mouse {image.specimenNumber}</span>
+                            <span>
+                              <a
+                                className="primary link"
+                                target="_blank"
+                                href={`https://ontobee.org/ontology/MA?iri=http://purl.obolibrary.org/obo/${image.maId}`}
+                              >
+                                {image.maTerm}
+                              </a>
+                              &nbsp;
+                              <FontAwesomeIcon
+                                icon={faExternalLinkAlt}
+                                className="grey"
+                                size="xs"
+                              />
+                            </span>
+                          </Col>
+                        ))}
+                      </Row>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ))
+              ) : null}
+            </Accordion>
           </Row>
           <Modal
             show={showDescriptionModal}
@@ -199,18 +215,6 @@ const HistopathChartPage = () => {
             </Modal.Header>
             <Modal.Body>
               {selectedTissue?.description}
-            </Modal.Body>
-          </Modal>
-          <Modal
-            size="lg"
-            centered
-            show={showFullImageModal}
-            onHide={hideFullImageModal}
-            onExited={() => setSelectedImage(null)}
-          >
-            <Modal.Header closeButton />
-            <Modal.Body>
-              {selectedImage ? <img style={{ width: '100%' }} src={selectedImage} alt=""/> : null}
             </Modal.Body>
           </Modal>
         </Card>
