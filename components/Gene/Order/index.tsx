@@ -92,10 +92,10 @@ const Order = ({ gene }: { gene: any }) => {
                 },
               ]}
             >
-              {pageData.map((d) => {
+              {pageData.map((d, index) => {
                 const allele = formatAlleleSymbol(d.alleleSymbol);
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <strong className={styles.link}>
                         {allele[0]}

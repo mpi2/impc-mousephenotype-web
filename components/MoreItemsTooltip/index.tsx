@@ -1,6 +1,7 @@
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
+import { Fragment } from "react";
 
 type Props = {
   items: Array<string>;
@@ -18,13 +19,13 @@ const MoreItemsTooltip = ({ items, maxItems }: Props) => {
               {items
                 .slice(maxItems, items.length)
                 .map((s, i) => (
-                  <>
+                  <Fragment key={i}>
                     <span style={{ whiteSpace: "nowrap" }}>
                       {s}
                       {i <items.length ? ", " : ""}
                     </span>
                     <br />
-                  </>
+                  </Fragment>
                 ))}
             </div>
           </Tooltip>

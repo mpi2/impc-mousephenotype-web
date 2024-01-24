@@ -74,10 +74,10 @@ const Histopathology = ({ gene }: { gene: any }) => {
               { width: 2, label: "Life Stage", field: "lifeStageName" },
             ]}
           >
-            {pageData.map((p) => {
+            {pageData.map((p, index) => {
               const allele = formatAlleleSymbol(p.alleleSymbol);
               return (
-                <tr>
+                <tr key={index}>
                   <td>
                     <Link
                       href={`/data/histopath/${router.query.pid}?anatomy=${(

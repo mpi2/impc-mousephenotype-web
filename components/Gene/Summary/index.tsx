@@ -66,7 +66,7 @@ const CollectionItem = ({
       {name}&nbsp;
     </a>
   ) : (
-    <span className={styles.dataCollectionInactive}>
+    <span className={styles.dataCollectionInactive} data-testid={name}>
       <Check isChecked={hasData} />
       {name}&nbsp;
     </span>
@@ -243,8 +243,8 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
       <Row className={styles.gap}>
         <Col lg={6}>
           <h3>Impacted physiological systems</h3>
-          <div data-testid="totalCount" className={styles.progressHeader}>
-            <div>
+          <div className={styles.progressHeader}>
+            <div data-testid="totalCount">
               <span className="secondary">
                 {significantCount + nonSignificantCount}
               </span>&nbsp;/&nbsp;{allCount} physiological systems tested

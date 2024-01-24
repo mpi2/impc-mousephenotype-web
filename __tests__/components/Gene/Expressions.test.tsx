@@ -5,14 +5,22 @@ import mockRouter from "next-router-mock";
 import userEvent from "@testing-library/user-event";
 import { server } from "../../../mocks/server";
 import { rest } from 'msw';
+import React from "react";
+import { GeneContext } from "@/contexts";
+import { GeneSummary } from "@/models/gene";
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
+const gene = {mgiGeneAccessionId: 'MGI:95516', geneSymbol: 'Fgf2'};
+
 describe('Gene expressions component', () => {
   it('should display information', async () => {
-    // misuse of query param :) to pass param to fetch function
-    await mockRouter.push('/genes/MGI:95516?pid=MGI:95516');
-    renderWithClient(<GeneExpressions gene={{ geneSymbol: 'Fgf2' }} />);
+    await mockRouter.push('/genes/MGI:95516');
+    renderWithClient(
+      <GeneContext.Provider value={gene as GeneSummary}>
+        <GeneExpressions />
+      </GeneContext.Provider>
+    );
     expect(screen.getByRole('heading')).toHaveTextContent('lacZ Expression');
     expect(await screen.findByRole('table')).toBeInTheDocument();
     expect(screen.getByRole('tablist')).toBeInTheDocument();
@@ -26,8 +34,12 @@ describe('Gene expressions component', () => {
 
   it('should be able to view content from the 2 tabs', async () => {
     const user = userEvent.setup();
-    await mockRouter.push('/genes/MGI:95516?pid=MGI:95516');
-    renderWithClient(<GeneExpressions gene={{ geneSymbol: 'Fgf2' }} />);
+    await mockRouter.push('/genes/MGI:95516');
+    renderWithClient(
+      <GeneContext.Provider value={gene as GeneSummary}>
+        <GeneExpressions />
+      </GeneContext.Provider>
+    );
     expect(await screen.findByRole('table')).toBeInTheDocument();
     const adultTabSelector = screen.getByRole('tab', { name: /Adult expressions/ });
     const embryoTabSelector = screen.getByRole('tab', { name: /Embryo expressions/ });
@@ -42,9 +54,13 @@ describe('Gene expressions component', () => {
         return res(ctx.status(500));
       })
     )
-    await mockRouter.push('/genes/MGI:95516?pid=MGI:95516');
-    renderWithClient(<GeneExpressions gene={{ geneSymbol: 'Fgf2' }} />);
+    await mockRouter.push('/genes/MGI:95516');
+    renderWithClient(
+      <GeneContext.Provider value={gene as GeneSummary}>
+        <GeneExpressions />
+      </GeneContext.Provider>
+    );
     expect(await screen.findByRole('alert')).toBeInTheDocument();
-    expect(screen.getByRole('alert')).toHaveTextContent('No expression data available for Fgf2');
+    expect(screen.getByRole('alert')).toHaveTextContent('No adult expression data available for Fgf2');
   });
 });
