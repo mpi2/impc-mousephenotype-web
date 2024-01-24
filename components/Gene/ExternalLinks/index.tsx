@@ -6,6 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useGeneExternalLinksQuery } from "@/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 
 const ExternalLinks = () => {
@@ -15,7 +16,7 @@ const ExternalLinks = () => {
   const { data: providers } = useGeneExternalLinksQuery(gene.mgiGeneAccessionId, router.isReady);
 
   return (
-    <Card>
+    <Card id="external-links">
       <h2>External links</h2>
       <Container>
         <Row>
@@ -46,4 +47,4 @@ const ExternalLinks = () => {
   )
 }
 
-export default ExternalLinks;
+export default sectionWithErrorBoundary(ExternalLinks, 'External links', 'external-links');
