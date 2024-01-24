@@ -8,6 +8,7 @@ import { Histopathology, TableCellProps } from "@/models";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const DescriptionCell = <T extends Histopathology>(props: TableCellProps<T> & {maxChars?: number, onClick: (data: T) => void}) => {
   const maxChars = props.maxChars || 50;
@@ -26,6 +27,8 @@ const DescriptionCell = <T extends Histopathology>(props: TableCellProps<T> & {m
 
 const HistopathChartPage = () => {
   const router = useRouter();
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
   const mgiGeneAccessionId = router.query.pid as string;
   const [selectedAnatomy, setSelectedAnatomy] = useState<string>(null);
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
@@ -45,6 +48,13 @@ const HistopathChartPage = () => {
 
   const hideDescriptionModal = () => {
     setShowDescriptionModal(false);
+  };
+
+  const removeAnatomyFilter = () => {
+    setSelectedAnatomy(null);
+    const searchParamsTemp = new URLSearchParams(searchParams.toString());
+    searchParamsTemp.delete('anatomy');
+    router.replace(`${pathName}${searchParamsTemp}`, undefined, { shallow: true });
   };
 
   const filterHistopathology = ({tissue, freeText}: Histopathology, query: string) =>
@@ -131,7 +141,7 @@ const HistopathChartPage = () => {
               selectedAnatomy ? (
                 <span
                   style={{cursor: "pointer"}}
-                  onClick={() => setSelectedAnatomy(null)}
+                  onClick={removeAnatomyFilter}
                 >
                   Showing only tissue data for:&nbsp;
                   <Badge pill bg="secondary" style={{fontSize: '1.1rem', textTransform: "capitalize"}}>
