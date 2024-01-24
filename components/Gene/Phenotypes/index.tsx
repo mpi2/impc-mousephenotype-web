@@ -9,6 +9,7 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,
@@ -118,4 +119,4 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   );
 };
 
-export default Phenotypes;
+export default sectionWithErrorBoundary(Phenotypes, 'Phenotypes', 'data');

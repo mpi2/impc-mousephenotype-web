@@ -51,19 +51,22 @@ const CollectionItem = ({
   name,
   link,
   hasData,
+  external = false,
 }: {
   name: string;
   link: string;
   hasData: boolean;
+  external?: boolean;
 }) => (
   hasData ? (
     <a
       href={link}
-      className={styles.dataCollection}
+      className={`link ${styles.dataCollection}`}
       data-testid={name}
     >
       <Check isChecked={hasData} />
       {name}&nbsp;
+      <FontAwesomeIcon style={{ color: '#8e8e8e' }} icon={external ? faExternalLinkAlt : faChevronCircleDown} />
     </a>
   ) : (
     <span className={styles.dataCollectionInactive} data-testid={name}>
@@ -367,18 +370,21 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
                 link={`/data/viability?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
                 name="Viability data"
                 hasData={gene.hasViabilityData}
+                external
               />
               <br/>
               <CollectionItem
                 link={`/data/bodyweight?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
                 name="Body weight measurements"
                 hasData={gene.hasBodyWeightData}
+                external
               />
               <br/>
               <CollectionItem
                 link={`//www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
                 name="Embryo imaging data"
                 hasData={gene.hasEmbryoImagingData}
+                external
               />
             </Col>
           </Row>

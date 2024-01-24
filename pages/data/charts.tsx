@@ -98,10 +98,10 @@ const Charts = () => {
   });
 
 
-  const isABRChart = !!datasetSummaries.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR");
-  const isViabilityChart = !!datasetSummaries.some(dataset => dataset["procedureGroup"] === "IMPC_VIA");
+  const isABRChart = !isError ? !!datasetSummaries.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR") : false;
+  const isViabilityChart = !isError ? !!datasetSummaries.some(dataset => dataset["procedureGroup"] === "IMPC_VIA") : false;
 
-  let allSummaries = datasetSummaries.concat(additionalSummaries)
+  let allSummaries = datasetSummaries?.concat(additionalSummaries)
 
   /*if (isBodyWeightChart) {
     allSummaries = bodyWeightData;
@@ -190,7 +190,7 @@ const Charts = () => {
               </div>
             </Alert>
           )}
-          {(!isLoading && allSummaries.length > 0) ? (
+          {(!isLoading && !isError && allSummaries.length > 0 ) ? (
             <DataComparison
               visibility={showComparison}
               data={allSummaries}
@@ -198,7 +198,7 @@ const Charts = () => {
               isViabilityChart={isViabilityChart}
               {...(isABRChart && { initialSortByProp: 'parameterStableId' })}
             />
-          ) : <SkeletonTable />}
+          ) : (!isError ? <SkeletonTable /> : null)}
         </Card>
       </Container>
       <div

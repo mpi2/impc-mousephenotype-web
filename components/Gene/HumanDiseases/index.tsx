@@ -16,6 +16,7 @@ import Phenogrid from "phenogrid";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 const Scale = ({ children = 5 }: { children: number }) => {
   return (
@@ -225,4 +226,4 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   );
 };
 
-export default HumanDiseases;
+export default sectionWithErrorBoundary(HumanDiseases, 'Human diseases', 'human-diseases');

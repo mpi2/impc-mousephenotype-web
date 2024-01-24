@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 import {useQuery} from "@tanstack/react-query";
 import {fetchAPI} from "@/api-service";
 import { GeneImage } from "@/models/gene";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 interface ImageProps {
   parameterName: string;
@@ -97,4 +98,4 @@ const Images = ({ gene }: { gene: any }) => {
   );
 };
 
-export default Images;
+export default sectionWithErrorBoundary(Images, 'Associated images', 'images');

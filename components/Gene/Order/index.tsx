@@ -13,6 +13,7 @@ import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneOrder } from "@/models/gene";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
@@ -133,4 +134,4 @@ const Order = ({ gene }: { gene: any }) => {
   );
 };
 
-export default Order;
+export default sectionWithErrorBoundary(Order, 'Order Mouse and ES Cells', 'order');

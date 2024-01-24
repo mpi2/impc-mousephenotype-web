@@ -51,9 +51,7 @@ const ViabilityChartPage = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              {viabilityData &&
-                viabilityData[0]?.["significantPhenotype"] &&
-                viabilityData[0]?.["significantPhenotype"]["name"]}
+              Viability data for {viabilityData?.[0]?.["geneSymbol"] || <Skeleton width="50px" inline />} gene
             </strong>
           </h1>
           {!!viabilityData && (
@@ -69,15 +67,7 @@ const ViabilityChartPage = () => {
               >
               <span>
                 {viabilityData && viabilityData.length} parameter /
-                zygosity / metadata group combinations tested, with the lowest
-                p-value of{" "}
-                <strong>
-                  {viabilityData &&
-                    formatPValue(
-                      Math.min(...viabilityData.map(d => d?.["reportedPValue"]), 0)
-                    )}
-                </strong>
-                .
+                zygosity / metadata group combinations tested.
               </span>
                 <Button
                   variant="secondary"
@@ -96,7 +86,7 @@ const ViabilityChartPage = () => {
             <DataComparison
               visibility={showComparison}
               data={viabilityData}
-              isViabilityChart={false}
+              isViabilityChart={true}
             />
           ) : <SkeletonTable />}
         </Card>

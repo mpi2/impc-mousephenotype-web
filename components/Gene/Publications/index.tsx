@@ -13,6 +13,7 @@ import { fetchAPI } from "@/api-service";
 import { Publication } from "../../PublicationsList/types";
 import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 const ALLELES_COUNT = 2;
 const AllelesCell = ({ pub }: { pub: Publication }) => {
@@ -158,4 +159,4 @@ const Publications = ({ gene }: { gene: any }) => {
   );
 };
 
-export default Publications;
+export default sectionWithErrorBoundary(Publications, 'IMPC related publications', 'publications');
