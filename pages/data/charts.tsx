@@ -5,11 +5,8 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTable } from "@fortawesome/free-solid-svg-icons";
 import { formatPValue } from "@/utils";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import Skeleton from "react-loading-skeleton";
 import SkeletonTable from "@/components/skeletons/table";
-import { useBodyWeightQuery, useViabilityQuery } from "@/hooks";
 import {
   ABR,
   BodyWeightChart,
@@ -21,6 +18,7 @@ import {
   Viability
 } from "@/components/Data";
 import { Card, Search } from "@/components";
+import { useDatasetsQuery } from "@/hooks";
 
 
 const Charts = () => {
@@ -28,7 +26,7 @@ const Charts = () => {
   const [showComparison, setShowComparison] = useState(true);
   const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
-  const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
+  const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
   const getChartType = (datasetSummary: any) => {
     let chartType = datasetSummary["dataType"];
     if (chartType == "line") {
@@ -71,53 +69,15 @@ const Charts = () => {
     }
   };
 
-  const apiUrl = router.query.mpTermId
-    ? `/api/v1/genes/${mgiGeneAccessionId}/${router.query.mpTermId}/dataset/`
-    : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${router.query.alleleAccessionId}&zygosity=${router.query.zygosity}&parameterStableId=${router.query.parameterStableId}&pipelineStableId=${router.query.pipelineStableId}&procedureStableId=${router.query.procedureStableId}&phenotypingCentre=${router.query.phenotypingCentre}`;
 
   const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
 
-  let { data: datasetSummaries, isLoading, isError } = useQuery({
-    queryKey: [
-      "genes",
-      router.query.mgiGeneAccessionId,
-      router.query.mpTermId,
-      apiUrl,
-      "dataset",
-    ],
-    queryFn: () => fetchAPI(apiUrl),
-    enabled: router.isReady,
-    select: data => {
-      data.sort((a, b) => {
-        return a["reportedPValue"] - b["reportedPValue"];
-      });
-      return data?.filter(
-        (value, index, self) =>
-          self.findIndex((v) => v.datasetId === value.datasetId) === index
-      );
-    },
-    placeholderData: []
-  });
-
+  const { datasetSummaries, isLoading, isError } = useDatasetsQuery(mgiGeneAccessionId, router.query, router.isReady);
 
   const isABRChart = !isError ? !!datasetSummaries.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR") : false;
   const isViabilityChart = !isError ? !!datasetSummaries.some(dataset => dataset["procedureGroup"] === "IMPC_VIA") : false;
 
-  let allSummaries = datasetSummaries?.concat(additionalSummaries)
-
-  /*if (isBodyWeightChart) {
-    allSummaries = bodyWeightData;
-  } else if (isAllViabilityChart) {
-    allSummaries = viabilityData;
-  } else {
-    allSummaries = allSummaries.map(dataset => {
-      const bodyWeightDataForDataset = bodyWeightData.find(d => d.datasetId === dataset.datasetId);
-      if (bodyWeightDataForDataset) {
-        return {...dataset, chartData: bodyWeightDataForDataset.chartData};
-      }
-      return dataset;
-    })
-  }*/
+  let allSummaries = datasetSummaries?.concat(additionalSummaries);
 
   return (
     <>
