@@ -19,6 +19,7 @@ import {
 } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery } from "@/hooks";
+import { Dataset } from "@/models";
 
 
 const Charts = () => {
@@ -27,20 +28,21 @@ const Charts = () => {
   const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
-  const getChartType = (datasetSummary: any) => {
-    let chartType = datasetSummary["dataType"];
+  const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
+  const getChartType = (datasetSummary: Dataset, mgiGeneAccessionId: string) => {
+    let chartType = datasetSummary.dataType;
     if (chartType == "line") {
       chartType =
-        datasetSummary["procedureGroup"] == "IMPC_VIA"
+        datasetSummary.procedureGroup == "IMPC_VIA"
           ? "viability"
-          : datasetSummary["procedureGroup"] == "IMPC_FER"
+          : datasetSummary.procedureGroup == "IMPC_FER"
           ? "fertility"
           : [
               "IMPC_EVL_001_001",
               "IMPC_EVM_001_001",
               "IMPC_EVP_001_001",
               "IMPC_EVO_001_001",
-            ].includes(datasetSummary["procedureGroup"])
+            ].includes(datasetSummary.procedureGroup)
           ? "embryo_viability"
           : "line";
     }
@@ -63,21 +65,18 @@ const Charts = () => {
       case "bodyweight":
         return <BodyWeightChart datasetSummary={datasetSummary} />
       case "adult-gross-path":
-        return <GrossPathology datasetSummary={datasetSummary} />
+        return <GrossPathology datasetSummary={datasetSummary} mgiGeneAccessionId={mgiGeneAccessionId} />
       default:
         return null;
     }
   };
 
-
-  const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
-
   const { datasetSummaries, isLoading, isError } = useDatasetsQuery(mgiGeneAccessionId, router.query, router.isReady);
 
-  const isABRChart = !isError ? !!datasetSummaries.some(dataset => dataset["dataType"] === "unidimensional" && dataset["procedureGroup"] === "IMPC_ABR") : false;
-  const isViabilityChart = !isError ? !!datasetSummaries.some(dataset => dataset["procedureGroup"] === "IMPC_VIA") : false;
+  const isABRChart = !isError ? !!datasetSummaries.some(dataset => dataset.dataType === "unidimensional" && dataset.procedureGroup === "IMPC_ABR") : false;
+  const isViabilityChart = !isError ? !!datasetSummaries.some(dataset => dataset.procedureGroup === "IMPC_VIA") : false;
 
-  let allSummaries = datasetSummaries?.concat(additionalSummaries);
+  const allSummaries = datasetSummaries?.concat(additionalSummaries);
 
   return (
     <>
@@ -186,7 +185,7 @@ const Charts = () => {
                   }
                   key={i}
                 >
-                  <div>{getChartType(d)}</div>
+                  <div>{getChartType(d, mgiGeneAccessionId)}</div>
                 </Tab>
               ))}
             </Tabs>
