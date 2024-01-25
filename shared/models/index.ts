@@ -2,12 +2,19 @@ import * as Gene from './gene';
 import * as Phenotype from './phenotype';
 import type { PhenotypeRef } from './phenotype-ref';
 import { MetabolismGeneData } from "@/pages/metabolism";
+import { HistopathologyResponse, Histopathology } from './histopathology';
+import { GrossPathology, GrossPathologyDataset } from './gross-pathology';
+import { Dataset } from './dataset';
 
 export type { PhenotypeRef } from './phenotype-ref';
 export type { TableCellProps } from './TableCell';
 export type { HistopathologyResponse, Histopathology } from './histopathology';
+export type { GrossPathology, GrossPathologyDataset } from './gross-pathology';
+export type { Dataset } from './dataset';
 export type { Gene };
 export type { Phenotype };
 
-type Model = PhenotypeRef | typeof Gene | typeof Phenotype | MetabolismGeneData | HistopathologyResponse | Histopathology;
+type Model =
+  PhenotypeRef | typeof Gene | typeof Phenotype | MetabolismGeneData | Dataset
+  | HistopathologyResponse | Histopathology | GrossPathology | GrossPathologyDataset;
 export type { Model };

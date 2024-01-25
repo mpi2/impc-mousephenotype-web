@@ -8,3 +8,4 @@ export { default as Histopathology } from './Histopathology';
 export { default as TimeSeries } from './TimeSeries';
 export { default as Unidimensional } from './Unidimensional';
 export { default as Viability } from './Viability';
+export { default as GrossPathology } from './GrossPath';
