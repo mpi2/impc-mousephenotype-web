@@ -16,7 +16,7 @@ export const useGeneExternalLinksQuery = (mgiGeneAccessionId: string, routerIsRe
       acc[provider.providerName] = provider.providerDescription;
       return acc;
     }, {}),
-    placeholderData: {}
+    placeholderData: []
   });
 
   const hasLoadedProvidersData = !!providers && Object.keys(providers).length > 0;
