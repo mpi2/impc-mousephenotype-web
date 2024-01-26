@@ -11,17 +11,17 @@ import {
 } from "@/components/SmartTable";
 import { GenePhenotypeHits } from "@/models/gene";
 
-const SignificantPhenotypes = () => {
-  const router = useRouter();
-  const gene = useContext(GeneContext);
-  const [query, setQuery] = useState(undefined);
-  const [sortOptions, setSortOptions] = useState<string>('');
-
-  const {
+const SignificantPhenotypes = (
+  {
     phenotypeData,
     isPhenotypeLoading,
     isPhenotypeError
-  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady, sortOptions);
+  }: {
+    phenotypeData: Array<GenePhenotypeHits>,
+    isPhenotypeLoading: boolean,
+    isPhenotypeError: boolean,
+  }) => {
+  const gene = useContext(GeneContext);
 
   if (isPhenotypeLoading) {
     return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>

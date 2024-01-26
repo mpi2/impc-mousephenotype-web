@@ -10,6 +10,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
+import { useSignificantPhenotypesQuery } from "@/hooks";
+import AllelePhenotypeDiagram from "@/components/Gene/Phenotypes/AllelePhenotypeDiagram";
 
 const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
   ssr: false,
@@ -43,13 +45,23 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     select: data => data as Array<GeneStatisticalResult>
   });
 
+  const {
+    phenotypeData,
+    isPhenotypeLoading,
+    isPhenotypeError
+  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady);
+
   return (
     <Card id="data">
       <h2>Phenotypes</h2>
       <Tabs defaultActiveKey="significantPhenotypes">
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
           <div className="mt-3">
-            <SignificantPhenotypes />
+            <SignificantPhenotypes
+              phenotypeData={phenotypeData}
+              isPhenotypeLoading={isPhenotypeLoading}
+              isPhenotypeError={isPhenotypeError}
+            />
             <p className="mt-4 grey">
               Download data as:{" "}
               <Button
@@ -113,6 +125,13 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           >
             <StatisticalAnalysis data={geneData} />
           </TabContent>
+        </Tab>
+        <Tab eventKey="vennDiagram" title="Allele/Phenotype">
+          <AllelePhenotypeDiagram
+            phenotypeData={phenotypeData}
+            isPhenotypeLoading={isPhenotypeLoading}
+            isPhenotypeError={isPhenotypeError}
+          />
         </Tab>
       </Tabs>
     </Card>
