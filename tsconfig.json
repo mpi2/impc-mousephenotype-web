@@ -32,7 +32,8 @@
       "@/pages/*": ["pages/*"],
       "@/utils": ["utils/index.tsx"],
       "@/utils/*": ["utils/*"]
-    }
+    },
+    "downlevelIteration": true
   },
   "include": [
     "next-env.d.ts",
