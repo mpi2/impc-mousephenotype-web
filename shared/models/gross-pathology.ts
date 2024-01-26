@@ -12,6 +12,8 @@ export type GrossPathologyDataset = {
   procedureStableId: string;
   textValue: null;
   zygosity: string;
+  normalCounts?: string;
+  abnormalCounts?: string;
 };
 
 export type GrossPathology = {
