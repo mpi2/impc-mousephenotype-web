@@ -2,29 +2,7 @@ import { Model, TableCellProps } from "@/models";
 import _ from "lodash";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMars, faMarsAndVenus, faVenus } from "@fortawesome/free-solid-svg-icons";
-
-const getSexLabel = (sex: string) => {
-  switch (sex) {
-    case "male":
-      return "Male";
-    case "female":
-      return "Female";
-    default:
-      return "Combined";
-  }
-};
-
-const getIcon = (sex: string) => {
-  switch (sex) {
-    case "male":
-      return faMars;
-    case "female":
-      return faVenus;
-    default:
-      return faMarsAndVenus;
-  }
-};
+import { getIcon, getSexLabel } from "@/utils";
 
 
 const SignificantSexes = <T extends Model>(props: TableCellProps<T> & {  }) => {

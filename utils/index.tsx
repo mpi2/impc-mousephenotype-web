@@ -1,5 +1,6 @@
 import React from "react";
 import _ from "lodash";
+import { faMars, faMarsAndVenus, faVenus } from "@fortawesome/free-solid-svg-icons";
 
 export const formatBodySystems = (systems: string[] | string = []) => {
   return _.capitalize(
@@ -76,4 +77,26 @@ export const csvToJSON = (csv: string) => {
     result.push(obj);
   }
   return result;
-}
+};
+
+export const getSexLabel = (sex: string) => {
+  switch (sex) {
+    case "male":
+      return "Male";
+    case "female":
+      return "Female";
+    default:
+      return "Combined";
+  }
+};
+
+export const getIcon = (sex: string) => {
+  switch (sex) {
+    case "male":
+      return faMars;
+    case "female":
+      return faVenus;
+    default:
+      return faMarsAndVenus;
+  }
+};
