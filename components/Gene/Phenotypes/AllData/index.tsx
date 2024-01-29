@@ -36,6 +36,13 @@ const PValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) =
     procedureStableId,
     phenotypingCentre,
   } = props.value;
+  let url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
+  if (
+    procedureStableId.includes('IMPC_PAT') &&
+    parameterStableId
+  ) {
+    url = `/data/gross-pathology/${mgiGeneAccessionId}/?grossPathParameterStableId=${parameterStableId}`
+  }
   return (
     <div
       className="bold"
@@ -48,7 +55,7 @@ const PValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) =
         {!!pValue ? formatPValue(Number.parseFloat(pValue)) : "-"}
       </span>
       <Link
-        href={`/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`}
+        href={url}
       >
         <strong className={`link primary small float-right`}>
           <FontAwesomeIcon icon={faChartLine} /> Supporting
