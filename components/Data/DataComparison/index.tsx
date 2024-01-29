@@ -2,8 +2,9 @@ import { useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
-import { formatAlleleSymbol, formatPValue } from "@/utils";
+import { formatAlleleSymbol, formatPValue, getIcon, getSexLabel } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 type LastColumnProps = {
@@ -190,6 +191,7 @@ const DataComparison = (props: Props) => {
             },
             { width: 2, label: "Allele", field: "alleleSymbol" },
             { width: 1, label: "Zyg", field: "zygosity" },
+            { width: 1, label: "Sex", field: "sex" },
             { width: 1, label: "Life Stage", field: "lifeStageName" },
             { width: 1, label: "Colony Id", field: "colonyId",},
             { width: 1, label: "Metadata split flag", field: "flag" },
@@ -208,6 +210,21 @@ const DataComparison = (props: Props) => {
                   <sup>{allele[1]}</sup>
                 </td>
                 <td>{d.zygosity}</td>
+                <td>
+                  {["male", "female", "not_considered"]
+                    .filter(sex => _.has(d, `pValue_${sex}`))
+                    .map(significantSex => (
+                      <OverlayTrigger
+                        placement="top"
+                        trigger={["hover", "focus"]}
+                        overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}
+                      >
+                        <span className="me-2">
+                          <FontAwesomeIcon icon={getIcon(significantSex)} size="lg" />
+                        </span>
+                      </OverlayTrigger>
+                    ))}
+                </td>
                 <td>{d.lifeStageName}</td>
                 <td>{d.colonyId}</td>
                 <td>??</td>

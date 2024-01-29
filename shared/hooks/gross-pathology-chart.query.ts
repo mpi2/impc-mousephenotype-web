@@ -1,21 +1,19 @@
-import { Col, Row } from "react-bootstrap";
-import Card from "@/components/Card";
-import ChartSummary from "@/components/Data/ChartSummary";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GrossPathology, GrossPathologyDataset } from "@/models";
-import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 
-const GrossPathology = ({ datasetSummary, mgiGeneAccessionId }) => {
-
-  const { data } = useQuery({
+export const useGrossPathologyChartQuery = (
+  mgiGeneAccessionId: string,
+  grossPathParameterStableId: string,
+) => {
+  return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "gross-pathology"],
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/pathology`),
     placeholderData: [],
     select: (data: Array<GrossPathology>) => {
       const counts = {}
-      const filteredData = !!datasetSummary?.parameterStableId ? (
-        data.filter(d => d.parameterStableId === datasetSummary.parameterStableId)
+      const filteredData = !!grossPathParameterStableId ? (
+        data.filter(d => d.parameterStableId === grossPathParameterStableId)
       ) : data;
       let datasetsFiltered = filteredData
         .flatMap(byParameter => byParameter.datasets);
@@ -43,35 +41,8 @@ const GrossPathology = ({ datasetSummary, mgiGeneAccessionId }) => {
           abnormalCounts: counts[abnormalCountsKey]?.toString() || 'N/A',
           normalCounts: counts[normalCountsKey]?.toString() || 'N/A',
         }
-      });
+      }) as Array<GrossPathologyDataset>;
 
     }
   });
-
-  console.log(data);
-  return (
-    <>
-      <ChartSummary datasetSummary={datasetSummary} />
-      <Row>
-        <Col>
-          <Card>
-            <h2>Observation numbers</h2>
-            <SmartTable<GrossPathologyDataset>
-              data={data}
-              defaultSort={["alleleSymbol", "asc"]}
-              columns={[
-                { width: 1, label: "Anatomy", field: "parameterName", cmp: <PlainTextCell /> },
-                { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell />  },
-                { width: 1, label: "Abnormal", field: "abnormalCounts", cmp: <PlainTextCell /> },
-                { width: 1, label: "Normal", field: "normalCounts", cmp: <PlainTextCell /> },
-                { width: 1, label: "Center", field: "phenotypingCenter", cmp: <PlainTextCell /> },
-              ]}
-            />
-          </Card>
-        </Col>
-      </Row>
-    </>
-  );
-};
-
-export default GrossPathology;
+}

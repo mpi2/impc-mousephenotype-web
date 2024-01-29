@@ -11,7 +11,7 @@ import {
   ABR,
   BodyWeightChart,
   Categorical, DataComparison,
-  EmbryoViability, GrossPathology,
+  EmbryoViability,
   Histopathology,
   TimeSeries,
   Unidimensional,
@@ -64,8 +64,6 @@ const Charts = () => {
         return <Histopathology datasetSummary={datasetSummary} />;
       case "bodyweight":
         return <BodyWeightChart datasetSummary={datasetSummary} />
-      case "adult-gross-path":
-        return <GrossPathology datasetSummary={datasetSummary} mgiGeneAccessionId={mgiGeneAccessionId} />
       default:
         return null;
     }
