@@ -7,4 +7,4 @@ export { useGeneExternalLinksQuery } from './gene-external-links.query';
 export { useGeneSummaryQuery } from './gene-summary.query';
 export { useHistopathologyQuery } from './histopathology.query';
 export { useDatasetsQuery } from './datasets.query';
-
+export { useGrossPathologyChartQuery } from './gross-pathology-chart.query';
