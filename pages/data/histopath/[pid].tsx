@@ -7,8 +7,10 @@ import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 import { Histopathology, TableCellProps } from "@/models";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong, faExternalLinkAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { usePathname, useSearchParams } from "next/navigation";
+import _ from "lodash";
+import Link from "next/link";
 
 const DescriptionCell = <T extends Histopathology>(props: TableCellProps<T> & {maxChars?: number, onClick: (data: T) => void}) => {
   const maxChars = props.maxChars || 50;
@@ -71,20 +73,10 @@ const HistopathChartPage = () => {
         <Card>
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
-              <button
-                style={{
-                  border: 0,
-                  background: "none",
-                  padding: 0,
-                }}
-                onClick={() => {
-                  router.back();
-                }}
-              >
-                <a href="#" className="grey mb-3">
-                  {gene?.geneSymbol}
-                </a>
-              </button>{" "}
+              <Link href={`/genes/${mgiGeneAccessionId}/#histopathology`} className="grey mb-3 small">
+                <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
+                BACK TO GENE &nbsp;
+              </Link>
               / Histopathology
             </span>
           </div>
@@ -169,52 +161,62 @@ const HistopathChartPage = () => {
               {width: 1, label: "Free Text", field: "freeText", cmp: <PlainTextCell /> },
             ]}
           />
-          <h2>Histopathology images</h2>
-          <Row>
-            <Accordion defaultActiveKey={['0']}>
-              {!!data?.images ? (
-                Object.keys(data.images).map((tissue, index) => (
-                  <Accordion.Item key={tissue} eventKey={index.toString()}>
-                    <Accordion.Header>{tissue}</Accordion.Header>
-                    <Accordion.Body>
+          {!_.isEmpty(data?.images) ? (
+            <>
+              <h2>Histopathology images</h2>
+              <Row>
+                <Accordion defaultActiveKey={['0']}>
+                  {Object.keys(data.images).map((tissue, index) => (
+                    <Accordion.Item key={tissue} eventKey={index.toString()}>
+                      <Accordion.Header>{tissue}</Accordion.Header>
+                      <Accordion.Body>
                       <Row>
                         {data.images[tissue].map(image => (
                           <Col
-                            style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', rowGap: '0.3rem', marginBottom: '1rem' }}
+                            style={{
+                              textAlign: 'center',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              rowGap: '0.3rem',
+                              marginBottom: '1rem'
+                            }}
                             xs={4}
                           >
-                            <a href={`//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/${image.omeroId}`} target="_blank">
+                            <a href={`//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/${image.omeroId}`}
+                               target="_blank">
                               <img
-                                style={{ cursor: 'pointer', alignSelf: 'center' }}
+                                style={{cursor: 'pointer', alignSelf: 'center'}}
                                 src={image.thumbnailUrl} alt=""
                               />
                             </a>
-                            <AlleleSymbol symbol={image.alleleSymbol} withLabel={false} />
+                            <AlleleSymbol symbol={image.alleleSymbol} withLabel={false}/>
                             <span>Mouse {image.specimenNumber}</span>
                             <span>
-                              <a
-                                className="primary link"
-                                target="_blank"
-                                href={`https://ontobee.org/ontology/MA?iri=http://purl.obolibrary.org/obo/${image.maId}`}
-                              >
-                                {image.maTerm}
-                              </a>
+                          <a
+                            className="primary link"
+                            target="_blank"
+                            href={`https://ontobee.org/ontology/MA?iri=http://purl.obolibrary.org/obo/${image.maId}`}
+                          >
+                            {image.maTerm}
+                          </a>
                               &nbsp;
                               <FontAwesomeIcon
                                 icon={faExternalLinkAlt}
                                 className="grey"
                                 size="xs"
                               />
-                            </span>
+                        </span>
                           </Col>
                         ))}
                       </Row>
                     </Accordion.Body>
-                  </Accordion.Item>
-                ))
-              ) : null}
-            </Accordion>
-          </Row>
+                    </Accordion.Item>
+                  ))}
+                </Accordion>
+              </Row>
+            </>
+          ) : null}
+
           <Modal
             show={showDescriptionModal}
             onHide={hideDescriptionModal}
