@@ -51,6 +51,10 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     isPhenotypeError
   } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady);
 
+  const hasDataRelatedToPWG =
+    geneData?.some(item => item.projectName === 'PWG') ||
+    phenotypeData?.some(item => item.projectName === 'PWG');
+
   return (
     <Card id="data">
       <h2>Phenotypes</h2>
@@ -134,6 +138,15 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           />
         </Tab>
       </Tabs>
+      {hasDataRelatedToPWG && (
+        <span style={{ textAlign: 'right', marginTop: '1rem', fontSize: "90%" }}>
+          * Significant with a threshold of 1x10-3, check the&nbsp;
+          <a className="primary link" href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
+            Pain Sensitivity page&nbsp;
+          </a>
+          for more information.
+        </span>
+      )}
     </Card>
   );
 };
