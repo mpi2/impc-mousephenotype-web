@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -13,9 +13,11 @@ import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
 import { GeneHistopathology } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
+import { GeneContext } from "@/contexts";
 
-const Histopathology = ({ gene }: { gene: any }) => {
+const Histopathology = () => {
   const router = useRouter();
+  const gene = useContext(GeneContext);
   const [sorted, setSorted] = useState<any[]>(null);
 
   const { isLoading, isError, data, error } = useQuery({
@@ -39,6 +41,20 @@ const Histopathology = ({ gene }: { gene: any }) => {
         <p className="grey">Loading...</p>
       </Card>
     );
+  }
+
+  if (isError && error === 'No content' && gene.hasHistopathologyData) {
+    return (
+      <Card id="histopathology">
+        <h2>Histopathology</h2>
+        <Alert variant="primary">
+          This gene doesn't have any significant Histopathology hits.&nbsp;
+          <Link className="primary link" href={`/data/histopath/${router.query.pid}`}>
+            Please click here to see the raw data
+          </Link>
+        </Alert>
+      </Card>
+    )
   }
 
   if (isError || !sorted) {

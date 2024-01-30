@@ -55,7 +55,7 @@ const Gene = () => {
             <Expressions />
             <Images gene={gene} />
             <HumanDiseases gene={gene} />
-            <Histopathology gene={gene} />
+            <Histopathology />
             <Publications gene={gene} />
             <ExternalLinks />
             <Order gene={gene} />
