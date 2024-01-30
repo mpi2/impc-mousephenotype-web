@@ -101,7 +101,7 @@ const Publications = ({ gene }: { gene: any }) => {
                   label: "Journal",
                   field: "journalTitle",
                 },
-                { width: 2, label: "IMPC Allele", field: "alleleSymbol" },
+                { width: 2, label: "Allele", field: "alleleSymbol" },
                 { width: 2, label: "PubMed ID", field: "pmId" },
               ]}
             >

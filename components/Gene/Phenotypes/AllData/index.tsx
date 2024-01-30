@@ -189,21 +189,21 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
         }
         columns={[
           {
-            width: 3,
+            width: 2.5,
             label: "Procedure/parameter",
             field: "procedureName",
             cmp: <ParameterCell />
           },
           {
-            width: 1,
-            label: "Phy. system",
+            width: 1.5,
+            label: "System",
             field: "topLevelPhenotypes",
             cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />
           },
-          { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
           { width: 1, label: "Allele", field: "alleleSymbol", cmp: <AlleleCell /> },
-          { width: 1, label: "Center", field: "phenotypingCentre", cmp: <PlainTextCell /> },
           { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: "capitalize" }} /> },
+          { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
+          { width: 1, label: "Center", field: "phenotypingCentre", cmp: <PlainTextCell /> },
           { width: 0.5, label: "Significant", field: "significant", cmp: <OptionsCell options={{ true: 'Yes', false: 'No' }} /> },
           { width: 2, label: "P value", field: "pValue", cmp: <PValueCell /> },
         ]}
