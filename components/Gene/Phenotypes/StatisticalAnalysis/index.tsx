@@ -203,7 +203,7 @@ const StatisticalAnalysisChart = ({
           afterBody: (context) => {
             const data = processed[context[0].dataIndex];
             return [
-              `P-value: ${parseFloat(data.pvalue).toExponential(3)}`,
+              `P-value: ${parseFloat(data.pValue).toExponential(3)}`,
               `Zygosity: ${_.capitalize(data.zygosity)}`,
               `Procedure: ${data.procedureName}`,
               `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,
