@@ -98,15 +98,7 @@ const ViabilityChartPage = () => {
         <Container>
           <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
             {viabilityData && viabilityData.map((d, i) => (
-              <Tab eventKey={i}
-                title={
-                  <>
-                    Combination #{i + 1} ({formatPValue(d["reportedPValue"])}{" "}
-                    {i === 0 ? " | lowest" : null})
-                  </>
-                }
-                key={i}
-              >
+              <Tab eventKey={i} title={<>Combination #{i + 1}</>} key={i}>
                 <Viability datasetSummary={d} />
               </Tab>
             ))}
