@@ -16,7 +16,7 @@ export const useSignificantPhenotypesQuery = (
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`),
     enabled: routerIsReady,
     select: (data: Array<GenePhenotypeHits>) => {
-      const group = {};
+      const group: Record<string, GenePhenotypeHits> = {};
       data.forEach(item => {
         const {
           phenotype: { id },
@@ -41,7 +41,7 @@ export const useSignificantPhenotypesQuery = (
           };
         }
       });
-      return Object.values(group);
+      return Object.values(group).filter(phenotype => !phenotype.procedureStableId.includes("HIS"));
     },
     placeholderData: [],
   });
