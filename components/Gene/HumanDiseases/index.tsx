@@ -186,7 +186,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             title={`Human diseases predicted to be associated with ${gene.geneSymbol} (${predictedData.length})`}
           ></Tab>
         </Tabs>
-        {isError ? (
+        {!selectedData || !selectedData.length ? (
           <Alert className={styles.table} variant="primary">
             No data available for this section.
           </Alert>

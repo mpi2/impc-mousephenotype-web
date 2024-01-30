@@ -21,10 +21,15 @@ const SignificantPValue = <T extends Model>(
   ) {
     url = `/data/gross-pathology/${mgiAccessionId}/?grossPathParameterStableId=${props.value['parameterStableId']}`
   }
+  const isAssociatedToPWG = props.value?.['projectName'] === 'PWG' || false;
+  if (isAssociatedToPWG) {
+    url = 'https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/';
+  }
   return (
     <span className="me-2 bold" style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
       <span className="">
         {!!pValue ? formatPValue(pValue) : 0}&nbsp;
+        {isAssociatedToPWG && <span>*</span>}
       </span>
       <Link href={url}>
         <strong className={`link primary small float-right`}>

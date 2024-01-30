@@ -11,11 +11,12 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
 import { formatBodySystems } from "@/utils";
-import { Alert, Button, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import { GeneStatisticalResult } from "@/models/gene";
 
 Chart.register([annotationPlugin, zoomPlugin]);
 
-var colorArray = [
+const colorArray = [
   "#FF6633",
   "#FFB399",
   "#FF33FF",
@@ -94,8 +95,11 @@ const options = [
 
 type Cat = { type: CatType; meta?: any };
 
-const getSignificants = (data: any) => {
-  return data.filter((x) => -Math.log10(Number(x.pValue)) >= 4);
+const getSignificants = (data: Array<GeneStatisticalResult>) => {
+  return data.filter(item => {
+    const pValueThreshold = item.projectName === 'PWG' ? 3 : 4;
+    return -Math.log10(Number(item.pValue)) >= pValueThreshold;
+  });
 };
 
 const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
@@ -130,10 +134,12 @@ const StatisticalAnalysisChart = ({
   data,
   cat,
   sig,
+  hasDataRelatedToPWG
 }: {
-  data: any;
+  data: Array<GeneStatisticalResult>;
   cat: Cat;
   sig: boolean;
+  hasDataRelatedToPWG: boolean;
 }) => {
   const chartRef = useRef<Chart>(null);
   if (!data) {
@@ -153,18 +159,13 @@ const StatisticalAnalysisChart = ({
       topLevelPhenotypes: x.topLevelPhenotypes.map((y) => y.name),
     }));
 
-  // .sort((a, b) => a.topLevelPhenotypes[0] - b.topLevelPhenotypes[0]);
   const processed = processData(hasPValue, cat, sig);
 
   const labels = processed.map((x) => x.parameterName);
   const values = processed.map((x) => -Math.log10(Number(x.pValue)));
   const isByProcedure = cat.type === cats.PROCEDURES;
-  let colorByArray = [];
-  if (isByProcedure) {
-    colorByArray = _.uniq(processed.map((x) => x.procedureName));
-  } else {
-    colorByArray = _.uniq(processed.map((x) => x.topLevelPhenotypes[0]));
-  }
+  let colorByArray = isByProcedure ? _.uniq(processed.map((x) => x.procedureName)) : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]));
+
   const colors = processed.map((x) => {
     let index = 0;
     if (isByProcedure) {
@@ -202,7 +203,7 @@ const StatisticalAnalysisChart = ({
           afterBody: (context) => {
             const data = processed[context[0].dataIndex];
             return [
-              `P-value: ${parseFloat(data.pvalue).toExponential(3)}`,
+              `P-value: ${parseFloat(data.pValue).toExponential(3)}`,
               `Zygosity: ${_.capitalize(data.zygosity)}`,
               `Procedure: ${data.procedureName}`,
               `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,
@@ -219,14 +220,34 @@ const StatisticalAnalysisChart = ({
             type: "line" as const,
             xMin: 4,
             xMax: 4,
-            borderColor: "#aaa",
-            borderWidth: 2,
+            borderColor: "rgb(255, 99, 132)",
+            borderWidth: 3,
             borderDash: [2, 6],
             label: {
+              display: true,
               content: "Significant threshold 1.0E-4",
-              enabled: true,
-              rotation: "auto" as const,
-              backgroundColor: "#aaa",
+              backgroundColor: "rgba(255, 255, 255, 1)",
+              rotation: 90,
+              xAdjust: 20,
+              color: '#000'
+            },
+          },
+          painThreshold: {
+            display: hasDataRelatedToPWG,
+            drawTime: "afterDraw" as const,
+            type: "line" as const,
+            xMin: 3,
+            xMax: 3,
+            borderColor: "rgb(255, 99, 132)",
+            borderWidth: 3,
+            borderDash: [2, 6],
+            label: {
+              display: true,
+              content: "Significant threshold for pain sensitivity 1.0E-3",
+              backgroundColor: "rgba(255, 255, 255, 1)",
+              rotation: 90,
+              xAdjust: 20,
+              color: '#000'
             },
           },
         },
@@ -248,6 +269,11 @@ const StatisticalAnalysisChart = ({
         },
       },
     },
+    scales: {
+      x: {
+        title: { display: true, text: '-log₁₀(P-value)' },
+      }
+    }
   };
 
   return (
@@ -341,7 +367,7 @@ const StatisticalAnalysisChart = ({
   );
 };
 
-const StatisticalAnalysis = ({ data }) => {
+const StatisticalAnalysis = ({ data }: { data: Array<GeneStatisticalResult> }) => {
   const [cat, setCat] = useState<Cat | null>({
     type: cats.BODY_SYSTEMS,
   });
@@ -370,6 +396,8 @@ const StatisticalAnalysis = ({ data }) => {
     }
     return "";
   })();
+
+  const hasDataRelatedToPWG = data.some(item => item.projectName === 'PWG');
 
   return (
     <>
@@ -411,7 +439,12 @@ const StatisticalAnalysis = ({ data }) => {
           </button>
         </p>
       </div>
-      <StatisticalAnalysisChart data={data} cat={cat} sig={significantOnly} />
+      <StatisticalAnalysisChart
+        data={data}
+        cat={cat}
+        sig={significantOnly}
+        hasDataRelatedToPWG={hasDataRelatedToPWG}
+      />
     </>
   );
 };

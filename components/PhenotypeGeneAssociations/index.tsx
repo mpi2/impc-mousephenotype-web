@@ -69,7 +69,7 @@ const Associations = (props: Props) => {
         columns={[
           { width: 2, label: "Gene / allele", field: "alleleSymbol", cmp: <AlleleCell style={{ fontWeight: 'bold' }} /> },
           { width: 1.3, label: "Phenotype", field: "phenotypeName", cmp: <PlainTextCell />  },
-          { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell /> },
+          { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: 'capitalize' }} /> },
           { width: 0.7, label: "Sex", field: "sex", cmp: <SignificantSexesCell /> },
           { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
           { width: 1.5, label: "Parameter", field: "parameterName", cmp: <ParameterCell /> },
