@@ -116,7 +116,14 @@ const ManhattanPlot = ({ phenotypeId }) => {
             yMin: 4,
             yMax: 4,
             borderColor: 'rgb(255, 99, 132)',
-            borderWidth: 1,
+            borderWidth: 2,
+            borderDash: [2, 6],
+            label: {
+              display: true,
+              content: 'Significant threshold 1.0E-4',
+              backgroundColor: "#aaa",
+              position: 'end',
+            }
           }
         }
       },
