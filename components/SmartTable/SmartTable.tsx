@@ -22,7 +22,8 @@ const SmartTable = <T extends Model>(props: {
   const [sortOptions, setSortOptions] = useState<string>('');
   const {
     filteringEnabled = true,
-    customFiltering = false
+    customFiltering = false,
+    zeroResulsText = 'No data available'
   } = props;
 
   const internalShowFilteringEnabled = filteringEnabled && !!props.filterFn && !customFiltering;
@@ -79,10 +80,10 @@ const SmartTable = <T extends Model>(props: {
               ))}
             </tr>
           ))}
-          {(pageData.length === 0 && !!props.zeroResulsText) && (
+          {(pageData.length === 0) && (
             <tr>
               <td colSpan={7}>
-                <b>{props.zeroResulsText}</b>
+                <b>{zeroResulsText}</b>
               </td>
             </tr>
           )}
