@@ -30,13 +30,20 @@ type ChromosomeDataPoint = {
   reportedPValue: number;
   seqRegionStart: number;
   seqRegionEnd: number;
+  significant: boolean;
   // fields created by FE
   pos?: number,
 };
 
 const clone = obj => JSON.parse(JSON.stringify(obj));
 
-const transformPValue = (value: number) => -Math.log10(value);
+const transformPValue = (value: number, significant: boolean) => {
+  if (value === 0 && significant) {
+    // put a high value to show they are really significant
+    return 30;
+  }
+  return -Math.log10(value)
+};
 const ManhattanPlot = ({ phenotypeId }) => {
   const router = useRouter();
   const chartRef = useRef(null);
@@ -71,7 +78,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
     return rawDataPoint.geneSymbol.includes(geneFilter) || rawDataPoint.mgiGeneAccessionId === geneFilter;
   }
 
-  const options = {
+  const options= {
     responsive: true,
     maintainAspectRatio: false,
     animation: false,
@@ -147,7 +154,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
             genes: tooltipModel.dataPoints.map(({ raw }) => ({
               geneSymbol: raw.geneSymbol,
               mgiGeneAccessionId: raw.mgiGeneAccessionId,
-              pValue: raw.pValue
+              pValue: raw.pValue,
+              significant: raw.significant
             })),
           };
           if (isEqual(newTooltipData.genes, clickTooltip.genes)) {
@@ -187,7 +195,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
             return {
               geneSymbol: rawData.geneSymbol,
               mgiGeneAccessionId: rawData.mgiGeneAccessionId,
-              pValue: rawData.pValue
+              pValue: rawData.pValue,
+              significant: rawData.significant
             };
           })
         };
@@ -232,13 +241,14 @@ const ManhattanPlot = ({ phenotypeId }) => {
       return {
         datasets: Object.keys(groupedByChr).map((chr, i) =>  ({
           label: chr,
-          data: groupedByChr[chr].map(({ pos, reportedPValue, markerSymbol, mgiGeneAccessionId }) => ({
+          data: groupedByChr[chr].map(({ pos, reportedPValue, markerSymbol, mgiGeneAccessionId, significant }) => ({
             x: pos,
-            y: transformPValue(reportedPValue),
+            y: transformPValue(reportedPValue, significant),
             geneSymbol: markerSymbol,
             pValue: reportedPValue,
             mgiGeneAccessionId,
-            chromosome: chr
+            chromosome: chr,
+            significant,
           })),
           backgroundColor: chartColors[i],
           parsing: false
@@ -247,7 +257,6 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
     }
   });
-
 
   return (
     <div className={styles.chartWrapper}>

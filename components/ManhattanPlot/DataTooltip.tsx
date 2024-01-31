@@ -1,7 +1,7 @@
 import styles from "@/components/ManhattanPlot/styles.module.scss";
 import { formatPValue } from "@/utils";
 
-type Gene = { mgiGeneAccessionId: string, geneSymbol: string, pValue: number };
+type Gene = { mgiGeneAccessionId: string, geneSymbol: string, pValue: number, significant: boolean };
 
 type TooltipProps = {
   tooltip: {
@@ -40,7 +40,12 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
               {gene.geneSymbol}
             </a>
             <br/>
-            P-value: {!!gene.pValue ? formatPValue(gene.pValue) : 0}
+            {gene.significant ?
+              <span>Marked as significant gene</span> :
+              <span>
+                P-value: {!!gene.pValue ? formatPValue(gene.pValue) : 0}
+              </span>
+            }
           </li>
         )) }
       </ul>
