@@ -36,7 +36,13 @@ type ChromosomeDataPoint = {
 
 const clone = obj => JSON.parse(JSON.stringify(obj));
 
-const transformPValue = (value: number) => -Math.log10(value);
+const transformPValue = (value: number, significant: boolean) => {
+  if (value === 0 && significant) {
+    // put a high value to show they are really significant
+    return 30;
+  }
+  return -Math.log10(value)
+};
 const ManhattanPlot = ({ phenotypeId }) => {
   const router = useRouter();
   const chartRef = useRef(null);
@@ -232,13 +238,14 @@ const ManhattanPlot = ({ phenotypeId }) => {
       return {
         datasets: Object.keys(groupedByChr).map((chr, i) =>  ({
           label: chr,
-          data: groupedByChr[chr].map(({ pos, reportedPValue, markerSymbol, mgiGeneAccessionId }) => ({
+          data: groupedByChr[chr].map(({ pos, reportedPValue, markerSymbol, mgiGeneAccessionId, significant }) => ({
             x: pos,
-            y: transformPValue(reportedPValue),
+            y: transformPValue(reportedPValue, significant),
             geneSymbol: markerSymbol,
             pValue: reportedPValue,
             mgiGeneAccessionId,
-            chromosome: chr
+            chromosome: chr,
+            significant,
           })),
           backgroundColor: chartColors[i],
           parsing: false
@@ -247,7 +254,6 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
     }
   });
-
 
   return (
     <div className={styles.chartWrapper}>
