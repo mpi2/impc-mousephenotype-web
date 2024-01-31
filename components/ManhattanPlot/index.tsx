@@ -30,6 +30,7 @@ type ChromosomeDataPoint = {
   reportedPValue: number;
   seqRegionStart: number;
   seqRegionEnd: number;
+  significant: boolean;
   // fields created by FE
   pos?: number,
 };
@@ -77,7 +78,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
     return rawDataPoint.geneSymbol.includes(geneFilter) || rawDataPoint.mgiGeneAccessionId === geneFilter;
   }
 
-  const options = {
+  const options= {
     responsive: true,
     maintainAspectRatio: false,
     animation: false,
@@ -153,7 +154,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
             genes: tooltipModel.dataPoints.map(({ raw }) => ({
               geneSymbol: raw.geneSymbol,
               mgiGeneAccessionId: raw.mgiGeneAccessionId,
-              pValue: raw.pValue
+              pValue: raw.pValue,
+              significant: raw.significant
             })),
           };
           if (isEqual(newTooltipData.genes, clickTooltip.genes)) {
@@ -193,7 +195,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
             return {
               geneSymbol: rawData.geneSymbol,
               mgiGeneAccessionId: rawData.mgiGeneAccessionId,
-              pValue: rawData.pValue
+              pValue: rawData.pValue,
+              significant: rawData.significant
             };
           })
         };
