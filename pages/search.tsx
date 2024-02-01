@@ -7,7 +7,9 @@ import { useState } from "react";
 
 const SearchResults = () => {
   const router = useRouter();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(
+    (router.query.query as string) || ""
+  );
   const { type } = router.query;
 
   const renderResults = () => {

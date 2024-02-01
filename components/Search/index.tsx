@@ -126,7 +126,11 @@ const Search = ({
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   if (router.route !== "/search") {
-                    router.push(`/search?query=${e.currentTarget.value}`);
+                    let url = `/search?query=${e.currentTarget.value}`;
+                    if (tabIndex === 1) {
+                      url += '&type=phenotype'
+                    }
+                    router.push(url);
                   } else {
                     router.replace({
                       query: { ...router.query, query: e.currentTarget.value },
