@@ -39,7 +39,9 @@ const getInternalLink = (name: string, link: string) => {
     case 'Genes Critical for Hearing Identified':
       return '/hearing';
     case 'Genetic Basis for Metabolic Diseases':
-      return '/metabolism'
+      return '/metabolism';
+    case 'Essential Genes - Translating to Other Species':
+      return '/conservation';
     default:
       return link;
   }
