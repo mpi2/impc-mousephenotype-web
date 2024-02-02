@@ -47,8 +47,12 @@ const AllelePhenotypeDiagram = (
     if (allelesByField[phenotype.phenotypeName] === undefined) {
       allelesByField[phenotype.phenotypeName] = [];
     }
-    if (!allelesByField[phenotype.phenotypeName].includes(phenotype[field])) {
-      allelesByField[phenotype.phenotypeName].push(phenotype[field]);
+    let value = phenotype[field];
+    if (field === 'sex' && value === 'not_considered') {
+      value = 'both sexes';
+    }
+    if (!allelesByField[phenotype.phenotypeName].includes(value)) {
+      allelesByField[phenotype.phenotypeName].push(value);
     }
   });
   console.log(allelesByField);
