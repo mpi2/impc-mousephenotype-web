@@ -48,7 +48,7 @@ const AllelePhenotypeDiagram = (
   const [selection, setSelection] = useState(null);
   const [clickSelection, setClickSelection] = useState(null);
   return (
-    <div style={{ position: 'relative', display: 'flex' }}>
+    <div style={{ position: 'relative', display: 'flex', paddingTop: '1rem' }}>
       <VennDiagram
         sets={sets}
         combinations={combinations}
