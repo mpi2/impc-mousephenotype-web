@@ -83,7 +83,7 @@ const AllelePhenotypeDiagram = (
               </>
             ) : (
               <>
-                has these phenotypes in common:
+                have these phenotypes in common:
               </>
             )}
             <ul>
