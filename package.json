@@ -25,7 +25,6 @@
     "chart.js": "4.4.1",
     "chartjs-adapter-moment": "^1.0.0",
     "chartjs-chart-error-bars": "^4.3.3",
-    "chartjs-plugin-annotation": "3.0.1",
     "chartjs-plugin-datalabels": "^2.2.0",
     "chartjs-plugin-zoom": "^2.0.1",
     "d3": "^7.8.5",
