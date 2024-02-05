@@ -125,6 +125,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
             borderColor: 'rgb(255, 99, 132)',
             borderWidth: 2,
             borderDash: [2, 6],
+            drawTime: "afterDraw",
             label: {
               display: true,
               content: 'Significant threshold 1.0E-4',
