@@ -1,7 +1,6 @@
 import "chart.js/auto";
 import { Chart } from "chart.js";
 import { Chart as ChartEl } from "react-chartjs-2";
-import annotationPlugin from "chartjs-plugin-annotation";
 import zoomPlugin from "chartjs-plugin-zoom";
 import _ from "lodash";
 import { useRef, useState } from "react";
@@ -14,7 +13,7 @@ import { formatBodySystems } from "@/utils";
 import { Button, Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 
-Chart.register(annotationPlugin, zoomPlugin);
+Chart.register(zoomPlugin);
 
 const colorArray = [
   "#FF6633",

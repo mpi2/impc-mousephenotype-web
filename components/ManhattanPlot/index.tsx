@@ -8,7 +8,6 @@ import {
 } from 'chart.js';
 import { Scatter } from "react-chartjs-2";
 import { chartColors } from "@/utils/chart";
-import annotationPlugin from "chartjs-plugin-annotation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { useRouter } from "next/router";
@@ -20,7 +19,7 @@ import Form from 'react-bootstrap/Form';
 import DataTooltip from "./DataTooltip";
 import { PhenotypeStatsResults } from "@/models/phenotype";
 
-ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, annotationPlugin);
+ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 
 type ChromosomeDataPoint = {
