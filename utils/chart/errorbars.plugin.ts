@@ -10,11 +10,12 @@ export default {
         const dsMeta = chart.getDatasetMeta(i);
         const values = d.data;
         return dsMeta.data.map((b, i) => {
+          console.log(i);
           return {
-            value: values[i].y,
+            value: values[i]?.y,
             x: b.x,
-            yMin: values[i].yMin,
-            yMax: values[i].yMax,
+            yMin: values[i]?.yMin,
+            yMax: values[i]?.yMax,
             backgroundColor: d.backgroundColor,
           };
         }).filter(c => !!c.value);
@@ -39,7 +40,7 @@ export default {
     };
     const { ctx } = chart;
     const barchartCoords = getBarchartBaseCoords(chart);
-    const scale = chart.scales.yAxis;
+    const scale = chart.scales.y;
     barchartCoords.forEach(point => {
       const maxValuePixel = scale.getPixelForValue(point.yMax);
       const minValuePixel = scale.getPixelForValue(point.yMin);

@@ -121,7 +121,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
       axis: 'y' as const
     },
     scales: {
-      yAxis: {
+      y: {
         min: 0,
         max: 50,
         title: {
@@ -129,7 +129,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
           text: 'Mass (g)',
         },
       },
-      xAxis: {
+      x: {
         grid: {
           display: false,
         },

@@ -8,7 +8,7 @@ import Skeleton from "react-loading-skeleton";
 import { formatPValue } from "@/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTable } from "@fortawesome/free-solid-svg-icons";
-import { ABR, BodyWeightChart, DataComparison } from "@/components/Data";
+import { BodyWeightChart, DataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 
 const BodyWeightChartPage = () => {
