@@ -14,7 +14,7 @@ import { formatBodySystems } from "@/utils";
 import { Button, Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 
-Chart.register([annotationPlugin, zoomPlugin]);
+Chart.register(annotationPlugin, zoomPlugin);
 
 const colorArray = [
   "#FF6633",
