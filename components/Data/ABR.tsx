@@ -186,7 +186,7 @@ const ABR = (props : ABRProps) => {
       mode: 'index' as const,
     },
     scales: {
-      yAxis: {
+      y: {
         min: 0,
         max: 120,
         title: {
@@ -194,7 +194,7 @@ const ABR = (props : ABRProps) => {
           text: 'dB SPL',
         },
       },
-      xAxis: {
+      x: {
         grid: {
           display: false,
         }
