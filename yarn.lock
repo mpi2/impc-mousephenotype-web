@@ -2036,11 +2036,6 @@ chartjs-chart-error-bars@^4.3.3:
   resolved "https://registry.yarnpkg.com/chartjs-chart-error-bars/-/chartjs-chart-error-bars-4.3.3.tgz#929647316f08a5e71980d2af394d6f3346efe179"
   integrity sha512-Hv2b+8InmNqfwYGgYW8uNO2VsY+BKdIiJZrfGrBwQjb7CY5kvr0hCCZ0QDNsSkEj8bxseAsv729ZddpC6PXTzQ==
 
-chartjs-plugin-annotation@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/chartjs-plugin-annotation/-/chartjs-plugin-annotation-3.0.1.tgz#4cf51d9797bf3202788ca0beae8694404621ad19"
-  integrity sha512-hlIrXXKqSDgb+ZjVYHefmlZUXK8KbkCPiynSVrTb/HjTMkT62cOInaT1NTQCKtxKKOm9oHp958DY3RTAFKtkHg==
-
 chartjs-plugin-datalabels@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/chartjs-plugin-datalabels/-/chartjs-plugin-datalabels-2.2.0.tgz#369578e131d743c2e34b5fbe2d3f9335f6639b8f"
