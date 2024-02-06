@@ -66,27 +66,6 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
               isPhenotypeLoading={isPhenotypeLoading}
               isPhenotypeError={isPhenotypeError}
             />
-            <p className="mt-4 grey">
-              Download data as:{" "}
-              <Button
-                size="sm"
-                variant="outline-secondary"
-                as="a"
-                href={`https://www.mousephenotype.org/data/genes/export/${router.query.pid}?fileType=tsv&fileName=${gene.geneSymbol}`}
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
-              </Button>{" "}
-              <Button
-                size="sm"
-                variant="outline-secondary"
-                as="a"
-                href={`https://www.mousephenotype.org/data/genes/export/${router.query.pid}?fileType=xls&fileName=${gene.geneSymbol}`}
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
-              </Button>
-            </p>
           </div>
         </Tab>
         <Tab eventKey="allData" title="All data">
@@ -97,27 +76,6 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             data={geneData}
           >
             <AllData data={geneData} />
-            <p className="mt-4 grey">
-              Download data as:{" "}
-              <Button
-                size="sm"
-                variant="outline-secondary"
-                as="a"
-                href={`https://www.mousephenotype.org/data/experiments/export?geneAccession=${router.query.pid}&fileType=tsv&fileName=${router.query.pid}`}
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
-              </Button>{" "}
-              <Button
-                size="sm"
-                variant="outline-secondary"
-                as="a"
-                href={`https://www.mousephenotype.org/data/experiments/export?geneAccession=${router.query.pid}&fileType=xls&fileName=${router.query.pid}`}
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
-              </Button>
-            </p>
           </TabContent>
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
