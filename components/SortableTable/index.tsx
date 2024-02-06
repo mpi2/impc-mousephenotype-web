@@ -92,7 +92,7 @@ const SortableTable = ({
           style={{
             fontWeight: !disabled && selected ? "bold" : "normal",
           }}
-          className={styles.inlineButton}
+          className={`${styles.inlineButton} ${styles.headerButton}`}
           onClick={handleSelect}
         >
           {label}{" "}
@@ -100,6 +100,12 @@ const SortableTable = ({
             <FontAwesomeIcon
               icon={sort.order === "asc" ? faCaretUp : faCaretDown}
             />
+          )}
+          {!disabled && !selected && (
+            <span className={styles.defaultIcons}>
+              <FontAwesomeIcon className={styles.first} icon={faCaretUp} />
+              <FontAwesomeIcon className={styles.second} icon={faCaretDown} />
+            </span>
           )}
         </button>
       </th>

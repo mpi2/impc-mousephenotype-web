@@ -17,7 +17,8 @@
     display: block;
     width: 5px;
     height: 100%;
-    background-color: $grey;
+    background-color: transparent;
+    border: 1px solid $grey;
     flex-grow: 0;
     flex-shrink: 0;
     &:nth-child(1) {
@@ -37,4 +38,5 @@
 
 .selected {
   background-color: $primary !important;
+  border-color: transparent !important;
 }

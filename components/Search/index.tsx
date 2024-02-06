@@ -74,11 +74,8 @@ const Search = ({
 
   useEffect(() => {
     if (updateURL) {
-      if (router.isReady && router.query.query !== query && query !== '') {
+      if (router.isReady && router.query.query !== query) {
         router.replace({query: { ...router.query, query },});
-      } else if (query === '') {
-        const { query: _, ...updatedQuery } = router.query;
-        router.push({ pathname: router.pathname, query: updatedQuery }, undefined, { shallow: true });
       }
     }
   }, [query])

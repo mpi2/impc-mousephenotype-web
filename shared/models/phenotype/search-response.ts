@@ -4,11 +4,13 @@ export type PhenotypeSearchResponseItem = {
   entityProperties: {
     definition: string;
     geneCount: string;
-    intermediateLevelParents: string;
     mpId: string;
     phenotypeName: string;
     synonyms: string;
+    intermediateLevelParents: string;
+    intermediateLevelParentsArray: Array<{mpTerm: string; mpId: string;}>;
     topLevelParents: string;
+    topLevelParentsArray: Array<{mpTerm: string; mpId: string;}>;
   }
 };
 

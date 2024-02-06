@@ -33,7 +33,7 @@ const SkeletonText = ({ width = '300px' }) => <Skeleton style={{ display: 'block
 
 
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
-  <Badge className={`${styles.badge} ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
+  <Badge className={`badge ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
     {children}&nbsp;
     {!!icon ? <FontAwesomeIcon icon={icon} /> : null}
   </Badge>
@@ -130,7 +130,7 @@ const Column = ({ images, selected, onSelection }) => {
               {!!image.ageInWeeks && (
                 <span>Age: {image.ageInWeeks} weeks <br/></span>
               )}
-              {!!image.alleleSymbol && <AlleleSymbol symbol={image.alleleSymbol}/>}
+              {!!image.alleleSymbol && <AlleleSymbol symbol={image.alleleSymbol} withLabel />}
             </div>
           </div>
         </Col>
@@ -238,9 +238,9 @@ const ImagesCompare = () => {
               </div>
             </Col>
             <Col xs={12}>
-              <div className={styles.filtersWrapper}>
+              <div className="filtersWrapper">
                 Show by:
-                <div className={styles.filter}>
+                <div className="filter">
                   <strong>Sex:</strong>
                   <FilterBadge
                     isSelected={selectedSex === 'both'}
@@ -264,7 +264,7 @@ const ImagesCompare = () => {
                     Male
                   </FilterBadge>
                 </div>
-                <div className={styles.filter}>
+                <div className="filter">
                   <strong>Zygosity:</strong>
                   <FilterBadge isSelected={selectedZyg === 'both'} onClick={() => setSelectedZyg('both')}>
                     All
