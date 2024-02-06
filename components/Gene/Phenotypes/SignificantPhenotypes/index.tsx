@@ -9,6 +9,8 @@ import {
 } from "@/components/SmartTable";
 import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
+import { PhenotypeGenotypes } from "@/models/phenotype";
+import { DownloadData } from "@/components";
 
 const SignificantPhenotypes = (
   {
@@ -102,6 +104,23 @@ const SignificantPhenotypes = (
             </Form.Select>
           </p>
         </div>
+      }
+      additionalBottomControls={
+        <DownloadData<GenePhenotypeHits>
+          data={phenotypeData}
+          fileName={`${gene.geneSymbol}-significant-phenotypes`}
+          fields={[
+            { key: 'phenotypeName', label: 'Phenotype' },
+            { key: 'alleleSymbol', label: 'Allele' },
+            { key: 'zygosity', label: 'Zygosity' },
+            { key: 'sex', label: 'Sex' },
+            { key: 'lifeStageName', label: 'Life stage' },
+            { key: 'procedureName', label: 'Procedure' },
+            { key: 'parameterName', label: 'Parameter' },
+            { key: 'phenotypingCentre', label: 'Phenotyping center' },
+            { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue?.toString(10) || '1' },
+          ]}
+        />
       }
       columns={[
         {width: 2.2, label: "Phenotype", field: "phenotypeName", cmp: <PlainTextCell style={{fontWeight: 'bold'}}/>},

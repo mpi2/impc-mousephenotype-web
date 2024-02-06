@@ -14,6 +14,7 @@ const SmartTable = <T extends Model>(props: {
   zeroResulsText?: string;
   filterFn?: (item: T, query: string) => boolean,
   additionalTopControls?: ReactElement,
+  additionalBottomControls?: ReactElement,
   filteringEnabled?: boolean,
   // set this to false if you need more specific filtering, check All Phenotypes section
   customFiltering?: boolean,
@@ -57,6 +58,7 @@ const SmartTable = <T extends Model>(props: {
     <Pagination
       data={mutatedData}
       additionalTopControls={additionalControls}
+      additionalBottomControls={props.additionalBottomControls}
     >
       {(pageData) => (
         <SortableTable

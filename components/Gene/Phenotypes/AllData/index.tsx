@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   AlleleCell, OptionsCell, PhenotypeIconsCell,
   PlainTextCell,
@@ -14,6 +14,9 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import styles from './styles.module.scss';
+import { PhenotypeGenotypes } from "@/models/phenotype";
+import { DownloadData } from "@/components";
+import { GeneContext } from "@/contexts";
 
 const ParameterCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
   return (
@@ -67,6 +70,7 @@ const PValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) =
 }
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
+  const gene = useContext(GeneContext);
   const [sorted, setSorted] = useState<any[]>(null);
   const [procedure, setProcedure] = useState(undefined);
   const [query, setQuery] = useState(undefined);
@@ -186,6 +190,24 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
               </Form.Select>
             </p>
           </div>
+        }
+        additionalBottomControls={
+          <DownloadData<GeneStatisticalResult>
+            data={sorted}
+            fileName={`${gene.geneSymbol}-all-phenotype-data`}
+            fields={[
+              { key: 'alleleSymbol', label: 'Allele' },
+              { key: 'phenotypingCentre', label: 'Phenotyping center' },
+              { key: 'procedureName', label: 'Procedure' },
+              { key: 'parameterName', label: 'Parameter' },
+              { key: 'zygosity', label: 'Zygosity' },
+              { key: 'femaleMutantCount', label: 'Female mutant count', getValueFn: (item) => item?.femaleMutantCount?.toString() || '0'},
+              { key: 'maleMutantCount', label: 'Male mutant count', getValueFn: (item) => item?.maleMutantCount?.toString() || 'N/A' },
+              { key: 'lifeStageName', label: 'Life stage' },
+              { key: 'significant', label: 'Significant', getValueFn: item => item.significant ? 'Yes' : 'No' },
+              { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue?.toString() || 'N/A' },
+            ]}
+          />
         }
         columns={[
           {
