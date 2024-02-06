@@ -27,15 +27,34 @@ const DownloadDataComponent = <T,>({data, fields, fileName}: Props<T>) => {
     XLSX.writeFile(workbook, `${fileName}.xlsx`);
   };
 
+  const generateTsvFile = () => {
+    const headers = fields.map(field => field.label);
+    const rows = data.map(item => {
+      return fields.map(field => !!field.getValueFn ? field.getValueFn(item) : item[field.key] as string);
+    });
+    const finalData = [ headers, ...rows ];
+    const tsvContent = finalData.reduce((content, row) => {
+      content += `${row.join('\t')}\n`;
+      return content;
+    }, '');
+    const blob = new Blob([tsvContent], { type: 'text/tab-separated-value;charset=utf-8' });
+    const objUrl= URL.createObjectURL(blob);
+    const link = document.createElement('a')
+    link.setAttribute('href', objUrl);
+    link.setAttribute('download', `${fileName}.tsv`)
+    link.click();
+    URL.revokeObjectURL(objUrl);
+  }
+
 
   return (
-    <p className="mt-4 grey">
+    <p className="grey">
       Download data as:{" "}
       <Button
         size="sm"
         variant="outline-secondary"
         as="button"
-        target="_blank"
+        onClick={generateTsvFile}
       >
         <FontAwesomeIcon icon={faDownload} size="sm"/> TSV
       </Button>{" "}
@@ -43,7 +62,6 @@ const DownloadDataComponent = <T,>({data, fields, fileName}: Props<T>) => {
         size="sm"
         variant="outline-secondary"
         as="button"
-        target="_blank"
         onClick={generateXlsxFile}
       >
         <FontAwesomeIcon icon={faDownload} size="sm"/> XLS
