@@ -22,3 +22,26 @@ td.procedureName {
   max-width: 100%;
   overflow: auto;
 }
+
+.headerButton {
+  width: 100%;
+  text-align: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+$button-margin: -0.3em;
+
+.defaultIcons {
+  display: inline-flex;
+  flex-direction: column;
+  align-self: start;
+  color: #CCC;
+  .first {
+    margin-bottom: $button-margin;
+  }
+  .second {
+    margin-top: $button-margin;
+  }
+}
