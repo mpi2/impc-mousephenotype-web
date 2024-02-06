@@ -11,6 +11,7 @@ import {
 } from "@/components/SmartTable";
 import { PhenotypeGenotypes } from "@/models/phenotype";
 import { TableCellProps } from "@/models";
+import { DownloadData } from "@/components";
 
 const ParameterCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
   return (
@@ -80,6 +81,20 @@ const Associations = (props: Props) => {
             cmp: <PhenotypingCentreCell />
           },
           { width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell mpTermIdKey="phenotypeId" /> },
+        ]}
+      />
+      <DownloadData<PhenotypeGenotypes>
+        data={data}
+        fileName={`${phenotype.phenotypeName}-associations`}
+        fields={[
+          { key: 'alleleSymbol', label: 'Gene/allele' },
+          { key: 'phenotypeName', label: 'Phenotype' },
+          { key: 'zygosity', label: 'Zygosity' },
+          { key: 'sex', label: 'Sex' },
+          { key: 'lifeStageName', label: 'Life stage' },
+          { key: 'parameterName', label: 'Parameter' },
+          { key: 'phenotypingCentre', label: 'Phenotyping center' },
+          { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue.toString(10) || '1' },
         ]}
       />
     </>
