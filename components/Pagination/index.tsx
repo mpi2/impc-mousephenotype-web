@@ -15,7 +15,9 @@ type Props<T> = {
   controlled?: boolean;
   buttonsPlacement?: 'top' | 'bottom' | 'both'
   additionalTopControls?: ReactElement | null,
+  additionalBottomControls?: ReactElement | null,
   topControlsWrapperCSS?: CSSProperties,
+  bottomControlsWrapperCSS?: CSSProperties,
 };
 
 type NavButtonsProps = {
@@ -23,7 +25,6 @@ type NavButtonsProps = {
   placement: 'top' | 'bottom';
   style?: CSSProperties,
 };
-
 
 const Pagination = <T extends unknown>(props: Props<T>) => {
   const {
@@ -37,7 +38,9 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     controlled = false,
     buttonsPlacement = 'both',
     additionalTopControls: AdditionalTopControls = null,
-    topControlsWrapperCSS = {}
+    additionalBottomControls: AdditionalBottomControls = null,
+    topControlsWrapperCSS = {},
+    bottomControlsWrapperCSS = {},
   } = props;
 
   const [internalPage, setInternalPage] = useState(page);
@@ -85,7 +88,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
           <button
             onClick={() => updatePage(internalPage - 1)}
             disabled={!canGoBack}
-            className={canGoBack ? "nav-btn primary" : "nav-btn"}
+            className={canGoBack ? `${styles.pagNavBtn} nav-btn primary` : `${styles.pagNavBtn} nav-btn`}
             data-testid={`${placement}-prev-page`}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
@@ -97,7 +100,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
                 data-testid={`${placement}-first-page`}
               >
                 <button
-                  className="page-link"
+                  className={`${styles.pagNavBtn} page-link`}
                   aria-label="Previous"
                   onClick={() => updatePage(0)}
                   data-testid={`${placement}-first-page-btn`}
@@ -121,7 +124,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
               data-testid={`${placement}-page-${pageNumber}`}
             >
               <button
-                className="page-link"
+                className={`${styles.pagNavBtn} page-link`}
                 onClick={() => updatePage(pageNumber - 1)}
                 data-testid={`${placement}-page-${pageNumber}-btn`}
               >
@@ -141,7 +144,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
                 data-testid={`${placement}-last-page`}
               >
                 <button
-                  className="page-link last-page"
+                  className={`${styles.pagNavBtn} page-link last-page`}
                   aria-label="Previous"
                   onClick={() => updatePage(totalPages - 1)}
                   data-testid={`${placement}-last-page-btn`}
@@ -154,7 +157,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
           <button
             onClick={() => updatePage(internalPage + 1)}
             disabled={!canGoForward}
-            className={canGoForward ? "nav-btn primary" : "nav-btn"}
+            className={canGoForward ? `${styles.pagNavBtn} nav-btn primary` : `${styles.pagNavBtn} nav-btn`}
             data-testid={`${placement}-next-page`}
           >
             <FontAwesomeIcon icon={faArrowRight} />
@@ -206,8 +209,13 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
         <NavButtons placement="top" shouldBeDisplayed={shouldDisplayTopButtons} />
       </div>
       {children(currentPage)}
-      <div className={styles.buttonsWrapper}>
-        <div>
+      <div className={`${styles.buttonsWrapper} ${!!AdditionalBottomControls ? styles.withControls : ''}`}>
+        { !!AdditionalBottomControls && (
+          <div className={styles.additionalWrapper}>
+            { AdditionalBottomControls }
+          </div>
+        )}
+        <div style={{ display: 'flex' }}>
           Rows per page:&nbsp;
           <select
             onChange={(e) => {
@@ -224,8 +232,8 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             <option value="50">50</option>
             <option value="100">100</option>
           </select>
+          <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
         </div>
-        <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons} />
       </div>
     </>
   );
