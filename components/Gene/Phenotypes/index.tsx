@@ -88,13 +88,6 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             <StatisticalAnalysis data={geneData} />
           </TabContent>
         </Tab>
-        <Tab eventKey="vennDiagram" title="Phenotypes by Allele">
-          <AllelePhenotypeDiagram
-            phenotypeData={phenotypeData}
-            isPhenotypeLoading={isPhenotypeLoading}
-            isPhenotypeError={isPhenotypeError}
-          />
-        </Tab>
       </Tabs>
       {hasDataRelatedToPWG && (
         <span style={{ textAlign: 'right', marginTop: '1rem', fontSize: "90%" }}>
