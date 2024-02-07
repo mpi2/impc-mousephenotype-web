@@ -73,6 +73,7 @@ const Histopathology = () => {
       <h2>Histopathology</h2>
       <p>
         Summary table of phenotypes displayed during the Histopathology procedure which are considered significant.
+        <br/>
         Full histopathology data table, including submitted images,&nbsp;
         <Link className="link primary" href={`/data/histopath/${router.query.pid}`}>can be accessed by clicking this link</Link>.
       </p>

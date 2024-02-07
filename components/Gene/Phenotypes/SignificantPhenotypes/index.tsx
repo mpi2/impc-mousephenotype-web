@@ -5,7 +5,7 @@ import {
   PlainTextCell,
   SmartTable,
   PhenotypeIconsCell,
-  AlleleCell, SignificantSexesCell, SignificantPValueCell
+  AlleleCell, SignificantSexesCell, SignificantPValueCell, LinkCell
 } from "@/components/SmartTable";
 import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
@@ -123,7 +123,12 @@ const SignificantPhenotypes = (
         />
       }
       columns={[
-        {width: 2.2, label: "Phenotype", field: "phenotypeName", cmp: <PlainTextCell style={{fontWeight: 'bold'}}/>},
+        {
+          width: 2.2,
+          label: "Phenotype",
+          field: "phenotypeName",
+          cmp: <LinkCell prefix="/phenotypes" altFieldForURL="phenotypeId" style={{fontWeight: 'bold'}} usePrimaryColor={false} />
+        },
         {
           width: 1,
           label: "System",
