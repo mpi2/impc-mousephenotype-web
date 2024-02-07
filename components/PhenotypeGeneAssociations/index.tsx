@@ -50,9 +50,12 @@ const Associations = (props: Props) => {
 
   if (!data) {
     return (
-      <Alert style={{ marginTop: "1em" }} variant="primary">
-        All data not available
-      </Alert>
+      <>
+        <h2>IMPC Gene variants with {phenotype.phenotypeName}</h2>
+        <Alert style={{marginTop: "1em"}} variant="primary">
+          All data not available
+        </Alert>
+      </>
     );
   }
 
