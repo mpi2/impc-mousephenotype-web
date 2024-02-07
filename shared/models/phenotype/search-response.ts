@@ -4,6 +4,7 @@ export type PhenotypeSearchResponseItem = {
   entityProperties: {
     definition: string;
     geneCount: string;
+    geneCountNum: number;
     mpId: string;
     phenotypeName: string;
     synonyms: string;

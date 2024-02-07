@@ -80,7 +80,8 @@ const PhenotypeResult = ({
 
 const PhenotypeResults = ({query}: { query?: string }) => {
 
-  const [sort, setSort] = useState<'asc' | 'desc'>('asc');
+  const [sort, setSort] = useState<'asc' | 'desc'>(null);
+  const [sortGenes, setSortGenes] = useState<'asc' | 'desc'>(null);
   const parsePhenotypeString = (value: string) => {
     const [mpId, mpTerm] = value.split('|');
     return {
@@ -97,6 +98,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
         ...item,
         entityProperties: {
           ...item.entityProperties,
+          geneCountNum: item.entityProperties.geneCount.endsWith(';') ? Number.parseInt(item.entityProperties.geneCount, 10) : 0,
           intermediateLevelParentsArray: item.entityProperties.intermediateLevelParents
             .split(';')
             .map(parsePhenotypeString),
@@ -112,11 +114,18 @@ const PhenotypeResults = ({query}: { query?: string }) => {
   });
 
   const getSortedData = () => {
-    return data.sort(({entityProperties: { intermediateLevelParentsArray: p1 }}, {entityProperties: { intermediateLevelParentsArray: p2 }}) =>
-      sort === 'asc' ? p1.length - p2.length : p2.length - p1.length
-    );
+    if (!!sortGenes || !!sort) {
+      return data.sort(({entityProperties: { intermediateLevelParentsArray: p1, geneCountNum: count1 }}, {entityProperties: { intermediateLevelParentsArray: p2, geneCountNum: count2 }}) => {
+        if (sort) {
+          return sort === 'asc' ? p1.length - p2.length : p2.length - p1.length;
+        } else {
+          return sortGenes === 'asc' ? count1 - count2 : count2 - count1;
+        }
+      });
+    }
+    return data;
   }
-
+  
   return (
     <Container style={{ maxWidth: 1240 }}>
       <Card
@@ -164,6 +173,23 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                     Desc.
                   </FilterBadge>
                 </div>
+                <div className="filter">
+                  <strong>No. of genes</strong>
+                  <FilterBadge
+                    isSelected={sortGenes === 'asc'}
+                    icon={faCaretUp}
+                    onClick={() => setSortGenes('asc')}
+                  >
+                    Asc.
+                  </FilterBadge>
+                  <FilterBadge
+                    isSelected={sortGenes === 'desc'}
+                    icon={faCaretDown}
+                    onClick={() => setSortGenes('desc')}
+                  >
+                    Desc.
+                  </FilterBadge>
+                </div>
               </div>
             }
           >
@@ -178,7 +204,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
               return (
                 <>
                   {pageData.map((p) => (
-                    <PhenotypeResult phenotype={p} key={p.entityId} />
+                    <PhenotypeResult phenotype={p} key={p.entityId}/>
                   ))}
                 </>
               );
