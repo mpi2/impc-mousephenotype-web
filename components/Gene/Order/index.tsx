@@ -1,4 +1,4 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
@@ -117,10 +117,10 @@ const Order = ({ gene }: { gene: any }) => {
                     <td className="text-capitalize">
                       <Link
                         href={`/alleles/${router.query.pid}/${allele[1]}`}
-                        className="link primary"
+                        className="link primary small"
                       >
                         <strong>View products</strong>&nbsp;
-                        <FontAwesomeIcon icon={faArrowRight} />
+                        <FontAwesomeIcon icon={faChevronRight} />
                       </Link>
                     </td>
                   </tr>
