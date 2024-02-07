@@ -125,8 +125,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
     }
     return data;
   }
-
-  console.log(data);
+  
   return (
     <Container style={{ maxWidth: 1240 }}>
       <Card
