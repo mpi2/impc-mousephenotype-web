@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { Alert, Badge, Col, Container, Row } from "react-bootstrap";
+import { Alert, Badge, Col, Container, Form, Row } from "react-bootstrap";
 import { faCaretUp, faCheck, faCross, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -9,12 +9,12 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
-import { PhenotypeSearchResponse, PhenotypeSearchResponseItem } from "@/models/phenotype";
+import { PhenotypeSearchResponse, PhenotypeSearchItem } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
-import { ReactNode, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 
 type Props = {
-  phenotype: PhenotypeSearchResponseItem
+  phenotype: PhenotypeSearchItem
 }
 
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
@@ -25,19 +25,16 @@ const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactN
 )
 const PhenotypeResult = ({
   phenotype: {
-    entityProperties: {
-      mpId,
-      phenotypeName,
-      synonyms,
-      geneCount,
-      topLevelParentsArray,
-      intermediateLevelParentsArray
-    },
+    mpId,
+    phenotypeName,
+    synonyms,
+    geneCountNum,
+    topLevelParentsArray,
+    intermediateLevelParentsArray
   },
 }: Props) => {
   const router = useRouter();
   const synonymsArray = synonyms.split(";");
-  const parsedGeneCount = geneCount.endsWith(';') ? geneCount.replace(';', '') : geneCount;
   return (
     <>
       <Row
@@ -51,10 +48,10 @@ const PhenotypeResult = ({
           <p className="grey small">
             <strong>Synomyms:</strong> {synonymsArray.join(", ")}
           </p>
-          {!!parsedGeneCount && parsedGeneCount !== 'N/A' ? (
+          {!!geneCountNum && geneCountNum !== 0 ? (
             <p className="small grey">
               <FontAwesomeIcon className="secondary" icon={faCheck}/>{" "}
-              <strong>{parsedGeneCount}</strong> genes associated with this phenotype
+              <strong>{geneCountNum}</strong> genes associated with this phenotype
             </p>
           ) : (
             <p className="grey small">
@@ -79,9 +76,35 @@ const PhenotypeResult = ({
 };
 
 const PhenotypeResults = ({query}: { query?: string }) => {
-
+  const systems = [
+    "mortality/aging",
+    "embryo phenotype",
+    "reproductive system phenotype",
+    "growth/size/body region phenotype",
+    "homeostasis/metabolism phenotype",
+    "behavior/neurological phenotype",
+    "cardiovascular system phenotype",
+    "respiratory system phenotype",
+    "digestive/alimentary phenotype",
+    "renal/urinary system phenotype",
+    "limbs/digits/tail phenotype",
+    "skeleton phenotype",
+    "immune system phenotype",
+    "muscle phenotype",
+    "integument phenotype",
+    "craniofacial phenotype",
+    "hearing/vestibular/ear phenotype",
+    "adipose tissue phenotype",
+    "endocrine/exocrine gland phenotype",
+    "vision/eye phenotype",
+    "hematopoietic system phenotype",
+    "liver/biliary system phenotype",
+    "nervous system phenotype",
+    "pigmentation phenotype",
+  ];
   const [sort, setSort] = useState<'asc' | 'desc'>(null);
   const [sortGenes, setSortGenes] = useState<'asc' | 'desc'>(null);
+  const [selectedSystem, setSelectedSystem] = useState<string>(null);
   const parsePhenotypeString = (value: string) => {
     const [mpId, mpTerm] = value.split('|');
     return {
@@ -96,8 +119,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
     select: (data: PhenotypeSearchResponse) => (
       data.results.map(item => ({
         ...item,
-        entityProperties: {
-          ...item.entityProperties,
+        ...item.entityProperties,
           geneCountNum: item.entityProperties.geneCount.endsWith(';') ? Number.parseInt(item.entityProperties.geneCount, 10) : 0,
           intermediateLevelParentsArray: item.entityProperties.intermediateLevelParents
             .split(';')
@@ -105,17 +127,22 @@ const PhenotypeResults = ({query}: { query?: string }) => {
           topLevelParentsArray: item.entityProperties.topLevelParents
             .split(';')
             .map(parsePhenotypeString)
-        }
       })
       ).sort((p1, p2) =>
-        p1.entityProperties.intermediateLevelParentsArray.length - p2.entityProperties.intermediateLevelParentsArray.length
-      ) as Array<PhenotypeSearchResponseItem>
+        p1.intermediateLevelParentsArray.length - p2.intermediateLevelParentsArray.length
+      ) as Array<PhenotypeSearchItem>
     )
   });
 
+  const filteredData = useMemo(() => {
+    return !!selectedSystem ? data?.filter(phenotype =>
+      phenotype.topLevelParentsArray.some(p => p.mpTerm === selectedSystem)
+    ) : data;
+  }, [data, selectedSystem]);
+
   const getSortedData = () => {
     if (!!sortGenes || !!sort) {
-      return data.sort(({entityProperties: { intermediateLevelParentsArray: p1, geneCountNum: count1 }}, {entityProperties: { intermediateLevelParentsArray: p2, geneCountNum: count2 }}) => {
+      return filteredData.sort(({ intermediateLevelParentsArray: p1, geneCountNum: count1 }, { intermediateLevelParentsArray: p2, geneCountNum: count2 }) => {
         if (sort) {
           return sort === 'asc' ? p1.length - p2.length : p2.length - p1.length;
         } else {
@@ -123,9 +150,10 @@ const PhenotypeResults = ({query}: { query?: string }) => {
         }
       });
     }
-    return data;
+    return filteredData;
   }
-  
+
+
   return (
     <Container style={{ maxWidth: 1240 }}>
       <Card
@@ -151,65 +179,95 @@ const PhenotypeResults = ({query}: { query?: string }) => {
         {isLoading ? (
           <p className="grey mt-3 mb-3">Loading...</p>
         ) : (
-          <Pagination
-            data={getSortedData()}
-            additionalTopControls={
-              <div className="filtersWrapper">
-                Sort by:
-                <div className="filter">
-                  <strong>No. Intermediate <br/>phenotypes:</strong>
-                  <FilterBadge
-                    isSelected={sort === 'asc'}
-                    icon={faCaretUp}
-                    onClick={() => setSort('asc')}
-                  >
-                    Asc.
-                  </FilterBadge>
-                  <FilterBadge
-                    isSelected={sort === 'desc'}
-                    icon={faCaretDown}
-                    onClick={() => setSort('desc')}
-                  >
-                    Desc.
-                  </FilterBadge>
+          <>
+            <div style={{ paddingTop: '1rem' }}>
+              <Form.Label htmlFor="systemFilter">
+                Filter by physiological system:&nbsp;
+              </Form.Label>
+              <Form.Select
+                style={{
+                  display: "inline-block",
+                  width: 200,
+                  marginRight: "2rem",
+                }}
+                aria-label="Filter by system"
+                defaultValue={undefined}
+                id="systemFilter"
+                className="bg-white"
+                onChange={(el) => {
+                  setSelectedSystem(
+                    el.target.value === "all" ? null : el.target.value
+                  );
+                }}
+              >
+                <option value={"all"}>All</option>
+                {systems.map(system => (
+                  <option value={system} key={`system_${system}`}>
+                    {system}
+                  </option>
+                ))}
+              </Form.Select>
+            </div>
+            <Pagination
+              data={getSortedData()}
+              additionalTopControls={
+                <div className="filtersWrapper">
+                  Sort by:
+                  <div className="filter">
+                    <strong>Specificity:</strong>
+                    <FilterBadge
+                      isSelected={sort === 'asc'}
+                      icon={faCaretUp}
+                      onClick={() => setSort('asc')}
+                    >
+                      Asc.
+                    </FilterBadge>
+                    <FilterBadge
+                      isSelected={sort === 'desc'}
+                      icon={faCaretDown}
+                      onClick={() => setSort('desc')}
+                    >
+                      Desc.
+                    </FilterBadge>
+                  </div>
+                  <div className="filter">
+                    <strong>No. of genes</strong>
+                    <FilterBadge
+                      isSelected={sortGenes === 'asc'}
+                      icon={faCaretUp}
+                      onClick={() => setSortGenes('asc')}
+                    >
+                      Asc.
+                    </FilterBadge>
+                    <FilterBadge
+                      isSelected={sortGenes === 'desc'}
+                      icon={faCaretDown}
+                      onClick={() => setSortGenes('desc')}
+                    >
+                      Desc.
+                    </FilterBadge>
+                  </div>
                 </div>
-                <div className="filter">
-                  <strong>No. of genes</strong>
-                  <FilterBadge
-                    isSelected={sortGenes === 'asc'}
-                    icon={faCaretUp}
-                    onClick={() => setSortGenes('asc')}
-                  >
-                    Asc.
-                  </FilterBadge>
-                  <FilterBadge
-                    isSelected={sortGenes === 'desc'}
-                    icon={faCaretDown}
-                    onClick={() => setSortGenes('desc')}
-                  >
-                    Desc.
-                  </FilterBadge>
-                </div>
-              </div>
-            }
-          >
-            {(pageData) => {
-              if (pageData.length === 0) {
-                return (
-                  <Alert variant="yellow">
-                    <p>No results found.</p>
-                  </Alert>
-                );
               }
-              return (
-                <>
-                  {pageData.map((p) => (
-                    <PhenotypeResult phenotype={p} key={p.entityId}/>
-                  ))}
-                </>
-              );
-            }}
-          </Pagination>
+            >
+              {(pageData) => {
+                if (pageData.length === 0) {
+                  return (
+                    <Alert variant="yellow">
+                      <p>No results found.</p>
+                    </Alert>
+                  );
+                }
+                return (
+                  <>
+                    {pageData.map((p) => (
+                      <PhenotypeResult phenotype={p} key={p.entityId}/>
+                    ))}
+                  </>
+                );
+              }}
+            </Pagination>
+          </>
         )}
       </Card>
     </Container>
