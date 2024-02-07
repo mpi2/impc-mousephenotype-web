@@ -66,7 +66,6 @@ const CollectionItem = ({
     >
       <Check isChecked={hasData} />
       {name}&nbsp;
-      <FontAwesomeIcon style={{ color: '#8e8e8e' }} icon={external ? faExternalLinkAlt : faChevronCircleDown} />
     </a>
   ) : (
     <span className={styles.dataCollectionInactive} data-testid={name}>
@@ -194,7 +193,7 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
         <div className={styles.subheading}>
           <span className={`${styles.subheadingSection} primary`}>Gene</span>
           <a
-            className={`${styles.subheadingSection}`}
+            className={`${styles.subheadingSection} link`}
             href={`http://www.informatics.jax.org/marker/${gene.mgiGeneAccessionId}`}
             target="_blank"
           >
