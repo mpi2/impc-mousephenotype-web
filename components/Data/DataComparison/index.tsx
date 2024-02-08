@@ -5,6 +5,7 @@ import _ from "lodash";
 import { formatAlleleSymbol, formatPValue, getIcon, getSexLabel } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Dataset } from "@/models";
 
 
 type LastColumnProps = {
@@ -20,7 +21,8 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
   ) : (
     <>
       {["male", "female", "not_considered"].map((col) => {
-        const isMostSignificant = dataset.sex === col;
+        const pValue = dataset[`pValue_${col}`];
+        const isMostSignificant = pValue < 0.0001;
         return (
           <td
             className={
@@ -30,7 +32,7 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
             }
           >
             {!!dataset[`pValue_${col}`] ? (
-              formatPValue(dataset[`pValue_${col}`])
+              formatPValue(pValue)
             ) : (
               <OverlayTrigger
                 placement="top"
@@ -51,7 +53,7 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
 
 
 type Props = {
-  data: any;
+  data: Array<Dataset>;
   selectedParameter?: string | null;
   isViabilityChart?: boolean;
   initialSortByProp?: string;
@@ -83,24 +85,35 @@ const DataComparison = (props: Props) => {
     } = d;
 
     const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
+    const statMethodPValueKey = sex === 'female' ? 'femaleKoEffectPValue' : 'maleKoEffectPValue';
+    const pValueFromStatMethod = d.statisticalMethod?.attributes?.[statMethodPValueKey];
     if (acc[key]) {
-      if (acc[key].reportedPValue < reportedPValue) {
-        acc[key].reportedPValue = Number(reportedPValue);
+      if (acc[key].reportedPValue < pValueFromStatMethod) {
+        acc[key].reportedPValue = Number(pValueFromStatMethod);
         acc[key].sex = sex;
       }
     } else {
-      acc[key] = { ...d, key };
+      acc[key] = { ...d, key, reportedPValue: pValueFromStatMethod };
     }
     if (sex) {
-      acc[key][`pValue_${sex}`] = Number(reportedPValue);
-    } else if(phenotypeSex?.length > 0) {
-      let sexValue = phenotypeSex.length >= 2 ? 'not_considered' : phenotypeSex[0];
-      acc[key][`pValue_${sexValue}`] = Number(reportedPValue);
+      const pValue = reportedPValue < pValueFromStatMethod ? reportedPValue : pValueFromStatMethod;
+      acc[key][`pValue_${sex}`] = Number(pValue);
     }
-
-
+    if(phenotypeSex?.length > 0) {
+      if (!!d.statisticalMethod?.attributes?.maleKoEffectPValue) {
+        acc[key][`pValue_male`] = d.statisticalMethod?.attributes?.maleKoEffectPValue;
+      }
+      if (!!d.statisticalMethod?.attributes?.femaleKoEffectPValue) {
+        acc[key][`pValue_female`] = d.statisticalMethod?.attributes?.femaleKoEffectPValue;
+      }
+      if (phenotypeSex.length >= 2) {
+        acc[key][`pValue_not_considered`] = Number(reportedPValue);
+      }
+    }
     return acc;
   }, {});
+
+  console.log(data);
 
   const processed = (groups ? Object.values(groups) : []).map((d: any, index) => {
       const getLethality = () => {
@@ -190,11 +203,10 @@ const DataComparison = (props: Props) => {
               field: "phenotypingCentre",
             },
             { width: 2, label: "Allele", field: "alleleSymbol" },
-            { width: 1, label: "Zyg", field: "zygosity" },
-            { width: 1, label: "Sex", field: "sex" },
+            { width: 1, label: "Zygosity", field: "zygosity" },
+            { width: 1, label: "Significant sex", field: "sex" },
             { width: 1, label: "Life Stage", field: "lifeStageName" },
             { width: 1, label: "Colony Id", field: "colonyId",},
-            { width: 1, label: "Metadata split flag", field: "flag" },
             lastColumnHeader,
           ]}
         >
@@ -211,23 +223,36 @@ const DataComparison = (props: Props) => {
                 </td>
                 <td>{d.zygosity}</td>
                 <td>
-                  {["male", "female", "not_considered"]
-                    .filter(sex => _.has(d, `pValue_${sex}`))
-                    .map(significantSex => (
-                      <OverlayTrigger
-                        placement="top"
-                        trigger={["hover", "focus"]}
-                        overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}
-                      >
-                        <span className="me-2">
-                          <FontAwesomeIcon icon={getIcon(significantSex)} size="lg" />
-                        </span>
-                      </OverlayTrigger>
-                    ))}
+                  {d.sex === 'not_considered' ? (
+                    <OverlayTrigger
+                      placement="top"
+                      trigger={["hover", "focus"]}
+                      overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
+                    >
+                      <span className="me-2">
+                        <FontAwesomeIcon icon={getIcon(d.sex)} size="lg" />
+                      </span>
+                    </OverlayTrigger>
+                  ) : (
+                    <>
+                      {["male", "female", "not_considered"]
+                        .filter(sex => d.sex === sex)
+                        .map(significantSex => (
+                          <OverlayTrigger
+                            placement="top"
+                            trigger={["hover", "focus"]}
+                            overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}
+                          >
+                            <span className="me-2">
+                              <FontAwesomeIcon icon={getIcon(significantSex)} size="lg" />
+                            </span>
+                          </OverlayTrigger>
+                        ))}
+                    </>
+                  )}
                 </td>
                 <td>{d.lifeStageName}</td>
                 <td>{d.colonyId}</td>
-                <td>??</td>
                 <LastColumn dataset={d} isViabilityChart={isViabilityChart} />
               </tr>
             );

@@ -65,12 +65,12 @@ const CollectionItem = ({
       data-testid={name}
     >
       <Check isChecked={hasData} />
-      {name}&nbsp;
+      {name}
     </a>
   ) : (
     <span className={styles.dataCollectionInactive} data-testid={name}>
       <Check isChecked={hasData} />
-      {name}&nbsp;
+      {name}
     </span>
   )
 );
@@ -244,7 +244,7 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
       </div>
       <Row className={styles.gap}>
         <Col lg={6}>
-          <h3>Impacted physiological systems</h3>
+          <h3>Physiological systems</h3>
           <div className={styles.progressHeader}>
             <div data-testid="totalCount">
               <span className="secondary">
@@ -252,7 +252,7 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
               </span>&nbsp;/&nbsp;{allCount} physiological systems tested
             </div>
             <a href="#data" className="link">
-              View data <FontAwesomeIcon icon={faChevronCircleDown} />
+              View data
             </a>
           </div>
           <div className={styles.progressContainer}>
@@ -327,7 +327,7 @@ const Summary = ({ gene, loading, error }: SummaryProps) => {
               </Metric>
             </Col>
             <Col md={6}>
-              <h3>Expressions examined in</h3>
+              <h3>Expression examined in</h3>
               <Metric value={gene.adultExpressionObservationsCount || 0}>
                 Adult tissues
               </Metric>
