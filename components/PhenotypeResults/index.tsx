@@ -17,6 +17,33 @@ type Props = {
   phenotype: PhenotypeSearchItem
 }
 
+const systems = [
+  "mortality/aging",
+  "embryo phenotype",
+  "reproductive system phenotype",
+  "growth/size/body region phenotype",
+  "homeostasis/metabolism phenotype",
+  "behavior/neurological phenotype",
+  "cardiovascular system phenotype",
+  "respiratory system phenotype",
+  "digestive/alimentary phenotype",
+  "renal/urinary system phenotype",
+  "limbs/digits/tail phenotype",
+  "skeleton phenotype",
+  "immune system phenotype",
+  "muscle phenotype",
+  "integument phenotype",
+  "craniofacial phenotype",
+  "hearing/vestibular/ear phenotype",
+  "adipose tissue phenotype",
+  "endocrine/exocrine gland phenotype",
+  "vision/eye phenotype",
+  "hematopoietic system phenotype",
+  "liver/biliary system phenotype",
+  "nervous system phenotype",
+  "pigmentation phenotype",
+];
+
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
   <Badge className={`badge ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
     {children}&nbsp;
@@ -30,7 +57,6 @@ const PhenotypeResult = ({
     synonyms,
     geneCountNum,
     topLevelParentsArray,
-    intermediateLevelParentsArray
   },
 }: Props) => {
   const router = useRouter();
@@ -59,15 +85,15 @@ const PhenotypeResult = ({
               currently associated with this phenotype
             </p>
           )}
-          <p className="grey small">
-            <strong>{intermediateLevelParentsArray.length}</strong> intermediate phenotypes
-          </p>
         </Col>
         <Col>
-          <p className="grey small">Physiol. System</p>
+          <p className="grey small">Physiological System</p>
           {topLevelParentsArray.map((x) => (
             <BodySystem key={x.mpId} name={x.mpTerm} hoverColor="black" color="black"/>
           ))}
+          {topLevelParentsArray.length === 0 && (
+            <BodySystem key={mpId} name={phenotypeName} hoverColor="black" color="black"/>
+          )}
         </Col>
       </Row>
       <hr className="mt-0 mb-0"/>
@@ -76,32 +102,6 @@ const PhenotypeResult = ({
 };
 
 const PhenotypeResults = ({query}: { query?: string }) => {
-  const systems = [
-    "mortality/aging",
-    "embryo phenotype",
-    "reproductive system phenotype",
-    "growth/size/body region phenotype",
-    "homeostasis/metabolism phenotype",
-    "behavior/neurological phenotype",
-    "cardiovascular system phenotype",
-    "respiratory system phenotype",
-    "digestive/alimentary phenotype",
-    "renal/urinary system phenotype",
-    "limbs/digits/tail phenotype",
-    "skeleton phenotype",
-    "immune system phenotype",
-    "muscle phenotype",
-    "integument phenotype",
-    "craniofacial phenotype",
-    "hearing/vestibular/ear phenotype",
-    "adipose tissue phenotype",
-    "endocrine/exocrine gland phenotype",
-    "vision/eye phenotype",
-    "hematopoietic system phenotype",
-    "liver/biliary system phenotype",
-    "nervous system phenotype",
-    "pigmentation phenotype",
-  ];
   const [sort, setSort] = useState<'asc' | 'desc'>(null);
   const [sortGenes, setSortGenes] = useState<'asc' | 'desc'>(null);
   const [selectedSystem, setSelectedSystem] = useState<string>(null);
@@ -124,14 +124,15 @@ const PhenotypeResults = ({query}: { query?: string }) => {
           intermediateLevelParentsArray: item.entityProperties.intermediateLevelParents
             .split(';')
             .map(parsePhenotypeString),
-          topLevelParentsArray: item.entityProperties.topLevelParents
+          topLevelParentsArray: !!item.entityProperties.topLevelParents ? item.entityProperties.topLevelParents
             .split(';')
-            .map(parsePhenotypeString)
+            .map(parsePhenotypeString) : []
       })
       ) as Array<PhenotypeSearchItem>
     )
   });
 
+  console.log(data);
   const filteredData = useMemo(() => {
     return !!selectedSystem ? data?.filter(phenotype =>
       phenotype.topLevelParentsArray.some(p => p.mpTerm === selectedSystem)
@@ -212,7 +213,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                 <div className="filtersWrapper">
                   Sort by:
                   <div className="filter">
-                    <strong>Specificity:</strong>
+                    <strong>Ontology level:</strong>
                     <FilterBadge
                       isSelected={sort === 'asc'}
                       icon={faCaretUp}
