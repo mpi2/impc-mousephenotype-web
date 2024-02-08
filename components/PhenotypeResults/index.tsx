@@ -128,8 +128,6 @@ const PhenotypeResults = ({query}: { query?: string }) => {
             .split(';')
             .map(parsePhenotypeString)
       })
-      ).sort((p1, p2) =>
-        p1.intermediateLevelParentsArray.length - p2.intermediateLevelParentsArray.length
       ) as Array<PhenotypeSearchItem>
     )
   });
