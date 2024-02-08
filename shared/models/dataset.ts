@@ -15,7 +15,38 @@ type SummaryStatistics = {
   maleMutantCount:    number;
   maleMutantMean:     number;
   maleMutantSd:       number;
+};
+type StatisticalMethod = {
+  method: string;
+  attributes: {
+    femaleEffectSize:                number | null;
+    femaleKoEffectPValue:            number;
+    femaleKoEffectStderrEstimate:    number;
+    femaleKoParameterEstimate:       number;
+    femalePercentageChange:          number | null;
+    maleKoEffectPValue:              number;
+    maleKoEffectStderrEstimate:      number;
+    maleKoParameterEstimate:         number;
+    malePercentageChange:            number | null;
+    genotypeEffectPValue:            number;
+    genotypeEffectStderrEstimate:    number;
+    group1Genotype:                  string;
+    group1ResidualsNormalityTest:    number;
+    group2Genotype:                  string;
+    group2ResidualsNormalityTest:    number;
+    interactionEffectPValue:         number | null;
+    interactionSignificant:          boolean | null;
+    interceptEstimate:               number;
+    interceptEstimateStderrEstimate: number;
+    maleEffectSize:                  number | null;
+    sexEffectPValue:                 number | null;
+    sexEffectParameterEstimate:      number | null;
+    sexEffectStderrEstimate:         number | null;
+    batchSignificant:                boolean;
+    varianceSignificant:             boolean;
+  }
 }
+
 export type Dataset = {
   id:                     string;
   alleleAccessionId:      string;
@@ -58,5 +89,6 @@ export type Dataset = {
   strainAccessionId:      string;
   strainName:             string;
   summaryStatistics:      SummaryStatistics;
+  statisticalMethod:      StatisticalMethod;
   topLevelPhenotypes:     Array<{ name: string, id: string }>;
 }
