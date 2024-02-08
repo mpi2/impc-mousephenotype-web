@@ -10,7 +10,6 @@ export default {
         const dsMeta = chart.getDatasetMeta(i);
         const values = d.data;
         return dsMeta.data.map((b, i) => {
-          console.log(i);
           return {
             value: values[i]?.y,
             x: b.x,
