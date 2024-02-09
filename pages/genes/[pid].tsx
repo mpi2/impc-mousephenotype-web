@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { GeneContext, GeneAllelesContext } from "@/contexts";
+import { GeneContext, NumAllelesContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
 
 const HumanDiseases = dynamic(
@@ -47,7 +47,7 @@ const Gene = () => {
 
   return (
     <GeneContext.Provider value={gene}>
-      <GeneAllelesContext.Provider value={contextValue}>
+      <NumAllelesContext.Provider value={contextValue}>
         <GeneComparatorTrigger current={router.query.pid as string} />
         <Search />
         <Container className="page">
@@ -65,7 +65,7 @@ const Gene = () => {
             </>
           )}
         </Container>
-      </GeneAllelesContext.Provider>
+      </NumAllelesContext.Provider>
     </GeneContext.Provider>
   );
 };

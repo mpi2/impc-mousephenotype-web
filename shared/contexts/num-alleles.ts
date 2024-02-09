@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
-type GeneAlellesContext = {
+type NumAllelesContext = {
   numOfAlleles: number;
   setNumOfAlleles: (newValue: number) => void
 }
 
-export const GeneAllelesContext = createContext<GeneAlellesContext>({
+export const NumAllelesContext = createContext<NumAllelesContext>({
   numOfAlleles: null,
   setNumOfAlleles: () => {}
 });

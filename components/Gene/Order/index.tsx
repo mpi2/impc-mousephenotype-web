@@ -14,12 +14,12 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { GeneAllelesContext } from "@/contexts";
+import { NumAllelesContext } from "@/contexts";
 
 const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
-  const { setNumOfAlleles } = useContext(GeneAllelesContext);
+  const { setNumOfAlleles } = useContext(NumAllelesContext);
   const { isLoading, isError, data: filtered } = useQuery({
     queryKey: ['genes', router.query.pid, 'order'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/order`),
