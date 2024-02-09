@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Alert, Form } from "react-bootstrap";
-import { GeneContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import {
   PlainTextCell,
   SmartTable,
@@ -16,15 +16,18 @@ const SignificantPhenotypes = (
   {
     phenotypeData,
     isPhenotypeLoading,
-    isPhenotypeError
+    isPhenotypeError,
+    hasDataRelatedToPWG,
   }: {
     phenotypeData: Array<GenePhenotypeHits>,
     isPhenotypeLoading: boolean,
     isPhenotypeError: boolean,
+    hasDataRelatedToPWG: boolean,
   }) => {
   const gene = useContext(GeneContext);
   const [query, setQuery] = useState(undefined);
   const [selectedAllele, setSelectedAllele] = useState(undefined);
+  const { setAlleles } = useContext(AllelesStudiedContext);
 
   if (isPhenotypeLoading) {
     return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
@@ -48,6 +51,11 @@ const SignificantPhenotypes = (
     (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query))
   );
 
+  useEffect(() => {
+    if (alleles?.length) {
+      setAlleles(alleles);
+    }
+  }, [phenotypeData]);
   return (
     <SmartTable<GenePhenotypeHits>
       data={filteredPhenotypeData}
@@ -106,21 +114,32 @@ const SignificantPhenotypes = (
         </div>
       }
       additionalBottomControls={
-        <DownloadData<GenePhenotypeHits>
-          data={phenotypeData}
-          fileName={`${gene.geneSymbol}-significant-phenotypes`}
-          fields={[
-            { key: 'phenotypeName', label: 'Phenotype' },
-            { key: 'alleleSymbol', label: 'Allele' },
-            { key: 'zygosity', label: 'Zygosity' },
-            { key: 'sex', label: 'Sex' },
-            { key: 'lifeStageName', label: 'Life stage' },
-            { key: 'procedureName', label: 'Procedure' },
-            { key: 'parameterName', label: 'Parameter' },
-            { key: 'phenotypingCentre', label: 'Phenotyping center' },
-            { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue?.toString(10) || '1' },
-          ]}
-        />
+        <>
+          <DownloadData<GenePhenotypeHits>
+            data={phenotypeData}
+            fileName={`${gene.geneSymbol}-significant-phenotypes`}
+            fields={[
+              { key: 'phenotypeName', label: 'Phenotype' },
+              { key: 'alleleSymbol', label: 'Allele' },
+              { key: 'zygosity', label: 'Zygosity' },
+              { key: 'sex', label: 'Sex' },
+              { key: 'lifeStageName', label: 'Life stage' },
+              { key: 'procedureName', label: 'Procedure' },
+              { key: 'parameterName', label: 'Parameter' },
+              { key: 'phenotypingCentre', label: 'Phenotyping center' },
+              { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue?.toString(10) || '1' },
+            ]}
+          />
+          {hasDataRelatedToPWG && (
+            <span style={{ textAlign: 'right', fontSize: "90%" }}>
+                * Significant with a threshold of 1x10-3, check the&nbsp;
+              <a className="primary link" href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
+                  Pain Sensitivity page&nbsp;
+                </a>
+                for more information.
+              </span>
+          )}
+        </>
       }
       columns={[
         {

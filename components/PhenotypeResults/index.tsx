@@ -89,10 +89,10 @@ const PhenotypeResult = ({
         <Col>
           <p className="grey small">Physiological System</p>
           {topLevelParentsArray.map((x) => (
-            <BodySystem key={x.mpId} name={x.mpTerm} hoverColor="black" color="black"/>
+            <BodySystem key={x.mpId} name={x.mpTerm} hoverColor="black" color="black" isSignificant/>
           ))}
           {topLevelParentsArray.length === 0 && (
-            <BodySystem key={mpId} name={phenotypeName} hoverColor="black" color="black"/>
+            <BodySystem key={mpId} name={phenotypeName} hoverColor="black" color="black" isSignificant/>
           )}
         </Col>
       </Row>
@@ -132,7 +132,6 @@ const PhenotypeResults = ({query}: { query?: string }) => {
     )
   });
 
-  console.log(data);
   const filteredData = useMemo(() => {
     return !!selectedSystem ? data?.filter(phenotype =>
       phenotype.topLevelParentsArray.some(p => p.mpTerm === selectedSystem)

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
 import Card from "../../Card";
@@ -14,10 +14,12 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
+import { NumAllelesContext } from "@/contexts";
 
 const Order = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
+  const { setNumOfAlleles } = useContext(NumAllelesContext);
   const { isLoading, isError, data: filtered } = useQuery({
     queryKey: ['genes', router.query.pid, 'order'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/order`),
@@ -33,6 +35,12 @@ const Order = ({ gene }: { gene: any }) => {
       setSorted(_.orderBy(filtered, "alleleSymbol", "asc"));
     }
   }, [filtered]);
+
+  useEffect(() => {
+    if (sorted?.length) {
+      setNumOfAlleles(sorted.length);
+    }
+  }, [sorted]);
 
   if (isLoading) {
     return (

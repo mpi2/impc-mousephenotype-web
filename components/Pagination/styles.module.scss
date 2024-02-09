@@ -27,6 +27,9 @@
   display: flex;
   align-items: baseline;
   column-gap: 1rem;
+  &.bottomControls {
+    align-items: center;
+  }
 }
 
 .pagNavBtn {

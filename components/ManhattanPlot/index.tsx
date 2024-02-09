@@ -74,7 +74,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
   }
 
   const associationMatchesFilter = (rawDataPoint) => {
-    return rawDataPoint.geneSymbol.includes(geneFilter) || rawDataPoint.mgiGeneAccessionId === geneFilter;
+    return rawDataPoint.geneSymbol === geneFilter || rawDataPoint.mgiGeneAccessionId === geneFilter;
   }
 
   const options= {

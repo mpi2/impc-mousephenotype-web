@@ -211,7 +211,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
       {children(currentPage)}
       <div className={`${styles.buttonsWrapper} ${!!AdditionalBottomControls ? styles.withControls : ''}`}>
         { !!AdditionalBottomControls && (
-          <div className={styles.additionalWrapper}>
+          <div className={`${styles.additionalWrapper} ${styles.bottomControls}`}>
             { AdditionalBottomControls }
           </div>
         )}
