@@ -8,11 +8,11 @@ import Publications from "@/components/Gene/Publications";
 import Histopathology from "@/components/Gene/Histopathology";
 import Expressions from "@/components/Gene/Expressions";
 import Order from "@/components/Gene/Order";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { GeneContext } from "@/contexts";
+import { GeneContext, GeneAllelesContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
 
 const HumanDiseases = dynamic(
@@ -24,6 +24,8 @@ const HumanDiseases = dynamic(
 
 const Gene = () => {
   const router = useRouter();
+  const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
+  const contextValue = {numOfAlleles, setNumOfAlleles};
 
   const {
     isLoading,
@@ -45,23 +47,25 @@ const Gene = () => {
 
   return (
     <GeneContext.Provider value={gene}>
-      <GeneComparatorTrigger current={router.query.pid as string} />
-      <Search />
-      <Container className="page">
-        <Summary {...{ gene, loading: isLoading, error: isError ? error.toString(): "" }} />
-        {!!gene && (
-          <>
-            <Phenotypes gene={gene} />
-            <Expressions />
-            <Images gene={gene} />
-            <HumanDiseases gene={gene} />
-            <Histopathology />
-            <Publications gene={gene} />
-            <ExternalLinks />
-            <Order gene={gene} />
-          </>
-        )}
-      </Container>
+      <GeneAllelesContext.Provider value={contextValue}>
+        <GeneComparatorTrigger current={router.query.pid as string} />
+        <Search />
+        <Container className="page">
+          <Summary {...{ gene, numOfAlleles, loading: isLoading, error: isError ? error.toString(): "" }} />
+          {!!gene && (
+            <>
+              <Phenotypes gene={gene} />
+              <Expressions />
+              <Images gene={gene} />
+              <HumanDiseases gene={gene} />
+              <Histopathology />
+              <Publications gene={gene} />
+              <ExternalLinks />
+              <Order gene={gene} />
+            </>
+          )}
+        </Container>
+      </GeneAllelesContext.Provider>
     </GeneContext.Provider>
   );
 };
