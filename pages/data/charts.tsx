@@ -22,12 +22,13 @@ import { useDatasetsQuery } from "@/hooks";
 import { Dataset } from "@/models";
 
 
-const getLowestPValue = (summaries: Array<Dataset>): number => {
-  return Math.min(...summaries.map(d => {
+const getSmallestPValue = (summaries: Array<Dataset>): number => {
+  const pValues = summaries.map(d => {
     const statMethodPValueKey = d.sex === 'female' ? 'femaleKoEffectPValue' : 'maleKoEffectPValue';
     const pValueFromStatMethod = d.statisticalMethod?.attributes?.[statMethodPValueKey];
     return d.reportedPValue < pValueFromStatMethod ? d.reportedPValue : pValueFromStatMethod;
-  }), 1);
+  }).filter(value => !!value);
+  return Math.min(...pValues, 1);
 }
 
 const Charts = () => {
@@ -137,7 +138,7 @@ const Charts = () => {
                 zygosity / metadata group combinations tested, with the lowest
                 p-value of&nbsp;
                 <strong>
-                  {allSummaries && formatPValue(getLowestPValue(allSummaries))}
+                  {allSummaries && formatPValue(getSmallestPValue(allSummaries))}
                 </strong>
               </span>
                 <Button
@@ -181,7 +182,7 @@ const Charts = () => {
                   eventKey={i}
                   title={
                     <>
-                      Combination #{i + 1} ({formatPValue(getLowestPValue([d]))}&nbsp;
+                      Combination #{i + 1} ({formatPValue(getSmallestPValue([d]))}&nbsp;
                       {i === 0 ? " | lowest" : null})
                     </>
                   }

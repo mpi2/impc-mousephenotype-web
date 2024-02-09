@@ -12,6 +12,9 @@ import {
 import { PhenotypeGenotypes } from "@/models/phenotype";
 import { TableCellProps } from "@/models";
 import { DownloadData } from "@/components";
+import { formatAlleleSymbol } from "@/utils";
+import _ from "lodash";
+import Link from "next/link";
 
 const ParameterCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
   return (
@@ -33,6 +36,21 @@ const PhenotypingCentreCell = <T extends PhenotypeGenotypes>(props: TableCellPro
   )
 };
 
+const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
+  const allele = formatAlleleSymbol(_.get(props.value, props.field) as string);
+  return (
+    <span style={{ lineHeight: 1.5 }}>
+      <small>
+        <Link className="link" href={`/genes/${props.value.mgiGeneAccessionId}`}>{allele[0]}</Link>
+      </small>
+      <br/>
+      <strong>
+        {allele[0]}
+        <sup>{allele[1]}</sup>
+      </strong>
+    </span>
+  )
+};
 
 type Props = {};
 
@@ -87,7 +105,7 @@ const Associations = (props: Props) => {
           />
         }
         columns={[
-          { width: 2, label: "Gene / allele", field: "alleleSymbol", cmp: <AlleleCell style={{ fontWeight: 'bold' }} /> },
+          { width: 2, label: "Gene / allele", field: "alleleSymbol", cmp: <AlleleWithLinkCell /> },
           { width: 1.3, label: "Phenotype", field: "phenotypeName", cmp: <PlainTextCell />  },
           { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: 'capitalize' }} /> },
           { width: 0.7, label: "Sex", field: "sex", cmp: <SignificantSexesCell /> },
