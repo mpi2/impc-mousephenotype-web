@@ -48,7 +48,7 @@ const DownloadDataComponent = <T,>({data, fields, fileName}: Props<T>) => {
 
 
   return (
-    <p className="grey">
+    <div className="grey">
       Download data as:{" "}
       <Button
         size="sm"
@@ -66,7 +66,7 @@ const DownloadDataComponent = <T,>({data, fields, fileName}: Props<T>) => {
       >
         <FontAwesomeIcon icon={faDownload} size="sm"/> XLS
       </Button>
-    </p>
+    </div>
   );
 };
 
