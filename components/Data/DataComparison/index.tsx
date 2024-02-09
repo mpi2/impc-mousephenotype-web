@@ -113,8 +113,6 @@ const DataComparison = (props: Props) => {
     return acc;
   }, {});
 
-  console.log(data);
-
   const processed = (groups ? Object.values(groups) : []).map((d: any, index) => {
       const getLethality = () => {
         if (!d.significant) {
@@ -186,78 +184,86 @@ const DataComparison = (props: Props) => {
   return (
     <Pagination data={sorted}>
       {(pageData) => (
-        <SortableTable
-          doSort={(sort) => {
-            setSortOptions({
-              prop: sort[0],
-              order: sort[1]
-            })
-          }}
-          defaultSort={["parameter", "asc"]}
-          headers={[
-            { width: 0.5, label: "#", disabled: true },
-            { width: 3, label: "Parameter", field: "parameter" },
-            {
-              width: 1,
-              label: "Phenotyping Centre",
-              field: "phenotypingCentre",
-            },
-            { width: 2, label: "Allele", field: "alleleSymbol" },
-            { width: 1, label: "Zygosity", field: "zygosity" },
-            { width: 1, label: "Significant sex", field: "sex" },
-            { width: 1, label: "Life Stage", field: "lifeStageName" },
-            { width: 1, label: "Colony Id", field: "colonyId",},
-            lastColumnHeader,
-          ]}
-        >
-          {pageData.map((d, i) => {
-            const allele = formatAlleleSymbol(d.alleleSymbol);
-            return (
-              <tr key={d.key} style={d.key === selectedParameter ? { borderWidth: 3, borderColor: '#00B0B0' } : {} }>
-                <td>{d.datasetNum}</td>
-                <td>{d.parameterName}</td>
-                <td>{d.phenotypingCentre}</td>
-                <td>
-                  {allele[0]}
-                  <sup>{allele[1]}</sup>
-                </td>
-                <td>{d.zygosity}</td>
-                <td>
-                  {d.sex === 'not_considered' ? (
-                    <OverlayTrigger
-                      placement="top"
-                      trigger={["hover", "focus"]}
-                      overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
-                    >
+        <>
+          <SortableTable
+            doSort={(sort) => {
+              setSortOptions({
+                prop: sort[0],
+                order: sort[1]
+              })
+            }}
+            defaultSort={["parameter", "asc"]}
+            headers={[
+              {width: 0.5, label: "#", disabled: true},
+              {width: 3, label: "Parameter", field: "parameter"},
+              {
+                width: 1,
+                label: "Phenotyping Centre",
+                field: "phenotypingCentre",
+              },
+              {width: 2, label: "Allele", field: "alleleSymbol"},
+              {width: 1, label: "Zygosity", field: "zygosity"},
+              {width: 1, label: "Significant sex", field: "sex"},
+              {width: 1, label: "Life Stage", field: "lifeStageName"},
+              {width: 1, label: "Colony Id", field: "colonyId",},
+              lastColumnHeader,
+            ]}
+          >
+            {pageData.map((d, i) => {
+              const allele = formatAlleleSymbol(d.alleleSymbol);
+              return (
+                <tr key={d.key} style={d.key === selectedParameter ? {borderWidth: 3, borderColor: '#00B0B0'} : {}}>
+                  <td>{d.datasetNum}</td>
+                  <td>{d.parameterName}</td>
+                  <td>{d.phenotypingCentre}</td>
+                  <td>
+                    {allele[0]}
+                    <sup>{allele[1]}</sup>
+                  </td>
+                  <td>{d.zygosity}</td>
+                  <td>
+                    {d.sex === 'not_considered' ? (
+                      <OverlayTrigger
+                        placement="top"
+                        trigger={["hover", "focus"]}
+                        overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
+                      >
                       <span className="me-2">
-                        <FontAwesomeIcon icon={getIcon(d.sex)} size="lg" />
+                        <FontAwesomeIcon icon={getIcon(d.sex)} size="lg"/>
                       </span>
-                    </OverlayTrigger>
-                  ) : (
-                    <>
-                      {["male", "female", "not_considered"]
-                        .filter(sex => d.sex === sex)
-                        .map(significantSex => (
-                          <OverlayTrigger
-                            placement="top"
-                            trigger={["hover", "focus"]}
-                            overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}
-                          >
+                      </OverlayTrigger>
+                    ) : (
+                      <>
+                        {["male", "female", "not_considered"]
+                          .filter(sex => d.sex === sex)
+                          .map(significantSex => (
+                            <OverlayTrigger
+                              placement="top"
+                              trigger={["hover", "focus"]}
+                              overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}
+                            >
                             <span className="me-2">
-                              <FontAwesomeIcon icon={getIcon(significantSex)} size="lg" />
+                              <FontAwesomeIcon icon={getIcon(significantSex)} size="lg"/>
                             </span>
-                          </OverlayTrigger>
-                        ))}
-                    </>
-                  )}
-                </td>
-                <td>{d.lifeStageName}</td>
-                <td>{d.colonyId}</td>
-                <LastColumn dataset={d} isViabilityChart={isViabilityChart} />
-              </tr>
-            );
-          })}
-        </SortableTable>
+                            </OverlayTrigger>
+                          ))}
+                      </>
+                    )}
+                  </td>
+                  <td>{d.lifeStageName}</td>
+                  <td>{d.colonyId}</td>
+                  <LastColumn dataset={d} isViabilityChart={isViabilityChart}/>
+                </tr>
+              );
+            })}
+          </SortableTable>
+          <div style={{ textAlign: 'right', fontSize: '75%' }}>
+            <span>
+              P-values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) <br/>
+              are marked as significant.
+            </span>
+          </div>
+        </>
       )}
     </Pagination>
   );
