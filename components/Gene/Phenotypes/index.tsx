@@ -65,6 +65,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
               phenotypeData={phenotypeData}
               isPhenotypeLoading={isPhenotypeLoading}
               isPhenotypeError={isPhenotypeError}
+              hasDataRelatedToPWG={hasDataRelatedToPWG}
             />
           </div>
         </Tab>
@@ -89,15 +90,6 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           </TabContent>
         </Tab>
       </Tabs>
-      {hasDataRelatedToPWG && (
-        <span style={{ textAlign: 'right', marginTop: '1rem', fontSize: "90%" }}>
-          * Significant with a threshold of 1x10-3, check the&nbsp;
-          <a className="primary link" href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
-            Pain Sensitivity page&nbsp;
-          </a>
-          for more information.
-        </span>
-      )}
     </Card>
   );
 };
