@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { GeneContext, NumAllelesContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
 
 const HumanDiseases = dynamic(
@@ -25,7 +25,9 @@ const HumanDiseases = dynamic(
 const Gene = () => {
   const router = useRouter();
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
-  const contextValue = {numOfAlleles, setNumOfAlleles};
+  const [allelesStudied, setAlleles] = useState<Array<string>>([]);
+  const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
+  const allelesStudiedContextValue = {allelesStudied, setAlleles};
 
   const {
     isLoading,
@@ -47,24 +49,26 @@ const Gene = () => {
 
   return (
     <GeneContext.Provider value={gene}>
-      <NumAllelesContext.Provider value={contextValue}>
-        <GeneComparatorTrigger current={router.query.pid as string} />
-        <Search />
-        <Container className="page">
-          <Summary {...{ gene, numOfAlleles, loading: isLoading, error: isError ? error.toString(): "" }} />
-          {!!gene && (
-            <>
-              <Phenotypes gene={gene} />
-              <Expressions />
-              <Images gene={gene} />
-              <HumanDiseases gene={gene} />
-              <Histopathology />
-              <Publications gene={gene} />
-              <ExternalLinks />
-              <Order gene={gene} />
-            </>
-          )}
-        </Container>
+      <NumAllelesContext.Provider value={numAllelesContextValue}>
+        <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
+          <GeneComparatorTrigger current={router.query.pid as string} />
+          <Search />
+          <Container className="page">
+            <Summary {...{ gene, numOfAlleles, loading: isLoading, error: isError ? error.toString(): "" }} />
+            {!!gene && (
+              <>
+                <Phenotypes gene={gene} />
+                <Expressions />
+                <Images gene={gene} />
+                <HumanDiseases gene={gene} />
+                <Histopathology />
+                <Publications gene={gene} />
+                <ExternalLinks />
+                <Order allelesStudied={allelesStudied} />
+              </>
+            )}
+          </Container>
+        </AllelesStudiedContext.Provider>
       </NumAllelesContext.Provider>
     </GeneContext.Provider>
   );

@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Alert, Form } from "react-bootstrap";
-import { GeneContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import {
   PlainTextCell,
   SmartTable,
@@ -27,6 +27,7 @@ const SignificantPhenotypes = (
   const gene = useContext(GeneContext);
   const [query, setQuery] = useState(undefined);
   const [selectedAllele, setSelectedAllele] = useState(undefined);
+  const { setAlleles } = useContext(AllelesStudiedContext);
 
   if (isPhenotypeLoading) {
     return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
@@ -50,6 +51,11 @@ const SignificantPhenotypes = (
     (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query))
   );
 
+  useEffect(() => {
+    if (alleles?.length) {
+      setAlleles(alleles);
+    }
+  }, [phenotypeData]);
   return (
     <SmartTable<GenePhenotypeHits>
       data={filteredPhenotypeData}
