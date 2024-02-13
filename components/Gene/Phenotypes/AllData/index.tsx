@@ -14,9 +14,8 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import styles from './styles.module.scss';
-import { PhenotypeGenotypes } from "@/models/phenotype";
 import { DownloadData } from "@/components";
-import { GeneContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
 
 const ParameterCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
   return (
@@ -71,13 +70,16 @@ const PValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) =
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const gene = useContext(GeneContext);
+  const { setAlleles } = useContext(AllelesStudiedContext);
   const [sorted, setSorted] = useState<any[]>(null);
   const [procedure, setProcedure] = useState(undefined);
   const [query, setQuery] = useState(undefined);
   const [system, setSystem] = useState(undefined);
 
   useEffect(() => {
-    setSorted(_.orderBy(data, "pValue", "asc"));
+    const newData = _.orderBy(data, "pValue", "asc");
+    setAlleles(_.uniq(_.map(newData, "alleleSymbol")));
+    setSorted(newData);
   }, [data]);
 
   const filtered = (sorted ?? []).filter(
@@ -98,6 +100,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   );
 
   const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
+
   const getLabel = (name) => _.capitalize(name.replace(/ phenotype/g, ""));
 
   if (!data) {
