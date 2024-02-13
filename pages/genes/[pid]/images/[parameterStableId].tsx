@@ -26,11 +26,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { AlleleSymbol } from "@/components";
 
-
 const addTrailingSlash = (url) => !url.endsWith('/') ?  url + '/' : url;
 const SkeletonText = ({ width = '300px' }) => <Skeleton style={{ display: 'block', width }} inline />;
-
-
 
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
   <Badge className={`badge ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
@@ -159,11 +156,11 @@ const ImagesCompare = () => {
     }
   });
 
-  const { data: controlImages } = useQuery({
+  const { data: controlImagesRaw } = useQuery({
     queryKey: ['genes', pid, 'images', parameterStableId, 'control'],
     queryFn: () => fetchAPI(`/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`),
     enabled: router.isReady && !!mutantImages?.strainAccessionId,
-    select: data => data.find(d => d.strainAccessionId === mutantImages.strainAccessionId)
+    select: data => data.find(d => d.strainAccessionId === mutantImages.strainAccessionId && d.pipelineStableId.includes('IMPC'))
   });
 
   const [selectedSex, setSelectedSex] = useState('both');
@@ -176,7 +173,7 @@ const ImagesCompare = () => {
   }
 
 
-  const filteredControlImages = filterImages(controlImages?.images);
+  const controlImages = controlImagesRaw?.images;
   const filteredMutantImages = filterImages(mutantImages?.images);
   return <>
     <Search />
@@ -202,7 +199,7 @@ const ImagesCompare = () => {
                 style={{ display: "flex" }}
                 className="ratio ratio-16x9"
               >
-                <ImageViewer image={filteredControlImages?.[selectedWTImage]} />
+                <ImageViewer image={controlImages?.[selectedWTImage]} />
               </Col></Col>
             <Col sm={6}>
               <h3>Mutant Images</h3>
@@ -239,7 +236,7 @@ const ImagesCompare = () => {
             </Col>
             <Col xs={12}>
               <div className="filtersWrapper">
-                Show by:
+                Filter by:
                 <div className="filter">
                   <strong>Sex:</strong>
                   <FilterBadge
@@ -265,7 +262,7 @@ const ImagesCompare = () => {
                   </FilterBadge>
                 </div>
                 <div className="filter">
-                  <strong>Zygosity:</strong>
+                  <strong>Mutant zygosity:</strong>
                   <FilterBadge isSelected={selectedZyg === 'both'} onClick={() => setSelectedZyg('both')}>
                     All
                   </FilterBadge>
@@ -286,7 +283,7 @@ const ImagesCompare = () => {
             <Col sm={6}>
               <Column
                 selected={selectedWTImage}
-                images={filteredControlImages}
+                images={controlImages}
                 onSelection={imageIndex => setSelectedWTImage(imageIndex)}
               />
             </Col>
