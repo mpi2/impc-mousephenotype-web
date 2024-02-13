@@ -28,9 +28,10 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
       d =>
         d.productTypes.length > 1 ||
         !["intermediate_vector", "crispr"].includes(d.productTypes[0])
-    ) as Array<GeneOrder>,
+    ).map(d => ({...d, phenotyped: null})) as Array<GeneOrder>,
     enabled: router.isReady
   });
+  
   useEffect(() => {
     if (filtered) {
       setSorted(_.orderBy(filtered, "alleleSymbol", "asc"));
@@ -42,6 +43,12 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
       setNumOfAlleles(sorted.length);
     }
   }, [sorted]);
+
+  useEffect(() => {
+    if (allelesStudied.length > 0) {
+      setSorted(sorted.map(geneOrder => ({ ...geneOrder, phenotyped: allelesStudied.includes(geneOrder.alleleSymbol) })))
+    }
+  }, [allelesStudied])
 
   if (isLoading) {
     return (
@@ -81,7 +88,7 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
             <>
               <SortableTable
                 doSort={(sort) => {
-                  setSorted(_.orderBy(filtered, sort[0], sort[1]));
+                  setSorted(_.orderBy(sorted, sort[0], sort[1]));
                 }}
                 defaultSort={["alleleSymbol", "asc"]}
                 headers={[
