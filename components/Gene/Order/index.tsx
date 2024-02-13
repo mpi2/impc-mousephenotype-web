@@ -15,6 +15,7 @@ import { fetchAPI } from "@/api-service";
 import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { NumAllelesContext } from "@/contexts";
+import Skeleton from "react-loading-skeleton";
 
 const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
   const router = useRouter();
@@ -27,9 +28,10 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
       d =>
         d.productTypes.length > 1 ||
         !["intermediate_vector", "crispr"].includes(d.productTypes[0])
-    ) as Array<GeneOrder>,
+    ).map(d => ({...d, phenotyped: null})) as Array<GeneOrder>,
     enabled: router.isReady
   });
+  
   useEffect(() => {
     if (filtered) {
       setSorted(_.orderBy(filtered, "alleleSymbol", "asc"));
@@ -41,6 +43,12 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
       setNumOfAlleles(sorted.length);
     }
   }, [sorted]);
+
+  useEffect(() => {
+    if (allelesStudied.length > 0) {
+      setSorted(sorted.map(geneOrder => ({ ...geneOrder, phenotyped: allelesStudied.includes(geneOrder.alleleSymbol) })))
+    }
+  }, [allelesStudied])
 
   if (isLoading) {
     return (
@@ -80,7 +88,7 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
             <>
               <SortableTable
                 doSort={(sort) => {
-                  setSorted(_.orderBy(filtered, sort[0], sort[1]));
+                  setSorted(_.orderBy(sorted, sort[0], sort[1]));
                 }}
                 defaultSort={["alleleSymbol", "asc"]}
                 headers={[
@@ -91,9 +99,14 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                     field: "productTypes",
                   },
                   {
-                    width: 3,
+                    width: 2,
                     label: "Produced",
                     field: "alleleDescription",
+                  },
+                  {
+                    width: 1,
+                    label: "Phenotyped",
+                    field: "phenotyped",
                   },
                   {
                     width: 2,
@@ -110,9 +123,6 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                         <strong className={styles.link}>
                           {allele[0]}
                           <sup>{allele[1]}</sup>
-                          {allelesStudied.includes(d.alleleSymbol) && (
-                            <span className="secondary">&nbsp;*</span>
-                          )}
                         </strong>
                       </td>
                       <td>{d.alleleDescription}</td>
@@ -125,6 +135,11 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                             )
                             .join(", ") || "None"
                         ).replace(/_/g, " ")}
+                      </td>
+                      <td>
+                        {allelesStudied.length === 0 ? (
+                          <Skeleton inline />
+                        ) : allelesStudied.includes(d.alleleSymbol) ? <>Yes</> : <>No</>}
                       </td>
                       <td className="text-capitalize">
                         <Link
@@ -139,10 +154,6 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                   );
                 })}
               </SortableTable>
-              <p className="small">
-                <span className="secondary">*</span>&nbsp;:
-                This allele has been studied by the IMPC
-              </p>
             </>
           )}
         </Pagination>

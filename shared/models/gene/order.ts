@@ -4,4 +4,5 @@ export type GeneOrder = {
   alleleSymbol: string;
   mgiGeneAccessionId: string;
   productTypes: Array<string>;
+  phenotyped: boolean;
 }
