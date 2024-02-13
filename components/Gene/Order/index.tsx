@@ -15,6 +15,7 @@ import { fetchAPI } from "@/api-service";
 import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { NumAllelesContext } from "@/contexts";
+import Skeleton from "react-loading-skeleton";
 
 const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
   const router = useRouter();
@@ -91,9 +92,14 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                     field: "productTypes",
                   },
                   {
-                    width: 3,
+                    width: 2,
                     label: "Produced",
                     field: "alleleDescription",
+                  },
+                  {
+                    width: 1,
+                    label: "Phenotyped",
+                    field: "phenotyped",
                   },
                   {
                     width: 2,
@@ -110,9 +116,6 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                         <strong className={styles.link}>
                           {allele[0]}
                           <sup>{allele[1]}</sup>
-                          {allelesStudied.includes(d.alleleSymbol) && (
-                            <span className="secondary">&nbsp;*</span>
-                          )}
                         </strong>
                       </td>
                       <td>{d.alleleDescription}</td>
@@ -125,6 +128,11 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                             )
                             .join(", ") || "None"
                         ).replace(/_/g, " ")}
+                      </td>
+                      <td>
+                        {allelesStudied.length === 0 ? (
+                          <Skeleton inline />
+                        ) : allelesStudied.includes(d.alleleSymbol) ? <>Yes</> : <>No</>}
                       </td>
                       <td className="text-capitalize">
                         <Link
@@ -139,10 +147,6 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                   );
                 })}
               </SortableTable>
-              <p className="small">
-                <span className="secondary">*</span>&nbsp;:
-                This allele has been studied by the IMPC
-              </p>
             </>
           )}
         </Pagination>
