@@ -157,9 +157,9 @@ const Footer = () => {
           </div>
           <div className="col-12 col-md-6 text-right">
             <h6>
-              <a href="https://www.mousephenotype.org/data/release">
+              <a href="/release">
                 <small>
-                  Access Data Release <span id="data-no">15.1</span> Data
+                  Access Data Release <span id="data-no">20.1</span> Data
                 </small>
               </a>
             </h6>
