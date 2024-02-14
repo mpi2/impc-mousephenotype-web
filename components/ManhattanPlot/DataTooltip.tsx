@@ -28,7 +28,7 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
   return (
     <div
       className={`${styles.tooltip} ${tooltip.opacity === 0 ? styles.noVisible: styles.visible }`}
-      style={{ top: tooltip.top + offsetX, left: tooltip.left + offsetY, opacity: tooltip.opacity }}
+      style={{ top: tooltip.top + offsetY, left: tooltip.left + offsetX, opacity: tooltip.opacity }}
     >
       <button className={styles.closeBtn} onClick={onClick}>×</button>
       <span><strong>Chr: </strong>{ getChromosome() }</span>
