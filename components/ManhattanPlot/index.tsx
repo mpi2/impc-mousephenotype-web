@@ -74,7 +74,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
   }
 
   const associationMatchesFilter = (rawDataPoint) => {
-    return rawDataPoint.geneSymbol === geneFilter || rawDataPoint.mgiGeneAccessionId === geneFilter;
+    return rawDataPoint.geneSymbol?.toLowerCase() === geneFilter.toLowerCase() || rawDataPoint?.mgiGeneAccessionId === geneFilter;
   };
 
   const getThresholdXPos = (chr: string, datapoints: Array<ChromosomeDataPoint>): number => {
