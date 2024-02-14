@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -17,10 +17,17 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
+import { DownloadData } from "@/components";
 
-const Scale = ({ children = 5 }: { children: number }) => {
+type ScaleProps = {
+  children: number;
+}
+type Ref = HTMLDivElement;
+
+const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
+  const { children = 5 } = props;
   return (
-    <div className={styles.scale}>
+    <div ref={ref} className={styles.scale}>
       {Array.from(Array(5).keys())
         .map((n) => n + 1)
         .map((n) => (
@@ -28,7 +35,7 @@ const Scale = ({ children = 5 }: { children: number }) => {
         ))}
     </div>
   );
-};
+});
 
 const PhenoGridEl = ({ phenotypes, id }) => {
   const {
@@ -191,35 +198,55 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             No data available for this section.
           </Alert>
         ) : (
-          <Pagination data={selectedData}>
-            {(pageData) => (
-              <SortableTable
-                doSort={(sort) => {
-                  setSorted(_.orderBy(data, sort[0], sort[1]));
-                }}
-                defaultSort={["phenodigmScore", "desc"]}
-                headers={[
-                  { width: 5, label: "Disease", field: "diseaseTerm" },
-                  {
-                    width: 2,
-                    label: "Similarity of phenotypes",
-                    field: "phenodigmScore",
-                  },
-                  {
-                    width: 3,
-                    label: "Matching phenotypes",
-                    field: "diseaseMatchedPhenotypes",
-                  },
-                  { width: 2, label: "Source", field: "diseaseId" },
-                  { width: 1, label: "Expand", disabled: true },
-                ]}
-              >
-                {pageData.map((d) => (
-                  <Row data={d} />
-                ))}
-              </SortableTable>
-            )}
-          </Pagination>
+          <>
+            <Pagination
+              data={selectedData}
+              additionalBottomControls={
+                <DownloadData<GeneDisease>
+                  data={sorted}
+                  fileName={`${gene.geneSymbol}-associated-diseases`}
+                  fields={[
+                    { key: 'diseaseTerm', label: 'Disease' },
+                    { key: 'phenodigmScore', label: 'Phenodigm Score' },
+                    { key: 'diseaseMatchedPhenotypes', label: 'Matching phenotypes' },
+                    { key: 'diseaseId', label: 'Source', getValueFn: item => `https://omim.org/entry/${item.diseaseId.replace('OMIM:', '')}` },
+                    { key: 'associationCurated', label: 'Gene association', getValueFn: item => item.associationCurated ? 'Curated' : 'Predicted' },
+                    { key: 'modelDescription', label: 'Model description' },
+                    { key: 'modelGeneticBackground', label: 'Model genetic background' },
+                    { key: 'modelMatchedPhenotypes', label: 'Model matched phenotypes' },
+                  ]}
+                />
+              }
+            >
+              {(pageData) => (
+                <SortableTable
+                  doSort={(sort) => {
+                    setSorted(_.orderBy(data, sort[0], sort[1]));
+                  }}
+                  defaultSort={["phenodigmScore", "desc"]}
+                  headers={[
+                    { width: 5, label: "Disease", field: "diseaseTerm" },
+                    {
+                      width: 2,
+                      label: "Similarity of phenotypes",
+                      field: "phenodigmScore",
+                    },
+                    {
+                      width: 3,
+                      label: "Matching phenotypes",
+                      field: "diseaseMatchedPhenotypes",
+                    },
+                    { width: 2, label: "Source", field: "diseaseId" },
+                    { width: 1, label: "Expand", disabled: true },
+                  ]}
+                >
+                  {pageData.map((d) => (
+                    <Row data={d} />
+                  ))}
+                </SortableTable>
+              )}
+            </Pagination>
+          </>
         )}
       </Card>
     </>

@@ -75,7 +75,11 @@ const Images = ({ gene }: { gene: any }) => {
     );
   }
 
-  const groups = Object.entries(_.groupBy(data, "parameterName"));
+  const groups = Object.entries(_.groupBy(data, "parameterName")).sort((a, b) => {
+    const [ param1] = a;
+    const [ param2 ] = b;
+    return param1.localeCompare(param2);
+  })
   return (
     <Card id="images">
       <h2>Associated images</h2>

@@ -5,20 +5,23 @@ import {
   PlainTextCell,
   SmartTable,
   PhenotypeIconsCell,
-  AlleleCell, SignificantSexesCell, SignificantPValueCell
+  AlleleCell, SignificantSexesCell, SignificantPValueCell, LinkCell
 } from "@/components/SmartTable";
 import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
+import { DownloadData } from "@/components";
 
 const SignificantPhenotypes = (
   {
     phenotypeData,
     isPhenotypeLoading,
-    isPhenotypeError
+    isPhenotypeError,
+    hasDataRelatedToPWG,
   }: {
     phenotypeData: Array<GenePhenotypeHits>,
     isPhenotypeLoading: boolean,
     isPhenotypeError: boolean,
+    hasDataRelatedToPWG: boolean,
   }) => {
   const gene = useContext(GeneContext);
   const [query, setQuery] = useState(undefined);
@@ -103,8 +106,41 @@ const SignificantPhenotypes = (
           </p>
         </div>
       }
+      additionalBottomControls={
+        <>
+          <DownloadData<GenePhenotypeHits>
+            data={phenotypeData}
+            fileName={`${gene.geneSymbol}-significant-phenotypes`}
+            fields={[
+              { key: 'phenotypeName', label: 'Phenotype' },
+              { key: 'alleleSymbol', label: 'Allele' },
+              { key: 'zygosity', label: 'Zygosity' },
+              { key: 'sex', label: 'Sex' },
+              { key: 'lifeStageName', label: 'Life stage' },
+              { key: 'procedureName', label: 'Procedure' },
+              { key: 'parameterName', label: 'Parameter' },
+              { key: 'phenotypingCentre', label: 'Phenotyping center' },
+              { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue?.toString(10) || '1' },
+            ]}
+          />
+          {hasDataRelatedToPWG && (
+            <span style={{ textAlign: 'right', fontSize: "90%" }}>
+                * Significant with a threshold of 1x10-3, check the&nbsp;
+              <a className="primary link" href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
+                  Pain Sensitivity page&nbsp;
+                </a>
+                for more information.
+              </span>
+          )}
+        </>
+      }
       columns={[
-        {width: 2.2, label: "Phenotype", field: "phenotypeName", cmp: <PlainTextCell style={{fontWeight: 'bold'}}/>},
+        {
+          width: 2.2,
+          label: "Phenotype",
+          field: "phenotypeName",
+          cmp: <LinkCell prefix="/phenotypes" altFieldForURL="phenotypeId" style={{fontWeight: 'bold'}} usePrimaryColor={false} />
+        },
         {
           width: 1,
           label: "System",

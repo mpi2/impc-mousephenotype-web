@@ -1,9 +1,9 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
 import Card from "../../Card";
@@ -14,10 +14,13 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
+import { NumAllelesContext } from "@/contexts";
+import Skeleton from "react-loading-skeleton";
 
-const Order = ({ gene }: { gene: any }) => {
+const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
+  const { setNumOfAlleles } = useContext(NumAllelesContext);
   const { isLoading, isError, data: filtered } = useQuery({
     queryKey: ['genes', router.query.pid, 'order'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/order`),
@@ -25,14 +28,27 @@ const Order = ({ gene }: { gene: any }) => {
       d =>
         d.productTypes.length > 1 ||
         !["intermediate_vector", "crispr"].includes(d.productTypes[0])
-    ) as Array<GeneOrder>,
+    ).map(d => ({...d, phenotyped: null})) as Array<GeneOrder>,
     enabled: router.isReady
   });
+  
   useEffect(() => {
     if (filtered) {
       setSorted(_.orderBy(filtered, "alleleSymbol", "asc"));
     }
   }, [filtered]);
+
+  useEffect(() => {
+    if (sorted?.length) {
+      setNumOfAlleles(sorted.length);
+    }
+  }, [sorted]);
+
+  useEffect(() => {
+    if (allelesStudied.length > 0) {
+      setSorted(sorted.map(geneOrder => ({ ...geneOrder, phenotyped: allelesStudied.includes(geneOrder.alleleSymbol) })))
+    }
+  }, [allelesStudied])
 
   if (isLoading) {
     return (
@@ -69,64 +85,76 @@ const Order = ({ gene }: { gene: any }) => {
       ) : (
         <Pagination data={sorted}>
           {(pageData) => (
-            <SortableTable
-              doSort={(sort) => {
-                setSorted(_.orderBy(filtered, sort[0], sort[1]));
-              }}
-              defaultSort={["alleleSymbol", "asc"]}
-              headers={[
-                { width: 3, label: "MGI Allele", field: "alleleSymbol" },
-                {
-                  width: 4,
-                  label: "Allele Type",
-                  field: "productTypes",
-                },
-                {
-                  width: 3,
-                  label: "Produced",
-                  field: "alleleDescription",
-                },
-                {
-                  width: 2,
-                  label: "",
-                  disabled: true,
-                },
-              ]}
-            >
-              {pageData.map((d, index) => {
-                const allele = formatAlleleSymbol(d.alleleSymbol);
-                return (
-                  <tr key={index}>
-                    <td>
-                      <strong className={styles.link}>
-                        {allele[0]}
-                        <sup>{allele[1]}</sup>
-                      </strong>
-                    </td>
-                    <td>{d.alleleDescription}</td>
-                    <td className="text-capitalize">
-                      {(
-                        (d.productTypes ?? [])
-                          .filter(
-                            (x) =>
-                              !(x === "intermediate_vector" || x === "crispr")
-                          )
-                          .join(", ") || "None"
-                      ).replace(/_/g, " ")}
-                    </td>
-                    <td className="text-capitalize">
-                      <Link
-                        href={`/alleles/${router.query.pid}/${allele[1]}`}
-                        className="link primary"
-                      >
-                        <strong>View products</strong>&nbsp;
-                        <FontAwesomeIcon icon={faArrowRight} />
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </SortableTable>
+            <>
+              <SortableTable
+                doSort={(sort) => {
+                  setSorted(_.orderBy(sorted, sort[0], sort[1]));
+                }}
+                defaultSort={["alleleSymbol", "asc"]}
+                headers={[
+                  { width: 3, label: "MGI Allele", field: "alleleSymbol" },
+                  {
+                    width: 4,
+                    label: "Allele Type",
+                    field: "productTypes",
+                  },
+                  {
+                    width: 2,
+                    label: "Produced",
+                    field: "alleleDescription",
+                  },
+                  {
+                    width: 1,
+                    label: "Phenotyped",
+                    field: "phenotyped",
+                  },
+                  {
+                    width: 2,
+                    label: "",
+                    disabled: true,
+                  },
+                ]}
+              >
+                {pageData.map((d, index) => {
+                  const allele = formatAlleleSymbol(d.alleleSymbol);
+                  return (
+                    <tr key={index}>
+                      <td>
+                        <strong className={styles.link}>
+                          {allele[0]}
+                          <sup>{allele[1]}</sup>
+                        </strong>
+                      </td>
+                      <td>{d.alleleDescription}</td>
+                      <td className="text-capitalize">
+                        {(
+                          (d.productTypes ?? [])
+                            .filter(
+                              (x) =>
+                                !(x === "intermediate_vector" || x === "crispr")
+                            )
+                            .join(", ") || "None"
+                        ).replace(/_/g, " ")}
+                      </td>
+                      <td>
+                        {allelesStudied.length === 0 ? (
+                          <Skeleton inline />
+                        ) : allelesStudied.includes(d.alleleSymbol) ? <>Yes</> : <>No</>}
+                      </td>
+                      <td className="text-capitalize">
+                        <Link
+                          href={`/alleles/${router.query.pid}/${allele[1]}`}
+                          className="link primary small"
+                        >
+                          <strong>View products</strong>&nbsp;
+                          <FontAwesomeIcon icon={faChevronRight} />
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </SortableTable>
+            </>
           )}
         </Pagination>
       )}

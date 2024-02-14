@@ -14,6 +14,8 @@ import { Publication } from "../../PublicationsList/types";
 import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
+import { GeneDisease } from "@/models/gene";
+import { DownloadData } from "@/components";
 
 const ALLELES_COUNT = 2;
 const AllelesCell = ({ pub }: { pub: Publication }) => {
@@ -87,7 +89,22 @@ const Publications = ({ gene }: { gene: any }) => {
         gene.
       </p>
       {!!sorted && sorted.length ? (
-        <Pagination data={sorted} totalItems={totalItems}>
+        <Pagination
+          data={sorted}
+          totalItems={totalItems}
+          additionalBottomControls={
+            <DownloadData<Publication>
+              data={sorted}
+              fileName={`${gene.geneSymbol}-related-publications`}
+              fields={[
+                { key: 'title', label: 'Title' },
+                { key: 'journalTitle', label: 'Journal' },
+                { key: 'alleles', label: 'Allele(s)', getValueFn: item => item.alleles.map(({ alleleSymbol }) => alleleSymbol).join(',') },
+                { key: 'alleles', label: 'Pubmed link', getValueFn: item => `https://pubmed.ncbi.hlm.nih.gov/${item.pmId}` },
+              ]}
+            />
+          }
+        >
           {(pageData) => (
             <SortableTable
               doSort={(sort) => {

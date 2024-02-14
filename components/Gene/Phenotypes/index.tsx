@@ -65,28 +65,8 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
               phenotypeData={phenotypeData}
               isPhenotypeLoading={isPhenotypeLoading}
               isPhenotypeError={isPhenotypeError}
+              hasDataRelatedToPWG={hasDataRelatedToPWG}
             />
-            <p className="mt-4 grey">
-              Download data as:{" "}
-              <Button
-                size="sm"
-                variant="outline-secondary"
-                as="a"
-                href={`https://www.mousephenotype.org/data/genes/export/${router.query.pid}?fileType=tsv&fileName=${gene.geneSymbol}`}
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
-              </Button>{" "}
-              <Button
-                size="sm"
-                variant="outline-secondary"
-                as="a"
-                href={`https://www.mousephenotype.org/data/genes/export/${router.query.pid}?fileType=xls&fileName=${gene.geneSymbol}`}
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
-              </Button>
-            </p>
           </div>
         </Tab>
         <Tab eventKey="allData" title="All data">
@@ -97,27 +77,6 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             data={geneData}
           >
             <AllData data={geneData} />
-            <p className="mt-4 grey">
-              Download data as:{" "}
-              <Button
-                size="sm"
-                variant="outline-secondary"
-                as="a"
-                href={`https://www.mousephenotype.org/data/experiments/export?geneAccession=${router.query.pid}&fileType=tsv&fileName=${router.query.pid}`}
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
-              </Button>{" "}
-              <Button
-                size="sm"
-                variant="outline-secondary"
-                as="a"
-                href={`https://www.mousephenotype.org/data/experiments/export?geneAccession=${router.query.pid}&fileType=xls&fileName=${router.query.pid}`}
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
-              </Button>
-            </p>
           </TabContent>
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
@@ -130,23 +89,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             <StatisticalAnalysis data={geneData} />
           </TabContent>
         </Tab>
-        <Tab eventKey="vennDiagram" title="Phenotypes by Allele">
-          <AllelePhenotypeDiagram
-            phenotypeData={phenotypeData}
-            isPhenotypeLoading={isPhenotypeLoading}
-            isPhenotypeError={isPhenotypeError}
-          />
-        </Tab>
       </Tabs>
-      {hasDataRelatedToPWG && (
-        <span style={{ textAlign: 'right', marginTop: '1rem', fontSize: "90%" }}>
-          * Significant with a threshold of 1x10-3, check the&nbsp;
-          <a className="primary link" href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
-            Pain Sensitivity page&nbsp;
-          </a>
-          for more information.
-        </span>
-      )}
     </Card>
   );
 };

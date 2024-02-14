@@ -31,7 +31,7 @@ const SignificantPValue = <T extends Model>(
         {!!pValue ? formatPValue(pValue) : 0}&nbsp;
         {isAssociatedToPWG && <span>*</span>}
       </span>
-      <Link href={url}>
+      <Link href={url} target="_blank">
         <strong className={`link primary small float-right`}>
           <FontAwesomeIcon icon={faChartLine} /> Supporting data&nbsp;
           <FontAwesomeIcon icon={faChevronRight} />

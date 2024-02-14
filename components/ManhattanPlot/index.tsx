@@ -8,7 +8,6 @@ import {
 } from 'chart.js';
 import { Scatter } from "react-chartjs-2";
 import { chartColors } from "@/utils/chart";
-import annotationPlugin from "chartjs-plugin-annotation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { useRouter } from "next/router";
@@ -20,7 +19,7 @@ import Form from 'react-bootstrap/Form';
 import DataTooltip from "./DataTooltip";
 import { PhenotypeStatsResults } from "@/models/phenotype";
 
-ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend, annotationPlugin);
+ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 
 type ChromosomeDataPoint = {
@@ -69,13 +68,24 @@ const ManhattanPlot = ({ phenotypeId }) => {
   const calculateTooltipXPos = (pos: number) => {
     const canvasWidth = chartRef.current.width;
     if (pos >= canvasWidth / 2) {
-      return pos - (175 * 1.17);
+      return pos - (273 * 0.94);
     }
     return pos;
   }
 
   const associationMatchesFilter = (rawDataPoint) => {
-    return rawDataPoint.geneSymbol.includes(geneFilter) || rawDataPoint.mgiGeneAccessionId === geneFilter;
+    return rawDataPoint.geneSymbol?.toLowerCase() === geneFilter.toLowerCase() || rawDataPoint?.mgiGeneAccessionId === geneFilter;
+  };
+
+  const getThresholdXPos = (chr: string, datapoints: Array<ChromosomeDataPoint>): number => {
+    switch (chr) {
+      case '1':
+        return 0;
+      case 'X':
+        return datapoints[datapoints.length - 1].pos;
+      default:
+        return datapoints[Math.floor(datapoints.length / 2)].pos;
+    }
   }
 
   const options= {
@@ -116,24 +126,6 @@ const ManhattanPlot = ({ phenotypeId }) => {
     },
     plugins: {
       legend: { display: false },
-      annotation: {
-        annotations: {
-          line1: {
-            type: 'line',
-            yMin: 4,
-            yMax: 4,
-            borderColor: 'rgb(255, 99, 132)',
-            borderWidth: 2,
-            borderDash: [2, 6],
-            label: {
-              display: true,
-              content: 'Significant threshold 1.0E-4',
-              backgroundColor: "#aaa",
-              position: 'end',
-            }
-          }
-        }
-      },
       tooltip: {
         enabled: false,
         mode: 'point',
@@ -173,11 +165,11 @@ const ManhattanPlot = ({ phenotypeId }) => {
     },
     elements: {
       point: {
-        radius: ctx => !!geneFilter && associationMatchesFilter(ctx.raw) ? 7 : 3,
+        radius: ctx => !!geneFilter && associationMatchesFilter(ctx.raw) ? 10 : 3,
         pointBackgroundColor: ctx => {
           const shouldBeHighlighted = !!geneFilter && associationMatchesFilter(ctx.raw);
           if (shouldBeHighlighted) return '#F7DC4A';
-          return ctx.raw.y >= 4 ? 'rgba(26, 133, 255, 0.4)' : 'rgba(212, 17, 89, 0.3)';
+          return ctx.raw.y >= 4 ? `rgba(26, 133, 255, ${matchesAnotherGene ? '0.1' : '0.4'})` : `rgba(212, 17, 89, ${matchesAnotherGene ? '0.1' : '0.3'})`;
         },
       }
     },
@@ -213,6 +205,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
     enabled: router.isReady,
     select: (response: PhenotypeStatsResults) => {
       const data = response.results;
+      const genes = new Set<string>();
+      const mgiAccessionIds = new Set<string>();
       const groupedByChr: Record<string, Array<ChromosomeDataPoint>> = {};
       data.forEach(point => {
         const chromosome = point.chrName;
@@ -220,8 +214,11 @@ const ManhattanPlot = ({ phenotypeId }) => {
         if (chromosome&& !groupedByChr[chromosome] && isAValidChromosome) {
           groupedByChr[chromosome] = [];
         }
-        if (chromosome && isAValidChromosome)
+        if (chromosome && isAValidChromosome) {
           groupedByChr[chromosome].push(point);
+          genes.add(point.markerSymbol);
+          mgiAccessionIds.add(point.mgiGeneAccessionId);
+        }
       });
       let basePoint = 0;
       Object.keys(groupedByChr).forEach(chr => {
@@ -238,7 +235,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
       });
       originalTicks = clone(ticks);
       options.scales.x.max = basePoint;
-      return {
+      const result = {
         datasets: Object.keys(groupedByChr).map((chr, i) =>  ({
           label: chr,
           data: groupedByChr[chr].map(({ pos, reportedPValue, markerSymbol, mgiGeneAccessionId, significant }) => ({
@@ -254,19 +251,33 @@ const ManhattanPlot = ({ phenotypeId }) => {
           parsing: false
         }))
       };
-
+      result.datasets.push({
+        label: 'P-value threshold',
+        type: "line" as const,
+        data: Object.keys(groupedByChr).map(chr => ({ x: getThresholdXPos(chr, groupedByChr[chr]), y: 4 })),
+        borderColor: "black",
+        pointStyle: "rect",
+        borderDash: [5, 5],
+        radius: 0,
+      } as any);
+      return {
+        chartData: result,
+        listOfGenes: [...genes],
+        listOfAccessions: [...mgiAccessionIds],
+      };
     }
   });
-
+  const matchesAnotherGene = !!geneFilter && (data.listOfGenes?.includes(geneFilter) || data.listOfAccessions?.includes(geneFilter));
+  
   return (
-    <div className={styles.chartWrapper}>
+    <div>
       <div className={styles.labelsWrapper}>
         <div>
           <i className="fa fa-circle" style={{ color: 'rgb(212, 17, 89)' }}></i>&nbsp;&nbsp;Not significant
           <i className="fa fa-circle" style={{ color: 'rgb(26, 133, 255)', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
         </div>
         <div style={{ display: 'flex', whiteSpace: 'nowrap', alignItems: 'center' }}>
-          <label className="grey" htmlFor="geneHighlight" style={{ marginRight: "0.5rem" }}>Highlight gene:</label>
+          <label className="grey" htmlFor="geneHighlight" style={{ marginRight: "0.5rem" }}>Find gene:</label>
           <Form.Control
             id="geneHighlight"
             type="text"
@@ -276,8 +287,22 @@ const ManhattanPlot = ({ phenotypeId }) => {
         </div>
       </div>
       {!!data ? (
-        <>
-          <Scatter ref={chartRef} options={options as any} data={data as any} />
+        <div className={styles.chartWrapper}>
+          <Scatter ref={chartRef} options={options as any} data={data.chartData as any} />
+          <div>
+            Significant P-value threshold (P &lt; 0.0001)
+            <hr
+              style={{
+                border: "none",
+                borderTop: "3px dashed #000",
+                height: "3px",
+                width: "50px",
+                display: 'inline-block',
+                margin: '0 0 0 0.5rem',
+                opacity: 1
+              }}
+            />
+          </div>
           <DataTooltip
             tooltip={clickTooltip}
             offsetX={0}
@@ -288,7 +313,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
             )}
           />
           <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} />
-        </>
+        </div>
       ): (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <LoadingProgressBar />

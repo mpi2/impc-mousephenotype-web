@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
-import { Alert, Col, Container, Row } from "react-bootstrap";
-import { faCheck, faCross } from "@fortawesome/free-solid-svg-icons";
+import { Alert, Badge, Col, Container, Form, Row } from "react-bootstrap";
+import { faCaretUp, faCheck, faCross, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useRouter } from "next/router";
@@ -9,16 +9,58 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
-import { PhenotypeSearchResponse } from "@/models/phenotype";
+import { PhenotypeSearchResponse, PhenotypeSearchItem } from "@/models/phenotype";
+import { BodySystem } from "@/components/BodySystemIcon";
+import { ReactNode, useMemo, useState } from "react";
 
+type Props = {
+  phenotype: PhenotypeSearchItem
+}
+
+const systems = [
+  "mortality/aging",
+  "embryo phenotype",
+  "reproductive system phenotype",
+  "growth/size/body region phenotype",
+  "homeostasis/metabolism phenotype",
+  "behavior/neurological phenotype",
+  "cardiovascular system phenotype",
+  "respiratory system phenotype",
+  "digestive/alimentary phenotype",
+  "renal/urinary system phenotype",
+  "limbs/digits/tail phenotype",
+  "skeleton phenotype",
+  "immune system phenotype",
+  "muscle phenotype",
+  "integument phenotype",
+  "craniofacial phenotype",
+  "hearing/vestibular/ear phenotype",
+  "adipose tissue phenotype",
+  "endocrine/exocrine gland phenotype",
+  "vision/eye phenotype",
+  "hematopoietic system phenotype",
+  "liver/biliary system phenotype",
+  "nervous system phenotype",
+  "pigmentation phenotype",
+];
+
+const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
+  <Badge className={`badge ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
+    {children}&nbsp;
+    {!!icon ? <FontAwesomeIcon icon={icon} /> : null}
+  </Badge>
+)
 const PhenotypeResult = ({
   phenotype: {
-    entityProperties: { mpId, phenotypeName, synonyms, geneCount },
+    mpId,
+    phenotypeName,
+    synonyms,
+    geneCountNum,
+    topLevelParentsArray,
   },
-}) => {
+}: Props) => {
   const router = useRouter();
   const synonymsArray = synonyms.split(";");
-  const parsedGeneCount = geneCount.endsWith(';') ? geneCount.replace(';', '') : geneCount;
   return (
     <>
       <Row
@@ -27,35 +69,89 @@ const PhenotypeResult = ({
           router.push(`/phenotypes/${mpId}`);
         }}
       >
-        <Col sm={12}>
+        <Col>
           <h4 className="mb-2 blue-dark">{phenotypeName}</h4>
           <p className="grey small">
             <strong>Synomyms:</strong> {synonymsArray.join(", ")}
           </p>
-          {!!parsedGeneCount && parsedGeneCount !== 'N/A' ? (
+          {!!geneCountNum && geneCountNum !== 0 ? (
             <p className="small grey">
-              <FontAwesomeIcon className="secondary" icon={faCheck} />{" "}
-              <strong>{parsedGeneCount}</strong> genes associated with this phenotype
+              <FontAwesomeIcon className="secondary" icon={faCheck}/>{" "}
+              <strong>{geneCountNum}</strong> genes associated with this phenotype
             </p>
           ) : (
             <p className="grey small">
-              <FontAwesomeIcon className="grey" icon={faCross} /> No IMPC genes
+              <FontAwesomeIcon className="grey" icon={faCross}/> No IMPC genes
               currently associated with this phenotype
             </p>
           )}
         </Col>
+        <Col>
+          <p className="grey small">Physiological System</p>
+          {topLevelParentsArray.map((x) => (
+            <BodySystem key={x.mpId} name={x.mpTerm} hoverColor="black" color="black" isSignificant/>
+          ))}
+          {topLevelParentsArray.length === 0 && (
+            <BodySystem key={mpId} name={phenotypeName} hoverColor="black" color="black" isSignificant/>
+          )}
+        </Col>
       </Row>
-      <hr className="mt-0 mb-0" />
+      <hr className="mt-0 mb-0"/>
     </>
   );
 };
 
-const PhenotypeResults = ({ query }: { query?: string }) => {
+const PhenotypeResults = ({query}: { query?: string }) => {
+  const [sort, setSort] = useState<'asc' | 'desc'>(null);
+  const [sortGenes, setSortGenes] = useState<'asc' | 'desc'>(null);
+  const [selectedSystem, setSelectedSystem] = useState<string>(null);
+  const parsePhenotypeString = (value: string) => {
+    const [mpId, mpTerm] = value.split('|');
+    return {
+      mpId: mpId.replace(`___${mpTerm}`, ''),
+      mpTerm,
+    }
+  }
+
   const { data, isLoading, isError} = useQuery({
     queryKey: ['search', 'phenotypes', query],
     queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}&type=PHENOTYPE`),
-    select: (data: PhenotypeSearchResponse) => data.results
+    select: (data: PhenotypeSearchResponse) => (
+      data.results.map(item => ({
+        ...item,
+        ...item.entityProperties,
+          geneCountNum: item.entityProperties.geneCount.endsWith(';') ? Number.parseInt(item.entityProperties.geneCount, 10) : 0,
+          intermediateLevelParentsArray: item.entityProperties.intermediateLevelParents
+            .split(';')
+            .map(parsePhenotypeString),
+          topLevelParentsArray: !!item.entityProperties.topLevelParents ? item.entityProperties.topLevelParents
+            .split(';')
+            .map(parsePhenotypeString) : []
+      })
+      ) as Array<PhenotypeSearchItem>
+    )
   });
+
+  const filteredData = useMemo(() => {
+    return !!selectedSystem ? data?.filter(phenotype =>
+      phenotype.topLevelParentsArray.some(p => p.mpTerm === selectedSystem)
+    ) : data;
+  }, [data, selectedSystem]);
+
+  const getSortedData = () => {
+    if (!!sortGenes || !!sort) {
+      return filteredData.sort(({ intermediateLevelParentsArray: p1, geneCountNum: count1 }, { intermediateLevelParentsArray: p2, geneCountNum: count2 }) => {
+        if (sort) {
+          return sort === 'asc' ? p1.length - p2.length : p2.length - p1.length;
+        } else {
+          return sortGenes === 'asc' ? count1 - count2 : count2 - count1;
+        }
+      });
+    }
+    return filteredData;
+  }
+
+
   return (
     <Container style={{ maxWidth: 1240 }}>
       <Card
@@ -81,24 +177,95 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
         {isLoading ? (
           <p className="grey mt-3 mb-3">Loading...</p>
         ) : (
-          <Pagination data={data}>
-            {(pageData) => {
-              if (pageData.length === 0) {
-                return (
-                  <Alert variant="yellow">
-                    <p>No results found.</p>
-                  </Alert>
-                );
+          <>
+            <div style={{ paddingTop: '1rem' }}>
+              <Form.Label htmlFor="systemFilter">
+                Filter by physiological system:&nbsp;
+              </Form.Label>
+              <Form.Select
+                style={{
+                  display: "inline-block",
+                  width: 200,
+                  marginRight: "2rem",
+                }}
+                aria-label="Filter by system"
+                defaultValue={undefined}
+                id="systemFilter"
+                className="bg-white"
+                onChange={(el) => {
+                  setSelectedSystem(
+                    el.target.value === "all" ? null : el.target.value
+                  );
+                }}
+              >
+                <option value={"all"}>All</option>
+                {systems.map(system => (
+                  <option value={system} key={`system_${system}`}>
+                    {system}
+                  </option>
+                ))}
+              </Form.Select>
+            </div>
+            <Pagination
+              data={getSortedData()}
+              additionalTopControls={
+                <div className="filtersWrapper">
+                  Sort by:
+                  <div className="filter">
+                    <strong>Ontology level:</strong>
+                    <FilterBadge
+                      isSelected={sort === 'asc'}
+                      icon={faCaretUp}
+                      onClick={() => setSort('asc')}
+                    >
+                      Asc.
+                    </FilterBadge>
+                    <FilterBadge
+                      isSelected={sort === 'desc'}
+                      icon={faCaretDown}
+                      onClick={() => setSort('desc')}
+                    >
+                      Desc.
+                    </FilterBadge>
+                  </div>
+                  <div className="filter">
+                    <strong>No. of genes</strong>
+                    <FilterBadge
+                      isSelected={sortGenes === 'asc'}
+                      icon={faCaretUp}
+                      onClick={() => setSortGenes('asc')}
+                    >
+                      Asc.
+                    </FilterBadge>
+                    <FilterBadge
+                      isSelected={sortGenes === 'desc'}
+                      icon={faCaretDown}
+                      onClick={() => setSortGenes('desc')}
+                    >
+                      Desc.
+                    </FilterBadge>
+                  </div>
+                </div>
               }
-              return (
-                <>
-                  {pageData.map((p) => (
-                    <PhenotypeResult phenotype={p} key={p.entityId} />
-                  ))}
-                </>
-              );
-            }}
-          </Pagination>
+            >
+              {(pageData) => {
+                if (pageData.length === 0) {
+                  return (
+                    <Alert variant="yellow">
+                      <p>No results found.</p>
+                    </Alert>
+                  );
+                }
+                return (
+                  <>
+                    {pageData.map((p) => (
+                      <PhenotypeResult phenotype={p} key={p.entityId}/>
+                    ))}
+                  </>
+                );
+              }}
+            </Pagination>
+          </>
         )}
       </Card>
     </Container>

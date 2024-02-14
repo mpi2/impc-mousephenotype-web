@@ -1,7 +1,6 @@
 import "chart.js/auto";
 import { Chart } from "chart.js";
 import { Chart as ChartEl } from "react-chartjs-2";
-import annotationPlugin from "chartjs-plugin-annotation";
 import zoomPlugin from "chartjs-plugin-zoom";
 import _ from "lodash";
 import { useRef, useState } from "react";
@@ -14,7 +13,7 @@ import { formatBodySystems } from "@/utils";
 import { Button, Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 
-Chart.register([annotationPlugin, zoomPlugin]);
+Chart.register(zoomPlugin);
 
 const colorArray = [
   "#FF6633",
@@ -163,6 +162,8 @@ const StatisticalAnalysisChart = ({
 
   const labels = processed.map((x) => x.parameterName);
   const values = processed.map((x) => -Math.log10(Number(x.pValue)));
+  const thresholdValues = processed.map(() => 4);
+  const painThresholdValues = processed.map(() => 3);
   const isByProcedure = cat.type === cats.PROCEDURES;
   let colorByArray = isByProcedure ? _.uniq(processed.map((x) => x.procedureName)) : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]));
 
@@ -210,45 +211,6 @@ const StatisticalAnalysisChart = ({
               `Effect size: ${data.effectSize}`,
               `Metadata group: ${data.metadataGroup}`,
             ];
-          },
-        },
-      },
-      annotation: {
-        annotations: {
-          line1: {
-            drawTime: "afterDraw" as const,
-            type: "line" as const,
-            xMin: 4,
-            xMax: 4,
-            borderColor: "rgb(255, 99, 132)",
-            borderWidth: 3,
-            borderDash: [2, 6],
-            label: {
-              display: true,
-              content: "Significant threshold 1.0E-4",
-              backgroundColor: "rgba(255, 255, 255, 1)",
-              rotation: 90,
-              xAdjust: 20,
-              color: '#000'
-            },
-          },
-          painThreshold: {
-            display: hasDataRelatedToPWG,
-            drawTime: "afterDraw" as const,
-            type: "line" as const,
-            xMin: 3,
-            xMax: 3,
-            borderColor: "rgb(255, 99, 132)",
-            borderWidth: 3,
-            borderDash: [2, 6],
-            label: {
-              display: true,
-              content: "Significant threshold for pain sensitivity 1.0E-3",
-              backgroundColor: "rgba(255, 255, 255, 1)",
-              rotation: 90,
-              xAdjust: 20,
-              color: '#000'
-            },
           },
         },
       },
@@ -341,28 +303,76 @@ const StatisticalAnalysisChart = ({
                 pointRadius: 5,
                 pointHoverRadius: 8,
               },
+              {
+                label: 'P-value threshold',
+                type: "line" as const,
+                data: thresholdValues,
+                borderColor: "black",
+                pointStyle: "rect",
+                borderDash: [5, 5],
+                radius: 0,
+              },
+              hasDataRelatedToPWG ? {
+                label: 'P-value threshold',
+                type: "line" as const,
+                data: painThresholdValues,
+                borderColor: "rgb(255, 99, 132)",
+                pointStyle: "rect",
+                borderDash: [5, 5],
+                radius: 0,
+              } : {}
             ],
           }}
         />
       </div>
-
-      <Button
-        variant="secondary"
-        onClick={() => {
-          if (chartRef.current) {
-            chartRef.current.resetZoom();
-          }
-        }}
-        style={{
-          position: "sticky",
-          bottom: "3rem",
-          float: "right",
-          marginTop: "1rem",
-          color: "white",
-        }}
-      >
-        Reset zoom
-      </Button>
+      <div style={{ display: "flex", alignItems: 'center', justifyContent: 'space-between' }}>
+        <span className="labels">
+          Significant P-value threshold (P &lt; 0.0001)
+          <hr
+            style={{
+              border: "none",
+              borderTop: "3px dashed #000",
+              height: "3px",
+              width: "50px",
+              display: 'inline-block',
+              margin: '0 0 0 0.5rem',
+              opacity: 1
+            }}
+          />
+          {hasDataRelatedToPWG && (
+            <span style={{ marginLeft: '1rem' }}>
+              Significant threshold for pain sensitivity (P &lt; 0.001)
+              <hr
+                style={{
+                  border: "none",
+                  borderTop: "3px dashed rgb(255, 99, 132)",
+                  height: "3px",
+                  width: "50px",
+                  display: 'inline-block',
+                  margin: '0 0 0 0.5rem',
+                  opacity: 1
+                }}
+              />
+            </span>
+          )}
+        </span>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            if (chartRef.current) {
+              chartRef.current.resetZoom();
+            }
+          }}
+          style={{
+            position: "sticky",
+            bottom: "3rem",
+            float: "right",
+            color: "white",
+          }}
+        >
+          Reset zoom
+        </Button>
+      </div>
     </div>
   );
 };
