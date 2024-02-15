@@ -89,7 +89,6 @@ const AllelePhenotypeDiagram = (
           }}
         >
           <option value="alleleSymbol">Allele</option>
-          <option value="sex">Sex</option>
           <option value="zygosity">Zygosity</option>
           <option value="topLevelPhenotypeName">Physiological System</option>
         </Form.Select>
