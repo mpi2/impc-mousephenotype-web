@@ -2,8 +2,7 @@ import { GenePhenotypeHits } from "@/models/gene";
 import { Alert, Form } from "react-bootstrap";
 import { useContext, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
-import { extractSets, generateCombinations, VennDiagram, UpSetJS, extractCombinations } from '@upsetjs/react';
-import { AlleleSymbol } from "@/components";
+import { UpSetJS, extractCombinations } from '@upsetjs/react';
 
 const AllelePhenotypeDiagram = (
   {
