@@ -8,3 +8,4 @@ export { default as PhenotypeIconsCell } from './Cells/PhenotypeIcons';
 export { default as SignificantSexesCell } from './Cells/SignificantSexes';
 export { default as SignificantPValueCell } from './Cells/SignificantPValue';
 export { default as NumberCell } from './Cells/Number';
+export { default as SexCell } from './Cells/Sex';

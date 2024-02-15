@@ -22,9 +22,11 @@ interface ImageProps {
 const Image = ({ parameterName, procedureName, parameterStableId, image, length }: ImageProps) => {
   const router = useRouter();
   const { pid } = router.query;
+  const isSpecialFormat = parameterStableId.includes('IMPC_EMA') || parameterStableId.includes('IMPC_IMM');
+  const urlSegment = isSpecialFormat ? 'download-images' : 'images';
 
   return (
-    <Link href={`/genes/${pid}/images/${parameterStableId}`}>
+    <Link href={`/genes/${pid}/${urlSegment}/${parameterStableId}`}>
       <div className={styles.card}>
         <div
           className={styles.cardImage}
