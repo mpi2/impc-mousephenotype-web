@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Markdown from 'react-markdown'
 import mockData from '../mocks/data/release/release_metadata.json';
 import { NumberCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
@@ -52,12 +52,15 @@ const valuePair = (key: string, value: string | number) => (
 
 const ReleaseNote = () => {
   const [showAll, setShowAll] = useState(false);
+  const associationsByProcedureData = mockData.phenotypeAssociationsByProcedure || [];
+  const productionStatusData = mockData.productionStatus || [];
+  const phenotypeAnnotationsData = mockData.phenotypeAnnotations || [];
 
   const formatDate = (date: string) => {
     const dateObj = new Date(date);
     return dateObj.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric'});
   };
-  const findZygosityCount = (p, zygosity) => {
+  const findZygosityCount = (zygosity, p) => {
     return p.counts.find(count => count.zygosity === zygosity)?.count || 0;
   };
   const getProductionStatusByType = (statusArray, type: string) => {
@@ -66,7 +69,7 @@ const ReleaseNote = () => {
       .filter(count => count.status !== null);
   };
 
-  const getProcedureCount = (procedure, type: 'Early adult'|'Late adult'|'Embryo') : number => {
+  const getProcedureCount = (type: 'Early adult'|'Late adult'|'Embryo', procedure) : number => {
     const embryoLifeStages = ['Embryo', 'E18.5', 'E9.5', 'E15.5', 'E12.5']
     switch (type) {
       case "Early adult":
@@ -75,6 +78,27 @@ const ReleaseNote = () => {
       case "Embryo":
         return procedure.counts.find(c => embryoLifeStages.includes(c.lifeStage))?.count || 0;
     }
+  };
+
+  const getSortedProcedures = () => {
+    return associationsByProcedureData.sort(
+      ({procedure_name: p1}, {procedure_name: p2}) => {
+        const embryoRegex = /E(\d+).5/;
+        const p1IsEmbryoProd = p1.match(embryoRegex);
+        const p2IsEmbryoProd = p2.match(embryoRegex);
+        if (!p1IsEmbryoProd && !p2IsEmbryoProd) {
+          return p1.localeCompare(p2)
+        } else if (!!p1IsEmbryoProd && !p2IsEmbryoProd) {
+          return -1
+        } else if (!p1IsEmbryoProd && !!p2IsEmbryoProd) {
+          return 1;
+        } else {
+          const p1EmbryoStage = Number.parseInt(p1IsEmbryoProd[1], 10);
+          const p2EmbryoStage = Number.parseInt(p2IsEmbryoProd[1], 10);
+          return p1EmbryoStage - p2EmbryoStage;
+        }
+      }
+    )
   }
 
   const phenotypeAssociationsOpts = {
@@ -92,29 +116,32 @@ const ReleaseNote = () => {
       legend: {
         position: 'bottom' as const
       }
+    },
+    interaction: {
+      mode: 'index' as const
     }
   };
 
-  const phenotypeAssociationsData = {
-    labels: mockData.phenotypeAnnotations.map(phenotype => phenotype.topLevelPhenotype),
+  const phenotypeAssociationsData = useMemo(() => ({
+    labels: phenotypeAnnotationsData.map(phenotype => phenotype.topLevelPhenotype),
     datasets: [
       {
         label: 'Homozygote',
-        data: mockData.phenotypeAnnotations.map(p => findZygosityCount(p, 'homozygote')),
+        data: phenotypeAnnotationsData.map(findZygosityCount.bind(null, 'homozygote')),
         backgroundColor: 'rgb(119, 119, 119)'
       },
       {
         label: 'Heterozygote',
-        data: mockData.phenotypeAnnotations.map(p => findZygosityCount(p, 'heterozygote')),
+        data: phenotypeAnnotationsData.map(findZygosityCount.bind(null, 'heterozygote')),
         backgroundColor: 'rgb(9, 120, 161)',
       },
       {
         label: 'Hemizygote',
-        data: mockData.phenotypeAnnotations.map(p => findZygosityCount(p, 'hemizygote')),
+        data: phenotypeAnnotationsData.map(findZygosityCount.bind(null, 'hemizygote')),
         backgroundColor: 'rgb(239, 123, 11)',
       }
     ]
-  };
+  }), [phenotypeAnnotationsData]);
 
   const overallProdStatusOptions = {
     scales: {
@@ -127,32 +154,32 @@ const ReleaseNote = () => {
     }
   };
 
-  const genotypingStatusChartData = {
-    labels: getProductionStatusByType(mockData.productionStatus, 'genotyping').map(c => {
+  const genotypingStatusChartData = useMemo(() => ({
+    labels: getProductionStatusByType(productionStatusData, 'genotyping').map(c => {
       return c.status === 'Mouse Allele Modification Genotype Confirmed' ? 'Genotype Confirmed' : c.status
     }),
     datasets: [
       {
         label: '',
-        data: getProductionStatusByType(mockData.productionStatus, 'genotyping').map(c => c.count),
+        data: getProductionStatusByType(productionStatusData, 'genotyping').map(c => c.count),
         backgroundColor: 'rgb(239, 123, 11)'
       }
     ]
-  };
+  }), [productionStatusData]);
 
-  const phenotypingStatusChartData = {
-    labels: getProductionStatusByType(mockData.productionStatus, 'phenotyping').map(c => c.status),
+  const phenotypingStatusChartData = useMemo(() => ({
+    labels: getProductionStatusByType(productionStatusData, 'phenotyping').map(c => c.status),
     datasets: [
       {
         label: '',
-        data: getProductionStatusByType(mockData.productionStatus, 'phenotyping').map(c => c.count),
+        data: getProductionStatusByType(productionStatusData, 'phenotyping').map(c => c.count),
         backgroundColor: 'rgb(239, 123, 11)'
       }
     ]
-  };
+  }), [productionStatusData]);
 
   const phenotypeCallsByProdOpts = {
-    maintainAspectRatio: true,
+    responsive: true,
     scales: {
       x: {
         stacked: true,
@@ -166,29 +193,32 @@ const ReleaseNote = () => {
       legend: {
         position: 'bottom' as const
       }
+    },
+    interaction: {
+      mode: 'index' as const
     }
   };
 
-  const phenotypeCallsByProdData = {
-    labels: mockData.phenotypeAssociationsByProcedure.map(phenotype => phenotype['procedure_name']),
+  const phenotypeCallsByProdData = useMemo(() => ({
+    labels: getSortedProcedures().map(phenotype => phenotype['procedure_name']),
     datasets: [
       {
         label: 'Early Adult',
-        data: mockData.phenotypeAssociationsByProcedure.map(p => getProcedureCount(p, 'Early adult')),
+        data: getSortedProcedures().map(getProcedureCount.bind(null, 'Early adult')),
         backgroundColor: 'rgb(119, 119, 119)'
       },
       {
         label: 'Late Adult',
-        data: mockData.phenotypeAssociationsByProcedure.map(p => getProcedureCount(p, 'Late adult')),
+        data: getSortedProcedures().map(getProcedureCount.bind(null, 'Late adult')),
         backgroundColor: 'rgb(9, 120, 161)',
       },
       {
         label: 'Embryo',
-        data: mockData.phenotypeAssociationsByProcedure.map(p => getProcedureCount(p, 'Embryo')),
+        data: getSortedProcedures().map(getProcedureCount.bind(null, 'Embryo')),
         backgroundColor: 'rgb(239, 123, 11)',
       }
     ]
-  };
+  }), [associationsByProcedureData]);
 
   return (
     <>
@@ -240,9 +270,7 @@ const ReleaseNote = () => {
           {valuePair("Genome Assembly", `${mockData.genomeAssembly.species} (${mockData.genomeAssembly.version})`)}
 
           <h3 className="mb-0 mt-5 mb-2">Highlights</h3>
-          <p>
-            <Markdown>{mockData.dataReleaseNotes}</Markdown>
-          </p>
+          <Markdown>{mockData.dataReleaseNotes}</Markdown>
         </Card>
         <Card>
           <h2>Total number of lines and specimens in DR {mockData.dataReleaseVersion}</h2>
