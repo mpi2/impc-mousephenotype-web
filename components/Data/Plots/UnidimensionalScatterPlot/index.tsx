@@ -47,6 +47,7 @@ const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
   const labelSex = series.sex[0].toUpperCase() + series.sex.slice(1);
   const labelZyg = zygosity === "homozygote" ? "HOM" : "HET";
   const labelGroup = series.sampleGroup == "experimental" ? labelZyg : "WT";
+  const order = labelGroup !== 'WT' ? 1 : 2;
   const label = `${labelSex} ${labelGroup}`;
 
   return {
@@ -59,6 +60,7 @@ const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
     pointStyle: shapes[series.sex],
     radius: pointRadius,
     yAxisID: "y",
+    order,
   };
 };
 
