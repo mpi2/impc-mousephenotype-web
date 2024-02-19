@@ -9,6 +9,7 @@ import { fetchAPI } from "@/api-service";
 import ManhattanPlot from "@/components/ManhattanPlot";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
+import _ from 'lodash';
 
 const Phenotype = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const Phenotype = () => {
     enabled: router.isReady,
     select: (data: PhenotypeSummary) => ({
       ...data,
-      procedures: data.procedures.filter(p => p.pipelineStableId === "IMPC_001")
+      procedures: _.uniqBy(data.procedures, 'procedureName'),
     } as PhenotypeSummary),
   });
 
@@ -43,7 +44,7 @@ const Phenotype = () => {
             <p key={prod.procedureStableId}>
               <a
                 className="secondary"
-                href={`https://www.mousephenotype.org/impress/ProcedureInfo?procID=${prod.procedureStableKey}`}
+                href={`https://www.mousephenotype.org/impress/search?searchterm=${prod.procedureName}`}
               >
                 {prod.procedureName}
               </a>
