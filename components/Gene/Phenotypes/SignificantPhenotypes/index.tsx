@@ -9,7 +9,8 @@ import {
 } from "@/components/SmartTable";
 import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
-import { DownloadData } from "@/components";
+import { DownloadData, FilterBox } from "@/components";
+
 
 const SignificantPhenotypes = (
   {
@@ -25,7 +26,9 @@ const SignificantPhenotypes = (
   }) => {
   const gene = useContext(GeneContext);
   const [query, setQuery] = useState(undefined);
-  const [selectedAllele, setSelectedAllele] = useState(undefined);
+  const [selectedAllele, setSelectedAllele] = useState<string>(undefined);
+  const [selectedSystem, setSelectedSystem] = useState<string>(undefined);
+  const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
 
   if (isPhenotypeLoading) {
     return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
@@ -39,14 +42,20 @@ const SignificantPhenotypes = (
   }
 
   const alleles = _.uniq(phenotypeData.map(phenotype => phenotype.alleleSymbol));
+  const systems = _.uniq(phenotypeData.map(p => p.topLevelPhenotypeName));
+  const lifeStages = _.uniq(phenotypeData.map(p => p.lifeStageName));
   const filteredPhenotypeData = phenotypeData.filter(
     ({
        phenotypeName,
        phenotypeId,
-       alleleSymbol
+       alleleSymbol,
+       topLevelPhenotypeName,
+       lifeStageName,
     }) =>
     (!selectedAllele || alleleSymbol === selectedAllele) &&
-    (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query))
+    (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query)) &&
+    (!selectedSystem || topLevelPhenotypeName === selectedSystem) &&
+    (!selectedLifeStage || lifeStageName === selectedLifeStage)
   );
 
   return (
@@ -55,56 +64,37 @@ const SignificantPhenotypes = (
       defaultSort={["phenotypeName", "asc"]}
       customFiltering
       additionalTopControls={
-        <div>
-          <p>
-            <Form.Control
-              type="text"
-              style={{
-                display: "inline-block",
-                width: 200,
-                marginRight: "2rem",
-              }}
-              aria-label="Filter by parameters"
-              id="parameterFilter"
-              className="bg-white"
-              placeholder="Search "
-              onChange={(el) => {
-                setQuery(el.target.value.toLowerCase() || undefined);
-              }}
-            >
-            </Form.Control>
-            <label
-              htmlFor="procedureFilter"
-              className="grey"
-              style={{marginRight: "0.5rem"}}
-            >
-              Allele:
-            </label>
-            <Form.Select
-              style={{
-                display: "inline-block",
-                width: 200,
-                marginRight: "2rem",
-              }}
-              aria-label="Filter by procedures"
-              defaultValue={undefined}
-              id="procedureFilter"
-              className="bg-white"
-              onChange={(el) => {
-                setSelectedAllele(
-                  el.target.value === "all" ? undefined : el.target.value
-                );
-              }}
-            >
-              <option value={"all"}>All</option>
-              {alleles.map((p) => (
-                <option value={p} key={`alelle_${p}`}>
-                  {p}
-                </option>
-              ))}
-            </Form.Select>
-          </p>
-        </div>
+        <>
+          <FilterBox
+            controlId="queryFilter"
+            hideLabel
+            onChange={setQuery}
+            ariaLabel="Filter by parameters"
+            controlStyle={{ width: 150 }}
+          />
+          <FilterBox
+            controlId="alleleFilter"
+            label="Allele"
+            onChange={setSelectedAllele}
+            ariaLabel="Filter by allele"
+            options={alleles}
+          />
+          <FilterBox
+            controlId="systemFilter"
+            label="Phy. System"
+            onChange={setSelectedSystem}
+            ariaLabel="Filter by physiological system"
+            options={systems}
+          />
+          <FilterBox
+            controlId="lifeStageFilter"
+            label="Life Stage"
+            onChange={setSelectedLifeStage}
+            ariaLabel="Filter by life stage"
+            options={lifeStages}
+            controlStyle={{ display: 'inline-block', width: 100 }}
+          />
+        </>
       }
       additionalBottomControls={
         <>
@@ -112,19 +102,23 @@ const SignificantPhenotypes = (
             data={phenotypeData}
             fileName={`${gene.geneSymbol}-significant-phenotypes`}
             fields={[
-              { key: 'phenotypeName', label: 'Phenotype' },
-              { key: 'alleleSymbol', label: 'Allele' },
-              { key: 'zygosity', label: 'Zygosity' },
-              { key: 'sex', label: 'Sex' },
-              { key: 'lifeStageName', label: 'Life stage' },
-              { key: 'procedureName', label: 'Procedure' },
-              { key: 'parameterName', label: 'Parameter' },
-              { key: 'phenotypingCentre', label: 'Phenotyping center' },
-              { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue?.toString(10) || '1' },
+              {key: 'phenotypeName', label: 'Phenotype'},
+              {key: 'alleleSymbol', label: 'Allele'},
+              {key: 'zygosity', label: 'Zygosity'},
+              {key: 'sex', label: 'Sex'},
+              {key: 'lifeStageName', label: 'Life stage'},
+              {key: 'procedureName', label: 'Procedure'},
+              {key: 'parameterName', label: 'Parameter'},
+              {key: 'phenotypingCentre', label: 'Phenotyping center'},
+              {
+                key: 'pValue',
+                label: 'Most significant P-value',
+                getValueFn: (item) => item?.pValue?.toString(10) || '1'
+              },
             ]}
           />
           {hasDataRelatedToPWG && (
-            <span style={{ textAlign: 'right', fontSize: "90%" }}>
+            <span style={{textAlign: 'right', fontSize: "90%" }}>
                 * Significant with a threshold of 1x10-3, check the&nbsp;
               <a className="primary link" href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
                   Pain Sensitivity page&nbsp;

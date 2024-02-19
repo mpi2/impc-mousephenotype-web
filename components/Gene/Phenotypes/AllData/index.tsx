@@ -14,7 +14,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import styles from './styles.module.scss';
-import { DownloadData } from "@/components";
+import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
 
 const ParameterCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
@@ -75,6 +75,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const [procedure, setProcedure] = useState(undefined);
   const [query, setQuery] = useState(undefined);
   const [system, setSystem] = useState(undefined);
+  const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
 
   useEffect(() => {
     const newData = _.orderBy(data, "pValue", "asc");
@@ -89,17 +90,20 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
       parameterStableId,
       procedureStableId,
       topLevelPhenotypes,
+      lifeStageName
     }) =>
       (!procedure || procedureName === procedure) &&
       (!query ||
         `${procedureName} ${parameterName} ${parameterStableId} ${procedureStableId}`
           .toLowerCase()
           .includes(query)) &&
-      (!system ||
-        (topLevelPhenotypes ?? []).some(({ name }) => name === system))
+      (!system || (topLevelPhenotypes ?? []).some(({ name }) => name === system)) &&
+      (!selectedLifeStage || lifeStageName === selectedLifeStage)
   );
 
   const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
+  const systems = _.sortBy(_.uniq(_.map(data, "topLevelPhenotypeName")));
+  const lifestages = _.sortBy(_.uniq(_.map(data, "lifeStageName")));
 
   const getLabel = (name) => _.capitalize(name.replace(/ phenotype/g, ""));
 
@@ -114,85 +118,37 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
         defaultSort={["pValue", "asc"]}
         customFiltering
         additionalTopControls={
-          <div>
-            <p>
-              <Form.Control
-                type="text"
-                style={{
-                  display: "inline-block",
-                  width: 200,
-                  marginRight: "2rem",
-                }}
-                aria-label="Filter by parameters"
-                id="parameterFilter"
-                className="bg-white"
-                placeholder="Search "
-                onChange={(el) => {
-                  setQuery(el.target.value.toLowerCase() || undefined);
-                }}
-              ></Form.Control>
-              <label
-                htmlFor="procedureFilter"
-                className="grey"
-                style={{ marginRight: "0.5rem" }}
-              >
-                Procedure:
-              </label>
-              <Form.Select
-                style={{
-                  display: "inline-block",
-                  width: 200,
-                  marginRight: "2rem",
-                }}
-                aria-label="Filter by procedures"
-                defaultValue={undefined}
-                id="procedureFilter"
-                className="bg-white"
-                onChange={(el) => {
-                  setProcedure(
-                    el.target.value === "all" ? undefined : el.target.value
-                  );
-                }}
-              >
-                <option value={"all"}>All</option>
-                {procedures.map((p) => (
-                  <option value={p} key={`procedure_${p}`}>
-                    {p}
-                  </option>
-                ))}
-              </Form.Select>
-              <label
-                htmlFor="systemFilter"
-                className="grey"
-                style={{ marginRight: "0.5rem" }}
-              >
-                Physiological system:
-              </label>
-              <Form.Select
-                style={{
-                  display: "inline-block",
-                  width: 200,
-                  marginRight: "2rem",
-                }}
-                aria-label="Filter by physiological system"
-                defaultValue={undefined}
-                id="systemFilter"
-                className="bg-white"
-                onChange={(el) => {
-                  setSystem(
-                    el.target.value === "all" ? undefined : el.target.value
-                  );
-                }}
-              >
-                <option value={"all"}>All</option>
-                {allBodySystems.map((p) => (
-                  <option value={p} key={`system_${p}`}>
-                    {getLabel(p)}
-                  </option>
-                ))}
-              </Form.Select>
-            </p>
-          </div>
+          <>
+            <FilterBox
+              controlId="queryFilterAD"
+              hideLabel
+              onChange={setQuery}
+              ariaLabel="Filter by parameters"
+              controlStyle={{ width: 150 }}
+            />
+            <FilterBox
+              controlId="procedureFilterAD"
+              label="Procedure"
+              onChange={setProcedure}
+              ariaLabel="Filter by procedures"
+              options={procedures}
+            />
+            <FilterBox
+              controlId="systemFilterAD"
+              label="Phy. System"
+              onChange={setSystem}
+              ariaLabel="Filter by physiological system"
+              options={systems}
+            />
+            <FilterBox
+              controlId="lifeStageFilter"
+              label="Life Stage"
+              onChange={setSelectedLifeStage}
+              ariaLabel="Filter by life stage"
+              options={lifestages}
+              controlStyle={{ display: 'inline-block', width: 100 }}
+            />
+          </>
         }
         additionalBottomControls={
           <DownloadData<GeneStatisticalResult>
