@@ -170,13 +170,13 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
         }
         columns={[
           {
-            width: 2.5,
+            width: 2,
             label: "Procedure/parameter",
             field: "procedureName",
             cmp: <ParameterCell />
           },
           {
-            width: 1.5,
+            width: 1.3,
             label: "System",
             field: "topLevelPhenotypes",
             cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />
@@ -185,6 +185,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
           { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: "capitalize" }} /> },
           { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
           { width: 1, label: "Center", field: "phenotypingCentre", cmp: <PlainTextCell /> },
+          { width: 0.7, label: "Mutants", field: "mutantCount", cmp: <PlainTextCell /> },
           { width: 0.5, label: "Significant", field: "significant", cmp: <OptionsCell options={{ true: 'Yes', false: 'No' }} /> },
           { width: 2, label: "P value", field: "pValue", cmp: <PValueCell /> },
         ]}

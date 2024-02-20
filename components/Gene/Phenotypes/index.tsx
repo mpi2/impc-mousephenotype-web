@@ -38,11 +38,21 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
 const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
 
+  const getMutantCount = (dataset: GeneStatisticalResult) => {
+    if (!dataset.maleMutantCount && !dataset.femaleMutantCount) {
+      return 'N/A';
+    }
+    return `${dataset.maleMutantCount || 0}m/${dataset.femaleMutantCount || 0}f`;
+  };
+
   const {data: geneData, isLoading: isGeneLoading, isError: isGeneError} = useQuery({
     queryKey: ['genes', router.query.pid, 'statistical-result'],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/statistical-result`),
     enabled: router.isReady,
-    select: data => data as Array<GeneStatisticalResult>
+    select: data => data.map(dataset => ({
+      ...dataset,
+      mutantCount: getMutantCount(dataset)
+    })) as Array<GeneStatisticalResult>
   });
 
   const {

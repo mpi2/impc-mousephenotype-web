@@ -21,4 +21,5 @@ export type GeneStatisticalResult = {
   significant:        boolean;
   phenotype:          PhenotypeRef;
   topLevelPhenotypes: PhenotypeRef[] | null;
+  mutantCount?: string;
 }
