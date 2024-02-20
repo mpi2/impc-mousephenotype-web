@@ -25,13 +25,12 @@ const Unidimensional = ({ datasetSummary }) => {
       return null;
     }
     const data = dataSeries
-      .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === sex)
-      ["observations"].map((p) => {
+      .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === sex)?.["observations"].map((p) => {
         const p2 = { ...p };
         p2.x = moment(p.dateOfExperiment);
         p2.y = +p.dataPoint;
         return p2;
-      });
+      }) || [];
     return {
       sex,
       sampleGroup,
