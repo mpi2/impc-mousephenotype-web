@@ -106,7 +106,7 @@ const Unidimensional = ({ datasetSummary }) => {
           <Card>
             <UnidimensionalBoxPlot
               series={boxPlotSeries}
-              zygosity="homozygote"
+              zygosity={datasetSummary.zygosity}
             />
           </Card>
         </Col>
@@ -206,7 +206,7 @@ const Unidimensional = ({ datasetSummary }) => {
                 </td>
               </tr>
               <tr>
-                <td>Female homozygote</td>
+                <td>Female {datasetSummary.zygosity}</td>
                 <td>
                   {datasetSummary["summaryStatistics"]["femaleMutantSd"]
                     ? datasetSummary["summaryStatistics"][
@@ -247,7 +247,7 @@ const Unidimensional = ({ datasetSummary }) => {
                 </td>
               </tr>
               <tr>
-                <td>Male homozygote </td>
+                <td>Male {datasetSummary.zygosity}</td>
                 <td>
                   {datasetSummary["summaryStatistics"]["maleMutantSd"]
                     ? datasetSummary["summaryStatistics"][
