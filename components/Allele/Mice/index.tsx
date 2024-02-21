@@ -62,13 +62,27 @@ const Mice = ({
         </Alert>
       ) : (
         <>
-          <Pagination data={sorted}>
+          <Pagination
+            data={sorted}
+            additionalBottomControls={
+              <div>
+                {fixedTissuesLinks.map(tissue =>
+                    <Button style={{marginRight: '0.5rem'}} href={tissue.tissueEnquiryLink} variant="secondary">
+                <span className="white">
+                  Make a {tissue.tissueType} enquiry to {tissue.tissueDistributionCentre}
+                </span>
+                    </Button>
+                )}
+              </div>
+            }
+          >
             {(pageData) => (
               <SortableTable
-                doSort={() => {}}
+                doSort={() => {
+                }}
                 defaultSort={["title", "asc"]}
                 headers={[
-                  { width: 3, label: "Colony Name", disabled: true },
+                  {width: 3, label: "Colony Name", disabled: true},
                   {
                     width: 2,
                     label: "Genetic Background",
@@ -147,15 +161,6 @@ const Mice = ({
               </SortableTable>
             )}
           </Pagination>
-          <div>
-            {fixedTissuesLinks.map(tissue =>
-              <Button href={tissue.tissueEnquiryLink} variant="secondary">
-                <span className="white">
-                  Make a {tissue.tissueType} enquiry to {tissue.tissueDistributionCentre}
-                </span>
-              </Button>
-            )}
-          </div>
         </>
       )}
     </Card>
