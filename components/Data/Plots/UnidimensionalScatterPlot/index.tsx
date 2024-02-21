@@ -102,8 +102,8 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
           tooltip: {
             usePointStyle: true,
             callbacks: {
-              label: ({ dataset, parsed, label }) =>
-                `${dataset.label}: ${parsed.y} ${unit} (${label})`,
+              label: ({ dataset, parsed, raw}) =>
+                `${dataset.label}: ${parsed.y} ${unit} (${raw.x.format('MMMM YYYY')})`,
             },
           },
           legend: {
