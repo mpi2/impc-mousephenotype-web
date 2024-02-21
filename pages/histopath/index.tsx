@@ -5,54 +5,64 @@ import styles from "./styles.module.scss";
 import data from "../../mocks/data/landing-pages/histopath.json";
 import { useEffect, useState } from "react";
 import PaginationControls from "../../components/PaginationControls";
-import { faSort, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSort,
+  faSortUp,
+  faSortDown,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 
-const clone = obj => JSON.parse(JSON.stringify(obj));
+const clone = (obj) => JSON.parse(JSON.stringify(obj));
 const geneMap = new Map();
 
-const SortIndicator = ({ sortStatus, sort}: { sortStatus: boolean, sort: 'asc' | 'desc' | 'none' }) => (
+const SortIndicator = ({
+  sortStatus,
+  sort,
+}: {
+  sortStatus: boolean;
+  sort: "asc" | "desc" | "none";
+}) => (
   <>
-    {sortStatus && sort === 'desc' && (
-      <FontAwesomeIcon icon={faSortDown} />
-    )}
-    {sortStatus && sort === 'asc' && (
-      <FontAwesomeIcon icon={faSortUp} />
-    )}
-    {(!sortStatus || sort === 'none') && (
-      <FontAwesomeIcon icon={faSort} />
-    )}
+    {sortStatus && sort === "desc" && <FontAwesomeIcon icon={faSortDown} />}
+    {sortStatus && sort === "asc" && <FontAwesomeIcon icon={faSortUp} />}
+    {(!sortStatus || sort === "none") && <FontAwesomeIcon icon={faSort} />}
   </>
-)
+);
 
 const HistopathLandingPage = () => {
   const router = useRouter();
-  const [ heatmapData, setHeatmapData ] = useState([]);
-  const [ query, setQuery ] = useState('');
-  const [ originalData, setOriginalData ] = useState([]);
-  const [ activePage, setActivePage ] = useState(1);
-  const [ pageSize, setPageSize ] = useState(25);
-  const [ selectedHeaderIndex, setSelectedHeaderIndex ] = useState<number>(null);
-  const [ sortingByFixedTissue, setSortingByFixedTissue ] = useState(false);
-  const [ sortingByGeneSymbol, setSortingByGeneSymbol ] = useState(false);
-  const [ sort, setSort ] = useState<'asc' | 'desc' | 'none'>('none');
-  const [ totalPages, setTotalPages ] = useState(Math.ceil(data.rows.length / pageSize));
+  const [heatmapData, setHeatmapData] = useState([]);
+  const [query, setQuery] = useState("");
+  const [originalData, setOriginalData] = useState([]);
+  const [activePage, setActivePage] = useState(1);
+  const [pageSize, setPageSize] = useState(25);
+  const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(null);
+  const [sortingByFixedTissue, setSortingByFixedTissue] = useState(false);
+  const [sortingByGeneSymbol, setSortingByGeneSymbol] = useState(false);
+  const [sort, setSort] = useState<"asc" | "desc" | "none">("none");
+  const [totalPages, setTotalPages] = useState(
+    Math.ceil(data.rows.length / pageSize)
+  );
 
   useEffect(() => {
     const result = {};
-    data.geneSymbols.forEach((symbol, index) => {
-      result[symbol] = { id: symbol, data: []};
-      const geneData = data.rows[index];
-      result[symbol].data = data.columnHeaders.map(
+    data.rows.forEach((geneRow, index) => {
+      result[geneRow.markerSymbol] = {
+        id: geneRow.markerSymbol,
+        mgiAccession: geneRow.mgiGeneAccessionId,
+        hasTissue: geneRow.hasTissue,
+        data: [],
+      };
+      result[geneRow.markerSymbol].data = data.columns.map(
         (header, headerIndex) => ({
           x: header,
-          y: geneData[headerIndex],
-          geneSymbol: symbol,
-          headerIndex
+          y: geneRow.significance[headerIndex],
+          geneSymbol: geneRow.markerSymbol,
+          headerIndex,
         })
-      )
-      geneMap.set(symbol, result[symbol]);
+      );
+      geneMap.set(geneRow.markerSymbol, result[geneRow.markerSymbol]);
     });
     setHeatmapData(Object.values(result));
     setOriginalData(Object.values(result));
@@ -61,9 +71,9 @@ const HistopathLandingPage = () => {
   useEffect(() => {
     let results;
     if (query) {
-      results = originalData.filter(gene => gene.id.includes(query));
+      results = originalData.filter((gene) => gene.id.includes(query));
       setHeatmapData(results);
-    } else if (originalData.length !== heatmapData.length){
+    } else if (originalData.length !== heatmapData.length) {
       results = [...originalData];
       setHeatmapData(results);
     }
@@ -80,16 +90,20 @@ const HistopathLandingPage = () => {
     setActivePage(pageNumber);
   };
 
-  const getDataSlice = () => heatmapData.slice((activePage - 1) * pageSize, (activePage - 1) * pageSize + pageSize);
+  const getDataSlice = () =>
+    heatmapData.slice(
+      (activePage - 1) * pageSize,
+      (activePage - 1) * pageSize + pageSize
+    );
 
   const getCellColor = (value: number) => {
     switch (value) {
       case 4:
-        return '#ce6211';
+        return "#ce6211";
       case 2:
-        return '#17a2b8';
+        return "#17a2b8";
       case 0:
-        return '#FFF';
+        return "#FFF";
     }
   };
 
@@ -101,46 +115,52 @@ const HistopathLandingPage = () => {
     return symbol;
   };
 
-  const displayFixedTissueColumn = (geneSymbol: string) => {
-    if (data.geneTissueMap[geneSymbol] !== undefined) {
-      const mgiID = data.geneTissueMap[geneSymbol];
-      return <a className="link primary" href={`/genes/${mgiID}#order`}>Yes</a>
+  const displayFixedTissueColumn = (gene: any) => {
+    if (gene.hasTissue) {
+      const mgiID = gene.mgiAccession;
+      return (
+        <a className="link primary" href={`/genes/${mgiID}#order`}>
+          Yes
+        </a>
+      );
     }
-    return 'No';
+    return "No";
   };
 
   const getNewSort = () => {
-    let newSort: 'asc' | 'desc' | 'none';
-    if (sort === 'asc') {
-      newSort = 'none';
-    } else if (sort === 'desc') {
-      newSort = 'asc';
+    let newSort: "asc" | "desc" | "none";
+    if (sort === "asc") {
+      newSort = "none";
+    } else if (sort === "desc") {
+      newSort = "asc";
     } else {
-      newSort = 'desc';
+      newSort = "desc";
     }
     return newSort;
-  }
+  };
   const sortByHeader = (index: number) => {
     let newSort = getNewSort();
     if (index !== selectedHeaderIndex) {
-      newSort = 'desc';
+      newSort = "desc";
       setActivePage(1);
     }
     const currentData = clone(heatmapData);
-    const newData = newSort !== 'none' ? currentData
-      // merge all data in a single array
-      .flatMap(item => item.data)
-      // get only the column we are interested
-      .filter(item => item.headerIndex === index)
-      .sort((item1, item2) => {
-        if (newSort === 'desc') {
-          return item2.y - item1.y;
-        }
-        return item1.y - item2.y;
-      })
-      // regenerate array with original info
-      .map(gene => ({...geneMap.get(gene.geneSymbol)})) :
-      clone(originalData);
+    const newData =
+      newSort !== "none"
+        ? currentData
+            // merge all data in a single array
+            .flatMap((item) => item.data)
+            // get only the column we are interested
+            .filter((item) => item.headerIndex === index)
+            .sort((item1, item2) => {
+              if (newSort === "desc") {
+                return item2.y - item1.y;
+              }
+              return item1.y - item2.y;
+            })
+            // regenerate array with original info
+            .map((gene) => ({ ...geneMap.get(gene.geneSymbol) }))
+        : clone(originalData);
 
     setSort(newSort);
     setSortingByFixedTissue(false);
@@ -151,20 +171,26 @@ const HistopathLandingPage = () => {
 
   const sortByFixedTissue = () => {
     let newSort = getNewSort();
-    if ((selectedHeaderIndex !== null || sortingByGeneSymbol) && !sortingByFixedTissue) {
-      newSort = 'desc';
+    if (
+      (selectedHeaderIndex !== null || sortingByGeneSymbol) &&
+      !sortingByFixedTissue
+    ) {
+      newSort = "desc";
       setActivePage(1);
     }
     const newData = clone(originalData);
     newData.sort((gene1, gene2) => {
-      const gene1HasTissues = data.geneTissueMap[gene1.id] !== undefined;
-      const gene2HasTissues = data.geneTissueMap[gene2.id] !== undefined;
-      if ((gene1HasTissues && gene2HasTissues) || (!gene1HasTissues && !gene2HasTissues)) {
-        return newSort === 'desc' ? gene1.id.localeCompare(gene2.id) : gene2.id.localeCompare(gene1.id);
-      } else if (gene1HasTissues && !gene2HasTissues) {
-        return newSort === 'desc' ? -1 : 1;
-      } else if(!gene1HasTissues && gene2HasTissues) {
-        return newSort === 'desc' ? 1 : -1;
+      if (
+        (gene1.hasTissue && gene2.hasTissue) ||
+        (!gene1.hasTissue && !gene2.hasTissue)
+      ) {
+        return newSort === "desc"
+          ? gene1.id.localeCompare(gene2.id)
+          : gene2.id.localeCompare(gene1.id);
+      } else if (gene1.hasTissue && !gene2.hasTissue) {
+        return newSort === "desc" ? -1 : 1;
+      } else if (!gene1.hasTissue && gene2.hasTissue) {
+        return newSort === "desc" ? 1 : -1;
       }
     });
     setSort(newSort);
@@ -176,14 +202,19 @@ const HistopathLandingPage = () => {
 
   const sortByGeneSymbol = () => {
     let newSort = getNewSort();
-    if ((selectedHeaderIndex !== null || sortingByFixedTissue) && !sortingByGeneSymbol) {
-      newSort = 'desc';
+    if (
+      (selectedHeaderIndex !== null || sortingByFixedTissue) &&
+      !sortingByGeneSymbol
+    ) {
+      newSort = "desc";
       setActivePage(1);
     }
     const newData = clone(originalData);
-    if (newSort !== 'none') {
+    if (newSort !== "none") {
       newData.sort((gene1, gene2) =>
-        newSort === 'desc' ? gene1.id.localeCompare(gene2.id) : gene2.id.localeCompare(gene1.id)
+        newSort === "desc"
+          ? gene1.id.localeCompare(gene2.id)
+          : gene2.id.localeCompare(gene1.id)
       );
     }
 
@@ -192,12 +223,12 @@ const HistopathLandingPage = () => {
     setSortingByFixedTissue(false);
     setSelectedHeaderIndex(null);
     setHeatmapData(newData);
-  }
+  };
 
   return (
     <>
       <Search />
-      <Container className="page" style={{lineHeight: 2}}>
+      <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">
             <Breadcrumb>
@@ -210,27 +241,49 @@ const HistopathLandingPage = () => {
             <strong>Histopathology Data</strong>
           </h1>
           <Container>
-            <div className="card" style={{ backgroundColor: 'whitesmoke' }}>
-              <div className="card-header" style={{ backgroundColor: 'whitesmoke' }}>Histopathology for every gene tested</div>
+            <div className="card" style={{ backgroundColor: "whitesmoke" }}>
+              <div
+                className="card-header"
+                style={{ backgroundColor: "whitesmoke" }}
+              >
+                Histopathology for every gene tested
+              </div>
               <div className="card-body">
-                <p className="my-0"><b>Significance Score:</b></p>
+                <p className="my-0">
+                  <b>Significance Score:</b>
+                </p>
                 <div>
                   <div title="No Data" className="mr-3">
-                    <i className="fa fa-circle" style={{ color: '#FFF' }}></i>&nbsp;&nbsp;No Data
+                    <i className="fa fa-circle" style={{ color: "#FFF" }}></i>
+                    &nbsp;&nbsp;No Data
                   </div>
-                  <div title="Not Applicable" style={{color: '#808080'}} className="mr-3">
+                  <div
+                    title="Not Applicable"
+                    style={{ color: "#808080" }}
+                    className="mr-3"
+                  >
                     <i className="fa fa-circle"></i>&nbsp;&nbsp;Not Applicable
                   </div>
-                  <div title="Not Significant" style={{color: '#17a2b8'}} className="mr-3">
-                    <i className="fa fa-circle"></i>&nbsp;&nbsp;<b>Not Significant</b>&nbsp;
-                    (histopathology finding that is interpreted by the
-                    histopathologist to be within normal limits of background strain-related
-                    findings or an incidental finding not related to genotype)
+                  <div
+                    title="Not Significant"
+                    style={{ color: "#17a2b8" }}
+                    className="mr-3"
+                  >
+                    <i className="fa fa-circle"></i>&nbsp;&nbsp;
+                    <b>Not Significant</b>&nbsp; (histopathology finding that is
+                    interpreted by the histopathologist to be within normal
+                    limits of background strain-related findings or an
+                    incidental finding not related to genotype)
                   </div>
-                  <div title="Significant" style={{color: '#ce6211'}} className="mr-3">
-                    <i className="fa fa-circle"></i>&nbsp;&nbsp;<b>Significant</b>&nbsp;
-                    (histopathology finding that is interpreted by the
-                    histopathologist to not be a background strain-related finding or an incidental finding)
+                  <div
+                    title="Significant"
+                    style={{ color: "#ce6211" }}
+                    className="mr-3"
+                  >
+                    <i className="fa fa-circle"></i>&nbsp;&nbsp;
+                    <b>Significant</b>&nbsp; (histopathology finding that is
+                    interpreted by the histopathologist to not be a background
+                    strain-related finding or an incidental finding)
                   </div>
                 </div>
               </div>
@@ -243,7 +296,7 @@ const HistopathLandingPage = () => {
                 className="form-control"
                 type="text"
                 value={query}
-                onChange={e => setQuery(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)}
               />
             </div>
             <div>
@@ -252,7 +305,9 @@ const HistopathLandingPage = () => {
                 name="pageSize"
                 className="form-select"
                 value={pageSize}
-                onChange={e => setPageSize(Number.parseInt(e.target.value, 10))}
+                onChange={(e) =>
+                  setPageSize(Number.parseInt(e.target.value, 10))
+                }
               >
                 <option value={10}>10</option>
                 <option value={25}>25</option>
@@ -263,21 +318,32 @@ const HistopathLandingPage = () => {
             </div>
           </div>
           <div className={styles.tableWrapper}>
-            <table className={`table table-striped table-bordered ${styles.heatMap}`}>
+            <table
+              className={`table table-striped table-bordered ${styles.heatMap}`}
+            >
               <thead>
                 <tr>
                   <th onClick={sortByGeneSymbol}>
                     <div className={styles.header}>Gene</div>
-                    <SortIndicator sortStatus={sortingByGeneSymbol} sort={sort} />
+                    <SortIndicator
+                      sortStatus={sortingByGeneSymbol}
+                      sort={sort}
+                    />
                   </th>
                   <th onClick={sortByFixedTissue}>
                     Fixed tissue available
-                    <SortIndicator sortStatus={sortingByFixedTissue} sort={sort} />
+                    <SortIndicator
+                      sortStatus={sortingByFixedTissue}
+                      sort={sort}
+                    />
                   </th>
-                  {data.columnHeaders.map((header, index) => (
+                  {data.columns.map((header, index) => (
                     <th key={header} onClick={() => sortByHeader(index)}>
                       <div className={styles.header}>{header}</div>
-                      <SortIndicator sortStatus={index === selectedHeaderIndex} sort={sort} />
+                      <SortIndicator
+                        sortStatus={index === selectedHeaderIndex}
+                        sort={sort}
+                      />
                     </th>
                   ))}
                 </tr>
@@ -288,36 +354,56 @@ const HistopathLandingPage = () => {
                     <div className={styles.header}>Gene</div>
                   </th>
                   <th>Fixed tissue available</th>
-                  {data.columnHeaders.map((header, index) => (
+                  {data.columns.map((header, index) => (
                     <th key={header} onClick={() => sortByHeader(index)}>
-                      <div className={styles.header}>
-                        {header}
-                      </div>
+                      <div className={styles.header}>{header}</div>
                     </th>
                   ))}
                 </tr>
               </tfoot>
               <tbody>
-                {getDataSlice().map(gene => (
+                {getDataSlice().map((gene) => (
                   <tr key={gene.id}>
-                    <td dangerouslySetInnerHTML={{ __html: rewriteWithQuery(gene.id) }}></td>
-                    <td>{ displayFixedTissueColumn(gene.id) }</td>
-                    {gene && gene.data && gene.data.map(cell => (
-                      <td
-                        className={styles.cellData}
-                        key={`${gene.id}-${cell.x}`}
-                        style={{ '--bs-table-bg-type': getCellColor(cell.y), cursor: cell.y > 0 ? 'pointer': 'auto' } as any}
-                        onClick={() => {
-                          if (cell.y > 0) {
-                            window.open(`/data/histopath/${gene.id}?anatomy=${cell.x}`);
+                    <td
+                      dangerouslySetInnerHTML={{
+                        __html: rewriteWithQuery(gene.id),
+                      }}
+                    ></td>
+                    <td>{displayFixedTissueColumn(gene)}</td>
+                    {gene &&
+                      gene.data &&
+                      gene.data.map((cell) => (
+                        <td
+                          className={styles.cellData}
+                          key={`${gene.id}-${cell.x}`}
+                          style={
+                            {
+                              "--bs-table-bg-type": getCellColor(cell.y),
+                              cursor: cell.y > 0 ? "pointer" : "auto",
+                            } as any
                           }
-                        }}
-                      />
-                    ))}
+                          onClick={() => {
+                            if (cell.y > 0) {
+                              window.open(
+                                `/data/histopath/${
+                                  gene.mgiAccession
+                                }?anatomy=${cell.x.toLowerCase()}`
+                              );
+                            }
+                          }}
+                        />
+                      ))}
                   </tr>
                 ))}
                 {getDataSlice()?.length === 0 && (
-                  <tr><td colSpan={100} style={{ fontSize: 20, fontWeight: 'bold' }}>No results</td></tr>
+                  <tr>
+                    <td
+                      colSpan={100}
+                      style={{ fontSize: 20, fontWeight: "bold" }}
+                    >
+                      No results
+                    </td>
+                  </tr>
                 )}
               </tbody>
             </table>
@@ -336,7 +422,7 @@ const HistopathLandingPage = () => {
         </Card>
       </Container>
     </>
-  )
+  );
 };
 
 export default HistopathLandingPage;
