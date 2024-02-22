@@ -45,7 +45,7 @@ interface IUnidimensionalScatterPlotProps {
 
 const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
   const labelSex = series.sex[0].toUpperCase() + series.sex.slice(1);
-  const labelZyg = zygosity === "homozygote" ? "HOM" : "HET";
+  const labelZyg = zygosity === "homozygote" ? "HOM" : zygosity === 'hemizygote' ? 'HEM' : 'HET';
   const labelGroup = series.sampleGroup == "experimental" ? labelZyg : "WT";
   const order = labelGroup !== 'WT' ? 1 : 2;
   const label = `${labelSex} ${labelGroup}`;
