@@ -199,8 +199,8 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
               href={`http://www.informatics.jax.org/marker/${gene.mgiGeneAccessionId}`}
               target="_blank"
             >
-              {gene.mgiGeneAccessionId}{" "}
-              <FontAwesomeIcon icon={faExternalLinkAlt} size="xs" />
+              {gene.mgiGeneAccessionId}
+              <FontAwesomeIcon style={{ marginLeft: '0.5em' }} icon={faExternalLinkAlt} size="xs" />
             </a>
             {gene?.synonyms?.length > 0 && (
               <span className={styles.subheadingSection}>

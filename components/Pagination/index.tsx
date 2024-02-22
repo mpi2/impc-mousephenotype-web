@@ -51,6 +51,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
   const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
   const noTotalItems = controlled ? totalItems : data?.length;
   let totalPages = Math.ceil(noTotalItems / internalPageSize) || 1;
+  const onlyHasOnePage = pageRange.length === 1 && pageRange[0] === 1;
   const updatePageRange = (page: number, totalPages: number) => {
     let rangeStart = Math.max(1, page - 1);
     let rangeEnd = Math.min(totalPages, page + 3);
@@ -191,8 +192,8 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     }
   }, [data.length]);
 
-  const shouldDisplayTopButtons = buttonsPlacement === 'top' || buttonsPlacement === 'both';
-  const shouldDisplayBottomButtons = buttonsPlacement === 'bottom' || buttonsPlacement === 'both';
+  const shouldDisplayTopButtons = (buttonsPlacement === 'top' || buttonsPlacement === 'both') && !onlyHasOnePage;
+  const shouldDisplayBottomButtons = (buttonsPlacement === 'bottom' || buttonsPlacement === 'both') && !onlyHasOnePage;
 
   return (
     <>

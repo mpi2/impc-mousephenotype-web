@@ -91,30 +91,32 @@ const Summary = ({ phenotype, isLoading, isError }: Props) => {
           <span className={`${styles.subheadingSection} primary`}>
             Phenotype
           </span>
-          <a className={styles.subheadingSection} href="#">
-            Synonyms:&nbsp;
-            {displaySynonyms()}
-            {phenotype.phenotypeSynonyms.length > SYNONYMS_COUNT && (
-              <OverlayTrigger
-                placement="bottom"
-                trigger={["hover", "focus"]}
-                overlay={
-                  <Tooltip>
-                    <div style={{ textAlign: "left" }}>
-                      {displaySynonymsInTooltip()}
-                    </div>
-                  </Tooltip>
-                }
-              >
-                {({ ref, ...triggerHandler }) => (
-                  <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
+          {!!phenotype.phenotypeSynonyms?.length && (
+            <a className={styles.subheadingSection} href="#">
+              Synonyms:&nbsp;
+              {displaySynonyms()}
+              {phenotype.phenotypeSynonyms.length > SYNONYMS_COUNT && (
+                <OverlayTrigger
+                  placement="bottom"
+                  trigger={["hover", "focus"]}
+                  overlay={
+                    <Tooltip>
+                      <div style={{textAlign: "left"}}>
+                        {displaySynonymsInTooltip()}
+                      </div>
+                    </Tooltip>
+                  }
+                >
+                  {({ref, ...triggerHandler}) => (
+                    <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
                     ,&nbsp;+{phenotype.phenotypeSynonyms.length - SYNONYMS_COUNT} more&nbsp;
-                    <FontAwesomeIcon icon={faCaretSquareDown} />
+                      <FontAwesomeIcon icon={faCaretSquareDown}/>
                   </span>
-                )}
-              </OverlayTrigger>
-            )}
-          </a>
+                  )}
+                </OverlayTrigger>
+              )}
+            </a>
+          )}
           {phenotype.topLevelPhenotypes.map(system => (
             <BodySystem
               key={system.id}
@@ -129,14 +131,14 @@ const Summary = ({ phenotype, isLoading, isError }: Props) => {
       </div>
       <Row>
         <Col lg={6}>
-          <h1 style={{ margin: 0 }}>
+          <h1 style={{margin: 0}}>
             <strong>{phenotype.phenotypeName}</strong>
           </h1>
         </Col>
         <Col lg={6}>
           <div className={styles.stats}>
             <div data-testid="significant-genes">
-              <p className="secondary h2 mb-0">{phenotype.significantGenes}</p>
+              <p className="secondary h2 mb-0">{phenotype.significantGenes || 0}</p>
               <span className="grey">significant genes</span>
             </div>
             <div data-testid="tested-genes-percentage">

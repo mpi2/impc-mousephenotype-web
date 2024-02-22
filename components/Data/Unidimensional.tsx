@@ -25,13 +25,12 @@ const Unidimensional = ({ datasetSummary }) => {
       return null;
     }
     const data = dataSeries
-      .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === sex)
-      ["observations"].map((p) => {
+      .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === sex)?.["observations"].map((p) => {
         const p2 = { ...p };
         p2.x = moment(p.dateOfExperiment);
         p2.y = +p.dataPoint;
         return p2;
-      });
+      }) || [];
     return {
       sex,
       sampleGroup,
@@ -77,19 +76,12 @@ const Unidimensional = ({ datasetSummary }) => {
           });
         windowPoints.sort((a, b) => a.x - b.x);
 
-        setBoxPlotSeries([
-          femaleWTPoints,
-          maleWTPoints,
-          femaleHomPoints,
-          maleHomPoints,
-        ]);
+        const chartSeries = datasetSummary.zygosity === 'hemizygote'
+          ? [maleWTPoints, maleHomPoints]
+          : [femaleWTPoints, maleWTPoints, femaleHomPoints, maleHomPoints];
 
-        setScatterSeries([
-          femaleWTPoints,
-          maleWTPoints,
-          femaleHomPoints,
-          maleHomPoints,
-        ]);
+        setBoxPlotSeries(chartSeries);
+        setScatterSeries(chartSeries);
         setLineSeries([windowPoints]);
       }
     })();
@@ -107,7 +99,7 @@ const Unidimensional = ({ datasetSummary }) => {
           <Card>
             <UnidimensionalBoxPlot
               series={boxPlotSeries}
-              zygosity="homozygote"
+              zygosity={datasetSummary.zygosity}
             />
           </Card>
         </Col>
@@ -207,7 +199,7 @@ const Unidimensional = ({ datasetSummary }) => {
                 </td>
               </tr>
               <tr>
-                <td>Female homozygote</td>
+                <td>Female {datasetSummary.zygosity}</td>
                 <td>
                   {datasetSummary["summaryStatistics"]["femaleMutantSd"]
                     ? datasetSummary["summaryStatistics"][
@@ -248,7 +240,7 @@ const Unidimensional = ({ datasetSummary }) => {
                 </td>
               </tr>
               <tr>
-                <td>Male homozygote </td>
+                <td>Male {datasetSummary.zygosity}</td>
                 <td>
                   {datasetSummary["summaryStatistics"]["maleMutantSd"]
                     ? datasetSummary["summaryStatistics"][

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { faCartShopping, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import _ from "lodash";
@@ -52,22 +52,37 @@ const Mice = ({
     );
   }
 
+  const fixedTissuesLinks: Array<any> = _.uniqBy(data.flatMap(item => item.tissueDistribution), 'tissueEnquiryLink');
   return (
-    <>
-      <Card id="mice">
-        <h2>Mice</h2>
-        {!data && data.length == 0 ? (
-          <Alert variant="primary" style={{ marginTop: "1em" }}>
-            No mice products found for this allele.
-          </Alert>
-        ) : (
-          <Pagination data={sorted}>
+    <Card id="mice">
+      <h2>Mice</h2>
+      {!data && data.length == 0 ? (
+        <Alert variant="primary" style={{ marginTop: "1em" }}>
+          No mice products found for this allele.
+        </Alert>
+      ) : (
+        <>
+          <Pagination
+            data={sorted}
+            additionalBottomControls={
+              <div>
+                {fixedTissuesLinks.map(tissue =>
+                    <Button style={{marginRight: '0.5rem'}} href={tissue.tissueEnquiryLink} variant="secondary">
+                <span className="white">
+                  Make a {tissue.tissueType} enquiry to {tissue.tissueDistributionCentre}
+                </span>
+                    </Button>
+                )}
+              </div>
+            }
+          >
             {(pageData) => (
               <SortableTable
-                doSort={() => {}}
+                doSort={() => {
+                }}
                 defaultSort={["title", "asc"]}
                 headers={[
-                  { width: 3, label: "Colony Name", disabled: true },
+                  {width: 3, label: "Colony Name", disabled: true},
                   {
                     width: 2,
                     label: "Genetic Background",
@@ -83,7 +98,8 @@ const Mice = ({
                           label: "ES Cell/Parent Mouse Colony",
                           disabled: true,
                         },
-                      ]),
+                      ]
+                  ),
                   { width: 2, label: "Order / Contact", disabled: true },
                 ]}
               >
@@ -145,9 +161,9 @@ const Mice = ({
               </SortableTable>
             )}
           </Pagination>
-        )}
-      </Card>
-    </>
+        </>
+      )}
+    </Card>
   );
 };
 export default Mice;

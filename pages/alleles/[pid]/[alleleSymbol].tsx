@@ -8,14 +8,12 @@ import {
   faArrowLeftLong,
   faArrowRightLong,
   faCartShopping,
-  faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import styles from "./styles.module.scss";
 import Mice from "@/components/Allele/Mice";
 import ESCell from "@/components/Allele/ESCell";
 import TargetingVector from "@/components/Allele/TVP";
-import { formatAlleleSymbol } from "@/utils";
 import Crispr from "@/components/Allele/Crispr";
 import AlleleMap from "@/components/Allele/AlleleMap.tsx";
 import { useState } from "react";
@@ -183,33 +181,6 @@ const Gene = () => {
             alleleName={alleleSymbol as string}
           />
         )}
-        {/* <Card>
-          <h2>Allele Map</h2>
-          <p className="mb-0">
-            {genbankFileUrl && (
-              <>
-                <a href={genbankFileUrl} target="_blank">
-                  <FontAwesomeIcon icon={faExternalLinkAlt} /> Genbank
-                </a>{" "}
-                <span className="grey ms-2 me-2">|</span>
-              </>
-            )}
-
-            {emsembleUrl && (
-              <a href={emsembleUrl} target="_blank">
-                <FontAwesomeIcon icon={faExternalLinkAlt} /> Ensemble
-              </a>
-            )}
-          </p>
-          {!!alleleMapUrl && (
-            <div>
-              <img
-                src={alleleMapUrl}
-                style={{ display: "block", maxWidth: "100%" }}
-              />
-            </div>
-          )}
-        </Card> */}
         {doesMiceProductsExist && (
           <Mice
             isCrispr={doesCrisprProductsExist}

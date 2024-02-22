@@ -41,7 +41,7 @@ const getBoxPlotDataset = (series, zygosity) => {
   const boxPlotSeries = [...series].sort((a,b) => a.sex > b.sex ? 1 : -1);
   const labels = boxPlotSeries.map(({ sex, sampleGroup }) => {
     const labelSex = sex[0].toUpperCase() + sex.slice(1);
-    const labelZyg = zygosity === "homozygote" ? "HOM" : "HET";
+    const labelZyg = zygosity === "homozygote" ? "HOM" : zygosity === 'hemizygote' ? 'HEM' : 'HET';
     const labelGroup = sampleGroup == "experimental" ? labelZyg : "WT";
     return `${labelSex} ${labelGroup}`;
   });
