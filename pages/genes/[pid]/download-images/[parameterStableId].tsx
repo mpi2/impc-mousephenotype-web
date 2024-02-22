@@ -4,12 +4,13 @@ import { fetchAPI } from "@/api-service";
 import Search from "@/components/Search";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import styles from "@/pages/genes/[pid]/images/styles.module.scss";
-import { Container } from "react-bootstrap";
+import { faArrowLeftLong, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { Button, Container } from "react-bootstrap";
 import { Card } from "@/components";
 import Skeleton from "react-loading-skeleton";
 import { SmartTable, AlleleCell, SexCell, PlainTextCell } from "@/components/SmartTable";
+import { TableCellProps } from "@/models";
+import _ from 'lodash';
 
 type Image = {
   alleleSymbol: string;
@@ -20,6 +21,15 @@ type Image = {
   downloadUrl: string;
   sampleGroup: string;
 }
+
+const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
+  return (
+    <Button href={_.get(props.value, props.field) as string}>
+      <FontAwesomeIcon className="white" icon={faDownload} />&nbsp;
+      <span className="white">Download</span>
+    </Button>
+  )
+};
 
 const DownloadImagesPage = () => {
   const router = useRouter();
@@ -47,7 +57,7 @@ const DownloadImagesPage = () => {
             <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
             BACK TO GENE
           </Link>
-          <p className={styles.subheading}>Images</p>
+          <p className="subheading">Images</p>
           <h1 className="mb-4 mt-2" style={{ display: 'flex', gap: '1rem' }}>
             <strong>
               {images?.procedureName || <Skeleton style={{ width: '50px' }} inline />}
@@ -65,6 +75,7 @@ const DownloadImagesPage = () => {
                 { width: 1, label: 'Sample group', field: 'sampleGroup', cmp: <PlainTextCell />   },
                 { width: 1, label: 'Procedure', field: 'procedureName', cmp: <PlainTextCell />   },
                 { width: 1, label: 'Parameter', field: 'parameterName', cmp: <PlainTextCell />   },
+                { width: 1, label: '', field: 'downloadUrl', cmp: <DownloadButtonCell />, disabled: true },
               ]}
             />
           )}
