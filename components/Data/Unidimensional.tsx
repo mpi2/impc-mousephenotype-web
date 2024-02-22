@@ -76,19 +76,12 @@ const Unidimensional = ({ datasetSummary }) => {
           });
         windowPoints.sort((a, b) => a.x - b.x);
 
-        setBoxPlotSeries([
-          femaleWTPoints,
-          maleWTPoints,
-          femaleHomPoints,
-          maleHomPoints,
-        ]);
+        const chartSeries = datasetSummary.zygosity === 'hemizygote'
+          ? [maleWTPoints, maleHomPoints]
+          : [femaleWTPoints, maleWTPoints, femaleHomPoints, maleHomPoints];
 
-        setScatterSeries([
-          femaleWTPoints,
-          maleWTPoints,
-          femaleHomPoints,
-          maleHomPoints,
-        ]);
+        setBoxPlotSeries(chartSeries);
+        setScatterSeries(chartSeries);
         setLineSeries([windowPoints]);
       }
     })();
