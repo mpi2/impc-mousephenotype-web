@@ -15,7 +15,7 @@ const GrossPathChartPage = () => {
   const mgiGeneAccessionId = router.query.pid as string;
   const grossPathParameterStableId = router.query.grossPathParameterStableId as string;
 
-  const { data } = useGrossPathologyChartQuery(mgiGeneAccessionId, grossPathParameterStableId);
+  const { data } = useGrossPathologyChartQuery(mgiGeneAccessionId, grossPathParameterStableId, router.isReady);
 
   return (
     <>
