@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { Col, Row } from "react-bootstrap";
+import { Col, Modal, Row, Table } from "react-bootstrap";
 import Card from "@/components/Card";
 import { useRouter } from "next/router";
 import { formatAlleleSymbol } from "@/utils";
-import { PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren, ReactNode, useState } from "react";
 import Link from "next/link";
 
 
@@ -15,6 +15,7 @@ type ChartSummaryProps = {
 }
 const ChartSummary = ({ title, additionalContent = null, datasetSummary, children }: PropsWithChildren<ChartSummaryProps>) => {
   const router = useRouter();
+  const [showMetadataModal, setShowMetadataModal ] = useState(false);
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
   const totalMice = Object.keys(datasetSummary["summaryStatistics"]).reduce(
     (acc, key) => {
@@ -25,6 +26,8 @@ const ChartSummary = ({ title, additionalContent = null, datasetSummary, childre
     },
     0
   );
+
+  const metadataArray = datasetSummary.metadataValues?.[0].split('|') || [];
 
   return (
     <Card>
@@ -81,13 +84,22 @@ const ChartSummary = ({ title, additionalContent = null, datasetSummary, childre
               <span style={{ display: "inline-block", width: 180 }}>
                 Testing protocol
               </span>
-            <strong>{datasetSummary["procedureName"]}</strong>
+            <strong>
+              <Link
+                className="link primary"
+                href={`https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=${datasetSummary.procedureStableKey}&pipeID=${datasetSummary.pipelineStableKey}`}
+              >
+                {datasetSummary["procedureName"]}
+              </Link>
+            </strong>
           </p>
           <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
                 Testing environment
               </span>
-            <strong>Lab conditions and equipment</strong>
+            <strong className="primary link" onClick={() => setShowMetadataModal(true)}>
+              Lab conditions and equipment
+            </strong>
           </p>
           <p className="mb-2">
               <span style={{ display: "inline-block", width: 180 }}>
@@ -127,6 +139,23 @@ const ChartSummary = ({ title, additionalContent = null, datasetSummary, childre
           </p>
         </Col>
       </Row>
+      <Modal show={showMetadataModal} onHide={() => setShowMetadataModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Experimental conditions</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped borderless>
+            <tbody>
+            {metadataArray.map(item => item.split('=')).map(([label, value]) =>
+              <tr>
+                <td>{label}</td>
+                <td>{value}</td>
+              </tr>
+            )}
+            </tbody>
+          </Table>
+        </Modal.Body>
+      </Modal>
     </Card>
   )
 };
