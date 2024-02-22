@@ -5,11 +5,13 @@ import { GrossPathology, GrossPathologyDataset } from "@/models";
 export const useGrossPathologyChartQuery = (
   mgiGeneAccessionId: string,
   grossPathParameterStableId: string,
+  routerIsReady: boolean,
 ) => {
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "gross-pathology"],
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/pathology`),
     placeholderData: [],
+    enabled: routerIsReady,
     select: (data: Array<GrossPathology>) => {
       const counts = {}
       const filteredData = !!grossPathParameterStableId ? (
