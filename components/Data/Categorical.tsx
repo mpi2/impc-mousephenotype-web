@@ -18,6 +18,18 @@ const Categorical = ({ datasetSummary }) => {
   const [categories, setCategories] = useState([]);
   const [categoryIndex, setCategoryIndex] = useState({});
 
+  const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
+    if (zygosity === 'hemizygote') {
+      return seriesArray.filter(c => c.sex === 'male');
+    }
+    const validExperimentalSeries = seriesArray
+      .filter(c => c.sampleGroup === 'experimental' && c.value > 0);
+    const validExperimentalSeriesSexes = validExperimentalSeries.map(c => c.sex);
+    const controlSeries = seriesArray
+      .filter(c => c.sampleGroup === 'control' && validExperimentalSeriesSexes.includes(c.sex));
+    return [ ...controlSeries, ...validExperimentalSeries ];
+  }
+
   useEffect(() => {
     (async () => {
       const dataReleaseVersion = process.env.NEXT_PUBLIC_DR_DATASET_VERSION || 'latest';
@@ -59,11 +71,10 @@ const Categorical = ({ datasetSummary }) => {
             });
           })
         );
-        setCategories(categories);
 
-        setCategoricalSeries(series);
+        setCategories(categories);
+        setCategoricalSeries(filterChartSeries(datasetSummary.zygosity, series));
         setCategoryIndex(index);
-        console.log(datasetSummary);
       }
     })();
   }, []);

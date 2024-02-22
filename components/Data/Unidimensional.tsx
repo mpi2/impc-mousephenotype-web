@@ -15,6 +15,11 @@ import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 import { formatPValue } from "@/utils";
 import ChartSummary from "./ChartSummary";
 
+type ChartSeries = {
+  data: Array<any>,
+  sampleGroup: 'control' | 'experimental',
+  sex: 'male' | 'female',
+}
 const Unidimensional = ({ datasetSummary }) => {
   const [scatterSeries, setScatterSeries] = useState([]);
   const [lineSeries, setLineSeries] = useState([]);
@@ -38,6 +43,17 @@ const Unidimensional = ({ datasetSummary }) => {
     };
   };
 
+  const filterChartSeries = (zygosity: string, seriesArray: Array<ChartSeries>) => {
+    if (zygosity === 'hemizygote') {
+      return seriesArray.filter(c => c.sex === 'male');
+    }
+    const validExperimentalSeries = seriesArray
+      .filter(c => c.sampleGroup === 'experimental' && c.data.length > 0);
+    const validExperimentalSeriesSexes = validExperimentalSeries.map(c => c.sex);
+    const controlSeries = seriesArray
+      .filter(c => c.sampleGroup === 'control' && validExperimentalSeriesSexes.includes(c.sex));
+    return [ ...controlSeries, ...validExperimentalSeries ];
+  }
 
   useEffect(() => {
     (async () => {
@@ -76,9 +92,9 @@ const Unidimensional = ({ datasetSummary }) => {
           });
         windowPoints.sort((a, b) => a.x - b.x);
 
-        const chartSeries = datasetSummary.zygosity === 'hemizygote'
-          ? [maleWTPoints, maleHomPoints]
-          : [femaleWTPoints, maleWTPoints, femaleHomPoints, maleHomPoints];
+        const chartSeries = filterChartSeries(
+          datasetSummary.zygosity, [femaleWTPoints, maleWTPoints, femaleHomPoints, maleHomPoints]
+        );
 
         setBoxPlotSeries(chartSeries);
         setScatterSeries(chartSeries);
