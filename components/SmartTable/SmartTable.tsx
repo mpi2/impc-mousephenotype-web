@@ -8,7 +8,14 @@ import type { Model } from "@/models";
 
 
 const SmartTable = <T extends Model>(props: {
-  columns: Array<{ width: number; label: string; field: keyof T, cmp: ReactElement<TableCellProps<T>> }>,
+  columns: Array<{
+    width: number;
+    label: string;
+    field: keyof T,
+    cmp: ReactElement<TableCellProps<T>>,
+    // refers to disable sort functionality
+    disabled?: boolean
+  }>,
   data: Array<T>,
   defaultSort: [string, "asc" | "desc"],
   zeroResulsText?: string;
