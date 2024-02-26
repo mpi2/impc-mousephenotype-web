@@ -7,6 +7,11 @@ import Drawer from 'react-modern-drawer'
 import styles from './styles.module.scss';
 import 'react-modern-drawer/dist/index.css';
 import { ISetCombinations } from "@upsetjs/model";
+import _ from 'lodash';
+import { FilterBox } from "@/components";
+import { useIntersectionObserver } from "usehooks-ts";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Allele = {
   significantPhenotypes: Set<string>;
@@ -14,10 +19,10 @@ type Allele = {
   topLevelPhenotypes: Set<string>;
 }
 
-const getAlleleDataObject = (phenotypeData: Array<GenePhenotypeHits>, selectedZyg: Array<string>) => {
+const getAlleleDataObject = (phenotypeData: Array<GenePhenotypeHits>, selectedZyg: string) => {
   const result: Record<string, Allele> = {};
   phenotypeData.forEach(phenotype => {
-    if (selectedZyg.length === 0 || selectedZyg.includes(phenotype.zygosity)) {
+    if (selectedZyg === undefined || selectedZyg === phenotype.zygosity) {
       if (result[phenotype.alleleSymbol] === undefined) {
         result[phenotype.alleleSymbol] = {
           significantPhenotypes: new Set(),
@@ -48,8 +53,6 @@ const generateSets = (alleleData: Record<string, Allele>, field: keyof Allele, s
 };
 
 const simplifySets = (combinations: ISetCombinations) => {
-  const result = combinations.toSorted((c1, c2) => c2.degree - c1.degree);
-  console.dir(result);
   return combinations.toSorted((c1, c2) => c1.degree - c2.degree);
 }
 
@@ -69,9 +72,22 @@ const AllelePhenotypeDiagram = (
   const [selection, setSelection] = useState(null);
   const [clickSelection, setClickSelection] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const { ref } = useIntersectionObserver({
+    threshold: 0.7,
+    // if user scrolls away from component and drawer is open, close it
+    onChange: (isIntersecting, entry) => {
+      if (isIntersecting === false && isOpen) {
+        setIsOpen(false)
+      }
+    }
+  });
   const [selectedAlleles, setSelectedAlleles] = useState([]);
-  const [availableZyg, setAvailableZyg] = useState([]);
-  const [selectedZyg, setSelectedZyg] = useState([]);
+  const [availableZyg, setAvailableZyg] = useState<Array<string>>([]);
+  const [availableLifeSt, setAvailableLifeSt] = useState<Array<string>>([]);
+  const [availableSexes, setAvailableSexes] = useState<Array<string>>([]);
+  const [selectedZyg, setSelectedZyg] = useState<string>(undefined);
+  const [selectedLifeSt, setSelectedLifeSt] = useState<string>(undefined);
+  const [selectedSexes, setSelectedSexes] = useState<string>(undefined);
 
   const toggleDrawer = () => {
     setIsOpen(prevState => !prevState);
@@ -83,12 +99,10 @@ const AllelePhenotypeDiagram = (
       setSelectedAlleles(prevState => prevState.concat([allele]));
     }
   }
-  const toggleZygosity = (zyg: string) => {
-    if (selectedZyg.includes(zyg)) {
-      setSelectedZyg(prevState => prevState.filter(z => z !== zyg));
-    } else {
-      setSelectedZyg(prevState => prevState.concat([zyg]));
-    }
+  const updateSelectedField = (field: keyof Allele) => {
+    setClickSelection(null);
+    setSelection(null);
+    setField(field);
   }
 
   if (isPhenotypeLoading) {
@@ -114,46 +128,78 @@ const AllelePhenotypeDiagram = (
     useMemo(() => {
       const results = extractCombinations(dataByField);
       return {
-        sets: results.sets,
+        sets: results.sets.toSorted((s1, s2) => s1.name.localeCompare(s2.name)),
         combinations: simplifySets(results.combinations),
       }
     }, [dataByField]);
 
   useEffect(() => {
-    const zygosities = generateSets(allelesData, 'zygosities', []).map(z => z.name);
-    setAvailableZyg(zygosities);
-    setSelectedZyg(zygosities);
+    if (phenotypeData.length) {
+      const zygosities = _.uniq(phenotypeData.map(p => p.zygosity));
+      const lifeStages = _.sortBy(_.uniq(phenotypeData.map(p => p.lifeStageName)));
+      const sexes = _.sortBy(_.uniq(phenotypeData.map(p => p.sex)));
+      setAvailableZyg(zygosities);
+      setAvailableLifeSt(lifeStages);
+      setAvailableSexes(sexes);
+    }
   }, [phenotypeData]);
 
-  useEffect(() => {
-    if (field === 'zygosities') {
-      setSelectedZyg(availableZyg);
-    }
-  }, [field]);
-
+  // console.log({ sets, combinations });
   return (
-    <>
+    <div ref={ref}>
       <div className={styles.selectorsWrapper}>
         <div className={styles.selector}>
-          <Form.Label style={{ marginBottom: 0 }} htmlFor="fieldSelector">View by</Form.Label>
-          <Form.Select
-            id="fieldSelector"
-            value={field}
-            style={{ width: 220 }}
-            onChange={event => {
-              setClickSelection(null);
-              setSelection(null);
-              setField(event.target.value as keyof Allele);
-            }}
-          >
-            <option value="significantPhenotypes">Significant Phenotypes</option>
-            <option value="zygosities">Zygosity</option>
-            <option value="topLevelPhenotypes">Physiological System</option>
-          </Form.Select>
+          <Form.Group>
+            <Form.Label>Group by</Form.Label>
+            <Form.Check
+              name="groupBy"
+              type="radio"
+              id="significantPhenotype"
+              label="Significant phenotype"
+              checked={field === 'significantPhenotypes'}
+              onChange={() => updateSelectedField('significantPhenotypes')}
+            />
+            <Form.Check
+              type="radio"
+              name="groupBy"
+              id="topLevelPhenotype"
+              label="Top level phenotype"
+              checked={field === 'topLevelPhenotypes'}
+              onChange={() => updateSelectedField('topLevelPhenotypes')}
+            />
+          </Form.Group>
+
+        </div>
+        <div className={styles.selector}>
+          <FilterBox
+            controlId="zygosityFilter"
+            label="Zygosity"
+            onChange={setSelectedZyg}
+            ariaLabel="Filter by zygosity"
+            options={availableZyg}
+          />
+        </div>
+        <div className={styles.selector}>
+          <FilterBox
+            controlId="lifeStageFilter"
+            label="Life stage"
+            onChange={setSelectedZyg}
+            ariaLabel="Filter by life stage"
+            options={availableLifeSt}
+          />
+        </div>
+        <div className={styles.selector}>
+          <FilterBox
+            controlId="sexFilter"
+            label="Sex"
+            onChange={setSelectedSexes}
+            ariaLabel="Filter by sex"
+            options={availableSexes}
+          />
         </div>
         <div className={styles.selector}>
           <Button variant="secondary" onClick={toggleDrawer}>
-            <span className="white">Edit graph</span>
+            <span className="white">Select alleles</span>
           </Button>
         </div>
       </div>
@@ -209,11 +255,10 @@ const AllelePhenotypeDiagram = (
       <Drawer
         open={isOpen}
         onClose={toggleDrawer}
-        direction="right"
+        direction="bottom"
         enableOverlay={false}
-        size={350}
       >
-        <div className={styles.drawerContent}>
+        <div className="container pt-3" style={{ position: 'relative' }}>
           <Form.Group>
             <Form.Label>Visible alleles</Form.Label>
             {Object.keys(allelesData).sort().map(allele =>
@@ -227,23 +272,18 @@ const AllelePhenotypeDiagram = (
               />
             )}
           </Form.Group>
-          <Form.Group className="mt-3">
-            <Form.Label>Zygosity</Form.Label>
-            {availableZyg.map(zyg =>
-              <Form.Check
-                style={{ userSelect: 'none' }}
-                checked={selectedZyg.includes(zyg)}
-                type="checkbox"
-                id={`checkbox-${zyg}`}
-                label={zyg}
-                onChange={() => toggleZygosity(zyg)}
-                disabled={field === 'zygosities'}
-              />
-            )}
-          </Form.Group>
+          <div className={styles.closeBtn}>
+            <Button
+              variant="link"
+              style={{ fontSize: '150%' }}
+              onClick={() => setIsOpen(false)}
+            >
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </Button>
+          </div>
         </div>
       </Drawer>
-    </>
+    </div>
   );
 
 };
