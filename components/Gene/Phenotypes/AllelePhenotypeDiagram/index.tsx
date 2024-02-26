@@ -1,5 +1,5 @@
 import { GenePhenotypeHits } from "@/models/gene";
-import { Alert, Button, Form } from "react-bootstrap";
+import { Alert, Button, Form, OverlayTrigger, Popover } from "react-bootstrap";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
 import { UpSetJS, extractCombinations, ISet } from '@upsetjs/react';
@@ -10,7 +10,7 @@ import { ISetCombinations } from "@upsetjs/model";
 import _ from 'lodash';
 import { FilterBox } from "@/components";
 import { useIntersectionObserver } from "usehooks-ts";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleXmark, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Allele = {
@@ -19,10 +19,33 @@ type Allele = {
   topLevelPhenotypes: Set<string>;
 }
 
-const getAlleleDataObject = (phenotypeData: Array<GenePhenotypeHits>, selectedZyg: string) => {
+type Filters = {
+  selectedZyg: string;
+  selectedLifeSt: string;
+  selectedSex: string;
+}
+
+const popover = (
+  <Popover id="helpInfo">
+    <Popover.Header as="h3">Help</Popover.Header>
+    <Popover.Body>
+      Hovering the columns will highlight the common phenotypes across all the other sets.
+    </Popover.Body>
+  </Popover>
+);
+
+const dataMatchesFilters = (phenotype: GenePhenotypeHits, filters: Filters): boolean => {
+  const { selectedZyg, selectedLifeSt, selectedSex } = filters;
+  return (
+    (selectedZyg === undefined || phenotype.zygosity === selectedZyg) &&
+    (selectedLifeSt === undefined || phenotype.lifeStageName === selectedLifeSt) &&
+    (selectedSex === undefined || phenotype.sex === selectedSex)
+  );
+}
+const getAlleleDataObject = (phenotypeData: Array<GenePhenotypeHits>, filters: Filters) => {
   const result: Record<string, Allele> = {};
   phenotypeData.forEach(phenotype => {
-    if (selectedZyg === undefined || selectedZyg === phenotype.zygosity) {
+    if (dataMatchesFilters(phenotype, filters)) {
       if (result[phenotype.alleleSymbol] === undefined) {
         result[phenotype.alleleSymbol] = {
           significantPhenotypes: new Set(),
@@ -51,7 +74,6 @@ const generateSets = (alleleData: Record<string, Allele>, field: keyof Allele, s
   });
   return Object.values(allelesByValues);
 };
-
 const simplifySets = (combinations: ISetCombinations) => {
   return combinations.toSorted((c1, c2) => c1.degree - c2.degree);
 }
@@ -87,7 +109,7 @@ const AllelePhenotypeDiagram = (
   const [availableSexes, setAvailableSexes] = useState<Array<string>>([]);
   const [selectedZyg, setSelectedZyg] = useState<string>(undefined);
   const [selectedLifeSt, setSelectedLifeSt] = useState<string>(undefined);
-  const [selectedSexes, setSelectedSexes] = useState<string>(undefined);
+  const [selectedSex, setSelectedSexes] = useState<string>(undefined);
 
   const toggleDrawer = () => {
     setIsOpen(prevState => !prevState);
@@ -117,13 +139,15 @@ const AllelePhenotypeDiagram = (
   }
 
   const allelesData: Record<string, Allele> = useMemo(() => {
-    const data = getAlleleDataObject(phenotypeData, selectedZyg);
+    const data = getAlleleDataObject(phenotypeData, { selectedZyg, selectedLifeSt, selectedSex });
     setSelectedAlleles(Object.keys(data));
     return data;
-  }, [phenotypeData, selectedZyg]);
+  }, [phenotypeData, selectedZyg, selectedLifeSt, selectedSex]);
+
   const dataByField = useMemo(() => {
     return generateSets(allelesData, field, selectedAlleles);
   }, [phenotypeData, field, selectedAlleles]);
+
   const { sets, combinations } =
     useMemo(() => {
       const results = extractCombinations(dataByField);
@@ -144,7 +168,6 @@ const AllelePhenotypeDiagram = (
     }
   }, [phenotypeData]);
 
-  // console.log({ sets, combinations });
   return (
     <div ref={ref}>
       <div className={styles.selectorsWrapper}>
@@ -183,7 +206,7 @@ const AllelePhenotypeDiagram = (
           <FilterBox
             controlId="lifeStageFilter"
             label="Life stage"
-            onChange={setSelectedZyg}
+            onChange={setSelectedLifeSt}
             ariaLabel="Filter by life stage"
             options={availableLifeSt}
           />
@@ -202,6 +225,16 @@ const AllelePhenotypeDiagram = (
             <span className="white">Select alleles</span>
           </Button>
         </div>
+        <div className={styles.selector}>
+          <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+            <Button variant="secondary">
+              <FontAwesomeIcon className="white" icon={faCircleInfo} />
+            </Button>
+          </OverlayTrigger>
+        </div>
+      </div>
+      <div className="mt-3">
+        <span>Click on a column to view the phenotypes related to an allele/set of alleles</span>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>
         <UpSetJS
@@ -213,44 +246,41 @@ const AllelePhenotypeDiagram = (
           onHover={setSelection}
           onClick={setClickSelection}
           widthRatios={[0, 0.2]}
-          fontSizes={{
-            barLabel: '10px'
-          }}
+          setLabelAlignment="right"
         />
       </div>
       <div className="selection">
-        {clickSelection ? (
-            <>
-              {clickSelection.name.split('∩').length === 1 ? (
-                <>
-                  The allele&nbsp;
-                </>
-              ) : (
-                <>
-                  The following intersection of alleles:&nbsp;
-                </>
-              )}
-              <strong>{clickSelection.name}</strong> <br/>
-              {clickSelection.name.split('∩').length === 1 ? (
-                <>
-                  has these phenotypes:
-                </>
-              ) : (
-                <>
-                  have these phenotypes in common:
-                </>
-              )}
-              <ul>
-                {clickSelection.elems
-                  .map(phenotype => phenotype.name)
-                  .sort()
-                  .map(phenotypeName => (
-                    <li>{phenotypeName}</li>
-                  ))}
-              </ul>
-            </>) :
-          <span>Please click in any segment that has a value &gt;0</span>
-        }
+        {clickSelection && (
+          <>
+            {clickSelection.name.split('∩').length === 1 ? (
+              <>
+                The allele&nbsp;
+              </>
+            ) : (
+              <>
+                The following intersection of alleles:&nbsp;
+              </>
+            )}
+            <strong>{clickSelection.name}</strong> <br/>
+            {clickSelection.name.split('∩').length === 1 ? (
+              <>
+                has these phenotypes:
+              </>
+            ) : (
+              <>
+                have these phenotypes in common:
+              </>
+            )}
+            <ul>
+              {clickSelection.elems
+                .map(phenotype => phenotype.name)
+                .sort()
+                .map(phenotypeName => (
+                  <li>{phenotypeName}</li>
+                ))}
+            </ul>
+          </>
+        )}
       </div>
       <Drawer
         open={isOpen}
