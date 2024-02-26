@@ -1,8 +1,57 @@
 import { GenePhenotypeHits } from "@/models/gene";
-import { Alert, Form } from "react-bootstrap";
-import { useContext, useMemo, useState } from "react";
+import { Alert, Button, Form } from "react-bootstrap";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
-import { UpSetJS, extractCombinations } from '@upsetjs/react';
+import { UpSetJS, extractCombinations, ISet } from '@upsetjs/react';
+import Drawer from 'react-modern-drawer'
+import styles from './styles.module.scss';
+import 'react-modern-drawer/dist/index.css';
+import { ISetCombinations } from "@upsetjs/model";
+
+type Allele = {
+  significantPhenotypes: Set<string>;
+  zygosities: Set<string>;
+  topLevelPhenotypes: Set<string>;
+}
+
+const getAlleleDataObject = (phenotypeData: Array<GenePhenotypeHits>, selectedZyg: Array<string>) => {
+  const result: Record<string, Allele> = {};
+  phenotypeData.forEach(phenotype => {
+    if (selectedZyg.length === 0 || selectedZyg.includes(phenotype.zygosity)) {
+      if (result[phenotype.alleleSymbol] === undefined) {
+        result[phenotype.alleleSymbol] = {
+          significantPhenotypes: new Set(),
+          zygosities: new Set(),
+          topLevelPhenotypes: new Set(),
+        }
+      }
+      result[phenotype.alleleSymbol].significantPhenotypes.add(phenotype.phenotypeName);
+      result[phenotype.alleleSymbol].topLevelPhenotypes.add(phenotype.topLevelPhenotypeName);
+      result[phenotype.alleleSymbol].zygosities.add(phenotype.zygosity);
+    }
+  });
+  return result;
+};
+const generateSets = (alleleData: Record<string, Allele>, field: keyof Allele, selectedAlleles: Array<string>) => {
+  const allelesByValues: Record<string, { name: string, sets: Array<string> }> = {};
+  Object.entries(alleleData).forEach(([allele, alleleData]) => {
+    if (selectedAlleles.length === 0 || selectedAlleles.includes(allele)) {
+      alleleData[field].forEach(value => {
+        if (allelesByValues[value] === undefined) {
+          allelesByValues[value] = { name: value, sets: [] };
+        }
+        allelesByValues[value].sets.push(allele);
+      });
+    }
+  });
+  return Object.values(allelesByValues);
+};
+
+const simplifySets = (combinations: ISetCombinations) => {
+  const result = combinations.toSorted((c1, c2) => c2.degree - c1.degree);
+  console.dir(result);
+  return combinations.toSorted((c1, c2) => c1.degree - c2.degree);
+}
 
 const AllelePhenotypeDiagram = (
   {
@@ -16,17 +65,29 @@ const AllelePhenotypeDiagram = (
   }
 ) => {
   const gene = useContext(GeneContext);
-  const [field, setField] = useState<keyof GenePhenotypeHits>('alleleSymbol');
+  const [field, setField] = useState<keyof Allele>('significantPhenotypes');
   const [selection, setSelection] = useState(null);
   const [clickSelection, setClickSelection] = useState(null);
-  const getLabel = (field: keyof GenePhenotypeHits, plural: boolean = false) => {
-    switch (field) {
-      case "alleleSymbol":
-        return plural ? 'alleles' : 'allele';
-      case "sex":
-        return plural ? 'sexes' : 'sex';
-      case "zygosity":
-        return plural ? 'zygosities' : 'zygosity';
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedAlleles, setSelectedAlleles] = useState([]);
+  const [availableZyg, setAvailableZyg] = useState([]);
+  const [selectedZyg, setSelectedZyg] = useState([]);
+
+  const toggleDrawer = () => {
+    setIsOpen(prevState => !prevState);
+  };
+  const toggleAllele = (allele: string) => {
+    if (selectedAlleles.includes(allele) && selectedAlleles.length > 1) {
+      setSelectedAlleles(prevState => prevState.filter(a => a !== allele));
+    } else {
+      setSelectedAlleles(prevState => prevState.concat([allele]));
+    }
+  }
+  const toggleZygosity = (zyg: string) => {
+    if (selectedZyg.includes(zyg)) {
+      setSelectedZyg(prevState => prevState.filter(z => z !== zyg));
+    } else {
+      setSelectedZyg(prevState => prevState.concat([zyg]));
     }
   }
 
@@ -40,57 +101,61 @@ const AllelePhenotypeDiagram = (
       </Alert>
     )
   }
-  const allelesByField = {};
-  phenotypeData.forEach(phenotype => {
-    const keyValue: keyof GenePhenotypeHits = field === 'topLevelPhenotypeName' ? 'topLevelPhenotypeName' : 'phenotypeName';
-    if (allelesByField[phenotype[keyValue]] === undefined) {
-      allelesByField[phenotype[keyValue]] = [];
-    }
-    let value = field === 'topLevelPhenotypeName' ? phenotype.alleleSymbol: phenotype[field];
-    if (field === 'sex' && value === 'not_considered') {
-      value = 'both sexes';
-    }
-    if (!allelesByField[phenotype[keyValue]].includes(value)) {
-      allelesByField[phenotype[keyValue]].push(value);
-    }
-  });
-  const data = Object.keys(allelesByField).map(phenotype => {
-    return {
-      name: phenotype,
-      sets: allelesByField[phenotype]
-    }
-  });
 
-  const { sets, combinations } = useMemo(() => {
-    const tempRes = extractCombinations(data);
-    return {
-      sets: tempRes.sets,
-      combinations: tempRes.combinations.toSorted((a, b) => {
-        if (a.degree === b.degree) {
-          return b.cardinality - a.cardinality;
-        }
-        return a.degree - b.degree;
-      }),
+  const allelesData: Record<string, Allele> = useMemo(() => {
+    const data = getAlleleDataObject(phenotypeData, selectedZyg);
+    setSelectedAlleles(Object.keys(data));
+    return data;
+  }, [phenotypeData, selectedZyg]);
+  const dataByField = useMemo(() => {
+    return generateSets(allelesData, field, selectedAlleles);
+  }, [phenotypeData, field, selectedAlleles]);
+  const { sets, combinations } =
+    useMemo(() => {
+      const results = extractCombinations(dataByField);
+      return {
+        sets: results.sets,
+        combinations: simplifySets(results.combinations),
+      }
+    }, [dataByField]);
+
+  useEffect(() => {
+    const zygosities = generateSets(allelesData, 'zygosities', []).map(z => z.name);
+    setAvailableZyg(zygosities);
+    setSelectedZyg(zygosities);
+  }, [phenotypeData]);
+
+  useEffect(() => {
+    if (field === 'zygosities') {
+      setSelectedZyg(availableZyg);
     }
-  }, [data, field]);
-  console.log({sets, combinations})
+  }, [field]);
+
   return (
     <>
-      <div style={{ maxWidth: "20%", paddingTop: '1rem' }}>
-        <Form.Label htmlFor="fieldSelector">Group by</Form.Label>
-        <Form.Select
-          id="fieldSelector"
-          value={field}
-          onChange={event => {
-            setClickSelection(null);
-            setSelection(null);
-            setField(event.target.value as keyof GenePhenotypeHits);
-          }}
-        >
-          <option value="alleleSymbol">Allele</option>
-          <option value="zygosity">Zygosity</option>
-          <option value="topLevelPhenotypeName">Physiological System</option>
-        </Form.Select>
+      <div className={styles.selectorsWrapper}>
+        <div className={styles.selector}>
+          <Form.Label style={{ marginBottom: 0 }} htmlFor="fieldSelector">View by</Form.Label>
+          <Form.Select
+            id="fieldSelector"
+            value={field}
+            style={{ width: 220 }}
+            onChange={event => {
+              setClickSelection(null);
+              setSelection(null);
+              setField(event.target.value as keyof Allele);
+            }}
+          >
+            <option value="significantPhenotypes">Significant Phenotypes</option>
+            <option value="zygosities">Zygosity</option>
+            <option value="topLevelPhenotypes">Physiological System</option>
+          </Form.Select>
+        </div>
+        <div className={styles.selector}>
+          <Button variant="secondary" onClick={toggleDrawer}>
+            <span className="white">Edit graph</span>
+          </Button>
+        </div>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>
         <UpSetJS
@@ -112,11 +177,11 @@ const AllelePhenotypeDiagram = (
             <>
               {clickSelection.name.split('∩').length === 1 ? (
                 <>
-                  The {getLabel(field)}&nbsp;
+                  The allele&nbsp;
                 </>
               ) : (
                 <>
-                  The following intersection of {getLabel(field, true)}:&nbsp;
+                  The following intersection of alleles:&nbsp;
                 </>
               )}
               <strong>{clickSelection.name}</strong> <br/>
@@ -141,6 +206,43 @@ const AllelePhenotypeDiagram = (
           <span>Please click in any segment that has a value &gt;0</span>
         }
       </div>
+      <Drawer
+        open={isOpen}
+        onClose={toggleDrawer}
+        direction="right"
+        enableOverlay={false}
+        size={350}
+      >
+        <div className={styles.drawerContent}>
+          <Form.Group>
+            <Form.Label>Visible alleles</Form.Label>
+            {Object.keys(allelesData).sort().map(allele =>
+              <Form.Check
+                style={{ userSelect: 'none' }}
+                checked={selectedAlleles.includes(allele)}
+                type="checkbox"
+                id={`checkbox-${allele}`}
+                label={allele}
+                onChange={() => toggleAllele(allele)}
+              />
+            )}
+          </Form.Group>
+          <Form.Group className="mt-3">
+            <Form.Label>Zygosity</Form.Label>
+            {availableZyg.map(zyg =>
+              <Form.Check
+                style={{ userSelect: 'none' }}
+                checked={selectedZyg.includes(zyg)}
+                type="checkbox"
+                id={`checkbox-${zyg}`}
+                label={zyg}
+                onChange={() => toggleZygosity(zyg)}
+                disabled={field === 'zygosities'}
+              />
+            )}
+          </Form.Group>
+        </div>
+      </Drawer>
     </>
   );
 
