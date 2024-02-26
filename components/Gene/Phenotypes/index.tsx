@@ -99,6 +99,13 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             <StatisticalAnalysis data={geneData} />
           </TabContent>
         </Tab>
+        <Tab eventKey="allelesByPhenotype" title="Alleles by Phenotype">
+          <AllelePhenotypeDiagram
+            phenotypeData={phenotypeData}
+            isPhenotypeLoading={isPhenotypeLoading}
+            isPhenotypeError={isPhenotypeError}
+          />
+        </Tab>
       </Tabs>
     </Card>
   );

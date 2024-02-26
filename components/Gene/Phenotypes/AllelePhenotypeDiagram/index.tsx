@@ -1,9 +1,82 @@
 import { GenePhenotypeHits } from "@/models/gene";
-import { Alert } from "react-bootstrap";
-import { useContext, useMemo, useState } from "react";
+import { Alert, Button, Form, OverlayTrigger, Popover } from "react-bootstrap";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
-import { extractSets, generateCombinations, VennDiagram } from '@upsetjs/react';
-import { AlleleSymbol } from "@/components";
+import { UpSetJS, extractCombinations, ISet } from '@upsetjs/react';
+import Drawer from 'react-modern-drawer'
+import styles from './styles.module.scss';
+import 'react-modern-drawer/dist/index.css';
+import { ISetCombinations } from "@upsetjs/model";
+import _ from 'lodash';
+import { FilterBox } from "@/components";
+import { useIntersectionObserver } from "usehooks-ts";
+import { faCircleXmark, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+type Allele = {
+  significantPhenotypes: Set<string>;
+  zygosities: Set<string>;
+  topLevelPhenotypes: Set<string>;
+}
+
+type Filters = {
+  selectedZyg: string;
+  selectedLifeSt: string;
+  selectedSex: string;
+}
+
+const popover = (
+  <Popover id="helpInfo">
+    <Popover.Header as="h3">Help</Popover.Header>
+    <Popover.Body>
+      Hovering the columns will highlight the common phenotypes across all the other sets.
+    </Popover.Body>
+  </Popover>
+);
+
+const dataMatchesFilters = (phenotype: GenePhenotypeHits, filters: Filters): boolean => {
+  const { selectedZyg, selectedLifeSt, selectedSex } = filters;
+  return (
+    (selectedZyg === undefined || phenotype.zygosity === selectedZyg) &&
+    (selectedLifeSt === undefined || phenotype.lifeStageName === selectedLifeSt) &&
+    (selectedSex === undefined || phenotype.sex === selectedSex)
+  );
+}
+const getAlleleDataObject = (phenotypeData: Array<GenePhenotypeHits>, filters: Filters) => {
+  const result: Record<string, Allele> = {};
+  phenotypeData.forEach(phenotype => {
+    if (dataMatchesFilters(phenotype, filters)) {
+      if (result[phenotype.alleleSymbol] === undefined) {
+        result[phenotype.alleleSymbol] = {
+          significantPhenotypes: new Set(),
+          zygosities: new Set(),
+          topLevelPhenotypes: new Set(),
+        }
+      }
+      result[phenotype.alleleSymbol].significantPhenotypes.add(phenotype.phenotypeName);
+      result[phenotype.alleleSymbol].topLevelPhenotypes.add(phenotype.topLevelPhenotypeName);
+      result[phenotype.alleleSymbol].zygosities.add(phenotype.zygosity);
+    }
+  });
+  return result;
+};
+const generateSets = (alleleData: Record<string, Allele>, field: keyof Allele, selectedAlleles: Array<string>) => {
+  const allelesByValues: Record<string, { name: string, sets: Array<string> }> = {};
+  Object.entries(alleleData).forEach(([allele, alleleData]) => {
+    if (selectedAlleles.length === 0 || selectedAlleles.includes(allele)) {
+      alleleData[field].forEach(value => {
+        if (allelesByValues[value] === undefined) {
+          allelesByValues[value] = { name: value, sets: [] };
+        }
+        allelesByValues[value].sets.push(allele);
+      });
+    }
+  });
+  return Object.values(allelesByValues);
+};
+const simplifySets = (combinations: ISetCombinations) => {
+  return combinations.toSorted((c1, c2) => c1.degree - c2.degree);
+}
 
 const AllelePhenotypeDiagram = (
   {
@@ -17,6 +90,43 @@ const AllelePhenotypeDiagram = (
   }
 ) => {
   const gene = useContext(GeneContext);
+  const [field, setField] = useState<keyof Allele>('significantPhenotypes');
+  const [selection, setSelection] = useState(null);
+  const [clickSelection, setClickSelection] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const { ref } = useIntersectionObserver({
+    threshold: 0.7,
+    // if user scrolls away from component and drawer is open, close it
+    onChange: (isIntersecting, entry) => {
+      if (isIntersecting === false && isOpen) {
+        setIsOpen(false)
+      }
+    }
+  });
+  const [selectedAlleles, setSelectedAlleles] = useState([]);
+  const [availableZyg, setAvailableZyg] = useState<Array<string>>([]);
+  const [availableLifeSt, setAvailableLifeSt] = useState<Array<string>>([]);
+  const [availableSexes, setAvailableSexes] = useState<Array<string>>([]);
+  const [selectedZyg, setSelectedZyg] = useState<string>(undefined);
+  const [selectedLifeSt, setSelectedLifeSt] = useState<string>(undefined);
+  const [selectedSex, setSelectedSexes] = useState<string>(undefined);
+
+  const toggleDrawer = () => {
+    setIsOpen(prevState => !prevState);
+  };
+  const toggleAllele = (allele: string) => {
+    if (selectedAlleles.includes(allele) && selectedAlleles.length > 1) {
+      setSelectedAlleles(prevState => prevState.filter(a => a !== allele));
+    } else {
+      setSelectedAlleles(prevState => prevState.concat([allele]));
+    }
+  }
+  const updateSelectedField = (field: keyof Allele) => {
+    setClickSelection(null);
+    setSelection(null);
+    setField(field);
+  }
+
   if (isPhenotypeLoading) {
     return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
   }
@@ -27,57 +137,132 @@ const AllelePhenotypeDiagram = (
       </Alert>
     )
   }
-  const allelesByPhenotype = {};
-  phenotypeData.forEach(phenotype => {
-    if (allelesByPhenotype[phenotype.phenotypeName] === undefined) {
-      allelesByPhenotype[phenotype.phenotypeName] = [];
-    }
-    if (!allelesByPhenotype[phenotype.phenotypeName].includes(phenotype.alleleSymbol)) {
-      allelesByPhenotype[phenotype.phenotypeName].push(phenotype.alleleSymbol);
-    }
-  });
-  const data = Object.keys(allelesByPhenotype).map(phenotype => {
-    return {
-      name: phenotype,
-      sets: allelesByPhenotype[phenotype]
-    }
-  });
 
-  const sets = useMemo(() => extractSets(data), [data]);
-  const combinations = useMemo(() => generateCombinations(sets), [sets]);
-  const [selection, setSelection] = useState(null);
-  const [clickSelection, setClickSelection] = useState(null);
+  const allelesData: Record<string, Allele> = useMemo(() => {
+    const data = getAlleleDataObject(phenotypeData, { selectedZyg, selectedLifeSt, selectedSex });
+    setSelectedAlleles(Object.keys(data));
+    return data;
+  }, [phenotypeData, selectedZyg, selectedLifeSt, selectedSex]);
+
+  const dataByField = useMemo(() => {
+    return generateSets(allelesData, field, selectedAlleles);
+  }, [phenotypeData, field, selectedAlleles]);
+
+  const { sets, combinations } =
+    useMemo(() => {
+      const results = extractCombinations(dataByField);
+      return {
+        sets: results.sets.toSorted((s1, s2) => s1.name.localeCompare(s2.name)),
+        combinations: simplifySets(results.combinations),
+      }
+    }, [dataByField]);
+
+  useEffect(() => {
+    if (phenotypeData.length) {
+      const zygosities = _.uniq(phenotypeData.map(p => p.zygosity));
+      const lifeStages = _.sortBy(_.uniq(phenotypeData.map(p => p.lifeStageName)));
+      const sexes = _.sortBy(_.uniq(phenotypeData.map(p => p.sex)));
+      setAvailableZyg(zygosities);
+      setAvailableLifeSt(lifeStages);
+      setAvailableSexes(sexes);
+    }
+  }, [phenotypeData]);
+
   return (
-    <div style={{ position: 'relative', display: 'flex', paddingTop: '1rem' }}>
-      <VennDiagram
-        sets={sets}
-        combinations={combinations}
-        width={780}
-        height={400}
-        selection={selection || clickSelection}
-        onHover={setSelection}
-        onClick={setClickSelection}
-        tooltips
-      />
+    <div ref={ref}>
+      <div className={styles.selectorsWrapper}>
+        <div className={styles.selector}>
+          <Form.Group>
+            <Form.Label>Group by</Form.Label>
+            <Form.Check
+              name="groupBy"
+              type="radio"
+              id="significantPhenotype"
+              label="Significant phenotype"
+              checked={field === 'significantPhenotypes'}
+              onChange={() => updateSelectedField('significantPhenotypes')}
+            />
+            <Form.Check
+              type="radio"
+              name="groupBy"
+              id="topLevelPhenotype"
+              label="Top level phenotype"
+              checked={field === 'topLevelPhenotypes'}
+              onChange={() => updateSelectedField('topLevelPhenotypes')}
+            />
+          </Form.Group>
+
+        </div>
+        <div className={styles.selector}>
+          <FilterBox
+            controlId="zygosityFilter"
+            label="Zygosity"
+            onChange={setSelectedZyg}
+            ariaLabel="Filter by zygosity"
+            options={availableZyg}
+          />
+        </div>
+        <div className={styles.selector}>
+          <FilterBox
+            controlId="lifeStageFilter"
+            label="Life stage"
+            onChange={setSelectedLifeSt}
+            ariaLabel="Filter by life stage"
+            options={availableLifeSt}
+          />
+        </div>
+        <div className={styles.selector}>
+          <FilterBox
+            controlId="sexFilter"
+            label="Sex"
+            onChange={setSelectedSexes}
+            ariaLabel="Filter by sex"
+            options={availableSexes}
+          />
+        </div>
+        <div className={styles.selector}>
+          <Button variant="secondary" onClick={toggleDrawer}>
+            <span className="white">Select alleles</span>
+          </Button>
+        </div>
+        <div className={styles.selector}>
+          <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+            <Button variant="secondary">
+              <FontAwesomeIcon className="white" icon={faCircleInfo} />
+            </Button>
+          </OverlayTrigger>
+        </div>
+      </div>
+      <div className="mt-3">
+        <span>Click on a column to view the phenotypes related to an allele/set of alleles</span>
+      </div>
+      <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>
+        <UpSetJS
+          sets={sets}
+          combinations={combinations}
+          width={1200}
+          height={400}
+          selection={selection}
+          onHover={setSelection}
+          onClick={setClickSelection}
+          widthRatios={[0, 0.2]}
+          setLabelAlignment="right"
+        />
+      </div>
       <div className="selection">
-        {clickSelection ? (
+        {clickSelection && (
           <>
-            {Array.from(clickSelection.sets).length === 1 ? (
+            {clickSelection.name.split('∩').length === 1 ? (
               <>
                 The allele&nbsp;
               </>
             ) : (
               <>
-                The following alleles:&nbsp;<br/>
+                The following intersection of alleles:&nbsp;
               </>
             )}
-            {Array.from(clickSelection.sets).map((set: any) => set.name).map(allele => (
-              <>
-                <AlleleSymbol symbol={allele} withLabel={false}/>
-                <br/>
-              </>
-            ))}
-            {Array.from(clickSelection.sets).length === 1 ? (
+            <strong>{clickSelection.name}</strong> <br/>
+            {clickSelection.name.split('∩').length === 1 ? (
               <>
                 has these phenotypes:
               </>
@@ -95,8 +280,39 @@ const AllelePhenotypeDiagram = (
                 ))}
             </ul>
           </>
-        ): <span>Please click in any segment that has a value &gt;0</span>}
+        )}
       </div>
+      <Drawer
+        open={isOpen}
+        onClose={toggleDrawer}
+        direction="bottom"
+        enableOverlay={false}
+      >
+        <div className="container pt-3" style={{ position: 'relative' }}>
+          <Form.Group>
+            <Form.Label>Visible alleles</Form.Label>
+            {Object.keys(allelesData).sort().map(allele =>
+              <Form.Check
+                style={{ userSelect: 'none' }}
+                checked={selectedAlleles.includes(allele)}
+                type="checkbox"
+                id={`checkbox-${allele}`}
+                label={allele}
+                onChange={() => toggleAllele(allele)}
+              />
+            )}
+          </Form.Group>
+          <div className={styles.closeBtn}>
+            <Button
+              variant="link"
+              style={{ fontSize: '150%' }}
+              onClick={() => setIsOpen(false)}
+            >
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </Button>
+          </div>
+        </div>
+      </Drawer>
     </div>
   );
 
