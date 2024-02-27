@@ -14,16 +14,31 @@ import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 import { formatPValue } from "@/utils";
 import ChartSummary from "./ChartSummary";
+import { Dataset } from "@/models";
+import { _capitalize } from "chart.js/helpers";
+import _ from "lodash";
 
 type ChartSeries = {
   data: Array<any>,
   sampleGroup: 'control' | 'experimental',
   sex: 'male' | 'female',
 }
-const Unidimensional = ({ datasetSummary }) => {
+
+type SummaryStatistics = {
+  label: string;
+  mean: number;
+  stddev: number;
+  count: number;
+};
+
+type Props = {
+  datasetSummary: Dataset
+}
+const Unidimensional = ({ datasetSummary }: Props) => {
   const [scatterSeries, setScatterSeries] = useState([]);
   const [lineSeries, setLineSeries] = useState([]);
   const [boxPlotSeries, setBoxPlotSeries] = useState([]);
+  const [summaryStatistics, setSummaryStatistics] = useState<Array<SummaryStatistics>>([]);
 
   const getScatterSeries = (dataSeries, sex, sampleGroup) => {
     if (!dataSeries) {
@@ -53,6 +68,24 @@ const Unidimensional = ({ datasetSummary }) => {
     const controlSeries = seriesArray
       .filter(c => c.sampleGroup === 'control' && validExperimentalSeriesSexes.includes(c.sex));
     return [ ...controlSeries, ...validExperimentalSeries ];
+  };
+
+  const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
+    const zygosity = datasetSummary.zygosity;
+    const rows: Array<SummaryStatistics> = chartSeries.map(serie => {
+      const { sampleGroup, sex } = serie;
+      const sampleGroupKey = sampleGroup === 'control' ? 'Control' : 'Mutant';
+      const meanKey = `${sex}${sampleGroupKey}Mean`;
+      const stddevKey = `${sex}${sampleGroupKey}Sd`;
+      const countKey = `${sex}${sampleGroupKey}Count`;
+      return {
+        label: `${_.capitalize(sex)} ${sampleGroup === 'control' ? 'Control' : _.capitalize(zygosity)}`,
+        mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
+        stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
+        count: datasetSummary.summaryStatistics?.[countKey] || 0,
+      }
+    });
+    setSummaryStatistics(rows);
   }
 
   useEffect(() => {
@@ -95,7 +128,7 @@ const Unidimensional = ({ datasetSummary }) => {
         const chartSeries = filterChartSeries(
           datasetSummary.zygosity, [femaleWTPoints, maleWTPoints, femaleHomPoints, maleHomPoints]
         );
-
+        updateSummaryStatistics(chartSeries)
         setBoxPlotSeries(chartSeries);
         setScatterSeries(chartSeries);
         setLineSeries([windowPoints]);
@@ -193,88 +226,14 @@ const Unidimensional = ({ datasetSummary }) => {
                 { width: 3, label: "# Samples", disabled: true },
               ]}
             >
-              <tr>
-                <td>Female Control</td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["femaleControlMean"]
-                    ? datasetSummary["summaryStatistics"][
-                        "femaleControlMean"
-                      ].toFixed(3)
-                    : 0}
-                </td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["femaleControlSd"]
-                    ? datasetSummary["summaryStatistics"][
-                        "femaleControlSd"
-                      ].toFixed(3)
-                    : 0}
-                </td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["femaleControlCount"] ||
-                    0}
-                </td>
-              </tr>
-              <tr>
-                <td>Female {datasetSummary.zygosity}</td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["femaleMutantSd"]
-                    ? datasetSummary["summaryStatistics"][
-                        "femaleMutantSd"
-                      ].toFixed(3)
-                    : 0}
-                </td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["femaleMutantlMean"]
-                    ? datasetSummary["summaryStatistics"][
-                        "femaleMutantlMean"
-                      ].toFixed(3)
-                    : 0}
-                </td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["femaleMutantCount"] ||
-                    0}
-                </td>
-              </tr>
-              <tr>
-                <td>Male Control</td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["maleControlMean"]
-                    ? datasetSummary["summaryStatistics"][
-                        "maleControlMean"
-                      ].toFixed(3)
-                    : 0}
-                </td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["maleControlSd"]
-                    ? datasetSummary["summaryStatistics"][
-                        "maleControlSd"
-                      ].toFixed(3)
-                    : 0}
-                </td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["maleControlCount"] || 0}
-                </td>
-              </tr>
-              <tr>
-                <td>Male {datasetSummary.zygosity}</td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["maleMutantSd"]
-                    ? datasetSummary["summaryStatistics"][
-                        "maleMutantSd"
-                      ].toFixed(3)
-                    : 0}
-                </td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["maleMutantlMean"]
-                    ? datasetSummary["summaryStatistics"][
-                        "maleMutantlMean"
-                      ].toFixed(3)
-                    : 0}
-                </td>
-                <td>
-                  {datasetSummary["summaryStatistics"]["maleMutantCount"] || 0}
-                </td>
-              </tr>
+              {summaryStatistics.map(stats =>
+                <tr>
+                  <td>{stats.label}</td>
+                  <td>{stats.mean}</td>
+                  <td>{stats.stddev}</td>
+                  <td>{stats.count}</td>
+                </tr>
+              )}
             </SortableTable>
           </Card>
         </Col>
