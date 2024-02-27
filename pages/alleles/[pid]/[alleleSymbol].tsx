@@ -119,8 +119,7 @@ const Gene = () => {
     doesTargetingVectorProductsExist,
   } = allele;
 
-
-  const esCellProductTypes = [
+  const productTypes = [
     { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
     {
       name: "Targeted ES cells",
@@ -137,10 +136,6 @@ const Gene = () => {
       link: "#intermediateVector",
       hasData: doesIntermediateVectorProductsExist,
     },
-  ];
-
-  const crisprProductTypes = [
-    { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
   ];
 
   return (
@@ -167,10 +162,7 @@ const Gene = () => {
           </h1>
           <p className="mb-4 grey">{alleleDescription}</p>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
-            {(doesCrisprProductsExist
-              ? crisprProductTypes
-              : esCellProductTypes
-            ).map((productType) => (
+            {productTypes.map((productType) => (
               <ProductItem {...productType} />
             ))}
           </div>
