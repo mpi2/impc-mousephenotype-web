@@ -31,7 +31,17 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
     ).map(d => ({...d, phenotyped: null})) as Array<GeneOrder>,
     enabled: router.isReady
   });
-  
+
+
+  const getProductURL = (allele: string, product: string) => {
+    const anchorObjs = {
+      "mouse": "mice",
+      "es cell": "esCell",
+      "targeting vector": "targetingVector",
+    };
+    return `/alleles/${router.query.pid}/${allele}#${anchorObjs[product]}`;
+  }
+
   useEffect(() => {
     if (filtered) {
       setSorted(_.orderBy(filtered, "alleleSymbol", "asc"));
@@ -48,7 +58,8 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
     if (allelesStudied.length > 0) {
       setSorted(sorted.map(geneOrder => ({ ...geneOrder, phenotyped: allelesStudied.includes(geneOrder.alleleSymbol) })))
     }
-  }, [allelesStudied])
+  }, [allelesStudied]);
+
 
   if (isLoading) {
     return (
@@ -99,19 +110,14 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                     field: "productTypes",
                   },
                   {
-                    width: 2,
-                    label: "Produced",
-                    field: "alleleDescription",
-                  },
-                  {
                     width: 1,
                     label: "Phenotyped",
                     field: "phenotyped",
                   },
                   {
                     width: 2,
-                    label: "",
-                    disabled: true,
+                    label: "Products",
+                    field: "alleleDescription",
                   },
                 ]}
               >
@@ -126,29 +132,23 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                         </strong>
                       </td>
                       <td>{d.alleleDescription}</td>
-                      <td className="text-capitalize">
-                        {(
-                          (d.productTypes ?? [])
-                            .filter(
-                              (x) =>
-                                !(x === "intermediate_vector" || x === "crispr")
-                            )
-                            .join(", ") || "None"
-                        ).replace(/_/g, " ")}
-                      </td>
                       <td>
                         {allelesStudied.length === 0 ? (
-                          <Skeleton inline />
+                          <Skeleton inline/>
                         ) : allelesStudied.includes(d.alleleSymbol) ? <>Yes</> : <>No</>}
                       </td>
                       <td className="text-capitalize">
-                        <Link
-                          href={`/alleles/${router.query.pid}/${allele[1]}`}
-                          className="link primary small"
-                        >
-                          <strong>View products</strong>&nbsp;
-                          <FontAwesomeIcon icon={faChevronRight} />
-                        </Link>
+                        {d.productTypes
+                          .filter((x) => !(x === "intermediate_vector" || x === "crispr"))
+                          .map((product: string) => product.replace(/_/g, " "))
+                          .map(product => (
+                            <>
+                              <Link href={getProductURL(allele[1], product)} className="primary link">
+                                {product}
+                              </Link>
+                              <br/>
+                            </>
+                          )) || "None"}
                       </td>
                     </tr>
                   );
