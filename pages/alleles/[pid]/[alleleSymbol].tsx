@@ -16,7 +16,7 @@ import ESCell from "@/components/Allele/ESCell";
 import TargetingVector from "@/components/Allele/TVP";
 import Crispr from "@/components/Allele/Crispr";
 import AlleleMap from "@/components/Allele/AlleleMap.tsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import QCModal from "@/components/Allele/QCModal.tsx";
 import IntermediateVector from "@/components/Allele/IVP";
 import { useQuery } from "@tanstack/react-query";
@@ -69,6 +69,17 @@ const Gene = () => {
   })
 
   const [qcData, setQcData] = useState<any[]>(null);
+
+  useEffect(() => {
+    if (allele) {
+      const hash = window.location.hash;
+      if (hash.length > 0) {
+        setTimeout(() => {
+          document.querySelector(window.location.hash).scrollIntoView();
+        }, 500);
+      }
+    }
+  }, [allele]);
 
 
   if (isLoading || !allele) {
