@@ -32,6 +32,10 @@ const FilterBox = (props: Props) => {
     hideLabel = false,
   } = props;
 
+  if (options?.length === 1) {
+    return null;
+  }
+
   return (
     <div>
       {!hideLabel && (

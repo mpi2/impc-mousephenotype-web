@@ -139,7 +139,11 @@ const AllelePhenotypeDiagram = (
   }
 
   const allelesData: Record<string, Allele> = useMemo(() => {
-    const data = getAlleleDataObject(phenotypeData, { selectedZyg, selectedLifeSt, selectedSex });
+    const data = getAlleleDataObject(phenotypeData, {
+      selectedZyg,
+      selectedLifeSt,
+      selectedSex: selectedSex === 'combined' ? 'not_considered' : selectedSex
+    });
     setSelectedAlleles(Object.keys(data));
     return data;
   }, [phenotypeData, selectedZyg, selectedLifeSt, selectedSex]);
@@ -161,7 +165,7 @@ const AllelePhenotypeDiagram = (
     if (phenotypeData.length) {
       const zygosities = _.uniq(phenotypeData.map(p => p.zygosity));
       const lifeStages = _.sortBy(_.uniq(phenotypeData.map(p => p.lifeStageName)));
-      const sexes = _.sortBy(_.uniq(phenotypeData.map(p => p.sex)));
+      const sexes = _.sortBy(_.uniq(phenotypeData.map(p => p.sex === 'not_considered' ? 'combined' : p.sex) ));
       setAvailableZyg(zygosities);
       setAvailableLifeSt(lifeStages);
       setAvailableSexes(sexes);
@@ -234,7 +238,7 @@ const AllelePhenotypeDiagram = (
         </div>
       </div>
       <div className="mt-3">
-        <span>Click on a column to view the phenotypes related to an allele/set of alleles</span>
+        <span>Click on a bar to view the phenotypes that belongs to an allele or set of alleles</span>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>
         <UpSetJS
@@ -247,6 +251,7 @@ const AllelePhenotypeDiagram = (
           onClick={setClickSelection}
           widthRatios={[0, 0.2]}
           setLabelAlignment="right"
+          combinationName="Number of Phenotypes"
         />
       </div>
       <div className="selection">
