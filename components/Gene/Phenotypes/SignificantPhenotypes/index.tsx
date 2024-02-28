@@ -133,7 +133,7 @@ const SignificantPhenotypes = (
           width: 2.2,
           label: "Phenotype",
           field: "phenotypeName",
-          cmp: <LinkCell prefix="/phenotypes" altFieldForURL="phenotypeId" style={{fontWeight: 'bold'}} usePrimaryColor={false} />
+          cmp: <PlainTextCell style={{ fontWeight: 'bold' }} />
         },
         {
           width: 1,
