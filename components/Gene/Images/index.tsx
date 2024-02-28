@@ -84,7 +84,7 @@ const Images = ({ gene }: { gene: any }) => {
   })
   return (
     <Card id="images">
-      <h2>Associated images</h2>
+      <h2>Associated media</h2>
       <div>
         <Row>
           {groups.map(([key, group]) => (
