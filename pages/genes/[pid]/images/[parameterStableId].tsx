@@ -56,11 +56,9 @@ const ImageViewer = ({ image }) => {
             </button>
           </div>
           <TransformComponent>
-            <LazyLoadImage
+            <img
               key={image?.jpegUrl}
               src={addTrailingSlash(image?.jpegUrl)}
-              placeholderSrc={addTrailingSlash(image?.thumbnailUrl)}
-              alt="test"
               style={{ width: "100%", display: "block" }}
             />
           </TransformComponent>
@@ -166,15 +164,19 @@ const ImagesCompare = () => {
   const [selectedSex, setSelectedSex] = useState('both');
   const [selectedZyg, setSelectedZyg] = useState('both');
 
-  const filterImages = (images) => {
+  const filterControlImages = (images) => {
+    return images
+      ?.filter(i => selectedSex !== 'both' ? i.sex === selectedSex : true)
+  };
+  const filterMutantImages = (images) => {
     return images
       ?.filter(i => selectedSex !== 'both' ? i.sex === selectedSex : true)
       ?.filter(i => selectedZyg !== 'both' ? i.zygosity === selectedZyg : true)
-  }
+  };
 
 
-  const controlImages = controlImagesRaw?.images;
-  const filteredMutantImages = filterImages(mutantImages?.images);
+  const controlImages = filterControlImages(controlImagesRaw?.images);
+  const filteredMutantImages = filterMutantImages(mutantImages?.images);
   return <>
     <Search />
     <Container className="page">
