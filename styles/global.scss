@@ -142,6 +142,8 @@ ul.pagination .page-item.disabled .page-link {
   color: $grey;
   border-bottom-right-radius: $spacing;
   overflow: hidden;
+  min-height: 56px;
+  padding-right: 1rem;
   .purchaseButton {
     background-color: $secondary;
     color: $white !important;
