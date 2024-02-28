@@ -238,7 +238,7 @@ const AllelePhenotypeDiagram = (
         </div>
       </div>
       <div className="mt-3">
-        <span>Click on a column to view the phenotypes related to an allele/set of alleles</span>
+        <span>Click on a bar to view the phenotypes that belongs to an allele or set of alleles</span>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>
         <UpSetJS
@@ -251,6 +251,7 @@ const AllelePhenotypeDiagram = (
           onClick={setClickSelection}
           widthRatios={[0, 0.2]}
           setLabelAlignment="right"
+          combinationName="Number of Phenotypes"
         />
       </div>
       <div className="selection">
