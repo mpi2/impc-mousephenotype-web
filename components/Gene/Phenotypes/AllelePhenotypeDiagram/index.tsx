@@ -139,7 +139,11 @@ const AllelePhenotypeDiagram = (
   }
 
   const allelesData: Record<string, Allele> = useMemo(() => {
-    const data = getAlleleDataObject(phenotypeData, { selectedZyg, selectedLifeSt, selectedSex });
+    const data = getAlleleDataObject(phenotypeData, {
+      selectedZyg,
+      selectedLifeSt,
+      selectedSex: selectedSex === 'combined' ? 'not_considered' : selectedSex
+    });
     setSelectedAlleles(Object.keys(data));
     return data;
   }, [phenotypeData, selectedZyg, selectedLifeSt, selectedSex]);
@@ -161,7 +165,7 @@ const AllelePhenotypeDiagram = (
     if (phenotypeData.length) {
       const zygosities = _.uniq(phenotypeData.map(p => p.zygosity));
       const lifeStages = _.sortBy(_.uniq(phenotypeData.map(p => p.lifeStageName)));
-      const sexes = _.sortBy(_.uniq(phenotypeData.map(p => p.sex)));
+      const sexes = _.sortBy(_.uniq(phenotypeData.map(p => p.sex === 'not_considered' ? 'combined' : p.sex) ));
       setAvailableZyg(zygosities);
       setAvailableLifeSt(lifeStages);
       setAvailableSexes(sexes);
