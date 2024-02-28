@@ -168,14 +168,12 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     }
     return null;
   };
-
   const updatePage = (value: number) => {
     setInternalPage(value);
     if (onPageChange) {
       onPageChange(value);
     }
   }
-
   const updatePageSize = (value: number) => {
     setInternalPageSize(value);
     if (onPageSizeChange) {
@@ -192,8 +190,9 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     }
   }, [data.length]);
 
-  const shouldDisplayTopButtons = (buttonsPlacement === 'top' || buttonsPlacement === 'both') && !onlyHasOnePage;
-  const shouldDisplayBottomButtons = (buttonsPlacement === 'bottom' || buttonsPlacement === 'both') && !onlyHasOnePage;
+  const shouldDisplayTopButtons = (buttonsPlacement === 'top' || buttonsPlacement === 'both') && noTotalItems > 10;
+  const shouldDisplayBottomButtons = (buttonsPlacement === 'bottom' || buttonsPlacement === 'both') && noTotalItems > 10;
+  const shouldDisplayPageChangeControls = noTotalItems > 10;
 
   return (
     <>
@@ -216,23 +215,27 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             { AdditionalBottomControls }
           </div>
         )}
-        <div style={{ display: 'flex' }}>
-          Rows per page:&nbsp;
-          <select
-            onChange={(e) => {
-              const value = Number(e.target.value);
-              const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
-              updatePage(newPage);
-              updatePageSize(value);
-            }}
-            value={pageSize}
-          >
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {shouldDisplayPageChangeControls && (
+            <>
+              Rows per page:&nbsp;
+              <select
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
+                  updatePage(newPage);
+                  updatePageSize(value);
+                }}
+                value={pageSize}
+              >
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </>
+          )}
           <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
         </div>
       </div>

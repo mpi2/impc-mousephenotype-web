@@ -25,6 +25,11 @@ const AlleleMap = ({
     otherLinks: { genbankFile, alleleSimpleImage, emsembleUrl },
   } = data[0];
 
+  // don't show the section if we don't have any data
+  if (!genbankFile && !alleleSimpleImage && !emsembleUrl) {
+    return null;
+  }
+
   return (
     <Card>
       <h2>Allele Map</h2>
