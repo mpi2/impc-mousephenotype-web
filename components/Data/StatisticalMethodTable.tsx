@@ -35,6 +35,23 @@ const StatisticalMethodTable = ({ datasetSummary }: Props) => {
       </Card>
     )
   }
+  if (datasetSummary.resourceName === 'pwg') {
+    return (
+      <Card>
+        <h2>Statistical method</h2>
+        <span>Supplied as data</span>
+        <span>
+          <Link
+            className="link primary"
+            href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
+            target="_blank"
+          >
+            Pain sensitivity publication
+          </Link>
+        </span>
+      </Card>
+    )
+  }
   return (
     <Card>
       <h2>Statistical method</h2>
