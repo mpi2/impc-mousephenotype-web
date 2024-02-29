@@ -32,13 +32,14 @@ const getSmallestPValue = (summaries: Array<Dataset>): number => {
 }
 
 const Charts = () => {
-  const [tab, setTab] = useState('0');
+  const [tab, setTab] = useState(0);
   const [showComparison, setShowComparison] = useState(true);
   const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
   const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
-  const getChartType = (datasetSummary: Dataset, mgiGeneAccessionId: string) => {
+  const getChartType = (datasetSummary: Dataset, tabNum: number) => {
+    console.log({tab, tabNum});
     let chartType = datasetSummary.dataType;
     if (chartType == "line") {
       chartType =
@@ -60,7 +61,7 @@ const Charts = () => {
     }
     switch (chartType) {
       case "unidimensional":
-        return <Unidimensional datasetSummary={datasetSummary} />;
+        return <Unidimensional datasetSummary={datasetSummary} isActive={tab === tabNum} />;
       case "categorical":
         return <Categorical datasetSummary={datasetSummary} />;
       case "viability":
@@ -176,7 +177,7 @@ const Charts = () => {
               onNewSummariesFetched={setAdditionalSummaries}
             />
           ) : (
-            <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
+            <Tabs defaultActiveKey={0} onSelect={(e) => setTab(parseInt(e, 10))}>
               {allSummaries && allSummaries.map((d, i) => (
                 <Tab
                   eventKey={i}
@@ -188,7 +189,7 @@ const Charts = () => {
                   }
                   key={i}
                 >
-                  <div>{getChartType(d, mgiGeneAccessionId)}</div>
+                  <div>{getChartType(d, i)}</div>
                 </Tab>
               ))}
             </Tabs>
