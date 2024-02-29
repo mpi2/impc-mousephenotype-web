@@ -81,7 +81,7 @@ export type Dataset = {
   resourceFullName:       string;
   resourceName:           string;
   sex:                    string;
-  zygosity:               string;
+  zygosity:               "homozygote" | "heterozygote" | "hemizygote";
   significant:            boolean;
   significantPhenotype:   { name: string, id: string };
   datasetId:              string;
