@@ -15,8 +15,8 @@ import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 import { formatPValue } from "@/utils";
 import ChartSummary from "./ChartSummary";
 import { Dataset } from "@/models";
-import { _capitalize } from "chart.js/helpers";
 import _ from "lodash";
+import StatisticalMethodTable from './StatisticalMethodTable';
 
 type ChartSeries = {
   data: Array<any>,
@@ -33,7 +33,7 @@ type SummaryStatistics = {
 
 type Props = {
   datasetSummary: Dataset
-}
+};
 const Unidimensional = ({ datasetSummary }: Props) => {
   const [scatterSeries, setScatterSeries] = useState([]);
   const [lineSeries, setLineSeries] = useState([]);
@@ -238,214 +238,7 @@ const Unidimensional = ({ datasetSummary }: Props) => {
           </Card>
         </Col>
         <Col lg={6}>
-          <Card>
-            <h2>Statistical method</h2>
-            <SortableTable
-              headers={[
-                { width: 8, label: "Model attribute", disabled: true },
-                { width: 4, label: "Value", disabled: true },
-              ]}
-            >
-              <tr>
-                <td>Batch effect significant </td>
-                <td>
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "batchSignificant"
-                  ]
-                    ? "true"
-                    : "false"}
-                </td>
-              </tr>
-              <tr>
-                <td>Variance significant </td>
-                <td>
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "varianceSignificant"
-                  ]
-                    ? "true"
-                    : "false"}
-                </td>
-              </tr>
-              <tr>
-                <td>Genotype*Sex interaction effect p value </td>
-                <td>
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "sexEffectPValue"
-                  ]
-                    ? formatPValue(
-                        datasetSummary["statisticalMethod"]["attributes"][
-                          "sexEffectPValue"
-                        ]
-                      )
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Genotype parameter estimate </td>
-                <td>
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "sexEffectParameterEstimate"
-                  ]
-                    ? datasetSummary["statisticalMethod"]["attributes"][
-                        "sexEffectParameterEstimate"
-                      ].toFixed(3)
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Genotype standard error estimate </td>
-                <td>
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "genotypeEffectStderrEstimate"
-                  ]
-                    ? datasetSummary["statisticalMethod"]["attributes"][
-                        "genotypeEffectStderrEstimate"
-                      ].toFixed(3)
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Genotype Effect P Value </td>
-                <td>
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "genotypeEffectPValue"
-                  ]
-                    ? formatPValue(
-                        datasetSummary["statisticalMethod"]["attributes"][
-                          "genotypeEffectPValue"
-                        ]
-                      )
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Sex Parameter Estimate </td>
-                <td>
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "sexEffectParameterEstimate"
-                  ]
-                    ? datasetSummary["statisticalMethod"]["attributes"][
-                        "sexEffectParameterEstimate"
-                      ].toFixed(3)
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Sex Standard Error Estimate </td>
-                <td>
-                  {" "}
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "sexEffectStderrEstimate"
-                  ]
-                    ? datasetSummary["statisticalMethod"]["attributes"][
-                        "sexEffectStderrEstimate"
-                      ].toFixed(3)
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Sex Effect P Value </td>
-                <td>
-                  {" "}
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "sexEffectPValue"
-                  ]
-                    ? formatPValue(
-                        datasetSummary["statisticalMethod"]["attributes"][
-                          "sexEffectPValue"
-                        ]
-                      )
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Intercept Estimate </td>
-                <td>
-                  {" "}
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "interceptEstimate"
-                  ]
-                    ? datasetSummary["statisticalMethod"]["attributes"][
-                        "interceptEstimate"
-                      ].toFixed(3)
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Intercept Estimate Standard Error </td>
-                <td>
-                  {" "}
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "interceptEstimateStderrEstimate"
-                  ]
-                    ? datasetSummary["statisticalMethod"]["attributes"][
-                        "interceptEstimateStderrEstimate"
-                      ].toFixed(3)
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Sex Male KO P Value </td>
-                <td>
-                  {" "}
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "maleKoEffectPValue"
-                  ]
-                    ? formatPValue(
-                        datasetSummary["statisticalMethod"]["attributes"][
-                          "maleKoEffectPValue"
-                        ]
-                      )
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Sex Female KO P Value </td>
-                <td>
-                  {" "}
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "femaleKoEffectPValue"
-                  ]
-                    ? formatPValue(
-                        datasetSummary["statisticalMethod"]["attributes"][
-                          "femaleKoEffectPValue"
-                        ]
-                      )
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>WT Residuals Normality Tests </td>
-                <td>
-                  {" "}
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "group1ResidualsNormalityTest"
-                  ]
-                    ? formatPValue(
-                        datasetSummary["statisticalMethod"]["attributes"][
-                          "group1ResidualsNormalityTest"
-                        ]
-                      )
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>KO Residuals Normality Tests </td>
-                <td>
-                  {" "}
-                  {datasetSummary["statisticalMethod"]["attributes"][
-                    "group2ResidualsNormalityTest"
-                  ]
-                    ? formatPValue(
-                        datasetSummary["statisticalMethod"]["attributes"][
-                          "group2ResidualsNormalityTest"
-                        ]
-                      )
-                    : "N/A"}
-                </td>
-              </tr>
-            </SortableTable>
-          </Card>
+          <StatisticalMethodTable datasetSummary={datasetSummary} />
         </Col>
         <Col lg={6}>
           <Card>
