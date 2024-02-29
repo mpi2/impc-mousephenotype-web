@@ -4,7 +4,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Button, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
@@ -12,8 +12,13 @@ import CategoricalBarPlot from "./Plots/CategoricalBarPlot";
 import { formatPValue } from "@/utils";
 import { capitalize } from "lodash";
 import ChartSummary from "./ChartSummary";
+import { Dataset } from "@/models";
+import Link from "next/link";
+type Props = {
+  datasetSummary: Dataset;
+}
 
-const Categorical = ({ datasetSummary }) => {
+const Categorical = ({ datasetSummary }: Props) => {
   const [categoricalSeries, setCategoricalSeries] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categoryIndex, setCategoryIndex] = useState({});
@@ -186,6 +191,40 @@ const Categorical = ({ datasetSummary }) => {
           <Card>
             <h2>Statistical method</h2>
             <p>{datasetSummary["statisticalMethod"]["name"]}</p>
+            {datasetSummary.resourceName === '3i' && (
+              <>
+                <span>Supplied as data</span>
+                <span>
+                  <Link
+                    className="link primary"
+                    href="https://www.immunophenotype.org/threei/#/methods/statistical-design"
+                    target="_blank"
+                  >
+                    Statistical design
+                  </Link>
+                  &nbsp;
+                  <FontAwesomeIcon
+                    icon={faExternalLinkAlt}
+                    className="grey"
+                    size="xs"
+                  />
+                </span>
+              </>
+            )}
+            {datasetSummary.resourceName === 'pwg' && (
+              <>
+                <span>Supplied as data</span>
+                <span>
+                  <Link
+                    className="link primary"
+                    href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
+                    target="_blank"
+                  >
+                    Pain sensitivity publication
+                  </Link>
+                </span>
+              </>
+            )}
           </Card>
         </Col>
         <Col lg={6}>
