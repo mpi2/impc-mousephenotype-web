@@ -273,24 +273,9 @@ const ManhattanPlot = ({ phenotypeId }) => {
     <div>
       <div className={styles.labelsWrapper}>
         <div>
-          <i className="fa fa-circle" style={{ color: 'rgb(212, 17, 89)' }}></i>&nbsp;&nbsp;Not significant
-          <i className="fa fa-circle" style={{ color: 'rgb(26, 133, 255)', marginLeft: '1rem' }}></i>&nbsp;&nbsp;Significant
-        </div>
-        <div style={{ display: 'flex', whiteSpace: 'nowrap', alignItems: 'center' }}>
-          <label className="grey" htmlFor="geneHighlight" style={{ marginRight: "0.5rem" }}>Find gene:</label>
-          <Form.Control
-            id="geneHighlight"
-            type="text"
-            value={geneFilter}
-            onChange={(e) => setGeneFilter(e.target.value)}
-          />
-        </div>
-      </div>
-      {!!data ? (
-        <div className={styles.chartWrapper}>
-          <Scatter ref={chartRef} options={options as any} data={data.chartData as any} />
-          <div>
-            Significant P-value threshold (P &lt; 0.0001)
+          <i className="fa fa-circle" style={{color: 'rgb(212, 17, 89)'}}></i>&nbsp;&nbsp;Not significant
+          <i className="fa fa-circle" style={{color: 'rgb(26, 133, 255)', marginLeft: '1rem'}}></i>&nbsp;&nbsp;Significant
+          <div style={{ display: "inline-block", marginLeft: '0.5rem' }}>
             <hr
               style={{
                 border: "none",
@@ -302,7 +287,22 @@ const ManhattanPlot = ({ phenotypeId }) => {
                 opacity: 1
               }}
             />
+            &nbsp;&nbsp;Significant P-value threshold (P &lt; 0.0001)
           </div>
+        </div>
+        <div style={{display: 'flex', whiteSpace: 'nowrap', alignItems: 'center'}}>
+          <label className="grey" htmlFor="geneHighlight" style={{marginRight: "0.5rem"}}>Find gene:</label>
+          <Form.Control
+            id="geneHighlight"
+            type="text"
+            value={geneFilter}
+            onChange={(e) => setGeneFilter(e.target.value)}
+          />
+        </div>
+      </div>
+      {!!data ? (
+        <div className={styles.chartWrapper}>
+          <Scatter ref={chartRef} options={options as any} data={data.chartData as any} />
           <DataTooltip
             tooltip={clickTooltip}
             offsetX={0}
