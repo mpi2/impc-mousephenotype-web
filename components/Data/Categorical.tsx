@@ -4,7 +4,6 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
 import { Alert, Button, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
@@ -14,76 +13,77 @@ import { capitalize } from "lodash";
 import ChartSummary from "./ChartSummary";
 import { Dataset } from "@/models";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 type Props = {
   datasetSummary: Dataset;
+  isVisible: boolean;
+};
+
+const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
+  if (zygosity === 'hemizygote') {
+    return seriesArray.filter(c => c.sex === 'male');
+  }
+  const validExperimentalSeries = seriesArray
+    .filter(c => c.sampleGroup === 'experimental' && c.value > 0);
+  const validExperimentalSeriesSexes = validExperimentalSeries.map(c => c.sex);
+  const controlSeries = seriesArray
+    .filter(c => c.sampleGroup === 'control' && validExperimentalSeriesSexes.includes(c.sex));
+  return [ ...controlSeries, ...validExperimentalSeries ];
 }
 
-const Categorical = ({ datasetSummary }: Props) => {
-  const [categoricalSeries, setCategoricalSeries] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [categoryIndex, setCategoryIndex] = useState({});
+const Categorical = ({ datasetSummary, isVisible }: Props) => {
 
-  const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
-    if (zygosity === 'hemizygote') {
-      return seriesArray.filter(c => c.sex === 'male');
-    }
-    const validExperimentalSeries = seriesArray
-      .filter(c => c.sampleGroup === 'experimental' && c.value > 0);
-    const validExperimentalSeriesSexes = validExperimentalSeries.map(c => c.sex);
-    const controlSeries = seriesArray
-      .filter(c => c.sampleGroup === 'control' && validExperimentalSeriesSexes.includes(c.sex));
-    return [ ...controlSeries, ...validExperimentalSeries ];
-  }
-
-  useEffect(() => {
-    (async () => {
+  const { data } = useQuery({
+    queryKey: ["dataset", datasetSummary.parameterName, datasetSummary.datasetId],
+    queryFn: () => {
       const dataReleaseVersion = process.env.NEXT_PUBLIC_DR_DATASET_VERSION || 'latest';
-      const res = await fetch(
+      return fetch(
         `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
-      );
-      if (res.ok) {
-        const response = await res.json();
-        const series: Array<any> = [];
-        const index = {};
-        const categories = [];
-        response.series.forEach((s) => {
-          if (!index[s.specimenSex]) index[s.specimenSex] = {};
-          if (!index[s.specimenSex][s.sampleGroup]) {
-            index[s.specimenSex][s.sampleGroup] = { total: 0 };
+      ).then((res) => res.json());
+    },
+    select: (response) => {
+      const series: Array<any> = [];
+      const index = {};
+      const categories = [];
+      response.series.forEach((s) => {
+        if (!index[s.specimenSex]) index[s.specimenSex] = {};
+        if (!index[s.specimenSex][s.sampleGroup]) {
+          index[s.specimenSex][s.sampleGroup] = { total: 0 };
+        }
+        s.observations.forEach((o) => {
+          if (!index[s.specimenSex][s.sampleGroup][o.category]) {
+            index[s.specimenSex][s.sampleGroup][o.category] = 0;
           }
-          s.observations.forEach((o) => {
-            if (!index[s.specimenSex][s.sampleGroup][o.category]) {
-              index[s.specimenSex][s.sampleGroup][o.category] = 0;
-            }
-            index[s.specimenSex][s.sampleGroup].total += 1;
-            index[s.specimenSex][s.sampleGroup][o.category] += 1;
-            if (!categories.includes(o.category)) categories.push(o.category);
-          });
+          index[s.specimenSex][s.sampleGroup].total += 1;
+          index[s.specimenSex][s.sampleGroup][o.category] += 1;
+          if (!categories.includes(o.category)) categories.push(o.category);
         });
+      });
 
-        Object.keys(index).forEach((sex) =>
-          Object.keys(index[sex]).forEach((sampleGroup) => {
-            categories.forEach((category) => {
-              series.push({
-                sex,
-                sampleGroup,
-                category,
-                value:
-                  ((index[sex][sampleGroup][category] || 0) /
-                    index[sex][sampleGroup].total) *
-                  100,
-              });
+      Object.keys(index).forEach((sex) =>
+        Object.keys(index[sex]).forEach((sampleGroup) => {
+          categories.forEach((category) => {
+            const count = index[sex][sampleGroup][category] || 0;
+            const total = index[sex][sampleGroup].total;
+            series.push({
+              sex,
+              sampleGroup,
+              category,
+              value: (count / total) * 100,
             });
-          })
-        );
-
-        setCategories(categories);
-        setCategoricalSeries(filterChartSeries(datasetSummary.zygosity, series));
-        setCategoryIndex(index);
+          });
+        })
+      );
+      return {
+        categories,
+        series: filterChartSeries(datasetSummary.zygosity, series),
+        categoryIndex: index
       }
-    })();
-  }, []);
-
+    },
+    enabled: isVisible,
+    placeholderData: { series: [] }
+  });
+  
   return (
     <>
       <ChartSummary datasetSummary={datasetSummary} />
@@ -92,7 +92,7 @@ const Categorical = ({ datasetSummary }: Props) => {
           <Card>
             <h2 className="primary">
               <CategoricalBarPlot
-                series={categoricalSeries}
+                series={data?.series}
                 zygosity={datasetSummary["zygosity"]}
               />
             </h2>
@@ -154,9 +154,9 @@ const Categorical = ({ datasetSummary }: Props) => {
               headers={[
                 { width: 4, label: "Sample type / Category", disabled: true },
               ].concat(
-                Object.keys(categoryIndex)
+                Object.keys(data.categoryIndex)
                   .flatMap((sex) =>
-                    Object.keys(categoryIndex[sex]).map(
+                    Object.keys(data.categoryIndex[sex]).map(
                       (c) =>
                         capitalize(sex) +
                         " " +
@@ -168,16 +168,16 @@ const Categorical = ({ datasetSummary }: Props) => {
                   })
               )}
             >
-              {categories.map((category) => {
+              {data.categories.map((category) => {
                 return (
                   <tr>
                     <td>{category}</td>
-                    {Object.keys(categoryIndex).flatMap((sex) =>
-                      Object.keys(categoryIndex[sex]).map((sampleGroup) =>
-                        !categoryIndex[sex][sampleGroup][category] ? (
+                    {Object.keys(data.categoryIndex).flatMap((sex) =>
+                      Object.keys(data.categoryIndex[sex]).map((sampleGroup) =>
+                        !data.categoryIndex[sex][sampleGroup][category] ? (
                           <td>0</td>
                         ) : (
-                          <td>{categoryIndex[sex][sampleGroup][category]}</td>
+                          <td>{data.categoryIndex[sex][sampleGroup][category]}</td>
                         )
                       )
                     )}
