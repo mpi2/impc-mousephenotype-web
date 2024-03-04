@@ -65,11 +65,11 @@ const Charts = () => {
       case "categorical":
         return <Categorical datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "viability":
-        return <Viability datasetSummary={datasetSummary} />;
+        return <Viability datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "time_series":
         return <TimeSeries datasetSummary={datasetSummary} />;
       case "embryo":
-        return <EmbryoViability datasetSummary={datasetSummary} />;
+        return <EmbryoViability datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "histopathology":
         return <Histopathology datasetSummary={datasetSummary} />;
       case "bodyweight":

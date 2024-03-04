@@ -12,7 +12,7 @@ import { DataComparison, Viability } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 
 const ViabilityChartPage = () => {
-  const [tab, setTab] = useState('0');
+  const [tab, setTab] = useState(0);
   const [showComparison, setShowComparison] = useState(true);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
@@ -96,10 +96,10 @@ const ViabilityChartPage = () => {
         className="bg-grey pt-2"
       >
         <Container>
-          <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
+          <Tabs defaultActiveKey={0} onSelect={(e) => setTab(parseInt(e, 10))}>
             {viabilityData && viabilityData.map((d, i) => (
               <Tab eventKey={i} title={<>Combination #{i + 1}</>} key={i}>
-                <Viability datasetSummary={d} />
+                <Viability datasetSummary={d} isVisible={tab === i} />
               </Tab>
             ))}
           </Tabs>

@@ -10,8 +10,9 @@ import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import ChartSummary from "@/components/Data/ChartSummary";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { GeneralChartProps } from "@/models";
 
-const EmbryoViability = ({ datasetSummary }) => {
+const EmbryoViability = ({ datasetSummary, isVisible}: GeneralChartProps) => {
   const router = useRouter();
 
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -141,7 +142,8 @@ const EmbryoViability = ({ datasetSummary }) => {
       return fetch(
         `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
       ).then((res) => res.json());
-    }
+    },
+    enabled: isVisible
   });
 
   if (isLoading) return <Card>Loading...</Card>;

@@ -9,8 +9,9 @@ import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import ChartSummary from "./ChartSummary";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { GeneralChartProps } from "@/models";
 
-const Viability = ({ datasetSummary }) => {
+const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
 
   const viabilityOneParametersMap = {
@@ -63,13 +64,14 @@ const Viability = ({ datasetSummary }) => {
       : viabilityOneParametersMap;
 
   const { data, isLoading, error, isError } = useQuery({
-    queryKey: ["dataset", datasetSummary["datasetId"]],
+    queryKey: ["dataset", datasetSummary.parameterName, datasetSummary.datasetId],
     queryFn: () => {
       const dataReleaseVersion = process.env.NEXT_PUBLIC_DR_DATASET_VERSION || 'latest';
       return fetch(
         `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
       ).then((res) => res.json());
-    }
+    },
+    enabled: isVisible
   });
 
   if (isLoading) return <Card>Loading...</Card>;
