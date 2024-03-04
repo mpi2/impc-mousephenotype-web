@@ -6,7 +6,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import { useState, useEffect } from "react";
 import { Alert, Button, Col, Row } from "react-bootstrap";
 import Card from "../Card";
 import SortableTable from "../SortableTable";
@@ -25,18 +24,11 @@ type ChartSeries = {
   sex: 'male' | 'female',
 }
 
-type SummaryStatistics = {
-  label: string;
-  mean: number;
-  stddev: number;
-  count: number;
-};
-
 type Props = {
   datasetSummary: Dataset;
-  isActive: boolean;
+  isVisible: boolean;
 };
-const Unidimensional = ({ datasetSummary, isActive }: Props) => {
+const Unidimensional = ({ datasetSummary, isVisible }: Props) => {
   const getScatterSeries = (dataSeries, sex, sampleGroup) => {
     if (!dataSeries) {
       return null;
@@ -130,7 +122,7 @@ const Unidimensional = ({ datasetSummary, isActive }: Props) => {
         summaryStatistics: updateSummaryStatistics(chartSeries),
       }
     },
-    enabled: isActive
+    enabled: isVisible
   });
 
   return (

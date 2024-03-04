@@ -39,8 +39,8 @@ const Charts = () => {
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
   const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
   const getChartType = (datasetSummary: Dataset, tabNum: number) => {
-    console.log({tab, tabNum});
     let chartType = datasetSummary.dataType;
+    const isVisible = tab === tabNum;
     if (chartType == "line") {
       chartType =
         datasetSummary.procedureGroup == "IMPC_VIA"
@@ -61,9 +61,9 @@ const Charts = () => {
     }
     switch (chartType) {
       case "unidimensional":
-        return <Unidimensional datasetSummary={datasetSummary} isActive={tab === tabNum} />;
+        return <Unidimensional datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "categorical":
-        return <Categorical datasetSummary={datasetSummary} />;
+        return <Categorical datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "viability":
         return <Viability datasetSummary={datasetSummary} />;
       case "time_series":
