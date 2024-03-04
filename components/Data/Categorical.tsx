@@ -11,13 +11,9 @@ import CategoricalBarPlot from "./Plots/CategoricalBarPlot";
 import { formatPValue } from "@/utils";
 import { capitalize } from "lodash";
 import ChartSummary from "./ChartSummary";
-import { Dataset } from "@/models";
+import { GeneralChartProps } from "@/models";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-type Props = {
-  datasetSummary: Dataset;
-  isVisible: boolean;
-};
 
 const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
   if (zygosity === 'hemizygote') {
@@ -31,7 +27,7 @@ const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
   return [ ...controlSeries, ...validExperimentalSeries ];
 }
 
-const Categorical = ({ datasetSummary, isVisible }: Props) => {
+const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
 
   const { data } = useQuery({
     queryKey: ["dataset", datasetSummary.parameterName, datasetSummary.datasetId],
@@ -83,7 +79,7 @@ const Categorical = ({ datasetSummary, isVisible }: Props) => {
     enabled: isVisible,
     placeholderData: { series: [] }
   });
-  
+
   return (
     <>
       <ChartSummary datasetSummary={datasetSummary} />

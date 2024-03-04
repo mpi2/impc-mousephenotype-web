@@ -13,6 +13,7 @@ export type { GrossPathology, GrossPathologyDataset } from './gross-pathology';
 export type { Dataset } from './dataset';
 export type { Gene };
 export type { Phenotype };
+export type { GeneralChartProps } from './chart';
 
 type Model =
   PhenotypeRef | typeof Gene | typeof Phenotype | MetabolismGeneData | Dataset

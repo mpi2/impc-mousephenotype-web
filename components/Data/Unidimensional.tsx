@@ -13,7 +13,7 @@ import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 import { formatPValue } from "@/utils";
 import ChartSummary from "./ChartSummary";
-import { Dataset } from "@/models";
+import { Dataset, GeneralChartProps } from "@/models";
 import _ from "lodash";
 import StatisticalMethodTable from './StatisticalMethodTable';
 import { useQuery } from "@tanstack/react-query";
@@ -24,11 +24,7 @@ type ChartSeries = {
   sex: 'male' | 'female',
 }
 
-type Props = {
-  datasetSummary: Dataset;
-  isVisible: boolean;
-};
-const Unidimensional = ({ datasetSummary, isVisible }: Props) => {
+const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const getScatterSeries = (dataSeries, sex, sampleGroup) => {
     if (!dataSeries) {
       return null;
