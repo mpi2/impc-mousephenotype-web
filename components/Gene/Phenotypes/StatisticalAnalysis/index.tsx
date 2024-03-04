@@ -240,7 +240,7 @@ const StatisticalAnalysisChart = ({
 
   return (
     <div>
-      <div style={{ paddingLeft: "0.5rem", marginBottom: 30 }}>
+      <div style={{paddingLeft: "0.5rem", marginBottom: 30}}>
         {colorByArray.map((item, index) => {
           if (!item) {
             return;
@@ -270,13 +270,27 @@ const StatisticalAnalysisChart = ({
                 }}
               >
                 {isByProcedure ? null : (
-                  <BodySystemIcon name={item} color="white" size="1x" />
+                  <BodySystemIcon name={item} color="white" size="1x"/>
                 )}
               </span>{" "}
               <small>{formatBodySystems(item)}</small>
             </span>
           );
         })}
+        <span className="grey" style={{ display: 'inline-block', marginBlock: '3px', whiteSpace: 'nowrap' }}>
+          <hr
+            style={{
+              border: "none",
+              borderTop: "3px dashed #000",
+              height: "3px",
+              width: "50px",
+              display: 'inline-block',
+              margin: '0 0 0 0.5rem',
+              opacity: 1
+            }}
+          />
+          <small>Significant P-value threshold (P &lt; 0.0001)</small>
+        </span>
       </div>
       <div
         style={{
@@ -327,18 +341,6 @@ const StatisticalAnalysisChart = ({
       </div>
       <div style={{ display: "flex", alignItems: 'center', justifyContent: 'space-between' }}>
         <span className="labels">
-          Significant P-value threshold (P &lt; 0.0001)
-          <hr
-            style={{
-              border: "none",
-              borderTop: "3px dashed #000",
-              height: "3px",
-              width: "50px",
-              display: 'inline-block',
-              margin: '0 0 0 0.5rem',
-              opacity: 1
-            }}
-          />
           {hasDataRelatedToPWG && (
             <span style={{ marginLeft: '1rem' }}>
               Significant threshold for pain sensitivity (P &lt; 0.001)
