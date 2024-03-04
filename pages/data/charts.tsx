@@ -32,14 +32,15 @@ const getSmallestPValue = (summaries: Array<Dataset>): number => {
 }
 
 const Charts = () => {
-  const [tab, setTab] = useState('0');
+  const [tab, setTab] = useState(0);
   const [showComparison, setShowComparison] = useState(true);
   const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
   const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
-  const getChartType = (datasetSummary: Dataset, mgiGeneAccessionId: string) => {
+  const getChartType = (datasetSummary: Dataset, tabNum: number) => {
     let chartType = datasetSummary.dataType;
+    const isVisible = tab === tabNum;
     if (chartType == "line") {
       chartType =
         datasetSummary.procedureGroup == "IMPC_VIA"
@@ -60,15 +61,15 @@ const Charts = () => {
     }
     switch (chartType) {
       case "unidimensional":
-        return <Unidimensional datasetSummary={datasetSummary} />;
+        return <Unidimensional datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "categorical":
-        return <Categorical datasetSummary={datasetSummary} />;
+        return <Categorical datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "viability":
-        return <Viability datasetSummary={datasetSummary} />;
+        return <Viability datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "time_series":
         return <TimeSeries datasetSummary={datasetSummary} />;
       case "embryo":
-        return <EmbryoViability datasetSummary={datasetSummary} />;
+        return <EmbryoViability datasetSummary={datasetSummary} isVisible={isVisible} />;
       case "histopathology":
         return <Histopathology datasetSummary={datasetSummary} />;
       case "bodyweight":
@@ -176,7 +177,7 @@ const Charts = () => {
               onNewSummariesFetched={setAdditionalSummaries}
             />
           ) : (
-            <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
+            <Tabs defaultActiveKey={0} onSelect={(e) => setTab(parseInt(e, 10))}>
               {allSummaries && allSummaries.map((d, i) => (
                 <Tab
                   eventKey={i}
@@ -188,7 +189,7 @@ const Charts = () => {
                   }
                   key={i}
                 >
-                  <div>{getChartType(d, mgiGeneAccessionId)}</div>
+                  <div>{getChartType(d, i)}</div>
                 </Tab>
               ))}
             </Tabs>

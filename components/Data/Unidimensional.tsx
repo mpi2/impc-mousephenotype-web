@@ -6,7 +6,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import { useState, useEffect } from "react";
 import { Alert, Button, Col, Row } from "react-bootstrap";
 import Card from "../Card";
 import SortableTable from "../SortableTable";
@@ -14,9 +13,10 @@ import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 import { formatPValue } from "@/utils";
 import ChartSummary from "./ChartSummary";
-import { Dataset } from "@/models";
+import { Dataset, GeneralChartProps } from "@/models";
 import _ from "lodash";
 import StatisticalMethodTable from './StatisticalMethodTable';
+import { useQuery } from "@tanstack/react-query";
 
 type ChartSeries = {
   data: Array<any>,
@@ -24,22 +24,7 @@ type ChartSeries = {
   sex: 'male' | 'female',
 }
 
-type SummaryStatistics = {
-  label: string;
-  mean: number;
-  stddev: number;
-  count: number;
-};
-
-type Props = {
-  datasetSummary: Dataset
-};
-const Unidimensional = ({ datasetSummary }: Props) => {
-  const [scatterSeries, setScatterSeries] = useState([]);
-  const [lineSeries, setLineSeries] = useState([]);
-  const [boxPlotSeries, setBoxPlotSeries] = useState([]);
-  const [summaryStatistics, setSummaryStatistics] = useState<Array<SummaryStatistics>>([]);
-
+const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const getScatterSeries = (dataSeries, sex, sampleGroup) => {
     if (!dataSeries) {
       return null;
@@ -72,7 +57,7 @@ const Unidimensional = ({ datasetSummary }: Props) => {
 
   const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
     const zygosity = datasetSummary.zygosity;
-    const rows: Array<SummaryStatistics> = chartSeries.map(serie => {
+    return chartSeries.map(serie => {
       const { sampleGroup, sex } = serie;
       const sampleGroupKey = sampleGroup === 'control' ? 'Control' : 'Mutant';
       const meanKey = `${sex}${sampleGroupKey}Mean`;
@@ -85,60 +70,56 @@ const Unidimensional = ({ datasetSummary }: Props) => {
         count: datasetSummary.summaryStatistics?.[countKey] || 0,
       }
     });
-    setSummaryStatistics(rows);
   }
 
-  useEffect(() => {
-    (async () => {
+  const { data, isLoading, error, isError } = useQuery({
+    queryKey: ["dataset", datasetSummary.parameterName, datasetSummary.datasetId],
+    queryFn: () => {
       const dataReleaseVersion = process.env.NEXT_PUBLIC_DR_DATASET_VERSION || 'latest';
-      const res = await fetch(
+      return fetch(
         `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
+      ).then((res) => res.json());
+    },
+    select: (response) => {
+      const dataSeries = response.series;
+      const femaleWTPoints = getScatterSeries(
+        dataSeries,
+        "female",
+        "control"
       );
-      if (res.ok) {
-        const response = await res.json();
-        const dataSeries = response.series;
+      const maleWTPoints = getScatterSeries(dataSeries, "male", "control");
+      const femaleHomPoints = getScatterSeries(
+        dataSeries,
+        "female",
+        "experimental"
+      );
+      const maleHomPoints = getScatterSeries(
+        dataSeries,
+        "male",
+        "experimental"
+      );
+      const windowPoints = [...dataSeries.flatMap((s) => s.observations)]
+        .filter((p) => p.windowWeight)
+        .map((p) => {
+          const windowP = { ...p };
+          windowP.x = moment(p.dateOfExperiment);
+          const weigth = p.windowWeight ? +p.windowWeight : null;
+          windowP.y = weigth;
+          return windowP;
+        });
+      windowPoints.sort((a, b) => a.x - b.x);
 
-        const femaleWTPoints = getScatterSeries(
-          dataSeries,
-          "female",
-          "control"
-        );
-        const maleWTPoints = getScatterSeries(dataSeries, "male", "control");
-        const femaleHomPoints = getScatterSeries(
-          dataSeries,
-          "female",
-          "experimental"
-        );
-        const maleHomPoints = getScatterSeries(
-          dataSeries,
-          "male",
-          "experimental"
-        );
-        const windowPoints = [...dataSeries.flatMap((s) => s.observations)]
-          .filter((p) => p.windowWeight)
-          .map((p) => {
-            const windowP = { ...p };
-            windowP.x = moment(p.dateOfExperiment);
-            const weigth = p.windowWeight ? +p.windowWeight : null;
-            windowP.y = weigth;
-            return windowP;
-          });
-        windowPoints.sort((a, b) => a.x - b.x);
-
-        const chartSeries = filterChartSeries(
-          datasetSummary.zygosity, [femaleWTPoints, maleWTPoints, femaleHomPoints, maleHomPoints]
-        );
-        updateSummaryStatistics(chartSeries)
-        setBoxPlotSeries(chartSeries);
-        setScatterSeries(chartSeries);
-        setLineSeries([windowPoints]);
+      const chartSeries = filterChartSeries(
+        datasetSummary.zygosity, [femaleWTPoints, maleWTPoints, femaleHomPoints, maleHomPoints]
+      );
+      return {
+        chartSeries,
+        lineSeries: [windowPoints],
+        summaryStatistics: updateSummaryStatistics(chartSeries),
       }
-    })();
-  }, []);
-
-  if (!scatterSeries) {
-    return <p>Loading...</p>;
-  }
+    },
+    enabled: isVisible
+  });
 
   return (
     <>
@@ -147,7 +128,7 @@ const Unidimensional = ({ datasetSummary }: Props) => {
         <Col lg={5}>
           <Card>
             <UnidimensionalBoxPlot
-              series={boxPlotSeries}
+              series={data?.chartSeries || []}
               zygosity={datasetSummary.zygosity}
             />
           </Card>
@@ -155,8 +136,8 @@ const Unidimensional = ({ datasetSummary }: Props) => {
         <Col lg={7}>
           <Card>
             <UnidimensionalScatterPlot
-              scatterSeries={scatterSeries}
-              lineSeries={lineSeries}
+              scatterSeries={data?.chartSeries || []}
+              lineSeries={data?.lineSeries || []}
               zygosity={datasetSummary["zygosity"]}
               parameterName={datasetSummary["parameterName"]}
               unit={datasetSummary["unit"]["x"]}
@@ -226,7 +207,7 @@ const Unidimensional = ({ datasetSummary }: Props) => {
                 { width: 3, label: "# Samples", disabled: true },
               ]}
             >
-              {summaryStatistics.map(stats =>
+              {(data?.summaryStatistics || []).map(stats =>
                 <tr>
                   <td>{stats.label}</td>
                   <td>{stats.mean}</td>

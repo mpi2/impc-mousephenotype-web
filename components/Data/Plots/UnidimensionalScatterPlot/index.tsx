@@ -37,7 +37,7 @@ ChartJS.register(
 
 interface IUnidimensionalScatterPlotProps {
   scatterSeries: Array<UnidimensionalSeries>;
-  lineSeries: Array<UnidimensionalSeries>;
+  lineSeries: Array<Array<UnidimensionalSeries>>;
   zygosity: "homozygote" | "heterozygote" | "hemizygote";
   parameterName: string;
   unit: string;
