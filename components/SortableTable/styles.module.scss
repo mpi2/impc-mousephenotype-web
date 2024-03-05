@@ -5,6 +5,15 @@
     vertical-align: middle;
     line-height: 1.5;
   }
+  &.striped thead tr th {
+    --bs-table-bg-type: #F3F5F8 !important;
+  }
+  &.striped tbody > tr:nth-of-type(odd) > td {
+    --bs-table-bg-type: #FFF;
+  }
+  &.striped tbody > tr:nth-of-type(even) > td {
+    --bs-table-bg-type: #F7FBFC;
+  }
 }
 
 td.procedureName {
@@ -33,11 +42,15 @@ td.procedureName {
 
 $button-margin: -0.3em;
 
+.sortIcon {
+  color: #3DB28C;
+}
+
 .defaultIcons {
   display: inline-flex;
   flex-direction: column;
   align-self: start;
-  color: #CCC;
+  color: #3DB28C;
   .first {
     margin-bottom: $button-margin;
   }

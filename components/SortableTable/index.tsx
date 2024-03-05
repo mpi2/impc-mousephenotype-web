@@ -98,6 +98,7 @@ const SortableTable = ({
           {label}{" "}
           {!disabled && selected && (
             <FontAwesomeIcon
+              className={styles.sortIcon}
               icon={sort.order === "asc" ? faCaretUp : faCaretDown}
             />
           )}
@@ -114,7 +115,7 @@ const SortableTable = ({
 
   return (
     <div className={styles.tableWrapper}>
-      <Table striped bordered className={styles.table}>
+      <Table bordered className={`${styles.table} ${styles.striped}`}>
         {hasNested &&
           headers.map(({ children: childHeaders }) => {
             if (childHeaders && childHeaders.length) {
