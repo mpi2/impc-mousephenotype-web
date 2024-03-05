@@ -14,27 +14,27 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
+import { GeneSummary } from "@/models/gene";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { fetchAPI } from "@/api-service";
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
 
-const Gene = () => {
+export const getServerSideProps = (async (context) => {
+  const mgiGeneAccessionId = context.params.pid;
+  const gene: GeneSummary = await fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/summary`);
+  return { props: {gene} }
+}) satisfies GetServerSideProps<{ gene: GeneSummary }>
+
+const Gene = ({ gene }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
   const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
   const allelesStudiedContextValue = {allelesStudied, setAlleles};
-
-  const {
-    isLoading,
-    isError,
-    data: gene,
-    error
-  } = useGeneSummaryQuery(router.query.pid as string, router.isReady);
 
   useEffect(() => {
     if (gene) {
@@ -54,19 +54,15 @@ const Gene = () => {
           <GeneComparatorTrigger current={router.query.pid as string} />
           <Search />
           <Container className="page">
-            <Summary {...{ gene, numOfAlleles, loading: isLoading, error: isError ? error.toString(): "" }} />
-            {!!gene && (
-              <>
-                <Phenotypes gene={gene} />
-                <Expressions />
-                <Images gene={gene} />
-                <HumanDiseases gene={gene} />
-                <Histopathology />
-                <Publications gene={gene} />
-                <ExternalLinks />
-                <Order allelesStudied={allelesStudied} />
-              </>
-            )}
+            <Summary gene={gene} numOfAlleles={numOfAlleles}/>
+            <Phenotypes gene={gene} />
+            <Expressions />
+            <Images gene={gene} />
+            <HumanDiseases gene={gene} />
+            <Histopathology />
+            <Publications gene={gene} />
+            <ExternalLinks />
+            <Order allelesStudied={allelesStudied} />
           </Container>
         </AllelesStudiedContext.Provider>
       </NumAllelesContext.Provider>

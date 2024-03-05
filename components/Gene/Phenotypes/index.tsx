@@ -1,21 +1,24 @@
-import { Alert, Button, Tab, Tabs } from "react-bootstrap";
+import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
-import AllelePhenotypeDiagram from "@/components/Gene/Phenotypes/AllelePhenotypeDiagram";
 
-const StatisticalAnalysis = dynamic(() => import("./StatisticalAnalysis"), {
-  ssr: false,
-});
+const StatisticalAnalysis = dynamic(
+  () => import("./StatisticalAnalysis"),
+  {ssr: false}
+);
+
+const AllelePhenotypeDiagram = dynamic(
+  () => import('./AllelePhenotypeDiagram'),
+  {ssr: false}
+);
 
 const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
   if (isLoading) {
