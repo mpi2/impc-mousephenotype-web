@@ -310,7 +310,7 @@ export const BodySystem = ({
       className={noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem}
     >
       <BodySystemIcon name={name} color={color} size={size} />&nbsp;
-      <span className="orange-dark">{label}</span>
+      <span>{label}</span>
     </span>
   ) : (
     <OverlayTrigger

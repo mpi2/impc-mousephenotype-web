@@ -6,7 +6,7 @@ import {
   faWarning,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Button, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import {
   buildStyles,
   CircularProgressbarWithChildren,
@@ -52,12 +52,10 @@ const CollectionItem = ({
   name,
   link,
   hasData,
-  external = false,
 }: {
   name: string;
   link: string;
   hasData: boolean;
-  external?: boolean;
 }) => (
   hasData ? (
     <a
@@ -75,39 +73,6 @@ const CollectionItem = ({
     </span>
   )
 );
-
-const Metric = ({
-  children,
-  value,
-}: {
-  children: string;
-  value: number;
-}) => {
-  return (
-    <div className={styles.metric}>
-      <div className={styles.progressCircleCont}>
-        <CircularProgressbarWithChildren
-          strokeWidth={8}
-          value={100}
-          styles={buildStyles({
-            strokeLinecap: "butt",
-            pathTransitionDuration: 0.5,
-            pathColor: "#e8e8e8",
-            trailColor: "#e8e8e8",
-            backgroundColor: "#3e98c7",
-          })}
-        >
-          <span className={styles.progressCircleText}>{value}</span>
-        </CircularProgressbarWithChildren>
-      </div>
-      <div className="ms-3">
-        <p className="mb-0">
-          <strong>{children}</strong>
-        </p>
-      </div>
-    </div>
-  );
-};
 
 type SummaryProps = {
   gene: GeneSummary;
@@ -127,13 +92,7 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   const displaySynonymsInTooltip = () => {
     return gene.synonyms
       .slice(SYNONYMS_COUNT, gene.synonyms.length)
-      .map((s, i) => (
-        <span key={s} style={{ whiteSpace: "nowrap" }}>
-          {s}
-          {i < gene.synonyms.length ? ", " : ""}
-          <br />
-        </span>
-      ))
+      .map((s, i) => <li key={s}>{s}</li>);
   }
 
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
@@ -142,26 +101,30 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
-    <Card>
+    <Card style={{ padding: '2rem 2rem 0 2rem' }}>
       <Head>
         <title>
           {gene.geneSymbol} Mouse Gene Details | {gene.geneName} | International
           Mouse Phenotyping Consortium
         </title>
       </Head>
+      <div className={styles.headingCont}>
+        <h1 className="mt-2 mb-3">
+          <strong>{gene.geneSymbol}</strong><span>|</span>&nbsp;{gene.geneName}
+        </h1>
+      </div>
       <div className={styles.subheadingCont}>
         <div className={styles.subheading}>
-          <span className={`${styles.subheadingSection} primary`}>Gene</span>
+          <span>Gene</span>
           <a
-            className={`${styles.subheadingSection} link`}
+            className="primary"
             href={`http://www.informatics.jax.org/marker/${gene.mgiGeneAccessionId}`}
             target="_blank"
           >
             {gene.mgiGeneAccessionId}
-            <FontAwesomeIcon style={{ marginLeft: '0.5em' }} icon={faExternalLinkAlt} size="xs" />
           </a>
           {gene?.synonyms?.length > 0 && (
-            <span className={styles.subheadingSection}>
+            <span>
             Synonyms:{" "}
               {displaySynonyms()}
               {gene.synonyms.length > SYNONYMS_COUNT && (
@@ -169,17 +132,19 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
                   placement="bottom"
                   trigger={["hover", "focus"]}
                   overlay={
-                    <Tooltip>
-                      <div style={{ textAlign: "left" }}>
-                        {displaySynonymsInTooltip()}
+                    <Tooltip className="synonyms-tooltip">
+                      <div style={{textAlign: "left"}}>
+                        <ul style={{margin: 0}}>
+                          {displaySynonymsInTooltip()}
+                        </ul>
                       </div>
                     </Tooltip>
                   }
                 >
-                  {({ ref, ...triggerHandler }) => (
-                    <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
+                  {({ref, ...triggerHandler}) => (
+                    <span {...triggerHandler} ref={ref} data-testid="synonyms">
                     ,&nbsp;+{gene.synonyms.length - SYNONYMS_COUNT} more{" "}
-                      <FontAwesomeIcon icon={faCaretSquareDown} />
+                      <FontAwesomeIcon icon={faCaretSquareDown}/>
                   </span>
                   )}
                 </OverlayTrigger>
@@ -187,125 +152,75 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
           </span>
           )}
         </div>
-        <a
-          className={`${styles.howLink} secondary`}
-          href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/"
-        >
-          How IMPC generates&nbsp;data&nbsp;
-          <FontAwesomeIcon icon={faChevronRight} />
-        </a>
       </div>
-      <div className={styles.headingCont}>
-        <h1 className="mb-5 mt-2">
-          <strong>{gene.geneSymbol}</strong> <span className="grey">|</span>{" "}
-          {gene.geneName}
-        </h1>
-        {/*<FollowBtn />*/}
+      <div>
+        <h3 className="mb-2">Physiological systems</h3>
+        <div className={styles.progressHeader}>
+          <div data-testid="totalCount">
+            <strong>{significantCount + nonSignificantCount}</strong>
+            &nbsp;/&nbsp;{allCount} physiological systems tested
+          </div>
+        </div>
       </div>
       <Row className={styles.gap}>
         <Col lg={6}>
-          <h3>Physiological systems</h3>
-          <div className={styles.progressHeader}>
-            <div data-testid="totalCount">
-              <span className="secondary">
-                {significantCount + nonSignificantCount}
-              </span>&nbsp;/&nbsp;{allCount} physiological systems tested
-            </div>
-            <a href="#data" className="link">
-              View data
-            </a>
-          </div>
-          <div className={styles.progressContainer}>
-            <div
-              className={styles.progressSegmentPrimary}
-              style={{ width: `${(significantCount / allCount) * 100}%` }}
-            />
-            <div
-              className={styles.progressSegment}
-              style={{
-                width: `${(nonSignificantCount / allCount) * 100}%`,
-              }}
-            />
-          </div>
-          {!!significantCount && (
-            <div className={styles.bodySystemGroupSignificant}>
-              <h5 className={styles.bodySystemGroupSummary}>
+          <div className={styles.bodySystemWrapper}>
+            {!!significantCount && (
+              <div className={styles.bodySystemGroupSignificant}>
+                <h5 className={`${styles.bodySystemGroupSummary} primary`}>
                 <span className={`${styles.pill} bg-primary white`} data-testid="significantCount">
                   {significantCount}
                 </span>{" "}
-                Significantly impacted by the knock-out
-              </h5>
-              <div className={styles.bodySystems} data-testid="significantSystemIcons">
-                {gene.significantTopLevelPhenotypes.map((x) => (
-                  <BodySystem key={x} name={x} isSignificant color="primary" />
-                ))}
+                  Significantly impacted by the knock-out
+                </h5>
+                <div className={styles.bodySystems} data-testid="significantSystemIcons">
+                  {gene.significantTopLevelPhenotypes.map((x) => (
+                    <BodySystem key={x} name={x} isSignificant color="primary"/>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-          {!!nonSignificantCount && (
-            <div className={styles.bodySystemGroup}>
-              <h5 className={styles.bodySystemGroupSummary}>
+            )}
+            {!!nonSignificantCount && (
+              <div className={styles.bodySystemGroup}>
+                <h5 className={styles.bodySystemGroupSummary}>
                 <span className={`${styles.pill} bg-secondary white`} data-testid="nonSignificantCount">
                   {nonSignificantCount}
                 </span>{" "}
-                No significant impact
-              </h5>
-              <div className={styles.bodySystems} data-testid="notSignificantSystemIcons">
-                {gene.notSignificantTopLevelPhenotypes.map((x) => (
-                  <BodySystem key={x} name={x} color="grey" hoverColor="secondary" />
-                ))}
+                  No significant impact
+                </h5>
+                <div className={styles.bodySystems} data-testid="notSignificantSystemIcons">
+                  {gene.notSignificantTopLevelPhenotypes.map((x) => (
+                    <BodySystem key={x} name={x} color="grey" hoverColor="secondary"/>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-          {!!notTestedCount && (
-            <div className={styles.bodySystemGroup}>
-              <h5 className={styles.bodySystemGroupSummary}>
+            )}
+            {!!notTestedCount && (
+              <div className={styles.bodySystemGroup}>
+                <h5 className={styles.bodySystemGroupSummary}>
                 <span className={`${styles.pill} bg-grey`} data-testid="nonTestedCount">
                   {notTestedCount}
                 </span>{" "}
-                Not tested
-              </h5>
-              <div data-testid="notTestedSystemIcons">
-                {notTested.map((system) => (
-                  <BodySystem
-                    key={system}
-                    name={system}
-                    hoverColor="grey"
-                    color="grey-light"
-                  />
-                ))}
+                  Not tested
+                </h5>
+                <div data-testid="notTestedSystemIcons">
+                  {notTested.map((system) => (
+                    <BodySystem
+                      key={system}
+                      name={system}
+                      hoverColor="grey"
+                      color="grey-light"
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </Col>
-        <Col lg={6} style={{ position: "relative" }}>
-          <Row>
-            <Col md={6}>
-              <h3>Gene metrics</h3>
-              <Metric value={gene.significantPhenotypesCount || 0}>
-                Significant phenotypes
-              </Metric>
-            </Col>
-            <Col md={6}>
-              <h3>Expression examined in</h3>
-              <Metric value={gene.adultExpressionObservationsCount || 0}>
-                Adult tissues
-              </Metric>
-            </Col>
-            <Col md={6}>
-              <Metric value={gene.associatedDiseasesCount || 0}>
-                Associated diseases
-              </Metric>
-            </Col>
-            <Col md={6}>
-              <Metric value={gene.embryoExpressionObservationsCount || 0}>
-                Embryo tissues
-              </Metric>
-            </Col>
-          </Row>
-          <h3 className="mt-5">Data collections</h3>
+        <Col lg={6}>
+          <h3>Data collections</h3>
           <Row className="mb-5">
-            <Col md={6} className="pe-0">
+            <Col md={4} className="pe-0">
               <CollectionItem
                 link="#expressions"
                 name="LacZ expression"
@@ -323,37 +238,65 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
                 name="Images"
                 hasData={gene.hasImagingData}
               />
+              <br/>
+              <Link
+                className="primary"
+                style={{ fontWeight: 500 }}
+                href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/"
+              >
+                How IMPC generates data
+              </Link>
             </Col>
             <Col md={6}>
               <CollectionItem
                 link={`/data/viability?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
                 name="Viability data"
                 hasData={gene.hasViabilityData}
-                external
               />
               <br/>
               <CollectionItem
                 link={`/data/bodyweight?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
                 name="Body weight measurements"
                 hasData={gene.hasBodyWeightData}
-                external
               />
               <br/>
               <CollectionItem
                 link={`//www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
                 name="Embryo imaging data"
                 hasData={gene.hasEmbryoImagingData}
-                external
               />
             </Col>
           </Row>
-          <div className="purchaseBanner">
-            <Link className="link" href="#order">
-              <span>{numOfAlleles || <Skeleton width="30px" inline/>} allele products available</span>
-            </Link>
-          </div>
+          <Row>
+            <Col lg={6}>
+              <h3 style={{color: '#102A5C'}}>Mouse and ES Cells products</h3>
+              <Button variant="" className={styles.btnOrder} href="#order">
+                {numOfAlleles} Alleles
+              </Button>
+            </Col>
+          </Row>
         </Col>
       </Row>
+      <div className={styles.geneMetricsBanner}>
+        <div className={styles.single}>
+          <span><strong>Gene metrics:</strong></span>
+          <strong>{gene.significantPhenotypesCount || 0}</strong>
+          Significant phenotypes
+        </div>
+        <div className={styles.single}>
+          <strong>{gene.associatedDiseasesCount || 0}</strong>
+          Associated diseases
+        </div>
+        <div className={styles.single}>
+          <span><strong>Expressions examined in:</strong></span>
+          <strong>{gene.adultExpressionObservationsCount || 0}</strong>
+          Adult tissues
+        </div>
+        <div className={styles.single}>
+          <strong>{gene.embryoExpressionObservationsCount || 0}</strong>
+          Embryo tissues
+        </div>
+      </div>
     </Card>
   );
 };
