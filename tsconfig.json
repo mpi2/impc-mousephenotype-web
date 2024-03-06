@@ -24,6 +24,7 @@
       "@/components": ["components/index.ts"],
       "@/components/*": ["components/*"],
       "@/contexts": ["shared/contexts/index.ts"],
+      "@/eventChannels": ["shared/eventChannels/index.ts"],
       "@/hoc/*": ["shared/high-order-components/*"],
       "@/hooks": ["shared/hooks/index.ts"],
       "@/hooks/*": ["shared/hooks/*"],
