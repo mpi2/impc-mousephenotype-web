@@ -14,6 +14,7 @@ export type { Dataset } from './dataset';
 export type { Gene };
 export type { Phenotype };
 export type { GeneralChartProps } from './chart';
+export type { EventHandler, EventBus, Bus, EventMap } from './eventbus';
 
 type Model =
   PhenotypeRef | typeof Gene | typeof Phenotype | MetabolismGeneData | Dataset

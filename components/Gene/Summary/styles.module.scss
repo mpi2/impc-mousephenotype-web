@@ -72,12 +72,8 @@
 }
 
 .bodySystemGroup {
-  padding: $xs $xs 0;
+  padding: $xs;
   border-radius: $spacing;
-  margin-bottom: $xs;
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 
 .bodySystemGroupSignificant {
@@ -97,7 +93,9 @@
 }
 
 .bodySystems {
-  margin-bottom: -$xs;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .pill {

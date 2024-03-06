@@ -21,6 +21,7 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import _ from "lodash";
 import { SizeProp } from "@fortawesome/fontawesome-svg-core";
+import classNames from "classnames";
 
 export type IconName =
   | "mortality/aging"
@@ -292,6 +293,7 @@ export const BodySystem = ({
   appendLabel,
   prependLabel,
   size = '2x',
+  onClick,
 }: {
   isSignificant?: boolean;
   name: string;
@@ -301,13 +303,24 @@ export const BodySystem = ({
   appendLabel?: string;
   prependLabel?: string;
   size?: SizeProp;
+  onClick?: (value: string) => void,
 }) => {
   const label = _.capitalize(name.replace(/ phenotype/g, ""));
   const [hovered, setHovered] = useState<boolean>(false);
-  // const label = name;
+
+  const shouldUseHoverColor = !!hoverColor && hovered;
+  const spanStyles = classNames({
+    [styles.bodySystemNoSpacing]: noSpacing,
+    [styles.bodySystem]: !noSpacing,
+    [hoverColor]: !isSignificant && shouldUseHoverColor,
+    [color]: !isSignificant && !shouldUseHoverColor,
+    [styles.significantBodySystem]: isSignificant && !!onClick,
+  });
+
   return isSignificant ? (
     <span
-      className={noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem}
+      className={spanStyles}
+      onClick={() => onClick(name)}
     >
       <BodySystemIcon name={name} color={color} size={size} />&nbsp;
       <span>{label}</span>
@@ -328,13 +341,7 @@ export const BodySystem = ({
       }
     >
       {({ ref, ...triggerHandler }) => (
-        <span
-          {...triggerHandler}
-          ref={ref}
-          className={`${
-            noSpacing ? styles.bodySystemNoSpacing : styles.bodySystem
-          } ${!!hoverColor && hovered ? hoverColor : color}`}
-        >
+        <span {...triggerHandler} ref={ref} className={spanStyles}>
           <BodySystemIcon name={name} color="currentColor" size={size} />
         </span>
       )}

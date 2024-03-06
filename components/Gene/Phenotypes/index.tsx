@@ -9,6 +9,8 @@ import { fetchAPI } from "@/api-service";
 import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
+import { useEffect, useState } from "react";
+import { summarySystemSelectionChannel } from "@/eventChannels";
 
 const StatisticalAnalysis = dynamic(
   () => import("./StatisticalAnalysis"),
@@ -40,6 +42,7 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
 
 const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
+  const [tabKey, setTabKey] = useState('significantPhenotypes');
 
   const getMutantCount = (dataset: GeneStatisticalResult) => {
     if (!dataset.maleMutantCount && !dataset.femaleMutantCount) {
@@ -58,6 +61,17 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     })) as Array<GeneStatisticalResult>
   });
 
+  useEffect(() => {
+    const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
+      'onSystemSelection',
+      (_) => {
+        if (tabKey !== 'significantPhenotypes') setTabKey('significantPhenotypes');
+      });
+    return () => {
+      unsubscribeOnSystemSelection();
+    }
+  }, [tabKey]);
+
   const {
     phenotypeData,
     isPhenotypeLoading,
@@ -71,7 +85,10 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   return (
     <Card id="data">
       <h2>Phenotypes</h2>
-      <Tabs defaultActiveKey="significantPhenotypes">
+      <Tabs
+        activeKey={tabKey}
+        onSelect={key => setTabKey(key)}
+      >
         <Tab eventKey="significantPhenotypes" title="Significant Phenotypes">
           <div className="mt-3">
             <SignificantPhenotypes

@@ -20,6 +20,7 @@ import Head from "next/head";
 import { GeneSummary } from "@/models/gene";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
+import { summarySystemSelectionChannel } from "@/eventChannels";
 
 export const allBodySystems = [
   "mortality/aging",
@@ -153,7 +154,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
       </Head>
       <div className={styles.headingCont}>
         <h1 className="mt-2 mb-3">
-          <strong>{gene.geneSymbol}</strong><span>|</span>&nbsp;{gene.geneName}
+          <strong>{gene.geneSymbol}</strong>&nbsp;<span>|</span>&nbsp;{gene.geneName}
         </h1>
       </div>
       <div className={styles.subheadingCont}>
@@ -218,7 +219,14 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
                 </h5>
                 <div className={styles.bodySystems} data-testid="significantSystemIcons">
                   {gene.significantTopLevelPhenotypes.map((x) => (
-                    <BodySystem key={x} name={x} isSignificant color="primary"/>
+                    <BodySystem
+                      key={x}
+                      name={x}
+                      isSignificant
+                      color="primary"
+                      noSpacing
+                      onClick={system => summarySystemSelectionChannel.emit('onSystemSelection', system)}
+                    />
                   ))}
                 </div>
               </div>
@@ -233,7 +241,13 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
                 </h5>
                 <div className={styles.bodySystems} data-testid="notSignificantSystemIcons">
                   {gene.notSignificantTopLevelPhenotypes.map((x) => (
-                    <BodySystem key={x} name={x} color="grey" hoverColor="secondary"/>
+                    <BodySystem
+                      key={x}
+                      name={x}
+                      color="grey"
+                      hoverColor="secondary"
+                      noSpacing
+                    />
                   ))}
                 </div>
               </div>
@@ -246,13 +260,14 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
                 </span>{" "}
                   Not tested
                 </h5>
-                <div data-testid="notTestedSystemIcons">
+                <div className={styles.bodySystems} data-testid="notTestedSystemIcons">
                   {notTested.map((system) => (
                     <BodySystem
                       key={system}
                       name={system}
                       hoverColor="grey"
                       color="grey-light"
+                      noSpacing
                     />
                   ))}
                 </div>
@@ -313,7 +328,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           <Row>
             <Col lg={6}>
               <h3 style={{color: '#102A5C'}}>Mouse and ES Cells products</h3>
-              <Button variant="" className={styles.btnOrder} href="#order">
+              <Button variant="secondary" className="white-x" href="#order">
                 {numOfAlleles} Alleles
               </Button>
             </Col>
