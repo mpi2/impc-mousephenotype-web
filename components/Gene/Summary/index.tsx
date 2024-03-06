@@ -20,6 +20,7 @@ import Head from "next/head";
 import { GeneSummary } from "@/models/gene";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
+import { summarySystemSelectionChannel } from "@/eventChannels";
 
 export const allBodySystems = [
   "mortality/aging",
@@ -224,6 +225,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
                       isSignificant
                       color="primary"
                       noSpacing
+                      onClick={system => summarySystemSelectionChannel.emit('onSystemSelection', system)}
                     />
                   ))}
                 </div>
@@ -326,7 +328,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           <Row>
             <Col lg={6}>
               <h3 style={{color: '#102A5C'}}>Mouse and ES Cells products</h3>
-              <Button variant="" className={styles.btnOrder} href="#order">
+              <Button variant="secondary" className="white-x" href="#order">
                 {numOfAlleles} Alleles
               </Button>
             </Col>
