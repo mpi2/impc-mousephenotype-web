@@ -327,9 +327,8 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           </Row>
           <Row>
             <Col lg={6}>
-              <h3 style={{color: '#102A5C'}}>Mouse and ES Cells products</h3>
               <Button variant="secondary" className="white-x" href="#order">
-                {numOfAlleles} Alleles
+                {numOfAlleles} Allele products available
               </Button>
             </Col>
           </Row>
