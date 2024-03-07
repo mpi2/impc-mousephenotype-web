@@ -17,16 +17,31 @@ interface ImageProps {
   parameterStableId: string;
   image: string;
   length: number;
-}
+};
+
+const embryo3DParametersIds = [
+  'IMPC_EMA_001_001',
+  'IMPC_EMO_001_001',
+  'IMPC_EML_001_001',
+  'IMPC_EOL_001_001',
+  'ALTIMPC_EML_001_001',
+  'ALTIMPC_EMA_001_001',
+  'ALTIMPC_EMO_001_001',
+  'ALTIMPC_EOL_001_001',
+]
 
 const Image = ({ parameterName, procedureName, parameterStableId, image, length }: ImageProps) => {
   const router = useRouter();
   const { pid } = router.query;
   const isSpecialFormat = parameterStableId.includes('IMPC_EMA') || parameterStableId.includes('IMPC_IMM');
   const urlSegment = isSpecialFormat ? 'download-images' : 'images';
+  let url = `/genes/${pid}/${urlSegment}/${parameterStableId}`;
+  if (embryo3DParametersIds.includes(parameterStableId)) {
+    url = `https://www.mousephenotype.org/embryoviewer/?mgi=${pid}`;
+  }
 
   return (
-    <Link href={`/genes/${pid}/${urlSegment}/${parameterStableId}`}>
+    <Link href={url}>
       <div className={styles.card}>
         <div
           className={styles.cardImage}
@@ -81,7 +96,7 @@ const Images = ({ gene }: { gene: any }) => {
     const [ param1] = a;
     const [ param2 ] = b;
     return param1.localeCompare(param2);
-  })
+  });
   return (
     <Card id="images">
       <h2>Associated media</h2>
