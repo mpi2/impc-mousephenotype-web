@@ -64,6 +64,18 @@ h5 {
   margin-top: -$searchOffset;
 }
 
+.primary.link, a.primary {
+  color: #BC4B0A;
+  text-decoration: underline;
+  &:hover {
+    color: #9D3E07;
+  }
+  &:visited {
+    color: #9D3E07;
+    text-decoration: underline;
+  }
+}
+
 p:last-child {
   margin: 0;
 }
