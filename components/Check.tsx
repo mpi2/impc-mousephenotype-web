@@ -1,16 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import {
-  faCheckCircle,
-  faTimesCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Check = ({ isChecked }) => {
-  return isChecked ? (
-    <FontAwesomeIcon icon={faCheckCircle} />
-  ) : (
-    <FontAwesomeIcon icon={faTimesCircle} className="grey" />
-  );
+  const styles = isChecked ? {} : { backgroundColor: '#8E8E8E' }
+  return (
+    <span style={styles}>
+      <FontAwesomeIcon icon={isChecked ? faCheck : faXmark} style={{ color: '#000' }} />
+    </span>
+  )
 };
 
 export default Check;

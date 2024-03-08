@@ -130,9 +130,15 @@ $pillSize: 1.8rem;
   // font-weight: bold;
   margin-bottom: $xs;
   display: inline-block;
-  svg:first-child {
-    color: $secondary;
+  span:first-child {
+    background-color: $secondary;
     margin-right: $xxs;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
   }
 }
 
