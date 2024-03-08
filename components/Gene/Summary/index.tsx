@@ -224,7 +224,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
             {!!nonSignificantCount && (
               <div className={styles.bodySystemGroup}>
                 <h3 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-secondary white`} data-testid="nonSignificantCount">
+                <span className={`${styles.pill} bg-secondary`} data-testid="nonSignificantCount">
                   {nonSignificantCount}
                 </span>{" "}
                   No significant impact

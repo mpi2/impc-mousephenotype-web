@@ -126,8 +126,6 @@ $pillSize: 1.8rem;
 }
 
 .dataCollection {
-  color: $black;
-  // font-weight: bold;
   margin-bottom: $xs;
   display: inline-block;
   span:first-child {
@@ -144,9 +142,8 @@ $pillSize: 1.8rem;
 
 .dataCollectionInactive {
   @extend .dataCollection;
-  color: $grey !important;
   svg:first-child {
-    color: $grey;
+    background-color: #8e8e8e;
   }
 }
 
