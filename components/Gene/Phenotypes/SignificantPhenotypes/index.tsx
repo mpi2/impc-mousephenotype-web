@@ -50,12 +50,12 @@ const SignificantPhenotypes = (
        phenotypeName,
        phenotypeId,
        alleleSymbol,
-       topLevelPhenotypeName,
        lifeStageName,
+       topLevelPhenotypes,
     }) =>
     (!selectedAllele || alleleSymbol === selectedAllele) &&
     (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query)) &&
-    (!selectedSystem || topLevelPhenotypeName === selectedSystem) &&
+    (!selectedSystem || (topLevelPhenotypes ?? []).some(({ name }) => name === selectedSystem)) &&
     (!selectedLifeStage || lifeStageName === selectedLifeStage)
   );
 
