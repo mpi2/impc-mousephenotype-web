@@ -43,19 +43,19 @@ const SignificantPhenotypes = (
   }
 
   const alleles = _.uniq(phenotypeData.map(phenotype => phenotype.alleleSymbol));
-  const systems = _.uniq(phenotypeData.map(p => p.topLevelPhenotypeName));
+  const systems = _.uniq(phenotypeData.flatMap(p => p.topLevelPhenotypes.map(tl => tl.name)));
   const lifeStages = _.uniq(phenotypeData.map(p => p.lifeStageName));
   const filteredPhenotypeData = phenotypeData.filter(
     ({
        phenotypeName,
        phenotypeId,
        alleleSymbol,
-       topLevelPhenotypeName,
        lifeStageName,
+       topLevelPhenotypes,
     }) =>
     (!selectedAllele || alleleSymbol === selectedAllele) &&
     (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query)) &&
-    (!selectedSystem || topLevelPhenotypeName === selectedSystem) &&
+    (!selectedSystem || (topLevelPhenotypes ?? []).some(({ name }) => name === selectedSystem)) &&
     (!selectedLifeStage || lifeStageName === selectedLifeStage)
   );
 
