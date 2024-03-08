@@ -1,15 +1,16 @@
-import { useContext, useState } from "react";
-import { Alert, Form } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Alert } from "react-bootstrap";
 import { GeneContext } from "@/contexts";
 import {
   PlainTextCell,
   SmartTable,
   PhenotypeIconsCell,
-  AlleleCell, SignificantSexesCell, SignificantPValueCell, LinkCell
+  AlleleCell, SignificantSexesCell, SignificantPValueCell
 } from "@/components/SmartTable";
 import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
 import { DownloadData, FilterBox } from "@/components";
+import { summarySystemSelectionChannel } from "@/eventChannels";
 
 
 const SignificantPhenotypes = (
@@ -58,6 +59,18 @@ const SignificantPhenotypes = (
     (!selectedLifeStage || lifeStageName === selectedLifeStage)
   );
 
+  useEffect(() => {
+    const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
+      'onSystemSelection',
+      (payload) => {
+        setSelectedSystem(payload);
+        document.querySelector('#data')?.scrollIntoView();
+      });
+    return () => {
+      unsubscribeOnSystemSelection();
+    }
+  }, []);
+
   return (
     <SmartTable<GenePhenotypeHits>
       data={filteredPhenotypeData}
@@ -82,6 +95,7 @@ const SignificantPhenotypes = (
           <FilterBox
             controlId="systemFilter"
             label="Phy. System"
+            value={selectedSystem}
             onChange={setSelectedSystem}
             ariaLabel="Filter by physiological system"
             options={systems}

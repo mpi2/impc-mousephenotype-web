@@ -71,8 +71,12 @@ const BodyWeightChart = ({ datasetSummary }) => {
       const values = result[key];
       values.sort((p1, p2) => p1.ageInWeeks - p2.ageInWeeks);
     })
-    setData(result)
+    setData(result);
   }, [datasetSummary]);
+
+  const getOrderedColumns = () => {
+    return Object.keys(data).sort();
+  };
 
   const getMaxAge = (absoluteAge: boolean) => {
     if (data) {
@@ -88,7 +92,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
   }
 
   const getValuesForRow = (week: number) => {
-    return Object.keys(data).map(key => data[key]).map(dataset => {
+    return getOrderedColumns().map(key => data[key]).map(dataset => {
       const value = dataset.find(point => point.ageInWeeks === week);
       return value === undefined ? '-' : `${value.y.toFixed(6)} (${value.count})`;
     })
@@ -96,7 +100,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
 
   const processData = () => {
     const maxAge = getMaxAge(false);
-    const datasets = Object.keys(data).map(key => {
+    const datasets = getOrderedColumns().map(key => {
       return {
         type: 'line' as const,
         label: key,
@@ -187,7 +191,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
                 <thead>
                   <tr>
                     <th>Week</th>
-                    {Object.keys(data).map(label => <th key={label}>{label + ' (count)'}</th>)}
+                    {getOrderedColumns().map(label => <th key={label}>{label + ' (count)'}</th>)}
                   </tr>
                 </thead>
                 <tbody>

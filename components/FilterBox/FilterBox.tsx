@@ -16,6 +16,7 @@ type CommonProps = {
   labelStyle?: CSSProperties;
   controlStyle?: CSSProperties;
   controlClassName?: string;
+  value?: string;
 };
 
 type Props = CommonProps & LabelProps;
@@ -30,6 +31,7 @@ const FilterBox = (props: Props) => {
     controlStyle = { display: "inline-block", width: 200 },
     controlClassName = 'bg-white',
     hideLabel = false,
+    value,
   } = props;
 
   if (options?.length === 1) {
@@ -50,6 +52,7 @@ const FilterBox = (props: Props) => {
           defaultValue={undefined}
           id={controlId}
           className={controlClassName}
+          value={value}
           onChange={el =>
             onChange(el.target.value === "all" ? undefined : el.target.value)
           }

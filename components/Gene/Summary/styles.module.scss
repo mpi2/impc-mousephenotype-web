@@ -1,9 +1,7 @@
 @import "../../../styles/vars.scss";
 
 .subheadingCont {
-  margin-bottom: 0;
-  display: flex;
-  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .subheading {
@@ -11,7 +9,9 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: $grey;
-  font-size: 0.9rem;
+  font-size: 1.25rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .subheadingSection {
@@ -46,9 +46,6 @@
 }
 
 .progressHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: $xxs;
   color: $grey;
 }
@@ -75,14 +72,12 @@
 }
 
 .bodySystemGroup {
-  padding: $xs $xs 0;
+  padding: $xs;
   border-radius: $spacing;
-  margin-bottom: $xs;
 }
 
 .bodySystemGroupSignificant {
   @extend .bodySystemGroup;
-  background-color: $orange-light;
   padding-bottom: $xs;
 }
 
@@ -92,8 +87,15 @@
   margin-bottom: 1rem;
 }
 
+.bodySystemWrapper {
+  border: 1px solid rgba(208, 211, 212, 0.5);
+  margin-bottom: 1rem;
+}
+
 .bodySystems {
-  margin-bottom: -$xs;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .pill {
@@ -141,4 +143,41 @@
   svg:first-child {
     color: $grey;
   }
+}
+
+.geneMetricsBanner {
+  background-color: #e9f3f3;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  width: calc(100% + 4rem);
+  color: #000;
+  border-bottom-right-radius: $spacing;
+  border-bottom-left-radius: $spacing;
+  min-height: 56px;
+  margin-left: -2rem;
+  padding: 0 2rem;
+  border-top: 1px solid #D0D3D4;
+  strong {
+    color: #102A5C;
+  }
+  .single {
+    display: flex;
+    gap: 0.8rem;
+  }
+}
+
+.synonyms-tooltip {
+  .tooltip-inner {
+    max-width: none;
+  }
+}
+.btnOrder {
+  --bs-btn-border-width: 1px;
+  --bs-btn-border-color: #102A5C;
+  --bs-btn-hover-border-color: #102A5C;
+  --bs-border-radius: 2px;
+  color: #102A5C;
+  font-weight: 500;
+  padding: 0.5rem 2rem;
 }
