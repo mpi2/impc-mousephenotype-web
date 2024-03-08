@@ -43,7 +43,7 @@ const SignificantPhenotypes = (
   }
 
   const alleles = _.uniq(phenotypeData.map(phenotype => phenotype.alleleSymbol));
-  const systems = _.uniq(phenotypeData.map(p => p.topLevelPhenotypeName));
+  const systems = _.uniq(phenotypeData.flatMap(p => p.topLevelPhenotypes.map(tl => tl.name)));
   const lifeStages = _.uniq(phenotypeData.map(p => p.lifeStageName));
   const filteredPhenotypeData = phenotypeData.filter(
     ({

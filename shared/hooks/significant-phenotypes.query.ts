@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GenePhenotypeHits } from "@/models/gene";
-import _ from "lodash";
 
 export const useSignificantPhenotypesQuery = (
   mgiGeneAccessionId: string,
