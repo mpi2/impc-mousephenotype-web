@@ -1,5 +1,5 @@
 const Newsletter = () => {
-    return (<div className="news-letter pt-5 pb-5 bg-primary">
+    return (<div className="news-letter pt-5 pb-5 bg-orange">
     <div className="container">
         <div className="row">
             <div className="col-12 col-md-8 offset-md-2 text-center">
