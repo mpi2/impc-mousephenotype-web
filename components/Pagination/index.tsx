@@ -215,29 +215,27 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             { AdditionalBottomControls }
           </div>
         )}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          {shouldDisplayPageChangeControls && (
-            <>
-              Rows per page:&nbsp;
-              <select
-                onChange={(e) => {
-                  const value = Number(e.target.value);
-                  const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
-                  updatePage(newPage);
-                  updatePageSize(value);
-                }}
-                value={pageSize}
-              >
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-            </>
-          )}
-          <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
-        </div>
+        {shouldDisplayPageChangeControls && (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            Rows per page:&nbsp;
+            <select
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
+                updatePage(newPage);
+                updatePageSize(value);
+              }}
+              value={pageSize}
+            >
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        )}
+        <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
       </div>
     </>
   );
