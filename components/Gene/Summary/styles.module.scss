@@ -107,6 +107,7 @@ $pillSize: 1.8rem;
   align-items: center;
   justify-content: center;
   margin-right: 0.5rem;
+  border: 2px solid;
 }
 
 .progressCircleCont {
@@ -129,7 +130,6 @@ $pillSize: 1.8rem;
   margin-bottom: $xs;
   display: inline-block;
   span:first-child {
-    background-color: $secondary;
     margin-right: $xxs;
     border-radius: 50%;
     display: inline-flex;
@@ -137,14 +137,12 @@ $pillSize: 1.8rem;
     align-items: center;
     width: 24px;
     height: 24px;
+    border: 2px solid $secondary;
   }
 }
 
 .dataCollectionInactive {
   @extend .dataCollection;
-  svg:first-child {
-    background-color: #8e8e8e;
-  }
 }
 
 .geneMetricsBanner {

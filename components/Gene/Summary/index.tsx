@@ -202,7 +202,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
             {!!significantCount && (
               <div className={styles.bodySystemGroupSignificant}>
                 <h3 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-primary white`} data-testid="significantCount">
+                <span className={`${styles.pill} border-primary`} data-testid="significantCount">
                   {significantCount}
                 </span>{" "}
                   Significantly impacted by the knock-out
@@ -224,7 +224,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
             {!!nonSignificantCount && (
               <div className={styles.bodySystemGroup}>
                 <h3 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-secondary`} data-testid="nonSignificantCount">
+                <span className={`${styles.pill} border-secondary`} data-testid="nonSignificantCount">
                   {nonSignificantCount}
                 </span>{" "}
                   No significant impact
@@ -245,7 +245,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
             {!!notTestedCount && (
               <div className={styles.bodySystemGroup}>
                 <h3 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-grey`} data-testid="nonTestedCount">
+                <span className={`${styles.pill} border-black`} data-testid="nonTestedCount">
                   {notTestedCount}
                 </span>{" "}
                   Not tested
