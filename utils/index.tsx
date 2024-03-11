@@ -1,6 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import { faMars, faMarsAndVenus, faVenus } from "@fortawesome/free-solid-svg-icons";
+import { Dataset } from "@/models";
 
 export const formatBodySystems = (systems: string[] | string = []) => {
   return _.capitalize(
@@ -99,4 +100,13 @@ export const getIcon = (sex: string) => {
     default:
       return faMarsAndVenus;
   }
+};
+
+export const getSmallestPValue = (summaries: Array<Dataset>): number => {
+  const pValues = summaries.map(d => {
+    const statMethodPValueKey = d.sex === 'female' ? 'femaleKoEffectPValue' : 'maleKoEffectPValue';
+    const pValueFromStatMethod = d.statisticalMethod?.attributes?.[statMethodPValueKey];
+    return d.reportedPValue < pValueFromStatMethod ? d.reportedPValue : pValueFromStatMethod;
+  }).filter(value => !!value);
+  return Math.min(...pValues, 1);
 };
