@@ -20,6 +20,7 @@ import {
 import { Card, Search } from "@/components";
 import { useDatasetsQuery } from "@/hooks";
 import { Dataset } from "@/models";
+import Link from "next/link";
 
 
 const getSmallestPValue = (summaries: Array<Dataset>): number => {
@@ -93,21 +94,14 @@ const Charts = () => {
         <Card>
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
-              <button
-                style={{
-                  border: 0,
-                  background: "none",
-                  padding: 0,
-                }}
-                onClick={() => {
-                  router.back();
-                }}
+              <Link
+                href={`/genes/${mgiGeneAccessionId}`}
+                className="grey mb-3"
+                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal' }}
               >
-                <a href="#" className="grey mb-3">
                   { allSummaries?.[0]?.["geneSymbol"] || <Skeleton />}
-                </a>
-              </button>{" "}
-              / phenotype data breakdown
+              </Link>
+              &nbsp;/ phenotype data breakdown
             </span>
           </div>
           {(!datasetSummaries && !isLoading) && (

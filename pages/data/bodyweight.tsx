@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTable } from "@fortawesome/free-solid-svg-icons";
 import { BodyWeightChart, DataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
+import Link from "next/link";
 
 const BodyWeightChartPage = () => {
   const [tab, setTab] = useState('0');
@@ -26,21 +27,14 @@ const BodyWeightChartPage = () => {
         <Card>
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
-              <button
-                style={{
-                  border: 0,
-                  background: "none",
-                  padding: 0,
-                }}
-                onClick={() => {
-                  router.back();
-                }}
+              <Link
+                href={`/genes/${mgiGeneAccessionId}`}
+                className="grey mb-3"
+                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal' }}
               >
-                <a href="#" className="grey mb-3">
                   { bodyWeightData?.[0]?.["geneSymbol"] || <Skeleton />}
-                </a>
-              </button>{" "}
-              / phenotype data breakdown
+              </Link>
+              &nbsp;/ phenotype data breakdown
             </span>
           </div>
           {(!bodyWeightData && !isBodyWeightLoading) && (
@@ -51,9 +45,7 @@ const BodyWeightChartPage = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              {bodyWeightData &&
-                bodyWeightData[0]?.["significantPhenotype"] &&
-                bodyWeightData[0]?.["significantPhenotype"]["name"]}
+              Body weight curve
             </strong>
           </h1>
           {!!bodyWeightData && (
