@@ -10,7 +10,7 @@ import SortableTable from "../SortableTable";
 import CategoricalBarPlot from "./Plots/CategoricalBarPlot";
 import { formatPValue } from "@/utils";
 import { capitalize } from "lodash";
-import ChartSummary from "./ChartSummary";
+import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";

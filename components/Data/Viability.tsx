@@ -7,7 +7,7 @@ import { formatAlleleSymbol } from "@/utils";
 import PieChart from "../PieChart";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import ChartSummary from "./ChartSummary";
+import ChartSummary from "./ChartSummary/ChartSummary";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { GeneralChartProps } from "@/models";
 

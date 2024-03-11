@@ -12,7 +12,7 @@ import SortableTable from "../SortableTable";
 import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 import { formatPValue } from "@/utils";
-import ChartSummary from "./ChartSummary";
+import ChartSummary from "./ChartSummary/ChartSummary";
 import { Dataset, GeneralChartProps } from "@/models";
 import _ from "lodash";
 import StatisticalMethodTable from './StatisticalMethodTable';

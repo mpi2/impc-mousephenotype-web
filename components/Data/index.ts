@@ -2,7 +2,7 @@ export { default as DataComparison } from './DataComparison';
 export { default as ABR } from './ABR';
 export { default as BodyWeightChart } from './BodyWeight';
 export { default as Categorical } from './Categorical';
-export { default as ChartSummary } from './ChartSummary';
+export { default as ChartSummary } from './ChartSummary/ChartSummary';
 export { default as EmbryoViability } from './EmbryoViability';
 export { default as Histopathology } from './Histopathology';
 export { default as TimeSeries } from './TimeSeries';
