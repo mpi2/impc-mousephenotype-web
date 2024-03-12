@@ -17,7 +17,6 @@ const AreaLayer = ({ series, xScale, yScale, innerHeight }) => {
     )
     .y1((d: any) => yScale(d.data.y + d.data.standardDeviation))
     .curve(curveMonotoneX);
-  console.log("series", series);
 
   return (
     <>
@@ -50,14 +49,13 @@ const AreaLayer = ({ series, xScale, yScale, innerHeight }) => {
   );
 };
 
-const LineChart = ({ data }) => {
-  console.log(data);
-
+const LineChart = ({ data, displayAreas, unitX, unitY }) => {
+  data.sort((a, b) => (a.sampleGroup > b.sampleGroup ? 1 : -1));
   return (
     <div style={{ height: 400 }}>
       <ResponsiveLine
         data={data}
-        margin={{ top: 20, right: 150, bottom: 60, left: 80 }}
+        margin={{ top: 20, right: 80, bottom: 100, left: 80 }}
         animate={true}
         enableSlices="x"
         yScale={{
@@ -72,11 +70,12 @@ const LineChart = ({ data }) => {
         curve="linear"
         enableGridX={false}
         enablePoints={false}
+        colors={["#2F8CFF", "#D4135A"]}
         axisBottom={{
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "Time in hours relative to lights out",
+          legend: unitX,
           legendOffset: 36,
           legendPosition: "middle",
           truncateTickAt: 0,
@@ -85,22 +84,35 @@ const LineChart = ({ data }) => {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "m/h/animal",
+          legend: unitY,
           legendOffset: -40,
           legendPosition: "middle",
           truncateTickAt: 0,
         }}
-        layers={[
-          "grid",
-          "markers",
-          "areas",
-          AreaLayer,
-          "lines",
-          "slices",
-          "axes",
-          "points",
-          "legends",
-        ]}
+        layers={
+          displayAreas
+            ? [
+                "grid",
+                "markers",
+                "areas",
+                AreaLayer,
+                "lines",
+                "slices",
+                "axes",
+                "points",
+                "legends",
+              ]
+            : [
+                "grid",
+                "markers",
+                "areas",
+                "lines",
+                "slices",
+                "axes",
+                "points",
+                "legends",
+              ]
+        }
         theme={{
           crosshair: {
             line: {
@@ -112,14 +124,14 @@ const LineChart = ({ data }) => {
         }}
         legends={[
           {
-            anchor: "bottom-right",
-            direction: "column",
+            anchor: "bottom",
+            direction: "row",
             justify: false,
-            translateX: 100,
-            translateY: 0,
-            itemsSpacing: 0,
+            translateX: 0,
+            translateY: 100,
+            itemsSpacing: 30,
             itemDirection: "left-to-right",
-            itemWidth: 80,
+            itemWidth: 100,
             itemHeight: 20,
             itemOpacity: 0.75,
             symbolSize: 12,

@@ -4,13 +4,21 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Col, Row } from "react-bootstrap";
+import {
+  Button,
+  ButtonGroup,
+  Col,
+  Row,
+  Table,
+  ToggleButton,
+} from "react-bootstrap";
 import Card from "@/components/Card";
 import ChartSummary from "./ChartSummary";
 import LineChart from "./Plots/TimeSeriesLinePlot";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import _ from "lodash";
+import { useState } from "react";
 
 type ChartSeries = {
   data: Array<any>;
@@ -26,7 +34,7 @@ const groupBy = (data, key) => {
   }, {});
 };
 
-const calculateStats = (groupedData, valueKey) => {
+const calculateStats = (groupedData, valueKey, windowSize = 1) => {
   return groupedData.map((group) => {
     // Calculate average
     const avg =
@@ -45,11 +53,40 @@ const calculateStats = (groupedData, valueKey) => {
       group: group.key,
       average: avg,
       standardDeviation: sd,
+      values: group.values,
     };
   });
 };
 
+const calculateMovingAverage = (data, windowSize) => {
+  const movingAverages = [];
+
+  for (let i = 0; i < data.length; i++) {
+    if (i < windowSize - 1) {
+      movingAverages.push(null); // Placeholder for initial values
+    } else {
+      let sum = 0;
+      for (let j = i - windowSize + 1; j <= i; j++) {
+        sum += data[j].y;
+      }
+      const average = sum / windowSize;
+      movingAverages.push(average);
+    }
+  }
+
+  return movingAverages;
+};
+
+const countSpecimens = (series, sex: string, sampleGroup: string) => {
+  const selectedSeries = series.find(
+    (s) => s.sampleGroup === sampleGroup && s.specimenSex === sex
+  );
+  if (!selectedSeries) return 0;
+  return new Set(selectedSeries.observations.map((d) => d.specimenId)).size;
+};
+
 const TimeSeries = ({ datasetSummary, isVisible }) => {
+  const [radioValue, setRadioValue] = useState("average");
   const getLineSeries = (dataSeries, sex, sampleGroup) => {
     if (!dataSeries) {
       return null;
@@ -76,15 +113,62 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
         return p2;
       })
       .sort((a, b) => (a.x > b.x ? 1 : -1));
-    //console.log(data);
+
+    const smaData = calculateSMA(seriesData).map((p) => {
+      const p2 = { ...p };
+      p2.x = +p.discretePoint;
+      p2.y = p.value;
+      return p2;
+    });
 
     return {
-      id: sex + sampleGroup,
+      id: `${sex} ${sampleGroup}`,
       sex,
       sampleGroup,
-      data,
+      data: data,
+      originalData: data,
+      smaData: smaData,
     };
   };
+
+  function calculateSMA(data) {
+    // Sort the data by the discretePoint field
+    data.sort((a, b) => a.discretePoint - b.discretePoint);
+
+    // Initialize variables
+    let smaData = [];
+    let sum = 0;
+    let count = 0;
+    let currentHour = null;
+
+    // Loop through the data
+    data.forEach((point) => {
+      const hour = Math.floor(point.discretePoint);
+
+      // If a new hour begins, calculate the average for the previous hour
+      if (hour !== currentHour) {
+        if (currentHour !== null) {
+          const average = sum / count;
+          smaData.push({ discretePoint: currentHour, value: average });
+        }
+        currentHour = hour;
+        sum = 0;
+        count = 0;
+      }
+
+      // Add the dataPoint to the sum and increment the count
+      sum += point.dataPoint;
+      count++;
+    });
+
+    // Calculate the average for the last hour
+    if (count > 0) {
+      const average = sum / count;
+      smaData.push({ discretePoint: currentHour, value: average });
+    }
+
+    return smaData;
+  }
 
   const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
     if (zygosity === "hemizygote") {
@@ -111,14 +195,16 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
       const sampleGroupKey = sampleGroup === "control" ? "Control" : "Mutant";
       const meanKey = `${sex}${sampleGroupKey}Mean`;
       const stddevKey = `${sex}${sampleGroupKey}Sd`;
-      const countKey = `${sex}${sampleGroupKey}Count`;
       return {
         label: `${_.capitalize(sex)} ${
           sampleGroup === "control" ? "Control" : _.capitalize(zygosity)
         }`,
         mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
         stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
-        count: datasetSummary.summaryStatistics?.[countKey] || 0,
+        count:
+          new Set(
+            serie.originalData.flatMap((d) => d.values).map((v) => v.specimenId)
+          ).size || 0,
       };
     });
   };
@@ -145,36 +231,149 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
         "experimental"
       );
       const maleHomPoints = getLineSeries(dataSeries, "male", "experimental");
-      console.log(datasetSummary.zygosity, [
-        femaleWTPoints,
-        maleWTPoints,
-        femaleHomPoints,
-        maleHomPoints,
-      ]);
-
       const chartSeries = filterChartSeries(datasetSummary.zygosity, [
         femaleWTPoints,
         maleWTPoints,
         femaleHomPoints,
         maleHomPoints,
       ]);
-      console.log(chartSeries);
+
+      const summaryStatistics = updateSummaryStatistics(chartSeries);
 
       return {
         chartSeries,
-        summaryStatistics: updateSummaryStatistics(chartSeries),
+        summaryStatistics,
+        computedCounts: {
+          summaryStatistics: {
+            femaleMutantCount: countSpecimens(
+              dataSeries,
+              "female",
+              "experimental"
+            ),
+            maleMutantCount: countSpecimens(dataSeries, "male", "experimental"),
+            femaleControlCount: countSpecimens(dataSeries, "female", "control"),
+            maleControlCount: countSpecimens(dataSeries, "male", "control"),
+          },
+        },
       };
     },
     enabled: isVisible,
   });
 
+  const displaySeries = data
+    ? data.chartSeries.map((s) => {
+        s["data"] = radioValue === "average" ? s.originalData : s.smaData;
+        return s;
+      })
+    : [];
+  const getTableData = (chartSeries) => {
+    const indexByTimePoint = chartSeries
+      .flatMap((s) =>
+        s.originalData.map((d) => {
+          return { ...d, id: s.id };
+        })
+      )
+      .reduce((indexByTimePoint, item) => {
+        indexByTimePoint[item.group] = indexByTimePoint[item.group]
+          ? indexByTimePoint[item.group]
+          : {};
+        indexByTimePoint[item.group][item.id] = indexByTimePoint[item.group][
+          item.id
+        ]
+          ? indexByTimePoint[item.group][item.id]
+          : {};
+        indexByTimePoint[item.group][item.id] = item.y;
+        return indexByTimePoint;
+      }, {});
+
+    const timePoints = Object.keys(indexByTimePoint).sort((a, b) => a - b);
+
+    const rows = timePoints.map((timePoint) => {
+      return [timePoint].concat(
+        chartSeries.map((s) =>
+          indexByTimePoint[timePoint][s.id]
+            ? indexByTimePoint[timePoint][s.id]
+            : null
+        )
+      );
+    });
+    return {
+      headers: [datasetSummary["unit"]["x"] || "Time point"].concat(
+        chartSeries.map((s) => s.id)
+      ),
+      rows,
+    };
+  };
+
+  const tableData = getTableData(data?.chartSeries || []);
+
   return (
     <>
-      {/*<ChartSummary datasetSummary={datasetSummary} />*/}
+      {" "}
+      <ChartSummary
+        datasetSummary={
+          data
+            ? Object.assign({}, datasetSummary, data.computedCounts)
+            : datasetSummary
+        }
+      />
       <Row>
         <Col lg={12}>
           <Card>
-            <LineChart data={data ? data.chartSeries : []} />
+            <ButtonGroup className="mb-2">
+              <ToggleButton
+                id={`radio-average`}
+                type="radio"
+                variant="primary"
+                name="radio"
+                value="average"
+                checked={radioValue === "average"}
+                onChange={(e) => setRadioValue(e.currentTarget.value)}
+              >
+                Average per time point
+              </ToggleButton>
+              <ToggleButton
+                id={`radio-sma`}
+                type="radio"
+                variant="primary"
+                name="radio"
+                value="sma"
+                checked={radioValue === "sma"}
+                onChange={(e) => setRadioValue(e.currentTarget.value)}
+              >
+                Average per hour
+              </ToggleButton>
+            </ButtonGroup>
+            <LineChart
+              data={displaySeries}
+              displayAreas={radioValue === "average"}
+              unitX={datasetSummary["unit"]["x"] || "Time point"}
+              unitY={datasetSummary["unit"]["y"]}
+            />
+          </Card>
+        </Col>
+        <Col lg={12}>
+          <Card>
+            {!!data && (
+              <Table striped>
+                <thead>
+                  <tr>
+                    {tableData.headers.map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableData.rows.map((row, i) => (
+                    <tr key={i}>
+                      {row.map((col, i) => (
+                        <td key={i}>{col}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
           </Card>
         </Col>
         <Col lg={6}>
