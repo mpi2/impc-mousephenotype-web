@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { Dataset } from "@/models";
 
 
 export const useViabilityQuery = (mgiGeneAccessionId: string, routerIsReady: boolean) => {
@@ -25,7 +26,7 @@ export const useViabilityQuery = (mgiGeneAccessionId: string, routerIsReady: boo
         }
         return acc;
       }, {});
-      return Object.values(groupedData);
+      return Object.values(groupedData) as Array<Dataset>;
     },
     enabled: routerIsReady,
   });

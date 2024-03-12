@@ -11,7 +11,7 @@ type ChartSummaryProps = {
   datasetSummary: Dataset;
   additionalContent?: ReactNode,
   title?: string;
-  isBodyWeightChart?: boolean;
+  displayPValueStatement?: boolean;
 }
 const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
   const {
@@ -19,7 +19,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
     additionalContent = null,
     datasetSummary,
     children,
-    isBodyWeightChart = false
+    displayPValueStatement = true
   } = props;
   const [showMetadataModal, setShowMetadataModal ] = useState(false);
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -51,7 +51,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
             {datasetSummary.parameterName}
           </span>
         </div>
-        {!isBodyWeightChart && (
+        {displayPValueStatement && (
           <span className="mb-4" style={{display: 'inline-block', fontSize: '1.2rem'}}>
             Combination tested with the lowest p-value of <strong>{pValue}</strong>
           </span>

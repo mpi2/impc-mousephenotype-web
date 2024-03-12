@@ -110,3 +110,17 @@ export const getSmallestPValue = (summaries: Array<Dataset>): number => {
   }).filter(value => !!value);
   return Math.min(...pValues, 1);
 };
+
+export const getDatasetByKey = (summaries: Array<Dataset>, keyToFind: string) => {
+  return summaries.find(dataset => {
+    const {
+      alleleAccessionId,
+      parameterStableId,
+      zygosity,
+      phenotypingCentre,
+      colonyId
+    } = dataset;
+    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
+    return key === keyToFind;
+  });
+};

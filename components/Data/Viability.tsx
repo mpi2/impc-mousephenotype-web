@@ -74,8 +74,6 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
     enabled: isVisible
   });
 
-  if (isLoading) return <Card>Loading...</Card>;
-
   if (isError)
     return (
       <Card>
@@ -89,19 +87,19 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const totalCountData = [
     {
       label: "Total WTs",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.both.wildtype
       )?.dataPoint,
     },
     {
       label: "Total Homozygotes",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.both.homozygote
       )?.dataPoint,
     },
     {
       label: "Total Heterozygotes",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.both.heterozygote
       )?.dataPoint,
     },
@@ -110,19 +108,19 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const maleCountData = [
     {
       label: "Total Male WT",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.male.wildtype
       )?.dataPoint,
     },
     {
       label: "Total Male Heterozygous",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.male.heterozygote
       )?.dataPoint,
     },
     {
       label: "Total Male Homozygous",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.male.homozygote
       )?.dataPoint,
     },
@@ -131,19 +129,19 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const femaleCountData = [
     {
       label: "Total Female WT",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.female.wildtype
       )?.dataPoint,
     },
     {
       label: "Total Female Heterozygous",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.female.heterozygote
       )?.dataPoint,
     },
     {
       label: "Total Female Homozygous",
-      value: data.series.find(
+      value: data?.series.find(
         (d) => d.parameterStableId == viabilityParameterMap.female.homozygote
       )?.dataPoint,
     },
@@ -154,6 +152,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       <ChartSummary
         title={`${datasetSummary["geneSymbol"]} ${datasetSummary["parameterName"]} data`}
         datasetSummary={datasetSummary}
+        displayPValueStatement={false}
         additionalContent={
           <Alert variant="primary">
             <p>Please note:</p>
@@ -242,7 +241,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 <td>Male and female</td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.both.wildtype
@@ -251,7 +250,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 </td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.both.heterozygote
@@ -261,7 +260,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 <td>
                   {" "}
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.both.homozygote
@@ -271,7 +270,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 <td></td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId == viabilityParameterMap.both.na
                     )?.dataPoint
@@ -282,7 +281,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 <td>Male</td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.male.wildtype
@@ -291,7 +290,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 </td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.male.heterozygote
@@ -300,7 +299,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 </td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.male.homozygote
@@ -310,7 +309,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 <td></td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId == viabilityParameterMap.male.na
                     )?.dataPoint
@@ -321,7 +320,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 <td>Female</td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.female.wildtype
@@ -330,7 +329,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 </td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.female.heterozygote
@@ -339,7 +338,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 </td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId ==
                         viabilityParameterMap.female.homozygote
@@ -349,7 +348,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 <td>N/A</td>
                 <td>
                   {
-                    data.series.find(
+                    data?.series.find(
                       (d) =>
                         d.parameterStableId == viabilityParameterMap.female.na
                     )?.dataPoint

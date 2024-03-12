@@ -9,26 +9,12 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { BodyWeightChart, BodyWeightDataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 import Link from "next/link";
-import { Dataset } from "@/models";
+import { getDatasetByKey } from "@/utils";
 
 const BodyWeightChartPage = () => {
   const router = useRouter();
   const [selectedKey, setSelectedKey] = useState('');
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
-
-  const getDatasetByKey = (summaries: Array<Dataset>, keyToFind: string) => {
-    return summaries.find(dataset => {
-      const {
-        alleleAccessionId,
-        parameterStableId,
-        zygosity,
-        phenotypingCentre,
-        colonyId
-      } = dataset;
-      const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
-      return key === keyToFind;
-    });
-  };
 
   const { bodyWeightData, isBodyWeightLoading } = useBodyWeightQuery(mgiGeneAccessionId as string, router.isReady);
   const activeDataset = !!selectedKey ? getDatasetByKey(bodyWeightData, selectedKey) : bodyWeightData[0];

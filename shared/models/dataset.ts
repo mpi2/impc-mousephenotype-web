@@ -91,4 +91,5 @@ export type Dataset = {
   summaryStatistics:      SummaryStatistics;
   statisticalMethod:      StatisticalMethod;
   topLevelPhenotypes:     Array<{ name: string, id: string }>;
+  key?: string;
 }

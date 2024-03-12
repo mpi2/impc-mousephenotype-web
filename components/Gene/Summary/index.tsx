@@ -49,14 +49,14 @@ const CollectionItem = ({
   hasData: boolean;
 }) => (
   hasData ? (
-    <a
+    <Link
       href={link}
       className={`link ${styles.dataCollection}`}
       data-testid={name}
     >
       <Check isChecked={hasData} />
       {name}
-    </a>
+    </Link>
   ) : (
     <span className={styles.dataCollectionInactive} data-testid={name}>
       <Check isChecked={hasData} />
