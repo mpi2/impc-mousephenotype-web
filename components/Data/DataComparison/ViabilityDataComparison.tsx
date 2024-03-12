@@ -46,11 +46,6 @@ const ViabilityDataComparison = (props: Props) => {
 
   return (
     <>
-      <div className="mt-4" style={{color: '#797676', fontSize: '95%'}}>
-        <span>
-          P-values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) are marked as significant.
-        </span>
-      </div>
       <SortableTable
         doSort={(sort) => {
           setSortOptions({
