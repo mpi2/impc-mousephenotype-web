@@ -20,6 +20,7 @@ import { Dataset } from "@/models";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import Skeleton from "react-loading-skeleton";
 
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState('');
@@ -65,8 +66,8 @@ const Charts = () => {
         return null;
     }
   };
-  const getDatasetByKey = (summaries: Array<Dataset>, key: string) => {
-    return allSummaries.find(dataset => {
+  const getDatasetByKey = (summaries: Array<Dataset>, keyToFind: string) => {
+    return summaries.find(dataset => {
       const {
         alleleAccessionId,
         parameterStableId,
@@ -75,8 +76,18 @@ const Charts = () => {
         colonyId
       } = dataset;
       const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
-      return key === selectedKey;
+      return key === keyToFind;
     });
+  };
+
+  const getPageTitle = (summaries: Array<Dataset>) => {
+    if (!summaries || summaries.length === 0) {
+      return <Skeleton />;
+    } else if (allSummaries[0]?.significantPhenotype?.name) {
+      return allSummaries[0]?.significantPhenotype?.name;
+    } else {
+      return allSummaries[0]?.procedureName;
+    }
   }
 
   const { datasetSummaries, isLoading, isError } = useDatasetsQuery(mgiGeneAccessionId, router.query, router.isReady);
@@ -113,7 +124,7 @@ const Charts = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              {allSummaries && allSummaries[0]?.["significantPhenotype"]?.["name"]}
+              {getPageTitle(allSummaries)}
             </strong>
           </h1>
           {!!datasetSummaries && (
