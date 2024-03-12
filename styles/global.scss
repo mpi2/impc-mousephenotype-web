@@ -116,6 +116,13 @@ p:last-child {
   }
 }
 
+.table {
+  & > tbody > tr.highlighted-row > * {
+    --bs-table-bg-type: #FDF0E5 !important;
+  }
+}
+
+
 .impc-secondary-btn {
   background-color: $secondary;
   color: #FFF;

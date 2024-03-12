@@ -1,6 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import Card from "@/components/Card";
-import ChartSummary from "@/components/Data/ChartSummary";
+import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 
 const Histopathology = ({ datasetSummary }) => {
   return (

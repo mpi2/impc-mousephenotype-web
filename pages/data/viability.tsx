@@ -2,23 +2,23 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useViabilityQuery } from "@/hooks";
 import { Card, Search } from "@/components";
-import { Alert, Button, Container, Tab, Tabs } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 import styles from "@/pages/data/styles.module.scss";
 import Skeleton from "react-loading-skeleton";
-import { formatPValue } from "@/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTable } from "@fortawesome/free-solid-svg-icons";
-import { DataComparison, Viability } from "@/components/Data";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Viability, ViabilityDataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 import Link from "next/link";
+import { getDatasetByKey } from "@/utils";
 
 const ViabilityChartPage = () => {
-  const [tab, setTab] = useState(0);
-  const [showComparison, setShowComparison] = useState(true);
+  const [selectedKey, setSelectedKey] = useState('');
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
 
   const { viabilityData, isViabilityLoading} = useViabilityQuery(mgiGeneAccessionId as string, router.isReady);
+  const activeDataset = !!selectedKey ? getDatasetByKey(viabilityData, selectedKey) : viabilityData?.[0];
 
   return (
     <>
@@ -29,12 +29,13 @@ const ViabilityChartPage = () => {
             <span className={`${styles.subheadingSection} primary`}>
               <Link
                 href={`/genes/${mgiGeneAccessionId}`}
-                className="grey mb-3"
-                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal' }}
+                className="mb-3"
+                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem' }}
               >
-                  { viabilityData?.[0]?.["geneSymbol"] || <Skeleton inline width={50} />}
+                <FontAwesomeIcon icon={faArrowLeft} />
+                &nbsp;
+                Go Back
               </Link>
-              &nbsp;/ phenotype data breakdown
             </span>
           </div>
           {(!viabilityData && !isViabilityLoading) && (
@@ -49,7 +50,7 @@ const ViabilityChartPage = () => {
             </strong>
           </h1>
           {!!viabilityData && (
-            <Alert variant="green" className="mb-0">
+            <div className="mb-0">
               <div
                 style={{
                   display: "flex",
@@ -59,28 +60,18 @@ const ViabilityChartPage = () => {
                   gap: "1rem",
                 }}
               >
-              <span>
-                {viabilityData && viabilityData.length} parameter /
-                zygosity / metadata group combinations tested.
-              </span>
-                <Button
-                  variant="secondary"
-                  className="white-x"
-                  onClick={() => {
-                    setShowComparison(!showComparison);
-                  }}
-                >
-                  <FontAwesomeIcon icon={faTable} />{" "}
-                  {showComparison ? "Hide comparison" : "Compare combinations"}
-                </Button>
+                <span>
+                  {viabilityData && viabilityData.length} parameter /
+                  zygosity / metadata group combinations tested.
+                </span>
               </div>
-            </Alert>
+            </div>
           )}
           {(!isViabilityLoading && viabilityData.length > 0) ? (
-            <DataComparison
-              visibility={showComparison}
+            <ViabilityDataComparison
               data={viabilityData}
-              isViabilityChart={true}
+              selectedKey={selectedKey}
+              onSelectParam={setSelectedKey}
             />
           ) : <SkeletonTable />}
         </Card>
@@ -90,13 +81,9 @@ const ViabilityChartPage = () => {
         className="bg-grey pt-2"
       >
         <Container>
-          <Tabs defaultActiveKey={0} onSelect={(e) => setTab(parseInt(e, 10))}>
-            {viabilityData && viabilityData.map((d, i) => (
-              <Tab eventKey={i} title={<>Combination #{i + 1}</>} key={i}>
-                <Viability datasetSummary={d} isVisible={tab === i} />
-              </Tab>
-            ))}
-          </Tabs>
+          {!!activeDataset && (
+            <Viability datasetSummary={activeDataset} isVisible />
+          )}
         </Container>
       </div>
     </>

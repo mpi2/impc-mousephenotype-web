@@ -2,59 +2,15 @@ import { useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
-import { formatAlleleSymbol, formatPValue, getIcon, getSexLabel } from "@/utils";
+import { formatAlleleSymbol, getIcon, getSexLabel } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset } from "@/models";
 import styles from './styles.module.scss';
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 
-type LastColumnProps = {
-  isViabilityChart: boolean,
-  dataset: any
-};
-
-const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
-  return isViabilityChart ? (
-    <td>
-      {dataset.viability}
-    </td>
-  ) : (
-    <>
-      {["male", "female", "not_considered"].map((col) => {
-        const pValue = dataset[`pValue_${col}`];
-        const isMostSignificant = pValue < 0.0001;
-        return (
-          <td
-            className={
-              isMostSignificant
-                ? "bold orange-dark-x bg-orange-light-x"
-                : "bold"
-            }
-          >
-            {!!dataset[`pValue_${col}`] ? (
-              formatPValue(pValue)
-            ) : (
-              <OverlayTrigger
-                placement="top"
-                trigger={["hover", "focus"]}
-                overlay={
-                  <Tooltip>Not significant or not tested</Tooltip>
-                }
-              >
-                <span className="grey">—</span>
-              </OverlayTrigger>
-            )}
-          </td>
-        );
-      })}
-    </>
-  );
-}
-
 type Props = {
   data: Array<Dataset>;
-  isViabilityChart?: boolean;
   initialSortByProp?: string;
   selectedKey?: string;
   onSelectParam?: (newValue: string) => void;
@@ -64,10 +20,9 @@ type SortOptions = {
   prop: string | ((any) => void);
   order: 'asc' | 'desc',
 }
-const DataComparison = (props: Props) => {
+const ViabilityDataComparison = (props: Props) => {
   const {
     data,
-    isViabilityChart = false,
     initialSortByProp,
     selectedKey,
     onSelectParam = (_) => {}
@@ -76,48 +31,12 @@ const DataComparison = (props: Props) => {
   const groups = groupData(data);
   const processed = processData(groups);
   const [sortOptions, setSortOptions] = useState<SortOptions>({
-    prop: !!initialSortByProp ? initialSortByProp : 'phenotype',
+    prop: !!initialSortByProp ? initialSortByProp : 'phenotypingCentre',
     order: 'asc' as const,
   })
   const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
   if (!data) {
     return null;
-  }
-
-  const getPValueSortFn = (key: string) => {
-    return (d) => {
-      return d[`pValue_${key}`] ?? 0;
-    };
-  };
-
-  const lastColumnHeader = isViabilityChart ? {
-    width: 2,
-    label: "Viability",
-    field: "viability"
-  } : {
-    width: 2,
-    label: "P Value",
-    field: "pValue",
-    children: [
-      {
-        width: 1,
-        label: "Male",
-        field: "pValue_male",
-        sortFn: getPValueSortFn("male"),
-      },
-      {
-        width: 1,
-        label: "Female",
-        field: "pValue_female",
-        sortFn: getPValueSortFn("female"),
-      },
-      {
-        width: 1,
-        label: "Combined",
-        field: "pValue_not_considered",
-        sortFn: getPValueSortFn("not_considered"),
-      },
-    ],
   }
 
   return (
@@ -137,7 +56,7 @@ const DataComparison = (props: Props) => {
                   order: sort[1]
                 })
               }}
-              defaultSort={["parameter", "asc"]}
+              defaultSort={["phenotypingCentre", "asc"]}
               headers={[
                 {width: 3, label: "Parameter", field: "parameter"},
                 {
@@ -150,7 +69,7 @@ const DataComparison = (props: Props) => {
                 {width: 1, label: "Significant sex", field: "sex"},
                 {width: 1, label: "Life Stage", field: "lifeStageName"},
                 {width: 1, label: "Colony Id", field: "colonyId",},
-                lastColumnHeader,
+                {width: 2, label: "Viability", field: "viability"}
               ]}
             >
               {pageData.map((d, i) => {
@@ -200,7 +119,7 @@ const DataComparison = (props: Props) => {
                     </td>
                     <td>{d.lifeStageName}</td>
                     <td>{d.colonyId}</td>
-                    <LastColumn dataset={d} isViabilityChart={isViabilityChart}/>
+                    <td>{d.viability}</td>
                   </tr>
                 );
               })}
@@ -212,4 +131,4 @@ const DataComparison = (props: Props) => {
   );
 };
 
-export default DataComparison;
+export default ViabilityDataComparison;

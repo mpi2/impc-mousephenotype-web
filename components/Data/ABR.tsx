@@ -1,4 +1,4 @@
-import ChartSummary from "@/components/Data/ChartSummary";
+import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import { useEffect, useState } from "react";
 import { fetchAPI } from "@/api-service";
 import _ from 'lodash';
