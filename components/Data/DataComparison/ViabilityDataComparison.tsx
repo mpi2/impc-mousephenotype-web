@@ -31,7 +31,7 @@ const ViabilityDataComparison = (props: Props) => {
   const groups = groupData(data);
   const processed = processData(groups);
   const [sortOptions, setSortOptions] = useState<SortOptions>({
-    prop: !!initialSortByProp ? initialSortByProp : 'phenotypingCentre',
+    prop: !!initialSortByProp ? initialSortByProp : 'alleleSymbol',
     order: 'asc' as const,
   })
   const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
@@ -56,20 +56,20 @@ const ViabilityDataComparison = (props: Props) => {
                   order: sort[1]
                 })
               }}
-              defaultSort={["phenotypingCentre", "asc"]}
+              defaultSort={["alleleSymbol", "asc"]}
               headers={[
-                {width: 3, label: "Parameter", field: "parameter"},
+                {width: 2, label: "Allele", field: "alleleSymbol"},
+                {width: 2, label: "Viability", field: "viability"},
+                {width: 1, label: "Zygosity", field: "zygosity"},
                 {
                   width: 1,
                   label: "Phenotyping Centre",
                   field: "phenotypingCentre",
                 },
-                {width: 2, label: "Allele", field: "alleleSymbol"},
-                {width: 1, label: "Zygosity", field: "zygosity"},
                 {width: 1, label: "Significant sex", field: "sex"},
                 {width: 1, label: "Life Stage", field: "lifeStageName"},
                 {width: 1, label: "Colony Id", field: "colonyId",},
-                {width: 2, label: "Viability", field: "viability"}
+
               ]}
             >
               {pageData.map((d, i) => {
@@ -78,15 +78,15 @@ const ViabilityDataComparison = (props: Props) => {
                   <tr key={d.key} className={getBackgroundColorForRow(d, i, selectedKey)}>
                     <td>
                       <button className={styles.selectionButton} onClick={() => onSelectParam(d.key)}>
-                        {d.parameterName}
+                        {allele[0]}
+                        <sup>{allele[1]}</sup>
                       </button>
                     </td>
-                    <td>{d.phenotypingCentre}</td>
                     <td>
-                      {allele[0]}
-                      <sup>{allele[1]}</sup>
+                      <strong>{d.viability}</strong>
                     </td>
                     <td>{d.zygosity}</td>
+                    <td>{d.phenotypingCentre}</td>
                     <td>
                       {d.sex === 'not_considered' ? (
                         <OverlayTrigger
@@ -119,7 +119,6 @@ const ViabilityDataComparison = (props: Props) => {
                     </td>
                     <td>{d.lifeStageName}</td>
                     <td>{d.colonyId}</td>
-                    <td>{d.viability}</td>
                   </tr>
                 );
               })}
