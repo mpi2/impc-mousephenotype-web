@@ -97,17 +97,17 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
-
+$pillSize: 1.8rem;
 .pill {
-  height: 1rem;
-  width: 1.5rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-  display: inline-block;
-  border-radius: 1rem;
-  text-align: center;
-  line-height: 1rem;
+  height: $pillSize;
+  width: $pillSize;
+  font-size: 80%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 0.5rem;
+  border: 2px solid;
 }
 
 .progressCircleCont {
@@ -127,22 +127,22 @@
 }
 
 .dataCollection {
-  color: $black;
-  // font-weight: bold;
   margin-bottom: $xs;
   display: inline-block;
-  svg:first-child {
-    color: $secondary;
+  span:first-child {
     margin-right: $xxs;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid $secondary;
   }
 }
 
 .dataCollectionInactive {
   @extend .dataCollection;
-  color: $grey !important;
-  svg:first-child {
-    color: $grey;
-  }
 }
 
 .geneMetricsBanner {

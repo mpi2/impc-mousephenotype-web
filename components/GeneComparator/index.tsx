@@ -69,6 +69,7 @@ export const GeneComparatorTrigger = ({ current }: { current?: string }) => {
           borderRadius: 11,
           marginLeft: 6,
           fontWeight: "bold",
+          color: '#000',
         }}
       >
         {genes.length}

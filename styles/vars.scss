@@ -16,7 +16,7 @@ $white: #fff;
 $black: #000;
 $dark: #212529;
 
-$primary: $orange;
+$primary: #C9510C;
 $secondary: $blue;
 
 $font-md: 1rem;
@@ -75,7 +75,7 @@ $body-bg: $bg;
 // Bootstrap override scss variables
 
 $theme-colors: (
-  "primary": $orange,
+  "primary": #C9510C,
   "primary-dark": $orange-dark,
   "secondary": $blue,
   "danger": $red,
@@ -96,10 +96,3 @@ $theme-colors: (
 $container-max-widths: (
   "": 1440px,
 );
-
-.primary.link, a.primary {
-  &:hover {
-    color: $orange-dark;
-    text-decoration: underline;
-  }
-}

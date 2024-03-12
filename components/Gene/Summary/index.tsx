@@ -1,16 +1,7 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
-import {
-  faCartPlus,
-  faChevronRight,
-  faExternalLinkAlt,
-  faWarning,
-} from "@fortawesome/free-solid-svg-icons";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
-import {
-  buildStyles,
-  CircularProgressbarWithChildren,
-} from "react-circular-progressbar";
 import styles from "./styles.module.scss";
 import Card from "../../Card";
 import { BodySystem } from "../../BodySystemIcon";
@@ -18,7 +9,6 @@ import { useRouter } from "next/router";
 import Check from "../../Check";
 import Head from "next/head";
 import { GeneSummary } from "@/models/gene";
-import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 
@@ -211,12 +201,12 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           <div className={styles.bodySystemWrapper}>
             {!!significantCount && (
               <div className={styles.bodySystemGroupSignificant}>
-                <h5 className={`${styles.bodySystemGroupSummary} primary`}>
-                <span className={`${styles.pill} bg-primary white`} data-testid="significantCount">
+                <h3 className={styles.bodySystemGroupSummary}>
+                <span className={`${styles.pill} border-primary`} data-testid="significantCount">
                   {significantCount}
                 </span>{" "}
                   Significantly impacted by the knock-out
-                </h5>
+                </h3>
                 <div className={styles.bodySystems} data-testid="significantSystemIcons">
                   {gene.significantTopLevelPhenotypes.map((x) => (
                     <BodySystem
@@ -233,12 +223,12 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
             )}
             {!!nonSignificantCount && (
               <div className={styles.bodySystemGroup}>
-                <h5 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-secondary white`} data-testid="nonSignificantCount">
+                <h3 className={styles.bodySystemGroupSummary}>
+                <span className={`${styles.pill} border-secondary`} data-testid="nonSignificantCount">
                   {nonSignificantCount}
                 </span>{" "}
                   No significant impact
-                </h5>
+                </h3>
                 <div className={styles.bodySystems} data-testid="notSignificantSystemIcons">
                   {gene.notSignificantTopLevelPhenotypes.map((x) => (
                     <BodySystem
@@ -254,12 +244,12 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
             )}
             {!!notTestedCount && (
               <div className={styles.bodySystemGroup}>
-                <h5 className={styles.bodySystemGroupSummary}>
-                <span className={`${styles.pill} bg-grey`} data-testid="nonTestedCount">
+                <h3 className={styles.bodySystemGroupSummary}>
+                <span className={`${styles.pill} border-black`} data-testid="nonTestedCount">
                   {notTestedCount}
                 </span>{" "}
                   Not tested
-                </h5>
+                </h3>
                 <div className={styles.bodySystems} data-testid="notTestedSystemIcons">
                   {notTested.map((system) => (
                     <BodySystem

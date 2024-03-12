@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTable } from "@fortawesome/free-solid-svg-icons";
 import { DataComparison, Viability } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
+import Link from "next/link";
 
 const ViabilityChartPage = () => {
   const [tab, setTab] = useState(0);
@@ -26,21 +27,14 @@ const ViabilityChartPage = () => {
         <Card>
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
-              <button
-                style={{
-                  border: 0,
-                  background: "none",
-                  padding: 0,
-                }}
-                onClick={() => {
-                  router.back();
-                }}
+              <Link
+                href={`/genes/${mgiGeneAccessionId}`}
+                className="grey mb-3"
+                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal' }}
               >
-                <a href="#" className="grey mb-3">
-                  { viabilityData?.[0]?.["geneSymbol"] || <Skeleton />}
-                </a>
-              </button>{" "}
-              / phenotype data breakdown
+                  { viabilityData?.[0]?.["geneSymbol"] || <Skeleton inline width={50} />}
+              </Link>
+              &nbsp;/ phenotype data breakdown
             </span>
           </div>
           {(!viabilityData && !isViabilityLoading) && (
