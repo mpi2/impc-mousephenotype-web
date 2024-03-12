@@ -6,7 +6,7 @@ import { Alert, Container } from "react-bootstrap";
 import styles from "@/pages/data/styles.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { BodyWeightChart, DataComparison } from "@/components/Data";
+import { BodyWeightChart, BodyWeightDataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 import Link from "next/link";
 import { Dataset } from "@/models";
@@ -63,7 +63,7 @@ const BodyWeightChartPage = () => {
             </strong>
           </h1>
           {(!isBodyWeightLoading && bodyWeightData.length > 0) ? (
-            <DataComparison
+            <BodyWeightDataComparison
               data={bodyWeightData}
               selectedKey={selectedKey}
               onSelectParam={setSelectedKey}

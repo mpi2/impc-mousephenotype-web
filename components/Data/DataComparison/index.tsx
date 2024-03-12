@@ -7,6 +7,7 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset } from "@/models";
 import styles from './styles.module.scss';
+import { getBackgroundColorForRow, groupData, processData } from "./utils";
 
 type LastColumnProps = {
   isViabilityChart: boolean,
@@ -72,68 +73,8 @@ const DataComparison = (props: Props) => {
     onSelectParam = (_) => {}
   } = props;
 
-  const groups = data?.reduce((acc, d) => {
-    const {
-      alleleAccessionId,
-      parameterStableId,
-      zygosity,
-      sex,
-      reportedPValue,
-      phenotypeSex,
-      phenotypingCentre,
-      colonyId,
-    } = d;
-
-    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
-    const statMethodPValueKey = sex === 'female' ? 'femaleKoEffectPValue' : 'maleKoEffectPValue';
-    const pValueFromStatMethod = d.statisticalMethod?.attributes?.[statMethodPValueKey];
-    if (acc[key]) {
-      if (acc[key].reportedPValue < pValueFromStatMethod) {
-        acc[key].reportedPValue = Number(pValueFromStatMethod);
-        acc[key].sex = sex;
-      }
-    } else {
-      acc[key] = { ...d, key, reportedPValue: pValueFromStatMethod };
-    }
-    if (sex) {
-      const pValue = reportedPValue < pValueFromStatMethod ? reportedPValue : pValueFromStatMethod;
-      acc[key][`pValue_${sex}`] = Number(pValue);
-    }
-    if(phenotypeSex?.length > 0) {
-      if (!!d.statisticalMethod?.attributes?.maleKoEffectPValue) {
-        acc[key][`pValue_male`] = d.statisticalMethod?.attributes?.maleKoEffectPValue;
-      }
-      if (!!d.statisticalMethod?.attributes?.femaleKoEffectPValue) {
-        acc[key][`pValue_female`] = d.statisticalMethod?.attributes?.femaleKoEffectPValue;
-      }
-      if (phenotypeSex.length >= 2) {
-        acc[key][`pValue_not_considered`] = Number(reportedPValue);
-      }
-    }
-    return acc;
-  }, {});
-  const processed = (groups ? Object.values(groups) : []).map((d: any, index) => {
-    const getLethality = () => {
-        if (!d.significant) {
-          return 'Viable';
-        }
-        if (d.significant && d.significantPhenotype?.id === 'MP:0011100') {
-          return 'Lethal';
-        }
-        if (d.significant && d.significantPhenotype?.id === 'MP:0011110') {
-          return 'Subviable'
-        }
-        return '-';
-      };
-    return {
-      ...d,
-      datasetNum: index + 1,
-      topLevelPhenotype: d.topLevelPhenotypes?.[0]?.name,
-      phenotype: d.significantPhenotype?.name,
-      id: d.significantPhenotype?.id,
-      viability: getLethality(),
-    }
-  }) || [];
+  const groups = groupData(data);
+  const processed = processData(groups);
   const [sortOptions, setSortOptions] = useState<SortOptions>({
     prop: !!initialSortByProp ? initialSortByProp : 'phenotype',
     order: 'asc' as const,
@@ -148,15 +89,6 @@ const DataComparison = (props: Props) => {
       return d[`pValue_${key}`] ?? 0;
     };
   };
-
-  const getBackgroundColorForRow = (groupedDataset, index: number): string => {
-    const isFirstRender = selectedKey === '' && index === 0;
-    const datasetMatchesKey = groupedDataset.key === selectedKey;
-    if (isFirstRender || datasetMatchesKey) {
-      return 'highlighted-row';
-    }
-    return '';
-  }
 
   const lastColumnHeader = isViabilityChart ? {
     width: 2,
@@ -224,7 +156,7 @@ const DataComparison = (props: Props) => {
               {pageData.map((d, i) => {
                 const allele = formatAlleleSymbol(d.alleleSymbol);
                 return (
-                  <tr key={d.key} className={getBackgroundColorForRow(d, i)}>
+                  <tr key={d.key} className={getBackgroundColorForRow(d, i, selectedKey)}>
                     <td>
                       <button className={styles.selectionButton} onClick={() => onSelectParam(d.key)}>
                         {d.parameterName}
