@@ -10,35 +10,47 @@ import SkeletonTable from "@/components/skeletons/table";
 import {
   ABR,
   BodyWeightChart,
-  Categorical, DataComparison,
+  Categorical,
+  DataComparison,
   EmbryoViability,
   Histopathology,
   TimeSeries,
   Unidimensional,
-  Viability
+  Viability,
 } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery } from "@/hooks";
 import { Dataset } from "@/models";
 import Link from "next/link";
-
+import GrossPathChartPage from "./gross-pathology/[pid]";
+import GrossPathology from "@/components/Data/GrossPathology";
 
 const getSmallestPValue = (summaries: Array<Dataset>): number => {
-  const pValues = summaries.map(d => {
-    const statMethodPValueKey = d.sex === 'female' ? 'femaleKoEffectPValue' : 'maleKoEffectPValue';
-    const pValueFromStatMethod = d.statisticalMethod?.attributes?.[statMethodPValueKey];
-    return d.reportedPValue < pValueFromStatMethod ? d.reportedPValue : pValueFromStatMethod;
-  }).filter(value => !!value);
+  const pValues = summaries
+    .map((d) => {
+      const statMethodPValueKey =
+        d.sex === "female" ? "femaleKoEffectPValue" : "maleKoEffectPValue";
+      const pValueFromStatMethod =
+        d.statisticalMethod?.attributes?.[statMethodPValueKey];
+      return d.reportedPValue < pValueFromStatMethod
+        ? d.reportedPValue
+        : pValueFromStatMethod;
+    })
+    .filter((value) => !!value);
   return Math.min(...pValues, 1);
-}
+};
 
 const Charts = () => {
   const [tab, setTab] = useState(0);
   const [showComparison, setShowComparison] = useState(true);
-  const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>(
+    []
+  );
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
-  const selectedParameterKey = !router.query.mpTermId ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}` : null;
+  const selectedParameterKey = !router.query.mpTermId
+    ? `${mgiGeneAccessionId}-${router.query.parameterStableId}-${router.query.zygosity}`
+    : null;
   const getChartType = (datasetSummary: Dataset, tabNum: number) => {
     let chartType = datasetSummary.dataType;
     const isVisible = tab === tabNum;
@@ -57,33 +69,66 @@ const Charts = () => {
           ? "embryo_viability"
           : "line";
     }
-    if (chartType === "time_series" && datasetSummary.procedureGroup === "IMPC_BWT") {
+    if (
+      chartType === "time_series" &&
+      datasetSummary.procedureGroup === "IMPC_BWT"
+    ) {
       chartType = "bodyweight";
     }
     switch (chartType) {
       case "unidimensional":
-        return <Unidimensional datasetSummary={datasetSummary} isVisible={isVisible} />;
+        return (
+          <Unidimensional
+            datasetSummary={datasetSummary}
+            isVisible={isVisible}
+          />
+        );
       case "categorical":
-        return <Categorical datasetSummary={datasetSummary} isVisible={isVisible} />;
+        return (
+          <Categorical datasetSummary={datasetSummary} isVisible={isVisible} />
+        );
       case "viability":
-        return <Viability datasetSummary={datasetSummary} isVisible={isVisible} />;
+        return (
+          <Viability datasetSummary={datasetSummary} isVisible={isVisible} />
+        );
       case "time_series":
         return <TimeSeries datasetSummary={datasetSummary} />;
       case "embryo":
-        return <EmbryoViability datasetSummary={datasetSummary} isVisible={isVisible} />;
+        return (
+          <EmbryoViability
+            datasetSummary={datasetSummary}
+            isVisible={isVisible}
+          />
+        );
       case "histopathology":
         return <Histopathology datasetSummary={datasetSummary} />;
       case "bodyweight":
-        return <BodyWeightChart datasetSummary={datasetSummary} />
+        return <BodyWeightChart datasetSummary={datasetSummary} />;
+      case "adult-gross-path":
+        return <GrossPathology datasetSummary={datasetSummary} />;
       default:
         return null;
     }
   };
 
-  const { datasetSummaries, isLoading, isError } = useDatasetsQuery(mgiGeneAccessionId, router.query, router.isReady);
+  const { datasetSummaries, isLoading, isError } = useDatasetsQuery(
+    mgiGeneAccessionId,
+    router.query,
+    router.isReady
+  );
 
-  const isABRChart = !isError ? !!datasetSummaries.some(dataset => dataset.dataType === "unidimensional" && dataset.procedureGroup === "IMPC_ABR") : false;
-  const isViabilityChart = !isError ? !!datasetSummaries.some(dataset => dataset.procedureGroup === "IMPC_VIA") : false;
+  const isABRChart = !isError
+    ? !!datasetSummaries.some(
+        (dataset) =>
+          dataset.dataType === "unidimensional" &&
+          dataset.procedureGroup === "IMPC_ABR"
+      )
+    : false;
+  const isViabilityChart = !isError
+    ? !!datasetSummaries.some(
+        (dataset) => dataset.procedureGroup === "IMPC_VIA"
+      )
+    : false;
 
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
 
@@ -97,14 +142,18 @@ const Charts = () => {
               <Link
                 href={`/genes/${mgiGeneAccessionId}`}
                 className="grey mb-3"
-                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal' }}
+                style={{
+                  textTransform: "none",
+                  fontWeight: "normal",
+                  letterSpacing: "normal",
+                }}
               >
-                  { allSummaries?.[0]?.["geneSymbol"] || <Skeleton />}
+                {allSummaries?.[0]?.["geneSymbol"] || <Skeleton />}
               </Link>
               &nbsp;/ phenotype data breakdown
             </span>
           </div>
-          {(!datasetSummaries && !isLoading) && (
+          {!datasetSummaries && !isLoading && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>
               <p>We could not find the data to display this page.</p>
@@ -128,14 +177,15 @@ const Charts = () => {
                   gap: "1rem",
                 }}
               >
-              <span>
-                {allSummaries && allSummaries.length} parameter /
-                zygosity / metadata group combinations tested, with the lowest
-                p-value of&nbsp;
-                <strong>
-                  {allSummaries && formatPValue(getSmallestPValue(allSummaries))}
-                </strong>
-              </span>
+                <span>
+                  {allSummaries && allSummaries.length} parameter / zygosity /
+                  metadata group combinations tested, with the lowest p-value
+                  of&nbsp;
+                  <strong>
+                    {allSummaries &&
+                      formatPValue(getSmallestPValue(allSummaries))}
+                  </strong>
+                </span>
                 <Button
                   variant="secondary"
                   className="white-x"
@@ -149,15 +199,17 @@ const Charts = () => {
               </div>
             </Alert>
           )}
-          {(!isLoading && !isError && allSummaries.length > 0 ) ? (
+          {!isLoading && !isError && allSummaries.length > 0 ? (
             <DataComparison
               visibility={showComparison}
               data={allSummaries}
               selectedParameter={selectedParameterKey}
               isViabilityChart={isViabilityChart}
-              {...(isABRChart && { initialSortByProp: 'parameterStableId' })}
+              {...(isABRChart && { initialSortByProp: "parameterStableId" })}
             />
-          ) : (!isError ? <SkeletonTable /> : null)}
+          ) : !isError ? (
+            <SkeletonTable />
+          ) : null}
         </Card>
       </Container>
       <div
@@ -171,21 +223,26 @@ const Charts = () => {
               onNewSummariesFetched={setAdditionalSummaries}
             />
           ) : (
-            <Tabs defaultActiveKey={0} onSelect={(e) => setTab(parseInt(e, 10))}>
-              {allSummaries && allSummaries.map((d, i) => (
-                <Tab
-                  eventKey={i}
-                  title={
-                    <>
-                      Combination #{i + 1} ({formatPValue(getSmallestPValue([d]))}&nbsp;
-                      {i === 0 ? " | lowest" : null})
-                    </>
-                  }
-                  key={i}
-                >
-                  <div>{getChartType(d, i)}</div>
-                </Tab>
-              ))}
+            <Tabs
+              defaultActiveKey={0}
+              onSelect={(e) => setTab(parseInt(e, 10))}
+            >
+              {allSummaries &&
+                allSummaries.map((d, i) => (
+                  <Tab
+                    eventKey={i}
+                    title={
+                      <>
+                        Combination #{i + 1} (
+                        {formatPValue(getSmallestPValue([d]))}&nbsp;
+                        {i === 0 ? " | lowest" : null})
+                      </>
+                    }
+                    key={i}
+                  >
+                    <div>{getChartType(d, i)}</div>
+                  </Tab>
+                ))}
             </Tabs>
           )}
         </Container>
