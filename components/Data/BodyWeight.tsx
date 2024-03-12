@@ -164,7 +164,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
 
   return (
     <>
-      <ChartSummary datasetSummary={datasetSummary} />
+      <ChartSummary datasetSummary={datasetSummary} isBodyWeightChart  />
       <Row>
         <Col lg={12}>
           <Card>

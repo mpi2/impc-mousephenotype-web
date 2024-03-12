@@ -2,23 +2,36 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useBodyWeightQuery } from "@/hooks";
 import { Card, Search } from "@/components";
-import { Alert, Button, Container, Tab, Tabs } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 import styles from "@/pages/data/styles.module.scss";
-import Skeleton from "react-loading-skeleton";
-import { formatPValue } from "@/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTable } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { BodyWeightChart, DataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 import Link from "next/link";
+import { Dataset } from "@/models";
 
 const BodyWeightChartPage = () => {
-  const [tab, setTab] = useState('0');
-  const [showComparison, setShowComparison] = useState(true);
   const router = useRouter();
+  const [selectedKey, setSelectedKey] = useState('');
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
 
+  const getDatasetByKey = (summaries: Array<Dataset>, keyToFind: string) => {
+    return summaries.find(dataset => {
+      const {
+        alleleAccessionId,
+        parameterStableId,
+        zygosity,
+        phenotypingCentre,
+        colonyId
+      } = dataset;
+      const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
+      return key === keyToFind;
+    });
+  };
+
   const { bodyWeightData, isBodyWeightLoading } = useBodyWeightQuery(mgiGeneAccessionId as string, router.isReady);
+  const activeDataset = !!selectedKey ? getDatasetByKey(bodyWeightData, selectedKey) : bodyWeightData[0];
 
   return (
     <>
@@ -29,12 +42,13 @@ const BodyWeightChartPage = () => {
             <span className={`${styles.subheadingSection} primary`}>
               <Link
                 href={`/genes/${mgiGeneAccessionId}`}
-                className="grey mb-3"
-                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal' }}
+                className="mb-3"
+                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem' }}
               >
-                  { bodyWeightData?.[0]?.["geneSymbol"] || <Skeleton />}
+                <FontAwesomeIcon icon={faArrowLeft} />
+                &nbsp;
+                Go Back
               </Link>
-              &nbsp;/ phenotype data breakdown
             </span>
           </div>
           {(!bodyWeightData && !isBodyWeightLoading) && (
@@ -43,51 +57,16 @@ const BodyWeightChartPage = () => {
               <p>We could not find the data to display this page.</p>
             </Alert>
           )}
-          <h1 className="mb-4 mt-2">
+          <h1 className="mt-2 mb-0">
             <strong className="text-capitalize">
               Body weight curve
             </strong>
           </h1>
-          {!!bodyWeightData && (
-            <Alert variant="green" className="mb-0">
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: "1rem",
-                }}
-              >
-              <span>
-                {bodyWeightData && bodyWeightData.length} parameter /
-                zygosity / metadata group combinations tested, with the lowest
-                p-value of{" "}
-                <strong>
-                  {bodyWeightData &&
-                    formatPValue(
-                      Math.min(...bodyWeightData.map(d => d?.["reportedPValue"]), 0)
-                    )}
-                </strong>
-                .
-              </span>
-                <Button
-                  variant="secondary"
-                  className="white-x"
-                  onClick={() => {
-                    setShowComparison(!showComparison);
-                  }}
-                >
-                  <FontAwesomeIcon icon={faTable} />{" "}
-                  {showComparison ? "Hide comparison" : "Compare combinations"}
-                </Button>
-              </div>
-            </Alert>
-          )}
           {(!isBodyWeightLoading && bodyWeightData.length > 0) ? (
             <DataComparison
-              visibility={showComparison}
               data={bodyWeightData}
+              selectedKey={selectedKey}
+              onSelectParam={setSelectedKey}
             />
           ) : <SkeletonTable />}
         </Card>
@@ -97,22 +76,11 @@ const BodyWeightChartPage = () => {
         className="bg-grey pt-2"
       >
         <Container>
-          <Tabs defaultActiveKey={0} onSelect={(e) => setTab(e)}>
-            {bodyWeightData && bodyWeightData.map((d, i) => (
-              <Tab
-                eventKey={i}
-                title={
-                  <>
-                    Combination #{i + 1} ({formatPValue(d["reportedPValue"])}{" "}
-                    {i === 0 ? " | lowest" : null})
-                  </>
-                }
-                key={i}
-              >
-                <BodyWeightChart datasetSummary={d} />
-              </Tab>
-            ))}
-          </Tabs>
+          <div>
+            {!!activeDataset && (
+              <BodyWeightChart datasetSummary={activeDataset} />
+            )}
+          </div>
         </Container>
       </div>
     </>

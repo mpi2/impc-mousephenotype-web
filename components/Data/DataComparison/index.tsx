@@ -51,7 +51,6 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
   );
 }
 
-
 type Props = {
   data: Array<Dataset>;
   isViabilityChart?: boolean;
@@ -70,7 +69,7 @@ const DataComparison = (props: Props) => {
     isViabilityChart = false,
     initialSortByProp,
     selectedKey,
-    onSelectParam = (_) => {},
+    onSelectParam = (_) => {}
   } = props;
 
   const groups = data?.reduce((acc, d) => {
@@ -244,9 +243,9 @@ const DataComparison = (props: Props) => {
                           trigger={["hover", "focus"]}
                           overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
                         >
-                      <span className="me-2">
-                        <FontAwesomeIcon icon={getIcon(d.sex)} size="lg"/>
-                      </span>
+                          <span className="me-2">
+                            <FontAwesomeIcon icon={getIcon(d.sex)} size="lg"/>
+                          </span>
                         </OverlayTrigger>
                       ) : (
                         <>
@@ -258,11 +257,12 @@ const DataComparison = (props: Props) => {
                                 trigger={["hover", "focus"]}
                                 overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}
                               >
-                            <span className="me-2">
-                              <FontAwesomeIcon icon={getIcon(significantSex)} size="lg"/>
-                            </span>
+                                <span className="me-2">
+                                  <FontAwesomeIcon icon={getIcon(significantSex)} size="lg"/>
+                                </span>
                               </OverlayTrigger>
-                            ))}
+                            ))
+                          }
                         </>
                       )}
                     </td>

@@ -11,8 +11,16 @@ type ChartSummaryProps = {
   datasetSummary: Dataset;
   additionalContent?: ReactNode,
   title?: string;
+  isBodyWeightChart?: boolean;
 }
-const ChartSummary = ({ title, additionalContent = null, datasetSummary, children }: PropsWithChildren<ChartSummaryProps>) => {
+const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
+  const {
+    title,
+    additionalContent = null,
+    datasetSummary,
+    children,
+    isBodyWeightChart = false
+  } = props;
   const [showMetadataModal, setShowMetadataModal ] = useState(false);
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
   const totalMice = Object.keys(datasetSummary["summaryStatistics"]).reduce(
@@ -39,13 +47,15 @@ const ChartSummary = ({ title, additionalContent = null, datasetSummary, childre
             <strong>{!!title ? title : `${datasetSummary.geneSymbol} data charts`}</strong>
           </h1>
           <span
-            style={{color: '#797676', textTransform: 'uppercase', fontWeight: '500'}}>
+            style={{color: '#797676', textTransform: 'uppercase', fontWeight: '500', lineHeight: '1.2'}}>
             {datasetSummary.parameterName}
           </span>
         </div>
-        <span className="mb-4" style={{display: 'inline-block', fontSize: '1.2rem'}}>
-          Combination tested with the lowest p-value of <strong>{pValue}</strong>
-        </span>
+        {!isBodyWeightChart && (
+          <span className="mb-4" style={{display: 'inline-block', fontSize: '1.2rem'}}>
+            Combination tested with the lowest p-value of <strong>{pValue}</strong>
+          </span>
+        )}
         {additionalContent}
       </div>
       <div className={styles.details}>
