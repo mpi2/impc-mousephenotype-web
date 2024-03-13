@@ -59,7 +59,9 @@ const FilterBox = (props: Props) => {
         >
           <option value={"all"}>All</option>
           {
-            options.map((p) => <option value={p} key={p}>{p}</option>)
+            options
+              .sort()
+              .map((p) => <option value={p} key={p}>{p}</option>)
           }
         </Form.Select>
       ) : (
