@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
 import styles from "./styles.module.scss";
-import {useQuery} from "@tanstack/react-query";
-import {fetchAPI} from "@/api-service";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "@/api-service";
 import { GeneImage } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
@@ -17,24 +17,39 @@ interface ImageProps {
   parameterStableId: string;
   image: string;
   length: number;
-};
+  fileType: string;
+}
 
 const embryo3DParametersIds = [
-  'IMPC_EMA_001_001',
-  'IMPC_EMO_001_001',
-  'IMPC_EML_001_001',
-  'IMPC_EOL_001_001',
-  'ALTIMPC_EML_001_001',
-  'ALTIMPC_EMA_001_001',
-  'ALTIMPC_EMO_001_001',
-  'ALTIMPC_EOL_001_001',
-]
+  "IMPC_EMA_001_001",
+  "IMPC_EMO_001_001",
+  "IMPC_EML_001_001",
+  "IMPC_EOL_001_001",
+  "ALTIMPC_EML_001_001",
+  "ALTIMPC_EMA_001_001",
+  "ALTIMPC_EMO_001_001",
+  "ALTIMPC_EOL_001_001",
+];
 
-const Image = ({ parameterName, procedureName, parameterStableId, image, length }: ImageProps) => {
+const downloadFileTypes = ["application/pdf", "video/quicktime"];
+
+const Image = ({
+  parameterName,
+  procedureName,
+  parameterStableId,
+  image,
+  length,
+  fileType,
+}: ImageProps) => {
+  console.log(fileType);
+
   const router = useRouter();
   const { pid } = router.query;
-  const isSpecialFormat = parameterStableId.includes('IMPC_EMA') || parameterStableId.includes('IMPC_IMM');
-  const urlSegment = isSpecialFormat ? 'download-images' : 'images';
+  const isSpecialFormat =
+    parameterStableId.includes("IMPC_EMA") ||
+    parameterStableId.includes("IMPC_IMM") ||
+    downloadFileTypes.includes(fileType);
+  const urlSegment = isSpecialFormat ? "download-images" : "images";
   let url = `/genes/${pid}/${urlSegment}/${parameterStableId}`;
   if (embryo3DParametersIds.includes(parameterStableId)) {
     url = `https://www.mousephenotype.org/embryoviewer/?mgi=${pid}`;
@@ -45,13 +60,17 @@ const Image = ({ parameterName, procedureName, parameterStableId, image, length 
       <div className={styles.card}>
         <div
           className={styles.cardImage}
-          style={{ backgroundImage: `url(${image})` }}
+          style={{ backgroundImage: `url(${isSpecialFormat ? null : image})` }}
           data-testid="image"
         >
           <div className={styles.cardImageOverlay}>
-            <span>
-              {length} images <FontAwesomeIcon icon={faChevronRight} />
-            </span>
+            {isSpecialFormat ? (
+              <span>Download files</span>
+            ) : (
+              <span>
+                {length} images <FontAwesomeIcon icon={faChevronRight} />
+              </span>
+            )}
           </div>
         </div>
         <div className={styles.cardText}>
@@ -66,10 +85,10 @@ const Image = ({ parameterName, procedureName, parameterStableId, image, length 
 const Images = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const { isLoading, isError, data } = useQuery({
-    queryKey: ['genes', router.query.pid, 'images'],
+    queryKey: ["genes", router.query.pid, "images"],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/images`),
     enabled: router.isReady,
-    select: data => data as Array<GeneImage>,
+    select: (data) => data as Array<GeneImage>,
   });
 
   if (isLoading) {
@@ -91,12 +110,17 @@ const Images = ({ gene }: { gene: any }) => {
       </Card>
     );
   }
+  console.log(data);
 
-  const groups = Object.entries(_.groupBy(data, "parameterName")).sort((a, b) => {
-    const [ param1] = a;
-    const [ param2 ] = b;
+  const groups = Object.entries(
+    _.groupBy(data, (item) => `${item.procedureName}-${item.parameterName}`)
+  ).sort((a, b) => {
+    const [param1] = a;
+    const [param2] = b;
     return param1.localeCompare(param2);
   });
+  console.log(groups);
+
   return (
     <Card id="images">
       <h2>Associated media</h2>
@@ -105,11 +129,12 @@ const Images = ({ gene }: { gene: any }) => {
           {groups.map(([key, group]) => (
             <Col md={4} lg={3} key={key + group[0].procedureName}>
               <Image
-                parameterName={key}
+                parameterName={group[0].parameterName}
                 procedureName={group[0].procedureName}
                 parameterStableId={group[0].parameterStableId}
                 image={group[0].thumbnailUrl}
                 length={group[0].count}
+                fileType={group[0].fileType}
               />
             </Col>
           ))}
@@ -119,4 +144,4 @@ const Images = ({ gene }: { gene: any }) => {
   );
 };
 
-export default sectionWithErrorBoundary(Images, 'Associated images', 'images');
+export default sectionWithErrorBoundary(Images, "Associated images", "images");
