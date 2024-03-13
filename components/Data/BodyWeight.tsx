@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import Card from "@/components/Card";
-import ChartSummary from "./ChartSummary";
+import ChartSummary from "./ChartSummary/ChartSummary";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -164,7 +164,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
 
   return (
     <>
-      <ChartSummary datasetSummary={datasetSummary} />
+      <ChartSummary datasetSummary={datasetSummary} displayPValueStatement={false}  />
       <Row>
         <Col lg={12}>
           <Card>

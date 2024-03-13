@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Col, Row } from "react-bootstrap";
 import Card from "@/components/Card";
-import ChartSummary from "./ChartSummary";
+import ChartSummary from "./ChartSummary/ChartSummary";
 
 const TimeSeries = ({ datasetSummary }) => {
   return (
