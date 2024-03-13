@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
@@ -118,7 +118,13 @@ const DataComparison = (props: Props) => {
         sortFn: getPValueSortFn("not_considered"),
       },
     ],
-  }
+  };
+
+  useEffect(() => {
+    if (!!sorted[0]?.key && sorted[0]?.key !== selectedKey && selectedKey === '') {
+      onSelectParam(sorted[0].key);
+    }
+  }, [sorted.length]);
 
   return (
     <>
