@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
@@ -92,37 +92,41 @@ const DataComparison = (props: Props) => {
     };
   };
 
-  const lastColumnHeader = isViabilityChart
-    ? {
-        width: 2,
-        label: "Viability",
-        field: "viability",
-      }
-    : {
-        width: 2,
-        label: "P Value",
-        field: "pValue",
-        children: [
-          {
-            width: 1,
-            label: "Male",
-            field: "pValue_male",
-            sortFn: getPValueSortFn("male"),
-          },
-          {
-            width: 1,
-            label: "Female",
-            field: "pValue_female",
-            sortFn: getPValueSortFn("female"),
-          },
-          {
-            width: 1,
-            label: "Combined",
-            field: "pValue_not_considered",
-            sortFn: getPValueSortFn("not_considered"),
-          },
-        ],
-      };
+  const lastColumnHeader = isViabilityChart ? {
+    width: 2,
+    label: "Viability",
+    field: "viability"
+  } : {
+    width: 2,
+    label: "P Value",
+    field: "pValue",
+    children: [
+      {
+        width: 1,
+        label: "Male",
+        field: "pValue_male",
+        sortFn: getPValueSortFn("male"),
+      },
+      {
+        width: 1,
+        label: "Female",
+        field: "pValue_female",
+        sortFn: getPValueSortFn("female"),
+      },
+      {
+        width: 1,
+        label: "Combined",
+        field: "pValue_not_considered",
+        sortFn: getPValueSortFn("not_considered"),
+      },
+    ],
+  };
+
+  useEffect(() => {
+    if (!!sorted[0]?.key && sorted[0]?.key !== selectedKey && selectedKey === '') {
+      onSelectParam(sorted[0].key);
+    }
+  }, [sorted.length]);
 
   return (
     <>

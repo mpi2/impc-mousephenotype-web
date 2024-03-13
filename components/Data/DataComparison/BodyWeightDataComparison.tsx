@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
@@ -39,6 +39,12 @@ const BodyWeightDataComparison = (props: Props) => {
   const getVisibleRows = (data: Array<any>) => {
     return data.slice(0, visibleRows);
   };
+
+  useEffect(() => {
+    if (!!sorted[0]?.key && sorted[0]?.key !== selectedKey && selectedKey === '') {
+      onSelectParam(sorted[0].key);
+    }
+  }, [sorted.length]);
 
   if (!data) {
     return null;

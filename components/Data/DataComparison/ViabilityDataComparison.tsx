@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
 import { formatAlleleSymbol, getIcon, getSexLabel } from "@/utils";
@@ -43,6 +43,12 @@ const ViabilityDataComparison = (props: Props) => {
   if (!data) {
     return null;
   }
+
+  useEffect(() => {
+    if (!!sorted[0]?.key && sorted[0]?.key !== selectedKey && selectedKey === '') {
+      onSelectParam(sorted[0].key);
+    }
+  }, [sorted.length]);
 
   return (
     <>
