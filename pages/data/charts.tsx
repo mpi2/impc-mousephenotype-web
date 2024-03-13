@@ -7,12 +7,13 @@ import SkeletonTable from "@/components/skeletons/table";
 import {
   ABR,
   BodyWeightChart,
-  Categorical, DataComparison,
+  Categorical,
+  DataComparison,
   EmbryoViability,
   Histopathology,
   TimeSeries,
   Unidimensional,
-  Viability
+  Viability,
 } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery } from "@/hooks";
@@ -21,10 +22,13 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Skeleton from "react-loading-skeleton";
+import GrossPathology from "@/components/Data/GrossPathology";
 
 const Charts = () => {
-  const [selectedKey, setSelectedKey] = useState('');
-  const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>([]);
+  const [selectedKey, setSelectedKey] = useState("");
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>(
+    []
+  );
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
   const getChartType = (datasetSummary: Dataset) => {
@@ -44,7 +48,10 @@ const Charts = () => {
           ? "embryo_viability"
           : "line";
     }
-    if (chartType === "time_series" && datasetSummary.procedureGroup === "IMPC_BWT") {
+    if (
+      chartType === "time_series" &&
+      datasetSummary.procedureGroup === "IMPC_BWT"
+    ) {
       chartType = "bodyweight";
     }
     switch (chartType) {
@@ -61,7 +68,9 @@ const Charts = () => {
       case "histopathology":
         return <Histopathology datasetSummary={datasetSummary} />;
       case "bodyweight":
-        return <BodyWeightChart datasetSummary={datasetSummary} />
+        return <BodyWeightChart datasetSummary={datasetSummary} />;
+      case "adult-gross-path":
+        return <GrossPathology datasetSummary={datasetSummary} />;
       default:
         return null;
     }
@@ -75,15 +84,31 @@ const Charts = () => {
     } else {
       return allSummaries[0]?.procedureName;
     }
-  }
+  };
 
-  const { datasetSummaries, isLoading, isError } = useDatasetsQuery(mgiGeneAccessionId, router.query, router.isReady);
+  const { datasetSummaries, isLoading, isError } = useDatasetsQuery(
+    mgiGeneAccessionId,
+    router.query,
+    router.isReady
+  );
 
-  const isABRChart = !isError ? !!datasetSummaries.some(dataset => dataset.dataType === "unidimensional" && dataset.procedureGroup === "IMPC_ABR") : false;
-  const isViabilityChart = !isError ? !!datasetSummaries.some(dataset => dataset.procedureGroup === "IMPC_VIA") : false;
+  const isABRChart = !isError
+    ? !!datasetSummaries.some(
+        (dataset) =>
+          dataset.dataType === "unidimensional" &&
+          dataset.procedureGroup === "IMPC_ABR"
+      )
+    : false;
+  const isViabilityChart = !isError
+    ? !!datasetSummaries.some(
+        (dataset) => dataset.procedureGroup === "IMPC_VIA"
+      )
+    : false;
 
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
-  const activeDataset = !!selectedKey ? getDatasetByKey(allSummaries, selectedKey) : allSummaries[0];
+  const activeDataset = !!selectedKey
+    ? getDatasetByKey(allSummaries, selectedKey)
+    : allSummaries[0];
 
   return (
     <>
@@ -95,15 +120,19 @@ const Charts = () => {
               <Link
                 href={`/genes/${mgiGeneAccessionId}`}
                 className="mb-3"
-                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem' }}
+                style={{
+                  textTransform: "none",
+                  fontWeight: "normal",
+                  letterSpacing: "normal",
+                  fontSize: "1.15rem",
+                }}
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
-                &nbsp;
-                Go Back
+                &nbsp; Go Back
               </Link>
             </span>
           </div>
-          {(!datasetSummaries && !isLoading) && (
+          {!datasetSummaries && !isLoading && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>
               <p>We could not find the data to display this page.</p>
@@ -126,25 +155,28 @@ const Charts = () => {
                 }}
               >
                 <span>
-                  {allSummaries && allSummaries.length} parameter /
-                  zygosity / metadata group combinations tested, with the lowest
-                  p-value of&nbsp;
+                  {allSummaries && allSummaries.length} parameter / zygosity /
+                  metadata group combinations tested, with the lowest p-value
+                  of&nbsp;
                   <strong>
-                    {allSummaries && formatPValue(getSmallestPValue(allSummaries))}
+                    {allSummaries &&
+                      formatPValue(getSmallestPValue(allSummaries))}
                   </strong>
                 </span>
               </div>
             </div>
           )}
-          {(!isLoading && !isError && allSummaries.length > 0 ) ? (
+          {!isLoading && !isError && allSummaries.length > 0 ? (
             <DataComparison
               data={allSummaries}
               isViabilityChart={isViabilityChart}
               selectedKey={selectedKey}
               onSelectParam={setSelectedKey}
-              {...(isABRChart && { initialSortByProp: 'parameterStableId' })}
+              {...(isABRChart && { initialSortByProp: "parameterStableId" })}
             />
-          ) : (!isError ? <SkeletonTable /> : null)}
+          ) : !isError ? (
+            <SkeletonTable />
+          ) : null}
         </Card>
       </Container>
       <div
@@ -158,9 +190,7 @@ const Charts = () => {
               onNewSummariesFetched={setAdditionalSummaries}
             />
           ) : (
-            !!activeDataset && (
-              <div>{getChartType(activeDataset)}</div>
-            )
+            !!activeDataset && <div>{getChartType(activeDataset)}</div>
           )}
         </Container>
       </div>
