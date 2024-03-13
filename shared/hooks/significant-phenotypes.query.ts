@@ -18,18 +18,22 @@ export const useSignificantPhenotypesQuery = (
       const group: Record<string, GenePhenotypeHits> = {};
       data.forEach(item => {
         const {
-          phenotype: { id },
+          phenotype: { id, name },
           alleleAccessionId,
           zygosity,
           sex,
           pValue,
+          alleleSymbol,
+          lifeStageName
         } = item;
-        const key = `${id}-${alleleAccessionId}-${zygosity}`;
-        if (group[key] && group[key].pValue > pValue) {
+        const key = `${id}-${alleleAccessionId}-${zygosity}-${lifeStageName}`;
+        const pValueKey = `pValue_${sex}`;
+        if (group[key] !== undefined && group[key].pValue > pValue) {
           group[key].pValue = pValue;
           group[key].sex = sex;
-        } else if (group[key] === undefined) {
-          const pValueKey = `pValue_${sex}`;
+        } else if (group[key] !== undefined && (group[key][pValueKey] === undefined || group[key][pValueKey] > pValue)) {
+          group[key][pValueKey] = pValue;
+        } if (group[key] === undefined) {
           group[key] = {
             ...item,
             [pValueKey]: pValue,
