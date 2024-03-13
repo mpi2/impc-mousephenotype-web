@@ -20,9 +20,10 @@ export const useGeneAssociationsQuery = (
           zygosity,
           sex,
           pValue,
+          lifeStageName
         } = d;
 
-        const key = `${id}-${alleleAccessionId}-${zygosity}`;
+        const key = `${id}-${alleleAccessionId}-${zygosity}-${lifeStageName}`;
         if (acc[key]) {
           if (acc[key].pValue > pValue) {
             acc[key].pValue = Number(pValue);
