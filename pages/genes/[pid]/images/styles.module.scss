@@ -14,25 +14,55 @@
   border-radius: 10px;
   display: flex;
   gap: 1.5em;
+  align-items: center;
+  .legendWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .legendBackground {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background-color: #000;
+    border-radius: 50%;
+  }
 }
 
+.filtersWrapper {
+  display: grid;
+  padding: 1rem 0;
+  grid-template-columns: 1fr 1fr;
+  .filter {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    .badge {
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+  }
+  .mutantFilter {
+    padding-left: calc(var(--bs-gutter-x)* 0.5);
+  }
+}
 .images {
   --bs-gutter-x: 0.5rem;
   .singleImage {
     position: relative;
     min-height: 50px;
     height: 100%;
-    background-color: #ddd;
+    background-color: #FFF;
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
-    .overlay {
-      z-index: 2;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    border: 1px solid #D1D1D1;
+    &.active {
+      background-color: #E9F3F3;
+      box-shadow: 0 4px 4px 0 #00000033;
     }
     .indicator {
       display: flex;
@@ -41,17 +71,14 @@
     }
     .indicatorsContainer {
       display: flex;
-      top: 5px;
-      left: 5px;
-      position: absolute;
       .common {
         background-color: #000;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 25px;
-        width: 25px;
+        height: 20px;
+        width: 20px;
       }
       .sexIndicator {
         color: #FFF;
@@ -60,15 +87,12 @@
         font-size: 0.75em;
       }
     }
-    .imageActiveIndicator {
-      background-color: $secondary;
-      color: #FFF;
-      top: 5px;
-      right: 5px;
-      padding: 5px;
-    }
     .additionalInfo {
-      font-size: 0.75em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      row-gap: 1rem;
       &:not(:empty) {
         padding: 0.5em;
       }

@@ -6,7 +6,6 @@ import {
   faVenus,
   faMars,
   faMarsAndVenus,
-  faEye,
   faGenderless,
   faCircle
 } from "@fortawesome/free-solid-svg-icons";
@@ -25,12 +24,19 @@ import Skeleton from "react-loading-skeleton";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { AlleleSymbol } from "@/components";
+import { GeneImageCollection } from "@/models/gene";
+import classNames from "classnames";
 
 const addTrailingSlash = (url) => !url.endsWith('/') ?  url + '/' : url;
 const SkeletonText = ({ width = '300px' }) => <Skeleton style={{ display: 'block', width }} inline />;
 
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
-  <Badge className={`badge ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
+  <Badge
+    className={classNames(styles.badge, { 'active': isSelected })}
+    pill
+    bg="badge-secondary"
+    onClick={onClick}
+  >
     {children}&nbsp;
     {!!icon ? <FontAwesomeIcon icon={icon} /> : null}
   </Badge>
@@ -98,22 +104,10 @@ const Column = ({ images, selected, onSelection }) => {
     <Row className={styles.images}>
       {images?.map((image, i) => (
         <Col key={image.observationId} md={4} lg={3} className="mb-2">
-          <div className={styles.singleImage} onClick={() => onSelection(i)}>
-            <div className={styles.overlay}>
-              {selected === i ? (
-                <div className={`${styles.indicator} ${styles.imageActiveIndicator}`}>
-                  <FontAwesomeIcon icon={faEye} />
-                </div>
-              ): null}
-              <div className={`${styles.indicatorsContainer}`}>
-                <div className={`${styles.common} ${styles.sexIndicator}`}>
-                  <FontAwesomeIcon icon={getSexIcon(image.sex)} />
-                </div>
-                <div className={`${styles.common} ${styles.zygosityIndicator}`}>
-                  <FontAwesomeIcon icon={faCircle} style={{ color: getZygosityColor(image.zygosity) }} />
-                </div>
-              </div>
-            </div>
+          <div
+            className={classNames(styles.singleImage, { [styles.active]: selected === i })}
+            onClick={() => onSelection(i)}
+          >
             <LazyLoadImage
               src={addTrailingSlash(image.thumbnailUrl)}
               effect="blur"
@@ -125,13 +119,21 @@ const Column = ({ images, selected, onSelection }) => {
               {!!image.ageInWeeks && (
                 <span>Age: {image.ageInWeeks} weeks <br/></span>
               )}
-              {!!image.alleleSymbol && <AlleleSymbol symbol={image.alleleSymbol} withLabel />}
+              <div className={styles.indicatorsContainer}>
+                <FontAwesomeIcon icon={getSexIcon(image.sex)}/>
+              </div>
+              <div className={styles.indicatorsContainer}>
+                <div className={`${styles.common} ${styles.zygosityIndicator}`}>
+                  <FontAwesomeIcon icon={faCircle} style={{color: getZygosityColor(image.zygosity)}}/>
+                </div>
+              </div>
+              {!!image.alleleSymbol && <AlleleSymbol symbol={image.alleleSymbol} withLabel={false}/>}
             </div>
           </div>
         </Col>
       ))}
       {images && images.length === 0 ? (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{textAlign: 'center'}}>
           <h3><strong>No images to show</strong></h3>
         </div>
       ) : null}
@@ -143,22 +145,19 @@ const ImagesCompare = () => {
   const router = useRouter();
   const [selectedWTImage, setSelectedWTImage] = useState(0);
   const [selectedMutantImage, setSelectedMutantImage] = useState(0);
-  const { parameterStableId = "", pid } = router.query;
+  const {parameterStableId = "", pid } = router.query;
   const { data: mutantImages } = useQuery({
     queryKey: ['genes', pid, 'images', parameterStableId],
     queryFn: () => fetchAPI(`/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`),
     enabled: router.isReady,
-    select: data => {
-      const selectedDataset = data.find(d => d.pipelineStableId.includes('IMPC'));
-      return !!selectedDataset ? selectedDataset : data[0];
-    }
+    select: data => data as Array<GeneImageCollection>
   });
 
   const { data: controlImagesRaw } = useQuery({
     queryKey: ['genes', pid, 'images', parameterStableId, 'control'],
     queryFn: () => fetchAPI(`/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`),
-    enabled: router.isReady && !!mutantImages?.strainAccessionId,
-    select: data => data.find(d => d.strainAccessionId === mutantImages.strainAccessionId && d.pipelineStableId.includes('IMPC'))
+    enabled: router.isReady,
+    select: data => data as Array<GeneImageCollection>
   });
 
   const [selectedSex, setSelectedSex] = useState('both');
@@ -174,9 +173,11 @@ const ImagesCompare = () => {
       ?.filter(i => selectedZyg !== 'both' ? i.zygosity === selectedZyg : true)
   };
 
+  const selectedControlImages = controlImagesRaw?.[0];
+  const selectedMutantImages = mutantImages?.[0];
 
-  const controlImages = filterControlImages(controlImagesRaw?.images);
-  const filteredMutantImages = filterMutantImages(mutantImages?.images);
+  const controlImages = filterControlImages(selectedControlImages?.images);
+  const filteredMutantImages = filterMutantImages(selectedMutantImages?.images);
   return <>
     <Search />
     <Container className="page">
@@ -188,14 +189,14 @@ const ImagesCompare = () => {
         <p className={styles.subheading}>Images</p>
         <h1 className="mb-4 mt-2" style={{ display: 'flex', gap: '1rem' }}>
           <strong>
-            {mutantImages?.procedureName || <SkeletonText/>}
-          </strong> /&nbsp;
-          {mutantImages?.parameterName || <SkeletonText/>}
+            {selectedMutantImages?.procedureName || <SkeletonText/>}
+          </strong>/&nbsp;
+          {selectedMutantImages?.parameterName || <SkeletonText/>}
         </h1>
         <div>
           <Row>
             <Col sm={6}>
-              <h3>WT Images</h3>
+              <h3>WT Images ({ selectedControlImages?.images?.length })</h3>
               <Col
                 xs={12}
                 style={{ display: "flex" }}
@@ -204,7 +205,7 @@ const ImagesCompare = () => {
                 <ImageViewer image={controlImages?.[selectedWTImage]} />
               </Col></Col>
             <Col sm={6}>
-              <h3>Mutant Images</h3>
+              <h3>Mutant Images ({ selectedMutantImages?.images?.length })</h3>
               <Col
                 xs={12}
                 style={{ display: "flex" }}
@@ -218,64 +219,74 @@ const ImagesCompare = () => {
             <Col xs={12}>
               <div className={styles.legendsContainer}>
                 <span>Zygosity indicators</span>
-                <span>
-                  <FontAwesomeIcon style={{ color: '#FFF'}} icon={faCircle} />&nbsp;
-                  <b>Wildtype</b>
+                <span className={styles.legendWrapper}>
+                  <div className={styles.legendBackground}>
+                    <FontAwesomeIcon style={{ color: '#FFF'}} icon={faCircle} />
+                  </div>
+                  Wildtype
                 </span>
-                <span>
-                  <FontAwesomeIcon style={{ color: '#88CCEE'}} icon={faCircle} />&nbsp;
-                  <b>Heterozygote</b>
+                <span className={styles.legendWrapper}>
+                  <div className={styles.legendBackground}>
+                    <FontAwesomeIcon style={{ color: '#88CCEE'}} icon={faCircle} />
+                  </div>
+                  Heterozygote
                 </span>
-                <span>
-                  <FontAwesomeIcon style={{ color: '#DDCC77'}} icon={faCircle} />&nbsp;
-                  <b>Homozygote</b>
+                <span className={styles.legendWrapper}>
+                  <div className={styles.legendBackground}>
+                    <FontAwesomeIcon style={{ color: '#DDCC77'}} icon={faCircle} />
+                  </div>
+                  Homozygote
                 </span>
-                <span>
-                  <FontAwesomeIcon style={{ color: '#CC6677'}} icon={faCircle} />&nbsp;
-                  <b>Hemizygote</b>
+                <span className={styles.legendWrapper}>
+                  <div className={styles.legendBackground}>
+                    <FontAwesomeIcon style={{ color: '#CC6677'}} icon={faCircle} />
+                  </div>
+                  Hemizygote
                 </span>
               </div>
             </Col>
             <Col xs={12}>
-              <div className="filtersWrapper">
-                Filter by:
-                <div className="filter">
-                  <strong>Sex:</strong>
-                  <FilterBadge
-                    isSelected={selectedSex === 'both'}
-                    icon={faMarsAndVenus}
-                    onClick={() => setSelectedSex('both')}
-                  >
-                    All
-                  </FilterBadge>
-                  <FilterBadge
-                    isSelected={selectedSex === 'female'}
-                    icon={faVenus}
-                    onClick={() => setSelectedSex('female')}
-                  >
-                    Female
-                  </FilterBadge>
-                  <FilterBadge
-                    isSelected={selectedSex === 'male'}
-                    icon={faMars}
-                    onClick={() => setSelectedSex('male')}
-                  >
-                    Male
-                  </FilterBadge>
+              <div className={styles.filtersWrapper}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  Filter by:
+                  <div className={styles.filter}>
+                    <strong>Sex:</strong>
+                    <FilterBadge
+                      isSelected={selectedSex === 'both'}
+                      icon={faMarsAndVenus}
+                      onClick={() => setSelectedSex('both')}
+                    >
+                      All
+                    </FilterBadge>
+                    <FilterBadge
+                      isSelected={selectedSex === 'female'}
+                      icon={faVenus}
+                      onClick={() => setSelectedSex('female')}
+                    >
+                      Female
+                    </FilterBadge>
+                    <FilterBadge
+                      isSelected={selectedSex === 'male'}
+                      icon={faMars}
+                      onClick={() => setSelectedSex('male')}
+                    >
+                      Male
+                    </FilterBadge>
+                  </div>
                 </div>
-                <div className="filter">
+                <div className={classNames(styles.filter, styles.mutantFilter)}>
                   <strong>Mutant zygosity:</strong>
                   <FilterBadge isSelected={selectedZyg === 'both'} onClick={() => setSelectedZyg('both')}>
                     All
                   </FilterBadge>
                   <FilterBadge isSelected={selectedZyg === 'heterozygote'} onClick={() => setSelectedZyg('heterozygote')}>
-                    Het.
+                    Heterozygote
                   </FilterBadge>
                   <FilterBadge isSelected={selectedZyg === 'homozygote'} onClick={() => setSelectedZyg('homozygote')}>
-                    Hom.
+                    Homozygote
                   </FilterBadge>
                   <FilterBadge isSelected={selectedZyg === 'hemizygote'} onClick={() => setSelectedZyg('hemizygote')}>
-                    Hem.
+                    Hemizygote
                   </FilterBadge>
                 </div>
               </div>
