@@ -1,4 +1,3 @@
-
 export type GeneImage = {
   count: number;
   fileType: string;
@@ -9,7 +8,8 @@ export type GeneImage = {
   procedureStableId: string;
   strainAccessionId: string;
   thumbnailUrl: string;
-}
+  isSpecialFormat: boolean;
+};
 
 export type GeneImageCollection = {
   id:                    string;
@@ -45,4 +45,4 @@ export type AssociatedParameter = {
   associationSequenceId: null | string;
   name:                  string;
   value:                 string;
-}
+};
