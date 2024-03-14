@@ -6,7 +6,6 @@ import {
   faVenus,
   faMars,
   faMarsAndVenus,
-  faGenderless,
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,6 +25,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import { AlleleSymbol, FilterBox } from "@/components";
 import { GeneImageCollection, Image } from "@/models/gene";
 import classNames from "classnames";
+import { getIcon } from "@/utils";
 
 type Filters = {
   selectedCenter: string;
@@ -35,6 +35,19 @@ const addTrailingSlash = (url) => (!url?.endsWith("/") ? url + "/" : url);
 const SkeletonText = ({ width = "300px" }) => (
   <Skeleton style={{ display: "block", width }} inline />
 );
+const getZygosityColor = (zygosity: string) => {
+  switch (zygosity) {
+    case "heterozygote":
+      return "#88CCEE";
+    case "homozygote":
+      return "#DDCC77";
+    case "hemizygote":
+      return "#CC6677";
+
+    default:
+      return "#FFF";
+  }
+};
 
 const FilterBadge = ({
   children,
@@ -58,28 +71,74 @@ const FilterBadge = ({
   </Badge>
 );
 
-const ImageViewer = ({ image }) => {
+const ImageInformation = ({
+  image,
+  inViewer = false,
+}: {
+  image: Image,
+  inViewer?: boolean
+}) => {
+  return (
+    <div className={classNames(styles.additionalInfo, {[styles.inViewer]: inViewer})}>
+      {!!image.ageInWeeks && (
+        <span>
+          Age: {image.ageInWeeks} weeks <br/>
+        </span>
+      )}
+      <div className={styles.indicatorsContainer}>
+        <FontAwesomeIcon icon={getIcon(image.sex)}/>
+      </div>
+      <div className={styles.indicatorsContainer}>
+        {inViewer ? (
+          <span>{image.zygosity}</span>
+          ) : (
+          <div className={`${styles.common} ${styles.zygosityIndicator}`}>
+            <FontAwesomeIcon icon={faCircle} style={{color: getZygosityColor(image.zygosity)}}/>
+          </div>
+        )}
+      </div>
+      {!!image.alleleSymbol && (
+        <AlleleSymbol symbol={image.alleleSymbol} withLabel={false}/>
+      )}
+      {(inViewer && image.associatedParameters?.length) && (
+        <>
+          <div className="break"></div>
+          <div className={styles.associatedParams}>
+            <span>Associated parameters</span>
+            {image.associatedParameters.map(param => (
+              <div key={param.associationSequenceId}>
+                {param.name} - <b>{param.value}</b>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
+const ImageViewer = ({image}) => {
   if (!image) {
     return (
       <Skeleton
         containerClassName="flex-1"
-        style={{ flex: 1, height: "100%" }}
+        style={{flex: 1, height: "100%"}}
       />
     );
   }
   return (
     <TransformWrapper>
-      {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+      {({zoomIn, zoomOut, resetTransform, ...rest}) => (
         <div className={styles.viewer}>
           <div className={styles.tools}>
             <button onClick={() => zoomIn()}>
-              <FontAwesomeIcon icon={faMagnifyingGlassPlus} />
+              <FontAwesomeIcon icon={faMagnifyingGlassPlus}/>
             </button>
             <button onClick={() => zoomOut()}>
-              <FontAwesomeIcon icon={faMagnifyingGlassMinus} />
+              <FontAwesomeIcon icon={faMagnifyingGlassMinus}/>
             </button>
             <button onClick={() => resetTransform()}>
-              <FontAwesomeIcon icon={faRefresh} />
+              <FontAwesomeIcon icon={faRefresh}/>
             </button>
           </div>
           <TransformComponent>
@@ -96,31 +155,6 @@ const ImageViewer = ({ image }) => {
 };
 
 const Column = ({ images, selected, onSelection }) => {
-  const getSexIcon = (sex: string) => {
-    switch (sex) {
-      case "male":
-        return faMars;
-      case "female":
-        return faVenus;
-      default:
-        return faGenderless;
-    }
-  };
-
-  const getZygosityColor = (zygosity: string) => {
-    switch (zygosity) {
-      case "heterozygote":
-        return "#88CCEE";
-      case "homozygote":
-        return "#DDCC77";
-      case "hemizygote":
-        return "#CC6677";
-
-      default:
-        return "#FFF";
-    }
-  };
-
   return (
     <Row className={styles.images}>
       {images?.map((image, i) => (
@@ -136,24 +170,7 @@ const Column = ({ images, selected, onSelection }) => {
               width="100%"
               wrapperProps={{ style: { width: "100%" } }}
             />
-            <div className={styles.additionalInfo}>
-              {!!image.ageInWeeks && (
-                <span>
-                  Age: {image.ageInWeeks} weeks <br/>
-                </span>
-              )}
-              <div className={styles.indicatorsContainer}>
-                <FontAwesomeIcon icon={getSexIcon(image.sex)}/>
-              </div>
-              <div className={styles.indicatorsContainer}>
-                <div className={`${styles.common} ${styles.zygosityIndicator}`}>
-                  <FontAwesomeIcon icon={faCircle} style={{color: getZygosityColor(image.zygosity)}}/>
-                </div>
-              </div>
-              {!!image.alleleSymbol && (
-                <AlleleSymbol symbol={image.alleleSymbol} withLabel={false}/>
-              )}
-            </div>
+            <ImageInformation image={image}/>
           </div>
         </Col>
       ))}
@@ -227,14 +244,13 @@ const ImagesCompare = () => {
         selectedAllele !== 'all' ? i.alleleSymbol === selectedAllele : true
       );
   };
-
   const filterImagesByCenter = (allImages: Array<GeneImageCollection>, filters: Filters) => {
     const { selectedCenter } = filters;
     if (selectedCenter === undefined) {
       return allImages[0]?.images;
-    } else if (allImages.length === 1 && !allImages[0].pipelineStableId.includes(selectedCenter)) {
+    } else if (allImages.length === 1 && allImages[0].pipelineStableId !== selectedCenter) {
       setSelectedCenter(allImages[0].pipelineStableId.split('_')[0]);
-      return allImages[0].images
+      return allImages[0].images;
     } {
       return allImages
         .filter(collection => collection.pipelineStableId.includes(selectedCenter))
@@ -274,6 +290,9 @@ const ImagesCompare = () => {
     [selectedMutantImages, selectedSex, selectedZyg, selectedAllele]
   );
 
+  console.log(controlImages?.[selectedWTImage]);
+  console.log(filteredMutantImages?.[selectedMutantImage]);
+
   return (
     <>
       <Search />
@@ -293,24 +312,28 @@ const ImagesCompare = () => {
             <Row>
               <Col sm={6}>
                 <h3>WT Images ({ selectedControlImages?.length })</h3>
-                <Col
-                  xs={12}
-                  style={{ display: "flex" }}
-                  className="ratio ratio-16x9"
-                >
-                  <ImageViewer image={controlImages?.[selectedWTImage]} />
+                <Col xs={12}>
+                  <div className={classNames("ratio", "ratio-16x9", styles.imageContainer)}>
+                    <ImageViewer image={controlImages?.[selectedWTImage]}/>
+                  </div>
+                  <div className={styles.imageInfo}>
+                    {!!controlImages?.[selectedWTImage] && (
+                      <ImageInformation image={controlImages[selectedWTImage]} inViewer />
+                    )}
+                  </div>
                 </Col>
               </Col>
               <Col sm={6}>
-                <h3>Mutant Images ({ selectedMutantImages?.length })</h3>
-                <Col
-                  xs={12}
-                  style={{ display: "flex" }}
-                  className="ratio ratio-4x3"
-                >
-                  <ImageViewer
-                    image={filteredMutantImages?.[selectedMutantImage]}
-                  />
+              <h3>Mutant Images ({ selectedMutantImages?.length })</h3>
+                <Col xs={12}>
+                  <div className={classNames("ratio", "ratio-16x9", styles.imageContainer)}>
+                    <ImageViewer image={filteredMutantImages?.[selectedMutantImage]}/>
+                  </div>
+                  <div className={styles.imageInfo}>
+                    {!!filteredMutantImages?.[selectedMutantImage] && (
+                      <ImageInformation image={filteredMutantImages[selectedMutantImage]} inViewer />
+                    )}
+                  </div>
                 </Col>
               </Col>
             </Row>

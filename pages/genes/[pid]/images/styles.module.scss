@@ -75,35 +75,48 @@
       border-radius: 50%;
       position: absolute;
     }
-    .indicatorsContainer {
-      display: flex;
-      .common {
-        background-color: #000;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 20px;
-        width: 20px;
-      }
-      .sexIndicator {
-        color: #FFF;
-      }
-      .zygosityIndicator {
-        font-size: 0.75em;
-      }
-    }
-    .additionalInfo {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      row-gap: 1rem;
-      font-size: 0.85rem;
-      &:not(:empty) {
-        padding: 0.5em;
-      }
-    }
+  }
+}
+
+.indicatorsContainer {
+  display: flex;
+  .common {
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+  }
+  .sexIndicator {
+    color: #FFF;
+  }
+  .zygosityIndicator {
+    font-size: 0.75em;
+  }
+}
+
+.additionalInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 1rem;
+  font-size: 0.85rem;
+  &.inViewer {
+    font-size: 1rem;
+    justify-content: space-around;
+  }
+  &:not(:empty) {
+    padding: 0.5em;
+  }
+  .associatedParams {
+    font-size: 0.8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 0.3rem;
+    text-align: center;
   }
 }
 
@@ -113,6 +126,15 @@
   border-radius: 5;
   overflow: hidden;
   position: relative;
+}
+.imageContainer {
+  display: flex;
+  border: 1px solid #D1D1D1;
+  border-radius: 5px;
+}
+.imageInfo {
+  background-color: #E9F3F3;
+  box-shadow: 0 4px 4px 0 #00000033;
 }
 
 .tools {
