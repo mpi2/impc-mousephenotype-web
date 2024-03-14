@@ -202,16 +202,6 @@ const ImagesCompare = () => {
     placeholderData: [],
   });
 
-  const { procedureName, parameterName } = useMemo(() => {
-    if (mutantImages.length) {
-      return mutantImages[0];
-    }
-    return {
-      procedureName: null,
-      parameterName: null,
-    }
-  }, [mutantImages.length]);
-
   const { data: controlImagesRaw } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId, "control"],
     queryFn: () =>
@@ -258,6 +248,17 @@ const ImagesCompare = () => {
     }
   };
 
+  const { procedureName, parameterName, geneSymbol } = useMemo(() => {
+    if (mutantImages.length) {
+      return mutantImages[0];
+    }
+    return {
+      procedureName: null,
+      parameterName: null,
+      geneSymbol: null
+    }
+  }, [mutantImages.length]);
+
   const selectedControlImages = useMemo(
     () => filterImagesByCenter(controlImagesRaw, { selectedCenter }),
     [controlImagesRaw, selectedCenter]
@@ -298,9 +299,8 @@ const ImagesCompare = () => {
       <Search />
       <Container className="page">
         <Card>
-          <Link href={`/genes/${pid}#images`} className="grey mb-3 small">
-            <FontAwesomeIcon icon={faArrowLeftLong} />
-            &nbsp; BACK TO GENE
+          <Link href={`/genes/${pid}#images`} className="primary mb-3" style={{ fontSize: '1.13rem'}}>
+            <FontAwesomeIcon icon={faArrowLeftLong} /> Back to {geneSymbol || <SkeletonText />}
           </Link>
           <p className={styles.subheading}>Images</p>
           <h1 className="mb-4 mt-2" style={{ display: "flex", gap: "1rem" }}>
