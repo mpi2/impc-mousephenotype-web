@@ -17,6 +17,7 @@ type CommonProps = {
   controlStyle?: CSSProperties;
   controlClassName?: string;
   value?: string;
+  allOptionEnabled?: boolean;
 };
 
 type Props = CommonProps & LabelProps;
@@ -32,6 +33,7 @@ const FilterBox = (props: Props) => {
     controlClassName = 'bg-white',
     hideLabel = false,
     value,
+    allOptionEnabled = true,
   } = props;
 
   if (options?.length === 1) {
@@ -57,7 +59,9 @@ const FilterBox = (props: Props) => {
             onChange(el.target.value === "all" ? undefined : el.target.value)
           }
         >
-          <option value={"all"}>All</option>
+          {allOptionEnabled && (
+            <option value={"all"}>All</option>
+          )}
           {
             options
               .sort()
