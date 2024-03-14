@@ -18,6 +18,7 @@ interface ImageProps {
   image: string;
   length: number;
   fileType: string;
+  isSpecialFormat: boolean;
 }
 
 const embryo3DParametersIds = [
@@ -31,8 +32,6 @@ const embryo3DParametersIds = [
   "ALTIMPC_EOL_001_001",
 ];
 
-const downloadFileTypes = ["application/pdf", "video/quicktime"];
-
 const Image = ({
   parameterName,
   procedureName,
@@ -40,15 +39,12 @@ const Image = ({
   image,
   length,
   fileType,
+  isSpecialFormat,
 }: ImageProps) => {
-  console.log(fileType);
+  console.log(isSpecialFormat);
 
   const router = useRouter();
   const { pid } = router.query;
-  const isSpecialFormat =
-    parameterStableId.includes("IMPC_EMA") ||
-    parameterStableId.includes("IMPC_IMM") ||
-    downloadFileTypes.includes(fileType);
   const urlSegment = isSpecialFormat ? "download-images" : "images";
   let url = `/genes/${pid}/${urlSegment}/${parameterStableId}`;
   if (embryo3DParametersIds.includes(parameterStableId)) {
@@ -64,7 +60,9 @@ const Image = ({
           data-testid="image"
         >
           <div className={styles.cardImageOverlay}>
-            {isSpecialFormat ? (
+            {embryo3DParametersIds.includes(parameterStableId) ? (
+              <span>View on Embryo Viewer</span>
+            ) : isSpecialFormat ? (
               <span>Download files</span>
             ) : (
               <span>
@@ -135,6 +133,7 @@ const Images = ({ gene }: { gene: any }) => {
                 image={group[0].thumbnailUrl}
                 length={group[0].count}
                 fileType={group[0].fileType}
+                isSpecialFormat={group[0].isSpecialFormat}
               />
             </Col>
           ))}
