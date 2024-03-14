@@ -1,4 +1,3 @@
-
 export type GeneImage = {
   count: number;
   fileType: string;
@@ -9,4 +8,5 @@ export type GeneImage = {
   procedureStableId: string;
   strainAccessionId: string;
   thumbnailUrl: string;
-}
+  isSpecialFormat: boolean;
+};
