@@ -22,7 +22,7 @@ export type GeneImageCollection = {
   parameterStableId:     string;
   parameterName:         string;
   biologicalSampleGroup: string;
-  images:                Image[];
+  images:                Array<Image>;
 };
 
 export type Image = {
@@ -37,7 +37,7 @@ export type Image = {
   zygosity:             string;
   ageInWeeks:           number;
   alleleSymbol:         string;
-  associatedParameters: AssociatedParameter[] | null;
+  associatedParameters: Array<AssociatedParameter> | null;
 };
 
 export type AssociatedParameter = {

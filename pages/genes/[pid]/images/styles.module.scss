@@ -45,6 +45,12 @@
       font-size: 0.9rem;
     }
   }
+  .column {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem
+  }
   .mutantFilter {
     padding-left: calc(var(--bs-gutter-x)* 0.5);
   }
@@ -93,6 +99,7 @@
       justify-content: space-between;
       align-items: center;
       row-gap: 1rem;
+      font-size: 0.85rem;
       &:not(:empty) {
         padding: 0.5em;
       }
