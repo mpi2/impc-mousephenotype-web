@@ -224,7 +224,7 @@ const ImagesCompare = () => {
       selectedSex !== "both" ? i.sex === selectedSex : true
     );
   };
-  const filterMutantImages = (images) => {
+  const filterMutantImages = (images: Array<Image>) => {
     return images
       ?.filter((i) => (selectedSex !== "both" ? i.sex === selectedSex : true))
       ?.filter((i) =>
@@ -234,17 +234,21 @@ const ImagesCompare = () => {
         selectedAllele !== 'all' ? i.alleleSymbol === selectedAllele : true
       );
   };
-  const filterImagesByCenter = (allImages: Array<GeneImageCollection>, filters: Filters) => {
+  const filterImagesByCenter = (images: Array<GeneImageCollection>, filters: Filters) => {
     const { selectedCenter } = filters;
-    if (selectedCenter === undefined) {
-      return allImages[0]?.images;
-    } else if (allImages.length === 1 && allImages[0].pipelineStableId !== selectedCenter) {
-      setSelectedCenter(allImages[0].pipelineStableId.split('_')[0]);
-      return allImages[0].images;
-    } {
-      return allImages
-        .filter(collection => collection.pipelineStableId.includes(selectedCenter))
+    const byPipelineStableID = (c: GeneImageCollection, center: string) => c.pipelineStableId.includes(center);
+    const hasImagesForParameter = !!images.find(c => byPipelineStableID(c, selectedCenter));
+    if (hasImagesForParameter) {
+      return images
+        .filter(byPipelineStableID.bind(selectedCenter))
         .flatMap(collection => collection.images) || [];
+    } else if (images?.length === 1 && !images[0].pipelineStableId.includes(selectedCenter)) {
+      setSelectedCenter(images[0].pipelineStableId.split('_')[0]);
+      return images[0].images;
+    } else if (!hasImagesForParameter && !!images.find(c => byPipelineStableID(c, "IMPC"))) {
+      return images.find(byPipelineStableID.bind('IMPC')).images;
+    } else {
+      return images?.[0]?.images || [];
     }
   };
 
@@ -264,7 +268,7 @@ const ImagesCompare = () => {
     [controlImagesRaw, selectedCenter]
   );
   const selectedMutantImages = useMemo(
-    () => filterImagesByCenter(mutantImages, { selectedCenter }),
+    () => filterImagesByCenter(mutantImages,{ selectedCenter }),
     [mutantImages, selectedCenter]
   );
 
@@ -276,7 +280,7 @@ const ImagesCompare = () => {
     [mutantImages]
   );
 
-  const alleles = useMemo(
+  const alleles: Array<string> = useMemo(
     () =>
       Array.from(new Set(selectedMutantImages?.map(c => c.alleleSymbol))) || [] as Array<string>,
     [selectedMutantImages]
@@ -290,9 +294,6 @@ const ImagesCompare = () => {
     () => filterMutantImages(selectedMutantImages),
     [selectedMutantImages, selectedSex, selectedZyg, selectedAllele]
   );
-
-  console.log(controlImages?.[selectedWTImage]);
-  console.log(filteredMutantImages?.[selectedMutantImage]);
 
   return (
     <>
