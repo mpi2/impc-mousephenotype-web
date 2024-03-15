@@ -106,7 +106,7 @@ const ImageInformation = ({
           <div className={styles.associatedParams}>
             <span>Associated parameters</span>
             {image.associatedParameters.map(param => (
-              <div key={param.associationSequenceId}>
+              <div key={param.stableId}>
                 {param.name} - <b>{param.value}</b>
               </div>
             ))}
@@ -216,7 +216,8 @@ const ImagesCompare = () => {
 
   const [selectedSex, setSelectedSex] = useState("both");
   const [selectedZyg, setSelectedZyg] = useState("both");
-  const [selectedCenter, setSelectedCenter] = useState<string>('IMPC');
+  const [selectedMutantCenter, setSelectedMutantCenter] = useState<string>('IMPC');
+  const [selectedControlCenter, setSelectedControlCenter] = useState<string>('IMPC');
   const [selectedAllele, setSelectedAllele] = useState<string>('all');
 
   const filterControlImages = (images: Array<Image>) => {
@@ -234,21 +235,17 @@ const ImagesCompare = () => {
         selectedAllele !== 'all' ? i.alleleSymbol === selectedAllele : true
       );
   };
-  const filterImagesByCenter = (images: Array<GeneImageCollection>, filters: Filters) => {
+  const filterImagesByCenter = (images: Array<GeneImageCollection>, type: "control" | "mutant", filters: Filters) => {
     const { selectedCenter } = filters;
-    const byPipelineStableID = (c: GeneImageCollection, center: string) => c.pipelineStableId.includes(center);
-    const hasImagesForParameter = !!images.find(c => byPipelineStableID(c, selectedCenter));
+    const setSelectedCenter = type === "control" ? setSelectedControlCenter : setSelectedMutantCenter;
+    const hasImagesForParameter = !!images.find(c => c.pipelineStableId.includes(selectedCenter));
     if (hasImagesForParameter) {
       return images
-        .filter(byPipelineStableID.bind(selectedCenter))
+        .filter(collection => collection.pipelineStableId.includes(selectedCenter))
         .flatMap(collection => collection.images) || [];
-    } else if (images?.length === 1 && !images[0].pipelineStableId.includes(selectedCenter)) {
+    } else if (images?.length >= 1 && !images[0].pipelineStableId.includes(selectedCenter)) {
       setSelectedCenter(images[0].pipelineStableId.split('_')[0]);
       return images[0].images;
-    } else if (!hasImagesForParameter && !!images.find(c => byPipelineStableID(c, "IMPC"))) {
-      return images.find(byPipelineStableID.bind('IMPC')).images;
-    } else {
-      return images?.[0]?.images || [];
     }
   };
 
@@ -264,20 +261,24 @@ const ImagesCompare = () => {
   }, [mutantImages.length]);
 
   const selectedControlImages = useMemo(
-    () => filterImagesByCenter(controlImagesRaw, { selectedCenter }),
-    [controlImagesRaw, selectedCenter]
+    () => filterImagesByCenter(controlImagesRaw, "control", { selectedCenter: selectedControlCenter }),
+    [controlImagesRaw, selectedControlCenter]
   );
   const selectedMutantImages = useMemo(
-    () => filterImagesByCenter(mutantImages,{ selectedCenter }),
-    [mutantImages, selectedCenter]
+    () => filterImagesByCenter(mutantImages, "mutant", { selectedCenter: selectedMutantCenter }),
+    [mutantImages, selectedMutantCenter]
   );
 
-  const allCenters = useMemo(
+  const allMutantCenters = useMemo(
     () =>
-      mutantImages?.map(
-        c => c.pipelineStableId.split('_')[0]
-      ) || [] as Array<string>,
+      Array.from(new Set(mutantImages?.map(c => c.pipelineStableId.split('_')[0]))) || [] as Array<string>,
     [mutantImages]
+  );
+
+  const allControlCenters = useMemo(
+    () =>
+      Array.from(new Set(controlImagesRaw?.map(c => c.pipelineStableId.split('_')[0]))) || [] as Array<string>,
+    [controlImagesRaw]
   );
 
   const alleles: Array<string> = useMemo(
@@ -312,27 +313,53 @@ const ImagesCompare = () => {
           <div>
             <Row>
               <Col sm={6}>
-                <h3>WT Images ({ selectedControlImages?.length })</h3>
+                <div className={styles.headerContainer}>
+                  <h3 style={{ marginBottom: 0 }}>WT Images ({selectedControlImages?.length})</h3>
+                  <FilterBox
+                    controlId="controlCenterFilter"
+                    label="Center"
+                    ariaLabel="Filter control images by center"
+                    value={selectedControlCenter}
+                    onChange={setSelectedControlCenter}
+                    options={allControlCenters}
+                    controlStyle={{display: "inline-block", width: 100}}
+                    allOptionEnabled={false}
+                    displayEvenWithOnlyOneOption
+                  />
+                </div>
                 <Col xs={12}>
                   <div className={classNames("ratio", "ratio-16x9", styles.imageContainer)}>
                     <ImageViewer image={controlImages?.[selectedWTImage]}/>
                   </div>
                   <div className={styles.imageInfo}>
                     {!!controlImages?.[selectedWTImage] && (
-                      <ImageInformation image={controlImages[selectedWTImage]} inViewer />
+                      <ImageInformation image={controlImages[selectedWTImage]} inViewer/>
                     )}
                   </div>
                 </Col>
               </Col>
               <Col sm={6}>
-              <h3>Mutant Images ({ selectedMutantImages?.length })</h3>
+                <div className={styles.headerContainer}>
+                  <h3 style={{ marginBottom: 0 }}>Mutant Images ({selectedMutantImages?.length})</h3>
+                  <FilterBox
+                    controlId="mutantCenterFilter"
+                    label="Center"
+                    ariaLabel="Filter mutant images by center"
+                    value={selectedMutantCenter}
+                    onChange={setSelectedMutantCenter}
+                    options={allMutantCenters}
+                    controlStyle={{display: "inline-block", width: 100}}
+                    allOptionEnabled={false}
+                    displayEvenWithOnlyOneOption
+                  />
+                </div>
                 <Col xs={12}>
-                  <div className={classNames("ratio", "ratio-16x9", styles.imageContainer)}>
+                <div className={classNames("ratio", "ratio-16x9", styles.imageContainer)}>
                     <ImageViewer image={filteredMutantImages?.[selectedMutantImage]}/>
                   </div>
                   <div className={styles.imageInfo}>
                     {!!filteredMutantImages?.[selectedMutantImage] && (
-                      <ImageInformation image={filteredMutantImages[selectedMutantImage]} inViewer />
+                      <ImageInformation image={filteredMutantImages[selectedMutantImage]} inViewer/>
                     )}
                   </div>
                 </Col>
@@ -396,20 +423,6 @@ const ImagesCompare = () => {
                         Male
                       </FilterBadge>
                     </div>
-                    {allCenters.length > 1 && (
-                      <div className={styles.filter}>
-                        <FilterBox
-                          controlId="centerFilter"
-                          label="Center"
-                          ariaLabel="Filter by center"
-                          value={selectedCenter}
-                          onChange={setSelectedCenter}
-                          options={allCenters}
-                          controlStyle={{display: "inline-block", width: 100}}
-                          allOptionEnabled={false}
-                        />
-                      </div>
-                    )}
                   </div>
                   <div className={classNames(styles.column, styles.mutantFilter)}>
                     <div className={styles.filter}>

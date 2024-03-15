@@ -8,7 +8,12 @@
   margin-bottom: 0;
   font-size: 1.3rem;
 }
-
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 .legendsContainer {
   padding: 1em;
   background-color: #e8e8e8;
