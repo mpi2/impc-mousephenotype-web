@@ -28,3 +28,7 @@
 .breadcrumb .breadcrumb-item.active {
   color: #8E8E8E;
 }
+
+.form-select:disabled {
+  background-color: var(--bs-secondary-bg) !important;
+}
