@@ -44,7 +44,7 @@ const dataMatchesFilters = (phenotype: GenePhenotypeHits, filters: Filters): boo
 }
 const getAlleleDataObject = (phenotypeData: Array<GenePhenotypeHits>, filters: Filters) => {
   const result: Record<string, Allele> = {};
-  phenotypeData.forEach(phenotype => {
+  phenotypeData?.forEach(phenotype => {
     if (dataMatchesFilters(phenotype, filters)) {
       if (result[phenotype.alleleSymbol] === undefined) {
         result[phenotype.alleleSymbol] = {
@@ -127,17 +127,6 @@ const AllelePhenotypeDiagram = (
     setField(field);
   }
 
-  if (isPhenotypeLoading) {
-    return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
-  }
-  if (isPhenotypeError) {
-    return (
-      <Alert variant="primary" className="mt-3">
-        No significant phenotypes for {gene.geneSymbol}.
-      </Alert>
-    )
-  }
-
   const allelesData: Record<string, Allele> = useMemo(() => {
     const data = getAlleleDataObject(phenotypeData, {
       selectedZyg,
@@ -162,7 +151,7 @@ const AllelePhenotypeDiagram = (
     }, [dataByField]);
 
   useEffect(() => {
-    if (phenotypeData.length) {
+    if (phenotypeData?.length) {
       const zygosities = _.uniq(phenotypeData.map(p => p.zygosity));
       const lifeStages = _.sortBy(_.uniq(phenotypeData.map(p => p.lifeStageName)));
       const sexes = _.sortBy(_.uniq(phenotypeData.map(p => p.sex === 'not_considered' ? 'combined' : p.sex) ));
@@ -171,6 +160,17 @@ const AllelePhenotypeDiagram = (
       setAvailableSexes(sexes);
     }
   }, [phenotypeData]);
+
+  if (isPhenotypeLoading) {
+    return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
+  }
+  if (isPhenotypeError) {
+    return (
+      <Alert variant="primary" className="mt-3">
+        No significant phenotypes for {gene.geneSymbol}.
+      </Alert>
+    )
+  }
 
   return (
     <div ref={ref}>

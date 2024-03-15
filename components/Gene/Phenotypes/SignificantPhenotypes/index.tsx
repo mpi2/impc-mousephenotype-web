@@ -31,6 +31,18 @@ const SignificantPhenotypes = (
   const [selectedSystem, setSelectedSystem] = useState<string>(undefined);
   const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
 
+  useEffect(() => {
+    const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
+      'onSystemSelection',
+      (payload) => {
+        setSelectedSystem(payload);
+        document.querySelector('#data')?.scrollIntoView();
+      });
+    return () => {
+      unsubscribeOnSystemSelection();
+    }
+  }, []);
+
   if (isPhenotypeLoading) {
     return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
   }
@@ -52,24 +64,12 @@ const SignificantPhenotypes = (
        alleleSymbol,
        lifeStageName,
        topLevelPhenotypes,
-    }) =>
-    (!selectedAllele || alleleSymbol === selectedAllele) &&
-    (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query)) &&
-    (!selectedSystem || (topLevelPhenotypes ?? []).some(({ name }) => name === selectedSystem)) &&
-    (!selectedLifeStage || lifeStageName === selectedLifeStage)
+     }) =>
+      (!selectedAllele || alleleSymbol === selectedAllele) &&
+      (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query)) &&
+      (!selectedSystem || (topLevelPhenotypes ?? []).some(({ name }) => name === selectedSystem)) &&
+      (!selectedLifeStage || lifeStageName === selectedLifeStage)
   );
-
-  useEffect(() => {
-    const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
-      'onSystemSelection',
-      (payload) => {
-        setSelectedSystem(payload);
-        document.querySelector('#data')?.scrollIntoView();
-      });
-    return () => {
-      unsubscribeOnSystemSelection();
-    }
-  }, []);
 
   return (
     <SmartTable<GenePhenotypeHits>
