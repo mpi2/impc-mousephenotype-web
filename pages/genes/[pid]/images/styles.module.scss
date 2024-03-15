@@ -4,75 +4,125 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: $primary;
+  color: #767676;
   margin-bottom: 0;
+  font-size: 1.3rem;
 }
-
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 .legendsContainer {
   padding: 1em;
   background-color: #e8e8e8;
   border-radius: 10px;
   display: flex;
   gap: 1.5em;
+  align-items: center;
+  .legendWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .legendBackground {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background-color: #000;
+    border-radius: 50%;
+  }
 }
 
+.filtersWrapper {
+  display: grid;
+  padding: 1rem 0;
+  grid-template-columns: 1fr 1fr;
+  .filter {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    .badge {
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+  }
+  .column {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem
+  }
+  .mutantFilter {
+    padding-left: calc(var(--bs-gutter-x)* 0.5);
+  }
+}
 .images {
   --bs-gutter-x: 0.5rem;
   .singleImage {
     position: relative;
     min-height: 50px;
     height: 100%;
-    background-color: #ddd;
+    background-color: #FFF;
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
-    .overlay {
-      z-index: 2;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    border: 1px solid #D1D1D1;
+    &.active {
+      background-color: #E9F3F3;
+      box-shadow: 0 4px 4px 0 #00000033;
     }
     .indicator {
       display: flex;
       border-radius: 50%;
       position: absolute;
     }
-    .indicatorsContainer {
-      display: flex;
-      top: 5px;
-      left: 5px;
-      position: absolute;
-      .common {
-        background-color: #000;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 25px;
-        width: 25px;
-      }
-      .sexIndicator {
-        color: #FFF;
-      }
-      .zygosityIndicator {
-        font-size: 0.75em;
-      }
-    }
-    .imageActiveIndicator {
-      background-color: $secondary;
-      color: #FFF;
-      top: 5px;
-      right: 5px;
-      padding: 5px;
-    }
-    .additionalInfo {
-      font-size: 0.75em;
-      &:not(:empty) {
-        padding: 0.5em;
-      }
-    }
+  }
+}
+
+.indicatorsContainer {
+  display: flex;
+  .common {
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+  }
+  .sexIndicator {
+    color: #FFF;
+  }
+  .zygosityIndicator {
+    font-size: 0.75em;
+  }
+}
+
+.additionalInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 1rem;
+  font-size: 0.85rem;
+  &.inViewer {
+    font-size: 1rem;
+    justify-content: space-around;
+  }
+  &:not(:empty) {
+    padding: 0.5em;
+  }
+  .associatedParams {
+    font-size: 0.8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 0.3rem;
+    text-align: center;
   }
 }
 
@@ -82,6 +132,15 @@
   border-radius: 5;
   overflow: hidden;
   position: relative;
+}
+.imageContainer {
+  display: flex;
+  border: 1px solid #D1D1D1;
+  border-radius: 5px;
+}
+.imageInfo {
+  background-color: #E9F3F3;
+  box-shadow: 0 4px 4px 0 #00000033;
 }
 
 .tools {

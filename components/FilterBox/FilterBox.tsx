@@ -17,6 +17,8 @@ type CommonProps = {
   controlStyle?: CSSProperties;
   controlClassName?: string;
   value?: string;
+  allOptionEnabled?: boolean;
+  displayEvenWithOnlyOneOption?: boolean;
 };
 
 type Props = CommonProps & LabelProps;
@@ -32,9 +34,11 @@ const FilterBox = (props: Props) => {
     controlClassName = 'bg-white',
     hideLabel = false,
     value,
+    allOptionEnabled = true,
+    displayEvenWithOnlyOneOption = false,
   } = props;
 
-  if (options?.length === 1) {
+  if (!displayEvenWithOnlyOneOption && options?.length === 1) {
     return null;
   }
 
@@ -53,11 +57,14 @@ const FilterBox = (props: Props) => {
           id={controlId}
           className={controlClassName}
           value={value}
+          disabled={displayEvenWithOnlyOneOption && options?.length === 1}
           onChange={el =>
             onChange(el.target.value === "all" ? undefined : el.target.value)
           }
         >
-          <option value={"all"}>All</option>
+          {allOptionEnabled && (
+            <option value={"all"}>All</option>
+          )}
           {
             options
               .sort()

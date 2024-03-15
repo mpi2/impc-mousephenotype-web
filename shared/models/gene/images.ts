@@ -10,3 +10,39 @@ export type GeneImage = {
   thumbnailUrl: string;
   isSpecialFormat: boolean;
 };
+
+export type GeneImageCollection = {
+  id:                    string;
+  mgiGeneAccessionId:    string;
+  geneSymbol:            string;
+  strainAccessionId:     string;
+  pipelineStableId:      string;
+  procedureStableId:     string;
+  procedureName:         string;
+  parameterStableId:     string;
+  parameterName:         string;
+  biologicalSampleGroup: string;
+  images:                Array<Image>;
+};
+
+export type Image = {
+  thumbnailUrl:         null | string;
+  downloadUrl:          string;
+  jpegUrl:              string;
+  fileType:             string | null;
+  observationId:        string;
+  specimenId:           string;
+  colonyId:             string;
+  sex:                  string;
+  zygosity:             string;
+  ageInWeeks:           number;
+  alleleSymbol:         string;
+  associatedParameters: Array<AssociatedParameter> | null;
+};
+
+export type AssociatedParameter = {
+  stableId:              string;
+  associationSequenceId: null | string;
+  name:                  string;
+  value:                 string;
+};
