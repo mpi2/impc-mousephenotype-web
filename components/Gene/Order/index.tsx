@@ -141,9 +141,9 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                         {d.productTypes
                           .filter((x) => !(x === "intermediate_vector" || x === "crispr"))
                           .map((product: string) => product.replace(/_/g, " "))
-                          .map(product => (
+                          .map((product: string, index: number) => (
                             <>
-                              <Link href={getProductURL(allele[1], product)} className="primary link">
+                              <Link key={index} href={getProductURL(allele[1], product)} className="primary link">
                                 {product}
                               </Link>
                               <br/>

@@ -11,7 +11,7 @@ describe('Gene order component', () => {
   it('should display information', async () => {
     // misuse of query param :) to pass param to fetch function
     await mockRouter.push('/genes/MGI:1860086?pid=MGI:1860086');
-    renderWithClient(<GeneOrder gene={{ geneSymbol: 'Crlf3' }} />);
+    renderWithClient(<GeneOrder allelesStudied={[]}/>);
     expect(screen.getByRole('heading')).toHaveTextContent('Order Mouse and ES Cells');
     expect(await screen.findByRole('table')).toBeInTheDocument();
     expect(screen.getAllByRole('row')).toHaveLength(8);
@@ -25,7 +25,7 @@ describe('Gene order component', () => {
       })
     )
     await mockRouter.push('/genes/MGI:1860086?pid=MGI:1860086');
-    renderWithClient(<GeneOrder gene={{ geneSymbol: 'Crlf3' }} />);
+    renderWithClient(<GeneOrder allelesStudied={[]} />);
     expect(await screen.findByRole('alert')).toBeInTheDocument();
     expect(screen.getByRole('alert')).toHaveTextContent('No data available for this section.');
   });
