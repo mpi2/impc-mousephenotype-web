@@ -29,6 +29,23 @@ describe('Gene histopathology component', () => {
     expect(await screen.findByRole('table')).toBeInTheDocument();
   });
 
+  it('should show alert with link to histopathology page if there are not significant hist. hits', async () => {
+    server.use(
+      rest.get(`${API_URL}/api/v1/genes/MGI:2143539/gene_histopathology`, (req, res, ctx) => {
+        return res(ctx.status(404));
+      })
+    );
+    const updatedGene = {...gene, hasHistopathologyData: true};
+    await mockRouter.push('/genes/MGI:2143539?pid=MGI:2143539');
+    renderWithClient(
+      <GeneContext.Provider value={updatedGene as GeneSummary}>
+        <GeneHistopathology />
+      </GeneContext.Provider>
+    );
+    expect(await screen.findByRole('link')).toBeInTheDocument();
+    expect(await screen.findByRole('link')).toHaveAttribute('href', '/data/histopath/MGI:2143539');
+  });
+
 
   it('should show an error message if the request fails', async () => {
     server.use(
