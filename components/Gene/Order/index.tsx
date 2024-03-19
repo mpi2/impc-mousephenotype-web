@@ -1,5 +1,3 @@
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -56,7 +54,7 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
 
   useEffect(() => {
     if (allelesStudied.length > 0) {
-      setSorted(sorted.map(geneOrder => ({ ...geneOrder, phenotyped: allelesStudied.includes(geneOrder.alleleSymbol) })))
+      setSorted(sorted?.map(geneOrder => ({ ...geneOrder, phenotyped: allelesStudied.includes(geneOrder.alleleSymbol) })))
     }
   }, [allelesStudied]);
 
