@@ -8,8 +8,6 @@ import {
   SmartTable,
 } from "@/components/SmartTable";
 import { GeneStatisticalResult } from "@/models/gene";
-import { Form } from "react-bootstrap";
-import { allBodySystems } from "../../Summary";
 import { TableCellProps } from "@/models";
 import { formatPValue } from "@/utils";
 import Link from "next/link";
@@ -47,6 +45,9 @@ const PValueCell = <T extends GeneStatisticalResult>(
   let url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
   if (procedureStableId.includes("IMPC_PAT") && parameterStableId) {
     url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
+  }
+  if (procedureStableId.includes("IMPC_HIS")) {
+    url = `/data/histopath/${mgiGeneAccessionId}`;
   }
   return (
     <div

@@ -6,15 +6,6 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import _ from "lodash";
 import { GeneExpressionCounts } from "@/models/gene/expression";
 
-export const AnatomyCell = <T extends GeneExpression>(props: TableCellProps<T>) => {
-  return (
-    <Link
-      href="/data/charts?accession=MGI:2444773&allele_accession_id=MGI:6276904&zygosity=homozygote&parameter_stable_id=IMPC_DXA_004_001&pipeline_stable_id=UCD_001&procedure_stable_id=IMPC_DXA_001&parameter_stable_id=IMPC_DXA_004_001&phenotyping_center=UC%20Davis"
-      legacyBehavior>
-      <strong className="link">{props.value.parameterName}</strong>
-    </Link>
-  )
-}
 export const ImagesCell = <T extends GeneExpression>(props: TableCellProps<T> & { mgiGeneAccessionId: string; }) => {
   const imageParameters = props.value.expressionImageParameters;
   return (
