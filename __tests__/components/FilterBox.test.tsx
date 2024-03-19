@@ -53,5 +53,20 @@ describe('FilterBox component', () => {
       />
     );
     expect(screen.queryByTestId('filterbox-test')).not.toBeInTheDocument();
-  })
+  });
+
+  it('should display the options alphabetically', async () => {
+    const onChangeMock = jest.fn();
+    render(
+      <FilterBox
+        controlId="test"
+        ariaLabel="test"
+        onChange={onChangeMock}
+        options={['Z', 'A', 'C', 'F', 'B']}
+      />
+    );
+    const options = await screen.findAllByRole('option');
+    const optionsText = options.map(opt => opt.textContent);
+    expect(optionsText).toEqual(['All', 'A', 'B', 'C', 'F', 'Z']);
+  });
 });
