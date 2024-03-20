@@ -33,21 +33,19 @@ const Charts = () => {
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
   const getChartType = (datasetSummary: Dataset) => {
     let chartType = datasetSummary.dataType;
-    if (chartType == "line") {
+    if (chartType == "line" || chartType == "embryo") {
       chartType =
         datasetSummary.procedureGroup == "IMPC_VIA"
           ? "viability"
           : datasetSummary.procedureGroup == "IMPC_FER"
           ? "fertility"
-          : [
-              "IMPC_EVL_001_001",
-              "IMPC_EVM_001_001",
-              "IMPC_EVP_001_001",
-              "IMPC_EVO_001_001",
-            ].includes(datasetSummary.procedureGroup)
+          : ["IMPC_EVL", "IMPC_EVM", "IMPC_EVP", "IMPC_EVO"].includes(
+              datasetSummary.procedureGroup
+            )
           ? "embryo_viability"
-          : "line";
+          : chartType;
     }
+
     if (
       chartType === "time_series" &&
       datasetSummary.procedureGroup === "IMPC_BWT"
@@ -63,8 +61,10 @@ const Charts = () => {
         return <Viability datasetSummary={datasetSummary} isVisible />;
       case "time_series":
         return <TimeSeries datasetSummary={datasetSummary} />;
-      case "embryo":
+      case "embryo_viability":
         return <EmbryoViability datasetSummary={datasetSummary} isVisible />;
+      case "embryo":
+        return <Categorical datasetSummary={datasetSummary} isVisible />;
       case "histopathology":
         return <Histopathology datasetSummary={datasetSummary} />;
       case "bodyweight":
