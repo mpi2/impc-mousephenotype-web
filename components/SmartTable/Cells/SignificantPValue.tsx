@@ -8,7 +8,6 @@ import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 const SignificantPValue = <T extends Model>(
   props: TableCellProps<T> & {
     mpTermIdKey?: keyof T;
-    linkToGrossPathChart?: boolean;
   }
 ) => {
   const pValue = _.get(props.value, props.field) as number;
@@ -16,13 +15,6 @@ const SignificantPValue = <T extends Model>(
   const mpTermKey = !!props.mpTermIdKey ? props.mpTermIdKey : "id";
   const mpTermpId = _.get(props.value, mpTermKey) as string;
   let url = `/data/charts?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
-  if (
-    props.linkToGrossPathChart &&
-    props.value?.["procedureStableId"].includes("IMPC_PAT") &&
-    !!props.value?.["parameterStableId"]
-  ) {
-    url = `/data/charts?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
-  }
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =
