@@ -321,6 +321,7 @@ export const BodySystem = ({
     <span
       className={spanStyles}
       onClick={() => onClick(name)}
+      data-testid="body-icon"
     >
       <BodySystemIcon name={name} color={color} size={size} />&nbsp;
       <span>{label}</span>
@@ -341,8 +342,8 @@ export const BodySystem = ({
       }
     >
       {({ ref, ...triggerHandler }) => (
-        <span {...triggerHandler} ref={ref} className={spanStyles}>
-          <BodySystemIcon name={name} color="currentColor" size={size} />
+        <span {...triggerHandler} ref={ref} className={spanStyles} data-testid="body-icon">
+          <BodySystemIcon name={name} color="currentColor" size={size}  />
         </span>
       )}
     </OverlayTrigger>

@@ -29,7 +29,7 @@ const SignificantPValue = <T extends Model>(
         flexWrap: "wrap",
       }}
     >
-      <span className="">
+      <span data-testid="p-value">
         {!!pValue ? formatPValue(pValue) : 0}&nbsp;
         {isAssociatedToPWG && <span>*</span>}
       </span>
