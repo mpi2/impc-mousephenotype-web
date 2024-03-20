@@ -1,4 +1,4 @@
-import { findAllByTestId, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import GeneOrder from '@/components/Gene/Order';
 import { renderWithClient, API_URL } from "../../utils";
 import mockRouter from "next-router-mock";

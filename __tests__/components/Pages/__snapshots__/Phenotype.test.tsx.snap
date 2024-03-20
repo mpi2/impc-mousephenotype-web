@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Phenotype page renders correctly 1`] = `
+[
+  <div
+    className="banner"
+  >
+    <div
+      className="pb-4 pt-5 container container"
+    >
+      <div
+        className="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          className="tabs"
+        >
+          <a
+            className="tab"
+            href="/search"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Genes
+          </a>
+          <a
+            className="tab__active"
+            href="/search?type=phenotype"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Phenotypes
+          </a>
+          <a
+            className="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          className="inputCont"
+        >
+          <input
+            className="input"
+            onChange={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search All 7824 Knockout Data..."
+            type="text"
+            value=""
+          />
+          <button
+            className="searchBtn"
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="page container"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="subheadingCont"
+      >
+        <div
+          className="subheading"
+        >
+          <span
+            className="subheadingSection primary"
+          >
+            Phenotype
+          </span>
+          <span
+            className="subheadingSection"
+          />
+        </div>
+      </div>
+      <br />
+      <p
+        className="grey"
+      >
+        Loading...
+      </p>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Genotype-phenotype associations
+      </h2>
+      <div>
+        <div
+          className="labelsWrapper"
+        >
+          <div>
+            <i
+              className="fa fa-circle"
+              style={
+                {
+                  "color": "rgb(212, 17, 89)",
+                }
+              }
+            />
+              Not significant
+            <i
+              className="fa fa-circle"
+              style={
+                {
+                  "color": "rgb(26, 133, 255)",
+                  "marginLeft": "1rem",
+                }
+              }
+            />
+              Significant
+            <div
+              style={
+                {
+                  "display": "inline-block",
+                  "marginLeft": "0.5rem",
+                }
+              }
+            >
+              <hr
+                style={
+                  {
+                    "border": "none",
+                    "borderTop": "3px dashed #000",
+                    "display": "inline-block",
+                    "height": "3px",
+                    "margin": "0 0 0 0.5rem",
+                    "opacity": 1,
+                    "width": "50px",
+                  }
+                }
+              />
+                Significant P-value threshold (P &lt; 0.0001)
+            </div>
+          </div>
+          <div
+            style={
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "whiteSpace": "nowrap",
+              }
+            }
+          >
+            <label
+              className="grey"
+              htmlFor="geneHighlight"
+              style={
+                {
+                  "marginRight": "0.5rem",
+                }
+              }
+            >
+              Find gene:
+            </label>
+            <input
+              className="form-control"
+              id="geneHighlight"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          style={
+            {
+              "display": "flex",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <div
+            data-test-id="CircularProgressbarWithChildren"
+          >
+            <div
+              style={
+                {
+                  "height": "100%",
+                  "position": "relative",
+                  "width": "100%",
+                }
+              }
+            >
+              <svg
+                className="CircularProgressbar rotating"
+                data-test-id="CircularProgressbar"
+                viewBox="0 0 100 100"
+              >
+                <path
+                  className="CircularProgressbar-trail"
+                  d="
+      M 50,50
+      m 0,-44
+      a 44,44 0 1 1 0,88
+      a 44,44 0 1 1 0,-88
+    "
+                  fillOpacity={0}
+                  strokeWidth={12}
+                  style={
+                    {
+                      "stroke": "#fff",
+                      "strokeDasharray": "276.46015351590177px 276.46015351590177px",
+                      "strokeDashoffset": "0px",
+                    }
+                  }
+                />
+                <path
+                  className="CircularProgressbar-path"
+                  d="
+      M 50,50
+      m 0,-44
+      a 44,44 0 1 1 0,88
+      a 44,44 0 1 1 0,-88
+    "
+                  fillOpacity={0}
+                  strokeWidth={12}
+                  style={
+                    {
+                      "stroke": "#ccc",
+                      "strokeDasharray": "276.46015351590177px 276.46015351590177px",
+                      "strokeDashoffset": "55.29203070318034px",
+                      "transition": "stroke-dashoffset 2s ease 0s",
+                    }
+                  }
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+      id="associations-table"
+    />
+    <div
+      className="card"
+    >
+      <h2>
+        The way we measure
+      </h2>
+      <p>
+        Procedure
+      </p>
+    </div>
+  </div>,
+]
+`;

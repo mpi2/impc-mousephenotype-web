@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gene page renders correctly 1`] = `
+[
+  <button
+    className="btn btn-primary"
+    disabled={false}
+    onClick={[Function]}
+    style={
+      {
+        "bottom": -100,
+        "position": "fixed",
+        "right": 100,
+        "transition": ".3s ease transform",
+        "zIndex": 100,
+      }
+    }
+    type="button"
+  >
+    Compare Genes
+     
+    <span
+      className="bg-white"
+      style={
+        {
+          "borderRadius": 11,
+          "color": "#000",
+          "display": "inline-block",
+          "fontWeight": "bold",
+          "height": 22,
+          "marginLeft": 6,
+          "padding": "0 7px",
+        }
+      }
+    >
+      0
+    </span>
+  </button>,
+  <div
+    className="banner"
+  >
+    <div
+      className="pb-4 pt-5 container container"
+    >
+      <div
+        className="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          className="tabs"
+        >
+          <a
+            className="tab"
+            href="/search"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Genes
+          </a>
+          <a
+            className="tab"
+            href="/search?type=phenotype"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Phenotypes
+          </a>
+          <a
+            className="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          className="inputCont"
+        >
+          <input
+            className="input"
+            onChange={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search All 7824 Knockout Data..."
+            type="text"
+            value=""
+          />
+          <button
+            className="searchBtn"
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="page container"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="subheadingCont"
+      >
+        <div
+          className="subheading"
+        >
+          <span
+            className="subheadingSection primary"
+          >
+            Gene
+          </span>
+          <span
+            className="subheadingSection"
+          />
+        </div>
+      </div>
+      <br />
+      <p
+        className="grey"
+      >
+        Loading...
+      </p>
+    </div>
+  </div>,
+]
+`;
