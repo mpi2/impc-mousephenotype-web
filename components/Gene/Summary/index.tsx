@@ -49,14 +49,14 @@ const CollectionItem = ({
   hasData: boolean;
 }) => (
   hasData ? (
-    <a
+    <Link
       href={link}
       className={`link ${styles.dataCollection}`}
       data-testid={name}
     >
       <Check isChecked={hasData} />
       {name}
-    </a>
+    </Link>
   ) : (
     <span className={styles.dataCollectionInactive} data-testid={name}>
       <Check isChecked={hasData} />
@@ -335,7 +335,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           Associated diseases
         </div>
         <div className={styles.single}>
-          <span><strong>Expressions examined in:</strong></span>
+          <span><strong>Expression examined in:</strong></span>
           <strong>{gene.adultExpressionObservationsCount || 0}</strong>
           Adult tissues
         </div>

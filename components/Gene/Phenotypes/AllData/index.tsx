@@ -1,33 +1,37 @@
 import _ from "lodash";
 import { useContext, useEffect, useState } from "react";
 import {
-  AlleleCell, OptionsCell, PhenotypeIconsCell,
+  AlleleCell,
+  OptionsCell,
+  PhenotypeIconsCell,
   PlainTextCell,
-  SmartTable
+  SmartTable,
 } from "@/components/SmartTable";
 import { GeneStatisticalResult } from "@/models/gene";
-import { Form } from "react-bootstrap";
-import { allBodySystems } from "../../Summary";
 import { TableCellProps } from "@/models";
 import { formatPValue } from "@/utils";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
 
-const ParameterCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+const ParameterCell = <T extends GeneStatisticalResult>(
+  props: TableCellProps<T>
+) => {
   return (
     <span className={styles.procedureName}>
       <small className="grey">{props.value.procedureName} /</small>
       <br />
       <strong>{props.value.parameterName}</strong>
     </span>
-  )
+  );
 };
 
-const PValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+const PValueCell = <T extends GeneStatisticalResult>(
+  props: TableCellProps<T>
+) => {
   const {
     pValue,
     mgiGeneAccessionId,
@@ -39,11 +43,11 @@ const PValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) =
     phenotypingCentre,
   } = props.value;
   let url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
-  if (
-    procedureStableId.includes('IMPC_PAT') &&
-    parameterStableId
-  ) {
-    url = `/data/gross-pathology/${mgiGeneAccessionId}/?grossPathParameterStableId=${parameterStableId}`
+  if (procedureStableId.includes("IMPC_PAT") && parameterStableId) {
+    url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
+  }
+  if (procedureStableId.includes("IMPC_HIS")) {
+    url = `/data/histopath/${mgiGeneAccessionId}`;
   }
   return (
     <div
@@ -56,17 +60,15 @@ const PValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) =
       <span className="">
         {!!pValue ? formatPValue(Number.parseFloat(pValue)) : "-"}
       </span>
-      <Link
-        href={url}
-      >
+      <Link href={url}>
         <strong className={`link primary small float-right`}>
-          <FontAwesomeIcon icon={faChartLine} /> Supporting
-          data <FontAwesomeIcon icon={faChevronRight} />
+          <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
+          <FontAwesomeIcon icon={faChevronRight} />
         </strong>
       </Link>
     </div>
-  )
-}
+  );
+};
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const gene = useContext(GeneContext);
@@ -90,19 +92,24 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
       parameterStableId,
       procedureStableId,
       topLevelPhenotypes,
-      lifeStageName
+      lifeStageName,
     }) =>
       (!procedure || procedureName === procedure) &&
       (!query ||
         `${procedureName} ${parameterName} ${parameterStableId} ${procedureStableId}`
           .toLowerCase()
           .includes(query)) &&
-      (!system || (topLevelPhenotypes ?? []).some(({ name }) => name === system)) &&
+      (!system ||
+        (topLevelPhenotypes ?? []).some(({ name }) => name === system)) &&
       (!selectedLifeStage || lifeStageName === selectedLifeStage)
   );
 
   const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
-  const systems = _.sortBy(_.uniq(data.flatMap(p => p.topLevelPhenotypes?.map(p => p.name))).filter(Boolean));
+  const systems = _.sortBy(
+    _.uniq(
+      data.flatMap((p) => p.topLevelPhenotypes?.map((p) => p.name))
+    ).filter(Boolean)
+  );
   const lifestages = _.sortBy(_.uniq(_.map(data, "lifeStageName")));
 
   if (!data) {
@@ -144,7 +151,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
               onChange={setSelectedLifeStage}
               ariaLabel="Filter by life stage"
               options={lifestages}
-              controlStyle={{ display: 'inline-block', width: 100 }}
+              controlStyle={{ display: "inline-block", width: 100 }}
             />
           </>
         }
@@ -153,16 +160,34 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
             data={sorted}
             fileName={`${gene.geneSymbol}-all-phenotype-data`}
             fields={[
-              { key: 'alleleSymbol', label: 'Allele' },
-              { key: 'phenotypingCentre', label: 'Phenotyping center' },
-              { key: 'procedureName', label: 'Procedure' },
-              { key: 'parameterName', label: 'Parameter' },
-              { key: 'zygosity', label: 'Zygosity' },
-              { key: 'femaleMutantCount', label: 'Female mutant count', getValueFn: (item) => item?.femaleMutantCount?.toString() || '0'},
-              { key: 'maleMutantCount', label: 'Male mutant count', getValueFn: (item) => item?.maleMutantCount?.toString() || 'N/A' },
-              { key: 'lifeStageName', label: 'Life stage' },
-              { key: 'significant', label: 'Significant', getValueFn: item => item.significant ? 'Yes' : 'No' },
-              { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue?.toString() || 'N/A' },
+              { key: "alleleSymbol", label: "Allele" },
+              { key: "phenotypingCentre", label: "Phenotyping center" },
+              { key: "procedureName", label: "Procedure" },
+              { key: "parameterName", label: "Parameter" },
+              { key: "zygosity", label: "Zygosity" },
+              {
+                key: "femaleMutantCount",
+                label: "Female mutant count",
+                getValueFn: (item) =>
+                  item?.femaleMutantCount?.toString() || "0",
+              },
+              {
+                key: "maleMutantCount",
+                label: "Male mutant count",
+                getValueFn: (item) =>
+                  item?.maleMutantCount?.toString() || "N/A",
+              },
+              { key: "lifeStageName", label: "Life stage" },
+              {
+                key: "significant",
+                label: "Significant",
+                getValueFn: (item) => (item.significant ? "Yes" : "No"),
+              },
+              {
+                key: "pValue",
+                label: "Most significant P-value",
+                getValueFn: (item) => item?.pValue?.toString() || "N/A",
+              },
             ]}
           />
         }
@@ -171,20 +196,50 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
             width: 2,
             label: "Procedure/parameter",
             field: "procedureName",
-            cmp: <ParameterCell />
+            cmp: <ParameterCell />,
           },
           {
             width: 1.3,
             label: "System",
             field: "topLevelPhenotypes",
-            cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />
+            cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />,
           },
-          { width: 1, label: "Allele", field: "alleleSymbol", cmp: <AlleleCell /> },
-          { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: "capitalize" }} /> },
-          { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
-          { width: 1, label: "Center", field: "phenotypingCentre", cmp: <PlainTextCell /> },
-          { width: 0.7, label: "Mutants", field: "mutantCount", cmp: <PlainTextCell /> },
-          { width: 0.5, label: "Significant", field: "significant", cmp: <OptionsCell options={{ true: 'Yes', false: 'No' }} /> },
+          {
+            width: 1,
+            label: "Allele",
+            field: "alleleSymbol",
+            cmp: <AlleleCell />,
+          },
+          {
+            width: 1,
+            label: "Zygosity",
+            field: "zygosity",
+            cmp: <PlainTextCell style={{ textTransform: "capitalize" }} />,
+          },
+          {
+            width: 1,
+            label: "Life stage",
+            field: "lifeStageName",
+            cmp: <PlainTextCell />,
+          },
+          {
+            width: 1,
+            label: "Center",
+            field: "phenotypingCentre",
+            cmp: <PlainTextCell />,
+          },
+          {
+            width: 0.7,
+            label: "Mutants",
+            field: "mutantCount",
+            cmp: <PlainTextCell />,
+          },
+          {
+            width: 0.5,
+            label: "Significant",
+            field: "significant",
+            cmp: <OptionsCell options={{ true: "Yes", false: "No" }} />,
+          },
           { width: 2, label: "P value", field: "pValue", cmp: <PValueCell /> },
         ]}
       />

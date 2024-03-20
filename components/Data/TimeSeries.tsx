@@ -13,7 +13,7 @@ import {
   ToggleButton,
 } from "react-bootstrap";
 import Card from "@/components/Card";
-import ChartSummary from "./ChartSummary";
+import ChartSummary from "./ChartSummary/ChartSummary";
 import LineChart from "./Plots/TimeSeriesLinePlot";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";

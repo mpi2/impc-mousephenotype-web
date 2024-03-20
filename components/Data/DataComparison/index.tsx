@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
@@ -11,6 +11,8 @@ import {
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset } from "@/models";
+import styles from "./styles.module.scss";
+import { getBackgroundColorForRow, groupData, processData } from "./utils";
 
 type LastColumnProps = {
   isViabilityChart: boolean;
@@ -28,6 +30,7 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
         return (
           <td
             key={col}
+            key={col}
             className={
               isMostSignificant
                 ? "bold orange-dark-x bg-orange-light-x"
@@ -40,6 +43,7 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
               <OverlayTrigger
                 placement="top"
                 trigger={["hover", "focus"]}
+                overlay={<Tooltip>Not significant or not tested</Tooltip>}
                 overlay={<Tooltip>Not significant or not tested</Tooltip>}
               >
                 <span className="grey">—</span>
@@ -54,102 +58,34 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
 
 type Props = {
   data: Array<Dataset>;
-  selectedParameter?: string | null;
   isViabilityChart?: boolean;
   initialSortByProp?: string;
-  visibility: boolean;
+  selectedKey?: string;
+  onSelectParam?: (newValue: string) => void;
 };
 
 type SortOptions = {
   prop: string | ((any) => void);
   order: "asc" | "desc";
 };
+
 const DataComparison = (props: Props) => {
   const {
     data,
-    selectedParameter,
     isViabilityChart = false,
     initialSortByProp,
-    visibility,
+    selectedKey,
+    onSelectParam = (_) => {},
   } = props;
-  const groups = data?.reduce((acc, d) => {
-    const {
-      alleleAccessionId,
-      parameterStableId,
-      zygosity,
-      sex,
-      reportedPValue,
-      phenotypeSex,
-      phenotypingCentre,
-      colonyId,
-    } = d;
 
-    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
-    const statMethodPValueKey =
-      sex === "female" ? "femaleKoEffectPValue" : "maleKoEffectPValue";
-    const pValueFromStatMethod =
-      d.statisticalMethod?.attributes?.[statMethodPValueKey];
-    if (acc[key]) {
-      if (acc[key].reportedPValue < pValueFromStatMethod) {
-        acc[key].reportedPValue = Number(pValueFromStatMethod);
-        acc[key].sex = sex;
-      }
-    } else {
-      acc[key] = { ...d, key, reportedPValue: pValueFromStatMethod };
-    }
-    if (sex) {
-      const pValue =
-        reportedPValue < pValueFromStatMethod
-          ? reportedPValue
-          : pValueFromStatMethod;
-      acc[key][`pValue_${sex}`] = Number(pValue);
-    }
-    if (phenotypeSex?.length > 0) {
-      if (!!d.statisticalMethod?.attributes?.maleKoEffectPValue) {
-        acc[key][`pValue_male`] =
-          d.statisticalMethod?.attributes?.maleKoEffectPValue;
-      }
-      if (!!d.statisticalMethod?.attributes?.femaleKoEffectPValue) {
-        acc[key][`pValue_female`] =
-          d.statisticalMethod?.attributes?.femaleKoEffectPValue;
-      }
-      if (phenotypeSex.length >= 2) {
-        acc[key][`pValue_not_considered`] = Number(reportedPValue);
-      }
-    }
-    return acc;
-  }, {});
-
-  const processed =
-    (groups ? Object.values(groups) : []).map((d: any, index) => {
-      const getLethality = () => {
-        if (!d.significant) {
-          return "Viable";
-        }
-        if (d.significant && d.significantPhenotype?.id === "MP:0011100") {
-          return "Lethal";
-        }
-        if (d.significant && d.significantPhenotype?.id === "MP:0011110") {
-          return "Subviable";
-        }
-        return "-";
-      };
-
-      return {
-        ...d,
-        datasetNum: index + 1,
-        topLevelPhenotype: d.topLevelPhenotypes?.[0]?.name,
-        phenotype: d.significantPhenotype?.name,
-        id: d.significantPhenotype?.id,
-        viability: getLethality(),
-      };
-    }) || [];
+  const groups = groupData(data);
+  const processed = processData(groups);
   const [sortOptions, setSortOptions] = useState<SortOptions>({
     prop: !!initialSortByProp ? initialSortByProp : "phenotype",
     order: "asc" as const,
   });
   const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
-  if (!data || !visibility) {
+  if (!data) {
     return null;
   }
 
@@ -191,103 +127,121 @@ const DataComparison = (props: Props) => {
         ],
       };
 
+  useEffect(() => {
+    if (
+      !!sorted[0]?.key &&
+      sorted[0]?.key !== selectedKey &&
+      selectedKey === ""
+    ) {
+      onSelectParam(sorted[0].key);
+    }
+  }, [sorted.length]);
+
   return (
-    <Pagination data={sorted}>
-      {(pageData) => (
-        <>
-          <SortableTable
-            doSort={(sort) => {
-              setSortOptions({
-                prop: sort[0],
-                order: sort[1],
-              });
-            }}
-            defaultSort={["parameter", "asc"]}
-            headers={[
-              { width: 0.5, label: "#", disabled: true },
-              { width: 3, label: "Parameter", field: "parameter" },
-              {
-                width: 1,
-                label: "Phenotyping Centre",
-                field: "phenotypingCentre",
-              },
-              { width: 2, label: "Allele", field: "alleleSymbol" },
-              { width: 1, label: "Zygosity", field: "zygosity" },
-              { width: 1, label: "Significant sex", field: "sex" },
-              { width: 1, label: "Life Stage", field: "lifeStageName" },
-              { width: 1, label: "Colony Id", field: "colonyId" },
-              lastColumnHeader,
-            ]}
-          >
-            {pageData.map((d, i) => {
-              const allele = formatAlleleSymbol(d.alleleSymbol);
-              return (
-                <tr
-                  key={d.key}
-                  style={
-                    d.key === selectedParameter
-                      ? { borderWidth: 3, borderColor: "#00B0B0" }
-                      : {}
-                  }
-                >
-                  <td>{d.datasetNum}</td>
-                  <td>{d.parameterName}</td>
-                  <td>{d.phenotypingCentre}</td>
-                  <td>
-                    {allele[0]}
-                    <sup>{allele[1]}</sup>
-                  </td>
-                  <td>{d.zygosity}</td>
-                  <td>
-                    {d.sex === "not_considered" ? (
-                      <OverlayTrigger
-                        placement="top"
-                        trigger={["hover", "focus"]}
-                        overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
+    <>
+      <div className="mt-4" style={{ color: "#797676", fontSize: "95%" }}>
+        <span>
+          P-values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) are marked
+          as significant.
+        </span>
+      </div>
+      <Pagination data={sorted}>
+        {(pageData) => (
+          <>
+            <SortableTable
+              doSort={(sort) => {
+                setSortOptions({
+                  prop: sort[0],
+                  order: sort[1],
+                });
+              }}
+              defaultSort={["parameter", "asc"]}
+              headers={[
+                { width: 3, label: "Parameter", field: "parameter" },
+                {
+                  width: 1,
+                  label: "Phenotyping Centre",
+                  field: "phenotypingCentre",
+                },
+                { width: 2, label: "Allele", field: "alleleSymbol" },
+                { width: 1, label: "Zygosity", field: "zygosity" },
+                { width: 1, label: "Significant sex", field: "sex" },
+                { width: 1, label: "Life Stage", field: "lifeStageName" },
+                { width: 1, label: "Colony Id", field: "colonyId" },
+                lastColumnHeader,
+              ]}
+            >
+              {pageData.map((d, i) => {
+                const allele = formatAlleleSymbol(d.alleleSymbol);
+                return (
+                  <tr
+                    key={d.key}
+                    className={getBackgroundColorForRow(d, i, selectedKey)}
+                  >
+                    <td>
+                      <button
+                        className={styles.selectionButton}
+                        onClick={() => onSelectParam(d.key)}
                       >
-                        <span className="me-2">
-                          <FontAwesomeIcon icon={getIcon(d.sex)} size="lg" />
-                        </span>
-                      </OverlayTrigger>
-                    ) : (
-                      <>
-                        {["male", "female", "not_considered"]
-                          .filter((sex) => d.sex === sex)
-                          .map((significantSex) => (
-                            <OverlayTrigger
-                              placement="top"
-                              trigger={["hover", "focus"]}
-                              overlay={
-                                <Tooltip>{getSexLabel(significantSex)}</Tooltip>
-                              }
-                            >
-                              <span className="me-2">
-                                <FontAwesomeIcon
-                                  icon={getIcon(significantSex)}
-                                  size="lg"
-                                />
-                              </span>
-                            </OverlayTrigger>
-                          ))}
-                      </>
-                    )}
-                  </td>
-                  <td>{d.lifeStageName}</td>
-                  <td>{d.colonyId}</td>
-                  <LastColumn dataset={d} isViabilityChart={isViabilityChart} />
-                </tr>
-              );
-            })}
-          </SortableTable>
-          <div style={{ textAlign: "right", fontSize: "75%" }}>
-            <span>
-              P-values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) <br />
-              are marked as significant.
-            </span>
-          </div>
-        </>
-      )}
-    </Pagination>
+                        {d.parameterName}
+                      </button>
+                    </td>
+                    <td>{d.phenotypingCentre}</td>
+                    <td>
+                      {allele[0]}
+                      <sup>{allele[1]}</sup>
+                    </td>
+                    <td>{d.zygosity}</td>
+                    <td>
+                      {d.sex === "not_considered" ? (
+                        <OverlayTrigger
+                          placement="top"
+                          trigger={["hover", "focus"]}
+                          overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
+                        >
+                          <span className="me-2">
+                            <FontAwesomeIcon icon={getIcon(d.sex)} size="lg" />
+                          </span>
+                        </OverlayTrigger>
+                      ) : (
+                        <>
+                          {["male", "female", "not_considered"]
+                            .filter((sex) => d.sex === sex)
+                            .map((significantSex) => (
+                              <OverlayTrigger
+                                placement="top"
+                                trigger={["hover", "focus"]}
+                                overlay={
+                                  <Tooltip>
+                                    {getSexLabel(significantSex)}
+                                  </Tooltip>
+                                }
+                              >
+                                <span className="me-2">
+                                  <FontAwesomeIcon
+                                    icon={getIcon(significantSex)}
+                                    size="lg"
+                                  />
+                                </span>
+                              </OverlayTrigger>
+                            ))}
+                        </>
+                      )}
+                    </td>
+                    <td>{d.lifeStageName}</td>
+                    <td>{d.colonyId}</td>
+                    <LastColumn
+                      dataset={d}
+                      isViabilityChart={isViabilityChart}
+                    />
+                  </tr>
+                );
+              })}
+            </SortableTable>
+          </>
+        )}
+      </Pagination>
+    </>
   );
 };
 

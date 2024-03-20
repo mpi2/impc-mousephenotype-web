@@ -6,7 +6,7 @@ import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 import { useGeneExpressionQuery } from "@/hooks";
 import { GeneContext } from "@/contexts";
 import { useRouter } from "next/router";
-import { AnatomyCell, ExpressionCell, ImagesCell } from './custom-cells';
+import { ExpressionCell, ImagesCell } from './custom-cells';
 
 const Expressions = () => {
   const router = useRouter();
@@ -64,7 +64,7 @@ const Expressions = () => {
           defaultSort={["parameterName", "asc"]}
           filteringEnabled={false}
           columns={[
-            { width: 3, label: "Anatomy", field: "parameterName", cmp: <AnatomyCell /> },
+            { width: 3, label: "Anatomy", field: "parameterName", cmp: <PlainTextCell style={{ fontWeight: "bold" }} /> },
             {
               width: 3,
               label: "Images",
