@@ -5,25 +5,61 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  BarController,
+} from "chart.js";
+import {
   Button,
   ButtonGroup,
   Col,
+  Form,
   Row,
   Table,
   ToggleButton,
 } from "react-bootstrap";
 import Card from "@/components/Card";
 import ChartSummary from "./ChartSummary/ChartSummary";
-import LineChart from "./Plots/TimeSeriesLinePlot";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import _ from "lodash";
 import { useState } from "react";
+import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { Chart } from "react-chartjs-2";
+import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  BarController
+);
 
 type ChartSeries = {
+  originalData: any;
   data: Array<any>;
   sampleGroup: "control" | "experimental";
   sex: "male" | "female";
+};
+
+const getPointStyle = (key: string) => {
+  if (key.includes("WT")) {
+    return key.includes("Female") ? "triangle" : "rectRot";
+  } else {
+    return key.includes("Female") ? "rect" : "circle";
+  }
 };
 
 // Function to group data by a property
@@ -58,25 +94,6 @@ const calculateStats = (groupedData, valueKey, windowSize = 1) => {
   });
 };
 
-const calculateMovingAverage = (data, windowSize) => {
-  const movingAverages = [];
-
-  for (let i = 0; i < data.length; i++) {
-    if (i < windowSize - 1) {
-      movingAverages.push(null); // Placeholder for initial values
-    } else {
-      let sum = 0;
-      for (let j = i - windowSize + 1; j <= i; j++) {
-        sum += data[j].y;
-      }
-      const average = sum / windowSize;
-      movingAverages.push(average);
-    }
-  }
-
-  return movingAverages;
-};
-
 const countSpecimens = (series, sex: string, sampleGroup: string) => {
   const selectedSeries = series.find(
     (s) => s.sampleGroup === sampleGroup && s.specimenSex === sex
@@ -86,8 +103,8 @@ const countSpecimens = (series, sex: string, sampleGroup: string) => {
 };
 
 const TimeSeries = ({ datasetSummary, isVisible }) => {
-  const [radioValue, setRadioValue] = useState("average");
-  const getLineSeries = (dataSeries, sex, sampleGroup) => {
+  const [viewSMA, setViewSMA] = useState(false);
+  const getLineSeries = (dataSeries, sex, sampleGroup, zygosity) => {
     if (!dataSeries) {
       return null;
     }
@@ -110,24 +127,47 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
         const p2 = { ...p };
         p2.x = +p.group;
         p2.y = p.average;
+        p2.yMin = p.average - p.standardDeviation;
+        p2.yMax = p.average + p.standardDeviation;
         return p2;
       })
-      .sort((a, b) => (a.x > b.x ? 1 : -1));
+      .sort((a, b) => a.x - b.x);
 
-    const smaData = calculateSMA(seriesData).map((p) => {
-      const p2 = { ...p };
-      p2.x = +p.discretePoint;
-      p2.y = p.value;
-      return p2;
-    });
+    const smaData = calculateSMA(seriesData)
+      .map((p) => {
+        const p2 = { ...p };
+        p2.x = +p.discretePoint;
+        p2.y = p.value;
+        return p2;
+      })
+      .sort((a, b) => a.x - b.x);
+
+    const labelSex = sex[0].toUpperCase() + sex.slice(1);
+    const labelZyg =
+      zygosity === "homozygote"
+        ? "HOM"
+        : zygosity === "hemizygote"
+        ? "HEM"
+        : "HET";
+    const labelGroup = sampleGroup == "experimental" ? labelZyg : "WT";
+    const order = labelGroup !== "WT" ? 1 : 2;
+    const label = `${labelSex} ${labelGroup}`;
 
     return {
-      id: `${sex} ${sampleGroup}`,
+      label,
+      type: "line" as const,
       sex,
       sampleGroup,
       data: data,
       originalData: data,
-      smaData: smaData,
+      smaData,
+      borderColor: label.includes("WT")
+        ? wildtypeChartColors.halfOpacity
+        : mutantChartColors.halfOpacity,
+      backgroundColor: label.includes("WT")
+        ? wildtypeChartColors.halfOpacity
+        : mutantChartColors.halfOpacity,
+      pointStyle: getPointStyle(label),
     };
   };
 
@@ -223,14 +263,30 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
     },
     select: (response) => {
       const dataSeries = response.series;
-      const femaleWTPoints = getLineSeries(dataSeries, "female", "control");
-      const maleWTPoints = getLineSeries(dataSeries, "male", "control");
+      const femaleWTPoints = getLineSeries(
+        dataSeries,
+        "female",
+        "control",
+        datasetSummary.zygosity
+      );
+      const maleWTPoints = getLineSeries(
+        dataSeries,
+        "male",
+        "control",
+        datasetSummary.zygosity
+      );
       const femaleHomPoints = getLineSeries(
         dataSeries,
         "female",
-        "experimental"
+        "experimental",
+        datasetSummary.zygosity
       );
-      const maleHomPoints = getLineSeries(dataSeries, "male", "experimental");
+      const maleHomPoints = getLineSeries(
+        dataSeries,
+        "male",
+        "experimental",
+        datasetSummary.zygosity
+      );
       const chartSeries = filterChartSeries(datasetSummary.zygosity, [
         femaleWTPoints,
         maleWTPoints,
@@ -240,7 +296,17 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
 
       const summaryStatistics = updateSummaryStatistics(chartSeries);
 
+      const labels = Array.from(
+        new Set(chartSeries.flatMap((s) => s.data.map((d) => d.x)))
+      ).sort((a, b) => (a < b ? -1 : 1));
+
+      const smaLabels = Array.from(
+        new Set(chartSeries.flatMap((s) => s.smaData.map((d) => d.x)))
+      ).sort((a, b) => (a < b ? -1 : 1));
+
       return {
+        labels,
+        smaLabels,
         chartSeries,
         summaryStatistics,
         computedCounts: {
@@ -260,17 +326,11 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
     enabled: isVisible,
   });
 
-  const displaySeries = data
-    ? data.chartSeries.map((s) => {
-        s["data"] = radioValue === "average" ? s.originalData : s.smaData;
-        return s;
-      })
-    : [];
   const getTableData = (chartSeries) => {
     const indexByTimePoint = chartSeries
       .flatMap((s) =>
         s.originalData.map((d) => {
-          return { ...d, id: s.id };
+          return { ...d, id: s.label };
         })
       )
       .reduce((indexByTimePoint, item) => {
@@ -282,7 +342,10 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
         ]
           ? indexByTimePoint[item.group][item.id]
           : {};
-        indexByTimePoint[item.group][item.id] = item.y;
+        indexByTimePoint[item.group][item.id]["avg"] = item.y;
+        indexByTimePoint[item.group][item.id]["count"] = new Set(
+          item.values.map((v) => v.specimenId)
+        ).size;
         return indexByTimePoint;
       }, {});
 
@@ -291,21 +354,60 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
     const rows = timePoints.map((timePoint) => {
       return [timePoint].concat(
         chartSeries.map((s) =>
-          indexByTimePoint[timePoint][s.id]
-            ? indexByTimePoint[timePoint][s.id]
+          indexByTimePoint[timePoint][s.label]
+            ? indexByTimePoint[timePoint][s.label]
             : null
         )
       );
     });
     return {
       headers: [datasetSummary["unit"]["x"] || "Time point"].concat(
-        chartSeries.map((s) => s.id)
+        chartSeries.map((s) => s.label)
       ),
       rows,
     };
   };
 
   const tableData = getTableData(data?.chartSeries || []);
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: {
+      intersect: false,
+      mode: "index" as const,
+      axis: "y" as const,
+    },
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: datasetSummary["unit"]["y"],
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: datasetSummary["unit"]["x"],
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        position: "bottom" as const,
+        labels: { usePointStyle: true },
+      },
+      tooltip: {
+        usePointStyle: true,
+        title: { padding: { top: 10 } },
+        callbacks: {},
+      },
+    },
+  };
+  const chartPlugins = [errorbarsPlugin];
 
   return (
     <>
@@ -316,40 +418,42 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
             ? Object.assign({}, datasetSummary, data.computedCounts)
             : datasetSummary
         }
+        displayPValueStatement={false}
+        displayAssociatedPhenotype={false}
       />
       <Row>
         <Col lg={12}>
           <Card>
-            <ButtonGroup className="mb-2">
-              <ToggleButton
-                id={`radio-average`}
-                type="radio"
-                variant="primary"
-                name="radio"
-                value="average"
-                checked={radioValue === "average"}
-                onChange={(e) => setRadioValue(e.currentTarget.value)}
-              >
-                Average per time point
-              </ToggleButton>
-              <ToggleButton
-                id={`radio-sma`}
-                type="radio"
-                variant="primary"
-                name="radio"
-                value="sma"
-                checked={radioValue === "sma"}
-                onChange={(e) => setRadioValue(e.currentTarget.value)}
-              >
-                Average per hour
-              </ToggleButton>
-            </ButtonGroup>
-            <LineChart
-              data={displaySeries}
-              displayAreas={radioValue === "average"}
-              unitX={datasetSummary["unit"]["x"] || "Time point"}
-              unitY={datasetSummary["unit"]["y"]}
-            />
+            <div style={{ position: "relative", height: "400px" }}>
+              {!!data && (
+                <>
+                  {datasetSummary.procedureStableId.includes("CAL") ? (
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
+                      <Form.Check // prettier-ignore
+                        type="switch"
+                        id="custom-switch"
+                        label="View as Simple Moving Averages"
+                        onChange={() => setViewSMA(!viewSMA)}
+                        checked={viewSMA}
+                      />
+                    </div>
+                  ) : null}
+                  <Chart
+                    type="bar"
+                    options={chartOptions}
+                    data={{
+                      datasets: data.chartSeries.map((s) => {
+                        return { ...s, data: !viewSMA ? s.data : s.smaData };
+                      }),
+                      labels: !viewSMA ? data.labels : data.smaLabels,
+                    }}
+                    plugins={chartPlugins}
+                  />
+                </>
+              )}
+            </div>
           </Card>
         </Col>
         <Col lg={12}>
@@ -367,7 +471,13 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
                   {tableData.rows.map((row, i) => (
                     <tr key={i}>
                       {row.map((col, i) => (
-                        <td key={i}>{col}</td>
+                        <td key={i}>
+                          {col
+                            ? col["avg"]
+                              ? `${col["avg"]} (${col["count"]})`
+                              : col
+                            : null}
+                        </td>
                       ))}
                     </tr>
                   ))}

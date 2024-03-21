@@ -30,7 +30,6 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
         return (
           <td
             key={col}
-            key={col}
             className={
               isMostSignificant
                 ? "bold orange-dark-x bg-orange-light-x"
@@ -43,7 +42,6 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
               <OverlayTrigger
                 placement="top"
                 trigger={["hover", "focus"]}
-                overlay={<Tooltip>Not significant or not tested</Tooltip>}
                 overlay={<Tooltip>Not significant or not tested</Tooltip>}
               >
                 <span className="grey">—</span>
@@ -61,6 +59,8 @@ type Props = {
   isViabilityChart?: boolean;
   initialSortByProp?: string;
   selectedKey?: string;
+  displayPValueThreshold?: boolean;
+  displayPValueColumns?: boolean;
   onSelectParam?: (newValue: string) => void;
 };
 
@@ -75,6 +75,8 @@ const DataComparison = (props: Props) => {
     isViabilityChart = false,
     initialSortByProp,
     selectedKey,
+    displayPValueThreshold = true,
+    displayPValueColumns = true,
     onSelectParam = (_) => {},
   } = props;
 
@@ -139,12 +141,14 @@ const DataComparison = (props: Props) => {
 
   return (
     <>
-      <div className="mt-4" style={{ color: "#797676", fontSize: "95%" }}>
-        <span>
-          P-values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) are marked
-          as significant.
-        </span>
-      </div>
+      {displayPValueThreshold && (
+        <div className="mt-4" style={{ color: "#797676", fontSize: "95%" }}>
+          <span>
+            P-values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) are
+            marked as significant.
+          </span>
+        </div>
+      )}
       <Pagination data={sorted}>
         {(pageData) => (
           <>
@@ -168,8 +172,11 @@ const DataComparison = (props: Props) => {
                 { width: 1, label: "Significant sex", field: "sex" },
                 { width: 1, label: "Life Stage", field: "lifeStageName" },
                 { width: 1, label: "Colony Id", field: "colonyId" },
-                lastColumnHeader,
-              ]}
+              ]
+                .concat(displayPValueColumns ? lastColumnHeader : [])
+                .filter((h) =>
+                  displayPValueColumns ? h : !h.label.includes("Significant")
+                )}
             >
               {pageData.map((d, i) => {
                 const allele = formatAlleleSymbol(d.alleleSymbol);
@@ -192,48 +199,55 @@ const DataComparison = (props: Props) => {
                       <sup>{allele[1]}</sup>
                     </td>
                     <td>{d.zygosity}</td>
-                    <td>
-                      {d.sex === "not_considered" ? (
-                        <OverlayTrigger
-                          placement="top"
-                          trigger={["hover", "focus"]}
-                          overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
-                        >
-                          <span className="me-2">
-                            <FontAwesomeIcon icon={getIcon(d.sex)} size="lg" />
-                          </span>
-                        </OverlayTrigger>
-                      ) : (
-                        <>
-                          {["male", "female", "not_considered"]
-                            .filter((sex) => d.sex === sex)
-                            .map((significantSex) => (
-                              <OverlayTrigger
-                                placement="top"
-                                trigger={["hover", "focus"]}
-                                overlay={
-                                  <Tooltip>
-                                    {getSexLabel(significantSex)}
-                                  </Tooltip>
-                                }
-                              >
-                                <span className="me-2">
-                                  <FontAwesomeIcon
-                                    icon={getIcon(significantSex)}
-                                    size="lg"
-                                  />
-                                </span>
-                              </OverlayTrigger>
-                            ))}
-                        </>
-                      )}
-                    </td>
+                    {displayPValueColumns && (
+                      <td>
+                        {d.sex === "not_considered" ? (
+                          <OverlayTrigger
+                            placement="top"
+                            trigger={["hover", "focus"]}
+                            overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
+                          >
+                            <span className="me-2">
+                              <FontAwesomeIcon
+                                icon={getIcon(d.sex)}
+                                size="lg"
+                              />
+                            </span>
+                          </OverlayTrigger>
+                        ) : (
+                          <>
+                            {["male", "female", "not_considered"]
+                              .filter((sex) => d.sex === sex)
+                              .map((significantSex) => (
+                                <OverlayTrigger
+                                  placement="top"
+                                  trigger={["hover", "focus"]}
+                                  overlay={
+                                    <Tooltip>
+                                      {getSexLabel(significantSex)}
+                                    </Tooltip>
+                                  }
+                                >
+                                  <span className="me-2">
+                                    <FontAwesomeIcon
+                                      icon={getIcon(significantSex)}
+                                      size="lg"
+                                    />
+                                  </span>
+                                </OverlayTrigger>
+                              ))}
+                          </>
+                        )}
+                      </td>
+                    )}
                     <td>{d.lifeStageName}</td>
                     <td>{d.colonyId}</td>
-                    <LastColumn
-                      dataset={d}
-                      isViabilityChart={isViabilityChart}
-                    />
+                    {displayPValueColumns && (
+                      <LastColumn
+                        dataset={d}
+                        isViabilityChart={isViabilityChart}
+                      />
+                    )}
                   </tr>
                 );
               })}
