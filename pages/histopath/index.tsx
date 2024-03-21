@@ -294,6 +294,7 @@ const HistopathLandingPage = () => {
               Gene search:
               <input
                 className="form-control"
+                title="gene search box"
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
