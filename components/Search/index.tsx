@@ -83,9 +83,6 @@ const Search = ({
 
   return (
     <div className={`${styles.banner}`}>
-      <Head>
-        <title>{tabIndex === 1 ? 'Phenotype' : 'Gene'} search results</title>
-      </Head>
       <Container className={`pb-4 pt-5 ${styles.container}`}>
         <div className="col-12 col-md-8 ps-4 pe-4">
           <div className={styles.tabs}>
