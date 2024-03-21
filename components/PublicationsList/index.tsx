@@ -7,9 +7,9 @@ import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
 import styles from './styles.module.scss';
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI, API_URL } from "../../api-service";
+import { fetchAPI, API_URL } from "@/api-service";
 import Pagination from "../Pagination";
-import { formatAlleleSymbol } from "../../utils";
+import { formatAlleleSymbol } from "@/utils";
 import { useDebounce } from "usehooks-ts";
 import _ from "lodash";
 
@@ -176,7 +176,7 @@ const PublicationsList = (props: PublicationListProps) => {
                 <InputGroup.Text id="filter-label">Filter</InputGroup.Text>
                 <Form.Control
                   id="filter"
-                  aria-describedby="filter-label"
+                  aria-labelledby="filter-label"
                   value={query}
                   onChange={e => setQuery(e.target.value)}
                 />

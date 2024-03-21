@@ -23,6 +23,7 @@ import {
 import Link from "next/link";
 import { formatAlleleSymbol } from "@/utils";
 import ScatterChart from "@/components/ScatterChart";
+import Head from "next/head";
 
 ChartJS.register(
   CategoryScale,
@@ -180,6 +181,9 @@ const ABRChart = ({ geneData }) => {
 const HearingLandingPage = () => {
   return (
     <>
+      <Head>
+        <title>Hearing | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page" style={{lineHeight: 2}}>
         <Card>

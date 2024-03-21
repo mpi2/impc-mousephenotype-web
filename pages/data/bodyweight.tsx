@@ -10,6 +10,7 @@ import { BodyWeightChart, BodyWeightDataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 import Link from "next/link";
 import { getDatasetByKey } from "@/utils";
+import Head from "next/head";
 
 const BodyWeightChartPage = () => {
   const router = useRouter();
@@ -21,6 +22,9 @@ const BodyWeightChartPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Body weigth curve chart for {activeDataset?.geneSymbol} | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page">
         <Card>

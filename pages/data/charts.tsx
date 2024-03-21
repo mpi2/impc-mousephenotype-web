@@ -23,6 +23,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Skeleton from "react-loading-skeleton";
 import GrossPathology from "@/components/Data/GrossPathology";
+import Head from "next/head";
 
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
@@ -116,6 +117,9 @@ const Charts = () => {
 
   return (
     <>
+      <Head>
+        <title>{allSummaries?.[0]?.parameterName} chart for {allSummaries?.[0]?.geneSymbol} | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page">
         <Card>

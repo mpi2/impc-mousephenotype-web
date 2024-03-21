@@ -1,0 +1,80 @@
+{
+  "id": "65d60d61d2368b754bfbe70f",
+  "mgiGeneAccessionId": "MGI:1922702",
+  "geneName": "activating signal cointegrator 1 complex subunit 2",
+  "geneSymbol": "Ascc2",
+  "markerType": "Gene",
+  "synonyms": [
+    "1700011I11Rik",
+    "ASC1p100",
+    "2610034L15Rik"
+  ],
+  "humanGeneSymbols": [
+    "ASCC2"
+  ],
+  "humanSymbolSynonyms": [
+    "FLJ21588",
+    "ASC1p100",
+    "DKFZp586O0223"
+  ],
+  "productionCenters": null,
+  "phenotypingCenters": null,
+  "alleleNames": [
+    "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "endonuclease-mediated mutation 11, GemPharmatech Co., Ltd",
+    "endonuclease-mediated mutation 1, GemPharmatech Co., Ltd",
+    "targeted mutation 1b, Wellcome Trust Sanger Institute"
+  ],
+  "isUmassGene": false,
+  "isIdgGene": false,
+  "hasEmbryoImagingData": false,
+  "chrName": "11",
+  "seqRegionStart": "4587747",
+  "seqRegionEnd": "4635699",
+  "chrStrand": "+",
+  "seqRegionId": "11",
+  "entrezgeneId": null,
+  "ensemblGeneIds": null,
+  "ccdsIds": null,
+  "ncbiId": null,
+  "assignmentStatus": "Selected for production",
+  "nullAlleleProductionStatus": "Genotype confirmed mice",
+  "conditionalAlleleProductionStatus": "Genotype confirmed mice",
+  "esCellProductionStatus": "ES Cells Produced",
+  "phenotypeStatus": "Phenotyping data available",
+  "phenotypingDataAvailable": true,
+  "significantTopLevelPhenotypes": [
+    "immune system phenotype",
+    "growth/size/body region phenotype",
+    "hematopoietic system phenotype",
+    "behavior/neurological phenotype",
+    "mortality/aging",
+    "cardiovascular system phenotype"
+  ],
+  "notSignificantTopLevelPhenotypes": [
+    "reproductive system phenotype",
+    "integument phenotype",
+    "adipose tissue phenotype",
+    "muscle phenotype",
+    "hearing/vestibular/ear phenotype",
+    "craniofacial phenotype",
+    "homeostasis/metabolism phenotype",
+    "pigmentation phenotype",
+    "embryo phenotype",
+    "limbs/digits/tail phenotype",
+    "nervous system phenotype",
+    "vision/eye phenotype",
+    "respiratory system phenotype",
+    "liver/biliary system phenotype",
+    "skeleton phenotype"
+  ],
+  "significantPhenotypesCount": 6,
+  "adultExpressionObservationsCount": 49,
+  "embryoExpressionObservationsCount": 62,
+  "associatedDiseasesCount": null,
+  "hasLacZData": true,
+  "hasImagingData": true,
+  "hasViabilityData": true,
+  "hasBodyWeightData": true,
+  "hasHistopathologyData": true
+}

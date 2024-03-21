@@ -159,7 +159,7 @@ const SignificantPhenotypes = (
         {width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{textTransform: "capitalize"}}/>},
         {width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell/>},
         {width: 1, label: "Significant sexes", field: "sex", cmp: <SignificantSexesCell/>},
-        {width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell linkToGrossPathChart />},
+        {width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell />},
       ]}
     />
   );

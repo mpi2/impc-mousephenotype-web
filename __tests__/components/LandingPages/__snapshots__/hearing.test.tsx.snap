@@ -1,0 +1,1613 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hearing landing page renders correctly 1`] = `
+[
+  <div
+    className="banner"
+  >
+    <div
+      className="pb-4 pt-5 container container"
+    >
+      <div
+        className="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          className="tabs"
+        >
+          <a
+            className="tab"
+            href="/search"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Genes
+          </a>
+          <a
+            className="tab"
+            href="/search?type=phenotype"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Phenotypes
+          </a>
+          <a
+            className="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          className="inputCont"
+        >
+          <input
+            className="input"
+            onChange={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search All 7824 Knockout Data..."
+            type="text"
+            value=""
+          />
+          <button
+            className="searchBtn"
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="page container"
+    style={
+      {
+        "lineHeight": 2,
+      }
+    }
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="subheading"
+      >
+        <nav
+          aria-label="breadcrumb"
+        >
+          <ol
+            className="breadcrumb"
+          >
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              Home
+            </li>
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              IMPC data collections
+            </li>
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              Hearing Data
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <h1
+        className="mb-4 mt-2"
+      >
+        <strong>
+          IMPC Hearing Data
+        </strong>
+      </h1>
+      <div
+        className="container"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col-12"
+          >
+            <p>
+              The IMPC is hunting unknown genes responsible for hearing loss by screening knockout mice. Worldwide, 360 million people live with mild to profound hearing loss. Notably, 70% hearing loss occurs as an isolated condition (non-syndromic) and 30% with additional phenotypes (syndromic). The vast majority of genes responsible for hearing loss are unknown.
+            </p>
+            <ul>
+              <li>
+                Press releases: 
+                <a
+                  className="primary link"
+                  href="https://www.ebi.ac.uk/about/news/press-releases/hearing-loss-genes/"
+                >
+                  EMBL-EBI
+                </a>
+                 | 
+                <a
+                  className="primary link"
+                  href="https://www.mrc.ac.uk/news/browse/genes-critical-for-hearing-identified/"
+                >
+                  MRC
+                </a>
+                 | 
+                <a
+                  className="primary link"
+                  href="https://www.mousephenotype.org/blog/2018/04/06/novel-hearing-loss-genes-identified-in-large-study-by-scientists-across-the-world/"
+                >
+                  IMPC
+                </a>
+                 | 
+              </li>
+              <li>
+                <a
+                  className="primary link"
+                  href="http://bit.ly/IMPCDeafness"
+                >
+                  Nature Communications (released 12/10/2017)
+                </a>
+              </li>
+              <li>
+                <a
+                  className="primary link"
+                  href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-017-00595-4/MediaObjects/41467_2017_595_MOESM1_ESM.pdf"
+                >
+                  Supplementary Material
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <h1
+        className="mb-4 mt-2"
+      >
+        <strong>
+          Approach
+        </strong>
+      </h1>
+      <p>
+        In order to identify the function of genes, the consortium uses a series of response (ABR) test conducted at 14 weeks of age. Hearing is assessed at five frequencies – 6kHz, 12kHz, 18kHz, 24kHz and 30kHz – as well as a broadband click stimulus. Increased thresholds are indicative of abnormal hearing. Abnormalities in adult ear morphology are recorded as part of the 
+        <a
+          className="primary link"
+          href="https://www.mousephenotype.org/impress/protocol/186"
+        >
+          Combined SHIRPA and Dysmorphology (CSD)
+        </a>
+         protocol, which includes a response to a click box test (absence is indicative of a strong hearing deficit) and visual inspection for behavioural signs that may indicate vestibular dysfunction e.g. head bobbing or circling.
+      </p>
+      <h2>
+        Procedures that can lead to relevant phenotype associations
+      </h2>
+      <span>
+        Young Adult:
+      </span>
+      <ul>
+        <li>
+          Auditory Brain Stem Response
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1062"
+          >
+            ICSLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1084"
+          >
+            NINGLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/545"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/542"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1360"
+          >
+            RBRCLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/669"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/665"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/541"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/543"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1050"
+          >
+            BCMLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1232"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/667"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/672"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/89"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/670"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/546"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/149"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/547"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/544"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1363"
+          >
+            RBRCIP v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/671"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/668"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/666"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1100"
+          >
+            KMPCLA v2
+            , 
+          </a>
+        </li>
+        <li>
+          Combined SHIRPA and Dysmorphology
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1062"
+          >
+            ICSLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1084"
+          >
+            NINGLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/545"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/542"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1360"
+          >
+            RBRCLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/669"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/665"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/541"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/543"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1050"
+          >
+            BCMLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1232"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/667"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/672"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/89"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/670"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/546"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/149"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/547"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/544"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1363"
+          >
+            RBRCIP v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/671"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/668"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/666"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1100"
+          >
+            KMPCLA v2
+            , 
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        IMPC Deafness Publication
+      </h2>
+      <h3>
+        Hearing loss investigated in 3,006 knockout mouse lines
+      </h3>
+      <p>
+        <a
+          className="link primary"
+          href="http://bit.ly/IMPCDeafness"
+        >
+          A large scale hearing loss screen reveals an extensive unexplored genetic landscape for auditory dysfunction.
+        </a>
+      </p>
+      <ul>
+        <li>
+          67 genes identified as candidate hearing loss genes
+        </li>
+        <li>
+          52 genes are not previously associated with hearing loss and encompass a wide range of functions from structural proteins to transcription factors
+        </li>
+        <li>
+          Among the novel candidate genes, 
+          <i>
+            Atp2b1
+          </i>
+           is expressed in the inner ear and
+          <i>
+            Sema3f
+          </i>
+           plays a role in sensory hair cell innervation in the cochlea
+        </li>
+        <li>
+          The IMPC will continue screening for hearing loss mutants in its second 5 year phase
+        </li>
+      </ul>
+      <h3>
+        Methods
+      </h3>
+      <p>
+        Response data from the 
+        <a
+          className="link primary"
+          href="https://www.mousephenotype.org/impress/protocol/149/7"
+        >
+          Auditory Brain Stem response (ABR)
+        </a>
+         test was used – hearing at five frequencies, 6kHz, 12kHz, 18kHz, 24kHz and 30kHz was measured.
+      </p>
+      <ul>
+        <li>
+          Control wildtype mice from each phenotypic centre included, matched for gender, age, phenotypic pipeline and metadata (e.g. instrument)
+        </li>
+        <li>
+          Our production statistical approach that automatically detects mutants with abnormal hearing was manually curated to yield 67 genes with profound hearing loss
+        </li>
+      </ul>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Gene table
+      </h2>
+      <div
+        className="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+        style={{}}
+      >
+        <ul
+          className="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-top"
+        >
+          <button
+            className="pagNavBtn nav-btn"
+            data-testid="top-prev-page"
+            disabled={true}
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+           
+          <li
+            className="page-item active"
+            data-testid="top-page-1"
+          >
+            <button
+              className="pagNavBtn page-link"
+              data-testid="top-page-1-btn"
+              onClick={[Function]}
+            >
+              1
+            </button>
+          </li>
+          <li
+            className="page-item"
+            data-testid="top-last-page"
+          >
+            <button
+              aria-label="Previous"
+              className="pagNavBtn page-link last-page"
+              data-testid="top-last-page-btn"
+              onClick={[Function]}
+            >
+              <span
+                aria-hidden="true"
+              >
+                7
+              </span>
+            </button>
+          </li>
+          <button
+            className="pagNavBtn nav-btn primary"
+            data-testid="top-next-page"
+            disabled={false}
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+        </ul>
+      </div>
+      <div
+        className="tableWrapper"
+      >
+        <table
+          className="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowSpan={2}
+                width="8.333333333333332%"
+              >
+                <button
+                  className="inlineButton headerButton"
+                  onClick={[Function]}
+                  style={
+                    {
+                      "fontWeight": "bold",
+                    }
+                  }
+                >
+                  Gene symbol
+                   
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={{}}
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                      style={{}}
+                    />
+                  </svg>
+                </button>
+              </th>
+              <th
+                rowSpan={2}
+                width="8.333333333333332%"
+              >
+                <button
+                  className="inlineButton headerButton"
+                  onClick={[Function]}
+                  style={
+                    {
+                      "fontWeight": "normal",
+                    }
+                  }
+                >
+                  Zygosity
+                   
+                  <span
+                    className="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      style={{}}
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                        style={{}}
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      style={{}}
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                        style={{}}
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowSpan={2}
+                width="8.333333333333332%"
+              >
+                <button
+                  className="inlineButton headerButton"
+                  onClick={[Function]}
+                  style={
+                    {
+                      "fontWeight": "normal",
+                    }
+                  }
+                >
+                  Status
+                   
+                  <span
+                    className="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      style={{}}
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                        style={{}}
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      style={{}}
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                        style={{}}
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowSpan={2}
+                width="8.333333333333332%"
+              >
+                <button
+                  className="inlineButton headerButton"
+                  onClick={[Function]}
+                  style={
+                    {
+                      "fontWeight": "normal",
+                    }
+                  }
+                >
+                  Hearing loss
+                   
+                  <span
+                    className="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      style={{}}
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                        style={{}}
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      style={{}}
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                        style={{}}
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span>
+                  A730017C20Rik
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  Severe
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Aak1
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  High
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Acsl4
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  High
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Acvr2a
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  Mild
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Adgrb1
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  Mild
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Adgrv1
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Known
+                </span>
+              </td>
+              <td>
+                <span>
+                  Severe
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Ahsg
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  High
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Ankrd11
+                </span>
+              </td>
+              <td>
+                <span>
+                  Het
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  Mild
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Ap3m2
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  Mild
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  Ap3s1
+                </span>
+              </td>
+              <td>
+                <span>
+                  Hom
+                </span>
+              </td>
+              <td>
+                <span>
+                  Novel
+                </span>
+              </td>
+              <td>
+                <span>
+                  Mild
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        className="buttonsWrapper "
+      >
+        <div
+          style={
+            {
+              "alignItems": "center",
+              "display": "flex",
+            }
+          }
+        >
+          Rows per page: 
+          <select
+            onChange={[Function]}
+          >
+            <option
+              value="10"
+            >
+              10
+            </option>
+            <option
+              value="20"
+            >
+              20
+            </option>
+            <option
+              value="30"
+            >
+              30
+            </option>
+            <option
+              value="50"
+            >
+              50
+            </option>
+            <option
+              value="100"
+            >
+              100
+            </option>
+          </select>
+        </div>
+        <ul
+          className="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-bottom"
+        >
+          <button
+            className="pagNavBtn nav-btn"
+            data-testid="bottom-prev-page"
+            disabled={true}
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+           
+          <li
+            className="page-item active"
+            data-testid="bottom-page-1"
+          >
+            <button
+              className="pagNavBtn page-link"
+              data-testid="bottom-page-1-btn"
+              onClick={[Function]}
+            >
+              1
+            </button>
+          </li>
+          <li
+            className="page-item"
+            data-testid="bottom-last-page"
+          >
+            <button
+              aria-label="Previous"
+              className="pagNavBtn page-link last-page"
+              data-testid="bottom-last-page-btn"
+              onClick={[Function]}
+            >
+              <span
+                aria-hidden="true"
+              >
+                7
+              </span>
+            </button>
+          </li>
+          <button
+            className="pagNavBtn nav-btn primary"
+            data-testid="bottom-next-page"
+            disabled={false}
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+        </ul>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Vignettes
+      </h2>
+      <div
+        className="container"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col"
+          >
+            <div
+              style={
+                {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h2
+                style={
+                  {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                Novel, mild hearing loss
+              </h2>
+              <a
+                className="primary link"
+                href="/genes/MGI:1933736"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Adgrb1
+                <sup>
+                  tm2a(EUCOMM)Wtsi
+                </sup>
+              </a>
+            </div>
+            <div
+              style={
+                {
+                  "marginTop": "1.5em",
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h3
+                style={
+                  {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                Evoked ABR Threshold (6, 12, 18, 24, 30kHz)
+              </h3>
+              <a
+                className="primary link"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542"
+              >
+                Auditory Brain Stem Response
+              </a>
+            </div>
+            <div
+              style={
+                {
+                  "height": "300px",
+                  "position": "relative",
+                }
+              }
+            >
+              <canvas
+                height={150}
+                role="img"
+                width={300}
+              />
+            </div>
+          </div>
+          <div
+            className="col"
+          >
+            <div
+              style={
+                {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h2
+                style={
+                  {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                Know, severe hearing loss
+              </h2>
+              <a
+                className="primary link"
+                href="/genes/MGI:3583900"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Elmod1
+                <sup>
+                  tm1b(EUCOMM)Hmgu
+                </sup>
+              </a>
+            </div>
+            <div
+              style={
+                {
+                  "marginTop": "1.5em",
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h3
+                style={
+                  {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                Evoked ABR Threshold (6, 12, 18, 24, 30kHz)
+              </h3>
+              <a
+                className="primary link"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542"
+              >
+                Auditory Brain Stem Response
+              </a>
+            </div>
+            <div
+              style={
+                {
+                  "height": "300px",
+                  "position": "relative",
+                }
+              }
+            >
+              <canvas
+                height={150}
+                role="img"
+                width={300}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="mt-5 row"
+        >
+          <div
+            className="col"
+          >
+            <div
+              style={
+                {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h2
+                style={
+                  {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                Novel, high-frequency hearing loss
+              </h2>
+              <a
+                className="primary link"
+                href="/genes/MGI:1915589"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                CCdc88c
+                <sup>
+                  tm1b(KOMP)Mbp
+                </sup>
+              </a>
+            </div>
+            <div
+              style={
+                {
+                  "marginTop": "1.5em",
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h3
+                style={
+                  {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                Evoked ABR Threshold (6, 12, 18, 24, 30kHz)
+              </h3>
+              <a
+                className="primary link"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542"
+              >
+                Auditory Brain Stem Response
+              </a>
+            </div>
+            <div
+              style={
+                {
+                  "height": "300px",
+                  "position": "relative",
+                }
+              }
+            >
+              <canvas
+                height={150}
+                role="img"
+                width={300}
+              />
+            </div>
+          </div>
+          <div
+            className="col"
+          >
+            <div
+              style={
+                {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h2
+                style={
+                  {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                Novel, severe hearing loss
+              </h2>
+              <a
+                className="primary link"
+                href="/genes/MGI:2444708"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                Zfp719
+                <sup>
+                  tm1b(EUCOMM)Wtsi
+                </sup>
+              </a>
+            </div>
+            <div
+              style={
+                {
+                  "marginTop": "1.5em",
+                  "textAlign": "center",
+                }
+              }
+            >
+              <h3
+                style={
+                  {
+                    "marginBottom": 0,
+                  }
+                }
+              >
+                Evoked ABR Threshold (6, 12, 18, 24, 30kHz)
+              </h3>
+              <a
+                className="primary link"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542"
+              >
+                Auditory Brain Stem Response
+              </a>
+            </div>
+            <div
+              style={
+                {
+                  "height": "300px",
+                  "position": "relative",
+                }
+              }
+            >
+              <canvas
+                height={150}
+                role="img"
+                width={300}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Phenotypes distribution
+      </h2>
+      <div
+        style={
+          {
+            "height": "300px",
+            "position": "relative",
+          }
+        }
+      >
+        <canvas
+          height={150}
+          role="img"
+          width={300}
+        />
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="container"
+      >
+        <h1>
+          <strong>
+            IKMC/IMPC related publications
+          </strong>
+        </h1>
+      </div>
+    </div>
+  </div>,
+]
+`;

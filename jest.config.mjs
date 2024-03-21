@@ -24,6 +24,8 @@ const config = {
         '^@/components/(.*)$': '<rootDir>/components/$1',
         '^@/pages/(.*)$': '<rootDir>/pages/$1',
         '^@/utils/(.*)$': '<rootDir>/utils/$1',
+        '^d3$': '<rootDir>/node_modules/d3/dist/d3.min.js',
+        '^d3-color$': '<rootDir>/node_modules/d3-color/dist/d3-color.js',
     }
 }
 export default createJestConfig(config)

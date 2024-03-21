@@ -34,4 +34,8 @@ module.exports = {
   },
   transpilePackages: ["@nivo"],
   experimental: { esmExternals: "loose" },
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  }
 };

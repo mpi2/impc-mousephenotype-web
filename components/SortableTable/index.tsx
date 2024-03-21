@@ -88,27 +88,29 @@ const SortableTable = ({
           ? { colSpan: childHeader.length, scope: "colGroup" }
           : { rowSpan: 2 })}
       >
-        <button
-          style={{
-            fontWeight: !disabled && selected ? "bold" : "normal",
-          }}
-          className={`${styles.inlineButton} ${styles.headerButton}`}
-          onClick={handleSelect}
-        >
-          {label}{" "}
-          {!disabled && selected && (
-            <FontAwesomeIcon
-              className={styles.sortIcon}
-              icon={sort.order === "asc" ? faCaretUp : faCaretDown}
-            />
-          )}
-          {!disabled && !selected && (
-            <span className={styles.defaultIcons}>
-              <FontAwesomeIcon className={styles.first} icon={faCaretUp} />
-              <FontAwesomeIcon className={styles.second} icon={faCaretDown} />
+        {!!label && (
+          <button
+            style={{
+              fontWeight: !disabled && selected ? "bold" : "normal",
+            }}
+            className={`${styles.inlineButton} ${styles.headerButton}`}
+            onClick={handleSelect}
+          >
+            {label}{" "}
+            {!disabled && selected && (
+              <FontAwesomeIcon
+                className={styles.sortIcon}
+                icon={sort.order === "asc" ? faCaretUp : faCaretDown}
+              />
+            )}
+            {!disabled && !selected && (
+              <span className={styles.defaultIcons}>
+              <FontAwesomeIcon className={styles.first} icon={faCaretUp}/>
+              <FontAwesomeIcon className={styles.second} icon={faCaretDown}/>
             </span>
-          )}
-        </button>
+            )}
+          </button>
+        )}
       </th>
     );
   };
@@ -117,22 +119,22 @@ const SortableTable = ({
     <div className={styles.tableWrapper}>
       <Table bordered className={`${styles.table} ${styles.striped}`}>
         {hasNested &&
-          headers.map(({ children: childHeaders }) => {
+          headers.map(({children: childHeaders}) => {
             if (childHeaders && childHeaders.length) {
-              return <colgroup span={childHeaders.length} />;
+              return <colgroup span={childHeaders.length}/>;
             }
-            return <col />;
+            return <col/>;
           })}
         <thead>
-          <tr>
-            {headers.map((header, index) => (
-              <SortableTh key={index} {...header} />
-            ))}
-          </tr>
-          {hasNested &&
-            headers.map(({ children: childHeaders }) => {
-              if (childHeaders && childHeaders.length) {
-                return childHeaders.map((childHeader) => (
+        <tr>
+          {headers.map((header, index) => (
+            <SortableTh key={index} {...header} />
+          ))}
+        </tr>
+        {hasNested &&
+          headers.map(({children: childHeaders}) => {
+            if (childHeaders && childHeaders.length) {
+              return childHeaders.map((childHeader) => (
                   <SortableTh {...childHeader} />
                 ));
               }

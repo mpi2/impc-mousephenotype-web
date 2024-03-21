@@ -92,7 +92,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             className={canGoBack ? `${styles.pagNavBtn} nav-btn primary` : `${styles.pagNavBtn} nav-btn`}
             data-testid={`${placement}-prev-page`}
           >
-            <FontAwesomeIcon icon={faArrowLeft} />
+            <FontAwesomeIcon icon={faArrowLeft} title="previous page button" titleId="prev-page-icon" />
           </button>&nbsp;
           {pageRange[0] > 1 && (
             <>
@@ -161,7 +161,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             className={canGoForward ? `${styles.pagNavBtn} nav-btn primary` : `${styles.pagNavBtn} nav-btn`}
             data-testid={`${placement}-next-page`}
           >
-            <FontAwesomeIcon icon={faArrowRight} />
+            <FontAwesomeIcon icon={faArrowRight} title="next page button" titleId="next-page-icon" />
           </button>
         </ul>
       );

@@ -16,7 +16,7 @@ const SignificantSexes = <T extends Model>(props: TableCellProps<T> & {  }) => {
             trigger={["hover", "focus"]}
             overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}
           >
-            <span className="me-2">
+            <span className="me-2" data-testid="sex-icon">
               <FontAwesomeIcon icon={getIcon(significantSex)} size="lg" />
             </span>
           </OverlayTrigger>

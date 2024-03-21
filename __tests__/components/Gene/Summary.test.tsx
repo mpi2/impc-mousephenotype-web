@@ -2,6 +2,8 @@ import { screen } from '@testing-library/react';
 import Summary from '@/components/Gene/Summary';
 import { renderWithClient } from "../../utils";
 import { GeneSummary } from "@/models/gene";
+import { summarySystemSelectionChannel } from "@/eventChannels";
+import userEvent from "@testing-library/user-event";
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
@@ -49,8 +51,12 @@ let gene: GeneSummary = {
 };
 
 describe('Gene summary component', () => {
+  afterEach(() => {
+    // restore the spy created with spyOn
+    jest.restoreAllMocks();
+  });
   it('displays physiological systems correctly', async () => {
-    renderWithClient(<Summary gene={gene} error={''} loading={false} />);
+    renderWithClient(<Summary gene={gene} error={''} loading={false} numOfAlleles={5} />);
     expect(screen.getByTestId('totalCount')).toHaveTextContent('19 / 24 physiological systems tested');
     expect(screen.getByTestId('significantSystemIcons').children).toHaveLength(6);
     expect(screen.getByTestId('significantCount')).toHaveTextContent('6')
@@ -61,7 +67,7 @@ describe('Gene summary component', () => {
   });
 
   it('displays data collection status correctly',() => {
-    renderWithClient(<Summary gene={gene} error={''} loading={false} />);
+    renderWithClient(<Summary gene={gene} error={''} loading={false} numOfAlleles={5} />);
     expect(screen.getByTestId('LacZ expression')).not.toHaveClass('dataCollectionInactive');
     expect(screen.getByTestId('Histopathology')).toHaveClass('dataCollectionInactive');
     expect(screen.getByTestId('Images')).not.toHaveClass('dataCollectionInactive');
@@ -72,9 +78,26 @@ describe('Gene summary component', () => {
 
   it('should have synonyms tooltip if have 3 or more', () => {
     renderWithClient(
-      <Summary gene={{...gene, synonyms: ['1', '2', '3', '4']}} error={''} loading={false} />
+      <Summary gene={{...gene, synonyms: ['1', '2', '3', '4']}} error={''} loading={false} numOfAlleles={5} />
     );
     expect(screen.getByTestId('synonyms')).toBeDefined();
+  });
+
+  it('should display the number of alleles inside the button',async () => {
+    renderWithClient(<Summary gene={gene} error={''} loading={false} numOfAlleles={5} />);
+    expect(await screen.findByRole('button')).toHaveTextContent('5 Allele products available');
+    expect(await screen.findByRole('button')).toHaveAttribute('href', '#order')
+  });
+
+  it('should display the number of alleles inside the button',async () => {
+    const spy = jest.spyOn(summarySystemSelectionChannel, 'emit');
+    const user = userEvent.setup();
+    renderWithClient(<Summary gene={gene} error={''} loading={false} numOfAlleles={5} />);
+    await user.click(await screen.findByText(/Nervous system/i));
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('onSystemSelection', 'nervous system phenotype');
+    await user.click(await screen.findByText(/Hematopoietic system/i));
+    expect(spy).toHaveBeenCalledWith('onSystemSelection', 'hematopoietic system phenotype');
   });
 
 });

@@ -100,6 +100,7 @@ const EmbryoDataAvailabilityGrid = () => {
             classNamePrefix="select"
             placeholder="Select window of lethality"
             onChange={onChangeWOL}
+            aria-label="window of lethality filter"
           />
         </div>
         <div className="col-6"></div>
