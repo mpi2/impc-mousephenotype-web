@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { debounce } from "lodash";
+import Head from "next/head";
 
 export type Tab = {
   name: string;
@@ -82,6 +83,9 @@ const Search = ({
 
   return (
     <div className={`${styles.banner}`}>
+      <Head>
+        <title>{tabIndex === 1 ? 'Phenotype' : 'Gene'} search results</title>
+      </Head>
       <Container className={`pb-4 pt-5 ${styles.container}`}>
         <div className="col-12 col-md-8 ps-4 pe-4">
           <div className={styles.tabs}>
@@ -112,6 +116,7 @@ const Search = ({
           </div>
           <div className={styles.inputCont}>
             <input
+              title="main search box"
               className={styles.input}
               type="text"
               placeholder="Search All 7824 Knockout Data..."
@@ -141,8 +146,9 @@ const Search = ({
               onClick={() => {
                 handleInput(query);
               }}
+              aria-describedby="svg-inline--fa-title-search-icon"
             >
-              <FontAwesomeIcon icon={faSearch} />
+              <FontAwesomeIcon icon={faSearch} title="Search button" titleId="search-icon" />
             </button>
           </div>
         </div>
