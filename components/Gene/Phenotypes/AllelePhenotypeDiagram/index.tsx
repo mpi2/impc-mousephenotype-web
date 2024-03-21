@@ -2,8 +2,8 @@ import { GenePhenotypeHits } from "@/models/gene";
 import { Alert, Button, Form, OverlayTrigger, Popover } from "react-bootstrap";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
-import { UpSetJS, extractCombinations, ISet } from '@upsetjs/react';
-import Drawer from 'react-modern-drawer'
+import { UpSetJS, extractCombinations } from '@upsetjs/react';
+import Drawer from 'react-modern-drawer';
 import styles from './styles.module.scss';
 import 'react-modern-drawer/dist/index.css';
 import { ISetCombinations } from "@upsetjs/model";
@@ -229,15 +229,13 @@ const AllelePhenotypeDiagram = (
             <span className="white">Select alleles</span>
           </Button>
         </div>
-        <div className={styles.selector}>
-          <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-            <Button variant="secondary">
-              <FontAwesomeIcon className="white" icon={faCircleInfo} />
-            </Button>
-          </OverlayTrigger>
-        </div>
       </div>
       <div className="mt-3">
+        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+          <Button variant="secondary" style={{ marginRight: '1rem' }} >
+            <FontAwesomeIcon className="white" icon={faCircleInfo} title="help button" titleId="help-button-icon" />
+          </Button>
+        </OverlayTrigger>
         <span>Click on a bar to view the phenotypes that belongs to an allele or set of alleles</span>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>
@@ -313,7 +311,7 @@ const AllelePhenotypeDiagram = (
               style={{ fontSize: '150%' }}
               onClick={() => setIsOpen(false)}
             >
-              <FontAwesomeIcon icon={faCircleXmark} />
+              <FontAwesomeIcon icon={faCircleXmark} title="Close drawer" titleId="close-drawer-icon" />
             </Button>
           </div>
         </div>

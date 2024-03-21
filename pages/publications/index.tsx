@@ -26,6 +26,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pagination from "../../components/Pagination";
 import dynamic from "next/dynamic";
 import { PublicationListProps } from "../../components/PublicationsList";
+import Head from "next/head";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
 type AggregationData = {
@@ -195,6 +196,9 @@ const PublicationsPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Publications with IMPC alleles | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page">
         <Card>

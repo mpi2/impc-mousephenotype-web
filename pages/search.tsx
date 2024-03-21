@@ -4,6 +4,8 @@ import GeneResults from "../components/GeneResults";
 import PhenotypeResults from "../components/PhenotypeResults";
 import AlleleResults from "../components/AlleleResults";
 import { useState } from "react";
+import { Metadata } from "next";
+import Head from "next/head";
 
 const SearchResults = () => {
   const router = useRouter();
@@ -25,10 +27,12 @@ const SearchResults = () => {
 
   return (
     <>
+      <Head>
+        <title>IMPC Search | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search updateURL onChange={setQuery} />
       {renderResults()}
     </>
   );
 };
-
 export default SearchResults;

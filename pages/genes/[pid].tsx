@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
+import Head from "next/head";
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),
@@ -48,29 +49,34 @@ const Gene = () => {
   }, [gene]);
 
   return (
-    <GeneContext.Provider value={gene}>
-      <NumAllelesContext.Provider value={numAllelesContextValue}>
-        <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
-          <GeneComparatorTrigger current={router.query.pid as string} />
-          <Search />
-          <Container className="page">
-            <Summary {...{ gene, numOfAlleles, loading: isLoading, error: isError ? error.toString(): "" }} />
-            {!!gene && (
-              <>
-                <Phenotypes gene={gene} />
-                <Expressions />
-                <Images gene={gene} />
-                <HumanDiseases gene={gene} />
-                <Histopathology />
-                <Publications gene={gene} />
-                <ExternalLinks />
-                <Order allelesStudied={allelesStudied} />
-              </>
-            )}
-          </Container>
-        </AllelesStudiedContext.Provider>
-      </NumAllelesContext.Provider>
-    </GeneContext.Provider>
+    <>
+      <Head>
+        <title>{gene?.geneSymbol} Mouse Gene details | International Mouse Phenotyping Consortium</title>
+      </Head>
+      <GeneContext.Provider value={gene}>
+        <NumAllelesContext.Provider value={numAllelesContextValue}>
+          <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
+            <GeneComparatorTrigger current={router.query.pid as string} />
+            <Search />
+            <Container className="page">
+              <Summary {...{ gene, numOfAlleles, loading: isLoading, error: isError ? error.toString(): "" }} />
+              {!!gene && (
+                <>
+                  <Phenotypes gene={gene} />
+                  <Expressions />
+                  <Images gene={gene} />
+                  <HumanDiseases gene={gene} />
+                  <Histopathology />
+                  <Publications gene={gene} />
+                  <ExternalLinks />
+                  <Order allelesStudied={allelesStudied} />
+                </>
+              )}
+            </Container>
+          </AllelesStudiedContext.Provider>
+        </NumAllelesContext.Provider>
+      </GeneContext.Provider>
+    </>
   );
 };
 

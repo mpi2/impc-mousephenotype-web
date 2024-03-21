@@ -27,6 +27,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatAlleleSymbol } from "@/utils";
 import Link from "next/link";
+import Head from "next/head";
 
 ChartJS.register(
   LinearScale,
@@ -76,6 +77,9 @@ const SexualDimorphismLandingPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Sexual dimorphism | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page" style={{lineHeight: 2}}>
         <Card>

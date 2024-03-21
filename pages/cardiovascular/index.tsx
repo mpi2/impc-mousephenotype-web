@@ -10,6 +10,7 @@ import { PublicationListProps } from "@/components/PublicationsList";
 import ScatterChart from "@/components/ScatterChart";
 import ChordDiagram from "@/components/ChordDiagram";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"), {ssr: false}
@@ -40,6 +41,9 @@ const CardiovascularLandingPage = () => {
   const phenotypeData = !tableExtended ? data.phenotypes.slice(0, 10) : data.phenotypes;
   return (
     <>
+      <Head>
+        <title>Cardiovascular system | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page" style={{lineHeight: 2}}>
         <Card>

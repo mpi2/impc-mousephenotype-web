@@ -17,6 +17,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import Head from "next/head";
 
 ChartJS.register(
   CategoryScale,
@@ -50,7 +51,7 @@ const valuePair = (key: string, value: string | number) => (
   </div>
 );
 
-const ReleaseNote = () => {
+const ReleaseNotesPage = () => {
   const [showAll, setShowAll] = useState(false);
   const associationsByProcedureData = mockData.phenotypeAssociationsByProcedure || [];
   const productionStatusData = mockData.productionStatus || [];
@@ -222,6 +223,9 @@ const ReleaseNote = () => {
 
   return (
     <>
+      <Head>
+        <title>IMPC Data release {mockData.dataReleaseVersion} | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container style={{ maxWidth: 1240 }} className="page">
         <Card>
@@ -469,4 +473,4 @@ const ReleaseNote = () => {
   );
 };
 
-export default ReleaseNote;
+export default ReleaseNotesPage;

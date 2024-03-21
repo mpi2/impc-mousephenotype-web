@@ -26,6 +26,7 @@ import { AlleleSymbol, FilterBox } from "@/components";
 import { GeneImageCollection, Image } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
+import Head from "next/head";
 
 type Filters = {
   selectedCenter: string;
@@ -132,13 +133,13 @@ const ImageViewer = ({image}) => {
         <div className={styles.viewer}>
           <div className={styles.tools}>
             <button onClick={() => zoomIn()}>
-              <FontAwesomeIcon icon={faMagnifyingGlassPlus}/>
+              <FontAwesomeIcon icon={faMagnifyingGlassPlus} title="zoom in button" titleId="zoom-in-icon"/>
             </button>
             <button onClick={() => zoomOut()}>
-              <FontAwesomeIcon icon={faMagnifyingGlassMinus}/>
+              <FontAwesomeIcon icon={faMagnifyingGlassMinus} title="zoom out button" titleId="zoom-out-icon"/>
             </button>
             <button onClick={() => resetTransform()}>
-              <FontAwesomeIcon icon={faRefresh}/>
+              <FontAwesomeIcon icon={faRefresh} title="reset zoom button" titleId="reset-zoom-icon"/>
             </button>
           </div>
           <TransformComponent>
@@ -146,6 +147,7 @@ const ImageViewer = ({image}) => {
               key={image?.jpegUrl}
               src={addTrailingSlash(image?.jpegUrl)}
               style={{ width: "100%", display: "block" }}
+              alt=""
             />
           </TransformComponent>
         </div>
@@ -298,6 +300,9 @@ const ImagesCompare = () => {
 
   return (
     <>
+      <Head>
+        <title>{geneSymbol} Image Comparator | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page">
         <Card>
