@@ -10,6 +10,7 @@ import ManhattanPlot from "@/components/ManhattanPlot";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import _ from 'lodash';
+import Head from "next/head";
 
 const Phenotype = () => {
   const router = useRouter();
@@ -26,7 +27,11 @@ const Phenotype = () => {
   });
 
   return (
-    <PhenotypeContext.Provider value={phenotype}>
+    <>
+      <Head>
+        <title>{`${phenotype?.phenotypeId} (${phenotype?.phenotypeName})`} | IMPC Phenotype Information | International Mouse Phenotyping Consortium</title>
+      </Head>
+      <PhenotypeContext.Provider value={phenotype}>
       <Search defaultType="phenotype" />
       <Container className="page">
         <Summary {...{ phenotype, isLoading, isError }}/>
@@ -53,6 +58,7 @@ const Phenotype = () => {
         </Card>
       </Container>
     </PhenotypeContext.Provider>
+    </>
   );
 };
 

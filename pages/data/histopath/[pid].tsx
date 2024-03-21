@@ -11,6 +11,7 @@ import { faArrowLeftLong, faExternalLinkAlt, faXmark } from "@fortawesome/free-s
 import { usePathname, useSearchParams } from "next/navigation";
 import _ from "lodash";
 import Link from "next/link";
+import Head from "next/head";
 
 const DescriptionCell = <T extends Histopathology>(props: TableCellProps<T> & {maxChars?: number, onClick: (data: T) => void}) => {
   const maxChars = props.maxChars || 50;
@@ -68,6 +69,9 @@ const HistopathChartPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Histopath information for {gene?.geneSymbol} | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page">
         <Card>

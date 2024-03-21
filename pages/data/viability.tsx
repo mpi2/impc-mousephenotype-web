@@ -11,6 +11,7 @@ import { Viability, ViabilityDataComparison } from "@/components/Data";
 import SkeletonTable from "@/components/skeletons/table";
 import Link from "next/link";
 import { getDatasetByKey } from "@/utils";
+import Head from "next/head";
 
 const ViabilityChartPage = () => {
   const [selectedKey, setSelectedKey] = useState('');
@@ -22,6 +23,9 @@ const ViabilityChartPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Viability chart for {activeDataset?.geneSymbol} | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page">
         <Card>

@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const clone = (obj) => JSON.parse(JSON.stringify(obj));
 const geneMap = new Map();
@@ -227,6 +228,9 @@ const HistopathLandingPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Histopathology | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>

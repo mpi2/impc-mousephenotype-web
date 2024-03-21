@@ -11,6 +11,7 @@ import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import styles from './styles.module.scss';
 import { useState } from "react";
 import { PlainTextCell, SmartTable, LinkCell, OptionsCell } from "@/components/SmartTable";
+import Head from "next/head";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -78,6 +79,9 @@ const MetabolismLandingPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Metabolism landing page | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page" style={{lineHeight: 2}}>
         <Card>

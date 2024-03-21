@@ -15,6 +15,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import data from '../../mocks/data/landing-pages/conservation.json';
 import { chartColors } from "@/utils/chart";
+import Head from "next/head";
 
 ChartJS.register(
   CategoryScale,
@@ -138,6 +139,9 @@ const ConservationLandingPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Conservation landing page | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page" style={{lineHeight: 2}}>
         <Card>

@@ -16,6 +16,8 @@ import {
 } from "@/components/SmartTable";
 import { TableCellProps } from "@/models";
 import _ from "lodash";
+import { useMemo } from "react";
+import Head from "next/head";
 
 type Image = {
   alleleSymbol: string;
@@ -25,6 +27,7 @@ type Image = {
   parameterName: string;
   downloadUrl: string;
   sampleGroup: string;
+  ageInWeeks: number;
 };
 
 const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
@@ -90,6 +93,9 @@ const DownloadImagesPage = () => {
 
   return (
     <>
+      <Head>
+        <title>{mutantImages?.geneSymbol} Image Comparator | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page">
         <Card>

@@ -26,6 +26,7 @@ import { AlleleSymbol, FilterBox } from "@/components";
 import { GeneImageCollection, Image } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
+import Head from "next/head";
 
 type Filters = {
   selectedCenter: string;
@@ -299,6 +300,9 @@ const ImagesCompare = () => {
 
   return (
     <>
+      <Head>
+        <title>{geneSymbol} Image Comparator | International Mouse Phenotyping Consortium</title>
+      </Head>
       <Search />
       <Container className="page">
         <Card>
