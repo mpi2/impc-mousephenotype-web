@@ -43,7 +43,7 @@ const EmbryoLandingPage = () => {
           <Container>
             <Row>
               <Col xs={12} md={4} className="text-center">
-                <Image className={styles.embryoImage} src="images/landing-pages/Tmem100_het.jpg" fluid />
+                <Image className={styles.embryoImage} src="images/landing-pages/Tmem100_het.jpg" fluid alt="" />
               </Col>
               <Col xs={12} md={8}>
                 <p>
@@ -76,7 +76,7 @@ const EmbryoLandingPage = () => {
               Embryo gross morphology, as well as 2D and 3D imaging are actively being implemented by the IMPC for lethal lines.
             </p>
             <div className="text-center">
-              <Image src="images/landing-pages/IMPC-Embryo-Pipeline-Diagram.png" fluid />
+              <Image src="images/landing-pages/IMPC-Embryo-Pipeline-Diagram.png" fluid alt=""/>
             </div>
           </Container>
         </Card>
