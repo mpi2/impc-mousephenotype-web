@@ -2,8 +2,8 @@ import { GenePhenotypeHits } from "@/models/gene";
 import { Alert, Button, Form, OverlayTrigger, Popover } from "react-bootstrap";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
-import { UpSetJS, extractCombinations, ISet } from '@upsetjs/react';
-import Drawer from 'react-modern-drawer'
+import { UpSetJS, extractCombinations } from '@upsetjs/react';
+import Drawer from 'react-modern-drawer';
 import styles from './styles.module.scss';
 import 'react-modern-drawer/dist/index.css';
 import { ISetCombinations } from "@upsetjs/model";
