@@ -54,7 +54,7 @@ const HistopathChartPage = () => {
 
   const removeAnatomyFilter = () => {
     setSelectedAnatomy(null);
-    const searchParamsTemp = new URLSearchParams(searchParams.toString());
+    const searchParamsTemp = new URLSearchParams(searchParams?.toString());
     searchParamsTemp.delete('anatomy');
     router.replace(`${pathName}${searchParamsTemp}`, undefined, { shallow: true });
   };
@@ -80,7 +80,7 @@ const HistopathChartPage = () => {
               / Histopathology
             </span>
           </div>
-          <h1 className="mb-4 mt-2">
+          <h1 className="mb-4 mt-2" data-testid="main-header">
             <strong className="text-capitalize">
               Histopathology data for {gene?.geneSymbol}
             </strong>
@@ -134,9 +134,14 @@ const HistopathChartPage = () => {
                 <span
                   style={{cursor: "pointer"}}
                   onClick={removeAnatomyFilter}
+                  data-testid="anatomy-badge"
                 >
                   Showing only tissue data for:&nbsp;
-                  <Badge pill bg="secondary" style={{fontSize: '1.1rem', textTransform: "capitalize"}}>
+                  <Badge
+                    pill
+                    bg="secondary"
+                    style={{fontSize: '1.1rem', textTransform: "capitalize"}}
+                  >
                     {selectedAnatomy}
                     &nbsp;
                     <FontAwesomeIcon icon={faXmark}/>

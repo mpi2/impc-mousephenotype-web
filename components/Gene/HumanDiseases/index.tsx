@@ -31,7 +31,7 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
       {Array.from(Array(5).keys())
         .map((n) => n + 1)
         .map((n) => (
-          <span className={n <= children ? styles.selected : ""} />
+          <span key={n} className={n <= children ? styles.selected : ""} />
         ))}
     </div>
   );
@@ -240,8 +240,8 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                     { width: 1, label: "Expand", disabled: true },
                   ]}
                 >
-                  {pageData.map((d) => (
-                    <Row data={d} />
+                  {pageData.map((d, index) => (
+                    <Row key={index} data={d} />
                   ))}
                 </SortableTable>
               )}

@@ -1,0 +1,410 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cardiovascular landing page renders correctly 1`] = `
+[
+  <div
+    className="banner"
+  >
+    <div
+      className="pb-4 pt-5 container container"
+    >
+      <div
+        className="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          className="tabs"
+        >
+          <a
+            className="tab"
+            href="/search"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Genes
+          </a>
+          <a
+            className="tab"
+            href="/search?type=phenotype"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Phenotypes
+          </a>
+          <a
+            className="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          className="inputCont"
+        >
+          <input
+            className="input"
+            onChange={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search All 7824 Knockout Data..."
+            type="text"
+            value=""
+          />
+          <button
+            className="searchBtn"
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="page container"
+    style={
+      {
+        "lineHeight": 2,
+      }
+    }
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="subheading"
+      >
+        <nav
+          aria-label="breadcrumb"
+        >
+          <ol
+            className="breadcrumb"
+          >
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              Home
+            </li>
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              IMPC data collections
+            </li>
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              Conservation
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <h1
+        className="mb-4 mt-2"
+      >
+        <strong>
+          Translating to other species
+        </strong>
+      </h1>
+      <div
+        className="container"
+      >
+        <ul>
+          <li>
+            The IMPC has focused on translating knowledge from mouse to human, to identify models for human disease. However, translating to other species is relevant as well.
+          </li>
+          <li>
+            Genetic functional data from the IMPC is relevant to identify genes essential for development or associated to disease or adaptation in other species.
+          </li>
+          <li>
+            The type of analyses presented here could be used to improve the breeding management of endangered mammals.
+          </li>
+        </ul>
+        <p>
+          Press releases and new posts: 
+          <a
+            className="link primary"
+            href="http://blog.mousephenotype.org/new-research-suggests-laboratory-mouse-data-can-help-in-wildlife-conservation/"
+          >
+            IMPC blog
+          </a>
+           | 
+          <a
+            className="link primary"
+            href="https://www.mousephenotype.org/data/biological-system/conservation"
+          >
+            EMBL-EBI
+          </a>
+        </p>
+        <h2>
+          Approach
+        </h2>
+        <p>
+          We used IMPC data derived from the
+          <a
+            className="primary link"
+            href="https://www.mousephenotype.org/data/biological-system/conservation#:~:text=We%20used%20IMPC,from%20the%20literature."
+          >
+            IMPC Viability Primary Screen [IMPC_VIA_001]
+          </a>
+          to identify genes essential for organismal viability (development and survival) collected up to DR 7.0., as well as all phenotype associations collected by the IMPC up to DR 6.2. We used these data in combination with (human) cell viability data to inform wild species genomic data sets collected from the literature.
+        </p>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <h1>
+        <strong>
+          IMPC Conservation Publication
+        </strong>
+      </h1>
+      <h2>
+        Aiding the functional annotation of genes relevant for development and adaptation in mammalian species
+      </h2>
+      <p>
+        <a
+          className="primary link"
+          href="http://bit.ly/conservationarticle"
+        >
+          Conservation Genetics Special Issue on Adaptation
+        </a>
+        <br />
+        <a
+          className="link primary"
+          href="https://link.springer.com/article/10.1007/s10592-018-1072-9#SupplementaryMaterial"
+        >
+          Supplementary Material
+        </a>
+      </p>
+      <ul>
+        <li>
+          We used IMPC organism viability data in combination with human cell viability data to identify essential genes.
+        </li>
+        <li>
+          Genes in gorillas with loss-of-function (LoF) alleles have been previously identified; we inferred gorilla-to-mouse and gorilla-to-human orthologues of those genes and associated them to genes essential for organism and cell viability.
+        </li>
+        <li>
+          For this set of genes with LoF alleles, we found that the percentage of lethal/essential genes was lower than for protein-coding genes, but the difference was not significant (P &gt; 0.1 in all comparisons).
+        </li>
+        <li>
+          Future research may include improved methods to detect LoF variants, detailed observation of gorillas carrying these variants, investigating whether the LoF variants affect or not the functional exons, and whether there are paralogues or alternative genes providing functional compensation.
+        </li>
+        <li>
+          We also show how phenotype associations collected by the IMPC can aid the functional annotation of regions putatively targeted by positive selection or associated to disease using examples from wild species, such as polar bears and cheetahs.
+        </li>
+        <li>
+          This investigation is based on about 15% of mammalian protein-coding genes. The IMPC continues screening for genes essential for organism survival and development and collecting phenotype association data.
+        </li>
+      </ul>
+      <h2>
+        Methods
+      </h2>
+      <ul>
+        <li>
+          We developed custom scripts to infer orthologues based on available resources (
+          <a
+            className="link primary"
+            href="https://www.genenames.org/cgi-bin/hcop"
+          >
+            HGNC Comparison of Orthology Predictions (HCOP)
+          </a>
+          ,  
+          <a
+            className="link primary"
+            href="http://metaphors.phylomedb.org/"
+          >
+            MetaPhOrs
+          </a>
+          ) and to conduct gene overlaps.
+        </li>
+        <li>
+          We collected IMPC primary viability screen data and combined it with human cell viability data from 3 different studies (
+          <a
+            className="link primary"
+            href="https://europepmc.org/abstract/MED/26472760"
+          >
+            Blomen et al. 2015
+          </a>
+          ; 
+          <a
+            className="link primary"
+            href="https://europepmc.org/abstract/MED/26627737"
+          >
+            Hartl et al. 2015
+          </a>
+          ; 
+          <a
+            className="link primary"
+            href="https://europepmc.org/abstract/MED/26472758"
+          >
+            Wang et al. 2015
+          </a>
+          ) to identify essential genes in cells and in mouse (for data, see 
+          <a
+            className="link primary"
+            href="https://link.springer.com/article/10.1007/s10592-018-1072-9#SupplementaryMaterial"
+          >
+            Supplementary Material
+          </a>
+          )
+        </li>
+        <li>
+          We collected IMPC phenotype annotations (also MGI) to characterize genes potentially linked to disease or to regions putatively under positive selection in selected endangered species (for data, see  
+          <a
+            className="link primary"
+            href="https://link.springer.com/article/10.1007/s10592-018-1072-9#SupplementaryMaterial"
+          >
+            Supplementary Material
+          </a>
+          )
+        </li>
+      </ul>
+    </div>
+    <div
+      className="card"
+    >
+      <h1>
+        <strong>
+          IMPC significant phenotypes
+        </strong>
+      </h1>
+      <p>
+        IMPC significant phenotypes for selected mammal species, based on orthologue inferences (source: 
+        <a
+          className="link primary"
+          href="http://bit.ly/conservationarticle"
+        >
+          IMPC Conservation Genetics paper
+        </a>
+        ).
+        <br />
+        Note links are to phenotype pages depicting data as in the current Data Release.
+      </p>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+          style={
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "column",
+            }
+          }
+        >
+          <h3>
+            All physiological systems
+          </h3>
+          <div
+            style={
+              {
+                "height": "1000px",
+                "maxWidth": "100%",
+                "position": "relative",
+                "width": "500px",
+              }
+            }
+          >
+            <canvas
+              height={150}
+              role="img"
+              width={300}
+            />
+          </div>
+        </div>
+        <div
+          className="col"
+          style={
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "column",
+            }
+          }
+        >
+          <h3>
+            Reproductive system
+          </h3>
+          <div
+            style={
+              {
+                "height": "333px",
+                "maxWidth": "100%",
+                "position": "relative",
+                "width": "500px",
+              }
+            }
+          >
+            <canvas
+              height={150}
+              role="img"
+              width={300}
+            />
+          </div>
+          <div
+            style={
+              {
+                "height": "333px",
+                "maxWidth": "100%",
+                "position": "relative",
+                "width": "500px",
+              }
+            }
+          >
+            <canvas
+              height={150}
+              role="img"
+              width={300}
+            />
+          </div>
+          <div
+            style={
+              {
+                "height": "333px",
+                "maxWidth": "100%",
+                "position": "relative",
+                "width": "500px",
+              }
+            }
+          >
+            <canvas
+              height={150}
+              role="img"
+              width={300}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <h1>
+        <strong>
+          Conservation IKMC/IMPC related publications
+        </strong>
+      </h1>
+    </div>
+  </div>,
+]
+`;

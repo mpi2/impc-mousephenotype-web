@@ -363,14 +363,14 @@ exports[`Footer component renders correctly 1`] = `
       >
         <h6>
           <a
-            href="https://www.mousephenotype.org/data/release"
+            href="/release"
           >
             <small>
               Access Data Release 
               <span
                 id="data-no"
               >
-                15.1
+                20.1
               </span>
                Data
             </small>

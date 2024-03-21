@@ -1,0 +1,1822 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cardiovascular landing page renders correctly 1`] = `
+[
+  <div
+    className="banner"
+  >
+    <div
+      className="pb-4 pt-5 container container"
+    >
+      <div
+        className="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          className="tabs"
+        >
+          <a
+            className="tab"
+            href="/search"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Genes
+          </a>
+          <a
+            className="tab"
+            href="/search?type=phenotype"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Phenotypes
+          </a>
+          <a
+            className="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          className="inputCont"
+        >
+          <input
+            className="input"
+            onChange={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search All 7824 Knockout Data..."
+            type="text"
+            value=""
+          />
+          <button
+            className="searchBtn"
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="page container"
+    style={
+      {
+        "lineHeight": 2,
+      }
+    }
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="subheading"
+      >
+        <nav
+          aria-label="breadcrumb"
+        >
+          <ol
+            className="breadcrumb"
+          >
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              Home
+            </li>
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              IMPC data collections
+            </li>
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              Cardiovascular
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <h1
+        className="mb-4 mt-2"
+      >
+        <strong>
+          Cardiovascular System
+        </strong>
+      </h1>
+      <div
+        className="container"
+      >
+        <p>
+          This page introduces cardiovascular related phenotypes present in mouse lines produced by the IMPC. The cardiovascular system refers to the observable morphological and physiological characteristics of the mammalian heart, blood vessels, or circulatory system that are manifested through development and lifespan.
+        </p>
+        <div
+          className="row"
+        >
+          <div
+            className="col-md-7"
+          >
+            <div
+              className="chartWrapper"
+            >
+              <canvas
+                height={150}
+                role="img"
+                width={300}
+              />
+            </div>
+          </div>
+          <div
+            className="col-md-5"
+          >
+            <div
+              className="tableWrapper"
+            >
+              <table
+                className="table striped table table-bordered"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      rowSpan={2}
+                      width="8.333333333333332%"
+                    >
+                      <button
+                        className="inlineButton headerButton"
+                        onClick={[Function]}
+                        style={
+                          {
+                            "fontWeight": "normal",
+                          }
+                        }
+                      >
+                        Phenotype
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowSpan={2}
+                      width="8.333333333333332%"
+                    >
+                      <button
+                        className="inlineButton headerButton"
+                        onClick={[Function]}
+                        style={
+                          {
+                            "fontWeight": "normal",
+                          }
+                        }
+                      >
+                        # Genes
+                         
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0000266"
+                      >
+                        abnormal heart morphology
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0000266"
+                      >
+                        520
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0000274"
+                      >
+                        enlarged heart
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0000274"
+                      >
+                        480
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0002833"
+                      >
+                        increased heart weight
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0002833"
+                      >
+                        250
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0010097"
+                      >
+                        abnormal retina blood vessel morphology
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0010097"
+                      >
+                        167
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0002792"
+                      >
+                        abnormal retina vasculature morphology
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0002792"
+                      >
+                        144
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0010506"
+                      >
+                        prolonged RR interval
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0010506"
+                      >
+                        110
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0005333"
+                      >
+                        decreased heart rate
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0005333"
+                      >
+                        104
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0001914"
+                      >
+                        hemorrhage
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0001914"
+                      >
+                        94
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0002188"
+                      >
+                        small heart
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0002188"
+                      >
+                        73
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/MP:0002834"
+                      >
+                        decreased heart weight
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        href="http://www.mousephenotype.org/data/phenotypes/export/MP:0002834"
+                      >
+                        49
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        className="btn"
+                        onClick={[Function]}
+                      >
+                        Show more
+                      </a>
+                    </td>
+                    <td>
+                      <a
+                        className="link primary"
+                        href="https://www.mousephenotype.org/data/phenotypes/export/MP:0005385?fileType=tsv&fileName=IMPC_Cardiovascular%20System"
+                      >
+                        Download
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="row"
+        >
+          <h2>
+            Approach
+          </h2>
+          <p>
+            In order to identify the function of genes, the consortium uses a series of standardised protocols as described in IMPReSS (International Mouse Phenotyping Resource of Standardised Screens).
+            <br />
+            <br />
+            Heart and vascular function/physiology are measured through several procedures like echocardiography and electrocardiogram and non-invasive blood pressure. Cardiovascular system morphology is assessed through macroscopic and microscopic measurements, like heart weight, gross pathology and gross morphology in both embryo and adult animals. A complete list of protocols and related phenotypes are presented in the table below. Links to impress are provided for more details on the procedure.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="row"
+        >
+          <h2>
+            Procedures that can lead to relevant phenotype associations
+          </h2>
+          <div>
+            <h6>
+              Young adult
+            </h6>
+            <ul>
+              <li>
+                Echo
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1256"
+                >
+                  HMGULA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1115"
+                >
+                  HRWLLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/450"
+                >
+                  HMGULA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/656"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/654"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/655"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/109"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/658"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1082"
+                >
+                  NINGLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1046"
+                >
+                  BCMLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/657"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1065"
+                >
+                  ICSLA v1
+                </a>
+                , 
+              </li>
+              <li>
+                Electrocardiogram (ECG)
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1031"
+                >
+                  TCPLA v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1049"
+                >
+                  BCMLA v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1134"
+                >
+                  JAXLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1256"
+                >
+                  HMGULA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1115"
+                >
+                  HRWLLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/450"
+                >
+                  HMGULA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/656"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/654"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/655"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/109"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/658"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1082"
+                >
+                  NINGLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1046"
+                >
+                  BCMLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/657"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1065"
+                >
+                  ICSLA v1
+                </a>
+                , 
+              </li>
+              <li>
+                Eye Morphology
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1031"
+                >
+                  TCPLA v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1049"
+                >
+                  BCMLA v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1134"
+                >
+                  JAXLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1256"
+                >
+                  HMGULA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1115"
+                >
+                  HRWLLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/450"
+                >
+                  HMGULA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/656"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/654"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/655"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/109"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/658"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1082"
+                >
+                  NINGLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1046"
+                >
+                  BCMLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/657"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1065"
+                >
+                  ICSLA v1
+                </a>
+                , 
+              </li>
+              <li>
+                Heart Dissection
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/59"
+                >
+                  M-G-P v1
+                </a>
+                , 
+              </li>
+              <li>
+                Heart Weight
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1031"
+                >
+                  TCPLA v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1049"
+                >
+                  BCMLA v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1134"
+                >
+                  JAXLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1256"
+                >
+                  HMGULA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1115"
+                >
+                  HRWLLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/450"
+                >
+                  HMGULA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/656"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/654"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/655"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/109"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/658"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1082"
+                >
+                  NINGLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1046"
+                >
+                  BCMLA v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/657"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1065"
+                >
+                  ICSLA v1
+                </a>
+                , 
+              </li>
+              <li>
+                Heart weight/tibia length
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/9"
+                >
+                  ESLIM v1
+                </a>
+                , 
+              </li>
+              <li>
+                Indirect ophthalmoscopy
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/5"
+                >
+                  HAS v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/16"
+                >
+                  ESLIM v1
+                </a>
+                , 
+              </li>
+              <li>
+                Non-Invasive blood pressure
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/3"
+                >
+                  ESLIM v1
+                </a>
+                , 
+              </li>
+              <li>
+                Ophthalmoscope
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/54"
+                >
+                  M-G-P v1
+                </a>
+                , 
+              </li>
+              <li>
+                Organ Weight
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/106"
+                >
+                  HRWL v1 
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/247"
+                >
+                  UCD v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1125"
+                >
+                  HRWLLA v1
+                </a>
+                , 
+              </li>
+              <li>
+                Slit Lamp
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/167"
+                >
+                  HAS v1 
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/17"
+                >
+                  ESLIM v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/70"
+                >
+                  HAROLD v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/53"
+                >
+                  M-G-P v1
+                </a>
+                , 
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h6>
+              Embryo
+            </h6>
+            <ul>
+              <li>
+                Gross Morphology Embryo E12.5
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/879"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1175"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/910"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/253"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/911"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/256"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/895"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/909"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/261"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/908"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/880"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/876"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/907"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/892"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/891"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/893"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/878"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/877"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/906"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/894"
+                >
+                  IMPC v2
+                </a>
+                , 
+              </li>
+              <li>
+                VM4203:1 Gross Morphology Embryo E14.5-E15.5
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/914"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/899"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/913"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/883"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/897"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/881"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/915"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/882"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/898"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/917"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/254"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1176"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/257"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/885"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/262"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/900"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/916"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/896"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/884"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/912"
+                >
+                  IMPC v3
+                </a>
+                , 
+              </li>
+              <li>
+                VM4203:1 Gross Morphology Embryo E18.5
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/903"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/259"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1177"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/887"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/255"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/902"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/888"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/918"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/904"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/886"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/923"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/920"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/263"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/919"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/922"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/921"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/890"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/889"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/901"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/905"
+                >
+                  IMPC v2
+                </a>
+                , 
+              </li>
+              <li>
+                VM4203:1 Gross Morphology Embryo E9.5
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/861"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/874"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/875"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/860"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/873"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/251"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/862"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/870"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/252"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/864"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/871"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/250"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/868"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/867"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/866"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/869"
+                >
+                  IMPC v2
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1174"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/872"
+                >
+                  IMPC v3
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/863"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/865"
+                >
+                  IMPC v2
+                </a>
+                , 
+              </li>
+              <li>
+                VM4203:1 Gross Morphology Placenta E12.5
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/820"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/818"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/819"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/822"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1179"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/821"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/194"
+                >
+                  IMPC v1
+                </a>
+                , 
+              </li>
+              <li>
+                VM4203:1 Gross Morphology Placenta E14.5-E15.5
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/828"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/825"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/824"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1180"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/823"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/826"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/195"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/827"
+                >
+                  IMPC v1
+                </a>
+                , 
+              </li>
+              <li>
+                VM4203:1 Gross Morphology Placenta E18.5
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/196"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/829"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1381"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/830"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/831"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1181"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/832"
+                >
+                  IMPC v1
+                </a>
+                , 
+              </li>
+              <li>
+                VM4203:1 Gross Morphology Placenta E9.5
+                 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/813"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/814"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/1178"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/190"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/815"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/816"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/817"
+                >
+                  IMPC v1
+                </a>
+                , 
+                <a
+                  className="link primary"
+                  href="//www.mousephenotype.org/impress/protocol/812"
+                >
+                  IMPC v1
+                </a>
+                , 
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="container"
+      >
+        <h1>
+          <strong>
+            Phenotypes distribution
+          </strong>
+        </h1>
+        <p>
+          This graph shows genes with a significant effect on at least one cardiovascular system phenotype.
+        </p>
+        <div
+          className="chartWrapper"
+        >
+          <canvas
+            height={150}
+            role="img"
+            width={300}
+          />
+        </div>
+        <p>
+          The following diagram represents the various biological system phenotypes associations for genes linked to cardiovascular system phenotypes. The line thickness is correlated with the strength of the association. 
+          <br />
+          <br />
+          Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be downloaded using the download icon.
+        </p>
+        <div
+          className="wrapper"
+        >
+          <svg
+            height={960}
+            width={960}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="container"
+      >
+        <h1>
+          <strong>
+            Cardiovascular systemp IKMC/IMPC related publications
+          </strong>
+        </h1>
+      </div>
+    </div>
+  </div>,
+]
+`;

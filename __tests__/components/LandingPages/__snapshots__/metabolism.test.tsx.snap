@@ -1,0 +1,1952 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Metabolism landing page renders correctly 1`] = `
+[
+  <div
+    className="banner"
+  >
+    <div
+      className="pb-4 pt-5 container container"
+    >
+      <div
+        className="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          className="tabs"
+        >
+          <a
+            className="tab"
+            href="/search"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Genes
+          </a>
+          <a
+            className="tab"
+            href="/search?type=phenotype"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
+          >
+            Phenotypes
+          </a>
+          <a
+            className="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          className="inputCont"
+        >
+          <input
+            className="input"
+            onChange={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Search All 7824 Knockout Data..."
+            type="text"
+            value=""
+          />
+          <button
+            className="searchBtn"
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="page container"
+    style={
+      {
+        "lineHeight": 2,
+      }
+    }
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="subheading"
+      >
+        <nav
+          aria-label="breadcrumb"
+        >
+          <ol
+            className="breadcrumb"
+          >
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              Home
+            </li>
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              IMPC data collections
+            </li>
+            <li
+              aria-current="page"
+              className="breadcrumb-item active"
+            >
+              Homeostasis/Metabolism
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <h1
+        className="mb-4 mt-2"
+      >
+        <strong>
+          The IMPC is increasing our understanding of the genetic basis for metabolic diseases
+        </strong>
+      </h1>
+      <div
+        className="container"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col-12"
+          >
+            <ul>
+              <li>
+                Metabolic diseases, such as obesity and diabetes, affect people worldwide
+              </li>
+              <li>
+                The function of many genes in the genome is still unknown
+              </li>
+              <li>
+                Knockout mice allow us to understand metabolic procedures and relate them to human disease
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <h1
+        className="mb-4 mt-2"
+      >
+        <strong>
+          Approach
+        </strong>
+      </h1>
+      <p>
+        To identify the function of genes, the IMPC uses a series of standardised protocols described in
+        <a
+          className="primary link"
+          href="https://www.mousephenotype.org/impress"
+        >
+          IMPReSS
+        </a>
+         (International Mouse Phenotyping Resource of Standardised Screens). Tests addressing the metabolic function are conducted on young adult mice at 11-16 weeks of age.
+      </p>
+      <h2>
+        Procedures that can lead to relevant phenotype associations
+      </h2>
+      <span>
+        Young Adult:
+      </span>
+      <ul>
+        <li>
+          Calorimetry
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/4"
+          >
+            ESLIM v1
+            , 
+          </a>
+        </li>
+        <li>
+          Challenge Whole Body Plethysmography
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/268"
+          >
+            TCP v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/112"
+          >
+            ICS v3
+            , 
+          </a>
+        </li>
+        <li>
+          Clinical Blood Chemistry
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/113"
+          >
+            HAS v2
+            , 
+          </a>
+        </li>
+        <li>
+          Clinical Chemistry
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1123"
+          >
+            HRWLLA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1073"
+          >
+            ICSLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/76"
+          >
+            HAROLD v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1145"
+          >
+            HRWLLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/788"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/782"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/583"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/582"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/688"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/682"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1042"
+          >
+            UCDLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/683"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1192"
+          >
+            HMGULA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/783"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1140"
+          >
+            JAXLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1161"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/182"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/684"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1105"
+          >
+            KMPCLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/581"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/787"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1054"
+          >
+            BCMLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/786"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/58"
+          >
+            M-G-P v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1029"
+          >
+            TCPLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/984"
+          >
+            RBRCLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/151"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/785"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/580"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/18"
+          >
+            ESLIM v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/585"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/685"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1089"
+          >
+            NINGLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/687"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/681"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/584"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/96"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1260"
+          >
+            HMGULA v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/686"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/789"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/784"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/579"
+          >
+            IMPC v1
+            , 
+          </a>
+        </li>
+        <li>
+          Clinical chemistry (GMC)
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/37"
+          >
+            GMC v1
+            , 
+          </a>
+        </li>
+        <li>
+          Echo
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1256"
+          >
+            HMGULA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1115"
+          >
+            HRWLLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/450"
+          >
+            HMGULA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/656"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/654"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/655"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/109"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/658"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1082"
+          >
+            NINGLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1046"
+          >
+            BCMLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/657"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1065"
+          >
+            ICSLA v1
+            , 
+          </a>
+        </li>
+        <li>
+          Fast Bleed
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/140"
+          >
+            HAS v1
+            , 
+          </a>
+        </li>
+        <li>
+          Fasted Clinical Chemistry
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/8"
+          >
+            ESLIM v1
+            , 
+          </a>
+        </li>
+        <li>
+          Food efficiency (GMC)
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/43"
+          >
+            GMC v1
+            , 
+          </a>
+        </li>
+        <li>
+          IPGTT
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/50"
+          >
+            M-G-P v1
+            , 
+          </a>
+        </li>
+        <li>
+          Indirect Calorimetry
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/527"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/853"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/699"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/121"
+          >
+            HAS v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/240"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/700"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/528"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/858"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/698"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/49"
+          >
+            M-G-P v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/526"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/701"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/86"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1254"
+          >
+            HMGULA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/697"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/857"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/852"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/524"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/856"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/702"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/696"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1081"
+          >
+            NINGLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1191"
+          >
+            HMGULA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1110"
+          >
+            KMPCLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1057"
+          >
+            ICSLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/153"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/855"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/529"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1045"
+          >
+            BCMLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/854"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/977"
+          >
+            RBRCLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/525"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/859"
+          >
+            IMPC v3
+            , 
+          </a>
+        </li>
+        <li>
+          Insulin Blood Level
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/790"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/796"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/690"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/590"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/97"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/183"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/591"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/691"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/791"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/695"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/689"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/694"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1150"
+          >
+            KMPCLA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/792"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/592"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/793"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/693"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/587"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/588"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/152"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/586"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1067"
+          >
+            HMGULA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/589"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/794"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1388"
+          >
+            HMGULA v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/795"
+          >
+            IMPC v3
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/116"
+          >
+            HAS v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/692"
+          >
+            IMPC v2
+            , 
+          </a>
+        </li>
+        <li>
+          Insulin t=0
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/71"
+          >
+            HAROLD v1
+            , 
+          </a>
+        </li>
+        <li>
+          Intraperitoneal glucose tolerance test (IPGTT)
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/399"
+          >
+            ICSLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/536"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/530"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1377"
+          >
+            HMGULA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/475"
+          >
+            UCDLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/482"
+          >
+            RBRCLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/272"
+          >
+            MGP v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/531"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1099"
+          >
+            KMPCLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/344"
+          >
+            BCMLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/535"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1083"
+          >
+            NINGLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1118"
+          >
+            HRWLLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/87"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/452"
+          >
+            HMGULA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/532"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/115"
+          >
+            HAS v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/458"
+          >
+            TCPLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/537"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/534"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1135"
+          >
+            JAXLA v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/538"
+          >
+            IMPC v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/533"
+          >
+            IMPC v1
+            , 
+          </a>
+        </li>
+        <li>
+          MicroCT E14.5-E15.5
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/962"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/963"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/967"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/966"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/965"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/964"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/495"
+          >
+            IMPC v2
+            , 
+          </a>
+        </li>
+        <li>
+          MicroCT E18.5
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1288"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1290"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1289"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1286"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1285"
+          >
+            IMPC v2
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/1287"
+          >
+            IMPC v2
+            , 
+          </a>
+        </li>
+        <li>
+          Plasma Chemistry
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/157"
+          >
+            JAX v1
+            , 
+          </a>
+        </li>
+        <li>
+          Simplified IPGTT
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/5"
+          >
+            ESLIM v1
+            , 
+          </a>
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/68"
+          >
+            HAROLD v1
+            , 
+          </a>
+        </li>
+        <li>
+          Terminal Bleed
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/141"
+          >
+            HAS v1
+            , 
+          </a>
+        </li>
+        <li>
+          Urinalysis
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/246"
+          >
+            JAX v1
+            , 
+          </a>
+        </li>
+        <li>
+          Urinalysis
+          : 
+          <a
+            className="primary link"
+            href="//www.mousephenotype.org/impress/protocol/138"
+          >
+            HAS v1
+            , 
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        IMPC Metabolism Publication
+      </h2>
+      <h3>
+        Metabolic diseases investigated in 2,016 knockout mouse lines
+      </h3>
+      <p>
+        <a
+          className="link primary"
+          href="https://bit.ly/IMPCMetabolism"
+        >
+          Nature Communications publication
+        </a>
+      </p>
+      <ul>
+        <li>
+          974 genes were identified with strong metabolic phenotypes (see gene table, below).
+        </li>
+        <li>
+          429 genes had not been previously associated with metabolism, 51 completely lacked functional annotation, and 25 had single nucleotide polymorphisms associated to human metabolic disease phenotypes.
+        </li>
+        <li>
+          515 genes linked to at least one disease in OMIM.
+        </li>
+        <li>
+          Networks of co-regulated genes were identified, and genes of predicted metabolic function found.
+        </li>
+        <li>
+          Pathway mapping revealed sexual dimorphism in genes and pathways.
+        </li>
+        <li>
+          This investigation is based on about 10% of mammalian protein-coding genes. The IMPC will continue screening for genes associated to metabolic diseases in its second 5 year phase.
+        </li>
+      </ul>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Gene table
+      </h2>
+      <p>
+        Mutant/wildtype ratios below the 5th percentile and above the 95th percentile of the ratio distributions yielded 28 gene lists that serve as a data mining resource for further investigation into potential links to human metabolic disorders.
+      </p>
+      <p>
+        By hovering over the table you can select cells and click to explore the underlying data.
+      </p>
+      <div
+        style={
+          {
+            "margin": "0 auto",
+            "minWidth": "50%",
+            "textAlign": "center",
+          }
+        }
+      >
+        <table
+          className="table geneTable"
+        >
+          <tbody>
+            <tr>
+              <td />
+              <td
+                colSpan={4}
+              >
+                Outlier
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td
+                colSpan={2}
+              >
+                 &lt;5%
+              </td>
+              <td
+                colSpan={2}
+              >
+                 &gt;95% 
+              </td>
+            </tr>
+            <tr>
+              <td />
+              <td>
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-venus "
+                  data-icon="venus"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  style={{}}
+                  viewBox="0 0 384 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                    fill="currentColor"
+                    style={{}}
+                  />
+                </svg>
+              </td>
+              <td>
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-mars "
+                  data-icon="mars"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  style={{}}
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                    fill="currentColor"
+                    style={{}}
+                  />
+                </svg>
+              </td>
+              <td>
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-venus "
+                  data-icon="venus"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  style={{}}
+                  viewBox="0 0 384 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                    fill="currentColor"
+                    style={{}}
+                  />
+                </svg>
+              </td>
+              <td>
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-mars "
+                  data-icon="mars"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  style={{}}
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                    fill="currentColor"
+                    style={{}}
+                  />
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Fasting Glucose (T0)
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                94
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                96
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                96
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                96
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Glucose Response (AUC)
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                96
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                96
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                96
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                96
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Triglycerides (TG)
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                72
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                72
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                72
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                72
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Body Mass (BM)
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                86
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                86
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                86
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                86
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Metabolic Rate (RM)
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                18
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                48
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                18
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                48
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Oxygen Consumption Rate (V02)
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                18
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                48
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                18
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                48
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Respiratory Exchange Ratio (RER)
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                17
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                47
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                17
+              </td>
+              <td
+                className="dataCell"
+                onClick={[Function]}
+              >
+                47
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        style={
+          {
+            "margin": "0 auto",
+            "minWidth": "80%",
+            "textAlign": "center",
+          }
+        }
+      />
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Strong metabolic phenotype genes form regulatory networks
+      </h2>
+      <div
+        className="container"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col"
+          >
+            <img
+              alt="Illustration of the action of MORE cassettes in regulatory networks"
+              src="https://www.mousephenotype.org/data/documentation/img/more-cassette.png"
+              width="100%"
+            />
+          </div>
+          <div
+            className="col"
+          >
+            <ul>
+              <li>
+                Transcriptional co-regulation often involves a common set of transcription factor binding sites (TFBSs) shared between co-regulated promoters and in a particular organization (known as Multiple Organized Regulatory Element (MORE)–cassettes).
+              </li>
+              <li>
+                Identification of shared MORE-cassettes in promoters of candidate genes allowed to discover extensive metabolic phenotype-associated networks of potentially co-regulated genes.
+              </li>
+              <li>
+                MORE-cassettes are invariant genomic sequence features (similar to reading frames).
+              </li>
+              <li>
+                The presence of MORE-cassettes enabled to a priori predict phenotypes and identify genes potentially linked to metabolic functions.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Methods
+      </h2>
+      <p>
+        Genes with phenotypes associated to the following 
+        <b>
+          seven metabolic parameters
+        </b>
+        , with diagnostic relevance in human clinical research, were further analysed:
+      </p>
+      <ul>
+        <li>
+          Fasting basal blood glucose level before glucose tolerance test (T0)
+        </li>
+        <li>
+          Area under the curve of blood glucose level after intraperitoneal glucose administration relative to basal blood glucose level (AUC)
+        </li>
+        <li>
+          Plasma triglyceride levels (TG)
+        </li>
+        <li>
+          Body mass (BM)
+        </li>
+        <li>
+          Metabolic rate (MR)
+        </li>
+        <li>
+          Oxygen consumption rate (VO2)
+        </li>
+        <li>
+          Respiratory exchange ratio (RER) – a measure of whole-body metabolic fuel utilization
+        </li>
+      </ul>
+      <p>
+        Mutant/wildtype ratios (mean value of metabolic parameters of mutants divided by the mean value obtained for wildtypes) were calculated:
+      </p>
+      <ul>
+        <li>
+          Control wildtype mice from each phenotypic center included, matched for gender, age, phenotypic pipeline and metadata (e.g. instrument).
+        </li>
+        <li>
+          Males and females analyzed separately to account for sexual dimorphism.
+        </li>
+      </ul>
+      <h3>
+        New mouse models
+      </h3>
+      <ul>
+        <li>
+          IMPC generated and identified new genetic disease models.
+        </li>
+        <li>
+          New models available to the research community to perform in-depth investigations of novel genetic elements associated to metabolic disease mechanisms.
+        </li>
+        <li>
+          These models fill the gap between genome-wide association studies and functional validation using a mammalian model organism.
+        </li>
+      </ul>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Phenotypes distribution
+      </h2>
+      <div
+        style={
+          {
+            "height": "300px",
+            "position": "relative",
+          }
+        }
+      >
+        <canvas
+          height={150}
+          role="img"
+          width={300}
+        />
+      </div>
+    </div>
+    <div
+      className="card"
+    >
+      <div
+        className="container"
+      >
+        <h1>
+          <strong>
+            Homeostasis/metabolism IKMC/IMPC related publications
+          </strong>
+        </h1>
+      </div>
+    </div>
+  </div>,
+]
+`;

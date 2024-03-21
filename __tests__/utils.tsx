@@ -4,7 +4,7 @@ import * as React from 'react';
 
 export const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
 
-const createTestQueryClient = () => new QueryClient({
+export const createTestQueryClient = () => new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,
