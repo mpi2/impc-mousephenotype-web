@@ -37,6 +37,10 @@ const FilterBox = (props: Props) => {
     allOptionEnabled = true,
     displayEvenWithOnlyOneOption = false,
   } = props;
+  const optionalControlProps: Record<string, string> = {};
+  if (hideLabel) {
+    optionalControlProps['aria-label'] = ariaLabel;
+  }
 
   if (!displayEvenWithOnlyOneOption && options?.length === 1) {
     return null;
@@ -52,7 +56,6 @@ const FilterBox = (props: Props) => {
       {!!options && options.length > 0 ? (
         <Form.Select
           style={controlStyle}
-          aria-label={ariaLabel}
           defaultValue={undefined}
           id={controlId}
           className={controlClassName}
@@ -61,6 +64,7 @@ const FilterBox = (props: Props) => {
           onChange={el =>
             onChange(el.target.value === "all" ? undefined : el.target.value)
           }
+          {...optionalControlProps}
         >
           {allOptionEnabled && (
             <option value={"all"}>All</option>
@@ -76,13 +80,13 @@ const FilterBox = (props: Props) => {
           type="text"
           placeholder="Search"
           style={controlStyle}
-          aria-label={ariaLabel}
           defaultValue={undefined}
           id={controlId}
           className={controlClassName}
           onChange={el =>
             onChange(el.target.value.toLowerCase() || undefined)
           }
+          {...optionalControlProps}
         >
         </Form.Control>
       )}
