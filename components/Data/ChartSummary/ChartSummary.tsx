@@ -11,6 +11,7 @@ type ChartSummaryProps = {
   additionalContent?: ReactNode;
   title?: string;
   displayPValueStatement?: boolean;
+  displayAssociatedPhenotype?: boolean;
 };
 const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
   const {
@@ -19,6 +20,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
     datasetSummary,
     children,
     displayPValueStatement = true,
+    displayAssociatedPhenotype = true,
   } = props;
   const [showMetadataModal, setShowMetadataModal] = useState(false);
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -96,20 +98,24 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
             </>
           )}
         </div>
-        <div className={styles.label}>Associated phenotype</div>
-        <div className="content">
-          {!!datasetSummary["significantPhenotype"]?.["id"] ? (
-            <Link
-              href={`/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}
-            >
-              <span className="link primary">
-                {datasetSummary["significantPhenotype"]?.["name"]}
-              </span>
-            </Link>
-          ) : (
-            <strong>No significant association</strong>
-          )}
-        </div>
+        {displayAssociatedPhenotype && (
+          <>
+            <div className={styles.label}>Associated phenotype</div>
+            <div className="content">
+              {!!datasetSummary["significantPhenotype"]?.["id"] ? (
+                <Link
+                  href={`/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}
+                >
+                  <span className="link primary">
+                    {datasetSummary["significantPhenotype"]?.["name"]}
+                  </span>
+                </Link>
+              ) : (
+                <strong>No significant association</strong>
+              )}
+            </div>
+          </>
+        )}
         <div className={styles.label}>Zygosity</div>
         <div className="content">
           <span>{datasetSummary["zygosity"]}</span>

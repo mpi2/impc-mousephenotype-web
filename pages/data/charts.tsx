@@ -61,7 +61,7 @@ const Charts = () => {
       case "viability":
         return <Viability datasetSummary={datasetSummary} isVisible />;
       case "time_series":
-        return <TimeSeries datasetSummary={datasetSummary} />;
+        return <TimeSeries datasetSummary={datasetSummary} isVisible />;
       case "embryo_viability":
         return <EmbryoViability datasetSummary={datasetSummary} isVisible />;
       case "embryo":
@@ -106,6 +106,10 @@ const Charts = () => {
       )
     : false;
 
+  const isTimeSeries = !isError
+    ? !!datasetSummaries.some((dataset) => dataset.dataType === "time_series")
+    : false;
+
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
   const activeDataset = !!selectedKey
     ? getDatasetByKey(allSummaries, selectedKey)
@@ -147,7 +151,7 @@ const Charts = () => {
               {getPageTitle(allSummaries)}
             </strong>
           </h1>
-          {!!datasetSummaries && (
+          {!!datasetSummaries && !isTimeSeries && (
             <div className="mb-0">
               <div
                 style={{
@@ -176,6 +180,8 @@ const Charts = () => {
               isViabilityChart={isViabilityChart}
               selectedKey={selectedKey}
               onSelectParam={setSelectedKey}
+              displayPValueThreshold={!isTimeSeries}
+              displayPValueColumns={!isTimeSeries}
               {...(isABRChart && { initialSortByProp: "parameterStableId" })}
             />
           ) : !isError ? (
