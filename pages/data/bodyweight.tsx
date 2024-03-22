@@ -23,7 +23,7 @@ const BodyWeightChartPage = () => {
   return (
     <>
       <Head>
-        <title>Body weigth curve chart for {activeDataset?.geneSymbol} | International Mouse Phenotyping Consortium</title>
+        <title>Body weight curve chart for {activeDataset?.geneSymbol} | International Mouse Phenotyping Consortium</title>
       </Head>
       <Search />
       <Container className="page">

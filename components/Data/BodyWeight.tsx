@@ -16,13 +16,11 @@ import {
   Title,
   Tooltip,
   Legend,
-  BarElement,
-  BarController,
 } from 'chart.js';
-import { Chart } from 'react-chartjs-2';
-import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
-import { useEffect, useState } from "react";
+import { LineWithErrorBarsController, PointWithErrorBar } from 'chartjs-chart-error-bars';
+import { useEffect, useMemo, useState } from "react";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { BodyWeightLinePlot } from "./Plots/BodyWeightLinePlot";
 
 ChartJS.register(
   CategoryScale,
@@ -32,8 +30,8 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  BarElement,
-  BarController,
+  LineWithErrorBarsController,
+  PointWithErrorBar
 );
 const clone = obj => JSON.parse(JSON.stringify(obj));
 
@@ -58,14 +56,16 @@ const BodyWeightChart = ({ datasetSummary }) => {
       if (result[label] === undefined) {
         result[label] = [];
       }
-      result[label].push({
-        y: point.mean,
-        x: Number.parseInt(point.ageInWeeks, 10),
-        yMin: point.mean - point.std,
-        yMax: point.mean + point.std,
-        ageInWeeks: Number.parseInt(point.ageInWeeks, 10),
-        count: point.count,
-      });
+      if (Number.parseInt(point.ageInWeeks, 10) > 0) {
+        result[label].push({
+          y: parseFloat(point.mean.toPrecision(5)),
+          x: Number.parseInt(point.ageInWeeks, 10),
+          yMin: parseFloat((point.mean - point.std).toPrecision(5)),
+          yMax: parseFloat((point.mean + point.std).toPrecision(5)),
+          ageInWeeks: Number.parseInt(point.ageInWeeks, 10),
+          count: point.count,
+        });
+      }
     });
     Object.keys(result).forEach(key => {
       const values = result[key];
@@ -101,12 +101,14 @@ const BodyWeightChart = ({ datasetSummary }) => {
   const processData = () => {
     const maxAge = getMaxAge(false);
     const datasets = getOrderedColumns().map(key => {
+      const dataSetColor = key.includes('WT') ? wildtypeChartColors.halfOpacity : mutantChartColors.halfOpacity;
       return {
-        type: 'line' as const,
         label: key,
         data: data[key].filter(point => point.ageInWeeks <= maxAge),
-        borderColor: key.includes('WT') ? wildtypeChartColors.halfOpacity : mutantChartColors.halfOpacity,
-        backgroundColor: key.includes('WT') ? wildtypeChartColors.halfOpacity : mutantChartColors.halfOpacity,
+        borderColor: dataSetColor,
+        backgroundColor: dataSetColor,
+        errorBarColor: dataSetColor,
+        errorBarWhiskerColor: dataSetColor,
         pointStyle: getPointStyle(key),
       }
     });
@@ -151,16 +153,19 @@ const BodyWeightChart = ({ datasetSummary }) => {
       tooltip: {
         usePointStyle: true,
         title: { padding: { top: 10 } },
+        mode: 'x',
         callbacks: {
+          title: ctx => `Age - Rounded To Nearest Week ${ctx?.[0]?.label}`,
+          label: ctx =>
+            `${ctx.dataset.label} (count): ${ctx.formattedValue} Mass (g) SD: ${ctx.raw.yMin}-${ctx.raw.yMax}`
 
         }
       }
     },
   };
 
-  const chartPlugins = [errorbarsPlugin];
-
   const maxAge = getMaxAge(true);
+  const chartData = useMemo(() => processData(), [data, viewOnlyRangeForMutant]);
 
   return (
     <>
@@ -180,7 +185,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
                       checked={viewOnlyRangeForMutant}
                     />
                   </div>
-                  <Chart type="bar" options={chartOptions} data={processData()} plugins={chartPlugins} />
+                  <BodyWeightLinePlot options={chartOptions} data={chartData} />
                 </>
               )}
             </div>
