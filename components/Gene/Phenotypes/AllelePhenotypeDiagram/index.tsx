@@ -224,11 +224,6 @@ const AllelePhenotypeDiagram = (
             options={availableSexes}
           />
         </div>
-        <div className={styles.selector}>
-          <Button variant="secondary" onClick={toggleDrawer}>
-            <span className="white">Select alleles</span>
-          </Button>
-        </div>
       </div>
       <div className="mt-3">
         <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
