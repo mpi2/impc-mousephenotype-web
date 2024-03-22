@@ -11,6 +11,8 @@ import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
 import { useEffect, useState } from "react";
 import { summarySystemSelectionChannel } from "@/eventChannels";
+import _ from 'lodash';
+
 
 const StatisticalAnalysis = dynamic(
   () => import("./StatisticalAnalysis"),
@@ -82,6 +84,8 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     geneData?.some(item => item.projectName === 'PWG') ||
     phenotypeData?.some(item => item.projectName === 'PWG');
 
+  const hasOneAlleleOrMore = _.uniq(phenotypeData?.map(p => p.alleleSymbol)).length > 1;
+
   return (
     <Card id="data">
       <h2>Phenotypes</h2>
@@ -119,13 +123,15 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             <StatisticalAnalysis data={geneData} />
           </TabContent>
         </Tab>
-        <Tab eventKey="allelesByPhenotype" title="Alleles by Phenotype">
-          <AllelePhenotypeDiagram
-            phenotypeData={phenotypeData}
-            isPhenotypeLoading={isPhenotypeLoading}
-            isPhenotypeError={isPhenotypeError}
-          />
-        </Tab>
+        { hasOneAlleleOrMore && (
+          <Tab eventKey="allelesByPhenotype" title="Alleles by Phenotype">
+            <AllelePhenotypeDiagram
+              phenotypeData={phenotypeData}
+              isPhenotypeLoading={isPhenotypeLoading}
+              isPhenotypeError={isPhenotypeError}
+            />
+          </Tab>
+        )}
       </Tabs>
     </Card>
   );
