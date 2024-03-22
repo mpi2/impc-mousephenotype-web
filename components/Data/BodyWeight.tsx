@@ -58,14 +58,16 @@ const BodyWeightChart = ({ datasetSummary }) => {
       if (result[label] === undefined) {
         result[label] = [];
       }
-      result[label].push({
-        y: point.mean,
-        x: Number.parseInt(point.ageInWeeks, 10),
-        yMin: point.mean - point.std,
-        yMax: point.mean + point.std,
-        ageInWeeks: Number.parseInt(point.ageInWeeks, 10),
-        count: point.count,
-      });
+      if (Number.parseInt(point.ageInWeeks, 10) > 0) {
+        result[label].push({
+          y: point.mean,
+          x: Number.parseInt(point.ageInWeeks, 10),
+          yMin: point.mean - point.std,
+          yMax: point.mean + point.std,
+          ageInWeeks: Number.parseInt(point.ageInWeeks, 10),
+          count: point.count,
+        });
+      }
     });
     Object.keys(result).forEach(key => {
       const values = result[key];
