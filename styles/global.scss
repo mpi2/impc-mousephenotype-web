@@ -5,6 +5,7 @@
 @import "./components/_card";
 @import "./components/_badges";
 @import "./components/filtersBar";
+@import "./components/dataComparisonTable";
 
 html,
 body {
@@ -113,12 +114,6 @@ p:last-child {
   }
   & > tbody > tr:nth-of-type(odd) > * {
     --bs-table-bg-type: #EFEFEF;
-  }
-}
-
-.table {
-  & > tbody > tr.highlighted-row > * {
-    --bs-table-bg-type: #FDF0E5 !important;
   }
 }
 
