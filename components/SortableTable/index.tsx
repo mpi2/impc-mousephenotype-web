@@ -21,11 +21,13 @@ const SortableTable = ({
   defaultSort,
   doSort,
   children,
+  className,
 }: {
   headers: Header[];
   defaultSort?: SortType;
   doSort?: (s: SortType) => void;
   children: React.ReactNode;
+  className?: string;
 }) => {
   // TODO: add search filter
   const [sort, setSort] = useState<{
@@ -117,7 +119,7 @@ const SortableTable = ({
 
   return (
     <div className={styles.tableWrapper}>
-      <Table bordered className={`${styles.table} ${styles.striped}`}>
+      <Table bordered className={`${styles.table} ${styles.striped} ${className}`}>
         {hasNested &&
           headers.map(({children: childHeaders}) => {
             if (childHeaders && childHeaders.length) {
