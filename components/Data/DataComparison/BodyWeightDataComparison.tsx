@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
 import { formatAlleleSymbol } from "@/utils";
@@ -53,6 +52,7 @@ const BodyWeightDataComparison = (props: Props) => {
   return (
     <>
       <SortableTable
+        className="data-comparison-table"
         doSort={(sort) => {
           setSortOptions({
             prop: sort[0],
@@ -71,11 +71,13 @@ const BodyWeightDataComparison = (props: Props) => {
         {getVisibleRows(sorted).map((d, i) => {
           const allele = formatAlleleSymbol(d.alleleSymbol);
           return (
-            <tr key={d.key} className={getBackgroundColorForRow(d, i, selectedKey)}>
+            <tr
+              key={d.key}
+              className={getBackgroundColorForRow(d, i, selectedKey)}
+              onClick={() => onSelectParam(d.key)}
+            >
               <td>
-                <button className={styles.selectionButton} onClick={() => onSelectParam(d.key)}>
-                  {d.phenotypingCentre}
-                </button>
+                {d.phenotypingCentre}
               </td>
               <td>
                 {allele[0]}

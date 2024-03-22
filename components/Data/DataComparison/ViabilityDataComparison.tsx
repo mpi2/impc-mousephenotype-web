@@ -53,6 +53,7 @@ const ViabilityDataComparison = (props: Props) => {
   return (
     <>
       <SortableTable
+        className="data-comparison-table"
         doSort={(sort) => {
           setSortOptions({
             prop: sort[0],
@@ -78,12 +79,14 @@ const ViabilityDataComparison = (props: Props) => {
         {getVisibleRows(sorted).map((d, i) => {
           const allele = formatAlleleSymbol(d.alleleSymbol);
           return (
-            <tr key={d.key} className={getBackgroundColorForRow(d, i, selectedKey)}>
+            <tr
+              key={d.key}
+              className={getBackgroundColorForRow(d, i, selectedKey)}
+              onClick={() => onSelectParam(d.key)}
+            >
               <td>
-                <button className={styles.selectionButton} onClick={() => onSelectParam(d.key)}>
-                  {allele[0]}
-                  <sup>{allele[1]}</sup>
-                </button>
+                {allele[0]}
+                <sup>{allele[1]}</sup>
               </td>
               <td>
                 <strong>{d.viability}</strong>

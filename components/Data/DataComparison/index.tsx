@@ -153,6 +153,7 @@ const DataComparison = (props: Props) => {
         {(pageData) => (
           <>
             <SortableTable
+              className="data-comparison-table"
               doSort={(sort) => {
                 setSortOptions({
                   prop: sort[0],
@@ -184,14 +185,10 @@ const DataComparison = (props: Props) => {
                   <tr
                     key={d.key}
                     className={getBackgroundColorForRow(d, i, selectedKey)}
+                    onClick={() => onSelectParam(d.key)}
                   >
                     <td>
-                      <button
-                        className={styles.selectionButton}
-                        onClick={() => onSelectParam(d.key)}
-                      >
-                        {d.parameterName}
-                      </button>
+                      {d.parameterName}
                     </td>
                     <td>{d.phenotypingCentre}</td>
                     <td>
