@@ -1,3 +1,5 @@
+import { Moment } from "moment";
+
 export type GeneImage = {
   count: number;
   fileType: string;
@@ -23,6 +25,7 @@ export type GeneImageCollection = {
   parameterName:         string;
   biologicalSampleGroup: string;
   images:                Array<Image>;
+  metadataGroup:         string;
 };
 
 export type Image = {
@@ -38,6 +41,8 @@ export type Image = {
   ageInWeeks:           number;
   alleleSymbol:         string;
   associatedParameters: Array<AssociatedParameter> | null;
+  dateOfExperiment:     string;
+  experimentDate:       Moment;
 };
 
 export type AssociatedParameter = {
