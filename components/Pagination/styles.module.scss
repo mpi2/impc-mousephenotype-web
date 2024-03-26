@@ -1,6 +1,7 @@
 .paginationNav {
   margin-bottom: 0;
   align-items: center;
+  gap: 1rem;
 }
 
 .buttonsWrapper {
@@ -39,5 +40,11 @@
   outline: none;
   border: 0;
   background: transparent;
-  padding: 0 10px;
+  padding: 5px;
+  border-radius: 4px;
+  color: #6F6F6F;
+  &.active {
+    color: #000;
+    background: #00B0B0;
+  }
 }
