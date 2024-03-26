@@ -213,11 +213,12 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             { AdditionalBottomControls }
           </div>
         )}
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
           {shouldDisplayPageChangeControls && (
             <div style={{ display: 'flex', alignItems: 'center' }}>
               Rows per page:&nbsp;
               <select
+                aria-label="rows per page selector"
                 onChange={(e) => {
                   const value = Number(e.target.value);
                   const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
