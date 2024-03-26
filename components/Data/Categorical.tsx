@@ -86,12 +86,10 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       <Row>
         <Col lg={8}>
           <Card>
-            <h2 className="primary">
-              <CategoricalBarPlot
-                series={data?.series}
-                zygosity={datasetSummary["zygosity"]}
-              />
-            </h2>
+            <CategoricalBarPlot
+              series={data?.series}
+              zygosity={datasetSummary["zygosity"]}
+            />
           </Card>
         </Col>
         <Col lg={4}>
@@ -263,13 +261,13 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
             <h2>Download all the data</h2>
             <p>
               Export data as:{" "}
-              <Button>
+              <button className="btn impc-secondary-button small">
                 <FontAwesomeIcon icon={faDownload} /> TSV
-              </Button>{" "}
+              </button>{" "}
               or{" "}
-              <Button>
+              <button className="btn impc-secondary-button small">
                 <FontAwesomeIcon icon={faDownload} /> XLS
-              </Button>{" "}
+              </button>{" "}
             </p>
             <p className="grey">
               <FontAwesomeIcon icon={faInfoCircle} /> NOTE: Data from all combinations
