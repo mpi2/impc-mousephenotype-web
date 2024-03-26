@@ -101,7 +101,7 @@ const SignificantPhenotypes = (
             options={systems}
           />
           <FilterBox
-            controlId="lifeStageFilter"
+            controlId="lifeStageFilter-sph"
             label="Life Stage"
             onChange={setSelectedLifeStage}
             ariaLabel="Filter by life stage"

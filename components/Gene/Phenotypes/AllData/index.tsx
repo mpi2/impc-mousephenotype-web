@@ -146,7 +146,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
               options={systems}
             />
             <FilterBox
-              controlId="lifeStageFilter"
+              controlId="lifeStageFilterAD"
               label="Life Stage"
               onChange={setSelectedLifeStage}
               ariaLabel="Filter by life stage"
