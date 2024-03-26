@@ -1,7 +1,12 @@
 import React from "react";
 import _ from "lodash";
-import { faMars, faMarsAndVenus, faVenus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMars,
+  faMarsAndVenus,
+  faVenus,
+} from "@fortawesome/free-solid-svg-icons";
 import { Dataset } from "@/models";
+import moment from "moment";
 
 export const formatBodySystems = (systems: string[] | string = []) => {
   return _.capitalize(
@@ -103,24 +108,182 @@ export const getIcon = (sex: string) => {
 };
 
 export const getSmallestPValue = (summaries: Array<Dataset>): number => {
-  const pValues = summaries.map(d => {
-    const statMethodPValueKey = d.sex === 'female' ? 'femaleKoEffectPValue' : 'maleKoEffectPValue';
-    const pValueFromStatMethod = d.statisticalMethod?.attributes?.[statMethodPValueKey];
-    return d.reportedPValue < pValueFromStatMethod ? d.reportedPValue : pValueFromStatMethod;
-  }).filter(value => !!value);
+  const pValues = summaries
+    .map((d) => {
+      const statMethodPValueKey =
+        d.sex === "female" ? "femaleKoEffectPValue" : "maleKoEffectPValue";
+      const pValueFromStatMethod =
+        d.statisticalMethod?.attributes?.[statMethodPValueKey];
+      return d.reportedPValue < pValueFromStatMethod
+        ? d.reportedPValue
+        : pValueFromStatMethod;
+    })
+    .filter((value) => !!value);
   return Math.min(...pValues, 1);
 };
 
-export const getDatasetByKey = (summaries: Array<Dataset>, keyToFind: string) => {
-  return summaries.find(dataset => {
+export const getDatasetByKey = (
+  summaries: Array<Dataset>,
+  keyToFind: string
+) => {
+  return summaries.find((dataset) => {
     const {
       alleleAccessionId,
       parameterStableId,
       zygosity,
       phenotypingCentre,
-      colonyId
+      colonyId,
     } = dataset;
     const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
     return key === keyToFind;
   });
+};
+
+function calculateAgeInWeeks(
+  dateOfBirth: string,
+  experimentDate: string
+): number {
+  const birthDate = moment(dateOfBirth);
+  const experimentDateObj = moment(experimentDate);
+
+  const diffDuration = moment.duration(experimentDateObj.diff(birthDate));
+  const weeks = Math.floor(diffDuration.asWeeks());
+
+  return weeks;
+}
+
+export const getPhenStatReadyData = (datasetMetadata: Dataset, data: any) => {
+  const phenstatCols = [
+    "pipeline_name",
+    "Pipeline",
+    "procedure_name",
+    "Procedure",
+    "parameter_name",
+    "Parameter",
+    "strain_accession_id",
+    "Strain",
+    "genetic_background",
+    "gene_symbol",
+    "Gene",
+    "allele_symbol",
+    "Allele",
+    "Center",
+    "Genotype",
+    "Assay.Date",
+    "date_of_birth",
+    "age_in_weeks",
+    "developmental_stage_name",
+    "Zygosity",
+    "Sex",
+    "biological_sample_group",
+    "external_sample_id",
+    "Metadata",
+    "MetadataGroup",
+    "Weight",
+    "production_center",
+    "Value",
+  ];
+
+  const csvRows: string[] = [phenstatCols.join(",")];
+
+  data.series.forEach((series) => {
+    series.observations.forEach((observation) => {
+      const row: string[] = [];
+      const age = calculateAgeInWeeks(
+        observation.specimenDateOfBirth,
+        observation.dateOfExperiment
+      );
+      row.push(
+        datasetMetadata.pipelineName,
+        datasetMetadata.pipelineStableId,
+        datasetMetadata.procedureName,
+        datasetMetadata.procedureStableId,
+        datasetMetadata.parameterName,
+        datasetMetadata.parameterStableId,
+        datasetMetadata.strainAccessionId,
+        datasetMetadata.strainName,
+        datasetMetadata.geneticBackground,
+        datasetMetadata.geneSymbol || "-",
+        datasetMetadata.mgiGeneAccessionId || "-",
+        datasetMetadata.alleleSymbol || "-",
+        datasetMetadata.alleleAccessionId || "-",
+        datasetMetadata.phenotypingCentre,
+        series.sampleGroup === "control" ? "+/+" : datasetMetadata.colonyId,
+        observation.dateOfExperiment,
+        observation.specimenDateOfBirth,
+        age.toString(),
+        datasetMetadata.lifeStageName,
+        datasetMetadata.zygosity,
+        series.specimenSex,
+        series.sampleGroup,
+        observation.specimenId,
+        "-",
+        datasetMetadata.metadataGroup,
+        observation?.bodyWeight?.toString() || "-",
+        datasetMetadata.productionCentre,
+        observation?.dataPoint?.toString() || observation.category
+      );
+      csvRows.push(row.join(","));
+    });
+  });
+
+  const blob = new Blob([csvRows.join("\n")], {
+    type: "text/comma-separated-value;charset=utf-8",
+  });
+
+  return blob;
+};
+
+export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
+  const fileName = `${datasetMetadata.parameterName}_${datasetMetadata.mgiGeneAccessionId}`;
+  const outputData = [];
+  data.series.forEach((series) => {
+    series.observations.forEach((observation) => {
+      let row = {};
+      const age = calculateAgeInWeeks(
+        observation.specimenDateOfBirth,
+        observation.dateOfExperiment
+      );
+      row = {
+        pipeline_name: datasetMetadata.pipelineName,
+        pipeline_stable_id: datasetMetadata.pipelineStableId,
+        procedure_name: datasetMetadata.procedureName,
+        procedure_stable_id: datasetMetadata.procedureStableId,
+        parameter_name: datasetMetadata.parameterName,
+        parameter_stable_id: datasetMetadata.parameterStableId,
+        strain_accession_id: datasetMetadata.strainAccessionId,
+        strain_name: datasetMetadata.strainName,
+        genetic_background: datasetMetadata.geneticBackground,
+        gene_symbol: datasetMetadata.geneSymbol || "-",
+        gene_accession_id: datasetMetadata.mgiGeneAccessionId || "-",
+        allele_symbol: datasetMetadata.alleleSymbol || "-",
+        allele_accession_id: datasetMetadata.alleleAccessionId || "-",
+        phenotyping_centre: datasetMetadata.phenotypingCentre,
+        colony_id:
+          series.sampleGroup === "control" ? "-" : datasetMetadata.colonyId,
+        date_of_experiment: observation.dateOfExperiment,
+        specimen_date_of_birth: observation.specimenDateOfBirth,
+        age_in_weeks: age.toString(),
+        life_stage_name: datasetMetadata.lifeStageName,
+        zygosity: datasetMetadata.zygosity,
+        sex: series.specimenSex,
+        biological_sample_group: series.sampleGroup,
+        external_sample_id: observation.specimenId,
+        metadata: "-",
+        metadata_group: datasetMetadata.metadataGroup,
+        weight: observation?.bodyWeight?.toString() || "-",
+        production_centre: datasetMetadata.productionCentre,
+      };
+      if (datasetMetadata.dataType === "categorical")
+        row["category"] = observation.category;
+      else row["data_point"] = observation.dataPoint;
+      outputData.push(row);
+    });
+  });
+
+  return {
+    fileName,
+    data: outputData,
+    fields: Object.keys(outputData[0]).map((f) => ({ key: f, label: f })),
+  };
 };
