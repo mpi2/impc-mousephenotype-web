@@ -106,6 +106,12 @@ p:last-child {
   font-size: 0.9rem;
 }
 
+.subheadingSection {
+  margin-right: $md;
+  display: inline-block;
+  vertical-align: top;
+}
+
 .table.table-striped {
   & > thead > tr > * {
     --bs-table-bg-type: #FFF;
