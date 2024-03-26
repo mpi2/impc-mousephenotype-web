@@ -3,11 +3,18 @@
   padding: 0.6rem 1rem;
 }
 
+@mixin small-button-styles {
+  padding: 0.4rem 0.6rem;
+}
+
 .impc-primary-button {
   @include button-common-styles;
   background-color: #00B0B0;
   color: #212529;
 
+  &.small {
+    @include small-button-styles;
+  }
   &:hover {
     background-color: #00A8A8;
   }
@@ -25,6 +32,10 @@
   border: 1px solid #102A5C;
   color: #102A5C;
   background-color: #FFF;
+
+  &.small {
+    @include small-button-styles;
+  }
   &:hover {
     border: 1px solid #1A4480;
     color: #1A4480;

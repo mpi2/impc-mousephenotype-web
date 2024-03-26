@@ -48,24 +48,20 @@ const DownloadDataComponent = <T,>({data, fields, fileName}: Props<T>) => {
 
 
   return (
-    <div className="grey">
+    <div className="grey" style={{ display: 'flex', gap: '0.5rem' }}>
       Download data as:{" "}
-      <Button
-        size="sm"
-        variant="outline-secondary"
-        as="button"
+      <button
+        className="btn impc-secondary-button small"
         onClick={generateTsvFile}
       >
         <FontAwesomeIcon icon={faDownload} size="sm"/> TSV
-      </Button>{" "}
-      <Button
-        size="sm"
-        variant="outline-secondary"
-        as="button"
+      </button>{" "}
+      <button
+        className="btn impc-secondary-button small"
         onClick={generateXlsxFile}
       >
         <FontAwesomeIcon icon={faDownload} size="sm"/> XLS
-      </Button>
+      </button>
     </div>
   );
 };
