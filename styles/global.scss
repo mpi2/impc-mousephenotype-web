@@ -6,6 +6,7 @@
 @import "./components/_badges";
 @import "./components/filtersBar";
 @import "./components/dataComparisonTable";
+@import "./components/buttons";
 
 html,
 body {
@@ -114,16 +115,6 @@ p:last-child {
   }
   & > tbody > tr:nth-of-type(odd) > * {
     --bs-table-bg-type: #EFEFEF;
-  }
-}
-
-
-.impc-secondary-btn {
-  background-color: $secondary;
-  color: #FFF;
-  &:hover, &.active {
-    background-color: $blue-dark;
-    color: #FFF;
   }
 }
 
