@@ -8,31 +8,43 @@ import { Alert, Button, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
 import CategoricalBarPlot from "./Plots/CategoricalBarPlot";
-import { formatPValue } from "@/utils";
+import { formatPValue, getDownloadData } from "@/utils";
 import { capitalize } from "lodash";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
+import { DownloadData } from "..";
 
 const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
-  if (zygosity === 'hemizygote') {
-    return seriesArray.filter(c => c.sex === 'male');
+  if (zygosity === "hemizygote") {
+    return seriesArray.filter((c) => c.sex === "male");
   }
-  const validExperimentalSeries = seriesArray
-    .filter(c => c.sampleGroup === 'experimental' && c.value > 0);
-  const validExperimentalSeriesSexes = validExperimentalSeries.map(c => c.sex);
-  const controlSeries = seriesArray
-    .filter(c => c.sampleGroup === 'control' && validExperimentalSeriesSexes.includes(c.sex));
-  return [ ...controlSeries, ...validExperimentalSeries ];
-}
+  const validExperimentalSeries = seriesArray.filter(
+    (c) => c.sampleGroup === "experimental" && c.value > 0
+  );
+  const validExperimentalSeriesSexes = validExperimentalSeries.map(
+    (c) => c.sex
+  );
+  const controlSeries = seriesArray.filter(
+    (c) =>
+      c.sampleGroup === "control" &&
+      validExperimentalSeriesSexes.includes(c.sex)
+  );
+  return [...controlSeries, ...validExperimentalSeries];
+};
 
 const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
-
   const { data } = useQuery({
-    queryKey: ["dataset", datasetSummary.parameterName, datasetSummary.datasetId],
+    queryKey: [
+      "dataset",
+      datasetSummary.parameterName,
+      datasetSummary.datasetId,
+    ],
     queryFn: () => {
-      const dataReleaseVersion = process.env.NEXT_PUBLIC_DR_DATASET_VERSION || 'latest';
+      const dataReleaseVersion =
+        process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest";
       return fetch(
         `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
       ).then((res) => res.json());
@@ -73,11 +85,12 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       return {
         categories,
         series: filterChartSeries(datasetSummary.zygosity, series),
-        categoryIndex: index
-      }
+        categoryIndex: index,
+        originalData: response,
+      };
     },
     enabled: isVisible,
-    placeholderData: { series: [] }
+    placeholderData: { series: [] },
   });
 
   return (
@@ -173,7 +186,9 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                         !data.categoryIndex[sex][sampleGroup][category] ? (
                           <td>0</td>
                         ) : (
-                          <td>{data.categoryIndex[sex][sampleGroup][category]}</td>
+                          <td>
+                            {data.categoryIndex[sex][sampleGroup][category]}
+                          </td>
                         )
                       )
                     )}
@@ -187,7 +202,7 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
           <Card>
             <h2>Statistical method</h2>
             <p>{datasetSummary["statisticalMethod"]["name"]}</p>
-            {datasetSummary.resourceName === '3i' && (
+            {datasetSummary.resourceName === "3i" && (
               <>
                 <span>Supplied as data</span>
                 <span>
@@ -207,7 +222,7 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 </span>
               </>
             )}
-            {datasetSummary.resourceName === 'pwg' && (
+            {datasetSummary.resourceName === "pwg" && (
               <>
                 <span>Supplied as data</span>
                 <span>
@@ -225,55 +240,37 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         </Col>
         <Col lg={6}>
           <Card>
-            <h2>Access the results programmatically</h2>
+            <h2>Statistical analysis API access</h2>
             <p>
-              <a
-                className="link"
-                target="_blank"
-                href="https://www.ebi.ac.uk/mi/impc/solr/statistical-result/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:1929293%22&fq=phenotyping_center:(%22MRC+Harwell%22)&fq=metadata_group:a8ee4a7178561c567069d111ea7338b8&fq=allele_accession_id:%22MGI:5548707%22&fq=pipeline_stable_id:HRWL_001&fq=parameter_stable_id:IMPC_HEM_037_001&fq=zygosity:homozygote&fq=strain_accession_id:MGI\:2164831"
-              >
-                Statistical result raw XML{" "}
-                <FontAwesomeIcon size="xs" icon={faExternalLinkAlt} />
-              </a>
+              <StatisticalAnalysisDownloadLink
+                datasetSummary={datasetSummary}
+                type="statistical-result"
+              />
             </p>
             <p>
-              <a
-                className="link"
-                target="_blank"
-                href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:1929293%22&fq=phenotyping_center:(%22MRC+Harwell%22)&fq=allele_accession_id:%22MGI:5548707%22&fq=pipeline_stable_id:HRWL_001&fq=parameter_stable_id:IMPC_HEM_037_001&fq=zygosity:homozygote&fq=strain_accession_id:MGI\:2164831"
-              >
-                Genotype phenotype raw XML{" "}
-                <FontAwesomeIcon size="xs" icon={faExternalLinkAlt} />
-              </a>
+              <StatisticalAnalysisDownloadLink
+                datasetSummary={datasetSummary}
+                type="genotype-phenotype"
+              />
             </p>
             <p>
-              <a
-                className="link"
-                target="_blank"
-                href="https://www.mousephenotype.org/data/exportraw?phenotyping_center=MRC%20Harwell&parameter_stable_id=IMPC_HEM_037_001&allele_accession_id=MGI:5548707&strain=MGI:2164831&pipeline_stable_id=HRWL_001&&zygosity=homozygote&"
-              >
-                PhenStat-ready raw experiment data{" "}
-                <FontAwesomeIcon size="xs" icon={faExternalLinkAlt} />
-              </a>
+              <StatisticalAnalysisDownloadLink
+                datasetSummary={datasetSummary}
+                type="phenstat-data"
+                data={data ? data.originalData : null}
+              />
             </p>
           </Card>
         </Col>
         <Col>
           <Card>
-            <h2>Download all the data</h2>
+            <h2>Experimental data download</h2>
             <p>
-              Export data as:{" "}
-              <Button>
-                <FontAwesomeIcon icon={faDownload} /> TSV
-              </Button>{" "}
-              or{" "}
-              <Button>
-                <FontAwesomeIcon icon={faDownload} /> XLS
-              </Button>{" "}
-            </p>
-            <p className="grey">
-              <FontAwesomeIcon icon={faInfoCircle} /> NOTE: Data from all combinations
-              will be aggregated into one download file.
+              {data && (
+                <DownloadData
+                  {...getDownloadData(datasetSummary, data.originalData)}
+                />
+              )}
             </p>
           </Card>
         </Col>

@@ -38,10 +38,15 @@ const shapes = { male: "triangle", female: "circle" };
 const pointRadius = 5;
 
 const getBoxPlotDataset = (series, zygosity) => {
-  const boxPlotSeries = [...series].sort((a,b) => a.sex > b.sex ? 1 : -1);
+  const boxPlotSeries = [...series].sort((a, b) => (a.sex > b.sex ? 1 : -1));
   const labels = boxPlotSeries.map(({ sex, sampleGroup }) => {
     const labelSex = sex[0].toUpperCase() + sex.slice(1);
-    const labelZyg = zygosity === "homozygote" ? "HOM" : zygosity === 'hemizygote' ? 'HEM' : 'HET';
+    const labelZyg =
+      zygosity === "homozygote"
+        ? "HOM"
+        : zygosity === "hemizygote"
+        ? "HEM"
+        : "HET";
     const labelGroup = sampleGroup == "experimental" ? labelZyg : "WT";
     return `${labelSex} ${labelGroup}`;
   });
@@ -67,17 +72,21 @@ const getBoxPlotDataset = (series, zygosity) => {
 interface IUnidimensionalBoxPlotProps {
   series: Array<UnidimensionalSeries>;
   zygosity: "homozygote" | "heterozygote" | "hemizygote";
+  parameterName: string;
 }
 
-const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps>  = ({ series, zygosity }) => {
-
+const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps> = ({
+  parameterName,
+  series,
+  zygosity,
+}) => {
   return (
     <Chart
       type="boxplot"
       data={getBoxPlotDataset(series, zygosity)}
       options={{
-        maintainAspectRatio: false,
-        aspectRatio: 2,
+        maintainAspectRatio: true,
+        aspectRatio: 1,
         scales: {
           y: {
             type: "linear",
@@ -95,7 +104,7 @@ const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps>  = ({ series, zygos
             display: false,
             position: "bottom",
             labels: {
-              usePointStyle: false,
+              usePointStyle: true,
               padding: 0,
             },
           },
