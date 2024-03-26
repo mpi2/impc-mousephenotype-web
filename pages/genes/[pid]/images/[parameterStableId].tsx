@@ -11,7 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { Badge, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import Search from "@/components/Search";
@@ -27,6 +27,8 @@ import { GeneImageCollection, Image } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
 import Head from "next/head";
+import moment from "moment";
+import _ from 'lodash';
 
 type Filters = {
   selectedCenter: string;
@@ -199,8 +201,7 @@ const ImagesCompare = () => {
         `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`
       ),
     enabled: router.isReady,
-    select: data => (data as Array<GeneImageCollection>)
-      .sort((a, b) => a.pipelineStableId.localeCompare(b.pipelineStableId)),
+    select: data => data as Array<GeneImageCollection>,
     placeholderData: [],
   });
 
@@ -211,8 +212,7 @@ const ImagesCompare = () => {
         `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`
       ),
     enabled: router.isReady,
-    select: data => (data as Array<GeneImageCollection>)
-      .sort((a, b) => a.pipelineStableId.localeCompare(b.pipelineStableId)),
+    select: data => data as Array<GeneImageCollection>,
     placeholderData: [],
   });
 
@@ -221,6 +221,27 @@ const ImagesCompare = () => {
   const [selectedMutantCenter, setSelectedMutantCenter] = useState<string>('IMPC');
   const [selectedControlCenter, setSelectedControlCenter] = useState<string>('IMPC');
   const [selectedAllele, setSelectedAllele] = useState<string>('all');
+  const [metadataGroup, setMetadataGroup] = useState<string>(null);
+  const [strainAccessionId, setStrainAccessionId] = useState<string>(null);
+  const [procedureStableId, setProcedureStableId] = useState<string>(null);
+
+  useEffect(() => {
+    if (mutantImages.length > 0) {
+      const center = mutantImages[0].pipelineStableId.split('_')[0];
+      if (center !== selectedMutantCenter) {
+        setMetadataGroup(mutantImages[0].metadataGroup);
+        setStrainAccessionId(mutantImages[0].strainAccessionId);
+        setProcedureStableId(mutantImages[0].procedureStableId);
+        setSelectedMutantCenter(center);
+      }
+    }
+    if (mutantImages.length > 0 && controlImagesRaw.length > 0) {
+      const center = mutantImages[0].pipelineStableId.split('_')[0];
+      if (center !== selectedControlCenter && controlImagesRaw.some(c => c.pipelineStableId.includes(center))) {
+        setSelectedControlCenter(center);
+      }
+    }
+  }, [mutantImages.length, controlImagesRaw.length]);
 
   const filterControlImages = (images: Array<Image>) => {
     return images?.filter((i) =>
@@ -237,17 +258,28 @@ const ImagesCompare = () => {
         selectedAllele !== 'all' ? i.alleleSymbol === selectedAllele : true
       );
   };
-  const filterImagesByCenter = (images: Array<GeneImageCollection>, type: "control" | "mutant", filters: Filters) => {
+  const filterImagesByCenter = (images: Array<GeneImageCollection>, filters: Filters) => {
     const { selectedCenter } = filters;
-    const setSelectedCenter = type === "control" ? setSelectedControlCenter : setSelectedMutantCenter;
     const hasImagesForParameter = !!images.find(c => c.pipelineStableId.includes(selectedCenter));
     if (hasImagesForParameter) {
       return images
         .filter(collection => collection.pipelineStableId.includes(selectedCenter))
-        .flatMap(collection => collection.images) || [];
-    } else if (images?.length >= 1 && !images[0].pipelineStableId.includes(selectedCenter)) {
-      setSelectedCenter(images[0].pipelineStableId.split('_')[0]);
-      return images[0].images;
+        .filter(collection => metadataGroup === null || collection.metadataGroup === metadataGroup)
+        .filter(collection => strainAccessionId === null || collection.strainAccessionId === strainAccessionId)
+        .filter(collection => procedureStableId === null || collection.procedureStableId === procedureStableId)
+        .flatMap(collection => collection.images)
+        .map(image => ({
+          ...image,
+          experimentDate: moment(image.dateOfExperiment),
+        }))
+        .sort((a, b) => b.experimentDate.valueOf() - a.experimentDate.valueOf())|| [];
+    } else if (images?.length > 0) {
+      return images[0].images
+        .map(image => ({
+          ...image,
+          experimentDate: moment(image.dateOfExperiment),
+        }))
+        .sort((a, b) => b.experimentDate.valueOf() - a.experimentDate.valueOf());
     }
   };
 
@@ -263,29 +295,40 @@ const ImagesCompare = () => {
   }, [mutantImages.length]);
 
   const selectedControlImages = useMemo(
-    () => filterImagesByCenter(controlImagesRaw, "control", { selectedCenter: selectedControlCenter }),
-    [controlImagesRaw, selectedControlCenter]
+    () => filterImagesByCenter(controlImagesRaw,{ selectedCenter: selectedControlCenter }),
+    [controlImagesRaw, selectedControlCenter, metadataGroup, strainAccessionId]
   );
   const selectedMutantImages = useMemo(
-    () => filterImagesByCenter(mutantImages, "mutant", { selectedCenter: selectedMutantCenter }),
+    () => filterImagesByCenter(mutantImages,{ selectedCenter: selectedMutantCenter }),
     [mutantImages, selectedMutantCenter]
   );
 
   const allMutantCenters = useMemo(
-    () =>
-      Array.from(new Set(mutantImages?.map(c => c.pipelineStableId.split('_')[0]))) || [] as Array<string>,
+    () => {
+      const filteredCollections = mutantImages
+        ?.filter(collection => metadataGroup === null || collection.metadataGroup === metadataGroup)
+        ?.filter(collection => strainAccessionId === null || collection.strainAccessionId === strainAccessionId)
+        ?.filter(collection => procedureStableId === null || collection.procedureStableId === procedureStableId);
+      const centers = filteredCollections?.map(c => c.pipelineStableId.split('_')[0]);
+      return _.uniq(centers) || [] as Array<string>
+    },
     [mutantImages]
   );
 
   const allControlCenters = useMemo(
-    () =>
-      Array.from(new Set(controlImagesRaw?.map(c => c.pipelineStableId.split('_')[0]))) || [] as Array<string>,
+    () => {
+      const filteredCollections = controlImagesRaw
+        ?.filter(collection => metadataGroup === null || collection.metadataGroup === metadataGroup)
+        ?.filter(collection => strainAccessionId === null || collection.strainAccessionId === strainAccessionId)
+        ?.filter(collection => procedureStableId === null || collection.procedureStableId === procedureStableId);
+      const centers = filteredCollections?.map(c => c.pipelineStableId.split('_')[0]);
+      return _.uniq(centers) || [] as Array<string>
+    },
     [controlImagesRaw]
   );
 
   const alleles: Array<string> = useMemo(
-    () =>
-      Array.from(new Set(selectedMutantImages?.map(c => c.alleleSymbol))) || [] as Array<string>,
+    () => _.uniq(selectedMutantImages?.map(c => c.alleleSymbol)) || [] as Array<string>,
     [selectedMutantImages]
   );
 
