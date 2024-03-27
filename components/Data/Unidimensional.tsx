@@ -11,31 +11,35 @@ import Card from "../Card";
 import SortableTable from "../SortableTable";
 import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
-import { formatPValue } from "@/utils";
+import { getPhenStatReadyData, formatPValue, getDownloadData } from "@/utils";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { Dataset, GeneralChartProps } from "@/models";
 import _ from "lodash";
-import StatisticalMethodTable from './StatisticalMethodTable';
+import StatisticalMethodTable from "./StatisticalMethodTable";
 import { useQuery } from "@tanstack/react-query";
+import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
+import { DownloadData } from "..";
 
 type ChartSeries = {
-  data: Array<any>,
-  sampleGroup: 'control' | 'experimental',
-  sex: 'male' | 'female',
-}
+  data: Array<any>;
+  sampleGroup: "control" | "experimental";
+  sex: "male" | "female";
+};
 
 const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const getScatterSeries = (dataSeries, sex, sampleGroup) => {
     if (!dataSeries) {
       return null;
     }
-    const data = dataSeries
-      .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === sex)?.["observations"].map((p) => {
-        const p2 = { ...p };
-        p2.x = moment(p.dateOfExperiment);
-        p2.y = +p.dataPoint;
-        return p2;
-      }) || [];
+    const data =
+      dataSeries
+        .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === sex)
+        ?.["observations"].map((p) => {
+          const p2 = { ...p };
+          p2.x = moment(p.dateOfExperiment);
+          p2.y = +p.dataPoint;
+          return p2;
+        }) || [];
     return {
       sex,
       sampleGroup,
@@ -43,50 +47,62 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
     };
   };
 
-  const filterChartSeries = (zygosity: string, seriesArray: Array<ChartSeries>) => {
-    if (zygosity === 'hemizygote') {
-      return seriesArray.filter(c => c.sex === 'male');
+  const filterChartSeries = (
+    zygosity: string,
+    seriesArray: Array<ChartSeries>
+  ) => {
+    if (zygosity === "hemizygote") {
+      return seriesArray.filter((c) => c.sex === "male");
     }
-    const validExperimentalSeries = seriesArray
-      .filter(c => c.sampleGroup === 'experimental' && c.data.length > 0);
-    const validExperimentalSeriesSexes = validExperimentalSeries.map(c => c.sex);
-    const controlSeries = seriesArray
-      .filter(c => c.sampleGroup === 'control' && validExperimentalSeriesSexes.includes(c.sex));
-    return [ ...controlSeries, ...validExperimentalSeries ];
+    const validExperimentalSeries = seriesArray.filter(
+      (c) => c.sampleGroup === "experimental" && c.data.length > 0
+    );
+    const validExperimentalSeriesSexes = validExperimentalSeries.map(
+      (c) => c.sex
+    );
+    const controlSeries = seriesArray.filter(
+      (c) =>
+        c.sampleGroup === "control" &&
+        validExperimentalSeriesSexes.includes(c.sex)
+    );
+    return [...controlSeries, ...validExperimentalSeries];
   };
 
   const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
     const zygosity = datasetSummary.zygosity;
-    return chartSeries.map(serie => {
+    return chartSeries.map((serie) => {
       const { sampleGroup, sex } = serie;
-      const sampleGroupKey = sampleGroup === 'control' ? 'Control' : 'Mutant';
+      const sampleGroupKey = sampleGroup === "control" ? "Control" : "Mutant";
       const meanKey = `${sex}${sampleGroupKey}Mean`;
       const stddevKey = `${sex}${sampleGroupKey}Sd`;
       const countKey = `${sex}${sampleGroupKey}Count`;
       return {
-        label: `${_.capitalize(sex)} ${sampleGroup === 'control' ? 'Control' : _.capitalize(zygosity)}`,
+        label: `${_.capitalize(sex)} ${
+          sampleGroup === "control" ? "Control" : _.capitalize(zygosity)
+        }`,
         mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
         stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
         count: datasetSummary.summaryStatistics?.[countKey] || 0,
-      }
+      };
     });
-  }
+  };
 
   const { data, isLoading, error, isError } = useQuery({
-    queryKey: ["dataset", datasetSummary.parameterName, datasetSummary.datasetId],
+    queryKey: [
+      "dataset",
+      datasetSummary.parameterName,
+      datasetSummary.datasetId,
+    ],
     queryFn: () => {
-      const dataReleaseVersion = process.env.NEXT_PUBLIC_DR_DATASET_VERSION || 'latest';
+      const dataReleaseVersion =
+        process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest";
       return fetch(
         `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
       ).then((res) => res.json());
     },
     select: (response) => {
       const dataSeries = response.series;
-      const femaleWTPoints = getScatterSeries(
-        dataSeries,
-        "female",
-        "control"
-      );
+      const femaleWTPoints = getScatterSeries(dataSeries, "female", "control");
       const maleWTPoints = getScatterSeries(dataSeries, "male", "control");
       const femaleHomPoints = getScatterSeries(
         dataSeries,
@@ -109,41 +125,61 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         });
       windowPoints.sort((a, b) => a.x - b.x);
 
-      const chartSeries = filterChartSeries(
-        datasetSummary.zygosity, [femaleWTPoints, maleWTPoints, femaleHomPoints, maleHomPoints]
-      );
+      const chartSeries = filterChartSeries(datasetSummary.zygosity, [
+        femaleWTPoints,
+        maleWTPoints,
+        femaleHomPoints,
+        maleHomPoints,
+      ]);
       return {
         chartSeries,
         lineSeries: [windowPoints],
         summaryStatistics: updateSummaryStatistics(chartSeries),
-      }
+        originalData: response,
+      };
     },
-    enabled: isVisible
+    enabled: isVisible,
   });
 
   return (
     <>
       <ChartSummary datasetSummary={datasetSummary} />
       <Row>
-        <Col lg={5}>
+        <Col lg={12}>
           <Card>
-            <UnidimensionalBoxPlot
-              series={data?.chartSeries || []}
-              zygosity={datasetSummary.zygosity}
-            />
+            <Row>
+              <Col lg={4}>
+                <div className="text-center">
+                  {datasetSummary["parameterName"]} / Box plot
+                </div>
+                <div>
+                  {" "}
+                  <UnidimensionalBoxPlot
+                    series={data?.chartSeries || []}
+                    zygosity={datasetSummary.zygosity}
+                    parameterName={datasetSummary.parameterName}
+                  />
+                </div>
+              </Col>
+              <Col lg={8}>
+                <div className="text-center">
+                  {datasetSummary["parameterName"]} / Scatter plot
+                </div>
+                <div>
+                  <UnidimensionalScatterPlot
+                    scatterSeries={data?.chartSeries || []}
+                    lineSeries={data?.lineSeries || []}
+                    zygosity={datasetSummary["zygosity"]}
+                    parameterName={datasetSummary["parameterName"]}
+                    unit={datasetSummary["unit"]["x"]}
+                  />
+                </div>
+              </Col>
+            </Row>
           </Card>
         </Col>
-        <Col lg={7}>
-          <Card>
-            <UnidimensionalScatterPlot
-              scatterSeries={data?.chartSeries || []}
-              lineSeries={data?.lineSeries || []}
-              zygosity={datasetSummary["zygosity"]}
-              parameterName={datasetSummary["parameterName"]}
-              unit={datasetSummary["unit"]["x"]}
-            />
-          </Card>
-        </Col>
+      </Row>
+      <Row>
         <Col lg={6}>
           <Card>
             <h2>Results of statistical analysis</h2>
@@ -207,14 +243,14 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 { width: 3, label: "# Samples", disabled: true },
               ]}
             >
-              {(data?.summaryStatistics || []).map(stats =>
+              {(data?.summaryStatistics || []).map((stats) => (
                 <tr>
                   <td>{stats.label}</td>
                   <td>{stats.mean}</td>
                   <td>{stats.stddev}</td>
                   <td>{stats.count}</td>
                 </tr>
-              )}
+              ))}
             </SortableTable>
           </Card>
         </Col>
@@ -253,56 +289,34 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
             </SortableTable>
           </Card>
           <Card>
-            <h2>Access the results programmatically</h2>
+            <h2>Statistical analysis API access</h2>
             <p>
-              <a
-                target="_blank"
-                className="link"
-                href="https://www.ebi.ac.uk/mi/impc/solr/statistical-result/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:1929293%22&fq=phenotyping_center:(%22MRC+Harwell%22)&fq=metadata_group:a8ee4a7178561c567069d111ea7338b8&fq=allele_accession_id:%22MGI:5548707%22&fq=pipeline_stable_id:HRWL_001&fq=parameter_stable_id:IMPC_HEM_037_001&fq=zygosity:homozygote&fq=strain_accession_id:MGI\:2164831"
-              >
-                Statistical result raw XML{" "}
-                <FontAwesomeIcon size="xs" icon={faExternalLinkAlt} />
-              </a>
+              <StatisticalAnalysisDownloadLink
+                datasetSummary={datasetSummary}
+                type="statistical-result"
+              />
             </p>
             <p>
-              <a
-                target="_blank"
-                className="link"
-                href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:1929293%22&fq=phenotyping_center:(%22MRC+Harwell%22)&fq=allele_accession_id:%22MGI:5548707%22&fq=pipeline_stable_id:HRWL_001&fq=parameter_stable_id:IMPC_HEM_037_001&fq=zygosity:homozygote&fq=strain_accession_id:MGI\:2164831"
-              >
-                Genotype phenotype raw XML{" "}
-                <FontAwesomeIcon size="xs" icon={faExternalLinkAlt} />
-              </a>
+              <StatisticalAnalysisDownloadLink
+                datasetSummary={datasetSummary}
+                type="genotype-phenotype"
+              />
             </p>
             <p>
-              <a
-                target="_blank"
-                className="link"
-                href="https://www.mousephenotype.org/data/exportraw?phenotyping_center=MRC%20Harwell&parameter_stable_id=IMPC_HEM_037_001&allele_accession_id=MGI:5548707&strain=MGI:2164831&pipeline_stable_id=HRWL_001&&zygosity=homozygote&"
-              >
-                PhenStat-ready raw experiment data{" "}
-                <FontAwesomeIcon size="xs" icon={faExternalLinkAlt} />
-              </a>
+              <StatisticalAnalysisDownloadLink
+                datasetSummary={datasetSummary}
+                type="phenstat-data"
+                data={data ? data.originalData : null}
+              />
             </p>
           </Card>
-        </Col>
-        <Col>
           <Card>
-            <h2>Download all the data</h2>
-            <p>
-              Export data as:{" "}
-              <button className="btn impc-secondary-button small">
-                <FontAwesomeIcon icon={faDownload} /> TSV
-              </button>{" "}
-              or{" "}
-              <button className="btn impc-secondary-button small">
-                <FontAwesomeIcon icon={faDownload} /> XLS
-              </button>{" "}
-            </p>
-            <p className="grey">
-              <FontAwesomeIcon icon={faInfoCircle} /> NOTE: Data from all combinations
-              will be aggregated into one download file.
-            </p>
+            <h2>Experimental data download</h2>
+            {data && (
+              <DownloadData
+                {...getDownloadData(datasetSummary, data?.originalData)}
+              />
+            )}
           </Card>
         </Col>
       </Row>

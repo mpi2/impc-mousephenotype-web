@@ -45,9 +45,14 @@ interface IUnidimensionalScatterPlotProps {
 
 const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
   const labelSex = series.sex[0].toUpperCase() + series.sex.slice(1);
-  const labelZyg = zygosity === "homozygote" ? "HOM" : zygosity === 'hemizygote' ? 'HEM' : 'HET';
+  const labelZyg =
+    zygosity === "homozygote"
+      ? "HOM"
+      : zygosity === "hemizygote"
+      ? "HEM"
+      : "HET";
   const labelGroup = series.sampleGroup == "experimental" ? labelZyg : "WT";
-  const order = labelGroup !== 'WT' ? 1 : 2;
+  const order = labelGroup !== "WT" ? 1 : 2;
   const label = `${labelSex} ${labelGroup}`;
 
   return {
@@ -102,8 +107,10 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
           tooltip: {
             usePointStyle: true,
             callbacks: {
-              label: ({ dataset, parsed, raw}) =>
-                `${dataset.label}: ${parsed.y} ${unit} (${raw.x.format('MMMM YYYY')})`,
+              label: ({ dataset, parsed, raw }) =>
+                `${dataset.label}: ${parsed.y} ${unit} (${raw.x.format(
+                  "MMMM YYYY"
+                )})`,
             },
           },
           legend: {
@@ -123,13 +130,21 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
               unit: "month",
               tooltipFormat: "DD MMM YYYY",
             },
+            title: {
+              text: `Date of experiment`,
+              display: true,
+              align: "center",
+              padding: 5,
+            },
           },
           y: {
             type: "linear",
             display: true,
             position: "left",
             title: {
-              text: `${parameterName} (${unit})`,
+              text: `${parameterName} ${
+                unit && unit.trim() !== "" ? "(" + unit + ")" : ""
+              }`,
               display: true,
               align: "center",
               padding: 5,
