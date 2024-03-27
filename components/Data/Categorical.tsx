@@ -175,16 +175,16 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                   })
               )}
             >
-              {data.categories.map((category) => {
+              {data.categories.map((category, index) => {
                 return (
-                  <tr>
+                  <tr key={`${category}_${index}`}>
                     <td>{category}</td>
                     {Object.keys(data.categoryIndex).flatMap((sex) =>
                       Object.keys(data.categoryIndex[sex]).map((sampleGroup) =>
                         !data.categoryIndex[sex][sampleGroup][category] ? (
-                          <td>0</td>
+                          <td key={`${sampleGroup}_${sex}_${category}`}>0</td>
                         ) : (
-                          <td>
+                          <td key={`${sampleGroup}_${sex}_${category}`}>
                             {data.categoryIndex[sex][sampleGroup][category]}
                           </td>
                         )
@@ -260,11 +260,12 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
             </p>
           </Card>
         </Col>
+
         <Col>
           <Card>
             <h2>Experimental data download</h2>
             <p>
-              {data && (
+              {data && data.originalData && (
                 <DownloadData
                   {...getDownloadData(datasetSummary, data.originalData)}
                 />
