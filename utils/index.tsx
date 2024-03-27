@@ -280,6 +280,9 @@ export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
 
       if (observation.windowWeight)
         row["window_weight"] = observation.windowWeight;
+
+      if (observation.discretePoint)
+        row["discrete_point"] = observation.discretePoint;
       outputData.push(row);
     });
   });
@@ -287,6 +290,71 @@ export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
   return {
     fileName,
     data: outputData,
-    fields: Object.keys(outputData[0]).map((f) => ({ key: f, label: f })),
+    fields: outputData[0]
+      ? Object.keys(outputData[0]).map((f) => ({ key: f, label: f }))
+      : [],
+  };
+};
+
+export const getBodyWeightDownloadData = (
+  datasetMetadata: Dataset,
+  observations: any
+) => {
+  const fileName = `${datasetMetadata.parameterName}_${datasetMetadata.mgiGeneAccessionId}`;
+  const outputData = [];
+  observations.forEach((observation) => {
+    let row = {};
+    const age = calculateAgeInWeeks(
+      observation.specimenDateOfBirth,
+      observation.dateOfExperiment
+    );
+    row = {
+      pipeline_name: datasetMetadata.pipelineName,
+      pipeline_stable_id: datasetMetadata.pipelineStableId,
+      procedure_name: datasetMetadata.procedureName,
+      procedure_stable_id: datasetMetadata.procedureStableId,
+      parameter_name: datasetMetadata.parameterName,
+      parameter_stable_id: datasetMetadata.parameterStableId,
+      strain_accession_id: datasetMetadata.strainAccessionId,
+      strain_name: datasetMetadata.strainName,
+      genetic_background: datasetMetadata.geneticBackground,
+      gene_symbol: datasetMetadata.geneSymbol || "-",
+      gene_accession_id: datasetMetadata.mgiGeneAccessionId || "-",
+      allele_symbol: datasetMetadata.alleleSymbol || "-",
+      allele_accession_id: datasetMetadata.alleleAccessionId || "-",
+      phenotyping_centre: datasetMetadata.phenotypingCentre,
+      colony_id:
+        observation.sampleGroup === "control" ? "-" : datasetMetadata.colonyId,
+      date_of_experiment: observation.dateOfExperiment,
+      specimen_date_of_birth: observation.specimenDateOfBirth,
+      age_in_weeks: age.toString(),
+      life_stage_name: datasetMetadata.lifeStageName,
+      zygosity: datasetMetadata.zygosity,
+      sex: observation.sex,
+      biological_sample_group: observation.sampleGroup,
+      external_sample_id: observation.specimenId,
+      metadata: "-",
+      metadata_group: datasetMetadata.metadataGroup,
+      weight: observation?.bodyWeight?.toString() || "-",
+      production_centre: datasetMetadata.productionCentre,
+    };
+    if (datasetMetadata.dataType === "categorical")
+      row["category"] = observation.category;
+    else row["data_point"] = observation.dataPoint;
+
+    if (observation.windowWeight)
+      row["window_weight"] = observation.windowWeight;
+
+    if (observation.discretePoint)
+      row["discrete_point"] = observation.discretePoint;
+    outputData.push(row);
+  });
+
+  return {
+    fileName,
+    data: outputData,
+    fields: outputData[0]
+      ? Object.keys(outputData[0]).map((f) => ({ key: f, label: f }))
+      : [],
   };
 };
