@@ -22,7 +22,9 @@ const Phenotype = () => {
     enabled: router.isReady,
     select: (data: PhenotypeSummary) => ({
       ...data,
-      procedures: _.uniqBy(data.procedures, 'procedureName'),
+      procedures: _.uniqBy(data.procedures, 'procedureName').sort((a, b) => {
+        return a.procedureName.localeCompare(b.procedureName);
+      }),
     } as PhenotypeSummary),
   });
 

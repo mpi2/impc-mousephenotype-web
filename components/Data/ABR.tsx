@@ -19,6 +19,8 @@ import {
 import { Chart } from 'react-chartjs-2';
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -244,6 +246,23 @@ const ABR = (props : ABRProps) => {
             plugins={chartPlugins}
           />
         </div>
+      </Card>
+      <Card>
+        <h2>Download all the data</h2>
+        <p>
+          Export data as:{" "}
+          <button className="btn impc-secondary-button small">
+            <FontAwesomeIcon icon={faDownload} /> TSV
+          </button>{" "}
+          or{" "}
+          <button className="btn impc-secondary-button small">
+            <FontAwesomeIcon icon={faDownload} /> XLS
+          </button>{" "}
+        </p>
+        <p className="grey">
+          <FontAwesomeIcon icon={faInfoCircle} /> NOTE: Data from all combinations
+          will be aggregated into one download file.
+        </p>
       </Card>
     </>
   )

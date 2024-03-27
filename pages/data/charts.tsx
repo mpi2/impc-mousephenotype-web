@@ -136,7 +136,7 @@ const Charts = () => {
                 }}
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
-                &nbsp; Go Back
+                &nbsp; Go Back to {allSummaries?.[0]?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}
               </Link>
             </span>
           </div>

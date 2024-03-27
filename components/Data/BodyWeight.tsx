@@ -253,13 +253,13 @@ const BodyWeightChart = ({ datasetSummary }) => {
             <h2>Download all the data</h2>
             <p>
               Export data as:{" "}
-              <Button>
+              <button className="btn impc-secondary-button small">
                 <FontAwesomeIcon icon={faDownload} /> TSV
-              </Button>{" "}
+              </button>{" "}
               or{" "}
-              <Button>
+              <button className="btn impc-secondary-button small">
                 <FontAwesomeIcon icon={faDownload} /> XLS
-              </Button>{" "}
+              </button>{" "}
             </p>
             <p className="grey">
               <FontAwesomeIcon icon={faInfoCircle} /> NOTE: Data from all combinations

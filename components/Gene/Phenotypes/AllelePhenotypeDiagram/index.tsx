@@ -110,17 +110,6 @@ const AllelePhenotypeDiagram = (
   const [selectedZyg, setSelectedZyg] = useState<string>(undefined);
   const [selectedLifeSt, setSelectedLifeSt] = useState<string>(undefined);
   const [selectedSex, setSelectedSexes] = useState<string>(undefined);
-
-  const toggleDrawer = () => {
-    setIsOpen(prevState => !prevState);
-  };
-  const toggleAllele = (allele: string) => {
-    if (selectedAlleles.includes(allele) && selectedAlleles.length > 1) {
-      setSelectedAlleles(prevState => prevState.filter(a => a !== allele));
-    } else {
-      setSelectedAlleles(prevState => prevState.concat([allele]));
-    }
-  }
   const updateSelectedField = (field: keyof Allele) => {
     setClickSelection(null);
     setSelection(null);
@@ -208,7 +197,7 @@ const AllelePhenotypeDiagram = (
         </div>
         <div className={styles.selector}>
           <FilterBox
-            controlId="lifeStageFilter"
+            controlId="lifeStageFilter-apd"
             label="Life stage"
             onChange={setSelectedLifeSt}
             ariaLabel="Filter by life stage"
@@ -227,9 +216,9 @@ const AllelePhenotypeDiagram = (
       </div>
       <div className="mt-3">
         <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-          <Button variant="secondary" style={{ marginRight: '1rem' }} >
-            <FontAwesomeIcon className="white" icon={faCircleInfo} title="help button" titleId="help-button-icon" />
-          </Button>
+          <button className="btn impc-secondary-button" style={{ marginRight: '1rem' }} >
+            <FontAwesomeIcon icon={faCircleInfo} title="help button" titleId="help-button-icon" />
+          </button>
         </OverlayTrigger>
         <span>Click on a bar to view the phenotypes that belongs to an allele or set of alleles</span>
       </div>
@@ -280,37 +269,6 @@ const AllelePhenotypeDiagram = (
           </>
         )}
       </div>
-      <Drawer
-        open={isOpen}
-        onClose={toggleDrawer}
-        direction="bottom"
-        enableOverlay={false}
-      >
-        <div className="container pt-3" style={{ position: 'relative' }}>
-          <Form.Group>
-            <Form.Label>Visible alleles</Form.Label>
-            {Object.keys(allelesData).sort().map(allele =>
-              <Form.Check
-                style={{ userSelect: 'none' }}
-                checked={selectedAlleles.includes(allele)}
-                type="checkbox"
-                id={`checkbox-${allele}`}
-                label={allele}
-                onChange={() => toggleAllele(allele)}
-              />
-            )}
-          </Form.Group>
-          <div className={styles.closeBtn}>
-            <Button
-              variant="link"
-              style={{ fontSize: '150%' }}
-              onClick={() => setIsOpen(false)}
-            >
-              <FontAwesomeIcon icon={faCircleXmark} title="Close drawer" titleId="close-drawer-icon" />
-            </Button>
-          </div>
-        </div>
-      </Drawer>
     </div>
   );
 

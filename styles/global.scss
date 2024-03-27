@@ -6,6 +6,7 @@
 @import "./components/_badges";
 @import "./components/filtersBar";
 @import "./components/dataComparisonTable";
+@import "./components/buttons";
 
 html,
 body {
@@ -105,6 +106,12 @@ p:last-child {
   font-size: 0.9rem;
 }
 
+.subheadingSection {
+  margin-right: $md;
+  display: inline-block;
+  vertical-align: top;
+}
+
 .table.table-striped {
   & > thead > tr > * {
     --bs-table-bg-type: #FFF;
@@ -114,16 +121,6 @@ p:last-child {
   }
   & > tbody > tr:nth-of-type(odd) > * {
     --bs-table-bg-type: #EFEFEF;
-  }
-}
-
-
-.impc-secondary-btn {
-  background-color: $secondary;
-  color: #FFF;
-  &:hover, &.active {
-    background-color: $blue-dark;
-    color: #FFF;
   }
 }
 

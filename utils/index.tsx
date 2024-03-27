@@ -284,6 +284,6 @@ export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
   return {
     fileName,
     data: outputData,
-    fields: Object.keys(outputData[0]).map((f) => ({ key: f, label: f })),
+    fields: Object.keys(outputData[0] || {}).map((f) => ({ key: f, label: f })),
   };
 };

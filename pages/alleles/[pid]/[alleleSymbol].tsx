@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowLeft,
   faArrowLeftLong,
   faArrowRightLong,
   faCartShopping,
@@ -21,6 +22,7 @@ import QCModal from "@/components/Allele/QCModal.tsx";
 import IntermediateVector from "@/components/Allele/IVP";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import Skeleton from "react-loading-skeleton";
 
 const ProductItem = ({
   name,
@@ -160,11 +162,20 @@ const Gene = () => {
       <Search />
       <Container className="page">
         <Card>
-          <Link href={`/genes/${pid}/#order`} className="grey mb-3 small">
-            <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
-            BACK TO GENE
-          </Link>
-          <p className={styles.subheading}>ALLELE</p>
+          <div className="subheading">
+            <span className="subheadingSection primary">
+              <Link
+                href={`/genes/${pid}`}
+                className="mb-3"
+                style={{textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem'}}
+              >
+                <FontAwesomeIcon icon={faArrowLeft}/>
+                &nbsp;
+                Go Back to {allele.geneSymbol || <Skeleton style={{width: '50px'}} inline/>}
+              </Link>
+            </span>
+          </div>
+          <p className={`${styles.subheading} mt-2`}>ALLELE</p>
           <h1 className="mb-2 mt-2">
             <strong>
               {allele.geneSymbol}
@@ -172,7 +183,7 @@ const Gene = () => {
             </strong>{" "}
           </h1>
           <p className="mb-4 grey">{alleleDescription}</p>
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <div style={{display: "flex", flexWrap: "wrap"}}>
             {productTypes.map((productType) => (
               <ProductItem {...productType} />
             ))}

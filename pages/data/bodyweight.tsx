@@ -11,6 +11,7 @@ import SkeletonTable from "@/components/skeletons/table";
 import Link from "next/link";
 import { getDatasetByKey } from "@/utils";
 import Head from "next/head";
+import Skeleton from "react-loading-skeleton";
 
 const BodyWeightChartPage = () => {
   const router = useRouter();
@@ -37,7 +38,7 @@ const BodyWeightChartPage = () => {
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
                 &nbsp;
-                Go Back
+                Go Back to {activeDataset?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}
               </Link>
             </span>
           </div>

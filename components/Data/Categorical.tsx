@@ -99,12 +99,10 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       <Row>
         <Col lg={8}>
           <Card>
-            <h2 className="primary">
-              <CategoricalBarPlot
-                series={data?.series}
-                zygosity={datasetSummary["zygosity"]}
-              />
-            </h2>
+            <CategoricalBarPlot
+              series={data?.series}
+              zygosity={datasetSummary["zygosity"]}
+            />
           </Card>
         </Col>
         <Col lg={4}>

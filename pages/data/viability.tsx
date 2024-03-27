@@ -38,7 +38,7 @@ const ViabilityChartPage = () => {
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
                 &nbsp;
-                Go Back
+                Go Back to {activeDataset?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}
               </Link>
             </span>
           </div>
