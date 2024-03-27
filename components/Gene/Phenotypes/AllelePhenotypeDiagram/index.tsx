@@ -25,15 +25,6 @@ type Filters = {
   selectedSex: string;
 }
 
-const popover = (
-  <Popover id="helpInfo">
-    <Popover.Header as="h3">Help</Popover.Header>
-    <Popover.Body>
-      Hovering the columns will highlight the common phenotypes across all the other sets.
-    </Popover.Body>
-  </Popover>
-);
-
 const dataMatchesFilters = (phenotype: GenePhenotypeHits, filters: Filters): boolean => {
   const { selectedZyg, selectedLifeSt, selectedSex } = filters;
   return (
@@ -215,12 +206,11 @@ const AllelePhenotypeDiagram = (
         </div>
       </div>
       <div className="mt-3">
-        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-          <button className="btn impc-secondary-button" style={{ marginRight: '1rem' }} >
-            <FontAwesomeIcon icon={faCircleInfo} title="help button" titleId="help-button-icon" />
-          </button>
-        </OverlayTrigger>
-        <span>Click on a bar to view the phenotypes that belongs to an allele or set of alleles</span>
+        <span>
+          Click on a bar to view the phenotypes that belongs to an allele or set of alleles in the results section.
+          <br/>
+          Hovering the columns will highlight the common phenotypes across all the other sets.
+        </span>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>
         <UpSetJS
@@ -237,7 +227,8 @@ const AllelePhenotypeDiagram = (
         />
       </div>
       <div className="selection">
-        {clickSelection && (
+        <h3>Results section</h3>
+        {clickSelection ? (
           <>
             {clickSelection.name.split('∩').length === 1 ? (
               <>
@@ -266,6 +257,10 @@ const AllelePhenotypeDiagram = (
                   <li>{phenotypeName}</li>
                 ))}
             </ul>
+          </>
+        ) : (
+          <>
+            <i className="grey">Data will appear here after a column is clicked.</i>
           </>
         )}
       </div>
