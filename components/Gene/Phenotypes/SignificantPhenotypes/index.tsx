@@ -101,7 +101,7 @@ const SignificantPhenotypes = (
             options={systems}
           />
           <FilterBox
-            controlId="lifeStageFilter"
+            controlId="lifeStageFilter-sph"
             label="Life Stage"
             onChange={setSelectedLifeStage}
             ariaLabel="Filter by life stage"
@@ -150,16 +150,16 @@ const SignificantPhenotypes = (
           cmp: <PlainTextCell style={{ fontWeight: 'bold' }} />
         },
         {
-          width: 1,
+          width: 1.8,
           label: "System",
           field: "topLevelPhenotypeName",
           cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes"/>
         },
         {width: 1, label: "Allele", field: "alleleSymbol", cmp: <AlleleCell/>},
         {width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{textTransform: "capitalize"}}/>},
-        {width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell/>},
-        {width: 1, label: "Significant sexes", field: "sex", cmp: <SignificantSexesCell/>},
-        {width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell />},
+        {width: 0.5, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell/>},
+        {width: 0.5, label: "Significant sexes", field: "sex", cmp: <SignificantSexesCell/>},
+        {width: 0.7, label: "Significant P-value", field: "pValue", cmp: <SignificantPValueCell />},
       ]}
     />
   );

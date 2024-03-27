@@ -19,6 +19,8 @@ import {
 import { Chart } from "react-chartjs-2";
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useQueries } from "@tanstack/react-query";
 import { getDownloadData } from "@/utils";
 import DownloadData from "../DownloadData";

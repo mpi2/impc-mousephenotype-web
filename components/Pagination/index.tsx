@@ -89,19 +89,19 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
           <button
             onClick={() => updatePage(internalPage - 1)}
             disabled={!canGoBack}
-            className={canGoBack ? `${styles.pagNavBtn} nav-btn primary` : `${styles.pagNavBtn} nav-btn`}
+            className={canGoBack ? `${styles.pagNavBtn} nav-btn` : `${styles.pagNavBtn} nav-btn`}
             data-testid={`${placement}-prev-page`}
           >
             <FontAwesomeIcon icon={faArrowLeft} title="previous page button" titleId="prev-page-icon" />
-          </button>&nbsp;
+          </button>
           {pageRange[0] > 1 && (
             <>
               <li
-                className={`page-item first-page ${internalPage === 0 ? "active" : ""}`}
+                className="page-item first-page"
                 data-testid={`${placement}-first-page`}
               >
                 <button
-                  className={`${styles.pagNavBtn} page-link`}
+                  className={`${styles.pagNavBtn} ${internalPage === 0 ? styles.active : ""}`}
                   aria-label="Previous"
                   onClick={() => updatePage(0)}
                   data-testid={`${placement}-first-page-btn`}
@@ -119,13 +119,11 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
           {pageRange.map((pageNumber) => (
             <li
               key={pageNumber}
-              className={`page-item ${
-                internalPage === (pageNumber - 1) ? "active" : ""
-              }`}
+              className="page-item"
               data-testid={`${placement}-page-${pageNumber}`}
             >
               <button
-                className={`${styles.pagNavBtn} page-link`}
+                className={`${styles.pagNavBtn} ${internalPage === (pageNumber - 1) ? styles.active : ""}`}
                 onClick={() => updatePage(pageNumber - 1)}
                 data-testid={`${placement}-page-${pageNumber}-btn`}
               >
@@ -145,7 +143,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
                 data-testid={`${placement}-last-page`}
               >
                 <button
-                  className={`${styles.pagNavBtn} page-link last-page`}
+                  className={`${styles.pagNavBtn} last-page`}
                   aria-label="Previous"
                   onClick={() => updatePage(totalPages - 1)}
                   data-testid={`${placement}-last-page-btn`}
@@ -158,7 +156,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
           <button
             onClick={() => updatePage(internalPage + 1)}
             disabled={!canGoForward}
-            className={canGoForward ? `${styles.pagNavBtn} nav-btn primary` : `${styles.pagNavBtn} nav-btn`}
+            className={canGoForward ? `${styles.pagNavBtn} nav-btn` : `${styles.pagNavBtn} nav-btn`}
             data-testid={`${placement}-next-page`}
           >
             <FontAwesomeIcon icon={faArrowRight} title="next page button" titleId="next-page-icon" />
@@ -215,27 +213,30 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             { AdditionalBottomControls }
           </div>
         )}
-        {shouldDisplayPageChangeControls && (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            Rows per page:&nbsp;
-            <select
-              onChange={(e) => {
-                const value = Number(e.target.value);
-                const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
-                updatePage(newPage);
-                updatePageSize(value);
-              }}
-              value={pageSize}
-            >
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">30</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-          </div>
-        )}
-        <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {shouldDisplayPageChangeControls && (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              Rows per page:&nbsp;
+              <select
+                aria-label="rows per page selector"
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
+                  updatePage(newPage);
+                  updatePageSize(value);
+                }}
+                value={pageSize}
+              >
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+          )}
+          <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
+        </div>
       </div>
     </>
   );

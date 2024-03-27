@@ -1,5 +1,4 @@
 import {
-  faArrowLeftLong,
   faMagnifyingGlassMinus,
   faMagnifyingGlassPlus,
   faRefresh,
@@ -7,6 +6,7 @@ import {
   faMars,
   faMarsAndVenus,
   faCircle,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -349,20 +349,30 @@ const ImagesCompare = () => {
       <Search />
       <Container className="page">
         <Card>
-          <Link href={`/genes/${pid}#images`} className="primary mb-3" style={{ fontSize: '1.13rem'}}>
-            <FontAwesomeIcon icon={faArrowLeftLong} /> Back to {geneSymbol || <SkeletonText />}
-          </Link>
-          <p className={styles.subheading}>Images</p>
-          <h1 className="mb-4 mt-2" style={{ display: "flex", gap: "1rem" }}>
-            <strong>{procedureName || <SkeletonText />}</strong>{" "}
+          <div className={styles.subheading}>
+            <span className={`${styles.subheadingSection} primary`}>
+              <Link
+                href={`/genes/${pid}#images`}
+                className="mb-3"
+                style={{textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem'}}
+              >
+                <FontAwesomeIcon icon={faArrowLeft}/>
+                &nbsp;
+                Go Back to {geneSymbol || <Skeleton style={{width: '50px'}} inline/>}
+              </Link>
+            </span>
+          </div>
+          <p className={`${styles.subheading} mt-2`}>Images</p>
+          <h1 className="mb-4 mt-2" style={{display: "flex", gap: "1rem"}}>
+            <strong>{procedureName || <SkeletonText/>}</strong>{" "}
             /&nbsp;
-            {parameterName || <SkeletonText />}
+            {parameterName || <SkeletonText/>}
           </h1>
           <div>
             <Row>
               <Col sm={6}>
                 <div className={styles.headerContainer}>
-                  <h3 style={{ marginBottom: 0 }}>WT Images ({selectedControlImages?.length})</h3>
+                  <h3 style={{marginBottom: 0}}>WT Images ({selectedControlImages?.length})</h3>
                   <FilterBox
                     controlId="controlCenterFilter"
                     label="Center"
@@ -388,7 +398,7 @@ const ImagesCompare = () => {
               </Col>
               <Col sm={6}>
                 <div className={styles.headerContainer}>
-                  <h3 style={{ marginBottom: 0 }}>Mutant Images ({selectedMutantImages?.length})</h3>
+                  <h3 style={{marginBottom: 0}}>Mutant Images ({selectedMutantImages?.length})</h3>
                   <FilterBox
                     controlId="mutantCenterFilter"
                     label="Center"
@@ -402,7 +412,7 @@ const ImagesCompare = () => {
                   />
                 </div>
                 <Col xs={12}>
-                <div className={classNames("ratio", "ratio-16x9", styles.imageContainer)}>
+                  <div className={classNames("ratio", "ratio-16x9", styles.imageContainer)}>
                     <ImageViewer image={filteredMutantImages?.[selectedMutantImage]}/>
                   </div>
                   <div className={styles.imageInfo}>

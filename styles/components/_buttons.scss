@@ -1,0 +1,52 @@
+@mixin button-common-styles {
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+}
+
+@mixin small-button-styles {
+  padding: 0.4rem 0.6rem;
+}
+
+.impc-primary-button {
+  @include button-common-styles;
+  background-color: #00B0B0;
+  color: #212529;
+
+  &.small {
+    @include small-button-styles;
+  }
+  &:hover {
+    background-color: #00A8A8;
+  }
+  &:active {
+    background-color: #129E9E;
+  }
+  &:focus, &:focus-visible {
+    background-color: #129E9E;
+    outline: 2px solid #2491FF;
+  }
+}
+
+.impc-secondary-button {
+  @include button-common-styles;
+  border: 1px solid #102A5C;
+  color: #102A5C;
+  background-color: #FFF;
+
+  &.small {
+    @include small-button-styles;
+  }
+  &:hover {
+    border: 1px solid #1A4480;
+    color: #1A4480;
+  }
+  &:active {
+    border: 1px solid #005EA2;
+    color: #005EA2;
+  }
+  &:focus {
+    border: 1px solid #102A5C;
+    color: #102A5C;
+    outline: 2px solid #2491FF;
+  }
+}

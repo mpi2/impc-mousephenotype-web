@@ -3,19 +3,17 @@ import { useContext, useEffect, useState } from "react";
 import {
   AlleleCell,
   OptionsCell,
-  PhenotypeIconsCell,
   PlainTextCell,
+  SignificantPValueCell,
   SmartTable,
 } from "@/components/SmartTable";
 import { GeneStatisticalResult } from "@/models/gene";
-import { TableCellProps } from "@/models";
-import { formatPValue } from "@/utils";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartLine, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { Model, TableCellProps } from "@/models";
 import styles from "./styles.module.scss";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
+import { BodySystem } from "@/components/BodySystemIcon";
+import Link from "next/link";
 
 const ParameterCell = <T extends GeneStatisticalResult>(
   props: TableCellProps<T>
@@ -29,11 +27,12 @@ const ParameterCell = <T extends GeneStatisticalResult>(
   );
 };
 
-const PValueCell = <T extends GeneStatisticalResult>(
-  props: TableCellProps<T>
-) => {
+type PhenotypeIconsCellProps<T> = {
+  allPhenotypesField: keyof T;
+} & TableCellProps<T>;
+const PhenotypeIconsCell = <T extends GeneStatisticalResult>(props: PhenotypeIconsCellProps<T>) => {
+  const phenotypes = (_.get(props.value, props.allPhenotypesField) || []) as Array<{ name: string }>;
   const {
-    pValue,
     mgiGeneAccessionId,
     alleleAccessionId,
     zygosity,
@@ -42,32 +41,24 @@ const PValueCell = <T extends GeneStatisticalResult>(
     procedureStableId,
     phenotypingCentre,
   } = props.value;
-  let url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
-  if (procedureStableId.includes("IMPC_PAT") && parameterStableId) {
-    url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
-  }
-  if (procedureStableId.includes("IMPC_HIS")) {
-    url = `/data/histopath/${mgiGeneAccessionId}`;
-  }
+
+  let url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`
   return (
-    <div
-      className="bold"
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <span className="">
-        {!!pValue ? formatPValue(Number.parseFloat(pValue)) : "-"}
+    <>
+      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
+        <span>
+          {phenotypes.map(({ name }) => (
+            <BodySystem name={name} color="system-icon in-table primary" noSpacing />
+          ))}
+        </span>
+        <Link href={url}>
+          <span className={`link primary small float-right`}>
+            Supporting data&nbsp;
+          </span>
+        </Link>
       </span>
-      <Link href={url}>
-        <strong className={`link primary small float-right`}>
-          <FontAwesomeIcon icon={faChartLine} /> Supporting data{" "}
-          <FontAwesomeIcon icon={faChevronRight} />
-        </strong>
-      </Link>
-    </div>
-  );
+    </>
+  )
 };
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
@@ -146,7 +137,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
               options={systems}
             />
             <FilterBox
-              controlId="lifeStageFilter"
+              controlId="lifeStageFilterAD"
               label="Life Stage"
               onChange={setSelectedLifeStage}
               ariaLabel="Filter by life stage"
@@ -199,7 +190,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
             cmp: <ParameterCell />,
           },
           {
-            width: 1.3,
+            width: 1.8,
             label: "System",
             field: "topLevelPhenotypes",
             cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />,
@@ -240,7 +231,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
             field: "significant",
             cmp: <OptionsCell options={{ true: "Yes", false: "No" }} />,
           },
-          { width: 2, label: "P value", field: "pValue", cmp: <PValueCell /> },
+          { width: 0.7, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
         ]}
       />
     </>

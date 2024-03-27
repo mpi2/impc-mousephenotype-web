@@ -7,11 +7,12 @@ import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 import { Histopathology, TableCellProps } from "@/models";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong, faExternalLinkAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faExternalLinkAlt, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { usePathname, useSearchParams } from "next/navigation";
 import _ from "lodash";
 import Link from "next/link";
 import Head from "next/head";
+import Skeleton from "react-loading-skeleton";
 
 const DescriptionCell = <T extends Histopathology>(props: TableCellProps<T> & {maxChars?: number, onClick: (data: T) => void}) => {
   const maxChars = props.maxChars || 50;
@@ -77,11 +78,15 @@ const HistopathChartPage = () => {
         <Card>
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
-              <Link href={`/genes/${mgiGeneAccessionId}/#histopathology`} className="grey mb-3 small">
-                <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
-                BACK TO GENE &nbsp;
+              <Link
+                href={`/genes/${mgiGeneAccessionId}#images`}
+                className="mb-3"
+                style={{textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem'}}
+              >
+                <FontAwesomeIcon icon={faArrowLeft}/>
+                &nbsp;
+                Go Back to {gene?.geneSymbol || <Skeleton style={{width: '50px'}} inline/>}
               </Link>
-              / Histopathology
             </span>
           </div>
           <h1 className="mb-4 mt-2" data-testid="main-header">
@@ -89,7 +94,7 @@ const HistopathChartPage = () => {
               Histopathology data for {gene?.geneSymbol}
             </strong>
           </h1>
-          <Accordion style={{ marginBottom: '1.5rem' }}>
+          <Accordion style={{marginBottom: '1.5rem'}}>
             <Accordion.Item eventKey="score">
               <Accordion.Header>Score Definitions</Accordion.Header>
               <Accordion.Body>
