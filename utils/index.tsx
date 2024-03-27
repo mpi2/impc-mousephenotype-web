@@ -277,6 +277,9 @@ export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
       if (datasetMetadata.dataType === "categorical")
         row["category"] = observation.category;
       else row["data_point"] = observation.dataPoint;
+
+      if (observation.windowWeight)
+        row["window_weight"] = observation.windowWeight;
       outputData.push(row);
     });
   });
