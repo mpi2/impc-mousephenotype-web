@@ -26,20 +26,22 @@ const IPGTT = (props: IPGTTProps) => {
     parameterList,
     onNewSummariesFetched
   );
-
+  
   return (
-    <>
-      <Tabs
-        activeKey={key}
-        onSelect={(k) => setKey(k)}
-      >
-        {datasets.map(dataset => (
-          <Tab title={dataset.parameterName} eventKey={dataset.parameterName}>
-            {getChartType(dataset, key === dataset.parameterName)}
-          </Tab>
-        ))}
-      </Tabs>
-    </>
+    <Tabs
+      activeKey={key}
+      onSelect={(k) => setKey(k)}
+    >
+      {datasets.map(dataset => (
+        <Tab
+          key={dataset.id}
+          title={dataset.parameterName}
+          eventKey={dataset.parameterName}
+        >
+          {getChartType(dataset, key === dataset.parameterName)}
+        </Tab>
+      ))}
+    </Tabs>
   );
 
 };
