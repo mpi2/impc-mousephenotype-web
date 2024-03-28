@@ -11,3 +11,4 @@ export { default as TimeSeries } from './TimeSeries';
 export { default as Unidimensional } from './Unidimensional';
 export { default as Viability } from './Viability';
 export { default as StatisticalMethodTable } from './StatisticalMethodTable';
+export { default as FlowCytometryImages } from './FlowCytometryImages';
