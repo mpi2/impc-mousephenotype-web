@@ -5,7 +5,6 @@ import { useState } from "react";
 import { getChartType } from "@/components/Data/Utils";
 
 const parameterList = [
-  "IMPC_IPG_001_001",
   "IMPC_IPG_002_001",
   "IMPC_IPG_010_001",
   "IMPC_IPG_011_001",
@@ -26,7 +25,7 @@ const IPGTT = (props: IPGTTProps) => {
     parameterList,
     onNewSummariesFetched
   );
-  
+
   return (
     <Tabs
       activeKey={key}
