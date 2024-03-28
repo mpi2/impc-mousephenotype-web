@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
 import SkeletonTable from "@/components/skeletons/table";
-import { ABR, DataComparison, IPGTT } from "@/components/Data";
+import { ABR, DataComparison, FlowCytometryImages, IPGTT } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
 import { Dataset } from "@/models";
@@ -84,7 +84,8 @@ const Charts = () => {
     : allSummaries[0];
 
 
-  const Chart = getChartType(activeDataset);
+  const extraChildren = hasFlowCytometryImages ? <FlowCytometryImages images={flowCytometryImages} /> : null;
+  const Chart = getChartType(activeDataset, true, extraChildren);
   return (
     <>
       <Head>
@@ -176,9 +177,6 @@ const Charts = () => {
             />
           ) : (
             !!activeDataset && <div>{Chart}</div>
-          )}
-          {hasFlowCytometryImages && (
-            <FlowCytometryImages images={flowCytometryImages} />
           )}
         </Container>
       </div>
