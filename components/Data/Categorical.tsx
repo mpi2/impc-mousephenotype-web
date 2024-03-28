@@ -35,7 +35,7 @@ const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
   return [...controlSeries, ...validExperimentalSeries];
 };
 
-const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
+const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
   const { data } = useQuery({
     queryKey: [
       "dataset",
@@ -105,6 +105,11 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
             />
           </Card>
         </Col>
+        {!!children && (
+          <Col lg={12}>
+            {children}
+          </Col>
+        )}
         <Col lg={4}>
           <Card>
             <h2>Results of statistical analysis</h2>
