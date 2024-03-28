@@ -10,7 +10,7 @@ $navy-light: #ebf0ff;
 $purple: #750065;
 $lime: #97cd2a;
 $grey: #6F6F6F;
-$grey-light: #e8e8e8;
+$grey-light: #ececec;
 $bg: #ececec;
 $white: #fff;
 $black: #000;
@@ -92,6 +92,8 @@ $theme-colors: (
   "grey": $grey-light,
   "dark": $dark,
 );
+
+
 
 $container-max-widths: (
   "": 1440px,

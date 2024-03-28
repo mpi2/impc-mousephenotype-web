@@ -1,6 +1,6 @@
 import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import { useEffect, useState } from "react";
-import { fetchAPI } from "@/api-service";
+import { fetchAPI, fetchDatasetFromS3 } from "@/api-service";
 import _ from "lodash";
 import { Card, Col, Row } from "react-bootstrap";
 import {
@@ -24,6 +24,8 @@ import { faDownload, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useQueries } from "@tanstack/react-query";
 import { getDownloadData } from "@/utils";
 import DownloadData from "../DownloadData";
+import { Dataset } from "@/models";
+import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -49,75 +51,25 @@ const parameterList = [
 ];
 
 type ABRProps = {
-  datasetSummaries: Array<any>;
+  datasetSummaries: Array<Dataset>;
   onNewSummariesFetched: (missingSummaries: Array<any>) => void;
 };
 
 const ABR = (props: ABRProps) => {
   const { datasetSummaries, onNewSummariesFetched } = props;
-  const [datasets, setDatasets] = useState<Array<any>>(datasetSummaries);
-  const [zygosity, setZygosity] = useState(datasetSummaries[0].zygosity);
-  useEffect(() => {
-    const {
-      mgiGeneAccessionId,
-      alleleAccessionId,
-      pipelineStableId,
-      zygosity,
-      procedureStableId,
-      phenotypingCentre,
-    } = datasetSummaries[0];
-    const proceduresWithData = datasetSummaries.map((d) => d.parameterStableId);
-    const missingProcedures = parameterList.filter(
-      (p) => !proceduresWithData.includes(p)
-    );
-    const requests = missingProcedures.map((parameter) =>
-      fetchAPI(
-        `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameter}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`
-      )
-    );
-    Promise.allSettled(requests)
-      .then((responses) =>
-        responses
-          .filter((promiseRes) => promiseRes.status === "fulfilled")
-          .map(
-            (promiseRes) => (promiseRes as PromiseFulfilledResult<any>).value
-          )
-      )
-      .then((responses) => {
-        const proceduresData = [];
-        responses.forEach((datasets) => {
-          const uniques = [];
-          datasets.forEach(({ id, ...ds }) => {
-            if (!uniques.find((d) => _.isEqual(d, ds))) {
-              uniques.push({ id, ...ds });
-            }
-          });
-          const selectedDataset = uniques[0];
-          proceduresData.push(selectedDataset);
-        });
-        return proceduresData;
-      })
-      .then((missingProcedureData) => {
-        // get data from props first, then add missing data
-        const allData = clone(datasetSummaries);
-        missingProcedureData.forEach((d) => allData.push(d));
-        allData.sort((d1, d2) =>
-          d1.parameterStableId.localeCompare(d2.parameterStableId)
-        );
-        onNewSummariesFetched(missingProcedureData);
-        setDatasets(allData);
-      });
-  }, [datasetSummaries]);
+
+  const datasets = useRelatedParametersQuery(
+    datasetSummaries,
+    parameterList,
+    onNewSummariesFetched
+  );
+
+  const zygosity = datasetSummaries?.[0]?.zygosity;
 
   const results = useQueries({
     queries: datasetSummaries.map((d) => ({
-      queryKey: d.dataSetId,
-      queryFn: () =>
-        fetch(
-          `https://impc-datasets.s3.eu-west-2.amazonaws.com/${
-            process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest"
-          }/${d.datasetId}.json`
-        ).then((res) => res.json()),
+      queryKey: [d.datasetId],
+      queryFn: () => fetchDatasetFromS3(d.datasetId),
     })),
   });
   const loadingData = results.map((d) => d.isLoading).every(Boolean);

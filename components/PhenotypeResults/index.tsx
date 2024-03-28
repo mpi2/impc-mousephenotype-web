@@ -42,7 +42,7 @@ const systems = [
   "liver/biliary system phenotype",
   "nervous system phenotype",
   "pigmentation phenotype",
-];
+].sort((a, b) => a.localeCompare(b));
 
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
   <Badge className={`badge ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
