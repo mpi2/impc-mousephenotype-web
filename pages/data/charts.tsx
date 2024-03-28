@@ -4,17 +4,7 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
 import SkeletonTable from "@/components/skeletons/table";
-import {
-  ABR,
-  BodyWeightChart,
-  Categorical,
-  DataComparison,
-  EmbryoViability, FlowCytometryImages,
-  Histopathology,
-  TimeSeries,
-  Unidimensional,
-  Viability,
-} from "@/components/Data";
+import { ABR, DataComparison, IPGTT } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
 import { Dataset } from "@/models";
@@ -22,60 +12,16 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Skeleton from "react-loading-skeleton";
-import GrossPathology from "@/components/Data/GrossPathology";
 import Head from "next/head";
+import { getChartType } from "@/components/Data/Utils";
 
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
-  const [additionalSummaries, setAdditionalSummaries] = useState<Array<any>>(
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<Dataset>>(
     []
   );
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
-  const getChartType = (datasetSummary: Dataset) => {
-    let chartType = datasetSummary.dataType;
-    if (chartType == "line" || chartType == "embryo") {
-      chartType =
-        datasetSummary.procedureGroup == "IMPC_VIA"
-          ? "viability"
-          : datasetSummary.procedureGroup == "IMPC_FER"
-          ? "fertility"
-          : ["IMPC_EVL", "IMPC_EVM", "IMPC_EVP", "IMPC_EVO"].includes(
-              datasetSummary.procedureGroup
-            )
-          ? "embryo_viability"
-          : chartType;
-    }
-
-    if (
-      chartType === "time_series" &&
-      datasetSummary.procedureGroup === "IMPC_BWT"
-    ) {
-      chartType = "bodyweight";
-    }
-    switch (chartType) {
-      case "unidimensional":
-        return <Unidimensional datasetSummary={datasetSummary} isVisible />;
-      case "categorical":
-        return <Categorical datasetSummary={datasetSummary} isVisible />;
-      case "viability":
-        return <Viability datasetSummary={datasetSummary} isVisible />;
-      case "time_series":
-        return <TimeSeries datasetSummary={datasetSummary} isVisible />;
-      case "embryo_viability":
-        return <EmbryoViability datasetSummary={datasetSummary} isVisible />;
-      case "embryo":
-        return <Categorical datasetSummary={datasetSummary} isVisible />;
-      case "histopathology":
-        return <Histopathology datasetSummary={datasetSummary} />;
-      case "bodyweight":
-        return <BodyWeightChart datasetSummary={datasetSummary} />;
-      case "adult-gross-path":
-        return <GrossPathology datasetSummary={datasetSummary} />;
-      default:
-        return null;
-    }
-  };
 
   const getPageTitle = (summaries: Array<Dataset>) => {
     if (!summaries || summaries.length === 0) {
@@ -115,6 +61,7 @@ const Charts = () => {
           dataset.procedureGroup === "IMPC_ABR"
       )
     : false;
+
   const isViabilityChart = !isError
     ? !!datasetSummaries.some(
         (dataset) => dataset.procedureGroup === "IMPC_VIA"
@@ -124,6 +71,12 @@ const Charts = () => {
   const isTimeSeries = !isError
     ? !!datasetSummaries.some((dataset) => dataset.dataType === "time_series")
     : false;
+
+  const isIPGTTChart = !isError
+    ? !!datasetSummaries.some(
+      (dataset) => dataset.procedureStableId === "IMPC_IPG_001"
+    )
+    :false;
 
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
   const activeDataset = !!selectedKey
@@ -191,7 +144,7 @@ const Charts = () => {
               </div>
             </div>
           )}
-          {!isLoading && !isError && allSummaries.length > 0 ? (
+          {(!isLoading && !isError && !isIPGTTChart && allSummaries.length > 0 ) ? (
             <DataComparison
               data={allSummaries}
               isViabilityChart={isViabilityChart}
@@ -201,7 +154,7 @@ const Charts = () => {
               displayPValueColumns={!isTimeSeries}
               {...(isABRChart && { initialSortByProp: "parameterStableId" })}
             />
-          ) : !isError ? (
+          ) : (!isError && isLoading) ? (
             <SkeletonTable />
           ) : null}
         </Card>
@@ -213,6 +166,11 @@ const Charts = () => {
         <Container>
           {!!isABRChart ? (
             <ABR
+              datasetSummaries={datasetSummaries}
+              onNewSummariesFetched={setAdditionalSummaries}
+            />
+          ) : !!isIPGTTChart ? (
+            <IPGTT
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
             />
