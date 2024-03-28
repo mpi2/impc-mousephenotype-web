@@ -9,14 +9,14 @@ import {
   BodyWeightChart,
   Categorical,
   DataComparison,
-  EmbryoViability,
+  EmbryoViability, FlowCytometryImages,
   Histopathology,
   TimeSeries,
   Unidimensional,
   Viability,
 } from "@/components/Data";
 import { Card, Search } from "@/components";
-import { useDatasetsQuery } from "@/hooks";
+import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
 import { Dataset } from "@/models";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -93,6 +93,21 @@ const Charts = () => {
     router.isReady
   );
 
+  const hasFlowCytometryImages = !isError
+    ? !!datasetSummaries.some(
+      (dataset) =>
+        dataset.procedureStableId.startsWith('MGP_BMI') ||
+        dataset.procedureStableId.startsWith('MGP_MLN') ||
+        dataset.procedureStableId.startsWith('MGP_IMM')
+    )
+    : false;
+
+  const { data: flowCytometryImages } = useFlowCytometryQuery(
+    mgiGeneAccessionId,
+    router.query.parameterStableId as string,
+    router.isReady && router.query.parameterStableId && hasFlowCytometryImages,
+  )
+
   const isABRChart = !isError
     ? !!datasetSummaries.some(
         (dataset) =>
@@ -115,6 +130,8 @@ const Charts = () => {
     ? getDatasetByKey(allSummaries, selectedKey)
     : allSummaries[0];
 
+
+  const Chart = getChartType(activeDataset);
   return (
     <>
       <Head>
@@ -200,7 +217,10 @@ const Charts = () => {
               onNewSummariesFetched={setAdditionalSummaries}
             />
           ) : (
-            !!activeDataset && <div>{getChartType(activeDataset)}</div>
+            !!activeDataset && <div>{Chart}</div>
+          )}
+          {hasFlowCytometryImages && (
+            <FlowCytometryImages images={flowCytometryImages} />
           )}
         </Container>
       </div>
