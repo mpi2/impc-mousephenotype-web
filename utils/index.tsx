@@ -203,10 +203,14 @@ export const getPhenStatReadyData = (datasetMetadata: Dataset, data: any) => {
         datasetMetadata.strainAccessionId,
         datasetMetadata.strainName,
         datasetMetadata.geneticBackground,
-        datasetMetadata.geneSymbol || "-",
-        datasetMetadata.mgiGeneAccessionId || "-",
-        datasetMetadata.alleleSymbol || "-",
-        datasetMetadata.alleleAccessionId || "-",
+        series.sampleGroup === "control" ? "-" : datasetMetadata.geneSymbol,
+        series.sampleGroup === "control"
+          ? "-"
+          : datasetMetadata.mgiGeneAccessionId,
+        series.sampleGroup === "control" ? "-" : datasetMetadata.alleleSymbol,
+        series.sampleGroup === "control"
+          ? "-"
+          : datasetMetadata.alleleAccessionId,
         datasetMetadata.phenotypingCentre,
         series.sampleGroup === "control" ? "+/+" : datasetMetadata.colonyId,
         observation.dateOfExperiment,
@@ -254,10 +258,20 @@ export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
         strain_accession_id: datasetMetadata.strainAccessionId,
         strain_name: datasetMetadata.strainName,
         genetic_background: datasetMetadata.geneticBackground,
-        gene_symbol: datasetMetadata.geneSymbol || "-",
-        gene_accession_id: datasetMetadata.mgiGeneAccessionId || "-",
-        allele_symbol: datasetMetadata.alleleSymbol || "-",
-        allele_accession_id: datasetMetadata.alleleAccessionId || "-",
+        gene_symbol:
+          series.sampleGroup === "control" ? "-" : datasetMetadata.geneSymbol,
+        gene_accession_id:
+          series.sampleGroup === "control"
+            ? "-"
+            : datasetMetadata.mgiGeneAccessionId || "-",
+        allele_symbol:
+          series.sampleGroup === "control"
+            ? "-"
+            : datasetMetadata.alleleSymbol || "-",
+        allele_accession_id:
+          series.sampleGroup === "control"
+            ? "-"
+            : datasetMetadata.alleleAccessionId || "-",
         phenotyping_centre: datasetMetadata.phenotypingCentre,
         colony_id:
           series.sampleGroup === "control" ? "-" : datasetMetadata.colonyId,
@@ -318,10 +332,22 @@ export const getBodyWeightDownloadData = (
       strain_accession_id: datasetMetadata.strainAccessionId,
       strain_name: datasetMetadata.strainName,
       genetic_background: datasetMetadata.geneticBackground,
-      gene_symbol: datasetMetadata.geneSymbol || "-",
-      gene_accession_id: datasetMetadata.mgiGeneAccessionId || "-",
-      allele_symbol: datasetMetadata.alleleSymbol || "-",
-      allele_accession_id: datasetMetadata.alleleAccessionId || "-",
+      gene_symbol:
+        observation.sampleGroup === "control"
+          ? "-"
+          : datasetMetadata.geneSymbol,
+      gene_accession_id:
+        observation.sampleGroup === "control"
+          ? "-"
+          : datasetMetadata.mgiGeneAccessionId,
+      allele_symbol:
+        observation.sampleGroup === "control"
+          ? "-"
+          : datasetMetadata.alleleSymbol,
+      allele_accession_id:
+        observation.sampleGroup === "control"
+          ? "-"
+          : datasetMetadata.alleleAccessionId,
       phenotyping_centre: datasetMetadata.phenotypingCentre,
       colony_id:
         observation.sampleGroup === "control" ? "-" : datasetMetadata.colonyId,
