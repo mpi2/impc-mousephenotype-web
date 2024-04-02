@@ -42,6 +42,8 @@ const getInternalLink = (name: string, link: string) => {
       return '/metabolism';
     case 'Essential Genes - Translating to Other Species':
       return '/conservation';
+    case 'Batch query':
+      return '/batch-query';
     default:
       return link;
   }
