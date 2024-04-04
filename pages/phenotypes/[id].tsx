@@ -37,12 +37,12 @@ const Phenotype = () => {
       <Search defaultType="phenotype" />
       <Container className="page">
         <Summary {...{ phenotype, isLoading, isError }}/>
-        <Card>
-          <h2>Genotype-phenotype associations</h2>
-          <ManhattanPlot phenotypeId={phenotypeId}  />
-        </Card>
         <Card id="associations-table">
           {!!phenotype && <Associations />}
+        </Card>
+        <Card>
+          <h2>Most significant associations for {phenotype?.phenotypeName}</h2>
+          <ManhattanPlot phenotypeId={phenotypeId}  />
         </Card>
         <Card>
           <h2>The way we measure</h2>
