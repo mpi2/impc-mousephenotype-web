@@ -15,6 +15,7 @@ import { DownloadData } from "@/components";
 import { formatAlleleSymbol } from "@/utils";
 import _ from "lodash";
 import Link from "next/link";
+import Skeleton from "react-loading-skeleton";
 
 const ParameterCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
   return (
@@ -52,34 +53,25 @@ const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(props: TableCellProps<
   )
 };
 
-type Props = {};
-
-const Associations = (props: Props) => {
+const Associations = () => {
   const phenotype = useContext(PhenotypeContext);
 
   const router = useRouter();
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>('');
-  const { data, isLoading } = useGeneAssociationsQuery(phenotype.phenotypeId, router.isReady, sortOptions);
+  const { data, isFetching } = useGeneAssociationsQuery(
+    phenotype?.phenotypeId,
+    router.isReady && !!phenotype,
+    sortOptions
+  );
 
   const filterPhenotype = (
     {phenotypeName, phenotypeId, alleleSymbol, mgiGeneAccessionId}: PhenotypeGenotypes, query: string
   ) => (!query || `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query));
 
-  if (!data) {
-    return (
-      <>
-        <h2>IMPC Gene variants with {phenotype.phenotypeName}</h2>
-        <Alert style={{marginTop: "1em"}} variant="primary">
-          All data not available
-        </Alert>
-      </>
-    );
-  }
-
   return (
     <>
-      <h2>IMPC Gene variants with {phenotype.phenotypeName}</h2>
+      <h2>IMPC Gene variants with {phenotype?.phenotypeName || <Skeleton inline width={150} />}</h2>
       <p>
         Total number of significant genotype-phenotype associations:&nbsp;
         {data.length}
@@ -88,10 +80,11 @@ const Associations = (props: Props) => {
         data={data}
         filterFn={filterPhenotype}
         defaultSort={["alleleSymbol", "asc"]}
+        showLoadingIndicator={isFetching}
         additionalBottomControls={
           <DownloadData<PhenotypeGenotypes>
             data={data}
-            fileName={`${phenotype.phenotypeName}-associations`}
+            fileName={`${phenotype?.phenotypeName}-associations`}
             fields={[
               { key: 'alleleSymbol', label: 'Gene/allele' },
               { key: 'phenotypeName', label: 'Phenotype' },
@@ -117,7 +110,7 @@ const Associations = (props: Props) => {
             field: "phenotypingCentre",
             cmp: <PhenotypingCentreCell />
           },
-          { width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell mpTermIdKey="phenotypeId" /> },
+          { width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell /> },
         ]}
       />
     </>
