@@ -38,7 +38,7 @@ const HistopathChartPage = () => {
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
   const [selectedTissue, setSelectedTissue] = useState<Histopathology>(null);
   const { data: gene} = useGeneSummaryQuery(mgiGeneAccessionId, router.isReady);
-  const { data } = useHistopathologyQuery(mgiGeneAccessionId, router.isReady && !!gene);
+  const { data, isLoading } = useHistopathologyQuery(mgiGeneAccessionId, router.isReady && !!gene);
   const anatomyParam = router.query?.anatomy as string;
 
   useEffect(() => {
@@ -136,6 +136,7 @@ const HistopathChartPage = () => {
           <SmartTable<Histopathology>
             data={filteredData}
             defaultSort={["tissue", "asc"]}
+            showLoadingIndicator={isLoading}
             filterFn={filterHistopathology}
             customFiltering={!!selectedAnatomy}
             additionalTopControls={
