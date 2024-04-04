@@ -38,7 +38,7 @@ const Phenotype = () => {
       <Container className="page">
         <Summary {...{ phenotype, isLoading, isError }}/>
         <Card id="associations-table">
-          {!!phenotype && <Associations />}
+          <Associations />
         </Card>
         <Card>
           <h2>Most significant associations for {phenotype?.phenotypeName}</h2>
