@@ -5,6 +5,7 @@ import React, { ReactElement, useState } from "react";
 import { TableCellProps } from "@/models/TableCell";
 import _ from "lodash";
 import type { Model } from "@/models";
+import Skeleton from "react-loading-skeleton";
 
 
 const SmartTable = <T extends Model>(props: {
@@ -25,13 +26,15 @@ const SmartTable = <T extends Model>(props: {
   filteringEnabled?: boolean,
   // set this to false if you need more specific filtering, check All Phenotypes section
   customFiltering?: boolean,
+  showLoadingIndicator?: boolean,
 }) => {
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>('');
   const {
     filteringEnabled = true,
     customFiltering = false,
-    zeroResulsText = 'No data available'
+    zeroResulsText = 'No data available',
+    showLoadingIndicator = false,
   } = props;
 
   const internalShowFilteringEnabled = filteringEnabled && !!props.filterFn && !customFiltering;
@@ -89,9 +92,18 @@ const SmartTable = <T extends Model>(props: {
               ))}
             </tr>
           ))}
-          {(pageData.length === 0) && (
+          {(pageData.length === 0 && showLoadingIndicator) && (
             <tr>
-              <td colSpan={7}>
+              {props.columns.map((_, index) => (
+                <td>
+                  <Skeleton />
+                </td>
+              ))}
+            </tr>
+          )}
+          {(pageData.length === 0 && !showLoadingIndicator) && (
+            <tr>
+              <td colSpan={props.columns.length}>
                 <b>{zeroResulsText}</b>
               </td>
             </tr>
