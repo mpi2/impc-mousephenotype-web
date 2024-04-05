@@ -50,8 +50,8 @@ const Summary = ({ phenotype, isLoading, isError }: Props) => {
       <Card>
         <div className={styles.subheadingCont}>
           <div className={styles.subheading}>
-            <span className={`${styles.subheadingSection} primary`}>Phenotype</span>
-            <span className={`${styles.subheadingSection}`}>
+            <span className={styles.subheadingSection}>Phenotype</span>
+            <span className={styles.subheadingSection}>
               {router.query.id}
             </span>
           </div>
@@ -67,8 +67,8 @@ const Summary = ({ phenotype, isLoading, isError }: Props) => {
       <Card>
         <div className={styles.subheadingCont}>
           <div className={styles.subheading}>
-            <span className={`${styles.subheadingSection} primary`}>Phenotype</span>
-            <span className={`${styles.subheadingSection}`}>
+            <span className={styles.subheadingSection}>Phenotype</span>
+            <span className={styles.subheadingSection}>
               {router.query.id}
             </span>
           </div>
@@ -88,7 +88,7 @@ const Summary = ({ phenotype, isLoading, isError }: Props) => {
     <Card>
       <div className={styles.subheadingCont}>
         <div className={styles.subheading}>
-          <span className={`${styles.subheadingSection} primary`}>
+          <span className={styles.subheadingSection}>
             Phenotype
           </span>
           {!!phenotype.phenotypeSynonyms?.length && (
