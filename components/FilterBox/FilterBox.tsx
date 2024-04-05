@@ -47,7 +47,7 @@ const FilterBox = (props: Props) => {
   }
 
   return (
-    <div data-test-id={`filterbox-${label}`}>
+    <div data-test-id={`filterbox-${label || controlId}`}>
       {!hideLabel && (
         <label htmlFor={controlId} className="grey" style={labelStyle}>
           {label}:

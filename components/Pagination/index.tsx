@@ -213,7 +213,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             { AdditionalBottomControls }
           </div>
         )}
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className={styles.bottomPaginationControls}>
           {shouldDisplayPageChangeControls && (
             <div style={{ display: 'flex', alignItems: 'center' }}>
               Rows per page:&nbsp;
