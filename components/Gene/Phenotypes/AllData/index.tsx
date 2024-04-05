@@ -8,7 +8,7 @@ import {
   SmartTable,
 } from "@/components/SmartTable";
 import { GeneStatisticalResult } from "@/models/gene";
-import { Model, TableCellProps } from "@/models";
+import { TableCellProps } from "@/models";
 import styles from "./styles.module.scss";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
@@ -69,6 +69,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const [query, setQuery] = useState(undefined);
   const [system, setSystem] = useState(undefined);
   const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
+  const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
 
   useEffect(() => {
     const newData = _.orderBy(data, "pValue", "asc");
@@ -84,6 +85,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
       procedureStableId,
       topLevelPhenotypes,
       lifeStageName,
+      zygosity
     }) =>
       (!procedure || procedureName === procedure) &&
       (!query ||
@@ -92,7 +94,8 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
           .includes(query)) &&
       (!system ||
         (topLevelPhenotypes ?? []).some(({ name }) => name === system)) &&
-      (!selectedLifeStage || lifeStageName === selectedLifeStage)
+      (!selectedLifeStage || lifeStageName === selectedLifeStage) &&
+      (!selectedZygosity || zygosity === selectedZygosity)
   );
 
   const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
@@ -102,6 +105,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
     ).filter(Boolean)
   );
   const lifestages = _.sortBy(_.uniq(_.map(data, "lifeStageName")));
+  const zygosities = _.sortBy(_.uniq(_.map(data, "zygosity")));
 
   if (!data) {
     return null;
@@ -128,6 +132,14 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
               onChange={setProcedure}
               ariaLabel="Filter by procedures"
               options={procedures}
+            />
+            <FilterBox
+              controlId="zygosityFilterAD"
+              label="Zygosity"
+              onChange={setSelectedZygosity}
+              ariaLabel="Filter by zygosity"
+              options={zygosities}
+              controlStyle={{ width: 100, textTransform: 'capitalize' }}
             />
             <FilterBox
               controlId="systemFilterAD"
