@@ -11,6 +11,7 @@ import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
 import { DownloadData, FilterBox } from "@/components";
 import { summarySystemSelectionChannel } from "@/eventChannels";
+import { SupportingDataCell } from "./custom-cells";
 
 
 const SignificantPhenotypes = (
@@ -30,6 +31,7 @@ const SignificantPhenotypes = (
   const [selectedAllele, setSelectedAllele] = useState<string>(undefined);
   const [selectedSystem, setSelectedSystem] = useState<string>(undefined);
   const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
+  const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
 
   useEffect(() => {
     const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
@@ -57,6 +59,7 @@ const SignificantPhenotypes = (
   const alleles = _.uniq(phenotypeData.map(phenotype => phenotype.alleleSymbol));
   const systems = _.uniq(phenotypeData.flatMap(p => p.topLevelPhenotypes.map(tl => tl.name)));
   const lifeStages = _.uniq(phenotypeData.map(p => p.lifeStageName));
+  const zygosities = _.uniq(phenotypeData.map(p => p.zygosity));
   const filteredPhenotypeData = phenotypeData.filter(
     ({
        phenotypeName,
@@ -64,11 +67,13 @@ const SignificantPhenotypes = (
        alleleSymbol,
        lifeStageName,
        topLevelPhenotypes,
+       zygosity,
      }) =>
       (!selectedAllele || alleleSymbol === selectedAllele) &&
       (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query)) &&
       (!selectedSystem || (topLevelPhenotypes ?? []).some(({ name }) => name === selectedSystem)) &&
-      (!selectedLifeStage || lifeStageName === selectedLifeStage)
+      (!selectedLifeStage || lifeStageName === selectedLifeStage) &&
+      (!selectedZygosity || zygosity === selectedZygosity)
   );
 
   return (
@@ -84,6 +89,14 @@ const SignificantPhenotypes = (
             onChange={setQuery}
             ariaLabel="Filter by parameters"
             controlStyle={{ width: 150 }}
+          />
+          <FilterBox
+            controlId="zygosityFilter"
+            label="Zygosity"
+            onChange={setSelectedZygosity}
+            ariaLabel="Filter by zygosity"
+            options={zygosities}
+            controlStyle={{ width: 100, textTransform: 'capitalize' }}
           />
           <FilterBox
             controlId="alleleFilter"
@@ -150,7 +163,13 @@ const SignificantPhenotypes = (
           cmp: <PlainTextCell style={{ fontWeight: 'bold' }} />
         },
         {
-          width: 1.8,
+          width: 1,
+          label: "Supporting data",
+          field: "numberOfDatasets",
+          cmp: <SupportingDataCell />
+        },
+        {
+          width: 0.8,
           label: "System",
           field: "topLevelPhenotypeName",
           cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes"/>

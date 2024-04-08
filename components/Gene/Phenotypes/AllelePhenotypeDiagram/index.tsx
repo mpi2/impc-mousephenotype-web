@@ -1,17 +1,14 @@
 import { GenePhenotypeHits } from "@/models/gene";
-import { Alert, Button, Form, OverlayTrigger, Popover } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
 import { UpSetJS, extractCombinations } from '@upsetjs/react';
-import Drawer from 'react-modern-drawer';
 import styles from './styles.module.scss';
 import 'react-modern-drawer/dist/index.css';
 import { ISetCombinations } from "@upsetjs/model";
 import _ from 'lodash';
 import { FilterBox } from "@/components";
 import { useIntersectionObserver } from "usehooks-ts";
-import { faCircleXmark, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Allele = {
   significantPhenotypes: Set<string>;
@@ -209,7 +206,7 @@ const AllelePhenotypeDiagram = (
         <span>
           Click on a bar to view the phenotypes that belongs to an allele or set of alleles in the results section.
           <br/>
-          Hovering the columns will highlight the common phenotypes across all the other sets.
+          Hovering over the columns will highlight the shared phenotypes across all the sets.
         </span>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>

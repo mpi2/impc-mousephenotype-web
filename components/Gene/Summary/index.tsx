@@ -81,8 +81,8 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
       <Card>
         <div className={styles.subheadingCont}>
           <div className={styles.subheading}>
-            <span className={`${styles.subheadingSection} primary`}>Gene</span>
-            <span className={`${styles.subheadingSection}`}>
+            <span className={styles.subheadingSection}>Gene</span>
+            <span className={styles.subheadingSection}>
               {router.query.pid}
             </span>
           </div>
@@ -98,8 +98,8 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
       <Card>
         <div className={styles.subheadingCont}>
           <div className={styles.subheading}>
-            <span className={`${styles.subheadingSection} primary`}>Gene</span>
-            <span className={`${styles.subheadingSection}`}>
+            <span className={styles.subheadingSection}>Gene</span>
+            <span className={styles.subheadingSection}>
               {router.query.pid}
             </span>
           </div>

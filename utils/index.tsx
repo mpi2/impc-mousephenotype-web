@@ -133,8 +133,12 @@ export const getDatasetByKey = (
       zygosity,
       phenotypingCentre,
       colonyId,
+      significantPhenotype,
+      lifeStageName,
+      sex
     } = dataset;
-    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
+    const phenotypeId = significantPhenotype?.id || '';
+    const key = `${phenotypeId}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}-${lifeStageName}-${sex}`;
     return key === keyToFind;
   });
 };
