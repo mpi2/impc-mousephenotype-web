@@ -18,6 +18,7 @@ export const useSignificantPhenotypesQuery = (
       const group: Record<string, GenePhenotypeHits> = {};
       data.forEach(item => {
         const {
+          datasetId,
           phenotype: { id, name },
           alleleAccessionId,
           zygosity,
@@ -45,7 +46,7 @@ export const useSignificantPhenotypesQuery = (
             phenotypeId: item.phenotype.id,
             numberOfDatasets: 1,
           };
-        } else {
+        } else if (group[key].datasetId !== datasetId){
           group[key].numberOfDatasets += 1;
         }
       });
