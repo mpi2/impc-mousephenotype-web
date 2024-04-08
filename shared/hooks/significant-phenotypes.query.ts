@@ -19,16 +19,14 @@ export const useSignificantPhenotypesQuery = (
       data.forEach(item => {
         const {
           datasetId,
-          phenotype: { id, name },
+          phenotype: { id},
           alleleAccessionId,
           zygosity,
           sex,
           pValue,
           lifeStageName,
-          parameterStableId,
-          phenotypingCentre,
         } = item;
-        const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${lifeStageName}`
+        const key = `${id}-${alleleAccessionId}-${zygosity}-${lifeStageName}`;
         const pValueKey = `pValue_${sex}`;
         if (group[key] !== undefined && group[key].pValue > pValue) {
           group[key].pValue = pValue;
