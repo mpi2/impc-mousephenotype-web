@@ -18,22 +18,25 @@ export const useSignificantPhenotypesQuery = (
       const group: Record<string, GenePhenotypeHits> = {};
       data.forEach(item => {
         const {
+          datasetId,
           phenotype: { id, name },
           alleleAccessionId,
           zygosity,
           sex,
           pValue,
-          alleleSymbol,
-          lifeStageName
+          lifeStageName,
+          parameterStableId,
+          phenotypingCentre,
         } = item;
-        const key = `${id}-${alleleAccessionId}-${zygosity}-${lifeStageName}`;
+        const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${lifeStageName}`
         const pValueKey = `pValue_${sex}`;
         if (group[key] !== undefined && group[key].pValue > pValue) {
           group[key].pValue = pValue;
           group[key].sex = sex;
         } else if (group[key] !== undefined && (group[key][pValueKey] === undefined || group[key][pValueKey] > pValue)) {
           group[key][pValueKey] = pValue;
-        } if (group[key] === undefined) {
+        }
+        if (group[key] === undefined) {
           group[key] = {
             ...item,
             [pValueKey]: pValue,
@@ -41,7 +44,10 @@ export const useSignificantPhenotypesQuery = (
             phenotypeName: item.phenotype.name,
             id: item.phenotype.id,
             phenotypeId: item.phenotype.id,
+            numberOfDatasets: 1,
           };
+        } else if (group[key].datasetId !== datasetId){
+          group[key].numberOfDatasets += 1;
         }
       });
       return Object.values(group).filter(phenotype => !phenotype.procedureStableId.includes("HIS"));

@@ -11,6 +11,7 @@ import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
 import { DownloadData, FilterBox } from "@/components";
 import { summarySystemSelectionChannel } from "@/eventChannels";
+import { SupportingDataCell } from "@/components/Gene/Phenotypes/SignificantPhenotypes/custom-cells";
 
 
 const SignificantPhenotypes = (
@@ -162,7 +163,13 @@ const SignificantPhenotypes = (
           cmp: <PlainTextCell style={{ fontWeight: 'bold' }} />
         },
         {
-          width: 1.8,
+          width: 1,
+          label: "Supporting data",
+          field: "numberOfDatasets",
+          cmp: <SupportingDataCell />
+        },
+        {
+          width: 0.8,
           label: "System",
           field: "topLevelPhenotypeName",
           cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes"/>
