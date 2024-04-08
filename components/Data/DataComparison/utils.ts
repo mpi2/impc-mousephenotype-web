@@ -11,11 +11,11 @@ export const groupData = (data) => {
       phenotypeSex,
       phenotypingCentre,
       colonyId,
-      significantPhenotype: {id},
+      significantPhenotype,
       lifeStageName,
     } = d;
-
-    const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}-${lifeStageName}`;
+    const phenotypeId = significantPhenotype?.id || '';
+    const key = `${phenotypeId}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}-${lifeStageName}-${sex}`;
     const statMethodPValueKey = sex === 'female' ? 'femaleKoEffectPValue' : 'maleKoEffectPValue';
     const pValueFromStatMethod = d.statisticalMethod?.attributes?.[statMethodPValueKey];
     if (acc[key]) {
