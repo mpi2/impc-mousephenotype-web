@@ -11,7 +11,7 @@ import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
 import { DownloadData, FilterBox } from "@/components";
 import { summarySystemSelectionChannel } from "@/eventChannels";
-import { SupportingDataCell } from "@/components/Gene/Phenotypes/SignificantPhenotypes/custom-cells";
+import { SupportingDataCell } from "./custom-cells";
 
 
 const SignificantPhenotypes = (
