@@ -11,9 +11,11 @@ export const groupData = (data) => {
       phenotypeSex,
       phenotypingCentre,
       colonyId,
+      significantPhenotype: {id},
+      lifeStageName,
     } = d;
 
-    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
+    const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}-${lifeStageName}`;
     const statMethodPValueKey = sex === 'female' ? 'femaleKoEffectPValue' : 'maleKoEffectPValue';
     const pValueFromStatMethod = d.statisticalMethod?.attributes?.[statMethodPValueKey];
     if (acc[key]) {

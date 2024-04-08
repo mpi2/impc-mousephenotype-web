@@ -23,10 +23,11 @@ export const useSignificantPhenotypesQuery = (
           zygosity,
           sex,
           pValue,
-          alleleSymbol,
-          lifeStageName
+          lifeStageName,
+          parameterStableId,
+          phenotypingCentre,
         } = item;
-        const key = `${id}-${alleleAccessionId}-${zygosity}-${lifeStageName}`;
+        const key = `${id}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${lifeStageName}`
         const pValueKey = `pValue_${sex}`;
         if (group[key] !== undefined && group[key].pValue > pValue) {
           group[key].pValue = pValue;
