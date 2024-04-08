@@ -20,7 +20,7 @@ export const SupportingDataCell = <T,>(props: Props<T>) => {
   return (
     <Link href={url}>
       <span className="link primary small float-right">
-        {numOfDatasets} supporting datasets
+        {numOfDatasets === 1 ? '1 supporting dataset' : `${numOfDatasets} supporting datasets`}
       </span>
     </Link>
   )
