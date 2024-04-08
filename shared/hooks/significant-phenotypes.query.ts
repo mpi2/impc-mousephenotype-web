@@ -34,7 +34,8 @@ export const useSignificantPhenotypesQuery = (
           group[key].sex = sex;
         } else if (group[key] !== undefined && (group[key][pValueKey] === undefined || group[key][pValueKey] > pValue)) {
           group[key][pValueKey] = pValue;
-        } if (group[key] === undefined) {
+        }
+        if (group[key] === undefined) {
           group[key] = {
             ...item,
             [pValueKey]: pValue,
@@ -42,7 +43,10 @@ export const useSignificantPhenotypesQuery = (
             phenotypeName: item.phenotype.name,
             id: item.phenotype.id,
             phenotypeId: item.phenotype.id,
+            numberOfDatasets: 1,
           };
+        } else {
+          group[key].numberOfDatasets += 1;
         }
       });
       return Object.values(group).filter(phenotype => !phenotype.procedureStableId.includes("HIS"));

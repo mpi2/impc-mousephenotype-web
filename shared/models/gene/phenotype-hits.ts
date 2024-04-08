@@ -11,7 +11,7 @@ export type GenePhenotypeHits = {
   mgiGeneAccessionId: string;
   pValue: number;
   parameterName: string;
-  parameterSatableId: string;
+  parameterStableId: string;
   phenotype: PhenotypeRef;
   phenotypingCentre: string;
   pipelineStableId: string;
@@ -28,4 +28,5 @@ export type GenePhenotypeHits = {
   "pValue_male"?: number;
   "pValue_female"?: number;
   "pValue_not_considered"?: number;
+  numberOfDatasets?: number;
 }
