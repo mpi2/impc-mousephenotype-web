@@ -27,6 +27,7 @@ const SmartTable = <T extends Model>(props: {
   // set this to false if you need more specific filtering, check All Phenotypes section
   customFiltering?: boolean,
   showLoadingIndicator?: boolean,
+  customSortFunction?: (data: Array<T>, field: string, order: "asc" | "desc") => Array<T>;
 }) => {
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>('');
@@ -44,7 +45,11 @@ const SmartTable = <T extends Model>(props: {
     mutatedData = mutatedData?.filter(item => props.filterFn(item, query));
   }
   const [field, order] = sortOptions.split(';');
-  mutatedData = field && order ? _.orderBy(mutatedData, field, order as "asc" | "desc") : mutatedData ;
+  if (field && order) {
+    mutatedData = !!props.customSortFunction
+      ? props.customSortFunction(mutatedData, field, order as "asc" | "desc")
+      : _.orderBy(mutatedData, field, order as "asc" | "desc")
+  }
 
   const additionalControls = internalShowFilteringEnabled ?  (
     <Form.Control
