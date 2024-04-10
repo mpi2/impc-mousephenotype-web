@@ -1,5 +1,5 @@
 import Search from "@/components/Search";
-import { Breadcrumb, Col, Container, Image, Row } from "react-bootstrap";
+import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import data from '../../mocks/data/landing-pages/cardiovascular.json';
 import PieChart from "@/components/PieChart";
@@ -11,6 +11,7 @@ import ScatterChart from "@/components/ScatterChart";
 import ChordDiagram from "@/components/ChordDiagram";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import Link from "next/link";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"), {ssr: false}
@@ -58,6 +59,15 @@ const CardiovascularLandingPage = () => {
             <strong>Cardiovascular System</strong>
           </h1>
           <Container>
+            <Alert variant="secondary">
+              <Alert.Heading>Attention</Alert.Heading>
+              <p>
+                This publication page was published when Data Release 11.0 was made available. <br/>
+                Most of the sections might be using data from the latest Data Release (21.0)
+              </p>
+              <hr/>
+              <Link className="link primary" href="#">Link to FTP site</Link>
+            </Alert>
             <p>
               This page introduces cardiovascular related phenotypes present in mouse lines produced by the IMPC.
               The cardiovascular system refers to the observable morphological and physiological characteristics

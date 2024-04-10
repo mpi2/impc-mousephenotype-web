@@ -1,5 +1,5 @@
 import Search from "@/components/Search";
-import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
+import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import data from '../../mocks/data/landing-pages/sexual-dimorphism.json';
 import PieChart from "@/components/PieChart";
@@ -93,6 +93,16 @@ const SexualDimorphismLandingPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>IMPC Sexual Dimorphism Data</strong>
           </h1>
+          <Alert variant="landing-page">
+            <Alert.Heading>Attention</Alert.Heading>
+            <p>
+              This publication page was published when Data Release 11.0 was made available. <br/>
+              The number of mice and strains has not changed since then but the vignettes are using data
+              from the latest Data Release.
+            </p>
+            <hr/>
+            <Link className="link primary" href="#">Link to FTP site</Link>
+          </Alert>
           <Container>
             <Row>
               <Col xs={12}>
