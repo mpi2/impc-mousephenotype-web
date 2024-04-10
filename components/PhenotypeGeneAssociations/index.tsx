@@ -53,6 +53,22 @@ const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(props: TableCellProps<
   )
 };
 
+export const SupportingDataCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
+  const mgiAccessionId = _.get(props.value, "mgiGeneAccessionId") as string;
+  const mpTermpId = _.get(props.value, "phenotype.id") as string;
+
+  let url = `/data/charts?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
+  const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
+  if (isAssociatedToPWG) {
+    url = "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
+  }
+  return (
+    <Link href={url}>
+      <span className="link primary small float-right">Supporting data</span>
+    </Link>
+  )
+};
+
 const Associations = () => {
   const phenotype = useContext(PhenotypeContext);
 
@@ -100,6 +116,7 @@ const Associations = () => {
         columns={[
           { width: 2, label: "Gene / allele", field: "alleleSymbol", cmp: <AlleleWithLinkCell /> },
           { width: 1.3, label: "Phenotype", field: "phenotypeName", cmp: <PlainTextCell />  },
+          { width: 1, label: "Supporting data", cmp: <SupportingDataCell />  },
           { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: 'capitalize' }} /> },
           { width: 0.7, label: "Sex", field: "sex", cmp: <SignificantSexesCell /> },
           { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
@@ -110,7 +127,7 @@ const Associations = () => {
             field: "phenotypingCentre",
             cmp: <PhenotypingCentreCell />
           },
-          { width: 2, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell /> },
+          { width: 1, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell /> },
         ]}
       />
     </>
