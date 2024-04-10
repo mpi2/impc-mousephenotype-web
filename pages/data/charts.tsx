@@ -84,7 +84,7 @@ const Charts = () => {
     : allSummaries[0];
 
 
-  const extraChildren = hasFlowCytometryImages ? <FlowCytometryImages images={flowCytometryImages} /> : null;
+  const extraChildren = (hasFlowCytometryImages && flowCytometryImages.length) ? <FlowCytometryImages images={flowCytometryImages} /> : null;
   const Chart = getChartType(activeDataset, true, extraChildren);
   return (
     <>
