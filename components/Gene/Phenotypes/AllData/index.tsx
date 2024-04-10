@@ -8,58 +8,9 @@ import {
   SmartTable,
 } from "@/components/SmartTable";
 import { GeneStatisticalResult } from "@/models/gene";
-import { TableCellProps } from "@/models";
-import styles from "./styles.module.scss";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
-import { BodySystem } from "@/components/BodySystemIcon";
-import Link from "next/link";
-
-const ParameterCell = <T extends GeneStatisticalResult>(
-  props: TableCellProps<T>
-) => {
-  return (
-    <span className={styles.procedureName}>
-      <small className="grey">{props.value.procedureName} /</small>
-      <br />
-      <strong>{props.value.parameterName}</strong>
-    </span>
-  );
-};
-
-type PhenotypeIconsCellProps<T> = {
-  allPhenotypesField: keyof T;
-} & TableCellProps<T>;
-const PhenotypeIconsCell = <T extends GeneStatisticalResult>(props: PhenotypeIconsCellProps<T>) => {
-  const phenotypes = (_.get(props.value, props.allPhenotypesField) || []) as Array<{ name: string }>;
-  const {
-    mgiGeneAccessionId,
-    alleleAccessionId,
-    zygosity,
-    parameterStableId,
-    pipelineStableId,
-    procedureStableId,
-    phenotypingCentre,
-  } = props.value;
-
-  let url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`
-  return (
-    <>
-      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
-        <span>
-          {phenotypes.map(({ name }) => (
-            <BodySystem name={name} color="system-icon in-table primary" noSpacing />
-          ))}
-        </span>
-        <Link href={url}>
-          <span className={`link primary small float-right`}>
-            Supporting data&nbsp;
-          </span>
-        </Link>
-      </span>
-    </>
-  )
-};
+import { ParameterCell, PhenotypeIconsCell, SupportingDataCell } from './custom-cells';
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const gene = useContext(GeneContext);
@@ -202,7 +153,12 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
             cmp: <ParameterCell />,
           },
           {
-            width: 1.8,
+            width: 1,
+            label: "Supporting data",
+            cmp: <SupportingDataCell />,
+          },
+          {
+            width: 0.8,
             label: "System",
             field: "topLevelPhenotypes",
             cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />,
@@ -243,7 +199,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
             field: "significant",
             cmp: <OptionsCell options={{ true: "Yes", false: "No" }} />,
           },
-          { width: 0.7, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
+          { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
         ]}
       />
     </>
