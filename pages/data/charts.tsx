@@ -48,11 +48,14 @@ const Charts = () => {
     )
     : false;
 
+  const parameterStableId = (router.query.parameterStableId as string) ||
+    datasetSummaries.length ? datasetSummaries[0]?.parameterStableId : null;
+
   const { data: flowCytometryImages } = useFlowCytometryQuery(
     mgiGeneAccessionId,
-    router.query.parameterStableId as string,
-    router.isReady && router.query.parameterStableId && hasFlowCytometryImages,
-  )
+    parameterStableId,
+    router.isReady && !!parameterStableId && hasFlowCytometryImages,
+  );
 
   const isABRChart = !isError
     ? !!datasetSummaries.some(
