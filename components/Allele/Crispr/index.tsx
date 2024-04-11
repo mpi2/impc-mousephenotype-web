@@ -32,9 +32,9 @@ const CopyButton = ({ sequence }) => {
   }
 
   return (
-    <Button onClick={handleClick} variant="outline-secondary" size="sm">
+    <button onClick={handleClick} className="btn impc-secondary-button small">
       <FontAwesomeIcon icon={faCopy} /> {clicked ? "Copied!" : "Copy"}
-    </Button>
+    </button>
   );
 };
 
@@ -77,37 +77,6 @@ const Crispr = ({
       <strong>{value}</strong>
     </div>
   );
-
-  // const printCriprData = (data: { [key: string]: any }, level: number) => {
-  //   const entries = Object.entries(data ?? {});
-  //   return entries.map(([key, value]) => {
-  //     return (
-  //       <div style={{ paddingLeft: level * 16 }}>
-  //         <span className="grey">{key}:</span>{" "}
-  //         <>
-  //           {typeof value === "string" || typeof value === "number" ? (
-  //             <strong>{value}</strong>
-  //           ) : Array.isArray(value) ? (
-  //             <>
-  //               [
-  //               {value.map((v, index) => (
-  //                 <div>
-  //                   {index > 0 && <div className="grey">,</div>}
-  //                   {printCriprData(v, level + 1)}
-  //                 </div>
-  //               ))}
-  //               ]
-  //             </>
-  //           ) : typeof value === "object" ? (
-  //             printCriprData(value, level + 1)
-  //           ) : (
-  //             "other"
-  //           )}
-  //         </>
-  //       </div>
-  //     );
-  //   });
-  // };
 
   const tableHeaders = [
     { field: "guideSequence", label: "Guide sequence", width: 2 },
@@ -163,8 +132,9 @@ const Crispr = ({
           <a
             href={`https://www.informatics.jax.org/allele/${data.mgiAlleleId}`}
             target="_blank"
+            className="link primary"
           >
-            {data.mgiGeneAccessionId}{" "}
+            {data.mgiGeneAccessionId}&nbsp;
             <span className="grey">
               <FontAwesomeIcon size="xs" icon={faExternalLink} />
             </span>

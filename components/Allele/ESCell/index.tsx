@@ -104,7 +104,7 @@ const ESCell = ({
                             setQcData(p.qcData);
                           }}
                         >
-                          View{" "}
+                          View&nbps;
                           <FontAwesomeIcon
                             icon={faWindowMaximize}
                             className="grey"
