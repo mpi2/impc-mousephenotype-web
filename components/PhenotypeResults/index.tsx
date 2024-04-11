@@ -12,9 +12,11 @@ import { useQuery } from "@tanstack/react-query";
 import { PhenotypeSearchResponse, PhenotypeSearchItem } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { ReactNode, useMemo, useState } from "react";
+import { surroundWithMarkEl } from "@/utils/results-page";
 
 type Props = {
-  phenotype: PhenotypeSearchItem
+  phenotype: PhenotypeSearchItem;
+  query: string;
 }
 
 const systems = [
@@ -58,6 +60,7 @@ const PhenotypeResult = ({
     geneCountNum,
     topLevelParentsArray,
   },
+  query,
 }: Props) => {
   const router = useRouter();
   const synonymsArray = synonyms.split(";");
@@ -70,9 +73,9 @@ const PhenotypeResult = ({
         }}
       >
         <Col>
-          <h4 className="mb-2 blue-dark">{phenotypeName}</h4>
+          <h4 className="mb-2 blue-dark">{surroundWithMarkEl(phenotypeName, query)}</h4>
           <p className="grey small">
-            <strong>Synomyms:</strong> {synonymsArray.join(", ")}
+            <strong>Synomyms:</strong> {surroundWithMarkEl(synonymsArray.join(", "), query)}
           </p>
           {!!geneCountNum && geneCountNum !== 0 ? (
             <p className="small grey">
@@ -259,7 +262,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                 return (
                   <>
                     {pageData.map((p) => (
-                      <PhenotypeResult phenotype={p} key={p.entityId}/>
+                      <PhenotypeResult phenotype={p} key={p.entityId} query={query} />
                     ))}
                   </>
                 );
