@@ -66,13 +66,17 @@ const Mice = ({
             data={sorted}
             additionalBottomControls={
               <div>
-                {fixedTissuesLinks.map(tissue =>
-                    <Button style={{marginRight: '0.5rem'}} href={tissue.tissueEnquiryLink} variant="secondary">
-                <span className="white">
-                  Make a {tissue.tissueType} enquiry to {tissue.tissueDistributionCentre}
-                </span>
-                    </Button>
-                )}
+                {fixedTissuesLinks.map(tissue => (
+                  <a
+                    className="btn impc-secondary-button"
+                    style={{marginRight: '0.5rem'}}
+                    href={tissue.tissueEnquiryLink}
+                  >
+                    <span>
+                      Make a {tissue.tissueType} enquiry to {tissue.tissueDistributionCentre}
+                    </span>
+                  </a>
+                ))}
               </div>
             }
           >

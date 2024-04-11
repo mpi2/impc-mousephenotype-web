@@ -358,8 +358,8 @@ const StatisticalAnalysisChart = ({
             </span>
           )}
         </span>
-        <Button
-          variant="secondary"
+        <button
+          className="btn impc-secondary-button"
           onClick={() => {
             if (chartRef.current) {
               chartRef.current.resetZoom();
@@ -369,11 +369,10 @@ const StatisticalAnalysisChart = ({
             position: "sticky",
             bottom: "3rem",
             float: "right",
-            color: "white",
           }}
         >
           Reset zoom
-        </Button>
+        </button>
       </div>
     </div>
   );

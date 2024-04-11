@@ -36,7 +36,7 @@ const AlleleMap = ({
       <p className="mb-0">
         {genbankFile && (
           <>
-            <a href={genbankFile} target="_blank">
+            <a href={genbankFile} target="_blank" className="primary link">
               <FontAwesomeIcon icon={faExternalLinkAlt} /> Genbank
             </a>{" "}
             <span className="grey ms-2 me-2">|</span>
@@ -44,7 +44,7 @@ const AlleleMap = ({
         )}
 
         {emsembleUrl && (
-          <a href={emsembleUrl} target="_blank">
+          <a href={emsembleUrl} target="_blank" className="primary link">
             <FontAwesomeIcon icon={faExternalLinkAlt} /> Ensemble
           </a>
         )}
