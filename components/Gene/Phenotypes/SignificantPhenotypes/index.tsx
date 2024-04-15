@@ -76,10 +76,25 @@ const SignificantPhenotypes = (
       (!selectedZygosity || zygosity === selectedZygosity)
   );
 
+  const sortPhenotypes = (data: Array<GenePhenotypeHits>, field: keyof GenePhenotypeHits, order: "asc" | "desc") => {
+    if (field === "pValue") {
+      return data.sort((p1, p2) => {
+        if (!p1.pValue) {
+          return 1;
+        } else if (!p2.pValue) {
+          return -1;
+        }
+        return order === "asc" ? p1.pValue - p2.pValue : p2.pValue - p1.pValue;
+      });
+    }
+    return _.orderBy(data, field, order);
+  };
+
   return (
     <SmartTable<GenePhenotypeHits>
       data={filteredPhenotypeData}
       defaultSort={["phenotypeName", "asc"]}
+      customSortFunction={sortPhenotypes}
       customFiltering
       additionalTopControls={
         <>
@@ -140,7 +155,7 @@ const SignificantPhenotypes = (
               {
                 key: 'pValue',
                 label: 'Most significant P-value',
-                getValueFn: (item) => item?.pValue?.toString(10) || '1'
+                getValueFn: (item) => item?.pValue?.toString(10) || '-'
               },
             ]}
           />

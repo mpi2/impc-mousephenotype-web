@@ -58,6 +58,22 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const lifestages = _.sortBy(_.uniq(_.map(data, "lifeStageName")));
   const zygosities = _.sortBy(_.uniq(_.map(data, "zygosity")));
 
+  const sortPhenotypes = (data: Array<GeneStatisticalResult>, field: keyof GeneStatisticalResult, order: "asc" | "desc") => {
+    if (field === "pValue") {
+      return data.sort((p1, p2) => {
+        const p1PValue = parseFloat(p1.pValue);
+        const p2PValue = parseFloat(p2.pValue);
+        if (!p1PValue) {
+          return 1;
+        } else if (!p2PValue) {
+          return -1;
+        }
+        return order === "asc" ? p1PValue - p2PValue : p2PValue - p1PValue;
+      });
+    }
+    return _.orderBy(data, field, order);
+  };
+
   if (!data) {
     return null;
   }
@@ -68,6 +84,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
         data={filtered}
         defaultSort={["pValue", "asc"]}
         customFiltering
+        customSortFunction={sortPhenotypes}
         additionalTopControls={
           <>
             <FilterBox
