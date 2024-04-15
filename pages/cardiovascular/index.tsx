@@ -59,7 +59,7 @@ const CardiovascularLandingPage = () => {
             <strong>Cardiovascular System</strong>
           </h1>
           <Container>
-            <Alert variant="secondary">
+            <Alert variant="landing-page">
               <Alert.Heading>Attention</Alert.Heading>
               <p>
                 This publication page was published when Data Release 11.0 was made available. <br/>
