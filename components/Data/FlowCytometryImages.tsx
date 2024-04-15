@@ -1,5 +1,8 @@
 import { Image } from "@/models/gene";
 import { Card, Container, Row } from "react-bootstrap";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 type Props = {
@@ -8,20 +11,27 @@ type Props = {
 
 const FlowCytometryImages = (props: Props) => {
   const { images } = props;
-  console.log(images);
   return (
     <Card>
       <h2>Flow cytometry results:</h2>
       <Container>
         <Row>
-          {images.map((image, i) => (
-            <Card key={i} style={{ maxWidth: '50%' }}>
-              <Card.Img variant="top" src={image.jpegUrl} />
-              <Card.Body>
-                <Card.Text>{`${image.sex} value = %${image.associatedParameters?.[0]?.value}`}</Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
+          <Slider
+            dots
+            infinite
+            speed={500}
+            slidesToShow={2}
+            slidesToScroll={1}
+          >
+            {images.map((image, i) => (
+              <div className="image-wrapper">
+                <img key={i} src={image.jpegUrl} alt="" style={{ maxHeight: '500px' }}/>
+                <b>
+                  {`${image.sex} value = %${image.associatedParameters?.[0]?.value}`}
+                </b>
+              </div>
+            ))}
+          </Slider>
         </Row>
       </Container>
     </Card>
