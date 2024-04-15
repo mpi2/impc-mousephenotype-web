@@ -91,7 +91,7 @@ const SignificantPhenotypes = (
             controlStyle={{ width: 150 }}
           />
           <FilterBox
-            controlId="zygosityFilter"
+            controlId="zygosityFilterSP"
             label="Zygosity"
             onChange={setSelectedZygosity}
             ariaLabel="Filter by zygosity"
