@@ -317,7 +317,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           </Row>
           <Row>
             <Col lg={6}>
-              <a role="button" href="#order" className="btn impc-secondary-button">
+              <a role="button" href="#order" className="btn impc-primary-button">
                 {numOfAlleles} Allele products available
               </a>
             </Col>

@@ -9,9 +9,14 @@ import {
   Viability,
   GrossPathology,
 } from "@/components/Data";
+import { ReactNode } from "react";
 
-export const getChartType = (datasetSummary: Dataset, isVisible: boolean = true) => {
-  let chartType = datasetSummary.dataType;
+export const getChartType = (
+  datasetSummary: Dataset,
+  isVisible: boolean = true,
+  extraChildren: ReactNode = <></>,
+) => {
+  let chartType = datasetSummary?.dataType;
   if (chartType == "line" || chartType == "embryo") {
     chartType =
       datasetSummary.procedureGroup == "IMPC_VIA"
@@ -33,13 +38,26 @@ export const getChartType = (datasetSummary: Dataset, isVisible: boolean = true)
   }
   switch (chartType) {
     case "unidimensional":
-      return <Unidimensional datasetSummary={datasetSummary} isVisible={isVisible} />;
+      return (
+        <Unidimensional datasetSummary={datasetSummary} isVisible={isVisible}>
+          {extraChildren}
+        </Unidimensional>
+      );
     case "categorical":
-      return <Categorical datasetSummary={datasetSummary} isVisible={isVisible} />;
+      return (
+        <Categorical datasetSummary={datasetSummary} isVisible={isVisible}>
+          {extraChildren}
+        </Categorical>
+      );
+
+    case "time_series":
+      return (
+        <TimeSeries datasetSummary={datasetSummary} isVisible={isVisible}>
+          {extraChildren}
+        </TimeSeries>
+      );
     case "viability":
       return <Viability datasetSummary={datasetSummary} isVisible={isVisible} />;
-    case "time_series":
-      return <TimeSeries datasetSummary={datasetSummary} isVisible={isVisible} />;
     case "embryo_viability":
       return <EmbryoViability datasetSummary={datasetSummary} isVisible={isVisible} />;
     case "embryo":

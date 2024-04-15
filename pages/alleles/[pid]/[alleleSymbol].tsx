@@ -23,6 +23,7 @@ import IntermediateVector from "@/components/Allele/IVP";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import Skeleton from "react-loading-skeleton";
+import classNames from "classnames";
 
 const ProductItem = ({
   name,
@@ -38,21 +39,19 @@ const ProductItem = ({
   >
     {name}
     <p className="mt-2">
-      <a href={link}>
-        <Button
-          variant={hasData ? "secondary" : "grey"}
-          disabled={!hasData}
-          style={{ minWidth: 120 }}
-        >
-          {hasData ? (
-            <span className="white">
-              <FontAwesomeIcon icon={faCartShopping} />
-              Order
-            </span>
-          ) : (
-            "Not available"
-          )}
-        </Button>
+      <a
+        className={classNames("btn", { "btn-grey impc-base-button": !hasData, "impc-primary-button": hasData })}
+        style={{ minWidth: 120, cursor: hasData ? 'pointer' : 'initial' }}
+        href={link}
+      >
+        {hasData ? (
+          <span>
+            <FontAwesomeIcon icon={faCartShopping} />
+            Order
+          </span>
+        ) : (
+          "Not available"
+        )}
       </a>
     </p>
   </div>
@@ -77,7 +76,7 @@ const Gene = () => {
       const hash = window.location.hash;
       if (hash.length > 0) {
         setTimeout(() => {
-          document.querySelector(window.location.hash).scrollIntoView();
+          document.querySelector(window.location.hash)?.scrollIntoView();
         }, 500);
       }
     }
@@ -233,7 +232,7 @@ const Gene = () => {
           <Link
             href={`/genes/${pid}/#order`}
             scroll={false}
-            className="secondary"
+            className="primary link"
           >
             See all alleles for the gene{" "}
             <FontAwesomeIcon icon={faArrowRightLong} />

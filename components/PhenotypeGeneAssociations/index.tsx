@@ -16,6 +16,7 @@ import { formatAlleleSymbol } from "@/utils";
 import _ from "lodash";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
+import { GeneStatisticalResult } from "@/models/gene";
 
 const ParameterCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
   return (
@@ -85,6 +86,22 @@ const Associations = () => {
     {phenotypeName, phenotypeId, alleleSymbol, mgiGeneAccessionId}: PhenotypeGenotypes, query: string
   ) => (!query || `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query));
 
+  const sortAssociations = (data: Array<PhenotypeGenotypes>, field: keyof PhenotypeGenotypes, order: "asc" | "desc") => {
+    if (field === "pValue") {
+      return data.sort((p1, p2) => {
+        const p1PValue = p1.pValue;
+        const p2PValue = p2.pValue;
+        if (!p1PValue) {
+          return 1;
+        } else if (!p2PValue) {
+          return -1;
+        }
+        return order === "asc" ? p1PValue - p2PValue : p2PValue - p1PValue;
+      });
+    }
+    return _.orderBy(data, field, order);
+  };
+
   return (
     <>
       <h2>IMPC Gene variants with {phenotype?.phenotypeName || <Skeleton inline width={150} />}</h2>
@@ -96,6 +113,7 @@ const Associations = () => {
         data={data}
         filterFn={filterPhenotype}
         defaultSort={["alleleSymbol", "asc"]}
+        customSortFunction={sortAssociations}
         showLoadingIndicator={isFetching}
         additionalBottomControls={
           <DownloadData<PhenotypeGenotypes>

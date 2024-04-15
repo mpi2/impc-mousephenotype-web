@@ -6,6 +6,12 @@
 @mixin small-button-styles {
   padding: 0.4rem 0.6rem;
 }
+.impc-base-button {
+  @include button-common-styles;
+  &.small {
+    @include small-button-styles;
+  }
+}
 
 .impc-primary-button {
   @include button-common-styles;
