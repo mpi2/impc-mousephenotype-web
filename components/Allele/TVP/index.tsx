@@ -96,7 +96,7 @@ const TargetingVector = ({
                       <Link
                         href={`/designs/${p.designLink.split(":")[2]}`}
                         scroll={false}
-                        className="secondary"
+                        className="primary link"
                       >
                         {p.designOligos ?? "View design oligo"}{" "}
                       </Link>
@@ -111,7 +111,7 @@ const TargetingVector = ({
                         <a
                           href={p.otherLinks.genbankFile}
                           target="_blank"
-                          className="link"
+                          className="link primary"
                           style={{ textTransform: "capitalize" }}
                         >
                           Genbank file{" "}
@@ -130,7 +130,7 @@ const TargetingVector = ({
                         <a
                           href={p.otherLinks.alleleImage}
                           target="_blank"
-                          className="link"
+                          className="link primary"
                           style={{ textTransform: "capitalize" }}
                         >
                           Vector map{" "}

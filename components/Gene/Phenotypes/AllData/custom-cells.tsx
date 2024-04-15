@@ -26,7 +26,7 @@ export const PhenotypeIconsCell = <T extends GeneStatisticalResult>(props: Pheno
     <span style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem'}}>
       <span>
         {phenotypes.map(({name}) => (
-          <BodySystem name={name} color="system-icon in-table primary" noSpacing/>
+          <BodySystem name={name} color="system-icon in-table" noSpacing/>
         ))}
       </span>
     </span>
