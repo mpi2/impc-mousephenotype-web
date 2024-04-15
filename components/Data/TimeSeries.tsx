@@ -36,6 +36,7 @@ import { Chart } from "react-chartjs-2";
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
 import DownloadData from "../DownloadData";
 import { getDownloadData } from "@/utils";
+import { GeneralChartProps } from "@/models";
 
 ChartJS.register(
   CategoryScale,
@@ -104,7 +105,7 @@ const countSpecimens = (series, sex: string, sampleGroup: string) => {
   return new Set(selectedSeries.observations.map((d) => d.specimenId)).size;
 };
 
-const TimeSeries = ({ datasetSummary, isVisible }) => {
+const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
   const [viewSMA, setViewSMA] = useState(false);
   const getLineSeries = (dataSeries, sex, sampleGroup, zygosity) => {
     if (!dataSeries) {
@@ -489,6 +490,11 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
             )}
           </Card>
         </Col>
+        {!!children && (
+          <Col lg={12}>
+            {children}
+          </Col>
+        )}
         <Col>
           <Card>
             <h2>Experimental data download</h2>

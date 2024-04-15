@@ -4,9 +4,9 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
 import SkeletonTable from "@/components/skeletons/table";
-import { ABR, DataComparison, IPGTT } from "@/components/Data";
+import { ABR, DataComparison, FlowCytometryImages, IPGTT } from "@/components/Data";
 import { Card, Search } from "@/components";
-import { useDatasetsQuery } from "@/hooks";
+import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
 import { Dataset } from "@/models";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,6 +39,24 @@ const Charts = () => {
     router.isReady
   );
 
+  const hasFlowCytometryImages = !isError
+    ? !!datasetSummaries.some(
+      (dataset) =>
+        dataset.procedureStableId.startsWith('MGP_BMI') ||
+        dataset.procedureStableId.startsWith('MGP_MLN') ||
+        dataset.procedureStableId.startsWith('MGP_IMM')
+    )
+    : false;
+
+  const parameterStableId = (router.query.parameterStableId as string) ||
+    datasetSummaries.length ? datasetSummaries[0]?.parameterStableId : null;
+
+  const { data: flowCytometryImages } = useFlowCytometryQuery(
+    mgiGeneAccessionId,
+    parameterStableId,
+    router.isReady && !!parameterStableId && hasFlowCytometryImages,
+  );
+
   const isABRChart = !isError
     ? !!datasetSummaries.some(
         (dataset) =>
@@ -68,6 +86,9 @@ const Charts = () => {
     ? getDatasetByKey(allSummaries, selectedKey)
     : allSummaries[0];
 
+
+  const extraChildren = (hasFlowCytometryImages && flowCytometryImages.length) ? <FlowCytometryImages images={flowCytometryImages} /> : null;
+  const Chart = getChartType(activeDataset, true, extraChildren);
   return (
     <>
       <Head>
@@ -158,7 +179,7 @@ const Charts = () => {
               onNewSummariesFetched={setAdditionalSummaries}
             />
           ) : (
-            !!activeDataset && <div>{getChartType(activeDataset)}</div>
+            !!activeDataset && <div>{Chart}</div>
           )}
         </Container>
       </div>

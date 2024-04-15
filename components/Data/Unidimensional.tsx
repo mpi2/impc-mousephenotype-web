@@ -19,6 +19,7 @@ import StatisticalMethodTable from "./StatisticalMethodTable";
 import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
+import { ReactNode } from "react";
 
 type ChartSeries = {
   data: Array<any>;
@@ -26,7 +27,7 @@ type ChartSeries = {
   sex: "male" | "female";
 };
 
-const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
+const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
   const getScatterSeries = (dataSeries, sex, sampleGroup) => {
     if (!dataSeries) {
       return null;
@@ -180,6 +181,11 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         </Col>
       </Row>
       <Row>
+        {!!children && (
+          <Col lg={12}>
+            {children}
+          </Col>
+        )}
         <Col lg={6}>
           <Card>
             <h2>Results of statistical analysis</h2>
