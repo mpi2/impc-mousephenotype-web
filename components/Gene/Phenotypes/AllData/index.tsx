@@ -58,7 +58,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const lifestages = _.sortBy(_.uniq(_.map(data, "lifeStageName")));
   const zygosities = _.sortBy(_.uniq(_.map(data, "zygosity")));
 
-  const sortPhenotypes = (data: Array<GeneStatisticalResult>, field: keyof GenePhenotypeHits, order: "asc" | "desc") => {
+  const sortPhenotypes = (data: Array<GeneStatisticalResult>, field: keyof GeneStatisticalResult, order: "asc" | "desc") => {
     if (field === "pValue") {
       return data.sort((p1, p2) => {
         const p1PValue = parseFloat(p1.pValue);
