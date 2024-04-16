@@ -3,7 +3,8 @@ import { useEffect, useRef } from "react";
 import styles from './styles.module.scss';
 
 interface Props  {
-  // data: Array<Array<number>>;
+  data: Array<Array<number>>;
+  labels: Array<{ name: string, count: number }>
   width: number;
   height: number;
   topTerms?: Array<string>;
@@ -16,50 +17,10 @@ function groupTicks(d, step) {
   });
 }
 
-const ChordDiagram = ({ width, height, topTerms }: Props) => {
+const ChordDiagram = ({ data, labels, width, height, topTerms }: Props) => {
   const ref = useRef();
   const outerRadius = Math.min(width, height) * 0.5 - 200;
   const innerRadius = outerRadius - 30;
-  // TODO: to be removed after getting payload for landing pages
-  const matrix = [
-    [
-      590,
-      268,
-      712,
-      64,
-      45
-    ],
-    [
-      268,
-      0,
-      26,
-      12,
-      4
-    ],
-    [
-      712,
-      26,
-      0,
-      11,
-      6
-    ],
-    [
-      64,
-      12,
-      11,
-      0,
-      0
-    ],
-    [
-      45,
-      4,
-      6,
-      0,
-      0
-    ]
-  ]
-  let labels = "[{\"name\":\"cardiovascular system phenotype\",\"geneCount\":1622}, {\"name\":\"vision\\\/eye phenotype\",\"geneCount\":268}, {\"name\":\"growth\\\/size\\\/body region phenotype\",\"geneCount\":712}, {\"name\":\"embryo phenotype\",\"geneCount\":64}, {\"name\":\"muscle phenotype\",\"geneCount\":45}]";
-  let labels_json = JSON.parse(labels);
 
   useEffect(() => {
     const svgElement = d3.select(ref.current);
@@ -104,7 +65,7 @@ const ChordDiagram = ({ width, height, topTerms }: Props) => {
 
     const g = svgElement.append("g")
       .attr("transform", `translate(${width / 2}, ${height / 2})`)
-      .datum(chord(matrix));
+      .datum(chord(data));
 
     const group = g.append("g")
       .attr("class", "groups")
@@ -136,7 +97,7 @@ const ChordDiagram = ({ width, height, topTerms }: Props) => {
       .attr("dy", ".35em")
       .attr("transform", d => d.angle > Math.PI ? "rotate(180) translate(-16)" : null)
       .style("text-anchor", d => d.angle > Math.PI ? "end" : null)
-      .text(d => labels_json[d.index].name.replace("phenotype", ""));
+      .text(d => labels[d.index].name.replace("phenotype", ""));
 
     g.append("g")
       .attr("class", "ribbons")
@@ -150,7 +111,7 @@ const ChordDiagram = ({ width, height, topTerms }: Props) => {
       .style("stroke", d =>d3.rgb(color(d.target.index)).darker())
       .style("visibility", d => {
         if (topTerms && topTerms.length > 0) {
-          if (topTerms.indexOf(labels_json[d.source.index].name) < 0 && topTerms.indexOf(labels_json[d.target.index].name) < 0) {
+          if (topTerms.indexOf(labels[d.source.index].name) < 0 && topTerms.indexOf(labels[d.target.index].name) < 0) {
             return "hidden";
           } else {
             return "visible";
@@ -160,10 +121,10 @@ const ChordDiagram = ({ width, height, topTerms }: Props) => {
         }
       })
       .append("title").text(d => {
-        return d.source.value + " genes present " + labels_json[d.source.index].name + " and " + labels_json[d.target.index].name + ", " ;
+        return d.source.value + " genes present " + labels[d.source.index].name + " and " + labels[d.target.index].name + ", " ;
       });
 
-  }, []);
+  }, [data, labels]);
 
   return (
     <div className={styles.wrapper}>

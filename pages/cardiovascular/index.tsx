@@ -40,6 +40,20 @@ const ProcedureWithVersions = ({ procedure }) => {
 const CardiovascularLandingPage = () => {
   const [ tableExtended, setTableExtended ] = useState(false);
   const phenotypeData = !tableExtended ? data.phenotypes.slice(0, 10) : data.phenotypes;
+  const chordLabels = [
+    { name: "cardiovascular system phenotype", count: 1622 },
+    { name: "vision/eye phenotype", count: 268 },
+    { name: "growth/size/body region phenotype", count: 712 },
+    { name: "embryo phenotype", count: 64 },
+    { name: "muscle phenotype ", count: 45 }
+  ];
+  const chordData = [
+    [ 590, 268, 712, 64, 45],
+    [ 268, 0, 26, 12, 4],
+    [ 712, 26, 0, 11, 6 ],
+    [ 64, 12, 11, 0, 0 ],
+    [ 45, 4, 6, 0, 0 ]
+  ];
   return (
     <>
       <Head>
@@ -179,7 +193,13 @@ const CardiovascularLandingPage = () => {
               The line thickness is correlated with the strength of the association. <br/><br/>
               Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be downloaded using the download icon.
             </p>
-            <ChordDiagram width={960} height={960} topTerms={["cardiovascular system phenotype"]}/>
+            <ChordDiagram
+              labels={chordLabels}
+              data={chordData}
+              width={960}
+              height={960}
+              topTerms={["cardiovascular system phenotype"]}
+            />
           </Container>
         </Card>
         <Card>
