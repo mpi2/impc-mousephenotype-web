@@ -5,8 +5,8 @@ import styles from './styles.module.scss';
 interface Props  {
   data: Array<Array<number>>;
   labels: Array<{ name: string, count: number }>
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   topTerms?: Array<string>;
 }
 
@@ -17,7 +17,7 @@ function groupTicks(d, step) {
   });
 }
 
-const ChordDiagram = ({ data, labels, width, height, topTerms }: Props) => {
+const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms }: Props) => {
   const ref = useRef();
   const outerRadius = Math.min(width, height) * 0.5 - 200;
   const innerRadius = outerRadius - 30;

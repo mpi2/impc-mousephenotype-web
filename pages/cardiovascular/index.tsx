@@ -196,8 +196,6 @@ const CardiovascularLandingPage = () => {
             <ChordDiagram
               labels={chordLabels}
               data={chordData}
-              width={960}
-              height={960}
               topTerms={["cardiovascular system phenotype"]}
             />
           </Container>
