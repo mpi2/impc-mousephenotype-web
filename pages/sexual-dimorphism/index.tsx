@@ -1,5 +1,5 @@
 import Search from "@/components/Search";
-import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
+import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import data from '../../mocks/data/landing-pages/sexual-dimorphism.json';
 import PieChart from "@/components/PieChart";
@@ -28,6 +28,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatAlleleSymbol } from "@/utils";
 import Link from "next/link";
 import Head from "next/head";
+import { PublicationDataAlert } from "@/components";
 
 ChartJS.register(
   LinearScale,
@@ -93,25 +94,19 @@ const SexualDimorphismLandingPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>IMPC Sexual Dimorphism Data</strong>
           </h1>
-          <Alert variant="landing-page">
-            <Alert.Heading>Attention</Alert.Heading>
+          <PublicationDataAlert dataReleaseVersion="4.2">
             <p>
-              This publication page was published when Data Release 5.0 was available. <br/>
-              The number of mice and strains has not changed since then but the vignettes are using data
+              This publication page originally used the Data Release 4.2 <br/>
+              The number of mice and strains has not changed since then but the vignettes are displaying data
               from the latest Data Release.
             </p>
-            <hr/>
-            <Link
-              className="link primary"
-              href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-05.0/">
-              Link to FTP site
-            </Link>
-          </Alert>
+          </PublicationDataAlert>
           <Container>
             <Row>
               <Col xs={12}>
                 <p>
-                  IMPC data demonstrates the effect of sex on many phenotypes, supporting the importance of including males and females in biomedical research.
+                  IMPC data demonstrates the effect of sex on many phenotypes, supporting the importance of including
+                  males and females in biomedical research.
                 </p>
                 <ul>
                   <li>
