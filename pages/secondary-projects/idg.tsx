@@ -7,6 +7,7 @@ import PieChart from "@/components/PieChart";
 import { useMemo } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from "chart.js";
+import ChordDiagram from "@/components/ChordDiagram";
 
 
 ChartJS.register(
@@ -116,6 +117,54 @@ const IDGPage = () => {
               </div>
             </Col>
           </Row>
+        </Card>
+        <Card>
+          <h2>Phenotype Associations</h2>
+          <p>
+            The following chord diagrams represent the various biological systems phenotype associations for IDG genes
+            categorized both in all and in each family group. The line thickness is correlated with the strength of the
+            association.
+            Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be
+            downloaded using the download icon.
+          </p>
+        </Card>
+        <Card>
+          <h3>All families</h3>
+          <p>
+            <b>{ data.allFamiliesChordData.totalGeneCount }</b> genes have phenotypes in more than one biological system.
+            The chord diagram below shows the pleiotropy between these genes.
+            <br/>
+            <a
+              className="link primary"
+              href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true"
+              download="genes_phenotype_associations.csv"
+            >
+              Get the genes and associated phenotypes.
+            </a>
+          </p>
+          <ChordDiagram
+            labels={data.allFamiliesChordData.labels}
+            data={data.allFamiliesChordData.matrix}
+          />
+        </Card>
+        <Card>
+          <h3>Ion channels</h3>
+          <p>
+            <b>{ data.ionChannelChordData.totalGeneCount }</b> genes have phenotypes in more than one biological system.
+            The chord diagram below shows the pleiotropy between these genes.
+            <br/>
+            <a
+              className="link primary"
+              href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
+              download="genes_phenotype_associations.csv"
+            >
+              Get the genes and associated phenotypes.
+            </a>
+          </p>
+          <ChordDiagram
+            labels={data.ionChannelChordData.labels}
+            data={data.ionChannelChordData.matrix}
+          />
         </Card>
       </Container>
     </>
