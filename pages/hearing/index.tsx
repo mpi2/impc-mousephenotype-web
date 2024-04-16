@@ -24,6 +24,7 @@ import Link from "next/link";
 import { formatAlleleSymbol } from "@/utils";
 import ScatterChart from "@/components/ScatterChart";
 import Head from "next/head";
+import { PublicationDataAlert } from "@/components";
 
 ChartJS.register(
   CategoryScale,
@@ -197,6 +198,13 @@ const HearingLandingPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>IMPC Hearing Data</strong>
           </h1>
+          <PublicationDataAlert dataReleaseVersion="5.0">
+            <p>
+              This publication page originally used the Data Release 5.0 <br/>
+              The procedures and genes has not changed since then but the vignettes are displaying data
+              from the latest Data Release.
+            </p>
+          </PublicationDataAlert>
           <Container>
             <Row>
               <Col xs={12}>

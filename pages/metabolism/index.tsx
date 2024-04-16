@@ -12,6 +12,7 @@ import styles from './styles.module.scss';
 import { useState } from "react";
 import { PlainTextCell, SmartTable, LinkCell, OptionsCell } from "@/components/SmartTable";
 import Head from "next/head";
+import { PublicationDataAlert } from "@/components";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -95,6 +96,7 @@ const MetabolismLandingPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>The IMPC is increasing our understanding of the genetic basis for metabolic diseases</strong>
           </h1>
+          <PublicationDataAlert dataReleaseVersion="4.2" />
           <Container>
             <Row>
               <Col xs={12}>
@@ -112,7 +114,7 @@ const MetabolismLandingPage = () => {
             <strong>Approach</strong>
           </h1>
           <p>
-            To identify the function of genes, the IMPC uses a series of standardised protocols described in
+            To identify the function of genes, the IMPC uses a series of standardised protocols described in&nbsp;
             <a className="primary link" href="https://www.mousephenotype.org/impress">IMPReSS</a> (International Mouse Phenotyping Resource of Standardised Screens).
             Tests addressing the metabolic function are conducted on young adult mice at 11-16 weeks of age.
           </p>
