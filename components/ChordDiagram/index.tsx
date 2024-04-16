@@ -17,7 +17,7 @@ function groupTicks(d, step) {
   });
 }
 
-const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms }: Props) => {
+const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }: Props) => {
   const ref = useRef();
   const outerRadius = Math.min(width, height) * 0.5 - 200;
   const innerRadius = outerRadius - 30;
