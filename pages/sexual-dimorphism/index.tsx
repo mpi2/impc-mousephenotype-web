@@ -96,12 +96,16 @@ const SexualDimorphismLandingPage = () => {
           <Alert variant="landing-page">
             <Alert.Heading>Attention</Alert.Heading>
             <p>
-              This publication page was published when Data Release 11.0 was made available. <br/>
+              This publication page was published when Data Release 5.0 was available. <br/>
               The number of mice and strains has not changed since then but the vignettes are using data
               from the latest Data Release.
             </p>
             <hr/>
-            <Link className="link primary" href="#">Link to FTP site</Link>
+            <Link
+              className="link primary"
+              href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-05.0/">
+              Link to FTP site
+            </Link>
           </Alert>
           <Container>
             <Row>
