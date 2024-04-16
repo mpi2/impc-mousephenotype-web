@@ -1,0 +1,11 @@
+{
+  "orthologPieData": [
+    { "label": "IDG gene with IMPC Data", "value": 177 },
+    { "label": "IDG gene with no IMPC Data", "value": 101 }
+  ],
+  "geneProductionStatusData": [
+    { "label": "ES Cells Produced", "value": 200 },
+    { "label": "Mice Produced", "value": 187 },
+    { "label": "Phenotyping data available", "value": 156 }
+  ]
+}
