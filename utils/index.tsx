@@ -63,11 +63,10 @@ export const toSentenceCase = (camelCase) => {
   return "";
 };
 
-export const csvToJSON = (csv: string) => {
+export const csvToJSON = (csv: string, valueSeparator = ",") => {
   const lines = csv.split("\n");
   const result = [];
-  const headers = lines[0].split(",");
-
+  const headers = lines[0].split(valueSeparator);
   for (let i = 1; i < lines.length; i++) {
     const obj: any = {};
 
@@ -75,7 +74,7 @@ export const csvToJSON = (csv: string) => {
       continue;
     }
 
-    const words = lines[i].split(",");
+    const words = lines[i].split(valueSeparator);
     for (var j = 0; j < words.length; j++) {
       obj[headers[j].trim()] = words[j];
     }
