@@ -13,6 +13,7 @@ import Head from "next/head";
 import { toSentenceCase } from "@/utils";
 import _ from "lodash";
 import { useEmbryoWOLQuery } from "@/hooks";
+import { useMemo } from "react";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"), {ssr: false}
@@ -37,11 +38,15 @@ const EmbryoLandingPage = () => {
     });
     const result = [];
     for (const [key, value] of map) {
-      result.push({ label: toSentenceCase(key), value });
+      result.push({ label: key, value });
     }
     return _.orderBy(result, 'value', 'desc');
-  })
+  });
 
+  const heatMapSelectOptions = useMemo(
+    () => embryoWOL.map(v => ({ value: v.label, label: v.label })).sort(),
+    [embryoWOL]
+  );
 
   return (
     <>
@@ -195,7 +200,7 @@ const EmbryoLandingPage = () => {
             <Row>
               <Col>
                 <p>Filter by Window of Lethality</p>
-                <EmbryoDataAvailabilityGrid />
+                <EmbryoDataAvailabilityGrid selectOptions={heatMapSelectOptions} />
               </Col>
             </Row>
           </Container>
