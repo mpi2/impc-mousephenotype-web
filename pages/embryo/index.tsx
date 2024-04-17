@@ -10,6 +10,9 @@ import data from '../../mocks/data/landing-pages/embryo.json';
 import dynamic from "next/dynamic";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import Head from "next/head";
+import { toSentenceCase } from "@/utils";
+import _ from "lodash";
+import { useEmbryoWOLQuery } from "@/hooks";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"), {ssr: false}
@@ -19,9 +22,27 @@ type EmbryoLandingPageData = {
   primaryViability: Array<{ label: string; value: number }>;
   primaryViabilityChartData: Array<{ label: string; value: number }>;
   windowsOfLethality: Array<{ label: string; value: number }>;
-}
+};
 
 const EmbryoLandingPage = () => {
+  const { data: embryoWOL } = useEmbryoWOLQuery(data => {
+    const map = new Map<string, number>();
+    data.forEach(row => {
+      const wol = row.FUSIL;
+      if (map.has(wol)) {
+        map.set(wol, map.get(wol) + 1);
+      } else {
+        map.set(wol, 0);
+      }
+    });
+    const result = [];
+    for (const [key, value] of map) {
+      result.push({ label: toSentenceCase(key), value });
+    }
+    return _.orderBy(result, 'value', 'desc');
+  })
+
+
   return (
     <>
       <Head>
@@ -138,7 +159,7 @@ const EmbryoLandingPage = () => {
                   {data && (
                     <PieChart
                       title="Secondary Viability / Windows of Lethality"
-                      data={data.windowsOfLethality}
+                      data={embryoWOL}
                     />
                   )}
                 </div>
@@ -150,7 +171,7 @@ const EmbryoLandingPage = () => {
                     { width: 1, label: "Lines", field: "value", disabled: true },
                   ]}
                 >
-                  {data && data.windowsOfLethality.map(row => (
+                  {embryoWOL && embryoWOL.map(row => (
                     <tr>
                       <td>{ row.label }</td>
                       <td>{ row.value }</td>
@@ -158,7 +179,7 @@ const EmbryoLandingPage = () => {
                   ))}
                   <tr>
                     <td colSpan={2}>
-                      <a className="link primary" href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all.csv">
+                      <a className="link primary" href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv">
                         Download
                       </a>
                     </td>
