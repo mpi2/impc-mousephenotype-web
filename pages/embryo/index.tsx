@@ -156,7 +156,7 @@ const EmbryoLandingPage = () => {
             <Row>
               <Col md={7}>
                 <div className={styles.chartWrapper}>
-                  {data && (
+                  {embryoWOL && (
                     <PieChart
                       title="Secondary Viability / Windows of Lethality"
                       data={embryoWOL}
