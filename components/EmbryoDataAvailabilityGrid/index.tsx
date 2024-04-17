@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from 'react-select';
-import { csvToJSON } from "../../utils";
 import data from './GeneVsProcedure.data';
 import PaginationControls from "../PaginationControls";
+import { useEmbryoWOLQuery } from "@/hooks";
+import _ from "lodash";
 
 type EmbryoData = {
   id: string;
@@ -22,40 +23,21 @@ const ClickableAxisTick = ({tick, onClick}: { tick: any; onClick: (tick: any) =>
   return <AxisTick {...tick} onClick={onClick} />;
 };
 
-const EmbryoDataAvailabilityGrid = () => {
+type Props = {
+  selectOptions: Array<{ value: string; label: string }>;
+}
+
+const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
+  console.log(selectOptions);
   const [chartData, setChartData] = useState<Array<EmbryoData>>(data.slice(0, 25));
-  const [dataIndex, setDataIndex] = useState<DataIndex>({});
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(Math.ceil(data.length / 25));
-  const windowOfLetality = [
-    { value: "Perinatal lethal", label: "Perinatal lethal" },
-    { value: "E9.5 lethal", label: "E9.5 lethal" },
-    { value: "E12.5 lethal", label: "E12.5 lethal" },
-    { value: "E15.5 lethal", label: "E15.5 lethal" },
-    { value: "E18.5 lethal", label: "E18.5 lethal" },
-    { value: "Lorem ipsum", label: "Lorem ipsum" },
-  ];
   const geneIndex = chartData.reduce((acc, d) => ({ [d.id]: d.mgiAccessionId, ...acc }), {});
 
-  useEffect(() => {
-    fetch(
-      "//impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all.csv"
-    )
-      .then(res => res.text())
-      .then(res => {
-        const dataValues: Array<WOLData> = csvToJSON(res);
-        const filterByWOL = (valueToFilter: string) => dataValues.filter(d => d.wol.includes(valueToFilter));
-        const dataIndex: DataIndex = {
-          "Perinatal lethal": filterByWOL('perinatal_lethal'),
-          "E9.5 lethal": filterByWOL('E9_5_lethal'),
-          "E12.5 lethal": filterByWOL('E12_5_lethal'),
-          "E15.5 lethal": filterByWOL('E15_5_lethal'),
-          "E18.5 lethal": filterByWOL('E18_5_lethal'),
-          "Lorem ipsum": filterByWOL('insufficient data"'),
-        };
-        setDataIndex(dataIndex);
-      });
-  }, []);
+
+  const { data: dataIndex } = useEmbryoWOLQuery(data => {
+    return _.groupBy(data, 'FUSIL') as DataIndex;
+  });
 
   const handlePaginationChange = (pageNumber: number) => {
     setActivePage(pageNumber);
@@ -87,14 +69,14 @@ const EmbryoDataAvailabilityGrid = () => {
       url = `//blogs.umass.edu/jmager/${cell.serieId}`;
     }
     window.open(url, "_blank", "noreferrer");
-  }
+  };
 
   return (
     <>
       <div className="row m-2 ">
         <div className="col-6">
           <Select
-            options={windowOfLetality}
+            options={selectOptions}
             isMulti
             className="basic-multi-select"
             classNamePrefix="select"

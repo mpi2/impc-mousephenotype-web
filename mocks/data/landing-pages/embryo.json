@@ -11,13 +11,5 @@
     { "label": "Hemizygous - Subviable", "value": 3 },
     { "label": "Homozygous - Lethal", "value": 1852 },
     { "label": "Homozygous - Subviable", "value": 883 }
-  ],
-  "windowsOfLethality": [
-    {"label": "Perinatal lethal", "value": 326},
-    {"label": "E9.5 lethal", "value": 450},
-    {"label": "E12.5 lethal", "value": 97},
-    {"label": "E15.5 lethal", "value": 20},
-    {"label": "E18.5 lethal", "value": 6},
-    {"label": "Lorem ipsum", "value": 143}
   ]
 }
