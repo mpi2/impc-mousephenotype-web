@@ -17,7 +17,7 @@ export const useEmbryoWOLQuery = (selectFn: (data: Array<EmbryoWol>) => any) => 
       const data =  response.ok ? await response.text() : '';
       return new Promise(resolve => resolve(csvToJSON(data, "\t") as Array<EmbryoWol>));
     },
-    placeholderData: '',
+    placeholderData: [],
     select: selectFn,
   });
 };
