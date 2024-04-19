@@ -29,20 +29,21 @@ export type GeneImageCollection = {
 };
 
 export type Image = {
-  thumbnailUrl:         null | string;
-  downloadUrl:          string;
-  jpegUrl:              string;
-  fileType:             string | null;
-  observationId:        string;
-  specimenId:           string;
-  colonyId:             string;
-  sex:                  string;
-  zygosity:             string;
-  ageInWeeks:           number;
-  alleleSymbol:         string;
-  associatedParameters: Array<AssociatedParameter> | null;
-  dateOfExperiment:     string;
-  experimentDate:       Moment;
+  thumbnailUrl:           null | string;
+  downloadUrl:            string;
+  jpegUrl:                string;
+  fileType:               string | null;
+  observationId:          string;
+  specimenId:             string;
+  colonyId:               string;
+  sex:                    string;
+  zygosity:               string;
+  ageInWeeks:             number;
+  alleleSymbol:           string;
+  associatedParameters:   Array<AssociatedParameter> | null;
+  dateOfExperiment:       string;
+  experimentDate:         Moment;
+  biologicalSampleGroup:  string;
 };
 
 export type AssociatedParameter = {
