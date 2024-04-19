@@ -27,6 +27,7 @@ const FlowCytometryImages = (props: Props) => {
               <div className="image-wrapper">
                 <img key={i} src={image.jpegUrl} alt="" style={{ maxHeight: '500px' }}/>
                 <b>
+                  {image.biologicalSampleGroup === 'control' ? 'WT wildtype' : `KO ${image.zygosity}`}&nbsp;
                   {`${image.sex} value = %${image.associatedParameters?.[0]?.value}`}
                 </b>
               </div>
