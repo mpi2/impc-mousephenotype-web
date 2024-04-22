@@ -131,7 +131,7 @@ const IDGPage = () => {
         <Card>
           <h3>All families</h3>
           <p>
-            <b>{ data.allFamiliesChordData.totalGeneCount }</b> genes have phenotypes in more than one biological system.
+            <b>{ data.allFamiliesChordData.totalcount }</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
             <br/>
             <a
@@ -150,7 +150,7 @@ const IDGPage = () => {
         <Card>
           <h3>Ion channels</h3>
           <p>
-            <b>{ data.ionChannelChordData.totalGeneCount }</b> genes have phenotypes in more than one biological system.
+            <b>{ data.ionChannelChordData.totalcount }</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
             <br/>
             <a
@@ -164,6 +164,44 @@ const IDGPage = () => {
           <ChordDiagram
             labels={data.ionChannelChordData.labels}
             data={data.ionChannelChordData.matrix}
+          />
+        </Card>
+        <Card>
+          <h3>GPCRs</h3>
+          <p>
+            <b>{ data.GPCRChordData.totalcount }</b> genes have phenotypes in more than one biological system.
+            The chord diagram below shows the pleiotropy between these genes.
+            <br/>
+            <a
+              className="link primary"
+              href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
+              download="genes_phenotype_associations.csv"
+            >
+              Get the genes and associated phenotypes.
+            </a>
+          </p>
+          <ChordDiagram
+            labels={data.GPCRChordData.labels}
+            data={data.GPCRChordData.matrix}
+          />
+        </Card>
+        <Card>
+          <h3>Kinases</h3>
+          <p>
+            <b>{ data.kinaseChordData.totalcount }</b> genes have phenotypes in more than one biological system.
+            The chord diagram below shows the pleiotropy between these genes.
+            <br/>
+            <a
+              className="link primary"
+              href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
+              download="genes_phenotype_associations.csv"
+            >
+              Get the genes and associated phenotypes.
+            </a>
+          </p>
+          <ChordDiagram
+            labels={data.kinaseChordData.labels}
+            data={data.kinaseChordData.matrix}
           />
         </Card>
       </Container>
