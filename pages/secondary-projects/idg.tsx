@@ -5,7 +5,7 @@ import { Card } from "@/components";
 import data from "../../mocks/data/landing-pages/idg.json";
 import geneList from "../../mocks/data/landing-pages/idg-gene-list.json";
 import PieChart from "@/components/PieChart";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from "chart.js";
 import ChordDiagram from "@/components/ChordDiagram";
@@ -13,6 +13,8 @@ import Link from "next/link";
 import classNames from "classnames";
 import styles from './styles.module.scss';
 import NonSSR from "@/hoc/nonSSR";
+import PaginationControls from "@/components/PaginationControls";
+import { usePagination } from "@/hooks";
 
 
 ChartJS.register(
@@ -32,6 +34,16 @@ type FamilyDataTableProps = {
     phenotypeCount: number;
   };
 };
+
+type Gene = {
+  accession: string;
+  symbol: string;
+  groupLabel: string;
+  humanSymbol: Array<string>;
+  humanSymbolToString: string;
+  miceProducedPlain: string;
+  xaxisToCellMap: Record<string, {xAxisKey: string, status: string}>
+}
 
 const FamilyDataTable = (props: FamilyDataTableProps) => {
   const { data } = props;
@@ -60,16 +72,82 @@ const FamilyDataTable = (props: FamilyDataTableProps) => {
 };
 
 const HeatMap = () => {
+  const {
+    paginatedData,
+    activePage,
+    pageSize,
+    totalPages,
+    setActivePage,
+    setPageSize
+  } = usePagination<Gene>(geneList);
+  const [query, setQuery] = useState("");
   const getCellStyle = (status: string) => {
-    return classNames({
+    return classNames(styles.dataCell, {
       [styles.significant]: status === 'Deviance Significant',
       [styles.notSignificant]: status === 'Data analysed, no significant call',
       [styles.noData]: status === 'No data'
     })
+  };
+
+  const getLinksToGenePage = (gene: Gene) => {
+    const url = `/genes/${gene.accession}`;
+    const productsProduced = gene.miceProducedPlain.split('|');
+    if (productsProduced.length === 1 && productsProduced[0] === '') {
+      return '-';
+    }
+    return productsProduced.map(value => {
+      const href = value === "Phenotype data" ? url + "#data" : url + "#order";
+      return (
+        <>
+          <Link className="link primary" style={{ padding: 0, backgroundColor: 'initial' }} href={href}>
+            {value}
+          </Link>
+          <br/>
+        </>
+      )
+    });
   }
+  const finalData = useMemo(() => geneList.filter(
+    ({
+       accession,
+       groupLabel,
+       symbol,
+     }) =>
+      (!query || `${accession} ${groupLabel} ${symbol}`.toLowerCase().includes(query.toLowerCase()))
+  ), [query, geneList]);
+
   return (
     <NonSSR>
-      <table className="table table-bordered">
+      <div className={styles.controls}>
+        <div>
+          Show
+          <select
+            name="pageSize"
+            className="form-select"
+            value={pageSize}
+            onChange={(e) =>
+              setPageSize(Number.parseInt(e.target.value, 10))
+            }
+          >
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
+          entries
+        </div>
+        <div>
+          Search:
+          <input
+            className="form-control"
+            title="heatmap search box"
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
+      </div>
+      <table className={`table table-bordered ${styles.heatmap}`}>
         <thead>
         <tr>
           <th>Gene</th>
@@ -78,7 +156,7 @@ const HeatMap = () => {
           {data.heatmapTopLevelPhenotypes.map(phenotype => (
             <th key={phenotype.id}>
               <span className={styles.verticalHeader}>
-                <Link href={`/phenotypes/${phenotype.id}`}>
+                <Link className="primary link" href={`/phenotypes/${phenotype.id}`}>
                   {phenotype.name}
                 </Link>
               </span>
@@ -86,24 +164,46 @@ const HeatMap = () => {
           ))}
         </tr>
         </thead>
-        {geneList.map(gene => (
+        {finalData.map(gene => (
           <tr>
-            <td>
-              <Link href={`/genes/${gene.accession}`}>{gene.symbol}</Link>
+            <td className={styles.geneCell}>
+              <Link
+                href={`/genes/${gene.accession}`}
+                className="primary link"
+                style={{backgroundColor: 'initial', padding: 0}}
+              >
+                {gene.symbol}
+              </Link>
               <br/>
-              {gene.humanSymbol.join(',')}
+              {gene.humanSymbol[0] || '-'}
             </td>
             <td>
               {gene.groupLabel}
             </td>
-            <td dangerouslySetInnerHTML={{ __html: gene.miceProducedPlain.split('|').join('<br />') }} />
+            <td>
+              {getLinksToGenePage(gene)}
+            </td>
             {data.heatmapTopLevelPhenotypes.map(phenotype => (
               <td className={getCellStyle(gene.xaxisToCellMap[phenotype.name].status)}>
               </td>
             ))}
           </tr>
         ))}
+        {finalData.length === 0 && !!query && (
+          <tr>
+            <td colSpan={29}>
+              <h4 style={{ backgroundColor: 'initial' }}>No matching records found</h4>
+            </td>
+          </tr>
+        )}
       </table>
+      <PaginationControls
+        currentPage={activePage}
+        totalPages={totalPages}
+        onPageChange={setActivePage}
+        showEntriesInfo
+        pageSize={pageSize}
+      />
     </NonSSR>
   );
 }
@@ -209,7 +309,11 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>IMPC IDG data Heat Map</h3>
-          <table>
+          <p>
+            The heat map indicates the detailed IDG gene data representation in IMPC, from product availability to phenotypes.
+            Phenotypes are grouped by biological systems.
+          </p>
+          <table className="mb-4">
             <tbody>
             <tr>
               <td>
