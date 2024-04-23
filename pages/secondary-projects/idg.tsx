@@ -1,13 +1,18 @@
 import Head from "next/head";
 import Search from "@/components/Search";
-import { Breadcrumb, Col, Container, Row, Image } from "react-bootstrap";
+import { Breadcrumb, Col, Container, Row, Image, Table } from "react-bootstrap";
 import { Card } from "@/components";
 import data from "../../mocks/data/landing-pages/idg.json";
+import geneList from "../../mocks/data/landing-pages/idg-gene-list.json";
 import PieChart from "@/components/PieChart";
 import { useMemo } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from "chart.js";
 import ChordDiagram from "@/components/ChordDiagram";
+import Link from "next/link";
+import classNames from "classnames";
+import styles from './styles.module.scss';
+import NonSSR from "@/hoc/nonSSR";
 
 
 ChartJS.register(
@@ -18,6 +23,90 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+type FamilyDataTableProps = {
+  data: {
+    genesCount: number;
+    esCellsProduced: number;
+    miceProduced: number;
+    phenotypeCount: number;
+  };
+};
+
+const FamilyDataTable = (props: FamilyDataTableProps) => {
+  const { data } = props;
+  return (
+    <Table bordered striped style={{ maxWidth: '30%' }}>
+      <tbody>
+      <tr>
+        <td><b>IMPC/IDG genes</b></td>
+        <td>{data.genesCount}</td>
+      </tr>
+      <tr>
+        <td><b>ES Cells produced</b></td>
+        <td>{data.esCellsProduced}</td>
+      </tr>
+      <tr>
+        <td><b>Mice produced</b></td>
+        <td>{data.miceProduced}</td>
+      </tr>
+      <tr>
+        <td><b>Phenotypes</b></td>
+        <td>{data.phenotypeCount}</td>
+      </tr>
+      </tbody>
+    </Table>
+  )
+};
+
+const HeatMap = () => {
+  const getCellStyle = (status: string) => {
+    return classNames({
+      [styles.significant]: status === 'Deviance Significant',
+      [styles.notSignificant]: status === 'Data analysed, no significant call',
+      [styles.noData]: status === 'No data'
+    })
+  }
+  return (
+    <NonSSR>
+      <table className="table table-bordered">
+        <thead>
+        <tr>
+          <th>Gene</th>
+          <th>Family</th>
+          <th>Availability</th>
+          {data.heatmapTopLevelPhenotypes.map(phenotype => (
+            <th key={phenotype.id}>
+              <span className={styles.verticalHeader}>
+                <Link href={`/phenotypes/${phenotype.id}`}>
+                  {phenotype.name}
+                </Link>
+              </span>
+            </th>
+          ))}
+        </tr>
+        </thead>
+        {geneList.map(gene => (
+          <tr>
+            <td>
+              <Link href={`/genes/${gene.accession}`}>{gene.symbol}</Link>
+              <br/>
+              {gene.humanSymbol.join(',')}
+            </td>
+            <td>
+              {gene.groupLabel}
+            </td>
+            <td dangerouslySetInnerHTML={{ __html: gene.miceProducedPlain.split('|').join('<br />') }} />
+            {data.heatmapTopLevelPhenotypes.map(phenotype => (
+              <td className={getCellStyle(gene.xaxisToCellMap[phenotype.name].status)}>
+              </td>
+            ))}
+          </tr>
+        ))}
+      </table>
+    </NonSSR>
+  );
+}
 
 const IDGPage = () => {
   const geneProductionStatusData = data.geneProductionStatusData || [];
@@ -52,12 +141,12 @@ const IDGPage = () => {
       <Head>
         <title>IDG page | International Mouse Phenotyping Consortium</title>
       </Head>
-      <Search />
+      <Search/>
       <Container className="page">
         <Card>
           <div className="subheading">
             <Breadcrumb>
-              <Breadcrumb.Item active>Home</Breadcrumb.Item>
+            <Breadcrumb.Item active>Home</Breadcrumb.Item>
               <Breadcrumb.Item active>IMPC data collections</Breadcrumb.Item>
               <Breadcrumb.Item active>IDG</Breadcrumb.Item>
             </Breadcrumb>
@@ -119,6 +208,28 @@ const IDGPage = () => {
           </Row>
         </Card>
         <Card>
+          <h3>IMPC IDG data Heat Map</h3>
+          <table>
+            <tbody>
+            <tr>
+              <td>
+                <div className={styles.significant}>&nbsp;</div>
+                <div className="table_legend_key">Significant</div>
+              </td>
+              <td>
+                <div className={styles.notSignificant}>&nbsp;</div>
+                <div className="table_legend_key">Not Significant</div>
+              </td>
+              <td>
+                <div className={styles.noData}>&nbsp;</div>
+                <div className="table_legend_key">No data</div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <HeatMap/>
+        </Card>
+        <Card>
           <h2>Phenotype Associations</h2>
           <p>
             The following chord diagrams represent the various biological systems phenotype associations for IDG genes
@@ -131,7 +242,7 @@ const IDGPage = () => {
         <Card>
           <h3>All families</h3>
           <p>
-            <b>{ data.allFamiliesChordData.totalcount }</b> genes have phenotypes in more than one biological system.
+            <b>{data.allFamiliesChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
             <br/>
             <a
@@ -149,8 +260,9 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>Ion channels</h3>
+          <FamilyDataTable data={data.ionChannelChordData} />
           <p>
-            <b>{ data.ionChannelChordData.totalcount }</b> genes have phenotypes in more than one biological system.
+            <b>{data.ionChannelChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
             <br/>
             <a
@@ -168,6 +280,7 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>GPCRs</h3>
+          <FamilyDataTable data={data.GPCRChordData} />
           <p>
             <b>{ data.GPCRChordData.totalcount }</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
@@ -187,6 +300,7 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>Kinases</h3>
+          <FamilyDataTable data={data.kinaseChordData} />
           <p>
             <b>{ data.kinaseChordData.totalcount }</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
