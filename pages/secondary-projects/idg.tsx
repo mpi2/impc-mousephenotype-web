@@ -72,6 +72,16 @@ const FamilyDataTable = (props: FamilyDataTableProps) => {
 };
 
 const HeatMap = () => {
+  const [query, setQuery] = useState("");
+  const filteredData = useMemo(() => geneList.filter(
+    ({
+       accession,
+       groupLabel,
+       symbol,
+     }) =>
+      (!query || `${accession} ${groupLabel} ${symbol}`.toLowerCase().includes(query.toLowerCase()))
+  ), [query, geneList]);
+
   const {
     paginatedData,
     activePage,
@@ -79,8 +89,7 @@ const HeatMap = () => {
     totalPages,
     setActivePage,
     setPageSize
-  } = usePagination<Gene>(geneList);
-  const [query, setQuery] = useState("");
+  } = usePagination<Gene>(filteredData);
   const getCellStyle = (status: string) => {
     return classNames(styles.dataCell, {
       [styles.significant]: status === 'Deviance Significant',
@@ -107,14 +116,6 @@ const HeatMap = () => {
       )
     });
   }
-  const finalData = useMemo(() => geneList.filter(
-    ({
-       accession,
-       groupLabel,
-       symbol,
-     }) =>
-      (!query || `${accession} ${groupLabel} ${symbol}`.toLowerCase().includes(query.toLowerCase()))
-  ), [query, geneList]);
 
   return (
     <NonSSR>
@@ -164,7 +165,7 @@ const HeatMap = () => {
           ))}
         </tr>
         </thead>
-        {finalData.map(gene => (
+        {paginatedData.map(gene => (
           <tr>
             <td className={styles.geneCell}>
               <Link
@@ -189,7 +190,7 @@ const HeatMap = () => {
             ))}
           </tr>
         ))}
-        {finalData.length === 0 && !!query && (
+        {paginatedData.length === 0 && !!query && (
           <tr>
             <td colSpan={29}>
               <h4 style={{ backgroundColor: 'initial' }}>No matching records found</h4>

@@ -19,8 +19,8 @@ export const usePagination = <T,>(data: Array<T> = []) => {
         return newTotal;
       }
       return prevState;
-    })
-  }, [pageSize]);
+    });
+  }, [pageSize, data.length]);
 
   useEffect(() => {
     setActivePage(prevState => {
@@ -28,7 +28,7 @@ export const usePagination = <T,>(data: Array<T> = []) => {
         return 1;
       }
       return prevState;
-    })
+    });
   }, [data.length]);
 
   return {
