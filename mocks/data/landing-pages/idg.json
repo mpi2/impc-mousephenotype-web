@@ -108,7 +108,11 @@
       {"name":"immune system phenotype","count":7},
       {"name":"reproductive system phenotype","count":10}
     ],
-    "totalcount": 32
+    "totalcount": 32,
+    "genesCount": 57,
+    "esCellsProduced": 45,
+    "miceProduced": 48,
+    "phenotypeCount": 40
   },
   "GPCRChordData": {
     "matrix": [
@@ -151,7 +155,11 @@
       {"name":"immune system phenotype","count":8},
       {"name":"reproductive system phenotype","count":4}
     ],
-    "totalcount": 38
+    "totalcount": 38,
+    "genesCount": 97,
+    "esCellsProduced": 58,
+    "miceProduced": 61,
+    "phenotypeCount": 48
   },
   "kinaseChordData": {
     "matrix": [
@@ -204,6 +212,116 @@
       {"name":"immune system phenotype","count":16},
       {"name":"reproductive system phenotype","count":8}
     ], 
-    "totalcount": 66
-  }
+    "totalcount": 66,
+    "genesCount": 121,
+    "esCellsProduced": 97,
+    "miceProduced": 78,
+    "phenotypeCount": 68
+  },
+  "heatmapTopLevelPhenotypes": [
+    {
+      "id": "MP:0001186",
+      "name": "pigmentation phenotype"
+    },
+    {
+      "id": "MP:0002873",
+      "name": "normal phenotype"
+    },
+    {
+      "id": "MP:0003631",
+      "name": "nervous system phenotype"
+    },
+    {
+      "id": "MP:0005367",
+      "name": "renal/urinary system phenotype"
+    },
+    {
+      "id": "MP:0005369",
+      "name": "muscle phenotype"
+    },
+    {
+      "id": "MP:0005370",
+      "name": "liver/biliary system phenotype"
+    },
+    {
+      "id": "MP:0005371",
+      "name": "limbs/digits/tail phenotype"
+    },
+    {
+      "id": "MP:0005375",
+      "name": "adipose tissue phenotype"
+    },
+    {
+      "id": "MP:0005376",
+      "name": "homeostasis/metabolism phenotype"
+    },
+    {
+      "id": "MP:0005377",
+      "name": "hearing/vestibular/ear phenotype"
+    },
+    {
+      "id": "MP:0005378",
+      "name": "growth/size/body region phenotype"
+    },
+    {
+      "id": "MP:0005379",
+      "name": "endocrine/exocrine gland phenotype"
+    },
+    {
+      "id": "MP:0005380",
+      "name": "embryo phenotype"
+    },
+    {
+      "id": "MP:0005381",
+      "name": "digestive/alimentary phenotype"
+    },
+    {
+      "id": "MP:0005382",
+      "name": "craniofacial phenotype"
+    },
+    {
+      "id": "MP:0005384",
+      "name": "cellular phenotype"
+    },
+    {
+      "id": "MP:0005385",
+      "name": "cardiovascular system phenotype"
+    },
+    {
+      "id": "MP:0005386",
+      "name": "behavior/neurological phenotype"
+    },
+    {
+      "id": "MP:0005387",
+      "name": "immune system phenotype"
+    },
+    {
+      "id": "MP:0005388",
+      "name": "respiratory system phenotype"
+    },
+    {
+      "id": "MP:0005389",
+      "name": "reproductive system phenotype"
+    },
+    {
+      "id": "MP:0005390",
+      "name": "skeleton phenotype"
+    },
+    {
+      "id": "MP:0005391",
+      "name": "vision/eye phenotype"
+    },
+    {
+      "id": "MP:0005397",
+      "name": "hematopoietic system phenotype"
+    },
+    {
+      "id": "MP:0010768",
+      "name": "mortality/aging"
+    },
+    {
+      "id": "MP:0010771",
+      "name": "integument phenotype"
+    }
+  ]
 }
