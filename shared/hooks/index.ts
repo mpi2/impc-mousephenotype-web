@@ -10,3 +10,4 @@ export { useDatasetsQuery } from './datasets.query';
 export { useGrossPathologyChartQuery } from './gross-pathology-chart.query';
 export { useFlowCytometryQuery } from './flow-cytometry.query';
 export { useEmbryoWOLQuery } from './embryo-wol.query';
+export { usePagination } from './pagination';

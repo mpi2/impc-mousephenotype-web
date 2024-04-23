@@ -1,13 +1,20 @@
 import Head from "next/head";
 import Search from "@/components/Search";
-import { Breadcrumb, Col, Container, Row, Image } from "react-bootstrap";
+import { Breadcrumb, Col, Container, Row, Image, Table } from "react-bootstrap";
 import { Card } from "@/components";
 import data from "../../mocks/data/landing-pages/idg.json";
+import geneList from "../../mocks/data/landing-pages/idg-gene-list.json";
 import PieChart from "@/components/PieChart";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from "chart.js";
 import ChordDiagram from "@/components/ChordDiagram";
+import Link from "next/link";
+import classNames from "classnames";
+import styles from './styles.module.scss';
+import NonSSR from "@/hoc/nonSSR";
+import PaginationControls from "@/components/PaginationControls";
+import { usePagination } from "@/hooks";
 
 
 ChartJS.register(
@@ -18,6 +25,188 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+type FamilyDataTableProps = {
+  data: {
+    genesCount: number;
+    esCellsProduced: number;
+    miceProduced: number;
+    phenotypeCount: number;
+  };
+};
+
+type Gene = {
+  accession: string;
+  symbol: string;
+  groupLabel: string;
+  humanSymbol: Array<string>;
+  humanSymbolToString: string;
+  miceProducedPlain: string;
+  xaxisToCellMap: Record<string, {xAxisKey: string, status: string}>
+}
+
+const FamilyDataTable = (props: FamilyDataTableProps) => {
+  const { data } = props;
+  return (
+    <Table bordered striped style={{ maxWidth: '30%' }}>
+      <tbody>
+      <tr>
+        <td><b>IMPC/IDG genes</b></td>
+        <td>{data.genesCount}</td>
+      </tr>
+      <tr>
+        <td><b>ES Cells produced</b></td>
+        <td>{data.esCellsProduced}</td>
+      </tr>
+      <tr>
+        <td><b>Mice produced</b></td>
+        <td>{data.miceProduced}</td>
+      </tr>
+      <tr>
+        <td><b>Phenotypes</b></td>
+        <td>{data.phenotypeCount}</td>
+      </tr>
+      </tbody>
+    </Table>
+  )
+};
+
+const HeatMap = () => {
+  const {
+    paginatedData,
+    activePage,
+    pageSize,
+    totalPages,
+    setActivePage,
+    setPageSize
+  } = usePagination<Gene>(geneList);
+  const [query, setQuery] = useState("");
+  const getCellStyle = (status: string) => {
+    return classNames(styles.dataCell, {
+      [styles.significant]: status === 'Deviance Significant',
+      [styles.notSignificant]: status === 'Data analysed, no significant call',
+      [styles.noData]: status === 'No data'
+    })
+  };
+
+  const getLinksToGenePage = (gene: Gene) => {
+    const url = `/genes/${gene.accession}`;
+    const productsProduced = gene.miceProducedPlain.split('|');
+    if (productsProduced.length === 1 && productsProduced[0] === '') {
+      return '-';
+    }
+    return productsProduced.map(value => {
+      const href = value === "Phenotype data" ? url + "#data" : url + "#order";
+      return (
+        <>
+          <Link className="link primary" style={{ padding: 0, backgroundColor: 'initial' }} href={href}>
+            {value}
+          </Link>
+          <br/>
+        </>
+      )
+    });
+  }
+  const finalData = useMemo(() => geneList.filter(
+    ({
+       accession,
+       groupLabel,
+       symbol,
+     }) =>
+      (!query || `${accession} ${groupLabel} ${symbol}`.toLowerCase().includes(query.toLowerCase()))
+  ), [query, geneList]);
+
+  return (
+    <NonSSR>
+      <div className={styles.controls}>
+        <div>
+          Show
+          <select
+            name="pageSize"
+            className="form-select"
+            value={pageSize}
+            onChange={(e) =>
+              setPageSize(Number.parseInt(e.target.value, 10))
+            }
+          >
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+          </select>
+          entries
+        </div>
+        <div>
+          Search:
+          <input
+            className="form-control"
+            title="heatmap search box"
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
+      </div>
+      <table className={`table table-bordered ${styles.heatmap}`}>
+        <thead>
+        <tr>
+          <th>Gene</th>
+          <th>Family</th>
+          <th>Availability</th>
+          {data.heatmapTopLevelPhenotypes.map(phenotype => (
+            <th key={phenotype.id}>
+              <span className={styles.verticalHeader}>
+                <Link className="primary link" href={`/phenotypes/${phenotype.id}`}>
+                  {phenotype.name}
+                </Link>
+              </span>
+            </th>
+          ))}
+        </tr>
+        </thead>
+        {finalData.map(gene => (
+          <tr>
+            <td className={styles.geneCell}>
+              <Link
+                href={`/genes/${gene.accession}`}
+                className="primary link"
+                style={{backgroundColor: 'initial', padding: 0}}
+              >
+                {gene.symbol}
+              </Link>
+              <br/>
+              {gene.humanSymbol[0] || '-'}
+            </td>
+            <td>
+              {gene.groupLabel}
+            </td>
+            <td>
+              {getLinksToGenePage(gene)}
+            </td>
+            {data.heatmapTopLevelPhenotypes.map(phenotype => (
+              <td className={getCellStyle(gene.xaxisToCellMap[phenotype.name].status)}>
+              </td>
+            ))}
+          </tr>
+        ))}
+        {finalData.length === 0 && !!query && (
+          <tr>
+            <td colSpan={29}>
+              <h4 style={{ backgroundColor: 'initial' }}>No matching records found</h4>
+            </td>
+          </tr>
+        )}
+      </table>
+      <PaginationControls
+        currentPage={activePage}
+        totalPages={totalPages}
+        onPageChange={setActivePage}
+        showEntriesInfo
+        pageSize={pageSize}
+      />
+    </NonSSR>
+  );
+}
 
 const IDGPage = () => {
   const geneProductionStatusData = data.geneProductionStatusData || [];
@@ -52,12 +241,12 @@ const IDGPage = () => {
       <Head>
         <title>IDG page | International Mouse Phenotyping Consortium</title>
       </Head>
-      <Search />
+      <Search/>
       <Container className="page">
         <Card>
           <div className="subheading">
             <Breadcrumb>
-              <Breadcrumb.Item active>Home</Breadcrumb.Item>
+            <Breadcrumb.Item active>Home</Breadcrumb.Item>
               <Breadcrumb.Item active>IMPC data collections</Breadcrumb.Item>
               <Breadcrumb.Item active>IDG</Breadcrumb.Item>
             </Breadcrumb>
@@ -119,6 +308,32 @@ const IDGPage = () => {
           </Row>
         </Card>
         <Card>
+          <h3>IMPC IDG data Heat Map</h3>
+          <p>
+            The heat map indicates the detailed IDG gene data representation in IMPC, from product availability to phenotypes.
+            Phenotypes are grouped by biological systems.
+          </p>
+          <table className="mb-4">
+            <tbody>
+            <tr>
+              <td>
+                <div className={styles.significant}>&nbsp;</div>
+                <div className="table_legend_key">Significant</div>
+              </td>
+              <td>
+                <div className={styles.notSignificant}>&nbsp;</div>
+                <div className="table_legend_key">Not Significant</div>
+              </td>
+              <td>
+                <div className={styles.noData}>&nbsp;</div>
+                <div className="table_legend_key">No data</div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <HeatMap/>
+        </Card>
+        <Card>
           <h2>Phenotype Associations</h2>
           <p>
             The following chord diagrams represent the various biological systems phenotype associations for IDG genes
@@ -131,7 +346,7 @@ const IDGPage = () => {
         <Card>
           <h3>All families</h3>
           <p>
-            <b>{ data.allFamiliesChordData.totalGeneCount }</b> genes have phenotypes in more than one biological system.
+            <b>{data.allFamiliesChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
             <br/>
             <a
@@ -149,8 +364,9 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>Ion channels</h3>
+          <FamilyDataTable data={data.ionChannelChordData} />
           <p>
-            <b>{ data.ionChannelChordData.totalGeneCount }</b> genes have phenotypes in more than one biological system.
+            <b>{data.ionChannelChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
             <br/>
             <a
@@ -164,6 +380,46 @@ const IDGPage = () => {
           <ChordDiagram
             labels={data.ionChannelChordData.labels}
             data={data.ionChannelChordData.matrix}
+          />
+        </Card>
+        <Card>
+          <h3>GPCRs</h3>
+          <FamilyDataTable data={data.GPCRChordData} />
+          <p>
+            <b>{ data.GPCRChordData.totalcount }</b> genes have phenotypes in more than one biological system.
+            The chord diagram below shows the pleiotropy between these genes.
+            <br/>
+            <a
+              className="link primary"
+              href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
+              download="genes_phenotype_associations.csv"
+            >
+              Get the genes and associated phenotypes.
+            </a>
+          </p>
+          <ChordDiagram
+            labels={data.GPCRChordData.labels}
+            data={data.GPCRChordData.matrix}
+          />
+        </Card>
+        <Card>
+          <h3>Kinases</h3>
+          <FamilyDataTable data={data.kinaseChordData} />
+          <p>
+            <b>{ data.kinaseChordData.totalcount }</b> genes have phenotypes in more than one biological system.
+            The chord diagram below shows the pleiotropy between these genes.
+            <br/>
+            <a
+              className="link primary"
+              href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
+              download="genes_phenotype_associations.csv"
+            >
+              Get the genes and associated phenotypes.
+            </a>
+          </p>
+          <ChordDiagram
+            labels={data.kinaseChordData.labels}
+            data={data.kinaseChordData.matrix}
           />
         </Card>
       </Container>
