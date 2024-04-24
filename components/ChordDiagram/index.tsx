@@ -21,6 +21,7 @@ const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }
   const ref = useRef();
   const outerRadius = Math.min(width, height) * 0.5 - 200;
   const innerRadius = outerRadius - 30;
+  const chordTargets: Record<number, Set<number>> = {};
 
   useEffect(() => {
     const svgElement = d3.select(ref.current);
@@ -30,7 +31,31 @@ const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }
         const { index } = i;
         // hide other chords on mose over
         svgElement.selectAll("path.chord")
-          .filter(chord => chord.source.index !== index && chord.target.index !== index)
+          .filter(chord => {
+            const sourceIndex = chord.source.index;
+            const targetIndex = chord.target.index;
+
+            if (!chordTargets[targetIndex]) {
+              chordTargets[targetIndex] = new Set<number>();
+            }
+            if (!chordTargets[targetIndex].has(sourceIndex)) {
+              chordTargets[targetIndex].add(sourceIndex);
+            }
+
+            return sourceIndex !== index && targetIndex !== index
+          })
+          .transition()
+          .style("stroke-opacity", opacity)
+          .style("fill-opacity", opacity);
+
+        svgElement.selectAll("path.arc")
+          .filter(chord => chord.index !== index && !chordTargets[index]?.has(chord.index))
+          .transition()
+          .style("stroke-opacity", opacity)
+          .style("fill-opacity", opacity);
+
+        svgElement.selectAll("g.group-tick")
+          .filter(chord => chord.index !== index && !chordTargets[index]?.has(chord.index))
           .transition()
           .style("stroke-opacity", opacity)
           .style("fill-opacity", opacity);
@@ -77,6 +102,7 @@ const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }
       .on("mouseout", fade(.80));
 
     group.append("path")
+      .attr("class", "arc")
       .style("fill", d => color(d.index))
       .style("stroke", d => d3.rgb(color(d.index)).darker())
       .attr("d", arc);
