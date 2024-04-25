@@ -1,5 +1,6 @@
 import styles from "@/components/ManhattanPlot/styles.module.scss";
 import { formatPValue } from "@/utils";
+import classNames from "classnames";
 
 type Gene = { mgiGeneAccessionId: string, geneSymbol: string, pValue: number, significant: boolean };
 
@@ -24,10 +25,21 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
       return 'Y';
     }
     return tooltip.chromosome;
+  };
+  const getTooltipContent = (gene: Gene) => {
+    if (gene.significant && gene.pValue === 0) {
+      return <span>Manually annotated as significant</span>;
+    }
+    return <span>P-value: {!!gene.pValue ? formatPValue(gene.pValue) : '-'}</span>;
   }
+
+  const tooltipClasses = classNames(styles.tooltip, {
+    [styles.noVisible]: tooltip.opacity === 0,
+    [styles.visible]: tooltip.opacity !== 0,
+  });
   return (
     <div
-      className={`${styles.tooltip} ${tooltip.opacity === 0 ? styles.noVisible: styles.visible }`}
+      className={tooltipClasses}
       style={{ top: tooltip.top + offsetY, left: tooltip.left + offsetX, opacity: tooltip.opacity }}
     >
       <button className={styles.closeBtn} onClick={onClick}>×</button>
@@ -40,12 +52,7 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
               {gene.geneSymbol}
             </a>
             <br/>
-            {gene.significant ?
-              <span>Marked as significant gene</span> :
-              <span>
-                P-value: {!!gene.pValue ? formatPValue(gene.pValue) : 0}
-              </span>
-            }
+            {getTooltipContent(gene)}
           </li>
         )) }
       </ul>
