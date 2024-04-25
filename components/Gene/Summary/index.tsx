@@ -68,52 +68,11 @@ const CollectionItem = ({
 type SummaryProps = {
   gene: GeneSummary;
   numOfAlleles: number;
-  loading: boolean;
-  error: string;
 }
-const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
+const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   const router = useRouter();
 
   const SYNONYMS_COUNT = 2;
-
-  if (loading) {
-    return (
-      <Card>
-        <div className={styles.subheadingCont}>
-          <div className={styles.subheading}>
-            <span className={styles.subheadingSection}>Gene</span>
-            <span className={styles.subheadingSection}>
-              {router.query.pid}
-            </span>
-          </div>
-        </div>
-        <br />
-        <p className="grey">Loading...</p>
-      </Card>
-    );
-  }
-
-  if (error) {
-    return (
-      <Card>
-        <div className={styles.subheadingCont}>
-          <div className={styles.subheading}>
-            <span className={styles.subheadingSection}>Gene</span>
-            <span className={styles.subheadingSection}>
-              {router.query.pid}
-            </span>
-          </div>
-        </div>
-        <div className="mt-5 mb-5 text-center grey">
-          <h1>
-            <FontAwesomeIcon icon={faWarning} className="mb-4" /> <br />
-            <strong>Sorry, we didn't find anything.</strong>
-          </h1>
-          <p className="grey">Please check your url or try again later.</p>
-        </div>
-      </Card>
-    );
-  }
 
   const joined = [
     ...(gene.significantTopLevelPhenotypes ?? []),
@@ -309,7 +268,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
               />
               <br/>
               <CollectionItem
-                link={`//www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
+                link={`https://www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
                 name="Embryo imaging data"
                 hasData={gene.hasEmbryoImagingData}
               />
