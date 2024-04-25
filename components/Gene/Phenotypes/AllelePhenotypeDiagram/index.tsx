@@ -207,6 +207,9 @@ const AllelePhenotypeDiagram = (
           Click on a bar to view the phenotypes that belongs to an allele or set of alleles in the results section.
           <br/>
           Hovering over the columns will highlight the shared phenotypes across all the sets.
+          <br/>
+          Information about allele design can be found in&nbsp;
+          <a className="link primary" href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/">this page</a>.
         </span>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>
