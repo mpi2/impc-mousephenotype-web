@@ -274,8 +274,9 @@ const ManhattanPlot = ({ phenotypeId }) => {
       <div className={styles.labelsWrapper}>
         <div>
           <i className="fa fa-circle" style={{color: 'rgb(212, 17, 89)'}}></i>&nbsp;&nbsp;Not significant
-          <i className="fa fa-circle" style={{color: 'rgb(26, 133, 255)', marginLeft: '1rem'}}></i>&nbsp;&nbsp;Significant
-          <div style={{ display: "inline-block", marginLeft: '0.5rem' }}>
+          <i className="fa fa-circle"
+             style={{color: 'rgb(26, 133, 255)', marginLeft: '1rem'}}></i>&nbsp;&nbsp;Significant
+          <div style={{display: "inline-block", marginLeft: '0.5rem'}}>
             <hr
               style={{
                 border: "none",
@@ -300,23 +301,25 @@ const ManhattanPlot = ({ phenotypeId }) => {
           />
         </div>
       </div>
+      <i className="grey" style={{ padding: '0 2rem' }}>Associations appearing in the region of 1x10<sup>-30</sup> are manually annotated as significant.</i>
       {!!data ? (
         <div className={styles.chartWrapper}>
-          <Scatter ref={chartRef} options={options as any} data={data.chartData as any} />
+          <Scatter ref={chartRef} options={options as any} data={data.chartData as any}/>
           <DataTooltip
             tooltip={clickTooltip}
             offsetX={0}
             offsetY={10}
             onClick={() =>
               // reset genes and chromosome data to show hovering tooltip
-              setClickTooltip(prevState => ({ ...prevState, genes:[], chromosome: '', opacity: 0 })
-            )}
+              setClickTooltip(prevState => ({...prevState, genes: [], chromosome: '', opacity: 0})
+              )}
           />
-          <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} />
+          <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {
+          }}/>
         </div>
-      ): (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <LoadingProgressBar />
+      ) : (
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+          <LoadingProgressBar/>
         </div>
       )}
 
