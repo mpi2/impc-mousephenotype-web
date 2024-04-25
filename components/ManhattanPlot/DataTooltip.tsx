@@ -31,7 +31,7 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
       return <span>Manually annotated as significant</span>;
     }
     return <span>P-value: {!!gene.pValue ? formatPValue(gene.pValue) : '-'}</span>;
-  }
+  };
 
   const tooltipClasses = classNames(styles.tooltip, {
     [styles.noVisible]: tooltip.opacity === 0,
