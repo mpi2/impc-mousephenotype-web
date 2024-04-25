@@ -11,13 +11,13 @@ import { chartColors } from "@/utils/chart";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { isEqual } from 'lodash';
 import styles from './styles.module.scss';
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import Form from 'react-bootstrap/Form';
-import DataTooltip from "./DataTooltip";
 import { PhenotypeStatsResults } from "@/models/phenotype";
+import { formatPValue } from "@/utils";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -34,6 +34,8 @@ type ChromosomeDataPoint = {
   pos?: number,
 };
 
+type Point = {x: number, y: number, geneList: string};
+
 const clone = obj => JSON.parse(JSON.stringify(obj));
 
 const transformPValue = (value: number, significant: boolean) => {
@@ -44,38 +46,56 @@ const transformPValue = (value: number, significant: boolean) => {
   return -Math.log10(value)
 };
 const ManhattanPlot = ({ phenotypeId }) => {
+  let ghostPoint: Point = {x: -1, y: -1, geneList: ''};
   const router = useRouter();
   const chartRef = useRef(null);
   const [hoverTooltip, setHoverTooltip] = useState({
-    opacity: 0,
-    top: 0,
-    left: 0,
     chromosome: '',
     genes: [],
   });
-  const [clickTooltip, setClickTooltip] = useState({
-    opacity: 0,
-    top: 0,
-    left: 0,
-    chromosome: '',
-    genes: [],
-  });
+  const [point, setPoint ] = useState<Point>({ x: -1, y: -1, geneList: '' });
   const [geneFilter, setGeneFilter] = useState('');
   const ticks = [];
   let originalTicks = [];
   const validChromosomes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 'X'];
 
-  const calculateTooltipXPos = (pos: number) => {
-    const canvasWidth = chartRef.current.width;
-    if (pos >= canvasWidth / 2) {
-      return pos - (273 * 0.94);
+  const getChromosome = (tooltip) => {
+    if (tooltip.chromosome === '20') {
+      return 'X';
+    } else if (tooltip.chromosome === '21') {
+      return 'Y';
     }
-    return pos;
-  }
+    return tooltip.chromosome;
+  };
+
+  const getTooltipContent = (gene) => {
+    if (gene.significant && gene.pValue === 0) {
+      return <span>Manually annotated as significant</span>;
+    }
+    return <span>P-value: {!!gene.pValue ? formatPValue(gene.pValue) : '-'}</span>;
+  };
 
   const associationMatchesFilter = (rawDataPoint) => {
+    if (geneFilter.includes(',')) {
+      const filterValues = geneFilter.split(',').map(value => value.trim());
+      return filterValues.some(value => (
+        rawDataPoint.geneSymbol?.toLowerCase() === value.toLowerCase() || rawDataPoint?.mgiGeneAccessionId === value
+      ));
+    }
     return rawDataPoint.geneSymbol?.toLowerCase() === geneFilter.toLowerCase() || rawDataPoint?.mgiGeneAccessionId === geneFilter;
   };
+
+  const areTheSamePoint = (p1: Point, p2: Point, ignoreGeneList = false) => {
+    const limit = 8;
+    const xDelta = Math.abs(p1.x - p2.x);
+    const yDelta = Math.abs(p1.y - p2.y);
+    if (ignoreGeneList) {
+      return xDelta <= limit && yDelta <= limit;
+    }
+    return xDelta <= limit && yDelta <= limit && p1.geneList.includes(p2.geneList);
+  };
+
+  const generatePointFromCtx = (ctx) => ({ x: ctx.element.x, y: ctx.element.y, geneList: ctx.parsed.geneSymbol });
 
   const getThresholdXPos = (chr: string, datapoints: Array<ChromosomeDataPoint>): number => {
     switch (chr) {
@@ -88,10 +108,9 @@ const ManhattanPlot = ({ phenotypeId }) => {
     }
   }
 
-  const options= {
+  const options= useMemo(() => ({
     responsive: true,
     maintainAspectRatio: false,
-    animation: false,
     scales: {
       x: {
         display: true,
@@ -132,16 +151,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
         external: context => {
           const tooltipModel = context.tooltip;
           if (!chartRef || !chartRef.current) return;
-          if (tooltipModel.opacity === 0) {
-            if (hoverTooltip.opacity !== 0) {
-              setHoverTooltip(prev => ({ ...prev, opacity: 0 }));
-            }
-            return;
-          }
           const newTooltipData = {
-            opacity: 1,
-            left: calculateTooltipXPos(tooltipModel.caretX),
-            top: tooltipModel.caretY,
             chromosome: tooltipModel.dataPoints[0].dataset.label,
             genes: tooltipModel.dataPoints.map(({ raw }) => ({
               geneSymbol: raw.geneSymbol,
@@ -150,13 +160,6 @@ const ManhattanPlot = ({ phenotypeId }) => {
               significant: raw.significant
             })),
           };
-          if (isEqual(newTooltipData.genes, clickTooltip.genes)) {
-            // if tooltip opened by click has the same data as tooltip opened by hover
-            // that would mean the user just clicked on a point, so we should
-            // render only one tooltip
-            setHoverTooltip(prev => ({ ...prev, opacity: 0 }));
-            return;
-          }
           if (!isEqual(hoverTooltip, newTooltipData)) {
             setHoverTooltip(newTooltipData);
           }
@@ -165,39 +168,39 @@ const ManhattanPlot = ({ phenotypeId }) => {
     },
     elements: {
       point: {
-        radius: ctx => !!geneFilter && associationMatchesFilter(ctx.raw) ? 10 : 3,
+        radius: ctx => {
+          if (!!geneFilter && associationMatchesFilter(ctx.raw)) {
+            return 10;
+          }
+          if (areTheSamePoint(point, generatePointFromCtx(ctx))) {
+            return 7;
+          }
+          return 3;
+        },
         pointBackgroundColor: ctx => {
           const shouldBeHighlighted = !!geneFilter && associationMatchesFilter(ctx.raw);
           if (shouldBeHighlighted) return '#F7DC4A';
+          const currentPoint = generatePointFromCtx(ctx);
+          if (areTheSamePoint(point, currentPoint)) {
+            return '#00b0b0';
+          } else if(shouldBeHighlighted && !areTheSamePoint(currentPoint, ghostPoint)) {
+            // Side effect to set point based on search
+            setPoint(currentPoint);
+            ghostPoint = {...currentPoint};
+          }
+          
           return ctx.raw.y >= 4 ? `rgba(26, 133, 255, ${matchesAnotherGene ? '0.1' : '0.4'})` : `rgba(212, 17, 89, ${matchesAnotherGene ? '0.1' : '0.3'})`;
         },
       }
     },
-    onHover: (e, elements) => !!elements.length ? e.native.target.style.cursor = 'pointer' : e.native.target.style.cursor = 'auto',
-    onClick: (e, elements) =>  {
-      if (elements.length) {
-        const newTooltipData = {
-          opacity: 1,
-          // we assume if onClick is triggered, the mouse is already hovering a point and
-          // the hovering tooltip have appeared, we use the coordinates to minimize the change
-          left: hoverTooltip.left,
-          top: hoverTooltip.top,
-          chromosome: elements[0].element['$context'].raw.chromosome,
-          genes: elements.map(point => point.element['$context'].raw).map(rawData => {
-            return {
-              geneSymbol: rawData.geneSymbol,
-              mgiGeneAccessionId: rawData.mgiGeneAccessionId,
-              pValue: rawData.pValue,
-              significant: rawData.significant
-            };
-          })
-        };
-        if (!isEqual(clickTooltip, newTooltipData)) {
-          setClickTooltip(newTooltipData);
-        }
+    onHover: (e, elements) => {
+      !!elements.length ? e.native.target.style.cursor = 'pointer' : e.native.target.style.cursor = 'auto';
+      if (!!elements.length && !areTheSamePoint(point, e, true)) {
+        const geneList = elements.map(e => e.element.$context.parsed?.geneSymbol || null).sort().join('|');
+        setPoint({ x: e.x, y: e.y, geneList});
       }
     },
-  };
+  }), [geneFilter, point]);
 
   const { data } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'gwas'],
@@ -265,61 +268,91 @@ const ManhattanPlot = ({ phenotypeId }) => {
         listOfGenes: [...genes],
         listOfAccessions: [...mgiAccessionIds],
       };
-    }
+    },
   });
-  const matchesAnotherGene = !!geneFilter && (data.listOfGenes?.includes(geneFilter) || data.listOfAccessions?.includes(geneFilter));
-  
+
+  const matchesAnotherGene = useMemo(() => {
+    if (!!geneFilter) {
+      return true;
+    }
+    if (geneFilter.includes(',')) {
+      const filterValues = geneFilter.split(',').map(value => value.trim());
+      return (
+        data?.listOfGenes?.some(geneSymbol => filterValues.includes(geneSymbol)) ||
+        data?.listOfAccessions?.some(id => filterValues.includes(id))
+      );
+    }
+    return data?.listOfGenes?.includes(geneFilter) || data?.listOfAccessions?.includes(geneFilter);
+  }, [geneFilter, data]);
+
+
   return (
-    <div>
-      <div className={styles.labelsWrapper}>
-        <div>
-          <i className="fa fa-circle" style={{color: 'rgb(212, 17, 89)'}}></i>&nbsp;&nbsp;Not significant
-          <i className="fa fa-circle" style={{color: 'rgb(26, 133, 255)', marginLeft: '1rem'}}></i>&nbsp;&nbsp;Significant
-          <div style={{ display: "inline-block", marginLeft: '0.5rem' }}>
-            <hr
-              style={{
-                border: "none",
-                borderTop: "3px dashed #000",
-                height: "3px",
-                width: "50px",
-                display: 'inline-block',
-                margin: '0 0 0 0.5rem',
-                opacity: 1
-              }}
+    <div className={styles.mainWrapper}>
+      <div className="chart">
+        <div className={styles.labelsWrapper}>
+          <div>
+            <i className="fa fa-circle" style={{color: 'rgb(212, 17, 89)'}}></i>&nbsp;&nbsp;Not significant
+            <i className="fa fa-circle"
+               style={{color: 'rgb(26, 133, 255)', marginLeft: '1rem'}}></i>&nbsp;&nbsp;Significant
+            <div style={{display: "inline-block", marginLeft: '0.5rem'}}>
+              <hr
+                style={{
+                  border: "none",
+                  borderTop: "3px dashed #000",
+                  height: "3px",
+                  width: "50px",
+                  display: 'inline-block',
+                  margin: '0 0 0 0.5rem',
+                  opacity: 1
+                }}
+              />
+              &nbsp;&nbsp;Significant P-value threshold (P &lt; 0.0001)
+            </div>
+          </div>
+          <div style={{display: 'flex', whiteSpace: 'nowrap', alignItems: 'center'}}>
+            <label className="grey" htmlFor="geneHighlight" style={{marginRight: "0.5rem"}}>Find gene:</label>
+            <Form.Control
+              id="geneHighlight"
+              type="text"
+              value={geneFilter}
+              onChange={(e) => setGeneFilter(e.target.value)}
             />
-            &nbsp;&nbsp;Significant P-value threshold (P &lt; 0.0001)
           </div>
         </div>
-        <div style={{display: 'flex', whiteSpace: 'nowrap', alignItems: 'center'}}>
-          <label className="grey" htmlFor="geneHighlight" style={{marginRight: "0.5rem"}}>Find gene:</label>
-          <Form.Control
-            id="geneHighlight"
-            type="text"
-            value={geneFilter}
-            onChange={(e) => setGeneFilter(e.target.value)}
-          />
-        </div>
+        <i className="grey" style={{ padding: '0 2rem' }}>Associations appearing in the region of 1x10<sup>-30</sup> are manually annotated as significant.</i>
+        {!!data ? (
+          <div className={styles.chartWrapper}>
+            <Scatter ref={chartRef} options={options as any} data={data.chartData as any}/>
+          </div>
+        ) : (
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <LoadingProgressBar/>
+          </div>
+        )}
       </div>
-      {!!data ? (
-        <div className={styles.chartWrapper}>
-          <Scatter ref={chartRef} options={options as any} data={data.chartData as any} />
-          <DataTooltip
-            tooltip={clickTooltip}
-            offsetX={0}
-            offsetY={10}
-            onClick={() =>
-              // reset genes and chromosome data to show hovering tooltip
-              setClickTooltip(prevState => ({ ...prevState, genes:[], chromosome: '', opacity: 0 })
-            )}
-          />
-          <DataTooltip tooltip={hoverTooltip} offsetX={0} offsetY={10} onClick={() => {}} />
-        </div>
-      ): (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <LoadingProgressBar />
-        </div>
-      )}
-
+      <div className={styles.resultsSection}>
+        <h3>Associations details</h3>
+        {hoverTooltip.genes.length ? (
+          <>
+            <span><strong>Chromosome: </strong>{getChromosome(hoverTooltip)}</span>
+            <br/>
+            <span>Associated genes:</span>
+            <ul>
+              {hoverTooltip.genes.map(gene => (
+                <li key={gene.mgiGeneAccessionId}>
+                  <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
+                    {gene.geneSymbol}
+                  </a>
+                  <br/>
+                  {getTooltipContent(gene)}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <i className="grey">Hover the chart to see the details of an association</i>
+        )}
+      </div>
     </div>
   )
 };

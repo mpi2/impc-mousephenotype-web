@@ -1,10 +1,8 @@
 import { useContext, useState } from "react";
-import { Alert } from "react-bootstrap";
 import { useGeneAssociationsQuery } from "@/hooks";
 import { PhenotypeContext } from "@/contexts";
 import { useRouter } from "next/router";
 import {
-  AlleleCell,
   PlainTextCell,
   SignificantPValueCell,
   SignificantSexesCell, SmartTable
@@ -16,7 +14,6 @@ import { formatAlleleSymbol } from "@/utils";
 import _ from "lodash";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
-import { GeneStatisticalResult } from "@/models/gene";
 
 const ParameterCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
   return (
