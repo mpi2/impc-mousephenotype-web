@@ -11,7 +11,7 @@ import { chartColors } from "@/utils/chart";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { useRouter } from "next/router";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { isEqual } from 'lodash';
 import styles from './styles.module.scss';
 import LoadingProgressBar from "@/components/LoadingProgressBar";
@@ -49,12 +49,13 @@ const ManhattanPlot = ({ phenotypeId }) => {
   let ghostPoint: Point = {x: -1, y: -1, geneList: ''};
   const router = useRouter();
   const chartRef = useRef(null);
-  const [hoverTooltip, setHoverTooltip] = useState({
+  const [clickTooltip, setClickTooltip] = useState({
     chromosome: '',
     genes: [],
   });
   const [point, setPoint ] = useState<Point>({ x: -1, y: -1, geneList: '' });
   const [geneFilter, setGeneFilter] = useState('');
+  const [filterResultsAvailable, setFilterResultsAvailable] = useState<boolean>(true);
   const ticks = [];
   let originalTicks = [];
   const validChromosomes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 'X'];
@@ -110,6 +111,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
   const options= useMemo(() => ({
     responsive: true,
+    animation: false,
     maintainAspectRatio: false,
     scales: {
       x: {
@@ -148,22 +150,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
       tooltip: {
         enabled: false,
         mode: 'point',
-        external: context => {
-          const tooltipModel = context.tooltip;
-          if (!chartRef || !chartRef.current) return;
-          const newTooltipData = {
-            chromosome: tooltipModel.dataPoints[0].dataset.label,
-            genes: tooltipModel.dataPoints.map(({ raw }) => ({
-              geneSymbol: raw.geneSymbol,
-              mgiGeneAccessionId: raw.mgiGeneAccessionId,
-              pValue: raw.pValue,
-              significant: raw.significant
-            })),
-          };
-          if (!isEqual(hoverTooltip, newTooltipData)) {
-            setHoverTooltip(newTooltipData);
-          }
-        },
+        external: context => {},
       },
     },
     elements: {
@@ -173,34 +160,66 @@ const ManhattanPlot = ({ phenotypeId }) => {
             return 10;
           }
           if (areTheSamePoint(point, generatePointFromCtx(ctx))) {
-            return 7;
+            return 9;
+          }
+          return 3;
+        },
+        hoverRadius: ctx => {
+          if (!!geneFilter && associationMatchesFilter(ctx.raw)) {
+            return 10;
+          }
+          if (areTheSamePoint(point, generatePointFromCtx(ctx))) {
+            return 9;
           }
           return 3;
         },
         pointBackgroundColor: ctx => {
           const shouldBeHighlighted = !!geneFilter && associationMatchesFilter(ctx.raw);
-          if (shouldBeHighlighted) return '#F7DC4A';
           const currentPoint = generatePointFromCtx(ctx);
+          if (shouldBeHighlighted) {
+            // double check to avoid multiple calls to setState with same state
+            if (!areTheSamePoint(point, currentPoint) && !areTheSamePoint(currentPoint, ghostPoint, true)) {
+              // Side effect to set point based on search
+              setPoint(currentPoint);
+              ghostPoint = {...currentPoint};
+            }
+            return '#F7DC4A'
+          }
           if (areTheSamePoint(point, currentPoint)) {
             return '#00b0b0';
-          } else if(shouldBeHighlighted && !areTheSamePoint(currentPoint, ghostPoint)) {
-            // Side effect to set point based on search
-            setPoint(currentPoint);
-            ghostPoint = {...currentPoint};
           }
-          
+
           return ctx.raw.y >= 4 ? `rgba(26, 133, 255, ${matchesAnotherGene ? '0.1' : '0.4'})` : `rgba(212, 17, 89, ${matchesAnotherGene ? '0.1' : '0.3'})`;
         },
       }
     },
-    onHover: (e, elements) => {
-      !!elements.length ? e.native.target.style.cursor = 'pointer' : e.native.target.style.cursor = 'auto';
+    onHover: (e, elements) => !!elements.length ? e.native.target.style.cursor = 'pointer' : e.native.target.style.cursor = 'auto',
+    onClick: (e, elements) => {
       if (!!elements.length && !areTheSamePoint(point, e, true)) {
         const geneList = elements.map(e => e.element.$context.parsed?.geneSymbol || null).sort().join('|');
         setPoint({ x: e.x, y: e.y, geneList});
       }
-    },
-  }), [geneFilter, point]);
+      if (elements.length) {
+        const newTooltipData = {
+          chromosome: elements[0]?.element['$context'].raw.chromosome,
+          genes: elements.map(point => point.element['$context'].raw).map(rawData => {
+            return {
+              geneSymbol: rawData.geneSymbol,
+              mgiGeneAccessionId: rawData.mgiGeneAccessionId,
+              pValue: rawData.pValue,
+              significant: rawData.significant
+            };
+          })
+        };
+        if (!isEqual(clickTooltip, newTooltipData)) {
+          setClickTooltip(newTooltipData);
+        }
+      } else if (!areTheSamePoint(point, { x: -1, y: -1, geneList: ''}, true)){
+        setPoint({ x: -1, y: -1, geneList: '' });
+        setClickTooltip({chromosome: '', genes: []});
+      }
+    }
+  }), [geneFilter, point, ticks]);
 
   const { data } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'gwas'],
@@ -273,7 +292,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
   const matchesAnotherGene = useMemo(() => {
     if (!!geneFilter) {
-      return true;
+      return false;
     }
     if (geneFilter.includes(',')) {
       const filterValues = geneFilter.split(',').map(value => value.trim());
@@ -285,7 +304,25 @@ const ManhattanPlot = ({ phenotypeId }) => {
     return data?.listOfGenes?.includes(geneFilter) || data?.listOfAccessions?.includes(geneFilter);
   }, [geneFilter, data]);
 
-
+  useEffect(() => {
+    if (!!geneFilter) {
+      const allData = data.chartData.datasets.flatMap(dataset => dataset.data);
+      const filteredGenes = allData.filter(associationMatchesFilter) || [];
+      if (filteredGenes.length) {
+        const newTooltipData = {
+          chromosome: filteredGenes.map(g => g.chromosome).join(','),
+          genes: filteredGenes
+        };
+        if (!isEqual(clickTooltip, newTooltipData)) {
+          setClickTooltip(newTooltipData);
+        }
+      } else {
+        if (clickTooltip.genes.length !== 0) {
+          setClickTooltip({chromosome: '', genes: []});
+        }
+      }
+    }
+  }, [geneFilter, data, clickTooltip, point]);
   return (
     <div className={styles.mainWrapper}>
       <div className="chart">
@@ -331,14 +368,12 @@ const ManhattanPlot = ({ phenotypeId }) => {
         )}
       </div>
       <div className={styles.resultsSection}>
-        <h3>Associations details</h3>
-        {hoverTooltip.genes.length ? (
+        <h3>Associations details of selected gene(s):</h3>
+        {(!!clickTooltip.genes.length) && (
           <>
-            <span><strong>Chromosome: </strong>{getChromosome(hoverTooltip)}</span>
-            <br/>
-            <span>Associated genes:</span>
+            <span><strong>Chromosome: </strong>{getChromosome(clickTooltip)}</span>
             <ul>
-              {hoverTooltip.genes.map(gene => (
+              {clickTooltip.genes.map(gene => (
                 <li key={gene.mgiGeneAccessionId}>
                   <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
                     {gene.geneSymbol}
@@ -349,8 +384,12 @@ const ManhattanPlot = ({ phenotypeId }) => {
               ))}
             </ul>
           </>
-        ) : (
-          <i className="grey">Hover the chart to see the details of an association</i>
+        )}
+        {!clickTooltip.genes.length && !geneFilter && (
+          <i className="grey">Click on a point of the chart to see the details of an association.</i>
+        )}
+        {!clickTooltip.genes.length && geneFilter && (
+          <i className="grey">No data matches with the filter provided.</i>
         )}
       </div>
     </div>
