@@ -49,13 +49,16 @@ const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }
           .style("fill-opacity", opacity);
 
         svgElement.selectAll("path.arc")
-          .filter(chord => chord.index !== index && !chordTargets[index]?.has(chord.index))
+          .filter(chord => {
+            console.log(chordTargets);
+            return chord.index !== index && (!chordTargets[index]?.has(chord.index) && !chordTargets[chord.index]?.has(index));
+          })
           .transition()
           .style("stroke-opacity", opacity)
           .style("fill-opacity", opacity);
 
         svgElement.selectAll("g.group-tick")
-          .filter(chord => chord.index !== index && !chordTargets[index]?.has(chord.index))
+          .filter(chord => chord.index !== index && (!chordTargets[index]?.has(chord.index) && !chordTargets[chord.index]?.has(index)))
           .transition()
           .style("stroke-opacity", opacity)
           .style("fill-opacity", opacity);
