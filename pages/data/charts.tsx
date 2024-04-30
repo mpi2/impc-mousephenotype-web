@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
 import SkeletonTable from "@/components/skeletons/table";
-import { ABR, DataComparison, FlowCytometryImages, IPGTT } from "@/components/Data";
+import { ABR, DataComparison, FlowCytometryImages, IPGTT, PPI } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
 import { Dataset } from "@/models";
@@ -79,6 +79,12 @@ const Charts = () => {
     ? !!datasetSummaries.some(
       (dataset) => dataset.procedureStableId === "IMPC_IPG_001"
     )
+    : false;
+
+  const isPPIChart = !isError
+    ? !!datasetSummaries.some(
+      (dataset) => dataset.procedureGroup === "IMPC_ACS"
+    )
     :false;
 
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
@@ -87,6 +93,7 @@ const Charts = () => {
     : allSummaries[0];
 
 
+  const isSpecialChart = isIPGTTChart || isPPIChart;
   const extraChildren = (hasFlowCytometryImages && flowCytometryImages.length) ? <FlowCytometryImages images={flowCytometryImages} /> : null;
   const Chart = getChartType(activeDataset, true, extraChildren);
   return (
@@ -148,7 +155,7 @@ const Charts = () => {
               </div>
             </div>
           )}
-          {(!isLoading && !isError && !isIPGTTChart && allSummaries.length > 0 ) ? (
+          {(!isLoading && !isError && !isSpecialChart && allSummaries.length > 0 ) ? (
             <DataComparison
               data={allSummaries}
               isViabilityChart={isViabilityChart}
@@ -178,7 +185,12 @@ const Charts = () => {
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
             />
-          ) : (
+          ) : !!isPPIChart ? (
+            <PPI
+              datasetSummaries={datasetSummaries}
+              onNewSummariesFetched={setAdditionalSummaries}
+            />
+          ): (
             !!activeDataset && <div>{Chart}</div>
           )}
         </Container>
