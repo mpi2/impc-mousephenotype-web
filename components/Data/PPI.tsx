@@ -12,6 +12,7 @@ import {
   Colors,
 } from 'chart.js';
 import { Chart } from "react-chartjs-2";
+import ChartDataLabels, { Context } from "chartjs-plugin-datalabels";
 import { Card } from "@/components";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
@@ -57,6 +58,10 @@ const PPI = (props: PPIProps) => {
     onNewSummariesFetched
   );
 
+  const barIsBigEnough = (ctx: Context) => {
+    return Math.abs(ctx.dataset.data[ctx.dataIndex] as number) > 15;
+  }
+
   const chartDatasets = useMemo(() => {
     return parameterList
       .map(param => datasets.find(d => d.parameterStableId === param))
@@ -69,7 +74,24 @@ const PPI = (props: PPIProps) => {
             dataset.summaryStatistics.maleControlMean,
             dataset.summaryStatistics.femaleMutantMean,
             dataset.summaryStatistics.femaleControlMean
-          ]
+          ],
+          datalabels: {
+            labels: {
+              value: {
+                align: (ctx: Context) => (barIsBigEnough(ctx) ? "center" as const : "bottom" as const),
+                anchor: (ctx: Context) => (barIsBigEnough(ctx) ? "center" as const : "start" as const),
+                offset: (ctx: Context) => (barIsBigEnough(ctx) ? 0 as const : 4 as const),
+                clamp: true,
+                formatter: (value: number) => !!value ? `${value.toFixed(2)}%` : '',
+              },
+              name: {
+                align: "end" as const,
+                anchor: "end" as const,
+                clamp: true,
+                formatter: (_, ctx: Context) => ctx.dataset.label,
+              }
+            }
+          }
         }
       });
   }, [datasets]);
@@ -89,11 +111,10 @@ const PPI = (props: PPIProps) => {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: {
-        position: "bottom" as const,
-        labels: { usePointStyle: true },
-      },
+      legend: { display: false },
+      tooltip: { enabled: false }
     },
+
   };
 
   const chartData = {
@@ -125,6 +146,7 @@ const PPI = (props: PPIProps) => {
               type="bar"
               data={chartData}
               options={chartOptions}
+              plugins={[ChartDataLabels]}
             />
           ) : (
             <div style={{display: 'flex', justifyContent: 'center'}}>
