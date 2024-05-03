@@ -112,9 +112,9 @@ const PPI = (props: PPIProps) => {
                 display: false,
               },
               name: {
-                align: "center" as const,
-                anchor: "center" as const,
-                offset: 0,
+                align: "bottom" as const,
+                anchor: "start" as const,
+                offset: 8,
                 formatter: (_, ctx: Context) => ctx.dataset.label,
               }
             }
