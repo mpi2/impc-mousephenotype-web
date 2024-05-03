@@ -5,28 +5,37 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
   Legend,
   Colors,
 } from 'chart.js';
 import { Chart } from "react-chartjs-2";
+import {
+  BoxPlotController,
+  BoxAndWiskers,
+} from "@sgratzl/chartjs-chart-boxplot";
 import ChartDataLabels, { Context } from "chartjs-plugin-datalabels";
 import { Card } from "@/components";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import AlleleSymbol from "@/components/AlleleSymbol";
+import { useMultipleS3DatasetsQuery } from "@/hooks";
 
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
   Legend,
   Colors,
+  BoxPlotController,
+  BoxAndWiskers,
 );
 
 
@@ -58,8 +67,16 @@ const PPI = (props: PPIProps) => {
     onNewSummariesFetched
   );
 
+
+  const results = useMultipleS3DatasetsQuery('PPI', datasets);
+
   const barIsBigEnough = (ctx: Context) => {
     return Math.abs(ctx.dataset.data[ctx.dataIndex] as number) > 15;
+  }
+
+  const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
+    const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);
+    return data?.observations.map(d => +d.dataPoint);
   }
 
   const chartDatasets = useMemo(() => {
@@ -67,34 +84,43 @@ const PPI = (props: PPIProps) => {
       .map(param => datasets.find(d => d.parameterStableId === param))
       .filter(Boolean)
       .map(dataset => {
+        const matchingRes = results.find(r => r.datasetId === dataset.datasetId);
         return {
-          label: labels[dataset.parameterStableId],
+          ...matchingRes,
+          label: labels[dataset.parameterStableId]
+        }
+      })
+      .filter(Boolean)
+      .map(result => {
+        return {
+          type: "boxplot" as const,
+          label: result.label,
           data: [
-            dataset.summaryStatistics.maleMutantMean,
-            dataset.summaryStatistics.maleControlMean,
-            dataset.summaryStatistics.femaleMutantMean,
-            dataset.summaryStatistics.femaleControlMean
+            parseData(result.series, 'male', 'experimental'),
+            parseData(result.series, 'male', 'control'),
+            parseData(result.series, 'female', 'experimental'),
+            parseData(result.series, 'female', 'control'),
           ],
+          borderWidth: 2,
+          itemRadius: 0,
+          padding: 100,
+          outlierRadius: 5,
           datalabels: {
             labels: {
               value: {
-                align: (ctx: Context) => (barIsBigEnough(ctx) ? "center" as const : "bottom" as const),
-                anchor: (ctx: Context) => (barIsBigEnough(ctx) ? "center" as const : "start" as const),
-                offset: (ctx: Context) => (barIsBigEnough(ctx) ? 0 as const : 4 as const),
-                clamp: true,
-                formatter: (value: number) => !!value ? `${value.toFixed(2)}%` : '',
+                display: false,
               },
               name: {
-                align: "end" as const,
-                anchor: "end" as const,
-                clamp: true,
+                align: "center" as const,
+                anchor: "center" as const,
+                offset: 0,
                 formatter: (_, ctx: Context) => ctx.dataset.label,
               }
             }
           }
         }
       });
-  }, [datasets]);
+  }, [datasets, results]);
 
   const chartLabels = useMemo(() => {
     const zygosity = datasets?.[0]?.zygosity;
@@ -112,7 +138,6 @@ const PPI = (props: PPIProps) => {
     maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
-      tooltip: { enabled: false }
     },
 
   };
@@ -143,7 +168,7 @@ const PPI = (props: PPIProps) => {
         <div style={{position: "relative", height: "400px"}}>
           {datasets.length >= 4 ? (
             <Chart
-              type="bar"
+              type="boxplot"
               data={chartData}
               options={chartOptions}
               plugins={[ChartDataLabels]}
