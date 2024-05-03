@@ -1,5 +1,5 @@
 import { Dataset } from "@/models";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
 import {
   Chart as ChartJS,
@@ -17,12 +17,13 @@ import {
   BoxPlotController,
   BoxAndWiskers,
 } from "@sgratzl/chartjs-chart-boxplot";
-import ChartDataLabels, { Context } from "chartjs-plugin-datalabels";
+import { Context } from "chartjs-plugin-datalabels";
 import { Card } from "@/components";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import AlleleSymbol from "@/components/AlleleSymbol";
 import { useMultipleS3DatasetsQuery } from "@/hooks";
+import ChartDataLabels from "@/shared/chart-js-plugins/datalabels";
 
 
 ChartJS.register(
