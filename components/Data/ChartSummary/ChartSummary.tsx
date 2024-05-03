@@ -12,6 +12,7 @@ type ChartSummaryProps = {
   title?: string;
   displayPValueStatement?: boolean;
   displayAssociatedPhenotype?: boolean;
+  showParameterName?: boolean
 };
 const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
   const {
@@ -21,6 +22,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
     children,
     displayPValueStatement = true,
     displayAssociatedPhenotype = true,
+    showParameterName = true,
   } = props;
   const [showMetadataModal, setShowMetadataModal] = useState(false);
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -52,21 +54,23 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
               {!!title ? title : `${datasetSummary.geneSymbol} data charts`}
             </strong>
           </h1>
-          <span
-            style={{
-              color: "#797676",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              lineHeight: "1.2",
-            }}
-          >
+          {showParameterName && (
+            <span
+              style={{
+                color: "#797676",
+                textTransform: "uppercase",
+                fontWeight: "500",
+                lineHeight: "1.2",
+              }}
+            >
             {datasetSummary.parameterName}
           </span>
+          )}
         </div>
         {displayPValueStatement && (
           <span
             className="mb-4"
-            style={{ display: "inline-block", fontSize: "1.2rem" }}
+            style={{display: "inline-block", fontSize: "1.2rem"}}
           >
             Combination tested with the lowest p-value of{" "}
             <strong>{pValue}</strong>
