@@ -223,14 +223,28 @@ export default {
     },
 
     boxplot: function(el, config) {
-        console.log('IN Boxplot');
         var v = orient(el, config.origin);
+        var x = el.x;
+        var y = el.y;
+        var sx = 0;
+        var sy = 0;
+        var base = config.anchor === 'end' ? el.whiskerMax : el.whiskerMin;
+        if (config.anchor === 'center') {
+            base = el.median;
+        }
+        if (el.horizontal) {
+            x = Math.min(el.x, base);
+            sx = Math.abs(base - el.x);
+        } else {
+            y = Math.min(el.y, base);
+            sy = Math.abs(base - el.y);
+        }
 
         return compute({
-            x0: el.x,
-            y0: el.y,
-            x1: el.x + (el.width || 0),
-            y1: el.y + (el.height || 0),
+            x0: x,
+            y0: y + sy,
+            x1: x + sx,
+            y1: y,
             vx: v.x,
             vy: v.y
         }, config);
