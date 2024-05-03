@@ -15,6 +15,13 @@ import Skeleton from "react-loading-skeleton";
 import Head from "next/head";
 import { getChartType } from "@/components/Data/Utils";
 
+const parametersListPPI = [
+  "IMPC_ACS_033_001", // % PP1
+  "IMPC_ACS_034_001", // % PP2
+  "IMPC_ACS_035_001", // % PP3
+  "IMPC_ACS_036_001", // % PP4
+];
+
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
   const [additionalSummaries, setAdditionalSummaries] = useState<Array<Dataset>>(
@@ -83,9 +90,9 @@ const Charts = () => {
 
   const isPPIChart = !isError
     ? !!datasetSummaries.some(
-      (dataset) => dataset.procedureGroup === "IMPC_ACS"
+      (dataset) => parametersListPPI.includes(dataset.parameterStableId)
     )
-    :false;
+    : false;
 
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
   const activeDataset = !!selectedKey
