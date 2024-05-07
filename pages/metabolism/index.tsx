@@ -200,7 +200,7 @@ const MetabolismLandingPage = () => {
                   { width: 1, label: "Parameter", field: "Parameter", cmp: <PlainTextCell style={{ textTransform: 'uppercase' }} /> },
                   { width: 1, label: "Sex", field: "Sex", cmp: <PlainTextCell /> },
                   { width: 1, label: "MGI_ID", field: "MGI_ID", cmp: <LinkCell prefix="/genes" />  },
-                  { width: 1, label: "Gene symbol", field: "Gene_symbol", cmp: <PlainTextCell /> },
+                  { width: 1, label: "Gene symbol", field: "Gene_symbol", cmp: <PlainTextCell style={{ fontStyle: 'italic' }} /> },
                   { width: 1, label: "Center", field: "Center", cmp: <PlainTextCell /> },
                   { width: 1, label: "Zygosity", field: "Zygosity", cmp: <PlainTextCell /> },
                   { width: 1, label: "Ratio KO WT", field: "Ratio_KO_WT", cmp: <PlainTextCell /> },

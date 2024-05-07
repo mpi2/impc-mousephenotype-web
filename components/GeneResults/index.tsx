@@ -54,7 +54,7 @@ const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: stri
           }}
         >
           <h4 className="mb-2">
-            <span className="blue-dark">{surroundWithMarkEl(geneSymbol, query)}</span>&nbsp;
+            <span className="blue-dark"><i>{surroundWithMarkEl(geneSymbol, query)}</i></span>&nbsp;
             <span className="grey">|</span> {surroundWithMarkEl(geneName, query)}
           </h4>
           {!!synonymsArray && synonymsArray.length && (

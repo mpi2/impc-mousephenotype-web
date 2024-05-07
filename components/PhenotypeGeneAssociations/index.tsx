@@ -9,7 +9,7 @@ import {
 } from "@/components/SmartTable";
 import { PhenotypeGenotypes } from "@/models/phenotype";
 import { TableCellProps } from "@/models";
-import { DownloadData } from "@/components";
+import { AlleleSymbol, DownloadData } from "@/components";
 import { formatAlleleSymbol } from "@/utils";
 import _ from "lodash";
 import Link from "next/link";
@@ -36,16 +36,18 @@ const PhenotypingCentreCell = <T extends PhenotypeGenotypes>(props: TableCellPro
 };
 
 const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
-  const allele = formatAlleleSymbol(_.get(props.value, props.field) as string);
+  const fullAllele = _.get(props.value, props.field) as string;
+  const allele = formatAlleleSymbol(fullAllele);
   return (
     <span style={{ lineHeight: 1.5 }}>
       <small>
-        <Link className="link" href={`/genes/${props.value.mgiGeneAccessionId}`}>{allele[0]}</Link>
+        <Link className="link" href={`/genes/${props.value.mgiGeneAccessionId}`}>
+          <i>{allele[0]}</i>
+        </Link>
       </small>
       <br/>
       <strong>
-        {allele[0]}
-        <sup>{allele[1]}</sup>
+        <AlleleSymbol symbol={fullAllele} withLabel={false} />
       </strong>
     </span>
   )

@@ -376,7 +376,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
               {clickTooltip.genes.map(gene => (
                 <li key={gene.mgiGeneAccessionId}>
                   <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
-                    {gene.geneSymbol}
+                    <i>{gene.geneSymbol}</i>
                   </a>
                   <br/>
                   {getTooltipContent(gene)}

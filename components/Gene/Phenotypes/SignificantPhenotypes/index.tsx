@@ -51,7 +51,7 @@ const SignificantPhenotypes = (
   if (isPhenotypeError) {
     return (
       <Alert variant="primary" className="mt-3">
-        No significant phenotypes for {gene.geneSymbol}.
+        No significant phenotypes for <i>{gene.geneSymbol}</i>.
       </Alert>
     )
   }

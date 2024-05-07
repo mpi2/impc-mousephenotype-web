@@ -9,7 +9,7 @@ import styles from "./styles.module.scss";
 type ChartSummaryProps = {
   datasetSummary: Dataset;
   additionalContent?: ReactNode;
-  title?: string;
+  title?: ReactNode;
   displayPValueStatement?: boolean;
   displayAssociatedPhenotype?: boolean;
   showParameterName?: boolean
@@ -51,7 +51,11 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
         >
           <h1 style={{ margin: 0 }}>
             <strong>
-              {!!title ? title : `${datasetSummary.geneSymbol} data charts`}
+              {!!title ? title : (
+                <>
+                  <i>{datasetSummary.geneSymbol}</i> data charts
+                </>
+              )}
             </strong>
           </h1>
           {showParameterName && (
@@ -96,8 +100,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
                 {datasetSummary["summaryStatistics"]["femaleControlCount"]}{" "}
                 female,{" "}
                 {datasetSummary["summaryStatistics"]["maleControlCount"]} male
-                controls. The mutants are for the {allele[0]}
-                <sup>{allele[1]}</sup> allele.
+                controls. The mutants are for the <i>{allele[0]}<sup>{allele[1]}</sup></i> allele.
               </p>
             </>
           )}

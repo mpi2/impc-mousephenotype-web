@@ -49,7 +49,7 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
           <li key={gene.mgiGeneAccessionId}>
             Gene:&nbsp;
             <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
-              {gene.geneSymbol}
+              <i>{gene.geneSymbol}</i>
             </a>
             <br/>
             {getTooltipContent(gene)}

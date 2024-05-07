@@ -1,13 +1,12 @@
 import { Model, TableCellProps } from "@/models";
 import _ from "lodash";
-import { formatAlleleSymbol } from "@/utils";
+import { AlleleSymbol } from "@/components";
 
 const AlleleCell = <T extends Model>(props: TableCellProps<T>) => {
-  const allele = formatAlleleSymbol(_.get(props.value, props.field) as string);
+  const allele = _.get(props.value, props.field) as string;
   return (
     <span style={props.style}>
-      {allele[0]}
-      <sup>{allele[1]}</sup>
+      <AlleleSymbol symbol={allele} withLabel={false} />
     </span>
   )
 };

@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GeneHistopathology } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { GeneContext } from "@/contexts";
+import { AlleleSymbol } from "@/components";
 
 const Histopathology = () => {
   const router = useRouter();
@@ -62,7 +63,7 @@ const Histopathology = () => {
       <Card id="histopathology">
         <h2>Histopathology</h2>
         <Alert variant="primary">
-          There is no histopathology data found for {gene.geneSymbol}.
+          There is no histopathology data found for <i>{gene.geneSymbol}</i>.
         </Alert>
       </Card>
     );
@@ -97,7 +98,6 @@ const Histopathology = () => {
             ]}
           >
             {pageData.map((p, index) => {
-              const allele = formatAlleleSymbol(p.alleleSymbol);
               return (
                 <tr key={index}>
                   <td>
@@ -110,8 +110,7 @@ const Histopathology = () => {
                     </Link>
                   </td>
                   <td>
-                    {allele[0]}
-                    <sup>{allele[1]}</sup>
+                    <AlleleSymbol symbol={p.alleleSymbol} withLabel={false} />
                   </td>
 
                   <td>{p.zygosity}</td>
