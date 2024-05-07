@@ -24,7 +24,7 @@ import Link from "next/link";
 import { formatAlleleSymbol } from "@/utils";
 import ScatterChart from "@/components/ScatterChart";
 import Head from "next/head";
-import { PublicationDataAlert } from "@/components";
+import { AlleleSymbol, PublicationDataAlert } from "@/components";
 
 ChartJS.register(
   CategoryScale,
@@ -49,16 +49,6 @@ type GeneHearingData = {
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"), {ssr: false}
 );
-
-const Allele = ({alleleSymbol}) => {
-  const allele = formatAlleleSymbol(alleleSymbol);
-  return (
-    <>
-      {allele[0]}
-      <sup>{allele[1]}</sup>
-    </>
-  );
-}
 
 const ABRChart = ({ geneData }) => {
   const getChartLabels = () => {
@@ -309,7 +299,7 @@ const HearingLandingPage = () => {
             data={data.genes}
             defaultSort={["geneSymbol", "asc"]}
             columns={[
-              { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: <PlainTextCell /> },
+              { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: <PlainTextCell style={{ fontStyle: 'italic' }} /> },
               { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell /> },
               { width: 1, label: "Status", field: "status", cmp: <PlainTextCell /> },
               { width: 1, label: "Hearing loss", field: "hearingLoss", cmp: <PlainTextCell /> },
@@ -324,7 +314,7 @@ const HearingLandingPage = () => {
                 <div style={{ textAlign: 'center' }}>
                   <h2 style={{ marginBottom: 0 }}>Novel, mild hearing loss</h2>
                   <Link className="primary link" href={`/genes/${data.adgrb1.mgiGeneAccessionId}`}>
-                    <Allele alleleSymbol={data.adgrb1.alleleSymbol} />
+                    <AlleleSymbol symbol={data.adgrb1.alleleSymbol} withLabel={false} />
                   </Link>
                 </div>
                 <ABRChart geneData={data.adgrb1.values}/>
@@ -333,7 +323,7 @@ const HearingLandingPage = () => {
                 <div style={{ textAlign: 'center' }}>
                   <h2 style={{ marginBottom: 0 }}>Know, severe hearing loss</h2>
                   <Link className="primary link" href={`/genes/${data.elmod1.mgiGeneAccessionId}`}>
-                    <Allele alleleSymbol={data.elmod1.alleleSymbol} />
+                    <AlleleSymbol symbol={data.elmod1.alleleSymbol} withLabel={false} />
                   </Link>
                 </div>
                 <ABRChart geneData={data.elmod1.values}/>
@@ -344,7 +334,7 @@ const HearingLandingPage = () => {
                 <div style={{ textAlign: 'center' }}>
                   <h2 style={{ marginBottom: 0 }}>Novel, high-frequency hearing loss</h2>
                   <Link className="primary link" href={`/genes/${data.ccdc88c.mgiGeneAccessionId}`}>
-                    <Allele alleleSymbol={data.ccdc88c.alleleSymbol} />
+                    <AlleleSymbol symbol={data.ccdc88c.alleleSymbol} withLabel={false} />
                   </Link>
                 </div>
                 <ABRChart geneData={data.ccdc88c.values}/>
@@ -353,7 +343,7 @@ const HearingLandingPage = () => {
                 <div style={{ textAlign: 'center' }}>
                   <h2 style={{ marginBottom: 0 }}>Novel, severe hearing loss</h2>
                   <Link className="primary link" href={`/genes/${data.zfp719.mgiGeneAccessionId}`}>
-                    <Allele alleleSymbol={data.zfp719.alleleSymbol} />
+                    <AlleleSymbol symbol={data.zfp719.alleleSymbol} withLabel={false} />
                   </Link>
                 </div>
                 <ABRChart geneData={data.zfp719.values}/>
