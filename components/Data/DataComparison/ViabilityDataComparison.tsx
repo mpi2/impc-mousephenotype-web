@@ -5,8 +5,8 @@ import { formatAlleleSymbol, getIcon, getSexLabel } from "@/utils";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset } from "@/models";
-import styles from './styles.module.scss';
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
+import { AlleleSymbol } from "@/components";
 
 type Props = {
   data: Array<Dataset>;
@@ -77,7 +77,6 @@ const ViabilityDataComparison = (props: Props) => {
         ]}
       >
         {getVisibleRows(sorted).map((d, i) => {
-          const allele = formatAlleleSymbol(d.alleleSymbol);
           return (
             <tr
               key={d.key}
@@ -85,8 +84,7 @@ const ViabilityDataComparison = (props: Props) => {
               onClick={() => onSelectParam(d.key)}
             >
               <td>
-                {allele[0]}
-                <sup>{allele[1]}</sup>
+                <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
               </td>
               <td>
                 <strong>{d.viability}</strong>

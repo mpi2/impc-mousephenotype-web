@@ -186,11 +186,19 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
           <Tab
             eventKey="associated"
-            title={`Human diseases associated with ${gene.geneSymbol} (${associatedData.length})`}
+            title={
+              <>
+                Human diseases associated with <i>{gene.geneSymbol}</i> ({associatedData.length})
+              </>
+            }
           ></Tab>
           <Tab
             eventKey="predicted"
-            title={`Human diseases predicted to be associated with ${gene.geneSymbol} (${predictedData.length})`}
+            title={
+              <>
+                Human diseases predicted to be associated with <i>{gene.geneSymbol}</i> ({predictedData.length})
+              </>
+            }
           ></Tab>
         </Tabs>
         {!selectedData || !selectedData.length ? (

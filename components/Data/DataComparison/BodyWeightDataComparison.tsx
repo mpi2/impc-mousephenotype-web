@@ -6,6 +6,7 @@ import { Dataset } from "@/models";
 import styles from './styles.module.scss';
 import { groupData, processData, getBackgroundColorForRow } from "./utils";
 import { Button } from "react-bootstrap";
+import { AlleleSymbol } from "@/components";
 
 type Props = {
   data: Array<Dataset>;
@@ -69,7 +70,6 @@ const BodyWeightDataComparison = (props: Props) => {
         ]}
       >
         {getVisibleRows(sorted).map((d, i) => {
-          const allele = formatAlleleSymbol(d.alleleSymbol);
           return (
             <tr
               key={d.key}
@@ -80,8 +80,7 @@ const BodyWeightDataComparison = (props: Props) => {
                 {d.phenotypingCentre}
               </td>
               <td>
-                {allele[0]}
-                <sup>{allele[1]}</sup>
+                <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
               </td>
               <td>{d.zygosity}</td>
               <td>{d.lifeStageName}</td>

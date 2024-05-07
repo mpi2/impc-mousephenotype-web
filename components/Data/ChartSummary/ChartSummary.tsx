@@ -9,7 +9,7 @@ import styles from "./styles.module.scss";
 type ChartSummaryProps = {
   datasetSummary: Dataset;
   additionalContent?: ReactNode;
-  title?: string;
+  title?: ReactNode;
   displayPValueStatement?: boolean;
   displayAssociatedPhenotype?: boolean;
   showParameterName?: boolean
