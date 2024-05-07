@@ -358,7 +358,7 @@ const ImagesCompare = () => {
               >
                 <FontAwesomeIcon icon={faArrowLeft}/>
                 &nbsp;
-                Go Back to {geneSymbol || <Skeleton style={{width: '50px'}} inline/>}
+                Go Back to <i>{geneSymbol || <Skeleton style={{width: '50px'}} inline/>}</i>
               </Link>
             </span>
           </div>

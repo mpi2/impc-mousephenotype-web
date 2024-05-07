@@ -85,13 +85,13 @@ const HistopathChartPage = () => {
               >
                 <FontAwesomeIcon icon={faArrowLeft}/>
                 &nbsp;
-                Go Back to {gene?.geneSymbol || <Skeleton style={{width: '50px'}} inline/>}
+                Go Back to <i>{gene?.geneSymbol || <Skeleton style={{width: '50px'}} inline/>}</i>
               </Link>
             </span>
           </div>
           <h1 className="mb-4 mt-2" data-testid="main-header">
             <strong className="text-capitalize">
-              Histopathology data for {gene?.geneSymbol}
+              Histopathology data for <i>{gene?.geneSymbol}</i>
             </strong>
           </h1>
           <Accordion style={{marginBottom: '1.5rem'}}>
