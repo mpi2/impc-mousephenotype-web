@@ -28,7 +28,6 @@ type Props = {
 }
 
 const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
-  console.log(selectOptions);
   const [chartData, setChartData] = useState<Array<EmbryoData>>(data.slice(0, 25));
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(Math.ceil(data.length / 25));

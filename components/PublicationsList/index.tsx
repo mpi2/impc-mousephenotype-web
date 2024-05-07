@@ -9,10 +9,10 @@ import styles from './styles.module.scss';
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI, API_URL } from "@/api-service";
 import Pagination from "../Pagination";
-import { formatAlleleSymbol } from "@/utils";
 import { useDebounce } from "usehooks-ts";
 import _ from "lodash";
-
+import Link from "next/link";
+import { AlleleSymbol } from "@/components";
 
 const PublicationLoader = () => (
   <div className={styles.pubLoader}>
@@ -234,13 +234,11 @@ const PublicationsList = (props: PublicationListProps) => {
                   {!!pub.alleles && pub.alleles.length > 0 && (
                     <p className={styles.alleleList}>IMPC allele:&nbsp;
                       {getListOfAlleles(pub).map(allele => {
-                        const formattedAllele = formatAlleleSymbol(allele.alleleSymbol);
                         return (
                           <>
-                            <a className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
-                              {formattedAllele[0]}
-                              <sup>{formattedAllele[1]}</sup>
-                            </a>
+                            <Link className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
+                              <AlleleSymbol symbol={allele.alleleSymbol} withLabel={false} />
+                            </Link>
                             &nbsp;
                           </>
                         )

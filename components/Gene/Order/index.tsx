@@ -14,6 +14,7 @@ import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { NumAllelesContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
+import { AlleleSymbol } from "@/components";
 
 const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
   const router = useRouter();
@@ -125,8 +126,7 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                     <tr key={index}>
                       <td>
                         <strong className={styles.link}>
-                          {allele[0]}
-                          <sup>{allele[1]}</sup>
+                          <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
                         </strong>
                       </td>
                       <td>{d.alleleDescription}</td>

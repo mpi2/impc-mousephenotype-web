@@ -144,7 +144,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   if (isLoading) {
     return (
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -153,7 +153,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   if (isError) {
     return (
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations</h2>
         <Alert variant="primary">No data available for this section</Alert>
       </Card>
     );
@@ -171,7 +171,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   return (
     <>
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations </h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations </h2>
         <div className="mb-4">
           <p>
             The analysis uses data from IMPC, along with published data on other
