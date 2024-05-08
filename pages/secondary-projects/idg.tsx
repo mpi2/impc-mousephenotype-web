@@ -5,7 +5,7 @@ import { Card } from "@/components";
 import data from "../../mocks/data/landing-pages/idg.json";
 import geneList from "../../mocks/data/landing-pages/idg-gene-list.json";
 import PieChart from "@/components/PieChart";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, useImperativeHandle, forwardRef } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from "chart.js";
 import ChordDiagram from "@/components/ChordDiagram";
@@ -15,6 +15,8 @@ import styles from './styles.module.scss';
 import NonSSR from "@/hoc/nonSSR";
 import PaginationControls from "@/components/PaginationControls";
 import { usePagination } from "@/hooks";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 ChartJS.register(
@@ -35,6 +37,13 @@ type FamilyDataTableProps = {
   };
 };
 
+type AccordionTableHandle = {
+  toggleVisibility: () => void;
+}
+type AccordionTableProps = {
+  type: string;
+};
+
 type Gene = {
   accession: string;
   symbol: string;
@@ -43,6 +52,25 @@ type Gene = {
   humanSymbolToString: string;
   miceProducedPlain: string;
   xaxisToCellMap: Record<string, {xAxisKey: string, status: string}>
+};
+
+const getLinksToGenePage = (gene: Gene) => {
+  const url = `/genes/${gene.accession}`;
+  const productsProduced = gene.miceProducedPlain.split('|');
+  if (productsProduced.length === 1 && productsProduced[0] === '') {
+    return '-';
+  }
+  return productsProduced.map(value => {
+    const href = value === "Phenotype data" ? url + "#data" : url + "#order";
+    return (
+      <>
+        <Link className="link primary" style={{ padding: 0, backgroundColor: 'initial' }} href={href}>
+          {value}
+        </Link>
+        <br/>
+      </>
+    )
+  });
 }
 
 const FamilyDataTable = (props: FamilyDataTableProps) => {
@@ -98,25 +126,6 @@ const HeatMap = () => {
     })
   };
 
-  const getLinksToGenePage = (gene: Gene) => {
-    const url = `/genes/${gene.accession}`;
-    const productsProduced = gene.miceProducedPlain.split('|');
-    if (productsProduced.length === 1 && productsProduced[0] === '') {
-      return '-';
-    }
-    return productsProduced.map(value => {
-      const href = value === "Phenotype data" ? url + "#data" : url + "#order";
-      return (
-        <>
-          <Link className="link primary" style={{ padding: 0, backgroundColor: 'initial' }} href={href}>
-            {value}
-          </Link>
-          <br/>
-        </>
-      )
-    });
-  }
-
   return (
     <NonSSR>
       <div className={styles.controls}>
@@ -150,19 +159,19 @@ const HeatMap = () => {
       </div>
       <table className={`table table-bordered ${styles.heatmap}`}>
         <thead>
-        <tr>
-          <th>Gene</th>
-          <th>Family</th>
-          <th>Availability</th>
-          {data.heatmapTopLevelPhenotypes.map(phenotype => (
-            <th key={phenotype.id}>
-              <span className={styles.verticalHeader}>
-                <Link className="primary link" href={`/phenotypes/${phenotype.id}`}>
-                  {phenotype.name}
-                </Link>
-              </span>
-            </th>
-          ))}
+          <tr>
+            <th>Gene</th>
+            <th>Family</th>
+            <th>Availability</th>
+            {data.heatmapTopLevelPhenotypes.map(phenotype => (
+              <th key={phenotype.id}>
+                <span className={styles.verticalHeader}>
+                  <Link className="primary link" href={`/phenotypes/${phenotype.id}`}>
+                    {phenotype.name}
+                  </Link>
+                </span>
+              </th>
+            ))}
         </tr>
         </thead>
         {paginatedData.map(gene => (
@@ -207,9 +216,64 @@ const HeatMap = () => {
       />
     </NonSSR>
   );
-}
+};
+
+const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>((
+  { type },
+  ref
+) => {
+  const [ visibility, setVisibility ] = useState(false);
+  const filteredList: Array<Gene> = geneList.filter(gene => gene.groupLabel === type);
+
+  useImperativeHandle(ref, () => ({
+    toggleVisibility() {
+      setVisibility(prevState => !prevState);
+    }
+  }));
+
+  return (
+    visibility ? (
+      <Table bordered striped>
+        <thead>
+          <tr>
+          <th>Mouse Genes</th>
+          <th>Human Genes</th>
+          <th>Data available</th>
+        </tr>
+        </thead>
+        <tbody>
+          {filteredList.map(gene => (
+            <tr key={gene.accession}>
+              <td>
+                <Link className="link primary" href={`/genes/${gene.accession}`}>{gene.symbol}</Link>
+                &nbsp;({gene.accession})
+              </td>
+              <td>
+                {gene.humanSymbolToString.split(' ').map((symbol) => (
+                  <>
+                    <a key={symbol} className="link primary" href={`https://pharos.nih.gov/targets?q=${symbol}`}>
+                      {symbol}&nbsp;
+                      <FontAwesomeIcon icon={faExternalLinkAlt}></FontAwesomeIcon>
+                    </a>
+                    &nbsp;
+                  </>
+                ))}
+              </td>
+              <td>
+                {getLinksToGenePage(gene)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    ) : null
+  );
+});
 
 const IDGPage = () => {
+  const ionChannelsTableRef = useRef<AccordionTableHandle>(null);
+  const gpcrTableRef = useRef<AccordionTableHandle>(null);
+  const kinasesTableRef = useRef<AccordionTableHandle>(null);
   const geneProductionStatusData = data.geneProductionStatusData || [];
 
   const idgGenesProductionStatusOptions = {
@@ -366,6 +430,14 @@ const IDGPage = () => {
         <Card>
           <h3>Ion channels</h3>
           <FamilyDataTable data={data.ionChannelChordData} />
+          <button
+            className="btn impc-primary-button mb-3"
+            style={{ width: 'fit-content' }}
+            onClick={() => ionChannelsTableRef.current?.toggleVisibility()}
+          >
+            View all {data.ionChannelChordData.genesCount} IMPC/IDG Ion Channel genes
+          </button>
+          <AccordionTable type="IonChannel" ref={ionChannelsTableRef} />
           <p>
             <b>{data.ionChannelChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
@@ -385,9 +457,17 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>GPCRs</h3>
-          <FamilyDataTable data={data.GPCRChordData} />
+          <FamilyDataTable data={data.GPCRChordData}/>
+          <button
+            className="btn impc-primary-button mb-3"
+            style={{width: 'fit-content'}}
+            onClick={() => gpcrTableRef.current?.toggleVisibility()}
+          >
+            View all {data.GPCRChordData.genesCount} IMPC/IDG GPCR genes
+          </button>
+          <AccordionTable type="GPCR" ref={gpcrTableRef} />
           <p>
-            <b>{ data.GPCRChordData.totalcount }</b> genes have phenotypes in more than one biological system.
+            <b>{data.GPCRChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
             <br/>
             <a
@@ -405,9 +485,17 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>Kinases</h3>
-          <FamilyDataTable data={data.kinaseChordData} />
+          <FamilyDataTable data={data.kinaseChordData}/>
+          <button
+            className="btn impc-primary-button mb-3"
+            style={{width: 'fit-content'}}
+            onClick={() => kinasesTableRef.current?.toggleVisibility()}
+          >
+            View all {data.kinaseChordData.genesCount} IMPC/IDG Kinase genes
+          </button>
+          <AccordionTable type="Kinase" ref={kinasesTableRef} />
           <p>
-            <b>{ data.kinaseChordData.totalcount }</b> genes have phenotypes in more than one biological system.
+            <b>{data.kinaseChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
             <br/>
             <a
