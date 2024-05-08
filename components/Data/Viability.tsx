@@ -156,7 +156,11 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   return (
     <>
       <ChartSummary
-        title={`${datasetSummary["geneSymbol"]} ${datasetSummary["parameterName"]} data`}
+        title={
+          <>
+            <i>{datasetSummary["geneSymbol"]}</i> {datasetSummary["parameterName"]} data
+          </>
+        }
         datasetSummary={datasetSummary}
         displayPValueStatement={false}
         additionalContent={
@@ -180,8 +184,8 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       >
         <p>
           A {datasetSummary["procedureName"]} phenotypic assay was performed on
-          a mutant strain carrying the {allele[0]}
-          <sup>{allele[1]}</sup> allele. The charts below show the proportion of
+          a mutant strain carrying the <i>{allele[0]}
+          <sup>{allele[1]}</sup></i> allele. The charts below show the proportion of
           wild type, heterozygous, and homozygous offspring.
         </p>
       </ChartSummary>

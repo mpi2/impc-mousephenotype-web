@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset } from "@/models";
 import styles from "./styles.module.scss";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
+import { AlleleSymbol } from "@/components";
 
 type LastColumnProps = {
   isViabilityChart: boolean;
@@ -180,7 +181,6 @@ const DataComparison = (props: Props) => {
                 )}
             >
               {pageData.map((d, i) => {
-                const allele = formatAlleleSymbol(d.alleleSymbol);
                 return (
                   <tr
                     key={d.key}
@@ -192,8 +192,7 @@ const DataComparison = (props: Props) => {
                     </td>
                     <td>{d.phenotypingCentre}</td>
                     <td>
-                      {allele[0]}
-                      <sup>{allele[1]}</sup>
+                      <AlleleSymbol symbol={d.alleleSymbol} withLabel={false}/>
                     </td>
                     <td>{d.zygosity}</td>
                     {displayPValueColumns && (

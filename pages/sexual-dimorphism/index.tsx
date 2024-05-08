@@ -25,10 +25,9 @@ import {
   faVenus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { formatAlleleSymbol } from "@/utils";
 import Link from "next/link";
 import Head from "next/head";
-import { PublicationDataAlert } from "@/components";
+import { AlleleSymbol, PublicationDataAlert } from "@/components";
 
 ChartJS.register(
   LinearScale,
@@ -43,11 +42,9 @@ ChartJS.register(
 );
 
 const GeneLink = ({ gene }) => {
-  const allele = formatAlleleSymbol(gene.alleleSymbol);
   return (
     <Link className="primary link" href={`/genes/${gene.mgiGeneAccessionId}`}>
-      {allele[0]}
-      <sup>{allele[1]}</sup>
+      <AlleleSymbol symbol={gene.alleleSymbol} withLabel={false} />
     </Link>
   )
 }

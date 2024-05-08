@@ -144,7 +144,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   if (isLoading) {
     return (
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -153,7 +153,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   if (isError) {
     return (
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations</h2>
         <Alert variant="primary">No data available for this section</Alert>
       </Card>
     );
@@ -171,7 +171,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   return (
     <>
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations </h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations </h2>
         <div className="mb-4">
           <p>
             The analysis uses data from IMPC, along with published data on other
@@ -186,11 +186,19 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
           <Tab
             eventKey="associated"
-            title={`Human diseases associated with ${gene.geneSymbol} (${associatedData.length})`}
+            title={
+              <>
+                Human diseases associated with <i>{gene.geneSymbol}</i> ({associatedData.length})
+              </>
+            }
           ></Tab>
           <Tab
             eventKey="predicted"
-            title={`Human diseases predicted to be associated with ${gene.geneSymbol} (${predictedData.length})`}
+            title={
+              <>
+                Human diseases predicted to be associated with <i>{gene.geneSymbol}</i> ({predictedData.length})
+              </>
+            }
           ></Tab>
         </Tabs>
         {!selectedData || !selectedData.length ? (

@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
 import SkeletonTable from "@/components/skeletons/table";
-import { ABR, DataComparison, FlowCytometryImages, IPGTT } from "@/components/Data";
+import { ABR, DataComparison, FlowCytometryImages, IPGTT, PPI } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
 import { Dataset } from "@/models";
@@ -14,6 +14,13 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Skeleton from "react-loading-skeleton";
 import Head from "next/head";
 import { getChartType } from "@/components/Data/Utils";
+
+const parametersListPPI = [
+  "IMPC_ACS_033_001", // % PP1
+  "IMPC_ACS_034_001", // % PP2
+  "IMPC_ACS_035_001", // % PP3
+  "IMPC_ACS_036_001", // % PP4
+];
 
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
@@ -79,7 +86,13 @@ const Charts = () => {
     ? !!datasetSummaries.some(
       (dataset) => dataset.procedureStableId === "IMPC_IPG_001"
     )
-    :false;
+    : false;
+
+  const isPPIChart = !isError
+    ? !!datasetSummaries.some(
+      (dataset) => parametersListPPI.includes(dataset.parameterStableId)
+    )
+    : false;
 
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
   const activeDataset = !!selectedKey
@@ -87,6 +100,7 @@ const Charts = () => {
     : allSummaries[0];
 
 
+  const isSpecialChart = isIPGTTChart || isPPIChart;
   const extraChildren = (hasFlowCytometryImages && flowCytometryImages.length) ? <FlowCytometryImages images={flowCytometryImages} /> : null;
   const Chart = getChartType(activeDataset, true, extraChildren);
   return (
@@ -110,7 +124,7 @@ const Charts = () => {
                 }}
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
-                &nbsp; Go Back to {allSummaries?.[0]?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}
+                &nbsp; Go Back to <i>{allSummaries?.[0]?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}</i>
               </Link>
             </span>
           </div>
@@ -148,7 +162,7 @@ const Charts = () => {
               </div>
             </div>
           )}
-          {(!isLoading && !isError && !isIPGTTChart && allSummaries.length > 0 ) ? (
+          {(!isLoading && !isError && !isSpecialChart && allSummaries.length > 0 ) ? (
             <DataComparison
               data={allSummaries}
               isViabilityChart={isViabilityChart}
@@ -178,7 +192,12 @@ const Charts = () => {
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
             />
-          ) : (
+          ) : !!isPPIChart ? (
+            <PPI
+              datasetSummaries={datasetSummaries}
+              onNewSummariesFetched={setAdditionalSummaries}
+            />
+          ): (
             !!activeDataset && <div>{Chart}</div>
           )}
         </Container>

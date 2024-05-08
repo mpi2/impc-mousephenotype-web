@@ -369,11 +369,11 @@ const HistopathLandingPage = () => {
               <tbody>
                 {getDataSlice().map((gene) => (
                   <tr key={gene.id}>
-                    <td
-                      dangerouslySetInnerHTML={{
+                    <td>
+                      <i dangerouslySetInnerHTML={{
                         __html: rewriteWithQuery(gene.id),
-                      }}
-                    ></td>
+                      }}></i>
+                    </td>
                     <td>{displayFixedTissueColumn(gene)}</td>
                     {gene &&
                       gene.data &&

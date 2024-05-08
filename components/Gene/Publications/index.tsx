@@ -14,7 +14,6 @@ import { Publication } from "../../PublicationsList/types";
 import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { GeneDisease } from "@/models/gene";
 import { DownloadData } from "@/components";
 
 const ALLELES_COUNT = 2;
@@ -23,11 +22,11 @@ const AllelesCell = ({ pub }: { pub: Publication }) => {
   return (
     <>
       {alleles.slice(0, ALLELES_COUNT).map((symbol, index) => (
-        <Fragment key={index}>
+        <i key={index}>
           {symbol[0]}
           <sup>{symbol[1]}</sup>
           &nbsp;
-        </Fragment>
+        </i>
       ))}
       <MoreItemsTooltip items={pub.alleles.map(a => a.alleleSymbol)} maxItems={ALLELES_COUNT}/>
     </>
@@ -73,7 +72,7 @@ const Publications = ({ gene }: { gene: any }) => {
       <Card id="publications">
         <h2>IMPC related publications</h2>
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for the {gene.geneSymbol} gene.
+          No publications found that use IMPC mice or data for the <i>{gene.geneSymbol}</i> gene.
         </Alert>
       </Card>
     );
@@ -85,8 +84,7 @@ const Publications = ({ gene }: { gene: any }) => {
       <p>
         The table below lists publications which used either products generated
         by the IMPC or data produced by the phenotyping efforts of the IMPC.
-        These publications have also been associated to the {gene.geneSymbol}{" "}
-        gene.
+        These publications have also been associated to the <i>{gene.geneSymbol}</i> gene.
       </p>
       {!!sorted && sorted.length ? (
         <Pagination
@@ -169,7 +167,7 @@ const Publications = ({ gene }: { gene: any }) => {
         </Pagination>
       ) : (
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for the {gene.geneSymbol} gene.
+          No publications found that use IMPC mice or data for the <i>{gene.geneSymbol}</i> gene.
         </Alert>
       )}
     </Card>

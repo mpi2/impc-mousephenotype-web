@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "../../components/Card";
-import { useGeneComparator } from "../../components/GeneComparator";
+import { useGeneComparator } from "@/components/GeneComparator";
 import Search from "../../components/Search";
-import { allBodySystems } from "../../components/Gene/Summary";
-import { BodySystem } from "../../components/BodySystemIcon";
+import { allBodySystems } from "@/components/Gene/Summary";
+import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const GeneColumn = ({
   geneId,
@@ -38,7 +38,7 @@ const GeneColumn = ({
           justifyContent: "space-between",
         }}
       >
-        {data.geneSymbol}
+        <i>{data.geneSymbol}</i>
         <Button
           variant="link"
           onClick={() => {

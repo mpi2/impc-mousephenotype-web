@@ -38,7 +38,7 @@ const Expressions = () => {
       <Card id="expressions">
         <h2>lacZ Expression</h2>
         <Alert variant="primary">
-          No expression data available for {gene.geneSymbol}.
+          No expression data available for <i>{gene.geneSymbol}</i>.
         </Alert>
       </Card>
     );
@@ -88,7 +88,7 @@ const Expressions = () => {
         />
       ) : (
         <Alert variant="primary">
-          No {tab === 'adultExpressions' ? 'adult' : 'embryo'} expression data available for {gene.geneSymbol}.
+          No {tab === 'adultExpressions' ? 'adult' : 'embryo'} expression data available for <i>{gene.geneSymbol}</i>.
         </Alert>
       )}
     </Card>

@@ -9,9 +9,10 @@ import styles from "./styles.module.scss";
 type ChartSummaryProps = {
   datasetSummary: Dataset;
   additionalContent?: ReactNode;
-  title?: string;
+  title?: ReactNode;
   displayPValueStatement?: boolean;
   displayAssociatedPhenotype?: boolean;
+  showParameterName?: boolean
 };
 const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
   const {
@@ -21,6 +22,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
     children,
     displayPValueStatement = true,
     displayAssociatedPhenotype = true,
+    showParameterName = true,
   } = props;
   const [showMetadataModal, setShowMetadataModal] = useState(false);
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -49,24 +51,30 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
         >
           <h1 style={{ margin: 0 }}>
             <strong>
-              {!!title ? title : `${datasetSummary.geneSymbol} data charts`}
+              {!!title ? title : (
+                <>
+                  <i>{datasetSummary.geneSymbol}</i> data charts
+                </>
+              )}
             </strong>
           </h1>
-          <span
-            style={{
-              color: "#797676",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              lineHeight: "1.2",
-            }}
-          >
+          {showParameterName && (
+            <span
+              style={{
+                color: "#797676",
+                textTransform: "uppercase",
+                fontWeight: "500",
+                lineHeight: "1.2",
+              }}
+            >
             {datasetSummary.parameterName}
           </span>
+          )}
         </div>
         {displayPValueStatement && (
           <span
             className="mb-4"
-            style={{ display: "inline-block", fontSize: "1.2rem" }}
+            style={{display: "inline-block", fontSize: "1.2rem"}}
           >
             Combination tested with the lowest p-value of{" "}
             <strong>{pValue}</strong>
@@ -92,8 +100,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
                 {datasetSummary["summaryStatistics"]["femaleControlCount"]}{" "}
                 female,{" "}
                 {datasetSummary["summaryStatistics"]["maleControlCount"]} male
-                controls. The mutants are for the {allele[0]}
-                <sup>{allele[1]}</sup> allele.
+                controls. The mutants are for the <i>{allele[0]}<sup>{allele[1]}</sup></i> allele.
               </p>
             </>
           )}

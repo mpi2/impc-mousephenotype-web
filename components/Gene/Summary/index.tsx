@@ -103,7 +103,9 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
       </Head>
       <div className={styles.headingCont}>
         <h1 className="mt-2 mb-3">
-          <strong>{gene.geneSymbol}</strong>&nbsp;<span>|</span>&nbsp;{gene.geneName}
+          <strong><i>{gene.geneSymbol}</i></strong>
+          &nbsp;
+          <span>|</span>&nbsp;{gene.geneName}
         </h1>
       </div>
       <div className={styles.subheadingCont}>

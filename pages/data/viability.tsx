@@ -38,7 +38,7 @@ const ViabilityChartPage = () => {
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
                 &nbsp;
-                Go Back to {activeDataset?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}
+                Go Back to <i>{activeDataset?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}</i>
               </Link>
             </span>
           </div>
@@ -50,7 +50,7 @@ const ViabilityChartPage = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              Viability data for {viabilityData?.[0]?.["geneSymbol"] || <Skeleton width="50px" inline />} gene
+              Viability data for <i>{viabilityData?.[0]?.["geneSymbol"] || <Skeleton width="50px" inline />}</i> gene
             </strong>
           </h1>
           {!!viabilityData && (

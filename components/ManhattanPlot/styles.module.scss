@@ -1,4 +1,8 @@
 
+.mainWrapper {
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+}
 .chartWrapper {
   position: relative;
   max-height: 400px;
@@ -49,4 +53,11 @@
   &.visible {
     z-index: 2;
   }
+}
+.resultsSection {
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+  max-height: 400px;
+  overflow-y: auto;
 }
