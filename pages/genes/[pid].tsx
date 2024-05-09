@@ -95,7 +95,7 @@ export async function getStaticPaths() {
   const paths = geneList.map(geneAccessionId => ({
     params: { pid: geneAccessionId }
   }));
-  return { paths, fallback: true };
+  return { paths, fallback: "blocking" };
 }
 
 export default Gene;
