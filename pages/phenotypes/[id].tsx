@@ -11,22 +11,32 @@ import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import _ from 'lodash';
 import Head from "next/head";
+import phenotypeList from "../../mocks/data/all_phenotypes_list.json";
 
-const Phenotype = () => {
+type PhenotypePageProps = {
+  phenotype: PhenotypeSummary,
+};
+
+const sortPhenotypeProcedures = (data: PhenotypeSummary): PhenotypeSummary => ({
+  ...data,
+  procedures: _.uniqBy(data.procedures, 'procedureName').sort((a, b) => {
+    return a.procedureName.localeCompare(b.procedureName);
+  })
+});
+
+const Phenotype = (props: PhenotypePageProps) => {
+  const { phenotype: phenotypeFromServer } = props;
   const router = useRouter();
   const phenotypeId = router.query.id;
 
   const { data: phenotype, isLoading, isError } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'summary'],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
-    enabled: router.isReady,
-    select: (data: PhenotypeSummary) => ({
-      ...data,
-      procedures: _.uniqBy(data.procedures, 'procedureName').sort((a, b) => {
-        return a.procedureName.localeCompare(b.procedureName);
-      }),
-    } as PhenotypeSummary),
+    enabled: router.isReady && !phenotypeFromServer,
+    select: sortPhenotypeProcedures,
   });
+
+  const phenotypeData = phenotypeFromServer || phenotype
 
   return (
     <>
@@ -63,5 +73,20 @@ const Phenotype = () => {
     </>
   );
 };
+
+export async function getStaticProps(context) {
+  const { id: phenotypeId } = context.params;
+  const data = await fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`);
+  return {
+    props: { gene: data }
+  };
+}
+
+export async function getStaticPaths() {
+  const paths = phenotypeList.map(phenotypeId => ({
+    params: { id: phenotypeId }
+  }));
+  return { paths, fallback: "blocking" };
+}
 
 export default Phenotype;
