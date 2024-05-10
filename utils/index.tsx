@@ -244,8 +244,8 @@ export const getPhenStatReadyData = (datasetMetadata: Dataset, data: any) => {
 export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
   const fileName = `${datasetMetadata.parameterName}_${datasetMetadata.mgiGeneAccessionId}`;
   const outputData = [];
-  data.series.forEach((series) => {
-    series.observations.forEach((observation) => {
+  data?.series.forEach((series) => {
+    series?.observations.forEach((observation) => {
       let row = {};
       const age = calculateAgeInWeeks(
         observation.specimenDateOfBirth,

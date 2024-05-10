@@ -72,13 +72,18 @@ const ABR = (props: ABRProps) => {
       queryFn: () => fetchDatasetFromS3(d.datasetId),
     })),
   });
-  const loadingData = results.map((d) => d.isLoading).every(Boolean);
 
-  const downloads = loadingData
-    ? []
-    : datasetSummaries.map((d, i) => getDownloadData(d, results[i].data));
-  const downloadFields = downloads[0]?.fields || [];
-  const downloadData = downloads.flatMap((d) => d.data);
+  const produceDownloadData = (type: "data" | "fields") => {
+    const loadingData = results.map((d) => d.isLoading).every(Boolean);
+    const downloads = loadingData
+      ? []
+      : datasetSummaries.map((d, i) => getDownloadData(d, results[i].data));
+    if (type === "data") {
+      return downloads.flatMap((d) => d.data);
+    } else {
+      return downloads[0]?.fields || [];
+    }
+  }
 
   const getChartLabels = () => {
     return [
@@ -240,13 +245,11 @@ const ABR = (props: ABRProps) => {
           {" "}
           <Card>
             <h2>Experimental data download</h2>
-            {!loadingData && (
-              <DownloadData
-                fileName={`ABR_${datasetSummaries[0].mgiGeneAccessionId}`}
-                fields={downloadFields}
-                data={downloadData}
-              />
-            )}
+            <DownloadData
+              fileName={`ABR_${datasetSummaries[0].mgiGeneAccessionId}`}
+              fields={() => produceDownloadData("fields")}
+              data={() => produceDownloadData("data")}
+            />
           </Card>
         </Col>
       </Row>

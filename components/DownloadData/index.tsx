@@ -1,22 +1,25 @@
-import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import * as XLSX from "xlsx";
 
+type Field<T> = {
+  key: keyof T;
+  label: string;
+  getValueFn?: (data: T) => string;
+};
+
 type Props<T> = {
   fileName: string;
-  data: Array<T>;
-  fields: Array<{
-    key: keyof T;
-    label: string;
-    getValueFn?: (data: T) => string;
-  }>;
+  data: Array<T> | (() => Array<T>);
+  fields: Array<Field<T>> | (() => Array<Field<T>>);
 };
 
 const DownloadDataComponent = <T,>({ data, fields, fileName }: Props<T>) => {
   const generateXlsxFile = () => {
-    const rows = data.map((item) => {
-      return fields.reduce((obj, field) => {
+    const finalData = Array.isArray(data) ? data : data();
+    const finalFields = Array.isArray(fields) ? fields : fields();
+    const rows = finalData.map((item) => {
+      return finalFields.reduce((obj, field) => {
         obj[field.label] = !!field.getValueFn
           ? field.getValueFn(item)
           : (item[field.key] as string);
@@ -30,16 +33,18 @@ const DownloadDataComponent = <T,>({ data, fields, fileName }: Props<T>) => {
   };
 
   const generateTsvFile = () => {
-    const headers = fields.map((field) => field.label);
-    const rows = data.map((item) => {
-      return fields.map((field) =>
+    const finalData = Array.isArray(data) ? data : data();
+    const finalFields = Array.isArray(fields) ? fields : fields();
+    const headers = finalFields.map((field) => field.label);
+    const rows = finalData.map((item) => {
+      return finalFields.map((field) =>
         !!field.getValueFn
           ? field.getValueFn(item)
           : (item[field.key] as string)
       );
     });
-    const finalData = [headers, ...rows];
-    const tsvContent = finalData.reduce((content, row) => {
+    const fileData = [headers, ...rows];
+    const tsvContent = fileData.reduce((content, row) => {
       content += `${row.join("\t")}\n`;
       return content;
     }, "");
