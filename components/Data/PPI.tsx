@@ -68,12 +68,7 @@ const PPI = (props: PPIProps) => {
     onNewSummariesFetched
   );
 
-
   const results = useMultipleS3DatasetsQuery('PPI', datasets);
-
-  const barIsBigEnough = (ctx: Context) => {
-    return Math.abs(ctx.dataset.data[ctx.dataIndex] as number) > 15;
-  }
 
   const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
     const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);
