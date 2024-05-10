@@ -1,5 +1,5 @@
 import { Dataset } from "@/models";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
 import {
   Chart as ChartJS,
@@ -13,10 +13,7 @@ import {
   Colors,
 } from 'chart.js';
 import { Chart } from "react-chartjs-2";
-import {
-  BoxPlotController,
-  BoxAndWiskers,
-} from "@sgratzl/chartjs-chart-boxplot";
+import { ViolinController, Violin } from "@sgratzl/chartjs-chart-boxplot";
 import { Context } from "chartjs-plugin-datalabels";
 import { Card } from "@/components";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
@@ -35,8 +32,8 @@ ChartJS.register(
   Tooltip,
   Legend,
   Colors,
-  BoxPlotController,
-  BoxAndWiskers,
+  ViolinController,
+  Violin
 );
 
 
@@ -68,12 +65,7 @@ const PPI = (props: PPIProps) => {
     onNewSummariesFetched
   );
 
-
   const results = useMultipleS3DatasetsQuery('PPI', datasets);
-
-  const barIsBigEnough = (ctx: Context) => {
-    return Math.abs(ctx.dataset.data[ctx.dataIndex] as number) > 15;
-  }
 
   const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
     const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);
@@ -94,7 +86,7 @@ const PPI = (props: PPIProps) => {
       .filter(Boolean)
       .map(result => {
         return {
-          type: "boxplot" as const,
+          type: "violin" as const,
           label: result.label,
           data: [
             parseData(result.series, 'male', 'experimental'),
@@ -103,7 +95,7 @@ const PPI = (props: PPIProps) => {
             parseData(result.series, 'female', 'control'),
           ],
           borderWidth: 2,
-          itemRadius: 0,
+          itemRadius: 2,
           padding: 100,
           outlierRadius: 5,
           datalabels: {
@@ -140,7 +132,6 @@ const PPI = (props: PPIProps) => {
     plugins: {
       legend: { display: false },
     },
-
   };
 
   const chartData = {
@@ -175,7 +166,7 @@ const PPI = (props: PPIProps) => {
               plugins={[ChartDataLabels]}
             />
           ) : (
-            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
               <LoadingProgressBar/>
             </div>
           )}
