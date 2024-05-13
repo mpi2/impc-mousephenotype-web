@@ -14,13 +14,11 @@ import {
 } from 'chart.js';
 import { Chart } from "react-chartjs-2";
 import { ViolinController, Violin } from "@sgratzl/chartjs-chart-boxplot";
-import { Context } from "chartjs-plugin-datalabels";
 import { Card } from "@/components";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import AlleleSymbol from "@/components/AlleleSymbol";
 import { useMultipleS3DatasetsQuery } from "@/hooks";
-import ChartDataLabels from "@/shared/chart-js-plugins/datalabels";
 import quartileLinesPlugin from "@/utils/chart/violin-quartile-lines.plugin";
 
 
@@ -99,19 +97,6 @@ const PPI = (props: PPIProps) => {
           itemRadius: 2,
           padding: 100,
           outlierRadius: 5,
-          datalabels: {
-            labels: {
-              value: {
-                display: false,
-              },
-              name: {
-                align: "bottom" as const,
-                anchor: "start" as const,
-                offset: 8,
-                formatter: (_, ctx: Context) => ctx.dataset.label,
-              }
-            }
-          }
         }
       });
   }, [datasets, results]);
@@ -131,7 +116,7 @@ const PPI = (props: PPIProps) => {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { display: false },
+      legend: { display: true },
     },
   };
 
@@ -164,7 +149,7 @@ const PPI = (props: PPIProps) => {
               type="violin"
               data={chartData}
               options={chartOptions}
-              plugins={[ChartDataLabels, quartileLinesPlugin]}
+              plugins={[quartileLinesPlugin]}
             />
           ) : (
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
