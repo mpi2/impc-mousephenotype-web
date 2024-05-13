@@ -158,7 +158,7 @@ const PPI = (props: PPIProps) => {
       </ChartSummary>
       <Card>
         <div style={{position: "relative", height: "400px"}}>
-          {datasets.length >= 4 ? (
+          {results.length > 2 ? (
             <Chart
               type="boxplot"
               data={chartData}
