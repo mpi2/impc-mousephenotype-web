@@ -21,6 +21,7 @@ import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import AlleleSymbol from "@/components/AlleleSymbol";
 import { useMultipleS3DatasetsQuery } from "@/hooks";
 import ChartDataLabels from "@/shared/chart-js-plugins/datalabels";
+import quartileLinesPlugin from "@/utils/chart/violin-quartile-lines.plugin";
 
 
 ChartJS.register(
@@ -160,10 +161,10 @@ const PPI = (props: PPIProps) => {
         <div style={{position: "relative", height: "400px"}}>
           {results.length > 2 ? (
             <Chart
-              type="boxplot"
+              type="violin"
               data={chartData}
               options={chartOptions}
-              plugins={[ChartDataLabels]}
+              plugins={[ChartDataLabels, quartileLinesPlugin]}
             />
           ) : (
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
