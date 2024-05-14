@@ -246,7 +246,7 @@ const ImagesCompare = () => {
   const filterControlImages = (images: Array<Image>) => {
     return images?.filter((i) =>
       selectedSex !== "both" ? i.sex === selectedSex : true
-    );
+    )?.slice(0, 50);
   };
   const filterMutantImages = (images: Array<Image>) => {
     return images
