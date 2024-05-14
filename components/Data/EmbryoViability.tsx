@@ -1,5 +1,3 @@
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
@@ -12,6 +10,7 @@ import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { GeneralChartProps } from "@/models";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
+import { fetchDatasetFromS3 } from "@/api-service";
 
 const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const router = useRouter();
@@ -138,13 +137,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
 
   const { data, isLoading, error, isError } = useQuery({
     queryKey: ["dataset", datasetSummary["datasetId"]],
-    queryFn: () => {
-      const dataReleaseVersion =
-        process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest";
-      return fetch(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
-      ).then((res) => res.json());
-    },
+    queryFn: () => fetchDatasetFromS3(datasetSummary["datasetId"]),
     enabled: isVisible,
   });
 
