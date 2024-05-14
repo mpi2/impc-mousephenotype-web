@@ -9,7 +9,7 @@ import {
 import { Scatter } from "react-chartjs-2";
 import { chartColors } from "@/utils/chart";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchMHPlotDataFromS3 } from "@/api-service";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isEqual } from 'lodash';
@@ -55,7 +55,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
   });
   const [point, setPoint ] = useState<Point>({ x: -1, y: -1, geneList: '' });
   const [geneFilter, setGeneFilter] = useState('');
-  const [filterResultsAvailable, setFilterResultsAvailable] = useState<boolean>(true);
+
   const ticks = [];
   let originalTicks = [];
   const validChromosomes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 'X'];
@@ -223,7 +223,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
   const { data } = useQuery({
     queryKey: ['phenotype', phenotypeId, 'gwas'],
-    queryFn: () => fetchAPI(`/api/v1/phenotypestatsresults/${phenotypeId}/phenotype`),
+    queryFn: () => fetchMHPlotDataFromS3(phenotypeId),
     enabled: router.isReady,
     select: (response: PhenotypeStatsResults) => {
       const data = response.results;
@@ -323,6 +323,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
       }
     }
   }, [geneFilter, data, clickTooltip, point]);
+
   return (
     <div className={styles.mainWrapper}>
       <div className="chart">
