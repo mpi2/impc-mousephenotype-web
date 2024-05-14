@@ -29,3 +29,13 @@ export async function fetchDatasetFromS3(datasetId: string) {
   }
   return await response.json();
 }
+
+export async function fetchMHPlotDataFromS3(mpId: string) {
+  const response = await fetch(
+    `https://impc-datasets.s3.eu-west-2.amazonaws.com/phenotype-stats-results/${DR_DATASET_VERSION}/${mpId}.json`
+  );
+  if (!response.ok) {
+    return Promise.reject(`An error has occured: ${response.status}`);
+  }
+  return await response.json();
+}
