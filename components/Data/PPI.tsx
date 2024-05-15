@@ -1,5 +1,5 @@
 import { Dataset } from "@/models";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
 import {
   Chart as ChartJS,
@@ -30,9 +30,9 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Colors,
   ViolinController,
-  Violin
+  Violin,
+  Colors,
 );
 
 
@@ -93,8 +93,7 @@ const PPI = (props: PPIProps) => {
             parseData(result.series, 'female', 'experimental'),
             parseData(result.series, 'female', 'control'),
           ],
-          borderWidth: 2,
-          itemRadius: 2,
+          itemRadius: 0,
           padding: 100,
           outlierRadius: 5,
         }
@@ -143,14 +142,80 @@ const PPI = (props: PPIProps) => {
         </ul>
       </ChartSummary>
       <Card>
-        <div style={{position: "relative", height: "400px"}}>
+        <div>
           {results.length > 2 ? (
-            <Chart
-              type="violin"
-              data={chartData}
-              options={chartOptions}
-              plugins={[quartileLinesPlugin]}
-            />
+            <>
+              <div style={{position: "relative", height: "400px"}}>
+                <Chart
+                  type="violin"
+                  data={chartData}
+                  options={chartOptions}
+                  plugins={[quartileLinesPlugin]}
+                />
+              </div>
+              <div>
+                <div>
+                  <div style={{display: "inline-block"}}>
+                    Top
+                    <hr
+                      style={{
+                        border: "none",
+                        borderTop: "3px dotted #000",
+                        height: "3px",
+                        width: "30px",
+                        display: 'inline-block',
+                        margin: '0 0 0 0.5rem',
+                        opacity: 1
+                      }}
+                    />
+                    &nbsp;line: 75th percentile
+                  </div>
+                  <br/>
+                  <div style={{display: "inline-block"}}>
+                    Middle
+                    <hr
+                      style={{
+                        border: "none",
+                        borderTop: "3px dashed #000",
+                        height: "3px",
+                        width: "30px",
+                        display: 'inline-block',
+                        margin: '0 0 0 0.5rem',
+                        opacity: 1
+                      }}
+                    />
+                    &nbsp;line: 50th percentile
+                  </div>
+                  <br/>
+                  <div style={{display: "inline-block"}}>
+                    Bottom
+                    <hr
+                      style={{
+                        border: "none",
+                        borderTop: "3px dotted #000",
+                        height: "3px",
+                        width: "30px",
+                        display: 'inline-block',
+                        margin: '0 0 0 0.5rem',
+                        opacity: 1
+                      }}
+                    />
+                    &nbsp;line: 25th percentile
+                  </div>
+                  <br/>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', }}>
+                    <div style={{
+                      display: 'inline-block',
+                      border: '1px solid #000',
+                      width: '12px',
+                      height: '12px',
+                      transform: 'rotateZ(45deg)'
+                    }} />
+                    : mean value
+                  </div>
+                </div>
+              </div>
+            </>
           ) : (
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
               <LoadingProgressBar/>

@@ -3,7 +3,7 @@ function drawLine(ctx, plotData, propDataKey, dashLinePattern) {
   const {
     x: xValue,
     width,
-    maxEstimate,
+    maxEstimate = 1,
     coords = [],
   } = plotData;
   const yValue = plotData[propDataKey];
@@ -12,7 +12,7 @@ function drawLine(ctx, plotData, propDataKey, dashLinePattern) {
   , Infinity);
   // need to make same calculations as plugin to match violin border
   // https://github.com/sgratzl/chartjs-chart-boxplot/blob/c247c6beca9925c4bb5c29aa8af4e306ff8faacc/src/elements/Violin.ts#L73
-  const estimate = coords.find(c => c.v === closestValue).estimate;
+  const estimate = coords.find(c => c.v === closestValue)?.estimate || 1;
   const factor = width / 2 / maxEstimate;
   const xInitialPos = xValue - (estimate * factor);
   const xFinalPos = xValue + (estimate * factor);
