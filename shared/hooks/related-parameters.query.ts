@@ -42,7 +42,7 @@ export const useRelatedParametersQuery = (
         responses.forEach((datasets) => {
           const uniques = [];
           datasets
-            .filter(ds => ds.metadataGroup !== metadataGroup)
+            .filter(ds => ds.metadataGroup === metadataGroup)
             .forEach(({ id, ...ds }) => {
               if (!uniques.find((d) => _.isEqual(d, ds))) {
                 uniques.push({ id, ...ds });
