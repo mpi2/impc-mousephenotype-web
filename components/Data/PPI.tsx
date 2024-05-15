@@ -1,5 +1,5 @@
 import { Dataset } from "@/models";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
 import {
   Chart as ChartJS,
@@ -20,6 +20,10 @@ import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import AlleleSymbol from "@/components/AlleleSymbol";
 import { useMultipleS3DatasetsQuery } from "@/hooks";
 import quartileLinesPlugin from "@/utils/chart/violin-quartile-lines.plugin";
+import { Col, Row, Tab, Tabs } from "react-bootstrap";
+import SortableTable from "@/components/SortableTable";
+import StatisticalMethodTable from "@/components/Data/StatisticalMethodTable";
+import { generateSummaryStatistics } from "@/utils/chart";
 
 
 ChartJS.register(
@@ -222,6 +226,43 @@ const PPI = (props: PPIProps) => {
             </div>
           )}
         </div>
+      </Card>
+      <Card>
+        <h2>Statistical information</h2>
+        <Tabs>
+          {datasets.map(ds => {
+            const result = results.find(r => r.datasetId === ds.datasetId);
+            const statistics = (!!result) ? generateSummaryStatistics(ds, result.series) : [];
+            return (
+              <Tab title={ds.parameterName} eventKey={ds.parameterStableId}>
+                <Row>
+                  <Col lg={6}>
+                    <SortableTable
+                      headers={[
+                        { width: 5, label: "", disabled: true },
+                        { width: 2, label: "Mean", disabled: true },
+                        { width: 2, label: "Stddev", disabled: true },
+                        { width: 3, label: "# Samples", disabled: true },
+                      ]}
+                    >
+                      {statistics.map((stats) => (
+                        <tr>
+                          <td>{stats.label}</td>
+                          <td>{stats.mean}</td>
+                          <td>{stats.stddev}</td>
+                          <td>{stats.count}</td>
+                        </tr>
+                      ))}
+                    </SortableTable>
+                  </Col>
+                  <Col lg={6}>
+                    <StatisticalMethodTable datasetSummary={ds} onlyDisplayTable />
+                  </Col>
+                </Row>
+              </Tab>
+            )
+          })}
+        </Tabs>
       </Card>
     </>
   );
