@@ -18,6 +18,7 @@ export const useRelatedParametersQuery = (
       zygosity,
       procedureStableId,
       phenotypingCentre,
+      metadataGroup,
     } = allDatasets[0];
     const proceduresWithData = allDatasets.map((d) => d.parameterStableId);
     const missingProcedures = allParametersList.filter(
@@ -40,13 +41,17 @@ export const useRelatedParametersQuery = (
         const proceduresData = [];
         responses.forEach((datasets) => {
           const uniques = [];
-          datasets.forEach(({ id, ...ds }) => {
-            if (!uniques.find((d) => _.isEqual(d, ds))) {
-              uniques.push({ id, ...ds });
-            }
+          datasets
+            .filter(ds => ds.metadataGroup !== metadataGroup)
+            .forEach(({ id, ...ds }) => {
+              if (!uniques.find((d) => _.isEqual(d, ds))) {
+                uniques.push({ id, ...ds });
+              }
           });
           const selectedDataset = uniques[0];
-          proceduresData.push(selectedDataset);
+          if (!!selectedDataset) {
+            proceduresData.push(selectedDataset);
+          }
         });
         return proceduresData;
       })
