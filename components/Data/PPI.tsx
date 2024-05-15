@@ -57,7 +57,6 @@ type PPIProps = {
 
 const PPI = (props: PPIProps) => {
   const { datasetSummaries, onNewSummariesFetched } = props;
-  const [ hideWTPoints, setHideWTPoints ] = useState(false);
 
   const datasets = useRelatedParametersQuery(
     datasetSummaries,
@@ -99,7 +98,7 @@ const PPI = (props: PPIProps) => {
           outlierRadius: 5,
         }
       });
-  }, [datasets, results, hideWTPoints]);
+  }, [datasets, results]);
 
   const chartLabels = useMemo(() => {
     const zygosity = datasets?.[0]?.zygosity;
