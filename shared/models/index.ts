@@ -13,7 +13,7 @@ export type { GrossPathology, GrossPathologyDataset } from './gross-pathology';
 export type { Dataset } from './dataset';
 export type { Gene };
 export type { Phenotype };
-export type { GeneralChartProps } from './chart';
+export type { GeneralChartProps, ChartSeries } from './chart';
 export type { EventHandler, EventBus, Bus, EventMap } from './eventbus';
 
 type Model =
