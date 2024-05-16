@@ -1,4 +1,4 @@
-import geneList from '../mocks/data/all_genes_list.json';
+import phenotypesList from '../mocks/data/all_phenotypes_list.json';
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 function getFormatedDate(date: Date) {
@@ -10,16 +10,16 @@ function generateSiteMap() {
   const now = new Date();
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-    ${geneList.map(geneAccessionId => {
-      return `
-        <url>
-          <loc>${WEBSITE_URL}/data/genes/${geneAccessionId}</loc>
-          <lastmod>${getFormatedDate(now)}</lastmod>
-          <changefreq>weekly</changefreq>
-          <priority>0.5</priority>
-        </url>
-      `;
-    })
+    ${phenotypesList.map(geneAccessionId => {
+    return `
+      <url>
+        <loc>${WEBSITE_URL}/data/phenotypes/${geneAccessionId}</loc>
+        <lastmod>${getFormatedDate(now)}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+      </url>
+    `;
+  })
     .join("")}
    </urlset>
  `;
@@ -30,4 +30,4 @@ export function getServerSideProps({ res }) {
   res.write(sitemap);
   res.end();
 }
-export default function GenesSiteMap() {};
+export default function PhenotypesSiteMap() {};
