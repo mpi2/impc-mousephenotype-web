@@ -11,11 +11,13 @@ import {
 } from "@/components/Data";
 import { ReactNode } from "react";
 
+const defaultChildren = <></>;
 export const getChartType = (
   datasetSummary: Dataset,
   isVisible: boolean = true,
-  extraChildren: ReactNode = <></>,
+  extraChildren: ReactNode,
 ) => {
+  const children = !!extraChildren ? extraChildren : defaultChildren;
   let chartType = datasetSummary?.dataType;
   if (chartType == "line" || chartType == "embryo") {
     chartType =
@@ -40,20 +42,20 @@ export const getChartType = (
     case "unidimensional":
       return (
         <Unidimensional datasetSummary={datasetSummary} isVisible={isVisible}>
-          {extraChildren}
+          {children}
         </Unidimensional>
       );
     case "categorical":
       return (
         <Categorical datasetSummary={datasetSummary} isVisible={isVisible}>
-          {extraChildren}
+          {children}
         </Categorical>
       );
 
     case "time_series":
       return (
         <TimeSeries datasetSummary={datasetSummary} isVisible={isVisible}>
-          {extraChildren}
+          {children}
         </TimeSeries>
       );
     case "viability":
