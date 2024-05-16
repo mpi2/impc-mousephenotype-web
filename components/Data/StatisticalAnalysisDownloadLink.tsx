@@ -2,6 +2,7 @@ import { Dataset } from "@/models/dataset";
 import { getPhenStatReadyData } from "@/utils";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
 type StatisticalAnalysisDownloadLinkProps = {
   datasetSummary: Dataset;
@@ -42,4 +43,4 @@ const StatisticalAnalysisDownloadLink = ({
   );
 };
 
-export default StatisticalAnalysisDownloadLink;
+export default React.memo(StatisticalAnalysisDownloadLink);

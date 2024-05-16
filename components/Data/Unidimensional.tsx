@@ -15,6 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
 import { fetchDatasetFromS3 } from "@/api-service";
+import React from "react";
 
 type ChartSeries = {
   data: Array<any>;
@@ -130,6 +131,10 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
     },
     enabled: isVisible,
   });
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <>
@@ -319,4 +324,4 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
   );
 };
 
-export default Unidimensional;
+export default React.memo(Unidimensional);
