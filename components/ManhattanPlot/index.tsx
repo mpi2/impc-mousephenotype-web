@@ -9,7 +9,7 @@ import {
 import { Scatter } from "react-chartjs-2";
 import { chartColors } from "@/utils/chart";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchMHPlotDataFromS3 } from "@/api-service";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isEqual } from 'lodash';
@@ -31,7 +31,7 @@ type ChromosomeDataPoint = {
   seqRegionEnd: number;
   significant: boolean;
   // fields created by FE
-  pos?: number,
+  pos?: number;
 };
 
 type Point = {x: number, y: number, geneList: string};
@@ -55,7 +55,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
   });
   const [point, setPoint ] = useState<Point>({ x: -1, y: -1, geneList: '' });
   const [geneFilter, setGeneFilter] = useState('');
-  const [filterResultsAvailable, setFilterResultsAvailable] = useState<boolean>(true);
+
   const ticks = [];
   let originalTicks = [];
   const validChromosomes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 'X'];
@@ -222,53 +222,77 @@ const ManhattanPlot = ({ phenotypeId }) => {
   }), [geneFilter, point, ticks]);
 
   const { data } = useQuery({
-    queryKey: ['phenotype', phenotypeId, 'gwas'],
-    queryFn: () => fetchAPI(`/api/v1/phenotypestatsresults/${phenotypeId}/phenotype`),
+    queryKey: ['phenotype', phenotypeId, 'mh-plot-data'],
+    queryFn: () => fetchMHPlotDataFromS3(phenotypeId),
     enabled: router.isReady,
     select: (response: PhenotypeStatsResults) => {
       const data = response.results;
       const genes = new Set<string>();
       const mgiAccessionIds = new Set<string>();
-      const groupedByChr: Record<string, Array<ChromosomeDataPoint>> = {};
+      // use a object to store points and access it by chromosome and then mgiAccessionId
+      // to avoid duplication of data, select point with lowest pValue
+      const groupedByChr: Record<string, Map<string, ChromosomeDataPoint>> = {};
       data.forEach(point => {
         const chromosome = point.chrName;
         const isAValidChromosome = validChromosomes.includes(chromosome);
         if (chromosome&& !groupedByChr[chromosome] && isAValidChromosome) {
-          groupedByChr[chromosome] = [];
+          groupedByChr[chromosome] = new Map();
         }
         if (chromosome && isAValidChromosome) {
-          groupedByChr[chromosome].push(point);
           genes.add(point.markerSymbol);
           mgiAccessionIds.add(point.mgiGeneAccessionId);
+          const choromosomeGeneMap = groupedByChr[chromosome];
+          if (choromosomeGeneMap.has(point.mgiGeneAccessionId)) {
+            const existingPoint = choromosomeGeneMap.get(point.mgiGeneAccessionId);
+            // check if current point has a different value than null, comparison it's going to be always true with null
+            if (point.reportedPValue !== null && point.reportedPValue < existingPoint.reportedPValue) {
+              choromosomeGeneMap.set(existingPoint.mgiGeneAccessionId, point);
+            }
+          } else {
+            choromosomeGeneMap.set(point.mgiGeneAccessionId, point);
+          }
         }
       });
       let basePoint = 0;
+      // create another object with arrays, to generate the position for each point and being
+      // able to sort them
+      const listOfGenesByChromosome: Record<string, Array<ChromosomeDataPoint>> = {};
       Object.keys(groupedByChr).forEach(chr => {
-        groupedByChr[chr].forEach(value => value.pos = value.seqRegionStart + basePoint);
-        groupedByChr[chr].sort((g1, g2) => {
+        let arrayOfPoints = Array.from(groupedByChr[chr].values());
+        arrayOfPoints = arrayOfPoints.map(value => ({ ...value, pos: value.seqRegionStart + basePoint }));
+        arrayOfPoints.sort((g1, g2) => {
           const { seqRegionStart: seqRS1 } = g1;
           const { seqRegionStart: seqRS2 } = g2;
           return seqRS1 - seqRS2;
         });
-        const maxPoint = groupedByChr[chr].slice(-1)[0];
-        const minPoint = groupedByChr[chr][0];
+        const maxPoint = arrayOfPoints.slice(-1)[0];
+        const minPoint = arrayOfPoints[0];
         basePoint = maxPoint.pos;
         ticks.push({ value: ((maxPoint.pos + minPoint.pos) / 2) + 1, label: chr });
+        listOfGenesByChromosome[chr] = arrayOfPoints;
       });
       originalTicks = clone(ticks);
       options.scales.x.max = basePoint;
       const result = {
-        datasets: Object.keys(groupedByChr).map((chr, i) =>  ({
+        datasets: Object.keys(listOfGenesByChromosome).map((chr, i) =>  ({
           label: chr,
-          data: groupedByChr[chr].map(({ pos, reportedPValue, markerSymbol, mgiGeneAccessionId, significant }) => ({
-            x: pos,
-            y: transformPValue(reportedPValue, significant),
-            geneSymbol: markerSymbol,
-            pValue: reportedPValue,
-            mgiGeneAccessionId,
-            chromosome: chr,
-            significant,
-          })),
+          data: Array.from(listOfGenesByChromosome[chr].values()).map(
+            ({
+               pos,
+               reportedPValue,
+               markerSymbol,
+               mgiGeneAccessionId,
+               significant
+            }) => ({
+              x: pos,
+              y: transformPValue(reportedPValue, significant),
+              geneSymbol: markerSymbol,
+              pValue: reportedPValue,
+              mgiGeneAccessionId,
+              chromosome: chr,
+              significant,
+            })
+          ),
           backgroundColor: chartColors[i],
           parsing: false
         }))
@@ -276,7 +300,11 @@ const ManhattanPlot = ({ phenotypeId }) => {
       result.datasets.push({
         label: 'P-value threshold',
         type: "line" as const,
-        data: Object.keys(groupedByChr).map(chr => ({ x: getThresholdXPos(chr, groupedByChr[chr]), y: 4 })),
+        data: Object.keys(listOfGenesByChromosome)
+          .map(chr => ({
+            x: getThresholdXPos(chr, listOfGenesByChromosome[chr]),
+            y: 4 }
+          )),
         borderColor: "black",
         pointStyle: "rect",
         borderDash: [5, 5],
@@ -323,6 +351,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
       }
     }
   }, [geneFilter, data, clickTooltip, point]);
+
   return (
     <div className={styles.mainWrapper}>
       <div className="chart">
@@ -362,7 +391,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
             <Scatter ref={chartRef} options={options as any} data={data.chartData as any}/>
           </div>
         ) : (
-          <div style={{display: 'flex', justifyContent: 'center'}}>
+          <div className="mt-4" style={{display: 'flex', justifyContent: 'center'}}>
             <LoadingProgressBar/>
           </div>
         )}

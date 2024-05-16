@@ -20,6 +20,10 @@ import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import AlleleSymbol from "@/components/AlleleSymbol";
 import { useMultipleS3DatasetsQuery } from "@/hooks";
 import quartileLinesPlugin from "@/utils/chart/violin-quartile-lines.plugin";
+import { Col, Row, Tab, Tabs } from "react-bootstrap";
+import SortableTable from "@/components/SortableTable";
+import StatisticalMethodTable from "@/components/Data/StatisticalMethodTable";
+import { generateSummaryStatistics } from "@/utils/chart";
 
 
 ChartJS.register(
@@ -30,9 +34,9 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Colors,
   ViolinController,
-  Violin
+  Violin,
+  Colors,
 );
 
 
@@ -93,8 +97,7 @@ const PPI = (props: PPIProps) => {
             parseData(result.series, 'female', 'experimental'),
             parseData(result.series, 'female', 'control'),
           ],
-          borderWidth: 2,
-          itemRadius: 2,
+          itemRadius: 0,
           padding: 100,
           outlierRadius: 5,
         }
@@ -143,20 +146,123 @@ const PPI = (props: PPIProps) => {
         </ul>
       </ChartSummary>
       <Card>
-        <div style={{position: "relative", height: "400px"}}>
+        <div>
           {results.length > 2 ? (
-            <Chart
-              type="violin"
-              data={chartData}
-              options={chartOptions}
-              plugins={[quartileLinesPlugin]}
-            />
+            <>
+              <div style={{position: "relative", height: "400px"}}>
+                <Chart
+                  type="violin"
+                  data={chartData}
+                  options={chartOptions}
+                  plugins={[quartileLinesPlugin]}
+                />
+              </div>
+              <div>
+                <div>
+                  <div style={{display: "inline-block"}}>
+                    Top
+                    <hr
+                      style={{
+                        border: "none",
+                        borderTop: "3px dotted #000",
+                        height: "3px",
+                        width: "30px",
+                        display: 'inline-block',
+                        margin: '0 0 0 0.5rem',
+                        opacity: 1
+                      }}
+                    />
+                    &nbsp;line: 75th percentile
+                  </div>
+                  <br/>
+                  <div style={{display: "inline-block"}}>
+                    Middle
+                    <hr
+                      style={{
+                        border: "none",
+                        borderTop: "3px dashed #000",
+                        height: "3px",
+                        width: "30px",
+                        display: 'inline-block',
+                        margin: '0 0 0 0.5rem',
+                        opacity: 1
+                      }}
+                    />
+                    &nbsp;line: 50th percentile
+                  </div>
+                  <br/>
+                  <div style={{display: "inline-block"}}>
+                    Bottom
+                    <hr
+                      style={{
+                        border: "none",
+                        borderTop: "3px dotted #000",
+                        height: "3px",
+                        width: "30px",
+                        display: 'inline-block',
+                        margin: '0 0 0 0.5rem',
+                        opacity: 1
+                      }}
+                    />
+                    &nbsp;line: 25th percentile
+                  </div>
+                  <br/>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', }}>
+                    <div style={{
+                      display: 'inline-block',
+                      border: '1px solid #000',
+                      width: '12px',
+                      height: '12px',
+                      transform: 'rotateZ(45deg)'
+                    }} />
+                    : mean value
+                  </div>
+                </div>
+              </div>
+            </>
           ) : (
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
               <LoadingProgressBar/>
             </div>
           )}
         </div>
+      </Card>
+      <Card>
+        <h2>Statistical information</h2>
+        <Tabs>
+          {datasets.map(ds => {
+            const result = results.find(r => r.datasetId === ds.datasetId);
+            const statistics = (!!result) ? generateSummaryStatistics(ds, result.series) : [];
+            return (
+              <Tab title={ds.parameterName} eventKey={ds.parameterStableId}>
+                <Row>
+                  <Col lg={6}>
+                    <SortableTable
+                      headers={[
+                        { width: 5, label: "", disabled: true },
+                        { width: 2, label: "Mean", disabled: true },
+                        { width: 2, label: "Stddev", disabled: true },
+                        { width: 3, label: "# Samples", disabled: true },
+                      ]}
+                    >
+                      {statistics.map((stats) => (
+                        <tr>
+                          <td>{stats.label}</td>
+                          <td>{stats.mean}</td>
+                          <td>{stats.stddev}</td>
+                          <td>{stats.count}</td>
+                        </tr>
+                      ))}
+                    </SortableTable>
+                  </Col>
+                  <Col lg={6}>
+                    <StatisticalMethodTable datasetSummary={ds} onlyDisplayTable />
+                  </Col>
+                </Row>
+              </Tab>
+            )
+          })}
+        </Tabs>
       </Card>
     </>
   );

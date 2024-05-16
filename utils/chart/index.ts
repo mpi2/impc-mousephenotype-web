@@ -1,3 +1,6 @@
+import moment from "moment/moment";
+import { ChartSeries, Dataset } from "@/models";
+import _ from "lodash";
 
 export const chartColors = [
   'rgba(9, 120, 161, 1)',
@@ -37,3 +40,90 @@ export const wildtypeChartColors = {
   fullOpacity: 'rgb(212, 17, 89)',
   halfOpacity: 'rgba(212, 17, 89, 0.5)',
 };
+
+export const getScatterSeries = (
+  dataSeries: Array<ChartSeries<any>>,
+  specimenSex: "male" | "female",
+  sampleGroup: "control" | "experimental"
+) => {
+  if (!dataSeries) {
+    return null;
+  }
+  const data =
+    dataSeries
+      .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === specimenSex)
+      ?.["observations"].map((p) => {
+        return {
+          ...p,
+          x: moment(p.dateOfExperiment),
+          y: +p.dataPoint,
+        };
+    }) || [];
+  return {
+    specimenSex,
+    sampleGroup,
+    data,
+  };
+};
+
+export const filterChartSeries = (
+  zygosity: string,
+  seriesArray: Array<ChartSeries<any>>
+) => {
+  if (zygosity === "hemizygote") {
+    return seriesArray.filter((c) => c.specimenSex === "male");
+  }
+  const validExperimentalSeries = seriesArray.filter(
+    (c) => c.sampleGroup === "experimental" && c.data.length > 0
+  );
+  const validExperimentalSeriesSexes = validExperimentalSeries.map(
+    (c) => c.specimenSex
+  );
+  const controlSeries = seriesArray.filter(
+    (c) =>
+      c.sampleGroup === "control" &&
+      validExperimentalSeriesSexes.includes(c.specimenSex)
+  );
+  return [...controlSeries, ...validExperimentalSeries];
+};
+
+export const updateSummaryStatistics = (datasetSummary: Dataset, chartSeries: Array<ChartSeries<any>>) => {
+  const zygosity = datasetSummary.zygosity;
+  return chartSeries.map((serie) => {
+    const { sampleGroup, specimenSex } = serie;
+    const sampleGroupKey = sampleGroup === "control" ? "Control" : "Mutant";
+    const meanKey = `${specimenSex}${sampleGroupKey}Mean`;
+    const stddevKey = `${specimenSex}${sampleGroupKey}Sd`;
+    const countKey = `${specimenSex}${sampleGroupKey}Count`;
+    return {
+      label: `${_.capitalize(specimenSex)} ${
+        sampleGroup === "control" ? "Control" : _.capitalize(zygosity)
+      }`,
+      mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
+      stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
+      count: datasetSummary.summaryStatistics?.[countKey] || 0,
+    };
+  });
+};
+
+export const generateSummaryStatistics = (dataset: Dataset, dataSeries: Array<any>) => {
+  const femaleWTPoints = getScatterSeries(dataSeries, "female", "control");
+  const maleWTPoints = getScatterSeries(dataSeries, "male", "control");
+  const femaleHomPoints = getScatterSeries(
+    dataSeries,
+    "female",
+    "experimental"
+  );
+  const maleHomPoints = getScatterSeries(
+    dataSeries,
+    "male",
+    "experimental"
+  );
+  const allSeries = filterChartSeries(dataset.zygosity, [
+    femaleWTPoints,
+    maleWTPoints,
+    femaleHomPoints,
+    maleHomPoints,
+  ]);
+  return updateSummaryStatistics(dataset, allSeries);
+}

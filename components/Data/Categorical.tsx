@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
+import { fetchDatasetFromS3 } from "@/api-service";
 
 const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
   if (zygosity === "hemizygote") {
@@ -38,13 +39,7 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
       datasetSummary.parameterName,
       datasetSummary.datasetId,
     ],
-    queryFn: () => {
-      const dataReleaseVersion =
-        process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest";
-      return fetch(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
-      ).then((res) => res.json());
-    },
+    queryFn: () => fetchDatasetFromS3(datasetSummary["datasetId"]),
     select: (response) => {
       const series: Array<any> = [];
       const index = {};

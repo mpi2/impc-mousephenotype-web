@@ -44,32 +44,32 @@ const Phenotype = (props: PhenotypePageProps) => {
         <title>{`${phenotype?.phenotypeId} (${phenotype?.phenotypeName})`} | IMPC Phenotype Information | International Mouse Phenotyping Consortium</title>
       </Head>
       <PhenotypeContext.Provider value={phenotype}>
-      <Search defaultType="phenotype" />
-      <Container className="page">
-        <Summary {...{ phenotype, isLoading, isError }}/>
-        <Card id="associations-table">
-          <Associations />
-        </Card>
-        <Card>
-          <h2>Most significant associations for {phenotype?.phenotypeName}</h2>
-          <ManhattanPlot phenotypeId={phenotypeId}  />
-        </Card>
-        <Card>
-          <h2>The way we measure</h2>
-          <p>Procedure</p>
-          {phenotype?.procedures.map(prod => (
-            <p key={prod.procedureStableId}>
-              <a
-                className="secondary"
-                href={`https://www.mousephenotype.org/impress/search?searchterm=${prod.procedureName}`}
-              >
-                {prod.procedureName}
-              </a>
-            </p>
-          ))}
-        </Card>
-      </Container>
-    </PhenotypeContext.Provider>
+        <Search defaultType="phenotype" />
+        <Container className="page">
+          <Summary {...{ phenotype, isLoading, isError }}/>
+          <Card id="associations-table">
+            <Associations />
+          </Card>
+          <Card>
+            <h2>Most significant associations for {phenotype?.phenotypeName}</h2>
+            <ManhattanPlot phenotypeId={phenotypeId}  />
+          </Card>
+          <Card>
+            <h2>The way we measure</h2>
+            <p>Procedure</p>
+            {phenotype?.procedures.map(prod => (
+              <p key={prod.procedureStableId}>
+                <a
+                  className="secondary"
+                  href={`https://www.mousephenotype.org/impress/search?searchterm=${prod.procedureName}`}
+                >
+                  {prod.procedureName}
+                </a>
+              </p>
+            ))}
+          </Card>
+        </Container>
+      </PhenotypeContext.Provider>
     </>
   );
 };

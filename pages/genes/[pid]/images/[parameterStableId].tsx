@@ -246,7 +246,7 @@ const ImagesCompare = () => {
   const filterControlImages = (images: Array<Image>) => {
     return images?.filter((i) =>
       selectedSex !== "both" ? i.sex === selectedSex : true
-    );
+    )?.slice(0, 50);
   };
   const filterMutantImages = (images: Array<Image>) => {
     return images
@@ -372,7 +372,7 @@ const ImagesCompare = () => {
             <Row>
               <Col sm={6}>
                 <div className={styles.headerContainer}>
-                  <h3 style={{marginBottom: 0}}>WT Images ({selectedControlImages?.length})</h3>
+                  <h3 style={{marginBottom: 0}}>WT Images ({controlImages?.length})</h3>
                   <FilterBox
                     controlId="controlCenterFilter"
                     label="Center"
@@ -398,7 +398,7 @@ const ImagesCompare = () => {
               </Col>
               <Col sm={6}>
                 <div className={styles.headerContainer}>
-                  <h3 style={{marginBottom: 0}}>Mutant Images ({selectedMutantImages?.length})</h3>
+                  <h3 style={{marginBottom: 0}}>Mutant Images ({filteredMutantImages?.length})</h3>
                   <FilterBox
                     controlId="mutantCenterFilter"
                     label="Center"

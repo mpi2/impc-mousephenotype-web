@@ -5,16 +5,18 @@ import { Dataset } from "@/models";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import React, { Fragment } from "react";
 
 type Props = {
-  datasetSummary: Dataset
+  datasetSummary: Dataset,
+  onlyDisplayTable?: boolean,
 }
-const StatisticalMethodTable = ({ datasetSummary }: Props) => {
+const StatisticalMethodTable = ({ datasetSummary, onlyDisplayTable = false }: Props) => {
+  const WrapperCmp = onlyDisplayTable ? Fragment : Card;
   const { statisticalMethod: { attributes } } = datasetSummary;
   if (datasetSummary.resourceName === '3i') {
     return (
-      <Card>
+      <WrapperCmp>
         <h2>Statistical method</h2>
         <span>Supplied as data</span>
         <span>
@@ -32,12 +34,12 @@ const StatisticalMethodTable = ({ datasetSummary }: Props) => {
               size="xs"
             />
         </span>
-      </Card>
+      </WrapperCmp>
     )
   }
   if (datasetSummary.resourceName === 'pwg') {
     return (
-      <Card>
+      <WrapperCmp>
         <h2>Statistical method</h2>
         <span>Supplied as data</span>
         <span>
@@ -49,12 +51,12 @@ const StatisticalMethodTable = ({ datasetSummary }: Props) => {
             Pain sensitivity publication
           </Link>
         </span>
-      </Card>
+      </WrapperCmp>
     )
   }
   return (
-    <Card>
-      <h2>Statistical method</h2>
+    <WrapperCmp>
+      {!onlyDisplayTable && <h2>Statistical method</h2>}
       <SortableTable
         headers={[
           { width: 8, label: "Model attribute", disabled: true },
@@ -191,7 +193,7 @@ const StatisticalMethodTable = ({ datasetSummary }: Props) => {
           </td>
         </tr>
       </SortableTable>
-    </Card>
+    </WrapperCmp>
   );
 }
 
