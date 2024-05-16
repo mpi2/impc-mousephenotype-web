@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useDeferredValue } from "react";
 import headerCss from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 
@@ -59,6 +59,7 @@ const Header = () => {
     select: rewriteMenu,
   });
   const [activeMenuId, setActiveMenu] = useState(-1);
+  const deferredMenuItems = useDeferredValue(menuItems);
 
   return (
     <div className={headerCss.header}>
@@ -110,7 +111,7 @@ const Header = () => {
                 <div className="d-none d-lg-block">
                   <div className="menu-main-nav-container">
                     <ul id="menu-main-nav" className="menu">
-                      {menuItems.map((menuItem, i) => {
+                      {deferredMenuItems.map((menuItem, i) => {
                         return (
                           <li
                             key={`menu-item-${menuItem.id}-${i}`}
@@ -152,7 +153,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {menuItems
+        {deferredMenuItems
           .filter(
             (menuItem) => menuItem.children && menuItem.children.length > 0
           )
