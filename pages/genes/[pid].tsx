@@ -1,23 +1,26 @@
 import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
-import Summary from "@/components/Gene/Summary";
-import ExternalLinks from "@/components/Gene/ExternalLinks";
-import Phenotypes from "@/components/Gene/Phenotypes";
-import Images from "@/components/Gene/Images";
-import Publications from "@/components/Gene/Publications";
-import Histopathology from "@/components/Gene/Histopathology";
-import Expressions from "@/components/Gene/Expressions";
-import Order from "@/components/Gene/Order";
+import {
+  Summary,
+  GeneMetadata,
+  ExternalLinks,
+  Phenotypes,
+  Images,
+  Publications,
+  Histopathology,
+  Expressions,
+  Order,
+} from "@/components/Gene";
 import { useEffect, useState } from "react";
 import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
-import Head from "next/head";
 import { GeneSummary } from "@/models/gene";
 import { fetchAPI } from "@/api-service";
 import geneList from '../../mocks/data/all_genes_list.json';
+
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),
@@ -57,9 +60,7 @@ const Gene = (props: GenePageProps) => {
 
   return (
     <>
-      <Head>
-        <title>{gene?.geneSymbol} Mouse Gene details | International Mouse Phenotyping Consortium</title>
-      </Head>
+      <GeneMetadata geneSummary={geneData} />
       <GeneContext.Provider value={geneData}>
         <NumAllelesContext.Provider value={numAllelesContextValue}>
           <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>

@@ -1,13 +1,11 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
-import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import Card from "../../Card";
 import { BodySystem } from "../../BodySystemIcon";
 import { useRouter } from "next/router";
 import Check from "../../Check";
-import Head from "next/head";
 import { GeneSummary } from "@/models/gene";
 import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
@@ -95,12 +93,6 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   const allCount = allBodySystems.length;
   return (
     <Card style={{ padding: '2rem 2rem 0 2rem' }}>
-      <Head>
-        <title>
-          {gene.geneSymbol} Mouse Gene Details | {gene.geneName} | International
-          Mouse Phenotyping Consortium
-        </title>
-      </Head>
       <div className={styles.headingCont}>
         <h1 className="mt-2 mb-3">
           <strong><i>{gene.geneSymbol}</i></strong>
