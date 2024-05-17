@@ -85,6 +85,9 @@ const Gene = (props: GenePageProps) => {
 
 export async function getStaticProps(context) {
   const { pid: mgiGeneAccessionId } = context.params;
+  if (!mgiGeneAccessionId || mgiGeneAccessionId === 'null') {
+    return { notFound: true }
+  }
   const data = await fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/summary`);
   return {
     props: { gene: data }

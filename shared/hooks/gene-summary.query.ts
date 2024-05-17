@@ -10,7 +10,7 @@ export const useGeneSummaryQuery = (
   const queryOptions = {
     queryKey: ['genes', mgiGeneAccessionId, 'summary'],
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/summary`),
-    enabled: routerIsReady,
+    enabled: routerIsReady && !!mgiGeneAccessionId,
     select: data => data as GeneSummary,
   };
   if (!!geneFromServer) {
