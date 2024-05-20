@@ -68,7 +68,11 @@ const PPI = (props: PPIProps) => {
     onNewSummariesFetched
   );
 
-  const results = useMultipleS3DatasetsQuery('PPI', datasets);
+  const filteredDatasets = datasets.filter(d => !d.parameterName.includes('Global'));
+
+  console.log(filteredDatasets);
+
+  const results = useMultipleS3DatasetsQuery('PPI', filteredDatasets);
 
   const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
     const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);
@@ -77,7 +81,7 @@ const PPI = (props: PPIProps) => {
 
   const chartDatasets = useMemo(() => {
     return parameterList
-      .map(param => datasets.find(d => d.parameterStableId === param))
+      .map(param => filteredDatasets.find(d => d.parameterStableId === param))
       .filter(Boolean)
       .map(dataset => {
         const matchingRes = results.find(r => r.datasetId === dataset.datasetId);
@@ -102,10 +106,10 @@ const PPI = (props: PPIProps) => {
           outlierRadius: 5,
         }
       });
-  }, [datasets, results]);
+  }, [filteredDatasets, results]);
 
   const chartLabels = useMemo(() => {
-    const zygosity = datasets?.[0]?.zygosity;
+    const zygosity = filteredDatasets?.[0]?.zygosity;
     const zygLabel = zygosity === "heterozygote" ? "Het" : "Hom";
     return [
       `Male ${zygLabel}`,
@@ -113,7 +117,7 @@ const PPI = (props: PPIProps) => {
       `Female ${zygLabel}`,
       `Female WT`,
     ]
-  }, [datasets]);
+  }, [filteredDatasets]);
 
   const chartOptions = {
     responsive: true,
@@ -130,10 +134,10 @@ const PPI = (props: PPIProps) => {
 
   return (
     <>
-      <ChartSummary datasetSummary={datasets[0]} showParameterName={false}>
-        The mutants are for the <AlleleSymbol symbol={datasets[0].alleleSymbol} withLabel={false} />
+      <ChartSummary datasetSummary={filteredDatasets[0]} showParameterName={false}>
+        The mutants are for the <AlleleSymbol symbol={filteredDatasets[0].alleleSymbol} withLabel={false} />
         <ul>
-          {datasets.map(d => (
+          {filteredDatasets.map(d => (
             <li>
               <strong>{d.parameterName}</strong>:&nbsp;
               {d["summaryStatistics"]["femaleMutantCount"]} female, {d["summaryStatistics"]["maleMutantCount"]}
@@ -230,7 +234,7 @@ const PPI = (props: PPIProps) => {
       <Card>
         <h2>Statistical information</h2>
         <Tabs>
-          {datasets.map(ds => {
+          {filteredDatasets.map(ds => {
             const result = results.find(r => r.datasetId === ds.datasetId);
             const statistics = (!!result) ? generateSummaryStatistics(ds, result.series) : [];
             return (
