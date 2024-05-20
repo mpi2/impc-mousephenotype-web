@@ -1,16 +1,18 @@
 import { useRouter } from "next/router";
 import { Container } from "react-bootstrap";
 import Card from "@/components/Card";
-import Summary from "@/components/Phenotype/Summary";
+import {
+  Summary,
+  PhenotypeGeneAssociations,
+  ManhattanPlot,
+  PhenotypeMetadata,
+} from '@/components/Phenotype';
 import Search from "@/components/Search";
-import Associations from "@/components/PhenotypeGeneAssociations";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import ManhattanPlot from "@/components/ManhattanPlot";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import _ from 'lodash';
-import Head from "next/head";
 import phenotypeList from "../../mocks/data/all_phenotypes_list.json";
 
 type PhenotypePageProps = {
@@ -40,15 +42,13 @@ const Phenotype = (props: PhenotypePageProps) => {
 
   return (
     <>
-      <Head>
-        <title>{`${phenotype?.phenotypeId} (${phenotype?.phenotypeName})`} | IMPC Phenotype Information | International Mouse Phenotyping Consortium</title>
-      </Head>
+      <PhenotypeMetadata phenotypeSummary={phenotypeData} />
       <PhenotypeContext.Provider value={phenotype}>
         <Search defaultType="phenotype" />
         <Container className="page">
           <Summary {...{ phenotype, isLoading, isError }}/>
           <Card id="associations-table">
-            <Associations />
+            <PhenotypeGeneAssociations />
           </Card>
           <Card>
             <h2>Most significant associations for {phenotype?.phenotypeName}</h2>

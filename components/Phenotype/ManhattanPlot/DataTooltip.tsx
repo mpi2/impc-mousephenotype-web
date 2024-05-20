@@ -1,4 +1,4 @@
-import styles from "@/components/ManhattanPlot/styles.module.scss";
+import styles from "@/components/Phenotype/ManhattanPlot/styles.module.scss";
 import { formatPValue } from "@/utils";
 import classNames from "classnames";
 
