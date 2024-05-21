@@ -9,7 +9,8 @@ export const useMultipleS3DatasetsQuery = (key: string, datasets: Array<Dataset>
       queryFn: () => fetchDatasetFromS3(d.datasetId),
     })),
   });
-  return results
-    .filter(d => !!d.isSuccess)
-    .map(d => d.data);
+  return {
+    hasLoadedAllData: results.every(res => !res.isLoading),
+    results: results.filter(d => !!d.isSuccess).map(d => d.data),
+  };
 };

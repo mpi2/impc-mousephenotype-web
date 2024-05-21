@@ -71,11 +71,11 @@ const PPI = (props: PPIProps) => {
 
   const filteredDatasets = datasets.filter(d => !d.parameterName.includes('Global'));
 
-  const results = useMultipleS3DatasetsQuery('PPI', filteredDatasets);
+  const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery('PPI', filteredDatasets);
 
   const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
     const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);
-    return data?.observations.map(d => +d.dataPoint);
+    return data?.observations.map(d => +d.dataPoint).sort() || [];
   }
 
   const chartDatasets = useMemo(() => {
@@ -150,7 +150,7 @@ const PPI = (props: PPIProps) => {
       </ChartSummary>
       <Card>
         <div>
-          {results.length > 2 ? (
+          {hasLoadedAllData ? (
             <>
               <div style={{display: "flex", justifyContent: "flex-end"}}>
                 <Form.Check // prettier-ignore
@@ -224,12 +224,12 @@ const PPI = (props: PPIProps) => {
                   <div style={{display: 'inline-flex', alignItems: 'center', gap: '0.3rem',}}>
                     <div style={{
                       display: 'inline-block',
-                      border: '1px solid #000',
+                      backgroundColor: '#CCC',
                       width: '12px',
                       height: '12px',
-                      transform: 'rotateZ(45deg)'
+                      borderRadius: '50%'
                     }}/>
-                    : median value
+                    : mean value
                   </div>
                 </div>
               </div>

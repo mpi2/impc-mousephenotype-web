@@ -37,7 +37,7 @@ export default {
 
     allViolinPlotsData.forEach(plotData => {
       drawLine(chart.ctx, plotData, 'q1', [3, 3]);
-      drawLine(chart.ctx, plotData, 'mean',[8, 8]);
+      drawLine(chart.ctx, plotData, 'median',[8, 8]);
       drawLine(chart.ctx, plotData, 'q3', [3, 3]);
     });
   },
