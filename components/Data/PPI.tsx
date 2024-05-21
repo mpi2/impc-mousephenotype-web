@@ -224,12 +224,12 @@ const PPI = (props: PPIProps) => {
                   <div style={{display: 'inline-flex', alignItems: 'center', gap: '0.3rem',}}>
                     <div style={{
                       display: 'inline-block',
-                      border: '1px solid #000',
+                      backgroundColor: '#CCC',
                       width: '12px',
                       height: '12px',
-                      transform: 'rotateZ(45deg)'
+                      borderRadius: '50%'
                     }}/>
-                    : median value
+                    : mean value
                   </div>
                 </div>
               </div>
