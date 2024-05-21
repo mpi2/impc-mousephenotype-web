@@ -1,5 +1,5 @@
 import { Dataset } from "@/models";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
 import {
   Chart as ChartJS,
@@ -20,7 +20,7 @@ import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
 import AlleleSymbol from "@/components/AlleleSymbol";
 import { useMultipleS3DatasetsQuery } from "@/hooks";
 import quartileLinesPlugin from "@/utils/chart/violin-quartile-lines.plugin";
-import { Col, Row, Tab, Tabs } from "react-bootstrap";
+import { Col, Form, Row, Tab, Tabs } from "react-bootstrap";
 import SortableTable from "@/components/SortableTable";
 import StatisticalMethodTable from "@/components/Data/StatisticalMethodTable";
 import { generateSummaryStatistics } from "@/utils/chart";
@@ -61,6 +61,7 @@ type PPIProps = {
 
 const PPI = (props: PPIProps) => {
   const { datasetSummaries, onNewSummariesFetched } = props;
+  const [viewScatterPoints, setViewScatterPoints] = useState(false);
 
   const datasets = useRelatedParametersQuery(
     datasetSummaries,
@@ -69,8 +70,6 @@ const PPI = (props: PPIProps) => {
   );
 
   const filteredDatasets = datasets.filter(d => !d.parameterName.includes('Global'));
-
-  console.log(filteredDatasets);
 
   const results = useMultipleS3DatasetsQuery('PPI', filteredDatasets);
 
@@ -101,12 +100,12 @@ const PPI = (props: PPIProps) => {
             parseData(result.series, 'female', 'experimental'),
             parseData(result.series, 'female', 'control'),
           ],
-          itemRadius: 0,
+          itemRadius: viewScatterPoints ? 2 : 0,
           padding: 100,
           outlierRadius: 5,
         }
       });
-  }, [filteredDatasets, results]);
+  }, [filteredDatasets, results, viewScatterPoints]);
 
   const chartLabels = useMemo(() => {
     const zygosity = filteredDatasets?.[0]?.zygosity;
@@ -153,6 +152,17 @@ const PPI = (props: PPIProps) => {
         <div>
           {results.length > 2 ? (
             <>
+              <div style={{display: "flex", justifyContent: "flex-end"}}>
+                <Form.Check // prettier-ignore
+                  type="switch"
+                  id="custom-switch"
+                  label="Show scattered points"
+                  onChange={() =>
+                    setViewScatterPoints(prevState => !prevState)
+                  }
+                  checked={viewScatterPoints}
+                />
+              </div>
               <div style={{position: "relative", height: "400px"}}>
                 <Chart
                   type="violin"
@@ -211,15 +221,15 @@ const PPI = (props: PPIProps) => {
                     &nbsp;line: 25th percentile
                   </div>
                   <br/>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', }}>
+                  <div style={{display: 'inline-flex', alignItems: 'center', gap: '0.3rem',}}>
                     <div style={{
                       display: 'inline-block',
                       border: '1px solid #000',
                       width: '12px',
                       height: '12px',
                       transform: 'rotateZ(45deg)'
-                    }} />
-                    : mean value
+                    }}/>
+                    : median value
                   </div>
                 </div>
               </div>
