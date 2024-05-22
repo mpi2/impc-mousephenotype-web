@@ -11,6 +11,19 @@ const GeneMetadata = ({ geneSummary }: MetadataProps) => {
   const title = `${geneSymbol} Mouse Gene details | International Mouse Phenotyping Consortium`;
   const description = `Phenotype data for mouse gene ${geneSymbol}. Discover ${geneSymbol}'s significant phenotypes, expression, images, histopathology and more. Data for gene ${geneSymbol} is all freely available for download.`;
   const genePageURL = `${WEBSITE_URL}/data/genes/${mgiGeneAccessionId}`;
+  const jsonLd = {
+    "@type": "Dataset",
+    "@context": "http://schema.org",
+    name: `Mouse gene ${geneSymbol}`,
+    description: `Phenotype data for mouse gene ${geneSymbol}. Includes ${geneSymbol}'s significant phenotypes, expression, images, histopathology and more.`,
+    creator: [{
+      "@type": "Organization",
+      name: "International Mouse Phenotyping Consortium"
+    }],
+    citation: "https://doi.org/10.1093/nar/gkac972",
+    isAccessibleForFree: true,
+    url: genePageURL,
+  }
   return (
     <Head>
       <title>{title}</title>
@@ -21,6 +34,10 @@ const GeneMetadata = ({ geneSummary }: MetadataProps) => {
       <meta property="og:url" content={genePageURL}/>
       <meta property="og:description" content={description}/>
       <meta property="og:type" content="website"/>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+      />
     </Head>
   )
 };
