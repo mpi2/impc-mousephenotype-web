@@ -100,7 +100,7 @@ const Charts = () => {
     : allSummaries[0];
 
 
-  const isSpecialChart = isIPGTTChart || isPPIChart;
+  const isSpecialChart = isIPGTTChart;
   const extraChildren = (hasFlowCytometryImages && flowCytometryImages.length) ? <FlowCytometryImages images={flowCytometryImages} /> : null;
   const Chart = getChartType(activeDataset, true, extraChildren);
   return (
@@ -196,6 +196,7 @@ const Charts = () => {
             <PPI
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
+              activeDataset={activeDataset}
             />
           ): (
             !!activeDataset && <div>{Chart}</div>
