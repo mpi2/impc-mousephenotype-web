@@ -57,10 +57,11 @@ const labels = {
 type PPIProps = {
   datasetSummaries: Array<Dataset>;
   onNewSummariesFetched: (missingSummaries: Array<any>) => void;
+  activeDataset: Dataset;
 };
 
 const PPI = (props: PPIProps) => {
-  const { datasetSummaries, onNewSummariesFetched } = props;
+  const { datasetSummaries, activeDataset, onNewSummariesFetched } = props;
   const [viewScatterPoints, setViewScatterPoints] = useState(false);
 
   const datasets = useRelatedParametersQuery(
@@ -69,9 +70,7 @@ const PPI = (props: PPIProps) => {
     onNewSummariesFetched
   );
 
-  const filteredDatasets = datasets.filter(d => !d.parameterName.includes('Global'));
-
-  const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery('PPI', filteredDatasets);
+  const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery('PPI', datasets);
 
   const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
     const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);
@@ -80,7 +79,7 @@ const PPI = (props: PPIProps) => {
 
   const chartDatasets = useMemo(() => {
     return parameterList
-      .map(param => filteredDatasets.find(d => d.parameterStableId === param))
+      .map(param => datasets.find(d => d.parameterStableId === param))
       .filter(Boolean)
       .map(dataset => {
         const matchingRes = results.find(r => r.datasetId === dataset.datasetId);
@@ -105,10 +104,10 @@ const PPI = (props: PPIProps) => {
           outlierRadius: 5,
         }
       });
-  }, [filteredDatasets, results, viewScatterPoints]);
+  }, [datasets, results, viewScatterPoints]);
 
   const chartLabels = useMemo(() => {
-    const zygosity = filteredDatasets?.[0]?.zygosity;
+    const zygosity = datasets?.[0]?.zygosity;
     const zygLabel = zygosity === "heterozygote" ? "Het" : "Hom";
     return [
       `Male ${zygLabel}`,
@@ -116,7 +115,7 @@ const PPI = (props: PPIProps) => {
       `Female ${zygLabel}`,
       `Female WT`,
     ]
-  }, [filteredDatasets]);
+  }, [datasets]);
 
   const chartOptions = {
     responsive: true,
@@ -131,23 +130,39 @@ const PPI = (props: PPIProps) => {
     datasets: chartDatasets,
   };
 
+  const activeDatasetResult = results.find(r => r.datasetId === activeDataset.datasetId);
+  const activeDatasetStatistics = !!activeDatasetResult ? generateSummaryStatistics(activeDataset, activeDatasetResult.series) : [];
+
   return (
     <>
-      <ChartSummary datasetSummary={filteredDatasets[0]} showParameterName={false}>
-        The mutants are for the <AlleleSymbol symbol={filteredDatasets[0].alleleSymbol} withLabel={false} />
-        <ul>
-          {filteredDatasets.map(d => (
-            <li>
-              <strong>{d.parameterName}</strong>:&nbsp;
-              {d["summaryStatistics"]["femaleMutantCount"]} female, {d["summaryStatistics"]["maleMutantCount"]}
-              &nbsp;male mutants compared to&nbsp;
-              {d["summaryStatistics"]["femaleControlCount"]} female,&nbsp;
-              {d["summaryStatistics"]["maleControlCount"]} male
-              controls.
-            </li>
-          ))}
-        </ul>
-      </ChartSummary>
+      <ChartSummary datasetSummary={activeDataset} showParameterName={false} />
+      <Card>
+        <h2>Statistical information</h2>
+        <Row>
+          <Col lg={6}>
+            <SortableTable
+              headers={[
+                { width: 5, label: "", disabled: true },
+                { width: 2, label: "Mean", disabled: true },
+                { width: 2, label: "Stddev", disabled: true },
+                { width: 3, label: "# Samples", disabled: true },
+              ]}
+            >
+              {activeDatasetStatistics.map((stats) => (
+                <tr>
+                  <td>{stats.label}</td>
+                  <td>{stats.mean}</td>
+                  <td>{stats.stddev}</td>
+                  <td>{stats.count}</td>
+                </tr>
+              ))}
+            </SortableTable>
+          </Col>
+          <Col lg={6}>
+            <StatisticalMethodTable datasetSummary={activeDataset} onlyDisplayTable />
+          </Col>
+        </Row>
+      </Card>
       <Card>
         <div>
           {hasLoadedAllData ? (
@@ -240,43 +255,6 @@ const PPI = (props: PPIProps) => {
             </div>
           )}
         </div>
-      </Card>
-      <Card>
-        <h2>Statistical information</h2>
-        <Tabs>
-          {filteredDatasets.map(ds => {
-            const result = results.find(r => r.datasetId === ds.datasetId);
-            const statistics = (!!result) ? generateSummaryStatistics(ds, result.series) : [];
-            return (
-              <Tab title={ds.parameterName} eventKey={ds.parameterStableId}>
-                <Row>
-                  <Col lg={6}>
-                    <SortableTable
-                      headers={[
-                        { width: 5, label: "", disabled: true },
-                        { width: 2, label: "Mean", disabled: true },
-                        { width: 2, label: "Stddev", disabled: true },
-                        { width: 3, label: "# Samples", disabled: true },
-                      ]}
-                    >
-                      {statistics.map((stats) => (
-                        <tr>
-                          <td>{stats.label}</td>
-                          <td>{stats.mean}</td>
-                          <td>{stats.stddev}</td>
-                          <td>{stats.count}</td>
-                        </tr>
-                      ))}
-                    </SortableTable>
-                  </Col>
-                  <Col lg={6}>
-                    <StatisticalMethodTable datasetSummary={ds} onlyDisplayTable />
-                  </Col>
-                </Row>
-              </Tab>
-            )
-          })}
-        </Tabs>
       </Card>
     </>
   );
