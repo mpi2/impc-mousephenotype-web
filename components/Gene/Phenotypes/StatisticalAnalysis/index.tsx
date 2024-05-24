@@ -3,14 +3,19 @@ import { Chart } from "chart.js";
 import { Chart as ChartEl } from "react-chartjs-2";
 import zoomPlugin from "chartjs-plugin-zoom";
 import _ from "lodash";
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckSquare,
+  faMagnifyingGlassMinus,
+  faMagnifyingGlassPlus,
+  faRefresh
+} from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
-import { formatBodySystems } from "@/utils";
-import { Button, Form } from "react-bootstrap";
+import { formatBodySystems, getUniqObjects } from "@/utils";
+import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 
 Chart.register(zoomPlugin);
@@ -112,18 +117,18 @@ const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
         const filtered = data.filter((x) => {
           return x.topLevelPhenotypes.some((y) => flattend.includes(y));
         });
-        return _.sortBy(filtered, "topLevelPhenotypes");
+        return _.sortBy(filtered, ["topLevelPhenotypes", "parameterName"]);
       }
-      return _.sortBy(data, "topLevelPhenotypes");
+      return _.sortBy(data, ["topLevelPhenotypes", "parameterName"]);
     case PROCEDURES:
       if (significantOnly) {
         const procedures = significants.map((x) => x.procedureName);
         const filtered = data.filter((x) => {
           return procedures.includes(x.procedureName);
         });
-        return _.sortBy(filtered, "procedureName");
+        return _.sortBy(filtered, ["procedureName", "parameterName"]);
       }
-      return _.sortBy(data, "procedureName");
+      return _.sortBy(data, ["procedureName", "parameterName"]);
     default:
       return _.sortBy(significantOnly ? significants : data, "pValue", "desc");
   }
@@ -133,20 +138,41 @@ const StatisticalAnalysisChart = ({
   data,
   cat,
   sig,
-  hasDataRelatedToPWG
+  hasDataRelatedToPWG,
+  isVisible,
 }: {
   data: Array<GeneStatisticalResult>;
   cat: Cat;
   sig: boolean;
   hasDataRelatedToPWG: boolean;
+  isVisible: boolean;
 }) => {
   const chartRef = useRef<Chart>(null);
+  const zoomButtonsRef = useRef<HTMLDivElement>(null);
+  const [zoomApplied, setZoomApplied] = useState<boolean>(false);
+  const [buttonsHeight, setButtonsHeight] = useState(0);
+  const [zoomLevel, setZoomLevel] = useState<number>(1);
+  const zoomDelta = 0.3;
+
+  useEffect(() => {
+    const clientRect = zoomButtonsRef.current?.getBoundingClientRect();
+    if (clientRect && clientRect.height !== buttonsHeight) {
+      setButtonsHeight(clientRect.height);
+    }
+  }, [zoomButtonsRef, isVisible]);
+
+  useEffect(() => {
+    if (!!chartRef.current && zoomLevel !== 1) {
+      chartRef.current.zoom({ x: 1, y: zoomLevel});
+    }
+  }, [zoomLevel]);
+
   if (!data) {
     return null;
   }
 
-  const hasPValue = data
-    .filter(
+  const dataWithPValue = useMemo(() =>
+    data.filter(
       (x) =>
         x.pValue !== null &&
         x.pValue !== undefined &&
@@ -156,34 +182,66 @@ const StatisticalAnalysisChart = ({
       ...x,
       pValue: Number(x.pValue),
       topLevelPhenotypes: x.topLevelPhenotypes.map((y) => y.name),
-    }));
+    })), [data]);
 
-  const processed = processData(hasPValue, cat, sig);
+  const processed = useMemo(
+    () => processData(dataWithPValue, cat, sig),
+    [dataWithPValue, cat, sig]
+  );
 
-  const labels = processed.map((x) => x.parameterName);
-  const values = processed.map((x) => -Math.log10(Number(x.pValue)));
-  const thresholdValues = processed.map(() => 4);
-  const painThresholdValues = processed.map(() => 3);
   const isByProcedure = cat.type === cats.PROCEDURES;
-  let colorByArray = isByProcedure ? _.uniq(processed.map((x) => x.procedureName)) : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]));
+  const colorByArray = useMemo(() =>
+    isByProcedure
+      ? _.uniq(processed.map((x) => x.procedureName))
+      : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]))
+    ,[processed, isByProcedure]);
 
-  const colors = processed.map((x) => {
-    let index = 0;
-    if (isByProcedure) {
-      index = colorByArray.indexOf(x.procedureName);
-    } else {
-      index = colorByArray.indexOf(x.topLevelPhenotypes[0]);
-    }
-    return colorArray[index];
-  });
+
+  const chartData = useMemo(() => ({
+    labels: processed.map((x) => x.parameterName),
+    datasets: [
+      {
+        label: "P-value",
+        data: processed.map((x) => -Math.log10(Number(x.pValue))),
+        backgroundColor: processed.map((x) => {
+          let index = 0;
+          if (isByProcedure) {
+            index = colorByArray.indexOf(x.procedureName);
+          } else {
+            index = colorByArray.indexOf(x.topLevelPhenotypes[0]);
+          }
+          return colorArray[index];
+        }),
+        showLine: false,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+      },
+      {
+        label: 'P-value threshold',
+        type: "line" as const,
+        data: processed.map(() => 4),
+        borderColor: "black",
+        pointStyle: "rect",
+        borderDash: [5, 5],
+        radius: 0,
+      },
+      hasDataRelatedToPWG ? {
+        label: 'P-value threshold',
+        type: "line" as const,
+        data: processed.map(() => 3),
+        borderColor: "rgb(255, 99, 132)",
+        pointStyle: "rect",
+        borderDash: [5, 5],
+        radius: 0,
+      } : {}
+    ],
+  }), [processed, colorByArray]);
 
   const chartOptions = {
     responsive: true,
     indexAxis: "y" as const,
-    maintainAspectRatio: false,
-    animation: {
-      duration: 0,
-    },
+    animation: false,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
         display: false,
@@ -215,20 +273,18 @@ const StatisticalAnalysisChart = ({
         },
       },
       zoom: {
+        zoom: {
+          limits: { y: { max: 60, min: 0 } },
+          mode: "y" as const,
+          onZoomComplete: (_) => {
+            if (!zoomApplied) {
+              setZoomApplied(true);
+            }
+          },
+        },
         pan: {
           enabled: true,
-          mode: "y" as const,
-          modifierKey: "alt" as const,
-        },
-        zoom: {
-          drag: {
-            enabled: true,
-          },
-          pinch: {
-            enabled: true,
-          },
-          mode: "y" as const,
-        },
+        }
       },
     },
     scales: {
@@ -240,22 +296,14 @@ const StatisticalAnalysisChart = ({
 
   return (
     <div>
-      <div style={{paddingLeft: "0.5rem", marginBottom: 30}}>
+      <div style={{marginBottom: "1rem", display: "flex", flexWrap: "wrap", gap: "0.5rem 1rem"}}>
         {colorByArray.map((item, index) => {
           if (!item) {
             return;
           }
           const color = colorArray[index];
           return (
-            <span
-              style={{
-                marginRight: "2rem",
-                whiteSpace: "nowrap",
-                marginBlock: 3,
-                display: "inline-block",
-              }}
-              className="grey"
-            >
+            <span className="grey">
               <span
                 style={{
                   display: "inline-flex",
@@ -296,53 +344,41 @@ const StatisticalAnalysisChart = ({
         style={{
           position: "relative",
           width: "100%",
-          height: Math.min(
-            processed.length * (processed.length > 30 ? 10 : 20),
-            1600
-          ),
+          height: "700px"
         }}
       >
+        <div ref={zoomButtonsRef} className={styles.overlay}>
+          <div className={styles.buttons}>
+            <button onClick={() => setZoomLevel(prevZoom => prevZoom + zoomDelta)}>
+              <FontAwesomeIcon icon={faMagnifyingGlassPlus} title="zoom in button" titleId="zoom-in-icon"/>
+            </button>
+            <button onClick={() => setZoomLevel(prevZoom => prevZoom - zoomDelta)}>
+              <FontAwesomeIcon icon={faMagnifyingGlassMinus} title="zoom out button" titleId="zoom-out-icon"/>
+            </button>
+            <button
+              onClick={() => {
+                if (chartRef.current) {
+                  chartRef.current.resetZoom();
+                  setZoomApplied(false);
+                  setZoomLevel(1.0);
+                }
+              }}>
+              <FontAwesomeIcon icon={faRefresh} title="reset zoom button" titleId="reset-zoom-icon"/>
+            </button>
+          </div>
+        </div>
         <ChartEl
           type="line"
           ref={chartRef}
           options={chartOptions}
-          data={{
-            labels,
-            datasets: [
-              {
-                label: "P-value",
-                data: values,
-                backgroundColor: colors,
-                showLine: false,
-                pointRadius: 5,
-                pointHoverRadius: 8,
-              },
-              {
-                label: 'P-value threshold',
-                type: "line" as const,
-                data: thresholdValues,
-                borderColor: "black",
-                pointStyle: "rect",
-                borderDash: [5, 5],
-                radius: 0,
-              },
-              hasDataRelatedToPWG ? {
-                label: 'P-value threshold',
-                type: "line" as const,
-                data: painThresholdValues,
-                borderColor: "rgb(255, 99, 132)",
-                pointStyle: "rect",
-                borderDash: [5, 5],
-                radius: 0,
-              } : {}
-            ],
-          }}
+          data={chartData}
+          style={{ marginTop: -buttonsHeight }}
         />
       </div>
-      <div style={{ display: "flex", alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{display: "flex", alignItems: 'center', justifyContent: 'space-between'}}>
         <span className="labels">
           {hasDataRelatedToPWG && (
-            <span style={{ marginLeft: '1rem' }}>
+            <span style={{marginLeft: '1rem'}}>
               Significant threshold for pain sensitivity (P &lt; 0.001)
               <hr
                 style={{
@@ -358,27 +394,14 @@ const StatisticalAnalysisChart = ({
             </span>
           )}
         </span>
-        <button
-          className="btn impc-secondary-button"
-          onClick={() => {
-            if (chartRef.current) {
-              chartRef.current.resetZoom();
-            }
-          }}
-          style={{
-            position: "sticky",
-            bottom: "3rem",
-            float: "right",
-          }}
-        >
-          Reset zoom
-        </button>
       </div>
     </div>
   );
 };
 
-const StatisticalAnalysis = ({ data }: { data: Array<GeneStatisticalResult> }) => {
+const StatisticalAnalysis = (
+  { data, isVisible } : { data: Array<GeneStatisticalResult>, isVisible: boolean }
+) => {
   const [cat, setCat] = useState<Cat | null>({
     type: cats.BODY_SYSTEMS,
   });
@@ -394,6 +417,10 @@ const StatisticalAnalysis = ({ data }: { data: Array<GeneStatisticalResult> }) =
   ) {
     return null;
   }
+
+  const filteredData = useMemo(() => {
+    return getUniqObjects(data);
+  }, [data]);
 
   const handleToggle = () => {
     setSignificantOnly(!significantOnly);
@@ -451,10 +478,11 @@ const StatisticalAnalysis = ({ data }: { data: Array<GeneStatisticalResult> }) =
         </p>
       </div>
       <StatisticalAnalysisChart
-        data={data}
+        data={filteredData}
         cat={cat}
         sig={significantOnly}
         hasDataRelatedToPWG={hasDataRelatedToPWG}
+        isVisible={isVisible}
       />
     </>
   );

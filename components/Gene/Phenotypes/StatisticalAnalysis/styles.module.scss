@@ -4,3 +4,25 @@
   border: none;
   padding: 0;
 }
+.overlay {
+  position: sticky;
+  top: 1rem;
+  left: 0;
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+  }
+
+  button {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    appearance: none;
+    border: 0;
+    outline: none;
+    background-color: #CCC;
+    border-radius: 5px;
+  }
+}
