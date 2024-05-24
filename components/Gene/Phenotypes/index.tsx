@@ -120,7 +120,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             errorMessage={`No phenotypes data available for <i>${gene.geneSymbol}</i>.`}
             data={geneData}
           >
-            <StatisticalAnalysis data={geneData} />
+            <StatisticalAnalysis data={geneData} isVisible={"measurementsChart" === tabKey} />
           </TabContent>
         </Tab>
         { hasOneAlleleOrMore && (
