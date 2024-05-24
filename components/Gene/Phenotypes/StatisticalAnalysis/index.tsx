@@ -126,9 +126,9 @@ const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
         const filtered = data.filter((x) => {
           return procedures.includes(x.procedureName);
         });
-        return _.sortBy(filtered, "procedureName");
+        return _.sortBy(filtered, ["procedureName", "parameterName"]);
       }
-      return _.sortBy(data, "procedureName");
+      return _.sortBy(data, ["procedureName", "parameterName"]);
     default:
       return _.sortBy(significantOnly ? significants : data, "pValue", "desc");
   }
@@ -163,7 +163,6 @@ const StatisticalAnalysisChart = ({
 
   useEffect(() => {
     if (!!chartRef.current && zoomLevel !== 1) {
-      console.log(zoomLevel);
       chartRef.current.zoom({ x: 1, y: zoomLevel});
     }
   }, [zoomLevel]);
@@ -277,7 +276,6 @@ const StatisticalAnalysisChart = ({
         zoom: {
           limits: { y: { max: 60, min: 0 } },
           mode: "y" as const,
-          onZoom: chart => console.log(chart.chart.getZoomLevel()),
           onZoomComplete: (_) => {
             if (!zoomApplied) {
               setZoomApplied(true);
@@ -298,22 +296,14 @@ const StatisticalAnalysisChart = ({
 
   return (
     <div>
-      <div style={{paddingLeft: "0.5rem", marginBottom: 30}}>
+      <div style={{marginBottom: "1rem", display: "flex", flexWrap: "wrap", gap: "0.5rem 1rem"}}>
         {colorByArray.map((item, index) => {
           if (!item) {
             return;
           }
           const color = colorArray[index];
           return (
-            <span
-              style={{
-                marginRight: "2rem",
-                whiteSpace: "nowrap",
-                marginBlock: 3,
-                display: "inline-block",
-              }}
-              className="grey"
-            >
+            <span className="grey">
               <span
                 style={{
                   display: "inline-flex",
