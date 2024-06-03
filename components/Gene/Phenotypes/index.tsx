@@ -9,9 +9,10 @@ import { fetchAPI } from "@/api-service";
 import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import _ from 'lodash';
+import { AllelesStudiedContext } from "@/contexts";
 
 
 const StatisticalAnalysis = dynamic(
@@ -44,6 +45,7 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
 
 const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
+  const { setAlleles, setAllelesStudiedLoading } = useContext(AllelesStudiedContext);
   const [tabKey, setTabKey] = useState('significantPhenotypes');
 
   const getMutantCount = (dataset: GeneStatisticalResult) => {
@@ -73,6 +75,8 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
       unsubscribeOnSystemSelection();
     }
   }, [tabKey]);
+
+  useEffect(() => setAllelesStudiedLoading(isGeneLoading), [isGeneLoading]);
 
   const {
     phenotypeData,

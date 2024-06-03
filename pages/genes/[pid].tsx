@@ -27,8 +27,14 @@ const Gene = () => {
   const router = useRouter();
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
+  const [allelesStudiedLoading, setAllelesStudiedLoading] = useState<boolean>(true);
   const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
-  const allelesStudiedContextValue = {allelesStudied, setAlleles};
+  const allelesStudiedContextValue = {
+    allelesStudied,
+    setAlleles,
+    allelesStudiedLoading,
+    setAllelesStudiedLoading,
+  };
 
   const {
     isLoading,
@@ -69,7 +75,7 @@ const Gene = () => {
                   <Histopathology />
                   <Publications gene={gene} />
                   <ExternalLinks />
-                  <Order allelesStudied={allelesStudied} />
+                  <Order allelesStudied={allelesStudied} allelesStudiedLoading={allelesStudiedLoading} />
                 </>
               )}
             </Container>
