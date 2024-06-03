@@ -33,7 +33,7 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
   if (isError || !data) {
     return (
       <Alert variant="primary" className="mt-3">
-        {errorMessage}
+        <span dangerouslySetInnerHTML={{ __html: errorMessage }} />
       </Alert>
     )
   }
@@ -93,7 +93,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
         activeKey={tabKey}
         onSelect={key => setTabKey(key)}
       >
-        <Tab eventKey="significantPhenotypes" title={`Significant Phenotypes (${phenotypeData.length})`}>
+        <Tab eventKey="significantPhenotypes" title={`Significant Phenotypes (${phenotypeData?.length || 0})`}>
           <div className="mt-3">
             <SignificantPhenotypes
               phenotypeData={phenotypeData}
@@ -107,7 +107,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           <TabContent
             isLoading={isGeneLoading}
             isError={isGeneError}
-            errorMessage={`No phenotypes data available for <i>${gene.geneSymbol}</i>.`}
+            errorMessage={`No phenotype data available for <i>${gene.geneSymbol}</i>.`}
             data={geneData}
           >
             <AllData data={geneData} />
@@ -117,7 +117,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           <TabContent
             isLoading={isGeneLoading}
             isError={isGeneError}
-            errorMessage={`No phenotypes data available for <i>${gene.geneSymbol}</i>.`}
+            errorMessage={`No phenotype data available for <i>${gene.geneSymbol}</i>.`}
             data={geneData}
           >
             <StatisticalAnalysis data={geneData} isVisible={"measurementsChart" === tabKey} />
