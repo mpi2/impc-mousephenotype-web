@@ -16,7 +16,7 @@ import { NumAllelesContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 import { AlleleSymbol } from "@/components";
 
-const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
+const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Array<string>, allelesStudiedLoading: boolean }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const { setNumOfAlleles } = useContext(NumAllelesContext);
@@ -131,7 +131,7 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                       </td>
                       <td>{d.alleleDescription}</td>
                       <td>
-                        {allelesStudied.length === 0 ? (
+                        {allelesStudiedLoading ? (
                           <Skeleton inline/>
                         ) : allelesStudied.includes(d.alleleSymbol) ? <>Yes</> : <>No</>}
                       </td>

@@ -9,9 +9,10 @@ import { fetchAPI } from "@/api-service";
 import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import _ from 'lodash';
+import { AllelesStudiedContext } from "@/contexts";
 
 
 const StatisticalAnalysis = dynamic(
@@ -33,7 +34,7 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
   if (isError || !data) {
     return (
       <Alert variant="primary" className="mt-3">
-        {errorMessage}
+        <span dangerouslySetInnerHTML={{ __html: errorMessage }} />
       </Alert>
     )
   }
@@ -44,6 +45,7 @@ const TabContent = ({ errorMessage, isLoading, isError, data, children }) => {
 
 const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
+  const { setAlleles, setAllelesStudiedLoading } = useContext(AllelesStudiedContext);
   const [tabKey, setTabKey] = useState('significantPhenotypes');
 
   const getMutantCount = (dataset: GeneStatisticalResult) => {
@@ -74,6 +76,8 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     }
   }, [tabKey]);
 
+  useEffect(() => setAllelesStudiedLoading(isGeneLoading), [isGeneLoading]);
+
   const {
     phenotypeData,
     isPhenotypeLoading,
@@ -93,7 +97,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
         activeKey={tabKey}
         onSelect={key => setTabKey(key)}
       >
-        <Tab eventKey="significantPhenotypes" title={`Significant Phenotypes (${phenotypeData.length})`}>
+        <Tab eventKey="significantPhenotypes" title={`Significant Phenotypes (${phenotypeData?.length || 0})`}>
           <div className="mt-3">
             <SignificantPhenotypes
               phenotypeData={phenotypeData}
@@ -107,7 +111,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           <TabContent
             isLoading={isGeneLoading}
             isError={isGeneError}
-            errorMessage={`No phenotypes data available for <i>${gene.geneSymbol}</i>.`}
+            errorMessage={`No phenotype data available for <i>${gene.geneSymbol}</i>.`}
             data={geneData}
           >
             <AllData data={geneData} />
@@ -117,7 +121,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           <TabContent
             isLoading={isGeneLoading}
             isError={isGeneError}
-            errorMessage={`No phenotypes data available for <i>${gene.geneSymbol}</i>.`}
+            errorMessage={`No phenotype data available for <i>${gene.geneSymbol}</i>.`}
             data={geneData}
           >
             <StatisticalAnalysis data={geneData} isVisible={"measurementsChart" === tabKey} />
