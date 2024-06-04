@@ -1,7 +1,4 @@
 import {
-  faMagnifyingGlassMinus,
-  faMagnifyingGlassPlus,
-  faRefresh,
   faVenus,
   faMars,
   faMarsAndVenus,
@@ -22,7 +19,7 @@ import { fetchAPI } from "@/api-service";
 import Skeleton from "react-loading-skeleton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { AlleleSymbol, FilterBox } from "@/components";
+import { AlleleSymbol, FilterBox, ZoomButtons } from "@/components";
 import { GeneImageCollection, Image } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
@@ -133,17 +130,13 @@ const ImageViewer = ({image}) => {
     <TransformWrapper>
       {({zoomIn, zoomOut, resetTransform, ...rest}) => (
         <div className={styles.viewer}>
-          <div className={styles.tools}>
-            <button onClick={() => zoomIn()}>
-              <FontAwesomeIcon icon={faMagnifyingGlassPlus} title="zoom in button" titleId="zoom-in-icon"/>
-            </button>
-            <button onClick={() => zoomOut()}>
-              <FontAwesomeIcon icon={faMagnifyingGlassMinus} title="zoom out button" titleId="zoom-out-icon"/>
-            </button>
-            <button onClick={() => resetTransform()}>
-              <FontAwesomeIcon icon={faRefresh} title="reset zoom button" titleId="reset-zoom-icon"/>
-            </button>
-          </div>
+          <ZoomButtons
+            containerClassName={styles.tools}
+            onZoomIn={() => zoomIn()}
+            onZoomOut={() => zoomOut()}
+            onResetZoom={() => resetTransform()}
+            tooltipsPosition="left"
+          />
           <TransformComponent>
             <img
               key={image?.jpegUrl}

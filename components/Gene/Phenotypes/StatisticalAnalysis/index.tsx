@@ -5,18 +5,14 @@ import zoomPlugin from "chartjs-plugin-zoom";
 import _ from "lodash";
 import { useRef, useState, useMemo, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheckSquare,
-  faMagnifyingGlassMinus,
-  faMagnifyingGlassPlus,
-  faRefresh
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
 import { formatBodySystems, getUniqObjects } from "@/utils";
 import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
+import { ZoomButtons } from "@/components";
 
 Chart.register(zoomPlugin);
 
@@ -150,16 +146,8 @@ const StatisticalAnalysisChart = ({
   const chartRef = useRef<Chart>(null);
   const zoomButtonsRef = useRef<HTMLDivElement>(null);
   const [zoomApplied, setZoomApplied] = useState<boolean>(false);
-  const [buttonsHeight, setButtonsHeight] = useState(0);
   const [zoomLevel, setZoomLevel] = useState<number>(1);
   const zoomDelta = 0.3;
-
-  useEffect(() => {
-    const clientRect = zoomButtonsRef.current?.getBoundingClientRect();
-    if (clientRect && clientRect.height !== buttonsHeight) {
-      setButtonsHeight(clientRect.height);
-    }
-  }, [zoomButtonsRef, isVisible]);
 
   useEffect(() => {
     if (!!chartRef.current && zoomLevel !== 1) {
@@ -348,31 +336,24 @@ const StatisticalAnalysisChart = ({
         }}
       >
         <div ref={zoomButtonsRef} className={styles.overlay}>
-          <div className={styles.buttons}>
-            <button onClick={() => setZoomLevel(prevZoom => prevZoom + zoomDelta)}>
-              <FontAwesomeIcon icon={faMagnifyingGlassPlus} title="zoom in button" titleId="zoom-in-icon"/>
-            </button>
-            <button onClick={() => setZoomLevel(prevZoom => prevZoom - zoomDelta)}>
-              <FontAwesomeIcon icon={faMagnifyingGlassMinus} title="zoom out button" titleId="zoom-out-icon"/>
-            </button>
-            <button
-              onClick={() => {
-                if (chartRef.current) {
-                  chartRef.current.resetZoom();
-                  setZoomApplied(false);
-                  setZoomLevel(1.0);
-                }
-              }}>
-              <FontAwesomeIcon icon={faRefresh} title="reset zoom button" titleId="reset-zoom-icon"/>
-            </button>
-          </div>
+          <ZoomButtons
+            containerClassName={styles.buttons}
+            onZoomIn={() => setZoomLevel(prevZoom => prevZoom + zoomDelta)}
+            onZoomOut={() => setZoomLevel(prevZoom => prevZoom - zoomDelta)}
+            onResetZoom={() => {
+              if (chartRef.current) {
+                chartRef.current.resetZoom();
+                setZoomApplied(false);
+                setZoomLevel(1.0);
+              }
+            }}
+          />
         </div>
         <ChartEl
           type="line"
           ref={chartRef}
           options={chartOptions}
           data={chartData}
-          style={{ marginTop: -buttonsHeight }}
         />
       </div>
       <div style={{display: "flex", alignItems: 'center', justifyContent: 'space-between'}}>
