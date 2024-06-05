@@ -4,6 +4,7 @@ import {
   faMarsAndVenus,
   faCircle,
   faArrowLeft,
+  faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -111,6 +112,20 @@ const ImageInformation = ({
               </div>
             ))}
           </div>
+        </>
+      )}
+      {(inViewer && !!image.imageLink) && (
+        <>
+          <div style={{ flexBasis: '100%', height: 0 }} />
+          <Link className="link primary" href={image.imageLink} target="_blank">
+            View high resolution image
+            <FontAwesomeIcon
+              icon={faExternalLinkAlt}
+              className="grey"
+              size="xs"
+              style={{ marginLeft: '0.3rem' }}
+            />
+          </Link>
         </>
       )}
     </div>
