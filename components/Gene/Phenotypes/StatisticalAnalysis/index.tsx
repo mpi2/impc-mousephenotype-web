@@ -272,6 +272,7 @@ const StatisticalAnalysisChart = ({
         },
         pan: {
           enabled: true,
+          mode: "y" as const,
         }
       },
     },
