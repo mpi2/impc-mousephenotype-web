@@ -16,14 +16,10 @@ import { SupportingDataCell } from "./custom-cells";
 
 const SignificantPhenotypes = (
   {
-    phenotypeData,
-    isPhenotypeLoading,
-    isPhenotypeError,
+    phenotypeData = [],
     hasDataRelatedToPWG,
   }: {
     phenotypeData: Array<GenePhenotypeHits>,
-    isPhenotypeLoading: boolean,
-    isPhenotypeError: boolean,
     hasDataRelatedToPWG: boolean,
   }) => {
   const gene = useContext(GeneContext);
@@ -44,17 +40,6 @@ const SignificantPhenotypes = (
       unsubscribeOnSystemSelection();
     }
   }, []);
-
-  if (isPhenotypeLoading) {
-    return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
-  }
-  if (isPhenotypeError) {
-    return (
-      <Alert variant="primary" className="mt-3">
-        No significant phenotypes for <i>{gene.geneSymbol}</i>.
-      </Alert>
-    )
-  }
 
   const alleles = _.uniq(phenotypeData.map(phenotype => phenotype.alleleSymbol));
   const systems = _.uniq(phenotypeData.flatMap(p => p.topLevelPhenotypes.map(tl => tl.name)));

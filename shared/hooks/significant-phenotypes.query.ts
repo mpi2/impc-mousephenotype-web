@@ -17,6 +17,7 @@ export const useSignificantPhenotypesQuery = (
     data,
     isLoading,
     isError,
+    isFetching,
     ...rest } = useQuery({
     queryKey: ['genes', mgiGeneAccessionId, 'phenotype-hits'],
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`),
@@ -70,6 +71,7 @@ export const useSignificantPhenotypesQuery = (
     phenotypeData: data as Array<GenePhenotypeHits>,
     isPhenotypeLoading: isLoading,
     isPhenotypeError: isError,
+    isPhenotypeFetching: isFetching,
     ...rest,
   };
 };
