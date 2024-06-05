@@ -9,7 +9,7 @@ import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
-import { formatBodySystems, getUniqObjects } from "@/utils";
+import { formatBodySystems } from "@/utils";
 import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { ZoomButtons } from "@/components";
@@ -401,7 +401,17 @@ const StatisticalAnalysis = (
   }
 
   const filteredData = useMemo(
-    () => getUniqObjects(data, ["topLevelPhenotypes", "projectName"]),
+    () => {
+      const allData = {};
+      data.forEach(result => {
+        const { mgiGeneAccessionId, parameterStableId, alleleAccessionId, metadataGroup} = result;
+        const hash = `${mgiGeneAccessionId}-${parameterStableId}-${alleleAccessionId}-${metadataGroup}`;
+        if (result[hash] === undefined) {
+          allData[hash] = result;
+        }
+      });
+      return Object.values(allData);
+    },
     [data]
   );
 
