@@ -44,6 +44,7 @@ export type Image = {
   dateOfExperiment:       string;
   experimentDate:         Moment;
   biologicalSampleGroup:  string;
+  imageLink:              string | null;
 };
 
 export type AssociatedParameter = {
