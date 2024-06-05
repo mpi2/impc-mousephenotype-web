@@ -228,7 +228,7 @@ const StatisticalAnalysisChart = ({
   const chartOptions = {
     responsive: true,
     indexAxis: "y" as const,
-    animation: false,
+    animation: false as const,
     maintainAspectRatio: true,
     plugins: {
       legend: {
@@ -253,10 +253,10 @@ const StatisticalAnalysisChart = ({
               `P-value: ${parseFloat(data.pValue).toExponential(3)}`,
               `Zygosity: ${_.capitalize(data.zygosity)}`,
               `Procedure: ${data.procedureName}`,
-              `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,
-              `Effect size: ${data.effectSize}`,
+              (data.maleMutantCount && data.femaleMutantCount) ? `Mutants: ${data.maleMutantCount || 0} males & ${data.femaleMutantCount || 0} females` : null,
+              (!!data.effectSize) ? `Effect size: ${data.effectSize}` : null,
               `Metadata group: ${data.metadataGroup}`,
-            ];
+            ].filter(Boolean);
           },
         },
       },
