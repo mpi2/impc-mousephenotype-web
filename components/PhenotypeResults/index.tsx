@@ -114,7 +114,17 @@ const PhenotypeResults = ({query}: { query?: string }) => {
       mpId: mpId.replace(`___${mpTerm}`, ''),
       mpTerm,
     }
-  }
+  };
+
+  const updateSortByOntology = (value: 'asc' | 'desc') => {
+    setSortGenes(null);
+    setSort(value);
+  };
+
+  const updateSortByGenes = (value: 'asc' | 'desc') => {
+    setSort(null);
+    setSortGenes(value);
+  };
 
   const { data, isLoading, isError} = useQuery({
     queryKey: ['search', 'phenotypes', query],
@@ -141,7 +151,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
     ) : data;
   }, [data, selectedSystem]);
 
-  const getSortedData = () => {
+  const sortedData = useMemo(() => {
     if (!!sortGenes || !!sort) {
       return filteredData.sort(({ intermediateLevelParentsArray: p1, geneCountNum: count1 }, { intermediateLevelParentsArray: p2, geneCountNum: count2 }) => {
         if (sort) {
@@ -152,8 +162,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
       });
     }
     return filteredData;
-  }
-
+  }, [sort, sortGenes, filteredData]);
 
   return (
     <Container style={{ maxWidth: 1240 }}>
@@ -210,7 +219,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
               </Form.Select>
             </div>
             <Pagination
-              data={getSortedData()}
+              data={sortedData}
               additionalTopControls={
                 <div className="filtersWrapper">
                   Sort by:
@@ -219,14 +228,14 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                     <FilterBadge
                       isSelected={sort === 'asc'}
                       icon={faCaretUp}
-                      onClick={() => setSort('asc')}
+                      onClick={() => updateSortByOntology('asc')}
                     >
                       Asc.
                     </FilterBadge>
                     <FilterBadge
                       isSelected={sort === 'desc'}
                       icon={faCaretDown}
-                      onClick={() => setSort('desc')}
+                      onClick={() => updateSortByOntology('desc')}
                     >
                       Desc.
                     </FilterBadge>
@@ -236,14 +245,14 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                     <FilterBadge
                       isSelected={sortGenes === 'asc'}
                       icon={faCaretUp}
-                      onClick={() => setSortGenes('asc')}
+                      onClick={() => updateSortByGenes('asc')}
                     >
                       Asc.
                     </FilterBadge>
                     <FilterBadge
                       isSelected={sortGenes === 'desc'}
                       icon={faCaretDown}
-                      onClick={() => setSortGenes('desc')}
+                      onClick={() => updateSortByGenes('desc')}
                     >
                       Desc.
                     </FilterBadge>

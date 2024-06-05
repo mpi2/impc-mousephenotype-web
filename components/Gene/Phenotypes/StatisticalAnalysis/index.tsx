@@ -9,7 +9,7 @@ import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
-import { formatBodySystems, getUniqObjects } from "@/utils";
+import { formatBodySystems } from "@/utils";
 import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { ZoomButtons } from "@/components";
@@ -228,7 +228,7 @@ const StatisticalAnalysisChart = ({
   const chartOptions = {
     responsive: true,
     indexAxis: "y" as const,
-    animation: false,
+    animation: false as const,
     maintainAspectRatio: true,
     plugins: {
       legend: {
@@ -253,10 +253,10 @@ const StatisticalAnalysisChart = ({
               `P-value: ${parseFloat(data.pValue).toExponential(3)}`,
               `Zygosity: ${_.capitalize(data.zygosity)}`,
               `Procedure: ${data.procedureName}`,
-              `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,
-              `Effect size: ${data.effectSize}`,
+              (data.maleMutantCount && data.femaleMutantCount) ? `Mutants: ${data.maleMutantCount || 0} males & ${data.femaleMutantCount || 0} females` : null,
+              (!!data.effectSize) ? `Effect size: ${data.effectSize}` : null,
               `Metadata group: ${data.metadataGroup}`,
-            ];
+            ].filter(Boolean);
           },
         },
       },
@@ -272,6 +272,7 @@ const StatisticalAnalysisChart = ({
         },
         pan: {
           enabled: true,
+          mode: "y" as const,
         }
       },
     },
@@ -386,7 +387,7 @@ const StatisticalAnalysis = (
   const [cat, setCat] = useState<Cat | null>({
     type: cats.BODY_SYSTEMS,
   });
-  const [significantOnly, setSignificantOnly] = useState<boolean>(true);
+  const [significantOnly, setSignificantOnly] = useState<boolean>(false);
   if (
     !data ||
     !data.some(
@@ -399,9 +400,20 @@ const StatisticalAnalysis = (
     return null;
   }
 
-  const filteredData = useMemo(() => {
-    return getUniqObjects(data);
-  }, [data]);
+  const filteredData = useMemo(
+    () => {
+      const allData = {};
+      data.forEach(result => {
+        const { mgiGeneAccessionId, parameterStableId, alleleAccessionId, metadataGroup, pValue} = result;
+        const hash = `${mgiGeneAccessionId}-${parameterStableId}-${alleleAccessionId}-${metadataGroup}-${pValue}`;
+        if (result[hash] === undefined) {
+          allData[hash] = result;
+        }
+      });
+      return Object.values(allData);
+    },
+    [data]
+  );
 
   const handleToggle = () => {
     setSignificantOnly(!significantOnly);
