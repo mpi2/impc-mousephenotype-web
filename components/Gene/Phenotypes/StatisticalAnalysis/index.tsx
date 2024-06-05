@@ -386,7 +386,7 @@ const StatisticalAnalysis = (
   const [cat, setCat] = useState<Cat | null>({
     type: cats.BODY_SYSTEMS,
   });
-  const [significantOnly, setSignificantOnly] = useState<boolean>(true);
+  const [significantOnly, setSignificantOnly] = useState<boolean>(false);
   if (
     !data ||
     !data.some(
