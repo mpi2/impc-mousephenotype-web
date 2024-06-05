@@ -388,8 +388,9 @@ export const getBodyWeightDownloadData = (
   };
 };
 
-export const getUniqObjects = (arr: Array<any>) => {
+export function getUniqObjects<T>(arr: Array<T>, fieldsToIgnore: Array<keyof T> = []) {
+  const keys = Object.keys(arr[0]).filter((key) => !fieldsToIgnore.includes(key as keyof T));
   return arr.filter((value, index) => {
-    return index === arr.findIndex(obj => JSON.stringify(obj) === JSON.stringify(value))
+    return index === arr.findIndex(obj => JSON.stringify(obj, keys) === JSON.stringify(value, keys))
   });
 }

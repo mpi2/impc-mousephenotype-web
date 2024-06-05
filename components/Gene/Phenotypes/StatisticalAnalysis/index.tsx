@@ -400,9 +400,10 @@ const StatisticalAnalysis = (
     return null;
   }
 
-  const filteredData = useMemo(() => {
-    return getUniqObjects(data);
-  }, [data]);
+  const filteredData = useMemo(
+    () => getUniqObjects(data, ["topLevelPhenotypes", "projectName"]),
+    [data]
+  );
 
   const handleToggle = () => {
     setSignificantOnly(!significantOnly);
