@@ -404,8 +404,8 @@ const StatisticalAnalysis = (
     () => {
       const allData = {};
       data.forEach(result => {
-        const { mgiGeneAccessionId, parameterStableId, alleleAccessionId, metadataGroup} = result;
-        const hash = `${mgiGeneAccessionId}-${parameterStableId}-${alleleAccessionId}-${metadataGroup}`;
+        const { mgiGeneAccessionId, parameterStableId, alleleAccessionId, metadataGroup, pValue} = result;
+        const hash = `${mgiGeneAccessionId}-${parameterStableId}-${alleleAccessionId}-${metadataGroup}-${pValue}`;
         if (result[hash] === undefined) {
           allData[hash] = result;
         }
