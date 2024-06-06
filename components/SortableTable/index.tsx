@@ -1,20 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import _ from "lodash";
 import React, { useEffect, useState } from "react";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { TableHeader } from "@/models";
 
 type SortType = [string | ((any) => void), "asc" | "desc"];
-
-type Header = {
-  width: number;
-  label: string;
-  field?: string;
-  sortFn?: (any) => void;
-  disabled?: boolean;
-  children?: Header[];
-};
 
 const SortableTable = ({
   headers,
@@ -23,7 +14,7 @@ const SortableTable = ({
   children,
   className,
 }: {
-  headers: Header[];
+  headers: TableHeader[];
   defaultSort?: SortType;
   doSort?: (s: SortType) => void;
   children: React.ReactNode;
@@ -69,7 +60,7 @@ const SortableTable = ({
     width,
     disabled = false,
     children: childHeader,
-  }: Header) => {
+  }: TableHeader) => {
     const selected = field === sort.field;
     const handleSelect = () => {
       if (disabled) return;
