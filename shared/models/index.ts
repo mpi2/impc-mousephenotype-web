@@ -10,7 +10,7 @@ export type { PhenotypeRef } from './phenotype-ref';
 export type { TableCellProps } from './TableCell';
 export type { HistopathologyResponse, Histopathology } from './histopathology';
 export type { GrossPathology, GrossPathologyDataset } from './gross-pathology';
-export type { Dataset } from './dataset';
+export type { Dataset, DatasetExtra } from './dataset';
 export type { Gene };
 export type { Phenotype };
 export type { GeneralChartProps, ChartSeries } from './chart';

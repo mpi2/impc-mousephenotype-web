@@ -1,3 +1,4 @@
+import { Dataset, DatasetExtra } from "@/models";
 
 
 export const groupData = (data) => {
@@ -45,7 +46,7 @@ export const groupData = (data) => {
   }, {});
 };
 
-export const processData = (groups) => {
+export const processData = (groups: Array<Dataset>) : Array<DatasetExtra> => {
   return (groups ? Object.values(groups) : []).map((d: any, index) => {
     const getLethality = () => {
       if (!d.significant) {

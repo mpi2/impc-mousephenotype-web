@@ -93,3 +93,11 @@ export type Dataset = {
   topLevelPhenotypes:     Array<{ name: string, id: string }>;
   key?: string;
 }
+
+export type DatasetExtra = Dataset & {
+  datasetNum: number;
+  topLevelPhenotype: string;
+  phenotype: string;
+  id: string;
+  viability: string;
+}
