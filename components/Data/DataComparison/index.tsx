@@ -3,17 +3,16 @@ import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
 import {
-  formatAlleleSymbol,
   formatPValue,
   getIcon,
   getSexLabel,
 } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dataset } from "@/models";
-import styles from "./styles.module.scss";
+import { Dataset, TableHeader } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
+import Skeleton from "react-loading-skeleton";
 
 type LastColumnProps = {
   isViabilityChart: boolean;
@@ -130,6 +129,27 @@ const DataComparison = (props: Props) => {
         ],
       };
 
+  const tableHeaders: Array<TableHeader> = [
+    { width: 3, label: "Parameter", field: "parameter" },
+    {
+      width: 1,
+      label: "Phenotyping Centre",
+      field: "phenotypingCentre",
+    },
+    { width: 2, label: "Allele", field: "alleleSymbol" },
+    { width: 1, label: "Zygosity", field: "zygosity" },
+    { width: 1, label: "Significant sex", field: "sex" },
+    { width: 1, label: "Life Stage", field: "lifeStageName" },
+    { width: 1, label: "Colony Id", field: "colonyId" },
+  ]
+    .concat(displayPValueColumns ? lastColumnHeader : [])
+    .filter((h) =>
+      displayPValueColumns ? h : !h.label.includes("Significant")
+    );
+
+  const numOfHeaders = tableHeaders.reduce(
+    (acc, header) => acc + (header.children ? header.children.length : 1), 0
+  );
   useEffect(() => {
     if (
       !!sorted[0]?.key &&
@@ -155,30 +175,9 @@ const DataComparison = (props: Props) => {
           <>
             <SortableTable
               className="data-comparison-table"
-              doSort={(sort) => {
-                setSortOptions({
-                  prop: sort[0],
-                  order: sort[1],
-                });
-              }}
+              doSort={(sort) => setSortOptions({ prop: sort[0], order: sort[1]})}
               defaultSort={["parameter", "asc"]}
-              headers={[
-                { width: 3, label: "Parameter", field: "parameter" },
-                {
-                  width: 1,
-                  label: "Phenotyping Centre",
-                  field: "phenotypingCentre",
-                },
-                { width: 2, label: "Allele", field: "alleleSymbol" },
-                { width: 1, label: "Zygosity", field: "zygosity" },
-                { width: 1, label: "Significant sex", field: "sex" },
-                { width: 1, label: "Life Stage", field: "lifeStageName" },
-                { width: 1, label: "Colony Id", field: "colonyId" },
-              ]
-                .concat(displayPValueColumns ? lastColumnHeader : [])
-                .filter((h) =>
-                  displayPValueColumns ? h : !h.label.includes("Significant")
-                )}
+              headers={tableHeaders}
             >
               {pageData.map((d, i) => {
                 return (
@@ -247,6 +246,13 @@ const DataComparison = (props: Props) => {
                   </tr>
                 );
               })}
+              {pageData.length === 0 && (
+                <tr>
+                  {[...Array(numOfHeaders)].map((_, i) => (
+                    <td key={i}><Skeleton /></td>
+                  ))}
+                </tr>
+              )}
             </SortableTable>
           </>
         )}
