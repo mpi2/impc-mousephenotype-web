@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
@@ -13,6 +13,8 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Skeleton from "react-loading-skeleton";
 import Head from "next/head";
 import { getChartType } from "@/components/Data/Utils";
+import { chartLoadingIndicatorChannel } from "@/eventChannels";
+import { useDebounce } from "usehooks-ts";
 
 const parametersListPPI = [
   "IMPC_ACS_033_001", // % PP1
@@ -23,9 +25,9 @@ const parametersListPPI = [
 
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
-  const [additionalSummaries, setAdditionalSummaries] = useState<Array<Dataset>>(
-    []
-  );
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<Dataset>>([]);
+  const [specialChartLoading, setSpecialChartLoading] = useState(true);
+  const debouncedSpChartLoading = useDebounce<boolean>(specialChartLoading, 500);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
 
@@ -44,6 +46,17 @@ const Charts = () => {
     router.query,
     router.isReady
   );
+
+  useEffect(() => {
+    const unsubscribeToggleIndicator = chartLoadingIndicatorChannel.on(
+      'toggleIndicator',
+      (payload: boolean) => setSpecialChartLoading(payload),
+    );
+
+    return () => {
+      unsubscribeToggleIndicator();
+    }
+  }, []);
 
   const hasFlowCytometryImages = !isError
     ? !!datasetSummaries.some(
@@ -93,6 +106,11 @@ const Charts = () => {
     )
     : false;
 
+  useEffect(() => {
+    if (!isPPIChart && specialChartLoading) {
+      setSpecialChartLoading(false);
+    }
+  }, [isPPIChart]);
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
   const activeDataset = !!selectedKey
     ? getDatasetByKey(allSummaries, selectedKey)
@@ -140,7 +158,12 @@ const Charts = () => {
           </h1>
           {!!datasetSummaries && !isTimeSeries && (
             <div className="mb-0">
-              {allSummaries?.length > 0 ? (
+              {(isFetching || debouncedSpChartLoading) ? (
+                <span>
+                  <Spinner animation="border" size="sm" />&nbsp;
+                  Loading data
+                </span>
+              ) : (
                 <div
                   style={{
                     display: "flex",
@@ -160,11 +183,6 @@ const Charts = () => {
                   </strong>
                 </span>
                 </div>
-              ) : (
-                <span>
-                  <Spinner animation="border" size="sm" />&nbsp;
-                  Loading data
-                </span>
               )}
             </div>
           )}
@@ -182,7 +200,7 @@ const Charts = () => {
         </Card>
       </Container>
       <div
-        style={{position: "sticky", top: 0, zIndex: 100 }}
+        style={{position: "sticky", top: 0, zIndex: 100}}
         className="bg-grey pt-2"
       >
         <Container>

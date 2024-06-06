@@ -1,5 +1,5 @@
 import { Dataset } from "@/models";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
 import {
   Chart as ChartJS,
@@ -17,13 +17,13 @@ import { ViolinController, Violin } from "@sgratzl/chartjs-chart-boxplot";
 import { Card } from "@/components";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
-import AlleleSymbol from "@/components/AlleleSymbol";
 import { useMultipleS3DatasetsQuery } from "@/hooks";
 import quartileLinesPlugin from "@/utils/chart/violin-quartile-lines.plugin";
-import { Col, Form, Row, Tab, Tabs } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
 import SortableTable from "@/components/SortableTable";
 import StatisticalMethodTable from "@/components/Data/StatisticalMethodTable";
 import { generateSummaryStatistics } from "@/utils/chart";
+import { chartLoadingIndicatorChannel } from "@/eventChannels";
 
 
 ChartJS.register(
@@ -71,6 +71,10 @@ const PPI = (props: PPIProps) => {
   );
 
   const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery('PPI', datasets);
+
+  useEffect(() => {
+    chartLoadingIndicatorChannel.emit('toggleIndicator', !hasLoadedAllData);
+  }, [hasLoadedAllData]);
 
   const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
     const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);
