@@ -13,6 +13,7 @@ import { Dataset, TableHeader } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
+import { motion, AnimatePresence } from "framer-motion";
 
 type LastColumnProps = {
   isViabilityChart: boolean;
@@ -172,7 +173,7 @@ const DataComparison = (props: Props) => {
       )}
       <Pagination data={sorted}>
         {(pageData) => (
-          <>
+          <AnimatePresence>
             <SortableTable
               className="data-comparison-table"
               doSort={(sort) => setSortOptions({ prop: sort[0], order: sort[1]})}
@@ -181,10 +182,14 @@ const DataComparison = (props: Props) => {
             >
               {pageData.map((d, i) => {
                 return (
-                  <tr
+                  <motion.tr
                     key={d.key}
                     className={getBackgroundColorForRow(d, i, selectedKey)}
                     onClick={() => onSelectParam(d.key)}
+                    layout
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+
                   >
                     <td>
                       {d.parameterName}
@@ -243,7 +248,7 @@ const DataComparison = (props: Props) => {
                         isViabilityChart={isViabilityChart}
                       />
                     )}
-                  </tr>
+                  </motion.tr>
                 );
               })}
               {pageData.length === 0 && (
@@ -254,7 +259,7 @@ const DataComparison = (props: Props) => {
                 </tr>
               )}
             </SortableTable>
-          </>
+          </AnimatePresence>
         )}
       </Pagination>
     </>
