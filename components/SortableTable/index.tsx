@@ -111,27 +111,22 @@ const SortableTable = ({
   return (
     <div className={styles.tableWrapper}>
       <Table bordered className={`${styles.table} ${styles.striped} ${className}`}>
-        {hasNested &&
-          headers.map(({children: childHeaders}) => {
-            if (childHeaders && childHeaders.length) {
-              return <colgroup span={childHeaders.length}/>;
-            }
-            return <col/>;
-          })}
         <thead>
-        <tr>
-          {headers.map((header, index) => (
-            <SortableTh key={index} {...header} />
-          ))}
-        </tr>
-        {hasNested &&
-          headers.map(({children: childHeaders}) => {
+          <tr>
+            {headers.map((header, index) => (
+              <SortableTh key={index} {...header} />
+            ))}
+          </tr>
+          <tr>
+          {hasNested &&
+            headers.map(({children: childHeaders}) => {
             if (childHeaders && childHeaders.length) {
               return childHeaders.map((childHeader) => (
                   <SortableTh {...childHeader} />
                 ));
               }
             })}
+          </tr>
         </thead>
         <tbody>{children}</tbody>
       </Table>
