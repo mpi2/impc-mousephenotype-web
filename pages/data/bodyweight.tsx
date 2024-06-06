@@ -53,13 +53,11 @@ const BodyWeightChartPage = () => {
               Body weight curve
             </strong>
           </h1>
-          {(!isBodyWeightLoading && bodyWeightData.length > 0) ? (
-            <BodyWeightDataComparison
-              data={bodyWeightData}
-              selectedKey={selectedKey}
-              onSelectParam={setSelectedKey}
-            />
-          ) : <SkeletonTable />}
+          <BodyWeightDataComparison
+            data={bodyWeightData}
+            selectedKey={selectedKey}
+            onSelectParam={setSelectedKey}
+          />
         </Card>
       </Container>
       <div

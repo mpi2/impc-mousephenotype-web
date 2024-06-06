@@ -71,13 +71,11 @@ const ViabilityChartPage = () => {
               </div>
             </div>
           )}
-          {(!isViabilityLoading && viabilityData.length > 0) ? (
-            <ViabilityDataComparison
-              data={viabilityData}
-              selectedKey={selectedKey}
-              onSelectParam={setSelectedKey}
-            />
-          ) : <SkeletonTable />}
+          <ViabilityDataComparison
+            data={viabilityData}
+            selectedKey={selectedKey}
+            onSelectParam={setSelectedKey}
+          />
         </Card>
       </Container>
       <div
