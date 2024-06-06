@@ -163,7 +163,7 @@ const Charts = () => {
               ) : (
                 <span>
                   <Spinner animation="border" size="sm" />&nbsp;
-                  Loading datasets
+                  Loading data
                 </span>
               )}
             </div>

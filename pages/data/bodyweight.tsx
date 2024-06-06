@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useBodyWeightQuery } from "@/hooks";
 import { Card, Search } from "@/components";
-import { Alert, Container } from "react-bootstrap";
+import { Alert, Container, Spinner } from "react-bootstrap";
 import styles from "@/pages/data/styles.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -18,9 +18,9 @@ const BodyWeightChartPage = () => {
   const [selectedKey, setSelectedKey] = useState('');
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
 
-  const { bodyWeightData, isBodyWeightLoading } = useBodyWeightQuery(mgiGeneAccessionId as string, router.isReady);
+  const { bodyWeightData, isBodyWeightLoading, isFetching } = useBodyWeightQuery(mgiGeneAccessionId as string, router.isReady);
   const activeDataset = !!selectedKey ? getDatasetByKey(bodyWeightData, selectedKey) : bodyWeightData[0];
-
+  
   return (
     <>
       <Head>
@@ -48,11 +48,17 @@ const BodyWeightChartPage = () => {
               <p>We could not find the data to display this page.</p>
             </Alert>
           )}
-          <h1 className="mt-2 mb-0">
+          <h1 className="mt-2 mb-4">
             <strong className="text-capitalize">
               Body weight curve
             </strong>
           </h1>
+          {isFetching && (
+            <span>
+              <Spinner animation="border" size="sm"/>&nbsp;
+              Loading data
+            </span>
+          )}
           <BodyWeightDataComparison
             data={bodyWeightData}
             selectedKey={selectedKey}

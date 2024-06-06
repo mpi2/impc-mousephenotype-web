@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useViabilityQuery } from "@/hooks";
 import { Card, Search } from "@/components";
-import { Alert, Container } from "react-bootstrap";
+import { Alert, Container, Spinner } from "react-bootstrap";
 import styles from "@/pages/data/styles.module.scss";
 import Skeleton from "react-loading-skeleton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -53,7 +53,7 @@ const ViabilityChartPage = () => {
               Viability data for <i>{viabilityData?.[0]?.["geneSymbol"] || <Skeleton width="50px" inline />}</i> gene
             </strong>
           </h1>
-          {!!viabilityData && (
+          {!isViabilityLoading ? (
             <div className="mb-0">
               <div
                 style={{
@@ -70,6 +70,11 @@ const ViabilityChartPage = () => {
                 </span>
               </div>
             </div>
+          ) : (
+            <span>
+              <Spinner animation="border" size="sm"/>&nbsp;
+              Loading data
+            </span>
           )}
           <ViabilityDataComparison
             data={viabilityData}
