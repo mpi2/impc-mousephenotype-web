@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { Alert, Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Alert, Container, Spinner } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
-import SkeletonTable from "@/components/skeletons/table";
 import { ABR, DataComparison, FlowCytometryImages, IPGTT, PPI } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
@@ -14,6 +13,8 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Skeleton from "react-loading-skeleton";
 import Head from "next/head";
 import { getChartType } from "@/components/Data/Utils";
+import { chartLoadingIndicatorChannel } from "@/eventChannels";
+import { useDebounce } from "usehooks-ts";
 
 const parametersListPPI = [
   "IMPC_ACS_033_001", // % PP1
@@ -24,15 +25,15 @@ const parametersListPPI = [
 
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
-  const [additionalSummaries, setAdditionalSummaries] = useState<Array<Dataset>>(
-    []
-  );
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<Dataset>>([]);
+  const [specialChartLoading, setSpecialChartLoading] = useState(true);
+  const debouncedSpChartLoading = useDebounce<boolean>(specialChartLoading, 500);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
 
   const getPageTitle = (summaries: Array<Dataset>) => {
     if (!summaries || summaries.length === 0) {
-      return <Skeleton />;
+      return <Skeleton width={200} />;
     } else if (allSummaries[0]?.significantPhenotype?.name) {
       return allSummaries[0]?.significantPhenotype?.name;
     } else {
@@ -40,11 +41,22 @@ const Charts = () => {
     }
   };
 
-  const { datasetSummaries, isLoading, isError } = useDatasetsQuery(
+  const { datasetSummaries, isFetching, isError } = useDatasetsQuery(
     mgiGeneAccessionId,
     router.query,
     router.isReady
   );
+
+  useEffect(() => {
+    const unsubscribeToggleIndicator = chartLoadingIndicatorChannel.on(
+      'toggleIndicator',
+      (payload: boolean) => setSpecialChartLoading(payload),
+    );
+
+    return () => {
+      unsubscribeToggleIndicator();
+    }
+  }, []);
 
   const hasFlowCytometryImages = !isError
     ? !!datasetSummaries.some(
@@ -94,6 +106,11 @@ const Charts = () => {
     )
     : false;
 
+  useEffect(() => {
+    if (!isPPIChart && specialChartLoading) {
+      setSpecialChartLoading(false);
+    }
+  }, [isPPIChart]);
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
   const activeDataset = !!selectedKey
     ? getDatasetByKey(allSummaries, selectedKey)
@@ -128,7 +145,7 @@ const Charts = () => {
               </Link>
             </span>
           </div>
-          {!datasetSummaries && !isLoading && (
+          {!datasetSummaries && !isFetching && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>
               <p>We could not find the data to display this page.</p>
@@ -141,15 +158,21 @@ const Charts = () => {
           </h1>
           {!!datasetSummaries && !isTimeSeries && (
             <div className="mb-0">
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: "1rem",
-                }}
-              >
+              {(isFetching || debouncedSpChartLoading) ? (
+                <span>
+                  <Spinner animation="border" size="sm" />&nbsp;
+                  Loading data
+                </span>
+              ) : (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                    gap: "1rem",
+                  }}
+                >
                 <span>
                   {allSummaries && allSummaries.length} parameter / zygosity /
                   metadata group combinations tested, with the lowest p-value
@@ -159,10 +182,11 @@ const Charts = () => {
                       formatPValue(getSmallestPValue(allSummaries))}
                   </strong>
                 </span>
-              </div>
+                </div>
+              )}
             </div>
           )}
-          {(!isLoading && !isError && !isSpecialChart && allSummaries.length > 0 ) ? (
+          {(!isSpecialChart) && (
             <DataComparison
               data={allSummaries}
               isViabilityChart={isViabilityChart}
@@ -170,15 +194,13 @@ const Charts = () => {
               onSelectParam={setSelectedKey}
               displayPValueThreshold={!isTimeSeries}
               displayPValueColumns={!isTimeSeries}
-              {...(isABRChart && { initialSortByProp: "parameterStableId" })}
+              {...(isABRChart && {initialSortByProp: "parameterStableId"})}
             />
-          ) : (!isError && isLoading) ? (
-            <SkeletonTable />
-          ) : null}
+          )}
         </Card>
       </Container>
       <div
-        style={{ position: "sticky", top: 0, zIndex: 100 }}
+        style={{position: "sticky", top: 0, zIndex: 100}}
         className="bg-grey pt-2"
       >
         <Container>

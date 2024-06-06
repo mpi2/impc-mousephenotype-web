@@ -4,7 +4,6 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
 import { UpSetJS, extractCombinations } from '@upsetjs/react';
 import styles from './styles.module.scss';
-import 'react-modern-drawer/dist/index.css';
 import { ISetCombinations } from "@upsetjs/model";
 import _ from 'lodash';
 import { FilterBox } from "@/components";
