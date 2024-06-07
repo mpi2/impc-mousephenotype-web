@@ -45,6 +45,7 @@ const parameterList = [
   "IMPC_ACS_034_001", // % PP2
   "IMPC_ACS_035_001", // % PP3
   "IMPC_ACS_036_001", // % PP4
+  "IMPC_ACS_037_001", // % Global
 ];
 
 const labels = {
@@ -83,6 +84,7 @@ const PPI = (props: PPIProps) => {
 
   const chartDatasets = useMemo(() => {
     return parameterList
+      .filter(param => param !== 'IMPC_ACS_037_001')
       .map(param => datasets.find(d => d.parameterStableId === param))
       .filter(Boolean)
       .map(dataset => {

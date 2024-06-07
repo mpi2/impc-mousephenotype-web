@@ -5,7 +5,7 @@ import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
 import CategoricalBarPlot from "./Plots/CategoricalBarPlot";
 import { formatPValue, getDownloadData } from "@/utils";
-import { capitalize } from "lodash";
+import { capitalize, sortBy } from "lodash";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
 import Link from "next/link";
@@ -29,7 +29,7 @@ const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
       c.sampleGroup === "control" &&
       validExperimentalSeriesSexes.includes(c.sex)
   );
-  return [...controlSeries, ...validExperimentalSeries];
+  return sortBy([...controlSeries, ...validExperimentalSeries], "sex", "sampleGroup");
 };
 
 const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
@@ -44,6 +44,7 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
       const series: Array<any> = [];
       const index = {};
       const categories = [];
+      let allData = [];
       response.series.forEach((s) => {
         if (!index[s.specimenSex]) index[s.specimenSex] = {};
         if (!index[s.specimenSex][s.sampleGroup]) {
@@ -61,6 +62,11 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
 
       Object.keys(index).forEach((sex) =>
         Object.keys(index[sex]).forEach((sampleGroup) => {
+          allData.push({
+            sex,
+            sampleGroup: sampleGroup == "experimental" ? datasetSummary["zygosity"] : sampleGroup,
+            categoriesData: index[sex][sampleGroup]
+          });
           categories.forEach((category) => {
             const count = index[sex][sampleGroup][category] || 0;
             const total = index[sex][sampleGroup].total;
@@ -73,11 +79,12 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
           });
         })
       );
+      allData = sortBy(allData, ["sex", "sampleGroup"]);
       return {
         categories,
         series: filterChartSeries(datasetSummary.zygosity, series),
-        categoryIndex: index,
         originalData: response,
+        dataBySex: allData,
       };
     },
     enabled: isVisible,
@@ -157,15 +164,8 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
               headers={[
                 { width: 4, label: "Sample type / Category", disabled: true },
               ].concat(
-                Object.keys(data.categoryIndex)
-                  .flatMap((sex) =>
-                    Object.keys(data.categoryIndex[sex]).map(
-                      (c) =>
-                        capitalize(sex) +
-                        " " +
-                        (c == "experimental" ? datasetSummary["zygosity"] : c)
-                    )
-                  )
+                data.dataBySex
+                  .map(({ sex, sampleGroup })  => `${capitalize(sex)} ${sampleGroup}`)
                   .map((c) => {
                     return { width: 2, label: c, disabled: true };
                   })
@@ -175,16 +175,10 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
                 return (
                   <tr key={`${category}_${index}`}>
                     <td>{category}</td>
-                    {Object.keys(data.categoryIndex).flatMap((sex) =>
-                      Object.keys(data.categoryIndex[sex]).map((sampleGroup) =>
-                        !data.categoryIndex[sex][sampleGroup][category] ? (
-                          <td key={`${sampleGroup}_${sex}_${category}`}>0</td>
-                        ) : (
-                          <td key={`${sampleGroup}_${sex}_${category}`}>
-                            {data.categoryIndex[sex][sampleGroup][category]}
-                          </td>
-                        )
-                      )
+                    {data.dataBySex.map(({ sex, sampleGroup, categoriesData }) =>
+                      <td key={`${sampleGroup}_${sex}_${category}`}>
+                        {categoriesData[category] || 0}
+                      </td>
                     )}
                   </tr>
                 );
