@@ -10,6 +10,7 @@ import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { GeneralChartProps } from "@/models";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { fetchDatasetFromS3 } from "@/api-service";
+import { sortBy } from "lodash";
 
 const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -83,7 +84,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       </Card>
     );
 
-  const totalCountData = [
+  const totalCountData = sortBy([
     {
       label: "Total WTs",
       value: data?.series.find(
@@ -102,9 +103,9 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         (d) => d.parameterStableId == viabilityParameterMap.both.heterozygote
       )?.dataPoint,
     },
-  ].filter((d) => d.value != 0);
+  ].filter((d) => d.value != 0), ["label"]);
 
-  const maleCountData = [
+  const maleCountData = sortBy([
     {
       label: "Total Male WT",
       value: data?.series.find(
@@ -123,9 +124,9 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         (d) => d.parameterStableId == viabilityParameterMap.male.homozygote
       )?.dataPoint,
     },
-  ].filter((d) => d.value != 0);
+  ].filter((d) => d.value != 0), ["label"]);
 
-  const femaleCountData = [
+  const femaleCountData = sortBy([
     {
       label: "Total Female WT",
       value: data?.series.find(
@@ -144,7 +145,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         (d) => d.parameterStableId == viabilityParameterMap.female.homozygote
       )?.dataPoint,
     },
-  ].filter((d) => d.value != 0);
+  ].filter((d) => d.value != 0), ["label"]);
 
   return (
     <>
