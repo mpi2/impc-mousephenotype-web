@@ -11,6 +11,7 @@ import { GeneStatisticalResult } from "@/models/gene";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import { ParameterCell, PhenotypeIconsCell, SupportingDataCell } from './custom-cells';
+import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const gene = useContext(GeneContext);
@@ -21,6 +22,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const [system, setSystem] = useState(undefined);
   const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
   const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
+  const [selectedAllele, setSelectedAllele] = useState<string>(undefined);
 
   useEffect(() => {
     const newData = _.orderBy(data, "pValue", "asc");
@@ -36,7 +38,8 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
       procedureStableId,
       topLevelPhenotypes,
       lifeStageName,
-      zygosity
+      zygosity,
+      alleleSymbol
     }) =>
       (!procedure || procedureName === procedure) &&
       (!query ||
@@ -46,7 +49,8 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
       (!system ||
         (topLevelPhenotypes ?? []).some(({ name }) => name === system)) &&
       (!selectedLifeStage || lifeStageName === selectedLifeStage) &&
-      (!selectedZygosity || zygosity === selectedZygosity)
+      (!selectedZygosity || zygosity === selectedZygosity) &&
+      (!selectedAllele || alleleSymbol === selectedAllele)
   );
 
   const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
@@ -57,6 +61,20 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   );
   const lifestages = _.sortBy(_.uniq(_.map(data, "lifeStageName")));
   const zygosities = _.sortBy(_.uniq(_.map(data, "zygosity")));
+  const alleles = _.sortBy(_.uniq(_.map(data, "alleleSymbol")));
+
+  useEffect(() => {
+    const unsubscribeOnAlleleSelection = orderPhenotypedSelectionChannel.on(
+      "onAlleleSelected",
+      (newAllele) => {
+        if (newAllele !== selectedAllele && alleles.length > 1) {
+          setSelectedAllele(newAllele);
+        }
+      });
+    return () => {
+      unsubscribeOnAlleleSelection();
+    }
+  }, [selectedAllele, alleles]);
 
   const sortPhenotypes = (data: Array<GeneStatisticalResult>, field: keyof GeneStatisticalResult, order: "asc" | "desc") => {
     if (field === "pValue") {
@@ -100,6 +118,14 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
               onChange={setProcedure}
               ariaLabel="Filter by procedures"
               options={procedures}
+            />
+            <FilterBox
+              controlId="alleleFilterAD"
+              label="Allele"
+              value={selectedAllele}
+              onChange={setSelectedAllele}
+              ariaLabel="Filter by allele"
+              options={alleles}
             />
             <FilterBox
               controlId="zygosityFilterAD"
