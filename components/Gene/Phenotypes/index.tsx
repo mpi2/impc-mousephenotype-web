@@ -10,7 +10,7 @@ import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
 import { PropsWithChildren, ReactNode, useContext, useEffect, useState } from "react";
-import { summarySystemSelectionChannel } from "@/eventChannels";
+import { orderPhenotypedSelectionChannel, summarySystemSelectionChannel } from "@/eventChannels";
 import _ from 'lodash';
 import { AllelesStudiedContext } from "@/contexts";
 import { Variant } from "react-bootstrap/types";
@@ -104,6 +104,17 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
       });
     return () => {
       unsubscribeOnSystemSelection();
+    }
+  }, [tabKey]);
+
+  useEffect(() => {
+    const unsubscribeOnAlleleSelection = orderPhenotypedSelectionChannel.on(
+      "onAlleleSelected",
+      () => {
+        if (tabKey !== 'allData') setTabKey('allData');
+      });
+    return () => {
+      unsubscribeOnAlleleSelection();
     }
   }, [tabKey]);
 
