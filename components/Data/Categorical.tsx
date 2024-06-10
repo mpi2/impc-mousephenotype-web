@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
 import { fetchDatasetFromS3 } from "@/api-service";
+import { getZygosityLabel } from "@/components/Data/Utils";
 
 const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
   if (zygosity === "hemizygote") {
@@ -165,7 +166,7 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
                 { width: 4, label: "Sample type / Category", disabled: true },
               ].concat(
                 data.dataBySex
-                  .map(({ sex, sampleGroup })  => `${capitalize(sex)} ${sampleGroup}`)
+                  .map(({ sex, sampleGroup })  => `${capitalize(sex)} ${getZygosityLabel(datasetSummary.zygosity, sampleGroup)}`)
                   .map((c) => {
                     return { width: 2, label: c, disabled: true };
                   })
