@@ -15,6 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
 import { fetchDatasetFromS3 } from "@/api-service";
+import { getZygosityLabel } from "@/components/Data/Utils";
 
 type ChartSeries = {
   data: Array<any>;
@@ -73,9 +74,7 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
       const stddevKey = `${sex}${sampleGroupKey}Sd`;
       const countKey = `${sex}${sampleGroupKey}Count`;
       return {
-        label: `${capitalize(sex)} ${
-          sampleGroup === "control" ? "Control" : capitalize(zygosity)
-        }`,
+        label: `${capitalize(sex)} ${getZygosityLabel(zygosity, sampleGroup)}`,
         mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
         stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
         count: datasetSummary.summaryStatistics?.[countKey] || 0,
