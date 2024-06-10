@@ -188,7 +188,9 @@ const ManhattanPlot = ({ phenotypeId }) => {
           if (areTheSamePoint(point, currentPoint)) {
             return '#00b0b0';
           }
-
+          if (!ctx.raw.pValue) {
+            return `rgba(0, 159, 129, ${matchesAnotherGene ? '0.1' : '0.4'})`;
+          }
           return ctx.raw.y >= 4 ? `rgba(26, 133, 255, ${matchesAnotherGene ? '0.1' : '0.4'})` : `rgba(212, 17, 89, ${matchesAnotherGene ? '0.1' : '0.3'})`;
         },
       }
@@ -356,11 +358,11 @@ const ManhattanPlot = ({ phenotypeId }) => {
     <div className={styles.mainWrapper}>
       <div className="chart">
         <div className={styles.labelsWrapper}>
-          <div>
+          <div style={{ fontSize: '90%' }}>
             <i className="fa fa-circle" style={{color: 'rgb(212, 17, 89)'}}></i>&nbsp;&nbsp;Not significant
-            <i className="fa fa-circle"
-               style={{color: 'rgb(26, 133, 255)', marginLeft: '1rem'}}></i>&nbsp;&nbsp;Significant
-            <div style={{display: "inline-block", marginLeft: '0.5rem'}}>
+            <i className="fa fa-circle" style={{color: 'rgb(26, 133, 255)', marginLeft: '1rem'}}></i>&nbsp;&nbsp;Significant
+            <i className="fa fa-circle" style={{color: 'rgb(0, 159, 129)', marginLeft: '1rem'}}></i>&nbsp;&nbsp;Manual associations
+            <div style={{display: "inline-block"}}>
               <hr
                 style={{
                   border: "none",
