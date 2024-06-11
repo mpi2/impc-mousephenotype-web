@@ -13,6 +13,7 @@ import { formatBodySystems } from "@/utils";
 import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { ZoomButtons } from "@/components";
+import classNames from "classnames";
 
 Chart.register(zoomPlugin);
 
@@ -130,6 +131,16 @@ const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
   }
 };
 
+const transformPValue = (value: number, significant: boolean) => {
+  if (value === 0 && significant) {
+    // put a high value to show they are really significant
+    return 15;
+  } else if (value === 0) {
+    return 0;
+  }
+  return -Math.log10(value)
+};
+
 const StatisticalAnalysisChart = ({
   data,
   cat,
@@ -162,13 +173,11 @@ const StatisticalAnalysisChart = ({
   const dataWithPValue = useMemo(() =>
     data.filter(
       (x) =>
-        x.pValue !== null &&
-        x.pValue !== undefined &&
         x.topLevelPhenotypes?.length
     )
     .map((x) => ({
       ...x,
-      pValue: Number(x.pValue),
+      pValue: Number(x.pValue) || 0,
       topLevelPhenotypes: x.topLevelPhenotypes.map((y) => y.name),
     })), [data]);
 
@@ -184,13 +193,18 @@ const StatisticalAnalysisChart = ({
       : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]))
     ,[processed, isByProcedure]);
 
-
   const chartData = useMemo(() => ({
     labels: processed.map((x) => x.parameterName),
     datasets: [
       {
         label: "P-value",
-        data: processed.map((x) => -Math.log10(Number(x.pValue))),
+        type: "line" as const,
+        data: processed.map((x, index) => ({
+          x: transformPValue(x.pValue, x.significant),
+          y: index,
+          pValue: x.pValue,
+          isSignificant: x.significant,
+        })),
         backgroundColor: processed.map((x) => {
           let index = 0;
           if (isByProcedure) {
@@ -203,6 +217,7 @@ const StatisticalAnalysisChart = ({
         showLine: false,
         pointRadius: 5,
         pointHoverRadius: 8,
+        pointStyle: (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant ? "triangle" : "circle",
       },
       {
         label: 'P-value threshold',
@@ -250,7 +265,7 @@ const StatisticalAnalysisChart = ({
           afterBody: (context) => {
             const data = processed[context[0].dataIndex];
             return [
-              `P-value: ${parseFloat(data.pValue).toExponential(3)}`,
+              (data.pValue === 0 && data.significant ? "Manual association" : `P-value: ${parseFloat(data.pValue).toExponential(3)}`),
               `Zygosity: ${_.capitalize(data.zygosity)}`,
               `Procedure: ${data.procedureName}`,
               (data.maleMutantCount && data.femaleMutantCount) ? `Mutants: ${data.maleMutantCount || 0} males & ${data.femaleMutantCount || 0} females` : null,
@@ -285,57 +300,38 @@ const StatisticalAnalysisChart = ({
 
   return (
     <div>
-      <div style={{marginBottom: "1rem", display: "flex", flexWrap: "wrap", gap: "0.5rem 1rem"}}>
-        {colorByArray.map((item, index) => {
-          if (!item) {
-            return;
-          }
-          const color = colorArray[index];
-          return (
-            <span className="grey">
-              <span
-                style={{
-                  display: "inline-flex",
-                  width: "1.4em",
-                  height: "1.4em",
-                  backgroundColor: color,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 3,
-                  verticalAlign: "middle",
-                  marginRight: 3,
-                }}
-              >
-                {isByProcedure ? null : (
-                  <BodySystemIcon name={item} color="white" size="1x"/>
-                )}
-              </span>{" "}
-              <small>{formatBodySystems(item)}</small>
-            </span>
-          );
+      <div className={classNames(styles.labels, styles.icons)}>
+        {colorByArray
+          .filter(Boolean)
+          .map((item, index) => {
+            const color = colorArray[index];
+            return (
+              <span className="grey">
+                <span className={styles.icon} style={{backgroundColor: color}}>
+                  {isByProcedure ? null : (
+                    <BodySystemIcon name={item} color="white" size="1x"/>
+                  )}
+                </span>&nbsp;
+                <small>{formatBodySystems(item)}</small>
+              </span>
+            );
         })}
-        <span className="grey" style={{ display: 'inline-block', marginBlock: '3px', whiteSpace: 'nowrap' }}>
-          <hr
-            style={{
-              border: "none",
-              borderTop: "3px dashed #000",
-              height: "3px",
-              width: "50px",
-              display: 'inline-block',
-              margin: '0 0 0 0.5rem',
-              opacity: 1
-            }}
-          />
+        <span className="grey" style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+          <hr className={styles.dashedLine}/>
           <small>Significant P-value threshold (P &lt; 0.0001)</small>
         </span>
       </div>
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "700px"
-        }}
-      >
+      <div className={classNames(styles.labels, "grey")}>
+        <div className={styles.figureContainer}>
+          <div className={styles.circle} />
+          Statistical annotations
+        </div>
+        <div className={styles.figureContainer}>
+          <div className={styles.triangle} />
+          Manual annotations
+        </div>
+      </div>
+      <div className={styles.chartContainer}>
         <div ref={zoomButtonsRef} className={styles.overlay}>
           <ZoomButtons
             containerClassName={styles.buttons}
@@ -357,22 +353,12 @@ const StatisticalAnalysisChart = ({
           data={chartData}
         />
       </div>
-      <div style={{display: "flex", alignItems: 'center', justifyContent: 'space-between'}}>
+      <div className={styles.bottomLabels}>
         <span className="labels">
           {hasDataRelatedToPWG && (
             <span style={{marginLeft: '1rem'}}>
+              <hr className={styles.dashedLine} style={{borderTop: "3px dashed rgb(255, 99, 132)"}} />
               Significant threshold for pain sensitivity (P &lt; 0.001)
-              <hr
-                style={{
-                  border: "none",
-                  borderTop: "3px dashed rgb(255, 99, 132)",
-                  height: "3px",
-                  width: "50px",
-                  display: 'inline-block',
-                  margin: '0 0 0 0.5rem',
-                  opacity: 1
-                }}
-              />
             </span>
           )}
         </span>
@@ -388,15 +374,7 @@ const StatisticalAnalysis = (
     type: cats.BODY_SYSTEMS,
   });
   const [significantOnly, setSignificantOnly] = useState<boolean>(false);
-  if (
-    !data ||
-    !data.some(
-      (x) =>
-        x.pValue !== null &&
-        x.pValue !== undefined &&
-        x.topLevelPhenotypes?.length
-    )
-  ) {
+  if (!data || !data.some((x) => x.topLevelPhenotypes?.length)) {
     return null;
   }
 

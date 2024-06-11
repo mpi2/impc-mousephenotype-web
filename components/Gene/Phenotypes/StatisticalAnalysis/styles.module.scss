@@ -26,3 +26,68 @@
     border-radius: 5px;
   }
 }
+
+$iconsSize: 15px;
+.labels {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+  &.icons {
+    gap: 0.5rem 1rem;
+    flex-wrap: wrap;
+  }
+  .icon {
+    display: inline-flex;
+    width: 1.4em;
+    height: 1.4em;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+  .figureContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 80%;
+  }
+  .circle {
+    display: inline-block;
+    width: $iconsSize;
+    height: $iconsSize;
+    border-radius: 50%;
+    background-color: #CCC;
+    margin-right: 0.3rem;
+  }
+  .triangle {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 8.5px 15px 8.5px;
+    border-color: transparent transparent #CCC transparent;
+    margin-right: 0.3rem;
+  }
+}
+
+.bottomLabels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashedLine {
+  border: none;
+  border-top: 3px dashed #000;
+  height: 3px;
+  width: 50px;
+  display: inline-block;
+  margin: 0 0.4rem 0 0;
+  opacity: 1;
+}
+
+.chartContainer {
+  position: relative;
+  width: 100%;
+  height: 700px;
+}
