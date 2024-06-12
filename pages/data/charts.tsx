@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
@@ -120,6 +120,11 @@ const Charts = () => {
   const isSpecialChart = isIPGTTChart;
   const extraChildren = (hasFlowCytometryImages && flowCytometryImages.length) ? <FlowCytometryImages images={flowCytometryImages} /> : null;
   const Chart = getChartType(activeDataset, true, extraChildren);
+  const smallestPValue = useMemo(() => getSmallestPValue(allSummaries), [allSummaries]);
+  const fetchingInProcess = isFetching || debouncedSpChartLoading;
+
+  console.log({ smallestPValue, datasetSummaries });
+
   return (
     <>
       <Head>
@@ -156,34 +161,32 @@ const Charts = () => {
               {getPageTitle(allSummaries)}
             </strong>
           </h1>
-          {!!datasetSummaries && !isTimeSeries && (
-            <div className="mb-0">
-              {(isFetching || debouncedSpChartLoading) ? (
+          {fetchingInProcess && (
+            <div className="mb-4">
+              <Spinner animation="border" size="sm" />&nbsp;
+              Loading data
+            </div>
+          )}
+          {(!isTimeSeries && !fetchingInProcess && smallestPValue !== 1) && (
+            <div className="mb-4">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flexWrap: "wrap",
+                  gap: "1rem",
+                }}
+              >
                 <span>
-                  <Spinner animation="border" size="sm" />&nbsp;
-                  Loading data
-                </span>
-              ) : (
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    flexWrap: "wrap",
-                    gap: "1rem",
-                  }}
-                >
-                <span>
-                  {allSummaries && allSummaries.length} parameter / zygosity /
+                  {allSummaries.length} parameter / zygosity /
                   metadata group combinations tested, with the lowest p-value
                   of&nbsp;
                   <strong>
-                    {allSummaries &&
-                      formatPValue(getSmallestPValue(allSummaries))}
+                    {formatPValue(getSmallestPValue(allSummaries))}
                   </strong>
                 </span>
-                </div>
-              )}
+              </div>
             </div>
           )}
           {(!isSpecialChart) && (
