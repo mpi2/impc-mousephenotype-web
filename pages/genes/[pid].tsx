@@ -4,7 +4,6 @@ import {
   Summary,
   GeneMetadata,
   ExternalLinks,
-  Phenotypes,
   Images,
   Publications,
   Histopathology,
@@ -24,9 +23,12 @@ import geneList from '../../mocks/data/all_genes_list.json';
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),
-  {
-    ssr: false,
-  }
+  {ssr: false}
+);
+
+const Phenotypes = dynamic(
+  () => import("@/components/Gene/Phenotypes"),
+  {ssr: false}
 );
 
 type GenePageProps = {

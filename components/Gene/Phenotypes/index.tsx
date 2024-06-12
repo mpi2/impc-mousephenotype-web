@@ -84,7 +84,8 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     select: data => data.map(dataset => ({
       ...dataset,
       mutantCount: getMutantCount(dataset)
-    })) as Array<GeneStatisticalResult>
+    })) as Array<GeneStatisticalResult>,
+    placeholderData: []
   });
 
   const {
