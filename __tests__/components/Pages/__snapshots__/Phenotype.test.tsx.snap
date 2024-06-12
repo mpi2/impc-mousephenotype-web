@@ -1,51 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Phenotype page renders correctly 1`] = `
-[
+<div>
   <div
-    className="banner"
+    class="banner"
   >
     <div
-      className="pb-4 pt-5 container container"
+      class="pb-4 pt-5 container container"
     >
       <div
-        className="col-12 col-md-8 ps-4 pe-4"
+        class="col-12 col-md-8 ps-4 pe-4"
       >
         <div
-          className="tabs"
+          class="tabs"
         >
           <a
-            className="tab"
+            class="tab"
             href="/search"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Genes
           </a>
           <a
-            className="tab__active"
+            class="tab__active"
             href="/search?type=phenotype"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Phenotypes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="https://dev.mousephenotype.org/?s="
           >
             Help, news, blog
           </a>
         </div>
         <div
-          className="inputCont"
+          class="inputCont"
         >
           <input
-            className="input"
-            onChange={[Function]}
-            onKeyDown={[Function]}
+            class="input"
             placeholder="Search All 7824 Knockout Data..."
             title="main search box"
             type="text"
@@ -53,82 +45,74 @@ exports[`Phenotype page renders correctly 1`] = `
           />
           <button
             aria-describedby="svg-inline--fa-title-search-icon"
-            className="searchBtn"
-            onClick={[Function]}
+            class="searchBtn"
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              className="svg-inline--fa fa-magnifying-glass "
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
-              style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
                 id="svg-inline--fa-title-search-icon"
-                style={{}}
               >
                 Search button
               </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="page container"
+    class="page container"
   >
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="subheadingCont"
+        class="subheadingCont"
       >
         <div
-          className="subheading"
+          class="subheading"
         >
           <span
-            className="subheadingSection"
+            class="subheadingSection"
           >
             Phenotype
           </span>
           <span
-            className="subheadingSection"
+            class="subheadingSection"
           />
         </div>
       </div>
       <br />
       <p
-        className="grey"
+        class="grey"
       >
         Loading...
       </p>
     </div>
     <div
-      className="card"
+      class="card"
       id="associations-table"
     >
       <h2>
         IMPC Gene variants with 
         <span
-          aria-busy={true}
+          aria-busy="true"
           aria-live="polite"
         >
           <span
-            className="react-loading-skeleton"
-            style={
-              {
-                "width": 150,
-              }
-            }
+            class="react-loading-skeleton"
+            style="width: 150px;"
           >
             ‌
           </span>
@@ -139,507 +123,420 @@ exports[`Phenotype page renders correctly 1`] = `
         0
       </p>
       <div
-        className="buttonsWrapper top withControls"
+        class="buttonsWrapper top withControls"
         data-testid="top-controls-wrapper"
-        style={{}}
       >
         <div
-          className="additionalWrapper"
+          class="additionalWrapper"
         >
           <input
             aria-label="Filter by parameters"
-            className="bg-white form-control"
+            class="bg-white form-control"
             id="parameterFilter"
-            onChange={[Function]}
             placeholder="Search "
-            style={
-              {
-                "display": "inline-block",
-                "marginRight": "2rem",
-                "width": 200,
-              }
-            }
+            style="display: inline-block; width: 200px; margin-right: 2rem;"
             type="text"
           />
         </div>
       </div>
       <div
-        className="tableWrapper"
+        class="tableWrapper"
       >
         <table
-          className="table striped undefined table table-bordered"
+          class="table striped undefined table table-bordered"
         >
           <thead>
             <tr>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="16.666666666666664%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "bold",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
                 >
                   Gene / allele
                    
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-caret-up sortIcon"
+                    class="svg-inline--fa fa-caret-up sortIcon"
                     data-icon="caret-up"
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={{}}
                     viewBox="0 0 320 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
-                      style={{}}
                     />
                   </svg>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="10.833333333333334%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Phenotype
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="8.333333333333332%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Supporting data
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="8.333333333333332%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Zygosity
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="5.833333333333333%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Sex
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="8.333333333333332%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Life stage
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="12.5%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Parameter
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="12.5%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Phenotyping Center
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="8.333333333333332%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Most significant P-value
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
@@ -651,7 +548,7 @@ exports[`Phenotype page renders correctly 1`] = `
           <tbody>
             <tr>
               <td
-                colSpan={9}
+                colspan="9"
               >
                 <b>
                   No data available
@@ -662,66 +559,54 @@ exports[`Phenotype page renders correctly 1`] = `
         </table>
       </div>
       <div
-        className="buttonsWrapper withControls"
+        class="buttonsWrapper withControls"
       >
         <div
-          className="additionalWrapper bottomControls"
+          class="additionalWrapper bottomControls"
         >
           <div
-            className="grey"
-            style={
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "gap": "0.5rem",
-              }
-            }
+            class="grey"
+            style="display: flex; gap: 0.5rem; align-items: center;"
           >
             Download data as:
              
             <button
-              className="btn impc-secondary-button small"
-              onClick={[Function]}
+              class="btn impc-secondary-button small"
             >
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm "
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 512 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
                TSV
             </button>
              
             <button
-              className="btn impc-secondary-button small"
-              onClick={[Function]}
+              class="btn impc-secondary-button small"
             >
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm "
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 512 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
                XLS
@@ -729,120 +614,73 @@ exports[`Phenotype page renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="bottomPaginationControls"
+          class="bottomPaginationControls"
         />
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         Most significant associations for 
       </h2>
       <div
-        className="mainWrapper"
+        class="mainWrapper"
       >
         <div
-          className="chart"
+          class="chart"
         >
           <div
-            className="labelsWrapper"
+            class="labelsWrapper"
           >
             <div
-              style={
-                {
-                  "fontSize": "90%",
-                }
-              }
+              style="font-size: 90%;"
             >
               <i
-                className="fa fa-circle"
-                style={
-                  {
-                    "color": "rgb(212, 17, 89)",
-                  }
-                }
+                class="fa fa-circle"
+                style="color: rgb(212, 17, 89);"
               />
                 Not significant
               <i
-                className="fa fa-circle"
-                style={
-                  {
-                    "color": "rgb(26, 133, 255)",
-                    "marginLeft": "1rem",
-                  }
-                }
+                class="fa fa-circle"
+                style="color: rgb(26, 133, 255); margin-left: 1rem;"
               />
                 Significant
               <i
-                className="fa fa-circle"
-                style={
-                  {
-                    "color": "rgb(0, 159, 129)",
-                    "marginLeft": "1rem",
-                  }
-                }
+                class="fa fa-circle"
+                style="color: rgb(0, 159, 129); margin-left: 1rem;"
               />
                 Manual associations
               <div
-                style={
-                  {
-                    "display": "inline-block",
-                  }
-                }
+                style="display: inline-block;"
               >
                 <hr
-                  style={
-                    {
-                      "border": "none",
-                      "borderTop": "3px dashed #000",
-                      "display": "inline-block",
-                      "height": "3px",
-                      "margin": "0 0 0 0.5rem",
-                      "opacity": 1,
-                      "width": "50px",
-                    }
-                  }
+                  style="border-top: 3px dashed #000; height: 3px; width: 50px; display: inline-block; margin: 0px 0px 0px 0.5rem; opacity: 1;"
                 />
                   Significant P-value threshold (P &lt; 0.0001)
               </div>
             </div>
             <div
-              style={
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "whiteSpace": "nowrap",
-                }
-              }
+              style="display: flex; white-space: nowrap; align-items: center;"
             >
               <label
-                className="grey"
-                htmlFor="geneHighlight"
-                style={
-                  {
-                    "marginRight": "0.5rem",
-                  }
-                }
+                class="grey"
+                for="geneHighlight"
+                style="margin-right: 0.5rem;"
               >
                 Find gene:
               </label>
               <input
-                className="form-control"
+                class="form-control"
                 id="geneHighlight"
-                onChange={[Function]}
                 type="text"
                 value=""
               />
             </div>
           </div>
           <i
-            className="grey"
-            style={
-              {
-                "padding": "0 2rem",
-              }
-            }
+            class="grey"
+            style="padding: 0px 2rem;"
           >
             Associations appearing in the region of 1x10
             <sup>
@@ -851,67 +689,43 @@ exports[`Phenotype page renders correctly 1`] = `
              are manually annotated as significant.
           </i>
           <div
-            className="mt-4"
-            style={
-              {
-                "display": "flex",
-                "justifyContent": "center",
-              }
-            }
+            class="mt-4"
+            style="display: flex; justify-content: center;"
           >
             <div
               data-test-id="CircularProgressbarWithChildren"
             >
               <div
-                style={
-                  {
-                    "height": "100%",
-                    "position": "relative",
-                    "width": "100%",
-                  }
-                }
+                style="position: relative; width: 100%; height: 100%;"
               >
                 <svg
-                  className="CircularProgressbar rotating"
+                  class="CircularProgressbar rotating"
                   data-test-id="CircularProgressbar"
                   viewBox="0 0 100 100"
                 >
                   <path
-                    className="CircularProgressbar-trail"
+                    class="CircularProgressbar-trail"
                     d="
       M 50,50
       m 0,-44
       a 44,44 0 1 1 0,88
       a 44,44 0 1 1 0,-88
     "
-                    fillOpacity={0}
-                    strokeWidth={12}
-                    style={
-                      {
-                        "stroke": "#fff",
-                        "strokeDasharray": "276.46015351590177px 276.46015351590177px",
-                        "strokeDashoffset": "0px",
-                      }
-                    }
+                    fill-opacity="0"
+                    stroke-width="12"
+                    style="stroke: #fff; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 0px;"
                   />
                   <path
-                    className="CircularProgressbar-path"
+                    class="CircularProgressbar-path"
                     d="
       M 50,50
       m 0,-44
       a 44,44 0 1 1 0,88
       a 44,44 0 1 1 0,-88
     "
-                    fillOpacity={0}
-                    strokeWidth={12}
-                    style={
-                      {
-                        "stroke": "#ccc",
-                        "strokeDasharray": "276.46015351590177px 276.46015351590177px",
-                        "strokeDashoffset": "55.29203070318034px",
-                        "transition": "stroke-dashoffset 2s ease 0s",
-                      }
-                    }
+                    fill-opacity="0"
+                    stroke-width="12"
+                    style="stroke: #ccc; transition: stroke-dashoffset 2s ease 0s; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 55.29203070318034px;"
                   />
                 </svg>
               </div>
@@ -919,13 +733,13 @@ exports[`Phenotype page renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="resultsSection"
+          class="resultsSection"
         >
           <h3>
             Associations details of selected gene(s):
           </h3>
           <i
-            className="grey"
+            class="grey"
           >
             Click on a point of the chart to see the details of an association.
           </i>
@@ -933,7 +747,7 @@ exports[`Phenotype page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         The way we measure
@@ -942,6 +756,6 @@ exports[`Phenotype page renders correctly 1`] = `
         Procedure
       </p>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

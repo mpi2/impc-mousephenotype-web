@@ -1,51 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Cardiovascular landing page renders correctly 1`] = `
-[
+exports[`Conservation landing page renders correctly 1`] = `
+<div>
   <div
-    className="banner"
+    class="banner"
   >
     <div
-      className="pb-4 pt-5 container container"
+      class="pb-4 pt-5 container container"
     >
       <div
-        className="col-12 col-md-8 ps-4 pe-4"
+        class="col-12 col-md-8 ps-4 pe-4"
       >
         <div
-          className="tabs"
+          class="tabs"
         >
           <a
-            className="tab"
+            class="tab__active"
             href="/search"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Genes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="/search?type=phenotype"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Phenotypes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="https://dev.mousephenotype.org/?s="
           >
             Help, news, blog
           </a>
         </div>
         <div
-          className="inputCont"
+          class="inputCont"
         >
           <input
-            className="input"
-            onChange={[Function]}
-            onKeyDown={[Function]}
+            class="input"
             placeholder="Search All 7824 Knockout Data..."
             title="main search box"
             type="text"
@@ -53,71 +45,63 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
           />
           <button
             aria-describedby="svg-inline--fa-title-search-icon"
-            className="searchBtn"
-            onClick={[Function]}
+            class="searchBtn"
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              className="svg-inline--fa fa-magnifying-glass "
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
-              style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
                 id="svg-inline--fa-title-search-icon"
-                style={{}}
               >
                 Search button
               </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="page container"
-    style={
-      {
-        "lineHeight": 2,
-      }
-    }
+    class="page container"
+    style="line-height: 2;"
   >
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="subheading"
+        class="subheading"
       >
         <nav
           aria-label="breadcrumb"
         >
           <ol
-            className="breadcrumb"
+            class="breadcrumb"
           >
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Home
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               IMPC data collections
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Conservation
             </li>
@@ -125,18 +109,18 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         </nav>
       </div>
       <h1
-        className="mb-4 mt-2"
+        class="mb-4 mt-2"
       >
         <strong>
           Translating to other species
         </strong>
       </h1>
       <div
-        className="fade alert alert-landing-page show"
+        class="fade alert alert-landing-page show"
         role="alert"
       >
         <div
-          className="alert-heading h4"
+          class="alert-heading h4"
         >
           Attention
         </div>
@@ -146,17 +130,14 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         </p>
         <hr />
         <a
-          className="link primary"
+          class="link primary"
           href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-07.0/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
         >
           Link to FTP site
         </a>
       </div>
       <div
-        className="container"
+        class="container"
       >
         <ul>
           <li>
@@ -172,14 +153,14 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         <p>
           Press releases and new posts: 
           <a
-            className="link primary"
+            class="link primary"
             href="http://blog.mousephenotype.org/new-research-suggests-laboratory-mouse-data-can-help-in-wildlife-conservation/"
           >
             IMPC blog
           </a>
            | 
           <a
-            className="link primary"
+            class="link primary"
             href="https://www.mousephenotype.org/data/biological-system/conservation"
           >
             EMBL-EBI
@@ -191,7 +172,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         <p>
           We used IMPC data derived from the 
           <a
-            className="primary link"
+            class="primary link"
             href="https://www.mousephenotype.org/data/biological-system/conservation#:~:text=We%20used%20IMPC,from%20the%20literature."
           >
             IMPC Viability Primary Screen [IMPC_VIA_001]
@@ -201,7 +182,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1>
         <strong>
@@ -213,14 +194,14 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
       </h2>
       <p>
         <a
-          className="primary link"
+          class="primary link"
           href="http://bit.ly/conservationarticle"
         >
           Conservation Genetics Special Issue on Adaptation
         </a>
         <br />
         <a
-          className="link primary"
+          class="link primary"
           href="https://link.springer.com/article/10.1007/s10592-018-1072-9#SupplementaryMaterial"
         >
           Supplementary Material
@@ -253,14 +234,14 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         <li>
           We developed custom scripts to infer orthologues based on available resources (
           <a
-            className="link primary"
+            class="link primary"
             href="https://www.genenames.org/cgi-bin/hcop"
           >
             HGNC Comparison of Orthology Predictions (HCOP)
           </a>
           ,  
           <a
-            className="link primary"
+            class="link primary"
             href="http://metaphors.phylomedb.org/"
           >
             MetaPhOrs
@@ -270,28 +251,28 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         <li>
           We collected IMPC primary viability screen data and combined it with human cell viability data from 3 different studies (
           <a
-            className="link primary"
+            class="link primary"
             href="https://europepmc.org/abstract/MED/26472760"
           >
             Blomen et al. 2015
           </a>
           ; 
           <a
-            className="link primary"
+            class="link primary"
             href="https://europepmc.org/abstract/MED/26627737"
           >
             Hartl et al. 2015
           </a>
           ; 
           <a
-            className="link primary"
+            class="link primary"
             href="https://europepmc.org/abstract/MED/26472758"
           >
             Wang et al. 2015
           </a>
           ) to identify essential genes in cells and in mouse (for data, see 
           <a
-            className="link primary"
+            class="link primary"
             href="https://link.springer.com/article/10.1007/s10592-018-1072-9#SupplementaryMaterial"
           >
             Supplementary Material
@@ -301,7 +282,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         <li>
           We collected IMPC phenotype annotations (also MGI) to characterize genes potentially linked to disease or to regions putatively under positive selection in selected endangered species (for data, see  
           <a
-            className="link primary"
+            class="link primary"
             href="https://link.springer.com/article/10.1007/s10592-018-1072-9#SupplementaryMaterial"
           >
             Supplementary Material
@@ -311,7 +292,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
       </ul>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1>
         <strong>
@@ -321,7 +302,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
       <p>
         IMPC significant phenotypes for selected mammal species, based on orthologue inferences (source: 
         <a
-          className="link primary"
+          class="link primary"
           href="http://bit.ly/conservationarticle"
         >
           IMPC Conservation Genetics paper
@@ -331,104 +312,68 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         Note links are to phenotype pages depicting data as in the current Data Release.
       </p>
       <div
-        className="row"
+        class="row"
       >
         <div
-          className="col"
-          style={
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "column",
-            }
-          }
+          class="col"
+          style="display: flex; flex-direction: column; align-items: center;"
         >
           <h3>
             All physiological systems
           </h3>
           <div
-            style={
-              {
-                "height": "1000px",
-                "maxWidth": "100%",
-                "position": "relative",
-                "width": "500px",
-              }
-            }
+            style="position: relative; height: 1000px; max-width: 100%; width: 500px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
         </div>
         <div
-          className="col"
-          style={
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "column",
-            }
-          }
+          class="col"
+          style="display: flex; flex-direction: column; align-items: center;"
         >
           <h3>
             Reproductive system
           </h3>
           <div
-            style={
-              {
-                "height": "333px",
-                "maxWidth": "100%",
-                "position": "relative",
-                "width": "500px",
-              }
-            }
+            style="position: relative; height: 333px; max-width: 100%; width: 500px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
           <div
-            style={
-              {
-                "height": "333px",
-                "maxWidth": "100%",
-                "position": "relative",
-                "width": "500px",
-              }
-            }
+            style="position: relative; height: 333px; max-width: 100%; width: 500px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
           <div
-            style={
-              {
-                "height": "333px",
-                "maxWidth": "100%",
-                "position": "relative",
-                "width": "500px",
-              }
-            }
+            style="position: relative; height: 333px; max-width: 100%; width: 500px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
         </div>
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1>
         <strong>
@@ -436,6 +381,6 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         </strong>
       </h1>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

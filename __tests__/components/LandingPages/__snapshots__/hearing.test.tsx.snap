@@ -1,51 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Hearing landing page renders correctly 1`] = `
-[
+<div>
   <div
-    className="banner"
+    class="banner"
   >
     <div
-      className="pb-4 pt-5 container container"
+      class="pb-4 pt-5 container container"
     >
       <div
-        className="col-12 col-md-8 ps-4 pe-4"
+        class="col-12 col-md-8 ps-4 pe-4"
       >
         <div
-          className="tabs"
+          class="tabs"
         >
           <a
-            className="tab"
+            class="tab__active"
             href="/search"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Genes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="/search?type=phenotype"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Phenotypes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="https://dev.mousephenotype.org/?s="
           >
             Help, news, blog
           </a>
         </div>
         <div
-          className="inputCont"
+          class="inputCont"
         >
           <input
-            className="input"
-            onChange={[Function]}
-            onKeyDown={[Function]}
+            class="input"
             placeholder="Search All 7824 Knockout Data..."
             title="main search box"
             type="text"
@@ -53,71 +45,63 @@ exports[`Hearing landing page renders correctly 1`] = `
           />
           <button
             aria-describedby="svg-inline--fa-title-search-icon"
-            className="searchBtn"
-            onClick={[Function]}
+            class="searchBtn"
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              className="svg-inline--fa fa-magnifying-glass "
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
-              style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
                 id="svg-inline--fa-title-search-icon"
-                style={{}}
               >
                 Search button
               </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="page container"
-    style={
-      {
-        "lineHeight": 2,
-      }
-    }
+    class="page container"
+    style="line-height: 2;"
   >
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="subheading"
+        class="subheading"
       >
         <nav
           aria-label="breadcrumb"
         >
           <ol
-            className="breadcrumb"
+            class="breadcrumb"
           >
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Home
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               IMPC data collections
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Hearing Data
             </li>
@@ -125,18 +109,18 @@ exports[`Hearing landing page renders correctly 1`] = `
         </nav>
       </div>
       <h1
-        className="mb-4 mt-2"
+        class="mb-4 mt-2"
       >
         <strong>
           IMPC Hearing Data
         </strong>
       </h1>
       <div
-        className="fade alert alert-landing-page show"
+        class="fade alert alert-landing-page show"
         role="alert"
       >
         <div
-          className="alert-heading h4"
+          class="alert-heading h4"
         >
           Attention
         </div>
@@ -147,23 +131,20 @@ exports[`Hearing landing page renders correctly 1`] = `
         </p>
         <hr />
         <a
-          className="link primary"
+          class="link primary"
           href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-05.0/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onTouchStart={[Function]}
         >
           Link to FTP site
         </a>
       </div>
       <div
-        className="container"
+        class="container"
       >
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col-12"
+            class="col-12"
           >
             <p>
               The IMPC is hunting unknown genes responsible for hearing loss by screening knockout mice. Worldwide, 360 million people live with mild to profound hearing loss. Notably, 70% hearing loss occurs as an isolated condition (non-syndromic) and 30% with additional phenotypes (syndromic). The vast majority of genes responsible for hearing loss are unknown.
@@ -172,21 +153,21 @@ exports[`Hearing landing page renders correctly 1`] = `
               <li>
                 Press releases: 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="https://www.ebi.ac.uk/about/news/press-releases/hearing-loss-genes/"
                 >
                   EMBL-EBI
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="https://www.mrc.ac.uk/news/browse/genes-critical-for-hearing-identified/"
                 >
                   MRC
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="https://www.mousephenotype.org/blog/2018/04/06/novel-hearing-loss-genes-identified-in-large-study-by-scientists-across-the-world/"
                 >
                   IMPC
@@ -195,7 +176,7 @@ exports[`Hearing landing page renders correctly 1`] = `
               </li>
               <li>
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="http://bit.ly/IMPCDeafness"
                 >
                   Nature Communications (released 12/10/2017)
@@ -203,7 +184,7 @@ exports[`Hearing landing page renders correctly 1`] = `
               </li>
               <li>
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-017-00595-4/MediaObjects/41467_2017_595_MOESM1_ESM.pdf"
                 >
                   Supplementary Material
@@ -215,10 +196,10 @@ exports[`Hearing landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1
-        className="mb-4 mt-2"
+        class="mb-4 mt-2"
       >
         <strong>
           Approach
@@ -227,7 +208,7 @@ exports[`Hearing landing page renders correctly 1`] = `
       <p>
         In order to identify the function of genes, the consortium uses a series of response (ABR) test conducted at 14 weeks of age. Hearing is assessed at five frequencies – 6kHz, 12kHz, 18kHz, 24kHz and 30kHz – as well as a broadband click stimulus. Increased thresholds are indicative of abnormal hearing. Abnormalities in adult ear morphology are recorded as part of the 
         <a
-          className="primary link"
+          class="primary link"
           href="https://www.mousephenotype.org/impress/protocol/186"
         >
           Combined SHIRPA and Dysmorphology (CSD)
@@ -245,168 +226,168 @@ exports[`Hearing landing page renders correctly 1`] = `
           Auditory Brain Stem Response
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1062"
           >
             ICSLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1084"
           >
             NINGLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/545"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/542"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1360"
           >
             RBRCLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/669"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/665"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/541"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/543"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1050"
           >
             BCMLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1232"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/667"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/672"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/89"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/670"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/546"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/149"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/547"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/544"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1363"
           >
             RBRCIP v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/671"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/668"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/666"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1100"
           >
             KMPCLA v2
@@ -417,168 +398,168 @@ exports[`Hearing landing page renders correctly 1`] = `
           Combined SHIRPA and Dysmorphology
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1062"
           >
             ICSLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1084"
           >
             NINGLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/545"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/542"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1360"
           >
             RBRCLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/669"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/665"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/541"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/543"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1050"
           >
             BCMLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1232"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/667"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/672"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/89"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/670"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/546"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/149"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/547"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/544"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1363"
           >
             RBRCIP v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/671"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/668"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/666"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1100"
           >
             KMPCLA v2
@@ -588,7 +569,7 @@ exports[`Hearing landing page renders correctly 1`] = `
       </ul>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         IMPC Deafness Publication
@@ -598,7 +579,7 @@ exports[`Hearing landing page renders correctly 1`] = `
       </h3>
       <p>
         <a
-          className="link primary"
+          class="link primary"
           href="http://bit.ly/IMPCDeafness"
         >
           A large scale hearing loss screen reveals an extensive unexplored genetic landscape for auditory dysfunction.
@@ -632,7 +613,7 @@ exports[`Hearing landing page renders correctly 1`] = `
       <p>
         Response data from the 
         <a
-          className="link primary"
+          class="link primary"
           href="https://www.mousephenotype.org/impress/protocol/149/7"
         >
           Auditory Brain Stem response (ABR)
@@ -649,70 +630,116 @@ exports[`Hearing landing page renders correctly 1`] = `
       </ul>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         Gene table
       </h2>
       <div
-        className="buttonsWrapper top "
+        class="buttonsWrapper top "
         data-testid="top-controls-wrapper"
-        style={{}}
       >
         <ul
-          className="pagination justify-content-center paginationNav"
+          class="pagination justify-content-center paginationNav"
           data-testid="nav-buttons-top"
         >
           <button
-            className="pagNavBtn nav-btn"
+            class="pagNavBtn nav-btn"
             data-testid="top-prev-page"
-            disabled={true}
-            onClick={[Function]}
+            disabled=""
           >
             <svg
               aria-labelledby="svg-inline--fa-title-prev-page-icon"
-              className="svg-inline--fa fa-arrow-left "
+              class="svg-inline--fa fa-arrow-left "
               data-icon="arrow-left"
               data-prefix="fas"
               role="img"
-              style={{}}
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
                 id="svg-inline--fa-title-prev-page-icon"
-                style={{}}
               >
                 previous page button
               </title>
               <path
                 d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
           <li
-            className="page-item"
+            class="page-item"
             data-testid="top-page-1"
           >
             <button
-              className="pagNavBtn active"
+              class="pagNavBtn active"
               data-testid="top-page-1-btn"
-              onClick={[Function]}
             >
               1
             </button>
           </li>
           <li
-            className="page-item"
+            class="page-item"
+            data-testid="top-page-2"
+          >
+            <button
+              class="pagNavBtn "
+              data-testid="top-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-3"
+          >
+            <button
+              class="pagNavBtn "
+              data-testid="top-page-3-btn"
+            >
+              3
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-4"
+          >
+            <button
+              class="pagNavBtn "
+              data-testid="top-page-4-btn"
+            >
+              4
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-5"
+          >
+            <button
+              class="pagNavBtn "
+              data-testid="top-page-5-btn"
+            >
+              5
+            </button>
+          </li>
+          <li
+            class="page-item disabled"
+          >
+            <span
+              class="page-link"
+            >
+              ...
+            </span>
+          </li>
+          <li
+            class="page-item"
             data-testid="top-last-page"
           >
             <button
               aria-label="Previous"
-              className="pagNavBtn last-page"
+              class="pagNavBtn last-page"
               data-testid="top-last-page-btn"
-              onClick={[Function]}
             >
               <span
                 aria-hidden="true"
@@ -722,238 +749,199 @@ exports[`Hearing landing page renders correctly 1`] = `
             </button>
           </li>
           <button
-            className="pagNavBtn nav-btn"
+            class="pagNavBtn nav-btn"
             data-testid="top-next-page"
-            disabled={false}
-            onClick={[Function]}
           >
             <svg
               aria-labelledby="svg-inline--fa-title-next-page-icon"
-              className="svg-inline--fa fa-arrow-right "
+              class="svg-inline--fa fa-arrow-right "
               data-icon="arrow-right"
               data-prefix="fas"
               role="img"
-              style={{}}
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
                 id="svg-inline--fa-title-next-page-icon"
-                style={{}}
               >
                 next page button
               </title>
               <path
                 d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </ul>
       </div>
       <div
-        className="tableWrapper"
+        class="tableWrapper"
       >
         <table
-          className="table striped undefined table table-bordered"
+          class="table striped undefined table table-bordered"
         >
           <thead>
             <tr>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="8.333333333333332%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "bold",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
                 >
                   Gene symbol
                    
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-caret-up sortIcon"
+                    class="svg-inline--fa fa-caret-up sortIcon"
                     data-icon="caret-up"
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={{}}
                     viewBox="0 0 320 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
-                      style={{}}
                     />
                   </svg>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="8.333333333333332%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Zygosity
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="8.333333333333332%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Status
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </button>
               </th>
               <th
-                rowSpan={2}
+                rowspan="2"
                 width="8.333333333333332%"
               >
                 <button
-                  className="inlineButton headerButton"
-                  onClick={[Function]}
-                  style={
-                    {
-                      "fontWeight": "normal",
-                    }
-                  }
+                  class="inlineButton headerButton"
+                  style="font-weight: normal;"
                 >
                   Hearing loss
                    
                   <span
-                    className="defaultIcons"
+                    class="defaultIcons"
                   >
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-up first"
+                      class="svg-inline--fa fa-caret-up first"
                       data-icon="caret-up"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-caret-down second"
+                      class="svg-inline--fa fa-caret-down second"
                       data-icon="caret-down"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 320 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
@@ -966,11 +954,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   A730017C20Rik
                 </span>
@@ -994,11 +978,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Aak1
                 </span>
@@ -1022,11 +1002,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Acsl4
                 </span>
@@ -1050,11 +1026,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Acvr2a
                 </span>
@@ -1078,11 +1050,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Adgrb1
                 </span>
@@ -1106,11 +1074,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Adgrv1
                 </span>
@@ -1134,11 +1098,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Ahsg
                 </span>
@@ -1162,11 +1122,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Ankrd11
                 </span>
@@ -1190,11 +1146,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Ap3m2
                 </span>
@@ -1218,11 +1170,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             <tr>
               <td>
                 <span
-                  style={
-                    {
-                      "fontStyle": "italic",
-                    }
-                  }
+                  style="font-style: italic;"
                 >
                   Ap3s1
                 </span>
@@ -1247,23 +1195,17 @@ exports[`Hearing landing page renders correctly 1`] = `
         </table>
       </div>
       <div
-        className="buttonsWrapper "
+        class="buttonsWrapper "
       >
         <div
-          className="bottomPaginationControls"
+          class="bottomPaginationControls"
         >
           <div
-            style={
-              {
-                "alignItems": "center",
-                "display": "flex",
-              }
-            }
+            style="display: flex; align-items: center;"
           >
             Rows per page: 
             <select
               aria-label="rows per page selector"
-              onChange={[Function]}
             >
               <option
                 value="10"
@@ -1293,59 +1235,106 @@ exports[`Hearing landing page renders correctly 1`] = `
             </select>
           </div>
           <ul
-            className="pagination justify-content-center paginationNav"
+            class="pagination justify-content-center paginationNav"
             data-testid="nav-buttons-bottom"
           >
             <button
-              className="pagNavBtn nav-btn"
+              class="pagNavBtn nav-btn"
               data-testid="bottom-prev-page"
-              disabled={true}
-              onClick={[Function]}
+              disabled=""
             >
               <svg
                 aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                className="svg-inline--fa fa-arrow-left "
+                class="svg-inline--fa fa-arrow-left "
                 data-icon="arrow-left"
                 data-prefix="fas"
                 role="img"
-                style={{}}
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <title
                   id="svg-inline--fa-title-prev-page-icon"
-                  style={{}}
                 >
                   previous page button
                 </title>
                 <path
                   d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
             </button>
             <li
-              className="page-item"
+              class="page-item"
               data-testid="bottom-page-1"
             >
               <button
-                className="pagNavBtn active"
+                class="pagNavBtn active"
                 data-testid="bottom-page-1-btn"
-                onClick={[Function]}
               >
                 1
               </button>
             </li>
             <li
-              className="page-item"
+              class="page-item"
+              data-testid="bottom-page-2"
+            >
+              <button
+                class="pagNavBtn "
+                data-testid="bottom-page-2-btn"
+              >
+                2
+              </button>
+            </li>
+            <li
+              class="page-item"
+              data-testid="bottom-page-3"
+            >
+              <button
+                class="pagNavBtn "
+                data-testid="bottom-page-3-btn"
+              >
+                3
+              </button>
+            </li>
+            <li
+              class="page-item"
+              data-testid="bottom-page-4"
+            >
+              <button
+                class="pagNavBtn "
+                data-testid="bottom-page-4-btn"
+              >
+                4
+              </button>
+            </li>
+            <li
+              class="page-item"
+              data-testid="bottom-page-5"
+            >
+              <button
+                class="pagNavBtn "
+                data-testid="bottom-page-5-btn"
+              >
+                5
+              </button>
+            </li>
+            <li
+              class="page-item disabled"
+            >
+              <span
+                class="page-link"
+              >
+                ...
+              </span>
+            </li>
+            <li
+              class="page-item"
               data-testid="bottom-last-page"
             >
               <button
                 aria-label="Previous"
-                className="pagNavBtn last-page"
+                class="pagNavBtn last-page"
                 data-testid="bottom-last-page-btn"
-                onClick={[Function]}
               >
                 <span
                   aria-hidden="true"
@@ -1355,31 +1344,26 @@ exports[`Hearing landing page renders correctly 1`] = `
               </button>
             </li>
             <button
-              className="pagNavBtn nav-btn"
+              class="pagNavBtn nav-btn"
               data-testid="bottom-next-page"
-              disabled={false}
-              onClick={[Function]}
             >
               <svg
                 aria-labelledby="svg-inline--fa-title-next-page-icon"
-                className="svg-inline--fa fa-arrow-right "
+                class="svg-inline--fa fa-arrow-right "
                 data-icon="arrow-right"
                 data-prefix="fas"
                 role="img"
-                style={{}}
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <title
                   id="svg-inline--fa-title-next-page-icon"
-                  style={{}}
                 >
                   next page button
                 </title>
                 <path
                   d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
             </button>
@@ -1388,42 +1372,31 @@ exports[`Hearing landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         Vignettes
       </h2>
       <div
-        className="container"
+        class="container"
       >
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col"
+            class="col"
           >
             <div
-              style={
-                {
-                  "textAlign": "center",
-                }
-              }
+              style="text-align: center;"
             >
               <h2
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Novel, mild hearing loss
               </h2>
               <a
-                className="primary link"
+                class="primary link"
                 href="/genes/MGI:1933736"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
               >
                 <i>
                   Adgrb1
@@ -1434,69 +1407,45 @@ exports[`Hearing landing page renders correctly 1`] = `
               </a>
             </div>
             <div
-              style={
-                {
-                  "marginTop": "1.5em",
-                  "textAlign": "center",
-                }
-              }
+              style="text-align: center; margin-top: 1.5em;"
             >
               <h3
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Evoked ABR Threshold (6, 12, 18, 24, 30kHz)
               </h3>
               <a
-                className="primary link"
+                class="primary link"
                 href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542"
               >
                 Auditory Brain Stem Response
               </a>
             </div>
             <div
-              style={
-                {
-                  "height": "300px",
-                  "position": "relative",
-                }
-              }
+              style="position: relative; height: 300px;"
             >
               <canvas
-                height={150}
+                height="0"
                 role="img"
-                width={300}
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
               />
             </div>
           </div>
           <div
-            className="col"
+            class="col"
           >
             <div
-              style={
-                {
-                  "textAlign": "center",
-                }
-              }
+              style="text-align: center;"
             >
               <h2
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Know, severe hearing loss
               </h2>
               <a
-                className="primary link"
+                class="primary link"
                 href="/genes/MGI:3583900"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
               >
                 <i>
                   Elmod1
@@ -1507,73 +1456,49 @@ exports[`Hearing landing page renders correctly 1`] = `
               </a>
             </div>
             <div
-              style={
-                {
-                  "marginTop": "1.5em",
-                  "textAlign": "center",
-                }
-              }
+              style="text-align: center; margin-top: 1.5em;"
             >
               <h3
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Evoked ABR Threshold (6, 12, 18, 24, 30kHz)
               </h3>
               <a
-                className="primary link"
+                class="primary link"
                 href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542"
               >
                 Auditory Brain Stem Response
               </a>
             </div>
             <div
-              style={
-                {
-                  "height": "300px",
-                  "position": "relative",
-                }
-              }
+              style="position: relative; height: 300px;"
             >
               <canvas
-                height={150}
+                height="0"
                 role="img"
-                width={300}
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
               />
             </div>
           </div>
         </div>
         <div
-          className="mt-5 row"
+          class="mt-5 row"
         >
           <div
-            className="col"
+            class="col"
           >
             <div
-              style={
-                {
-                  "textAlign": "center",
-                }
-              }
+              style="text-align: center;"
             >
               <h2
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Novel, high-frequency hearing loss
               </h2>
               <a
-                className="primary link"
+                class="primary link"
                 href="/genes/MGI:1915589"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
               >
                 <i>
                   CCdc88c
@@ -1584,69 +1509,45 @@ exports[`Hearing landing page renders correctly 1`] = `
               </a>
             </div>
             <div
-              style={
-                {
-                  "marginTop": "1.5em",
-                  "textAlign": "center",
-                }
-              }
+              style="text-align: center; margin-top: 1.5em;"
             >
               <h3
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Evoked ABR Threshold (6, 12, 18, 24, 30kHz)
               </h3>
               <a
-                className="primary link"
+                class="primary link"
                 href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542"
               >
                 Auditory Brain Stem Response
               </a>
             </div>
             <div
-              style={
-                {
-                  "height": "300px",
-                  "position": "relative",
-                }
-              }
+              style="position: relative; height: 300px;"
             >
               <canvas
-                height={150}
+                height="0"
                 role="img"
-                width={300}
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
               />
             </div>
           </div>
           <div
-            className="col"
+            class="col"
           >
             <div
-              style={
-                {
-                  "textAlign": "center",
-                }
-              }
+              style="text-align: center;"
             >
               <h2
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Novel, severe hearing loss
               </h2>
               <a
-                className="primary link"
+                class="primary link"
                 href="/genes/MGI:2444708"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-                onTouchStart={[Function]}
               >
                 <i>
                   Zfp719
@@ -1657,41 +1558,28 @@ exports[`Hearing landing page renders correctly 1`] = `
               </a>
             </div>
             <div
-              style={
-                {
-                  "marginTop": "1.5em",
-                  "textAlign": "center",
-                }
-              }
+              style="text-align: center; margin-top: 1.5em;"
             >
               <h3
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Evoked ABR Threshold (6, 12, 18, 24, 30kHz)
               </h3>
               <a
-                className="primary link"
+                class="primary link"
                 href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=542"
               >
                 Auditory Brain Stem Response
               </a>
             </div>
             <div
-              style={
-                {
-                  "height": "300px",
-                  "position": "relative",
-                }
-              }
+              style="position: relative; height: 300px;"
             >
               <canvas
-                height={150}
+                height="0"
                 role="img"
-                width={300}
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
               />
             </div>
           </div>
@@ -1699,31 +1587,27 @@ exports[`Hearing landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         Phenotypes distribution
       </h2>
       <div
-        style={
-          {
-            "height": "300px",
-            "position": "relative",
-          }
-        }
+        style="position: relative; height: 300px;"
       >
         <canvas
-          height={150}
+          height="0"
           role="img"
-          width={300}
+          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+          width="0"
         />
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -1732,6 +1616,6 @@ exports[`Hearing landing page renders correctly 1`] = `
         </h1>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Allele cell component renders correctly 1`] = `
-<span>
-  <i>
-    Nxn
-    <sup>
-      em1(IMPC)Mbp
-    </sup>
-  </i>
-</span>
+<div>
+  <span>
+    <i>
+      Nxn
+      <sup>
+        em1(IMPC)Mbp
+      </sup>
+    </i>
+  </span>
+</div>
 `;
