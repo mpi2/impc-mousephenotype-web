@@ -10,7 +10,7 @@ import {
 import { GeneStatisticalResult } from "@/models/gene";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
-import { ParameterCell, PhenotypeIconsCell, SupportingDataCell } from './custom-cells';
+import { MutantCountCell, ParameterCell, PhenotypeIconsCell, SupportingDataCell } from './custom-cells';
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
@@ -234,7 +234,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
             width: 0.7,
             label: "Mutants",
             field: "mutantCount",
-            cmp: <PlainTextCell />,
+            cmp: <MutantCountCell />,
           },
           {
             width: 0.5,

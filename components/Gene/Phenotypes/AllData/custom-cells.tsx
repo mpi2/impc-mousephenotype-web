@@ -4,6 +4,10 @@ import styles from "@/components/Gene/Phenotypes/AllData/styles.module.scss";
 import _ from "lodash";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Overlay, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useRef, useState } from "react";
 
 export const ParameterCell = <T extends GeneStatisticalResult>(
   props: TableCellProps<T>
@@ -56,5 +60,33 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(props: Props
     <Link href={url}>
       <span className="link primary small float-right">Supporting data</span>
     </Link>
+  )
+};
+
+export const MutantCountCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+  const value = _.get(props.value, props.field) as string;
+  const [tooltipShow, setTooltipShow] = useState(false);
+  const tooltipRef = useRef(null);
+  return (
+    <span
+      style={props.style}
+      onMouseEnter={() => setTooltipShow(true)}
+      onMouseLeave={() => setTooltipShow(false)}
+    >
+      {value === 'N/A' && (
+        <div ref={tooltipRef} style={{ display: 'inline-block' }}>
+          <FontAwesomeIcon icon={faTriangleExclamation} className="secondary"/>
+          &nbsp;
+          <Overlay target={tooltipRef.current} show={tooltipShow} placement="left">
+            {(props) => (
+              <Tooltip id="tooltip-n-numbers" {...props}>
+                The number of mutants doesn't meet the criteria specified in IMPRESS
+              </Tooltip>
+            )}
+          </Overlay>
+        </div>
+      )}
+      {value}
+    </span>
   )
 };
