@@ -16,8 +16,8 @@ const PhenotypeIcons = <T extends Model>(props: Props<T>) => {
   return (
     <span style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem'}}>
       <span>
-        {phenotypes.map(({name}) => (
-          <BodySystem name={name} color="system-icon in-table" noSpacing/>
+        {phenotypes.map(({name}, index) => (
+          <BodySystem key={index} name={name} color="system-icon in-table" noSpacing/>
         ))}
       </span>
     </span>
