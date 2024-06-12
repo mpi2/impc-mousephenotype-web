@@ -22,7 +22,7 @@ export async function fetchAPI(query: string) {
 
 export async function fetchDatasetFromS3(datasetId: string) {
   const response = await fetch(
-    `https://impc-datasets.s3.eu-west-2.amazonaws.com/${DR_DATASET_VERSION}/${datasetId}.json`
+    `https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/${DR_DATASET_VERSION}/${datasetId}.json`
   );
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);
