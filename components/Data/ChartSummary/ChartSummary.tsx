@@ -36,9 +36,9 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
     0
   );
 
-  const metadataArray = datasetSummary.metadataValues?.[0].split("|") || [];
+  const metadataArray = datasetSummary.metadataValues.length > 0 ? datasetSummary.metadataValues[0].split("|") : [];
   const pValue = useMemo(
-    () => formatPValue(getSmallestPValue([datasetSummary])),
+    () => getSmallestPValue([datasetSummary]),
     [datasetSummary]
   );
 
@@ -71,13 +71,13 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
           </span>
           )}
         </div>
-        {displayPValueStatement && (
+        {(displayPValueStatement && pValue !== 1) && (
           <span
             className="mb-4"
             style={{display: "inline-block", fontSize: "1.2rem"}}
           >
             Combination tested with the lowest p-value of{" "}
-            <strong>{pValue}</strong>
+            <strong>{formatPValue(pValue)}</strong>
           </span>
         )}
         {additionalContent}
