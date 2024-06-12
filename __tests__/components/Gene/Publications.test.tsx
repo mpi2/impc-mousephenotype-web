@@ -14,7 +14,7 @@ describe('Gene publications component', () => {
     renderWithClient(<GenePublications gene={{ geneSymbol: 'Crlf3' }} />);
     expect(screen.getByRole('heading')).toHaveTextContent('IMPC related publications');
     expect(await screen.findByRole('table')).toBeInTheDocument();
-    expect(screen.getAllByRole('row')).toHaveLength(9);
+    expect(screen.getAllByRole('row')).toHaveLength(10);
   });
 
 

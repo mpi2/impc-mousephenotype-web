@@ -17,10 +17,10 @@ describe('Gene order component', () => {
       })
     );
     await mockRouter.push('/genes/MGI:1860086?pid=MGI:1860086');
-    renderWithClient(<GeneOrder allelesStudied={[]}/>);
+    renderWithClient(<GeneOrder allelesStudied={[]} allelesStudiedLoading={true} />);
     expect(screen.getByRole('heading')).toHaveTextContent('Order Mouse and ES Cells');
     expect(await screen.findByRole('table')).toBeInTheDocument();
-    expect(screen.getAllByRole('row')).toHaveLength(8);
+    expect(screen.getAllByRole('row')).toHaveLength(9);
   });
 
   it('should display the correct information for the alleles provided', async () => {
@@ -30,18 +30,18 @@ describe('Gene order component', () => {
       })
     );
     await mockRouter.push('/genes/MGI:1860086?pid=MGI:1860086');
-    renderWithClient(<GeneOrder allelesStudied={["Crlf3<em1(IMPC)Wtsi>", "Crlf3<tm1a(KOMP)Wtsi>", "Crlf3<tm1b(KOMP)Wtsi>"]}/>);
+    renderWithClient(<GeneOrder allelesStudied={["Crlf3<em1(IMPC)Wtsi>", "Crlf3<tm1a(KOMP)Wtsi>", "Crlf3<tm1b(KOMP)Wtsi>"]} allelesStudiedLoading={true}/>);
     const rows = await screen.findAllByRole('row');
-    // 8 because includes the header
-    expect(rows.length).toEqual(8);
-    const firstAlleleRow = screen.getByRole('row', { name: "Crlf3 em1(IMPC)Wtsi Deletion Yes mouse" });
+    // 9 because includes the header
+    expect(rows.length).toEqual(9);
+    const firstAlleleRow = screen.getByRole('row', { name: "Crlf3 em1(IMPC)Wtsi Deletion ‌ mouse" });
     expect(firstAlleleRow).toBeInTheDocument();
     const secondAlleleRow = screen.getByRole('row', {
-      name: "Crlf3 tm1a(KOMP)Wtsi KO first allele (reporter-tagged insertion with conditional potential) Yes targeting vector es cell mouse",
+      name: "Crlf3 tm1a(KOMP)Wtsi KO first allele (reporter-tagged insertion with conditional potential) ‌ targeting vector es cell mouse",
     });
     expect(secondAlleleRow).toBeInTheDocument();
     const thirdAlleleRow = screen.getByRole('row', {
-      name: "Crlf3 tm1b(KOMP)Wtsi Reporter-tagged deletion allele (with selection cassette) Yes mouse",
+      name: "Crlf3 tm1b(KOMP)Wtsi Reporter-tagged deletion allele (with selection cassette) ‌ mouse",
     });
     expect(thirdAlleleRow).toBeInTheDocument();
   });
@@ -53,7 +53,7 @@ describe('Gene order component', () => {
       })
     );
     await mockRouter.push('/genes/MGI:1860086?pid=MGI:1860086');
-    renderWithClient(<GeneOrder allelesStudied={[]}/>);
+    renderWithClient(<GeneOrder allelesStudied={[]} allelesStudiedLoading={true}/>);
     const intermediateCells = screen.queryAllByRole('td', { name: 'intermediate vector'});
     expect(intermediateCells.length).toEqual(0);
     const crisprCells = screen.queryAllByRole('td', { name: 'crispr'});
@@ -67,7 +67,7 @@ describe('Gene order component', () => {
       })
     )
     await mockRouter.push('/genes/MGI:1860086?pid=MGI:1860086');
-    renderWithClient(<GeneOrder allelesStudied={[]} />);
+    renderWithClient(<GeneOrder allelesStudied={[]} allelesStudiedLoading={true} />);
     expect(await screen.findByRole('alert')).toBeInTheDocument();
     expect(screen.getByRole('alert')).toHaveTextContent('No data available for this section.');
   });
