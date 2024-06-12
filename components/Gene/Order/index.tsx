@@ -15,8 +15,9 @@ import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { NumAllelesContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 import { AlleleSymbol } from "@/components";
+import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 
-const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
+const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Array<string>, allelesStudiedLoading: boolean }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const { setNumOfAlleles } = useContext(NumAllelesContext);
@@ -131,9 +132,17 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                       </td>
                       <td>{d.alleleDescription}</td>
                       <td>
-                        {allelesStudied.length === 0 ? (
+                        {allelesStudiedLoading ? (
                           <Skeleton inline/>
-                        ) : allelesStudied.includes(d.alleleSymbol) ? <>Yes</> : <>No</>}
+                        ) : allelesStudied.includes(d.alleleSymbol) ? (
+                          <Link
+                            href="#data"
+                            className="primary link"
+                            onClick={() => orderPhenotypedSelectionChannel.emit('onAlleleSelected', d.alleleSymbol)}
+                          >
+                            Yes
+                          </Link>
+                        ) : <>No</>}
                       </td>
                       <td className="text-capitalize">
                         {d.productTypes

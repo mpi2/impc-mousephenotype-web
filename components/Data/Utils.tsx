@@ -11,6 +11,11 @@ import {
 } from "@/components/Data";
 import { ReactNode } from "react";
 
+
+export const getZygosityLabel = (zygosity: string, sampleGroup: string) => {
+  const labelZyg = zygosity === "hemizygote" ? 'HEM' : zygosity === "homozygote" ? "HOM" : "HET";
+  return sampleGroup == "control" ? "WT" : labelZyg;
+}
 export const getChartType = (
   datasetSummary: Dataset,
   isVisible: boolean = true,

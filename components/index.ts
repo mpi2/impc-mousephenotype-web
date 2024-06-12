@@ -4,3 +4,4 @@ export { default as AlleleSymbol } from './AlleleSymbol';
 export { default as DownloadData } from './DownloadData';
 export { default as FilterBox } from './FilterBox/FilterBox';
 export { default as PublicationDataAlert } from './PublicationDataAlert/PublicationDataAlert';
+export { default as ZoomButtons } from './ZoomButtons/ZoomButtons';

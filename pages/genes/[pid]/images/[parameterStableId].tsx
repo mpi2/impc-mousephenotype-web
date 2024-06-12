@@ -1,12 +1,10 @@
 import {
-  faMagnifyingGlassMinus,
-  faMagnifyingGlassPlus,
-  faRefresh,
   faVenus,
   faMars,
   faMarsAndVenus,
   faCircle,
   faArrowLeft,
+  faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -22,7 +20,7 @@ import { fetchAPI } from "@/api-service";
 import Skeleton from "react-loading-skeleton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { AlleleSymbol, FilterBox } from "@/components";
+import { AlleleSymbol, FilterBox, ZoomButtons } from "@/components";
 import { GeneImageCollection, Image } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
@@ -116,6 +114,20 @@ const ImageInformation = ({
           </div>
         </>
       )}
+      {(inViewer && !!image.imageLink) && (
+        <>
+          <div style={{ flexBasis: '100%', height: 0 }} />
+          <Link className="link primary" href={image.imageLink} target="_blank">
+            View high resolution image
+            <FontAwesomeIcon
+              icon={faExternalLinkAlt}
+              className="grey"
+              size="xs"
+              style={{ marginLeft: '0.3rem' }}
+            />
+          </Link>
+        </>
+      )}
     </div>
   )
 }
@@ -133,17 +145,13 @@ const ImageViewer = ({image}) => {
     <TransformWrapper>
       {({zoomIn, zoomOut, resetTransform, ...rest}) => (
         <div className={styles.viewer}>
-          <div className={styles.tools}>
-            <button onClick={() => zoomIn()}>
-              <FontAwesomeIcon icon={faMagnifyingGlassPlus} title="zoom in button" titleId="zoom-in-icon"/>
-            </button>
-            <button onClick={() => zoomOut()}>
-              <FontAwesomeIcon icon={faMagnifyingGlassMinus} title="zoom out button" titleId="zoom-out-icon"/>
-            </button>
-            <button onClick={() => resetTransform()}>
-              <FontAwesomeIcon icon={faRefresh} title="reset zoom button" titleId="reset-zoom-icon"/>
-            </button>
-          </div>
+          <ZoomButtons
+            containerClassName={styles.tools}
+            onZoomIn={() => zoomIn()}
+            onZoomOut={() => zoomOut()}
+            onResetZoom={() => resetTransform()}
+            tooltipsPosition="left"
+          />
           <TransformComponent>
             <img
               key={image?.jpegUrl}

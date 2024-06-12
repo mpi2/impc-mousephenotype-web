@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
-import { formatAlleleSymbol, getIcon, getSexLabel } from "@/utils";
+import { getIcon, getSexLabel } from "@/utils";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dataset } from "@/models";
+import { Dataset, DatasetExtra } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
+import Skeleton from "react-loading-skeleton";
 
 type Props = {
   data: Array<Dataset>;
@@ -36,13 +37,17 @@ const ViabilityDataComparison = (props: Props) => {
   })
   const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
 
-  const getVisibleRows = (data: Array<any>) => {
-    return data.slice(0, visibleRows);
-  };
+  const visibleData: Array<DatasetExtra> = useMemo(() => sorted.slice(0, visibleRows), [sorted, visibleRows]);
 
-  if (!data) {
-    return null;
-  }
+  const tableHeaders = [
+    {width: 2, label: "Allele", field: "alleleSymbol"},
+    {width: 2, label: "Viability", field: "viability"},
+    {width: 1, label: "Zygosity", field: "zygosity"},
+    {width: 1, label: "Phenotyping Centre", field: "phenotypingCentre"},
+    {width: 1, label: "Significant sex", field: "sex"},
+    {width: 1, label: "Life Stage", field: "lifeStageName"},
+    {width: 1, label: "Colony Id", field: "colonyId"},
+  ];
 
   useEffect(() => {
     if (!!sorted[0]?.key && sorted[0]?.key !== selectedKey && selectedKey === '') {
@@ -54,29 +59,11 @@ const ViabilityDataComparison = (props: Props) => {
     <>
       <SortableTable
         className="data-comparison-table"
-        doSort={(sort) => {
-          setSortOptions({
-            prop: sort[0],
-            order: sort[1]
-          })
-        }}
+        doSort={(sort) => setSortOptions({ prop: sort[0], order: sort[1]})}
         defaultSort={["alleleSymbol", "asc"]}
-        headers={[
-          {width: 2, label: "Allele", field: "alleleSymbol"},
-          {width: 2, label: "Viability", field: "viability"},
-          {width: 1, label: "Zygosity", field: "zygosity"},
-          {
-            width: 1,
-            label: "Phenotyping Centre",
-            field: "phenotypingCentre",
-          },
-          {width: 1, label: "Significant sex", field: "sex"},
-          {width: 1, label: "Life Stage", field: "lifeStageName"},
-          {width: 1, label: "Colony Id", field: "colonyId",},
-
-        ]}
+        headers={tableHeaders}
       >
-        {getVisibleRows(sorted).map((d, i) => {
+        {visibleData.map((d, i) => {
           return (
             <tr
               key={d.key}
@@ -112,9 +99,9 @@ const ViabilityDataComparison = (props: Props) => {
                           trigger={["hover", "focus"]}
                           overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}
                         >
-                                <span className="me-2">
-                                  <FontAwesomeIcon icon={getIcon(significantSex)} size="lg"/>
-                                </span>
+                          <span className="me-2">
+                            <FontAwesomeIcon icon={getIcon(significantSex)} size="lg"/>
+                          </span>
                         </OverlayTrigger>
                       ))
                     }
@@ -126,6 +113,13 @@ const ViabilityDataComparison = (props: Props) => {
             </tr>
           );
         })}
+        {visibleData.length === 0 && (
+          <tr>
+            {[...Array(tableHeaders.length)].map((_, i) => (
+              <td key={i}><Skeleton /></td>
+            ))}
+          </tr>
+        )}
       </SortableTable>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         {visibleRows < sorted?.length && (

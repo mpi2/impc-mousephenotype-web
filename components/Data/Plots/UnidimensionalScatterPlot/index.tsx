@@ -8,12 +8,10 @@ import {
   Tooltip,
   TimeScale,
   ScatterController,
-  LineController,
+  LineController, LegendItem,
 } from "chart.js";
-
 import "chartjs-adapter-moment";
 import { FC } from "react";
-
 import { Chart } from "react-chartjs-2";
 import {
   bgColors,
@@ -22,6 +20,8 @@ import {
   shapes,
   UnidimensionalSeries,
 } from "..";
+import { getZygosityLabel } from "@/components/Data/Utils";
+import { capitalize } from "lodash";
 
 ChartJS.register(
   LinearScale,
@@ -45,13 +45,7 @@ interface IUnidimensionalScatterPlotProps {
 
 const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
   const labelSex = series.sex[0].toUpperCase() + series.sex.slice(1);
-  const labelZyg =
-    zygosity === "homozygote"
-      ? "HOM"
-      : zygosity === "hemizygote"
-      ? "HEM"
-      : "HET";
-  const labelGroup = series.sampleGroup == "experimental" ? labelZyg : "WT";
+  const labelGroup = getZygosityLabel(zygosity, series.sampleGroup);
   const order = labelGroup !== "WT" ? 1 : 2;
   const label = `${labelSex} ${labelGroup}`;
 
@@ -118,6 +112,16 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
             labels: {
               usePointStyle: true,
               padding: 20,
+              sort: (a: LegendItem, b: LegendItem) => {
+                if (
+                  a.text.includes("Female") && b.text.includes("Female") ||
+                  a.text.includes("Male") && b.text.includes("Male")
+                ) {
+                  return b.text.localeCompare(a.text);
+                } else {
+                  return a.text.localeCompare(b.text);
+                }
+              }
             },
           },
         },

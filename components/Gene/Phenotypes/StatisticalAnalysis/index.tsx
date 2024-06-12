@@ -3,15 +3,17 @@ import { Chart } from "chart.js";
 import { Chart as ChartEl } from "react-chartjs-2";
 import zoomPlugin from "chartjs-plugin-zoom";
 import _ from "lodash";
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
 import { formatBodySystems } from "@/utils";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
+import { ZoomButtons } from "@/components";
+import classNames from "classnames";
 
 Chart.register(zoomPlugin);
 
@@ -112,78 +114,137 @@ const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
         const filtered = data.filter((x) => {
           return x.topLevelPhenotypes.some((y) => flattend.includes(y));
         });
-        return _.sortBy(filtered, "topLevelPhenotypes");
+        return _.sortBy(filtered, ["topLevelPhenotypes", "parameterName"]);
       }
-      return _.sortBy(data, "topLevelPhenotypes");
+      return _.sortBy(data, ["topLevelPhenotypes", "parameterName"]);
     case PROCEDURES:
       if (significantOnly) {
         const procedures = significants.map((x) => x.procedureName);
         const filtered = data.filter((x) => {
           return procedures.includes(x.procedureName);
         });
-        return _.sortBy(filtered, "procedureName");
+        return _.sortBy(filtered, ["procedureName", "parameterName"]);
       }
-      return _.sortBy(data, "procedureName");
+      return _.sortBy(data, ["procedureName", "parameterName"]);
     default:
       return _.sortBy(significantOnly ? significants : data, "pValue", "desc");
   }
+};
+
+const transformPValue = (value: number, significant: boolean) => {
+  if (value === 0 && significant) {
+    // put a high value to show they are really significant
+    return 15;
+  } else if (value === 0) {
+    return 0;
+  }
+  return -Math.log10(value)
 };
 
 const StatisticalAnalysisChart = ({
   data,
   cat,
   sig,
-  hasDataRelatedToPWG
+  hasDataRelatedToPWG,
+  isVisible,
 }: {
   data: Array<GeneStatisticalResult>;
   cat: Cat;
   sig: boolean;
   hasDataRelatedToPWG: boolean;
+  isVisible: boolean;
 }) => {
   const chartRef = useRef<Chart>(null);
+  const zoomButtonsRef = useRef<HTMLDivElement>(null);
+  const [zoomApplied, setZoomApplied] = useState<boolean>(false);
+  const [zoomLevel, setZoomLevel] = useState<number>(1);
+  const zoomDelta = 0.3;
+
+  useEffect(() => {
+    if (!!chartRef.current && zoomLevel !== 1) {
+      chartRef.current.zoom({ x: 1, y: zoomLevel});
+    }
+  }, [zoomLevel]);
+
   if (!data) {
     return null;
   }
 
-  const hasPValue = data
-    .filter(
+  const dataWithPValue = useMemo(() =>
+    data.filter(
       (x) =>
-        x.pValue !== null &&
-        x.pValue !== undefined &&
         x.topLevelPhenotypes?.length
     )
     .map((x) => ({
       ...x,
-      pValue: Number(x.pValue),
+      pValue: Number(x.pValue) || 0,
       topLevelPhenotypes: x.topLevelPhenotypes.map((y) => y.name),
-    }));
+    })), [data]);
 
-  const processed = processData(hasPValue, cat, sig);
+  const processed = useMemo(
+    () => processData(dataWithPValue, cat, sig),
+    [dataWithPValue, cat, sig]
+  );
 
-  const labels = processed.map((x) => x.parameterName);
-  const values = processed.map((x) => -Math.log10(Number(x.pValue)));
-  const thresholdValues = processed.map(() => 4);
-  const painThresholdValues = processed.map(() => 3);
   const isByProcedure = cat.type === cats.PROCEDURES;
-  let colorByArray = isByProcedure ? _.uniq(processed.map((x) => x.procedureName)) : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]));
+  const colorByArray = useMemo(() =>
+    isByProcedure
+      ? _.uniq(processed.map((x) => x.procedureName))
+      : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]))
+    ,[processed, isByProcedure]);
 
-  const colors = processed.map((x) => {
-    let index = 0;
-    if (isByProcedure) {
-      index = colorByArray.indexOf(x.procedureName);
-    } else {
-      index = colorByArray.indexOf(x.topLevelPhenotypes[0]);
-    }
-    return colorArray[index];
-  });
+  const chartData = useMemo(() => ({
+    labels: processed.map((x) => x.parameterName),
+    datasets: [
+      {
+        label: "P-value",
+        type: "line" as const,
+        data: processed.map((x, index) => ({
+          x: transformPValue(x.pValue, x.significant),
+          y: index,
+          pValue: x.pValue,
+          isSignificant: x.significant,
+        })),
+        backgroundColor: processed.map((x) => {
+          let index = 0;
+          if (isByProcedure) {
+            index = colorByArray.indexOf(x.procedureName);
+          } else {
+            index = colorByArray.indexOf(x.topLevelPhenotypes[0]);
+          }
+          return colorArray[index];
+        }),
+        showLine: false,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+        pointStyle: (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant ? "triangle" : "circle",
+      },
+      {
+        label: 'P-value threshold',
+        type: "line" as const,
+        data: processed.map(() => 4),
+        borderColor: "black",
+        pointStyle: "rect",
+        borderDash: [5, 5],
+        radius: 0,
+      },
+      hasDataRelatedToPWG ? {
+        label: 'P-value threshold',
+        type: "line" as const,
+        data: processed.map(() => 3),
+        borderColor: "rgb(255, 99, 132)",
+        pointStyle: "rect",
+        borderDash: [5, 5],
+        radius: 0,
+      } : {}
+    ],
+  }), [processed, colorByArray]);
 
   const chartOptions = {
     responsive: true,
     indexAxis: "y" as const,
-    maintainAspectRatio: false,
-    animation: {
-      duration: 0,
-    },
+    animation: false as const,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
         display: false,
@@ -204,31 +265,30 @@ const StatisticalAnalysisChart = ({
           afterBody: (context) => {
             const data = processed[context[0].dataIndex];
             return [
-              `P-value: ${parseFloat(data.pValue).toExponential(3)}`,
+              (data.pValue === 0 && data.significant ? "Manual association" : `P-value: ${parseFloat(data.pValue).toExponential(3)}`),
               `Zygosity: ${_.capitalize(data.zygosity)}`,
               `Procedure: ${data.procedureName}`,
-              `Mutants: ${data.maleMutantCount} males & ${data.femaleMutantCount} females`,
-              `Effect size: ${data.effectSize}`,
+              (data.maleMutantCount && data.femaleMutantCount) ? `Mutants: ${data.maleMutantCount || 0} males & ${data.femaleMutantCount || 0} females` : null,
+              (!!data.effectSize) ? `Effect size: ${data.effectSize}` : null,
               `Metadata group: ${data.metadataGroup}`,
-            ];
+            ].filter(Boolean);
           },
         },
       },
       zoom: {
+        zoom: {
+          limits: { y: { max: 60, min: 0 } },
+          mode: "y" as const,
+          onZoomComplete: (_) => {
+            if (!zoomApplied) {
+              setZoomApplied(true);
+            }
+          },
+        },
         pan: {
           enabled: true,
           mode: "y" as const,
-          modifierKey: "alt" as const,
-        },
-        zoom: {
-          drag: {
-            enabled: true,
-          },
-          pinch: {
-            enabled: true,
-          },
-          mode: "y" as const,
-        },
+        }
       },
     },
     scales: {
@@ -240,160 +300,98 @@ const StatisticalAnalysisChart = ({
 
   return (
     <div>
-      <div style={{paddingLeft: "0.5rem", marginBottom: 30}}>
-        {colorByArray.map((item, index) => {
-          if (!item) {
-            return;
-          }
-          const color = colorArray[index];
-          return (
-            <span
-              style={{
-                marginRight: "2rem",
-                whiteSpace: "nowrap",
-                marginBlock: 3,
-                display: "inline-block",
-              }}
-              className="grey"
-            >
-              <span
-                style={{
-                  display: "inline-flex",
-                  width: "1.4em",
-                  height: "1.4em",
-                  backgroundColor: color,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 3,
-                  verticalAlign: "middle",
-                  marginRight: 3,
-                }}
-              >
-                {isByProcedure ? null : (
-                  <BodySystemIcon name={item} color="white" size="1x"/>
-                )}
-              </span>{" "}
-              <small>{formatBodySystems(item)}</small>
-            </span>
-          );
+      <div className={classNames(styles.labels, styles.icons)}>
+        {colorByArray
+          .filter(Boolean)
+          .map((item, index) => {
+            const color = colorArray[index];
+            return (
+              <span className="grey">
+                <span className={styles.icon} style={{backgroundColor: color}}>
+                  {isByProcedure ? null : (
+                    <BodySystemIcon name={item} color="white" size="1x"/>
+                  )}
+                </span>&nbsp;
+                <small>{formatBodySystems(item)}</small>
+              </span>
+            );
         })}
-        <span className="grey" style={{ display: 'inline-block', marginBlock: '3px', whiteSpace: 'nowrap' }}>
-          <hr
-            style={{
-              border: "none",
-              borderTop: "3px dashed #000",
-              height: "3px",
-              width: "50px",
-              display: 'inline-block',
-              margin: '0 0 0 0.5rem',
-              opacity: 1
-            }}
-          />
+        <span className="grey" style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+          <hr className={styles.dashedLine}/>
           <small>Significant P-value threshold (P &lt; 0.0001)</small>
         </span>
       </div>
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: Math.min(
-            processed.length * (processed.length > 30 ? 10 : 20),
-            1600
-          ),
-        }}
-      >
+      <div className={classNames(styles.labels, "grey")}>
+        <div className={styles.figureContainer}>
+          <div className={styles.circle} />
+          Statistical annotations
+        </div>
+        <div className={styles.figureContainer}>
+          <div className={styles.triangle} />
+          Manual annotations
+        </div>
+      </div>
+      <div className={styles.chartContainer}>
+        <div ref={zoomButtonsRef} className={styles.overlay}>
+          <ZoomButtons
+            containerClassName={styles.buttons}
+            onZoomIn={() => setZoomLevel(prevZoom => prevZoom + zoomDelta)}
+            onZoomOut={() => setZoomLevel(prevZoom => prevZoom - zoomDelta)}
+            onResetZoom={() => {
+              if (chartRef.current) {
+                chartRef.current.resetZoom();
+                setZoomApplied(false);
+                setZoomLevel(1.0);
+              }
+            }}
+          />
+        </div>
         <ChartEl
           type="line"
           ref={chartRef}
           options={chartOptions}
-          data={{
-            labels,
-            datasets: [
-              {
-                label: "P-value",
-                data: values,
-                backgroundColor: colors,
-                showLine: false,
-                pointRadius: 5,
-                pointHoverRadius: 8,
-              },
-              {
-                label: 'P-value threshold',
-                type: "line" as const,
-                data: thresholdValues,
-                borderColor: "black",
-                pointStyle: "rect",
-                borderDash: [5, 5],
-                radius: 0,
-              },
-              hasDataRelatedToPWG ? {
-                label: 'P-value threshold',
-                type: "line" as const,
-                data: painThresholdValues,
-                borderColor: "rgb(255, 99, 132)",
-                pointStyle: "rect",
-                borderDash: [5, 5],
-                radius: 0,
-              } : {}
-            ],
-          }}
+          data={chartData}
         />
       </div>
-      <div style={{ display: "flex", alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className={styles.bottomLabels}>
         <span className="labels">
           {hasDataRelatedToPWG && (
-            <span style={{ marginLeft: '1rem' }}>
+            <span style={{marginLeft: '1rem'}}>
+              <hr className={styles.dashedLine} style={{borderTop: "3px dashed rgb(255, 99, 132)"}} />
               Significant threshold for pain sensitivity (P &lt; 0.001)
-              <hr
-                style={{
-                  border: "none",
-                  borderTop: "3px dashed rgb(255, 99, 132)",
-                  height: "3px",
-                  width: "50px",
-                  display: 'inline-block',
-                  margin: '0 0 0 0.5rem',
-                  opacity: 1
-                }}
-              />
             </span>
           )}
         </span>
-        <button
-          className="btn impc-secondary-button"
-          onClick={() => {
-            if (chartRef.current) {
-              chartRef.current.resetZoom();
-            }
-          }}
-          style={{
-            position: "sticky",
-            bottom: "3rem",
-            float: "right",
-          }}
-        >
-          Reset zoom
-        </button>
       </div>
     </div>
   );
 };
 
-const StatisticalAnalysis = ({ data }: { data: Array<GeneStatisticalResult> }) => {
+const StatisticalAnalysis = (
+  { data, isVisible } : { data: Array<GeneStatisticalResult>, isVisible: boolean }
+) => {
   const [cat, setCat] = useState<Cat | null>({
     type: cats.BODY_SYSTEMS,
   });
-  const [significantOnly, setSignificantOnly] = useState<boolean>(true);
-  if (
-    !data ||
-    !data.some(
-      (x) =>
-        x.pValue !== null &&
-        x.pValue !== undefined &&
-        x.topLevelPhenotypes?.length
-    )
-  ) {
+  const [significantOnly, setSignificantOnly] = useState<boolean>(false);
+  if (!data || !data.some((x) => x.topLevelPhenotypes?.length)) {
     return null;
   }
+
+  const filteredData = useMemo(
+    () => {
+      const allData = {};
+      data.forEach(result => {
+        const { mgiGeneAccessionId, parameterStableId, alleleAccessionId, metadataGroup, pValue} = result;
+        const hash = `${mgiGeneAccessionId}-${parameterStableId}-${alleleAccessionId}-${metadataGroup}-${pValue}`;
+        if (result[hash] === undefined) {
+          allData[hash] = result;
+        }
+      });
+      return Object.values(allData);
+    },
+    [data]
+  );
 
   const handleToggle = () => {
     setSignificantOnly(!significantOnly);
@@ -451,10 +449,11 @@ const StatisticalAnalysis = ({ data }: { data: Array<GeneStatisticalResult> }) =
         </p>
       </div>
       <StatisticalAnalysisChart
-        data={data}
+        data={filteredData}
         cat={cat}
         sig={significantOnly}
         hasDataRelatedToPWG={hasDataRelatedToPWG}
+        isVisible={isVisible}
       />
     </>
   );

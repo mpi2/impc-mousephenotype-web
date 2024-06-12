@@ -218,7 +218,7 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
             )}
           </div>
         </Col>
-        <Col lg={6}>
+        <Col lg={6} className="mb-5">
           <h3>Data collections</h3>
           <Row className="mb-5">
             <Col md={4} className="pe-0">

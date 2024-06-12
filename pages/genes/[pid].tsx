@@ -38,8 +38,14 @@ const Gene = (props: GenePageProps) => {
   const router = useRouter();
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
+  const [allelesStudiedLoading, setAllelesStudiedLoading] = useState<boolean>(true);
   const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
-  const allelesStudiedContextValue = {allelesStudied, setAlleles};
+  const allelesStudiedContextValue = {
+    allelesStudied,
+    setAlleles,
+    allelesStudiedLoading,
+    setAllelesStudiedLoading,
+  };
 
   const {data: gene} = useGeneSummaryQuery(router.query.pid as string, router.isReady && !geneFromServer, geneFromServer);
 
@@ -75,7 +81,7 @@ const Gene = (props: GenePageProps) => {
               <Histopathology />
               <Publications gene={geneData} />
               <ExternalLinks />
-              <Order allelesStudied={allelesStudied} />
+              <Order allelesStudied={allelesStudied} allelesStudiedLoading={allelesStudiedLoading} />
             </Container>
           </AllelesStudiedContext.Provider>
         </NumAllelesContext.Provider>

@@ -9,12 +9,13 @@ import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 import { formatPValue, getDownloadData } from "@/utils";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
-import _ from "lodash";
+import { capitalize, sortBy } from "lodash";
 import StatisticalMethodTable from "./StatisticalMethodTable";
 import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
 import { fetchDatasetFromS3 } from "@/api-service";
+import { getZygosityLabel } from "@/components/Data/Utils";
 
 type ChartSeries = {
   data: Array<any>;
@@ -73,9 +74,7 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
       const stddevKey = `${sex}${sampleGroupKey}Sd`;
       const countKey = `${sex}${sampleGroupKey}Count`;
       return {
-        label: `${_.capitalize(sex)} ${
-          sampleGroup === "control" ? "Control" : _.capitalize(zygosity)
-        }`,
+        label: `${capitalize(sex)} ${getZygosityLabel(zygosity, sampleGroup)}`,
         mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
         stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
         count: datasetSummary.summaryStatistics?.[countKey] || 0,
@@ -115,12 +114,12 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
         });
       windowPoints.sort((a, b) => a.x - b.x);
 
-      const chartSeries = filterChartSeries(datasetSummary.zygosity, [
+      const chartSeries = sortBy(filterChartSeries(datasetSummary.zygosity, [
         femaleWTPoints,
         maleWTPoints,
         femaleHomPoints,
         maleHomPoints,
-      ]);
+      ]), ["sex", "sampleGroup"]);
       return {
         chartSeries,
         lineSeries: [windowPoints],

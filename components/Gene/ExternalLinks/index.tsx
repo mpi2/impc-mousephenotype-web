@@ -21,20 +21,25 @@ const ExternalLinks = () => {
       <Container>
         <Row>
           {providers.map(provider => (
-            <Col className="mb-3" xs={6} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
+            <Col className="mb-3" xs={12} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
               <div>
-                <b>{provider.providerName}</b>&nbsp;-&nbsp;
-                <span style={{fontSize: '80%'}}>{provider.providerDescription}</span>
+                <b>{provider.providerName}</b>
+                {!!provider.providerDescription && (
+                  <>
+                    &nbsp;-&nbsp;
+                    <span style={{fontSize: '80%'}}>{provider.providerDescription}</span>
+                  </>
+                )}
               </div>
               <ul style={{marginBottom: 0, display: 'flex', columnGap: '1.3em'}}>
                 {provider.links.map(link => (
-                  <a className="primary link" href={link.href}>
+                  <a className="primary link" href={link.href} target="_blank">
                     {link.label}
-                    &nbsp;
                     <FontAwesomeIcon
                       icon={faExternalLinkAlt}
                       className="grey"
                       size="xs"
+                      style={{ marginLeft: '0.3rem' }}
                     />
                   </a>
                 ))}
