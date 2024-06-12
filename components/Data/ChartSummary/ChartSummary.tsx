@@ -36,7 +36,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
     0
   );
 
-  const metadataArray = datasetSummary.metadataValues?.[0].split("|") || [];
+  const metadataArray = datasetSummary.metadataValues.length > 0 ? datasetSummary.metadataValues[0].split("|") : [];
   const pValue = useMemo(
     () => getSmallestPValue([datasetSummary]),
     [datasetSummary]

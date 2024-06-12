@@ -123,8 +123,6 @@ const Charts = () => {
   const smallestPValue = useMemo(() => getSmallestPValue(allSummaries), [allSummaries]);
   const fetchingInProcess = isFetching || debouncedSpChartLoading;
 
-  console.log({ smallestPValue, datasetSummaries });
-
   return (
     <>
       <Head>
