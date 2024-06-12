@@ -47,24 +47,31 @@ exports[`Embryo landing page renders correctly 1`] = `
             onChange={[Function]}
             onKeyDown={[Function]}
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
+            aria-describedby="svg-inline--fa-title-search-icon"
             className="searchBtn"
             onClick={[Function]}
           >
             <svg
-              aria-hidden="true"
+              aria-labelledby="svg-inline--fa-title-search-icon"
               className="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
               style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+                style={{}}
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
@@ -134,6 +141,7 @@ exports[`Embryo landing page renders correctly 1`] = `
             className="text-center col-md-4 col-12"
           >
             <img
+              alt=""
               className="embryoImage img-fluid"
               src="images/landing-pages/Tmem100_het.jpg"
             />
@@ -197,6 +205,7 @@ exports[`Embryo landing page renders correctly 1`] = `
           className="text-center"
         >
           <img
+            alt=""
             className="img-fluid"
             src="images/landing-pages/IMPC-Embryo-Pipeline-Diagram.png"
           />
@@ -254,7 +263,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               className="tableWrapper"
             >
               <table
-                className="table striped table table-bordered"
+                className="table striped undefined table table-bordered"
               >
                 <thead>
                   <tr>
@@ -293,6 +302,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                       </button>
                     </th>
                   </tr>
+                  <tr />
                 </thead>
                 <tbody>
                   <tr>
@@ -380,7 +390,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               className="tableWrapper"
             >
               <table
-                className="table striped table table-bordered"
+                className="table striped undefined table table-bordered"
               >
                 <thead>
                   <tr>
@@ -419,63 +429,16 @@ exports[`Embryo landing page renders correctly 1`] = `
                       </button>
                     </th>
                   </tr>
+                  <tr />
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      Perinatal lethal
-                    </td>
-                    <td>
-                      326
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      E9.5 lethal
-                    </td>
-                    <td>
-                      450
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      E12.5 lethal
-                    </td>
-                    <td>
-                      97
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      E15.5 lethal
-                    </td>
-                    <td>
-                      20
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      E18.5 lethal
-                    </td>
-                    <td>
-                      6
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Lorem ipsum
-                    </td>
-                    <td>
-                      143
-                    </td>
-                  </tr>
                   <tr>
                     <td
                       colSpan={2}
                     >
                       <a
                         className="link primary"
-                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all.csv"
+                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv"
                       >
                         Download
                       </a>
@@ -553,6 +516,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                           aria-describedby="react-select-2-placeholder"
                           aria-expanded={false}
                           aria-haspopup={true}
+                          aria-label="window of lethality filter"
                           autoCapitalize="none"
                           autoComplete="off"
                           autoCorrect="off"
@@ -711,7 +675,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                     <span
                       aria-hidden="true"
                     >
-                      32
+                      34
                     </span>
                   </button>
                 </li>

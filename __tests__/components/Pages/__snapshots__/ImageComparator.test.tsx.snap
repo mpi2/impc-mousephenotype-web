@@ -47,24 +47,31 @@ exports[`Image comparator page renders correctly 1`] = `
             onChange={[Function]}
             onKeyDown={[Function]}
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
+            aria-describedby="svg-inline--fa-title-search-icon"
             className="searchBtn"
             onClick={[Function]}
           >
             <svg
-              aria-hidden="true"
+              aria-labelledby="svg-inline--fa-title-search-icon"
               className="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
               style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+                style={{}}
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
@@ -82,55 +89,67 @@ exports[`Image comparator page renders correctly 1`] = `
     <div
       className="card"
     >
-      <a
-        className="primary mb-3"
-        href="/genes/undefined#images"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
-        onTouchStart={[Function]}
-        style={
-          {
-            "fontSize": "1.13rem",
-          }
-        }
+      <div
+        className="subheading"
       >
-        <svg
-          aria-hidden="true"
-          className="svg-inline--fa fa-arrow-left-long "
-          data-icon="arrow-left-long"
-          data-prefix="fas"
-          focusable="false"
-          role="img"
-          style={{}}
-          viewBox="0 0 512 512"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z"
-            fill="currentColor"
-            style={{}}
-          />
-        </svg>
-         Back to 
         <span
-          aria-busy={true}
-          aria-live="polite"
+          className="subheadingSection primary"
         >
-          <span
-            className="react-loading-skeleton"
+          <a
+            className="mb-3"
+            href="/genes/undefined#images"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onTouchStart={[Function]}
             style={
               {
-                "display": "block",
-                "width": "300px",
+                "fontSize": "1.15rem",
+                "fontWeight": "normal",
+                "letterSpacing": "normal",
+                "textTransform": "none",
               }
             }
           >
-            ‌
-          </span>
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={{}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+                style={{}}
+              />
+            </svg>
+              Go Back to 
+            <i>
+              <span
+                aria-busy={true}
+                aria-live="polite"
+              >
+                <span
+                  className="react-loading-skeleton"
+                  style={
+                    {
+                      "width": "50px",
+                    }
+                  }
+                >
+                  ‌
+                </span>
+              </span>
+            </i>
+          </a>
         </span>
-      </a>
+      </div>
       <p
-        className="subheading"
+        className="subheading mt-2"
       >
         Images
       </p>
@@ -216,7 +235,6 @@ exports[`Image comparator page renders correctly 1`] = `
                   :
                 </label>
                 <input
-                  aria-label="Filter control images by center"
                   className="bg-white form-control"
                   id="controlCenterFilter"
                   onChange={[Function]}
@@ -293,7 +311,6 @@ exports[`Image comparator page renders correctly 1`] = `
                   :
                 </label>
                 <input
-                  aria-label="Filter mutant images by center"
                   className="bg-white form-control"
                   id="mutantCenterFilter"
                   onChange={[Function]}

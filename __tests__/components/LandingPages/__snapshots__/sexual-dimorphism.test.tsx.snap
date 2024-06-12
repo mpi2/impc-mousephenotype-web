@@ -47,24 +47,31 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
             onChange={[Function]}
             onKeyDown={[Function]}
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
+            aria-describedby="svg-inline--fa-title-search-icon"
             className="searchBtn"
             onClick={[Function]}
           >
             <svg
-              aria-hidden="true"
+              aria-labelledby="svg-inline--fa-title-search-icon"
               className="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
               style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+                style={{}}
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
@@ -124,6 +131,31 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
           IMPC Sexual Dimorphism Data
         </strong>
       </h1>
+      <div
+        className="fade alert alert-landing-page show"
+        role="alert"
+      >
+        <div
+          className="alert-heading h4"
+        >
+          Attention
+        </div>
+        <p>
+          This publication page originally used the Data Release 4.2 
+          <br />
+          The number of mice and strains has not changed since then but the vignettes are displaying data from the latest Data Release.
+        </p>
+        <hr />
+        <a
+          className="link primary"
+          href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-04.2/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          Link to FTP site
+        </a>
+      </div>
       <div
         className="container"
       >
@@ -498,10 +530,12 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              Usp47
-              <sup>
-                tm1b(EUCOMM)Wtsi
-              </sup>
+              <i>
+                Usp47
+                <sup>
+                  tm1b(EUCOMM)Wtsi
+                </sup>
+              </i>
             </a>
           </div>
         </div>
@@ -604,10 +638,12 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              Foxo3
-              <sup>
-                tm1.1(KOMP)Vlcg
-              </sup>
+              <i>
+                Foxo3
+                <sup>
+                  tm1.1(KOMP)Vlcg
+                </sup>
+              </i>
             </a>
           </div>
         </div>
@@ -728,10 +764,12 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
               onMouseEnter={[Function]}
               onTouchStart={[Function]}
             >
-              Galnt18
-              <sup>
-                tm1b(KOMP)Wtsi
-              </sup>
+              <i>
+                Galnt18
+                <sup>
+                  tm1b(KOMP)Wtsi
+                </sup>
+              </i>
             </a>
           </div>
         </div>

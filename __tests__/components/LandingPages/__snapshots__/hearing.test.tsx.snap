@@ -47,24 +47,31 @@ exports[`Hearing landing page renders correctly 1`] = `
             onChange={[Function]}
             onKeyDown={[Function]}
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
+            aria-describedby="svg-inline--fa-title-search-icon"
             className="searchBtn"
             onClick={[Function]}
           >
             <svg
-              aria-hidden="true"
+              aria-labelledby="svg-inline--fa-title-search-icon"
               className="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
               style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+                style={{}}
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
@@ -124,6 +131,31 @@ exports[`Hearing landing page renders correctly 1`] = `
           IMPC Hearing Data
         </strong>
       </h1>
+      <div
+        className="fade alert alert-landing-page show"
+        role="alert"
+      >
+        <div
+          className="alert-heading h4"
+        >
+          Attention
+        </div>
+        <p>
+          This publication page originally used the Data Release 5.0 
+          <br />
+          The procedures and genes has not changed since then but the vignettes are displaying data from the latest Data Release.
+        </p>
+        <hr />
+        <a
+          className="link primary"
+          href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-05.0/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onTouchStart={[Function]}
+        >
+          Link to FTP site
+        </a>
+      </div>
       <div
         className="container"
       >
@@ -638,16 +670,21 @@ exports[`Hearing landing page renders correctly 1`] = `
             onClick={[Function]}
           >
             <svg
-              aria-hidden="true"
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
               className="svg-inline--fa fa-arrow-left "
               data-icon="arrow-left"
               data-prefix="fas"
-              focusable="false"
               role="img"
               style={{}}
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+                style={{}}
+              >
+                previous page button
+              </title>
               <path
                 d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
                 fill="currentColor"
@@ -655,13 +692,12 @@ exports[`Hearing landing page renders correctly 1`] = `
               />
             </svg>
           </button>
-           
           <li
-            className="page-item active"
+            className="page-item"
             data-testid="top-page-1"
           >
             <button
-              className="pagNavBtn page-link"
+              className="pagNavBtn active"
               data-testid="top-page-1-btn"
               onClick={[Function]}
             >
@@ -674,7 +710,7 @@ exports[`Hearing landing page renders correctly 1`] = `
           >
             <button
               aria-label="Previous"
-              className="pagNavBtn page-link last-page"
+              className="pagNavBtn last-page"
               data-testid="top-last-page-btn"
               onClick={[Function]}
             >
@@ -686,22 +722,27 @@ exports[`Hearing landing page renders correctly 1`] = `
             </button>
           </li>
           <button
-            className="pagNavBtn nav-btn primary"
+            className="pagNavBtn nav-btn"
             data-testid="top-next-page"
             disabled={false}
             onClick={[Function]}
           >
             <svg
-              aria-hidden="true"
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
               className="svg-inline--fa fa-arrow-right "
               data-icon="arrow-right"
               data-prefix="fas"
-              focusable="false"
               role="img"
               style={{}}
               viewBox="0 0 448 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+                style={{}}
+              >
+                next page button
+              </title>
               <path
                 d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
                 fill="currentColor"
@@ -715,7 +756,7 @@ exports[`Hearing landing page renders correctly 1`] = `
         className="tableWrapper"
       >
         <table
-          className="table striped table table-bordered"
+          className="table striped undefined table table-bordered"
         >
           <thead>
             <tr>
@@ -919,11 +960,18 @@ exports[`Hearing landing page renders correctly 1`] = `
                 </button>
               </th>
             </tr>
+            <tr />
           </thead>
           <tbody>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   A730017C20Rik
                 </span>
               </td>
@@ -945,7 +993,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Aak1
                 </span>
               </td>
@@ -967,7 +1021,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Acsl4
                 </span>
               </td>
@@ -989,7 +1049,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Acvr2a
                 </span>
               </td>
@@ -1011,7 +1077,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Adgrb1
                 </span>
               </td>
@@ -1033,7 +1105,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Adgrv1
                 </span>
               </td>
@@ -1055,7 +1133,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Ahsg
                 </span>
               </td>
@@ -1077,7 +1161,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Ankrd11
                 </span>
               </td>
@@ -1099,7 +1189,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Ap3m2
                 </span>
               </td>
@@ -1121,7 +1217,13 @@ exports[`Hearing landing page renders correctly 1`] = `
             </tr>
             <tr>
               <td>
-                <span>
+                <span
+                  style={
+                    {
+                      "fontStyle": "italic",
+                    }
+                  }
+                >
                   Ap3s1
                 </span>
               </td>
@@ -1148,127 +1250,141 @@ exports[`Hearing landing page renders correctly 1`] = `
         className="buttonsWrapper "
       >
         <div
-          style={
-            {
-              "alignItems": "center",
-              "display": "flex",
+          className="bottomPaginationControls"
+        >
+          <div
+            style={
+              {
+                "alignItems": "center",
+                "display": "flex",
+              }
             }
-          }
-        >
-          Rows per page: 
-          <select
-            onChange={[Function]}
           >
-            <option
-              value="10"
+            Rows per page: 
+            <select
+              aria-label="rows per page selector"
+              onChange={[Function]}
             >
-              10
-            </option>
-            <option
-              value="20"
-            >
-              20
-            </option>
-            <option
-              value="30"
-            >
-              30
-            </option>
-            <option
-              value="50"
-            >
-              50
-            </option>
-            <option
-              value="100"
-            >
-              100
-            </option>
-          </select>
-        </div>
-        <ul
-          className="pagination justify-content-center paginationNav"
-          data-testid="nav-buttons-bottom"
-        >
-          <button
-            className="pagNavBtn nav-btn"
-            data-testid="bottom-prev-page"
-            disabled={true}
-            onClick={[Function]}
-          >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-arrow-left "
-              data-icon="arrow-left"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={{}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-                fill="currentColor"
-                style={{}}
-              />
-            </svg>
-          </button>
-           
-          <li
-            className="page-item active"
-            data-testid="bottom-page-1"
-          >
-            <button
-              className="pagNavBtn page-link"
-              data-testid="bottom-page-1-btn"
-              onClick={[Function]}
-            >
-              1
-            </button>
-          </li>
-          <li
-            className="page-item"
-            data-testid="bottom-last-page"
-          >
-            <button
-              aria-label="Previous"
-              className="pagNavBtn page-link last-page"
-              data-testid="bottom-last-page-btn"
-              onClick={[Function]}
-            >
-              <span
-                aria-hidden="true"
+              <option
+                value="10"
               >
-                7
-              </span>
-            </button>
-          </li>
-          <button
-            className="pagNavBtn nav-btn primary"
-            data-testid="bottom-next-page"
-            disabled={false}
-            onClick={[Function]}
+                10
+              </option>
+              <option
+                value="20"
+              >
+                20
+              </option>
+              <option
+                value="30"
+              >
+                30
+              </option>
+              <option
+                value="50"
+              >
+                50
+              </option>
+              <option
+                value="100"
+              >
+                100
+              </option>
+            </select>
+          </div>
+          <ul
+            className="pagination justify-content-center paginationNav"
+            data-testid="nav-buttons-bottom"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-arrow-right "
-              data-icon="arrow-right"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={{}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <button
+              className="pagNavBtn nav-btn"
+              data-testid="bottom-prev-page"
+              disabled={true}
+              onClick={[Function]}
             >
-              <path
-                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                fill="currentColor"
+              <svg
+                aria-labelledby="svg-inline--fa-title-prev-page-icon"
+                className="svg-inline--fa fa-arrow-left "
+                data-icon="arrow-left"
+                data-prefix="fas"
+                role="img"
                 style={{}}
-              />
-            </svg>
-          </button>
-        </ul>
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title
+                  id="svg-inline--fa-title-prev-page-icon"
+                  style={{}}
+                >
+                  previous page button
+                </title>
+                <path
+                  d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                  fill="currentColor"
+                  style={{}}
+                />
+              </svg>
+            </button>
+            <li
+              className="page-item"
+              data-testid="bottom-page-1"
+            >
+              <button
+                className="pagNavBtn active"
+                data-testid="bottom-page-1-btn"
+                onClick={[Function]}
+              >
+                1
+              </button>
+            </li>
+            <li
+              className="page-item"
+              data-testid="bottom-last-page"
+            >
+              <button
+                aria-label="Previous"
+                className="pagNavBtn last-page"
+                data-testid="bottom-last-page-btn"
+                onClick={[Function]}
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  7
+                </span>
+              </button>
+            </li>
+            <button
+              className="pagNavBtn nav-btn"
+              data-testid="bottom-next-page"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <svg
+                aria-labelledby="svg-inline--fa-title-next-page-icon"
+                className="svg-inline--fa fa-arrow-right "
+                data-icon="arrow-right"
+                data-prefix="fas"
+                role="img"
+                style={{}}
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title
+                  id="svg-inline--fa-title-next-page-icon"
+                  style={{}}
+                >
+                  next page button
+                </title>
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                  fill="currentColor"
+                  style={{}}
+                />
+              </svg>
+            </button>
+          </ul>
+        </div>
       </div>
     </div>
     <div
@@ -1309,10 +1425,12 @@ exports[`Hearing landing page renders correctly 1`] = `
                 onMouseEnter={[Function]}
                 onTouchStart={[Function]}
               >
-                Adgrb1
-                <sup>
-                  tm2a(EUCOMM)Wtsi
-                </sup>
+                <i>
+                  Adgrb1
+                  <sup>
+                    tm2a(EUCOMM)Wtsi
+                  </sup>
+                </i>
               </a>
             </div>
             <div
@@ -1380,10 +1498,12 @@ exports[`Hearing landing page renders correctly 1`] = `
                 onMouseEnter={[Function]}
                 onTouchStart={[Function]}
               >
-                Elmod1
-                <sup>
-                  tm1b(EUCOMM)Hmgu
-                </sup>
+                <i>
+                  Elmod1
+                  <sup>
+                    tm1b(EUCOMM)Hmgu
+                  </sup>
+                </i>
               </a>
             </div>
             <div
@@ -1455,10 +1575,12 @@ exports[`Hearing landing page renders correctly 1`] = `
                 onMouseEnter={[Function]}
                 onTouchStart={[Function]}
               >
-                CCdc88c
-                <sup>
-                  tm1b(KOMP)Mbp
-                </sup>
+                <i>
+                  CCdc88c
+                  <sup>
+                    tm1b(KOMP)Mbp
+                  </sup>
+                </i>
               </a>
             </div>
             <div
@@ -1526,10 +1648,12 @@ exports[`Hearing landing page renders correctly 1`] = `
                 onMouseEnter={[Function]}
                 onTouchStart={[Function]}
               >
-                Zfp719
-                <sup>
-                  tm1b(EUCOMM)Wtsi
-                </sup>
+                <i>
+                  Zfp719
+                  <sup>
+                    tm1b(EUCOMM)Wtsi
+                  </sup>
+                </i>
               </a>
             </div>
             <div

@@ -2,9 +2,11 @@
 
 exports[`Allele cell component renders correctly 1`] = `
 <span>
-  Nxn
-  <sup>
-    em1(IMPC)Mbp
-  </sup>
+  <i>
+    Nxn
+    <sup>
+      em1(IMPC)Mbp
+    </sup>
+  </i>
 </span>
 `;
