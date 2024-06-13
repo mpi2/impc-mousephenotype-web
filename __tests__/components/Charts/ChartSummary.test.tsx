@@ -124,4 +124,4 @@ describe('Chart summary component', () => {
     await user.click(await screen.findByRole("button"));
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
-})
+});
