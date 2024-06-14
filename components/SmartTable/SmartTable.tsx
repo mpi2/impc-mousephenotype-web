@@ -28,6 +28,8 @@ const SmartTable = <T extends Model>(props: {
   customFiltering?: boolean,
   showLoadingIndicator?: boolean,
   customSortFunction?: (data: Array<T>, field: string, order: "asc" | "desc") => Array<T>;
+  highlightRowFunction?: (item: T) => boolean;
+  highlightRowColor?: string;
 }) => {
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>('');
@@ -36,6 +38,8 @@ const SmartTable = <T extends Model>(props: {
     customFiltering = false,
     zeroResulsText = 'No data available',
     showLoadingIndicator = false,
+    highlightRowFunction = () => false,
+    highlightRowColor = '#00b0b0',
   } = props;
 
   const internalShowFilteringEnabled = filteringEnabled && !!props.filterFn && !customFiltering;
@@ -89,9 +93,9 @@ const SmartTable = <T extends Model>(props: {
           }
         >
           {pageData.map((d, index) => (
-            <tr key={index}>
+            <tr key={index} style={highlightRowFunction(d) ? { border: `3px solid ${highlightRowColor}` } : {}}>
               {props.columns.map(({ field, cmp }, index) => (
-                <td key={index}>
+                <td key={index} style={{ borderColor: `var(--bs-table-border-color)` }}>
                   {React.cloneElement(cmp, { value: d, field })}
                 </td>
               ))}
