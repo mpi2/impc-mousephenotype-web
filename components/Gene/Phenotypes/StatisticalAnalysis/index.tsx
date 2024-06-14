@@ -193,6 +193,18 @@ const StatisticalAnalysisChart = ({
       : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]))
     ,[processed, isByProcedure]);
 
+  const colorByData = useMemo(() => {
+    return processed.map((x) => {
+      let index = 0;
+      if (isByProcedure) {
+        index = colorByArray.indexOf(x.procedureName);
+      } else {
+        index = colorByArray.indexOf(x.topLevelPhenotypes[0]);
+      }
+      return colorArray[index];
+    });
+  }, [processed, isByProcedure, colorByArray]);
+
   const chartData = useMemo(() => ({
     labels: processed.map((x) => x.parameterName),
     datasets: [
@@ -205,19 +217,13 @@ const StatisticalAnalysisChart = ({
           pValue: x.pValue,
           isSignificant: x.significant,
         })),
-        backgroundColor: processed.map((x) => {
-          let index = 0;
-          if (isByProcedure) {
-            index = colorByArray.indexOf(x.procedureName);
-          } else {
-            index = colorByArray.indexOf(x.topLevelPhenotypes[0]);
-          }
-          return colorArray[index];
-        }),
+        backgroundColor: colorByData,
+        borderColor: colorByData,
         showLine: false,
         pointRadius: 5,
         pointHoverRadius: 8,
-        pointStyle: (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant ? "triangle" : "circle",
+        borderWidth: (ctx) => !!ctx.element && ctx.raw ? (ctx.raw.pValue === 0 && ctx.raw.isSignificant ? 1 : 1) : 2,
+        pointStyle: (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant ? "star" : "circle",
       },
       {
         label: 'P-value threshold',
