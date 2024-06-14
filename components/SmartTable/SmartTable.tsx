@@ -100,7 +100,7 @@ const SmartTable = <T extends Model>(props: {
           {(pageData.length === 0 && showLoadingIndicator) && (
             <tr>
               {props.columns.map((_, index) => (
-                <td>
+                <td key={index}>
                   <Skeleton />
                 </td>
               ))}

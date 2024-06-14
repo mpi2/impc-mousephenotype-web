@@ -23,7 +23,7 @@ describe('Pagination component', () => {
     );
     let items = await screen.findAllByText(/Item #[0-9]+/);
     expect(items).toHaveLength(10);
-    expect(screen.getByTestId('top-page-1')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-1-btn')).toHaveClass('active');
     expect(screen.queryByTestId('top-page-7')).not.toBeInTheDocument();
     expect(screen.getByTestId('top-prev-page')).toBeDisabled();
     expect(screen.getByTestId('top-next-page')).toBeEnabled();
@@ -33,7 +33,7 @@ describe('Pagination component', () => {
     expect(items).toHaveLength(10);
     expect(screen.getByTestId('child-19')).toBeDefined();
 
-    expect(screen.getByTestId('top-page-2')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-2-btn')).toHaveClass('active');
     expect(screen.getByTestId('top-prev-page')).toBeEnabled();
     expect(screen.getByTestId('top-next-page')).toBeEnabled();
     await user.click(screen.getByTestId('top-next-page'));
@@ -41,19 +41,19 @@ describe('Pagination component', () => {
     items = await screen.findAllByText(/Item #[0-9]+/);
     expect(items).toHaveLength(10);
     expect(screen.getByTestId('child-29')).toBeDefined();
-    expect(screen.getByTestId('top-page-3')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-3-btn')).toHaveClass('active');
     expect(screen.getByTestId('top-prev-page')).toBeEnabled();
     await user.click(screen.getByTestId('top-prev-page'));
     expect(screen.getByTestId('child-19')).toBeDefined();
-    expect(screen.getByTestId('top-page-2')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-2-btn')).toHaveClass('active');
 
     await user.selectOptions(screen.getByRole('combobox'), ['30']);
-    expect(screen.getByTestId('top-page-1')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-1-btn')).toHaveClass('active');
     items = await screen.findAllByText(/Item #[0-9]+/)
     expect(items).toHaveLength(30);
 
     await user.selectOptions(screen.getByRole('combobox'), ['10']);
-    expect(screen.getByTestId('top-page-1')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-1-btn')).toHaveClass('active');
     expect(screen.getByTestId('child-9')).toBeDefined();
     items = await screen.findAllByText(/Item #[0-9]+/)
     expect(items).toHaveLength(10);
@@ -112,22 +112,22 @@ describe('Pagination component', () => {
 
     let items = await screen.findAllByText(/Item #[0-9]+/);
     expect(items).toHaveLength(10);
-    expect(screen.getByTestId('top-page-1')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-1-btn')).toHaveClass('active');
 
     await user.click(screen.getByTestId('top-next-page'));
     expect(onPageChange).toHaveBeenCalledWith(1);
-    expect(screen.getByTestId('top-page-2')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-2-btn')).toHaveClass('active');
 
     await user.click(screen.getByTestId('top-next-page'));
     expect(onPageChange).toHaveBeenCalledWith(2);
-    expect(screen.getByTestId('top-page-3')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-3-btn')).toHaveClass('active');
 
     await user.click(screen.getByTestId('top-prev-page'));
     expect(onPageChange).toHaveBeenCalledWith(1);
-    expect(screen.getByTestId('top-page-2')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-2-btn')).toHaveClass('active');
 
     await user.selectOptions(screen.getByRole('combobox'), ['30']);
-    expect(screen.getByTestId('top-page-1')).toHaveClass('active');
+    expect(screen.getByTestId('top-page-1-btn')).toHaveClass('active');
     expect(onPageSizeChange).toHaveBeenCalledWith(30);
   });
 

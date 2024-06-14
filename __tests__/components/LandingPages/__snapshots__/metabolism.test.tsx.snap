@@ -1,116 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Metabolism landing page renders correctly 1`] = `
-[
+<div>
   <div
-    className="banner"
+    class="banner"
   >
     <div
-      className="pb-4 pt-5 container container"
+      class="pb-4 pt-5 container container"
     >
       <div
-        className="col-12 col-md-8 ps-4 pe-4"
+        class="col-12 col-md-8 ps-4 pe-4"
       >
         <div
-          className="tabs"
+          class="tabs"
         >
           <a
-            className="tab"
+            class="tab__active"
             href="/search"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Genes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="/search?type=phenotype"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Phenotypes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="https://dev.mousephenotype.org/?s="
           >
             Help, news, blog
           </a>
         </div>
         <div
-          className="inputCont"
+          class="inputCont"
         >
           <input
-            className="input"
-            onChange={[Function]}
-            onKeyDown={[Function]}
+            class="input"
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
-            className="searchBtn"
-            onClick={[Function]}
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
           >
             <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-magnifying-glass "
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
-              style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="page container"
-    style={
-      {
-        "lineHeight": 2,
-      }
-    }
+    class="page container"
+    style="line-height: 2;"
   >
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="subheading"
+        class="subheading"
       >
         <nav
           aria-label="breadcrumb"
         >
           <ol
-            className="breadcrumb"
+            class="breadcrumb"
           >
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Home
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               IMPC data collections
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Homeostasis/Metabolism
             </li>
@@ -118,20 +109,41 @@ exports[`Metabolism landing page renders correctly 1`] = `
         </nav>
       </div>
       <h1
-        className="mb-4 mt-2"
+        class="mb-4 mt-2"
       >
         <strong>
           The IMPC is increasing our understanding of the genetic basis for metabolic diseases
         </strong>
       </h1>
       <div
-        className="container"
+        class="fade alert alert-landing-page show"
+        role="alert"
       >
         <div
-          className="row"
+          class="alert-heading h4"
+        >
+          Attention
+        </div>
+        <p>
+          This publication page originally used the Data Release 
+          4.2
+        </p>
+        <hr />
+        <a
+          class="link primary"
+          href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-04.2/"
+        >
+          Link to FTP site
+        </a>
+      </div>
+      <div
+        class="container"
+      >
+        <div
+          class="row"
         >
           <div
-            className="col-12"
+            class="col-12"
           >
             <ul>
               <li>
@@ -149,19 +161,19 @@ exports[`Metabolism landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1
-        className="mb-4 mt-2"
+        class="mb-4 mt-2"
       >
         <strong>
           Approach
         </strong>
       </h1>
       <p>
-        To identify the function of genes, the IMPC uses a series of standardised protocols described in
+        To identify the function of genes, the IMPC uses a series of standardised protocols described in 
         <a
-          className="primary link"
+          class="primary link"
           href="https://www.mousephenotype.org/impress"
         >
           IMPReSS
@@ -179,7 +191,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Calorimetry
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/4"
           >
             ESLIM v1
@@ -190,14 +202,14 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Challenge Whole Body Plethysmography
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/268"
           >
             TCP v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/112"
           >
             ICS v3
@@ -208,7 +220,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Clinical Blood Chemistry
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/113"
           >
             HAS v2
@@ -219,294 +231,294 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Clinical Chemistry
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1123"
           >
             HRWLLA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1073"
           >
             ICSLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/76"
           >
             HAROLD v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1145"
           >
             HRWLLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/788"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/782"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/583"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/582"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/688"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/682"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1042"
           >
             UCDLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/683"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1192"
           >
             HMGULA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/783"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1140"
           >
             JAXLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1161"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/182"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/684"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1105"
           >
             KMPCLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/581"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/787"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1054"
           >
             BCMLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/786"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/58"
           >
             M-G-P v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1029"
           >
             TCPLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/984"
           >
             RBRCLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/151"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/785"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/580"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/18"
           >
             ESLIM v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/585"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/685"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1089"
           >
             NINGLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/687"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/681"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/584"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/96"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1260"
           >
             HMGULA v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/686"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/789"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/784"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/579"
           >
             IMPC v1
@@ -517,7 +529,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Clinical chemistry (GMC)
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/37"
           >
             GMC v1
@@ -528,84 +540,84 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Echo
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1256"
           >
             HMGULA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1115"
           >
             HRWLLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/450"
           >
             HMGULA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/656"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/654"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/655"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/109"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/658"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1082"
           >
             NINGLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1046"
           >
             BCMLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/657"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1065"
           >
             ICSLA v1
@@ -616,7 +628,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Fast Bleed
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/140"
           >
             HAS v1
@@ -627,7 +639,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Fasted Clinical Chemistry
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/8"
           >
             ESLIM v1
@@ -638,7 +650,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Food efficiency (GMC)
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/43"
           >
             GMC v1
@@ -649,7 +661,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           IPGTT
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/50"
           >
             M-G-P v1
@@ -660,231 +672,231 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Indirect Calorimetry
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/527"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/853"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/699"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/121"
           >
             HAS v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/240"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/700"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/528"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/858"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/698"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/49"
           >
             M-G-P v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/526"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/701"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/86"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1254"
           >
             HMGULA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/697"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/857"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/852"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/524"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/856"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/702"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/696"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1081"
           >
             NINGLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1191"
           >
             HMGULA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1110"
           >
             KMPCLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1057"
           >
             ICSLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/153"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/855"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/529"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1045"
           >
             BCMLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/854"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/977"
           >
             RBRCLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/525"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/859"
           >
             IMPC v3
@@ -895,196 +907,196 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Insulin Blood Level
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/790"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/796"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/690"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/590"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/97"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/183"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/591"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/691"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/791"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/695"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/689"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/694"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1150"
           >
             KMPCLA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/792"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/592"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/793"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/693"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/587"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/588"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/152"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/586"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1067"
           >
             HMGULA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/589"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/794"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1388"
           >
             HMGULA v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/795"
           >
             IMPC v3
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/116"
           >
             HAS v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/692"
           >
             IMPC v2
@@ -1095,7 +1107,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Insulin t=0
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/71"
           >
             HAROLD v1
@@ -1106,161 +1118,161 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Intraperitoneal glucose tolerance test (IPGTT)
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/399"
           >
             ICSLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/536"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/530"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1377"
           >
             HMGULA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/475"
           >
             UCDLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/482"
           >
             RBRCLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/272"
           >
             MGP v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/531"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1099"
           >
             KMPCLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/344"
           >
             BCMLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/535"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1083"
           >
             NINGLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1118"
           >
             HRWLLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/87"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/452"
           >
             HMGULA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/532"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/115"
           >
             HAS v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/458"
           >
             TCPLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/537"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/534"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1135"
           >
             JAXLA v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/538"
           >
             IMPC v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/533"
           >
             IMPC v1
@@ -1271,49 +1283,49 @@ exports[`Metabolism landing page renders correctly 1`] = `
           MicroCT E14.5-E15.5
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/962"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/963"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/967"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/966"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/965"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/964"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/495"
           >
             IMPC v2
@@ -1324,42 +1336,42 @@ exports[`Metabolism landing page renders correctly 1`] = `
           MicroCT E18.5
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1288"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1290"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1289"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1286"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1285"
           >
             IMPC v2
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/1287"
           >
             IMPC v2
@@ -1370,7 +1382,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Plasma Chemistry
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/157"
           >
             JAX v1
@@ -1381,14 +1393,14 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Simplified IPGTT
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/5"
           >
             ESLIM v1
             , 
           </a>
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/68"
           >
             HAROLD v1
@@ -1399,7 +1411,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Terminal Bleed
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/141"
           >
             HAS v1
@@ -1410,7 +1422,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Urinalysis
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/246"
           >
             JAX v1
@@ -1421,7 +1433,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           Urinalysis
           : 
           <a
-            className="primary link"
+            class="primary link"
             href="//www.mousephenotype.org/impress/protocol/138"
           >
             HAS v1
@@ -1431,7 +1443,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
       </ul>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         IMPC Metabolism Publication
@@ -1441,7 +1453,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
       </h3>
       <p>
         <a
-          className="link primary"
+          class="link primary"
           href="https://bit.ly/IMPCMetabolism"
         >
           Nature Communications publication
@@ -1469,7 +1481,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
       </ul>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         Gene table
@@ -1481,22 +1493,16 @@ exports[`Metabolism landing page renders correctly 1`] = `
         By hovering over the table you can select cells and click to explore the underlying data.
       </p>
       <div
-        style={
-          {
-            "margin": "0 auto",
-            "minWidth": "50%",
-            "textAlign": "center",
-          }
-        }
+        style="min-width: 50%; text-align: center; margin: 0px auto;"
       >
         <table
-          className="table geneTable"
+          class="table geneTable"
         >
           <tbody>
             <tr>
               <td />
               <td
-                colSpan={4}
+                colspan="4"
               >
                 Outlier
               </td>
@@ -1504,12 +1510,12 @@ exports[`Metabolism landing page renders correctly 1`] = `
             <tr>
               <td />
               <td
-                colSpan={2}
+                colspan="2"
               >
                  &lt;5%
               </td>
               <td
-                colSpan={2}
+                colspan="2"
               >
                  &gt;95% 
               </td>
@@ -1519,76 +1525,68 @@ exports[`Metabolism landing page renders correctly 1`] = `
               <td>
                 <svg
                   aria-hidden="true"
-                  className="svg-inline--fa fa-venus "
+                  class="svg-inline--fa fa-venus "
                   data-icon="venus"
                   data-prefix="fas"
                   focusable="false"
                   role="img"
-                  style={{}}
                   viewBox="0 0 384 512"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
                     fill="currentColor"
-                    style={{}}
                   />
                 </svg>
               </td>
               <td>
                 <svg
                   aria-hidden="true"
-                  className="svg-inline--fa fa-mars "
+                  class="svg-inline--fa fa-mars "
                   data-icon="mars"
                   data-prefix="fas"
                   focusable="false"
                   role="img"
-                  style={{}}
                   viewBox="0 0 448 512"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                     fill="currentColor"
-                    style={{}}
                   />
                 </svg>
               </td>
               <td>
                 <svg
                   aria-hidden="true"
-                  className="svg-inline--fa fa-venus "
+                  class="svg-inline--fa fa-venus "
                   data-icon="venus"
                   data-prefix="fas"
                   focusable="false"
                   role="img"
-                  style={{}}
                   viewBox="0 0 384 512"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
                     fill="currentColor"
-                    style={{}}
                   />
                 </svg>
               </td>
               <td>
                 <svg
                   aria-hidden="true"
-                  className="svg-inline--fa fa-mars "
+                  class="svg-inline--fa fa-mars "
                   data-icon="mars"
                   data-prefix="fas"
                   focusable="false"
                   role="img"
-                  style={{}}
                   viewBox="0 0 448 512"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                     fill="currentColor"
-                    style={{}}
                   />
                 </svg>
               </td>
@@ -1598,26 +1596,22 @@ exports[`Metabolism landing page renders correctly 1`] = `
                 Fasting Glucose (T0)
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 94
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 96
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 96
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 96
               </td>
@@ -1627,26 +1621,22 @@ exports[`Metabolism landing page renders correctly 1`] = `
                 Glucose Response (AUC)
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 96
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 96
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 96
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 96
               </td>
@@ -1656,26 +1646,22 @@ exports[`Metabolism landing page renders correctly 1`] = `
                 Triglycerides (TG)
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 72
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 72
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 72
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 72
               </td>
@@ -1685,26 +1671,22 @@ exports[`Metabolism landing page renders correctly 1`] = `
                 Body Mass (BM)
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 86
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 86
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 86
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 86
               </td>
@@ -1714,26 +1696,22 @@ exports[`Metabolism landing page renders correctly 1`] = `
                 Metabolic Rate (RM)
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 18
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 48
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 18
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 48
               </td>
@@ -1743,26 +1721,22 @@ exports[`Metabolism landing page renders correctly 1`] = `
                 Oxygen Consumption Rate (V02)
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 18
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 48
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 18
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 48
               </td>
@@ -1772,26 +1746,22 @@ exports[`Metabolism landing page renders correctly 1`] = `
                 Respiratory Exchange Ratio (RER)
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 17
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 47
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 17
               </td>
               <td
-                className="dataCell"
-                onClick={[Function]}
+                class="dataCell"
               >
                 47
               </td>
@@ -1800,29 +1770,23 @@ exports[`Metabolism landing page renders correctly 1`] = `
         </table>
       </div>
       <div
-        style={
-          {
-            "margin": "0 auto",
-            "minWidth": "80%",
-            "textAlign": "center",
-          }
-        }
+        style="min-width: 80%; text-align: center; margin: 0px auto;"
       />
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         Strong metabolic phenotype genes form regulatory networks
       </h2>
       <div
-        className="container"
+        class="container"
       >
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col"
+            class="col"
           >
             <img
               alt="Illustration of the action of MORE cassettes in regulatory networks"
@@ -1831,7 +1795,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
             />
           </div>
           <div
-            className="col"
+            class="col"
           >
             <ul>
               <li>
@@ -1852,7 +1816,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         Methods
@@ -1914,31 +1878,27 @@ exports[`Metabolism landing page renders correctly 1`] = `
       </ul>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h2>
         Phenotypes distribution
       </h2>
       <div
-        style={
-          {
-            "height": "300px",
-            "position": "relative",
-          }
-        }
+        style="position: relative; height: 300px;"
       >
         <canvas
-          height={150}
+          height="0"
           role="img"
-          width={300}
+          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+          width="0"
         />
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -1947,6 +1907,6 @@ exports[`Metabolism landing page renders correctly 1`] = `
         </h1>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

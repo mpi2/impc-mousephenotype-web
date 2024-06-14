@@ -17,7 +17,7 @@ type SummaryStatistics = {
   maleMutantSd:       number;
 };
 type StatisticalMethod = {
-  method: string;
+  name: string;
   attributes: {
     femaleEffectSize:                number | null;
     femaleKoEffectPValue:            number;
@@ -46,17 +46,28 @@ type StatisticalMethod = {
     varianceSignificant:             boolean;
   }
 }
-
+type SoftWindowing = {
+  bandwidth: number | null;
+  doeNote: string | null;
+  minObsRequired: number | null;
+  numberOfDoe: number | null;
+  peaks: Array<number> | null;
+  shape: number | null;
+  threshold: number | null;
+  totalObsOrWeight: number | null;
+};
 export type Dataset = {
   id:                     string;
   alleleAccessionId:      string;
   alleleName:             string;
   alleleSymbol:           string;
+  classificationTag:      string | null;
   colonyId:               string;
   dataType:               string;
   geneSymbol:             string;
   geneticBackground:      string;
   intermediatePhenotypes: Array<{ name: string, id: string }>;
+  potentialPhenotypes: Array<{ name: string, id: string }>;
   lifeStageAcc:           string;
   lifeStageName:          string;
   metadataGroup:          string;
@@ -84,12 +95,14 @@ export type Dataset = {
   zygosity:               "homozygote" | "heterozygote" | "hemizygote";
   significant:            boolean;
   significantPhenotype:   { name: string, id: string };
+  unit:                   { x: string | null; y: string | null };
   datasetId:              string;
   status:                 string;
   strainAccessionId:      string;
   strainName:             string;
   summaryStatistics:      SummaryStatistics;
   statisticalMethod:      StatisticalMethod;
+  softWindowing:          SoftWindowing;
   topLevelPhenotypes:     Array<{ name: string, id: string }>;
   key?: string;
 }

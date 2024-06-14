@@ -5,7 +5,7 @@ import data from '../../mocks/data/landing-pages/cardiovascular.json';
 import PieChart from "@/components/PieChart";
 import SortableTable from "@/components/SortableTable";
 import styles from './styles.module.scss';
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { PublicationListProps } from "@/components/PublicationsList";
 import ScatterChart from "@/components/ScatterChart";
 import ChordDiagram from "@/components/ChordDiagram";
@@ -20,10 +20,10 @@ const PublicationsList = dynamic<PublicationListProps>(
 
 const ProcedureWithVersions = ({ procedure }) => {
   return (
-    <li key={procedure.name}>
+    <li>
       { procedure.name }&nbsp;
-      { procedure.versions.map(version => (
-        <>
+      { procedure.versions.map((version, index) => (
+        <Fragment key={index}>
           <a
             key={version.impressId}
             className="link primary"
@@ -31,7 +31,7 @@ const ProcedureWithVersions = ({ procedure }) => {
           >
             {version.name}
           </a>,&nbsp;
-        </>
+        </Fragment>
       )) }
     </li>
   )
@@ -159,16 +159,16 @@ const CardiovascularLandingPage = () => {
               <div>
                 <h6>Young adult</h6>
                 <ul>
-                  {data && data.procedures.youngAdult.map(procedure => (
-                    <ProcedureWithVersions procedure={procedure} />
+                  {data && data.procedures.youngAdult.map((procedure, index) => (
+                    <ProcedureWithVersions key={index} procedure={procedure} />
                   ))}
                 </ul>
               </div>
               <div>
                 <h6>Embryo</h6>
                 <ul>
-                  {data && data.procedures.embryo.map(procedure => (
-                    <ProcedureWithVersions procedure={procedure} />
+                  {data && data.procedures.embryo.map((procedure, index) => (
+                    <ProcedureWithVersions key={index} procedure={procedure} />
                   ))}
                 </ul>
               </div>
