@@ -4,13 +4,18 @@ import {
   AlleleCell,
   OptionsCell,
   PlainTextCell,
-  SignificantPValueCell,
   SmartTable,
 } from "@/components/SmartTable";
 import { GeneStatisticalResult } from "@/models/gene";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
-import { ParameterCell, PhenotypeIconsCell, SupportingDataCell } from './custom-cells';
+import {
+  MutantCountCell,
+  ParameterCell,
+  PhenotypeIconsCell,
+  SignificantPValueCell,
+  SupportingDataCell
+} from './custom-cells';
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
@@ -234,7 +239,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
             width: 0.7,
             label: "Mutants",
             field: "mutantCount",
-            cmp: <PlainTextCell />,
+            cmp: <MutantCountCell />,
           },
           {
             width: 0.5,
@@ -244,6 +249,9 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
           },
           { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
         ]}
+        highlightRowFunction={(item) =>
+          item.maleMutantCount < item.procedureMinMales && item.femaleMutantCount < item.procedureMinFemales
+        }
       />
     </>
   );
