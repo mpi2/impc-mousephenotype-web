@@ -141,7 +141,7 @@ const PPI = (props: PPIProps) => {
 
   return (
     <>
-      <ChartSummary datasetSummary={activeDataset} showParameterName={false} />
+      <ChartSummary datasetSummary={activeDataset} />
       <Card>
         <h2>Statistical information</h2>
         <Row>
@@ -184,7 +184,7 @@ const PPI = (props: PPIProps) => {
                   checked={viewScatterPoints}
                 />
               </div>
-              <div style={{position: "relative", height: "400px"}}>
+              <div id="chart" style={{position: "relative", height: "400px"}}>
                 <Chart
                   type="violin"
                   data={chartData}
