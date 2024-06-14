@@ -4,13 +4,18 @@ import {
   AlleleCell,
   OptionsCell,
   PlainTextCell,
-  SignificantPValueCell,
   SmartTable,
 } from "@/components/SmartTable";
 import { GeneStatisticalResult } from "@/models/gene";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
-import { MutantCountCell, ParameterCell, PhenotypeIconsCell, SupportingDataCell } from './custom-cells';
+import {
+  MutantCountCell,
+  ParameterCell,
+  PhenotypeIconsCell,
+  SignificantPValueCell,
+  SupportingDataCell
+} from './custom-cells';
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 
 const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
