@@ -13,38 +13,12 @@ import { PhenotypeSearchResponse, PhenotypeSearchItem } from "@/models/phenotype
 import { BodySystem } from "@/components/BodySystemIcon";
 import { ReactNode, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
+import { allBodySystems } from "@/utils";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
   query: string;
 }
-
-const systems = [
-  "mortality/aging",
-  "embryo phenotype",
-  "reproductive system phenotype",
-  "growth/size/body region phenotype",
-  "homeostasis/metabolism phenotype",
-  "behavior/neurological phenotype",
-  "cardiovascular system phenotype",
-  "respiratory system phenotype",
-  "digestive/alimentary phenotype",
-  "renal/urinary system phenotype",
-  "limbs/digits/tail phenotype",
-  "skeleton phenotype",
-  "immune system phenotype",
-  "muscle phenotype",
-  "integument phenotype",
-  "craniofacial phenotype",
-  "hearing/vestibular/ear phenotype",
-  "adipose tissue phenotype",
-  "endocrine/exocrine gland phenotype",
-  "vision/eye phenotype",
-  "hematopoietic system phenotype",
-  "liver/biliary system phenotype",
-  "nervous system phenotype",
-  "pigmentation phenotype",
-].sort((a, b) => a.localeCompare(b));
 
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
   <Badge className={`badge ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
@@ -211,7 +185,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                 }}
               >
                 <option value={"all"}>All</option>
-                {systems.map(system => (
+                {allBodySystems.map(system => (
                   <option value={system} key={`system_${system}`}>
                     {system}
                   </option>

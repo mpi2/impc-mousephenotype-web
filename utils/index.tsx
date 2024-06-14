@@ -1,4 +1,3 @@
-import React from "react";
 import _ from "lodash";
 import {
   faMars,
@@ -8,6 +7,33 @@ import {
 import { Dataset } from "@/models";
 import moment from "moment";
 
+
+export const allBodySystems = [
+  'adipose tissue phenotype',
+  'behavior/neurological phenotype',
+  'cardiovascular system phenotype',
+  'craniofacial phenotype',
+  'digestive/alimentary phenotype',
+  'embryo phenotype',
+  'endocrine/exocrine gland phenotype',
+  'growth/size/body region phenotype',
+  'hearing/vestibular/ear phenotype',
+  'hematopoietic system phenotype',
+  'homeostasis/metabolism phenotype',
+  'immune system phenotype',
+  'integument phenotype',
+  'limbs/digits/tail phenotype',
+  'liver/biliary system phenotype',
+  'mortality/aging',
+  'muscle phenotype',
+  'nervous system phenotype',
+  'pigmentation phenotype',
+  'renal/urinary system phenotype',
+  'reproductive system phenotype',
+  'respiratory system phenotype',
+  'skeleton phenotype',
+  'vision/eye phenotype'
+];
 export const formatBodySystems = (systems: string[] | string = []) => {
   return _.capitalize(
     (typeof systems === "string" ? systems : systems.join(", "))

@@ -6,11 +6,11 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import { useGeneComparator } from "@/components/GeneComparator";
 import Search from "../../components/Search";
-import { allBodySystems } from "@/components/Gene/Summary";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { allBodySystems } from "@/utils";
 
 const GeneColumn = ({
   geneId,
