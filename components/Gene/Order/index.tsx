@@ -1,7 +1,7 @@
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
 import Card from "../../Card";
@@ -149,12 +149,12 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Arra
                           .filter((x) => !(x === "intermediate_vector" || x === "crispr"))
                           .map((product: string) => product.replace(/_/g, " "))
                           .map((product: string, index: number) => (
-                            <>
+                            <Fragment key={`${product}-${index}`}>
                               <Link key={index} href={getProductURL(allele[1], product)} className="primary link">
                                 {product}
                               </Link>
                               <br/>
-                            </>
+                            </Fragment>
                           )) || "None"}
                       </td>
                     </tr>

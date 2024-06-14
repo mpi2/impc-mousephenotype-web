@@ -1,161 +1,142 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Image comparator page renders correctly 1`] = `
-[
+<div>
   <div
-    className="banner"
+    class="banner"
   >
     <div
-      className="pb-4 pt-5 container container"
+      class="pb-4 pt-5 container container"
     >
       <div
-        className="col-12 col-md-8 ps-4 pe-4"
+        class="col-12 col-md-8 ps-4 pe-4"
       >
         <div
-          className="tabs"
+          class="tabs"
         >
           <a
-            className="tab"
+            class="tab__active"
             href="/search"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Genes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="/search?type=phenotype"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Phenotypes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="https://dev.mousephenotype.org/?s="
           >
             Help, news, blog
           </a>
         </div>
         <div
-          className="inputCont"
+          class="inputCont"
         >
           <input
-            className="input"
-            onChange={[Function]}
-            onKeyDown={[Function]}
+            class="input"
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
-            className="searchBtn"
-            onClick={[Function]}
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
           >
             <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-magnifying-glass "
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
-              style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="page container"
+    class="page container"
   >
     <div
-      className="card"
+      class="card"
     >
-      <a
-        className="primary mb-3"
-        href="/genes/undefined#images"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
-        onTouchStart={[Function]}
-        style={
-          {
-            "fontSize": "1.13rem",
-          }
-        }
+      <div
+        class="subheading"
       >
-        <svg
-          aria-hidden="true"
-          className="svg-inline--fa fa-arrow-left-long "
-          data-icon="arrow-left-long"
-          data-prefix="fas"
-          focusable="false"
-          role="img"
-          style={{}}
-          viewBox="0 0 512 512"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 73.4-73.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-128 128z"
-            fill="currentColor"
-            style={{}}
-          />
-        </svg>
-         Back to 
         <span
-          aria-busy={true}
-          aria-live="polite"
+          class="subheadingSection primary"
         >
-          <span
-            className="react-loading-skeleton"
-            style={
-              {
-                "display": "block",
-                "width": "300px",
-              }
-            }
+          <a
+            class="mb-3"
+            href="/genes/undefined#images"
+            style="text-transform: none; font-weight: normal; letter-spacing: normal; font-size: 1.15rem;"
           >
-            ‌
-          </span>
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to 
+            <i>
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 50px;"
+                >
+                  ‌
+                </span>
+              </span>
+            </i>
+          </a>
         </span>
-      </a>
+      </div>
       <p
-        className="subheading"
+        class="subheading mt-2"
       >
         Images
       </p>
       <h1
-        className="mb-4 mt-2"
-        style={
-          {
-            "display": "flex",
-            "gap": "1rem",
-          }
-        }
+        class="mb-4 mt-2"
+        style="display: flex; gap: 1rem;"
       >
         <strong>
           <span
-            aria-busy={true}
+            aria-busy="true"
             aria-live="polite"
           >
             <span
-              className="react-loading-skeleton"
-              style={
-                {
-                  "display": "block",
-                  "width": "300px",
-                }
-              }
+              class="react-loading-skeleton"
+              style="display: block; width: 300px;"
             >
               ‌
             </span>
@@ -164,17 +145,12 @@ exports[`Image comparator page renders correctly 1`] = `
          
         / 
         <span
-          aria-busy={true}
+          aria-busy="true"
           aria-live="polite"
         >
           <span
-            className="react-loading-skeleton"
-            style={
-              {
-                "display": "block",
-                "width": "300px",
-              }
-            }
+            class="react-loading-skeleton"
+            style="display: block; width: 300px;"
           >
             ‌
           </span>
@@ -182,20 +158,16 @@ exports[`Image comparator page renders correctly 1`] = `
       </h1>
       <div>
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col-sm-6"
+            class="col-sm-6"
           >
             <div
-              className="headerContainer"
+              class="headerContainer"
             >
               <h3
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 WT Images (
                 )
@@ -204,52 +176,37 @@ exports[`Image comparator page renders correctly 1`] = `
                 data-test-id="filterbox-Center"
               >
                 <label
-                  className="grey"
-                  htmlFor="controlCenterFilter"
-                  style={
-                    {
-                      "marginRight": "0.5rem",
-                    }
-                  }
+                  class="grey"
+                  for="controlCenterFilter"
+                  style="margin-right: 0.5rem;"
                 >
                   Center
                   :
                 </label>
                 <input
-                  aria-label="Filter control images by center"
-                  className="bg-white form-control"
+                  class="bg-white form-control"
                   id="controlCenterFilter"
-                  onChange={[Function]}
                   placeholder="Search"
-                  style={
-                    {
-                      "display": "inline-block",
-                      "width": 100,
-                    }
-                  }
+                  style="display: inline-block; width: 100px;"
                   type="text"
+                  value=""
                 />
               </div>
             </div>
             <div
-              className="col-12"
+              class="col-12"
             >
               <div
-                className="ratio ratio-16x9 imageContainer"
+                class="ratio ratio-16x9 imageContainer"
               >
                 <span
-                  aria-busy={true}
+                  aria-busy="true"
                   aria-live="polite"
-                  className="flex-1"
+                  class="flex-1"
                 >
                   <span
-                    className="react-loading-skeleton"
-                    style={
-                      {
-                        "flex": 1,
-                        "height": "100%",
-                      }
-                    }
+                    class="react-loading-skeleton"
+                    style="flex: 1; height: 100%;"
                   >
                     ‌
                   </span>
@@ -257,22 +214,18 @@ exports[`Image comparator page renders correctly 1`] = `
                 </span>
               </div>
               <div
-                className="imageInfo"
+                class="imageInfo"
               />
             </div>
           </div>
           <div
-            className="col-sm-6"
+            class="col-sm-6"
           >
             <div
-              className="headerContainer"
+              class="headerContainer"
             >
               <h3
-                style={
-                  {
-                    "marginBottom": 0,
-                  }
-                }
+                style="margin-bottom: 0px;"
               >
                 Mutant Images (
                 )
@@ -281,52 +234,37 @@ exports[`Image comparator page renders correctly 1`] = `
                 data-test-id="filterbox-Center"
               >
                 <label
-                  className="grey"
-                  htmlFor="mutantCenterFilter"
-                  style={
-                    {
-                      "marginRight": "0.5rem",
-                    }
-                  }
+                  class="grey"
+                  for="mutantCenterFilter"
+                  style="margin-right: 0.5rem;"
                 >
                   Center
                   :
                 </label>
                 <input
-                  aria-label="Filter mutant images by center"
-                  className="bg-white form-control"
+                  class="bg-white form-control"
                   id="mutantCenterFilter"
-                  onChange={[Function]}
                   placeholder="Search"
-                  style={
-                    {
-                      "display": "inline-block",
-                      "width": 100,
-                    }
-                  }
+                  style="display: inline-block; width: 100px;"
                   type="text"
+                  value=""
                 />
               </div>
             </div>
             <div
-              className="col-12"
+              class="col-12"
             >
               <div
-                className="ratio ratio-16x9 imageContainer"
+                class="ratio ratio-16x9 imageContainer"
               >
                 <span
-                  aria-busy={true}
+                  aria-busy="true"
                   aria-live="polite"
-                  className="flex-1"
+                  class="flex-1"
                 >
                   <span
-                    className="react-loading-skeleton"
-                    style={
-                      {
-                        "flex": 1,
-                        "height": "100%",
-                      }
-                    }
+                    class="react-loading-skeleton"
+                    style="flex: 1; height: 100%;"
                   >
                     ‌
                   </span>
@@ -334,138 +272,118 @@ exports[`Image comparator page renders correctly 1`] = `
                 </span>
               </div>
               <div
-                className="imageInfo"
+                class="imageInfo"
               />
             </div>
           </div>
         </div>
         <div
-          className="mt-3 mb-3 row"
+          class="mt-3 mb-3 row"
         >
           <div
-            className="col-12"
+            class="col-12"
           >
             <div
-              className="legendsContainer"
+              class="legendsContainer"
             >
               <span>
                 Zygosity indicators
               </span>
               <span
-                className="legendWrapper"
+                class="legendWrapper"
               >
                 <div
-                  className="legendBackground"
+                  class="legendBackground"
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-circle "
+                    class="svg-inline--fa fa-circle "
                     data-icon="circle"
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={
-                      {
-                        "color": "#FFF",
-                      }
-                    }
+                    style="color: rgb(255, 255, 255);"
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
                       fill="currentColor"
-                      style={{}}
                     />
                   </svg>
                 </div>
                 Wildtype
               </span>
               <span
-                className="legendWrapper"
+                class="legendWrapper"
               >
                 <div
-                  className="legendBackground"
+                  class="legendBackground"
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-circle "
+                    class="svg-inline--fa fa-circle "
                     data-icon="circle"
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={
-                      {
-                        "color": "#88CCEE",
-                      }
-                    }
+                    style="color: rgb(136, 204, 238);"
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
                       fill="currentColor"
-                      style={{}}
                     />
                   </svg>
                 </div>
                 Heterozygote
               </span>
               <span
-                className="legendWrapper"
+                class="legendWrapper"
               >
                 <div
-                  className="legendBackground"
+                  class="legendBackground"
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-circle "
+                    class="svg-inline--fa fa-circle "
                     data-icon="circle"
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={
-                      {
-                        "color": "#DDCC77",
-                      }
-                    }
+                    style="color: rgb(221, 204, 119);"
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
                       fill="currentColor"
-                      style={{}}
                     />
                   </svg>
                 </div>
                 Homozygote
               </span>
               <span
-                className="legendWrapper"
+                class="legendWrapper"
               >
                 <div
-                  className="legendBackground"
+                  class="legendBackground"
                 >
                   <svg
                     aria-hidden="true"
-                    className="svg-inline--fa fa-circle "
+                    class="svg-inline--fa fa-circle "
                     data-icon="circle"
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style={
-                      {
-                        "color": "#CC6677",
-                      }
-                    }
+                    style="color: rgb(204, 102, 119);"
                     viewBox="0 0 512 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
                       fill="currentColor"
-                      style={{}}
                     />
                   </svg>
                 </div>
@@ -474,128 +392,115 @@ exports[`Image comparator page renders correctly 1`] = `
             </div>
           </div>
           <div
-            className="col-12"
+            class="col-12"
           >
             <div
-              className="filtersWrapper"
+              class="filtersWrapper"
             >
               <div
-                className="column"
+                class="column"
               >
                 Filter by:
                 <div
-                  className="filter"
+                  class="filter"
                 >
                   <strong>
                     Sex:
                   </strong>
                   <span
-                    className="badge active badge rounded-pill bg-badge-secondary"
-                    onClick={[Function]}
+                    class="badge active badge rounded-pill bg-badge-secondary"
                   >
                     All
                      
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-mars-and-venus "
+                      class="svg-inline--fa fa-mars-and-venus "
                       data-icon="mars-and-venus"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 512 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                   <span
-                    className="badge badge rounded-pill bg-badge-secondary"
-                    onClick={[Function]}
+                    class="badge badge rounded-pill bg-badge-secondary"
                   >
                     Female
                      
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-venus "
+                      class="svg-inline--fa fa-venus "
                       data-icon="venus"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 384 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                   <span
-                    className="badge badge rounded-pill bg-badge-secondary"
-                    onClick={[Function]}
+                    class="badge badge rounded-pill bg-badge-secondary"
                   >
                     Male
                      
                     <svg
                       aria-hidden="true"
-                      className="svg-inline--fa fa-mars "
+                      class="svg-inline--fa fa-mars "
                       data-icon="mars"
                       data-prefix="fas"
                       focusable="false"
                       role="img"
-                      style={{}}
                       viewBox="0 0 448 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
                         d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                         fill="currentColor"
-                        style={{}}
                       />
                     </svg>
                   </span>
                 </div>
               </div>
               <div
-                className="column mutantFilter"
+                class="column mutantFilter"
               >
                 <div
-                  className="filter"
+                  class="filter"
                 >
                   <strong>
                     Mutant zygosity:
                   </strong>
                   <span
-                    className="badge active badge rounded-pill bg-badge-secondary"
-                    onClick={[Function]}
+                    class="badge active badge rounded-pill bg-badge-secondary"
                   >
                     All
                      
                   </span>
                   <span
-                    className="badge badge rounded-pill bg-badge-secondary"
-                    onClick={[Function]}
+                    class="badge badge rounded-pill bg-badge-secondary"
                   >
                     Heterozygote
                      
                   </span>
                   <span
-                    className="badge badge rounded-pill bg-badge-secondary"
-                    onClick={[Function]}
+                    class="badge badge rounded-pill bg-badge-secondary"
                   >
                     Homozygote
                      
                   </span>
                   <span
-                    className="badge badge rounded-pill bg-badge-secondary"
-                    onClick={[Function]}
+                    class="badge badge rounded-pill bg-badge-secondary"
                   >
                     Hemizygote
                      
@@ -606,25 +511,25 @@ exports[`Image comparator page renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col-sm-6"
+            class="col-sm-6"
           >
             <div
-              className="images row"
+              class="images row"
             />
           </div>
           <div
-            className="col-sm-6"
+            class="col-sm-6"
           >
             <div
-              className="images row"
+              class="images row"
             />
           </div>
         </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

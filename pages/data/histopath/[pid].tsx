@@ -186,8 +186,9 @@ const HistopathChartPage = () => {
                       <Accordion.Header>{tissue}</Accordion.Header>
                       <Accordion.Body>
                       <Row>
-                        {data.images[tissue].map(image => (
+                        {data.images[tissue].map((image, index) => (
                           <Col
+                            key={index}
                             style={{
                               textAlign: 'center',
                               display: 'flex',

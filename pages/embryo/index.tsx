@@ -136,8 +136,8 @@ const EmbryoLandingPage = () => {
                       { width: 1, label: "Lines", field: "value", disabled: true },
                     ]}
                 >
-                  {data && data.primaryViability.map(row => (
-                    <tr>
+                  {data && data.primaryViability.map((row, index) => (
+                    <tr key={index}>
                       <td>{ row.label }</td>
                       <td>{ row.value }</td>
                     </tr>

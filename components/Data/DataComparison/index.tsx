@@ -218,8 +218,9 @@ const DataComparison = (props: Props) => {
                           <>
                             {["male", "female", "not_considered"]
                               .filter((sex) => d.sex === sex)
-                              .map((significantSex) => (
+                              .map((significantSex, index) => (
                                 <OverlayTrigger
+                                  key={index}
                                   placement="top"
                                   trigger={["hover", "focus"]}
                                   overlay={

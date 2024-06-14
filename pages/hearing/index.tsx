@@ -237,17 +237,16 @@ const HearingLandingPage = () => {
           <h2>Procedures that can lead to relevant phenotype associations</h2>
           <span>Young Adult:</span>
           <ul>
-            {data.proceduresYoungAdult.map(prod => (
-              <li>
+            {data.proceduresYoungAdult.map((prod, index) => (
+              <li key={index}>
                 {prod.title}:&nbsp;
-                {prod.items.map(item => (
-                  <>
-                    <a
-                      className="primary link"
-                      href={`//www.mousephenotype.org/impress/protocol/${item.procedureId}`}>
-                      {item.name},&nbsp;
-                    </a>
-                  </>
+                {prod.items.map((item, indexItems) => (
+                  <a
+                    key={indexItems}
+                    className="primary link"
+                    href={`//www.mousephenotype.org/impress/protocol/${item.procedureId}`}>
+                    {item.name},&nbsp;
+                  </a>
                 ))}
               </li>
             ))}
