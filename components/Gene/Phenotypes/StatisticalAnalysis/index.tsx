@@ -9,7 +9,7 @@ import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
-import { formatBodySystems } from "@/utils";
+import { allBodySystems, formatBodySystems } from "@/utils";
 import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { ZoomButtons } from "@/components";
