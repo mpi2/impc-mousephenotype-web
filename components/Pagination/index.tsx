@@ -208,35 +208,35 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
       </div>
       {children(currentPage)}
       <div className={`${styles.buttonsWrapper} ${!!AdditionalBottomControls ? styles.withControls : ''}`}>
-        { !!AdditionalBottomControls && (
+        {!!AdditionalBottomControls && (
           <div className={`${styles.additionalWrapper} ${styles.bottomControls}`}>
             { AdditionalBottomControls }
           </div>
         )}
-        <div className={styles.bottomPaginationControls}>
-          {shouldDisplayPageChangeControls && (
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              Rows per page:&nbsp;
-              <select
-                aria-label="rows per page selector"
-                onChange={(e) => {
-                  const value = Number(e.target.value);
-                  const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
-                  updatePage(newPage);
-                  updatePageSize(value);
-                }}
-                value={pageSize}
-              >
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-            </div>
-          )}
-          <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
-        </div>
+        {shouldDisplayPageChangeControls && (
+          <div className={styles.bottomPaginationControls}>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+                Rows per page:&nbsp;
+                <select
+                  aria-label="rows per page selector"
+                  onChange={(e) => {
+                    const value = Number(e.target.value);
+                    const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
+                    updatePage(newPage);
+                    updatePageSize(value);
+                  }}
+                  value={pageSize}
+                >
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+          </div>
+        )}
+        <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
       </div>
     </>
   );
