@@ -164,7 +164,7 @@ const DataComparison = (props: Props) => {
   return (
     <>
       {displayPValueThreshold && (
-        <div className="mt-4" style={{ color: "#797676", fontSize: "95%" }}>
+        <div style={{ color: "#797676", fontSize: "95%" }}>
           <span>
             P-values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) are
             marked as significant.
@@ -218,8 +218,9 @@ const DataComparison = (props: Props) => {
                           <>
                             {["male", "female", "not_considered"]
                               .filter((sex) => d.sex === sex)
-                              .map((significantSex) => (
+                              .map((significantSex, index) => (
                                 <OverlayTrigger
+                                  key={index}
                                   placement="top"
                                   trigger={["hover", "focus"]}
                                   overlay={

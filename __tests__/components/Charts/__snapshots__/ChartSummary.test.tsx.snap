@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chart summary component renders correctly 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <div>
+      <div
+        class="mb-4"
+        style="display: flex; align-items: center; gap: 2rem;"
+      >
+        <h1
+          style="margin: 0px;"
+        >
+          <strong>
+            <i>
+              Otog
+            </i>
+             data charts
+          </strong>
+        </h1>
+        <span
+          style="color: rgb(121, 118, 118); text-transform: uppercase; font-weight: 500; line-height: 1.2;"
+        >
+          Vibrissae - appearance
+        </span>
+      </div>
+      <span
+        class="mb-4"
+        style="display: inline-block; font-size: 1.2rem;"
+      >
+        Combination tested with the lowest p-value of
+         
+        <strong>
+          1.07
+          x10
+          <sup>
+            -5
+          </sup>
+        </strong>
+      </span>
+    </div>
+    <div
+      class="details"
+    >
+      <div
+        class="label"
+      >
+        Experiments performed
+      </div>
+      <div
+        class="content"
+      >
+        <p>
+          A 
+          <strong>
+            Combined SHIRPA and Dysmorphology
+          </strong>
+           phenotypic assay was performed on 
+          3776
+           mice. The charts show the results of measuring
+           
+          <strong>
+            Vibrissae - appearance
+          </strong>
+           in
+           
+          5
+           
+          female, 
+          3
+           
+          male mutants compared to
+           
+          1884
+           
+          female,
+           
+          1884
+           male controls. The mutants are for the 
+          <i>
+            Otog
+            <sup>
+              em1(IMPC)J
+            </sup>
+          </i>
+           allele.
+        </p>
+      </div>
+      <div
+        class="label"
+      >
+        Associated phenotype
+      </div>
+      <div
+        class="content"
+      >
+        <a
+          href="/phenotypes/MP:0002098"
+        >
+          <span
+            class="link primary"
+          >
+            abnormal vibrissa morphology
+          </span>
+        </a>
+      </div>
+      <div
+        class="label"
+      >
+        Zygosity
+      </div>
+      <div
+        class="content"
+      >
+        <span>
+          homozygote
+        </span>
+      </div>
+      <div
+        class="label"
+      >
+        Testing protocol
+      </div>
+      <div
+        class="content"
+      >
+        <a
+          class="link primary"
+          href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=82&pipeID=12"
+        >
+          Combined SHIRPA and Dysmorphology
+        </a>
+      </div>
+      <div
+        class="label"
+      >
+        Measured value
+      </div>
+      <div
+        class="content"
+      >
+        Vibrissae - appearance
+      </div>
+      <div
+        class="label"
+      >
+        Testing environment
+      </div>
+      <div
+        class="content"
+      >
+        <span
+          class="primary link"
+        >
+          Lab conditions and equipment
+        </span>
+      </div>
+      <div
+        class="label"
+      >
+        Life stage
+      </div>
+      <div
+        class="content"
+      >
+        <span>
+          Early adult
+        </span>
+      </div>
+      <div
+        class="label"
+      >
+        Background Strain
+      </div>
+      <div
+        class="content"
+      >
+        <span>
+          involves: C57BL/6NJ
+        </span>
+      </div>
+      <div
+        class="label"
+      >
+        Phenotyping center
+      </div>
+      <div
+        class="content"
+      >
+        <span>
+          JAX
+        </span>
+      </div>
+      <div
+        class="label"
+      />
+      <div
+        class="content"
+      >
+        <p
+          class="small"
+        >
+          * The high throughput nature of the IMPC means that large control sample sizes may accumulate over a long period of time. See the animal welfare guidelines for more information.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
