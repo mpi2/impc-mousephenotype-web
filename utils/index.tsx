@@ -134,14 +134,12 @@ export const getIcon = (sex: string) => {
 
 export const getSmallestPValue = (summaries: Array<Dataset>): number => {
   const pValues = summaries
-    .map((d) => {
-      const statMethodPValueKey =
-        d.sex === "female" ? "femaleKoEffectPValue" : "maleKoEffectPValue";
-      const pValueFromStatMethod =
-        d.statisticalMethod?.attributes?.[statMethodPValueKey];
-      return d.reportedPValue < pValueFromStatMethod
-        ? d.reportedPValue
-        : pValueFromStatMethod;
+    .flatMap((d) => {
+      return [
+        d.statisticalMethod?.attributes?.femaleKoEffectPValue,
+        d.statisticalMethod?.attributes?.maleKoEffectPValue,
+        d.reportedPValue,
+      ]
     })
     .filter((value) => !!value);
   return Math.min(...pValues, 1);
