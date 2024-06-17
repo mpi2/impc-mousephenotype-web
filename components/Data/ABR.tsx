@@ -53,10 +53,11 @@ const parameterList = [
 type ABRProps = {
   datasetSummaries: Array<Dataset>;
   onNewSummariesFetched: (missingSummaries: Array<any>) => void;
+  activeDataset: Dataset;
 };
 
 const ABR = (props: ABRProps) => {
-  const { datasetSummaries, onNewSummariesFetched } = props;
+  const { datasetSummaries, onNewSummariesFetched, activeDataset } = props;
 
   const datasets = useRelatedParametersQuery(
     datasetSummaries,
@@ -218,7 +219,7 @@ const ABR = (props: ABRProps) => {
 
   return (
     <>
-      <ChartSummary datasetSummary={datasetSummaries[0]} />
+      <ChartSummary datasetSummary={activeDataset} />
       <Card>
         <div style={{ textAlign: "center" }}>
           <h2 style={{ marginBottom: "0.5rem" }}>

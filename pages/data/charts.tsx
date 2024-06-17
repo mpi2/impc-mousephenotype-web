@@ -218,6 +218,7 @@ const Charts = () => {
             <ABR
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
+              activeDataset={activeDataset}
             />
           ) : !!isIPGTTChart ? (
             <IPGTT
