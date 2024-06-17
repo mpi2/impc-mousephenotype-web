@@ -61,7 +61,7 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
   const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
   const systems = _.sortBy(
     _.uniq(
-      data.flatMap((p) => p.topLevelPhenotypes?.map((p) => p.name))
+      data?.flatMap((p) => p.topLevelPhenotypes?.map((p) => p.name))
     ).filter(Boolean)
   );
   const lifestages = _.sortBy(_.uniq(_.map(data, "lifeStageName")));
