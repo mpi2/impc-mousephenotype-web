@@ -65,7 +65,7 @@ const PPI = (props: PPIProps) => {
   const { datasetSummaries, activeDataset, onNewSummariesFetched } = props;
   const [viewScatterPoints, setViewScatterPoints] = useState(false);
 
-  const datasets = useRelatedParametersQuery(
+  const {datasets, datasetsAreLoading } = useRelatedParametersQuery(
     datasetSummaries,
     parameterList,
     onNewSummariesFetched
@@ -74,8 +74,8 @@ const PPI = (props: PPIProps) => {
   const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery('PPI', datasets);
 
   useEffect(() => {
-    chartLoadingIndicatorChannel.emit('toggleIndicator', !hasLoadedAllData);
-  }, [hasLoadedAllData]);
+    chartLoadingIndicatorChannel.emit('toggleIndicator', (!hasLoadedAllData || datasetsAreLoading));
+  }, [hasLoadedAllData, datasetsAreLoading]);
 
   const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
     const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);

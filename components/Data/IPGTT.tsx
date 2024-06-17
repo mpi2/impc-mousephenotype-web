@@ -20,7 +20,7 @@ const IPGTT = (props: IPGTTProps) => {
   const { datasetSummaries, onNewSummariesFetched } = props;
   const [key, setKey] = useState(datasetSummaries[0].parameterName);
 
-  const datasets = useRelatedParametersQuery(
+  const {datasets, datasetsAreLoading} = useRelatedParametersQuery(
     datasetSummaries,
     parameterList,
     onNewSummariesFetched

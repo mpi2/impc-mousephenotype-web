@@ -1,7 +1,5 @@
 import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
-import { useEffect, useState } from "react";
-import { fetchAPI, fetchDatasetFromS3 } from "@/api-service";
-import _ from "lodash";
+import { useEffect } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import {
   Chart as ChartJS,
@@ -19,13 +17,12 @@ import {
 import { Chart } from "react-chartjs-2";
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { useQueries } from "@tanstack/react-query";
 import { getDownloadData } from "@/utils";
 import DownloadData from "../DownloadData";
 import { Dataset } from "@/models";
 import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
+import { useMultipleS3DatasetsQuery } from "@/hooks";
+import { chartLoadingIndicatorChannel } from "@/eventChannels";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -59,7 +56,7 @@ type ABRProps = {
 const ABR = (props: ABRProps) => {
   const { datasetSummaries, onNewSummariesFetched, activeDataset } = props;
 
-  const datasets = useRelatedParametersQuery(
+  const {datasets, datasetsAreLoading} = useRelatedParametersQuery(
     datasetSummaries,
     parameterList,
     onNewSummariesFetched
@@ -67,12 +64,11 @@ const ABR = (props: ABRProps) => {
 
   const zygosity = datasetSummaries?.[0]?.zygosity;
 
-  const results = useQueries({
-    queries: datasetSummaries.map((d) => ({
-      queryKey: [d.datasetId],
-      queryFn: () => fetchDatasetFromS3(d.datasetId),
-    })),
-  });
+  const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery('PPI', datasetSummaries);
+
+  useEffect(() => {
+    chartLoadingIndicatorChannel.emit('toggleIndicator', (!hasLoadedAllData || datasetsAreLoading));
+  }, [hasLoadedAllData, datasetsAreLoading]);
 
   const produceDownloadData = (type: "data" | "fields") => {
     const loadingData = results.map((d) => d.isLoading).every(Boolean);
