@@ -1,13 +1,23 @@
-import renderer from 'react-test-renderer';
+import { render, waitFor } from '@testing-library/react';
 import MetabolismLandingPage from "@/pages/metabolism";
 import { server } from "../../../mocks/server";
 import { rest } from "msw";
-import { API_URL } from "../../utils";
+import { API_URL, createTestQueryClient } from "../../utils";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }));
+
 describe('Metabolism landing page', () => {
-  it('renders correctly', () => {
+  it('renders correctly', async () => {
+    const client = createTestQueryClient();
     server.use(
       rest.get(`${API_URL}/api/v1/publications`, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json({
@@ -22,9 +32,11 @@ describe('Metabolism landing page', () => {
         }));
       })
     );
-    const tree = renderer.create(
-      <MetabolismLandingPage />
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(
+      <QueryClientProvider client={client}>
+        <MetabolismLandingPage />
+      </QueryClientProvider>
+    );
+    await waitFor(() => expect(container).toMatchSnapshot());
   });
 });

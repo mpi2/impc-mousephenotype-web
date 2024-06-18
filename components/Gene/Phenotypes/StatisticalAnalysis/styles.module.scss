@@ -61,13 +61,12 @@ $iconsSize: 15px;
     margin-right: 0.3rem;
   }
   .triangle {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 8.5px 15px 8.5px;
-    border-color: transparent transparent #CCC transparent;
-    margin-right: 0.3rem;
+    --b:5px;
+
+    width: 15px;
+    aspect-ratio: 1/cos(30deg);
+    clip-path: polygon(50% 0,100% 100%,0 100%,50% 0,50% var(--b), calc(var(--b)*cos(30deg)) calc(100% - var(--b)/2),calc(100% - var(--b)*cos(30deg)) calc(100% - var(--b)/2),50% var(--b));
+    background: #CCC;
   }
 }
 

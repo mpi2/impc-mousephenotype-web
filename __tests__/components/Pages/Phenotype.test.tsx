@@ -1,4 +1,4 @@
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import PhenotypePage from "@/pages/phenotypes/[id]";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { createTestQueryClient } from "../../utils";
@@ -10,11 +10,11 @@ describe('Phenotype page', () => {
   it('renders correctly', async () => {
     const client = createTestQueryClient();
     await mockRouter.push('/phenotypes/MP:0001324');
-    const tree = renderer.create(
+    const {container} = render(
       <QueryClientProvider client={client}>
         <PhenotypePage />
       </QueryClientProvider>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
 });

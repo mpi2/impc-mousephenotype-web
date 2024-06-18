@@ -1,7 +1,7 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import Card from "../../Card";
 import { BodySystem } from "../../BodySystemIcon";
@@ -11,34 +11,7 @@ import Head from "next/head";
 import { GeneSummary } from "@/models/gene";
 import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
-
-export const allBodySystems = [
-  "mortality/aging",
-  "embryo phenotype",
-  "reproductive system phenotype",
-  "growth/size/body region phenotype",
-  "homeostasis/metabolism phenotype",
-  "behavior/neurological phenotype",
-  "cardiovascular system phenotype",
-  "respiratory system phenotype",
-  "digestive/alimentary phenotype",
-  "renal/urinary system phenotype",
-  "limbs/digits/tail phenotype",
-  "skeleton phenotype",
-  "immune system phenotype",
-  "muscle phenotype",
-  "integument phenotype",
-  "craniofacial phenotype",
-  "hearing/vestibular/ear phenotype",
-  "adipose tissue phenotype",
-  "endocrine/exocrine gland phenotype",
-  "vision/eye phenotype",
-  "hematopoietic system phenotype",
-  "liver/biliary system phenotype",
-  "nervous system phenotype",
-  "pigmentation phenotype",
-];
-
+import { allBodySystems } from "@/utils";
 const CollectionItem = ({
   name,
   link,

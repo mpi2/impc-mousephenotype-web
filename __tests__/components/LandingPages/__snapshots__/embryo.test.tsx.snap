@@ -1,116 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Embryo landing page renders correctly 1`] = `
-[
+<div>
   <div
-    className="banner"
+    class="banner"
   >
     <div
-      className="pb-4 pt-5 container container"
+      class="pb-4 pt-5 container container"
     >
       <div
-        className="col-12 col-md-8 ps-4 pe-4"
+        class="col-12 col-md-8 ps-4 pe-4"
       >
         <div
-          className="tabs"
+          class="tabs"
         >
           <a
-            className="tab"
+            class="tab__active"
             href="/search"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Genes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="/search?type=phenotype"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Phenotypes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="https://dev.mousephenotype.org/?s="
           >
             Help, news, blog
           </a>
         </div>
         <div
-          className="inputCont"
+          class="inputCont"
         >
           <input
-            className="input"
-            onChange={[Function]}
-            onKeyDown={[Function]}
+            class="input"
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
-            className="searchBtn"
-            onClick={[Function]}
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
           >
             <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-magnifying-glass "
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
-              style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="page container"
-    style={
-      {
-        "lineHeight": 2,
-      }
-    }
+    class="page container"
+    style="line-height: 2;"
   >
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="subheading"
+        class="subheading"
       >
         <nav
           aria-label="breadcrumb"
         >
           <ol
-            className="breadcrumb"
+            class="breadcrumb"
           >
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Home
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               IMPC data collections
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Embryo Data
             </li>
@@ -118,40 +109,41 @@ exports[`Embryo landing page renders correctly 1`] = `
         </nav>
       </div>
       <h1
-        className="mb-4 mt-2"
+        class="mb-4 mt-2"
       >
         <strong>
           Introduction to IMPC Embryo Data
         </strong>
       </h1>
       <div
-        className="container"
+        class="container"
       >
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="text-center col-md-4 col-12"
+            class="text-center col-md-4 col-12"
           >
             <img
-              className="embryoImage img-fluid"
+              alt=""
+              class="embryoImage img-fluid"
               src="images/landing-pages/Tmem100_het.jpg"
             />
           </div>
           <div
-            className="col-md-8 col-12"
+            class="col-md-8 col-12"
           >
             <p>
               Up to one third of homozygous knockout lines are lethal, which means no homozygous mice or less than expected are observed past the weaning stage (IMPC 
               <a
-                className="link primary"
+                class="link primary"
                 href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
               >
                 Viability Primary Screen procedure
               </a>
               ). Early death may occur during embryonic development or soon after birth, during the pre-weaning stage. For this reason, the IMPC established a 
               <a
-                className="link primary"
+                class="link primary"
                 href="https://beta.mousephenotype.org/impress"
               >
                 systematic embryonic phenotyping pipeline
@@ -161,15 +153,15 @@ exports[`Embryo landing page renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="mt-4 row"
+          class="mt-4 row"
         >
           <div
-            className="col"
+            class="col"
           >
             <p>
               Read more in our paper on 
               <a
-                className="link primary"
+                class="link primary"
                 href="https://europepmc.org/article/PMC/5295821"
               >
                 High-throughput discovery of novel developmental phenotypes, Nature 2016.
@@ -180,10 +172,10 @@ exports[`Embryo landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -194,20 +186,21 @@ exports[`Embryo landing page renders correctly 1`] = `
           As determined in IMPReSS (see interactive diagram here), all embryonic lethal lines undergo gross morphology assessment at E12.5 (embryonic day 12.5) to determine whether defects occur earlier or later during embryonic development. A comprehensive imaging platform is then used to assess dysmorphology. Embryo gross morphology, as well as 2D and 3D imaging are actively being implemented by the IMPC for lethal lines.
         </p>
         <div
-          className="text-center"
+          class="text-center"
         >
           <img
-            className="img-fluid"
+            alt=""
+            class="img-fluid"
             src="images/landing-pages/IMPC-Embryo-Pipeline-Diagram.png"
           />
         </div>
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -217,14 +210,14 @@ exports[`Embryo landing page renders correctly 1`] = `
         <p>
           The IMPC assesses each gene knockout line for viability (Viability Primary Screen  
           <a
-            className="link primary"
+            class="link primary"
             href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
           >
             IMPC_VIA_001
           </a>
            and 
           <a
-            className="link primary"
+            class="link primary"
             href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1188&pipeID=7#Parameters"
           >
             IMPC_VIA_002
@@ -232,67 +225,59 @@ exports[`Embryo landing page renders correctly 1`] = `
           ). In this procedure, the proportion of homozygous pups is determined soon after birth, during the preweaning stage, in litters produced from mating heterozygous animals. A line is declared lethal if no homozygous pups for the null allele are detected at weaning age, and subviable if pups homozygous for the null allele constitute less than 12.5% of the litter.
         </p>
         <div
-          className="mb-3 row"
+          class="mb-3 row"
         >
           <div
-            className="col-md-7"
+            class="col-md-7"
           >
             <div
-              className="chartWrapper"
+              class="chartWrapper"
             >
               <canvas
-                height={150}
+                height="0"
                 role="img"
-                width={300}
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
               />
             </div>
           </div>
           <div
-            className="col-md-5"
+            class="col-md-5"
           >
             <div
-              className="tableWrapper"
+              class="tableWrapper"
             >
               <table
-                className="table striped table table-bordered"
+                class="table striped undefined table table-bordered"
               >
                 <thead>
                   <tr>
                     <th
-                      rowSpan={2}
+                      rowspan="2"
                       width="8.333333333333332%"
                     >
                       <button
-                        className="inlineButton headerButton"
-                        onClick={[Function]}
-                        style={
-                          {
-                            "fontWeight": "normal",
-                          }
-                        }
+                        class="inlineButton headerButton"
+                        style="font-weight: normal;"
                       >
                         Category
                          
                       </button>
                     </th>
                     <th
-                      rowSpan={2}
+                      rowspan="2"
                       width="8.333333333333332%"
                     >
                       <button
-                        className="inlineButton headerButton"
-                        onClick={[Function]}
-                        style={
-                          {
-                            "fontWeight": "normal",
-                          }
-                        }
+                        class="inlineButton headerButton"
+                        style="font-weight: normal;"
                       >
                         Lines
                          
                       </button>
                     </th>
                   </tr>
+                  <tr />
                 </thead>
                 <tbody>
                   <tr>
@@ -321,10 +306,10 @@ exports[`Embryo landing page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td
-                      colSpan={2}
+                      colspan="2"
                     >
                       <a
-                        className="link primary"
+                        class="link primary"
                         href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/viability.csv.gz"
                       >
                         Download
@@ -337,19 +322,19 @@ exports[`Embryo landing page renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="row"
+          class="row"
         >
           <p>
             Lethal strains are further phenotyped in the 
             <a
-              className="link primary"
+              class="link primary"
               href="https://beta.mousephenotype.org/impress"
             >
               embryonic phenotyping pipeline
             </a>
             . For embryonic lethal and subviable strains, heterozygotes are phenotyped in the IMPC 
             <a
-              className="link primary"
+              class="link primary"
               href="https://beta.mousephenotype.org/impress"
             >
               adult phenotyping pipeline
@@ -358,124 +343,68 @@ exports[`Embryo landing page renders correctly 1`] = `
           </p>
         </div>
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col-md-7"
+            class="col-md-7"
           >
             <div
-              className="chartWrapper"
+              class="chartWrapper"
             >
               <canvas
-                height={150}
+                height="0"
                 role="img"
-                width={300}
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
               />
             </div>
           </div>
           <div
-            className="col-md-5"
+            class="col-md-5"
           >
             <div
-              className="tableWrapper"
+              class="tableWrapper"
             >
               <table
-                className="table striped table table-bordered"
+                class="table striped undefined table table-bordered"
               >
                 <thead>
                   <tr>
                     <th
-                      rowSpan={2}
+                      rowspan="2"
                       width="8.333333333333332%"
                     >
                       <button
-                        className="inlineButton headerButton"
-                        onClick={[Function]}
-                        style={
-                          {
-                            "fontWeight": "normal",
-                          }
-                        }
+                        class="inlineButton headerButton"
+                        style="font-weight: normal;"
                       >
                         Category
                          
                       </button>
                     </th>
                     <th
-                      rowSpan={2}
+                      rowspan="2"
                       width="8.333333333333332%"
                     >
                       <button
-                        className="inlineButton headerButton"
-                        onClick={[Function]}
-                        style={
-                          {
-                            "fontWeight": "normal",
-                          }
-                        }
+                        class="inlineButton headerButton"
+                        style="font-weight: normal;"
                       >
                         Lines
                          
                       </button>
                     </th>
                   </tr>
+                  <tr />
                 </thead>
                 <tbody>
                   <tr>
-                    <td>
-                      Perinatal lethal
-                    </td>
-                    <td>
-                      326
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      E9.5 lethal
-                    </td>
-                    <td>
-                      450
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      E12.5 lethal
-                    </td>
-                    <td>
-                      97
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      E15.5 lethal
-                    </td>
-                    <td>
-                      20
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      E18.5 lethal
-                    </td>
-                    <td>
-                      6
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Lorem ipsum
-                    </td>
-                    <td>
-                      143
-                    </td>
-                  </tr>
-                  <tr>
                     <td
-                      colSpan={2}
+                      colspan="2"
                     >
                       <a
-                        className="link primary"
-                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all.csv"
+                        class="link primary"
+                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv"
                       >
                         Download
                       </a>
@@ -489,10 +418,10 @@ exports[`Embryo landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -500,111 +429,88 @@ exports[`Embryo landing page renders correctly 1`] = `
           </strong>
         </h1>
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col"
+            class="col"
           >
             <p>
               Filter by Window of Lethality
             </p>
             <div
-              className="row m-2 "
+              class="row m-2 "
             >
               <div
-                className="col-6"
+                class="col-6"
               >
                 <div
-                  className="basic-multi-select css-b62m3t-container"
-                  onKeyDown={[Function]}
+                  class="basic-multi-select css-b62m3t-container"
                 >
                   <span
-                    className="css-1f43avz-a11yText-A11yText"
+                    class="css-1f43avz-a11yText-A11yText"
                     id="react-select-2-live-region"
                   />
                   <span
                     aria-atomic="false"
                     aria-live="polite"
                     aria-relevant="additions text"
-                    className="css-1f43avz-a11yText-A11yText"
+                    class="css-1f43avz-a11yText-A11yText"
                     role="log"
                   />
                   <div
-                    className="select__control css-13cymwt-control"
-                    onMouseDown={[Function]}
-                    onTouchEnd={[Function]}
+                    class="select__control css-13cymwt-control"
                   >
                     <div
-                      className="select__value-container select__value-container--is-multi css-1fdsijx-ValueContainer"
+                      class="select__value-container select__value-container--is-multi css-1fdsijx-ValueContainer"
                     >
                       <div
-                        className="select__placeholder css-1jqq78o-placeholder"
+                        class="select__placeholder css-1jqq78o-placeholder"
                         id="react-select-2-placeholder"
                       >
                         Select window of lethality
                       </div>
                       <div
-                        className="select__input-container css-qbdosj-Input"
+                        class="select__input-container css-qbdosj-Input"
                         data-value=""
                       >
                         <input
                           aria-activedescendant=""
                           aria-autocomplete="list"
                           aria-describedby="react-select-2-placeholder"
-                          aria-expanded={false}
-                          aria-haspopup={true}
-                          autoCapitalize="none"
-                          autoComplete="off"
-                          autoCorrect="off"
-                          className="select__input"
-                          disabled={false}
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          aria-label="window of lethality filter"
+                          autocapitalize="none"
+                          autocomplete="off"
+                          autocorrect="off"
+                          class="select__input"
                           id="react-select-2-input"
-                          onBlur={[Function]}
-                          onChange={[Function]}
-                          onFocus={[Function]}
                           role="combobox"
-                          spellCheck="false"
-                          style={
-                            {
-                              "background": 0,
-                              "border": 0,
-                              "color": "inherit",
-                              "font": "inherit",
-                              "gridArea": "1 / 2",
-                              "label": "input",
-                              "margin": 0,
-                              "minWidth": "2px",
-                              "opacity": 1,
-                              "outline": 0,
-                              "padding": 0,
-                              "width": "100%",
-                            }
-                          }
-                          tabIndex={0}
+                          spellcheck="false"
+                          style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+                          tabindex="0"
                           type="text"
                           value=""
                         />
                       </div>
                     </div>
                     <div
-                      className="select__indicators css-1hb7zxy-IndicatorsContainer"
+                      class="select__indicators css-1hb7zxy-IndicatorsContainer"
                     >
                       <span
-                        className="select__indicator-separator css-1u9des2-indicatorSeparator"
+                        class="select__indicator-separator css-1u9des2-indicatorSeparator"
                       />
                       <div
                         aria-hidden="true"
-                        className="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer"
-                        onMouseDown={[Function]}
-                        onTouchEnd={[Function]}
+                        class="select__indicator select__dropdown-indicator css-1xc3v61-indicatorContainer"
                       >
                         <svg
                           aria-hidden="true"
-                          className="css-tj5bde-Svg"
+                          class="css-tj5bde-Svg"
                           focusable="false"
-                          height={20}
+                          height="20"
                           viewBox="0 0 20 20"
-                          width={20}
+                          width="20"
                         >
                           <path
                             d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
@@ -616,43 +522,28 @@ exports[`Embryo landing page renders correctly 1`] = `
                 </div>
               </div>
               <div
-                className="col-6"
+                class="col-6"
               />
             </div>
             <div
-              style={
-                {
-                  "backgroundColor": "white",
-                  "height": "600px",
-                  "marginLeft": "0",
-                  "marginRight": "0",
-                  "marginTop": "0",
-                }
-              }
+              style="height: 600px; margin-right: 0px; margin-left: 0px; background-color: white; margin-top: 0px;"
             >
               <div
-                style={
-                  {
-                    "height": "100%",
-                    "width": "100%",
-                  }
-                }
+                style="width: 100%; height: 100%;"
               />
             </div>
             <nav
               aria-label="Page navigation example"
-              style={{}}
             >
               <ul
-                className="pagination justify-content-center"
+                class="pagination justify-content-center"
               >
                 <li
-                  className="page-item disabled"
+                  class="page-item disabled"
                 >
                   <button
                     aria-label="Previous"
-                    className="page-link"
-                    onClick={[Function]}
+                    class="page-link"
                   >
                     <span
                       aria-hidden="true"
@@ -662,66 +553,61 @@ exports[`Embryo landing page renders correctly 1`] = `
                   </button>
                 </li>
                 <li
-                  className="page-item active"
+                  class="page-item active"
                 >
                   <button
-                    className="page-link"
-                    onClick={[Function]}
+                    class="page-link"
                   >
                     1
                   </button>
                 </li>
                 <li
-                  className="page-item "
+                  class="page-item "
                 >
                   <button
-                    className="page-link"
-                    onClick={[Function]}
+                    class="page-link"
                   >
                     2
                   </button>
                 </li>
                 <li
-                  className="page-item "
+                  class="page-item "
                 >
                   <button
-                    className="page-link"
-                    onClick={[Function]}
+                    class="page-link"
                   >
                     3
                   </button>
                 </li>
                 <li
-                  className="page-item disabled"
+                  class="page-item disabled"
                 >
                   <span
-                    className="page-link"
+                    class="page-link"
                   >
                     ...
                   </span>
                 </li>
                 <li
-                  className="page-item "
+                  class="page-item "
                 >
                   <button
                     aria-label="Previous"
-                    className="page-link"
-                    onClick={[Function]}
+                    class="page-link"
                   >
                     <span
                       aria-hidden="true"
                     >
-                      32
+                      34
                     </span>
                   </button>
                 </li>
                 <li
-                  className="page-item "
+                  class="page-item "
                 >
                   <button
                     aria-label="Next"
-                    className="page-link"
-                    onClick={[Function]}
+                    class="page-link"
                   >
                     <span
                       aria-hidden="true"
@@ -737,10 +623,10 @@ exports[`Embryo landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -748,10 +634,10 @@ exports[`Embryo landing page renders correctly 1`] = `
           </strong>
         </h1>
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col"
+            class="col"
           >
             <p>
               Embryo phenotye data can be accessed in multiple ways:
@@ -759,7 +645,7 @@ exports[`Embryo landing page renders correctly 1`] = `
             <ul>
               <li>
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="https://beta.mousephenotype.org/data/embryo_imaging"
                 >
                   Embryo Images: interactive heatmap
@@ -768,7 +654,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               </li>
               <li>
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="https://beta.mousephenotype.org/data/embryo/vignettes"
                 >
                   Embryo Vignettes
@@ -777,7 +663,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               </li>
               <li>
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="ftp://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/"
                 >
                   From the FTP site, latest release
@@ -787,7 +673,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               <li>
                 Using the REST API (see documentation 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="https://www.mousephenotype.org/help/programmatic-data-access/"
                 >
                   here
@@ -800,10 +686,10 @@ exports[`Embryo landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -812,6 +698,6 @@ exports[`Embryo landing page renders correctly 1`] = `
         </h1>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

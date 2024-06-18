@@ -9,7 +9,7 @@ import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
-import { formatBodySystems } from "@/utils";
+import { allBodySystems, formatBodySystems } from "@/utils";
 import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { ZoomButtons } from "@/components";
@@ -68,6 +68,13 @@ const colorArray = [
   "#99E6E6",
   "#6666FF",
 ];
+
+const systemColorMap: Record<string, string> = {};
+const defaultColor = "rgba(0,0,0,0.1)";
+const transparent = "rgba(255, 255, 255, 0)";
+allBodySystems.forEach((system, index) => {
+  systemColorMap[system] = colorArray[index];
+});
 
 type CatType = "ALL" | "BODY_SYSTEMS" | "PROCEDURES";
 
@@ -141,18 +148,18 @@ const transformPValue = (value: number, significant: boolean) => {
   return -Math.log10(value)
 };
 
+const isManualAssociation = (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant;
+
 const StatisticalAnalysisChart = ({
   data,
   cat,
   sig,
   hasDataRelatedToPWG,
-  isVisible,
 }: {
   data: Array<GeneStatisticalResult>;
   cat: Cat;
   sig: boolean;
   hasDataRelatedToPWG: boolean;
-  isVisible: boolean;
 }) => {
   const chartRef = useRef<Chart>(null);
   const zoomButtonsRef = useRef<HTMLDivElement>(null);
@@ -204,20 +211,18 @@ const StatisticalAnalysisChart = ({
           y: index,
           pValue: x.pValue,
           isSignificant: x.significant,
+          procedureName: x.procedureName,
+          system: x.topLevelPhenotypes[0],
+          color: isByProcedure ? colorArray[colorByArray.indexOf(x.procedureName)] : systemColorMap[x.topLevelPhenotypes[0]],
         })),
-        backgroundColor: processed.map((x) => {
-          let index = 0;
-          if (isByProcedure) {
-            index = colorByArray.indexOf(x.procedureName);
-          } else {
-            index = colorByArray.indexOf(x.topLevelPhenotypes[0]);
-          }
-          return colorArray[index];
-        }),
+        backgroundColor: (ctx) => !!ctx.raw ? (!isManualAssociation(ctx) ? ctx.raw.color : transparent) : defaultColor,
+        borderColor: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? ctx.raw.color : transparent) : defaultColor,
         showLine: false,
-        pointRadius: 5,
-        pointHoverRadius: 8,
-        pointStyle: (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant ? "triangle" : "circle",
+        pointRadius: (ctx) => isManualAssociation(ctx) ? 8 : 4,
+        pointHoverRadius: (ctx) => isManualAssociation(ctx) ? 11 : 7,
+        pointHoverBorderWidth: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? 3 : 1) : 2,
+        borderWidth: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? 3 : 1) : 2,
+        pointStyle: (ctx) => isManualAssociation(ctx) ? "triangle" : "circle",
       },
       {
         label: 'P-value threshold',
@@ -238,7 +243,7 @@ const StatisticalAnalysisChart = ({
         radius: 0,
       } : {}
     ],
-  }), [processed, colorByArray]);
+  }), [processed, colorByArray, isByProcedure]);
 
   const chartOptions = {
     responsive: true,
@@ -298,6 +303,7 @@ const StatisticalAnalysisChart = ({
     }
   };
 
+
   return (
     <div>
       <div className={classNames(styles.labels, styles.icons)}>
@@ -328,7 +334,8 @@ const StatisticalAnalysisChart = ({
         </div>
         <div className={styles.figureContainer}>
           <div className={styles.triangle} />
-          Manual annotations
+          Manual annotations:
+          <i>Are assigned a value of 1x10<sup>-15</sup> in order to be displayed in the chart</i>
         </div>
       </div>
       <div className={styles.chartContainer}>

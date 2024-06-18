@@ -1,419 +1,407 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Footer component renders correctly 1`] = `
-<div
-  className="bg-black text-white footer"
->
+<div>
   <div
-    className="container"
+    class="bg-black text-white footer"
   >
     <div
-      className="row"
+      class="container"
     >
       <div
-        className="col-12 col-md-6 footer-text mb-3"
-      >
-        <p>
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-creative-commons fa-2x me-2"
-            data-icon="creative-commons"
-            data-prefix="fab"
-            focusable="false"
-            role="img"
-            style={{}}
-            viewBox="0 0 496 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"
-              fill="currentColor"
-              style={{}}
-            />
-          </svg>
-           
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-creative-commons-by fa-2x "
-            data-icon="creative-commons-by"
-            data-prefix="fab"
-            focusable="false"
-            role="img"
-            style={{}}
-            viewBox="0 0 496 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3zm-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35c0 23-11.5 34.5-34.5 34.5s-34.5-11.5-34.5-34.5zM247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3z"
-              fill="currentColor"
-              style={{}}
-            />
-          </svg>
-        </p>
-        <p>
-          Content on this site is licensed under a
-          <br />
-          <a
-            href="//www.mousephenotype.org/help/faqs/is-impc-data-freely-available/"
-          >
-            Creative Commons Attribution 4.0 International license
-          </a>
-        </p>
-        <p>
-          <a
-            href="//www.mousephenotype.org/about-impc/accessibility-cookies/"
-          >
-            Privacy & Cookies
-          </a>
-          <br />
-          <a
-            href="//www.mousephenotype.org/about-impc/terms-of-use/"
-          >
-            Terms of use
-          </a>
-        </p>
-      </div>
-      <div
-        className="col-12 col-md-3 footer-nav"
+        class="row"
       >
         <div
-          className="menu-main-nav-container"
+          class="col-12 col-md-6 footer-text mb-3"
+        >
+          <p>
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-creative-commons fa-2x me-2"
+              data-icon="creative-commons"
+              data-prefix="fab"
+              focusable="false"
+              role="img"
+              viewBox="0 0 496 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"
+                fill="currentColor"
+              />
+            </svg>
+             
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-creative-commons-by fa-2x "
+              data-icon="creative-commons-by"
+              data-prefix="fab"
+              focusable="false"
+              role="img"
+              viewBox="0 0 496 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3zm-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35c0 23-11.5 34.5-34.5 34.5s-34.5-11.5-34.5-34.5zM247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3z"
+                fill="currentColor"
+              />
+            </svg>
+          </p>
+          <p>
+            Content on this site is licensed under a
+            <br />
+            <a
+              href="//www.mousephenotype.org/help/faqs/is-impc-data-freely-available/"
+            >
+              Creative Commons Attribution 4.0 International license
+            </a>
+          </p>
+          <p>
+            <a
+              href="//www.mousephenotype.org/about-impc/accessibility-cookies/"
+            >
+              Privacy & Cookies
+            </a>
+            <br />
+            <a
+              href="//www.mousephenotype.org/about-impc/terms-of-use/"
+            >
+              Terms of use
+            </a>
+          </p>
+        </div>
+        <div
+          class="col-12 col-md-3 footer-nav"
+        >
+          <div
+            class="menu-main-nav-container"
+          >
+            <ul
+              class="menu"
+              id="menu-main-nav-1"
+            >
+              <li
+                class="menu-item "
+                id=""
+              >
+                <a
+                  href="/data/summary"
+                >
+                  My Genes
+                </a>
+              </li>
+              <li
+                class="menu-item about-impc"
+                id="about-impc"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/"
+                >
+                  About the IMPC
+                </a>
+              </li>
+              <li
+                class="menu-item data"
+                id="data"
+              >
+                <a
+                  href="https://www.mousephenotype.org/understand/"
+                >
+                  Data
+                </a>
+              </li>
+              <li
+                class="menu-item human-diseases"
+                id="human-diseases"
+              >
+                <a
+                  href="https://www.mousephenotype.org/human-diseases/"
+                >
+                  Human Diseases
+                </a>
+              </li>
+              <li
+                class="menu-item publications"
+                id="publications"
+              >
+                <a
+                  href="https://www.mousephenotype.org/publications/"
+                >
+                  Publications
+                </a>
+              </li>
+              <li
+                class="menu-item news"
+                id="news"
+              >
+                <a
+                  href="https://www.mousephenotype.org/news/"
+                >
+                  News
+                </a>
+              </li>
+              <li
+                class="menu-item blog"
+                id="blog"
+              >
+                <a
+                  href="https://www.mousephenotype.org/blog/"
+                >
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="col-12 col-md-3 footer-nav"
+        >
+          <div
+            class="menu-top-nav-container"
+          >
+            <ul
+              class="menu"
+              id="menu-top-nav-1"
+            >
+              <li
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13"
+              >
+                <a
+                  href="//www.mousephenotype.org/help/"
+                >
+                  Help
+                </a>
+              </li>
+              <li
+                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"
+              >
+                <a
+                  href="http://cloud.mousephenotype.org"
+                >
+                  IMPC Cloud
+                </a>
+              </li>
+              <li
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"
+              >
+                <a
+                  href="//www.mousephenotype.org/contact-us/"
+                >
+                  Contact us
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mt-3 row"
+      >
+        <div
+          class="col-12 col-md-6"
         >
           <ul
-            className="menu"
-            id="menu-main-nav-1"
+            class="footer__social"
           >
-            <li
-              className="menu-item "
-              id=""
-            >
+            <li>
               <a
-                href="/data/summary"
+                href="https://www.linkedin.com/company/impc--international-mouse-phenotyping-consortium/"
+                rel="noreferrer"
+                target="_blank"
               >
-                My Genes
+                <span
+                  class="sr-only"
+                >
+                  IMPC LinkedIn
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-linkedin fa-2x "
+                  data-icon="linkedin"
+                  data-prefix="fab"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                    fill="currentColor"
+                  />
+                </svg>
               </a>
             </li>
-            <li
-              className="menu-item about-impc"
-              id="about-impc"
-            >
+            <li>
               <a
-                href="https://www.mousephenotype.org/about-impc/"
+                href="https://twitter.com/impc"
+                rel="noreferrer"
+                target="_blank"
               >
-                About the IMPC
+                <span
+                  class="sr-only"
+                >
+                  IMPC Twitter
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-twitter fa-2x "
+                  data-icon="twitter"
+                  data-prefix="fab"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                    fill="currentColor"
+                  />
+                </svg>
               </a>
             </li>
-            <li
-              className="menu-item data"
-              id="data"
-            >
+            <li>
               <a
-                href="https://www.mousephenotype.org/understand/"
+                href="https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww"
+                rel="noreferrer"
+                target="_blank"
               >
-                Data
+                <span
+                  class="sr-only"
+                >
+                  IMPC YouTube
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-youtube fa-2x "
+                  data-icon="youtube"
+                  data-prefix="fab"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+                    fill="currentColor"
+                  />
+                </svg>
               </a>
             </li>
-            <li
-              className="menu-item human-diseases"
-              id="human-diseases"
-            >
+            <li>
               <a
-                href="https://www.mousephenotype.org/human-diseases/"
+                href="https://www.facebook.com/InternationalMousePhenotypingConsortium"
+                rel="noreferrer"
+                target="_blank"
               >
-                Human Diseases
+                <span
+                  class="sr-only"
+                >
+                  IMPC Facebook
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-square-facebook fa-2x "
+                  data-icon="square-facebook"
+                  data-prefix="fab"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
+                    fill="currentColor"
+                  />
+                </svg>
               </a>
             </li>
-            <li
-              className="menu-item publications"
-              id="publications"
-            >
+            <li>
               <a
-                href="https://www.mousephenotype.org/publications/"
+                href="https://www.reddit.com/user/MousePhenotyping"
+                rel="noreferrer"
+                target="_blank"
               >
-                Publications
-              </a>
-            </li>
-            <li
-              className="menu-item news"
-              id="news"
-            >
-              <a
-                href="https://www.mousephenotype.org/news/"
-              >
-                News
-              </a>
-            </li>
-            <li
-              className="menu-item blog"
-              id="blog"
-            >
-              <a
-                href="https://www.mousephenotype.org/blog/"
-              >
-                Blog
+                <span
+                  class="sr-only"
+                >
+                  IMPC Reddit
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-reddit fa-2x "
+                  data-icon="reddit"
+                  data-prefix="fab"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"
+                    fill="currentColor"
+                  />
+                </svg>
               </a>
             </li>
           </ul>
         </div>
-      </div>
-      <div
-        className="col-12 col-md-3 footer-nav"
-      >
         <div
-          className="menu-top-nav-container"
+          class="col-12 col-md-6 text-right"
         >
-          <ul
-            className="menu"
-            id="menu-top-nav-1"
+          <h6>
+            <a
+              href="/release"
+            >
+              <small>
+                Access Data Release 
+                <span
+                  id="data-no"
+                >
+                  20.1
+                </span>
+                 Data
+              </small>
+            </a>
+          </h6>
+          <div
+            class="menu-footer-access-container"
           >
-            <li
-              className="menu-item menu-item-type-post_type menu-item-object-page menu-item-13"
+            <ul
+              class="menu"
+              id="menu-footer-access"
             >
-              <a
-                href="//www.mousephenotype.org/help/"
+              <li
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1887"
+                id="menu-item-1887"
               >
-                Help
-              </a>
-            </li>
-            <li
-              className="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"
-            >
-              <a
-                href="http://cloud.mousephenotype.org"
+                <a
+                  href="//www.mousephenotype.org/understand/accessing-the-data/batch-query/"
+                >
+                  Batch query
+                </a>
+              </li>
+              <li
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1889"
+                id="menu-item-1889"
               >
-                IMPC Cloud
-              </a>
-            </li>
-            <li
-              className="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"
-            >
-              <a
-                href="//www.mousephenotype.org/contact-us/"
+                <a
+                  href="//www.mousephenotype.org/understand/accessing-the-data/access-via-api/"
+                >
+                  Access via API
+                </a>
+              </li>
+              <li
+                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1890"
+                id="menu-item-1890"
               >
-                Contact us
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div
-      className="mt-3 row"
-    >
-      <div
-        className="col-12 col-md-6"
-      >
-        <ul
-          className="footer__social"
-        >
-          <li>
-            <a
-              href="https://www.linkedin.com/company/impc--international-mouse-phenotyping-consortium/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span
-                className="sr-only"
-              >
-                IMPC LinkedIn
-              </span>
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-linkedin fa-2x "
-                data-icon="linkedin"
-                data-prefix="fab"
-                focusable="false"
-                role="img"
-                style={{}}
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                  fill="currentColor"
-                  style={{}}
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://twitter.com/impc"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span
-                className="sr-only"
-              >
-                IMPC Twitter
-              </span>
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-twitter fa-2x "
-                data-icon="twitter"
-                data-prefix="fab"
-                focusable="false"
-                role="img"
-                style={{}}
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
-                  fill="currentColor"
-                  style={{}}
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span
-                className="sr-only"
-              >
-                IMPC YouTube
-              </span>
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-youtube fa-2x "
-                data-icon="youtube"
-                data-prefix="fab"
-                focusable="false"
-                role="img"
-                style={{}}
-                viewBox="0 0 576 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
-                  fill="currentColor"
-                  style={{}}
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.facebook.com/InternationalMousePhenotypingConsortium"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span
-                className="sr-only"
-              >
-                IMPC Facebook
-              </span>
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-square-facebook fa-2x "
-                data-icon="square-facebook"
-                data-prefix="fab"
-                focusable="false"
-                role="img"
-                style={{}}
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
-                  fill="currentColor"
-                  style={{}}
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.reddit.com/user/MousePhenotyping"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span
-                className="sr-only"
-              >
-                IMPC Reddit
-              </span>
-              <svg
-                aria-hidden="true"
-                className="svg-inline--fa fa-reddit fa-2x "
-                data-icon="reddit"
-                data-prefix="fab"
-                focusable="false"
-                role="img"
-                style={{}}
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"
-                  fill="currentColor"
-                  style={{}}
-                />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div
-        className="col-12 col-md-6 text-right"
-      >
-        <h6>
-          <a
-            href="/release"
-          >
-            <small>
-              Access Data Release 
-              <span
-                id="data-no"
-              >
-                20.1
-              </span>
-               Data
-            </small>
-          </a>
-        </h6>
-        <div
-          className="menu-footer-access-container"
-        >
-          <ul
-            className="menu"
-            id="menu-footer-access"
-          >
-            <li
-              className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1887"
-              id="menu-item-1887"
-            >
-              <a
-                href="//www.mousephenotype.org/understand/accessing-the-data/batch-query/"
-              >
-                Batch query
-              </a>
-            </li>
-            <li
-              className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1889"
-              id="menu-item-1889"
-            >
-              <a
-                href="//www.mousephenotype.org/understand/accessing-the-data/access-via-api/"
-              >
-                Access via API
-              </a>
-            </li>
-            <li
-              className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1890"
-              id="menu-item-1890"
-            >
-              <a
-                href="//www.mousephenotype.org/understand/accessing-the-data/access-via-ftp/"
-              >
-                Access via FTP
-              </a>
-            </li>
-          </ul>
+                <a
+                  href="//www.mousephenotype.org/understand/accessing-the-data/access-via-ftp/"
+                >
+                  Access via FTP
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

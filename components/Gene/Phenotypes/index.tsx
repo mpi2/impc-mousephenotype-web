@@ -83,6 +83,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     enabled: router.isReady,
     select: data => data.map(dataset => ({
       ...dataset,
+      pValue: Number(dataset.pValue),
       mutantCount: getMutantCount(dataset)
     })) as Array<GeneStatisticalResult>
   });

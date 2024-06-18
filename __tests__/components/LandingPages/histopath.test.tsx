@@ -1,13 +1,13 @@
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import HistopathLandingPage from "@/pages/histopath";
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
 describe('Histopathology landing page', () => {
   it('renders correctly', () => {
-    const tree = renderer.create(
+    const { container } = render(
       <HistopathLandingPage />
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
   });
 });

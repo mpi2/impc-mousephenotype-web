@@ -1,116 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Cardiovascular landing page renders correctly 1`] = `
-[
+<div>
   <div
-    className="banner"
+    class="banner"
   >
     <div
-      className="pb-4 pt-5 container container"
+      class="pb-4 pt-5 container container"
     >
       <div
-        className="col-12 col-md-8 ps-4 pe-4"
+        class="col-12 col-md-8 ps-4 pe-4"
       >
         <div
-          className="tabs"
+          class="tabs"
         >
           <a
-            className="tab"
+            class="tab__active"
             href="/search"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Genes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="/search?type=phenotype"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Phenotypes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="https://dev.mousephenotype.org/?s="
           >
             Help, news, blog
           </a>
         </div>
         <div
-          className="inputCont"
+          class="inputCont"
         >
           <input
-            className="input"
-            onChange={[Function]}
-            onKeyDown={[Function]}
+            class="input"
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
-            className="searchBtn"
-            onClick={[Function]}
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
           >
             <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-magnifying-glass "
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
-              style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="page container"
-    style={
-      {
-        "lineHeight": 2,
-      }
-    }
+    class="page container"
+    style="line-height: 2;"
   >
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="subheading"
+        class="subheading"
       >
         <nav
           aria-label="breadcrumb"
         >
           <ol
-            className="breadcrumb"
+            class="breadcrumb"
           >
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Home
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               IMPC data collections
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Cardiovascular
             </li>
@@ -118,80 +109,94 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         </nav>
       </div>
       <h1
-        className="mb-4 mt-2"
+        class="mb-4 mt-2"
       >
         <strong>
           Cardiovascular System
         </strong>
       </h1>
       <div
-        className="container"
+        class="container"
       >
+        <div
+          class="fade alert alert-landing-page show"
+          role="alert"
+        >
+          <div
+            class="alert-heading h4"
+          >
+            Attention
+          </div>
+          <p>
+            This publication page was published when Data Release 11.0 was made available. 
+            <br />
+            Most of the sections might be using data from the latest Data Release (21.0)
+          </p>
+          <hr />
+          <a
+            class="link primary"
+            href="#"
+          >
+            Link to FTP site
+          </a>
+        </div>
         <p>
           This page introduces cardiovascular related phenotypes present in mouse lines produced by the IMPC. The cardiovascular system refers to the observable morphological and physiological characteristics of the mammalian heart, blood vessels, or circulatory system that are manifested through development and lifespan.
         </p>
         <div
-          className="row"
+          class="row"
         >
           <div
-            className="col-md-7"
+            class="col-md-7"
           >
             <div
-              className="chartWrapper"
+              class="chartWrapper"
             >
               <canvas
-                height={150}
+                height="0"
                 role="img"
-                width={300}
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
               />
             </div>
           </div>
           <div
-            className="col-md-5"
+            class="col-md-5"
           >
             <div
-              className="tableWrapper"
+              class="tableWrapper"
             >
               <table
-                className="table striped table table-bordered"
+                class="table striped undefined table table-bordered"
               >
                 <thead>
                   <tr>
                     <th
-                      rowSpan={2}
+                      rowspan="2"
                       width="8.333333333333332%"
                     >
                       <button
-                        className="inlineButton headerButton"
-                        onClick={[Function]}
-                        style={
-                          {
-                            "fontWeight": "normal",
-                          }
-                        }
+                        class="inlineButton headerButton"
+                        style="font-weight: normal;"
                       >
                         Phenotype
                          
                       </button>
                     </th>
                     <th
-                      rowSpan={2}
+                      rowspan="2"
                       width="8.333333333333332%"
                     >
                       <button
-                        className="inlineButton headerButton"
-                        onClick={[Function]}
-                        style={
-                          {
-                            "fontWeight": "normal",
-                          }
-                        }
+                        class="inlineButton headerButton"
+                        style="font-weight: normal;"
                       >
                         # Genes
                          
                       </button>
                     </th>
                   </tr>
+                  <tr />
                 </thead>
                 <tbody>
                   <tr>
@@ -357,15 +362,14 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        className="btn"
-                        onClick={[Function]}
+                        class="btn"
                       >
                         Show more
                       </a>
                     </td>
                     <td>
                       <a
-                        className="link primary"
+                        class="link primary"
                         href="https://www.mousephenotype.org/data/phenotypes/export/MP:0005385?fileType=tsv&fileName=IMPC_Cardiovascular%20System"
                       >
                         Download
@@ -380,13 +384,13 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <div
-          className="row"
+          class="row"
         >
           <h2>
             Approach
@@ -401,13 +405,13 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <div
-          className="row"
+          class="row"
         >
           <h2>
             Procedures that can lead to relevant phenotype associations
@@ -421,84 +425,84 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Echo
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1256"
                 >
                   HMGULA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1115"
                 >
                   HRWLLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/450"
                 >
                   HMGULA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/656"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/654"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/655"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/109"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/658"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1082"
                 >
                   NINGLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1046"
                 >
                   BCMLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/657"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1065"
                 >
                   ICSLA v1
@@ -509,105 +513,105 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Electrocardiogram (ECG)
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1031"
                 >
                   TCPLA v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1049"
                 >
                   BCMLA v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1134"
                 >
                   JAXLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1256"
                 >
                   HMGULA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1115"
                 >
                   HRWLLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/450"
                 >
                   HMGULA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/656"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/654"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/655"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/109"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/658"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1082"
                 >
                   NINGLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1046"
                 >
                   BCMLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/657"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1065"
                 >
                   ICSLA v1
@@ -618,105 +622,105 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Eye Morphology
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1031"
                 >
                   TCPLA v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1049"
                 >
                   BCMLA v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1134"
                 >
                   JAXLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1256"
                 >
                   HMGULA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1115"
                 >
                   HRWLLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/450"
                 >
                   HMGULA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/656"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/654"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/655"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/109"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/658"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1082"
                 >
                   NINGLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1046"
                 >
                   BCMLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/657"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1065"
                 >
                   ICSLA v1
@@ -727,7 +731,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Heart Dissection
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/59"
                 >
                   M-G-P v1
@@ -738,105 +742,105 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Heart Weight
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1031"
                 >
                   TCPLA v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1049"
                 >
                   BCMLA v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1134"
                 >
                   JAXLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1256"
                 >
                   HMGULA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1115"
                 >
                   HRWLLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/450"
                 >
                   HMGULA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/656"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/654"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/655"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/109"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/658"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1082"
                 >
                   NINGLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1046"
                 >
                   BCMLA v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/657"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1065"
                 >
                   ICSLA v1
@@ -847,7 +851,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Heart weight/tibia length
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/9"
                 >
                   ESLIM v1
@@ -858,14 +862,14 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Indirect ophthalmoscopy
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/5"
                 >
                   HAS v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/16"
                 >
                   ESLIM v1
@@ -876,7 +880,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Non-Invasive blood pressure
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/3"
                 >
                   ESLIM v1
@@ -887,7 +891,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Ophthalmoscope
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/54"
                 >
                   M-G-P v1
@@ -898,21 +902,21 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Organ Weight
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/106"
                 >
                   HRWL v1 
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/247"
                 >
                   UCD v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1125"
                 >
                   HRWLLA v1
@@ -923,28 +927,28 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Slit Lamp
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/167"
                 >
                   HAS v1 
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/17"
                 >
                   ESLIM v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/70"
                 >
                   HAROLD v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/53"
                 >
                   M-G-P v1
@@ -962,140 +966,140 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 Gross Morphology Embryo E12.5
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/879"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1175"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/910"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/253"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/911"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/256"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/895"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/909"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/261"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/908"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/880"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/876"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/907"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/892"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/891"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/893"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/878"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/877"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/906"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/894"
                 >
                   IMPC v2
@@ -1106,140 +1110,140 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 VM4203:1 Gross Morphology Embryo E14.5-E15.5
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/914"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/899"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/913"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/883"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/897"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/881"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/915"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/882"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/898"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/917"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/254"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1176"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/257"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/885"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/262"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/900"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/916"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/896"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/884"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/912"
                 >
                   IMPC v3
@@ -1250,140 +1254,140 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 VM4203:1 Gross Morphology Embryo E18.5
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/903"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/259"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1177"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/887"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/255"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/902"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/888"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/918"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/904"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/886"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/923"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/920"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/263"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/919"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/922"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/921"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/890"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/889"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/901"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/905"
                 >
                   IMPC v2
@@ -1394,140 +1398,140 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 VM4203:1 Gross Morphology Embryo E9.5
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/861"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/874"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/875"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/860"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/873"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/251"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/862"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/870"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/252"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/864"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/871"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/250"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/868"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/867"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/866"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/869"
                 >
                   IMPC v2
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1174"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/872"
                 >
                   IMPC v3
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/863"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/865"
                 >
                   IMPC v2
@@ -1538,49 +1542,49 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 VM4203:1 Gross Morphology Placenta E12.5
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/820"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/818"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/819"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/822"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1179"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/821"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/194"
                 >
                   IMPC v1
@@ -1591,56 +1595,56 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 VM4203:1 Gross Morphology Placenta E14.5-E15.5
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/828"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/825"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/824"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1180"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/823"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/826"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/195"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/827"
                 >
                   IMPC v1
@@ -1651,49 +1655,49 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 VM4203:1 Gross Morphology Placenta E18.5
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/196"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/829"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1381"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/830"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/831"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1181"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/832"
                 >
                   IMPC v1
@@ -1704,56 +1708,56 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                 VM4203:1 Gross Morphology Placenta E9.5
                  
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/813"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/814"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/1178"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/190"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/815"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/816"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/817"
                 >
                   IMPC v1
                 </a>
                 , 
                 <a
-                  className="link primary"
+                  class="link primary"
                   href="//www.mousephenotype.org/impress/protocol/812"
                 >
                   IMPC v1
@@ -1766,10 +1770,10 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -1780,12 +1784,13 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
           This graph shows genes with a significant effect on at least one cardiovascular system phenotype.
         </p>
         <div
-          className="chartWrapper"
+          class="chartWrapper"
         >
           <canvas
-            height={150}
+            height="0"
             role="img"
-            width={300}
+            style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+            width="0"
           />
         </div>
         <p>
@@ -1795,20 +1800,249 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
           Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be downloaded using the download icon.
         </p>
         <div
-          className="wrapper"
+          class="wrapper"
         >
           <svg
-            height={960}
-            width={960}
-          />
+            height="960"
+            width="960"
+          >
+            <g
+              transform="translate(480, 480)"
+            >
+              <g
+                class="groups"
+              >
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M0,-280A280,280,0,1,1,-100.824,261.218L-90.021,233.23A250,250,0,1,0,0,-250Z"
+                    style="fill: rgb(239, 123, 11); stroke: rgb(167, 86, 8);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(-90) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      x="8"
+                    >
+                      cardiovascular system 
+                    </text>
+                  </g>
+                  <g
+                    class="group-tick"
+                    transform="rotate(29.77687287655212) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                  </g>
+                </g>
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M-113.753,255.852A280,280,0,0,1,-245.132,135.315L-218.868,120.817A250,250,0,0,0,-101.565,228.439Z"
+                    style="fill: rgb(9, 120, 161); stroke: rgb(6, 84, 113);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(113.97015853538508) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      style="text-anchor: end;"
+                      transform="rotate(180) translate(-16)"
+                      x="8"
+                    >
+                      vision/eye 
+                    </text>
+                  </g>
+                </g>
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M-251.589,122.894A280,280,0,0,1,-120.996,-252.507L-108.032,-225.453A250,250,0,0,0,-224.633,109.727Z"
+                    style="fill: rgb(119, 119, 119); stroke: rgb(83, 83, 83);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(153.96577810277037) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      style="text-anchor: end;"
+                      transform="rotate(180) translate(-16)"
+                      x="8"
+                    >
+                      growth/size/body region 
+                    </text>
+                  </g>
+                </g>
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M-108.225,-258.239A280,280,0,0,1,-59.731,-273.555L-53.331,-244.245A250,250,0,0,0,-96.629,-230.571Z"
+                    style="fill: rgb(238, 238, 180); stroke: rgb(167, 167, 126);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(247.26210610022133) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      style="text-anchor: end;"
+                      transform="rotate(180) translate(-16)"
+                      x="8"
+                    >
+                      embryo 
+                    </text>
+                  </g>
+                </g>
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M-45.984,-276.198A280,280,0,0,1,-13.994,-279.65L-12.495,-249.688A250,250,0,0,0,-41.058,-246.606Z"
+                    style="fill: rgb(36, 139, 75); stroke: rgb(25, 97, 53);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(260.54748301613546) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      style="text-anchor: end;"
+                      transform="rotate(180) translate(-16)"
+                      x="8"
+                    >
+                      muscle  
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="ribbons"
+              >
+                <path
+                  class="chord"
+                  d="M249.15258796243248,-20.566669920586342A250,250,0,0,1,101.88546487524586,228.29663170348144Q0,0,249.15258796243248,-20.566669920586342Z"
+                  style="fill: rgb(239, 123, 11); stroke: rgb(167, 86, 8); visibility: visible;"
+                >
+                  <title>
+                    590 genes present cardiovascular system phenotype and cardiovascular system phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M101.88546487524586,228.29663170348144A250,250,0,0,1,-35.00796743863533,247.53674922284864Q0,0,-101.56519609879454,228.4392937771727A250,250,0,0,1,-207.43091208715217,139.54360146811518Q0,0,101.88546487524586,228.29663170348144Z"
+                  style="fill: rgb(9, 120, 161); stroke: rgb(6, 84, 113); visibility: visible;"
+                >
+                  <title>
+                    268 genes present cardiovascular system phenotype and vision/eye phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M1.5308084989341916e-14,-250A250,250,0,0,1,249.15258796243248,-20.566669920586342Q0,0,-224.63301339437388,109.72697614243748A250,250,0,0,1,-127.8348524597166,-214.8447125172097Q0,0,1.5308084989341916e-14,-250Z"
+                  style="fill: rgb(119, 119, 119); stroke: rgb(83, 83, 83); visibility: visible;"
+                >
+                  <title>
+                    712 genes present cardiovascular system phenotype and growth/size/body region phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-35.00796743863533,247.53674922284864A250,250,0,0,1,-67.71484047052876,240.65473271899484Q0,0,-96.62902498903938,-230.57066493738444A250,250,0,0,1,-65.0088979059252,-241.3997580633771Q0,0,-35.00796743863533,247.53674922284864Z"
+                  style="fill: rgb(238, 238, 180); stroke: rgb(167, 167, 126); visibility: visible;"
+                >
+                  <title>
+                    64 genes present cardiovascular system phenotype and embryo phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-67.71484047052876,240.65473271899484A250,250,0,0,1,-90.02105991897336,233.2299482722247Q0,0,-41.05754497700515,-246.60551088826298A250,250,0,0,1,-17.71140255033971,-249.37182322728407Q0,0,-67.71484047052876,240.65473271899484Z"
+                  style="fill: rgb(36, 139, 75); stroke: rgb(25, 97, 53); visibility: visible;"
+                >
+                  <title>
+                    45 genes present cardiovascular system phenotype and muscle phenotype , 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-207.43091208715217,139.54360146811518A250,250,0,0,1,-214.70546838198868,128.06858259101202Q0,0,-127.8348524597166,-214.8447125172097A250,250,0,0,1,-115.97436054662552,-221.47222782055837Q0,0,-207.43091208715217,139.54360146811518Z"
+                  style="fill: rgb(119, 119, 119); stroke: rgb(83, 83, 83); visibility: hidden;"
+                >
+                  <title>
+                    26 genes present vision/eye phenotype and growth/size/body region phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-214.70546838198868,128.06858259101202A250,250,0,0,1,-217.85030673959034,122.64274888254263Q0,0,-65.0088979059252,-241.3997580633771A250,250,0,0,1,-58.933322162171926,-242.954447456575Q0,0,-214.70546838198868,128.06858259101202Z"
+                  style="fill: rgb(238, 238, 180); stroke: rgb(167, 167, 126); visibility: hidden;"
+                >
+                  <title>
+                    12 genes present vision/eye phenotype and embryo phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-217.85030673959034,122.64274888254263A250,250,0,0,1,-218.86821750675432,120.8168173948316Q0,0,-14.582219368869549,-249.5743554099222A250,250,0,0,1,-12.494792317669805,-249.68756509874154Q0,0,-217.85030673959034,122.64274888254263Z"
+                  style="fill: rgb(36, 139, 75); stroke: rgb(25, 97, 53); visibility: hidden;"
+                >
+                  <title>
+                    4 genes present vision/eye phenotype and muscle phenotype , 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-115.97436054662552,-221.47222782055837A250,250,0,0,1,-110.85128092958959,-224.0803282670507Q0,0,-58.933322162171926,-242.954447456575A250,250,0,0,1,-53.3313723087285,-244.24529622424214Q0,0,-115.97436054662552,-221.47222782055837Z"
+                  style="fill: rgb(238, 238, 180); stroke: rgb(167, 167, 126); visibility: hidden;"
+                >
+                  <title>
+                    11 genes present growth/size/body region phenotype and embryo phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-110.85128092958959,-224.0803282670507A250,250,0,0,1,-108.03199416127315,-225.45307324926546Q0,0,-17.71140255033971,-249.37182322728407A250,250,0,0,1,-14.582219368869549,-249.5743554099222Q0,0,-110.85128092958959,-224.0803282670507Z"
+                  style="fill: rgb(36, 139, 75); stroke: rgb(25, 97, 53); visibility: hidden;"
+                >
+                  <title>
+                    6 genes present growth/size/body region phenotype and muscle phenotype , 
+                  </title>
+                </path>
+              </g>
+            </g>
+          </svg>
         </div>
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="container"
+        class="container"
       >
         <h1>
           <strong>
@@ -1817,6 +2051,6 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         </h1>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

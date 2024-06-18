@@ -198,6 +198,15 @@ const Charts = () => {
               {...(isABRChart && {initialSortByProp: "parameterStableId"})}
             />
           )}
+          {isPPIChart && (
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <button className="btn impc-secondary-button" onClick={() => {
+                document.querySelector('#chart').scrollIntoView();
+              }}>
+                View chart
+              </button>
+            </div>
+          )}
         </Card>
       </Container>
       <div
@@ -209,6 +218,7 @@ const Charts = () => {
             <ABR
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
+              activeDataset={activeDataset}
             />
           ) : !!isIPGTTChart ? (
             <IPGTT
