@@ -9,12 +9,14 @@ import Histopathology from "@/components/Gene/Histopathology";
 import Expressions from "@/components/Gene/Expressions";
 import Order from "@/components/Gene/Order";
 import { useEffect, useState } from "react";
-import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
-import { useGeneSummaryQuery } from "@/hooks";
+import { useGeneSummaryQuery, useScroll } from "@/hooks";
 import Head from "next/head";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),
@@ -28,6 +30,7 @@ const Gene = () => {
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
   const [allelesStudiedLoading, setAllelesStudiedLoading] = useState<boolean>(true);
+  const [showTopButton, setShowTopButton ] = useState(false);
   const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
   const allelesStudiedContextValue = {
     allelesStudied,
@@ -35,6 +38,7 @@ const Gene = () => {
     allelesStudiedLoading,
     setAllelesStudiedLoading,
   };
+  const [{perY, scrollDirection}] = useScroll();
 
   const {
     isLoading,
@@ -54,6 +58,13 @@ const Gene = () => {
     }
   }, [gene]);
 
+  useEffect(() => {
+    const showButton = perY >= 200 && scrollDirection === "UP";
+    if (showButton) {
+      setShowTopButton(true);
+    }
+  }, [perY, scrollDirection]);
+
   return (
     <>
       <Head>
@@ -62,23 +73,36 @@ const Gene = () => {
       <GeneContext.Provider value={gene}>
         <NumAllelesContext.Provider value={numAllelesContextValue}>
           <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
-            <GeneComparatorTrigger current={router.query.pid as string} />
-            <Search />
+            <Search/>
             <Container className="page">
-              <Summary {...{ gene, numOfAlleles, loading: isLoading, error: isError ? error.toString(): "" }} />
+              <Summary {...{gene, numOfAlleles, loading: isLoading, error: isError ? error.toString() : ""}} />
               {!!gene && (
                 <>
-                  <Phenotypes gene={gene} />
-                  <Expressions />
-                  <Images gene={gene} />
-                  <HumanDiseases gene={gene} />
-                  <Histopathology />
-                  <Publications gene={gene} />
-                  <ExternalLinks />
-                  <Order allelesStudied={allelesStudied} allelesStudiedLoading={allelesStudiedLoading} />
+                  <Phenotypes gene={gene}/>
+                  <Expressions/>
+                  <Images gene={gene}/>
+                  <HumanDiseases gene={gene}/>
+                  <Histopathology/>
+                  <Publications gene={gene}/>
+                  <ExternalLinks/>
+                  <Order allelesStudied={allelesStudied} allelesStudiedLoading={allelesStudiedLoading}/>
                 </>
               )}
             </Container>
+            {showTopButton && (
+              <AnimatePresence>
+                <motion.button
+                  className="btn impc-secondary-button back-to-top"
+                  onClick={() => document.querySelector("#summary").scrollIntoView()}
+                  layout
+                  initial={{opacity: 0}}
+                  animate={{opacity: 1}}
+                >
+                  <FontAwesomeIcon icon={faAngleUp}/>
+                  Back to top
+                </motion.button>
+              </AnimatePresence>
+            )}
           </AllelesStudiedContext.Provider>
         </NumAllelesContext.Provider>
       </GeneContext.Provider>

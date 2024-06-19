@@ -45,14 +45,17 @@
   &:hover {
     border: 1px solid #1A4480;
     color: #1A4480;
+    background-color: #FFF;
   }
   &:active {
     border: 1px solid #005EA2;
     color: #005EA2;
+    background-color: #FFF !important;
   }
   &:focus {
     border: 1px solid #102A5C;
     color: #102A5C;
     outline: 2px solid #2491FF;
+    background-color: #FFF;
   }
 }

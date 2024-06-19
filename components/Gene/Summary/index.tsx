@@ -51,7 +51,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
 
   if (loading) {
     return (
-      <Card>
+      <Card id="summary">
         <div className={styles.subheadingCont}>
           <div className={styles.subheading}>
             <span className={styles.subheadingSection}>Gene</span>
@@ -68,7 +68,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
 
   if (error) {
     return (
-      <Card>
+      <Card id="summary">
         <div className={styles.subheadingCont}>
           <div className={styles.subheading}>
             <span className={styles.subheadingSection}>Gene</span>
@@ -108,7 +108,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
-    <Card style={{ padding: '2rem 2rem 0 2rem' }}>
+    <Card id="summary" style={{ padding: '2rem 2rem 0 2rem' }}>
       <Head>
         <title>
           {gene.geneSymbol} Mouse Gene Details | {gene.geneName} | International
