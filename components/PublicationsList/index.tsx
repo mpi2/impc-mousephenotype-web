@@ -40,13 +40,14 @@ const PublicationsList = (props: PublicationListProps) => {
   const [allelesVisibilityMap, setAllelesVisibilityMap] = useState(new Map());
   const displayPubTitle = (pub: Publication) => {
     if (pub.doi) {
-      return <p>
+      return <p className={styles.title}>
         <a
           className="primary link"
           target="_blank"
           href={`https://doi.org/${pub.doi}`}
           dangerouslySetInnerHTML={{ __html: pub.title }}
         />
+        &nbsp;
         <FontAwesomeIcon
           icon={faExternalLinkAlt}
           className="grey"
@@ -200,7 +201,7 @@ const PublicationsList = (props: PublicationListProps) => {
         }
       >
         {pageData => (
-          <Table className={styles.pubTable} striped>
+          <Table className={styles.pubTable}>
             <tbody>
             {pageData?.map((pub: Publication) => (
               <tr key={pub.pmId} id={'pub-' + pub.pmId}>
@@ -208,15 +209,13 @@ const PublicationsList = (props: PublicationListProps) => {
                   {displayPubTitle(pub)}
                   <p><i>{pub.journalTitle}</i>, ({displayPubDate(pub)})</p>
                   <p><b>{pub.authorString}</b></p>
-                  <Button
-                    className="mt-1 mb-1"
-                    variant="outline-dark"
-                    size="sm"
-                    onClick={e => toggleVisibility(pub, 'abstract')}
+                  <button
+                    className="btn impc-secondary-button xs-small mt-2 mb-2"
+                    onClick={() => toggleVisibility(pub, 'abstract')}
                   >
                     <strong>{isFieldVisible(pub, 'abstract') ? 'Hide' : 'Show'} abstract</strong>
-                  </Button>
-                  <p className={`abstract ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
+                  </button>
+                  <p className={`abstract mb-2 ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
                     {pub.abstractText}
                   </p>
                   <p>
@@ -240,36 +239,34 @@ const PublicationsList = (props: PublicationListProps) => {
                               <AlleleSymbol symbol={allele.alleleSymbol} withLabel={false} />
                             </Link>
                             &nbsp;
+                            &nbsp;
+                            &nbsp;
                           </>
                         )
                       })}
                       {pub.alleles.length > 9 && (
                         <>
                           <br/>
-                          <Button
-                            className="mt-1 mb-1"
-                            variant="outline-dark"
-                            size="sm"
+                          <button
+                            className="btn impc-secondary-button xs-small mb-2 mt-1"
                             onClick={() => toggleVisibility(pub, "alleles")}
                           >
                             <strong>{isFieldVisible(pub, 'alleles') ? 'Hide' : 'Show'} all alleles</strong>
-                          </Button>
+                          </button>
                         </>
                       )}
                     </p>
                   )}
                   {getGrantsList(pub)}
                   {!!pub.meshHeadingList && pub.meshHeadingList.length > 0 && (
-                    <Button
-                      className="mt-1 mb-1"
-                      variant="outline-dark"
-                      size="sm"
-                      onClick={e => toggleVisibility(pub, 'mesh-terms')}
+                    <button
+                      className="btn impc-secondary-button xs-small mt-2"
+                      onClick={() => toggleVisibility(pub, 'mesh-terms')}
                     >
                       <strong>{isFieldVisible(pub, 'mesh-terms') ? 'Hide' : 'Show'} mesh terms</strong>
-                    </Button>
+                    </button>
                   )}
-                  <p className={`abstract ${isFieldVisible(pub, 'mesh-terms') ? '' : 'visually-hidden'}`}>
+                  <p className={`abstract mt-1 ${isFieldVisible(pub, 'mesh-terms') ? '' : 'visually-hidden'}`}>
                     {pub.meshHeadingList.join(', ')}
                   </p>
                 </td>
