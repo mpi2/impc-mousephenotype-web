@@ -2,7 +2,7 @@ import { Col, Container, Form, InputGroup, Row, Table, Alert } from "react-boots
 import { faDownload, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
 import styles from './styles.module.scss';
@@ -13,15 +13,6 @@ import { useDebounceValue } from "usehooks-ts";
 import _ from "lodash";
 import Link from "next/link";
 import { AlleleSymbol } from "@/components";
-
-const PublicationLoader = () => (
-  <td className={styles.pubLoader}>
-    <Skeleton count={3} />
-    <Skeleton width={30}/>
-    <Skeleton count={3} />
-    <Skeleton width={30}/>
-  </td>
-);
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -55,7 +46,7 @@ const PublicationsList = (props: PublicationListProps) => {
         />
       </p>;
     }
-    return <p dangerouslySetInnerHTML={{ __html: pub.title }} />;
+    return <p style={{ fontWeight: "bold" }} dangerouslySetInnerHTML={{ __html: pub.title }} />;
   }
 
   const displayPubDate = (pub: Publication) => {
@@ -141,11 +132,9 @@ const PublicationsList = (props: PublicationListProps) => {
       return response.content as Array<Publication>;
     },
   });
-  const [debounceFetching, setDebounceFetching] = useDebounceValue<boolean>(isFetching, 500, { leading: true });
 
 
   useEffect(() => setDebouncedQuery(query), [query]);
-  useEffect(() => setDebounceFetching(isFetching), [isFetching]);
   const updatePage = (value: number) => {
     setPage(value);
   };
@@ -157,12 +146,12 @@ const PublicationsList = (props: PublicationListProps) => {
     <Container>
       <Row>
         <Col xs={6}>
-          <p>Showing 1 to {Math.min(pageSize, totalItems)} of {totalItems.toLocaleString()} entries</p>
+          <p>Showing {Math.min(pageSize, totalItems) * page + 1} to {Math.min(pageSize, totalItems) * (page + 1)} of {totalItems.toLocaleString()} entries</p>
         </Col>
       </Row>
-      { !!isError && (
+      {!!isError && (
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for the filters
+        No publications found that use IMPC mice or data for the filters
         </Alert>
       )}
       <Pagination
@@ -275,10 +264,10 @@ const PublicationsList = (props: PublicationListProps) => {
               </tr>
             ))}
             { !!isFetching && ([...Array(10)].map((e, i) => (
-              <tr key={i}>
-                <PublicationLoader key={i} />
+              <tr key={i} className={styles.pubLoader}>
+                <td><Skeleton count={9} /></td>
               </tr>
-            ) )) }
+            )))}
             </tbody>
           </Table>
         )}
