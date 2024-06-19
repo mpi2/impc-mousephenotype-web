@@ -9,18 +9,18 @@ import styles from './styles.module.scss';
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI, API_URL } from "@/api-service";
 import Pagination from "../Pagination";
-import { useDebounce } from "usehooks-ts";
+import { useDebounceValue } from "usehooks-ts";
 import _ from "lodash";
 import Link from "next/link";
 import { AlleleSymbol } from "@/components";
 
 const PublicationLoader = () => (
-  <div className={styles.pubLoader}>
+  <td className={styles.pubLoader}>
     <Skeleton count={3} />
     <Skeleton width={30}/>
     <Skeleton count={3} />
     <Skeleton width={30}/>
-  </div>
+  </td>
 );
 
 export type PublicationListProps = {
@@ -113,7 +113,7 @@ const PublicationsList = (props: PublicationListProps) => {
   const [pageSize, setPageSize] = useState(10);
   const [query, setQuery] = useState('');
   const [totalItems, setTotalItems] = useState(0);
-  const debounceQuery = useDebounce<string>(query, 500);
+  const [debounceQuery, setDebouncedQuery] = useDebounceValue<string>(query, 500);
   const { data: publications, isError, isFetching } = useQuery({
     queryKey: ['publications', prefixQuery, debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
     queryFn: () => {
@@ -141,7 +141,11 @@ const PublicationsList = (props: PublicationListProps) => {
       return response.content as Array<Publication>;
     },
   });
+  const [debounceFetching, setDebounceFetching] = useDebounceValue<boolean>(isFetching, 500, { leading: true });
 
+
+  useEffect(() => setDebouncedQuery(query), [query]);
+  useEffect(() => setDebounceFetching(isFetching), [isFetching]);
   const updatePage = (value: number) => {
     setPage(value);
   };
@@ -185,14 +189,12 @@ const PublicationsList = (props: PublicationListProps) => {
             </div>
             <div>
               Export table:&nbsp;
-              <a href={getDownloadLink('tsv')} className="primary link">
+              <a href={getDownloadLink('tsv')} className="btn impc-secondary-button small">
                 TSV
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
               &nbsp;
-              or
-              &nbsp;
-              <a href={getDownloadLink('xls')} className="primary link">
+              <a href={getDownloadLink('xls')} className="btn impc-secondary-button small">
                 XLS
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
