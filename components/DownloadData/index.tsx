@@ -61,7 +61,7 @@ const DownloadDataComponent = <T,>({ data, fields, fileName }: Props<T>) => {
 
   return (
     <div className="grey" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      Download data as:{" "}
+      Download data as:&nbsp;
       <button
         className="btn impc-secondary-button small"
         onClick={generateTsvFile}
