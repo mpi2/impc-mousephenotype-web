@@ -9,3 +9,4 @@ export { default as PublicationsList } from './PublicationsList';
 export type { PublicationListProps } from './PublicationsList';
 export { default as Pagination } from './Pagination';
 export { default as SortableTable } from './SortableTable';
+export { default as SectionHeader } from './SectionHeader/SectionHeader';
