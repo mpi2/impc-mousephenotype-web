@@ -17,7 +17,11 @@ const SectionHeader = (props: PropsWithChildren<Props>) => {
     <>
       <div className={styles.titleWrapper}>
         <h2>{props.title}</h2>
-        <button className="btn" onClick={() => setIsVisible(prevState => !prevState)}>
+        <button
+          className="btn"
+          onClick={() => setIsVisible(prevState => !prevState)}
+          aria-label="Open help overlay"
+        >
           <FontAwesomeIcon icon={faCircleQuestion} size="xl"/>
         </button>
       </div>
