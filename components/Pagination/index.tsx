@@ -62,20 +62,24 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
         rangeEnd = Math.min(totalPages, 5);
       }
     }
-
-    setPageRange(
-      Array.from(
-        { length: rangeEnd - rangeStart + 1},
-        (_, i) => rangeStart + i
-      )
+    const newPageRange = Array.from(
+      { length: rangeEnd - rangeStart + 1},
+      (_, i) => rangeStart + i
     );
+    if (JSON.stringify(pageRange) !== JSON.stringify(newPageRange)) {
+      console.log('setting new page range');
+      setPageRange(newPageRange);
+    }
+
   };
 
   const canGoBack = internalPage >= 1;
   const canGoForward = internalPage + 1 < totalPages;
 
   useEffect(() => {
-    updatePageRange(internalPage, totalPages);
+    if (data.length) {
+      updatePageRange(internalPage, totalPages);
+    }
   }, [data, internalPage, internalPageSize]);
 
 
