@@ -30,7 +30,6 @@ const Gene = () => {
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
   const [allelesStudiedLoading, setAllelesStudiedLoading] = useState<boolean>(true);
-  const [showTopButton, setShowTopButton ] = useState(false);
   const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
   const allelesStudiedContextValue = {
     allelesStudied,
@@ -38,7 +37,6 @@ const Gene = () => {
     allelesStudiedLoading,
     setAllelesStudiedLoading,
   };
-  const [{perY, scrollDirection}] = useScroll();
 
   const {
     isLoading,
@@ -57,13 +55,6 @@ const Gene = () => {
       }
     }
   }, [gene]);
-
-  useEffect(() => {
-    const showButton = perY >= 200 && scrollDirection === "UP";
-    if (showButton) {
-      setShowTopButton(true);
-    }
-  }, [perY, scrollDirection]);
 
   return (
     <>
@@ -89,20 +80,6 @@ const Gene = () => {
                 </>
               )}
             </Container>
-            {showTopButton && (
-              <AnimatePresence>
-                <motion.button
-                  className="btn impc-secondary-button back-to-top"
-                  onClick={() => document.querySelector("#summary").scrollIntoView()}
-                  layout
-                  initial={{opacity: 0}}
-                  animate={{opacity: 1}}
-                >
-                  <FontAwesomeIcon icon={faAngleUp}/>
-                  Back to top
-                </motion.button>
-              </AnimatePresence>
-            )}
           </AllelesStudiedContext.Provider>
         </NumAllelesContext.Provider>
       </GeneContext.Provider>
