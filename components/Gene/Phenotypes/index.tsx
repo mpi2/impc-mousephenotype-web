@@ -168,7 +168,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           </TabContent>
         </Tab>
         <Tab eventKey="allData" title="All data">
-          <AllData data={data} />
+          <AllData routerIsReady={router.isReady}/>
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
           <StatisticalAnalysis
