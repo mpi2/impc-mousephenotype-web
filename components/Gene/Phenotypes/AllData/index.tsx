@@ -26,16 +26,62 @@ type Props = {
   routerIsReady: boolean;
 };
 
+type FilterOptions = {
+  procedures: Array<string>;
+  systems: Array<string>;
+  lifestages: Array<string>;
+  zygosities: Array<string>;
+  alleles: Array<string>;
+};
+
+type SelectedValues = {
+  procedureName: string;
+  topLevelPhenotype: string;
+  lifeStageName: string;
+  zygosity: string;
+  alleleSymbol: string;
+};
+
+const defaultFilterOptions: FilterOptions = {
+  procedures: [],
+  systems: [],
+  lifestages: [],
+  zygosities: [],
+  alleles: [],
+};
+
+const defaultSelectedValues: SelectedValues= {
+  procedureName: undefined,
+  topLevelPhenotype: undefined,
+  lifeStageName: undefined,
+  zygosity: undefined,
+  alleleSymbol: undefined,
+};
+
+const getMutantCount = (dataset: GeneStatisticalResult) => {
+  if (!dataset.maleMutantCount && !dataset.femaleMutantCount) {
+    return 'N/A';
+  }
+  return `${dataset.maleMutantCount || 0}m/${dataset.femaleMutantCount || 0}f`;
+};
+
 const AllData = (props: Props) => {
   const gene = useContext(GeneContext);
-  const [sorted, setSorted] = useState<Array<GeneStatisticalResult>>([]);
-  const [procedure, setProcedure] = useState(undefined);
-  const [query, setQuery] = useState(undefined);
-  const [system, setSystem] = useState(undefined);
-  const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
-  const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
-  const [selectedAllele, setSelectedAllele] = useState<string>(undefined);
+  const { setAlleles } = useContext(AllelesStudiedContext);
+  const [sortField, setSortField] = useState<string>("pValue");
+  const [sortOrder, setSortOrder] = useState<string>("asc");
   const [totalItems, setTotalItems] = useState<number>(0);
+  const [query, setQuery] = useState(undefined);
+  const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
+  const [selectedValues, setSelectedValues] = useState<SelectedValues>(defaultSelectedValues);
+
+  const updateSelectedValue = (key: keyof SelectedValues, newValue: string): void => {
+    setActivePage(0);
+    setSelectedValues(prevState => ({
+      ...prevState,
+      [key]: newValue,
+    }));
+  }
 
   const {
     activePage,
@@ -46,33 +92,50 @@ const AllData = (props: Props) => {
 
 
   const { data, isError, isFetching } = useQuery({
-    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize],
+    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder],
     queryFn: () => {
       let url = `/api/v1/genes/statistical-result/filtered/page?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&page=${activePage}&size=${pageSize}`;
+      Object.entries(selectedValues)
+        .filter(([, value]) => !!value)
+        .forEach(([key, value]) => url += `&${key}=${value}`);
+      url += `&sortBy=${sortField}&sort=${sortOrder}`;
       return fetchAPI(url);
     },
-    select: response => response as PaginatedResponse<GeneStatisticalResult>,
+    select: (response: PaginatedResponse<GeneStatisticalResult>) => {
+      return {
+        ...response,
+        content: response.content.map(d => ({
+          ...d,
+          pValue: Number(d.pValue),
+          mutantCount: getMutantCount(d),
+        })),
+      } as PaginatedResponse<GeneStatisticalResult>
+    },
+    enabled: props.routerIsReady,
   });
 
   const { data: filterData } = useQuery({
     queryKey: ['filterData', gene.mgiGeneAccessionId],
     queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`),
+    enabled: props.routerIsReady,
   });
 
-
   useEffect(() => {
-    if (data) {
-      setSorted(orderBy<GeneStatisticalResult>(data.content, "pValue", "asc"));
-      if (data.totalElements !== totalItems) {
-        setTotalItems(data.totalElements);
-      }
+    if (data && data.totalElements !== totalItems) {
+      setTotalItems(data.totalElements);
     }
   }, [data, totalItems]);
 
   useEffect(() => {
     if (filterData) {
-      console.log('ON EFFECT');
-      console.log(filterData);
+      setFilterOptions({
+        procedures: filterData.procedureName,
+        systems: filterData.topLevelPhenotypes,
+        lifestages: filterData.lifeStageName,
+        zygosities: filterData.zygosity,
+        alleles: filterData.alleleSymbol,
+      });
+      setAlleles(filterData.alleleSymbol);
     }
   }, [filterData]);
 
@@ -80,44 +143,81 @@ const AllData = (props: Props) => {
     const unsubscribeOnAlleleSelection = orderPhenotypedSelectionChannel.on(
       "onAlleleSelected",
       (newAllele) => {
-        if (newAllele !== selectedAllele) {
-          setSelectedAllele(newAllele);
+        if (newAllele !== selectedValues.alleleSymbol) {
+          updateSelectedValue("alleleSymbol", newAllele);
         }
       });
     return () => {
       unsubscribeOnAlleleSelection();
     }
-  }, [selectedAllele]);
-
-  const sortPhenotypes = (data: Array<GeneStatisticalResult>, field: keyof GeneStatisticalResult, order: "asc" | "desc") => {
-    if (field === "pValue") {
-      return data.sort((p1, p2) => {
-        const p1PValue = parseFloat(p1.pValue);
-        const p2PValue = parseFloat(p2.pValue);
-        if (!p1PValue) {
-          return 1;
-        } else if (!p2PValue) {
-          return -1;
-        }
-        return order === "asc" ? p1PValue - p2PValue : p2PValue - p1PValue;
-      });
-    }
-    return orderBy(data, field, order);
-  };
-
-  if (!data) {
-    return null;
-  }
+  }, [selectedValues.alleleSymbol]);
 
   return (
     <SmartTable<GeneStatisticalResult>
-      data={sorted}
+      data={data?.content}
       defaultSort={["pValue", "asc"]}
+      onSortChange={sortOptions => {
+        const [sortField, sortOrder] = sortOptions.split(';');
+        setSortField(sortField);
+        setSortOrder(sortOrder);
+      }}
       customFiltering
-      customSortFunction={sortPhenotypes}
+      additionalTopControls={
+        <>
+          <FilterBox
+            controlId="queryFilterAD"
+            hideLabel
+            onChange={setQuery}
+            ariaLabel="Filter by parameters"
+            controlStyle={{ width: 150 }}
+          />
+          <FilterBox
+            controlId="procedureFilterAD"
+            label="Procedure"
+            value={selectedValues.procedureName}
+            onChange={value => updateSelectedValue("procedureName", value)}
+            ariaLabel="Filter by procedures"
+            options={filterOptions.procedures}
+          />
+          <FilterBox
+            controlId="alleleFilterAD"
+            label="Allele"
+            value={selectedValues.alleleSymbol}
+            onChange={value => updateSelectedValue("alleleSymbol", value)}
+            ariaLabel="Filter by allele"
+            options={filterOptions.alleles}
+          />
+          <FilterBox
+            controlId="zygosityFilterAD"
+            label="Zygosity"
+            value={selectedValues.zygosity}
+            onChange={value => updateSelectedValue("zygosity", value)}
+            ariaLabel="Filter by zygosity"
+            options={filterOptions.zygosities}
+            controlStyle={{ width: 100, textTransform: 'capitalize' }}
+          />
+          <FilterBox
+            controlId="systemFilterAD"
+            label="Phy. System"
+            value={selectedValues.topLevelPhenotype}
+            onChange={value => updateSelectedValue("topLevelPhenotype", value)}
+            ariaLabel="Filter by physiological system"
+            options={filterOptions.systems}
+          />
+          <FilterBox
+            controlId="lifeStageFilterAD"
+            label="Life Stage"
+            value={selectedValues.lifeStageName}
+            onChange={value => updateSelectedValue("lifeStageName", value)}
+            ariaLabel="Filter by life stage"
+            options={filterOptions.lifestages}
+            controlStyle={{ display: "inline-block", width: 100 }}
+          />
+        </>
+      }
       additionalBottomControls={
         <DownloadData<GeneStatisticalResult>
-          data={sorted}
+          data={() => data.content}
           fileName={`${gene.geneSymbol}-all-phenotype-data`}
           fields={[
             { key: "alleleSymbol", label: "Allele" },
@@ -151,6 +251,7 @@ const AllData = (props: Props) => {
           ]}
         />
       }
+      showLoadingIndicator={isFetching}
       pagination={{
         totalItems,
         onPageChange: setActivePage,
