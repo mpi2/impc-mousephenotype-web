@@ -52,7 +52,7 @@ const SmartTable = <T extends Model>(props: {
 
   const internalShowFilteringEnabled = filteringEnabled && !!props.filterFn && !customFiltering;
 
-  let mutatedData = props.data;
+  let mutatedData = props.data || [];
   if (props.filterFn) {
     mutatedData = mutatedData?.filter(item => props.filterFn(item, query));
   }

@@ -168,13 +168,17 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
           </TabContent>
         </Tab>
         <Tab eventKey="allData" title="All data">
-          <AllData routerIsReady={router.isReady}/>
+          <div className="mt-3">
+            <AllData routerIsReady={router.isReady}/>
+          </div>
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
-          <StatisticalAnalysis
-            mgiGeneAccessionId={gene.mgiGeneAccessionId}
-            routerIsReady={router.isReady}
-          />
+          <div className="mt-3">
+            <StatisticalAnalysis
+              mgiGeneAccessionId={gene.mgiGeneAccessionId}
+              routerIsReady={router.isReady}
+            />
+          </div>
         </Tab>
         { hasOneAlleleOrMore && (
           <Tab eventKey="allelesByPhenotype" title="Alleles by Phenotype">
