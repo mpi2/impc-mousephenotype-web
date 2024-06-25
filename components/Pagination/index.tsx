@@ -79,7 +79,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     if (data.length) {
       updatePageRange(internalPage, totalPages);
     }
-  }, [data, internalPage, internalPageSize]);
+  }, [data, internalPage, internalPageSize, totalPages]);
 
 
   const NavButtons = ({ shouldBeDisplayed, placement, style }: NavButtonsProps) => {
