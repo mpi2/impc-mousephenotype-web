@@ -17,7 +17,7 @@ export type GeneStatisticalResult = {
   maleMutantCount:    number;
   femaleMutantCount:  number;
   lifeStageName:      string;
-  pValue:             null | string;
+  pValue:             null | number;
   significant:        boolean;
   phenotype:          PhenotypeRef;
   topLevelPhenotypes: PhenotypeRef[] | null;
