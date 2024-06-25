@@ -132,7 +132,7 @@ type Props = {
   hasDataRelatedToPWG: boolean;
 };
 
-const StatisticalAnalysisChart = (props: Props) => {
+const GraphicalAnalysisChart = (props: Props) => {
   const { data, cat, sig, hasDataRelatedToPWG } = props;
   const chartRef = useRef<Chart>(null);
   const zoomButtonsRef = useRef<HTMLDivElement>(null);
@@ -285,7 +285,7 @@ const StatisticalAnalysisChart = (props: Props) => {
           .map((item, index) => {
             const color = colorArray[index];
             return (
-              <span className="grey">
+              <span className="grey" key={item}>
                 <span className={styles.icon} style={{backgroundColor: color}}>
                   {isByProcedure ? null : (
                     <BodySystemIcon name={item} color="white" size="1x"/>
@@ -348,4 +348,4 @@ const StatisticalAnalysisChart = (props: Props) => {
   );
 };
 
-export default StatisticalAnalysisChart;
+export default GraphicalAnalysisChart;

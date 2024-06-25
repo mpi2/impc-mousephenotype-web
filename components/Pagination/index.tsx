@@ -67,7 +67,6 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
       (_, i) => rangeStart + i
     );
     if (JSON.stringify(pageRange) !== JSON.stringify(newPageRange)) {
-      console.log('setting new page range');
       setPageRange(newPageRange);
     }
 

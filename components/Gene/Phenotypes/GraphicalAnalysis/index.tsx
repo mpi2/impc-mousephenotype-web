@@ -16,7 +16,7 @@ type Props = {
   routerIsReady: boolean;
 }
 
-const StatisticalAnalysis = (props: Props) => {
+const GraphicalAnalysis = (props: Props) => {
   const {
     mgiGeneAccessionId,
     routerIsReady,
@@ -92,7 +92,7 @@ const StatisticalAnalysis = (props: Props) => {
             }}
           >
             {options.map(({ label, category }) => (
-              <option value={category}>{label}</option>
+              <option key={category} value={category}>{label}</option>
             ))}
           </Form.Select>
           <button onClick={handleToggle} className={styles.inlineButton}>
@@ -120,4 +120,4 @@ const StatisticalAnalysis = (props: Props) => {
   );
 };
 
-export default StatisticalAnalysis;
+export default GraphicalAnalysis;
