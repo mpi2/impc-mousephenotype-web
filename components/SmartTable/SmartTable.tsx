@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import SortableTable from "@/components/SortableTable";
 import Pagination from "@/components/Pagination";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { TableCellProps } from "@/models/TableCell";
 import _ from "lodash";
 import type { Model } from "@/models";
@@ -36,10 +36,9 @@ const SmartTable = <T extends Model>(props: {
     onPageSizeChange: (newPageSize: number) => void;
     page: number;
     pageSize: number;
-  }
+  };
+  onSortChange?: (sortOptions: string) => void;
 }) => {
-  const [query, setQuery] = useState(undefined);
-  const [sortOptions, setSortOptions] = useState<string>('');
   const {
     filteringEnabled = true,
     customFiltering = false,
@@ -48,7 +47,10 @@ const SmartTable = <T extends Model>(props: {
     highlightRowFunction = () => false,
     highlightRowColor = '#00b0b0',
     pagination = null,
+    onSortChange = (_) => {},
   } = props;
+  const [query, setQuery] = useState(undefined);
+  const [sortOptions, setSortOptions] = useState<string>('');
 
   const internalShowFilteringEnabled = filteringEnabled && !!props.filterFn && !customFiltering;
 
@@ -57,11 +59,17 @@ const SmartTable = <T extends Model>(props: {
     mutatedData = mutatedData?.filter(item => props.filterFn(item, query));
   }
   const [field, order] = sortOptions.split(';');
-  if (field && order) {
+  if (field && order && !!pagination) {
     mutatedData = !!props.customSortFunction
       ? props.customSortFunction(mutatedData, field, order as "asc" | "desc")
       : _.orderBy(mutatedData, field, order as "asc" | "desc")
   }
+
+  useEffect(() => {
+    if (sortOptions) {
+      onSortChange(sortOptions);
+    }
+  }, [sortOptions]);
 
   const additionalControls = internalShowFilteringEnabled ?  (
     <Form.Control
