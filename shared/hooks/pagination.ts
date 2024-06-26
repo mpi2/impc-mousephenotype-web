@@ -8,8 +8,8 @@ export const usePagination = <T,>(data: Array<T> = []) => {
   );
 
   const paginatedData = data.slice(
-    (activePage - 1) * pageSize,
-    (activePage - 1) * pageSize + pageSize
+    activePage * pageSize,
+    activePage * pageSize + pageSize
   );
 
   useEffect(() => {
