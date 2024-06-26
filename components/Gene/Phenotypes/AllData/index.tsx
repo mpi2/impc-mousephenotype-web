@@ -36,7 +36,7 @@ type FilterOptions = {
 
 type SelectedValues = {
   procedureName: string;
-  topLevelPhenotype: string;
+  topLevelPhenotypeName: string;
   lifeStageName: string;
   zygosity: string;
   alleleSymbol: string;
@@ -52,7 +52,7 @@ const defaultFilterOptions: FilterOptions = {
 
 const defaultSelectedValues: SelectedValues= {
   procedureName: undefined,
-  topLevelPhenotype: undefined,
+  topLevelPhenotypeName: undefined,
   lifeStageName: undefined,
   zygosity: undefined,
   alleleSymbol: undefined,
@@ -199,8 +199,8 @@ const AllData = (props: Props) => {
           <FilterBox
             controlId="systemFilterAD"
             label="Phy. System"
-            value={selectedValues.topLevelPhenotype}
-            onChange={value => updateSelectedValue("topLevelPhenotype", value)}
+            value={selectedValues.topLevelPhenotypeName}
+            onChange={value => updateSelectedValue("topLevelPhenotypeName", value)}
             ariaLabel="Filter by physiological system"
             options={filterOptions.systems}
           />
@@ -275,6 +275,7 @@ const AllData = (props: Props) => {
           width: 0.8,
           label: "System",
           field: "topLevelPhenotypes",
+          sortField: "topLevelPhenotypeName",
           cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />,
         },
         {
