@@ -1,4 +1,3 @@
-import { orderBy } from "lodash";
 import { useContext, useEffect, useState } from "react";
 import {
   AlleleCell,
@@ -21,6 +20,7 @@ import { usePagination } from "@/hooks";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { PaginatedResponse } from "@/models";
+import { buildURL } from "@/utils";
 
 type Props = {
   routerIsReady: boolean;
@@ -94,12 +94,20 @@ const AllData = (props: Props) => {
   const { data, isError, isFetching } = useQuery({
     queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder],
     queryFn: () => {
-      let url = `/api/v1/genes/statistical-result/filtered/page?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&page=${activePage}&size=${pageSize}`;
+      let url = `/api/v1/genes/statistical-result/filtered/page`;
+      const params = {
+        mgiGeneAccessionId: gene.mgiGeneAccessionId,
+        page: activePage.toString(10),
+        size: pageSize.toString(10),
+        sortBy: sortField,
+        sort: sortOrder,
+      };
+
       Object.entries(selectedValues)
         .filter(([, value]) => !!value)
-        .forEach(([key, value]) => url += `&${key}=${value}`);
-      url += `&sortBy=${sortField}&sort=${sortOrder}`;
-      return fetchAPI(url);
+        .forEach(([key, value]) => params[key] = value);
+
+      return fetchAPI(buildURL(url, params));
     },
     select: (response: PaginatedResponse<GeneStatisticalResult>) => {
       return {

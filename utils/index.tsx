@@ -411,3 +411,17 @@ export const getBodyWeightDownloadData = (
       : [],
   };
 };
+
+export const buildURL = (url: string, params: Record<string, string>) => {
+  let newURL = url;
+  Object.entries(params)
+    .filter(([, value]) => !!value)
+    .forEach(([key, value], index) => {
+      if (index === 0) {
+        newURL += `?${key}=${value}`;
+      } else {
+        newURL += `&${key}=${value}`;
+      }
+    });
+  return newURL;
+}
