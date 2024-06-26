@@ -132,8 +132,6 @@ const AllData = (props: Props) => {
     const url = `/api/v1/genes/statistical-result/filtered`;
     const params = {
       mgiGeneAccessionId: gene.mgiGeneAccessionId,
-      page: activePage.toString(10),
-      size: pageSize.toString(10),
       sortBy: sortField,
       sort: sortOrder,
     };
