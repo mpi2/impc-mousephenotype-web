@@ -99,8 +99,8 @@ export const updateSummaryStatistics = (datasetSummary: Dataset, chartSeries: Ar
       label: `${_.capitalize(specimenSex)} ${
         sampleGroup === "control" ? "Control" : _.capitalize(zygosity)
       }`,
-      mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
-      stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
+      mean: Number(datasetSummary.summaryStatistics?.[meanKey]).toFixed(3),
+      stddev: Number(datasetSummary.summaryStatistics?.[stddevKey]).toFixed(3),
       count: datasetSummary.summaryStatistics?.[countKey] || 0,
     };
   });
