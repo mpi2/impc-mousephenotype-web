@@ -16,6 +16,7 @@ export type { Phenotype };
 export type { GeneralChartProps, ChartSeries } from './chart';
 export type { EventHandler, EventBus, Bus, EventMap } from './eventbus';
 export type { TableHeader } from './sortableTable';
+export type { PaginatedResponse } from './paginated-response';
 
 type Model =
   PhenotypeRef | typeof Gene | typeof Phenotype | MetabolismGeneData | Dataset

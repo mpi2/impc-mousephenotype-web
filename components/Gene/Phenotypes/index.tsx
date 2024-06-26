@@ -4,23 +4,21 @@ import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
-import { GeneSummary, GeneStatisticalResult } from "@/models/gene";
+import { GeneSummary } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
 import { PropsWithChildren, ReactNode, useContext, useEffect, useState } from "react";
 import { orderPhenotypedSelectionChannel, summarySystemSelectionChannel } from "@/eventChannels";
 import _ from 'lodash';
-import { AllelesStudiedContext } from "@/contexts";
 import { Variant } from "react-bootstrap/types";
 import { SectionHeader } from "@/components";
-import { faTriangleExclamation, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faTriangleExclamation, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const data = [];
 
 const StatisticalAnalysis = dynamic(
-  () => import("./StatisticalAnalysis"),
+  () => import("./GraphicalAnalysis"),
   {ssr: false}
 );
 
@@ -70,26 +68,7 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
 
 const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
-  const { setAllelesStudiedLoading } = useContext(AllelesStudiedContext);
   const [tabKey, setTabKey] = useState('significantPhenotypes');
-
-  const getMutantCount = (dataset: GeneStatisticalResult) => {
-    if (!dataset.maleMutantCount && !dataset.femaleMutantCount) {
-      return 'N/A';
-    }
-    return `${dataset.maleMutantCount || 0}m/${dataset.femaleMutantCount || 0}f`;
-  };
-
-  const {data: geneData, isFetching: isGeneFetching, isError: isGeneError} = useQuery({
-    queryKey: ['genes', router.query.pid, 'statistical-result'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/statistical-result`),
-    enabled: router.isReady,
-    select: data => data.map(dataset => ({
-      ...dataset,
-      pValue: Number(dataset.pValue),
-      mutantCount: getMutantCount(dataset)
-    })) as Array<GeneStatisticalResult>
-  });
 
   const {
     phenotypeData,
@@ -122,25 +101,11 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     }
   }, [tabKey]);
 
-  useEffect(() => setAllelesStudiedLoading(isGeneFetching), [isGeneFetching]);
 
-  const hasDataRelatedToPWG =
-    geneData?.some(item => item.projectName === 'PWG') ||
-    phenotypeData?.some(item => item.projectName === 'PWG');
+
+  const hasDataRelatedToPWG = phenotypeData?.some(item => item.projectName === 'PWG');
 
   const hasOneAlleleOrMore = _.uniq(phenotypeData?.map(p => p.alleleSymbol)).length > 1;
-
-  let sigPhenotypeErrorMessage = null;
-  let sigPhenotypeAlertVariant = "primary";
-  if (sigPhenotypeError === 'No content' && isGeneFetching) {
-    sigPhenotypeErrorMessage = <div>No results meet the p-value threshold,&nbsp; there may be data in all data tab</div>;
-    sigPhenotypeAlertVariant = "warning";
-  } else if (sigPhenotypeError === 'No content' && geneData?.length) {
-    sigPhenotypeErrorMessage = <div>No results meet the p-value threshold, view all data tab</div>;
-    sigPhenotypeAlertVariant = "warning";
-  } else if (sigPhenotypeError === 'No content' && !geneData && !phenotypeData) {
-    sigPhenotypeErrorMessage = <span>No phenotype data available for <i>{gene.geneSymbol}</i>.</span>;
-  }
 
   return (
     <Card id="data" style={{ position: 'relative' }}>
@@ -194,34 +159,26 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             isFetching={isPhenotypeFetching}
             isError={isPhenotypeError}
             data={phenotypeData}
-            errorMessage={sigPhenotypeErrorMessage}
-            alertVariant={sigPhenotypeAlertVariant}
+            errorMessage={<span>No phenotype data available for <i>{gene.geneSymbol}</i>.</span>}
           >
-            <SignificantPhenotypes
+          <SignificantPhenotypes
               phenotypeData={phenotypeData}
               hasDataRelatedToPWG={hasDataRelatedToPWG}
             />
           </TabContent>
         </Tab>
-        <Tab eventKey="allData" title={<span>All data ({isGeneFetching ? (<Spinner animation="border" size="sm" />): geneData?.length || 0})</span>}>
-          <TabContent
-            isFetching={isGeneFetching}
-            isError={isGeneError}
-            errorMessage={<span>No phenotype data available for <i>{gene.geneSymbol}</i>.</span>}
-            data={geneData}
-          >
-            <AllData data={geneData} />
-          </TabContent>
+        <Tab eventKey="allData" title="All data">
+          <div className="mt-3">
+            <AllData routerIsReady={router.isReady}/>
+          </div>
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
-          <TabContent
-            isFetching={isGeneFetching}
-            isError={isGeneError}
-            errorMessage={<span>No phenotype data available for <i>{gene.geneSymbol}</i>.</span>}
-            data={geneData}
-          >
-            <StatisticalAnalysis data={geneData} isVisible={"measurementsChart" === tabKey} />
-          </TabContent>
+          <div className="mt-3">
+            <StatisticalAnalysis
+              mgiGeneAccessionId={gene.mgiGeneAccessionId}
+              routerIsReady={router.isReady}
+            />
+          </div>
         </Tab>
         { hasOneAlleleOrMore && (
           <Tab eventKey="allelesByPhenotype" title="Alleles by Phenotype">
