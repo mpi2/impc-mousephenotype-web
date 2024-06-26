@@ -60,8 +60,9 @@ const SortableTable = ({
     width,
     disabled = false,
     children: childHeader,
+    sortField,
   }: TableHeader) => {
-    const selected = field === sort.field;
+    const selected = field === sort.field || sortField === sort.field;
     const handleSelect = () => {
       if (disabled) return;
       if (selected) {
@@ -69,7 +70,7 @@ const SortableTable = ({
       } else {
         setSort({
           ...sort,
-          field,
+          field: !!sortField ? sortField : field,
           sortFn,
         });
       }
