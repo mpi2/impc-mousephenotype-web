@@ -12,10 +12,11 @@ const SmartTable = <T extends Model>(props: {
   columns: Array<{
     width: number;
     label: string;
-    field?: keyof T,
-    cmp: ReactElement<TableCellProps<T>>,
+    field?: keyof T;
+    cmp: ReactElement<TableCellProps<T>>;
     // refers to disable sort functionality
-    disabled?: boolean
+    disabled?: boolean;
+    sortField?: string;
   }>,
   data: Array<T>,
   defaultSort: [string, "asc" | "desc"],

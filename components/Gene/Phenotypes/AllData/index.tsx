@@ -1,4 +1,3 @@
-import { orderBy } from "lodash";
 import { useContext, useEffect, useState } from "react";
 import {
   AlleleCell,
@@ -21,6 +20,7 @@ import { usePagination } from "@/hooks";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { PaginatedResponse } from "@/models";
+import { buildURL } from "@/utils";
 
 type Props = {
   routerIsReady: boolean;
@@ -36,7 +36,7 @@ type FilterOptions = {
 
 type SelectedValues = {
   procedureName: string;
-  topLevelPhenotype: string;
+  topLevelPhenotypeName: string;
   lifeStageName: string;
   zygosity: string;
   alleleSymbol: string;
@@ -52,7 +52,7 @@ const defaultFilterOptions: FilterOptions = {
 
 const defaultSelectedValues: SelectedValues= {
   procedureName: undefined,
-  topLevelPhenotype: undefined,
+  topLevelPhenotypeName: undefined,
   lifeStageName: undefined,
   zygosity: undefined,
   alleleSymbol: undefined,
@@ -94,12 +94,20 @@ const AllData = (props: Props) => {
   const { data, isError, isFetching } = useQuery({
     queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder],
     queryFn: () => {
-      let url = `/api/v1/genes/statistical-result/filtered/page?mgiGeneAccessionId=${gene.mgiGeneAccessionId}&page=${activePage}&size=${pageSize}`;
+      const url = `/api/v1/genes/statistical-result/filtered/page`;
+      const params = {
+        mgiGeneAccessionId: gene.mgiGeneAccessionId,
+        page: activePage.toString(10),
+        size: pageSize.toString(10),
+        sortBy: sortField,
+        sort: sortOrder,
+      };
+
       Object.entries(selectedValues)
         .filter(([, value]) => !!value)
-        .forEach(([key, value]) => url += `&${key}=${value}`);
-      url += `&sortBy=${sortField}&sort=${sortOrder}`;
-      return fetchAPI(url);
+        .forEach(([key, value]) => params[key] = value);
+
+      return fetchAPI(buildURL(url, params));
     },
     select: (response: PaginatedResponse<GeneStatisticalResult>) => {
       return {
@@ -119,6 +127,21 @@ const AllData = (props: Props) => {
     queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`),
     enabled: props.routerIsReady,
   });
+
+  const getDownloadData = () => {
+    const url = `/api/v1/genes/statistical-result/filtered`;
+    const params = {
+      mgiGeneAccessionId: gene.mgiGeneAccessionId,
+      sortBy: sortField,
+      sort: sortOrder,
+    };
+
+    Object.entries(selectedValues)
+      .filter(([, value]) => !!value)
+      .forEach(([key, value]) => params[key] = value);
+
+    return fetchAPI(buildURL(url, params));
+  }
 
   useEffect(() => {
     if (data && data.totalElements !== totalItems) {
@@ -199,8 +222,8 @@ const AllData = (props: Props) => {
           <FilterBox
             controlId="systemFilterAD"
             label="Phy. System"
-            value={selectedValues.topLevelPhenotype}
-            onChange={value => updateSelectedValue("topLevelPhenotype", value)}
+            value={selectedValues.topLevelPhenotypeName}
+            onChange={value => updateSelectedValue("topLevelPhenotypeName", value)}
             ariaLabel="Filter by physiological system"
             options={filterOptions.systems}
           />
@@ -217,7 +240,7 @@ const AllData = (props: Props) => {
       }
       additionalBottomControls={
         <DownloadData<GeneStatisticalResult>
-          data={() => data.content}
+          getData={getDownloadData}
           fileName={`${gene.geneSymbol}-all-phenotype-data`}
           fields={[
             { key: "alleleSymbol", label: "Allele" },
@@ -275,6 +298,7 @@ const AllData = (props: Props) => {
           width: 0.8,
           label: "System",
           field: "topLevelPhenotypes",
+          sortField: "topLevelPhenotypeName",
           cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />,
         },
         {
