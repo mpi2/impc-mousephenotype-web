@@ -94,7 +94,7 @@ const AllData = (props: Props) => {
   const { data, isError, isFetching } = useQuery({
     queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder],
     queryFn: () => {
-      let url = `/api/v1/genes/statistical-result/filtered/page`;
+      const url = `/api/v1/genes/statistical-result/filtered/page`;
       const params = {
         mgiGeneAccessionId: gene.mgiGeneAccessionId,
         page: activePage.toString(10),
@@ -127,6 +127,23 @@ const AllData = (props: Props) => {
     queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`),
     enabled: props.routerIsReady,
   });
+
+  const getDownloadData = () => {
+    const url = `/api/v1/genes/statistical-result/filtered`;
+    const params = {
+      mgiGeneAccessionId: gene.mgiGeneAccessionId,
+      page: activePage.toString(10),
+      size: pageSize.toString(10),
+      sortBy: sortField,
+      sort: sortOrder,
+    };
+
+    Object.entries(selectedValues)
+      .filter(([, value]) => !!value)
+      .forEach(([key, value]) => params[key] = value);
+
+    return fetchAPI(buildURL(url, params));
+  }
 
   useEffect(() => {
     if (data && data.totalElements !== totalItems) {
@@ -225,7 +242,7 @@ const AllData = (props: Props) => {
       }
       additionalBottomControls={
         <DownloadData<GeneStatisticalResult>
-          data={() => data.content}
+          getData={getDownloadData}
           fileName={`${gene.geneSymbol}-all-phenotype-data`}
           fields={[
             { key: "alleleSymbol", label: "Allele" },
