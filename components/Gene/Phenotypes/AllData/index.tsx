@@ -293,6 +293,7 @@ const AllData = (props: Props) => {
           width: 1,
           label: "Supporting data",
           cmp: <SupportingDataCell />,
+          disabled: true,
         },
         {
           width: 0.8,
