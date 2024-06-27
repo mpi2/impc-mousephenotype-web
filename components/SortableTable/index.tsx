@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import React, { useEffect, useState } from "react";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { TableHeader } from "@/models";
+import classNames from "classnames";
 
 type SortType = [string | ((any) => void), "asc" | "desc"];
 
@@ -87,7 +88,7 @@ const SortableTable = ({
             style={{
               fontWeight: !disabled && selected ? "bold" : "normal",
             }}
-            className={`${styles.inlineButton} ${styles.headerButton}`}
+            className={classNames(styles.inlineButton, styles.headerButton, {[styles.disabled]: disabled })}
             onClick={handleSelect}
           >
             {label}{" "}

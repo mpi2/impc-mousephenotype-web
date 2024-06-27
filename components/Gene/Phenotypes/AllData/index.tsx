@@ -21,6 +21,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { PaginatedResponse } from "@/models";
 import { buildURL } from "@/utils";
+import Skeleton from "react-loading-skeleton";
 
 type Props = {
   routerIsReady: boolean;
@@ -186,57 +187,65 @@ const AllData = (props: Props) => {
       }}
       customFiltering
       additionalTopControls={
-        <>
-          <FilterBox
-            controlId="queryFilterAD"
-            hideLabel
-            onChange={setQuery}
-            ariaLabel="Filter by parameters"
-            controlStyle={{ width: 150 }}
-          />
-          <FilterBox
-            controlId="procedureFilterAD"
-            label="Procedure"
-            value={selectedValues.procedureName}
-            onChange={value => updateSelectedValue("procedureName", value)}
-            ariaLabel="Filter by procedures"
-            options={filterOptions.procedures}
-          />
-          <FilterBox
-            controlId="alleleFilterAD"
-            label="Allele"
-            value={selectedValues.alleleSymbol}
-            onChange={value => updateSelectedValue("alleleSymbol", value)}
-            ariaLabel="Filter by allele"
-            options={filterOptions.alleles}
-          />
-          <FilterBox
-            controlId="zygosityFilterAD"
-            label="Zygosity"
-            value={selectedValues.zygosity}
-            onChange={value => updateSelectedValue("zygosity", value)}
-            ariaLabel="Filter by zygosity"
-            options={filterOptions.zygosities}
-            controlStyle={{ width: 100, textTransform: 'capitalize' }}
-          />
-          <FilterBox
-            controlId="systemFilterAD"
-            label="Phy. System"
-            value={selectedValues.topLevelPhenotypeName}
-            onChange={value => updateSelectedValue("topLevelPhenotypeName", value)}
-            ariaLabel="Filter by physiological system"
-            options={filterOptions.systems}
-          />
-          <FilterBox
-            controlId="lifeStageFilterAD"
-            label="Life Stage"
-            value={selectedValues.lifeStageName}
-            onChange={value => updateSelectedValue("lifeStageName", value)}
-            ariaLabel="Filter by life stage"
-            options={filterOptions.lifestages}
-            controlStyle={{ display: "inline-block", width: 100 }}
-          />
-        </>
+        !!filterData ? (
+          <>
+            <FilterBox
+              controlId="queryFilterAD"
+              hideLabel
+              onChange={setQuery}
+              ariaLabel="Filter by parameters"
+              controlStyle={{ width: 150 }}
+            />
+            <FilterBox
+              controlId="procedureFilterAD"
+              label="Procedure"
+              value={selectedValues.procedureName}
+              onChange={value => updateSelectedValue("procedureName", value)}
+              ariaLabel="Filter by procedures"
+              options={filterOptions.procedures}
+            />
+            <FilterBox
+              controlId="alleleFilterAD"
+              label="Allele"
+              value={selectedValues.alleleSymbol}
+              onChange={value => updateSelectedValue("alleleSymbol", value)}
+              ariaLabel="Filter by allele"
+              options={filterOptions.alleles}
+            />
+            <FilterBox
+              controlId="zygosityFilterAD"
+              label="Zygosity"
+              value={selectedValues.zygosity}
+              onChange={value => updateSelectedValue("zygosity", value)}
+              ariaLabel="Filter by zygosity"
+              options={filterOptions.zygosities}
+              controlStyle={{ width: 100, textTransform: 'capitalize' }}
+            />
+            <FilterBox
+              controlId="systemFilterAD"
+              label="Phy. System"
+              value={selectedValues.topLevelPhenotypeName}
+              onChange={value => updateSelectedValue("topLevelPhenotypeName", value)}
+              ariaLabel="Filter by physiological system"
+              options={filterOptions.systems}
+            />
+            <FilterBox
+              controlId="lifeStageFilterAD"
+              label="Life Stage"
+              value={selectedValues.lifeStageName}
+              onChange={value => updateSelectedValue("lifeStageName", value)}
+              ariaLabel="Filter by life stage"
+              options={filterOptions.lifestages}
+              controlStyle={{ display: "inline-block", width: 100 }}
+            />
+          </>
+        ): (
+          <>
+            <div><Skeleton width={100} height="1.75rem" inline /></div>
+            <div><Skeleton width={100} height="1.75rem" inline /></div>
+            <div><Skeleton width={100} height="1.75rem" inline /></div>
+          </>
+        )
       }
       additionalBottomControls={
         <DownloadData<GeneStatisticalResult>
@@ -293,6 +302,7 @@ const AllData = (props: Props) => {
           width: 1,
           label: "Supporting data",
           cmp: <SupportingDataCell />,
+          disabled: true,
         },
         {
           width: 0.8,

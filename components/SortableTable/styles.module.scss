@@ -38,6 +38,9 @@ td.procedureName {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
+  &.disabled {
+    cursor: default !important;
+  }
 }
 
 $button-margin: -0.3em;

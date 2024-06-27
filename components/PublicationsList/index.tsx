@@ -134,7 +134,10 @@ const PublicationsList = (props: PublicationListProps) => {
   });
 
 
-  useEffect(() => setDebouncedQuery(query), [query]);
+  useEffect(() => {
+    setDebouncedQuery(query);
+    setPage(0);
+  }, [query]);
   const updatePage = (value: number) => {
     setPage(value);
   };

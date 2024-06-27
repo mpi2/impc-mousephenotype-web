@@ -190,6 +190,11 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
       setInternalPage(0);
     }
   }, [data.length]);
+  useEffect(() => {
+    if (controlled && internalPage !== page) {
+      setInternalPage(page);
+    }
+  }, [controlled, page, internalPage]);
 
   const shouldDisplayTopButtons = (buttonsPlacement === 'top' || buttonsPlacement === 'both') && noTotalItems > 10;
   const shouldDisplayBottomButtons = (buttonsPlacement === 'bottom' || buttonsPlacement === 'both') && noTotalItems > 10;
