@@ -1,16 +1,17 @@
 import Search from "@/components/Search";
-import { Breadcrumb, Col, Container, Image, Row } from "react-bootstrap";
+import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import data from '../../mocks/data/landing-pages/cardiovascular.json';
 import PieChart from "@/components/PieChart";
 import SortableTable from "@/components/SortableTable";
 import styles from './styles.module.scss';
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { PublicationListProps } from "@/components/PublicationsList";
 import ScatterChart from "@/components/ScatterChart";
 import ChordDiagram from "@/components/ChordDiagram";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import Link from "next/link";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"), {ssr: false}
@@ -19,10 +20,10 @@ const PublicationsList = dynamic<PublicationListProps>(
 
 const ProcedureWithVersions = ({ procedure }) => {
   return (
-    <li key={procedure.name}>
+    <li>
       { procedure.name }&nbsp;
-      { procedure.versions.map(version => (
-        <>
+      { procedure.versions.map((version, index) => (
+        <Fragment key={index}>
           <a
             key={version.impressId}
             className="link primary"
@@ -30,7 +31,7 @@ const ProcedureWithVersions = ({ procedure }) => {
           >
             {version.name}
           </a>,&nbsp;
-        </>
+        </Fragment>
       )) }
     </li>
   )
@@ -39,6 +40,20 @@ const ProcedureWithVersions = ({ procedure }) => {
 const CardiovascularLandingPage = () => {
   const [ tableExtended, setTableExtended ] = useState(false);
   const phenotypeData = !tableExtended ? data.phenotypes.slice(0, 10) : data.phenotypes;
+  const chordLabels = [
+    { name: "cardiovascular system phenotype", count: 1622 },
+    { name: "vision/eye phenotype", count: 268 },
+    { name: "growth/size/body region phenotype", count: 712 },
+    { name: "embryo phenotype", count: 64 },
+    { name: "muscle phenotype ", count: 45 }
+  ];
+  const chordData = [
+    [ 590, 268, 712, 64, 45],
+    [ 268, 0, 26, 12, 4],
+    [ 712, 26, 0, 11, 6 ],
+    [ 64, 12, 11, 0, 0 ],
+    [ 45, 4, 6, 0, 0 ]
+  ];
   return (
     <>
       <Head>
@@ -58,6 +73,15 @@ const CardiovascularLandingPage = () => {
             <strong>Cardiovascular System</strong>
           </h1>
           <Container>
+            <Alert variant="landing-page">
+              <Alert.Heading>Attention</Alert.Heading>
+              <p>
+                This publication page was published when Data Release 11.0 was made available. <br/>
+                Most of the sections might be using data from the latest Data Release (21.0)
+              </p>
+              <hr/>
+              <Link className="link primary" href="#">Link to FTP site</Link>
+            </Alert>
             <p>
               This page introduces cardiovascular related phenotypes present in mouse lines produced by the IMPC.
               The cardiovascular system refers to the observable morphological and physiological characteristics
@@ -135,16 +159,16 @@ const CardiovascularLandingPage = () => {
               <div>
                 <h6>Young adult</h6>
                 <ul>
-                  {data && data.procedures.youngAdult.map(procedure => (
-                    <ProcedureWithVersions procedure={procedure} />
+                  {data && data.procedures.youngAdult.map((procedure, index) => (
+                    <ProcedureWithVersions key={index} procedure={procedure} />
                   ))}
                 </ul>
               </div>
               <div>
                 <h6>Embryo</h6>
                 <ul>
-                  {data && data.procedures.embryo.map(procedure => (
-                    <ProcedureWithVersions procedure={procedure} />
+                  {data && data.procedures.embryo.map((procedure, index) => (
+                    <ProcedureWithVersions key={index} procedure={procedure} />
                   ))}
                 </ul>
               </div>
@@ -169,7 +193,11 @@ const CardiovascularLandingPage = () => {
               The line thickness is correlated with the strength of the association. <br/><br/>
               Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be downloaded using the download icon.
             </p>
-            <ChordDiagram width={960} height={960} topTerms={["cardiovascular system phenotype"]}/>
+            <ChordDiagram
+              labels={chordLabels}
+              data={chordData}
+              topTerms={["cardiovascular system phenotype"]}
+            />
           </Container>
         </Card>
         <Card>

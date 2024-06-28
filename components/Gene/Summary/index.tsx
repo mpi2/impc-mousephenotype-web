@@ -1,7 +1,7 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
-import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp, faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import Card from "../../Card";
 import { BodySystem } from "../../BodySystemIcon";
@@ -11,34 +11,10 @@ import Head from "next/head";
 import { GeneSummary } from "@/models/gene";
 import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
-
-export const allBodySystems = [
-  "mortality/aging",
-  "embryo phenotype",
-  "reproductive system phenotype",
-  "growth/size/body region phenotype",
-  "homeostasis/metabolism phenotype",
-  "behavior/neurological phenotype",
-  "cardiovascular system phenotype",
-  "respiratory system phenotype",
-  "digestive/alimentary phenotype",
-  "renal/urinary system phenotype",
-  "limbs/digits/tail phenotype",
-  "skeleton phenotype",
-  "immune system phenotype",
-  "muscle phenotype",
-  "integument phenotype",
-  "craniofacial phenotype",
-  "hearing/vestibular/ear phenotype",
-  "adipose tissue phenotype",
-  "endocrine/exocrine gland phenotype",
-  "vision/eye phenotype",
-  "hematopoietic system phenotype",
-  "liver/biliary system phenotype",
-  "nervous system phenotype",
-  "pigmentation phenotype",
-];
-
+import { allBodySystems } from "@/utils";
+import { useEffect, useState } from "react";
+import { useScroll } from "@/hooks";
+import { AnimatePresence, motion } from "framer-motion";
 const CollectionItem = ({
   name,
   link,
@@ -73,12 +49,21 @@ type SummaryProps = {
 }
 const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
   const router = useRouter();
+  const [showTopButton, setShowTopButton ] = useState(false);
+  const [{perY, scrollDirection}] = useScroll();
+
+  useEffect(() => {
+    const showButton = perY >= 200 && scrollDirection === "UP";
+    if (showButton && !showTopButton) {
+      setShowTopButton(true);
+    }
+  }, [perY, scrollDirection]);
 
   const SYNONYMS_COUNT = 2;
 
   if (loading) {
     return (
-      <Card>
+      <Card id="summary">
         <div className={styles.subheadingCont}>
           <div className={styles.subheading}>
             <span className={styles.subheadingSection}>Gene</span>
@@ -95,7 +80,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
 
   if (error) {
     return (
-      <Card>
+      <Card id="summary">
         <div className={styles.subheadingCont}>
           <div className={styles.subheading}>
             <span className={styles.subheadingSection}>Gene</span>
@@ -135,7 +120,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
-    <Card style={{ padding: '2rem 2rem 0 2rem' }}>
+    <Card id="summary" style={{ padding: '2rem 2rem 0 2rem' }}>
       <Head>
         <title>
           {gene.geneSymbol} Mouse Gene Details | {gene.geneName} | International
@@ -144,7 +129,9 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
       </Head>
       <div className={styles.headingCont}>
         <h1 className="mt-2 mb-3">
-          <strong>{gene.geneSymbol}</strong>&nbsp;<span>|</span>&nbsp;{gene.geneName}
+          <strong><i>{gene.geneSymbol}</i></strong>
+          &nbsp;
+          <span>|</span>&nbsp;{gene.geneName}
         </h1>
       </div>
       <div className={styles.subheadingCont}>
@@ -265,7 +252,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
             )}
           </div>
         </Col>
-        <Col lg={6}>
+        <Col lg={6} className="mb-5">
           <h3>Data collections</h3>
           <Row className="mb-5">
             <Col md={4} className="pe-0">
@@ -317,7 +304,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           </Row>
           <Row>
             <Col lg={6}>
-              <a role="button" href="#order" className="btn impc-secondary-button">
+              <a role="button" href="#order" className="btn impc-primary-button">
                 {numOfAlleles} Allele products available
               </a>
             </Col>
@@ -344,6 +331,20 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           Embryo tissues
         </div>
       </div>
+      {showTopButton && (
+        <AnimatePresence>
+          <motion.button
+            className="btn impc-secondary-button back-to-top"
+            onClick={() => document.querySelector("#summary").scrollIntoView()}
+            layout
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+          >
+            <FontAwesomeIcon icon={faAngleUp}/>
+            Back to top
+          </motion.button>
+        </AnimatePresence>
+      )}
     </Card>
   );
 };

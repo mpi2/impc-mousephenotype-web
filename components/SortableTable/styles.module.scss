@@ -6,13 +6,13 @@
     line-height: 1.5;
   }
   &.striped thead tr th {
-    --bs-table-bg-type: #F3F5F8 !important;
+    --bs-table-bg: #F3F5F8 !important;
   }
   &.striped tbody > tr:nth-of-type(odd) > td {
-    --bs-table-bg-type: #FFF;
+    --bs-table-bg: #FFF;
   }
   &.striped tbody > tr:nth-of-type(even) > td {
-    --bs-table-bg-type: #F7FBFC;
+    --bs-table-bg: #F7FBFC;
   }
 }
 
@@ -38,6 +38,9 @@ td.procedureName {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
+  &.disabled {
+    cursor: default !important;
+  }
 }
 
 $button-margin: -0.3em;

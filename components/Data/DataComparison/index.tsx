@@ -3,16 +3,17 @@ import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
 import {
-  formatAlleleSymbol,
   formatPValue,
   getIcon,
   getSexLabel,
 } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dataset } from "@/models";
-import styles from "./styles.module.scss";
+import { Dataset, TableHeader } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
+import { AlleleSymbol } from "@/components";
+import Skeleton from "react-loading-skeleton";
+import { motion, AnimatePresence } from "framer-motion";
 
 type LastColumnProps = {
   isViabilityChart: boolean;
@@ -129,6 +130,27 @@ const DataComparison = (props: Props) => {
         ],
       };
 
+  const tableHeaders: Array<TableHeader> = [
+    { width: 3, label: "Parameter", field: "parameter" },
+    {
+      width: 1,
+      label: "Phenotyping Centre",
+      field: "phenotypingCentre",
+    },
+    { width: 2, label: "Allele", field: "alleleSymbol" },
+    { width: 1, label: "Zygosity", field: "zygosity" },
+    { width: 1, label: "Significant sex", field: "sex" },
+    { width: 1, label: "Life Stage", field: "lifeStageName" },
+    { width: 1, label: "Colony Id", field: "colonyId" },
+  ]
+    .concat(displayPValueColumns ? lastColumnHeader : [])
+    .filter((h) =>
+      displayPValueColumns ? h : !h.label.includes("Significant")
+    );
+
+  const numOfHeaders = tableHeaders.reduce(
+    (acc, header) => acc + (header.children ? header.children.length : 1), 0
+  );
   useEffect(() => {
     if (
       !!sorted[0]?.key &&
@@ -142,7 +164,7 @@ const DataComparison = (props: Props) => {
   return (
     <>
       {displayPValueThreshold && (
-        <div className="mt-4" style={{ color: "#797676", fontSize: "95%" }}>
+        <div style={{ color: "#797676", fontSize: "95%" }}>
           <span>
             P-values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) are
             marked as significant.
@@ -151,90 +173,55 @@ const DataComparison = (props: Props) => {
       )}
       <Pagination data={sorted}>
         {(pageData) => (
-          <>
+          <AnimatePresence>
             <SortableTable
               className="data-comparison-table"
-              doSort={(sort) => {
-                setSortOptions({
-                  prop: sort[0],
-                  order: sort[1],
-                });
-              }}
+              doSort={(sort) => setSortOptions({ prop: sort[0], order: sort[1]})}
               defaultSort={["parameter", "asc"]}
-              headers={[
-                { width: 3, label: "Parameter", field: "parameter" },
-                {
-                  width: 1,
-                  label: "Phenotyping Centre",
-                  field: "phenotypingCentre",
-                },
-                { width: 2, label: "Allele", field: "alleleSymbol" },
-                { width: 1, label: "Zygosity", field: "zygosity" },
-                { width: 1, label: "Significant sex", field: "sex" },
-                { width: 1, label: "Life Stage", field: "lifeStageName" },
-                { width: 1, label: "Colony Id", field: "colonyId" },
-              ]
-                .concat(displayPValueColumns ? lastColumnHeader : [])
-                .filter((h) =>
-                  displayPValueColumns ? h : !h.label.includes("Significant")
-                )}
+              headers={tableHeaders}
             >
               {pageData.map((d, i) => {
-                const allele = formatAlleleSymbol(d.alleleSymbol);
                 return (
-                  <tr
+                  <motion.tr
                     key={d.key}
                     className={getBackgroundColorForRow(d, i, selectedKey)}
                     onClick={() => onSelectParam(d.key)}
+                    layout
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+
                   >
                     <td>
                       {d.parameterName}
                     </td>
                     <td>{d.phenotypingCentre}</td>
                     <td>
-                      {allele[0]}
-                      <sup>{allele[1]}</sup>
+                      <AlleleSymbol symbol={d.alleleSymbol} withLabel={false}/>
                     </td>
                     <td>{d.zygosity}</td>
                     {displayPValueColumns && (
                       <td>
-                        {d.sex === "not_considered" ? (
-                          <OverlayTrigger
-                            placement="top"
-                            trigger={["hover", "focus"]}
-                            overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
-                          >
-                            <span className="me-2">
-                              <FontAwesomeIcon
-                                icon={getIcon(d.sex)}
-                                size="lg"
-                              />
-                            </span>
-                          </OverlayTrigger>
-                        ) : (
-                          <>
-                            {["male", "female", "not_considered"]
-                              .filter((sex) => d.sex === sex)
-                              .map((significantSex) => (
-                                <OverlayTrigger
-                                  placement="top"
-                                  trigger={["hover", "focus"]}
-                                  overlay={
-                                    <Tooltip>
-                                      {getSexLabel(significantSex)}
-                                    </Tooltip>
-                                  }
-                                >
-                                  <span className="me-2">
-                                    <FontAwesomeIcon
-                                      icon={getIcon(significantSex)}
-                                      size="lg"
-                                    />
-                                  </span>
-                                </OverlayTrigger>
-                              ))}
-                          </>
-                        )}
+                        {["male", "female", "not_considered"]
+                          .filter(sex => _.has(d, `pValue_${sex}`) && !!d[`pValue_${sex}`] && d[`pValue_${sex}`] < 0.0001)
+                          .map((significantSex, index) => (
+                            <OverlayTrigger
+                              key={index}
+                              placement="top"
+                              trigger={["hover", "focus"]}
+                              overlay={
+                                <Tooltip>
+                                  {getSexLabel(significantSex)}
+                                </Tooltip>
+                              }
+                            >
+                              <span className="me-2">
+                                <FontAwesomeIcon
+                                  icon={getIcon(significantSex)}
+                                  size="lg"
+                                />
+                              </span>
+                            </OverlayTrigger>
+                          ))}
                       </td>
                     )}
                     <td>{d.lifeStageName}</td>
@@ -245,11 +232,18 @@ const DataComparison = (props: Props) => {
                         isViabilityChart={isViabilityChart}
                       />
                     )}
-                  </tr>
+                  </motion.tr>
                 );
               })}
+              {pageData.length === 0 && (
+                <tr>
+                  {[...Array(numOfHeaders)].map((_, i) => (
+                    <td key={i}><Skeleton /></td>
+                  ))}
+                </tr>
+              )}
             </SortableTable>
-          </>
+          </AnimatePresence>
         )}
       </Pagination>
     </>

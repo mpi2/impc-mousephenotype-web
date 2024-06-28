@@ -1,5 +1,3 @@
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
@@ -11,6 +9,8 @@ import ChartSummary from "./ChartSummary/ChartSummary";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { GeneralChartProps } from "@/models";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
+import { fetchDatasetFromS3 } from "@/api-service";
+import { sortBy } from "lodash";
 
 const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -70,13 +70,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       datasetSummary.parameterName,
       datasetSummary.datasetId,
     ],
-    queryFn: () => {
-      const dataReleaseVersion =
-        process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest";
-      return fetch(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
-      ).then((res) => res.json());
-    },
+    queryFn: () => fetchDatasetFromS3(datasetSummary["datasetId"]),
     enabled: isVisible,
   });
 
@@ -90,7 +84,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       </Card>
     );
 
-  const totalCountData = [
+  const totalCountData = sortBy([
     {
       label: "Total WTs",
       value: data?.series.find(
@@ -109,9 +103,9 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         (d) => d.parameterStableId == viabilityParameterMap.both.heterozygote
       )?.dataPoint,
     },
-  ].filter((d) => d.value != 0);
+  ].filter((d) => d.value != 0), ["label"]);
 
-  const maleCountData = [
+  const maleCountData = sortBy([
     {
       label: "Total Male WT",
       value: data?.series.find(
@@ -130,9 +124,9 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         (d) => d.parameterStableId == viabilityParameterMap.male.homozygote
       )?.dataPoint,
     },
-  ].filter((d) => d.value != 0);
+  ].filter((d) => d.value != 0), ["label"]);
 
-  const femaleCountData = [
+  const femaleCountData = sortBy([
     {
       label: "Total Female WT",
       value: data?.series.find(
@@ -151,12 +145,16 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         (d) => d.parameterStableId == viabilityParameterMap.female.homozygote
       )?.dataPoint,
     },
-  ].filter((d) => d.value != 0);
+  ].filter((d) => d.value != 0), ["label"]);
 
   return (
     <>
       <ChartSummary
-        title={`${datasetSummary["geneSymbol"]} ${datasetSummary["parameterName"]} data`}
+        title={
+          <>
+            <i>{datasetSummary["geneSymbol"]}</i> {datasetSummary["parameterName"]} data
+          </>
+        }
         datasetSummary={datasetSummary}
         displayPValueStatement={false}
         additionalContent={
@@ -180,8 +178,8 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       >
         <p>
           A {datasetSummary["procedureName"]} phenotypic assay was performed on
-          a mutant strain carrying the {allele[0]}
-          <sup>{allele[1]}</sup> allele. The charts below show the proportion of
+          a mutant strain carrying the <i>{allele[0]}
+          <sup>{allele[1]}</sup></i> allele. The charts below show the proportion of
           wild type, heterozygous, and homozygous offspring.
         </p>
       </ChartSummary>

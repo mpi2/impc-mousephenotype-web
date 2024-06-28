@@ -79,7 +79,7 @@ const IntermediateVector = ({
                       <Link
                         href={`/design/${p.designLink}`}
                         scroll={false}
-                        className="secondary"
+                        className="link primary"
                       >
                         {p.designOligos ?? "View design oligo"}{" "}
                       </Link>

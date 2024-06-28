@@ -23,6 +23,8 @@ import IntermediateVector from "@/components/Allele/IVP";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import Skeleton from "react-loading-skeleton";
+import classNames from "classnames";
+import { AlleleSymbol } from "@/components";
 
 const ProductItem = ({
   name,
@@ -38,21 +40,19 @@ const ProductItem = ({
   >
     {name}
     <p className="mt-2">
-      <a href={link}>
-        <Button
-          variant={hasData ? "secondary" : "grey"}
-          disabled={!hasData}
-          style={{ minWidth: 120 }}
-        >
-          {hasData ? (
-            <span className="white">
-              <FontAwesomeIcon icon={faCartShopping} />
-              Order
-            </span>
-          ) : (
-            "Not available"
-          )}
-        </Button>
+      <a
+        className={classNames("btn", { "btn-grey impc-base-button": !hasData, "impc-primary-button": hasData })}
+        style={{ minWidth: 120, cursor: hasData ? 'pointer' : 'initial' }}
+        href={link}
+      >
+        {hasData ? (
+          <span>
+            <FontAwesomeIcon icon={faCartShopping} />
+            Order
+          </span>
+        ) : (
+          "Not available"
+        )}
       </a>
     </p>
   </div>
@@ -77,12 +77,11 @@ const Gene = () => {
       const hash = window.location.hash;
       if (hash.length > 0) {
         setTimeout(() => {
-          document.querySelector(window.location.hash).scrollIntoView();
+          document.querySelector(window.location.hash)?.scrollIntoView();
         }, 500);
       }
     }
   }, [allele]);
-
 
   if (isLoading || !allele) {
     return (
@@ -171,16 +170,13 @@ const Gene = () => {
               >
                 <FontAwesomeIcon icon={faArrowLeft}/>
                 &nbsp;
-                Go Back to {allele.geneSymbol || <Skeleton style={{width: '50px'}} inline/>}
+                Go Back to {<i>{allele.geneSymbol}</i> || <Skeleton style={{width: '50px'}} inline/>}
               </Link>
             </span>
           </div>
           <p className={`${styles.subheading} mt-2`}>ALLELE</p>
           <h1 className="mb-2 mt-2">
-            <strong>
-              {allele.geneSymbol}
-              <sup>{allele.alleleName}</sup>
-            </strong>{" "}
+            <AlleleSymbol symbol={`${allele.geneSymbol}<${allele.alleleName}>`} withLabel={false}></AlleleSymbol>
           </h1>
           <p className="mb-4 grey">{alleleDescription}</p>
           <div style={{display: "flex", flexWrap: "wrap"}}>
@@ -233,7 +229,7 @@ const Gene = () => {
           <Link
             href={`/genes/${pid}/#order`}
             scroll={false}
-            className="secondary"
+            className="primary link"
           >
             See all alleles for the gene{" "}
             <FontAwesomeIcon icon={faArrowRightLong} />

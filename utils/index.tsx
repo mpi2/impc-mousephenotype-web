@@ -1,4 +1,3 @@
-import React from "react";
 import _ from "lodash";
 import {
   faMars,
@@ -8,6 +7,33 @@ import {
 import { Dataset } from "@/models";
 import moment from "moment";
 
+
+export const allBodySystems = [
+  'adipose tissue phenotype',
+  'behavior/neurological phenotype',
+  'cardiovascular system phenotype',
+  'craniofacial phenotype',
+  'digestive/alimentary phenotype',
+  'embryo phenotype',
+  'endocrine/exocrine gland phenotype',
+  'growth/size/body region phenotype',
+  'hearing/vestibular/ear phenotype',
+  'hematopoietic system phenotype',
+  'homeostasis/metabolism phenotype',
+  'immune system phenotype',
+  'integument phenotype',
+  'limbs/digits/tail phenotype',
+  'liver/biliary system phenotype',
+  'mortality/aging',
+  'muscle phenotype',
+  'nervous system phenotype',
+  'pigmentation phenotype',
+  'renal/urinary system phenotype',
+  'reproductive system phenotype',
+  'respiratory system phenotype',
+  'skeleton phenotype',
+  'vision/eye phenotype'
+];
 export const formatBodySystems = (systems: string[] | string = []) => {
   return _.capitalize(
     (typeof systems === "string" ? systems : systems.join(", "))
@@ -63,11 +89,10 @@ export const toSentenceCase = (camelCase) => {
   return "";
 };
 
-export const csvToJSON = (csv: string) => {
+export const csvToJSON = (csv: string, valueSeparator = ",") => {
   const lines = csv.split("\n");
   const result = [];
-  const headers = lines[0].split(",");
-
+  const headers = lines[0].split(valueSeparator);
   for (let i = 1; i < lines.length; i++) {
     const obj: any = {};
 
@@ -75,7 +100,7 @@ export const csvToJSON = (csv: string) => {
       continue;
     }
 
-    const words = lines[i].split(",");
+    const words = lines[i].split(valueSeparator);
     for (var j = 0; j < words.length; j++) {
       obj[headers[j].trim()] = words[j];
     }
@@ -109,14 +134,12 @@ export const getIcon = (sex: string) => {
 
 export const getSmallestPValue = (summaries: Array<Dataset>): number => {
   const pValues = summaries
-    .map((d) => {
-      const statMethodPValueKey =
-        d.sex === "female" ? "femaleKoEffectPValue" : "maleKoEffectPValue";
-      const pValueFromStatMethod =
-        d.statisticalMethod?.attributes?.[statMethodPValueKey];
-      return d.reportedPValue < pValueFromStatMethod
-        ? d.reportedPValue
-        : pValueFromStatMethod;
+    .flatMap((d) => {
+      return [
+        d.statisticalMethod?.attributes?.femaleKoEffectPValue,
+        d.statisticalMethod?.attributes?.maleKoEffectPValue,
+        d.reportedPValue,
+      ]
     })
     .filter((value) => !!value);
   return Math.min(...pValues, 1);
@@ -133,8 +156,12 @@ export const getDatasetByKey = (
       zygosity,
       phenotypingCentre,
       colonyId,
+      significantPhenotype,
+      lifeStageName,
+      sex
     } = dataset;
-    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
+    const phenotypeId = significantPhenotype?.id || '';
+    const key = `${phenotypeId}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}-${lifeStageName}-${sex}`;
     return key === keyToFind;
   });
 };
@@ -241,8 +268,8 @@ export const getPhenStatReadyData = (datasetMetadata: Dataset, data: any) => {
 export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
   const fileName = `${datasetMetadata.parameterName}_${datasetMetadata.mgiGeneAccessionId}`;
   const outputData = [];
-  data.series.forEach((series) => {
-    series.observations.forEach((observation) => {
+  data?.series.forEach((series) => {
+    series?.observations.forEach((observation) => {
       let row = {};
       const age = calculateAgeInWeeks(
         observation.specimenDateOfBirth,
@@ -384,3 +411,17 @@ export const getBodyWeightDownloadData = (
       : [],
   };
 };
+
+export const buildURL = (url: string, params: Record<string, string>) => {
+  let newURL = url;
+  Object.entries(params)
+    .filter(([, value]) => !!value)
+    .forEach(([key, value], index) => {
+      if (index === 0) {
+        newURL += `?${key}=${value}`;
+      } else {
+        newURL += `&${key}=${value}`;
+      }
+    });
+  return newURL;
+}

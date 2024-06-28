@@ -12,37 +12,13 @@ import { useQuery } from "@tanstack/react-query";
 import { PhenotypeSearchResponse, PhenotypeSearchItem } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { ReactNode, useMemo, useState } from "react";
+import { surroundWithMarkEl } from "@/utils/results-page";
+import { allBodySystems } from "@/utils";
 
 type Props = {
-  phenotype: PhenotypeSearchItem
+  phenotype: PhenotypeSearchItem;
+  query: string;
 }
-
-const systems = [
-  "mortality/aging",
-  "embryo phenotype",
-  "reproductive system phenotype",
-  "growth/size/body region phenotype",
-  "homeostasis/metabolism phenotype",
-  "behavior/neurological phenotype",
-  "cardiovascular system phenotype",
-  "respiratory system phenotype",
-  "digestive/alimentary phenotype",
-  "renal/urinary system phenotype",
-  "limbs/digits/tail phenotype",
-  "skeleton phenotype",
-  "immune system phenotype",
-  "muscle phenotype",
-  "integument phenotype",
-  "craniofacial phenotype",
-  "hearing/vestibular/ear phenotype",
-  "adipose tissue phenotype",
-  "endocrine/exocrine gland phenotype",
-  "vision/eye phenotype",
-  "hematopoietic system phenotype",
-  "liver/biliary system phenotype",
-  "nervous system phenotype",
-  "pigmentation phenotype",
-].sort((a, b) => a.localeCompare(b));
 
 const FilterBadge = ({ children, onClick, icon, isSelected }: { children: ReactNode, onClick: () => void, icon?: any, isSelected: boolean }) => (
   <Badge className={`badge ${isSelected ? 'active' : ''} `} pill bg="badge-secondary" onClick={onClick}>
@@ -58,6 +34,7 @@ const PhenotypeResult = ({
     geneCountNum,
     topLevelParentsArray,
   },
+  query,
 }: Props) => {
   const router = useRouter();
   const synonymsArray = synonyms.split(";");
@@ -70,9 +47,9 @@ const PhenotypeResult = ({
         }}
       >
         <Col>
-          <h4 className="mb-2 blue-dark">{phenotypeName}</h4>
+          <h4 className="mb-2 blue-dark">{surroundWithMarkEl(phenotypeName, query)}</h4>
           <p className="grey small">
-            <strong>Synomyms:</strong> {synonymsArray.join(", ")}
+            <strong>Synomyms:</strong> {surroundWithMarkEl(synonymsArray.join(", "), query)}
           </p>
           {!!geneCountNum && geneCountNum !== 0 ? (
             <p className="small grey">
@@ -111,7 +88,17 @@ const PhenotypeResults = ({query}: { query?: string }) => {
       mpId: mpId.replace(`___${mpTerm}`, ''),
       mpTerm,
     }
-  }
+  };
+
+  const updateSortByOntology = (value: 'asc' | 'desc') => {
+    setSortGenes(null);
+    setSort(value);
+  };
+
+  const updateSortByGenes = (value: 'asc' | 'desc') => {
+    setSort(null);
+    setSortGenes(value);
+  };
 
   const { data, isLoading, isError} = useQuery({
     queryKey: ['search', 'phenotypes', query],
@@ -138,7 +125,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
     ) : data;
   }, [data, selectedSystem]);
 
-  const getSortedData = () => {
+  const sortedData = useMemo(() => {
     if (!!sortGenes || !!sort) {
       return filteredData.sort(({ intermediateLevelParentsArray: p1, geneCountNum: count1 }, { intermediateLevelParentsArray: p2, geneCountNum: count2 }) => {
         if (sort) {
@@ -149,8 +136,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
       });
     }
     return filteredData;
-  }
-
+  }, [sort, sortGenes, filteredData]);
 
   return (
     <Container style={{ maxWidth: 1240 }}>
@@ -199,7 +185,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                 }}
               >
                 <option value={"all"}>All</option>
-                {systems.map(system => (
+                {allBodySystems.map(system => (
                   <option value={system} key={`system_${system}`}>
                     {system}
                   </option>
@@ -207,7 +193,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
               </Form.Select>
             </div>
             <Pagination
-              data={getSortedData()}
+              data={sortedData}
               additionalTopControls={
                 <div className="filtersWrapper">
                   Sort by:
@@ -216,14 +202,14 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                     <FilterBadge
                       isSelected={sort === 'asc'}
                       icon={faCaretUp}
-                      onClick={() => setSort('asc')}
+                      onClick={() => updateSortByOntology('asc')}
                     >
                       Asc.
                     </FilterBadge>
                     <FilterBadge
                       isSelected={sort === 'desc'}
                       icon={faCaretDown}
-                      onClick={() => setSort('desc')}
+                      onClick={() => updateSortByOntology('desc')}
                     >
                       Desc.
                     </FilterBadge>
@@ -233,14 +219,14 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                     <FilterBadge
                       isSelected={sortGenes === 'asc'}
                       icon={faCaretUp}
-                      onClick={() => setSortGenes('asc')}
+                      onClick={() => updateSortByGenes('asc')}
                     >
                       Asc.
                     </FilterBadge>
                     <FilterBadge
                       isSelected={sortGenes === 'desc'}
                       icon={faCaretDown}
-                      onClick={() => setSortGenes('desc')}
+                      onClick={() => updateSortByGenes('desc')}
                     >
                       Desc.
                     </FilterBadge>
@@ -259,7 +245,7 @@ const PhenotypeResults = ({query}: { query?: string }) => {
                 return (
                   <>
                     {pageData.map((p) => (
-                      <PhenotypeResult phenotype={p} key={p.entityId}/>
+                      <PhenotypeResult phenotype={p} key={p.entityId} query={query} />
                     ))}
                   </>
                 );

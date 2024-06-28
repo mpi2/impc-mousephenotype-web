@@ -38,8 +38,7 @@ const shapes = { male: "triangle", female: "circle" };
 const pointRadius = 5;
 
 const getBoxPlotDataset = (series, zygosity) => {
-  const boxPlotSeries = [...series].sort((a, b) => (a.sex > b.sex ? 1 : -1));
-  const labels = boxPlotSeries.map(({ sex, sampleGroup }) => {
+  const labels = series.map(({ sex, sampleGroup }) => {
     const labelSex = sex[0].toUpperCase() + sex.slice(1);
     const labelZyg =
       zygosity === "homozygote"
@@ -56,10 +55,10 @@ const getBoxPlotDataset = (series, zygosity) => {
     datasets: [
       {
         type: "boxplot" as const,
-        backgroundColor: (d) => bgColors[boxPlotSeries[d.index]?.sampleGroup],
-        data: boxPlotSeries.map((s) => s.data.map((i) => +i.dataPoint)),
-        borderColor: (d) => borderColors[boxPlotSeries[d.index]?.sampleGroup],
-        itemStyle: (d) => shapes[boxPlotSeries[d.index]?.sex],
+        backgroundColor: (d) => bgColors[series[d.index]?.sampleGroup],
+        data: series.map((s) => s.data.map((i) => +i.dataPoint)),
+        borderColor: (d) => borderColors[series[d.index]?.sampleGroup],
+        itemStyle: (d) => shapes[series[d.index]?.sex],
         borderWidth: 2,
         itemRadius: 0,
         padding: 100,

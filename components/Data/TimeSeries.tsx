@@ -1,10 +1,4 @@
 import {
-  faDownload,
-  faExternalLinkAlt,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
@@ -17,18 +11,14 @@ import {
   BarController,
 } from "chart.js";
 import {
-  Button,
-  ButtonGroup,
   Col,
   Form,
   Row,
   Table,
-  ToggleButton,
 } from "react-bootstrap";
 import Card from "@/components/Card";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { useQuery } from "@tanstack/react-query";
-import moment from "moment";
 import _ from "lodash";
 import { useState } from "react";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
@@ -36,6 +26,8 @@ import { Chart } from "react-chartjs-2";
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
 import DownloadData from "../DownloadData";
 import { getDownloadData } from "@/utils";
+import { GeneralChartProps } from "@/models";
+import { fetchDatasetFromS3 } from "@/api-service";
 
 ChartJS.register(
   CategoryScale,
@@ -104,7 +96,7 @@ const countSpecimens = (series, sex: string, sampleGroup: string) => {
   return new Set(selectedSeries.observations.map((d) => d.specimenId)).size;
 };
 
-const TimeSeries = ({ datasetSummary, isVisible }) => {
+const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
   const [viewSMA, setViewSMA] = useState(false);
   const getLineSeries = (dataSeries, sex, sampleGroup, zygosity) => {
     if (!dataSeries) {
@@ -256,13 +248,7 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
       datasetSummary.parameterName,
       datasetSummary.datasetId,
     ],
-    queryFn: () => {
-      const dataReleaseVersion =
-        process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest";
-      return fetch(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
-      ).then((res) => res.json());
-    },
+    queryFn: () => fetchDatasetFromS3(datasetSummary["datasetId"]),
     select: (response) => {
       const dataSeries = response.series;
       const femaleWTPoints = getLineSeries(
@@ -489,6 +475,11 @@ const TimeSeries = ({ datasetSummary, isVisible }) => {
             )}
           </Card>
         </Col>
+        {!!children && (
+          <Col lg={12}>
+            {children}
+          </Col>
+        )}
         <Col>
           <Card>
             <h2>Experimental data download</h2>

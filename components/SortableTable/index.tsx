@@ -1,20 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import _ from "lodash";
 import React, { useEffect, useState } from "react";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { TableHeader } from "@/models";
+import classNames from "classnames";
 
 type SortType = [string | ((any) => void), "asc" | "desc"];
-
-type Header = {
-  width: number;
-  label: string;
-  field?: string;
-  sortFn?: (any) => void;
-  disabled?: boolean;
-  children?: Header[];
-};
 
 const SortableTable = ({
   headers,
@@ -23,7 +15,7 @@ const SortableTable = ({
   children,
   className,
 }: {
-  headers: Header[];
+  headers: TableHeader[];
   defaultSort?: SortType;
   doSort?: (s: SortType) => void;
   children: React.ReactNode;
@@ -69,8 +61,9 @@ const SortableTable = ({
     width,
     disabled = false,
     children: childHeader,
-  }: Header) => {
-    const selected = field === sort.field;
+    sortField,
+  }: TableHeader) => {
+    const selected = field === sort.field || sortField === sort.field;
     const handleSelect = () => {
       if (disabled) return;
       if (selected) {
@@ -78,7 +71,7 @@ const SortableTable = ({
       } else {
         setSort({
           ...sort,
-          field,
+          field: !!sortField ? sortField : field,
           sortFn,
         });
       }
@@ -95,7 +88,7 @@ const SortableTable = ({
             style={{
               fontWeight: !disabled && selected ? "bold" : "normal",
             }}
-            className={`${styles.inlineButton} ${styles.headerButton}`}
+            className={classNames(styles.inlineButton, styles.headerButton, {[styles.disabled]: disabled })}
             onClick={handleSelect}
           >
             {label}{" "}
@@ -120,27 +113,22 @@ const SortableTable = ({
   return (
     <div className={styles.tableWrapper}>
       <Table bordered className={`${styles.table} ${styles.striped} ${className}`}>
-        {hasNested &&
-          headers.map(({children: childHeaders}) => {
-            if (childHeaders && childHeaders.length) {
-              return <colgroup span={childHeaders.length}/>;
-            }
-            return <col/>;
-          })}
         <thead>
-        <tr>
-          {headers.map((header, index) => (
-            <SortableTh key={index} {...header} />
-          ))}
-        </tr>
-        {hasNested &&
-          headers.map(({children: childHeaders}) => {
+          <tr>
+            {headers.map((header, index) => (
+              <SortableTh key={index} {...header} />
+            ))}
+          </tr>
+          <tr>
+          {hasNested &&
+            headers.map(({children: childHeaders}) => {
             if (childHeaders && childHeaders.length) {
               return childHeaders.map((childHeader) => (
                   <SortableTh {...childHeader} />
                 ));
               }
             })}
+          </tr>
         </thead>
         <tbody>{children}</tbody>
       </Table>

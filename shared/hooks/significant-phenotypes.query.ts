@@ -2,6 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GenePhenotypeHits } from "@/models/gene";
 
+const PPIParameters = [
+  "PPI1", // % PP1
+  "PPI2", // % PP2
+  "PPI3", // % PP3
+  "PPI4", // % PP4
+];
+
 export const useSignificantPhenotypesQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
@@ -10,6 +17,7 @@ export const useSignificantPhenotypesQuery = (
     data,
     isLoading,
     isError,
+    isFetching,
     ...rest } = useQuery({
     queryKey: ['genes', mgiGeneAccessionId, 'phenotype-hits'],
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`),
@@ -18,13 +26,13 @@ export const useSignificantPhenotypesQuery = (
       const group: Record<string, GenePhenotypeHits> = {};
       data.forEach(item => {
         const {
-          phenotype: { id, name },
+          datasetId,
+          phenotype: { id},
           alleleAccessionId,
           zygosity,
           sex,
           pValue,
-          alleleSymbol,
-          lifeStageName
+          lifeStageName,
         } = item;
         const key = `${id}-${alleleAccessionId}-${zygosity}-${lifeStageName}`;
         const pValueKey = `pValue_${sex}`;
@@ -33,7 +41,8 @@ export const useSignificantPhenotypesQuery = (
           group[key].sex = sex;
         } else if (group[key] !== undefined && (group[key][pValueKey] === undefined || group[key][pValueKey] > pValue)) {
           group[key][pValueKey] = pValue;
-        } if (group[key] === undefined) {
+        }
+        if (group[key] === undefined) {
           group[key] = {
             ...item,
             [pValueKey]: pValue,
@@ -41,7 +50,17 @@ export const useSignificantPhenotypesQuery = (
             phenotypeName: item.phenotype.name,
             id: item.phenotype.id,
             phenotypeId: item.phenotype.id,
+            numberOfDatasets: 1,
           };
+        } else if (group[key].datasetId !== datasetId) {
+          // check for PPI related parameters and only count the PPI1, PPI2, PPI3 and PPI4
+          if (group[key].procedureStableId === 'IMPC_ACS_003') {
+            if (PPIParameters.some(param => item.parameterName.includes(param))) {
+              group[key].numberOfDatasets += 1;
+            }
+          } else {
+            group[key].numberOfDatasets += 1;
+          }
         }
       });
       return Object.values(group).filter(phenotype => !phenotype.procedureStableId.includes("HIS"));
@@ -52,6 +71,7 @@ export const useSignificantPhenotypesQuery = (
     phenotypeData: data as Array<GenePhenotypeHits>,
     isPhenotypeLoading: isLoading,
     isPhenotypeError: isError,
+    isPhenotypeFetching: isFetching,
     ...rest,
   };
 };

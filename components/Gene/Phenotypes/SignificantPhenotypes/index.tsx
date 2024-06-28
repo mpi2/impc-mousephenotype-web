@@ -11,18 +11,15 @@ import { GenePhenotypeHits } from "@/models/gene";
 import _ from 'lodash';
 import { DownloadData, FilterBox } from "@/components";
 import { summarySystemSelectionChannel } from "@/eventChannels";
+import { SupportingDataCell } from "./custom-cells";
 
 
 const SignificantPhenotypes = (
   {
-    phenotypeData,
-    isPhenotypeLoading,
-    isPhenotypeError,
+    phenotypeData = [],
     hasDataRelatedToPWG,
   }: {
     phenotypeData: Array<GenePhenotypeHits>,
-    isPhenotypeLoading: boolean,
-    isPhenotypeError: boolean,
     hasDataRelatedToPWG: boolean,
   }) => {
   const gene = useContext(GeneContext);
@@ -30,6 +27,7 @@ const SignificantPhenotypes = (
   const [selectedAllele, setSelectedAllele] = useState<string>(undefined);
   const [selectedSystem, setSelectedSystem] = useState<string>(undefined);
   const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
+  const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
 
   useEffect(() => {
     const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
@@ -43,20 +41,10 @@ const SignificantPhenotypes = (
     }
   }, []);
 
-  if (isPhenotypeLoading) {
-    return <p className="grey" style={{ padding: '1rem' }}>Loading...</p>
-  }
-  if (isPhenotypeError) {
-    return (
-      <Alert variant="primary" className="mt-3">
-        No significant phenotypes for {gene.geneSymbol}.
-      </Alert>
-    )
-  }
-
   const alleles = _.uniq(phenotypeData.map(phenotype => phenotype.alleleSymbol));
   const systems = _.uniq(phenotypeData.flatMap(p => p.topLevelPhenotypes.map(tl => tl.name)));
   const lifeStages = _.uniq(phenotypeData.map(p => p.lifeStageName));
+  const zygosities = _.uniq(phenotypeData.map(p => p.zygosity));
   const filteredPhenotypeData = phenotypeData.filter(
     ({
        phenotypeName,
@@ -64,17 +52,34 @@ const SignificantPhenotypes = (
        alleleSymbol,
        lifeStageName,
        topLevelPhenotypes,
+       zygosity,
      }) =>
       (!selectedAllele || alleleSymbol === selectedAllele) &&
       (!query || `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query)) &&
       (!selectedSystem || (topLevelPhenotypes ?? []).some(({ name }) => name === selectedSystem)) &&
-      (!selectedLifeStage || lifeStageName === selectedLifeStage)
+      (!selectedLifeStage || lifeStageName === selectedLifeStage) &&
+      (!selectedZygosity || zygosity === selectedZygosity)
   );
+
+  const sortPhenotypes = (data: Array<GenePhenotypeHits>, field: keyof GenePhenotypeHits, order: "asc" | "desc") => {
+    if (field === "pValue") {
+      return data.sort((p1, p2) => {
+        if (!p1.pValue) {
+          return 1;
+        } else if (!p2.pValue) {
+          return -1;
+        }
+        return order === "asc" ? p1.pValue - p2.pValue : p2.pValue - p1.pValue;
+      });
+    }
+    return _.orderBy(data, field, order);
+  };
 
   return (
     <SmartTable<GenePhenotypeHits>
       data={filteredPhenotypeData}
       defaultSort={["phenotypeName", "asc"]}
+      customSortFunction={sortPhenotypes}
       customFiltering
       additionalTopControls={
         <>
@@ -84,6 +89,14 @@ const SignificantPhenotypes = (
             onChange={setQuery}
             ariaLabel="Filter by parameters"
             controlStyle={{ width: 150 }}
+          />
+          <FilterBox
+            controlId="zygosityFilterSP"
+            label="Zygosity"
+            onChange={setSelectedZygosity}
+            ariaLabel="Filter by zygosity"
+            options={zygosities}
+            controlStyle={{ width: 100, textTransform: 'capitalize' }}
           />
           <FilterBox
             controlId="alleleFilter"
@@ -127,7 +140,7 @@ const SignificantPhenotypes = (
               {
                 key: 'pValue',
                 label: 'Most significant P-value',
-                getValueFn: (item) => item?.pValue?.toString(10) || '1'
+                getValueFn: (item) => item?.pValue?.toString(10) || '-'
               },
             ]}
           />
@@ -150,7 +163,13 @@ const SignificantPhenotypes = (
           cmp: <PlainTextCell style={{ fontWeight: 'bold' }} />
         },
         {
-          width: 1.8,
+          width: 1,
+          label: "Supporting data",
+          field: "numberOfDatasets",
+          cmp: <SupportingDataCell />
+        },
+        {
+          width: 0.8,
           label: "System",
           field: "topLevelPhenotypeName",
           cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes"/>

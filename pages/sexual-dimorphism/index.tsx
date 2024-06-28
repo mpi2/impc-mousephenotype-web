@@ -25,9 +25,9 @@ import {
   faVenus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { formatAlleleSymbol } from "@/utils";
 import Link from "next/link";
 import Head from "next/head";
+import { AlleleSymbol, PublicationDataAlert } from "@/components";
 
 ChartJS.register(
   LinearScale,
@@ -42,11 +42,9 @@ ChartJS.register(
 );
 
 const GeneLink = ({ gene }) => {
-  const allele = formatAlleleSymbol(gene.alleleSymbol);
   return (
     <Link className="primary link" href={`/genes/${gene.mgiGeneAccessionId}`}>
-      {allele[0]}
-      <sup>{allele[1]}</sup>
+      <AlleleSymbol symbol={gene.alleleSymbol} withLabel={false} />
     </Link>
   )
 }
@@ -93,11 +91,19 @@ const SexualDimorphismLandingPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>IMPC Sexual Dimorphism Data</strong>
           </h1>
+          <PublicationDataAlert dataReleaseVersion="4.2">
+            <p>
+              This publication page originally used the Data Release 4.2 <br/>
+              The number of mice and strains has not changed since then but the vignettes are displaying data
+              from the latest Data Release.
+            </p>
+          </PublicationDataAlert>
           <Container>
             <Row>
               <Col xs={12}>
                 <p>
-                  IMPC data demonstrates the effect of sex on many phenotypes, supporting the importance of including males and females in biomedical research.
+                  IMPC data demonstrates the effect of sex on many phenotypes, supporting the importance of including
+                  males and females in biomedical research.
                 </p>
                 <ul>
                   <li>

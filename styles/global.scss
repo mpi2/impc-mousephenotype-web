@@ -7,6 +7,8 @@
 @import "./components/filtersBar";
 @import "./components/dataComparisonTable";
 @import "./components/buttons";
+@import "./components/carousel";
+@import "./components/pagination";
 
 html,
 body {
@@ -177,4 +179,13 @@ ul.pagination .page-item.disabled .page-link {
 .break {
   flex-basis: 100%;
   height: 0;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 1rem;
+  right: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

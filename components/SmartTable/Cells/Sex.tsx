@@ -10,8 +10,9 @@ const SexCell = <T extends Model>(props: TableCellProps<T> & {  }) => {
     <>
       {["male", "female", "not_considered"]
         .filter(sex => _.get(props.value, props.field) === sex)
-        .map(significantSex => (
+        .map((significantSex, index) => (
           <OverlayTrigger
+            key={index}
             placement="top"
             trigger={["hover", "focus"]}
             overlay={<Tooltip>{getSexLabel(significantSex)}</Tooltip>}

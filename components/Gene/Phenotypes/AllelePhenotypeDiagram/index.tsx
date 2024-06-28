@@ -4,7 +4,6 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
 import { UpSetJS, extractCombinations } from '@upsetjs/react';
 import styles from './styles.module.scss';
-import 'react-modern-drawer/dist/index.css';
 import { ISetCombinations } from "@upsetjs/model";
 import _ from 'lodash';
 import { FilterBox } from "@/components";
@@ -207,6 +206,9 @@ const AllelePhenotypeDiagram = (
           Click on a bar to view the phenotypes that belongs to an allele or set of alleles in the results section.
           <br/>
           Hovering over the columns will highlight the shared phenotypes across all the sets.
+          <br/>
+          Information about allele design can be found in&nbsp;
+          <a className="link primary" href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/">this page</a>.
         </span>
       </div>
       <div style={{position: 'relative', display: 'flex', paddingTop: '1rem'}}>

@@ -16,6 +16,7 @@ import { Bar } from 'react-chartjs-2';
 import data from '../../mocks/data/landing-pages/conservation.json';
 import { chartColors } from "@/utils/chart";
 import Head from "next/head";
+import { PublicationDataAlert } from "@/components";
 
 ChartJS.register(
   CategoryScale,
@@ -155,6 +156,7 @@ const ConservationLandingPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>Translating to other species</strong>
           </h1>
+          <PublicationDataAlert dataReleaseVersion="7.0" />
           <Container>
             <ul>
               <li>
@@ -182,7 +184,7 @@ const ConservationLandingPage = () => {
             </p>
             <h2>Approach</h2>
             <p>
-              We used IMPC data derived from the
+              We used IMPC data derived from the&nbsp;
               <a className="primary link" href="https://www.mousephenotype.org/data/biological-system/conservation#:~:text=We%20used%20IMPC,from%20the%20literature.">
                 IMPC Viability Primary Screen [IMPC_VIA_001]
               </a>

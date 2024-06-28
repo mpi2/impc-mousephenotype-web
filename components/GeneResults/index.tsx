@@ -17,15 +17,16 @@ import { GeneComparatorTrigger, useGeneComparator } from "../GeneComparator";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneSearchResponse, GeneSearchResponseItem } from "@/models/gene";
+import { surroundWithMarkEl } from "@/utils/results-page";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
     className={!!props.hasData ? "secondary" : "grey"}
     icon={!!props.hasData ? faCheck : faTimes}
   />
-)
+);
 
-const GeneResult = ({gene}: { gene: GeneSearchResponseItem}) => {
+const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: string }) => {
   const {
     entityProperties: {
       geneSymbol,
@@ -53,13 +54,13 @@ const GeneResult = ({gene}: { gene: GeneSearchResponseItem}) => {
           }}
         >
           <h4 className="mb-2">
-            <span className="blue-dark">{geneSymbol}</span>{" "}
-            <span className="grey">|</span> {geneName}
+            <span className="blue-dark"><i>{surroundWithMarkEl(geneSymbol, query)}</i></span>&nbsp;
+            <span className="grey">|</span> {surroundWithMarkEl(geneName, query)}
           </h4>
           {!!synonymsArray && synonymsArray.length && (
             <p className="grey small">
               <strong>Synonyms:</strong>{" "}
-              {(synonymsArray || []).slice(0, 10).join(", ") || "None"}
+              {surroundWithMarkEl((synonymsArray || []).slice(0, 10).join(", "), query) || "None"}
             </p>
           )}
 
@@ -169,7 +170,7 @@ const GeneResults = ({ query }: { query?: string }) => {
                   );
                 }
                 return (pageData.map((p, i) => (
-                  <GeneResult gene={p} key={p.entityId + i} />
+                  <GeneResult gene={p} key={p.entityId + i} query={query} />
                 )))
               }}
             </Pagination>

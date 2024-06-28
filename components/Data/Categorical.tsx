@@ -1,21 +1,19 @@
-import {
-  faDownload,
-  faExternalLinkAlt,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Alert, Button, Col, Row } from "react-bootstrap";
+import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
 import CategoricalBarPlot from "./Plots/CategoricalBarPlot";
 import { formatPValue, getDownloadData } from "@/utils";
-import { capitalize } from "lodash";
+import { capitalize, sortBy } from "lodash";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
+import { fetchDatasetFromS3 } from "@/api-service";
+import { getZygosityLabel } from "@/components/Data/Utils";
 
 const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
   if (zygosity === "hemizygote") {
@@ -32,27 +30,22 @@ const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
       c.sampleGroup === "control" &&
       validExperimentalSeriesSexes.includes(c.sex)
   );
-  return [...controlSeries, ...validExperimentalSeries];
+  return sortBy([...controlSeries, ...validExperimentalSeries], "sex", "sampleGroup");
 };
 
-const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
+const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
   const { data } = useQuery({
     queryKey: [
       "dataset",
       datasetSummary.parameterName,
       datasetSummary.datasetId,
     ],
-    queryFn: () => {
-      const dataReleaseVersion =
-        process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest";
-      return fetch(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
-      ).then((res) => res.json());
-    },
+    queryFn: () => fetchDatasetFromS3(datasetSummary["datasetId"]),
     select: (response) => {
       const series: Array<any> = [];
       const index = {};
       const categories = [];
+      let allData = [];
       response.series.forEach((s) => {
         if (!index[s.specimenSex]) index[s.specimenSex] = {};
         if (!index[s.specimenSex][s.sampleGroup]) {
@@ -70,6 +63,11 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
 
       Object.keys(index).forEach((sex) =>
         Object.keys(index[sex]).forEach((sampleGroup) => {
+          allData.push({
+            sex,
+            sampleGroup: sampleGroup == "experimental" ? datasetSummary["zygosity"] : sampleGroup,
+            categoriesData: index[sex][sampleGroup]
+          });
           categories.forEach((category) => {
             const count = index[sex][sampleGroup][category] || 0;
             const total = index[sex][sampleGroup].total;
@@ -82,11 +80,12 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
           });
         })
       );
+      allData = sortBy(allData, ["sex", "sampleGroup"]);
       return {
         categories,
         series: filterChartSeries(datasetSummary.zygosity, series),
-        categoryIndex: index,
         originalData: response,
+        dataBySex: allData,
       };
     },
     enabled: isVisible,
@@ -105,6 +104,11 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
             />
           </Card>
         </Col>
+        {!!children && (
+          <Col lg={12}>
+            {children}
+          </Col>
+        )}
         <Col lg={4}>
           <Card>
             <h2>Results of statistical analysis</h2>
@@ -161,15 +165,8 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
               headers={[
                 { width: 4, label: "Sample type / Category", disabled: true },
               ].concat(
-                Object.keys(data.categoryIndex)
-                  .flatMap((sex) =>
-                    Object.keys(data.categoryIndex[sex]).map(
-                      (c) =>
-                        capitalize(sex) +
-                        " " +
-                        (c == "experimental" ? datasetSummary["zygosity"] : c)
-                    )
-                  )
+                data.dataBySex
+                  .map(({ sex, sampleGroup })  => `${capitalize(sex)} ${getZygosityLabel(datasetSummary.zygosity, sampleGroup)}`)
                   .map((c) => {
                     return { width: 2, label: c, disabled: true };
                   })
@@ -179,16 +176,10 @@ const Categorical = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 return (
                   <tr key={`${category}_${index}`}>
                     <td>{category}</td>
-                    {Object.keys(data.categoryIndex).flatMap((sex) =>
-                      Object.keys(data.categoryIndex[sex]).map((sampleGroup) =>
-                        !data.categoryIndex[sex][sampleGroup][category] ? (
-                          <td key={`${sampleGroup}_${sex}_${category}`}>0</td>
-                        ) : (
-                          <td key={`${sampleGroup}_${sex}_${category}`}>
-                            {data.categoryIndex[sex][sampleGroup][category]}
-                          </td>
-                        )
-                      )
+                    {data.dataBySex.map(({ sex, sampleGroup, categoriesData }) =>
+                      <td key={`${sampleGroup}_${sex}_${category}`}>
+                        {categoriesData[category] || 0}
+                      </td>
                     )}
                   </tr>
                 );

@@ -1,24 +1,21 @@
-import {
-  faChevronRight,
-  faDownload,
-  faExternalLinkAlt,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import { Alert, Button, Col, Row } from "react-bootstrap";
+import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../Card";
 import SortableTable from "../SortableTable";
 import UnidimensionalBoxPlot from "./Plots/UnidimensionalBoxPlot";
 import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
-import { getPhenStatReadyData, formatPValue, getDownloadData } from "@/utils";
+import { formatPValue, getDownloadData } from "@/utils";
 import ChartSummary from "./ChartSummary/ChartSummary";
-import { Dataset, GeneralChartProps } from "@/models";
-import _ from "lodash";
+import { GeneralChartProps } from "@/models";
+import { capitalize, sortBy } from "lodash";
 import StatisticalMethodTable from "./StatisticalMethodTable";
 import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
+import { fetchDatasetFromS3 } from "@/api-service";
+import { getZygosityLabel } from "@/components/Data/Utils";
 
 type ChartSeries = {
   data: Array<any>;
@@ -26,7 +23,7 @@ type ChartSeries = {
   sex: "male" | "female";
 };
 
-const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
+const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
   const getScatterSeries = (dataSeries, sex, sampleGroup) => {
     if (!dataSeries) {
       return null;
@@ -77,9 +74,7 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       const stddevKey = `${sex}${sampleGroupKey}Sd`;
       const countKey = `${sex}${sampleGroupKey}Count`;
       return {
-        label: `${_.capitalize(sex)} ${
-          sampleGroup === "control" ? "Control" : _.capitalize(zygosity)
-        }`,
+        label: `${capitalize(sex)} ${getZygosityLabel(zygosity, sampleGroup)}`,
         mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
         stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
         count: datasetSummary.summaryStatistics?.[countKey] || 0,
@@ -93,13 +88,7 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       datasetSummary.parameterName,
       datasetSummary.datasetId,
     ],
-    queryFn: () => {
-      const dataReleaseVersion =
-        process.env.NEXT_PUBLIC_DR_DATASET_VERSION || "latest";
-      return fetch(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/${dataReleaseVersion}/${datasetSummary["datasetId"]}.json`
-      ).then((res) => res.json());
-    },
+    queryFn: () => fetchDatasetFromS3(datasetSummary["datasetId"]),
     select: (response) => {
       const dataSeries = response.series;
       const femaleWTPoints = getScatterSeries(dataSeries, "female", "control");
@@ -125,12 +114,12 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         });
       windowPoints.sort((a, b) => a.x - b.x);
 
-      const chartSeries = filterChartSeries(datasetSummary.zygosity, [
+      const chartSeries = sortBy(filterChartSeries(datasetSummary.zygosity, [
         femaleWTPoints,
         maleWTPoints,
         femaleHomPoints,
         maleHomPoints,
-      ]);
+      ]), ["sex", "sampleGroup"]);
       return {
         chartSeries,
         lineSeries: [windowPoints],
@@ -180,6 +169,11 @@ const Unidimensional = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         </Col>
       </Row>
       <Row>
+        {!!children && (
+          <Col lg={12}>
+            {children}
+          </Col>
+        )}
         <Col lg={6}>
           <Card>
             <h2>Results of statistical analysis</h2>

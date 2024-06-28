@@ -1,8 +1,8 @@
 import { Dataset } from "@/models";
-import { Tab, Tabs } from "react-bootstrap";
 import { useRelatedParametersQuery } from "@/hooks/related-parameters.query";
-import { useState } from "react";
+import { useEffect } from "react";
 import { getChartType } from "@/components/Data/Utils";
+import { chartLoadingIndicatorChannel } from "@/eventChannels";
 
 const parameterList = [
   "IMPC_IPG_002_001",
@@ -14,34 +14,22 @@ const parameterList = [
 type IPGTTProps = {
   datasetSummaries: Array<Dataset>;
   onNewSummariesFetched: (missingSummaries: Array<any>) => void;
+  activeDataset: Dataset;
 };
 
 const IPGTT = (props: IPGTTProps) => {
-  const { datasetSummaries, onNewSummariesFetched } = props;
-  const [key, setKey] = useState(datasetSummaries[0].parameterName);
-
-  const datasets = useRelatedParametersQuery(
+  const { datasetSummaries, onNewSummariesFetched, activeDataset} = props;
+  const { datasetsAreLoading} = useRelatedParametersQuery(
     datasetSummaries,
     parameterList,
     onNewSummariesFetched
   );
 
-  return (
-    <Tabs
-      activeKey={key}
-      onSelect={(k) => setKey(k)}
-    >
-      {datasets.map(dataset => (
-        <Tab
-          key={dataset.id}
-          title={dataset.parameterName}
-          eventKey={dataset.parameterName}
-        >
-          {getChartType(dataset, key === dataset.parameterName)}
-        </Tab>
-      ))}
-    </Tabs>
-  );
+  useEffect(() => {
+    chartLoadingIndicatorChannel.emit('toggleIndicator', datasetsAreLoading);
+  }, [datasetsAreLoading]);
+
+  return getChartType(activeDataset);
 
 };
 

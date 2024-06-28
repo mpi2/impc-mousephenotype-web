@@ -1,11 +1,5 @@
 import { Chart } from "react-chartjs-2";
-import {
-  CategoricalSeries,
-  bgColors,
-  borderColors,
-  shapes,
-  pointRadius,
-} from "..";
+import { CategoricalSeries, } from "..";
 
 import {
   Chart as ChartJS,
@@ -18,6 +12,8 @@ import {
   TimeScale,
   BarElement,
 } from "chart.js";
+import { getZygosityLabel } from "@/components/Data/Utils";
+import { capitalize } from "lodash";
 
 const colorArray = ["#D41159", "#0978a1", "#117733", "#44AA99", "#88CCEE", "#DDCC77", "#CC6677", "#AA4499"];
 
@@ -63,10 +59,8 @@ const CategoricalBarPlot = ({ series, zygosity }) => {
         datasets: Object.values(datasets),
         labels: series
           .map((s) => {
-            const labelSex = s.sex[0].toUpperCase() + s.sex.slice(1);
-            const labelZyg = zygosity === "homozygote" ? "HOM" : "HET";
-            const labelGroup =
-              s.sampleGroup == "experimental" ? labelZyg : "WT";
+            const labelSex = capitalize(s.sex);
+            const labelGroup = getZygosityLabel(zygosity, s.sampleGroup);
             return `${labelSex} ${labelGroup}`;
           })
           .filter((value, index, self) => self.indexOf(value) === index),

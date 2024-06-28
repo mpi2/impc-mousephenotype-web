@@ -10,6 +10,7 @@ export const useRelatedParametersQuery = (
   onMissingProceduresFetched: (datasets: Array<Dataset>) => void,
 ) => {
   const [datasets, setDatasets] = useState<Array<Dataset>>(allDatasets);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const {
       mgiGeneAccessionId,
@@ -18,7 +19,9 @@ export const useRelatedParametersQuery = (
       zygosity,
       procedureStableId,
       phenotypingCentre,
+      metadataGroup,
     } = allDatasets[0];
+    setIsLoading(true);
     const proceduresWithData = allDatasets.map((d) => d.parameterStableId);
     const missingProcedures = allParametersList.filter(
       (p) => !proceduresWithData.includes(p)
@@ -40,13 +43,17 @@ export const useRelatedParametersQuery = (
         const proceduresData = [];
         responses.forEach((datasets) => {
           const uniques = [];
-          datasets.forEach(({ id, ...ds }) => {
-            if (!uniques.find((d) => _.isEqual(d, ds))) {
-              uniques.push({ id, ...ds });
-            }
+          datasets
+            .filter(ds => ds.metadataGroup === metadataGroup)
+            .forEach(({ id, ...ds }) => {
+              if (!uniques.find((d) => _.isEqual(d, ds))) {
+                uniques.push({ id, ...ds });
+              }
           });
           const selectedDataset = uniques[0];
-          proceduresData.push(selectedDataset);
+          if (!!selectedDataset) {
+            proceduresData.push(selectedDataset);
+          }
         });
         return proceduresData;
       })
@@ -58,8 +65,9 @@ export const useRelatedParametersQuery = (
           d1.parameterStableId.localeCompare(d2.parameterStableId)
         );
         onMissingProceduresFetched(missingProcedureData);
+        setIsLoading(false);
         setDatasets(allData);
       });
   }, [allDatasets]);
-  return datasets;
+  return {datasets, datasetsAreLoading: isLoading};
 }

@@ -32,3 +32,10 @@
 .form-select:disabled {
   background-color: var(--bs-secondary-bg) !important;
 }
+
+.alert-landing-page {
+  --bs-alert-color: #000;
+  --bs-alert-bg: #f1f1f1;
+  --bs-alert-border-color: #CCC;
+  --bs-alert-link-color: #000
+}

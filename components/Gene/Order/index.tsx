@@ -1,7 +1,7 @@
 import _ from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
 import Card from "../../Card";
@@ -14,8 +14,10 @@ import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { NumAllelesContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
+import { AlleleSymbol } from "@/components";
+import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 
-const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
+const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Array<string>, allelesStudiedLoading: boolean }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const { setNumOfAlleles } = useContext(NumAllelesContext);
@@ -125,27 +127,34 @@ const Order = ({ allelesStudied }: { allelesStudied: Array<string> }) => {
                     <tr key={index}>
                       <td>
                         <strong className={styles.link}>
-                          {allele[0]}
-                          <sup>{allele[1]}</sup>
+                          <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
                         </strong>
                       </td>
                       <td>{d.alleleDescription}</td>
                       <td>
-                        {allelesStudied.length === 0 ? (
+                        {allelesStudiedLoading ? (
                           <Skeleton inline/>
-                        ) : allelesStudied.includes(d.alleleSymbol) ? <>Yes</> : <>No</>}
+                        ) : allelesStudied.includes(d.alleleSymbol) ? (
+                          <Link
+                            href="#data"
+                            className="primary link"
+                            onClick={() => orderPhenotypedSelectionChannel.emit('onAlleleSelected', d.alleleSymbol)}
+                          >
+                            Yes
+                          </Link>
+                        ) : <>No</>}
                       </td>
                       <td className="text-capitalize">
                         {d.productTypes
                           .filter((x) => !(x === "intermediate_vector" || x === "crispr"))
                           .map((product: string) => product.replace(/_/g, " "))
                           .map((product: string, index: number) => (
-                            <>
+                            <Fragment key={`${product}-${index}`}>
                               <Link key={index} href={getProductURL(allele[1], product)} className="primary link">
                                 {product}
                               </Link>
                               <br/>
-                            </>
+                            </Fragment>
                           )) || "None"}
                       </td>
                     </tr>
