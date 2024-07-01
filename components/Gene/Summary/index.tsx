@@ -50,14 +50,14 @@ type SummaryProps = {
 const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
   const router = useRouter();
   const [showTopButton, setShowTopButton ] = useState(false);
-  const [{perY, scrollDirection}] = useScroll();
+  const [{perY}] = useScroll();
 
   useEffect(() => {
-    const showButton = perY >= 200 && scrollDirection === "UP";
+    const showButton = perY >= 200;
     if (showButton && !showTopButton) {
       setShowTopButton(true);
     }
-  }, [perY, scrollDirection]);
+  }, [perY]);
 
   const SYNONYMS_COUNT = 2;
 
