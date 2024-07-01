@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import headerCss from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { Collapse } from "react-bootstrap";
@@ -290,328 +290,36 @@ const Header = () => {
                   My Genes
                 </a>
               </h3>
-              <div className="mobile-nav__sub-pages"></div>
-
-              <h3 className="mt-2">
-                <a
-                  className="about-impc"
-                  href="https://www.mousephenotype.org/about-impc/"
-                >
-                  About the IMPC
-                </a>
-              </h3>
-              <div className="mobile-nav__sub-pages">
-                <p>
-                  <a href="https://www.mousephenotype.org/about-impc/consortium-members/">
-                    Consortium Members
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/about-impc/collaborations/">
-                    Collaborations
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/about-impc/funding/">
-                    Funding
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/about-impc/animal-welfare/">
-                    Animal Welfare
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/about-impc/about-komp/">
-                    About KOMP
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/about-impc/about-ikmc/">
-                    About IKMC
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-              </div>
-
-              <h3 className="mt-2">
-                <a
-                  className="data"
-                  href="https://www.mousephenotype.org/understand/"
-                >
-                  Data
-                </a>
-              </h3>
-              <div className="mobile-nav__sub-pages">
-                <p>
-                  <a href="https://www.mousephenotype.org/understand/covid-19/">
-                    COVID-19 Resources
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/understand/start-using-the-impc/">
-                    Getting Started with IMPC Data
-                  </a>
-                </p>
-                <div className="sub-pages">
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/">
-                      IMPC Data Generation
+              {menuItems.map((menuItem, i) => (
+                <Fragment key={i}>
+                  <h3 className="mt-2">
+                    <a href={menuItem.link} className={menuItem.classes}>
+                      {menuItem.name}
                     </a>
-                  </p>
+                  </h3>
+                  <div className="mobile-nav__sub-pages">
+                    {menuItem?.children
+                      .sort((a, b) => a.sort - b.sort)
+                      .map((subMenuItem, i) => (
+                        <Fragment key={i}>
+                          <p>
+                            <a href={subMenuItem.link}>{subMenuItem.name}</a>
+                          </p>
+                          <div className="sub-pages">
+                            {subMenuItem.children && subMenuItem.children
+                              .sort((a, b) => a.sort - b.sort)
+                              .map((subMenuItemChild) => (
+                                <p>
+                                  <a href={subMenuItemChild.link}>{subMenuItemChild.name}</a>
+                                </p>
+                            ))}
+                          </div>
+                      </Fragment>
+                    ))}
+                  </div>
+                </Fragment>
+              ))}
 
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/start-using-the-impc/how-to-use-gene-pages/">
-                      How to Use Gene Pages
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/start-using-the-impc/citing-the-impc/">
-                      Citing IMPC Data
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/">
-                      Allele design
-                    </a>
-                  </p>
-                </div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/understand/data-collections/">
-                    IMPC Data Collections
-                  </a>
-                </p>
-                <div className="sub-pages">
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/data-collections/late-adult-data/">
-                      Late Adult Data
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/data-collections/histopathology/">
-                      Histopathology
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/data-collections/essential-genes-portal/">
-                      Essential genes
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/data-collections/embryo-development/">
-                      Embryo Development
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/data-collections/cardiovascular/">
-                      Cardiovascular
-                    </a>
-                  </p>
-                </div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/understand/accessing-the-data/">
-                    Accessing the Data
-                  </a>
-                </p>
-                <div className="sub-pages">
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/accessing-the-data/latest-data-release/">
-                      Latest Data Release
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-api/">
-                      Access via API
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-ftp/">
-                      Access via FTP
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/accessing-the-data/batch-query/">
-                      Batch query
-                    </a>
-                  </p>
-                </div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/understand/advanced-tools/">
-                    Advanced Tools
-                  </a>
-                </p>
-                <div className="sub-pages">
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/advanced-tools/phenodcc-homepage/">
-                      PhenoDCC Tools
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/advanced-tools/imits/">
-                      GenTaR
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/advanced-tools/openstats/">
-                      OpenStats
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/advanced-tools/impress/">
-                      IMPReSS
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/understand/advanced-tools/embryo-viewer/">
-                      Embryo Viewer
-                    </a>
-                  </p>
-                </div>
-              </div>
-
-              <h3 className="mt-2">
-                <a
-                  className="human-diseases"
-                  href="https://www.mousephenotype.org/human-diseases/"
-                >
-                  Human Diseases
-                </a>
-              </h3>
-              <div className="mobile-nav__sub-pages"></div>
-
-              <h3 className="mt-2">
-                <a
-                  className="publications"
-                  href="https://www.mousephenotype.org/publications/"
-                >
-                  Publications
-                </a>
-              </h3>
-              <div className="mobile-nav__sub-pages">
-                <p>
-                  <a href="https://www.mousephenotype.org/publications/latest-impc-papers/">
-                    Latest IMPC Papers
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/">
-                    Data Supporting IMPC Papers
-                  </a>
-                </p>
-                <div className="sub-pages">
-                  <p>
-                    <a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
-                      Pain Sensitivity Associated Genes
-                    </a>
-                  </p>
-
-                  <p>
-                    <a
-                      href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/essential-genes-linking-to-disease-2/">
-                      Essential Genes - Linking to Disease
-                    </a>
-                  </p>
-
-                  <p>
-                    <a
-                      href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/essential-genes-linking-to-disease/">
-                      Essential Genes - Translating to Other Species
-                    </a>
-                  </p>
-
-                  <p>
-                    <a
-                      href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/sexual-dimorphism/">
-                      Sexual Dimorphism
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/hearing/">
-                      Genes Critical for Hearing Identified
-                    </a>
-                  </p>
-
-                  <p>
-                    <a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/metabolism/">
-                      Genetic Basis for Metabolic Diseases
-                    </a>
-                  </p>
-                </div>
-
-                <p>
-                  <a href="https://www.mousephenotype.org/publications/papers-using-impc-resources/">
-                    Papers Using IMPC Resources
-                  </a>
-                </p>
-                <div className="sub-pages"></div>
-              </div>
-
-              <h3 className="mt-2">
-                <a className="news" href="https://www.mousephenotype.org/news/">
-                  News
-                </a>
-              </h3>
-              <div className="mobile-nav__sub-pages"></div>
-
-              <h3 className="mt-2">
-                <a className="blog" href="https://www.mousephenotype.org/blog/">
-                  Blog
-                </a>
-              </h3>
-              <div className="mobile-nav__sub-pages"></div>
-
-              <h3 className="mt-2">
-                <a className="object-id-11" href="//www.mousephenotype.org/help/">
-                  Help
-                </a>
-              </h3>
-              <div className="mobile-nav__sub-pages"></div>
-
-              <h3 className="mt-2">
-                <a href="http://cloud.mousephenotype.org">IMPC Cloud</a>
-              </h3>
-              <div className="mobile-nav__sub-pages"></div>
-
-              <h3 className="mt-2">
-                <a
-                  className="object-id-12"
-                  href="//www.mousephenotype.org/contact-us/"
-                >
-                  Contact us
-                </a>
-              </h3>
-              <div className="mobile-nav__sub-pages"></div>
             </div>
           </div>
         </div>
