@@ -26,6 +26,7 @@ import { useDebounceValue } from 'usehooks-ts';
 
 type Props = {
   routerIsReady: boolean;
+  onTotalData: (arg: number) => void;
 };
 
 type FilterOptions = {
@@ -69,6 +70,7 @@ const getMutantCount = (dataset: GeneStatisticalResult) => {
 
 const AllData = (props: Props) => {
   const gene = useContext(GeneContext);
+  const { onTotalData } = props;
   const { setAlleles } = useContext(AllelesStudiedContext);
   const [sortField, setSortField] = useState<string>("pValue");
   const [sortOrder, setSortOrder] = useState<string>("asc");
@@ -156,6 +158,7 @@ const AllData = (props: Props) => {
   useEffect(() => {
     if (data && data.totalElements !== totalItems) {
       setTotalItems(data.totalElements);
+      onTotalData(data.totalElements);
     }
   }, [data, totalItems]);
 
