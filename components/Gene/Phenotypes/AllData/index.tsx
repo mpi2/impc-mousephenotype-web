@@ -146,6 +146,10 @@ const AllData = (props: Props) => {
       .filter(([, value]) => !!value)
       .forEach(([key, value]) => params[key] = value);
 
+    if (query) {
+      params["searchQuery"] = query;
+    }
+
     return fetchAPI(buildURL(url, params));
   }
 
