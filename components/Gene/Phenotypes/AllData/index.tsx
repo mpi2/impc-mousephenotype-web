@@ -204,6 +204,7 @@ const AllData = (props: Props) => {
               onChange={setQuery}
               ariaLabel="Filter by parameters"
               controlStyle={{ width: 150 }}
+              emitValueLowercase={false}
             />
             <FilterBox
               controlId="procedureFilterAD"
