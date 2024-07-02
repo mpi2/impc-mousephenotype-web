@@ -22,6 +22,7 @@ import { fetchAPI } from "@/api-service";
 import { PaginatedResponse } from "@/models";
 import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
+import { useDebounceValue } from 'usehooks-ts';
 
 type Props = {
   routerIsReady: boolean;
@@ -51,7 +52,7 @@ const defaultFilterOptions: FilterOptions = {
   alleles: [],
 };
 
-const defaultSelectedValues: SelectedValues= {
+const defaultSelectedValues: SelectedValues = {
   procedureName: undefined,
   topLevelPhenotypeName: undefined,
   lifeStageName: undefined,
@@ -72,7 +73,7 @@ const AllData = (props: Props) => {
   const [sortField, setSortField] = useState<string>("pValue");
   const [sortOrder, setSortOrder] = useState<string>("asc");
   const [totalItems, setTotalItems] = useState<number>(0);
-  const [query, setQuery] = useState(undefined);
+  const [query, setQuery] = useDebounceValue(undefined, 500)
   const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
   const [selectedValues, setSelectedValues] = useState<SelectedValues>(defaultSelectedValues);
 
@@ -93,7 +94,7 @@ const AllData = (props: Props) => {
 
 
   const { data, isError, isFetching } = useQuery({
-    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder],
+    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder, query],
     queryFn: () => {
       const url = `/api/v1/genes/statistical-result/filtered/page`;
       const params = {
@@ -107,6 +108,10 @@ const AllData = (props: Props) => {
       Object.entries(selectedValues)
         .filter(([, value]) => !!value)
         .forEach(([key, value]) => params[key] = value);
+
+      if (query) {
+        params["searchQuery"] = query;
+      }
 
       return fetchAPI(buildURL(url, params));
     },
