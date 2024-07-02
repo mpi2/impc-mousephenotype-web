@@ -1,12 +1,12 @@
 import { GeneStatisticalResult } from "@/models/gene";
-import { Model, TableCellProps } from "@/models";
+import { TableCellProps } from "@/models";
 import styles from "@/components/Gene/Phenotypes/AllData/styles.module.scss";
 import _ from "lodash";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
-import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Overlay, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Overlay, Tooltip } from "react-bootstrap";
 import { useRef, useState } from "react";
 import { formatPValue } from "@/utils";
 
@@ -104,7 +104,7 @@ export const MutantCountCell = <T extends GeneStatisticalResult>(props: TableCel
     >
       {mutantsBelowThreshold && (
         <div ref={tooltipRef} style={{ display: 'inline-block' }}>
-          <FontAwesomeIcon icon={faTriangleExclamation} className="secondary"/>
+          <FontAwesomeIcon icon={faInfo} className="secondary"/>
           &nbsp;
           <Overlay target={tooltipRef.current} show={tooltipShow} placement="left">
             {(props) => (
