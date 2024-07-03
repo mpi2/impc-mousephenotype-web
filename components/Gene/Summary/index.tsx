@@ -1,11 +1,10 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
-import { faAngleUp, faWarning } from "@fortawesome/free-solid-svg-icons";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import Card from "../../Card";
 import { BodySystem } from "../../BodySystemIcon";
-import { useRouter } from "next/router";
 import Check from "../../Check";
 import { GeneSummary } from "@/models/gene";
 import Link from "next/link";
@@ -14,6 +13,7 @@ import { allBodySystems } from "@/utils";
 import { useEffect, useState } from "react";
 import { useScroll } from "@/hooks";
 import { AnimatePresence, motion } from "framer-motion";
+
 const CollectionItem = ({
   name,
   link,
@@ -45,7 +45,6 @@ type SummaryProps = {
   numOfAlleles: number;
 }
 const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
-  const router = useRouter();
   const [showTopButton, setShowTopButton ] = useState(false);
   const [{perY}] = useScroll();
 

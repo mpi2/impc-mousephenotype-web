@@ -7,15 +7,13 @@ import { useRouter } from "next/router";
 import { GeneSummary } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
-import { PropsWithChildren, ReactNode, useContext, useEffect, useState } from "react";
+import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
 import { orderPhenotypedSelectionChannel, summarySystemSelectionChannel } from "@/eventChannels";
 import _ from 'lodash';
 import { Variant } from "react-bootstrap/types";
 import { SectionHeader } from "@/components";
 import { faTriangleExclamation, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-const data = [];
 
 const StatisticalAnalysis = dynamic(
   () => import("./GraphicalAnalysis"),
