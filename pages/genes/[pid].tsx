@@ -11,15 +11,16 @@ import {
   Order,
 } from "@/components/Gene";
 import { useEffect, useState } from "react";
-import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
-import { useGeneSummaryQuery } from "@/hooks";
+import { useGeneSummaryQuery, useScroll } from "@/hooks";
 import { GeneSummary } from "@/models/gene";
 import { fetchAPI } from "@/api-service";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import geneList from '../../mocks/data/all_genes_list.json';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),
@@ -72,8 +73,7 @@ const Gene = (props: GenePageProps) => {
       <GeneContext.Provider value={geneData}>
         <NumAllelesContext.Provider value={numAllelesContextValue}>
           <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
-            <GeneComparatorTrigger current={router.query.pid as string} />
-            <Search />
+            <Search/>
             <Container className="page">
               <Summary {...{ gene: geneData, numOfAlleles }} />
               <Phenotypes gene={geneData} />

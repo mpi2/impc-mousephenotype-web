@@ -1,27 +1,18 @@
-import { Col, Container, Form, InputGroup, Row, Table, Button, Alert } from "react-bootstrap";
+import { Col, Container, Form, InputGroup, Row, Table, Alert } from "react-bootstrap";
 import { faDownload, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
 import styles from './styles.module.scss';
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI, API_URL } from "@/api-service";
 import Pagination from "../Pagination";
-import { useDebounce } from "usehooks-ts";
+import { useDebounceValue } from "usehooks-ts";
 import _ from "lodash";
 import Link from "next/link";
 import { AlleleSymbol } from "@/components";
-
-const PublicationLoader = () => (
-  <div className={styles.pubLoader}>
-    <Skeleton count={3} />
-    <Skeleton width={30}/>
-    <Skeleton count={3} />
-    <Skeleton width={30}/>
-  </div>
-);
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -40,13 +31,14 @@ const PublicationsList = (props: PublicationListProps) => {
   const [allelesVisibilityMap, setAllelesVisibilityMap] = useState(new Map());
   const displayPubTitle = (pub: Publication) => {
     if (pub.doi) {
-      return <p>
+      return <p className={styles.title}>
         <a
           className="primary link"
           target="_blank"
           href={`https://doi.org/${pub.doi}`}
           dangerouslySetInnerHTML={{ __html: pub.title }}
         />
+        &nbsp;
         <FontAwesomeIcon
           icon={faExternalLinkAlt}
           className="grey"
@@ -54,7 +46,7 @@ const PublicationsList = (props: PublicationListProps) => {
         />
       </p>;
     }
-    return <p dangerouslySetInnerHTML={{ __html: pub.title }} />;
+    return <p style={{ fontWeight: "bold" }} dangerouslySetInnerHTML={{ __html: pub.title }} />;
   }
 
   const displayPubDate = (pub: Publication) => {
@@ -112,7 +104,7 @@ const PublicationsList = (props: PublicationListProps) => {
   const [pageSize, setPageSize] = useState(10);
   const [query, setQuery] = useState('');
   const [totalItems, setTotalItems] = useState(0);
-  const debounceQuery = useDebounce<string>(query, 500);
+  const [debounceQuery, setDebouncedQuery] = useDebounceValue<string>(query, 500);
   const { data: publications, isError, isFetching } = useQuery({
     queryKey: ['publications', prefixQuery, debounceQuery, page, pageSize, onlyConsortiumPublications, filterByGrantAgency],
     queryFn: () => {
@@ -141,6 +133,11 @@ const PublicationsList = (props: PublicationListProps) => {
     },
   });
 
+
+  useEffect(() => {
+    setDebouncedQuery(query);
+    setPage(0);
+  }, [query]);
   const updatePage = (value: number) => {
     setPage(value);
   };
@@ -152,12 +149,12 @@ const PublicationsList = (props: PublicationListProps) => {
     <Container>
       <Row>
         <Col xs={6}>
-          <p>Showing 1 to {Math.min(pageSize, totalItems)} of {totalItems.toLocaleString()} entries</p>
+          <p>Showing {Math.min(pageSize, totalItems) * page + 1} to {Math.min(pageSize, totalItems) * (page + 1)} of {totalItems.toLocaleString()} entries</p>
         </Col>
       </Row>
-      { !!isError && (
+      {!!isError && (
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for the filters
+        No publications found that use IMPC mice or data for the filters
         </Alert>
       )}
       <Pagination
@@ -184,14 +181,12 @@ const PublicationsList = (props: PublicationListProps) => {
             </div>
             <div>
               Export table:&nbsp;
-              <a href={getDownloadLink('tsv')} className="primary link">
+              <a href={getDownloadLink('tsv')} className="btn impc-secondary-button small">
                 TSV
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
               &nbsp;
-              or
-              &nbsp;
-              <a href={getDownloadLink('xls')} className="primary link">
+              <a href={getDownloadLink('xls')} className="btn impc-secondary-button small">
                 XLS
                 <FontAwesomeIcon icon={faDownload}></FontAwesomeIcon>
               </a>
@@ -200,7 +195,7 @@ const PublicationsList = (props: PublicationListProps) => {
         }
       >
         {pageData => (
-          <Table className={styles.pubTable} striped>
+          <Table className={styles.pubTable}>
             <tbody>
             {pageData?.map((pub: Publication) => (
               <tr key={pub.pmId} id={'pub-' + pub.pmId}>
@@ -208,15 +203,13 @@ const PublicationsList = (props: PublicationListProps) => {
                   {displayPubTitle(pub)}
                   <p><i>{pub.journalTitle}</i>, ({displayPubDate(pub)})</p>
                   <p><b>{pub.authorString}</b></p>
-                  <Button
-                    className="mt-1 mb-1"
-                    variant="outline-dark"
-                    size="sm"
-                    onClick={e => toggleVisibility(pub, 'abstract')}
+                  <button
+                    className="btn impc-secondary-button xs-small mt-2 mb-2"
+                    onClick={() => toggleVisibility(pub, 'abstract')}
                   >
                     <strong>{isFieldVisible(pub, 'abstract') ? 'Hide' : 'Show'} abstract</strong>
-                  </Button>
-                  <p className={`abstract ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
+                  </button>
+                  <p className={`abstract mb-2 ${isFieldVisible(pub, 'abstract') ? '' : 'visually-hidden'}`}>
                     {pub.abstractText}
                   </p>
                   <p>
@@ -240,46 +233,44 @@ const PublicationsList = (props: PublicationListProps) => {
                               <AlleleSymbol symbol={allele.alleleSymbol} withLabel={false} />
                             </Link>
                             &nbsp;
+                            &nbsp;
+                            &nbsp;
                           </>
                         )
                       })}
                       {pub.alleles.length > 9 && (
                         <>
                           <br/>
-                          <Button
-                            className="mt-1 mb-1"
-                            variant="outline-dark"
-                            size="sm"
+                          <button
+                            className="btn impc-secondary-button xs-small mb-2 mt-1"
                             onClick={() => toggleVisibility(pub, "alleles")}
                           >
                             <strong>{isFieldVisible(pub, 'alleles') ? 'Hide' : 'Show'} all alleles</strong>
-                          </Button>
+                          </button>
                         </>
                       )}
                     </p>
                   )}
                   {getGrantsList(pub)}
                   {!!pub.meshHeadingList && pub.meshHeadingList.length > 0 && (
-                    <Button
-                      className="mt-1 mb-1"
-                      variant="outline-dark"
-                      size="sm"
-                      onClick={e => toggleVisibility(pub, 'mesh-terms')}
+                    <button
+                      className="btn impc-secondary-button xs-small mt-2"
+                      onClick={() => toggleVisibility(pub, 'mesh-terms')}
                     >
                       <strong>{isFieldVisible(pub, 'mesh-terms') ? 'Hide' : 'Show'} mesh terms</strong>
-                    </Button>
+                    </button>
                   )}
-                  <p className={`abstract ${isFieldVisible(pub, 'mesh-terms') ? '' : 'visually-hidden'}`}>
+                  <p className={`abstract mt-1 ${isFieldVisible(pub, 'mesh-terms') ? '' : 'visually-hidden'}`}>
                     {pub.meshHeadingList.join(', ')}
                   </p>
                 </td>
               </tr>
             ))}
             { !!isFetching && ([...Array(10)].map((e, i) => (
-              <tr key={i}>
-                <PublicationLoader key={i} />
+              <tr key={i} className={styles.pubLoader}>
+                <td><Skeleton count={9} /></td>
               </tr>
-            ) )) }
+            )))}
             </tbody>
           </Table>
         )}

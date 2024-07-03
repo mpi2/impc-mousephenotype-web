@@ -1,109 +1,205 @@
-import _ from "lodash";
 import { useContext, useEffect, useState } from "react";
 import {
   AlleleCell,
   OptionsCell,
   PlainTextCell,
-  SignificantPValueCell,
   SmartTable,
 } from "@/components/SmartTable";
 import { GeneStatisticalResult } from "@/models/gene";
 import { DownloadData, FilterBox } from "@/components";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
-import { ParameterCell, PhenotypeIconsCell, SupportingDataCell } from './custom-cells';
+import {
+  MutantCountCell,
+  ParameterCell,
+  PhenotypeIconsCell,
+  SignificantPValueCell,
+  SupportingDataCell
+} from './custom-cells';
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
+import { usePagination } from "@/hooks";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "@/api-service";
+import { PaginatedResponse } from "@/models";
+import { buildURL } from "@/utils";
+import Skeleton from "react-loading-skeleton";
+import { useDebounceValue } from 'usehooks-ts';
 
-const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
+type Props = {
+  routerIsReady: boolean;
+  onTotalData: (arg: number) => void;
+};
+
+type FilterOptions = {
+  procedures: Array<string>;
+  systems: Array<string>;
+  lifestages: Array<string>;
+  zygosities: Array<string>;
+  alleles: Array<string>;
+};
+
+type SelectedValues = {
+  procedureName: string;
+  topLevelPhenotypeName: string;
+  lifeStageName: string;
+  zygosity: string;
+  alleleSymbol: string;
+};
+
+const defaultFilterOptions: FilterOptions = {
+  procedures: [],
+  systems: [],
+  lifestages: [],
+  zygosities: [],
+  alleles: [],
+};
+
+const defaultSelectedValues: SelectedValues = {
+  procedureName: undefined,
+  topLevelPhenotypeName: undefined,
+  lifeStageName: undefined,
+  zygosity: undefined,
+  alleleSymbol: undefined,
+};
+
+const getMutantCount = (dataset: GeneStatisticalResult) => {
+  if (!dataset.maleMutantCount && !dataset.femaleMutantCount) {
+    return 'N/A';
+  }
+  return `${dataset.maleMutantCount || 0}m/${dataset.femaleMutantCount || 0}f`;
+};
+
+const AllData = (props: Props) => {
   const gene = useContext(GeneContext);
+  const { onTotalData } = props;
   const { setAlleles } = useContext(AllelesStudiedContext);
-  const [sorted, setSorted] = useState<any[]>(null);
-  const [procedure, setProcedure] = useState(undefined);
-  const [query, setQuery] = useState(undefined);
-  const [system, setSystem] = useState(undefined);
-  const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
-  const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
-  const [selectedAllele, setSelectedAllele] = useState<string>(undefined);
+  const [sortField, setSortField] = useState<string>("pValue");
+  const [sortOrder, setSortOrder] = useState<string>("asc");
+  const [totalItems, setTotalItems] = useState<number>(0);
+  const [query, setQuery] = useDebounceValue(undefined, 500)
+  const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
+  const [selectedValues, setSelectedValues] = useState<SelectedValues>(defaultSelectedValues);
+
+  const updateSelectedValue = (key: keyof SelectedValues, newValue: string): void => {
+    setActivePage(0);
+    setSelectedValues(prevState => ({
+      ...prevState,
+      [key]: newValue,
+    }));
+  }
+
+  const {
+    activePage,
+    pageSize,
+    setActivePage,
+    setPageSize,
+  } = usePagination();
+
+
+  const { data, isError, isFetching } = useQuery({
+    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder, query],
+    queryFn: () => {
+      const url = `/api/v1/genes/statistical-result/filtered/page`;
+      const params = {
+        mgiGeneAccessionId: gene.mgiGeneAccessionId,
+        page: activePage.toString(10),
+        size: pageSize.toString(10),
+        sortBy: sortField,
+        sort: sortOrder,
+      };
+
+      Object.entries(selectedValues)
+        .filter(([, value]) => !!value)
+        .forEach(([key, value]) => params[key] = value);
+
+      if (query) {
+        params["searchQuery"] = query;
+      }
+
+      return fetchAPI(buildURL(url, params));
+    },
+    select: (response: PaginatedResponse<GeneStatisticalResult>) => {
+      return {
+        ...response,
+        content: response.content.map(d => ({
+          ...d,
+          pValue: Number(d.pValue),
+          mutantCount: getMutantCount(d),
+        })),
+      } as PaginatedResponse<GeneStatisticalResult>
+    },
+    enabled: props.routerIsReady,
+  });
+
+  const { data: filterData } = useQuery({
+    queryKey: ['filterData', gene.mgiGeneAccessionId],
+    queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`),
+    enabled: props.routerIsReady,
+  });
+
+  const getDownloadData = () => {
+    const url = `/api/v1/genes/statistical-result/filtered`;
+    const params = {
+      mgiGeneAccessionId: gene.mgiGeneAccessionId,
+      sortBy: sortField,
+      sort: sortOrder,
+    };
+
+    Object.entries(selectedValues)
+      .filter(([, value]) => !!value)
+      .forEach(([key, value]) => params[key] = value);
+
+    if (query) {
+      params["searchQuery"] = query;
+    }
+
+    return fetchAPI(buildURL(url, params));
+  }
 
   useEffect(() => {
-    const newData = _.orderBy(data, "pValue", "asc");
-    setAlleles(_.uniq(_.map(newData, "alleleSymbol")));
-    setSorted(newData);
-  }, [data]);
+    if (data && data.totalElements !== totalItems) {
+      setTotalItems(data.totalElements);
+      onTotalData(data.totalElements);
+    }
+  }, [data, totalItems]);
 
-  const filtered = (sorted ?? []).filter(
-    ({
-      procedureName,
-      parameterName,
-      parameterStableId,
-      procedureStableId,
-      topLevelPhenotypes,
-      lifeStageName,
-      zygosity,
-      alleleSymbol
-    }) =>
-      (!procedure || procedureName === procedure) &&
-      (!query ||
-        `${procedureName} ${parameterName} ${parameterStableId} ${procedureStableId}`
-          .toLowerCase()
-          .includes(query)) &&
-      (!system ||
-        (topLevelPhenotypes ?? []).some(({ name }) => name === system)) &&
-      (!selectedLifeStage || lifeStageName === selectedLifeStage) &&
-      (!selectedZygosity || zygosity === selectedZygosity) &&
-      (!selectedAllele || alleleSymbol === selectedAllele)
-  );
-
-  const procedures = _.sortBy(_.uniq(_.map(data, "procedureName")));
-  const systems = _.sortBy(
-    _.uniq(
-      data.flatMap((p) => p.topLevelPhenotypes?.map((p) => p.name))
-    ).filter(Boolean)
-  );
-  const lifestages = _.sortBy(_.uniq(_.map(data, "lifeStageName")));
-  const zygosities = _.sortBy(_.uniq(_.map(data, "zygosity")));
-  const alleles = _.sortBy(_.uniq(_.map(data, "alleleSymbol")));
+  useEffect(() => {
+    if (filterData) {
+      setFilterOptions({
+        procedures: filterData.procedureName,
+        systems: filterData.topLevelPhenotypes,
+        lifestages: filterData.lifeStageName,
+        zygosities: filterData.zygosity,
+        alleles: filterData.alleleSymbol,
+      });
+      setAlleles(filterData.alleleSymbol);
+    }
+  }, [filterData]);
 
   useEffect(() => {
     const unsubscribeOnAlleleSelection = orderPhenotypedSelectionChannel.on(
       "onAlleleSelected",
       (newAllele) => {
-        if (newAllele !== selectedAllele && alleles.length > 1) {
-          setSelectedAllele(newAllele);
+        if (newAllele !== selectedValues.alleleSymbol) {
+          updateSelectedValue("alleleSymbol", newAllele);
         }
       });
     return () => {
       unsubscribeOnAlleleSelection();
     }
-  }, [selectedAllele, alleles]);
-
-  const sortPhenotypes = (data: Array<GeneStatisticalResult>, field: keyof GeneStatisticalResult, order: "asc" | "desc") => {
-    if (field === "pValue") {
-      return data.sort((p1, p2) => {
-        const p1PValue = parseFloat(p1.pValue);
-        const p2PValue = parseFloat(p2.pValue);
-        if (!p1PValue) {
-          return 1;
-        } else if (!p2PValue) {
-          return -1;
-        }
-        return order === "asc" ? p1PValue - p2PValue : p2PValue - p1PValue;
-      });
-    }
-    return _.orderBy(data, field, order);
-  };
-
-  if (!data) {
-    return null;
-  }
+  }, [selectedValues.alleleSymbol]);
 
   return (
-    <>
-      <SmartTable<GeneStatisticalResult>
-        data={filtered}
-        defaultSort={["pValue", "asc"]}
-        customFiltering
-        customSortFunction={sortPhenotypes}
-        additionalTopControls={
+    <SmartTable<GeneStatisticalResult>
+      data={data?.content}
+      defaultSort={["pValue", "asc"]}
+      onSortChange={sortOptions => {
+        const [sortField, sortOrder] = sortOptions.split(';');
+        setSortField(sortField);
+        setSortOrder(sortOrder);
+      }}
+      customFiltering
+      additionalTopControls={
+        !!filterData ? (
           <>
             <FilterBox
               controlId="queryFilterAD"
@@ -111,141 +207,165 @@ const AllData = ({ data }: { data: GeneStatisticalResult[] }) => {
               onChange={setQuery}
               ariaLabel="Filter by parameters"
               controlStyle={{ width: 150 }}
+              emitValueLowercase={false}
             />
             <FilterBox
               controlId="procedureFilterAD"
               label="Procedure"
-              onChange={setProcedure}
+              value={selectedValues.procedureName}
+              onChange={value => updateSelectedValue("procedureName", value)}
               ariaLabel="Filter by procedures"
-              options={procedures}
+              options={filterOptions.procedures}
             />
             <FilterBox
               controlId="alleleFilterAD"
               label="Allele"
-              value={selectedAllele}
-              onChange={setSelectedAllele}
+              value={selectedValues.alleleSymbol}
+              onChange={value => updateSelectedValue("alleleSymbol", value)}
               ariaLabel="Filter by allele"
-              options={alleles}
+              options={filterOptions.alleles}
             />
             <FilterBox
               controlId="zygosityFilterAD"
               label="Zygosity"
-              onChange={setSelectedZygosity}
+              value={selectedValues.zygosity}
+              onChange={value => updateSelectedValue("zygosity", value)}
               ariaLabel="Filter by zygosity"
-              options={zygosities}
+              options={filterOptions.zygosities}
               controlStyle={{ width: 100, textTransform: 'capitalize' }}
             />
             <FilterBox
               controlId="systemFilterAD"
               label="Phy. System"
-              onChange={setSystem}
+              value={selectedValues.topLevelPhenotypeName}
+              onChange={value => updateSelectedValue("topLevelPhenotypeName", value)}
               ariaLabel="Filter by physiological system"
-              options={systems}
+              options={filterOptions.systems}
             />
             <FilterBox
               controlId="lifeStageFilterAD"
               label="Life Stage"
-              onChange={setSelectedLifeStage}
+              value={selectedValues.lifeStageName}
+              onChange={value => updateSelectedValue("lifeStageName", value)}
               ariaLabel="Filter by life stage"
-              options={lifestages}
+              options={filterOptions.lifestages}
               controlStyle={{ display: "inline-block", width: 100 }}
             />
           </>
-        }
-        additionalBottomControls={
-          <DownloadData<GeneStatisticalResult>
-            data={sorted}
-            fileName={`${gene.geneSymbol}-all-phenotype-data`}
-            fields={[
-              { key: "alleleSymbol", label: "Allele" },
-              { key: "phenotypingCentre", label: "Phenotyping center" },
-              { key: "procedureName", label: "Procedure" },
-              { key: "parameterName", label: "Parameter" },
-              { key: "zygosity", label: "Zygosity" },
-              {
-                key: "femaleMutantCount",
-                label: "Female mutant count",
-                getValueFn: (item) =>
-                  item?.femaleMutantCount?.toString() || "0",
-              },
-              {
-                key: "maleMutantCount",
-                label: "Male mutant count",
-                getValueFn: (item) =>
-                  item?.maleMutantCount?.toString() || "N/A",
-              },
-              { key: "lifeStageName", label: "Life stage" },
-              {
-                key: "significant",
-                label: "Significant",
-                getValueFn: (item) => (item.significant ? "Yes" : "No"),
-              },
-              {
-                key: "pValue",
-                label: "Most significant P-value",
-                getValueFn: (item) => item?.pValue?.toString() || "N/A",
-              },
-            ]}
-          />
-        }
-        columns={[
-          {
-            width: 2,
-            label: "Procedure/parameter",
-            field: "procedureName",
-            cmp: <ParameterCell />,
-          },
-          {
-            width: 1,
-            label: "Supporting data",
-            cmp: <SupportingDataCell />,
-          },
-          {
-            width: 0.8,
-            label: "System",
-            field: "topLevelPhenotypes",
-            cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />,
-          },
-          {
-            width: 1,
-            label: "Allele",
-            field: "alleleSymbol",
-            cmp: <AlleleCell />,
-          },
-          {
-            width: 1,
-            label: "Zygosity",
-            field: "zygosity",
-            cmp: <PlainTextCell style={{ textTransform: "capitalize" }} />,
-          },
-          {
-            width: 1,
-            label: "Life stage",
-            field: "lifeStageName",
-            cmp: <PlainTextCell />,
-          },
-          {
-            width: 1,
-            label: "Center",
-            field: "phenotypingCentre",
-            cmp: <PlainTextCell />,
-          },
-          {
-            width: 0.7,
-            label: "Mutants",
-            field: "mutantCount",
-            cmp: <PlainTextCell />,
-          },
-          {
-            width: 0.5,
-            label: "Significant",
-            field: "significant",
-            cmp: <OptionsCell options={{ true: "Yes", false: "No" }} />,
-          },
-          { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
-        ]}
-      />
-    </>
+        ): (
+          <>
+            <div><Skeleton width={100} height="1.75rem" inline /></div>
+            <div><Skeleton width={100} height="1.75rem" inline /></div>
+            <div><Skeleton width={100} height="1.75rem" inline /></div>
+          </>
+        )
+      }
+      additionalBottomControls={
+        <DownloadData<GeneStatisticalResult>
+          getData={getDownloadData}
+          fileName={`${gene.geneSymbol}-all-phenotype-data`}
+          fields={[
+            { key: "alleleSymbol", label: "Allele" },
+            { key: "phenotypingCentre", label: "Phenotyping center" },
+            { key: "procedureName", label: "Procedure" },
+            { key: "parameterName", label: "Parameter" },
+            { key: "zygosity", label: "Zygosity" },
+            {
+              key: "femaleMutantCount",
+              label: "Female mutant count",
+              getValueFn: (item) =>
+                item?.femaleMutantCount?.toString() || "0",
+            },
+            {
+              key: "maleMutantCount",
+              label: "Male mutant count",
+              getValueFn: (item) =>
+                item?.maleMutantCount?.toString() || "N/A",
+            },
+            { key: "lifeStageName", label: "Life stage" },
+            {
+              key: "significant",
+              label: "Significant",
+              getValueFn: (item) => (item.significant ? "Yes" : "No"),
+            },
+            {
+              key: "pValue",
+              label: "Most significant P-value",
+              getValueFn: (item) => item?.pValue?.toString() || "N/A",
+            },
+          ]}
+        />
+      }
+      showLoadingIndicator={isFetching}
+      pagination={{
+        totalItems,
+        onPageChange: setActivePage,
+        onPageSizeChange: setPageSize,
+        page: activePage,
+        pageSize
+      }}
+      columns={[
+        {
+          width: 2,
+          label: "Procedure/parameter",
+          field: "procedureName",
+          cmp: <ParameterCell />,
+        },
+        {
+          width: 1,
+          label: "Supporting data",
+          cmp: <SupportingDataCell />,
+          disabled: true,
+        },
+        {
+          width: 0.8,
+          label: "System",
+          field: "topLevelPhenotypes",
+          sortField: "topLevelPhenotypeName",
+          cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes" />,
+        },
+        {
+          width: 1,
+          label: "Allele",
+          field: "alleleSymbol",
+          cmp: <AlleleCell />,
+        },
+        {
+          width: 1,
+          label: "Zygosity",
+          field: "zygosity",
+          cmp: <PlainTextCell style={{ textTransform: "capitalize" }} />,
+        },
+        {
+          width: 1,
+          label: "Life stage",
+          field: "lifeStageName",
+          cmp: <PlainTextCell />,
+        },
+        {
+          width: 1,
+          label: "Center",
+          field: "phenotypingCentre",
+          cmp: <PlainTextCell />,
+        },
+        {
+          width: 0.7,
+          label: "Mutants",
+          field: "mutantCount",
+          cmp: <MutantCountCell />,
+        },
+        {
+          width: 0.5,
+          label: "Significant",
+          field: "significant",
+          cmp: <OptionsCell options={{ true: "Yes", false: "No" }} />,
+        },
+        { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
+      ]}
+      highlightRowFunction={(item) =>
+        item.maleMutantCount < item.procedureMinMales && item.femaleMutantCount < item.procedureMinFemales
+      }
+    />
   );
 };
 

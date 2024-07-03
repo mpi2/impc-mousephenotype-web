@@ -34,6 +34,8 @@ const Charts = () => {
   const getPageTitle = (summaries: Array<Dataset>) => {
     if (!summaries || summaries.length === 0) {
       return <Skeleton width={200} />;
+    } else if (!!summaries.some((d) => d.procedureStableId === "IMPC_IPG_001")) {
+      return "Intraperitoneal glucose tolerance test";
     } else if (allSummaries[0]?.significantPhenotype?.name) {
       return allSummaries[0]?.significantPhenotype?.name;
     } else {
@@ -116,8 +118,6 @@ const Charts = () => {
     ? getDatasetByKey(allSummaries, selectedKey)
     : allSummaries[0];
 
-
-  const isSpecialChart = isIPGTTChart;
   const extraChildren = (hasFlowCytometryImages && flowCytometryImages.length) ? <FlowCytometryImages images={flowCytometryImages} /> : null;
   const Chart = getChartType(activeDataset, true, extraChildren);
   const smallestPValue = useMemo(() => getSmallestPValue(allSummaries), [allSummaries]);
@@ -187,16 +187,23 @@ const Charts = () => {
               </div>
             </div>
           )}
-          {(!isSpecialChart) && (
-            <DataComparison
-              data={allSummaries}
-              isViabilityChart={isViabilityChart}
-              selectedKey={selectedKey}
-              onSelectParam={setSelectedKey}
-              displayPValueThreshold={!isTimeSeries}
-              displayPValueColumns={!isTimeSeries}
-              {...(isABRChart && {initialSortByProp: "parameterStableId"})}
-            />
+          <DataComparison
+            data={allSummaries}
+            isViabilityChart={isViabilityChart}
+            selectedKey={selectedKey}
+            onSelectParam={setSelectedKey}
+            displayPValueThreshold={!isTimeSeries}
+            displayPValueColumns={!isTimeSeries}
+            {...(isABRChart && {initialSortByProp: "parameterStableId"})}
+          />
+          {isPPIChart && (
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <button className="btn impc-secondary-button" onClick={() => {
+                document.querySelector('#chart').scrollIntoView();
+              }}>
+                View chart
+              </button>
+            </div>
           )}
         </Card>
       </Container>
@@ -209,11 +216,13 @@ const Charts = () => {
             <ABR
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
+              activeDataset={activeDataset}
             />
           ) : !!isIPGTTChart ? (
             <IPGTT
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
+              activeDataset={activeDataset}
             />
           ) : !!isPPIChart ? (
             <PPI

@@ -12,3 +12,5 @@ export { useFlowCytometryQuery } from './flow-cytometry.query';
 export { useEmbryoWOLQuery } from './embryo-wol.query';
 export { usePagination } from './pagination';
 export { useMultipleS3DatasetsQuery } from './multiple-s3-datasets.query';
+export { useScroll } from './useScroll';
+export { useGeneAllStatisticalResData } from './gene-all-statistical-result-data.query';

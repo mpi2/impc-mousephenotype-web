@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import * as XLSX from "xlsx";
+import React from "react";
+import { Spinner } from "react-bootstrap";
 
 type Field<T> = {
   key: keyof T;
@@ -10,13 +12,28 @@ type Field<T> = {
 
 type Props<T> = {
   fileName: string;
-  data: Array<T> | (() => Array<T>);
   fields: Array<Field<T>> | (() => Array<Field<T>>);
-};
+} & ({
+  data: Array<T> | (() => Array<T>);
+  getData?: undefined;
+} | {
+  data?: undefined;
+  getData: () => Promise<Array<T>>;
+});
 
-const DownloadDataComponent = <T,>({ data, fields, fileName }: Props<T>) => {
-  const generateXlsxFile = () => {
-    const finalData = Array.isArray(data) ? data : data();
+const DownloadDataComponent = <T,>({ data, fields, fileName, getData }: Props<T>) => {
+  const [isBusyXLSX, setIsBusyXLSX] = React.useState(false);
+  const [isBusyTSV, setIsBusyTSV] = React.useState(false);
+
+  const generateXlsxFile = async () => {
+    let finalData: Array<T>;
+    if (getData) {
+      setIsBusyXLSX(true);
+      finalData = await getData();
+      setIsBusyXLSX(false);
+    } else {
+      finalData = Array.isArray(data) ? data : data();
+    }
     const finalFields = Array.isArray(fields) ? fields : fields();
     const rows = finalData.map((item) => {
       return finalFields.reduce((obj, field) => {
@@ -32,8 +49,15 @@ const DownloadDataComponent = <T,>({ data, fields, fileName }: Props<T>) => {
     XLSX.writeFile(workbook, `${fileName}.xlsx`);
   };
 
-  const generateTsvFile = () => {
-    const finalData = Array.isArray(data) ? data : data();
+  const generateTsvFile = async () => {
+    let finalData: Array<T>;
+    if (getData) {
+      setIsBusyTSV(true);
+      finalData = await getData();
+      setIsBusyTSV(false);
+    } else {
+      finalData = Array.isArray(data) ? data : data();
+    }
     const finalFields = Array.isArray(fields) ? fields : fields();
     const headers = finalFields.map((field) => field.label);
     const rows = finalData.map((item) => {
@@ -61,18 +85,32 @@ const DownloadDataComponent = <T,>({ data, fields, fileName }: Props<T>) => {
 
   return (
     <div className="grey" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      Download data as:{" "}
+      Download data as:&nbsp;
       <button
         className="btn impc-secondary-button small"
         onClick={generateTsvFile}
+        disabled={isBusyTSV}
       >
-        <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
-      </button>{" "}
+        {isBusyTSV ? (
+          <Spinner animation="border" size="sm" />
+        ) : (
+          <>
+            <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
+          </>
+        )}
+      </button>&nbsp;
       <button
         className="btn impc-secondary-button small"
         onClick={generateXlsxFile}
+        disabled={isBusyTSV}
       >
-        <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
+        {isBusyXLSX ? (
+          <Spinner animation="border" size="sm" />
+        ) : (
+          <>
+            <FontAwesomeIcon icon={faDownload} size="sm" /> XLS
+          </>
+        )}
       </button>
     </div>
   );

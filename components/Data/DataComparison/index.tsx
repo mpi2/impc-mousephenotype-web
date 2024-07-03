@@ -201,44 +201,27 @@ const DataComparison = (props: Props) => {
                     <td>{d.zygosity}</td>
                     {displayPValueColumns && (
                       <td>
-                        {d.sex === "not_considered" ? (
-                          <OverlayTrigger
-                            placement="top"
-                            trigger={["hover", "focus"]}
-                            overlay={<Tooltip>{getSexLabel(d.sex)}</Tooltip>}
-                          >
-                            <span className="me-2">
-                              <FontAwesomeIcon
-                                icon={getIcon(d.sex)}
-                                size="lg"
-                              />
-                            </span>
-                          </OverlayTrigger>
-                        ) : (
-                          <>
-                            {["male", "female", "not_considered"]
-                              .filter((sex) => d.sex === sex)
-                              .map((significantSex, index) => (
-                                <OverlayTrigger
-                                  key={index}
-                                  placement="top"
-                                  trigger={["hover", "focus"]}
-                                  overlay={
-                                    <Tooltip>
-                                      {getSexLabel(significantSex)}
-                                    </Tooltip>
-                                  }
-                                >
-                                  <span className="me-2">
-                                    <FontAwesomeIcon
-                                      icon={getIcon(significantSex)}
-                                      size="lg"
-                                    />
-                                  </span>
-                                </OverlayTrigger>
-                              ))}
-                          </>
-                        )}
+                        {["male", "female", "not_considered"]
+                          .filter(sex => _.has(d, `pValue_${sex}`) && !!d[`pValue_${sex}`] && d[`pValue_${sex}`] < 0.0001)
+                          .map((significantSex, index) => (
+                            <OverlayTrigger
+                              key={index}
+                              placement="top"
+                              trigger={["hover", "focus"]}
+                              overlay={
+                                <Tooltip>
+                                  {getSexLabel(significantSex)}
+                                </Tooltip>
+                              }
+                            >
+                              <span className="me-2">
+                                <FontAwesomeIcon
+                                  icon={getIcon(significantSex)}
+                                  size="lg"
+                                />
+                              </span>
+                            </OverlayTrigger>
+                          ))}
                       </td>
                     )}
                     <td>{d.lifeStageName}</td>

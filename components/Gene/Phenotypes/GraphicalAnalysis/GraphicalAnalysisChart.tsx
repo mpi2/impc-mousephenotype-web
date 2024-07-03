@@ -1,21 +1,24 @@
-import "chart.js/auto";
-import { Chart } from "chart.js";
-import { Chart as ChartEl } from "react-chartjs-2";
-import zoomPlugin from "chartjs-plugin-zoom";
+import { GeneStatisticalResult } from "@/models/gene";
 import _ from "lodash";
-import { useRef, useState, useMemo, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
-import { faSquare } from "@fortawesome/free-regular-svg-icons";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Chart, LinearScale, CategoryScale, PointElement, LineElement, Title, Tooltip } from "chart.js";
+import { allBodySystems, formatBodySystems } from "@/utils";
+import classNames from "classnames";
 import styles from "./styles.module.scss";
 import BodySystemIcon from "@/components/BodySystemIcon";
-import { formatBodySystems } from "@/utils";
-import { Form } from "react-bootstrap";
-import { GeneStatisticalResult } from "@/models/gene";
 import { ZoomButtons } from "@/components";
-import classNames from "classnames";
+import { Chart as ChartEl } from "react-chartjs-2";
+import { Cat, cats } from './shared';
+import zoomPlugin from 'chartjs-plugin-zoom';
 
-Chart.register(zoomPlugin);
+Chart.register(
+  LinearScale,
+  CategoryScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip
+);
 
 const colorArray = [
   "#FF6633",
@@ -68,33 +71,12 @@ const colorArray = [
   "#99E6E6",
   "#6666FF",
 ];
-
-type CatType = "ALL" | "BODY_SYSTEMS" | "PROCEDURES";
-
-const cats: { [key: string]: CatType } = {
-  ALL: "ALL",
-  BODY_SYSTEMS: "BODY_SYSTEMS",
-  PROCEDURES: "PROCEDURES",
-};
-
-const options = [
-  {
-    label: "None",
-    category: cats.SIGNIFICANT,
-  },
-  {
-    label: "Physiological systems",
-    category: cats.BODY_SYSTEMS,
-  },
-
-  {
-    label: "Procedures",
-    category: cats.PROCEDURES,
-  },
-  // { label: "Sort all by significance", category: cats.ALL },
-];
-
-type Cat = { type: CatType; meta?: any };
+const systemColorMap: Record<string, string> = {};
+const defaultColor = "rgba(0,0,0,0.1)";
+const transparent = "rgba(255, 255, 255, 0)";
+allBodySystems.forEach((system, index) => {
+  systemColorMap[system] = colorArray[index];
+});
 
 const getSignificants = (data: Array<GeneStatisticalResult>) => {
   return data.filter(item => {
@@ -141,19 +123,17 @@ const transformPValue = (value: number, significant: boolean) => {
   return -Math.log10(value)
 };
 
-const StatisticalAnalysisChart = ({
-  data,
-  cat,
-  sig,
-  hasDataRelatedToPWG,
-  isVisible,
-}: {
+const isManualAssociation = (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant;
+
+type Props = {
   data: Array<GeneStatisticalResult>;
   cat: Cat;
   sig: boolean;
   hasDataRelatedToPWG: boolean;
-  isVisible: boolean;
-}) => {
+};
+
+const GraphicalAnalysisChart = (props: Props) => {
+  const { data, cat, sig, hasDataRelatedToPWG } = props;
   const chartRef = useRef<Chart>(null);
   const zoomButtonsRef = useRef<HTMLDivElement>(null);
   const [zoomApplied, setZoomApplied] = useState<boolean>(false);
@@ -175,11 +155,11 @@ const StatisticalAnalysisChart = ({
       (x) =>
         x.topLevelPhenotypes?.length
     )
-    .map((x) => ({
-      ...x,
-      pValue: Number(x.pValue) || 0,
-      topLevelPhenotypes: x.topLevelPhenotypes.map((y) => y.name),
-    })), [data]);
+      .map((x) => ({
+        ...x,
+        pValue: Number(x.pValue) || 0,
+        topLevelPhenotypes: x.topLevelPhenotypes.map((y) => y.name),
+      })), [data]);
 
   const processed = useMemo(
     () => processData(dataWithPValue, cat, sig),
@@ -188,9 +168,9 @@ const StatisticalAnalysisChart = ({
 
   const isByProcedure = cat.type === cats.PROCEDURES;
   const colorByArray = useMemo(() =>
-    isByProcedure
-      ? _.uniq(processed.map((x) => x.procedureName))
-      : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]))
+      isByProcedure
+        ? _.uniq(processed.map((x) => x.procedureName))
+        : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]))
     ,[processed, isByProcedure]);
 
   const chartData = useMemo(() => ({
@@ -204,20 +184,18 @@ const StatisticalAnalysisChart = ({
           y: index,
           pValue: x.pValue,
           isSignificant: x.significant,
+          procedureName: x.procedureName,
+          system: x.topLevelPhenotypes[0],
+          color: isByProcedure ? colorArray[colorByArray.indexOf(x.procedureName)] : systemColorMap[x.topLevelPhenotypes[0]],
         })),
-        backgroundColor: processed.map((x) => {
-          let index = 0;
-          if (isByProcedure) {
-            index = colorByArray.indexOf(x.procedureName);
-          } else {
-            index = colorByArray.indexOf(x.topLevelPhenotypes[0]);
-          }
-          return colorArray[index];
-        }),
+        backgroundColor: (ctx) => !!ctx.raw ? (!isManualAssociation(ctx) ? ctx.raw.color : transparent) : defaultColor,
+        borderColor: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? ctx.raw.color : transparent) : defaultColor,
         showLine: false,
-        pointRadius: 5,
-        pointHoverRadius: 8,
-        pointStyle: (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant ? "triangle" : "circle",
+        pointRadius: (ctx) => isManualAssociation(ctx) ? 8 : 4,
+        pointHoverRadius: (ctx) => isManualAssociation(ctx) ? 11 : 7,
+        pointHoverBorderWidth: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? 3 : 1) : 2,
+        borderWidth: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? 3 : 1) : 2,
+        pointStyle: (ctx) => isManualAssociation(ctx) ? "triangle" : "circle",
       },
       {
         label: 'P-value threshold',
@@ -238,7 +216,7 @@ const StatisticalAnalysisChart = ({
         radius: 0,
       } : {}
     ],
-  }), [processed, colorByArray]);
+  }), [processed, colorByArray, isByProcedure]);
 
   const chartOptions = {
     responsive: true,
@@ -298,6 +276,7 @@ const StatisticalAnalysisChart = ({
     }
   };
 
+
   return (
     <div>
       <div className={classNames(styles.labels, styles.icons)}>
@@ -306,7 +285,7 @@ const StatisticalAnalysisChart = ({
           .map((item, index) => {
             const color = colorArray[index];
             return (
-              <span className="grey">
+              <span className="grey" key={item}>
                 <span className={styles.icon} style={{backgroundColor: color}}>
                   {isByProcedure ? null : (
                     <BodySystemIcon name={item} color="white" size="1x"/>
@@ -315,7 +294,7 @@ const StatisticalAnalysisChart = ({
                 <small>{formatBodySystems(item)}</small>
               </span>
             );
-        })}
+          })}
         <span className="grey" style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
           <hr className={styles.dashedLine}/>
           <small>Significant P-value threshold (P &lt; 0.0001)</small>
@@ -328,7 +307,8 @@ const StatisticalAnalysisChart = ({
         </div>
         <div className={styles.figureContainer}>
           <div className={styles.triangle} />
-          Manual annotations
+          Manual annotations:
+          <i>Are assigned a value of 1x10<sup>-15</sup> in order to be displayed in the chart</i>
         </div>
       </div>
       <div className={styles.chartContainer}>
@@ -351,6 +331,7 @@ const StatisticalAnalysisChart = ({
           ref={chartRef}
           options={chartOptions}
           data={chartData}
+          plugins={[zoomPlugin]}
         />
       </div>
       <div className={styles.bottomLabels}>
@@ -367,96 +348,4 @@ const StatisticalAnalysisChart = ({
   );
 };
 
-const StatisticalAnalysis = (
-  { data, isVisible } : { data: Array<GeneStatisticalResult>, isVisible: boolean }
-) => {
-  const [cat, setCat] = useState<Cat | null>({
-    type: cats.BODY_SYSTEMS,
-  });
-  const [significantOnly, setSignificantOnly] = useState<boolean>(false);
-  if (!data || !data.some((x) => x.topLevelPhenotypes?.length)) {
-    return null;
-  }
-
-  const filteredData = useMemo(
-    () => {
-      const allData = {};
-      data.forEach(result => {
-        const { mgiGeneAccessionId, parameterStableId, alleleAccessionId, metadataGroup, pValue} = result;
-        const hash = `${mgiGeneAccessionId}-${parameterStableId}-${alleleAccessionId}-${metadataGroup}-${pValue}`;
-        if (result[hash] === undefined) {
-          allData[hash] = result;
-        }
-      });
-      return Object.values(allData);
-    },
-    [data]
-  );
-
-  const handleToggle = () => {
-    setSignificantOnly(!significantOnly);
-  };
-
-  const significantSuffix = (() => {
-    if (cat.type === cats.BODY_SYSTEMS) {
-      return "physiological systems";
-    } else if (cat.type === cats.PROCEDURES) {
-      return "procedures";
-    }
-    return "";
-  })();
-
-  const hasDataRelatedToPWG = data.some(item => item.projectName === 'PWG');
-
-  return (
-    <>
-      <div
-        style={{
-          paddingLeft: "0.5rem",
-          marginBottom: "1rem",
-        }}
-      >
-        <p>
-          <label
-            htmlFor="groupBy"
-            className="grey"
-            style={{ marginRight: "0.5rem" }}
-          >
-            Include in groups:
-          </label>
-          <Form.Select
-            style={{ display: "inline-block", width: 280, marginRight: "2rem" }}
-            aria-label="Group by"
-            // value={cat.type}
-            defaultValue={cat.type}
-            id="groupBy"
-            className="bg-white"
-            onChange={(el) => {
-              setCat({ type: el.target.value as CatType });
-            }}
-          >
-            {options.map(({ label, category }) => (
-              <option value={category}>{label}</option>
-            ))}
-          </Form.Select>
-          <button onClick={handleToggle} className={styles.inlineButton}>
-            <FontAwesomeIcon
-              icon={significantOnly ? faCheckSquare : faSquare}
-              className={significantOnly ? "primary" : "grey"}
-            />{" "}
-            Only show significant {significantSuffix}
-          </button>
-        </p>
-      </div>
-      <StatisticalAnalysisChart
-        data={filteredData}
-        cat={cat}
-        sig={significantOnly}
-        hasDataRelatedToPWG={hasDataRelatedToPWG}
-        isVisible={isVisible}
-      />
-    </>
-  );
-};
-
-export default StatisticalAnalysis;
+export default GraphicalAnalysisChart;

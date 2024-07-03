@@ -1,6 +1,4 @@
-import Search from "../../components/Search";
 import { Container, Tab, Tabs, Modal } from "react-bootstrap";
-import Card from "../../components/Card";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -19,14 +17,12 @@ import dataLabelsPlugin from 'chartjs-plugin-datalabels';
 import styles from './styles.module.scss';
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
-import SortableTable from "../../components/SortableTable";
+import { fetchAPI } from "@/api-service";
 import { faTable, faChartBar, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Pagination from "../../components/Pagination";
 import dynamic from "next/dynamic";
-import { PublicationListProps } from "../../components/PublicationsList";
 import Head from "next/head";
+import { Card, Pagination, PublicationListProps, Search, SortableTable } from "@/components";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend);
 
 type AggregationData = {
@@ -36,7 +32,7 @@ type AggregationData = {
 }
 
 const PublicationsList = dynamic<PublicationListProps>(
-  () => import("../../components/PublicationsList"), {ssr: false}
+  () => import("@/components/PublicationsList"), {ssr: false}
 );
 
 const PublicationsPage = () => {

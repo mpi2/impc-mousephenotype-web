@@ -10,6 +10,7 @@ export const useRelatedParametersQuery = (
   onMissingProceduresFetched: (datasets: Array<Dataset>) => void,
 ) => {
   const [datasets, setDatasets] = useState<Array<Dataset>>(allDatasets);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const {
       mgiGeneAccessionId,
@@ -20,6 +21,7 @@ export const useRelatedParametersQuery = (
       phenotypingCentre,
       metadataGroup,
     } = allDatasets[0];
+    setIsLoading(true);
     const proceduresWithData = allDatasets.map((d) => d.parameterStableId);
     const missingProcedures = allParametersList.filter(
       (p) => !proceduresWithData.includes(p)
@@ -63,8 +65,9 @@ export const useRelatedParametersQuery = (
           d1.parameterStableId.localeCompare(d2.parameterStableId)
         );
         onMissingProceduresFetched(missingProcedureData);
+        setIsLoading(false);
         setDatasets(allData);
       });
   }, [allDatasets]);
-  return datasets;
+  return {datasets, datasetsAreLoading: isLoading};
 }

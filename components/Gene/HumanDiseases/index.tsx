@@ -99,7 +99,7 @@ const Row = ({ data }: { data: GeneDisease }) => {
           <Overlay target={tooltipRef.current} show={tooltipShow} placement="top">
             {(props) => (
               <Tooltip id={`${data.mgiGeneAccessionId}-${data.diseaseId}`} {...props}>
-                Phenodigm score: {data.phenodigmScore}%
+                Phenodigm score: {data.phenodigmScore.toFixed(2)}%
               </Tooltip>
             )}
           </Overlay>
