@@ -100,7 +100,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
   const yScale = useMemo(() =>
       scaleLinear<number>({
         range: [yMax, 0],
-        domain: [0, max(filteredData, d => d.arrPos) || 0],
+        domain: extent(filteredData, (d) => d.arrPos),
         nice: true,
       }),
     [height, filteredData]
@@ -185,13 +185,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
           ))}
         </Group>
         <Group left={0} top={0} >
-          <LinearGradient
-            id="gradient"
-            from="#AAA"
-            fromOpacity={1}
-            to="#AAA"
-            toOpacity={0.2}
-          />
           <AreaClosed
             data={data}
             height={yMax}
@@ -199,8 +192,8 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             y={d => brushYScale(d.arrPos)}
             yScale={brushYScale}
             strokeWidth={1}
-            stroke="url(#gradient)"
-            fill="url(#gradient)"
+            stroke="#000"
+            fill="#000"
             curve={curveMonotoneX}
           />
           <PatternLines
