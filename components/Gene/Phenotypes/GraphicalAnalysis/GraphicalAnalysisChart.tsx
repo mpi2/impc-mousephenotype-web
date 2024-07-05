@@ -15,6 +15,7 @@ import BaseBrush from "@visx/brush/lib/BaseBrush";
 import { BrushHandleRenderProps } from "@visx/brush/lib/BrushHandle";
 import { Bounds } from "@visx/brush/lib/types";
 import { max, extent } from "@visx/vendor/d3-array";
+import { useDebounceCallback } from 'usehooks-ts';
 
 function BrushHandle({ x, y, width, height, isBrushActive }: BrushHandleRenderProps) {
   if (!isBrushActive) {
@@ -156,7 +157,9 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
     const { y0, y1} = domain;
     const newFilteredData = data.filter(d => d.arrPos > y0 && d.arrPos < y1);
     setFilteredData(newFilteredData);
-  }
+  };
+
+  const onBrushDebounced = useDebounceCallback(onBrushChanges, 1);
 
   return (
     <div>
@@ -237,7 +240,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             brushDirection="vertical"
             initialBrushPosition={initialBrushPosition}
             selectedBoxStyle={selectedBrushStyle}
-            onChange={onBrushChanges}
+            onChange={onBrushDebounced}
             onClick={() => setFilteredData(data)}
             useWindowMoveEvents
             renderBrushHandle={(props) => <BrushHandle {...props} />}
