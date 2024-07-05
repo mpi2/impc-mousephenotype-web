@@ -3,7 +3,7 @@ import { colorArray, systemColorMap } from './shared';
 import { scaleLinear } from '@visx/scale';
 import { Group } from "@visx/group";
 import { Circle, AreaClosed } from "@visx/shape";
-import { GridColumns } from '@visx/grid';
+import { GridColumns, GridRows } from '@visx/grid';
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { withTooltip, Tooltip } from "@visx/tooltip";
 import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
@@ -13,7 +13,6 @@ import { PatternLines } from "@visx/pattern";
 import { Brush } from "@visx/brush";
 import BaseBrush from "@visx/brush/lib/BaseBrush";
 import { BrushHandleRenderProps } from "@visx/brush/lib/BrushHandle";
-import { LinearGradient } from "@visx/gradient";
 import { Bounds } from "@visx/brush/lib/types";
 import { max, extent } from "@visx/vendor/d3-array";
 
@@ -77,15 +76,26 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
   const svgRef = useRef<SVGSVGElement>(null);
   const brushRef = useRef<BaseBrush | null>(null);
   const xMax = useMemo(() => data.reduce((acc, x) => x.chartValue > acc ? x.chartValue : acc, 0), [data]);
-  const brushMaxWidth = (0.10 * width) - 10;
+  const brushMaxWidth = (0.10 * width);
+  const yAxisWidth = 0.15 * width;
+  const chartWidth = width - brushMaxWidth - yAxisWidth;
+
+  const numOfTicks = useMemo(() => {
+    if (filteredData.length <= 50) {
+      return filteredData.length
+    }
+    let divisor = 100;
+    while ((filteredData.length / divisor) <= 20) divisor -= 1;
+    return filteredData.length / divisor;
+  }, [filteredData]);
 
   const xScale = useMemo(() =>
     scaleLinear<number>({
-      range: [brushMaxWidth + 10, width],
+      range: [yAxisWidth, chartWidth],
       domain: extent(filteredData, (d) => d.chartValue),
       nice: true
     }),
-    [width, xMax, filteredData]
+    [chartWidth, filteredData]
   );
 
   const brushXScale = useMemo(() =>
@@ -151,7 +161,19 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
   return (
     <div>
       <svg width={width} height={height} ref={svgRef}>
-        <GridColumns scale={xScale} width={width} height={yMax + 40} stroke="#e0e0e0"/>
+        <GridColumns
+          scale={xScale}
+          width={width}
+          height={yMax + 40}
+          stroke="#e0e0e0"
+        />
+        <GridRows
+          scale={yScale}
+          width={chartWidth - yAxisWidth + 10}
+          left={yAxisWidth - 10}
+          numTicks={numOfTicks}
+          stroke="#e0e0e0"
+        />
         <line x1={xScale(4)} x2={xScale(4)} y1={0} y2={yMax + 40} stroke="#000" strokeWidth={2} strokeDasharray="5 4"/>
         <Group>
           {filteredData.map((x, i) => (
@@ -184,7 +206,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             )
           ))}
         </Group>
-        <Group left={0} top={0} >
+        <Group left={chartWidth} top={0} >
           <AreaClosed
             data={data}
             height={yMax}
@@ -224,9 +246,9 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
         <AxisLeft
           scale={yScale}
           top={0}
-          left={0}
-          numTicks={yAxisLabels.length}
-          tickFormat={(_, index) => yAxisLabels[index]}
+          left={yAxisWidth - 10}
+          numTicks={numOfTicks}
+          tickFormat={value => filteredData.find(d => d.arrPos === value)?.parameterName}
         />
         <AxisBottom
           top={yMax + 40}
