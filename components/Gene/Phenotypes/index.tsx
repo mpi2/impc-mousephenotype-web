@@ -15,8 +15,6 @@ import { SectionHeader } from "@/components";
 import { faTriangleExclamation, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const data = [];
-
 const StatisticalAnalysis = dynamic(
   () => import("./GraphicalAnalysis"),
   {ssr: false}
