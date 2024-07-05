@@ -1,17 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
-import Select from 'react-select';
-import data from './GeneVsProcedure.data';
+import Select from "react-select";
 import PaginationControls from "../PaginationControls";
-import { useEmbryoWOLQuery } from "@/hooks";
 import _ from "lodash";
 
 type EmbryoData = {
   id: string;
-  mgiAccessionId: string;
-  data: Array<{ x: string, y: number }>
-}
+  mgiGeneAccessionId: string;
+  data: Array<{ x: string; y: number }>;
+};
 type WOLData = {
   colony: string;
   gene_id: string;
@@ -19,47 +17,118 @@ type WOLData = {
   wol: string;
 };
 type DataIndex = Record<string, Array<WOLData>>;
-const ClickableAxisTick = ({tick, onClick}: { tick: any; onClick: (tick: any) => void; }) => {
+const ClickableAxisTick = ({
+  tick,
+  onClick,
+}: {
+  tick: any;
+  onClick: (tick: any) => void;
+}) => {
   return <AxisTick {...tick} onClick={onClick} />;
 };
 
 type Props = {
   selectOptions: Array<{ value: string; label: string }>;
-}
+  data: Array<any>;
+  secondaryViabilityData: Array<any>;
+};
 
-const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
-  const [chartData, setChartData] = useState<Array<EmbryoData>>(data.slice(0, 25));
+const EmbryoDataAvailabilityGrid = ({
+  selectOptions,
+  data,
+  secondaryViabilityData,
+}: Props) => {
   const [activePage, setActivePage] = useState(1);
-  const [totalPages, setTotalPages] = useState(Math.ceil(data.length / 25));
-  const geneIndex = chartData.reduce((acc, d) => ({ [d.id]: d.mgiAccessionId, ...acc }), {});
+  const [totalPages, setTotalPages] = useState(
+    data ? Math.ceil(data.length / 25) : 0
+  );
+  const [chartData, setChartData] = useState<Array<EmbryoData>>([]);
 
+  useEffect(() => {
+    setTotalPages(data ? Math.ceil(data.length / 25) : 0);
+    setChartData(
+      data
+        .slice((activePage - 1) * 25, (activePage - 1) * 25 + 25)
+        .map((d) => ({
+          id: d.geneSymbol,
+          mgiGeneAccessionId: d.mgiGeneAccessionId,
+          data: [
+            "OPT E9.5",
+            "MicroCT E14.5-E15.5",
+            "MicroCT E18.5",
+            "UMASS Pre E9.5",
+          ].map((p) => ({
+            x: p,
+            y: d.procedureNames.includes(p)
+              ? d.hasAutomatedAnalysis
+                ? 2
+                : 1
+              : p === "UMASS Pre E9.5" && d.isUmassGene
+              ? 1
+              : 0,
+          })),
+        }))
+    );
+  }, [data, activePage]);
 
-  const { data: dataIndex } = useEmbryoWOLQuery(data => {
-    return _.groupBy(data, 'FUSIL') as DataIndex;
-  });
+  const geneIndex = chartData?.reduce(
+    (acc, d) => ({ [d.id]: d.mgiGeneAccessionId, ...acc }),
+    {}
+  );
+
+  const dataIndex = secondaryViabilityData?.reduce(
+    (acc, d) => ({
+      [d.windowOfLethality]: d.genes,
+      ...acc,
+    }),
+    {}
+  );
 
   const handlePaginationChange = (pageNumber: number) => {
     setActivePage(pageNumber);
-    setChartData(data.slice((pageNumber - 1) * 25, (pageNumber - 1) * 25 + 25));
   };
 
-  const onChangeWOL = selected => {
-    const newSelectedGenes = selected.flatMap(s => dataIndex[s.value]).map(d => d.gene_id);
-    const newData = selected.length
-      ? data.filter(g => newSelectedGenes.includes(g.mgiAccessionId))
-      : data;
-    setChartData(
-      selected.length ? newData.slice(0, 25) : data.slice(0, 25)
-    );
-    setTotalPages(Math.ceil(newData.length / 25));
+  const onChangeWOL = (selected) => {
+    const newSelectedGenes = selected
+      .flatMap((s) => dataIndex[s.value])
+      .map((d) => d.mgiGeneAccessionId);
+    console.log(newSelectedGenes, data);
+    const newData =
+      selected.length && data
+        ? data.filter((g) => newSelectedGenes.includes(g.mgiGeneAccessionId))
+        : data;
     setActivePage(1);
-  }
+    setTotalPages(Math.ceil(newData.length / 25));
+    setChartData(
+      newData.slice(0, 25).map((d) => ({
+        id: d.geneSymbol,
+        mgiGeneAccessionId: d.mgiGeneAccessionId,
+        data: [
+          "OPT E9.5",
+          "MicroCT E14.5-E15.5",
+          "MicroCT E18.5",
+          "UMASS Pre E9.5",
+        ].map((p) => ({
+          x: p,
+          y: d.procedureNames.includes(p)
+            ? d.hasAutomatedAnalysis
+              ? 2
+              : 1
+            : p === "UMASS Pre E9.5" && d.isUmassGene
+            ? 1
+            : 0,
+        })),
+      }))
+    );
+  };
 
   const onClickTick = (cell: any) => {
     const geneAcc = geneIndex[cell.serieId];
     const dataType = cell.data.x;
     let url = "";
-    if (["OPT E9.5", "MicroCT E14.5-E15.5", "MicroCT E18.5"].includes(dataType)) {
+    if (
+      ["OPT E9.5", "MicroCT E14.5-E15.5", "MicroCT E18.5"].includes(dataType)
+    ) {
       url = `//www.mousephenotype.org/embryoviewer/?mgi=${geneAcc}`;
     } else if (dataType === "Vignettes") {
     } else if (dataType === "LacZ") {
@@ -97,84 +166,80 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
           marginTop: "0",
         }}
       >
-        <ResponsiveHeatMap
-          data={chartData}
-          margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
-          valueFormat={(v: any) => {
-            const options = [
-              "No data",
-              "Images Available",
-              "Images Available",
-              "EA not significant -> LA significant",
-              "Images and Automated Volumetric Analysis Available",
-            ];
-            return options[v];
-          }}
-          animate={true}
-          axisTop={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: -45,
-            legend: "",
-            legendOffset: 50,
-          }}
-          axisLeft={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: "",
-            legendPosition: "middle",
-            legendOffset: 60,
-            renderTick: (tick: any) => (
-              <ClickableAxisTick
-                tick={tick}
-                onClick={() =>
-                  window.open(
-                    `https://mousephenotype.org/data/genes/${data[tick.tickIndex].mgiAccessionId}`,
-                    "_blank",
-                    "noreferrer"
-                  )
-                }
-              />
-            ),
-          }}
-          axisRight={null}
-          colors={(cell: any) => {
-            const options = [
-              "#ECECEC",
-              "#17a2b8",
-              "#ed7b25",
-              "#ed7b25",
-              "#17a2b8",
-            ];
-            return options[cell.value || 0];
-          }}
-          labelTextColor="black"
-          emptyColor="#ccc"
-          borderWidth={0.25}
-          borderColor="#000"
-          enableLabels={false}
-          legends={[
-            {
-              anchor: "right",
-              translateX: 50,
-              translateY: 0,
-              length: 200,
-              thickness: 10,
-              direction: "column",
-              tickPosition: "after",
-              tickSize: 3,
-              tickSpacing: 4,
-              tickOverlap: false,
-              tickFormat: ">-.0s",
-              title: "Value →",
-              titleAlign: "middle",
-              titleOffset: 4,
-            },
-          ]}
-          annotations={[]}
-          onClick={onClickTick}
-        />
+        {chartData && (
+          <ResponsiveHeatMap
+            data={chartData}
+            margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
+            valueFormat={(v: any) => {
+              const options = [
+                "No data",
+                "Images Available",
+                "Images and Automated Volumetric Analysis Available",
+              ];
+              return options[v];
+            }}
+            animate={true}
+            axisTop={{
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: -45,
+              legend: "",
+              legendOffset: 50,
+            }}
+            axisLeft={{
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: 0,
+              legend: "",
+              legendPosition: "middle",
+              legendOffset: 60,
+              renderTick: (tick: any) => (
+                <ClickableAxisTick
+                  tick={tick}
+                  onClick={() =>
+                    window.open(
+                      `https://mousephenotype.org/data/genes/${
+                        data[tick.tickIndex].mgiAccessionId
+                      }`,
+                      "_blank",
+                      "noreferrer"
+                    )
+                  }
+                />
+              ),
+            }}
+            axisRight={null}
+            colors={(cell: any) => {
+              const options = ["#ECECEC", "#17a2b8", "#ed7b25"];
+              return options[cell.value || 0];
+            }}
+            labelTextColor="black"
+            emptyColor="#ccc"
+            borderWidth={0.25}
+            borderColor="#000"
+            enableLabels={false}
+            legends={[
+              {
+                anchor: "right",
+                translateX: 50,
+                translateY: 0,
+                length: 200,
+                thickness: 10,
+                direction: "column",
+                tickPosition: "after",
+                tickSize: 3,
+                tickSpacing: 4,
+                tickOverlap: false,
+                tickFormat: ">-.0s",
+                title: "Value →",
+                titleAlign: "middle",
+                titleOffset: 4,
+              },
+            ]}
+            annotations={[]}
+            onClick={onClickTick}
+          />
+        )}
       </div>
       {totalPages > 1 && (
         <PaginationControls
@@ -185,6 +250,5 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
       )}
     </>
   );
-
 };
 export default EmbryoDataAvailabilityGrid;
