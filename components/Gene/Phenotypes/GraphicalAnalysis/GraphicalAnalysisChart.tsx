@@ -33,6 +33,33 @@ function BrushHandle({ x, y, width, height, isBrushActive }: BrushHandleRenderPr
       />
     </Group>
   );
+};
+
+const TooltipContent = ({ statResult } : { statResult: any }) => {
+  return (
+    <div>
+      <h3>{statResult.parameterName}</h3>
+      <span>{statResult.topLevelPhenotypes[0]}</span><br/>
+      <span>
+        { statResult.pValue === 0 && statResult.significant ? "Manual association" : `P-value: ${parseFloat(statResult.pValue).toExponential(3)}`}
+      </span><br/>
+      <span><strong>Zygosity:</strong> {statResult.zygosity}</span><br/>
+      <span><strong>Procedure:</strong> {statResult.procedureName}</span><br/>
+      {(statResult.maleMutantCount && statResult.femaleMutantCount) && (
+        <>
+          <span><strong>Mutants:</strong> {statResult.maleMutantCount || 0} males & {statResult.femaleMutantCount || 0} females</span>
+          <br/>
+        </>
+      )}
+      {statResult.effectSize && (
+        <>
+          <span><strong>Effect size:</strong> {statResult.effectSize}</span>
+          <br/>
+        </>
+      )}
+      <span><strong>Metadata group:</strong> {statResult.metadataGroup}</span>
+    </div>
+  )
 }
 
 type Props = {
@@ -262,13 +289,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
       </svg>
       {tooltipOpen && tooltipData && (
         <Tooltip left={tooltipLeft} top={tooltipTop}>
-          <div>
-            <h3>{tooltipData.statResult.parameterName}</h3>
-            <span>{tooltipData.statResult.topLevelPhenotypes[0]}</span><br/>
-            <span>{tooltipData.statResult.pValue === 0 && tooltipData.statResult.significant ? "Manual association" : `P-value: ${parseFloat(tooltipData.statResult.pValue).toExponential(3)}`}</span><br/>
-            <span>Zygosity: {tooltipData.statResult.zygosity}</span><br/>
-            <span>Procedure: {tooltipData.statResult.procedureName}</span><br/>
-          </div>
+          <TooltipContent statResult={tooltipData.statResult}/>
         </Tooltip>
       )}
     </div>
