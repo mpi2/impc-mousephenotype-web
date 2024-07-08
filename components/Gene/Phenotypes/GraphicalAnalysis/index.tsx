@@ -222,6 +222,8 @@ const GraphicalAnalysis = (props: Props) => {
                   data={processed}
                   isByProcedure={isByProcedure}
                   yAxisLabels={yAxisLabels}
+                  category={cat}
+                  significantOnly={significantOnly}
                 ></GraphicalAnalysisChart>
               )}
             </ParentSize>

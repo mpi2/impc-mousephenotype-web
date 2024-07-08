@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useRef, useState } from "react";
-import { colorArray, systemColorMap } from './shared';
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Cat, colorArray, systemColorMap } from './shared';
 import { scaleLinear } from '@visx/scale';
 import { Group } from "@visx/group";
 import { Circle, AreaClosed } from "@visx/shape";
@@ -17,7 +17,7 @@ import { Bounds } from "@visx/brush/lib/types";
 import { max, extent } from "@visx/vendor/d3-array";
 import { useDebounceCallback } from 'usehooks-ts';
 
-function BrushHandle({ x, y, width, height, isBrushActive }: BrushHandleRenderProps) {
+const BrushHandle = ({ y, width, isBrushActive }: BrushHandleRenderProps) => {
   if (!isBrushActive) {
     return null;
   }
@@ -68,6 +68,8 @@ type Props = {
   height: number;
   yAxisLabels: Array<string>;
   isByProcedure: boolean;
+  category: Cat;
+  significantOnly: boolean;
 };
 
 type TooltipData = {
@@ -93,6 +95,8 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
     tooltipData,
     tooltipTop,
     tooltipLeft,
+    category,
+    significantOnly,
   } = props;
 
   if (!data) {
@@ -108,6 +112,10 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
   const yAxisWidth = 0.15 * width;
   const chartWidth = width - brushMaxWidth - yAxisWidth;
 
+  useEffect(() => {
+    setFilteredData(data);
+  }, [category, significantOnly]);
+
   const numOfTicks = useMemo(() => {
     if (filteredData.length <= 50) {
       return filteredData.length
@@ -115,7 +123,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
     let divisor = 100;
     while ((filteredData.length / divisor) <= 20) divisor -= 1;
     return filteredData.length / divisor;
-  }, [filteredData]);
+  }, [filteredData, category]);
 
   const xScale = useMemo(() =>
     scaleLinear<number>({
@@ -123,7 +131,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
       domain: extent(filteredData, (d) => d.chartValue),
       nice: true
     }),
-    [chartWidth, filteredData]
+    [chartWidth, filteredData, category]
   );
 
   const brushXScale = useMemo(() =>
@@ -141,7 +149,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
         domain: extent(filteredData, (d) => d.arrPos),
         nice: true,
       }),
-    [height, filteredData]
+    [height, filteredData, category]
   );
 
   const brushYScale = useMemo(() =>
