@@ -7,7 +7,7 @@ import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { useGeneAllStatisticalResData } from "@/hooks";
 import { AllelesStudiedContext } from "@/contexts";
-import { Cat, CatType, cats, options, colorArray, systemColorMap } from './shared';
+import { Cat, CatType, cats, options, colorArray, systemColorMap, getProcedureColorMap } from './shared';
 import GraphicalAnalysisChart from "./GraphicalAnalysisChart";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import ParentSize from '@visx/responsive/lib/components/ParentSize';
@@ -36,32 +36,40 @@ const getSignificants = (data: Array<GeneStatisticalResult>) => {
     return -Math.log10(Number(item.pValue)) >= pValueThreshold;
   });
 };
-const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
+const processData = (data: Array<GeneStatisticalResult>, { type }: Cat, significantOnly: boolean) => {
   const { BODY_SYSTEMS, PROCEDURES } = cats;
   const significants = getSignificants(data);
+  let results: Array<GeneStatisticalResult> = data;
+  let fieldsToSort: Array<string>;
   switch (type) {
     case BODY_SYSTEMS:
+      fieldsToSort = ["topLevelPhenotypeList", "parameterName"];
       if (significantOnly) {
-        const bodySystems = significants.map((x) => x.topLevelPhenotypes[0]);
-        const flattend = [].concat.apply([], bodySystems);
-        const filtered = data.filter((x) => {
-          return x.topLevelPhenotypes.some((y) => flattend.includes(y));
+        const bodySystems = Array.from(new Set(significants.map((x) => x.topLevelPhenotypeList[0])));
+        results = data.filter((x) => {
+          return x.topLevelPhenotypeList.some((y) => bodySystems.includes(y));
         });
-        return sortBy(filtered, ["topLevelPhenotypes", "parameterName"]).map((d, index) => ({...d, arrPos: index}));
       }
-      return sortBy(data, ["topLevelPhenotypes", "parameterName"]).map((d, index) => ({...d, arrPos: index}));
+      break;
     case PROCEDURES:
+      fieldsToSort = ["procedureName", "parameterName"];
       if (significantOnly) {
-        const procedures = significants.map((x) => x.procedureName);
-        const filtered = data.filter((x) => {
+        const procedures = Array.from(new Set(significants.map((x) => x.procedureName)));
+        results = data.filter((x) => {
           return procedures.includes(x.procedureName);
         });
-        return sortBy(filtered, ["procedureName", "parameterName"]).map((d, index) => ({...d, arrPos: index}));
       }
-      return sortBy(data, ["procedureName", "parameterName"]).map((d, index) => ({...d, arrPos: index}));
+      break;
     default:
-      return sortBy(significantOnly ? significants : data, "pValue", "desc").map((d, index) => ({...d, arrPos: index}));
+      results = significantOnly ? significants : data;
+      fieldsToSort = ["pValue", "desc"];
   }
+  return sortBy(results, fieldsToSort)
+    .map((d, index) => ({
+      ...d,
+      arrPos: index,
+      chartValue: transformPValue(d.pValue, d.significant)
+    }));
 };
 
 const GraphicalAnalysis = (props: Props) => {
@@ -105,11 +113,11 @@ const GraphicalAnalysis = (props: Props) => {
       .map((x, index) => ({
         ...x,
         pValue: Number(x.pValue) || 0,
-        topLevelPhenotypes: x.topLevelPhenotypes.map((y) => y.name),
+        topLevelPhenotypeList: x.topLevelPhenotypes.map((y) => y.name),
       })), [filteredData]);
 
   const processed = useMemo(
-    () => processData(dataWithPValue, cat, significantOnly).map((x) => ({ ...x, chartValue: transformPValue(x.pValue, x.significant) })),
+    () => processData(dataWithPValue, cat, significantOnly),
     [dataWithPValue, cat, significantOnly]
   );
 
@@ -117,21 +125,26 @@ const GraphicalAnalysis = (props: Props) => {
   const yAxisLabels = useMemo(() =>
       isByProcedure
         ? uniq(processed.map((x) => x.procedureName))
-        : uniq(processed.map((x) => x.topLevelPhenotypes[0]))
+        : uniq(processed.map((x) => x.topLevelPhenotypeList[0]))
     ,[processed, isByProcedure]);
+
+  const procedureColorMap = useMemo(
+    () => getProcedureColorMap(uniq(filteredData.map((x) => x.procedureName))),
+    [processed, isByProcedure]
+  );
 
   const handleToggle = () => {
     setSignificantOnly(!significantOnly);
   };
 
-  const significantSuffix = (() => {
+  const significantSuffix = useMemo(() => {
     if (cat.type === cats.BODY_SYSTEMS) {
       return "physiological systems";
     } else if (cat.type === cats.PROCEDURES) {
       return "procedures";
     }
     return "";
-  })();
+  }, [cat]);
 
   const hasDataRelatedToPWG = geneData.some(item => item.projectName === 'PWG');
 
@@ -185,10 +198,16 @@ const GraphicalAnalysis = (props: Props) => {
             {yAxisLabels
               .filter(Boolean)
               .map((item, index) => {
-                const color = isByProcedure ? colorArray[index] : systemColorMap[item];
+                const chartLabel = isByProcedure ? procedureColorMap[item] : systemColorMap[item];
                 return (
                   <span className="grey" key={item}>
-                    <span className={styles.icon} style={{backgroundColor: color}}>
+                    <span
+                      className={classNames(styles.icon, {
+                        [styles.circle]: chartLabel.shape === 'circle' || chartLabel.color === undefined,
+                        [styles.diamond]: chartLabel.shape === 'diamond',
+                        [styles.phenotype]: !isByProcedure,
+                      })}
+                      style={{backgroundColor: chartLabel.color}}>
                       {isByProcedure ? null : (
                         <BodySystemIcon name={item} color="white" size="1x"/>
                       )}
@@ -198,9 +217,9 @@ const GraphicalAnalysis = (props: Props) => {
                 );
               })}
             <span className="grey" style={{display: 'inline-block', whiteSpace: 'nowrap'}}>
-          <hr className={styles.dashedLine}/>
-          <small>Significant P-value threshold (P &lt; 0.0001)</small>
-        </span>
+              <hr className={styles.dashedLine}/>
+              <small>Significant P-value threshold (P &lt; 0.0001)</small>
+            </span>
           </div>
           <div className={classNames(styles.labels, "grey")}>
             <div className={styles.figureContainer}>
@@ -221,10 +240,11 @@ const GraphicalAnalysis = (props: Props) => {
                   height={height}
                   data={processed}
                   isByProcedure={isByProcedure}
-                  yAxisLabels={yAxisLabels}
                   category={cat}
                   significantOnly={significantOnly}
-                ></GraphicalAnalysisChart>
+                  procedureColorMap={procedureColorMap}
+                >
+                </GraphicalAnalysisChart>
               )}
             </ParentSize>
           </div>
