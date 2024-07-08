@@ -137,7 +137,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const yScale = useMemo(() =>
       scaleLinear<number>({
-        range: [yMax, 0],
+        range: [40, yMax],
         domain: extent(filteredData, (d) => d.arrPos),
         nice: true,
       }),
@@ -146,7 +146,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const brushYScale = useMemo(() =>
       scaleLinear<number>({
-        range: [yMax, 0],
+        range: [40, yMax],
         domain: [0, max(data, d => d.arrPos) || 0],
         nice: true,
       }),
