@@ -14,7 +14,7 @@ import { Brush } from "@visx/brush";
 import BaseBrush from "@visx/brush/lib/BaseBrush";
 import { BrushHandleRenderProps } from "@visx/brush/lib/BrushHandle";
 import { Bounds } from "@visx/brush/lib/types";
-import { max, extent } from "@visx/vendor/d3-array";
+import { max, extent, min } from "@visx/vendor/d3-array";
 import { useDebounceCallback } from 'usehooks-ts';
 import { groupBy } from 'lodash';
 import chroma from "chroma-js";
@@ -151,6 +151,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
         range: [40, yMax],
         domain: extent(filteredData, (d) => d.arrPos),
         nice: true,
+        clamp: true,
       }),
     [height, filteredData, category]
   );
@@ -160,6 +161,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
         range: [40, yMax],
         domain: [0, max(data, d => d.arrPos) || 0],
         nice: true,
+        clamp: true,
       }),
     [height, data]
   );
@@ -167,11 +169,13 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const initialBrushPosition = useMemo(
     () => ({
-      start: { x: brushXScale(data[0].chartValue) },
-      end: { x: brushXScale(data[data.length - 1].chartValue) },
+      start: { y: 0, x: 0 },
+      end: { y: brushYScale(yMax), x: 0 },
     }),
-    [brushXScale],
+    [brushYScale, data],
   );
+
+  console.log({ initialBrushPosition });
 
   const handleMouseMove = useCallback((x, y, data) => {
     if (tooltipTimeout) clearTimeout(tooltipTimeout);
@@ -193,6 +197,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
   const onBrushChanges = (domain: Bounds | null) => {
     if (!domain) return;
     const { y0, y1} = domain;
+    console.log({ y0, y1 });
     const newFilteredData = data.filter(d => d.arrPos > y0 && d.arrPos < y1);
     setFilteredData(newFilteredData);
   };
@@ -208,7 +213,8 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
         <GridColumns
           scale={xScale}
           width={width}
-          height={yMax + 40}
+          top={40}
+          height={yMax}
           stroke="#e0e0e0"
         />
         <GridRows
@@ -218,7 +224,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
           numTicks={numOfTicks}
           stroke="#e0e0e0"
         />
-        <line x1={xScale(4)} x2={xScale(4)} y1={0} y2={yMax + 40} stroke="#000" strokeWidth={2} strokeDasharray="5 4"/>
+        <line x1={xScale(4)} x2={xScale(4)} y1={40} y2={yMax} stroke="#000" strokeWidth={2} strokeDasharray="5 4"/>
         {Object.entries(chartData).map(([item, points]) => {
           const chartLabel = isByProcedure ? procedureColorMap[item] : systemColorMap[item];
           const GlyphIcon = !isByProcedure || chartLabel.shape === 'circle' ? GlyphCircle : GlyphDiamond;
@@ -260,18 +266,20 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             </Group>
           )
         })}
-        <Group left={chartWidth} top={0} >
-          <AreaClosed
-            data={data}
-            height={yMax}
-            x={d => brushXScale(d.chartValue)}
-            y={d => brushYScale(d.arrPos)}
-            yScale={brushYScale}
-            strokeWidth={1}
-            stroke="#000"
-            fill="#000"
-            curve={curveMonotoneX}
-          />
+        <Group left={chartWidth} top={40}>
+          <Group top={-40}>
+            <AreaClosed
+              data={data}
+              height={yMax}
+              x={d => brushXScale(d.chartValue)}
+              y={d => brushYScale(d.arrPos)}
+              yScale={brushYScale}
+              strokeWidth={1}
+              stroke="#000"
+              fill="#000"
+              curve={curveMonotoneX}
+            />
+          </Group>
           <PatternLines
             id="brush_pattern"
             height={8}
@@ -284,7 +292,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             xScale={brushXScale}
             yScale={brushYScale}
             width={brushMaxWidth}
-            height={yMax}
+            height={yMax - 40}
             handleSize={8}
             innerRef={brushRef}
             resizeTriggerAreas={["top", "bottom"]}
@@ -305,7 +313,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
           tickFormat={value => filteredData.find(d => d.arrPos === value)?.parameterName}
         />
         <AxisBottom
-          top={yMax + 40}
+          top={yMax}
           scale={xScale}
           numTicks={10}
           label="log₁₀(P-value)"
