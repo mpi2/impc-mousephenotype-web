@@ -10,17 +10,12 @@ import {
   BarElement,
   BarController,
 } from "chart.js";
-import {
-  Col,
-  Form,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Col, Form, Row, Table } from "react-bootstrap";
 import Card from "@/components/Card";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { useQuery } from "@tanstack/react-query";
 import _ from "lodash";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { Chart } from "react-chartjs-2";
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
@@ -54,6 +49,20 @@ const getPointStyle = (key: string) => {
   } else {
     return key.includes("Female") ? "rect" : "circle";
   }
+};
+
+const getLabel = (sex, zygosity, sampleGroup) => {
+  const labelSex = sex[0].toUpperCase() + sex.slice(1);
+  const labelZyg =
+    zygosity === "homozygote"
+      ? "HOM"
+      : zygosity === "hemizygote"
+      ? "HEM"
+      : "HET";
+  const labelGroup = sampleGroup == "experimental" ? labelZyg : "WT";
+  const order = labelGroup !== "WT" ? 1 : 2;
+  const label = `${labelSex} ${labelGroup}`;
+  return label;
 };
 
 // Function to group data by a property
@@ -96,8 +105,16 @@ const countSpecimens = (series, sex: string, sampleGroup: string) => {
   return new Set(selectedSeries.observations.map((d) => d.specimenId)).size;
 };
 
-const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
+const TimeSeries = ({
+  datasetSummary,
+  isVisible,
+  children,
+}: GeneralChartProps) => {
   const [viewSMA, setViewSMA] = useState(false);
+  useEffect(() => {
+    setViewSMA(datasetSummary.procedureStableId.includes("CAL"));
+  }, []);
+
   const getLineSeries = (dataSeries, sex, sampleGroup, zygosity) => {
     if (!dataSeries) {
       return null;
@@ -135,17 +152,7 @@ const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) 
         return p2;
       })
       .sort((a, b) => a.x - b.x);
-
-    const labelSex = sex[0].toUpperCase() + sex.slice(1);
-    const labelZyg =
-      zygosity === "homozygote"
-        ? "HOM"
-        : zygosity === "hemizygote"
-        ? "HEM"
-        : "HET";
-    const labelGroup = sampleGroup == "experimental" ? labelZyg : "WT";
-    const order = labelGroup !== "WT" ? 1 : 2;
-    const label = `${labelSex} ${labelGroup}`;
+    const label = getLabel(sex, zygosity, sampleGroup);
 
     return {
       label,
@@ -251,6 +258,8 @@ const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) 
     queryFn: () => fetchDatasetFromS3(datasetSummary["datasetId"]),
     select: (response) => {
       const dataSeries = response.series;
+      const isCategorical = dataSeries[0].observations[0].category !== null;
+
       const femaleWTPoints = getLineSeries(
         dataSeries,
         "female",
@@ -282,7 +291,9 @@ const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) 
         maleHomPoints,
       ]);
 
-      const summaryStatistics = updateSummaryStatistics(chartSeries);
+      const summaryStatistics = !isCategorical
+        ? updateSummaryStatistics(chartSeries)
+        : null;
 
       const labels = Array.from(
         new Set(chartSeries.flatMap((s) => s.data.map((d) => d.x)))
@@ -310,6 +321,7 @@ const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) 
           },
         },
         originalData: response,
+        isCategorical,
       };
     },
     enabled: isVisible,
@@ -357,7 +369,97 @@ const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) 
     };
   };
 
-  const tableData = getTableData(data?.chartSeries || []);
+  const getCategoricalTableData = (series) => {
+    if (!series) return;
+
+    // Flatten the observations from the series
+    const observations = series.flatMap((s) =>
+      s.observations.map((o) => ({
+        sampleGroup: s.sampleGroup,
+        specimenSex: s.specimenSex,
+        discretePoint: o.discretePoint,
+        category: o.category,
+      }))
+    );
+
+    // Group the observations by a composite key
+    const compositeGroup = _.groupBy(
+      observations,
+      (item) =>
+        `${item.sampleGroup}-${item.specimenSex}-${item.discretePoint}-${item.category}`
+    );
+
+    // Create header labels and a mapping from composite keys to header indices
+    const groupToHeaderIndex = {};
+    const headers = [
+      ...new Set(
+        Object.keys(compositeGroup).map((k) => {
+          const [sampleGroup, specimenSex, discretePoint, category] =
+            k.split("-");
+          const label = getLabel(
+            specimenSex,
+            datasetSummary.zygosity,
+            sampleGroup
+          );
+          groupToHeaderIndex[k] = label;
+          return label;
+        })
+      ),
+    ];
+
+    // Sort headers alphabetically
+    headers.sort((a, b) => (a < b ? -1 : 1));
+
+    // Define increments and categories
+    const increments = [1, 2, 3];
+    const categories = ["f", "j", "p"];
+
+    // Generate the cross product of increments and categories
+    const crossProductConcat = increments.flatMap((a) =>
+      categories.map((b) => `${a}-${b}`)
+    );
+
+    // Define a display mapping for categories
+    const categoryDisplay = {
+      f: "Falling",
+      j: "Jumping",
+      p: "Passive rotation",
+    };
+    // Generate rows for the table
+    const rows = crossProductConcat.map((g) => {
+      const [increment, category] = g.split("-");
+      const row = [increment, categoryDisplay[category]];
+
+      // Fill the row with the appropriate data from the composite group
+      headers.forEach((header) => {
+        const keys = Object.keys(groupToHeaderIndex).filter(
+          (k) => groupToHeaderIndex[k] === header
+        );
+        keys.forEach((key) => {
+          if (key && key.endsWith(`${increment}-${category}`)) {
+            row.push(compositeGroup[key].length);
+          }
+        });
+        if (
+          keys.filter((k) => k.endsWith(`${increment}-${category}`)).length ===
+          0
+        )
+          row.push(0);
+      });
+
+      return row;
+    });
+
+    // Return the table data
+    return {
+      headers: ["Increment", "Category"].concat(headers),
+      rows: rows,
+    };
+  };
+
+  const tableData = data?.isCategorical
+    ? getCategoricalTableData(data.originalData.series)
+    : getTableData(data?.chartSeries || []);
 
   const chartOptions = {
     responsive: true,
@@ -411,43 +513,39 @@ const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) 
         displayAssociatedPhenotype={false}
       />
       <Row>
+        {data && !data.isCategorical && (
+          <Col lg={12}>
+            <Card>
+              <div style={{ position: "relative", height: "400px" }}>
+                {datasetSummary.procedureStableId.includes("CAL") ? (
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Form.Check // prettier-ignore
+                      type="switch"
+                      id="custom-switch"
+                      label="View as Simple Moving Averages"
+                      onChange={() => setViewSMA(!viewSMA)}
+                      checked={viewSMA}
+                    />
+                  </div>
+                ) : null}
+                <Chart
+                  type="bar"
+                  options={chartOptions}
+                  data={{
+                    datasets: data.chartSeries.map((s) => {
+                      return { ...s, data: !viewSMA ? s.data : s.smaData };
+                    }),
+                    labels: !viewSMA ? data.labels : data.smaLabels,
+                  }}
+                  plugins={chartPlugins}
+                />
+              </div>
+            </Card>
+          </Col>
+        )}
         <Col lg={12}>
           <Card>
-            <div style={{ position: "relative", height: "400px" }}>
-              {!!data && (
-                <>
-                  {datasetSummary.procedureStableId.includes("CAL") ? (
-                    <div
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
-                      <Form.Check // prettier-ignore
-                        type="switch"
-                        id="custom-switch"
-                        label="View as Simple Moving Averages"
-                        onChange={() => setViewSMA(!viewSMA)}
-                        checked={viewSMA}
-                      />
-                    </div>
-                  ) : null}
-                  <Chart
-                    type="bar"
-                    options={chartOptions}
-                    data={{
-                      datasets: data.chartSeries.map((s) => {
-                        return { ...s, data: !viewSMA ? s.data : s.smaData };
-                      }),
-                      labels: !viewSMA ? data.labels : data.smaLabels,
-                    }}
-                    plugins={chartPlugins}
-                  />
-                </>
-              )}
-            </div>
-          </Card>
-        </Col>
-        <Col lg={12}>
-          <Card>
-            {!!data && (
+            {data && !data.isCategorical && (
               <Table striped>
                 <thead>
                   <tr>
@@ -473,13 +571,30 @@ const TimeSeries = ({ datasetSummary, isVisible, children }: GeneralChartProps) 
                 </tbody>
               </Table>
             )}
+            {data && data.isCategorical && (
+              <Table striped>
+                <thead>
+                  <tr>
+                    {" "}
+                    {tableData.headers.map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableData.rows.map((row, i) => (
+                    <tr key={i}>
+                      {row.map((col, i) => (
+                        <td key={i}>{col}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
           </Card>
         </Col>
-        {!!children && (
-          <Col lg={12}>
-            {children}
-          </Col>
-        )}
+        {!!children && <Col lg={12}>{children}</Col>}
         <Col>
           <Card>
             <h2>Experimental data download</h2>
