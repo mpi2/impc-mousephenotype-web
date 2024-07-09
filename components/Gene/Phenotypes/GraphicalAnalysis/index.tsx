@@ -7,7 +7,7 @@ import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { useGeneAllStatisticalResData } from "@/hooks";
 import { AllelesStudiedContext } from "@/contexts";
-import { Cat, CatType, cats, options, colorArray, systemColorMap, getProcedureColorMap } from './shared';
+import { Cat, CatType, cats, options, systemColorMap, getProcedureColorMap } from './shared';
 import GraphicalAnalysisChart from "./GraphicalAnalysisChart";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
 import ParentSize from '@visx/responsive/lib/components/ParentSize';

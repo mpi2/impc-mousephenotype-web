@@ -28,4 +28,5 @@ export type GeneStatisticalResult = {
   mutantCount?:       string;
   chartValue?:        number;
   topLevelPhenotypeList?: Array<string>;
+  arrPos?:            number;
 }

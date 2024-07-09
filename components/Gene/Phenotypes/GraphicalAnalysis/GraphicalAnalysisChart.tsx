@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Cat, ChartLabels, systemColorMap } from './shared';
 import { scaleLinear } from '@visx/scale';
 import { Group } from "@visx/group";
-import { Circle, AreaClosed } from "@visx/shape";
+import { AreaClosed } from "@visx/shape";
 import { GridColumns, GridRows } from '@visx/grid';
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { withTooltip, Tooltip } from "@visx/tooltip";
@@ -16,6 +16,9 @@ import { BrushHandleRenderProps } from "@visx/brush/lib/BrushHandle";
 import { Bounds } from "@visx/brush/lib/types";
 import { max, extent } from "@visx/vendor/d3-array";
 import { useDebounceCallback } from 'usehooks-ts';
+import { groupBy } from 'lodash';
+import chroma from "chroma-js";
+import { GeneStatisticalResult } from "@/models/gene";
 
 const BrushHandle = ({ y, width, isBrushActive }: BrushHandleRenderProps) => {
   if (!isBrushActive) {
@@ -63,7 +66,7 @@ const TooltipContent = ({ statResult } : { statResult: any }) => {
 }
 
 type Props = {
-  data: Array<any>;
+  data: Array<GeneStatisticalResult>;
   width: number;
   height: number;
   isByProcedure: boolean;
@@ -73,7 +76,7 @@ type Props = {
 };
 
 type TooltipData = {
-  statResult: any;
+  statResult: GeneStatisticalResult;
 }
 
 let tooltipTimeout: number;
@@ -196,6 +199,9 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const onBrushDebounced = useDebounceCallback(onBrushChanges, 1);
 
+  const chartData = groupBy(filteredData, isByProcedure ? "procedureName" : "topLevelPhenotypeList[0]");
+
+
   return (
     <div>
       <svg width={width} height={height} ref={svgRef}>
@@ -213,42 +219,47 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
           stroke="#e0e0e0"
         />
         <line x1={xScale(4)} x2={xScale(4)} y1={0} y2={yMax + 40} stroke="#000" strokeWidth={2} strokeDasharray="5 4"/>
-        <Group>
-          {filteredData.map((x, i) => {
-            const chartLabel = isByProcedure ? procedureColorMap[x.procedureName] : systemColorMap[x.topLevelPhenotypeList[0]];
-            const sharedProps = {
-              key: i,
-              onMouseMove: () => handleMouseMove(xScale(x.chartValue), yScale(x.arrPos), x),
-              onMouseLeave: handleMouseLeave,
-              onTouchMove: () => handleMouseMove(xScale(x.chartValue), yScale(x.arrPos), x),
-              onTouchEnd: handleMouseLeave,
-            };
-            const GlyphIcon = !isByProcedure || chartLabel.shape === 'circle' ? GlyphCircle : GlyphDiamond;
-            // always display manual associations as triangles
-            if (x.pValue === 0 && x.significant) {
-              return (
-                <GlyphTriangle
-                  left={xScale(x.chartValue)}
-                  top={yScale(x.arrPos)}
-                  size={110}
-                  fill="#FFF"
-                  stroke={chartLabel.color}
-                  strokeWidth={3}
-                  {...sharedProps}
-                />
-              )
-            }
-            return (
-              <GlyphIcon
-                left={xScale(x.chartValue)}
-                top={yScale(x.arrPos)}
-                size={80}
-                fill={chartLabel.color}
-                {...sharedProps}
-              />
-            );
-          })}
-        </Group>
+        {Object.entries(chartData).map(([item, points]) => {
+          const chartLabel = isByProcedure ? procedureColorMap[item] : systemColorMap[item];
+          const GlyphIcon = !isByProcedure || chartLabel.shape === 'circle' ? GlyphCircle : GlyphDiamond;
+          const isMatchingTooltip = isByProcedure ? tooltipData?.statResult.procedureName === item : tooltipData?.statResult.topLevelPhenotypeList.includes(item);
+          const fillColor = (!tooltipData || isMatchingTooltip) ? chartLabel.color : chroma(chartLabel.color).alpha(0.1);
+          return (
+            <Group fill={fillColor}>
+              {points.map((x, i) => {
+                const sharedProps = {
+                  key: i,
+                  onMouseMove: () => handleMouseMove(xScale(x.chartValue), yScale(x.arrPos), x),
+                  onMouseLeave: handleMouseLeave,
+                  onTouchMove: () => handleMouseMove(xScale(x.chartValue), yScale(x.arrPos), x),
+                  onTouchEnd: handleMouseLeave,
+                };
+                // always display manual associations as triangles
+                if (x.pValue === 0 && x.significant) {
+                  return (
+                    <GlyphTriangle
+                      left={xScale(x.chartValue)}
+                      top={yScale(x.arrPos)}
+                      size={110}
+                      fill="#FFF"
+                      stroke={chartLabel.color}
+                      strokeWidth={3}
+                      {...sharedProps}
+                    />
+                  )
+                }
+                return (
+                  <GlyphIcon
+                    left={xScale(x.chartValue)}
+                    top={yScale(x.arrPos)}
+                    size={80}
+                    {...sharedProps}
+                  />
+                );
+              })}
+            </Group>
+          )
+        })}
         <Group left={chartWidth} top={0} >
           <AreaClosed
             data={data}
