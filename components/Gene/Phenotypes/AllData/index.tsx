@@ -22,9 +22,11 @@ import { fetchAPI } from "@/api-service";
 import { PaginatedResponse } from "@/models";
 import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
+import { useDebounceValue } from 'usehooks-ts';
 
 type Props = {
   routerIsReady: boolean;
+  onTotalData: (arg: number) => void;
 };
 
 type FilterOptions = {
@@ -51,7 +53,7 @@ const defaultFilterOptions: FilterOptions = {
   alleles: [],
 };
 
-const defaultSelectedValues: SelectedValues= {
+const defaultSelectedValues: SelectedValues = {
   procedureName: undefined,
   topLevelPhenotypeName: undefined,
   lifeStageName: undefined,
@@ -68,11 +70,12 @@ const getMutantCount = (dataset: GeneStatisticalResult) => {
 
 const AllData = (props: Props) => {
   const gene = useContext(GeneContext);
+  const { onTotalData } = props;
   const { setAlleles } = useContext(AllelesStudiedContext);
   const [sortField, setSortField] = useState<string>("pValue");
   const [sortOrder, setSortOrder] = useState<string>("asc");
   const [totalItems, setTotalItems] = useState<number>(0);
-  const [query, setQuery] = useState(undefined);
+  const [query, setQuery] = useDebounceValue(undefined, 500)
   const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
   const [selectedValues, setSelectedValues] = useState<SelectedValues>(defaultSelectedValues);
 
@@ -93,7 +96,7 @@ const AllData = (props: Props) => {
 
 
   const { data, isError, isFetching } = useQuery({
-    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder],
+    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder, query],
     queryFn: () => {
       const url = `/api/v1/genes/statistical-result/filtered/page`;
       const params = {
@@ -107,6 +110,10 @@ const AllData = (props: Props) => {
       Object.entries(selectedValues)
         .filter(([, value]) => !!value)
         .forEach(([key, value]) => params[key] = value);
+
+      if (query) {
+        params["searchQuery"] = query;
+      }
 
       return fetchAPI(buildURL(url, params));
     },
@@ -141,12 +148,17 @@ const AllData = (props: Props) => {
       .filter(([, value]) => !!value)
       .forEach(([key, value]) => params[key] = value);
 
+    if (query) {
+      params["searchQuery"] = query;
+    }
+
     return fetchAPI(buildURL(url, params));
   }
 
   useEffect(() => {
     if (data && data.totalElements !== totalItems) {
       setTotalItems(data.totalElements);
+      onTotalData(data.totalElements);
     }
   }, [data, totalItems]);
 
@@ -195,6 +207,7 @@ const AllData = (props: Props) => {
               onChange={setQuery}
               ariaLabel="Filter by parameters"
               controlStyle={{ width: 150 }}
+              emitValueLowercase={false}
             />
             <FilterBox
               controlId="procedureFilterAD"

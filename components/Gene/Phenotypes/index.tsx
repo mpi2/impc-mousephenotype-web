@@ -15,8 +15,6 @@ import { SectionHeader } from "@/components";
 import { faTriangleExclamation, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const data = [];
-
 const StatisticalAnalysis = dynamic(
   () => import("./GraphicalAnalysis"),
   {ssr: false}
@@ -69,6 +67,7 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
 const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
   const [tabKey, setTabKey] = useState('significantPhenotypes');
+  const [allDataCount, setAllDataCount] = useState<number>(0);
 
   const {
     phenotypeData,
@@ -167,9 +166,9 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             />
           </TabContent>
         </Tab>
-        <Tab eventKey="allData" title="All data">
+        <Tab eventKey="allData" title={`All data (${allDataCount})`}>
           <div className="mt-3">
-            <AllData routerIsReady={router.isReady}/>
+            <AllData routerIsReady={router.isReady} onTotalData={setAllDataCount}/>
           </div>
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">

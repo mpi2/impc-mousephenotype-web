@@ -4,6 +4,10 @@
   --border-color: #{$grey};
   background-color: white;
   position: relative;
+  @media screen and (max-width: 992px) {
+    height: 79px;
+    line-height: 79px;
+  }
   // top links
   :global(.header__nav-top) {
     color: black;
@@ -67,7 +71,6 @@
 
   //  nav bar
   :global(.navbar-toggler) {
-    height: 79px;
     color: #000000;
     font-size: 18px;
     border: none;
@@ -223,6 +226,90 @@
       font-size: $font-sm;
       font-weight: 400;
       margin-bottom: 0;
+    }
+  }
+
+  :global(.mobile-nav) {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    color: #FFF;
+    z-index: 999;
+    padding: 80px 20px 20px;
+    min-height: 80px;
+    overflow-y: scroll;
+    :global(.navbar-toggler) {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      height: 79px;
+    }
+    :global(.mobile-nav__search) {
+      background-color: #fff;
+      height: 52px;
+      width: 100%;
+      padding: 0 15px;
+      font-size: 16px;
+      line-height: 52px;
+      font-style: italic;
+      :global(.form-control) {
+        border: none;
+        background: none;
+        height: 52px;
+        width: 100%;
+      }
+      :global(button) {
+        font-style: italic;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background-color: transparent;
+      }
+      :global(.fa-magnifying-glass) {
+        margin-left: 5px;
+        color: #ed7b25;
+      }
+    }
+    :global(h3 a) {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding-bottom: 5px;
+      border-bottom: 4px solid #FFF;
+      text-decoration: none;
+    }
+    :global(h3 a.about-impc) {
+      border-color: #ed7b25;
+    }
+    :global(h3 a.data) {
+      border-color: #00b0b0;
+    }
+    :global(p) {
+      margin: 0;
+      line-height: var(--bs-body-line-height);
+    }
+    :global(p a) {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFF;
+    }
+    :global(.sub-pages) {
+      text-align: left;
+      margin-left: 20px;
+      :global(p a) {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-weight: 400;
+      }
     }
   }
 }
