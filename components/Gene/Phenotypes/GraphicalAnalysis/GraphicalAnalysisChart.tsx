@@ -175,8 +175,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
     [brushYScale, data],
   );
 
-  console.log({ initialBrushPosition });
-
   const handleMouseMove = useCallback((x, y, data) => {
     if (tooltipTimeout) clearTimeout(tooltipTimeout);
     if (!svgRef) return;
@@ -197,7 +195,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
   const onBrushChanges = (domain: Bounds | null) => {
     if (!domain) return;
     const { y0, y1} = domain;
-    console.log({ y0, y1 });
     const newFilteredData = data.filter(d => d.arrPos > y0 && d.arrPos < y1);
     setFilteredData(newFilteredData);
   };
@@ -297,7 +294,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             innerRef={brushRef}
             resizeTriggerAreas={["top", "bottom"]}
             brushDirection="vertical"
-            initialBrushPosition={initialBrushPosition}
             selectedBoxStyle={selectedBrushStyle}
             onChange={onBrushDebounced}
             onClick={() => setFilteredData(data)}
