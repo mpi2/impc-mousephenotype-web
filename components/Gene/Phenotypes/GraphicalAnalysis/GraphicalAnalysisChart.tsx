@@ -203,7 +203,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const chartData = groupBy(filteredData, isByProcedure ? "procedureName" : "topLevelPhenotypeList[0]");
 
-
   return (
     <div>
       <svg width={width} height={height} ref={svgRef}>
@@ -244,8 +243,8 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
                       left={xScale(x.chartValue)}
                       top={yScale(x.arrPos)}
                       size={110}
-                      fill="#FFF"
-                      stroke={chartLabel.color}
+                      fill={(!tooltipData || isMatchingTooltip) ? "#FFF": "rgba(255, 255, 255, 0.1)"}
+                      stroke={fillColor}
                       strokeWidth={3}
                       {...sharedProps}
                     />
