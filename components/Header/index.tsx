@@ -47,6 +47,8 @@ const getInternalLink = (name: string, link: string) => {
       return '/conservation';
     case 'Batch query':
       return '/batch-query';
+    case 'Late Adult Data':
+      return '/late-adult-data';
     default:
       return link;
   }
