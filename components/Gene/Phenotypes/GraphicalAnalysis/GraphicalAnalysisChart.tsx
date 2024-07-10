@@ -1,351 +1,327 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Cat, ChartLabels, systemColorMap } from './shared';
+import { scaleLinear } from '@visx/scale';
+import { Group } from "@visx/group";
+import { AreaClosed } from "@visx/shape";
+import { GridColumns, GridRows } from '@visx/grid';
+import { AxisBottom, AxisLeft } from "@visx/axis";
+import { withTooltip, Tooltip } from "@visx/tooltip";
+import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
+import { GlyphTriangle, GlyphDiamond, GlyphCircle } from "@visx/glyph";
+import { curveMonotoneX } from "@visx/curve";
+import { PatternLines } from "@visx/pattern";
+import { Brush } from "@visx/brush";
+import BaseBrush from "@visx/brush/lib/BaseBrush";
+import { BrushHandleRenderProps } from "@visx/brush/lib/BrushHandle";
+import { Bounds } from "@visx/brush/lib/types";
+import { max, extent, min } from "@visx/vendor/d3-array";
+import { useDebounceCallback } from 'usehooks-ts';
+import { groupBy } from 'lodash';
+import chroma from "chroma-js";
 import { GeneStatisticalResult } from "@/models/gene";
-import _ from "lodash";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Chart, LinearScale, CategoryScale, PointElement, LineElement, Title, Tooltip } from "chart.js";
-import { allBodySystems, formatBodySystems } from "@/utils";
-import classNames from "classnames";
-import styles from "./styles.module.scss";
-import BodySystemIcon from "@/components/BodySystemIcon";
-import { ZoomButtons } from "@/components";
-import { Chart as ChartEl } from "react-chartjs-2";
-import { Cat, cats } from './shared';
-import zoomPlugin from 'chartjs-plugin-zoom';
 
-Chart.register(
-  LinearScale,
-  CategoryScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip
-);
-
-const colorArray = [
-  "#FF6633",
-  "#FFB399",
-  "#FF33FF",
-  "#00B3E6",
-  "#E6B333",
-  "#3366E6",
-  "#999966",
-  "#99FF99",
-  "#B34D4D",
-  "#80B300",
-  "#809900",
-  "#E6B3B3",
-  "#6680B3",
-  "#66991A",
-  "#FF99E6",
-  "#CCFF1A",
-  "#FF1A66",
-  "#E6331A",
-  "#33FFCC",
-  "#66994D",
-  "#B366CC",
-  "#4D8000",
-  "#B33300",
-  "#CC80CC",
-  "#66664D",
-  "#991AFF",
-  "#E666FF",
-  "#4DB3FF",
-  "#1AB399",
-  "#E666B3",
-  "#33991A",
-  "#CC9999",
-  "#B3B31A",
-  "#00E680",
-  "#4D8066",
-  "#809980",
-  "#E6FF80",
-  "#1AFF33",
-  "#999933",
-  "#FF3380",
-  "#CCCC00",
-  "#66E64D",
-  "#4D80CC",
-  "#9900B3",
-  "#E64D66",
-  "#4DB380",
-  "#FF4D4D",
-  "#99E6E6",
-  "#6666FF",
-];
-const systemColorMap: Record<string, string> = {};
-const defaultColor = "rgba(0,0,0,0.1)";
-const transparent = "rgba(255, 255, 255, 0)";
-allBodySystems.forEach((system, index) => {
-  systemColorMap[system] = colorArray[index];
-});
-
-const getSignificants = (data: Array<GeneStatisticalResult>) => {
-  return data.filter(item => {
-    const pValueThreshold = item.projectName === 'PWG' ? 3 : 4;
-    return -Math.log10(Number(item.pValue)) >= pValueThreshold;
-  });
-};
-
-const processData = (data: any, { type }: Cat, significantOnly: boolean) => {
-  const { BODY_SYSTEMS, PROCEDURES } = cats;
-  const significants = getSignificants(data);
-  switch (type) {
-    case BODY_SYSTEMS:
-      if (significantOnly) {
-        const bodySystems = significants.map((x) => x.topLevelPhenotypes[0]);
-        const flattend = [].concat.apply([], bodySystems);
-        const filtered = data.filter((x) => {
-          return x.topLevelPhenotypes.some((y) => flattend.includes(y));
-        });
-        return _.sortBy(filtered, ["topLevelPhenotypes", "parameterName"]);
-      }
-      return _.sortBy(data, ["topLevelPhenotypes", "parameterName"]);
-    case PROCEDURES:
-      if (significantOnly) {
-        const procedures = significants.map((x) => x.procedureName);
-        const filtered = data.filter((x) => {
-          return procedures.includes(x.procedureName);
-        });
-        return _.sortBy(filtered, ["procedureName", "parameterName"]);
-      }
-      return _.sortBy(data, ["procedureName", "parameterName"]);
-    default:
-      return _.sortBy(significantOnly ? significants : data, "pValue", "desc");
+const BrushHandle = ({ y, width, isBrushActive }: BrushHandleRenderProps) => {
+  if (!isBrushActive) {
+    return null;
   }
+
+  return (
+    <Group left={(width / 2) + 7.5} top={y + 4}>
+      <path
+        fill="#f2f2f2"
+        d="M -4.5 0.5 L 3.5 0.5 L 3.5 15.5 L -4.5 15.5 L -4.5 0.5 M -1.5 4 L -1.5 12 M 0.5 4 L 0.5 12"
+        stroke="#999999"
+        strokeWidth="1"
+        style={{ cursor: 'ns-resize', transform: "rotateZ(90deg)" }}
+      />
+    </Group>
+  );
 };
 
-const transformPValue = (value: number, significant: boolean) => {
-  if (value === 0 && significant) {
-    // put a high value to show they are really significant
-    return 15;
-  } else if (value === 0) {
-    return 0;
-  }
-  return -Math.log10(value)
-};
-
-const isManualAssociation = (ctx) => ctx.raw.pValue === 0 && ctx.raw.isSignificant;
+const TooltipContent = ({ statResult } : { statResult: any }) => {
+  return (
+    <div>
+      <h3>{statResult.parameterName}</h3>
+      <span>{statResult.topLevelPhenotypeList[0]}</span><br/>
+      <span>
+        { statResult.pValue === 0 && statResult.significant ? "Manual association" : `P-value: ${parseFloat(statResult.pValue).toExponential(3)}`}
+      </span><br/>
+      <span><strong>Zygosity:</strong> {statResult.zygosity}</span><br/>
+      <span><strong>Procedure:</strong> {statResult.procedureName}</span><br/>
+      {(statResult.maleMutantCount && statResult.femaleMutantCount) && (
+        <>
+          <span><strong>Mutants:</strong> {statResult.maleMutantCount || 0} males & {statResult.femaleMutantCount || 0} females</span>
+          <br/>
+        </>
+      )}
+      {statResult.effectSize && (
+        <>
+          <span><strong>Effect size:</strong> {statResult.effectSize}</span>
+          <br/>
+        </>
+      )}
+      <span><strong>Metadata group:</strong> {statResult.metadataGroup}</span>
+    </div>
+  )
+}
 
 type Props = {
   data: Array<GeneStatisticalResult>;
-  cat: Cat;
-  sig: boolean;
-  hasDataRelatedToPWG: boolean;
+  width: number;
+  height: number;
+  isByProcedure: boolean;
+  category: Cat;
+  significantOnly: boolean;
+  procedureColorMap: ChartLabels;
 };
 
-const GraphicalAnalysisChart = (props: Props) => {
-  const { data, cat, sig, hasDataRelatedToPWG } = props;
-  const chartRef = useRef<Chart>(null);
-  const zoomButtonsRef = useRef<HTMLDivElement>(null);
-  const [zoomApplied, setZoomApplied] = useState<boolean>(false);
-  const [zoomLevel, setZoomLevel] = useState<number>(1);
-  const zoomDelta = 0.3;
+type TooltipData = {
+  statResult: GeneStatisticalResult;
+}
 
-  useEffect(() => {
-    if (!!chartRef.current && zoomLevel !== 1) {
-      chartRef.current.zoom({ x: 1, y: zoomLevel});
-    }
-  }, [zoomLevel]);
+let tooltipTimeout: number;
+const selectedBrushStyle = {
+  fill: `url(#brush_pattern)`,
+  stroke: '#CCC',
+};
+
+const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & WithTooltipProvidedProps<TooltipData>) => {
+  const {
+    data,
+    width,
+    height,
+    isByProcedure,
+    hideTooltip,
+    showTooltip,
+    tooltipOpen,
+    tooltipData,
+    tooltipTop,
+    tooltipLeft,
+    category,
+    significantOnly,
+    procedureColorMap,
+  } = props;
 
   if (!data) {
     return null;
   }
 
-  const dataWithPValue = useMemo(() =>
-    data.filter(
-      (x) =>
-        x.topLevelPhenotypes?.length
-    )
-      .map((x) => ({
-        ...x,
-        pValue: Number(x.pValue) || 0,
-        topLevelPhenotypes: x.topLevelPhenotypes.map((y) => y.name),
-      })), [data]);
+  const [filteredData, setFilteredData] = useState(data);
+  const yMax = height - 140;
+  const svgRef = useRef<SVGSVGElement>(null);
+  const brushRef = useRef<BaseBrush | null>(null);
+  const xMax = useMemo(() => data.reduce((acc, x) => x.chartValue > acc ? x.chartValue : acc, 0), [data]);
+  const brushMaxWidth = (0.10 * width);
+  const yAxisWidth = 0.15 * width;
+  const chartWidth = width - brushMaxWidth - yAxisWidth;
 
-  const processed = useMemo(
-    () => processData(dataWithPValue, cat, sig),
-    [dataWithPValue, cat, sig]
+  useEffect(() => {
+    setFilteredData(data);
+    brushRef.current?.reset();
+  }, [category, significantOnly]);
+
+  const numOfTicks = useMemo(() => {
+    if (filteredData.length <= 50) {
+      return filteredData.length
+    }
+    let divisor = 100;
+    while ((filteredData.length / divisor) <= 20) divisor -= 1;
+    return filteredData.length / divisor;
+  }, [filteredData, category]);
+
+  const xScale = useMemo(() =>
+    scaleLinear<number>({
+      range: [yAxisWidth, chartWidth],
+      domain: extent(filteredData, (d) => d.chartValue),
+      nice: true
+    }),
+    [chartWidth, filteredData, category]
   );
 
-  const isByProcedure = cat.type === cats.PROCEDURES;
-  const colorByArray = useMemo(() =>
-      isByProcedure
-        ? _.uniq(processed.map((x) => x.procedureName))
-        : _.uniq(processed.map((x) => x.topLevelPhenotypes[0]))
-    ,[processed, isByProcedure]);
+  const brushXScale = useMemo(() =>
+      scaleLinear<number>({
+        range: [0, brushMaxWidth],
+        domain: [0, xMax + 5],
+        nice: true
+      }),
+    [width, xMax]
+  );
 
-  const chartData = useMemo(() => ({
-    labels: processed.map((x) => x.parameterName),
-    datasets: [
-      {
-        label: "P-value",
-        type: "line" as const,
-        data: processed.map((x, index) => ({
-          x: transformPValue(x.pValue, x.significant),
-          y: index,
-          pValue: x.pValue,
-          isSignificant: x.significant,
-          procedureName: x.procedureName,
-          system: x.topLevelPhenotypes[0],
-          color: isByProcedure ? colorArray[colorByArray.indexOf(x.procedureName)] : systemColorMap[x.topLevelPhenotypes[0]],
-        })),
-        backgroundColor: (ctx) => !!ctx.raw ? (!isManualAssociation(ctx) ? ctx.raw.color : transparent) : defaultColor,
-        borderColor: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? ctx.raw.color : transparent) : defaultColor,
-        showLine: false,
-        pointRadius: (ctx) => isManualAssociation(ctx) ? 8 : 4,
-        pointHoverRadius: (ctx) => isManualAssociation(ctx) ? 11 : 7,
-        pointHoverBorderWidth: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? 3 : 1) : 2,
-        borderWidth: (ctx) => !!ctx.raw ? (isManualAssociation(ctx) ? 3 : 1) : 2,
-        pointStyle: (ctx) => isManualAssociation(ctx) ? "triangle" : "circle",
-      },
-      {
-        label: 'P-value threshold',
-        type: "line" as const,
-        data: processed.map(() => 4),
-        borderColor: "black",
-        pointStyle: "rect",
-        borderDash: [5, 5],
-        radius: 0,
-      },
-      hasDataRelatedToPWG ? {
-        label: 'P-value threshold',
-        type: "line" as const,
-        data: processed.map(() => 3),
-        borderColor: "rgb(255, 99, 132)",
-        pointStyle: "rect",
-        borderDash: [5, 5],
-        radius: 0,
-      } : {}
-    ],
-  }), [processed, colorByArray, isByProcedure]);
+  const yScale = useMemo(() =>
+      scaleLinear<number>({
+        range: [40, yMax],
+        domain: extent(filteredData, (d) => d.arrPos),
+        nice: true,
+        clamp: true,
+      }),
+    [height, filteredData, category]
+  );
 
-  const chartOptions = {
-    responsive: true,
-    indexAxis: "y" as const,
-    animation: false as const,
-    maintainAspectRatio: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        bodySpacing: 12,
-        padding: 12,
-        titleMarginBottom: 6,
-        titleFont: { size: 16 },
-        labelFont: { size: 14 },
-        displayColors: false,
-        callbacks: {
-          beforeBody: (context) => {
-            const data = processed[context[0].dataIndex];
-            return formatBodySystems(data.topLevelPhenotypes[0]);
-          },
-          label: () => "",
-          afterBody: (context) => {
-            const data = processed[context[0].dataIndex];
-            return [
-              (data.pValue === 0 && data.significant ? "Manual association" : `P-value: ${parseFloat(data.pValue).toExponential(3)}`),
-              `Zygosity: ${_.capitalize(data.zygosity)}`,
-              `Procedure: ${data.procedureName}`,
-              (data.maleMutantCount && data.femaleMutantCount) ? `Mutants: ${data.maleMutantCount || 0} males & ${data.femaleMutantCount || 0} females` : null,
-              (!!data.effectSize) ? `Effect size: ${data.effectSize}` : null,
-              `Metadata group: ${data.metadataGroup}`,
-            ].filter(Boolean);
-          },
-        },
-      },
-      zoom: {
-        zoom: {
-          limits: { y: { max: 60, min: 0 } },
-          mode: "y" as const,
-          onZoomComplete: (_) => {
-            if (!zoomApplied) {
-              setZoomApplied(true);
-            }
-          },
-        },
-        pan: {
-          enabled: true,
-          mode: "y" as const,
-        }
-      },
-    },
-    scales: {
-      x: {
-        title: { display: true, text: '-log₁₀(P-value)' },
-      }
-    }
+  const brushYScale = useMemo(() =>
+      scaleLinear<number>({
+        range: [40, yMax],
+        domain: [0, max(data, d => d.arrPos) || 0],
+        nice: true,
+        clamp: true,
+      }),
+    [height, data]
+  );
+
+
+  const initialBrushPosition = useMemo(
+    () => ({
+      start: { y: 0, x: 0 },
+      end: { y: brushYScale(yMax), x: 0 },
+    }),
+    [brushYScale, data],
+  );
+
+  const handleMouseMove = useCallback((x, y, data) => {
+    if (tooltipTimeout) clearTimeout(tooltipTimeout);
+    if (!svgRef) return;
+    showTooltip({
+      tooltipLeft: x,
+      tooltipTop: y,
+      tooltipData: { statResult: data }
+    });
+
+  }, [xScale, yScale, showTooltip]);
+
+  const handleMouseLeave = useCallback(() => {
+    tooltipTimeout = window.setTimeout(() => {
+      hideTooltip();
+    }, 300);
+  }, [hideTooltip]);
+
+  const onBrushChanges = (domain: Bounds | null) => {
+    if (!domain) return;
+    const { y0, y1} = domain;
+    const newFilteredData = data.filter(d => d.arrPos > y0 && d.arrPos < y1);
+    setFilteredData(newFilteredData);
   };
 
+  const onBrushDebounced = useDebounceCallback(onBrushChanges, 1);
+
+  const chartData = groupBy(filteredData, isByProcedure ? "procedureName" : "topLevelPhenotypeList[0]");
 
   return (
     <div>
-      <div className={classNames(styles.labels, styles.icons)}>
-        {colorByArray
-          .filter(Boolean)
-          .map((item, index) => {
-            const color = colorArray[index];
-            return (
-              <span className="grey" key={item}>
-                <span className={styles.icon} style={{backgroundColor: color}}>
-                  {isByProcedure ? null : (
-                    <BodySystemIcon name={item} color="white" size="1x"/>
-                  )}
-                </span>&nbsp;
-                <small>{formatBodySystems(item)}</small>
-              </span>
-            );
-          })}
-        <span className="grey" style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
-          <hr className={styles.dashedLine}/>
-          <small>Significant P-value threshold (P &lt; 0.0001)</small>
-        </span>
-      </div>
-      <div className={classNames(styles.labels, "grey")}>
-        <div className={styles.figureContainer}>
-          <div className={styles.circle} />
-          Statistical annotations
-        </div>
-        <div className={styles.figureContainer}>
-          <div className={styles.triangle} />
-          Manual annotations:
-          <i>Are assigned a value of 1x10<sup>-15</sup> in order to be displayed in the chart</i>
-        </div>
-      </div>
-      <div className={styles.chartContainer}>
-        <div ref={zoomButtonsRef} className={styles.overlay}>
-          <ZoomButtons
-            containerClassName={styles.buttons}
-            onZoomIn={() => setZoomLevel(prevZoom => prevZoom + zoomDelta)}
-            onZoomOut={() => setZoomLevel(prevZoom => prevZoom - zoomDelta)}
-            onResetZoom={() => {
-              if (chartRef.current) {
-                chartRef.current.resetZoom();
-                setZoomApplied(false);
-                setZoomLevel(1.0);
-              }
-            }}
-          />
-        </div>
-        <ChartEl
-          type="line"
-          ref={chartRef}
-          options={chartOptions}
-          data={chartData}
-          plugins={[zoomPlugin]}
+      <svg width={width} height={height} ref={svgRef}>
+        <GridColumns
+          scale={xScale}
+          width={width}
+          top={40}
+          height={yMax}
+          stroke="#e0e0e0"
         />
-      </div>
-      <div className={styles.bottomLabels}>
-        <span className="labels">
-          {hasDataRelatedToPWG && (
-            <span style={{marginLeft: '1rem'}}>
-              <hr className={styles.dashedLine} style={{borderTop: "3px dashed rgb(255, 99, 132)"}} />
-              Significant threshold for pain sensitivity (P &lt; 0.001)
-            </span>
-          )}
-        </span>
-      </div>
+        <GridRows
+          scale={yScale}
+          width={chartWidth - yAxisWidth + 10}
+          left={yAxisWidth - 10}
+          numTicks={numOfTicks}
+          stroke="#e0e0e0"
+        />
+        <line x1={xScale(4)} x2={xScale(4)} y1={40} y2={yMax} stroke="#000" strokeWidth={2} strokeDasharray="5 4"/>
+        {Object.entries(chartData).map(([item, points]) => {
+          const chartLabel = isByProcedure ? procedureColorMap[item] : systemColorMap[item];
+          const GlyphIcon = !isByProcedure || chartLabel.shape === 'circle' ? GlyphCircle : GlyphDiamond;
+          const isMatchingTooltip = isByProcedure ? tooltipData?.statResult.procedureName === item : tooltipData?.statResult.topLevelPhenotypeList.includes(item);
+          const fillColor = (!tooltipData || isMatchingTooltip) ? chartLabel.color : chroma(chartLabel.color).alpha(0.1);
+          return (
+            <Group fill={fillColor}>
+              {points.map((x, i) => {
+                const sharedProps = {
+                  key: i,
+                  onMouseMove: () => handleMouseMove(xScale(x.chartValue), yScale(x.arrPos), x),
+                  onMouseLeave: handleMouseLeave,
+                  onTouchMove: () => handleMouseMove(xScale(x.chartValue), yScale(x.arrPos), x),
+                  onTouchEnd: handleMouseLeave,
+                };
+                // always display manual associations as triangles
+                if (x.pValue === 0 && x.significant) {
+                  return (
+                    <GlyphTriangle
+                      left={xScale(x.chartValue)}
+                      top={yScale(x.arrPos)}
+                      size={110}
+                      fill={(!tooltipData || isMatchingTooltip) ? "#FFF": "rgba(255, 255, 255, 0.1)"}
+                      stroke={fillColor}
+                      strokeWidth={3}
+                      {...sharedProps}
+                    />
+                  )
+                }
+                return (
+                  <GlyphIcon
+                    left={xScale(x.chartValue)}
+                    top={yScale(x.arrPos)}
+                    size={80}
+                    {...sharedProps}
+                  />
+                );
+              })}
+            </Group>
+          )
+        })}
+        <Group left={chartWidth} top={40}>
+          <Group top={-40}>
+            <AreaClosed
+              data={data}
+              height={yMax}
+              x={d => brushXScale(d.chartValue)}
+              y={d => brushYScale(d.arrPos)}
+              yScale={brushYScale}
+              strokeWidth={1}
+              stroke="#000"
+              fill="#000"
+              curve={curveMonotoneX}
+            />
+          </Group>
+          <PatternLines
+            id="brush_pattern"
+            height={8}
+            width={8}
+            stroke="#AAA"
+            strokeWidth={1}
+            orientation={['diagonal']}
+          />
+          <Brush
+            xScale={brushXScale}
+            yScale={brushYScale}
+            width={brushMaxWidth}
+            height={yMax - 40}
+            handleSize={8}
+            innerRef={brushRef}
+            resizeTriggerAreas={["top", "bottom"]}
+            brushDirection="vertical"
+            selectedBoxStyle={selectedBrushStyle}
+            onChange={onBrushDebounced}
+            onClick={() => setFilteredData(data)}
+            useWindowMoveEvents
+            renderBrushHandle={(props) => <BrushHandle {...props} />}
+          />
+        </Group>
+        <AxisLeft
+          scale={yScale}
+          top={0}
+          left={yAxisWidth - 10}
+          numTicks={numOfTicks}
+          tickFormat={value => filteredData.find(d => d.arrPos === value)?.parameterName}
+        />
+        <AxisBottom
+          top={yMax}
+          scale={xScale}
+          numTicks={10}
+          label="log₁₀(P-value)"
+        />
+      </svg>
+      {tooltipOpen && tooltipData && (
+        <Tooltip left={tooltipLeft} top={tooltipTop}>
+          <TooltipContent statResult={tooltipData.statResult}/>
+        </Tooltip>
+      )}
     </div>
   );
-};
+});
 
 export default GraphicalAnalysisChart;

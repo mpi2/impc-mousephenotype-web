@@ -26,4 +26,7 @@ export type GeneStatisticalResult = {
   procedureMinAnimals: number | null;
   procedureMinFemales: number | null;
   mutantCount?:       string;
+  chartValue?:        number;
+  topLevelPhenotypeList?: Array<string>;
+  arrPos?:            number;
 }

@@ -7,14 +7,70 @@ import { Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { useGeneAllStatisticalResData } from "@/hooks";
 import { AllelesStudiedContext } from "@/contexts";
-import { Cat, CatType, cats, options } from './shared';
+import { Cat, CatType, cats, options, systemColorMap, getProcedureColorMap } from './shared';
 import GraphicalAnalysisChart from "./GraphicalAnalysisChart";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
+import ParentSize from '@visx/responsive/lib/components/ParentSize';
+import classNames from "classnames";
+import BodySystemIcon from "@/components/BodySystemIcon";
+import { formatBodySystems } from "@/utils";
+import { sortBy, uniq } from "lodash";
 
 type Props = {
   mgiGeneAccessionId: string;
   routerIsReady: boolean;
-}
+};
+
+const transformPValue = (value: number, significant: boolean) => {
+  if (value === 0 && significant) {
+    // put a high value to show they are really significant
+    return 15;
+  } else if (value === 0) {
+    return 0;
+  }
+  return -Math.log10(value)
+};
+const getSignificants = (data: Array<GeneStatisticalResult>) => {
+  return data.filter(item => {
+    const pValueThreshold = item.projectName === 'PWG' ? 3 : 4;
+    return -Math.log10(Number(item.pValue)) >= pValueThreshold;
+  });
+};
+const processData = (data: Array<GeneStatisticalResult>, { type }: Cat, significantOnly: boolean) => {
+  const { BODY_SYSTEMS, PROCEDURES } = cats;
+  const significants = getSignificants(data);
+  let results: Array<GeneStatisticalResult> = data;
+  let fieldsToSort: Array<string>;
+  switch (type) {
+    case BODY_SYSTEMS:
+      fieldsToSort = ["topLevelPhenotypeList", "parameterName"];
+      if (significantOnly) {
+        const bodySystems = Array.from(new Set(significants.map((x) => x.topLevelPhenotypeList[0])));
+        results = data.filter((x) => {
+          return x.topLevelPhenotypeList.some((y) => bodySystems.includes(y));
+        });
+      }
+      break;
+    case PROCEDURES:
+      fieldsToSort = ["procedureName", "parameterName"];
+      if (significantOnly) {
+        const procedures = Array.from(new Set(significants.map((x) => x.procedureName)));
+        results = data.filter((x) => {
+          return procedures.includes(x.procedureName);
+        });
+      }
+      break;
+    default:
+      results = significantOnly ? significants : data;
+      fieldsToSort = ["pValue", "desc"];
+  }
+  return sortBy(results, fieldsToSort)
+    .map((d, index) => ({
+      ...d,
+      arrPos: index,
+      chartValue: transformPValue(d.pValue, d.significant)
+    }));
+};
 
 const GraphicalAnalysis = (props: Props) => {
   const {
@@ -49,18 +105,46 @@ const GraphicalAnalysis = (props: Props) => {
     [geneData]
   );
 
+  const dataWithPValue = useMemo(() =>
+    filteredData.filter(
+      (x) =>
+        x.topLevelPhenotypes?.length
+    )
+      .map((x, index) => ({
+        ...x,
+        pValue: Number(x.pValue) || 0,
+        topLevelPhenotypeList: x.topLevelPhenotypes.map((y) => y.name),
+      })), [filteredData]);
+
+  const processed = useMemo(
+    () => processData(dataWithPValue, cat, significantOnly),
+    [dataWithPValue, cat, significantOnly]
+  );
+
+  const isByProcedure = cat.type === cats.PROCEDURES;
+  const yAxisLabels = useMemo(() =>
+      isByProcedure
+        ? uniq(processed.map((x) => x.procedureName))
+        : uniq(processed.map((x) => x.topLevelPhenotypeList[0]))
+    ,[processed, isByProcedure]);
+
+  const procedureColorMap = useMemo(
+    () => getProcedureColorMap(uniq(filteredData.map((x) => x.procedureName))),
+    [processed, isByProcedure]
+  );
+
   const handleToggle = () => {
     setSignificantOnly(!significantOnly);
   };
 
-  const significantSuffix = (() => {
+  const significantSuffix = useMemo(() => {
     if (cat.type === cats.BODY_SYSTEMS) {
       return "physiological systems";
     } else if (cat.type === cats.PROCEDURES) {
       return "procedures";
     }
     return "";
-  })();
+  }, [cat]);
 
   const hasDataRelatedToPWG = geneData.some(item => item.projectName === 'PWG');
 
@@ -109,12 +193,72 @@ const GraphicalAnalysis = (props: Props) => {
           <LoadingProgressBar/>
         </div>
       ) : (
-        <GraphicalAnalysisChart
-          data={filteredData}
-          cat={cat}
-          sig={significantOnly}
-          hasDataRelatedToPWG={hasDataRelatedToPWG}
-        />
+        <div>
+          <div className={classNames(styles.labels, styles.icons)}>
+            {yAxisLabels
+              .filter(Boolean)
+              .map((item, index) => {
+                const chartLabel = isByProcedure ? procedureColorMap[item] : systemColorMap[item];
+                return (
+                  <span className="grey" key={item}>
+                    <span
+                      className={classNames(styles.icon, {
+                        [styles.circle]: chartLabel.shape === 'circle' || chartLabel.color === undefined,
+                        [styles.diamond]: chartLabel.shape === 'diamond',
+                        [styles.phenotype]: !isByProcedure,
+                      })}
+                      style={{backgroundColor: chartLabel.color}}>
+                      {isByProcedure ? null : (
+                        <BodySystemIcon name={item} color="white" size="1x"/>
+                      )}
+                    </span>&nbsp;
+                    <small>{formatBodySystems(item)}</small>
+                  </span>
+                );
+              })}
+            <span className="grey" style={{display: 'inline-block', whiteSpace: 'nowrap'}}>
+              <hr className={styles.dashedLine}/>
+              <small>Significant P-value threshold (P &lt; 0.0001)</small>
+            </span>
+          </div>
+          <div className={classNames(styles.labels, "grey")}>
+            <div className={styles.figureContainer}>
+              <div className={styles.circle}/>
+              Statistical annotations
+            </div>
+            <div className={styles.figureContainer}>
+              <div className={styles.triangle}/>
+              Manual annotations:
+              <i>Are assigned a value of 1x10<sup>-15</sup> in order to be displayed in the chart</i>
+            </div>
+          </div>
+          <div className={styles.chartContainer}>
+            <ParentSize>
+              {({width, height}) => (
+                <GraphicalAnalysisChart
+                  width={width}
+                  height={height}
+                  data={processed}
+                  isByProcedure={isByProcedure}
+                  category={cat}
+                  significantOnly={significantOnly}
+                  procedureColorMap={procedureColorMap}
+                >
+                </GraphicalAnalysisChart>
+              )}
+            </ParentSize>
+          </div>
+          <div className={styles.bottomLabels}>
+            <span className="labels">
+              {hasDataRelatedToPWG && (
+                <span style={{marginLeft: '1rem'}}>
+                  <hr className={styles.dashedLine} style={{borderTop: "3px dashed rgb(255, 99, 132)"}}/>
+                  Significant threshold for pain sensitivity (P &lt; 0.001)
+                </span>
+              )}
+            </span>
+          </div>
+        </div>
       )}
     </>
   );
