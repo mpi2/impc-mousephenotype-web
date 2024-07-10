@@ -117,6 +117,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   useEffect(() => {
     setFilteredData(data);
+    brushRef.current?.reset();
   }, [category, significantOnly]);
 
   const numOfTicks = useMemo(() => {
