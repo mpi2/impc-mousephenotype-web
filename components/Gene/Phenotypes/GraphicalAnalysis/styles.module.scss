@@ -38,13 +38,23 @@ $iconsSize: 15px;
   }
   .icon {
     display: inline-flex;
-    width: 1.4em;
-    height: 1.4em;
+    width: 1em;
+    height: 1em;
     align-items: center;
     justify-content: center;
-    border-radius: 3px;
     vertical-align: middle;
     margin-right: 3px;
+    &.circle {
+      border-radius: 50%;
+    }
+    &.diamond {
+      transform: rotate(45deg);
+    }
+    &.phenotype {
+      width: 1.4em;
+      min-height: 1.4em;
+      border-radius: 3px;
+    }
   }
   .figureContainer {
     display: flex;

@@ -22,11 +22,12 @@ export const options = [
     label: "Procedures",
     category: cats.PROCEDURES,
   },
-  // { label: "Sort all by significance", category: cats.ALL },
 ];
 
 export type Cat = { type: CatType; meta?: any };
 
+type ChartLabel = { color: string, shape: string };
+export type ChartLabels = Record<string, ChartLabel>;
 export const colorArray = [
   "#FF6633",
   "#FFB399",
@@ -78,7 +79,22 @@ export const colorArray = [
   "#99E6E6",
   "#6666FF",
 ];
-export const systemColorMap: Record<string, string> = {};
+export const systemColorMap: ChartLabels = {};
+export const getProcedureColorMap = (labels: Array<string>): ChartLabels => {
+  const tempLabels = [...labels].sort();
+  const result: ChartLabels = {};
+  colorArray.forEach((color, i) => {
+    const firstProd = tempLabels.shift();
+    const secondProd = tempLabels.shift();
+    if (firstProd) {
+      result[firstProd] = { color, shape: 'circle' };
+    }
+    if (secondProd) {
+      result[secondProd] = { color, shape: 'diamond' };
+    }
+  });
+  return result;
+}
 allBodySystems.forEach((system, index) => {
-  systemColorMap[system] = colorArray[index];
+  systemColorMap[system] = { color: colorArray[index], shape: undefined };
 });
