@@ -200,15 +200,7 @@ const Header = () => {
                                   </a>
                                   <div className="sub-pages">
                                     {subMenuItem.children
-                                      ?.sort((a, b) => {
-                                        if (a.name < b.name) {
-                                          return -1;
-                                        }
-                                        if (a.name > b.name) {
-                                          return 1;
-                                        }
-                                        return 0;
-                                      })
+                                      ?.sort((a, b) => a.sort - b.sort)
                                       .map((subMenutItemChild) => {
                                         return (
                                           <p key={subMenutItemChild.link}>
