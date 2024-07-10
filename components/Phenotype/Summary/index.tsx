@@ -7,6 +7,7 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { useRouter } from "next/router";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { PhenotypeSummary } from "@/models/phenotype";
+import { ScrollToTopButton } from "@/components";
 
 type Props = {
   phenotype: PhenotypeSummary;
@@ -164,6 +165,7 @@ const Summary = ({ phenotype, isLoading, isError }: Props) => {
           </a>
         </div>
       </div>
+      <ScrollToTopButton scrollPercentage={100} />
     </Card>
   );
 };
