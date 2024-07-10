@@ -1,5 +1,5 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
-import { faAngleUp, faWarning } from "@fortawesome/free-solid-svg-icons";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
@@ -12,9 +12,8 @@ import { GeneSummary } from "@/models/gene";
 import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import { allBodySystems } from "@/utils";
-import { useEffect, useState } from "react";
-import { useScroll } from "@/hooks";
-import { AnimatePresence, motion } from "framer-motion";
+import { ScrollToTopButton } from "@/components";
+
 const CollectionItem = ({
   name,
   link,
@@ -49,15 +48,6 @@ type SummaryProps = {
 }
 const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
   const router = useRouter();
-  const [showTopButton, setShowTopButton ] = useState(false);
-  const [{perY}] = useScroll();
-
-  useEffect(() => {
-    const showButton = perY >= 200;
-    if (showButton && !showTopButton) {
-      setShowTopButton(true);
-    }
-  }, [perY]);
 
   const SYNONYMS_COUNT = 2;
 
@@ -331,20 +321,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
           Embryo tissues
         </div>
       </div>
-      {showTopButton && (
-        <AnimatePresence>
-          <motion.button
-            className="btn impc-secondary-button back-to-top"
-            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
-            layout
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-          >
-            <FontAwesomeIcon icon={faAngleUp}/>
-            Back to top
-          </motion.button>
-        </AnimatePresence>
-      )}
+      <ScrollToTopButton />
     </Card>
   );
 };
