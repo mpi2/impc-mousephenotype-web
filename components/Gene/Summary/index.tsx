@@ -335,7 +335,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
         <AnimatePresence>
           <motion.button
             className="btn impc-secondary-button back-to-top"
-            onClick={() => document.querySelector("#summary").scrollIntoView()}
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
             layout
             initial={{opacity: 0}}
             animate={{opacity: 1}}
