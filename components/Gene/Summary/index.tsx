@@ -1,5 +1,4 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
-import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
@@ -42,9 +41,7 @@ type SummaryProps = {
   gene: GeneSummary;
   numOfAlleles: number;
 }
-const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
-  const router = useRouter();
-
+const Summary = ({ gene, numOfAlleles}: SummaryProps) => {
   const SYNONYMS_COUNT = 2;
 
   const joined = [
