@@ -6,24 +6,30 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import { LateAdultHeatmap } from "@/components";
+import { LateAdultData } from "@/models";
 
 const LateAdultDataPage = () => {
 
   const { data: allProd } = useQuery({
     queryKey: ["late-adult-heatmap", "all-procedures"],
     queryFn: () => fetchLandingPageData("late_adult_landing/procedure_level_data"),
-    select: data => ({
-      columns: data.columns,
-      rows: data.rows.map((row, rowNum) => ({
-        bin: rowNum,
-        data: row,
-        bins: row.significance.map((value, sigNum) => ({
-          bin: sigNum,
-          count: value
-        }))
-      })).splice(0, 10)
-    }),
-    placeholderData: () => ({ columns: [], rows: [] }),
+    select: (data: LateAdultData) => {
+      const columns = data.columns;
+      const allColumnsData = data.rows.map(row => row.significance);
+      const result = columns.map((col, colIndex) => ({
+        bin: colIndex,
+        column: col,
+        bins: allColumnsData
+          .map(significanceArr => significanceArr[colIndex])
+          .map((significance, index) => ({ bin: index, count: significance }))
+      }));
+      return {
+        columns,
+        data: result,
+        numOfRows: data.rows.length,
+      };
+    },
+    placeholderData: () => ({ columns: [], rows: [], numOfRows: 0 }),
   });
 
   return (

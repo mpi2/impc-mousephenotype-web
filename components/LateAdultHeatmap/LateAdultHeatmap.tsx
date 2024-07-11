@@ -21,12 +21,12 @@ const LateAdultHeatmap = (props: Props) => {
 
   useEffect(() => {
     if (data) {
-      const maxHeigth = data.rows.length * 9.75;
+      const maxHeigth = data.numOfRows * 9.75;
       if (heatmapHeight !== maxHeigth) {
         setHeatmapHeight(maxHeigth);
       }
     }
-  }, [data.rows, heatmapHeight]);
+  }, [data.data, heatmapHeight]);
 
   const xScale = useMemo(() =>
     scaleLinear<number>({
@@ -36,7 +36,7 @@ const LateAdultHeatmap = (props: Props) => {
 
   const yScale = useMemo(() =>
     scaleLinear<number>({
-      domain: [0, data.rows.length],
+      domain: [0, data.numOfRows],
       range: [0, heatmapHeight],
     }),[data, heatmapHeight]);
 
@@ -46,12 +46,11 @@ const LateAdultHeatmap = (props: Props) => {
       range: ["#dedede8f", "#15a2b88f", "#ed7b25c4"]
     }),[]);
 
-  console.log({ data });
   return (
     <svg width={width} height={heatmapHeight}>
       <Group top={0} left={0}>
         <HeatmapRect
-          data={data.rows}
+          data={data.data}
           xScale={d => xScale(d) ?? 0}
           yScale={d => yScale(d) ?? 0}
           colorScale={colorScale}
@@ -59,8 +58,9 @@ const LateAdultHeatmap = (props: Props) => {
           binHeight={11.75}
           gap={2}
         >
-          {heatmap =>
-            heatmap.map(heatmapBins =>
+          {heatmap => {
+            console.log({heatmap});
+            return heatmap.map(heatmapBins =>
               heatmapBins.map(bin => (
                 <rect
                   key={`heatmap-rect-${bin.row}-${bin.column}`}
@@ -73,7 +73,7 @@ const LateAdultHeatmap = (props: Props) => {
                 />
               ))
             )
-          }
+          }}
         </HeatmapRect>
       </Group>
     </svg>
