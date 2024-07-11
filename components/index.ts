@@ -11,3 +11,4 @@ export { default as Pagination } from './Pagination';
 export { default as SortableTable } from './SortableTable';
 export { default as SectionHeader } from './SectionHeader/SectionHeader';
 export { default as ScrollToTopButton } from './ScrollToTopButton/ScrollToTopButton';
+export { default as LateAdultHeatmap } from './LateAdultHeatmap/LateAdultHeatmap';
