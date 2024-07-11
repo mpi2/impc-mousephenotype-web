@@ -6,14 +6,14 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import { LateAdultHeatmap } from "@/components";
-import { LateAdultData } from "@/models";
+import { LateAdultDataResponse, LateAdultDataParsed } from "@/models";
 
 const LateAdultDataPage = () => {
 
   const { data: allProd } = useQuery({
     queryKey: ["late-adult-heatmap", "all-procedures"],
     queryFn: () => fetchLandingPageData("late_adult_landing/procedure_level_data"),
-    select: (data: LateAdultData) => {
+    select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
       const allColumnsData = data.rows.map(row => row.significance);
       const result = columns.map((col, colIndex) => ({
@@ -25,9 +25,10 @@ const LateAdultDataPage = () => {
       }));
       return {
         columns,
+        rows: data.rows,
         data: result,
-        numOfRows: data.rows.length,
-      };
+        numOfRows: data.rows.length - 1,
+      } as LateAdultDataParsed;
     },
     placeholderData: () => ({ columns: [], rows: [], numOfRows: 0 }),
   });

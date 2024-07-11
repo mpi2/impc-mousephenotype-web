@@ -1,9 +1,23 @@
 
-export type LateAdultData = {
+
+type LateAdultRowResponse = {
+  markerSymbol: string;
+  mgiGeneAccessionId: string;
+  significance: Array<number>;
+};
+
+export type LateAdultDataResponse = {
   columns: Array<string>;
-  rows: Array<{
-    markerSymbol: string;
-    mgiGeneAccessionId: string;
-    significance: Array<number>;
+  rows: Array<LateAdultRowResponse>;
+}
+
+export type LateAdultDataParsed = {
+  columns: Array<string>;
+  rows: Array<LateAdultRowResponse>;
+  numOfRows: number;
+  data: Array<{
+    bin: number;
+    column: string;
+    bins: Array<{ bin: number; count: number; }>
   }>;
 }

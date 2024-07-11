@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { scaleLinear, scaleQuantize } from "@visx/scale";
-import { LateAdultData } from "@/models";
+import { LateAdultDataParsed } from "@/models";
 import { Group } from "@visx/group";
 import { HeatmapRect } from "@visx/heatmap";
+import { AxisLeft } from "@visx/axis";
 
 type Props = {
   width: number;
-  data: any
+  data: LateAdultDataParsed
 }
 
 const LateAdultHeatmap = (props: Props) => {
@@ -21,7 +22,7 @@ const LateAdultHeatmap = (props: Props) => {
 
   useEffect(() => {
     if (data) {
-      const maxHeigth = data.numOfRows * 9.75;
+      const maxHeigth = data.numOfRows * 11.75;
       if (heatmapHeight !== maxHeigth) {
         setHeatmapHeight(maxHeigth);
       }
@@ -31,7 +32,7 @@ const LateAdultHeatmap = (props: Props) => {
   const xScale = useMemo(() =>
     scaleLinear<number>({
       domain: [0, data.columns.length],
-      range: [0, width],
+      range: [50, width],
     }), [data, width]);
 
   const yScale = useMemo(() =>
@@ -47,8 +48,8 @@ const LateAdultHeatmap = (props: Props) => {
     }),[]);
 
   return (
-    <svg width={width} height={heatmapHeight}>
-      <Group top={0} left={0}>
+    <svg width={width} height={heatmapHeight + 10}>
+      <Group top={0} left={50}>
         <HeatmapRect
           data={data.data}
           xScale={d => xScale(d) ?? 0}
@@ -57,25 +58,15 @@ const LateAdultHeatmap = (props: Props) => {
           binWidth={binWidth}
           binHeight={11.75}
           gap={2}
-        >
-          {heatmap => {
-            console.log({heatmap});
-            return heatmap.map(heatmapBins =>
-              heatmapBins.map(bin => (
-                <rect
-                  key={`heatmap-rect-${bin.row}-${bin.column}`}
-                  className="visx-heatmap-rect"
-                  width={bin.width}
-                  height={bin.height}
-                  x={bin.x}
-                  y={bin.y}
-                  fill={bin.color}
-                />
-              ))
-            )
-          }}
-        </HeatmapRect>
+        />
       </Group>
+      <AxisLeft
+        scale={yScale}
+        top={5}
+        left={90}
+        numTicks={data.numOfRows}
+        tickFormat={value => data.rows[value as number]?.markerSymbol || '-'}
+      />
     </svg>
   )
 };
