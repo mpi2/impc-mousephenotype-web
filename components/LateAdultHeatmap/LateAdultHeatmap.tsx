@@ -1,10 +1,12 @@
 import { CSSProperties, memo, useEffect, useMemo, useState } from "react";
-import { scaleLinear, scaleQuantize } from "@visx/scale";
-import { LateAdultDataParsed } from "@/models";
+import { scaleLinear, scaleQuantize, scaleBand } from "@visx/scale";
+import { LateAdultDataParsed, LateAdultRowResponse } from "@/models";
 import { Group } from "@visx/group";
 import { HeatmapRect } from "@visx/heatmap";
-import { AxisLeft } from "@visx/axis";
+import { AxisLeft, AxisTop } from "@visx/axis";
 import { Text } from '@visx/text';
+import { ScaleBand, ScaleLinear, ScaleQuantize } from "d3-scale";
+import classNames from "classnames";
 
 
 const binHeight = 11.75;
@@ -14,18 +16,23 @@ type CellData = {
   x: number;
   y: number;
   geneSymbol: string;
+  procedureName: string;
 }
 
 type Props = {
   width: number;
-  data: LateAdultDataParsed
+  data: LateAdultDataParsed;
+  allGenesList: Array<LateAdultRowResponse>;
+  selectedParam: string;
+  onParamSelected: (param: string) => void;
 }
 type HeatMapProps = {
   data: LateAdultDataParsed;
-  xScale;
-  yScale;
-  colorScale;
+  xScale: ScaleBand<number>;
+  yScale: ScaleLinear<number, number, never>;
+  colorScale: ScaleQuantize<string, never>;
   binWidth: number;
+  allGenesList: Array<LateAdultRowResponse>;
   setSelectedCell: (data: CellData) => void;
 };
 
@@ -36,7 +43,8 @@ const HeatMap = memo((props: HeatMapProps) => {
     yScale,
     colorScale,
     binWidth,
-    setSelectedCell
+    allGenesList,
+    setSelectedCell,
   } = props;
   return (
     <HeatmapRect
@@ -60,7 +68,12 @@ const HeatMap = memo((props: HeatMapProps) => {
               y={bin.y}
               fill={bin.color}
               onMouseOver={() => {
-                setSelectedCell({ x: bin.x, y: bin.y, geneSymbol: data.rows[bin.row].markerSymbol })
+                setSelectedCell({
+                  x: bin.x,
+                  y: bin.y,
+                  geneSymbol: allGenesList[bin.row].markerSymbol,
+                  procedureName: data.columns[bin.column],
+                })
               }}
             />
           ))
@@ -73,7 +86,10 @@ const HeatMap = memo((props: HeatMapProps) => {
 const LateAdultHeatmap = (props: Props) => {
   const {
     width,
-    data
+    data,
+    allGenesList,
+    selectedParam,
+    onParamSelected,
   } = props;
 
   const numOfCols = data.columns.length;
@@ -83,25 +99,26 @@ const LateAdultHeatmap = (props: Props) => {
   const [selectedCell, setSelectedCell] = useState<CellData>(undefined);
 
   useEffect(() => {
-    if (data) {
-      const maxHeigth = data.numOfRows * binHeight;
+    if (allGenesList) {
+      const maxHeigth = allGenesList.length * binHeight;
       if (heatmapHeight !== maxHeigth) {
         setHeatmapHeight(maxHeigth);
       }
     }
-  }, [data.data, heatmapHeight]);
+  }, [allGenesList.length, heatmapHeight]);
 
   const xScale = useMemo(() =>
-    scaleLinear<number>({
-      domain: [0, data.columns.length],
+    scaleBand<number>({
+      domain: data.columns.map((_, index) => index),
       range: [50, maxWidth],
+      round: true
     }), [data, maxWidth]);
 
   const yScale = useMemo(() =>
     scaleLinear<number>({
-      domain: [0, data.numOfRows],
-      range: [0, heatmapHeight],
-    }),[data, heatmapHeight]);
+      domain: [0, allGenesList.length],
+      range: [100, heatmapHeight],
+    }),[allGenesList, heatmapHeight]);
 
   const colorScale = useMemo(() =>
     scaleQuantize({
@@ -110,6 +127,7 @@ const LateAdultHeatmap = (props: Props) => {
     }),[]);
 
   const isSelectedGene = (geneSymbol: string) => !!selectedCell && selectedCell.geneSymbol === geneSymbol;
+  const isSelectedParam = (parameterName: string) => !!selectedCell && selectedCell.procedureName === parameterName;
 
   return (
     <svg
@@ -117,7 +135,18 @@ const LateAdultHeatmap = (props: Props) => {
       height={heatmapHeight + 10}
       onMouseLeave={() => setSelectedCell(undefined)}
     >
-      <Group top={0} left={50}>
+      <Text
+        className={classNames({ 'axis-link': !!selectedParam })}
+        x={width / 2}
+        y={20}
+        style={{ textAnchor: "middle", fontSize: "1.3em", fontWeight: "700" }}
+        onClick={() => {
+          if (!!selectedParam) onParamSelected(undefined);
+        }}
+      >
+        {!!selectedParam ? `← Genes vs ${selectedParam} parameters` : `Genes vs Procedures`}
+      </Text>
+      <Group top={100} left={50}>
         {!!selectedCell && (
           <>
             <rect
@@ -129,15 +158,16 @@ const LateAdultHeatmap = (props: Props) => {
             />
             <rect
               style={{fill: "rgba(0, 0, 0, 0.2)"}}
-              y={binGap}
+              y={100 + binGap}
               x={selectedCell.x}
               width={binWidth - binGap}
-              height={selectedCell.y - binGap}
+              height={selectedCell.y - 100 - binGap}
             />
           </>
         )}
         <HeatMap
           data={data}
+          allGenesList={allGenesList}
           xScale={xScale}
           yScale={yScale}
           colorScale={colorScale}
@@ -145,22 +175,45 @@ const LateAdultHeatmap = (props: Props) => {
           setSelectedCell={setSelectedCell}
         />
       </Group>
+      <AxisTop
+        scale={xScale}
+        top={190}
+        left={48}
+        tickFormat={value => data.columns[value as number]}
+        tickValues={data.columns.map((col, index) => index)}
+        tickComponent={({formattedValue, ...rest}) => {
+          const matchesParam = isSelectedParam(formattedValue);
+          const style: CSSProperties = matchesParam ?
+            { fontWeight: "bold" } :
+            { fontWeight: "normal"  };
+          return (
+            <text
+              className="axis-link"
+              style={style}
+              {...rest}
+              transform={`rotate(-50, ${rest.x}, 0)`}
+              textAnchor="start"
+              alignmentBaseline="middle"
+              onClick={() => onParamSelected(formattedValue)}
+            >
+              {formattedValue}
+            </text>
+          )
+        }}
+      />
       <AxisLeft
         scale={yScale}
-        top={5}
+        top={108}
         left={90}
-        numTicks={data.numOfRows}
-        tickFormat={value => data.rows[value as number]?.markerSymbol || '-'}
+        numTicks={allGenesList.length}
+        tickFormat={value => allGenesList[value as number]?.markerSymbol || '-'}
         tickComponent={({formattedValue, ...rest}) => {
           const matchesGene = isSelectedGene(formattedValue);
           const style: CSSProperties = matchesGene ?
             { fontWeight: "bold", fontSize: "12px" } :
             { fontWeight: "normal", fontSize: "10px" };
           return (
-            <Text
-              style={style}
-              {...rest}
-            >
+            <Text style={style} {...rest}>
               {formattedValue}
             </Text>
           )

@@ -6,9 +6,66 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import { LateAdultHeatmap } from "@/components";
-import { LateAdultDataResponse, LateAdultDataParsed } from "@/models";
+import { LateAdultDataResponse, LateAdultDataParsed, LateAdultRowResponse } from "@/models";
+import { useEffect, useState } from "react";
+
+type AllGeneList = Array<LateAdultRowResponse>;
+
+const dataMap= {
+  "Acoustic Startle and Pre-pulse Inhibition (PPI)": "acoustic_startle_and_pre_pulse_inhibition_ppi_data",
+  "Auditory Brain Stem Response": "auditory_brain_stem_response_data",
+  "Body Composition (DEXA lean/fat)": "body_composition_dexa_lean_fat_data",
+  "Body Surface Temperature": "body_surface_temperature_data",
+  "Body Weight": "body_weight_data",
+  "Clinical Chemistry": "clinical_chemistry_data",
+  "Combined SHIRPA and Dysmorphology": "combined_shirpa_and_dysmorphology_data",
+  "Dysmorphology": "dysmorphology_data",
+  "Echo": "echo_data",
+  "Electrocardiogram (ECG)": "electrocardiogram_ecg_data",
+  "Electroretinography 3": "electroretinography_3_data",
+  "Eye Morphology": "eye_morphology_data",
+  "Fear Conditioning": "fear_conditioning_data",
+  "Grip Strength": "grip_strength_data",
+  "Gross Pathology and Tissue Collection": "gross_pathology_and_tissue_collection_data",
+  "Heart Weight": "heart_weight_data",
+  "Hematology": "hematology_data",
+  "Histopathology": "histopathology_data",
+  "Hole-board Exploration": "hole_board_exploration_data",
+  "Hot Plate": "hot_plate_data",
+  "Immunophenotyping": "immunophenotyping_data",
+  "Indirect Calorimetry": "indirect_calorimetry_data",
+  "Insulin Blood Level": "insulin_blood_level_data",
+  "Intraperitoneal glucose tolerance test (IPGTT)": "intraperitoneal_glucose_tolerance_test_ipgtt_data",
+  "Light-Dark Test": "light_dark_test_data",
+  "Minispec": "minispec_data",
+  "OCT": "oct_data",
+  "Open Field": "open_field_data",
+  "Open Field - centre start": "open_field_centre_start_data",
+  "Organ Weight": "organ_weight_data",
+  "Rotarod": "rotarod_data",
+  "SHIRPA": "shirpa_data",
+  "Scheimpflug": "scheimpflug_data",
+  "Shock Threshold": "shock_threshold_data",
+  "Tissue Embedding and Block Banking": "tissue_embedding_and_block_banking_data",
+  "Transepidermal water loss": "transepidermal_water_loss_data",
+  "Virtual Drum": "virtual_drum_data",
+  "X-ray": "x_ray_data",
+  "Y-maze": "y_maze_data",
+};
+
+const transformData = (columns: Array<string>, columnsData: Array<Array<number>>) => {
+  return columns.map((col, colIndex) => ({
+    bin: colIndex,
+    column: col,
+    bins: columnsData
+      .map(significanceArr => significanceArr[colIndex])
+      .map((significance, index) => ({ bin: index, count: significance }))
+  }))
+}
 
 const LateAdultDataPage = () => {
+  const [selectedParam, setSelectedParam] = useState<string>(undefined);
+  const [allGenes, setAllGenes] = useState<AllGeneList>([])
 
   const { data: allProd } = useQuery({
     queryKey: ["late-adult-heatmap", "all-procedures"],
@@ -16,22 +73,42 @@ const LateAdultDataPage = () => {
     select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
       const allColumnsData = data.rows.map(row => row.significance);
-      const result = columns.map((col, colIndex) => ({
-        bin: colIndex,
-        column: col,
-        bins: allColumnsData
-          .map(significanceArr => significanceArr[colIndex])
-          .map((significance, index) => ({ bin: index, count: significance }))
-      }));
+      const result = transformData(columns, allColumnsData);
       return {
         columns,
-        rows: data.rows,
         data: result,
-        numOfRows: data.rows.length - 1,
-      } as LateAdultDataParsed;
+        rows: data.rows,
+      } as LateAdultDataParsed & { rows: Array<LateAdultRowResponse> };
     },
     placeholderData: () => ({ columns: [], rows: [], numOfRows: 0 }),
   });
+
+  useEffect(() => {
+    if (!!allProd.rows.length && allGenes.length !== allProd.rows.length) {
+      setAllGenes(allProd.rows.map(({significance, ...rest}) => rest));
+    }
+  }, [allProd.rows.length]);
+
+  const { data: prodData } = useQuery({
+    queryKey: ["late-adult-heatmap", dataMap[selectedParam]],
+    queryFn: () => fetchLandingPageData(`late_adult_landing/${dataMap[selectedParam]}`),
+    enabled: !!selectedParam && !!allGenes,
+    select: (data: LateAdultDataResponse) => {
+      const columns = data.columns;
+      const emptySig = data.columns.map(() => 0);
+      const columnsData = allGenes.map(gene => {
+        const prodData = data.rows.find(row => row.mgiGeneAccessionId === gene.mgiGeneAccessionId);
+        return !!prodData ? prodData.significance : emptySig;
+      });
+      const result = transformData(columns, columnsData);
+      return {
+        columns,
+        data: result,
+      }
+    }
+  });
+
+  const data = !!selectedParam ? prodData : allProd;
 
   return (
     <>
@@ -100,12 +177,15 @@ const LateAdultDataPage = () => {
             </Row>
             <div className="mt-4">
               <h3>IMPC Late adult heat map</h3>
-              {!!allProd && (
+              {!!data && (
                 <ParentSize>
                   {({ width }) => (
                     <LateAdultHeatmap
                       width={width}
-                      data={allProd}
+                      data={data}
+                      allGenesList={allGenes}
+                      selectedParam={selectedParam}
+                      onParamSelected={setSelectedParam}
                     />
                   )}
                 </ParentSize>

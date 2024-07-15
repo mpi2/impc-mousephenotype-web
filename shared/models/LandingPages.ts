@@ -1,9 +1,9 @@
 
 
-type LateAdultRowResponse = {
+export type LateAdultRowResponse = {
   markerSymbol: string;
   mgiGeneAccessionId: string;
-  significance: Array<number>;
+  significance?: Array<number>;
 };
 
 export type LateAdultDataResponse = {
@@ -13,8 +13,6 @@ export type LateAdultDataResponse = {
 
 export type LateAdultDataParsed = {
   columns: Array<string>;
-  rows: Array<LateAdultRowResponse>;
-  numOfRows: number;
   data: Array<{
     bin: number;
     column: string;
