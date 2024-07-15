@@ -83,7 +83,7 @@ const LateAdultDataPage = () => {
     select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
       const filteredData = !!geneQuery
-        ? data.rows.filter(g => g.markerSymbol.includes(geneQuery))
+        ? data.rows.filter(g => g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()))
         : data.rows;
       const allColumnsData = filteredData.map(row => row.significance);
       const result = transformData(columns, allColumnsData);
@@ -103,14 +103,14 @@ const LateAdultDataPage = () => {
   }, [allProd.rows.length]);
 
   const { data: prodData } = useQuery({
-    queryKey: ["late-adult-heatmap", dataMap[selectedParam], geneQuery],
+    queryKey: ["late-adult-heatmap", dataMap[selectedParam], geneQuery, onlyGenesWithData],
     queryFn: () => fetchLandingPageData(`late_adult_landing/${dataMap[selectedParam]}`),
     enabled: !!selectedParam && !!allGenes,
     select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
       const emptySig = data.columns.map(() => 0);
       const filteredGenes = !!geneQuery
-        ? allGenes.filter(g => g.markerSymbol.includes(geneQuery))
+        ? allGenes.filter(g => g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()))
         : allGenes;
       const columnsData = filteredGenes.map(gene => {
         const prodData = data.rows.find(row => row.mgiGeneAccessionId === gene.mgiGeneAccessionId);
@@ -141,7 +141,7 @@ const LateAdultDataPage = () => {
   }, [selectedParam, prodData, allProd, activePage, pageSize]);
   const geneListPaginated = useMemo(() => {
     const filteredGenes = !!geneQuery
-      ? allGenes.filter(g => g.markerSymbol.includes(geneQuery))
+      ? allGenes.filter(g => g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()))
       : allGenes;
     return filteredGenes.slice(activePage * pageSize, (activePage + 1) * pageSize);
   }, [allGenes, activePage, pageSize, geneQuery]);
