@@ -103,7 +103,7 @@ const LateAdultDataPage = () => {
   }, [allProd.rows.length]);
 
   const { data: prodData } = useQuery({
-    queryKey: ["late-adult-heatmap", dataMap[selectedParam], geneQuery, onlyGenesWithData],
+    queryKey: ["late-adult-heatmap", dataMap[selectedParam], geneQuery],
     queryFn: () => fetchLandingPageData(`late_adult_landing/${dataMap[selectedParam]}`),
     enabled: !!selectedParam && !!allGenes,
     select: (data: LateAdultDataResponse) => {
