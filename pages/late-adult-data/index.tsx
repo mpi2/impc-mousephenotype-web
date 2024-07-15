@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Search from "@/components/Search";
-import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
+import { Breadcrumb, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import { LateAdultHeatmap } from "@/components";
 import { LateAdultDataResponse, LateAdultDataParsed, LateAdultRowResponse } from "@/models";
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { usePagination } from "@/hooks";
 import PaginationControls from "@/components/PaginationControls";
 
@@ -68,6 +68,7 @@ const transformData = (columns: Array<string>, columnsData: Array<Array<number>>
 const LateAdultDataPage = () => {
   const [selectedParam, setSelectedParam] = useState<string>(undefined);
   const [allGenes, setAllGenes] = useState<AllGeneList>([]);
+  const [geneQuery, setGeneQuery] = useState<string>(undefined);
 
   const {
     activePage,
@@ -77,11 +78,14 @@ const LateAdultDataPage = () => {
   } = usePagination(allGenes, 20);
 
   const { data: allProd } = useQuery({
-    queryKey: ["late-adult-heatmap", "all-procedures"],
+    queryKey: ["late-adult-heatmap", "all-procedures", geneQuery],
     queryFn: () => fetchLandingPageData("late_adult_landing/procedure_level_data"),
     select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
-      const allColumnsData = data.rows.map(row => row.significance);
+      const filteredData = !!geneQuery
+        ? data.rows.filter(g => g.markerSymbol.includes(geneQuery))
+        : data.rows;
+      const allColumnsData = filteredData.map(row => row.significance);
       const result = transformData(columns, allColumnsData);
       return {
         columns,
@@ -99,13 +103,16 @@ const LateAdultDataPage = () => {
   }, [allProd.rows.length]);
 
   const { data: prodData } = useQuery({
-    queryKey: ["late-adult-heatmap", dataMap[selectedParam]],
+    queryKey: ["late-adult-heatmap", dataMap[selectedParam], geneQuery],
     queryFn: () => fetchLandingPageData(`late_adult_landing/${dataMap[selectedParam]}`),
     enabled: !!selectedParam && !!allGenes,
     select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
       const emptySig = data.columns.map(() => 0);
-      const columnsData = allGenes.map(gene => {
+      const filteredGenes = !!geneQuery
+        ? allGenes.filter(g => g.markerSymbol.includes(geneQuery))
+        : allGenes;
+      const columnsData = filteredGenes.map(gene => {
         const prodData = data.rows.find(row => row.mgiGeneAccessionId === gene.mgiGeneAccessionId);
         return !!prodData ? prodData.significance : emptySig;
       });
@@ -133,8 +140,11 @@ const LateAdultDataPage = () => {
 
   }, [selectedParam, prodData, allProd, activePage, pageSize]);
   const geneListPaginated = useMemo(() => {
-    return allGenes.slice(activePage * pageSize, (activePage + 1) * pageSize);
-  }, [allGenes, activePage, pageSize]);
+    const filteredGenes = !!geneQuery
+      ? allGenes.filter(g => g.markerSymbol.includes(geneQuery))
+      : allGenes;
+    return filteredGenes.slice(activePage * pageSize, (activePage + 1) * pageSize);
+  }, [allGenes, activePage, pageSize, geneQuery]);
 
   return (
     <>
@@ -203,9 +213,56 @@ const LateAdultDataPage = () => {
             </Row>
             <div className="mt-4">
               <h3>IMPC Late adult heat map</h3>
+              <Row>
+                <Col xs={8}>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <span style={{
+                      backgroundColor: "#ececec",
+                      border: "solid 1px black",
+                      width: "20px",
+                      height: "20px",
+                      display: "inline-block"
+                    }}/>
+                    &nbsp;no Late Adult (LA) data
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <span style={{
+                      backgroundColor: "#7ccbd7",
+                      border: "solid 1px black",
+                      width: "20px",
+                      height: "20px",
+                      display: "inline-block"
+                    }}/>
+                    &nbsp;no significant difference between LA controls and LA knockouts
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <span style={{
+                      backgroundColor: "#f19a57",
+                      border: "solid 1px black",
+                      width: "20px",
+                      height: "20px",
+                      display: "inline-block"
+                    }}/>
+                    &nbsp;significant difference between LA controls and LA knockouts
+                  </div>
+                </Col>
+                <Col xs={4}>
+                  <InputGroup>
+                    <InputGroup.Text id="gene-filter">
+                      Filter by gene symbol
+                    </InputGroup.Text>
+                    <Form.Control
+                      id="gene-control"
+                      aria-describedby="gene-filter"
+                      value={geneQuery}
+                      onChange={e => setGeneQuery(e.target.value)}
+                    />
+                  </InputGroup>
+                </Col>
+              </Row>
               {!!paginatedData && (
                 <ParentSize>
-                  {({ width }) => (
+                  {({width}) => (
                     <LateAdultHeatmap
                       width={width}
                       data={paginatedData}
