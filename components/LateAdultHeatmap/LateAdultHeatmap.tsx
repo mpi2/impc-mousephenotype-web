@@ -9,7 +9,7 @@ import { ScaleBand, ScaleLinear, ScaleQuantize } from "d3-scale";
 import classNames from "classnames";
 
 
-const binHeight = 11.75;
+const binHeight = 25;
 const binGap = 2;
 
 type CellData = {
@@ -29,7 +29,7 @@ type Props = {
 type HeatMapProps = {
   data: LateAdultDataParsed;
   xScale: ScaleBand<number>;
-  yScale: ScaleLinear<number, number, never>;
+  yScale: ScaleBand<number>;
   colorScale: ScaleQuantize<string, never>;
   binWidth: number;
   allGenesList: Array<LateAdultRowResponse>;
@@ -100,7 +100,7 @@ const LateAdultHeatmap = (props: Props) => {
 
   useEffect(() => {
     if (allGenesList) {
-      const maxHeigth = allGenesList.length * binHeight;
+      const maxHeigth = (allGenesList.length * binHeight) + 170;
       if (heatmapHeight !== maxHeigth) {
         setHeatmapHeight(maxHeigth);
       }
@@ -115,8 +115,8 @@ const LateAdultHeatmap = (props: Props) => {
     }), [data, maxWidth]);
 
   const yScale = useMemo(() =>
-    scaleLinear<number>({
-      domain: [0, allGenesList.length],
+    scaleBand<number>({
+      domain: allGenesList.map((_, index) => index),
       range: [100, heatmapHeight],
     }),[allGenesList, heatmapHeight]);
 
@@ -132,7 +132,7 @@ const LateAdultHeatmap = (props: Props) => {
   return (
     <svg
       width={width}
-      height={heatmapHeight + 10}
+      height={heatmapHeight + 100}
       onMouseLeave={() => setSelectedCell(undefined)}
     >
       <Text
@@ -151,10 +151,10 @@ const LateAdultHeatmap = (props: Props) => {
           <>
             <rect
               style={{fill: "rgba(0, 0, 0, 0.2)"}}
-              x={50}
+              x={60}
               y={selectedCell.y}
               height={binHeight - binGap}
-              width={selectedCell.x - 50}
+              width={selectedCell.x - 60}
             />
             <rect
               style={{fill: "rgba(0, 0, 0, 0.2)"}}
@@ -162,6 +162,13 @@ const LateAdultHeatmap = (props: Props) => {
               x={selectedCell.x}
               width={binWidth - binGap}
               height={selectedCell.y - 100 - binGap}
+            />
+            <rect
+              style={{fill: "rgba(0, 0, 0, 0.2)"}}
+              x={selectedCell.x + binWidth - 2}
+              y={selectedCell.y}
+              height={binHeight - binGap}
+              width={width - selectedCell.x - 50 - binWidth - (binGap * 2)}
             />
           </>
         )}
@@ -203,7 +210,7 @@ const LateAdultHeatmap = (props: Props) => {
       />
       <AxisLeft
         scale={yScale}
-        top={108}
+        top={100}
         left={90}
         numTicks={allGenesList.length}
         tickFormat={value => allGenesList[value as number]?.markerSymbol || '-'}

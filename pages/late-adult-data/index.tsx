@@ -7,7 +7,9 @@ import { fetchLandingPageData } from "@/api-service";
 import ParentSize from "@visx/responsive/lib/components/ParentSize";
 import { LateAdultHeatmap } from "@/components";
 import { LateAdultDataResponse, LateAdultDataParsed, LateAdultRowResponse } from "@/models";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { usePagination } from "@/hooks";
+import PaginationControls from "@/components/PaginationControls";
 
 type AllGeneList = Array<LateAdultRowResponse>;
 
@@ -61,11 +63,18 @@ const transformData = (columns: Array<string>, columnsData: Array<Array<number>>
       .map(significanceArr => significanceArr[colIndex])
       .map((significance, index) => ({ bin: index, count: significance }))
   }))
-}
+};
 
 const LateAdultDataPage = () => {
   const [selectedParam, setSelectedParam] = useState<string>(undefined);
-  const [allGenes, setAllGenes] = useState<AllGeneList>([])
+  const [allGenes, setAllGenes] = useState<AllGeneList>([]);
+
+  const {
+    activePage,
+    totalPages,
+    pageSize,
+    setActivePage,
+  } = usePagination(allGenes, 20);
 
   const { data: allProd } = useQuery({
     queryKey: ["late-adult-heatmap", "all-procedures"],
@@ -104,11 +113,29 @@ const LateAdultDataPage = () => {
       return {
         columns,
         data: result,
-      }
+      } as LateAdultDataParsed;
     }
   });
 
-  const data = !!selectedParam ? prodData : allProd;
+  const paginatedData = useMemo(() => {
+    const selectedData = !!selectedParam ? prodData : allProd;
+    const slicedData = selectedData.data.map(colData => {
+      return {
+        ...colData,
+        bins: colData.bins.slice(activePage * pageSize, (activePage + 1) * pageSize)
+      }
+    });
+    return {
+      columns: selectedData.columns,
+      data: slicedData,
+    } as LateAdultDataParsed;
+
+  }, [selectedParam, prodData, allProd, activePage, pageSize]);
+  const geneListPaginated = useMemo(() => {
+    return allGenes.slice(activePage * pageSize, (activePage + 1) * pageSize);
+  }, [allGenes, activePage, pageSize]);
+
+  console.log({ geneListPaginated });
 
   return (
     <>
@@ -177,19 +204,25 @@ const LateAdultDataPage = () => {
             </Row>
             <div className="mt-4">
               <h3>IMPC Late adult heat map</h3>
-              {!!data && (
+              {!!paginatedData && (
                 <ParentSize>
                   {({ width }) => (
                     <LateAdultHeatmap
                       width={width}
-                      data={data}
-                      allGenesList={allGenes}
+                      data={paginatedData}
+                      allGenesList={geneListPaginated}
                       selectedParam={selectedParam}
                       onParamSelected={setSelectedParam}
                     />
                   )}
                 </ParentSize>
               )}
+              <PaginationControls
+                currentPage={activePage}
+                totalPages={totalPages}
+                onPageChange={setActivePage}
+                pageSize={pageSize}
+              />
             </div>
           </Container>
         </Card>

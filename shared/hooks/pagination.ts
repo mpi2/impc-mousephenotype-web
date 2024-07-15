@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-export const usePagination = <T,>(data: Array<T> = []) => {
+export const usePagination = <T,>(data: Array<T> = [], initialPageSize = 10) => {
   const [activePage, setActivePage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(initialPageSize);
   const [totalPages, setTotalPages] = useState(
     Math.ceil(data.length / pageSize)
   );
