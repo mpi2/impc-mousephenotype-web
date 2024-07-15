@@ -114,7 +114,8 @@ const LateAdultDataPage = () => {
         columns,
         data: result,
       } as LateAdultDataParsed;
-    }
+    },
+    placeholderData: () => ({ columns: [], rows: [], numOfRows: 0 })
   });
 
   const paginatedData = useMemo(() => {
@@ -134,8 +135,6 @@ const LateAdultDataPage = () => {
   const geneListPaginated = useMemo(() => {
     return allGenes.slice(activePage * pageSize, (activePage + 1) * pageSize);
   }, [allGenes, activePage, pageSize]);
-
-  console.log({ geneListPaginated });
 
   return (
     <>

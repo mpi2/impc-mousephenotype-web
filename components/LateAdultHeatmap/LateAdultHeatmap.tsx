@@ -160,7 +160,7 @@ const LateAdultHeatmap = (props: Props) => {
               style={{fill: "rgba(0, 0, 0, 0.2)"}}
               y={100 + binGap}
               x={selectedCell.x}
-              width={binWidth - binGap}
+              width={binWidth - 3}
               height={selectedCell.y - 100 - binGap}
             />
             <rect
