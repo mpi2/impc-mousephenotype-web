@@ -36,7 +36,7 @@ const HistopathLandingPage = () => {
   const [heatmapData, setHeatmapData] = useState([]);
   const [query, setQuery] = useState("");
   const [originalData, setOriginalData] = useState([]);
-  const [activePage, setActivePage] = useState(1);
+  const [activePage, setActivePage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(null);
   const [sortingByFixedTissue, setSortingByFixedTissue] = useState(false);
@@ -93,8 +93,8 @@ const HistopathLandingPage = () => {
 
   const getDataSlice = () =>
     heatmapData.slice(
-      (activePage - 1) * pageSize,
-      (activePage - 1) * pageSize + pageSize
+      (activePage) * pageSize,
+      (activePage) * pageSize + pageSize
     );
 
   const getCellColor = (value: number) => {
