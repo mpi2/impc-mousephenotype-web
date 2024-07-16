@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
@@ -54,6 +54,10 @@ const PaginationControls = (props: Props) => {
     containerStyles,
     showEntriesInfo ? { display: 'flex', justifyContent: 'space-between'} : {}
   );
+
+  useEffect(() => {
+    updatePageRange(currentPage, totalPages);
+  }, [totalPages]);
 
   return (
     <nav aria-label="Page navigation example" style={mergedContainerStyles}>

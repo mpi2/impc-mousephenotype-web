@@ -148,8 +148,6 @@ const LateAdultDataPage = () => {
 
   }, [selectedParam, prodData, allProd, activePage, pageSize]);
 
-  console.log({ paginatedGenes, pageSize });
-
   return (
     <>
       <Head>
