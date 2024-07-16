@@ -79,7 +79,7 @@ const HeatMap = memo((props: HeatMapProps) => {
                 })
               }}
               onClick={() => router.push(
-                `/genes/${allGenesList[bin.row].mgiGeneAccessionId}?dataLifeStage=late&dataSearch=${bin.datum.column}#data`
+                `/genes/${allGenesList[bin.row].mgiGeneAccessionId}?dataLifeStage=Late adult&dataSearch=${bin.datum.column}#data`
               )}
             />
           ))
