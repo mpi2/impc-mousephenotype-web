@@ -1,11 +1,12 @@
 import { CSSProperties, memo, useEffect, useMemo, useState } from "react";
-import { scaleLinear, scaleQuantize, scaleBand } from "@visx/scale";
+import { scaleQuantize, scaleBand } from "@visx/scale";
 import { LateAdultDataParsed, LateAdultRowResponse } from "@/models";
 import { Group } from "@visx/group";
 import { HeatmapRect } from "@visx/heatmap";
 import { AxisLeft, AxisTop } from "@visx/axis";
 import { Text } from '@visx/text';
-import { ScaleBand, ScaleLinear, ScaleQuantize } from "d3-scale";
+import { ScaleBand, ScaleQuantize } from "d3-scale";
+import { clamp } from 'lodash';
 import classNames from "classnames";
 
 
@@ -22,7 +23,7 @@ type CellData = {
 type Props = {
   width: number;
   data: LateAdultDataParsed;
-  allGenesList: Array<LateAdultRowResponse>;
+  genesList: Array<LateAdultRowResponse>;
   selectedParam: string;
   onParamSelected: (param: string) => void;
 }
@@ -61,9 +62,9 @@ const HeatMap = memo((props: HeatMapProps) => {
           heatmapBins.map(bin => (
             <rect
               key={`heatmap-rect-${bin.row}-${bin.column}`}
-              className="visx-heatmap-rect"
-              width={bin.width}
-              height={bin.height}
+              className={classNames("visx-heatmap-rect", { "hasData": bin.count > 0 })}
+              width={xScale.bandwidth() - binGap}
+              height={yScale.bandwidth() - binGap}
               x={bin.x}
               y={bin.y}
               fill={bin.color}
@@ -87,7 +88,7 @@ const LateAdultHeatmap = (props: Props) => {
   const {
     width,
     data,
-    allGenesList,
+    genesList,
     selectedParam,
     onParamSelected,
   } = props;
@@ -99,13 +100,13 @@ const LateAdultHeatmap = (props: Props) => {
   const [selectedCell, setSelectedCell] = useState<CellData>(undefined);
 
   useEffect(() => {
-    if (allGenesList) {
-      const maxHeigth = (allGenesList.length * binHeight) + 170;
+    if (genesList) {
+      const maxHeigth = (genesList.length * binHeight) + 170;
       if (heatmapHeight !== maxHeigth) {
         setHeatmapHeight(maxHeigth);
       }
     }
-  }, [allGenesList.length, heatmapHeight]);
+  }, [genesList.length, heatmapHeight]);
 
   const xScale = useMemo(() =>
     scaleBand<number>({
@@ -116,9 +117,10 @@ const LateAdultHeatmap = (props: Props) => {
 
   const yScale = useMemo(() =>
     scaleBand<number>({
-      domain: allGenesList.map((_, index) => index),
+      domain: genesList.map((_, index) => index),
       range: [100, heatmapHeight],
-    }),[allGenesList, heatmapHeight]);
+    }),[genesList, heatmapHeight]);
+
 
   const colorScale = useMemo(() =>
     scaleQuantize({
@@ -155,33 +157,33 @@ const LateAdultHeatmap = (props: Props) => {
               style={{fill: "rgba(0, 0, 0, 0.2)"}}
               x={60}
               y={selectedCell.y}
-              height={binHeight - binGap}
-              width={selectedCell.x - 60}
+              height={yScale.bandwidth() - binGap}
+              width={clamp(selectedCell.x - 60 - binGap, 0, maxWidth)}
             />
             <rect
               style={{fill: "rgba(0, 0, 0, 0.2)"}}
               y={100 + binGap}
               x={selectedCell.x}
-              width={binWidth - 3}
-              height={selectedCell.y - 100 - binGap}
+              width={xScale.bandwidth() - binGap}
+              height={selectedCell.y - 100 - binGap * 2}
             />
             <rect
               style={{fill: "rgba(0, 0, 0, 0.2)"}}
               x={selectedCell.x + binWidth - 2}
               y={selectedCell.y}
-              height={binHeight - binGap}
-              width={width - selectedCell.x - 50 - binWidth - (binGap * 2)}
+              height={yScale.bandwidth() - binGap}
+              width={width - selectedCell.x - 62 - xScale.bandwidth()}
             />
           </>
         )}
         {!hasData && (
-          <Text x="0" y="120">
+          <Text x={width / 2} y="120" style={{ textAnchor: "middle" }}>
             No genes match the inserted text
           </Text>
         )}
         <HeatMap
           data={data}
-          allGenesList={allGenesList}
+          allGenesList={genesList}
           xScale={xScale}
           yScale={yScale}
           colorScale={colorScale}
@@ -220,8 +222,8 @@ const LateAdultHeatmap = (props: Props) => {
           scale={yScale}
           top={100}
           left={90}
-          numTicks={allGenesList.length}
-          tickFormat={value => allGenesList[value as number]?.markerSymbol || '-'}
+          numTicks={genesList.length}
+          tickFormat={value => genesList[value as number]?.markerSymbol || '-'}
           tickComponent={({formattedValue, ...rest}) => {
             const matchesGene = isSelectedGene(formattedValue);
             const style: CSSProperties = matchesGene ?

@@ -268,7 +268,7 @@ const LateAdultDataPage = () => {
                     <LateAdultHeatmap
                       width={width}
                       data={paginatedData}
-                      allGenesList={paginatedGenes}
+                      genesList={paginatedGenes}
                       selectedParam={selectedParam}
                       onParamSelected={setSelectedParam}
                     />
