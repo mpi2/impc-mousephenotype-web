@@ -165,14 +165,14 @@ const LateAdultHeatmap = (props: Props) => {
               y={100 + binGap}
               x={selectedCell.x}
               width={xScale.bandwidth() - binGap}
-              height={selectedCell.y - 100 - binGap * 2}
+              height={clamp(selectedCell.y - 100 - binGap * 2, 0, heatmapHeight)}
             />
             <rect
               style={{fill: "rgba(0, 0, 0, 0.2)"}}
               x={selectedCell.x + binWidth - 2}
               y={selectedCell.y}
               height={yScale.bandwidth() - binGap}
-              width={width - selectedCell.x - 62 - xScale.bandwidth()}
+              width={clamp(width - selectedCell.x - 62 - xScale.bandwidth(), 0, maxWidth)}
             />
           </>
         )}
