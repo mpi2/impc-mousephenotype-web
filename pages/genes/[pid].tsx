@@ -12,11 +12,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
-import { useGeneSummaryQuery, useScroll } from "@/hooks";
+import { useGeneSummaryQuery } from "@/hooks";
 import Head from "next/head";
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { motion, AnimatePresence } from "framer-motion";
 
 const HumanDiseases = dynamic(
   () => import("@/components/Gene/HumanDiseases"),

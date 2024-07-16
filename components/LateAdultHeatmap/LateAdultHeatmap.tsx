@@ -8,6 +8,7 @@ import { Text } from '@visx/text';
 import { ScaleBand, ScaleQuantize } from "d3-scale";
 import { clamp } from 'lodash';
 import classNames from "classnames";
+import { useRouter } from "next/router";
 
 
 const binHeight = 25;
@@ -38,6 +39,7 @@ type HeatMapProps = {
 };
 
 const HeatMap = memo((props: HeatMapProps) => {
+  const router = useRouter();
   const {
     data,
     xScale,
@@ -76,6 +78,9 @@ const HeatMap = memo((props: HeatMapProps) => {
                   procedureName: data.columns[bin.column],
                 })
               }}
+              onClick={() => router.push(
+                `/genes/${allGenesList[bin.row].mgiGeneAccessionId}?dataLifeStage=late&dataSearch=${bin.datum.column}#data`
+              )}
             />
           ))
         )
