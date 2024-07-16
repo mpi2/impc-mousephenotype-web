@@ -129,6 +129,8 @@ const LateAdultHeatmap = (props: Props) => {
   const isSelectedGene = (geneSymbol: string) => !!selectedCell && selectedCell.geneSymbol === geneSymbol;
   const isSelectedParam = (parameterName: string) => !!selectedCell && selectedCell.procedureName === parameterName;
 
+  const hasData = useMemo(() => data.data.some(col => col.bins.length !== 0), [data]);
+
   return (
     <svg
       width={width}
@@ -172,6 +174,11 @@ const LateAdultHeatmap = (props: Props) => {
             />
           </>
         )}
+        {!hasData && (
+          <Text x="0" y="120">
+            No genes match the inserted text
+          </Text>
+        )}
         <HeatMap
           data={data}
           allGenesList={allGenesList}
@@ -208,24 +215,26 @@ const LateAdultHeatmap = (props: Props) => {
           )
         }}
       />
-      <AxisLeft
-        scale={yScale}
-        top={100}
-        left={90}
-        numTicks={allGenesList.length}
-        tickFormat={value => allGenesList[value as number]?.markerSymbol || '-'}
-        tickComponent={({formattedValue, ...rest}) => {
-          const matchesGene = isSelectedGene(formattedValue);
-          const style: CSSProperties = matchesGene ?
-            { fontWeight: "bold", fontSize: "12px" } :
-            { fontWeight: "normal", fontSize: "10px" };
-          return (
-            <Text style={style} {...rest}>
-              {formattedValue}
-            </Text>
-          )
-        }}
-      />
+      {hasData && (
+        <AxisLeft
+          scale={yScale}
+          top={100}
+          left={90}
+          numTicks={allGenesList.length}
+          tickFormat={value => allGenesList[value as number]?.markerSymbol || '-'}
+          tickComponent={({formattedValue, ...rest}) => {
+            const matchesGene = isSelectedGene(formattedValue);
+            const style: CSSProperties = matchesGene ?
+              { fontWeight: "bold", fontSize: "12px" } :
+              { fontWeight: "normal", fontSize: "10px" };
+            return (
+              <Text style={style} {...rest}>
+                {formattedValue}
+              </Text>
+            )
+          }}
+        />
+      )}
     </svg>
   )
 };

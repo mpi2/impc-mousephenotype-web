@@ -67,18 +67,26 @@ const transformData = (columns: Array<string>, columnsData: Array<Array<number>>
 
 const LateAdultDataPage = () => {
   const [selectedParam, setSelectedParam] = useState<string>(undefined);
-  const [allGenes, setAllGenes] = useState<AllGeneList>([]);
+  const [genes, setGenes] = useState<AllGeneList>([]);
   const [geneQuery, setGeneQuery] = useState<string>(undefined);
 
+  const genesFiltered = useMemo(() => {
+    return !!geneQuery
+      ? genes.filter(g => g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()))
+      : genes;
+  }, [genes, geneQuery]);
+
   const {
+    paginatedData: paginatedGenes,
     activePage,
     totalPages,
     pageSize,
     setActivePage,
-  } = usePagination(allGenes, 20);
+    setPageSize,
+  } = usePagination(genesFiltered, 25);
 
   const { data: allProd } = useQuery({
-    queryKey: ["late-adult-heatmap", "all-procedures", geneQuery],
+    queryKey: ["late-adult-heatmap", "all-procedures"],
     queryFn: () => fetchLandingPageData("late_adult_landing/procedure_level_data"),
     select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
@@ -97,21 +105,21 @@ const LateAdultDataPage = () => {
   });
 
   useEffect(() => {
-    if (!!allProd.rows.length && allGenes.length !== allProd.rows.length) {
-      setAllGenes(allProd.rows.map(({significance, ...rest}) => rest));
+    if (!!allProd.rows.length && genes.length !== allProd.rows.length) {
+      setGenes(allProd.rows.map(({significance, ...rest}) => rest));
     }
   }, [allProd.rows.length]);
 
   const { data: prodData } = useQuery({
-    queryKey: ["late-adult-heatmap", dataMap[selectedParam], geneQuery],
+    queryKey: ["late-adult-heatmap", dataMap[selectedParam]],
     queryFn: () => fetchLandingPageData(`late_adult_landing/${dataMap[selectedParam]}`),
-    enabled: !!selectedParam && !!allGenes,
+    enabled: !!selectedParam && !!genes,
     select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
       const emptySig = data.columns.map(() => 0);
       const filteredGenes = !!geneQuery
-        ? allGenes.filter(g => g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()))
-        : allGenes;
+        ? genes.filter(g => g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()))
+        : genes;
       const columnsData = filteredGenes.map(gene => {
         const prodData = data.rows.find(row => row.mgiGeneAccessionId === gene.mgiGeneAccessionId);
         return !!prodData ? prodData.significance : emptySig;
@@ -139,12 +147,8 @@ const LateAdultDataPage = () => {
     } as LateAdultDataParsed;
 
   }, [selectedParam, prodData, allProd, activePage, pageSize]);
-  const geneListPaginated = useMemo(() => {
-    const filteredGenes = !!geneQuery
-      ? allGenes.filter(g => g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()))
-      : allGenes;
-    return filteredGenes.slice(activePage * pageSize, (activePage + 1) * pageSize);
-  }, [allGenes, activePage, pageSize, geneQuery]);
+
+  console.log({ paginatedGenes, pageSize });
 
   return (
     <>
@@ -214,7 +218,20 @@ const LateAdultDataPage = () => {
             <div className="mt-4">
               <h3>IMPC Late adult heat map</h3>
               <Row>
-                <Col xs={8}>
+                <Col xs={4}>
+                  <InputGroup>
+                    <InputGroup.Text id="gene-filter">
+                      Filter by gene symbol
+                    </InputGroup.Text>
+                    <Form.Control
+                      id="gene-control"
+                      aria-describedby="gene-filter"
+                      value={geneQuery}
+                      onChange={e => setGeneQuery(e.target.value)}
+                    />
+                  </InputGroup>
+                </Col>
+                <Col xs={{ span: 5, offset: 3 }}>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <span style={{
                       backgroundColor: "#ececec",
@@ -246,19 +263,6 @@ const LateAdultDataPage = () => {
                     &nbsp;significant difference between LA controls and LA knockouts
                   </div>
                 </Col>
-                <Col xs={4}>
-                  <InputGroup>
-                    <InputGroup.Text id="gene-filter">
-                      Filter by gene symbol
-                    </InputGroup.Text>
-                    <Form.Control
-                      id="gene-control"
-                      aria-describedby="gene-filter"
-                      value={geneQuery}
-                      onChange={e => setGeneQuery(e.target.value)}
-                    />
-                  </InputGroup>
-                </Col>
               </Row>
               {!!paginatedData && (
                 <ParentSize>
@@ -266,19 +270,39 @@ const LateAdultDataPage = () => {
                     <LateAdultHeatmap
                       width={width}
                       data={paginatedData}
-                      allGenesList={geneListPaginated}
+                      allGenesList={paginatedGenes}
                       selectedParam={selectedParam}
                       onParamSelected={setSelectedParam}
                     />
                   )}
                 </ParentSize>
               )}
-              <PaginationControls
-                currentPage={activePage}
-                totalPages={totalPages}
-                onPageChange={setActivePage}
-                pageSize={pageSize}
-              />
+              <Row>
+                <Col style={{display: 'flex', alignItems: 'center'}}>
+                  <div>
+                    Rows per page:&nbsp;
+                    <select
+                      aria-label="genes per page selector"
+                      onChange={e => setPageSize(Number(e.target.value))}
+                      value={pageSize.toString(10)}
+                    >
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                </Col>
+                <Col>
+                  <PaginationControls
+                    currentPage={activePage}
+                    totalPages={totalPages}
+                    onPageChange={setActivePage}
+                    pageSize={pageSize}
+                    containerStyles={{ display: "flex", justifyContent: "end" }}
+                  />
+                </Col>
+              </Row>
             </div>
           </Container>
         </Card>
