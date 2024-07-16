@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
@@ -8,7 +8,8 @@ type Props = {
   totalPages: number;
   onPageChange: (page: number) => void;
   showEntriesInfo?: boolean;
-  pageSize?: number
+  pageSize?: number;
+  containerStyles?: CSSProperties;
 }
 const PaginationControls = (props: Props) => {
   const {
@@ -16,7 +17,8 @@ const PaginationControls = (props: Props) => {
     totalPages,
     onPageChange,
     showEntriesInfo = false,
-    pageSize = 25
+    pageSize = 25,
+    containerStyles= {},
   } = props;
   const [pageRange, setPageRange] = useState([1, 2, 3]);
   const handlePageChange = (page: number) => {
@@ -48,8 +50,17 @@ const PaginationControls = (props: Props) => {
   const canGoBack = currentPage >= 1;
   const canGoForward = (currentPage + 1) < totalPages;
 
+  const mergedContainerStyles = Object.assign(
+    containerStyles,
+    showEntriesInfo ? { display: 'flex', justifyContent: 'space-between'} : {}
+  );
+
+  useEffect(() => {
+    updatePageRange(currentPage, totalPages);
+  }, [totalPages]);
+
   return (
-    <nav aria-label="Page navigation example" style={showEntriesInfo ? { display: 'flex', justifyContent: 'space-between'} : {}}>
+    <nav aria-label="Page navigation example" style={mergedContainerStyles}>
       {!!showEntriesInfo && (
         <span>
           Showing {((currentPage - 1) * pageSize) + 1} to {pageSize * currentPage} of {(totalPages * pageSize).toLocaleString()} entries
