@@ -110,7 +110,7 @@ const LateAdultDataPage = () => {
     }
   }, [allProd.rows.length]);
 
-  const { data: prodData } = useQuery({
+  const { data: prodData, isFetching: isFetchingParamData } = useQuery({
     queryKey: ["late-adult-heatmap", dataMap[selectedParam]],
     queryFn: () => fetchLandingPageData(`late_adult_landing/${dataMap[selectedParam]}`),
     enabled: !!selectedParam && !!genes,
@@ -271,6 +271,7 @@ const LateAdultDataPage = () => {
                       genesList={paginatedGenes}
                       selectedParam={selectedParam}
                       onParamSelected={setSelectedParam}
+                      isFetchingParamData={isFetchingParamData}
                     />
                   )}
                 </ParentSize>
