@@ -6,7 +6,7 @@ import { HeatmapRect } from "@visx/heatmap";
 import { AxisLeft, AxisTop } from "@visx/axis";
 import { Text } from '@visx/text';
 import { ScaleBand, ScaleQuantize } from "d3-scale";
-import { clamp } from 'lodash';
+import { clamp, truncate } from 'lodash';
 import classNames from "classnames";
 import { useRouter } from "next/router";
 
@@ -170,31 +170,6 @@ const LateAdultHeatmap = (props: Props) => {
         {!!selectedParam ? `← Genes vs ${selectedParam} parameters` : `Genes vs Procedures`}
       </Text>
       <Group top={100} left={50}>
-        {!!selectedCell && (
-          <>
-            <rect
-              style={{fill: "rgba(0, 0, 0, 0.2)"}}
-              x={xScale(0)}
-              y={selectedCell.y}
-              height={yScale.bandwidth()}
-              width={clamp(selectedCell.x - xScale(0) - (xScale.padding() * xScale.bandwidth()), 0, maxWidth)}
-            />
-            <rect
-              style={{fill: "rgba(0, 0, 0, 0.2)"}}
-              y={100}
-              x={selectedCell.x}
-              width={xScale.bandwidth()}
-              height={clamp(selectedCell.y - 100 - (yScale.padding() * yScale.bandwidth()), 0, heatmapHeight)}
-            />
-            <rect
-              style={{fill: "rgba(0, 0, 0, 0.2)"}}
-              x={selectedCell.x + xScale.bandwidth() + (xScale.padding() * xScale.bandwidth())}
-              y={selectedCell.y}
-              height={yScale.bandwidth()}
-              width={clamp(xScale(numOfCols - 1) - selectedCell.x - (xScale.padding() * xScale.bandwidth()), 0, maxWidth)}
-            />
-          </>
-        )}
         {(!hasData && !isFetchingParamData) && (
           <Text x={width / 2} y="120" style={{ textAnchor: "middle" }}>
             No genes match the inserted text
@@ -210,6 +185,31 @@ const LateAdultHeatmap = (props: Props) => {
           numOfCols={numOfCols}
           setSelectedCell={setSelectedCell}
         />
+        {!!selectedCell && (
+          <>
+            <rect
+              style={{fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none"}}
+              x={xScale(0)}
+              y={selectedCell.y}
+              height={yScale.bandwidth()}
+              width={clamp(selectedCell.x - xScale(0) - (xScale.padding() * xScale.bandwidth()), 0, maxWidth)}
+            />
+            <rect
+              style={{fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none"}}
+              y={100}
+              x={selectedCell.x}
+              width={xScale.bandwidth()}
+              height={clamp(selectedCell.y - 100 - (yScale.padding() * yScale.bandwidth()), 0, heatmapHeight)}
+            />
+            <rect
+              style={{fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none"}}
+              x={selectedCell.x + xScale.bandwidth() + (xScale.padding() * xScale.bandwidth())}
+              y={selectedCell.y}
+              height={yScale.bandwidth()}
+              width={clamp(xScale(numOfCols - 1) - selectedCell.x - (xScale.padding() * xScale.bandwidth()), 0, maxWidth)}
+            />
+          </>
+        )}
       </Group>
       <AxisTop
         scale={xScale}
@@ -232,7 +232,8 @@ const LateAdultHeatmap = (props: Props) => {
               alignmentBaseline="middle"
               onClick={() => { if (!selectedParam) onParamSelected(formattedValue) }}
             >
-              {formattedValue}
+              <title>{formattedValue}</title>
+              {truncate(formattedValue, { length: 25 })}
             </text>
           )
         }}
