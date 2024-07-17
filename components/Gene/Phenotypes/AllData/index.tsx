@@ -196,8 +196,6 @@ const AllData = (props: Props) => {
     }
   }, [additionalSelectedValues]);
 
-  console.log(selectedValues);
-
   return (
     <SmartTable<GeneStatisticalResult>
       data={data?.content}
