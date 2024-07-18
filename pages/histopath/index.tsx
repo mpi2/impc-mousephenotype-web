@@ -13,6 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import classNames from "classnames";
 
 const clone = (obj) => JSON.parse(JSON.stringify(obj));
 const geneMap = new Map();
@@ -245,47 +246,36 @@ const HistopathLandingPage = () => {
             <strong>Histopathology Data</strong>
           </h1>
           <Container>
-            <div className="card" style={{ backgroundColor: "whitesmoke" }}>
-              <div
-                className="card-header"
-                style={{ backgroundColor: "whitesmoke" }}
-              >
-                Histopathology for every gene tested
-              </div>
-              <div className="card-body">
-                <p className="my-0">
-                  <b>Significance Score:</b>
-                </p>
-                <div>
-                  <div title="No Data" className="mr-3">
-                    <i className="fa fa-circle" style={{ color: "#FFF" }}></i>
+            <div>
+              <p className="my-0">
+                <b>Significance Score:</b>
+              </p>
+              <div>
+                <div title="No Data" className={styles.labelContainer}>
+                  <div className={styles.heatmapLabel} style={{backgroundColor: "#FFF"}}></div>
+                  <div>
                     &nbsp;&nbsp;No Data
                   </div>
-                  <div
-                    title="Not Applicable"
-                    style={{ color: "#808080" }}
-                    className="mr-3"
-                  >
-                    <i className="fa fa-circle"></i>&nbsp;&nbsp;Not Applicable
+                </div>
+                <div title="Not Applicable" className={styles.labelContainer}>
+                  <div className={styles.heatmapLabel} style={{backgroundColor: "#808080"}}></div>
+                  <div>
+                    &nbsp;&nbsp;Not Applicable
                   </div>
-                  <div
-                    title="Not Significant"
-                    style={{ color: "#17a2b8" }}
-                    className="mr-3"
-                  >
-                    <i className="fa fa-circle"></i>&nbsp;&nbsp;
-                    <b>Not Significant</b>&nbsp; (histopathology finding that is
+                </div>
+                <div title="Not Significant" className={styles.labelContainer}>
+                  <div className={styles.heatmapLabel} style={{backgroundColor: "#17a2b8"}}></div>&nbsp;&nbsp;
+                  <div>
+                    <b>Not Significant</b>&nbsp;(histopathology finding that is
                     interpreted by the histopathologist to be within normal
                     limits of background strain-related findings or an
                     incidental finding not related to genotype)
                   </div>
-                  <div
-                    title="Significant"
-                    style={{ color: "#ce6211" }}
-                    className="mr-3"
-                  >
-                    <i className="fa fa-circle"></i>&nbsp;&nbsp;
-                    <b>Significant</b>&nbsp; (histopathology finding that is
+                </div>
+                <div title="Significant" className={styles.labelContainer}>
+                  <div className={styles.heatmapLabel} style={{backgroundColor: "#ce6211"}}></div>&nbsp;&nbsp;
+                  <div>
+                    <b>Significant</b>&nbsp;(histopathology finding that is
                     interpreted by the histopathologist to not be a background
                     strain-related finding or an incidental finding)
                   </div>
@@ -329,14 +319,14 @@ const HistopathLandingPage = () => {
               <thead>
                 <tr>
                   <th onClick={sortByGeneSymbol}>
-                    <div className={styles.header}>Gene</div>
+                    <div className={styles.header} style={{ marginRight: "5px" }}>Gene</div>
                     <SortIndicator
                       sortStatus={sortingByGeneSymbol}
                       sort={sort}
                     />
                   </th>
                   <th onClick={sortByFixedTissue}>
-                    Fixed tissue available
+                    <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available</div>
                     <SortIndicator
                       sortStatus={sortingByFixedTissue}
                       sort={sort}
@@ -344,7 +334,10 @@ const HistopathLandingPage = () => {
                   </th>
                   {data.columns.map((header, index) => (
                     <th key={header} onClick={() => sortByHeader(index)}>
-                      <div className={styles.header}>{header}</div>
+                      <div
+                        className={classNames(styles.header, styles.top, {[styles.eyeOpticNerveCol]: header === 'Eye with optic nerve'})}>
+                        {header}
+                      </div>
                       <SortIndicator
                         sortStatus={index === selectedHeaderIndex}
                         sort={sort}
@@ -358,10 +351,12 @@ const HistopathLandingPage = () => {
                   <th>
                     <div className={styles.header}>Gene</div>
                   </th>
-                  <th>Fixed tissue available</th>
+                  <th>
+                    <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available</div>
+                  </th>
                   {data.columns.map((header, index) => (
                     <th key={header} onClick={() => sortByHeader(index)}>
-                      <div className={styles.header}>{header}</div>
+                      <div className={classNames(styles.header, styles.bottom)}>{header}</div>
                     </th>
                   ))}
                 </tr>

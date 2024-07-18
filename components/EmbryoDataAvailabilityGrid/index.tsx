@@ -29,7 +29,7 @@ type Props = {
 
 const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
   const [chartData, setChartData] = useState<Array<EmbryoData>>(data.slice(0, 25));
-  const [activePage, setActivePage] = useState(1);
+  const [activePage, setActivePage] = useState(0);
   const [totalPages, setTotalPages] = useState(Math.ceil(data.length / 25));
   const geneIndex = chartData.reduce((acc, d) => ({ [d.id]: d.mgiAccessionId, ...acc }), {});
 
@@ -40,7 +40,7 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
 
   const handlePaginationChange = (pageNumber: number) => {
     setActivePage(pageNumber);
-    setChartData(data.slice((pageNumber - 1) * 25, (pageNumber - 1) * 25 + 25));
+    setChartData(data.slice(pageNumber * 25, pageNumber * 25 + 25));
   };
 
   const onChangeWOL = selected => {
@@ -52,7 +52,7 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
       selected.length ? newData.slice(0, 25) : data.slice(0, 25)
     );
     setTotalPages(Math.ceil(newData.length / 25));
-    setActivePage(1);
+    setActivePage(0);
   }
 
   const onClickTick = (cell: any) => {
