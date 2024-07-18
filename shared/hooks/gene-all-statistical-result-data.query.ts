@@ -15,7 +15,7 @@ export const useGeneAllStatisticalResData = (
   enabled: boolean,
 ) => {
   const {
-    data: geneData,
+    data: geneData = [],
     isFetching: isGeneFetching,
     isError: isGeneError,
     ...rest

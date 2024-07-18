@@ -15,7 +15,7 @@ import { SectionHeader } from "@/components";
 import { faTriangleExclamation, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const StatisticalAnalysis = dynamic(
+const GraphicalAnalysis = dynamic(
   () => import("./GraphicalAnalysis"),
   {ssr: false}
 );
@@ -193,7 +193,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
           <div className="mt-3">
-            <StatisticalAnalysis
+            <GraphicalAnalysis
               mgiGeneAccessionId={gene.mgiGeneAccessionId}
               routerIsReady={router.isReady}
             />
