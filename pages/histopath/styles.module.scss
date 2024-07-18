@@ -6,6 +6,17 @@
 .tableWrapper {
   overflow-x: auto;
 }
+.labelContainer {
+  display: flex;
+  align-items: center;
+}
+.heatmapLabel {
+  width: 20px;
+  height: 20px;
+  border: solid 1px black;
+  display: inline-block;
+}
+
 .heatMap {
   font-size: 10px;
   thead tr, tfoot tr {
@@ -18,9 +29,20 @@
   }
   .header {
     display: inline-block;
-    font-size: 10px;
-    transform: rotate(-90deg) translateX(20%);
+    font-size: 12px;
     line-height: initial;
+    &.top {
+      transform: rotate(-45deg) translateX(5%);
+    }
+    &.bottom {
+      transform: rotate(-45deg) translateX(20%);
+    }
+    &.noTransform {
+      transform: initial;
+    }
+    &.eyeOpticNerveCol {
+      min-width: 60px;
+    }
   }
   em {
     background: yellow;
