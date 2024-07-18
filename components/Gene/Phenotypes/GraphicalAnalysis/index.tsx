@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
 import styles from "./styles.module.scss";
-import { Form } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import { GeneStatisticalResult } from "@/models/gene";
 import { useGeneAllStatisticalResData } from "@/hooks";
-import { AllelesStudiedContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import { Cat, CatType, cats, options, systemColorMap, getProcedureColorMap } from './shared';
 import GraphicalAnalysisChart from "./GraphicalAnalysisChart";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
@@ -77,6 +77,7 @@ const GraphicalAnalysis = (props: Props) => {
     mgiGeneAccessionId,
     routerIsReady,
   } = props;
+  const gene = useContext(GeneContext);
   const { setAllelesStudiedLoading } = useContext(AllelesStudiedContext);
   const [cat, setCat] = useState<Cat | null>({
     type: cats.BODY_SYSTEMS,
@@ -147,6 +148,14 @@ const GraphicalAnalysis = (props: Props) => {
   }, [cat]);
 
   const hasDataRelatedToPWG = geneData.some(item => item.projectName === 'PWG');
+
+  if (geneData.length === 0 && isGeneError) {
+    return (
+      <Alert variant="primary" className="mt-3">
+        No phenotype data available for <i>{gene.geneSymbol}</i>
+      </Alert>
+    )
+  }
 
   return (
     <>
