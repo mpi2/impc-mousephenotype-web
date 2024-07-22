@@ -14,7 +14,7 @@ import { Brush } from "@visx/brush";
 import BaseBrush from "@visx/brush/lib/BaseBrush";
 import { BrushHandleRenderProps } from "@visx/brush/lib/BrushHandle";
 import { Bounds } from "@visx/brush/lib/types";
-import { max, extent, min } from "@visx/vendor/d3-array";
+import { max, extent } from "@visx/vendor/d3-array";
 import { useDebounceCallback } from 'usehooks-ts';
 import { groupBy } from 'lodash';
 import chroma from "chroma-js";
@@ -26,19 +26,19 @@ const BrushHandle = ({ y, width, isBrushActive }: BrushHandleRenderProps) => {
   }
 
   return (
-    <Group left={(width / 2) + 7.5} top={y + 4}>
+    <Group left={(width / 2) + 7.5} top={y + 8}>
       <path
         fill="#f2f2f2"
-        d="M -4.5 0.5 L 3.5 0.5 L 3.5 15.5 L -4.5 15.5 L -4.5 0.5 M -1.5 4 L -1.5 12 M 0.5 4 L 0.5 12"
+        d="M -9 1 L 7 1 L 7 31 L -9 31 L -9 1 M -3 8 L -3 24 M 1 8 L 1 24"
         stroke="#999999"
         strokeWidth="1"
-        style={{ cursor: 'ns-resize', transform: "rotateZ(90deg)" }}
+        style={{cursor: 'ns-resize', transform: "rotateZ(90deg)"}}
       />
     </Group>
   );
 };
 
-const TooltipContent = ({ statResult } : { statResult: any }) => {
+const TooltipContent = ({statResult}: { statResult: any }) => {
   return (
     <div>
       <h3>{statResult.parameterName}</h3>
@@ -290,7 +290,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             yScale={brushYScale}
             width={brushMaxWidth}
             height={yMax - 40}
-            handleSize={8}
+            handleSize={16}
             innerRef={brushRef}
             resizeTriggerAreas={["top", "bottom"]}
             brushDirection="vertical"
