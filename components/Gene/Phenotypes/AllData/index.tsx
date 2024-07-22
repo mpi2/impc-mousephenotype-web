@@ -375,7 +375,16 @@ const AllData = (props: Props) => {
           width: 0.5,
           label: "Significant",
           field: "significant",
-          cmp: <OptionsCell options={{ true: "Yes", false: "No" }} />,
+          cmp:
+            <OptionsCell
+              options={{ true: "Yes", false: "No", notProcessed: "Not analyzed" }}
+              customFn={(value: GeneStatisticalResult, field) => {
+                if (value.status === 'NotProcessed') {
+                  return "notProcessed"
+                }
+                return value[field];
+              }}
+            />,
         },
         { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
       ]}
