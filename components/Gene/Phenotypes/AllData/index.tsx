@@ -22,7 +22,7 @@ import { fetchAPI } from "@/api-service";
 import { PaginatedResponse } from "@/models";
 import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
-import { useDebounceValue } from 'usehooks-ts';
+import { useDebounce } from 'usehooks-ts';
 
 type FilterOptions = {
   procedures: Array<string>;
@@ -66,17 +66,19 @@ const getMutantCount = (dataset: GeneStatisticalResult) => {
 type Props = {
   routerIsReady: boolean;
   onTotalData: (arg: number) => void;
-  additionalSelectedValues?: SelectedValues
+  additionalSelectedValues?: SelectedValues;
+  queryFromURL: string;
 };
 
 const AllData = (props: Props) => {
   const gene = useContext(GeneContext);
-  const { onTotalData, additionalSelectedValues } = props;
+  const { onTotalData, additionalSelectedValues, queryFromURL} = props;
   const { setAlleles } = useContext(AllelesStudiedContext);
   const [sortField, setSortField] = useState<string>("pValue");
   const [sortOrder, setSortOrder] = useState<string>("asc");
   const [totalItems, setTotalItems] = useState<number>(0);
-  const [query, setQuery] = useDebounceValue(undefined, 500);
+  const [query, setQuery] = useState(queryFromURL);
+  const debouncedQuery = useDebounce(query, 500);
   const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
   const initialSelectedValues = Object.assign({...defaultSelectedValues}, additionalSelectedValues);
   const [selectedValues, setSelectedValues] = useState<SelectedValues>(initialSelectedValues);
@@ -98,7 +100,7 @@ const AllData = (props: Props) => {
 
 
   const { data, isError, isFetching } = useQuery({
-    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder, query],
+    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder, debouncedQuery],
     queryFn: () => {
       const url = `/api/v1/genes/statistical-result/filtered/page`;
       const params = {
@@ -113,8 +115,8 @@ const AllData = (props: Props) => {
         .filter(([, value]) => !!value)
         .forEach(([key, value]) => params[key] = value);
 
-      if (query) {
-        params["searchQuery"] = query;
+      if (debouncedQuery) {
+        params["searchQuery"] = debouncedQuery;
       }
 
       return fetchAPI(buildURL(url, params));
@@ -196,6 +198,12 @@ const AllData = (props: Props) => {
     }
   }, [additionalSelectedValues]);
 
+  useEffect(() => {
+    if (!!queryFromURL && query !== queryFromURL) {
+      setQuery(queryFromURL);
+    }
+  }, [queryFromURL, query]);
+
   return (
     <SmartTable<GeneStatisticalResult>
       data={data?.content}
@@ -212,6 +220,7 @@ const AllData = (props: Props) => {
             <FilterBox
               controlId="queryFilterAD"
               hideLabel
+              value={query}
               onChange={setQuery}
               ariaLabel="Filter by parameters"
               controlStyle={{ width: 150 }}

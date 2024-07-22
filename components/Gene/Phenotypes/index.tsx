@@ -75,6 +75,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     zygosity: undefined,
     alleleSymbol: undefined,
   });
+  const [allDataQuery, setAllDataQuery] = useState<string>(undefined);
 
   const {
     phenotypeData,
@@ -115,6 +116,9 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
         lifeStageName: router.query.dataLifeStage,
         procedureName: router.query.dataSearch
       }));
+      if (router.query.dataQuery) {
+        setAllDataQuery(router.query.dataQuery as string);
+      }
     }
   }, [router]);
 
@@ -188,6 +192,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
               routerIsReady={router.isReady}
               onTotalData={setAllDataCount}
               additionalSelectedValues={allDataFilters}
+              queryFromURL={allDataQuery}
             />
           </div>
         </Tab>
