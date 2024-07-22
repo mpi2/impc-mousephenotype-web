@@ -1,4 +1,4 @@
-import { CSSProperties, memo, useEffect, useMemo, useState } from "react";
+import { CSSProperties, memo, useCallback, useEffect, useMemo, useState } from "react";
 import { scaleQuantize, scaleBand } from "@visx/scale";
 import { LateAdultDataParsed, LateAdultRowResponse } from "@/models";
 import { Group } from "@visx/group";
@@ -30,10 +30,10 @@ type HeatMapProps = {
   allGenesList: Array<LateAdultRowResponse>;
   setSelectedCell: (data: CellData) => void;
   numOfCols: number;
+  onClickCell: (mgiGeneAccessionId: string, columnName: string) => void;
 };
 
 const HeatMap = memo((props: HeatMapProps) => {
-  const router = useRouter();
   const {
     data,
     xScale,
@@ -43,6 +43,7 @@ const HeatMap = memo((props: HeatMapProps) => {
     allGenesList,
     numOfCols,
     setSelectedCell,
+    onClickCell
   } = props;
   return (
     <HeatmapRect
@@ -80,9 +81,7 @@ const HeatMap = memo((props: HeatMapProps) => {
                   setSelectedCell(undefined);
                 }
               }}
-              onClick={() => router.push(
-                `/genes/${allGenesList[bin.row].mgiGeneAccessionId}?dataLifeStage=Late adult&dataSearch=${bin.datum.column}#data`
-              )}
+              onClick={() => onClickCell(allGenesList[bin.row].mgiGeneAccessionId, bin.datum.column)}
             />
           ))
         )
@@ -110,6 +109,7 @@ const LateAdultHeatmap = (props: Props) => {
     isFetchingParamData,
   } = props;
 
+  const router = useRouter();
   const numOfCols = data.columns.length;
   const binWidth = width / numOfCols;
   const maxWidth = width - 50;
@@ -152,6 +152,19 @@ const LateAdultHeatmap = (props: Props) => {
 
   const hasData = useMemo(() => data.data.some(col => col.bins.length !== 0), [data]);
 
+  const onClickCell = useCallback((mgiGeneAccessionId: string, columnName: string) => {
+    let url = `/genes/${mgiGeneAccessionId}?dataLifeStage=Late adult`;
+    // if selectedParam is null, column name will contain a procedureName
+    // when a user clicks a param, columnName will contain a parameterName
+    if (!selectedParam) {
+      url += `&dataSearch=${columnName}`
+    } else {
+      url += `&dataSearch=${selectedParam}&dataQuery=${columnName}`;
+    }
+    url += '#data';
+    router.push(url)
+  }, [router, selectedParam]);
+
   return (
     <svg
       width={width}
@@ -175,16 +188,25 @@ const LateAdultHeatmap = (props: Props) => {
             No genes match the inserted text
           </Text>
         )}
-        <HeatMap
-          data={data}
-          allGenesList={genesList}
-          xScale={xScale}
-          yScale={yScale}
-          colorScale={colorScale}
-          binWidth={binWidth}
-          numOfCols={numOfCols}
-          setSelectedCell={setSelectedCell}
-        />
+        {isFetchingParamData ? (
+          <svg x={width / 2} y={heatmapHeight / 2} width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z">
+              <animateTransform attributeName="transform" type="rotate" dur="0.75s" values="0 12 12;360 12 12" repeatCount="indefinite"/>
+            </path>
+          </svg>
+          ) : (
+            <HeatMap
+              data={data}
+              allGenesList={genesList}
+              xScale={xScale}
+              yScale={yScale}
+              colorScale={colorScale}
+              binWidth={binWidth}
+              numOfCols={numOfCols}
+              setSelectedCell={setSelectedCell}
+              onClickCell={onClickCell}
+            />
+        )}
         {!!selectedCell && (
           <>
             <rect
@@ -211,33 +233,35 @@ const LateAdultHeatmap = (props: Props) => {
           </>
         )}
       </Group>
-      <AxisTop
-        scale={xScale}
-        top={190}
-        left={48}
-        tickFormat={value => data.columns[value as number]}
-        tickValues={data.columns.map((col, index) => index)}
-        tickComponent={({formattedValue, ...rest}) => {
-          const matchesParam = isSelectedParam(formattedValue);
-          const style: CSSProperties = matchesParam ?
-            { fontWeight: "bold" } :
-            { fontWeight: "normal"  };
-          return (
-            <text
-              className={classNames({ "axis-link": !selectedParam })}
-              style={style}
-              {...rest}
-              transform={`rotate(-50, ${rest.x}, 0)`}
-              textAnchor="start"
-              alignmentBaseline="middle"
-              onClick={() => { if (!selectedParam) onParamSelected(formattedValue) }}
-            >
-              <title>{formattedValue}</title>
-              {truncate(formattedValue, { length: 25 })}
-            </text>
-          )
-        }}
-      />
+      {hasData && (
+        <AxisTop
+          scale={xScale}
+          top={190}
+          left={48}
+          tickFormat={value => data.columns[value as number]}
+          tickValues={data.columns.map((col, index) => index)}
+          tickComponent={({formattedValue, ...rest}) => {
+            const matchesParam = isSelectedParam(formattedValue);
+            const style: CSSProperties = matchesParam ?
+              { fontWeight: "bold" } :
+              { fontWeight: "normal"  };
+            return (
+              <text
+                className={classNames({ "axis-link": !selectedParam })}
+                style={style}
+                {...rest}
+                transform={`rotate(-50, ${rest.x}, 0)`}
+                textAnchor="start"
+                alignmentBaseline="middle"
+                onClick={() => { if (!selectedParam) onParamSelected(formattedValue) }}
+              >
+                <title>{formattedValue}</title>
+                {truncate(formattedValue, { length: 25 })}
+              </text>
+            )
+          }}
+        />
+      )}
       {hasData && (
         <AxisLeft
           scale={yScale}
