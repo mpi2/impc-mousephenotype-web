@@ -83,6 +83,7 @@ const FilterBox = (props: Props) => {
           placeholder="Search"
           style={controlStyle}
           defaultValue={undefined}
+          value={value}
           id={controlId}
           className={controlClassName}
           onChange={el =>

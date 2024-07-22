@@ -66,17 +66,18 @@ const getMutantCount = (dataset: GeneStatisticalResult) => {
 type Props = {
   routerIsReady: boolean;
   onTotalData: (arg: number) => void;
-  additionalSelectedValues?: SelectedValues
+  additionalSelectedValues?: SelectedValues;
+  queryFromURL: string;
 };
 
 const AllData = (props: Props) => {
   const gene = useContext(GeneContext);
-  const { onTotalData, additionalSelectedValues } = props;
+  const { onTotalData, additionalSelectedValues, queryFromURL} = props;
   const { setAlleles } = useContext(AllelesStudiedContext);
   const [sortField, setSortField] = useState<string>("pValue");
   const [sortOrder, setSortOrder] = useState<string>("asc");
   const [totalItems, setTotalItems] = useState<number>(0);
-  const [query, setQuery] = useDebounceValue(undefined, 500);
+  const [query, setQuery] = useDebounceValue(queryFromURL, 500);
   const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
   const initialSelectedValues = Object.assign({...defaultSelectedValues}, additionalSelectedValues);
   const [selectedValues, setSelectedValues] = useState<SelectedValues>(initialSelectedValues);
@@ -196,6 +197,12 @@ const AllData = (props: Props) => {
     }
   }, [additionalSelectedValues]);
 
+  useEffect(() => {
+    if (!!queryFromURL && query !== queryFromURL) {
+      setQuery(queryFromURL);
+    }
+  }, [queryFromURL, query]);
+
   return (
     <SmartTable<GeneStatisticalResult>
       data={data?.content}
@@ -212,6 +219,7 @@ const AllData = (props: Props) => {
             <FilterBox
               controlId="queryFilterAD"
               hideLabel
+              value={query}
               onChange={setQuery}
               ariaLabel="Filter by parameters"
               controlStyle={{ width: 150 }}
