@@ -129,6 +129,7 @@ const Gene = () => {
     doesCrisprProductsExist,
     doesIntermediateVectorProductsExist,
     doesTargetingVectorProductsExist,
+    emsembleUrl
   } = allele;
 
   const productTypes = [
@@ -189,6 +190,7 @@ const Gene = () => {
           <AlleleMap
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
+            emsembleUrl={emsembleUrl}
           />
         )}
         {doesMiceProductsExist && (
