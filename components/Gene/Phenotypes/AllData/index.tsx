@@ -379,9 +379,6 @@ const AllData = (props: Props) => {
         },
         { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
       ]}
-      highlightRowFunction={(item) =>
-        item.maleMutantCount < item.procedureMinMales && item.femaleMutantCount < item.procedureMinFemales
-      }
     />
   );
 };
