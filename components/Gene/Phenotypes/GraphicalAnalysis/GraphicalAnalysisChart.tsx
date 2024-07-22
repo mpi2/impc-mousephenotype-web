@@ -8,7 +8,7 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { withTooltip, Tooltip } from "@visx/tooltip";
 import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
 import { GlyphTriangle, GlyphDiamond, GlyphCircle } from "@visx/glyph";
-import { curveMonotoneX } from "@visx/curve";
+import { curveStep } from "@visx/curve";
 import { PatternLines } from "@visx/pattern";
 import { Brush } from "@visx/brush";
 import BaseBrush from "@visx/brush/lib/BaseBrush";
@@ -102,12 +102,9 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
     procedureColorMap,
   } = props;
 
-  if (!data) {
-    return null;
-  }
-
   const [filteredData, setFilteredData] = useState(data);
   const yMax = height - 140;
+  const brushHeight = yMax - 40;
   const svgRef = useRef<SVGSVGElement>(null);
   const brushRef = useRef<BaseBrush | null>(null);
   const xMax = useMemo(() => data.reduce((acc, x) => x.chartValue > acc ? x.chartValue : acc, 0), [data]);
@@ -159,7 +156,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const brushYScale = useMemo(() =>
       scaleLinear<number>({
-        range: [40, yMax],
+        range: [40, brushHeight],
         domain: [0, max(data, d => d.arrPos) || 0],
         nice: true,
         clamp: true,
@@ -170,10 +167,10 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const initialBrushPosition = useMemo(
     () => ({
-      start: { y: 0, x: 0 },
-      end: { y: brushYScale(yMax), x: 0 },
+      start: { y: 0 },
+      end: { y: brushHeight },
     }),
-    [brushYScale, data],
+    [brushYScale, data, yMax],
   );
 
   const handleMouseMove = useCallback((x, y, data) => {
@@ -203,6 +200,10 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
   const onBrushDebounced = useDebounceCallback(onBrushChanges, 1);
 
   const chartData = groupBy(filteredData, isByProcedure ? "procedureName" : "topLevelPhenotypeList[0]");
+
+  if (!data || height === 0) {
+    return null;
+  }
 
   return (
     <div>
@@ -274,7 +275,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
               strokeWidth={1}
               stroke="#000"
               fill="#000"
-              curve={curveMonotoneX}
+              curve={curveStep}
             />
           </Group>
           <PatternLines
@@ -289,7 +290,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             xScale={brushXScale}
             yScale={brushYScale}
             width={brushMaxWidth}
-            height={yMax - 40}
+            height={brushHeight}
             handleSize={16}
             innerRef={brushRef}
             resizeTriggerAreas={["top", "bottom"]}
@@ -297,6 +298,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             selectedBoxStyle={selectedBrushStyle}
             onChange={onBrushDebounced}
             onClick={() => setFilteredData(data)}
+            initialBrushPosition={initialBrushPosition}
             useWindowMoveEvents
             renderBrushHandle={(props) => <BrushHandle {...props} />}
           />
