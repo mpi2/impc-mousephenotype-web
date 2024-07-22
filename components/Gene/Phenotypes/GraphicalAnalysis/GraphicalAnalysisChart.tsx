@@ -8,13 +8,13 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { withTooltip, Tooltip } from "@visx/tooltip";
 import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
 import { GlyphTriangle, GlyphDiamond, GlyphCircle } from "@visx/glyph";
-import { curveMonotoneX } from "@visx/curve";
+import { curveStep } from "@visx/curve";
 import { PatternLines } from "@visx/pattern";
 import { Brush } from "@visx/brush";
 import BaseBrush from "@visx/brush/lib/BaseBrush";
 import { BrushHandleRenderProps } from "@visx/brush/lib/BrushHandle";
 import { Bounds } from "@visx/brush/lib/types";
-import { max, extent, min } from "@visx/vendor/d3-array";
+import { max, extent } from "@visx/vendor/d3-array";
 import { useDebounceCallback } from 'usehooks-ts';
 import { groupBy } from 'lodash';
 import chroma from "chroma-js";
@@ -26,19 +26,19 @@ const BrushHandle = ({ y, width, isBrushActive }: BrushHandleRenderProps) => {
   }
 
   return (
-    <Group left={(width / 2) + 7.5} top={y + 4}>
+    <Group left={(width / 2) + 7.5} top={y + 8}>
       <path
         fill="#f2f2f2"
-        d="M -4.5 0.5 L 3.5 0.5 L 3.5 15.5 L -4.5 15.5 L -4.5 0.5 M -1.5 4 L -1.5 12 M 0.5 4 L 0.5 12"
+        d="M -9 1 L 7 1 L 7 31 L -9 31 L -9 1 M -3 8 L -3 24 M 1 8 L 1 24"
         stroke="#999999"
         strokeWidth="1"
-        style={{ cursor: 'ns-resize', transform: "rotateZ(90deg)" }}
+        style={{cursor: 'ns-resize', transform: "rotateZ(90deg)"}}
       />
     </Group>
   );
 };
 
-const TooltipContent = ({ statResult } : { statResult: any }) => {
+const TooltipContent = ({statResult}: { statResult: any }) => {
   return (
     <div>
       <h3>{statResult.parameterName}</h3>
@@ -102,12 +102,9 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
     procedureColorMap,
   } = props;
 
-  if (!data) {
-    return null;
-  }
-
   const [filteredData, setFilteredData] = useState(data);
   const yMax = height - 140;
+  const brushHeight = yMax - 40;
   const svgRef = useRef<SVGSVGElement>(null);
   const brushRef = useRef<BaseBrush | null>(null);
   const xMax = useMemo(() => data.reduce((acc, x) => x.chartValue > acc ? x.chartValue : acc, 0), [data]);
@@ -159,7 +156,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const brushYScale = useMemo(() =>
       scaleLinear<number>({
-        range: [40, yMax],
+        range: [40, brushHeight],
         domain: [0, max(data, d => d.arrPos) || 0],
         nice: true,
         clamp: true,
@@ -170,10 +167,10 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
 
   const initialBrushPosition = useMemo(
     () => ({
-      start: { y: 0, x: 0 },
-      end: { y: brushYScale(yMax), x: 0 },
+      start: { y: 0 },
+      end: { y: brushHeight },
     }),
-    [brushYScale, data],
+    [brushYScale, data, yMax],
   );
 
   const handleMouseMove = useCallback((x, y, data) => {
@@ -203,6 +200,10 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
   const onBrushDebounced = useDebounceCallback(onBrushChanges, 1);
 
   const chartData = groupBy(filteredData, isByProcedure ? "procedureName" : "topLevelPhenotypeList[0]");
+
+  if (!data || height === 0) {
+    return null;
+  }
 
   return (
     <div>
@@ -274,7 +275,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
               strokeWidth={1}
               stroke="#000"
               fill="#000"
-              curve={curveMonotoneX}
+              curve={curveStep}
             />
           </Group>
           <PatternLines
@@ -289,14 +290,15 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>((props: Props & W
             xScale={brushXScale}
             yScale={brushYScale}
             width={brushMaxWidth}
-            height={yMax - 40}
-            handleSize={8}
+            height={brushHeight}
+            handleSize={16}
             innerRef={brushRef}
             resizeTriggerAreas={["top", "bottom"]}
             brushDirection="vertical"
             selectedBoxStyle={selectedBrushStyle}
             onChange={onBrushDebounced}
             onClick={() => setFilteredData(data)}
+            initialBrushPosition={initialBrushPosition}
             useWindowMoveEvents
             renderBrushHandle={(props) => <BrushHandle {...props} />}
           />
