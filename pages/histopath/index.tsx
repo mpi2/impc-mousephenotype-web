@@ -1,9 +1,6 @@
-import Search from "../../components/Search";
 import { Breadcrumb, Container } from "react-bootstrap";
-import Card from "../../components/Card";
 import styles from "./styles.module.scss";
 import { useMemo, useState } from "react";
-import PaginationControls from "../../components/PaginationControls";
 import {
   faSort,
   faSortUp,
@@ -15,7 +12,7 @@ import classNames from "classnames";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import { usePagination } from "@/hooks";
-import LoadingProgressBar from "@/components/LoadingProgressBar";
+import { LoadingProgressBar, Search, Card, PaginationControls } from "@/components";
 
 const geneMap = new Map();
 
@@ -169,7 +166,7 @@ const HistopathLandingPage = () => {
   };
 
   const sortedAndFilteredData = useMemo(() => {
-    let results;
+    let results: Array<HeatmapData>;
     if (query) {
       results = histopathData.originalData.filter((gene) => gene.id.includes(query));
     } else {
