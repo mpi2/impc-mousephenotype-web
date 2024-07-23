@@ -12,3 +12,5 @@ export { default as SortableTable } from './SortableTable';
 export { default as SectionHeader } from './SectionHeader/SectionHeader';
 export { default as ScrollToTopButton } from './ScrollToTopButton/ScrollToTopButton';
 export { default as LateAdultHeatmap } from './LateAdultHeatmap/LateAdultHeatmap';
+export { default as LoadingProgressBar } from './LoadingProgressBar';
+export { default as PaginationControls } from './PaginationControls';
