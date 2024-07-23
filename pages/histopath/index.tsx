@@ -172,10 +172,11 @@ const HistopathLandingPage = () => {
     } else {
       results = [...histopathData.originalData];
     }
-    const newSort = getNewSort();
-    if (newSort === "none") {
+
+    if (sort === "none") {
       return results;
     }
+
     if (selectedHeaderIndex) {
       results = results
         // merge all data in a single array
@@ -183,7 +184,7 @@ const HistopathLandingPage = () => {
         // get only the column we are interested
         .filter((item) => item.headerIndex === selectedHeaderIndex)
         .sort((item1, item2) => {
-          if (newSort === "desc") {
+          if (sort === "desc") {
             return item2.y - item1.y;
           }
           return item1.y - item2.y;
@@ -196,24 +197,24 @@ const HistopathLandingPage = () => {
           (gene1.hasTissue && gene2.hasTissue) ||
           (!gene1.hasTissue && !gene2.hasTissue)
         ) {
-          return newSort === "desc"
+          return sort === "desc"
             ? gene1.id.localeCompare(gene2.id)
             : gene2.id.localeCompare(gene1.id);
         } else if (gene1.hasTissue && !gene2.hasTissue) {
-          return newSort === "desc" ? -1 : 1;
+          return sort === "desc" ? -1 : 1;
         } else if (!gene1.hasTissue && gene2.hasTissue) {
-          return newSort === "desc" ? 1 : -1;
+          return sort === "desc" ? 1 : -1;
         }
       });
     } else if (sortingByGeneSymbol) {
       results.sort((gene1, gene2) =>
-        newSort === "desc"
+        sort === "desc"
           ? gene1.id.localeCompare(gene2.id)
           : gene2.id.localeCompare(gene1.id)
       );
     }
     return results;
-  }, [query, histopathData, selectedHeaderIndex, sortingByFixedTissue, sortingByGeneSymbol]);
+  }, [query, sort, histopathData, selectedHeaderIndex, sortingByFixedTissue, sortingByGeneSymbol]);
 
   const {
     paginatedData,
