@@ -2,8 +2,7 @@ import Search from "../../components/Search";
 import { Breadcrumb, Container } from "react-bootstrap";
 import Card from "../../components/Card";
 import styles from "./styles.module.scss";
-import data from "../../mocks/data/landing-pages/histopath.json";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import PaginationControls from "../../components/PaginationControls";
 import {
   faSort,
@@ -11,11 +10,13 @@ import {
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import classNames from "classnames";
+import { useQuery } from "@tanstack/react-query";
+import { fetchLandingPageData } from "@/api-service";
+import { usePagination } from "@/hooks";
+import LoadingProgressBar from "@/components/LoadingProgressBar";
 
-const clone = (obj) => JSON.parse(JSON.stringify(obj));
 const geneMap = new Map();
 
 const SortIndicator = ({
@@ -32,71 +33,55 @@ const SortIndicator = ({
   </>
 );
 
+type HeatmapData = {
+  id: string;
+  mgiAccession: string;
+  hasTissue: boolean;
+  data: Array<{
+    geneSymbol: string;
+    headerIndex: number;
+    x: string;
+    y: number;
+  }>;
+};
+
 const HistopathLandingPage = () => {
-  const router = useRouter();
-  const [heatmapData, setHeatmapData] = useState([]);
   const [query, setQuery] = useState("");
-  const [originalData, setOriginalData] = useState([]);
-  const [activePage, setActivePage] = useState(0);
-  const [pageSize, setPageSize] = useState(25);
   const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(null);
   const [sortingByFixedTissue, setSortingByFixedTissue] = useState(false);
   const [sortingByGeneSymbol, setSortingByGeneSymbol] = useState(false);
   const [sort, setSort] = useState<"asc" | "desc" | "none">("none");
-  const [totalPages, setTotalPages] = useState(
-    Math.ceil(data.rows.length / pageSize)
-  );
 
-  useEffect(() => {
-    const result = {};
-    data.rows.forEach((geneRow, index) => {
-      result[geneRow.markerSymbol] = {
-        id: geneRow.markerSymbol,
-        mgiAccession: geneRow.mgiGeneAccessionId,
-        hasTissue: geneRow.hasTissue,
-        data: [],
-      };
-      result[geneRow.markerSymbol].data = data.columns.map(
-        (header, headerIndex) => ({
-          x: header,
-          y: geneRow.significance[headerIndex],
-          geneSymbol: geneRow.markerSymbol,
-          headerIndex,
-        })
-      );
-      geneMap.set(geneRow.markerSymbol, result[geneRow.markerSymbol]);
-    });
-    setHeatmapData(Object.values(result));
-    setOriginalData(Object.values(result));
-  }, []);
-
-  useEffect(() => {
-    let results;
-    if (query) {
-      results = originalData.filter((gene) => gene.id.includes(query));
-      setHeatmapData(results);
-    } else if (originalData.length !== heatmapData.length) {
-      results = [...originalData];
-      setHeatmapData(results);
-    }
-  }, [query]);
-
-  useEffect(() => {
-    const newTotalPages = Math.ceil(data.rows.length / pageSize);
-    if (newTotalPages !== totalPages) {
-      setTotalPages(newTotalPages);
-    }
-  }, [pageSize]);
-
-  const handlePaginationChange = (pageNumber: number) => {
-    setActivePage(pageNumber);
-  };
-
-  const getDataSlice = () =>
-    heatmapData.slice(
-      (activePage) * pageSize,
-      (activePage) * pageSize + pageSize
-    );
+  const { data: histopathData, isFetching } = useQuery({
+    queryKey: ["landing-pages", "histopath"],
+    queryFn: () => fetchLandingPageData("histopathology_landing"),
+    select: (response) => {
+      const result = {};
+      response.rows.forEach((geneRow) => {
+        result[geneRow.markerSymbol] = {
+          id: geneRow.markerSymbol,
+          mgiAccession: geneRow.mgiGeneAccessionId,
+          hasTissue: geneRow.hasTissue,
+          data: [],
+        };
+        result[geneRow.markerSymbol].data = response.columns.map(
+          (header, headerIndex) => ({
+            x: header,
+            y: geneRow.significance[headerIndex],
+            geneSymbol: geneRow.markerSymbol,
+            headerIndex,
+          })
+        );
+        geneMap.set(geneRow.markerSymbol, result[geneRow.markerSymbol]);
+      });
+      return {
+        heatmapData: Object.values(result) as Array<HeatmapData>,
+        originalData: Object.values(result) as Array<HeatmapData>,
+        columns: response.columns,
+      }
+    },
+    placeholderData: { columns: [], rows: [] },
+  });
 
   const getCellColor = (value: number) => {
     switch (value) {
@@ -140,35 +125,17 @@ const HistopathLandingPage = () => {
     }
     return newSort;
   };
+
   const sortByHeader = (index: number) => {
     let newSort = getNewSort();
     if (index !== selectedHeaderIndex) {
       newSort = "desc";
-      setActivePage(1);
+      setActivePage(0);
     }
-    const currentData = clone(heatmapData);
-    const newData =
-      newSort !== "none"
-        ? currentData
-            // merge all data in a single array
-            .flatMap((item) => item.data)
-            // get only the column we are interested
-            .filter((item) => item.headerIndex === index)
-            .sort((item1, item2) => {
-              if (newSort === "desc") {
-                return item2.y - item1.y;
-              }
-              return item1.y - item2.y;
-            })
-            // regenerate array with original info
-            .map((gene) => ({ ...geneMap.get(gene.geneSymbol) }))
-        : clone(originalData);
-
     setSort(newSort);
     setSortingByFixedTissue(false);
     setSortingByGeneSymbol(false);
     setSelectedHeaderIndex(index);
-    setHeatmapData(newData);
   };
 
   const sortByFixedTissue = () => {
@@ -180,26 +147,10 @@ const HistopathLandingPage = () => {
       newSort = "desc";
       setActivePage(1);
     }
-    const newData = clone(originalData);
-    newData.sort((gene1, gene2) => {
-      if (
-        (gene1.hasTissue && gene2.hasTissue) ||
-        (!gene1.hasTissue && !gene2.hasTissue)
-      ) {
-        return newSort === "desc"
-          ? gene1.id.localeCompare(gene2.id)
-          : gene2.id.localeCompare(gene1.id);
-      } else if (gene1.hasTissue && !gene2.hasTissue) {
-        return newSort === "desc" ? -1 : 1;
-      } else if (!gene1.hasTissue && gene2.hasTissue) {
-        return newSort === "desc" ? 1 : -1;
-      }
-    });
     setSort(newSort);
     setSortingByGeneSymbol(false);
     setSortingByFixedTissue(true);
     setSelectedHeaderIndex(null);
-    setHeatmapData(newData);
   };
 
   const sortByGeneSymbol = () => {
@@ -211,21 +162,70 @@ const HistopathLandingPage = () => {
       newSort = "desc";
       setActivePage(1);
     }
-    const newData = clone(originalData);
-    if (newSort !== "none") {
-      newData.sort((gene1, gene2) =>
+    setSort(newSort);
+    setSortingByGeneSymbol(true);
+    setSortingByFixedTissue(false);
+    setSelectedHeaderIndex(null);
+  };
+
+  const sortedAndFilteredData = useMemo(() => {
+    let results;
+    if (query) {
+      results = histopathData.originalData.filter((gene) => gene.id.includes(query));
+    } else {
+      results = [...histopathData.originalData];
+    }
+    const newSort = getNewSort();
+    if (newSort === "none") {
+      return results;
+    }
+    if (selectedHeaderIndex) {
+      results = results
+        // merge all data in a single array
+        .flatMap((item) => item.data)
+        // get only the column we are interested
+        .filter((item) => item.headerIndex === selectedHeaderIndex)
+        .sort((item1, item2) => {
+          if (newSort === "desc") {
+            return item2.y - item1.y;
+          }
+          return item1.y - item2.y;
+        })
+        // regenerate array with original info
+        .map((gene) => ({ ...geneMap.get(gene.geneSymbol) }))
+    } else if (sortingByFixedTissue) {
+      results.sort((gene1, gene2) => {
+        if (
+          (gene1.hasTissue && gene2.hasTissue) ||
+          (!gene1.hasTissue && !gene2.hasTissue)
+        ) {
+          return newSort === "desc"
+            ? gene1.id.localeCompare(gene2.id)
+            : gene2.id.localeCompare(gene1.id);
+        } else if (gene1.hasTissue && !gene2.hasTissue) {
+          return newSort === "desc" ? -1 : 1;
+        } else if (!gene1.hasTissue && gene2.hasTissue) {
+          return newSort === "desc" ? 1 : -1;
+        }
+      });
+    } else if (sortingByGeneSymbol) {
+      results.sort((gene1, gene2) =>
         newSort === "desc"
           ? gene1.id.localeCompare(gene2.id)
           : gene2.id.localeCompare(gene1.id)
       );
     }
+    return results;
+  }, [query, histopathData, selectedHeaderIndex, sortingByFixedTissue, sortingByGeneSymbol]);
 
-    setSort(newSort);
-    setSortingByGeneSymbol(true);
-    setSortingByFixedTissue(false);
-    setSelectedHeaderIndex(null);
-    setHeatmapData(newData);
-  };
+  const {
+    paginatedData,
+    activePage,
+    pageSize,
+    totalPages,
+    setActivePage,
+    setPageSize,
+  } = usePagination<HeatmapData>(sortedAndFilteredData, 25)
 
   return (
     <>
@@ -312,14 +312,19 @@ const HistopathLandingPage = () => {
               entries
             </div>
           </div>
-          <div className={styles.tableWrapper}>
-            <table
-              className={`table table-striped table-bordered ${styles.heatMap}`}
-            >
-              <thead>
+          {isFetching ? (
+            <div className="mt-4" style={{display: 'flex', justifyContent: 'center'}}>
+              <LoadingProgressBar/>
+            </div>
+          ): (
+            <div className={styles.tableWrapper}>
+              <table
+                className={`table table-striped table-bordered ${styles.heatMap}`}
+              >
+                <thead>
                 <tr>
                   <th onClick={sortByGeneSymbol}>
-                    <div className={styles.header} style={{ marginRight: "5px" }}>Gene</div>
+                    <div className={styles.header} style={{marginRight: "5px"}}>Gene</div>
                     <SortIndicator
                       sortStatus={sortingByGeneSymbol}
                       sort={sort}
@@ -332,7 +337,7 @@ const HistopathLandingPage = () => {
                       sort={sort}
                     />
                   </th>
-                  {data.columns.map((header, index) => (
+                  {histopathData.columns.map((header, index) => (
                     <th key={header} onClick={() => sortByHeader(index)}>
                       <div
                         className={classNames(styles.header, styles.top, {[styles.eyeOpticNerveCol]: header === 'Eye with optic nerve'})}>
@@ -345,8 +350,8 @@ const HistopathLandingPage = () => {
                     </th>
                   ))}
                 </tr>
-              </thead>
-              <tfoot>
+                </thead>
+                <tfoot>
                 <tr>
                   <th>
                     <div className={styles.header}>Gene</div>
@@ -354,15 +359,15 @@ const HistopathLandingPage = () => {
                   <th>
                     <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available</div>
                   </th>
-                  {data.columns.map((header, index) => (
+                  {histopathData.columns.map((header, index) => (
                     <th key={header} onClick={() => sortByHeader(index)}>
                       <div className={classNames(styles.header, styles.bottom)}>{header}</div>
                     </th>
                   ))}
                 </tr>
-              </tfoot>
-              <tbody>
-                {getDataSlice().map((gene) => (
+                </tfoot>
+                <tbody>
+                {paginatedData.map((gene) => (
                   <tr key={gene.id}>
                     <td>
                       <i dangerouslySetInnerHTML={{
@@ -395,25 +400,26 @@ const HistopathLandingPage = () => {
                       ))}
                   </tr>
                 ))}
-                {getDataSlice()?.length === 0 && (
+                {paginatedData.length === 0 && (
                   <tr>
                     <td
                       colSpan={100}
-                      style={{ fontSize: 20, fontWeight: "bold" }}
+                      style={{fontSize: 20, fontWeight: "bold"}}
                     >
                       No results
                     </td>
                   </tr>
                 )}
-              </tbody>
-            </table>
-          </div>
+                </tbody>
+              </table>
+            </div>
+          )}
           <div className="mt-5">
             {totalPages > 1 && (
               <PaginationControls
                 currentPage={activePage}
                 totalPages={totalPages}
-                onPageChange={handlePaginationChange}
+                onPageChange={setActivePage}
                 showEntriesInfo
                 pageSize={pageSize}
               />
