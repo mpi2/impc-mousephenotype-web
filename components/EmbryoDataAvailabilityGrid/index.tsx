@@ -5,7 +5,8 @@ import data from './GeneVsProcedure.data';
 import PaginationControls from "../PaginationControls";
 import { useEmbryoWOLQuery, usePagination } from "@/hooks";
 import _ from "lodash";
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
+import { Form, InputGroup } from "react-bootstrap";
 
 type EmbryoData = {
   id: string;
@@ -29,16 +30,20 @@ type Props = {
 
 const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
   const [selectedWOL, setSelectedWOL] = useState<Array<string>>([]);
+  const [query, setQuery] = useState<string>(undefined)
   const { data: dataIndex } = useEmbryoWOLQuery(data => {
     return _.groupBy(data, 'FUSIL') as DataIndex;
   });
 
   const filteredData = useMemo(() => {
     const newSelectedGenes = selectedWOL.flatMap(s => dataIndex[s]).map(d => d.gene_id);
-    return selectedWOL.length
+    const dataFilteredByWOL = selectedWOL.length
       ? data.filter(g => newSelectedGenes.includes(g.mgiAccessionId))
       : data;
-  }, [selectedWOL, dataIndex]);
+    return !!query
+      ? dataFilteredByWOL.filter(g => g.id.toLowerCase().includes(query.toLowerCase()))
+      : dataFilteredByWOL;
+  }, [selectedWOL, dataIndex, query]);
 
   const {
     paginatedData: chartData,
@@ -82,7 +87,19 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
             aria-label="window of lethality filter"
           />
         </div>
-        <div className="col-6"></div>
+        <div className="col-6">
+          <InputGroup>
+            <InputGroup.Text id="gene-filter">
+              Filter by gene symbol
+            </InputGroup.Text>
+            <Form.Control
+              id="gene-control"
+              aria-describedby="gene-filter"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+            />
+          </InputGroup>
+        </div>
       </div>
       <div
         style={{
