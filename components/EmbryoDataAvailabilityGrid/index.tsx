@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from 'react-select';
 import data from './GeneVsProcedure.data';
 import PaginationControls from "../PaginationControls";
-import { useEmbryoWOLQuery } from "@/hooks";
+import { useEmbryoWOLQuery, usePagination } from "@/hooks";
 import _ from "lodash";
+import { useMemo, useState } from "react";
 
 type EmbryoData = {
   id: string;
@@ -28,31 +28,29 @@ type Props = {
 }
 
 const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
-  const [chartData, setChartData] = useState<Array<EmbryoData>>(data.slice(0, 25));
-  const [activePage, setActivePage] = useState(0);
-  const [totalPages, setTotalPages] = useState(Math.ceil(data.length / 25));
-  const geneIndex = chartData.reduce((acc, d) => ({ [d.id]: d.mgiAccessionId, ...acc }), {});
-
-
+  const [selectedWOL, setSelectedWOL] = useState<Array<string>>([]);
   const { data: dataIndex } = useEmbryoWOLQuery(data => {
     return _.groupBy(data, 'FUSIL') as DataIndex;
   });
 
-  const handlePaginationChange = (pageNumber: number) => {
-    setActivePage(pageNumber);
-    setChartData(data.slice(pageNumber * 25, pageNumber * 25 + 25));
-  };
-
-  const onChangeWOL = selected => {
-    const newSelectedGenes = selected.flatMap(s => dataIndex[s.value]).map(d => d.gene_id);
-    const newData = selected.length
+  const filteredData = useMemo(() => {
+    const newSelectedGenes = selectedWOL.flatMap(s => dataIndex[s]).map(d => d.gene_id);
+    return selectedWOL.length
       ? data.filter(g => newSelectedGenes.includes(g.mgiAccessionId))
       : data;
-    setChartData(
-      selected.length ? newData.slice(0, 25) : data.slice(0, 25)
-    );
-    setTotalPages(Math.ceil(newData.length / 25));
-    setActivePage(0);
+  }, [selectedWOL, dataIndex]);
+
+  const {
+    paginatedData: chartData,
+    activePage,
+    totalPages,
+    setActivePage,
+  } = usePagination<EmbryoData>(filteredData, 25);
+
+  const geneIndex = chartData.reduce((acc, d) => ({ [d.id]: d.mgiAccessionId, ...acc }), {});
+
+  const onChangeWOL = (selected: Array<{ value: string, label: string }>) => {
+    setSelectedWOL(selected.map(selection => selection.value));
   }
 
   const onClickTick = (cell: any) => {
@@ -180,7 +178,7 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
         <PaginationControls
           currentPage={activePage}
           totalPages={totalPages}
-          onPageChange={handlePaginationChange}
+          onPageChange={setActivePage}
         />
       )}
     </>
