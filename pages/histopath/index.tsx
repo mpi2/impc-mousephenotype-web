@@ -34,6 +34,7 @@ type HeatmapData = {
   id: string;
   mgiAccession: string;
   hasTissue: boolean;
+  allelesWithTissue: Array<string>;
   data: Array<{
     geneSymbol: string;
     headerIndex: number;
@@ -59,6 +60,7 @@ const HistopathLandingPage = () => {
           id: geneRow.markerSymbol,
           mgiAccession: geneRow.mgiGeneAccessionId,
           hasTissue: geneRow.hasTissue,
+          allelesWithTissue: geneRow.allelesWithTissue,
           data: [],
         };
         result[geneRow.markerSymbol].data = response.columns.map(
@@ -99,11 +101,26 @@ const HistopathLandingPage = () => {
     return symbol;
   };
 
-  const displayFixedTissueColumn = (gene: any) => {
-    if (gene.hasTissue) {
+  const openAllelePages = (gene: HeatmapData) => {
+    const mgiID = gene.mgiAccession;
+    gene.allelesWithTissue.forEach(allele => {
+      const alleleSymbol = allele.match(/\<(.+)\>/)[1];
+      window.open(`/alleles/${mgiID}/${alleleSymbol}#mice`);
+    })
+  };
+
+  const displayFixedTissueColumn = (gene: HeatmapData) => {
+    if (gene.hasTissue && gene.allelesWithTissue.length === 1) {
       const mgiID = gene.mgiAccession;
+      const allele = gene.allelesWithTissue[0].match(/\<(.+)\>/)[1];
       return (
-        <a className="link primary" href={`/genes/${mgiID}#order`}>
+        <a className="link primary" href={`/alleles/${mgiID}/${allele}#mice`}>
+          Yes
+        </a>
+      );
+    } else if (gene.hasTissue && gene.allelesWithTissue.length > 1) {
+      return (
+        <a className="link primary" onClick={() => openAllelePages(gene)}>
           Yes
         </a>
       );
