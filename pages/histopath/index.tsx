@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import { usePagination } from "@/hooks";
 import { LoadingProgressBar, Search, Card, PaginationControls } from "@/components";
+import Link from "next/link";
 
 const geneMap = new Map();
 
@@ -125,7 +126,7 @@ const HistopathLandingPage = () => {
         </a>
       );
     }
-    return "No";
+    return "No info";
   };
 
   const getNewSort = () => {
@@ -346,7 +347,7 @@ const HistopathLandingPage = () => {
                     />
                   </th>
                   <th onClick={sortByFixedTissue}>
-                    <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available</div>
+                    <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available *</div>
                     <SortIndicator
                       sortStatus={sortingByFixedTissue}
                       sort={sort}
@@ -372,7 +373,7 @@ const HistopathLandingPage = () => {
                     <div className={styles.header}>Gene</div>
                   </th>
                   <th>
-                    <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available</div>
+                    <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available *</div>
                   </th>
                   {histopathData.columns.map((header, index) => (
                     <th key={header} onClick={() => sortByHeader(index)}>
@@ -429,7 +430,13 @@ const HistopathLandingPage = () => {
               </table>
             </div>
           )}
-          <div className="mt-5">
+          <div className="mt-1">
+            <span>
+              * This column is from data made available to us, send us a message to inquiry about genes with no fixed tissue from&nbsp;
+              <Link className="link primary" href="http://www.mousephenotype.org/contact-us/">our Contact page</Link>
+            </span>
+          </div>
+          <div className="mt-1">
             {totalPages > 1 && (
               <PaginationControls
                 currentPage={activePage}
