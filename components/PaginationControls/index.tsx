@@ -63,7 +63,7 @@ const PaginationControls = (props: Props) => {
     <nav aria-label="Page navigation example" style={mergedContainerStyles}>
       {!!showEntriesInfo && (
         <span>
-          Showing {((currentPage - 1) * pageSize) + 1} to {pageSize * currentPage} of {(totalPages * pageSize).toLocaleString()} entries
+          Showing {(currentPage * pageSize) + 1} to {pageSize * (currentPage + 1)} of {(totalPages * pageSize).toLocaleString()} entries
         </span>
       )}
       <ul className="pagination justify-content-center paginationNav">

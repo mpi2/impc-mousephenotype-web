@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import { usePagination } from "@/hooks";
 import { LoadingProgressBar, Search, Card, PaginationControls } from "@/components";
+import Link from "next/link";
 
 const geneMap = new Map();
 
@@ -34,6 +35,7 @@ type HeatmapData = {
   id: string;
   mgiAccession: string;
   hasTissue: boolean;
+  allelesWithTissue: Array<string>;
   data: Array<{
     geneSymbol: string;
     headerIndex: number;
@@ -59,6 +61,7 @@ const HistopathLandingPage = () => {
           id: geneRow.markerSymbol,
           mgiAccession: geneRow.mgiGeneAccessionId,
           hasTissue: geneRow.hasTissue,
+          allelesWithTissue: geneRow.allelesWithTissue,
           data: [],
         };
         result[geneRow.markerSymbol].data = response.columns.map(
@@ -99,16 +102,31 @@ const HistopathLandingPage = () => {
     return symbol;
   };
 
-  const displayFixedTissueColumn = (gene: any) => {
-    if (gene.hasTissue) {
+  const openAllelePages = (gene: HeatmapData) => {
+    const mgiID = gene.mgiAccession;
+    gene.allelesWithTissue.forEach(allele => {
+      const alleleSymbol = allele.match(/\<(.+)\>/)[1];
+      window.open(`/alleles/${mgiID}/${alleleSymbol}#mice`);
+    })
+  };
+
+  const displayFixedTissueColumn = (gene: HeatmapData) => {
+    if (gene.hasTissue && gene.allelesWithTissue.length === 1) {
       const mgiID = gene.mgiAccession;
+      const allele = gene.allelesWithTissue[0].match(/\<(.+)\>/)[1];
       return (
-        <a className="link primary" href={`/genes/${mgiID}#order`}>
+        <a className="link primary" href={`/alleles/${mgiID}/${allele}#mice`}>
+          Yes
+        </a>
+      );
+    } else if (gene.hasTissue && gene.allelesWithTissue.length > 1) {
+      return (
+        <a className="link primary" onClick={() => openAllelePages(gene)}>
           Yes
         </a>
       );
     }
-    return "No";
+    return "No info";
   };
 
   const getNewSort = () => {
@@ -320,54 +338,54 @@ const HistopathLandingPage = () => {
                 className={`table table-striped table-bordered ${styles.heatMap}`}
               >
                 <thead>
-                <tr>
-                  <th onClick={sortByGeneSymbol}>
-                    <div className={styles.header} style={{marginRight: "5px"}}>Gene</div>
-                    <SortIndicator
-                      sortStatus={sortingByGeneSymbol}
-                      sort={sort}
-                    />
-                  </th>
-                  <th onClick={sortByFixedTissue}>
-                    <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available</div>
-                    <SortIndicator
-                      sortStatus={sortingByFixedTissue}
-                      sort={sort}
-                    />
-                  </th>
-                  {histopathData.columns.map((header, index) => (
-                    <th key={header} onClick={() => sortByHeader(index)}>
-                      <div
-                        className={classNames(styles.header, styles.top, {[styles.eyeOpticNerveCol]: header === 'Eye with optic nerve'})}>
-                        {header}
-                      </div>
+                  <tr>
+                    <th onClick={sortByGeneSymbol}>
+                      <div className={styles.header} style={{marginRight: "5px"}}>Gene</div>
                       <SortIndicator
-                        sortStatus={index === selectedHeaderIndex}
+                        sortStatus={sortingByGeneSymbol}
                         sort={sort}
                       />
                     </th>
-                  ))}
-                </tr>
+                    <th onClick={sortByFixedTissue}>
+                      <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available *</div>
+                      <SortIndicator
+                        sortStatus={sortingByFixedTissue}
+                        sort={sort}
+                      />
+                    </th>
+                    {histopathData.columns.map((header, index) => (
+                      <th key={header} onClick={() => sortByHeader(index)}>
+                        <div
+                          className={classNames(styles.header, styles.top, {[styles.eyeOpticNerveCol]: header === 'Eye with optic nerve'})}>
+                          {header}
+                        </div>
+                        <SortIndicator
+                          sortStatus={index === selectedHeaderIndex}
+                          sort={sort}
+                        />
+                      </th>
+                    ))}
+                  </tr>
                 </thead>
                 <tfoot>
-                <tr>
-                  <th>
-                    <div className={styles.header}>Gene</div>
-                  </th>
-                  <th>
-                    <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available</div>
-                  </th>
-                  {histopathData.columns.map((header, index) => (
-                    <th key={header} onClick={() => sortByHeader(index)}>
-                      <div className={classNames(styles.header, styles.bottom)}>{header}</div>
+                  <tr>
+                    <th>
+                      <div className={styles.header}>Gene</div>
                     </th>
-                  ))}
-                </tr>
+                    <th>
+                      <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available *</div>
+                    </th>
+                    {histopathData.columns.map((header, index) => (
+                      <th key={header} onClick={() => sortByHeader(index)}>
+                        <div className={classNames(styles.header, styles.bottom)}>{header}</div>
+                      </th>
+                    ))}
+                  </tr>
                 </tfoot>
                 <tbody>
                 {paginatedData.map((gene) => (
                   <tr key={gene.id}>
-                    <td>
+                    <td className={styles.geneCell}>
                       <i dangerouslySetInnerHTML={{
                         __html: rewriteWithQuery(gene.id),
                       }}></i>
@@ -412,7 +430,13 @@ const HistopathLandingPage = () => {
               </table>
             </div>
           )}
-          <div className="mt-5">
+          <div className="mt-1">
+            <span>
+              * This column is from data made available to us, send us a message to inquiry about genes with no fixed tissue from&nbsp;
+              <Link className="link primary" href="http://www.mousephenotype.org/contact-us/">our Contact page</Link>
+            </span>
+          </div>
+          <div className="mt-1">
             {totalPages > 1 && (
               <PaginationControls
                 currentPage={activePage}
