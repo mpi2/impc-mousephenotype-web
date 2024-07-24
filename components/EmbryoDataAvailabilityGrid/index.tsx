@@ -110,86 +110,91 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
           marginLeft: "0",
           backgroundColor: "white",
           marginTop: "0",
+          textAlign: "center"
         }}
       >
-        <ResponsiveHeatMap
-          data={chartData}
-          margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
-          valueFormat={(v: any) => {
-            const options = [
-              "No data",
-              "Images Available",
-              "Images Available",
-              "EA not significant -> LA significant",
-              "Images and Automated Volumetric Analysis Available",
-            ];
-            return options[v];
-          }}
-          animate={true}
-          axisTop={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: -45,
-            legend: "",
-            legendOffset: 50,
-          }}
-          axisLeft={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: "",
-            legendPosition: "middle",
-            legendOffset: 60,
-            renderTick: (tick: any) => (
-              <ClickableAxisTick
-                tick={tick}
-                onClick={() =>
-                  window.open(
-                    `https://mousephenotype.org/data/genes/${data[tick.tickIndex].mgiAccessionId}`,
-                    "_blank",
-                    "noreferrer"
-                  )
-                }
-              />
-            ),
-          }}
-          axisRight={null}
-          colors={(cell: any) => {
-            const options = [
-              "#ECECEC",
-              "#17a2b8",
-              "#ed7b25",
-              "#ed7b25",
-              "#17a2b8",
-            ];
-            return options[cell.value || 0];
-          }}
-          labelTextColor="black"
-          emptyColor="#ccc"
-          borderWidth={0.25}
-          borderColor="#000"
-          enableLabels={false}
-          legends={[
-            {
-              anchor: "right",
-              translateX: 50,
-              translateY: 0,
-              length: 200,
-              thickness: 10,
-              direction: "column",
-              tickPosition: "after",
-              tickSize: 3,
-              tickSpacing: 4,
-              tickOverlap: false,
-              tickFormat: ">-.0s",
-              title: "Value →",
-              titleAlign: "middle",
-              titleOffset: 4,
-            },
-          ]}
-          annotations={[]}
-          onClick={onClickTick}
-        />
+        {chartData.length ? (
+          <ResponsiveHeatMap
+            data={chartData}
+            margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
+            valueFormat={(v: any) => {
+              const options = [
+                "No data",
+                "Images Available",
+                "Images Available",
+                "EA not significant -> LA significant",
+                "Images and Automated Volumetric Analysis Available",
+              ];
+              return options[v];
+            }}
+            animate={true}
+            axisTop={{
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: -45,
+              legend: "",
+              legendOffset: 50,
+            }}
+            axisLeft={{
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: 0,
+              legend: "",
+              legendPosition: "middle",
+              legendOffset: 60,
+              renderTick: (tick: any) => (
+                <ClickableAxisTick
+                  tick={tick}
+                  onClick={() =>
+                    window.open(
+                      `https://mousephenotype.org/data/genes/${data[tick.tickIndex].mgiAccessionId}`,
+                      "_blank",
+                      "noreferrer"
+                    )
+                  }
+                />
+              ),
+            }}
+            axisRight={null}
+            colors={(cell: any) => {
+              const options = [
+                "#ECECEC",
+                "#17a2b8",
+                "#ed7b25",
+                "#ed7b25",
+                "#17a2b8",
+              ];
+              return options[cell.value || 0];
+            }}
+            labelTextColor="black"
+            emptyColor="#ccc"
+            borderWidth={0.25}
+            borderColor="#000"
+            enableLabels={false}
+            legends={[
+              {
+                anchor: "right",
+                translateX: 50,
+                translateY: 0,
+                length: 200,
+                thickness: 10,
+                direction: "column",
+                tickPosition: "after",
+                tickSize: 3,
+                tickSpacing: 4,
+                tickOverlap: false,
+                tickFormat: ">-.0s",
+                title: "Value →",
+                titleAlign: "middle",
+                titleOffset: 4,
+              },
+            ]}
+            annotations={[]}
+            onClick={onClickTick}
+          />
+        ) : (
+          <h2 className="mt-5">No genes match the term entered</h2>
+        )}
       </div>
       {totalPages > 1 && (
         <PaginationControls
