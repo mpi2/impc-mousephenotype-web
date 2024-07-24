@@ -5,6 +5,7 @@
 
 .tableWrapper {
   overflow-x: auto;
+  position: relative;
 }
 .labelContainer {
   display: flex;
@@ -27,6 +28,10 @@
     font-size: 10px;
     vertical-align: bottom;
     cursor: pointer;
+  }
+  .geneCell {
+    position: sticky;
+    left: -1px;
   }
   .header {
     display: inline-block;
