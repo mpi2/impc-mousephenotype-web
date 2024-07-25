@@ -14,3 +14,5 @@ export { default as ScrollToTopButton } from './ScrollToTopButton/ScrollToTopBut
 export { default as LateAdultHeatmap } from './LateAdultHeatmap/LateAdultHeatmap';
 export { default as LoadingProgressBar } from './LoadingProgressBar';
 export { default as PaginationControls } from './PaginationControls';
+export { default as ChordDiagram } from './ChordDiagram';
+export { default as PieChart } from './PieChart';
