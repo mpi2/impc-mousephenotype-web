@@ -1,22 +1,18 @@
-import Search from "@/components/Search";
 import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import Card from "@/components/Card";
 import data from '../../mocks/data/landing-pages/cardiovascular.json';
-import PieChart from "@/components/PieChart";
-import SortableTable from "@/components/SortableTable";
 import styles from './styles.module.scss';
 import { Fragment, useState } from "react";
-import { PublicationListProps } from "@/components/PublicationsList";
-import ScatterChart from "@/components/ScatterChart";
-import ChordDiagram from "@/components/ChordDiagram";
-import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
-
-const PublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"), {ssr: false}
-);
-
+import {
+  Card,
+  ChordDiagram,
+  NonSSRPublicationsList,
+  PieChart,
+  ScatterChart,
+  Search,
+  SortableTable
+} from "@/components";
 
 const ProcedureWithVersions = ({ procedure }) => {
   return (
@@ -203,7 +199,7 @@ const CardiovascularLandingPage = () => {
         <Card>
           <Container>
             <h1><strong>Cardiovascular systemp IKMC/IMPC related publications</strong></h1>
-            <PublicationsList prefixQuery="cardio cardia heart" />
+            <NonSSRPublicationsList prefixQuery="cardio cardia heart" />
           </Container>
         </Card>
       </Container>
