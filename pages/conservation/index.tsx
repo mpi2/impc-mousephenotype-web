@@ -1,8 +1,4 @@
-import Search from "@/components/Search";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import Card from "@/components/Card";
-import dynamic from "next/dynamic";
-import { PublicationListProps } from "@/components/PublicationsList";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,7 +12,7 @@ import { Bar } from 'react-chartjs-2';
 import data from '../../mocks/data/landing-pages/conservation.json';
 import { chartColors } from "@/utils/chart";
 import Head from "next/head";
-import { PublicationDataAlert } from "@/components";
+import { Card, NonSSRPublicationsList, PublicationDataAlert, Search } from "@/components";
 
 ChartJS.register(
   CategoryScale,
@@ -27,9 +23,6 @@ ChartJS.register(
   Legend
 );
 
-const PublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"), {ssr: false}
-);
 
 const ConservationLandingPage = () => {
   const allSystems = [
@@ -329,7 +322,7 @@ const ConservationLandingPage = () => {
           <h1>
             <strong>Conservation IKMC/IMPC related publications</strong>
           </h1>
-          <PublicationsList prefixQuery="development embryo disease"/>
+          <NonSSRPublicationsList prefixQuery="development embryo disease"/>
         </Card>
       </Container>
     </>

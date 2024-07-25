@@ -1,15 +1,12 @@
 import Head from "next/head";
-import Search from "@/components/Search";
 import { Breadcrumb, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
-import Card from "@/components/Card";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import ParentSize from "@visx/responsive/lib/components/ParentSize";
-import { LateAdultHeatmap } from "@/components";
+import { LateAdultHeatmap, Search, Card, PaginationControls } from "@/components";
 import { LateAdultDataResponse, LateAdultDataParsed, LateAdultRowResponse } from "@/models";
 import React, { useEffect, useMemo, useState } from "react";
 import { usePagination } from "@/hooks";
-import PaginationControls from "@/components/PaginationControls";
 
 type AllGeneList = Array<LateAdultRowResponse>;
 
