@@ -41,7 +41,6 @@ const Image = ({
   fileType,
   isSpecialFormat,
 }: ImageProps) => {
-  console.log(isSpecialFormat);
 
   const router = useRouter();
   const { pid } = router.query;
@@ -108,7 +107,6 @@ const Images = ({ gene }: { gene: any }) => {
       </Card>
     );
   }
-  console.log(data);
 
   const groups = Object.entries(
     _.groupBy(data, (item) => `${item.procedureName}-${item.parameterName}`)
@@ -117,7 +115,6 @@ const Images = ({ gene }: { gene: any }) => {
     const [param2] = b;
     return param1.localeCompare(param2);
   });
-  console.log(groups);
 
   return (
     <Card id="images">

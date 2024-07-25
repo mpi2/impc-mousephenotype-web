@@ -4,6 +4,11 @@ import styles from "@/components/Gene/Phenotypes/AllData/styles.module.scss";
 import _ from "lodash";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Overlay, Tooltip } from "react-bootstrap";
+import { useRef, useState } from "react";
+import { formatPValue } from "@/utils";
 
 export const ParameterCell = <T extends GeneStatisticalResult>(
   props: TableCellProps<T>
@@ -56,5 +61,63 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(props: Props
     <Link href={url}>
       <span className="link primary small float-right">Supporting data</span>
     </Link>
+  )
+};
+
+export const SignificantPValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+  const pValue = _.get(props.value, props.field) as number;
+  const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
+  const isManualAssociation = props.value.status === "Successful" && pValue === 0;
+
+  return (
+    <span
+      className="bold"
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+      }}
+    >
+      <span data-testid="p-value">
+        {(!!pValue && props.value.status === "Successful")
+          ? formatPValue(pValue)
+          : isManualAssociation ? "Manual association" : '-'
+        }&nbsp;
+        {isAssociatedToPWG && <span>*</span>}
+      </span>
+    </span>
+  );
+};
+
+export const MutantCountCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+  const value = _.get(props.value, props.field) as string;
+  const statRes = props.value;
+  const mutantsBelowThreshold =
+    props.value.maleMutantCount < props.value.procedureMinMales && props.value.femaleMutantCount < props.value.procedureMinFemales;
+  const [tooltipShow, setTooltipShow] = useState(false);
+  const tooltipRef = useRef(null);
+  return (
+    <span
+      style={props.style}
+      onMouseEnter={() => setTooltipShow(true)}
+      onMouseLeave={() => setTooltipShow(false)}
+    >
+      {value}
+      {mutantsBelowThreshold && (
+        <sup ref={tooltipRef} style={{ display: 'inline-block', marginLeft: '5px' }}>
+          <FontAwesomeIcon icon={faInfo} className="secondary"/>
+          &nbsp;
+          <Overlay target={tooltipRef.current} show={tooltipShow} placement="left">
+            {(props) => (
+              <Tooltip id="tooltip-n-numbers" {...props}>
+                The number of mutants doesn't meet the criteria specified in IMPRESS <br/>
+                Min female number: {statRes.procedureMinFemales || 0} <br/>
+                Min male number: {statRes.procedureMinMales || 0}
+              </Tooltip>
+            )}
+          </Overlay>
+        </sup>
+      )}
+    </span>
   )
 };

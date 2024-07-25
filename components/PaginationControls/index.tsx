@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
 
 type Props = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
   showEntriesInfo?: boolean;
-  pageSize?: number
+  pageSize?: number;
+  containerStyles?: CSSProperties;
 }
 const PaginationControls = (props: Props) => {
   const {
@@ -13,7 +17,8 @@ const PaginationControls = (props: Props) => {
     totalPages,
     onPageChange,
     showEntriesInfo = false,
-    pageSize = 25
+    pageSize = 25,
+    containerStyles= {},
   } = props;
   const [pageRange, setPageRange] = useState([1, 2, 3]);
   const handlePageChange = (page: number) => {
@@ -42,33 +47,41 @@ const PaginationControls = (props: Props) => {
     );
   };
 
-  const isFirstPageActive = currentPage === 1;
-  const isLastPageActive = currentPage === totalPages;
+  const canGoBack = currentPage >= 1;
+  const canGoForward = (currentPage + 1) < totalPages;
+
+  const mergedContainerStyles = Object.assign(
+    containerStyles,
+    showEntriesInfo ? { display: 'flex', justifyContent: 'space-between'} : {}
+  );
+
+  useEffect(() => {
+    updatePageRange(currentPage, totalPages);
+  }, [totalPages]);
 
   return (
-    <nav aria-label="Page navigation example" style={showEntriesInfo ? { display: 'flex', justifyContent: 'space-between'} : {}}>
+    <nav aria-label="Page navigation example" style={mergedContainerStyles}>
       {!!showEntriesInfo && (
         <span>
-          Showing {((currentPage - 1) * pageSize) + 1} to {pageSize * currentPage} of {(totalPages * pageSize).toLocaleString()} entries
+          Showing {(currentPage * pageSize) + 1} to {pageSize * (currentPage + 1)} of {(totalPages * pageSize).toLocaleString()} entries
         </span>
       )}
-      <ul className="pagination justify-content-center">
-        <li className={`page-item ${isFirstPageActive ? "disabled" : ""}`}>
-          <button
-            className="page-link"
-            aria-label="Previous"
-            onClick={() => handlePageChange(currentPage - 1)}
-          >
-            <span aria-hidden="true">&laquo;</span>
-          </button>
-        </li>
+      <ul className="pagination justify-content-center paginationNav">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={!canGoBack}
+          className="pagNavBtn nav-btn"
+          aria-label="Previous"
+        >
+          <FontAwesomeIcon icon={faArrowLeft} title="previous page button" titleId="prev-page-icon"/>
+        </button>
         {pageRange[0] > 1 && (
           <>
-            <li className={`page-item ${currentPage === 1 ? "active" : ""}`}>
+            <li className="page-item first-page">
               <button
-                className="page-link"
+                className={classNames("pagNavBtn", { active: currentPage === 0 })}
                 aria-label="Previous"
-                onClick={() => handlePageChange(1)}
+                onClick={() => handlePageChange(0)}
               >
                 <span aria-hidden="true">1</span>
               </button>
@@ -81,15 +94,10 @@ const PaginationControls = (props: Props) => {
           </>
         )}
         {pageRange.map((pageNumber) => (
-          <li
-            key={pageNumber}
-            className={`page-item ${
-              currentPage === pageNumber ? "active" : ""
-            }`}
-          >
+          <li key={pageNumber} className="page-item">
             <button
-              className="page-link"
-              onClick={() => handlePageChange(pageNumber)}
+              className={classNames("pagNavBtn", { active: currentPage === (pageNumber - 1) })}
+              onClick={() => handlePageChange(pageNumber - 1)}
             >
               {pageNumber}
             </button>
@@ -102,30 +110,25 @@ const PaginationControls = (props: Props) => {
                 <span className="page-link">...</span>
               </li>
             )}
-            <li
-              className={`page-item ${
-                currentPage === totalPages ? "active" : ""
-              }`}
-            >
+            <li className="page-item">
               <button
-                className="page-link"
+                className="pagNavBtn last-page"
                 aria-label="Previous"
-                onClick={() => handlePageChange(totalPages)}
+                onClick={() => handlePageChange(totalPages - 1)}
               >
                 <span aria-hidden="true">{totalPages}</span>
               </button>
             </li>
           </>
         )}
-        <li className={`page-item ${isLastPageActive ? "disabled" : ""}`}>
-          <button
-            className="page-link"
-            aria-label="Next"
-            onClick={() => handlePageChange(currentPage + 1)}
-          >
-            <span aria-hidden="true">&raquo;</span>
-          </button>
-        </li>
+        <button
+          className="pagNavBtn nav-btn"
+          disabled={!canGoForward}
+          aria-label="Next"
+          onClick={() => handlePageChange(currentPage + 1)}
+        >
+          <FontAwesomeIcon icon={faArrowRight} title="next page button" titleId="next-page-icon" />
+        </button>
       </ul>
     </nav>
   );

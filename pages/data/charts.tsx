@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { Alert, Container } from "react-bootstrap";
+import { useEffect, useMemo, useState } from "react";
+import { Alert, Container, Spinner } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
-import SkeletonTable from "@/components/skeletons/table";
-import { ABR, DataComparison, FlowCytometryImages, IPGTT } from "@/components/Data";
+import { ABR, DataComparison, FlowCytometryImages, IPGTT, PPI } from "@/components/Data";
 import { Card, Search } from "@/components";
 import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
 import { Dataset } from "@/models";
@@ -14,18 +13,29 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Skeleton from "react-loading-skeleton";
 import Head from "next/head";
 import { getChartType } from "@/components/Data/Utils";
+import { chartLoadingIndicatorChannel } from "@/eventChannels";
+import { useDebounce } from "usehooks-ts";
+
+const parametersListPPI = [
+  "IMPC_ACS_033_001", // % PP1
+  "IMPC_ACS_034_001", // % PP2
+  "IMPC_ACS_035_001", // % PP3
+  "IMPC_ACS_036_001", // % PP4
+];
 
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
-  const [additionalSummaries, setAdditionalSummaries] = useState<Array<Dataset>>(
-    []
-  );
+  const [additionalSummaries, setAdditionalSummaries] = useState<Array<Dataset>>([]);
+  const [specialChartLoading, setSpecialChartLoading] = useState(true);
+  const debouncedSpChartLoading = useDebounce<boolean>(specialChartLoading, 500);
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
 
   const getPageTitle = (summaries: Array<Dataset>) => {
     if (!summaries || summaries.length === 0) {
-      return <Skeleton />;
+      return <Skeleton width={200} />;
+    } else if (!!summaries.some((d) => d.procedureStableId === "IMPC_IPG_001")) {
+      return "Intraperitoneal glucose tolerance test";
     } else if (allSummaries[0]?.significantPhenotype?.name) {
       return allSummaries[0]?.significantPhenotype?.name;
     } else {
@@ -33,11 +43,22 @@ const Charts = () => {
     }
   };
 
-  const { datasetSummaries, isLoading, isError } = useDatasetsQuery(
+  const { datasetSummaries, isFetching, isError } = useDatasetsQuery(
     mgiGeneAccessionId,
     router.query,
     router.isReady
   );
+
+  useEffect(() => {
+    const unsubscribeToggleIndicator = chartLoadingIndicatorChannel.on(
+      'toggleIndicator',
+      (payload: boolean) => setSpecialChartLoading(payload),
+    );
+
+    return () => {
+      unsubscribeToggleIndicator();
+    }
+  }, []);
 
   const hasFlowCytometryImages = !isError
     ? !!datasetSummaries.some(
@@ -79,16 +100,29 @@ const Charts = () => {
     ? !!datasetSummaries.some(
       (dataset) => dataset.procedureStableId === "IMPC_IPG_001"
     )
-    :false;
+    : false;
 
+  const isPPIChart = !isError
+    ? !!datasetSummaries.some(
+      (dataset) => parametersListPPI.includes(dataset.parameterStableId)
+    )
+    : false;
+
+  useEffect(() => {
+    if (!isPPIChart && specialChartLoading) {
+      setSpecialChartLoading(false);
+    }
+  }, [isPPIChart]);
   const allSummaries = datasetSummaries?.concat(additionalSummaries);
   const activeDataset = !!selectedKey
     ? getDatasetByKey(allSummaries, selectedKey)
     : allSummaries[0];
 
-
   const extraChildren = (hasFlowCytometryImages && flowCytometryImages.length) ? <FlowCytometryImages images={flowCytometryImages} /> : null;
   const Chart = getChartType(activeDataset, true, extraChildren);
+  const smallestPValue = useMemo(() => getSmallestPValue(allSummaries), [allSummaries]);
+  const fetchingInProcess = isFetching || debouncedSpChartLoading;
+
   return (
     <>
       <Head>
@@ -110,11 +144,11 @@ const Charts = () => {
                 }}
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
-                &nbsp; Go Back to {allSummaries?.[0]?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}
+                &nbsp; Go Back to <i>{allSummaries?.[0]?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}</i>
               </Link>
             </span>
           </div>
-          {!datasetSummaries && !isLoading && (
+          {!datasetSummaries && !isFetching && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>
               <p>We could not find the data to display this page.</p>
@@ -125,8 +159,14 @@ const Charts = () => {
               {getPageTitle(allSummaries)}
             </strong>
           </h1>
-          {!!datasetSummaries && !isTimeSeries && (
-            <div className="mb-0">
+          {fetchingInProcess && (
+            <div className="mb-4">
+              <Spinner animation="border" size="sm" />&nbsp;
+              Loading data
+            </div>
+          )}
+          {(!isTimeSeries && !fetchingInProcess && smallestPValue !== 1) && (
+            <div className="mb-4">
               <div
                 style={{
                   display: "flex",
@@ -137,34 +177,38 @@ const Charts = () => {
                 }}
               >
                 <span>
-                  {allSummaries && allSummaries.length} parameter / zygosity /
+                  {allSummaries.length} parameter / zygosity /
                   metadata group combinations tested, with the lowest p-value
                   of&nbsp;
                   <strong>
-                    {allSummaries &&
-                      formatPValue(getSmallestPValue(allSummaries))}
+                    {formatPValue(getSmallestPValue(allSummaries))}
                   </strong>
                 </span>
               </div>
             </div>
           )}
-          {(!isLoading && !isError && !isIPGTTChart && allSummaries.length > 0 ) ? (
-            <DataComparison
-              data={allSummaries}
-              isViabilityChart={isViabilityChart}
-              selectedKey={selectedKey}
-              onSelectParam={setSelectedKey}
-              displayPValueThreshold={!isTimeSeries}
-              displayPValueColumns={!isTimeSeries}
-              {...(isABRChart && { initialSortByProp: "parameterStableId" })}
-            />
-          ) : (!isError && isLoading) ? (
-            <SkeletonTable />
-          ) : null}
+          <DataComparison
+            data={allSummaries}
+            isViabilityChart={isViabilityChart}
+            selectedKey={selectedKey}
+            onSelectParam={setSelectedKey}
+            displayPValueThreshold={!isTimeSeries}
+            displayPValueColumns={!isTimeSeries}
+            {...(isABRChart && {initialSortByProp: "parameterStableId"})}
+          />
+          {isPPIChart && (
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <button className="btn impc-secondary-button" onClick={() => {
+                document.querySelector('#chart').scrollIntoView();
+              }}>
+                View chart
+              </button>
+            </div>
+          )}
         </Card>
       </Container>
       <div
-        style={{ position: "sticky", top: 0, zIndex: 100 }}
+        style={{position: "sticky", top: 0, zIndex: 100}}
         className="bg-grey pt-2"
       >
         <Container>
@@ -172,13 +216,21 @@ const Charts = () => {
             <ABR
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
+              activeDataset={activeDataset}
             />
           ) : !!isIPGTTChart ? (
             <IPGTT
               datasetSummaries={datasetSummaries}
               onNewSummariesFetched={setAdditionalSummaries}
+              activeDataset={activeDataset}
             />
-          ) : (
+          ) : !!isPPIChart ? (
+            <PPI
+              datasetSummaries={datasetSummaries}
+              onNewSummariesFetched={setAdditionalSummaries}
+              activeDataset={activeDataset}
+            />
+          ): (
             !!activeDataset && <div>{Chart}</div>
           )}
         </Container>

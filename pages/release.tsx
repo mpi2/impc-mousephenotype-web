@@ -249,7 +249,7 @@ const ReleaseNotesPage = () => {
               <h3 className="mb-0 mt-3 mb-2">Data access</h3>
               <div className="mb-1">
                 <a href="https://www.mousephenotype.org/help/non-programmatic-data-access" className="link orange-dark ">
-                  Ftp interface&nbsp;
+                  FTP interface&nbsp;
                   <FontAwesomeIcon
                     icon={faExternalLink}
                     size="sm"

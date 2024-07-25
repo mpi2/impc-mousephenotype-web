@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import { useRouter } from "next/router";
 import { forwardRef, useEffect, useRef, useState } from "react";
-import { Alert, Tab, Tabs } from "react-bootstrap";
+import { Alert, Overlay, Tab, Tabs, Tooltip } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
@@ -21,13 +21,19 @@ import { DownloadData } from "@/components";
 
 type ScaleProps = {
   children: number;
+  toggleFocus: (newValue: boolean) => void
 }
 type Ref = HTMLDivElement;
 
 const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
-  const { children = 5 } = props;
+  const { children = 5, toggleFocus } = props;
   return (
-    <div ref={ref} className={styles.scale}>
+    <div
+      ref={ref}
+      className={styles.scale}
+      onMouseOver={() => toggleFocus(true)}
+      onMouseLeave={() => toggleFocus(false)}
+    >
       {Array.from(Array(5).keys())
         .map((n) => n + 1)
         .map((n) => (
@@ -77,6 +83,8 @@ const PhenoGridEl = ({ phenotypes, id }) => {
 
 const Row = ({ data }: { data: GeneDisease }) => {
   const [open, setOpen] = useState(false);
+  const [tooltipShow, setTooltipShow] = useState(false);
+  const tooltipRef = useRef(null);
 
   return (
     <>
@@ -85,7 +93,16 @@ const Row = ({ data }: { data: GeneDisease }) => {
           <strong className={styles.link}>{data.diseaseTerm}</strong>
         </td>
         <td>
-          <Scale>{Math.round((data.phenodigmScore / 100) * 5)}</Scale>
+          <Scale ref={tooltipRef} toggleFocus={setTooltipShow}>
+            {Math.round((data.phenodigmScore / 100) * 5)}
+          </Scale>
+          <Overlay target={tooltipRef.current} show={tooltipShow} placement="top">
+            {(props) => (
+              <Tooltip id={`${data.mgiGeneAccessionId}-${data.diseaseId}`} {...props}>
+                Phenodigm score: {data.phenodigmScore.toFixed(2)}%
+              </Tooltip>
+            )}
+          </Overlay>
         </td>
         <td>
           {data?.diseaseMatchedPhenotypes
@@ -144,7 +161,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   if (isLoading) {
     return (
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -153,7 +170,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   if (isError) {
     return (
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations</h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations</h2>
         <Alert variant="primary">No data available for this section</Alert>
       </Card>
     );
@@ -171,7 +188,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   return (
     <>
       <Card id="human-diseases">
-        <h2>Human diseases caused by {gene.geneSymbol} mutations </h2>
+        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations </h2>
         <div className="mb-4">
           <p>
             The analysis uses data from IMPC, along with published data on other
@@ -186,11 +203,19 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
           <Tab
             eventKey="associated"
-            title={`Human diseases associated with ${gene.geneSymbol} (${associatedData.length})`}
+            title={
+              <>
+                Human diseases associated with <i>{gene.geneSymbol}</i> ({associatedData.length})
+              </>
+            }
           ></Tab>
           <Tab
             eventKey="predicted"
-            title={`Human diseases predicted to be associated with ${gene.geneSymbol} (${predictedData.length})`}
+            title={
+              <>
+                Human diseases predicted to be associated with <i>{gene.geneSymbol}</i> ({predictedData.length})
+              </>
+            }
           ></Tab>
         </Tabs>
         {!selectedData || !selectedData.length ? (

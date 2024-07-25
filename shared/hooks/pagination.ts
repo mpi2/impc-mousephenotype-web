@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
-export const usePagination = <T,>(data: Array<T> = []) => {
-  const [activePage, setActivePage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+export const usePagination = <T,>(data: Array<T> = [], initialPageSize = 10) => {
+  const [activePage, setActivePage] = useState(0);
+  const [pageSize, setPageSize] = useState(initialPageSize);
   const [totalPages, setTotalPages] = useState(
     Math.ceil(data.length / pageSize)
   );
 
   const paginatedData = data.slice(
-    (activePage - 1) * pageSize,
-    (activePage - 1) * pageSize + pageSize
+    activePage * pageSize,
+    activePage * pageSize + pageSize
   );
 
   useEffect(() => {
@@ -23,12 +23,14 @@ export const usePagination = <T,>(data: Array<T> = []) => {
   }, [pageSize, data.length]);
 
   useEffect(() => {
-    setActivePage(prevState => {
-      if (prevState !== 1) {
-        return 1;
-      }
-      return prevState;
-    });
+    if (data.length) {
+      setActivePage(prevState => {
+        if (prevState !== 0) {
+          return 0;
+        }
+        return prevState;
+      });
+    }
   }, [data.length]);
 
   return {

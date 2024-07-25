@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import SortableTable from "@/components/SortableTable";
 import Pagination from "@/components/Pagination";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { TableCellProps } from "@/models/TableCell";
 import _ from "lodash";
 import type { Model } from "@/models";
@@ -12,10 +12,11 @@ const SmartTable = <T extends Model>(props: {
   columns: Array<{
     width: number;
     label: string;
-    field?: keyof T,
-    cmp: ReactElement<TableCellProps<T>>,
+    field?: keyof T;
+    cmp: ReactElement<TableCellProps<T>>;
     // refers to disable sort functionality
-    disabled?: boolean
+    disabled?: boolean;
+    sortField?: string;
   }>,
   data: Array<T>,
   defaultSort: [string, "asc" | "desc"],
@@ -28,28 +29,48 @@ const SmartTable = <T extends Model>(props: {
   customFiltering?: boolean,
   showLoadingIndicator?: boolean,
   customSortFunction?: (data: Array<T>, field: string, order: "asc" | "desc") => Array<T>;
+  highlightRowFunction?: (item: T) => boolean;
+  highlightRowColor?: string;
+  pagination?: {
+    totalItems: number;
+    onPageChange: (newPage: number) => void;
+    onPageSizeChange: (newPageSize: number) => void;
+    page: number;
+    pageSize: number;
+  };
+  onSortChange?: (sortOptions: string) => void;
 }) => {
-  const [query, setQuery] = useState(undefined);
-  const [sortOptions, setSortOptions] = useState<string>('');
   const {
     filteringEnabled = true,
     customFiltering = false,
     zeroResulsText = 'No data available',
     showLoadingIndicator = false,
+    highlightRowFunction = () => false,
+    highlightRowColor = '#00b0b0',
+    pagination = null,
+    onSortChange = (_) => {},
   } = props;
+  const [query, setQuery] = useState(undefined);
+  const [sortOptions, setSortOptions] = useState<string>('');
 
   const internalShowFilteringEnabled = filteringEnabled && !!props.filterFn && !customFiltering;
 
-  let mutatedData = props.data;
+  let mutatedData = props.data || [];
   if (props.filterFn) {
     mutatedData = mutatedData?.filter(item => props.filterFn(item, query));
   }
   const [field, order] = sortOptions.split(';');
-  if (field && order) {
+  if (field && order && !!pagination) {
     mutatedData = !!props.customSortFunction
       ? props.customSortFunction(mutatedData, field, order as "asc" | "desc")
       : _.orderBy(mutatedData, field, order as "asc" | "desc")
   }
+
+  useEffect(() => {
+    if (sortOptions) {
+      onSortChange(sortOptions);
+    }
+  }, [sortOptions]);
 
   const additionalControls = internalShowFilteringEnabled ?  (
     <Form.Control
@@ -74,6 +95,8 @@ const SmartTable = <T extends Model>(props: {
       data={mutatedData}
       additionalTopControls={additionalControls}
       additionalBottomControls={props.additionalBottomControls}
+      controlled={!!pagination}
+      {...pagination}
     >
       {(pageData) => (
         <SortableTable
@@ -89,9 +112,9 @@ const SmartTable = <T extends Model>(props: {
           }
         >
           {pageData.map((d, index) => (
-            <tr key={index}>
+            <tr key={index} style={highlightRowFunction(d) ? { border: `3px solid ${highlightRowColor}` } : {}}>
               {props.columns.map(({ field, cmp }, index) => (
-                <td key={index}>
+                <td key={index} style={{ borderColor: `var(--bs-table-border-color)` }}>
                   {React.cloneElement(cmp, { value: d, field })}
                 </td>
               ))}
@@ -100,7 +123,7 @@ const SmartTable = <T extends Model>(props: {
           {(pageData.length === 0 && showLoadingIndicator) && (
             <tr>
               {props.columns.map((_, index) => (
-                <td>
+                <td key={index}>
                   <Skeleton />
                 </td>
               ))}

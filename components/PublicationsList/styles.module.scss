@@ -8,10 +8,24 @@
     margin-bottom: 0;
     padding: 0;
   }
+  .title {
+    display: flex;
+    align-items: center;
+    font-size: 125%;
+  }
+  tbody > tr:nth-of-type(odd) > td {
+    --bs-table-bg: #FFF;
+  }
+  tbody > tr:nth-of-type(even) > td {
+    --bs-table-bg: #F7FBFC;
+  }
+  tbody > tr:first-child > td {
+    border-top-width: var(--bs-border-width);
+  }
 }
 
 .pubLoader {
-  min-height: 230px;
+  height: 230px;
 }
 .alleleList {
   word-break: break-word;

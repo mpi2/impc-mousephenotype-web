@@ -32,13 +32,13 @@ describe('Histopath page', () => {
 
     await waitFor(async () => {
       const rows = await screen.findAllByRole('row');
-      return expect(rows.length).toEqual(11);
+      return expect(rows.length).toEqual(12);
     });
     expect(await screen.findByTestId('top-last-page-btn')).toHaveTextContent('14');
     const searchBox = screen.getByRole('textbox', { name: 'Filter by parameters' });
     await user.type(searchBox, 'Brain');
     let rows = await screen.findAllByRole('row');
-    return expect(rows.length).toEqual(5);
+    return expect(rows.length).toEqual(6);
   });
 
   it('should filter by anatomy term if is specified in a query param', async () => {
@@ -61,7 +61,7 @@ describe('Histopath page', () => {
     );
     await waitFor(async () => {
       const rows = await screen.findAllByRole('row');
-      return expect(rows.length).toEqual(5);
+      return expect(rows.length).toEqual(6);
     });
     expect(screen.getByTestId('anatomy-badge')).toBeInTheDocument();
     await user.click(screen.getByTestId('anatomy-badge'));

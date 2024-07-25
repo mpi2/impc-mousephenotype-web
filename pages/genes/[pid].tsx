@@ -9,7 +9,6 @@ import Histopathology from "@/components/Gene/Histopathology";
 import Expressions from "@/components/Gene/Expressions";
 import Order from "@/components/Gene/Order";
 import { useEffect, useState } from "react";
-import { GeneComparatorTrigger } from "@/components/GeneComparator";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
@@ -27,8 +26,14 @@ const Gene = () => {
   const router = useRouter();
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
+  const [allelesStudiedLoading, setAllelesStudiedLoading] = useState<boolean>(true);
   const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
-  const allelesStudiedContextValue = {allelesStudied, setAlleles};
+  const allelesStudiedContextValue = {
+    allelesStudied,
+    setAlleles,
+    allelesStudiedLoading,
+    setAllelesStudiedLoading,
+  };
 
   const {
     isLoading,
@@ -56,20 +61,19 @@ const Gene = () => {
       <GeneContext.Provider value={gene}>
         <NumAllelesContext.Provider value={numAllelesContextValue}>
           <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
-            <GeneComparatorTrigger current={router.query.pid as string} />
-            <Search />
+            <Search/>
             <Container className="page">
-              <Summary {...{ gene, numOfAlleles, loading: isLoading, error: isError ? error.toString(): "" }} />
+              <Summary {...{gene, numOfAlleles, loading: isLoading, error: isError ? error.toString() : ""}} />
               {!!gene && (
                 <>
-                  <Phenotypes gene={gene} />
-                  <Expressions />
-                  <Images gene={gene} />
-                  <HumanDiseases gene={gene} />
-                  <Histopathology />
-                  <Publications gene={gene} />
-                  <ExternalLinks />
-                  <Order allelesStudied={allelesStudied} />
+                  <Phenotypes gene={gene}/>
+                  <Expressions/>
+                  <Images gene={gene}/>
+                  <HumanDiseases gene={gene}/>
+                  <Histopathology/>
+                  <Publications gene={gene}/>
+                  <ExternalLinks/>
+                  <Order allelesStudied={allelesStudied} allelesStudiedLoading={allelesStudiedLoading}/>
                 </>
               )}
             </Container>

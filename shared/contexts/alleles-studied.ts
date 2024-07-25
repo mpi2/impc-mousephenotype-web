@@ -2,10 +2,14 @@ import { createContext } from "react";
 
 type AllelesStudiedContext = {
   allelesStudied: Array<string>;
-  setAlleles: (newValue: Array<string>) => void
+  setAlleles: (newValue: Array<string>) => void;
+  allelesStudiedLoading: boolean;
+  setAllelesStudiedLoading: (newValue: boolean) => void;
 }
 
 export const AllelesStudiedContext = createContext<AllelesStudiedContext>({
   allelesStudied: [],
-  setAlleles: () => {}
+  setAlleles: () => {},
+  allelesStudiedLoading: true,
+  setAllelesStudiedLoading: () => {},
 });

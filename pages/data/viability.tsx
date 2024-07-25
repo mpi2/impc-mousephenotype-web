@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useViabilityQuery } from "@/hooks";
 import { Card, Search } from "@/components";
-import { Alert, Container } from "react-bootstrap";
+import { Alert, Container, Spinner } from "react-bootstrap";
 import styles from "@/pages/data/styles.module.scss";
 import Skeleton from "react-loading-skeleton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,7 +38,7 @@ const ViabilityChartPage = () => {
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
                 &nbsp;
-                Go Back to {activeDataset?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}
+                Go Back to <i>{activeDataset?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}</i>
               </Link>
             </span>
           </div>
@@ -50,10 +50,10 @@ const ViabilityChartPage = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              Viability data for {viabilityData?.[0]?.["geneSymbol"] || <Skeleton width="50px" inline />} gene
+              Viability data for <i>{viabilityData?.[0]?.["geneSymbol"] || <Skeleton width="50px" inline />}</i> gene
             </strong>
           </h1>
-          {!!viabilityData && (
+          {!isViabilityLoading ? (
             <div className="mb-0">
               <div
                 style={{
@@ -70,14 +70,17 @@ const ViabilityChartPage = () => {
                 </span>
               </div>
             </div>
+          ) : (
+            <span>
+              <Spinner animation="border" size="sm"/>&nbsp;
+              Loading data
+            </span>
           )}
-          {(!isViabilityLoading && viabilityData.length > 0) ? (
-            <ViabilityDataComparison
-              data={viabilityData}
-              selectedKey={selectedKey}
-              onSelectParam={setSelectedKey}
-            />
-          ) : <SkeletonTable />}
+          <ViabilityDataComparison
+            data={viabilityData}
+            selectedKey={selectedKey}
+            onSelectParam={setSelectedKey}
+          />
         </Card>
       </Container>
       <div

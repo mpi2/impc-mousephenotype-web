@@ -19,6 +19,7 @@ type CommonProps = {
   value?: string;
   allOptionEnabled?: boolean;
   displayEvenWithOnlyOneOption?: boolean;
+  emitValueLowercase?: boolean;
 };
 
 type Props = CommonProps & LabelProps;
@@ -36,6 +37,7 @@ const FilterBox = (props: Props) => {
     value,
     allOptionEnabled = true,
     displayEvenWithOnlyOneOption = false,
+    emitValueLowercase = false,
   } = props;
   const optionalControlProps: Record<string, string> = {};
   if (hideLabel) {
@@ -81,10 +83,11 @@ const FilterBox = (props: Props) => {
           placeholder="Search"
           style={controlStyle}
           defaultValue={undefined}
+          value={value}
           id={controlId}
           className={controlClassName}
           onChange={el =>
-            onChange(el.target.value.toLowerCase() || undefined)
+            onChange((emitValueLowercase ? el.target.value.toLowerCase() : el.target.value) || undefined)
           }
           {...optionalControlProps}
         >

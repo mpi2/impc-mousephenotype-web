@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
-import { formatAlleleSymbol } from "@/utils";
-import { Dataset } from "@/models";
-import styles from './styles.module.scss';
+import { Dataset, DatasetExtra } from "@/models";
 import { groupData, processData, getBackgroundColorForRow } from "./utils";
 import { Button } from "react-bootstrap";
+import { AlleleSymbol } from "@/components";
+import Skeleton from "react-loading-skeleton";
 
 type Props = {
   data: Array<Dataset>;
@@ -35,19 +35,21 @@ const BodyWeightDataComparison = (props: Props) => {
   })
   const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
 
-  const getVisibleRows = (data: Array<any>) => {
-    return data.slice(0, visibleRows);
-  };
+  const visibleData: Array<DatasetExtra> = useMemo(() => sorted.slice(0, visibleRows), [sorted, visibleRows]);
+
+  const tableHeaders = [
+    {width: 1, label: "Phenotyping Centre", field: "phenotypingCentre"},
+    {width: 2, label: "Allele", field: "alleleSymbol"},
+    {width: 1, label: "Zygosity", field: "zygosity"},
+    {width: 1, label: "Life Stage", field: "lifeStageName"},
+    {width: 1, label: "Colony Id", field: "colonyId",},
+  ];
 
   useEffect(() => {
     if (!!sorted[0]?.key && sorted[0]?.key !== selectedKey && selectedKey === '') {
       onSelectParam(sorted[0].key);
     }
   }, [sorted.length]);
-
-  if (!data) {
-    return null;
-  }
 
   return (
     <>
@@ -60,16 +62,9 @@ const BodyWeightDataComparison = (props: Props) => {
           })
         }}
         defaultSort={["phenotypingCentre", "asc"]}
-        headers={[
-          {width: 1, label: "Phenotyping Centre", field: "phenotypingCentre"},
-          {width: 2, label: "Allele", field: "alleleSymbol"},
-          {width: 1, label: "Zygosity", field: "zygosity"},
-          {width: 1, label: "Life Stage", field: "lifeStageName"},
-          {width: 1, label: "Colony Id", field: "colonyId",},
-        ]}
+        headers={tableHeaders}
       >
-        {getVisibleRows(sorted).map((d, i) => {
-          const allele = formatAlleleSymbol(d.alleleSymbol);
+        {visibleData.map((d, i) => {
           return (
             <tr
               key={d.key}
@@ -80,8 +75,7 @@ const BodyWeightDataComparison = (props: Props) => {
                 {d.phenotypingCentre}
               </td>
               <td>
-                {allele[0]}
-                <sup>{allele[1]}</sup>
+                <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
               </td>
               <td>{d.zygosity}</td>
               <td>{d.lifeStageName}</td>
@@ -89,6 +83,13 @@ const BodyWeightDataComparison = (props: Props) => {
             </tr>
           );
         })}
+        {visibleData.length === 0 && (
+          <tr>
+            {[...Array(tableHeaders.length)].map((_, i) => (
+              <td key={i}><Skeleton /></td>
+            ))}
+          </tr>
+        )}
       </SortableTable>
       <div style={{display: 'flex', justifyContent: 'center'}}>
         {visibleRows < sorted?.length && (

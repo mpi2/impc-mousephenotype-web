@@ -1,116 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sexual dimorphism landing page renders correctly 1`] = `
-[
+<div>
   <div
-    className="banner"
+    class="banner"
   >
     <div
-      className="pb-4 pt-5 container container"
+      class="pb-4 pt-5 container container"
     >
       <div
-        className="col-12 col-md-8 ps-4 pe-4"
+        class="col-12 col-md-8 ps-4 pe-4"
       >
         <div
-          className="tabs"
+          class="tabs"
         >
           <a
-            className="tab"
+            class="tab__active"
             href="/search"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Genes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="/search?type=phenotype"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            onTouchStart={[Function]}
           >
             Phenotypes
           </a>
           <a
-            className="tab"
+            class="tab"
             href="https://dev.mousephenotype.org/?s="
           >
             Help, news, blog
           </a>
         </div>
         <div
-          className="inputCont"
+          class="inputCont"
         >
           <input
-            className="input"
-            onChange={[Function]}
-            onKeyDown={[Function]}
+            class="input"
             placeholder="Search All 7824 Knockout Data..."
+            title="main search box"
             type="text"
             value=""
           />
           <button
-            className="searchBtn"
-            onClick={[Function]}
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
           >
             <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-magnifying-glass "
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
-              focusable="false"
               role="img"
-              style={{}}
               viewBox="0 0 512 512"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
                 fill="currentColor"
-                style={{}}
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </div>,
+  </div>
   <div
-    className="page container"
-    style={
-      {
-        "lineHeight": 2,
-      }
-    }
+    class="page container"
+    style="line-height: 2;"
   >
     <div
-      className="card"
+      class="card"
     >
       <div
-        className="subheading"
+        class="subheading"
       >
         <nav
           aria-label="breadcrumb"
         >
           <ol
-            className="breadcrumb"
+            class="breadcrumb"
           >
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Home
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               IMPC data collections
             </li>
             <li
               aria-current="page"
-              className="breadcrumb-item active"
+              class="breadcrumb-item active"
             >
               Sexual Dimorphism Data
             </li>
@@ -118,20 +109,42 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
         </nav>
       </div>
       <h1
-        className="mb-4 mt-2"
+        class="mb-4 mt-2"
       >
         <strong>
           IMPC Sexual Dimorphism Data
         </strong>
       </h1>
       <div
-        className="container"
+        class="fade alert alert-landing-page show"
+        role="alert"
       >
         <div
-          className="row"
+          class="alert-heading h4"
+        >
+          Attention
+        </div>
+        <p>
+          This publication page originally used the Data Release 4.2 
+          <br />
+          The number of mice and strains has not changed since then but the vignettes are displaying data from the latest Data Release.
+        </p>
+        <hr />
+        <a
+          class="link primary"
+          href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-04.2/"
+        >
+          Link to FTP site
+        </a>
+      </div>
+      <div
+        class="container"
+      >
+        <div
+          class="row"
         >
           <div
-            className="col-12"
+            class="col-12"
           >
             <p>
               IMPC data demonstrates the effect of sex on many phenotypes, supporting the importance of including males and females in biomedical research.
@@ -140,56 +153,56 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
               <li>
                 Press releases: 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="http://www.bbc.co.uk/programmes/b08vwn6w"
                 >
                   BBC Radio 4 - "inside Science"
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="https://www.newscientist.com/article/2138671-research-on-male-animals-prevents-women-from-getting-best-drugs/"
                 >
                   New Scientist
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="http://www.dailymail.co.uk/wires/reuters/article-4640316/Sexual-equality-medical-research-long-overdue-study-finds.html"
                 >
                   Daily Mail
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="https://www.sciencedaily.com/releases/2017/06/170626124505.htm"
                 >
                   Science Daily
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="http://fortune.com/2017/06/26/sexual-bias-medical-research/"
                 >
                   Fortune
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="//www.mousephenotype.org/news/study-of-unprecedented-size-reveals-how-sex-blindspot-could-misdirect-medical-research/"
                 >
                   IMPC
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="http://www.ebi.ac.uk/about/news/press-releases/sexual-dimorphism-dilemma"
                 >
                   EMBL-EBI
                 </a>
                  | 
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="http://www.sanger.ac.uk/news/view/study-reveals-how-sex-blindspot-could-misdirect-medical-research"
                 >
                   Sanger
@@ -197,7 +210,7 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
               </li>
               <li>
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="https://zenodo.org/record/260398#.WVIkChPys-c"
                 >
                   Supporting material to enable replicable analysis
@@ -205,7 +218,7 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
               </li>
               <li>
                 <a
-                  className="primary link"
+                  class="primary link"
                   href="https://www.nature.com/articles/ncomms15475"
                 >
                   Publication: Nature Communications 26 June 2017
@@ -217,7 +230,7 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1>
         <strong>
@@ -225,52 +238,42 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
         </strong>
       </h1>
       <div
-        className="row"
+        class="row"
       >
         <div
-          className="col-6"
+          class="col-6"
         >
           <div
-            style={
-              {
-                "height": "300px",
-                "position": "relative",
-                "width": "100%",
-              }
-            }
+            style="position: relative; width: 100%; height: 300px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
         </div>
         <div
-          className="col-6"
+          class="col-6"
         >
           <div
-            style={
-              {
-                "height": "300px",
-                "position": "relative",
-                "width": "100%",
-              }
-            }
+            style="position: relative; width: 100%; height: 300px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
         </div>
       </div>
       <div
-        className="row"
+        class="row"
       >
         <div
-          className="col"
+          class="col"
         >
           <p>
             The impact of sex on phenotypes of wild-type C57BL/6N mice measured using the IMPC adult phenotype pipeline at ten global research centers.
@@ -290,7 +293,7 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1>
         <strong>
@@ -298,52 +301,42 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
         </strong>
       </h1>
       <div
-        className="row"
+        class="row"
       >
         <div
-          className="col-6"
+          class="col-6"
         >
           <div
-            style={
-              {
-                "height": "300px",
-                "position": "relative",
-                "width": "100%",
-              }
-            }
+            style="position: relative; width: 100%; height: 300px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
         </div>
         <div
-          className="col-6"
+          class="col-6"
         >
           <div
-            style={
-              {
-                "height": "300px",
-                "position": "relative",
-                "width": "100%",
-              }
-            }
+            style="position: relative; width: 100%; height: 300px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
         </div>
       </div>
       <div
-        className="row"
+        class="row"
       >
         <div
-          className="col"
+          class="col"
         >
           <p>
             The impact of sex on phenotypes of knockout C57BL/6N mouse lines measured using the IMPC adult phenotype pipeline at ten global research centers. Only strains with an abnormal phenotype attributable to the knockout allele (i.e genotype effect) were included.
@@ -363,7 +356,7 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1>
         <strong>
@@ -389,7 +382,7 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
       </p>
     </div>
     <div
-      className="card"
+      class="card"
     >
       <h1>
         <strong>
@@ -397,17 +390,13 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
         </strong>
       </h1>
       <div
-        className="row"
+        class="row"
       >
         <div
-          className="col"
+          class="col"
         >
           <div
-            style={
-              {
-                "textAlign": "center",
-              }
-            }
+            style="text-align: center;"
           >
             <h3>
               HDL Cholesterol
@@ -415,105 +404,85 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
             <span>
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-arrow-up-long "
+                class="svg-inline--fa fa-arrow-up-long "
                 data-icon="arrow-up-long"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 384 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M214.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 109.3V480c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
                in 
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-mars "
+                class="svg-inline--fa fa-mars "
                 data-icon="mars"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
               , no effect in 
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-venus "
+                class="svg-inline--fa fa-venus "
                 data-icon="venus"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 384 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
             </span>
           </div>
           <div
-            style={
-              {
-                "height": "300px",
-                "position": "relative",
-                "width": "100%",
-              }
-            }
+            style="position: relative; width: 100%; height: 300px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
           <div
-            className="mt-3"
-            style={
-              {
-                "textAlign": "center",
-              }
-            }
+            class="mt-3"
+            style="text-align: center;"
           >
             <a
-              className="primary link"
+              class="primary link"
               href="/genes/MGI:1922246"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
             >
-              Usp47
-              <sup>
-                tm1b(EUCOMM)Wtsi
-              </sup>
+              <i>
+                Usp47
+                <sup>
+                  tm1b(EUCOMM)Wtsi
+                </sup>
+              </i>
             </a>
           </div>
         </div>
         <div
-          className="col"
+          class="col"
         >
           <div
-            style={
-              {
-                "textAlign": "center",
-              }
-            }
+            style="text-align: center;"
           >
             <h3>
               Bone Mineral Density
@@ -521,105 +490,85 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
             <span>
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-arrow-down-long "
+                class="svg-inline--fa fa-arrow-down-long "
                 data-icon="arrow-down-long"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 384 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M169.4 502.6c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 402.7 224 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 370.7L86.6 329.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
                in 
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-mars "
+                class="svg-inline--fa fa-mars "
                 data-icon="mars"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
               , no effect in 
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-venus "
+                class="svg-inline--fa fa-venus "
                 data-icon="venus"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 384 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
             </span>
           </div>
           <div
-            style={
-              {
-                "height": "300px",
-                "position": "relative",
-                "width": "100%",
-              }
-            }
+            style="position: relative; width: 100%; height: 300px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
           <div
-            className="mt-3"
-            style={
-              {
-                "textAlign": "center",
-              }
-            }
+            class="mt-3"
+            style="text-align: center;"
           >
             <a
-              className="primary link"
+              class="primary link"
               href="/genes/MGI:1890081"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
             >
-              Foxo3
-              <sup>
-                tm1.1(KOMP)Vlcg
-              </sup>
+              <i>
+                Foxo3
+                <sup>
+                  tm1.1(KOMP)Vlcg
+                </sup>
+              </i>
             </a>
           </div>
         </div>
         <div
-          className="col"
+          class="col"
         >
           <div
-            style={
-              {
-                "textAlign": "center",
-              }
-            }
+            style="text-align: center;"
           >
             <h3>
               Fructosamine
@@ -627,116 +576,98 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
             <span>
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-arrow-down-long "
+                class="svg-inline--fa fa-arrow-down-long "
                 data-icon="arrow-down-long"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 384 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M169.4 502.6c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 402.7 224 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 370.7L86.6 329.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
                in 
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-mars "
+                class="svg-inline--fa fa-mars "
                 data-icon="mars"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 448 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
               , 
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-arrow-up-long "
+                class="svg-inline--fa fa-arrow-up-long "
                 data-icon="arrow-up-long"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 384 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M214.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 109.3V480c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
                 in 
               <svg
                 aria-hidden="true"
-                className="svg-inline--fa fa-venus "
+                class="svg-inline--fa fa-venus "
                 data-icon="venus"
                 data-prefix="fas"
                 focusable="false"
                 role="img"
-                style={{}}
                 viewBox="0 0 384 512"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
                   fill="currentColor"
-                  style={{}}
                 />
               </svg>
             </span>
           </div>
           <div
-            style={
-              {
-                "height": "300px",
-                "position": "relative",
-                "width": "100%",
-              }
-            }
+            style="position: relative; width: 100%; height: 300px;"
           >
             <canvas
-              height={150}
+              height="0"
               role="img"
-              width={300}
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
             />
           </div>
           <div
-            className="mt-3"
-            style={
-              {
-                "textAlign": "center",
-              }
-            }
+            class="mt-3"
+            style="text-align: center;"
           >
             <a
-              className="primary link"
+              class="primary link"
               href="/genes/MGI:2446239"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-              onTouchStart={[Function]}
             >
-              Galnt18
-              <sup>
-                tm1b(KOMP)Wtsi
-              </sup>
+              <i>
+                Galnt18
+                <sup>
+                  tm1b(KOMP)Wtsi
+                </sup>
+              </i>
             </a>
           </div>
         </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

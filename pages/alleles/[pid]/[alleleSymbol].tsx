@@ -24,6 +24,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import Skeleton from "react-loading-skeleton";
 import classNames from "classnames";
+import { AlleleSymbol } from "@/components";
 
 const ProductItem = ({
   name,
@@ -82,7 +83,6 @@ const Gene = () => {
     }
   }, [allele]);
 
-
   if (isLoading || !allele) {
     return (
       <>
@@ -129,6 +129,7 @@ const Gene = () => {
     doesCrisprProductsExist,
     doesIntermediateVectorProductsExist,
     doesTargetingVectorProductsExist,
+    emsembleUrl
   } = allele;
 
   const productTypes = [
@@ -170,16 +171,13 @@ const Gene = () => {
               >
                 <FontAwesomeIcon icon={faArrowLeft}/>
                 &nbsp;
-                Go Back to {allele.geneSymbol || <Skeleton style={{width: '50px'}} inline/>}
+                Go Back to {<i>{allele.geneSymbol}</i> || <Skeleton style={{width: '50px'}} inline/>}
               </Link>
             </span>
           </div>
           <p className={`${styles.subheading} mt-2`}>ALLELE</p>
           <h1 className="mb-2 mt-2">
-            <strong>
-              {allele.geneSymbol}
-              <sup>{allele.alleleName}</sup>
-            </strong>{" "}
+            <AlleleSymbol symbol={`${allele.geneSymbol}<${allele.alleleName}>`} withLabel={false}></AlleleSymbol>
           </h1>
           <p className="mb-4 grey">{alleleDescription}</p>
           <div style={{display: "flex", flexWrap: "wrap"}}>
@@ -192,6 +190,7 @@ const Gene = () => {
           <AlleleMap
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
+            emsembleUrl={emsembleUrl}
           />
         )}
         {doesMiceProductsExist && (

@@ -79,7 +79,8 @@ const Search = ({
         router.replace({query: { ...router.query, query },});
       }
     }
-  }, [query])
+  }, [query]);
+
 
   return (
     <div className={`${styles.banner}`}>
@@ -116,7 +117,7 @@ const Search = ({
               title="main search box"
               className={styles.input}
               type="text"
-              placeholder="Search All 7824 Knockout Data..."
+              placeholder={ tabIndex === 0 ? "Search for a gene..." : "Search for a phenotype..."}
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);

@@ -121,17 +121,16 @@ const MetabolismLandingPage = () => {
           <h2>Procedures that can lead to relevant phenotype associations</h2>
           <span>Young Adult:</span>
           <ul>
-            {data.proceduresYoungAdult.map(prod => (
-              <li>
+            {data.proceduresYoungAdult.map((prod, index) => (
+              <li key={index}>
                 {prod.title}:&nbsp;
-                {prod.items.map(item => (
-                  <>
-                    <a
-                      className="primary link"
-                      href={`//www.mousephenotype.org/impress/protocol/${item.procedureId}`}>
-                      {item.name},&nbsp;
-                    </a>
-                  </>
+                {prod.items.map((item, indexItems) => (
+                  <a
+                    key={indexItems}
+                    className="primary link"
+                    href={`//www.mousephenotype.org/impress/protocol/${item.procedureId}`}>
+                    {item.name},&nbsp;
+                  </a>
                 ))}
               </li>
             ))}
@@ -200,7 +199,7 @@ const MetabolismLandingPage = () => {
                   { width: 1, label: "Parameter", field: "Parameter", cmp: <PlainTextCell style={{ textTransform: 'uppercase' }} /> },
                   { width: 1, label: "Sex", field: "Sex", cmp: <PlainTextCell /> },
                   { width: 1, label: "MGI_ID", field: "MGI_ID", cmp: <LinkCell prefix="/genes" />  },
-                  { width: 1, label: "Gene symbol", field: "Gene_symbol", cmp: <PlainTextCell /> },
+                  { width: 1, label: "Gene symbol", field: "Gene_symbol", cmp: <PlainTextCell style={{ fontStyle: 'italic' }} /> },
                   { width: 1, label: "Center", field: "Center", cmp: <PlainTextCell /> },
                   { width: 1, label: "Zygosity", field: "Zygosity", cmp: <PlainTextCell /> },
                   { width: 1, label: "Ratio KO WT", field: "Ratio_KO_WT", cmp: <PlainTextCell /> },

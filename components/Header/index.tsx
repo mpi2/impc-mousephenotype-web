@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import headerCss from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
+import { Collapse } from "react-bootstrap";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export interface MenuItem {
   name: string;
@@ -42,6 +45,10 @@ const getInternalLink = (name: string, link: string) => {
       return '/metabolism';
     case 'Essential Genes - Translating to Other Species':
       return '/conservation';
+    case 'Batch query':
+      return '/batch-query';
+    case 'Late Adult Data':
+      return '/late-adult-data';
     default:
       return link;
   }
@@ -59,6 +66,7 @@ const Header = () => {
     select: rewriteMenu,
   });
   const [activeMenuId, setActiveMenu] = useState(-1);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className={headerCss.header}>
@@ -138,11 +146,9 @@ const Header = () => {
                 <button
                   className="navbar-toggler d-inline d-lg-none collapsed"
                   type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarToggleExternalContent "
                   aria-controls="navbarToggleExternalContent"
-                  aria-expanded="false"
                   aria-label="Toggle navigation"
+                  onClick={() => setMobileMenuOpen(prevState => !prevState)}
                 >
                   <span className="icon-bar top-bar"></span>
                   <span className="icon-bar middle-bar"></span>
@@ -196,15 +202,7 @@ const Header = () => {
                                   </a>
                                   <div className="sub-pages">
                                     {subMenuItem.children
-                                      ?.sort((a, b) => {
-                                        if (a.name < b.name) {
-                                          return -1;
-                                        }
-                                        if (a.name > b.name) {
-                                          return 1;
-                                        }
-                                        return 0;
-                                      })
+                                      ?.sort((a, b) => a.sort - b.sort)
                                       .map((subMenutItemChild) => {
                                         return (
                                           <p key={subMenutItemChild.link}>
@@ -246,6 +244,80 @@ const Header = () => {
             );
           })}
       </div>
+      <Collapse in={mobileMenuOpen}>
+        <div className="mobile-nav" id="navbarToggleExternalContent">
+          <button
+            className="navbar-toggler"
+            type="button"
+            aria-controls="navbarToggleExternalContent"
+            aria-label="Toggle navigation"
+            onClick={() => setMobileMenuOpen(prevState => !prevState)}
+          >
+            <span className="icon-bar top-bar"></span>
+            <span className="icon-bar middle-bar"></span>
+            <span className="icon-bar bottom-bar"></span>
+          </button>
+          <div className="mobile-nav__search mb-3">
+            <form action="/">
+              <div className="row">
+                <div className="col col-10 text-left">
+                  <input
+                    type="search"
+                    className="form-control"
+                    id="s"
+                    name="s"
+                    placeholder="Search documentation and news"
+                  />
+                </div>
+                <div className="col col-2 text-right">
+                  <button type="submit" aria-describedby="svg-inline--fa-title-search-icon">
+                    <FontAwesomeIcon icon={faSearch} title="Search button" titleId="search-icon" />
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div className="row">
+            <div className="col-12">
+              <h3 className="mt-2">
+                <a className="" href="/data/summary">
+                  My Genes
+                </a>
+              </h3>
+              {menuItems.map((menuItem, i) => (
+                <Fragment key={i}>
+                  <h3 className="mt-2">
+                    <a href={menuItem.link} className={menuItem.classes}>
+                      {menuItem.name}
+                    </a>
+                  </h3>
+                  <div className="mobile-nav__sub-pages">
+                    {menuItem?.children
+                      .sort((a, b) => a.sort - b.sort)
+                      .map((subMenuItem, i) => (
+                        <Fragment key={i}>
+                          <p>
+                            <a href={subMenuItem.link}>{subMenuItem.name}</a>
+                          </p>
+                          <div className="sub-pages">
+                            {subMenuItem.children && subMenuItem.children
+                              .sort((a, b) => a.sort - b.sort)
+                              .map((subMenuItemChild) => (
+                                <p>
+                                  <a href={subMenuItemChild.link}>{subMenuItemChild.name}</a>
+                                </p>
+                            ))}
+                          </div>
+                      </Fragment>
+                    ))}
+                  </div>
+                </Fragment>
+              ))}
+
+            </div>
+          </div>
+        </div>
+      </Collapse>
     </div>
   );
 };
