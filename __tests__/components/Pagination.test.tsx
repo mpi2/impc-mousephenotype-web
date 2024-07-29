@@ -84,9 +84,9 @@ describe('Pagination component', () => {
     let page = 0;
     let pageSize = 10;
     const onPageChange = jest.fn((newValue: number) => page = newValue);
-    const onPageSizeChange = jest.fn((newValue: number) => page = newValue);
+    const onPageSizeChange = jest.fn((newValue: number) => pageSize = newValue);
 
-    render(
+    const { rerender } = render(
       <div data-testid="pagination-wrapper">
         <Pagination
           data={data.slice(page, pageSize * (page + 1))}
@@ -116,17 +116,110 @@ describe('Pagination component', () => {
 
     await user.click(screen.getByTestId('top-next-page'));
     expect(onPageChange).toHaveBeenCalledWith(1);
+    rerender(
+      <div data-testid="pagination-wrapper">
+        <Pagination
+          data={data.slice(page, pageSize * (page + 1))}
+          controlled
+          page={page}
+          pageSize={pageSize}
+          onPageSizeChange={onPageSizeChange}
+          onPageChange={onPageChange}
+          totalItems={data.length}
+        >
+          {(pageData) => pageData.map(data =>
+            <span
+              key={data}
+              data-testid={`child-${data}`}
+              className="child"
+            >
+              Item #{data}
+            </span>
+          )}
+        </Pagination>
+      </div>
+    );
     expect(screen.getByTestId('top-page-2-btn')).toHaveClass('active');
+
 
     await user.click(screen.getByTestId('top-next-page'));
     expect(onPageChange).toHaveBeenCalledWith(2);
+    rerender(
+      <div data-testid="pagination-wrapper">
+        <Pagination
+          data={data.slice(page, pageSize * (page + 1))}
+          controlled
+          page={page}
+          pageSize={pageSize}
+          onPageSizeChange={onPageSizeChange}
+          onPageChange={onPageChange}
+          totalItems={data.length}
+        >
+          {(pageData) => pageData.map(data =>
+            <span
+              key={data}
+              data-testid={`child-${data}`}
+              className="child"
+            >
+              Item #{data}
+            </span>
+          )}
+        </Pagination>
+      </div>
+    );
     expect(screen.getByTestId('top-page-3-btn')).toHaveClass('active');
 
     await user.click(screen.getByTestId('top-prev-page'));
     expect(onPageChange).toHaveBeenCalledWith(1);
+    rerender(
+      <div data-testid="pagination-wrapper">
+        <Pagination
+          data={data.slice(page, pageSize * (page + 1))}
+          controlled
+          page={page}
+          pageSize={pageSize}
+          onPageSizeChange={onPageSizeChange}
+          onPageChange={onPageChange}
+          totalItems={data.length}
+        >
+          {(pageData) => pageData.map(data =>
+            <span
+              key={data}
+              data-testid={`child-${data}`}
+              className="child"
+            >
+              Item #{data}
+            </span>
+          )}
+        </Pagination>
+      </div>
+    );
     expect(screen.getByTestId('top-page-2-btn')).toHaveClass('active');
 
     await user.selectOptions(screen.getByRole('combobox'), ['30']);
+    rerender(
+      <div data-testid="pagination-wrapper">
+        <Pagination
+          data={data.slice(page, pageSize * (page + 1))}
+          controlled
+          page={page}
+          pageSize={pageSize}
+          onPageSizeChange={onPageSizeChange}
+          onPageChange={onPageChange}
+          totalItems={data.length}
+        >
+          {(pageData) => pageData.map(data =>
+            <span
+              key={data}
+              data-testid={`child-${data}`}
+              className="child"
+            >
+              Item #{data}
+            </span>
+          )}
+        </Pagination>
+      </div>
+    );
     expect(screen.getByTestId('top-page-1-btn')).toHaveClass('active');
     expect(onPageSizeChange).toHaveBeenCalledWith(30);
   });

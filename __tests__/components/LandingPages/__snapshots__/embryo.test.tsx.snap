@@ -38,7 +38,7 @@ exports[`Embryo landing page renders correctly 1`] = `
         >
           <input
             class="input"
-            placeholder="Search All 7824 Knockout Data..."
+            placeholder="Search for a gene..."
             title="main search box"
             type="text"
             value=""
@@ -257,7 +257,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                       width="8.333333333333332%"
                     >
                       <button
-                        class="inlineButton headerButton"
+                        class="inlineButton headerButton disabled"
                         style="font-weight: normal;"
                       >
                         Category
@@ -269,7 +269,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                       width="8.333333333333332%"
                     >
                       <button
-                        class="inlineButton headerButton"
+                        class="inlineButton headerButton disabled"
                         style="font-weight: normal;"
                       >
                         Lines
@@ -375,7 +375,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                       width="8.333333333333332%"
                     >
                       <button
-                        class="inlineButton headerButton"
+                        class="inlineButton headerButton disabled"
                         style="font-weight: normal;"
                       >
                         Category
@@ -387,7 +387,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                       width="8.333333333333332%"
                     >
                       <button
-                        class="inlineButton headerButton"
+                        class="inlineButton headerButton disabled"
                         style="font-weight: normal;"
                       >
                         Lines
@@ -523,10 +523,27 @@ exports[`Embryo landing page renders correctly 1`] = `
               </div>
               <div
                 class="col-6"
-              />
+              >
+                <div
+                  class="input-group"
+                >
+                  <span
+                    class="input-group-text"
+                    id="gene-filter"
+                  >
+                    Filter by gene symbol
+                  </span>
+                  <input
+                    aria-describedby="gene-filter"
+                    class="form-control"
+                    id="gene-control"
+                    value=""
+                  />
+                </div>
+              </div>
             </div>
             <div
-              style="height: 600px; margin-right: 0px; margin-left: 0px; background-color: white; margin-top: 0px;"
+              style="height: 600px; margin-right: 0px; margin-left: 0px; background-color: white; margin-top: 0px; text-align: center;"
             >
               <div
                 style="width: 100%; height: 100%;"
@@ -536,47 +553,76 @@ exports[`Embryo landing page renders correctly 1`] = `
               aria-label="Page navigation example"
             >
               <ul
-                class="pagination justify-content-center"
+                class="pagination justify-content-center paginationNav"
               >
-                <li
-                  class="page-item disabled"
+                <button
+                  aria-label="Previous"
+                  class="pagNavBtn nav-btn"
+                  disabled=""
                 >
-                  <button
-                    aria-label="Previous"
-                    class="page-link"
+                  <svg
+                    aria-labelledby="svg-inline--fa-title-prev-page-icon"
+                    class="svg-inline--fa fa-arrow-left "
+                    data-icon="arrow-left"
+                    data-prefix="fas"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <span
-                      aria-hidden="true"
+                    <title
+                      id="svg-inline--fa-title-prev-page-icon"
                     >
-                      «
-                    </span>
-                  </button>
-                </li>
+                      previous page button
+                    </title>
+                    <path
+                      d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
                 <li
-                  class="page-item active"
+                  class="page-item"
                 >
                   <button
-                    class="page-link"
+                    class="pagNavBtn active"
                   >
                     1
                   </button>
                 </li>
                 <li
-                  class="page-item "
+                  class="page-item"
                 >
                   <button
-                    class="page-link"
+                    class="pagNavBtn"
                   >
                     2
                   </button>
                 </li>
                 <li
-                  class="page-item "
+                  class="page-item"
                 >
                   <button
-                    class="page-link"
+                    class="pagNavBtn"
                   >
                     3
+                  </button>
+                </li>
+                <li
+                  class="page-item"
+                >
+                  <button
+                    class="pagNavBtn"
+                  >
+                    4
+                  </button>
+                </li>
+                <li
+                  class="page-item"
+                >
+                  <button
+                    class="pagNavBtn"
+                  >
+                    5
                   </button>
                 </li>
                 <li
@@ -589,11 +635,11 @@ exports[`Embryo landing page renders correctly 1`] = `
                   </span>
                 </li>
                 <li
-                  class="page-item "
+                  class="page-item"
                 >
                   <button
                     aria-label="Previous"
-                    class="page-link"
+                    class="pagNavBtn last-page"
                   >
                     <span
                       aria-hidden="true"
@@ -602,20 +648,30 @@ exports[`Embryo landing page renders correctly 1`] = `
                     </span>
                   </button>
                 </li>
-                <li
-                  class="page-item "
+                <button
+                  aria-label="Next"
+                  class="pagNavBtn nav-btn"
                 >
-                  <button
-                    aria-label="Next"
-                    class="page-link"
+                  <svg
+                    aria-labelledby="svg-inline--fa-title-next-page-icon"
+                    class="svg-inline--fa fa-arrow-right "
+                    data-icon="arrow-right"
+                    data-prefix="fas"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <span
-                      aria-hidden="true"
+                    <title
+                      id="svg-inline--fa-title-next-page-icon"
                     >
-                      »
-                    </span>
-                  </button>
-                </li>
+                      next page button
+                    </title>
+                    <path
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
               </ul>
             </nav>
           </div>

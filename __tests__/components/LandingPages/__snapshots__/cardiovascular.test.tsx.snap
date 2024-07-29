@@ -38,7 +38,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         >
           <input
             class="input"
-            placeholder="Search All 7824 Knockout Data..."
+            placeholder="Search for a gene..."
             title="main search box"
             type="text"
             value=""
@@ -176,7 +176,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                       width="8.333333333333332%"
                     >
                       <button
-                        class="inlineButton headerButton"
+                        class="inlineButton headerButton disabled"
                         style="font-weight: normal;"
                       >
                         Phenotype
@@ -188,7 +188,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                       width="8.333333333333332%"
                     >
                       <button
-                        class="inlineButton headerButton"
+                        class="inlineButton headerButton disabled"
                         style="font-weight: normal;"
                       >
                         # Genes

@@ -38,7 +38,7 @@ exports[`Image comparator page renders correctly 1`] = `
         >
           <input
             class="input"
-            placeholder="Search All 7824 Knockout Data..."
+            placeholder="Search for a gene..."
             title="main search box"
             type="text"
             value=""
@@ -189,7 +189,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   placeholder="Search"
                   style="display: inline-block; width: 100px;"
                   type="text"
-                  value=""
+                  value="IMPC"
                 />
               </div>
             </div>
@@ -247,7 +247,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   placeholder="Search"
                   style="display: inline-block; width: 100px;"
                   type="text"
-                  value=""
+                  value="IMPC"
                 />
               </div>
             </div>
