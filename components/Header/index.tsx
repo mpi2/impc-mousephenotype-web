@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Collapse } from "react-bootstrap";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 export interface MenuItem {
   name: string;
@@ -136,7 +137,7 @@ const Header = () => {
                             onFocus={() => setActiveMenu(menuItem.id || -1)}
                             onMouseLeave={() => setActiveMenu(-1)}
                           >
-                            <a href={menuItem.link}>{menuItem.name}</a>
+                            <Link href={menuItem.link}>{menuItem.name}</Link>
                           </li>
                         );
                       })}
@@ -197,18 +198,18 @@ const Header = () => {
                                   key={subMenuItem.link}
                                   className="col col-auto text-left"
                                 >
-                                  <a href={subMenuItem.link}>
+                                  <Link href={subMenuItem.link}>
                                     {subMenuItem.name}
-                                  </a>
+                                  </Link>
                                   <div className="sub-pages">
                                     {subMenuItem.children
                                       ?.sort((a, b) => a.sort - b.sort)
                                       .map((subMenutItemChild) => {
                                         return (
                                           <p key={subMenutItemChild.link}>
-                                            <a href={subMenutItemChild.link}>
+                                            <Link href={subMenutItemChild.link}>
                                               {subMenutItemChild.name}
-                                            </a>
+                                            </Link>
                                           </p>
                                         );
                                       })}
@@ -227,9 +228,9 @@ const Header = () => {
                                   key={subMenuItem.link}
                                   className="col col-auto text-left"
                                 >
-                                  <a href={subMenuItem.link}>
+                                  <Link href={subMenuItem.link}>
                                     {subMenuItem.name}
-                                  </a>
+                                  </Link>
                                 </div>
                               );
                             })}
@@ -287,9 +288,9 @@ const Header = () => {
               {menuItems.map((menuItem, i) => (
                 <Fragment key={i}>
                   <h3 className="mt-2">
-                    <a href={menuItem.link} className={menuItem.classes}>
+                    <Link href={menuItem.link} className={menuItem.classes}>
                       {menuItem.name}
-                    </a>
+                    </Link>
                   </h3>
                   <div className="mobile-nav__sub-pages">
                     {menuItem?.children
@@ -297,14 +298,14 @@ const Header = () => {
                       .map((subMenuItem, i) => (
                         <Fragment key={i}>
                           <p>
-                            <a href={subMenuItem.link}>{subMenuItem.name}</a>
+                            <Link href={subMenuItem.link}>{subMenuItem.name}</Link>
                           </p>
                           <div className="sub-pages">
                             {subMenuItem.children && subMenuItem.children
                               .sort((a, b) => a.sort - b.sort)
                               .map((subMenuItemChild) => (
                                 <p>
-                                  <a href={subMenuItemChild.link}>{subMenuItemChild.name}</a>
+                                  <Link href={subMenuItemChild.link}>{subMenuItemChild.name}</Link>
                                 </p>
                             ))}
                           </div>
