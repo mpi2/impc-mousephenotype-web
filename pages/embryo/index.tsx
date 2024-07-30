@@ -183,7 +183,7 @@ const EmbryoLandingPage = () => {
             </Row>
           </Container>
         </Card>
-        <Card>
+        <Card id="embryo-data-grid">
           <Container>
             <h1><strong>Embryo Data Availability Grid</strong></h1>
             <Row>
