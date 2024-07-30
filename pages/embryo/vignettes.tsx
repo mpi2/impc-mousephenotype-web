@@ -86,7 +86,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/chtopPink.jpg" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/chtopPink.jpg" fluid alt=""/>
                   </Col>
                 </Row>
               </div>
@@ -151,7 +151,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Kldhc2.png" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Kldhc2.png" fluid alt=""/>
                     <Link className="link primary" href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1916804">
                       E18.5 Klhdc2 null embryo
                     </Link>
@@ -229,7 +229,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Acvr2aMicroCT.png" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Acvr2aMicroCT.png" fluid alt=""/>
                   </Col>
                 </Row>
               </div>
@@ -289,7 +289,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/cbx4.png" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/cbx4.png" fluid alt=""/>
                     <p>
                       Automated MRI analysis of E15.5 Cbx4tm1.1/tm1.1 mutants viewed in coronal section revealed
                       that mutant embryos had bilateral smaller trigeminal ganglia, thymus, and adrenal glands
@@ -343,7 +343,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/tmem100.png" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/tmem100.png" fluid alt=""/>
                     <p>
                       OPT analysis of E9.5 Tmem100 wildtype embryo compared to a Tmem100tm1e.1/tm1e.1 mutant embryo
                       and lacZ staining in an E12.5 Tmem100+/tm1e.1 embryo.
@@ -418,7 +418,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/eye4.png" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/eye4.png" fluid alt=""/>
                     <p>
                       Automated MRI analysis of E15.5 Eya4tm1b/tm1b mutants showed that mutant embryos had a
                       statistically smaller volumes of the cochlea and other tissues compared to Eya4+/+ wildtype
@@ -480,7 +480,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/tox3MRI.png" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/tox3MRI.png" fluid alt=""/>
                     <p>
                       Caudal to rostral coronal sections of whole brain MRI with automated volume analysis
                       revealed P7 Tox3tm1b/tm1b mutant mice had smaller (blue) and larger (red) tissues
@@ -541,7 +541,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Rsph9Slides.png" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Rsph9Slides.png" fluid alt=""/>
                     <p>
                       H&E stained coronal sections of P7 mice revealed enlarged ventricles and blocked sinuses
                       in the Rsph9tm1.1/tm1.1 mutant mice.
@@ -594,7 +594,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Pax7.png" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Pax7.png" fluid alt=""/>
                     <p>
                       Micro-CT analysis of E15.5 Pax7 embryos and lacZ staining of E12.5 embryos indicating
                       volume changes and staining in the nasal area.
@@ -660,7 +660,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Svep1.jpg" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Svep1.jpg" fluid alt=""/>
                   </Col>
                 </Row>
               </div>
@@ -725,7 +725,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Strn3.jpg" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Strn3.jpg" fluid alt=""/>
                   </Col>
                 </Row>
               </div>
@@ -787,7 +787,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Rab34.jpg" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Rab34.jpg" fluid alt=""/>
                   </Col>
                 </Row>
               </div>
@@ -842,7 +842,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Cox7c.jpg" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Cox7c.jpg" fluid alt=""/>
                   </Col>
                 </Row>
               </div>
@@ -852,10 +852,13 @@ const EmbryoVignettesPage = () => {
                   <Col xs={8}>
                     <p>
                       Biogenesis of lysosomal organelles complex 1, subunit 2 is a component of the BLOC-1 complex,
-                      which functions in the formation of lysosome-related organelles, is implicated in synapse function,
+                      which functions in the formation of lysosome-related organelles, is implicated in synapse
+                      function,
                       and is associated with gamma- tubulin and the centrosome [1].
-                      Homozygous mutants show complete preweaning lethality, with embryonic lethality occurring around E15.5.
-                      Surviving mutants at E15.5 show edema, hemorrhage, and abnormal cardiovascular development (Fig 1).
+                      Homozygous mutants show complete preweaning lethality, with embryonic lethality occurring around
+                      E15.5.
+                      Surviving mutants at E15.5 show edema, hemorrhage, and abnormal cardiovascular development (Fig
+                      1).
                       MicroCT datasets of E15.5 embryos also reveal lung hypoplasia, enlarged right atrium,
                       and compromised right ventricle of the heart (Fig.1, arrow).
                       Adult heterozygotes show abnormal immunophenotypes.
@@ -903,7 +906,334 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image src="/images/landing-pages/Cox7c.jpg" fluid alt=""/>
+                    <Image src="/data/images/landing-pages/Cox7c.jpg" fluid alt=""/>
+                  </Col>
+                </Row>
+              </div>
+              <div className="vignette">
+                <Row>
+                  <h1><strong>Gfpt1<sup>tm1b(EUCOMM)Wtsi</sup></strong></h1>
+                  <Col xs={8}>
+                    <p>
+                      Gfpt1 encodes glutamine:fructose-6-phosphate amidotransferase 1,
+                      which catalyzes the transfer of an amino group from glutamine onto fructose-6-phosphate.
+                      This is the first and rate limiting enzyme of the hexosamine biosynthetic pathway.
+                      <br/><br/>
+                      Gfpt1 mutants showed complete lethality by E12.5 with no homozygous embryos observed.
+                      Optical projection tomography (OPT) at E9.5 illustrated developmental delay,
+                      craniofacial abnormalities, abnormal allantois development, failure to complete turning
+                      and abnormal heart looping.
+                    </p>
+                    <p>Phenotype data links</p>
+                    <ul>
+                      <li>
+                        Viability:&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:95698&mpTermId=MP:0011100">
+                          Adult Homozygous - Lethal
+                        </Link>,&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:95698&alleleAccessionId=MGI:5637207&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell">
+                          E12.5 Homozygous - Lethal
+                        </Link>
+                      </li>
+                      <li>
+                        Embryo LacZ Expression:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:95698/images/IMPC_ELZ_064_001">Images</Link>
+                      </li>
+                      <li>
+                        3-D Imaging:&nbsp;
+                        <Link className="link primary"
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:95698">3D Viewer</Link>
+                      </li>
+                      <li>
+                        All adult and embryo phenotypes:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:95698#data">Table</Link>
+                      </li>
+                    </ul>
+                  </Col>
+                  <Col xs={4}>
+                    <Image src="/data/images/landing-pages/gfpt1.png" fluid alt=""/>
+                  </Col>
+                </Row>
+              </div>
+              <div className="vignette">
+                <Row>
+                  <h1><strong>Atg3<sup>tm1b(EUCOMM)Hmgu</sup></strong></h1>
+                  <Col xs={8}>
+                    <p>
+                      Atg3 is an E2-like protein-conjugating enzyme involved in autophagy broadly expressed
+                      during development and in the adult.
+                      <br/><br/>
+                      Atg3 mutants show complete preweaning lethality with no homozygous pups observed,
+                      but they are viable at least until E14.5.
+                      Micro-computed tomography (microCT) imaging at E14.5 revealed homozygous mutant fetuses
+                      had cardiovascular abnormalities such as ventral septum defects (VSD),
+                      thick atrio-ventricular valves and a thin myocardium, as well as an enlarged umbilical vein.
+                    </p>
+                    <p>Phenotype data links</p>
+                    <ul>
+                      <li>
+                        Viability:&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:1915091&mpTermId=MP:0011100">
+                          Adult Homozygous - Lethal
+                        </Link>,&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:1915091&alleleAccessionId=MGI:5548550&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell">
+                          E12.5 Homozygous - Viable
+                        </Link>,&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:1915091&alleleAccessionId=MGI:5548550&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=MRC%20Harwell">
+                          E14.5 Homozygous - Viable
+                        </Link>
+                      </li>
+                      <li>
+                        Embryo LacZ Expression:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:1915091/images/IMPC_ELZ_064_001">Images</Link>
+                      </li>
+                      <li>
+                        3-D Imaging:&nbsp;
+                        <Link className="link primary"
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1915091">3D Viewer</Link>
+                      </li>
+                      <li>
+                        All adult and embryo phenotypes:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:1915091#data">Table</Link>
+                      </li>
+                    </ul>
+                  </Col>
+                  <Col xs={4}>
+                    <Image src="/data/images/landing-pages/Atg3.png" fluid alt=""/>
+                  </Col>
+                </Row>
+              </div>
+              <div className="vignette">
+                <Row>
+                  <h1><strong>Kdm8<sup>tm1b(EUCOMM)Wtsi</sup></strong></h1>
+                  <Col xs={8}>
+                    <p>
+                      Kdm8 encodes for lysine (K)-specific demethylase 8, which is predicted to have dual functions
+                      as a histone demethylase and as a protein hydroxylase. The gene is formerly known as Jmjd5.
+                      <br/><br/>
+                      Kdm8 tm1b homozygous mutants showed complete lethality by E12.5.
+                      Optical projection tomography (OPT) showed that at E9.5 mutant embryos appear small in size,
+                      remain unturned and that they are developmentally delayed by this stage of gestation.
+                      Interestingly, Kdm8 tm1a homozygous mutants can live up to the end of gestation,
+                      suggesting that the targeted trap is a hypomorphic allele.
+                    </p>
+                    <p>Phenotype data links</p>
+                    <ul>
+                      <li>
+                        Viability:&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:1924285&mpTermId=MP:0011100">
+                          Adult Homozygous - Lethal
+                        </Link>
+                      </li>
+                      <li>
+                        Embryo LacZ Expression:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:1924285/images/IMPC_ELZ_064_001">Images</Link>
+                      </li>
+                      <li>
+                        3-D Imaging:&nbsp;
+                        <Link className="link primary"
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1924285">3D Viewer</Link>
+                      </li>
+                      <li>
+                        All adult and embryo phenotypes:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:1924285#data">Table</Link>
+                      </li>
+                    </ul>
+                  </Col>
+                  <Col xs={4}>
+                    <Image src="/data/images/landing-pages/Kdm8.png" fluid alt=""/>
+                  </Col>
+                </Row>
+              </div>
+              <div className="vignette">
+                <Row>
+                  <h1><strong>Slc39a8<sup>tm1b(EUCOMM)Wtsi</sup></strong></h1>
+                  <Col xs={8}>
+                    <p>
+                      Solute carrier family 39 (metal ion transporter), member 8 encodes a protein that functions
+                      as a transporter for several divalent cations. Mutants show complete preweaning lethality
+                      with no homozygous pups observed, but are viable at least until E14.5.
+                      Micro-computed tomography (microCT) imaging at E14.5 revealed mutants were smaller
+                      and had cardiovascular abnormalities, such as ventral septum defects.
+                      It also revealed mutants lacked a sternum and had a small chest cavity and liver.
+                    </p>
+                    <p>Phenotype data links</p>
+                    <ul>
+                      <li>
+                        Viability:&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:1914797&mpTermId=MP:0011100">
+                          Adult Homozygous - Lethal
+                        </Link>,&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:1914797&alleleAccessionId=MGI:5548544&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell">
+                          E12.5 Homozygous - Viable
+                        </Link>
+                      </li>
+                      <li>
+                        Embryo LacZ Expression:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:1914797/images/IMPC_ELZ_064_001">Images</Link>
+                      </li>
+                      <li>
+                        3-D Imaging:&nbsp;
+                        <Link className="link primary"
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1914797">3D Viewer</Link>
+                      </li>
+                      <li>
+                        All adult and embryo phenotypes:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:1914797#data">Table</Link>
+                      </li>
+                    </ul>
+                  </Col>
+                  <Col xs={4}>
+                    <Image src="/data/images/landing-pages/Slc39a8.png" fluid alt=""/>
+                    <p>
+                      Slc39a8-null mutants are significantly smaller than WT littermates and have smaller livers.
+                    </p>
+                  </Col>
+                </Row>
+              </div>
+              <div className="vignette">
+                <Row>
+                  <h1><strong>Gyg<sup>tm1b(KOMP)Wtsi</sup></strong></h1>
+                  <Col xs={8}>
+                    <p>
+                      Glycogenin is an enzyme that converts glucose to glycogen.
+                      Glycogenin catalyzes UDP-alpha-D-glucose + glycogenin ⇌ UDP + alpha-D-glucosylglycogenin.
+                      The enzyme is a homodimer of 37 kDa subunits.
+                      Mutations in human GYG1 are associated with Glyocgen Storage Disease XV and
+                      Polyglucosan Body Myopathy 2 (
+                      <Link className="link primary" href="http://www.omim.org/entry/603942">OMIM</Link>
+                      ). Homozygous null Gyg mice die between birth and weaning
+                      but were found in normal proportions at E18.5. Mutants were indistinguishable
+                      from littermates at E12.5, E15.5 or E18.5 but analysis of microCT images revealed
+                      obvious cardiac abnormalities, enlarged thymus and abnormal nervous system morphology.
+                      This is the first reported Gyg mouse mutant.
+                    </p>
+                    <p>Phenotype data links</p>
+                    <ul>
+                      <li>
+                        Viability:&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:1351614&mpTermId=MP:0011100">
+                          Adult Homozygous - Lethal
+                        </Link>,&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:1351614&alleleAccessionId=MGI:5548475&zygosity=homozygote&parameterStableId=IMPC_EVP_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVP_001&phenotypingCentre=BCM">
+                          E18.5 Homozygous - Viable
+                        </Link>
+                      </li>
+                      <li>
+                        Embryo LacZ Expression:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:1351614/images/IMPC_ELZ_064_001">Images</Link>
+                      </li>
+                      <li>
+                        3-D Imaging:&nbsp;
+                        <Link className="link primary"
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1351614">3D Viewer</Link>
+                      </li>
+                      <li>
+                        All adult and embryo phenotypes:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:1351614#data">Table</Link>
+                      </li>
+                    </ul>
+                  </Col>
+                  <Col xs={4}>
+                    <Image src="/data/images/landing-pages/Gygmutants.png" fluid alt=""/>
+                    <p>
+                      Single images from E18.5 microCT volumes showing spinal cord abnormalities (arrow),
+                      enlarged thymus (asterisk) and thickened myocardium (arrowhead)
+                      in homozygous null embryos compared to wild-type littermates.
+                    </p>
+                  </Col>
+                </Row>
+              </div>
+              <div className="vignette">
+                <Row>
+                  <h1><strong>Tmem132a<sup>tm1b(KOMP)Wtsi</sup></strong></h1>
+                  <Col xs={8}>
+                    <p>
+                      Transmembrane protein132a is transmembrane protein of unknown function.
+                      Homozygous null mutants were viable at normal proportions at E15.5 and E18.5
+                      but showed obvious and severe defects that were readibly visible by eye.
+                      Embryos had abnormal limb morphology with syndactyly, spina bifida, heart abnormalities.
+                      Some mutants were smaller than littermates.
+                    </p>
+                    <p>Phenotype data links</p>
+                    <ul>
+                      <li>
+                        Viability:&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:2147810&mpTermId=MP:0011100">
+                          Adult Homozygous - Lethal
+                        </Link>,&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:2147810&alleleAccessionId=MGI:5548753&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=BCM">
+                          E12.5 Homozygous - Viable
+                        </Link>,&nbsp;
+                        <Link
+                          className="link primary"
+                          href="/data/charts?mgiGeneAccessionId=MGI:2147810&alleleAccessionId=MGI:5548753&zygosity=homozygote&parameterStableId=IMPC_EVP_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVP_001&phenotypingCentre=BCM">
+                          E18.5 Homozygous - Viable
+                        </Link>
+                      </li>
+                      <li>
+                        Embryo LacZ Expression:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:2147810/images/IMPC_ELZ_064_001">Images</Link>
+                      </li>
+                      <li>
+                        3-D Imaging:&nbsp;
+                        <Link className="link primary"
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:2147810">3D Viewer</Link>
+                      </li>
+                      <li>
+                        All adult and embryo phenotypes:&nbsp;
+                        <Link className="link primary" href="/genes/MGI:2147810#data">Table</Link>
+                      </li>
+                      <li>
+                        Sagittal images from microCT:&nbsp;
+                        <Button
+                          onClick={() => setSelectedFile('Tmem132aE15.5 sag.png')}
+                          className="primary link"
+                          variant="link"
+                          style={{padding: 0}}
+                        >
+                          Centre provided image
+                        </Button>
+                      </li>
+                      <li>
+                        Axial images from microCT:&nbsp;
+                        <Button
+                          onClick={() => setSelectedFile('Tmem132a axial.png')}
+                          className="primary link"
+                          variant="link"
+                          style={{padding: 0}}
+                        >
+                          Centre provided image
+                        </Button>
+                      </li>
+                    </ul>
+                  </Col>
+                  <Col xs={4}>
+                    <Image src="/data/images/landing-pages/Tmem132a.png" fluid alt=""/>
                   </Col>
                 </Row>
               </div>
@@ -913,7 +1243,7 @@ const EmbryoVignettesPage = () => {
       </Container>
       <Modal show={!!selectedFile} onHide={() => setSelectedFile(undefined)} size="lg">
         <Modal.Body>
-          <Image src={`/images/landing-pages/${selectedFile}`} fluid alt=""/>
+          <Image src={`/data/images/landing-pages/${selectedFile}`} fluid alt=""/>
         </Modal.Body>
       </Modal>
     </>
