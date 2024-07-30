@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 module.exports = {
   basePath: '/data',
   //uncomment the following line when deploying with vercel
