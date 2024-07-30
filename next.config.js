@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 module.exports = {
   basePath: '/data',
   //uncomment the following line when deploying with vercel
@@ -7,8 +6,9 @@ module.exports = {
     return [
       {
         source: "/",
-        destination: "/search",
+        destination: "/data/search",
         permanent: false,
+        basePath: false
       },
     ];
   },
