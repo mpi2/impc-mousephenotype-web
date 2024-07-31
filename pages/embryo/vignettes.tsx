@@ -12,7 +12,9 @@ const additionalContentMap = {
   "eye4Lac.png": "Lac Z staining at E12.5 showed that Eya4 expression is primarily in the craniofacial mesenchyme, cochleae and outer ear, dermamyotome and limb.",
   "eya4LacSlides.png": "H&E stained sagittal section through the right cochlea of an Eya4<sup>+/+</sup> wildtype embryo compared to an Eya4<sup>tm1b/tm1b</sup> mutant embryo indicated that the mutant embryo had a hypoplastic cochlea. Higher magnification of the region (indicated by the white box) showed abnormal perilymphatic (periotic) mesenchyme (PM) in the mutant embryo compared to the wildtype embryo. In the wildtype embryo the perilymphatic mesenchyme (PM) was rarefied and had multifocal vacuolation (arrow) suggesting normal perilymph development. In the mutant embryo the perilymphatic mesenchyme (PM) did not show rarefaction and had reduced vacuolation (arrow) suggesting the cochlear hypoplasia was due to delayed perilymph development. BL-Bony Labyrinth (cartilage at E15.5), PM-Perilymphatic (periotic) mesenchyme, ML-Membranous Labyrinth, EN-Endolymph",
   "Tox3HIST.png": "H&E stained coronal section through the brain of a Tox3<sup>+/+</sup> wildtype embryo compared to a Tox3<sup>tm1b/tm1b</sup> mutant embryo indicated that the mutant embryo has a hypoplastic a dysplastic cerebellum (CE) with markedly reduced fissure formation. Higher magnification revealed that the transient external granular layer was absent in the Tox3<sup>tm1b/tm1b</sup> mutant mice and the subjacent molecular layer was hypotrophic and irregular in thickness (arrow).",
-  "Rsph9MRI.png": "Coronal and axial sections of whole brain MRI showed enlarged ventricles in P7 Rsph9<sup>tm1.1/tm1.1</sup> mutant mice. P7 Rsph9<sup>tm1.1/tm1.1</sup> mice brains had enlarged left and right lateral ventricles (arrows) when compared to the Rsph9<sup>+/+</sup> WT average."
+  "Rsph9MRI.png": "Coronal and axial sections of whole brain MRI showed enlarged ventricles in P7 Rsph9<sup>tm1.1/tm1.1</sup> mutant mice. P7 Rsph9<sup>tm1.1/tm1.1</sup> mice brains had enlarged left and right lateral ventricles (arrows) when compared to the Rsph9<sup>+/+</sup> WT average.",
+  "Tmem132aE15.5 sag.png": "Sagittal images from microCT volumes of wildtype (WT) and mutant (Tmem132a<sup>tm1b/tm1b</sup>) showing areas of defects (red arrows) indicating reduced neural tissue, heart defects and kidney abnormalities (extra lobe).",
+  "Tmem132a axial.png": "Axial images from microCT volumes of wildtype (WT) and mutant (Tmem132a<sup>tm1b/tm1b</sup>) showing kidney abnormalities (extra lobe)."
 };
 
 const EmbryoVignettesPage = () => {
@@ -246,10 +248,10 @@ const EmbryoVignettesPage = () => {
                       Chromobox 4 is in the polycomb protein family that are key regulators of transcription
                       and is reported to be upregulated in lung bud formation and required for thymus development.
                       Cbx4 mutants showed complete preweaning lethality but were viable at E12.5 and E15.5 with
-                      no obvious gross morphological change. Micro-CT analysis at E15.5 confirmed that Cbx4tm1.1/tm1.1
+                      no obvious gross morphological change. Micro-CT analysis at E15.5 confirmed that Cbx4<sup>tm1.1/tm1.1</sup>
                       mutants
                       had statistically smaller thymus and also revealed smaller adrenal glands
-                      and trigeminal ganglia compared to Cbx4+/+ wildtype embryos.
+                      and trigeminal ganglia compared to Cbx4<sup>+/+</sup> wildtype embryos.
                     </p>
                     <p>Phenotype data links</p>
                     <ul>
@@ -567,7 +569,7 @@ const EmbryoVignettesPage = () => {
                       Pax7 mutants showed complete preweaning lethality.
                       Micro-CT analysis at E15.5 revealed voxel-wise local volume differences with a larger nasal
                       septum,
-                      cavity and capsule (False Discovery Rate &lt;5%) in the E15.5 Pax7tm1.1/tm1.1 mutant embryos
+                      cavity and capsule (False Discovery Rate &lt;5%) in the E15.5 Pax7<sup>tm1.1/tm1.1</sup> mutant embryos
                       compared the wildtype embryos.
                       LacZ staining at E12.5 showed very strong staining in the medial region of the frontonasal
                       prominence
@@ -881,34 +883,27 @@ const EmbryoVignettesPage = () => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/data/charts?mgiGeneAccessionId=MGI:103226&mpTermId=MP:0011100">
+                          href="/data/charts?mgiGeneAccessionId=MGI:1920939&mpTermId=MP:0011100">
                           Adult Homozygous - Lethal
                         </Link>
                       </li>
                       <li>
-                        Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226/images/IMPC_ELZ_064_001">Images</Link>
+                        Embryo LacZ Expression: No expression
                       </li>
                       <li>
                         Gross Morphology:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226/images/IMPC_GEP_064_001">
-                          E18.5 Images
-                        </Link>,&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226/images/IMPC_GEO_050_001">
-                          E15.5 Images
-                        </Link>,&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226/images/IMPC_GEM_049_001">
+                        <Link className="link primary" href="/genes/MGI:1920939/images/IMPC_GEM_049_001">
                           E12.5 Images
                         </Link>
                       </li>
                       <li>
                         3-D Imaging:&nbsp;
                         <Link className="link primary"
-                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:103226">3D Viewer</Link>
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1920939">3D Viewer</Link>
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226#data">Table</Link>
+                        <Link className="link primary" href="/genes/MGI:1920939#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -1252,7 +1247,7 @@ const EmbryoVignettesPage = () => {
         <Modal.Body>
           <Image src={`/data/images/landing-pages/${selectedFile}`} fluid alt=""/>
           {!!additionalContentMap[selectedFile] && (
-            <p dangerouslySetInnerHTML={{ __html: additionalContentMap[selectedFile] }}></p>
+            <p className="mt-3" dangerouslySetInnerHTML={{ __html: additionalContentMap[selectedFile] }}></p>
           )}
         </Modal.Body>
       </Modal>
