@@ -13,6 +13,7 @@ import {
   Search,
   SortableTable
 } from "@/components";
+import Link from "next/link";
 
 const EmbryoLandingPage = () => {
   const { data: embryoWOL } = useEmbryoWOLQuery(data => {
@@ -209,7 +210,7 @@ const EmbryoLandingPage = () => {
                     we also provide access to our external partners' embryo images.
                   </li>
                   <li>
-                    <a className="link primary" href="https://beta.mousephenotype.org/data/embryo/vignettes">Embryo Vignettes</a>
+                    <Link className="link primary" href="/embryo/vignettes">Embryo Vignettes</Link>
                     &nbsp;Showcase of best embryo images with detailed explanations.
                   </li>
                   <li>
