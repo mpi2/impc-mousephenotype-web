@@ -7,6 +7,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState } from "react";
 
+const additionalContentMap = {
+  "cbx4_thymus_black.png": "Whole structural volume differences calculated as a percentage of whole body volume for the left and right thymic rudiment (left) and left and right adrenal (right) of Cbx4<sup>tm1.1/tm1.1</sup> mutant embryos compared to Cbx4<sup>+/+</sup> wildtype embryos. Both organs are significantly smaller in the Cbx4 mutant embryos at an FDR threshold of 5% where the error bars represent 95% confidence intervals.",
+  "eye4Lac.png": "Lac Z staining at E12.5 showed that Eya4 expression is primarily in the craniofacial mesenchyme, cochleae and outer ear, dermamyotome and limb.",
+  "eya4LacSlides.png": "H&E stained sagittal section through the right cochlea of an Eya4<sup>+/+</sup> wildtype embryo compared to an Eya4<sup>tm1b/tm1b</sup> mutant embryo indicated that the mutant embryo had a hypoplastic cochlea. Higher magnification of the region (indicated by the white box) showed abnormal perilymphatic (periotic) mesenchyme (PM) in the mutant embryo compared to the wildtype embryo. In the wildtype embryo the perilymphatic mesenchyme (PM) was rarefied and had multifocal vacuolation (arrow) suggesting normal perilymph development. In the mutant embryo the perilymphatic mesenchyme (PM) did not show rarefaction and had reduced vacuolation (arrow) suggesting the cochlear hypoplasia was due to delayed perilymph development. BL-Bony Labyrinth (cartilage at E15.5), PM-Perilymphatic (periotic) mesenchyme, ML-Membranous Labyrinth, EN-Endolymph",
+  "Tox3HIST.png": "H&E stained coronal section through the brain of a Tox3<sup>+/+</sup> wildtype embryo compared to a Tox3<sup>tm1b/tm1b</sup> mutant embryo indicated that the mutant embryo has a hypoplastic a dysplastic cerebellum (CE) with markedly reduced fissure formation. Higher magnification revealed that the transient external granular layer was absent in the Tox3<sup>tm1b/tm1b</sup> mutant mice and the subjacent molecular layer was hypotrophic and irregular in thickness (arrow).",
+  "Rsph9MRI.png": "Coronal and axial sections of whole brain MRI showed enlarged ventricles in P7 Rsph9<sup>tm1.1/tm1.1</sup> mutant mice. P7 Rsph9<sup>tm1.1/tm1.1</sup> mice brains had enlarged left and right lateral ventricles (arrows) when compared to the Rsph9<sup>+/+</sup> WT average."
+};
 
 const EmbryoVignettesPage = () => {
   const [selectedFile, setSelectedFile] = useState<string>(undefined);
@@ -77,10 +84,8 @@ const EmbryoVignettesPage = () => {
                           Complete preweaning lethality
                         </Link>
                       </li>
-                      <li>3-D imaging: Images</li>
-                      <li>Placental Histopathology: Images</li>
                       <li>
-                        All adult and embryo phenotypes:
+                        All adult and embryo phenotypes:&nbsp;
                         <Link className="link primary" href="/genes/MGI:1913761#data">Table</Link>
                       </li>
                     </ul>
@@ -136,16 +141,16 @@ const EmbryoVignettesPage = () => {
                         </Link>
                       </li>
                       <li>
-                        Embryo LacZ Expression:
+                        Embryo LacZ Expression:&nbsp;
                         <Link className="link primary" href="/genes/MGI:1916804/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
-                        3-D imaging:
+                        3-D imaging:&nbsp;
                         <Link className="link primary"
                               href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1916804">Images</Link>
                       </li>
                       <li>
-                        All adult and embryo phenotypes:
+                        All adult and embryo phenotypes:&nbsp;
                         <Link className="link primary" href="/genes/MGI:1916804#data">Table</Link>
                       </li>
                     </ul>
@@ -183,7 +188,7 @@ const EmbryoVignettesPage = () => {
                         <Link
                           className="primary link"
                           href="/data/charts?mgiGeneAccessionId=MGI:102806&alleleAccessionId=MGI:5548333&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=TCP">
-                          E12.5 Homozygous - Viable
+                          E15.5 Homozygous - Viable
                         </Link>
                       </li>
                       <li>
@@ -209,7 +214,7 @@ const EmbryoVignettesPage = () => {
                       <li>
                         3-D imaging:&nbsp;
                         <Link className="link primary"
-                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:102806">Images</Link>
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:102806">3D Viewer</Link>
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
@@ -259,7 +264,7 @@ const EmbryoVignettesPage = () => {
                           className="primary link"
                           href="/data/charts?mgiGeneAccessionId=MGI:1195985&alleleAccessionId=MGI:5548407&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=TCP">
                           E12.5 Homozygous - Viable
-                        </Link>
+                        </Link>,&nbsp;
                         <Link
                           className="primary link"
                           href="/data/charts?mgiGeneAccessionId=MGI:1195985&alleleAccessionId=MGI:5548407&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=TCP">
@@ -269,7 +274,7 @@ const EmbryoVignettesPage = () => {
                       <li>
                         3-D imaging:&nbsp;
                         <Link className="link primary"
-                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1195985">Images</Link>
+                              href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1195985">3D Viewer</Link>
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
@@ -278,12 +283,14 @@ const EmbryoVignettesPage = () => {
                       <li>
                         3D Volumetric Analysis:&nbsp;
                         <Button
-                          onClick={() => setSelectedFile('cbx4_thymus_black.png')}
+                          onClick={() => {
+                            setSelectedFile('cbx4_thymus_black.png');
+                          }}
                           className="primary link"
                           variant="link"
                           style={{padding: 0}}
                         >
-                          Image
+                          Graph
                         </Button>
                       </li>
                     </ul>
@@ -323,7 +330,7 @@ const EmbryoVignettesPage = () => {
                         <Link
                           className="primary link"
                           href="/data/charts?mgiGeneAccessionId=MGI:1915138&alleleAccessionId=MGI:5548552&zygosity=homozygote&parameterStableId=IMPC_EVL_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVL_001&phenotypingCentre=TCP">
-                          E12.5 Homozygous - Viable
+                          E9.5 Homozygous - Viable
                         </Link>
                       </li>
                       <li>
@@ -574,7 +581,7 @@ const EmbryoVignettesPage = () => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/data/charts?mgiGeneAccessionId=MGI:97491&mpTermId=MP:0011100">
+                          href="/data/charts?mgiGeneAccessionId=MGI:97491&alleleAccessionId=MGI:5505636&zygosity=homozygote&parameterStableId=IMPC_VIA_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_VIA_001&phenotypingCentre=JAX">
                           Adult Homozygous - Subviable
                         </Link>
                       </li>
@@ -1244,6 +1251,9 @@ const EmbryoVignettesPage = () => {
       <Modal show={!!selectedFile} onHide={() => setSelectedFile(undefined)} size="lg">
         <Modal.Body>
           <Image src={`/data/images/landing-pages/${selectedFile}`} fluid alt=""/>
+          {!!additionalContentMap[selectedFile] && (
+            <p dangerouslySetInnerHTML={{ __html: additionalContentMap[selectedFile] }}></p>
+          )}
         </Modal.Body>
       </Modal>
     </>
