@@ -230,7 +230,7 @@ const PublicationsList = (props: PublicationListProps) => {
                       {getListOfAlleles(pub).map(allele => {
                         return (
                           <>
-                            <Link className="primary link" href={`/genes/${allele.mgiGeneAccessionId}`}>
+                            <Link className="primary link" href={`/data/genes/${allele.mgiGeneAccessionId}`}>
                               <AlleleSymbol symbol={allele.alleleSymbol} withLabel={false} />
                             </Link>
                             &nbsp;

@@ -360,7 +360,7 @@ const ImagesCompare = () => {
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                href={`/genes/${pid}#images`}
+                href={`/data/genes/${pid}#images`}
                 className="mb-3"
                 style={{textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem'}}
               >

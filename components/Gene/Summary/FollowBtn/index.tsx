@@ -62,7 +62,7 @@ export default () => {
           <Login onLogin={login} />
           <p className="mt-5 small grey">
             Don’t have an account?{" "}
-            <Link href="/newAccountRequest" className="secondary">
+            <Link href="/data/newAccountRequest" className="secondary">
               Sign up
             </Link>
           </p>
@@ -101,7 +101,7 @@ export default () => {
             your email address.
           </p>
           <p>
-            <Link href="/summary">
+            <Link href="/data/summary">
               <Button
                 variant="light"
                 className="secondary-x"

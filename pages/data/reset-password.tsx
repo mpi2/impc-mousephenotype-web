@@ -1,12 +1,11 @@
-import Search from "../components/Search";
-import Card from "../components/Card";
 import Link from "next/link";
 import { Button, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import styles from "./register.module.scss";
 import { useState } from "react";
-import EmailSent from "../components/MyGenes/EmailSent";
+import EmailSent from "@/components/MyGenes/EmailSent";
+import { Card, Search } from "@/components";
 
 const ResetPassword = () => {
   const [sent, setSent] = useState(false);
@@ -21,7 +20,7 @@ const ResetPassword = () => {
       <Container style={{ maxWidth: 1240 }} className="page">
         <Card>
           <p className="small caps mb-2" style={{ letterSpacing: "0.1rem" }}>
-            <Link href="/summary">
+            <Link href="/data/summary">
               <span className="primary">MY GENES</span>
             </Link>{" "}
             / RESET PASSWORD

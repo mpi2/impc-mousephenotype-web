@@ -1,6 +1,6 @@
 import { Container, Breadcrumb, Row, Col, Image } from "react-bootstrap";
 import styles from './styles.module.scss';
-import data from '../../mocks/data/landing-pages/embryo.json';
+import data from '../../../mocks/data/landing-pages/embryo.json';
 import Head from "next/head";
 import _ from "lodash";
 import { useEmbryoWOLQuery } from "@/hooks";
@@ -210,7 +210,7 @@ const EmbryoLandingPage = () => {
                     we also provide access to our external partners' embryo images.
                   </li>
                   <li>
-                    <Link className="link primary" href="/embryo/vignettes">Embryo Vignettes</Link>
+                    <Link className="link primary" href="/data/embryo/vignettes">Embryo Vignettes</Link>
                     &nbsp;Showcase of best embryo images with detailed explanations.
                   </li>
                   <li>

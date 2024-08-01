@@ -1,7 +1,5 @@
 import Link from "next/link";
-import Search from "../components/Search";
 import { Button, Container } from "react-bootstrap";
-import Card from "../components/Card";
 import {
   faCog,
   faLock,
@@ -10,9 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import Pagination from "../components/Pagination";
-import SortableTable from "../components/SortableTable";
 import _ from "lodash";
+import { Card, Pagination, Search, SortableTable } from "@/components";
 
 const subscriptions = [
   {

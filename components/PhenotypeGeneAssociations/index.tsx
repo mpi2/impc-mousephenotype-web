@@ -41,7 +41,7 @@ const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(props: TableCellProps<
   return (
     <span style={{ lineHeight: 1.5 }}>
       <small>
-        <Link className="link" href={`/genes/${props.value.mgiGeneAccessionId}`}>
+        <Link className="link" href={`/data/genes/${props.value.mgiGeneAccessionId}`}>
           <i>{allele[0]}</i>
         </Link>
       </small>

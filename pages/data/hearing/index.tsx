@@ -1,5 +1,5 @@
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import data from '../../mocks/data/landing-pages/hearing.json';
+import data from '../../../mocks/data/landing-pages/hearing.json';
 import { SmartTable, PlainTextCell } from "@/components/SmartTable";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { Chart } from "react-chartjs-2";
@@ -303,7 +303,7 @@ const HearingLandingPage = () => {
               <Col>
                 <div style={{ textAlign: 'center' }}>
                   <h2 style={{ marginBottom: 0 }}>Novel, mild hearing loss</h2>
-                  <Link className="primary link" href={`/genes/${data.adgrb1.mgiGeneAccessionId}`}>
+                  <Link className="primary link" href={`/data/genes/${data.adgrb1.mgiGeneAccessionId}`}>
                     <AlleleSymbol symbol={data.adgrb1.alleleSymbol} withLabel={false} />
                   </Link>
                 </div>
@@ -312,7 +312,7 @@ const HearingLandingPage = () => {
               <Col>
                 <div style={{ textAlign: 'center' }}>
                   <h2 style={{ marginBottom: 0 }}>Know, severe hearing loss</h2>
-                  <Link className="primary link" href={`/genes/${data.elmod1.mgiGeneAccessionId}`}>
+                  <Link className="primary link" href={`/data/genes/${data.elmod1.mgiGeneAccessionId}`}>
                     <AlleleSymbol symbol={data.elmod1.alleleSymbol} withLabel={false} />
                   </Link>
                 </div>
@@ -323,7 +323,7 @@ const HearingLandingPage = () => {
               <Col>
                 <div style={{ textAlign: 'center' }}>
                   <h2 style={{ marginBottom: 0 }}>Novel, high-frequency hearing loss</h2>
-                  <Link className="primary link" href={`/genes/${data.ccdc88c.mgiGeneAccessionId}`}>
+                  <Link className="primary link" href={`/data/genes/${data.ccdc88c.mgiGeneAccessionId}`}>
                     <AlleleSymbol symbol={data.ccdc88c.alleleSymbol} withLabel={false} />
                   </Link>
                 </div>
@@ -332,7 +332,7 @@ const HearingLandingPage = () => {
               <Col>
                 <div style={{ textAlign: 'center' }}>
                   <h2 style={{ marginBottom: 0 }}>Novel, severe hearing loss</h2>
-                  <Link className="primary link" href={`/genes/${data.zfp719.mgiGeneAccessionId}`}>
+                  <Link className="primary link" href={`/data/genes/${data.zfp719.mgiGeneAccessionId}`}>
                     <AlleleSymbol symbol={data.zfp719.alleleSymbol} withLabel={false} />
                   </Link>
                 </div>

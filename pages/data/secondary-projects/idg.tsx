@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Breadcrumb, Col, Container, Row, Image, Table } from "react-bootstrap";
 import { Card, LoadingProgressBar, Search, PaginationControls, ChordDiagram, PieChart } from "@/components";
-import data from "../../mocks/data/landing-pages/idg.json";
+import data from "../../../mocks/data/landing-pages/idg.json";
 import { useMemo, useRef, useState, useImperativeHandle, forwardRef } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from "chart.js";
@@ -55,7 +55,7 @@ type Gene = {
 };
 
 const getLinksToGenePage = (gene: Gene) => {
-  const url = `/genes/${gene.mgi_accession_id}`;
+  const url = `/data/genes/${gene.mgi_accession_id}`;
   const products = [];
   if (gene.es_cell_production_status === "ES Cells Produced") {
     products.push("ES Cells");
@@ -179,7 +179,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
             {data.heatmapTopLevelPhenotypes.map(phenotype => (
               <th key={phenotype.id}>
                 <span className={styles.verticalHeader}>
-                  <Link className="primary link" href={`/phenotypes/${phenotype.id}`}>
+                  <Link className="primary link" href={`/data/phenotypes/${phenotype.id}`}>
                     {phenotype.name}
                   </Link>
                 </span>
@@ -191,7 +191,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
           <tr>
             <td className={styles.geneCell}>
               <Link
-                href={`/genes/${gene.mgi_accession_id}`}
+                href={`/data/genes/${gene.mgi_accession_id}`}
                 className="primary link"
                 style={{backgroundColor: 'initial', padding: 0}}
               >
@@ -258,7 +258,7 @@ const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>((
           {filteredList.map(gene => (
             <tr key={gene.mgi_accession_id}>
               <td>
-                <Link className="link primary" href={`/genes/${gene.mgi_accession_id}`}>{gene.marker_symbol}</Link>
+                <Link className="link primary" href={`/data/genes/${gene.mgi_accession_id}`}>{gene.marker_symbol}</Link>
                 &nbsp;({gene.mgi_accession_id})
               </td>
               <td>

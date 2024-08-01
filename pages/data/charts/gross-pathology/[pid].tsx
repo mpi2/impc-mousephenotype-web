@@ -24,7 +24,7 @@ const GrossPathChartPage = () => {
         <Row>
           <Col>
             <Card style={{ marginTop: '-80px' }}>
-              <Link href={`/genes/${mgiGeneAccessionId}/#data`} className="grey mb-3 small">
+              <Link href={`/data/genes/${mgiGeneAccessionId}/#data`} className="grey mb-3 small">
                 <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
                 BACK TO GENE
               </Link>

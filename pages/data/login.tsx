@@ -1,9 +1,8 @@
-import Search from "../components/Search";
-import LoginForm from "../components/MyGenes/Login";
-import Card from "../components/Card";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Container } from "react-bootstrap";
+import { Card, Search } from "@/components";
+import LoginForm from "@/components/MyGenes/Login";
 
 const Login = () => {
   const router = useRouter();
@@ -34,7 +33,7 @@ const Login = () => {
             <LoginForm onLogin={afterLogin} />
             <p className="mt-5 grey">
               Don’t have an account?{" "}
-              <Link href="/newAccountRequest" className="secondary">
+              <Link href="/data/newAccountRequest" className="secondary">
                 Sign up
               </Link>
             </p>

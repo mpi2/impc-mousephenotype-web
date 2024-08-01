@@ -1,5 +1,3 @@
-import Search from "../components/Search";
-import Card from "../components/Card";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Button, Container, Form } from "react-bootstrap";
@@ -10,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./register.module.scss";
 import { useState } from "react";
+import { Card, Search } from "@/components";
 
 const DeleteAccount = () => {
   const router = useRouter();
@@ -25,7 +24,7 @@ const DeleteAccount = () => {
       <Container style={{ maxWidth: 1240 }} className="page">
         <Card>
           <p className="small caps mb-2" style={{ letterSpacing: "0.1rem" }}>
-            <Link href="/summary">
+            <Link href="/data/summary">
               <span className="primary">MY GENES</span>
             </Link>{" "}
             / DELETE ACCOUNT

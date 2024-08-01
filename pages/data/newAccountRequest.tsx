@@ -1,11 +1,10 @@
-import Search from "../components/Search";
-import Card from "../components/Card";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Button, Container, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import styles from "./register.module.scss";
+import { Card, Search } from "@/components";
 
 const Register = () => {
   const router = useRouter();
@@ -52,7 +51,7 @@ const Register = () => {
             </Form>
             <p className="mt-5 grey">
               Already have an account?{" "}
-              <Link href="/login" className="secondary">
+              <Link href="/data/login" className="secondary">
                 Log in
               </Link>
             </p>

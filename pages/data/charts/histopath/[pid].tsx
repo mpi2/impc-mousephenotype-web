@@ -79,7 +79,7 @@ const HistopathChartPage = () => {
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                href={`/genes/${mgiGeneAccessionId}#images`}
+                href={`/data/genes/${mgiGeneAccessionId}#images`}
                 className="mb-3"
                 style={{textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem'}}
               >

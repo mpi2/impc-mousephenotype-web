@@ -1,4 +1,4 @@
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
 import Card from "@/components/Card";
 import { useRouter } from "next/router";
@@ -89,7 +89,7 @@ const Gene = () => {
         <Search />
         <Container className="page">
           <Card>
-            <Link href={`/genes/${pid}/#order`} className="grey mb-3 small">
+            <Link href={`/data/genes/${pid}/#order`} className="grey mb-3 small">
               <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
               BACK TO GENE
             </Link>
@@ -106,7 +106,7 @@ const Gene = () => {
         <Search />
         <Container className="page">
           <Card>
-            <Link href={`/genes/${pid}#order`} className="grey mb-3 small">
+            <Link href={`/data/genes/${pid}#order`} className="grey mb-3 small">
               <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
               BACK TO GENE
             </Link>
@@ -165,7 +165,7 @@ const Gene = () => {
           <div className="subheading">
             <span className="subheadingSection primary">
               <Link
-                href={`/genes/${pid}`}
+                href={`/data/genes/${pid}`}
                 className="mb-3"
                 style={{textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem'}}
               >
@@ -229,7 +229,7 @@ const Gene = () => {
         )}
         <Card>
           <Link
-            href={`/genes/${pid}/#order`}
+            href={`/data/genes/${pid}/#order`}
             scroll={false}
             className="primary link"
           >

@@ -31,7 +31,7 @@ const BodyWeightChartPage = () => {
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                href={`/genes/${mgiGeneAccessionId}`}
+                href={`/data/genes/${mgiGeneAccessionId}`}
                 className="mb-3"
                 style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem' }}
               >

@@ -45,11 +45,11 @@ const EmbryoVignettesPage = () => {
                   The vignettes showcase the IMPC embryo pipeline.
                   They highlight the different phenotyping procedures centres employ to phenotype embryonic lethal or subviable nulls.
                   For more information on the pipeline refer to the:&nbsp;
-                  <Link className="link primary" href="/embryo">IMPC Embryo Pipeline Introduction</Link>,
+                  <Link className="link primary" href="/data/embryo">IMPC Embryo Pipeline Introduction</Link>,
                   or read more in our paper&nbsp;
                   <Link className="link primary" href="https://europepmc.org/articles/PMC5295821">High-throughput discovery of novel developmental phenotypes, Nature 2016</Link>.
                   For a comprehensive list of lines with 3D image data refer to:&nbsp;
-                  <Link className="link primary" href="/embryo#embryo-data-grid">IMPC 3D Embryo Data</Link>.
+                  <Link className="link primary" href="/data/embryo#embryo-data-grid">IMPC 3D Embryo Data</Link>.
                 </p>
               </Col>
             </Row>
@@ -88,7 +88,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1913761#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1913761#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -144,7 +144,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1916804/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1916804/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         3-D imaging:&nbsp;
@@ -153,7 +153,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1916804#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1916804#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -206,11 +206,11 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:102806/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:102806/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         Gross Morphology:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:102806/images/IMPC_GEO_050_001">E15.5
+                        <Link className="link primary" href="/data/genes/MGI:102806/images/IMPC_GEO_050_001">E15.5
                           Images</Link>
                       </li>
                       <li>
@@ -220,7 +220,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:102806#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:102806#data">Table</Link>
                       </li>
                       <li>
                         Embryo Histopathology:&nbsp;
@@ -280,7 +280,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1195985#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1195985#data">Table</Link>
                       </li>
                       <li>
                         3D Volumetric Analysis:&nbsp;
@@ -337,7 +337,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Gross Morphology:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1915138/images/IMPC_GEL_044_001">E9.5
+                        <Link className="link primary" href="/data/genes/MGI:1915138/images/IMPC_GEL_044_001">E9.5
                           Images</Link>
                       </li>
                       <li>
@@ -347,7 +347,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1915138#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1915138#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -422,7 +422,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1337104#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1337104#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -484,7 +484,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:3039593#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:3039593#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -534,7 +534,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1922814#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1922814#data">Table</Link>
                       </li>
                       <li>
                         Whole Brain MRI:&nbsp;
@@ -589,7 +589,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:97491/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:97491/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         3-D imaging:&nbsp;
@@ -598,7 +598,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:97491#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:97491#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -646,14 +646,14 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1928849/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1928849/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         Gross Morphology:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1928849/images/IMPC_GEP_064_001">
+                        <Link className="link primary" href="/data/genes/MGI:1928849/images/IMPC_GEP_064_001">
                           E18.5 Images
                         </Link>,&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1928849/images/IMPC_GEO_050_001">
+                        <Link className="link primary" href="/data/genes/MGI:1928849/images/IMPC_GEO_050_001">
                           E15.5 Images
                         </Link>
                       </li>
@@ -664,7 +664,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1928849#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1928849#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -714,11 +714,11 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:2151064/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:2151064/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         Gross Morphology:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:2151064/images/IMPC_GEO_050_001">
+                        <Link className="link primary" href="/data/genes/MGI:2151064/images/IMPC_GEO_050_001">
                           E15.5 Images
                         </Link>
                       </li>
@@ -729,7 +729,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:2151064#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:2151064#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -770,17 +770,17 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:104606/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:104606/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         Gross Morphology:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:104606/images/IMPC_GEP_064_001">
+                        <Link className="link primary" href="/data/genes/MGI:104606/images/IMPC_GEP_064_001">
                           E18.5 Images
                         </Link>,&nbsp;
-                        <Link className="link primary" href="/genes/MGI:104606/images/IMPC_GEO_050_001">
+                        <Link className="link primary" href="/data/genes/MGI:104606/images/IMPC_GEO_050_001">
                           E15.5 Images
                         </Link>,&nbsp;
-                        <Link className="link primary" href="/genes/MGI:104606/images/IMPC_GEM_049_001">
+                        <Link className="link primary" href="/data/genes/MGI:104606/images/IMPC_GEM_049_001">
                           E12.5 Images
                         </Link>
                       </li>
@@ -791,7 +791,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:104606#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:104606#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -825,17 +825,17 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:103226/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         Gross Morphology:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226/images/IMPC_GEP_064_001">
+                        <Link className="link primary" href="/data/genes/MGI:103226/images/IMPC_GEP_064_001">
                           E18.5 Images
                         </Link>,&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226/images/IMPC_GEO_050_001">
+                        <Link className="link primary" href="/data/genes/MGI:103226/images/IMPC_GEO_050_001">
                           E15.5 Images
                         </Link>,&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226/images/IMPC_GEM_049_001">
+                        <Link className="link primary" href="/data/genes/MGI:103226/images/IMPC_GEM_049_001">
                           E12.5 Images
                         </Link>
                       </li>
@@ -846,7 +846,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:103226#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:103226#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -892,7 +892,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Gross Morphology:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1920939/images/IMPC_GEM_049_001">
+                        <Link className="link primary" href="/data/genes/MGI:1920939/images/IMPC_GEM_049_001">
                           E12.5 Images
                         </Link>
                       </li>
@@ -903,7 +903,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1920939#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1920939#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -943,7 +943,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:95698/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:95698/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         3-D Imaging:&nbsp;
@@ -952,7 +952,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:95698#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:95698#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -997,7 +997,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1915091/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1915091/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         3-D Imaging:&nbsp;
@@ -1006,7 +1006,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1915091#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1915091#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -1041,7 +1041,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1924285/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1924285/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         3-D Imaging:&nbsp;
@@ -1050,7 +1050,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1924285#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1924285#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -1088,7 +1088,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1914797/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1914797/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         3-D Imaging:&nbsp;
@@ -1097,7 +1097,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1914797#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1914797#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -1143,7 +1143,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1351614/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1351614/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         3-D Imaging:&nbsp;
@@ -1152,7 +1152,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:1351614#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:1351614#data">Table</Link>
                       </li>
                     </ul>
                   </Col>
@@ -1199,7 +1199,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         Embryo LacZ Expression:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:2147810/images/IMPC_ELZ_064_001">Images</Link>
+                        <Link className="link primary" href="/data/genes/MGI:2147810/images/IMPC_ELZ_064_001">Images</Link>
                       </li>
                       <li>
                         3-D Imaging:&nbsp;
@@ -1208,7 +1208,7 @@ const EmbryoVignettesPage = () => {
                       </li>
                       <li>
                         All adult and embryo phenotypes:&nbsp;
-                        <Link className="link primary" href="/genes/MGI:2147810#data">Table</Link>
+                        <Link className="link primary" href="/data/genes/MGI:2147810#data">Table</Link>
                       </li>
                       <li>
                         Sagittal images from microCT:&nbsp;

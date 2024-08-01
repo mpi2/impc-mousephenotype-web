@@ -10,6 +10,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row } from "react-bootstrap";
 import footerCss from "./styles.module.scss";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -157,11 +158,11 @@ const Footer = () => {
           </div>
           <div className="col-12 col-md-6 text-right">
             <h6>
-              <a href="/release">
+              <Link href="/data/release">
                 <small>
                   Access Data Release <span id="data-no">20.1</span> Data
                 </small>
-              </a>
+              </Link>
             </h6>
             <div className="menu-footer-access-container">
               <ul id="menu-footer-access" className="menu">

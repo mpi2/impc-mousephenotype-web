@@ -49,7 +49,7 @@ const GeneColumn = ({
         </Button>
       </p>
       <h3>
-        <Link href={`/genes/${geneId}`} legacyBehavior>{data.geneName}</Link>
+        <Link href={`/data/genes/${geneId}`} legacyBehavior>{data.geneName}</Link>
       </h3>
       <div>
         {allBodySystems.map((s, i) => {

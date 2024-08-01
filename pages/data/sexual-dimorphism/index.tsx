@@ -1,5 +1,5 @@
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import data from '../../mocks/data/landing-pages/sexual-dimorphism.json';
+import data from '../../../mocks/data/landing-pages/sexual-dimorphism.json';
 import {
   Chart as ChartJS,
   LinearScale,
@@ -40,7 +40,7 @@ ChartJS.register(
 
 const GeneLink = ({ gene }) => {
   return (
-    <Link className="primary link" href={`/genes/${gene.mgiGeneAccessionId}`}>
+    <Link className="primary link" href={`/data/genes/${gene.mgiGeneAccessionId}`}>
       <AlleleSymbol symbol={gene.alleleSymbol} withLabel={false} />
     </Link>
   )

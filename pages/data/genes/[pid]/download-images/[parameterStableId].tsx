@@ -99,7 +99,7 @@ const DownloadImagesPage = () => {
       <Search />
       <Container className="page">
         <Card>
-          <Link href={`/genes/${pid}#images`} className="grey mb-3 small">
+          <Link href={`/data/genes/${pid}#images`} className="grey mb-3 small">
             <FontAwesomeIcon icon={faArrowLeftLong} />
             &nbsp; BACK TO GENE
           </Link>

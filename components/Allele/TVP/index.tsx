@@ -94,7 +94,7 @@ const TargetingVector = ({
                   <tr>
                     <td>
                       <Link
-                        href={`/designs/${p.designLink.split(":")[2]}`}
+                        href={`/data/designs/${p.designLink.split(":")[2]}`}
                         scroll={false}
                         className="primary link"
                       >
