@@ -5,18 +5,14 @@ import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { useRouter } from "next/router";
-import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { ScrollToTopButton } from "@/components";
 
 type Props = {
   phenotype: PhenotypeSummary;
-  isLoading: boolean;
-  isError: boolean;
 }
 
-const Summary = ({ phenotype, isLoading, isError }: Props) => {
-  const router = useRouter();
+const Summary = ({ phenotype }: Props) => {
 
   const SYNONYMS_COUNT = 2;
 
@@ -44,45 +40,6 @@ const Summary = ({ phenotype, isLoading, isError }: Props) => {
           <br />
         </span>
       ))
-  }
-
-  if (isLoading) {
-    return (
-      <Card>
-        <div className={styles.subheadingCont}>
-          <div className={styles.subheading}>
-            <span className={styles.subheadingSection}>Phenotype</span>
-            <span className={styles.subheadingSection}>
-              {router.query.id}
-            </span>
-          </div>
-        </div>
-        <br />
-        <p className="grey">Loading...</p>
-      </Card>
-    );
-  }
-
-  if (isError) {
-    return (
-      <Card>
-        <div className={styles.subheadingCont}>
-          <div className={styles.subheading}>
-            <span className={styles.subheadingSection}>Phenotype</span>
-            <span className={styles.subheadingSection}>
-              {router.query.id}
-            </span>
-          </div>
-        </div>
-        <div className="mt-5 mb-5 text-center grey">
-          <h1>
-            <FontAwesomeIcon icon={faWarning} className="mb-4" /> <br />
-            <strong>Sorry, we didn't find anything.</strong>
-          </h1>
-          <p className="grey">Please check your url or try again later.</p>
-        </div>
-      </Card>
-    );
   }
 
   return (

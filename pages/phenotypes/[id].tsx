@@ -38,7 +38,7 @@ const Phenotype = (props: PhenotypePageProps) => {
     select: sortPhenotypeProcedures,
   });
 
-  const phenotypeData = phenotypeFromServer || phenotype
+  const phenotypeData = phenotypeFromServer || phenotype;
 
   return (
     <>
@@ -46,7 +46,7 @@ const Phenotype = (props: PhenotypePageProps) => {
       <PhenotypeContext.Provider value={phenotype}>
         <Search defaultType="phenotype" />
         <Container className="page">
-          <Summary {...{ phenotype, isLoading, isError }}/>
+          <Summary {...{ phenotype: phenotypeData, }}/>
           <Card id="associations-table">
             <PhenotypeGeneAssociations />
           </Card>
@@ -77,8 +77,9 @@ const Phenotype = (props: PhenotypePageProps) => {
 export async function getStaticProps(context) {
   const { id: phenotypeId } = context.params;
   const data = await fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`);
+
   return {
-    props: { gene: data }
+    props: { phenotype: data }
   };
 }
 
