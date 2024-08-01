@@ -37,7 +37,7 @@ const FilterBox = (props: Props) => {
     value,
     allOptionEnabled = true,
     displayEvenWithOnlyOneOption = false,
-    emitValueLowercase = false,
+    emitValueLowercase = true,
   } = props;
   const optionalControlProps: Record<string, string> = {};
   if (hideLabel) {
@@ -83,6 +83,7 @@ const FilterBox = (props: Props) => {
           placeholder="Search"
           style={controlStyle}
           defaultValue={undefined}
+          value={value}
           id={controlId}
           className={controlClassName}
           onChange={el =>

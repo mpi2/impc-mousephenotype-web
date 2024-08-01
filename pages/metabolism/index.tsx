@@ -1,18 +1,19 @@
-import Search from "@/components/Search";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import Card from "@/components/Card";
 import data from "../../mocks/data/landing-pages/metabolism.json";
-import genesData from "../../mocks/data/landing-pages/metabolism-table.json";
-import ScatterChart from "@/components/ScatterChart";
-import dynamic from "next/dynamic";
-import { PublicationListProps } from "@/components/PublicationsList";
+import metabolismTableData from "../../mocks/data/landing-pages/metabolism-table.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import styles from './styles.module.scss';
 import { useState } from "react";
 import { PlainTextCell, SmartTable, LinkCell, OptionsCell } from "@/components/SmartTable";
 import Head from "next/head";
-import { PublicationDataAlert } from "@/components";
+import {
+  PublicationDataAlert,
+  Search,
+  Card,
+  ScatterChart,
+  NonSSRPublicationsList
+} from "@/components";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -24,11 +25,7 @@ export type MetabolismGeneData = {
   "Zygosity": string;
   "Ratio_KO_WT": string,
   "tag": string;
-}
-
-const PublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"), {ssr: false}
-);
+};
 
 const geneTableData = [
   ["Fasting Glucose (T0)", 94, 96, 96, 96],
@@ -42,6 +39,7 @@ const geneTableData = [
 
 
 const MetabolismLandingPage = () => {
+  const genesData = metabolismTableData as Array<MetabolismGeneData>;
   const [ parameter, setParameter ] = useState<number>(null);
   const [ sex, setSex ] = useState<'male' | 'female'>(null);
   const [ outlier, setOutlier ] = useState<'5' | '95'>(null);
@@ -279,7 +277,7 @@ const MetabolismLandingPage = () => {
         <Card>
           <Container>
             <h1><strong>Homeostasis/metabolism IKMC/IMPC related publications</strong></h1>
-            <PublicationsList prefixQuery="metabolism" />
+            <NonSSRPublicationsList prefixQuery="metabolism" />
           </Container>
         </Card>
       </Container>

@@ -1,11 +1,12 @@
-import { useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from 'react-select';
 import data from './GeneVsProcedure.data';
 import PaginationControls from "../PaginationControls";
-import { useEmbryoWOLQuery } from "@/hooks";
+import { useEmbryoWOLQuery, usePagination } from "@/hooks";
 import _ from "lodash";
+import React, { useMemo, useState } from "react";
+import { Form, InputGroup } from "react-bootstrap";
 
 type EmbryoData = {
   id: string;
@@ -28,31 +29,33 @@ type Props = {
 }
 
 const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
-  const [chartData, setChartData] = useState<Array<EmbryoData>>(data.slice(0, 25));
-  const [activePage, setActivePage] = useState(1);
-  const [totalPages, setTotalPages] = useState(Math.ceil(data.length / 25));
-  const geneIndex = chartData.reduce((acc, d) => ({ [d.id]: d.mgiAccessionId, ...acc }), {});
-
-
+  const [selectedWOL, setSelectedWOL] = useState<Array<string>>([]);
+  const [query, setQuery] = useState<string>(undefined)
   const { data: dataIndex } = useEmbryoWOLQuery(data => {
     return _.groupBy(data, 'FUSIL') as DataIndex;
   });
 
-  const handlePaginationChange = (pageNumber: number) => {
-    setActivePage(pageNumber);
-    setChartData(data.slice((pageNumber - 1) * 25, (pageNumber - 1) * 25 + 25));
-  };
-
-  const onChangeWOL = selected => {
-    const newSelectedGenes = selected.flatMap(s => dataIndex[s.value]).map(d => d.gene_id);
-    const newData = selected.length
+  const filteredData = useMemo(() => {
+    const newSelectedGenes = selectedWOL.flatMap(s => dataIndex[s]).map(d => d.gene_id);
+    const dataFilteredByWOL = selectedWOL.length
       ? data.filter(g => newSelectedGenes.includes(g.mgiAccessionId))
       : data;
-    setChartData(
-      selected.length ? newData.slice(0, 25) : data.slice(0, 25)
-    );
-    setTotalPages(Math.ceil(newData.length / 25));
-    setActivePage(1);
+    return !!query
+      ? dataFilteredByWOL.filter(g => g.id.toLowerCase().includes(query.toLowerCase()))
+      : dataFilteredByWOL;
+  }, [selectedWOL, dataIndex, query]);
+
+  const {
+    paginatedData: chartData,
+    activePage,
+    totalPages,
+    setActivePage,
+  } = usePagination<EmbryoData>(filteredData, 25);
+
+  const geneIndex = chartData.reduce((acc, d) => ({ [d.id]: d.mgiAccessionId, ...acc }), {});
+
+  const onChangeWOL = (selected: Array<{ value: string, label: string }>) => {
+    setSelectedWOL(selected.map(selection => selection.value));
   }
 
   const onClickTick = (cell: any) => {
@@ -84,7 +87,19 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
             aria-label="window of lethality filter"
           />
         </div>
-        <div className="col-6"></div>
+        <div className="col-6">
+          <InputGroup>
+            <InputGroup.Text id="gene-filter">
+              Filter by gene symbol
+            </InputGroup.Text>
+            <Form.Control
+              id="gene-control"
+              aria-describedby="gene-filter"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+            />
+          </InputGroup>
+        </div>
       </div>
       <div
         style={{
@@ -95,92 +110,97 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
           marginLeft: "0",
           backgroundColor: "white",
           marginTop: "0",
+          textAlign: "center"
         }}
       >
-        <ResponsiveHeatMap
-          data={chartData}
-          margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
-          valueFormat={(v: any) => {
-            const options = [
-              "No data",
-              "Images Available",
-              "Images Available",
-              "EA not significant -> LA significant",
-              "Images and Automated Volumetric Analysis Available",
-            ];
-            return options[v];
-          }}
-          animate={true}
-          axisTop={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: -45,
-            legend: "",
-            legendOffset: 50,
-          }}
-          axisLeft={{
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: "",
-            legendPosition: "middle",
-            legendOffset: 60,
-            renderTick: (tick: any) => (
-              <ClickableAxisTick
-                tick={tick}
-                onClick={() =>
-                  window.open(
-                    `https://mousephenotype.org/data/genes/${data[tick.tickIndex].mgiAccessionId}`,
-                    "_blank",
-                    "noreferrer"
-                  )
-                }
-              />
-            ),
-          }}
-          axisRight={null}
-          colors={(cell: any) => {
-            const options = [
-              "#ECECEC",
-              "#17a2b8",
-              "#ed7b25",
-              "#ed7b25",
-              "#17a2b8",
-            ];
-            return options[cell.value || 0];
-          }}
-          labelTextColor="black"
-          emptyColor="#ccc"
-          borderWidth={0.25}
-          borderColor="#000"
-          enableLabels={false}
-          legends={[
-            {
-              anchor: "right",
-              translateX: 50,
-              translateY: 0,
-              length: 200,
-              thickness: 10,
-              direction: "column",
-              tickPosition: "after",
-              tickSize: 3,
-              tickSpacing: 4,
-              tickOverlap: false,
-              tickFormat: ">-.0s",
-              title: "Value →",
-              titleAlign: "middle",
-              titleOffset: 4,
-            },
-          ]}
-          annotations={[]}
-          onClick={onClickTick}
-        />
+        {chartData.length ? (
+          <ResponsiveHeatMap
+            data={chartData}
+            margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
+            valueFormat={(v: any) => {
+              const options = [
+                "No data",
+                "Images Available",
+                "Images Available",
+                "EA not significant -> LA significant",
+                "Images and Automated Volumetric Analysis Available",
+              ];
+              return options[v];
+            }}
+            animate={true}
+            axisTop={{
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: -45,
+              legend: "",
+              legendOffset: 50,
+            }}
+            axisLeft={{
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: 0,
+              legend: "",
+              legendPosition: "middle",
+              legendOffset: 60,
+              renderTick: (tick: any) => (
+                <ClickableAxisTick
+                  tick={tick}
+                  onClick={() =>
+                    window.open(
+                      `https://mousephenotype.org/data/genes/${data[tick.tickIndex].mgiAccessionId}`,
+                      "_blank",
+                      "noreferrer"
+                    )
+                  }
+                />
+              ),
+            }}
+            axisRight={null}
+            colors={(cell: any) => {
+              const options = [
+                "#ECECEC",
+                "#17a2b8",
+                "#ed7b25",
+                "#ed7b25",
+                "#17a2b8",
+              ];
+              return options[cell.value || 0];
+            }}
+            labelTextColor="black"
+            emptyColor="#ccc"
+            borderWidth={0.25}
+            borderColor="#000"
+            enableLabels={false}
+            legends={[
+              {
+                anchor: "right",
+                translateX: 50,
+                translateY: 0,
+                length: 200,
+                thickness: 10,
+                direction: "column",
+                tickPosition: "after",
+                tickSize: 3,
+                tickSpacing: 4,
+                tickOverlap: false,
+                tickFormat: ">-.0s",
+                title: "Value →",
+                titleAlign: "middle",
+                titleOffset: 4,
+              },
+            ]}
+            annotations={[]}
+            onClick={onClickTick}
+          />
+        ) : (
+          <h2 className="mt-5">No genes match the term entered</h2>
+        )}
       </div>
       {totalPages > 1 && (
         <PaginationControls
           currentPage={activePage}
           totalPages={totalPages}
-          onPageChange={handlePaginationChange}
+          onPageChange={setActivePage}
         />
       )}
     </>

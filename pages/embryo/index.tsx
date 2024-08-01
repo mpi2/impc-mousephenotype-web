@@ -1,29 +1,19 @@
 import { Container, Breadcrumb, Row, Col, Image } from "react-bootstrap";
-
-import Search from "@/components/Search";
-import Card from "@/components/Card";
 import styles from './styles.module.scss';
-import SortableTable from "@/components/SortableTable";
-import PieChart from "@/components/PieChart";
-import { PublicationListProps } from "@/components/PublicationsList";
 import data from '../../mocks/data/landing-pages/embryo.json';
-import dynamic from "next/dynamic";
-import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import Head from "next/head";
-import { toSentenceCase } from "@/utils";
 import _ from "lodash";
 import { useEmbryoWOLQuery } from "@/hooks";
 import { useMemo } from "react";
-
-const PublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"), {ssr: false}
-);
-
-type EmbryoLandingPageData = {
-  primaryViability: Array<{ label: string; value: number }>;
-  primaryViabilityChartData: Array<{ label: string; value: number }>;
-  windowsOfLethality: Array<{ label: string; value: number }>;
-};
+import {
+  Card,
+  EmbryoDataAvailabilityGrid,
+  NonSSRPublicationsList,
+  PieChart,
+  Search,
+  SortableTable
+} from "@/components";
+import Link from "next/link";
 
 const EmbryoLandingPage = () => {
   const { data: embryoWOL } = useEmbryoWOLQuery(data => {
@@ -194,7 +184,7 @@ const EmbryoLandingPage = () => {
             </Row>
           </Container>
         </Card>
-        <Card>
+        <Card id="embryo-data-grid">
           <Container>
             <h1><strong>Embryo Data Availability Grid</strong></h1>
             <Row>
@@ -220,7 +210,7 @@ const EmbryoLandingPage = () => {
                     we also provide access to our external partners' embryo images.
                   </li>
                   <li>
-                    <a className="link primary" href="https://beta.mousephenotype.org/data/embryo/vignettes">Embryo Vignettes</a>
+                    <Link className="link primary" href="/embryo/vignettes">Embryo Vignettes</Link>
                     &nbsp;Showcase of best embryo images with detailed explanations.
                   </li>
                   <li>
@@ -242,7 +232,7 @@ const EmbryoLandingPage = () => {
         <Card>
           <Container>
             <h1><strong>IKMC/IMPC related publications</strong></h1>
-            <PublicationsList prefixQuery="embryo" />
+            <NonSSRPublicationsList prefixQuery="embryo" />
           </Container>
         </Card>
       </Container>

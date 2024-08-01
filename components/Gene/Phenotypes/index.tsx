@@ -15,7 +15,7 @@ import { SectionHeader } from "@/components";
 import { faTriangleExclamation, } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const StatisticalAnalysis = dynamic(
+const GraphicalAnalysis = dynamic(
   () => import("./GraphicalAnalysis"),
   {ssr: false}
 );
@@ -32,8 +32,8 @@ type TabContentProps = {
   isError: boolean;
   data: Array<any>;
   alertVariant?: Variant;
-
 };
+
 const TabContent = (props: PropsWithChildren<TabContentProps>) => {
   const {
     errorMessage,
@@ -68,6 +68,14 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
   const [tabKey, setTabKey] = useState('significantPhenotypes');
   const [allDataCount, setAllDataCount] = useState<number>(0);
+  const [allDataFilters, setAllDataFilters] = useState({
+    procedureName: undefined,
+    topLevelPhenotypeName: undefined,
+    lifeStageName: undefined,
+    zygosity: undefined,
+    alleleSymbol: undefined,
+  });
+  const [allDataQuery, setAllDataQuery] = useState<string>(undefined);
 
   const {
     phenotypeData,
@@ -100,7 +108,19 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     }
   }, [tabKey]);
 
-
+  useEffect(() => {
+    if (router.query.dataLifeStage && router.query.dataSearch) {
+      setTabKey('allData');
+      setAllDataFilters(prevState => ({
+        ...prevState,
+        lifeStageName: router.query.dataLifeStage,
+        procedureName: router.query.dataSearch
+      }));
+      if (router.query.dataQuery) {
+        setAllDataQuery(router.query.dataQuery as string);
+      }
+    }
+  }, [router]);
 
   const hasDataRelatedToPWG = phenotypeData?.some(item => item.projectName === 'PWG');
 
@@ -168,12 +188,17 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
         </Tab>
         <Tab eventKey="allData" title={`All data (${allDataCount})`}>
           <div className="mt-3">
-            <AllData routerIsReady={router.isReady} onTotalData={setAllDataCount}/>
+            <AllData
+              routerIsReady={router.isReady}
+              onTotalData={setAllDataCount}
+              additionalSelectedValues={allDataFilters}
+              queryFromURL={allDataQuery}
+            />
           </div>
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
           <div className="mt-3">
-            <StatisticalAnalysis
+            <GraphicalAnalysis
               mgiGeneAccessionId={gene.mgiGeneAccessionId}
               routerIsReady={router.isReady}
             />

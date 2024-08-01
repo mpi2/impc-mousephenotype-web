@@ -1,13 +1,15 @@
-const webpack = require("webpack");
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
+  basePath: "/data",
   //uncomment the following line when deploying with vercel
   // swcMinify: false,
   async redirects() {
     return [
       {
         source: "/",
-        destination: "/search",
+        destination: "/data/search",
         permanent: false,
+        basePath: false
       },
     ];
   },

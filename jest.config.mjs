@@ -11,6 +11,7 @@ const config = {
     collectCoverageFrom: [
         "./components/**/*.{ts,tsx}",
         "./pages/**/*.{ts,tsx}",
+        "./shared/hooks/*.ts",
         "!**/*.d.ts",
         "!**/node_modules/**",
     ],

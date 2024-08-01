@@ -1,22 +1,19 @@
 import Head from "next/head";
-import Search from "@/components/Search";
 import { Breadcrumb, Col, Container, Row, Image, Table } from "react-bootstrap";
-import { Card } from "@/components";
+import { Card, LoadingProgressBar, Search, PaginationControls, ChordDiagram, PieChart } from "@/components";
 import data from "../../mocks/data/landing-pages/idg.json";
-import geneList from "../../mocks/data/landing-pages/idg-gene-list.json";
-import PieChart from "@/components/PieChart";
 import { useMemo, useRef, useState, useImperativeHandle, forwardRef } from "react";
 import { Bar } from "react-chartjs-2";
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from "chart.js";
-import ChordDiagram from "@/components/ChordDiagram";
 import Link from "next/link";
 import classNames from "classnames";
 import styles from './styles.module.scss';
 import NonSSR from "@/hoc/nonSSR";
-import PaginationControls from "@/components/PaginationControls";
 import { usePagination } from "@/hooks";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useQuery } from "@tanstack/react-query";
+import { fetchLandingPageData } from "@/api-service";
 
 
 ChartJS.register(
@@ -42,25 +39,37 @@ type AccordionTableHandle = {
 }
 type AccordionTableProps = {
   type: string;
+  geneList: Array<Gene>;
 };
 
 type Gene = {
-  accession: string;
-  symbol: string;
-  groupLabel: string;
-  humanSymbol: Array<string>;
-  humanSymbolToString: string;
-  miceProducedPlain: string;
-  xaxisToCellMap: Record<string, {xAxisKey: string, status: string}>
+  es_cell_production_status: string;
+  human_gene_symbol: string;
+  idg_family: string;
+  marker_symbol: string;
+  mgi_accession_id: string;
+  mouse_production_status: string;
+  not_significant_top_level_mp_terms: Array<string> | null;
+  phenotype_status: string;
+  significant_top_level_mp_terms: Array<string> | null;
 };
 
 const getLinksToGenePage = (gene: Gene) => {
-  const url = `/genes/${gene.accession}`;
-  const productsProduced = gene.miceProducedPlain.split('|');
-  if (productsProduced.length === 1 && productsProduced[0] === '') {
+  const url = `/genes/${gene.mgi_accession_id}`;
+  const products = [];
+  if (gene.es_cell_production_status === "ES Cells Produced") {
+    products.push("ES Cells");
+  }
+  if (gene.mouse_production_status === "Mice Produced") {
+    products.push("Mice");
+  }
+  if (gene.phenotype_status === "Phenotyping data available") {
+    products.push("Phenotype data");
+  }
+  if (products.length === 0) {
     return '-';
   }
-  return productsProduced.map(value => {
+  return products.map(value => {
     const href = value === "Phenotype data" ? url + "#data" : url + "#order";
     return (
       <>
@@ -99,15 +108,15 @@ const FamilyDataTable = (props: FamilyDataTableProps) => {
   )
 };
 
-const HeatMap = () => {
+const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
   const [query, setQuery] = useState("");
   const filteredData = useMemo(() => geneList.filter(
     ({
-       accession,
-       groupLabel,
-       symbol,
+       mgi_accession_id,
+       idg_family,
+       marker_symbol,
      }) =>
-      (!query || `${accession} ${groupLabel} ${symbol}`.toLowerCase().includes(query.toLowerCase()))
+      (!query || `${mgi_accession_id} ${idg_family} ${marker_symbol}`.toLowerCase().includes(query.toLowerCase()))
   ), [query, geneList]);
 
   const {
@@ -118,11 +127,15 @@ const HeatMap = () => {
     setActivePage,
     setPageSize
   } = usePagination<Gene>(filteredData);
-  const getCellStyle = (status: string) => {
+
+  const getCellStyle = (phenotypeName: string, gene: Gene) => {
+    const isSignificant = gene.significant_top_level_mp_terms?.includes(phenotypeName) || false;
+    const isNotSignificant = gene.not_significant_top_level_mp_terms?.includes(phenotypeName) || false;
+
     return classNames(styles.dataCell, {
-      [styles.significant]: status === 'Deviance Significant',
-      [styles.notSignificant]: status === 'Data analysed, no significant call',
-      [styles.noData]: status === 'No data'
+      [styles.significant]: isSignificant,
+      [styles.notSignificant]: isNotSignificant,
+      [styles.noData]: !isSignificant && !isNotSignificant,
     })
   };
 
@@ -178,23 +191,23 @@ const HeatMap = () => {
           <tr>
             <td className={styles.geneCell}>
               <Link
-                href={`/genes/${gene.accession}`}
+                href={`/genes/${gene.mgi_accession_id}`}
                 className="primary link"
                 style={{backgroundColor: 'initial', padding: 0}}
               >
-                {gene.symbol}
+                {gene.marker_symbol}
               </Link>
               <br/>
-              {gene.humanSymbol[0] || '-'}
+              {gene.human_gene_symbol || '-'}
             </td>
             <td>
-              {gene.groupLabel}
+              {gene.idg_family}
             </td>
             <td>
               {getLinksToGenePage(gene)}
             </td>
             {data.heatmapTopLevelPhenotypes.map(phenotype => (
-              <td className={getCellStyle(gene.xaxisToCellMap[phenotype.name].status)}>
+              <td className={getCellStyle(phenotype.name, gene)}>
               </td>
             ))}
           </tr>
@@ -219,11 +232,11 @@ const HeatMap = () => {
 };
 
 const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>((
-  { type },
+  { type, geneList },
   ref
 ) => {
   const [ visibility, setVisibility ] = useState(false);
-  const filteredList: Array<Gene> = geneList.filter(gene => gene.groupLabel === type);
+  const filteredList: Array<Gene> = geneList.filter(gene => gene.idg_family === type);
 
   useImperativeHandle(ref, () => ({
     toggleVisibility() {
@@ -243,21 +256,16 @@ const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>((
         </thead>
         <tbody>
           {filteredList.map(gene => (
-            <tr key={gene.accession}>
+            <tr key={gene.mgi_accession_id}>
               <td>
-                <Link className="link primary" href={`/genes/${gene.accession}`}>{gene.symbol}</Link>
-                &nbsp;({gene.accession})
+                <Link className="link primary" href={`/genes/${gene.mgi_accession_id}`}>{gene.marker_symbol}</Link>
+                &nbsp;({gene.mgi_accession_id})
               </td>
               <td>
-                {gene.humanSymbolToString.split(' ').map((symbol) => (
-                  <>
-                    <a key={symbol} className="link primary" href={`https://pharos.nih.gov/targets?q=${symbol}`}>
-                      {symbol}&nbsp;
-                      <FontAwesomeIcon icon={faExternalLinkAlt}></FontAwesomeIcon>
-                    </a>
-                    &nbsp;
-                  </>
-                ))}
+                <a className="link primary" href={`https://pharos.nih.gov/targets?q=${gene.human_gene_symbol}`}>
+                  {gene.human_gene_symbol}&nbsp;
+                  <FontAwesomeIcon icon={faExternalLinkAlt}></FontAwesomeIcon>
+                </a>
               </td>
               <td>
                 {getLinksToGenePage(gene)}
@@ -271,6 +279,13 @@ const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>((
 });
 
 const IDGPage = () => {
+  const { data: geneList, isFetching } = useQuery<Array<Gene>>({
+    queryKey: ["landing-pages", "idg"],
+    queryFn: () => fetchLandingPageData("idg_landing"),
+    placeholderData: [],
+    select: (data) => data.sort((g1, g2) => g1.marker_symbol.localeCompare(g2.marker_symbol)),
+  });
+
   const ionChannelsTableRef = useRef<AccordionTableHandle>(null);
   const gpcrTableRef = useRef<AccordionTableHandle>(null);
   const kinasesTableRef = useRef<AccordionTableHandle>(null);
@@ -396,7 +411,13 @@ const IDGPage = () => {
             </tr>
             </tbody>
           </table>
-          <HeatMap/>
+          {isFetching ? (
+            <div className="mt-4" style={{display: 'flex', justifyContent: 'center'}}>
+              <LoadingProgressBar/>
+            </div>
+          ) : (
+            <HeatMap geneList={geneList}/>
+          )}
         </Card>
         <Card>
           <h2>Phenotype Associations</h2>
@@ -437,7 +458,7 @@ const IDGPage = () => {
           >
             View all {data.ionChannelChordData.genesCount} IMPC/IDG Ion Channel genes
           </button>
-          <AccordionTable type="IonChannel" ref={ionChannelsTableRef} />
+          <AccordionTable type="IonChannel" geneList={geneList} ref={ionChannelsTableRef} />
           <p>
             <b>{data.ionChannelChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
@@ -465,7 +486,7 @@ const IDGPage = () => {
           >
             View all {data.GPCRChordData.genesCount} IMPC/IDG GPCR genes
           </button>
-          <AccordionTable type="GPCR" ref={gpcrTableRef} />
+          <AccordionTable type="GPCR" geneList={geneList} ref={gpcrTableRef} />
           <p>
             <b>{data.GPCRChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
@@ -493,7 +514,7 @@ const IDGPage = () => {
           >
             View all {data.kinaseChordData.genesCount} IMPC/IDG Kinase genes
           </button>
-          <AccordionTable type="Kinase" ref={kinasesTableRef} />
+          <AccordionTable type="Kinase" geneList={geneList} ref={kinasesTableRef} />
           <p>
             <b>{data.kinaseChordData.totalcount}</b> genes have phenotypes in more than one biological system.
             The chord diagram below shows the pleiotropy between these genes.
