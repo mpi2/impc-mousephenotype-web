@@ -111,7 +111,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
             <div className="content">
               {!!datasetSummary["significantPhenotype"]?.["id"] ? (
                 <Link
-                  href={`/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}
+                  href={`/data/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}
                 >
                   <span className="link primary">
                     {datasetSummary["significantPhenotype"]?.["name"]}

@@ -5,11 +5,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
-import Card from "../../Card";
-import SortableTable from "../../SortableTable";
+import { Alert } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
+import { Card, SortableTable } from "@/components";
 
 const CopyButton = ({ sequence }) => {
   const [clicked, setClicked] = useState(false);
