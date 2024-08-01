@@ -274,19 +274,19 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
             </Col>
             <Col md={6}>
               <CollectionItem
-                link={`/data/viability?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
+                link={`/data/charts/viability?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
                 name="Viability data"
                 hasData={gene.hasViabilityData}
               />
               <br/>
               <CollectionItem
-                link={`/data/bodyweight?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
+                link={`/data/charts/bodyweight?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
                 name="Body weight measurements"
                 hasData={gene.hasBodyWeightData}
               />
               <br/>
               <CollectionItem
-                link={`//www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
+                link={`https://www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
                 name="Embryo imaging data"
                 hasData={gene.hasEmbryoImagingData}
               />
