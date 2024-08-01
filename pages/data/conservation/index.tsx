@@ -9,7 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import data from '../../mocks/data/landing-pages/conservation.json';
+import data from '../../../mocks/data/landing-pages/conservation.json';
 import { chartColors } from "@/utils/chart";
 import Head from "next/head";
 import { Card, NonSSRPublicationsList, PublicationDataAlert, Search } from "@/components";

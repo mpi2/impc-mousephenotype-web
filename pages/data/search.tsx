@@ -1,11 +1,7 @@
 import { useRouter } from "next/router";
-import Search from "../components/Search";
-import GeneResults from "../components/GeneResults";
-import PhenotypeResults from "../components/PhenotypeResults";
-import AlleleResults from "../components/AlleleResults";
 import { useState } from "react";
-import { Metadata } from "next";
 import Head from "next/head";
+import { AlleleResults, GeneResults, PhenotypeResults, Search } from "@/components";
 
 const SearchResults = () => {
   const router = useRouter();

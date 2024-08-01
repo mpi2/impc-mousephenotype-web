@@ -1,5 +1,5 @@
 import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import data from '../../mocks/data/landing-pages/cardiovascular.json';
+import data from '../../../mocks/data/landing-pages/cardiovascular.json';
 import styles from './styles.module.scss';
 import { Fragment, useState } from "react";
 import Head from "next/head";
