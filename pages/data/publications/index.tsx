@@ -12,7 +12,7 @@ import {
   ChartData
 } from 'chart.js';
 import { Bar, Line } from 'react-chartjs-2';
-import colorsPlugin from '../../utils/chart/color.plugin';
+import colorsPlugin from '@/utils/chart/color.plugin';
 import dataLabelsPlugin from 'chartjs-plugin-datalabels';
 import styles from './styles.module.scss';
 import { useEffect, useRef, useState } from "react";

@@ -1,11 +1,9 @@
-import Search from "../components/Search";
-import Card from "../components/Card";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { useMemo, useState } from "react";
 import Markdown from 'react-markdown'
-import mockData from '../mocks/data/release/release_metadata.json';
+import mockData from '../../mocks/data/release/release_metadata.json';
 import { NumberCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import {
   Chart as ChartJS,
@@ -18,6 +16,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import Head from "next/head";
+import { Card, Search } from "@/components";
 
 ChartJS.register(
   CategoryScale,

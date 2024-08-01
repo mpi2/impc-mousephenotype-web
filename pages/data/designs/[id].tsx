@@ -1,11 +1,9 @@
 import { useRouter } from "next/router";
 import { Container } from "react-bootstrap";
-import Card from "../../components/Card";
-import Search from "../../components/Search";
-import SortableTable from "../../components/SortableTable";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
+import { fetchAPI } from "@/api-service";
+import { Card, Search, SortableTable } from "@/components";
 
 const Oligo = () => {
   const router = useRouter();
