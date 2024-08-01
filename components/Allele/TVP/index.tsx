@@ -6,11 +6,13 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
+import Card from "../../Card";
+import Pagination from "../../Pagination";
 import _ from "lodash";
+import SortableTable from "../../SortableTable";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { Card, Pagination, SortableTable } from "@/components";
 
 const TargetingVector = ({
   mgiGeneAccessionId,
@@ -92,7 +94,7 @@ const TargetingVector = ({
                   <tr>
                     <td>
                       <Link
-                        href={`/data/designs/${p.designLink.split(":")[2]}`}
+                        href={`/designs/${p.designLink.split(":")[2]}`}
                         scroll={false}
                         className="primary link"
                       >

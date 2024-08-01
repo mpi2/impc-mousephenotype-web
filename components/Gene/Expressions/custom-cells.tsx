@@ -14,7 +14,7 @@ export const ImagesCell = <T extends GeneExpression>(props: TableCellProps<T> & 
       <Link
         key={index}
         className="primary small"
-        href={`/data/genes/${props.mgiGeneAccessionId}/images/${p.parameterStableId}`}
+        href={`/genes/${props.mgiGeneAccessionId}/images/${p.parameterStableId}`}
       >
         <FontAwesomeIcon icon={faImage} />{" "}
         {p.parameterName}

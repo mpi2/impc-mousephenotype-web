@@ -43,7 +43,7 @@ const PhenotypeResult = ({
       <Row
         className={styles.result}
         onClick={() => {
-          router.push(`/data/phenotypes/${mpId}`);
+          router.push(`/phenotypes/${mpId}`);
         }}
       >
         <Col>

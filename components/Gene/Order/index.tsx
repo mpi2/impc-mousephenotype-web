@@ -39,7 +39,7 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Arra
       "es cell": "esCell",
       "targeting vector": "targetingVector",
     };
-    return `/data/alleles/${router.query.pid}/${allele}#${anchorObjs[product]}`;
+    return `/alleles/${router.query.pid}/${allele}#${anchorObjs[product]}`;
   }
 
   useEffect(() => {

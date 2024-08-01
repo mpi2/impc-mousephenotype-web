@@ -50,7 +50,7 @@ const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: stri
           sm={8}
           className={styles.result}
           onClick={() => {
-            router.push(`/data/genes/${mgiGeneAccessionId}`);
+            router.push(`/genes/${mgiGeneAccessionId}`);
           }}
         >
           <h4 className="mb-2">
@@ -111,7 +111,7 @@ const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: stri
           </div>
           <p className="grey">
             <Link
-              href={`/data/genes/${mgiGeneAccessionId}/#order`}
+              href={`/genes/${mgiGeneAccessionId}/#order`}
               scroll={false}
               className="link"
             >

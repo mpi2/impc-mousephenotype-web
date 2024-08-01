@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
+import Pagination from "../../Pagination";
+import SortableTable from "../../SortableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "@/utils";
@@ -12,7 +14,7 @@ import { Publication } from "../../PublicationsList/types";
 import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { DownloadData, Pagination, SortableTable } from "@/components";
+import { DownloadData } from "@/components";
 
 const ALLELES_COUNT = 2;
 const AllelesCell = ({ pub }: { pub: Publication }) => {

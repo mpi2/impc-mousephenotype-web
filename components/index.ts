@@ -18,7 +18,3 @@ export { default as ChordDiagram } from './ChordDiagram';
 export { default as PieChart } from './PieChart';
 export { default as ScatterChart } from './ScatterChart';
 export { default as EmbryoDataAvailabilityGrid } from './EmbryoDataAvailabilityGrid';
-export { default as GeneResults } from './GeneResults';
-export { default as PhenotypeResults } from './PhenotypeResults';
-export { default as AlleleResults } from './AlleleResults';
-export { default as Layout } from './Layout';

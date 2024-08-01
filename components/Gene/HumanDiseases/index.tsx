@@ -8,13 +8,16 @@ import _ from "lodash";
 import { useRouter } from "next/router";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { Alert, Overlay, Tab, Tabs, Tooltip } from "react-bootstrap";
+import Card from "../../Card";
+import Pagination from "../../Pagination";
+import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
 import Phenogrid from "phenogrid";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { Card, DownloadData, Pagination, SortableTable } from "@/components";
+import { DownloadData } from "@/components";
 
 type ScaleProps = {
   children: number;

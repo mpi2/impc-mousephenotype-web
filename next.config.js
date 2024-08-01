@@ -9,6 +9,7 @@ module.exports = {
         source: "/",
         destination: "/data/search",
         permanent: false,
+        basePath: false
       },
     ];
   },

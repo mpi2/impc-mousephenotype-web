@@ -45,7 +45,7 @@ const Image = ({
   const router = useRouter();
   const { pid } = router.query;
   const urlSegment = isSpecialFormat ? "download-images" : "images";
-  let url = `/data/genes/${pid}/${urlSegment}/${parameterStableId}`;
+  let url = `/genes/${pid}/${urlSegment}/${parameterStableId}`;
   if (embryo3DParametersIds.includes(parameterStableId)) {
     url = `https://www.mousephenotype.org/embryoviewer/?mgi=${pid}`;
   }

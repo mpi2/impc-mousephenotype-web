@@ -50,7 +50,7 @@ const Histopathology = () => {
         <h2>Histopathology</h2>
         <Alert variant="primary">
           This gene doesn't have any significant Histopathology hits.&nbsp;
-          <Link className="primary link" href={`/data/charts/histopath/${router.query.pid}`}>
+          <Link className="primary link" href={`/data/histopath/${router.query.pid}`}>
             Please click here to see the raw data
           </Link>
         </Alert>
@@ -76,7 +76,7 @@ const Histopathology = () => {
         Summary table of phenotypes displayed during the Histopathology procedure which are considered significant.
         <br/>
         Full histopathology data table, including submitted images,&nbsp;
-        <Link className="link primary" href={`/data/charts/histopath/${router.query.pid}`}>can be accessed by clicking this link</Link>.
+        <Link className="link primary" href={`/data/histopath/${router.query.pid}`}>can be accessed by clicking this link</Link>.
       </p>
       <Pagination data={sorted}>
         {(pageData) => (
@@ -102,7 +102,7 @@ const Histopathology = () => {
                 <tr key={index}>
                   <td>
                     <Link
-                      href={`/data/charts/histopath/${router.query.pid}?anatomy=${(
+                      href={`/data/histopath/${router.query.pid}?anatomy=${(
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
                       legacyBehavior>

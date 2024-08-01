@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchAPI } from "../../api-service";
 
 const AlleleResult = ({
   phenotype: {
@@ -21,7 +21,7 @@ const AlleleResult = ({
       <Row
         className={styles.result}
         onClick={() => {
-          router.push(`/data/phenotypes/${mpId}`);
+          router.push(`/phenotypes/${mpId}`);
         }}
       >
         <Col sm={12}>

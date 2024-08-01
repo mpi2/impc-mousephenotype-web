@@ -18,7 +18,6 @@ import LoadingProgressBar from "@/components/LoadingProgressBar";
 import Form from 'react-bootstrap/Form';
 import { PhenotypeStatsResults } from "@/models/phenotype";
 import { formatPValue } from "@/utils";
-import Link from "next/link";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -407,9 +406,9 @@ const ManhattanPlot = ({ phenotypeId }) => {
             <ul>
               {clickTooltip.genes.map(gene => (
                 <li key={gene.mgiGeneAccessionId}>
-                  <Link className="primary link" target="_blank" href={`/data/genes/${gene.mgiGeneAccessionId}`}>
+                  <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
                     <i>{gene.geneSymbol}</i>
-                  </Link>
+                  </a>
                   <br/>
                   {getTooltipContent(gene)}
                 </li>

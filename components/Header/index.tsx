@@ -31,25 +31,25 @@ const rewriteMenu = (data) => {
 const getInternalLink = (name: string, link: string) => {
   switch (name) {
     case 'Cardiovascular':
-      return '/data/cardiovascular';
+      return '/cardiovascular';
     case 'Embryo Development':
-      return '/data/embryo';
+      return '/embryo';
     case 'Papers Using IMPC Resources':
-      return '/data/publications';
+      return '/publications';
     case 'Histopathology':
-      return '/data/histopath';
+      return '/histopath';
     case 'Sexual Dimorphism':
-      return '/data/sexual-dimorphism';
+      return '/sexual-dimorphism';
     case 'Genes Critical for Hearing Identified':
-      return '/data/hearing';
+      return '/hearing';
     case 'Genetic Basis for Metabolic Diseases':
-      return '/data/metabolism';
+      return '/metabolism';
     case 'Essential Genes - Translating to Other Species':
-      return '/data/conservation';
+      return '/conservation';
     case 'Batch query':
-      return '/data/batch-query';
+      return '/batch-query';
     case 'Late Adult Data':
-      return '/data/late-adult-data';
+      return '/late-adult-data';
     default:
       return link;
   }
@@ -181,9 +181,9 @@ const Header = () => {
                     <div className="row justify-content-end">
                       {menuItem.classes == "about-impc" ? (
                         <div className="col col-auto text-left">
-                          <Link key={menuItem.link} href={menuItem.link}>
+                          <a key={menuItem.link} href={menuItem.link}>
                             {menuItem.name}
-                          </Link>
+                          </a>
                         </div>
                       ) : null}
                       {menuItem.children?.some(
