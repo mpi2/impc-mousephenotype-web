@@ -54,9 +54,9 @@ export const GeneComparatorTrigger = ({ current }: { current?: string }) => {
       onClick={() => {
         if (current) {
           const updatedGenes = addGene(current);
-          return router.push(`/compareGenes/?genes=${updatedGenes.join("_")}`);
+          return router.push(`/data/compareGenes/?genes=${updatedGenes.join("_")}`);
         }
-        router.push(`/compareGenes/?genes=${genes.join("_")}`);
+        router.push(`/data/compareGenes/?genes=${genes.join("_")}`);
       }}
     >
       Compare Genes{" "}

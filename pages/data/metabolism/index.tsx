@@ -126,7 +126,7 @@ const MetabolismLandingPage = () => {
                   <a
                     key={indexItems}
                     className="primary link"
-                    href={`//www.mousephenotype.org/impress/protocol/${item.procedureId}`}>
+                    href={`https://www.mousephenotype.org/impress/protocol/${item.procedureId}`}>
                     {item.name},&nbsp;
                   </a>
                 ))}

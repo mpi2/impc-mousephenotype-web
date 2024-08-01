@@ -198,7 +198,7 @@ const HistopathChartPage = () => {
                             }}
                             xs={4}
                           >
-                            <a href={`//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/${image.omeroId}`}
+                            <a href={`https://www.ebi.ac.uk/mi/media/omero/webgateway/render_image/${image.omeroId}`}
                                target="_blank">
                               <img
                                 style={{cursor: 'pointer', alignSelf: 'center'}}

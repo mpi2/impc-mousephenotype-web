@@ -181,9 +181,9 @@ const Header = () => {
                     <div className="row justify-content-end">
                       {menuItem.classes == "about-impc" ? (
                         <div className="col col-auto text-left">
-                          <a key={menuItem.link} href={menuItem.link}>
+                          <Link key={menuItem.link} href={menuItem.link}>
                             {menuItem.name}
-                          </a>
+                          </Link>
                         </div>
                       ) : null}
                       {menuItem.children?.some(

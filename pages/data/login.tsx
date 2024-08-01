@@ -8,7 +8,7 @@ const Login = () => {
   const router = useRouter();
 
   const afterLogin = () => {
-    router.push("/summary");
+    router.push("/data/summary");
   };
 
   return (

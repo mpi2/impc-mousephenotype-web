@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
@@ -13,8 +12,6 @@ import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { fetchDatasetFromS3 } from "@/api-service";
 
 const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
-  const router = useRouter();
-
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
 
   const embryoViavilityParametersMap = {

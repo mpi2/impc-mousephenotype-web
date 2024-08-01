@@ -106,7 +106,7 @@ const HistopathLandingPage = () => {
     const mgiID = gene.mgiAccession;
     gene.allelesWithTissue.forEach(allele => {
       const alleleSymbol = allele.match(/\<(.+)\>/)[1];
-      window.open(`/alleles/${mgiID}/${alleleSymbol}#mice`);
+      window.open(`/data/alleles/${mgiID}/${alleleSymbol}#mice`);
     })
   };
 
@@ -115,9 +115,9 @@ const HistopathLandingPage = () => {
       const mgiID = gene.mgiAccession;
       const allele = gene.allelesWithTissue[0].match(/\<(.+)\>/)[1];
       return (
-        <a className="link primary" href={`/alleles/${mgiID}/${allele}#mice`}>
+        <Link className="link primary" href={`/data/alleles/${mgiID}/${allele}#mice`}>
           Yes
-        </a>
+        </Link>
       );
     } else if (gene.hasTissue && gene.allelesWithTissue.length > 1) {
       return (

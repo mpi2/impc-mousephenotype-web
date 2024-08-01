@@ -10,7 +10,7 @@ const Register = () => {
   const router = useRouter();
 
   const handleRegister = () => {
-    router.push("/summary");
+    router.push("/data/summary");
   };
 
   return (

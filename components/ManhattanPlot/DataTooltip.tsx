@@ -1,6 +1,7 @@
 import styles from "@/components/ManhattanPlot/styles.module.scss";
 import { formatPValue } from "@/utils";
 import classNames from "classnames";
+import Link from "next/link";
 
 type Gene = { mgiGeneAccessionId: string, geneSymbol: string, pValue: number, significant: boolean };
 
@@ -48,9 +49,9 @@ const DataTooltip = ({tooltip, offsetY, offsetX, onClick}: TooltipProps) => {
         { tooltip.genes.map(gene => (
           <li key={gene.mgiGeneAccessionId}>
             Gene:&nbsp;
-            <a className="primary link" target="_blank" href={`/genes/${gene.mgiGeneAccessionId}`}>
+            <Link className="primary link" target="_blank" href={`/data/genes/${gene.mgiGeneAccessionId}`}>
               <i>{gene.geneSymbol}</i>
-            </a>
+            </Link>
             <br/>
             {getTooltipContent(gene)}
           </li>

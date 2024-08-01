@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { debounce } from "lodash";
-import Head from "next/head";
 
 export type Tab = {
   name: string;
@@ -126,7 +125,7 @@ const Search = ({
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   if (router.route !== "/search") {
-                    let url = `/search?query=${e.currentTarget.value}`;
+                    let url = `/data/search?query=${e.currentTarget.value}`;
                     if (tabIndex === 1) {
                       url += '&type=phenotype'
                     }
