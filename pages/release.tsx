@@ -12,11 +12,13 @@ import {
   Title,
   Tooltip,
   Legend,
+  Colors,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import Head from "next/head";
 import { Card, Search } from "@/components";
 import { fetchLandingPageData } from "@/api-service";
+import { groupBy, uniq } from 'lodash';
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +26,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Colors,
 );
 
 type SampleCounts = {
@@ -37,6 +40,11 @@ type SampleCounts = {
 type DataQualityCheck = {
   dataType: string;
   count: number;
+};
+
+type ProdStatusByCenter = {
+  statusType: string;
+  counts: Array<{ center: string; count: number; status: string; }>;
 };
 
 type ReleaseMetadata = {
@@ -57,10 +65,7 @@ type ReleaseMetadata = {
     total: number;
     counts: Array<{ lifeStage: string; count: number; }>;
   }>;
-  productionStatusByCenter: Array<{
-    statusType: string;
-    counts: Array<{ center: string; count: number; status: string; }>;
-  }>;
+  productionStatusByCenter: Array<ProdStatusByCenter>;
   productionStatusOverall: Array<{
     statusType: string;
     counts: Array<{ count: number; status: string; }>;
@@ -130,6 +135,31 @@ const ReleaseNotesPage = (props: Props) => {
         }
       }
     )
+  };
+
+  const generateProdByCenterData = (data: Array<ProdStatusByCenter>, type: string) => {
+    const dataByType = getProductionStatusByType(data, type);
+    const labels = uniq(dataByType.map(c => {
+      return c.status === 'Mouse Allele Modification Genotype Confirmed' ? 'Genotype Confirmed' : c.status
+    })).sort() as Array<string>;
+    const datasets = Object.values(groupBy(dataByType, 'center'))
+      .map(centerData => {
+        return {
+          label: centerData[0].center,
+          data: labels.map(label => {
+            const realLabel = label === 'Genotype Confirmed' ? 'Mouse Allele Modification Genotype Confirmed' : label;
+            const existingCount = centerData.find(d => d.status === realLabel);
+            if (!!existingCount) {
+              return existingCount.count;
+            }
+            return 0;
+          }),
+        }
+      });
+    return {
+      labels,
+      datasets
+    };
   }
 
   const phenotypeAssociationsOpts = {
@@ -182,7 +212,24 @@ const ReleaseNotesPage = (props: Props) => {
       legend: {
         display: false,
       }
-    }
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+
+  const prodByCenterStatusOptions = {
+    scales: {
+      x: { stacked: true },
+      y: { stacked: true, title: { display: true, text: 'Number of genes' } }
+    },
+    plugins: {
+      legend: {
+        display: true,
+        position: "bottom" as const,
+      }
+    },
+    responsive: true,
+    maintainAspectRatio: false,
   };
 
   const genotypingStatusChartData = useMemo(() => ({
@@ -208,6 +255,16 @@ const ReleaseNotesPage = (props: Props) => {
       }
     ]
   }), [releaseMetadata.productionStatusOverall]);
+
+  const genotypingProdByCenterChartData = useMemo(() =>
+    generateProdByCenterData(releaseMetadata.productionStatusByCenter, 'genotyping'),
+    [releaseMetadata.productionStatusByCenter]
+  );
+
+  const phenotypingProdByCenterChartData = useMemo(() =>
+      generateProdByCenterData(releaseMetadata.productionStatusByCenter, 'phenotyping'),
+    [releaseMetadata.productionStatusByCenter]
+  );
 
   const phenotypeCallsByProdOpts = {
     responsive: true,
@@ -250,8 +307,6 @@ const ReleaseNotesPage = (props: Props) => {
       }
     ]
   }), [releaseMetadata.phenotypeAssociationsByProcedure]);
-
-console.log(releaseMetadata);
 
   return (
     <>
@@ -351,6 +406,19 @@ console.log(releaseMetadata);
             <Col lg={6}>
               <div style={{position: 'relative', height: '400px'}}>
                 <Bar options={overallProdStatusOptions} data={phenotypingStatusChartData}/>
+              </div>
+            </Col>
+          </Row>
+          <h3>By Center</h3>
+          <Row className="mb-4">
+            <Col lg={6}>
+              <div style={{ position: 'relative', height: '400px' }}>
+                <Bar options={prodByCenterStatusOptions} data={genotypingProdByCenterChartData} />
+              </div>
+            </Col>
+            <Col lg={6}>
+              <div style={{position: 'relative', height: '400px'}}>
+                <Bar options={prodByCenterStatusOptions} data={phenotypingProdByCenterChartData}/>
               </div>
             </Col>
           </Row>
