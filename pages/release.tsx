@@ -1,11 +1,8 @@
-import Search from "../components/Search";
-import Card from "../components/Card";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { useMemo, useState } from "react";
 import Markdown from 'react-markdown'
-import mockData from '../mocks/data/release/release_metadata.json';
 import { NumberCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import {
   Chart as ChartJS,
@@ -18,6 +15,8 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import Head from "next/head";
+import { Card, Search } from "@/components";
+import { fetchLandingPageData } from "@/api-service";
 
 ChartJS.register(
   CategoryScale,
@@ -38,7 +37,36 @@ type SampleCounts = {
 type DataQualityCheck = {
   dataType: string;
   count: number;
-}
+};
+
+type ReleaseMetadata = {
+  dataReleaseDate: string;
+  dataReleaseNotes: string;
+  dataReleaseVersion: string;
+  genomeAssembly: { species: string; version: string };
+  statisticalAnalysisPackage: { name: string; version: string };
+  summaryCounts: { phenotypedGenes: number; phenotypedLines: number; phentoypeCalls: number; };
+  dataQualityChecks: Array<DataQualityCheck>;
+  phenotypeAnnotations: Array<{
+    topLevelPhenotype: string;
+    total: number;
+    counts: Array<{ zygosity: string; count: number; }>;
+  }>;
+  phenotypeAssociationsByProcedure: Array<{
+    procedure_name: string;
+    total: number;
+    counts: Array<{ lifeStage: string; count: number; }>;
+  }>;
+  productionStatusByCenter: Array<{
+    statusType: string;
+    counts: Array<{ center: string; count: number; status: string; }>;
+  }>;
+  productionStatusOverall: Array<{
+    statusType: string;
+    counts: Array<{ count: number; status: string; }>;
+  }>;
+  sampleCounts: Array<SampleCounts>;
+};
 
 const valuePair = (key: string, value: string | number) => (
   <div>
@@ -51,11 +79,13 @@ const valuePair = (key: string, value: string | number) => (
   </div>
 );
 
-const ReleaseNotesPage = () => {
+type Props = {
+  releaseMetadata: ReleaseMetadata;
+}
+
+const ReleaseNotesPage = (props: Props) => {
+  const { releaseMetadata } = props;
   const [showAll, setShowAll] = useState(false);
-  const associationsByProcedureData = mockData.phenotypeAssociationsByProcedure || [];
-  const productionStatusData = mockData.productionStatus || [];
-  const phenotypeAnnotationsData = mockData.phenotypeAnnotations || [];
 
   const formatDate = (date: string) => {
     const dateObj = new Date(date);
@@ -82,7 +112,7 @@ const ReleaseNotesPage = () => {
   };
 
   const getSortedProcedures = () => {
-    return associationsByProcedureData.sort(
+    return releaseMetadata.phenotypeAssociationsByProcedure.sort(
       ({procedure_name: p1}, {procedure_name: p2}) => {
         const embryoRegex = /E(\d+).5/;
         const p1IsEmbryoProd = p1.match(embryoRegex);
@@ -124,25 +154,25 @@ const ReleaseNotesPage = () => {
   };
 
   const phenotypeAssociationsData = useMemo(() => ({
-    labels: phenotypeAnnotationsData.map(phenotype => phenotype.topLevelPhenotype),
+    labels: releaseMetadata.phenotypeAnnotations.map(phenotype => phenotype.topLevelPhenotype),
     datasets: [
       {
         label: 'Homozygote',
-        data: phenotypeAnnotationsData.map(findZygosityCount.bind(null, 'homozygote')),
+        data: releaseMetadata.phenotypeAnnotations.map(findZygosityCount.bind(null, 'homozygote')),
         backgroundColor: 'rgb(119, 119, 119)'
       },
       {
         label: 'Heterozygote',
-        data: phenotypeAnnotationsData.map(findZygosityCount.bind(null, 'heterozygote')),
+        data: releaseMetadata.phenotypeAnnotations.map(findZygosityCount.bind(null, 'heterozygote')),
         backgroundColor: 'rgb(9, 120, 161)',
       },
       {
         label: 'Hemizygote',
-        data: phenotypeAnnotationsData.map(findZygosityCount.bind(null, 'hemizygote')),
+        data: releaseMetadata.phenotypeAnnotations.map(findZygosityCount.bind(null, 'hemizygote')),
         backgroundColor: 'rgb(239, 123, 11)',
       }
     ]
-  }), [phenotypeAnnotationsData]);
+  }), [releaseMetadata.phenotypeAnnotations]);
 
   const overallProdStatusOptions = {
     scales: {
@@ -156,28 +186,28 @@ const ReleaseNotesPage = () => {
   };
 
   const genotypingStatusChartData = useMemo(() => ({
-    labels: getProductionStatusByType(productionStatusData, 'genotyping').map(c => {
+    labels: getProductionStatusByType(releaseMetadata.productionStatusOverall, 'genotyping').map(c => {
       return c.status === 'Mouse Allele Modification Genotype Confirmed' ? 'Genotype Confirmed' : c.status
     }),
     datasets: [
       {
         label: '',
-        data: getProductionStatusByType(productionStatusData, 'genotyping').map(c => c.count),
+        data: getProductionStatusByType(releaseMetadata.productionStatusOverall, 'genotyping').map(c => c.count),
         backgroundColor: 'rgb(239, 123, 11)'
       }
     ]
-  }), [productionStatusData]);
+  }), [releaseMetadata.productionStatusOverall]);
 
   const phenotypingStatusChartData = useMemo(() => ({
-    labels: getProductionStatusByType(productionStatusData, 'phenotyping').map(c => c.status),
+    labels: getProductionStatusByType(releaseMetadata.productionStatusOverall, 'phenotyping').map(c => c.status),
     datasets: [
       {
         label: '',
-        data: getProductionStatusByType(productionStatusData, 'phenotyping').map(c => c.count),
+        data: getProductionStatusByType(releaseMetadata.productionStatusOverall, 'phenotyping').map(c => c.count),
         backgroundColor: 'rgb(239, 123, 11)'
       }
     ]
-  }), [productionStatusData]);
+  }), [releaseMetadata.productionStatusOverall]);
 
   const phenotypeCallsByProdOpts = {
     responsive: true,
@@ -219,12 +249,14 @@ const ReleaseNotesPage = () => {
         backgroundColor: 'rgb(239, 123, 11)',
       }
     ]
-  }), [associationsByProcedureData]);
+  }), [releaseMetadata.phenotypeAssociationsByProcedure]);
+
+console.log(releaseMetadata);
 
   return (
     <>
       <Head>
-        <title>IMPC Data release {mockData.dataReleaseVersion} | International Mouse Phenotyping Consortium</title>
+        <title>IMPC Data release {releaseMetadata.dataReleaseVersion} | International Mouse Phenotyping Consortium</title>
       </Head>
       <Search />
       <Container style={{ maxWidth: 1240 }} className="page">
@@ -235,15 +267,15 @@ const ReleaseNotesPage = () => {
           >
             RELEASE NOTES
           </p>
-          <h1 className="h1 mb-2">IMPC Data Release {mockData.dataReleaseVersion} Notes</h1>
-          <p className="grey mb-3">{formatDate(mockData.dataReleaseDate)}</p>
+          <h1 className="h1 mb-2">IMPC Data Release {releaseMetadata.dataReleaseVersion} Notes</h1>
+          <p className="grey mb-3">{formatDate(releaseMetadata.dataReleaseDate)}</p>
 
           <Row className="mb-4">
             <Col lg={6}>
               <h3 className="mb-0 mt-3 mb-2">Summary</h3>
-              {valuePair("Number of phenotyped genes", mockData.summaryCounts.phenotypedGenes)}
-              {valuePair("Number of phenotyped mutant lines", mockData.summaryCounts.phenotypedLines)}
-              {valuePair("Number of phenotype calls", mockData.summaryCounts.phentoypeCalls)}
+              {valuePair("Number of phenotyped genes", releaseMetadata.summaryCounts.phenotypedGenes)}
+              {valuePair("Number of phenotyped mutant lines", releaseMetadata.summaryCounts.phenotypedLines)}
+              {valuePair("Number of phenotype calls", releaseMetadata.summaryCounts.phentoypeCalls)}
             </Col>
             <Col lg={6}>
               <h3 className="mb-0 mt-3 mb-2">Data access</h3>
@@ -270,16 +302,16 @@ const ReleaseNotesPage = () => {
             </Col>
           </Row>
 
-          {valuePair("Statistical package", `${mockData.statisticalAnalysisPackage.name} (${mockData.statisticalAnalysisPackage.version})`)}
-          {valuePair("Genome Assembly", `${mockData.genomeAssembly.species} (${mockData.genomeAssembly.version})`)}
+          {valuePair("Statistical package", `${releaseMetadata.statisticalAnalysisPackage.name} (${releaseMetadata.statisticalAnalysisPackage.version})`)}
+          {valuePair("Genome Assembly", `${releaseMetadata.genomeAssembly.species} (${releaseMetadata.genomeAssembly.version})`)}
 
           <h3 className="mb-0 mt-5 mb-2">Highlights</h3>
-          <Markdown>{mockData.dataReleaseNotes}</Markdown>
+          <Markdown>{releaseMetadata.dataReleaseNotes}</Markdown>
         </Card>
         <Card>
-          <h2>Total number of lines and specimens in DR {mockData.dataReleaseVersion}</h2>
+          <h2>Total number of lines and specimens in DR {releaseMetadata.dataReleaseVersion}</h2>
           <SmartTable<SampleCounts>
-            data={mockData.sampleCounts}
+            data={releaseMetadata.sampleCounts}
             defaultSort={['phenotypingCentre', 'asc']}
             columns={[
               {width: 1, label: 'Phenotyping Center', field: 'phenotypingCentre', cmp: <NumberCell /> },
@@ -292,7 +324,7 @@ const ReleaseNotesPage = () => {
         <Card>
           <h2>Experimental data and quality checks</h2>
           <SmartTable<DataQualityCheck>
-            data={mockData.dataQualityChecks}
+            data={releaseMetadata.dataQualityChecks}
             defaultSort={['count', 'desc']}
             columns={[
               {width: 1, label: 'Data Type', field: 'dataType', cmp: <PlainTextCell /> },
@@ -472,5 +504,12 @@ const ReleaseNotesPage = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const data = await fetchLandingPageData("release_metadata");
+  return {
+    props: { releaseMetadata: data }
+  };
+}
 
 export default ReleaseNotesPage;
