@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { GeneSummary } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
-import { PropsWithChildren, ReactNode, useContext, useEffect, useState } from "react";
+import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
 import { orderPhenotypedSelectionChannel, summarySystemSelectionChannel } from "@/eventChannels";
 import _ from 'lodash';
 import { Variant } from "react-bootstrap/types";
@@ -131,44 +131,8 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
       <SectionHeader
         containerId="#data"
         title="Phenotypes"
-      >
-        <Row className="mb-4">
-          <p>
-            The Phenotypes section has three tabs. Each tab provides different views of the data, emphasising different aspects, so users can quickly find what they are looking for.
-          </p>
-          <h3>Significant phenotypes table</h3>
-          <p>
-            The significant phenotypes table shows significant genotype-phenotype effects as identified by the IMPC applying dedicated phenotyping tests and statistical procedures.
-            Phenotypes in the mutant mice that differ from those of the controls are annotated using a Mammalian Phenotype (MP) Ontology term an ontology designed to describe abnormalities in mouse strains.
-          </p>
-        </Row>
-        <Row className="mb-4">
-          <Col xs={2} style={{ textAlign: "center" }}>
-            <FontAwesomeIcon icon={faTriangleExclamation} size="3x"/>
-          </Col>
-          <Col>
-            <p>
-              Note that multiple parameters can be associated with the same phenotype, or more than one mouse strain may have been phenotyped.
-              Thus, when multiple associations are established with one phenotype, only the most sigificant association (P value) is shown in this table.
-            </p>
-          </Col>
-        </Row>
-        <Row className="mb-4">
-          <h3>Graphical Analysis</h3>
-          <p>
-            Here the most significant result for each parameter is displayed.
-            Results can be grouped by physiological system or procedure.
-            Hovering over the points shows measurement-related information.
-            Clicking on the points displays the underlying data by opening up the chart page.
-          </p>
-        </Row>
-        <Row className="mb-4">
-          <h3>All data table</h3>
-          <p>
-            The All data table displays all data available for all knockout mouse lines associated with a gene.
-          </p>
-        </Row>
-      </SectionHeader>
+        href="https://dev.mousephenotype.org/help/data-visualization/phenotype-pages/"
+      />
       <Tabs
         activeKey={tabKey}
         onSelect={key => setTabKey(key)}

@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneImage } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
+import { SectionHeader } from "@/components";
 
 interface ImageProps {
   parameterName: string;
@@ -91,7 +92,11 @@ const Images = ({ gene }: { gene: any }) => {
   if (isLoading) {
     return (
       <Card id="images">
-        <h2>Associated images</h2>
+        <SectionHeader
+          containerId="#images"
+          title="Associated images"
+          href="https://dev.mousephenotype.org/help/programmatic-data-access/images/"
+        />
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -100,7 +105,11 @@ const Images = ({ gene }: { gene: any }) => {
   if (isError || !data) {
     return (
       <Card id="images">
-        <h2>Associated images</h2>
+        <SectionHeader
+          containerId="#images"
+          title="Associated images"
+          href="https://dev.mousephenotype.org/help/programmatic-data-access/images/"
+        />
         <Alert variant="primary">
           There are no images available for {gene.geneSymbol}.
         </Alert>
@@ -118,7 +127,11 @@ const Images = ({ gene }: { gene: any }) => {
 
   return (
     <Card id="images">
-      <h2>Associated media</h2>
+      <SectionHeader
+        containerId="#images"
+        title="Associated images"
+        href="https://dev.mousephenotype.org/help/programmatic-data-access/images/"
+      />
       <div>
         <Row>
           {groups.map(([key, group]) => (
