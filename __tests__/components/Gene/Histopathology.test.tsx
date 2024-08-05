@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, findByRole } from '@testing-library/react';
 import GeneHistopathology from '@/components/Gene/Histopathology';
 import { renderWithClient, API_URL } from "../../utils";
 import mockRouter from "next-router-mock";
@@ -42,8 +42,9 @@ describe('Gene histopathology component', () => {
         <GeneHistopathology />
       </GeneContext.Provider>
     );
-    expect(await screen.findByRole('link')).toBeInTheDocument();
-    expect(await screen.findByRole('link')).toHaveAttribute('href', '/data/histopath/MGI:2143539');
+    const alert = await screen.findByTestId('page-alert');
+    expect(await findByRole(alert,'link')).toBeInTheDocument();
+    expect(await findByRole(alert,'link')).toHaveAttribute('href', '/data/histopath/MGI:2143539');
   });
 
 

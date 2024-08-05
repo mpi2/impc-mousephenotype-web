@@ -34,8 +34,8 @@ describe('Search component', () => {
     fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Cib2' } });
     fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter', charCode: 13 });
     expect(mockRouter).toMatchObject({
-      asPath: '/search?query=Cib2',
-      query: { query: 'Cib2' }
+      asPath: '/search?term=Cib2',
+      query: { term: 'Cib2' }
     });
   });
 
@@ -45,8 +45,8 @@ describe('Search component', () => {
     fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Cib2' } });
     fireEvent.keyDown(screen.getByRole('textbox'), { key: 'Enter', charCode: 13 });
     expect(mockRouter).toMatchObject({
-      asPath: '/search?type=phenotype&query=Cib2',
-      query: { query: 'Cib2', type: 'phenotype' }
+      asPath: '/search?type=phenotype&term=Cib2',
+      query: { term: 'Cib2', type: 'phenotype' }
     });
     const phenotypeLinkTab = screen.getByText(/Phenotypes/i);
     expect(phenotypeLinkTab).toHaveClass('tab__active');

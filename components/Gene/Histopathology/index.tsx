@@ -56,7 +56,7 @@ const Histopathology = () => {
           title="Histopathology"
           href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
         />
-        <Alert variant="primary">
+        <Alert variant="primary" data-testid="page-alert">
           This gene doesn't have any significant Histopathology hits.&nbsp;
           <Link className="primary link" href={`/data/histopath/${router.query.pid}`}>
             Please click here to see the raw data
