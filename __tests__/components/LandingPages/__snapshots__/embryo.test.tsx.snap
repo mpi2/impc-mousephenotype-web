@@ -419,6 +419,7 @@ exports[`Embryo landing page renders correctly 1`] = `
     </div>
     <div
       class="card"
+      id="embryo-data-grid"
     >
       <div
         class="container"
@@ -711,7 +712,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               <li>
                 <a
                   class="link primary"
-                  href="https://beta.mousephenotype.org/data/embryo/vignettes"
+                  href="/embryo/vignettes"
                 >
                   Embryo Vignettes
                 </a>
