@@ -14,7 +14,7 @@ import { Publication } from "../../PublicationsList/types";
 import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { DownloadData } from "@/components";
+import { DownloadData, SectionHeader } from "@/components";
 
 const ALLELES_COUNT = 2;
 const AllelesCell = ({ pub }: { pub: Publication }) => {
@@ -61,7 +61,11 @@ const Publications = ({ gene }: { gene: any }) => {
   if (isLoading) {
     return (
       <Card id="publications">
-        <h2>IMPC related publications</h2>
+        <SectionHeader
+          containerId="#publications"
+          title="IMPC related publications"
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+        />
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -70,7 +74,11 @@ const Publications = ({ gene }: { gene: any }) => {
   if (isError || !sorted) {
     return (
       <Card id="publications">
-        <h2>IMPC related publications</h2>
+        <SectionHeader
+          containerId="#publications"
+          title="IMPC related publications"
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+        />
         <Alert variant="primary">
           No publications found that use IMPC mice or data for the <i>{gene.geneSymbol}</i> gene.
         </Alert>
@@ -80,7 +88,11 @@ const Publications = ({ gene }: { gene: any }) => {
 
   return (
     <Card id="publications">
-      <h2>IMPC related publications</h2>
+      <SectionHeader
+        containerId="#publications"
+        title="IMPC related publications"
+        href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+      />
       <p>
         The table below lists publications which used either products generated
         by the IMPC or data produced by the phenotyping efforts of the IMPC.

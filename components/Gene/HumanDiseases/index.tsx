@@ -17,7 +17,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { DownloadData } from "@/components";
+import { DownloadData, SectionHeader } from "@/components";
 
 type ScaleProps = {
   children: number;
@@ -161,7 +161,11 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   if (isLoading) {
     return (
       <Card id="human-diseases">
-        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations</h2>
+        <SectionHeader
+          containerId="#human-diseases"
+          title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+        />
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -170,7 +174,11 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   if (isError) {
     return (
       <Card id="human-diseases">
-        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations</h2>
+        <SectionHeader
+          containerId="#human-diseases"
+          title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+        />
         <Alert variant="primary">No data available for this section</Alert>
       </Card>
     );
@@ -188,7 +196,11 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   return (
     <>
       <Card id="human-diseases">
-        <h2>Human diseases caused by <i>{gene.geneSymbol}</i> mutations </h2>
+        <SectionHeader
+          containerId="#human-diseases"
+          title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+        />
         <div className="mb-4">
           <p>
             The analysis uses data from IMPC, along with published data on other

@@ -7,6 +7,7 @@ import { useGeneExpressionQuery } from "@/hooks";
 import { GeneContext } from "@/contexts";
 import { useRouter } from "next/router";
 import { ExpressionCell, ImagesCell } from './custom-cells';
+import { SectionHeader } from "@/components";
 
 const Expressions = () => {
   const router = useRouter();
@@ -27,7 +28,11 @@ const Expressions = () => {
   if (isLoading) {
     return (
       <Card id="expressions">
-        <h2>lacZ Expression</h2>
+        <SectionHeader
+          containerId="#expressions"
+          title="lacZ Expression"
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/lacz-expression-data/"
+        />
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -36,7 +41,11 @@ const Expressions = () => {
   if (error) {
     return (
       <Card id="expressions">
-        <h2>lacZ Expression</h2>
+        <SectionHeader
+          containerId="#expressions"
+          title="lacZ Expression"
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/lacz-expression-data/"
+        />
         <Alert variant="primary">
           No expression data available for <i>{gene.geneSymbol}</i>.
         </Alert>
@@ -46,7 +55,11 @@ const Expressions = () => {
 
   return (
     <Card id="expressions">
-      <h2>lacZ Expression</h2>
+      <SectionHeader
+        containerId="#expressions"
+        title="lacZ Expression"
+        href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/lacz-expression-data/"
+      />
 
       <Tabs defaultActiveKey="adultExpressions" onSelect={(e) => setTab(e)} className="mb-3">
         <Tab
