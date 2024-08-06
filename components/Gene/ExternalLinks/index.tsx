@@ -2,7 +2,7 @@ import { Card } from "@/components";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { GeneContext } from "@/contexts";
-import { Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import { useGeneExternalLinksQuery } from "@/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,18 @@ const ExternalLinks = () => {
   const router = useRouter();
   const gene = useContext(GeneContext);
 
-  const { data: providers } = useGeneExternalLinksQuery(gene.mgiGeneAccessionId, router.isReady);
+  const { data: providers, error, isError } = useGeneExternalLinksQuery(gene.mgiGeneAccessionId, router.isReady);
+
+  if (error || providers?.length === 0) {
+    return (
+      <Card id="external-links">
+        <h2>External links</h2>
+        <Alert variant="primary">
+          No external links available for <i>{gene.geneSymbol}</i>.
+        </Alert>
+      </Card>
+    )
+  }
 
   return (
     <Card id="external-links">
