@@ -115,7 +115,7 @@ const HistopathLandingPage = () => {
       const mgiID = gene.mgiAccession;
       const allele = gene.allelesWithTissue[0].match(/\<(.+)\>/)[1];
       return (
-        <a className="link primary" href={`/alleles/${mgiID}/${allele}#mice`}>
+        <a className="link primary" href={`/data/alleles/${mgiID}/${allele}#mice`}>
           Yes
         </a>
       );
