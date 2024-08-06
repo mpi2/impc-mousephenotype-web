@@ -7,9 +7,8 @@ module.exports = {
     return [
       {
         source: "/",
-        destination: "/data/search",
-        permanent: false,
-        basePath: false
+        destination: "/search",
+        permanent: true,
       },
     ];
   },
