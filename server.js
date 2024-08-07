@@ -19,11 +19,12 @@ app.prepare()
             if (host.includes('nginx.mousephenotype-dev.org')) {
                 const modifiedPathName = pathname.replace("/data/", "");
                 console.log({ modifiedPathName });
-                res.setHeader('X-PATH', JSON.stringify({ host, pathname, modifiedPathName }));
                 await app.render(req, res, modifiedPathName, query);
+                res.setHeader('X-PATH', JSON.stringify({ host, pathname, modifiedPathName }));
             } else {
                 await handle(req, res, parsedUrl);
             }
+            res.setHeader('X-IMPC-TEST', "true")
 
         } catch (err) {
             console.error('Error occurred handling', req.url, err)
