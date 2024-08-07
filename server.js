@@ -15,7 +15,8 @@ app.prepare()
             const parsedUrl = parse(req.url, true);
             const { pathname, query} = parsedUrl;
             const host = req.headers.host;
-            if (host.includes('micephenotype-dev.org')) {
+            console.log({ host, pathname });
+            if (host.includes('nginx.mousephenotype-dev.org')) {
                 const modifiedPathName = pathname.replace("/data/", "");
                 console.log({ modifiedPathName });
                 await app.render(req, res, modifiedPathName, query);
