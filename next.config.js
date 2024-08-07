@@ -7,11 +7,6 @@ module.exports = {
     return [
       {
         source: "/",
-        destination: "/search",
-        permanent: true,
-      },
-      {
-        source: "/",
         destination: "/data",
         permanent: true,
         basePath: false,
