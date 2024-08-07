@@ -19,6 +19,7 @@ app.prepare()
             if (host.includes('nginx.mousephenotype-dev.org')) {
                 const modifiedPathName = pathname.replace("/data/", "");
                 console.log({ modifiedPathName });
+                res.setHeader('X-PATH', JSON.stringify({ host, pathname, modifiedPathName }));
                 await app.render(req, res, modifiedPathName, query);
             } else {
                 await handle(req, res, parsedUrl);
