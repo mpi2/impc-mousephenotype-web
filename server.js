@@ -14,10 +14,8 @@ app.prepare()
         try {
             const parsedUrl = parse(req.url, true);
             const { pathname, query} = parsedUrl;
-            res.setHeader('X-IMPC-TEST', JSON.stringify({ pathname }));
             if (pathname.startsWith('/data/data')) {
                 const modifiedPathName = pathname.replace("/data/", "/");
-                res.setHeader('X-IMPC-MOD', JSON.stringify({ modifiedPathName }));
                 await app.render(req, res, modifiedPathName, query);
             } else {
                 await handle(req, res, parsedUrl);
