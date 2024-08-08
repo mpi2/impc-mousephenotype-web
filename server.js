@@ -16,7 +16,7 @@ app.prepare()
             const { pathname, query} = parsedUrl;
             const host = req.headers.host;
             console.log({ host, pathname });
-            res.setHeader('X-IMPC-TEST', "true");
+            res.setHeader('X-IMPC-TEST', JSON.stringify({ host, pathname }));
             if (host.includes('nginx.mousephenotype-dev.org')) {
                 const modifiedPathName = pathname.replace("/data/", "");
                 console.log({ modifiedPathName });
