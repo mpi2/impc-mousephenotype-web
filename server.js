@@ -14,14 +14,11 @@ app.prepare()
         try {
             const parsedUrl = parse(req.url, true);
             const { pathname, query} = parsedUrl;
-            const host = req.headers.host;
-            console.log({ host, pathname });
             res.setHeader('X-IMPC-TEST', JSON.stringify({ host, pathname }));
-            if (host.includes('nginx.mousephenotype-dev.org')) {
-                const modifiedPathName = pathname.replace("/data/", "");
-                console.log({ modifiedPathName });
+            if (pathname.startsWith('/data/data')) {
+                const modifiedPathName = pathname.replace("/data/", "/");
+                res.setHeader('X-IMPC-MOD', JSON.stringify({ modifiedPathName }));
                 await app.render(req, res, modifiedPathName, query);
-                res.setHeader('X-PATH', JSON.stringify({ host, pathname, modifiedPathName }));
             } else {
                 await handle(req, res, parsedUrl);
             }
