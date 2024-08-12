@@ -55,17 +55,20 @@ const FilterBadge = ({
   onClick,
   icon,
   isSelected,
+  name
 }: {
   children: ReactNode;
   onClick: () => void;
   icon?: any;
   isSelected: boolean;
+  name: string;
 }) => (
   <Badge
     className={classNames(styles.badge, { 'active': isSelected })}
     pill
     bg="badge-secondary"
     onClick={onClick}
+    data-testid={`filter-badge-${name}`}
   >
     {children}&nbsp;
     {!!icon ? <FontAwesomeIcon icon={icon} /> : null}
@@ -166,21 +169,23 @@ const ImageViewer = ({image}) => {
   );
 };
 
-const Column = ({ images, selected, onSelection }) => {
+const Column = ({ images, selected, onSelection, name }) => {
   return (
-    <Row className={styles.images}>
+    <Row className={styles.images} data-testid={`col-${name}`}>
       {images?.map((image, i) => (
         <Col key={image.observationId} md={4} lg={3} className="mb-2">
           <div
             className={classNames(styles.singleImage, { [styles.active]: selected === i })}
             onClick={() => onSelection(i)}
+            data-testid={`container-${name}-${i}`}
           >
             <LazyLoadImage
               src={addTrailingSlash(image.thumbnailUrl)}
               effect="blur"
-              alt={""}
+              alt=""
               width="100%"
               wrapperProps={{ style: { width: "100%" } }}
+              data-testid={`${name}-${i}`}
             />
             <ImageInformation image={image}/>
           </div>
@@ -468,6 +473,7 @@ const ImagesCompare = () => {
                     <div className={styles.filter}>
                       <strong>Sex:</strong>
                       <FilterBadge
+                        name="both-sexes"
                         isSelected={selectedSex === 'both'}
                         icon={faMarsAndVenus}
                         onClick={() => setSelectedSex('both')}
@@ -475,6 +481,7 @@ const ImagesCompare = () => {
                         All
                       </FilterBadge>
                       <FilterBadge
+                        name="female-sex"
                         isSelected={selectedSex === 'female'}
                         icon={faVenus}
                         onClick={() => setSelectedSex('female')}
@@ -482,6 +489,7 @@ const ImagesCompare = () => {
                         Female
                       </FilterBadge>
                       <FilterBadge
+                        name="male-sex"
                         isSelected={selectedSex === 'male'}
                         icon={faMars}
                         onClick={() => setSelectedSex('male')}
@@ -494,24 +502,28 @@ const ImagesCompare = () => {
                     <div className={styles.filter}>
                       <strong>Mutant zygosity:</strong>
                       <FilterBadge
+                        name="all-zygosities"
                         isSelected={selectedZyg === 'both'}
                         onClick={() => setSelectedZyg('both')}
                       >
                         All
                       </FilterBadge>
                       <FilterBadge
+                        name="het"
                         isSelected={selectedZyg === 'heterozygote'}
                         onClick={() => setSelectedZyg('heterozygote')}
                       >
                         Heterozygote
                       </FilterBadge>
                       <FilterBadge
+                        name="hom"
                         isSelected={selectedZyg === 'homozygote'}
                         onClick={() => setSelectedZyg('homozygote')}
                       >
                         Homozygote
                       </FilterBadge>
                       <FilterBadge
+                        name="hemi"
                         isSelected={selectedZyg === 'hemizygote'}
                         onClick={() => setSelectedZyg('hemizygote')}
                       >
@@ -538,6 +550,7 @@ const ImagesCompare = () => {
             <Row>
               <Col sm={6}>
                 <Column
+                  name="control-images"
                   selected={selectedWTImage}
                   images={controlImages}
                   onSelection={(imageIndex) => setSelectedWTImage(imageIndex)}
@@ -545,6 +558,7 @@ const ImagesCompare = () => {
               </Col>
               <Col sm={6}>
                 <Column
+                  name="mutant-images"
                   selected={selectedMutantImage}
                   images={filteredMutantImages}
                   onSelection={(imageIndex) =>
