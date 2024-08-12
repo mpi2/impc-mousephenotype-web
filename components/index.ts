@@ -18,3 +18,4 @@ export { default as ChordDiagram } from './ChordDiagram';
 export { default as PieChart } from './PieChart';
 export { default as ScatterChart } from './ScatterChart';
 export { default as EmbryoDataAvailabilityGrid } from './EmbryoDataAvailabilityGrid';
+export * as Allele from './Allele';
