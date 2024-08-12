@@ -1,0 +1,421 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Allele Page - ESCell renders correctly 1`] = `
+<div>
+  <div
+    class="card"
+    id="esCell"
+  >
+    <h2
+      data-testid="header"
+    >
+      ES Cells
+    </h2>
+    <div
+      class="buttonsWrapper top "
+      data-testid="top-controls-wrapper"
+    />
+    <div
+      class="tableWrapper"
+    >
+      <table
+        class="table striped undefined table table-bordered"
+      >
+        <thead>
+          <tr>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton disabled"
+                style="font-weight: normal;"
+              >
+                ES Cell Clone
+                 
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton disabled"
+                style="font-weight: normal;"
+              >
+                ES Cell strain
+                 
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton disabled"
+                style="font-weight: normal;"
+              >
+                Parental Cell Line
+                 
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="8.333333333333332%"
+            >
+              <button
+                class="inlineButton headerButton disabled"
+                style="font-weight: normal;"
+              >
+                IKMC Project
+                 
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="8.333333333333332%"
+            >
+              <button
+                class="inlineButton headerButton disabled"
+                style="font-weight: normal;"
+              >
+                QC Data
+                 
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton disabled"
+                style="font-weight: normal;"
+              >
+                Targeting Vector
+                 
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton disabled"
+                style="font-weight: normal;"
+              >
+                Order / Contact
+                 
+              </button>
+            </th>
+          </tr>
+          <tr />
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>
+                EPD0211_3_A07
+              </strong>
+            </td>
+            <td>
+              C57BL/6N
+              <sup />
+            </td>
+            <td>
+              JM8.N4
+            </td>
+            <td>
+              40214
+            </td>
+            <td />
+            <td>
+              PRPGS00070_C_D05
+            </td>
+            <td>
+              <a
+                class="link primary"
+                href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                target="_blank"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                 
+                KOMP
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                EPD0211_3_A05
+              </strong>
+            </td>
+            <td>
+              C57BL/6N
+              <sup />
+            </td>
+            <td>
+              JM8.N4
+            </td>
+            <td>
+              40214
+            </td>
+            <td />
+            <td>
+              PRPGS00070_C_D05
+            </td>
+            <td>
+              <a
+                class="link primary"
+                href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                target="_blank"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                 
+                KOMP
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                EPD0211_3_F05
+              </strong>
+            </td>
+            <td>
+              C57BL/6N
+              <sup />
+            </td>
+            <td>
+              JM8.N4
+            </td>
+            <td>
+              40214
+            </td>
+            <td />
+            <td>
+              PRPGS00070_C_D05
+            </td>
+            <td>
+              <a
+                class="link primary"
+                href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                target="_blank"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                 
+                KOMP
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                EPD0211_3_C08
+              </strong>
+            </td>
+            <td>
+              C57BL/6N
+              <sup />
+            </td>
+            <td>
+              JM8.N4
+            </td>
+            <td>
+              40214
+            </td>
+            <td>
+              <a
+                class="link"
+                href="#"
+                target="_blank"
+              >
+                View 
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-window-maximize fa-xs grey"
+                  data-icon="window-maximize"
+                  data-prefix="far"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M.3 89.5C.1 91.6 0 93.8 0 96V224 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64V224 96c0-35.3-28.7-64-64-64H64c-2.2 0-4.4 .1-6.5 .3c-9.2 .9-17.8 3.8-25.5 8.2C21.8 46.5 13.4 55.1 7.7 65.5c-3.9 7.3-6.5 15.4-7.4 24zM48 224H464l0 192c0 8.8-7.2 16-16 16L64 432c-8.8 0-16-7.2-16-16l0-192z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+            </td>
+            <td>
+              PRPGS00070_C_D05
+            </td>
+            <td>
+              <a
+                class="link primary"
+                href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                target="_blank"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                 
+                KOMP
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                EPD0211_3_D07
+              </strong>
+            </td>
+            <td>
+              C57BL/6N
+              <sup />
+            </td>
+            <td>
+              JM8.N4
+            </td>
+            <td>
+              40214
+            </td>
+            <td />
+            <td>
+              PRPGS00070_C_D05
+            </td>
+            <td>
+              <a
+                class="link primary"
+                href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                target="_blank"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                 
+                KOMP
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                EPD0211_3_G05
+              </strong>
+            </td>
+            <td>
+              C57BL/6N
+              <sup />
+            </td>
+            <td>
+              JM8.N4
+            </td>
+            <td>
+              40214
+            </td>
+            <td />
+            <td>
+              PRPGS00070_C_D05
+            </td>
+            <td>
+              <a
+                class="link primary"
+                href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                target="_blank"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                 
+                KOMP
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="buttonsWrapper "
+    />
+  </div>
+</div>
+`;

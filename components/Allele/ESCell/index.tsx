@@ -24,7 +24,6 @@ const ESCell = ({
   const { data, isLoading, isError } = useQuery({
     queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'es_cell', alleleName],
     queryFn: () => fetchAPI(`/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
-    placeholderData: []
   });
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
@@ -46,7 +45,7 @@ const ESCell = ({
     return (
       <Card id="esCell">
         <h2>ES Cells</h2>
-        <Alert variant="primary">
+        <Alert variant="primary" data-testid="handled-error-alert">
           No ES cell products found for this allele.
         </Alert>
       </Card>
@@ -55,9 +54,9 @@ const ESCell = ({
 
   return (
     <Card id="esCell">
-      <h2>ES Cells</h2>
-      {!data && data.length == 0 ? (
-        <Alert variant="primary" style={{ marginTop: "1em" }}>
+      <h2 data-testid="header">ES Cells</h2>
+      {data?.length === 0 ? (
+        <Alert variant="primary" style={{ marginTop: "1em" }} data-testid="no-results-alert">
           No ES cell products found for this allele.
         </Alert>
       ) : (
