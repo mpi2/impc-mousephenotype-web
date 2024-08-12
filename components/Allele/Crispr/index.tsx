@@ -105,7 +105,7 @@ const Crispr = ({
     <>
       {!!data.fasta && (
         <Card id="crispr">
-          <h2>Sequence</h2>
+          <h2 data-testid="header">Sequence</h2>
           {data.fasta.map(
             ({ sequence, sequenceType, sequenceCategory }, index) => (
               <div
