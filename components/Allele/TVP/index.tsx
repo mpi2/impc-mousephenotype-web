@@ -24,7 +24,6 @@ const TargetingVector = ({
   const { data, isLoading, isError } = useQuery({
     queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'tvp', alleleName],
     queryFn: () => fetchAPI(`/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
-    placeholderData: []
   });
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
@@ -55,8 +54,8 @@ const TargetingVector = ({
 
   return (
     <Card id="targetingVector">
-      <h2>Targeting vectors</h2>
-      {!data && data.length == 0 ? (
+      <h2 data-testid="header">Targeting vectors</h2>
+      {data?.length === 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>
           No targeting vector products found for this allele.
         </Alert>
