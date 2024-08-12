@@ -56,7 +56,7 @@ const Mice = ({
     <Card id="mice">
       <h2 data-testid="header">Mice</h2>
       {data?.length === 0 ? (
-        <Alert variant="primary" style={{ marginTop: "1em" }} data-testid="no-results-alert" >
+        <Alert variant="primary" style={{ marginTop: "1em" }} data-testid="no-results-alert">
           No mice products found for this allele.
         </Alert>
       ) : (

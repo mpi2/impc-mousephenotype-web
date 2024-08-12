@@ -57,7 +57,7 @@ describe('Allele Page - Mice', () => {
   it('renders table with 6 columns when is an ESCell', async () => {
     const qcDataFn = jest.fn();
 
-    const { container} = renderWithClient(
+    renderWithClient(
       <Mice
         mgiGeneAccessionId="MGI:1931838"
         alleleName="tm1a(KOMP)Wtsi"
@@ -79,7 +79,7 @@ describe('Allele Page - Mice', () => {
       })
     );
 
-    const { container} = renderWithClient(
+    renderWithClient(
       <Mice
         mgiGeneAccessionId="MGI:1931838"
         alleleName="tm1a(KOMP)WtsiTest"
