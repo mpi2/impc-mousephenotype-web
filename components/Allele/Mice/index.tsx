@@ -25,7 +25,6 @@ const Mice = ({
   const { data, isLoading, isError } = useQuery({
     queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'mice', alleleName],
     queryFn: () => fetchAPI(`/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
-    placeholderData: []
   });
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
@@ -55,9 +54,9 @@ const Mice = ({
   const fixedTissuesLinks: Array<any> = _.uniqBy(data.flatMap(item => item.tissueDistribution), 'tissueEnquiryLink');
   return (
     <Card id="mice">
-      <h2>Mice</h2>
-      {!data && data.length == 0 ? (
-        <Alert variant="primary" style={{ marginTop: "1em" }}>
+      <h2 data-testid="header">Mice</h2>
+      {data?.length === 0 ? (
+        <Alert variant="primary" style={{ marginTop: "1em" }} data-testid="no-results-alert" >
           No mice products found for this allele.
         </Alert>
       ) : (
