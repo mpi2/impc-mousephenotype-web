@@ -1,0 +1,822 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Allele Page - Crispr renders correctly 1`] = `
+<div>
+  <div
+    class="card"
+    id="crispr"
+  >
+    <h2
+      data-testid="header"
+    >
+      Sequence
+    </h2>
+    <div
+      class="bg-grey-light false"
+      style="padding: 1rem; position: relative;"
+    >
+      &gt;Dbn1 Cas9_Dbn1_13790
+GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTGTACCTTGCTGGGCACTAGCACCTGGAAAGACACGAGAGGTGTGATCCCCGAGTTGTGGGTTCCTGGTGTTTGTGTGAAAAACAAACAGACAAATAACAGCAGCAGCAACAACAAAACATTTTTTTTCGACGTTTTTCTCCAAATTGGAAAAGAAAATCCACCTTGACTCAGACCCTCGCTGACCTGGCTCCTCCACTGCTTCCGCCTTGAGACCTGGGGTCCTTGGGGTGTATTAGTCTTGGGCTCTGCATTTG
+
+      <p
+        class="grey mt-2 mb-0 small"
+      >
+        Type: 
+        complete
+        <span
+          class="ms-3 me-3 "
+        >
+          |
+        </span>
+        Category:
+         
+        outcome sequence
+      </p>
+      <div
+        style="position: absolute; bottom: 16px; right: 16px;"
+      >
+        <button
+          class="btn impc-secondary-button small"
+        >
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-copy "
+            data-icon="copy"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M208 0H332.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z"
+              fill="currentColor"
+            />
+          </svg>
+           
+          Copy
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="card"
+  >
+    <h2>
+      Crispr details
+    </h2>
+    <p>
+      <a
+        class="link primary"
+        href="https://www.informatics.jax.org/allele/MGI:6257430"
+        target="_blank"
+      >
+        MGI:1931838
+         
+        <span
+          class="grey"
+        >
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-arrow-up-right-from-square fa-xs "
+            data-icon="arrow-up-right-from-square"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </a>
+    </p>
+    <h3
+      class="mb-0 mt-1"
+    >
+      Nucleases
+    </h3>
+    <div
+      class="mt-3"
+    >
+      <div>
+        <span
+          class="grey"
+        >
+          Type
+          : 
+        </span>
+        <strong>
+          Cas9
+        </strong>
+      </div>
+      <div>
+        <span
+          class="grey"
+        >
+          Class
+          : 
+        </span>
+        <strong>
+          mRNA
+        </strong>
+      </div>
+    </div>
+    <h3
+      class="mb-0 mt-4"
+    >
+      Genotype primers
+    </h3>
+    <div
+      class="mt-3"
+    >
+      <div>
+        <span
+          class="grey"
+        >
+          Name
+          : 
+        </span>
+        <strong>
+          Geno_Phldb2_F1
+        </strong>
+      </div>
+      <div>
+        <span
+          class="grey"
+        >
+          Sequence
+          : 
+        </span>
+        <strong>
+          CACTGGGCGCAAAATTCTTCT
+        </strong>
+      </div>
+    </div>
+    <h3
+      class="mb-0 mt-4"
+    >
+      Guides
+    </h3>
+    <div
+      class="tableWrapper"
+    >
+      <table
+        class="table striped undefined table table-bordered"
+      >
+        <thead>
+          <tr>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: bold;"
+              >
+                Guide sequence
+                 
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-up sortIcon"
+                  data-icon="caret-up"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                PAM
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                CHR
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Start
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Stop
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Strand
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Genome build
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                GRNA concentration
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Truncated guide
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Reversed
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Sanger service
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Guide format
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+            <th
+              rowspan="2"
+              width="16.666666666666664%"
+            >
+              <button
+                class="inlineButton headerButton"
+                style="font-weight: normal;"
+              >
+                Guide source
+                 
+                <span
+                  class="defaultIcons"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up first"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down second"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </th>
+          </tr>
+          <tr />
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              GAGGTGTGATCCCCGAGAAA
+            </td>
+            <td>
+              TGG
+            </td>
+            <td>
+              13
+            </td>
+            <td>
+              55630835
+            </td>
+            <td>
+              55630857
+            </td>
+            <td>
+              -
+            </td>
+            <td>
+              GRCm39
+            </td>
+            <td>
+              5
+            </td>
+            <td />
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+          <tr>
+            <td>
+              CAGGTCCAACACCTATCTTG
+            </td>
+            <td>
+              TGG
+            </td>
+            <td>
+              13
+            </td>
+            <td>
+              55629036
+            </td>
+            <td>
+              55629058
+            </td>
+            <td>
+              -
+            </td>
+            <td>
+              GRCm39
+            </td>
+            <td>
+              5
+            </td>
+            <td />
+            <td />
+            <td />
+            <td />
+            <td />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
