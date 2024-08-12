@@ -1,0 +1,262 @@
+[
+  {
+    "productId": "E43254",
+    "alleleId": 11509,
+    "geneSymbol": "Dbn1",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleHasIssue": false,
+    "name": "EPD0211_3_A05",
+    "productionPipeline": "KOMP-CSD",
+    "statusDate": "2021-04-28T16:56:52.431154Z",
+    "associatedProductVectorName": "PRPGS00070_C_D05",
+    "ikmcProjectId": "40214",
+    "designId": 49236,
+    "designIdData": true,
+    "designLink": "https://nginx.mousephenotype-dev.org/api/v1/alleles/htgt/designId:49236",
+    "cassette": "L1L2_Bact_P",
+    "alleleType": "a",
+    "alleleName": "tm1a(KOMP)Wtsi",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "alleleCategory": "Knockout First",
+    "strain": "C57BL/6N",
+    "cassetteType": "Promotor Driven",
+    "parentEsCellLine": "JM8.N4",
+    "qcData": [],
+    "associatedProductsColonyNames": [
+      "MCKS"
+    ],
+    "orders": [
+      {
+        "orderName": "KOMP",
+        "orderLink": "https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+      }
+    ],
+    "alleleDesignProject": "IMPC",
+    "type": "es_cell",
+    "productionCompleted": true,
+    "status": "ES Cell Produced",
+    "otherLinks": {
+      "genbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file",
+      "alleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/allele.png",
+      "alleleSimpleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png",
+      "vectorGenbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file",
+      "vectorAlleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+    }
+  },
+  {
+    "productId": "E24540",
+    "alleleId": 11509,
+    "geneSymbol": "Dbn1",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleHasIssue": false,
+    "name": "EPD0211_3_A07",
+    "productionPipeline": "KOMP-CSD",
+    "statusDate": "2021-04-28T16:56:52.431154Z",
+    "associatedProductVectorName": "PRPGS00070_C_D05",
+    "ikmcProjectId": "40214",
+    "designId": 49236,
+    "designIdData": true,
+    "designLink": "https://nginx.mousephenotype-dev.org/api/v1/alleles/htgt/designId:49236",
+    "cassette": "L1L2_Bact_P",
+    "alleleType": "a",
+    "alleleName": "tm1a(KOMP)Wtsi",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "alleleCategory": "Knockout First",
+    "strain": "C57BL/6N",
+    "cassetteType": "Promotor Driven",
+    "parentEsCellLine": "JM8.N4",
+    "qcData": [],
+    "associatedProductsColonyNames": [],
+    "orders": [
+      {
+        "orderName": "KOMP",
+        "orderLink": "https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+      }
+    ],
+    "alleleDesignProject": "IMPC",
+    "type": "es_cell",
+    "productionCompleted": true,
+    "status": "ES Cell Produced",
+    "otherLinks": {
+      "genbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file",
+      "alleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/allele.png",
+      "alleleSimpleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png",
+      "vectorGenbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file",
+      "vectorAlleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+    }
+  },
+  {
+    "productId": "E5924",
+    "alleleId": 11509,
+    "geneSymbol": "Dbn1",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleHasIssue": false,
+    "name": "EPD0211_3_D07",
+    "productionPipeline": "KOMP-CSD",
+    "statusDate": "2021-04-28T16:56:52.431154Z",
+    "associatedProductVectorName": "PRPGS00070_C_D05",
+    "ikmcProjectId": "40214",
+    "designId": 49236,
+    "designIdData": true,
+    "designLink": "https://nginx.mousephenotype-dev.org/api/v1/alleles/htgt/designId:49236",
+    "cassette": "L1L2_Bact_P",
+    "alleleType": "a",
+    "alleleName": "tm1a(KOMP)Wtsi",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "alleleCategory": "Knockout First",
+    "strain": "C57BL/6N",
+    "cassetteType": "Promotor Driven",
+    "parentEsCellLine": "JM8.N4",
+    "qcData": [],
+    "associatedProductsColonyNames": [],
+    "orders": [
+      {
+        "orderName": "KOMP",
+        "orderLink": "https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+      }
+    ],
+    "alleleDesignProject": "IMPC",
+    "type": "es_cell",
+    "productionCompleted": true,
+    "status": "ES Cell Produced",
+    "otherLinks": {
+      "genbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file",
+      "alleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/allele.png",
+      "alleleSimpleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png",
+      "vectorGenbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file",
+      "vectorAlleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+    }
+  },
+  {
+    "productId": "E43255",
+    "alleleId": 11509,
+    "geneSymbol": "Dbn1",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleHasIssue": false,
+    "name": "EPD0211_3_F05",
+    "productionPipeline": "KOMP-CSD",
+    "statusDate": "2021-04-28T16:56:52.431154Z",
+    "associatedProductVectorName": "PRPGS00070_C_D05",
+    "ikmcProjectId": "40214",
+    "designId": 49236,
+    "designIdData": true,
+    "designLink": "https://nginx.mousephenotype-dev.org/api/v1/alleles/htgt/designId:49236",
+    "cassette": "L1L2_Bact_P",
+    "alleleType": "a",
+    "alleleName": "tm1a(KOMP)Wtsi",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "alleleCategory": "Knockout First",
+    "strain": "C57BL/6N",
+    "cassetteType": "Promotor Driven",
+    "parentEsCellLine": "JM8.N4",
+    "qcData": [],
+    "associatedProductsColonyNames": [],
+    "orders": [
+      {
+        "orderName": "KOMP",
+        "orderLink": "https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+      }
+    ],
+    "alleleDesignProject": "IMPC",
+    "type": "es_cell",
+    "productionCompleted": true,
+    "status": "ES Cell Produced",
+    "otherLinks": {
+      "genbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file",
+      "alleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/allele.png",
+      "alleleSimpleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png",
+      "vectorGenbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file",
+      "vectorAlleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+    }
+  },
+  {
+    "productId": "E43256",
+    "alleleId": 11509,
+    "geneSymbol": "Dbn1",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleHasIssue": false,
+    "name": "EPD0211_3_C08",
+    "productionPipeline": "KOMP-CSD",
+    "statusDate": "2021-04-28T16:56:52.431154Z",
+    "associatedProductVectorName": "PRPGS00070_C_D05",
+    "ikmcProjectId": "40214",
+    "designId": 49236,
+    "designIdData": true,
+    "designLink": "https://nginx.mousephenotype-dev.org/api/v1/alleles/htgt/designId:49236",
+    "cassette": "L1L2_Bact_P",
+    "alleleType": "a",
+    "alleleName": "tm1a(KOMP)Wtsi",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "alleleCategory": "Knockout First",
+    "strain": "C57BL/6N",
+    "cassetteType": "Promotor Driven",
+    "parentEsCellLine": "JM8.N4",
+    "qcData": [
+      {
+        "userQc": {
+          "threePrimeLrPcr": "pass"
+        }
+      }
+    ],
+    "associatedProductsColonyNames": [],
+    "orders": [
+      {
+        "orderName": "KOMP",
+        "orderLink": "https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+      }
+    ],
+    "alleleDesignProject": "IMPC",
+    "type": "es_cell",
+    "productionCompleted": true,
+    "status": "ES Cell Produced",
+    "otherLinks": {
+      "genbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file",
+      "alleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/allele.png",
+      "alleleSimpleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png",
+      "vectorGenbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file",
+      "vectorAlleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+    }
+  },
+  {
+    "productId": "E71588",
+    "alleleId": 11509,
+    "geneSymbol": "Dbn1",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleHasIssue": false,
+    "name": "EPD0211_3_G05",
+    "productionPipeline": "KOMP-CSD",
+    "statusDate": "2021-04-28T16:56:52.431154Z",
+    "associatedProductVectorName": "PRPGS00070_C_D05",
+    "ikmcProjectId": "40214",
+    "designId": 49236,
+    "designIdData": true,
+    "designLink": "https://nginx.mousephenotype-dev.org/api/v1/alleles/htgt/designId:49236",
+    "cassette": "L1L2_Bact_P",
+    "alleleType": "a",
+    "alleleName": "tm1a(KOMP)Wtsi",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "alleleCategory": "Knockout First",
+    "strain": "C57BL/6N",
+    "cassetteType": "Promotor Driven",
+    "parentEsCellLine": "JM8.N4",
+    "qcData": [],
+    "associatedProductsColonyNames": [],
+    "orders": [
+      {
+        "orderName": "KOMP",
+        "orderLink": "https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+      }
+    ],
+    "alleleDesignProject": "IMPC",
+    "type": "es_cell",
+    "productionCompleted": true,
+    "status": "ES Cell Produced",
+    "otherLinks": {
+      "genbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file",
+      "alleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/allele.png",
+      "alleleSimpleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png",
+      "vectorGenbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file",
+      "vectorAlleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+    }
+  }
+]
