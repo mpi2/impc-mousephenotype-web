@@ -52,7 +52,7 @@ export async function fetchMHPlotDataFromS3(mpId: string) {
 
 export async function fetchLandingPageData(landingPageId: string) {
   const response = await fetch(
-    `https://impc-datasets.s3.eu-west-2.amazonaws.com/landing-page-data/${DR_DATASET_VERSION}/${landingPageId}_landing.json`
+    `${LANDING_PAGE_DATA_URL}/${landingPageId}.json`
   );
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);

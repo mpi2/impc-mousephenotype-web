@@ -4,7 +4,6 @@ import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from "react-select";
 import PaginationControls from "../PaginationControls";
 import _ from "lodash";
-import React, { useMemo, useState } from "react";
 import { Form, InputGroup } from "react-bootstrap";
 
 type EmbryoData = {
@@ -18,7 +17,6 @@ type WOLData = {
   gene_symbol: string;
   wol: string;
 };
-type DataIndex = Record<string, Array<WOLData>>;
 const ClickableAxisTick = ({
   tick,
   onClick,
@@ -40,6 +38,7 @@ const EmbryoDataAvailabilityGrid = ({
   data,
   secondaryViabilityData,
 }: Props) => {
+  const [query, setQuery] = useState<string>(undefined);
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(
     data ? Math.ceil(data.length / 25) : 0
