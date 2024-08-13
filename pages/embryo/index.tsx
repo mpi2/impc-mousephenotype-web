@@ -1,9 +1,9 @@
-import { Container, Breadcrumb, Row, Col, Image } from "react-bootstrap";
+import { Container, Breadcrumb, Row, Col, Image, Modal, Button } from "react-bootstrap";
 import styles from './styles.module.scss';
 import Head from "next/head";
-import { orderBy } from "lodash";
+import { orderBy, capitalize } from "lodash";
 import { useEmbryoWOLQuery } from "@/hooks";
-import React, { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   Card,
   EmbryoDataAvailabilityGrid,
@@ -17,16 +17,21 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 
-type GeneList = Array<{ mgiGeneAccessionId: string; geneSymbol: string; }>;
+type Gene = { mgiGeneAccessionId: string; geneSymbol: string; };
+type GeneList = Array<Gene>;
 type OutcomeData = { outcome: string, genes: GeneList };
+type LineData = { windowOfLethality: string; genes: GeneList };
 type EmbryoDataResponse = {
   primaryViabilityTable: Array<OutcomeData>;
   primaryViabilityChart: Array<OutcomeData>;
-  secondaryViabilityData: Array<{ windowOfLethality: string; genes: GeneList }>;
+  secondaryViabilityData: Array<LineData>;
 };
 
 const EmbryoLandingPage = () => {
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [listGenes, setListGenes] = useState<LineData>(null);
   const { data: embryoWOL } = useEmbryoWOLQuery(data => {
     const map = new Map<string, number>();
     data.forEach(row => {
@@ -57,10 +62,14 @@ const EmbryoLandingPage = () => {
           response.primaryViabilityTable
             .map(row => ({ label: row.outcome, value: row.genes.length }))
             .sort((a, b) => b.value - a.value),
-        secondaryViability: response.secondaryViabilityData,
+        secondaryViability:
+          response.secondaryViabilityData
+            .map(row => ({ label: row.windowOfLethality, value: row.genes.length }))
+            .sort((a, b) => b.value - a.value),
+        secondaryViabilityFullList: response.secondaryViabilityData,
       }
     },
-    placeholderData: { primaryViabilityChart: [], primaryViabilityTable: [] },
+    placeholderData: { primaryViabilityChart: [], primaryViabilityTable: [], secondaryViabilityData: [] },
   });
 
   const heatMapSelectOptions = useMemo(
@@ -75,6 +84,16 @@ const EmbryoLandingPage = () => {
     const mpId = value === 'Lethal' ? 'MP:0011100' : 'MP:0011110';
     return <Link className="link primary" href={`/phenotypes/${mpId}`}>{value}</Link>;
   };
+
+  const openModalListGenes = (wol: string) => {
+    const selectedList = embryoData.secondaryViabilityFullList.find(row => row.windowOfLethality === wol);
+    setModalVisible(true);
+    setListGenes(selectedList);
+  }
+  const handleClose = () => {
+    setModalVisible(false);
+    setListGenes(null);
+  }
 
   return (
     <>
@@ -206,9 +225,13 @@ const EmbryoLandingPage = () => {
                     { width: 1, label: "Lines", field: "value", disabled: true },
                   ]}
                 >
-                  {embryoWOL && embryoWOL.map(row => (
+                  {embryoData && embryoData.secondaryViability.map(row => (
                     <tr>
-                      <td>{ row.label }</td>
+                      <td>
+                        <button className="btn link primary" onClick={() => openModalListGenes(row.label)}>
+                          { capitalize(row.label) }
+                        </button>
+                      </td>
                       <td>{ row.value }</td>
                     </tr>
                   ))}
@@ -275,6 +298,28 @@ const EmbryoLandingPage = () => {
             <NonSSRPublicationsList prefixQuery="embryo" />
           </Container>
         </Card>
+        <Modal show={modalVisible} onHide={handleClose} size="lg">
+          <Modal.Header closeButton>
+            <Modal.Title>{ capitalize(listGenes?.windowOfLethality || '') } lines</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <SmartTable<Gene>
+              data={listGenes?.genes}
+              defaultSort={[ "geneSymbol", "asc" ]}
+              columns={[
+                { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: <PlainTextCell/> },
+                { width: 1, label: "MGI Accession ID", field: "mgiGeneAccessionId", disabled: true, cmp: <PlainTextCell/> },
+              ]}
+              paginationButtonsPlacement="bottom"
+              displayPageControls={false}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </>
   )
