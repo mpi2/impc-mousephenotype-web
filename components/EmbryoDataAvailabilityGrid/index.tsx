@@ -3,19 +3,12 @@ import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from "react-select";
 import PaginationControls from "../PaginationControls";
-import _ from "lodash";
 import { Form, InputGroup } from "react-bootstrap";
 
 type EmbryoData = {
   id: string;
   mgiGeneAccessionId: string;
   data: Array<{ x: string; y: number }>;
-};
-type WOLData = {
-  colony: string;
-  gene_id: string;
-  gene_symbol: string;
-  wol: string;
 };
 const ClickableAxisTick = ({
   tick,
@@ -39,7 +32,7 @@ const EmbryoDataAvailabilityGrid = ({
   secondaryViabilityData,
 }: Props) => {
   const [query, setQuery] = useState<string>(undefined);
-  const [activePage, setActivePage] = useState(1);
+  const [activePage, setActivePage] = useState(0);
   const [totalPages, setTotalPages] = useState(
     data ? Math.ceil(data.length / 25) : 0
   );
@@ -49,7 +42,7 @@ const EmbryoDataAvailabilityGrid = ({
     setTotalPages(data ? Math.ceil(data.length / 25) : 0);
     setChartData(
       data
-        .slice((activePage - 1) * 25, (activePage - 1) * 25 + 25)
+        .slice(activePage * 25, (activePage * 25 + 25))
         .map((d) => ({
           id: d.geneSymbol,
           mgiGeneAccessionId: d.mgiGeneAccessionId,
@@ -58,6 +51,7 @@ const EmbryoDataAvailabilityGrid = ({
             "MicroCT E14.5-E15.5",
             "MicroCT E18.5",
             "UMASS Pre E9.5",
+            "Vignettes"
           ].map((p) => ({
             x: p,
             y: d.procedureNames.includes(p)
@@ -65,6 +59,8 @@ const EmbryoDataAvailabilityGrid = ({
                 ? 2
                 : 1
               : p === "UMASS Pre E9.5" && d.isUmassGene
+              ? 1
+              : p === 'Vignettes' && d.hasVignettes
               ? 1
               : 0,
           })),
@@ -85,20 +81,15 @@ const EmbryoDataAvailabilityGrid = ({
     {}
   );
 
-  const handlePaginationChange = (pageNumber: number) => {
-    setActivePage(pageNumber);
-  };
-
   const onChangeWOL = (selected) => {
     const newSelectedGenes = selected
       .flatMap((s) => dataIndex[s.value])
       .map((d) => d.mgiGeneAccessionId);
-    console.log(newSelectedGenes, data);
     const newData =
       selected.length && data
         ? data.filter((g) => newSelectedGenes.includes(g.mgiGeneAccessionId))
         : data;
-    setActivePage(1);
+    setActivePage(0);
     setTotalPages(Math.ceil(newData.length / 25));
     setChartData(
       newData.slice(0, 25).map((d) => ({
@@ -132,6 +123,7 @@ const EmbryoDataAvailabilityGrid = ({
     ) {
       url = `//www.mousephenotype.org/embryoviewer/?mgi=${geneAcc}`;
     } else if (dataType === "Vignettes") {
+      url = "/data/embryo/vignettes";
     } else if (dataType === "LacZ") {
       url = `//www.mousephenotype.org/data/imageComparator?parameter_stable_id=IMPC_ELZ_064_001&acc=${geneAcc}`;
     } else {
