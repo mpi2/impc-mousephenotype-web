@@ -1,68 +1,135 @@
+import { useEffect, useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
-import Select from 'react-select';
-import data from './GeneVsProcedure.data';
+import Select from "react-select";
 import PaginationControls from "../PaginationControls";
-import { useEmbryoWOLQuery, usePagination } from "@/hooks";
 import _ from "lodash";
-import React, { useMemo, useState } from "react";
 import { Form, InputGroup } from "react-bootstrap";
 
 type EmbryoData = {
   id: string;
-  mgiAccessionId: string;
-  data: Array<{ x: string, y: number }>
-}
+  mgiGeneAccessionId: string;
+  data: Array<{ x: string; y: number }>;
+};
 type WOLData = {
   colony: string;
   gene_id: string;
   gene_symbol: string;
   wol: string;
 };
-type DataIndex = Record<string, Array<WOLData>>;
-const ClickableAxisTick = ({tick, onClick}: { tick: any; onClick: (tick: any) => void; }) => {
+const ClickableAxisTick = ({
+  tick,
+  onClick,
+}: {
+  tick: any;
+  onClick: (tick: any) => void;
+}) => {
   return <AxisTick {...tick} onClick={onClick} />;
 };
 
 type Props = {
   selectOptions: Array<{ value: string; label: string }>;
-}
+  data: Array<any>;
+  secondaryViabilityData: Array<any>;
+};
 
-const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
-  const [selectedWOL, setSelectedWOL] = useState<Array<string>>([]);
-  const [query, setQuery] = useState<string>(undefined)
-  const { data: dataIndex } = useEmbryoWOLQuery(data => {
-    return _.groupBy(data, 'FUSIL') as DataIndex;
-  });
+const EmbryoDataAvailabilityGrid = ({
+  selectOptions,
+  data,
+  secondaryViabilityData,
+}: Props) => {
+  const [query, setQuery] = useState<string>(undefined);
+  const [activePage, setActivePage] = useState(1);
+  const [totalPages, setTotalPages] = useState(
+    data ? Math.ceil(data.length / 25) : 0
+  );
+  const [chartData, setChartData] = useState<Array<EmbryoData>>([]);
 
-  const filteredData = useMemo(() => {
-    const newSelectedGenes = selectedWOL.flatMap(s => dataIndex[s]).map(d => d.gene_id);
-    const dataFilteredByWOL = selectedWOL.length
-      ? data.filter(g => newSelectedGenes.includes(g.mgiAccessionId))
-      : data;
-    return !!query
-      ? dataFilteredByWOL.filter(g => g.id.toLowerCase().includes(query.toLowerCase()))
-      : dataFilteredByWOL;
-  }, [selectedWOL, dataIndex, query]);
+  useEffect(() => {
+    setTotalPages(data ? Math.ceil(data.length / 25) : 0);
+    setChartData(
+      data
+        .slice((activePage - 1) * 25, (activePage - 1) * 25 + 25)
+        .map((d) => ({
+          id: d.geneSymbol,
+          mgiGeneAccessionId: d.mgiGeneAccessionId,
+          data: [
+            "OPT E9.5",
+            "MicroCT E14.5-E15.5",
+            "MicroCT E18.5",
+            "UMASS Pre E9.5",
+          ].map((p) => ({
+            x: p,
+            y: d.procedureNames.includes(p)
+              ? d.hasAutomatedAnalysis
+                ? 2
+                : 1
+              : p === "UMASS Pre E9.5" && d.isUmassGene
+              ? 1
+              : 0,
+          })),
+        }))
+    );
+  }, [data, activePage]);
 
-  const {
-    paginatedData: chartData,
-    activePage,
-    totalPages,
-    setActivePage,
-  } = usePagination<EmbryoData>(filteredData, 25);
+  const geneIndex = chartData?.reduce(
+    (acc, d) => ({ [d.id]: d.mgiGeneAccessionId, ...acc }),
+    {}
+  );
 
-  const geneIndex = chartData.reduce((acc, d) => ({ [d.id]: d.mgiAccessionId, ...acc }), {});
+  const dataIndex = secondaryViabilityData?.reduce(
+    (acc, d) => ({
+      [d.windowOfLethality]: d.genes,
+      ...acc,
+    }),
+    {}
+  );
 
-  const onChangeWOL = (selected: Array<{ value: string, label: string }>) => {
-    setSelectedWOL(selected.map(selection => selection.value));
-  }
+  const handlePaginationChange = (pageNumber: number) => {
+    setActivePage(pageNumber);
+  };
+
+  const onChangeWOL = (selected) => {
+    const newSelectedGenes = selected
+      .flatMap((s) => dataIndex[s.value])
+      .map((d) => d.mgiGeneAccessionId);
+    console.log(newSelectedGenes, data);
+    const newData =
+      selected.length && data
+        ? data.filter((g) => newSelectedGenes.includes(g.mgiGeneAccessionId))
+        : data;
+    setActivePage(1);
+    setTotalPages(Math.ceil(newData.length / 25));
+    setChartData(
+      newData.slice(0, 25).map((d) => ({
+        id: d.geneSymbol,
+        mgiGeneAccessionId: d.mgiGeneAccessionId,
+        data: [
+          "OPT E9.5",
+          "MicroCT E14.5-E15.5",
+          "MicroCT E18.5",
+          "UMASS Pre E9.5",
+        ].map((p) => ({
+          x: p,
+          y: d.procedureNames.includes(p)
+            ? d.hasAutomatedAnalysis
+              ? 2
+              : 1
+            : p === "UMASS Pre E9.5" && d.isUmassGene
+            ? 1
+            : 0,
+        })),
+      }))
+    );
+  };
 
   const onClickTick = (cell: any) => {
     const geneAcc = geneIndex[cell.serieId];
     const dataType = cell.data.x;
     let url = "";
-    if (["OPT E9.5", "MicroCT E14.5-E15.5", "MicroCT E18.5"].includes(dataType)) {
+    if (
+      ["OPT E9.5", "MicroCT E14.5-E15.5", "MicroCT E18.5"].includes(dataType)
+    ) {
       url = `//www.mousephenotype.org/embryoviewer/?mgi=${geneAcc}`;
     } else if (dataType === "Vignettes") {
     } else if (dataType === "LacZ") {
@@ -96,7 +163,7 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
               id="gene-control"
               aria-describedby="gene-filter"
               value={query}
-              onChange={e => setQuery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
             />
           </InputGroup>
         </div>
@@ -110,10 +177,10 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
           marginLeft: "0",
           backgroundColor: "white",
           marginTop: "0",
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
-        {chartData.length ? (
+        {chartData && (
           <ResponsiveHeatMap
             data={chartData}
             margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
@@ -121,8 +188,6 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
               const options = [
                 "No data",
                 "Images Available",
-                "Images Available",
-                "EA not significant -> LA significant",
                 "Images and Automated Volumetric Analysis Available",
               ];
               return options[v];
@@ -147,7 +212,9 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
                   tick={tick}
                   onClick={() =>
                     window.open(
-                      `https://mousephenotype.org/data/genes/${data[tick.tickIndex].mgiAccessionId}`,
+                      `https://mousephenotype.org/data/genes/${
+                        data[tick.tickIndex].mgiAccessionId
+                      }`,
                       "_blank",
                       "noreferrer"
                     )
@@ -157,13 +224,7 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
             }}
             axisRight={null}
             colors={(cell: any) => {
-              const options = [
-                "#ECECEC",
-                "#17a2b8",
-                "#ed7b25",
-                "#ed7b25",
-                "#17a2b8",
-              ];
+              const options = ["#ECECEC", "#17a2b8", "#ed7b25"];
               return options[cell.value || 0];
             }}
             labelTextColor="black"
@@ -192,8 +253,6 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
             annotations={[]}
             onClick={onClickTick}
           />
-        ) : (
-          <h2 className="mt-5">No genes match the term entered</h2>
         )}
       </div>
       {totalPages > 1 && (
@@ -205,6 +264,5 @@ const EmbryoDataAvailabilityGrid = ({ selectOptions }: Props) => {
       )}
     </>
   );
-
 };
 export default EmbryoDataAvailabilityGrid;
