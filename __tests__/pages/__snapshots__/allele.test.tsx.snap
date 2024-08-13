@@ -1,0 +1,320 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Allele page renders correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=phenotype"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <span
+          class="subheadingSection primary"
+        >
+          <a
+            class="mb-3"
+            href="/genes/MGI:1931838"
+            style="text-transform: none; font-weight: normal; letter-spacing: normal; font-size: 1.15rem;"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to 
+            <i>
+              Dbn1
+            </i>
+          </a>
+        </span>
+      </div>
+      <p
+        class="subheading mt-2"
+      >
+        ALLELE
+      </p>
+      <h1
+        class="mb-2 mt-2"
+      >
+        <i>
+          Dbn1
+          <sup>
+            tm1a(KOMP)Wtsi
+          </sup>
+        </i>
+      </h1>
+      <p
+        class="mb-4 grey"
+      >
+        KO first allele (reporter-tagged insertion with conditional potential)
+      </p>
+      <div
+        style="display: flex; flex-wrap: wrap;"
+      >
+        <div
+          class="dataCollection"
+        >
+          Mice
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn impc-primary-button"
+              href="#mice"
+              style="min-width: 120px; cursor: pointer;"
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Order
+              </span>
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollection"
+        >
+          Targeted ES cells
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn impc-primary-button"
+              href="#esCell"
+              style="min-width: 120px; cursor: pointer;"
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Order
+              </span>
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollection"
+        >
+          Targeting vectors
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn impc-primary-button"
+              href="#targetingVector"
+              style="min-width: 120px; cursor: pointer;"
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Order
+              </span>
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollectionInactive"
+        >
+          Intermediate vectors
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn btn-grey impc-base-button"
+              href="#intermediateVector"
+              style="min-width: 120px; cursor: initial;"
+            >
+              Not available
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      id="mice"
+    >
+      <h2>
+        Mice
+      </h2>
+      <p
+        class="grey"
+      >
+        Loading...
+      </p>
+    </div>
+    <div
+      class="card"
+      id="esCell"
+    >
+      <h2>
+        ES Cells
+      </h2>
+      <p
+        class="grey"
+      >
+        Loading...
+      </p>
+    </div>
+    <div
+      class="card"
+      id="targetingVector"
+    >
+      <h2>
+        Targeting vectors
+      </h2>
+      <p
+        class="grey"
+      >
+        Loading...
+      </p>
+    </div>
+    <div
+      class="card"
+    >
+      <a
+        class="primary link"
+        href="/genes/MGI:1931838#order"
+      >
+        See all alleles for the gene
+         
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-arrow-right-long "
+          data-icon="arrow-right-long"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+`;

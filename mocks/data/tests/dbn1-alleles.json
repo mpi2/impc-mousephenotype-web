@@ -1,0 +1,13 @@
+{
+  "id": "669f709dd1a99bf437ca2cca",
+  "mgiGeneAccessionId": "MGI:1931838",
+  "geneSymbol": "Dbn1",
+  "alleleName": "tm1a(KOMP)Wtsi",
+  "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+  "emsembleUrl": "https://www.ensembl.org/Mus_musculus/Location/View?g=ENSMUSG00000034675",
+  "doesMiceProductsExist": true,
+  "doesEsCellProductsExist": true,
+  "doesCrisprProductsExist": false,
+  "doesIntermediateVectorProductsExist": false,
+  "doesTargetingVectorProductsExist": true
+}
