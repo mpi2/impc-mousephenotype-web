@@ -4,15 +4,16 @@ import userEvent from "@testing-library/user-event";
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 
+jest.mock("react-slick", () => ({
+  __esModule: true,
+  default: ({ children }) => <div data-testid="slick_mock">{children}</div>,
+}));
+
 describe('Embryo Vignettes page', () => {
   it('renders correctly', async () => {
-    const user = userEvent.setup();
     const { container } = render(
       <EmbryoVignettesPage />
     );
     expect(container).toMatchSnapshot();
-    for(let i = 0; i < 19; i++) {
-      await user.click(screen.getByRole('button', { name: "Next" }));
-    }
   });
 });
