@@ -9,7 +9,6 @@ import { PublicationListProps } from "@/components/PublicationsList";
 import dynamic from "next/dynamic";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import Head from "next/head";
-import { toSentenceCase } from "@/utils";
 import _ from "lodash";
 import { useEmbryoLandingQuery } from "@/hooks";
 import { useMemo } from "react";
@@ -292,7 +291,7 @@ const EmbryoLandingPage = () => {
             </Row>
           </Container>
         </Card>
-        <Card>
+        <Card id="embryo-data-grid">
           <Container>
             <h1>
               <strong>Embryo Data Availability Grid</strong>

@@ -26,7 +26,7 @@ const Search = ({
 }) => {
   const router = useRouter();
   const [query, setQuery] = useState<string>(
-    (router.query.query as string) || ""
+    (router.query.term as string) || ""
   );
 
   const handleInput = (val: string) => {
@@ -67,19 +67,20 @@ const Search = ({
   }, [type, defaultType]);
 
   useEffect(() => {
-    if (router.isReady && router.query.query) {
-      setQuery(router.query.query as string);
-      handleInput(router.query.query as string);
+    if (router.isReady && router.query.term) {
+      setQuery(router.query.term as string);
+      handleInput(router.query.term as string);
     }
   }, [router.isReady]);
 
   useEffect(() => {
     if (updateURL) {
       if (router.isReady && router.query.query !== query) {
-        router.replace({query: { ...router.query, query },});
+        router.replace({query: { ...router.query, term: query },});
       }
     }
-  }, [query])
+  }, [query]);
+
 
   return (
     <div className={`${styles.banner}`}>
@@ -116,7 +117,7 @@ const Search = ({
               title="main search box"
               className={styles.input}
               type="text"
-              placeholder="Search All 7824 Knockout Data..."
+              placeholder={ tabIndex === 0 ? "Search for a gene..." : "Search for a phenotype..."}
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);
@@ -125,14 +126,14 @@ const Search = ({
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   if (router.route !== "/search") {
-                    let url = `/search?query=${e.currentTarget.value}`;
+                    let url = `/search?term=${e.currentTarget.value}`;
                     if (tabIndex === 1) {
                       url += '&type=phenotype'
                     }
                     router.push(url);
                   } else {
                     router.replace({
-                      query: { ...router.query, query: e.currentTarget.value },
+                      query: { ...router.query, term: e.currentTarget.value },
                     });
                   }
                 }

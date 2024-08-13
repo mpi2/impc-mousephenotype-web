@@ -3,14 +3,16 @@ import Card from "../../Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const AlleleMap = ({
   mgiGeneAccessionId,
   alleleName,
+  emsembleUrl,
 }: {
   mgiGeneAccessionId: string;
   alleleName: string;
+  emsembleUrl: string;
 }) => {
   const { data } = useQuery({
     queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'es_cell', alleleName],
@@ -22,7 +24,7 @@ const AlleleMap = ({
   }
 
   const {
-    otherLinks: { genbankFile, alleleSimpleImage, emsembleUrl },
+    otherLinks: { genbankFile, alleleSimpleImage },
   } = data[0];
 
   // don't show the section if we don't have any data
@@ -37,15 +39,16 @@ const AlleleMap = ({
         {genbankFile && (
           <>
             <a href={genbankFile} target="_blank" className="primary link">
-              <FontAwesomeIcon icon={faExternalLinkAlt} /> Genbank
-            </a>{" "}
+              Genbank
+              <FontAwesomeIcon icon={faExternalLinkAlt} style={{ marginLeft: "5px" }} />
+            </a>&nbsp;
             <span className="grey ms-2 me-2">|</span>
           </>
         )}
 
         {emsembleUrl && (
           <a href={emsembleUrl} target="_blank" className="primary link">
-            <FontAwesomeIcon icon={faExternalLinkAlt} /> Ensemble
+            Ensembl<FontAwesomeIcon icon={faExternalLinkAlt} style={{ marginLeft: "5px" }} />
           </a>
         )}
       </p>

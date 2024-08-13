@@ -1,8 +1,5 @@
-import Search from "@/components/Search";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import Card from "@/components/Card";
 import data from '../../mocks/data/landing-pages/sexual-dimorphism.json';
-import PieChart from "@/components/PieChart";
 import {
   Chart as ChartJS,
   LinearScale,
@@ -27,7 +24,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import Head from "next/head";
-import { AlleleSymbol, PublicationDataAlert } from "@/components";
+import { AlleleSymbol, Card, PieChart, PublicationDataAlert, Search } from "@/components";
 
 ChartJS.register(
   LinearScale,

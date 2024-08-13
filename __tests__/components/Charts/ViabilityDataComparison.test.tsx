@@ -2,7 +2,6 @@ import { render, screen, waitFor } from '@testing-library/react';
 import ViabilityDataComparison from "@/components/Data/DataComparison/ViabilityDataComparison";
 import { Dataset } from "@/models";
 import userEvent from "@testing-library/user-event";
-import DataComparison from "../../../components/Data/DataComparison";
 
 const datasets: Array<Dataset> = [
   {

@@ -4,6 +4,8 @@ import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from "react-select";
 import PaginationControls from "../PaginationControls";
 import _ from "lodash";
+import React, { useMemo, useState } from "react";
+import { Form, InputGroup } from "react-bootstrap";
 
 type EmbryoData = {
   id: string;
@@ -153,7 +155,19 @@ const EmbryoDataAvailabilityGrid = ({
             aria-label="window of lethality filter"
           />
         </div>
-        <div className="col-6"></div>
+        <div className="col-6">
+          <InputGroup>
+            <InputGroup.Text id="gene-filter">
+              Filter by gene symbol
+            </InputGroup.Text>
+            <Form.Control
+              id="gene-control"
+              aria-describedby="gene-filter"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </InputGroup>
+        </div>
       </div>
       <div
         style={{
@@ -164,6 +178,7 @@ const EmbryoDataAvailabilityGrid = ({
           marginLeft: "0",
           backgroundColor: "white",
           marginTop: "0",
+          textAlign: "center",
         }}
       >
         {chartData && (
@@ -245,7 +260,7 @@ const EmbryoDataAvailabilityGrid = ({
         <PaginationControls
           currentPage={activePage}
           totalPages={totalPages}
-          onPageChange={handlePaginationChange}
+          onPageChange={setActivePage}
         />
       )}
     </>

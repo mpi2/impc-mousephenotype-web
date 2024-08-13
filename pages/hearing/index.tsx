@@ -1,10 +1,6 @@
-import Search from "@/components/Search";
-import Card from "@/components/Card";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from '../../mocks/data/landing-pages/hearing.json';
 import { SmartTable, PlainTextCell } from "@/components/SmartTable";
-import dynamic from "next/dynamic";
-import { PublicationListProps } from "@/components/PublicationsList";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { Chart } from "react-chartjs-2";
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";
@@ -21,10 +17,8 @@ import {
   Tooltip
 } from "chart.js";
 import Link from "next/link";
-import { formatAlleleSymbol } from "@/utils";
-import ScatterChart from "@/components/ScatterChart";
 import Head from "next/head";
-import { AlleleSymbol, PublicationDataAlert } from "@/components";
+import { AlleleSymbol, Card, NonSSRPublicationsList, PublicationDataAlert, ScatterChart, Search } from "@/components";
 
 ChartJS.register(
   CategoryScale,
@@ -46,9 +40,6 @@ type GeneHearingData = {
   hearingLoss: string;
 };
 
-const PublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"), {ssr: false}
-);
 
 const ABRChart = ({ geneData }) => {
   const getChartLabels = () => {
@@ -364,7 +355,7 @@ const HearingLandingPage = () => {
         <Card>
           <Container>
             <h1><strong>IKMC/IMPC related publications</strong></h1>
-            <PublicationsList prefixQuery="hearing" />
+            <NonSSRPublicationsList prefixQuery="hearing" />
           </Container>
         </Card>
       </Container>

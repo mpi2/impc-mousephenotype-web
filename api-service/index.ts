@@ -4,9 +4,21 @@ export const PROXY_ENABLED =
 export const STATS_DATASETS_URL =
   process.env.NEXT_PUBLIC_STATS_DATASETS_URL || "";
 export const MH_PLOT_DATA_URL = process.env.NEXT_PUBLIC_MH_PLOT_DATA_URL || "";
+export const LANDING_PAGE_DATA_URL =
+  process.env.NEXT_PUBLIC_LANDING_PAGE_DATA_URL || "";
+export const PROTOTYPE_API_URL =
+  process.env.NEXT_PUBLIC_PROTOTYPE_API_ROOT || "";
+export const PROD_API_URL = process.env.NEXT_PUBLIC_PROD_API_ROOT || "";
 
 export async function fetchAPI(query: string) {
-  const domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : API_URL;
+  let domain: string;
+  if (location.hostname === "nginx.mousephenotype-dev.org") {
+    domain = PROTOTYPE_API_URL;
+  } else if (location.hostname === "dev.mousephenotype.org") {
+    domain = PROD_API_URL;
+  } else {
+    domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : API_URL;
+  }
   const endpointURL = domain + query;
   try {
     const response = await fetch(endpointURL);

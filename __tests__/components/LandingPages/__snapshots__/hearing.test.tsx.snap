@@ -38,7 +38,7 @@ exports[`Hearing landing page renders correctly 1`] = `
         >
           <input
             class="input"
-            placeholder="Search All 7824 Knockout Data..."
+            placeholder="Search for a gene..."
             title="main search box"
             type="text"
             value=""
@@ -684,7 +684,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             data-testid="top-page-2"
           >
             <button
-              class="pagNavBtn "
+              class="pagNavBtn"
               data-testid="top-page-2-btn"
             >
               2
@@ -695,7 +695,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             data-testid="top-page-3"
           >
             <button
-              class="pagNavBtn "
+              class="pagNavBtn"
               data-testid="top-page-3-btn"
             >
               3
@@ -706,7 +706,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             data-testid="top-page-4"
           >
             <button
-              class="pagNavBtn "
+              class="pagNavBtn"
               data-testid="top-page-4-btn"
             >
               4
@@ -717,7 +717,7 @@ exports[`Hearing landing page renders correctly 1`] = `
             data-testid="top-page-5"
           >
             <button
-              class="pagNavBtn "
+              class="pagNavBtn"
               data-testid="top-page-5-btn"
             >
               5
@@ -1234,141 +1234,141 @@ exports[`Hearing landing page renders correctly 1`] = `
               </option>
             </select>
           </div>
-          <ul
-            class="pagination justify-content-center paginationNav"
-            data-testid="nav-buttons-bottom"
+        </div>
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-bottom"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="bottom-page-1"
           >
             <button
-              class="pagNavBtn nav-btn"
-              data-testid="bottom-prev-page"
-              disabled=""
+              class="pagNavBtn active"
+              data-testid="bottom-page-1-btn"
             >
-              <svg
-                aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                class="svg-inline--fa fa-arrow-left "
-                data-icon="arrow-left"
-                data-prefix="fas"
-                role="img"
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title
-                  id="svg-inline--fa-title-prev-page-icon"
-                >
-                  previous page button
-                </title>
-                <path
-                  d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
-                  fill="currentColor"
-                />
-              </svg>
+              1
             </button>
-            <li
-              class="page-item"
-              data-testid="bottom-page-1"
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-2-btn"
             >
-              <button
-                class="pagNavBtn active"
-                data-testid="bottom-page-1-btn"
-              >
-                1
-              </button>
-            </li>
-            <li
-              class="page-item"
-              data-testid="bottom-page-2"
+              2
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-3"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-3-btn"
             >
-              <button
-                class="pagNavBtn "
-                data-testid="bottom-page-2-btn"
-              >
-                2
-              </button>
-            </li>
-            <li
-              class="page-item"
-              data-testid="bottom-page-3"
+              3
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-4"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-4-btn"
             >
-              <button
-                class="pagNavBtn "
-                data-testid="bottom-page-3-btn"
-              >
-                3
-              </button>
-            </li>
-            <li
-              class="page-item"
-              data-testid="bottom-page-4"
+              4
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-5"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-5-btn"
             >
-              <button
-                class="pagNavBtn "
-                data-testid="bottom-page-4-btn"
-              >
-                4
-              </button>
-            </li>
-            <li
-              class="page-item"
-              data-testid="bottom-page-5"
+              5
+            </button>
+          </li>
+          <li
+            class="page-item disabled"
+          >
+            <span
+              class="page-link"
             >
-              <button
-                class="pagNavBtn "
-                data-testid="bottom-page-5-btn"
-              >
-                5
-              </button>
-            </li>
-            <li
-              class="page-item disabled"
+              ...
+            </span>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-last-page"
+          >
+            <button
+              aria-label="Previous"
+              class="pagNavBtn last-page"
+              data-testid="bottom-last-page-btn"
             >
               <span
-                class="page-link"
+                aria-hidden="true"
               >
-                ...
+                7
               </span>
-            </li>
-            <li
-              class="page-item"
-              data-testid="bottom-last-page"
-            >
-              <button
-                aria-label="Previous"
-                class="pagNavBtn last-page"
-                data-testid="bottom-last-page-btn"
-              >
-                <span
-                  aria-hidden="true"
-                >
-                  7
-                </span>
-              </button>
-            </li>
-            <button
-              class="pagNavBtn nav-btn"
-              data-testid="bottom-next-page"
-            >
-              <svg
-                aria-labelledby="svg-inline--fa-title-next-page-icon"
-                class="svg-inline--fa fa-arrow-right "
-                data-icon="arrow-right"
-                data-prefix="fas"
-                role="img"
-                viewBox="0 0 448 512"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title
-                  id="svg-inline--fa-title-next-page-icon"
-                >
-                  next page button
-                </title>
-                <path
-                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                  fill="currentColor"
-                />
-              </svg>
             </button>
-          </ul>
-        </div>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
       </div>
     </div>
     <div

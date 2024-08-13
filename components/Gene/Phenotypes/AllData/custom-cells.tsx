@@ -102,8 +102,9 @@ export const MutantCountCell = <T extends GeneStatisticalResult>(props: TableCel
       onMouseEnter={() => setTooltipShow(true)}
       onMouseLeave={() => setTooltipShow(false)}
     >
+      {value}
       {mutantsBelowThreshold && (
-        <div ref={tooltipRef} style={{ display: 'inline-block' }}>
+        <sup ref={tooltipRef} style={{ display: 'inline-block', marginLeft: '5px' }}>
           <FontAwesomeIcon icon={faInfo} className="secondary"/>
           &nbsp;
           <Overlay target={tooltipRef.current} show={tooltipShow} placement="left">
@@ -115,9 +116,8 @@ export const MutantCountCell = <T extends GeneStatisticalResult>(props: TableCel
               </Tooltip>
             )}
           </Overlay>
-        </div>
+        </sup>
       )}
-      {value}
     </span>
   )
 };

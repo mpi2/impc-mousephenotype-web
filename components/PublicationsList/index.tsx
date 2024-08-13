@@ -13,6 +13,7 @@ import { useDebounceValue } from "usehooks-ts";
 import _ from "lodash";
 import Link from "next/link";
 import { AlleleSymbol } from "@/components";
+import dynamic from "next/dynamic";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -280,3 +281,7 @@ const PublicationsList = (props: PublicationListProps) => {
 }
 
 export default PublicationsList;
+
+export const NonSSRPublicationsList = dynamic<PublicationListProps>(
+  () => import("@/components/PublicationsList"), {ssr: false}
+);

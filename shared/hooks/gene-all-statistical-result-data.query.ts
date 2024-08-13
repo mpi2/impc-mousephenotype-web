@@ -15,7 +15,7 @@ export const useGeneAllStatisticalResData = (
   enabled: boolean,
 ) => {
   const {
-    data: geneData,
+    data: geneData = [],
     isFetching: isGeneFetching,
     isError: isGeneError,
     ...rest
@@ -23,11 +23,14 @@ export const useGeneAllStatisticalResData = (
     queryKey: ['genes', mgiAccessionId, 'statistical-result'],
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiAccessionId}/statistical-result`),
     enabled,
-    select: data => data.map(dataset => ({
-      ...dataset,
-      pValue: Number(dataset.pValue),
-      mutantCount: getMutantCount(dataset)
-    })) as Array<GeneStatisticalResult>,
+    select: (data: Array<GeneStatisticalResult>) => {
+      return data.map(dataset => ({
+        ...dataset,
+        pValue: Number(dataset.pValue),
+        mutantCount: getMutantCount(dataset)
+      }))
+        .filter(dataset => dataset.status !== 'NotProcessed') as Array<GeneStatisticalResult>;
+    },
     placeholderData: [],
   });
   return {

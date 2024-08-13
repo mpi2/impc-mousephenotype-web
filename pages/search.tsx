@@ -10,7 +10,7 @@ import Head from "next/head";
 const SearchResults = () => {
   const router = useRouter();
   const [query, setQuery] = useState(
-    (router.query.query as string) || ""
+    (router.query.term as string) || ""
   );
   const { type } = router.query;
 

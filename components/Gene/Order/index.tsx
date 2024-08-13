@@ -14,7 +14,7 @@ import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { NumAllelesContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
-import { AlleleSymbol } from "@/components";
+import { AlleleSymbol, SectionHeader } from "@/components";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 
 const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Array<string>, allelesStudiedLoading: boolean }) => {
@@ -64,7 +64,11 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Arra
   if (isLoading) {
     return (
       <Card id="order">
-        <h2>Order Mouse and ES Cells</h2>
+        <SectionHeader
+          containerId="#order"
+          title="Order Mouse and ES Cells"
+          href="https://dev.mousephenotype.org/help/mouse-production/ordering-products/"
+        />
         <p className="grey">Loading...</p>
       </Card>
     );
@@ -73,7 +77,11 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Arra
   if (isError) {
     return (
       <Card id="order">
-        <h2>Order Mouse and ES Cells</h2>
+        <SectionHeader
+          containerId="#order"
+          title="Order Mouse and ES Cells"
+          href="https://dev.mousephenotype.org/help/mouse-production/ordering-products/"
+        />
         <Alert variant="primary">No data available for this section.</Alert>
       </Card>
     );
@@ -81,7 +89,11 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Arra
 
   return (
     <Card id="order">
-      <h2>Order Mouse and ES Cells</h2>
+      <SectionHeader
+        containerId="#order"
+        title="Order Mouse and ES Cells"
+        href="https://dev.mousephenotype.org/help/mouse-production/ordering-products/"
+      />
       <div className="mb-4">
         <p>
           All available products are supplied via our member's centres or

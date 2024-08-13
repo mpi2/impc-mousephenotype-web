@@ -22,12 +22,7 @@ import { fetchAPI } from "@/api-service";
 import { PaginatedResponse } from "@/models";
 import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
-import { useDebounceValue } from 'usehooks-ts';
-
-type Props = {
-  routerIsReady: boolean;
-  onTotalData: (arg: number) => void;
-};
+import { useDebounce } from 'usehooks-ts';
 
 type FilterOptions = {
   procedures: Array<string>;
@@ -68,16 +63,25 @@ const getMutantCount = (dataset: GeneStatisticalResult) => {
   return `${dataset.maleMutantCount || 0}m/${dataset.femaleMutantCount || 0}f`;
 };
 
+type Props = {
+  routerIsReady: boolean;
+  onTotalData: (arg: number) => void;
+  additionalSelectedValues?: SelectedValues;
+  queryFromURL: string;
+};
+
 const AllData = (props: Props) => {
   const gene = useContext(GeneContext);
-  const { onTotalData } = props;
+  const { onTotalData, additionalSelectedValues, queryFromURL} = props;
   const { setAlleles } = useContext(AllelesStudiedContext);
   const [sortField, setSortField] = useState<string>("pValue");
   const [sortOrder, setSortOrder] = useState<string>("asc");
   const [totalItems, setTotalItems] = useState<number>(0);
-  const [query, setQuery] = useDebounceValue(undefined, 500)
+  const [query, setQuery] = useState(queryFromURL);
+  const debouncedQuery = useDebounce(query, 500);
   const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
-  const [selectedValues, setSelectedValues] = useState<SelectedValues>(defaultSelectedValues);
+  const initialSelectedValues = Object.assign({...defaultSelectedValues}, additionalSelectedValues);
+  const [selectedValues, setSelectedValues] = useState<SelectedValues>(initialSelectedValues);
 
   const updateSelectedValue = (key: keyof SelectedValues, newValue: string): void => {
     setActivePage(0);
@@ -96,7 +100,7 @@ const AllData = (props: Props) => {
 
 
   const { data, isError, isFetching } = useQuery({
-    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder, query],
+    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder, debouncedQuery],
     queryFn: () => {
       const url = `/api/v1/genes/statistical-result/filtered/page`;
       const params = {
@@ -111,8 +115,8 @@ const AllData = (props: Props) => {
         .filter(([, value]) => !!value)
         .forEach(([key, value]) => params[key] = value);
 
-      if (query) {
-        params["searchQuery"] = query;
+      if (debouncedQuery) {
+        params["searchQuery"] = debouncedQuery;
       }
 
       return fetchAPI(buildURL(url, params));
@@ -188,6 +192,18 @@ const AllData = (props: Props) => {
     }
   }, [selectedValues.alleleSymbol]);
 
+  useEffect(() => {
+    if (Object.values(additionalSelectedValues).some(Boolean)) {
+      setSelectedValues(additionalSelectedValues);
+    }
+  }, [additionalSelectedValues]);
+
+  useEffect(() => {
+    if (!!queryFromURL && query !== queryFromURL) {
+      setQuery(queryFromURL);
+    }
+  }, [queryFromURL, query]);
+
   return (
     <SmartTable<GeneStatisticalResult>
       data={data?.content}
@@ -204,6 +220,7 @@ const AllData = (props: Props) => {
             <FilterBox
               controlId="queryFilterAD"
               hideLabel
+              value={query}
               onChange={setQuery}
               ariaLabel="Filter by parameters"
               controlStyle={{ width: 150 }}
@@ -358,13 +375,19 @@ const AllData = (props: Props) => {
           width: 0.5,
           label: "Significant",
           field: "significant",
-          cmp: <OptionsCell options={{ true: "Yes", false: "No" }} />,
+          cmp:
+            <OptionsCell
+              options={{ true: "Yes", false: "No", notProcessed: "Not analyzed" }}
+              customFn={(value: GeneStatisticalResult, field) => {
+                if (value.status === 'NotProcessed') {
+                  return "notProcessed"
+                }
+                return value[field];
+              }}
+            />,
         },
         { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
       ]}
-      highlightRowFunction={(item) =>
-        item.maleMutantCount < item.procedureMinMales && item.femaleMutantCount < item.procedureMinFemales
-      }
     />
   );
 };

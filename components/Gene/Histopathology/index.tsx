@@ -5,7 +5,6 @@ import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
-import { formatAlleleSymbol } from "@/utils";
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
 import _ from "lodash";
@@ -14,7 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GeneHistopathology } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { GeneContext } from "@/contexts";
-import { AlleleSymbol } from "@/components";
+import { AlleleSymbol, SectionHeader } from "@/components";
 
 const Histopathology = () => {
   const router = useRouter();
@@ -38,6 +37,11 @@ const Histopathology = () => {
   if (isLoading) {
     return (
       <Card id="histopathology">
+        <SectionHeader
+          containerId="#histopathology"
+          title="Histopathology"
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+        />
         <h2>Histopathology</h2>
         <p className="grey">Loading...</p>
       </Card>
@@ -47,7 +51,11 @@ const Histopathology = () => {
   if (isError && error === 'No content' && gene.hasHistopathologyData) {
     return (
       <Card id="histopathology">
-        <h2>Histopathology</h2>
+        <SectionHeader
+          containerId="#histopathology"
+          title="Histopathology"
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+        />
         <Alert variant="primary">
           This gene doesn't have any significant Histopathology hits.&nbsp;
           <Link className="primary link" href={`/data/histopath/${router.query.pid}`}>
@@ -61,7 +69,11 @@ const Histopathology = () => {
   if (isError || !sorted) {
     return (
       <Card id="histopathology">
-        <h2>Histopathology</h2>
+        <SectionHeader
+          containerId="#histopathology"
+          title="Histopathology"
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+        />
         <Alert variant="primary">
           There is no histopathology data found for <i>{gene.geneSymbol}</i>.
         </Alert>
@@ -71,7 +83,11 @@ const Histopathology = () => {
 
   return (
     <Card id="histopathology">
-      <h2>Histopathology</h2>
+      <SectionHeader
+        containerId="#histopathology"
+        title="Histopathology"
+        href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+      />
       <p>
         Summary table of phenotypes displayed during the Histopathology procedure which are considered significant.
         <br/>

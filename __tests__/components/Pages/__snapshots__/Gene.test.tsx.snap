@@ -2,20 +2,6 @@
 
 exports[`Gene page renders correctly 1`] = `
 <div>
-  <button
-    class="btn btn-primary"
-    style="position: fixed; z-index: 100; bottom: -100px; right: 100px; transition: .3s ease transform;"
-    type="button"
-  >
-    Compare Genes
-     
-    <span
-      class="bg-white"
-      style="display: inline-block; height: 22px; padding: 0px 7px; border-radius: 11px; margin-left: 6px; font-weight: bold; color: rgb(0, 0, 0);"
-    >
-      0
-    </span>
-  </button>
   <div
     class="banner"
   >
@@ -52,7 +38,7 @@ exports[`Gene page renders correctly 1`] = `
         >
           <input
             class="input"
-            placeholder="Search All 7824 Knockout Data..."
+            placeholder="Search for a gene..."
             title="main search box"
             type="text"
             value=""
@@ -90,6 +76,7 @@ exports[`Gene page renders correctly 1`] = `
   >
     <div
       class="card"
+      id="summary"
     >
       <div
         class="subheadingCont"
