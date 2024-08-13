@@ -18,6 +18,7 @@ import { fetchLandingPageData } from "@/api-service";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
+import SkeletonTable from "@/components/skeletons/table";
 
 type Gene = { mgiGeneAccessionId: string; geneSymbol: string; };
 type GeneList = Array<Gene>;
@@ -49,7 +50,7 @@ const EmbryoLandingPage = () => {
     return orderBy(result, 'value', 'desc');
   });
 
-  const { data: embryoData } = useQuery({
+  const { data: embryoData, isFetching } = useQuery({
     queryKey: ["landing-pages", "embryo-landing-page"],
     queryFn: () => fetchLandingPageData("embryo_landing"),
     select: (response: EmbryoDataResponse) => {
@@ -177,27 +178,31 @@ const EmbryoLandingPage = () => {
                 </div>
               </Col>
               <Col md={5}>
-                <SortableTable
-                  className="table-sortable-centered"
-                  headers={[
-                    { width: 1, label: "Category", field: "key", disabled: true },
-                    { width: 1, label: "Lines", field: "value", disabled: true },
-                  ]}
-                >
-                  {embryoData && embryoData.primaryViability.map((row, index) => (
-                    <tr key={index}>
-                      <td>{ getPrimaryViabilityText(row.label) }</td>
-                      <td>{ row.value }</td>
+                {isFetching ? (
+                  <SkeletonTable numOfColumns={2} numOfRows={5}/>
+                ) : (
+                  <SortableTable
+                    className="table-sortable-centered"
+                    headers={[
+                      { width: 1, label: "Category", field: "key", disabled: true },
+                      { width: 1, label: "Lines", field: "value", disabled: true },
+                    ]}
+                  >
+                    {embryoData.primaryViability.map((row, index) => (
+                      <tr key={index}>
+                        <td>{ getPrimaryViabilityText(row.label) }</td>
+                        <td>{ row.value }</td>
+                      </tr>
+                    ))}
+                    <tr>
+                      <td colSpan={2}>
+                        <a className="link primary" href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/viability.csv.gz">
+                          <FontAwesomeIcon icon={faDownload} size="sm" /> Download
+                        </a>
+                      </td>
                     </tr>
-                  ))}
-                  <tr>
-                    <td colSpan={2}>
-                      <a className="link primary" href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/viability.csv.gz">
-                        <FontAwesomeIcon icon={faDownload} size="sm" /> Download
-                      </a>
-                    </td>
-                  </tr>
-                </SortableTable>
+                  </SortableTable>
+                )}
               </Col>
             </Row>
             <Row>
@@ -218,31 +223,35 @@ const EmbryoLandingPage = () => {
                 </div>
               </Col>
               <Col md={5}>
-                <SortableTable
-                  className="table-sortable-centered"
-                  headers={[
-                    { width: 1, label: "Category", field: "key", disabled: true },
-                    { width: 1, label: "Lines", field: "value", disabled: true },
-                  ]}
-                >
-                  {embryoData && embryoData.secondaryViability.map(row => (
+                {isFetching ? (
+                  <SkeletonTable numOfColumns={2} numOfRows={5}/>
+                ) : (
+                  <SortableTable
+                    className="table-sortable-centered"
+                    headers={[
+                      { width: 1, label: "Category", field: "key", disabled: true },
+                      { width: 1, label: "Lines", field: "value", disabled: true },
+                    ]}
+                  >
+                    {embryoData.secondaryViability.map(row => (
+                      <tr>
+                        <td>
+                          <button className="btn link primary" onClick={() => openModalListGenes(row.label)}>
+                            { capitalize(row.label) }
+                          </button>
+                        </td>
+                        <td>{ row.value }</td>
+                      </tr>
+                    ))}
                     <tr>
-                      <td>
-                        <button className="btn link primary" onClick={() => openModalListGenes(row.label)}>
-                          { capitalize(row.label) }
-                        </button>
+                      <td colSpan={2}>
+                        <a className="link primary" href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv">
+                          Download
+                        </a>
                       </td>
-                      <td>{ row.value }</td>
                     </tr>
-                  ))}
-                  <tr>
-                    <td colSpan={2}>
-                      <a className="link primary" href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv">
-                        Download
-                      </a>
-                    </td>
-                  </tr>
-                </SortableTable>
+                  </SortableTable>
+                )}
               </Col>
             </Row>
           </Container>
