@@ -19,6 +19,7 @@ type Props<T> = {
   additionalBottomControls?: ReactElement | null,
   topControlsWrapperCSS?: CSSProperties,
   bottomControlsWrapperCSS?: CSSProperties,
+  displayPageControls?: boolean,
 };
 
 type NavButtonsProps = {
@@ -42,6 +43,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     additionalBottomControls: AdditionalBottomControls = null,
     topControlsWrapperCSS = {},
     bottomControlsWrapperCSS = {},
+    displayPageControls = true,
   } = props;
 
   const [internalPage, setInternalPage] = useState(page);
@@ -198,7 +200,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
 
   const shouldDisplayTopButtons = (buttonsPlacement === 'top' || buttonsPlacement === 'both') && noTotalItems > 10;
   const shouldDisplayBottomButtons = (buttonsPlacement === 'bottom' || buttonsPlacement === 'both') && noTotalItems > 10;
-  const shouldDisplayPageChangeControls = noTotalItems > 10;
+  const shouldDisplayPageChangeControls = noTotalItems > 10 && displayPageControls;
 
   return (
     <>

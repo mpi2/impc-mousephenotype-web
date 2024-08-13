@@ -39,6 +39,8 @@ const SmartTable = <T extends Model>(props: {
     pageSize: number;
   };
   onSortChange?: (sortOptions: string) => void;
+  paginationButtonsPlacement?: 'top' | 'bottom' | 'both';
+  displayPageControls?: boolean;
 }) => {
   const {
     filteringEnabled = true,
@@ -49,6 +51,8 @@ const SmartTable = <T extends Model>(props: {
     highlightRowColor = '#00b0b0',
     pagination = null,
     onSortChange = (_) => {},
+    paginationButtonsPlacement = 'both',
+    displayPageControls = true,
   } = props;
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>('');
@@ -96,6 +100,8 @@ const SmartTable = <T extends Model>(props: {
       additionalTopControls={additionalControls}
       additionalBottomControls={props.additionalBottomControls}
       controlled={!!pagination}
+      buttonsPlacement={paginationButtonsPlacement}
+      displayPageControls={displayPageControls}
       {...pagination}
     >
       {(pageData) => (
