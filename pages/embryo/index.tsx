@@ -1,10 +1,9 @@
 import { Container, Breadcrumb, Row, Col, Image } from "react-bootstrap";
 import styles from './styles.module.scss';
-import data from '../../mocks/data/landing-pages/embryo.json';
 import Head from "next/head";
-import _ from "lodash";
+import { orderBy } from "lodash";
 import { useEmbryoWOLQuery } from "@/hooks";
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import {
   Card,
   EmbryoDataAvailabilityGrid,
@@ -14,6 +13,18 @@ import {
   SortableTable
 } from "@/components";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { fetchLandingPageData } from "@/api-service";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+type GeneList = Array<{ mgiGeneAccessionId: string; geneSymbol: string; }>;
+type OutcomeData = { outcome: string, genes: GeneList };
+type EmbryoDataResponse = {
+  primaryViabilityTable: Array<OutcomeData>;
+  primaryViabilityChart: Array<OutcomeData>;
+  secondaryViabilityData: Array<{ windowOfLethality: string; genes: GeneList }>;
+};
 
 const EmbryoLandingPage = () => {
   const { data: embryoWOL } = useEmbryoWOLQuery(data => {
@@ -30,13 +41,40 @@ const EmbryoLandingPage = () => {
     for (const [key, value] of map) {
       result.push({ label: key, value });
     }
-    return _.orderBy(result, 'value', 'desc');
+    return orderBy(result, 'value', 'desc');
+  });
+
+  const { data: embryoData } = useQuery({
+    queryKey: ["landing-pages", "embryo-landing-page"],
+    queryFn: () => fetchLandingPageData("embryo_landing"),
+    select: (response: EmbryoDataResponse) => {
+      return {
+        primaryViabilityChartData:
+          response.primaryViabilityChart
+            .map(row => ({ label: row.outcome, value: row.genes.length }))
+            .sort((a, b) => b.value - a.value),
+        primaryViability:
+          response.primaryViabilityTable
+            .map(row => ({ label: row.outcome, value: row.genes.length }))
+            .sort((a, b) => b.value - a.value),
+        secondaryViability: response.secondaryViabilityData,
+      }
+    },
+    placeholderData: { primaryViabilityChart: [], primaryViabilityTable: [] },
   });
 
   const heatMapSelectOptions = useMemo(
     () => embryoWOL.map(v => ({ value: v.label, label: v.label })).sort(),
     [embryoWOL]
   );
+
+  const getPrimaryViabilityText = (value: string) => {
+    if (value === 'Viable') {
+      return value;
+    }
+    const mpId = value === 'Lethal' ? 'MP:0011100' : 'MP:0011110';
+    return <Link className="link primary" href={`/phenotypes/${mpId}`}>{value}</Link>;
+  };
 
   return (
     <>
@@ -111,31 +149,32 @@ const EmbryoLandingPage = () => {
             <Row className="mb-3">
               <Col md={7}>
                 <div className={styles.chartWrapper}>
-                  {data && (
+                  {embryoData && (
                     <PieChart
                       title="Primary Viability"
-                      data={data.primaryViabilityChartData}
+                      data={embryoData.primaryViabilityChartData}
                     />
                   )}
                 </div>
               </Col>
               <Col md={5}>
                 <SortableTable
-                    headers={[
-                      { width: 1, label: "Category", field: "key", disabled: true },
-                      { width: 1, label: "Lines", field: "value", disabled: true },
-                    ]}
+                  className="table-sortable-centered"
+                  headers={[
+                    { width: 1, label: "Category", field: "key", disabled: true },
+                    { width: 1, label: "Lines", field: "value", disabled: true },
+                  ]}
                 >
-                  {data && data.primaryViability.map((row, index) => (
+                  {embryoData && embryoData.primaryViability.map((row, index) => (
                     <tr key={index}>
-                      <td>{ row.label }</td>
+                      <td>{ getPrimaryViabilityText(row.label) }</td>
                       <td>{ row.value }</td>
                     </tr>
                   ))}
                   <tr>
                     <td colSpan={2}>
                       <a className="link primary" href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/viability.csv.gz">
-                        Download
+                        <FontAwesomeIcon icon={faDownload} size="sm" /> Download
                       </a>
                     </td>
                   </tr>
@@ -161,6 +200,7 @@ const EmbryoLandingPage = () => {
               </Col>
               <Col md={5}>
                 <SortableTable
+                  className="table-sortable-centered"
                   headers={[
                     { width: 1, label: "Category", field: "key", disabled: true },
                     { width: 1, label: "Lines", field: "value", disabled: true },
