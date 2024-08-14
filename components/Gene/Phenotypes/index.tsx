@@ -1,4 +1,4 @@
-import { Alert, Col, Row, Spinner, Tab, Tabs } from "react-bootstrap";
+import { Alert, Spinner, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
@@ -9,11 +9,10 @@ import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
 import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
 import { orderPhenotypedSelectionChannel, summarySystemSelectionChannel } from "@/eventChannels";
-import _ from 'lodash';
+import { uniq } from 'lodash';
 import { Variant } from "react-bootstrap/types";
 import { SectionHeader } from "@/components";
-import { faTriangleExclamation, } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ErrorBoundary } from "react-error-boundary";
 
 const GraphicalAnalysis = dynamic(
   () => import("./GraphicalAnalysis"),
@@ -124,7 +123,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
 
   const hasDataRelatedToPWG = phenotypeData?.some(item => item.projectName === 'PWG');
 
-  const hasOneAlleleOrMore = _.uniq(phenotypeData?.map(p => p.alleleSymbol)).length > 1;
+  const hasOneAlleleOrMore = uniq(phenotypeData?.map(p => p.alleleSymbol)).length > 1;
 
   return (
     <Card id="data" style={{ position: 'relative' }}>
@@ -144,7 +143,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             data={phenotypeData}
             errorMessage={<span>No phenotype data available for <i>{gene.geneSymbol}</i>.</span>}
           >
-          <SignificantPhenotypes
+            <SignificantPhenotypes
               phenotypeData={phenotypeData}
               hasDataRelatedToPWG={hasDataRelatedToPWG}
             />
@@ -162,19 +161,23 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
           <div className="mt-3">
-            <GraphicalAnalysis
-              mgiGeneAccessionId={gene.mgiGeneAccessionId}
-              routerIsReady={router.isReady}
-            />
+            <ErrorBoundary fallback={<Alert variant="danger">An error occurred, please try later</Alert>}>
+              <GraphicalAnalysis
+                mgiGeneAccessionId={gene.mgiGeneAccessionId}
+                routerIsReady={router.isReady}
+              />
+            </ErrorBoundary>
           </div>
         </Tab>
         { hasOneAlleleOrMore && (
           <Tab eventKey="allelesByPhenotype" title="Alleles by Phenotype">
-            <AllelePhenotypeDiagram
-              phenotypeData={phenotypeData}
-              isPhenotypeLoading={isPhenotypeLoading}
-              isPhenotypeError={isPhenotypeError}
-            />
+            <ErrorBoundary fallback={<Alert variant="danger">An error occurred, please try later</Alert>}>
+              <AllelePhenotypeDiagram
+                phenotypeData={phenotypeData}
+                isPhenotypeLoading={isPhenotypeLoading}
+                isPhenotypeError={isPhenotypeError}
+              />
+            </ErrorBoundary>
           </Tab>
         )}
       </Tabs>
