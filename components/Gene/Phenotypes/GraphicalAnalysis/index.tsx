@@ -36,7 +36,7 @@ const getSignificants = (data: Array<GeneStatisticalResult>) => {
     return -Math.log10(Number(item.pValue)) >= pValueThreshold;
   });
 };
-const processData = (data: Array<GeneStatisticalResult>, { type }: Cat, significantOnly: boolean) => {
+const processDataByCatAndSignificance = (data: Array<GeneStatisticalResult>, { type }: Cat, significantOnly: boolean) => {
   const { BODY_SYSTEMS, PROCEDURES } = cats;
   const significants = getSignificants(data);
   let results: Array<GeneStatisticalResult> = data;
@@ -91,35 +91,10 @@ const GraphicalAnalysis = (props: Props) => {
 
   useEffect(() => setAllelesStudiedLoading(isGeneFetching), [isGeneFetching]);
 
-  const filteredData = useMemo(
-    () => {
-      const allData = {};
-      geneData.forEach(result => {
-        const { mgiGeneAccessionId, parameterStableId, alleleAccessionId, metadataGroup, pValue} = result;
-        const hash = `${mgiGeneAccessionId}-${parameterStableId}-${alleleAccessionId}-${metadataGroup}-${pValue}`;
-        if (result[hash] === undefined) {
-          allData[hash] = result;
-        }
-      });
-      return Object.values(allData) as Array<GeneStatisticalResult>;
-    },
-    [geneData]
-  );
-
-  const dataWithPValue = useMemo(() =>
-    filteredData.filter(
-      (x) =>
-        x.topLevelPhenotypes?.length
-    )
-      .map((x, index) => ({
-        ...x,
-        pValue: Number(x.pValue) || 0,
-        topLevelPhenotypeList: x.topLevelPhenotypes.map((y) => y.name),
-      })), [filteredData]);
 
   const processed = useMemo(
-    () => processData(dataWithPValue, cat, significantOnly),
-    [dataWithPValue, cat, significantOnly]
+    () => processDataByCatAndSignificance(geneData, cat, significantOnly),
+    [geneData, cat, significantOnly]
   );
 
   const isByProcedure = cat.type === cats.PROCEDURES;
@@ -130,7 +105,7 @@ const GraphicalAnalysis = (props: Props) => {
     ,[processed, isByProcedure]);
 
   const procedureColorMap = useMemo(
-    () => getProcedureColorMap(uniq(filteredData.map((x) => x.procedureName))),
+    () => getProcedureColorMap(uniq(geneData.map((x) => x.procedureName))),
     [processed, isByProcedure]
   );
 

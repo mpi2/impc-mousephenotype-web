@@ -24,12 +24,25 @@ export const useGeneAllStatisticalResData = (
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiAccessionId}/statistical-result`),
     enabled,
     select: (data: Array<GeneStatisticalResult>) => {
-      return data.map(dataset => ({
-        ...dataset,
-        pValue: Number(dataset.pValue),
-        mutantCount: getMutantCount(dataset)
-      }))
-        .filter(dataset => dataset.status !== 'NotProcessed') as Array<GeneStatisticalResult>;
+      const parsed = data
+        .map(dataset => ({
+          ...dataset,
+          mutantCount: getMutantCount(dataset),
+          pValue: Number(dataset.pValue) || 0,
+          topLevelPhenotypeList: dataset.topLevelPhenotypes.map((y) => y.name),
+        }))
+        .filter(dataset =>
+          dataset.status !== 'NotProcessed' && !!dataset.topLevelPhenotypes?.length
+        ) as Array<GeneStatisticalResult>;
+      const groupedData = {};
+      parsed.forEach(result => {
+        const { mgiGeneAccessionId, parameterStableId, alleleAccessionId, metadataGroup, pValue} = result;
+        const hash = `${mgiGeneAccessionId}-${parameterStableId}-${alleleAccessionId}-${metadataGroup}-${pValue}`;
+        if (result[hash] === undefined) {
+          groupedData[hash] = result;
+        }
+      });
+      return Object.values(parsed) as Array<GeneStatisticalResult>;
     },
     placeholderData: [],
   });
