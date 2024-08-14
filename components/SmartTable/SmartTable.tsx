@@ -65,7 +65,7 @@ const SmartTable = <T extends Model>(props: {
     mutatedData = mutatedData?.filter(item => props.filterFn(item, query));
   }
   const [field, order] = sortOptions.split(';');
-  if (field && order && !!pagination) {
+  if (field && order && pagination === null) {
     mutatedData = !!props.customSortFunction
       ? props.customSortFunction(mutatedData, field, order as "asc" | "desc")
       : _.orderBy(mutatedData, field, order as "asc" | "desc")
