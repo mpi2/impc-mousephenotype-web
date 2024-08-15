@@ -1,0 +1,68 @@
+[
+  {
+    "id": "6662c880b821942533d6cba9",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "geneSymbol": "Dbn1",
+    "strainAccessionId": "MGI:3056279",
+    "pipelineStableId": "JAX_001",
+    "procedureStableId": "JAX_ERG_001",
+    "procedureName": "Electroretinography",
+    "parameterStableId": "JAX_ERG_028_001",
+    "parameterName": "Cone waveform (pdf format)",
+    "biologicalSampleGroup": "experimental",
+    "images": [
+      {
+        "thumbnailUrl": null,
+        "downloadUrl": "https://api.mousephenotype.org/tracker/media/getfile/e2e14f399bb7efa1caf4236058526cc8c1c1c0c24c0fd71bcf9e31cbd2835628",
+        "jpegUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/60669",
+        "fileType": "application/pdf",
+        "observationId": "4570f25ba1d5164fc7d7601fcefad4e4",
+        "specimenId": "16078e61840a9be8d3570592acae6804",
+        "colonyId": "JR21507",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": 15,
+        "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+        "associatedParameters": null,
+        "anatomyTerms": [],
+        "imageLink": null,
+        "dateOfExperiment": "2014-03-20T00:00:00Z"
+      },
+      {
+        "thumbnailUrl": null,
+        "downloadUrl": "https://api.mousephenotype.org/tracker/media/getfile/64f47795ccce464d0b0871038c0fac9f61e8ba7db130eb6ed5e0e138cecb6d50",
+        "jpegUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/60644",
+        "fileType": "application/pdf",
+        "observationId": "516b06f97c7d0f61204e241b02375e83",
+        "specimenId": "0beb9f5a961d6de8c9eef7102b940308",
+        "colonyId": "JR21507",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": 15,
+        "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+        "associatedParameters": null,
+        "anatomyTerms": [],
+        "imageLink": null,
+        "dateOfExperiment": "2014-03-20T00:00:00Z"
+      },
+      {
+        "thumbnailUrl": null,
+        "downloadUrl": "https://api.mousephenotype.org/tracker/media/getfile/95079f2cc209d5cbc2e9ff17c49e43d3118c8d99777995e1723c5e95f042e032",
+        "jpegUrl": "//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/60554",
+        "fileType": "application/pdf",
+        "observationId": "2fdbb75d14f01dfd8667986e4668fd80",
+        "specimenId": "8e6cd22c0e3a550382335db36ae0f96e",
+        "colonyId": "JR21507",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": 14,
+        "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+        "associatedParameters": null,
+        "anatomyTerms": [],
+        "imageLink": null,
+        "dateOfExperiment": "2014-03-24T00:00:00Z"
+      }
+    ],
+    "metadataGroup": "86b3493133254b793a241eea01bf0ebc"
+  }
+]
