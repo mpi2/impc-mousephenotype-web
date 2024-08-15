@@ -1,0 +1,4517 @@
+[
+  {
+    "datasetId": "b0a3c86d558e2f77cc3897a1cf6d3484",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_GEP_003",
+    "procedureName": "Gross Morphology Embryo E18.5",
+    "parameterStableId": "IMPC_GEP_005_002",
+    "parameterName": "Responsive to tactile stimuli",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 0.0,
+    "lifeStageName": "E18.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001491",
+      "name": "unresponsive to tactile stimuli"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002067",
+        "name": "abnormal sensory capabilities/reflexes/nociception"
+      },
+      {
+        "id": "MP:0012079",
+        "name": "abnormal spinal reflex"
+      },
+      {
+        "id": "MP:0001968",
+        "name": "abnormal touch/ nociception"
+      },
+      {
+        "id": "MP:0001961",
+        "name": "abnormal reflex"
+      },
+      {
+        "id": "MP:0003492",
+        "name": "abnormal involuntary movement"
+      },
+      {
+        "id": "MP:0005316",
+        "name": "abnormal response to tactile stimuli"
+      },
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "f806e646706dc66ab5a166824bffdd85",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_HEM_002",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_019_001",
+    "parameterName": "Mean platelet volume",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "female",
+    "projectName": "Helmholtz GMC",
+    "pValue": 3.71245018641693E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -0.631600140130381,
+    "phenotype": {
+      "id": "MP:0008935",
+      "name": "decreased mean platelet volume"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002586",
+        "name": "abnormal platelet volume"
+      },
+      {
+        "id": "MP:0013658",
+        "name": "abnormal myeloid cell morphology"
+      },
+      {
+        "id": "MP:0013657",
+        "name": "abnormal blood cell morphology"
+      },
+      {
+        "id": "MP:0002396",
+        "name": "abnormal hematopoietic system morphology/development"
+      },
+      {
+        "id": "MP:0004720",
+        "name": "abnormal platelet morphology"
+      },
+      {
+        "id": "MP:0013656",
+        "name": "abnormal hematopoietic cell morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "269a3e53f710c3a60a002bdbd029404f",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_012_001",
+    "procedureName": "Hot Plate",
+    "parameterStableId": "M-G-P_012_001_005",
+    "parameterName": "Body Weight",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "female",
+    "projectName": "MGP",
+    "pValue": 5.15607909123593E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.37574758021725,
+    "phenotype": {
+      "id": "MP:0001262",
+      "name": "decreased body weight"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003956",
+        "name": "abnormal body size"
+      },
+      {
+        "id": "MP:0012321",
+        "name": "abnormal total tissue mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      },
+      {
+        "id": "MP:0001265",
+        "name": "decreased body size"
+      },
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0001259",
+        "name": "abnormal body weight"
+      },
+      {
+        "id": "MP:0012322",
+        "name": "decreased total tissue mass"
+      }
+    ]
+  },
+  {
+    "datasetId": "523da4364251e4f5ec20a6aaa33b9a8f",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_025_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "M-G-P_025_001_008",
+    "parameterName": "Albumin",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 1.20709159388381E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0005419",
+      "name": "decreased circulating serum albumin level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0005416",
+        "name": "abnormal circulating protein level"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0008469",
+        "name": "abnormal protein level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0000199",
+        "name": "abnormal circulating serum albumin level"
+      }
+    ]
+  },
+  {
+    "datasetId": "db186429a445122b4f3851bbe447a842",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEO_003",
+    "procedureName": "Gross Morphology Embryo E14.5-E15.5",
+    "parameterStableId": "IMPC_GEO_066_001",
+    "parameterName": "Microcephaly",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E15.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000433",
+      "name": "microcephaly"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000432",
+        "name": "abnormal head morphology"
+      },
+      {
+        "id": "MP:0011496",
+        "name": "abnormal head size"
+      }
+    ]
+  },
+  {
+    "datasetId": "e9434db3a7fc385ac754c359fb8fa248",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "ICS_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "ICS",
+    "sex": "not_considered",
+    "projectName": "Phenomin",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011100",
+      "name": "preweaning lethality, complete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "44908217cde91080e532a394174bec51",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "MGP_MLN_001",
+    "procedureName": "Mesenteric Lymph Node Immunophenotyping",
+    "parameterStableId": "MGP_MLN_073_001",
+    "parameterName": "Total CD8+ T cells - % of CD45+",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "not_considered",
+    "projectName": "MGP",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0008078",
+      "name": "increased CD8-positive, alpha-beta T cell number"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005387",
+        "name": "immune system phenotype"
+      },
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0012763",
+        "name": "abnormal alpha-beta T cell number"
+      },
+      {
+        "id": "MP:0005015",
+        "name": "increased T cell number"
+      },
+      {
+        "id": "MP:0005013",
+        "name": "increased lymphocyte cell number"
+      },
+      {
+        "id": "MP:0002435",
+        "name": "abnormal effector T cell morphology"
+      },
+      {
+        "id": "MP:0012762",
+        "name": "abnormal alpha-beta T cell morphology"
+      },
+      {
+        "id": "MP:0000217",
+        "name": "abnormal leukocyte cell number"
+      },
+      {
+        "id": "MP:0011180",
+        "name": "abnormal hematopoietic cell number"
+      },
+      {
+        "id": "MP:0000716",
+        "name": "abnormal immune system cell morphology"
+      },
+      {
+        "id": "MP:0008037",
+        "name": "abnormal T cell morphology"
+      },
+      {
+        "id": "MP:0008247",
+        "name": "abnormal mononuclear cell morphology"
+      },
+      {
+        "id": "MP:0000218",
+        "name": "increased leukocyte cell number"
+      },
+      {
+        "id": "MP:0002396",
+        "name": "abnormal hematopoietic system morphology/development"
+      },
+      {
+        "id": "MP:0011181",
+        "name": "increased hematopoietic cell number"
+      },
+      {
+        "id": "MP:0006387",
+        "name": "abnormal T cell number"
+      },
+      {
+        "id": "MP:0008077",
+        "name": "abnormal CD8-positive, alpha-beta T cell number"
+      },
+      {
+        "id": "MP:0012764",
+        "name": "increased alpha-beta T cell number"
+      },
+      {
+        "id": "MP:0013656",
+        "name": "abnormal hematopoietic cell morphology"
+      },
+      {
+        "id": "MP:0008246",
+        "name": "abnormal leukocyte morphology"
+      },
+      {
+        "id": "MP:0000685",
+        "name": "abnormal immune system morphology"
+      },
+      {
+        "id": "MP:0002619",
+        "name": "abnormal lymphocyte morphology"
+      },
+      {
+        "id": "MP:0000717",
+        "name": "abnormal lymphocyte cell number"
+      },
+      {
+        "id": "MP:0005010",
+        "name": "abnormal CD8-positive, alpha beta T cell morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "67043ce2ffd1166ad02612bf55a5c63e",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_008_001",
+    "parameterName": "Lean/Body weight",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 3.39219921719284E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.59501614522759,
+    "phenotype": {
+      "id": "MP:0003960",
+      "name": "increased lean body mass"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0003959",
+        "name": "abnormal lean body mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      }
+    ]
+  },
+  {
+    "datasetId": "2f452fdcc1fbddc832a96bb45b4632e3",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_067_001",
+    "parameterName": "Homozygous animals viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "not_considered",
+    "projectName": "DTCC",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "d1372d50acd6b42f49df16790f8ff276",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "not_considered",
+    "projectName": "Helmholtz GMC",
+    "pValue": 1.78582E-4,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011100",
+      "name": "preweaning lethality, complete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "67c49d10cf488fb428e5ad2452b38f61",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_025_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "M-G-P_025_001_023",
+    "parameterName": "HDL-cholesterol",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 7.29183896524562E-7,
+    "lifeStageName": "Early adult",
+    "effectSize": -5.02961405316051,
+    "phenotype": {
+      "id": "MP:0000186",
+      "name": "decreased circulating HDL cholesterol level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010329",
+        "name": "abnormal lipoprotein level"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0005278",
+        "name": "abnormal cholesterol homeostasis"
+      },
+      {
+        "id": "MP:0002118",
+        "name": "abnormal lipid homeostasis"
+      },
+      {
+        "id": "MP:0005179",
+        "name": "decreased circulating cholesterol level"
+      },
+      {
+        "id": "MP:0003949",
+        "name": "abnormal circulating lipid level"
+      },
+      {
+        "id": "MP:0000184",
+        "name": "abnormal circulating HDL cholesterol level"
+      },
+      {
+        "id": "MP:0012224",
+        "name": "abnormal sterol level"
+      },
+      {
+        "id": "MP:0003983",
+        "name": "decreased cholesterol level"
+      },
+      {
+        "id": "MP:0010330",
+        "name": "abnormal circulating lipoprotein level"
+      },
+      {
+        "id": "MP:0001547",
+        "name": "abnormal lipid level"
+      },
+      {
+        "id": "MP:0003947",
+        "name": "abnormal cholesterol level"
+      },
+      {
+        "id": "MP:0012225",
+        "name": "decreased sterol level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0000180",
+        "name": "abnormal circulating cholesterol level"
+      }
+    ]
+  },
+  {
+    "datasetId": "85532b920acd195e5e3fe9ccc530a744",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEL_003",
+    "procedureName": "Gross Morphology Embryo E9.5",
+    "parameterStableId": "IMPC_GEL_014_001",
+    "parameterName": "Allantois Morphology",
+    "alleleAccessionId": "MGI:6158479",
+    "alleleName": "endonuclease-mediated mutation 2, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Dbn1<em2(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E9.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001726",
+      "name": "abnormal allantois morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005380",
+        "name": "embryo phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002086",
+        "name": "abnormal extraembryonic tissue morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "9daf321f9a5fcec132a6b32d86a5d4b6",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "CCP_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_067_001",
+    "parameterName": "Homozygous animals viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "CCP-IMG",
+    "sex": "not_considered",
+    "projectName": "CCP-IMG",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011100",
+      "name": "preweaning lethality, complete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "95e1d934e20fd67dccbddc00a8f9d1e3",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEO_003",
+    "procedureName": "Gross Morphology Embryo E14.5-E15.5",
+    "parameterStableId": "IMPC_GEO_066_001",
+    "parameterName": "Microcephaly",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E15.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000433",
+      "name": "microcephaly"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000432",
+        "name": "abnormal head morphology"
+      },
+      {
+        "id": "MP:0011496",
+        "name": "abnormal head size"
+      }
+    ]
+  },
+  {
+    "datasetId": "706a6c19bf65d7bec0b91ae2f530da52",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "IMPC_001",
+    "procedureStableId": "IMPC_CBC_003",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_014_001",
+    "parameterName": "Alkaline phosphatase",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "RBRC",
+    "sex": "female",
+    "projectName": "RBRC",
+    "pValue": 3.3254639320271E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.55207795899064,
+    "phenotype": {
+      "id": "MP:0002968",
+      "name": "increased circulating alkaline phosphatase level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0005416",
+        "name": "abnormal circulating protein level"
+      },
+      {
+        "id": "MP:0001570",
+        "name": "abnormal circulating enzyme level"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0008469",
+        "name": "abnormal protein level"
+      },
+      {
+        "id": "MP:0000202",
+        "name": "abnormal circulating alkaline phosphatase level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0005319",
+        "name": "abnormal enzyme/coenzyme level"
+      }
+    ]
+  },
+  {
+    "datasetId": "5474acdb2dfa78a1a077e77c6bac07ab",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "CCP_001",
+    "procedureStableId": "IMPC_IPG_001",
+    "procedureName": "Intraperitoneal glucose tolerance test (IPGTT)",
+    "parameterStableId": "IMPC_IPG_010_001",
+    "parameterName": "Fasted blood glucose concentration",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "CCP-IMG",
+    "sex": "female",
+    "projectName": "CCP-IMG",
+    "pValue": 3.09524734280348E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.41646310512269,
+    "phenotype": {
+      "id": "MP:0013279",
+      "name": "increased fasting circulating glucose level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0013277",
+        "name": "abnormal fasting circulating glucose level"
+      },
+      {
+        "id": "MP:0002078",
+        "name": "abnormal glucose homeostasis"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0005559",
+        "name": "increased circulating glucose level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0000188",
+        "name": "abnormal circulating glucose level"
+      }
+    ]
+  },
+  {
+    "datasetId": "b0a3c86d558e2f77cc3897a1cf6d3484",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_GEP_003",
+    "procedureName": "Gross Morphology Embryo E18.5",
+    "parameterStableId": "IMPC_GEP_005_002",
+    "parameterName": "Responsive to tactile stimuli",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 0.0,
+    "lifeStageName": "E18.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001491",
+      "name": "unresponsive to tactile stimuli"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002067",
+        "name": "abnormal sensory capabilities/reflexes/nociception"
+      },
+      {
+        "id": "MP:0012079",
+        "name": "abnormal spinal reflex"
+      },
+      {
+        "id": "MP:0001968",
+        "name": "abnormal touch/ nociception"
+      },
+      {
+        "id": "MP:0001961",
+        "name": "abnormal reflex"
+      },
+      {
+        "id": "MP:0003492",
+        "name": "abnormal involuntary movement"
+      },
+      {
+        "id": "MP:0005316",
+        "name": "abnormal response to tactile stimuli"
+      },
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "a94d12e13dc444a143aa95ca63b21857",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_XRY_001",
+    "procedureName": "X-ray",
+    "parameterStableId": "IMPC_XRY_018_001",
+    "parameterName": "Shape of vertebrae",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 1.98068125792095E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0000137",
+      "name": "abnormal vertebrae morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0004703",
+        "name": "abnormal vertebral column morphology"
+      },
+      {
+        "id": "MP:0005508",
+        "name": "abnormal skeleton morphology"
+      },
+      {
+        "id": "MP:0002114",
+        "name": "abnormal axial skeleton morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "61dee01de9d74517eeeec9472ac6df22",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "BCM_OFD_001",
+    "procedureName": "Open Field - centre start",
+    "parameterStableId": "IMPC_OFD_010_001",
+    "parameterName": "Periphery distance travelled",
+    "alleleAccessionId": "MGI:6257430",
+    "alleleName": "endonuclease-mediated mutation 1, Baylor College of Medicine",
+    "alleleSymbol": "Dbn1<em1(IMPC)Bay>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 2.60821882520699E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.1376207579434,
+    "phenotype": {
+      "id": "MP:0001399",
+      "name": "hyperactivity"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0003491",
+        "name": "abnormal voluntary movement"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "92489998ae6033e5146c64addebd3c4d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "IMPC_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_032_001",
+    "parameterName": "Locomotor activity",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "RBRC",
+    "sex": "not_considered",
+    "projectName": "RBRC",
+    "pValue": 6.8640874281801E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.21409199376805,
+    "phenotype": {
+      "id": "MP:0001415",
+      "name": "increased exploration in new environment"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0013189",
+        "name": "abnormal exploration in a new environment"
+      },
+      {
+        "id": "MP:0001413",
+        "name": "abnormal response to new environment"
+      },
+      {
+        "id": "MP:0014114",
+        "name": "abnormal cognition"
+      },
+      {
+        "id": "MP:0003107",
+        "name": "abnormal response to novelty"
+      },
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0002572",
+        "name": "abnormal emotion/affect behavior"
+      },
+      {
+        "id": "MP:0002063",
+        "name": "abnormal learning/memory/conditioning"
+      }
+    ]
+  },
+  {
+    "datasetId": "ccece0e2135f4dd2ce2d09dac524f420",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "not_considered",
+    "projectName": "MGP",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "4f17aaabe10319a888d671fbf37698b0",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_063_001",
+    "parameterName": "Homozygous males viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011100",
+      "name": "preweaning lethality, complete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "15291f9a975db6c5c2bc2d5eab755976",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "JAX_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "JAX",
+    "sex": "not_considered",
+    "projectName": "JAX",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "051f167afe4197b25fbfb12bd50680eb",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEL_003",
+    "procedureName": "Gross Morphology Embryo E9.5",
+    "parameterStableId": "IMPC_GEL_019_001",
+    "parameterName": "Chorioallantoic fusion",
+    "alleleAccessionId": "MGI:6158479",
+    "alleleName": "endonuclease-mediated mutation 2, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Dbn1<em2(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E9.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0002824",
+      "name": "abnormal chorioallantoic fusion"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005380",
+        "name": "embryo phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0004264",
+        "name": "abnormal extraembryonic tissue physiology"
+      },
+      {
+        "id": "MP:0010038",
+        "name": "abnormal placenta physiology"
+      },
+      {
+        "id": "MP:0001712",
+        "name": "abnormal placenta development"
+      }
+    ]
+  },
+  {
+    "datasetId": "5a3ba071783a83c27a47104983ece686",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_CBC_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_005_001",
+    "parameterName": "Creatinine",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 1.83553342588075E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.58598937072088,
+    "phenotype": {
+      "id": "MP:0005553",
+      "name": "increased circulating creatinine level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0009644",
+        "name": "uremia"
+      },
+      {
+        "id": "MP:0005332",
+        "name": "abnormal amino acid level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0005328",
+        "name": "abnormal circulating creatinine level"
+      },
+      {
+        "id": "MP:0005311",
+        "name": "abnormal circulating amino acid level"
+      }
+    ]
+  },
+  {
+    "datasetId": "4e8ad0810d539df2e38fc05473105a08",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_003_001",
+    "parameterName": "Lean mass",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 5.80780569046088E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.428549937170318,
+    "phenotype": {
+      "id": "MP:0003960",
+      "name": "increased lean body mass"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0003959",
+        "name": "abnormal lean body mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      }
+    ]
+  },
+  {
+    "datasetId": "4c6796aae9d6ad1572cca1708cb0f5af",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_002_001",
+    "parameterName": "Fat mass",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 1.0459169422129E-11,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.14716703854224,
+    "phenotype": {
+      "id": "MP:0010025",
+      "name": "decreased total body fat amount"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005375",
+        "name": "adipose tissue phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000003",
+        "name": "abnormal adipose tissue morphology"
+      },
+      {
+        "id": "MP:0005452",
+        "name": "abnormal adipose tissue amount"
+      }
+    ]
+  },
+  {
+    "datasetId": "db186429a445122b4f3851bbe447a842",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEO_003",
+    "procedureName": "Gross Morphology Embryo E14.5-E15.5",
+    "parameterStableId": "IMPC_GEO_066_001",
+    "parameterName": "Microcephaly",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E15.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000433",
+      "name": "microcephaly"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000432",
+        "name": "abnormal head morphology"
+      },
+      {
+        "id": "MP:0011496",
+        "name": "abnormal head size"
+      }
+    ]
+  },
+  {
+    "datasetId": "ae18cf6268dc4c5458c6438da87f49b0",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_CBC_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_003_001",
+    "parameterName": "Chloride",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "female",
+    "projectName": "MGP",
+    "pValue": 2.70173017032609E-7,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.73838594323581,
+    "phenotype": {
+      "id": "MP:0003019",
+      "name": "increased circulating chloride level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0012007",
+        "name": "abnormal chloride level"
+      },
+      {
+        "id": "MP:0003018",
+        "name": "abnormal circulating chloride level"
+      },
+      {
+        "id": "MP:0001765",
+        "name": "abnormal ion homeostasis"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      }
+    ]
+  },
+  {
+    "datasetId": "1bca054a52b16744d9cfcd915fca19e4",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "HRWL_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "MRC Harwell",
+    "sex": "not_considered",
+    "projectName": "BaSH",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "6d81e15ffcd784a5fc09301d3479172d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEL_003",
+    "procedureName": "Gross Morphology Embryo E9.5",
+    "parameterStableId": "IMPC_GEL_011_001",
+    "parameterName": "Embryo turning",
+    "alleleAccessionId": "MGI:6158479",
+    "alleleName": "endonuclease-mediated mutation 2, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Dbn1<em2(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E9.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001700",
+      "name": "abnormal embryo turning"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005380",
+        "name": "embryo phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002084",
+        "name": "abnormal developmental patterning"
+      },
+      {
+        "id": "MP:0001672",
+        "name": "abnormal embryo development"
+      },
+      {
+        "id": "MP:0001695",
+        "name": "abnormal gastrulation"
+      }
+    ]
+  },
+  {
+    "datasetId": "4583ac488bf44dad8dc817c957e06ff8",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "parameterStableId": "IMPC_CSD_014_001",
+    "parameterName": "Coat - hair texture / appearance - back",
+    "alleleAccessionId": "MGI:6257430",
+    "alleleName": "endonuclease-mediated mutation 1, Baylor College of Medicine",
+    "alleleSymbol": "Dbn1<em1(IMPC)Bay>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 5.30571202522961E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001510",
+      "name": "abnormal coat appearance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010771",
+        "name": "integument phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010678",
+        "name": "abnormal skin adnexa morphology"
+      },
+      {
+        "id": "MP:0000367",
+        "name": "abnormal coat/ hair morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "0797ef7fce71abcffc6c8529112ba807",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_PAT_002",
+    "procedureName": "Gross Pathology and Tissue Collection",
+    "parameterStableId": "IMPC_PAT_006_002",
+    "parameterName": "Heart",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000274",
+      "name": "enlarged heart"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      },
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0005406",
+        "name": "abnormal heart size"
+      },
+      {
+        "id": "MP:0031094",
+        "name": "organomegaly"
+      },
+      {
+        "id": "MP:0000266",
+        "name": "abnormal heart morphology"
+      },
+      {
+        "id": "MP:0002127",
+        "name": "abnormal cardiovascular system morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "0ae051b270eaba7611c2170d5699d97f",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "CCP_001",
+    "procedureStableId": "IMPC_PAT_002",
+    "procedureName": "Gross Pathology and Tissue Collection",
+    "parameterStableId": "IMPC_PAT_006_002",
+    "parameterName": "Heart",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "CCP-IMG",
+    "sex": "male",
+    "projectName": "CCP-IMG",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000266",
+      "name": "abnormal heart morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002127",
+        "name": "abnormal cardiovascular system morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "9c6839e53d77a040a29935e0bec1c2e2",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_064_001",
+    "parameterName": "Homozygous females viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "65770730dbd7ea2deae93781e5088ebe",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_009_001",
+    "procedureName": "Grip Strength",
+    "parameterStableId": "M-G-P_009_001_003",
+    "parameterName": "Body weight",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 4.40186116350873E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001262",
+      "name": "decreased body weight"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003956",
+        "name": "abnormal body size"
+      },
+      {
+        "id": "MP:0012321",
+        "name": "abnormal total tissue mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      },
+      {
+        "id": "MP:0001265",
+        "name": "decreased body size"
+      },
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0001259",
+        "name": "abnormal body weight"
+      },
+      {
+        "id": "MP:0012322",
+        "name": "decreased total tissue mass"
+      }
+    ]
+  },
+  {
+    "datasetId": "13d6faeeb14472fea25e7ae94ca5a451",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "BCM_OFD_001",
+    "procedureName": "Open Field - centre start",
+    "parameterStableId": "IMPC_OFD_021_001",
+    "parameterName": "Number of rears - total",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "not_considered",
+    "projectName": "BaSH",
+    "pValue": 5.43794865142111E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.37736503763546,
+    "phenotype": {
+      "id": "MP:0002757",
+      "name": "decreased vertical activity"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0020167",
+        "name": "abnormal vertical activity"
+      },
+      {
+        "id": "MP:0001392",
+        "name": "abnormal locomotor behavior"
+      },
+      {
+        "id": "MP:0003491",
+        "name": "abnormal voluntary movement"
+      },
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      },
+      {
+        "id": "MP:0031392",
+        "name": "hypoactivity"
+      }
+    ]
+  },
+  {
+    "datasetId": "67043ce2ffd1166ad02612bf55a5c63e",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_008_001",
+    "parameterName": "Lean/Body weight",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 9.83195076526494E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.32301619498023,
+    "phenotype": {
+      "id": "MP:0003960",
+      "name": "increased lean body mass"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0003959",
+        "name": "abnormal lean body mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      }
+    ]
+  },
+  {
+    "datasetId": "8b6a95e247700a808f592b43a6cfdfcf",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_005_001",
+    "procedureName": "Dexa-scan analysis",
+    "parameterStableId": "M-G-P_005_001_001",
+    "parameterName": "Weight",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 1.64795021095271E-13,
+    "lifeStageName": "Early adult",
+    "effectSize": -4.01896977446764,
+    "phenotype": {
+      "id": "MP:0001262",
+      "name": "decreased body weight"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003956",
+        "name": "abnormal body size"
+      },
+      {
+        "id": "MP:0012321",
+        "name": "abnormal total tissue mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      },
+      {
+        "id": "MP:0001265",
+        "name": "decreased body size"
+      },
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0001259",
+        "name": "abnormal body weight"
+      },
+      {
+        "id": "MP:0012322",
+        "name": "decreased total tissue mass"
+      }
+    ]
+  },
+  {
+    "datasetId": "3b5479a94c3d288c0b6ac36cea3150a2",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "JAX_001",
+    "procedureStableId": "JAX_PLC_001",
+    "procedureName": "Plasma Chemistry",
+    "parameterStableId": "JAX_PLC_005_001",
+    "parameterName": "Free fatty acids",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "JAX",
+    "sex": "male",
+    "projectName": "JAX",
+    "pValue": 1.09918761650301E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.02634389863817,
+    "phenotype": {
+      "id": "MP:0002702",
+      "name": "decreased circulating free fatty acids level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0001553",
+        "name": "abnormal circulating free fatty acids level"
+      },
+      {
+        "id": "MP:0001547",
+        "name": "abnormal lipid level"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0002118",
+        "name": "abnormal lipid homeostasis"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0005282",
+        "name": "decreased fatty acids level"
+      },
+      {
+        "id": "MP:0003949",
+        "name": "abnormal circulating lipid level"
+      },
+      {
+        "id": "MP:0010358",
+        "name": "abnormal free fatty acids level"
+      },
+      {
+        "id": "MP:0005280",
+        "name": "abnormal fatty acids level"
+      }
+    ]
+  },
+  {
+    "datasetId": "85532b920acd195e5e3fe9ccc530a744",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEL_003",
+    "procedureName": "Gross Morphology Embryo E9.5",
+    "parameterStableId": "IMPC_GEL_014_001",
+    "parameterName": "Allantois Morphology",
+    "alleleAccessionId": "MGI:6158479",
+    "alleleName": "endonuclease-mediated mutation 2, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Dbn1<em2(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E9.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001726",
+      "name": "abnormal allantois morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005380",
+        "name": "embryo phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002086",
+        "name": "abnormal extraembryonic tissue morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "ba0f96f4214b686cb795a355bb1ec98d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_007_001",
+    "parameterName": "BMC/Body weight",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 9.65084659669968E-7,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.26117986874917,
+    "phenotype": {
+      "id": "MP:0010123",
+      "name": "increased bone mineral content"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003795",
+        "name": "abnormal bone structure"
+      },
+      {
+        "id": "MP:0010122",
+        "name": "abnormal bone mineral content"
+      },
+      {
+        "id": "MP:0005508",
+        "name": "abnormal skeleton morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "e549a155479d2c97626d2249308fd307",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEO_003",
+    "procedureName": "Gross Morphology Embryo E14.5-E15.5",
+    "parameterStableId": "IMPC_GEO_067_001",
+    "parameterName": "Syndactyly",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E15.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000564",
+      "name": "syndactyly"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005371",
+        "name": "limbs/digits/tail phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002110",
+        "name": "abnormal digit morphology"
+      },
+      {
+        "id": "MP:0000572",
+        "name": "abnormal autopod morphology"
+      },
+      {
+        "id": "MP:0002109",
+        "name": "abnormal limb morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "2ec3d234910191ca4470a7cca3b323f5",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_005_001",
+    "parameterName": "Bone Mineral Content (excluding skull)",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 3.3383026244201E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0010123",
+      "name": "increased bone mineral content"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003795",
+        "name": "abnormal bone structure"
+      },
+      {
+        "id": "MP:0010122",
+        "name": "abnormal bone mineral content"
+      },
+      {
+        "id": "MP:0005508",
+        "name": "abnormal skeleton morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "6d81e15ffcd784a5fc09301d3479172d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEL_003",
+    "procedureName": "Gross Morphology Embryo E9.5",
+    "parameterStableId": "IMPC_GEL_011_001",
+    "parameterName": "Embryo turning",
+    "alleleAccessionId": "MGI:6158479",
+    "alleleName": "endonuclease-mediated mutation 2, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Dbn1<em2(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E9.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001700",
+      "name": "abnormal embryo turning"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005380",
+        "name": "embryo phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002084",
+        "name": "abnormal developmental patterning"
+      },
+      {
+        "id": "MP:0001672",
+        "name": "abnormal embryo development"
+      },
+      {
+        "id": "MP:0001695",
+        "name": "abnormal gastrulation"
+      }
+    ]
+  },
+  {
+    "datasetId": "0ae051b270eaba7611c2170d5699d97f",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "CCP_001",
+    "procedureStableId": "IMPC_PAT_002",
+    "procedureName": "Gross Pathology and Tissue Collection",
+    "parameterStableId": "IMPC_PAT_006_002",
+    "parameterName": "Heart",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "CCP-IMG",
+    "sex": "male",
+    "projectName": "CCP-IMG",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000274",
+      "name": "enlarged heart"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005385",
+        "name": "cardiovascular system phenotype"
+      },
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0005406",
+        "name": "abnormal heart size"
+      },
+      {
+        "id": "MP:0031094",
+        "name": "organomegaly"
+      },
+      {
+        "id": "MP:0000266",
+        "name": "abnormal heart morphology"
+      },
+      {
+        "id": "MP:0002127",
+        "name": "abnormal cardiovascular system morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "c521f198d329263dfb3f77aed60639cf",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_005_001",
+    "procedureName": "Dexa-scan analysis",
+    "parameterStableId": "M-G-P_005_001_002",
+    "parameterName": "Fat Mass",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 1.10715180970391E-17,
+    "lifeStageName": "Early adult",
+    "effectSize": -5.50513065800742,
+    "phenotype": {
+      "id": "MP:0010025",
+      "name": "decreased total body fat amount"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005375",
+        "name": "adipose tissue phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000003",
+        "name": "abnormal adipose tissue morphology"
+      },
+      {
+        "id": "MP:0005452",
+        "name": "abnormal adipose tissue amount"
+      }
+    ]
+  },
+  {
+    "datasetId": "67c3666fe2ba4a9bc70e8decc2e55b33",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "ICS_001",
+    "procedureStableId": "IMPC_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_068_001",
+    "parameterName": "Left total retinal thickness",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "ICS",
+    "sex": "male",
+    "projectName": "Phenomin",
+    "pValue": 2.05681621900304E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.98816883571861,
+    "phenotype": {
+      "id": "MP:0011965",
+      "name": "decreased total retina thickness"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002864",
+        "name": "abnormal ocular fundus morphology"
+      },
+      {
+        "id": "MP:0011963",
+        "name": "abnormal total retina thickness"
+      },
+      {
+        "id": "MP:0002092",
+        "name": "abnormal eye morphology"
+      },
+      {
+        "id": "MP:0001325",
+        "name": "abnormal retina morphology"
+      },
+      {
+        "id": "MP:0005195",
+        "name": "abnormal posterior eye segment morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "3027e212be4a29e56306eb12adce0146",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "ICS_001",
+    "procedureStableId": "IMPC_GRS_001",
+    "procedureName": "Grip Strength",
+    "parameterStableId": "IMPC_GRS_009_001",
+    "parameterName": "Forelimb and hindlimb grip strength measurement mean",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "ICS",
+    "sex": "male",
+    "projectName": "Phenomin",
+    "pValue": 7.72050757843054E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -0.259722724515705,
+    "phenotype": {
+      "id": "MP:0010053",
+      "name": "decreased grip strength"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0001515",
+        "name": "abnormal grip strength"
+      },
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      },
+      {
+        "id": "MP:0004262",
+        "name": "abnormal physical strength"
+      }
+    ]
+  },
+  {
+    "datasetId": "807448ca6632b007c5691c87cf8d6d95",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_009_001",
+    "parameterName": "Fat/Body weight",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 8.32202288062788E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.6169992445164,
+    "phenotype": {
+      "id": "MP:0010025",
+      "name": "decreased total body fat amount"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005375",
+        "name": "adipose tissue phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000003",
+        "name": "abnormal adipose tissue morphology"
+      },
+      {
+        "id": "MP:0005452",
+        "name": "abnormal adipose tissue amount"
+      }
+    ]
+  },
+  {
+    "datasetId": "689395849ca6250d1abf0dc8b1a8e829",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "JAX_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_003_001",
+    "parameterName": "Lean mass",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "JAX",
+    "sex": "male",
+    "projectName": "JAX",
+    "pValue": 3.59224273824624E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0003960",
+      "name": "increased lean body mass"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0003959",
+        "name": "abnormal lean body mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      }
+    ]
+  },
+  {
+    "datasetId": "8b6a95e247700a808f592b43a6cfdfcf",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_005_001",
+    "procedureName": "Dexa-scan analysis",
+    "parameterStableId": "M-G-P_005_001_001",
+    "parameterName": "Weight",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "female",
+    "projectName": "MGP",
+    "pValue": 1.58218813240424E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.26897436874991,
+    "phenotype": {
+      "id": "MP:0001262",
+      "name": "decreased body weight"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003956",
+        "name": "abnormal body size"
+      },
+      {
+        "id": "MP:0012321",
+        "name": "abnormal total tissue mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      },
+      {
+        "id": "MP:0001265",
+        "name": "decreased body size"
+      },
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0001259",
+        "name": "abnormal body weight"
+      },
+      {
+        "id": "MP:0012322",
+        "name": "decreased total tissue mass"
+      }
+    ]
+  },
+  {
+    "datasetId": "5474acdb2dfa78a1a077e77c6bac07ab",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "CCP_001",
+    "procedureStableId": "IMPC_IPG_001",
+    "procedureName": "Intraperitoneal glucose tolerance test (IPGTT)",
+    "parameterStableId": "IMPC_IPG_010_001",
+    "parameterName": "Fasted blood glucose concentration",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "CCP-IMG",
+    "sex": "male",
+    "projectName": "CCP-IMG",
+    "pValue": 7.68601385016974E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.937074307698396,
+    "phenotype": {
+      "id": "MP:0013279",
+      "name": "increased fasting circulating glucose level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0013277",
+        "name": "abnormal fasting circulating glucose level"
+      },
+      {
+        "id": "MP:0002078",
+        "name": "abnormal glucose homeostasis"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0005559",
+        "name": "increased circulating glucose level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0000188",
+        "name": "abnormal circulating glucose level"
+      }
+    ]
+  },
+  {
+    "datasetId": "c1c62a25980d0a62f8e7d2a9f0044145",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "BCM_OFD_001",
+    "procedureName": "Open Field - centre start",
+    "parameterStableId": "IMPC_OFD_014_001",
+    "parameterName": "Center distance travelled",
+    "alleleAccessionId": "MGI:6257430",
+    "alleleName": "endonuclease-mediated mutation 1, Baylor College of Medicine",
+    "alleleSymbol": "Dbn1<em1(IMPC)Bay>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 3.51847731688129E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.67900906138953,
+    "phenotype": {
+      "id": "MP:0001399",
+      "name": "hyperactivity"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0003491",
+        "name": "abnormal voluntary movement"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "4fe1052ab89bac8829f18a8522fd8e52",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "JAX_001",
+    "procedureStableId": "IMPC_CBC_003",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_007_001",
+    "parameterName": "Albumin",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "JAX",
+    "sex": "male",
+    "projectName": "JAX",
+    "pValue": 8.09585860636545E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.31707918450444,
+    "phenotype": {
+      "id": "MP:0005419",
+      "name": "decreased circulating serum albumin level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0005416",
+        "name": "abnormal circulating protein level"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0008469",
+        "name": "abnormal protein level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0000199",
+        "name": "abnormal circulating serum albumin level"
+      }
+    ]
+  },
+  {
+    "datasetId": "ee41f7188061a940e7e6acdfb8a363b2",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_063_001",
+    "parameterName": "Homozygous males viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "1613bbd606be0df191c9d896cd61e0ad",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_016_001",
+    "procedureName": "Haematology test",
+    "parameterStableId": "M-G-P_016_001_001",
+    "parameterName": "White blood cell-count",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 1.22893661358043E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0000218",
+      "name": "increased leukocyte cell number"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005387",
+        "name": "immune system phenotype"
+      },
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0008246",
+        "name": "abnormal leukocyte morphology"
+      },
+      {
+        "id": "MP:0000217",
+        "name": "abnormal leukocyte cell number"
+      },
+      {
+        "id": "MP:0000716",
+        "name": "abnormal immune system cell morphology"
+      },
+      {
+        "id": "MP:0011180",
+        "name": "abnormal hematopoietic cell number"
+      },
+      {
+        "id": "MP:0002396",
+        "name": "abnormal hematopoietic system morphology/development"
+      },
+      {
+        "id": "MP:0011181",
+        "name": "increased hematopoietic cell number"
+      },
+      {
+        "id": "MP:0000685",
+        "name": "abnormal immune system morphology"
+      },
+      {
+        "id": "MP:0013656",
+        "name": "abnormal hematopoietic cell morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "f743b9d6f764f5b9306cf5eb4c5c74cb",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "parameterStableId": "IMPC_ACS_034_001",
+    "parameterName": "% Pre-pulse inhibition - PPI2",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "not_considered",
+    "projectName": "DTCC",
+    "pValue": 1.07015868119939E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.22106654269217,
+    "phenotype": {
+      "id": "MP:0009141",
+      "name": "increased prepulse inhibition"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0003631",
+        "name": "nervous system phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003633",
+        "name": "abnormal nervous system physiology"
+      },
+      {
+        "id": "MP:0021009",
+        "name": "abnormal synaptic physiology"
+      },
+      {
+        "id": "MP:0002206",
+        "name": "abnormal CNS synaptic transmission"
+      },
+      {
+        "id": "MP:0003635",
+        "name": "abnormal synaptic transmission"
+      },
+      {
+        "id": "MP:0003088",
+        "name": "abnormal prepulse inhibition"
+      }
+    ]
+  },
+  {
+    "datasetId": "269a3e53f710c3a60a002bdbd029404f",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_012_001",
+    "procedureName": "Hot Plate",
+    "parameterStableId": "M-G-P_012_001_005",
+    "parameterName": "Body Weight",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 9.83281266253559E-11,
+    "lifeStageName": "Early adult",
+    "effectSize": -3.70444991102135,
+    "phenotype": {
+      "id": "MP:0001262",
+      "name": "decreased body weight"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003956",
+        "name": "abnormal body size"
+      },
+      {
+        "id": "MP:0012321",
+        "name": "abnormal total tissue mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      },
+      {
+        "id": "MP:0001265",
+        "name": "decreased body size"
+      },
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0001259",
+        "name": "abnormal body weight"
+      },
+      {
+        "id": "MP:0012322",
+        "name": "decreased total tissue mass"
+      }
+    ]
+  },
+  {
+    "datasetId": "95e1d934e20fd67dccbddc00a8f9d1e3",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEO_003",
+    "procedureName": "Gross Morphology Embryo E14.5-E15.5",
+    "parameterStableId": "IMPC_GEO_066_001",
+    "parameterName": "Microcephaly",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E15.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000433",
+      "name": "microcephaly"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000432",
+        "name": "abnormal head morphology"
+      },
+      {
+        "id": "MP:0011496",
+        "name": "abnormal head size"
+      }
+    ]
+  },
+  {
+    "datasetId": "3502f808913eef844d5fe202cc086d61",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_CBC_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_054_001",
+    "parameterName": "Magnesium",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 4.9729895857796E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.93813993287956,
+    "phenotype": {
+      "id": "MP:0010092",
+      "name": "increased circulating magnesium level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0005636",
+        "name": "abnormal mineral homeostasis"
+      },
+      {
+        "id": "MP:0011979",
+        "name": "abnormal magnesium ion homeostasis"
+      },
+      {
+        "id": "MP:0000192",
+        "name": "abnormal mineral level"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0020883",
+        "name": "abnormal magnesium level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0001765",
+        "name": "abnormal ion homeostasis"
+      },
+      {
+        "id": "MP:0001771",
+        "name": "abnormal circulating magnesium level"
+      },
+      {
+        "id": "MP:0006357",
+        "name": "abnormal circulating mineral level"
+      }
+    ]
+  },
+  {
+    "datasetId": "e549a155479d2c97626d2249308fd307",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEO_003",
+    "procedureName": "Gross Morphology Embryo E14.5-E15.5",
+    "parameterStableId": "IMPC_GEO_067_001",
+    "parameterName": "Syndactyly",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E15.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000564",
+      "name": "syndactyly"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005371",
+        "name": "limbs/digits/tail phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002110",
+        "name": "abnormal digit morphology"
+      },
+      {
+        "id": "MP:0000572",
+        "name": "abnormal autopod morphology"
+      },
+      {
+        "id": "MP:0002109",
+        "name": "abnormal limb morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "850a1ede965ff552f24152445281452a",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "ICS_001",
+    "procedureStableId": "IMPC_EYE_003",
+    "procedureName": "Eye Morphology",
+    "parameterStableId": "IMPC_EYE_062_001",
+    "parameterName": "Right total retinal thickness",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "ICS",
+    "sex": "not_considered",
+    "projectName": "Phenomin",
+    "pValue": 8.34062806716052E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.53790110363614,
+    "phenotype": {
+      "id": "MP:0011965",
+      "name": "decreased total retina thickness"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005391",
+        "name": "vision/eye phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002864",
+        "name": "abnormal ocular fundus morphology"
+      },
+      {
+        "id": "MP:0011963",
+        "name": "abnormal total retina thickness"
+      },
+      {
+        "id": "MP:0002092",
+        "name": "abnormal eye morphology"
+      },
+      {
+        "id": "MP:0001325",
+        "name": "abnormal retina morphology"
+      },
+      {
+        "id": "MP:0005195",
+        "name": "abnormal posterior eye segment morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "c521f198d329263dfb3f77aed60639cf",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_005_001",
+    "procedureName": "Dexa-scan analysis",
+    "parameterStableId": "M-G-P_005_001_002",
+    "parameterName": "Fat Mass",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "female",
+    "projectName": "MGP",
+    "pValue": 3.91160692173952E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": -2.20684568967627,
+    "phenotype": {
+      "id": "MP:0010025",
+      "name": "decreased total body fat amount"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005375",
+        "name": "adipose tissue phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000003",
+        "name": "abnormal adipose tissue morphology"
+      },
+      {
+        "id": "MP:0005452",
+        "name": "abnormal adipose tissue amount"
+      }
+    ]
+  },
+  {
+    "datasetId": "e00c75792f57fb1bf4df83ef69208097",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "BCM_OFD_001",
+    "procedureName": "Open Field - centre start",
+    "parameterStableId": "IMPC_OFD_009_001",
+    "parameterName": "Whole arena average speed",
+    "alleleAccessionId": "MGI:6257430",
+    "alleleName": "endonuclease-mediated mutation 1, Baylor College of Medicine",
+    "alleleSymbol": "Dbn1<em1(IMPC)Bay>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 5.38559947525711E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.84812413997212,
+    "phenotype": {
+      "id": "MP:0001399",
+      "name": "hyperactivity"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0003491",
+        "name": "abnormal voluntary movement"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "1fa0e3f3784f3e7ce81953c8decee271",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "CCP_001",
+    "procedureStableId": "IMPC_GEP_003",
+    "procedureName": "Gross Morphology Embryo E18.5",
+    "parameterStableId": "IMPC_GEP_004_002",
+    "parameterName": "Spontaneous movement",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "CCP-IMG",
+    "sex": "no data",
+    "projectName": "CCP-IMG",
+    "pValue": 0.0,
+    "lifeStageName": "E18.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001404",
+      "name": "no spontaneous movement"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "aeaa1920e3f32ef4ff4390e93e376a5c",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "HMGU_001",
+    "procedureStableId": "IMPC_HEM_002",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_027_001",
+    "parameterName": "Red blood cell distribution width",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "HMGU",
+    "sex": "male",
+    "projectName": "Helmholtz GMC",
+    "pValue": 6.22511923907559E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.47508518017202,
+    "phenotype": {
+      "id": "MP:0010067",
+      "name": "increased red blood cell distribution width"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0013658",
+        "name": "abnormal myeloid cell morphology"
+      },
+      {
+        "id": "MP:0013657",
+        "name": "abnormal blood cell morphology"
+      },
+      {
+        "id": "MP:0002396",
+        "name": "abnormal hematopoietic system morphology/development"
+      },
+      {
+        "id": "MP:0010066",
+        "name": "abnormal red blood cell distribution width"
+      },
+      {
+        "id": "MP:0002447",
+        "name": "abnormal erythrocyte morphology"
+      },
+      {
+        "id": "MP:0013659",
+        "name": "abnormal erythroid lineage cell morphology"
+      },
+      {
+        "id": "MP:0013656",
+        "name": "abnormal hematopoietic cell morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "464bc444bf08d236a93f309fe59ab8f9",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_009_001",
+    "parameterName": "Fat/Body weight",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 2.30804998491291E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.40497875386973,
+    "phenotype": {
+      "id": "MP:0010025",
+      "name": "decreased total body fat amount"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005375",
+        "name": "adipose tissue phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000003",
+        "name": "abnormal adipose tissue morphology"
+      },
+      {
+        "id": "MP:0005452",
+        "name": "abnormal adipose tissue amount"
+      }
+    ]
+  },
+  {
+    "datasetId": "c83e2f420d66c1a41af9b1c33db639ac",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_CBC_003",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_007_001",
+    "parameterName": "Albumin",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 4.49784162317085E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -0.910203874133251,
+    "phenotype": {
+      "id": "MP:0005419",
+      "name": "decreased circulating serum albumin level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0005416",
+        "name": "abnormal circulating protein level"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0008469",
+        "name": "abnormal protein level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0000199",
+        "name": "abnormal circulating serum albumin level"
+      }
+    ]
+  },
+  {
+    "datasetId": "7f817635a998129162e6cb9bc25d4990",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "not_considered",
+    "projectName": "MGP",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "df3931c9740395054c3b84019503ab8e",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_CBC_003",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_015_001",
+    "parameterName": "Total cholesterol",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 3.53355368988962E-9,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.58039168167264,
+    "phenotype": {
+      "id": "MP:0005179",
+      "name": "decreased circulating cholesterol level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003983",
+        "name": "decreased cholesterol level"
+      },
+      {
+        "id": "MP:0001547",
+        "name": "abnormal lipid level"
+      },
+      {
+        "id": "MP:0003947",
+        "name": "abnormal cholesterol level"
+      },
+      {
+        "id": "MP:0012225",
+        "name": "decreased sterol level"
+      },
+      {
+        "id": "MP:0005278",
+        "name": "abnormal cholesterol homeostasis"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0002118",
+        "name": "abnormal lipid homeostasis"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0003949",
+        "name": "abnormal circulating lipid level"
+      },
+      {
+        "id": "MP:0012224",
+        "name": "abnormal sterol level"
+      },
+      {
+        "id": "MP:0000180",
+        "name": "abnormal circulating cholesterol level"
+      }
+    ]
+  },
+  {
+    "datasetId": "33dd2bde4171acecc71923833e00d658",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEO_003",
+    "procedureName": "Gross Morphology Embryo E14.5-E15.5",
+    "parameterStableId": "IMPC_GEO_067_001",
+    "parameterName": "Syndactyly",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E15.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000564",
+      "name": "syndactyly"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005371",
+        "name": "limbs/digits/tail phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002110",
+        "name": "abnormal digit morphology"
+      },
+      {
+        "id": "MP:0000572",
+        "name": "abnormal autopod morphology"
+      },
+      {
+        "id": "MP:0002109",
+        "name": "abnormal limb morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "cf4ed7dfc75265c394f83ffa6d949551",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "CCP_001",
+    "procedureStableId": "IMPC_PAT_002",
+    "procedureName": "Gross Pathology and Tissue Collection",
+    "parameterStableId": "IMPC_PAT_010_002",
+    "parameterName": "Liver",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "CCP-IMG",
+    "sex": "male",
+    "projectName": "CCP-IMG",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000598",
+      "name": "abnormal liver morphology"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005370",
+        "name": "liver/biliary system phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002138",
+        "name": "abnormal hepatobiliary system morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "650c76763025ed8f220a9c2234b8848c",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "BCM_OFD_001",
+    "procedureName": "Open Field - centre start",
+    "parameterStableId": "IMPC_OFD_020_001",
+    "parameterName": "Distance travelled - total",
+    "alleleAccessionId": "MGI:6257430",
+    "alleleName": "endonuclease-mediated mutation 1, Baylor College of Medicine",
+    "alleleSymbol": "Dbn1<em1(IMPC)Bay>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 6.80986092309353E-10,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.1643116676016,
+    "phenotype": {
+      "id": "MP:0001399",
+      "name": "hyperactivity"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0003491",
+        "name": "abnormal voluntary movement"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "0599f45e2e2bed5c79a1f4b1501b552d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_067_001",
+    "parameterName": "Homozygous animals viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "not_considered",
+    "projectName": "BaSH",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "2dec80632159616bf23fe9b8502034d9",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_067_001",
+    "parameterName": "Homozygous animals viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "not_considered",
+    "projectName": "DTCC",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "89e81676c0bd477c2df2d88c9081b04d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_020_001",
+    "procedureName": "Heart Dissection",
+    "parameterStableId": "M-G-P_020_001_001",
+    "parameterName": "Body Weight",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "female",
+    "projectName": "MGP",
+    "pValue": 3.10502941346854E-6,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001262",
+      "name": "decreased body weight"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003956",
+        "name": "abnormal body size"
+      },
+      {
+        "id": "MP:0012321",
+        "name": "abnormal total tissue mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      },
+      {
+        "id": "MP:0001265",
+        "name": "decreased body size"
+      },
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0001259",
+        "name": "abnormal body weight"
+      },
+      {
+        "id": "MP:0012322",
+        "name": "decreased total tissue mass"
+      }
+    ]
+  },
+  {
+    "datasetId": "1fb9520258d6d7e4bc148939f7a3774d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_005_001",
+    "parameterName": "Bone Mineral Content (excluding skull)",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 1.44968311086091E-7,
+    "lifeStageName": "Early adult",
+    "effectSize": 0.867958505198578,
+    "phenotype": {
+      "id": "MP:0010123",
+      "name": "increased bone mineral content"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005390",
+        "name": "skeleton phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003795",
+        "name": "abnormal bone structure"
+      },
+      {
+        "id": "MP:0010122",
+        "name": "abnormal bone mineral content"
+      },
+      {
+        "id": "MP:0005508",
+        "name": "abnormal skeleton morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "cd2ee08d46b62784dbe98680dd1eb367",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_GEP_003",
+    "procedureName": "Gross Morphology Embryo E18.5",
+    "parameterStableId": "IMPC_GEP_005_002",
+    "parameterName": "Responsive to tactile stimuli",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 0.0,
+    "lifeStageName": "E18.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001491",
+      "name": "unresponsive to tactile stimuli"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002067",
+        "name": "abnormal sensory capabilities/reflexes/nociception"
+      },
+      {
+        "id": "MP:0012079",
+        "name": "abnormal spinal reflex"
+      },
+      {
+        "id": "MP:0001968",
+        "name": "abnormal touch/ nociception"
+      },
+      {
+        "id": "MP:0001961",
+        "name": "abnormal reflex"
+      },
+      {
+        "id": "MP:0003492",
+        "name": "abnormal involuntary movement"
+      },
+      {
+        "id": "MP:0005316",
+        "name": "abnormal response to tactile stimuli"
+      },
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "89e81676c0bd477c2df2d88c9081b04d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_020_001",
+    "procedureName": "Heart Dissection",
+    "parameterStableId": "M-G-P_020_001_001",
+    "parameterName": "Body Weight",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 5.70586924425043E-14,
+    "lifeStageName": "Early adult",
+    "effectSize": null,
+    "phenotype": {
+      "id": "MP:0001262",
+      "name": "decreased body weight"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0003956",
+        "name": "abnormal body size"
+      },
+      {
+        "id": "MP:0012321",
+        "name": "abnormal total tissue mass"
+      },
+      {
+        "id": "MP:0005451",
+        "name": "abnormal body composition"
+      },
+      {
+        "id": "MP:0001265",
+        "name": "decreased body size"
+      },
+      {
+        "id": "MP:0002089",
+        "name": "abnormal postnatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0001259",
+        "name": "abnormal body weight"
+      },
+      {
+        "id": "MP:0012322",
+        "name": "decreased total tissue mass"
+      }
+    ]
+  },
+  {
+    "datasetId": "1248349cd02a3f989e352ff67a65de31",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_064_001",
+    "parameterName": "Homozygous females viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "464bc444bf08d236a93f309fe59ab8f9",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "parameterStableId": "IMPC_DXA_009_001",
+    "parameterName": "Fat/Body weight",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 9.43731966402784E-12,
+    "lifeStageName": "Early adult",
+    "effectSize": -1.28460534691461,
+    "phenotype": {
+      "id": "MP:0010025",
+      "name": "decreased total body fat amount"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005375",
+        "name": "adipose tissue phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0000003",
+        "name": "abnormal adipose tissue morphology"
+      },
+      {
+        "id": "MP:0005452",
+        "name": "abnormal adipose tissue amount"
+      }
+    ]
+  },
+  {
+    "datasetId": "3a04fa48d27bfd667eaa7b9d6d7e8889",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "M-G-P_001",
+    "procedureStableId": "M-G-P_025_001",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "M-G-P_025_001_028",
+    "parameterName": "Fructosamine",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 2.87390337146659E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": -4.74608745693996,
+    "phenotype": {
+      "id": "MP:0010088",
+      "name": "decreased circulating fructosamine level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010086",
+        "name": "abnormal circulating fructosamine level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      }
+    ]
+  },
+  {
+    "datasetId": "cd2ee08d46b62784dbe98680dd1eb367",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_GEP_003",
+    "procedureName": "Gross Morphology Embryo E18.5",
+    "parameterStableId": "IMPC_GEP_005_002",
+    "parameterName": "Responsive to tactile stimuli",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 0.0,
+    "lifeStageName": "E18.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001491",
+      "name": "unresponsive to tactile stimuli"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002067",
+        "name": "abnormal sensory capabilities/reflexes/nociception"
+      },
+      {
+        "id": "MP:0012079",
+        "name": "abnormal spinal reflex"
+      },
+      {
+        "id": "MP:0001968",
+        "name": "abnormal touch/ nociception"
+      },
+      {
+        "id": "MP:0001961",
+        "name": "abnormal reflex"
+      },
+      {
+        "id": "MP:0003492",
+        "name": "abnormal involuntary movement"
+      },
+      {
+        "id": "MP:0005316",
+        "name": "abnormal response to tactile stimuli"
+      },
+      {
+        "id": "MP:0004924",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "abnormal motor capabilities/coordination/movement"
+      }
+    ]
+  },
+  {
+    "datasetId": "c0a40e56be5522b4b55ce9726efed16e",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "IMPC_001",
+    "procedureStableId": "IMPC_VIA_001",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_001_001",
+    "parameterName": "Viability Outcome",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "RBRC",
+    "sex": "not_considered",
+    "projectName": "RBRC",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011100",
+      "name": "preweaning lethality, complete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "051f167afe4197b25fbfb12bd50680eb",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEL_003",
+    "procedureName": "Gross Morphology Embryo E9.5",
+    "parameterStableId": "IMPC_GEL_019_001",
+    "parameterName": "Chorioallantoic fusion",
+    "alleleAccessionId": "MGI:6158479",
+    "alleleName": "endonuclease-mediated mutation 2, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Dbn1<em2(IMPC)Mbp>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E9.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0002824",
+      "name": "abnormal chorioallantoic fusion"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005380",
+        "name": "embryo phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0004264",
+        "name": "abnormal extraembryonic tissue physiology"
+      },
+      {
+        "id": "MP:0010038",
+        "name": "abnormal placenta physiology"
+      },
+      {
+        "id": "MP:0001712",
+        "name": "abnormal placenta development"
+      }
+    ]
+  },
+  {
+    "datasetId": "33dd2bde4171acecc71923833e00d658",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_GEO_003",
+    "procedureName": "Gross Morphology Embryo E14.5-E15.5",
+    "parameterStableId": "IMPC_GEO_067_001",
+    "parameterName": "Syndactyly",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "E15.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0000564",
+      "name": "syndactyly"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005371",
+        "name": "limbs/digits/tail phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0002110",
+        "name": "abnormal digit morphology"
+      },
+      {
+        "id": "MP:0000572",
+        "name": "abnormal autopod morphology"
+      },
+      {
+        "id": "MP:0002109",
+        "name": "abnormal limb morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "6e1e8ff3000c88c5b70cfd634675edc2",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_064_001",
+    "parameterName": "Homozygous females viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "female",
+    "projectName": "DTCC",
+    "pValue": null,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011110",
+      "name": "preweaning lethality, incomplete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "9e44f74a2cb34057356d2f92d9b29bb3",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_GEP_003",
+    "procedureName": "Gross Morphology Embryo E18.5",
+    "parameterStableId": "IMPC_GEP_022_001",
+    "parameterName": "Embryo Size",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "female",
+    "projectName": "BaSH",
+    "pValue": 0.0,
+    "lifeStageName": "E18.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001697",
+      "name": "abnormal embryo size"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005380",
+        "name": "embryo phenotype"
+      },
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010866",
+        "name": "abnormal prenatal body size"
+      },
+      {
+        "id": "MP:0004196",
+        "name": "abnormal prenatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0014134",
+        "name": "abnormal embryo morphology"
+      },
+      {
+        "id": "MP:0002088",
+        "name": "abnormal embryonic growth/weight/body size"
+      }
+    ]
+  },
+  {
+    "datasetId": "9e44f74a2cb34057356d2f92d9b29bb3",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "BCM_001",
+    "procedureStableId": "IMPC_GEP_003",
+    "procedureName": "Gross Morphology Embryo E18.5",
+    "parameterStableId": "IMPC_GEP_022_001",
+    "parameterName": "Embryo Size",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "BCM",
+    "sex": "male",
+    "projectName": "BaSH",
+    "pValue": 0.0,
+    "lifeStageName": "E18.5",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0001697",
+      "name": "abnormal embryo size"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005380",
+        "name": "embryo phenotype"
+      },
+      {
+        "id": "MP:0005378",
+        "name": "growth/size/body region phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010866",
+        "name": "abnormal prenatal body size"
+      },
+      {
+        "id": "MP:0004196",
+        "name": "abnormal prenatal growth/weight/body size"
+      },
+      {
+        "id": "MP:0014134",
+        "name": "abnormal embryo morphology"
+      },
+      {
+        "id": "MP:0002088",
+        "name": "abnormal embryonic growth/weight/body size"
+      }
+    ]
+  },
+  {
+    "datasetId": "394fb5034f2fee6f292196af7e8a9133",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "MGP_001",
+    "procedureStableId": "IMPC_HEM_001",
+    "procedureName": "Hematology",
+    "parameterStableId": "IMPC_HEM_001_001",
+    "parameterName": "White blood cell count",
+    "alleleAccessionId": "MGI:4363390",
+    "alleleName": "targeted mutation 1a, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "WTSI",
+    "sex": "male",
+    "projectName": "MGP",
+    "pValue": 5.81689104917505E-8,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.79541127831421,
+    "phenotype": {
+      "id": "MP:0000218",
+      "name": "increased leukocyte cell number"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005387",
+        "name": "immune system phenotype"
+      },
+      {
+        "id": "MP:0005397",
+        "name": "hematopoietic system phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0008246",
+        "name": "abnormal leukocyte morphology"
+      },
+      {
+        "id": "MP:0000217",
+        "name": "abnormal leukocyte cell number"
+      },
+      {
+        "id": "MP:0000716",
+        "name": "abnormal immune system cell morphology"
+      },
+      {
+        "id": "MP:0011180",
+        "name": "abnormal hematopoietic cell number"
+      },
+      {
+        "id": "MP:0002396",
+        "name": "abnormal hematopoietic system morphology/development"
+      },
+      {
+        "id": "MP:0011181",
+        "name": "increased hematopoietic cell number"
+      },
+      {
+        "id": "MP:0000685",
+        "name": "abnormal immune system morphology"
+      },
+      {
+        "id": "MP:0013656",
+        "name": "abnormal hematopoietic cell morphology"
+      }
+    ]
+  },
+  {
+    "datasetId": "c106a86b2da91de37e7ee29e9788bd2d",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "UCD_001",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureName": "Viability Primary Screen",
+    "parameterStableId": "IMPC_VIA_063_001",
+    "parameterName": "Homozygous males viability",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "homozygote",
+    "phenotypingCentre": "UC Davis",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 0.0,
+    "lifeStageName": "Early adult",
+    "effectSize": 1.0,
+    "phenotype": {
+      "id": "MP:0011100",
+      "name": "preweaning lethality, complete penetrance"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0010768",
+        "name": "mortality/aging"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0010769",
+        "name": "abnormal survival"
+      },
+      {
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
+      }
+    ]
+  },
+  {
+    "datasetId": "71304ea469394dd33dfb437912a637b4",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "pipelineStableId": "TCP_001",
+    "procedureStableId": "IMPC_CBC_003",
+    "procedureName": "Clinical Chemistry",
+    "parameterStableId": "IMPC_CBC_010_001",
+    "parameterName": "Phosphorus",
+    "alleleAccessionId": "MGI:5501061",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "zygosity": "heterozygote",
+    "phenotypingCentre": "TCP",
+    "sex": "male",
+    "projectName": "DTCC",
+    "pValue": 3.19562854969239E-5,
+    "lifeStageName": "Early adult",
+    "effectSize": 2.08473354588186,
+    "phenotype": {
+      "id": "MP:0001566",
+      "name": "increased circulating phosphate level"
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005376",
+        "name": "homeostasis/metabolism phenotype"
+      }
+    ],
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0005636",
+        "name": "abnormal mineral homeostasis"
+      },
+      {
+        "id": "MP:0020885",
+        "name": "abnormal phosphate level"
+      },
+      {
+        "id": "MP:0000192",
+        "name": "abnormal mineral level"
+      },
+      {
+        "id": "MP:0009642",
+        "name": "abnormal blood homeostasis"
+      },
+      {
+        "id": "MP:0001565",
+        "name": "abnormal circulating phosphate level"
+      },
+      {
+        "id": "MP:0001764",
+        "name": "abnormal homeostasis"
+      },
+      {
+        "id": "MP:0001765",
+        "name": "abnormal ion homeostasis"
+      },
+      {
+        "id": "MP:0006357",
+        "name": "abnormal circulating mineral level"
+      }
+    ]
+  }
+]

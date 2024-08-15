@@ -1,0 +1,57 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleSymbol": "Dbn1<tm1b(KOMP)Wtsi>",
+    "alleleDescription": "Reporter-tagged deletion allele (with selection cassette)",
+    "productTypes": [
+      "mouse",
+      "tissue"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleSymbol": "Dbn1<tm49236(L1L2_Bact_P)>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "intermediate_vector"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleSymbol": "Dbn1<em1(IMPC)Bay>",
+    "alleleDescription": "Exon Deletion",
+    "productTypes": [
+      "mouse",
+      "crispr"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleSymbol": "Dbn1<tm1a(KOMP)Wtsi>",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "productTypes": [
+      "targeting_vector",
+      "es_cell",
+      "mouse"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleSymbol": "Dbn1<em2(IMPC)Mbp>",
+    "alleleDescription": "Insertion",
+    "productTypes": [
+      "mouse",
+      "crispr",
+      "tissue"
+    ]
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleSymbol": "Dbn1<em1(IMPC)J>",
+    "alleleDescription": "Intra-exon deletion",
+    "productTypes": [
+      "mouse",
+      "crispr"
+    ]
+  }
+]

@@ -315,6 +315,21 @@
         "phenotypeStatus": "Phenotyping data available",
         "phenotypingDataAvailable": "true"
       }
+    },
+    {
+      "entityId": "MGI:1931838",
+      "entityProperties": {
+        "mgiGeneAccessionId": "MGI:1931838",
+        "geneName": "drebrin 1",
+        "geneSymbol": "Dbn1",
+        "synonyms": "drebrin A;drebrin E2",
+        "humanGeneSymbols": "DBN1",
+        "humanSymbolSynonyms": "D0S117E",
+        "esCellProductionStatus": "ES Cells Produced",
+        "mouseProductionStatus": "Mice Produced",
+        "phenotypeStatus": "Phenotyping finished",
+        "phenotypingDataAvailable": "true"
+      }
     }
   ]
 }
