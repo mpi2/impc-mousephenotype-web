@@ -107,9 +107,8 @@ export const handlers = [
   }),
   rest.get(`${API_URL}/api/v1/alleles/:geneId/:alleleName`, (req, res, ctx) => {
     const { geneId, alleleName } = req.params;
-    const genes = require.context(`./data/genes/`, true, /\.json$/);
     try {
-      const geneSectionData = genes(`./${geneId}/alleles/${alleleName}.json`);
+      const geneSectionData = require(`./data/genes/${geneId}/alleles/${alleleName}.json`);
       return res(ctx.status(200), ctx.json(geneSectionData));
     } catch (e) {
       return res(ctx.status(404));
