@@ -1,0 +1,3260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Publications page renders correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=phenotype"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <h1
+        class="mb-4 mt-2"
+      >
+        <strong>
+          IKMC/IMPC related publications
+        </strong>
+      </h1>
+      <ul
+        class="nav nav-tabs"
+        role="tablist"
+      >
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <button
+            aria-controls="react-aria-:r0:-tabpane-all-publications"
+            aria-selected="true"
+            class="nav-link active"
+            data-rr-ui-event-key="all-publications"
+            id="react-aria-:r0:-tab-all-publications"
+            role="tab"
+            type="button"
+          >
+            All publications
+          </button>
+        </li>
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <button
+            aria-controls="react-aria-:r0:-tabpane-publications-stats"
+            aria-selected="false"
+            class="nav-link"
+            data-rr-ui-event-key="publications-stats"
+            id="react-aria-:r0:-tab-publications-stats"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Publications stats
+          </button>
+        </li>
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <button
+            aria-controls="react-aria-:r0:-tabpane-consortium-publications"
+            aria-selected="false"
+            class="nav-link"
+            data-rr-ui-event-key="consortium-publications"
+            id="react-aria-:r0:-tab-consortium-publications"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Consortium publications
+          </button>
+        </li>
+      </ul>
+      <div
+        class="tab-content"
+      >
+        <div
+          aria-labelledby="react-aria-:r0:-tab-all-publications"
+          class="fade tab-pane active show"
+          id="react-aria-:r0:-tabpane-all-publications"
+          role="tabpanel"
+        >
+          <div
+            class="mt-5"
+          >
+            <div
+              class="container"
+            >
+              <div
+                class="row"
+              >
+                <div
+                  class="col-6"
+                >
+                  <p>
+                    Showing 
+                    1
+                     to 
+                    10
+                     of 
+                    7,205
+                     entries
+                  </p>
+                </div>
+              </div>
+              <div
+                class="buttonsWrapper top withControls"
+                data-testid="top-controls-wrapper"
+              >
+                <div
+                  class="additionalWrapper"
+                >
+                  <div>
+                    <div
+                      class="input-group"
+                    >
+                      <span
+                        class="input-group-text"
+                        id="filter-label"
+                      >
+                        Filter
+                      </span>
+                      <input
+                        aria-labelledby="filter-label"
+                        class="form-control"
+                        id="filter"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    Export table: 
+                    <a
+                      class="btn impc-secondary-button small"
+                      href="https://nginx.mousephenotype-dev.org/api/v1/publications/download?contentType=tsv"
+                    >
+                      TSV
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-download "
+                        data-icon="download"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </a>
+                     
+                    <a
+                      class="btn impc-secondary-button small"
+                      href="https://nginx.mousephenotype-dev.org/api/v1/publications/download?contentType=xls"
+                    >
+                      XLS
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-download "
+                        data-icon="download"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+                <ul
+                  class="pagination justify-content-center paginationNav"
+                  data-testid="nav-buttons-top"
+                >
+                  <button
+                    class="pagNavBtn nav-btn"
+                    data-testid="top-prev-page"
+                    disabled=""
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-prev-page-icon"
+                      class="svg-inline--fa fa-arrow-left "
+                      data-icon="arrow-left"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-prev-page-icon"
+                      >
+                        previous page button
+                      </title>
+                      <path
+                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                  <li
+                    class="page-item"
+                    data-testid="top-page-1"
+                  >
+                    <button
+                      class="pagNavBtn active"
+                      data-testid="top-page-1-btn"
+                    >
+                      1
+                    </button>
+                  </li>
+                  <li
+                    class="page-item"
+                    data-testid="top-last-page"
+                  >
+                    <button
+                      aria-label="Previous"
+                      class="pagNavBtn last-page"
+                      data-testid="top-last-page-btn"
+                    >
+                      <span
+                        aria-hidden="true"
+                      >
+                        721
+                      </span>
+                    </button>
+                  </li>
+                  <button
+                    class="pagNavBtn nav-btn"
+                    data-testid="top-next-page"
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-next-page-icon"
+                      class="svg-inline--fa fa-arrow-right "
+                      data-icon="arrow-right"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-next-page-icon"
+                      >
+                        next page button
+                      </title>
+                      <path
+                        d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </ul>
+              </div>
+              <table
+                class="pubTable table"
+              >
+                <tbody>
+                  <tr
+                    id="pub-25343444"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1371/journal.pone.0111239"
+                          target="_blank"
+                        >
+                          Impact of temporal variation on design and analysis of mouse knockout phenotyping studies.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          PloS one
+                        </i>
+                        , (
+                        24-10-2014
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Karp NA, Speak AO, White JK, Adams DJ, Hrabé de Angelis M, Hérault Y, Mott RF.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        A significant challenge facing high-throughput phenotyping of in-vivo knockout mice is ensuring phenotype calls are robust and reliable. Central to this problem is selecting an appropriate statistical analysis that models both the experimental design (the workflow and the way control mice are selected for comparison with knockout animals) and the sources of variation. Recently we proposed a mixed model suitable for small batch-oriented studies, where controls are not phenotyped concurrently with mutants. Here we evaluate this method both for its sensitivity to detect phenotypic effects and to control false positives, across a range of workflows used at mouse phenotyping centers. We found the sensitivity and control of false positives depend on the workflow. We show that the phenotypes in control mice fluctuate unexpectedly between batches and this can cause the false positive rate of phenotype calls to be inflated when only a small number of batches are tested, when the effect of knockout becomes confounded with temporal fluctuations in control mice. This effect was observed in both behavioural and physiological assays. Based on this analysis, we recommend two approaches (workflow and accompanying control strategy) and associated analyses, which would be robust, for use in high-throughput phenotyping pipelines. Our results show the importance in modelling all sources of variability in high-throughput phenotyping studies.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/25343444"
+                          target="_blank"
+                        >
+                          25343444
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        class="alleleList"
+                      >
+                        IMPC allele: 
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:107506"
+                        >
+                          <i>
+                            Wfdc18
+                            <sup>
+                              tm1a(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Wellcome Trust, NHGRI NIH HHS, Medical Research Council, Cancer Research UK
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Chlorides, Reproducibility of Results, Phenotype, Research Design, Time Factors, Computer Simulation
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-27626380"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1038/nature19356"
+                          target="_blank"
+                        >
+                          High-throughput discovery of novel developmental phenotypes.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Nature
+                        </i>
+                        , (
+                        14-09-2016
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Dickinson ME, Flenniken AM, Ji X, Teboul L, Wong MD, White JK, Meehan TF, Weninger WJ, Westerberg H, Adissu H, Baker CN, Bower L, Brown JM, Caddle LB, Chiani F, Clary D, Cleak J, Daly MJ, Denegre JM, Doe B, Dolan ME, Edie SM, Fuchs H, Gailus-Durner V, Galli A, Gambadoro A, Gallegos J, Guo S, Horner NR, Hsu CW, Johnson SJ, Kalaga S, Keith LC, Lanoue L, Lawson TN, Lek M, Mark M, Marschall S, Mason J, McElwee ML, Newbigging S, Nutter LM, Peterson KA, Ramirez-Solis R, Rowland DJ, Ryder E, Samocha KE, Seavitt JR, Selloum M, Szoke-Kovacs Z, Tamura M, Trainor AG, Tudose I, Wakana S, Warren J, Wendling O, West DB, Wong L, Yoshiki A, International Mouse Phenotyping Consortium, Jackson Laboratory, Infrastructure Nationale PHENOMIN, Institut Clinique de la Souris (ICS), Charles River Laboratories, MRC Harwell, Toronto Centre for Phenogenomics, Wellcome Trust Sanger Institute, RIKEN BioResource Center, MacArthur DG, Tocchini-Valentini GP, Gao X, Flicek P, Bradley A, Skarnes WC, Justice MJ, Parkinson HE, Moore M, Wells S, Braun RE, Svenson KL, de Angelis MH, Herault Y, Mohun T, Mallon AM, Henkelman RM, Brown SD, Adams DJ, Lloyd KC, McKerlie C, Beaudet AL, Bućan M, Murray SA.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        Approximately one-third of all mammalian genes are essential for life. Phenotypes resulting from knockouts of these genes in mice have provided tremendous insight into gene function and congenital disorders. As part of the International Mouse Phenotyping Consortium effort to generate and phenotypically characterize 5,000 knockout mouse lines, here we identify 410 lethal genes during the production of the first 1,751 unique gene knockouts. Using a standardized phenotyping platform that incorporates high-resolution 3D imaging, we identify phenotypes at multiple time points for previously uncharacterized genes and additional phenotypes for genes with previously reported mutant phenotypes. Unexpectedly, our analysis reveals that incomplete penetrance and variable expressivity are common even on a defined genetic background. In addition, we show that human disease genes are enriched for essential genes, thus providing a dataset that facilitates the prioritization and validation of mutations identified in clinical sequencing efforts.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/27626380"
+                          target="_blank"
+                        >
+                          27626380
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        class="alleleList"
+                      >
+                        IMPC allele: 
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1915512"
+                        >
+                          <i>
+                            Agpat4
+                            <sup>
+                              tm1b(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:97429"
+                        >
+                          <i>
+                            Oas1g
+                            <sup>
+                              tm3e(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1929657"
+                        >
+                          <i>
+                            Hacl1
+                            <sup>
+                              tm1a(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1929657"
+                        >
+                          <i>
+                            Hacl1
+                            <sup>
+                              tm1b(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1913429"
+                        >
+                          <i>
+                            Ogfod3
+                            <sup>
+                              tm1b(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1889802"
+                        >
+                          <i>
+                            Hibadh
+                            <sup>
+                              tm1b(EUCOMM)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:3780550"
+                        >
+                          <i>
+                            Mthfsl
+                            <sup>
+                              tm1b(EUCOMM)Hmgu
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:96273"
+                        >
+                          <i>
+                            Htr1a
+                            <sup>
+                              tm1.1(KOMP)Vlcg
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <br />
+                        <button
+                          class="btn impc-secondary-button xs-small mb-2 mt-1"
+                        >
+                          <strong>
+                            Show
+                             all alleles
+                          </strong>
+                        </button>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        The Francis Crick Institute, Wellcome Trust, Cancer Research UK, Medical Research Council, NCI NIH HHS, NEI NIH HHS, NIDDK NIH HHS, NIH HHS, NHGRI NIH HHS, Welcome Trust
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Inbred C57BL, Mice, Knockout, Humans, Mice, Disease, Imaging, Three-Dimensional, Conserved Sequence, Sequence Homology, Phenotype, Penetrance, Mutation, Polymorphism, Single Nucleotide, Genes, Essential, Genes, Lethal, Embryo, Mammalian, Genome-Wide Association Study, High-Throughput Screening Assays
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-24642684"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1371/journal.pone.0091807"
+                          target="_blank"
+                        >
+                          Targeting of Slc25a21 is associated with orofacial defects and otitis media due to disrupted expression of a neighbouring gene.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          PloS one
+                        </i>
+                        , (
+                        18-03-2014
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Maguire S, Estabel J, Ingham N, Pearson S, Ryder E, Carragher DM, Walker N, Sanger MGP Slc25a21 Project Team, Bussell J, Chan WI, Keane TM, Adams DJ, Scudamore CL, Lelliott CJ, Ramírez-Solis R, Karp NA, Steel KP, White JK, Gerdin AK.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        Homozygosity for Slc25a21(tm1a(KOMP)Wtsi) results in mice exhibiting orofacial abnormalities, alterations in carpal and rugae structures, hearing impairment and inflammation in the middle ear. In humans it has been hypothesised that the 2-oxoadipate mitochondrial carrier coded by SLC25A21 may be involved in the disease 2-oxoadipate acidaemia. Unexpectedly, no 2-oxoadipate acidaemia-like symptoms were observed in animals homozygous for Slc25a21(tm1a(KOMP)Wtsi) despite confirmation that this allele reduces Slc25a21 expression by 71.3%. To study the complete knockout, an allelic series was generated using the loxP and FRT sites typical of a Knockout Mouse Project allele. After removal of the critical exon and neomycin selection cassette, Slc25a21 knockout mice homozygous for the Slc25a21(tm1b(KOMP)Wtsi) and Slc25a21(tm1d(KOMP)Wtsi) alleles were phenotypically indistinguishable from wild-type. This led us to explore the genomic environment of Slc25a21 and to discover that expression of Pax9, located 3' of the target gene, was reduced in homozygous Slc25a21(tm1a(KOMP)Wtsi) mice. We hypothesize that the presence of the selection cassette is the cause of the down regulation of Pax9 observed. The phenotypes we observed in homozygous Slc25a21(tm1a(KOMP)Wtsi) mice were broadly consistent with a hypomorphic Pax9 allele with the exception of otitis media and hearing impairment which may be a novel consequence of Pax9 down regulation. We explore the ramifications associated with this particular targeted mutation and emphasise the need to interpret phenotypes taking into consideration all potential underlying genetic mechanisms.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/24642684"
+                          target="_blank"
+                        >
+                          24642684
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        class="alleleList"
+                      >
+                        IMPC allele: 
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:2445059"
+                        >
+                          <i>
+                            Slc25a21
+                            <sup>
+                              tm1a(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:2445059"
+                        >
+                          <i>
+                            Slc25a21
+                            <sup>
+                              tm1c(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:2445059"
+                        >
+                          <i>
+                            Slc25a21
+                            <sup>
+                              tm1b(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:2445059"
+                        >
+                          <i>
+                            Slc25a21
+                            <sup>
+                              tm1d(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Wellcome Trust, Medical Research Council
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Humans, Mice, Mouth Abnormalities, Otitis Media, Membrane Transport Proteins, Dicarboxylic Acid Transporters, Mitochondrial Membrane Transport Proteins, Genetic Engineering, Signal Transduction, Gene Expression Regulation, Homozygote, Mutation, Alleles, Exons, Female, Male, Paired Box Transcription Factors
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-22566555"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1242/dmm.009878"
+                          target="_blank"
+                        >
+                          Towards an encyclopaedia of mammalian gene function: the International Mouse Phenotyping Consortium.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Disease models & mechanisms
+                        </i>
+                        , (
+                        01-05-2012
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Brown SD, Moore MW.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      />
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/22566555"
+                          target="_blank"
+                        >
+                          22566555
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Medical Research Council
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Mammals, Mice, Pilot Projects, Phenotype, Alleles, International Cooperation, Encyclopedias as Topic
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-24634472"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1093/database/bau017"
+                          target="_blank"
+                        >
+                          Linking tissues to phenotypes using gene expression profiles.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Database : the journal of biological databases and curation
+                        </i>
+                        , (
+                        13-03-2014
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Oellrich A, Sanger Mouse Genetics Project, Smedley D.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        Despite great biological and computational efforts to determine the genetic causes underlying human heritable diseases, approximately half (3500) of these diseases are still without an identified genetic cause. Model organism studies allow the targeted modification of the genome and can help with the identification of genetic causes for human diseases. Targeted modifications have led to a vast amount of model organism data. However, these data are scattered across different databases, preventing an integrated view and missing out on contextual information. Once we are able to combine all the existing resources, will we be able to fully understand the causes underlying a disease and how species differ. Here, we present an integrated data resource combining tissue expression with phenotypes in mouse lines and bringing us one step closer to consequence chains from a molecular level to a resulting phenotype. Mutations in genes often manifest in phenotypes in the same tissue that the gene is expressed in. However, in other cases, a systems level approach is required to understand how perturbations to gene-networks connecting multiple tissues lead to a phenotype. Automated evaluation of the predicted tissue-phenotype associations reveals that 72-76% of the phenotypes are associated with disruption of genes expressed in the affected tissue. However, 55-64% of the individual phenotype-tissue associations show spatially separated gene expression and phenotype manifestation. For example, we see a correlation between 'total body fat' abnormalities and genes expressed in the 'brain', which fits recent discoveries linking genes expressed in the hypothalamus to obesity. Finally, we demonstrate that the use of our predicted tissue-phenotype associations can improve the detection of a known disease-gene association when combined with a disease gene candidate prediction tool. For example, JAK2, the known gene associated with Familial Erythrocytosis 1, rises from the seventh best candidate to the top hit when the associated tissues are taken into consideration. Database URL: http://www.sanger.ac.uk/resources/databases/phenodigm/phenotype/list.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/24634472"
+                          target="_blank"
+                        >
+                          24634472
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        NHGRI NIH HHS, Wellcome Trust
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Humans, Mice, Gene Expression Profiling, Organ Specificity, Gene Expression Regulation, Phenotype, Genome, Internet, User-Computer Interface, Gene Ontology
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-22926223"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1007/s00335-012-9430-2"
+                          target="_blank"
+                        >
+                          Beyond knockouts: cre resources for conditional mutagenesis.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Mammalian genome : official journal of the International Mammalian Genome Society
+                        </i>
+                        , (
+                        29-08-2012
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Murray SA, Eppig JT, Smedley D, Simpson EM, Rosenthal N.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        With the effort of the International Phenotyping Consortium to produce thousands of strains with conditional potential gathering steam, there is growing recognition that it must be supported by a rich toolbox of cre driver strains. The approaches to build cre strains have evolved in both sophistication and reliability, replacing first-generation strains with tools that can target individual cell populations with incredible precision and specificity. The modest set of cre drivers generated by individual labs over the past 15+ years is now growing rapidly, thanks to a number of large-scale projects to produce new cre strains for the community. The power of this growing resource, however, depends upon the proper deep characterization of strain function, as even the best designed strain can display a variety of undesirable features that must be considered in experimental design. This must be coupled with the parallel development of informatics tools to provide functional data to the user and facilitated access to the strains through public repositories. We discuss the current progress on all of these fronts and the challenges that remain to ensure the scientific community can capitalize on the tremendous number of mouse resources at their disposal.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/22926223"
+                          target="_blank"
+                        >
+                          22926223
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        NIDCR NIH HHS, NICHD NIH HHS, NHGRI NIH HHS, NCRR NIH HHS, NIH HHS
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Mice, Integrases, Genomics, Mutagenesis
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-21185382"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1016/j.ymeth.2010.12.017"
+                          target="_blank"
+                        >
+                          High-throughput mouse phenotyping.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Methods (San Diego, Calif.)
+                        </i>
+                        , (
+                        23-12-2010
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Gates H, Mallon AM, Brown SD, EUMODIC Consortium.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        Comprehensive phenotyping will be required to reveal the pleiotropic functions of a gene and to uncover the wider role of genetic loci within diverse biological systems. The challenge will be to devise phenotyping approaches to characterise the thousands of mutants that are being generated as part of international efforts to acquire a mutant for every gene in the mouse genome. In order to acquire robust datasets of broad based phenotypes from mouse mutants it is necessary to design and implement pipelines that incorporate standardised phenotyping platforms that are validated across diverse mouse genetics centres or mouse clinics. We describe here the rationale and methodology behind one phenotyping pipeline, EMPReSSslim, that was designed as part of the work of the EUMORPHIA and EUMODIC consortia, and which exemplifies some of the challenges facing large-scale phenotyping. EMPReSSslim captures a broad range of data on diverse biological systems, from biochemical to physiological amongst others. Data capture and dissemination is pivotal to the operation of large-scale phenotyping pipelines, including the definition of parameters integral to each phenotyping test and the associated ontological descriptions. EMPReSSslim data is displayed within the EuroPhenome database, where a variety of tools are available to allow the user to search for interesting biological or clinical phenotypes.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/21185382"
+                          target="_blank"
+                        >
+                          21185382
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Medical Research Council
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Bone and Bones, Animals, Mice, Inbred C57BL, Mice, Mice, Mutant Strains, Hemoglobins, Immunoglobulins, Absorptiometry, Photon, Blood Pressure Determination, Glucose Tolerance Test, Organ Size, Hand Strength, Blood Cell Count, Calorimetry, Indirect, Behavior, Animal, Psychomotor Performance, Body Composition, Phenotype, Software, Databases, Genetic, Female, Male, Pain Perception, Reflex, Startle
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-17905814"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1093/nar/gkm728"
+                          target="_blank"
+                        >
+                          EuroPhenome and EMPReSS: online mouse phenotyping resource.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Nucleic acids research
+                        </i>
+                        , (
+                        28-09-2007
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Mallon AM, Blake A, Hancock JM.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        EuroPhenome (http://www.europhenome.org) and EMPReSS (http://empress.har.mrc.ac.uk/) form an integrated resource to provide access to data and procedures for mouse phenotyping. EMPReSS describes 96 Standard Operating Procedures for mouse phenotyping. EuroPhenome contains data resulting from carrying out EMPReSS protocols on four inbred laboratory mouse strains. As well as web interfaces, both resources support web services to enable integration with other mouse phenotyping and functional genetics resources, and are committed to initiatives to improve integration of mouse phenotype databases. EuroPhenome will be the repository for a recently initiated effort to carry out large-scale phenotyping on a large number of knockout mouse lines (EUMODIC).
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/17905814"
+                          target="_blank"
+                        >
+                          17905814
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Medical Research Council
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Inbred Strains, Mice, Phenotype, Systems Integration, Internet, User-Computer Interface, Databases, Factual
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-29352221"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1038/s41598-018-19615-4"
+                          target="_blank"
+                        >
+                          Role of METTL20 in regulating β-oxidation and heat production in mice under fasting or ketogenic conditions.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Scientific reports
+                        </i>
+                        , (
+                        19-01-2018
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Shimazu T, Furuse T, Balan S, Yamada I, Okuno S, Iwanari H, Suzuki T, Hamakubo T, Dohmae N, Yoshikawa T, Wakana S, Shinkai Y.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        METTL20 is a seven-β-strand methyltransferase that is localised to the mitochondria and tri-methylates the electron transfer flavoprotein (ETF) β subunit (ETFB) at lysines 200 and 203. It has been shown that METTL20 decreases the ability of ETF to extract electrons from medium-chain acyl-coenzyme A (CoA) dehydrogenase (MCAD) and glutaryl-CoA dehydrogenase in vitro. METTL20-mediated methylation of ETFB influences the oxygen consumption rate in permeabilised mitochondria, suggesting that METTL20-mediated ETFB methylation may also play a regulatory role in mitochondrial metabolism. In this study, we generated Mettl20 knockout (KO) mice to uncover the in vivo functions of METTL20. The KO mice were viable, and a loss of ETFB methylation was confirmed. In vitro enzymatic assays revealed that mitochondrial ETF activity was higher in the KO mice than in wild-type mice, suggesting that the KO mice had higher β-oxidation capacity. Calorimetric analysis showed that the KO mice fed a ketogenic diet had higher oxygen consumption and heat production. A subsequent cold tolerance test conducted after 24 h of fasting indicated that the KO mice had a better ability to maintain their body temperature in cold environments. Thus, METTL20 regulates ETF activity and heat production through lysine methylation when β-oxidation is highly activated.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/29352221"
+                          target="_blank"
+                        >
+                          29352221
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      />
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-29396915"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1002/dvdy.24622"
+                          target="_blank"
+                        >
+                          P63 expression plays a role in developmental rate, embryo size, and local morphogenesis.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Developmental dynamics : an official publication of the American Association of Anatomists
+                        </i>
+                        , (
+                        01-03-2018
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Boughner JC, van Eede MC, Spring S, Yu LX, Rostampour N, Henkelman RM.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        The p63 gene is integral to the development of many body parts including limb, palate, teeth, and urogenital tract. Loss of p63 expression may alter developmental rate, which is crucial to normal morphogenesis. To validate a novel, unbiased embryo phenotyping software tool, we tested whether delayed development contributes to the pathological phenotype of a p63 mouse mutant (p63-/- ). We quantified dysmorphology in p63-/- embryos and tested for universal growth delay relative to wild-type (WT) embryos. Fixed embryos (n = 6; p63-/- ) aged day (E) 15.5 were micro-CT scanned and quantitatively analyzed using a digital WT atlas that defined volumetric differences between p63-/- and WT embryos.p63-/- embryos showed a growth delay of approximately 22 hr (0.9 days). Among the E15.5 mutants, overall size was closest to WT E14.6 mice but shape was closest to WT E14.0. The atlas clearly identified in p63-/- embryos malformations of epithelial derivatives including limbs, tail, urogenital structures, brain, face, and tooth.The software atlas technique described the p63-/- phenotype as a combination of developmental delay (i.e., heterochrony) and malformation (i.e., pathological shape; failed organogenesis). This study identifies for the first time global and local roles for p63 in prenatal growth and development. Developmental Dynamics 247:779-787, 2018. © 2018 Wiley Periodicals, Inc.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/29396915"
+                          target="_blank"
+                        >
+                          29396915
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div
+                class="buttonsWrapper "
+              >
+                <div
+                  class="bottomPaginationControls"
+                >
+                  <div
+                    style="display: flex; align-items: center;"
+                  >
+                    Rows per page: 
+                    <select
+                      aria-label="rows per page selector"
+                    >
+                      <option
+                        value="10"
+                      >
+                        10
+                      </option>
+                      <option
+                        value="20"
+                      >
+                        20
+                      </option>
+                      <option
+                        value="30"
+                      >
+                        30
+                      </option>
+                      <option
+                        value="50"
+                      >
+                        50
+                      </option>
+                      <option
+                        value="100"
+                      >
+                        100
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <ul
+                  class="pagination justify-content-center paginationNav"
+                  data-testid="nav-buttons-bottom"
+                >
+                  <button
+                    class="pagNavBtn nav-btn"
+                    data-testid="bottom-prev-page"
+                    disabled=""
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-prev-page-icon"
+                      class="svg-inline--fa fa-arrow-left "
+                      data-icon="arrow-left"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-prev-page-icon"
+                      >
+                        previous page button
+                      </title>
+                      <path
+                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                  <li
+                    class="page-item"
+                    data-testid="bottom-page-1"
+                  >
+                    <button
+                      class="pagNavBtn active"
+                      data-testid="bottom-page-1-btn"
+                    >
+                      1
+                    </button>
+                  </li>
+                  <li
+                    class="page-item"
+                    data-testid="bottom-last-page"
+                  >
+                    <button
+                      aria-label="Previous"
+                      class="pagNavBtn last-page"
+                      data-testid="bottom-last-page-btn"
+                    >
+                      <span
+                        aria-hidden="true"
+                      >
+                        721
+                      </span>
+                    </button>
+                  </li>
+                  <button
+                    class="pagNavBtn nav-btn"
+                    data-testid="bottom-next-page"
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-next-page-icon"
+                      class="svg-inline--fa fa-arrow-right "
+                      data-icon="arrow-right"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-next-page-icon"
+                      >
+                        next page button
+                      </title>
+                      <path
+                        d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-labelledby="react-aria-:r0:-tab-publications-stats"
+          class="fade tab-pane"
+          id="react-aria-:r0:-tabpane-publications-stats"
+          role="tabpanel"
+        >
+          <div
+            class="card"
+          >
+            <div
+              class="tab-content-container"
+            >
+              <h2>
+                Yearly increase of IKMC/IMPC related publications
+              </h2>
+              <div
+                class="chartContainer"
+              />
+            </div>
+          </div>
+          <div
+            class="card"
+          >
+            <div
+              class="tab-content-container"
+            >
+              <h2>
+                IKMC/IMPC related publications by year of publication
+              </h2>
+              <div
+                class="chartContainer"
+              />
+            </div>
+          </div>
+          <div
+            class="card"
+          >
+            <div
+              class="tab-content-container"
+            >
+              <div
+                class="changeViewWrapper"
+              >
+                <button
+                  class="btn btn-secondary btn-lg active"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-chart-bar "
+                    data-icon="chart-bar"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M32 32c17.7 0 32 14.3 32 32V400c0 8.8 7.2 16 16 16H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-44.2 0-80-35.8-80-80V64C0 46.3 14.3 32 32 32zm96 96c0-17.7 14.3-32 32-32l192 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-192 0c-17.7 0-32-14.3-32-32zm32 64H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H160c-17.7 0-32-14.3-32-32s14.3-32 32-32zm0 96H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H160c-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Chart view
+                </button>
+                <button
+                  class="btn btn-secondary btn-lg "
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-table "
+                    data-icon="table"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Table view
+                </button>
+                <a
+                  class="primary link"
+                  style="margin-left: auto;"
+                >
+                  Download list of agencies 
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <h2>
+                Top 100 grant agencies by number of publications
+              </h2>
+              <div
+                class="position-relative"
+                style="min-height: 2000px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          aria-labelledby="react-aria-:r0:-tab-consortium-publications"
+          class="fade tab-pane"
+          id="react-aria-:r0:-tabpane-consortium-publications"
+          role="tabpanel"
+        >
+          <div
+            class="mt-5"
+          >
+            <div
+              class="container"
+            >
+              <div
+                class="row"
+              >
+                <div
+                  class="col-6"
+                >
+                  <p>
+                    Showing 
+                    1
+                     to 
+                    10
+                     of 
+                    108
+                     entries
+                  </p>
+                </div>
+              </div>
+              <div
+                class="buttonsWrapper top withControls"
+                data-testid="top-controls-wrapper"
+              >
+                <div
+                  class="additionalWrapper"
+                >
+                  <div>
+                    <div
+                      class="input-group"
+                    >
+                      <span
+                        class="input-group-text"
+                        id="filter-label"
+                      >
+                        Filter
+                      </span>
+                      <input
+                        aria-labelledby="filter-label"
+                        class="form-control"
+                        id="filter"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    Export table: 
+                    <a
+                      class="btn impc-secondary-button small"
+                      href="https://nginx.mousephenotype-dev.org/api/v1/publications/download?contentType=tsv&consortiumPaper=true"
+                    >
+                      TSV
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-download "
+                        data-icon="download"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </a>
+                     
+                    <a
+                      class="btn impc-secondary-button small"
+                      href="https://nginx.mousephenotype-dev.org/api/v1/publications/download?contentType=xls&consortiumPaper=true"
+                    >
+                      XLS
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-download "
+                        data-icon="download"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+                <ul
+                  class="pagination justify-content-center paginationNav"
+                  data-testid="nav-buttons-top"
+                >
+                  <button
+                    class="pagNavBtn nav-btn"
+                    data-testid="top-prev-page"
+                    disabled=""
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-prev-page-icon"
+                      class="svg-inline--fa fa-arrow-left "
+                      data-icon="arrow-left"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-prev-page-icon"
+                      >
+                        previous page button
+                      </title>
+                      <path
+                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                  <li
+                    class="page-item"
+                    data-testid="top-page-1"
+                  >
+                    <button
+                      class="pagNavBtn active"
+                      data-testid="top-page-1-btn"
+                    >
+                      1
+                    </button>
+                  </li>
+                  <li
+                    class="page-item"
+                    data-testid="top-last-page"
+                  >
+                    <button
+                      aria-label="Previous"
+                      class="pagNavBtn last-page"
+                      data-testid="top-last-page-btn"
+                    >
+                      <span
+                        aria-hidden="true"
+                      >
+                        11
+                      </span>
+                    </button>
+                  </li>
+                  <button
+                    class="pagNavBtn nav-btn"
+                    data-testid="top-next-page"
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-next-page-icon"
+                      class="svg-inline--fa fa-arrow-right "
+                      data-icon="arrow-right"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-next-page-icon"
+                      >
+                        next page button
+                      </title>
+                      <path
+                        d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </ul>
+              </div>
+              <table
+                class="pubTable table"
+              >
+                <tbody>
+                  <tr
+                    id="pub-25343444"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1371/journal.pone.0111239"
+                          target="_blank"
+                        >
+                          Impact of temporal variation on design and analysis of mouse knockout phenotyping studies.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          PloS one
+                        </i>
+                        , (
+                        24-10-2014
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Karp NA, Speak AO, White JK, Adams DJ, Hrabé de Angelis M, Hérault Y, Mott RF.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        A significant challenge facing high-throughput phenotyping of in-vivo knockout mice is ensuring phenotype calls are robust and reliable. Central to this problem is selecting an appropriate statistical analysis that models both the experimental design (the workflow and the way control mice are selected for comparison with knockout animals) and the sources of variation. Recently we proposed a mixed model suitable for small batch-oriented studies, where controls are not phenotyped concurrently with mutants. Here we evaluate this method both for its sensitivity to detect phenotypic effects and to control false positives, across a range of workflows used at mouse phenotyping centers. We found the sensitivity and control of false positives depend on the workflow. We show that the phenotypes in control mice fluctuate unexpectedly between batches and this can cause the false positive rate of phenotype calls to be inflated when only a small number of batches are tested, when the effect of knockout becomes confounded with temporal fluctuations in control mice. This effect was observed in both behavioural and physiological assays. Based on this analysis, we recommend two approaches (workflow and accompanying control strategy) and associated analyses, which would be robust, for use in high-throughput phenotyping pipelines. Our results show the importance in modelling all sources of variability in high-throughput phenotyping studies.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/25343444"
+                          target="_blank"
+                        >
+                          25343444
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        class="alleleList"
+                      >
+                        IMPC allele: 
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:107506"
+                        >
+                          <i>
+                            Wfdc18
+                            <sup>
+                              tm1a(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Wellcome Trust, NHGRI NIH HHS, Medical Research Council, Cancer Research UK
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Chlorides, Reproducibility of Results, Phenotype, Research Design, Time Factors, Computer Simulation
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-27626380"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1038/nature19356"
+                          target="_blank"
+                        >
+                          High-throughput discovery of novel developmental phenotypes.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Nature
+                        </i>
+                        , (
+                        14-09-2016
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Dickinson ME, Flenniken AM, Ji X, Teboul L, Wong MD, White JK, Meehan TF, Weninger WJ, Westerberg H, Adissu H, Baker CN, Bower L, Brown JM, Caddle LB, Chiani F, Clary D, Cleak J, Daly MJ, Denegre JM, Doe B, Dolan ME, Edie SM, Fuchs H, Gailus-Durner V, Galli A, Gambadoro A, Gallegos J, Guo S, Horner NR, Hsu CW, Johnson SJ, Kalaga S, Keith LC, Lanoue L, Lawson TN, Lek M, Mark M, Marschall S, Mason J, McElwee ML, Newbigging S, Nutter LM, Peterson KA, Ramirez-Solis R, Rowland DJ, Ryder E, Samocha KE, Seavitt JR, Selloum M, Szoke-Kovacs Z, Tamura M, Trainor AG, Tudose I, Wakana S, Warren J, Wendling O, West DB, Wong L, Yoshiki A, International Mouse Phenotyping Consortium, Jackson Laboratory, Infrastructure Nationale PHENOMIN, Institut Clinique de la Souris (ICS), Charles River Laboratories, MRC Harwell, Toronto Centre for Phenogenomics, Wellcome Trust Sanger Institute, RIKEN BioResource Center, MacArthur DG, Tocchini-Valentini GP, Gao X, Flicek P, Bradley A, Skarnes WC, Justice MJ, Parkinson HE, Moore M, Wells S, Braun RE, Svenson KL, de Angelis MH, Herault Y, Mohun T, Mallon AM, Henkelman RM, Brown SD, Adams DJ, Lloyd KC, McKerlie C, Beaudet AL, Bućan M, Murray SA.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        Approximately one-third of all mammalian genes are essential for life. Phenotypes resulting from knockouts of these genes in mice have provided tremendous insight into gene function and congenital disorders. As part of the International Mouse Phenotyping Consortium effort to generate and phenotypically characterize 5,000 knockout mouse lines, here we identify 410 lethal genes during the production of the first 1,751 unique gene knockouts. Using a standardized phenotyping platform that incorporates high-resolution 3D imaging, we identify phenotypes at multiple time points for previously uncharacterized genes and additional phenotypes for genes with previously reported mutant phenotypes. Unexpectedly, our analysis reveals that incomplete penetrance and variable expressivity are common even on a defined genetic background. In addition, we show that human disease genes are enriched for essential genes, thus providing a dataset that facilitates the prioritization and validation of mutations identified in clinical sequencing efforts.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/27626380"
+                          target="_blank"
+                        >
+                          27626380
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        class="alleleList"
+                      >
+                        IMPC allele: 
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1915512"
+                        >
+                          <i>
+                            Agpat4
+                            <sup>
+                              tm1b(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:97429"
+                        >
+                          <i>
+                            Oas1g
+                            <sup>
+                              tm3e(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1929657"
+                        >
+                          <i>
+                            Hacl1
+                            <sup>
+                              tm1a(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1929657"
+                        >
+                          <i>
+                            Hacl1
+                            <sup>
+                              tm1b(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1913429"
+                        >
+                          <i>
+                            Ogfod3
+                            <sup>
+                              tm1b(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:1889802"
+                        >
+                          <i>
+                            Hibadh
+                            <sup>
+                              tm1b(EUCOMM)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:3780550"
+                        >
+                          <i>
+                            Mthfsl
+                            <sup>
+                              tm1b(EUCOMM)Hmgu
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:96273"
+                        >
+                          <i>
+                            Htr1a
+                            <sup>
+                              tm1.1(KOMP)Vlcg
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <br />
+                        <button
+                          class="btn impc-secondary-button xs-small mb-2 mt-1"
+                        >
+                          <strong>
+                            Show
+                             all alleles
+                          </strong>
+                        </button>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        The Francis Crick Institute, Wellcome Trust, Cancer Research UK, Medical Research Council, NCI NIH HHS, NEI NIH HHS, NIDDK NIH HHS, NIH HHS, NHGRI NIH HHS, Welcome Trust
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Inbred C57BL, Mice, Knockout, Humans, Mice, Disease, Imaging, Three-Dimensional, Conserved Sequence, Sequence Homology, Phenotype, Penetrance, Mutation, Polymorphism, Single Nucleotide, Genes, Essential, Genes, Lethal, Embryo, Mammalian, Genome-Wide Association Study, High-Throughput Screening Assays
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-24642684"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1371/journal.pone.0091807"
+                          target="_blank"
+                        >
+                          Targeting of Slc25a21 is associated with orofacial defects and otitis media due to disrupted expression of a neighbouring gene.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          PloS one
+                        </i>
+                        , (
+                        18-03-2014
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Maguire S, Estabel J, Ingham N, Pearson S, Ryder E, Carragher DM, Walker N, Sanger MGP Slc25a21 Project Team, Bussell J, Chan WI, Keane TM, Adams DJ, Scudamore CL, Lelliott CJ, Ramírez-Solis R, Karp NA, Steel KP, White JK, Gerdin AK.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        Homozygosity for Slc25a21(tm1a(KOMP)Wtsi) results in mice exhibiting orofacial abnormalities, alterations in carpal and rugae structures, hearing impairment and inflammation in the middle ear. In humans it has been hypothesised that the 2-oxoadipate mitochondrial carrier coded by SLC25A21 may be involved in the disease 2-oxoadipate acidaemia. Unexpectedly, no 2-oxoadipate acidaemia-like symptoms were observed in animals homozygous for Slc25a21(tm1a(KOMP)Wtsi) despite confirmation that this allele reduces Slc25a21 expression by 71.3%. To study the complete knockout, an allelic series was generated using the loxP and FRT sites typical of a Knockout Mouse Project allele. After removal of the critical exon and neomycin selection cassette, Slc25a21 knockout mice homozygous for the Slc25a21(tm1b(KOMP)Wtsi) and Slc25a21(tm1d(KOMP)Wtsi) alleles were phenotypically indistinguishable from wild-type. This led us to explore the genomic environment of Slc25a21 and to discover that expression of Pax9, located 3' of the target gene, was reduced in homozygous Slc25a21(tm1a(KOMP)Wtsi) mice. We hypothesize that the presence of the selection cassette is the cause of the down regulation of Pax9 observed. The phenotypes we observed in homozygous Slc25a21(tm1a(KOMP)Wtsi) mice were broadly consistent with a hypomorphic Pax9 allele with the exception of otitis media and hearing impairment which may be a novel consequence of Pax9 down regulation. We explore the ramifications associated with this particular targeted mutation and emphasise the need to interpret phenotypes taking into consideration all potential underlying genetic mechanisms.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/24642684"
+                          target="_blank"
+                        >
+                          24642684
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p
+                        class="alleleList"
+                      >
+                        IMPC allele: 
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:2445059"
+                        >
+                          <i>
+                            Slc25a21
+                            <sup>
+                              tm1a(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:2445059"
+                        >
+                          <i>
+                            Slc25a21
+                            <sup>
+                              tm1c(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:2445059"
+                        >
+                          <i>
+                            Slc25a21
+                            <sup>
+                              tm1b(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                        <a
+                          class="primary link"
+                          href="/genes/MGI:2445059"
+                        >
+                          <i>
+                            Slc25a21
+                            <sup>
+                              tm1d(KOMP)Wtsi
+                            </sup>
+                          </i>
+                        </a>
+                             
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Wellcome Trust, Medical Research Council
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Humans, Mice, Mouth Abnormalities, Otitis Media, Membrane Transport Proteins, Dicarboxylic Acid Transporters, Mitochondrial Membrane Transport Proteins, Genetic Engineering, Signal Transduction, Gene Expression Regulation, Homozygote, Mutation, Alleles, Exons, Female, Male, Paired Box Transcription Factors
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-22566555"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1242/dmm.009878"
+                          target="_blank"
+                        >
+                          Towards an encyclopaedia of mammalian gene function: the International Mouse Phenotyping Consortium.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Disease models & mechanisms
+                        </i>
+                        , (
+                        01-05-2012
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Brown SD, Moore MW.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      />
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/22566555"
+                          target="_blank"
+                        >
+                          22566555
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Medical Research Council
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Mammals, Mice, Pilot Projects, Phenotype, Alleles, International Cooperation, Encyclopedias as Topic
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-24634472"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1093/database/bau017"
+                          target="_blank"
+                        >
+                          Linking tissues to phenotypes using gene expression profiles.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Database : the journal of biological databases and curation
+                        </i>
+                        , (
+                        13-03-2014
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Oellrich A, Sanger Mouse Genetics Project, Smedley D.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        Despite great biological and computational efforts to determine the genetic causes underlying human heritable diseases, approximately half (3500) of these diseases are still without an identified genetic cause. Model organism studies allow the targeted modification of the genome and can help with the identification of genetic causes for human diseases. Targeted modifications have led to a vast amount of model organism data. However, these data are scattered across different databases, preventing an integrated view and missing out on contextual information. Once we are able to combine all the existing resources, will we be able to fully understand the causes underlying a disease and how species differ. Here, we present an integrated data resource combining tissue expression with phenotypes in mouse lines and bringing us one step closer to consequence chains from a molecular level to a resulting phenotype. Mutations in genes often manifest in phenotypes in the same tissue that the gene is expressed in. However, in other cases, a systems level approach is required to understand how perturbations to gene-networks connecting multiple tissues lead to a phenotype. Automated evaluation of the predicted tissue-phenotype associations reveals that 72-76% of the phenotypes are associated with disruption of genes expressed in the affected tissue. However, 55-64% of the individual phenotype-tissue associations show spatially separated gene expression and phenotype manifestation. For example, we see a correlation between 'total body fat' abnormalities and genes expressed in the 'brain', which fits recent discoveries linking genes expressed in the hypothalamus to obesity. Finally, we demonstrate that the use of our predicted tissue-phenotype associations can improve the detection of a known disease-gene association when combined with a disease gene candidate prediction tool. For example, JAK2, the known gene associated with Familial Erythrocytosis 1, rises from the seventh best candidate to the top hit when the associated tissues are taken into consideration. Database URL: http://www.sanger.ac.uk/resources/databases/phenodigm/phenotype/list.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/24634472"
+                          target="_blank"
+                        >
+                          24634472
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        NHGRI NIH HHS, Wellcome Trust
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Humans, Mice, Gene Expression Profiling, Organ Specificity, Gene Expression Regulation, Phenotype, Genome, Internet, User-Computer Interface, Gene Ontology
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-22926223"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1007/s00335-012-9430-2"
+                          target="_blank"
+                        >
+                          Beyond knockouts: cre resources for conditional mutagenesis.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Mammalian genome : official journal of the International Mammalian Genome Society
+                        </i>
+                        , (
+                        29-08-2012
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Murray SA, Eppig JT, Smedley D, Simpson EM, Rosenthal N.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        With the effort of the International Phenotyping Consortium to produce thousands of strains with conditional potential gathering steam, there is growing recognition that it must be supported by a rich toolbox of cre driver strains. The approaches to build cre strains have evolved in both sophistication and reliability, replacing first-generation strains with tools that can target individual cell populations with incredible precision and specificity. The modest set of cre drivers generated by individual labs over the past 15+ years is now growing rapidly, thanks to a number of large-scale projects to produce new cre strains for the community. The power of this growing resource, however, depends upon the proper deep characterization of strain function, as even the best designed strain can display a variety of undesirable features that must be considered in experimental design. This must be coupled with the parallel development of informatics tools to provide functional data to the user and facilitated access to the strains through public repositories. We discuss the current progress on all of these fronts and the challenges that remain to ensure the scientific community can capitalize on the tremendous number of mouse resources at their disposal.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/22926223"
+                          target="_blank"
+                        >
+                          22926223
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        NIDCR NIH HHS, NICHD NIH HHS, NHGRI NIH HHS, NCRR NIH HHS, NIH HHS
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Mice, Integrases, Genomics, Mutagenesis
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-21185382"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1016/j.ymeth.2010.12.017"
+                          target="_blank"
+                        >
+                          High-throughput mouse phenotyping.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Methods (San Diego, Calif.)
+                        </i>
+                        , (
+                        23-12-2010
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Gates H, Mallon AM, Brown SD, EUMODIC Consortium.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        Comprehensive phenotyping will be required to reveal the pleiotropic functions of a gene and to uncover the wider role of genetic loci within diverse biological systems. The challenge will be to devise phenotyping approaches to characterise the thousands of mutants that are being generated as part of international efforts to acquire a mutant for every gene in the mouse genome. In order to acquire robust datasets of broad based phenotypes from mouse mutants it is necessary to design and implement pipelines that incorporate standardised phenotyping platforms that are validated across diverse mouse genetics centres or mouse clinics. We describe here the rationale and methodology behind one phenotyping pipeline, EMPReSSslim, that was designed as part of the work of the EUMORPHIA and EUMODIC consortia, and which exemplifies some of the challenges facing large-scale phenotyping. EMPReSSslim captures a broad range of data on diverse biological systems, from biochemical to physiological amongst others. Data capture and dissemination is pivotal to the operation of large-scale phenotyping pipelines, including the definition of parameters integral to each phenotyping test and the associated ontological descriptions. EMPReSSslim data is displayed within the EuroPhenome database, where a variety of tools are available to allow the user to search for interesting biological or clinical phenotypes.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/21185382"
+                          target="_blank"
+                        >
+                          21185382
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Medical Research Council
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Bone and Bones, Animals, Mice, Inbred C57BL, Mice, Mice, Mutant Strains, Hemoglobins, Immunoglobulins, Absorptiometry, Photon, Blood Pressure Determination, Glucose Tolerance Test, Organ Size, Hand Strength, Blood Cell Count, Calorimetry, Indirect, Behavior, Animal, Psychomotor Performance, Body Composition, Phenotype, Software, Databases, Genetic, Female, Male, Pain Perception, Reflex, Startle
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-17905814"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1093/nar/gkm728"
+                          target="_blank"
+                        >
+                          EuroPhenome and EMPReSS: online mouse phenotyping resource.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Nucleic acids research
+                        </i>
+                        , (
+                        28-09-2007
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Mallon AM, Blake A, Hancock JM.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        EuroPhenome (http://www.europhenome.org) and EMPReSS (http://empress.har.mrc.ac.uk/) form an integrated resource to provide access to data and procedures for mouse phenotyping. EMPReSS describes 96 Standard Operating Procedures for mouse phenotyping. EuroPhenome contains data resulting from carrying out EMPReSS protocols on four inbred laboratory mouse strains. As well as web interfaces, both resources support web services to enable integration with other mouse phenotyping and functional genetics resources, and are committed to initiatives to improve integration of mouse phenotype databases. EuroPhenome will be the repository for a recently initiated effort to carry out large-scale phenotyping on a large number of knockout mouse lines (EUMODIC).
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/17905814"
+                          target="_blank"
+                        >
+                          17905814
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        Medical Research Council
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Inbred Strains, Mice, Phenotype, Systems Integration, Internet, User-Computer Interface, Databases, Factual
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-20929875"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1093/nar/gkq879"
+                          target="_blank"
+                        >
+                          The IKMC web portal: a central point of entry to data and resources from the International Knockout Mouse Consortium.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Nucleic acids research
+                        </i>
+                        , (
+                        06-10-2010
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Ringwald M, Iyer V, Mason JC, Stone KR, Tadepally HD, Kadin JA, Bult CJ, Eppig JT, Oakley DJ, Briois S, Stupka E, Maselli V, Smedley D, Liu S, Hansen J, Baldock R, Hicks GG, Skarnes WC.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      >
+                        The International Knockout Mouse Consortium (IKMC) aims to mutate all protein-coding genes in the mouse using a combination of gene targeting and gene trapping in mouse embryonic stem (ES) cells and to make the generated resources readily available to the research community. The IKMC database and web portal (www.knockoutmouse.org) serves as the central public web site for IKMC data and facilitates the coordination and prioritization of work within the consortium. Researchers can access up-to-date information on IKMC knockout vectors, ES cells and mice for specific genes, and follow links to the respective repositories from which corresponding IKMC products can be ordered. Researchers can also use the web site to nominate genes for targeting, or to indicate that targeting of a gene should receive high priority. The IKMC database provides data to, and features extensive interconnections with, other community databases.
+                      </p>
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/20929875"
+                          target="_blank"
+                        >
+                          20929875
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        European Commission FP7, Medical Research Council, NHGRI NIH HHS
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Mice, Knockout, Mice, Gene Targeting, Genomics, Alleles, Genetic Vectors, Internet, User-Computer Interface, Databases, Genetic, Molecular Sequence Annotation
+                      </p>
+                    </td>
+                  </tr>
+                  <tr
+                    id="pub-24740057"
+                  >
+                    <td>
+                      <p
+                        class="title"
+                      >
+                        <a
+                          class="primary link"
+                          href="https://doi.org/10.1038/508319d"
+                          target="_blank"
+                        >
+                          Animal models: Mouse already being charted gene by gene.
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        <i>
+                          Nature
+                        </i>
+                        , (
+                        01-04-2014
+                        )
+                      </p>
+                      <p>
+                        <b>
+                          Brown S.
+                        </b>
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2 mb-2"
+                      >
+                        <strong>
+                          Show
+                           abstract
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mb-2 visually-hidden"
+                      />
+                      <p>
+                        PMID: 
+                        <a
+                          class="primary link"
+                          href="https://pubmed.ncbi.nlm.nih.gov/24740057"
+                          target="_blank"
+                        >
+                          24740057
+                        </a>
+                         
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          data-icon="up-right-from-square"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </p>
+                      <p>
+                        Grant agency: 
+                        NHGRI NIH HHS, NIH HHS
+                      </p>
+                      <button
+                        class="btn impc-secondary-button xs-small mt-2"
+                      >
+                        <strong>
+                          Show
+                           mesh terms
+                        </strong>
+                      </button>
+                      <p
+                        class="abstract mt-1 visually-hidden"
+                      >
+                        Animals, Humans, Disease Models, Animal, Drug Evaluation, Preclinical, Research Design, Translational Medical Research
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div
+                class="buttonsWrapper "
+              >
+                <div
+                  class="bottomPaginationControls"
+                >
+                  <div
+                    style="display: flex; align-items: center;"
+                  >
+                    Rows per page: 
+                    <select
+                      aria-label="rows per page selector"
+                    >
+                      <option
+                        value="10"
+                      >
+                        10
+                      </option>
+                      <option
+                        value="20"
+                      >
+                        20
+                      </option>
+                      <option
+                        value="30"
+                      >
+                        30
+                      </option>
+                      <option
+                        value="50"
+                      >
+                        50
+                      </option>
+                      <option
+                        value="100"
+                      >
+                        100
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <ul
+                  class="pagination justify-content-center paginationNav"
+                  data-testid="nav-buttons-bottom"
+                >
+                  <button
+                    class="pagNavBtn nav-btn"
+                    data-testid="bottom-prev-page"
+                    disabled=""
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-prev-page-icon"
+                      class="svg-inline--fa fa-arrow-left "
+                      data-icon="arrow-left"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-prev-page-icon"
+                      >
+                        previous page button
+                      </title>
+                      <path
+                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                  <li
+                    class="page-item"
+                    data-testid="bottom-page-1"
+                  >
+                    <button
+                      class="pagNavBtn active"
+                      data-testid="bottom-page-1-btn"
+                    >
+                      1
+                    </button>
+                  </li>
+                  <li
+                    class="page-item"
+                    data-testid="bottom-last-page"
+                  >
+                    <button
+                      aria-label="Previous"
+                      class="pagNavBtn last-page"
+                      data-testid="bottom-last-page-btn"
+                    >
+                      <span
+                        aria-hidden="true"
+                      >
+                        11
+                      </span>
+                    </button>
+                  </li>
+                  <button
+                    class="pagNavBtn nav-btn"
+                    data-testid="bottom-next-page"
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-next-page-icon"
+                      class="svg-inline--fa fa-arrow-right "
+                      data-icon="arrow-right"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-next-page-icon"
+                      >
+                        next page button
+                      </title>
+                      <path
+                        d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

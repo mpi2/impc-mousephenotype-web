@@ -1,6 +1,6 @@
 {
-  "totalPages": 721,
-  "totalElements": 7205,
+  "totalPages": 11,
+  "totalElements": 108,
   "pageable": {
     "pageNumber": 0,
     "pageSize": 10,
@@ -717,29 +717,86 @@
       "alleles": []
     },
     {
-      "title": "Role of METTL20 in regulating β-oxidation and heat production in mice under fasting or ketogenic conditions.",
-      "authorString": "Shimazu T, Furuse T, Balan S, Yamada I, Okuno S, Iwanari H, Suzuki T, Hamakubo T, Dohmae N, Yoshikawa T, Wakana S, Shinkai Y.",
-      "consortiumPaper": false,
-      "doi": "10.1038/s41598-018-19615-4",
-      "publicationDate": "2018-01-19T00:00:00.000Z",
-      "journalTitle": "Scientific reports",
-      "pmId": "29352221",
-      "abstractText": "METTL20 is a seven-β-strand methyltransferase that is localised to the mitochondria and tri-methylates the electron transfer flavoprotein (ETF) β subunit (ETFB) at lysines 200 and 203. It has been shown that METTL20 decreases the ability of ETF to extract electrons from medium-chain acyl-coenzyme A (CoA) dehydrogenase (MCAD) and glutaryl-CoA dehydrogenase in vitro. METTL20-mediated methylation of ETFB influences the oxygen consumption rate in permeabilised mitochondria, suggesting that METTL20-mediated ETFB methylation may also play a regulatory role in mitochondrial metabolism. In this study, we generated Mettl20 knockout (KO) mice to uncover the in vivo functions of METTL20. The KO mice were viable, and a loss of ETFB methylation was confirmed. In vitro enzymatic assays revealed that mitochondrial ETF activity was higher in the KO mice than in wild-type mice, suggesting that the KO mice had higher β-oxidation capacity. Calorimetric analysis showed that the KO mice fed a ketogenic diet had higher oxygen consumption and heat production. A subsequent cold tolerance test conducted after 24 h of fasting indicated that the KO mice had a better ability to maintain their body temperature in cold environments. Thus, METTL20 regulates ETF activity and heat production through lysine methylation when β-oxidation is highly activated.",
-      "meshHeadingList": [],
-      "grantsList": [],
+      "title": "The IKMC web portal: a central point of entry to data and resources from the International Knockout Mouse Consortium.",
+      "authorString": "Ringwald M, Iyer V, Mason JC, Stone KR, Tadepally HD, Kadin JA, Bult CJ, Eppig JT, Oakley DJ, Briois S, Stupka E, Maselli V, Smedley D, Liu S, Hansen J, Baldock R, Hicks GG, Skarnes WC.",
+      "consortiumPaper": true,
+      "doi": "10.1093/nar/gkq879",
+      "publicationDate": "2010-10-06T00:00:00.000Z",
+      "journalTitle": "Nucleic acids research",
+      "pmId": "20929875",
+      "abstractText": "The International Knockout Mouse Consortium (IKMC) aims to mutate all protein-coding genes in the mouse using a combination of gene targeting and gene trapping in mouse embryonic stem (ES) cells and to make the generated resources readily available to the research community. The IKMC database and web portal (www.knockoutmouse.org) serves as the central public web site for IKMC data and facilitates the coordination and prioritization of work within the consortium. Researchers can access up-to-date information on IKMC knockout vectors, ES cells and mice for specific genes, and follow links to the respective repositories from which corresponding IKMC products can be ordered. Researchers can also use the web site to nominate genes for targeting, or to indicate that targeting of a gene should receive high priority. The IKMC database provides data to, and features extensive interconnections with, other community databases.",
+      "meshHeadingList": [
+        "Animals",
+        "Mice, Knockout",
+        "Mice",
+        "Gene Targeting",
+        "Genomics",
+        "Alleles",
+        "Genetic Vectors",
+        "Internet",
+        "User-Computer Interface",
+        "Databases, Genetic",
+        "Molecular Sequence Annotation"
+      ],
+      "grantsList": [
+        {
+          "agency": "European Commission FP7",
+          "grantId": "FP7_223592",
+          "orderIn": 0,
+          "acronym": "I-DCC"
+        },
+        {
+          "agency": "Medical Research Council",
+          "grantId": "MC_U127527203",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "Medical Research Council",
+          "grantId": "MC_PC_U127527203",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "NHGRI NIH HHS",
+          "grantId": "HG004074",
+          "orderIn": 0,
+          "acronym": "HG"
+        }
+      ],
       "alleles": []
     },
     {
-      "title": "P63 expression plays a role in developmental rate, embryo size, and local morphogenesis.",
-      "authorString": "Boughner JC, van Eede MC, Spring S, Yu LX, Rostampour N, Henkelman RM.",
-      "consortiumPaper": false,
-      "doi": "10.1002/dvdy.24622",
-      "publicationDate": "2018-03-01T00:00:00.000Z",
-      "journalTitle": "Developmental dynamics : an official publication of the American Association of Anatomists",
-      "pmId": "29396915",
-      "abstractText": "The p63 gene is integral to the development of many body parts including limb, palate, teeth, and urogenital tract. Loss of p63 expression may alter developmental rate, which is crucial to normal morphogenesis. To validate a novel, unbiased embryo phenotyping software tool, we tested whether delayed development contributes to the pathological phenotype of a p63 mouse mutant (p63-/- ). We quantified dysmorphology in p63-/- embryos and tested for universal growth delay relative to wild-type (WT) embryos. Fixed embryos (n = 6; p63-/- ) aged day (E) 15.5 were micro-CT scanned and quantitatively analyzed using a digital WT atlas that defined volumetric differences between p63-/- and WT embryos.p63-/- embryos showed a growth delay of approximately 22 hr (0.9 days). Among the E15.5 mutants, overall size was closest to WT E14.6 mice but shape was closest to WT E14.0. The atlas clearly identified in p63-/- embryos malformations of epithelial derivatives including limbs, tail, urogenital structures, brain, face, and tooth.The software atlas technique described the p63-/- phenotype as a combination of developmental delay (i.e., heterochrony) and malformation (i.e., pathological shape; failed organogenesis). This study identifies for the first time global and local roles for p63 in prenatal growth and development. Developmental Dynamics 247:779-787, 2018. © 2018 Wiley Periodicals, Inc.",
-      "meshHeadingList": [],
-      "grantsList": [],
+      "title": "Animal models: Mouse already being charted gene by gene.",
+      "authorString": "Brown S.",
+      "consortiumPaper": true,
+      "doi": "10.1038/508319d",
+      "publicationDate": "2014-04-01T00:00:00.000Z",
+      "journalTitle": "Nature",
+      "pmId": "24740057",
+      "abstractText": null,
+      "meshHeadingList": [
+        "Animals",
+        "Humans",
+        "Disease Models, Animal",
+        "Drug Evaluation, Preclinical",
+        "Research Design",
+        "Translational Medical Research"
+      ],
+      "grantsList": [
+        {
+          "agency": "NHGRI NIH HHS",
+          "grantId": "U54 HG006364",
+          "orderIn": 0,
+          "acronym": "HG"
+        },
+        {
+          "agency": "NIH HHS",
+          "grantId": "U42 OD011175",
+          "orderIn": 0,
+          "acronym": "OD"
+        }
+      ],
       "alleles": []
     }
   ],
