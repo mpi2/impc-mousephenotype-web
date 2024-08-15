@@ -86,7 +86,7 @@ const SortableTable = ({
         {!!label && (
           <button
             style={{
-              fontWeight: !disabled && selected ? "bold" : "normal",
+              fontWeight: !disabled && selected ? "bold" : "inherit",
             }}
             className={classNames(styles.inlineButton, styles.headerButton, {[styles.disabled]: disabled })}
             onClick={handleSelect}
