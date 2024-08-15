@@ -1,0 +1,1189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Allele page renders correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=phenotype"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+    style="max-width: 1240px;"
+  >
+    <div
+      class="card"
+    >
+      <p
+        class="small caps mb-2 primary"
+        style="letter-spacing: 0.1rem;"
+      >
+        RELEASE NOTES
+      </p>
+      <h1
+        class="h1 mb-2"
+      >
+        IMPC Data Release 
+        21.0
+         Notes
+      </h1>
+      <p
+        class="grey mb-3"
+      >
+        12 December 2023
+      </p>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col-lg-6"
+        >
+          <h3
+            class="mb-0 mt-3 mb-2"
+          >
+            Summary
+          </h3>
+          <div>
+            <span
+              class="grey"
+            >
+              Number of phenotyped genes
+              : 
+            </span>
+            <strong>
+              8,901
+            </strong>
+          </div>
+          <div>
+            <span
+              class="grey"
+            >
+              Number of phenotyped mutant lines
+              : 
+            </span>
+            <strong>
+              9,594
+            </strong>
+          </div>
+          <div>
+            <span
+              class="grey"
+            >
+              Number of phenotype calls
+              : 
+            </span>
+            <strong>
+              111,610
+            </strong>
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <h3
+            class="mb-0 mt-3 mb-2"
+          >
+            Data access
+          </h3>
+          <div
+            class="mb-1"
+          >
+            <a
+              class="link orange-dark "
+              href="https://www.mousephenotype.org/help/non-programmatic-data-access"
+            >
+              FTP interface 
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-arrow-up-right-from-square fa-sm grey"
+                data-icon="arrow-up-right-from-square"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a
+              class="link orange-dark"
+              href="https://www.mousephenotype.org/help/programmatic-data-access"
+            >
+              RESTful interfaces 
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-arrow-up-right-from-square fa-sm grey"
+                data-icon="arrow-up-right-from-square"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span
+          class="grey"
+        >
+          Statistical package
+          : 
+        </span>
+        <strong>
+          OpenStats (2.4.0)
+        </strong>
+      </div>
+      <div>
+        <span
+          class="grey"
+        >
+          Genome Assembly
+          : 
+        </span>
+        <strong>
+          Mus musculus (GRCm38)
+        </strong>
+      </div>
+      <h3
+        class="mb-0 mt-5 mb-2"
+      >
+        Highlights
+      </h3>
+      "**Release notes:**\\nRepresents a minor data release:\\n\\t-   It updates the imaging data, resolving an issue displaying charts for ECG data.\\n\\t-   In other respects the data in DR20.1 is identical to DR20.0.\\n"
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Total number of lines and specimens in DR 
+        21.0
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      >
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-top"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="top-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="top-page-1"
+          >
+            <button
+              class="pagNavBtn active"
+              data-testid="top-page-1-btn"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="top-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="top-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
+      </div>
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped undefined table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  Phenotyping Center
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Mutant Lines
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Baseline Mice
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Mutant Mice
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span>
+                  BCM
+                </span>
+              </td>
+              <td>
+                <span>
+                  1,170
+                </span>
+              </td>
+              <td>
+                <span>
+                  9,508
+                </span>
+              </td>
+              <td>
+                <span>
+                  35,144
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  CCP-IMG
+                </span>
+              </td>
+              <td>
+                <span>
+                  342
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,643
+                </span>
+              </td>
+              <td>
+                <span>
+                  6,253
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  HMGU
+                </span>
+              </td>
+              <td>
+                <span>
+                  530
+                </span>
+              </td>
+              <td>
+                <span>
+                  7,193
+                </span>
+              </td>
+              <td>
+                <span>
+                  10,501
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  ICS
+                </span>
+              </td>
+              <td>
+                <span>
+                  239
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,619
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,882
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  JAX
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,061
+                </span>
+              </td>
+              <td>
+                <span>
+                  15,657
+                </span>
+              </td>
+              <td>
+                <span>
+                  58,604
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  KMPC
+                </span>
+              </td>
+              <td>
+                <span>
+                  98
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,956
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,768
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  MARC
+                </span>
+              </td>
+              <td>
+                <span>
+                  233
+                </span>
+              </td>
+              <td>
+                <span>
+                  1,858
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,588
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  MRC Harwell
+                </span>
+              </td>
+              <td>
+                <span>
+                  846
+                </span>
+              </td>
+              <td>
+                <span>
+                  7,521
+                </span>
+              </td>
+              <td>
+                <span>
+                  20,685
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  RBRC
+                </span>
+              </td>
+              <td>
+                <span>
+                  113
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,163
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,616
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  TCP
+                </span>
+              </td>
+              <td>
+                <span>
+                  768
+                </span>
+              </td>
+              <td>
+                <span>
+                  9,287
+                </span>
+              </td>
+              <td>
+                <span>
+                  30,857
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper "
+      >
+        <div
+          class="bottomPaginationControls"
+        >
+          <div
+            style="display: flex; align-items: center;"
+          >
+            Rows per page: 
+            <select
+              aria-label="rows per page selector"
+            >
+              <option
+                value="10"
+              >
+                10
+              </option>
+              <option
+                value="20"
+              >
+                20
+              </option>
+              <option
+                value="30"
+              >
+                30
+              </option>
+              <option
+                value="50"
+              >
+                50
+              </option>
+              <option
+                value="100"
+              >
+                100
+              </option>
+            </select>
+          </div>
+        </div>
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-bottom"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="bottom-page-1"
+          >
+            <button
+              class="pagNavBtn active"
+              data-testid="bottom-page-1-btn"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Experimental data and quality checks
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped undefined table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Data Type
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  QC Passed Data Points
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down sortIcon"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span>
+                  time_series
+                </span>
+              </td>
+              <td>
+                <span>
+                  27,943,516
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  categorical
+                </span>
+              </td>
+              <td>
+                <span>
+                  27,007,526
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  unidimensional
+                </span>
+              </td>
+              <td>
+                <span>
+                  23,321,419
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  ontological
+                </span>
+              </td>
+              <td>
+                <span>
+                  1,982,542
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  image_record
+                </span>
+              </td>
+              <td>
+                <span>
+                  794,481
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  text
+                </span>
+              </td>
+              <td>
+                <span>
+                  600,819
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper "
+      />
+      <span
+        class="small"
+      >
+        * Excluded from statistical analysis.
+      </span>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Distribution of phenotype annotations
+      </h2>
+      <div
+        style="position: relative; height: 600px;"
+      >
+        <canvas
+          height="0"
+          role="img"
+          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+          width="0"
+        />
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Production status
+      </h2>
+      <h3>
+        Overall
+      </h3>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col-lg-6"
+        >
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+      <h3>
+        By Center
+      </h3>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col-lg-6"
+        >
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+      <p>
+        More charts and status information are available from our mouse tracking service 
+        <a
+          class="link orange-dark"
+        >
+          GenTaR
+        </a>
+        .
+      </p>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Phenotype associations
+      </h2>
+      <div
+        style="position: relative; height: 600px;"
+      >
+        <canvas
+          height="0"
+          role="img"
+          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+          width="0"
+        />
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Previous releases
+      </h2>
+      <ul>
+        <li>
+          <a
+            href="/data/previous-releases/18.0"
+          >
+            Release 18.0 notes
+          </a>
+        </li>
+        <li>
+          <a
+            href="/data/previous-releases/17.0"
+          >
+            Release 17.0 notes
+          </a>
+        </li>
+        <li>
+          <a
+            href="/data/previous-releases/16.0"
+          >
+            Release 16.0 notes
+          </a>
+        </li>
+        <li>
+          <a
+            href="/data/previous-releases/15.1"
+          >
+            Release 15.1 notes
+          </a>
+        </li>
+        <li>
+          <a
+            href="/data/previous-releases/15.0"
+          >
+            Release 15.0 notes
+          </a>
+        </li>
+        <button
+          class="mt-2 btn btn-outline-secondary"
+          type="button"
+        >
+          Show all releases
+        </button>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,2088 @@
+{
+  "dataReleaseVersion": "21.0",
+  "dataReleaseDate": "12-12-2023",
+  "dataReleaseNotes": "\"**Release notes:**\\nRepresents a minor data release:\\n\\t-   It updates the imaging data, resolving an issue displaying charts for ECG data.\\n\\t-   In other respects the data in DR20.1 is identical to DR20.0.\\n\"",
+  "statisticalAnalysisPackage": {
+    "name": "OpenStats",
+    "version": "2.4.0"
+  },
+  "genomeAssembly": {
+    "species": "Mus musculus",
+    "version": "GRCm38"
+  },
+  "summaryCounts": {
+    "phenotypedGenes": 8901,
+    "phenotypedLines": 9594,
+    "phentoypeCalls": 111610
+  },
+  "sampleCounts": [
+    {
+      "phenotypingCentre": "CCP-IMG",
+      "mutantLines": 342,
+      "mutantSpecimens": 6253,
+      "controlSpecimens": 3643
+    },
+    {
+      "phenotypingCentre": "MRC Harwell",
+      "mutantLines": 846,
+      "mutantSpecimens": 20685,
+      "controlSpecimens": 7521
+    },
+    {
+      "phenotypingCentre": "UC Davis",
+      "mutantLines": 1574,
+      "mutantSpecimens": 39596,
+      "controlSpecimens": 9428
+    },
+    {
+      "phenotypingCentre": "RBRC",
+      "mutantLines": 113,
+      "mutantSpecimens": 2616,
+      "controlSpecimens": 2163
+    },
+    {
+      "phenotypingCentre": "KMPC",
+      "mutantLines": 98,
+      "mutantSpecimens": 3768,
+      "controlSpecimens": 2956
+    },
+    {
+      "phenotypingCentre": "WTSI",
+      "mutantLines": 1621,
+      "mutantSpecimens": 18660,
+      "controlSpecimens": 5364
+    },
+    {
+      "phenotypingCentre": "TCP",
+      "mutantLines": 768,
+      "mutantSpecimens": 30857,
+      "controlSpecimens": 9287
+    },
+    {
+      "phenotypingCentre": "BCM",
+      "mutantLines": 1170,
+      "mutantSpecimens": 35144,
+      "controlSpecimens": 9508
+    },
+    {
+      "phenotypingCentre": "ICS",
+      "mutantLines": 239,
+      "mutantSpecimens": 3882,
+      "controlSpecimens": 2619
+    },
+    {
+      "phenotypingCentre": "HMGU",
+      "mutantLines": 530,
+      "mutantSpecimens": 10501,
+      "controlSpecimens": 7193
+    },
+    {
+      "phenotypingCentre": "JAX",
+      "mutantLines": 2061,
+      "mutantSpecimens": 58604,
+      "controlSpecimens": 15657
+    },
+    {
+      "phenotypingCentre": "MARC",
+      "mutantLines": 233,
+      "mutantSpecimens": 3588,
+      "controlSpecimens": 1858
+    }
+  ],
+  "dataQualityChecks": [
+    {
+      "dataType": "categorical",
+      "count": 27007526
+    },
+    {
+      "dataType": "time_series",
+      "count": 27943516
+    },
+    {
+      "dataType": "image_record",
+      "count": 794481
+    },
+    {
+      "dataType": "unidimensional",
+      "count": 23321419
+    },
+    {
+      "dataType": "ontological",
+      "count": 1982542
+    },
+    {
+      "dataType": "text",
+      "count": 600819
+    }
+  ],
+  "phenotypeAnnotations": [
+    {
+      "topLevelPhenotype": "embryo phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "digestive/alimentary phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "pigmentation phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "integument phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "growth/size/body region phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "renal/urinary system phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "homeostasis/metabolism phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "skeleton phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "endocrine/exocrine gland phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "vision/eye phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "mortality/aging",
+      "total": 2,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "respiratory system phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "cardiovascular system phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "liver/biliary system phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "hearing/vestibular/ear phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "hematopoietic system phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "limbs/digits/tail phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "reproductive system phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "adipose tissue phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "immune system phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "craniofacial phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "muscle phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "behavior/neurological phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "topLevelPhenotype": "nervous system phenotype",
+      "total": 3,
+      "counts": [
+        {
+          "zygosity": "homozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "heterozygote",
+          "count": 1
+        },
+        {
+          "zygosity": "hemizygote",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "productionStatusOverall": [
+    {
+      "statusType": "genotyping",
+      "counts": [
+        {
+          "status": null,
+          "count": 12674
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "count": 3305
+        },
+        {
+          "status": "Cre Excision Started",
+          "count": 16
+        },
+        {
+          "status": "Cre Excision Complete",
+          "count": 295
+        }
+      ]
+    },
+    {
+      "statusType": "phenotyping",
+      "counts": [
+        {
+          "status": null,
+          "count": 6757
+        },
+        {
+          "status": "Phenotyping Registered",
+          "count": 217
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "count": 3713
+        },
+        {
+          "status": "Rederivation Complete",
+          "count": 3
+        },
+        {
+          "status": "Phenotyping Finished",
+          "count": 1449
+        },
+        {
+          "status": "Phenotyping Started",
+          "count": 4151
+        }
+      ]
+    }
+  ],
+  "productionStatusByCenter": [
+    {
+      "statusType": "genotyping",
+      "counts": [
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "CAM-SU GRC",
+          "count": 48
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "CNB",
+          "count": 1
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "WTSI",
+          "count": 363
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "BCM",
+          "count": 514
+        },
+        {
+          "status": "Cre Excision Started",
+          "center": "TCP",
+          "count": 1
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "HMGU",
+          "count": 372
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "MARC",
+          "count": 9
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "CCP-IMG",
+          "count": 38
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "CDTA",
+          "count": 59
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "HMGU",
+          "count": 16
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "NARLabs",
+          "count": 4
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "UCD",
+          "count": 23
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "Harwell",
+          "count": 503
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "Monterotondo",
+          "count": 9
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "RIKEN BRC",
+          "count": 36
+        },
+        {
+          "status": "Cre Excision Started",
+          "center": "RIKEN BRC",
+          "count": 2
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "WTSI",
+          "count": 280
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "TCP",
+          "count": 4
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "ICS",
+          "count": 2
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "SEAT",
+          "count": 27
+        },
+        {
+          "status": "Cre Excision Started",
+          "center": "UCD",
+          "count": 11
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "Harwell",
+          "count": 16
+        },
+        {
+          "status": "Cre Excision Started",
+          "center": "HMGU",
+          "count": 1
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "CAM-SU GRC",
+          "count": 6
+        },
+        {
+          "status": "Cre Excision Started",
+          "center": "CAM-SU GRC",
+          "count": 1
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "Monterotondo",
+          "count": 76
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "KMPC",
+          "count": 1
+        },
+        {
+          "status": "Cre Excision Started",
+          "center": "WTSI",
+          "count": 3
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "MARC",
+          "count": 108
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "UCD",
+          "count": 879
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "JAX",
+          "count": 722
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "ICS",
+          "count": 221
+        },
+        {
+          "status": "Cre Excision Started",
+          "center": "ICS",
+          "count": 1
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "TCP",
+          "count": 290
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "JAX",
+          "count": 6
+        },
+        {
+          "status": "Cre Excision Started",
+          "center": "MARC",
+          "count": 2
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "CIPHE",
+          "count": 30
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "KMPC",
+          "count": 35
+        },
+        {
+          "status": "Cre Excision Complete",
+          "center": "BCM",
+          "count": 7
+        },
+        {
+          "status": "Mouse Allele Modification Genotype Confirmed",
+          "center": "Fleming",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "statusType": "phenotyping",
+      "counts": [
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "UCD",
+          "count": 1166
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "MARC",
+          "count": 224
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "CCP-IMG",
+          "count": 2
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "Harwell",
+          "count": 19
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "HMGU",
+          "count": 15
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "KMPC",
+          "count": 2
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "MARC",
+          "count": 24
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "BCM",
+          "count": 1125
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "KMPC",
+          "count": 4
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "RIKEN BRC",
+          "count": 104
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "UCD",
+          "count": 8
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "WTSI",
+          "count": 7
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "ICS",
+          "count": 313
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "KMPC",
+          "count": 92
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "ICS",
+          "count": 12
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "Harwell",
+          "count": 2
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "BCM",
+          "count": 38
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "UCD",
+          "count": 295
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "TCP",
+          "count": 65
+        },
+        {
+          "status": "Rederivation Complete",
+          "center": "WTSI",
+          "count": 1
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "TCP",
+          "count": 587
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "HMGU",
+          "count": 561
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "HMGU",
+          "count": 12
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "ICS",
+          "count": 10
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "JAX",
+          "count": 65
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "WTSI",
+          "count": 5
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "JAX",
+          "count": 1957
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "HMGU",
+          "count": 14
+        },
+        {
+          "status": "Rederivation Complete",
+          "center": "KMPC",
+          "count": 1
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "CCP-IMG",
+          "count": 332
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "TCP",
+          "count": 2
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "JAX",
+          "count": 21
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "MARC",
+          "count": 1
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "MARC",
+          "count": 11
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "RIKEN BRC",
+          "count": 2
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "UCD",
+          "count": 21
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "RIKEN BRC",
+          "count": 2
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "Harwell",
+          "count": 883
+        },
+        {
+          "status": "Rederivation Complete",
+          "center": "RIKEN BRC",
+          "count": 1
+        },
+        {
+          "status": "Phenotyping Registered",
+          "center": "CCP-IMG",
+          "count": 61
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "Harwell",
+          "count": 24
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "WTSI",
+          "count": 148
+        },
+        {
+          "status": "Phenotyping All Data Sent",
+          "center": "BCM",
+          "count": 16
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "CCP-IMG",
+          "count": 5
+        },
+        {
+          "status": "Phenotyping Started",
+          "center": "JAX",
+          "count": 78
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "BCM",
+          "count": 11
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "TCP",
+          "count": 7
+        },
+        {
+          "status": "Phenotyping Finished",
+          "center": "WTSI",
+          "count": 1444
+        }
+      ]
+    }
+  ],
+  "phenotypeAssociationsByProcedure": [
+    {
+      "procedure_name": "Heart Weight",
+      "total": 375,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 348
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 27
+        }
+      ]
+    },
+    {
+      "procedure_name": "Open Field",
+      "total": 3256,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 3089
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 167
+        }
+      ]
+    },
+    {
+      "procedure_name": "Fasted Clinical Chemistry",
+      "total": 117,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 117
+        }
+      ]
+    },
+    {
+      "procedure_name": "Open Field - centre start",
+      "total": 1884,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 1750
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 134
+        }
+      ]
+    },
+    {
+      "procedure_name": "Lung mechanics by forced oscillations",
+      "total": 176,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 176
+        }
+      ]
+    },
+    {
+      "procedure_name": "Modified SHIRPA",
+      "total": 286,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 286
+        }
+      ]
+    },
+    {
+      "procedure_name": "Clinical chemistry (GMC)",
+      "total": 37,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 37
+        }
+      ]
+    },
+    {
+      "procedure_name": "Fear Conditioning",
+      "total": 268,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 23
+        },
+        {
+          "lifeStage": "Early adult",
+          "count": 245
+        }
+      ]
+    },
+    {
+      "procedure_name": "Whole blood peripheral blood leukocyte immunophenotyping",
+      "total": 273,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 273
+        }
+      ]
+    },
+    {
+      "procedure_name": "Trabecular Bone MicroCT",
+      "total": 5,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "procedure_name": "Food efficiency (GMC)",
+      "total": 14,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "procedure_name": "Viability E18.5 Secondary Screen",
+      "total": 26,
+      "counts": [
+        {
+          "lifeStage": "E18.5",
+          "count": 26
+        }
+      ]
+    },
+    {
+      "procedure_name": "Dysmorphology",
+      "total": 155,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 1
+        },
+        {
+          "lifeStage": "Early adult",
+          "count": 154
+        }
+      ]
+    },
+    {
+      "procedure_name": "Gross Morphology Embryo E9.5",
+      "total": 1846,
+      "counts": [
+        {
+          "lifeStage": "E9.5",
+          "count": 1846
+        }
+      ]
+    },
+    {
+      "procedure_name": "Body Composition (DEXA lean/fat)",
+      "total": 3531,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 3344
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 187
+        }
+      ]
+    },
+    {
+      "procedure_name": "Gross Morphology Embryo E14.5-E15.5",
+      "total": 1772,
+      "counts": [
+        {
+          "lifeStage": "E15.5",
+          "count": 1772
+        }
+      ]
+    },
+    {
+      "procedure_name": "Indirect Calorimetry",
+      "total": 111,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 109
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "procedure_name": "Intraperitoneal glucose tolerance test (IPGTT)",
+      "total": 892,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 850
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 42
+        }
+      ]
+    },
+    {
+      "procedure_name": "SHIRPA",
+      "total": 8,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "procedure_name": "Auditory Brain Stem Response",
+      "total": 731,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 731
+        }
+      ]
+    },
+    {
+      "procedure_name": "Heart Dissection",
+      "total": 82,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 82
+        }
+      ]
+    },
+    {
+      "procedure_name": "Open-field",
+      "total": 168,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 168
+        }
+      ]
+    },
+    {
+      "procedure_name": "Eye Morphology",
+      "total": 3409,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 3289
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 120
+        }
+      ]
+    },
+    {
+      "procedure_name": "Fertility of Homozygous Knock-out Mice",
+      "total": 459,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 459
+        }
+      ]
+    },
+    {
+      "procedure_name": "Y-maze",
+      "total": 6,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 2
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "procedure_name": "Spontaneous breathing (GMC)",
+      "total": 19,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 19
+        }
+      ]
+    },
+    {
+      "procedure_name": "Light-Dark Test",
+      "total": 663,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 24
+        },
+        {
+          "lifeStage": "Early adult",
+          "count": 639
+        }
+      ]
+    },
+    {
+      "procedure_name": "Gross Morphology Embryo E18.5",
+      "total": 1266,
+      "counts": [
+        {
+          "lifeStage": "E18.5",
+          "count": 1266
+        }
+      ]
+    },
+    {
+      "procedure_name": "Electroconvulsive Threshold Testing",
+      "total": 10,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "procedure_name": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+      "total": 1406,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 11
+        },
+        {
+          "lifeStage": "Early adult",
+          "count": 1395
+        }
+      ]
+    },
+    {
+      "procedure_name": "Insulin Blood Level",
+      "total": 70,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 70
+        }
+      ]
+    },
+    {
+      "procedure_name": "Gross Morphology Placenta E14.5-E15.5",
+      "total": 252,
+      "counts": [
+        {
+          "lifeStage": "E15.5",
+          "count": 252
+        }
+      ]
+    },
+    {
+      "procedure_name": "Clinical Chemistry",
+      "total": 5947,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 5700
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 247
+        }
+      ]
+    },
+    {
+      "procedure_name": "Grip Strength",
+      "total": 1558,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 1436
+        },
+        {
+          "lifeStage": "Middle aged adult",
+          "count": 22
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 100
+        }
+      ]
+    },
+    {
+      "procedure_name": "Simplified IPGTT",
+      "total": 13,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 13
+        }
+      ]
+    },
+    {
+      "procedure_name": "Sleep Wake",
+      "total": 120,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 120
+        }
+      ]
+    },
+    {
+      "procedure_name": "Body Weight",
+      "total": 52,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 52
+        }
+      ]
+    },
+    {
+      "procedure_name": "Viability E12.5 Secondary Screen",
+      "total": 342,
+      "counts": [
+        {
+          "lifeStage": "E12.5",
+          "count": 342
+        }
+      ]
+    },
+    {
+      "procedure_name": "Echo",
+      "total": 416,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 383
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 33
+        }
+      ]
+    },
+    {
+      "procedure_name": "Gross Morphology Placenta E12.5",
+      "total": 49,
+      "counts": [
+        {
+          "lifeStage": "E12.5",
+          "count": 49
+        }
+      ]
+    },
+    {
+      "procedure_name": "Dexa-scan analysis",
+      "total": 278,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 278
+        }
+      ]
+    },
+    {
+      "procedure_name": "Histopathology",
+      "total": 1704,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 1556
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 148
+        }
+      ]
+    },
+    {
+      "procedure_name": "Ear epidermis immunophenotyping",
+      "total": 10,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "procedure_name": "Hole-board Exploration",
+      "total": 64,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 5
+        },
+        {
+          "lifeStage": "Early adult",
+          "count": 59
+        }
+      ]
+    },
+    {
+      "procedure_name": "Hargreaves Test",
+      "total": 4,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "procedure_name": "Haematology",
+      "total": 225,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 225
+        }
+      ]
+    },
+    {
+      "procedure_name": "FACs Analysis",
+      "total": 110,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 110
+        }
+      ]
+    },
+    {
+      "procedure_name": "Organ Weight",
+      "total": 514,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 493
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 21
+        }
+      ]
+    },
+    {
+      "procedure_name": "Slit Lamp",
+      "total": 115,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 115
+        }
+      ]
+    },
+    {
+      "procedure_name": "Von Frey Test",
+      "total": 11,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "procedure_name": "Mesenteric Lymph Node Immunophenotyping",
+      "total": 189,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 189
+        }
+      ]
+    },
+    {
+      "procedure_name": "Shirpa (GMC)",
+      "total": 11,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "procedure_name": "Age monitoring",
+      "total": 2,
+      "counts": [
+        {
+          "lifeStage": "Middle aged adult",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "procedure_name": "Combined SHIRPA and Dysmorphology",
+      "total": 3361,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 408
+        },
+        {
+          "lifeStage": "Early adult",
+          "count": 2910
+        },
+        {
+          "lifeStage": "Middle aged adult",
+          "count": 43
+        }
+      ]
+    },
+    {
+      "procedure_name": "Bodyweight (GMC)",
+      "total": 8,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "procedure_name": "Gross Morphology Placenta E18.5",
+      "total": 62,
+      "counts": [
+        {
+          "lifeStage": "E18.5",
+          "count": 62
+        }
+      ]
+    },
+    {
+      "procedure_name": "Minispec",
+      "total": 8,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "procedure_name": "Challenge Whole Body Plethysmography",
+      "total": 108,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 108
+        }
+      ]
+    },
+    {
+      "procedure_name": "IPGTT",
+      "total": 26,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 26
+        }
+      ]
+    },
+    {
+      "procedure_name": "Immunoglobulin",
+      "total": 39,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 39
+        }
+      ]
+    },
+    {
+      "procedure_name": "Electrocardiogram (ECG)",
+      "total": 582,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 39
+        },
+        {
+          "lifeStage": "Early adult",
+          "count": 543
+        }
+      ]
+    },
+    {
+      "procedure_name": "Viability E9.5 Secondary Screen",
+      "total": 554,
+      "counts": [
+        {
+          "lifeStage": "E9.5",
+          "count": 554
+        }
+      ]
+    },
+    {
+      "procedure_name": "X-ray",
+      "total": 1171,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 1163
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "procedure_name": "Ophthalmoscope",
+      "total": 43,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 43
+        }
+      ]
+    },
+    {
+      "procedure_name": "Hematology",
+      "total": 4656,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 4440
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 216
+        }
+      ]
+    },
+    {
+      "procedure_name": "Urinalysis",
+      "total": 56,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 56
+        }
+      ]
+    },
+    {
+      "procedure_name": "Anti-nuclear antibody assay",
+      "total": 40,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 40
+        }
+      ]
+    },
+    {
+      "procedure_name": "Rotarod",
+      "total": 23,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 23
+        }
+      ]
+    },
+    {
+      "procedure_name": "Viability E14.5-E15.5 Secondary Screen",
+      "total": 114,
+      "counts": [
+        {
+          "lifeStage": "E15.5",
+          "count": 114
+        }
+      ]
+    },
+    {
+      "procedure_name": "Bone marrow immunophenotyping",
+      "total": 20,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "procedure_name": "Haematology test",
+      "total": 180,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 180
+        }
+      ]
+    },
+    {
+      "procedure_name": "Formalin Test",
+      "total": 4,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "procedure_name": "ERG (Electroretinogram) (GMC)",
+      "total": 2,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "procedure_name": "Calorimetry",
+      "total": 2,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "procedure_name": "Gross Morphology Embryo E12.5",
+      "total": 484,
+      "counts": [
+        {
+          "lifeStage": "E12.5",
+          "count": 484
+        }
+      ]
+    },
+    {
+      "procedure_name": "Gross Pathology and Tissue Collection",
+      "total": 13956,
+      "counts": [
+        {
+          "lifeStage": "Late adult",
+          "count": 2727
+        },
+        {
+          "lifeStage": "Early adult",
+          "count": 11229
+        }
+      ]
+    },
+    {
+      "procedure_name": "Tail Suspension",
+      "total": 15,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 15
+        }
+      ]
+    },
+    {
+      "procedure_name": "Grip-Strength",
+      "total": 63,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 63
+        }
+      ]
+    },
+    {
+      "procedure_name": "Dark-Light Test",
+      "total": 52,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 52
+        }
+      ]
+    },
+    {
+      "procedure_name": "Spleen Immunophenotyping",
+      "total": 335,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 335
+        }
+      ]
+    },
+    {
+      "procedure_name": "Haematology (GMC)",
+      "total": 20,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "procedure_name": "Homozygote viability at weaning",
+      "total": 152,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 152
+        }
+      ]
+    },
+    {
+      "procedure_name": "Viability Primary Screen",
+      "total": 4781,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 4781
+        }
+      ]
+    },
+    {
+      "procedure_name": "Immunophenotyping",
+      "total": 298,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 282
+        },
+        {
+          "lifeStage": "Late adult",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "procedure_name": "X-Ray",
+      "total": 67,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 67
+        }
+      ]
+    },
+    {
+      "procedure_name": "Acoustic Startle&PPI",
+      "total": 372,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 372
+        }
+      ]
+    },
+    {
+      "procedure_name": "DEXA",
+      "total": 339,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 339
+        }
+      ]
+    },
+    {
+      "procedure_name": "Heart weight/tibia length",
+      "total": 36,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 36
+        }
+      ]
+    },
+    {
+      "procedure_name": "Holeboard (GMC)",
+      "total": 22,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 22
+        }
+      ]
+    },
+    {
+      "procedure_name": "Grip Strength (GMC)",
+      "total": 3,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "procedure_name": "Plasma Chemistry",
+      "total": 100,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 100
+        }
+      ]
+    },
+    {
+      "procedure_name": "Hot Plate",
+      "total": 84,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 84
+        }
+      ]
+    },
+    {
+      "procedure_name": "Indirect ophthalmoscopy",
+      "total": 74,
+      "counts": [
+        {
+          "lifeStage": "Early adult",
+          "count": 74
+        }
+      ]
+    }
+  ]
+}
