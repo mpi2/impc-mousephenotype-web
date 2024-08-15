@@ -815,7 +815,7 @@ exports[`Hearing landing page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Zygosity
                    
@@ -861,7 +861,7 @@ exports[`Hearing landing page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Status
                    
@@ -907,7 +907,7 @@ exports[`Hearing landing page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Hearing loss
                    

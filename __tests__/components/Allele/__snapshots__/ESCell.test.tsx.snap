@@ -29,7 +29,7 @@ exports[`Allele Page - ESCell renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 ES Cell Clone
                  
@@ -41,7 +41,7 @@ exports[`Allele Page - ESCell renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 ES Cell strain
                  
@@ -53,7 +53,7 @@ exports[`Allele Page - ESCell renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Parental Cell Line
                  
@@ -65,7 +65,7 @@ exports[`Allele Page - ESCell renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 IKMC Project
                  
@@ -77,7 +77,7 @@ exports[`Allele Page - ESCell renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 QC Data
                  
@@ -89,7 +89,7 @@ exports[`Allele Page - ESCell renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Targeting Vector
                  
@@ -101,7 +101,7 @@ exports[`Allele Page - ESCell renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Order / Contact
                  

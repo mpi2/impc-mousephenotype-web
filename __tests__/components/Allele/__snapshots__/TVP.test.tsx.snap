@@ -29,7 +29,7 @@ exports[`Allele Page - TVP renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Design Oligos
                  
@@ -41,7 +41,7 @@ exports[`Allele Page - TVP renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Targeting Vector
                  
@@ -53,7 +53,7 @@ exports[`Allele Page - TVP renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Cassette
                  
@@ -65,7 +65,7 @@ exports[`Allele Page - TVP renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Backbone
                  
@@ -77,7 +77,7 @@ exports[`Allele Page - TVP renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 IKMC Project
                  
@@ -89,7 +89,7 @@ exports[`Allele Page - TVP renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Genbank File
                  
@@ -101,7 +101,7 @@ exports[`Allele Page - TVP renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Vector Map
                  
@@ -113,7 +113,7 @@ exports[`Allele Page - TVP renders correctly 1`] = `
             >
               <button
                 class="inlineButton headerButton disabled"
-                style="font-weight: normal;"
+                style="font-weight: inherit;"
               >
                 Order
                  

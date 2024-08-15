@@ -177,7 +177,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                     >
                       <button
                         class="inlineButton headerButton disabled"
-                        style="font-weight: normal;"
+                        style="font-weight: inherit;"
                       >
                         Phenotype
                          
@@ -189,7 +189,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                     >
                       <button
                         class="inlineButton headerButton disabled"
-                        style="font-weight: normal;"
+                        style="font-weight: inherit;"
                       >
                         # Genes
                          

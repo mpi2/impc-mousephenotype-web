@@ -180,7 +180,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Phenotype
                    
@@ -226,7 +226,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Supporting data
                    
@@ -272,7 +272,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Zygosity
                    
@@ -318,7 +318,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Sex
                    
@@ -364,7 +364,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Life stage
                    
@@ -410,7 +410,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Parameter
                    
@@ -456,7 +456,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Phenotyping Center
                    
@@ -502,7 +502,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Most significant P-value
                    
