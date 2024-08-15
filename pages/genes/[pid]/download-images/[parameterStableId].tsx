@@ -32,7 +32,7 @@ type Image = {
 
 const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
   return (
-    <Button href={_.get(props.value, props.field) as string}>
+    <Button className="impc-primary-button" href={_.get(props.value, props.field) as string} variant="">
       <FontAwesomeIcon className="white" icon={faDownload} />
       &nbsp;
       <span className="white">Download</span>
