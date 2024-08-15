@@ -4,7 +4,14 @@ export async function initMocks() {
     server.listen();
   } else {
     const { worker } = await import("./browser");
-    worker.start();
+    return worker.start({
+      serviceWorker: {
+        url: "/data/mockServiceWorker.js",
+        options: {
+          scope: "/",
+        }
+      }
+    });
   }
 }
 
