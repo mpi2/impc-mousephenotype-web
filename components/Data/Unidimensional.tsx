@@ -66,7 +66,6 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
                   <UnidimensionalBoxPlot
                     series={data?.chartSeries || []}
                     zygosity={datasetSummary.zygosity}
-                    parameterName={datasetSummary.parameterName}
                   />
                 </div>
               </Col>

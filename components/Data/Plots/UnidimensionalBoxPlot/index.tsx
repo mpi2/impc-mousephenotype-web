@@ -71,13 +71,13 @@ const getBoxPlotDataset = (series, zygosity) => {
 interface IUnidimensionalBoxPlotProps {
   series: Array<UnidimensionalSeries>;
   zygosity: "homozygote" | "heterozygote" | "hemizygote";
-  parameterName: string;
+  chartAdditionalOptions?: Record<string, any>;
 }
 
 const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps> = ({
-  parameterName,
   series,
   zygosity,
+  chartAdditionalOptions = {},
 }) => {
   return (
     <Chart
@@ -108,6 +108,7 @@ const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps> = ({
             },
           },
         },
+        ...chartAdditionalOptions,
       }}
     />
   );
