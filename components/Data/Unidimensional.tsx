@@ -1,6 +1,5 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import moment from "moment";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../Card";
 import SortableTable from "../SortableTable";
@@ -9,13 +8,13 @@ import UnidimensionalScatterPlot from "./Plots/UnidimensionalScatterPlot";
 import { formatPValue, getDownloadData } from "@/utils";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
-import { capitalize, sortBy } from "lodash";
+import { capitalize } from "lodash";
 import StatisticalMethodTable from "./StatisticalMethodTable";
-import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
-import { fetchDatasetFromS3 } from "@/api-service";
 import { getZygosityLabel } from "@/components/Data/Utils";
+import { useUnidimensionalDataQuery } from "@/hooks";
+import { useMemo } from "react";
 
 type ChartSeries = {
   data: Array<any>;
@@ -24,46 +23,6 @@ type ChartSeries = {
 };
 
 const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
-  const getScatterSeries = (dataSeries, sex, sampleGroup) => {
-    if (!dataSeries) {
-      return null;
-    }
-    const data =
-      dataSeries
-        .find((p) => p.sampleGroup === sampleGroup && p.specimenSex === sex)
-        ?.["observations"].map((p) => {
-          const p2 = { ...p };
-          p2.x = moment(p.dateOfExperiment);
-          p2.y = +p.dataPoint;
-          return p2;
-        }) || [];
-    return {
-      sex,
-      sampleGroup,
-      data,
-    };
-  };
-
-  const filterChartSeries = (
-    zygosity: string,
-    seriesArray: Array<ChartSeries>
-  ) => {
-    if (zygosity === "hemizygote") {
-      return seriesArray.filter((c) => c.sex === "male");
-    }
-    const validExperimentalSeries = seriesArray.filter(
-      (c) => c.sampleGroup === "experimental" && c.data.length > 0
-    );
-    const validExperimentalSeriesSexes = validExperimentalSeries.map(
-      (c) => c.sex
-    );
-    const controlSeries = seriesArray.filter(
-      (c) =>
-        c.sampleGroup === "control" &&
-        validExperimentalSeriesSexes.includes(c.sex)
-    );
-    return [...controlSeries, ...validExperimentalSeries];
-  };
 
   const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
     const zygosity = datasetSummary.zygosity;
@@ -82,53 +41,14 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
     });
   };
 
-  const { data, isLoading, error, isError } = useQuery({
-    queryKey: [
-      "dataset",
-      datasetSummary.parameterName,
-      datasetSummary.datasetId,
-    ],
-    queryFn: () => fetchDatasetFromS3(datasetSummary["datasetId"]),
-    select: (response) => {
-      const dataSeries = response.series;
-      const femaleWTPoints = getScatterSeries(dataSeries, "female", "control");
-      const maleWTPoints = getScatterSeries(dataSeries, "male", "control");
-      const femaleHomPoints = getScatterSeries(
-        dataSeries,
-        "female",
-        "experimental"
-      );
-      const maleHomPoints = getScatterSeries(
-        dataSeries,
-        "male",
-        "experimental"
-      );
-      const windowPoints = [...dataSeries.flatMap((s) => s.observations)]
-        .filter((p) => p.windowWeight)
-        .map((p) => {
-          const windowP = { ...p };
-          windowP.x = moment(p.dateOfExperiment);
-          const weigth = p.windowWeight ? +p.windowWeight : null;
-          windowP.y = weigth;
-          return windowP;
-        });
-      windowPoints.sort((a, b) => a.x - b.x);
+  const { data, isLoading, error, isError } = useUnidimensionalDataQuery(
+    datasetSummary.parameterName,
+    datasetSummary.datasetId,
+    datasetSummary.zygosity,
+    isVisible
+  );
 
-      const chartSeries = sortBy(filterChartSeries(datasetSummary.zygosity, [
-        femaleWTPoints,
-        maleWTPoints,
-        femaleHomPoints,
-        maleHomPoints,
-      ]), ["sex", "sampleGroup"]);
-      return {
-        chartSeries,
-        lineSeries: [windowPoints],
-        summaryStatistics: updateSummaryStatistics(chartSeries),
-        originalData: response,
-      };
-    },
-    enabled: isVisible,
-  });
+  const summaryStatistics = useMemo(() => updateSummaryStatistics(data.chartSeries), [data]);
 
   return (
     <>
@@ -146,7 +66,6 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
                   <UnidimensionalBoxPlot
                     series={data?.chartSeries || []}
                     zygosity={datasetSummary.zygosity}
-                    parameterName={datasetSummary.parameterName}
                   />
                 </div>
               </Col>
@@ -237,7 +156,7 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
                 { width: 3, label: "# Samples", disabled: true },
               ]}
             >
-              {(data?.summaryStatistics || []).map((stats) => (
+              {summaryStatistics.map((stats) => (
                 <tr>
                   <td>{stats.label}</td>
                   <td>{stats.mean}</td>
