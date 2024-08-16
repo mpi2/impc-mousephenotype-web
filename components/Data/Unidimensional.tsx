@@ -48,8 +48,6 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
     isVisible
   );
 
-  console.log(data.chartSeries);
-
   const summaryStatistics = useMemo(() => updateSummaryStatistics(data.chartSeries), [data]);
 
   return (
