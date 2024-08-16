@@ -7,7 +7,7 @@ import { useGeneExpressionQuery } from "@/hooks";
 import { GeneContext } from "@/contexts";
 import { useRouter } from "next/router";
 import { ExpressionCell, ImagesCell } from './custom-cells';
-import { SectionHeader } from "@/components";
+import { DownloadData, SectionHeader } from "@/components";
 
 const Expressions = () => {
   const router = useRouter();
@@ -98,6 +98,36 @@ const Expressions = () => {
               cmp: <ExpressionCell expressionRateField="wtExpressionRate" countsField="controlCounts" />
             },
           ]}
+          additionalBottomControls={
+            <DownloadData<GeneExpression>
+              data={selectedData.sort((a, b) => a.parameterName.localeCompare(b.parameterName))}
+              fileName={`${gene.geneSymbol}-${tab}-lacZ-expression-data`}
+              fields={[
+                { key: "parameterName", label: "Anatomy" },
+                { key: "zygosity", label: "Zygosity" },
+                {
+                  key: "mutantCounts",
+                  label: "Mutant Expression Rate",
+                  getValueFn: (item) => {
+                    const expressionRate = item.expressionRate;
+                    const totalCounts = item.mutantCounts.expression + item.mutantCounts.noExpression;
+                    return expressionRate >= 0 ? `${expressionRate}% (${item.mutantCounts.expression}/${totalCounts})` : "N/A";
+                  }
+                },
+                {
+                  key: "controlCounts",
+                  label: "Background staining in controls (WT)",
+                  getValueFn: (item) => {
+                    const expressionRate = item.wtExpressionRate;
+                    const totalCounts = item.controlCounts.expression + item.controlCounts.noExpression;
+                    return expressionRate >= 0 ? `${expressionRate}% (${item.controlCounts.expression}/${totalCounts})` : "N/A";
+                  }
+                },
+              ]}
+            >
+              Download {tab === "adultExpressions" ? "adult" : "embryo"} data as:
+            </DownloadData>
+          }
         />
       ) : (
         <Alert variant="primary">
