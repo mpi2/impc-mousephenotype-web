@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { Alert } from "react-bootstrap";
 import { GeneContext } from "@/contexts";
 import {
   PlainTextCell,
@@ -28,6 +27,7 @@ const SignificantPhenotypes = (
   const [selectedSystem, setSelectedSystem] = useState<string>(undefined);
   const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
   const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
+  const [hoveringRef, setHoveringRef] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
@@ -75,112 +75,121 @@ const SignificantPhenotypes = (
     return _.orderBy(data, field, order);
   };
 
+  const onRefHover = (ref: string, active: boolean) => {
+    setHoveringRef(active);
+  };
+
   return (
-    <SmartTable<GenePhenotypeHits>
-      data={filteredPhenotypeData}
-      defaultSort={["phenotypeName", "asc"]}
-      customSortFunction={sortPhenotypes}
-      customFiltering
-      additionalTopControls={
-        <>
-          <FilterBox
-            controlId="queryFilter"
-            hideLabel
-            onChange={setQuery}
-            ariaLabel="Filter by parameters"
-            controlStyle={{ width: 150 }}
-          />
-          <FilterBox
-            controlId="zygosityFilterSP"
-            label="Zygosity"
-            onChange={setSelectedZygosity}
-            ariaLabel="Filter by zygosity"
-            options={zygosities}
-            controlStyle={{ width: 100, textTransform: 'capitalize' }}
-          />
-          <FilterBox
-            controlId="alleleFilter"
-            label="Allele"
-            onChange={setSelectedAllele}
-            ariaLabel="Filter by allele"
-            options={alleles}
-          />
-          <FilterBox
-            controlId="systemFilter"
-            label="Phy. System"
-            value={selectedSystem}
-            onChange={setSelectedSystem}
-            ariaLabel="Filter by physiological system"
-            options={systems}
-          />
-          <FilterBox
-            controlId="lifeStageFilter-sph"
-            label="Life Stage"
-            onChange={setSelectedLifeStage}
-            ariaLabel="Filter by life stage"
-            options={lifeStages}
-            controlStyle={{ display: 'inline-block', width: 100 }}
-          />
-        </>
-      }
-      additionalBottomControls={
-        <>
-          <DownloadData<GenePhenotypeHits>
-            data={phenotypeData}
-            fileName={`${gene.geneSymbol}-significant-phenotypes`}
-            fields={[
-              {key: 'phenotypeName', label: 'Phenotype'},
-              {key: 'alleleSymbol', label: 'Allele'},
-              {key: 'zygosity', label: 'Zygosity'},
-              {key: 'sex', label: 'Sex'},
-              {key: 'lifeStageName', label: 'Life stage'},
-              {key: 'procedureName', label: 'Procedure'},
-              {key: 'parameterName', label: 'Parameter'},
-              {key: 'phenotypingCentre', label: 'Phenotyping center'},
-              {
-                key: 'pValue',
-                label: 'Most significant P-value',
-                getValueFn: (item) => item?.pValue?.toString(10) || '-'
-              },
-            ]}
-          />
-          {hasDataRelatedToPWG && (
-            <span style={{textAlign: 'right', fontSize: "90%" }}>
-                * Significant with a threshold of 1x10-3, check the&nbsp;
-              <a className="primary link" href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
-                  Pain Sensitivity page&nbsp;
-                </a>
-                for more information.
-              </span>
-          )}
-        </>
-      }
-      columns={[
-        {
-          width: 2.2,
-          label: "Phenotype",
-          field: "phenotypeName",
-          cmp: <PlainTextCell style={{ fontWeight: 'bold' }} />
-        },
-        {
-          width: 1,
-          label: "Supporting data",
-          field: "numberOfDatasets",
-          cmp: <SupportingDataCell />
-        },
-        {
-          width: 0.8,
-          label: "System",
-          field: "topLevelPhenotypeName",
-          cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes"/>
-        },
-        {width: 1, label: "Allele", field: "alleleSymbol", cmp: <AlleleCell/>},
-        {width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{textTransform: "capitalize"}}/>},
-        {width: 0.5, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell/>},
-        {width: 0.5, label: "Significant sexes", field: "sex", cmp: <SignificantSexesCell/>},
-        {width: 0.7, label: "Significant P-value", field: "pValue", cmp: <SignificantPValueCell />},
-      ]}
-    />
+    <>
+      <SmartTable<GenePhenotypeHits>
+        data={filteredPhenotypeData}
+        defaultSort={["phenotypeName", "asc"]}
+        customSortFunction={sortPhenotypes}
+        customFiltering
+        additionalTopControls={
+          <>
+            <FilterBox
+              controlId="queryFilter"
+              hideLabel
+              onChange={setQuery}
+              ariaLabel="Filter by parameters"
+              controlStyle={{ width: 150 }}
+            />
+            <FilterBox
+              controlId="zygosityFilterSP"
+              label="Zygosity"
+              onChange={setSelectedZygosity}
+              ariaLabel="Filter by zygosity"
+              options={zygosities}
+              controlStyle={{ width: 100, textTransform: 'capitalize' }}
+            />
+            <FilterBox
+              controlId="alleleFilter"
+              label="Allele"
+              onChange={setSelectedAllele}
+              ariaLabel="Filter by allele"
+              options={alleles}
+            />
+            <FilterBox
+              controlId="systemFilter"
+              label="Phy. System"
+              value={selectedSystem}
+              onChange={setSelectedSystem}
+              ariaLabel="Filter by physiological system"
+              options={systems}
+            />
+            <FilterBox
+              controlId="lifeStageFilter-sph"
+              label="Life Stage"
+              onChange={setSelectedLifeStage}
+              ariaLabel="Filter by life stage"
+              options={lifeStages}
+              controlStyle={{ display: 'inline-block', width: 100 }}
+            />
+          </>
+        }
+        additionalBottomControls={
+          <>
+            <div style={{ fontSize: '85%', flex: '1 0 100%', backgroundColor: hoveringRef ? "#FDF0E5" : "#FFF" }}>
+              1. Does not have a P-value assigned because it was manually marked as significant
+            </div>
+            <DownloadData<GenePhenotypeHits>
+              data={phenotypeData}
+              fileName={`${gene.geneSymbol}-significant-phenotypes`}
+              fields={[
+                {key: 'phenotypeName', label: 'Phenotype'},
+                {key: 'alleleSymbol', label: 'Allele'},
+                {key: 'zygosity', label: 'Zygosity'},
+                {key: 'sex', label: 'Sex'},
+                {key: 'lifeStageName', label: 'Life stage'},
+                {key: 'procedureName', label: 'Procedure'},
+                {key: 'parameterName', label: 'Parameter'},
+                {key: 'phenotypingCentre', label: 'Phenotyping center'},
+                {
+                  key: 'pValue',
+                  label: 'Most significant P-value',
+                  getValueFn: (item) => item?.pValue?.toString(10) || '-'
+                },
+              ]}
+            />
+            {hasDataRelatedToPWG && (
+              <span style={{textAlign: 'right', fontSize: "90%" }}>
+                  * Significant with a threshold of 1x10-3, check the&nbsp;
+                <a className="primary link" href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">
+                    Pain Sensitivity page&nbsp;
+                  </a>
+                  for more information.
+                </span>
+            )}
+          </>
+        }
+        columns={[
+          {
+            width: 2.2,
+            label: "Phenotype",
+            field: "phenotypeName",
+            cmp: <PlainTextCell style={{ fontWeight: 'bold' }} />
+          },
+          {
+            width: 1,
+            label: "Supporting data",
+            field: "numberOfDatasets",
+            cmp: <SupportingDataCell />
+          },
+          {
+            width: 0.8,
+            label: "System",
+            field: "topLevelPhenotypeName",
+            cmp: <PhenotypeIconsCell allPhenotypesField="topLevelPhenotypes"/>
+          },
+          {width: 1, label: "Allele", field: "alleleSymbol", cmp: <AlleleCell/>},
+          {width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{textTransform: "capitalize"}}/>},
+          {width: 0.5, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell/>},
+          {width: 0.5, label: "Significant sexes", field: "sex", cmp: <SignificantSexesCell/>},
+          {width: 0.7, label: "Significant P-value", field: "pValue", cmp: <SignificantPValueCell onRefHover={onRefHover} />},
+        ]}
+      />
+    </>
   );
 };
 
