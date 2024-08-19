@@ -78,13 +78,13 @@ const Expressions = () => {
           filteringEnabled={false}
           columns={[
             { width: 3, label: "Anatomy", field: "parameterName", cmp: <PlainTextCell style={{ fontWeight: "bold" }} /> },
+            { width: 2, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell /> },
             {
               width: 3,
               label: "Images",
               field: "expressionImageParameters",
               cmp: <ImagesCell mgiGeneAccessionId={gene.mgiGeneAccessionId}/>
             },
-            { width: 2, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell /> },
             {
               width: 1,
               label: "Mutant Expr",
