@@ -64,7 +64,8 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(props: Props
   )
 };
 
-export const SignificantPValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+export const SignificantPValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T> & { onRefHover?: (refNum: string, active: boolean) => void }) => {
+  const { onRefHover = (p1, p2) => {} } = props;
   const pValue = _.get(props.value, props.field) as number;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   const isManualAssociation = props.value.status === "Successful" && pValue === 0;
@@ -81,7 +82,9 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(props: Ta
       <span data-testid="p-value">
         {(!!pValue && props.value.status === "Successful")
           ? formatPValue(pValue)
-          : isManualAssociation ? "Manual association" : '-'
+          : isManualAssociation
+            ? <>- <sup onMouseEnter={() => onRefHover("1", true)} onMouseLeave={() => onRefHover("1", false)}>[1]</sup></>
+            : '-'
         }&nbsp;
         {isAssociatedToPWG && <span>*</span>}
       </span>
