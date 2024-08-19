@@ -103,8 +103,9 @@ const Header = () => {
                 style={{ display: "flex", alignItems: "center" }}
               >
                 <a
-                  href={process.env.REACT_APP_BASE_URL}
+                  href="/"
                   className="header__logo-link active"
+                  aria-label="Link to IMPC homepage"
                 >
                   <img
                     className="header__logo"
