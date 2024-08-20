@@ -50,6 +50,8 @@ const getInternalLink = (name: string, link: string) => {
       return '/batch-query';
     case 'Late Adult Data':
       return '/late-adult-data';
+    case 'Latest Data Release':
+      return '/release';
     default:
       return link;
   }
