@@ -12,7 +12,7 @@ import Head from "next/head";
 import { capitalize } from "lodash";
 import { useEmbryoLandingQuery } from "@/hooks";
 import { useMemo, useState } from "react";
-import { PlainTextCell, SmartTable } from "@/components/SmartTable";
+import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import Link from "next/link";
 
 const PublicationsList = dynamic<PublicationListProps>(
@@ -419,7 +419,7 @@ const EmbryoLandingPage = () => {
               defaultSort={[ "geneSymbol", "asc" ]}
               columns={[
                 { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: <PlainTextCell/> },
-                { width: 1, label: "MGI Accession ID", field: "mgiGeneAccessionId", disabled: true, cmp: <PlainTextCell/> },
+                { width: 1, label: "MGI Accession ID", field: "mgiGeneAccessionId", disabled: true, cmp: <LinkCell prefix="/genes"/> },
               ]}
               paginationButtonsPlacement="bottom"
               displayPageControls={false}
