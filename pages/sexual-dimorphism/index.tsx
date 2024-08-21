@@ -14,6 +14,7 @@ import {
   BoxPlotController,
   BoxAndWiskers,
 } from "@sgratzl/chartjs-chart-boxplot";
+import { Chart } from "react-chartjs-2";
 import {
   faArrowUpLong,
   faArrowDownLong,
@@ -24,8 +25,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import Head from "next/head";
 import { AlleleSymbol, Card, PieChart, PublicationDataAlert, Search } from "@/components";
-import { useUnidimensionalDataQuery } from "@/hooks";
-import UnidimensionalBoxPlot from "@/components/Data/Plots/UnidimensionalBoxPlot";
 
 ChartJS.register(
   LinearScale,
@@ -52,6 +51,7 @@ const SexualDimorphismLandingPage = () => {
   const getBackgroundColor = (label: string) => {
     return label.includes('WT') ? "rgba(212, 17, 89, 0.2)" : "rgba(26, 133, 255, 0.2)";
   }
+
   const getBorderColor = (label: string) => {
     return label.includes('WT') ? "rgba(212, 17, 89, 0.7)" : "rgba(26, 133, 255, 0.5)";
   }
@@ -69,27 +69,6 @@ const SexualDimorphismLandingPage = () => {
       }]
     }
   }
-
-  const { data: hdlCholesterolData } = useUnidimensionalDataQuery(
-    'HDL-cholesterol',
-    '9968cea3691ac30a7636ebb44f4d76cf',
-    'homozygote',
-    true
-  );
-
-  const { data: boneDensityData } = useUnidimensionalDataQuery(
-    'Bone Mineral Density (excluding skull)',
-    '658b088ece37858c8a60cb2ec9b6ffad',
-    'homozygote',
-    true
-  );
-
-  const { data: fructosamineData } = useUnidimensionalDataQuery(
-    'Fructosamine',
-    '5286b76436c1e73c05ba3b1c6091b8a4',
-    'homozygote',
-    true
-  );
 
   return (
     <>
@@ -246,14 +225,41 @@ const SexualDimorphismLandingPage = () => {
                 </span>
               </div>
               <div style={{ position: 'relative', width: '100%', height: '300px' }}>
-                <UnidimensionalBoxPlot
-                  series={hdlCholesterolData.chartSeries}
-                  zygosity="homozygote"
-                  chartAdditionalOptions={{ maintainAspectRatio: false, aspectRatio: 2 }}
+                <Chart
+                  type="boxplot"
+                  data={prepareData(data.hdlCholesterol.values)}
+                  options={{
+                    maintainAspectRatio: false,
+                    aspectRatio: 2,
+                    scales: {
+                      y: {
+                        type: "linear",
+                        beginAtZero: false,
+                        ticks: {
+                          align: "center",
+                          crossAlign: "center",
+                        },
+                        title: {
+                          display: true,
+                          text: 'mg/dl'
+                        },
+                      },
+                    },
+                    plugins: {
+                      legend: {
+                        display: false,
+                        position: "bottom",
+                        labels: {
+                          usePointStyle: false,
+                          padding: 0,
+                        },
+                      },
+                    },
+                  }}
                 />
               </div>
               <div className="mt-3" style={{ textAlign: 'center' }}>
-                <GeneLink gene={{ mgiGeneAccessionId: "MGI:1922246", alleleSymbol: "Usp47<tm1b(EUCOMM)Wtsi>" }} />
+                <GeneLink gene={data.hdlCholesterol.gene} />
               </div>
             </Col>
             <Col>
@@ -265,14 +271,39 @@ const SexualDimorphismLandingPage = () => {
                 </span>
               </div>
               <div style={{ position: 'relative', width: '100%', height: '300px' }}>
-                <UnidimensionalBoxPlot
-                  series={boneDensityData.chartSeries}
-                  zygosity="homozygote"
-                  chartAdditionalOptions={{ maintainAspectRatio: false, aspectRatio: 2 }}
+                <Chart
+                  type="boxplot"
+                  data={prepareData(data.boneMineralDensity.values)}
+                  options={{
+                    maintainAspectRatio: false,
+                    aspectRatio: 2,
+                    scales: {
+                      y: {
+                        type: "linear",
+                        // max: max,
+                        // min: min,
+                        beginAtZero: false,
+                        ticks: {
+                          align: "center",
+                          crossAlign: "center",
+                        },
+                      },
+                    },
+                    plugins: {
+                      legend: {
+                        display: false,
+                        position: "bottom",
+                        labels: {
+                          usePointStyle: false,
+                          padding: 0,
+                        },
+                      },
+                    },
+                  }}
                 />
               </div>
               <div className="mt-3" style={{ textAlign: 'center' }}>
-                <GeneLink gene={{ mgiGeneAccessionId: "MGI:1890081", alleleSymbol: "Foxo3<tm1.1(KOMP)Vlcg>" }} />
+                <GeneLink gene={data.boneMineralDensity.gene} />
               </div>
             </Col>
             <Col>
@@ -284,14 +315,39 @@ const SexualDimorphismLandingPage = () => {
                 </span>
               </div>
               <div style={{ position: 'relative', width: '100%', height: '300px' }}>
-                <UnidimensionalBoxPlot
-                  series={fructosamineData.chartSeries}
-                  zygosity="homozygote"
-                  chartAdditionalOptions={{ maintainAspectRatio: false, aspectRatio: 2 }}
+                <Chart
+                  type="boxplot"
+                  data={prepareData(data.fructose.values)}
+                  options={{
+                    maintainAspectRatio: false,
+                    aspectRatio: 2,
+                    scales: {
+                      y: {
+                        type: "linear",
+                        // max: max,
+                        // min: min,
+                        beginAtZero: false,
+                        ticks: {
+                          align: "center",
+                          crossAlign: "center",
+                        },
+                      },
+                    },
+                    plugins: {
+                      legend: {
+                        display: false,
+                        position: "bottom",
+                        labels: {
+                          usePointStyle: false,
+                          padding: 0,
+                        },
+                      },
+                    },
+                  }}
                 />
               </div>
               <div className="mt-3" style={{ textAlign: 'center' }}>
-                <GeneLink gene={{ mgiGeneAccessionId: "MGI:2446239", alleleSymbol: "Galnt18<tm1b(KOMP)Wtsi>" }} />
+                <GeneLink gene={data.fructose.gene} />
               </div>
             </Col>
           </Row>
