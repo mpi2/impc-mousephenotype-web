@@ -59,11 +59,8 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
     }) ?? [];
 
   // Process disease phenotypes and mouse phenotypes
-  // TODO: this should be with ALL phenotypes, not only matched 
-  const diseasePhenotypes = processPhenotypes(phenotypes);
-  const mousePhenotypes = processPhenotypes(m_phenotypes);
-
-
+  const diseasePhenotypes = processPhenotypes(phenotypes.join());
+  const mousePhenotypes = processPhenotypes(m_phenotypes.join());
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -176,9 +173,8 @@ const Row = ({ data }: { data: GeneDisease }) => {
       </tr>
       {open && (
         <PhenoGridEl
-          phenotypes={data.diseaseMatchedPhenotypes}
-          m_phenotypes={data.modelMatchedPhenotypes}
-          // id={data.diseaseId.split(":")[1]}
+          phenotypes={data.diseasePhenotypes}
+          m_phenotypes={data.modelPhenotypes}
           id={data.modelDescription}
           phenodigmScore={data.phenodigmScore}
 
