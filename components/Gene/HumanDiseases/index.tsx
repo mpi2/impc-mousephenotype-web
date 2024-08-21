@@ -49,14 +49,6 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
   } = useRouter();
   const iframeRef = useRef(null);
 
-
-  console.log('pid:', pid)
-  console.log('disease_id I think?', id)
-
-
-  console.log('phenotypes:', phenotypes)
-  console.log('mouse phenotypes:', m_phenotypes)
-
   const processPhenotypes = (phenotypeString) =>
     phenotypeString?.split(",").map((x) => {
       const processed = x.replace(" ", "**").split("**");
@@ -85,12 +77,6 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
             label: `${phenodigmScore.toFixed(2)}-${id}`,
             phenotypes: mousePhenotypes.map(item => item.id),
           }];
-
-          console.log('subjects:', subjects);
-          // console.log('objectSets:', objectSets);
-
-          console.log('objectSets JSON:', JSON.stringify(objectSets));
-
 
           iframe.contentWindow?.postMessage({
             subjects: subjects,
