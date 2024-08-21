@@ -111,9 +111,7 @@ const SexualDimorphismLandingPage = () => {
           </h1>
           <PublicationDataAlert dataReleaseVersion="4.2">
             <p>
-              This publication page originally used the Data Release 4.2 <br/>
-              The number of mice and strains has not changed since then but the vignettes are displaying data
-              from the latest Data Release.
+              This publication page originally used the Data Release 4.2
             </p>
           </PublicationDataAlert>
           <Container>
