@@ -12,12 +12,12 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
-import Phenogrid from "phenogrid";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { DownloadData, SectionHeader } from "@/components";
+import { isIframeLoaded } from './isIframeLoaded';
 
 type ScaleProps = {
   children: number;
@@ -43,39 +43,96 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
   );
 });
 
-const PhenoGridEl = ({ phenotypes, id }) => {
+const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
   const {
     query: { pid },
   } = useRouter();
-  const cont = useRef(null);
-  const yAxis =
-    phenotypes?.split(",").map((x) => {
+  const iframeRef = useRef(null);
+
+
+  console.log('pid:', pid)
+  console.log('disease_id I think?', id)
+
+
+  console.log('phenotypes:', phenotypes)
+  console.log('mouse phenotypes:', m_phenotypes)
+
+  const processPhenotypes = (phenotypeString) =>
+    phenotypeString?.split(",").map((x) => {
       const processed = x.replace(" ", "**").split("**");
       return {
         id: processed[0],
         term: processed[1],
       };
     }) ?? [];
-  var data = {
-    title: " ",
-    xAxis: [[pid]],
-    yAxis,
-  };
+
+  // Process disease phenotypes and mouse phenotypes
+  // TODO: this should be with ALL phenotypes, not only matched 
+  const diseasePhenotypes = processPhenotypes(phenotypes);
+  const mousePhenotypes = processPhenotypes(m_phenotypes);
+
+
+
   useEffect(() => {
-    if (cont.current && Phenogrid) {
-      Phenogrid.createPhenogridForElement(cont.current, {
-        serverURL: "https://api.monarchinitiative.org/api/",
-        gridSkeletonData: data,
-        geneList: [[pid]],
-        owlSimFunction: "compare",
-      });
+    const iframe = iframeRef.current;
+    if (iframe) {
+      isIframeLoaded(iframe)
+        .then(() => {
+          console.log("Iframe loaded successfully");
+          const subjects = diseasePhenotypes.map(item => item.id);
+          const objectSets = [{
+            id: id,
+            label: `${phenodigmScore.toFixed(2)}-${id}`,
+            phenotypes: mousePhenotypes.map(item => item.id),
+          }];
+
+          console.log('subjects:', subjects);
+          // console.log('objectSets:', objectSets);
+
+          console.log('objectSets JSON:', JSON.stringify(objectSets));
+
+
+          iframe.contentWindow?.postMessage({
+            subjects: subjects,
+            "object-sets": objectSets,
+          }, "http://monarchinitiative.org");
+        })
+        .catch((error) => {
+          console.error("Error loading iframe or sending message:", error);
+        });
     }
-  }, [cont.current]);
+
+    const handleMessage = (event: MessageEvent) => {
+      const { width, height } = event.data;
+      if (!iframe) return;
+
+      // Set the iframe to fill its container
+      iframe.style.width = '100%';
+      iframe.style.height = '1000px';
+
+      // But never bigger than its contents
+      iframe.style.maxWidth = `${width}px`;
+      iframe.style.maxHeight = `${height}px`;
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, [diseasePhenotypes, mousePhenotypes, id, phenodigmScore]);
 
   return (
     <tr>
       <td colSpan={6}>
-        <div style={{ width: "100%" }} ref={cont} id={`phenogrid${id}`}></div>
+        <div style={{ width: "100%", height: "400px" }}>
+          <iframe
+            ref={iframeRef}
+            name="pheno-multi"
+            title="MultiCompare Phenogrid"
+            src="http://monarchinitiative.org/phenogrid-multi-compare"
+          />
+        </div>
       </td>
     </tr>
   );
@@ -134,7 +191,11 @@ const Row = ({ data }: { data: GeneDisease }) => {
       {open && (
         <PhenoGridEl
           phenotypes={data.diseaseMatchedPhenotypes}
-          id={data.diseaseId.split(":")[1]}
+          m_phenotypes={data.modelMatchedPhenotypes}
+          // id={data.diseaseId.split(":")[1]}
+          id={data.modelDescription}
+          phenodigmScore={data.phenodigmScore}
+
         />
       )}
     </>
