@@ -107,7 +107,9 @@ exports[`Allele page renders correctly 1`] = `
           >
             Summary
           </h3>
-          <div>
+          <div
+            style="display: grid; grid-template-columns: 1fr 1fr;"
+          >
             <span
               class="grey"
             >
@@ -118,7 +120,9 @@ exports[`Allele page renders correctly 1`] = `
               8,901
             </strong>
           </div>
-          <div>
+          <div
+            style="display: grid; grid-template-columns: 1fr 1fr;"
+          >
             <span
               class="grey"
             >
@@ -129,7 +133,9 @@ exports[`Allele page renders correctly 1`] = `
               9,594
             </strong>
           </div>
-          <div>
+          <div
+            style="display: grid; grid-template-columns: 1fr 1fr;"
+          >
             <span
               class="grey"
             >

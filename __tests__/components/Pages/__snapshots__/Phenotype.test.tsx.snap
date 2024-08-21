@@ -568,7 +568,8 @@ exports[`Phenotype page renders correctly 1`] = `
             class="grey"
             style="display: flex; gap: 0.5rem; align-items: center;"
           >
-            Download data as: 
+            Download data as:
+             
             <button
               class="btn impc-secondary-button small"
             >
