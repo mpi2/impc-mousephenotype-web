@@ -82,6 +82,7 @@ const AllData = (props: Props) => {
   const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
   const initialSelectedValues = Object.assign({...defaultSelectedValues}, additionalSelectedValues);
   const [selectedValues, setSelectedValues] = useState<SelectedValues>(initialSelectedValues);
+  const [hoveringRef, setHoveringRef] = useState<boolean>(false);
 
   const updateSelectedValue = (key: keyof SelectedValues, newValue: string): void => {
     setActivePage(0);
@@ -278,40 +279,45 @@ const AllData = (props: Props) => {
         )
       }
       additionalBottomControls={
-        <DownloadData<GeneStatisticalResult>
-          getData={getDownloadData}
-          fileName={`${gene.geneSymbol}-all-phenotype-data`}
-          fields={[
-            { key: "alleleSymbol", label: "Allele" },
-            { key: "phenotypingCentre", label: "Phenotyping center" },
-            { key: "procedureName", label: "Procedure" },
-            { key: "parameterName", label: "Parameter" },
-            { key: "zygosity", label: "Zygosity" },
-            {
-              key: "femaleMutantCount",
-              label: "Female mutant count",
-              getValueFn: (item) =>
-                item?.femaleMutantCount?.toString() || "0",
-            },
-            {
-              key: "maleMutantCount",
-              label: "Male mutant count",
-              getValueFn: (item) =>
-                item?.maleMutantCount?.toString() || "N/A",
-            },
-            { key: "lifeStageName", label: "Life stage" },
-            {
-              key: "significant",
-              label: "Significant",
-              getValueFn: (item) => (item.significant ? "Yes" : "No"),
-            },
-            {
-              key: "pValue",
-              label: "Most significant P-value",
-              getValueFn: (item) => item?.pValue?.toString() || "N/A",
-            },
-          ]}
-        />
+        <>
+          <div style={{ fontSize: '85%', flex: '1 0 100%', backgroundColor: hoveringRef ? "#FDF0E5" : "#FFF" }}>
+            1. Does not have a P-value assigned because it was manually marked as significant
+          </div>
+          <DownloadData<GeneStatisticalResult>
+            getData={getDownloadData}
+            fileName={`${gene.geneSymbol}-all-phenotype-data`}
+            fields={[
+              { key: "alleleSymbol", label: "Allele" },
+              { key: "phenotypingCentre", label: "Phenotyping center" },
+              { key: "procedureName", label: "Procedure" },
+              { key: "parameterName", label: "Parameter" },
+              { key: "zygosity", label: "Zygosity" },
+              {
+                key: "femaleMutantCount",
+                label: "Female mutant count",
+                getValueFn: (item) =>
+                  item?.femaleMutantCount?.toString() || "0",
+              },
+              {
+                key: "maleMutantCount",
+                label: "Male mutant count",
+                getValueFn: (item) =>
+                  item?.maleMutantCount?.toString() || "N/A",
+              },
+              { key: "lifeStageName", label: "Life stage" },
+              {
+                key: "significant",
+                label: "Significant",
+                getValueFn: (item) => (item.significant ? "Yes" : "No"),
+              },
+              {
+                key: "pValue",
+                label: "Most significant P-value",
+                getValueFn: (item) => item?.pValue?.toString() || "N/A",
+              },
+            ]}
+          />
+        </>
       }
       showLoadingIndicator={isFetching}
       pagination={{
@@ -386,7 +392,7 @@ const AllData = (props: Props) => {
               }}
             />,
         },
-        { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
+        { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell onRefHover={(_, isActive) => setHoveringRef(isActive) } /> },
       ]}
     />
   );

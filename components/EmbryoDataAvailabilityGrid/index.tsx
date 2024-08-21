@@ -117,13 +117,17 @@ const EmbryoDataAvailabilityGrid = ({
   const onClickTick = (cell: any) => {
     const geneAcc = geneIndex[cell.serieId];
     const dataType = cell.data.x;
+    // dont do anything if cell is empty
+    if (cell.value === 0) {
+      return;
+    }
     let url = "";
     if (
       ["OPT E9.5", "MicroCT E14.5-E15.5", "MicroCT E18.5"].includes(dataType)
     ) {
       url = `//www.mousephenotype.org/embryoviewer/?mgi=${geneAcc}`;
     } else if (dataType === "Vignettes") {
-      url = "/data/embryo/vignettes";
+      url = `/data/embryo/vignettes?gene=${cell.serieId}`;
     } else if (dataType === "LacZ") {
       url = `//www.mousephenotype.org/data/imageComparator?parameter_stable_id=IMPC_ELZ_064_001&acc=${geneAcc}`;
     } else {

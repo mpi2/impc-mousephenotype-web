@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import * as XLSX from "xlsx";
-import React from "react";
+import { PropsWithChildren, useState } from "react";
 import { Spinner } from "react-bootstrap";
 
 type Field<T> = {
@@ -21,9 +21,9 @@ type Props<T> = {
   getData: () => Promise<Array<T>>;
 });
 
-const DownloadDataComponent = <T,>({ data, fields, fileName, getData }: Props<T>) => {
-  const [isBusyXLSX, setIsBusyXLSX] = React.useState(false);
-  const [isBusyTSV, setIsBusyTSV] = React.useState(false);
+const DownloadDataComponent = <T,>({ data, fields, fileName, getData, children }: PropsWithChildren<Props<T>>) => {
+  const [isBusyXLSX, setIsBusyXLSX] = useState(false);
+  const [isBusyTSV, setIsBusyTSV] = useState(false);
 
   const generateXlsxFile = async () => {
     let finalData: Array<T>;
@@ -85,7 +85,8 @@ const DownloadDataComponent = <T,>({ data, fields, fileName, getData }: Props<T>
 
   return (
     <div className="grey" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-      Download data as:&nbsp;
+      {children ? children : `Download data as:`}
+      &nbsp;
       <button
         className="btn impc-secondary-button small"
         onClick={generateTsvFile}

@@ -73,8 +73,8 @@ type ReleaseMetadata = {
   sampleCounts: Array<SampleCounts>;
 };
 
-const valuePair = (key: string, value: string | number) => (
-  <div>
+const valuePair = (key: string, value: string | number, enableJustify: boolean = false) => (
+  <div style={enableJustify ? { display: "grid", gridTemplateColumns: "1fr 1fr" } : {}}>
     <span className="grey">{key}: </span>
     {typeof value === 'number' ? (
       <strong>{value.toLocaleString()}</strong>
@@ -328,9 +328,9 @@ const ReleaseNotesPage = (props: Props) => {
           <Row className="mb-4">
             <Col lg={6}>
               <h3 className="mb-0 mt-3 mb-2">Summary</h3>
-              {valuePair("Number of phenotyped genes", releaseMetadata.summaryCounts.phenotypedGenes)}
-              {valuePair("Number of phenotyped mutant lines", releaseMetadata.summaryCounts.phenotypedLines)}
-              {valuePair("Number of phenotype calls", releaseMetadata.summaryCounts.phentoypeCalls)}
+              {valuePair("Number of phenotyped genes", releaseMetadata.summaryCounts.phenotypedGenes, true)}
+              {valuePair("Number of phenotyped mutant lines", releaseMetadata.summaryCounts.phenotypedLines, true)}
+              {valuePair("Number of phenotype calls", releaseMetadata.summaryCounts.phentoypeCalls, true)}
             </Col>
             <Col lg={6}>
               <h3 className="mb-0 mt-3 mb-2">Data access</h3>

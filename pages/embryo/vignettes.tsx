@@ -5,7 +5,8 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 const additionalContentMap = {
   "cbx4_thymus_black.png": "Whole structural volume differences calculated as a percentage of whole body volume for the left and right thymic rudiment (left) and left and right adrenal (right) of Cbx4<sup>tm1.1/tm1.1</sup> mutant embryos compared to Cbx4<sup>+/+</sup> wildtype embryos. Both organs are significantly smaller in the Cbx4 mutant embryos at an FDR threshold of 5% where the error bars represent 95% confidence intervals.",
@@ -17,8 +18,41 @@ const additionalContentMap = {
   "Tmem132a axial.png": "Axial images from microCT volumes of wildtype (WT) and mutant (Tmem132a<sup>tm1b/tm1b</sup>) showing kidney abnormalities (extra lobe)."
 };
 
+const genePositions = {
+  'Chtop': 0,
+  'Klhdc2': 1,
+  'Acvr2a': 2,
+  'Cbx4': 3,
+  'Tmem100': 4,
+  'Eya4': 5,
+  'Tox3': 6,
+  'Rsph9': 7,
+  'Pax7': 8,
+  'Svep1': 9,
+  'Strn3': 10,
+  'Rab34': 11,
+  'Cox7c': 12,
+  'Bloc1s2': 13,
+  'Gfpt1': 14,
+  'Atg3': 15,
+  'Kdm8': 16,
+  'Slc39a8': 17,
+  'Gyg1': 18,
+  'Tmem132a': 19,
+}
+
 const EmbryoVignettesPage = () => {
+  const router = useRouter();
+  const slickRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState<string>(undefined);
+  const [navigatedToGene, setNavigatedToGene] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!!router.query.gene && slickRef.current && !navigatedToGene) {
+      slickRef.current.slickGoTo(genePositions[router.query.gene as string]);
+      setNavigatedToGene(true);
+    }
+  }, [router.isReady, slickRef]);
 
   return (
     <>
@@ -64,6 +98,7 @@ const EmbryoVignettesPage = () => {
               slidesToShow={1}
               slidesToScroll={1}
               adaptiveHeight
+              ref={slickRef}
             >
               <div className="vignette">
                 <Row>
@@ -1111,7 +1146,7 @@ const EmbryoVignettesPage = () => {
               </div>
               <div className="vignette">
                 <Row>
-                  <h1><strong>Gyg<sup>tm1b(KOMP)Wtsi</sup></strong></h1>
+                  <h1><strong>Gyg1<sup>tm1b(KOMP)Wtsi</sup></strong></h1>
                   <Col xs={8}>
                     <p>
                       Glycogenin is an enzyme that converts glucose to glycogen.

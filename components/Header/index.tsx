@@ -50,6 +50,8 @@ const getInternalLink = (name: string, link: string) => {
       return '/batch-query';
     case 'Late Adult Data':
       return '/late-adult-data';
+    case 'Latest Data Release':
+      return '/release';
     default:
       return link;
   }
@@ -103,8 +105,9 @@ const Header = () => {
                 style={{ display: "flex", alignItems: "center" }}
               >
                 <a
-                  href={process.env.REACT_APP_BASE_URL}
+                  href="/"
                   className="header__logo-link active"
+                  aria-label="Link to IMPC homepage"
                 >
                   <img
                     className="header__logo"

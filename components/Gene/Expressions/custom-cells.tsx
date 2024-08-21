@@ -11,14 +11,17 @@ export const ImagesCell = <T extends GeneExpression>(props: TableCellProps<T> & 
   return (
     !!imageParameters
     ? imageParameters.map((p, index) => (
-      <Link
-        key={index}
-        className="primary small"
-        href={`/genes/${props.mgiGeneAccessionId}/images/${p.parameterStableId}`}
-      >
-        <FontAwesomeIcon icon={faImage} />{" "}
-        {p.parameterName}
-      </Link>
+      <>
+        <Link
+          key={index}
+          className="primary small"
+          href={`/genes/${props.mgiGeneAccessionId}/images/${p.parameterStableId}`}
+        >
+          <FontAwesomeIcon icon={faImage} style={{ marginRight: "0.5rem" }} />
+          {p.parameterName === "lacz images section" ? "Section images" : "Wholemount images"}
+        </Link>
+        <br />
+      </>
     ))
     : "n/a"
   )
