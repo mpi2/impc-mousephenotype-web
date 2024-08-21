@@ -12,7 +12,7 @@ describe("useViabilityQuery hook", () => {
         return res(ctx.status(200), ctx.json(viabilityData));
       })
     );
-    const { result} = renderHook(() => useViabilityQuery("MGI:1929293", true), {
+    const { result } = renderHook(() => useViabilityQuery("MGI:1929293", true), {
       wrapper: createQueryWrapper(),
     });
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
