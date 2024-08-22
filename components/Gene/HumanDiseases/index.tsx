@@ -68,6 +68,8 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
       isIframeLoaded(iframe)
         .then(() => {
           console.log("Iframe loaded successfully");
+
+          setTimeout(() => {
           const subjects = diseasePhenotypes.map(item => item.id);
           const objectSets = [{
             id: id,
@@ -79,6 +81,9 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
             subjects: subjects,
             "object-sets": objectSets,
           }, "http://monarchinitiative.org");
+
+          console.log("Message sent with a dealy of 0.3s");
+          }, 300);
         })
         .catch((error) => {
           console.error("Error loading iframe or sending message:", error);
