@@ -48,6 +48,7 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
     query: { pid },
   } = useRouter();
   const iframeRef = useRef(null);
+  const [iframeHeight, setiFrameHeight] = useState(400);
 
   const processPhenotypes = (phenotypeString) =>
     phenotypeString?.split(",").map((x) => {
@@ -98,9 +99,9 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
       iframe.style.width = '100%';
       iframe.style.height = '1000px';
 
-      // But never bigger than its contents
+      // // But never bigger than its contents
       iframe.style.maxWidth = `${width}px`;
-      iframe.style.maxHeight = `${height}px`;
+      iframe.style.maxHeight = `${iframeHeight}px`;
     };
 
     window.addEventListener('message', handleMessage);
@@ -113,12 +114,13 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
   return (
     <tr>
       <td colSpan={6}>
-        <div style={{ width: "100%", height: "400px" }}>
+        <div style={{ width: "100%", height: `${iframeHeight}px`, overflow: "hidden" }}>
           <iframe
             ref={iframeRef}
             name="pheno-multi"
             title="MultiCompare Phenogrid"
             src="http://monarchinitiative.org/phenogrid-multi-compare"
+            style={{width: "100%", height: "100%", border: "none"}}
           />
         </div>
       </td>
