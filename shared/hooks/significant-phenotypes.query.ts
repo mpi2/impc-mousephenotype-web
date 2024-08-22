@@ -64,8 +64,7 @@ export const useSignificantPhenotypesQuery = (
         }
       });
       return Object.values(group).filter(phenotype => !phenotype.procedureStableId.includes("HIS"));
-    },
-    placeholderData: [],
+    }
   });
   return {
     phenotypeData: data as Array<GenePhenotypeHits>,

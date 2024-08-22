@@ -1,0 +1,1978 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gene Significant Phenotypes component should render correctly 1`] = `
+<div>
+  <div
+    class="buttonsWrapper top withControls"
+    data-testid="top-controls-wrapper"
+  >
+    <div
+      class="additionalWrapper"
+    >
+      <div
+        data-test-id="filterbox-queryFilter"
+      >
+        <input
+          aria-label="Filter by parameters"
+          class="bg-white form-control"
+          id="queryFilter"
+          placeholder="Search"
+          style="width: 150px;"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        data-test-id="filterbox-Zygosity"
+      >
+        <label
+          class="grey"
+          for="zygosityFilterSP"
+          style="margin-right: 0.5rem;"
+        >
+          Zygosity
+          :
+        </label>
+        <select
+          class="bg-white form-select"
+          id="zygosityFilterSP"
+          style="width: 100px; text-transform: capitalize;"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="heterozygote"
+          >
+            heterozygote
+          </option>
+          <option
+            value="homozygote"
+          >
+            homozygote
+          </option>
+        </select>
+      </div>
+      <div
+        data-test-id="filterbox-Allele"
+      >
+        <label
+          class="grey"
+          for="alleleFilter"
+          style="margin-right: 0.5rem;"
+        >
+          Allele
+          :
+        </label>
+        <select
+          class="bg-white form-select"
+          id="alleleFilter"
+          style="display: inline-block; width: 200px;"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="Myo6<Tlc>"
+          >
+            Myo6&lt;Tlc&gt;
+          </option>
+          <option
+            value="Myo6<em1(IMPC)Tcp>"
+          >
+            Myo6&lt;em1(IMPC)Tcp&gt;
+          </option>
+        </select>
+      </div>
+      <div
+        data-test-id="filterbox-Phy. System"
+      >
+        <label
+          class="grey"
+          for="systemFilter"
+          style="margin-right: 0.5rem;"
+        >
+          Phy. System
+          :
+        </label>
+        <select
+          class="bg-white form-select"
+          id="systemFilter"
+          style="display: inline-block; width: 200px;"
+        >
+          <option
+            value="all"
+          >
+            All
+          </option>
+          <option
+            value="adipose tissue phenotype"
+          >
+            adipose tissue phenotype
+          </option>
+          <option
+            value="behavior/neurological phenotype"
+          >
+            behavior/neurological phenotype
+          </option>
+          <option
+            value="cardiovascular system phenotype"
+          >
+            cardiovascular system phenotype
+          </option>
+          <option
+            value="digestive/alimentary phenotype"
+          >
+            digestive/alimentary phenotype
+          </option>
+          <option
+            value="growth/size/body region phenotype"
+          >
+            growth/size/body region phenotype
+          </option>
+          <option
+            value="hearing/vestibular/ear phenotype"
+          >
+            hearing/vestibular/ear phenotype
+          </option>
+          <option
+            value="hematopoietic system phenotype"
+          >
+            hematopoietic system phenotype
+          </option>
+          <option
+            value="homeostasis/metabolism phenotype"
+          >
+            homeostasis/metabolism phenotype
+          </option>
+          <option
+            value="immune system phenotype"
+          >
+            immune system phenotype
+          </option>
+          <option
+            value="nervous system phenotype"
+          >
+            nervous system phenotype
+          </option>
+          <option
+            value="renal/urinary system phenotype"
+          >
+            renal/urinary system phenotype
+          </option>
+          <option
+            value="reproductive system phenotype"
+          >
+            reproductive system phenotype
+          </option>
+          <option
+            value="skeleton phenotype"
+          >
+            skeleton phenotype
+          </option>
+        </select>
+      </div>
+    </div>
+    <ul
+      class="pagination justify-content-center paginationNav"
+      data-testid="nav-buttons-top"
+    >
+      <button
+        class="pagNavBtn nav-btn"
+        data-testid="top-prev-page"
+        disabled=""
+      >
+        <svg
+          aria-labelledby="svg-inline--fa-title-prev-page-icon"
+          class="svg-inline--fa fa-arrow-left "
+          data-icon="arrow-left"
+          data-prefix="fas"
+          role="img"
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="svg-inline--fa-title-prev-page-icon"
+          >
+            previous page button
+          </title>
+          <path
+            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+      <li
+        class="page-item"
+        data-testid="top-page-1"
+      >
+        <button
+          class="pagNavBtn active"
+          data-testid="top-page-1-btn"
+        >
+          1
+        </button>
+      </li>
+      <li
+        class="page-item"
+        data-testid="top-page-2"
+      >
+        <button
+          class="pagNavBtn"
+          data-testid="top-page-2-btn"
+        >
+          2
+        </button>
+      </li>
+      <li
+        class="page-item"
+        data-testid="top-page-3"
+      >
+        <button
+          class="pagNavBtn"
+          data-testid="top-page-3-btn"
+        >
+          3
+        </button>
+      </li>
+      <li
+        class="page-item"
+        data-testid="top-page-4"
+      >
+        <button
+          class="pagNavBtn"
+          data-testid="top-page-4-btn"
+        >
+          4
+        </button>
+      </li>
+      <button
+        class="pagNavBtn nav-btn"
+        data-testid="top-next-page"
+      >
+        <svg
+          aria-labelledby="svg-inline--fa-title-next-page-icon"
+          class="svg-inline--fa fa-arrow-right "
+          data-icon="arrow-right"
+          data-prefix="fas"
+          role="img"
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="svg-inline--fa-title-next-page-icon"
+          >
+            next page button
+          </title>
+          <path
+            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </ul>
+  </div>
+  <div
+    class="tableWrapper"
+  >
+    <table
+      class="table striped undefined table table-bordered"
+    >
+      <thead>
+        <tr>
+          <th
+            rowspan="2"
+            width="18.333333333333336%"
+          >
+            <button
+              class="inlineButton headerButton"
+              style="font-weight: bold;"
+            >
+              Phenotype
+               
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-caret-up sortIcon"
+                data-icon="caret-up"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 320 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </th>
+          <th
+            rowspan="2"
+            width="8.333333333333332%"
+          >
+            <button
+              class="inlineButton headerButton"
+              style="font-weight: inherit;"
+            >
+              Supporting data
+               
+              <span
+                class="defaultIcons"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-up first"
+                  data-icon="caret-up"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-down second"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </th>
+          <th
+            rowspan="2"
+            width="6.666666666666667%"
+          >
+            <button
+              class="inlineButton headerButton"
+              style="font-weight: inherit;"
+            >
+              System
+               
+              <span
+                class="defaultIcons"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-up first"
+                  data-icon="caret-up"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-down second"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </th>
+          <th
+            rowspan="2"
+            width="8.333333333333332%"
+          >
+            <button
+              class="inlineButton headerButton"
+              style="font-weight: inherit;"
+            >
+              Allele
+               
+              <span
+                class="defaultIcons"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-up first"
+                  data-icon="caret-up"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-down second"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </th>
+          <th
+            rowspan="2"
+            width="8.333333333333332%"
+          >
+            <button
+              class="inlineButton headerButton"
+              style="font-weight: inherit;"
+            >
+              Zygosity
+               
+              <span
+                class="defaultIcons"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-up first"
+                  data-icon="caret-up"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-down second"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </th>
+          <th
+            rowspan="2"
+            width="4.166666666666666%"
+          >
+            <button
+              class="inlineButton headerButton"
+              style="font-weight: inherit;"
+            >
+              Life stage
+               
+              <span
+                class="defaultIcons"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-up first"
+                  data-icon="caret-up"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-down second"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </th>
+          <th
+            rowspan="2"
+            width="4.166666666666666%"
+          >
+            <button
+              class="inlineButton headerButton"
+              style="font-weight: inherit;"
+            >
+              Significant sexes
+               
+              <span
+                class="defaultIcons"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-up first"
+                  data-icon="caret-up"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-down second"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </th>
+          <th
+            rowspan="2"
+            width="5.833333333333333%"
+          >
+            <button
+              class="inlineButton headerButton"
+              style="font-weight: inherit;"
+            >
+              Significant P-value
+               
+              <span
+                class="defaultIcons"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-up first"
+                  data-icon="caret-up"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-caret-down second"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </th>
+        </tr>
+        <tr />
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              abnormal auditory brainstem response
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0004738"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                5 supporting datasets
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g>
+                      <path
+                        d="m80.156 12.324c5.1562 7.5586 8.1797 16.375 8.7461 25.492 0.10156 1.6523-1.1523 3.0742-2.8086 3.1797-1.6133 0.11328-3.0742-1.1289-3.1797-2.8086-0.49609-8.0391-3.1641-15.812-7.7148-22.48-0.93359-1.3672-0.57812-3.2344 0.78906-4.168 1.3633-0.93359 3.2344-0.58594 4.168 0.78516z"
+                      />
+                      <path
+                        d="m75.742 50.758c-0.42188 1.6055-2.0625 2.5664-3.6602 2.1445-1.6016-0.41797-2.5625-2.0586-2.1445-3.6602 3.5-13.355-1.7695-27.801-13.719-35.742-1.3789-0.91797-1.7539-2.7773-0.83984-4.1602 0.91406-1.3828 2.7812-1.7539 4.1602-0.83594 14.172 9.4219 20.324 26.523 16.203 42.254z"
+                      />
+                      <path
+                        d="m36.211 14.059c-14.137 0.91406-25.211 13.109-25.211 27.762v31.535c0 9.5391 7.1328 17.691 16.242 18.562 10.566 0.99609 19.758-7.1992 19.758-18.043-0.027344-4.2383 1.7969-7.875 4.8828-9.7266 8.2148-4.9297 13.117-13.582 13.117-23.148 0-15.215-12.781-27.977-28.789-26.941zm-5.543 53.438c-1.375 0.91406-3.2344 0.55859-4.1602-0.82812-0.92187-1.3789-0.55078-3.2383 0.82422-4.1602 1.0273-0.69141 1.668-2.0312 1.668-3.5078s-0.64062-2.8203-1.668-3.5078c-1.3789-0.92188-1.7461-2.7852-0.82422-4.1602 0.92578-1.3789 2.7852-1.7461 4.1641-0.82422 2.7109 1.8125 4.3281 4.9883 4.3281 8.4922s-1.6211 6.6797-4.332 8.4961zm15.039-13.637c-1.418 0.85156-3.2617 0.39453-4.1172-1.0273-0.85156-1.4219-0.39453-3.2656 1.0273-4.1172 2.7461-1.6484 4.3828-4.5312 4.3828-7.7148 0-5.1719-4.4375-9.293-9.6289-8.9805-4.6133 0.29688-8.3711 4.6953-8.3711 9.8008 0 1.6562-1.3438 3-3 3s-3-1.3438-3-3c0-8.207 6.2734-15.289 13.984-15.789 8.5859-0.55859 16.016 6.3594 16.016 14.969 0 5.3086-2.7266 10.117-7.293 12.859z"
+                      />
+                    </g>
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-mars-and-venus fa-lg "
+                data-icon="mars-and-venus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                8.91
+                x10
+                <sup>
+                  -7
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              abnormal behavior
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0004924"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m57.48 10.691c0.5625 0.78125 0.64062 1.8164 0.19922 2.6719-0.44141 0.85938-1.3242 1.3984-2.2891 1.3984h-1.3906v7.4688c0 0.52344-0.42578 0.94922-0.94922 0.94922h-0.10156c-1.9453-0.21094-3.9102-0.21094-5.8594 0-0.25781 0.015624-0.51172-0.078126-0.69922-0.25781-0.19141-0.17578-0.29688-0.42188-0.30078-0.68359v-7.4688h-1.3984c-0.96094 0-1.8438-0.53906-2.2812-1.3945-0.44141-0.85156-0.36719-1.8828 0.19141-2.6641l5.3906-7.5195h-0.003907c0.48438-0.67578 1.2617-1.0742 2.0898-1.0742 0.83203 0 1.6094 0.39844 2.0938 1.0742zm9.0703 17.578c0.011719 0.26953 0.14062 0.51953 0.34766 0.69141 1.5117 1.2266 2.8867 2.6172 4.1016 4.1406 0.17188 0.20313 0.42188 0.32813 0.69141 0.34766h0.050782-0.003907c0.25391-0.003907 0.49219-0.10547 0.67188-0.27734l5.2812-5.2812 1 1c0.67969 0.67969 1.6836 0.92188 2.6016 0.625 0.91406-0.29297 1.5898-1.0742 1.7461-2.0273l1.5117-9.1289c0.15625-0.83203-0.10938-1.6914-0.71094-2.2891-0.59766-0.60156-1.457-0.86719-2.2891-0.71094l-9.0508 1.5625c-0.94922 0.15625-1.7305 0.82812-2.0273 1.7461-0.29297 0.91797-0.050781 1.9219 0.62891 2.6016l1 1-5.2812 5.2812c-0.1875 0.19141-0.28516 0.45312-0.26953 0.71875zm-37-9.6016v0.003906c-0.28906-0.91406-1.0586-1.5859-2-1.75l-9.1289-1.5117c-0.83594-0.15625-1.6914 0.10938-2.293 0.70703-0.60156 0.60156-0.86719 1.457-0.70703 2.293l1.5117 9.1289h-0.003906c0.15625 0.94922 0.83203 1.7344 1.75 2.0273 0.91406 0.29297 1.918 0.054688 2.6016-0.625l1-1 5.2812 5.2812-0.003906-0.003906c0.18359 0.17578 0.42188 0.27344 0.67188 0.28125h0.050781c0.28516-0.023438 0.54688-0.16797 0.71875-0.39844 1.2148-1.5117 2.5898-2.8867 4.1016-4.1016 0.20703-0.16797 0.33594-0.41797 0.35156-0.6875s-0.082031-0.53125-0.27344-0.72266l-5.2812-5.2812 1-1c0.69531-0.6875 0.9375-1.7109 0.62109-2.6367zm3.9297 53.059v0.003907c-0.015625-0.28516-0.15625-0.55469-0.37891-0.73047-1.5117-1.2188-2.8828-2.5898-4.1016-4.1016-0.16797-0.20703-0.41797-0.33594-0.6875-0.35156s-0.53125 0.082031-0.72266 0.27344l-5.2812 5.2812-1-1c-0.67969-0.67969-1.6836-0.92187-2.6016-0.62891-0.91406 0.29688-1.5898 1.0781-1.7461 2.0273l-1.5117 9.1289c-0.15625 0.83594 0.10938 1.6914 0.71094 2.293 0.59766 0.59766 1.457 0.86328 2.2891 0.70703l9.1289-1.5117v0.003906c0.95312-0.16016 1.7344-0.83203 2.0273-1.75 0.29688-0.91406 0.054687-1.918-0.625-2.6016l-1-1 5.2812-5.2812c0.16406-0.21484 0.23047-0.48828 0.1875-0.75781zm63.34-23.816l-7.5195-5.3906c-0.78516-0.55469-1.8125-0.63281-2.6719-0.19922-0.85156 0.4375-1.3906 1.3203-1.3906 2.2812v1.3984h-7.4688c-0.25781 0.003906-0.50391 0.10938-0.68359 0.30078-0.17578 0.1875-0.26953 0.44141-0.25781 0.69922 0.21484 1.9492 0.21484 3.9141 0 5.8594-0.011719 0.25781 0.082031 0.51172 0.25781 0.70312 0.17969 0.1875 0.42578 0.29688 0.68359 0.29688h7.4688v1.4102c0.003907 0.96094 0.53906 1.8398 1.3945 2.2812 0.85547 0.44141 1.8828 0.36719 2.668-0.19141l7.5195-5.3906c0.67578-0.48047 1.0742-1.2578 1.0742-2.0898 0-0.82812-0.39844-1.6055-1.0742-2.0898zm-30 24.539l5.2812 5.2812-1 1c-0.67969 0.67969-0.92187 1.6836-0.62891 2.6016 0.29688 0.91797 1.0781 1.5898 2.0273 1.7461l9.1289 1.5117c0.83594 0.15625 1.6914-0.10938 2.293-0.70703 0.59766-0.60156 0.86328-1.457 0.70703-2.293l-1.5508-9.0898c-0.15625-0.94922-0.82812-1.7305-1.7461-2.0273-0.91797-0.29297-1.9219-0.050781-2.6016 0.62891l-1 1-5.2812-5.2812c-0.1875-0.19141-0.44922-0.29297-0.71875-0.28125-0.26953 0.019532-0.51562 0.14453-0.69141 0.35156-1.2266 1.5156-2.6172 2.8906-4.1406 4.1094-0.20703 0.16797-0.33594 0.41797-0.35156 0.6875s0.082031 0.53125 0.27344 0.72266zm-11.43 12.789h-1.3906v-7.4688c-0.003906-0.25781-0.10938-0.50391-0.30078-0.68359-0.1875-0.17578-0.44141-0.26953-0.69922-0.25781-1.9492 0.21484-3.9141 0.21484-5.8594 0-0.25781-0.011719-0.51172 0.082031-0.70312 0.25781-0.1875 0.17969-0.29688 0.42578-0.29688 0.68359v7.4688h-1.5312c-0.96484 0-1.8477 0.53906-2.2891 1.3984-0.44141 0.85547-0.36328 1.8906 0.19922 2.6719l5.3906 7.5195c0.48047 0.67578 1.2617 1.0781 2.0898 1.0781s1.6094-0.40234 2.0898-1.0781l5.3906-7.5195c0.55859-0.78125 0.62891-1.8086 0.19141-2.6641-0.44141-0.85547-1.3203-1.3945-2.2812-1.3945zm-43.199-27.238c0.67969 0 1.332-0.26953 1.8164-0.75391 0.48047-0.48047 0.75391-1.1328 0.75391-1.8164v-1.4297h7.4688c0.25781-0.003906 0.50391-0.10938 0.68359-0.30078 0.17578-0.1875 0.26953-0.44141 0.25781-0.69922-0.21484-1.9492-0.21484-3.9141 0-5.8594 0.011719-0.25781-0.082031-0.51172-0.25781-0.70312-0.17969-0.1875-0.42578-0.29688-0.68359-0.29688h-7.4688v-1.5312c-0.003907-0.96094-0.53906-1.8398-1.3945-2.2812-0.85547-0.4375-1.8828-0.36719-2.668 0.19141l-7.5195 5.3906c-0.67578 0.48047-1.0742 1.2617-1.0742 2.0898s0.39844 1.6094 1.0742 2.0898l7.5195 5.3906c0.42969 0.32422 0.95312 0.50781 1.4922 0.51953zm22.938-14.621c0 2.2891 1.3789 4.3555 3.4961 5.2305 2.1133 0.875 4.5469 0.39062 6.168-1.2266 1.6172-1.6211 2.1016-4.0547 1.2266-6.168-0.875-2.1172-2.9414-3.4961-5.2305-3.4961-1.5 0-2.9414 0.59766-4 1.6602-1.0625 1.0586-1.6602 2.5-1.6602 4zm18.43 0c0 2.2891 1.3789 4.3555 3.4961 5.2305 2.1133 0.875 4.5469 0.39062 6.168-1.2266 1.6172-1.6211 2.1016-4.0547 1.2266-6.168-0.875-2.1172-2.9414-3.4961-5.2305-3.4961-1.5 0-2.9453 0.59375-4.0078 1.6562s-1.6602 2.5039-1.6602 4.0039zm-3.5586 22.293c11.059 0 17-10.602 15.211-11.059-1.7891-0.46484-5.0703 2.5352-15.211 2.5352s-13.359-3-15.211-2.5312c-1.8477 0.47266 4.1523 11.055 15.211 11.055z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-mars fa-lg "
+                data-icon="mars"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-venus fa-lg "
+                data-icon="venus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                1.94
+                x10
+                <sup>
+                  -16
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              abnormal gait
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0001406"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m57.48 10.691c0.5625 0.78125 0.64062 1.8164 0.19922 2.6719-0.44141 0.85938-1.3242 1.3984-2.2891 1.3984h-1.3906v7.4688c0 0.52344-0.42578 0.94922-0.94922 0.94922h-0.10156c-1.9453-0.21094-3.9102-0.21094-5.8594 0-0.25781 0.015624-0.51172-0.078126-0.69922-0.25781-0.19141-0.17578-0.29688-0.42188-0.30078-0.68359v-7.4688h-1.3984c-0.96094 0-1.8438-0.53906-2.2812-1.3945-0.44141-0.85156-0.36719-1.8828 0.19141-2.6641l5.3906-7.5195h-0.003907c0.48438-0.67578 1.2617-1.0742 2.0898-1.0742 0.83203 0 1.6094 0.39844 2.0938 1.0742zm9.0703 17.578c0.011719 0.26953 0.14062 0.51953 0.34766 0.69141 1.5117 1.2266 2.8867 2.6172 4.1016 4.1406 0.17188 0.20313 0.42188 0.32813 0.69141 0.34766h0.050782-0.003907c0.25391-0.003907 0.49219-0.10547 0.67188-0.27734l5.2812-5.2812 1 1c0.67969 0.67969 1.6836 0.92188 2.6016 0.625 0.91406-0.29297 1.5898-1.0742 1.7461-2.0273l1.5117-9.1289c0.15625-0.83203-0.10938-1.6914-0.71094-2.2891-0.59766-0.60156-1.457-0.86719-2.2891-0.71094l-9.0508 1.5625c-0.94922 0.15625-1.7305 0.82812-2.0273 1.7461-0.29297 0.91797-0.050781 1.9219 0.62891 2.6016l1 1-5.2812 5.2812c-0.1875 0.19141-0.28516 0.45312-0.26953 0.71875zm-37-9.6016v0.003906c-0.28906-0.91406-1.0586-1.5859-2-1.75l-9.1289-1.5117c-0.83594-0.15625-1.6914 0.10938-2.293 0.70703-0.60156 0.60156-0.86719 1.457-0.70703 2.293l1.5117 9.1289h-0.003906c0.15625 0.94922 0.83203 1.7344 1.75 2.0273 0.91406 0.29297 1.918 0.054688 2.6016-0.625l1-1 5.2812 5.2812-0.003906-0.003906c0.18359 0.17578 0.42188 0.27344 0.67188 0.28125h0.050781c0.28516-0.023438 0.54688-0.16797 0.71875-0.39844 1.2148-1.5117 2.5898-2.8867 4.1016-4.1016 0.20703-0.16797 0.33594-0.41797 0.35156-0.6875s-0.082031-0.53125-0.27344-0.72266l-5.2812-5.2812 1-1c0.69531-0.6875 0.9375-1.7109 0.62109-2.6367zm3.9297 53.059v0.003907c-0.015625-0.28516-0.15625-0.55469-0.37891-0.73047-1.5117-1.2188-2.8828-2.5898-4.1016-4.1016-0.16797-0.20703-0.41797-0.33594-0.6875-0.35156s-0.53125 0.082031-0.72266 0.27344l-5.2812 5.2812-1-1c-0.67969-0.67969-1.6836-0.92187-2.6016-0.62891-0.91406 0.29688-1.5898 1.0781-1.7461 2.0273l-1.5117 9.1289c-0.15625 0.83594 0.10938 1.6914 0.71094 2.293 0.59766 0.59766 1.457 0.86328 2.2891 0.70703l9.1289-1.5117v0.003906c0.95312-0.16016 1.7344-0.83203 2.0273-1.75 0.29688-0.91406 0.054687-1.918-0.625-2.6016l-1-1 5.2812-5.2812c0.16406-0.21484 0.23047-0.48828 0.1875-0.75781zm63.34-23.816l-7.5195-5.3906c-0.78516-0.55469-1.8125-0.63281-2.6719-0.19922-0.85156 0.4375-1.3906 1.3203-1.3906 2.2812v1.3984h-7.4688c-0.25781 0.003906-0.50391 0.10938-0.68359 0.30078-0.17578 0.1875-0.26953 0.44141-0.25781 0.69922 0.21484 1.9492 0.21484 3.9141 0 5.8594-0.011719 0.25781 0.082031 0.51172 0.25781 0.70312 0.17969 0.1875 0.42578 0.29688 0.68359 0.29688h7.4688v1.4102c0.003907 0.96094 0.53906 1.8398 1.3945 2.2812 0.85547 0.44141 1.8828 0.36719 2.668-0.19141l7.5195-5.3906c0.67578-0.48047 1.0742-1.2578 1.0742-2.0898 0-0.82812-0.39844-1.6055-1.0742-2.0898zm-30 24.539l5.2812 5.2812-1 1c-0.67969 0.67969-0.92187 1.6836-0.62891 2.6016 0.29688 0.91797 1.0781 1.5898 2.0273 1.7461l9.1289 1.5117c0.83594 0.15625 1.6914-0.10938 2.293-0.70703 0.59766-0.60156 0.86328-1.457 0.70703-2.293l-1.5508-9.0898c-0.15625-0.94922-0.82812-1.7305-1.7461-2.0273-0.91797-0.29297-1.9219-0.050781-2.6016 0.62891l-1 1-5.2812-5.2812c-0.1875-0.19141-0.44922-0.29297-0.71875-0.28125-0.26953 0.019532-0.51562 0.14453-0.69141 0.35156-1.2266 1.5156-2.6172 2.8906-4.1406 4.1094-0.20703 0.16797-0.33594 0.41797-0.35156 0.6875s0.082031 0.53125 0.27344 0.72266zm-11.43 12.789h-1.3906v-7.4688c-0.003906-0.25781-0.10938-0.50391-0.30078-0.68359-0.1875-0.17578-0.44141-0.26953-0.69922-0.25781-1.9492 0.21484-3.9141 0.21484-5.8594 0-0.25781-0.011719-0.51172 0.082031-0.70312 0.25781-0.1875 0.17969-0.29688 0.42578-0.29688 0.68359v7.4688h-1.5312c-0.96484 0-1.8477 0.53906-2.2891 1.3984-0.44141 0.85547-0.36328 1.8906 0.19922 2.6719l5.3906 7.5195c0.48047 0.67578 1.2617 1.0781 2.0898 1.0781s1.6094-0.40234 2.0898-1.0781l5.3906-7.5195c0.55859-0.78125 0.62891-1.8086 0.19141-2.6641-0.44141-0.85547-1.3203-1.3945-2.2812-1.3945zm-43.199-27.238c0.67969 0 1.332-0.26953 1.8164-0.75391 0.48047-0.48047 0.75391-1.1328 0.75391-1.8164v-1.4297h7.4688c0.25781-0.003906 0.50391-0.10938 0.68359-0.30078 0.17578-0.1875 0.26953-0.44141 0.25781-0.69922-0.21484-1.9492-0.21484-3.9141 0-5.8594 0.011719-0.25781-0.082031-0.51172-0.25781-0.70312-0.17969-0.1875-0.42578-0.29688-0.68359-0.29688h-7.4688v-1.5312c-0.003907-0.96094-0.53906-1.8398-1.3945-2.2812-0.85547-0.4375-1.8828-0.36719-2.668 0.19141l-7.5195 5.3906c-0.67578 0.48047-1.0742 1.2617-1.0742 2.0898s0.39844 1.6094 1.0742 2.0898l7.5195 5.3906c0.42969 0.32422 0.95312 0.50781 1.4922 0.51953zm22.938-14.621c0 2.2891 1.3789 4.3555 3.4961 5.2305 2.1133 0.875 4.5469 0.39062 6.168-1.2266 1.6172-1.6211 2.1016-4.0547 1.2266-6.168-0.875-2.1172-2.9414-3.4961-5.2305-3.4961-1.5 0-2.9414 0.59766-4 1.6602-1.0625 1.0586-1.6602 2.5-1.6602 4zm18.43 0c0 2.2891 1.3789 4.3555 3.4961 5.2305 2.1133 0.875 4.5469 0.39062 6.168-1.2266 1.6172-1.6211 2.1016-4.0547 1.2266-6.168-0.875-2.1172-2.9414-3.4961-5.2305-3.4961-1.5 0-2.9453 0.59375-4.0078 1.6562s-1.6602 2.5039-1.6602 4.0039zm-3.5586 22.293c11.059 0 17-10.602 15.211-11.059-1.7891-0.46484-5.0703 2.5352-15.211 2.5352s-13.359-3-15.211-2.5312c-1.8477 0.47266 4.1523 11.055 15.211 11.055z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-mars fa-lg "
+                data-icon="mars"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-venus fa-lg "
+                data-icon="venus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                2.05
+                x10
+                <sup>
+                  -11
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              abnormal startle reflex
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0001486"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m57.48 10.691c0.5625 0.78125 0.64062 1.8164 0.19922 2.6719-0.44141 0.85938-1.3242 1.3984-2.2891 1.3984h-1.3906v7.4688c0 0.52344-0.42578 0.94922-0.94922 0.94922h-0.10156c-1.9453-0.21094-3.9102-0.21094-5.8594 0-0.25781 0.015624-0.51172-0.078126-0.69922-0.25781-0.19141-0.17578-0.29688-0.42188-0.30078-0.68359v-7.4688h-1.3984c-0.96094 0-1.8438-0.53906-2.2812-1.3945-0.44141-0.85156-0.36719-1.8828 0.19141-2.6641l5.3906-7.5195h-0.003907c0.48438-0.67578 1.2617-1.0742 2.0898-1.0742 0.83203 0 1.6094 0.39844 2.0938 1.0742zm9.0703 17.578c0.011719 0.26953 0.14062 0.51953 0.34766 0.69141 1.5117 1.2266 2.8867 2.6172 4.1016 4.1406 0.17188 0.20313 0.42188 0.32813 0.69141 0.34766h0.050782-0.003907c0.25391-0.003907 0.49219-0.10547 0.67188-0.27734l5.2812-5.2812 1 1c0.67969 0.67969 1.6836 0.92188 2.6016 0.625 0.91406-0.29297 1.5898-1.0742 1.7461-2.0273l1.5117-9.1289c0.15625-0.83203-0.10938-1.6914-0.71094-2.2891-0.59766-0.60156-1.457-0.86719-2.2891-0.71094l-9.0508 1.5625c-0.94922 0.15625-1.7305 0.82812-2.0273 1.7461-0.29297 0.91797-0.050781 1.9219 0.62891 2.6016l1 1-5.2812 5.2812c-0.1875 0.19141-0.28516 0.45312-0.26953 0.71875zm-37-9.6016v0.003906c-0.28906-0.91406-1.0586-1.5859-2-1.75l-9.1289-1.5117c-0.83594-0.15625-1.6914 0.10938-2.293 0.70703-0.60156 0.60156-0.86719 1.457-0.70703 2.293l1.5117 9.1289h-0.003906c0.15625 0.94922 0.83203 1.7344 1.75 2.0273 0.91406 0.29297 1.918 0.054688 2.6016-0.625l1-1 5.2812 5.2812-0.003906-0.003906c0.18359 0.17578 0.42188 0.27344 0.67188 0.28125h0.050781c0.28516-0.023438 0.54688-0.16797 0.71875-0.39844 1.2148-1.5117 2.5898-2.8867 4.1016-4.1016 0.20703-0.16797 0.33594-0.41797 0.35156-0.6875s-0.082031-0.53125-0.27344-0.72266l-5.2812-5.2812 1-1c0.69531-0.6875 0.9375-1.7109 0.62109-2.6367zm3.9297 53.059v0.003907c-0.015625-0.28516-0.15625-0.55469-0.37891-0.73047-1.5117-1.2188-2.8828-2.5898-4.1016-4.1016-0.16797-0.20703-0.41797-0.33594-0.6875-0.35156s-0.53125 0.082031-0.72266 0.27344l-5.2812 5.2812-1-1c-0.67969-0.67969-1.6836-0.92187-2.6016-0.62891-0.91406 0.29688-1.5898 1.0781-1.7461 2.0273l-1.5117 9.1289c-0.15625 0.83594 0.10938 1.6914 0.71094 2.293 0.59766 0.59766 1.457 0.86328 2.2891 0.70703l9.1289-1.5117v0.003906c0.95312-0.16016 1.7344-0.83203 2.0273-1.75 0.29688-0.91406 0.054687-1.918-0.625-2.6016l-1-1 5.2812-5.2812c0.16406-0.21484 0.23047-0.48828 0.1875-0.75781zm63.34-23.816l-7.5195-5.3906c-0.78516-0.55469-1.8125-0.63281-2.6719-0.19922-0.85156 0.4375-1.3906 1.3203-1.3906 2.2812v1.3984h-7.4688c-0.25781 0.003906-0.50391 0.10938-0.68359 0.30078-0.17578 0.1875-0.26953 0.44141-0.25781 0.69922 0.21484 1.9492 0.21484 3.9141 0 5.8594-0.011719 0.25781 0.082031 0.51172 0.25781 0.70312 0.17969 0.1875 0.42578 0.29688 0.68359 0.29688h7.4688v1.4102c0.003907 0.96094 0.53906 1.8398 1.3945 2.2812 0.85547 0.44141 1.8828 0.36719 2.668-0.19141l7.5195-5.3906c0.67578-0.48047 1.0742-1.2578 1.0742-2.0898 0-0.82812-0.39844-1.6055-1.0742-2.0898zm-30 24.539l5.2812 5.2812-1 1c-0.67969 0.67969-0.92187 1.6836-0.62891 2.6016 0.29688 0.91797 1.0781 1.5898 2.0273 1.7461l9.1289 1.5117c0.83594 0.15625 1.6914-0.10938 2.293-0.70703 0.59766-0.60156 0.86328-1.457 0.70703-2.293l-1.5508-9.0898c-0.15625-0.94922-0.82812-1.7305-1.7461-2.0273-0.91797-0.29297-1.9219-0.050781-2.6016 0.62891l-1 1-5.2812-5.2812c-0.1875-0.19141-0.44922-0.29297-0.71875-0.28125-0.26953 0.019532-0.51562 0.14453-0.69141 0.35156-1.2266 1.5156-2.6172 2.8906-4.1406 4.1094-0.20703 0.16797-0.33594 0.41797-0.35156 0.6875s0.082031 0.53125 0.27344 0.72266zm-11.43 12.789h-1.3906v-7.4688c-0.003906-0.25781-0.10938-0.50391-0.30078-0.68359-0.1875-0.17578-0.44141-0.26953-0.69922-0.25781-1.9492 0.21484-3.9141 0.21484-5.8594 0-0.25781-0.011719-0.51172 0.082031-0.70312 0.25781-0.1875 0.17969-0.29688 0.42578-0.29688 0.68359v7.4688h-1.5312c-0.96484 0-1.8477 0.53906-2.2891 1.3984-0.44141 0.85547-0.36328 1.8906 0.19922 2.6719l5.3906 7.5195c0.48047 0.67578 1.2617 1.0781 2.0898 1.0781s1.6094-0.40234 2.0898-1.0781l5.3906-7.5195c0.55859-0.78125 0.62891-1.8086 0.19141-2.6641-0.44141-0.85547-1.3203-1.3945-2.2812-1.3945zm-43.199-27.238c0.67969 0 1.332-0.26953 1.8164-0.75391 0.48047-0.48047 0.75391-1.1328 0.75391-1.8164v-1.4297h7.4688c0.25781-0.003906 0.50391-0.10938 0.68359-0.30078 0.17578-0.1875 0.26953-0.44141 0.25781-0.69922-0.21484-1.9492-0.21484-3.9141 0-5.8594 0.011719-0.25781-0.082031-0.51172-0.25781-0.70312-0.17969-0.1875-0.42578-0.29688-0.68359-0.29688h-7.4688v-1.5312c-0.003907-0.96094-0.53906-1.8398-1.3945-2.2812-0.85547-0.4375-1.8828-0.36719-2.668 0.19141l-7.5195 5.3906c-0.67578 0.48047-1.0742 1.2617-1.0742 2.0898s0.39844 1.6094 1.0742 2.0898l7.5195 5.3906c0.42969 0.32422 0.95312 0.50781 1.4922 0.51953zm22.938-14.621c0 2.2891 1.3789 4.3555 3.4961 5.2305 2.1133 0.875 4.5469 0.39062 6.168-1.2266 1.6172-1.6211 2.1016-4.0547 1.2266-6.168-0.875-2.1172-2.9414-3.4961-5.2305-3.4961-1.5 0-2.9414 0.59766-4 1.6602-1.0625 1.0586-1.6602 2.5-1.6602 4zm18.43 0c0 2.2891 1.3789 4.3555 3.4961 5.2305 2.1133 0.875 4.5469 0.39062 6.168-1.2266 1.6172-1.6211 2.1016-4.0547 1.2266-6.168-0.875-2.1172-2.9414-3.4961-5.2305-3.4961-1.5 0-2.9453 0.59375-4.0078 1.6562s-1.6602 2.5039-1.6602 4.0039zm-3.5586 22.293c11.059 0 17-10.602 15.211-11.059-1.7891-0.46484-5.0703 2.5352-15.211 2.5352s-13.359-3-15.211-2.5312c-1.8477 0.47266 4.1523 11.055 15.211 11.055z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-venus fa-lg "
+                data-icon="venus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                2.86
+                x10
+                <sup>
+                  -16
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              abnormal sternum morphology
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0000157"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m77.383 45.301h-23.355l0.26953-6.6016h21.727c1.1523 0 2.0625-0.96875 2.0625-2.1016 0-1.1406-0.93359-2.1016-2.0625-2.1016l-21.555 0.003906 0.26953-6.3984h16.688c1.1523 0 2.0625-0.92578 2.0625-2.043 0-1.1328-0.93359-2.0586-2.0625-2.0586h-16.516l0.13281-3.2422c0.007812-0.12891 0.015625-0.28125 0.015625-0.41016 0-2.8047-2.2734-5.0781-5.0781-5.0781-2.8047 0-5.0781 2.2812-5.0781 5.0859 0 0.12891 0.007812 0.28125 0.015625 0.41016l0.13281 3.2344h-16.52c-1.1562 0-2.0703 0.90625-2.0703 2.0547 0 1.1172 0.93359 2.043 2.0703 2.043h16.691l0.26953 6.3984-21.496 0.003906c-1.1328 0-2.0703 0.91406-2.0703 2.0508 0 1.1523 0.9375 2.0508 2.0703 2.0508h21.668l0.26953 6.6016-23.316-0.003906c-1.1523 0-2.0664 0.91797-2.0664 2.0469 0 1.1562 0.93359 2.0508 2.0664 2.0508h23.488l0.26953 6.5-21.262 0.003906c-1.1602 0-2.0703 0.91016-2.0703 2.0391 0 1.1562 0.91016 2.0586 2.0703 2.0586h21.438l0.26953 6.5h-21.02c-0.80469 0-1.957 0.75781-1.957 1.9766 0 11.09 1.0703 16.379 6.9141 16.379 6.293 0 7.375-13.555 14.145-13.953h2.0938l0.47656 11.461c0 1.3867 1.1211 2.4844 2.5078 2.4844 1.3828 0 2.5078-1.0977 2.5078-2.4805l0.47656-11.465h2.1133c6.4258 0.80078 7.6719 13.957 13.746 13.957 5.8203 0 7.2188-5.2656 7.2188-16.355 0-1.2227-1.1523-2-1.9531-2l-20.945-0.003906 0.26953-6.4766 21.434 0.042969c1.1289 0 2.0703-0.95703 2.0703-2.0977 0-1.1328-0.94141-2.0703-2.0703-2.0703l-21.266 0.003906 0.26953-6.5h23.527c1.1289 0 2.0664-0.86719 2.0664-2.0039 0.003907-1.1328-0.93359-1.9961-2.0625-1.9961z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-mars fa-lg "
+                data-icon="mars"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                - 
+                <sup>
+                  [1]
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              abnormal stomach morphology
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0000470"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m19.039 69.312c1.0156-1.4961 2.7617-2.3242 4.5625-2.1602 1.8008 0.16797 3.3711 1.3008 4.0938 2.957 2.2148 5.0938 5.8945 9.4102 10.574 12.402 4.6758 2.9922 10.141 4.5234 15.691 4.3984 1.4727-0.03125 2.9492-0.03125 4.4258 0 11.988 0.26953 23.348-5.3438 30.414-15.027 7.0703-9.6875 8.9531-22.219 5.0391-33.551-2.1797-4.1367-6.0156-7.1484-10.547-8.2969-4.5312-1.1445-9.3359-0.31641-13.219 2.2812-0.89844 0.60156-2.0859 0.55078-2.9297-0.125-3.5742-2.8555-6.1719-6.7539-7.4375-11.152-1.2656-4.3945-1.1328-9.0781 0.37891-13.398h-9.2969c-2.957 9.5898-0.57422 20.027 6.2539 27.387 3.543 3.832 3.5117 9.7578-0.078125 13.551-3.8281 4.0508-8.6914 6.9766-14.066 8.4531-5.3711 1.4766-11.047 1.4492-16.406-0.082031-5.0508-1.4414-10.477-0.51953-14.766 2.5078-4.293 3.0273-6.9805 7.832-7.3164 13.07-0.42578 6.6094-0.31641 13.242 0.32031 19.832h10.277c-2.0117-7.9023-0.55078-16.289 4.0117-23.047z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-mars fa-lg "
+                data-icon="mars"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                - 
+                <sup>
+                  [1]
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              abnormal uterus morphology
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0001120"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g>
+                      <path
+                        d="m74.199 40.117c0-9.1836-7.4844-16.668-16.668-16.668s-16.668 7.4844-16.668 16.668c0 9.1836 7.4844 16.668 16.668 16.668s16.668-7.4688 16.668-16.668zm-21.898-5c0-2.8008 2.9336-5 6.668-5s6.668 2.1992 6.668 5c0 2.8008-2.9336 5-6.668 5s-6.668-2.1992-6.668-5z"
+                      />
+                      <path
+                        d="m35.883 20.082c-0.015624 0.035157-0.035156 0.066407-0.035156 0.11719-0.35156 0.86719-0.98438 1.582-1.7852 2.0664-2.3008 1.3516-3.6992 3.75-3.75 6.4648 0 0.94922-0.33203 1.8828-0.83203 2.5-0.035157 0.035156-0.10156 0.10156-0.13281 0.13281-1.1172 1.3516-1.7148 3.0508-1.7148 4.8008 0 0.86719 0.14844 1.7148 0.44922 2.5664 0.14844 0.39844 0.21484 0.88281 0.21484 1.3828s-0.066406 0.98438-0.23438 1.3984c-0.88281 2.5-0.39844 5.3164 1.3008 7.3672 0.61719 0.73438 0.94922 1.668 0.94922 2.6484 0.015625 1.8008 0.71484 3.5156 1.8828 4.8672 0.066407-0.066406 0.11719-0.14844 0.18359-0.21484 2.0508-2.0352 5.1172-3.668 8.2344-4.418 0.19922-0.050781 0.41797-0.066407 0.61719-0.10156-2.3164-3.2656-3.6992-7.25-3.6992-11.551 0-11.035 8.9844-20 20-20 11.035 0 20 8.9648 20 20s-8.9648 20-20 20c-1.332 0-2.6484-0.13281-3.9336-0.39844 0.050782 0.43359 0.11719 0.86719 0.11719 1.3164 0 2.5664-0.76562 5.3672-2.0508 7.8164 0.75-0.015625 1.4844 0.16797 2.1328 0.53516 0.050781 0.035156 0.10156 0.050782 0.14844 0.082032 1.1172 0.60156 2.3516 0.91797 3.582 0.91797 1.3008 0 2.6016-0.35156 3.7148-1 0.86719-0.46484 1.832-0.63281 2.832-0.48438 2.6172 0.39844 5.2656-0.55078 6.9648-2.5508 0.63281-0.75 1.5-1.25 2.4336-1.4336 2.582-0.46484 4.7852-2.2852 5.7148-4.7656 0.015625-0.035156 0.035156-0.066406 0.035156-0.11719 0.35156-0.86719 0.98438-1.582 1.7852-2.0664 2.3008-1.3516 3.6992-3.75 3.7344-6.4648 0-0.94922 0.35156-1.8828 0.85156-2.5 0.035156-0.035156 0.10156-0.10156 0.13281-0.13281 1.1172-1.3516 1.7344-3.0508 1.7344-4.8008 0-0.86719-0.16797-1.7148-0.46484-2.5664-0.14844-0.41797-0.23438-0.88281-0.23438-1.3828s0.082031-0.96484 0.25-1.3984c0.88281-2.5 0.39844-5.3164-1.3008-7.3672-0.61719-0.73438-0.96484-1.668-0.96484-2.6484-0.015625-2.6172-1.4492-5.082-3.7344-6.4336-0.80078-0.48438-1.4336-1.1992-1.7656-2.0664-0.015625-0.035157-0.035156-0.066407-0.050782-0.11719-0.91797-2.4648-3.1016-4.3008-5.6992-4.7656-0.015625-0.015625-0.050782-0.015625-0.066406-0.015625-0.92969-0.18359-1.7617-0.68359-2.3633-1.4023-0.050781-0.066407-0.10156-0.11719-0.16797-0.16797-1.6992-1.8984-4.1484-2.8008-6.8516-2.3984-0.96484 0.16797-1.9336-0.015625-2.7656-0.48438-0.050781-0.035156-0.10156-0.050781-0.14844-0.066406-2.2656-1.25-5.1016-1.1992-7.3008 0.066406-0.86719 0.46484-1.8008 0.64844-2.832 0.48438-2.6328-0.38281-5.2656 0.55078-6.9492 2.5508-0.64844 0.75-1.5156 1.25-2.4492 1.4336-2.5859 0.46875-4.7852 2.2852-5.7188 4.7656z"
+                      />
+                      <path
+                        d="m24.602 79.168c0 3.082-2.1836 5.7852-5.1836 6.4492l-5.5664 1.2148c-0.89844 0.19922-1.4648 1.082-1.2656 1.9844 0.16797 0.78516 0.86719 1.3164 1.6328 1.3164 0.11719 0 0.23438-0.015624 0.35156-0.035156l5.5664-1.2148c4.5156-0.98437 7.8164-5.0664 7.8164-9.6992 0-2.5352 1.3984-4.8008 3.668-5.918l3.918-1.9336c1.4336 1.0508 3.1172 1.6016 4.832 1.6016 2.2148 0 4.4648-0.86719 6.168-2.582 3.25-3.2344 5.582-10.516 2.168-13.934-1.6016-1.6172-4.1992-2.1016-7.3164-1.3672-2.5156 0.60156-5.0508 1.9492-6.6328 3.5156-2.7852 2.8008-3.2852 6.9844-1.5 10.184l-3.1172 1.5352c-3.4258 1.6641-5.5391 5.0664-5.5391 8.8828z"
+                      />
+                    </g>
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-venus fa-lg "
+                data-icon="venus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                - 
+                <sup>
+                  [1]
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              decreased anxiety-related response
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0001364"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m57.48 10.691c0.5625 0.78125 0.64062 1.8164 0.19922 2.6719-0.44141 0.85938-1.3242 1.3984-2.2891 1.3984h-1.3906v7.4688c0 0.52344-0.42578 0.94922-0.94922 0.94922h-0.10156c-1.9453-0.21094-3.9102-0.21094-5.8594 0-0.25781 0.015624-0.51172-0.078126-0.69922-0.25781-0.19141-0.17578-0.29688-0.42188-0.30078-0.68359v-7.4688h-1.3984c-0.96094 0-1.8438-0.53906-2.2812-1.3945-0.44141-0.85156-0.36719-1.8828 0.19141-2.6641l5.3906-7.5195h-0.003907c0.48438-0.67578 1.2617-1.0742 2.0898-1.0742 0.83203 0 1.6094 0.39844 2.0938 1.0742zm9.0703 17.578c0.011719 0.26953 0.14062 0.51953 0.34766 0.69141 1.5117 1.2266 2.8867 2.6172 4.1016 4.1406 0.17188 0.20313 0.42188 0.32813 0.69141 0.34766h0.050782-0.003907c0.25391-0.003907 0.49219-0.10547 0.67188-0.27734l5.2812-5.2812 1 1c0.67969 0.67969 1.6836 0.92188 2.6016 0.625 0.91406-0.29297 1.5898-1.0742 1.7461-2.0273l1.5117-9.1289c0.15625-0.83203-0.10938-1.6914-0.71094-2.2891-0.59766-0.60156-1.457-0.86719-2.2891-0.71094l-9.0508 1.5625c-0.94922 0.15625-1.7305 0.82812-2.0273 1.7461-0.29297 0.91797-0.050781 1.9219 0.62891 2.6016l1 1-5.2812 5.2812c-0.1875 0.19141-0.28516 0.45312-0.26953 0.71875zm-37-9.6016v0.003906c-0.28906-0.91406-1.0586-1.5859-2-1.75l-9.1289-1.5117c-0.83594-0.15625-1.6914 0.10938-2.293 0.70703-0.60156 0.60156-0.86719 1.457-0.70703 2.293l1.5117 9.1289h-0.003906c0.15625 0.94922 0.83203 1.7344 1.75 2.0273 0.91406 0.29297 1.918 0.054688 2.6016-0.625l1-1 5.2812 5.2812-0.003906-0.003906c0.18359 0.17578 0.42188 0.27344 0.67188 0.28125h0.050781c0.28516-0.023438 0.54688-0.16797 0.71875-0.39844 1.2148-1.5117 2.5898-2.8867 4.1016-4.1016 0.20703-0.16797 0.33594-0.41797 0.35156-0.6875s-0.082031-0.53125-0.27344-0.72266l-5.2812-5.2812 1-1c0.69531-0.6875 0.9375-1.7109 0.62109-2.6367zm3.9297 53.059v0.003907c-0.015625-0.28516-0.15625-0.55469-0.37891-0.73047-1.5117-1.2188-2.8828-2.5898-4.1016-4.1016-0.16797-0.20703-0.41797-0.33594-0.6875-0.35156s-0.53125 0.082031-0.72266 0.27344l-5.2812 5.2812-1-1c-0.67969-0.67969-1.6836-0.92187-2.6016-0.62891-0.91406 0.29688-1.5898 1.0781-1.7461 2.0273l-1.5117 9.1289c-0.15625 0.83594 0.10938 1.6914 0.71094 2.293 0.59766 0.59766 1.457 0.86328 2.2891 0.70703l9.1289-1.5117v0.003906c0.95312-0.16016 1.7344-0.83203 2.0273-1.75 0.29688-0.91406 0.054687-1.918-0.625-2.6016l-1-1 5.2812-5.2812c0.16406-0.21484 0.23047-0.48828 0.1875-0.75781zm63.34-23.816l-7.5195-5.3906c-0.78516-0.55469-1.8125-0.63281-2.6719-0.19922-0.85156 0.4375-1.3906 1.3203-1.3906 2.2812v1.3984h-7.4688c-0.25781 0.003906-0.50391 0.10938-0.68359 0.30078-0.17578 0.1875-0.26953 0.44141-0.25781 0.69922 0.21484 1.9492 0.21484 3.9141 0 5.8594-0.011719 0.25781 0.082031 0.51172 0.25781 0.70312 0.17969 0.1875 0.42578 0.29688 0.68359 0.29688h7.4688v1.4102c0.003907 0.96094 0.53906 1.8398 1.3945 2.2812 0.85547 0.44141 1.8828 0.36719 2.668-0.19141l7.5195-5.3906c0.67578-0.48047 1.0742-1.2578 1.0742-2.0898 0-0.82812-0.39844-1.6055-1.0742-2.0898zm-30 24.539l5.2812 5.2812-1 1c-0.67969 0.67969-0.92187 1.6836-0.62891 2.6016 0.29688 0.91797 1.0781 1.5898 2.0273 1.7461l9.1289 1.5117c0.83594 0.15625 1.6914-0.10938 2.293-0.70703 0.59766-0.60156 0.86328-1.457 0.70703-2.293l-1.5508-9.0898c-0.15625-0.94922-0.82812-1.7305-1.7461-2.0273-0.91797-0.29297-1.9219-0.050781-2.6016 0.62891l-1 1-5.2812-5.2812c-0.1875-0.19141-0.44922-0.29297-0.71875-0.28125-0.26953 0.019532-0.51562 0.14453-0.69141 0.35156-1.2266 1.5156-2.6172 2.8906-4.1406 4.1094-0.20703 0.16797-0.33594 0.41797-0.35156 0.6875s0.082031 0.53125 0.27344 0.72266zm-11.43 12.789h-1.3906v-7.4688c-0.003906-0.25781-0.10938-0.50391-0.30078-0.68359-0.1875-0.17578-0.44141-0.26953-0.69922-0.25781-1.9492 0.21484-3.9141 0.21484-5.8594 0-0.25781-0.011719-0.51172 0.082031-0.70312 0.25781-0.1875 0.17969-0.29688 0.42578-0.29688 0.68359v7.4688h-1.5312c-0.96484 0-1.8477 0.53906-2.2891 1.3984-0.44141 0.85547-0.36328 1.8906 0.19922 2.6719l5.3906 7.5195c0.48047 0.67578 1.2617 1.0781 2.0898 1.0781s1.6094-0.40234 2.0898-1.0781l5.3906-7.5195c0.55859-0.78125 0.62891-1.8086 0.19141-2.6641-0.44141-0.85547-1.3203-1.3945-2.2812-1.3945zm-43.199-27.238c0.67969 0 1.332-0.26953 1.8164-0.75391 0.48047-0.48047 0.75391-1.1328 0.75391-1.8164v-1.4297h7.4688c0.25781-0.003906 0.50391-0.10938 0.68359-0.30078 0.17578-0.1875 0.26953-0.44141 0.25781-0.69922-0.21484-1.9492-0.21484-3.9141 0-5.8594 0.011719-0.25781-0.082031-0.51172-0.25781-0.70312-0.17969-0.1875-0.42578-0.29688-0.68359-0.29688h-7.4688v-1.5312c-0.003907-0.96094-0.53906-1.8398-1.3945-2.2812-0.85547-0.4375-1.8828-0.36719-2.668 0.19141l-7.5195 5.3906c-0.67578 0.48047-1.0742 1.2617-1.0742 2.0898s0.39844 1.6094 1.0742 2.0898l7.5195 5.3906c0.42969 0.32422 0.95312 0.50781 1.4922 0.51953zm22.938-14.621c0 2.2891 1.3789 4.3555 3.4961 5.2305 2.1133 0.875 4.5469 0.39062 6.168-1.2266 1.6172-1.6211 2.1016-4.0547 1.2266-6.168-0.875-2.1172-2.9414-3.4961-5.2305-3.4961-1.5 0-2.9414 0.59766-4 1.6602-1.0625 1.0586-1.6602 2.5-1.6602 4zm18.43 0c0 2.2891 1.3789 4.3555 3.4961 5.2305 2.1133 0.875 4.5469 0.39062 6.168-1.2266 1.6172-1.6211 2.1016-4.0547 1.2266-6.168-0.875-2.1172-2.9414-3.4961-5.2305-3.4961-1.5 0-2.9453 0.59375-4.0078 1.6562s-1.6602 2.5039-1.6602 4.0039zm-3.5586 22.293c11.059 0 17-10.602 15.211-11.059-1.7891-0.46484-5.0703 2.5352-15.211 2.5352s-13.359-3-15.211-2.5312c-1.8477 0.47266 4.1523 11.055 15.211 11.055z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-venus fa-lg "
+                data-icon="venus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                4.86
+                x10
+                <sup>
+                  -12
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              decreased body length
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0001258"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g>
+                      <path
+                        d="m24.121 45.121 7.8789-7.8828v38.762h6v-38.762l7.8789 7.8789 4.2383-4.2383-13-13h0.003906c-1.1719-1.168-3.0703-1.168-4.2422 0l-13 13z"
+                      />
+                      <path
+                        d="m54 24h26v6h-26z"
+                      />
+                      <path
+                        d="m64 39h16v6h-16z"
+                      />
+                      <path
+                        d="m54 54h26v6h-26z"
+                      />
+                      <path
+                        d="m64 69h16v6h-16z"
+                      />
+                    </g>
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              homozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-venus fa-lg "
+                data-icon="venus"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 384 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                2.65
+                x10
+                <sup>
+                  -12
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              style="font-weight: bold;"
+            >
+              decreased body temperature
+            </span>
+          </td>
+          <td>
+            <a
+              href="/data/charts?mgiGeneAccessionId=MGI:104785&mpTermId=MP:0005534"
+            >
+              <span
+                class="link primary small float-right"
+              >
+                1 supporting dataset
+              </span>
+            </a>
+          </td>
+          <td>
+            <span
+              style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
+            >
+              <span>
+                <span
+                  class="bodySystemNoSpacing system-icon in-table"
+                  data-testid="body-icon"
+                >
+                  <svg
+                    class="currentColor"
+                    height="2rem"
+                    style="color: currentColor; fill: currentColor;"
+                    version="1.1"
+                    viewBox="0 0 100 100"
+                    width="2rem"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m79.52 39.066h-27.551c-1.082 0-1.9688-0.88672-1.9688-1.9688v-28.645c0-4.2109-1.6484-4.6289-3.6641-0.93359l-12.734 23.348-14.832 27.188c-0.86328 1.5859-0.09375 2.8828 1.7109 2.8828h13.117 14.434c1.082 0 1.9688 0.88672 1.9688 1.9688v28.648c0 4.2109 1.6484 4.6289 3.6641 0.93359l12.734-23.355 14.828-27.188c0.86719-1.582 0.097657-2.8789-1.707-2.8789z"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </span>
+          </td>
+          <td>
+            <span>
+              <i>
+                Myo6
+                <sup>
+                  Tlc
+                </sup>
+              </i>
+            </span>
+          </td>
+          <td>
+            <span
+              style="text-transform: capitalize;"
+            >
+              heterozygote
+            </span>
+          </td>
+          <td>
+            <span>
+              Early adult
+            </span>
+          </td>
+          <td>
+            <span
+              class="me-2"
+              data-testid="sex-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-mars fa-lg "
+                data-icon="mars"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </td>
+          <td>
+            <span
+              class="bold"
+              style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+            >
+              <span
+                data-testid="p-value"
+              >
+                3.16
+                x10
+                <sup>
+                  -8
+                </sup>
+                 
+              </span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    class="buttonsWrapper withControls"
+  >
+    <div
+      class="additionalWrapper bottomControls"
+    >
+      <div
+        style="font-size: 85%; flex: 1 0 100%; background-color: rgb(255, 255, 255);"
+      >
+        1. Does not have a P-value assigned because it was manually marked as significant
+      </div>
+      <div
+        class="grey"
+        style="display: flex; gap: 0.5rem; align-items: center;"
+      >
+        Download data as:
+         
+        <button
+          class="btn impc-secondary-button small"
+        >
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-download fa-sm "
+            data-icon="download"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+              fill="currentColor"
+            />
+          </svg>
+           TSV
+        </button>
+         
+        <button
+          class="btn impc-secondary-button small"
+        >
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-download fa-sm "
+            data-icon="download"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+              fill="currentColor"
+            />
+          </svg>
+           XLS
+        </button>
+      </div>
+    </div>
+    <div
+      class="bottomPaginationControls"
+    >
+      <div
+        style="display: flex; align-items: center;"
+      >
+        Rows per page: 
+        <select
+          aria-label="rows per page selector"
+        >
+          <option
+            value="10"
+          >
+            10
+          </option>
+          <option
+            value="20"
+          >
+            20
+          </option>
+          <option
+            value="30"
+          >
+            30
+          </option>
+          <option
+            value="50"
+          >
+            50
+          </option>
+          <option
+            value="100"
+          >
+            100
+          </option>
+        </select>
+      </div>
+    </div>
+    <ul
+      class="pagination justify-content-center paginationNav"
+      data-testid="nav-buttons-bottom"
+    >
+      <button
+        class="pagNavBtn nav-btn"
+        data-testid="bottom-prev-page"
+        disabled=""
+      >
+        <svg
+          aria-labelledby="svg-inline--fa-title-prev-page-icon"
+          class="svg-inline--fa fa-arrow-left "
+          data-icon="arrow-left"
+          data-prefix="fas"
+          role="img"
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="svg-inline--fa-title-prev-page-icon"
+          >
+            previous page button
+          </title>
+          <path
+            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+      <li
+        class="page-item"
+        data-testid="bottom-page-1"
+      >
+        <button
+          class="pagNavBtn active"
+          data-testid="bottom-page-1-btn"
+        >
+          1
+        </button>
+      </li>
+      <li
+        class="page-item"
+        data-testid="bottom-page-2"
+      >
+        <button
+          class="pagNavBtn"
+          data-testid="bottom-page-2-btn"
+        >
+          2
+        </button>
+      </li>
+      <li
+        class="page-item"
+        data-testid="bottom-page-3"
+      >
+        <button
+          class="pagNavBtn"
+          data-testid="bottom-page-3-btn"
+        >
+          3
+        </button>
+      </li>
+      <li
+        class="page-item"
+        data-testid="bottom-page-4"
+      >
+        <button
+          class="pagNavBtn"
+          data-testid="bottom-page-4-btn"
+        >
+          4
+        </button>
+      </li>
+      <button
+        class="pagNavBtn nav-btn"
+        data-testid="bottom-next-page"
+      >
+        <svg
+          aria-labelledby="svg-inline--fa-title-next-page-icon"
+          class="svg-inline--fa fa-arrow-right "
+          data-icon="arrow-right"
+          data-prefix="fas"
+          role="img"
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title
+            id="svg-inline--fa-title-next-page-icon"
+          >
+            next page button
+          </title>
+          <path
+            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </ul>
+  </div>
+</div>
+`;
