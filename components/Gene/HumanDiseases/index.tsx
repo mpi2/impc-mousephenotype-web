@@ -325,8 +325,8 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                     { width: 1, label: "Expand", disabled: true },
                   ]}
                 >
-                  {pageData.map((d, index) => (
-                    <Row key={index} data={d} />
+                  {pageData.map((d) => (
+                    <Row key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`} data={d} />
                   ))}
                 </SortableTable>
               )}
