@@ -8,13 +8,5 @@ export function isIframeLoaded(iframe) {
         }
         iframe.addEventListener('load', () => resolve(iframe));
         iframe.addEventListener('error', () => reject("Error loading iframe"));
-
-        // Additional check if iframe is already loaded
-        const timer = setInterval(() => {
-            if (iframe.contentWindow) {
-                clearInterval(timer);
-                resolve(iframe);
-            }
-        }, 100);
     });
 }
