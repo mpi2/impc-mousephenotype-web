@@ -4,7 +4,7 @@ import styles from "@/components/Gene/Phenotypes/AllData/styles.module.scss";
 import _ from "lodash";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
-import { faInfo } from '@fortawesome/free-solid-svg-icons';
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Overlay, Tooltip } from "react-bootstrap";
 import { useRef, useState } from "react";
@@ -25,23 +25,35 @@ export const ParameterCell = <T extends GeneStatisticalResult>(
 type PhenotypeIconsCellProps<T> = {
   allPhenotypesField: keyof T;
 } & TableCellProps<T>;
-export const PhenotypeIconsCell = <T extends GeneStatisticalResult>(props: PhenotypeIconsCellProps<T>) => {
-  const phenotypes = (_.get(props.value, props.allPhenotypesField) || []) as Array<{ name: string }>;
+export const PhenotypeIconsCell = <T extends GeneStatisticalResult>(
+  props: PhenotypeIconsCellProps<T>
+) => {
+  const phenotypes = (_.get(props.value, props.allPhenotypesField) ||
+    []) as Array<{ name: string }>;
   return (
-    <span style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem'}}>
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: "1rem",
+      }}
+    >
       <span>
-        {phenotypes.map(({name}) => (
-          <BodySystem name={name} color="system-icon in-table" noSpacing/>
+        {phenotypes.map(({ name }) => (
+          <BodySystem name={name} color="system-icon in-table" noSpacing />
         ))}
       </span>
     </span>
-  )
+  );
 };
 
 type Props<T> = {
   mpTermIdKey?: keyof T;
 } & TableCellProps<T>;
-export const SupportingDataCell = <T extends GeneStatisticalResult>(props: Props<T>) => {
+export const SupportingDataCell = <T extends GeneStatisticalResult>(
+  props: Props<T>
+) => {
   const {
     mgiGeneAccessionId,
     alleleAccessionId,
@@ -55,20 +67,26 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(props: Props
   let url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
-    url = "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
+    url =
+      "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
   }
   return (
     <Link href={url}>
       <span className="link primary small float-right">Supporting data</span>
     </Link>
-  )
+  );
 };
 
-export const SignificantPValueCell = <T extends GeneStatisticalResult>(props: TableCellProps<T> & { onRefHover?: (refNum: string, active: boolean) => void }) => {
+export const SignificantPValueCell = <T extends GeneStatisticalResult>(
+  props: TableCellProps<T> & {
+    onRefHover?: (refNum: string, active: boolean) => void;
+  }
+) => {
   const { onRefHover = (p1, p2) => {} } = props;
   const pValue = _.get(props.value, props.field) as number;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
-  const isManualAssociation = props.value.status === "Successful" && pValue === 0;
+  const isManualAssociation =
+    props.value.status === "Successful" && pValue === 0;
 
   return (
     <span
@@ -80,23 +98,43 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(props: Ta
       }}
     >
       <span data-testid="p-value">
-        {(!!pValue && props.value.status === "Successful")
-          ? formatPValue(pValue)
-          : isManualAssociation
-            ? <>- <sup onMouseEnter={() => onRefHover("1", true)} onMouseLeave={() => onRefHover("1", false)}>[1]</sup></>
-            : '-'
-        }&nbsp;
-        {isAssociatedToPWG && <span>*</span>}
+        {!!pValue && props.value.status === "Successful" ? (
+          formatPValue(pValue)
+        ) : isManualAssociation ? (
+          <>
+            N/A{" "}
+            <sup
+              onMouseEnter={() => onRefHover("*", true)}
+              onMouseLeave={() => onRefHover("*", false)}
+            >
+              *
+            </sup>
+          </>
+        ) : (
+          "N/A"
+        )}
+        &nbsp;
+        {isAssociatedToPWG && (
+          <sup
+            onMouseEnter={() => onRefHover("**", true)}
+            onMouseLeave={() => onRefHover("**", false)}
+          >
+            **
+          </sup>
+        )}
       </span>
     </span>
   );
 };
 
-export const MutantCountCell = <T extends GeneStatisticalResult>(props: TableCellProps<T>) => {
+export const MutantCountCell = <T extends GeneStatisticalResult>(
+  props: TableCellProps<T>
+) => {
   const value = _.get(props.value, props.field) as string;
   const statRes = props.value;
   const mutantsBelowThreshold =
-    props.value.maleMutantCount < props.value.procedureMinMales && props.value.femaleMutantCount < props.value.procedureMinFemales;
+    props.value.maleMutantCount < props.value.procedureMinMales &&
+    props.value.femaleMutantCount < props.value.procedureMinFemales;
   const [tooltipShow, setTooltipShow] = useState(false);
   const tooltipRef = useRef(null);
   return (
@@ -107,14 +145,22 @@ export const MutantCountCell = <T extends GeneStatisticalResult>(props: TableCel
     >
       {value}
       {mutantsBelowThreshold && (
-        <sup ref={tooltipRef} style={{ display: 'inline-block', marginLeft: '5px' }}>
-          <FontAwesomeIcon icon={faInfo} className="secondary"/>
+        <sup
+          ref={tooltipRef}
+          style={{ display: "inline-block", marginLeft: "5px" }}
+        >
+          <FontAwesomeIcon icon={faInfo} className="secondary" />
           &nbsp;
-          <Overlay target={tooltipRef.current} show={tooltipShow} placement="left">
+          <Overlay
+            target={tooltipRef.current}
+            show={tooltipShow}
+            placement="left"
+          >
             {(props) => (
               <Tooltip id="tooltip-n-numbers" {...props}>
-                The number of mutants doesn't meet the criteria specified in IMPRESS <br/>
-                Min female number: {statRes.procedureMinFemales || 0} <br/>
+                The number of mutants doesn't meet the criteria specified in
+                IMPRESS <br />
+                Min female number: {statRes.procedureMinFemales || 0} <br />
                 Min male number: {statRes.procedureMinMales || 0}
               </Tooltip>
             )}
@@ -122,5 +168,5 @@ export const MutantCountCell = <T extends GeneStatisticalResult>(props: TableCel
         </sup>
       )}
     </span>
-  )
+  );
 };

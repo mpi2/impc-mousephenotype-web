@@ -8,22 +8,23 @@ import { GeneSummary } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
 import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
-import { orderPhenotypedSelectionChannel, summarySystemSelectionChannel } from "@/eventChannels";
-import { uniq } from 'lodash';
+import {
+  orderPhenotypedSelectionChannel,
+  summarySystemSelectionChannel,
+} from "@/eventChannels";
+import { uniq } from "lodash";
 import { Variant } from "react-bootstrap/types";
 import { SectionHeader } from "@/components";
 import { ErrorBoundary } from "react-error-boundary";
 
-const GraphicalAnalysis = dynamic(
-  () => import("./GraphicalAnalysis"),
-  {ssr: false}
-);
+const GraphicalAnalysis = dynamic(() => import("./GraphicalAnalysis"), {
+  ssr: false,
+});
 
 const AllelePhenotypeDiagram = dynamic(
-  () => import('./AllelePhenotypeDiagram'),
-  {ssr: false}
+  () => import("./AllelePhenotypeDiagram"),
+  { ssr: false }
 );
-
 
 type TabContentProps = {
   errorMessage: ReactNode;
@@ -40,32 +41,30 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
     isError,
     data,
     children,
-    alertVariant = "primary"
+    alertVariant = "primary",
   } = props;
 
   if (isFetching) {
     return (
-      <p className="grey" style={{ padding: '1rem' }}>
-        <Spinner animation="border" size="sm" />&nbsp;
-        Loading...
+      <p className="grey" style={{ padding: "1rem" }}>
+        <Spinner animation="border" size="sm" />
+        &nbsp; Loading...
       </p>
-    )
+    );
   }
   if (isError && !data?.length && errorMessage) {
     return (
       <Alert variant={alertVariant} className="mt-3">
         {errorMessage}
       </Alert>
-    )
+    );
   }
-  return (
-    <div className="mt-3">{children}</div>
-  );
-}
+  return <div className="mt-3">{children}</div>;
+};
 
 const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   const router = useRouter();
-  const [tabKey, setTabKey] = useState('significantPhenotypes');
+  const [tabKey, setTabKey] = useState("significantPhenotypes");
   const [allDataCount, setAllDataCount] = useState<number>(0);
   const [allDataFilters, setAllDataFilters] = useState({
     procedureName: undefined,
@@ -87,33 +86,36 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
 
   useEffect(() => {
     const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
-      'onSystemSelection',
+      "onSystemSelection",
       (_) => {
-        if (tabKey !== 'significantPhenotypes') setTabKey('significantPhenotypes');
-      });
+        if (tabKey !== "significantPhenotypes")
+          setTabKey("significantPhenotypes");
+      }
+    );
     return () => {
       unsubscribeOnSystemSelection();
-    }
+    };
   }, [tabKey]);
 
   useEffect(() => {
     const unsubscribeOnAlleleSelection = orderPhenotypedSelectionChannel.on(
       "onAlleleSelected",
       () => {
-        if (tabKey !== 'allData') setTabKey('allData');
-      });
+        if (tabKey !== "allData") setTabKey("allData");
+      }
+    );
     return () => {
       unsubscribeOnAlleleSelection();
-    }
+    };
   }, [tabKey]);
 
   useEffect(() => {
     if (router.query.dataLifeStage && router.query.dataSearch) {
-      setTabKey('allData');
-      setAllDataFilters(prevState => ({
+      setTabKey("allData");
+      setAllDataFilters((prevState) => ({
         ...prevState,
         lifeStageName: router.query.dataLifeStage,
-        procedureName: router.query.dataSearch
+        procedureName: router.query.dataSearch,
       }));
       if (router.query.dataQuery) {
         setAllDataQuery(router.query.dataQuery as string);
@@ -121,27 +123,34 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     }
   }, [router]);
 
-  const hasDataRelatedToPWG = phenotypeData?.some(item => item.projectName === 'PWG');
+  const hasDataRelatedToPWG = phenotypeData?.some(
+    (item) => item.projectName === "PWG"
+  );
 
-  const hasOneAlleleOrMore = uniq(phenotypeData?.map(p => p.alleleSymbol)).length > 1;
+  const hasOneAlleleOrMore =
+    uniq(phenotypeData?.map((p) => p.alleleSymbol)).length > 1;
 
   return (
-    <Card id="data" style={{ position: 'relative' }}>
+    <Card id="data" style={{ position: "relative" }}>
       <SectionHeader
         containerId="#data"
         title="Phenotypes"
         href="https://dev.mousephenotype.org/help/data-visualization/phenotype-pages/"
       />
-      <Tabs
-        activeKey={tabKey}
-        onSelect={key => setTabKey(key)}
-      >
-        <Tab eventKey="significantPhenotypes" title={`Significant Phenotypes (${phenotypeData?.length || 0})`}>
+      <Tabs activeKey={tabKey} onSelect={(key) => setTabKey(key)}>
+        <Tab
+          eventKey="significantPhenotypes"
+          title={`Significant Phenotypes (${phenotypeData?.length || 0})`}
+        >
           <TabContent
             isFetching={isPhenotypeFetching}
             isError={isPhenotypeError}
             data={phenotypeData}
-            errorMessage={<span>No phenotype data available for <i>{gene.geneSymbol}</i>.</span>}
+            errorMessage={
+              <span>
+                No phenotype data available for <i>{gene.geneSymbol}</i>.
+              </span>
+            }
           >
             <SignificantPhenotypes
               phenotypeData={phenotypeData}
@@ -156,12 +165,19 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
               onTotalData={setAllDataCount}
               additionalSelectedValues={allDataFilters}
               queryFromURL={allDataQuery}
+              hasDataRelatedToPWG={hasDataRelatedToPWG}
             />
           </div>
         </Tab>
         <Tab eventKey="measurementsChart" title="Graphical Analysis">
           <div className="mt-3">
-            <ErrorBoundary fallback={<Alert variant="danger">An error occurred, please try later</Alert>}>
+            <ErrorBoundary
+              fallback={
+                <Alert variant="danger">
+                  An error occurred, please try later
+                </Alert>
+              }
+            >
               <GraphicalAnalysis
                 mgiGeneAccessionId={gene.mgiGeneAccessionId}
                 routerIsReady={router.isReady}
@@ -169,9 +185,15 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             </ErrorBoundary>
           </div>
         </Tab>
-        { hasOneAlleleOrMore && (
+        {hasOneAlleleOrMore && (
           <Tab eventKey="allelesByPhenotype" title="Alleles by Phenotype">
-            <ErrorBoundary fallback={<Alert variant="danger">An error occurred, please try later</Alert>}>
+            <ErrorBoundary
+              fallback={
+                <Alert variant="danger">
+                  An error occurred, please try later
+                </Alert>
+              }
+            >
               <AllelePhenotypeDiagram
                 phenotypeData={phenotypeData}
                 isPhenotypeLoading={isPhenotypeLoading}
@@ -185,4 +207,4 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
   );
 };
 
-export default sectionWithErrorBoundary(Phenotypes, 'Phenotypes', 'data');
+export default sectionWithErrorBoundary(Phenotypes, "Phenotypes", "data");

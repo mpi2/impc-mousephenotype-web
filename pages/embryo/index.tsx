@@ -1,4 +1,12 @@
-import { Container, Breadcrumb, Row, Col, Image, Modal, Button } from "react-bootstrap";
+import {
+  Container,
+  Breadcrumb,
+  Row,
+  Col,
+  Image,
+  Modal,
+  Button,
+} from "react-bootstrap";
 
 import Search from "@/components/Search";
 import Card from "@/components/Card";
@@ -54,22 +62,28 @@ const EmbryoLandingPage = () => {
   );
 
   const getPrimaryViabilityText = (value: string) => {
-    if (value === 'Viable') {
+    if (value === "Viable") {
       return value;
     }
-    const mpId = value === 'Lethal' ? 'MP:0011100' : 'MP:0011110';
-    return <Link className="link primary" href={`/phenotypes/${mpId}`}>{value}</Link>;
+    const mpId = value === "Lethal" ? "MP:0011100" : "MP:0011110";
+    return (
+      <Link className="link primary" href={`/phenotypes/${mpId}`}>
+        {value}
+      </Link>
+    );
   };
 
   const openModalListGenes = (wol: string) => {
-    const selectedList = data.secondaryViabilityData.find(row => row.windowOfLethality === wol);
+    const selectedList = data.secondaryViabilityData.find(
+      (row) => row.windowOfLethality === wol
+    );
     setModalVisible(true);
     setListGenes(selectedList);
-  }
+  };
   const handleClose = () => {
     setModalVisible(false);
     setListGenes(null);
-  }
+  };
 
   return (
     <>
@@ -302,7 +316,12 @@ const EmbryoLandingPage = () => {
                     data?.secondaryViabilityData?.map((row) => (
                       <tr>
                         <td>
-                          <button className="btn link primary" onClick={() => openModalListGenes(row.windowOfLethality)}>
+                          <button
+                            className="btn link primary"
+                            onClick={() =>
+                              openModalListGenes(row.windowOfLethality)
+                            }
+                          >
                             {capitalize(row.windowOfLethality)}
                           </button>
                         </td>
@@ -311,7 +330,7 @@ const EmbryoLandingPage = () => {
                     ))}
                   <tr>
                     <td colSpan={2}>
-                    <a
+                      <a
                         className="link primary"
                         href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv"
                       >
@@ -366,12 +385,9 @@ const EmbryoLandingPage = () => {
                     our external partners' embryo images.
                   </li>
                   <li>
-                    <a
-                      className="link primary"
-                      href="https://beta.mousephenotype.org/data/embryo/vignettes"
-                    >
+                    <Link className="link primary" href="embryo/vignettes">
                       Embryo Vignettes
-                    </a>
+                    </Link>
                     &nbsp;Showcase of best embryo images with detailed
                     explanations.
                   </li>
@@ -411,15 +427,28 @@ const EmbryoLandingPage = () => {
         </Card>
         <Modal show={modalVisible} onHide={handleClose} size="lg">
           <Modal.Header closeButton>
-            <Modal.Title>{ capitalize(listGenes?.windowOfLethality || '') } lines</Modal.Title>
+            <Modal.Title>
+              {capitalize(listGenes?.windowOfLethality || "")} lines
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <SmartTable
               data={listGenes?.genes}
-              defaultSort={[ "geneSymbol", "asc" ]}
+              defaultSort={["geneSymbol", "asc"]}
               columns={[
-                { width: 1, label: "Gene symbol", field: "geneSymbol", cmp: <PlainTextCell/> },
-                { width: 1, label: "MGI Accession ID", field: "mgiGeneAccessionId", disabled: true, cmp: <LinkCell prefix="/genes"/> },
+                {
+                  width: 1,
+                  label: "Gene symbol",
+                  field: "geneSymbol",
+                  cmp: <PlainTextCell />,
+                },
+                {
+                  width: 1,
+                  label: "MGI Accession ID",
+                  field: "mgiGeneAccessionId",
+                  disabled: true,
+                  cmp: <LinkCell prefix="/genes" />,
+                },
               ]}
               paginationButtonsPlacement="bottom"
               displayPageControls={false}
