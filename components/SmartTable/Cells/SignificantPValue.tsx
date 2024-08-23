@@ -2,7 +2,11 @@ import { Model, TableCellProps } from "@/models";
 import _ from "lodash";
 import { formatPValue } from "@/utils";
 
-const SignificantPValue = <T extends Model>(props: TableCellProps<T> & { onRefHover?: (refNum: string, active: boolean) => void }) => {
+const SignificantPValue = <T extends Model>(
+  props: TableCellProps<T> & {
+    onRefHover?: (refNum: string, active: boolean) => void;
+  }
+) => {
   const { onRefHover = (p1, p2) => {} } = props;
   const pValue = _.get(props.value, props.field) as number;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
@@ -17,12 +21,28 @@ const SignificantPValue = <T extends Model>(props: TableCellProps<T> & { onRefHo
       }}
     >
       <span data-testid="p-value">
-        {!!pValue
-          ? formatPValue(pValue)
-          : <>- <sup onMouseEnter={() => onRefHover("1", true)} onMouseLeave={() => onRefHover("1", false)}>[1]</sup></>
-        }
+        {!!pValue ? (
+          formatPValue(pValue)
+        ) : (
+          <>
+            N/A{" "}
+            <sup
+              onMouseEnter={() => onRefHover("*", true)}
+              onMouseLeave={() => onRefHover("*", false)}
+            >
+              *
+            </sup>
+          </>
+        )}
         &nbsp;
-        {isAssociatedToPWG && <span>*</span>}
+        {isAssociatedToPWG && (
+          <sup
+            onMouseEnter={() => onRefHover("**", true)}
+            onMouseLeave={() => onRefHover("**", false)}
+          >
+            **
+          </sup>
+        )}
       </span>
     </span>
   );
