@@ -5,6 +5,7 @@ import {
   faCircle,
   faArrowLeft,
   faExternalLinkAlt,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -27,6 +28,7 @@ import { getIcon } from "@/utils";
 import Head from "next/head";
 import moment from "moment";
 import { uniq } from "lodash";
+import { usePathname, useSearchParams } from "next/navigation";
 
 type Filters = {
   selectedCenter: string;
@@ -75,9 +77,11 @@ const FilterBadge = ({
 const ImageInformation = ({
   image,
   inViewer = false,
+  showAssocParam = false,
 }: {
   image: Image;
   inViewer?: boolean;
+  showAssocParam?: boolean;
 }) => {
   return (
     <div
@@ -107,6 +111,18 @@ const ImageInformation = ({
       </div>
       {!!image.alleleSymbol && (
         <AlleleSymbol symbol={image.alleleSymbol} withLabel={false} />
+      )}
+      {showAssocParam && image.associatedParameters?.length && (
+        <>
+          <hr className="break" style={{ margin: 0 }}></hr>
+          <div className={classNames(styles.associatedParams, styles.small)}>
+            {image.associatedParameters.map((param) => (
+              <div key={param.stableId}>
+                {param.name} <br /> <b>{param.value}</b>
+              </div>
+            ))}
+          </div>
+        </>
       )}
       {inViewer && image.associatedParameters?.length && (
         <>
@@ -173,7 +189,7 @@ const ImageViewer = ({ image }) => {
   );
 };
 
-const Column = ({ images, selected, onSelection }) => {
+const Column = ({ images, selected, onSelection, showAssocParam }) => {
   return (
     <Row className={styles.images}>
       {images?.map((image, i) => (
@@ -191,7 +207,7 @@ const Column = ({ images, selected, onSelection }) => {
               width="100%"
               wrapperProps={{ style: { width: "100%" } }}
             />
-            <ImageInformation image={image} />
+            <ImageInformation image={image} showAssocParam={showAssocParam} />
           </div>
         </Col>
       ))}
@@ -208,6 +224,8 @@ const Column = ({ images, selected, onSelection }) => {
 
 const ImagesCompare = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathName = usePathname();
   const [selectedWTImage, setSelectedWTImage] = useState(0);
   const [selectedMutantImage, setSelectedMutantImage] = useState(0);
   const [appliedAnatomyTerm, setAppliedAnatomyTerm] = useState(null);
@@ -244,6 +262,9 @@ const ImagesCompare = () => {
   const [metadataGroup, setMetadataGroup] = useState<string>(null);
   const [strainAccessionId, setStrainAccessionId] = useState<string>(null);
   const [procedureStableId, setProcedureStableId] = useState<string>(null);
+
+  const showAssocParam =
+    parameterStableId.includes("ALZ") || parameterStableId.includes("PAT");
 
   useEffect(() => {
     if (mutantImages.length > 0) {
@@ -462,6 +483,15 @@ const ImagesCompare = () => {
     ]
   );
 
+  const removeAnatomyTerm = () => {
+    setAppliedAnatomyTerm(null);
+    const searchParamsTemp = new URLSearchParams(searchParams?.toString());
+    searchParamsTemp.delete("anatomyTerm");
+    router.replace(`${pathName}${searchParamsTemp}`, undefined, {
+      shallow: true,
+    });
+  };
+
   return (
     <>
       <Head>
@@ -647,6 +677,18 @@ const ImagesCompare = () => {
                         Male
                       </FilterBadge>
                     </div>
+                    {!!appliedAnatomyTerm && (
+                      <div className={styles.filter}>
+                        <b>Anatomy: </b>
+                        <FilterBadge
+                          isSelected
+                          icon={faXmark}
+                          onClick={removeAnatomyTerm}
+                        >
+                          {appliedAnatomyTerm}
+                        </FilterBadge>
+                      </div>
+                    )}
                   </div>
                   <div
                     className={classNames(styles.column, styles.mutantFilter)}
@@ -700,6 +742,7 @@ const ImagesCompare = () => {
                 <Column
                   selected={selectedWTImage}
                   images={controlImages}
+                  showAssocParam={showAssocParam}
                   onSelection={(imageIndex) => setSelectedWTImage(imageIndex)}
                 />
               </Col>
@@ -707,6 +750,7 @@ const ImagesCompare = () => {
                 <Column
                   selected={selectedMutantImage}
                   images={filteredMutantImages}
+                  showAssocParam={showAssocParam}
                   onSelection={(imageIndex) =>
                     setSelectedMutantImage(imageIndex)
                   }
