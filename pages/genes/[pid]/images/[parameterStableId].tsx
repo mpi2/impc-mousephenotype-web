@@ -312,12 +312,11 @@ const ImagesCompare = () => {
 
   useEffect(() => {
     if (mutantImages.length > 0) {
-      const center = mutantImages[0].pipelineStableId.split("_")[0];
       const selectedCenter = !appliedAnatomyTerm
         ? mutantImages[0]
         : findCenterByMatchingAnatomyFilter(mutantImages);
       const selectedCenterName = selectedCenter.pipelineStableId.split("_")[0];
-      if (center !== selectedMutantCenter) {
+      if (selectedCenterName !== selectedMutantCenter) {
         setMetadataGroup(selectedCenter.metadataGroup);
         setStrainAccessionId(selectedCenter.strainAccessionId);
         setProcedureStableId(selectedCenter.procedureStableId);
@@ -331,7 +330,6 @@ const ImagesCompare = () => {
           center !== selectedControlCenter &&
           controlImagesRaw.some((c) => c.pipelineStableId.includes(center))
         ) {
-          console.log(`CONTROL - ${center} selected`);
           setSelectedControlCenter(center);
         }
       } else {
@@ -340,7 +338,6 @@ const ImagesCompare = () => {
         const selectedCenterName =
           selectedCenter.pipelineStableId.split("_")[0];
         if (selectedCenterName !== selectedControlCenter) {
-          console.log(`CONTROL - ${selectedCenterName} selected`);
           setSelectedControlCenter(selectedCenterName);
         }
       }
@@ -602,7 +599,7 @@ const ImagesCompare = () => {
                     <ImageViewer
                       name="WT"
                       image={controlImages?.[selectedWTImage]}
-                      hasAvailableImages={controlImages.length !== 0}
+                      hasAvailableImages={controlImages?.length !== 0 || false}
                     />
                   </div>
                   <div className={styles.imageInfo}>
@@ -643,7 +640,9 @@ const ImagesCompare = () => {
                     <ImageViewer
                       name="mutant"
                       image={filteredMutantImages?.[selectedMutantImage]}
-                      hasAvailableImages={filteredMutantImages.length !== 0}
+                      hasAvailableImages={
+                        filteredMutantImages?.length !== 0 || false
+                      }
                     />
                   </div>
                   <div className={styles.imageInfo}>
