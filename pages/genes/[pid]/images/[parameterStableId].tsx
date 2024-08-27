@@ -6,6 +6,8 @@ import {
   faArrowLeft,
   faExternalLinkAlt,
   faXmark,
+  faSlash,
+  faCamera,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -155,13 +157,44 @@ const ImageInformation = ({
   );
 };
 
-const ImageViewer = ({ image }) => {
-  if (!image) {
+type ImageViewerProps = {
+  image: Image;
+  name: string;
+  hasAvailableImages: boolean;
+};
+
+const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
+  if (!image && hasAvailableImages) {
     return (
       <Skeleton
         containerClassName="flex-1"
         style={{ flex: 1, height: "100%" }}
       />
+    );
+  }
+  if (!image && !hasAvailableImages) {
+    return (
+      <div className={styles.noPhoto}>
+        <span className="fa-layers">
+          <FontAwesomeIcon
+            icon={faSlash}
+            style={{ color: "#000" }}
+            size="lg"
+            transform="shrink-1 left-2"
+          />
+          <FontAwesomeIcon
+            icon={faCamera}
+            style={{ color: "#000" }}
+            size="lg"
+          />
+        </span>
+        <span>
+          <b>No image available</b>
+        </span>
+        <small>
+          <i>Please select another center from the top</i>
+        </small>
+      </div>
     );
   }
   return (
@@ -266,38 +299,49 @@ const ImagesCompare = () => {
   const showAssocParam =
     parameterStableId.includes("ALZ") || parameterStableId.includes("PAT");
 
+  const findCenterByMatchingAnatomyFilter = (
+    collections: Array<GeneImageCollection>
+  ) => {
+    const firstCenter = collections[0];
+    return collections.reduce((center, imagesByCenter) => {
+      return filterControlImages(imagesByCenter.images).length !== 0
+        ? imagesByCenter
+        : center;
+    }, firstCenter);
+  };
+
   useEffect(() => {
     if (mutantImages.length > 0) {
       const center = mutantImages[0].pipelineStableId.split("_")[0];
+      const selectedCenter = !appliedAnatomyTerm
+        ? mutantImages[0]
+        : findCenterByMatchingAnatomyFilter(mutantImages);
+      const selectedCenterName = selectedCenter.pipelineStableId.split("_")[0];
       if (center !== selectedMutantCenter) {
-        setMetadataGroup(mutantImages[0].metadataGroup);
-        setStrainAccessionId(mutantImages[0].strainAccessionId);
-        setProcedureStableId(mutantImages[0].procedureStableId);
-        setSelectedMutantCenter(center);
+        setMetadataGroup(selectedCenter.metadataGroup);
+        setStrainAccessionId(selectedCenter.strainAccessionId);
+        setProcedureStableId(selectedCenter.procedureStableId);
+        setSelectedMutantCenter(selectedCenterName);
       }
     }
     if (mutantImages.length > 0 && controlImagesRaw.length > 0) {
-      const center = mutantImages[0].pipelineStableId.split("_")[0];
       if (!appliedAnatomyTerm) {
+        const center = mutantImages[0].pipelineStableId.split("_")[0];
         if (
           center !== selectedControlCenter &&
           controlImagesRaw.some((c) => c.pipelineStableId.includes(center))
         ) {
+          console.log(`CONTROL - ${center} selected`);
           setSelectedControlCenter(center);
         }
       } else {
-        const firstCenter = controlImagesRaw[0].pipelineStableId.split("_")[0];
-        const selectedCenter = controlImagesRaw.reduce(
-          (center, imagesByCenter) => {
-            const currentCenter = imagesByCenter.pipelineStableId.split("_")[0];
-            return filterControlImages(imagesByCenter.images).length !== 0
-              ? currentCenter
-              : center;
-          },
-          firstCenter
-        );
-        if (selectedCenter !== selectedControlCenter) {
-          setSelectedControlCenter(selectedCenter);
+        const selectedCenter =
+          findCenterByMatchingAnatomyFilter(controlImagesRaw);
+        const selectedCenterName =
+          selectedCenter.pipelineStableId.split("_")[0];
+        if (selectedCenterName !== selectedControlCenter) {
+          console.log(`CONTROL - ${selectedCenterName} selected`);
+          setSelectedControlCenter(selectedCenterName);
         }
       }
     }
@@ -555,7 +599,11 @@ const ImagesCompare = () => {
                       styles.imageContainer
                     )}
                   >
-                    <ImageViewer image={controlImages?.[selectedWTImage]} />
+                    <ImageViewer
+                      name="WT"
+                      image={controlImages?.[selectedWTImage]}
+                      hasAvailableImages={controlImages.length !== 0}
+                    />
                   </div>
                   <div className={styles.imageInfo}>
                     {!!controlImages?.[selectedWTImage] && (
@@ -593,7 +641,9 @@ const ImagesCompare = () => {
                     )}
                   >
                     <ImageViewer
+                      name="mutant"
                       image={filteredMutantImages?.[selectedMutantImage]}
+                      hasAvailableImages={filteredMutantImages.length !== 0}
                     />
                   </div>
                   <div className={styles.imageInfo}>
