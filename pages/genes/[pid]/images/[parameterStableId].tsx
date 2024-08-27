@@ -257,14 +257,30 @@ const ImagesCompare = () => {
     }
     if (mutantImages.length > 0 && controlImagesRaw.length > 0) {
       const center = mutantImages[0].pipelineStableId.split("_")[0];
-      if (
-        center !== selectedControlCenter &&
-        controlImagesRaw.some((c) => c.pipelineStableId.includes(center))
-      ) {
-        setSelectedControlCenter(center);
+      if (!appliedAnatomyTerm) {
+        if (
+          center !== selectedControlCenter &&
+          controlImagesRaw.some((c) => c.pipelineStableId.includes(center))
+        ) {
+          setSelectedControlCenter(center);
+        }
+      } else {
+        const firstCenter = controlImagesRaw[0].pipelineStableId.split("_")[0];
+        const selectedCenter = controlImagesRaw.reduce(
+          (center, imagesByCenter) => {
+            const currentCenter = imagesByCenter.pipelineStableId.split("_")[0];
+            return filterControlImages(imagesByCenter.images).length !== 0
+              ? currentCenter
+              : center;
+          },
+          firstCenter
+        );
+        if (selectedCenter !== selectedControlCenter) {
+          setSelectedControlCenter(selectedCenter);
+        }
       }
     }
-  }, [mutantImages.length, controlImagesRaw.length]);
+  }, [mutantImages.length, controlImagesRaw.length, appliedAnatomyTerm]);
 
   useEffect(() => {
     if (anatomyTerm && anatomyTerm !== appliedAnatomyTerm) {
@@ -276,9 +292,9 @@ const ImagesCompare = () => {
     return images
       ?.filter((i) => (selectedSex !== "both" ? i.sex === selectedSex : true))
       ?.filter((i) =>
-        anatomyTerm !== null
+        appliedAnatomyTerm !== null
           ? !!i.associatedParameters?.find(
-              (p) => p.name.toLowerCase() === anatomyTerm
+              (p) => p.name.toLowerCase() === appliedAnatomyTerm
             )
           : true
       )
@@ -294,9 +310,9 @@ const ImagesCompare = () => {
         selectedAllele !== "all" ? i.alleleSymbol === selectedAllele : true
       )
       ?.filter((i) =>
-        anatomyTerm !== null
+        appliedAnatomyTerm !== null
           ? !!i.associatedParameters?.find(
-              (p) => p.name.toLowerCase() === anatomyTerm
+              (p) => p.name.toLowerCase() === appliedAnatomyTerm
             )
           : true
       );
@@ -320,11 +336,12 @@ const ImagesCompare = () => {
               metadataGroup === null ||
               collection.metadataGroup === metadataGroup
           )
-          /* .filter(
+          .filter(
             (collection) =>
               strainAccessionId === null ||
+              appliedAnatomyTerm !== null ||
               collection.strainAccessionId === strainAccessionId
-          ) */
+          )
           .filter(
             (collection) =>
               procedureStableId === null ||
@@ -383,11 +400,12 @@ const ImagesCompare = () => {
         (collection) =>
           metadataGroup === null || collection.metadataGroup === metadataGroup
       )
-      /* ?.filter(
+      ?.filter(
         (collection) =>
           strainAccessionId === null ||
+          appliedAnatomyTerm !== null ||
           collection.strainAccessionId === strainAccessionId
-      ) */
+      )
       ?.filter(
         (collection) =>
           procedureStableId === null ||
@@ -397,7 +415,7 @@ const ImagesCompare = () => {
       (c) => c.pipelineStableId.split("_")[0]
     );
     return uniq(centers) || ([] as Array<string>);
-  }, [mutantImages]);
+  }, [mutantImages, appliedAnatomyTerm]);
 
   const allControlCenters = useMemo(() => {
     const filteredCollections = controlImagesRaw
@@ -405,11 +423,12 @@ const ImagesCompare = () => {
         (collection) =>
           metadataGroup === null || collection.metadataGroup === metadataGroup
       )
-      /* ?.filter(
+      ?.filter(
         (collection) =>
           strainAccessionId === null ||
+          appliedAnatomyTerm !== null ||
           collection.strainAccessionId === strainAccessionId
-      ) */
+      )
       ?.filter(
         (collection) =>
           procedureStableId === null ||
@@ -419,7 +438,7 @@ const ImagesCompare = () => {
       (c) => c.pipelineStableId.split("_")[0]
     );
     return uniq(centers) || ([] as Array<string>);
-  }, [controlImagesRaw]);
+  }, [controlImagesRaw, appliedAnatomyTerm]);
 
   const alleles: Array<string> = useMemo(
     () =>
@@ -430,7 +449,7 @@ const ImagesCompare = () => {
 
   const controlImages = useMemo(
     () => filterControlImages(selectedControlImages),
-    [selectedControlImages, selectedSex, anatomyTerm]
+    [selectedControlImages, selectedSex, appliedAnatomyTerm]
   );
   const filteredMutantImages = useMemo(
     () => filterMutantImages(selectedMutantImages),
@@ -439,7 +458,7 @@ const ImagesCompare = () => {
       selectedSex,
       selectedZyg,
       selectedAllele,
-      anatomyTerm,
+      appliedAnatomyTerm,
     ]
   );
 
