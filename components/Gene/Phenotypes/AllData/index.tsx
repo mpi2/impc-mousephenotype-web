@@ -318,6 +318,7 @@ const AllData = (props: Props) => {
       additionalBottomControls={
         <>
           <Footnotes
+            table="all-data"
             hoveringRef={hoveringRef}
             hasDataRelatedToPWG={hasDataRelatedToPWG}
           />
