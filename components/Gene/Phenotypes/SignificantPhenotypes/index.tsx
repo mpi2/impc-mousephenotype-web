@@ -146,6 +146,7 @@ const SignificantPhenotypes = ({
         additionalBottomControls={
           <>
             <Footnotes
+              table="sig-phenotypes"
               hoveringRef={hoveringRef}
               hasDataRelatedToPWG={hasDataRelatedToPWG}
             />

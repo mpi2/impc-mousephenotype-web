@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Overlay, Tooltip } from "react-bootstrap";
 import { useRef, useState } from "react";
 import { formatPValue } from "@/utils";
+import { useQueryFlags } from "@/hooks";
 
 export const ParameterCell = <T extends GeneStatisticalResult>(
   props: TableCellProps<T>
@@ -128,44 +129,25 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
 };
 
 export const MutantCountCell = <T extends GeneStatisticalResult>(
-  props: TableCellProps<T>
+  props: TableCellProps<T> & {
+    onRefHover?: (refNum: string, active: boolean) => void;
+  }
 ) => {
+  const { onRefHover = (p1, p2) => {} } = props;
+  const { isNNumbersFootnoteAvailable } = useQueryFlags();
   const value = _.get(props.value, props.field) as string;
-  const statRes = props.value;
   const mutantsBelowThreshold =
     props.value.maleMutantCount < props.value.procedureMinMales &&
     props.value.femaleMutantCount < props.value.procedureMinFemales;
-  const [tooltipShow, setTooltipShow] = useState(false);
-  const tooltipRef = useRef(null);
   return (
     <span
       style={props.style}
-      onMouseEnter={() => setTooltipShow(true)}
-      onMouseLeave={() => setTooltipShow(false)}
+      onMouseEnter={() => onRefHover("+", true)}
+      onMouseLeave={() => onRefHover("+", false)}
     >
       {value}
-      {mutantsBelowThreshold && (
-        <sup
-          ref={tooltipRef}
-          style={{ display: "inline-block", marginLeft: "5px" }}
-        >
-          <FontAwesomeIcon icon={faInfo} className="secondary" />
-          &nbsp;
-          <Overlay
-            target={tooltipRef.current}
-            show={tooltipShow}
-            placement="left"
-          >
-            {(props) => (
-              <Tooltip id="tooltip-n-numbers" {...props}>
-                The number of mutants doesn't meet the criteria specified in
-                IMPRESS <br />
-                Min female number: {statRes.procedureMinFemales || 0} <br />
-                Min male number: {statRes.procedureMinMales || 0}
-              </Tooltip>
-            )}
-          </Overlay>
-        </sup>
+      {mutantsBelowThreshold && isNNumbersFootnoteAvailable && (
+        <sup style={{ display: "inline-block", marginLeft: "5px" }}>+</sup>
       )}
     </span>
   );
