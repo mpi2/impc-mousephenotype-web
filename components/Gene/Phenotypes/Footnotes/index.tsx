@@ -1,6 +1,7 @@
 import { useQueryFlags } from "@/hooks";
 
 type Props = {
+  table: "all-data" | "sig-phenotypes";
   hoveringRef: "*" | "**" | "+";
   hasDataRelatedToPWG: boolean;
 };
@@ -20,15 +21,15 @@ const Footnotes = (props: Props) => {
           significant.
         </span>
       </div>
-      {isNNumbersFootnoteAvailable && (
+      {isNNumbersFootnoteAvailable && props.table === "all-data" && (
         <div style={{ fontSize: "85%", flex: "1 0 100%" }}>
           <span
             style={{
               backgroundColor: hoveringRef === "+" ? "#FDF0E5" : "#FFF",
             }}
           >
-            + Parameter has less specimen numbers than those specified in
-            IMPReSS, check&nbsp;
+            + Procedure has less specimen numbers recorded than those specified
+            in IMPReSS, check&nbsp;
             <a
               className="primary link"
               href="https://dev.mousephenotype.org/help/"
