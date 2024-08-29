@@ -5,68 +5,82 @@ import { useRouter } from "next/router";
 import {
   PlainTextCell,
   SignificantPValueCell,
-  SignificantSexesCell, SmartTable
+  SignificantSexesCell,
+  SmartTable,
 } from "@/components/SmartTable";
 import { PhenotypeGenotypes } from "@/models/phenotype";
 import { TableCellProps } from "@/models";
 import { AlleleSymbol, DownloadData } from "@/components";
 import { formatAlleleSymbol } from "@/utils";
-import _ from "lodash";
+import { get, orderBy } from "lodash";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
+import { Alert } from "react-bootstrap";
 
-const ParameterCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
+const ParameterCell = <T extends PhenotypeGenotypes>(
+  props: TableCellProps<T>
+) => {
   return (
     <>
       {props.value?.parameterName}
-      <br/>
+      <br />
       <span className="small">{props.value?.procedureName}</span>
     </>
-  )
+  );
 };
 
-const PhenotypingCentreCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
+const PhenotypingCentreCell = <T extends PhenotypeGenotypes>(
+  props: TableCellProps<T>
+) => {
   return (
     <>
       {props.value?.phenotypingCentre}
-      <br/>
+      <br />
       <span className="small">{props.value?.projectName}</span>
     </>
-  )
+  );
 };
 
-const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
-  const fullAllele = _.get(props.value, props.field) as string;
+const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(
+  props: TableCellProps<T>
+) => {
+  const fullAllele = get(props.value, props.field) as string;
   const allele = formatAlleleSymbol(fullAllele);
   return (
     <span style={{ lineHeight: 1.5 }}>
       <small>
-        <Link className="link" href={`/genes/${props.value.mgiGeneAccessionId}`}>
+        <Link
+          className="link"
+          href={`/genes/${props.value.mgiGeneAccessionId}`}
+        >
           <i>{allele[0]}</i>
         </Link>
       </small>
-      <br/>
+      <br />
       <strong>
         <AlleleSymbol symbol={fullAllele} withLabel={false} />
       </strong>
     </span>
-  )
+  );
 };
 
-export const SupportingDataCell = <T extends PhenotypeGenotypes>(props: TableCellProps<T>) => {
-  const mgiAccessionId = _.get(props.value, "mgiGeneAccessionId") as string;
-  const mpTermpId = _.get(props.value, "phenotype.id") as string;
+export const SupportingDataCell = <T extends PhenotypeGenotypes>(
+  props: TableCellProps<T>
+) => {
+  const mgiAccessionId = get(props.value, "mgiGeneAccessionId") as string;
+  const mpTermpId = get(props.value, "phenotype.id") as string;
 
   let url = `/data/charts?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
-    url = "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
+    url =
+      "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
   }
   return (
     <Link href={url}>
       <span className="link primary small float-right">Supporting data</span>
     </Link>
-  )
+  );
 };
 
 const Associations = () => {
@@ -74,18 +88,34 @@ const Associations = () => {
 
   const router = useRouter();
   const [query, setQuery] = useState(undefined);
-  const [sortOptions, setSortOptions] = useState<string>('');
-  const { data, isFetching } = useGeneAssociationsQuery(
+  const [sortOptions, setSortOptions] = useState<string>("");
+  const { data, isFetching, isError } = useGeneAssociationsQuery(
     phenotype?.phenotypeId,
     router.isReady && !!phenotype,
     sortOptions
   );
 
-  const filterPhenotype = (
-    {phenotypeName, phenotypeId, alleleSymbol, mgiGeneAccessionId}: PhenotypeGenotypes, query: string
-  ) => (!query || `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query));
+  console.log({ data, isError });
 
-  const sortAssociations = (data: Array<PhenotypeGenotypes>, field: keyof PhenotypeGenotypes, order: "asc" | "desc") => {
+  const filterPhenotype = (
+    {
+      phenotypeName,
+      phenotypeId,
+      alleleSymbol,
+      mgiGeneAccessionId,
+    }: PhenotypeGenotypes,
+    query: string
+  ) =>
+    !query ||
+    `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`
+      .toLowerCase()
+      .includes(query);
+
+  const sortAssociations = (
+    data: Array<PhenotypeGenotypes>,
+    field: keyof PhenotypeGenotypes,
+    order: "asc" | "desc"
+  ) => {
     if (field === "pValue") {
       return data.sort((p1, p2) => {
         const p1PValue = p1.pValue;
@@ -98,12 +128,27 @@ const Associations = () => {
         return order === "asc" ? p1PValue - p2PValue : p2PValue - p1PValue;
       });
     }
-    return _.orderBy(data, field, order);
+    return orderBy(data, field, order);
   };
+
+  if (isError) {
+    return (
+      <>
+        <h2>
+          IMPC Gene variants with{" "}
+          {phenotype?.phenotypeName || <Skeleton inline width={150} />}
+        </h2>
+        <Alert variant="primary">No data available for this section</Alert>
+      </>
+    );
+  }
 
   return (
     <>
-      <h2>IMPC Gene variants with {phenotype?.phenotypeName || <Skeleton inline width={150} />}</h2>
+      <h2>
+        IMPC Gene variants with{" "}
+        {phenotype?.phenotypeName || <Skeleton inline width={150} />}
+      </h2>
       <p>
         Total number of significant genotype-phenotype associations:&nbsp;
         {data.length}
@@ -119,32 +164,71 @@ const Associations = () => {
             data={data}
             fileName={`${phenotype?.phenotypeName}-associations`}
             fields={[
-              { key: 'alleleSymbol', label: 'Gene/allele' },
-              { key: 'phenotypeName', label: 'Phenotype' },
-              { key: 'zygosity', label: 'Zygosity' },
-              { key: 'sex', label: 'Sex' },
-              { key: 'lifeStageName', label: 'Life stage' },
-              { key: 'parameterName', label: 'Parameter' },
-              { key: 'phenotypingCentre', label: 'Phenotyping center' },
-              { key: 'pValue', label: 'Most significant P-value', getValueFn: (item) => item?.pValue.toString(10) || '1' },
+              { key: "alleleSymbol", label: "Gene/allele" },
+              { key: "phenotypeName", label: "Phenotype" },
+              { key: "zygosity", label: "Zygosity" },
+              { key: "sex", label: "Sex" },
+              { key: "lifeStageName", label: "Life stage" },
+              { key: "parameterName", label: "Parameter" },
+              { key: "phenotypingCentre", label: "Phenotyping center" },
+              {
+                key: "pValue",
+                label: "Most significant P-value",
+                getValueFn: (item) => item?.pValue.toString(10) || "1",
+              },
             ]}
           />
         }
         columns={[
-          { width: 2, label: "Gene / allele", field: "alleleSymbol", cmp: <AlleleWithLinkCell /> },
-          { width: 1.3, label: "Phenotype", field: "phenotypeName", cmp: <PlainTextCell />  },
-          { width: 1, label: "Supporting data", cmp: <SupportingDataCell />  },
-          { width: 1, label: "Zygosity", field: "zygosity", cmp: <PlainTextCell style={{ textTransform: 'capitalize' }} /> },
-          { width: 0.7, label: "Sex", field: "sex", cmp: <SignificantSexesCell /> },
-          { width: 1, label: "Life stage", field: "lifeStageName", cmp: <PlainTextCell /> },
-          { width: 1.5, label: "Parameter", field: "parameterName", cmp: <ParameterCell /> },
+          {
+            width: 2,
+            label: "Gene / allele",
+            field: "alleleSymbol",
+            cmp: <AlleleWithLinkCell />,
+          },
+          {
+            width: 1.3,
+            label: "Phenotype",
+            field: "phenotypeName",
+            cmp: <PlainTextCell />,
+          },
+          { width: 1, label: "Supporting data", cmp: <SupportingDataCell /> },
+          {
+            width: 1,
+            label: "Zygosity",
+            field: "zygosity",
+            cmp: <PlainTextCell style={{ textTransform: "capitalize" }} />,
+          },
+          {
+            width: 0.7,
+            label: "Sex",
+            field: "sex",
+            cmp: <SignificantSexesCell />,
+          },
+          {
+            width: 1,
+            label: "Life stage",
+            field: "lifeStageName",
+            cmp: <PlainTextCell />,
+          },
+          {
+            width: 1.5,
+            label: "Parameter",
+            field: "parameterName",
+            cmp: <ParameterCell />,
+          },
           {
             width: 1.5,
             label: "Phenotyping Center",
             field: "phenotypingCentre",
-            cmp: <PhenotypingCentreCell />
+            cmp: <PhenotypingCentreCell />,
           },
-          { width: 1, label: "Most significant P-value", field: "pValue", cmp: <SignificantPValueCell /> },
+          {
+            width: 1,
+            label: "Most significant P-value",
+            field: "pValue",
+            cmp: <SignificantPValueCell />,
+          },
         ]}
       />
     </>

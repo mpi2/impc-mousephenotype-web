@@ -1,4 +1,3 @@
-
 .image-wrapper {
   display: inline-flex !important;
   flex-direction: column;
@@ -7,14 +6,23 @@
   }
 }
 
-.slick-slider .slick-prev {
-  left: -5px;
-  z-index: 1;
-}
-.slick-slider .slick-next {
-  right: -5px;
-  z-index: 1;
-}
-.slick-prev:before, .slick-next:before {
-  color: $blue !important;
+.slick-slider {
+  padding: 0 1.5rem;
+  .slick-prev,
+  .slick-next {
+    width: 35px;
+    height: 35px;
+    &::before {
+      font-size: 35px;
+      color: $blue !important;
+    }
+  }
+  .slick-prev {
+    left: -25px;
+    z-index: 1;
+  }
+  .slick-next {
+    right: -25px;
+    z-index: 1;
+  }
 }
