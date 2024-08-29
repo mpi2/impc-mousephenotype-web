@@ -96,7 +96,7 @@ const AllData = (props: Props) => {
   const [selectedValues, setSelectedValues] = useState<SelectedValues>(
     initialSelectedValues
   );
-  const [hoveringRef, setHoveringRef] = useState<"*" | "**">(undefined);
+  const [hoveringRef, setHoveringRef] = useState<"*" | "**" | "+">(undefined);
 
   const updateSelectedValue = (
     key: keyof SelectedValues,
@@ -183,7 +183,7 @@ const AllData = (props: Props) => {
     return fetchAPI(buildURL(url, params));
   };
 
-  const onRefHover = (ref: "*" | "**", active: boolean) => {
+  const onRefHover = (ref: "*" | "**" | "+", active: boolean) => {
     const value = active ? ref : null;
     setHoveringRef(value);
   };
@@ -413,7 +413,7 @@ const AllData = (props: Props) => {
           width: 0.7,
           label: "Mutants",
           field: "mutantCount",
-          cmp: <MutantCountCell />,
+          cmp: <MutantCountCell onRefHover={onRefHover} />,
         },
         {
           width: 0.5,
