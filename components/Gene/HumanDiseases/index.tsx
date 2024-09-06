@@ -43,10 +43,11 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
   );
 });
 
-const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
+const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore, data}) => {
   const {
     query: { pid },
   } = useRouter();
+  console.log('data',data)
   const iframeRef = useRef(null);
   const [iframeHeight, setiFrameHeight] = useState(400);
 
@@ -128,7 +129,7 @@ const PhenoGridEl = ({ phenotypes, m_phenotypes, id, phenodigmScore }) => {
   );
 };
 
-const Row = ({ data }: { data: GeneDisease }) => {
+const Row = ({ rowData, data }: { rowData: GeneDisease, data: Array<GeneDisease> }) => {
   const [open, setOpen] = useState(false);
   const [tooltipShow, setTooltipShow] = useState(false);
   const tooltipRef = useRef(null);
@@ -137,33 +138,33 @@ const Row = ({ data }: { data: GeneDisease }) => {
     <>
       <tr>
         <td>
-          <strong className={styles.link}>{data.diseaseTerm}</strong>
+          <strong className={styles.link}>{rowData.diseaseTerm}</strong>
         </td>
         <td>
           <Scale ref={tooltipRef} toggleFocus={setTooltipShow}>
-            {Math.round((data.phenodigmScore / 100) * 5)}
+            {Math.round((rowData.phenodigmScore / 100) * 5)}
           </Scale>
           <Overlay target={tooltipRef.current} show={tooltipShow} placement="top">
             {(props) => (
-              <Tooltip id={`${data.mgiGeneAccessionId}-${data.diseaseId}`} {...props}>
-                Phenodigm score: {data.phenodigmScore.toFixed(2)}%
+              <Tooltip id={`${rowData.mgiGeneAccessionId}-${rowData.diseaseId}`} {...props}>
+                Phenodigm score: {rowData.phenodigmScore.toFixed(2)}%
               </Tooltip>
             )}
           </Overlay>
         </td>
         <td>
-          {data?.diseaseMatchedPhenotypes
+          {rowData?.diseaseMatchedPhenotypes
             ?.split(",")
             .map((x) => x.replace(" ", "**").split("**")[1])
             .join(", ")}
         </td>
         <td>
           <a
-            href={`http://omim.org/entry/${data.diseaseId.split(":")[1]}`}
+            href={`http://omim.org/entry/${rowData.diseaseId.split(":")[1]}`}
             target="_blank"
             className="link primary"
           >
-            {data.diseaseId}{" "}
+            {rowData.diseaseId}{" "}
             <FontAwesomeIcon
               className="grey"
               size="xs"
@@ -180,11 +181,11 @@ const Row = ({ data }: { data: GeneDisease }) => {
       </tr>
       {open && (
         <PhenoGridEl
-          phenotypes={data.diseasePhenotypes}
-          m_phenotypes={data.modelPhenotypes}
-          id={data.modelDescription}
-          phenodigmScore={data.phenodigmScore}
-
+          phenotypes={rowData.diseasePhenotypes}
+          m_phenotypes={rowData.modelPhenotypes}
+          id={rowData.modelDescription}
+          phenodigmScore={rowData.phenodigmScore}
+          data = {data}
         />
       )}
     </>
@@ -328,7 +329,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                   ]}
                 >
                   {pageData.map((d) => (
-                    <Row key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`} data={d} />
+                    <Row key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`} rowData={d} data={pageData} />
                   ))}
                 </SortableTable>
               )}
