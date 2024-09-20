@@ -70,7 +70,7 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
   const mgiAccessionId = get(props.value, "mgiGeneAccessionId") as string;
   const mpTermpId = get(props.value, "phenotype.id") as string;
 
-  let url = `/data/charts?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
+  let url = `/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =
