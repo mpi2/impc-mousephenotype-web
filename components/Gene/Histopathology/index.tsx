@@ -21,11 +21,12 @@ const Histopathology = () => {
   const [sorted, setSorted] = useState<any[]>(null);
 
   const { isLoading, isError, data, error } = useQuery({
-    queryKey: ['genes', router.query.pid, 'histopathology'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/gene_histopathology`),
+    queryKey: ["genes", router.query.pid, "histopathology"],
+    queryFn: () =>
+      fetchAPI(`/api/v1/genes/${router.query.pid}/gene_histopathology`),
     placeholderData: null,
     enabled: router.isReady,
-    select: data => data as Array<GeneHistopathology>,
+    select: (data) => data as Array<GeneHistopathology>,
   });
 
   useEffect(() => {
@@ -48,7 +49,7 @@ const Histopathology = () => {
     );
   }
 
-  if (isError && error === 'No content' && gene.hasHistopathologyData) {
+  if (isError && error === "No content" && gene.hasHistopathologyData) {
     return (
       <Card id="histopathology">
         <SectionHeader
@@ -58,12 +59,15 @@ const Histopathology = () => {
         />
         <Alert variant="primary">
           This gene doesn't have any significant Histopathology hits.&nbsp;
-          <Link className="primary link" href={`/data/histopath/${router.query.pid}`}>
-            Please click here to see the raw data
+          <Link
+            className="primary link"
+            href={`/supporting-data/histopath/${router.query.pid}`}
+          >
+            Click here to see the raw data
           </Link>
         </Alert>
       </Card>
-    )
+    );
   }
 
   if (isError || !sorted) {
@@ -89,10 +93,17 @@ const Histopathology = () => {
         href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
       />
       <p>
-        Summary table of phenotypes displayed during the Histopathology procedure which are considered significant.
-        <br/>
+        Summary table of phenotypes displayed during the Histopathology
+        procedure which are considered significant.
+        <br />
         Full histopathology data table, including submitted images,&nbsp;
-        <Link className="link primary" href={`/data/histopath/${router.query.pid}`}>can be accessed by clicking this link</Link>.
+        <Link
+          className="link primary"
+          href={`/supporting-data/histopath/${router.query.pid}`}
+        >
+          can be accessed by clicking this link
+        </Link>
+        .
       </p>
       <Pagination data={sorted}>
         {(pageData) => (
@@ -118,10 +129,13 @@ const Histopathology = () => {
                 <tr key={index}>
                   <td>
                     <Link
-                      href={`/data/histopath/${router.query.pid}?anatomy=${(
+                      href={`/supporting-data/histopath/${
+                        router.query.pid
+                      }?anatomy=${(
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
-                      legacyBehavior>
+                      legacyBehavior
+                    >
                       <strong className="link">{`${p.parameterName} ${p.mpathTermName}`}</strong>
                     </Link>
                   </td>
@@ -147,4 +161,8 @@ const Histopathology = () => {
   );
 };
 
-export default sectionWithErrorBoundary(Histopathology, "Histopathology", "histopathology");
+export default sectionWithErrorBoundary(
+  Histopathology,
+  "Histopathology",
+  "histopathology"
+);
