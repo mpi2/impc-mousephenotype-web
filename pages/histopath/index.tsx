@@ -467,7 +467,7 @@ const HistopathLandingPage = () => {
                             onClick={() => {
                               if (cell.y > 0) {
                                 window.open(
-                                  `/data/data/histopath/${
+                                  `/data/supporting-data/histopath/${
                                     gene.mgiAccession
                                   }?anatomy=${cell.x.toLowerCase()}`
                                 );
