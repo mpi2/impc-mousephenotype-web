@@ -65,7 +65,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     phenotypingCentre,
   } = props.value;
 
-  let url = `/data/charts?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
+  let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =
