@@ -95,8 +95,8 @@ const PhenoGridEl = ({
               "http://monarchinitiative.org"
             );
 
-            console.log("Message sent with a dealy of 0.3s");
-          }, 300);
+            console.log("Message sent with a dealy of 0.5s");
+          }, 500);
         })
         .catch((error) => {
           console.error("Error loading iframe or sending message:", error);
