@@ -50,7 +50,6 @@ const PhenoGridEl = ({
   const {
     query: { pid },
   } = useRouter();
-  console.log("data", data);
   const iframeRef = useRef(null);
   const [iframeHeight, setiFrameHeight] = useState(400);
 
@@ -70,9 +69,7 @@ const PhenoGridEl = ({
   const objectSets = data.map(({modelPhenotypes, modelDescription, phenodigmScore}) => {
     const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
     const id = modelDescription;
-    const pdScore = phenodigmScore;
-    const label = `${pdScore.toFixed(2)}-${id}`;
-    console.log('label',label);
+    const label = `${phenodigmScore.toFixed(2)}-${id}`;
     const phenotypes = mousePhenotypes.map((item) => item.id);
 
     // Create the object where the data will be stored
