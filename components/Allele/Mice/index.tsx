@@ -23,9 +23,12 @@ const Mice = ({
   setQcData: (any) => void;
 }) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'mice', alleleName],
-    queryFn: () => fetchAPI(`/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
-    placeholderData: []
+    queryKey: ["genes", mgiGeneAccessionId, "alleles", "mice", alleleName],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
+      ),
+    placeholderData: [],
   });
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
@@ -52,7 +55,10 @@ const Mice = ({
     );
   }
 
-  const fixedTissuesLinks: Array<any> = _.uniqBy(data.flatMap(item => item.tissueDistribution), 'tissueEnquiryLink');
+  const fixedTissuesLinks: Array<any> = _.uniqBy(
+    data.flatMap((item) => item.tissueDistribution),
+    "tissueEnquiryLink"
+  );
   return (
     <Card id="mice">
       <h2>Mice</h2>
@@ -66,14 +72,15 @@ const Mice = ({
             data={sorted}
             additionalBottomControls={
               <div>
-                {fixedTissuesLinks.map(tissue => (
+                {fixedTissuesLinks.map((tissue) => (
                   <a
                     className="btn impc-secondary-button"
-                    style={{marginRight: '0.5rem'}}
+                    style={{ marginRight: "0.5rem" }}
                     href={tissue.tissueEnquiryLink}
                   >
                     <span>
-                      Make a {tissue.tissueType} enquiry to {tissue.tissueDistributionCentre}
+                      Make a {tissue.tissueType} enquiry to{" "}
+                      {tissue.tissueDistributionCentre}
                     </span>
                   </a>
                 ))}
@@ -82,11 +89,10 @@ const Mice = ({
           >
             {(pageData) => (
               <SortableTable
-                doSort={() => {
-                }}
+                doSort={() => {}}
                 defaultSort={["title", "asc"]}
                 headers={[
-                  {width: 3, label: "Colony Name", disabled: true},
+                  { width: 3, label: "Colony Name", disabled: true },
                   {
                     width: 2,
                     label: "Genetic Background",
@@ -102,8 +108,7 @@ const Mice = ({
                           label: "ES Cell/Parent Mouse Colony",
                           disabled: true,
                         },
-                      ]
-                  ),
+                      ]),
                   { width: 2, label: "Order / Contact", disabled: true },
                 ]}
               >
@@ -138,7 +143,10 @@ const Mice = ({
                       </td>
                       {!isCrispr && (
                         <>
-                          <td>{p.associatedProductEsCellName}</td>
+                          <td>
+                            {p.associatedProductEsCellName ||
+                              p.associatedProductColonyName}
+                          </td>
                         </>
                       )}
                       <td>
