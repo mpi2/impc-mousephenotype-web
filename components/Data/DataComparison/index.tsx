@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import _ from "lodash";
-import {
-  formatPValue,
-  getIcon,
-  getSexLabel,
-} from "@/utils";
+import { formatPValue, getIcon, getSexLabel } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset, TableHeader } from "@/models";
@@ -63,6 +59,7 @@ type Props = {
   displayPValueThreshold?: boolean;
   displayPValueColumns?: boolean;
   onSelectParam?: (newValue: string) => void;
+  dataIsLoading: boolean;
 };
 
 type SortOptions = {
@@ -79,6 +76,7 @@ const DataComparison = (props: Props) => {
     displayPValueThreshold = true,
     displayPValueColumns = true,
     onSelectParam = (_) => {},
+    dataIsLoading,
   } = props;
 
   const groups = groupData(data);
@@ -149,7 +147,8 @@ const DataComparison = (props: Props) => {
     );
 
   const numOfHeaders = tableHeaders.reduce(
-    (acc, header) => acc + (header.children ? header.children.length : 1), 0
+    (acc, header) => acc + (header.children ? header.children.length : 1),
+    0
   );
   useEffect(() => {
     if (
@@ -176,7 +175,9 @@ const DataComparison = (props: Props) => {
           <AnimatePresence>
             <SortableTable
               className="data-comparison-table"
-              doSort={(sort) => setSortOptions({ prop: sort[0], order: sort[1]})}
+              doSort={(sort) =>
+                setSortOptions({ prop: sort[0], order: sort[1] })
+              }
               defaultSort={["parameter", "asc"]}
               headers={tableHeaders}
             >
@@ -189,29 +190,29 @@ const DataComparison = (props: Props) => {
                     layout
                     initial={{ y: 10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-
                   >
-                    <td>
-                      {d.parameterName}
-                    </td>
+                    <td>{d.parameterName}</td>
                     <td>{d.phenotypingCentre}</td>
                     <td>
-                      <AlleleSymbol symbol={d.alleleSymbol} withLabel={false}/>
+                      <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
                     </td>
                     <td>{d.zygosity}</td>
                     {displayPValueColumns && (
                       <td>
                         {["male", "female", "not_considered"]
-                          .filter(sex => _.has(d, `pValue_${sex}`) && !!d[`pValue_${sex}`] && d[`pValue_${sex}`] < 0.0001)
+                          .filter(
+                            (sex) =>
+                              _.has(d, `pValue_${sex}`) &&
+                              !!d[`pValue_${sex}`] &&
+                              d[`pValue_${sex}`] < 0.0001
+                          )
                           .map((significantSex, index) => (
                             <OverlayTrigger
                               key={index}
                               placement="top"
                               trigger={["hover", "focus"]}
                               overlay={
-                                <Tooltip>
-                                  {getSexLabel(significantSex)}
-                                </Tooltip>
+                                <Tooltip>{getSexLabel(significantSex)}</Tooltip>
                               }
                             >
                               <span className="me-2">
@@ -235,10 +236,12 @@ const DataComparison = (props: Props) => {
                   </motion.tr>
                 );
               })}
-              {pageData.length === 0 && (
+              {pageData.length === 0 && dataIsLoading && (
                 <tr>
                   {[...Array(numOfHeaders)].map((_, i) => (
-                    <td key={i}><Skeleton /></td>
+                    <td key={i}>
+                      <Skeleton />
+                    </td>
                   ))}
                 </tr>
               )}

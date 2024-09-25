@@ -42,7 +42,12 @@ const EmbryoDataAvailabilityGrid = ({
     setTotalPages(data ? Math.ceil(data.length / 25) : 0);
     setChartData(
       data
-        .slice(activePage * 25, (activePage * 25 + 25))
+        .filter((gene) =>
+          !!query
+            ? gene.geneSymbol.toLowerCase().includes(query.toLowerCase())
+            : true
+        )
+        .slice(activePage * 25, activePage * 25 + 25)
         .map((d) => ({
           id: d.geneSymbol,
           mgiGeneAccessionId: d.mgiGeneAccessionId,
@@ -51,7 +56,7 @@ const EmbryoDataAvailabilityGrid = ({
             "MicroCT E14.5-E15.5",
             "MicroCT E18.5",
             "UMASS Pre E9.5",
-            "Vignettes"
+            "Vignettes",
           ].map((p) => ({
             x: p,
             y: d.procedureNames.includes(p)
@@ -60,13 +65,13 @@ const EmbryoDataAvailabilityGrid = ({
                 : 1
               : p === "UMASS Pre E9.5" && d.isUmassGene
               ? 1
-              : p === 'Vignettes' && d.hasVignettes
+              : p === "Vignettes" && d.hasVignettes
               ? 1
               : 0,
           })),
         }))
     );
-  }, [data, activePage]);
+  }, [data, activePage, query]);
 
   const geneIndex = chartData?.reduce(
     (acc, d) => ({ [d.id]: d.mgiGeneAccessionId, ...acc }),
@@ -92,25 +97,32 @@ const EmbryoDataAvailabilityGrid = ({
     setActivePage(0);
     setTotalPages(Math.ceil(newData.length / 25));
     setChartData(
-      newData.slice(0, 25).map((d) => ({
-        id: d.geneSymbol,
-        mgiGeneAccessionId: d.mgiGeneAccessionId,
-        data: [
-          "OPT E9.5",
-          "MicroCT E14.5-E15.5",
-          "MicroCT E18.5",
-          "UMASS Pre E9.5",
-        ].map((p) => ({
-          x: p,
-          y: d.procedureNames.includes(p)
-            ? d.hasAutomatedAnalysis
-              ? 2
-              : 1
-            : p === "UMASS Pre E9.5" && d.isUmassGene
-            ? 1
-            : 0,
-        })),
-      }))
+      newData
+        .filter((gene) =>
+          !!query
+            ? gene.geneSymbol.toLowerCase().includes(query.toLowerCase())
+            : true
+        )
+        .slice(0, 25)
+        .map((d) => ({
+          id: d.geneSymbol,
+          mgiGeneAccessionId: d.mgiGeneAccessionId,
+          data: [
+            "OPT E9.5",
+            "MicroCT E14.5-E15.5",
+            "MicroCT E18.5",
+            "UMASS Pre E9.5",
+          ].map((p) => ({
+            x: p,
+            y: d.procedureNames.includes(p)
+              ? d.hasAutomatedAnalysis
+                ? 2
+                : 1
+              : p === "UMASS Pre E9.5" && d.isUmassGene
+              ? 1
+              : 0,
+          })),
+        }))
     );
   };
 
@@ -176,7 +188,7 @@ const EmbryoDataAvailabilityGrid = ({
           textAlign: "center",
         }}
       >
-        {chartData && (
+        {chartData.length ? (
           <ResponsiveHeatMap
             data={chartData}
             margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
@@ -249,6 +261,8 @@ const EmbryoDataAvailabilityGrid = ({
             annotations={[]}
             onClick={onClickTick}
           />
+        ) : (
+          <h2 className="mt-5">No genes match the filters selected</h2>
         )}
       </div>
       {totalPages > 1 && (
