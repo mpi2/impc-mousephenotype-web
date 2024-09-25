@@ -66,7 +66,10 @@ const PhenoGridEl = ({
   const diseasePhenotypes = processPhenotypes(rowDiseasePhenotypes.join());
 
   // Process mouse phenotypes for each object in data
-  const objectSets = data.map(({modelPhenotypes, modelDescription, phenodigmScore}) => {
+  // Filter out results with a pd score of 0
+  const objectSets = data
+  .filter(({phenodigmScore}) => phenodigmScore > 0)
+  .map(({modelPhenotypes, modelDescription, phenodigmScore}) => {
     const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
     const id = modelDescription;
     const label = `${phenodigmScore.toFixed(2)}-${id}`;
