@@ -44,10 +44,7 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
 });
 
 const PhenoGridEl = ({
-  phenotypes,
-  m_phenotypes,
-  id,
-  phenodigmScore,
+  rowDiseasePhenotypes,
   data,
 }) => {
   const {
@@ -66,9 +63,25 @@ const PhenoGridEl = ({
       };
     }) ?? [];
 
-  // Process disease phenotypes and mouse phenotypes
-  const diseasePhenotypes = processPhenotypes(phenotypes.join());
-  const mousePhenotypes = processPhenotypes(m_phenotypes.join());
+  // Process individual disease phenotypes and mouse phenotypes
+  const diseasePhenotypes = processPhenotypes(rowDiseasePhenotypes.join());
+
+  // Process mouse phenotypes for each object in data
+  const objectSets = data.map(({modelPhenotypes, modelDescription, phenodigmScore}) => {
+    const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
+    const id = modelDescription;
+    const pdScore = phenodigmScore;
+    const label = `${pdScore.toFixed(2)}-${id}`;
+    console.log('label',label);
+    const phenotypes = mousePhenotypes.map((item) => item.id);
+
+    // Create the object where the data will be stored
+    return {
+      id: id,
+      label: label,
+      phenotypes: phenotypes
+  };
+  });
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -79,14 +92,6 @@ const PhenoGridEl = ({
 
           setTimeout(() => {
             const subjects = diseasePhenotypes.map((item) => item.id);
-            const objectSets = [
-              {
-                id: id,
-                label: `${phenodigmScore.toFixed(2)}-${id}`,
-                phenotypes: mousePhenotypes.map((item) => item.id),
-              },
-            ];
-
             iframe.contentWindow?.postMessage(
               {
                 subjects: subjects,
@@ -121,7 +126,7 @@ const PhenoGridEl = ({
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, [diseasePhenotypes, mousePhenotypes, id, phenodigmScore]);
+  }, [diseasePhenotypes]);
 
   return (
     <tr>
@@ -211,10 +216,7 @@ const Row = ({
       </tr>
       {open && (
         <PhenoGridEl
-          phenotypes={rowData.diseasePhenotypes}
-          m_phenotypes={rowData.modelPhenotypes}
-          id={rowData.modelDescription}
-          phenodigmScore={rowData.phenodigmScore}
+          rowDiseasePhenotypes={rowData.diseasePhenotypes}
           data={data}
         />
       )}
