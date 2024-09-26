@@ -17,7 +17,7 @@ import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { DownloadData, SectionHeader } from "@/components";
-import { isIframeLoaded } from "./isIframeLoaded";
+import { isIframeLoaded} from "@/utils";
 
 type ScaleProps = {
   children: number;
