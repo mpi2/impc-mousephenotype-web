@@ -68,20 +68,20 @@ const PhenoGridEl = ({
   // Process mouse phenotypes for each object in data
   // Filter out results with a pd score of 0
   const objectSets = data
-  .filter(({phenodigmScore}) => phenodigmScore > 0)
-  .map(({modelPhenotypes, modelDescription, phenodigmScore}) => {
-    const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
-    const id = modelDescription;
-    const label = `${phenodigmScore.toFixed(2)}-${id}`;
-    const phenotypes = mousePhenotypes.map((item) => item.id);
+    .filter(({ phenodigmScore }) => phenodigmScore > 0)
+    .map(({ modelPhenotypes, modelDescription, phenodigmScore }) => {
+      const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
+      const id = modelDescription;
+      const label = `${phenodigmScore.toFixed(2)}-${id}`;
+      const phenotypes = mousePhenotypes.map((item) => item.id);
 
-    // Create the object where the data will be stored
-    return {
-      id: id,
-      label: label,
-      phenotypes: phenotypes
-  };
-  });
+      // Create the object where the data will be stored
+      return {
+        id: id,
+        label: label,
+        phenotypes: phenotypes,
+      };
+    });
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -274,7 +274,9 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
     ? sorted.filter((x) => x.associationCurated !== true)
     : [];
 
-  const selectedData = tab === "associated" ? associatedData : predictedData;
+  const selectedData = (
+    tab === "associated" ? associatedData : predictedData
+  ).filter((d) => d.isMaxPhenodigmScore === true);
 
   return (
     <>
