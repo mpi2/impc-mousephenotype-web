@@ -17,7 +17,7 @@ import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { DownloadData, SectionHeader } from "@/components";
-import { isIframeLoaded } from "./isIframeLoaded";
+import { isIframeLoaded, htmlEncode } from "@/utils";
 
 type ScaleProps = {
   children: number;
@@ -64,14 +64,15 @@ const PhenoGridEl = ({
 
   // Process individual disease phenotypes and mouse phenotypes
   const diseasePhenotypes = processPhenotypes(rowDiseasePhenotypes.join());
-
+ 
   // Process mouse phenotypes for each object in data
   // Filter out results with a pd score of 0
   const objectSets = data
     .filter(({ phenodigmScore }) => phenodigmScore > 0)
     .map(({ modelPhenotypes, modelDescription, phenodigmScore }) => {
       const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
-      const id = modelDescription;
+      // send HTML encode the id to get correct labels in tooltip. Downside: the labels on top are not readable.
+      const id= htmlEncode(modelDescription);
       const label = `${phenodigmScore.toFixed(2)}-${id}`;
       const phenotypes = mousePhenotypes.map((item) => item.id);
 
