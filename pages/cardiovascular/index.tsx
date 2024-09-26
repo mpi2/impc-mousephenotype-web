@@ -14,6 +14,7 @@ import {
   SortableTable,
 } from "@/components";
 import { usePleiotropyQuery } from "@/hooks";
+import { ParentSize } from "@visx/responsive";
 
 const ProcedureWithVersions = ({ procedure }) => {
   return (
@@ -251,14 +252,25 @@ const CardiovascularLandingPage = () => {
               cardiovascular system phenotype.
             </p>
             <div className={styles.chartWrapper}>
-              <PleiotropyChart
-                title="Number of phenotype associations to Cardiovascular System"
-                phenotypeName="Cardiovascular System"
-                data={pleiotropyData}
-                isLoading={isLoading}
-                xAxisTitle="Number of associations to other phenotypes"
-                yAxisTitle="Number of phenotype associations to Cardiovascular"
-              />
+              <ParentSize
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+              >
+                {({ width, height }) => (
+                  <PleiotropyChart
+                    title="Number of phenotype associations to Cardiovascular System"
+                    phenotypeName="Cardiovascular System"
+                    data={pleiotropyData}
+                    isLoading={isLoading}
+                    width={width}
+                    height={height}
+                  />
+                )}
+              </ParentSize>
             </div>
             <p>
               The following diagram represents the various biological system

@@ -13,7 +13,12 @@ export type { GrossPathology, GrossPathologyDataset } from "./gross-pathology";
 export type { Dataset, DatasetExtra } from "./dataset";
 export type { Gene };
 export type { Phenotype };
-export type { GeneralChartProps, ChartSeries, PleiotropyData } from "./chart";
+export type {
+  GeneralChartProps,
+  ChartSeries,
+  PleiotropyData,
+  ChartDimensions,
+} from "./chart";
 export type { EventHandler, EventBus, Bus, EventMap } from "./eventbus";
 export type { TableHeader } from "./sortableTable";
 export type { PaginatedResponse } from "./paginated-response";

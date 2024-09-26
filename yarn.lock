@@ -2099,6 +2099,11 @@ accepts@~1.3.8:
     mime-types "~2.1.34"
     negotiator "0.6.3"
 
+acd-utils@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/acd-utils/-/acd-utils-8.0.0.tgz#ca068db24568626deb5a31675260d61a4bc224e1"
+  integrity sha512-KMhOfjWk+MgbBYvI9YQQh4dpVGRmQdUSjzPnTbHFKuXXqO+7yArdzmgZ0dA1t/wXM5f59icY655bcOQu9DAPMg==
+
 acorn-globals@^7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-7.0.1.tgz#0dbf05c44fa7c94332914c02066d5beff62c40c3"

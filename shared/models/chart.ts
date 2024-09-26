@@ -19,3 +19,14 @@ export type PleiotropyData = {
   phenotypeCount: number;
   otherPhenotypeCount: number;
 };
+
+export type ChartDimensions = {
+  margin: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  };
+  boundedWidth: number;
+  boundedHeight: number;
+};
