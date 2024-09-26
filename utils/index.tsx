@@ -425,6 +425,7 @@ export const buildURL = (url: string, params: Record<string, string>) => {
     });
   return newURL;
 }
+
 // Function to check if iframe is loaded
 // Ideally this should go in node-modules but will keep here for dev.
 export const isIframeLoaded = (iframe: HTMLIFrameElement) => {
@@ -436,4 +437,12 @@ export const isIframeLoaded = (iframe: HTMLIFrameElement) => {
       iframe.addEventListener('load', () => resolve(iframe));
       iframe.addEventListener('error', () => reject("Error loading iframe"));
   });
+}
+
+export const htmlEncode = (id: string) => {
+  return id.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
 }
