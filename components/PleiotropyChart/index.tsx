@@ -9,6 +9,7 @@ import { voronoi } from "@visx/voronoi";
 import { Text } from "@visx/text";
 import { Group } from "@visx/group";
 import { scaleLinear } from "@visx/scale";
+import { groupBy } from "lodash";
 
 import { PleiotropyData } from "@/models";
 import { LoadingProgressBar } from "@/components";
@@ -154,18 +155,18 @@ const PleiotropyChart = ({
       textAnchor="middle"
       verticalAnchor="end"
       angle={-90}
-      style={{ fontSize: "16px" }}
+      style={{ fontSize: "12px" }}
       y={boundedHeight / 2}
       x={0}
       dx={-50}
     >
-      {`Number of phenotype associations to ${phenotypeName}`}
+      Number of phenotype associations
     </Text>
   );
 
   const axisBottomLabel = (
     <Text
-      style={{ fontSize: "16px" }}
+      style={{ fontSize: "12px" }}
       textAnchor="middle"
       verticalAnchor="start"
       y={boundedHeight}
@@ -198,7 +199,6 @@ const PleiotropyChart = ({
       >
         <Group top={margin.top} left={margin.left}>
           <AxisLeft
-            numTicks={4}
             scale={yScale}
             top={0}
             tickLabelProps={() => ({

@@ -11,7 +11,7 @@ export function getDimensions({
     top: 50,
     right: 10,
     bottom: 50,
-    left: 10,
+    left: 70,
   };
 
   return {

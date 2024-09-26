@@ -27,6 +27,8 @@ import {
   PleiotropyChart,
   Search,
 } from "@/components";
+import { ParentSize } from "@visx/responsive";
+import { usePleiotropyQuery } from "@/hooks";
 
 ChartJS.register(
   CategoryScale,
@@ -184,6 +186,9 @@ const ABRChart = ({ geneData }) => {
 };
 
 const HearingLandingPage = () => {
+  const { data: pleiotropyData, isLoading } = usePleiotropyQuery(
+    "hearing/vestibular/ear"
+  );
   return (
     <>
       <Head>
@@ -467,13 +472,26 @@ const HearingLandingPage = () => {
         </Card>
         <Card>
           <h2>Phenotypes distribution</h2>
-          <div style={{ position: "relative", height: "300px" }}>
-            <PleiotropyChart
-              title="Number of phenotype associations to Hearing"
-              data={data.distribution}
-              xAxisTitle="Number of associations to other phenotypes"
-              yAxisTitle="Number of phenotype associations to Hearing"
-            />
+          <div style={{ position: "relative", height: "500px" }}>
+            <ParentSize
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+              }}
+            >
+              {({ width, height }) => (
+                <PleiotropyChart
+                  title="Number of phenotype associations to Hearing"
+                  phenotypeName="Hearing"
+                  data={pleiotropyData}
+                  isLoading={isLoading}
+                  width={width}
+                  height={height}
+                />
+              )}
+            </ParentSize>
           </div>
         </Card>
         <Card>

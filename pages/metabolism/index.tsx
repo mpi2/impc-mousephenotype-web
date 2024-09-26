@@ -19,6 +19,8 @@ import {
   PleiotropyChart,
   NonSSRPublicationsList,
 } from "@/components";
+import { usePleiotropyQuery } from "@/hooks";
+import { ParentSize } from "@visx/responsive";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -88,6 +90,10 @@ const MetabolismLandingPage = () => {
           };
         })
     : [];
+
+  const { data: pleiotropyData, isLoading } = usePleiotropyQuery(
+    "homeostasis/metabolism"
+  );
 
   return (
     <>
@@ -440,13 +446,26 @@ const MetabolismLandingPage = () => {
         </Card>
         <Card>
           <h2>Phenotypes distribution</h2>
-          <div style={{ position: "relative", height: "300px" }}>
-            <PleiotropyChart
-              title="Number of phenotype associations to Hearing"
-              data={data.distribution}
-              xAxisTitle="Number of associations to other phenotypes"
-              yAxisTitle="Number of phenotype associations to Metabolism"
-            />
+          <div style={{ position: "relative", height: "500px" }}>
+            <ParentSize
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+              }}
+            >
+              {({ width, height }) => (
+                <PleiotropyChart
+                  title="Number of phenotype associations to Cardiovascular System"
+                  phenotypeName="Cardiovascular System"
+                  data={pleiotropyData}
+                  isLoading={isLoading}
+                  width={width}
+                  height={height}
+                />
+              )}
+            </ParentSize>
           </div>
         </Card>
         <Card>
