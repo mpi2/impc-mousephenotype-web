@@ -4,11 +4,18 @@ import { ReactNode } from "react";
 export type GeneralChartProps = {
   datasetSummary: Dataset;
   isVisible: boolean;
-  children?: ReactNode
+  children?: ReactNode;
 };
 
 export type ChartSeries<T> = {
   data: Array<T>;
   sampleGroup: "control" | "experimental";
   specimenSex: "male" | "female";
+};
+
+export type PleiotropyData = {
+  marker_accession_id: string;
+  marker_symbol: string;
+  phenotypeCount: number;
+  otherPhenotypeCount: number;
 };

@@ -1,25 +1,36 @@
-import * as Gene from './gene';
-import * as Phenotype from './phenotype';
-import type { PhenotypeRef } from './phenotype-ref';
+import * as Gene from "./gene";
+import * as Phenotype from "./phenotype";
+import type { PhenotypeRef } from "./phenotype-ref";
 import { MetabolismGeneData } from "@/pages/metabolism";
-import { HistopathologyResponse, Histopathology } from './histopathology';
-import { GrossPathology, GrossPathologyDataset } from './gross-pathology';
-import { Dataset } from './dataset';
+import { HistopathologyResponse, Histopathology } from "./histopathology";
+import { GrossPathology, GrossPathologyDataset } from "./gross-pathology";
+import { Dataset } from "./dataset";
 
-export type { PhenotypeRef } from './phenotype-ref';
-export type { TableCellProps } from './TableCell';
-export type { HistopathologyResponse, Histopathology } from './histopathology';
-export type { GrossPathology, GrossPathologyDataset } from './gross-pathology';
-export type { Dataset, DatasetExtra } from './dataset';
+export type { PhenotypeRef } from "./phenotype-ref";
+export type { TableCellProps } from "./TableCell";
+export type { HistopathologyResponse, Histopathology } from "./histopathology";
+export type { GrossPathology, GrossPathologyDataset } from "./gross-pathology";
+export type { Dataset, DatasetExtra } from "./dataset";
 export type { Gene };
 export type { Phenotype };
-export type { GeneralChartProps, ChartSeries } from './chart';
-export type { EventHandler, EventBus, Bus, EventMap } from './eventbus';
-export type { TableHeader } from './sortableTable';
-export type { PaginatedResponse } from './paginated-response';
-export type { LateAdultDataResponse, LateAdultDataParsed, LateAdultRowResponse } from './LandingPages'
+export type { GeneralChartProps, ChartSeries, PleiotropyData } from "./chart";
+export type { EventHandler, EventBus, Bus, EventMap } from "./eventbus";
+export type { TableHeader } from "./sortableTable";
+export type { PaginatedResponse } from "./paginated-response";
+export type {
+  LateAdultDataResponse,
+  LateAdultDataParsed,
+  LateAdultRowResponse,
+} from "./LandingPages";
 
 type Model =
-  PhenotypeRef | typeof Gene | typeof Phenotype | MetabolismGeneData | Dataset
-  | HistopathologyResponse | Histopathology | GrossPathology | GrossPathologyDataset;
+  | PhenotypeRef
+  | typeof Gene
+  | typeof Phenotype
+  | MetabolismGeneData
+  | Dataset
+  | HistopathologyResponse
+  | Histopathology
+  | GrossPathology
+  | GrossPathologyDataset;
 export type { Model };
