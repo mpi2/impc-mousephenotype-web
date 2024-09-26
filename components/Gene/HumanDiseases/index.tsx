@@ -17,7 +17,7 @@ import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { DownloadData, SectionHeader } from "@/components";
-import { isIframeLoaded} from "@/utils";
+import { isIframeLoaded, htmlEncode } from "@/utils";
 
 type ScaleProps = {
   children: number;
@@ -64,14 +64,15 @@ const PhenoGridEl = ({
 
   // Process individual disease phenotypes and mouse phenotypes
   const diseasePhenotypes = processPhenotypes(rowDiseasePhenotypes.join());
-
+ 
   // Process mouse phenotypes for each object in data
   // Filter out results with a pd score of 0
   const objectSets = data
     .filter(({ phenodigmScore }) => phenodigmScore > 0)
     .map(({ modelPhenotypes, modelDescription, phenodigmScore }) => {
       const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
-      const id = modelDescription;
+      // send HTML encode the id to get correct labels in tooltip. Downside: the labels on top are not readable.
+      const id= htmlEncode(modelDescription);
       const label = `${phenodigmScore.toFixed(2)}-${id}`;
       const phenotypes = mousePhenotypes.map((item) => item.id);
 
@@ -90,7 +91,6 @@ const PhenoGridEl = ({
     const phenotypeDisplayThreshold = 5;
     if (diseasePhenotypes.length > phenotypeDisplayThreshold && iframeHeight <= 400) {
       const heightIncreaseFactor = diseasePhenotypes.length / phenotypeDisplayThreshold * 100
-      console.log('Increase Factor', heightIncreaseFactor)
       setiFrameHeight((prevHeight) => prevHeight + heightIncreaseFactor);
       // Reset height to initial size if below threshold
     } else if (diseasePhenotypes.length <= phenotypeDisplayThreshold && iframeHeight !== 400) {
