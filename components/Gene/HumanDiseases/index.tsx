@@ -83,6 +83,22 @@ const PhenoGridEl = ({
       };
     });
 
+  // Adjust iframeHeight based on the number of disease phenotypes (y-axis)
+
+  useEffect(() => {
+    // Display of the iframe seems good at 5 phenotypes so we set that as a baseline
+    const phenotypeDisplayThreshold = 5;
+    if (diseasePhenotypes.length > phenotypeDisplayThreshold && iframeHeight <= 400) {
+      const heightIncreaseFactor = diseasePhenotypes.length / phenotypeDisplayThreshold * 100
+      console.log('Increase Factor', heightIncreaseFactor)
+      setiFrameHeight((prevHeight) => prevHeight + heightIncreaseFactor);
+      // Reset height to initial size if below threshold
+    } else if (diseasePhenotypes.length <= phenotypeDisplayThreshold && iframeHeight !== 400) {
+      setiFrameHeight(400);
+    }
+  }, [diseasePhenotypes.length]);
+
+
   useEffect(() => {
     const iframe = iframeRef.current;
     if (iframe) {
