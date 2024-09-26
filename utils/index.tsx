@@ -425,6 +425,8 @@ export const buildURL = (url: string, params: Record<string, string>) => {
     });
   return newURL;
 }
+
+// Function to check if iframe is loaded
 // Ideally this should go in node-modules but will keep here for dev.
 export const isIframeLoaded = (iframe: HTMLIFrameElement) => {
   console.log("Loading iframe");
