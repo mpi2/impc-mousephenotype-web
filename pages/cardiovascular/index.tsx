@@ -61,7 +61,6 @@ const CardiovascularLandingPage = () => {
     "cardiovascular system"
   );
 
-  console.log(pleiotropyData);
   return (
     <>
       <Head>
