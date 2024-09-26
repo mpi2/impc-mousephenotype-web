@@ -29,11 +29,15 @@ const phenotypesToID = {
   skeleton: "MP:0005390",
 };
 
-export const usePleiotropyQuery = (phenotype: keyof typeof phenotypesToID) => {
+export const usePleiotropyQuery = (
+  phenotype: keyof typeof phenotypesToID,
+  enabled = true
+) => {
   return useQuery({
     queryKey: ["landing-page", "pleiotropy"],
     queryFn: () => fetchLandingPageData("phenotype_pleiotropy"),
     placeholderData: [],
     select: (data) => data[phenotypesToID[phenotype]] as Array<PleiotropyData>,
+    enabled,
   });
 };
