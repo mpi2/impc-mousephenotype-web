@@ -113,7 +113,7 @@ const PhenoGridEl = ({
                 subjects: subjects,
                 "object-sets": objectSets,
               },
-              "http://monarchinitiative.org"
+              "https://monarchinitiative.org"
             );
 
             console.log("Message sent with a dealy of 0.5s");
@@ -158,7 +158,8 @@ const PhenoGridEl = ({
             ref={iframeRef}
             name="pheno-multi"
             title="MultiCompare Phenogrid"
-            src="http://monarchinitiative.org/phenogrid-multi-compare"
+            src="https://monarchinitiative.org/phenogrid-multi-compare"
+            allow="clipboard-write"
             style={{ width: "100%", height: "100%", border: "none" }}
           />
         </div>
