@@ -159,6 +159,7 @@ const PhenoGridEl = ({
             name="pheno-multi"
             title="MultiCompare Phenogrid"
             src="https://monarchinitiative.org/phenogrid-multi-compare"
+            allow="clipboard-write"
             style={{ width: "100%", height: "100%", border: "none" }}
           />
         </div>
