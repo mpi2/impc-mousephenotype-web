@@ -12,17 +12,17 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
-import Phenogrid from "phenogrid";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { DownloadData, SectionHeader } from "@/components";
+import { isIframeLoaded, htmlEncode } from "@/utils";
 
 type ScaleProps = {
   children: number;
-  toggleFocus: (newValue: boolean) => void
-}
+  toggleFocus: (newValue: boolean) => void;
+};
 type Ref = HTMLDivElement;
 
 const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
@@ -43,45 +43,137 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
   );
 });
 
-const PhenoGridEl = ({ phenotypes, id }) => {
+const PhenoGridEl = ({
+  rowDiseasePhenotypes,
+  data,
+}) => {
   const {
     query: { pid },
   } = useRouter();
-  const cont = useRef(null);
-  const yAxis =
-    phenotypes?.split(",").map((x) => {
+  const iframeRef = useRef(null);
+  const [iframeHeight, setiFrameHeight] = useState(400);
+
+  const processPhenotypes = (phenotypeString) =>
+    phenotypeString?.split(",").map((x) => {
       const processed = x.replace(" ", "**").split("**");
       return {
         id: processed[0],
         term: processed[1],
       };
     }) ?? [];
-  var data = {
-    title: " ",
-    xAxis: [[pid]],
-    yAxis,
-  };
+
+  // Process individual disease phenotypes and mouse phenotypes
+  const diseasePhenotypes = processPhenotypes(rowDiseasePhenotypes.join());
+ 
+  // Process mouse phenotypes for each object in data
+  // Filter out results with a pd score of 0
+  const objectSets = data
+    .filter(({ phenodigmScore }) => phenodigmScore > 0)
+    .map(({ modelPhenotypes, modelDescription, phenodigmScore }) => {
+      const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
+      // send HTML encode the id to get correct labels in tooltip. Downside: the labels on top are not readable.
+      const id= htmlEncode(modelDescription);
+      const label = `${phenodigmScore.toFixed(2)}-${id}`;
+      const phenotypes = mousePhenotypes.map((item) => item.id);
+
+      // Create the object where the data will be stored
+      return {
+        id: id,
+        label: label,
+        phenotypes: phenotypes,
+      };
+    });
+
+  // Adjust iframeHeight based on the number of disease phenotypes (y-axis)
+
   useEffect(() => {
-    if (cont.current && Phenogrid) {
-      Phenogrid.createPhenogridForElement(cont.current, {
-        serverURL: "https://api.monarchinitiative.org/api/",
-        gridSkeletonData: data,
-        geneList: [[pid]],
-        owlSimFunction: "compare",
-      });
+    // Display of the iframe seems good at 5 phenotypes so we set that as a baseline
+    const phenotypeDisplayThreshold = 5;
+    if (diseasePhenotypes.length > phenotypeDisplayThreshold && iframeHeight <= 400) {
+      const heightIncreaseFactor = diseasePhenotypes.length / phenotypeDisplayThreshold * 100
+      setiFrameHeight((prevHeight) => prevHeight + heightIncreaseFactor);
+      // Reset height to initial size if below threshold
+    } else if (diseasePhenotypes.length <= phenotypeDisplayThreshold && iframeHeight !== 400) {
+      setiFrameHeight(400);
     }
-  }, [cont.current]);
+  }, [diseasePhenotypes.length]);
+
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      isIframeLoaded(iframe)
+        .then(() => {
+          console.log("Iframe loaded successfully");
+
+          setTimeout(() => {
+            const subjects = diseasePhenotypes.map((item) => item.id);
+            iframe.contentWindow?.postMessage(
+              {
+                subjects: subjects,
+                "object-sets": objectSets,
+              },
+              "http://monarchinitiative.org"
+            );
+
+            console.log("Message sent with a dealy of 0.5s");
+          }, 500);
+        })
+        .catch((error) => {
+          console.error("Error loading iframe or sending message:", error);
+        });
+    }
+
+    const handleMessage = (event: MessageEvent) => {
+      const { width, height } = event.data;
+      if (!iframe) return;
+
+      // Set the iframe to fill its container
+      iframe.style.width = "100%";
+      iframe.style.height = "1000px";
+
+      // // But never bigger than its contents
+      iframe.style.maxWidth = `${width}px`;
+      iframe.style.maxHeight = `${iframeHeight}px`;
+    };
+
+    window.addEventListener("message", handleMessage);
+
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, [diseasePhenotypes]);
 
   return (
     <tr>
       <td colSpan={6}>
-        <div style={{ width: "100%" }} ref={cont} id={`phenogrid${id}`}></div>
+        <div
+          style={{
+            width: "100%",
+            height: `${iframeHeight}px`,
+            overflow: "hidden",
+          }}
+        >
+          <iframe
+            ref={iframeRef}
+            name="pheno-multi"
+            title="MultiCompare Phenogrid"
+            src="http://monarchinitiative.org/phenogrid-multi-compare"
+            style={{ width: "100%", height: "100%", border: "none" }}
+          />
+        </div>
       </td>
     </tr>
   );
 };
 
-const Row = ({ data }: { data: GeneDisease }) => {
+const Row = ({
+  rowData,
+  data,
+}: {
+  rowData: GeneDisease;
+  data: Array<GeneDisease>;
+}) => {
   const [open, setOpen] = useState(false);
   const [tooltipShow, setTooltipShow] = useState(false);
   const tooltipRef = useRef(null);
@@ -90,33 +182,40 @@ const Row = ({ data }: { data: GeneDisease }) => {
     <>
       <tr>
         <td>
-          <strong className={styles.link}>{data.diseaseTerm}</strong>
+          <strong className={styles.link}>{rowData.diseaseTerm}</strong>
         </td>
         <td>
           <Scale ref={tooltipRef} toggleFocus={setTooltipShow}>
-            {Math.round((data.phenodigmScore / 100) * 5)}
+            {Math.round((rowData.phenodigmScore / 100) * 5)}
           </Scale>
-          <Overlay target={tooltipRef.current} show={tooltipShow} placement="top">
+          <Overlay
+            target={tooltipRef.current}
+            show={tooltipShow}
+            placement="top"
+          >
             {(props) => (
-              <Tooltip id={`${data.mgiGeneAccessionId}-${data.diseaseId}`} {...props}>
-                Phenodigm score: {data.phenodigmScore.toFixed(2)}%
+              <Tooltip
+                id={`${rowData.mgiGeneAccessionId}-${rowData.diseaseId}`}
+                {...props}
+              >
+                Phenodigm score: {rowData.phenodigmScore.toFixed(2)}%
               </Tooltip>
             )}
           </Overlay>
         </td>
         <td>
-          {data?.diseaseMatchedPhenotypes
+          {rowData?.diseaseMatchedPhenotypes
             ?.split(",")
             .map((x) => x.replace(" ", "**").split("**")[1])
             .join(", ")}
         </td>
         <td>
           <a
-            href={`http://omim.org/entry/${data.diseaseId.split(":")[1]}`}
+            href={`http://omim.org/entry/${rowData.diseaseId.split(":")[1]}`}
             target="_blank"
             className="link primary"
           >
-            {data.diseaseId}{" "}
+            {rowData.diseaseId}{" "}
             <FontAwesomeIcon
               className="grey"
               size="xs"
@@ -133,8 +232,8 @@ const Row = ({ data }: { data: GeneDisease }) => {
       </tr>
       {open && (
         <PhenoGridEl
-          phenotypes={data.diseaseMatchedPhenotypes}
-          id={data.diseaseId.split(":")[1]}
+          rowDiseasePhenotypes={rowData.diseasePhenotypes}
+          data={data}
         />
       )}
     </>
@@ -145,10 +244,10 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<Array<GeneDisease>>([]);
   const { isLoading, isError, data } = useQuery({
-    queryKey: ['genes', router.query.pid, 'disease'],
+    queryKey: ["genes", router.query.pid, "disease"],
     queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/disease`),
     enabled: router.isReady,
-    select: data => data as Array<GeneDisease>,
+    select: (data) => data as Array<GeneDisease>,
   });
   const [tab, setTab] = useState("associated");
 
@@ -191,7 +290,9 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
     ? sorted.filter((x) => x.associationCurated !== true)
     : [];
 
-  const selectedData = tab === "associated" ? associatedData : predictedData;
+  const selectedData = (
+    tab === "associated" ? associatedData : predictedData
+  ).filter((d) => d.isMaxPhenodigmScore === true);
 
   return (
     <>
@@ -217,7 +318,8 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             eventKey="associated"
             title={
               <>
-                Human diseases associated with <i>{gene.geneSymbol}</i> ({associatedData.length})
+                Human diseases associated with <i>{gene.geneSymbol}</i> (
+                {associatedData.length})
               </>
             }
           ></Tab>
@@ -225,7 +327,8 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             eventKey="predicted"
             title={
               <>
-                Human diseases predicted to be associated with <i>{gene.geneSymbol}</i> ({predictedData.length})
+                Human diseases predicted to be associated with{" "}
+                <i>{gene.geneSymbol}</i> ({predictedData.length})
               </>
             }
           ></Tab>
@@ -243,14 +346,36 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                   data={sorted}
                   fileName={`${gene.geneSymbol}-associated-diseases`}
                   fields={[
-                    { key: 'diseaseTerm', label: 'Disease' },
-                    { key: 'phenodigmScore', label: 'Phenodigm Score' },
-                    { key: 'diseaseMatchedPhenotypes', label: 'Matching phenotypes' },
-                    { key: 'diseaseId', label: 'Source', getValueFn: item => `https://omim.org/entry/${item.diseaseId.replace('OMIM:', '')}` },
-                    { key: 'associationCurated', label: 'Gene association', getValueFn: item => item.associationCurated ? 'Curated' : 'Predicted' },
-                    { key: 'modelDescription', label: 'Model description' },
-                    { key: 'modelGeneticBackground', label: 'Model genetic background' },
-                    { key: 'modelMatchedPhenotypes', label: 'Model matched phenotypes' },
+                    { key: "diseaseTerm", label: "Disease" },
+                    { key: "phenodigmScore", label: "Phenodigm Score" },
+                    {
+                      key: "diseaseMatchedPhenotypes",
+                      label: "Matching phenotypes",
+                    },
+                    {
+                      key: "diseaseId",
+                      label: "Source",
+                      getValueFn: (item) =>
+                        `https://omim.org/entry/${item.diseaseId.replace(
+                          "OMIM:",
+                          ""
+                        )}`,
+                    },
+                    {
+                      key: "associationCurated",
+                      label: "Gene association",
+                      getValueFn: (item) =>
+                        item.associationCurated ? "Curated" : "Predicted",
+                    },
+                    { key: "modelDescription", label: "Model description" },
+                    {
+                      key: "modelGeneticBackground",
+                      label: "Model genetic background",
+                    },
+                    {
+                      key: "modelMatchedPhenotypes",
+                      label: "Model matched phenotypes",
+                    },
                   ]}
                 />
               }
@@ -277,8 +402,14 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                     { width: 1, label: "Expand", disabled: true },
                   ]}
                 >
-                  {pageData.map((d, index) => (
-                    <Row key={index} data={d} />
+                  {pageData.map((d) => (
+                    <Row
+                      key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`}
+                      rowData={d}
+                      data={data.filter(
+                        (diseaseModel) => d.diseaseId == diseaseModel.diseaseId
+                      )}
+                    />
                   ))}
                 </SortableTable>
               )}
@@ -290,4 +421,8 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   );
 };
 
-export default sectionWithErrorBoundary(HumanDiseases, 'Human diseases', 'human-diseases');
+export default sectionWithErrorBoundary(
+  HumanDiseases,
+  "Human diseases",
+  "human-diseases"
+);

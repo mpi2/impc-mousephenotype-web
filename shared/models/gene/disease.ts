@@ -18,4 +18,5 @@ export type GeneDisease = {
   modelSource: string;
   phenodigmScore: number;
   type: string;
+  isMaxPhenodigmScore: boolean;
 };
