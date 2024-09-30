@@ -16,3 +16,5 @@ export { useScroll } from "./useScroll";
 export { useGeneAllStatisticalResData } from "./gene-all-statistical-result-data.query";
 export { useUnidimensionalDataQuery } from "./unidimensional-data.query";
 export { useQueryFlags } from "./query-flags";
+export { usePleiotropyQuery } from "./pleiotropy.query";
+export { useRerender } from "./rerender";

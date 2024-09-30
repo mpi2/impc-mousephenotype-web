@@ -18,10 +18,16 @@ import dynamic from "next/dynamic";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import Head from "next/head";
 import { capitalize } from "lodash";
-import { useEmbryoLandingQuery } from "@/hooks";
+import {
+  useEmbryoLandingQuery,
+  usePleiotropyQuery,
+  useQueryFlags,
+} from "@/hooks";
 import { useMemo, useState } from "react";
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import Link from "next/link";
+import { ParentSize } from "@visx/responsive";
+import { PleiotropyChart } from "@/components";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"),
@@ -37,6 +43,10 @@ const EmbryoLandingPage = () => {
   const { data, isLoading } = useEmbryoLandingQuery();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [listGenes, setListGenes] = useState<SelectedLine>(null);
+  const { isPleiotropyChartAvailable } = useQueryFlags();
+  const { data: pleiotropyData, isLoading: isPleiotropyLoading } =
+    usePleiotropyQuery("embryo", isPleiotropyChartAvailable);
+
   data?.primaryViabilityTable?.sort((a, b) =>
     a.genes.length > b.genes.length ? -1 : 1
   );
@@ -417,6 +427,32 @@ const EmbryoLandingPage = () => {
             </Row>
           </Container>
         </Card>
+        {isPleiotropyChartAvailable && (
+          <Card>
+            <h2>Phenotypes distribution</h2>
+            <div style={{ position: "relative", height: "500px" }}>
+              <ParentSize
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+              >
+                {({ width, height }) => (
+                  <PleiotropyChart
+                    title="Number of phenotype associations to Embryo"
+                    phenotypeName="Embryo"
+                    data={pleiotropyData}
+                    isLoading={isLoading}
+                    width={width}
+                    height={height}
+                  />
+                )}
+              </ParentSize>
+            </div>
+          </Card>
+        )}
         <Card>
           <Container>
             <h1>

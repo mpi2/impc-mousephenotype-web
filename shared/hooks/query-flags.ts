@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 type EnabledFlags = {
   isNNumbersFootnoteAvailable: boolean;
+  isPleiotropyChartAvailable: boolean;
 };
 
 type Flag = {
@@ -19,6 +20,12 @@ const listOfFlags: Array<Flag> = [
     queryParamName: "nnumbersfootnote",
     valueToEnable: "enabled",
   },
+  {
+    name: "Embryo landing pleiotropy chart",
+    propName: "isPleiotropyChartAvailable",
+    queryParamName: "embryopleiotropychart",
+    valueToEnable: "",
+  },
 ];
 
 export const useQueryFlags = () => {
@@ -26,13 +33,15 @@ export const useQueryFlags = () => {
 
   const [flags, setFlags] = useState<EnabledFlags>({
     isNNumbersFootnoteAvailable: false,
+    isPleiotropyChartAvailable: false,
   });
   useEffect(() => {
     const params = router.query;
     for (const [key, value] of Object.entries(params)) {
       const flag = listOfFlags.find((flag) => flag.queryParamName === key);
       if (flag) {
-        const shouldBeEnabled = flag.valueToEnable === value;
+        const shouldBeEnabled =
+          flag.valueToEnable === "" || flag.valueToEnable === value;
         setFlags((prevFlags) => {
           return {
             ...prevFlags,
