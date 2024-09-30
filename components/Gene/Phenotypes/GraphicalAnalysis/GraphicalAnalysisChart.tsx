@@ -8,7 +8,7 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { withTooltip, Tooltip } from "@visx/tooltip";
 import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
 import { GlyphTriangle, GlyphDiamond, GlyphCircle } from "@visx/glyph";
-import { curveStep } from "@visx/curve";
+import { curveMonotoneY } from "@visx/curve";
 import { PatternLines } from "@visx/pattern";
 import { Brush } from "@visx/brush";
 import BaseBrush from "@visx/brush/lib/BaseBrush";
@@ -154,7 +154,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
           range: [yAxisWidth, chartWidth],
           // use whole data collection - avoid threshold line position changes
           domain: extent(data, (d) => d.chartValue),
-          nice: true,
         }),
       [chartWidth, data, category]
     );
@@ -164,7 +163,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
         scaleLinear<number>({
           range: [0, brushMaxWidth],
           domain: [0, xMax + 5],
-          nice: true,
         }),
       [width, xMax]
     );
@@ -174,8 +172,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
         scaleLinear<number>({
           range: [40, yMax],
           domain: extent(filteredData, (d) => d.arrPos),
-          nice: true,
-          clamp: true,
         }),
       [height, filteredData, category]
     );
@@ -183,10 +179,8 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
     const brushYScale = useMemo(
       () =>
         scaleLinear<number>({
-          range: [40, brushHeight],
+          range: [0, brushHeight],
           domain: [0, max(data, (d) => d.arrPos) || 0],
-          nice: true,
-          clamp: true,
         }),
       [height, data]
     );
@@ -330,17 +324,17 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
             );
           })}
           <Group left={chartWidth} top={40}>
-            <Group top={-40}>
+            <Group top={0}>
               <AreaClosed
                 data={data}
-                height={yMax}
-                x={(d) => brushXScale(d.chartValue)}
-                y={(d) => brushYScale(d.arrPos)}
+                height={brushHeight}
+                x={(d) => brushXScale(d.chartValue) || 0}
+                y={(d) => brushYScale(d.arrPos) || 0}
                 yScale={brushYScale}
                 strokeWidth={1}
                 stroke="#000"
                 fill="#000"
-                curve={curveStep}
+                curve={curveMonotoneY}
               />
             </Group>
             <PatternLines
