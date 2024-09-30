@@ -158,14 +158,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
       [chartWidth, data, category]
     );
 
-    useEffect(
-      () =>
-        console.log({
-          range: extent(filteredData, (d) => d.chartValue).toString(),
-        }),
-      [filteredData]
-    );
-
     const brushXScale = useMemo(
       () =>
         scaleLinear<number>({
