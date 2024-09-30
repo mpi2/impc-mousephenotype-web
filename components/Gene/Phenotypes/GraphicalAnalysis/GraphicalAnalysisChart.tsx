@@ -148,15 +148,17 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
       return filteredData.length / divisor;
     }, [filteredData, category]);
 
-    const xScale = useMemo(
-      () =>
-        scaleLinear<number>({
-          range: [yAxisWidth, chartWidth],
-          // use whole data collection - avoid threshold line position changes
-          domain: extent(data, (d) => d.chartValue),
-        }),
-      [chartWidth, data, category]
-    );
+    const xScale = useMemo(() => {
+      // use whole data collection - avoid threshold line position changes
+      const [minDomain, maxDomain] = extent(data, (d) => d.chartValue);
+      // set default domain max value to 17,
+      // if manual annotations are the most significant ones
+      const domain = [minDomain, Math.max(17, maxDomain)];
+      return scaleLinear<number>({
+        range: [yAxisWidth, chartWidth],
+        domain,
+      });
+    }, [chartWidth, data, category]);
 
     const brushXScale = useMemo(
       () =>
