@@ -19,6 +19,7 @@ import { useDebounceCallback } from "usehooks-ts";
 import { groupBy } from "lodash";
 import chroma from "chroma-js";
 import { GeneStatisticalResult } from "@/models/gene";
+import { LinearGradient } from "@visx/gradient";
 
 const BrushHandle = ({ y, width, isBrushActive }: BrushHandleRenderProps) => {
   if (!isBrushActive) {
@@ -151,9 +152,8 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
     const xScale = useMemo(() => {
       // use whole data collection - avoid threshold line position changes
       const [minDomain, maxDomain] = extent(data, (d) => d.chartValue);
-      // set default domain max value to 17,
-      // if manual annotations are the most significant ones
-      const domain = [minDomain, Math.max(17, maxDomain)];
+      // add 25% padding for space between most significant data and brush control
+      const domain = [minDomain, maxDomain * 1.15];
       return scaleLinear<number>({
         range: [yAxisWidth, chartWidth],
         domain,
@@ -168,6 +168,11 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
         }),
       [width, xMax]
     );
+
+    const significantStartPercentage = useMemo(() => {
+      const [_, maxVal = 4] = brushXScale.domain();
+      return `${Math.trunc((4 / maxVal) * 100)}%`;
+    }, [brushXScale]);
 
     const yScale = useMemo(
       () =>
@@ -327,6 +332,13 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
           })}
           <Group left={chartWidth} top={40}>
             <Group top={0}>
+              <LinearGradient
+                id="brushGradient"
+                from="#000"
+                to="#C9510C"
+                vertical={false}
+                toOffset={significantStartPercentage}
+              />
               <AreaClosed
                 data={data}
                 height={brushHeight}
@@ -334,8 +346,8 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
                 y={(d) => brushYScale(d.arrPos) || 0}
                 yScale={brushYScale}
                 strokeWidth={1}
-                stroke="#000"
-                fill="#000"
+                stroke="url(#brushGradient)"
+                fill="url(#brushGradient)"
                 curve={curveMonotoneY}
               />
             </Group>
