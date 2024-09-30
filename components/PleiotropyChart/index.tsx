@@ -9,7 +9,6 @@ import { voronoi } from "@visx/voronoi";
 import { Text } from "@visx/text";
 import { Group } from "@visx/group";
 import { scaleLinear } from "@visx/scale";
-import { groupBy } from "lodash";
 
 import { PleiotropyData } from "@/models";
 import { LoadingProgressBar } from "@/components";

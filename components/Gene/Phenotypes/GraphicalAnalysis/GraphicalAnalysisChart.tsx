@@ -152,6 +152,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
       () =>
         scaleLinear<number>({
           range: [yAxisWidth, chartWidth],
+          // use whole data collection - avoid threshold line position changes
           domain: extent(data, (d) => d.chartValue),
           nice: true,
         }),
