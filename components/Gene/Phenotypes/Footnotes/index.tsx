@@ -32,7 +32,8 @@ const Footnotes = (props: Props) => {
             in IMPReSS, check&nbsp;
             <a
               className="primary link"
-              href="https://dev.mousephenotype.org/help/"
+              href="https://dev.mousephenotype.org/help/data-analysis/faqs/how-many-specimens-go-through-the-statistical-analysis/"
+              target="_blank"
             >
               N-numbers documentation page
             </a>
