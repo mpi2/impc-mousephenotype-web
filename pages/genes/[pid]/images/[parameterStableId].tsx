@@ -315,7 +315,7 @@ const ImagesCompare = () => {
       const selectedCenter = !appliedAnatomyTerm
         ? mutantImages[0]
         : findCenterByMatchingAnatomyFilter(mutantImages);
-      const selectedCenterName = selectedCenter.pipelineStableId.split("_")[0];
+      const selectedCenterName = selectedCenter.phenotypingCentre;
       if (selectedCenterName !== selectedMutantCenter) {
         setMetadataGroup(selectedCenter.metadataGroup);
         setStrainAccessionId(selectedCenter.strainAccessionId);
@@ -325,18 +325,17 @@ const ImagesCompare = () => {
     }
     if (mutantImages.length > 0 && controlImagesRaw.length > 0) {
       if (!appliedAnatomyTerm) {
-        const center = mutantImages[0].pipelineStableId.split("_")[0];
+        const center = mutantImages[0].phenotypingCentre;
         if (
           center !== selectedControlCenter &&
-          controlImagesRaw.some((c) => c.pipelineStableId.includes(center))
+          controlImagesRaw.some((c) => c.phenotypingCentre === center)
         ) {
           setSelectedControlCenter(center);
         }
       } else {
         const selectedCenter =
           findCenterByMatchingAnatomyFilter(controlImagesRaw);
-        const selectedCenterName =
-          selectedCenter.pipelineStableId.split("_")[0];
+        const selectedCenterName = selectedCenter.phenotypingCentre;
         if (selectedCenterName !== selectedControlCenter) {
           setSelectedControlCenter(selectedCenterName);
         }
@@ -384,14 +383,14 @@ const ImagesCompare = () => {
     filters: Filters
   ) => {
     const { selectedCenter } = filters;
-    const hasImagesForParameter = !!images.find((c) =>
-      c.pipelineStableId.includes(selectedCenter)
+    const hasImagesForParameter = !!images.find(
+      (c) => c.phenotypingCentre === selectedCenter
     );
     if (hasImagesForParameter) {
       return (
         images
-          .filter((collection) =>
-            collection.pipelineStableId.includes(selectedCenter)
+          .filter(
+            (collection) => collection.phenotypingCentre === selectedCenter
           )
           .filter(
             (collection) =>
@@ -473,9 +472,7 @@ const ImagesCompare = () => {
           procedureStableId === null ||
           collection.procedureStableId === procedureStableId
       );
-    const centers = filteredCollections?.map(
-      (c) => c.pipelineStableId.split("_")[0]
-    );
+    const centers = filteredCollections?.map((c) => c.phenotypingCentre);
     return uniq(centers) || ([] as Array<string>);
   }, [mutantImages, appliedAnatomyTerm]);
 
@@ -496,9 +493,7 @@ const ImagesCompare = () => {
           procedureStableId === null ||
           collection.procedureStableId === procedureStableId
       );
-    const centers = filteredCollections?.map(
-      (c) => c.pipelineStableId.split("_")[0]
-    );
+    const centers = filteredCollections?.map((c) => c.phenotypingCentre);
     return uniq(centers) || ([] as Array<string>);
   }, [controlImagesRaw, appliedAnatomyTerm]);
 
@@ -583,7 +578,7 @@ const ImagesCompare = () => {
                     value={selectedControlCenter}
                     onChange={setSelectedControlCenter}
                     options={allControlCenters}
-                    controlStyle={{ display: "inline-block", width: 100 }}
+                    controlStyle={{ display: "inline-block", width: 145 }}
                     allOptionEnabled={false}
                     displayEvenWithOnlyOneOption
                   />
@@ -624,7 +619,7 @@ const ImagesCompare = () => {
                     value={selectedMutantCenter}
                     onChange={setSelectedMutantCenter}
                     options={allMutantCenters}
-                    controlStyle={{ display: "inline-block", width: 100 }}
+                    controlStyle={{ display: "inline-block", width: 145 }}
                     allOptionEnabled={false}
                     displayEvenWithOnlyOneOption
                   />
