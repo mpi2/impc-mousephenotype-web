@@ -6,24 +6,24 @@ import {
   PhenotypeGeneAssociations,
   ManhattanPlot,
   PhenotypeMetadata,
-} from '@/components/Phenotype';
+} from "@/components/Phenotype";
 import Search from "@/components/Search";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchAPI, fetchAPIFromServer } from "@/api-service";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
-import _ from 'lodash';
+import { uniqBy } from "lodash";
 import phenotypeList from "../../mocks/data/all_phenotypes_list.json";
 
 type PhenotypePageProps = {
-  phenotype: PhenotypeSummary,
+  phenotype: PhenotypeSummary;
 };
 
 const sortPhenotypeProcedures = (data: PhenotypeSummary): PhenotypeSummary => ({
   ...data,
-  procedures: _.uniqBy(data.procedures, 'procedureName').sort((a, b) => {
+  procedures: uniqBy(data.procedures, "procedureName").sort((a, b) => {
     return a.procedureName.localeCompare(b.procedureName);
-  })
+  }),
 });
 
 const Phenotype = (props: PhenotypePageProps) => {
@@ -31,8 +31,12 @@ const Phenotype = (props: PhenotypePageProps) => {
   const router = useRouter();
   const phenotypeId = router.query.id;
 
-  const { data: phenotype, isLoading, isError } = useQuery({
-    queryKey: ['phenotype', phenotypeId, 'summary'],
+  const {
+    data: phenotype,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["phenotype", phenotypeId, "summary"],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
     enabled: router.isReady && !phenotypeFromServer,
     select: sortPhenotypeProcedures,
@@ -46,18 +50,20 @@ const Phenotype = (props: PhenotypePageProps) => {
       <PhenotypeContext.Provider value={phenotype}>
         <Search defaultType="phenotype" />
         <Container className="page">
-          <Summary {...{ phenotype: phenotypeData, }}/>
+          <Summary {...{ phenotype: phenotypeData }} />
           <Card id="associations-table">
             <PhenotypeGeneAssociations />
           </Card>
           <Card>
-            <h2>Most significant associations for {phenotype?.phenotypeName}</h2>
-            <ManhattanPlot phenotypeId={phenotypeId}  />
+            <h2>
+              Most significant associations for {phenotype?.phenotypeName}
+            </h2>
+            <ManhattanPlot phenotypeId={phenotypeId} />
           </Card>
           <Card>
             <h2>The way we measure</h2>
             <p>Procedure</p>
-            {phenotype?.procedures.map(prod => (
+            {phenotype?.procedures.map((prod) => (
               <p key={prod.procedureStableId}>
                 <a
                   className="secondary"
@@ -76,16 +82,18 @@ const Phenotype = (props: PhenotypePageProps) => {
 
 export async function getStaticProps(context) {
   const { id: phenotypeId } = context.params;
-  const data = await fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`);
+  const data = await fetchAPIFromServer(
+    `/api/v1/phenotypes/${phenotypeId}/summary`
+  );
 
   return {
-    props: { phenotype: data }
+    props: { phenotype: data },
   };
 }
 
 export async function getStaticPaths() {
-  const paths = phenotypeList.map(phenotypeId => ({
-    params: { id: phenotypeId }
+  const paths = phenotypeList.map((phenotypeId) => ({
+    params: { id: phenotypeId },
   }));
   return { paths, fallback: "blocking" };
 }

@@ -13,33 +13,36 @@ import {
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
+import {
+  AllelesStudiedContext,
+  GeneContext,
+  NumAllelesContext,
+} from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
 import { GeneSummary } from "@/models/gene";
-import { fetchAPI } from "@/api-service";
-import geneList from '../../mocks/data/all_genes_list.json';
+import { fetchAPIFromServer } from "@/api-service";
+import geneList from "../../mocks/data/all_genes_list.json";
 
-const HumanDiseases = dynamic(
-  () => import("@/components/Gene/HumanDiseases"),
-  {ssr: false}
-);
+const HumanDiseases = dynamic(() => import("@/components/Gene/HumanDiseases"), {
+  ssr: false,
+});
 
-const Phenotypes = dynamic(
-  () => import("@/components/Gene/Phenotypes"),
-  {ssr: false}
-);
+const Phenotypes = dynamic(() => import("@/components/Gene/Phenotypes"), {
+  ssr: false,
+});
 
 type GenePageProps = {
   gene: GeneSummary;
-}
+};
 
 const Gene = (props: GenePageProps) => {
   const { gene: geneFromServer } = props;
   const router = useRouter();
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
-  const [allelesStudiedLoading, setAllelesStudiedLoading] = useState<boolean>(true);
-  const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
+  const [allelesStudiedLoading, setAllelesStudiedLoading] =
+    useState<boolean>(true);
+  const numAllelesContextValue = { numOfAlleles, setNumOfAlleles };
   const allelesStudiedContextValue = {
     allelesStudied,
     setAlleles,
@@ -47,7 +50,11 @@ const Gene = (props: GenePageProps) => {
     setAllelesStudiedLoading,
   };
 
-  const {data: gene} = useGeneSummaryQuery(router.query.pid as string, router.isReady && !geneFromServer, geneFromServer);
+  const { data: gene } = useGeneSummaryQuery(
+    router.query.pid as string,
+    router.isReady && !geneFromServer,
+    geneFromServer
+  );
 
   const geneData = geneFromServer || gene;
 
@@ -62,15 +69,13 @@ const Gene = (props: GenePageProps) => {
     }
   }, [geneData]);
 
-
-
   return (
     <>
       <GeneMetadata geneSummary={geneData} />
       <GeneContext.Provider value={geneData}>
         <NumAllelesContext.Provider value={numAllelesContextValue}>
           <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
-            <Search/>
+            <Search />
             <Container className="page">
               <Summary {...{ gene: geneData, numOfAlleles }} />
               <Phenotypes gene={geneData} />
@@ -80,7 +85,10 @@ const Gene = (props: GenePageProps) => {
               <Histopathology />
               <Publications gene={geneData} />
               <ExternalLinks />
-              <Order allelesStudied={allelesStudied} allelesStudiedLoading={allelesStudiedLoading} />
+              <Order
+                allelesStudied={allelesStudied}
+                allelesStudiedLoading={allelesStudiedLoading}
+              />
             </Container>
           </AllelesStudiedContext.Provider>
         </NumAllelesContext.Provider>
@@ -91,18 +99,20 @@ const Gene = (props: GenePageProps) => {
 
 export async function getStaticProps(context) {
   const { pid: mgiGeneAccessionId } = context.params;
-  if (!mgiGeneAccessionId || mgiGeneAccessionId === 'null') {
-    return { notFound: true }
+  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
+    return { notFound: true };
   }
-  const data = await fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/summary`);
+  const data = await fetchAPIFromServer(
+    `/api/v1/genes/${mgiGeneAccessionId}/summary`
+  );
   return {
-    props: { gene: data }
+    props: { gene: data },
   };
 }
 
 export async function getStaticPaths() {
-  const paths = geneList.map(geneAccessionId => ({
-    params: { pid: geneAccessionId }
+  const paths = geneList.map((geneAccessionId) => ({
+    params: { pid: geneAccessionId },
   }));
   return { paths, fallback: "blocking" };
 }
