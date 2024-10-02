@@ -287,9 +287,12 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   const associatedData = sorted
     ? sorted.filter((x) => x.associationCurated === true)
     : [];
+  const uniqueAssociatedDiseases = [...new Set(associatedData.map((x) => x.diseaseId))];
+
   const predictedData = sorted
     ? sorted.filter((x) => x.associationCurated !== true)
     : [];
+  const uniquePredictedDiseases = [...new Set(predictedData.map((x) => x.diseaseId))]; 
 
   const selectedData = (
     tab === "associated" ? associatedData : predictedData
@@ -320,7 +323,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             title={
               <>
                 Human diseases associated with <i>{gene.geneSymbol}</i> (
-                {associatedData.length})
+                {uniqueAssociatedDiseases.length})
               </>
             }
           ></Tab>
@@ -329,7 +332,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             title={
               <>
                 Human diseases predicted to be associated with{" "}
-                <i>{gene.geneSymbol}</i> ({predictedData.length})
+                <i>{gene.geneSymbol}</i> ({uniquePredictedDiseases.length})
               </>
             }
           ></Tab>
