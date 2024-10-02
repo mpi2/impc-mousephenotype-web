@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { debounce } from "lodash";
-import Head from "next/head";
 
 export type Tab = {
   name: string;
