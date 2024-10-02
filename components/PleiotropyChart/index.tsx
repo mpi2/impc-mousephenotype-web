@@ -32,8 +32,8 @@ const PleiotropyChart = ({
   height: parentHeight,
   isLoading,
 }: Props) => {
-  const width = min([parentWidth * 0.9, parentHeight * 0.9]) as number;
-  const height = width;
+  const width = parentWidth * 0.8;
+  const height = parentHeight;
 
   useRerender([width, height]);
 
