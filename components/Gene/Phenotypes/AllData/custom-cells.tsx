@@ -63,6 +63,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     pipelineStableId,
     procedureStableId,
     phenotypingCentre,
+    parameterName,
   } = props.value;
 
   let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
@@ -70,6 +71,14 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
   if (isAssociatedToPWG) {
     url =
       "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
+  }
+  if (procedureStableId.includes("IMPC_HIS")) {
+    if (parameterName.includes("-")) {
+      const tissue = parameterName.split("-")[0]?.trim().toLowerCase();
+      url = `/supporting-data/histopath/${mgiGeneAccessionId}?anatomy=${tissue}`;
+    } else {
+      url = `/supporting-data/histopath/${mgiGeneAccessionId}`;
+    }
   }
   return (
     <Link href={url}>
