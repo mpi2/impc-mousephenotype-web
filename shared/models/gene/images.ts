@@ -27,6 +27,7 @@ export type GeneImageCollection = {
   images: Array<Image>;
   metadataGroup: string;
   experimentDate?: Moment;
+  phenotypingCentre: string;
 };
 
 export type Image = {

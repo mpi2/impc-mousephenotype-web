@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { debounce } from "lodash";
-import Head from "next/head";
 
 export type Tab = {
   name: string;
@@ -22,7 +21,7 @@ const Search = ({
 }: {
   defaultType?: string;
   onChange?: (val: string) => void;
-  updateURL?: boolean
+  updateURL?: boolean;
 }) => {
   const router = useRouter();
   const [query, setQuery] = useState<string>(
@@ -46,8 +45,8 @@ const Search = ({
     },
     {
       name: "Phenotypes",
-      link: "/search?type=phenotype",
-      type: "phenotype",
+      link: "/search?type=pheno",
+      type: "pheno",
     },
     {
       name: "Help, news, blog",
@@ -56,7 +55,8 @@ const Search = ({
       type: "blog",
     },
   ];
-  const getSelectedIndex = (typeInput) => tabs.findIndex((tab) => tab.type === typeInput);
+  const getSelectedIndex = (typeInput) =>
+    tabs.findIndex((tab) => tab.type === typeInput);
   const [tabIndex, setTabIndex] = useState(getSelectedIndex(defaultType));
   useEffect(() => {
     let tabType = type;
@@ -76,11 +76,10 @@ const Search = ({
   useEffect(() => {
     if (updateURL) {
       if (router.isReady && router.query.query !== query) {
-        router.replace({query: { ...router.query, term: query },});
+        router.replace({ query: { ...router.query, term: query } });
       }
     }
   }, [query]);
-
 
   return (
     <div className={`${styles.banner}`}>
@@ -117,7 +116,11 @@ const Search = ({
               title="main search box"
               className={styles.input}
               type="text"
-              placeholder={ tabIndex === 0 ? "Search for a gene..." : "Search for a phenotype..."}
+              placeholder={
+                tabIndex === 0
+                  ? "Search for a gene..."
+                  : "Search for a phenotype..."
+              }
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);
@@ -128,7 +131,7 @@ const Search = ({
                   if (router.route !== "/search") {
                     let url = `/search?term=${e.currentTarget.value}`;
                     if (tabIndex === 1) {
-                      url += '&type=phenotype'
+                      url += "&type=pheno";
                     }
                     router.push(url);
                   } else {
@@ -146,7 +149,11 @@ const Search = ({
               }}
               aria-describedby="svg-inline--fa-title-search-icon"
             >
-              <FontAwesomeIcon icon={faSearch} title="Search button" titleId="search-icon" />
+              <FontAwesomeIcon
+                icon={faSearch}
+                title="Search button"
+                titleId="search-icon"
+              />
             </button>
           </div>
         </div>

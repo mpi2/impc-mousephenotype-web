@@ -2,8 +2,6 @@ import styles from "./styles.module.scss";
 import { Alert, Col, Container, Row } from "react-bootstrap";
 import {
   faCheck,
-  faCheckCircle,
-  faPlusCircle,
   faShoppingCart,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +11,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Card from "../Card";
 import Pagination from "../Pagination";
-import { GeneComparatorTrigger, useGeneComparator } from "../GeneComparator";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneSearchResponse, GeneSearchResponseItem } from "@/models/gene";
@@ -26,7 +23,13 @@ const AvailabilityIcon = (props: { hasData: boolean }) => (
   />
 );
 
-const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: string }) => {
+const GeneResult = ({
+  gene,
+  query,
+}: {
+  gene: GeneSearchResponseItem;
+  query: string;
+}) => {
   const {
     entityProperties: {
       geneSymbol,
@@ -40,8 +43,6 @@ const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: stri
     },
   } = gene;
   const router = useRouter();
-  const { addGene, genes } = useGeneComparator();
-  const IsInCompare = genes.includes(mgiGeneAccessionId);
   const synonymsArray = synonyms.split(";");
   return (
     <>
@@ -54,29 +55,43 @@ const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: stri
           }}
         >
           <h4 className="mb-2">
-            <span className="blue-dark"><i>{surroundWithMarkEl(geneSymbol, query)}</i></span>&nbsp;
-            <span className="grey">|</span> {surroundWithMarkEl(geneName, query)}
+            <span className="blue-dark">
+              <i>{surroundWithMarkEl(geneSymbol, query)}</i>
+            </span>
+            &nbsp;
+            <span className="grey">|</span>{" "}
+            {surroundWithMarkEl(geneName, query)}
           </h4>
           {!!synonymsArray && synonymsArray.length && (
             <p className="grey small">
               <strong>Synonyms:</strong>{" "}
-              {surroundWithMarkEl((synonymsArray || []).slice(0, 10).join(", "), query) || "None"}
+              {surroundWithMarkEl(
+                (synonymsArray || []).slice(0, 10).join(", "),
+                query
+              ) || "None"}
             </p>
           )}
 
           <span className="small grey">
             {phenotypingDataAvailable ? (
               <p>
-                <AvailabilityIcon hasData={!!phenotypeStatus} />&nbsp;
+                <AvailabilityIcon hasData={!!phenotypeStatus} />
+                &nbsp;
                 <span className={`me-4 ${!phenotypeStatus ? "grey" : ""}`}>
                   {phenotypeStatus || "No phenotyping data"}
                 </span>
-                <AvailabilityIcon hasData={!!esCellProductionStatus} />&nbsp;
-                <span className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}>
+                <AvailabilityIcon hasData={!!esCellProductionStatus} />
+                &nbsp;
+                <span
+                  className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}
+                >
                   {esCellProductionStatus || "No ES cells"}
                 </span>
-                <AvailabilityIcon hasData={!!mouseProductionStatus} />&nbsp;
-                <span className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}>
+                <AvailabilityIcon hasData={!!mouseProductionStatus} />
+                &nbsp;
+                <span
+                  className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}
+                >
                   {mouseProductionStatus || "No mice"}
                 </span>
               </p>
@@ -92,23 +107,6 @@ const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: stri
           <h5 className="grey text-uppercase">
             <small>Shortcuts</small>
           </h5>
-          <div
-            className={`grey mb-1 ${
-              IsInCompare ? styles.addedToComparison : "link"
-            }`}
-            onClick={(e) => {
-              e.stopPropagation();
-              addGene(mgiGeneAccessionId);
-            }}
-          >
-            <FontAwesomeIcon
-              className={IsInCompare ? "secondary" : ""}
-              icon={IsInCompare ? faCheckCircle : faPlusCircle}
-            />{" "}
-            Add
-            {IsInCompare ? "ed " : " "}
-            to comparison
-          </div>
           <p className="grey">
             <Link
               href={`/genes/${mgiGeneAccessionId}/#order`}
@@ -127,15 +125,15 @@ const GeneResult = ({ gene, query }: { gene: GeneSearchResponseItem, query: stri
 };
 
 const GeneResults = ({ query }: { query?: string }) => {
-  const { data, isLoading} = useQuery({
-    queryKey: ['search', 'genes', query],
-    queryFn: () => fetchAPI(`/api/search/v1/search${query ? `?prefix=${query}` : ""}`),
-    select: (data: GeneSearchResponse) => data.results
+  const { data, isLoading } = useQuery({
+    queryKey: ["search", "genes", query],
+    queryFn: () =>
+      fetchAPI(`/api/search/v1/search${query ? `?prefix=${query}` : ""}`),
+    select: (data: GeneSearchResponse) => data.results,
   });
 
   return (
     <>
-      <GeneComparatorTrigger />
       <Container style={{ maxWidth: 1240 }}>
         <Card
           style={{
@@ -169,9 +167,9 @@ const GeneResults = ({ query }: { query?: string }) => {
                     </Alert>
                   );
                 }
-                return (pageData.map((p, i) => (
+                return pageData.map((p, i) => (
                   <GeneResult gene={p} key={p.entityId + i} query={query} />
-                )))
+                ));
               }}
             </Pagination>
           )}
