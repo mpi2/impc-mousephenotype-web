@@ -148,10 +148,12 @@ export const MutantCountCell = <T extends GeneStatisticalResult>(
   const mutantsBelowThreshold =
     props.value.maleMutantCount < props.value.procedureMinMales &&
     props.value.femaleMutantCount < props.value.procedureMinFemales;
+  const shouldDisplayMarker =
+    mutantsBelowThreshold && isNNumbersFootnoteAvailable && value !== "N/A";
   return (
     <span style={props.style}>
       {value}
-      {mutantsBelowThreshold && isNNumbersFootnoteAvailable && (
+      {shouldDisplayMarker && (
         <sup
           onMouseEnter={() => onRefHover("+", true)}
           onMouseLeave={() => onRefHover("+", false)}
