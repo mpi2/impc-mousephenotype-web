@@ -149,14 +149,16 @@ export const MutantCountCell = <T extends GeneStatisticalResult>(
     props.value.maleMutantCount < props.value.procedureMinMales &&
     props.value.femaleMutantCount < props.value.procedureMinFemales;
   return (
-    <span
-      style={props.style}
-      onMouseEnter={() => onRefHover("+", true)}
-      onMouseLeave={() => onRefHover("+", false)}
-    >
+    <span style={props.style}>
       {value}
       {mutantsBelowThreshold && isNNumbersFootnoteAvailable && (
-        <sup style={{ display: "inline-block", marginLeft: "5px" }}>+</sup>
+        <sup
+          onMouseEnter={() => onRefHover("+", true)}
+          onMouseLeave={() => onRefHover("+", false)}
+          style={{ display: "inline-block", marginLeft: "5px" }}
+        >
+          +
+        </sup>
       )}
     </span>
   );
