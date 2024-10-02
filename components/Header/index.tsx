@@ -20,46 +20,64 @@ export interface INavBarProps {
 }
 
 const rewriteMenu = (data) => {
-  return data.map(item => {
+  return data.map((item) => {
     return {
       ...item,
       link: getInternalLink(item.name, item.link),
-      children: item.children && item.children.length > 0 ? rewriteMenu(item.children) : [],
-    }
-  })
-}
+      children:
+        item.children && item.children.length > 0
+          ? rewriteMenu(item.children)
+          : [],
+    };
+  });
+};
 const getInternalLink = (name: string, link: string) => {
   switch (name) {
-    case 'Cardiovascular':
-      return '/cardiovascular';
-    case 'Embryo Development':
-      return '/embryo';
-    case 'Papers Using IMPC Resources':
-      return '/publications';
-    case 'Histopathology':
-      return '/histopath';
-    case 'Sexual Dimorphism':
-      return '/sexual-dimorphism';
-    case 'Genes Critical for Hearing Identified':
-      return '/hearing';
-    case 'Genetic Basis for Metabolic Diseases':
-      return '/metabolism';
-    case 'Essential Genes - Translating to Other Species':
-      return '/conservation';
-    case 'Batch query':
-      return '/batch-query';
-    case 'Late Adult Data':
-      return '/late-adult-data';
+    case "Cardiovascular":
+      return "/cardiovascular";
+    case "Embryo Development":
+      return "/embryo";
+    case "Papers Using IMPC Resources":
+      return "/publications";
+    case "Histopathology":
+      return "/histopath";
+    case "Sexual Dimorphism":
+      return "/sexual-dimorphism";
+    case "Genes Critical for Hearing Identified":
+      return "/hearing";
+    case "Genetic Basis for Metabolic Diseases":
+      return "/metabolism";
+    case "Essential Genes - Translating to Other Species":
+      return "/conservation";
+    case "Batch query":
+      return "/batch-query";
+    case "Late Adult Data":
+      return "/late-adult-data";
+    case "Latest Data Release":
+      return "/release";
     default:
       return link;
   }
-}
+};
+
+const getURLJSONMenu = () => {
+  switch (location.hostname) {
+    case "www.mousephenotype.org":
+      return "https://www.mousephenotype.org/jsonmenu/";
+    case "dev.mousephenotype.org":
+      return "https://dev.mousephenotype.org/jsonmenu/";
+    case "nginx.mousephenotype-dev.org":
+      return "https://www.mousephenotype.org/jsonmenu/";
+    default:
+      return "https://dev.mousephenotype.org/jsonmenu/";
+  }
+};
 
 const Header = () => {
   const { data: menuItems } = useQuery({
-    queryKey: ['menu'],
+    queryKey: ["menu"],
     queryFn: async () => {
-      const response = await fetch("https://www.mousephenotype.org/jsonmenu/");
+      const response = await fetch(getURLJSONMenu());
       return await response.json();
     },
     placeholderData: [],
@@ -103,8 +121,9 @@ const Header = () => {
                 style={{ display: "flex", alignItems: "center" }}
               >
                 <a
-                  href={process.env.REACT_APP_BASE_URL}
+                  href="/"
                   className="header__logo-link active"
+                  aria-label="Link to IMPC homepage"
                 >
                   <img
                     className="header__logo"
@@ -149,7 +168,7 @@ const Header = () => {
                   type="button"
                   aria-controls="navbarToggleExternalContent"
                   aria-label="Toggle navigation"
-                  onClick={() => setMobileMenuOpen(prevState => !prevState)}
+                  onClick={() => setMobileMenuOpen((prevState) => !prevState)}
                 >
                   <span className="icon-bar top-bar"></span>
                   <span className="icon-bar middle-bar"></span>
@@ -252,7 +271,7 @@ const Header = () => {
             type="button"
             aria-controls="navbarToggleExternalContent"
             aria-label="Toggle navigation"
-            onClick={() => setMobileMenuOpen(prevState => !prevState)}
+            onClick={() => setMobileMenuOpen((prevState) => !prevState)}
           >
             <span className="icon-bar top-bar"></span>
             <span className="icon-bar middle-bar"></span>
@@ -271,8 +290,15 @@ const Header = () => {
                   />
                 </div>
                 <div className="col col-2 text-right">
-                  <button type="submit" aria-describedby="svg-inline--fa-title-search-icon">
-                    <FontAwesomeIcon icon={faSearch} title="Search button" titleId="search-icon" />
+                  <button
+                    type="submit"
+                    aria-describedby="svg-inline--fa-title-search-icon"
+                  >
+                    <FontAwesomeIcon
+                      icon={faSearch}
+                      title="Search button"
+                      titleId="search-icon"
+                    />
                   </button>
                 </div>
               </div>
@@ -298,23 +324,27 @@ const Header = () => {
                       .map((subMenuItem, i) => (
                         <Fragment key={i}>
                           <p>
-                            <Link href={subMenuItem.link}>{subMenuItem.name}</Link>
+                            <Link href={subMenuItem.link}>
+                              {subMenuItem.name}
+                            </Link>
                           </p>
                           <div className="sub-pages">
-                            {subMenuItem.children && subMenuItem.children
-                              .sort((a, b) => a.sort - b.sort)
-                              .map((subMenuItemChild) => (
-                                <p>
-                                  <Link href={subMenuItemChild.link}>{subMenuItemChild.name}</Link>
-                                </p>
-                            ))}
+                            {subMenuItem.children &&
+                              subMenuItem.children
+                                .sort((a, b) => a.sort - b.sort)
+                                .map((subMenuItemChild) => (
+                                  <p>
+                                    <Link href={subMenuItemChild.link}>
+                                      {subMenuItemChild.name}
+                                    </Link>
+                                  </p>
+                                ))}
                           </div>
-                      </Fragment>
-                    ))}
+                        </Fragment>
+                      ))}
                   </div>
                 </Fragment>
               ))}
-
             </div>
           </div>
         </div>

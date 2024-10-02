@@ -1,7 +1,6 @@
 import { TableCellProps } from "@/models";
 import Link from "next/link";
-import _ from 'lodash';
-
+import _ from "lodash";
 
 type Props<T> = {
   mpTermIdKey?: keyof T;
@@ -12,16 +11,19 @@ export const SupportingDataCell = <T,>(props: Props<T>) => {
   const mpTermKey = !!props.mpTermIdKey ? props.mpTermIdKey : "id";
   const mpTermpId = _.get(props.value, mpTermKey) as string;
 
-  let url = `/data/charts?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
+  let url = `/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
-    url = "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
+    url =
+      "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
   }
   return (
     <Link href={url}>
       <span className="link primary small float-right">
-        {numOfDatasets === 1 ? '1 supporting dataset' : `${numOfDatasets} supporting datasets`}
+        {numOfDatasets === 1
+          ? "1 supporting dataset"
+          : `${numOfDatasets} supporting datasets`}
       </span>
     </Link>
-  )
+  );
 };

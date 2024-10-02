@@ -39,6 +39,7 @@ td.procedureName {
   align-items: center;
   gap: 0.5em;
   &.disabled {
+    width: initial;
     cursor: default !important;
   }
 }

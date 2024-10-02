@@ -12,7 +12,12 @@ import classNames from "classnames";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import { usePagination } from "@/hooks";
-import { LoadingProgressBar, Search, Card, PaginationControls } from "@/components";
+import {
+  LoadingProgressBar,
+  Search,
+  Card,
+  PaginationControls,
+} from "@/components";
 import Link from "next/link";
 
 const geneMap = new Map();
@@ -78,7 +83,7 @@ const HistopathLandingPage = () => {
         heatmapData: Object.values(result) as Array<HeatmapData>,
         originalData: Object.values(result) as Array<HeatmapData>,
         columns: response.columns,
-      }
+      };
     },
     placeholderData: { columns: [], rows: [] },
   });
@@ -104,10 +109,10 @@ const HistopathLandingPage = () => {
 
   const openAllelePages = (gene: HeatmapData) => {
     const mgiID = gene.mgiAccession;
-    gene.allelesWithTissue.forEach(allele => {
+    gene.allelesWithTissue.forEach((allele) => {
       const alleleSymbol = allele.match(/\<(.+)\>/)[1];
       window.open(`/alleles/${mgiID}/${alleleSymbol}#mice`);
-    })
+    });
   };
 
   const displayFixedTissueColumn = (gene: HeatmapData) => {
@@ -115,7 +120,10 @@ const HistopathLandingPage = () => {
       const mgiID = gene.mgiAccession;
       const allele = gene.allelesWithTissue[0].match(/\<(.+)\>/)[1];
       return (
-        <a className="link primary" href={`/alleles/${mgiID}/${allele}#mice`}>
+        <a
+          className="link primary"
+          href={`/data/alleles/${mgiID}/${allele}#mice`}
+        >
           Yes
         </a>
       );
@@ -186,7 +194,9 @@ const HistopathLandingPage = () => {
   const sortedAndFilteredData = useMemo(() => {
     let results: Array<HeatmapData>;
     if (query) {
-      results = histopathData.originalData.filter((gene) => gene.id.includes(query));
+      results = histopathData.originalData.filter((gene) =>
+        gene.id.includes(query)
+      );
     } else {
       results = [...histopathData.originalData];
     }
@@ -208,7 +218,7 @@ const HistopathLandingPage = () => {
           return item1.y - item2.y;
         })
         // regenerate array with original info
-        .map((gene) => ({ ...geneMap.get(gene.geneSymbol) }))
+        .map((gene) => ({ ...geneMap.get(gene.geneSymbol) }));
     } else if (sortingByFixedTissue) {
       results.sort((gene1, gene2) => {
         if (
@@ -232,7 +242,14 @@ const HistopathLandingPage = () => {
       );
     }
     return results;
-  }, [query, sort, histopathData, selectedHeaderIndex, sortingByFixedTissue, sortingByGeneSymbol]);
+  }, [
+    query,
+    sort,
+    histopathData,
+    selectedHeaderIndex,
+    sortingByFixedTissue,
+    sortingByGeneSymbol,
+  ]);
 
   const {
     paginatedData,
@@ -241,12 +258,14 @@ const HistopathLandingPage = () => {
     totalPages,
     setActivePage,
     setPageSize,
-  } = usePagination<HeatmapData>(sortedAndFilteredData, 25)
+  } = usePagination<HeatmapData>(sortedAndFilteredData, 25);
 
   return (
     <>
       <Head>
-        <title>Histopathology | International Mouse Phenotyping Consortium</title>
+        <title>
+          Histopathology | International Mouse Phenotyping Consortium
+        </title>
       </Head>
       <Search />
       <Container className="page" style={{ lineHeight: 2 }}>
@@ -268,19 +287,25 @@ const HistopathLandingPage = () => {
               </p>
               <div>
                 <div title="No Data" className={styles.labelContainer}>
-                  <div className={styles.heatmapLabel} style={{backgroundColor: "#FFF"}}></div>
-                  <div>
-                    &nbsp;&nbsp;No Data
-                  </div>
+                  <div
+                    className={styles.heatmapLabel}
+                    style={{ backgroundColor: "#FFF" }}
+                  ></div>
+                  <div>&nbsp;&nbsp;No Data</div>
                 </div>
                 <div title="Not Applicable" className={styles.labelContainer}>
-                  <div className={styles.heatmapLabel} style={{backgroundColor: "#808080"}}></div>
-                  <div>
-                    &nbsp;&nbsp;Not Applicable
-                  </div>
+                  <div
+                    className={styles.heatmapLabel}
+                    style={{ backgroundColor: "#808080" }}
+                  ></div>
+                  <div>&nbsp;&nbsp;Not Applicable</div>
                 </div>
                 <div title="Not Significant" className={styles.labelContainer}>
-                  <div className={styles.heatmapLabel} style={{backgroundColor: "#17a2b8"}}></div>&nbsp;&nbsp;
+                  <div
+                    className={styles.heatmapLabel}
+                    style={{ backgroundColor: "#17a2b8" }}
+                  ></div>
+                  &nbsp;&nbsp;
                   <div>
                     <b>Not Significant</b>&nbsp;(histopathology finding that is
                     interpreted by the histopathologist to be within normal
@@ -289,7 +314,11 @@ const HistopathLandingPage = () => {
                   </div>
                 </div>
                 <div title="Significant" className={styles.labelContainer}>
-                  <div className={styles.heatmapLabel} style={{backgroundColor: "#ce6211"}}></div>&nbsp;&nbsp;
+                  <div
+                    className={styles.heatmapLabel}
+                    style={{ backgroundColor: "#ce6211" }}
+                  ></div>
+                  &nbsp;&nbsp;
                   <div>
                     <b>Significant</b>&nbsp;(histopathology finding that is
                     interpreted by the histopathologist to not be a background
@@ -329,10 +358,13 @@ const HistopathLandingPage = () => {
             </div>
           </div>
           {isFetching ? (
-            <div className="mt-4" style={{display: 'flex', justifyContent: 'center'}}>
-              <LoadingProgressBar/>
+            <div
+              className="mt-4"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <LoadingProgressBar />
             </div>
-          ): (
+          ) : (
             <div className={styles.tableWrapper}>
               <table
                 className={`table table-striped table-bordered ${styles.heatMap}`}
@@ -340,14 +372,26 @@ const HistopathLandingPage = () => {
                 <thead>
                   <tr>
                     <th onClick={sortByGeneSymbol}>
-                      <div className={styles.header} style={{marginRight: "5px"}}>Gene</div>
+                      <div
+                        className={styles.header}
+                        style={{ marginRight: "5px" }}
+                      >
+                        Gene
+                      </div>
                       <SortIndicator
                         sortStatus={sortingByGeneSymbol}
                         sort={sort}
                       />
                     </th>
                     <th onClick={sortByFixedTissue}>
-                      <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available *</div>
+                      <div
+                        className={classNames(
+                          styles.header,
+                          styles.noTransform
+                        )}
+                      >
+                        Fixed tissue available *
+                      </div>
                       <SortIndicator
                         sortStatus={sortingByFixedTissue}
                         sort={sort}
@@ -356,7 +400,11 @@ const HistopathLandingPage = () => {
                     {histopathData.columns.map((header, index) => (
                       <th key={header} onClick={() => sortByHeader(index)}>
                         <div
-                          className={classNames(styles.header, styles.top, {[styles.eyeOpticNerveCol]: header === 'Eye with optic nerve'})}>
+                          className={classNames(styles.header, styles.top, {
+                            [styles.eyeOpticNerveCol]:
+                              header === "Eye with optic nerve",
+                          })}
+                        >
                           {header}
                         </div>
                         <SortIndicator
@@ -373,67 +421,86 @@ const HistopathLandingPage = () => {
                       <div className={styles.header}>Gene</div>
                     </th>
                     <th>
-                      <div className={classNames(styles.header, styles.noTransform)}>Fixed tissue available *</div>
+                      <div
+                        className={classNames(
+                          styles.header,
+                          styles.noTransform
+                        )}
+                      >
+                        Fixed tissue available *
+                      </div>
                     </th>
                     {histopathData.columns.map((header, index) => (
                       <th key={header} onClick={() => sortByHeader(index)}>
-                        <div className={classNames(styles.header, styles.bottom)}>{header}</div>
+                        <div
+                          className={classNames(styles.header, styles.bottom)}
+                        >
+                          {header}
+                        </div>
                       </th>
                     ))}
                   </tr>
                 </tfoot>
                 <tbody>
-                {paginatedData.map((gene) => (
-                  <tr key={gene.id}>
-                    <td className={styles.geneCell}>
-                      <i dangerouslySetInnerHTML={{
-                        __html: rewriteWithQuery(gene.id),
-                      }}></i>
-                    </td>
-                    <td>{displayFixedTissueColumn(gene)}</td>
-                    {gene &&
-                      gene.data &&
-                      gene.data.map((cell) => (
-                        <td
-                          className={styles.cellData}
-                          key={`${gene.id}-${cell.x}`}
-                          style={
-                            {
-                              "--bs-table-bg-type": getCellColor(cell.y),
-                              cursor: cell.y > 0 ? "pointer" : "auto",
-                            } as any
-                          }
-                          onClick={() => {
-                            if (cell.y > 0) {
-                              window.open(
-                                `/data/histopath/${
-                                  gene.mgiAccession
-                                }?anatomy=${cell.x.toLowerCase()}`
-                              );
-                            }
+                  {paginatedData.map((gene) => (
+                    <tr key={gene.id}>
+                      <td className={styles.geneCell}>
+                        <i
+                          dangerouslySetInnerHTML={{
+                            __html: rewriteWithQuery(gene.id),
                           }}
-                        />
-                      ))}
-                  </tr>
-                ))}
-                {paginatedData.length === 0 && (
-                  <tr>
-                    <td
-                      colSpan={100}
-                      style={{fontSize: 20, fontWeight: "bold"}}
-                    >
-                      No results
-                    </td>
-                  </tr>
-                )}
+                        ></i>
+                      </td>
+                      <td>{displayFixedTissueColumn(gene)}</td>
+                      {gene &&
+                        gene.data &&
+                        gene.data.map((cell) => (
+                          <td
+                            className={styles.cellData}
+                            key={`${gene.id}-${cell.x}`}
+                            style={
+                              {
+                                "--bs-table-bg-type": getCellColor(cell.y),
+                                cursor: cell.y > 0 ? "pointer" : "auto",
+                              } as any
+                            }
+                            onClick={() => {
+                              if (cell.y > 0) {
+                                window.open(
+                                  `/data/supporting-data/histopath/${
+                                    gene.mgiAccession
+                                  }?anatomy=${cell.x.toLowerCase()}`
+                                );
+                              }
+                            }}
+                          />
+                        ))}
+                    </tr>
+                  ))}
+                  {paginatedData.length === 0 && (
+                    <tr>
+                      <td
+                        colSpan={100}
+                        style={{ fontSize: 20, fontWeight: "bold" }}
+                      >
+                        No results
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
           )}
           <div className="mt-1">
             <span>
-              * This column is from data made available to us, send us a message to inquiry about genes with no fixed tissue from&nbsp;
-              <Link className="link primary" href="http://www.mousephenotype.org/contact-us/">our Contact page</Link>
+              * This column is from data made available to us, send us a message
+              to inquiry about genes with no fixed tissue from&nbsp;
+              <Link
+                className="link primary"
+                href="http://www.mousephenotype.org/contact-us/"
+              >
+                our Contact page
+              </Link>
             </span>
           </div>
           <div className="mt-1">

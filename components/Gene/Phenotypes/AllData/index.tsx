@@ -13,8 +13,8 @@ import {
   ParameterCell,
   PhenotypeIconsCell,
   SignificantPValueCell,
-  SupportingDataCell
-} from './custom-cells';
+  SupportingDataCell,
+} from "./custom-cells";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 import { usePagination } from "@/hooks";
 import { useQuery } from "@tanstack/react-query";
@@ -22,7 +22,8 @@ import { fetchAPI } from "@/api-service";
 import { PaginatedResponse } from "@/models";
 import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
-import { useDebounce } from 'usehooks-ts';
+import { useDebounce } from "usehooks-ts";
+import Footnotes from "../Footnotes";
 
 type FilterOptions = {
   procedures: Array<string>;
@@ -58,7 +59,7 @@ const defaultSelectedValues: SelectedValues = {
 
 const getMutantCount = (dataset: GeneStatisticalResult) => {
   if (!dataset.maleMutantCount && !dataset.femaleMutantCount) {
-    return 'N/A';
+    return "N/A";
   }
   return `${dataset.maleMutantCount || 0}m/${dataset.femaleMutantCount || 0}f`;
 };
@@ -68,39 +69,59 @@ type Props = {
   onTotalData: (arg: number) => void;
   additionalSelectedValues?: SelectedValues;
   queryFromURL: string;
+  hasDataRelatedToPWG: boolean;
 };
 
 const AllData = (props: Props) => {
   const gene = useContext(GeneContext);
-  const { onTotalData, additionalSelectedValues, queryFromURL} = props;
+  const {
+    onTotalData,
+    additionalSelectedValues,
+    queryFromURL,
+    hasDataRelatedToPWG,
+  } = props;
   const { setAlleles } = useContext(AllelesStudiedContext);
   const [sortField, setSortField] = useState<string>("pValue");
   const [sortOrder, setSortOrder] = useState<string>("asc");
   const [totalItems, setTotalItems] = useState<number>(0);
   const [query, setQuery] = useState(queryFromURL);
   const debouncedQuery = useDebounce(query, 500);
-  const [filterOptions, setFilterOptions] = useState<FilterOptions>(defaultFilterOptions);
-  const initialSelectedValues = Object.assign({...defaultSelectedValues}, additionalSelectedValues);
-  const [selectedValues, setSelectedValues] = useState<SelectedValues>(initialSelectedValues);
+  const [filterOptions, setFilterOptions] =
+    useState<FilterOptions>(defaultFilterOptions);
 
-  const updateSelectedValue = (key: keyof SelectedValues, newValue: string): void => {
+  const initialSelectedValues = Object.assign(
+    { ...defaultSelectedValues },
+    additionalSelectedValues
+  );
+  const [selectedValues, setSelectedValues] = useState<SelectedValues>(
+    initialSelectedValues
+  );
+  const [hoveringRef, setHoveringRef] = useState<"*" | "**" | "+">(undefined);
+
+  const updateSelectedValue = (
+    key: keyof SelectedValues,
+    newValue: string
+  ): void => {
     setActivePage(0);
-    setSelectedValues(prevState => ({
+    setSelectedValues((prevState) => ({
       ...prevState,
       [key]: newValue,
     }));
-  }
+  };
 
-  const {
-    activePage,
-    pageSize,
-    setActivePage,
-    setPageSize,
-  } = usePagination();
-
+  const { activePage, pageSize, setActivePage, setPageSize } = usePagination();
 
   const { data, isError, isFetching } = useQuery({
-    queryKey: ['statistical-result', gene.mgiGeneAccessionId, activePage, pageSize, selectedValues, sortField, sortOrder, debouncedQuery],
+    queryKey: [
+      "statistical-result",
+      gene.mgiGeneAccessionId,
+      activePage,
+      pageSize,
+      selectedValues,
+      sortField,
+      sortOrder,
+      debouncedQuery,
+    ],
     queryFn: () => {
       const url = `/api/v1/genes/statistical-result/filtered/page`;
       const params = {
@@ -113,7 +134,7 @@ const AllData = (props: Props) => {
 
       Object.entries(selectedValues)
         .filter(([, value]) => !!value)
-        .forEach(([key, value]) => params[key] = value);
+        .forEach(([key, value]) => (params[key] = value));
 
       if (debouncedQuery) {
         params["searchQuery"] = debouncedQuery;
@@ -124,19 +145,22 @@ const AllData = (props: Props) => {
     select: (response: PaginatedResponse<GeneStatisticalResult>) => {
       return {
         ...response,
-        content: response.content.map(d => ({
+        content: response.content.map((d) => ({
           ...d,
           pValue: Number(d.pValue),
           mutantCount: getMutantCount(d),
         })),
-      } as PaginatedResponse<GeneStatisticalResult>
+      } as PaginatedResponse<GeneStatisticalResult>;
     },
     enabled: props.routerIsReady,
   });
 
   const { data: filterData } = useQuery({
-    queryKey: ['filterData', gene.mgiGeneAccessionId],
-    queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`),
+    queryKey: ["filterData", gene.mgiGeneAccessionId],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`
+      ),
     enabled: props.routerIsReady,
   });
 
@@ -150,14 +174,19 @@ const AllData = (props: Props) => {
 
     Object.entries(selectedValues)
       .filter(([, value]) => !!value)
-      .forEach(([key, value]) => params[key] = value);
+      .forEach(([key, value]) => (params[key] = value));
 
     if (query) {
       params["searchQuery"] = query;
     }
 
     return fetchAPI(buildURL(url, params));
-  }
+  };
+
+  const onRefHover = (ref: "*" | "**" | "+", active: boolean) => {
+    const value = active ? ref : null;
+    setHoveringRef(value);
+  };
 
   useEffect(() => {
     if (data && data.totalElements !== totalItems) {
@@ -186,10 +215,11 @@ const AllData = (props: Props) => {
         if (newAllele !== selectedValues.alleleSymbol) {
           updateSelectedValue("alleleSymbol", newAllele);
         }
-      });
+      }
+    );
     return () => {
       unsubscribeOnAlleleSelection();
-    }
+    };
   }, [selectedValues.alleleSymbol]);
 
   useEffect(() => {
@@ -208,8 +238,8 @@ const AllData = (props: Props) => {
     <SmartTable<GeneStatisticalResult>
       data={data?.content}
       defaultSort={["pValue", "asc"]}
-      onSortChange={sortOptions => {
-        const [sortField, sortOrder] = sortOptions.split(';');
+      onSortChange={(sortOptions) => {
+        const [sortField, sortOrder] = sortOptions.split(";");
         setSortField(sortField);
         setSortOrder(sortOrder);
       }}
@@ -230,7 +260,7 @@ const AllData = (props: Props) => {
               controlId="procedureFilterAD"
               label="Procedure"
               value={selectedValues.procedureName}
-              onChange={value => updateSelectedValue("procedureName", value)}
+              onChange={(value) => updateSelectedValue("procedureName", value)}
               ariaLabel="Filter by procedures"
               options={filterOptions.procedures}
             />
@@ -238,7 +268,7 @@ const AllData = (props: Props) => {
               controlId="alleleFilterAD"
               label="Allele"
               value={selectedValues.alleleSymbol}
-              onChange={value => updateSelectedValue("alleleSymbol", value)}
+              onChange={(value) => updateSelectedValue("alleleSymbol", value)}
               ariaLabel="Filter by allele"
               options={filterOptions.alleles}
             />
@@ -246,16 +276,18 @@ const AllData = (props: Props) => {
               controlId="zygosityFilterAD"
               label="Zygosity"
               value={selectedValues.zygosity}
-              onChange={value => updateSelectedValue("zygosity", value)}
+              onChange={(value) => updateSelectedValue("zygosity", value)}
               ariaLabel="Filter by zygosity"
               options={filterOptions.zygosities}
-              controlStyle={{ width: 100, textTransform: 'capitalize' }}
+              controlStyle={{ width: 100, textTransform: "capitalize" }}
             />
             <FilterBox
               controlId="systemFilterAD"
               label="Phy. System"
               value={selectedValues.topLevelPhenotypeName}
-              onChange={value => updateSelectedValue("topLevelPhenotypeName", value)}
+              onChange={(value) =>
+                updateSelectedValue("topLevelPhenotypeName", value)
+              }
               ariaLabel="Filter by physiological system"
               options={filterOptions.systems}
             />
@@ -263,55 +295,68 @@ const AllData = (props: Props) => {
               controlId="lifeStageFilterAD"
               label="Life Stage"
               value={selectedValues.lifeStageName}
-              onChange={value => updateSelectedValue("lifeStageName", value)}
+              onChange={(value) => updateSelectedValue("lifeStageName", value)}
               ariaLabel="Filter by life stage"
               options={filterOptions.lifestages}
               controlStyle={{ display: "inline-block", width: 100 }}
             />
           </>
-        ): (
+        ) : (
           <>
-            <div><Skeleton width={100} height="1.75rem" inline /></div>
-            <div><Skeleton width={100} height="1.75rem" inline /></div>
-            <div><Skeleton width={100} height="1.75rem" inline /></div>
+            <div>
+              <Skeleton width={100} height="1.75rem" inline />
+            </div>
+            <div>
+              <Skeleton width={100} height="1.75rem" inline />
+            </div>
+            <div>
+              <Skeleton width={100} height="1.75rem" inline />
+            </div>
           </>
         )
       }
       additionalBottomControls={
-        <DownloadData<GeneStatisticalResult>
-          getData={getDownloadData}
-          fileName={`${gene.geneSymbol}-all-phenotype-data`}
-          fields={[
-            { key: "alleleSymbol", label: "Allele" },
-            { key: "phenotypingCentre", label: "Phenotyping center" },
-            { key: "procedureName", label: "Procedure" },
-            { key: "parameterName", label: "Parameter" },
-            { key: "zygosity", label: "Zygosity" },
-            {
-              key: "femaleMutantCount",
-              label: "Female mutant count",
-              getValueFn: (item) =>
-                item?.femaleMutantCount?.toString() || "0",
-            },
-            {
-              key: "maleMutantCount",
-              label: "Male mutant count",
-              getValueFn: (item) =>
-                item?.maleMutantCount?.toString() || "N/A",
-            },
-            { key: "lifeStageName", label: "Life stage" },
-            {
-              key: "significant",
-              label: "Significant",
-              getValueFn: (item) => (item.significant ? "Yes" : "No"),
-            },
-            {
-              key: "pValue",
-              label: "Most significant P-value",
-              getValueFn: (item) => item?.pValue?.toString() || "N/A",
-            },
-          ]}
-        />
+        <>
+          <Footnotes
+            table="all-data"
+            hoveringRef={hoveringRef}
+            hasDataRelatedToPWG={hasDataRelatedToPWG}
+          />
+          <DownloadData<GeneStatisticalResult>
+            getData={getDownloadData}
+            fileName={`${gene.geneSymbol}-all-phenotype-data`}
+            fields={[
+              { key: "alleleSymbol", label: "Allele" },
+              { key: "phenotypingCentre", label: "Phenotyping center" },
+              { key: "procedureName", label: "Procedure" },
+              { key: "parameterName", label: "Parameter" },
+              { key: "zygosity", label: "Zygosity" },
+              {
+                key: "femaleMutantCount",
+                label: "Female mutant count",
+                getValueFn: (item) =>
+                  item?.femaleMutantCount?.toString() || "0",
+              },
+              {
+                key: "maleMutantCount",
+                label: "Male mutant count",
+                getValueFn: (item) =>
+                  item?.maleMutantCount?.toString() || "N/A",
+              },
+              { key: "lifeStageName", label: "Life stage" },
+              {
+                key: "significant",
+                label: "Significant",
+                getValueFn: (item) => (item.significant ? "Yes" : "No"),
+              },
+              {
+                key: "pValue",
+                label: "Most significant P-value",
+                getValueFn: (item) => item?.pValue?.toString() || "N/A",
+              },
+            ]}
+          />
+        </>
       }
       showLoadingIndicator={isFetching}
       pagination={{
@@ -319,7 +364,7 @@ const AllData = (props: Props) => {
         onPageChange: setActivePage,
         onPageSizeChange: setPageSize,
         page: activePage,
-        pageSize
+        pageSize,
       }}
       columns={[
         {
@@ -369,24 +414,34 @@ const AllData = (props: Props) => {
           width: 0.7,
           label: "Mutants",
           field: "mutantCount",
-          cmp: <MutantCountCell />,
+          cmp: <MutantCountCell onRefHover={onRefHover} />,
         },
         {
           width: 0.5,
           label: "Significant",
           field: "significant",
-          cmp:
+          cmp: (
             <OptionsCell
-              options={{ true: "Yes", false: "No", notProcessed: "Not analyzed" }}
+              options={{
+                true: "Yes",
+                false: "No",
+                notProcessed: "Not analyzed",
+              }}
               customFn={(value: GeneStatisticalResult, field) => {
-                if (value.status === 'NotProcessed') {
-                  return "notProcessed"
+                if (value.status === "NotProcessed") {
+                  return "notProcessed";
                 }
                 return value[field];
               }}
-            />,
+            />
+          ),
         },
-        { width: 1, label: "P value", field: "pValue", cmp: <SignificantPValueCell /> },
+        {
+          width: 1,
+          label: "P value",
+          field: "pValue",
+          cmp: <SignificantPValueCell onRefHover={onRefHover} />,
+        },
       ]}
     />
   );

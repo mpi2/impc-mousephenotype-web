@@ -22,6 +22,7 @@
     "@testing-library/react": "^14.0.0",
     "@upsetjs/react": "^1.11.0",
     "@visx/visx": "^3.11.0",
+    "acd-utils": "^8.0.0",
     "bootstrap": "^5.1.3",
     "chart.js": "4.4.1",
     "chartjs-adapter-moment": "^1.0.0",

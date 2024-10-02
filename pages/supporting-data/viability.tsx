@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useViabilityQuery } from "@/hooks";
 import { Card, Search } from "@/components";
 import { Alert, Container, Spinner } from "react-bootstrap";
-import styles from "@/pages/data/styles.module.scss";
+import styles from "@/pages/supporting-data/styles.module.scss";
 import Skeleton from "react-loading-skeleton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -14,17 +14,25 @@ import { getDatasetByKey } from "@/utils";
 import Head from "next/head";
 
 const ViabilityChartPage = () => {
-  const [selectedKey, setSelectedKey] = useState('');
+  const [selectedKey, setSelectedKey] = useState("");
   const router = useRouter();
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
 
-  const { viabilityData, isViabilityLoading} = useViabilityQuery(mgiGeneAccessionId as string, router.isReady);
-  const activeDataset = !!selectedKey ? getDatasetByKey(viabilityData, selectedKey) : viabilityData?.[0];
+  const { viabilityData, isViabilityLoading } = useViabilityQuery(
+    mgiGeneAccessionId as string,
+    router.isReady
+  );
+  const activeDataset = !!selectedKey
+    ? getDatasetByKey(viabilityData, selectedKey)
+    : viabilityData?.[0];
 
   return (
     <>
       <Head>
-        <title>Viability chart for {activeDataset?.geneSymbol} | International Mouse Phenotyping Consortium</title>
+        <title>
+          Viability chart for {activeDataset?.geneSymbol} | International Mouse
+          Phenotyping Consortium
+        </title>
       </Head>
       <Search />
       <Container className="page">
@@ -34,15 +42,24 @@ const ViabilityChartPage = () => {
               <Link
                 href={`/genes/${mgiGeneAccessionId}`}
                 className="mb-3"
-                style={{ textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem' }}
+                style={{
+                  textTransform: "none",
+                  fontWeight: "normal",
+                  letterSpacing: "normal",
+                  fontSize: "1.15rem",
+                }}
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
-                &nbsp;
-                Go Back to <i>{activeDataset?.geneSymbol || <Skeleton style={{ width: '50px' }} inline />}</i>
+                &nbsp; Go Back to{" "}
+                <i>
+                  {activeDataset?.geneSymbol || (
+                    <Skeleton style={{ width: "50px" }} inline />
+                  )}
+                </i>
               </Link>
             </span>
           </div>
-          {(!viabilityData && !isViabilityLoading) && (
+          {!viabilityData && !isViabilityLoading && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>
               <p>We could not find the data to display this page.</p>
@@ -50,7 +67,13 @@ const ViabilityChartPage = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              Viability data for <i>{viabilityData?.[0]?.["geneSymbol"] || <Skeleton width="50px" inline />}</i> gene
+              Viability data for{" "}
+              <i>
+                {viabilityData?.[0]?.["geneSymbol"] || (
+                  <Skeleton width="50px" inline />
+                )}
+              </i>{" "}
+              gene
             </strong>
           </h1>
           {!isViabilityLoading ? (
@@ -65,15 +88,15 @@ const ViabilityChartPage = () => {
                 }}
               >
                 <span>
-                  {viabilityData && viabilityData.length} parameter /
-                  zygosity / metadata group combinations tested.
+                  {viabilityData && viabilityData.length} parameter / zygosity /
+                  metadata group combinations tested.
                 </span>
               </div>
             </div>
           ) : (
             <span>
-              <Spinner animation="border" size="sm"/>&nbsp;
-              Loading data
+              <Spinner animation="border" size="sm" />
+              &nbsp; Loading data
             </span>
           )}
           <ViabilityDataComparison

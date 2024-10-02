@@ -14,42 +14,44 @@ export type GeneImage = {
 };
 
 export type GeneImageCollection = {
-  id:                    string;
-  mgiGeneAccessionId:    string;
-  geneSymbol:            string;
-  strainAccessionId:     string;
-  pipelineStableId:      string;
-  procedureStableId:     string;
-  procedureName:         string;
-  parameterStableId:     string;
-  parameterName:         string;
+  id: string;
+  mgiGeneAccessionId: string;
+  geneSymbol: string;
+  strainAccessionId: string;
+  pipelineStableId: string;
+  procedureStableId: string;
+  procedureName: string;
+  parameterStableId: string;
+  parameterName: string;
   biologicalSampleGroup: string;
-  images:                Array<Image>;
-  metadataGroup:         string;
+  images: Array<Image>;
+  metadataGroup: string;
+  experimentDate?: Moment;
+  phenotypingCentre: string;
 };
 
 export type Image = {
-  thumbnailUrl:           null | string;
-  downloadUrl:            string;
-  jpegUrl:                string;
-  fileType:               string | null;
-  observationId:          string;
-  specimenId:             string;
-  colonyId:               string;
-  sex:                    string;
-  zygosity:               string;
-  ageInWeeks:             number;
-  alleleSymbol:           string;
-  associatedParameters:   Array<AssociatedParameter> | null;
-  dateOfExperiment:       string;
-  experimentDate:         Moment;
-  biologicalSampleGroup:  string;
-  imageLink:              string | null;
+  thumbnailUrl: null | string;
+  downloadUrl: string;
+  jpegUrl: string;
+  fileType: string | null;
+  observationId: string;
+  specimenId: string;
+  colonyId: string;
+  sex: string;
+  zygosity: string;
+  ageInWeeks: number;
+  alleleSymbol: string;
+  associatedParameters: Array<AssociatedParameter> | null;
+  dateOfExperiment: string;
+  experimentDate: Moment;
+  biologicalSampleGroup: string;
+  imageLink: string | null;
 };
 
 export type AssociatedParameter = {
-  stableId:              string;
+  stableId: string;
   associationSequenceId: null | string;
-  name:                  string;
-  value:                 string;
+  name: string;
+  value: string;
 };
