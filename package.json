@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watchAll",
-    "local": "NEXT_PUBLIC_PROXY_ENABLED=TRUE concurrently \"lcp --proxyUrl $(grep NEXT_PUBLIC_API_ROOT .env.development | cut -d '=' -f2)\" \"next dev\""
+    "local": "NEXT_PUBLIC_PROXY_ENABLED=TRUE concurrently \"lcp --proxyUrl $(grep NEXT_PUBLIC_API_ROOT .env.development | cut -d '=' -f2)\" \"lcp --proxyUrl http://wp-p1m2-0c:5000/  --port 8020 \" \"next dev\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.0",
