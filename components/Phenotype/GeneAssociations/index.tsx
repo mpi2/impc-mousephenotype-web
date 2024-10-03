@@ -95,8 +95,6 @@ const Associations = () => {
     sortOptions
   );
 
-  console.log({ data, isError });
-
   const filterPhenotype = (
     {
       phenotypeName,
