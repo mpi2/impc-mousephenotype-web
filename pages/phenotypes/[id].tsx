@@ -13,13 +13,15 @@ import { fetchAPI, fetchAPIFromServer } from "@/api-service";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import { uniqBy } from "lodash";
-import phenotypeList from "../../mocks/data/all_phenotypes_list.json";
+import { useMemo } from "react";
 
 type PhenotypePageProps = {
   phenotype: PhenotypeSummary;
 };
 
-const sortPhenotypeProcedures = (data: PhenotypeSummary): PhenotypeSummary => ({
+const sortAndUniqPhenotypeProcedures = (
+  data: PhenotypeSummary
+): PhenotypeSummary => ({
   ...data,
   procedures: uniqBy(data.procedures, "procedureName").sort((a, b) => {
     return a.procedureName.localeCompare(b.procedureName);
@@ -39,10 +41,12 @@ const Phenotype = (props: PhenotypePageProps) => {
     queryKey: ["phenotype", phenotypeId, "summary"],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
     enabled: router.isReady && !phenotypeFromServer,
-    select: sortPhenotypeProcedures,
   });
 
-  const phenotypeData = phenotypeFromServer || phenotype;
+  const phenotypeData = useMemo(() => {
+    const selectedData = phenotypeFromServer || phenotype;
+    return sortAndUniqPhenotypeProcedures(selectedData);
+  }, [phenotypeFromServer, phenotype]);
 
   return (
     <>

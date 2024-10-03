@@ -21,7 +21,6 @@ import {
 import { useGeneSummaryQuery } from "@/hooks";
 import { GeneSummary } from "@/models/gene";
 import { fetchAPIFromServer } from "@/api-service";
-import geneList from "../../mocks/data/all_genes_list.json";
 
 const HumanDiseases = dynamic(() => import("@/components/Gene/HumanDiseases"), {
   ssr: false,
