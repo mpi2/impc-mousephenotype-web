@@ -47,7 +47,7 @@ const Phenotype = (props: PhenotypePageProps) => {
   return (
     <>
       <PhenotypeMetadata phenotypeSummary={phenotypeData} />
-      <PhenotypeContext.Provider value={phenotype}>
+      <PhenotypeContext.Provider value={phenotypeData}>
         <Search defaultType="phenotype" />
         <Container className="page">
           <Summary {...{ phenotype: phenotypeData }} />
@@ -56,14 +56,14 @@ const Phenotype = (props: PhenotypePageProps) => {
           </Card>
           <Card>
             <h2>
-              Most significant associations for {phenotype?.phenotypeName}
+              Most significant associations for {phenotypeData?.phenotypeName}
             </h2>
             <ManhattanPlot phenotypeId={phenotypeId} />
           </Card>
           <Card>
             <h2>The way we measure</h2>
             <p>Procedure</p>
-            {phenotype?.procedures.map((prod) => (
+            {phenotypeData?.procedures.map((prod) => (
               <p key={prod.procedureStableId}>
                 <a
                   className="secondary"
@@ -80,7 +80,7 @@ const Phenotype = (props: PhenotypePageProps) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { id: phenotypeId } = context.params;
   const data = await fetchAPIFromServer(
     `/api/v1/phenotypes/${phenotypeId}/summary`
@@ -89,13 +89,6 @@ export async function getStaticProps(context) {
   return {
     props: { phenotype: data },
   };
-}
-
-export async function getStaticPaths() {
-  const paths = phenotypeList.map((phenotypeId) => ({
-    params: { id: phenotypeId },
-  }));
-  return { paths, fallback: "blocking" };
 }
 
 export default Phenotype;

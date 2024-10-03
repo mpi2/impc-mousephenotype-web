@@ -4,32 +4,32 @@ import { BodySystem } from "../../BodySystemIcon";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
-import { useRouter } from "next/router";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { ScrollToTopButton } from "@/components";
 
 type Props = {
   phenotype: PhenotypeSummary;
-}
+};
 
 const Summary = ({ phenotype }: Props) => {
-
   const SYNONYMS_COUNT = 2;
 
   const getNoTotalGenes = () => {
     if (!phenotype) return null;
     return phenotype.significantGenes + phenotype.notSignificantGenes;
-  }
+  };
 
   const calculatePercentageGenes = () => {
     if (!phenotype) return null;
     if (getNoTotalGenes() === 0) return 0;
-    return Number((phenotype.significantGenes / getNoTotalGenes()) * 100).toFixed(2);
-  }
+    return Number(
+      (phenotype.significantGenes / getNoTotalGenes()) * 100
+    ).toFixed(2);
+  };
 
   const displaySynonyms = () => {
-    return phenotype.phenotypeSynonyms.slice(0, SYNONYMS_COUNT).join(',');
-  }
+    return phenotype.phenotypeSynonyms.slice(0, SYNONYMS_COUNT).join(",");
+  };
   const displaySynonymsInTooltip = () => {
     return phenotype.phenotypeSynonyms
       .slice(SYNONYMS_COUNT, phenotype.phenotypeSynonyms.length)
@@ -39,16 +39,14 @@ const Summary = ({ phenotype }: Props) => {
           {i < phenotype.phenotypeSynonyms.length ? ", " : ""}
           <br />
         </span>
-      ))
-  }
+      ));
+  };
 
   return (
     <Card>
       <div className={styles.subheadingCont}>
         <div className={styles.subheading}>
-          <span className={styles.subheadingSection}>
-            Phenotype
-          </span>
+          <span className={styles.subheadingSection}>Phenotype</span>
           {!!phenotype.phenotypeSynonyms?.length && (
             <a className={styles.subheadingSection} href="#">
               Synonyms:&nbsp;
@@ -59,23 +57,30 @@ const Summary = ({ phenotype }: Props) => {
                   trigger={["hover", "focus"]}
                   overlay={
                     <Tooltip>
-                      <div style={{textAlign: "left"}}>
+                      <div style={{ textAlign: "left" }}>
                         {displaySynonymsInTooltip()}
                       </div>
                     </Tooltip>
                   }
                 >
-                  {({ref, ...triggerHandler}) => (
-                    <span {...triggerHandler} ref={ref} className="link" data-testid="synonyms">
-                    ,&nbsp;+{phenotype.phenotypeSynonyms.length - SYNONYMS_COUNT} more&nbsp;
-                      <FontAwesomeIcon icon={faCaretSquareDown}/>
-                  </span>
+                  {({ ref, ...triggerHandler }) => (
+                    <span
+                      {...triggerHandler}
+                      ref={ref}
+                      className="link"
+                      data-testid="synonyms"
+                    >
+                      ,&nbsp;+
+                      {phenotype.phenotypeSynonyms.length - SYNONYMS_COUNT}{" "}
+                      more&nbsp;
+                      <FontAwesomeIcon icon={faCaretSquareDown} />
+                    </span>
                   )}
                 </OverlayTrigger>
               )}
             </a>
           )}
-          {phenotype.topLevelPhenotypes.map(system => (
+          {phenotype.topLevelPhenotypes.map((system) => (
             <BodySystem
               key={system.id}
               name={system.name}
@@ -89,14 +94,16 @@ const Summary = ({ phenotype }: Props) => {
       </div>
       <Row>
         <Col lg={6}>
-          <h1 style={{margin: 0}}>
+          <h1 style={{ margin: 0 }}>
             <strong>{phenotype.phenotypeName}</strong>
           </h1>
         </Col>
         <Col lg={6}>
           <div className={styles.stats}>
             <div data-testid="significant-genes">
-              <p className="secondary h2 mb-0">{phenotype.significantGenes || 0}</p>
+              <p className="secondary h2 mb-0">
+                {phenotype.significantGenes || 0}
+              </p>
               <span className="grey">significant genes</span>
             </div>
             <div data-testid="tested-genes-percentage">
@@ -118,7 +125,7 @@ const Summary = ({ phenotype }: Props) => {
         <div className="purchaseBanner phenotype-page">
           <span>Significant gene-phenotype associations</span>
           <a href="#associations-table" className="purchaseButton">
-             View data
+            View data
           </a>
         </div>
       </div>
