@@ -172,10 +172,10 @@ const Charts = () => {
                 <i>
                   {allSummaries?.[0]?.geneSymbol && fetchingInProcess ? (
                     <Skeleton style={{ width: "50px" }} inline />
+                  ) : !!allSummaries?.[0]?.geneSymbol ? (
+                    <span>{allSummaries?.[0]?.geneSymbol}</span>
                   ) : (
-                    <span style={{ fontStyle: "normal" }}>
-                      {allSummaries?.[0]?.geneSymbol || "gene page"}
-                    </span>
+                    <span style={{ fontStyle: "normal" }}>gene page</span>
                   )}
                 </i>
               </Link>

@@ -1,13 +1,10 @@
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
-import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import Card from "../../Card";
 import { BodySystem } from "../../BodySystemIcon";
-import { useRouter } from "next/router";
 import Check from "../../Check";
-import Head from "next/head";
 import { GeneSummary } from "@/models/gene";
 import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
@@ -42,48 +39,9 @@ const CollectionItem = ({
 type SummaryProps = {
   gene: GeneSummary;
   numOfAlleles: number;
-  loading: boolean;
-  error: string;
-};
-const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
-  const router = useRouter();
-
+}
+const Summary = ({ gene, numOfAlleles}: SummaryProps) => {
   const SYNONYMS_COUNT = 2;
-
-  if (loading) {
-    return (
-      <Card id="summary">
-        <div className={styles.subheadingCont}>
-          <div className={styles.subheading}>
-            <span className={styles.subheadingSection}>Gene</span>
-            <span className={styles.subheadingSection}>{router.query.pid}</span>
-          </div>
-        </div>
-        <br />
-        <p className="grey">Loading...</p>
-      </Card>
-    );
-  }
-
-  if (error) {
-    return (
-      <Card id="summary">
-        <div className={styles.subheadingCont}>
-          <div className={styles.subheading}>
-            <span className={styles.subheadingSection}>Gene</span>
-            <span className={styles.subheadingSection}>{router.query.pid}</span>
-          </div>
-        </div>
-        <div className="mt-5 mb-5 text-center grey">
-          <h1>
-            <FontAwesomeIcon icon={faWarning} className="mb-4" /> <br />
-            <strong>Sorry, we didn't find anything.</strong>
-          </h1>
-          <p className="grey">Please check your url or try again later.</p>
-        </div>
-      </Card>
-    );
-  }
 
   const joined = [
     ...(gene.significantTopLevelPhenotypes ?? []),
@@ -106,13 +64,7 @@ const Summary = ({ gene, numOfAlleles, loading, error }: SummaryProps) => {
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
-    <Card id="summary" style={{ padding: "2rem 2rem 0 2rem" }}>
-      <Head>
-        <title>
-          {gene.geneSymbol} Mouse Gene Details | {gene.geneName} | International
-          Mouse Phenotyping Consortium
-        </title>
-      </Head>
+    <Card style={{ padding: '2rem 2rem 0 2rem' }}>
       <div className={styles.headingCont}>
         <h1 className="mt-2 mb-3">
           <strong>

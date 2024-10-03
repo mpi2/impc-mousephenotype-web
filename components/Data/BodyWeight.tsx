@@ -186,7 +186,6 @@ const BodyWeightChart = ({ datasetSummary }) => {
     () => processData(),
     [data, viewOnlyRangeForMutant]
   );
-  console.log(datasetSummary.chartData);
 
   return (
     <>

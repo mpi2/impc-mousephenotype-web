@@ -1,6 +1,6 @@
 .buttonsWrapper {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   gap: 1rem;
 
@@ -45,7 +45,8 @@
     }
   }
   @media screen and (max-width: 550px) {
-    & input, & select {
+    & input,
+    & select {
       flex-grow: 1;
       width: 100% !important;
     }

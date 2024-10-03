@@ -1,33 +1,47 @@
 import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
-import Summary from "@/components/Gene/Summary";
-import ExternalLinks from "@/components/Gene/ExternalLinks";
-import Phenotypes from "@/components/Gene/Phenotypes";
-import Images from "@/components/Gene/Images";
-import Publications from "@/components/Gene/Publications";
-import Histopathology from "@/components/Gene/Histopathology";
-import Expressions from "@/components/Gene/Expressions";
-import Order from "@/components/Gene/Order";
+import {
+  Summary,
+  GeneMetadata,
+  ExternalLinks,
+  Images,
+  Publications,
+  Histopathology,
+  Expressions,
+  Order,
+} from "@/components/Gene";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { AllelesStudiedContext, GeneContext, NumAllelesContext } from "@/contexts";
+import {
+  AllelesStudiedContext,
+  GeneContext,
+  NumAllelesContext,
+} from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
-import Head from "next/head";
+import { GeneSummary } from "@/models/gene";
+import { fetchAPIFromServer } from "@/api-service";
 
-const HumanDiseases = dynamic(
-  () => import("@/components/Gene/HumanDiseases"),
-  {
-    ssr: false,
-  }
-);
+const HumanDiseases = dynamic(() => import("@/components/Gene/HumanDiseases"), {
+  ssr: false,
+});
 
-const Gene = () => {
+const Phenotypes = dynamic(() => import("@/components/Gene/Phenotypes"), {
+  ssr: false,
+});
+
+type GenePageProps = {
+  gene: GeneSummary;
+};
+
+const Gene = (props: GenePageProps) => {
+  const { gene: geneFromServer } = props;
   const router = useRouter();
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
-  const [allelesStudiedLoading, setAllelesStudiedLoading] = useState<boolean>(true);
-  const numAllelesContextValue = {numOfAlleles, setNumOfAlleles};
+  const [allelesStudiedLoading, setAllelesStudiedLoading] =
+    useState<boolean>(true);
+  const numAllelesContextValue = { numOfAlleles, setNumOfAlleles };
   const allelesStudiedContextValue = {
     allelesStudied,
     setAlleles,
@@ -35,12 +49,13 @@ const Gene = () => {
     setAllelesStudiedLoading,
   };
 
-  const {
-    isLoading,
-    isError,
-    data: gene,
-    error
-  } = useGeneSummaryQuery(router.query.pid as string, router.isReady);
+  const { data: gene } = useGeneSummaryQuery(
+    router.query.pid as string,
+    router.isReady && !geneFromServer,
+    geneFromServer
+  );
+
+  const geneData = geneFromServer || gene;
 
   useEffect(() => {
     if (gene) {
@@ -51,31 +66,28 @@ const Gene = () => {
         }, 500);
       }
     }
-  }, [gene]);
+  }, [geneData]);
 
   return (
     <>
-      <Head>
-        <title>{gene?.geneSymbol} Mouse Gene details | International Mouse Phenotyping Consortium</title>
-      </Head>
-      <GeneContext.Provider value={gene}>
+      <GeneMetadata geneSummary={geneData} />
+      <GeneContext.Provider value={geneData}>
         <NumAllelesContext.Provider value={numAllelesContextValue}>
           <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
-            <Search/>
+            <Search />
             <Container className="page">
-              <Summary {...{gene, numOfAlleles, loading: isLoading, error: isError ? error.toString() : ""}} />
-              {!!gene && (
-                <>
-                  <Phenotypes gene={gene}/>
-                  <Expressions/>
-                  <Images gene={gene}/>
-                  <HumanDiseases gene={gene}/>
-                  <Histopathology/>
-                  <Publications gene={gene}/>
-                  <ExternalLinks/>
-                  <Order allelesStudied={allelesStudied} allelesStudiedLoading={allelesStudiedLoading}/>
-                </>
-              )}
+              <Summary {...{ gene: geneData, numOfAlleles }} />
+              <Phenotypes gene={geneData} />
+              <Expressions />
+              <Images gene={geneData} />
+              <HumanDiseases gene={geneData} />
+              <Histopathology />
+              <Publications gene={geneData} />
+              <ExternalLinks />
+              <Order
+                allelesStudied={allelesStudied}
+                allelesStudiedLoading={allelesStudiedLoading}
+              />
             </Container>
           </AllelesStudiedContext.Provider>
         </NumAllelesContext.Provider>
@@ -83,5 +95,18 @@ const Gene = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { pid: mgiGeneAccessionId } = context.params;
+  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
+    return { notFound: true };
+  }
+  const data = await fetchAPIFromServer(
+    `/api/v1/genes/${mgiGeneAccessionId}/summary`
+  );
+  return {
+    props: { gene: data },
+  };
+}
 
 export default Gene;
