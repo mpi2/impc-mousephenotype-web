@@ -97,7 +97,7 @@ const Gene = (props: GenePageProps) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { pid: mgiGeneAccessionId } = context.params;
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     return { notFound: true };
@@ -108,13 +108,6 @@ export async function getStaticProps(context) {
   return {
     props: { gene: data },
   };
-}
-
-export async function getStaticPaths() {
-  const paths = geneList.map((geneAccessionId) => ({
-    params: { pid: geneAccessionId },
-  }));
-  return { paths, fallback: "blocking" };
 }
 
 export default Gene;
