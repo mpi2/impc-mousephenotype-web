@@ -25,6 +25,7 @@ const PhenotypeMetadata = ({ phenotypeSummary }: MetadataProps) => {
     citation: "https://doi.org/10.1093/nar/gkac972",
     isAccessibleForFree: true,
     url: phenotypePageURL,
+    license: "https://creativecommons.org/licenses/by/4.0/",
   };
   return (
     <Head>
