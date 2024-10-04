@@ -13,13 +13,15 @@ const SortableTable = ({
   defaultSort,
   doSort,
   children,
-  className,
+  className = "",
+  withMargin: shouldHaveMargin = true,
 }: {
   headers: TableHeader[];
   defaultSort?: SortType;
   doSort?: (s: SortType) => void;
   children: React.ReactNode;
   className?: string;
+  withMargin?: boolean;
 }) => {
   // TODO: add search filter
   const [sort, setSort] = useState<{
@@ -88,7 +90,9 @@ const SortableTable = ({
             style={{
               fontWeight: !disabled && selected ? "bold" : "inherit",
             }}
-            className={classNames(styles.inlineButton, styles.headerButton, {[styles.disabled]: disabled })}
+            className={classNames(styles.inlineButton, styles.headerButton, {
+              [styles.disabled]: disabled,
+            })}
             onClick={handleSelect}
           >
             {label}{" "}
@@ -100,9 +104,9 @@ const SortableTable = ({
             )}
             {!disabled && !selected && (
               <span className={styles.defaultIcons}>
-              <FontAwesomeIcon className={styles.first} icon={faCaretUp}/>
-              <FontAwesomeIcon className={styles.second} icon={faCaretDown}/>
-            </span>
+                <FontAwesomeIcon className={styles.first} icon={faCaretUp} />
+                <FontAwesomeIcon className={styles.second} icon={faCaretDown} />
+              </span>
             )}
           </button>
         )}
@@ -112,7 +116,12 @@ const SortableTable = ({
 
   return (
     <div className={styles.tableWrapper}>
-      <Table bordered className={`${styles.table} ${styles.striped} ${className}`}>
+      <Table
+        bordered
+        className={classNames(styles.table, styles.striped, className, {
+          [styles.noMargin]: !shouldHaveMargin,
+        })}
+      >
         <thead>
           <tr>
             {headers.map((header, index) => (
@@ -120,14 +129,14 @@ const SortableTable = ({
             ))}
           </tr>
           <tr>
-          {hasNested &&
-            headers.map(({children: childHeaders}) => {
-            if (childHeaders && childHeaders.length) {
-              return childHeaders.map((childHeader) => (
-                  <SortableTh {...childHeader} />
-                ));
-              }
-            })}
+            {hasNested &&
+              headers.map(({ children: childHeaders }) => {
+                if (childHeaders && childHeaders.length) {
+                  return childHeaders.map((childHeader) => (
+                    <SortableTh {...childHeader} />
+                  ));
+                }
+              })}
           </tr>
         </thead>
         <tbody>{children}</tbody>
