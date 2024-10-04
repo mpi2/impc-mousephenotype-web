@@ -33,7 +33,7 @@ const GeneMetadata = ({ geneSummary }: MetadataProps) => {
       <meta name="description" content={description} />
       <meta
         name="keywords"
-        content={`${geneSymbol}, ${geneName}, gene, phenotypes, alleles`}
+        content={`${geneSymbol}, ${geneName}, mouse, gene, phenotypes, alleles, diseases`}
       />
       <link rel="canonical" href={genePageURL} />
       <meta property="og:title" content={title} />
