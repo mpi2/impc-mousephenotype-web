@@ -1,7 +1,12 @@
 import Head from "next/head";
 import Search from "@/components/Search";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { Card, LoadingProgressBar, SortableTable } from "@/components";
+import {
+  AlleleSymbol,
+  Card,
+  LoadingProgressBar,
+  SortableTable,
+} from "@/components";
 import { useEffect, useMemo, useState } from "react";
 import { mapAttributes, mapAdditionalAttributes } from "./attributes";
 import { useQuery } from "@tanstack/react-query";
@@ -10,6 +15,8 @@ import { maybe } from "acd-utils";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { BodySystem } from "@/components/BodySystemIcon";
+import { formatAlleleSymbol } from "@/utils";
 
 const mapLabels = {
   "impc-gene": "GENE",
@@ -80,24 +87,86 @@ type BatchQueryItem = {
 const DataRow = ({ geneData }) => {
   const [open, setOpen] = useState(false);
   return (
-    <tr>
-      <td>
-        <Link className="link primary" href={`/genes/${geneData.geneId}`}>
-          {geneData.geneId}
-        </Link>
-      </td>
-      <td>{geneData.geneSymbol}</td>
-      <td>{geneData.humanSymbols.join(",")}</td>
-      <td>{geneData.humanGeneIds.join(",")}</td>
-      <td>{geneData.allPhenotypes.length}</td>
-      <td>{geneData.allSigSystems.length}</td>
-      <td onClick={() => setOpen(!open)}>
-        <FontAwesomeIcon
-          className="link"
-          icon={open ? faChevronUp : faChevronDown}
-        />
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td>
+          <Link className="link primary" href={`/genes/${geneData.geneId}`}>
+            {geneData.geneId}
+          </Link>
+        </td>
+        <td>{geneData.geneSymbol}</td>
+        <td>{geneData.humanSymbols.join(",") || "info not available"}</td>
+        <td>{geneData.humanGeneIds.join(",") || "info not available"}</td>
+        <td>{geneData.allPhenotypes.length}</td>
+        <td>{geneData.allSigSystems.length}</td>
+        <td>
+          <button className="btn" onClick={() => setOpen(!open)}>
+            {open ? "Close" : "View"}
+          </button>
+        </td>
+      </tr>
+      {open && (
+        <tr>
+          <td></td>
+          <td colSpan={6} style={{ padding: 0 }}>
+            <SortableTable
+              withMargin={false}
+              headers={[
+                {
+                  width: 1,
+                  label: "Allele symbol",
+                  field: "allele",
+                  disabled: true,
+                },
+                {
+                  width: 2,
+                  label: "Significant systems",
+                  field: "significantSystems",
+                  disabled: true,
+                },
+                {
+                  width: 1,
+                  label: "# of significant phenotypes",
+                  field: "significantPhenotypes",
+                  disabled: true,
+                },
+              ]}
+            >
+              {geneData.alleles.map((alleleData) => {
+                return (
+                  <tr>
+                    <td>
+                      <Link
+                        className="link primary"
+                        href={`alleles/${geneData.geneId}/${
+                          formatAlleleSymbol(alleleData.allele)[1]
+                        }`}
+                      >
+                        <AlleleSymbol
+                          symbol={alleleData.allele}
+                          withLabel={false}
+                        />
+                      </Link>
+                    </td>
+                    <td>
+                      {alleleData.significantSystems.map((system, index) => (
+                        <BodySystem
+                          key={index}
+                          name={system}
+                          color="system-icon in-table"
+                          noSpacing
+                        />
+                      ))}
+                    </td>
+                    <td>{alleleData.significantPhenotypes.length}</td>
+                  </tr>
+                );
+              })}
+            </SortableTable>
+          </td>
+        </tr>
+      )}
+    </>
   );
 };
 
@@ -221,6 +290,8 @@ const BatchQueryPage = () => {
       });
     },
   });
+
+  console.log(results);
 
   return (
     <>
