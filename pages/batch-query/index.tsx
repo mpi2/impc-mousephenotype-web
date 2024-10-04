@@ -1,11 +1,15 @@
 import Head from "next/head";
 import Search from "@/components/Search";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { Card } from "@/components";
+import { Card, LoadingProgressBar, SortableTable } from "@/components";
 import { useEffect, useMemo, useState } from "react";
 import { mapAttributes, mapAdditionalAttributes } from "./attributes";
 import { useQuery } from "@tanstack/react-query";
-import { groupBy } from "lodash";
+import { groupBy, uniq } from "lodash";
+import { maybe } from "acd-utils";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 const mapLabels = {
   "impc-gene": "GENE",
@@ -27,6 +31,74 @@ const mapPlaceholders = {
   anatomy: "MA:0003077, EMAPA:35955",
   "human-marker-symbol": "Ca4, CA4",
   "mouse-marker-symbol": "Car4, CAR4",
+};
+
+type Phenotype = {
+  id: string;
+  name: string;
+};
+
+type BatchQueryItem = {
+  alleleAccessionId: string;
+  alleleName: string;
+  alleleSymbol: string;
+  dataType: string;
+  displayPhenotype: Phenotype | null;
+  effectSize: null | string;
+  femaleMutantCount: number | null;
+  hgncGeneAccessionId: string;
+  humanGeneSymbol: string;
+  humanPhenotypes: any[];
+  id: string;
+  intermediatePhenotypes: Phenotype[] | null;
+  lifeStageName: string;
+  maleMutantCount: number | null;
+  metadataGroup: string;
+  mgiGeneAccessionId: string;
+  pValue: null | string;
+  parameterName: string;
+  parameterStableId: string;
+  phenotypeSexes: string[] | null;
+  phenotypingCentre: string;
+  pipelineStableId: string;
+  potentialPhenotypes: Phenotype[] | null;
+  procedureMinAnimals: number | null;
+  procedureMinFemales: number | null;
+  procedureMinMales: number | null;
+  procedureName: string;
+  procedureStableId: string;
+  projectName: string;
+  significant: boolean;
+  significantPhenotype: Phenotype | null;
+  statisticalMethod: null | string;
+  statisticalResultId: string;
+  status: string;
+  topLevelPhenotypes: Phenotype[] | null;
+  zygosity: string;
+};
+
+const DataRow = ({ geneData }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <tr>
+      <td>
+        <Link className="link primary" href={`/genes/${geneData.geneId}`}>
+          {geneData.geneId}
+        </Link>
+      </td>
+      <td>{geneData.geneSymbol}</td>
+      <td>{geneData.humanSymbols.join(",")}</td>
+      <td>{geneData.humanGeneIds.join(",")}</td>
+      <td>{geneData.allPhenotypes.length}</td>
+      <td>{geneData.allSigSystems.length}</td>
+      <td onClick={() => setOpen(!open)}>
+        <FontAwesomeIcon
+          className="link"
+          icon={open ? faChevronUp : faChevronDown}
+        />
+      </td>
+    </tr>
+  );
 };
 
 const BatchQueryPage = () => {
@@ -60,7 +132,7 @@ const BatchQueryPage = () => {
     }
   }, [geneIds, formSubmitted]);
 
-  const { data } = useQuery({
+  const { data: results, isFetching } = useQuery({
     queryKey: ["batch-query", geneIdArray],
     queryFn: () => {
       const headers = new Headers();
@@ -73,12 +145,82 @@ const BatchQueryPage = () => {
       }).then((res) => res.json());
     },
     enabled: geneIdArray.length > 0 && !!formSubmitted,
-    select: (data) => {
-      const resultsByAllele = groupBy(data, "alleleSymbol");
+    select: (data: Array<BatchQueryItem>) => {
+      const results = {};
+      const resultsByGene = groupBy(data, "id");
+      for (const [geneId, geneData] of Object.entries(resultsByGene)) {
+        const geneSymbol = geneData[0]?.alleleSymbol.split("<")[0];
+        const resultsByAllele = groupBy(geneData, "alleleSymbol");
+        const sigSystemsSet = new Set<string>();
+        const sigPhenotypesSet = new Set<string>();
+        const lifeStagesSet = new Set<string>();
+        results[geneSymbol] = {
+          humanSymbols: uniq(geneData.map((d) => d.humanGeneSymbol)),
+          humanGeneIds: uniq(geneData.map((d) => d.hgncGeneAccessionId)),
+          geneId,
+          allSigSystems: [],
+          allPhenotypes: [],
+          allSigLifeStages: [],
+          alleles: [],
+        };
+        for (const [allele, alleleData] of Object.entries(resultsByAllele)) {
+          const significantData = alleleData.filter(
+            (d) => d.significant === true
+          );
+          const restOfData = alleleData.filter((d) => d.significant === false);
+          const getSigPhenotypeNames = (data: Array<BatchQueryItem>) => {
+            return data
+              .map((d) =>
+                maybe(d.significantPhenotype)
+                  .map((p) => p.name)
+                  .getOrElse(undefined)
+              )
+              .filter(Boolean);
+          };
+          const getTopLevelPhenotypeNames = (data: Array<BatchQueryItem>) => {
+            return data
+              .map((d) =>
+                maybe(d.topLevelPhenotypes)
+                  .map((systems) => systems.map((s) => s.name).join(","))
+                  .getOrElse(undefined)
+              )
+              .filter(Boolean);
+          };
+          const alleleSigPhenotypes = uniq(
+            getSigPhenotypeNames(significantData)
+          );
+          const alleleSigSystems = uniq(
+            getTopLevelPhenotypeNames(significantData)
+          );
+          const alleleSigLifeStages = uniq(
+            significantData.map((d) => d.lifeStageName)
+          );
+
+          alleleSigPhenotypes.forEach((p) => sigPhenotypesSet.add(p));
+          alleleSigSystems.forEach((s) => sigSystemsSet.add(s));
+          alleleSigLifeStages.forEach((l) => lifeStagesSet.add(l));
+
+          results[geneSymbol].alleles.push({
+            significantPhenotypes: alleleSigPhenotypes,
+            otherPhenotypes: uniq(getSigPhenotypeNames(restOfData)),
+            significantLifeStages: alleleSigLifeStages,
+            significantSystems: alleleSigSystems,
+            otherSystems: uniq(getTopLevelPhenotypeNames(restOfData)),
+            allele,
+          });
+        }
+        results[geneSymbol].allSigSystems = [...sigSystemsSet];
+        results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
+        results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
+      }
+      return Object.entries(results).map(([geneSymbol, geneData]) => {
+        return {
+          geneSymbol,
+          ...(geneData as any),
+        };
+      });
     },
   });
-
-  console.log(data);
 
   return (
     <>
@@ -157,6 +299,19 @@ const BatchQueryPage = () => {
               </Col>
             </Row>
           </Form>
+          <Form className="mt-4">
+            <Form.Group className="mb-3">
+              <Form.Label>
+                <strong>List of ID's</strong>
+              </Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder={mapPlaceholders[selectedKey]}
+                onChange={(e) => setGeneIds(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
           <h3 className="mt-4">Customized output</h3>
           <Form>
             <fieldset disabled>
@@ -196,19 +351,6 @@ const BatchQueryPage = () => {
               </Row>
             </fieldset>
           </Form>
-          <Form className="mt-4">
-            <Form.Group className="mb-3">
-              <Form.Label>
-                <strong>List of ID's</strong>
-              </Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder={mapPlaceholders[selectedKey]}
-                onChange={(e) => setGeneIds(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
           <div>
             <button
               onClick={() => setFormSubmitted(true)}
@@ -217,6 +359,42 @@ const BatchQueryPage = () => {
               Submit
             </button>
           </div>
+        </Card>
+        <Card>
+          <h2>Results</h2>
+          {isFetching && (
+            <div
+              className="mt-4"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <LoadingProgressBar />
+            </div>
+          )}
+          {!!results && (
+            <SortableTable
+              headers={[
+                { width: 1, label: "MGI accession id", field: "geneId" },
+                { width: 1, label: "Marker symbol", field: "geneSymbol" },
+                { width: 1, label: "Human gene symbol", field: "humanSymbols" },
+                { width: 1, label: "Human gene id", field: "humanGeneIds" },
+                {
+                  width: 1,
+                  label: "# of significant phenotypes",
+                  field: "allPhenotypes",
+                },
+                {
+                  width: 1,
+                  label: "# of systems impacted",
+                  field: "allSigSystems",
+                },
+                { width: 1, label: "View allele info", disabled: true },
+              ]}
+            >
+              {results.map((geneData) => (
+                <DataRow geneData={geneData} />
+              ))}
+            </SortableTable>
+          )}
         </Card>
       </Container>
     </>
