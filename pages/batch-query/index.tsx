@@ -1,22 +1,23 @@
 import Head from "next/head";
 import Search from "@/components/Search";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import {
   AlleleSymbol,
   Card,
   LoadingProgressBar,
   SortableTable,
 } from "@/components";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import { mapAttributes, mapAdditionalAttributes } from "./attributes";
 import { useQuery } from "@tanstack/react-query";
 import { groupBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { formatAlleleSymbol } from "@/utils";
+import { initialState, reducer, toogleFlagPayload } from "./reducer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 const mapLabels = {
   "impc-gene": "GENE",
@@ -178,6 +179,9 @@ const BatchQueryPage = () => {
   const [symbolSelection, setSymbolSelection] = useState("human-marker-symbol");
   const [geneIds, setGeneIds] = useState<string>(undefined);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const downloadButtonIsBusy =
+    state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
 
   const attributes =
     typeSelection === "byID"
@@ -213,7 +217,7 @@ const BatchQueryPage = () => {
         headers,
       }).then((res) => res.json());
     },
-    enabled: geneIdArray.length > 0 && !!formSubmitted,
+    enabled: geneIdArray.length > 0 && !!formSubmitted && !downloadButtonIsBusy,
     select: (data: Array<BatchQueryItem>) => {
       const results = {};
       const resultsByGene = groupBy(data, "id");
@@ -291,7 +295,49 @@ const BatchQueryPage = () => {
     },
   });
 
-  console.log(results);
+  const fetchAndDownloadData = async (payload: toogleFlagPayload) => {
+    if (geneIds.length > 0) {
+      const headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      headers.append("Response-Format", payload.toLowerCase());
+      dispatch({ type: "toggle", payload });
+      const resp = await fetch("http://localhost:8020/proxy/query", {
+        method: "POST",
+        body: JSON.stringify({ mgi_ids: geneIdArray }),
+        headers,
+      });
+      const blob = await resp.blob();
+
+      const objUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", objUrl);
+      link.setAttribute("download", "batch-query-data-" + payload);
+      link.click();
+      URL.revokeObjectURL(objUrl);
+      dispatch({ type: "toggle", payload });
+    }
+  };
+
+  const downloadButtons = useMemo(
+    () => [
+      {
+        key: "TSV",
+        isBusy: state.isBusyTSV,
+        toogleFlag: () => fetchAndDownloadData("TSV"),
+      },
+      {
+        key: "JSON",
+        isBusy: state.isBusyJSON,
+        toogleFlag: () => fetchAndDownloadData("JSON"),
+      },
+      {
+        key: "XLSX",
+        isBusy: state.isBusyXLSX,
+        toogleFlag: () => fetchAndDownloadData("XLSX"),
+      },
+    ],
+    [state, geneIds]
+  );
 
   return (
     <>
@@ -426,6 +472,7 @@ const BatchQueryPage = () => {
             <button
               onClick={() => setFormSubmitted(true)}
               className="btn impc-primary-button"
+              disabled={isFetching || downloadButtonIsBusy}
             >
               Submit
             </button>
@@ -441,31 +488,69 @@ const BatchQueryPage = () => {
               <LoadingProgressBar />
             </div>
           )}
-          {!!results && (
-            <SortableTable
-              headers={[
-                { width: 1, label: "MGI accession id", field: "geneId" },
-                { width: 1, label: "Marker symbol", field: "geneSymbol" },
-                { width: 1, label: "Human gene symbol", field: "humanSymbols" },
-                { width: 1, label: "Human gene id", field: "humanGeneIds" },
-                {
-                  width: 1,
-                  label: "# of significant phenotypes",
-                  field: "allPhenotypes",
-                },
-                {
-                  width: 1,
-                  label: "# of systems impacted",
-                  field: "allSigSystems",
-                },
-                { width: 1, label: "View allele info", disabled: true },
-              ]}
-            >
-              {results.map((geneData) => (
-                <DataRow geneData={geneData} />
-              ))}
-            </SortableTable>
-          )}
+          {!!results ? (
+            <>
+              <SortableTable
+                headers={[
+                  { width: 1, label: "MGI accession id", field: "geneId" },
+                  { width: 1, label: "Marker symbol", field: "geneSymbol" },
+                  {
+                    width: 1,
+                    label: "Human gene symbol",
+                    field: "humanSymbols",
+                  },
+                  { width: 1, label: "Human gene id", field: "humanGeneIds" },
+                  {
+                    width: 1,
+                    label: "# of significant phenotypes",
+                    field: "allPhenotypes",
+                  },
+                  {
+                    width: 1,
+                    label: "# of systems impacted",
+                    field: "allSigSystems",
+                  },
+                  { width: 1, label: "View allele info", disabled: true },
+                ]}
+              >
+                {results.map((geneData) => (
+                  <DataRow geneData={geneData} />
+                ))}
+              </SortableTable>
+              <div>
+                <div
+                  className="grey"
+                  style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    alignItems: "center",
+                  }}
+                >
+                  {downloadButtons.map((button) => (
+                    <button
+                      key={button.key}
+                      className="btn impc-secondary-button small"
+                      onClick={button.toogleFlag}
+                      disabled={button.isBusy}
+                    >
+                      {button.isBusy ? (
+                        <Spinner animation="border" size="sm" />
+                      ) : (
+                        <>
+                          <FontAwesomeIcon icon={faDownload} size="sm" />
+                          {button.key}
+                        </>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : !isFetching ? (
+            <i className="grey">
+              Data will appear here after clicking the submit button.
+            </i>
+          ) : null}
         </Card>
       </Container>
     </>
