@@ -8,14 +8,17 @@ export const LANDING_PAGE_DATA_URL =
   process.env.NEXT_PUBLIC_LANDING_PAGE_DATA_URL || "";
 export const PROTOTYPE_API_URL =
   process.env.NEXT_PUBLIC_PROTOTYPE_API_ROOT || "";
-export const PROD_API_URL = process.env.NEXT_PUBLIC_PROD_API_ROOT || "";
+export const DEV_API_ROOT = process.env.NEXT_PUBLIC_DEV_API_ROOT || "";
+export const PROD_API_ROOT = process.env.NEXT_PUBLIC_PROD_API_ROOT || "";
 
 export async function fetchAPI(query: string) {
   let domain: string;
   if (location.hostname === "nginx.mousephenotype-dev.org") {
     domain = PROTOTYPE_API_URL;
   } else if (location.hostname === "dev.mousephenotype.org") {
-    domain = PROD_API_URL;
+    domain = DEV_API_ROOT;
+  } else if (location.hostname === "nginx.mousephenotype-prod.org") {
+    domain = PROD_API_ROOT;
   } else {
     domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : API_URL;
   }
