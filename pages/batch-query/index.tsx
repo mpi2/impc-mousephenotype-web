@@ -206,6 +206,18 @@ const BatchQueryPage = () => {
     }
   }, [geneIds, formSubmitted]);
 
+  const getBody = () => {
+    let body;
+    if (!!file) {
+      const data = new FormData();
+      data.append("file", file);
+      body = data;
+    } else {
+      body = JSON.stringify({ mgi_ids: geneIdArray });
+    }
+    return body;
+  };
+
   const { data: results, isFetching } = useQuery({
     queryKey: ["batch-query", geneIdArray],
     queryFn: () => {
@@ -214,14 +226,7 @@ const BatchQueryPage = () => {
       if (geneIdArray.length > 0) {
         headers.append("Content-Type", "application/json");
       }
-      let body;
-      if (!!file) {
-        const data = new FormData();
-        data.append("file", file);
-        body = data;
-      } else {
-        body = JSON.stringify({ mgi_ids: geneIdArray });
-      }
+      const body = getBody();
 
       return fetch("http://localhost:8020/proxy/query", {
         method: "POST",
@@ -311,18 +316,20 @@ const BatchQueryPage = () => {
   });
 
   const fetchAndDownloadData = async (payload: toogleFlagPayload) => {
-    if (geneIds.length > 0) {
+    if (geneIdArray?.length > 0 || !!file) {
       const headers = new Headers();
-      headers.append("Content-Type", "application/json");
       headers.append("Response-Format", payload.toLowerCase());
+      if (geneIdArray.length > 0) {
+        headers.append("Content-Type", "application/json");
+      }
       dispatch({ type: "toggle", payload });
-      const resp = await fetch("http://localhost:8020/proxy/query", {
+      const body = getBody();
+      const resp = await fetch("http://localhost:5000/query", {
         method: "POST",
-        body: JSON.stringify({ mgi_ids: geneIdArray }),
+        body,
         headers,
       });
       const blob = await resp.blob();
-
       const objUrl = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.setAttribute("href", objUrl);
@@ -351,7 +358,7 @@ const BatchQueryPage = () => {
         toogleFlag: () => fetchAndDownloadData("XLSX"),
       },
     ],
-    [state, geneIds]
+    [state, geneIds, file]
   );
 
   return (
