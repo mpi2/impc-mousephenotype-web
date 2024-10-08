@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Search from "@/components/Search";
-import { Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Form, Row, Spinner, Tabs, Tab } from "react-bootstrap";
 import {
   AlleleSymbol,
   Card,
   LoadingProgressBar,
   SortableTable,
 } from "@/components";
-import { useEffect, useMemo, useReducer, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useReducer, useState } from "react";
 import { mapAttributes, mapAdditionalAttributes } from "./attributes";
 import { useQuery } from "@tanstack/react-query";
 import { groupBy, uniq } from "lodash";
@@ -178,6 +178,7 @@ const BatchQueryPage = () => {
   const [idSelection, setIDSelection] = useState("impc-gene");
   const [symbolSelection, setSymbolSelection] = useState("human-marker-symbol");
   const [geneIds, setGeneIds] = useState<string>(undefined);
+  const [file, setFile] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const downloadButtonIsBusy =
@@ -209,15 +210,29 @@ const BatchQueryPage = () => {
     queryKey: ["batch-query", geneIdArray],
     queryFn: () => {
       const headers = new Headers();
-      headers.append("Content-Type", "application/json");
       headers.append("Accept", "application/json");
+      if (geneIdArray.length > 0) {
+        headers.append("Content-Type", "application/json");
+      }
+      let body;
+      if (!!file) {
+        const data = new FormData();
+        data.append("file", file);
+        body = data;
+      } else {
+        body = JSON.stringify({ mgi_ids: geneIdArray });
+      }
+
       return fetch("http://localhost:8020/proxy/query", {
         method: "POST",
-        body: JSON.stringify({ mgi_ids: geneIdArray }),
+        body,
         headers,
       }).then((res) => res.json());
     },
-    enabled: geneIdArray.length > 0 && !!formSubmitted && !downloadButtonIsBusy,
+    enabled:
+      (geneIdArray.length > 0 || !!file) &&
+      !!formSubmitted &&
+      !downloadButtonIsBusy,
     select: (data: Array<BatchQueryItem>) => {
       const results = {};
       const resultsByGene = groupBy(data, "id");
@@ -416,59 +431,41 @@ const BatchQueryPage = () => {
               </Col>
             </Row>
           </Form>
-          <Form className="mt-4">
-            <Form.Group className="mb-3">
-              <Form.Label>
-                <strong>List of ID's</strong>
-              </Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder={mapPlaceholders[selectedKey]}
-                onChange={(e) => setGeneIds(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-          <h3 className="mt-4">Customized output</h3>
-          <Form>
-            <fieldset disabled>
-              <Row>
-                <div className="mb-2 mt-2">
-                  <strong>{mapLabels[selectedKey]} attributes</strong>
-                </div>
-                {attributes.map((field) => (
-                  <Col key={field.value} xs="3">
-                    <Form.Check
-                      type="checkbox"
-                      id={`${selectedKey}-${field.value}`}
-                      label={field.label}
-                      defaultChecked={field.defaultOn}
-                    />
-                  </Col>
-                ))}
-              </Row>
-            </fieldset>
-          </Form>
-          <div className="mb-2 mt-2">
-            <strong>Additional annotations to {mapLabels[selectedKey]}</strong>
-          </div>
-          <Form>
-            <fieldset disabled>
-              <Row>
-                {additionalAttributes.map((field) => (
-                  <Col key={field.value} xs="3">
-                    <Form.Check
-                      type="checkbox"
-                      id={`${selectedKey}-${field.value}`}
-                      label={field.label}
-                      defaultChecked={field.defaultOn}
-                    />
-                  </Col>
-                ))}
-              </Row>
-            </fieldset>
-          </Form>
-          <div>
+          <Tabs className="mt-4">
+            <Tab eventKey="paste-your-list" title="Paste your list">
+              <Form className="mt-3">
+                <Form.Group>
+                  <Form.Label>
+                    <strong>List of ID's</strong>
+                  </Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder={mapPlaceholders[selectedKey]}
+                    onChange={(e) => setGeneIds(e.target.value)}
+                  />
+                </Form.Group>
+              </Form>
+            </Tab>
+            <Tab eventKey="upload-your-list" title="Upload your list from file">
+              <Form className="mt-3">
+                <Form.Group controlId="formFile" className="mb-3">
+                  <Form.Label>
+                    Supports new line separated identifier list. Please DO NOT
+                    submit a mix of identifiers from different datatypes.
+                  </Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept="text/plain"
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setFile(e.currentTarget.files[0])
+                    }
+                  />
+                </Form.Group>
+              </Form>
+            </Tab>
+          </Tabs>
+          <div className="mt-4">
             <button
               onClick={() => setFormSubmitted(true)}
               className="btn impc-primary-button"
