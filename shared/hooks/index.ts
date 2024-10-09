@@ -1,6 +1,9 @@
 export { useBodyWeightQuery } from "./bodyweight.query";
 export { useGeneAssociationsQuery } from "./gene-associations.query";
-export { useSignificantPhenotypesQuery } from "./significant-phenotypes.query";
+export {
+  useSignificantPhenotypesQuery,
+  processGenePhenotypeHitsResponse,
+} from "./significant-phenotypes.query";
 export { useViabilityQuery } from "./viability.query";
 export { useGeneExpressionQuery } from "./gene-expression.query";
 export { useGeneExternalLinksQuery } from "./gene-external-links.query";
@@ -18,4 +21,7 @@ export { useUnidimensionalDataQuery } from "./unidimensional-data.query";
 export { useQueryFlags } from "./query-flags";
 export { usePleiotropyQuery } from "./pleiotropy.query";
 export { useRerender } from "./rerender";
-export { useGeneOrderQuery } from "./gene-order.query";
+export {
+  useGeneOrderQuery,
+  processGeneOrderResponse,
+} from "./gene-order.query";
