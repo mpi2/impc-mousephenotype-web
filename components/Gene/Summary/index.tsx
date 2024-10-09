@@ -39,8 +39,8 @@ const CollectionItem = ({
 type SummaryProps = {
   gene: GeneSummary;
   numOfAlleles: number;
-}
-const Summary = ({ gene, numOfAlleles}: SummaryProps) => {
+};
+const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   const SYNONYMS_COUNT = 2;
 
   const joined = [
@@ -64,7 +64,7 @@ const Summary = ({ gene, numOfAlleles}: SummaryProps) => {
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
-    <Card style={{ padding: '2rem 2rem 0 2rem' }}>
+    <Card id="summary" style={{ padding: "2rem 2rem 0 2rem" }}>
       <div className={styles.headingCont}>
         <h1 className="mt-2 mb-3">
           <strong>
