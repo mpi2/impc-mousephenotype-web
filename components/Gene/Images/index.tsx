@@ -11,6 +11,7 @@ import { fetchAPI } from "@/api-service";
 import { GeneImage } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { SectionHeader } from "@/components";
+import { CSSProperties } from "react";
 
 interface ImageProps {
   parameterName: string;
@@ -51,12 +52,17 @@ const Image = ({
     url = `https://www.mousephenotype.org/embryoviewer/?mgi=${pid}`;
   }
 
+  const cardImageStyles: CSSProperties = {};
+  if (!isSpecialFormat) {
+    cardImageStyles.backgroundImage = `url(${image})`;
+  }
+
   return (
     <Link href={url}>
       <div className={styles.card}>
         <div
           className={styles.cardImage}
-          style={{ backgroundImage: `url(${isSpecialFormat ? null : image})` }}
+          style={cardImageStyles}
           data-testid="image"
         >
           <div className={styles.cardImageOverlay}>
