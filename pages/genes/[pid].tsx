@@ -97,6 +97,7 @@ const GenePage = (props: GenePageProps) => {
               <Order
                 allelesStudied={allelesStudied}
                 allelesStudiedLoading={allelesStudiedLoading}
+                orderDataFromServer={orderDataFromServer}
               />
             </Container>
           </AllelesStudiedContext.Provider>

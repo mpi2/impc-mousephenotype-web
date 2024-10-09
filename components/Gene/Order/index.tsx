@@ -14,22 +14,30 @@ import Skeleton from "react-loading-skeleton";
 import { AlleleSymbol, SectionHeader } from "@/components";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 import { useGeneOrderQuery } from "@/hooks";
+import { GeneOrder } from "@/models/gene";
+
+type OrderProps = {
+  allelesStudied: Array<string>;
+  allelesStudiedLoading: boolean;
+  orderDataFromServer: Array<GeneOrder>;
+};
 
 const Order = ({
   allelesStudied,
   allelesStudiedLoading,
-}: {
-  allelesStudied: Array<string>;
-  allelesStudiedLoading: boolean;
-}) => {
+  orderDataFromServer,
+}: OrderProps) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const { setNumOfAlleles } = useContext(NumAllelesContext);
   const {
-    isLoading,
+    isFetching,
     isError,
     data: filtered,
-  } = useGeneOrderQuery(router.query.pid as string, router.isReady);
+  } = useGeneOrderQuery(
+    router.query.pid as string,
+    router.isReady && orderDataFromServer?.length === 0
+  );
 
   const getProductURL = (allele: string, product: string) => {
     const anchorObjs = {
@@ -40,11 +48,13 @@ const Order = ({
     return `/alleles/${router.query.pid}/${allele}#${anchorObjs[product]}`;
   };
 
+  const orderData = orderDataFromServer || filtered;
+
   useEffect(() => {
-    if (filtered) {
-      setSorted(_.orderBy(filtered, "alleleSymbol", "asc"));
+    if (orderData) {
+      setSorted(_.orderBy(orderData, "alleleSymbol", "asc"));
     }
-  }, [filtered]);
+  }, [orderData]);
 
   useEffect(() => {
     if (sorted?.length) {
@@ -63,7 +73,7 @@ const Order = ({
     }
   }, [allelesStudied]);
 
-  if (isLoading) {
+  if (isFetching) {
     return (
       <Card id="order">
         <SectionHeader
