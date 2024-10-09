@@ -1,20 +1,40 @@
 import Head from "next/head";
 import { Breadcrumb, Col, Container, Row, Image, Table } from "react-bootstrap";
-import { Card, LoadingProgressBar, Search, PaginationControls, ChordDiagram, PieChart } from "@/components";
+import {
+  Card,
+  LoadingProgressBar,
+  Search,
+  PaginationControls,
+  ChordDiagram,
+  PieChart,
+} from "@/components";
 import data from "../../mocks/data/landing-pages/idg.json";
-import { useMemo, useRef, useState, useImperativeHandle, forwardRef } from "react";
+import {
+  useMemo,
+  useRef,
+  useState,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 import { Bar } from "react-chartjs-2";
-import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from "chart.js";
+import {
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  Title,
+  Tooltip,
+} from "chart.js";
 import Link from "next/link";
 import classNames from "classnames";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 import NonSSR from "@/hoc/nonSSR";
 import { usePagination } from "@/hooks";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
-
 
 ChartJS.register(
   CategoryScale,
@@ -36,7 +56,7 @@ type FamilyDataTableProps = {
 
 type AccordionTableHandle = {
   toggleVisibility: () => void;
-}
+};
 type AccordionTableProps = {
   type: string;
   geneList: Array<Gene>;
@@ -67,57 +87,72 @@ const getLinksToGenePage = (gene: Gene) => {
     products.push("Phenotype data");
   }
   if (products.length === 0) {
-    return '-';
+    return "-";
   }
-  return products.map(value => {
+  return products.map((value) => {
     const href = value === "Phenotype data" ? url + "#data" : url + "#order";
     return (
       <>
-        <Link className="link primary" style={{ padding: 0, backgroundColor: 'initial' }} href={href}>
+        <Link
+          className="link primary"
+          style={{ padding: 0, backgroundColor: "initial" }}
+          href={href}
+        >
           {value}
         </Link>
-        <br/>
+        <br />
       </>
-    )
+    );
   });
-}
+};
 
 const FamilyDataTable = (props: FamilyDataTableProps) => {
   const { data } = props;
   return (
-    <Table bordered striped style={{ maxWidth: '30%' }}>
+    <Table bordered striped style={{ maxWidth: "30%" }}>
       <tbody>
-      <tr>
-        <td><b>IMPC/IDG genes</b></td>
-        <td>{data.genesCount}</td>
-      </tr>
-      <tr>
-        <td><b>ES Cells produced</b></td>
-        <td>{data.esCellsProduced}</td>
-      </tr>
-      <tr>
-        <td><b>Mice produced</b></td>
-        <td>{data.miceProduced}</td>
-      </tr>
-      <tr>
-        <td><b>Phenotypes</b></td>
-        <td>{data.phenotypeCount}</td>
-      </tr>
+        <tr>
+          <td>
+            <b>IMPC/IDG genes</b>
+          </td>
+          <td>{data.genesCount}</td>
+        </tr>
+        <tr>
+          <td>
+            <b>ES Cells produced</b>
+          </td>
+          <td>{data.esCellsProduced}</td>
+        </tr>
+        <tr>
+          <td>
+            <b>Mice produced</b>
+          </td>
+          <td>{data.miceProduced}</td>
+        </tr>
+        <tr>
+          <td>
+            <b>Phenotypes</b>
+          </td>
+          <td>{data.phenotypeCount}</td>
+        </tr>
       </tbody>
     </Table>
-  )
+  );
 };
 
 const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
   const [query, setQuery] = useState("");
-  const filteredData = useMemo(() => geneList.filter(
-    ({
-       mgi_accession_id,
-       idg_family,
-       marker_symbol,
-     }) =>
-      (!query || `${mgi_accession_id} ${idg_family} ${marker_symbol}`.toLowerCase().includes(query.toLowerCase()))
-  ), [query, geneList]);
+  const filteredData = useMemo(
+    () =>
+      geneList.filter(
+        ({ mgi_accession_id, idg_family, marker_symbol }) =>
+          !query ||
+          `${mgi_accession_id} ${idg_family} ${marker_symbol}`
+            .toLowerCase()
+            .includes(query.toLowerCase())
+      ),
+    [query, geneList]
+  );
 
   const {
     paginatedData,
@@ -125,18 +160,20 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
     pageSize,
     totalPages,
     setActivePage,
-    setPageSize
+    setPageSize,
   } = usePagination<Gene>(filteredData);
 
   const getCellStyle = (phenotypeName: string, gene: Gene) => {
-    const isSignificant = gene.significant_top_level_mp_terms?.includes(phenotypeName) || false;
-    const isNotSignificant = gene.not_significant_top_level_mp_terms?.includes(phenotypeName) || false;
+    const isSignificant =
+      gene.significant_top_level_mp_terms?.includes(phenotypeName) || false;
+    const isNotSignificant =
+      gene.not_significant_top_level_mp_terms?.includes(phenotypeName) || false;
 
     return classNames(styles.dataCell, {
       [styles.significant]: isSignificant,
       [styles.notSignificant]: isNotSignificant,
       [styles.noData]: !isSignificant && !isNotSignificant,
-    })
+    });
   };
 
   return (
@@ -148,9 +185,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
             name="pageSize"
             className="form-select"
             value={pageSize}
-            onChange={(e) =>
-              setPageSize(Number.parseInt(e.target.value, 10))
-            }
+            onChange={(e) => setPageSize(Number.parseInt(e.target.value, 10))}
           >
             <option value={10}>10</option>
             <option value={25}>25</option>
@@ -176,46 +211,46 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
             <th>Gene</th>
             <th>Family</th>
             <th>Availability</th>
-            {data.heatmapTopLevelPhenotypes.map(phenotype => (
+            {data.heatmapTopLevelPhenotypes.map((phenotype) => (
               <th key={phenotype.id}>
                 <span className={styles.verticalHeader}>
-                  <Link className="primary link" href={`/phenotypes/${phenotype.id}`}>
+                  <Link
+                    className="primary link"
+                    href={`/phenotypes/${phenotype.id}`}
+                  >
                     {phenotype.name}
                   </Link>
                 </span>
               </th>
             ))}
-        </tr>
+          </tr>
         </thead>
-        {paginatedData.map(gene => (
+        {paginatedData.map((gene) => (
           <tr>
             <td className={styles.geneCell}>
               <Link
                 href={`/genes/${gene.mgi_accession_id}`}
                 className="primary link"
-                style={{backgroundColor: 'initial', padding: 0}}
+                style={{ backgroundColor: "initial", padding: 0 }}
               >
                 {gene.marker_symbol}
               </Link>
-              <br/>
-              {gene.human_gene_symbol || '-'}
+              <br />
+              {gene.human_gene_symbol || "-"}
             </td>
-            <td>
-              {gene.idg_family}
-            </td>
-            <td>
-              {getLinksToGenePage(gene)}
-            </td>
-            {data.heatmapTopLevelPhenotypes.map(phenotype => (
-              <td className={getCellStyle(phenotype.name, gene)}>
-              </td>
+            <td>{gene.idg_family}</td>
+            <td>{getLinksToGenePage(gene)}</td>
+            {data.heatmapTopLevelPhenotypes.map((phenotype) => (
+              <td className={getCellStyle(phenotype.name, gene)}></td>
             ))}
           </tr>
         ))}
         {paginatedData.length === 0 && !!query && (
           <tr>
             <td colSpan={29}>
-              <h4 style={{ backgroundColor: 'initial' }}>No matching records found</h4>
+              <h4 style={{ backgroundColor: "initial" }}>
+                No matching records found
+              </h4>
             </td>
           </tr>
         )}
@@ -231,59 +266,65 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
   );
 };
 
-const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>((
-  { type, geneList },
-  ref
-) => {
-  const [ visibility, setVisibility ] = useState(false);
-  const filteredList: Array<Gene> = geneList.filter(gene => gene.idg_family === type);
+const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>(
+  ({ type, geneList }, ref) => {
+    const [visibility, setVisibility] = useState(false);
+    const filteredList: Array<Gene> = geneList.filter(
+      (gene) => gene.idg_family === type
+    );
 
-  useImperativeHandle(ref, () => ({
-    toggleVisibility() {
-      setVisibility(prevState => !prevState);
-    }
-  }));
+    useImperativeHandle(ref, () => ({
+      toggleVisibility() {
+        setVisibility((prevState) => !prevState);
+      },
+    }));
 
-  return (
-    visibility ? (
+    return visibility ? (
       <Table bordered striped>
         <thead>
           <tr>
-          <th>Mouse Genes</th>
-          <th>Human Genes</th>
-          <th>Data available</th>
-        </tr>
+            <th>Mouse Genes</th>
+            <th>Human Genes</th>
+            <th>Data available</th>
+          </tr>
         </thead>
         <tbody>
-          {filteredList.map(gene => (
+          {filteredList.map((gene) => (
             <tr key={gene.mgi_accession_id}>
               <td>
-                <Link className="link primary" href={`/genes/${gene.mgi_accession_id}`}>{gene.marker_symbol}</Link>
+                <Link
+                  className="link primary"
+                  href={`/genes/${gene.mgi_accession_id}`}
+                >
+                  {gene.marker_symbol}
+                </Link>
                 &nbsp;({gene.mgi_accession_id})
               </td>
               <td>
-                <a className="link primary" href={`https://pharos.nih.gov/targets?q=${gene.human_gene_symbol}`}>
+                <a
+                  className="link primary"
+                  href={`https://pharos.nih.gov/targets?q=${gene.human_gene_symbol}`}
+                >
                   {gene.human_gene_symbol}&nbsp;
                   <FontAwesomeIcon icon={faExternalLinkAlt}></FontAwesomeIcon>
                 </a>
               </td>
-              <td>
-                {getLinksToGenePage(gene)}
-              </td>
+              <td>{getLinksToGenePage(gene)}</td>
             </tr>
           ))}
         </tbody>
       </Table>
-    ) : null
-  );
-});
+    ) : null;
+  }
+);
 
 const IDGPage = () => {
   const { data: geneList, isFetching } = useQuery<Array<Gene>>({
     queryKey: ["landing-pages", "idg"],
     queryFn: () => fetchLandingPageData("idg_landing"),
     placeholderData: [],
-    select: (data) => data.sort((g1, g2) => g1.marker_symbol.localeCompare(g2.marker_symbol)),
+    select: (data) =>
+      data.sort((g1, g2) => g1.marker_symbol.localeCompare(g2.marker_symbol)),
   });
 
   const ionChannelsTableRef = useRef<AccordionTableHandle>(null);
@@ -299,34 +340,39 @@ const IDGPage = () => {
       },
       title: {
         display: true,
-        text: 'IDG genes IMPC production status'
-      }
+        text: "IDG genes IMPC production status",
+      },
     },
     interaction: {
-      mode: 'index' as const
-    }
+      mode: "index" as const,
+    },
   };
 
-  const idgGenesProductionStatusData = useMemo(() => ({
-    labels: geneProductionStatusData.map(status => status.label),
-    datasets: [{
-      label: '',
-      data: geneProductionStatusData.map(s => s.value),
-      backgroundColor: 'rgb(247, 157, 70)'
-    }],
-  }), [geneProductionStatusData]);
+  const idgGenesProductionStatusData = useMemo(
+    () => ({
+      labels: geneProductionStatusData.map((status) => status.label),
+      datasets: [
+        {
+          label: "",
+          data: geneProductionStatusData.map((s) => s.value),
+          backgroundColor: "rgb(247, 157, 70)",
+        },
+      ],
+    }),
+    [geneProductionStatusData]
+  );
 
   return (
     <>
       <Head>
         <title>IDG page | International Mouse Phenotyping Consortium</title>
       </Head>
-      <Search/>
+      <Search />
       <Container className="page">
         <Card>
           <div className="subheading">
             <Breadcrumb>
-            <Breadcrumb.Item active>Home</Breadcrumb.Item>
+              <Breadcrumb.Item active>Home</Breadcrumb.Item>
               <Breadcrumb.Item active>IMPC data collections</Breadcrumb.Item>
               <Breadcrumb.Item active>IDG</Breadcrumb.Item>
             </Breadcrumb>
@@ -338,17 +384,33 @@ const IDGPage = () => {
             <Row>
               <Col xs={9}>
                 <p>
-                  <a className="primary link" href="https://commonfund.nih.gov/idg/index">IDG</a>
-                  is an NIH Common Fund project focused on collecting, integrating and making available biological
-                  data on 278 human genes from three key druggable protein families that have been identified
-                  as potential therapeutic targets: non-olfactory G-protein coupled receptors (GPCRs), ion channels,
-                  and protein kinases. The <a className="primary link" href="https://www.mousephenotype.org/about-impc/">IMPC
-                  consortium</a> is creating knockout mouse strains for the IDG project to
+                  <a
+                    className="primary link"
+                    href="https://commonfund.nih.gov/idg/index"
+                  >
+                    IDG
+                  </a>
+                  is an NIH Common Fund project focused on collecting,
+                  integrating and making available biological data on 278 human
+                  genes from three key druggable protein families that have been
+                  identified as potential therapeutic targets: non-olfactory
+                  G-protein coupled receptors (GPCRs), ion channels, and protein
+                  kinases. The{" "}
+                  <a
+                    className="primary link"
+                    href="https://www.mousephenotype.org/about-impc/"
+                  >
+                    IMPC consortium
+                  </a>{" "}
+                  is creating knockout mouse strains for the IDG project to
                   better understand the function of these proteins.
                 </p>
               </Col>
               <Col xs={3}>
-                <Image style={{ maxWidth: '100%' }} src="/images/landing-pages/idgLogo.png"/>
+                <Image
+                  style={{ maxWidth: "100%" }}
+                  src="/data/images/landing-pages/idgLogo.png"
+                />
               </Col>
             </Row>
           </Container>
@@ -359,30 +421,49 @@ const IDGPage = () => {
               <h2>IMPC data representation for IDG genes</h2>
               <p>
                 IDG human genes are mapped to mouse orthologs using&nbsp;
-                <a className="primary link" href="https://www.genenames.org/tools/hcop/">HCOP</a>.
-                The <a className="primary link" href="//www.mousephenotype.org/about-impc/">IMPC consortium</a>&nbsp;is
-                using different&nbsp;
-                <a className="primary link" href="https://mousephenotype.org/help/#howdoesimpcwork">complementary
-                  targeting strategies</a>
-                &nbsp;to produce Knockout strains.
-                Mice are produced and submitted to standardised phenotyping pipelines.
-                Currently 63.7 % of mouse IDG gene have data representation in IMPC, the bar charts and heatmap below
-                capture the IMPC data representation at different levels.
-                The percentage might increase as we get more data and this page will reflect the change.
+                <a
+                  className="primary link"
+                  href="https://www.genenames.org/tools/hcop/"
+                >
+                  HCOP
+                </a>
+                . The{" "}
+                <a
+                  className="primary link"
+                  href="//www.mousephenotype.org/about-impc/"
+                >
+                  IMPC consortium
+                </a>
+                &nbsp;is using different&nbsp;
+                <a
+                  className="primary link"
+                  href="https://mousephenotype.org/help/#howdoesimpcwork"
+                >
+                  complementary targeting strategies
+                </a>
+                &nbsp;to produce Knockout strains. Mice are produced and
+                submitted to standardised phenotyping pipelines. Currently 63.7
+                % of mouse IDG gene have data representation in IMPC, the bar
+                charts and heatmap below capture the IMPC data representation at
+                different levels. The percentage might increase as we get more
+                data and this page will reflect the change.
               </p>
             </Col>
             <Col xs={6}>
-              <div style={{ position: "relative", height: '300px' }}>
+              <div style={{ position: "relative", height: "300px" }}>
                 <PieChart
                   title="IDG genes IMPC data status"
                   data={data.orthologPieData}
-                  chartColors={['rgb(247, 157, 70)', 'rgb(194, 194, 194)']}
+                  chartColors={["rgb(247, 157, 70)", "rgb(194, 194, 194)"]}
                 />
               </div>
             </Col>
             <Col xs={6}>
-              <div style={{ position: "relative", height: '300px' }}>
-                <Bar options={idgGenesProductionStatusOptions} data={idgGenesProductionStatusData} />
+              <div style={{ position: "relative", height: "300px" }}>
+                <Bar
+                  options={idgGenesProductionStatusOptions}
+                  data={idgGenesProductionStatusData}
+                />
               </div>
             </Col>
           </Row>
@@ -390,51 +471,57 @@ const IDGPage = () => {
         <Card>
           <h3>IMPC IDG data Heat Map</h3>
           <p>
-            The heat map indicates the detailed IDG gene data representation in IMPC, from product availability to phenotypes.
-            Phenotypes are grouped by biological systems.
+            The heat map indicates the detailed IDG gene data representation in
+            IMPC, from product availability to phenotypes. Phenotypes are
+            grouped by biological systems.
           </p>
           <table className="mb-4">
             <tbody>
-            <tr>
-              <td>
-                <div className={styles.significant}>&nbsp;</div>
-                <div className="table_legend_key">Significant</div>
-              </td>
-              <td>
-                <div className={styles.notSignificant}>&nbsp;</div>
-                <div className="table_legend_key">Not Significant</div>
-              </td>
-              <td>
-                <div className={styles.noData}>&nbsp;</div>
-                <div className="table_legend_key">No data</div>
-              </td>
-            </tr>
+              <tr>
+                <td>
+                  <div className={styles.significant}>&nbsp;</div>
+                  <div className="table_legend_key">Significant</div>
+                </td>
+                <td>
+                  <div className={styles.notSignificant}>&nbsp;</div>
+                  <div className="table_legend_key">Not Significant</div>
+                </td>
+                <td>
+                  <div className={styles.noData}>&nbsp;</div>
+                  <div className="table_legend_key">No data</div>
+                </td>
+              </tr>
             </tbody>
           </table>
           {isFetching ? (
-            <div className="mt-4" style={{display: 'flex', justifyContent: 'center'}}>
-              <LoadingProgressBar/>
+            <div
+              className="mt-4"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <LoadingProgressBar />
             </div>
           ) : (
-            <HeatMap geneList={geneList}/>
+            <HeatMap geneList={geneList} />
           )}
         </Card>
         <Card>
           <h2>Phenotype Associations</h2>
           <p>
-            The following chord diagrams represent the various biological systems phenotype associations for IDG genes
-            categorized both in all and in each family group. The line thickness is correlated with the strength of the
-            association.
-            Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be
-            downloaded using the download icon.
+            The following chord diagrams represent the various biological
+            systems phenotype associations for IDG genes categorized both in all
+            and in each family group. The line thickness is correlated with the
+            strength of the association. Clicking on chosen phenotype(s) on the
+            diagram allow to select common genes. Corresponding gene lists can
+            be downloaded using the download icon.
           </p>
         </Card>
         <Card>
           <h3>All families</h3>
           <p>
-            <b>{data.allFamiliesChordData.totalcount}</b> genes have phenotypes in more than one biological system.
-            The chord diagram below shows the pleiotropy between these genes.
-            <br/>
+            <b>{data.allFamiliesChordData.totalcount}</b> genes have phenotypes
+            in more than one biological system. The chord diagram below shows
+            the pleiotropy between these genes.
+            <br />
             <a
               className="link primary"
               href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true"
@@ -453,16 +540,22 @@ const IDGPage = () => {
           <FamilyDataTable data={data.ionChannelChordData} />
           <button
             className="btn impc-primary-button mb-3"
-            style={{ width: 'fit-content' }}
+            style={{ width: "fit-content" }}
             onClick={() => ionChannelsTableRef.current?.toggleVisibility()}
           >
-            View all {data.ionChannelChordData.genesCount} IMPC/IDG Ion Channel genes
+            View all {data.ionChannelChordData.genesCount} IMPC/IDG Ion Channel
+            genes
           </button>
-          <AccordionTable type="IonChannel" geneList={geneList} ref={ionChannelsTableRef} />
+          <AccordionTable
+            type="IonChannel"
+            geneList={geneList}
+            ref={ionChannelsTableRef}
+          />
           <p>
-            <b>{data.ionChannelChordData.totalcount}</b> genes have phenotypes in more than one biological system.
-            The chord diagram below shows the pleiotropy between these genes.
-            <br/>
+            <b>{data.ionChannelChordData.totalcount}</b> genes have phenotypes
+            in more than one biological system. The chord diagram below shows
+            the pleiotropy between these genes.
+            <br />
             <a
               className="link primary"
               href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
@@ -478,19 +571,20 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>GPCRs</h3>
-          <FamilyDataTable data={data.GPCRChordData}/>
+          <FamilyDataTable data={data.GPCRChordData} />
           <button
             className="btn impc-primary-button mb-3"
-            style={{width: 'fit-content'}}
+            style={{ width: "fit-content" }}
             onClick={() => gpcrTableRef.current?.toggleVisibility()}
           >
             View all {data.GPCRChordData.genesCount} IMPC/IDG GPCR genes
           </button>
           <AccordionTable type="GPCR" geneList={geneList} ref={gpcrTableRef} />
           <p>
-            <b>{data.GPCRChordData.totalcount}</b> genes have phenotypes in more than one biological system.
-            The chord diagram below shows the pleiotropy between these genes.
-            <br/>
+            <b>{data.GPCRChordData.totalcount}</b> genes have phenotypes in more
+            than one biological system. The chord diagram below shows the
+            pleiotropy between these genes.
+            <br />
             <a
               className="link primary"
               href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
@@ -506,19 +600,24 @@ const IDGPage = () => {
         </Card>
         <Card>
           <h3>Kinases</h3>
-          <FamilyDataTable data={data.kinaseChordData}/>
+          <FamilyDataTable data={data.kinaseChordData} />
           <button
             className="btn impc-primary-button mb-3"
-            style={{width: 'fit-content'}}
+            style={{ width: "fit-content" }}
             onClick={() => kinasesTableRef.current?.toggleVisibility()}
           >
             View all {data.kinaseChordData.genesCount} IMPC/IDG Kinase genes
           </button>
-          <AccordionTable type="Kinase" geneList={geneList} ref={kinasesTableRef} />
+          <AccordionTable
+            type="Kinase"
+            geneList={geneList}
+            ref={kinasesTableRef}
+          />
           <p>
-            <b>{data.kinaseChordData.totalcount}</b> genes have phenotypes in more than one biological system.
-            The chord diagram below shows the pleiotropy between these genes.
-            <br/>
+            <b>{data.kinaseChordData.totalcount}</b> genes have phenotypes in
+            more than one biological system. The chord diagram below shows the
+            pleiotropy between these genes.
+            <br />
             <a
               className="link primary"
               href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
@@ -534,7 +633,7 @@ const IDGPage = () => {
         </Card>
       </Container>
     </>
-  )
+  );
 };
 
 export default IDGPage;
