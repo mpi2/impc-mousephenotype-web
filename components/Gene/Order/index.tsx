@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { orderBy } from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useContext, useEffect, useState } from "react";
@@ -28,7 +28,9 @@ const Order = ({
   orderDataFromServer,
 }: OrderProps) => {
   const router = useRouter();
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>(
+    orderBy(orderDataFromServer, "alleleSymbol", "asc")
+  );
   const { setNumOfAlleles } = useContext(NumAllelesContext);
   const {
     isFetching,
@@ -52,7 +54,7 @@ const Order = ({
 
   useEffect(() => {
     if (orderData) {
-      setSorted(_.orderBy(orderData, "alleleSymbol", "asc"));
+      setSorted(orderBy(orderData, "alleleSymbol", "asc"));
     }
   }, [orderData]);
 
@@ -123,7 +125,7 @@ const Order = ({
             <>
               <SortableTable
                 doSort={(sort) => {
-                  setSorted(_.orderBy(sorted, sort[0], sort[1]));
+                  setSorted(orderBy(sorted, sort[0], sort[1]));
                 }}
                 defaultSort={["alleleSymbol", "asc"]}
                 headers={[
