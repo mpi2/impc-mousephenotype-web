@@ -9,6 +9,7 @@ import {
   Histopathology,
   Expressions,
   Order,
+  Phenotypes,
 } from "@/components/Gene";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -27,10 +28,6 @@ import { GeneOrder, GenePhenotypeHits, GeneSummary } from "@/models/gene";
 import { fetchAPIFromServer } from "@/api-service";
 
 const HumanDiseases = dynamic(() => import("@/components/Gene/HumanDiseases"), {
-  ssr: false,
-});
-
-const Phenotypes = dynamic(() => import("@/components/Gene/Phenotypes"), {
   ssr: false,
 });
 
