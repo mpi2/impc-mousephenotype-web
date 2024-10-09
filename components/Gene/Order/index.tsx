@@ -8,39 +8,37 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
-import { GeneOrder } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { NumAllelesContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 import { AlleleSymbol, SectionHeader } from "@/components";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
+import { useGeneOrderQuery } from "@/hooks";
 
-const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Array<string>, allelesStudiedLoading: boolean }) => {
+const Order = ({
+  allelesStudied,
+  allelesStudiedLoading,
+}: {
+  allelesStudied: Array<string>;
+  allelesStudiedLoading: boolean;
+}) => {
   const router = useRouter();
   const [sorted, setSorted] = useState<any[]>(null);
   const { setNumOfAlleles } = useContext(NumAllelesContext);
-  const { isLoading, isError, data: filtered } = useQuery({
-    queryKey: ['genes', router.query.pid, 'order'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/order`),
-    select: data => data.filter(
-      d =>
-        d.productTypes.length > 1 ||
-        !["intermediate_vector", "crispr"].includes(d.productTypes[0])
-    ).map(d => ({...d, phenotyped: null})) as Array<GeneOrder>,
-    enabled: router.isReady
-  });
-
+  const {
+    isLoading,
+    isError,
+    data: filtered,
+  } = useGeneOrderQuery(router.query.pid as string, router.isReady);
 
   const getProductURL = (allele: string, product: string) => {
     const anchorObjs = {
-      "mouse": "mice",
+      mouse: "mice",
       "es cell": "esCell",
       "targeting vector": "targetingVector",
     };
     return `/alleles/${router.query.pid}/${allele}#${anchorObjs[product]}`;
-  }
+  };
 
   useEffect(() => {
     if (filtered) {
@@ -56,10 +54,14 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Arra
 
   useEffect(() => {
     if (allelesStudied.length > 0) {
-      setSorted(sorted?.map(geneOrder => ({ ...geneOrder, phenotyped: allelesStudied.includes(geneOrder.alleleSymbol) })))
+      setSorted(
+        sorted?.map((geneOrder) => ({
+          ...geneOrder,
+          phenotyped: allelesStudied.includes(geneOrder.alleleSymbol),
+        }))
+      );
     }
   }, [allelesStudied]);
-
 
   if (isLoading) {
     return (
@@ -139,33 +141,50 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Arra
                     <tr key={index}>
                       <td>
                         <strong className={styles.link}>
-                          <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
+                          <AlleleSymbol
+                            symbol={d.alleleSymbol}
+                            withLabel={false}
+                          />
                         </strong>
                       </td>
                       <td>{d.alleleDescription}</td>
                       <td>
                         {allelesStudiedLoading ? (
-                          <Skeleton inline/>
+                          <Skeleton inline />
                         ) : allelesStudied.includes(d.alleleSymbol) ? (
                           <Link
                             href="#data"
                             className="primary link"
-                            onClick={() => orderPhenotypedSelectionChannel.emit('onAlleleSelected', d.alleleSymbol)}
+                            onClick={() =>
+                              orderPhenotypedSelectionChannel.emit(
+                                "onAlleleSelected",
+                                d.alleleSymbol
+                              )
+                            }
                           >
                             Yes
                           </Link>
-                        ) : <>No</>}
+                        ) : (
+                          <>No</>
+                        )}
                       </td>
                       <td className="text-capitalize">
                         {d.productTypes
-                          .filter((x) => !(x === "intermediate_vector" || x === "crispr"))
+                          .filter(
+                            (x) =>
+                              !(x === "intermediate_vector" || x === "crispr")
+                          )
                           .map((product: string) => product.replace(/_/g, " "))
                           .map((product: string, index: number) => (
                             <Fragment key={`${product}-${index}`}>
-                              <Link key={index} href={getProductURL(allele[1], product)} className="primary link">
+                              <Link
+                                key={index}
+                                href={getProductURL(allele[1], product)}
+                                className="primary link"
+                              >
                                 {product}
                               </Link>
-                              <br/>
+                              <br />
                             </Fragment>
                           )) || "None"}
                       </td>
@@ -181,4 +200,8 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: { allelesStudied: Arra
   );
 };
 
-export default sectionWithErrorBoundary(Order, 'Order Mouse and ES Cells', 'order');
+export default sectionWithErrorBoundary(
+  Order,
+  "Order Mouse and ES Cells",
+  "order"
+);

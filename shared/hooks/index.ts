@@ -18,3 +18,4 @@ export { useUnidimensionalDataQuery } from "./unidimensional-data.query";
 export { useQueryFlags } from "./query-flags";
 export { usePleiotropyQuery } from "./pleiotropy.query";
 export { useRerender } from "./rerender";
+export { useGeneOrderQuery } from "./gene-order.query";
