@@ -20,13 +20,23 @@ const CookieConsentBanner = () => {
 
   const toggleVisible = () => setBannerVisible((prevState) => !prevState);
 
+  const updateCookies = () => {
+    toggleVisible();
+    const optInValues = [
+      ...document.querySelectorAll("#cookieValues input:checked"),
+    ].map((el: any) => el.value);
+    cookieCutter.set("ccbcookie", optInValues.join(","), {
+      expires: 4320000000,
+      path: "/",
+    });
+  };
+
   useEffect(() => {
     if (bannerRef.current) {
       setBannerHeight(-bannerRef.current.clientHeight);
     }
   }, [bannerRef]);
 
-  console.log(`${bannerHeight}px`);
   return (
     bannerPresent && (
       <div
@@ -58,7 +68,7 @@ const CookieConsentBanner = () => {
               Learn more
             </Link>
           </span>
-          <form>
+          <form id="cookieValues">
             <label className={styles.checkbox}>
               <input type="checkbox" value="Essential" checked disabled />
               &nbsp;Essential
@@ -80,6 +90,7 @@ const CookieConsentBanner = () => {
               id="saveCookies"
               className={classNames("btn", styles.button, styles.allow)}
               aria-label="allow cookies"
+              onClick={updateCookies}
             >
               Save preferences
             </button>
