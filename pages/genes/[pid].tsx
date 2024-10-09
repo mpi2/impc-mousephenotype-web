@@ -87,7 +87,10 @@ const GenePage = (props: GenePageProps) => {
             <Search />
             <Container className="page">
               <Summary {...{ gene: geneData, numOfAlleles }} />
-              <Phenotypes gene={geneData} />
+              <Phenotypes
+                gene={geneData}
+                sigPhenotypesFromServer={sigPhenotypesFromServer}
+              />
               <Expressions />
               <Images gene={geneData} />
               <HumanDiseases gene={geneData} />

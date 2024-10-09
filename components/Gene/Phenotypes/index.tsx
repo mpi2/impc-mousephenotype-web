@@ -4,7 +4,7 @@ import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { GeneSummary } from "@/models/gene";
+import { GenePhenotypeHits, GeneSummary } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
 import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
@@ -62,7 +62,12 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
   return <div className="mt-3">{children}</div>;
 };
 
-const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
+type PhenotypesProps = {
+  gene: GeneSummary;
+  sigPhenotypesFromServer: Array<GenePhenotypeHits>;
+};
+
+const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
   const router = useRouter();
   const [tabKey, setTabKey] = useState("significantPhenotypes");
   const [allDataCount, setAllDataCount] = useState<number>(0);
@@ -82,7 +87,12 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     isPhenotypeFetching,
     error: sigPhenotypeError,
     fetchStatus: sigPhenotypeFetchStatus,
-  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, router.isReady);
+  } = useSignificantPhenotypesQuery(
+    gene.mgiGeneAccessionId,
+    router.isReady && sigPhenotypesFromServer?.length === 0
+  );
+
+  const sigPhenotypes = sigPhenotypesFromServer || phenotypeData;
 
   useEffect(() => {
     const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
@@ -123,12 +133,12 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
     }
   }, [router]);
 
-  const hasDataRelatedToPWG = phenotypeData?.some(
+  const hasDataRelatedToPWG = sigPhenotypes?.some(
     (item) => item.projectName === "PWG"
   );
 
   const hasOneAlleleOrMore =
-    uniq(phenotypeData?.map((p) => p.alleleSymbol)).length > 1;
+    uniq(sigPhenotypes?.map((p) => p.alleleSymbol)).length > 1;
 
   return (
     <Card id="data" style={{ position: "relative" }}>
@@ -140,12 +150,12 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
       <Tabs activeKey={tabKey} onSelect={(key) => setTabKey(key)}>
         <Tab
           eventKey="significantPhenotypes"
-          title={`Significant Phenotypes (${phenotypeData?.length || 0})`}
+          title={`Significant Phenotypes (${sigPhenotypes?.length || 0})`}
         >
           <TabContent
             isFetching={isPhenotypeFetching}
             isError={isPhenotypeError}
-            data={phenotypeData}
+            data={sigPhenotypes}
             errorMessage={
               <span>
                 No phenotype data available for <i>{gene.geneSymbol}</i>.
@@ -153,7 +163,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
             }
           >
             <SignificantPhenotypes
-              phenotypeData={phenotypeData}
+              phenotypeData={sigPhenotypes}
               hasDataRelatedToPWG={hasDataRelatedToPWG}
             />
           </TabContent>
@@ -195,7 +205,7 @@ const Phenotypes = ({ gene }: { gene: GeneSummary }) => {
               }
             >
               <AllelePhenotypeDiagram
-                phenotypeData={phenotypeData}
+                phenotypeData={sigPhenotypes}
                 isPhenotypeLoading={isPhenotypeLoading}
                 isPhenotypeError={isPhenotypeError}
               />
