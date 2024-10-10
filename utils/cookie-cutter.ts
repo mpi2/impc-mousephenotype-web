@@ -15,7 +15,7 @@ const cookieCutter = function (doc) {
     },
     set: function (key, value, opts) {
       if (!opts) opts = {};
-      var s = escape(key) + "=" + escape(value);
+      var s = key + "=" + value;
       if (opts.expires) s += "; expires=" + opts.expires;
       if (opts.path) s += "; path=" + escape(opts.path);
       if (opts.domain) s += "; domain=" + escape(opts.domain);
