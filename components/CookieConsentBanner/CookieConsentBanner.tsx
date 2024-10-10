@@ -12,15 +12,12 @@ const gtag: Gtag.Gtag = function () {
   (window as any).dataLayer.push(arguments);
 };
 
-// Follows GA basic consent mode
-// https://developers.google.com/tag-platform/security/guides/consent?consentmode=basic
-
 const CookieConsentBanner = () => {
   const bannerRef = useRef<HTMLDivElement>(null);
   const [bannerVisible, setBannerVisible] = useState<boolean>(false);
   const [bannerHeight, setBannerHeight] = useState<number>(-110);
 
-  const loadGtagJsScript = () => {
+  const loadGtagJsScript = (aIP: boolean) => {
     gtag("consent", "update", {
       ad_user_data: "granted",
       ad_personalization: "granted",
@@ -32,6 +29,16 @@ const CookieConsentBanner = () => {
     gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`;
     const firstScript = document.getElementsByTagName("script")[0];
     firstScript.parentNode.insertBefore(gtagScript, firstScript);
+
+    (window as any).ga =
+      (window as any).ga ||
+      function () {
+        ((window as any).ga.q = (window as any).ga.q || []).push(arguments);
+      };
+    (window as any).ga.l = +new Date();
+
+    (window as any).ga("set", "anonymizeIp", aIP);
+    (window as any).ga("send", "pageview");
   };
 
   const toggleBannerVisible = () => setBannerVisible((prevState) => !prevState);
@@ -45,9 +52,7 @@ const CookieConsentBanner = () => {
       expires: 4320000000,
       path: "/",
     });
-    if (optInValues.includes("Analytics")) {
-      loadGtagJsScript();
-    }
+    loadGtagJsScript(!optInValues.includes("Analytics"));
   };
 
   useEffect(() => {
@@ -65,12 +70,12 @@ const CookieConsentBanner = () => {
     });
     gtag("js", new Date());
     gtag("config", GOOGLE_TAG_ID);
-    if (cookie && cookie.includes("Analytics")) {
+    if (cookie?.includes("Analytics")) {
       (
         document.querySelector("#analyticsCheckbox") as HTMLInputElement
       ).checked = true;
-      loadGtagJsScript();
     }
+    loadGtagJsScript(!cookie?.includes("Analytics"));
   }, []);
 
   useEffect(() => {
