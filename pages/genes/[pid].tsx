@@ -9,6 +9,7 @@ import {
   Histopathology,
   Expressions,
   Order,
+  Phenotypes,
 } from "@/components/Gene";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -18,24 +19,30 @@ import {
   GeneContext,
   NumAllelesContext,
 } from "@/contexts";
-import { useGeneSummaryQuery } from "@/hooks";
-import { GeneSummary } from "@/models/gene";
+import {
+  processGeneOrderResponse,
+  processGenePhenotypeHitsResponse,
+  useGeneSummaryQuery,
+} from "@/hooks";
+import { GeneOrder, GenePhenotypeHits, GeneSummary } from "@/models/gene";
 import { fetchAPIFromServer } from "@/api-service";
 
 const HumanDiseases = dynamic(() => import("@/components/Gene/HumanDiseases"), {
   ssr: false,
 });
 
-const Phenotypes = dynamic(() => import("@/components/Gene/Phenotypes"), {
-  ssr: false,
-});
-
 type GenePageProps = {
   gene: GeneSummary;
+  significantPhenotypes: Array<GenePhenotypeHits>;
+  orderData: Array<GeneOrder>;
 };
 
-const Gene = (props: GenePageProps) => {
-  const { gene: geneFromServer } = props;
+const GenePage = (props: GenePageProps) => {
+  const {
+    gene: geneFromServer,
+    significantPhenotypes: sigPhenotypesFromServer,
+    orderData: orderDataFromServer,
+  } = props;
   const router = useRouter();
   const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
@@ -77,7 +84,10 @@ const Gene = (props: GenePageProps) => {
             <Search />
             <Container className="page">
               <Summary {...{ gene: geneData, numOfAlleles }} />
-              <Phenotypes gene={geneData} />
+              <Phenotypes
+                gene={geneData}
+                sigPhenotypesFromServer={sigPhenotypesFromServer}
+              />
               <Expressions />
               <Images gene={geneData} />
               <HumanDiseases gene={geneData} />
@@ -87,6 +97,7 @@ const Gene = (props: GenePageProps) => {
               <Order
                 allelesStudied={allelesStudied}
                 allelesStudiedLoading={allelesStudiedLoading}
+                orderDataFromServer={orderDataFromServer}
               />
             </Container>
           </AllelesStudiedContext.Provider>
@@ -101,12 +112,28 @@ export async function getServerSideProps(context) {
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     return { notFound: true };
   }
-  const data = await fetchAPIFromServer(
-    `/api/v1/genes/${mgiGeneAccessionId}/summary`
-  );
+  const results = await Promise.allSettled([
+    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/summary`),
+    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`),
+    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/order`),
+  ]);
+
+  const geneData = results[0].status === "fulfilled" ? results[0].value : {};
+  const sigGeneData =
+    results[1].status === "fulfilled"
+      ? processGenePhenotypeHitsResponse(results[1].value)
+      : [];
+  const orderGeneData =
+    results[2].status === "fulfilled"
+      ? processGeneOrderResponse(results[2].value)
+      : [];
   return {
-    props: { gene: data },
+    props: {
+      gene: geneData,
+      significantPhenotypes: sigGeneData,
+      orderData: orderGeneData,
+    },
   };
 }
 
-export default Gene;
+export default GenePage;

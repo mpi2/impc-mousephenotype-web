@@ -1,0 +1,57 @@
+.banner {
+  font-family: Helvetica, Calibri, Arial, sans-serif;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.5em;
+  transition: bottom 1s;
+  position: fixed;
+  bottom: -105px;
+  right: 0;
+  left: 0;
+  z-index: 99;
+  &.show {
+    bottom: 0 !important;
+  }
+  .body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-height: 75px;
+    background: #fff;
+    padding: 1em 1.8em;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.15);
+  }
+  .checkbox {
+    position: relative;
+    display: inline-block;
+    padding-right: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .options {
+    display: flex;
+    align-items: center;
+  }
+  .button {
+    margin: 0 10px 0 0;
+    transition: all 100ms ease-in-out;
+    &.allow {
+      background: #ed7b25;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 3px;
+    }
+  }
+  .iconWrapper {
+    display: inline-block;
+    margin-left: 5%;
+    background: #ed7b25;
+    padding: 10px 10px 5px;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+    cursor: pointer;
+  }
+}
