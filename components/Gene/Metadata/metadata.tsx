@@ -8,8 +8,8 @@ type MetadataProps = {
 };
 const GeneMetadata = ({ geneSummary }: MetadataProps) => {
   const { geneSymbol, geneName, mgiGeneAccessionId } = geneSummary;
-  const title = `${geneSymbol} mouse gene | International Mouse Phenotyping Consortium`;
-  const description = `Phenotype data for mouse gene ${geneSymbol}. Discover ${geneSymbol} significant phenotypes, expression, images, histopathology and more. Data for gene ${geneSymbol} is all freely available for download.`;
+  const title = `${geneSymbol} | ${geneName} mouse gene | IMPC`;
+  const description = `Discover mouse gene ${geneSymbol} significant phenotypes, expression, images, histopathology and more. Data for gene ${geneSymbol} is freely available to download.`;
   const genePageURL = `${WEBSITE_URL}/data/genes/${mgiGeneAccessionId}`;
   const jsonLd = {
     "@type": "Dataset",
