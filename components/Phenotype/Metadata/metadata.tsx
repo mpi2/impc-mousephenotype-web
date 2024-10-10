@@ -8,14 +8,14 @@ type MetadataProps = {
 };
 const PhenotypeMetadata = ({ phenotypeSummary }: MetadataProps) => {
   const { phenotypeId, phenotypeName } = phenotypeSummary;
-  const title = `${phenotypeId} (${phenotypeName}) phenotype | International Mouse Phenotyping Consortium`;
-  const description = `Associations data for mouse phenotype ${phenotypeName}. Discover ${phenotypeName} significant genes, associations, procedures and more. Data for phenotype ${phenotypeName} is all freely available for download.`;
+  const title = `${phenotypeId} (${phenotypeName}) phenotype | IMPC`;
+  const description = `Discover ${phenotypeName} significant genes, associations, procedures and more. Data for phenotype ${phenotypeName} is all freely available for download.`;
   const phenotypePageURL = `${WEBSITE_URL}/data/phenotypes/${phenotypeId}`;
   const jsonLd = {
     "@type": "Dataset",
     "@context": "http://schema.org",
     name: `${phenotypeName} mouse phenotype`,
-    description: `Associations data for mouse phenotype ${phenotypeName}. Discover ${phenotypeName} significant genes, associations, procedures and more. Data for phenotype ${phenotypeName} is all freely available for download.`,
+    description: `Discover ${phenotypeName} significant genes, associations, procedures and more. Data for phenotype ${phenotypeName} is all freely available for download.`,
     creator: [
       {
         "@type": "Organization",
