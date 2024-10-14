@@ -55,7 +55,7 @@ const EmbryoDataAvailabilityGrid = ({
             "OPT E9.5",
             "MicroCT E14.5-E15.5",
             "MicroCT E18.5",
-            "UMASS Pre E9.5",
+            "Mager Lab Pre E9.5",
             "Vignettes",
           ].map((p) => ({
             x: p,
@@ -63,7 +63,7 @@ const EmbryoDataAvailabilityGrid = ({
               ? d.hasAutomatedAnalysis
                 ? 2
                 : 1
-              : p === "UMASS Pre E9.5" && d.isUmassGene
+              : p === "Mager Lab Pre E9.5" && d.isUmassGene
               ? 1
               : p === "Vignettes" && d.hasVignettes
               ? 1
