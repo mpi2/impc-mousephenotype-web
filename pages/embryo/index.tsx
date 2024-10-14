@@ -7,7 +7,6 @@ import {
   Modal,
   Button,
 } from "react-bootstrap";
-
 import Search from "@/components/Search";
 import Card from "@/components/Card";
 import styles from "./styles.module.scss";
@@ -18,16 +17,10 @@ import dynamic from "next/dynamic";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import Head from "next/head";
 import { capitalize } from "lodash";
-import {
-  useEmbryoLandingQuery,
-  usePleiotropyQuery,
-  useQueryFlags,
-} from "@/hooks";
+import { useEmbryoLandingQuery } from "@/hooks";
 import { useMemo, useState } from "react";
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import Link from "next/link";
-import { ParentSize } from "@visx/responsive";
-import { PleiotropyChart } from "@/components";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"),
