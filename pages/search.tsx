@@ -13,6 +13,7 @@ const SearchResults = () => {
 
   const renderResults = () => {
     switch (type) {
+      case "phenotype":
       case "pheno":
         return <PhenotypeResults query={query} />;
       case "allele":
@@ -27,22 +28,24 @@ const SearchResults = () => {
     "@type": "Dataset",
     "@id": "http://www.mousephenotype.org",
     name: "Mouse phenotype data of knockout mouse lines for protein-coding genes",
-    description: "The International Mouse Phenotyping Consortium (IMPC) is systematically generating mouse knockouts for every protein-coding gene in the mouse genome (approx. 20,000 genes) and carries out high-throughput phenotyping of each line in order to determine gene function by determining the biological systems affected in the absence of the gene. This dataset contains all the genotype-to-phenotype associations, protocols, parameters and measurements currently generated using this approach.",
+    description:
+      "The International Mouse Phenotyping Consortium (IMPC) is systematically generating mouse knockouts for every protein-coding gene in the mouse genome (approx. 20,000 genes) and carries out high-throughput phenotyping of each line in order to determine gene function by determining the biological systems affected in the absence of the gene. This dataset contains all the genotype-to-phenotype associations, protocols, parameters and measurements currently generated using this approach.",
     url: "http://www.mousephenotype.org",
     keywords: "gene, phenotype, mouse, mammalian, human disease",
     identifier: "DR21.0",
     creator: {
       "@type": "Organization",
-      name: "International Mouse Phenotyping Consortium"
+      name: "International Mouse Phenotyping Consortium",
     },
     provider: {
       "@type": "Organization",
-      name: "International Mouse Phenotyping Consortium"
+      name: "International Mouse Phenotyping Consortium",
     },
     version: "21.0",
     dateCreated: "2014",
     dateModified: "2018",
-    citation: "Dickinson et al. 2016. High-throughput discovery of novel developmental phenotypes. Nature 537, 508â€“514. PMID: 27626380. doi:10.1038/nature19356",
+    citation:
+      "Dickinson et al. 2016. High-throughput discovery of novel developmental phenotypes. Nature 537, 508â€“514. PMID: 27626380. doi:10.1038/nature19356",
     temporalCoverage: "2014..",
     sameAs: "http://www.mousephenotype.org",
     distribution: [
@@ -50,16 +53,16 @@ const SearchResults = () => {
         "@type": "DataDownload",
         name: "MySQL database dump",
         fileFormat: "application/octet-stream",
-        contentURL: "http://ftp.ebi.ac.uk/pub/databases/impc/release-21.0/"
+        contentURL: "http://ftp.ebi.ac.uk/pub/databases/impc/release-21.0/",
       },
       {
         "@type": "DataDownload",
         name: "Binary Solr Schemas",
         fileFormat: "application/octet-stream",
-        contentURL: "http://ftp.ebi.ac.uk/pub/databases/impc/release-21.0/"
-      }
+        contentURL: "http://ftp.ebi.ac.uk/pub/databases/impc/release-21.0/",
+      },
     ],
-  }
+  };
 
   return (
     <>
@@ -68,9 +71,9 @@ const SearchResults = () => {
       </Head>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Search updateURL onChange={setQuery}/>
+      <Search updateURL onChange={setQuery} />
       {renderResults()}
     </>
   );
