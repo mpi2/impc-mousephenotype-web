@@ -5,12 +5,14 @@ import {
   faReddit,
   faTwitter,
   faYoutube,
-  faLinkedin
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row } from "react-bootstrap";
 import footerCss from "./styles.module.scss";
 import Link from "next/link";
+
+export const DR_VERSION = process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
 
 const Footer = () => {
   return (
@@ -160,7 +162,8 @@ const Footer = () => {
             <h6>
               <Link href="/release">
                 <small>
-                  Access Data Release <span id="data-no">20.1</span> Data
+                  Access Data Release <span id="data-no">{DR_VERSION}</span>
+                  &nbsp;Data
                 </small>
               </Link>
             </h6>

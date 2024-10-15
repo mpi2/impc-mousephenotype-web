@@ -169,11 +169,6 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
       [width, xMax]
     );
 
-    const significantStartPercentage = useMemo(() => {
-      const [_, maxVal = 4] = brushXScale.domain();
-      return `${Math.trunc((4 / maxVal) * 100)}%`;
-    }, [brushXScale]);
-
     const yScale = useMemo(
       () =>
         scaleLinear<number>({
@@ -335,9 +330,8 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
               <LinearGradient
                 id="brushGradient"
                 from="#000"
-                to="#C9510C"
+                to="#000"
                 vertical={false}
-                toOffset={significantStartPercentage}
               />
               <AreaClosed
                 data={data}
