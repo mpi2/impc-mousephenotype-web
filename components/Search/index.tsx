@@ -12,6 +12,7 @@ export type Tab = {
   link: string;
   external?: boolean;
   type?: string;
+  altType?: string;
 };
 
 const Search = ({
@@ -47,6 +48,7 @@ const Search = ({
       name: "Phenotypes",
       link: "/search?type=pheno",
       type: "pheno",
+      altType: "phenotype",
     },
     {
       name: "Help, news, blog",
@@ -56,7 +58,9 @@ const Search = ({
     },
   ];
   const getSelectedIndex = (typeInput) =>
-    tabs.findIndex((tab) => tab.type === typeInput);
+    tabs.findIndex(
+      (tab) => tab.type === typeInput || tab.altType === typeInput
+    );
   const [tabIndex, setTabIndex] = useState(getSelectedIndex(defaultType));
   useEffect(() => {
     let tabType = type;
