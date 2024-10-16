@@ -4,10 +4,6 @@ import styles from "@/components/Gene/Phenotypes/AllData/styles.module.scss";
 import _ from "lodash";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
-import { faInfo } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Overlay, Tooltip } from "react-bootstrap";
-import { useRef, useState } from "react";
 import { formatPValue } from "@/utils";
 import { useQueryFlags } from "@/hooks";
 
@@ -81,7 +77,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     }
   }
   return (
-    <Link href={url}>
+    <Link href={url} title={`view supporting data for ${parameterName}`}>
       <span className="link primary small float-right">Supporting data</span>
     </Link>
   );

@@ -43,10 +43,7 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
   );
 });
 
-const PhenoGridEl = ({
-  rowDiseasePhenotypes,
-  data,
-}) => {
+const PhenoGridEl = ({ rowDiseasePhenotypes, data }) => {
   const {
     query: { pid },
   } = useRouter();
@@ -64,7 +61,7 @@ const PhenoGridEl = ({
 
   // Process individual disease phenotypes and mouse phenotypes
   const diseasePhenotypes = processPhenotypes(rowDiseasePhenotypes.join());
- 
+
   // Process mouse phenotypes for each object in data
   // Filter out results with a pd score of 0
   const objectSets = data
@@ -72,7 +69,7 @@ const PhenoGridEl = ({
     .map(({ modelPhenotypes, modelDescription, phenodigmScore }) => {
       const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
       // send HTML encode the id to get correct labels in tooltip. Downside: the labels on top are not readable.
-      const id= htmlEncode(modelDescription);
+      const id = htmlEncode(modelDescription);
       const label = `${phenodigmScore.toFixed(2)}-${id}`;
       const phenotypes = mousePhenotypes.map((item) => item.id);
 
@@ -89,15 +86,21 @@ const PhenoGridEl = ({
   useEffect(() => {
     // Display of the iframe seems good at 5 phenotypes so we set that as a baseline
     const phenotypeDisplayThreshold = 5;
-    if (diseasePhenotypes.length > phenotypeDisplayThreshold && iframeHeight <= 400) {
-      const heightIncreaseFactor = diseasePhenotypes.length / phenotypeDisplayThreshold * 100
+    if (
+      diseasePhenotypes.length > phenotypeDisplayThreshold &&
+      iframeHeight <= 400
+    ) {
+      const heightIncreaseFactor =
+        (diseasePhenotypes.length / phenotypeDisplayThreshold) * 100;
       setiFrameHeight((prevHeight) => prevHeight + heightIncreaseFactor);
       // Reset height to initial size if below threshold
-    } else if (diseasePhenotypes.length <= phenotypeDisplayThreshold && iframeHeight !== 400) {
+    } else if (
+      diseasePhenotypes.length <= phenotypeDisplayThreshold &&
+      iframeHeight !== 400
+    ) {
       setiFrameHeight(400);
     }
   }, [diseasePhenotypes.length]);
-
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -215,6 +218,7 @@ const Row = ({
             href={`http://omim.org/entry/${rowData.diseaseId.split(":")[1]}`}
             target="_blank"
             className="link primary"
+            title={`view ${rowData.diseaseTerm} details in OMIM website`}
           >
             {rowData.diseaseId}{" "}
             <FontAwesomeIcon
@@ -287,12 +291,16 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
   const associatedData = sorted
     ? sorted.filter((x) => x.associationCurated === true)
     : [];
-  const uniqueAssociatedDiseases = [...new Set(associatedData.map((x) => x.diseaseId))];
+  const uniqueAssociatedDiseases = [
+    ...new Set(associatedData.map((x) => x.diseaseId)),
+  ];
 
   const predictedData = sorted
     ? sorted.filter((x) => x.associationCurated !== true)
     : [];
-  const uniquePredictedDiseases = [...new Set(predictedData.map((x) => x.diseaseId))]; 
+  const uniquePredictedDiseases = [
+    ...new Set(predictedData.map((x) => x.diseaseId)),
+  ];
 
   const selectedData = (
     tab === "associated" ? associatedData : predictedData

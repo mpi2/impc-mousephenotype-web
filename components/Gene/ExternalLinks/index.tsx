@@ -53,6 +53,7 @@ const ExternalLinks = () => {
                     className="primary link"
                     href={link.href}
                     target="_blank"
+                    title={`visit ${provider.providerName} website for more details of ${link.label}`}
                   >
                     {link.label}
                     <FontAwesomeIcon
