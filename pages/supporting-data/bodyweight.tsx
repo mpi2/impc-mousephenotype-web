@@ -16,11 +16,12 @@ const BodyWeightChartPage = () => {
   const [selectedKey, setSelectedKey] = useState("");
   const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
 
-  const { bodyWeightData, isBodyWeightLoading, isFetching } =
+  const { bodyWeightData, isBodyWeightLoading, isFetching, isError } =
     useBodyWeightQuery(mgiGeneAccessionId as string, router.isReady);
+
   const activeDataset = !!selectedKey
     ? getDatasetByKey(bodyWeightData, selectedKey)
-    : bodyWeightData[0];
+    : bodyWeightData?.[0];
 
   return (
     <>
@@ -53,11 +54,13 @@ const BodyWeightChartPage = () => {
               &nbsp; Loading data
             </span>
           )}
-          <BodyWeightDataComparison
-            data={bodyWeightData}
-            selectedKey={selectedKey}
-            onSelectParam={setSelectedKey}
-          />
+          {isError === false && (
+            <BodyWeightDataComparison
+              data={bodyWeightData}
+              selectedKey={selectedKey}
+              onSelectParam={setSelectedKey}
+            />
+          )}
         </Card>
       </Container>
       <div
