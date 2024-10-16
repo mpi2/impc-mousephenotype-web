@@ -18,7 +18,9 @@ import { DownloadData, SectionHeader } from "@/components";
 
 const ALLELES_COUNT = 2;
 const AllelesCell = ({ pub }: { pub: Publication }) => {
-  const alleles = pub.alleles.map(allele => formatAlleleSymbol(allele.alleleSymbol));
+  const alleles = pub.alleles.map((allele) =>
+    formatAlleleSymbol(allele.alleleSymbol)
+  );
   return (
     <>
       {alleles.slice(0, ALLELES_COUNT).map((symbol, index) => (
@@ -28,24 +30,28 @@ const AllelesCell = ({ pub }: { pub: Publication }) => {
           &nbsp;
         </i>
       ))}
-      <MoreItemsTooltip items={pub.alleles.map(a => a.alleleSymbol)} maxItems={ALLELES_COUNT}/>
+      <MoreItemsTooltip
+        items={pub.alleles.map((a) => a.alleleSymbol)}
+        maxItems={ALLELES_COUNT}
+      />
     </>
-  )
-}
+  );
+};
 
 const Publications = ({ gene }: { gene: any }) => {
   const router = useRouter();
   const [page, setPage] = useState(0);
   let totalItems = 0;
   const [sorted, setSorted] = useState<any[]>(null);
-  const {data, isLoading, isError} = useQuery({
-    queryKey: ['genes', router.query.pid, 'publication', page],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/publication?page=${page}`),
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["genes", router.query.pid, "publication", page],
+    queryFn: () =>
+      fetchAPI(`/api/v1/genes/${router.query.pid}/publication?page=${page}`),
     enabled: router.isReady,
-    select: response => {
+    select: (response) => {
       totalItems = response.totalElements;
       return response.content as Array<Publication>;
-    }
+    },
   });
 
   useEffect(() => {
@@ -56,7 +62,7 @@ const Publications = ({ gene }: { gene: any }) => {
 
   const getPubDate = (publication: Publication) => {
     return moment(publication.publicationDate).format("MM/YYYY");
-  }
+  };
 
   if (isLoading) {
     return (
@@ -80,7 +86,8 @@ const Publications = ({ gene }: { gene: any }) => {
           href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
         />
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for the <i>{gene.geneSymbol}</i> gene.
+          No publications found that use IMPC mice or data for the{" "}
+          <i>{gene.geneSymbol}</i> gene.
         </Alert>
       </Card>
     );
@@ -96,7 +103,8 @@ const Publications = ({ gene }: { gene: any }) => {
       <p>
         The table below lists publications which used either products generated
         by the IMPC or data produced by the phenotyping efforts of the IMPC.
-        These publications have also been associated to the <i>{gene.geneSymbol}</i> gene.
+        These publications have also been associated to the{" "}
+        <i>{gene.geneSymbol}</i> gene.
       </p>
       {!!sorted && sorted.length ? (
         <Pagination
@@ -107,10 +115,22 @@ const Publications = ({ gene }: { gene: any }) => {
               data={sorted}
               fileName={`${gene.geneSymbol}-related-publications`}
               fields={[
-                { key: 'title', label: 'Title' },
-                { key: 'journalTitle', label: 'Journal' },
-                { key: 'alleles', label: 'Allele(s)', getValueFn: item => item.alleles.map(({ alleleSymbol }) => alleleSymbol).join(',') },
-                { key: 'alleles', label: 'Pubmed link', getValueFn: item => `https://pubmed.ncbi.hlm.nih.gov/${item.pmId}` },
+                { key: "title", label: "Title" },
+                { key: "journalTitle", label: "Journal" },
+                {
+                  key: "alleles",
+                  label: "Allele(s)",
+                  getValueFn: (item) =>
+                    item.alleles
+                      .map(({ alleleSymbol }) => alleleSymbol)
+                      .join(","),
+                },
+                {
+                  key: "alleles",
+                  label: "Pubmed link",
+                  getValueFn: (item) =>
+                    `https://pubmed.ncbi.hlm.nih.gov/${item.pmId}`,
+                },
               ]}
             />
           }
@@ -149,7 +169,9 @@ const Publications = ({ gene }: { gene: any }) => {
                             icon={faExternalLinkAlt}
                           />
                         </a>
-                      ) : <strong>{p.title}</strong>}
+                      ) : (
+                        <strong>{p.title}</strong>
+                      )}
                     </td>
                     <td>
                       {p.journalTitle} ({getPubDate(p)})
@@ -162,6 +184,7 @@ const Publications = ({ gene }: { gene: any }) => {
                         href={`https://pubmed.ncbi.nlm.nih.gov/${p.pmId}`}
                         target="_blank"
                         className="link primary"
+                        title={`view more publication details in PubMed`}
                       >
                         {p.pmId}&nbsp;
                         <FontAwesomeIcon
@@ -179,11 +202,16 @@ const Publications = ({ gene }: { gene: any }) => {
         </Pagination>
       ) : (
         <Alert variant="primary">
-          No publications found that use IMPC mice or data for the <i>{gene.geneSymbol}</i> gene.
+          No publications found that use IMPC mice or data for the{" "}
+          <i>{gene.geneSymbol}</i> gene.
         </Alert>
       )}
     </Card>
   );
 };
 
-export default sectionWithErrorBoundary(Publications, 'IMPC related publications', 'publications');
+export default sectionWithErrorBoundary(
+  Publications,
+  "IMPC related publications",
+  "publications"
+);

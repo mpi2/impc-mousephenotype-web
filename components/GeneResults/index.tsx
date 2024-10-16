@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import { Alert, Col, Container, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
 import {
   faCheck,
   faShoppingCart,
@@ -143,7 +143,7 @@ const GeneResults = ({ query }: { query?: string }) => {
           <h1 style={{ marginBottom: 0 }}>
             <strong>Gene search results</strong>
           </h1>
-          {!!query && (
+          {!!query && !isLoading && (
             <p className="grey mb-0">
               <small>
                 Found {data?.length || 0} entries{" "}
@@ -156,7 +156,10 @@ const GeneResults = ({ query }: { query?: string }) => {
             </p>
           )}
           {isLoading ? (
-            <p className="grey mt-3 mb-3">Loading...</p>
+            <div className="grey mt-3 mb-3">
+              Loading&nbsp;
+              <Spinner animation="border" size="sm" />
+            </div>
           ) : (
             <Pagination data={data}>
               {(pageData) => {

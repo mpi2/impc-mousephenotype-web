@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
-import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
 import {
   ABR,
+  ChartNav,
   DataComparison,
   FlowCytometryImages,
   IPGTT,
@@ -13,9 +13,6 @@ import {
 import { Card, Search } from "@/components";
 import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
 import { Dataset } from "@/models";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Skeleton from "react-loading-skeleton";
 import Head from "next/head";
 import { getChartType } from "@/components/Data/Utils";
@@ -155,32 +152,11 @@ const Charts = () => {
       <Search />
       <Container className="page">
         <Card>
-          <div className={styles.subheading}>
-            <span className={`${styles.subheadingSection} primary`}>
-              <Link
-                href={`/genes/${mgiGeneAccessionId}`}
-                className="mb-3"
-                style={{
-                  textTransform: "none",
-                  fontWeight: "normal",
-                  letterSpacing: "normal",
-                  fontSize: "1.15rem",
-                }}
-              >
-                <FontAwesomeIcon icon={faArrowLeft} />
-                &nbsp; Go Back to{" "}
-                <i>
-                  {allSummaries?.[0]?.geneSymbol && fetchingInProcess ? (
-                    <Skeleton style={{ width: "50px" }} inline />
-                  ) : !!allSummaries?.[0]?.geneSymbol ? (
-                    <span>{allSummaries?.[0]?.geneSymbol}</span>
-                  ) : (
-                    <span style={{ fontStyle: "normal" }}>gene page</span>
-                  )}
-                </i>
-              </Link>
-            </span>
-          </div>
+          <ChartNav
+            mgiGeneAccessionId={mgiGeneAccessionId}
+            geneSymbol={allSummaries?.[0]?.geneSymbol}
+            isFetching={fetchingInProcess}
+          />
           {!datasetSummaries && !isFetching && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>

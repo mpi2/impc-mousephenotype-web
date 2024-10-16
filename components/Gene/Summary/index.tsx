@@ -25,6 +25,7 @@ const CollectionItem = ({
       href={link}
       className={`link ${styles.dataCollection}`}
       data-testid={name}
+      title={`view ${name}`}
     >
       <Check isChecked={hasData} />
       {name}
@@ -81,6 +82,7 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
             className="primary"
             href={`http://www.informatics.jax.org/marker/${gene.mgiGeneAccessionId}`}
             target="_blank"
+            title={`visit MGI site to view details for gene ${gene.geneSymbol}`}
           >
             {gene.mgiGeneAccessionId}
           </a>

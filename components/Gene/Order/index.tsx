@@ -193,6 +193,7 @@ const Order = ({
                                 key={index}
                                 href={getProductURL(allele[1], product)}
                                 className="primary link"
+                                title={`view ${product} details for gene ${allele[0]}, allele ${allele[1]} `}
                               >
                                 {product}
                               </Link>
