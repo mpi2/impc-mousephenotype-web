@@ -3,20 +3,19 @@ import { useRouter } from "next/router";
 import { useViabilityQuery } from "@/hooks";
 import { Card, Search } from "@/components";
 import { Alert, Container, Spinner } from "react-bootstrap";
-import styles from "@/pages/supporting-data/styles.module.scss";
 import Skeleton from "react-loading-skeleton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Viability, ViabilityDataComparison } from "@/components/Data";
-import SkeletonTable from "@/components/skeletons/table";
-import Link from "next/link";
+import {
+  ChartNav,
+  Viability,
+  ViabilityDataComparison,
+} from "@/components/Data";
 import { getDatasetByKey } from "@/utils";
 import Head from "next/head";
 
 const ViabilityChartPage = () => {
   const [selectedKey, setSelectedKey] = useState("");
   const router = useRouter();
-  const mgiGeneAccessionId = router.query.mgiGeneAccessionId;
+  const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
 
   const { viabilityData, isViabilityLoading } = useViabilityQuery(
     mgiGeneAccessionId as string,
@@ -37,28 +36,11 @@ const ViabilityChartPage = () => {
       <Search />
       <Container className="page">
         <Card>
-          <div className={styles.subheading}>
-            <span className={`${styles.subheadingSection} primary`}>
-              <Link
-                href={`/genes/${mgiGeneAccessionId}`}
-                className="mb-3"
-                style={{
-                  textTransform: "none",
-                  fontWeight: "normal",
-                  letterSpacing: "normal",
-                  fontSize: "1.15rem",
-                }}
-              >
-                <FontAwesomeIcon icon={faArrowLeft} />
-                &nbsp; Go Back to{" "}
-                <i>
-                  {activeDataset?.geneSymbol || (
-                    <Skeleton style={{ width: "50px" }} inline />
-                  )}
-                </i>
-              </Link>
-            </span>
-          </div>
+          <ChartNav
+            mgiGeneAccessionId={mgiGeneAccessionId}
+            geneSymbol={activeDataset?.geneSymbol}
+            isFetching={isViabilityLoading}
+          />
           {!viabilityData && !isViabilityLoading && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>
@@ -67,13 +49,13 @@ const ViabilityChartPage = () => {
           )}
           <h1 className="mb-4 mt-2">
             <strong className="text-capitalize">
-              Viability data for{" "}
+              Viability data for&nbsp;
               <i>
                 {viabilityData?.[0]?.["geneSymbol"] || (
                   <Skeleton width="50px" inline />
                 )}
-              </i>{" "}
-              gene
+              </i>
+              &nbsp;gene
             </strong>
           </h1>
           {!isViabilityLoading ? (
