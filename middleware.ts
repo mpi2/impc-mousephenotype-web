@@ -22,6 +22,7 @@ export function middleware(request: NextRequest) {
     path: request.nextUrl.pathname,
     params: request.nextUrl.search || null,
     ua: request.headers.get("user-agent") || null,
+    isPrefetch: hasNextJsMiddlewareHeader(headers),
   };
   if (!path.startsWith("/_next") && !isURLImage(path)) {
     logger.info(log);
