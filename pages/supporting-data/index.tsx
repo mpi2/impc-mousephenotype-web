@@ -134,7 +134,7 @@ const Charts = () => {
     hasFlowCytometryImages && flowCytometryImages.length ? (
       <FlowCytometryImages images={flowCytometryImages} />
     ) : null;
-  const Chart = getChartType(activeDataset, true, extraChildren);
+  const { Chart, chartType } = getChartType(activeDataset, true, extraChildren);
   const smallestPValue = useMemo(
     () => getSmallestPValue(allSummaries),
     [allSummaries]
