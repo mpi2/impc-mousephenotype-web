@@ -18,19 +18,19 @@ type IPGTTProps = {
 };
 
 const IPGTT = (props: IPGTTProps) => {
-  const { datasetSummaries, onNewSummariesFetched, activeDataset} = props;
-  const { datasetsAreLoading} = useRelatedParametersQuery(
+  const { datasetSummaries, onNewSummariesFetched, activeDataset } = props;
+  const { datasetsAreLoading } = useRelatedParametersQuery(
     datasetSummaries,
     parameterList,
     onNewSummariesFetched
   );
 
   useEffect(() => {
-    chartLoadingIndicatorChannel.emit('toggleIndicator', datasetsAreLoading);
+    chartLoadingIndicatorChannel.emit("toggleIndicator", datasetsAreLoading);
   }, [datasetsAreLoading]);
 
-  return getChartType(activeDataset);
-
+  const { Chart } = getChartType(activeDataset);
+  return Chart;
 };
 
 export default IPGTT;
