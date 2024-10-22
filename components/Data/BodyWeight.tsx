@@ -1,10 +1,4 @@
-import {
-  faDownload,
-  faExternalLinkAlt,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Col, Form, Row, Table } from "react-bootstrap";
+import { Col, Form, Row, Table } from "react-bootstrap";
 import Card from "@/components/Card";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import {
@@ -24,8 +18,6 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { BodyWeightLinePlot } from "./Plots/BodyWeightLinePlot";
-import DownloadData from "../DownloadData";
-import { getDownloadData } from "@/utils";
 
 ChartJS.register(
   CategoryScale,
