@@ -24,6 +24,7 @@ import { fetchLandingPageData } from "@/api-service";
 import { groupBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
 import Link from "next/link";
+import { orderBy } from "lodash";
 
 const listOfReleases = [
   "21.0",
@@ -251,8 +252,7 @@ const ReleaseNotesPage = (props: Props) => {
         return {
           label: centerData[0].center,
           data: labels.map((label) => {
-            const existingCount = centerData.find((d) => d.status === label);
-            return maybe(existingCount)
+            return maybe(centerData.find((d) => d.status === label))
               .map((status) => status.count)
               .getOrElse(0);
           }),
@@ -568,7 +568,16 @@ const ReleaseNotesPage = (props: Props) => {
           </h2>
           <SmartTable<SampleCounts>
             data={releaseMetadata.sampleCounts}
+            displayPaginationControls={false}
             defaultSort={["phenotypingCentre", "asc"]}
+            pagination={{
+              totalItems: releaseMetadata.sampleCounts.length,
+              onPageChange: () => {},
+              onPageSizeChange: () => {},
+              page: 0,
+              pageSize: releaseMetadata.sampleCounts.length,
+              sortInternally: true,
+            }}
             columns={[
               {
                 width: 1,
