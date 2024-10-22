@@ -1,9 +1,14 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState, ReactElement, CSSProperties, ReactNode } from "react";
-import styles from './styles.module.scss';
+import {
+  useEffect,
+  useState,
+  ReactElement,
+  CSSProperties,
+  ReactNode,
+} from "react";
+import styles from "./styles.module.scss";
 import classNames from "classnames";
-
 
 type Props<T> = {
   data: Array<T>;
@@ -14,18 +19,19 @@ type Props<T> = {
   page?: number;
   pageSize?: number;
   controlled?: boolean;
-  buttonsPlacement?: 'top' | 'bottom' | 'both'
-  additionalTopControls?: ReactElement | null,
-  additionalBottomControls?: ReactElement | null,
-  topControlsWrapperCSS?: CSSProperties,
-  bottomControlsWrapperCSS?: CSSProperties,
-  displayPageControls?: boolean,
+  buttonsPlacement?: "top" | "bottom" | "both";
+  additionalTopControls?: ReactElement | null;
+  additionalBottomControls?: ReactElement | null;
+  topControlsWrapperCSS?: CSSProperties;
+  bottomControlsWrapperCSS?: CSSProperties;
+  displayPageControls?: boolean;
+  displayPaginationControls?: boolean;
 };
 
 type NavButtonsProps = {
   shouldBeDisplayed: boolean;
-  placement: 'top' | 'bottom';
-  style?: CSSProperties,
+  placement: "top" | "bottom";
+  style?: CSSProperties;
 };
 
 const Pagination = <T extends unknown>(props: Props<T>) => {
@@ -38,20 +44,25 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     page = 0,
     pageSize,
     controlled = false,
-    buttonsPlacement = 'both',
+    buttonsPlacement = "both",
     additionalTopControls: AdditionalTopControls = null,
     additionalBottomControls: AdditionalBottomControls = null,
     topControlsWrapperCSS = {},
     bottomControlsWrapperCSS = {},
     displayPageControls = true,
+    displayPaginationControls = true,
   } = props;
 
   const [internalPage, setInternalPage] = useState(page);
   const [internalPageSize, setInternalPageSize] = useState(10);
   const [pageRange, setPageRange] = useState([1]);
 
-
-  const currentPage = controlled ? data : data?.slice(internalPageSize * internalPage, internalPageSize * (internalPage + 1)) || [];
+  const currentPage = controlled
+    ? data
+    : data?.slice(
+        internalPageSize * internalPage,
+        internalPageSize * (internalPage + 1)
+      ) || [];
   const noTotalItems = controlled ? totalItems : data?.length;
   let totalPages = Math.ceil(noTotalItems / internalPageSize) || 1;
   const updatePageRange = (page: number, totalPages: number) => {
@@ -65,13 +76,12 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
       }
     }
     const newPageRange = Array.from(
-      { length: rangeEnd - rangeStart + 1},
+      { length: rangeEnd - rangeStart + 1 },
       (_, i) => rangeStart + i
     );
     if (JSON.stringify(pageRange) !== JSON.stringify(newPageRange)) {
       setPageRange(newPageRange);
     }
-
   };
 
   const canGoBack = internalPage >= 1;
@@ -83,8 +93,11 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     }
   }, [data, internalPage, internalPageSize, totalPages]);
 
-
-  const NavButtons = ({ shouldBeDisplayed, placement, style }: NavButtonsProps) => {
+  const NavButtons = ({
+    shouldBeDisplayed,
+    placement,
+    style,
+  }: NavButtonsProps) => {
     if (shouldBeDisplayed) {
       return (
         <ul
@@ -97,7 +110,11 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             className="pagNavBtn nav-btn"
             data-testid={`${placement}-prev-page`}
           >
-            <FontAwesomeIcon icon={faArrowLeft} title="previous page button" titleId="prev-page-icon" />
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              title="previous page button"
+              titleId="prev-page-icon"
+            />
           </button>
           {pageRange[0] > 1 && (
             <>
@@ -106,7 +123,9 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
                 data-testid={`${placement}-first-page`}
               >
                 <button
-                  className={classNames("pagNavBtn", { active: internalPage === 0 })}
+                  className={classNames("pagNavBtn", {
+                    active: internalPage === 0,
+                  })}
                   aria-label="Previous"
                   onClick={() => updatePage(0)}
                   data-testid={`${placement}-first-page-btn`}
@@ -128,7 +147,9 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
               data-testid={`${placement}-page-${pageNumber}`}
             >
               <button
-                className={classNames("pagNavBtn", { active: internalPage === (pageNumber - 1) })}
+                className={classNames("pagNavBtn", {
+                  active: internalPage === pageNumber - 1,
+                })}
                 onClick={() => updatePage(pageNumber - 1)}
                 data-testid={`${placement}-page-${pageNumber}-btn`}
               >
@@ -143,10 +164,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
                   <span className="page-link">...</span>
                 </li>
               )}
-              <li
-                className="page-item"
-                data-testid={`${placement}-last-page`}
-              >
+              <li className="page-item" data-testid={`${placement}-last-page`}>
                 <button
                   className="pagNavBtn last-page"
                   aria-label="Previous"
@@ -164,7 +182,11 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             className="pagNavBtn nav-btn"
             data-testid={`${placement}-next-page`}
           >
-            <FontAwesomeIcon icon={faArrowRight} title="next page button" titleId="next-page-icon" />
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              title="next page button"
+              titleId="next-page-icon"
+            />
           </button>
         </ul>
       );
@@ -176,13 +198,13 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     if (onPageChange) {
       onPageChange(value);
     }
-  }
+  };
   const updatePageSize = (value: number) => {
     setInternalPageSize(value);
     if (onPageSizeChange) {
       onPageSizeChange(value);
     }
-  }
+  };
 
   useEffect(() => {
     // only set internal page as 0 if component is *uncontrolled*
@@ -198,40 +220,61 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     }
   }, [controlled, page, internalPage]);
 
-  const shouldDisplayTopButtons = (buttonsPlacement === 'top' || buttonsPlacement === 'both') && noTotalItems > 10;
-  const shouldDisplayBottomButtons = (buttonsPlacement === 'bottom' || buttonsPlacement === 'both') && noTotalItems > 10;
-  const shouldDisplayPageChangeControls = noTotalItems > 10 && displayPageControls;
+  const shouldDisplayTopButtons =
+    (buttonsPlacement === "top" || buttonsPlacement === "both") &&
+    noTotalItems > 10 &&
+    displayPaginationControls;
+  const shouldDisplayBottomButtons =
+    (buttonsPlacement === "bottom" || buttonsPlacement === "both") &&
+    noTotalItems > 10 &&
+    displayPaginationControls;
+  const shouldDisplayPageChangeControls =
+    noTotalItems > 10 && displayPageControls && displayPaginationControls;
 
   return (
     <>
       <div
-        className={`${styles.buttonsWrapper} ${styles.top} ${!!AdditionalTopControls ? styles.withControls : ''}`}
+        className={`${styles.buttonsWrapper} ${styles.top} ${
+          !!AdditionalTopControls ? styles.withControls : ""
+        }`}
         data-testid="top-controls-wrapper"
         style={topControlsWrapperCSS}
       >
-        { !!AdditionalTopControls && (
+        {!!AdditionalTopControls && (
           <div className={styles.additionalWrapper}>
-            { AdditionalTopControls }
+            {AdditionalTopControls}
           </div>
         )}
-        <NavButtons placement="top" shouldBeDisplayed={shouldDisplayTopButtons} />
+        <NavButtons
+          placement="top"
+          shouldBeDisplayed={shouldDisplayTopButtons}
+        />
       </div>
       {children(currentPage)}
-      <div className={`${styles.buttonsWrapper} ${!!AdditionalBottomControls ? styles.withControls : ''}`}>
+      <div
+        className={`${styles.buttonsWrapper} ${
+          !!AdditionalBottomControls ? styles.withControls : ""
+        }`}
+      >
         {!!AdditionalBottomControls && (
-          <div className={`${styles.additionalWrapper} ${styles.bottomControls}`}>
-            { AdditionalBottomControls }
+          <div
+            className={`${styles.additionalWrapper} ${styles.bottomControls}`}
+          >
+            {AdditionalBottomControls}
           </div>
         )}
         {shouldDisplayPageChangeControls && (
           <div className={styles.bottomPaginationControls}>
-            <div style={{display: 'flex', alignItems: 'center'}}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               Rows per page:&nbsp;
               <select
                 aria-label="rows per page selector"
                 onChange={(e) => {
                   const value = Number(e.target.value);
-                  const newPage = value > internalPageSize ? 0 : Math.round((internalPageSize / value) * internalPage);
+                  const newPage =
+                    value > internalPageSize
+                      ? 0
+                      : Math.round((internalPageSize / value) * internalPage);
                   updatePage(newPage);
                   updatePageSize(value);
                 }}
@@ -246,7 +289,10 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
             </div>
           </div>
         )}
-        <NavButtons placement="bottom" shouldBeDisplayed={shouldDisplayBottomButtons}/>
+        <NavButtons
+          placement="bottom"
+          shouldBeDisplayed={shouldDisplayBottomButtons}
+        />
       </div>
     </>
   );

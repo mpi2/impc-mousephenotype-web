@@ -6,7 +6,6 @@ const isURLImage = (path: string) => {
   return types.some((type) => path.endsWith(`.${type}`));
 };
 
-// WIP
 const hasNextJsMiddlewareHeader = (headers: Headers) => {
   return (
     headers.has("x-middleware-prefetch") &&
@@ -15,17 +14,20 @@ const hasNextJsMiddlewareHeader = (headers: Headers) => {
 };
 
 export function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname;
-  const headers = request.headers;
-  const log = {
-    method: request.method,
-    path: request.nextUrl.pathname,
-    params: request.nextUrl.search || null,
-    ua: request.headers.get("user-agent") || null,
-    isPrefetch: hasNextJsMiddlewareHeader(headers),
-  };
-  if (!path.startsWith("/_next") && !isURLImage(path)) {
-    logger.info(log);
+  const LOGGING_ENABLED = process.env.LOGGING_ENABLED === "true";
+  if (LOGGING_ENABLED) {
+    const path = request.nextUrl.pathname;
+    const headers = request.headers;
+    const log = {
+      method: request.method,
+      path: request.nextUrl.pathname,
+      params: request.nextUrl.search || null,
+      ua: request.headers.get("user-agent") || null,
+      isPrefetch: hasNextJsMiddlewareHeader(headers),
+    };
+    if (!path.startsWith("/_next") && !isURLImage(path)) {
+      logger.info(log);
+    }
   }
 
   return NextResponse.next();

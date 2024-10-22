@@ -1,7 +1,10 @@
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
-import { useMemo, useState } from "react";
+import {
+  faExternalLink,
+  faExternalLinkAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { useMemo } from "react";
 import Markdown from "react-markdown";
 import { NumberCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import {
@@ -20,6 +23,45 @@ import { Card, Search } from "@/components";
 import { fetchLandingPageData } from "@/api-service";
 import { groupBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
+import Link from "next/link";
+import { orderBy } from "lodash";
+
+const listOfReleases = [
+  "21.0",
+  "20.1",
+  "20.0",
+  "19.1",
+  "19.0",
+  "18.0",
+  "17.0",
+  "16.0",
+  "15.1",
+  "15.0",
+  "14.0",
+  "13.0",
+  "12.0",
+  "11.0",
+  "10.1",
+  "10.0",
+  "9.2",
+  "9.1",
+  "8.0",
+  "7.0",
+  "6.1",
+  "6.0",
+  "5.0",
+  "4.3",
+  "4.2",
+  "4.0",
+  "3.4",
+  "3.3",
+  "3.2",
+  "3.1",
+  "3.0",
+  "2.0",
+  "1.1",
+  "1.0",
+];
 
 ChartJS.register(
   CategoryScale,
@@ -124,7 +166,6 @@ const genotypingStatuses = [
 
 const ReleaseNotesPage = (props: Props) => {
   const { releaseMetadata } = props;
-  const [showAll, setShowAll] = useState(false);
 
   const formatDate = (date: string) => {
     const dateObj = new Date(date);
@@ -211,8 +252,7 @@ const ReleaseNotesPage = (props: Props) => {
         return {
           label: centerData[0].center,
           data: labels.map((label) => {
-            const existingCount = centerData.find((d) => d.status === label);
-            return maybe(existingCount)
+            return maybe(centerData.find((d) => d.status === label))
               .map((status) => status.count)
               .getOrElse(0);
           }),
@@ -528,7 +568,16 @@ const ReleaseNotesPage = (props: Props) => {
           </h2>
           <SmartTable<SampleCounts>
             data={releaseMetadata.sampleCounts}
+            displayPaginationControls={false}
             defaultSort={["phenotypingCentre", "asc"]}
+            pagination={{
+              totalItems: releaseMetadata.sampleCounts.length,
+              onPageChange: () => {},
+              onPageSizeChange: () => {},
+              page: 0,
+              pageSize: releaseMetadata.sampleCounts.length,
+              sortInternally: true,
+            }}
             columns={[
               {
                 width: 1,
@@ -646,135 +695,22 @@ const ReleaseNotesPage = (props: Props) => {
         <Card>
           <h2>Previous releases</h2>
           <ul>
-            <li>
-              <a href="/data/previous-releases/18.0">Release 18.0 notes</a>
-            </li>
-
-            <li>
-              <a href="/data/previous-releases/17.0">Release 17.0 notes</a>
-            </li>
-
-            <li>
-              <a href="/data/previous-releases/16.0">Release 16.0 notes</a>
-            </li>
-
-            <li>
-              <a href="/data/previous-releases/15.1">Release 15.1 notes</a>
-            </li>
-
-            <li>
-              <a href="/data/previous-releases/15.0">Release 15.0 notes</a>
-            </li>
-
-            {!showAll ? (
-              <Button
-                variant="outline-secondary"
-                className="mt-2"
-                onClick={() => {
-                  setShowAll(true);
-                }}
-              >
-                Show all releases
-              </Button>
-            ) : (
-              <>
-                <li>
-                  <a href="/data/previous-releases/14.0">Release 14.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/13.0">Release 13.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/12.0">Release 12.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/11.0">Release 11.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/10.1">Release 10.1 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/10.0">Release 10.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/9.2">Release 9.2 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/9.1">Release 9.1 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/8.0">Release 8.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/7.0">Release 7.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/6.1">Release 6.1 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/6.0">Release 6.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/5.0">Release 5.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/4.3">Release 4.3 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/4.2">Release 4.2 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/4.0">Release 4.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/3.4">Release 3.4 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/3.3">Release 3.3 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/3.2">Release 3.2 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/3.1">Release 3.1 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/3.0">Release 3.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/2.0">Release 2.0 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/1.1">Release 1.1 notes</a>
-                </li>
-
-                <li>
-                  <a href="/data/previous-releases/1.0">Release 1.0 notes</a>
-                </li>
-              </>
-            )}
+            {listOfReleases.map((releaseVersion) => (
+              <li style={{ marginBottom: "1rem" }}>
+                <Link
+                  className="link primary"
+                  target="_blank"
+                  href={`https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-${releaseVersion}.pdf`}
+                >
+                  Release {releaseVersion} notes&nbsp;
+                  <FontAwesomeIcon
+                    icon={faExternalLinkAlt}
+                    className="grey"
+                    size="xs"
+                  />
+                </Link>
+              </li>
+            ))}
           </ul>
         </Card>
       </Container>
