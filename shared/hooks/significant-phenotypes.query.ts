@@ -44,16 +44,13 @@ export const processGenePhenotypeHitsResponse = (
         phenotypeId: item.phenotype.id,
         datasetsIds: [datasetId],
       };
-    } else if (
-      group[key].datasetId !== datasetId &&
-      !group[key].datasetsIds.includes(datasetId)
-    ) {
+    } else if (group[key].datasetId !== datasetId) {
       // check for PPI related parameters and only count the PPI1, PPI2, PPI3 and PPI4
       if (group[key].procedureStableId === "IMPC_ACS_003") {
         if (PPIParameters.some((param) => item.parameterName.includes(param))) {
           group[key].datasetsIds.push(datasetId);
         }
-      } else {
+      } else if (!group[key].datasetsIds.includes(datasetId)) {
         group[key].datasetsIds.push(datasetId);
       }
     }
