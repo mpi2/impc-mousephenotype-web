@@ -6,7 +6,7 @@ type Props<T> = {
   mpTermIdKey?: keyof T;
 } & TableCellProps<T>;
 export const SupportingDataCell = <T,>(props: Props<T>) => {
-  const numOfDatasets = get(props.value, props.field);
+  const numOfDatasets = get(props.value, props.field)?.length;
   const mgiAccessionId = get(props.value, "mgiGeneAccessionId") as string;
   const phenotypeName = get(props.value, "phenotypeName") as string;
   const mpTermKey = !!props.mpTermIdKey ? props.mpTermIdKey : "id";
