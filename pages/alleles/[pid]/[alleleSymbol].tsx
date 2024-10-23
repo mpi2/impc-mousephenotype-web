@@ -12,17 +12,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import styles from "./styles.module.scss";
-import Mice from "@/components/Allele/Mice";
-import ESCell from "@/components/Allele/ESCell";
-import TargetingVector from "@/components/Allele/TVP";
-import Crispr from "@/components/Allele/Crispr";
-import AlleleMap from "@/components/Allele/AlleleMap.tsx";
 import { useEffect, useState } from "react";
-import QCModal from "@/components/Allele/QCModal.tsx";
-import IntermediateVector from "@/components/Allele/IVP";
+import {
+  AlleleMap,
+  Crispr,
+  ESCell,
+  IntermediateVector,
+  Mice,
+  QCModal,
+  TargetingVector,
+} from "@/components/Allele";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
-import Skeleton from "react-loading-skeleton";
+import { fetchAPI, fetchAPIFromServer } from "@/api-service";
 import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
 
