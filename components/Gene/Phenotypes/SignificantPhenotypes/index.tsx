@@ -181,7 +181,7 @@ const SignificantPhenotypes = ({
           {
             width: 1,
             label: "Supporting data",
-            field: "numberOfDatasets",
+            field: "datasetsIds",
             cmp: <SupportingDataCell />,
           },
           {
