@@ -27,6 +27,7 @@ export type {
   LateAdultDataParsed,
   LateAdultRowResponse,
 } from "./LandingPages";
+export type { AlleleSummary } from "./allele";
 
 type Model =
   | PhenotypeRef
