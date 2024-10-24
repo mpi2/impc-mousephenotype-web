@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
-import _ from "lodash";
+import { orderBy, has } from "lodash";
 import { formatPValue, getIcon, getSexLabel } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -85,7 +85,7 @@ const DataComparison = (props: Props) => {
     prop: !!initialSortByProp ? initialSortByProp : "phenotype",
     order: "asc" as const,
   });
-  const sorted = _.orderBy(processed, sortOptions.prop, sortOptions.order);
+  const sorted = orderBy(processed, sortOptions.prop, sortOptions.order);
   if (!data) {
     return null;
   }
@@ -188,7 +188,7 @@ const DataComparison = (props: Props) => {
                     className={getBackgroundColorForRow(d, i, selectedKey)}
                     onClick={() => onSelectParam(d.key)}
                     layout
-                    initial={{ y: 10, opacity: 0 }}
+                    initial={{ y: 10, opacity: 0, maxHeight: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                   >
                     <td>{d.parameterName}</td>
@@ -202,7 +202,7 @@ const DataComparison = (props: Props) => {
                         {["male", "female", "not_considered"]
                           .filter(
                             (sex) =>
-                              _.has(d, `pValue_${sex}`) &&
+                              has(d, `pValue_${sex}`) &&
                               !!d[`pValue_${sex}`] &&
                               d[`pValue_${sex}`] < 0.0001
                           )
@@ -237,13 +237,18 @@ const DataComparison = (props: Props) => {
                 );
               })}
               {pageData.length === 0 && dataIsLoading && (
-                <tr>
+                <motion.tr
+                  layout
+                  initial={{ y: 10, opacity: 0, maxHeight: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -10, opacity: 0, maxHeight: 0 }}
+                >
                   {[...Array(numOfHeaders)].map((_, i) => (
                     <td key={i}>
                       <Skeleton />
                     </td>
                   ))}
-                </tr>
+                </motion.tr>
               )}
             </SortableTable>
           </AnimatePresence>

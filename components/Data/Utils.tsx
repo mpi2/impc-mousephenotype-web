@@ -11,15 +11,19 @@ import {
 } from "@/components/Data";
 import { ReactNode } from "react";
 
-
 export const getZygosityLabel = (zygosity: string, sampleGroup: string) => {
-  const labelZyg = zygosity === "hemizygote" ? 'HEM' : zygosity === "homozygote" ? "HOM" : "HET";
+  const labelZyg =
+    zygosity === "hemizygote"
+      ? "HEM"
+      : zygosity === "homozygote"
+      ? "HOM"
+      : "HET";
   return sampleGroup == "control" ? "WT" : labelZyg;
-}
+};
 export const getChartType = (
   datasetSummary: Dataset,
   isVisible: boolean = true,
-  extraChildren: ReactNode = <></>,
+  extraChildren: ReactNode = <></>
 ) => {
   let chartType = datasetSummary?.dataType;
   if (chartType == "line" || chartType == "embryo") {
@@ -27,12 +31,12 @@ export const getChartType = (
       datasetSummary.procedureGroup == "IMPC_VIA"
         ? "viability"
         : datasetSummary.procedureGroup == "IMPC_FER"
-          ? "fertility"
-          : ["IMPC_EVL", "IMPC_EVM", "IMPC_EVP", "IMPC_EVO"].includes(
+        ? "fertility"
+        : ["IMPC_EVL", "IMPC_EVM", "IMPC_EVP", "IMPC_EVO"].includes(
             datasetSummary.procedureGroup
           )
-            ? "embryo_viability"
-            : chartType;
+        ? "embryo_viability"
+        : chartType;
   }
 
   if (
@@ -41,39 +45,57 @@ export const getChartType = (
   ) {
     chartType = "bodyweight";
   }
+
+  let Chart = null;
   switch (chartType) {
     case "unidimensional":
-      return (
+      Chart = (
         <Unidimensional datasetSummary={datasetSummary} isVisible={isVisible}>
           {extraChildren}
         </Unidimensional>
       );
+      break;
     case "categorical":
-      return (
+      Chart = (
         <Categorical datasetSummary={datasetSummary} isVisible={isVisible}>
           {extraChildren}
         </Categorical>
       );
-
+      break;
     case "time_series":
-      return (
+      Chart = (
         <TimeSeries datasetSummary={datasetSummary} isVisible={isVisible}>
           {extraChildren}
         </TimeSeries>
       );
+      break;
     case "viability":
-      return <Viability datasetSummary={datasetSummary} isVisible={isVisible} />;
+      Chart = (
+        <Viability datasetSummary={datasetSummary} isVisible={isVisible} />
+      );
+      break;
     case "embryo_viability":
-      return <EmbryoViability datasetSummary={datasetSummary} isVisible={isVisible} />;
+      Chart = (
+        <EmbryoViability
+          datasetSummary={datasetSummary}
+          isVisible={isVisible}
+        />
+      );
+      break;
     case "embryo":
-      return <Categorical datasetSummary={datasetSummary} isVisible={isVisible} />;
+      Chart = (
+        <Categorical datasetSummary={datasetSummary} isVisible={isVisible} />
+      );
+      break;
     case "histopathology":
-      return <Histopathology datasetSummary={datasetSummary} />;
+      Chart = <Histopathology datasetSummary={datasetSummary} />;
+      break;
     case "bodyweight":
-      return <BodyWeightChart datasetSummary={datasetSummary} />;
+      Chart = <BodyWeightChart datasetSummary={datasetSummary} />;
+      break;
     case "adult-gross-path":
-      return <GrossPathology datasetSummary={datasetSummary} />;
-    default:
-      return null;
+      Chart = <GrossPathology datasetSummary={datasetSummary} />;
+      break;
   }
+  return { Chart, chartType };
 };

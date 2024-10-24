@@ -11,7 +11,11 @@ import {
   PPI,
 } from "@/components/Data";
 import { Card, Search } from "@/components";
-import { useDatasetsQuery, useFlowCytometryQuery } from "@/hooks";
+import {
+  useBodyWeightQuery,
+  useDatasetsQuery,
+  useFlowCytometryQuery,
+} from "@/hooks";
 import { Dataset } from "@/models";
 import Skeleton from "react-loading-skeleton";
 import Head from "next/head";
@@ -29,6 +33,9 @@ const parametersListPPI = [
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
   const [additionalSummaries, setAdditionalSummaries] = useState<
+    Array<Dataset>
+  >([]);
+  const [overridingSummaries, setOverridingSummaries] = useState<
     Array<Dataset>
   >([]);
   const [specialChartLoading, setSpecialChartLoading] = useState(true);
@@ -125,7 +132,9 @@ const Charts = () => {
       setSpecialChartLoading(false);
     }
   }, [isPPIChart]);
-  const allSummaries = datasetSummaries?.concat(additionalSummaries) || [];
+  const allSummaries = !!overridingSummaries.length
+    ? overridingSummaries?.concat(additionalSummaries)
+    : datasetSummaries?.concat(additionalSummaries);
   const activeDataset = !!selectedKey
     ? getDatasetByKey(allSummaries, selectedKey)
     : allSummaries?.[0];
@@ -134,11 +143,25 @@ const Charts = () => {
     hasFlowCytometryImages && flowCytometryImages.length ? (
       <FlowCytometryImages images={flowCytometryImages} />
     ) : null;
-  const Chart = getChartType(activeDataset, true, extraChildren);
+
+  const { Chart, chartType } = getChartType(activeDataset, true, extraChildren);
+
+  const { bodyWeightData } = useBodyWeightQuery(
+    mgiGeneAccessionId as string,
+    router.isReady && chartType === "bodyweight"
+  );
+
+  useEffect(() => {
+    if (!!chartType && chartType === "bodyweight" && !!bodyWeightData?.length) {
+      setOverridingSummaries(bodyWeightData);
+    }
+  }, [chartType, bodyWeightData]);
+
   const smallestPValue = useMemo(
     () => getSmallestPValue(allSummaries),
     [allSummaries]
   );
+
   const fetchingInProcess = (isFetching || debouncedSpChartLoading) && !isError;
   return (
     <>

@@ -1,4 +1,4 @@
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
 import Card from "@/components/Card";
 import { useRouter } from "next/router";
@@ -6,25 +6,26 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
-  faArrowLeftLong,
   faArrowRightLong,
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
-import Head from "next/head";
 import styles from "./styles.module.scss";
-import Mice from "@/components/Allele/Mice";
-import ESCell from "@/components/Allele/ESCell";
-import TargetingVector from "@/components/Allele/TVP";
-import Crispr from "@/components/Allele/Crispr";
-import AlleleMap from "@/components/Allele/AlleleMap.tsx";
 import { useEffect, useState } from "react";
-import QCModal from "@/components/Allele/QCModal.tsx";
-import IntermediateVector from "@/components/Allele/IVP";
+import {
+  AlleleMap,
+  Crispr,
+  ESCell,
+  IntermediateVector,
+  Mice,
+  QCModal,
+  TargetingVector,
+  AlleleMetadata,
+} from "@/components/Allele";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
-import Skeleton from "react-loading-skeleton";
+import { fetchAPI, fetchAPIFromServer } from "@/api-service";
 import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
+import { AlleleSummary } from "@/models";
 
 const ProductItem = ({
   name,
@@ -41,8 +42,11 @@ const ProductItem = ({
     {name}
     <p className="mt-2">
       <a
-        className={classNames("btn", { "btn-grey impc-base-button": !hasData, "impc-primary-button": hasData })}
-        style={{ minWidth: 120, cursor: hasData ? 'pointer' : 'initial' }}
+        className={classNames("btn", {
+          "btn-grey impc-base-button": !hasData,
+          "impc-primary-button": hasData,
+        })}
+        style={{ minWidth: 120, cursor: hasData ? "pointer" : "initial" }}
         href={link}
       >
         {hasData ? (
@@ -58,68 +62,32 @@ const ProductItem = ({
   </div>
 );
 
-const Gene = () => {
+const AllelePage = ({ alleleData: alleleFromServer }) => {
   const {
     isReady,
     query: { pid, alleleSymbol },
   } = useRouter();
 
-  const { data: allele, isLoading, isError, error } = useQuery({
-    queryKey: ['genes', pid, 'alleles', alleleSymbol, 'order'],
+  const { data: allele } = useQuery<AlleleSummary>({
+    queryKey: ["genes", pid, "alleles", alleleSymbol, "order"],
     queryFn: () => fetchAPI(`/api/v1/alleles/${pid}/${alleleSymbol}`),
-    enabled: isReady
-  })
+    enabled: isReady && !alleleFromServer,
+  });
 
   const [qcData, setQcData] = useState<any[]>(null);
 
+  const alleleData: AlleleSummary = allele || alleleFromServer;
+
   useEffect(() => {
-    if (allele) {
+    if (alleleData) {
       const hash = window.location.hash;
       if (hash.length > 0) {
         setTimeout(() => {
           document.querySelector(window.location.hash)?.scrollIntoView();
-        }, 500);
+        }, 100);
       }
     }
-  }, [allele]);
-
-  if (isLoading || !allele) {
-    return (
-      <>
-        <Search />
-        <Container className="page">
-          <Card>
-            <Link href={`/genes/${pid}/#order`} className="grey mb-3 small">
-              <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
-              BACK TO GENE
-            </Link>
-            <br />
-            <p className="grey">Loading...</p>
-          </Card>
-        </Container>
-      </>
-    );
-  }
-  if (isError) {
-    return (
-      <>
-        <Search />
-        <Container className="page">
-          <Card>
-            <Link href={`/genes/${pid}#order`} className="grey mb-3 small">
-              <FontAwesomeIcon icon={faArrowLeftLong} />&nbsp;
-              BACK TO GENE
-            </Link>
-            <h2 className="mt-4 mb-2">Failed to load allele data</h2>
-            <p className="grey mb-4">
-              Something went wrong. Please try again later.
-            </p>
-            <p className="grey mb-4">Error: {error.toString()}</p>
-          </Card>
-        </Container>
-      </>
-    );
-  }
+  }, [alleleData]);
 
   const {
     mgiGeneAccessionId,
@@ -129,8 +97,8 @@ const Gene = () => {
     doesCrisprProductsExist,
     doesIntermediateVectorProductsExist,
     doesTargetingVectorProductsExist,
-    emsembleUrl
-  } = allele;
+    emsembleUrl,
+  } = alleleData;
 
   const productTypes = [
     { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
@@ -153,12 +121,7 @@ const Gene = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Allele Details | {allele.geneSymbol} - {alleleSymbol} | International Mouse
-          Phenotyping Consortium
-        </title>
-      </Head>
+      <AlleleMetadata alleleSummary={alleleData} />
       <Search />
       <Container className="page">
         <Card>
@@ -167,20 +130,27 @@ const Gene = () => {
               <Link
                 href={`/genes/${pid}`}
                 className="mb-3"
-                style={{textTransform: 'none', fontWeight: 'normal', letterSpacing: 'normal', fontSize: '1.15rem'}}
+                style={{
+                  textTransform: "none",
+                  fontWeight: "normal",
+                  letterSpacing: "normal",
+                  fontSize: "1.15rem",
+                }}
               >
-                <FontAwesomeIcon icon={faArrowLeft}/>
-                &nbsp;
-                Go Back to {<i>{allele.geneSymbol}</i> || <Skeleton style={{width: '50px'}} inline/>}
+                <FontAwesomeIcon icon={faArrowLeft} />
+                &nbsp; Go Back to <i>{alleleData.geneSymbol}</i>
               </Link>
             </span>
           </div>
           <p className={`${styles.subheading} mt-2`}>ALLELE</p>
           <h1 className="mb-2 mt-2">
-            <AlleleSymbol symbol={`${allele.geneSymbol}<${allele.alleleName}>`} withLabel={false}></AlleleSymbol>
+            <AlleleSymbol
+              symbol={`${alleleData.geneSymbol}<${alleleData.alleleName}>`}
+              withLabel={false}
+            ></AlleleSymbol>
           </h1>
           <p className="mb-4 grey">{alleleDescription}</p>
-          <div style={{display: "flex", flexWrap: "wrap"}}>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
             {productTypes.map((productType) => (
               <ProductItem {...productType} />
             ))}
@@ -249,4 +219,22 @@ const Gene = () => {
   );
 };
 
-export default Gene;
+export async function getServerSideProps(context) {
+  const { pid: mgiGeneAccessionId, alleleSymbol } = context.params;
+  if (
+    !mgiGeneAccessionId ||
+    mgiGeneAccessionId === "null" ||
+    !alleleSymbol ||
+    alleleSymbol === "null"
+  ) {
+    return { notFound: true };
+  }
+  const alleleData = await fetchAPIFromServer(
+    `/api/v1/alleles/${mgiGeneAccessionId}/${alleleSymbol}`
+  );
+  return {
+    props: { alleleData },
+  };
+}
+
+export default AllelePage;
