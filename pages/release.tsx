@@ -35,7 +35,8 @@ import {
   DataPointsTrendChart,
 } from "@/components/ReleasePage";
 
-const listOfReleases = [
+const listOfPastReleases = [
+  "21.1",
   "21.0",
   "20.1",
   "20.0",
@@ -680,7 +681,7 @@ const ReleaseNotesPage = (props: Props) => {
         <Card>
           <h2>Previous releases</h2>
           <ul>
-            {listOfReleases.map((releaseVersion) => (
+            {listOfPastReleases.map((releaseVersion) => (
               <li style={{ marginBottom: "1rem" }}>
                 <Link
                   className="link primary"
