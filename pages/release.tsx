@@ -25,6 +25,15 @@ import { groupBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
 import Link from "next/link";
 import moment from "moment";
+import {
+  ProdStatusByCenter,
+  ReleaseMetadata,
+  StatusCount,
+} from "@/models/release";
+import {
+  CallsTrendChart,
+  DataPointsTrendChart,
+} from "@/components/ReleasePage";
 
 const listOfReleases = [
   "21.0",
@@ -72,60 +81,6 @@ ChartJS.register(
   Legend,
   Colors
 );
-
-type SampleCounts = {
-  phenotypingCentre: string;
-  mutantLines: number;
-  mutantSpecimens: number;
-  controlSpecimens: number;
-};
-
-type DataQualityCheck = {
-  dataType: string;
-  count: number;
-};
-
-type StatusCount = {
-  center: string;
-  count: number;
-  status: string;
-  originalStatus: string;
-};
-
-type ProdStatusByCenter = {
-  statusType: string;
-  counts: Array<StatusCount>;
-};
-
-type ReleaseMetadata = {
-  dataReleaseDate: string;
-  dataReleaseNotes: string;
-  dataReleaseVersion: string;
-  genomeAssembly: { species: string; version: string };
-  statisticalAnalysisPackage: { name: string; version: string };
-  summaryCounts: {
-    phenotypedGenes: number;
-    phenotypedLines: number;
-    phentoypeCalls: number;
-  };
-  dataQualityChecks: Array<DataQualityCheck>;
-  phenotypeAnnotations: Array<{
-    topLevelPhenotype: string;
-    total: number;
-    counts: Array<{ zygosity: string; count: number }>;
-  }>;
-  phenotypeAssociationsByProcedure: Array<{
-    procedure_name: string;
-    total: number;
-    counts: Array<{ lifeStage: string; count: number }>;
-  }>;
-  productionStatusByCenter: Array<ProdStatusByCenter>;
-  productionStatusOverall: Array<{
-    statusType: string;
-    counts: Array<{ count: number; status: string }>;
-  }>;
-  sampleCounts: Array<SampleCounts>;
-};
 
 const valuePair = (
   key: string,
@@ -693,7 +648,35 @@ const ReleaseNotesPage = (props: Props) => {
             />
           </div>
         </Card>
-
+        <Card>
+          <h2>Trends</h2>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <b>Genes/Mutant Lines/MP Calls</b>
+            <span className="small grey">By Data Release</span>
+          </div>
+          <div style={{ position: "relative", height: "400px" }}>
+            <CallsTrendChart data={releaseMetadata.summaryCounts} />
+          </div>
+          <div
+            className="mt-4"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <b>Data Points by Data Release</b>
+          </div>
+          <div style={{ position: "relative", height: "400px" }}>
+            <DataPointsTrendChart data={releaseMetadata.dataPointCount} />
+          </div>
+        </Card>
         <Card>
           <h2>Previous releases</h2>
           <ul>
