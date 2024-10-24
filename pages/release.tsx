@@ -24,7 +24,7 @@ import { fetchLandingPageData } from "@/api-service";
 import { groupBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
 import Link from "next/link";
-import { orderBy } from "lodash";
+import moment from "moment";
 
 const listOfReleases = [
   "21.0",
@@ -167,8 +167,11 @@ const genotypingStatuses = [
 const ReleaseNotesPage = (props: Props) => {
   const { releaseMetadata } = props;
 
+  const dataReleaseVersion = releaseMetadata.dataReleaseVersion;
+  const summaryCounts = releaseMetadata.summaryCounts;
+
   const formatDate = (date: string) => {
-    const dateObj = new Date(date);
+    const dateObj = moment(date, "DD-MM-YYYY").toDate();
     return dateObj.toLocaleDateString("en-GB", {
       year: "numeric",
       month: "long",
@@ -479,8 +482,8 @@ const ReleaseNotesPage = (props: Props) => {
     <>
       <Head>
         <title>
-          IMPC Data release {releaseMetadata.dataReleaseVersion} | International
-          Mouse Phenotyping Consortium
+          IMPC Data release {dataReleaseVersion} | International Mouse
+          Phenotyping Consortium
         </title>
       </Head>
       <Search />
@@ -493,7 +496,7 @@ const ReleaseNotesPage = (props: Props) => {
             RELEASE NOTES
           </p>
           <h1 className="h1 mb-2">
-            IMPC Data Release {releaseMetadata.dataReleaseVersion} Notes
+            IMPC Data Release {dataReleaseVersion} Notes
           </h1>
           <p className="grey mb-3">
             {formatDate(releaseMetadata.dataReleaseDate)}
@@ -504,17 +507,17 @@ const ReleaseNotesPage = (props: Props) => {
               <h3 className="mb-0 mt-3 mb-2">Summary</h3>
               {valuePair(
                 "Number of phenotyped genes",
-                releaseMetadata.summaryCounts.phenotypedGenes,
+                summaryCounts[dataReleaseVersion].phenotypedGenes,
                 true
               )}
               {valuePair(
                 "Number of phenotyped mutant lines",
-                releaseMetadata.summaryCounts.phenotypedLines,
+                summaryCounts[dataReleaseVersion].phenotypedLines,
                 true
               )}
               {valuePair(
                 "Number of phenotype calls",
-                releaseMetadata.summaryCounts.phentoypeCalls,
+                summaryCounts[dataReleaseVersion].phentoypeCalls,
                 true
               )}
             </Col>
@@ -563,8 +566,7 @@ const ReleaseNotesPage = (props: Props) => {
         </Card>
         <Card>
           <h2>
-            Total number of lines and specimens in DR{" "}
-            {releaseMetadata.dataReleaseVersion}
+            Total number of lines and specimens in DR {dataReleaseVersion}
           </h2>
           <SmartTable<SampleCounts>
             data={releaseMetadata.sampleCounts}
