@@ -5,6 +5,7 @@ import { MetabolismGeneData } from "@/pages/metabolism";
 import { HistopathologyResponse, Histopathology } from "./histopathology";
 import { GrossPathology, GrossPathologyDataset } from "./gross-pathology";
 import { Dataset } from "./dataset";
+import * as Release from "./release";
 
 export type { PhenotypeRef } from "./phenotype-ref";
 export type { TableCellProps } from "./TableCell";
@@ -28,6 +29,7 @@ export type {
   LateAdultRowResponse,
 } from "./LandingPages";
 export type { AlleleSummary } from "./allele";
+export type { Release };
 
 type Model =
   | PhenotypeRef
