@@ -8,7 +8,6 @@ import {
   SortableTable,
 } from "@/components";
 import { ChangeEvent, useEffect, useMemo, useReducer, useState } from "react";
-import { mapAttributes, mapAdditionalAttributes } from "./attributes";
 import { useQuery } from "@tanstack/react-query";
 import { groupBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
