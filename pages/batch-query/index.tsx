@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Search from "@/components/Search";
-import { Col, Container, Form, Row, Spinner, Tabs, Tab } from "react-bootstrap";
+import { Container, Form, Spinner, Tabs, Tab } from "react-bootstrap";
 import {
   AlleleSymbol,
   Card,
@@ -19,27 +19,7 @@ import { initialState, reducer, toogleFlagPayload } from "./reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
-const mapLabels = {
-  "impc-gene": "GENE",
-  "ensembl-gene": "ENSEMBL",
-  "mp-id": "MP",
-  "hp-id": "HP",
-  "decipher-id": "DISEASE",
-  anatomy: "ANATOMY",
-  "human-marker-symbol": "MARKER SYMBOL",
-  "mouse-marker-symbol": "MARKER SYMBOL",
-};
-
-const mapPlaceholders = {
-  "impc-gene": "MGI:106209",
-  "ensembl-gene": "ENSMUSG00000011257",
-  "mp-id": "MP:0001926",
-  "hp-id": "HP:0000400",
-  "decipher-id": "OMIM:100300, ORPHA:93, DECIPHER:17",
-  anatomy: "MA:0003077, EMAPA:35955",
-  "human-marker-symbol": "Ca4, CA4",
-  "mouse-marker-symbol": "Car4, CAR4",
-};
+const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 
 type Phenotype = {
   id: string;
@@ -172,27 +152,12 @@ const DataRow = ({ geneData }) => {
 };
 
 const BatchQueryPage = () => {
-  const [typeSelection, setTypeSelection] = useState<"byID" | "bySymbol">(
-    "byID"
-  );
-  const [idSelection, setIDSelection] = useState("impc-gene");
-  const [symbolSelection, setSymbolSelection] = useState("human-marker-symbol");
   const [geneIds, setGeneIds] = useState<string>(undefined);
   const [file, setFile] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const downloadButtonIsBusy =
     state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
-
-  const attributes =
-    typeSelection === "byID"
-      ? mapAttributes[idSelection]
-      : mapAttributes[symbolSelection];
-  const additionalAttributes =
-    typeSelection === "byID"
-      ? mapAdditionalAttributes[idSelection]
-      : mapAdditionalAttributes[symbolSelection];
-  const selectedKey = typeSelection === "byID" ? idSelection : symbolSelection;
 
   const geneIdArray = useMemo(() => {
     const regex = /(MGI:\d+),?/g;
@@ -228,7 +193,7 @@ const BatchQueryPage = () => {
       }
       const body = getBody();
 
-      return fetch("http://localhost:8020/proxy/query", {
+      return fetch(BATCH_QUERY_API_ROOT, {
         method: "POST",
         body,
         headers,
@@ -324,7 +289,7 @@ const BatchQueryPage = () => {
       }
       dispatch({ type: "toggle", payload });
       const body = getBody();
-      const resp = await fetch("http://localhost:5000/query", {
+      const resp = await fetch(BATCH_QUERY_API_ROOT, {
         method: "POST",
         body,
         headers,
@@ -374,70 +339,6 @@ const BatchQueryPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>IMPC Dataset Batch Query</strong>
           </h1>
-          <h3>Datatype input</h3>
-          <Form>
-            <Row style={{ alignItems: "center" }}>
-              <Col xs="auto">
-                <Form.Check
-                  type="radio"
-                  id="queryByID"
-                  label="by ID"
-                  name="datatype-selection"
-                  checked={typeSelection === "byID"}
-                  onChange={() => setTypeSelection("byID")}
-                />
-              </Col>
-              <Col xs="auto">
-                <Form.Select
-                  value={idSelection}
-                  onChange={(e) => setIDSelection(e.target.value)}
-                  disabled={typeSelection !== "byID"}
-                >
-                  <option value="impc-gene">IMPC Gene</option>
-                  <option value="ensembl-gene" disabled>
-                    Ensembl Gene
-                  </option>
-                  <option value="mp-id" disabled>
-                    MP ID
-                  </option>
-                  <option value="hp-id" disabled>
-                    HP ID
-                  </option>
-                  <option value="decipher-id" disabled>
-                    OMIM/ORPHANET/DECIPHER
-                  </option>
-                  <option value="anatomy" disabled>
-                    Anatomy
-                  </option>
-                </Form.Select>
-              </Col>
-              <Col xs="auto">
-                <Form.Check
-                  type="radio"
-                  id="queryBySymbol"
-                  label="by symbol"
-                  name="datatype-selection"
-                  checked={typeSelection === "bySymbol"}
-                  onChange={() => setTypeSelection("bySymbol")}
-                  disabled
-                />
-              </Col>
-              <Col xs="auto">
-                <Form.Select
-                  value={symbolSelection}
-                  onChange={(e) => setSymbolSelection(e.target.value)}
-                  disabled={typeSelection !== "bySymbol"}
-                >
-                  <option value="human-marker-symbol">
-                    Human marker symbol
-                  </option>
-                  <option value="mouse-marker-symbol">
-                    Mouse marker symbol
-                  </option>
-                </Form.Select>
-              </Col>
-            </Row>
-          </Form>
           <Tabs className="mt-4">
             <Tab eventKey="paste-your-list" title="Paste your list">
               <Form className="mt-3">
@@ -448,7 +349,7 @@ const BatchQueryPage = () => {
                   <Form.Control
                     as="textarea"
                     rows={3}
-                    placeholder={mapPlaceholders[selectedKey]}
+                    placeholder="Enter your list here..."
                     onChange={(e) => setGeneIds(e.target.value)}
                   />
                 </Form.Group>
