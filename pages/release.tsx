@@ -25,9 +25,12 @@ import { groupBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
 import Link from "next/link";
 import moment from "moment";
+import remarkBreaks from "remark-breaks";
 import {
+  DataQualityCheck,
   ProdStatusByCenter,
   ReleaseMetadata,
+  SampleCounts,
   StatusCount,
 } from "@/models/release";
 import {
@@ -126,6 +129,15 @@ const ReleaseNotesPage = (props: Props) => {
   const dataReleaseVersion = releaseMetadata.dataReleaseVersion;
   const summaryCounts = releaseMetadata.summaryCounts;
 
+  const unescapeReleaseNotes = (value: string) => {
+    const res = value
+      .replaceAll('"', "")
+      .replaceAll("\\n", " \n")
+      .replaceAll("\\t", "")
+      .replaceAll("- ", "* ");
+    console.log(res);
+    return res;
+  };
   const formatDate = (date: string) => {
     const dateObj = moment(date, "DD-MM-YYYY").toDate();
     return dateObj.toLocaleDateString("en-GB", {
@@ -518,7 +530,9 @@ const ReleaseNotesPage = (props: Props) => {
           )}
 
           <h3 className="mb-0 mt-5 mb-2">Highlights</h3>
-          <Markdown>{releaseMetadata.dataReleaseNotes}</Markdown>
+          <Markdown remarkPlugins={[remarkBreaks]}>
+            {unescapeReleaseNotes(releaseMetadata.dataReleaseNotes)}
+          </Markdown>
         </Card>
         <Card>
           <h2>
