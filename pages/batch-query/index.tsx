@@ -236,9 +236,9 @@ const BatchQueryPage = () => {
           };
           const getTopLevelPhenotypeNames = (data: Array<BatchQueryItem>) => {
             return data
-              .map((d) =>
+              .flatMap((d) =>
                 maybe(d.topLevelPhenotypes)
-                  .map((systems) => systems.map((s) => s.name).join(","))
+                  .map((systems) => systems.map((s) => s.name))
                   .getOrElse(undefined)
               )
               .filter(Boolean);
