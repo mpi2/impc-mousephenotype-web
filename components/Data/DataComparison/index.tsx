@@ -178,7 +178,11 @@ const DataComparison = (props: Props) => {
               doSort={(sort) =>
                 setSortOptions({ prop: sort[0], order: sort[1] })
               }
-              defaultSort={["parameter", "asc"]}
+              defaultSort={
+                isViabilityChart
+                  ? ["parameter", "asc"]
+                  : ["pValue_not_considered", "asc"]
+              }
               headers={tableHeaders}
             >
               {pageData.map((d, i) => {
