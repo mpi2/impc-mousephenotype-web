@@ -13,6 +13,7 @@ import {
 import { Card, Search } from "@/components";
 import {
   useBodyWeightQuery,
+  useChartFlags,
   useDatasetsQuery,
   useFlowCytometryQuery,
 } from "@/hooks";
@@ -22,13 +23,6 @@ import Head from "next/head";
 import { getChartType } from "@/components/Data/Utils";
 import { chartLoadingIndicatorChannel } from "@/eventChannels";
 import { useDebounce } from "usehooks-ts";
-
-const parametersListPPI = [
-  "IMPC_ACS_033_001", // % PP1
-  "IMPC_ACS_034_001", // % PP2
-  "IMPC_ACS_035_001", // % PP3
-  "IMPC_ACS_036_001", // % PP4
-];
 
 const Charts = () => {
   const [selectedKey, setSelectedKey] = useState("");
@@ -66,6 +60,15 @@ const Charts = () => {
     router.isReady
   );
 
+  const {
+    isABRChart,
+    isViabilityChart,
+    isTimeSeries,
+    isIPGTTChart,
+    isPPIChart,
+    hasFlowCytometryImages,
+  } = useChartFlags(datasetSummaries, isError);
+
   useEffect(() => {
     const unsubscribeToggleIndicator = chartLoadingIndicatorChannel.on(
       "toggleIndicator",
@@ -77,15 +80,6 @@ const Charts = () => {
     };
   }, []);
 
-  const hasFlowCytometryImages = !isError
-    ? !!datasetSummaries.some(
-        (dataset) =>
-          dataset.procedureStableId.startsWith("MGP_BMI") ||
-          dataset.procedureStableId.startsWith("MGP_MLN") ||
-          dataset.procedureStableId.startsWith("MGP_IMM")
-      )
-    : false;
-
   const parameterStableId =
     (router.query.parameterStableId as string) || datasetSummaries?.length
       ? datasetSummaries[0]?.parameterStableId
@@ -96,36 +90,6 @@ const Charts = () => {
     parameterStableId,
     router.isReady && !!parameterStableId && hasFlowCytometryImages
   );
-
-  const isABRChart = !isError
-    ? !!datasetSummaries.some(
-        (dataset) =>
-          dataset.dataType === "unidimensional" &&
-          dataset.procedureGroup === "IMPC_ABR"
-      )
-    : false;
-
-  const isViabilityChart = !isError
-    ? !!datasetSummaries.some(
-        (dataset) => dataset.procedureGroup === "IMPC_VIA"
-      )
-    : false;
-
-  const isTimeSeries = !isError
-    ? !!datasetSummaries.some((dataset) => dataset.dataType === "time_series")
-    : false;
-
-  const isIPGTTChart = !isError
-    ? !!datasetSummaries.some(
-        (dataset) => dataset.procedureStableId === "IMPC_IPG_001"
-      )
-    : false;
-
-  const isPPIChart = !isError
-    ? !!datasetSummaries.some((dataset) =>
-        parametersListPPI.includes(dataset.parameterStableId)
-      )
-    : false;
 
   useEffect(() => {
     if (!isPPIChart && specialChartLoading) {
