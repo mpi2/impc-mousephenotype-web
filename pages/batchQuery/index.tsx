@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Search from "@/components/Search";
-import { Container, Form, Spinner, Tabs, Tab } from "react-bootstrap";
+import { Container, Form, Spinner, Tabs, Tab, Alert } from "react-bootstrap";
 import {
   AlleleSymbol,
   Card,
@@ -345,10 +345,14 @@ const BatchQueryPage = () => {
                   <Form.Label>
                     <strong>List of ID's</strong>
                   </Form.Label>
+                  <br />
+                  <Form.Text className="text-muted">
+                    Please format your list like this example:
+                    MGI:104785,MGI:97591,etc
+                  </Form.Text>
                   <Form.Control
                     as="textarea"
                     rows={3}
-                    placeholder="Enter your list here..."
                     onChange={(e) => setGeneIds(e.target.value)}
                   />
                 </Form.Group>
@@ -373,6 +377,9 @@ const BatchQueryPage = () => {
             </Tab>
           </Tabs>
           <div className="mt-4">
+            {formSubmitted && (geneIdArray?.length === 0 || file === null) && (
+              <Alert variant="warning">Please enter a list of ID's</Alert>
+            )}
             <button
               onClick={() => setFormSubmitted(true)}
               className="btn impc-primary-button"
