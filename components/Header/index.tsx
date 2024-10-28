@@ -50,7 +50,7 @@ const getInternalLink = (name: string, link: string) => {
     case "Essential Genes - Translating to Other Species":
       return "/conservation";
     case "Batch query":
-      return "/batch-query";
+      return "/batchQuery";
     case "Late Adult Data":
       return "/late-adult-data";
     case "Latest Data Release":
