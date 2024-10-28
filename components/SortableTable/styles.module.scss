@@ -6,13 +6,16 @@
     line-height: 1.5;
   }
   &.striped thead tr th {
-    --bs-table-bg: #F3F5F8 !important;
+    --bs-table-bg: #f3f5f8 !important;
   }
   &.striped tbody > tr:nth-of-type(odd) > td {
-    --bs-table-bg: #FFF;
+    --bs-table-bg: #fff;
   }
   &.striped tbody > tr:nth-of-type(even) > td {
-    --bs-table-bg: #F7FBFC;
+    --bs-table-bg: #f7fbfc;
+  }
+  &.noMargin {
+    margin: 0;
   }
 }
 
@@ -47,14 +50,14 @@ td.procedureName {
 $button-margin: -0.3em;
 
 .sortIcon {
-  color: #3DB28C;
+  color: #3db28c;
 }
 
 .defaultIcons {
   display: inline-flex;
   flex-direction: column;
   align-self: start;
-  color: #3DB28C;
+  color: #3db28c;
   .first {
     margin-bottom: $button-margin;
   }
