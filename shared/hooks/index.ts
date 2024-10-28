@@ -25,3 +25,4 @@ export {
   useGeneOrderQuery,
   processGeneOrderResponse,
 } from "./gene-order.query";
+export { useChartFlags } from "./chartFlags";

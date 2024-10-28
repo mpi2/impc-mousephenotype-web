@@ -14,7 +14,11 @@ import { maybe } from "acd-utils";
 import Link from "next/link";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { formatAlleleSymbol } from "@/utils";
-import { initialState, reducer, toogleFlagPayload } from "./reducer";
+import {
+  initialState,
+  reducer,
+  toogleFlagPayload,
+} from "@/utils/batchQuery/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 

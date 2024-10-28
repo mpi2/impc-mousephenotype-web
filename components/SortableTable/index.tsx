@@ -8,6 +8,25 @@ import classNames from "classnames";
 
 type SortType = [string | ((any) => void), "asc" | "desc"];
 
+type Sort = {
+  field: string | undefined;
+  sortFn: (any) => void | undefined;
+  order: SortType[1];
+};
+
+const newSortIsDifferent = (actualSort: Sort, newSort: SortType) => {
+  return actualSort.field !== newSort[0] || actualSort.order !== newSort[1];
+};
+
+type SortableTableProps = {
+  headers: TableHeader[];
+  defaultSort?: SortType;
+  doSort?: (s: SortType) => void;
+  children: React.ReactNode;
+  className?: string;
+  withMargin?: boolean;
+};
+
 const SortableTable = ({
   headers,
   defaultSort,
@@ -15,20 +34,9 @@ const SortableTable = ({
   children,
   className = "",
   withMargin: shouldHaveMargin = true,
-}: {
-  headers: TableHeader[];
-  defaultSort?: SortType;
-  doSort?: (s: SortType) => void;
-  children: React.ReactNode;
-  className?: string;
-  withMargin?: boolean;
-}) => {
+}: SortableTableProps) => {
   // TODO: add search filter
-  const [sort, setSort] = useState<{
-    field: string | undefined;
-    sortFn: (any) => void | undefined;
-    order: SortType[1];
-  }>(
+  const [sort, setSort] = useState<Sort>(
     defaultSort
       ? {
           ...(typeof defaultSort[0] === "string"
@@ -55,6 +63,17 @@ const SortableTable = ({
       doSort(getSortOptions());
     }
   }, [sort]);
+
+  useEffect(() => {
+    if (defaultSort && newSortIsDifferent(sort, defaultSort)) {
+      setSort({
+        ...(typeof defaultSort[0] === "string"
+          ? { field: defaultSort[0], sortFn: undefined }
+          : { sortFn: defaultSort[0], field: undefined }),
+        order: defaultSort[1],
+      });
+    }
+  }, [defaultSort]);
 
   const SortableTh = ({
     label,
