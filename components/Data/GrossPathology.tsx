@@ -1,7 +1,4 @@
 import { GrossPathologyDataset } from "@/models";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 import { Row, Col, Card } from "react-bootstrap";
 import { SmartTable, PlainTextCell } from "../SmartTable";
 import router from "next/router";
