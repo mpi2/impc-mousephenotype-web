@@ -273,13 +273,19 @@ const BatchQueryPage = () => {
         results[geneSymbol].allSigSystems = [...sigSystemsSet];
         results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
         results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
+        results[geneSymbol].alleles.sort(
+          (a1, a2) =>
+            a2.significantPhenotypes.length - a1.significantPhenotypes.length
+        );
       }
-      return Object.entries(results).map(([geneSymbol, geneData]) => {
-        return {
-          geneSymbol,
-          ...(geneData as any),
-        };
-      });
+      return Object.entries(results)
+        .map(([geneSymbol, geneData]) => {
+          return {
+            geneSymbol,
+            ...(geneData as any),
+          };
+        })
+        .sort((g1, g2) => g1.geneSymbol.localeCompare(g2.geneSymbol));
     },
   });
 
