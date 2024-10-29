@@ -21,7 +21,7 @@ export type {
   ChartDimensions,
 } from "./chart";
 export type { EventHandler, EventBus, Bus, EventMap } from "./eventbus";
-export type { TableHeader } from "./sortableTable";
+export type { TableHeader, Sort, SortType } from "./sortableTable";
 export type { PaginatedResponse } from "./paginated-response";
 export type {
   LateAdultDataResponse,

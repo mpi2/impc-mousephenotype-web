@@ -7,3 +7,11 @@ export type TableHeader = {
   sortField?: string;
   children?: TableHeader[];
 };
+
+export type SortType = [string | ((any) => void), "asc" | "desc"];
+
+export type Sort = {
+  field: string | undefined;
+  sortFn: (any) => void | undefined;
+  order: SortType[1];
+};

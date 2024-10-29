@@ -3,16 +3,8 @@ import { Table } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import React, { useEffect, useState } from "react";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { TableHeader } from "@/models";
+import { Sort, SortType, TableHeader } from "@/models";
 import classNames from "classnames";
-
-type SortType = [string | ((any) => void), "asc" | "desc"];
-
-type Sort = {
-  field: string | undefined;
-  sortFn: (any) => void | undefined;
-  order: SortType[1];
-};
 
 const newSortIsDifferent = (actualSort: Sort, newSort: SortType) => {
   return actualSort.field !== newSort[0] || actualSort.order !== newSort[1];
