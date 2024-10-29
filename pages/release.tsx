@@ -130,13 +130,11 @@ const ReleaseNotesPage = (props: Props) => {
   const summaryCounts = releaseMetadata.summaryCounts;
 
   const unescapeReleaseNotes = (value: string) => {
-    const res = value
+    return value
       .replaceAll('"', "")
       .replaceAll("\\n", " \n")
       .replaceAll("\\t", "")
       .replaceAll("- ", "* ");
-    console.log(res);
-    return res;
   };
   const formatDate = (date: string) => {
     const dateObj = moment(date, "DD-MM-YYYY").toDate();
@@ -446,6 +444,24 @@ const ReleaseNotesPage = (props: Props) => {
     [releaseMetadata.phenotypeAssociationsByProcedure]
   );
 
+  const excludedDatatypes = [
+    "time_series",
+    "image_record",
+    "text",
+    "ontological",
+  ];
+
+  const dataQualityChecks = useMemo(
+    () =>
+      releaseMetadata.dataQualityChecks.map(({ dataType, count }) => ({
+        count,
+        dataType: `${dataType.replace("_", " ")} ${
+          excludedDatatypes.includes(dataType) ? "*" : ""
+        }`,
+      })),
+    [releaseMetadata]
+  );
+
   return (
     <>
       <Head>
@@ -581,7 +597,7 @@ const ReleaseNotesPage = (props: Props) => {
         <Card>
           <h2>Experimental data and quality checks</h2>
           <SmartTable<DataQualityCheck>
-            data={releaseMetadata.dataQualityChecks}
+            data={dataQualityChecks}
             defaultSort={["count", "desc"]}
             columns={[
               {

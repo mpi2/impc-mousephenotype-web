@@ -77,6 +77,9 @@ const CallsTrendChart = (props: Props) => {
     };
   }, [data]);
 
+  const latestPhenotypedLinesCount = chartData.datasets[2]?.data.slice(-1)[0];
+  const suggestedLeftAxisMax = latestPhenotypedLinesCount * 1.2;
+
   const chartOptions = useMemo(() => {
     return {
       responsive: true,
@@ -98,6 +101,7 @@ const CallsTrendChart = (props: Props) => {
             display: true,
             text: "Genes/Mutant Lines",
           },
+          suggestedMax: suggestedLeftAxisMax,
         },
         y1: {
           type: "linear" as const,
@@ -118,7 +122,7 @@ const CallsTrendChart = (props: Props) => {
         },
       },
     };
-  }, []);
+  }, [suggestedLeftAxisMax]);
 
   return <Chart type="bar" data={chartData} options={chartOptions} />;
 };
