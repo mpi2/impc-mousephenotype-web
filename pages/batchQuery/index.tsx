@@ -199,6 +199,7 @@ const BatchQueryPage = () => {
     prop: "geneSymbol",
     order: "asc" as const,
   });
+  const [tab, setTab] = useState("paste-your-list");
   const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
   const downloadButtonIsBusy =
     state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
@@ -209,15 +210,15 @@ const BatchQueryPage = () => {
   }, [geneIds]);
 
   useEffect(() => {
-    // case 1: user updated input
-    if (!!geneIds && formSubmitted === true) {
+    // case 1: user updated input (list or file)
+    if ((!!geneIds || !!file) && formSubmitted === true) {
       setFormSubmitted(false);
     }
-  }, [geneIds, formSubmitted]);
+  }, [geneIds, formSubmitted, file]);
 
   const getBody = () => {
     let body;
-    if (!!file) {
+    if (tab === "upload-your-list") {
       const data = new FormData();
       data.append("file", file);
       body = data;
@@ -228,11 +229,11 @@ const BatchQueryPage = () => {
   };
 
   const { data: results, isFetching } = useQuery({
-    queryKey: ["batch-query", geneIdArray],
+    queryKey: ["batch-query", geneIdArray, file, tab],
     queryFn: () => {
       const headers = new Headers();
       headers.append("Accept", "application/json");
-      if (geneIdArray.length > 0) {
+      if (tab === "paste-your-list") {
         headers.append("Content-Type", "application/json");
       }
       const body = getBody();
@@ -401,7 +402,7 @@ const BatchQueryPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>IMPC Dataset Batch Query</strong>
           </h1>
-          <Tabs className="mt-4">
+          <Tabs className="mt-4" onSelect={(e) => setTab(e)}>
             <Tab eventKey="paste-your-list" title="Paste your list">
               <Form className="mt-3">
                 <Form.Group>
@@ -443,10 +444,20 @@ const BatchQueryPage = () => {
             {formSubmitted && (geneIdArray?.length === 0 || file === null) && (
               <Alert variant="warning">Please enter a list of ID's</Alert>
             )}
+            {geneIdArray?.length >= 1000 && (
+              <Alert variant="warning">
+                If your list exceed 1,000 Id's, please save them in a text file
+                and upload it.
+              </Alert>
+            )}
             <button
               onClick={() => setFormSubmitted(true)}
               className="btn impc-primary-button"
-              disabled={isFetching || downloadButtonIsBusy}
+              disabled={
+                isFetching ||
+                downloadButtonIsBusy ||
+                geneIdArray?.length >= 1000
+              }
             >
               Submit
             </button>
