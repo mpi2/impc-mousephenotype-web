@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import { useRouter } from "next/router";
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import { Alert, Overlay, Tab, Tabs, Tooltip } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -18,6 +18,7 @@ import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { DownloadData, SectionHeader } from "@/components";
 import { isIframeLoaded, htmlEncode } from "@/utils";
+import { SortType } from "@/models";
 
 type ScaleProps = {
   children: number;
@@ -255,6 +256,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
     select: (data) => data as Array<GeneDisease>,
   });
   const [tab, setTab] = useState("associated");
+  const defaultSort: SortType = useMemo(() => ["phenodigmScore", "desc"], []);
 
   useEffect(() => {
     if (data) {
@@ -397,7 +399,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                   doSort={(sort) => {
                     setSorted(_.orderBy(data, sort[0], sort[1]));
                   }}
-                  defaultSort={["phenodigmScore", "desc"]}
+                  defaultSort={defaultSort}
                   headers={[
                     { width: 5, label: "Disease", field: "diseaseTerm" },
                     {

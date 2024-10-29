@@ -5,22 +5,29 @@ import {
   AlleleSymbol,
   Card,
   LoadingProgressBar,
+  Pagination,
   SortableTable,
 } from "@/components";
 import { ChangeEvent, useEffect, useMemo, useReducer, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { groupBy, uniq } from "lodash";
+import { groupBy, orderBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
 import Link from "next/link";
 import { BodySystem } from "@/components/BodySystemIcon";
-import { formatAlleleSymbol } from "@/utils";
+import { allBodySystems, formatAlleleSymbol } from "@/utils";
 import {
   initialState,
   reducer,
   toogleFlagPayload,
 } from "@/utils/batchQuery/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronDown,
+  faChevronUp,
+  faDownload,
+} from "@fortawesome/free-solid-svg-icons";
+import Select from "react-select";
+import { SortType } from "@/models";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 
@@ -68,6 +75,30 @@ type BatchQueryItem = {
   zygosity: string;
 };
 
+type SortOptions = {
+  prop: string | ((any) => void);
+  order: "asc" | "desc";
+};
+
+const allOptions = allBodySystems.map((system) => ({
+  value: system,
+  label: system,
+}));
+
+const formatOptionLabel = ({ value, label }, { context }) => {
+  return (
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <BodySystem
+        name={value}
+        color="system-icon in-table"
+        noSpacing
+        noMargin={context === "value"}
+      />
+      {context === "menu" && <span>{label}</span>}
+    </div>
+  );
+};
+
 const DataRow = ({ geneData }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -85,7 +116,11 @@ const DataRow = ({ geneData }) => {
         <td>{geneData.allSigSystems.length}</td>
         <td>
           <button className="btn" onClick={() => setOpen(!open)}>
-            {open ? "Close" : "View"}
+            {open ? "Close" : "View"}&nbsp;
+            <FontAwesomeIcon
+              className="link"
+              icon={open ? faChevronUp : faChevronDown}
+            />
           </button>
         </td>
       </tr>
@@ -159,6 +194,13 @@ const BatchQueryPage = () => {
   const [file, setFile] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [selectedSystems, setSelectedSystems] = useState([]);
+  const [sortOptions, setSortOptions] = useState<SortOptions>({
+    prop: "geneSymbol",
+    order: "asc" as const,
+  });
+  const [tab, setTab] = useState("paste-your-list");
+  const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
   const downloadButtonIsBusy =
     state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
 
@@ -168,15 +210,15 @@ const BatchQueryPage = () => {
   }, [geneIds]);
 
   useEffect(() => {
-    // case 1: user updated input
-    if (!!geneIds && formSubmitted === true) {
+    // case 1: user updated input (list or file)
+    if ((!!geneIds || !!file) && formSubmitted === true) {
       setFormSubmitted(false);
     }
-  }, [geneIds, formSubmitted]);
+  }, [geneIds, formSubmitted, file]);
 
   const getBody = () => {
     let body;
-    if (!!file) {
+    if (tab === "upload-your-list") {
       const data = new FormData();
       data.append("file", file);
       body = data;
@@ -187,11 +229,11 @@ const BatchQueryPage = () => {
   };
 
   const { data: results, isFetching } = useQuery({
-    queryKey: ["batch-query", geneIdArray],
+    queryKey: ["batch-query", geneIdArray, file, tab],
     queryFn: () => {
       const headers = new Headers();
       headers.append("Accept", "application/json");
-      if (geneIdArray.length > 0) {
+      if (tab === "paste-your-list") {
         headers.append("Content-Type", "application/json");
       }
       const body = getBody();
@@ -273,6 +315,10 @@ const BatchQueryPage = () => {
         results[geneSymbol].allSigSystems = [...sigSystemsSet];
         results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
         results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
+        results[geneSymbol].alleles.sort(
+          (a1, a2) =>
+            a2.significantPhenotypes.length - a1.significantPhenotypes.length
+        );
       }
       return Object.entries(results).map(([geneSymbol, geneData]) => {
         return {
@@ -329,6 +375,20 @@ const BatchQueryPage = () => {
     [state, geneIds, file]
   );
 
+  const updateSelectedSystems = (selectedOptions) => {
+    setSelectedSystems(selectedOptions.map((opt) => opt.value));
+  };
+
+  const filteredData = useMemo(() => {
+    return selectedSystems.length
+      ? results.filter((gene) =>
+          selectedSystems.every((system) => gene.allSigSystems.includes(system))
+        )
+      : results;
+  }, [selectedSystems, results]);
+
+  const sortedData = orderBy(filteredData, sortOptions.prop, sortOptions.order);
+
   return (
     <>
       <Head>
@@ -342,7 +402,7 @@ const BatchQueryPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>IMPC Dataset Batch Query</strong>
           </h1>
-          <Tabs className="mt-4">
+          <Tabs className="mt-4" onSelect={(e) => setTab(e)}>
             <Tab eventKey="paste-your-list" title="Paste your list">
               <Form className="mt-3">
                 <Form.Group>
@@ -384,10 +444,20 @@ const BatchQueryPage = () => {
             {formSubmitted && (geneIdArray?.length === 0 || file === null) && (
               <Alert variant="warning">Please enter a list of ID's</Alert>
             )}
+            {geneIdArray?.length >= 1000 && (
+              <Alert variant="warning">
+                If your list exceed 1,000 Id's, please save them in a text file
+                and upload it.
+              </Alert>
+            )}
             <button
               onClick={() => setFormSubmitted(true)}
               className="btn impc-primary-button"
-              disabled={isFetching || downloadButtonIsBusy}
+              disabled={
+                isFetching ||
+                downloadButtonIsBusy ||
+                geneIdArray?.length >= 1000
+              }
             >
               Submit
             </button>
@@ -403,63 +473,115 @@ const BatchQueryPage = () => {
               <LoadingProgressBar />
             </div>
           )}
-          {!!results ? (
+          {!!filteredData ? (
             <>
-              <SortableTable
-                headers={[
-                  { width: 1, label: "MGI accession id", field: "geneId" },
-                  { width: 1, label: "Marker symbol", field: "geneSymbol" },
-                  {
-                    width: 1,
-                    label: "Human gene symbol",
-                    field: "humanSymbols",
-                  },
-                  { width: 1, label: "Human gene id", field: "humanGeneIds" },
-                  {
-                    width: 1,
-                    label: "# of significant phenotypes",
-                    field: "allPhenotypes",
-                  },
-                  {
-                    width: 1,
-                    label: "# of systems impacted",
-                    field: "allSigSystems",
-                  },
-                  { width: 1, label: "View allele info", disabled: true },
-                ]}
-              >
-                {results.map((geneData) => (
-                  <DataRow geneData={geneData} />
-                ))}
-              </SortableTable>
               <div>
-                <div
-                  className="grey"
-                  style={{
-                    display: "flex",
-                    gap: "0.5rem",
-                    alignItems: "center",
-                  }}
-                >
-                  {downloadButtons.map((button) => (
-                    <button
-                      key={button.key}
-                      className="btn impc-secondary-button small"
-                      onClick={button.toogleFlag}
-                      disabled={button.isBusy}
-                    >
-                      {button.isBusy ? (
-                        <Spinner animation="border" size="sm" />
-                      ) : (
-                        <>
-                          <FontAwesomeIcon icon={faDownload} size="sm" />
-                          {button.key}
-                        </>
-                      )}
-                    </button>
-                  ))}
-                </div>
+                <span className="small grey">
+                  Filter genes by physiological system&nbsp;
+                </span>
+                <Select
+                  isMulti
+                  options={allOptions}
+                  formatOptionLabel={formatOptionLabel}
+                  onChange={updateSelectedSystems}
+                />
               </div>
+              {!!sortedData.length ? (
+                <>
+                  {!!selectedSystems.length && (
+                    <div className="mt-3">
+                      <b className="small grey">
+                        Showing {sortedData?.length || 0} result(s) of&nbsp;
+                        {results?.length || 0}
+                      </b>
+                    </div>
+                  )}
+                  <Pagination
+                    data={sortedData}
+                    topControlsWrapperCSS={{ marginTop: "1rem" }}
+                  >
+                    {(pageData) => (
+                      <SortableTable
+                        defaultSort={defaultSort}
+                        doSort={(sort) =>
+                          setSortOptions({ prop: sort[0], order: sort[1] })
+                        }
+                        headers={[
+                          {
+                            width: 1,
+                            label: "MGI accession id",
+                            field: "geneId",
+                          },
+                          {
+                            width: 1,
+                            label: "Marker symbol",
+                            field: "geneSymbol",
+                          },
+                          {
+                            width: 1,
+                            label: "Human gene symbol",
+                            field: "humanSymbols",
+                          },
+                          {
+                            width: 1,
+                            label: "Human gene id",
+                            field: "humanGeneIds",
+                          },
+                          {
+                            width: 1,
+                            label: "# of significant phenotypes",
+                            field: "allPhenotypes",
+                          },
+                          {
+                            width: 1,
+                            label: "# of systems impacted",
+                            field: "allSigSystems",
+                          },
+                          {
+                            width: 1,
+                            label: "View allele info",
+                            disabled: true,
+                          },
+                        ]}
+                      >
+                        {pageData.map((geneData) => (
+                          <DataRow geneData={geneData} />
+                        ))}
+                      </SortableTable>
+                    )}
+                  </Pagination>
+                  <div>
+                    <div
+                      className="grey"
+                      style={{
+                        display: "flex",
+                        gap: "0.5rem",
+                        alignItems: "center",
+                      }}
+                    >
+                      {downloadButtons.map((button) => (
+                        <button
+                          key={button.key}
+                          className="btn impc-secondary-button small"
+                          onClick={button.toogleFlag}
+                          disabled={button.isBusy}
+                        >
+                          {button.isBusy ? (
+                            <Spinner animation="border" size="sm" />
+                          ) : (
+                            <>
+                              <FontAwesomeIcon icon={faDownload} size="sm" />
+                              {button.key}
+                            </>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <h3 className="mt-3">No genes match the filters selected</h3>
+              )}
             </>
           ) : !isFetching ? (
             <i className="grey">

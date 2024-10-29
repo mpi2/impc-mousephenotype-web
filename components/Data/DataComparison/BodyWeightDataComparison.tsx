@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import SortableTable from "../../SortableTable";
 import { orderBy } from "lodash";
-import { Dataset, DatasetExtra } from "@/models";
+import { Dataset, DatasetExtra, SortType } from "@/models";
 import { groupData, processData, getBackgroundColorForRow } from "./utils";
 import { Button } from "react-bootstrap";
 import { AlleleSymbol } from "@/components";
@@ -34,6 +34,7 @@ const BodyWeightDataComparison = (props: Props) => {
     prop: !!initialSortByProp ? initialSortByProp : "phenotypingCentre",
     order: "asc" as const,
   });
+  const defaultSort: SortType = useMemo(() => ["phenotypingCentre", "asc"], []);
   const sorted = orderBy(processed, sortOptions.prop, sortOptions.order);
 
   const visibleData: Array<DatasetExtra> = useMemo(
@@ -70,7 +71,7 @@ const BodyWeightDataComparison = (props: Props) => {
               order: sort[1],
             });
           }}
-          defaultSort={["phenotypingCentre", "asc"]}
+          defaultSort={defaultSort}
           headers={tableHeaders}
         >
           {visibleData.map((d, i) => {

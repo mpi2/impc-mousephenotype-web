@@ -1,7 +1,7 @@
 import { orderBy } from "lodash";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useMemo, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
 import Card from "../../Card";
@@ -15,6 +15,7 @@ import { AlleleSymbol, SectionHeader } from "@/components";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 import { useGeneOrderQuery } from "@/hooks";
 import { GeneOrder } from "@/models/gene";
+import { SortType } from "@/models";
 
 type OrderProps = {
   allelesStudied: Array<string>;
@@ -31,6 +32,7 @@ const Order = ({
   const [sorted, setSorted] = useState<any[]>(
     orderBy(orderDataFromServer, "alleleSymbol", "asc")
   );
+  const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const { setNumOfAlleles } = useContext(NumAllelesContext);
   const {
     isFetching,
@@ -127,7 +129,7 @@ const Order = ({
                 doSort={(sort) => {
                   setSorted(orderBy(sorted, sort[0], sort[1]));
                 }}
-                defaultSort={["alleleSymbol", "asc"]}
+                defaultSort={defaultSort}
                 headers={[
                   { width: 3, label: "MGI Allele", field: "alleleSymbol" },
                   {

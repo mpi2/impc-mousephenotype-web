@@ -8,12 +8,18 @@
     max-height: 2rem;
     margin-right: $xxs;
   }
+  &.noMargin svg {
+    margin-right: 0px;
+  }
 }
 
 .bodySystem {
   @extend .bodySystemNoSpacing;
   margin-right: $xs;
   margin-bottom: $xs;
+  &.noMargin svg {
+    margin-right: 0px;
+  }
 }
 
 .significantBodySystem {

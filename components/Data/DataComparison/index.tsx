@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import { orderBy, has } from "lodash";
 import { formatPValue, getIcon, getSexLabel } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dataset, TableHeader } from "@/models";
+import { Dataset, SortType, TableHeader } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
@@ -85,6 +85,11 @@ const DataComparison = (props: Props) => {
     prop: !!initialSortByProp ? initialSortByProp : "phenotype",
     order: "asc" as const,
   });
+  const defaultSort: SortType = useMemo(() => {
+    return isViabilityChart
+      ? ["parameter", "asc"]
+      : ["pValue_not_considered", "asc"];
+  }, [isViabilityChart]);
   const sorted = orderBy(processed, sortOptions.prop, sortOptions.order);
   if (!data) {
     return null;
@@ -178,11 +183,7 @@ const DataComparison = (props: Props) => {
               doSort={(sort) =>
                 setSortOptions({ prop: sort[0], order: sort[1] })
               }
-              defaultSort={
-                isViabilityChart
-                  ? ["parameter", "asc"]
-                  : ["pValue_not_considered", "asc"]
-              }
+              defaultSort={defaultSort}
               headers={tableHeaders}
             >
               {pageData.map((d, i) => {
