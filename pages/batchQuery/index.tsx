@@ -5,6 +5,7 @@ import {
   AlleleSymbol,
   Card,
   LoadingProgressBar,
+  Pagination,
   SortableTable,
 } from "@/components";
 import { ChangeEvent, useEffect, useMemo, useReducer, useState } from "react";
@@ -484,41 +485,60 @@ const BatchQueryPage = () => {
                       </b>
                     </div>
                   )}
-                  <SortableTable
-                    defaultSort={defaultSort}
-                    doSort={(sort) =>
-                      setSortOptions({ prop: sort[0], order: sort[1] })
-                    }
-                    headers={[
-                      { width: 1, label: "MGI accession id", field: "geneId" },
-                      { width: 1, label: "Marker symbol", field: "geneSymbol" },
-                      {
-                        width: 1,
-                        label: "Human gene symbol",
-                        field: "humanSymbols",
-                      },
-                      {
-                        width: 1,
-                        label: "Human gene id",
-                        field: "humanGeneIds",
-                      },
-                      {
-                        width: 1,
-                        label: "# of significant phenotypes",
-                        field: "allPhenotypes",
-                      },
-                      {
-                        width: 1,
-                        label: "# of systems impacted",
-                        field: "allSigSystems",
-                      },
-                      { width: 1, label: "View allele info", disabled: true },
-                    ]}
+                  <Pagination
+                    data={sortedData}
+                    topControlsWrapperCSS={{ marginTop: "1rem" }}
                   >
-                    {sortedData.map((geneData) => (
-                      <DataRow geneData={geneData} />
-                    ))}
-                  </SortableTable>
+                    {(pageData) => (
+                      <SortableTable
+                        defaultSort={defaultSort}
+                        doSort={(sort) =>
+                          setSortOptions({ prop: sort[0], order: sort[1] })
+                        }
+                        headers={[
+                          {
+                            width: 1,
+                            label: "MGI accession id",
+                            field: "geneId",
+                          },
+                          {
+                            width: 1,
+                            label: "Marker symbol",
+                            field: "geneSymbol",
+                          },
+                          {
+                            width: 1,
+                            label: "Human gene symbol",
+                            field: "humanSymbols",
+                          },
+                          {
+                            width: 1,
+                            label: "Human gene id",
+                            field: "humanGeneIds",
+                          },
+                          {
+                            width: 1,
+                            label: "# of significant phenotypes",
+                            field: "allPhenotypes",
+                          },
+                          {
+                            width: 1,
+                            label: "# of systems impacted",
+                            field: "allSigSystems",
+                          },
+                          {
+                            width: 1,
+                            label: "View allele info",
+                            disabled: true,
+                          },
+                        ]}
+                      >
+                        {pageData.map((geneData) => (
+                          <DataRow geneData={geneData} />
+                        ))}
+                      </SortableTable>
+                    )}
+                  </Pagination>
                   <div>
                     <div
                       className="grey"
