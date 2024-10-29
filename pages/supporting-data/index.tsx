@@ -24,7 +24,7 @@ import { getChartType } from "@/components/Data/Utils";
 import { chartLoadingIndicatorChannel } from "@/eventChannels";
 import { useDebounce } from "usehooks-ts";
 
-const Charts = () => {
+const GeneralChartPage = () => {
   const [selectedKey, setSelectedKey] = useState("");
   const [additionalSummaries, setAdditionalSummaries] = useState<
     Array<Dataset>
@@ -255,4 +255,4 @@ const Charts = () => {
   );
 };
 
-export default Charts;
+export default GeneralChartPage;
