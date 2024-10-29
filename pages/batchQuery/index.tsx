@@ -20,7 +20,11 @@ import {
   toogleFlagPayload,
 } from "@/utils/batchQuery/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronDown,
+  faChevronUp,
+  faDownload,
+} from "@fortawesome/free-solid-svg-icons";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 
@@ -85,7 +89,11 @@ const DataRow = ({ geneData }) => {
         <td>{geneData.allSigSystems.length}</td>
         <td>
           <button className="btn" onClick={() => setOpen(!open)}>
-            {open ? "Close" : "View"}
+            {open ? "Close" : "View"}&nbsp;
+            <FontAwesomeIcon
+              className="link"
+              icon={open ? faChevronUp : faChevronDown}
+            />
           </button>
         </td>
       </tr>
