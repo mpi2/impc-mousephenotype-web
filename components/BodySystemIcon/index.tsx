@@ -292,8 +292,9 @@ export const BodySystem = ({
   noSpacing,
   appendLabel,
   prependLabel,
-  size = '2x',
+  size = "2x",
   onClick,
+  noMargin = false,
 }: {
   isSignificant?: boolean;
   name: string;
@@ -303,7 +304,8 @@ export const BodySystem = ({
   appendLabel?: string;
   prependLabel?: string;
   size?: SizeProp;
-  onClick?: (value: string) => void,
+  onClick?: (value: string) => void;
+  noMargin?: boolean;
 }) => {
   const label = _.capitalize(name.replace(/ phenotype/g, ""));
   const [hovered, setHovered] = useState<boolean>(false);
@@ -315,6 +317,7 @@ export const BodySystem = ({
     [hoverColor]: !isSignificant && shouldUseHoverColor,
     [color]: !isSignificant && !shouldUseHoverColor,
     [styles.significantBodySystem]: isSignificant && !!onClick,
+    [styles.noMargin]: noMargin,
   });
 
   return isSignificant ? (
@@ -323,7 +326,8 @@ export const BodySystem = ({
       onClick={() => onClick(name)}
       data-testid="body-icon"
     >
-      <BodySystemIcon name={name} color={color} size={size} />&nbsp;
+      <BodySystemIcon name={name} color={color} size={size} />
+      &nbsp;
       <span>{label}</span>
     </span>
   ) : (
@@ -342,8 +346,13 @@ export const BodySystem = ({
       }
     >
       {({ ref, ...triggerHandler }) => (
-        <span {...triggerHandler} ref={ref} className={spanStyles} data-testid="body-icon">
-          <BodySystemIcon name={name} color="currentColor" size={size}  />
+        <span
+          {...triggerHandler}
+          ref={ref}
+          className={spanStyles}
+          data-testid="body-icon"
+        >
+          <BodySystemIcon name={name} color="currentColor" size={size} />
         </span>
       )}
     </OverlayTrigger>
