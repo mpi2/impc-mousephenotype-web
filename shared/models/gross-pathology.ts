@@ -1,4 +1,3 @@
-
 export type GrossPathologyDataset = {
   alleleAccessionId: string;
   alleleSymbol: string;
@@ -14,11 +13,14 @@ export type GrossPathologyDataset = {
   zygosity: string;
   normalCounts?: string;
   abnormalCounts?: string;
+  anatomyTerm?: string;
+  specimenCount: number;
 };
 
 export type GrossPathology = {
   id: string;
   mgiGeneAccessionId: string;
   parameterStableId: string;
-  datasets: Array<GrossPathologyDataset>
-}
+  datasets: Array<GrossPathologyDataset>;
+  parameterName: string;
+};

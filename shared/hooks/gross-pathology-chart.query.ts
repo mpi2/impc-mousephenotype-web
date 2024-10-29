@@ -18,8 +18,11 @@ export const useGrossPathologyChartQuery = (
       const filteredData = !!grossPathParameterStableId
         ? data.filter((d) => d.parameterStableId === grossPathParameterStableId)
         : data;
-      let datasetsFiltered = filteredData.flatMap(
-        (byParameter) => byParameter.datasets
+      let datasetsFiltered = filteredData.flatMap((byParameter) =>
+        byParameter.datasets.map((d) => ({
+          ...d,
+          anatomyTerm: byParameter.parameterName,
+        }))
       );
 
       datasetsFiltered.forEach((dataset) => {
@@ -49,8 +52,8 @@ export const useGrossPathologyChartQuery = (
         const normalCountsKey = `${dataset.zygosity}-${dataset.phenotypingCenter}-normal`;
         return {
           ...dataset,
-          abnormalCounts: counts[abnormalCountsKey]?.toString() || "N/A",
-          normalCounts: counts[normalCountsKey]?.toString() || "N/A",
+          abnormalCounts: counts[abnormalCountsKey]?.toString() || "0",
+          normalCounts: counts[normalCountsKey]?.toString() || "0",
           specimenCount: specimens.size,
         };
       }) as Array<GrossPathologyDataset>;
