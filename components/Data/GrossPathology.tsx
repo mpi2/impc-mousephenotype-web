@@ -1,7 +1,4 @@
 import { GrossPathologyDataset } from "@/models";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 import { Row, Col, Card } from "react-bootstrap";
 import { SmartTable, PlainTextCell } from "../SmartTable";
 import router from "next/router";
@@ -17,7 +14,6 @@ const GrossPathology = ({ datasetSummary }) => {
 
   return (
     <>
-      {" "}
       <ChartSummary datasetSummary={datasetSummary}>
         A Gross Pathology and Tissue Collection phenotypic assay was performed
         on {data[0] ? data[0].specimenCount : 0} mice. The mutants are for the{" "}
@@ -26,7 +22,6 @@ const GrossPathology = ({ datasetSummary }) => {
       <Row>
         <Col>
           <Card>
-            <br />
             <h2>Observation counts</h2>
             <SmartTable<GrossPathologyDataset>
               data={data}
@@ -35,7 +30,7 @@ const GrossPathology = ({ datasetSummary }) => {
                 {
                   width: 1,
                   label: "Anatomy",
-                  field: "parameterName",
+                  field: "anatomyTerm",
                   cmp: <PlainTextCell />,
                 },
                 {
