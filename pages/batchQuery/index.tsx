@@ -9,11 +9,11 @@ import {
 } from "@/components";
 import { ChangeEvent, useEffect, useMemo, useReducer, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { groupBy, uniq } from "lodash";
+import { groupBy, orderBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
 import Link from "next/link";
 import { BodySystem } from "@/components/BodySystemIcon";
-import { formatAlleleSymbol } from "@/utils";
+import { allBodySystems, formatAlleleSymbol } from "@/utils";
 import {
   initialState,
   reducer,
@@ -25,6 +25,8 @@ import {
   faChevronUp,
   faDownload,
 } from "@fortawesome/free-solid-svg-icons";
+import Select from "react-select";
+import { SortType } from "@/models";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 
@@ -70,6 +72,30 @@ type BatchQueryItem = {
   status: string;
   topLevelPhenotypes: Phenotype[] | null;
   zygosity: string;
+};
+
+type SortOptions = {
+  prop: string | ((any) => void);
+  order: "asc" | "desc";
+};
+
+const allOptions = allBodySystems.map((system) => ({
+  value: system,
+  label: system,
+}));
+
+const formatOptionLabel = ({ value, label }, { context }) => {
+  return (
+    <div style={{ display: "flex", alignItems: "center" }}>
+      <BodySystem
+        name={value}
+        color="system-icon in-table"
+        noSpacing
+        noMargin={context === "value"}
+      />
+      {context === "menu" && <span>{label}</span>}
+    </div>
+  );
 };
 
 const DataRow = ({ geneData }) => {
@@ -167,6 +193,12 @@ const BatchQueryPage = () => {
   const [file, setFile] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [selectedSystems, setSelectedSystems] = useState([]);
+  const [sortOptions, setSortOptions] = useState<SortOptions>({
+    prop: "geneSymbol",
+    order: "asc" as const,
+  });
+  const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
   const downloadButtonIsBusy =
     state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
 
@@ -286,14 +318,12 @@ const BatchQueryPage = () => {
             a2.significantPhenotypes.length - a1.significantPhenotypes.length
         );
       }
-      return Object.entries(results)
-        .map(([geneSymbol, geneData]) => {
-          return {
-            geneSymbol,
-            ...(geneData as any),
-          };
-        })
-        .sort((g1, g2) => g1.geneSymbol.localeCompare(g2.geneSymbol));
+      return Object.entries(results).map(([geneSymbol, geneData]) => {
+        return {
+          geneSymbol,
+          ...(geneData as any),
+        };
+      });
     },
   });
 
@@ -342,6 +372,20 @@ const BatchQueryPage = () => {
     ],
     [state, geneIds, file]
   );
+
+  const updateSelectedSystems = (selectedOptions) => {
+    setSelectedSystems(selectedOptions.map((opt) => opt.value));
+  };
+
+  const filteredData = useMemo(() => {
+    return selectedSystems.length
+      ? results.filter((gene) =>
+          selectedSystems.every((system) => gene.allSigSystems.includes(system))
+        )
+      : results;
+  }, [selectedSystems, results]);
+
+  const sortedData = orderBy(filteredData, sortOptions.prop, sortOptions.order);
 
   return (
     <>
@@ -417,63 +461,96 @@ const BatchQueryPage = () => {
               <LoadingProgressBar />
             </div>
           )}
-          {!!results ? (
+          {!!filteredData ? (
             <>
-              <SortableTable
-                headers={[
-                  { width: 1, label: "MGI accession id", field: "geneId" },
-                  { width: 1, label: "Marker symbol", field: "geneSymbol" },
-                  {
-                    width: 1,
-                    label: "Human gene symbol",
-                    field: "humanSymbols",
-                  },
-                  { width: 1, label: "Human gene id", field: "humanGeneIds" },
-                  {
-                    width: 1,
-                    label: "# of significant phenotypes",
-                    field: "allPhenotypes",
-                  },
-                  {
-                    width: 1,
-                    label: "# of systems impacted",
-                    field: "allSigSystems",
-                  },
-                  { width: 1, label: "View allele info", disabled: true },
-                ]}
-              >
-                {results.map((geneData) => (
-                  <DataRow geneData={geneData} />
-                ))}
-              </SortableTable>
               <div>
-                <div
-                  className="grey"
-                  style={{
-                    display: "flex",
-                    gap: "0.5rem",
-                    alignItems: "center",
-                  }}
-                >
-                  {downloadButtons.map((button) => (
-                    <button
-                      key={button.key}
-                      className="btn impc-secondary-button small"
-                      onClick={button.toogleFlag}
-                      disabled={button.isBusy}
-                    >
-                      {button.isBusy ? (
-                        <Spinner animation="border" size="sm" />
-                      ) : (
-                        <>
-                          <FontAwesomeIcon icon={faDownload} size="sm" />
-                          {button.key}
-                        </>
-                      )}
-                    </button>
-                  ))}
-                </div>
+                <span className="small grey">
+                  Filter genes by physiological system&nbsp;
+                </span>
+                <Select
+                  isMulti
+                  options={allOptions}
+                  formatOptionLabel={formatOptionLabel}
+                  onChange={updateSelectedSystems}
+                />
               </div>
+              {!!sortedData.length ? (
+                <>
+                  {!!selectedSystems.length && (
+                    <div className="mt-3">
+                      <b className="small grey">
+                        Showing {sortedData?.length || 0} result(s) of&nbsp;
+                        {results?.length || 0}
+                      </b>
+                    </div>
+                  )}
+                  <SortableTable
+                    defaultSort={defaultSort}
+                    doSort={(sort) =>
+                      setSortOptions({ prop: sort[0], order: sort[1] })
+                    }
+                    headers={[
+                      { width: 1, label: "MGI accession id", field: "geneId" },
+                      { width: 1, label: "Marker symbol", field: "geneSymbol" },
+                      {
+                        width: 1,
+                        label: "Human gene symbol",
+                        field: "humanSymbols",
+                      },
+                      {
+                        width: 1,
+                        label: "Human gene id",
+                        field: "humanGeneIds",
+                      },
+                      {
+                        width: 1,
+                        label: "# of significant phenotypes",
+                        field: "allPhenotypes",
+                      },
+                      {
+                        width: 1,
+                        label: "# of systems impacted",
+                        field: "allSigSystems",
+                      },
+                      { width: 1, label: "View allele info", disabled: true },
+                    ]}
+                  >
+                    {sortedData.map((geneData) => (
+                      <DataRow geneData={geneData} />
+                    ))}
+                  </SortableTable>
+                  <div>
+                    <div
+                      className="grey"
+                      style={{
+                        display: "flex",
+                        gap: "0.5rem",
+                        alignItems: "center",
+                      }}
+                    >
+                      {downloadButtons.map((button) => (
+                        <button
+                          key={button.key}
+                          className="btn impc-secondary-button small"
+                          onClick={button.toogleFlag}
+                          disabled={button.isBusy}
+                        >
+                          {button.isBusy ? (
+                            <Spinner animation="border" size="sm" />
+                          ) : (
+                            <>
+                              <FontAwesomeIcon icon={faDownload} size="sm" />
+                              {button.key}
+                            </>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <h3 className="mt-3">No genes match the filters selected</h3>
+              )}
             </>
           ) : !isFetching ? (
             <i className="grey">
