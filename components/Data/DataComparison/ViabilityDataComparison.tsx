@@ -4,7 +4,7 @@ import { orderBy } from "lodash";
 import { getIcon, getSexLabel } from "@/utils";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dataset, DatasetExtra } from "@/models";
+import { Dataset, DatasetExtra, SortType } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
@@ -36,6 +36,7 @@ const ViabilityDataComparison = (props: Props) => {
     prop: !!initialSortByProp ? initialSortByProp : "alleleSymbol",
     order: "asc" as const,
   });
+  const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const sorted = orderBy(processed, sortOptions.prop, sortOptions.order);
 
   const visibleData: Array<DatasetExtra> = useMemo(
@@ -69,7 +70,7 @@ const ViabilityDataComparison = (props: Props) => {
         <SortableTable
           className="data-comparison-table"
           doSort={(sort) => setSortOptions({ prop: sort[0], order: sort[1] })}
-          defaultSort={["alleleSymbol", "asc"]}
+          defaultSort={defaultSort}
           headers={tableHeaders}
         >
           {visibleData.map((d, i) => {

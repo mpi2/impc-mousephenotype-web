@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -14,11 +14,13 @@ import { GeneHistopathology } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { GeneContext } from "@/contexts";
 import { AlleleSymbol, SectionHeader } from "@/components";
+import { SortType } from "@/models";
 
 const Histopathology = () => {
   const router = useRouter();
   const gene = useContext(GeneContext);
   const [sorted, setSorted] = useState<any[]>(null);
+  const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
 
   const { isLoading, isError, data, error } = useQuery({
     queryKey: ["genes", router.query.pid, "histopathology"],
@@ -111,7 +113,7 @@ const Histopathology = () => {
             doSort={(sort) => {
               setSorted(_.orderBy(data, sort[0], sort[1]));
             }}
-            defaultSort={["parameterName", "asc"]}
+            defaultSort={defaultSort}
             headers={[
               { width: 4, label: "Phenotype", field: "parameterName" },
               {

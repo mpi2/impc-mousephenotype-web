@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
@@ -15,6 +15,7 @@ import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { DownloadData, SectionHeader } from "@/components";
+import { SortType } from "@/models";
 
 const ALLELES_COUNT = 2;
 const AllelesCell = ({ pub }: { pub: Publication }) => {
@@ -53,6 +54,7 @@ const Publications = ({ gene }: { gene: any }) => {
       return response.content as Array<Publication>;
     },
   });
+  const defaultSort: SortType = useMemo(() => ["title", "asc"], []);
 
   useEffect(() => {
     if (data) {
@@ -140,7 +142,7 @@ const Publications = ({ gene }: { gene: any }) => {
               doSort={(sort) => {
                 setSorted(_.orderBy(data, sort[0], sort[1]));
               }}
-              defaultSort={["title", "asc"]}
+              defaultSort={defaultSort}
               headers={[
                 { width: 5, label: "Title", field: "title" },
                 {
