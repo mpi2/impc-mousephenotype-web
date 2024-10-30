@@ -1,11 +1,12 @@
 import { GeneStatisticalResult } from "@/models/gene";
 import { TableCellProps } from "@/models";
 import styles from "@/components/Gene/Phenotypes/AllData/styles.module.scss";
-import _ from "lodash";
+import { get } from "lodash";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
 import { formatPValue } from "@/utils";
 import { useQueryFlags } from "@/hooks";
+import { useMemo } from "react";
 
 export const ParameterCell = <T extends GeneStatisticalResult>(
   props: TableCellProps<T>
@@ -25,7 +26,7 @@ type PhenotypeIconsCellProps<T> = {
 export const PhenotypeIconsCell = <T extends GeneStatisticalResult>(
   props: PhenotypeIconsCellProps<T>
 ) => {
-  const phenotypes = (_.get(props.value, props.allPhenotypesField) ||
+  const phenotypes = (get(props.value, props.allPhenotypesField) ||
     []) as Array<{ name: string }>;
   return (
     <span
@@ -45,11 +46,11 @@ export const PhenotypeIconsCell = <T extends GeneStatisticalResult>(
   );
 };
 
-type Props<T> = {
+type SupportingDataCellProps<T> = {
   mpTermIdKey?: keyof T;
 } & TableCellProps<T>;
 export const SupportingDataCell = <T extends GeneStatisticalResult>(
-  props: Props<T>
+  props: SupportingDataCellProps<T>
 ) => {
   const {
     mgiGeneAccessionId,
@@ -89,10 +90,17 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
   }
 ) => {
   const { onRefHover = (p1, p2) => {} } = props;
-  const pValue = _.get(props.value, props.field) as number;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
-  const isManualAssociation =
-    props.value.status === "Successful" && pValue === 0;
+
+  const pValue = useMemo(() => {
+    const zeroPValueDataTypes = ["unidimensional", "categorical"];
+    const pValue = formatPValue(get(props.value, props.field) as number);
+    return zeroPValueDataTypes.includes(props.value.dataType)
+      ? pValue
+      : pValue || "N/A";
+  }, [props.value]);
+
+  const isManualAssociation = props.value.assertionType === "manual";
 
   return (
     <span
@@ -104,11 +112,9 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
       }}
     >
       <span data-testid="p-value">
-        {!!pValue && props.value.status === "Successful" ? (
-          formatPValue(pValue)
-        ) : isManualAssociation ? (
+        {isManualAssociation ? (
           <>
-            N/A{" "}
+            N/A&nbsp;
             <sup
               onMouseEnter={() => onRefHover("*", true)}
               onMouseLeave={() => onRefHover("*", false)}
@@ -117,7 +123,7 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
             </sup>
           </>
         ) : (
-          "N/A"
+          pValue
         )}
         &nbsp;
         {isAssociatedToPWG && (
@@ -140,7 +146,7 @@ export const MutantCountCell = <T extends GeneStatisticalResult>(
 ) => {
   const { onRefHover = (p1, p2) => {} } = props;
   const { isNNumbersFootnoteAvailable } = useQueryFlags();
-  const value = _.get(props.value, props.field) as string;
+  const value = get(props.value, props.field) as string;
   const mutantsBelowThreshold =
     props.value.maleMutantCount < props.value.procedureMinMales &&
     props.value.femaleMutantCount < props.value.procedureMinFemales;
