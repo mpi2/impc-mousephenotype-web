@@ -60,13 +60,14 @@ const StatisticalMethodTable = ({
       </WrapperCmp>
     );
   }
-  const genotypeEffectPValue = useMemo(() => {
+
+  const getFormattedPValue = (key: keyof typeof attributes) => {
     const zeroPValueDataTypes = ["unidimensional", "categorical"];
     const pValue = formatPValue(attributes.genotypeEffectPValue);
     return zeroPValueDataTypes.includes(datasetSummary.dataType)
       ? pValue
       : pValue || "N/A";
-  }, [datasetSummary]);
+  };
 
   return (
     <WrapperCmp>
@@ -87,11 +88,7 @@ const StatisticalMethodTable = ({
         </tr>
         <tr>
           <td>Genotype*Sex interaction effect p value </td>
-          <td>
-            {attributes["sexEffectPValue"]
-              ? formatPValue(attributes["sexEffectPValue"])
-              : "N/A"}
-          </td>
+          <td>{getFormattedPValue("sexEffectPValue")}</td>
         </tr>
         <tr>
           <td>Genotype parameter estimate </td>
@@ -111,7 +108,7 @@ const StatisticalMethodTable = ({
         </tr>
         <tr>
           <td>Genotype Effect P Value </td>
-          <td>{genotypeEffectPValue}</td>
+          <td>{getFormattedPValue("genotypeEffectPValue")}</td>
         </tr>
         <tr>
           <td>Sex Parameter Estimate </td>
@@ -131,11 +128,7 @@ const StatisticalMethodTable = ({
         </tr>
         <tr>
           <td>Sex Effect P Value </td>
-          <td>
-            {attributes["sexEffectPValue"]
-              ? formatPValue(attributes["sexEffectPValue"])
-              : "N/A"}
-          </td>
+          <td>{getFormattedPValue("sexEffectPValue")}</td>
         </tr>
         <tr>
           <td>Intercept Estimate </td>
@@ -155,19 +148,11 @@ const StatisticalMethodTable = ({
         </tr>
         <tr>
           <td>Sex Male KO P Value </td>
-          <td>
-            {attributes["maleKoEffectPValue"]
-              ? formatPValue(attributes["maleKoEffectPValue"])
-              : "N/A"}
-          </td>
+          <td>{getFormattedPValue("maleKoEffectPValue")}</td>
         </tr>
         <tr>
           <td>Sex Female KO P Value </td>
-          <td>
-            {attributes["femaleKoEffectPValue"]
-              ? formatPValue(attributes["femaleKoEffectPValue"])
-              : "N/A"}
-          </td>
+          <td>{getFormattedPValue("femaleKoEffectPValue")}</td>
         </tr>
         <tr>
           <td>WT Residuals Normality Tests </td>
