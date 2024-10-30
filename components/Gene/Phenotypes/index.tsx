@@ -168,10 +168,13 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
             />
           </TabContent>
         </Tab>
-        <Tab eventKey="allData" title={`All data (${allDataCount})`}>
+        <Tab
+          eventKey="allData"
+          title={allDataCount === 0 ? "All data" : `All data (${allDataCount})`}
+        >
           <div className="mt-3">
             <AllData
-              routerIsReady={router.isReady}
+              tableIsVisible={router.isReady && tabKey === "allData"}
               onTotalData={setAllDataCount}
               additionalSelectedValues={allDataFilters}
               queryFromURL={allDataQuery}
@@ -191,6 +194,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
               <GraphicalAnalysis
                 mgiGeneAccessionId={gene.mgiGeneAccessionId}
                 routerIsReady={router.isReady}
+                chartIsVisible={tabKey === "measurementsChart"}
               />
             </ErrorBoundary>
           </div>
