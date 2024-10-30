@@ -30,10 +30,18 @@ const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
       c.sampleGroup === "control" &&
       validExperimentalSeriesSexes.includes(c.sex)
   );
-  return sortBy([...controlSeries, ...validExperimentalSeries], "sex", "sampleGroup");
+  return sortBy(
+    [...controlSeries, ...validExperimentalSeries],
+    "sex",
+    "sampleGroup"
+  );
 };
 
-const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
+const Categorical = ({
+  datasetSummary,
+  isVisible,
+  children,
+}: GeneralChartProps) => {
   const { data } = useQuery({
     queryKey: [
       "dataset",
@@ -65,8 +73,11 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
         Object.keys(index[sex]).forEach((sampleGroup) => {
           allData.push({
             sex,
-            sampleGroup: sampleGroup == "experimental" ? datasetSummary["zygosity"] : sampleGroup,
-            categoriesData: index[sex][sampleGroup]
+            sampleGroup:
+              sampleGroup == "experimental"
+                ? datasetSummary["zygosity"]
+                : sampleGroup,
+            categoriesData: index[sex][sampleGroup],
           });
           categories.forEach((category) => {
             const count = index[sex][sampleGroup][category] || 0;
@@ -92,6 +103,14 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
     placeholderData: { series: [] },
   });
 
+  const reportedPValue = formatPValue(datasetSummary["reportedPValue"]);
+  const maleKoEffectPValue = formatPValue(
+    datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"]
+  );
+  const femaleKoEffectPValue = formatPValue(
+    datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"]
+  );
+
   return (
     <>
       <ChartSummary datasetSummary={datasetSummary} />
@@ -104,11 +123,7 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
             />
           </Card>
         </Col>
-        {!!children && (
-          <Col lg={12}>
-            {children}
-          </Col>
-        )}
+        {!!children && <Col lg={12}>{children}</Col>}
         <Col lg={4}>
           <Card>
             <h2>Results of statistical analysis</h2>
@@ -116,41 +131,15 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
               <p className="mb-0">
                 <strong>Combined Male and Female P value</strong>
               </p>
-              <p>
-                {" "}
-                {datasetSummary["reportedPValue"]
-                  ? formatPValue(datasetSummary["reportedPValue"])
-                  : "NA"}
-              </p>
+              <p>{reportedPValue}</p>
               <p className="mb-0">
                 <strong>Males only</strong>
               </p>
-              <p>
-                {datasetSummary["statisticalMethod"]["attributes"][
-                  "maleKoEffectPValue"
-                ]
-                  ? formatPValue(
-                      datasetSummary["statisticalMethod"]["attributes"][
-                        "maleKoEffectPValue"
-                      ]
-                    )
-                  : "NA"}
-              </p>
+              <p>{maleKoEffectPValue}</p>
               <p className="mb-0">
                 <strong>Females only</strong>
               </p>
-              <p>
-                {" "}
-                {datasetSummary["statisticalMethod"]["attributes"][
-                  "femaleKoEffectPValue"
-                ]
-                  ? formatPValue(
-                      datasetSummary["statisticalMethod"]["attributes"][
-                        "femaleKoEffectPValue"
-                      ]
-                    )
-                  : "NA"}
-              </p>
+              <p> {femaleKoEffectPValue}</p>
               <p className="mb-0">
                 <strong>Classification</strong>
               </p>
@@ -166,7 +155,13 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
                 { width: 4, label: "Sample type / Category", disabled: true },
               ].concat(
                 data.dataBySex
-                  .map(({ sex, sampleGroup })  => `${capitalize(sex)} ${getZygosityLabel(datasetSummary.zygosity, sampleGroup)}`)
+                  .map(
+                    ({ sex, sampleGroup }) =>
+                      `${capitalize(sex)} ${getZygosityLabel(
+                        datasetSummary.zygosity,
+                        sampleGroup
+                      )}`
+                  )
                   .map((c) => {
                     return { width: 2, label: c, disabled: true };
                   })
@@ -176,10 +171,12 @@ const Categorical = ({ datasetSummary, isVisible, children }: GeneralChartProps)
                 return (
                   <tr key={`${category}_${index}`}>
                     <td>{category}</td>
-                    {data.dataBySex.map(({ sex, sampleGroup, categoriesData }) =>
-                      <td key={`${sampleGroup}_${sex}_${category}`}>
-                        {categoriesData[category] || 0}
-                      </td>
+                    {data.dataBySex.map(
+                      ({ sex, sampleGroup, categoriesData }) => (
+                        <td key={`${sampleGroup}_${sex}_${category}`}>
+                          {categoriesData[category] || 0}
+                        </td>
+                      )
                     )}
                   </tr>
                 );
