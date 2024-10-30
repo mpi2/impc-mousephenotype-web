@@ -29,4 +29,6 @@ export type GenePhenotypeHits = {
   pValue_female?: number;
   pValue_not_considered?: number;
   datasetsIds?: Array<string>;
+  dataType: string;
+  assertionType: string;
 };

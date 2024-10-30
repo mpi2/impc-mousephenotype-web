@@ -1,6 +1,9 @@
 import { Model, TableCellProps } from "@/models";
-import _ from "lodash";
+import { get } from "lodash";
 import { formatPValue } from "@/utils";
+import { useMemo } from "react";
+
+const zeroPValueDataTypes = ["unidimensional", "categorical"];
 
 const SignificantPValue = <T extends Model>(
   props: TableCellProps<T> & {
@@ -8,7 +11,14 @@ const SignificantPValue = <T extends Model>(
   }
 ) => {
   const { onRefHover = (p1, p2) => {} } = props;
-  const pValue = _.get(props.value, props.field) as number;
+  const pValue = useMemo(() => {
+    const zeroPValueDataTypes = ["unidimensional", "categorical"];
+    const value = formatPValue(get(props.value, props.field) as number);
+    return zeroPValueDataTypes.includes(get(props.value, "dataType") as string)
+      ? value
+      : value || "N/A";
+  }, [props.value]);
+  const isManualAssociation = get(props.value, "assertionType") === "manual";
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
 
   return (
@@ -21,11 +31,9 @@ const SignificantPValue = <T extends Model>(
       }}
     >
       <span data-testid="p-value">
-        {!!pValue ? (
-          formatPValue(pValue)
-        ) : (
+        {isManualAssociation ? (
           <>
-            N/A{" "}
+            N/A&nbsp;
             <sup
               onMouseEnter={() => onRefHover("*", true)}
               onMouseLeave={() => onRefHover("*", false)}
@@ -33,6 +41,8 @@ const SignificantPValue = <T extends Model>(
               *
             </sup>
           </>
+        ) : (
+          pValue
         )}
         &nbsp;
         {isAssociatedToPWG && (
