@@ -734,7 +734,7 @@ const ReleaseNotesPage = (props: Props) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const data = await fetchLandingPageData("release_metadata");
   return {
     props: { releaseMetadata: data },
