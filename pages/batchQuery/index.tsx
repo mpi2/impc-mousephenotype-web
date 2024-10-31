@@ -332,8 +332,8 @@ const BatchQueryPage = () => {
   const fetchAndDownloadData = async (payload: toogleFlagPayload) => {
     if (geneIdArray?.length > 0 || !!file) {
       const headers = new Headers();
-      headers.append("Response-Format", payload.toLowerCase());
-      if (geneIdArray.length > 0) {
+      headers.append("Accept", payload.toLowerCase());
+      if (tab === "paste-your-list") {
         headers.append("Content-Type", "application/json");
       }
       dispatch({ type: "toggle", payload });
@@ -372,7 +372,7 @@ const BatchQueryPage = () => {
         toogleFlag: () => fetchAndDownloadData("XLSX"),
       },
     ],
-    [state, geneIds, file]
+    [state, geneIds, file, tab]
   );
 
   const updateSelectedSystems = (selectedOptions) => {
