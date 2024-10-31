@@ -101,7 +101,8 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
       : pValue || "N/A";
   }, [props.value]);
 
-  const isManualAssociation = props.value.assertionType === "manual";
+  const isManualAssociation =
+    props.value.status === "Successful" && pValue === 0;
 
   return (
     <span
@@ -113,9 +114,10 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
       }}
     >
       <span data-testid="p-value">
-        {isManualAssociation ? (
+        {pValue}
+        {isManualAssociation && (
           <>
-            N/A&nbsp;
+            &nbsp;
             <sup
               onMouseEnter={() => onRefHover("*", true)}
               onMouseLeave={() => onRefHover("*", false)}
@@ -123,8 +125,6 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
               *
             </sup>
           </>
-        ) : (
-          pValue
         )}
         &nbsp;
         {isAssociatedToPWG && (
