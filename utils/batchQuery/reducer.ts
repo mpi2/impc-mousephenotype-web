@@ -3,7 +3,7 @@ type State = {
   isBusyXLSX: boolean;
   isBusyTSV: boolean;
 };
-export type toogleFlagPayload = "JSON" | "XLSX" | "TSV";
+export type toogleFlagPayload = "application/JSON" | "XLSX" | "TSV";
 type toogleFlag = { type: "toggle"; payload: toogleFlagPayload };
 
 type Actions = toogleFlag;

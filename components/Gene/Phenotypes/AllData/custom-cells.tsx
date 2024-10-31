@@ -61,6 +61,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     procedureStableId,
     phenotypingCentre,
     parameterName,
+    procedureName,
   } = props.value;
 
   let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
@@ -69,7 +70,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     url =
       "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
   }
-  if (procedureStableId.includes("IMPC_HIS")) {
+  if (procedureName.includes("Histopathology")) {
     if (parameterName.includes("-")) {
       const tissue = parameterName.split("-")[0]?.trim().toLowerCase();
       url = `/supporting-data/histopath/${mgiGeneAccessionId}?anatomy=${tissue}`;

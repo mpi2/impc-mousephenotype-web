@@ -65,7 +65,7 @@ const getMutantCount = (dataset: GeneStatisticalResult) => {
 };
 
 type Props = {
-  routerIsReady: boolean;
+  tableIsVisible: boolean;
   onTotalData: (arg: number) => void;
   additionalSelectedValues?: SelectedValues;
   queryFromURL: string;
@@ -152,7 +152,7 @@ const AllData = (props: Props) => {
         })),
       } as PaginatedResponse<GeneStatisticalResult>;
     },
-    enabled: props.routerIsReady,
+    enabled: props.tableIsVisible,
   });
 
   const { data: filterData } = useQuery({
@@ -161,7 +161,7 @@ const AllData = (props: Props) => {
       fetchAPI(
         `/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`
       ),
-    enabled: props.routerIsReady,
+    enabled: props.tableIsVisible,
   });
 
   const getDownloadData = () => {
