@@ -332,8 +332,8 @@ const BatchQueryPage = () => {
   const fetchAndDownloadData = async (payload: toogleFlagPayload) => {
     if (geneIdArray?.length > 0 || !!file) {
       const headers = new Headers();
-      headers.append("Response-Format", payload.toLowerCase());
-      if (geneIdArray.length > 0) {
+      headers.append("Accept", payload.toLowerCase());
+      if (tab === "paste-your-list") {
         headers.append("Content-Type", "application/json");
       }
       dispatch({ type: "toggle", payload });
@@ -364,7 +364,7 @@ const BatchQueryPage = () => {
       {
         key: "JSON",
         isBusy: state.isBusyJSON,
-        toogleFlag: () => fetchAndDownloadData("JSON"),
+        toogleFlag: () => fetchAndDownloadData("application/JSON"),
       },
       {
         key: "XLSX",
@@ -372,7 +372,7 @@ const BatchQueryPage = () => {
         toogleFlag: () => fetchAndDownloadData("XLSX"),
       },
     ],
-    [state, geneIds, file]
+    [state, geneIds, file, tab]
   );
 
   const updateSelectedSystems = (selectedOptions) => {
@@ -446,7 +446,7 @@ const BatchQueryPage = () => {
             )}
             {geneIdArray?.length >= 1000 && (
               <Alert variant="warning">
-                If your list exceed 1,000 Id's, please save them in a text file
+                If your list exceeds 1,000 Ids, please save them in a text file
                 and upload it.
               </Alert>
             )}
