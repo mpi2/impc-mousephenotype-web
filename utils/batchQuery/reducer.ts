@@ -17,7 +17,9 @@ export const initialState: State = {
 export function reducer(state: State, action: Actions) {
   switch (action.type) {
     case "toggle":
-      const key: keyof State = `isBusy${action.payload}`;
+      const payload =
+        action.payload === "application/JSON" ? "JSON" : action.payload;
+      const key: keyof State = `isBusy${payload}`;
       return {
         ...state,
         [key]: !state[key],

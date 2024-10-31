@@ -22,7 +22,12 @@ type ChartSeries = {
   sex: "male" | "female";
 };
 
-const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartProps) => {
+const Unidimensional = ({
+  datasetSummary,
+  isVisible,
+  children,
+}: GeneralChartProps) => {
+  console.log(datasetSummary);
 
   const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
     const zygosity = datasetSummary.zygosity;
@@ -48,7 +53,22 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
     isVisible
   );
 
-  const summaryStatistics = useMemo(() => updateSummaryStatistics(data.chartSeries), [data]);
+  const summaryStatistics = useMemo(
+    () => updateSummaryStatistics(data.chartSeries),
+    [data]
+  );
+
+  const combinedPValue = formatPValue(
+    datasetSummary["statisticalMethod"]["attributes"]["genotypeEffectPValue"]
+  );
+
+  const femalePValue = formatPValue(
+    datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"]
+  );
+
+  const malePValue = formatPValue(
+    datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"]
+  );
 
   return (
     <>
@@ -88,11 +108,7 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
         </Col>
       </Row>
       <Row>
-        {!!children && (
-          <Col lg={12}>
-            {children}
-          </Col>
-        )}
+        {!!children && <Col lg={12}>{children}</Col>}
         <Col lg={6}>
           <Card>
             <h2>Results of statistical analysis</h2>
@@ -101,43 +117,15 @@ const Unidimensional = ({ datasetSummary, isVisible, children }: GeneralChartPro
               <p className="mb-0">
                 <strong>Genotype P value</strong>
               </p>
-              <p>
-                {formatPValue(
-                  datasetSummary["statisticalMethod"]["attributes"][
-                    "genotypeEffectPValue"
-                  ]
-                ) || "NA"}
-              </p>
+              <p>{combinedPValue}</p>
               <p className="mb-0">
                 <strong>Genotype*Female P value</strong>
               </p>
-              <p>
-                {" "}
-                {datasetSummary["statisticalMethod"]["attributes"][
-                  "femaleKoEffectPValue"
-                ]
-                  ? formatPValue(
-                      datasetSummary["statisticalMethod"]["attributes"][
-                        "femaleKoEffectPValue"
-                      ]
-                    )
-                  : "NA"}
-              </p>
+              <p>{femalePValue}</p>
               <p className="mb-0">
                 <strong>Genotype*Male P value</strong>
               </p>
-              <p>
-                {" "}
-                {datasetSummary["statisticalMethod"]["attributes"][
-                  "maleKoEffectPValue"
-                ]
-                  ? formatPValue(
-                      datasetSummary["statisticalMethod"]["attributes"][
-                        "maleKoEffectPValue"
-                      ]
-                    )
-                  : "NA"}
-              </p>
+              <p>{malePValue}</p>
               <p className="mb-0">
                 <strong>Classification</strong>
               </p>

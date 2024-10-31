@@ -14,16 +14,21 @@ import { motion, AnimatePresence } from "framer-motion";
 type LastColumnProps = {
   isViabilityChart: boolean;
   dataset: any;
+  hasToPresentZeroPValue: boolean;
 };
 
-const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
+const LastColumn = ({
+  isViabilityChart,
+  dataset,
+  hasToPresentZeroPValue,
+}: LastColumnProps) => {
   return isViabilityChart ? (
     <td>{dataset.viability}</td>
   ) : (
     <>
       {["male", "female", "not_considered"].map((col) => {
         const pValue = dataset[`pValue_${col}`];
-        const isMostSignificant = pValue < 0.0001;
+        const isMostSignificant = pValue < 0.0001 && pValue !== 0;
         return (
           <td
             key={col}
@@ -33,7 +38,7 @@ const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
                 : "bold"
             }
           >
-            {!!dataset[`pValue_${col}`] ? (
+            {!!dataset[`pValue_${col}`] || hasToPresentZeroPValue ? (
               formatPValue(pValue)
             ) : (
               <OverlayTrigger
@@ -60,6 +65,7 @@ type Props = {
   displayPValueColumns?: boolean;
   onSelectParam?: (newValue: string) => void;
   dataIsLoading: boolean;
+  hasToPresentZeroPValue: boolean;
 };
 
 type SortOptions = {
@@ -77,6 +83,7 @@ const DataComparison = (props: Props) => {
     displayPValueColumns = true,
     onSelectParam = (_) => {},
     dataIsLoading,
+    hasToPresentZeroPValue,
   } = props;
 
   const groups = groupData(data);
@@ -236,6 +243,7 @@ const DataComparison = (props: Props) => {
                       <LastColumn
                         dataset={d}
                         isViabilityChart={isViabilityChart}
+                        hasToPresentZeroPValue={hasToPresentZeroPValue}
                       />
                     )}
                   </motion.tr>
