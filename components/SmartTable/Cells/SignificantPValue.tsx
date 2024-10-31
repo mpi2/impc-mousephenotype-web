@@ -3,8 +3,6 @@ import { get } from "lodash";
 import { formatPValue } from "@/utils";
 import { useMemo } from "react";
 
-const zeroPValueDataTypes = ["unidimensional", "categorical"];
-
 const SignificantPValue = <T extends Model>(
   props: TableCellProps<T> & {
     onRefHover?: (refNum: string, active: boolean) => void;

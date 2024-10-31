@@ -101,6 +101,7 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
       : pValue || "N/A";
   }, [props.value]);
 
+  // TODO: update condition after assertionType is added
   const isManualAssociation =
     props.value.status === "Successful" && pValue === 0;
 
