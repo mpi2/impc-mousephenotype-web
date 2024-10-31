@@ -364,7 +364,7 @@ const BatchQueryPage = () => {
       {
         key: "JSON",
         isBusy: state.isBusyJSON,
-        toogleFlag: () => fetchAndDownloadData("JSON"),
+        toogleFlag: () => fetchAndDownloadData("application/JSON"),
       },
       {
         key: "XLSX",
