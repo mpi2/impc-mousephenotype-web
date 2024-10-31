@@ -446,7 +446,7 @@ const BatchQueryPage = () => {
             )}
             {geneIdArray?.length >= 1000 && (
               <Alert variant="warning">
-                If your list exceed 1,000 Id's, please save them in a text file
+                If your list exceeds 1,000 Ids, please save them in a text file
                 and upload it.
               </Alert>
             )}
