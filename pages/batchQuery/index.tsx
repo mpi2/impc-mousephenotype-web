@@ -357,19 +357,9 @@ const BatchQueryPage = () => {
   const downloadButtons = useMemo(
     () => [
       {
-        key: "TSV",
-        isBusy: state.isBusyTSV,
-        toogleFlag: () => fetchAndDownloadData("TSV"),
-      },
-      {
         key: "JSON",
         isBusy: state.isBusyJSON,
         toogleFlag: () => fetchAndDownloadData("application/JSON"),
-      },
-      {
-        key: "XLSX",
-        isBusy: state.isBusyXLSX,
-        toogleFlag: () => fetchAndDownloadData("XLSX"),
       },
     ],
     [state, geneIds, file, tab]
@@ -411,8 +401,7 @@ const BatchQueryPage = () => {
                   </Form.Label>
                   <br />
                   <Form.Text className="text-muted">
-                    Please format your list like this example:
-                    MGI:104785,MGI:97591,etc
+                    Please format your list like this: MGI:104785,MGI:97591
                   </Form.Text>
                   <Form.Control
                     as="textarea"
