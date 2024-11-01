@@ -10,6 +10,7 @@ import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import { allBodySystems } from "@/utils";
 import { ScrollToTopButton } from "@/components";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 const CollectionItem = ({
   name,
@@ -308,4 +309,4 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   );
 };
 
-export default Summary;
+export default sectionWithErrorBoundary(Summary, "Gene summary", "summary");
