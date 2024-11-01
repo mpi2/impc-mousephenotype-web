@@ -10,6 +10,7 @@ import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import { allBodySystems } from "@/utils";
 import { ScrollToTopButton } from "@/components";
+import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 const CollectionItem = ({
   name,
@@ -45,8 +46,8 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   const SYNONYMS_COUNT = 2;
 
   const joined = [
-    ...(gene.significantTopLevelPhenotypes ?? []),
-    ...(gene.notSignificantTopLevelPhenotypes ?? []),
+    ...(gene?.significantTopLevelPhenotypes ?? []),
+    ...(gene?.notSignificantTopLevelPhenotypes ?? []),
   ];
 
   const displaySynonyms = () => {
@@ -59,9 +60,9 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   };
 
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
-  const significantCount = gene.significantTopLevelPhenotypes?.length ?? 0;
+  const significantCount = gene?.significantTopLevelPhenotypes?.length ?? 0;
   const nonSignificantCount =
-    gene.notSignificantTopLevelPhenotypes?.length ?? 0;
+    gene?.notSignificantTopLevelPhenotypes?.length ?? 0;
   const notTestedCount = notTested.length;
   const allCount = allBodySystems.length;
   return (
@@ -142,7 +143,7 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
                   className={styles.bodySystems}
                   data-testid="significantSystemIcons"
                 >
-                  {gene.significantTopLevelPhenotypes.map((x) => (
+                  {gene?.significantTopLevelPhenotypes.map((x) => (
                     <BodySystem
                       key={x}
                       name={x}
@@ -175,7 +176,7 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
                   className={styles.bodySystems}
                   data-testid="notSignificantSystemIcons"
                 >
-                  {gene.notSignificantTopLevelPhenotypes.map((x) => (
+                  {gene?.notSignificantTopLevelPhenotypes.map((x) => (
                     <BodySystem
                       key={x}
                       name={x}
@@ -308,4 +309,4 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
   );
 };
 
-export default Summary;
+export default sectionWithErrorBoundary(Summary, "Gene summary", "summary");
