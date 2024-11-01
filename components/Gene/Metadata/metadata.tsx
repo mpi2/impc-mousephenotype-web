@@ -7,6 +7,9 @@ type MetadataProps = {
   geneSummary: GeneSummary;
 };
 const GeneMetadata = ({ geneSummary }: MetadataProps) => {
+  if (!geneSummary) {
+    return null;
+  }
   const { geneSymbol, geneName, mgiGeneAccessionId } = geneSummary;
   const title = `${geneSymbol} | ${geneName} mouse gene | IMPC`;
   const description = `Discover mouse gene ${geneSymbol} significant phenotypes, expression, images, histopathology and more. Data for gene ${geneSymbol} is freely available to download.`;
