@@ -88,7 +88,7 @@ const CardiovascularLandingPage = () => {
                 This publication page was published when Data Release 11.0 was
                 made available. <br />
                 Most of the sections might be using data from the latest Data
-                Release (21.0)
+                Release.
               </p>
               <hr />
               <Link className="link primary" href="#">
