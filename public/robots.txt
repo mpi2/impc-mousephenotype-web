@@ -17,7 +17,10 @@ User-agent: Brightbot
 Crawl-Delay: 5
 
 User-agent: ChatGPT-User
-Disallow: /
+Crawl-Delay: 5
+
+User-agent: ClaudeBot
+Crawl-Delay: 5
 
 User-agent: DataForSeoBot
 Crawl-Delay: 5
