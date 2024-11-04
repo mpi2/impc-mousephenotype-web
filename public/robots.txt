@@ -1,3 +1,6 @@
+User-agent: AcademicBot
+Crawl-Delay: 5
+
 User-agent: AhrefsBot
 Crawl-Delay: 5
 
@@ -7,7 +10,16 @@ Crawl-Delay: 5
 User-agent: Applebot
 Crawl-Delay: 5
 
+User-agent: Bingbot
+Crawl-Delay: 5
+
 User-agent: Brightbot
+Crawl-Delay: 5
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: DataForSeoBot
 Crawl-Delay: 5
 
 User-agent: DotBot
@@ -19,13 +31,22 @@ Crawl-Delay: 5
 User-agent: Googlebot
 Crawl-Delay: 5
 
+User-agent: MJ12bot
+Crawl-Delay: 5
+
+User-agent: MojeekBot
+Crawl-Delay: 5
+
 User-agent: PerplexityBot
 Crawl-Delay: 5
 
 User-agent: PetalBot
 Crawl-Delay: 5
 
-User-agent: SearchBot
+User-agent: PoeSearchBot
+Crawl-Delay: 5
+
+User-agent: OAI-SearchBot
 Crawl-Delay: 5
 
 User-agent: SemanticScholarBot
@@ -34,14 +55,20 @@ Crawl-Delay: 5
 User-agent: SemrushBot
 Disallow: /
 
-User-agent: ChatGPT-User
-Disallow: /
+User-agent: SeoCherryBot
+Crawl-Delay: 5
 
 User-agent: Slackbot
 Crawl-Delay: 5
 
 User-agent: YandexBot
 Disallow: /
+
+User-agent: YandexRenderResourcesBot
+Crawl-Delay: 5
+
+User-agent: academicbot
+Crawl-Delay: 5
 
 User-agent: amazonbot
 Crawl-Delay: 5
@@ -52,10 +79,19 @@ Crawl-Delay: 5
 User-agent: bingbot
 Crawl-Delay: 5
 
+User-agent: bitlybot
+Crawl-Delay: 5
+
 User-agent: dotbot
 Crawl-Delay: 5
 
 User-agent: gptbot
+Crawl-Delay: 5
+
+User-agent: mj12bot
+Crawl-Delay: 5
+
+User-agent: node-fetch
 Crawl-Delay: 5
 
 User-agent: petalbot
