@@ -1,6 +1,70 @@
 User-agent: AhrefsBot
 Crawl-Delay: 5
 
+User-agent: Amazonbot
+Crawl-Delay: 5
+
+User-agent: Applebot
+Crawl-Delay: 5
+
+User-agent: Brightbot
+Crawl-Delay: 5
+
+User-agent: DotBot
+Crawl-Delay: 5
+
+User-agent: GPTBot
+Crawl-Delay: 5
+
+User-agent: Googlebot
+Crawl-Delay: 5
+
+User-agent: PerplexityBot
+Crawl-Delay: 5
+
+User-agent: PetalBot
+Crawl-Delay: 5
+
+User-agent: SearchBot
+Crawl-Delay: 5
+
+User-agent: SemanticScholarBot
+Crawl-Delay: 5
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Slackbot
+Crawl-Delay: 5
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: amazonbot
+Crawl-Delay: 5
+
+User-agent: applebot
+Crawl-Delay: 5
+
+User-agent: bingbot
+Crawl-Delay: 5
+
+User-agent: dotbot
+Crawl-Delay: 5
+
+User-agent: gptbot
+Crawl-Delay: 5
+
+User-agent: petalbot
+Crawl-Delay: 5
+
+User-agent: searchbot
+Crawl-Delay: 5
+
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
+
