@@ -174,7 +174,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
         >
           <div className="mt-3">
             <AllData
-              tableIsVisible={router.isReady && tabKey === "allData"}
+              tableIsVisible
               onTotalData={setAllDataCount}
               additionalSelectedValues={allDataFilters}
               queryFromURL={allDataQuery}
