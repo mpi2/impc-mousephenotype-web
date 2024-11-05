@@ -11,6 +11,8 @@ export const PROTOTYPE_API_URL =
 export const DEV_API_ROOT = process.env.NEXT_PUBLIC_DEV_API_ROOT || "";
 export const PROD_API_ROOT = process.env.NEXT_PUBLIC_PROD_API_ROOT || "";
 
+const httpCodesError500 = [500, 501, 502, 503, 504, 506];
+
 export async function fetchAPI(query: string) {
   let domain: string;
   if (location.hostname === "nginx.mousephenotype-dev.org") {
@@ -28,6 +30,9 @@ export async function fetchAPI(query: string) {
     if (response.status === 204 || response.status === 404) {
       return Promise.reject("No content");
     }
+    if (httpCodesError500.includes(response.status)) {
+      return Promise.reject(`500 error - ${response.status}`);
+    }
     if (!response.ok) {
       return Promise.reject(`An error has occured: ${response.status}`);
     }
@@ -44,6 +49,9 @@ export async function fetchAPIFromServer(query: string) {
     const response = await fetch(endpointURL);
     if (response.status === 204 || response.status === 404) {
       return Promise.reject("No content");
+    }
+    if (httpCodesError500.includes(response.status)) {
+      return Promise.reject(`500 error - ${response.status}`);
     }
     if (!response.ok) {
       return Promise.reject(`An error has occured: ${response.status}`);
