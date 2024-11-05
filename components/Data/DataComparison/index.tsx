@@ -14,14 +14,9 @@ import { motion, AnimatePresence } from "framer-motion";
 type LastColumnProps = {
   isViabilityChart: boolean;
   dataset: any;
-  hasToPresentZeroPValue: boolean;
 };
 
-const LastColumn = ({
-  isViabilityChart,
-  dataset,
-  hasToPresentZeroPValue,
-}: LastColumnProps) => {
+const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
   return isViabilityChart ? (
     <td>{dataset.viability}</td>
   ) : (
@@ -65,7 +60,6 @@ type Props = {
   displayPValueColumns?: boolean;
   onSelectParam?: (newValue: string) => void;
   dataIsLoading: boolean;
-  hasToPresentZeroPValue: boolean;
 };
 
 type SortOptions = {
@@ -83,7 +77,6 @@ const DataComparison = (props: Props) => {
     displayPValueColumns = true,
     onSelectParam = (_) => {},
     dataIsLoading,
-    hasToPresentZeroPValue,
   } = props;
 
   const groups = groupData(data);
@@ -243,7 +236,6 @@ const DataComparison = (props: Props) => {
                       <LastColumn
                         dataset={d}
                         isViabilityChart={isViabilityChart}
-                        hasToPresentZeroPValue={hasToPresentZeroPValue}
                       />
                     )}
                   </motion.tr>
