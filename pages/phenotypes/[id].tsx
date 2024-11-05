@@ -86,9 +86,15 @@ const Phenotype = (props: PhenotypePageProps) => {
 
 export async function getServerSideProps(context) {
   const { id: phenotypeId } = context.params;
-  const data = await fetchAPIFromServer(
-    `/api/v1/phenotypes/${phenotypeId}/summary`
-  );
+
+  let data;
+  try {
+    data = await fetchAPIFromServer(
+      `/api/v1/phenotypes/${phenotypeId}/summary`
+    );
+  } catch {
+    return { notFound: true };
+  }
 
   return {
     props: { phenotype: data },
