@@ -96,7 +96,7 @@ const Order = ({
         <SectionHeader
           containerId="#order"
           title="Order Mouse and ES Cells"
-          href="https://dev.mousephenotype.org/help/mouse-production/ordering-products/"
+          href="https://www.mousephenotype.org/help/mouse-production/ordering-products/"
         />
         <Alert variant="primary">No data available for this section.</Alert>
       </Card>
@@ -108,7 +108,7 @@ const Order = ({
       <SectionHeader
         containerId="#order"
         title="Order Mouse and ES Cells"
-        href="https://dev.mousephenotype.org/help/mouse-production/ordering-products/"
+        href="https://www.mousephenotype.org/help/mouse-production/ordering-products/"
       />
       <div className="mb-4">
         <p>

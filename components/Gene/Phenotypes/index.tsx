@@ -145,7 +145,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
       <SectionHeader
         containerId="#data"
         title="Phenotypes"
-        href="https://dev.mousephenotype.org/help/data-visualization/phenotype-pages/"
+        href="https://www.mousephenotype.org/help/data-visualization/gene-pages/significant-phenotypes-measurement-charts-and-all-data-tables/"
       />
       <Tabs activeKey={tabKey} onSelect={(key) => setTabKey(key)}>
         <Tab
