@@ -118,7 +118,7 @@ export async function getServerSideProps(context) {
     fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/order`),
   ]);
 
-  const geneData = results[0].status === "fulfilled" ? results[0].value : {};
+  const geneData = results[0].status === "fulfilled" ? results[0].value : null;
   const sigGeneData =
     results[1].status === "fulfilled"
       ? processGenePhenotypeHitsResponse(results[1].value)
@@ -127,6 +127,11 @@ export async function getServerSideProps(context) {
     results[2].status === "fulfilled"
       ? processGeneOrderResponse(results[2].value)
       : [];
+
+  if (!geneData) {
+    return { notFound: true };
+  }
+
   return {
     props: {
       gene: geneData,
