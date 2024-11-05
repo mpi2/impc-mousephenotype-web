@@ -41,15 +41,16 @@ function MyApp({ Component, pageProps }) {
   if (!shouldRender) {
     return <></>;
   }
-  return (
-    <QueryClientProvider client={queryClient}>
-      <GeneComparatorProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </GeneComparatorProvider>
-    </QueryClientProvider>
-  );
+  const getLayout =
+    Component.getLayout ??
+    ((page) => (
+      <QueryClientProvider client={queryClient}>
+        <GeneComparatorProvider>
+          <Layout>{page}</Layout>
+        </GeneComparatorProvider>
+      </QueryClientProvider>
+    ));
+  return getLayout(<Component {...pageProps} />);
 }
 
 // Only uncomment this method if you have blocking data requirements for
