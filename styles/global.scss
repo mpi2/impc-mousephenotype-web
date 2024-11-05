@@ -70,14 +70,15 @@ h5 {
   margin-top: -$searchOffset;
 }
 
-.primary.link, a.primary {
-  color: #BC4B0A;
+.primary.link,
+a.primary {
+  color: #bc4b0a;
   text-decoration: underline;
   &:hover {
-    color: #9D3E07;
+    color: #9d3e07;
   }
   &:visited {
-    color: #9D3E07;
+    color: #9d3e07;
     text-decoration: underline;
   }
 }
@@ -118,18 +119,18 @@ p:last-child {
 
 .table.table-striped {
   & > thead > tr > * {
-    --bs-table-bg-type: #FFF;
+    --bs-table-bg-type: #fff;
   }
   & > tbody > tr:nth-of-type(even) > * {
-    --bs-table-bg-type: #FFF;
+    --bs-table-bg-type: #fff;
   }
   & > tbody > tr:nth-of-type(odd) > * {
-    --bs-table-bg-type: #EFEFEF;
+    --bs-table-bg-type: #efefef;
   }
 }
 
 .modal-dialog.publications .modal-content {
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 .modal-dialog.modal-85w {
@@ -138,8 +139,8 @@ p:last-child {
 }
 
 ul.pagination .page-item.disabled .page-link {
-  background-color: #FFF;
-  border-color: #FFF;
+  background-color: #fff;
+  border-color: #fff;
 }
 .system-icon.in-table svg {
   font-size: 1.5em;
@@ -191,4 +192,8 @@ ul.pagination .page-item.disabled .page-link {
   flex-direction: column;
   align-items: center;
   z-index: 1;
+}
+
+.list-links-404 li {
+  padding-bottom: 1rem;
 }
