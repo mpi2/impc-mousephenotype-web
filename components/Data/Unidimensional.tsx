@@ -27,8 +27,6 @@ const Unidimensional = ({
   isVisible,
   children,
 }: GeneralChartProps) => {
-  console.log(datasetSummary);
-
   const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
     const zygosity = datasetSummary.zygosity;
     return chartSeries.map((serie) => {
