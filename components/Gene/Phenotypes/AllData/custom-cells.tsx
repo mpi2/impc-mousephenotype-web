@@ -103,7 +103,7 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
 
   // TODO: update condition after assertionType is added
   const isManualAssociation =
-    props.value.status === "Successful" && pValue === 0;
+    props.value.statisticalMethod === "Supplied as data";
 
   return (
     <span
