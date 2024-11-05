@@ -21,6 +21,8 @@ export async function fetchAPI(query: string) {
     domain = DEV_API_ROOT;
   } else if (location.hostname === "nginx.mousephenotype-prod.org") {
     domain = PROD_API_ROOT;
+  } else if (location.hostname === "mousephenotype.org") {
+    domain = PROD_API_ROOT;
   } else {
     domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : API_URL;
   }
