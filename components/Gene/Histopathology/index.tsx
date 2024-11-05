@@ -78,7 +78,7 @@ const Histopathology = () => {
         <SectionHeader
           containerId="#histopathology"
           title="Histopathology"
-          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/"
         />
         <Alert variant="primary">
           There is no histopathology data found for <i>{gene.geneSymbol}</i>.
@@ -92,7 +92,7 @@ const Histopathology = () => {
       <SectionHeader
         containerId="#histopathology"
         title="Histopathology"
-        href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+        href="https://www.mousephenotype.org/help/data-visualization/gene-pages/"
       />
       <p>
         Summary table of phenotypes displayed during the Histopathology

@@ -43,7 +43,6 @@ const Image = ({
   fileType,
   isSpecialFormat,
 }: ImageProps) => {
-
   const router = useRouter();
   const { pid } = router.query;
   const urlSegment = isSpecialFormat ? "download-images" : "images";
@@ -101,7 +100,7 @@ const Images = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#images"
           title="Associated images"
-          href="https://dev.mousephenotype.org/help/programmatic-data-access/images/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/associated-images/"
         />
         <p className="grey">Loading...</p>
       </Card>
@@ -114,7 +113,7 @@ const Images = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#images"
           title="Associated images"
-          href="https://dev.mousephenotype.org/help/programmatic-data-access/images/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/associated-images/"
         />
         <Alert variant="primary">
           There are no images available for {gene.geneSymbol}.
@@ -136,7 +135,7 @@ const Images = ({ gene }: { gene: any }) => {
       <SectionHeader
         containerId="#images"
         title="Associated images"
-        href="https://dev.mousephenotype.org/help/programmatic-data-access/images/"
+        href="https://www.mousephenotype.org/help/data-visualization/gene-pages/associated-images/"
       />
       <div>
         <Row>

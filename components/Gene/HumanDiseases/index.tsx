@@ -270,7 +270,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <p className="grey">Loading...</p>
       </Card>
@@ -283,7 +283,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <Alert variant="primary">No data available for this section</Alert>
       </Card>
@@ -314,7 +314,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <div className="mb-4">
           <p>

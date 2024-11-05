@@ -72,7 +72,7 @@ const Publications = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#publications"
           title="IMPC related publications"
-          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/"
         />
         <p className="grey">Loading...</p>
       </Card>
@@ -85,7 +85,7 @@ const Publications = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#publications"
           title="IMPC related publications"
-          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/"
         />
         <Alert variant="primary">
           No publications found that use IMPC mice or data for the{" "}
