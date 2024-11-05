@@ -28,7 +28,7 @@ const LastColumn = ({
     <>
       {["male", "female", "not_considered"].map((col) => {
         const pValue = dataset[`pValue_${col}`];
-        const isMostSignificant = pValue < 0.0001 && pValue !== 0;
+        const isMostSignificant = pValue < 0.0001;
         return (
           <td
             key={col}
@@ -38,9 +38,7 @@ const LastColumn = ({
                 : "bold"
             }
           >
-            {!!dataset[`pValue_${col}`] || hasToPresentZeroPValue ? (
-              formatPValue(pValue)
-            ) : (
+            {pValue === null || pValue === undefined ? (
               <OverlayTrigger
                 placement="top"
                 trigger={["hover", "focus"]}
@@ -48,6 +46,8 @@ const LastColumn = ({
               >
                 <span className="grey">—</span>
               </OverlayTrigger>
+            ) : (
+              formatPValue(pValue)
             )}
           </td>
         );
