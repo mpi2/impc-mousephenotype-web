@@ -31,4 +31,5 @@ export type GeneStatisticalResult = {
   arrPos?: number;
   dataType: string;
   assertionType: string;
+  statisticalMethod: string;
 };
