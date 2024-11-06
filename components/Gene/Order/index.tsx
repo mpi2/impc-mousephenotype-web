@@ -49,7 +49,8 @@ const Order = ({
       "es cell": "esCell",
       "targeting vector": "targetingVector",
     };
-    return `/alleles/${router.query.pid}/${allele}#${anchorObjs[product]}`;
+    const encodedAllele = encodeURIComponent(allele);
+    return `/alleles/${router.query.pid}/${encodedAllele}#${anchorObjs[product]}`;
   };
 
   const orderData = orderDataFromServer || filtered;
