@@ -42,6 +42,9 @@ export const formatBodySystems = (systems: string[] | string = []) => {
 };
 
 export const formatAlleleSymbol = (allele: string) => {
+  if (!allele) {
+    return ["", ""];
+  }
   return allele.slice(0, allele.length - 1).split("<");
 };
 
