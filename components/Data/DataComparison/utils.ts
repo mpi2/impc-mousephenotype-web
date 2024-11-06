@@ -54,6 +54,14 @@ export const groupData = (data) => {
         acc[key][`pValue_not_considered`] = Number(reportedPValue);
       }
     }
+    if (
+      !sex &&
+      (d.statisticalMethod?.attributes?.genotypeEffectPValue !== null ||
+        d.statisticalMethod?.attributes.genotypeEffectPValue !== undefined)
+    ) {
+      acc[key][`pValue_not_considered`] =
+        d.statisticalMethod?.attributes?.genotypeEffectPValue;
+    }
     return acc;
   }, {});
 };
