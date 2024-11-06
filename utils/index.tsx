@@ -7,32 +7,31 @@ import {
 import { Dataset } from "@/models";
 import moment from "moment";
 
-
 export const allBodySystems = [
-  'adipose tissue phenotype',
-  'behavior/neurological phenotype',
-  'cardiovascular system phenotype',
-  'craniofacial phenotype',
-  'digestive/alimentary phenotype',
-  'embryo phenotype',
-  'endocrine/exocrine gland phenotype',
-  'growth/size/body region phenotype',
-  'hearing/vestibular/ear phenotype',
-  'hematopoietic system phenotype',
-  'homeostasis/metabolism phenotype',
-  'immune system phenotype',
-  'integument phenotype',
-  'limbs/digits/tail phenotype',
-  'liver/biliary system phenotype',
-  'mortality/aging',
-  'muscle phenotype',
-  'nervous system phenotype',
-  'pigmentation phenotype',
-  'renal/urinary system phenotype',
-  'reproductive system phenotype',
-  'respiratory system phenotype',
-  'skeleton phenotype',
-  'vision/eye phenotype'
+  "adipose tissue phenotype",
+  "behavior/neurological phenotype",
+  "cardiovascular system phenotype",
+  "craniofacial phenotype",
+  "digestive/alimentary phenotype",
+  "embryo phenotype",
+  "endocrine/exocrine gland phenotype",
+  "growth/size/body region phenotype",
+  "hearing/vestibular/ear phenotype",
+  "hematopoietic system phenotype",
+  "homeostasis/metabolism phenotype",
+  "immune system phenotype",
+  "integument phenotype",
+  "limbs/digits/tail phenotype",
+  "liver/biliary system phenotype",
+  "mortality/aging",
+  "muscle phenotype",
+  "nervous system phenotype",
+  "pigmentation phenotype",
+  "renal/urinary system phenotype",
+  "reproductive system phenotype",
+  "respiratory system phenotype",
+  "skeleton phenotype",
+  "vision/eye phenotype",
 ];
 export const formatBodySystems = (systems: string[] | string = []) => {
   return _.capitalize(
@@ -43,12 +42,15 @@ export const formatBodySystems = (systems: string[] | string = []) => {
 };
 
 export const formatAlleleSymbol = (allele: string) => {
+  if (!allele) {
+    return ["", ""];
+  }
   return allele.slice(0, allele.length - 1).split("<");
 };
 
 export const formatPValue = (pValue: number) => {
-  if (!pValue) {
-    return 0;
+  if (pValue === null || pValue === undefined) {
+    return null;
   }
   const pValueArray = Number.parseFloat(String(pValue))
     .toExponential(2)
@@ -139,9 +141,9 @@ export const getSmallestPValue = (summaries: Array<Dataset>): number => {
         d.statisticalMethod?.attributes?.femaleKoEffectPValue,
         d.statisticalMethod?.attributes?.maleKoEffectPValue,
         d.reportedPValue,
-      ]
+      ];
     })
-    .filter((value) => !!value);
+    .filter((value) => value !== null || value !== undefined);
   return Math.min(...pValues, 1);
 };
 
@@ -158,9 +160,9 @@ export const getDatasetByKey = (
       colonyId,
       significantPhenotype,
       lifeStageName,
-      sex
+      sex,
     } = dataset;
-    const phenotypeId = significantPhenotype?.id || '';
+    const phenotypeId = significantPhenotype?.id || "";
     const key = `${phenotypeId}-${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}-${lifeStageName}-${sex}`;
     return key === keyToFind;
   });
@@ -424,24 +426,22 @@ export const buildURL = (url: string, params: Record<string, string>) => {
       }
     });
   return newURL;
-}
+};
 
 // Function to check if iframe is loaded
 // Ideally this should go in node-modules but will keep here for dev.
 export const isIframeLoaded = (iframe: HTMLIFrameElement) => {
   console.log("Loading iframe");
   return new Promise((resolve, reject) => {
-      if (!iframe) {
-          reject("No iframe found");
-      }
-      iframe.addEventListener('load', () => resolve(iframe));
-      iframe.addEventListener('error', () => reject("Error loading iframe"));
+    if (!iframe) {
+      reject("No iframe found");
+    }
+    iframe.addEventListener("load", () => resolve(iframe));
+    iframe.addEventListener("error", () => reject("Error loading iframe"));
   });
-}
+};
 
-// Generic htmlEncoder 
+// Generic htmlEncoder
 export const htmlEncode = (id: string) => {
-  return id.replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;");
-}
+  return id.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+};

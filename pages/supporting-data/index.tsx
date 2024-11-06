@@ -126,9 +126,6 @@ const GeneralChartPage = () => {
     [allSummaries]
   );
 
-  const hasToPresentZeroPValue =
-    chartType === "unidimensional" || chartType === "categorical";
-
   const fetchingInProcess = (isFetching || debouncedSpChartLoading) && !isError;
   return (
     <>
@@ -209,7 +206,6 @@ const GeneralChartPage = () => {
               displayPValueThreshold={!isTimeSeries}
               displayPValueColumns={!isTimeSeries}
               dataIsLoading={fetchingInProcess}
-              hasToPresentZeroPValue={hasToPresentZeroPValue}
               {...(isABRChart && { initialSortByProp: "parameterStableId" })}
             />
           )}

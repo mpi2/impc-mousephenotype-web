@@ -221,6 +221,8 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
 
 export async function getServerSideProps(context) {
   const { pid: mgiGeneAccessionId, alleleSymbol } = context.params;
+
+  const encodedAllele = encodeURIComponent(alleleSymbol);
   if (
     !mgiGeneAccessionId ||
     mgiGeneAccessionId === "null" ||
@@ -229,9 +231,15 @@ export async function getServerSideProps(context) {
   ) {
     return { notFound: true };
   }
-  const alleleData = await fetchAPIFromServer(
-    `/api/v1/alleles/${mgiGeneAccessionId}/${alleleSymbol}`
-  );
+  let alleleData;
+
+  try {
+    alleleData = await fetchAPIFromServer(
+      `/api/v1/alleles/${mgiGeneAccessionId}/${encodedAllele}`
+    );
+  } catch {
+    return { notFound: true };
+  }
   return {
     props: { alleleData },
   };

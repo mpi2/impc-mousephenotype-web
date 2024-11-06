@@ -14,21 +14,16 @@ import { motion, AnimatePresence } from "framer-motion";
 type LastColumnProps = {
   isViabilityChart: boolean;
   dataset: any;
-  hasToPresentZeroPValue: boolean;
 };
 
-const LastColumn = ({
-  isViabilityChart,
-  dataset,
-  hasToPresentZeroPValue,
-}: LastColumnProps) => {
+const LastColumn = ({ isViabilityChart, dataset }: LastColumnProps) => {
   return isViabilityChart ? (
     <td>{dataset.viability}</td>
   ) : (
     <>
       {["male", "female", "not_considered"].map((col) => {
         const pValue = dataset[`pValue_${col}`];
-        const isMostSignificant = pValue < 0.0001 && pValue !== 0;
+        const isMostSignificant = pValue < 0.0001;
         return (
           <td
             key={col}
@@ -38,9 +33,7 @@ const LastColumn = ({
                 : "bold"
             }
           >
-            {!!dataset[`pValue_${col}`] || hasToPresentZeroPValue ? (
-              formatPValue(pValue)
-            ) : (
+            {pValue === null || pValue === undefined ? (
               <OverlayTrigger
                 placement="top"
                 trigger={["hover", "focus"]}
@@ -48,6 +41,8 @@ const LastColumn = ({
               >
                 <span className="grey">—</span>
               </OverlayTrigger>
+            ) : (
+              formatPValue(pValue)
             )}
           </td>
         );
@@ -65,7 +60,6 @@ type Props = {
   displayPValueColumns?: boolean;
   onSelectParam?: (newValue: string) => void;
   dataIsLoading: boolean;
-  hasToPresentZeroPValue: boolean;
 };
 
 type SortOptions = {
@@ -83,7 +77,6 @@ const DataComparison = (props: Props) => {
     displayPValueColumns = true,
     onSelectParam = (_) => {},
     dataIsLoading,
-    hasToPresentZeroPValue,
   } = props;
 
   const groups = groupData(data);
@@ -211,30 +204,42 @@ const DataComparison = (props: Props) => {
                     <td>{d.zygosity}</td>
                     {displayPValueColumns && (
                       <td>
-                        {["male", "female", "not_considered"]
-                          .filter(
-                            (sex) =>
-                              has(d, `pValue_${sex}`) &&
-                              !!d[`pValue_${sex}`] &&
-                              d[`pValue_${sex}`] < 0.0001
-                          )
-                          .map((significantSex, index) => (
+                        {d.phenotypeSex?.map((significantSex, index) => (
+                          <OverlayTrigger
+                            key={index}
+                            placement="top"
+                            trigger={["hover", "focus"]}
+                            overlay={
+                              <Tooltip>{getSexLabel(significantSex)}</Tooltip>
+                            }
+                          >
+                            <span className="me-2">
+                              <FontAwesomeIcon
+                                icon={getIcon(significantSex)}
+                                size="lg"
+                              />
+                            </span>
+                          </OverlayTrigger>
+                        ))}
+                        {d["pValue_not_considered"] !== null &&
+                          d["pValue_not_considered"] !== undefined && (
                             <OverlayTrigger
-                              key={index}
                               placement="top"
                               trigger={["hover", "focus"]}
                               overlay={
-                                <Tooltip>{getSexLabel(significantSex)}</Tooltip>
+                                <Tooltip>
+                                  {getSexLabel("not_considered")}
+                                </Tooltip>
                               }
                             >
                               <span className="me-2">
                                 <FontAwesomeIcon
-                                  icon={getIcon(significantSex)}
+                                  icon={getIcon("not_considered")}
                                   size="lg"
                                 />
                               </span>
                             </OverlayTrigger>
-                          ))}
+                          )}
                       </td>
                     )}
                     <td>{d.lifeStageName}</td>
@@ -243,7 +248,6 @@ const DataComparison = (props: Props) => {
                       <LastColumn
                         dataset={d}
                         isViabilityChart={isViabilityChart}
-                        hasToPresentZeroPValue={hasToPresentZeroPValue}
                       />
                     )}
                   </motion.tr>

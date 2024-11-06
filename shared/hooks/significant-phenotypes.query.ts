@@ -38,7 +38,7 @@ export const processGenePhenotypeHitsResponse = (
       group[key] = {
         ...item,
         [pValueKey]: pValue,
-        topLevelPhenotypeName: item.topLevelPhenotypes?.[0]?.name,
+        topLevelPhenotypeName: item.topLevelPhenotypes?.[0]?.name || null,
         phenotypeName: item.phenotype.name,
         id: item.phenotype.id,
         phenotypeId: item.phenotype.id,

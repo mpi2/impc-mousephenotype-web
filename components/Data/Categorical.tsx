@@ -103,13 +103,16 @@ const Categorical = ({
     placeholderData: { series: [] },
   });
 
-  const reportedPValue = formatPValue(datasetSummary["reportedPValue"]);
-  const maleKoEffectPValue = formatPValue(
-    datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"]
-  );
-  const femaleKoEffectPValue = formatPValue(
-    datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"]
-  );
+  const reportedPValue =
+    formatPValue(datasetSummary["reportedPValue"]) || "N/A";
+  const maleKoEffectPValue =
+    formatPValue(
+      datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"]
+    ) || "N/A";
+  const femaleKoEffectPValue =
+    formatPValue(
+      datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"]
+    ) || "N/A";
 
   return (
     <>
