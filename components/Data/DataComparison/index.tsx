@@ -204,7 +204,7 @@ const DataComparison = (props: Props) => {
                     <td>{d.zygosity}</td>
                     {displayPValueColumns && (
                       <td>
-                        {d.phenotypeSex.map((significantSex, index) => (
+                        {d.phenotypeSex?.map((significantSex, index) => (
                           <OverlayTrigger
                             key={index}
                             placement="top"
