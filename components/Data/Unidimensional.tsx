@@ -56,17 +56,20 @@ const Unidimensional = ({
     [data]
   );
 
-  const combinedPValue = formatPValue(
-    datasetSummary["statisticalMethod"]["attributes"]["genotypeEffectPValue"]
-  );
+  const combinedPValue =
+    formatPValue(
+      datasetSummary["statisticalMethod"]["attributes"]["genotypeEffectPValue"]
+    ) || "N/A";
 
-  const femalePValue = formatPValue(
-    datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"]
-  );
+  const femalePValue =
+    formatPValue(
+      datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"]
+    ) || "N/A";
 
-  const malePValue = formatPValue(
-    datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"]
-  );
+  const malePValue =
+    formatPValue(
+      datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"]
+    ) || "N/A";
 
   return (
     <>

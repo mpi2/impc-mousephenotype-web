@@ -46,8 +46,8 @@ export const formatAlleleSymbol = (allele: string) => {
 };
 
 export const formatPValue = (pValue: number) => {
-  if (!pValue) {
-    return 0;
+  if (pValue === null || pValue === undefined) {
+    return null;
   }
   const pValueArray = Number.parseFloat(String(pValue))
     .toExponential(2)
