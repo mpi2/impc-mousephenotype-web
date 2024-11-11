@@ -73,7 +73,7 @@ const formatOptionLabel = ({ value, label }, { context }) => {
 
 const DataRow = ({ geneData }: { geneData: BatchQueryItem }) => {
   const [open, setOpen] = useState(false);
-  const { geneId, humanGeneIds, humanGeneSymbols } = geneData;
+  const { mouseGeneSymbol, geneId, humanGeneIds, humanGeneSymbols } = geneData;
   return (
     <>
       <tr>
@@ -82,9 +82,9 @@ const DataRow = ({ geneData }: { geneData: BatchQueryItem }) => {
             {geneId}
           </Link>
         </td>
-        <td>{geneData.mouseGeneSymbol}</td>
-        <td>{humanGeneIds.toString() || "info not available"}</td>
-        <td>{humanGeneSymbols.toString() || "info not available"}</td>
+        <td>{mouseGeneSymbol}</td>
+        <td>{humanGeneIds?.toString() || "data not available"}</td>
+        <td>{humanGeneSymbols?.toString() || "data not available"}</td>
         <td>{geneData.allSignificantPhenotypes.length}</td>
         <td>{geneData.allSignificantSystems.length}</td>
         <td>
@@ -149,6 +149,8 @@ const DataRow = ({ geneData }: { geneData: BatchQueryItem }) => {
                           noSpacing
                         />
                       ))}
+                      {alleleData.significantSystems.length === 0 &&
+                        "No significant system associated"}
                     </td>
                     <td>{alleleData.significantPhenotypes.length}</td>
                   </tr>
@@ -169,11 +171,11 @@ const BatchQueryPage = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [selectedSystems, setSelectedSystems] = useState([]);
   const [sortOptions, setSortOptions] = useState<SortOptions>({
-    prop: "geneSymbol",
+    prop: "mouseGeneSymbol",
     order: "asc" as const,
   });
   const [tab, setTab] = useState("paste-your-list");
-  const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
+  const defaultSort: SortType = useMemo(() => ["mouseGeneSymbol", "asc"], []);
   const downloadButtonIsBusy =
     state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
 
@@ -273,7 +275,20 @@ const BatchQueryPage = () => {
       : results;
   }, [selectedSystems, results]);
 
-  const sortedData = orderBy(filteredData, sortOptions.prop, sortOptions.order);
+  const sortedData = useMemo(() => {
+    if (
+      sortOptions.prop === "allSignificantPhenotypes" ||
+      sortOptions.prop === "allSignificantSystems"
+    ) {
+      const { prop, order } = sortOptions;
+      return filteredData.sort((a, b) =>
+        order === "asc"
+          ? a[prop].length - b[prop].length
+          : b[prop].length - a[prop].length
+      );
+    }
+    return orderBy(filteredData, sortOptions.prop, sortOptions.order);
+  }, [filteredData, sortOptions]);
 
   return (
     <>
@@ -400,12 +415,12 @@ const BatchQueryPage = () => {
                           {
                             width: 1,
                             label: "Marker symbol",
-                            field: "geneSymbol",
+                            field: "mouseGeneSymbol",
                           },
                           {
                             width: 1,
                             label: "Human gene symbol",
-                            field: "humanSymbols",
+                            field: "humanGeneSymbols",
                           },
                           {
                             width: 1,
@@ -415,12 +430,12 @@ const BatchQueryPage = () => {
                           {
                             width: 1,
                             label: "# of significant phenotypes",
-                            field: "allPhenotypes",
+                            field: "allSignificantPhenotypes",
                           },
                           {
                             width: 1,
                             label: "# of systems impacted",
-                            field: "allSigSystems",
+                            field: "allSignificantSystems",
                           },
                           {
                             width: 1,
