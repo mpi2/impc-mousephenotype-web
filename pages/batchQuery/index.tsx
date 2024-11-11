@@ -10,8 +10,7 @@ import {
 } from "@/components";
 import { ChangeEvent, useEffect, useMemo, useReducer, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { groupBy, orderBy, uniq } from "lodash";
-import { maybe } from "acd-utils";
+import { orderBy } from "lodash";
 import Link from "next/link";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { allBodySystems, formatAlleleSymbol } from "@/utils";
@@ -31,48 +30,21 @@ import { SortType } from "@/models";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 
-type Phenotype = {
-  id: string;
-  name: string;
-};
-
 type BatchQueryItem = {
-  alleleAccessionId: string;
-  alleleName: string;
-  alleleSymbol: string;
-  dataType: string;
-  displayPhenotype: Phenotype | null;
-  effectSize: null | string;
-  femaleMutantCount: number | null;
-  hgncGeneAccessionId: string;
-  humanGeneSymbol: string;
-  humanPhenotypes: any[];
-  id: string;
-  intermediatePhenotypes: Phenotype[] | null;
-  lifeStageName: string;
-  maleMutantCount: number | null;
-  metadataGroup: string;
-  mgiGeneAccessionId: string;
-  pValue: null | string;
-  parameterName: string;
-  parameterStableId: string;
-  phenotypeSexes: string[] | null;
-  phenotypingCentre: string;
-  pipelineStableId: string;
-  potentialPhenotypes: Phenotype[] | null;
-  procedureMinAnimals: number | null;
-  procedureMinFemales: number | null;
-  procedureMinMales: number | null;
-  procedureName: string;
-  procedureStableId: string;
-  projectName: string;
-  significant: boolean;
-  significantPhenotype: Phenotype | null;
-  statisticalMethod: null | string;
-  statisticalResultId: string;
-  status: string;
-  topLevelPhenotypes: Phenotype[] | null;
-  zygosity: string;
+  geneId: string;
+  mouseGeneSymbol: string;
+  humanGeneIds: string | Array<string>;
+  humanGeneSymbols: string | Array<string>;
+  allSignificantSystems: Array<string>;
+  allSignificantPhenotypes: Array<string>;
+  alleles: Array<{
+    allele: string;
+    significantPhenotypes: Array<string>;
+    significantLifeStages: Array<string>;
+    significantSystems: Array<string>;
+    notSignificantPhenotypes: Array<string>;
+    notSignificantSystems: Array<string>;
+  }>;
 };
 
 type SortOptions = {
@@ -99,21 +71,22 @@ const formatOptionLabel = ({ value, label }, { context }) => {
   );
 };
 
-const DataRow = ({ geneData }) => {
+const DataRow = ({ geneData }: { geneData: BatchQueryItem }) => {
   const [open, setOpen] = useState(false);
+  const { geneId, humanGeneIds, humanGeneSymbols } = geneData;
   return (
     <>
       <tr>
         <td>
           <Link className="link primary" href={`/genes/${geneData.geneId}`}>
-            {geneData.geneId}
+            {geneId}
           </Link>
         </td>
-        <td>{geneData.geneSymbol}</td>
-        <td>{geneData.humanSymbols.join(",") || "info not available"}</td>
-        <td>{geneData.humanGeneIds.join(",") || "info not available"}</td>
-        <td>{geneData.allPhenotypes.length}</td>
-        <td>{geneData.allSigSystems.length}</td>
+        <td>{geneData.mouseGeneSymbol}</td>
+        <td>{humanGeneIds.toString() || "info not available"}</td>
+        <td>{humanGeneSymbols.toString() || "info not available"}</td>
+        <td>{geneData.allSignificantPhenotypes.length}</td>
+        <td>{geneData.allSignificantSystems.length}</td>
         <td>
           <button className="btn" onClick={() => setOpen(!open)}>
             {open ? "Close" : "View"}&nbsp;
@@ -228,7 +201,7 @@ const BatchQueryPage = () => {
     return body;
   };
 
-  const { data: results, isFetching } = useQuery({
+  const { data: results, isFetching } = useQuery<Array<BatchQueryItem>>({
     queryKey: ["batch-query", geneIdArray, file, tab],
     queryFn: () => {
       const headers = new Headers();
@@ -248,85 +221,6 @@ const BatchQueryPage = () => {
       (geneIdArray.length > 0 || !!file) &&
       !!formSubmitted &&
       !downloadButtonIsBusy,
-    select: (data: Array<BatchQueryItem>) => {
-      const results = {};
-      const resultsByGene = groupBy(data, "id");
-      for (const [geneId, geneData] of Object.entries(resultsByGene)) {
-        const geneSymbol = geneData[0]?.alleleSymbol.split("<")[0];
-        const resultsByAllele = groupBy(geneData, "alleleSymbol");
-        const sigSystemsSet = new Set<string>();
-        const sigPhenotypesSet = new Set<string>();
-        const lifeStagesSet = new Set<string>();
-        results[geneSymbol] = {
-          humanSymbols: uniq(geneData.map((d) => d.humanGeneSymbol)),
-          humanGeneIds: uniq(geneData.map((d) => d.hgncGeneAccessionId)),
-          geneId,
-          allSigSystems: [],
-          allPhenotypes: [],
-          allSigLifeStages: [],
-          alleles: [],
-        };
-        for (const [allele, alleleData] of Object.entries(resultsByAllele)) {
-          const significantData = alleleData.filter(
-            (d) => d.significant === true
-          );
-          const restOfData = alleleData.filter((d) => d.significant === false);
-          const getSigPhenotypeNames = (data: Array<BatchQueryItem>) => {
-            return data
-              .map((d) =>
-                maybe(d.significantPhenotype)
-                  .map((p) => p.name)
-                  .getOrElse(undefined)
-              )
-              .filter(Boolean);
-          };
-          const getTopLevelPhenotypeNames = (data: Array<BatchQueryItem>) => {
-            return data
-              .flatMap((d) =>
-                maybe(d.topLevelPhenotypes)
-                  .map((systems) => systems.map((s) => s.name))
-                  .getOrElse(undefined)
-              )
-              .filter(Boolean);
-          };
-          const alleleSigPhenotypes = uniq(
-            getSigPhenotypeNames(significantData)
-          );
-          const alleleSigSystems = uniq(
-            getTopLevelPhenotypeNames(significantData)
-          );
-          const alleleSigLifeStages = uniq(
-            significantData.map((d) => d.lifeStageName)
-          );
-
-          alleleSigPhenotypes.forEach((p) => sigPhenotypesSet.add(p));
-          alleleSigSystems.forEach((s) => sigSystemsSet.add(s));
-          alleleSigLifeStages.forEach((l) => lifeStagesSet.add(l));
-
-          results[geneSymbol].alleles.push({
-            significantPhenotypes: alleleSigPhenotypes,
-            otherPhenotypes: uniq(getSigPhenotypeNames(restOfData)),
-            significantLifeStages: alleleSigLifeStages,
-            significantSystems: alleleSigSystems,
-            otherSystems: uniq(getTopLevelPhenotypeNames(restOfData)),
-            allele,
-          });
-        }
-        results[geneSymbol].allSigSystems = [...sigSystemsSet];
-        results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
-        results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
-        results[geneSymbol].alleles.sort(
-          (a1, a2) =>
-            a2.significantPhenotypes.length - a1.significantPhenotypes.length
-        );
-      }
-      return Object.entries(results).map(([geneSymbol, geneData]) => {
-        return {
-          geneSymbol,
-          ...(geneData as any),
-        };
-      });
-    },
   });
 
   const fetchAndDownloadData = async (payload: toogleFlagPayload) => {
@@ -372,7 +266,9 @@ const BatchQueryPage = () => {
   const filteredData = useMemo(() => {
     return selectedSystems.length
       ? results.filter((gene) =>
-          selectedSystems.every((system) => gene.allSigSystems.includes(system))
+          selectedSystems.every((system) =>
+            gene.allSignificantSystems.includes(system)
+          )
         )
       : results;
   }, [selectedSystems, results]);
