@@ -24,7 +24,7 @@ import { useQuery } from "@tanstack/react-query";
 import { orderBy } from "lodash";
 import Link from "next/link";
 import { BodySystem } from "@/components/BodySystemIcon";
-import { allBodySystems, formatAlleleSymbol } from "@/utils";
+import { formatAlleleSymbol } from "@/utils";
 import {
   initialState,
   reducer,
@@ -281,7 +281,8 @@ const BatchQueryPage = () => {
       (geneIdArray.length > 0 || !!file) &&
       !!formSubmitted &&
       !downloadButtonIsBusy,
-    select: (data) => {
+    select: (results: any) => {
+      const { data, notFoundIds } = results;
       return data.map((gene) => ({
         ...gene,
         alleles: gene.alleles.toSorted(
@@ -500,6 +501,9 @@ const BatchQueryPage = () => {
           )}
           {!!filteredData ? (
             <>
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Form.Check type="switch" id="text-mode" label="Only text" />
+              </div>
               <Row>
                 <Col>
                   <div>
@@ -530,17 +534,20 @@ const BatchQueryPage = () => {
               </Row>
               {!!sortedData.length ? (
                 <>
-                  {!!selectedSystems.length && (
-                    <div className="mt-3">
-                      <b className="small grey">
-                        Showing {sortedData?.length || 0} result(s) of&nbsp;
-                        {results?.length || 0}
-                      </b>
-                    </div>
-                  )}
                   <Pagination
                     data={sortedData}
                     topControlsWrapperCSS={{ marginTop: "1rem" }}
+                    additionalTopControls={
+                      (!!selectedSystems.length ||
+                        !!selectedPhenotypes.length) && (
+                        <div>
+                          <b className="small grey">
+                            Showing {sortedData?.length || 0} result(s) of&nbsp;
+                            {results?.length || 0}
+                          </b>
+                        </div>
+                      )
+                    }
                   >
                     {(pageData) => (
                       <SortableTable
