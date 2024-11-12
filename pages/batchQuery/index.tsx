@@ -1,6 +1,17 @@
 import Head from "next/head";
 import Search from "@/components/Search";
-import { Container, Form, Spinner, Tabs, Tab, Alert } from "react-bootstrap";
+import {
+  Container,
+  Form,
+  Spinner,
+  Tabs,
+  Tab,
+  Alert,
+  Modal,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
 import {
   AlleleSymbol,
   Card,
@@ -52,12 +63,12 @@ type SortOptions = {
   order: "asc" | "desc";
 };
 
-const allOptions = allBodySystems.map((system) => ({
-  value: system,
-  label: system,
-}));
+type SelectedAlleleData = {
+  alelleSymbol: string;
+  phenotypes: Array<string>;
+};
 
-const formatOptionLabel = ({ value, label }, { context }) => {
+const formatOptionLabel = ({ value, label, numHits }, { context }) => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
       <BodySystem
@@ -66,12 +77,33 @@ const formatOptionLabel = ({ value, label }, { context }) => {
         noSpacing
         noMargin={context === "value"}
       />
-      {context === "menu" && <span>{label}</span>}
+      {context === "menu" && (
+        <>
+          <span>{label}</span>
+          &nbsp;-&nbsp;<i className="grey small">{numHits} gene(s)</i>
+        </>
+      )}
     </div>
   );
 };
 
-const DataRow = ({ geneData }: { geneData: BatchQueryItem }) => {
+const formatPhenotypeLabel = (option, { context }) => (
+  <div>
+    <span>{option.label}</span>
+    {context === "menu" && (
+      <>
+        &nbsp;-&nbsp;<i className="grey small">{option.numHits} gene(s)</i>
+      </>
+    )}
+  </div>
+);
+
+type DataRowProps = {
+  geneData: BatchQueryItem;
+  onPhenotypeLinkClick: (data: SelectedAlleleData) => void;
+};
+
+const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
   const [open, setOpen] = useState(false);
   const { mouseGeneSymbol, geneId, humanGeneIds, humanGeneSymbols } = geneData;
   return (
@@ -88,13 +120,17 @@ const DataRow = ({ geneData }: { geneData: BatchQueryItem }) => {
         <td>{geneData.allSignificantPhenotypes.length}</td>
         <td>{geneData.allSignificantSystems.length}</td>
         <td>
-          <button className="btn" onClick={() => setOpen(!open)}>
-            {open ? "Close" : "View"}&nbsp;
+          <Button
+            className="impc-secondary-button small"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? "Close" : `${geneData.alleles.length} allele(s)`}
+            &nbsp;
             <FontAwesomeIcon
               className="link"
               icon={open ? faChevronUp : faChevronDown}
             />
-          </button>
+          </Button>
         </td>
       </tr>
       {open && (
@@ -152,7 +188,24 @@ const DataRow = ({ geneData }: { geneData: BatchQueryItem }) => {
                       {alleleData.significantSystems.length === 0 &&
                         "No significant system associated"}
                     </td>
-                    <td>{alleleData.significantPhenotypes.length}</td>
+                    <td>
+                      {alleleData.significantPhenotypes.length > 0 ? (
+                        <Button
+                          className="impc-secondary-button small"
+                          onClick={() =>
+                            onPhenotypeLinkClick({
+                              alelleSymbol: alleleData.allele,
+                              phenotypes: alleleData.significantPhenotypes,
+                            })
+                          }
+                        >
+                          View {alleleData.significantPhenotypes.length}{" "}
+                          phenotype(s)
+                        </Button>
+                      ) : (
+                        0
+                      )}
+                    </td>
                   </tr>
                 );
               })}
@@ -170,14 +223,19 @@ const BatchQueryPage = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [selectedSystems, setSelectedSystems] = useState([]);
+  const [selectedPhenotypes, setSelectedPhenotypes] = useState([]);
   const [sortOptions, setSortOptions] = useState<SortOptions>({
     prop: "mouseGeneSymbol",
     order: "asc" as const,
   });
   const [tab, setTab] = useState("paste-your-list");
+  const [selectedAlleleData, setSelectedAlleleData] =
+    useState<SelectedAlleleData>(null);
   const defaultSort: SortType = useMemo(() => ["mouseGeneSymbol", "asc"], []);
   const downloadButtonIsBusy =
     state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
+
+  const handleClose = () => setSelectedAlleleData(null);
 
   const geneIdArray = useMemo(() => {
     const regex = /(MGI:\d+),?/g;
@@ -223,6 +281,15 @@ const BatchQueryPage = () => {
       (geneIdArray.length > 0 || !!file) &&
       !!formSubmitted &&
       !downloadButtonIsBusy,
+    select: (data) => {
+      return data.map((gene) => ({
+        ...gene,
+        alleles: gene.alleles.toSorted(
+          (a1, a2) =>
+            a2.significantPhenotypes.length - a1.significantPhenotypes.length
+        ),
+      }));
+    },
   });
 
   const fetchAndDownloadData = async (payload: toogleFlagPayload) => {
@@ -265,15 +332,73 @@ const BatchQueryPage = () => {
     setSelectedSystems(selectedOptions.map((opt) => opt.value));
   };
 
+  const updateSelectedPhenotypes = (selectedOptions) => {
+    setSelectedPhenotypes(selectedOptions.map((opt) => opt.value));
+  };
+
   const filteredData = useMemo(() => {
-    return selectedSystems.length
+    let intermediateRes = selectedSystems.length
       ? results.filter((gene) =>
           selectedSystems.every((system) =>
             gene.allSignificantSystems.includes(system)
           )
         )
       : results;
-  }, [selectedSystems, results]);
+    intermediateRes = selectedPhenotypes.length
+      ? intermediateRes.filter((gene) =>
+          selectedPhenotypes.every((phenotype) =>
+            gene.allSignificantPhenotypes.includes(phenotype)
+          )
+        )
+      : intermediateRes;
+    return intermediateRes;
+  }, [results, selectedSystems, selectedPhenotypes]);
+
+  const { systemSelectOptions, phenotypeSelectOptions } = useMemo(() => {
+    if (filteredData?.length) {
+      const phenotypeResultsMap = new Map<string, number>();
+      const systemsMap = new Map<string, number>();
+      filteredData
+        .flatMap((r) => r.allSignificantPhenotypes)
+        .forEach((phenotype) => {
+          if (phenotypeResultsMap.has(phenotype)) {
+            const newVal = phenotypeResultsMap.get(phenotype) + 1;
+            phenotypeResultsMap.set(phenotype, newVal);
+          } else {
+            phenotypeResultsMap.set(phenotype, 1);
+          }
+        });
+      filteredData
+        .flatMap((r) => r.allSignificantSystems)
+        .forEach((system) => {
+          if (systemsMap.has(system)) {
+            const newVal = systemsMap.get(system) + 1;
+            systemsMap.set(system, newVal);
+          } else {
+            systemsMap.set(system, 1);
+          }
+        });
+      const phenotypeSelectOptions = [];
+      const systemSelectOptions = [];
+      for (const [phenotype, numHits] of phenotypeResultsMap) {
+        phenotypeSelectOptions.push({
+          value: phenotype,
+          label: phenotype,
+          numHits,
+        });
+      }
+      for (const [system, numHits] of systemsMap) {
+        systemSelectOptions.push({ value: system, label: system, numHits });
+      }
+      phenotypeSelectOptions.sort((op1, op2) => op2.numHits - op1.numHits);
+      systemSelectOptions.sort((op1, op2) => op2.numHits - op1.numHits);
+      return {
+        phenotypeSelectOptions,
+        systemSelectOptions,
+      };
+    }
+    return { phenotypeSelectOptions: [], systemSelectOptions: [] };
+  }, [filteredData]);
 
   const sortedData = useMemo(() => {
     if (
@@ -375,17 +500,34 @@ const BatchQueryPage = () => {
           )}
           {!!filteredData ? (
             <>
-              <div>
-                <span className="small grey">
-                  Filter genes by physiological system&nbsp;
-                </span>
-                <Select
-                  isMulti
-                  options={allOptions}
-                  formatOptionLabel={formatOptionLabel}
-                  onChange={updateSelectedSystems}
-                />
-              </div>
+              <Row>
+                <Col>
+                  <div>
+                    <span className="small grey">
+                      Filter genes by physiological system&nbsp;
+                    </span>
+                    <Select
+                      isMulti
+                      options={systemSelectOptions}
+                      formatOptionLabel={formatOptionLabel}
+                      onChange={updateSelectedSystems}
+                    />
+                  </div>
+                </Col>
+                <Col>
+                  <div>
+                    <span className="small grey">
+                      Filter genes by significant phenotype&nbsp;
+                    </span>
+                    <Select
+                      isMulti
+                      options={phenotypeSelectOptions}
+                      formatOptionLabel={formatPhenotypeLabel}
+                      onChange={updateSelectedPhenotypes}
+                    />
+                  </div>
+                </Col>
+              </Row>
               {!!sortedData.length ? (
                 <>
                   {!!selectedSystems.length && (
@@ -445,7 +587,10 @@ const BatchQueryPage = () => {
                         ]}
                       >
                         {pageData.map((geneData) => (
-                          <DataRow geneData={geneData} />
+                          <DataRow
+                            geneData={geneData}
+                            onPhenotypeLinkClick={setSelectedAlleleData}
+                          />
                         ))}
                       </SortableTable>
                     )}
@@ -489,6 +634,32 @@ const BatchQueryPage = () => {
             </i>
           ) : null}
         </Card>
+        <Modal size="lg" show={!!selectedAlleleData} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>
+              Phenotypes for&nbsp;
+              <AlleleSymbol
+                symbol={selectedAlleleData?.alelleSymbol}
+                withLabel={false}
+              />
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ul>
+              {selectedAlleleData?.phenotypes.map((phenotype) => (
+                <li>{phenotype}</li>
+              ))}
+            </ul>
+          </Modal.Body>
+          <Modal.Footer>
+            <button
+              className="btn impc-secondary-button small"
+              onClick={handleClose}
+            >
+              Close
+            </button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </>
   );
