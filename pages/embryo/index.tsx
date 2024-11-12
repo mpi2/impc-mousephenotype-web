@@ -21,6 +21,7 @@ import { useEmbryoLandingQuery } from "@/hooks";
 import { useMemo, useState } from "react";
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import Link from "next/link";
+import { SortType } from "@/models";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"),
@@ -36,6 +37,7 @@ const EmbryoLandingPage = () => {
   const { data, isLoading } = useEmbryoLandingQuery();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [listGenes, setListGenes] = useState<SelectedLine>(null);
+  const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
 
   data?.primaryViabilityTable?.sort((a, b) =>
     a.genes.length > b.genes.length ? -1 : 1
@@ -434,7 +436,7 @@ const EmbryoLandingPage = () => {
           <Modal.Body>
             <SmartTable
               data={listGenes?.genes}
-              defaultSort={["geneSymbol", "asc"]}
+              defaultSort={defaultSort}
               columns={[
                 {
                   width: 1,

@@ -29,6 +29,8 @@ import {
 } from "@/components";
 import { ParentSize } from "@visx/responsive";
 import { usePleiotropyQuery } from "@/hooks";
+import { SortType } from "@/models";
+import { useMemo } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -189,6 +191,7 @@ const HearingLandingPage = () => {
   const { data: pleiotropyData, isLoading } = usePleiotropyQuery(
     "hearing/vestibular/ear"
   );
+  const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
   return (
     <>
       <Head>
@@ -368,7 +371,7 @@ const HearingLandingPage = () => {
           <h2>Gene table</h2>
           <SmartTable<GeneHearingData>
             data={data.genes}
-            defaultSort={["geneSymbol", "asc"]}
+            defaultSort={defaultSort}
             columns={[
               {
                 width: 1,

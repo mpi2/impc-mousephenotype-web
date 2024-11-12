@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { useGeneAssociationsQuery } from "@/hooks";
 import { PhenotypeContext } from "@/contexts";
 import { useRouter } from "next/router";
@@ -9,7 +9,7 @@ import {
   SmartTable,
 } from "@/components/SmartTable";
 import { PhenotypeGenotypes } from "@/models/phenotype";
-import { TableCellProps } from "@/models";
+import { SortType, TableCellProps } from "@/models";
 import { AlleleSymbol, DownloadData } from "@/components";
 import { formatAlleleSymbol } from "@/utils";
 import { get, orderBy } from "lodash";
@@ -89,6 +89,7 @@ const Associations = () => {
   const router = useRouter();
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>("");
+  const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const { data, isFetching, isError } = useGeneAssociationsQuery(
     phenotype?.phenotypeId,
     router.isReady && !!phenotype,
@@ -154,7 +155,7 @@ const Associations = () => {
       <SmartTable<PhenotypeGenotypes>
         data={data}
         filterFn={filterPhenotype}
-        defaultSort={["alleleSymbol", "asc"]}
+        defaultSort={defaultSort}
         customSortFunction={sortAssociations}
         showLoadingIndicator={isFetching}
         additionalBottomControls={
@@ -190,7 +191,12 @@ const Associations = () => {
             field: "phenotypeName",
             cmp: <PlainTextCell />,
           },
-          { width: 1, label: "Supporting data", cmp: <SupportingDataCell /> },
+          {
+            width: 1,
+            label: "Supporting data",
+            cmp: <SupportingDataCell />,
+            disabled: true,
+          },
           {
             width: 1,
             label: "Zygosity",

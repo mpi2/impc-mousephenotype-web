@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { Alert, Tab, Tabs } from "react-bootstrap";
 import Card from "../../Card";
 import { GeneExpression } from "@/models/gene";
@@ -8,12 +8,14 @@ import { GeneContext } from "@/contexts";
 import { useRouter } from "next/router";
 import { ExpressionCell, ImagesCell } from "./custom-cells";
 import { DownloadData, SectionHeader } from "@/components";
+import { SortType } from "@/models";
 
 const Expressions = () => {
   const router = useRouter();
   const gene = useContext(GeneContext);
   const [tab, setTab] = useState("adultExpressions");
   const [sortOptions, setSortOptions] = useState<string>("");
+  const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
   const { isLoading, isError, data, error } = useGeneExpressionQuery(
     gene.mgiGeneAccessionId,
     router.isReady,
@@ -82,7 +84,7 @@ const Expressions = () => {
       {selectedData.length > 0 ? (
         <SmartTable<GeneExpression>
           data={selectedData}
-          defaultSort={["parameterName", "asc"]}
+          defaultSort={defaultSort}
           filteringEnabled={false}
           columns={[
             {

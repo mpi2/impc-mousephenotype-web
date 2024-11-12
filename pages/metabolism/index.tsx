@@ -4,7 +4,7 @@ import metabolismTableData from "../../mocks/data/landing-pages/metabolism-table
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   PlainTextCell,
   SmartTable,
@@ -21,6 +21,7 @@ import {
 } from "@/components";
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
+import { SortType } from "@/models";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -49,6 +50,7 @@ const MetabolismLandingPage = () => {
   const [parameter, setParameter] = useState<number>(null);
   const [sex, setSex] = useState<"male" | "female">(null);
   const [outlier, setOutlier] = useState<"5" | "95">(null);
+  const defaultSort: SortType = useMemo(() => ["Ratio_KO_WT", "asc"], []);
 
   const setSelection = (
     parameterIndex: number,
@@ -288,7 +290,7 @@ const MetabolismLandingPage = () => {
             {!!hasSelectedACell ? (
               <SmartTable<MetabolismGeneData>
                 data={filteredData}
-                defaultSort={["Ratio_KO_WT", "asc"]}
+                defaultSort={defaultSort}
                 columns={[
                   {
                     width: 1,
