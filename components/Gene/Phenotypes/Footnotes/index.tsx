@@ -9,6 +9,7 @@ type Props = {
 const Footnotes = (props: Props) => {
   const { isNNumbersFootnoteAvailable } = useQueryFlags();
   const { hoveringRef, hasDataRelatedToPWG } = props;
+  const isAllDataTable = props.table === "all-data";
   return (
     <>
       <div style={{ fontSize: "85%", flex: "1 0 100%" }}>
@@ -17,8 +18,14 @@ const Footnotes = (props: Props) => {
             backgroundColor: hoveringRef === "*" ? "#FDF0E5" : "#FFF",
           }}
         >
-          * Does not have a P-value assigned because it was manually marked as
-          significant.
+          {isAllDataTable ? (
+            <>* This parameter was manually assessed for significance.</>
+          ) : (
+            <>
+              * Does not have a P-value assigned because it was manually marked
+              as significant.
+            </>
+          )}
         </span>
       </div>
       {isNNumbersFootnoteAvailable && props.table === "all-data" && (

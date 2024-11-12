@@ -37,6 +37,7 @@ import {
   CallsTrendChart,
   DataPointsTrendChart,
 } from "@/components/ReleasePage";
+import { SortType } from "@/models";
 
 const listOfPastReleases = [
   "21.1",
@@ -128,6 +129,15 @@ const ReleaseNotesPage = (props: Props) => {
 
   const dataReleaseVersion = releaseMetadata.dataReleaseVersion;
   const summaryCounts = releaseMetadata.summaryCounts;
+
+  const linesTableDefaultSort: SortType = useMemo(
+    () => ["phenotypingCentre", "asc"],
+    []
+  );
+  const experimentalDataDefaultSort: SortType = useMemo(
+    () => ["count", "desc"],
+    []
+  );
 
   const unescapeReleaseNotes = (value: string) => {
     return value
@@ -557,7 +567,7 @@ const ReleaseNotesPage = (props: Props) => {
           <SmartTable<SampleCounts>
             data={releaseMetadata.sampleCounts}
             displayPaginationControls={false}
-            defaultSort={["phenotypingCentre", "asc"]}
+            defaultSort={linesTableDefaultSort}
             pagination={{
               totalItems: releaseMetadata.sampleCounts.length,
               onPageChange: () => {},
@@ -598,7 +608,7 @@ const ReleaseNotesPage = (props: Props) => {
           <h2>Experimental data and quality checks</h2>
           <SmartTable<DataQualityCheck>
             data={dataQualityChecks}
-            defaultSort={["count", "desc"]}
+            defaultSort={experimentalDataDefaultSort}
             columns={[
               {
                 width: 1,

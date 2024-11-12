@@ -4,7 +4,7 @@ import Pagination from "@/components/Pagination";
 import React, { ReactElement, useEffect, useState } from "react";
 import { TableCellProps } from "@/models/TableCell";
 import { orderBy } from "lodash";
-import type { Model } from "@/models";
+import type { Model, SortType } from "@/models";
 import Skeleton from "react-loading-skeleton";
 
 const SmartTable = <T extends Model>(props: {
@@ -18,7 +18,7 @@ const SmartTable = <T extends Model>(props: {
     sortField?: string;
   }>;
   data: Array<T>;
-  defaultSort: [string, "asc" | "desc"];
+  defaultSort: SortType;
   zeroResulsText?: string;
   filterFn?: (item: T, query: string) => boolean;
   additionalTopControls?: ReactElement;
