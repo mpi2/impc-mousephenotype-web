@@ -14,7 +14,7 @@ import {
   SexCell,
   PlainTextCell,
 } from "@/components/SmartTable";
-import { TableCellProps } from "@/models";
+import { SortType, TableCellProps } from "@/models";
 import _ from "lodash";
 import { useMemo } from "react";
 import Head from "next/head";
@@ -90,11 +90,15 @@ const DownloadImagesPage = () => {
       };
     },
   });
+  const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 
   return (
     <>
       <Head>
-        <title>{mutantImages?.geneSymbol} Image Comparator | International Mouse Phenotyping Consortium</title>
+        <title>
+          {mutantImages?.geneSymbol} Image Comparator | International Mouse
+          Phenotyping Consortium
+        </title>
       </Head>
       <Search />
       <Container className="page">
@@ -118,7 +122,7 @@ const DownloadImagesPage = () => {
           {!!mutantImages?.images && (
             <SmartTable<Image>
               data={mutantImages?.images}
-              defaultSort={["alleleSymbol", "asc"]}
+              defaultSort={defaultSort}
               columns={[
                 {
                   width: 1,
@@ -172,7 +176,7 @@ const DownloadImagesPage = () => {
           {!!controlImages?.images && (
             <SmartTable<Image>
               data={controlImages?.images}
-              defaultSort={["alleleSymbol", "asc"]}
+              defaultSort={defaultSort}
               columns={[
                 {
                   width: 1,

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import {
   AlleleCell,
   OptionsCell,
@@ -19,7 +19,7 @@ import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 import { usePagination } from "@/hooks";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { PaginatedResponse } from "@/models";
+import { PaginatedResponse, SortType } from "@/models";
 import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
 import { useDebounce } from "usehooks-ts";
@@ -83,6 +83,7 @@ const AllData = (props: Props) => {
   const { setAlleles } = useContext(AllelesStudiedContext);
   const [sortField, setSortField] = useState<string>("pValue");
   const [sortOrder, setSortOrder] = useState<string>("asc");
+  const defaultSort: SortType = useMemo(() => ["pValue", "asc"], []);
   const [totalItems, setTotalItems] = useState<number>(0);
   const [query, setQuery] = useState(queryFromURL);
   const debouncedQuery = useDebounce(query, 500);
@@ -237,7 +238,7 @@ const AllData = (props: Props) => {
   return (
     <SmartTable<GeneStatisticalResult>
       data={data?.content}
-      defaultSort={["pValue", "asc"]}
+      defaultSort={defaultSort}
       onSortChange={(sortOptions) => {
         const [sortField, sortOrder] = sortOptions.split(";");
         setSortField(sortField);

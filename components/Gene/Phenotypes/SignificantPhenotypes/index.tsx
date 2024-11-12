@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
 import {
   PlainTextCell,
@@ -14,6 +14,7 @@ import { DownloadData, FilterBox } from "@/components";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import { SupportingDataCell } from "./custom-cells";
 import Footnotes from "../Footnotes";
+import { SortType } from "@/models";
 
 const SignificantPhenotypes = ({
   phenotypeData = [],
@@ -29,6 +30,7 @@ const SignificantPhenotypes = ({
   const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
   const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
   const [hoveringRef, setHoveringRef] = useState<"*" | "**">(undefined);
+  const defaultSort: SortType = useMemo(() => ["phenotypeName", "asc"], []);
 
   useEffect(() => {
     const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(
@@ -98,7 +100,7 @@ const SignificantPhenotypes = ({
     <>
       <SmartTable<GenePhenotypeHits>
         data={filteredPhenotypeData}
-        defaultSort={["phenotypeName", "asc"]}
+        defaultSort={defaultSort}
         customSortFunction={sortPhenotypes}
         customFiltering
         additionalTopControls={
