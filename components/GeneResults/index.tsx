@@ -40,10 +40,17 @@ const GeneResult = ({
       mouseProductionStatus,
       phenotypeStatus,
       phenotypingDataAvailable,
+      humanGeneSymbols,
+      humanSymbolSynonyms,
     },
   } = gene;
   const router = useRouter();
-  const synonymsArray = synonyms.split(";");
+  const synonymsArray =
+    synonyms.includes(";") || synonyms !== "" ? synonyms.split(";") : [];
+  const humanSynonymsArray =
+    humanSymbolSynonyms.includes(";") || humanSymbolSynonyms !== ""
+      ? humanSymbolSynonyms.split(";")
+      : [];
   return (
     <>
       <Row className={styles.row}>
@@ -62,11 +69,24 @@ const GeneResult = ({
             <span className="grey">|</span>{" "}
             {surroundWithMarkEl(geneName, query)}
           </h4>
-          {!!synonymsArray && synonymsArray.length && (
+          {!!synonymsArray && !!synonymsArray.length && (
             <p className="grey small">
               <strong>Synonyms:</strong>{" "}
               {surroundWithMarkEl(
                 (synonymsArray || []).slice(0, 10).join(", "),
+                query
+              ) || "None"}
+            </p>
+          )}
+          <p className="grey small">
+            <strong>Human symbol:</strong>{" "}
+            {surroundWithMarkEl(humanGeneSymbols, query) || "None"}
+          </p>
+          {!!humanSynonymsArray && !!humanSynonymsArray.length && (
+            <p className="grey small">
+              <strong>Human synonyms:</strong>{" "}
+              {surroundWithMarkEl(
+                (humanSynonymsArray || []).slice(0, 10).join(", "),
                 query
               ) || "None"}
             </p>
