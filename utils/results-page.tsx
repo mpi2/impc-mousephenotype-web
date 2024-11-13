@@ -1,12 +1,15 @@
 import DOMPurify from "dompurify";
 import ReactHtmlParser from "react-html-parser";
 export const surroundWithMarkEl = (text: string, query: string) => {
-  const sanitizedQuery = DOMPurify.sanitize(query);
+  const matchingSubsIndex = text.toLowerCase().indexOf(query.toLowerCase());
+  const originalTextMatchedQuery = DOMPurify.sanitize(
+    text.slice(matchingSubsIndex, matchingSubsIndex + query.length)
+  );
   if (!!query) {
     return ReactHtmlParser(
       text.replaceAll(
-        query,
-        `<mark style="padding: 0;">${sanitizedQuery}</mark>`
+        originalTextMatchedQuery,
+        `<mark style="padding: 0;">${originalTextMatchedQuery}</mark>`
       )
     );
   }
