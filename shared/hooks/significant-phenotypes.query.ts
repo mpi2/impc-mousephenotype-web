@@ -14,7 +14,8 @@ export const processGenePhenotypeHitsResponse = (
 ) => {
   const group: Record<string, GenePhenotypeHits> = {};
   const significantData = data.filter(
-    (phenotypeHit) => phenotypeHit.pValue < 0.0001
+    (phenotypeHit) =>
+      phenotypeHit.pValue < 0.0001 || phenotypeHit.assertionType === "manual"
   );
   significantData.forEach((item) => {
     const {
