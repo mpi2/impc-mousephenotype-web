@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GenePhenotypeHits } from "@/models/gene";
 
+const ABRProcedures = ["IMPC_ACS_001", "IMPC_ACS_002", "IMPC_ACS_003"];
+
 const PPIParameters = [
   "PPI1", // % PP1
   "PPI2", // % PP2
@@ -50,10 +52,11 @@ export const processGenePhenotypeHitsResponse = (
       };
     } else if (group[key].datasetId !== datasetId) {
       // check for PPI related parameters and only count the PPI1, PPI2, PPI3 and PPI4
-      if (group[key].procedureStableId === "IMPC_ACS_003") {
-        if (PPIParameters.some((param) => item.parameterName.includes(param))) {
-          group[key].datasetsIds.push(datasetId);
-        }
+      if (
+        ABRProcedures.includes(group[key].procedureStableId) &&
+        PPIParameters.some((param) => item.parameterName.includes(param))
+      ) {
+        group[key].datasetsIds.push(datasetId);
       } else if (!group[key].datasetsIds.includes(datasetId)) {
         group[key].datasetsIds.push(datasetId);
       }
