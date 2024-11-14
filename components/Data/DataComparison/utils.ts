@@ -56,11 +56,14 @@ export const groupData = (data) => {
     }
     if (
       !sex &&
-      (d.statisticalMethod?.attributes?.genotypeEffectPValue !== null ||
-        d.statisticalMethod?.attributes.genotypeEffectPValue !== undefined)
+      d.statisticalMethod?.attributes?.genotypeEffectPValue !== null &&
+      d.statisticalMethod?.attributes.genotypeEffectPValue !== undefined
     ) {
       acc[key][`pValue_not_considered`] =
         d.statisticalMethod?.attributes?.genotypeEffectPValue;
+    }
+    if (!sex && reportedPValue !== null && reportedPValue !== undefined) {
+      acc[key][`pValue_not_considered`] = reportedPValue;
     }
     return acc;
   }, {});
