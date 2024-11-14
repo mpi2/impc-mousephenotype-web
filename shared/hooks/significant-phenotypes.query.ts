@@ -13,7 +13,10 @@ export const processGenePhenotypeHitsResponse = (
   data: Array<GenePhenotypeHits>
 ) => {
   const group: Record<string, GenePhenotypeHits> = {};
-  data.forEach((item) => {
+  const significantData = data.filter(
+    (phenotypeHit) => phenotypeHit.pValue < 0.0001
+  );
+  significantData.forEach((item) => {
     const {
       datasetId,
       phenotype: { id },
