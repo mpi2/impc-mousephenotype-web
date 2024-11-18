@@ -2,7 +2,7 @@ User-agent: AcademicBot
 Crawl-Delay: 5
 
 User-agent: AhrefsBot
-Crawl-Delay: 5
+Disallow: /
 
 User-agent: Amazonbot
 Crawl-Delay: 5
@@ -28,6 +28,9 @@ Crawl-Delay: 5
 User-agent: DotBot
 Crawl-Delay: 5
 
+User-agent: Gensparkbot
+Crawl-Delay: 5
+
 User-agent: GPTBot
 Crawl-Delay: 5
 
@@ -40,6 +43,9 @@ Crawl-Delay: 5
 User-agent: MojeekBot
 Crawl-Delay: 5
 
+User-agent: OAI-SearchBot
+Crawl-Delay: 5
+
 User-agent: PerplexityBot
 Crawl-Delay: 5
 
@@ -49,7 +55,7 @@ Crawl-Delay: 5
 User-agent: PoeSearchBot
 Crawl-Delay: 5
 
-User-agent: OAI-SearchBot
+User-agent: Qwantbot
 Crawl-Delay: 5
 
 User-agent: SemanticScholarBot
@@ -59,6 +65,12 @@ User-agent: SemrushBot
 Disallow: /
 
 User-agent: SeoCherryBot
+Crawl-Delay: 5
+
+User-agent: SeznamBot
+Crawl-Delay: 5
+
+User-agent: SiteAuditBot
 Crawl-Delay: 5
 
 User-agent: Slackbot
@@ -89,6 +101,9 @@ User-agent: dotbot
 Crawl-Delay: 5
 
 User-agent: gptbot
+Crawl-Delay: 5
+
+User-agent: meta-externalagent
 Crawl-Delay: 5
 
 User-agent: mj12bot
