@@ -281,9 +281,9 @@ const BatchQueryPage = () => {
       (geneIdArray.length > 0 || !!file) &&
       !!formSubmitted &&
       !downloadButtonIsBusy,
-    select: (results: any) => {
-      const { data, notFoundIds } = results;
-      return data.map((gene) => ({
+    select: (response: any) => {
+      const { results, notFoundIds } = response;
+      return results.map((gene) => ({
         ...gene,
         alleles: gene.alleles.toSorted(
           (a1, a2) =>
