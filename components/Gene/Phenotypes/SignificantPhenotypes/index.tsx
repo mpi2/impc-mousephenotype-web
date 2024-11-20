@@ -49,7 +49,7 @@ const SignificantPhenotypes = ({
     phenotypeData.map((phenotype) => phenotype.alleleSymbol)
   );
   const systems = uniq(
-    phenotypeData.flatMap((p) => p.topLevelPhenotypes.map((tl) => tl.name))
+    phenotypeData.flatMap((p) => p.topLevelPhenotypes?.map((tl) => tl.name))
   );
   const lifeStages = uniq(phenotypeData.map((p) => p.lifeStageName));
   const zygosities = uniq(phenotypeData.map((p) => p.zygosity));
