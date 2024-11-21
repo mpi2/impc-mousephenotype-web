@@ -87,6 +87,8 @@ const Unidimensional = ({
                   <UnidimensionalBoxPlot
                     series={data?.chartSeries || []}
                     zygosity={datasetSummary.zygosity}
+                    parameterName={datasetSummary["parameterName"]}
+                    unit={datasetSummary["unit"]["x"]}
                   />
                 </div>
               </Col>

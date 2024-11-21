@@ -189,7 +189,13 @@ const Order = ({
                             (x) =>
                               !(x === "intermediate_vector" || x === "crispr")
                           )
-                          .map((product: string) => product.replace(/_/g, " "))
+                          .map((product: string) => {
+                            if (product === "es_cell") {
+                              return "ES Cell";
+                            } else {
+                              return product.replace(/_/g, " ");
+                            }
+                          })
                           .map((product: string, index: number) => (
                             <Fragment key={`${product}-${index}`}>
                               <Link
