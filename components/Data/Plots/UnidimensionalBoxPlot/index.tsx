@@ -72,12 +72,16 @@ interface IUnidimensionalBoxPlotProps {
   series: Array<UnidimensionalSeries>;
   zygosity: "homozygote" | "heterozygote" | "hemizygote";
   chartAdditionalOptions?: Record<string, any>;
+  parameterName: string;
+  unit: string;
 }
 
 const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps> = ({
   series,
   zygosity,
   chartAdditionalOptions = {},
+  parameterName,
+  unit,
 }) => {
   return (
     <Chart
@@ -95,6 +99,14 @@ const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps> = ({
             ticks: {
               align: "center",
               crossAlign: "center",
+            },
+            title: {
+              text: `${parameterName} ${
+                unit && unit.trim() !== "" ? "(" + unit + ")" : ""
+              }`,
+              display: true,
+              align: "center",
+              padding: 5,
             },
           },
         },
