@@ -39,7 +39,7 @@ export const PhenotypeIconsCell = <T extends GeneStatisticalResult>(
     >
       <span>
         {phenotypes.map(({ name }) => (
-          <BodySystem name={name} color="system-icon in-table" noSpacing />
+          <BodySystem name={name} color="grey" noSpacing />
         ))}
       </span>
     </span>

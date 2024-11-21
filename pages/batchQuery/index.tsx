@@ -90,7 +90,7 @@ const formatOptionLabel = ({ value, label }, { context }) => {
     <div style={{ display: "flex", alignItems: "center" }}>
       <BodySystem
         name={value}
-        color="system-icon in-table"
+        color="grey"
         noSpacing
         noMargin={context === "value"}
       />
