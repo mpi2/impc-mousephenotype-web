@@ -80,7 +80,7 @@ const GeneResult = ({
               </i>
             </p>
           )}
-          <p className="grey small">
+          <p className="grey small mt-2">
             <strong>Human symbol:</strong>{" "}
             <i>{surroundWithMarkEl(humanGeneSymbols, query) || "None"}</i>
           </p>
@@ -96,7 +96,7 @@ const GeneResult = ({
             </p>
           )}
 
-          <span className="small grey">
+          <p className="small grey mt-3">
             {phenotypingDataAvailable ? (
               <p>
                 <AvailabilityIcon hasData={!!phenotypeStatus} />
@@ -125,7 +125,7 @@ const GeneResult = ({
                 data not yet available
               </span>
             )}
-          </span>
+          </p>
         </Col>
         <Col sm={4} className={styles.shortcuts}>
           <h5 className="grey text-uppercase">
