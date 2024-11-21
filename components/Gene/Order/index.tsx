@@ -46,7 +46,7 @@ const Order = ({
   const getProductURL = (allele: string, product: string) => {
     const anchorObjs = {
       mouse: "mice",
-      "es cell": "esCell",
+      "ES Cell": "esCell",
       "targeting vector": "targetingVector",
     };
     const encodedAllele = encodeURIComponent(allele);
