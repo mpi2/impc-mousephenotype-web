@@ -72,23 +72,27 @@ const GeneResult = ({
           {!!synonymsArray && !!synonymsArray.length && (
             <p className="grey small">
               <strong>Synonyms:</strong>{" "}
-              {surroundWithMarkEl(
-                (synonymsArray || []).slice(0, 10).join(", "),
-                query
-              ) || "None"}
+              <i>
+                {surroundWithMarkEl(
+                  (synonymsArray || []).slice(0, 10).join(", "),
+                  query
+                ) || "None"}
+              </i>
             </p>
           )}
           <p className="grey small">
             <strong>Human symbol:</strong>{" "}
-            {surroundWithMarkEl(humanGeneSymbols, query) || "None"}
+            <i>{surroundWithMarkEl(humanGeneSymbols, query) || "None"}</i>
           </p>
           {!!humanSynonymsArray && !!humanSynonymsArray.length && (
             <p className="grey small">
               <strong>Human synonyms:</strong>{" "}
-              {surroundWithMarkEl(
-                (humanSynonymsArray || []).slice(0, 10).join(", "),
-                query
-              ) || "None"}
+              <i>
+                {surroundWithMarkEl(
+                  (humanSynonymsArray || []).slice(0, 10).join(", "),
+                  query
+                ) || "None"}
+              </i>
             </p>
           )}
 
