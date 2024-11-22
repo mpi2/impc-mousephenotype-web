@@ -3,14 +3,11 @@ import { faCartShopping, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
 import _ from "lodash";
-import SortableTable from "../../SortableTable";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { DownloadData } from "@/components";
+import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlelleMice } from "@/models/allele/mice";
 
 const Mice = ({
