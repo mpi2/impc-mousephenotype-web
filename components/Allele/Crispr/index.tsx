@@ -1,15 +1,12 @@
 import React from "react";
-import {
-  faCopy,
-  faExternalLink,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
-import Card from "../../Card";
-import SortableTable from "../../SortableTable";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../../api-service";
+import { fetchAPI } from "@/api-service";
+import { Card, DownloadData, SortableTable } from "@/components";
+import { AlleleCrispr } from "@/models/allele/crispr";
 
 const CopyButton = ({ sequence }) => {
   const [clicked, setClicked] = useState(false);
@@ -46,9 +43,12 @@ const Crispr = ({
   alleleName: string;
 }) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'crispr', alleleName],
-    queryFn: () => fetchAPI(`/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`),
-    select: data => (data ?? [])[0] || undefined
+    queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`
+      ),
+    select: (data) => (data ?? [])[0] || undefined,
   });
 
   if (isLoading) {
@@ -94,6 +94,7 @@ const Crispr = ({
     { field: "guideSource", label: "Guide source", width: 2 },
   ];
 
+  console.log("CRISPR: ", data);
   return !data ? (
     <Card id="crispr">
       <h2>Crispr</h2>
@@ -173,7 +174,48 @@ const Crispr = ({
             );
           })}
         </SortableTable>
-        {/* {printCriprData(data, 0)} */}
+        <DownloadData<AlleleCrispr>
+          data={() => [data]}
+          fileName={`${alleleName}-crispr-data`}
+          fields={[
+            {
+              key: "nucleases",
+              label: "Nuclease type",
+              getValueFn: (item) =>
+                item.nucleases?.map((n) => n.nucleaseType).join(", ") || "N/A",
+            },
+            {
+              key: "nucleases",
+              label: "Nuclease Class",
+              getValueFn: (item) =>
+                item.nucleases?.map((n) => n.nucleaseClass).join(", ") || "N/A",
+            },
+            {
+              key: "genotypePrimers",
+              label: "Genotype primer name",
+              getValueFn: (item) =>
+                item.genotypePrimers?.map((n) => n.name).join(", ") || "N/A",
+            },
+            {
+              key: "genotypePrimers",
+              label: "Genotype primer sequence",
+              getValueFn: (item) =>
+                item.genotypePrimers?.map((n) => n.sequence).join(", ") ||
+                "N/A",
+            },
+            {
+              key: "guides",
+              label: "Guides",
+              getValueFn: (item) =>
+                item.guides
+                  .map(
+                    (guide) =>
+                      `Sequence: ${guide.guideSequence}, PAM: ${guide.pam}, CHR: ${guide.chr}, Genome build: ${guide.genomeBuild}`
+                  )
+                  .join(" | "),
+            },
+          ]}
+        />
       </Card>
     </>
   );
