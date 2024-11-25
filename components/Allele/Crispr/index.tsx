@@ -182,25 +182,26 @@ const Crispr = ({
               key: "nucleases",
               label: "Nuclease type",
               getValueFn: (item) =>
-                item.nucleases.map((n) => n.nucleaseType).join(", "),
+                item.nucleases?.map((n) => n.nucleaseType).join(", ") || "N/A",
             },
             {
               key: "nucleases",
               label: "Nuclease Class",
               getValueFn: (item) =>
-                item.nucleases.map((n) => n.nucleaseClass).join(", "),
+                item.nucleases?.map((n) => n.nucleaseClass).join(", ") || "N/A",
             },
             {
               key: "genotypePrimers",
               label: "Genotype primer name",
               getValueFn: (item) =>
-                item.genotypePrimers.map((n) => n.name).join(", "),
+                item.genotypePrimers?.map((n) => n.name).join(", ") || "N/A",
             },
             {
               key: "genotypePrimers",
               label: "Genotype primer sequence",
               getValueFn: (item) =>
-                item.genotypePrimers.map((n) => n.sequence).join(", "),
+                item.genotypePrimers?.map((n) => n.sequence).join(", ") ||
+                "N/A",
             },
             {
               key: "guides",
