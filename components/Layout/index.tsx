@@ -2,7 +2,6 @@ import Footer from "../Footer";
 import Header from "../Header";
 import Newsletter from "../Newsletter";
 import Head from "next/head";
-import CookieConsentBanner from "../CookieConsentBanner";
 
 const Layout = ({ children }) => {
   return (
@@ -56,7 +55,6 @@ const Layout = ({ children }) => {
       <main>{children}</main>
       <Newsletter />
       <Footer />
-      <CookieConsentBanner />
     </div>
   );
 };
