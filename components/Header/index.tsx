@@ -138,7 +138,7 @@ const Header = () => {
                 <div className="d-none d-lg-block">
                   <div className="menu-main-nav-container">
                     <ul id="menu-main-nav" className="menu">
-                      {menuItems.map((menuItem, i) => {
+                      {menuItems?.map((menuItem, i) => {
                         return (
                           <li
                             key={`menu-item-${menuItem.id}-${i}`}
@@ -179,10 +179,10 @@ const Header = () => {
           </div>
         </div>
         {menuItems
-          .filter(
+          ?.filter(
             (menuItem) => menuItem.children && menuItem.children.length > 0
           )
-          .map((menuItem, i) => {
+          ?.map((menuItem, i) => {
             const itemId = `${menuItem.classes?.split("-")[0]}-menu`;
             return (
               <div
@@ -311,7 +311,7 @@ const Header = () => {
                   My Genes
                 </a>
               </h3>
-              {menuItems.map((menuItem, i) => (
+              {menuItems?.map((menuItem, i) => (
                 <Fragment key={i}>
                   <h3 className="mt-2">
                     <Link href={menuItem.link} className={menuItem.classes}>
