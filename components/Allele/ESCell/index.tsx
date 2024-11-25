@@ -75,6 +75,14 @@ const ESCell = ({
                 { key: "parentEsCellLine", label: "Parental Cell Line" },
                 { key: "ikmcProjectId", label: "IKMC Project" },
                 {
+                  key: "qcData",
+                  label: "QC Data",
+                  getValueFn: (item) =>
+                    !!item.qcData?.[0]?.userQc
+                      ? `Three prime lr pcr: ${item.qcData[0].userQc?.threePrimeLrPcr}`
+                      : "N/A",
+                },
+                {
                   key: "associatedProductVectorName",
                   label: "Targeting Vector",
                 },

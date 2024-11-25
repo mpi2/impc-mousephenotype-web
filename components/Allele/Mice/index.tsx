@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlelleMice } from "@/models/allele/mice";
+import { toSentenceCase } from "@/utils";
 
 const Mice = ({
   mgiGeneAccessionId,
@@ -97,6 +98,21 @@ const Mice = ({
                       label: "Genetic Background",
                     },
                     { key: "productionCentre", label: "Production Centre" },
+                    {
+                      key: "qcData",
+                      label: "QC Data",
+                      getValueFn: (item) =>
+                        !!item.qcData?.[0]?.productionQc
+                          ? Object.keys(item.qcData[0]?.productionQc)
+                              .map(
+                                (key) =>
+                                  `${toSentenceCase(key)}: ${
+                                    item.qcData[0]?.productionQc[key]
+                                  }`
+                              )
+                              .join(", ")
+                          : "N/A",
+                    },
                     {
                       key: "associatedProductEsCellName",
                       label: "ES Cell/Parent Mouse Colony",
