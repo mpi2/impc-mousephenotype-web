@@ -111,7 +111,7 @@ const Mice = ({
                                   }`
                               )
                               .join(", ")
-                          : "N/A",
+                          : "No data",
                     },
                     {
                       key: "associatedProductEsCellName",

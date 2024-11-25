@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import _ from "lodash";
-import { formatESCellName } from "@/utils";
+import { formatESCellName, toSentenceCase } from "@/utils";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
@@ -79,8 +79,15 @@ const ESCell = ({
                   label: "QC Data",
                   getValueFn: (item) =>
                     !!item.qcData?.[0]?.userQc
-                      ? `Three prime lr pcr: ${item.qcData[0].userQc?.threePrimeLrPcr}`
-                      : "N/A",
+                      ? Object.keys(item.qcData[0]?.userQc)
+                          .map(
+                            (key) =>
+                              `${toSentenceCase(key)}: ${
+                                item.qcData[0]?.userQc[key]
+                              }`
+                          )
+                          .join(", ")
+                      : "No data",
                 },
                 {
                   key: "associatedProductVectorName",
