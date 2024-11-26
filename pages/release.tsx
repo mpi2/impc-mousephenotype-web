@@ -111,17 +111,29 @@ type Props = {
 };
 
 const phenotypingStatuses = [
-  "Phenotyping Registered",
-  "Rederivation Complete",
-  "Phenotyping Started",
-  "Phenotyping All Data Sent",
-  "Phenotyping Finished",
+  "phenotyping registered",
+  "rederivation complete",
+  "phenotyping started",
+  "phenotyping all data sent",
+  "phenotyping finished",
 ];
 
 const genotypingStatuses = [
-  "Cre Excision Started",
-  "Cre Excision Complete",
-  "Genotype Confirmed",
+  "plan created",
+  "plan abandoned",
+  "mouse allele modification aborted",
+  "mouse allele modification registered",
+  "attempt in progress",
+  "micro-injection in progress",
+  "chimeras/founder obtained",
+  "rederivation started",
+  "rederivation complete",
+  "cre excision started",
+  "cre excision complete",
+  "genotype in progress",
+  "mouse allele modification genotype confirmed",
+  "genotype confirmed",
+  "phenotype attempt registered",
 ];
 
 const ReleaseNotesPage = (props: Props) => {
@@ -161,16 +173,30 @@ const ReleaseNotesPage = (props: Props) => {
     statusArray,
     type: string
   ): Array<StatusCount> => {
-    return statusArray
+    const counts = statusArray
       .find((s) => s.statusType === type)
-      .counts.filter((count) => count.status !== null)
+      .counts.filter(
+        (count) =>
+          count.status !== null &&
+          !count.status.includes("Aborted") &&
+          !count.status.includes("Abandoned")
+      );
+    const mouseAlleleModificationCount =
+      counts.find(
+        (c) => c.status === "Mouse Allele Modification Genotype Confirmed"
+      )?.count || 0;
+    return counts
+      .filter(
+        (c) => c.status !== "Mouse Allele Modification Genotype Confirmed"
+      )
       .map((s) => {
         return {
           ...s,
-          status:
-            s.status === "Mouse Allele Modification Genotype Confirmed"
-              ? "Genotype Confirmed"
-              : s.status,
+          count:
+            s.status === "Genotype Confirmed"
+              ? s.count + mouseAlleleModificationCount
+              : s.count,
+          status: s.status,
           originalStatus: s.status,
         };
       });
@@ -273,7 +299,10 @@ const ReleaseNotesPage = (props: Props) => {
     a: { status: string; count: number },
     b: { status: string; count: number }
   ) => {
-    return orderArray.indexOf(a.status) > orderArray.indexOf(b.status) ? 1 : -1;
+    return orderArray.indexOf(a.status.toLocaleLowerCase()) >
+      orderArray.indexOf(b.status.toLocaleLowerCase())
+      ? 1
+      : -1;
   };
   const phenotypeAssociationsData = useMemo(
     () => ({
@@ -335,11 +364,11 @@ const ReleaseNotesPage = (props: Props) => {
     maintainAspectRatio: false,
   };
 
-  const genotypingStatusChartData = useMemo(
+  const esCellNullOverallProductionStatusChart = useMemo(
     () => ({
       labels: getProductionStatusByType(
         releaseMetadata.productionStatusOverall,
-        "genotyping"
+        "productionESCellNull"
       )
         .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
         .map((c) => c.status),
@@ -348,7 +377,79 @@ const ReleaseNotesPage = (props: Props) => {
           label: "",
           data: getProductionStatusByType(
             releaseMetadata.productionStatusOverall,
-            "genotyping"
+            "productionESCellNull"
+          )
+            .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
+            .map((c) => c.count),
+          backgroundColor: "rgb(239, 123, 11)",
+        },
+      ],
+    }),
+    [releaseMetadata.productionStatusOverall]
+  );
+
+  const esCellConditionalOverallProductionStatusChart = useMemo(
+    () => ({
+      labels: getProductionStatusByType(
+        releaseMetadata.productionStatusOverall,
+        "productionESCellConditional"
+      )
+        .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
+        .map((c) => c.status),
+      datasets: [
+        {
+          label: "",
+          data: getProductionStatusByType(
+            releaseMetadata.productionStatusOverall,
+            "productionESCellConditional"
+          )
+            .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
+            .map((c) => c.count),
+          backgroundColor: "rgb(239, 123, 11)",
+        },
+      ],
+    }),
+    [releaseMetadata.productionStatusOverall]
+  );
+
+  const crisprNullOverallProductionStatusChart = useMemo(
+    () => ({
+      labels: getProductionStatusByType(
+        releaseMetadata.productionStatusOverall,
+        "productionCrisprNull"
+      )
+        .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
+        .map((c) => c.status),
+      datasets: [
+        {
+          label: "",
+          data: getProductionStatusByType(
+            releaseMetadata.productionStatusOverall,
+            "productionCrisprNull"
+          )
+            .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
+            .map((c) => c.count),
+          backgroundColor: "rgb(239, 123, 11)",
+        },
+      ],
+    }),
+    [releaseMetadata.productionStatusOverall]
+  );
+
+  const crisprConditionalOverallProductionStatusChart = useMemo(
+    () => ({
+      labels: getProductionStatusByType(
+        releaseMetadata.productionStatusOverall,
+        "productionCrisprConditional"
+      )
+        .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
+        .map((c) => c.status),
+      datasets: [
+        {
+          label: "",
+          data: getProductionStatusByType(
+            releaseMetadata.productionStatusOverall,
+            "productionCrisprConditional"
           )
             .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
             .map((c) => c.count),
@@ -383,11 +484,38 @@ const ReleaseNotesPage = (props: Props) => {
     [releaseMetadata.productionStatusOverall]
   );
 
-  const genotypingProdByCenterChartData = useMemo(
+  const esCellNullByCenterChartData = useMemo(
     () =>
       generateProdByCenterData(
         releaseMetadata.productionStatusByCenter,
-        "genotyping"
+        "productionESCellNull"
+      ),
+    [releaseMetadata.productionStatusByCenter]
+  );
+
+  const esCellConditionalByCenterChartData = useMemo(
+    () =>
+      generateProdByCenterData(
+        releaseMetadata.productionStatusByCenter,
+        "productionESCellConditional"
+      ),
+    [releaseMetadata.productionStatusByCenter]
+  );
+
+  const crisprNullByCenterChartData = useMemo(
+    () =>
+      generateProdByCenterData(
+        releaseMetadata.productionStatusByCenter,
+        "productionCrisprNull"
+      ),
+    [releaseMetadata.productionStatusByCenter]
+  );
+
+  const crisprConditionalByCenterChartData = useMemo(
+    () =>
+      generateProdByCenterData(
+        releaseMetadata.productionStatusByCenter,
+        "productionCrisprConditional"
       ),
     [releaseMetadata.productionStatusByCenter]
   );
@@ -638,16 +766,52 @@ const ReleaseNotesPage = (props: Props) => {
         <Card>
           <h2>Production status</h2>
           <h3>Overall</h3>
+
           <Row className="mb-4">
             <Col lg={6}>
+              <h4>ES Cell Null Lines</h4>
               <div style={{ position: "relative", height: "400px" }}>
                 <Bar
                   options={overallProdStatusOptions}
-                  data={genotypingStatusChartData}
+                  data={esCellNullOverallProductionStatusChart}
                 />
               </div>
             </Col>
             <Col lg={6}>
+              <h4>ES Cell Conditional Lines</h4>
+              <div style={{ position: "relative", height: "400px" }}>
+                <Bar
+                  options={overallProdStatusOptions}
+                  data={esCellConditionalOverallProductionStatusChart}
+                />
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="mb-4">
+            <Col lg={6}>
+              <h4>Crispr Null Lines</h4>
+              <div style={{ position: "relative", height: "400px" }}>
+                <Bar
+                  options={overallProdStatusOptions}
+                  data={crisprNullOverallProductionStatusChart}
+                />
+              </div>
+            </Col>
+            <Col lg={6}>
+              <h4>Crispr Conditional Lines</h4>
+              <div style={{ position: "relative", height: "400px" }}>
+                <Bar
+                  options={overallProdStatusOptions}
+                  data={crisprConditionalOverallProductionStatusChart}
+                />
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="mb-4">
+            <Col>
+              <h4>Phenotyping</h4>
               <div style={{ position: "relative", height: "400px" }}>
                 <Bar
                   options={overallProdStatusOptions}
@@ -656,17 +820,53 @@ const ReleaseNotesPage = (props: Props) => {
               </div>
             </Col>
           </Row>
+
           <h3>By Center</h3>
+
           <Row className="mb-4">
             <Col lg={6}>
+              <h4>ES Cell Null Lines</h4>
               <div style={{ position: "relative", height: "400px" }}>
                 <Bar
                   options={prodByCenterStatusOptions}
-                  data={genotypingProdByCenterChartData}
+                  data={esCellNullByCenterChartData}
                 />
               </div>
             </Col>
             <Col lg={6}>
+              <h4>ES Cell Conditional Lines</h4>
+              <div style={{ position: "relative", height: "400px" }}>
+                <Bar
+                  options={prodByCenterStatusOptions}
+                  data={esCellConditionalByCenterChartData}
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row className="mb-4">
+            <Col lg={6}>
+              <h4>Crispr Null Lines</h4>
+              <div style={{ position: "relative", height: "400px" }}>
+                <Bar
+                  options={prodByCenterStatusOptions}
+                  data={crisprNullByCenterChartData}
+                />
+              </div>
+            </Col>
+            <Col lg={6}>
+              <h4>Crispr Conditional Lines</h4>
+              <div style={{ position: "relative", height: "400px" }}>
+                <Bar
+                  options={prodByCenterStatusOptions}
+                  data={crisprConditionalByCenterChartData}
+                />
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="mb-4">
+            <Col>
+              <h4>Phenotyping</h4>
               <div style={{ position: "relative", height: "400px" }}>
                 <Bar
                   options={prodByCenterStatusOptions}
@@ -675,6 +875,7 @@ const ReleaseNotesPage = (props: Props) => {
               </div>
             </Col>
           </Row>
+
           <p>
             More charts and status information are available from our mouse
             tracking service <a className="link orange-dark">GenTaR</a>.

@@ -46,7 +46,7 @@ const Order = ({
   const getProductURL = (allele: string, product: string) => {
     const anchorObjs = {
       mouse: "mice",
-      "es cell": "esCell",
+      "ES Cell": "esCell",
       "targeting vector": "targetingVector",
     };
     const encodedAllele = encodeURIComponent(allele);
@@ -189,7 +189,13 @@ const Order = ({
                             (x) =>
                               !(x === "intermediate_vector" || x === "crispr")
                           )
-                          .map((product: string) => product.replace(/_/g, " "))
+                          .map((product: string) => {
+                            if (product === "es_cell") {
+                              return "ES Cell";
+                            } else {
+                              return product.replace(/_/g, " ");
+                            }
+                          })
                           .map((product: string, index: number) => (
                             <Fragment key={`${product}-${index}`}>
                               <Link

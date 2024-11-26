@@ -3,14 +3,13 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
 import _ from "lodash";
-import SortableTable from "../../SortableTable";
-import { formatESCellName } from "@/utils";
+import { formatESCellName, toSentenceCase } from "@/utils";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { Card, DownloadData, Pagination, SortableTable } from "@/components";
+import { AlleleEsCell } from "@/models/allele/es-cell";
 
 const ESCell = ({
   mgiGeneAccessionId,
@@ -22,9 +21,12 @@ const ESCell = ({
   setQcData: (any) => void;
 }) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'es_cell', alleleName],
-    queryFn: () => fetchAPI(`/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
-    placeholderData: []
+    queryKey: ["genes", mgiGeneAccessionId, "alleles", "es_cell", alleleName],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
+      ),
+    placeholderData: [],
   });
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
@@ -61,7 +63,46 @@ const ESCell = ({
           No ES cell products found for this allele.
         </Alert>
       ) : (
-        <Pagination data={sorted}>
+        <Pagination
+          data={sorted}
+          additionalBottomControls={
+            <DownloadData<AlleleEsCell>
+              data={sorted}
+              fileName={`${alleleName}-ES-Cell-data`}
+              fields={[
+                { key: "name", label: "ES Cell Clone" },
+                { key: "strain", label: "ES Cell strain" },
+                { key: "parentEsCellLine", label: "Parental Cell Line" },
+                { key: "ikmcProjectId", label: "IKMC Project" },
+                {
+                  key: "qcData",
+                  label: "QC Data",
+                  getValueFn: (item) =>
+                    !!item.qcData?.[0]?.userQc
+                      ? Object.keys(item.qcData[0]?.userQc)
+                          .map(
+                            (key) =>
+                              `${toSentenceCase(key)}: ${
+                                item.qcData[0]?.userQc[key]
+                              }`
+                          )
+                          .join(", ")
+                      : "No data",
+                },
+                {
+                  key: "associatedProductVectorName",
+                  label: "Targeting Vector",
+                },
+                {
+                  key: "orders",
+                  label: "Order / Contact",
+                  getValueFn: (item) =>
+                    item.orders.map((order) => order.orderLink).join(", "),
+                },
+              ]}
+            />
+          }
+        >
           {(pageData) => (
             <SortableTable
               doSort={() => {}}
@@ -94,7 +135,7 @@ const ESCell = ({
                     <td>{p.parentEsCellLine}</td>
                     <td>{p.ikmcProjectId}</td>
                     <td>
-                      {p.qcData.map(({ productionQC }) => (
+                      {p.qcData.map(() => (
                         <a
                           href="#"
                           target="_blank"

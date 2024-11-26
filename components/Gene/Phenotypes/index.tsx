@@ -200,7 +200,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
           </div>
         </Tab>
         {hasOneAlleleOrMore && (
-          <Tab eventKey="allelesByPhenotype" title="Alleles by Phenotype">
+          <Tab eventKey="allelesByPhenotype" title="Allele comparison">
             <ErrorBoundary
               fallback={
                 <Alert variant="danger">

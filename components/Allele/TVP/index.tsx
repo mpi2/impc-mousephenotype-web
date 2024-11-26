@@ -6,13 +6,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
 import _ from "lodash";
-import SortableTable from "../../SortableTable";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { Card, DownloadData, Pagination, SortableTable } from "@/components";
+import { AlleleTvp } from "@/models/allele/tvp";
 
 const TargetingVector = ({
   mgiGeneAccessionId,
@@ -22,9 +21,12 @@ const TargetingVector = ({
   alleleName: string;
 }) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'tvp', alleleName],
-    queryFn: () => fetchAPI(`/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
-    placeholderData: []
+    queryKey: ["genes", mgiGeneAccessionId, "alleles", "tvp", alleleName],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
+      ),
+    placeholderData: [],
   });
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
@@ -61,7 +63,49 @@ const TargetingVector = ({
           No targeting vector products found for this allele.
         </Alert>
       ) : (
-        <Pagination data={sorted}>
+        <Pagination
+          data={sorted}
+          additionalBottomControls={
+            <DownloadData<AlleleTvp>
+              data={sorted}
+              fileName={`${alleleName}-tvp-data`}
+              fields={[
+                { key: "name", label: "Targeting Vector" },
+                {
+                  key: "cassette",
+                  label: "Cassette",
+                },
+                { key: "backbone", label: "Backbone" },
+                {
+                  key: "ikmcProjectId",
+                  label: "IKMC Project",
+                },
+                {
+                  key: "otherLinks",
+                  label: "Genbank File",
+                  getValueFn: (item) =>
+                    !!item.otherLinks.genbankFile
+                      ? item.otherLinks.genbankFile
+                      : "N/A",
+                },
+                {
+                  key: "otherLinks",
+                  label: "Vector Map",
+                  getValueFn: (item) =>
+                    !!item.otherLinks.alleleImage
+                      ? item.otherLinks.alleleImage
+                      : "N/A",
+                },
+                {
+                  key: "orders",
+                  label: "Order",
+                  getValueFn: (item) =>
+                    item.orders.map((order) => order.orderLink).join(", "),
+                },
+              ]}
+            />
+          }
+        >
           {(pageData) => (
             <SortableTable
               doSort={() => {}}

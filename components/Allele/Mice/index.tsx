@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { faCartShopping, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
+import { Alert } from "react-bootstrap";
 import _ from "lodash";
-import SortableTable from "../../SortableTable";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { Card, DownloadData, Pagination, SortableTable } from "@/components";
+import { AlelleMice } from "@/models/allele/mice";
+import { toSentenceCase } from "@/utils";
 
 const Mice = ({
   mgiGeneAccessionId,
@@ -71,20 +71,64 @@ const Mice = ({
           <Pagination
             data={sorted}
             additionalBottomControls={
-              <div>
-                {fixedTissuesLinks.map((tissue) => (
-                  <a
-                    className="btn impc-secondary-button"
-                    style={{ marginRight: "0.5rem" }}
-                    href={tissue.tissueEnquiryLink}
-                  >
-                    <span>
-                      Make a {tissue.tissueType} enquiry to{" "}
-                      {tissue.tissueDistributionCentre}
-                    </span>
-                  </a>
-                ))}
-              </div>
+              <>
+                {fixedTissuesLinks.length > 0 && (
+                  <div>
+                    {fixedTissuesLinks.map((tissue) => (
+                      <a
+                        className="btn impc-secondary-button"
+                        style={{ marginRight: "0.5rem" }}
+                        href={tissue.tissueEnquiryLink}
+                      >
+                        <span>
+                          Make a {tissue.tissueType} enquiry to{" "}
+                          {tissue.tissueDistributionCentre}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+                <DownloadData<AlelleMice>
+                  data={sorted}
+                  fileName={`${alleleName}-mice-data`}
+                  fields={[
+                    { key: "name", label: "Colony Name" },
+                    {
+                      key: "backgroundColonyStrain",
+                      label: "Genetic Background",
+                    },
+                    { key: "productionCentre", label: "Production Centre" },
+                    {
+                      key: "qcData",
+                      label: "QC Data",
+                      getValueFn: (item) =>
+                        !!item.qcData?.[0]?.productionQc
+                          ? Object.keys(item.qcData[0]?.productionQc)
+                              .map(
+                                (key) =>
+                                  `${toSentenceCase(key)}: ${
+                                    item.qcData[0]?.productionQc[key]
+                                  }`
+                              )
+                              .join(", ")
+                          : "No data",
+                    },
+                    {
+                      key: "associatedProductEsCellName",
+                      label: "ES Cell/Parent Mouse Colony",
+                      getValueFn: (item) =>
+                        item.associatedProductEsCellName ||
+                        item.associatedProductColonyName,
+                    },
+                    {
+                      key: "orders",
+                      label: "Order / Contact",
+                      getValueFn: (item) =>
+                        item.orders.map((order) => order.orderLink).join(", "),
+                    },
+                  ]}
+                />
+              </>
             }
           >
             {(pageData) => (

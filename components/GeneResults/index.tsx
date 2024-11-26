@@ -72,27 +72,31 @@ const GeneResult = ({
           {!!synonymsArray && !!synonymsArray.length && (
             <p className="grey small">
               <strong>Synonyms:</strong>{" "}
-              {surroundWithMarkEl(
-                (synonymsArray || []).slice(0, 10).join(", "),
-                query
-              ) || "None"}
+              <i>
+                {surroundWithMarkEl(
+                  (synonymsArray || []).slice(0, 10).join(", "),
+                  query
+                ) || "None"}
+              </i>
             </p>
           )}
-          <p className="grey small">
+          <p className="grey small mt-2">
             <strong>Human symbol:</strong>{" "}
-            {surroundWithMarkEl(humanGeneSymbols, query) || "None"}
+            <i>{surroundWithMarkEl(humanGeneSymbols, query) || "None"}</i>
           </p>
           {!!humanSynonymsArray && !!humanSynonymsArray.length && (
             <p className="grey small">
               <strong>Human synonyms:</strong>{" "}
-              {surroundWithMarkEl(
-                (humanSynonymsArray || []).slice(0, 10).join(", "),
-                query
-              ) || "None"}
+              <i>
+                {surroundWithMarkEl(
+                  (humanSynonymsArray || []).slice(0, 10).join(", "),
+                  query
+                ) || "None"}
+              </i>
             </p>
           )}
 
-          <span className="small grey">
+          <p className="small grey mt-3">
             {phenotypingDataAvailable ? (
               <p>
                 <AvailabilityIcon hasData={!!phenotypeStatus} />
@@ -121,7 +125,7 @@ const GeneResult = ({
                 data not yet available
               </span>
             )}
-          </span>
+          </p>
         </Col>
         <Col sm={4} className={styles.shortcuts}>
           <h5 className="grey text-uppercase">
