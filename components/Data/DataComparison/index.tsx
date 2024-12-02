@@ -204,42 +204,31 @@ const DataComparison = (props: Props) => {
                     <td>{d.zygosity}</td>
                     {displayPValueColumns && (
                       <td>
-                        {d.phenotypeSex?.map((significantSex, index) => (
-                          <OverlayTrigger
-                            key={index}
-                            placement="top"
-                            trigger={["hover", "focus"]}
-                            overlay={
-                              <Tooltip>{getSexLabel(significantSex)}</Tooltip>
-                            }
-                          >
-                            <span className="me-2">
-                              <FontAwesomeIcon
-                                icon={getIcon(significantSex)}
-                                size="lg"
-                              />
-                            </span>
-                          </OverlayTrigger>
-                        ))}
-                        {d["pValue_not_considered"] !== null &&
-                          d["pValue_not_considered"] !== undefined && (
+                        {["male", "female", "not_considered"]
+                          .filter(
+                            (sex) =>
+                              has(d, `pValue_${sex}`) &&
+                              d[`pValue_${sex}`] !== null &&
+                              d[`pValue_${sex}`] !== undefined &&
+                              d[`pValue_${sex}`] < 0.0001
+                          )
+                          .map((significantSex, index) => (
                             <OverlayTrigger
+                              key={index}
                               placement="top"
                               trigger={["hover", "focus"]}
                               overlay={
-                                <Tooltip>
-                                  {getSexLabel("not_considered")}
-                                </Tooltip>
+                                <Tooltip>{getSexLabel(significantSex)}</Tooltip>
                               }
                             >
                               <span className="me-2">
                                 <FontAwesomeIcon
-                                  icon={getIcon("not_considered")}
+                                  icon={getIcon(significantSex)}
                                   size="lg"
                                 />
                               </span>
                             </OverlayTrigger>
-                          )}
+                          ))}
                       </td>
                     )}
                     <td>{d.lifeStageName}</td>
