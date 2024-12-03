@@ -440,8 +440,3 @@ export const isIframeLoaded = (iframe: HTMLIFrameElement) => {
     iframe.addEventListener("error", () => reject("Error loading iframe"));
   });
 };
-
-// Generic htmlEncoder
-export const htmlEncode = (id: string) => {
-  return id.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-};
