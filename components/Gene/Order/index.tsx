@@ -49,7 +49,7 @@ const Order = ({
       "ES Cell": "esCell",
       "targeting vector": "targetingVector",
     };
-    const encodedAllele = encodeURIComponent(allele);
+    const encodedAllele = allele;
     return `/alleles/${router.query.pid}/${encodedAllele}#${anchorObjs[product]}`;
   };
 

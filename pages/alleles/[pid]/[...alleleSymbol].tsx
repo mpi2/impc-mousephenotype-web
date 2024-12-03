@@ -65,12 +65,15 @@ const ProductItem = ({
 const AllelePage = ({ alleleData: alleleFromServer }) => {
   const {
     isReady,
-    query: { pid, alleleSymbol },
+    query: { pid, alleleSymbol: alleleSymbolParsed },
   } = useRouter();
+
+  const alleleSymbol = (alleleSymbolParsed as Array<string>).join("/");
 
   const { data: allele } = useQuery<AlleleSummary>({
     queryKey: ["genes", pid, "alleles", alleleSymbol, "order"],
-    queryFn: () => fetchAPI(`/api/v1/alleles/${pid}/${alleleSymbol}`),
+    queryFn: () =>
+      fetchAPI(`/api/v1/alleles/${pid}/${encodeURIComponent(alleleSymbol)}`),
     enabled: isReady && !alleleFromServer,
   });
 
@@ -222,7 +225,7 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
 export async function getServerSideProps(context) {
   const { pid: mgiGeneAccessionId, alleleSymbol } = context.params;
 
-  const encodedAllele = encodeURIComponent(alleleSymbol);
+  const parsedAllele = alleleSymbol.join("/");
   if (
     !mgiGeneAccessionId ||
     mgiGeneAccessionId === "null" ||
@@ -234,9 +237,8 @@ export async function getServerSideProps(context) {
   let alleleData;
 
   try {
-    alleleData = await fetchAPIFromServer(
-      `/api/v1/alleles/${mgiGeneAccessionId}/${encodedAllele}`
-    );
+    const url = `/api/v1/alleles/${mgiGeneAccessionId}/${parsedAllele}`;
+    alleleData = await fetchAPIFromServer(url);
   } catch {
     return { notFound: true };
   }
