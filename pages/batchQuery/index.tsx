@@ -38,8 +38,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import { SortType } from "@/models";
+import moment from "moment";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
+const BATCH_QUERY_DOWNLOAD_ROOT =
+  process.env.NEXT_PUBLIC_BATCH_QUERY_DOWNLOAD_ROOT || "";
 
 type BatchQueryItem = {
   geneId: string;
@@ -97,6 +100,15 @@ const formatPhenotypeLabel = (option, { context }) => (
     )}
   </div>
 );
+
+const stringifyJSON = (data: Array<any>) => {
+  let res = "[";
+  for (let item of data) {
+    res += `${JSON.stringify(item)},`;
+  }
+  res += "]";
+  return res;
+};
 
 type DataRowProps = {
   geneData: BatchQueryItem;
@@ -219,8 +231,10 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
 
 const BatchQueryPage = () => {
   const [geneIds, setGeneIds] = useState<string>(undefined);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File>(null);
+  const [fileIDCount, setFileIDCount] = useState<number>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [downloadingFile, setDownloadingFile] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [selectedSystems, setSelectedSystems] = useState([]);
   const [selectedPhenotypes, setSelectedPhenotypes] = useState([]);
@@ -248,6 +262,17 @@ const BatchQueryPage = () => {
       setFormSubmitted(false);
     }
   }, [geneIds, formSubmitted, file]);
+
+  useEffect(() => {
+    if (file) {
+      file.text().then((fileContents) => {
+        const ids = fileContents.split("\n");
+        if (ids.length !== fileIDCount) {
+          setFileIDCount(ids.length);
+        }
+      });
+    }
+  }, [file, fileIDCount]);
 
   const getBody = () => {
     let body;
@@ -321,9 +346,19 @@ const BatchQueryPage = () => {
   const downloadButtons = useMemo(
     () => [
       {
+        key: "TSV",
+        isBusy: state.isBusyTSV,
+        toogleFlag: () => fetchAndDownloadData("TSV"),
+      },
+      {
         key: "JSON",
         isBusy: state.isBusyJSON,
         toogleFlag: () => fetchAndDownloadData("application/JSON"),
+      },
+      {
+        key: "XLSX",
+        isBusy: state.isBusyXLSX,
+        toogleFlag: () => fetchAndDownloadData("XLSX"),
       },
     ],
     [state, geneIds, file, tab]
@@ -416,6 +451,48 @@ const BatchQueryPage = () => {
     return orderBy(filteredData, sortOptions.prop, sortOptions.order);
   }, [filteredData, sortOptions]);
 
+  const fetchFilteredDataset = async () => {
+    const body = getBody();
+    setDownloadingFile(true);
+    const response = await fetch(BATCH_QUERY_DOWNLOAD_ROOT, {
+      method: "POST",
+      body,
+    });
+    let resultText = "";
+    const jsonData = [];
+    const readableStream = response.body;
+    const reader = readableStream.getReader();
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      var text = new TextDecoder("utf-8").decode(value);
+      const objects = text.split("\n");
+      for (const obj of objects) {
+        try {
+          resultText += obj;
+          let result = JSON.parse(resultText);
+          jsonData.push(result);
+          resultText = "";
+        } catch (e) {
+          // Not a valid JSON object
+        }
+      }
+    }
+    setDownloadingFile(false);
+    const blob = new Blob([stringifyJSON(jsonData)], {
+      type: "application/json;charset=utf-8",
+    });
+    const objUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", objUrl);
+    link.setAttribute(
+      "download",
+      `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.json`
+    );
+    link.click();
+    URL.revokeObjectURL(objUrl);
+  };
+
   return (
     <>
       <Head>
@@ -470,19 +547,14 @@ const BatchQueryPage = () => {
             {formSubmitted && (geneIdArray?.length === 0 || file === null) && (
               <Alert variant="warning">Please enter a list of ID's</Alert>
             )}
-            {geneIdArray?.length >= 1000 && (
-              <Alert variant="warning">
-                If your list exceeds 1,000 Ids, please save them in a text file
-                and upload it.
-              </Alert>
-            )}
             <button
               onClick={() => setFormSubmitted(true)}
               className="btn impc-primary-button"
               disabled={
                 isFetching ||
                 downloadButtonIsBusy ||
-                geneIdArray?.length >= 1000
+                geneIdArray?.length >= 1000 ||
+                fileIDCount >= 1000
               }
             >
               Submit
@@ -623,6 +695,7 @@ const BatchQueryPage = () => {
                           ) : (
                             <>
                               <FontAwesomeIcon icon={faDownload} size="sm" />
+                              &nbsp;
                               {button.key}
                             </>
                           )}
@@ -634,6 +707,41 @@ const BatchQueryPage = () => {
               ) : (
                 <h3 className="mt-3">No genes match the filters selected</h3>
               )}
+            </>
+          ) : geneIdArray?.length >= 1000 || fileIDCount >= 1000 ? (
+            <>
+              <Alert variant="warning">
+                Because your list has more than 1,000 IDs, results won't be
+                displayed. You can download the filtered data or the entire
+                dataset.
+              </Alert>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignSelf: "flex-start",
+                }}
+              >
+                <button
+                  className="btn impc-primary-button mb-3"
+                  onClick={fetchFilteredDataset}
+                >
+                  {downloadingFile ? (
+                    <Spinner animation="border" size="sm" />
+                  ) : (
+                    <FontAwesomeIcon icon={faDownload} size="sm" />
+                  )}
+                  &nbsp; Download filtered dataset JSON
+                </button>
+                <button className="btn impc-primary-button mb-3">
+                  <FontAwesomeIcon icon={faDownload} size="sm" />
+                  &nbsp; Download entire dataset (3.39GB) TSV
+                </button>
+                <button className="btn impc-primary-button mb-3">
+                  <FontAwesomeIcon icon={faDownload} size="sm" />
+                  &nbsp; Download entire dataset (6.47GB) JSON
+                </button>
+              </div>
             </>
           ) : !isFetching ? (
             <i className="grey">
