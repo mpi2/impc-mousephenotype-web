@@ -41,8 +41,6 @@ import { SortType } from "@/models";
 import moment from "moment";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
-const BATCH_QUERY_DOWNLOAD_ROOT =
-  process.env.NEXT_PUBLIC_BATCH_QUERY_DOWNLOAD_ROOT || "";
 
 type BatchQueryItem = {
   geneId: string;
@@ -100,15 +98,6 @@ const formatPhenotypeLabel = (option, { context }) => (
     )}
   </div>
 );
-
-const stringifyJSON = (data: Array<any>) => {
-  let res = "[";
-  for (let item of data) {
-    res += `${JSON.stringify(item)},`;
-  }
-  res += "]";
-  return res;
-};
 
 type DataRowProps = {
   geneData: BatchQueryItem;
@@ -234,7 +223,6 @@ const BatchQueryPage = () => {
   const [file, setFile] = useState<File>(null);
   const [fileIDCount, setFileIDCount] = useState<number>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [downloadingFile, setDownloadingFile] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [selectedSystems, setSelectedSystems] = useState([]);
   const [selectedPhenotypes, setSelectedPhenotypes] = useState([]);
@@ -346,19 +334,9 @@ const BatchQueryPage = () => {
   const downloadButtons = useMemo(
     () => [
       {
-        key: "TSV",
-        isBusy: state.isBusyTSV,
-        toogleFlag: () => fetchAndDownloadData("TSV"),
-      },
-      {
         key: "JSON",
         isBusy: state.isBusyJSON,
-        toogleFlag: () => fetchAndDownloadData("application/JSON"),
-      },
-      {
-        key: "XLSX",
-        isBusy: state.isBusyXLSX,
-        toogleFlag: () => fetchAndDownloadData("XLSX"),
+        toogleFlag: () => fetchFilteredDataset("application/JSON"),
       },
     ],
     [state, geneIds, file, tab]
@@ -451,46 +429,22 @@ const BatchQueryPage = () => {
     return orderBy(filteredData, sortOptions.prop, sortOptions.order);
   }, [filteredData, sortOptions]);
 
-  const fetchFilteredDataset = async () => {
+  const fetchFilteredDataset = async (payload: toogleFlagPayload) => {
     const body = getBody();
-    setDownloadingFile(true);
-    const response = await fetch(BATCH_QUERY_DOWNLOAD_ROOT, {
+    dispatch({ type: "toggle", payload });
+    const response = await fetch("/data/api/batch-query-filtered-dataset", {
       method: "POST",
       body,
     });
-    let resultText = "";
-    const jsonData = [];
-    const readableStream = response.body;
-    const reader = readableStream.getReader();
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      var text = new TextDecoder("utf-8").decode(value);
-      const objects = text.split("\n");
-      for (const obj of objects) {
-        try {
-          resultText += obj;
-          let result = JSON.parse(resultText);
-          jsonData.push(result);
-          resultText = "";
-        } catch (e) {
-          // Not a valid JSON object
-        }
-      }
-    }
-    setDownloadingFile(false);
-    const blob = new Blob([stringifyJSON(jsonData)], {
-      type: "application/json;charset=utf-8",
-    });
-    const objUrl = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.setAttribute("href", objUrl);
-    link.setAttribute(
-      "download",
-      `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.json`
-    );
-    link.click();
-    URL.revokeObjectURL(objUrl);
+    dispatch({ type: "toggle", payload });
+    const fileData = await response.blob();
+    const url = window.URL.createObjectURL(fileData);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   };
 
   return (
@@ -573,9 +527,6 @@ const BatchQueryPage = () => {
           )}
           {!!filteredData ? (
             <>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Form.Check type="switch" id="text-mode" label="Only text" />
-              </div>
               <Row>
                 <Col>
                   <div>
@@ -724,9 +675,9 @@ const BatchQueryPage = () => {
               >
                 <button
                   className="btn impc-primary-button mb-3"
-                  onClick={fetchFilteredDataset}
+                  onClick={() => fetchFilteredDataset("application/JSON")}
                 >
-                  {downloadingFile ? (
+                  {state.isBusyJSON ? (
                     <Spinner animation="border" size="sm" />
                   ) : (
                     <FontAwesomeIcon icon={faDownload} size="sm" />
