@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 3000
         env:
-        - name: NEXT_PUBLIC_API_ROOT
+        - name: SERVER_API_ROOT
           value: https://dev.mousephenotype.org/data
 ---
 apiVersion: v1
