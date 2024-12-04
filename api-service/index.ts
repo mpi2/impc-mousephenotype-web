@@ -45,7 +45,8 @@ export async function fetchAPI(query: string) {
 }
 
 export async function fetchAPIFromServer(query: string) {
-  let domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : API_URL;
+  const API_ROOT = process.env.NEXT_PUBLIC_API_ROOT;
+  let domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : API_ROOT;
   const endpointURL = domain + query;
   try {
     const response = await fetch(endpointURL);
