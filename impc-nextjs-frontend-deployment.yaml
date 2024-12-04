@@ -19,6 +19,9 @@ spec:
         image: 655093420076.dkr.ecr.eu-west-2.amazonaws.com/impc-nextjs-frontend:latest
         ports:
         - containerPort: 3000
+        env:
+        - name: NEXT_PUBLIC_API_ROOT
+          value: https://dev.mousephenotype.org/data
 ---
 apiVersion: v1
 kind: Service
