@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
 import { Container } from "react-bootstrap";
-import Card from "../../components/Card";
-import Search from "../../components/Search";
-import SortableTable from "../../components/SortableTable";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
+import { Image } from "react-bootstrap";
+import { fetchAPI } from "@/api-service";
+import { Card, Search, SortableTable } from "@/components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Oligo = () => {
   const router = useRouter();
@@ -78,7 +79,7 @@ const Oligo = () => {
             <strong>High Throughput Gene Targeting</strong>
             <span> | Design Id: {router.query.id}</span>
           </h1>
-          <img src="https://www.mousephenotype.org/data/img/target_design_trimmed.png" />
+          <Image src="/data/images/target_design_trimmed.png" fluid alt="" />
         </Card>
         <Card>
           <h2>Oligos</h2>
