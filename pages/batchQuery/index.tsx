@@ -441,7 +441,7 @@ const BatchQueryPage = () => {
     const url = window.URL.createObjectURL(fileData);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.json`;
+    a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.zip`;
     document.body.appendChild(a);
     a.click();
     a.remove();
