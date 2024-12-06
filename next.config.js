@@ -39,9 +39,4 @@ module.exports = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  api: {
-    // added this configuration for batch-query-filtered-dataset api url so the FE
-    // server transparently passes the request body to service endpoint
-    bodyParser: false,
-  },
 };
