@@ -1,15 +1,21 @@
-import { CSSProperties, memo, useCallback, useEffect, useMemo, useState } from "react";
+import {
+  CSSProperties,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { scaleQuantize, scaleBand } from "@visx/scale";
 import { LateAdultDataParsed, LateAdultRowResponse } from "@/models";
 import { Group } from "@visx/group";
 import { HeatmapRect } from "@visx/heatmap";
 import { AxisLeft, AxisTop } from "@visx/axis";
-import { Text } from '@visx/text';
+import { Text } from "@visx/text";
 import { ScaleBand, ScaleQuantize } from "d3-scale";
-import { clamp, truncate } from 'lodash';
+import { clamp, truncate } from "lodash";
 import classNames from "classnames";
 import { useRouter } from "next/router";
-
 
 const binHeight = 25;
 const scalePadding = 0.05;
@@ -19,7 +25,7 @@ type CellData = {
   y: number;
   geneSymbol: string;
   procedureName: string;
-}
+};
 
 type HeatMapProps = {
   data: LateAdultDataParsed;
@@ -43,23 +49,25 @@ const HeatMap = memo((props: HeatMapProps) => {
     allGenesList,
     numOfCols,
     setSelectedCell,
-    onClickCell
+    onClickCell,
   } = props;
   return (
     <HeatmapRect
       data={data.data}
-      xScale={d => xScale(d) ?? 0}
-      yScale={d => yScale(d) ?? 0}
+      xScale={(d) => xScale(d) ?? 0}
+      yScale={(d) => yScale(d) ?? 0}
       colorScale={colorScale}
       binWidth={binWidth}
       binHeight={binHeight}
     >
-      {heatmap =>
-        heatmap.map(heatmapBins =>
-          heatmapBins.map(bin => (
+      {(heatmap) =>
+        heatmap.map((heatmapBins) =>
+          heatmapBins.map((bin) => (
             <rect
               key={`heatmap-rect-${bin.row}-${bin.column}`}
-              className={classNames("visx-heatmap-rect", { "hasData": bin.count > 0 })}
+              className={classNames("visx-heatmap-rect", {
+                hasData: bin.count > 0,
+              })}
               width={xScale.bandwidth()}
               height={yScale.bandwidth()}
               x={bin.x}
@@ -71,24 +79,31 @@ const HeatMap = memo((props: HeatMapProps) => {
                   y: bin.y,
                   geneSymbol: allGenesList[bin.row].markerSymbol,
                   procedureName: data.columns[bin.column],
-                })
+                });
               }}
               onMouseLeave={() => {
                 if (
-                  (bin.column === 0 || bin.column === numOfCols - 1) ||
-                  (bin.row === 0 || bin.row === allGenesList.length - 1)
+                  bin.column === 0 ||
+                  bin.column === numOfCols - 1 ||
+                  bin.row === 0 ||
+                  bin.row === allGenesList.length - 1
                 ) {
                   setSelectedCell(undefined);
                 }
               }}
-              onClick={() => onClickCell(allGenesList[bin.row].mgiGeneAccessionId, bin.datum.column)}
+              onClick={() =>
+                onClickCell(
+                  allGenesList[bin.row].mgiGeneAccessionId,
+                  bin.datum.column
+                )
+              }
             />
           ))
         )
       }
     </HeatmapRect>
-  )
-})
+  );
+});
 
 type Props = {
   width: number;
@@ -118,52 +133,68 @@ const LateAdultHeatmap = (props: Props) => {
 
   useEffect(() => {
     if (genesList) {
-      const maxHeigth = (genesList.length * binHeight) + 170;
+      const maxHeigth = genesList.length * binHeight + 170;
       if (heatmapHeight !== maxHeigth) {
         setHeatmapHeight(maxHeigth);
       }
     }
   }, [genesList.length, heatmapHeight]);
 
-  const xScale = useMemo(() =>
-    scaleBand<number>({
-      domain: data.columns.map((_, index) => index),
-      range: [50, maxWidth],
-      round: true,
-      paddingInner: scalePadding,
-    }), [data, maxWidth, isFetchingParamData]);
+  const xScale = useMemo(
+    () =>
+      scaleBand<number>({
+        domain: data.columns.map((_, index) => index),
+        range: [50, maxWidth],
+        round: true,
+        paddingInner: scalePadding,
+      }),
+    [data, maxWidth, isFetchingParamData]
+  );
 
-  const yScale = useMemo(() =>
-    scaleBand<number>({
-      domain: genesList.map((_, index) => index),
-      range: [100, heatmapHeight],
-      paddingInner: scalePadding,
-    }),[genesList, heatmapHeight, isFetchingParamData]);
+  const yScale = useMemo(
+    () =>
+      scaleBand<number>({
+        domain: genesList.map((_, index) => index),
+        range: [100, heatmapHeight],
+        paddingInner: scalePadding,
+      }),
+    [genesList, heatmapHeight, isFetchingParamData]
+  );
 
+  const colorScale = useMemo(
+    () =>
+      scaleQuantize({
+        domain: [0, 2],
+        range: ["#dedede8f", "#15a2b88f", "#ed7b25c4"],
+      }),
+    []
+  );
 
-  const colorScale = useMemo(() =>
-    scaleQuantize({
-      domain: [0, 2],
-      range: ["#dedede8f", "#15a2b88f", "#ed7b25c4"]
-    }),[]);
+  const isSelectedGene = (geneSymbol: string) =>
+    !!selectedCell && selectedCell.geneSymbol === geneSymbol;
+  const isSelectedParam = (parameterName: string) =>
+    !!selectedCell && selectedCell.procedureName === parameterName;
 
-  const isSelectedGene = (geneSymbol: string) => !!selectedCell && selectedCell.geneSymbol === geneSymbol;
-  const isSelectedParam = (parameterName: string) => !!selectedCell && selectedCell.procedureName === parameterName;
+  const hasData = useMemo(
+    () => data.data.some((col) => col.bins.length !== 0),
+    [data]
+  );
 
-  const hasData = useMemo(() => data.data.some(col => col.bins.length !== 0), [data]);
-
-  const onClickCell = useCallback((mgiGeneAccessionId: string, columnName: string) => {
-    let url = `/genes/${mgiGeneAccessionId}?dataLifeStage=Late adult`;
-    // if selectedParam is null, column name will contain a procedureName
-    // when a user clicks a param, columnName will contain a parameterName
-    if (!selectedParam) {
-      url += `&dataSearch=${columnName}`
-    } else {
-      url += `&dataSearch=${selectedParam}&dataQuery=${columnName}`;
-    }
-    url += '#data';
-    router.push(url)
-  }, [router, selectedParam]);
+  const onClickCell = useCallback(
+    (mgiGeneAccessionId: string, columnName: string) => {
+      let url = `/genes/${mgiGeneAccessionId}?dataLifeStage=Late adult`;
+      // if selectedParam is null, column name will contain a procedureName
+      // when a user clicks a param, columnName will contain a parameterName
+      if (!selectedParam) {
+        url += `&dataSearch=${columnName}`;
+      } else {
+        url += `&dataSearch=${selectedParam}&dataQuery=${columnName}`;
+      }
+      url += "#data";
+      router.push(url);
+    },
+    [router, selectedParam]
+  );
 
   return (
     <svg
@@ -172,7 +203,7 @@ const LateAdultHeatmap = (props: Props) => {
       onMouseLeave={() => setSelectedCell(undefined)}
     >
       <Text
-        className={classNames({ 'axis-link': !!selectedParam })}
+        className={classNames({ "axis-link": !!selectedParam })}
         x={width / 2}
         y={20}
         style={{ textAnchor: "middle", fontSize: "1.3em", fontWeight: "700" }}
@@ -180,55 +211,90 @@ const LateAdultHeatmap = (props: Props) => {
           if (!!selectedParam) onParamSelected(undefined);
         }}
       >
-        {!!selectedParam ? `← Genes vs ${selectedParam} parameters` : `Genes vs Procedures`}
+        {!!selectedParam
+          ? `← Genes vs ${selectedParam} parameters`
+          : `Genes vs Procedures`}
       </Text>
       <Group top={100} left={50}>
-        {(!hasData && !isFetchingParamData) && (
+        {!hasData && !isFetchingParamData && (
           <Text x={width / 2} y="120" style={{ textAnchor: "middle" }}>
             No genes match the inserted text
           </Text>
         )}
         {isFetchingParamData ? (
-          <svg x={width / 2} y={heatmapHeight / 2} width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            x={width / 2}
+            y={heatmapHeight / 2}
+            width="100"
+            height="100"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z">
-              <animateTransform attributeName="transform" type="rotate" dur="0.75s" values="0 12 12;360 12 12" repeatCount="indefinite"/>
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                dur="0.75s"
+                values="0 12 12;360 12 12"
+                repeatCount="indefinite"
+              />
             </path>
           </svg>
-          ) : (
-            <HeatMap
-              data={data}
-              allGenesList={genesList}
-              xScale={xScale}
-              yScale={yScale}
-              colorScale={colorScale}
-              binWidth={binWidth}
-              numOfCols={numOfCols}
-              setSelectedCell={setSelectedCell}
-              onClickCell={onClickCell}
-            />
+        ) : (
+          <HeatMap
+            data={data}
+            allGenesList={genesList}
+            xScale={xScale}
+            yScale={yScale}
+            colorScale={colorScale}
+            binWidth={binWidth}
+            numOfCols={numOfCols}
+            setSelectedCell={setSelectedCell}
+            onClickCell={onClickCell}
+          />
         )}
         {!!selectedCell && (
           <>
             <rect
-              style={{fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none"}}
+              style={{ fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none" }}
               x={xScale(0)}
               y={selectedCell.y}
               height={yScale.bandwidth()}
-              width={clamp(selectedCell.x - xScale(0) - (xScale.padding() * xScale.bandwidth()), 0, maxWidth)}
+              width={clamp(
+                selectedCell.x -
+                  xScale(0) -
+                  xScale.padding() * xScale.bandwidth(),
+                0,
+                maxWidth
+              )}
             />
             <rect
-              style={{fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none"}}
+              style={{ fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none" }}
               y={100}
               x={selectedCell.x}
               width={xScale.bandwidth()}
-              height={clamp(selectedCell.y - 100 - (yScale.padding() * yScale.bandwidth()), 0, heatmapHeight)}
+              height={clamp(
+                selectedCell.y - 100 - yScale.padding() * yScale.bandwidth(),
+                0,
+                heatmapHeight
+              )}
             />
             <rect
-              style={{fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none"}}
-              x={selectedCell.x + xScale.bandwidth() + (xScale.padding() * xScale.bandwidth())}
+              style={{ fill: "rgba(0, 0, 0, 0.2)", pointerEvents: "none" }}
+              x={
+                selectedCell.x +
+                xScale.bandwidth() +
+                xScale.padding() * xScale.bandwidth()
+              }
               y={selectedCell.y}
               height={yScale.bandwidth()}
-              width={clamp(xScale(numOfCols - 1) - selectedCell.x - (xScale.padding() * xScale.bandwidth()), 0, maxWidth)}
+              width={clamp(
+                xScale(numOfCols - 1) -
+                  selectedCell.x -
+                  xScale.padding() * xScale.bandwidth(),
+                0,
+                maxWidth
+              )}
             />
           </>
         )}
@@ -238,13 +304,13 @@ const LateAdultHeatmap = (props: Props) => {
           scale={xScale}
           top={190}
           left={48}
-          tickFormat={value => data.columns[value as number]}
+          tickFormat={(value) => data.columns[value as number]}
           tickValues={data.columns.map((col, index) => index)}
-          tickComponent={({formattedValue, ...rest}) => {
+          tickComponent={({ formattedValue, ...rest }) => {
             const matchesParam = isSelectedParam(formattedValue);
-            const style: CSSProperties = matchesParam ?
-              { fontWeight: "bold" } :
-              { fontWeight: "normal"  };
+            const style: CSSProperties = matchesParam
+              ? { fontWeight: "bold" }
+              : { fontWeight: "normal" };
             return (
               <text
                 className={classNames({ "axis-link": !selectedParam })}
@@ -253,12 +319,14 @@ const LateAdultHeatmap = (props: Props) => {
                 transform={`rotate(-50, ${rest.x}, 0)`}
                 textAnchor="start"
                 alignmentBaseline="middle"
-                onClick={() => { if (!selectedParam) onParamSelected(formattedValue) }}
+                onClick={() => {
+                  if (!selectedParam) onParamSelected(formattedValue);
+                }}
               >
                 <title>{formattedValue}</title>
                 {truncate(formattedValue, { length: 25 })}
               </text>
-            )
+            );
           }}
         />
       )}
@@ -268,22 +336,24 @@ const LateAdultHeatmap = (props: Props) => {
           top={100}
           left={90}
           numTicks={genesList.length}
-          tickFormat={value => genesList[value as number]?.markerSymbol || '-'}
-          tickComponent={({formattedValue, ...rest}) => {
+          tickFormat={(value) =>
+            genesList[value as number]?.markerSymbol || "-"
+          }
+          tickComponent={({ formattedValue, ...rest }) => {
             const matchesGene = isSelectedGene(formattedValue);
-            const style: CSSProperties = matchesGene ?
-              { fontWeight: "bold", fontSize: "12px" } :
-              { fontWeight: "normal", fontSize: "10px" };
+            const style: CSSProperties = matchesGene
+              ? { fontWeight: "bold", fontSize: "12px", fontStyle: "italic" }
+              : { fontWeight: "normal", fontSize: "10px", fontStyle: "italic" };
             return (
               <Text style={style} {...rest}>
                 {formattedValue}
               </Text>
-            )
+            );
           }}
         />
       )}
     </svg>
-  )
+  );
 };
 
 export default LateAdultHeatmap;

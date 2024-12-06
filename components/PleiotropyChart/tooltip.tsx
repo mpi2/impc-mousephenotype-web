@@ -35,7 +35,9 @@ export default function ToolTip({
       left={left}
       top={top}
     >
-      <b>{data.markerSymbol}</b>
+      <b>
+        <i>{data.markerSymbol}</i>
+      </b>
       <span>Other phenotype calls: {data.otherPhenotypeCount}</span>
       <span>
         {phenotypeName} phenotype calls: {data.phenotypeCount}
