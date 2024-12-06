@@ -308,31 +308,6 @@ const BatchQueryPage = () => {
     },
   });
 
-  const fetchAndDownloadData = async (payload: toogleFlagPayload) => {
-    if (geneIdArray?.length > 0 || !!file) {
-      const headers = new Headers();
-      headers.append("Accept", payload.toLowerCase());
-      if (tab === "paste-your-list") {
-        headers.append("Content-Type", "application/json");
-      }
-      dispatch({ type: "toggle", payload });
-      const body = getBody();
-      const resp = await fetch(BATCH_QUERY_API_ROOT, {
-        method: "POST",
-        body,
-        headers,
-      });
-      const blob = await resp.blob();
-      const objUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.setAttribute("href", objUrl);
-      link.setAttribute("download", "batch-query-data-" + payload);
-      link.click();
-      URL.revokeObjectURL(objUrl);
-      dispatch({ type: "toggle", payload });
-    }
-  };
-
   const downloadButtons = useMemo(
     () => [
       {
@@ -438,7 +413,6 @@ const BatchQueryPage = () => {
       method: "POST",
       body,
     });
-    dispatch({ type: "toggle", payload });
     const fileData = await response.blob();
     const url = window.URL.createObjectURL(fileData);
     const a = document.createElement("a");
@@ -447,6 +421,7 @@ const BatchQueryPage = () => {
     document.body.appendChild(a);
     a.click();
     a.remove();
+    dispatch({ type: "toggle", payload });
   };
 
   return (
