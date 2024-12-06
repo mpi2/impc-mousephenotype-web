@@ -260,6 +260,15 @@ const EmbryoDataAvailabilityGrid = ({
             ]}
             annotations={[]}
             onClick={onClickTick}
+            theme={{
+              axis: {
+                ticks: {
+                  text: {
+                    fontStyle: "italic",
+                  },
+                },
+              },
+            }}
           />
         ) : (
           <h2 className="mt-5">No genes match the filters selected</h2>
