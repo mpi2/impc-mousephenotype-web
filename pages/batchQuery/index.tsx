@@ -41,6 +41,8 @@ import { SortType } from "@/models";
 import moment from "moment";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
+const BATCH_QUERY_DOWNLOAD_ROOT =
+  process.env.NEXT_PUBLIC_BATCH_QUERY_DOWNLOAD_ROOT || "";
 
 type BatchQueryItem = {
   geneId: string;
@@ -432,7 +434,7 @@ const BatchQueryPage = () => {
   const fetchFilteredDataset = async (payload: toogleFlagPayload) => {
     const body = getBody();
     dispatch({ type: "toggle", payload });
-    const response = await fetch("/data/api/batch-query-filtered-dataset", {
+    const response = await fetch(BATCH_QUERY_DOWNLOAD_ROOT, {
       method: "POST",
       body,
     });
