@@ -923,11 +923,15 @@ const ReleaseNotesPage = (props: Props) => {
           <h2>Previous releases</h2>
           <ul>
             {listOfPastReleases.map((releaseVersion) => (
-              <li style={{ marginBottom: "1rem" }}>
+              <li key={releaseVersion} style={{ marginBottom: "1rem" }}>
                 <Link
                   className="link primary"
                   target="_blank"
-                  href={`https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-${releaseVersion}.pdf`}
+                  href={
+                    parseFloat(releaseVersion) < 22.0
+                      ? `https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-${releaseVersion}.pdf`
+                      : `/data/release${releaseVersion}`
+                  }
                 >
                   Release {releaseVersion} notes&nbsp;
                   <FontAwesomeIcon
@@ -944,12 +948,5 @@ const ReleaseNotesPage = (props: Props) => {
     </>
   );
 };
-
-export async function getServerSideProps() {
-  const data = await fetchLandingPageData("release_metadata");
-  return {
-    props: { releaseMetadata: data },
-  };
-}
 
 export default ReleaseNotesPage;
