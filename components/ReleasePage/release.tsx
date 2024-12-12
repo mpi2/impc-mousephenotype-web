@@ -931,7 +931,7 @@ const ReleaseNotesPage = (props: Props) => {
                   href={
                     parseFloat(releaseVersion) < 22.0
                       ? `https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-${releaseVersion}.pdf`
-                      : `/data/release${releaseVersion}`
+                      : `/release/${releaseVersion}`
                   }
                 >
                   Release {releaseVersion} notes&nbsp;
