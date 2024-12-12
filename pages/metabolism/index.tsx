@@ -357,7 +357,7 @@ const MetabolismLandingPage = () => {
             <Row>
               <Col>
                 <img
-                  src="https://www.mousephenotype.org/data/documentation/img/more-cassette.png"
+                  src="/data/images/more-cassette.png"
                   alt="Illustration of the action of MORE cassettes in regulatory networks"
                   width="100%"
                 />

@@ -55,7 +55,7 @@ const ExternalLinks = () => {
                     target="_blank"
                     title={`visit ${provider.providerName} website for more details of ${link.label}`}
                   >
-                    {link.label}
+                    <i>{link.label}</i>
                     <FontAwesomeIcon
                       icon={faExternalLinkAlt}
                       className="grey"

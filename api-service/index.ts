@@ -10,7 +10,8 @@ export const PROTOTYPE_API_URL =
   process.env.NEXT_PUBLIC_PROTOTYPE_API_ROOT || "";
 export const DEV_API_ROOT = process.env.NEXT_PUBLIC_DEV_API_ROOT || "";
 export const PROD_API_ROOT = process.env.NEXT_PUBLIC_PROD_API_ROOT || "";
-
+export const DATA_RELEASE_VERSION =
+  process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION;
 const httpCodesError500 = [500, 501, 502, 503, 504, 506];
 
 export async function fetchAPI(query: string) {
@@ -45,7 +46,9 @@ export async function fetchAPI(query: string) {
 }
 
 export async function fetchAPIFromServer(query: string) {
-  let domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : API_URL;
+  const SERVER_API_ROOT = process.env.SERVER_API_ROOT;
+  const DOMAIN_URL = SERVER_API_ROOT ? SERVER_API_ROOT : API_URL;
+  let domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : DOMAIN_URL;
   const endpointURL = domain + query;
   try {
     const response = await fetch(endpointURL);
@@ -83,6 +86,19 @@ export async function fetchMHPlotDataFromS3(mpId: string) {
 export async function fetchLandingPageData(landingPageId: string) {
   const response = await fetch(
     `${LANDING_PAGE_DATA_URL}/${landingPageId}.json`
+  );
+  if (!response.ok) {
+    return Promise.reject(`An error has occured: ${response.status}`);
+  }
+  return await response.json();
+}
+
+export async function fetchReleaseNotesData(releaseTag: string) {
+  const response = await fetch(
+    `${LANDING_PAGE_DATA_URL.replace(
+      DATA_RELEASE_VERSION,
+      releaseTag
+    )}/release_metadata.json`
   );
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);
