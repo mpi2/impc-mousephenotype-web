@@ -1,5 +1,5 @@
 import { fetchLandingPageData } from "@/api-service";
-import ReleaseNotesPage from "./release";
+import ReleaseNotesPage from "../../components/ReleasePage/release";
 import { ReleaseMetadata } from "@/models/release";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 };
 
 const ReleasePage = (props: Props) => {
-  return <ReleaseNotesPage releaseMetadata={props.releaseMetadata} />;
+  return props && <ReleaseNotesPage releaseMetadata={props.releaseMetadata} />;
 };
 
 export async function getServerSideProps() {

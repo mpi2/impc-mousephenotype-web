@@ -1,5 +1,5 @@
 import { ReleaseMetadata } from "@/models/release";
-import ReleaseNotesPage from "./release";
+import ReleaseNotesPage from "../../components/ReleasePage/release";
 import { fetchLandingPageData, fetchReleaseNotesData } from "@/api-service";
 
 type Props = {
