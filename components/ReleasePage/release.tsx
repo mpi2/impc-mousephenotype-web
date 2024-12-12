@@ -40,6 +40,7 @@ import {
 import { SortType } from "@/models";
 
 const listOfPastReleases = [
+  "22.0",
   "21.1",
   "21.0",
   "20.1",
