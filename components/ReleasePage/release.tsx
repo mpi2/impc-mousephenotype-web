@@ -929,7 +929,7 @@ const ReleaseNotesPage = (props: Props) => {
                   className="link primary"
                   target="_blank"
                   href={
-                    parseFloat(releaseVersion) < 22.0
+                    parseFloat(releaseVersion) <= 21.1
                       ? `https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-${releaseVersion}.pdf`
                       : `/release/${releaseVersion}`
                   }
