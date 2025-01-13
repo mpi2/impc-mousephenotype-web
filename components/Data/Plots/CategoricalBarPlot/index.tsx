@@ -101,6 +101,14 @@ const CategoricalBarPlot = ({ series, zygosity }) => {
               padding: 20,
             },
           },
+          tooltip: {
+            callbacks: {
+              label: (context) => {
+                let label = context.dataset.label || "";
+                return `${label}: ${context.parsed.y?.toFixed(2)}%`;
+              },
+            },
+          },
         },
         scales: {
           y: {
