@@ -163,7 +163,17 @@ const Associations = () => {
             data={data}
             fileName={`${phenotype?.phenotypeName}-associations`}
             fields={[
-              { key: "alleleSymbol", label: "Gene/allele" },
+              {
+                key: "alleleSymbol",
+                label: "Gene",
+                getValueFn: (item) => item?.alleleSymbol.split("<")[0],
+              },
+              {
+                key: "alleleSymbol",
+                label: "Allele",
+                getValueFn: (item) =>
+                  item?.alleleSymbol.split("<")[1].slice(0, -1),
+              },
               { key: "phenotypeName", label: "Phenotype" },
               { key: "zygosity", label: "Zygosity" },
               { key: "sex", label: "Sex" },
