@@ -15,13 +15,13 @@ spec:
         app: node-app
     spec:
       containers:
-      - name: node-app
-        image: 655093420076.dkr.ecr.eu-west-2.amazonaws.com/impc-nextjs-frontend:latest
-        ports:
-        - containerPort: 3000
-        env:
-        - name: SERVER_API_ROOT
-          value: https://dev.mousephenotype.org/data
+        - name: node-app
+          image: 655093420076.dkr.ecr.eu-west-2.amazonaws.com/impc-nextjs-frontend:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: SERVER_API_ROOT
+              value: https://nginx.mousephenotype-dev.org/data
 ---
 apiVersion: v1
 kind: Service
@@ -35,4 +35,3 @@ spec:
     - port: 80
       targetPort: 3000
       nodePort: 31290
-
