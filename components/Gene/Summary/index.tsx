@@ -2,15 +2,14 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import Card from "../../Card";
-import { BodySystem } from "../../BodySystemIcon";
-import Check from "../../Check";
 import { GeneSummary } from "@/models/gene";
 import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import { allBodySystems } from "@/utils";
-import { ScrollToTopButton } from "@/components";
+import { Card, Check, ScrollToTopButton } from "@/components";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { BodySystem } from "@/components/BodySystemIcon";
 
 const CollectionItem = ({
   name,
@@ -86,6 +85,12 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
             title={`visit MGI site to view details for gene ${gene.geneSymbol}`}
           >
             {gene.mgiGeneAccessionId}
+            <FontAwesomeIcon
+              icon={faExternalLinkAlt}
+              className="grey"
+              size="xs"
+              style={{ marginLeft: "0.3rem" }}
+            />
           </a>
           {gene?.synonyms?.length > 0 && (
             <span>

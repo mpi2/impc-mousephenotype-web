@@ -1,11 +1,10 @@
 import styles from "./styles.module.scss";
-import Card from "../../Card";
-import { BodySystem } from "../../BodySystemIcon";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { PhenotypeSummary } from "@/models/phenotype";
-import { ScrollToTopButton } from "@/components";
+import { Card, ScrollToTopButton } from "@/components";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   phenotype: PhenotypeSummary;
@@ -71,7 +70,7 @@ const Summary = ({ phenotype }: Props) => {
       </Row>
       <div className={styles.subheadingCont}>
         <div className={styles.subheading}>
-          <span className={styles.subheadingSection}>Phenotype</span>
+          <span>Phenotype</span>
           <a
             className="primary"
             href={`http://www.informatics.jax.org/vocab/mp_ontology/${phenotype.phenotypeId}`}
@@ -79,17 +78,13 @@ const Summary = ({ phenotype }: Props) => {
             title={`visit MGI site to view details for gene ${phenotype.phenotypeName}`}
           >
             {phenotype.phenotypeId}
-          </a>
-          {phenotype.topLevelPhenotypes.map((system) => (
-            <BodySystem
-              key={system.id}
-              name={system.name}
-              prependLabel="System"
-              color="grey"
-              hoverColor="grey"
-              noSpacing
+            <FontAwesomeIcon
+              icon={faExternalLinkAlt}
+              className="grey"
+              size="xs"
+              style={{ marginLeft: "0.3rem" }}
             />
-          ))}
+          </a>
           {!!phenotype.phenotypeSynonyms?.length && (
             <a className={styles.subheadingSection} href="#">
               Synonyms:&nbsp;

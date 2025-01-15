@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type TableHeader = {
   width: number;
   label: string;
@@ -6,6 +8,7 @@ export type TableHeader = {
   disabled?: boolean;
   sortField?: string;
   children?: TableHeader[];
+  extraContent?: ReactNode;
 };
 
 export type SortType = [string | ((any) => void), "asc" | "desc"];

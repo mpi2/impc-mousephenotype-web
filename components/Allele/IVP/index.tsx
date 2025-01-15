@@ -17,9 +17,12 @@ const IntermediateVector = ({
   alleleName: string;
 }) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'ivp', alleleName],
-    queryFn: () => fetchAPI(`/api/v1/alleles/ivp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`),
-    placeholderData: []
+    queryKey: ["genes", mgiGeneAccessionId, "alleles", "ivp", alleleName],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/alleles/ivp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
+      ),
+    placeholderData: [],
   });
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
@@ -77,7 +80,7 @@ const IntermediateVector = ({
                   <tr>
                     <td>
                       <Link
-                        href={`/design/${p.designLink}`}
+                        href={`/designs/${p.designLink.split(":")[2]}`}
                         scroll={false}
                         className="link primary"
                       >
