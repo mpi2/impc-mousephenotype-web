@@ -44,9 +44,52 @@ const Summary = ({ phenotype }: Props) => {
 
   return (
     <Card>
+      <Row>
+        <Col className={styles.nameContainer} lg={6}>
+          <h1 style={{ margin: 0 }}>
+            <strong>{phenotype.phenotypeName}</strong>
+          </h1>
+        </Col>
+        <Col lg={6}>
+          <div className={styles.stats}>
+            <div data-testid="significant-genes">
+              <p className="secondary h2 mb-0">
+                {phenotype.significantGenes || 0}
+              </p>
+              <span className="grey">significant genes</span>
+            </div>
+            <div data-testid="tested-genes-percentage">
+              <p className="secondary h2 mb-0">{calculatePercentageGenes()}%</p>
+              <span className="grey">of tested genes</span>
+            </div>
+            <div data-testid="total-genes-tested">
+              <p className="h2 mb-0">{getNoTotalGenes()}</p>
+              <span className="grey">tested genes</span>
+            </div>
+          </div>
+        </Col>
+      </Row>
       <div className={styles.subheadingCont}>
         <div className={styles.subheading}>
           <span className={styles.subheadingSection}>Phenotype</span>
+          <a
+            className="primary"
+            href={`http://www.informatics.jax.org/vocab/mp_ontology/${phenotype.phenotypeId}`}
+            target="_blank"
+            title={`visit MGI site to view details for gene ${phenotype.phenotypeName}`}
+          >
+            {phenotype.phenotypeId}
+          </a>
+          {phenotype.topLevelPhenotypes.map((system) => (
+            <BodySystem
+              key={system.id}
+              name={system.name}
+              prependLabel="System"
+              color="grey"
+              hoverColor="grey"
+              noSpacing
+            />
+          ))}
           {!!phenotype.phenotypeSynonyms?.length && (
             <a className={styles.subheadingSection} href="#">
               Synonyms:&nbsp;
@@ -80,49 +123,17 @@ const Summary = ({ phenotype }: Props) => {
               )}
             </a>
           )}
-          {phenotype.topLevelPhenotypes.map((system) => (
-            <BodySystem
-              key={system.id}
-              name={system.name}
-              prependLabel="System"
-              color="grey"
-              hoverColor="grey"
-              noSpacing
-            />
-          ))}
         </div>
       </div>
-      <Row>
-        <Col lg={6}>
-          <h1 style={{ margin: 0 }}>
-            <strong>{phenotype.phenotypeName}</strong>
-          </h1>
-        </Col>
-        <Col lg={6}>
-          <div className={styles.stats}>
-            <div data-testid="significant-genes">
-              <p className="secondary h2 mb-0">
-                {phenotype.significantGenes || 0}
-              </p>
-              <span className="grey">significant genes</span>
-            </div>
-            <div data-testid="tested-genes-percentage">
-              <p className="secondary h2 mb-0">{calculatePercentageGenes()}%</p>
-              <span className="grey">of tested genes</span>
-            </div>
-            <div data-testid="total-genes-tested">
-              <p className="h2 mb-0">{getNoTotalGenes()}</p>
-              <span className="grey">tested genes</span>
-            </div>
-          </div>
-        </Col>
-      </Row>
       <div className={styles.summaryContent}>
         <div>
-          <h3>Description</h3>
+          <h3 className="mb-2">Description</h3>
           <p className="grey">{phenotype.phenotypeDefinition}</p>
         </div>
-        <div className="purchaseBanner phenotype-page">
+        <div
+          className="purchaseBanner phenotype-page"
+          style={{ paddingRight: 0 }}
+        >
           <span>Significant gene-phenotype associations</span>
           <a href="#associations-table" className="purchaseButton">
             View data

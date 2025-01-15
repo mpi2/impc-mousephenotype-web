@@ -17,7 +17,7 @@ import dataLabelsPlugin from "chartjs-plugin-datalabels";
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchPublicationEndpoint } from "@/api-service";
 import {
   faTable,
   faChartBar,
@@ -73,7 +73,7 @@ const PublicationsPage = () => {
   const quarterChartRef = useRef();
   const { data } = useQuery({
     queryKey: ["publications", "aggregation"],
-    queryFn: () => fetchAPI(`/api/v1/publications/aggregation`),
+    queryFn: () => fetchPublicationEndpoint(`/api/v1/publications/aggregation`),
     select: (aggregationData: AggregationData) => {
       const yearlyIncrementData = aggregationData.incrementalCountsByYear;
       const allGrantsData = aggregationData.publicationsByGrantAgency;
