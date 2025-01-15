@@ -45,6 +45,9 @@ td.procedureName {
     width: initial;
     cursor: default !important;
   }
+  &.withExtraContent {
+    width: initial;
+  }
 }
 
 $button-margin: -0.3em;

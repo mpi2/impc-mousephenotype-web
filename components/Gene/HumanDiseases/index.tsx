@@ -1,6 +1,7 @@
 import {
   faChevronDown,
   faChevronUp,
+  faCircleQuestion,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,17 +9,21 @@ import _ from "lodash";
 import { useRouter } from "next/router";
 import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import { Alert, Overlay, Tab, Tabs, Tooltip } from "react-bootstrap";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
-import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { DownloadData, SectionHeader } from "@/components";
+import {
+  Card,
+  DownloadData,
+  Pagination,
+  SectionHeader,
+  SortableTable,
+} from "@/components";
 import { isIframeLoaded } from "@/utils";
 import { SortType } from "@/models";
+import Link from "next/link";
 
 type ScaleProps = {
   children: number;
@@ -189,6 +194,21 @@ const Row = ({
           <strong className={styles.link}>{rowData.diseaseTerm}</strong>
         </td>
         <td>
+          <a
+            href={`http://omim.org/entry/${rowData.diseaseId.split(":")[1]}`}
+            target="_blank"
+            className="link primary"
+            title={`view ${rowData.diseaseTerm} details in OMIM website`}
+          >
+            {rowData.diseaseId}{" "}
+            <FontAwesomeIcon
+              className="grey"
+              size="xs"
+              icon={faExternalLinkAlt}
+            />
+          </a>
+        </td>
+        <td>
           <Scale ref={tooltipRef} toggleFocus={setTooltipShow}>
             {Math.round((rowData.phenodigmScore / 100) * 5)}
           </Scale>
@@ -212,21 +232,6 @@ const Row = ({
             ?.split(",")
             .map((x) => x.replace(" ", "**").split("**")[1])
             .join(", ")}
-        </td>
-        <td>
-          <a
-            href={`http://omim.org/entry/${rowData.diseaseId.split(":")[1]}`}
-            target="_blank"
-            className="link primary"
-            title={`view ${rowData.diseaseTerm} details in OMIM website`}
-          >
-            {rowData.diseaseId}{" "}
-            <FontAwesomeIcon
-              className="grey"
-              size="xs"
-              icon={faExternalLinkAlt}
-            />
-          </a>
         </td>
         <td onClick={() => setOpen(!open)}>
           <FontAwesomeIcon
@@ -269,7 +274,6 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <p className="grey">Loading...</p>
       </Card>
@@ -282,7 +286,6 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <Alert variant="primary">No data available for this section</Alert>
       </Card>
@@ -313,7 +316,6 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <div className="mb-4">
           <p>
@@ -351,83 +353,93 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             No data available for this section.
           </Alert>
         ) : (
-          <>
-            <Pagination
-              data={selectedData}
-              additionalBottomControls={
-                <DownloadData<GeneDisease>
-                  data={sorted}
-                  fileName={`${gene.geneSymbol}-associated-diseases`}
-                  fields={[
-                    { key: "diseaseTerm", label: "Disease" },
-                    { key: "phenodigmScore", label: "Phenodigm Score" },
-                    {
-                      key: "diseaseMatchedPhenotypes",
-                      label: "Matching phenotypes",
-                    },
-                    {
-                      key: "diseaseId",
-                      label: "Source",
-                      getValueFn: (item) =>
-                        `https://omim.org/entry/${item.diseaseId.replace(
-                          "OMIM:",
-                          ""
-                        )}`,
-                    },
-                    {
-                      key: "associationCurated",
-                      label: "Gene association",
-                      getValueFn: (item) =>
-                        item.associationCurated ? "Curated" : "Predicted",
-                    },
-                    { key: "modelDescription", label: "Model description" },
-                    {
-                      key: "modelGeneticBackground",
-                      label: "Model genetic background",
-                    },
-                    {
-                      key: "modelMatchedPhenotypes",
-                      label: "Model matched phenotypes",
-                    },
-                  ]}
-                />
-              }
-            >
-              {(pageData) => (
-                <SortableTable
-                  doSort={(sort) => {
-                    setSorted(_.orderBy(data, sort[0], sort[1]));
-                  }}
-                  defaultSort={defaultSort}
-                  headers={[
-                    { width: 5, label: "Disease", field: "diseaseTerm" },
-                    {
-                      width: 2,
-                      label: "Similarity of phenotypes",
-                      field: "phenodigmScore",
-                    },
-                    {
-                      width: 3,
-                      label: "Matching phenotypes",
-                      field: "diseaseMatchedPhenotypes",
-                    },
-                    { width: 2, label: "Source", field: "diseaseId" },
-                    { width: 1, label: "Expand", disabled: true },
-                  ]}
-                >
-                  {pageData.map((d) => (
-                    <Row
-                      key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`}
-                      rowData={d}
-                      data={data.filter(
-                        (diseaseModel) => d.diseaseId == diseaseModel.diseaseId
-                      )}
-                    />
-                  ))}
-                </SortableTable>
-              )}
-            </Pagination>
-          </>
+          <Pagination
+            data={selectedData}
+            additionalBottomControls={
+              <DownloadData<GeneDisease>
+                data={sorted}
+                fileName={`${gene.geneSymbol}-associated-diseases`}
+                fields={[
+                  { key: "diseaseTerm", label: "Disease" },
+                  { key: "phenodigmScore", label: "Phenodigm Score" },
+                  {
+                    key: "diseaseMatchedPhenotypes",
+                    label: "Matching phenotypes",
+                  },
+                  {
+                    key: "diseaseId",
+                    label: "Source",
+                    getValueFn: (item) =>
+                      `https://omim.org/entry/${item.diseaseId.replace(
+                        "OMIM:",
+                        ""
+                      )}`,
+                  },
+                  {
+                    key: "associationCurated",
+                    label: "Gene association",
+                    getValueFn: (item) =>
+                      item.associationCurated ? "Curated" : "Predicted",
+                  },
+                  { key: "modelDescription", label: "Model description" },
+                  {
+                    key: "modelGeneticBackground",
+                    label: "Model genetic background",
+                  },
+                  {
+                    key: "modelMatchedPhenotypes",
+                    label: "Model matched phenotypes",
+                  },
+                ]}
+              />
+            }
+          >
+            {(pageData) => (
+              <SortableTable
+                doSort={(sort) => {
+                  setSorted(_.orderBy(data, sort[0], sort[1]));
+                }}
+                defaultSort={defaultSort}
+                headers={[
+                  { width: 5, label: "Disease", field: "diseaseTerm" },
+                  { width: 1.5, label: "Source", field: "diseaseId" },
+                  {
+                    width: 2.5,
+                    label: "Similarity of phenotypes",
+                    field: "phenodigmScore",
+                    extraContent: (
+                      <>
+                        <Link
+                          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+                          className="btn"
+                          aria-label="Human diseases documentation"
+                          style={{ paddingTop: 0, paddingBottom: 0 }}
+                        >
+                          <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
+                        </Link>
+                      </>
+                    ),
+                  },
+                  {
+                    width: 3,
+                    label: "Matching phenotypes",
+                    field: "diseaseMatchedPhenotypes",
+                  },
+                  { width: 1, label: "Expand", disabled: true },
+                ]}
+              >
+                {pageData.map((d) => (
+                  <Row
+                    key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`}
+                    rowData={d}
+                    data={data.filter(
+                      (diseaseModel) => d.diseaseId == diseaseModel.diseaseId
+                    )}
+                  />
+                ))}
+              </SortableTable>
+            )}
+          </Pagination>
         )}
       </Card>
     </>
