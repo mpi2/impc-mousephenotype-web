@@ -12,6 +12,8 @@ export const DEV_API_ROOT = process.env.NEXT_PUBLIC_DEV_API_ROOT || "";
 export const PROD_API_ROOT = process.env.NEXT_PUBLIC_PROD_API_ROOT || "";
 export const DATA_RELEASE_VERSION =
   process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION;
+export const PUBLICATIONS_ENDPOINT_URL =
+  process.env.NEXT_PUBLIC_PUBLICATIONS_ENDPOINT_URL || "";
 const httpCodesError500 = [500, 501, 502, 503, 504, 506];
 
 export async function fetchAPI(query: string) {
@@ -104,4 +106,23 @@ export async function fetchReleaseNotesData(releaseTag: string) {
     return Promise.reject(`An error has occured: ${response.status}`);
   }
   return await response.json();
+}
+
+export async function fetchPublicationEndpoint(query: string) {
+  const endpointURL = PUBLICATIONS_ENDPOINT_URL + query;
+  try {
+    const response = await fetch(endpointURL);
+    if (response.status === 204 || response.status === 404) {
+      return Promise.reject("No content");
+    }
+    if (httpCodesError500.includes(response.status)) {
+      return Promise.reject(`500 error - ${response.status}`);
+    }
+    if (!response.ok) {
+      return Promise.reject(`An error has occured: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    return Promise.reject("Error: " + error);
+  }
 }
