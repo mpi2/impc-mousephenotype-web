@@ -1,6 +1,7 @@
 import {
   faChevronDown,
   faChevronUp,
+  faCircleQuestion,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,6 +23,7 @@ import {
 } from "@/components";
 import { isIframeLoaded } from "@/utils";
 import { SortType } from "@/models";
+import Link from "next/link";
 
 type ScaleProps = {
   children: number;
@@ -272,7 +274,6 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <p className="grey">Loading...</p>
       </Card>
@@ -285,7 +286,6 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <Alert variant="primary">No data available for this section</Alert>
       </Card>
@@ -316,7 +316,6 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
         <SectionHeader
           containerId="#human-diseases"
           title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
         />
         <div className="mb-4">
           <p>
@@ -403,11 +402,23 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                 defaultSort={defaultSort}
                 headers={[
                   { width: 5, label: "Disease", field: "diseaseTerm" },
-                  { width: 2, label: "Source", field: "diseaseId" },
+                  { width: 1.5, label: "Source", field: "diseaseId" },
                   {
-                    width: 2,
+                    width: 2.5,
                     label: "Similarity of phenotypes",
                     field: "phenodigmScore",
+                    extraContent: (
+                      <>
+                        <Link
+                          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+                          className="btn"
+                          aria-label="Human diseases documentation"
+                          style={{ paddingTop: 0, paddingBottom: 0 }}
+                        >
+                          <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
+                        </Link>
+                      </>
+                    ),
                   },
                   {
                     width: 3,
