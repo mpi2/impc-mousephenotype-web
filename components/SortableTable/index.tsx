@@ -75,6 +75,7 @@ const SortableTable = ({
     disabled = false,
     children: childHeader,
     sortField,
+    extraContent,
   }: TableHeader) => {
     const selected = field === sort.field || sortField === sort.field;
     const handleSelect = () => {
@@ -103,6 +104,7 @@ const SortableTable = ({
             }}
             className={classNames(styles.inlineButton, styles.headerButton, {
               [styles.disabled]: disabled,
+              [styles.withExtraContent]: !!extraContent,
             })}
             onClick={handleSelect}
           >
@@ -121,6 +123,7 @@ const SortableTable = ({
             )}
           </button>
         )}
+        {!!extraContent && extraContent}
       </th>
     );
   };
