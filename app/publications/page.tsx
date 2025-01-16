@@ -11,16 +11,7 @@ import {
   PublicationsByYearChart,
   GrantSection,
 } from "./charts";
-
-type AggregationData = {
-  incrementalCountsByYear: Array<{ pubYear: number; count: number }>;
-  publicationsByQuarter: Array<{
-    pubYear: number;
-    count: number;
-    byQuarter: Array<{ quarter: number; count: number }>;
-  }>;
-  publicationsByGrantAgency: Array<{ agency: string; count: number }>;
-};
+import { PublicationAggregationDataResponse } from "@/models";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"),
@@ -36,7 +27,7 @@ const PublicationsPage = () => {
   const { data } = useQuery({
     queryKey: ["publications", "aggregation"],
     queryFn: () => fetchPublicationEndpoint(`/api/v1/publications/aggregation`),
-    select: (aggregationData: AggregationData) => {
+    select: (aggregationData: PublicationAggregationDataResponse) => {
       const yearlyIncrementData = aggregationData.incrementalCountsByYear;
       const allGrantsData = aggregationData.publicationsByGrantAgency;
       const publicationsByGrantsChartData = allGrantsData.filter(

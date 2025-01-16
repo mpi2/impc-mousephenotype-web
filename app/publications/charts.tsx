@@ -31,6 +31,11 @@ import {
 import styles from "./styles.module.scss";
 import { Modal } from "react-bootstrap";
 import dynamic from "next/dynamic";
+import {
+  PublicationsByGrantAgency,
+  PublicationsByQuarter,
+  PublicationsIncrementalCountsByYear,
+} from "@/models/publications";
 
 ChartJS.register(
   CategoryScale,
@@ -252,7 +257,16 @@ export function GrantsChart({
   }
 }
 
-export function GrantSection({ data }) {
+type GrantSectionProps = {
+  data: {
+    yearlyIncrementData: PublicationsIncrementalCountsByYear;
+    publicationsByGrantsChartData: PublicationsByGrantAgency;
+    publicationsByQuarter: PublicationsByQuarter;
+    allGrantsData: PublicationsByGrantAgency;
+  };
+};
+
+export function GrantSection({ data }: GrantSectionProps) {
   const [grantAgencyView, setGrantAgencyView] = useState<"chart" | "table">(
     "chart"
   );

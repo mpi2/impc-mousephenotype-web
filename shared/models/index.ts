@@ -32,6 +32,7 @@ export type {
 } from "./LandingPages";
 export type { AlleleSummary } from "./allele";
 export type { Release };
+export type { PublicationAggregationDataResponse } from "./publications";
 
 type Model =
   | PhenotypeRef
