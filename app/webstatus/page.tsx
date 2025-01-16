@@ -6,7 +6,3 @@ export default function webstatus() {
     </>
   );
 }
-
-webstatus.getLayout = function getLayout(page) {
-  return <>{page}</>;
-};
