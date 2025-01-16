@@ -1,10 +1,18 @@
+"use client";
+
 import { useRouter } from "next/router";
-import Search from "../components/Search";
-import GeneResults from "../components/GeneResults";
-import PhenotypeResults from "../components/PhenotypeResults";
-import AlleleResults from "../components/AlleleResults";
 import { useState } from "react";
-import Head from "next/head";
+import {
+  AlleleResults,
+  GeneResults,
+  PhenotypeResults,
+  Search,
+} from "@/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "IMPC Search | International Mouse Phenotyping Consortium",
+};
 
 const SearchResults = () => {
   const router = useRouter();
@@ -66,9 +74,6 @@ const SearchResults = () => {
 
   return (
     <>
-      <Head>
-        <title>IMPC Search | International Mouse Phenotyping Consortium</title>
-      </Head>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

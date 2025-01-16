@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Container,
   Breadcrumb,
@@ -15,13 +17,13 @@ import PieChart from "@/components/PieChart";
 import { PublicationListProps } from "@/components/PublicationsList";
 import dynamic from "next/dynamic";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
-import Head from "next/head";
 import { capitalize } from "lodash";
 import { useEmbryoLandingQuery } from "@/hooks";
 import { useMemo, useState } from "react";
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import Link from "next/link";
 import { SortType } from "@/models";
+import { Metadata } from "next";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"),
@@ -33,8 +35,12 @@ type SelectedLine = {
   genes: Array<{ mgiGeneAccessionId: string; geneSymbol: string }>;
 };
 
+export const metadata: Metadata = {
+  title: "IMPC Embryo | International Mouse Phenotyping Consortium",
+};
+
 const EmbryoLandingPage = () => {
-  const { data, isLoading } = useEmbryoLandingQuery();
+  const { data } = useEmbryoLandingQuery();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [listGenes, setListGenes] = useState<SelectedLine>(null);
   const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
@@ -89,9 +95,6 @@ const EmbryoLandingPage = () => {
 
   return (
     <>
-      <Head>
-        <title>IMPC Embryo | International Mouse Phenotyping Consortium</title>
-      </Head>
       <Search />
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>

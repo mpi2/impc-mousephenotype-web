@@ -1,3 +1,5 @@
+"use client";
+
 import { Container, Tab, Tabs, Modal } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";

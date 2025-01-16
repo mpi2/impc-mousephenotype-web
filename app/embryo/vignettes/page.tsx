@@ -1,4 +1,5 @@
-import Head from "next/head";
+"use client";
+
 import { Card, Search } from "@/components";
 import {
   Breadcrumb,
@@ -15,6 +16,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import { Metadata } from "next";
 
 const additionalContentMap = {
   "cbx4_thymus_black.png":
@@ -56,6 +58,10 @@ const genePositions = {
   Tmem132a: 19,
 };
 
+export const metadata: Metadata = {
+  title: "IMPC Embryo vignettes | International Mouse Phenotyping Consortium",
+};
+
 const EmbryoVignettesPage = () => {
   const router = useRouter();
   const slickRef = useRef(null);
@@ -71,9 +77,6 @@ const EmbryoVignettesPage = () => {
 
   return (
     <>
-      <Head>
-        <title>IMPC Embryo | International Mouse Phenotyping Consortium</title>
-      </Head>
       <Search />
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>

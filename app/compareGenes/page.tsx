@@ -1,3 +1,5 @@
+"use client";
+
 import { faArrowLeftLong, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
@@ -20,8 +22,8 @@ const GeneColumn = ({
   handleRemove: (id: string) => void;
 }) => {
   const { data, isLoading } = useQuery({
-    queryKey: ['genes', geneId, 'summary'],
-    queryFn: () => fetchAPI(`/api/v1/genes/${geneId}/summary`)
+    queryKey: ["genes", geneId, "summary"],
+    queryFn: () => fetchAPI(`/api/v1/genes/${geneId}/summary`),
   });
 
   if (isLoading) {
@@ -49,7 +51,9 @@ const GeneColumn = ({
         </Button>
       </p>
       <h3>
-        <Link href={`/genes/${geneId}`} legacyBehavior>{data.geneName}</Link>
+        <Link href={`/genes/${geneId}`} legacyBehavior>
+          {data.geneName}
+        </Link>
       </h3>
       <div>
         {allBodySystems.map((s, i) => {

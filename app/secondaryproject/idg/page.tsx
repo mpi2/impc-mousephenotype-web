@@ -1,3 +1,5 @@
+"use client";
+
 import Head from "next/head";
 import { Breadcrumb, Col, Container, Row, Image, Table } from "react-bootstrap";
 import {
@@ -8,7 +10,7 @@ import {
   ChordDiagram,
   PieChart,
 } from "@/components";
-import data from "../../mocks/data/landing-pages/idg.json";
+import data from "../../../mocks/data/landing-pages/idg.json";
 import {
   useMemo,
   useRef,
@@ -35,6 +37,7 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
+import { Metadata } from "next";
 
 ChartJS.register(
   CategoryScale,
@@ -318,6 +321,10 @@ const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>(
   }
 );
 
+export const metadata: Metadata = {
+  title: "IDG page | International Mouse Phenotyping Consortium",
+};
+
 const IDGPage = () => {
   const { data: geneList, isFetching } = useQuery<Array<Gene>>({
     queryKey: ["landing-pages", "idg"],
@@ -364,9 +371,6 @@ const IDGPage = () => {
 
   return (
     <>
-      <Head>
-        <title>IDG page | International Mouse Phenotyping Consortium</title>
-      </Head>
       <Search />
       <Container className="page">
         <Card>

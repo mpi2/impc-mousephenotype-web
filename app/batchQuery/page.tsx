@@ -1,4 +1,5 @@
-import Head from "next/head";
+"use client";
+
 import Search from "@/components/Search";
 import { Container, Form, Spinner, Tabs, Tab, Alert } from "react-bootstrap";
 import {
@@ -28,6 +29,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import { SortType } from "@/models";
+import { Metadata } from "next";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 
@@ -187,6 +189,11 @@ const DataRow = ({ geneData }) => {
       )}
     </>
   );
+};
+
+export const metadata: Metadata = {
+  title:
+    "IMPC dataset batch query | International Mouse Phenotyping Consortium",
 };
 
 const BatchQueryPage = () => {
@@ -381,11 +388,6 @@ const BatchQueryPage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          IMPC dataset batch query | International Mouse Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page">
         <Card>

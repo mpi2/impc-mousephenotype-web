@@ -1,8 +1,9 @@
+"use client";
+
 import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from "../../mocks/data/landing-pages/cardiovascular.json";
 import styles from "./styles.module.scss";
 import { Fragment, useState } from "react";
-import Head from "next/head";
 import Link from "next/link";
 import {
   Card,
@@ -15,6 +16,7 @@ import {
 } from "@/components";
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
+import { Metadata } from "next";
 
 const ProcedureWithVersions = ({ procedure }) => {
   return (
@@ -36,6 +38,10 @@ const ProcedureWithVersions = ({ procedure }) => {
       ))}
     </li>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Cardiovascular system | International Mouse Phenotyping Consortium",
 };
 
 const CardiovascularLandingPage = () => {
@@ -63,11 +69,6 @@ const CardiovascularLandingPage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Cardiovascular system | International Mouse Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>

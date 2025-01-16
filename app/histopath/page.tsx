@@ -7,7 +7,6 @@ import {
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Head from "next/head";
 import classNames from "classnames";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
@@ -19,6 +18,7 @@ import {
   PaginationControls,
 } from "@/components";
 import Link from "next/link";
+import { Metadata } from "next";
 
 const geneMap = new Map();
 
@@ -47,6 +47,10 @@ type HeatmapData = {
     x: string;
     y: number;
   }>;
+};
+
+export const metadata: Metadata = {
+  title: "Histopathology | International Mouse Phenotyping Consortium",
 };
 
 const HistopathLandingPage = () => {
@@ -262,11 +266,6 @@ const HistopathLandingPage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Histopathology | International Mouse Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>

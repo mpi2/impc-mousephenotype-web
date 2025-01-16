@@ -1,3 +1,5 @@
+"use client";
+
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from "../../mocks/data/landing-pages/metabolism.json";
 import metabolismTableData from "../../mocks/data/landing-pages/metabolism-table.json";
@@ -11,7 +13,6 @@ import {
   LinkCell,
   OptionsCell,
 } from "@/components/SmartTable";
-import Head from "next/head";
 import {
   PublicationDataAlert,
   Search,
@@ -22,6 +23,7 @@ import {
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
 import { SortType } from "@/models";
+import { Metadata } from "next";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -44,6 +46,10 @@ const geneTableData = [
   ["Oxygen Consumption Rate (V02)", 18, 48, 18, 48],
   ["Respiratory Exchange Ratio (RER)", 17, 47, 17, 47],
 ];
+
+export const metadata: Metadata = {
+  title: "Metabolism landing page | International Mouse Phenotyping Consortium",
+};
 
 const MetabolismLandingPage = () => {
   const genesData = metabolismTableData as Array<MetabolismGeneData>;
@@ -99,11 +105,6 @@ const MetabolismLandingPage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Metabolism landing page | International Mouse Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
