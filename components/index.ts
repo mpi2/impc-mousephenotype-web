@@ -22,3 +22,4 @@ export { default as PieChart } from "./PieChart";
 export { default as PleiotropyChart } from "./PleiotropyChart";
 export { default as EmbryoDataAvailabilityGrid } from "./EmbryoDataAvailabilityGrid";
 export { default as Check } from "./Check";
+export { default as ABRChart } from "./ABRChart";
