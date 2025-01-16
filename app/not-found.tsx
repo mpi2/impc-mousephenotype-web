@@ -1,16 +1,14 @@
 import { Card, Search } from "@/components";
-import Head from "next/head";
+import { Metadata } from "next";
 import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
 
-export default function Page404() {
+export const metadata: Metadata = {
+  title: "Page not found | International Mouse Phenotyping Consortium",
+};
+export default function NotFound() {
   return (
     <>
-      <Head>
-        <title>
-          Page not found | International Mouse Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page">
         <Card>
