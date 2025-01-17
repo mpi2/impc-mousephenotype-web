@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/router";
 import { Container } from "react-bootstrap";
 import Card from "@/components/Card";
@@ -9,7 +11,7 @@ import {
 } from "@/components/Phenotype";
 import Search from "@/components/Search";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI, fetchAPIFromServer } from "@/api-service";
+import { fetchAPI } from "@/api-service";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import { uniqBy } from "lodash";
@@ -83,22 +85,5 @@ const Phenotype = (props: PhenotypePageProps) => {
     </>
   );
 };
-
-export async function getServerSideProps(context) {
-  const { id: phenotypeId } = context.params;
-
-  let data;
-  try {
-    data = await fetchAPIFromServer(
-      `/api/v1/phenotypes/${phenotypeId}/summary`
-    );
-  } catch {
-    return { notFound: true };
-  }
-
-  return {
-    props: { phenotype: data },
-  };
-}
 
 export default Phenotype;
