@@ -20,6 +20,7 @@ async function getAlleleSummary(
   }
   return alleleData;
 }
+
 type PageParams = Promise<{
   pid: string;
   alleleSymbol: Array<string>;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 import { Container } from "react-bootstrap";
 import Card from "@/components/Card";
 import {
@@ -32,8 +32,8 @@ const sortAndUniqPhenotypeProcedures = (
 
 const Phenotype = (props: PhenotypePageProps) => {
   const { phenotype: phenotypeFromServer } = props;
-  const router = useRouter();
-  const phenotypeId = router.query.id;
+  const params = useParams();
+  const phenotypeId = params.id;
 
   const {
     data: phenotype,
@@ -42,7 +42,7 @@ const Phenotype = (props: PhenotypePageProps) => {
   } = useQuery({
     queryKey: ["phenotype", phenotypeId, "summary"],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
-    enabled: router.isReady && !phenotypeFromServer,
+    enabled: !!phenotypeId && !phenotypeFromServer,
   });
 
   const phenotypeData = useMemo(() => {

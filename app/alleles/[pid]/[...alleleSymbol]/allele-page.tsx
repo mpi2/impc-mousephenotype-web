@@ -3,7 +3,7 @@
 import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
 import Card from "@/components/Card";
-import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -24,7 +24,7 @@ import {
   AlleleMetadata,
 } from "@/components/Allele";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI, fetchAPIFromServer } from "@/api-service";
+import { fetchAPI } from "@/api-service";
 import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
 import { AlleleSummary } from "@/models";
@@ -65,10 +65,9 @@ const ProductItem = ({
 );
 
 const AllelePage = ({ alleleData: alleleFromServer }) => {
-  const {
-    isReady,
-    query: { pid, alleleSymbol: alleleSymbolParsed },
-  } = useRouter();
+  const params = useParams();
+  const pid = params.pid;
+  const alleleSymbolParsed = params.alleleSymbol;
 
   const alleleSymbol = (alleleSymbolParsed as Array<string>).join("/");
 
@@ -76,7 +75,7 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
     queryKey: ["genes", pid, "alleles", alleleSymbol, "order"],
     queryFn: () =>
       fetchAPI(`/api/v1/alleles/${pid}/${encodeURIComponent(alleleSymbol)}`),
-    enabled: isReady && !alleleFromServer,
+    enabled: !!pid && !alleleFromServer,
   });
 
   const [qcData, setQcData] = useState<any[]>(null);
