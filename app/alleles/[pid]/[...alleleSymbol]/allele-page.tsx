@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
 import Card from "@/components/Card";
@@ -221,30 +223,5 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
     </>
   );
 };
-
-export async function getServerSideProps(context) {
-  const { pid: mgiGeneAccessionId, alleleSymbol } = context.params;
-
-  const parsedAllele = alleleSymbol.join("/");
-  if (
-    !mgiGeneAccessionId ||
-    mgiGeneAccessionId === "null" ||
-    !alleleSymbol ||
-    alleleSymbol === "null"
-  ) {
-    return { notFound: true };
-  }
-  let alleleData;
-
-  try {
-    const url = `/api/v1/alleles/${mgiGeneAccessionId}/${parsedAllele}`;
-    alleleData = await fetchAPIFromServer(url);
-  } catch {
-    return { notFound: true };
-  }
-  return {
-    props: { alleleData },
-  };
-}
 
 export default AllelePage;
