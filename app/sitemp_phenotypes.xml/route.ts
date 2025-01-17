@@ -1,4 +1,4 @@
-import phenotypesList from '../mocks/data/all_phenotypes_list.json';
+import phenotypesList from "../../mocks/data/all_phenotypes_list.json";
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 function getFormatedDate(date: Date) {
@@ -6,12 +6,13 @@ function getFormatedDate(date: Date) {
   const month = date.getDay().toString().padStart(2, "0");
   return `${date.getFullYear()}-${month}-${day}`;
 }
-function generateSiteMap() {
+function generateSitemap() {
   const now = new Date();
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-    ${phenotypesList.map(geneAccessionId => {
-    return `
+    ${phenotypesList
+      .map((geneAccessionId) => {
+        return `
       <url>
         <loc>${WEBSITE_URL}/data/phenotypes/${geneAccessionId}</loc>
         <lastmod>${getFormatedDate(now)}</lastmod>
@@ -19,15 +20,15 @@ function generateSiteMap() {
         <priority>0.5</priority>
       </url>
     `;
-  })
-    .join("")}
+      })
+      .join("")}
    </urlset>
  `;
 }
-export function getServerSideProps({ res }) {
-  const sitemap = generateSiteMap();
-  res.setHeader("Content-Type", "text/xml");
-  res.write(sitemap);
-  res.end();
+export function GET() {
+  const sitemap = generateSitemap();
+  return new Response(sitemap, {
+    status: 200,
+    headers: { "Content-Type": "application/xml; charset=utf-8" },
+  });
 }
-export default function PhenotypesSiteMap() {};
