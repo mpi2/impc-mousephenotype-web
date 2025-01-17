@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useMemo, useState } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
 import { useRouter } from "next/router";
