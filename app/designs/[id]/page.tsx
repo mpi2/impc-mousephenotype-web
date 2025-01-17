@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+"use client";
+
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
@@ -7,13 +8,16 @@ import { fetchAPI } from "@/api-service";
 import { Card, Search, SortableTable } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useRouter, useParams } from "next/navigation";
 
 const Oligo = () => {
   const router = useRouter();
+  const params = useParams();
+
   const { data, isLoading } = useQuery({
-    queryKey: ["alleles", "htgt", router.query.id],
-    queryFn: () => fetchAPI(`/api/v1/alleles/htgt/designId:${router.query.id}`),
-    enabled: router.isReady,
+    queryKey: ["alleles", "htgt", params.id],
+    queryFn: () => fetchAPI(`/api/v1/alleles/htgt/designId:${params.id}`),
+    enabled: !!params.id,
   });
 
   if (isLoading) {
@@ -77,7 +81,7 @@ const Oligo = () => {
           </div>
           <h1 className="mb-4 mt-2">
             <strong>Design Oligos - High Throughput Gene Targeting</strong>
-            <span> | Design Id: {router.query.id}</span>
+            <span> | Design Id: {params.id}</span>
           </h1>
           <Image src="/data/images/target_design_trimmed.png" fluid alt="" />
         </Card>
