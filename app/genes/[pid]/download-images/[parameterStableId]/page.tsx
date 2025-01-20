@@ -18,8 +18,8 @@ import {
 import { SortType, TableCellProps } from "@/models";
 import _ from "lodash";
 import { useMemo } from "react";
-import Head from "next/head";
 import { useParams } from "next/navigation";
+import { Metadata } from "next";
 
 type Image = {
   alleleSymbol: string;
@@ -40,6 +40,10 @@ const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
       <span className="white">Download</span>
     </Button>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Image Downloader | International Mouse Phenotyping Consortium",
 };
 
 const DownloadImagesPage = () => {
@@ -96,12 +100,6 @@ const DownloadImagesPage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          {mutantImages?.geneSymbol} Image Comparator | International Mouse
-          Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page">
         <Card>

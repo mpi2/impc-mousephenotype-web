@@ -63,7 +63,7 @@ export async function generateMetadata({
     notFound();
   }
   const geneSummary = await fetchAPIFromServer(
-    `/api/v1/genes/${mgiGeneAccessionId}/summary`
+    `/api/v1/genes/${mgiGeneAccessionId}/summary`,
   );
   if (!geneSummary) {
     notFound();

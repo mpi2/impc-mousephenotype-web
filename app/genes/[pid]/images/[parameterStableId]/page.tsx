@@ -28,7 +28,6 @@ import { AlleleSymbol, FilterBox, ZoomButtons } from "@/components";
 import { GeneImageCollection, Image } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
-import Head from "next/head";
 import moment from "moment";
 import { uniq } from "lodash";
 import {
@@ -37,6 +36,7 @@ import {
   useParams,
   useRouter,
 } from "next/navigation";
+import { Metadata } from "next";
 
 type Filters = {
   selectedCenter: string;
@@ -259,6 +259,10 @@ const Column = ({ images, selected, onSelection, showAssocParam }) => {
       ) : null}
     </Row>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Image Comparator | International Mouse Phenotyping Consortium",
 };
 
 const ImagesCompare = () => {
@@ -536,12 +540,6 @@ const ImagesCompare = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          {geneSymbol} Image Comparator | International Mouse Phenotyping
-          Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page">
         <Card>
