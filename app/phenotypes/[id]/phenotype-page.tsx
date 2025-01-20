@@ -7,7 +7,6 @@ import {
   Summary,
   PhenotypeGeneAssociations,
   ManhattanPlot,
-  PhenotypeMetadata,
 } from "@/components/Phenotype";
 import Search from "@/components/Search";
 import { useQuery } from "@tanstack/react-query";
@@ -16,6 +15,8 @@ import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import { uniqBy } from "lodash";
 import { useMemo } from "react";
+
+const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 type PhenotypePageProps = {
   phenotype: PhenotypeSummary;
@@ -50,9 +51,26 @@ const Phenotype = (props: PhenotypePageProps) => {
     return sortAndUniqPhenotypeProcedures(selectedData);
   }, [phenotypeFromServer, phenotype]);
 
+  const { phenotypeName } = phenotypeData;
+  const jsonLd = {
+    "@type": "Dataset",
+    "@context": "http://schema.org",
+    name: `${phenotypeName} mouse phenotype`,
+    description: `Discover ${phenotypeName} significant genes, associations, procedures and more. Data for phenotype ${phenotypeName} is all freely available for download.`,
+    creator: [
+      {
+        "@type": "Organization",
+        name: "International Mouse Phenotyping Consortium",
+      },
+    ],
+    citation: "https://doi.org/10.1093/nar/gkac972",
+    isAccessibleForFree: true,
+    url: `${WEBSITE_URL}/data/phenotypes/${phenotypeId}`,
+    license: "https://creativecommons.org/licenses/by/4.0/",
+  };
+
   return (
     <>
-      <PhenotypeMetadata phenotypeSummary={phenotypeData} />
       <PhenotypeContext.Provider value={phenotypeData}>
         <Search defaultType="phenotype" />
         <Container className="page">
@@ -81,6 +99,10 @@ const Phenotype = (props: PhenotypePageProps) => {
             ))}
           </Card>
         </Container>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </PhenotypeContext.Provider>
     </>
   );
