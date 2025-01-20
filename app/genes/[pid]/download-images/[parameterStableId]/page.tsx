@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import Search from "@/components/Search";
@@ -18,6 +19,7 @@ import { SortType, TableCellProps } from "@/models";
 import _ from "lodash";
 import { useMemo } from "react";
 import Head from "next/head";
+import { useParams } from "next/navigation";
 
 type Image = {
   alleleSymbol: string;
@@ -41,15 +43,15 @@ const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
 };
 
 const DownloadImagesPage = () => {
-  const router = useRouter();
-  const { parameterStableId = "", pid } = router.query;
+  const params = useParams();
+  const { parameterStableId = "", pid } = params;
   const { data: mutantImages } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],
     queryFn: () =>
       fetchAPI(
         `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`
       ),
-    enabled: router.isReady,
+    enabled: !!pid && !!parameterStableId,
     select: (data) => {
       const selectedDataset = data.find((d) =>
         d.pipelineStableId.includes("IMPC")
@@ -73,7 +75,7 @@ const DownloadImagesPage = () => {
       fetchAPI(
         `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`
       ),
-    enabled: router.isReady,
+    enabled: !!parameterStableId,
     select: (data) => {
       const selectedDataset = data.find((d) =>
         d.pipelineStableId.includes("IMPC")

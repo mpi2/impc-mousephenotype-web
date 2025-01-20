@@ -1,3 +1,5 @@
+"use client";
+
 import {
   faVenus,
   faMars,
@@ -11,7 +13,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { Badge, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
@@ -30,7 +31,12 @@ import { getIcon } from "@/utils";
 import Head from "next/head";
 import moment from "moment";
 import { uniq } from "lodash";
-import { usePathname, useSearchParams } from "next/navigation";
+import {
+  usePathname,
+  useSearchParams,
+  useParams,
+  useRouter,
+} from "next/navigation";
 
 type Filters = {
   selectedCenter: string;
@@ -257,19 +263,21 @@ const Column = ({ images, selected, onSelection, showAssocParam }) => {
 
 const ImagesCompare = () => {
   const router = useRouter();
+  const params = useParams();
   const searchParams = useSearchParams();
   const pathName = usePathname();
   const [selectedWTImage, setSelectedWTImage] = useState(0);
   const [selectedMutantImage, setSelectedMutantImage] = useState(0);
   const [appliedAnatomyTerm, setAppliedAnatomyTerm] = useState(null);
-  const { parameterStableId = "", pid, anatomyTerm } = router.query;
+  const { parameterStableId = "", pid } = params;
+  const anatomyTerm = searchParams.get("anatomyTerm");
   const { data: mutantImages } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],
     queryFn: () =>
       fetchAPI(
         `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`
       ),
-    enabled: router.isReady,
+    enabled: !!parameterStableId && !!pid,
     select: (data) => data as Array<GeneImageCollection>,
     placeholderData: [],
   });
@@ -280,7 +288,7 @@ const ImagesCompare = () => {
       fetchAPI(
         `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`
       ),
-    enabled: router.isReady,
+    enabled: !!parameterStableId,
     select: (data) => data as Array<GeneImageCollection>,
     placeholderData: [],
   });
@@ -347,7 +355,7 @@ const ImagesCompare = () => {
     if (anatomyTerm && anatomyTerm !== appliedAnatomyTerm) {
       setAppliedAnatomyTerm(anatomyTerm);
     }
-  }, [router.isReady]);
+  }, [anatomyTerm]);
 
   const filterControlImages = (images: Array<Image>) => {
     return images
@@ -523,9 +531,7 @@ const ImagesCompare = () => {
     setAppliedAnatomyTerm(null);
     const searchParamsTemp = new URLSearchParams(searchParams?.toString());
     searchParamsTemp.delete("anatomyTerm");
-    router.replace(`${pathName}${searchParamsTemp}`, undefined, {
-      shallow: true,
-    });
+    router.replace(`${pathName}${searchParamsTemp}`, undefined);
   };
 
   return (

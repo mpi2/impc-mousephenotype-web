@@ -1,8 +1,9 @@
+"use client";
+
 import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
 import {
   Summary,
-  GeneMetadata,
   ExternalLinks,
   Images,
   Publications,
@@ -19,13 +20,10 @@ import {
   GeneContext,
   NumAllelesContext,
 } from "@/contexts";
-import {
-  processGeneOrderResponse,
-  processGenePhenotypeHitsResponse,
-  useGeneSummaryQuery,
-} from "@/hooks";
+import { useGeneSummaryQuery } from "@/hooks";
 import { GeneOrder, GenePhenotypeHits, GeneSummary } from "@/models/gene";
-import { fetchAPIFromServer } from "@/api-service";
+
+const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 const HumanDiseases = dynamic(() => import("@/components/Gene/HumanDiseases"), {
   ssr: false,
@@ -75,9 +73,25 @@ const GenePage = (props: GenePageProps) => {
     }
   }, [geneData]);
 
+  const jsonLd = {
+    "@type": "Dataset",
+    "@context": "http://schema.org",
+    name: `Mouse gene ${gene.geneSymbol}`,
+    description: `Phenotype data for mouse gene ${gene.geneSymbol}. Includes ${gene.geneSymbol}'s significant phenotypes, expression, images, histopathology and more.`,
+    creator: [
+      {
+        "@type": "Organization",
+        name: "International Mouse Phenotyping Consortium",
+      },
+    ],
+    citation: "https://doi.org/10.1093/nar/gkac972",
+    isAccessibleForFree: true,
+    url: `${WEBSITE_URL}/data/genes/${gene.mgiGeneAccessionId}`,
+    license: "https://creativecommons.org/licenses/by/4.0/",
+  };
+
   return (
     <>
-      <GeneMetadata geneSummary={geneData} />
       <GeneContext.Provider value={geneData}>
         <NumAllelesContext.Provider value={numAllelesContextValue}>
           <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
@@ -99,6 +113,10 @@ const GenePage = (props: GenePageProps) => {
                 allelesStudiedLoading={allelesStudiedLoading}
                 orderDataFromServer={orderDataFromServer}
               />
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+              />
             </Container>
           </AllelesStudiedContext.Provider>
         </NumAllelesContext.Provider>
@@ -106,39 +124,5 @@ const GenePage = (props: GenePageProps) => {
     </>
   );
 };
-
-export async function getServerSideProps(context) {
-  const { pid: mgiGeneAccessionId } = context.params;
-  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
-    return { notFound: true };
-  }
-  const results = await Promise.allSettled([
-    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/summary`),
-    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`),
-    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/order`),
-  ]);
-
-  const geneData = results[0].status === "fulfilled" ? results[0].value : null;
-  const sigGeneData =
-    results[1].status === "fulfilled"
-      ? processGenePhenotypeHitsResponse(results[1].value)
-      : [];
-  const orderGeneData =
-    results[2].status === "fulfilled"
-      ? processGeneOrderResponse(results[2].value)
-      : [];
-
-  if (!geneData) {
-    return { notFound: true };
-  }
-
-  return {
-    props: {
-      gene: geneData,
-      significantPhenotypes: sigGeneData,
-      orderData: orderGeneData,
-    },
-  };
-}
 
 export default GenePage;
