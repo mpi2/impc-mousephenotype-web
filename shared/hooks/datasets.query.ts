@@ -1,36 +1,44 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Dataset } from "@/models";
-import { ParsedUrlQuery } from "node:querystring";
+import { CharPageParamsObj } from "@/models/chart";
 
+export const generateDatasetsEndpointUrl = (
+  mgiGeneAccessionId: string,
+  params: CharPageParamsObj,
+) => {
+  return params.mpTermId
+    ? `/api/v1/genes/${mgiGeneAccessionId}/${params.mpTermId}/dataset/`
+    : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${params.alleleAccessionId}&zygosity=${params.zygosity}&parameterStableId=${params.parameterStableId}&pipelineStableId=${params.pipelineStableId}&procedureStableId=${params.procedureStableId}&phenotypingCentre=${params.phenotypingCentre}`;
+};
 
-export const useDatasetsQuery = (mgiGeneAccessionId: string, routerQuery: ParsedUrlQuery , enabled: boolean) => {
-  const apiUrl = routerQuery.mpTermId
-    ? `/api/v1/genes/${mgiGeneAccessionId}/${routerQuery.mpTermId}/dataset/`
-    : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${routerQuery.alleleAccessionId}&zygosity=${routerQuery.zygosity}&parameterStableId=${routerQuery.parameterStableId}&pipelineStableId=${routerQuery.pipelineStableId}&procedureStableId=${routerQuery.procedureStableId}&phenotypingCentre=${routerQuery.phenotypingCentre}`;
+export const sortAndDeduplicateDatasets = (input: Array<Dataset>) => {
+  const sortedDatasets = input.toSorted((a, b) => {
+    return a["reportedPValue"] - b["reportedPValue"];
+  });
+  return sortedDatasets?.filter(
+    (value, index, self) =>
+      self.findIndex((v) => v.datasetId === value.datasetId) === index,
+  ) as Array<Dataset>;
+};
+
+export const useDatasetsQuery = (
+  mgiGeneAccessionId: string,
+  params: CharPageParamsObj,
+  enabled: boolean,
+  initialDatasets: Array<Dataset>,
+) => {
+  const apiUrl = generateDatasetsEndpointUrl(mgiGeneAccessionId, params);
   const { data, ...rest } = useQuery({
-    queryKey: [
-      "genes",
-      routerQuery.mgiGeneAccessionId,
-      routerQuery.mpTermId,
-      apiUrl,
-      "dataset",
-    ],
+    queryKey: ["genes", mgiGeneAccessionId, params.mpTermId, apiUrl, "dataset"],
     queryFn: () => fetchAPI(apiUrl),
     enabled,
-    select: (data: Array<Dataset>) => {
-      data.sort((a, b) => {
-        return a["reportedPValue"] - b["reportedPValue"];
-      });
-      return data?.filter(
-        (value, index, self) =>
-          self.findIndex((v) => v.datasetId === value.datasetId) === index
-      ) as Array<Dataset>;
-    },
-    placeholderData: []
+    select: sortAndDeduplicateDatasets,
+    placeholderData: [],
+    initialData: initialDatasets,
   });
   return {
     ...rest,
     datasetSummaries: data,
-  }
-}
+  };
+};
