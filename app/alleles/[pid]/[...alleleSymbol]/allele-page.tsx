@@ -21,13 +21,14 @@ import {
   Mice,
   QCModal,
   TargetingVector,
-  AlleleMetadata,
 } from "@/components/Allele";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
 import { AlleleSummary } from "@/models";
+
+const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 const ProductItem = ({
   name,
@@ -81,6 +82,23 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
   const [qcData, setQcData] = useState<any[]>(null);
 
   const alleleData: AlleleSummary = allele || alleleFromServer;
+  const allelePageURL = `${WEBSITE_URL}/data/alleles/${pid}/${alleleData.alleleName}`;
+  const jsonLd = {
+    "@type": "Dataset",
+    "@context": "http://schema.org",
+    name: `Mouse allele ${alleleData.geneSymbol}<${alleleData.alleleName}>`,
+    description: `Discover mouse allele ${alleleData.alleleName} of ${alleleData.geneSymbol} gene, view all available products and tissues with their detailed information.`,
+    creator: [
+      {
+        "@type": "Organization",
+        name: "International Mouse Phenotyping Consortium",
+      },
+    ],
+    citation: "https://doi.org/10.1093/nar/gkac972",
+    isAccessibleForFree: true,
+    url: allelePageURL,
+    license: "https://creativecommons.org/licenses/by/4.0/",
+  };
 
   useEffect(() => {
     if (alleleData) {
@@ -125,7 +143,6 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
 
   return (
     <>
-      <AlleleMetadata alleleSummary={alleleData} />
       <Search />
       <Container className="page">
         <Card>
@@ -212,12 +229,15 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
           </Link>
         </Card>
       </Container>
-
       <QCModal
         onClose={() => {
           setQcData(null);
         }}
         qcData={qcData}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     </>
   );

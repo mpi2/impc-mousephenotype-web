@@ -9,7 +9,7 @@ async function getPhenotypeSummary(phenotypeId: string) {
   let data;
   try {
     data = await fetchAPIFromServer(
-      `/api/v1/phenotypes/${phenotypeId}/summary`
+      `/api/v1/phenotypes/${phenotypeId}/summary`,
     );
   } catch {
     notFound();
@@ -38,7 +38,7 @@ export async function generateMetadata({
     notFound();
   }
   const phenotypeSummary = await fetchAPIFromServer(
-    `/api/v1/phenotypes/${phenotypeId}/summary`
+    `/api/v1/phenotypes/${phenotypeId}/summary`,
   );
   if (!phenotypeSummary) {
     notFound();
