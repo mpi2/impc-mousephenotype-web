@@ -11,7 +11,7 @@ export const PROTOTYPE_API_URL =
 export const DEV_API_ROOT = process.env.NEXT_PUBLIC_DEV_API_ROOT || "";
 export const PROD_API_ROOT = process.env.NEXT_PUBLIC_PROD_API_ROOT || "";
 export const DATA_RELEASE_VERSION =
-  process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION;
+  process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
 export const PUBLICATIONS_ENDPOINT_URL =
   process.env.NEXT_PUBLIC_PUBLICATIONS_ENDPOINT_URL || "";
 const httpCodesError500 = [500, 501, 502, 503, 504, 506];
@@ -87,7 +87,7 @@ export async function fetchMHPlotDataFromS3(mpId: string) {
 
 export async function fetchLandingPageData(landingPageId: string) {
   const response = await fetch(
-    `${LANDING_PAGE_DATA_URL}/${landingPageId}.json`
+    `${LANDING_PAGE_DATA_URL}/${landingPageId}.json`,
   );
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);
@@ -99,8 +99,8 @@ export async function fetchReleaseNotesData(releaseTag: string) {
   const response = await fetch(
     `${LANDING_PAGE_DATA_URL.replace(
       DATA_RELEASE_VERSION,
-      releaseTag
-    )}/release_metadata.json`
+      releaseTag,
+    )}/release_metadata.json`,
   );
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);
