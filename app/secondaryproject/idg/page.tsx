@@ -1,6 +1,5 @@
 "use client";
 
-import Head from "next/head";
 import { Breadcrumb, Col, Container, Row, Image, Table } from "react-bootstrap";
 import {
   Card,
@@ -45,7 +44,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 type FamilyDataTableProps = {
@@ -152,9 +151,9 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
           !query ||
           `${mgi_accession_id} ${idg_family} ${marker_symbol}`
             .toLowerCase()
-            .includes(query.toLowerCase())
+            .includes(query.toLowerCase()),
       ),
-    [query, geneList]
+    [query, geneList],
   );
 
   const {
@@ -273,7 +272,7 @@ const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>(
   ({ type, geneList }, ref) => {
     const [visibility, setVisibility] = useState(false);
     const filteredList: Array<Gene> = geneList.filter(
-      (gene) => gene.idg_family === type
+      (gene) => gene.idg_family === type,
     );
 
     useImperativeHandle(ref, () => ({
@@ -318,7 +317,7 @@ const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>(
         </tbody>
       </Table>
     ) : null;
-  }
+  },
 );
 
 export const metadata: Metadata = {
@@ -366,7 +365,7 @@ const IDGPage = () => {
         },
       ],
     }),
-    [geneProductionStatusData]
+    [geneProductionStatusData],
   );
 
   return (
