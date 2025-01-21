@@ -1,21 +1,23 @@
-import { ReleaseMetadata } from "@/models/release";
-import ReleaseNotesPage from "../../../components/ReleasePage/release";
-import { fetchLandingPageData, fetchReleaseNotesData } from "@/api-service";
+import { fetchReleaseNotesData } from "@/api-service";
+import { Metadata } from "next";
+import { ReleaseNotesPage } from "@/components";
 
-type Props = {
-  releaseMetadata: ReleaseMetadata;
+type PageParams = {
+  params: Promise<{ tag: string }>;
 };
 
-const PreviousReleasePage = (props: Props) => {
-  return <ReleaseNotesPage releaseMetadata={props.releaseMetadata} />;
-};
-
-export async function getServerSideProps(context) {
-  const { tag } = context.params;
-  const data = await fetchReleaseNotesData(tag);
-  return {
-    props: { releaseMetadata: data },
-  };
+export default async function Page({ params }: PageParams) {
+  const tag = (await params).tag;
+  const drMetadata = await fetchReleaseNotesData(tag);
+  return <ReleaseNotesPage releaseMetadata={drMetadata} />;
 }
 
-export default PreviousReleasePage;
+export async function generateMetadata({
+  params,
+}: PageParams): Promise<Metadata> {
+  const tag = (await params).tag;
+  const drMetadata = await fetchReleaseNotesData(tag);
+  return {
+    title: `IMPC Data release ${drMetadata.dataReleaseVersion} | International Mouse Phenotyping Consortium`,
+  };
+}

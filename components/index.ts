@@ -26,3 +26,8 @@ export { default as ABRChart } from "./ABRChart";
 export { default as PhenotypeResults } from "./PhenotypeResults";
 export { default as GeneResults } from "./GeneResults";
 export { default as AlleleResults } from "./AlleleResults";
+export {
+  CallsTrendChart,
+  DataPointsTrendChart,
+  ReleaseNotesPage,
+} from "./ReleasePage";
