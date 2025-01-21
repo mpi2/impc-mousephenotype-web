@@ -1,5 +1,6 @@
+"use client";
+
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useViabilityQuery } from "@/hooks";
 import { Card, Search } from "@/components";
 import { Alert, Container, Spinner } from "react-bootstrap";
@@ -10,16 +11,21 @@ import {
   ViabilityDataComparison,
 } from "@/components/Data";
 import { getDatasetByKey } from "@/utils";
-import Head from "next/head";
+import { useSearchParams } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Viability chart | International Mouse Phenotyping Consortium",
+};
 
 const ViabilityChartPage = () => {
   const [selectedKey, setSelectedKey] = useState("");
-  const router = useRouter();
-  const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
+  const params = useSearchParams();
+  const mgiGeneAccessionId: string = params.get("mgiGeneAccessionId");
 
   const { viabilityData, isViabilityLoading } = useViabilityQuery(
     mgiGeneAccessionId as string,
-    router.isReady
+    !!mgiGeneAccessionId,
   );
   const activeDataset = !!selectedKey
     ? getDatasetByKey(viabilityData, selectedKey)
@@ -27,12 +33,6 @@ const ViabilityChartPage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Viability chart for {activeDataset?.geneSymbol} | International Mouse
-          Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page">
         <Card>

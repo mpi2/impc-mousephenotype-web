@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useBodyWeightQuery } from "@/hooks";
 import { Card, Search } from "@/components";
 import { Alert, Container, Spinner } from "react-bootstrap";
@@ -11,15 +10,20 @@ import {
   ChartNav,
 } from "@/components/Data";
 import { getDatasetByKey } from "@/utils";
-import Head from "next/head";
+import { useSearchParams } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Body weight curve chart | International Mouse Phenotyping Consortium",
+};
 
 const BodyWeightChartPage = () => {
-  const router = useRouter();
+  const params = useSearchParams();
   const [selectedKey, setSelectedKey] = useState("");
-  const mgiGeneAccessionId = router.query.mgiGeneAccessionId as string;
+  const mgiGeneAccessionId: string = params.get("mgiGeneAccessionId");
 
   const { bodyWeightData, isBodyWeightLoading, isFetching, isError } =
-    useBodyWeightQuery(mgiGeneAccessionId as string, router.isReady);
+    useBodyWeightQuery(mgiGeneAccessionId as string, !!mgiGeneAccessionId);
 
   const activeDataset = !!selectedKey
     ? getDatasetByKey(bodyWeightData, selectedKey)
@@ -27,12 +31,6 @@ const BodyWeightChartPage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Body weight curve chart for {activeDataset?.geneSymbol} |
-          International Mouse Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page">
         <Card>

@@ -1,25 +1,29 @@
+"use client";
+
 import { Search } from "@/components";
 import { Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 import { GrossPathologyDataset, SortType } from "@/models";
-import { useRouter } from "next/router";
 import { useGrossPathologyChartQuery } from "@/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useMemo } from "react";
+import { useParams, useSearchParams } from "next/navigation";
 
 const GrossPathChartPage = () => {
-  const router = useRouter();
-  const mgiGeneAccessionId = router.query.pid as string;
-  const grossPathParameterStableId = router.query
-    .grossPathParameterStableId as string;
+  const params = useParams();
+  const searchParams = useSearchParams();
+  const mgiGeneAccessionId = params.pid as string;
+  const grossPathParameterStableId = searchParams.get(
+    "grossPathParameterStableId",
+  );
 
   const { data } = useGrossPathologyChartQuery(
     mgiGeneAccessionId,
     grossPathParameterStableId,
-    router.isReady
+    !!mgiGeneAccessionId,
   );
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { AlleleSymbol, Search } from "@/components";
 import styles from "../styles.module.scss";
 import {
@@ -9,7 +11,6 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
-import { useRouter } from "next/router";
 import { useGeneSummaryQuery, useHistopathologyQuery } from "@/hooks";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 import { Histopathology, SortType, TableCellProps } from "@/models";
@@ -20,14 +21,20 @@ import {
   faExternalLinkAlt,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import { usePathname, useSearchParams } from "next/navigation";
+
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import _ from "lodash";
 import Link from "next/link";
-import Head from "next/head";
 import Skeleton from "react-loading-skeleton";
+import { Metadata } from "next";
 
 const DescriptionCell = <T extends Histopathology>(
-  props: TableCellProps<T> & { maxChars?: number; onClick: (data: T) => void }
+  props: TableCellProps<T> & { maxChars?: number; onClick: (data: T) => void },
 ) => {
   const maxChars = props.maxChars || 50;
   const truncated = props.value?.description.length > maxChars;
@@ -48,23 +55,28 @@ const DescriptionCell = <T extends Histopathology>(
   );
 };
 
+export const metadata: Metadata = {
+  title: "Histopath information | International Mouse Phenotyping Consortium",
+};
+
 const HistopathChartPage = () => {
   const router = useRouter();
+  const params = useParams();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  const mgiGeneAccessionId = router.query.pid as string;
+  const mgiGeneAccessionId = params.pid as string;
   const [selectedAnatomy, setSelectedAnatomy] = useState<string>(null);
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
   const [selectedTissue, setSelectedTissue] = useState<Histopathology>(null);
   const { data: gene } = useGeneSummaryQuery(
     mgiGeneAccessionId,
-    router.isReady
+    !!mgiGeneAccessionId,
   );
   const { data, isLoading } = useHistopathologyQuery(
     mgiGeneAccessionId,
-    router.isReady && !!gene
+    !!mgiGeneAccessionId && !!gene,
   );
-  const anatomyParam = router.query?.anatomy as string;
+  const anatomyParam = searchParams.get("anatomy");
 
   const defaultSort: SortType = useMemo(() => ["tissue", "asc"], []);
 
@@ -85,30 +97,22 @@ const HistopathChartPage = () => {
     setSelectedAnatomy(null);
     const searchParamsTemp = new URLSearchParams(searchParams?.toString());
     searchParamsTemp.delete("anatomy");
-    router.replace(`${pathName}${searchParamsTemp}`, undefined, {
-      shallow: true,
-    });
+    router.replace(`${pathName}${searchParamsTemp}`, undefined);
   };
 
   const filterHistopathology = (
     { tissue, freeText }: Histopathology,
-    query: string
+    query: string,
   ) => !query || `${tissue} ${freeText}`.toLowerCase().includes(query);
 
   const filteredData = !!selectedAnatomy
     ? data?.histopathologyData?.filter(
-        (item) => item.tissue.toLowerCase() === anatomyParam
+        (item) => item.tissue.toLowerCase() === anatomyParam,
       )
     : data?.histopathologyData;
 
   return (
     <>
-      <Head>
-        <title>
-          Histopath information for {gene?.geneSymbol} | International Mouse
-          Phenotyping Consortium
-        </title>
-      </Head>
       <Search />
       <Container className="page">
         <Card>
