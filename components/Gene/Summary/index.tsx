@@ -2,7 +2,6 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import { GeneSummary } from "@/models/gene";
 import Link from "next/link";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import { allBodySystems } from "@/utils";
@@ -10,6 +9,8 @@ import { Card, Check, ScrollToTopButton } from "@/components";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { BodySystem } from "@/components/BodySystemIcon";
+import { useContext } from "react";
+import { GeneContext } from "@/contexts";
 
 const CollectionItem = ({
   name,
@@ -38,10 +39,10 @@ const CollectionItem = ({
   );
 
 type SummaryProps = {
-  gene: GeneSummary;
-  numOfAlleles: number;
+  numOfAlleles: number | undefined;
 };
-const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
+const Summary = ({ numOfAlleles }: SummaryProps) => {
+  const gene = useContext(GeneContext);
   const SYNONYMS_COUNT = 2;
 
   const joined = [
@@ -158,7 +159,7 @@ const Summary = ({ gene, numOfAlleles }: SummaryProps) => {
                       onClick={(system) =>
                         summarySystemSelectionChannel.emit(
                           "onSystemSelection",
-                          system
+                          system,
                         )
                       }
                     />

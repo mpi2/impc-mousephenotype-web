@@ -2,7 +2,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
 import styles from "./styles.module.scss";
@@ -11,9 +11,11 @@ import { fetchAPI } from "@/api-service";
 import { GeneImage } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { SectionHeader } from "@/components";
-import { CSSProperties } from "react";
+import { CSSProperties, useContext } from "react";
+import { GeneContext } from "@/contexts";
 
 interface ImageProps {
+  mgiGeneAccessionId: string;
   parameterName: string;
   procedureName: string;
   parameterStableId: string;
@@ -35,6 +37,7 @@ const embryo3DParametersIds = [
 ];
 
 const Image = ({
+  mgiGeneAccessionId,
   parameterName,
   procedureName,
   parameterStableId,
@@ -43,12 +46,10 @@ const Image = ({
   fileType,
   isSpecialFormat,
 }: ImageProps) => {
-  const router = useRouter();
-  const { pid } = router.query;
   const urlSegment = isSpecialFormat ? "download-images" : "images";
-  let url = `/genes/${pid}/${urlSegment}/${parameterStableId}`;
+  let url = `/genes/${mgiGeneAccessionId}/${urlSegment}/${parameterStableId}`;
   if (embryo3DParametersIds.includes(parameterStableId)) {
-    url = `https://www.mousephenotype.org/embryoviewer/?mgi=${pid}`;
+    url = `https://www.mousephenotype.org/embryoviewer/?mgi=${mgiGeneAccessionId}`;
   }
 
   const cardImageStyles: CSSProperties = {};
@@ -85,12 +86,12 @@ const Image = ({
   );
 };
 
-const Images = ({ gene }: { gene: any }) => {
-  const router = useRouter();
+const Images = () => {
+  const gene = useContext(GeneContext);
   const { isLoading, isError, data } = useQuery({
-    queryKey: ["genes", router.query.pid, "images"],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/images`),
-    enabled: router.isReady,
+    queryKey: ["genes", gene.mgiGeneAccessionId, "images"],
+    queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/images`),
+    enabled: !!gene.mgiGeneAccessionId,
     select: (data) => data as Array<GeneImage>,
   });
 
@@ -123,7 +124,7 @@ const Images = ({ gene }: { gene: any }) => {
   }
 
   const groups = Object.entries(
-    _.groupBy(data, (item) => `${item.procedureName}-${item.parameterName}`)
+    _.groupBy(data, (item) => `${item.procedureName}-${item.parameterName}`),
   ).sort((a, b) => {
     const [param1] = a;
     const [param2] = b;
@@ -142,6 +143,7 @@ const Images = ({ gene }: { gene: any }) => {
           {groups.map(([key, group]) => (
             <Col md={4} lg={3} key={key + group[0].procedureName}>
               <Image
+                mgiGeneAccessionId={gene.mgiGeneAccessionId}
                 parameterName={group[0].parameterName}
                 procedureName={group[0].procedureName}
                 parameterStableId={group[0].parameterStableId}

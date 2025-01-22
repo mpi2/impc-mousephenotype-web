@@ -1,17 +1,19 @@
 import { orderBy } from "lodash";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Fragment, useContext, useEffect, useMemo, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
-import SortableTable from "../../SortableTable";
 import styles from "./styles.module.scss";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { NumAllelesContext } from "@/contexts";
+import { GeneContext, NumAllelesContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
-import { AlleleSymbol, SectionHeader } from "@/components";
+import {
+  AlleleSymbol,
+  Card,
+  Pagination,
+  SectionHeader,
+  SortableTable,
+} from "@/components";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 import { useGeneOrderQuery } from "@/hooks";
 import { GeneOrder } from "@/models/gene";
@@ -28,9 +30,9 @@ const Order = ({
   allelesStudiedLoading,
   orderDataFromServer,
 }: OrderProps) => {
-  const router = useRouter();
+  const gene = useContext(GeneContext);
   const [sorted, setSorted] = useState<any[]>(
-    orderBy(orderDataFromServer, "alleleSymbol", "asc")
+    orderBy(orderDataFromServer, "alleleSymbol", "asc"),
   );
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const { setNumOfAlleles } = useContext(NumAllelesContext);
@@ -39,8 +41,8 @@ const Order = ({
     isError,
     data: filtered,
   } = useGeneOrderQuery(
-    router.query.pid as string,
-    router.isReady && orderDataFromServer?.length === 0
+    gene.mgiGeneAccessionId,
+    !!gene.mgiGeneAccessionId && orderDataFromServer?.length === 0,
   );
 
   const getProductURL = (allele: string, product: string) => {
@@ -50,7 +52,7 @@ const Order = ({
       "targeting vector": "targetingVector",
     };
     const encodedAllele = allele;
-    return `/alleles/${router.query.pid}/${encodedAllele}#${anchorObjs[product]}`;
+    return `/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}#${anchorObjs[product]}`;
   };
 
   const orderData = orderDataFromServer || filtered;
@@ -73,7 +75,7 @@ const Order = ({
         sorted?.map((geneOrder) => ({
           ...geneOrder,
           phenotyped: allelesStudied.includes(geneOrder.alleleSymbol),
-        }))
+        })),
       );
     }
   }, [allelesStudied]);
@@ -173,7 +175,7 @@ const Order = ({
                             onClick={() =>
                               orderPhenotypedSelectionChannel.emit(
                                 "onAlleleSelected",
-                                d.alleleSymbol
+                                d.alleleSymbol,
                               )
                             }
                           >
@@ -187,7 +189,7 @@ const Order = ({
                         {d.productTypes
                           .filter(
                             (x) =>
-                              !(x === "intermediate_vector" || x === "crispr")
+                              !(x === "intermediate_vector" || x === "crispr"),
                           )
                           .map((product: string) => {
                             if (product === "es_cell") {
@@ -225,5 +227,5 @@ const Order = ({
 export default sectionWithErrorBoundary(
   Order,
   "Order Mouse and ES Cells",
-  "order"
+  "order",
 );
