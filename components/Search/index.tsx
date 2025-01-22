@@ -1,7 +1,8 @@
+"use client";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
@@ -25,18 +26,18 @@ const Search = ({
   updateURL?: boolean;
 }) => {
   const router = useRouter();
-  const [query, setQuery] = useState<string>(
-    (router.query.term as string) || ""
-  );
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const [query, setQuery] = useState<string>(searchParams.get("term") || "");
 
   const handleInput = (val: string) => {
     if (onChange) onChange(val);
   };
 
   const delayedOnChange = useRef(
-    debounce((q: string) => handleInput(q), 500)
+    debounce((q: string) => handleInput(q), 500),
   ).current;
-  const { type } = router.query;
+  const type = searchParams.get("type");
 
   const tabs: Tab[] = [
     {
@@ -59,7 +60,7 @@ const Search = ({
   ];
   const getSelectedIndex = (typeInput) =>
     tabs.findIndex(
-      (tab) => tab.type === typeInput || tab.altType === typeInput
+      (tab) => tab.type === typeInput || tab.altType === typeInput,
     );
   const [tabIndex, setTabIndex] = useState(getSelectedIndex(defaultType));
   useEffect(() => {
@@ -71,16 +72,20 @@ const Search = ({
   }, [type, defaultType]);
 
   useEffect(() => {
-    if (router.isReady && router.query.term) {
-      setQuery(router.query.term as string);
-      handleInput(router.query.term as string);
+    if (searchParams.has("term")) {
+      setQuery(searchParams.get("term") || "");
+      handleInput(searchParams.get("term") || "");
     }
-  }, [router.isReady]);
+  }, [searchParams]);
 
   useEffect(() => {
     if (updateURL) {
-      if (router.isReady && router.query.query !== query) {
-        router.replace({ query: { ...router.query, term: query } });
+      if (searchParams.get("query") !== query) {
+        const updatedSearchParams = new URLSearchParams(
+          searchParams.toString(),
+        );
+        updatedSearchParams.set("term", query);
+        router.push(`${pathname}?${updatedSearchParams.toString()}`);
       }
     }
   }, [query]);
@@ -132,16 +137,20 @@ const Search = ({
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  if (router.route !== "/search") {
+                  if (pathname !== "/search") {
                     let url = `/search?term=${e.currentTarget.value}`;
                     if (tabIndex === 1) {
                       url += "&type=pheno";
                     }
                     router.push(url);
                   } else {
-                    router.replace({
-                      query: { ...router.query, term: e.currentTarget.value },
-                    });
+                    const updatedSearchParams = new URLSearchParams(
+                      searchParams.toString(),
+                    );
+                    updatedSearchParams.set("term", e.currentTarget.value);
+                    router.push(
+                      `${pathname}?${updatedSearchParams.toString()}`,
+                    );
                   }
                 }
               }}

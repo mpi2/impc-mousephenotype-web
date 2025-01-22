@@ -1,3 +1,4 @@
+"use client";
 import styles from "./styles.module.scss";
 import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
 import {
@@ -8,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { useQuery } from "@tanstack/react-query";
@@ -75,7 +76,7 @@ const GeneResult = ({
               <i>
                 {surroundWithMarkEl(
                   (synonymsArray || []).slice(0, 10).join(", "),
-                  query
+                  query,
                 ) || "None"}
               </i>
             </p>
@@ -90,7 +91,7 @@ const GeneResult = ({
               <i>
                 {surroundWithMarkEl(
                   (humanSynonymsArray || []).slice(0, 10).join(", "),
-                  query
+                  query,
                 ) || "None"}
               </i>
             </p>

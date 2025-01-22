@@ -16,7 +16,7 @@ import { Text } from "@visx/text";
 import { ScaleBand, ScaleQuantize } from "d3-scale";
 import { clamp, truncate } from "lodash";
 import classNames from "classnames";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const binHeight = 25;
 const scalePadding = 0.05;
@@ -95,11 +95,11 @@ const HeatMap = memo((props: HeatMapProps) => {
               onClick={() =>
                 onClickCell(
                   allGenesList[bin.row].mgiGeneAccessionId,
-                  bin.datum.column
+                  bin.datum.column,
                 )
               }
             />
-          ))
+          )),
         )
       }
     </HeatmapRect>
@@ -149,7 +149,7 @@ const LateAdultHeatmap = (props: Props) => {
         round: true,
         paddingInner: scalePadding,
       }),
-    [data, maxWidth, isFetchingParamData]
+    [data, maxWidth, isFetchingParamData],
   );
 
   const yScale = useMemo(
@@ -159,7 +159,7 @@ const LateAdultHeatmap = (props: Props) => {
         range: [100, heatmapHeight],
         paddingInner: scalePadding,
       }),
-    [genesList, heatmapHeight, isFetchingParamData]
+    [genesList, heatmapHeight, isFetchingParamData],
   );
 
   const colorScale = useMemo(
@@ -168,7 +168,7 @@ const LateAdultHeatmap = (props: Props) => {
         domain: [0, 2],
         range: ["#dedede8f", "#15a2b88f", "#ed7b25c4"],
       }),
-    []
+    [],
   );
 
   const isSelectedGene = (geneSymbol: string) =>
@@ -178,7 +178,7 @@ const LateAdultHeatmap = (props: Props) => {
 
   const hasData = useMemo(
     () => data.data.some((col) => col.bins.length !== 0),
-    [data]
+    [data],
   );
 
   const onClickCell = useCallback(
@@ -194,7 +194,7 @@ const LateAdultHeatmap = (props: Props) => {
       url += "#data";
       router.push(url);
     },
-    [router, selectedParam]
+    [router, selectedParam],
   );
 
   return (
@@ -266,7 +266,7 @@ const LateAdultHeatmap = (props: Props) => {
                   xScale(0) -
                   xScale.padding() * xScale.bandwidth(),
                 0,
-                maxWidth
+                maxWidth,
               )}
             />
             <rect
@@ -277,7 +277,7 @@ const LateAdultHeatmap = (props: Props) => {
               height={clamp(
                 selectedCell.y - 100 - yScale.padding() * yScale.bandwidth(),
                 0,
-                heatmapHeight
+                heatmapHeight,
               )}
             />
             <rect
@@ -294,7 +294,7 @@ const LateAdultHeatmap = (props: Props) => {
                   selectedCell.x -
                   xScale.padding() * xScale.bandwidth(),
                 0,
-                maxWidth
+                maxWidth,
               )}
             />
           </>

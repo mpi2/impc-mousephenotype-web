@@ -1,7 +1,6 @@
 import { GrossPathologyDataset, SortType } from "@/models";
 import { Row, Col, Card } from "react-bootstrap";
 import { SmartTable, PlainTextCell } from "../SmartTable";
-import router from "next/router";
 import { useGrossPathologyChartQuery } from "@/hooks";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { useMemo } from "react";
@@ -10,7 +9,7 @@ const GrossPathology = ({ datasetSummary }) => {
   const { data } = useGrossPathologyChartQuery(
     datasetSummary.mgiGeneAccessionId,
     datasetSummary.parameterStableId,
-    router.isReady
+    !!datasetSummary.mgiGeneAccessionId,
   );
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 

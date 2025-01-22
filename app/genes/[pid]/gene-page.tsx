@@ -13,7 +13,6 @@ import {
   Phenotypes,
 } from "@/components/Gene";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import {
   AllelesStudiedContext,
@@ -22,6 +21,7 @@ import {
 } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
 import { GeneOrder, GenePhenotypeHits, GeneSummary } from "@/models/gene";
+import { useParams } from "next/navigation";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
@@ -41,8 +41,10 @@ const GenePage = (props: GenePageProps) => {
     significantPhenotypes: sigPhenotypesFromServer,
     orderData: orderDataFromServer,
   } = props;
-  const router = useRouter();
-  const [numOfAlleles, setNumOfAlleles] = useState<number>(null);
+  const params = useParams<{ pid: string }>();
+  const [numOfAlleles, setNumOfAlleles] = useState<number | undefined>(
+    undefined,
+  );
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
   const [allelesStudiedLoading, setAllelesStudiedLoading] =
     useState<boolean>(true);
@@ -55,9 +57,9 @@ const GenePage = (props: GenePageProps) => {
   };
 
   const { data: gene } = useGeneSummaryQuery(
-    router.query.pid as string,
-    router.isReady && !geneFromServer,
-    geneFromServer
+    params.pid,
+    !!params.pid && !geneFromServer,
+    geneFromServer,
   );
 
   const geneData = geneFromServer || gene;
@@ -67,7 +69,7 @@ const GenePage = (props: GenePageProps) => {
       const hash = window.location.hash;
       if (hash.length > 0) {
         setTimeout(() => {
-          document.querySelector(window.location.hash).scrollIntoView();
+          document.querySelector(window.location.hash)?.scrollIntoView();
         }, 500);
       }
     }
@@ -97,16 +99,13 @@ const GenePage = (props: GenePageProps) => {
           <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
             <Search />
             <Container className="page">
-              <Summary {...{ gene: geneData, numOfAlleles }} />
-              <Phenotypes
-                gene={geneData}
-                sigPhenotypesFromServer={sigPhenotypesFromServer}
-              />
+              <Summary numOfAlleles={numOfAlleles} />
+              <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
               <Expressions />
-              <Images gene={geneData} />
-              <HumanDiseases gene={geneData} />
+              <Images />
+              <HumanDiseases />
               <Histopathology />
-              <Publications gene={geneData} />
+              <Publications />
               <ExternalLinks />
               <Order
                 allelesStudied={allelesStudied}
