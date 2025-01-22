@@ -1,3 +1,4 @@
+"use client";
 import { chartColors as defaultChartColors } from "../../utils/chart";
 import { Pie } from "react-chartjs-2";
 import { useState, useEffect } from "react";
@@ -41,10 +42,10 @@ const PieChart = ({ title, data, chartColors }: Props) => {
               label: (item) => {
                 const dataset = item.dataset;
                 const currentValue = data.find(
-                  (val) => val.label === item.label
+                  (val) => val.label === item.label,
                 ).value;
                 const percentage = parseFloat(
-                  ((currentValue / total) * 100).toFixed(2)
+                  ((currentValue / total) * 100).toFixed(2),
                 );
                 return `${item.label} - ${percentage}%`;
               },

@@ -1,3 +1,4 @@
+"use client";
 import { Form } from "react-bootstrap";
 import SortableTable from "@/components/SortableTable";
 import Pagination from "@/components/Pagination";
@@ -30,7 +31,7 @@ const SmartTable = <T extends Model>(props: {
   customSortFunction?: (
     data: Array<T>,
     field: string,
-    order: "asc" | "desc"
+    order: "asc" | "desc",
   ) => Array<T>;
   highlightRowFunction?: (item: T) => boolean;
   highlightRowColor?: string;

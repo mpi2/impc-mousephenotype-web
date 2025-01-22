@@ -1,6 +1,7 @@
+"use client";
 import { useEffect, useState } from "react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 const LoadingProgressBar = () => {
   const MAX_PERCENTAGE = 80;
@@ -9,7 +10,7 @@ const LoadingProgressBar = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setPercentage(
-        percentage === MAX_PERCENTAGE ? MIN_PERCENTAGE : MAX_PERCENTAGE
+        percentage === MAX_PERCENTAGE ? MIN_PERCENTAGE : MAX_PERCENTAGE,
       );
     }, 1000);
 
@@ -25,15 +26,15 @@ const LoadingProgressBar = () => {
       styles={{
         path: {
           stroke: "#ccc",
-          transition: "stroke-dashoffset 2s ease 0s"
+          transition: "stroke-dashoffset 2s ease 0s",
         },
         trail: {
-          stroke: "#fff"
-        }
+          stroke: "#fff",
+        },
       }}
       strokeWidth={12}
     />
   );
-}
+};
 
 export default LoadingProgressBar;
