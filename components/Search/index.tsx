@@ -12,12 +12,12 @@ export type Tab = {
   name: string;
   link: string;
   external?: boolean;
-  type?: string;
+  type?: string | null;
   altType?: string;
 };
 
 const Search = ({
-  defaultType = "",
+  defaultType,
   onChange,
   updateURL = false,
 }: {
@@ -43,7 +43,7 @@ const Search = ({
     {
       name: "Genes",
       link: "/search",
-      type: undefined,
+      type: null,
     },
     {
       name: "Phenotypes",
@@ -65,7 +65,7 @@ const Search = ({
   const [tabIndex, setTabIndex] = useState(getSelectedIndex(defaultType));
   useEffect(() => {
     let tabType = type;
-    if (type === undefined && !!defaultType) {
+    if (type === null && !!defaultType) {
       tabType = defaultType;
     }
     setTabIndex(getSelectedIndex(tabType));
