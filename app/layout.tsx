@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import Layout from "../components/Layout";
 import Providers from "./providers";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { Roboto } from "next/font/google";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
@@ -11,9 +12,16 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "normalize.css/normalize.css";
 config.autoAddCss = false;
 
+const roboto = Roboto({
+  style: ["normal", "italic"],
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-impc",
+});
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={roboto.className}>
       <head />
       <body>
         <Script>
