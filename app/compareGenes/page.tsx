@@ -2,11 +2,8 @@
 
 import { faArrowLeftLong, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "../../components/Card";
-import { useGeneComparator } from "@/components/GeneComparator";
 import Search from "../../components/Search";
 import { BodySystem } from "@/components/BodySystemIcon";
 import Link from "next/link";
@@ -65,15 +62,15 @@ const GeneColumn = ({
                   data.significantTopLevelPhenotypes?.includes(s)
                     ? "primary"
                     : data.notSignificantTopLevelPhenotypes?.includes(s)
-                    ? "secondary"
-                    : "grey"
+                      ? "secondary"
+                      : "grey"
                 }
                 appendLabel={
                   data.significantTopLevelPhenotypes?.includes(s)
                     ? "significant"
                     : data.notSignificantTopLevelPhenotypes?.includes(s)
-                    ? "not significant"
-                    : "not tested"
+                      ? "not significant"
+                      : "not tested"
                 }
               />
               {i > 0 && (i + 1) % 5 === 0 ? <br /> : null}
@@ -86,33 +83,13 @@ const GeneColumn = ({
 };
 
 const CompareGenes = () => {
-  const { genes, resetGenes } = useGeneComparator();
-  const router = useRouter();
-  const genesQuery = router.query.genes as string;
-  const genesInUrl = genesQuery ? genesQuery.split("_") : [];
-  useEffect(() => {
-    if (genesInUrl.join("") !== genes.join("")) {
-      resetGenes(genesInUrl);
-    }
-  }, [genesInUrl]);
-  const handleRemove = (id: string) => {
-    genesInUrl.splice(genesInUrl.indexOf(id), 1);
-    router.query.genes = genesInUrl.join("_");
-    router.replace(router);
-  };
-
   return (
     <>
       <Search />
       <Container className="page">
         <Card>
           <div>
-            <button
-              style={{ border: 0, background: "none", padding: 0 }}
-              onClick={() => {
-                router.back();
-              }}
-            >
+            <button style={{ border: 0, background: "none", padding: 0 }}>
               <a href="#" className="grey mb-3 small">
                 <FontAwesomeIcon icon={faArrowLeftLong} /> GO BACK
               </a>
@@ -122,15 +99,9 @@ const CompareGenes = () => {
             <strong>Compare Genes</strong>
           </h1>
           <Row>
-            {genes.length > 0 ? (
-              genes.map((gene) => (
-                <GeneColumn geneId={gene} handleRemove={handleRemove} />
-              ))
-            ) : (
-              <p className="grey">
-                Add genes to the comparator from the search or the gene pages
-              </p>
-            )}
+            <p className="grey">
+              Add genes to the comparator from the search or the gene pages
+            </p>
           </Row>
         </Card>
       </Container>
