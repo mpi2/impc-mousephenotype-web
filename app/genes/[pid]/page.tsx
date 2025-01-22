@@ -2,13 +2,10 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { fetchAPIFromServer } from "@/api-service";
 import GenePage from "./gene-page";
+import { processGeneOrderResponse } from "@/hooks/gene-order.query";
+import { processGenePhenotypeHitsResponse } from "@/hooks/significant-phenotypes.query";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
-
-import {
-  processGeneOrderResponse,
-  processGenePhenotypeHitsResponse,
-} from "@/hooks";
 
 async function getGeneSummary(mgiGeneAccessionId: string) {
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
