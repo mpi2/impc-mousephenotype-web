@@ -1,13 +1,14 @@
+import "../styles/global.scss";
 import Script from "next/script";
 import { ReactNode } from "react";
 import Layout from "../components/Layout";
 import Providers from "./providers";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
-import "../styles/global.scss";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
 import "react-loading-skeleton/dist/skeleton.css";
+import "normalize.css/normalize.css";
 config.autoAddCss = false;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
