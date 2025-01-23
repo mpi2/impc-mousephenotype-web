@@ -79,7 +79,7 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
     enabled: !!pid && !alleleFromServer,
   });
 
-  const [qcData, setQcData] = useState<any[]>(null);
+  const [qcData, setQcData] = useState<any[]>([]);
 
   const alleleData: AlleleSummary = allele || alleleFromServer;
   const allelePageURL = `${WEBSITE_URL}/data/alleles/${pid}/${alleleData.alleleName}`;
@@ -231,7 +231,7 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
       </Container>
       <QCModal
         onClose={() => {
-          setQcData(null);
+          setQcData([]);
         }}
         qcData={qcData}
       />
