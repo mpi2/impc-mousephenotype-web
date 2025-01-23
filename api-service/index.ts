@@ -47,7 +47,7 @@ export async function fetchAPI(query: string) {
   }
 }
 
-export async function fetchAPIFromServer(query: string) {
+export async function fetchAPIFromServer<T>(query: string): Promise<T> {
   const SERVER_API_ROOT = process.env.SERVER_API_ROOT;
   const DOMAIN_URL = SERVER_API_ROOT ? SERVER_API_ROOT : API_URL;
   let domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : DOMAIN_URL;
