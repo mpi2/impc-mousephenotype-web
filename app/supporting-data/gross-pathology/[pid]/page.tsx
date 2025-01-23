@@ -1,90 +1,35 @@
-"use client";
+import GrossPathChartPage from "./grosspath-chart-page";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { fetchAPIFromServer } from "@/api-service";
+import { GeneSummary } from "@/models/gene";
 
-import { Search } from "@/components";
-import { Col, Container, Row } from "react-bootstrap";
-import Card from "@/components/Card";
-import { PlainTextCell, SmartTable } from "@/components/SmartTable";
-import { GrossPathologyDataset, SortType } from "@/models";
-import { useGrossPathologyChartQuery } from "@/hooks";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import { useMemo } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+type PageParams = Promise<{
+  pid: string;
+}>;
 
-const GrossPathChartPage = () => {
-  const params = useParams();
-  const searchParams = useSearchParams();
-  const mgiGeneAccessionId = params.pid as string;
-  const grossPathParameterStableId = searchParams.get(
-    "grossPathParameterStableId",
+export default async function Page() {
+  return <GrossPathChartPage />;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: PageParams;
+}): Promise<Metadata> {
+  const mgiGeneAccessionId = (await params).pid;
+  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
+    notFound();
+  }
+  const geneSummary = await fetchAPIFromServer<GeneSummary>(
+    `/api/v1/genes/${mgiGeneAccessionId}/summary`,
   );
-
-  const { data } = useGrossPathologyChartQuery(
-    mgiGeneAccessionId,
-    grossPathParameterStableId,
-    !!mgiGeneAccessionId,
-  );
-  const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
-
-  return (
-    <>
-      <Search />
-      <Container>
-        <Row>
-          <Col>
-            <Card style={{ marginTop: "-80px" }}>
-              <Link
-                href={`/genes/${mgiGeneAccessionId}/#data`}
-                className="grey mb-3 small"
-              >
-                <FontAwesomeIcon icon={faArrowLeftLong} />
-                &nbsp; BACK TO GENE
-              </Link>
-              <br />
-              <h2>Observation numbers</h2>
-              <SmartTable<GrossPathologyDataset>
-                data={data}
-                defaultSort={defaultSort}
-                columns={[
-                  {
-                    width: 1,
-                    label: "Anatomy",
-                    field: "parameterName",
-                    cmp: <PlainTextCell />,
-                  },
-                  {
-                    width: 1,
-                    label: "Zygosity",
-                    field: "zygosity",
-                    cmp: <PlainTextCell />,
-                  },
-                  {
-                    width: 1,
-                    label: "Abnormal",
-                    field: "abnormalCounts",
-                    cmp: <PlainTextCell />,
-                  },
-                  {
-                    width: 1,
-                    label: "Normal",
-                    field: "normalCounts",
-                    cmp: <PlainTextCell />,
-                  },
-                  {
-                    width: 1,
-                    label: "Center",
-                    field: "phenotypingCenter",
-                    cmp: <PlainTextCell />,
-                  },
-                ]}
-              />
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </>
-  );
-};
-
-export default GrossPathChartPage;
+  if (!geneSummary) {
+    notFound();
+  }
+  const { geneSymbol } = geneSummary;
+  const title = `Gross pathology data for ${geneSymbol} | International Mouse Phenotyping Consortium`;
+  return {
+    title: title,
+  };
+}

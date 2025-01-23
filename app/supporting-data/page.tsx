@@ -23,7 +23,7 @@ export default async function Page({
   params: {};
   searchParams: SearchParams;
 }) {
-  const mgiGeneAccessionId = searchParams.mgiGeneAccessionId;
+  const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;
   const initialDatasets = await getInitialDatasets(
     mgiGeneAccessionId,
     searchParams as CharPageParamsObj,
@@ -38,8 +38,8 @@ export async function generateMetadata({
   params: {};
   searchParams: SearchParams;
 }): Promise<Metadata> {
-  const mgiGeneAccessionId = searchParams.mgiGeneAccessionId;
-  const datasets = getInitialDatasets(
+  const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;
+  const datasets = await getInitialDatasets(
     mgiGeneAccessionId,
     searchParams as CharPageParamsObj,
   );
