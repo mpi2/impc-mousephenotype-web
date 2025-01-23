@@ -18,6 +18,6 @@ export async function generateMetadata({
   const tag = (await params).tag;
   const drMetadata = await fetchReleaseNotesData(tag);
   return {
-    title: `IMPC Data release ${drMetadata.dataReleaseVersion} | International Mouse Phenotyping Consortium`,
+    title: `IMPC Data Release ${drMetadata.dataReleaseVersion} | International Mouse Phenotyping Consortium`,
   };
 }

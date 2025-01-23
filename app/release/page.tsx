@@ -9,7 +9,7 @@ async function getRecentDRData() {
 export async function generateMetadata(): Promise<Metadata> {
   const mostRecentDRMetadata = await getRecentDRData();
   return {
-    title: `IMPC Data release ${mostRecentDRMetadata.dataReleaseVersion} | International Mouse Phenotyping Consortium`,
+    title: `IMPC Data Release ${mostRecentDRMetadata.dataReleaseVersion} | International Mouse Phenotyping Consortium`,
   };
 }
 
