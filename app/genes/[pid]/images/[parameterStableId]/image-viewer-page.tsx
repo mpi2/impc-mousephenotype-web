@@ -124,8 +124,8 @@ const ImageInformation = ({
         <>
           <hr className="break" style={{ margin: 0 }}></hr>
           <div className={classNames(styles.associatedParams, styles.small)}>
-            {image.associatedParameters.map((param) => (
-              <div key={param.stableId}>
+            {image.associatedParameters.map((param, index) => (
+              <div key={`${param.stableId}-${index}`}>
                 {param.name} <br /> <b>{param.value}</b>
               </div>
             ))}
@@ -137,8 +137,8 @@ const ImageInformation = ({
           <div className="break"></div>
           <div className={styles.associatedParams}>
             <span>Associated parameters</span>
-            {image.associatedParameters.map((param) => (
-              <div key={param.stableId}>
+            {image.associatedParameters.map((param, index) => (
+              <div key={`${param.stableId}-${index}`}>
                 {param.name} - <b>{param.value}</b>
               </div>
             ))}

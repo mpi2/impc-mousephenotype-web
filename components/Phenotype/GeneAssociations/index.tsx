@@ -147,7 +147,7 @@ const Associations = () => {
       </h2>
       <p>
         Total number of significant genotype-phenotype associations:&nbsp;
-        {data.length}
+        {data?.length}
       </p>
       <SmartTable<PhenotypeGenotypes>
         data={data}

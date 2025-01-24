@@ -18,10 +18,10 @@ const SmartTable = <T extends Model>(props: {
     disabled?: boolean;
     sortField?: string;
   }>;
-  data: Array<T>;
+  data: Array<T> | undefined;
   defaultSort: SortType;
   zeroResulsText?: string;
-  filterFn?: (item: T, query: string) => boolean;
+  filterFn?: (item: T, query: string | undefined) => boolean;
   additionalTopControls?: ReactElement;
   additionalBottomControls?: ReactElement;
   filteringEnabled?: boolean;
@@ -60,16 +60,17 @@ const SmartTable = <T extends Model>(props: {
     paginationButtonsPlacement = "both",
     displayPageControls = true,
     displayPaginationControls = true,
+    filterFn,
   } = props;
-  const [query, setQuery] = useState(undefined);
+  const [query, setQuery] = useState<string | undefined>(undefined);
   const [sortOptions, setSortOptions] = useState<string>("");
 
   const internalShowFilteringEnabled =
     filteringEnabled && !!props.filterFn && !customFiltering;
 
   let mutatedData = props.data || [];
-  if (props.filterFn) {
-    mutatedData = mutatedData?.filter((item) => props.filterFn(item, query));
+  if (filterFn) {
+    mutatedData = mutatedData?.filter((item) => filterFn(item, query));
   }
   const [field, order] = sortOptions.split(";");
   if (
