@@ -1,10 +1,11 @@
-import * as d3 from 'd3';
+"use client";
+import * as d3 from "d3";
 import { useEffect, useRef } from "react";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
-interface Props  {
+interface Props {
   data: Array<Array<number>>;
-  labels: Array<{ name: string, count: number }>
+  labels: Array<{ name: string; count: number }>;
   width?: number;
   height?: number;
   topTerms?: Array<string>;
@@ -13,11 +14,17 @@ interface Props  {
 function groupTicks(d, step) {
   var k = (d.endAngle - d.startAngle) / d.value;
   return d3.range(0, d.value, step).map(function (value) {
-    return {value: value, angle: value * k + d.startAngle, index: d.index};
+    return { value: value, angle: value * k + d.startAngle, index: d.index };
   });
 }
 
-const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }: Props) => {
+const ChordDiagram = ({
+  data,
+  labels,
+  width = 960,
+  height = 960,
+  topTerms = [],
+}: Props) => {
   const ref = useRef();
   const outerRadius = Math.min(width, height) * 0.5 - 200;
   const innerRadius = outerRadius - 30;
@@ -29,22 +36,25 @@ const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }
       return function (d, i) {
         const { index } = i;
         // hide other chords on mose over
-        svgElement.selectAll("path.chord")
-          .filter(chord => chord.source.index !== index && chord.target.index !== index)
+        svgElement
+          .selectAll("path.chord")
+          .filter(
+            (chord) =>
+              chord.source.index !== index && chord.target.index !== index,
+          )
           .transition()
           .style("stroke-opacity", opacity)
           .style("fill-opacity", opacity);
       };
     }
-    const chord = d3.chord()
-      .padAngle(0.05)
-      .sortSubgroups(d3.descending);
+    const chord = d3.chord().padAngle(0.05).sortSubgroups(d3.descending);
 
     const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
 
     const ribbon = d3.ribbon().radius(innerRadius);
 
-    const color = d3.scaleOrdinal()
+    const color = d3
+      .scaleOrdinal()
       .domain(d3.range(4))
       .range([
         "rgb(239, 123, 11)",
@@ -60,58 +70,72 @@ const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }
         "rgb(247, 181, 117)",
         "rgb(191, 75, 50)",
         "rgb(151, 51, 51)",
-        "rgb(144, 195, 212)"
+        "rgb(144, 195, 212)",
       ]);
 
-    const g = svgElement.append("g")
+    const g = svgElement
+      .append("g")
       .attr("transform", `translate(${width / 2}, ${height / 2})`)
       .datum(chord(data));
 
-    const group = g.append("g")
+    const group = g
+      .append("g")
       .attr("class", "groups")
       .selectAll("g")
-      .data(chords => chords.groups)
-      .enter().append("g")
+      .data((chords) => chords.groups)
+      .enter()
+      .append("g")
       .attr("class", "group")
-      .on("mouseover", fade(.02))
-      .on("mouseout", fade(.80));
+      .on("mouseover", fade(0.02))
+      .on("mouseout", fade(0.8));
 
-    group.append("path")
-      .style("fill", d => color(d.index))
-      .style("stroke", d => d3.rgb(color(d.index)).darker())
+    group
+      .append("path")
+      .style("fill", (d) => color(d.index))
+      .style("stroke", (d) => d3.rgb(color(d.index)).darker())
       .attr("d", arc);
 
-    const groupTick = group.selectAll(".group-tick")
-      .data(d => groupTicks(d, 1e3))
-      .enter().append("g")
+    const groupTick = group
+      .selectAll(".group-tick")
+      .data((d) => groupTicks(d, 1e3))
+      .enter()
+      .append("g")
       .attr("class", "group-tick")
-      .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${outerRadius},0)`);
+      .attr(
+        "transform",
+        (d) =>
+          `rotate(${(d.angle * 180) / Math.PI - 90}) translate(${outerRadius},0)`,
+      );
 
-    groupTick.append("line")
-      .attr("x2", 6);
+    groupTick.append("line").attr("x2", 6);
 
     groupTick
-      .filter(d => d.value % 5e3 === 0)
+      .filter((d) => d.value % 5e3 === 0)
       .append("text")
       .attr("x", 8)
       .attr("dy", ".35em")
-      .attr("transform", d => d.angle > Math.PI ? "rotate(180) translate(-16)" : null)
-      .style("text-anchor", d => d.angle > Math.PI ? "end" : null)
-      .text(d => labels[d.index].name.replace("phenotype", ""));
+      .attr("transform", (d) =>
+        d.angle > Math.PI ? "rotate(180) translate(-16)" : null,
+      )
+      .style("text-anchor", (d) => (d.angle > Math.PI ? "end" : null))
+      .text((d) => labels[d.index].name.replace("phenotype", ""));
 
     g.append("g")
       .attr("class", "ribbons")
       .selectAll("path")
-      .data(chords => chords)
+      .data((chords) => chords)
       .enter()
       .append("path")
       .attr("d", ribbon)
       .attr("class", "chord")
-      .style("fill", d => color(d.target.index))
-      .style("stroke", d =>d3.rgb(color(d.target.index)).darker())
-      .style("visibility", d => {
+      .style("fill", (d) => color(d.target.index))
+      .style("stroke", (d) => d3.rgb(color(d.target.index)).darker())
+      .style("visibility", (d) => {
         if (topTerms && topTerms.length > 0) {
-          if (topTerms.indexOf(labels[d.source.index].name) < 0 && topTerms.indexOf(labels[d.target.index].name) < 0) {
+          if (
+            topTerms.indexOf(labels[d.source.index].name) < 0 &&
+            topTerms.indexOf(labels[d.target.index].name) < 0
+          ) {
             return "hidden";
           } else {
             return "visible";
@@ -120,21 +144,24 @@ const ChordDiagram = ({ data, labels, width = 960, height = 960, topTerms = [] }
           return "visible";
         }
       })
-      .append("title").text(d => {
-        return d.source.value + " genes present " + labels[d.source.index].name + " and " + labels[d.target.index].name + ", " ;
+      .append("title")
+      .text((d) => {
+        return (
+          d.source.value +
+          " genes present " +
+          labels[d.source.index].name +
+          " and " +
+          labels[d.target.index].name +
+          ", "
+        );
       });
-
   }, [data, labels]);
 
   return (
     <div className={styles.wrapper}>
-      <svg
-        width={width}
-        height={height}
-        ref={ref}
-      />
+      <svg width={width} height={height} ref={ref} />
     </div>
-  )
+  );
 };
 
 export default ChordDiagram;

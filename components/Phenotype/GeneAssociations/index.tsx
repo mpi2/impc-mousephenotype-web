@@ -1,7 +1,6 @@
 import { useContext, useMemo, useState } from "react";
 import { useGeneAssociationsQuery } from "@/hooks";
 import { PhenotypeContext } from "@/contexts";
-import { useRouter } from "next/router";
 import {
   PlainTextCell,
   SignificantPValueCell,
@@ -18,7 +17,7 @@ import Skeleton from "react-loading-skeleton";
 import { Alert } from "react-bootstrap";
 
 const ParameterCell = <T extends PhenotypeGenotypes>(
-  props: TableCellProps<T>
+  props: TableCellProps<T>,
 ) => {
   return (
     <>
@@ -30,7 +29,7 @@ const ParameterCell = <T extends PhenotypeGenotypes>(
 };
 
 const PhenotypingCentreCell = <T extends PhenotypeGenotypes>(
-  props: TableCellProps<T>
+  props: TableCellProps<T>,
 ) => {
   return (
     <>
@@ -42,7 +41,7 @@ const PhenotypingCentreCell = <T extends PhenotypeGenotypes>(
 };
 
 const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(
-  props: TableCellProps<T>
+  props: TableCellProps<T>,
 ) => {
   const fullAllele = get(props.value, props.field) as string;
   const allele = formatAlleleSymbol(fullAllele);
@@ -65,7 +64,7 @@ const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(
 };
 
 export const SupportingDataCell = <T extends PhenotypeGenotypes>(
-  props: TableCellProps<T>
+  props: TableCellProps<T>,
 ) => {
   const mgiAccessionId = get(props.value, "mgiGeneAccessionId") as string;
   const mpTermpId = get(props.value, "phenotype.id") as string;
@@ -85,15 +84,13 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
 
 const Associations = () => {
   const phenotype = useContext(PhenotypeContext);
-
-  const router = useRouter();
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>("");
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const { data, isFetching, isError } = useGeneAssociationsQuery(
     phenotype?.phenotypeId,
-    router.isReady && !!phenotype,
-    sortOptions
+    !!phenotype,
+    sortOptions,
   );
 
   const filterPhenotype = (
@@ -103,7 +100,7 @@ const Associations = () => {
       alleleSymbol,
       mgiGeneAccessionId,
     }: PhenotypeGenotypes,
-    query: string
+    query: string,
   ) =>
     !query ||
     `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`
@@ -113,7 +110,7 @@ const Associations = () => {
   const sortAssociations = (
     data: Array<PhenotypeGenotypes>,
     field: keyof PhenotypeGenotypes,
-    order: "asc" | "desc"
+    order: "asc" | "desc",
   ) => {
     if (field === "pValue") {
       return data.sort((p1, p2) => {
@@ -150,7 +147,7 @@ const Associations = () => {
       </h2>
       <p>
         Total number of significant genotype-phenotype associations:&nbsp;
-        {data.length}
+        {data?.length}
       </p>
       <SmartTable<PhenotypeGenotypes>
         data={data}
@@ -183,7 +180,7 @@ const Associations = () => {
               {
                 key: "pValue",
                 label: "Most significant P-value",
-                getValueFn: (item) => item?.pValue.toString(10) || "1",
+                getValueFn: (item) => item.pValue?.toString(10) || "1",
               },
             ]}
           />

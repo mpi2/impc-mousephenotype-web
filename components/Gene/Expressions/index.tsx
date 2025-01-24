@@ -1,33 +1,26 @@
 import { useContext, useMemo, useState } from "react";
 import { Alert, Tab, Tabs } from "react-bootstrap";
-import Card from "../../Card";
 import { GeneExpression } from "@/models/gene";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 import { useGeneExpressionQuery } from "@/hooks";
 import { GeneContext } from "@/contexts";
-import { useRouter } from "next/router";
 import { ExpressionCell, ImagesCell } from "./custom-cells";
-import { DownloadData, SectionHeader } from "@/components";
+import { Card, DownloadData, SectionHeader } from "@/components";
 import { SortType } from "@/models";
 
 const Expressions = () => {
-  const router = useRouter();
   const gene = useContext(GeneContext);
   const [tab, setTab] = useState("adultExpressions");
   const [sortOptions, setSortOptions] = useState<string>("");
   const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
   const { isLoading, isError, data, error } = useGeneExpressionQuery(
     gene.mgiGeneAccessionId,
-    router.isReady,
-    sortOptions
+    !!gene.mgiGeneAccessionId,
+    sortOptions,
   );
 
-  const adultData = !isError
-    ? data.filter((x) => x.lacZLifestage === "adult")
-    : [];
-  const embryoData = !isError
-    ? data.filter((x) => x.lacZLifestage === "embryo")
-    : [];
+  const adultData = data?.filter((x) => x.lacZLifestage === "adult") ?? [];
+  const embryoData = data?.filter((x) => x.lacZLifestage === "embryo") ?? [];
 
   const selectedData = tab === "adultExpressions" ? adultData : embryoData;
 
@@ -131,7 +124,7 @@ const Expressions = () => {
           additionalBottomControls={
             <DownloadData<GeneExpression>
               data={selectedData.sort((a, b) =>
-                a.parameterName.localeCompare(b.parameterName)
+                a.parameterName.localeCompare(b.parameterName),
               )}
               fileName={`${gene.geneSymbol}-${tab}-lacZ-expression-data`}
               fields={[

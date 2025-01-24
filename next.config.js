@@ -1,4 +1,4 @@
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === "production";
 module.exports = {
   basePath: "/data",
   //uncomment the following line when deploying with vercel
@@ -10,6 +10,11 @@ module.exports = {
         destination: "/data",
         permanent: true,
         basePath: false,
+      },
+      {
+        source: "/",
+        destination: "/search",
+        permanent: true,
       },
     ];
   },
@@ -37,7 +42,7 @@ module.exports = {
   transpilePackages: ["@nivo"],
   experimental: { esmExternals: "loose" },
   i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  }
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 };

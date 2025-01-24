@@ -1,4 +1,3 @@
-
 export type GeneSummary = {
   adultExpressionObservationsCount?: number;
   alleleNames: Array<string>;
@@ -22,3 +21,25 @@ export type GeneSummary = {
   significantTopLevelPhenotypes: Array<string>;
   synonyms: Array<string>;
 };
+
+export const emptyGeneSummary = (): GeneSummary => ({
+  alleleNames: [],
+  assignmentStatus: "",
+  associatedDiseasesCount: 0,
+  geneName: "",
+  geneSymbol: "",
+  hasBodyWeightData: false,
+  hasEmbryoImagingData: false,
+  hasImagingData: false,
+  hasHistopathologyData: false,
+  hasLacZData: false,
+  hasViabilityData: false,
+  humanGeneSymbols: [],
+  humanSymbolSynonyms: [],
+  id: "",
+  mgiGeneAccessionId: "",
+  notSignificantTopLevelPhenotypes: [],
+  significantPhenotypesCount: 0,
+  significantTopLevelPhenotypes: [],
+  synonyms: [],
+});

@@ -30,3 +30,13 @@ export type ChartDimensions = {
   boundedWidth: number;
   boundedHeight: number;
 };
+
+export type ChartPageParams =
+  | "mpTermId"
+  | "alleleAccessionId"
+  | "zygosity"
+  | "parameterStableId"
+  | "pipelineStableId"
+  | "procedureStableId"
+  | "phenotypingCentre";
+export type CharPageParamsObj = Record<ChartPageParams, string>;

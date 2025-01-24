@@ -5,9 +5,15 @@ import {
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import _ from "lodash";
-import { useRouter } from "next/router";
-import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
+import { orderBy } from "lodash";
+import {
+  forwardRef,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Alert, Overlay, Tab, Tabs, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
@@ -24,6 +30,7 @@ import {
 import { isIframeLoaded } from "@/utils";
 import { SortType } from "@/models";
 import Link from "next/link";
+import { GeneContext } from "@/contexts";
 
 type ScaleProps = {
   children: number;
@@ -50,9 +57,6 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
 });
 
 const PhenoGridEl = ({ rowDiseasePhenotypes, data }) => {
-  const {
-    query: { pid },
-  } = useRouter();
   const iframeRef = useRef(null);
   const [iframeHeight, setiFrameHeight] = useState(400);
 
@@ -121,7 +125,7 @@ const PhenoGridEl = ({ rowDiseasePhenotypes, data }) => {
                 subjects: subjects,
                 "object-sets": objectSets,
               },
-              "https://monarchinitiative.org"
+              "https://monarchinitiative.org",
             );
 
             console.log("Message sent with a dealy of 0.5s");
@@ -250,13 +254,13 @@ const Row = ({
   );
 };
 
-const HumanDiseases = ({ gene }: { gene: any }) => {
-  const router = useRouter();
+const HumanDiseases = () => {
+  const gene = useContext(GeneContext);
   const [sorted, setSorted] = useState<Array<GeneDisease>>([]);
   const { isLoading, isError, data } = useQuery({
-    queryKey: ["genes", router.query.pid, "disease"],
-    queryFn: () => fetchAPI(`/api/v1/genes/${router.query.pid}/disease`),
-    enabled: router.isReady,
+    queryKey: ["genes", gene.mgiGeneAccessionId, "disease"],
+    queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/disease`),
+    enabled: !!gene.mgiGeneAccessionId,
     select: (data) => data as Array<GeneDisease>,
   });
   const [tab, setTab] = useState("associated");
@@ -264,7 +268,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
 
   useEffect(() => {
     if (data) {
-      setSorted(_.orderBy(data, "diseaseTerm", "asc"));
+      setSorted(orderBy(data, "diseaseTerm", "asc"));
     }
   }, [data]);
 
@@ -372,7 +376,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                     getValueFn: (item) =>
                       `https://omim.org/entry/${item.diseaseId.replace(
                         "OMIM:",
-                        ""
+                        "",
                       )}`,
                   },
                   {
@@ -397,7 +401,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
             {(pageData) => (
               <SortableTable
                 doSort={(sort) => {
-                  setSorted(_.orderBy(data, sort[0], sort[1]));
+                  setSorted(orderBy(data, sort[0], sort[1]));
                 }}
                 defaultSort={defaultSort}
                 headers={[
@@ -433,7 +437,7 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
                     key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`}
                     rowData={d}
                     data={data.filter(
-                      (diseaseModel) => d.diseaseId == diseaseModel.diseaseId
+                      (diseaseModel) => d.diseaseId == diseaseModel.diseaseId,
                     )}
                   />
                 ))}
@@ -449,5 +453,5 @@ const HumanDiseases = ({ gene }: { gene: any }) => {
 export default sectionWithErrorBoundary(
   HumanDiseases,
   "Human diseases",
-  "human-diseases"
+  "human-diseases",
 );

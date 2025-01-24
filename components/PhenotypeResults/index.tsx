@@ -1,3 +1,4 @@
+"use client";
 import styles from "./styles.module.scss";
 import {
   Alert,
@@ -16,7 +17,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Card from "../Card";
 
 import Pagination from "../Pagination";
@@ -33,7 +34,7 @@ import { allBodySystems } from "@/utils";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
-  query: string;
+  query: string | undefined;
 };
 
 const FilterBadge = ({
@@ -126,9 +127,9 @@ const PhenotypeResult = ({
 };
 
 const PhenotypeResults = ({ query }: { query?: string }) => {
-  const [sort, setSort] = useState<"asc" | "desc">(null);
-  const [sortGenes, setSortGenes] = useState<"asc" | "desc">(null);
-  const [selectedSystem, setSelectedSystem] = useState<string>(null);
+  const [sort, setSort] = useState<"asc" | "desc" | null>(null);
+  const [sortGenes, setSortGenes] = useState<"asc" | "desc" | null>(null);
+  const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const parsePhenotypeString = (value: string) => {
     const [mpId, mpTerm] = value.split("|");
     return {
@@ -174,8 +175,8 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
     return !!selectedSystem
       ? data?.filter((phenotype) =>
           phenotype.topLevelParentsArray.some(
-            (p) => p.mpTerm === selectedSystem
-          )
+            (p) => p.mpTerm === selectedSystem,
+          ),
         )
       : data;
   }, [data, selectedSystem]);
@@ -185,7 +186,7 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
       return filteredData.sort(
         (
           { intermediateLevelParentsArray: p1, geneCountNum: count1 },
-          { intermediateLevelParentsArray: p2, geneCountNum: count2 }
+          { intermediateLevelParentsArray: p2, geneCountNum: count2 },
         ) => {
           if (sort) {
             return sort === "asc"
@@ -194,7 +195,7 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
           } else {
             return sortGenes === "asc" ? count1 - count2 : count2 - count1;
           }
-        }
+        },
       );
     }
     return filteredData;
@@ -245,7 +246,7 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
                 className="bg-white"
                 onChange={(el) => {
                   setSelectedSystem(
-                    el.target.value === "all" ? null : el.target.value
+                    el.target.value === "all" ? null : el.target.value,
                   );
                 }}
               >

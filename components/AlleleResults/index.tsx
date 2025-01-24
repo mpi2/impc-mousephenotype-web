@@ -1,13 +1,15 @@
+"use client";
+
 import styles from "./styles.module.scss";
 import { Alert, Col, Container, Form, Row } from "react-bootstrap";
 import { faCheck, faCross } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "../../api-service";
+import { fetchAPI } from "@/api-service";
 
 const AlleleResult = ({
   phenotype: {
@@ -51,10 +53,10 @@ const AlleleResult = ({
 };
 
 const AlleleResults = ({ query }: { query?: string }) => {
-
   const { isLoading, isError, data, error } = useQuery({
-    queryKey: ['search', 'alleles', query],
-    queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}&type=PHENOTYPE`)
+    queryKey: ["search", "alleles", query],
+    queryFn: () =>
+      fetchAPI(`/api/search/v1/search?prefix=${query}&type=PHENOTYPE`),
   });
   return (
     <Container style={{ maxWidth: 1240 }}>

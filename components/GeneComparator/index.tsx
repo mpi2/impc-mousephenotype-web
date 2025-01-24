@@ -1,8 +1,7 @@
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useState, createContext } from "react";
 import { Button } from "react-bootstrap";
 
-const GeneComparatorContext = React.createContext(null);
+const GeneComparatorContext = createContext(null);
 
 export const GeneComparatorProvider = ({ children }) => {
   const [genes, setGenes] = useState([]);
@@ -39,25 +38,16 @@ export const GeneComparatorProvider = ({ children }) => {
 export const useGeneComparator = () => React.useContext(GeneComparatorContext);
 
 export const GeneComparatorTrigger = ({ current }: { current?: string }) => {
-  const { addGene, genes } = useGeneComparator();
-  const router = useRouter();
   return (
     <Button
       style={{
         position: "fixed",
         zIndex: 100,
-        bottom: genes.length > 0 || current ? 0 : -100,
+        bottom: -100,
         right: 100,
         transition: ".3s ease transform",
       }}
       variant="primary"
-      onClick={() => {
-        if (current) {
-          const updatedGenes = addGene(current);
-          return router.push(`/compareGenes/?genes=${updatedGenes.join("_")}`);
-        }
-        router.push(`/compareGenes/?genes=${genes.join("_")}`);
-      }}
     >
       Compare Genes{" "}
       <span
@@ -69,11 +59,9 @@ export const GeneComparatorTrigger = ({ current }: { current?: string }) => {
           borderRadius: 11,
           marginLeft: 6,
           fontWeight: "bold",
-          color: '#000',
+          color: "#000",
         }}
-      >
-        {genes.length}
-      </span>
+      ></span>
     </Button>
   );
 };

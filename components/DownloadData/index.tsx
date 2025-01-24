@@ -1,3 +1,4 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import * as XLSX from "xlsx";
@@ -13,15 +14,24 @@ type Field<T> = {
 type Props<T> = {
   fileName: string;
   fields: Array<Field<T>> | (() => Array<Field<T>>);
-} & ({
-  data: Array<T> | (() => Array<T>);
-  getData?: undefined;
-} | {
-  data?: undefined;
-  getData: () => Promise<Array<T>>;
-});
+} & (
+  | {
+      data: Array<T> | (() => Array<T>);
+      getData?: undefined;
+    }
+  | {
+      data?: undefined;
+      getData: () => Promise<Array<T>>;
+    }
+);
 
-const DownloadDataComponent = <T,>({ data, fields, fileName, getData, children }: PropsWithChildren<Props<T>>) => {
+const DownloadDataComponent = <T,>({
+  data,
+  fields,
+  fileName,
+  getData,
+  children,
+}: PropsWithChildren<Props<T>>) => {
   const [isBusyXLSX, setIsBusyXLSX] = useState(false);
   const [isBusyTSV, setIsBusyTSV] = useState(false);
 
@@ -64,7 +74,7 @@ const DownloadDataComponent = <T,>({ data, fields, fileName, getData, children }
       return finalFields.map((field) =>
         !!field.getValueFn
           ? field.getValueFn(item)
-          : (item[field.key] as string)
+          : (item[field.key] as string),
       );
     });
     const fileData = [headers, ...rows];
@@ -84,7 +94,10 @@ const DownloadDataComponent = <T,>({ data, fields, fileName, getData, children }
   };
 
   return (
-    <div className="grey" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+    <div
+      className="grey"
+      style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}
+    >
       {children ? children : `Download data as:`}
       &nbsp;
       <button
@@ -99,7 +112,8 @@ const DownloadDataComponent = <T,>({ data, fields, fileName, getData, children }
             <FontAwesomeIcon icon={faDownload} size="sm" /> TSV
           </>
         )}
-      </button>&nbsp;
+      </button>
+      &nbsp;
       <button
         className="btn impc-secondary-button small"
         onClick={generateXlsxFile}

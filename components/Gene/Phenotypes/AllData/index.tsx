@@ -34,11 +34,11 @@ type FilterOptions = {
 };
 
 type SelectedValues = {
-  procedureName: string;
-  topLevelPhenotypeName: string;
-  lifeStageName: string;
-  zygosity: string;
-  alleleSymbol: string;
+  procedureName: string | undefined;
+  topLevelPhenotypeName: string | undefined;
+  lifeStageName: string | undefined;
+  zygosity: string | undefined;
+  alleleSymbol: string | undefined;
 };
 
 const defaultFilterOptions: FilterOptions = {
@@ -92,16 +92,16 @@ const AllData = (props: Props) => {
 
   const initialSelectedValues = Object.assign(
     { ...defaultSelectedValues },
-    additionalSelectedValues
+    additionalSelectedValues,
   );
   const [selectedValues, setSelectedValues] = useState<SelectedValues>(
-    initialSelectedValues
+    initialSelectedValues,
   );
-  const [hoveringRef, setHoveringRef] = useState<"*" | "**" | "+">(undefined);
+  const [hoveringRef, setHoveringRef] = useState<"*" | "**" | "+" | null>(null);
 
   const updateSelectedValue = (
     key: keyof SelectedValues,
-    newValue: string
+    newValue: string,
   ): void => {
     setActivePage(0);
     setSelectedValues((prevState) => ({
@@ -160,7 +160,7 @@ const AllData = (props: Props) => {
     queryKey: ["filterData", gene.mgiGeneAccessionId],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`
+        `/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`,
       ),
     enabled: props.tableIsVisible,
   });
@@ -216,7 +216,7 @@ const AllData = (props: Props) => {
         if (newAllele !== selectedValues.alleleSymbol) {
           updateSelectedValue("alleleSymbol", newAllele);
         }
-      }
+      },
     );
     return () => {
       unsubscribeOnAlleleSelection();
@@ -224,7 +224,10 @@ const AllData = (props: Props) => {
   }, [selectedValues.alleleSymbol]);
 
   useEffect(() => {
-    if (Object.values(additionalSelectedValues).some(Boolean)) {
+    if (
+      !!additionalSelectedValues &&
+      Object.values(additionalSelectedValues).some(Boolean)
+    ) {
       setSelectedValues(additionalSelectedValues);
     }
   }, [additionalSelectedValues]);

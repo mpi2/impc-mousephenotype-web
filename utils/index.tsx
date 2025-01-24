@@ -37,7 +37,7 @@ export const formatBodySystems = (systems: string[] | string = []) => {
   return _.capitalize(
     (typeof systems === "string" ? systems : systems.join(", "))
       .replace(/ phenotype/g, "")
-      .replace(/\//g, " / ")
+      .replace(/\//g, " / "),
   );
 };
 
@@ -143,13 +143,13 @@ export const getSmallestPValue = (summaries: Array<Dataset>): number => {
         d.reportedPValue,
       ];
     })
-    .filter((value) => value !== null || value !== undefined);
+    .filter(Boolean);
   return Math.min(...pValues, 1);
 };
 
 export const getDatasetByKey = (
   summaries: Array<Dataset>,
-  keyToFind: string
+  keyToFind: string,
 ) => {
   return summaries.find((dataset) => {
     const {
@@ -170,7 +170,7 @@ export const getDatasetByKey = (
 
 function calculateAgeInWeeks(
   dateOfBirth: string,
-  experimentDate: string
+  experimentDate: string,
 ): number {
   const birthDate = moment(dateOfBirth);
   const experimentDateObj = moment(experimentDate);
@@ -220,7 +220,7 @@ export const getPhenStatReadyData = (datasetMetadata: Dataset, data: any) => {
       const row: string[] = [];
       const age = calculateAgeInWeeks(
         observation.specimenDateOfBirth,
-        observation.dateOfExperiment
+        observation.dateOfExperiment,
       );
       row.push(
         datasetMetadata.pipelineName,
@@ -254,7 +254,7 @@ export const getPhenStatReadyData = (datasetMetadata: Dataset, data: any) => {
         datasetMetadata.metadataGroup,
         observation?.bodyWeight?.toString() || "-",
         datasetMetadata.productionCentre,
-        observation?.dataPoint?.toString() || observation.category
+        observation?.dataPoint?.toString() || observation.category,
       );
       csvRows.push(row.join(","));
     });
@@ -275,7 +275,7 @@ export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
       let row = {};
       const age = calculateAgeInWeeks(
         observation.specimenDateOfBirth,
-        observation.dateOfExperiment
+        observation.dateOfExperiment,
       );
       row = {
         pipeline_name: datasetMetadata.pipelineName,
@@ -341,7 +341,7 @@ export const getDownloadData = (datasetMetadata: Dataset, data: any) => {
 
 export const getBodyWeightDownloadData = (
   datasetMetadata: Dataset,
-  observations: any
+  observations: any,
 ) => {
   const fileName = `${datasetMetadata.parameterName}_${datasetMetadata.mgiGeneAccessionId}`;
   const outputData = [];
@@ -349,7 +349,7 @@ export const getBodyWeightDownloadData = (
     let row = {};
     const age = calculateAgeInWeeks(
       observation.specimenDateOfBirth,
-      observation.dateOfExperiment
+      observation.dateOfExperiment,
     );
     row = {
       pipeline_name: datasetMetadata.pipelineName,

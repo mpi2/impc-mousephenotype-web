@@ -1,6 +1,8 @@
+"use client";
+
 import { useCallback, useMemo, useState, MouseEvent, TouchEvent } from "react";
 import { maybe } from "acd-utils";
-import { extent, min } from "d3-array";
+import { extent } from "d3-array";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { Circle } from "@visx/shape";
 import { useTooltip } from "@visx/tooltip";

@@ -1,8 +1,4 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/router";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
-import SortableTable from "../../SortableTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 import { Alert } from "react-bootstrap";
@@ -13,21 +9,26 @@ import { useQuery } from "@tanstack/react-query";
 import { GeneHistopathology } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { GeneContext } from "@/contexts";
-import { AlleleSymbol, SectionHeader } from "@/components";
+import {
+  AlleleSymbol,
+  Card,
+  Pagination,
+  SectionHeader,
+  SortableTable,
+} from "@/components";
 import { SortType } from "@/models";
 
 const Histopathology = () => {
-  const router = useRouter();
   const gene = useContext(GeneContext);
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>([]);
   const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
 
   const { isLoading, isError, data, error } = useQuery({
-    queryKey: ["genes", router.query.pid, "histopathology"],
+    queryKey: ["genes", gene.mgiGeneAccessionId, "histopathology"],
     queryFn: () =>
-      fetchAPI(`/api/v1/genes/${router.query.pid}/gene_histopathology`),
+      fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/gene_histopathology`),
     placeholderData: null,
-    enabled: router.isReady,
+    enabled: !!gene.mgiGeneAccessionId,
     select: (data) => data as Array<GeneHistopathology>,
   });
 
@@ -63,7 +64,7 @@ const Histopathology = () => {
           This gene doesn't have any significant Histopathology hits.&nbsp;
           <Link
             className="primary link"
-            href={`/supporting-data/histopath/${router.query.pid}`}
+            href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
           >
             Click here to see the raw data
           </Link>
@@ -101,7 +102,7 @@ const Histopathology = () => {
         Full histopathology data table, including submitted images,&nbsp;
         <Link
           className="link primary"
-          href={`/supporting-data/histopath/${router.query.pid}`}
+          href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
         >
           can be accessed by clicking this link
         </Link>
@@ -131,9 +132,7 @@ const Histopathology = () => {
                 <tr key={index}>
                   <td>
                     <Link
-                      href={`/supporting-data/histopath/${
-                        router.query.pid
-                      }?anatomy=${(
+                      href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
                       legacyBehavior
@@ -166,5 +165,5 @@ const Histopathology = () => {
 export default sectionWithErrorBoundary(
   Histopathology,
   "Histopathology",
-  "histopathology"
+  "histopathology",
 );

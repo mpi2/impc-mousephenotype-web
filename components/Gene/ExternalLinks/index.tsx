@@ -1,6 +1,5 @@
 import { Card } from "@/components";
-import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { GeneContext } from "@/contexts";
 import { Alert, Col, Container, Row } from "react-bootstrap";
 import { useGeneExternalLinksQuery } from "@/hooks";
@@ -9,14 +8,16 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 
 const ExternalLinks = () => {
-  const router = useRouter();
   const gene = useContext(GeneContext);
 
   const {
     data: providers,
     error,
     isError,
-  } = useGeneExternalLinksQuery(gene.mgiGeneAccessionId, router.isReady);
+  } = useGeneExternalLinksQuery(
+    gene.mgiGeneAccessionId,
+    !!gene.mgiGeneAccessionId,
+  );
 
   if (error || providers?.length === 0) {
     return (
@@ -34,7 +35,7 @@ const ExternalLinks = () => {
       <h2>External links</h2>
       <Container>
         <Row>
-          {providers.map((provider, index) => (
+          {providers?.map((provider, index) => (
             <Col
               key={index}
               className="mb-3"
@@ -81,5 +82,5 @@ const ExternalLinks = () => {
 export default sectionWithErrorBoundary(
   ExternalLinks,
   "External links",
-  "external-links"
+  "external-links",
 );

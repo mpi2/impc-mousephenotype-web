@@ -1,3 +1,4 @@
+"use client";
 import { Fragment, useState } from "react";
 import headerCss from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
@@ -180,7 +181,7 @@ const Header = () => {
         </div>
         {menuItems
           ?.filter(
-            (menuItem) => menuItem.children && menuItem.children.length > 0
+            (menuItem) => menuItem.children && menuItem.children.length > 0,
           )
           ?.map((menuItem, i) => {
             const itemId = `${menuItem.classes?.split("-")[0]}-menu`;
@@ -206,7 +207,7 @@ const Header = () => {
                         </div>
                       ) : null}
                       {menuItem.children?.some(
-                        (item) => item.children && item.children?.length > 0
+                        (item) => item.children && item.children?.length > 0,
                       ) ? (
                         <>
                           {menuItem.children

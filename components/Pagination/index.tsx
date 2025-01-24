@@ -1,3 +1,4 @@
+"use client";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -61,7 +62,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     ? data
     : data?.slice(
         internalPageSize * internalPage,
-        internalPageSize * (internalPage + 1)
+        internalPageSize * (internalPage + 1),
       ) || [];
   const noTotalItems = controlled ? totalItems : data?.length;
   let totalPages = Math.ceil(noTotalItems / internalPageSize) || 1;
@@ -77,7 +78,7 @@ const Pagination = <T extends unknown>(props: Props<T>) => {
     }
     const newPageRange = Array.from(
       { length: rangeEnd - rangeStart + 1 },
-      (_, i) => rangeStart + i
+      (_, i) => rangeStart + i,
     );
     if (JSON.stringify(pageRange) !== JSON.stringify(newPageRange)) {
       setPageRange(newPageRange);
