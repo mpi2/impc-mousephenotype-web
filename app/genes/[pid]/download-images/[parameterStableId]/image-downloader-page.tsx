@@ -5,7 +5,11 @@ import { fetchAPI } from "@/api-service";
 import Search from "@/components/Search";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong, faDownload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faArrowLeftLong,
+  faDownload,
+} from "@fortawesome/free-solid-svg-icons";
 import { Button, Container } from "react-bootstrap";
 import { Card } from "@/components";
 import Skeleton from "react-loading-skeleton";
@@ -20,6 +24,7 @@ import _ from "lodash";
 import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import { Metadata } from "next";
+import styles from "../../images/[parameterStableId]/styles.module.scss";
 
 type Image = {
   alleleSymbol: string;
@@ -45,7 +50,7 @@ const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
 const DownloadImagesPage = () => {
   const params = useParams();
   const { parameterStableId = "", pid } = params;
-  const { data: mutantImages } = useQuery({
+  const { data: mutantImages, isLoading: isMutantImagesLoading } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],
     queryFn: () =>
       fetchAPI(
@@ -69,7 +74,7 @@ const DownloadImagesPage = () => {
     },
   });
 
-  const { data: controlImages } = useQuery({
+  const { data: controlImages, isLoading: isControlImagesLoading } = useQuery({
     queryKey: ["control", pid, "images", parameterStableId],
     queryFn: () =>
       fetchAPI(
@@ -99,10 +104,28 @@ const DownloadImagesPage = () => {
       <Search />
       <Container className="page">
         <Card>
-          <Link href={`/genes/${pid}#images`} className="grey mb-3 small">
-            <FontAwesomeIcon icon={faArrowLeftLong} />
-            &nbsp; BACK TO GENE
-          </Link>
+          <div className={styles.subheading}>
+            <span className={`${styles.subheadingSection} primary`}>
+              <Link
+                href={`/genes/${pid}#images`}
+                className="mb-3"
+                style={{
+                  textTransform: "none",
+                  fontWeight: "normal",
+                  letterSpacing: "normal",
+                  fontSize: "1.15rem",
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowLeft} />
+                &nbsp; Go Back to{" "}
+                <i>
+                  {mutantImages?.geneSymbol || (
+                    <Skeleton style={{ width: "50px" }} inline />
+                  )}
+                </i>
+              </Link>
+            </span>
+          </div>
           <h1 className="mb-4 mt-2" style={{ display: "flex", gap: "1rem" }}>
             <strong>
               {mutantImages?.procedureName || (
@@ -115,100 +138,97 @@ const DownloadImagesPage = () => {
             )}
           </h1>
           <h2>Mutant Files</h2>
-          {!!mutantImages?.images && (
-            <SmartTable<Image>
-              data={mutantImages?.images}
-              defaultSort={defaultSort}
-              columns={[
-                {
-                  width: 1,
-                  label: "Allele Symbol",
-                  field: "alleleSymbol",
-                  cmp: <AlleleCell />,
-                },
-                {
-                  width: 1,
-                  label: "Age",
-                  field: "ageInWeeks",
-                  cmp: <PlainTextCell />,
-                },
-                { width: 1, label: "Sex", field: "sex", cmp: <SexCell /> },
-                {
-                  width: 1,
-                  label: "Zygosity",
-                  field: "zygosity",
-                  cmp: <PlainTextCell />,
-                },
-                {
-                  width: 1,
-                  label: "Sample group",
-                  field: "sampleGroup",
-                  cmp: <PlainTextCell />,
-                },
-                {
-                  width: 1,
-                  label: "Procedure",
-                  field: "procedureName",
-                  cmp: <PlainTextCell />,
-                },
-                {
-                  width: 1,
-                  label: "Parameter",
-                  field: "parameterName",
-                  cmp: <PlainTextCell />,
-                },
-                {
-                  width: 1,
-                  label: "",
-                  field: "downloadUrl",
-                  cmp: <DownloadButtonCell />,
-                  disabled: true,
-                },
-              ]}
-            />
-          )}
+          <SmartTable<Image>
+            data={mutantImages?.images}
+            defaultSort={defaultSort}
+            showLoadingIndicator={isMutantImagesLoading}
+            columns={[
+              {
+                width: 1,
+                label: "Allele Symbol",
+                field: "alleleSymbol",
+                cmp: <AlleleCell />,
+              },
+              {
+                width: 1,
+                label: "Age",
+                field: "ageInWeeks",
+                cmp: <PlainTextCell />,
+              },
+              { width: 1, label: "Sex", field: "sex", cmp: <SexCell /> },
+              {
+                width: 1,
+                label: "Zygosity",
+                field: "zygosity",
+                cmp: <PlainTextCell />,
+              },
+              {
+                width: 1,
+                label: "Sample group",
+                field: "sampleGroup",
+                cmp: <PlainTextCell />,
+              },
+              {
+                width: 1,
+                label: "Procedure",
+                field: "procedureName",
+                cmp: <PlainTextCell />,
+              },
+              {
+                width: 1,
+                label: "Parameter",
+                field: "parameterName",
+                cmp: <PlainTextCell />,
+              },
+              {
+                width: 1,
+                label: "",
+                field: "downloadUrl",
+                cmp: <DownloadButtonCell />,
+                disabled: true,
+              },
+            ]}
+          />
           <h2 className="mt-2">Control Files</h2>
-
-          {!!controlImages?.images && (
-            <SmartTable<Image>
-              data={controlImages?.images}
-              defaultSort={defaultSort}
-              columns={[
-                {
-                  width: 1,
-                  label: "Zygosity",
-                  field: "zygosity",
-                  cmp: <PlainTextCell />,
-                },
-                {
-                  width: 1,
-                  label: "Age",
-                  field: "ageInWeeks",
-                  cmp: <PlainTextCell />,
-                },
-                { width: 1, label: "Sex", field: "sex", cmp: <SexCell /> },
-                {
-                  width: 1,
-                  label: "Procedure",
-                  field: "procedureName",
-                  cmp: <PlainTextCell />,
-                },
-                {
-                  width: 1,
-                  label: "Parameter",
-                  field: "parameterName",
-                  cmp: <PlainTextCell />,
-                },
-                {
-                  width: 1,
-                  label: "",
-                  field: "downloadUrl",
-                  cmp: <DownloadButtonCell />,
-                  disabled: true,
-                },
-              ]}
-            />
-          )}
+          <SmartTable<Image>
+            data={controlImages?.images}
+            defaultSort={defaultSort}
+            showLoadingIndicator={isControlImagesLoading}
+            columns={[
+              {
+                width: 1,
+                label: "Zygosity",
+                field: "zygosity",
+                cmp: <PlainTextCell />,
+              },
+              {
+                width: 1,
+                label: "Age",
+                field: "ageInWeeks",
+                cmp: <PlainTextCell />,
+              },
+              { width: 1, label: "Sex", field: "sex", cmp: <SexCell /> },
+              {
+                width: 1,
+                label: "Procedure",
+                field: "procedureName",
+                cmp: <PlainTextCell />,
+              },
+              {
+                width: 1,
+                label: "Parameter",
+                field: "parameterName",
+                cmp: <PlainTextCell />,
+              },
+              {
+                width: 1,
+                label: "",
+                field: "downloadUrl",
+                cmp: <DownloadButtonCell />,
+                disabled: true,
+              },
+            ]}
+          />
         </Card>
       </Container>
     </>
