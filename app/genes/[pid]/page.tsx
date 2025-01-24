@@ -4,6 +4,11 @@ import { fetchAPIFromServer } from "@/api-service";
 import GenePage from "./gene-page";
 import { processGeneOrderResponse } from "@/hooks/gene-order.query";
 import { processGenePhenotypeHitsResponse } from "@/hooks/significant-phenotypes.query";
+import {
+  GeneSummary,
+  emptyGeneSummary,
+  GenePhenotypeHits,
+} from "@/models/gene";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
@@ -12,12 +17,17 @@ async function getGeneSummary(mgiGeneAccessionId: string) {
     notFound();
   }
   const results = await Promise.allSettled([
-    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/summary`),
-    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`),
+    fetchAPIFromServer<GeneSummary>(
+      `/api/v1/genes/${mgiGeneAccessionId}/summary`,
+    ),
+    fetchAPIFromServer<Array<GenePhenotypeHits>>(
+      `/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`,
+    ),
     fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/order`),
   ]);
 
-  const geneData = results[0].status === "fulfilled" ? results[0].value : null;
+  const geneData =
+    results[0].status === "fulfilled" ? results[0].value : emptyGeneSummary();
   const sigGeneData =
     results[1].status === "fulfilled"
       ? processGenePhenotypeHitsResponse(results[1].value)
@@ -32,11 +42,9 @@ async function getGeneSummary(mgiGeneAccessionId: string) {
   }
 
   return {
-    props: {
-      gene: geneData,
-      significantPhenotypes: sigGeneData,
-      orderData: orderGeneData,
-    },
+    gene: geneData,
+    significantPhenotypes: sigGeneData,
+    orderData: orderGeneData,
   };
 }
 
@@ -45,9 +53,9 @@ type PageParams = Promise<{
 }>;
 
 export default async function Page({ params }: { params: PageParams }) {
-  const geneId = (await params).pid;
-  const { props } = await getGeneSummary(geneId);
-  return <GenePage {...props} />;
+  const geneId = decodeURIComponent((await params).pid);
+  const data = await getGeneSummary(geneId);
+  return <GenePage {...data} />;
 }
 
 export async function generateMetadata({
@@ -55,11 +63,11 @@ export async function generateMetadata({
 }: {
   params: PageParams;
 }): Promise<Metadata> {
-  const mgiGeneAccessionId = (await params).pid;
+  const mgiGeneAccessionId = decodeURIComponent((await params).pid);
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     notFound();
   }
-  const geneSummary = await fetchAPIFromServer(
+  const geneSummary = await fetchAPIFromServer<GeneSummary>(
     `/api/v1/genes/${mgiGeneAccessionId}/summary`,
   );
   if (!geneSummary) {
