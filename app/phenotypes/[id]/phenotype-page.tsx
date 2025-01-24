@@ -23,7 +23,7 @@ type PhenotypePageProps = {
 };
 
 const sortAndUniqPhenotypeProcedures = (
-  data: PhenotypeSummary
+  data: PhenotypeSummary,
 ): PhenotypeSummary => ({
   ...data,
   procedures: uniqBy(data.procedures, "procedureName").sort((a, b) => {
@@ -33,8 +33,8 @@ const sortAndUniqPhenotypeProcedures = (
 
 const Phenotype = (props: PhenotypePageProps) => {
   const { phenotype: phenotypeFromServer } = props;
-  const params = useParams();
-  const phenotypeId = params.id;
+  const params = useParams<{ id: string }>();
+  const phenotypeId = decodeURIComponent(params.id);
 
   const {
     data: phenotype,

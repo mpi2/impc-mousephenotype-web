@@ -2,7 +2,6 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
 import styles from "./styles.module.scss";

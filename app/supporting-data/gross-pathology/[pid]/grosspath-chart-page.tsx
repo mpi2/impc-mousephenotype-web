@@ -13,12 +13,11 @@ import { useMemo } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 
 const GrossPathChartPage = () => {
-  const params = useParams();
+  const params = useParams<{ pid: string }>();
   const searchParams = useSearchParams();
-  const mgiGeneAccessionId = params.pid as string;
-  const grossPathParameterStableId = searchParams.get(
-    "grossPathParameterStableId",
-  );
+  const mgiGeneAccessionId = decodeURIComponent(params.pid);
+  const grossPathParameterStableId =
+    searchParams.get("grossPathParameterStableId") ?? "";
 
   const { data } = useGrossPathologyChartQuery(
     mgiGeneAccessionId,

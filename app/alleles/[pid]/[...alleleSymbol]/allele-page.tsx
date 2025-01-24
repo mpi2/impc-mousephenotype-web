@@ -66,8 +66,8 @@ const ProductItem = ({
 );
 
 const AllelePage = ({ alleleData: alleleFromServer }) => {
-  const params = useParams();
-  const pid = params.pid;
+  const params = useParams<{ pid: string; alleleSymbol: Array<string> }>();
+  const pid = decodeURIComponent(params.pid);
   const alleleSymbolParsed = params.alleleSymbol;
 
   const alleleSymbol = (alleleSymbolParsed as Array<string>).join("/");

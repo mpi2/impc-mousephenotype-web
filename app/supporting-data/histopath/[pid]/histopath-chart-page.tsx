@@ -56,10 +56,10 @@ const DescriptionCell = <T extends Histopathology>(
 
 const HistopathChartPage = () => {
   const router = useRouter();
-  const params = useParams();
+  const params = useParams<{ pid: string }>();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  const mgiGeneAccessionId = params.pid as string;
+  const mgiGeneAccessionId = decodeURIComponent(params.pid);
   const [selectedAnatomy, setSelectedAnatomy] = useState<string>(null);
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
   const [selectedTissue, setSelectedTissue] = useState<Histopathology>(null);

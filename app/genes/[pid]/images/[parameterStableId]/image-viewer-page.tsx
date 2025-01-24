@@ -267,13 +267,14 @@ export const metadata: Metadata = {
 
 const ImagesCompare = () => {
   const router = useRouter();
-  const params = useParams();
+  const params = useParams<{ pid: string; parameterStableId: string }>();
   const searchParams = useSearchParams();
   const pathName = usePathname();
   const [selectedWTImage, setSelectedWTImage] = useState(0);
   const [selectedMutantImage, setSelectedMutantImage] = useState(0);
   const [appliedAnatomyTerm, setAppliedAnatomyTerm] = useState(null);
-  const { parameterStableId = "", pid } = params;
+  const { parameterStableId = "" } = params;
+  const pid = decodeURIComponent(params.pid);
   const anatomyTerm = searchParams.get("anatomyTerm");
   const { data: mutantImages } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],

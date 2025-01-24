@@ -1,10 +1,9 @@
 import { Alert, Spinner, Tab, Tabs } from "react-bootstrap";
-import Card from "../../Card";
 import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
 import dynamic from "next/dynamic";
-import { useParams, useSearchParams } from "next/navigation";
-import { GenePhenotypeHits, GeneSummary } from "@/models/gene";
+import { useSearchParams } from "next/navigation";
+import { GenePhenotypeHits } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
 import {
@@ -20,7 +19,7 @@ import {
 } from "@/eventChannels";
 import { uniq } from "lodash";
 import { Variant } from "react-bootstrap/types";
-import { SectionHeader } from "@/components";
+import { Card, SectionHeader } from "@/components";
 import { ErrorBoundary } from "react-error-boundary";
 import { GeneContext } from "@/contexts";
 

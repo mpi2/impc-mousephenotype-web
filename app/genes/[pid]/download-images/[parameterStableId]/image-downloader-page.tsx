@@ -48,8 +48,9 @@ const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
 };
 
 const DownloadImagesPage = () => {
-  const params = useParams();
-  const { parameterStableId = "", pid } = params;
+  const params = useParams<{ pid: string; parameterStableId: string }>();
+  const { parameterStableId = "" } = params;
+  const pid = decodeURIComponent(params.pid);
   const { data: mutantImages, isLoading: isMutantImagesLoading } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],
     queryFn: () =>
