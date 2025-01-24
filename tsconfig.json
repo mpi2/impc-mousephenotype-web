@@ -20,27 +20,62 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/api-service": ["api-service/index.ts"],
-      "@/components": ["components/index.ts"],
-      "@/components/*": ["components/*"],
-      "@/contexts": ["shared/contexts/index.ts"],
-      "@/eventChannels": ["shared/eventChannels/index.ts"],
-      "@/hoc/*": ["shared/high-order-components/*"],
-      "@/hooks": ["shared/hooks/index.ts"],
-      "@/hooks/*": ["shared/hooks/*"],
-      "@/models": ["shared/models/index.ts"],
-      "@/models/*": ["shared/models/*"],
-      "@/pages/*": ["pages/*"],
-      "@/shared/*":["shared/*"],
-      "@/utils": ["utils/index.tsx"],
-      "@/utils/*": ["utils/*"]
+      "@/app/*": [
+        "app/*"
+      ],
+      "@/api-service": [
+        "api-service/index.ts"
+      ],
+      "@/components": [
+        "components/index.ts"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/contexts": [
+        "shared/contexts/index.ts"
+      ],
+      "@/eventChannels": [
+        "shared/eventChannels/index.ts"
+      ],
+      "@/hoc/*": [
+        "shared/high-order-components/*"
+      ],
+      "@/hooks": [
+        "shared/hooks/index.ts"
+      ],
+      "@/hooks/*": [
+        "shared/hooks/*"
+      ],
+      "@/models": [
+        "shared/models/index.ts"
+      ],
+      "@/models/*": [
+        "shared/models/*"
+      ],
+      "@/shared/*": [
+        "shared/*"
+      ],
+      "@/utils": [
+        "utils/index.tsx"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ]
     },
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
