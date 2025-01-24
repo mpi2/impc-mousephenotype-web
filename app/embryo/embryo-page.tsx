@@ -1,6 +1,6 @@
 "use client";
 import { useEmbryoLandingQuery } from "@/hooks";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { SortType } from "@/models";
 import Link from "next/link";
 import Search from "@/components/Search";
@@ -89,7 +89,9 @@ const EmbryoLandingPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className={styles.subheading}>

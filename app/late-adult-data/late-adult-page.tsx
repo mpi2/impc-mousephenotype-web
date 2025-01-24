@@ -22,7 +22,7 @@ import {
   LateAdultDataParsed,
   LateAdultRowResponse,
 } from "@/models";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { usePagination } from "@/hooks";
 import { Metadata } from "next";
 
@@ -184,7 +184,9 @@ const LateAdultDataPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

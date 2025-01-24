@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { GeneResults, PhenotypeResults, Search } from "@/components";
 
 const SearchResults = () => {
@@ -66,7 +66,9 @@ const SearchResults = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Search updateURL onChange={setQuery} />
+      <Suspense>
+        <Search updateURL onChange={setQuery} />
+      </Suspense>
       {renderResults()}
     </>
   );

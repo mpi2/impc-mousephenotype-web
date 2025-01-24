@@ -1,5 +1,6 @@
+"use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Card, Search } from "@/components";
 import {
   Breadcrumb,
@@ -73,7 +74,9 @@ const EmbryoVignettesPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

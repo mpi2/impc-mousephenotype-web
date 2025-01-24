@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { allBodySystems } from "@/utils";
+import { Suspense } from "react";
 
 const GeneColumn = ({
   geneId,
@@ -85,7 +86,9 @@ const GeneColumn = ({
 const CompareGenes = () => {
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page">
         <Card>
           <div>

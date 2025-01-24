@@ -6,7 +6,7 @@ import metabolismTableData from "../../mocks/data/landing-pages/metabolism-table
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import {
   PlainTextCell,
   SmartTable,
@@ -101,7 +101,9 @@ const MetabolismLandingPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

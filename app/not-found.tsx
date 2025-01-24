@@ -2,6 +2,7 @@ import { Card, Search } from "@/components";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Col, Container, Row } from "react-bootstrap";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Page not found | International Mouse Phenotyping Consortium",
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page">
         <Card>
           <Row>

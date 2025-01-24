@@ -19,6 +19,7 @@ import {
   PublicationDataAlert,
   Search,
 } from "@/components";
+import { Suspense } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -141,7 +142,9 @@ const ConservationLandingPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

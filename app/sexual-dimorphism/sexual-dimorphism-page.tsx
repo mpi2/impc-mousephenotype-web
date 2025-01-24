@@ -33,6 +33,7 @@ import {
   Search,
 } from "@/components";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 ChartJS.register(
   LinearScale,
@@ -85,7 +86,9 @@ const SexualDimorphismLandingPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

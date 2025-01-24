@@ -9,7 +9,14 @@ import {
   Pagination,
   SortableTable,
 } from "@/components";
-import { ChangeEvent, useEffect, useMemo, useReducer, useState } from "react";
+import {
+  ChangeEvent,
+  Suspense,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState,
+} from "react";
 import { useQuery } from "@tanstack/react-query";
 import { groupBy, orderBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
@@ -390,7 +397,9 @@ const BatchQueryPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page">
         <Card>
           <h1 className="mb-4 mt-2">

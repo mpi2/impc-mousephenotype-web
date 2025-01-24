@@ -12,6 +12,7 @@ import {
   GrantSection,
 } from "./charts";
 import { PublicationAggregationDataResponse } from "@/models";
+import { Suspense } from "react";
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"),
@@ -53,7 +54,9 @@ const PublicationsPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page">
         <Card>
           <h1 className="mb-4 mt-2">

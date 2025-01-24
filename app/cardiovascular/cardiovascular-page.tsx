@@ -3,7 +3,7 @@
 import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from "../../mocks/data/landing-pages/cardiovascular.json";
 import styles from "./styles.module.scss";
-import { Fragment, useState } from "react";
+import { Fragment, Suspense, useState } from "react";
 import Link from "next/link";
 import {
   Card,
@@ -64,7 +64,9 @@ const CardiovascularLandingPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

@@ -5,7 +5,7 @@ import {
   faExternalLink,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import Markdown from "react-markdown";
 import { NumberCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import {
@@ -599,7 +599,9 @@ const ReleaseNotesPage = (props: Props) => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container style={{ maxWidth: 1240 }} className="page">
         <Card>
           <p

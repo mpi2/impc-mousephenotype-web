@@ -16,6 +16,7 @@ import {
   useState,
   useImperativeHandle,
   forwardRef,
+  Suspense,
 } from "react";
 import { Bar } from "react-chartjs-2";
 import {
@@ -365,7 +366,9 @@ const IDGPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page">
         <Card>
           <div className="subheading">

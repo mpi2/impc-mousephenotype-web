@@ -1,7 +1,7 @@
 "use client";
 import { Breadcrumb, Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import {
   faSort,
   faSortUp,
@@ -262,7 +262,9 @@ const HistopathLandingPage = () => {
 
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

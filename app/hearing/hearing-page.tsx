@@ -16,7 +16,7 @@ import {
 import { ParentSize } from "@visx/responsive";
 import { usePleiotropyQuery } from "@/hooks";
 import { SortType } from "@/models";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import { Metadata } from "next";
 
 type GeneHearingData = {
@@ -33,7 +33,9 @@ const HearingLandingPage = () => {
   const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
   return (
     <>
-      <Search />
+      <Suspense>
+        <Search />
+      </Suspense>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">
