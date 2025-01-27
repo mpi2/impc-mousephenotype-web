@@ -30,8 +30,8 @@ export default async function Page({
 }: {
   searchParams: SearchParams;
 }) {
-  const type = searchParams.type;
-  const term = searchParams.term;
+  const type = searchParams.type ?? "";
+  const term = searchParams.term ?? "";
   const results = await fetchSearchResults(type, term);
   return <SearchPage type={type} term={term} data={results} />;
 }
