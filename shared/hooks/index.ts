@@ -26,3 +26,4 @@ export {
   processGeneOrderResponse,
 } from "./gene-order.query";
 export { useChartFlags } from "./chartFlags";
+export { usePhenotypeResultsQuery } from "./phenotype-results.query";
