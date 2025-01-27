@@ -1,5 +1,4 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Card, Search } from "@/components";
 import {
@@ -56,21 +55,19 @@ const genePositions = {
   Tmem132a: 19,
 };
 
-const EmbryoVignettesPage = () => {
-  const searchParams = useSearchParams();
-  const slickRef = useRef(null);
+const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
+  const slickRef = useRef<Slider>(null);
   const [selectedFile, setSelectedFile] = useState<undefined | string>(
     undefined,
   );
   const [navigatedToGene, setNavigatedToGene] = useState<boolean>(false);
 
   useEffect(() => {
-    const genePos = searchParams.get("gene");
-    if (!!genePos && slickRef.current && !navigatedToGene) {
-      slickRef.current.slickGoTo(genePositions[genePos as string]);
+    if (!!gene && slickRef.current && !navigatedToGene) {
+      slickRef.current.slickGoTo(genePositions[gene]);
       setNavigatedToGene(true);
     }
-  }, [slickRef, searchParams]);
+  }, [slickRef, gene]);
 
   return (
     <>
