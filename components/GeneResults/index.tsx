@@ -97,7 +97,7 @@ const GeneResult = ({
             </p>
           )}
 
-          <p className="small grey mt-3">
+          <div className="small grey mt-3">
             {phenotypingDataAvailable ? (
               <p>
                 <AvailabilityIcon hasData={!!phenotypeStatus} />
@@ -126,7 +126,7 @@ const GeneResult = ({
                 data not yet available
               </span>
             )}
-          </p>
+          </div>
         </Col>
         <Col sm={4} className={styles.shortcuts}>
           <h5 className="grey text-uppercase">
