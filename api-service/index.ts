@@ -16,7 +16,7 @@ export const PUBLICATIONS_ENDPOINT_URL =
   process.env.NEXT_PUBLIC_PUBLICATIONS_ENDPOINT_URL || "";
 const httpCodesError500 = [500, 501, 502, 503, 504, 506];
 
-export async function fetchAPI(query: string) {
+export async function fetchAPI<T>(query: string): Promise<T> {
   let domain: string;
   if (location.hostname === "nginx.mousephenotype-dev.org") {
     domain = PROTOTYPE_API_URL;

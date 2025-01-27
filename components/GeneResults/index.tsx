@@ -29,7 +29,7 @@ const GeneResult = ({
   query,
 }: {
   gene: GeneSearchResponseItem;
-  query: string;
+  query: string | undefined;
 }) => {
   const {
     entityProperties: {
@@ -149,12 +149,17 @@ const GeneResult = ({
   );
 };
 
-const GeneResults = ({ query }: { query?: string }) => {
+type GeneResultProps = {
+  initialData: GeneSearchResponse;
+  query?: string;
+};
+
+const GeneResults = ({ initialData, query }: GeneResultProps) => {
   const { data, isLoading } = useQuery({
     queryKey: ["search", "genes", query],
-    queryFn: () =>
-      fetchAPI(`/api/search/v1/search${query ? `?prefix=${query}` : ""}`),
+    queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}`),
     select: (data: GeneSearchResponse) => data.results,
+    initialData: initialData,
   });
 
   return (

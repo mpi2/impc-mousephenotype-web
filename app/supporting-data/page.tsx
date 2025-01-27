@@ -20,7 +20,6 @@ async function getInitialDatasets(
 export default async function Page({
   searchParams,
 }: {
-  params: {};
   searchParams: SearchParams;
 }) {
   const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;

@@ -21,16 +21,15 @@ import { useRouter } from "next/navigation";
 import Card from "../Card";
 
 import Pagination from "../Pagination";
-import { fetchAPI } from "@/api-service";
-import { useQuery } from "@tanstack/react-query";
 import {
-  PhenotypeSearchResponse,
   PhenotypeSearchItem,
+  PhenotypeSearchResponse,
 } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { ReactNode, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
 import { allBodySystems } from "@/utils";
+import { usePhenotypeResultsQuery } from "@/hooks";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
@@ -126,18 +125,15 @@ const PhenotypeResult = ({
   );
 };
 
-const PhenotypeResults = ({ query }: { query?: string }) => {
+type PhenotypeResultsProps = {
+  initialData: PhenotypeSearchResponse;
+  query?: string;
+};
+
+const PhenotypeResults = ({ initialData, query }: PhenotypeResultsProps) => {
   const [sort, setSort] = useState<"asc" | "desc" | null>(null);
   const [sortGenes, setSortGenes] = useState<"asc" | "desc" | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
-  const parsePhenotypeString = (value: string) => {
-    const [mpId, mpTerm] = value.split("|");
-    return {
-      mpId: mpId.replace(`___${mpTerm}`, ""),
-      mpTerm,
-    };
-  };
-
   const updateSortByOntology = (value: "asc" | "desc") => {
     setSortGenes(null);
     setSort(value);
@@ -148,28 +144,7 @@ const PhenotypeResults = ({ query }: { query?: string }) => {
     setSortGenes(value);
   };
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["search", "phenotypes", query],
-    queryFn: () =>
-      fetchAPI(`/api/search/v1/search?prefix=${query}&type=PHENOTYPE`),
-    select: (data: PhenotypeSearchResponse) =>
-      data.results.map((item) => ({
-        ...item,
-        ...item.entityProperties,
-        geneCountNum: item.entityProperties.geneCount.endsWith(";")
-          ? Number.parseInt(item.entityProperties.geneCount, 10)
-          : 0,
-        intermediateLevelParentsArray:
-          item.entityProperties.intermediateLevelParents
-            .split(";")
-            .map(parsePhenotypeString),
-        topLevelParentsArray: !!item.entityProperties.topLevelParents
-          ? item.entityProperties.topLevelParents
-              .split(";")
-              .map(parsePhenotypeString)
-          : [],
-      })) as Array<PhenotypeSearchItem>,
-  });
+  const { data, isLoading } = usePhenotypeResultsQuery(query, initialData);
 
   const filteredData = useMemo(() => {
     return !!selectedSystem
