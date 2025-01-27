@@ -29,7 +29,7 @@ const GeneResult = ({
   query,
 }: {
   gene: GeneSearchResponseItem;
-  query: string;
+  query: string | undefined;
 }) => {
   const {
     entityProperties: {
@@ -97,7 +97,7 @@ const GeneResult = ({
             </p>
           )}
 
-          <p className="small grey mt-3">
+          <div className="small grey mt-3">
             {phenotypingDataAvailable ? (
               <p>
                 <AvailabilityIcon hasData={!!phenotypeStatus} />
@@ -126,7 +126,7 @@ const GeneResult = ({
                 data not yet available
               </span>
             )}
-          </p>
+          </div>
         </Col>
         <Col sm={4} className={styles.shortcuts}>
           <h5 className="grey text-uppercase">
@@ -149,12 +149,17 @@ const GeneResult = ({
   );
 };
 
-const GeneResults = ({ query }: { query?: string }) => {
+type GeneResultProps = {
+  initialData: GeneSearchResponse;
+  query?: string;
+};
+
+const GeneResults = ({ initialData, query }: GeneResultProps) => {
   const { data, isLoading } = useQuery({
     queryKey: ["search", "genes", query],
-    queryFn: () =>
-      fetchAPI(`/api/search/v1/search${query ? `?prefix=${query}` : ""}`),
+    queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}`),
     select: (data: GeneSearchResponse) => data.results,
+    initialData: initialData,
   });
 
   return (

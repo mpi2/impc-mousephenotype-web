@@ -1,21 +1,31 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { GeneResults, PhenotypeResults, Search } from "@/components";
+import { PhenotypeSearchResponse } from "@/models/phenotype";
+import { GeneSearchResponse } from "@/models/gene";
 
-const SearchResults = () => {
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("term") || "");
-  const type = searchParams.get("type");
+type PageProps = {
+  data: PhenotypeSearchResponse | GeneSearchResponse;
+  term: string;
+  type: string;
+};
 
+const SearchResults = ({ data, term: query, type }: PageProps) => {
   const renderResults = () => {
     switch (type) {
       case "phenotype":
       case "pheno":
-        return <PhenotypeResults query={query} />;
+        return (
+          <PhenotypeResults
+            initialData={data as PhenotypeSearchResponse}
+            query={query}
+          />
+        );
       default:
-        return <GeneResults query={query} />;
+        return (
+          <GeneResults initialData={data as GeneSearchResponse} query={query} />
+        );
     }
   };
 
@@ -67,7 +77,7 @@ const SearchResults = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Suspense>
-        <Search updateURL onChange={setQuery} />
+        <Search updateURL />
       </Suspense>
       {renderResults()}
     </>
