@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
-import { fetchAPIFromServer } from "@/api-service";
+import {
+  fetchPhenotypeGenotypeHits,
+  fetchPhenotypeSummary,
+} from "@/api-service";
 import PhenotypePage from "./phenotype-page";
 import { Metadata } from "next";
 import { PhenotypeSummary } from "@/models/phenotype";
@@ -7,11 +10,9 @@ import { PhenotypeSummary } from "@/models/phenotype";
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 async function getPhenotypeSummary(phenotypeId: string) {
-  let data;
+  let data: PhenotypeSummary;
   try {
-    data = await fetchAPIFromServer(
-      `/api/v1/phenotypes/${phenotypeId}/summary`,
-    );
+    data = await fetchPhenotypeSummary(phenotypeId);
   } catch {
     notFound();
   }
@@ -26,7 +27,10 @@ type PageParams = Promise<{
 export default async function Page({ params }: { params: PageParams }) {
   const phenotypeId = decodeURIComponent((await params).id);
   const phenotypeData = await getPhenotypeSummary(phenotypeId);
-  return <PhenotypePage phenotype={phenotypeData} />;
+  const phenotypeHits = await fetchPhenotypeGenotypeHits(phenotypeId);
+  return (
+    <PhenotypePage phenotype={phenotypeData} phenotypeHits={phenotypeHits} />
+  );
 }
 
 export async function generateMetadata({
@@ -38,9 +42,7 @@ export async function generateMetadata({
   if (!phenotypeId || phenotypeId === "null") {
     notFound();
   }
-  const phenotypeSummary = await fetchAPIFromServer<PhenotypeSummary>(
-    `/api/v1/phenotypes/${phenotypeId}/summary`,
-  );
+  const phenotypeSummary = await fetchPhenotypeSummary(phenotypeId);
   if (!phenotypeSummary) {
     notFound();
   }

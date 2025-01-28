@@ -11,7 +11,7 @@ import {
 import Search from "@/components/Search";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { PhenotypeSummary } from "@/models/phenotype";
+import { PhenotypeGenotypes, PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import { uniqBy } from "lodash";
 import { useMemo } from "react";
@@ -20,6 +20,7 @@ const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 type PhenotypePageProps = {
   phenotype: PhenotypeSummary;
+  phenotypeHits: Array<PhenotypeGenotypes>;
 };
 
 const sortAndUniqPhenotypeProcedures = (
@@ -32,7 +33,10 @@ const sortAndUniqPhenotypeProcedures = (
 });
 
 const Phenotype = (props: PhenotypePageProps) => {
-  const { phenotype: phenotypeFromServer } = props;
+  const {
+    phenotype: phenotypeFromServer,
+    phenotypeHits: phenotypeHitsFromServer,
+  } = props;
   const params = useParams<{ id: string }>();
   const phenotypeId = decodeURIComponent(params.id);
 
@@ -76,7 +80,7 @@ const Phenotype = (props: PhenotypePageProps) => {
         <Container className="page">
           <Summary {...{ phenotype: phenotypeData }} />
           <Card id="associations-table">
-            <PhenotypeGeneAssociations />
+            <PhenotypeGeneAssociations initialData={phenotypeHitsFromServer} />
           </Card>
           <Card>
             <h2>

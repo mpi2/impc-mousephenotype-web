@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import ImageDownloaderPage from "./image-downloader-page";
 import { notFound } from "next/navigation";
-import { fetchAPIFromServer } from "@/api-service";
+import { fetchGeneSummary } from "@/api-service";
 
 type PageParams = Promise<{
   pid: string;
@@ -20,9 +20,7 @@ export async function generateMetadata({
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     notFound();
   }
-  const geneSummary = await fetchAPIFromServer(
-    `/api/v1/genes/${mgiGeneAccessionId}/summary`,
-  );
+  const geneSummary = await fetchGeneSummary(mgiGeneAccessionId);
   if (!geneSummary) {
     notFound();
   }

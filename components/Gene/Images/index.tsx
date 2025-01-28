@@ -85,13 +85,18 @@ const Image = ({
   );
 };
 
-const Images = () => {
+type ImagesProps = {
+  initialData: Array<GeneImage>;
+};
+
+const Images = ({ initialData }: ImagesProps) => {
   const gene = useContext(GeneContext);
-  const { isLoading, isError, data } = useQuery({
+  const { isLoading, isError, data } = useQuery<Array<GeneImage>>({
     queryKey: ["genes", gene.mgiGeneAccessionId, "images"],
     queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/images`),
     enabled: !!gene.mgiGeneAccessionId,
     select: (data) => data as Array<GeneImage>,
+    initialData,
   });
 
   if (isLoading) {
@@ -107,7 +112,7 @@ const Images = () => {
     );
   }
 
-  if (isError || !data) {
+  if (isError || !data?.length) {
     return (
       <Card id="images">
         <SectionHeader

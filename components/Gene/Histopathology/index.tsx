@@ -18,18 +18,24 @@ import {
 } from "@/components";
 import { SortType } from "@/models";
 
-const Histopathology = () => {
+type GeneHistopathologyProps = {
+  initialData: Array<GeneHistopathology>;
+};
+
+const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
   const gene = useContext(GeneContext);
   const [sorted, setSorted] = useState<any[]>([]);
   const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
 
-  const { isLoading, isError, data, error } = useQuery({
+  const { isLoading, isError, data, error } = useQuery<
+    Array<GeneHistopathology>
+  >({
     queryKey: ["genes", gene.mgiGeneAccessionId, "histopathology"],
     queryFn: () =>
       fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/gene_histopathology`),
-    placeholderData: null,
     enabled: !!gene.mgiGeneAccessionId,
     select: (data) => data as Array<GeneHistopathology>,
+    initialData,
   });
 
   useEffect(() => {
@@ -52,7 +58,7 @@ const Histopathology = () => {
     );
   }
 
-  if (isError && error === "No content" && gene.hasHistopathologyData) {
+  if (!sorted?.length && gene.hasHistopathologyData) {
     return (
       <Card id="histopathology">
         <SectionHeader
@@ -73,7 +79,7 @@ const Histopathology = () => {
     );
   }
 
-  if (isError || !sorted) {
+  if (isError || !sorted?.length) {
     return (
       <Card id="histopathology">
         <SectionHeader

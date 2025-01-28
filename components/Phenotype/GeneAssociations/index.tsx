@@ -1,5 +1,5 @@
 import { useContext, useMemo, useState } from "react";
-import { useGeneAssociationsQuery } from "@/hooks";
+import { usePhenotypeGeneAssociationsQuery } from "@/hooks";
 import { PhenotypeContext } from "@/contexts";
 import {
   PlainTextCell,
@@ -82,15 +82,20 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
   );
 };
 
-const Associations = () => {
+type AssociationsProps = {
+  initialData: Array<PhenotypeGenotypes>;
+};
+
+const Associations = ({ initialData }: AssociationsProps) => {
   const phenotype = useContext(PhenotypeContext);
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>("");
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
-  const { data, isFetching, isError } = useGeneAssociationsQuery(
+  const { data, isFetching, isError } = usePhenotypeGeneAssociationsQuery(
     phenotype?.phenotypeId,
     !!phenotype,
     sortOptions,
+    initialData,
   );
 
   const filterPhenotype = (
