@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
-import { fetchPhenotypeSummary } from "@/api-service";
+import {
+  fetchPhenotypeGenotypeHits,
+  fetchPhenotypeSummary,
+} from "@/api-service";
 import PhenotypePage from "./phenotype-page";
 import { Metadata } from "next";
 import { PhenotypeSummary } from "@/models/phenotype";
@@ -24,7 +27,10 @@ type PageParams = Promise<{
 export default async function Page({ params }: { params: PageParams }) {
   const phenotypeId = decodeURIComponent((await params).id);
   const phenotypeData = await getPhenotypeSummary(phenotypeId);
-  return <PhenotypePage phenotype={phenotypeData} />;
+  const phenotypeHits = await fetchPhenotypeGenotypeHits(phenotypeId);
+  return (
+    <PhenotypePage phenotype={phenotypeData} phenotypeHits={phenotypeHits} />
+  );
 }
 
 export async function generateMetadata({
