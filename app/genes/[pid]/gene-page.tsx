@@ -20,7 +20,14 @@ import {
   NumAllelesContext,
 } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
-import { GeneOrder, GenePhenotypeHits, GeneSummary } from "@/models/gene";
+import {
+  GeneExpression,
+  GeneHistopathology,
+  GeneImage,
+  GeneOrder,
+  GenePhenotypeHits,
+  GeneSummary,
+} from "@/models/gene";
 import { useParams } from "next/navigation";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
@@ -33,6 +40,9 @@ type GenePageProps = {
   gene: GeneSummary;
   significantPhenotypes: Array<GenePhenotypeHits>;
   orderData: Array<GeneOrder>;
+  expressionData: Array<GeneExpression>;
+  imageData: Array<GeneImage>;
+  histopathologyData: Array<GeneHistopathology>;
 };
 
 const GenePage = (props: GenePageProps) => {
@@ -40,6 +50,9 @@ const GenePage = (props: GenePageProps) => {
     gene: geneFromServer,
     significantPhenotypes: sigPhenotypesFromServer,
     orderData: orderDataFromServer,
+    expressionData: expressionDataFromServer,
+    imageData: imageDataFromServer,
+    histopathologyData: histopathologyDataFromServer,
   } = props;
   const params = useParams<{ pid: string }>();
   const [numOfAlleles, setNumOfAlleles] = useState<number | undefined>(
@@ -101,10 +114,10 @@ const GenePage = (props: GenePageProps) => {
             <Container className="page">
               <Summary numOfAlleles={numOfAlleles} />
               <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
-              <Expressions />
-              <Images />
+              <Expressions initialData={expressionDataFromServer} />
+              <Images initialData={imageDataFromServer} />
               <HumanDiseases />
-              <Histopathology />
+              <Histopathology initialData={histopathologyDataFromServer} />
               <Publications />
               <ExternalLinks />
               <Order

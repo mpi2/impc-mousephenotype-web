@@ -4,6 +4,9 @@ import {
   fetchGeneSummary,
   fetchGenePhenotypeHits,
   fetchGeneOrderData,
+  fetchGeneExpressionData,
+  fetchGeneImageData,
+  fetchGeneHistopathologyData,
 } from "@/api-service";
 import GenePage from "./gene-page";
 
@@ -19,11 +22,18 @@ async function getGeneSummary(mgiGeneAccessionId: string) {
   }
   const sigGeneData = await fetchGenePhenotypeHits(mgiGeneAccessionId);
   const orderGeneData = await fetchGeneOrderData(mgiGeneAccessionId);
+  const expressionData = await fetchGeneExpressionData(mgiGeneAccessionId);
+  const imageData = await fetchGeneImageData(mgiGeneAccessionId);
+  const histopathologyData =
+    await fetchGeneHistopathologyData(mgiGeneAccessionId);
 
   return {
     gene: geneData,
     significantPhenotypes: sigGeneData,
     orderData: orderGeneData,
+    expressionData,
+    imageData,
+    histopathologyData,
   };
 }
 
