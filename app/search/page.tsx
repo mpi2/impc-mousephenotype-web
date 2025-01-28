@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import SearchPage from "./search-page";
-import { fetchAPIFromServer } from "@/api-service";
-import { PhenotypeSearchResponse } from "@/models/phenotype";
-import { GeneSearchResponse } from "@/models/gene";
+import {
+  fetchGeneSearchResults,
+  fetchPhenotypeSearchResults,
+} from "@/api-service";
 
 type SearchParams = {
   term: string;
@@ -15,13 +16,9 @@ export const metadata: Metadata = {
 
 const fetchSearchResults = async (type: string, term: string) => {
   if (type === "phenotype" || type === "pheno") {
-    return await fetchAPIFromServer<PhenotypeSearchResponse>(
-      `/api/search/v1/search?prefix=${term}&type=PHENOTYPE`,
-    );
+    return await fetchPhenotypeSearchResults(term);
   } else {
-    return await fetchAPIFromServer<GeneSearchResponse>(
-      `/api/search/v1/search?prefix=${term}`,
-    );
+    return await fetchGeneSearchResults(term);
   }
 };
 
@@ -33,5 +30,6 @@ export default async function Page({
   const type = searchParams.type ?? "";
   const term = searchParams.term ?? "";
   const results = await fetchSearchResults(type, term);
+  console.log(results);
   return <SearchPage type={type} term={term} data={results} />;
 }

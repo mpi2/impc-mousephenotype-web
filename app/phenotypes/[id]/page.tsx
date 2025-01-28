@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { fetchAPIFromServer } from "@/api-service";
+import { fetchPhenotypeSummary } from "@/api-service";
 import PhenotypePage from "./phenotype-page";
 import { Metadata } from "next";
 import { PhenotypeSummary } from "@/models/phenotype";
@@ -7,11 +7,9 @@ import { PhenotypeSummary } from "@/models/phenotype";
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 async function getPhenotypeSummary(phenotypeId: string) {
-  let data;
+  let data: PhenotypeSummary;
   try {
-    data = await fetchAPIFromServer(
-      `/api/v1/phenotypes/${phenotypeId}/summary`,
-    );
+    data = await fetchPhenotypeSummary(phenotypeId);
   } catch {
     notFound();
   }
@@ -38,9 +36,7 @@ export async function generateMetadata({
   if (!phenotypeId || phenotypeId === "null") {
     notFound();
   }
-  const phenotypeSummary = await fetchAPIFromServer<PhenotypeSummary>(
-    `/api/v1/phenotypes/${phenotypeId}/summary`,
-  );
+  const phenotypeSummary = await fetchPhenotypeSummary(phenotypeId);
   if (!phenotypeSummary) {
     notFound();
   }

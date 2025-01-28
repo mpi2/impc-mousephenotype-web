@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
-import { fetchAPIFromServer } from "@/api-service";
+import { fetchAlleleSummary } from "@/api-service";
 import AllelePage from "./allele-page";
+import { AlleleSummary } from "@/models";
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 async function getAlleleSummary(
@@ -11,11 +12,10 @@ async function getAlleleSummary(
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null" || !alleleSymbol) {
     notFound();
   }
-  let alleleData;
+  let alleleData: AlleleSummary;
 
   try {
-    const url = `/api/v1/alleles/${mgiGeneAccessionId}/${parsedAllele}`;
-    alleleData = await fetchAPIFromServer(url);
+    alleleData = await fetchAlleleSummary(mgiGeneAccessionId, parsedAllele);
   } catch {
     notFound();
   }

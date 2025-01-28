@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 import ViabilityChartPage from "./viability-chart-page";
 import { notFound } from "next/navigation";
-import { fetchAPIFromServer } from "@/api-service";
-import { GeneSummary } from "@/models/gene";
+import { fetchGeneSummary } from "@/api-service";
 
 type SearchParams = { [key: string]: string | undefined };
 
@@ -19,9 +18,7 @@ export async function generateMetadata({
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     notFound();
   }
-  const geneSummary = await fetchAPIFromServer<GeneSummary>(
-    `/api/v1/genes/${mgiGeneAccessionId}/summary`,
-  );
+  const geneSummary = await fetchGeneSummary(mgiGeneAccessionId);
   if (!geneSummary) {
     notFound();
   }

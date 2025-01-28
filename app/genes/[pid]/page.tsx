@@ -1,14 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { fetchAPIFromServer } from "@/api-service";
-import GenePage from "./gene-page";
-import { processGeneOrderResponse } from "@/hooks/gene-order.query";
-import { processGenePhenotypeHitsResponse } from "@/hooks/significant-phenotypes.query";
 import {
-  GeneSummary,
-  emptyGeneSummary,
-  GenePhenotypeHits,
-} from "@/models/gene";
+  fetchGeneSummary,
+  fetchGenePhenotypeHits,
+  fetchGeneOrderData,
+} from "@/api-service";
+import GenePage from "./gene-page";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
@@ -16,30 +13,12 @@ async function getGeneSummary(mgiGeneAccessionId: string) {
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     notFound();
   }
-  const results = await Promise.allSettled([
-    fetchAPIFromServer<GeneSummary>(
-      `/api/v1/genes/${mgiGeneAccessionId}/summary`,
-    ),
-    fetchAPIFromServer<Array<GenePhenotypeHits>>(
-      `/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`,
-    ),
-    fetchAPIFromServer(`/api/v1/genes/${mgiGeneAccessionId}/order`),
-  ]);
-
-  const geneData =
-    results[0].status === "fulfilled" ? results[0].value : emptyGeneSummary();
-  const sigGeneData =
-    results[1].status === "fulfilled"
-      ? processGenePhenotypeHitsResponse(results[1].value)
-      : [];
-  const orderGeneData =
-    results[2].status === "fulfilled"
-      ? processGeneOrderResponse(results[2].value)
-      : [];
-
+  const geneData = await fetchGeneSummary(mgiGeneAccessionId);
   if (!geneData) {
     notFound();
   }
+  const sigGeneData = await fetchGenePhenotypeHits(mgiGeneAccessionId);
+  const orderGeneData = await fetchGeneOrderData(mgiGeneAccessionId);
 
   return {
     gene: geneData,
@@ -67,9 +46,7 @@ export async function generateMetadata({
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     notFound();
   }
-  const geneSummary = await fetchAPIFromServer<GeneSummary>(
-    `/api/v1/genes/${mgiGeneAccessionId}/summary`,
-  );
+  const geneSummary = await fetchGeneSummary(mgiGeneAccessionId);
   if (!geneSummary) {
     notFound();
   }
