@@ -13,10 +13,10 @@ export const generateDatasetsEndpointUrl = (
 };
 
 export const sortAndDeduplicateDatasets = (input: Array<Dataset>) => {
-  const sortedDatasets = input.toSorted((a, b) => {
+  input.sort((a, b) => {
     return a["reportedPValue"] - b["reportedPValue"];
   });
-  return sortedDatasets?.filter(
+  return input?.filter(
     (value, index, self) =>
       self.findIndex((v) => v.datasetId === value.datasetId) === index,
   ) as Array<Dataset>;
