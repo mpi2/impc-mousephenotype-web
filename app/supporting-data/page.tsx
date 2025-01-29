@@ -6,6 +6,7 @@ import {
 import { fetchAPIFromServer } from "@/api-service";
 import { CharPageParamsObj } from "@/models/chart";
 import { Metadata } from "next";
+import { Dataset } from "@/models";
 
 type SearchParams = { [key: string]: string | undefined };
 
@@ -14,7 +15,8 @@ async function getInitialDatasets(
   searchParams: CharPageParamsObj,
 ) {
   const url = generateDatasetsEndpointUrl(mgiGeneAccessionId, searchParams);
-  return await fetchAPIFromServer(url).then(sortAndDeduplicateDatasets);
+  const data = await fetchAPIFromServer<Array<Dataset>>(url);
+  return sortAndDeduplicateDatasets(data);
 }
 
 export default async function Page({
