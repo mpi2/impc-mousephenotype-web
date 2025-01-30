@@ -13,7 +13,12 @@ import {
 } from "react-bootstrap";
 import { useGeneSummaryQuery, useHistopathologyQuery } from "@/hooks";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
-import { Histopathology, SortType, TableCellProps } from "@/models";
+import {
+  Histopathology,
+  HistopathologyResponse,
+  SortType,
+  TableCellProps,
+} from "@/models";
 import React, { useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -31,6 +36,7 @@ import {
 import _ from "lodash";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
+import { GeneSummary } from "@/models/gene";
 
 const DescriptionCell = <T extends Histopathology>(
   props: TableCellProps<T> & { maxChars?: number; onClick: (data: T) => void },
@@ -54,7 +60,15 @@ const DescriptionCell = <T extends Histopathology>(
   );
 };
 
-const HistopathChartPage = () => {
+type HistopathChartPageProps = {
+  gene: GeneSummary;
+  histopathologyData: HistopathologyResponse;
+};
+
+const HistopathChartPage = ({
+  gene: geneFromServer,
+  histopathologyData,
+}: HistopathChartPageProps) => {
   const router = useRouter();
   const params = useParams<{ pid: string }>();
   const pathName = usePathname();
@@ -66,10 +80,12 @@ const HistopathChartPage = () => {
   const { data: gene } = useGeneSummaryQuery(
     mgiGeneAccessionId,
     !!mgiGeneAccessionId,
+    geneFromServer,
   );
   const { data, isLoading } = useHistopathologyQuery(
     mgiGeneAccessionId,
     !!mgiGeneAccessionId && !!gene,
+    histopathologyData,
   );
   const anatomyParam = searchParams.get("anatomy");
 
@@ -207,7 +223,9 @@ const HistopathChartPage = () => {
                     <FontAwesomeIcon icon={faXmark} />
                   </Badge>
                 </span>
-              ) : null
+              ) : (
+                <></>
+              )
             }
             columns={[
               {
