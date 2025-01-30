@@ -10,7 +10,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "normalize.css/normalize.css";
-import { MenuItem } from "@/components/Header";
 config.autoAddCss = false;
 
 const roboto = Roboto({
@@ -19,23 +18,8 @@ const roboto = Roboto({
   subsets: ["latin"],
   variable: "--font-impc",
 });
-const WEBSITE_ENV = process.env.WEBSITE_ENV || "development";
 
-async function getMenu(): Promise<Array<MenuItem>> {
-  const url =
-    WEBSITE_ENV === "production"
-      ? "https://www.mousephenotype.org/jsonmenu/"
-      : "https://dev.mousephenotype.org/jsonmenu/";
-  const resp = await fetch(url);
-  return await resp.json();
-}
-
-export default async function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  const menu = await getMenu();
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={roboto.className}>
       <head />
@@ -64,7 +48,7 @@ export default async function RootLayout({
           async
         />
         <Providers>
-          <Layout menuItems={menu}>{children}</Layout>
+          <Layout>{children}</Layout>
         </Providers>
       </body>
     </html>
