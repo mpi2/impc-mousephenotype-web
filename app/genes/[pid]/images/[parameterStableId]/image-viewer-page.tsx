@@ -265,7 +265,15 @@ export const metadata: Metadata = {
   title: "Image Comparator | International Mouse Phenotyping Consortium",
 };
 
-const ImagesCompare = () => {
+type ImagesCompareProps = {
+  mutantImagesFromServer: Array<GeneImageCollection>;
+  controlImagesFromServer: Array<GeneImageCollection>;
+};
+
+const ImagesCompare = ({
+  mutantImagesFromServer,
+  controlImagesFromServer,
+}: ImagesCompareProps) => {
   const router = useRouter();
   const params = useParams<{ pid: string; parameterStableId: string }>();
   const searchParams = useSearchParams();
@@ -276,26 +284,24 @@ const ImagesCompare = () => {
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
   const anatomyTerm = searchParams.get("anatomyTerm");
-  const { data: mutantImages } = useQuery({
+  const { data: mutantImages } = useQuery<Array<GeneImageCollection>>({
     queryKey: ["genes", pid, "images", parameterStableId],
     queryFn: () =>
       fetchAPI(
         `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`,
       ),
     enabled: !!parameterStableId && !!pid,
-    select: (data) => data as Array<GeneImageCollection>,
-    placeholderData: [],
+    initialData: mutantImagesFromServer,
   });
 
-  const { data: controlImagesRaw } = useQuery({
+  const { data: controlImagesRaw } = useQuery<Array<GeneImageCollection>>({
     queryKey: ["genes", pid, "images", parameterStableId, "control"],
     queryFn: () =>
       fetchAPI(
         `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`,
       ),
     enabled: !!parameterStableId,
-    select: (data) => data as Array<GeneImageCollection>,
-    placeholderData: [],
+    initialData: controlImagesFromServer,
   });
 
   const [selectedSex, setSelectedSex] = useState("both");
