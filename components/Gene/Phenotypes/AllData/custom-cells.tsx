@@ -9,7 +9,7 @@ import { useQueryFlags } from "@/hooks";
 import { useMemo } from "react";
 
 export const ParameterCell = <T extends GeneStatisticalResult>(
-  props: TableCellProps<T>
+  props: TableCellProps<T>,
 ) => {
   return (
     <span className={styles.procedureName}>
@@ -24,7 +24,7 @@ type PhenotypeIconsCellProps<T> = {
   allPhenotypesField: keyof T;
 } & TableCellProps<T>;
 export const PhenotypeIconsCell = <T extends GeneStatisticalResult>(
-  props: PhenotypeIconsCellProps<T>
+  props: PhenotypeIconsCellProps<T>,
 ) => {
   const phenotypes = (get(props.value, props.allPhenotypesField) ||
     []) as Array<{ name: string }>;
@@ -49,8 +49,9 @@ export const PhenotypeIconsCell = <T extends GeneStatisticalResult>(
 type SupportingDataCellProps<T> = {
   mpTermIdKey?: keyof T;
 } & TableCellProps<T>;
+
 export const SupportingDataCell = <T extends GeneStatisticalResult>(
-  props: SupportingDataCellProps<T>
+  props: SupportingDataCellProps<T>,
 ) => {
   const {
     mgiGeneAccessionId,
@@ -62,9 +63,10 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     phenotypingCentre,
     parameterName,
     procedureName,
+    metadataGroup,
   } = props.value;
 
-  let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
+  let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}&metadataGroup=${metadataGroup}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =
@@ -88,7 +90,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
 export const SignificantPValueCell = <T extends GeneStatisticalResult>(
   props: TableCellProps<T> & {
     onRefHover?: (refNum: string, active: boolean) => void;
-  }
+  },
 ) => {
   const { onRefHover = (p1, p2) => {} } = props;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
@@ -144,7 +146,7 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
 export const MutantCountCell = <T extends GeneStatisticalResult>(
   props: TableCellProps<T> & {
     onRefHover?: (refNum: string, active: boolean) => void;
-  }
+  },
 ) => {
   const { onRefHover = (p1, p2) => {} } = props;
   const { isNNumbersFootnoteAvailable } = useQueryFlags();
