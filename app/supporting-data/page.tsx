@@ -4,7 +4,7 @@ import {
   sortAndDeduplicateDatasets,
 } from "@/hooks/datasets.query";
 import { fetchAPIFromServer } from "@/api-service";
-import { CharPageParamsObj } from "@/models/chart";
+import { ChartPageParamsObj } from "@/models/chart";
 import { Metadata } from "next";
 import { Dataset } from "@/models";
 
@@ -12,7 +12,7 @@ type SearchParams = { [key: string]: string | undefined };
 
 async function getInitialDatasets(
   mgiGeneAccessionId: string,
-  searchParams: CharPageParamsObj,
+  searchParams: ChartPageParamsObj,
 ) {
   const url = generateDatasetsEndpointUrl(mgiGeneAccessionId, searchParams);
   const data = await fetchAPIFromServer<Array<Dataset>>(url);
@@ -27,7 +27,7 @@ export default async function Page({
   const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;
   const initialDatasets = await getInitialDatasets(
     mgiGeneAccessionId,
-    searchParams as CharPageParamsObj,
+    searchParams as ChartPageParamsObj,
   );
   return <GeneralChartPage initialDatasets={initialDatasets} />;
 }
@@ -42,7 +42,7 @@ export async function generateMetadata({
   const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;
   const datasets = await getInitialDatasets(
     mgiGeneAccessionId,
-    searchParams as CharPageParamsObj,
+    searchParams as ChartPageParamsObj,
   );
   const parameterName = datasets?.[0]?.parameterName;
   const geneSymbol = datasets?.[0]?.geneSymbol;

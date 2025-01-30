@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Dataset } from "@/models";
-import { CharPageParamsObj } from "@/models/chart";
+import { ChartPageParamsObj } from "@/models/chart";
 
 export const generateDatasetsEndpointUrl = (
   mgiGeneAccessionId: string,
-  params: CharPageParamsObj,
+  params: ChartPageParamsObj,
 ) => {
   return params.mpTermId
     ? `/api/v1/genes/${mgiGeneAccessionId}/${params.mpTermId}/dataset/`
@@ -24,7 +24,7 @@ export const sortAndDeduplicateDatasets = (input: Array<Dataset>) => {
 
 export const useDatasetsQuery = (
   mgiGeneAccessionId: string,
-  params: CharPageParamsObj,
+  params: ChartPageParamsObj,
   enabled: boolean,
   initialDatasets: Array<Dataset>,
 ) => {
