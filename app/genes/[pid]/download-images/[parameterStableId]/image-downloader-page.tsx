@@ -25,6 +25,7 @@ import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import { Metadata } from "next";
 import styles from "../../images/[parameterStableId]/styles.module.scss";
+import { GeneImageCollection } from "@/models/gene";
 
 type Image = {
   alleleSymbol: string;
@@ -47,7 +48,15 @@ const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
   );
 };
 
-const DownloadImagesPage = () => {
+type DownloadImagesProps = {
+  mutantImagesFromServer: Array<GeneImageCollection>;
+  controlImagesFromServer: Array<GeneImageCollection>;
+};
+
+const DownloadImagesPage = ({
+  mutantImagesFromServer,
+  controlImagesFromServer,
+}: DownloadImagesProps) => {
   const params = useParams<{ pid: string; parameterStableId: string }>();
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
@@ -73,6 +82,7 @@ const DownloadImagesPage = () => {
         })),
       };
     },
+    initialData: mutantImagesFromServer,
   });
 
   const { data: controlImages, isLoading: isControlImagesLoading } = useQuery({
@@ -97,6 +107,7 @@ const DownloadImagesPage = () => {
         })),
       };
     },
+    initialData: controlImagesFromServer,
   });
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 

@@ -1,14 +1,48 @@
 import ImageViewerPage from "./image-viewer-page";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { fetchGeneSummary } from "@/api-service";
+import {
+  fetchControlImages,
+  fetchGeneSummary,
+  fetchMutantImages,
+} from "@/api-service";
 
 type PageParams = Promise<{
   pid: string;
+  parameterStableId: string;
 }>;
 
-export default async function Page() {
-  return <ImageViewerPage />;
+async function getImages(
+  mgiGeneAccessionId: string,
+  parameterStableId: string,
+) {
+  const controlImages = await fetchControlImages(parameterStableId);
+  const mutantImages = await fetchMutantImages(
+    mgiGeneAccessionId,
+    parameterStableId,
+  );
+  return {
+    controlImages,
+    mutantImages,
+  };
+}
+
+export default async function Page({ params }: { params: PageParams }) {
+  const mgiGeneAccessionId = (await params).pid;
+  const parameterStableId = (await params).parameterStableId;
+  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
+    notFound();
+  }
+  const { controlImages, mutantImages } = await getImages(
+    mgiGeneAccessionId,
+    parameterStableId,
+  );
+  return (
+    <ImageViewerPage
+      controlImagesFromServer={controlImages}
+      mutantImagesFromServer={mutantImages}
+    />
+  );
 }
 
 export async function generateMetadata({
