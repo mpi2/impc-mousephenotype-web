@@ -38,6 +38,7 @@ export type ChartPageParams =
   | "parameterStableId"
   | "pipelineStableId"
   | "procedureStableId"
-  | "phenotypingCentre";
+  | "phenotypingCentre"
+  | "metadataGroup";
 
 export type ChartPageParamsObj = Record<ChartPageParams, string>;
