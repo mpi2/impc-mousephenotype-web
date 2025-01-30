@@ -1,8 +1,29 @@
-import { HistopathologyResponse } from "@/models";
+import { Dataset, HistopathologyResponse } from "@/models";
 import { fetchAPIFromServer, fetchURL } from "@/api-service";
+import { ChartPageParamsObj } from "@/models/chart";
+import { generateDatasetsEndpointUrl } from "@/hooks/datasets.query";
 
 const KUBERNETES_NAMESPACE = process.env.KUBERNETES_NAMESPACE ?? "default";
 const NODE_ENV = process.env.NODE_ENV;
+
+export async function fetchInitialDatasets(
+  mgiGeneAccessionId: string,
+  params: ChartPageParamsObj,
+): Promise<Array<Dataset>> {
+  const internalServiceDomain = `http://impc-dataset-service.${KUBERNETES_NAMESPACE}:8080/v1`;
+  const endpointURL = !!params.mpTermId
+    ? `${internalServiceDomain}/datasets?mgiGeneAccessionId=${mgiGeneAccessionId}&significantPhenotypeId=${params.mpTermId}`
+    : `${internalServiceDomain}/datasets/find_by_multiple_parameter??mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${params.alleleAccessionId}&zygosity=${params.zygosity}&parameterStableId=${params.parameterStableId}&pipelineStableId=${params.pipelineStableId}&procedureStableId=${params.procedureStableId}&phenotypingCentre=${params.phenotypingCentre}`;
+  try {
+    return await (NODE_ENV === "development"
+      ? fetchAPIFromServer<Array<Dataset>>(
+          generateDatasetsEndpointUrl(mgiGeneAccessionId, params),
+        )
+      : fetchURL<Array<Dataset>>(endpointURL));
+  } catch (error) {
+    return [];
+  }
+}
 
 export async function fetchHistopathChartData(
   mgiGeneAccessionId: string,

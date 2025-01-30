@@ -1,12 +1,9 @@
 import GeneralChartPage from "./supporting-data-page";
-import {
-  generateDatasetsEndpointUrl,
-  sortAndDeduplicateDatasets,
-} from "@/hooks/datasets.query";
-import { fetchAPIFromServer } from "@/api-service";
+import { sortAndDeduplicateDatasets } from "@/hooks/datasets.query";
+import { fetchInitialDatasets } from "@/api-service";
 import { ChartPageParamsObj } from "@/models/chart";
 import { Metadata } from "next";
-import { Dataset } from "@/models";
+import { notFound } from "next/navigation";
 
 type SearchParams = { [key: string]: string | undefined };
 
@@ -14,8 +11,7 @@ async function getInitialDatasets(
   mgiGeneAccessionId: string,
   searchParams: ChartPageParamsObj,
 ) {
-  const url = generateDatasetsEndpointUrl(mgiGeneAccessionId, searchParams);
-  const data = await fetchAPIFromServer<Array<Dataset>>(url);
+  const data = await fetchInitialDatasets(mgiGeneAccessionId, searchParams);
   return sortAndDeduplicateDatasets(data);
 }
 
@@ -24,7 +20,10 @@ export default async function Page({
 }: {
   searchParams: SearchParams;
 }) {
-  const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;
+  const mgiGeneAccessionId = searchParams.mgiGeneAccessionId;
+  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
+    notFound();
+  }
   const initialDatasets = await getInitialDatasets(
     mgiGeneAccessionId,
     searchParams as ChartPageParamsObj,
@@ -33,13 +32,14 @@ export default async function Page({
 }
 
 export async function generateMetadata({
-  params,
   searchParams,
 }: {
-  params: {};
   searchParams: SearchParams;
 }): Promise<Metadata> {
-  const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;
+  const mgiGeneAccessionId = searchParams.mgiGeneAccessionId;
+  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
+    notFound();
+  }
   const datasets = await getInitialDatasets(
     mgiGeneAccessionId,
     searchParams as ChartPageParamsObj,
