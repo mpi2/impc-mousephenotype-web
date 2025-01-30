@@ -1,11 +1,14 @@
 import Footer from "../Footer";
-import Header from "../Header";
+import Header, { MenuItem } from "../Header";
 import Newsletter from "../Newsletter";
+import { PropsWithChildren } from "react";
 
-const Layout = ({ children }) => {
+type LayoutProps = PropsWithChildren<{ menuItems: Array<MenuItem> }>;
+
+const Layout = ({ menuItems, children }: LayoutProps) => {
   return (
     <div>
-      <Header />
+      <Header menuItems={menuItems} />
       <noscript>
         <div className="container mt-3" style={{ maxWidth: "1240px" }}>
           <div className="alert alert-warning">

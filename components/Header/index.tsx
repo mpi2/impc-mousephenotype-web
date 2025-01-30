@@ -16,10 +16,6 @@ export interface MenuItem {
   children?: MenuItem[];
 }
 
-export interface INavBarProps {
-  menuItems: MenuItem[];
-}
-
 const rewriteMenu = (data) => {
   return data.map((item) => {
     return {
@@ -74,16 +70,19 @@ const getURLJSONMenu = () => {
   }
 };
 
-const Header = () => {
+type HeaderProps = {
+  menuItems: Array<MenuItem>;
+};
+
+const Header = ({ menuItems: menuItemsFromServer }: HeaderProps) => {
   const { data: menuItems } = useQuery({
     queryKey: ["menu"],
     queryFn: async () => {
       const response = await fetch(getURLJSONMenu());
       return await response.json();
     },
-    placeholderData: [],
-    // TODO: to be removed after site is launched to production
     select: rewriteMenu,
+    initialData: menuItemsFromServer,
   });
   const [activeMenuId, setActiveMenu] = useState(-1);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
