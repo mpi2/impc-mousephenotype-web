@@ -13,7 +13,7 @@ export async function fetchInitialDatasets(
   const internalServiceDomain = `http://impc-dataset-service.${KUBERNETES_NAMESPACE}:8080/v1`;
   const endpointURL = !!params.mpTermId
     ? `${internalServiceDomain}/datasets?mgiGeneAccessionId=${mgiGeneAccessionId}&significantPhenotypeId=${params.mpTermId}`
-    : `${internalServiceDomain}/datasets/find_by_multiple_parameter??mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${params.alleleAccessionId}&zygosity=${params.zygosity}&parameterStableId=${params.parameterStableId}&pipelineStableId=${params.pipelineStableId}&procedureStableId=${params.procedureStableId}&phenotypingCentre=${params.phenotypingCentre}&metadataGroup=${params.metadataGroup}`;
+    : `${internalServiceDomain}/datasets/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${params.alleleAccessionId}&zygosity=${params.zygosity}&parameterStableId=${params.parameterStableId}&pipelineStableId=${params.pipelineStableId}&procedureStableId=${params.procedureStableId}&phenotypingCentre=${params.phenotypingCentre}&metadataGroup=${params.metadataGroup}`;
   try {
     return await (WEBSITE_ENV === "local"
       ? fetchAPIFromServer<Array<Dataset>>(
