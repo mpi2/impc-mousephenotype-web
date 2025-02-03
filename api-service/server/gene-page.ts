@@ -11,7 +11,7 @@ import { processGeneOrderResponse } from "@/hooks/gene-order.query";
 import { processGenePhenotypeHitsResponse } from "@/hooks/significant-phenotypes.query";
 
 const KUBERNETES_NAMESPACE = process.env.KUBERNETES_NAMESPACE ?? "default";
-const NODE_ENV = process.env.NODE_ENV;
+const WEBSITE_ENV = process.env.WEBSITE_ENV || "production";
 
 export async function fetchGeneSummary(
   mgiGeneAccessionId: string,
@@ -19,7 +19,7 @@ export async function fetchGeneSummary(
   const endpointURL = `http://impc-summary-service.${KUBERNETES_NAMESPACE}:8080/v1/gene_summary?mgiGeneAccessionId=${mgiGeneAccessionId}`;
 
   try {
-    return await (NODE_ENV === "development"
+    return await (WEBSITE_ENV === "local"
       ? fetchAPIFromServer<GeneSummary>(
           `/api/v1/genes/${mgiGeneAccessionId}/summary`,
         )
@@ -34,7 +34,7 @@ export async function fetchGenePhenotypeHits(
 ): Promise<Array<GenePhenotypeHits>> {
   const endpointURL = `http://impc-phenotype-hits-service.${KUBERNETES_NAMESPACE}:8080/v1/phenotypehits?mgiGeneAccessionId=${mgiGeneAccessionId}`;
   try {
-    const data = await (NODE_ENV === "development"
+    const data = await (WEBSITE_ENV === "local"
       ? fetchAPIFromServer<Array<GenePhenotypeHits>>(
           `/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`,
         )
@@ -50,7 +50,7 @@ export async function fetchGeneOrderData(
 ): Promise<Array<GeneOrder>> {
   const endpointURL = `http://impc-order-service.${KUBERNETES_NAMESPACE}:8080/v1/orders?mgiGeneAccessionId=${mgiGeneAccessionId}`;
   try {
-    const data = await (NODE_ENV === "development"
+    const data = await (WEBSITE_ENV === "local"
       ? fetchAPIFromServer<Array<GeneOrder>>(
           `/api/v1/genes/${mgiGeneAccessionId}/order`,
         )
@@ -66,7 +66,7 @@ export async function fetchGeneExpressionData(
 ): Promise<Array<GeneExpression>> {
   const endpointURL = `http://impc-expression-service.${KUBERNETES_NAMESPACE}:8080/v1/expression?mgiGeneAccessionId=${mgiGeneAccessionId}`;
   try {
-    return await (NODE_ENV === "development"
+    return await (WEBSITE_ENV === "local"
       ? fetchAPIFromServer<Array<GeneExpression>>(
           `/api/v1/genes/${mgiGeneAccessionId}/expression`,
         )
@@ -81,7 +81,7 @@ export async function fetchGeneImageData(
 ): Promise<Array<GeneImage>> {
   const endpointURL = `http://impc-gene-image-service.${KUBERNETES_NAMESPACE}:8080/v1/geneimage?mgiGeneAccessionId=${mgiGeneAccessionId}`;
   try {
-    return await (NODE_ENV === "development"
+    return await (WEBSITE_ENV === "local"
       ? fetchAPIFromServer<Array<GeneImage>>(
           `/api/v1/genes/${mgiGeneAccessionId}/images`,
         )
@@ -96,7 +96,7 @@ export async function fetchGeneHistopathologyData(
 ): Promise<Array<GeneHistopathology>> {
   const endpointURL = `http://impc-histopathology-service.${KUBERNETES_NAMESPACE}:8080/v1/gene_histopathology?mgiGeneAccessionId=${mgiGeneAccessionId}`;
   try {
-    return await (NODE_ENV === "development"
+    return await (WEBSITE_ENV === "local"
       ? fetchAPIFromServer<Array<GeneHistopathology>>(
           `/api/v1/genes/${mgiGeneAccessionId}/gene_histopathology`,
         )
