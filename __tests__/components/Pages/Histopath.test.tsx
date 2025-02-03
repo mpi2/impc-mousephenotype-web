@@ -1,40 +1,24 @@
 import { screen, waitFor } from "@testing-library/react";
 import mockRouter from "next-router-mock";
-import Histopath from "@/pages/supporting-data/histopath/[pid]";
-import { server } from "../../../mocks/server";
+import Histopath from "@/app/supporting-data/histopath/[pid]/histopath-chart-page";
 import { API_URL, renderWithClient } from "../../utils";
-import { rest } from "msw";
 import ascc2Data from "../../../mocks/data/genes/MGI:1922702/histopath.json";
 import ascc2SummaryData from "../../../mocks/data/genes/MGI:1922702/summary.json";
 import userEvent from "@testing-library/user-event";
 
-jest.mock("next/router", () => jest.requireActual("next-router-mock"));
+jest.mock("next/navigation", () => jest.requireActual("next-router-mock"));
 
 describe("Histopath page", () => {
   it("provides generic functionality of a normal table", async () => {
     const user = userEvent.setup();
-    server.use(
-      rest.get(
-        `${API_URL}/api/v1/genes/MGI:1922702/summary`,
-        (req, res, ctx) => {
-          return res(ctx.status(200), ctx.json(ascc2SummaryData));
-        }
-      )
-    );
-    server.use(
-      rest.get(
-        `${API_URL}/api/v1/genes/MGI:1922702/histopathology`,
-        (req, res, ctx) => {
-          return res(ctx.status(200), ctx.json(ascc2Data));
-        }
-      )
-    );
     await mockRouter.push("/data/histopath/MGI:1922702?pid=MGI:1922702");
-    renderWithClient(<Histopath />);
+    renderWithClient(
+      <Histopath gene={ascc2SummaryData} histopathologyData={ascc2Data} />,
+    );
     await waitFor(() =>
       expect(screen.getByTestId("main-header")).toHaveTextContent(
-        "Histopathology data for Ascc2"
-      )
+        "Histopathology data for Ascc2",
+      ),
     );
 
     await waitFor(async () => {
@@ -42,7 +26,7 @@ describe("Histopath page", () => {
       return expect(rows.length).toEqual(12);
     });
     expect(await screen.findByTestId("top-last-page-btn")).toHaveTextContent(
-      "14"
+      "14",
     );
     const searchBox = screen.getByRole("textbox", {
       name: "Filter by parameters",
@@ -55,30 +39,16 @@ describe("Histopath page", () => {
   it("should filter by anatomy term if is specified in a query param", async () => {
     const user = userEvent.setup();
     const replaceSpy = jest.spyOn(mockRouter, "replace");
-    server.use(
-      rest.get(
-        `${API_URL}/api/v1/genes/MGI:1922702/summary`,
-        (req, res, ctx) => {
-          return res(ctx.status(200), ctx.json(ascc2SummaryData));
-        }
-      )
-    );
-    server.use(
-      rest.get(
-        `${API_URL}/api/v1/genes/MGI:1922702/histopathology`,
-        (req, res, ctx) => {
-          return res(ctx.status(200), ctx.json(ascc2Data));
-        }
-      )
-    );
     await mockRouter.push(
-      "/data/histopath/MGI:1922702?pid=MGI:1922702&anatomy=heart"
+      "/data/histopath/MGI:1922702?pid=MGI:1922702&anatomy=heart",
     );
-    renderWithClient(<Histopath />);
+    renderWithClient(
+      <Histopath gene={ascc2SummaryData} histopathologyData={ascc2Data} />,
+    );
     await waitFor(() =>
       expect(screen.getByTestId("main-header")).toHaveTextContent(
-        "Histopathology data for Ascc2"
-      )
+        "Histopathology data for Ascc2",
+      ),
     );
     await waitFor(async () => {
       const rows = await screen.findAllByRole("row");

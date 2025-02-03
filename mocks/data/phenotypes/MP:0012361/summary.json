@@ -1,4 +1,5 @@
 {
+    "id": "MP:0000558",
     "phenotypeId": "MP:0000558",
     "phenotypeName": "abnormal tibia morphology",
     "phenotypeDefinition": "any structural anomaly of the medial and larger of the two bones of the lower leg",
@@ -52,7 +53,7 @@
             "procedureStableId": "M-G-P_020_001",
             "procedureName": "Heart Dissection",
             "procedureStableKey": 59,
-            "description": null
+            "description": ""
         },
         {
             "pipelineStableId": "ICS_001",
@@ -156,7 +157,7 @@
             "procedureStableId": "GMC_925_001",
             "procedureName": "X-Ray (GMC)",
             "procedureStableKey": 42,
-            "description": null
+            "description": ""
         },
         {
             "pipelineStableId": "ESLIM_001",
@@ -196,7 +197,7 @@
             "procedureStableId": "HAROLD_006_001",
             "procedureName": "X-Ray",
             "procedureStableKey": 64,
-            "description": null
+            "description": ""
         },
         {
             "pipelineStableId": "HMGULA_001",
@@ -340,7 +341,7 @@
             "procedureStableId": "M-G-P_006_001",
             "procedureName": "X-ray",
             "procedureStableKey": 52,
-            "description": null
+            "description": ""
         },
         {
             "pipelineStableId": "RBRCLA_001",
