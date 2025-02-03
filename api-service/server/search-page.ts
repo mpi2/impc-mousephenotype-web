@@ -3,13 +3,13 @@ import { GeneSearchResponse } from "@/models/gene";
 import { PhenotypeSearchResponse } from "@/models/phenotype";
 
 const KUBERNETES_NAMESPACE = process.env.KUBERNETES_NAMESPACE ?? "default";
-const NODE_ENV = process.env.NODE_ENV;
+const WEBSITE_ENV = process.env.WEBSITE_ENV || "production";
 
 export async function fetchGeneSearchResults(
   query: string | undefined,
 ): Promise<GeneSearchResponse> {
   const endpointURL = `http://impc-search-service.${KUBERNETES_NAMESPACE}:8080/v1/search?prefix=${query}`;
-  return await (NODE_ENV === "development"
+  return await (WEBSITE_ENV === "local"
     ? fetchAPIFromServer<GeneSearchResponse>(
         `/api/search/v1/search?prefix=${query}`,
       )
@@ -20,7 +20,7 @@ export async function fetchPhenotypeSearchResults(
   query: string | undefined,
 ): Promise<PhenotypeSearchResponse> {
   const endpointURL = `http://impc-search-service.${KUBERNETES_NAMESPACE}:8080/v1/search?type=PHENOTYPE&prefix=${query}`;
-  return await (NODE_ENV === "development"
+  return await (WEBSITE_ENV === "local"
     ? fetchAPIFromServer<PhenotypeSearchResponse>(
         `/api/search/v1/search?prefix=${query}&type=PHENOTYPE`,
       )

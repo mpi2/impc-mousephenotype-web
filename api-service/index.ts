@@ -15,11 +15,16 @@ export const DATA_RELEASE_VERSION =
 export const PUBLICATIONS_ENDPOINT_URL =
   process.env.NEXT_PUBLIC_PUBLICATIONS_ENDPOINT_URL || "";
 
+const WEBSITE_ENV = process.env.WEBSITE_ENV || "production";
+
 export * from "./server";
 
 const httpCodesError500 = [500, 501, 502, 503, 504, 506];
 
 export async function fetchURL<T>(endpointURL: string): Promise<T> {
+  if (WEBSITE_ENV === "local") {
+    console.log(`fetching data from ${endpointURL}`);
+  }
   try {
     const response = await fetch(endpointURL);
     if (response.status === 204 || response.status === 404) {
