@@ -4,13 +4,25 @@ import { renderWithClient } from "../../utils";
 import ascc2Data from "../../../mocks/data/genes/MGI:1922702/histopath.json";
 import ascc2SummaryData from "../../../mocks/data/genes/MGI:1922702/summary.json";
 import userEvent from "@testing-library/user-event";
+import mockRouter from "next-router-mock";
+import { useSearchParams } from "next/navigation";
 
-jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
-  useSearchParams: jest.fn().mockImplementation(() => new URLSearchParams()),
-  usePathname: jest.fn(),
-  useParams: jest.fn().mockImplementation(() => ({ pid: "MGI:1922702" })),
-}));
+jest.mock("next/navigation", () => {
+  const originalModule = jest.requireActual("next/navigation");
+  const { useRouter } = jest.requireActual("next-router-mock");
+  const usePathname = jest.fn().mockImplementation(() => {
+    const router = useRouter();
+    return router.pathname;
+  });
+  return {
+    __esModule: true,
+    ...originalModule,
+    useRouter: jest.fn().mockImplementation(useRouter),
+    usePathname,
+    useParams: jest.fn().mockImplementation(() => ({ pid: "MGI:1922702" })),
+    useSearchParams: jest.fn().mockImplementation(() => new URLSearchParams()),
+  };
+});
 
 describe("Histopath page", () => {
   it("provides generic functionality of a normal table", async () => {
@@ -41,11 +53,15 @@ describe("Histopath page", () => {
   });
 
   it("should filter by anatomy term if is specified in a query param", async () => {
+    // @ts-ignore
+    useSearchParams.mockImplementation(
+      () => new URLSearchParams({ anatomy: "heart" }),
+    );
     const user = userEvent.setup();
     //const replaceSpy = jest.spyOn(mockRouter, "replace");
-    /*await mockRouter.push(
-      "/data/histopath/MGI:1922702?pid=MGI:1922702&anatomy=heart",
-    );*/
+    await mockRouter.push(
+      "/supporting-data/histopath/MGI:1922702?pid=MGI:1922702&anatomy=heart",
+    );
     renderWithClient(
       <Histopath gene={ascc2SummaryData} histopathologyData={ascc2Data} />,
     );
