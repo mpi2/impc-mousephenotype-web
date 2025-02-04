@@ -3,6 +3,7 @@ import Search from "@/components/Search";
 import userEvent from "@testing-library/user-event";
 import mockRouter from "next-router-mock";
 import { AppRouterContextProviderMock } from "../utils";
+import { useSearchParams } from "next/navigation";
 
 jest.mock("next/navigation", () => {
   const originalModule = jest.requireActual("next/navigation");
@@ -11,15 +12,11 @@ jest.mock("next/navigation", () => {
     const router = useRouter();
     return router.pathname;
   });
-  const useSearchParams = jest.fn().mockImplementation(() => {
-    const router = useRouter();
-    return new URLSearchParams(router.query?.toString());
-  });
   return {
     __esModule: true,
     ...originalModule,
     useRouter: jest.fn().mockImplementation(useRouter),
-    useSearchParams,
+    useSearchParams: jest.fn().mockImplementation(() => new URLSearchParams()),
     usePathname,
   };
 });
@@ -82,10 +79,10 @@ describe("Search component", () => {
   });
 
   it("should preserve query params after searching", () => {
-    mockRouter.push("/search?type=pheno");
+    mockRouter.push("/data/phenotypes/MP:0002144");
     render(
       <AppRouterContextProviderMock>
-        <Search />
+        <Search defaultType="phenotype" />
       </AppRouterContextProviderMock>,
     );
     fireEvent.change(screen.getByRole("textbox"), {
@@ -96,8 +93,8 @@ describe("Search component", () => {
       charCode: 13,
     });
     expect(mockRouter).toMatchObject({
-      asPath: "/search?type=phenotype&term=Cib2",
-      query: { query: "Cib2", type: "phenotype" },
+      asPath: "/search?term=Cib2&type=pheno",
+      query: { term: "Cib2", type: "pheno" },
     });
     const phenotypeLinkTab = screen.getByText(/Phenotypes/i);
     expect(phenotypeLinkTab).toHaveClass("tab__active");

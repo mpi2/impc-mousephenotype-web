@@ -1967,7 +1967,7 @@ describe("Data comparison component", () => {
     await waitFor(() => {
       expect(selectParamMock).toHaveBeenCalledTimes(2);
       expect(selectParamMock).toHaveBeenLastCalledWith(
-        "MP:0001262-MGI:4363390-M-G-P_020_001_001-homozygote-WTSI-EPD0211_3_A05-Early adult-not_considered",
+        "MP:0001262-MGI:4363390-M-G-P_005_001_001-homozygote-WTSI-EPD0211_3_A05-Early adult-not_considered",
       );
     });
   });

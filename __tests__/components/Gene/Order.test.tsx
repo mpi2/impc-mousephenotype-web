@@ -23,7 +23,7 @@ describe("Gene order component", () => {
       "Order Mouse and ES Cells",
     );
     expect(await screen.findByRole("table")).toBeInTheDocument();
-    expect(screen.getAllByRole("row")).toHaveLength(9);
+    expect(screen.getAllByRole("row")).toHaveLength(10);
   });
 
   it("should display the correct information for the alleles provided", async () => {
@@ -50,7 +50,7 @@ describe("Gene order component", () => {
     });
     expect(firstAlleleRow).toBeInTheDocument();
     const secondAlleleRow = screen.getByRole("row", {
-      name: "Crlf3 tm1a(KOMP)Wtsi KO first allele (reporter-tagged insertion with conditional potential) ‌ targeting vector es cell mouse",
+      name: "Crlf3 tm1a(KOMP)Wtsi KO first allele (reporter-tagged insertion with conditional potential) ‌ targeting vector ES Cell mouse",
     });
     expect(secondAlleleRow).toBeInTheDocument();
     const thirdAlleleRow = screen.getByRole("row", {
