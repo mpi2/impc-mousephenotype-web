@@ -22,7 +22,7 @@ exports[`Hearing landing page renders correctly 1`] = `
           </a>
           <a
             class="tab"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -151,7 +151,8 @@ exports[`Hearing landing page renders correctly 1`] = `
             </p>
             <ul>
               <li>
-                Press releases: 
+                Press releases:
+                 
                 <a
                   class="primary link"
                   href="https://www.ebi.ac.uk/about/news/press-releases/hearing-loss-genes/"
@@ -213,7 +214,8 @@ exports[`Hearing landing page renders correctly 1`] = `
         >
           Combined SHIRPA and Dysmorphology (CSD)
         </a>
-         protocol, which includes a response to a click box test (absence is indicative of a strong hearing deficit) and visual inspection for behavioural signs that may indicate vestibular dysfunction e.g. head bobbing or circling.
+         
+        protocol, which includes a response to a click box test (absence is indicative of a strong hearing deficit) and visual inspection for behavioural signs that may indicate vestibular dysfunction e.g. head bobbing or circling.
       </p>
       <h2>
         Procedures that can lead to relevant phenotype associations
@@ -611,14 +613,16 @@ exports[`Hearing landing page renders correctly 1`] = `
         Methods
       </h3>
       <p>
-        Response data from the 
+        Response data from the
+         
         <a
           class="link primary"
           href="https://www.mousephenotype.org/impress/protocol/149/7"
         >
           Auditory Brain Stem response (ABR)
         </a>
-         test was used – hearing at five frequencies, 6kHz, 12kHz, 18kHz, 24kHz and 30kHz was measured.
+         
+        test was used – hearing at five frequencies, 6kHz, 12kHz, 18kHz, 24kHz and 30kHz was measured.
       </p>
       <ul>
         <li>
@@ -778,7 +782,7 @@ exports[`Hearing landing page renders correctly 1`] = `
         class="tableWrapper"
       >
         <table
-          class="table striped undefined table table-bordered"
+          class="table striped table table-bordered"
         >
           <thead>
             <tr>
@@ -815,7 +819,7 @@ exports[`Hearing landing page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Zygosity
                    
@@ -861,7 +865,7 @@ exports[`Hearing landing page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Status
                    
@@ -907,7 +911,7 @@ exports[`Hearing landing page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Hearing loss
                    
@@ -1593,14 +1597,55 @@ exports[`Hearing landing page renders correctly 1`] = `
         Phenotypes distribution
       </h2>
       <div
-        style="position: relative; height: 300px;"
+        style="position: relative; height: 500px;"
       >
-        <canvas
-          height="0"
-          role="img"
-          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-          width="0"
-        />
+        <div
+          style="display: flex; justify-content: center; align-items: center; height: 100%;"
+        >
+          <div
+            class="mt-4"
+            style="display: flex; justify-content: center;"
+          >
+            <div
+              data-test-id="CircularProgressbarWithChildren"
+            >
+              <div
+                style="position: relative; width: 100%; height: 100%;"
+              >
+                <svg
+                  class="CircularProgressbar rotating"
+                  data-test-id="CircularProgressbar"
+                  viewBox="0 0 100 100"
+                >
+                  <path
+                    class="CircularProgressbar-trail"
+                    d="
+      M 50,50
+      m 0,-44
+      a 44,44 0 1 1 0,88
+      a 44,44 0 1 1 0,-88
+    "
+                    fill-opacity="0"
+                    stroke-width="12"
+                    style="stroke: #fff; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 0px;"
+                  />
+                  <path
+                    class="CircularProgressbar-path"
+                    d="
+      M 50,50
+      m 0,-44
+      a 44,44 0 1 1 0,88
+      a 44,44 0 1 1 0,-88
+    "
+                    fill-opacity="0"
+                    stroke-width="12"
+                    style="stroke: #ccc; transition: stroke-dashoffset 2s ease 0s; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 55.29203070318034px;"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div

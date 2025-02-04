@@ -22,7 +22,7 @@ exports[`Phenotype page renders correctly 1`] = `
           </a>
           <a
             class="tab__active"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -78,45 +78,152 @@ exports[`Phenotype page renders correctly 1`] = `
       class="card"
     >
       <div
+        class="row"
+      >
+        <div
+          class="nameContainer col-lg-6"
+        >
+          <h1
+            style="margin: 0px;"
+          >
+            <strong>
+              abnormal tibia morphology
+            </strong>
+          </h1>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <div
+            class="stats"
+          >
+            <div
+              data-testid="significant-genes"
+            >
+              <p
+                class="secondary h2 mb-0"
+              >
+                220
+              </p>
+              <span
+                class="grey"
+              >
+                significant genes
+              </span>
+            </div>
+            <div
+              data-testid="tested-genes-percentage"
+            >
+              <p
+                class="secondary h2 mb-0"
+              >
+                5.35
+                %
+              </p>
+              <span
+                class="grey"
+              >
+                of tested genes
+              </span>
+            </div>
+            <div
+              data-testid="total-genes-tested"
+            >
+              <p
+                class="h2 mb-0"
+              >
+                4110
+              </p>
+              <span
+                class="grey"
+              >
+                tested genes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
         class="subheadingCont"
       >
         <div
           class="subheading"
         >
-          <span
-            class="subheadingSection"
-          >
+          <span>
             Phenotype
           </span>
-          <span
+          <a
+            class="primary"
+            href="http://www.informatics.jax.org/vocab/mp_ontology/MP:0000558"
+            target="_blank"
+            title="visit MGI site to view details for gene abnormal tibia morphology"
+          >
+            MP:0000558
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style="margin-left: 0.3rem;"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+          <a
             class="subheadingSection"
-          />
+            href="#"
+          >
+            Synonyms: 
+            tibia dysplasia
+          </a>
         </div>
       </div>
-      <br />
-      <p
-        class="grey"
+      <div
+        class="summaryContent"
       >
-        Loading...
-      </p>
+        <div>
+          <h3
+            class="mb-2"
+          >
+            Description
+          </h3>
+          <p
+            class="grey"
+          >
+            any structural anomaly of the medial and larger of the two bones of the lower leg
+          </p>
+        </div>
+        <div
+          class="purchaseBanner phenotype-page"
+          style="padding-right: 0px;"
+        >
+          <span>
+            Significant gene-phenotype associations
+          </span>
+          <a
+            class="purchaseButton"
+            href="#associations-table"
+          >
+            View data
+          </a>
+        </div>
+      </div>
     </div>
     <div
       class="card"
       id="associations-table"
     >
       <h2>
-        IMPC Gene variants with 
-        <span
-          aria-busy="true"
-          aria-live="polite"
-        >
-          <span
-            class="react-loading-skeleton"
-            style="width: 150px;"
-          >
-            ‌
-          </span>
-        </span>
+        IMPC Gene variants with
+         
+        abnormal tibia morphology
       </h2>
       <p>
         Total number of significant genotype-phenotype associations: 
@@ -143,7 +250,7 @@ exports[`Phenotype page renders correctly 1`] = `
         class="tableWrapper"
       >
         <table
-          class="table striped undefined table table-bordered"
+          class="table striped table table-bordered"
         >
           <thead>
             <tr>
@@ -180,7 +287,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Phenotype
                    
@@ -225,45 +332,11 @@ exports[`Phenotype page renders correctly 1`] = `
                 width="8.333333333333332%"
               >
                 <button
-                  class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
                 >
                   Supporting data
                    
-                  <span
-                    class="defaultIcons"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="svg-inline--fa fa-caret-up first"
-                      data-icon="caret-up"
-                      data-prefix="fas"
-                      focusable="false"
-                      role="img"
-                      viewBox="0 0 320 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    <svg
-                      aria-hidden="true"
-                      class="svg-inline--fa fa-caret-down second"
-                      data-icon="caret-down"
-                      data-prefix="fas"
-                      focusable="false"
-                      role="img"
-                      viewBox="0 0 320 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </span>
                 </button>
               </th>
               <th
@@ -272,7 +345,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Zygosity
                    
@@ -318,7 +391,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Sex
                    
@@ -364,7 +437,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Life stage
                    
@@ -410,7 +483,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Parameter
                    
@@ -456,7 +529,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Phenotyping Center
                    
@@ -502,7 +575,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Most significant P-value
                    
@@ -547,12 +620,122 @@ exports[`Phenotype page renders correctly 1`] = `
           </thead>
           <tbody>
             <tr>
-              <td
-                colspan="9"
-              >
-                <b>
-                  No data available
-                </b>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
+              </td>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
+              </td>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
+              </td>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
+              </td>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
+              </td>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
+              </td>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
+              </td>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
+              </td>
+              <td>
+                <span
+                  aria-busy="true"
+                  aria-live="polite"
+                >
+                  <span
+                    class="react-loading-skeleton"
+                  >
+                    ‌
+                  </span>
+                  <br />
+                </span>
               </td>
             </tr>
           </tbody>
@@ -568,7 +751,8 @@ exports[`Phenotype page renders correctly 1`] = `
             class="grey"
             style="display: flex; gap: 0.5rem; align-items: center;"
           >
-            Download data as: 
+            Download data as:
+             
             <button
               class="btn impc-secondary-button small"
             >
@@ -619,6 +803,7 @@ exports[`Phenotype page renders correctly 1`] = `
     >
       <h2>
         Most significant associations for 
+        abnormal tibia morphology
       </h2>
       <div
         class="mainWrapper"
@@ -751,7 +936,68 @@ exports[`Phenotype page renders correctly 1`] = `
       <p>
         Procedure
       </p>
+      <p>
+        <a
+          class="secondary"
+          href="https://www.mousephenotype.org/impress/search?searchterm=Heart Dissection"
+        >
+          Heart Dissection
+        </a>
+      </p>
+      <p>
+        <a
+          class="secondary"
+          href="https://www.mousephenotype.org/impress/search?searchterm=Heart Weight"
+        >
+          Heart Weight
+        </a>
+      </p>
+      <p>
+        <a
+          class="secondary"
+          href="https://www.mousephenotype.org/impress/search?searchterm=Heart weight/tibia length"
+        >
+          Heart weight/tibia length
+        </a>
+      </p>
+      <p>
+        <a
+          class="secondary"
+          href="https://www.mousephenotype.org/impress/search?searchterm=Organ Weight"
+        >
+          Organ Weight
+        </a>
+      </p>
+      <p>
+        <a
+          class="secondary"
+          href="https://www.mousephenotype.org/impress/search?searchterm=X-ray"
+        >
+          X-ray
+        </a>
+      </p>
+      <p>
+        <a
+          class="secondary"
+          href="https://www.mousephenotype.org/impress/search?searchterm=X-Ray"
+        >
+          X-Ray
+        </a>
+      </p>
+      <p>
+        <a
+          class="secondary"
+          href="https://www.mousephenotype.org/impress/search?searchterm=X-Ray (GMC)"
+        >
+          X-Ray (GMC)
+        </a>
+      </p>
     </div>
   </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@type":"Dataset","@context":"http://schema.org","name":"abnormal tibia morphology mouse phenotype","description":"Discover abnormal tibia morphology significant genes, associations, procedures and more. Data for phenotype abnormal tibia morphology is all freely available for download.","creator":[{"@type":"Organization","name":"International Mouse Phenotyping Consortium"}],"citation":"https://doi.org/10.1093/nar/gkac972","isAccessibleForFree":true,"url":"https://dev.mousephenotype.org/data/phenotypes/MP:0001324","license":"https://creativecommons.org/licenses/by/4.0/"}
+  </script>
 </div>
 `;

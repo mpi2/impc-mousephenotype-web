@@ -29,7 +29,11 @@ export default async function Page({ params }: { params: PageParams }) {
   const phenotypeData = await getPhenotypeSummary(phenotypeId);
   const phenotypeHits = await fetchPhenotypeGenotypeHits(phenotypeId);
   return (
-    <PhenotypePage phenotype={phenotypeData} phenotypeHits={phenotypeHits} />
+    <PhenotypePage
+      phenotypeId={phenotypeId}
+      phenotype={phenotypeData}
+      phenotypeHits={phenotypeHits}
+    />
   );
 }
 

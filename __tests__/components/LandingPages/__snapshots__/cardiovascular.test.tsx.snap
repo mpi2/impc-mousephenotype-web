@@ -22,7 +22,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
           </a>
           <a
             class="tab"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -130,7 +130,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
           <p>
             This publication page was published when Data Release 11.0 was made available. 
             <br />
-            Most of the sections might be using data from the latest Data Release (21.0)
+            Most of the sections might be using data from the latest Data Release.
           </p>
           <hr />
           <a
@@ -167,7 +167,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
               class="tableWrapper"
             >
               <table
-                class="table striped undefined table table-bordered"
+                class="table striped table table-bordered"
               >
                 <thead>
                   <tr>
@@ -177,7 +177,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                     >
                       <button
                         class="inlineButton headerButton disabled"
-                        style="font-weight: normal;"
+                        style="font-weight: inherit;"
                       >
                         Phenotype
                          
@@ -189,7 +189,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                     >
                       <button
                         class="inlineButton headerButton disabled"
-                        style="font-weight: normal;"
+                        style="font-weight: inherit;"
                       >
                         # Genes
                          
@@ -1786,12 +1786,53 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
         <div
           class="chartWrapper"
         >
-          <canvas
-            height="0"
-            role="img"
-            style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-            width="0"
-          />
+          <div
+            style="display: flex; justify-content: center; align-items: center; height: 100%;"
+          >
+            <div
+              class="mt-4"
+              style="display: flex; justify-content: center;"
+            >
+              <div
+                data-test-id="CircularProgressbarWithChildren"
+              >
+                <div
+                  style="position: relative; width: 100%; height: 100%;"
+                >
+                  <svg
+                    class="CircularProgressbar rotating"
+                    data-test-id="CircularProgressbar"
+                    viewBox="0 0 100 100"
+                  >
+                    <path
+                      class="CircularProgressbar-trail"
+                      d="
+      M 50,50
+      m 0,-44
+      a 44,44 0 1 1 0,88
+      a 44,44 0 1 1 0,-88
+    "
+                      fill-opacity="0"
+                      stroke-width="12"
+                      style="stroke: #fff; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 0px;"
+                    />
+                    <path
+                      class="CircularProgressbar-path"
+                      d="
+      M 50,50
+      m 0,-44
+      a 44,44 0 1 1 0,88
+      a 44,44 0 1 1 0,-88
+    "
+                      fill-opacity="0"
+                      stroke-width="12"
+                      style="stroke: #ccc; transition: stroke-dashoffset 2s ease 0s; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 55.29203070318034px;"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <p>
           The following diagram represents the various biological system phenotypes associations for genes linked to cardiovascular system phenotypes. The line thickness is correlated with the strength of the association. 
@@ -2046,7 +2087,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
       >
         <h1>
           <strong>
-            Cardiovascular systemp IKMC/IMPC related publications
+            Cardiovascular system IKMC/IMPC related publications
           </strong>
         </h1>
       </div>
