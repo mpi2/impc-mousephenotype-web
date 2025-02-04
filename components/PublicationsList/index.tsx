@@ -266,22 +266,29 @@ const PublicationsList = (props: PublicationListProps) => {
                     <p>
                       <b>{pub.authorString}</b>
                     </p>
-                    <button
-                      className="btn impc-secondary-button xs-small mt-2 mb-2"
-                      onClick={() => toggleVisibility(pub, "abstract")}
-                    >
-                      <strong>
-                        {isFieldVisible(pub, "abstract") ? "Hide" : "Show"}{" "}
-                        abstract
-                      </strong>
-                    </button>
-                    <p
-                      className={`abstract mb-2 ${
-                        isFieldVisible(pub, "abstract") ? "" : "visually-hidden"
-                      }`}
-                    >
-                      {pub.abstractText}
-                    </p>
+
+                    {!!pub.abstractText && (
+                      <>
+                        <button
+                          className="btn impc-secondary-button xs-small mt-2 mb-2"
+                          onClick={() => toggleVisibility(pub, "abstract")}
+                        >
+                          <strong>
+                            {isFieldVisible(pub, "abstract") ? "Hide" : "Show"}{" "}
+                            abstract
+                          </strong>
+                        </button>
+                        <p
+                          className={`abstract mb-2 ${
+                            isFieldVisible(pub, "abstract")
+                              ? ""
+                              : "visually-hidden"
+                          }`}
+                        >
+                          {pub.abstractText}
+                        </p>
+                      </>
+                    )}
                     <p>
                       PMID:&nbsp;
                       <a
