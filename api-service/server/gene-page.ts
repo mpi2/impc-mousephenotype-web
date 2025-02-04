@@ -64,7 +64,7 @@ export async function fetchGeneOrderData(
 export async function fetchGeneExpressionData(
   mgiGeneAccessionId: string,
 ): Promise<Array<GeneExpression>> {
-  const endpointURL = `http://impc-expression-service.${KUBERNETES_NAMESPACE}:8080/v1/expression?mgiGeneAccessionId=${mgiGeneAccessionId}`;
+  const endpointURL = `http://impc-expression-service.${KUBERNETES_NAMESPACE}:8080/v1/expression?mgiGeneAccId=${mgiGeneAccessionId}`;
   try {
     return await (WEBSITE_ENV === "local"
       ? fetchAPIFromServer<Array<GeneExpression>>(
