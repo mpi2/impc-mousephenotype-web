@@ -1,7 +1,6 @@
 import { screen } from "@testing-library/react";
 import GeneImages from "@/components/Gene/Images";
 import { renderWithClient, API_URL } from "../../utils";
-import mockRouter from "next-router-mock";
 import { server } from "../../../mocks/server";
 import { rest } from "msw";
 import { GeneContext } from "@/contexts";
@@ -28,7 +27,7 @@ describe("Gene images component", () => {
         },
       ),
     );
-    await mockRouter.push("/genes/MGI:1860086?pid=MGI:1860086");
+    // await mockRouter.push("/genes/MGI:1860086?pid=MGI:1860086");
     renderWithClient(
       <GeneContext.Provider
         value={{ geneSymbol: "Crlf3", mgiGeneAccessionId: "MGI:1860086" }}

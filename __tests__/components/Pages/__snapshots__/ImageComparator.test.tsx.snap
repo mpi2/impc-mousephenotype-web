@@ -22,7 +22,7 @@ exports[`Image comparator page renders correctly 1`] = `
           </a>
           <a
             class="tab"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -85,7 +85,7 @@ exports[`Image comparator page renders correctly 1`] = `
         >
           <a
             class="mb-3"
-            href="/genes/undefined#images"
+            href="/genes/MGI:96853#images"
             style="text-transform: none; font-weight: normal; letter-spacing: normal; font-size: 1.15rem;"
           >
             <svg
@@ -103,7 +103,8 @@ exports[`Image comparator page renders correctly 1`] = `
                 fill="currentColor"
               />
             </svg>
-              Go Back to 
+              Go Back to
+             
             <i>
               <span
                 aria-busy="true"
@@ -142,8 +143,7 @@ exports[`Image comparator page renders correctly 1`] = `
             </span>
           </span>
         </strong>
-         
-        / 
+         / 
         <span
           aria-busy="true"
           aria-live="polite"
@@ -187,7 +187,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   class="bg-white form-control"
                   id="controlCenterFilter"
                   placeholder="Search"
-                  style="display: inline-block; width: 100px;"
+                  style="display: inline-block; width: 145px;"
                   type="text"
                   value="IMPC"
                 />
@@ -245,7 +245,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   class="bg-white form-control"
                   id="mutantCenterFilter"
                   placeholder="Search"
-                  style="display: inline-block; width: 100px;"
+                  style="display: inline-block; width: 145px;"
                   type="text"
                   value="IMPC"
                 />

@@ -31,9 +31,9 @@ describe("Significant PValue cell component", () => {
     render(<SignificantPValueCell value={data} field="pValue" />);
   });
 
-  it("renders a hypen if is not a valid value", () => {
+  it("renders a N/A if is not a valid value", () => {
     const data = { pValue: null, mgiGeneAccessionId: "MGI:000000", id: "ID-0" };
     render(<SignificantPValueCell value={data} field="pValue" />);
-    expect(screen.queryByTestId("p-value")).toHaveTextContent("-");
+    expect(screen.queryByTestId("p-value")).toHaveTextContent("N/A");
   });
 });

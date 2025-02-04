@@ -1,7 +1,6 @@
 import { screen } from "@testing-library/react";
 import GeneExpressions from "@/components/Gene/Expressions";
 import { renderWithClient, API_URL } from "../../utils";
-import mockRouter from "next-router-mock";
 import userEvent from "@testing-library/user-event";
 import { server } from "../../../mocks/server";
 import { rest } from "msw";
@@ -13,7 +12,6 @@ const gene = { mgiGeneAccessionId: "MGI:95516", geneSymbol: "Fgf2" };
 
 describe("Gene expressions component", () => {
   it("should display information", async () => {
-    await mockRouter.push("/genes/MGI:95516");
     renderWithClient(
       <GeneContext.Provider value={gene as GeneSummary}>
         <GeneExpressions initialData={[]} />
@@ -36,7 +34,6 @@ describe("Gene expressions component", () => {
 
   it("should be able to view content from the 2 tabs", async () => {
     const user = userEvent.setup();
-    await mockRouter.push("/genes/MGI:95516");
     renderWithClient(
       <GeneContext.Provider value={gene as GeneSummary}>
         <GeneExpressions initialData={[]} />
@@ -63,7 +60,6 @@ describe("Gene expressions component", () => {
         },
       ),
     );
-    await mockRouter.push("/genes/MGI:95516");
     renderWithClient(
       <GeneContext.Provider value={gene as GeneSummary}>
         <GeneExpressions initialData={[]} />

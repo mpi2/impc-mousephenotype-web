@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { Container } from "react-bootstrap";
 import Card from "@/components/Card";
 import {
@@ -19,6 +18,7 @@ import { useMemo } from "react";
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 type PhenotypePageProps = {
+  phenotypeId: string;
   phenotype: PhenotypeSummary;
   phenotypeHits: Array<PhenotypeGenotypes>;
 };
@@ -36,9 +36,8 @@ const Phenotype = (props: PhenotypePageProps) => {
   const {
     phenotype: phenotypeFromServer,
     phenotypeHits: phenotypeHitsFromServer,
+    phenotypeId,
   } = props;
-  const params = useParams<{ id: string }>();
-  const phenotypeId = decodeURIComponent(params.id);
 
   const {
     data: phenotype,

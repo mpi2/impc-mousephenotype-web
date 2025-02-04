@@ -44,7 +44,7 @@ describe("Gene order component", () => {
     );
     const rows = await screen.findAllByRole("row");
     // 9 because includes the header
-    expect(rows.length).toEqual(9);
+    expect(rows.length).toEqual(10);
     const firstAlleleRow = screen.getByRole("row", {
       name: "Crlf3 em1(IMPC)Wtsi Deletion ‌ mouse",
     });

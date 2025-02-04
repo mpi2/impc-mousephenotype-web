@@ -7,7 +7,11 @@ import { GeneSummary } from "@/models/gene";
 import { GeneContext } from "@/contexts";
 import gls2Data from "../../../mocks/data/genes/MGI:2143539/histopathology.json";
 
-const gene = { mgiGeneAccessionId: "MGI:2143539", geneSymbol: "Gls2" };
+const gene = {
+  mgiGeneAccessionId: "MGI:2143539",
+  geneSymbol: "Gls2",
+  hasHistopathologyData: true,
+};
 
 describe("Gene histopathology component", () => {
   it("should display information", async () => {
@@ -19,10 +23,10 @@ describe("Gene histopathology component", () => {
     expect(await screen.findByRole("heading")).toHaveTextContent(
       "Histopathology",
     );
-    expect(await screen.findByRole("table")).toBeInTheDocument();
+    expect(await screen.getByRole("table")).toBeInTheDocument();
   });
 
-  it("should show alert with link to histopathology page if there are not significant hist. hits", async () => {
+  it("should show alert with link to histopathology page if there are not significant hits", async () => {
     server.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:2143539/gene_histopathology`,
@@ -37,11 +41,12 @@ describe("Gene histopathology component", () => {
         <GeneHistopathology initialData={[]} />
       </GeneContext.Provider>,
     );
-    expect(await screen.findByRole("link")).toBeInTheDocument();
-    expect(await screen.findByRole("link")).toHaveAttribute(
-      "href",
-      "/data/histopath/MGI:2143539",
-    );
+    expect(await screen.findByRole("alert")).toBeInTheDocument();
+    expect(
+      await screen.findByRole("link", {
+        name: "Click here to see the raw data",
+      }),
+    ).toHaveAttribute("href", "/supporting-data/histopath/MGI:2143539");
   });
 
   it("should show an error message if the request fails", async () => {
@@ -54,7 +59,7 @@ describe("Gene histopathology component", () => {
       ),
     );
     renderWithClient(
-      <GeneContext.Provider value={gene as GeneSummary}>
+      <GeneContext.Provider value={{ ...gene, hasHistopathologyData: false }}>
         <GeneHistopathology initialData={[]} />
       </GeneContext.Provider>,
     );

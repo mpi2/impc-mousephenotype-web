@@ -1,4 +1,4 @@
-import { screen, render } from "@testing-library/react";
+import { screen, render, act } from "@testing-library/react";
 import PhenotypeSummary from "@/components/Phenotype/Summary";
 
 let phenotype = {
@@ -19,7 +19,10 @@ let phenotype = {
 
 describe("Phenotype Summary component", () => {
   it("calculates and displays gene count information", () => {
-    render(<PhenotypeSummary phenotype={phenotype} />);
+    act(() => {
+      render(<PhenotypeSummary phenotype={phenotype} />);
+    });
+
     expect(screen.getByTestId("significant-genes")).toHaveTextContent(
       "1247significant genes",
     );
@@ -32,7 +35,10 @@ describe("Phenotype Summary component", () => {
   });
 
   it("should have synonyms tooltip if have 3 or more", () => {
-    render(<PhenotypeSummary phenotype={phenotype} />);
+    act(() => {
+      render(<PhenotypeSummary phenotype={phenotype} />);
+    });
+
     expect(screen.getByTestId("synonyms")).toBeDefined();
   });
 });

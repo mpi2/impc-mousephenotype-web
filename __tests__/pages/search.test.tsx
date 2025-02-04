@@ -3,9 +3,14 @@ import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { renderWithClient } from "../utils";
 import { GeneComparatorProvider } from "@/components/GeneComparator";
-import mockRouter from "next-router-mock";
 
-jest.mock("next/navigation", () => jest.requireActual("next-router-mock"));
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn().mockImplementation(() => ({
+    push: jest.fn(),
+  })),
+  useSearchParams: jest.fn().mockImplementation(() => new URLSearchParams()),
+  usePathname: jest.fn(),
+}));
 
 describe("Search Results", () => {
   it("renders default title", () => {
@@ -24,7 +29,6 @@ describe("Search Results", () => {
     expect(heading).toBeInTheDocument();
   });
   it("renders phenotype title based on query", () => {
-    mockRouter.push("/search?type=phenotype");
     renderWithClient(
       <GeneComparatorProvider>
         <SearchResults

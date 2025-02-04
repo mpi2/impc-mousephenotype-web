@@ -5,6 +5,12 @@ import { rest } from "msw";
 import { API_URL, createTestQueryClient } from "../../utils";
 import { QueryClientProvider } from "@tanstack/react-query";
 
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+  useSearchParams: jest.fn().mockImplementation(() => new URLSearchParams()),
+  usePathname: jest.fn(),
+}));
+
 window.ResizeObserver =
   window.ResizeObserver ||
   jest.fn().mockImplementation(() => ({
