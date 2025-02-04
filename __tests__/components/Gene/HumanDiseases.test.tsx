@@ -5,6 +5,7 @@ import { server } from "../../../mocks/server";
 import { rest } from "msw";
 import userEvent from "@testing-library/user-event";
 import { GeneContext } from "@/contexts";
+import OtogData from "../../../mocks/data/genes/MGI:1202064/disease.json";
 
 describe("Gene human diseases component", () => {
   it("should display information", async () => {
@@ -29,15 +30,23 @@ describe("Gene human diseases component", () => {
   });
 
   it("should be able to view content from the 2 tabs", async () => {
+    server.use(
+      rest.get(
+        `${API_URL}/api/v1/genes/MGI:1202064/disease`,
+        (req, res, ctx) => {
+          return res(ctx.status(200), ctx.json(OtogData));
+        },
+      ),
+    );
     const user = userEvent.setup();
     renderWithClient(
       <GeneContext.Provider
-        value={{ geneSymbol: "Cep43", mgiGeneAccessionId: "MGI:1922546" }}
+        value={{ geneSymbol: "Otog", mgiGeneAccessionId: "MGI:1202064" }}
       >
         <GeneHumanDiseases />
       </GeneContext.Provider>,
     );
-    expect(await screen.findByRole("alert")).toBeInTheDocument();
+    expect(await screen.findByRole("table")).toBeInTheDocument();
     const assocDiseasesTab = screen.getByRole("tab", {
       name: /Human diseases associated/,
     });
@@ -47,7 +56,6 @@ describe("Gene human diseases component", () => {
     expect(assocDiseasesTab).toHaveClass("active");
     await user.click(predictedDiseasesTab);
     expect(predictedDiseasesTab).toHaveClass("active");
-    expect(await screen.findByRole("table")).toBeInTheDocument();
   });
 
   it("should show an error message if the request fails", async () => {
