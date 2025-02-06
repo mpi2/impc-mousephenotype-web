@@ -141,6 +141,7 @@ const Crispr = ({
               <div
                 className={`bg-grey-light ${index > 0 && "mt-3"}`}
                 style={{ padding: "1rem", position: "relative" }}
+                key={index}
               >
                 {sequence}
                 <p className="grey mt-2 mb-0 small">
@@ -172,30 +173,26 @@ const Crispr = ({
         </p>
 
         <h3 className="mb-0 mt-1">Nucleases</h3>
-        {data.nucleases?.map(({ nucleaseType, nucleaseClass }) => (
-          <>
-            <div className="mt-3">
-              {valuePair("Type", nucleaseType)}
-              {valuePair("Class", nucleaseClass)}
-            </div>
-          </>
+        {data.nucleases?.map(({ nucleaseType, nucleaseClass }, index) => (
+          <div className="mt-3" key={index}>
+            {valuePair("Type", nucleaseType)}
+            {valuePair("Class", nucleaseClass)}
+          </div>
         ))}
 
         <h3 className="mb-0 mt-4">Genotype primers</h3>
-        {data.genotypePrimers?.map(({ name, sequence }) => (
-          <>
-            <div className="mt-3">
-              {valuePair("Name", name)}
-              {valuePair("Sequence", sequence)}
-            </div>
-          </>
+        {data.genotypePrimers?.map(({ name, sequence }, index) => (
+          <div className="mt-3" key={index}>
+            {valuePair("Name", name)}
+            {valuePair("Sequence", sequence)}
+          </div>
         ))}
 
         <h3 className="mb-0 mt-4">Guides</h3>
         <SortableTable doSort={() => {}} headers={tableHeaders}>
           {data.guides.map((guide) => {
             return (
-              <tr>
+              <tr key={guide.guideSequence}>
                 {tableHeaders.map(({ field }) => (
                   <td>{guide[field]}</td>
                 ))}
@@ -247,6 +244,7 @@ const Crispr = ({
         />
       </Card>
       <Card>
+        <h2 className="mb-4 mt-0">Genome browser</h2>
         <div id="igv-container" />
       </Card>
     </>
