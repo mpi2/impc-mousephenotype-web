@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, SortableTable } from "@/components";
 import { AlleleCrispr } from "@/models/allele/crispr";
-import igv from "igv/dist/igv.esm";
 
 const CopyButton = ({ sequence }) => {
   const [clicked, setClicked] = useState(false);
@@ -43,6 +42,7 @@ const Crispr = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
+  const [isBrowserSetup, setIsBrowserSetup] = useState(false);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
     queryFn: () =>
@@ -53,12 +53,13 @@ const Crispr = ({
   });
 
   useEffect(() => {
-    console.log(igv);
-    if (data) {
+    async function setupIGVBrowser() {
+      const geneSymbol = data.alleleSymbol.split("<")[0];
+      const igv = (await import("igv/dist/igv.esm")).default;
       const igvContainer = document.querySelector("#igv-container");
       const igvOptions = {
         genome: "mm39",
-        locus: "Impg1",
+        locus: geneSymbol,
         flanking: 5000,
         tracks: [
           {
@@ -72,10 +73,13 @@ const Crispr = ({
         ],
       };
       igv.createBrowser(igvContainer, igvOptions);
+      setIsBrowserSetup(true);
     }
-  }, [data]);
 
-  console.log(igv);
+    if (data && !isBrowserSetup && !!window) {
+      setupIGVBrowser();
+    }
+  }, [data, isBrowserSetup]);
 
   if (isLoading) {
     return (
