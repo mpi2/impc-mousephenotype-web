@@ -58,9 +58,14 @@ const Crispr = ({
       const igv = (await import("igv/dist/igv.esm")).default;
       const igvContainer = document.querySelector("#igv-container");
       const igvOptions = {
-        genome: "mm39",
         locus: geneSymbol,
         flanking: 5000,
+        reference: {
+          id: "mm39",
+          name: "Mouse (GRCm39/mm39)",
+          fastaURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa",
+          indexURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa.fai",
+        },
         tracks: [
           {
             name: "IMPC CRISPR guides",
@@ -69,6 +74,10 @@ const Crispr = ({
           {
             name: "Molecular deletions identified in IMPC CRISPR alleles",
             url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_fasta_202409.bb",
+          },
+          {
+            name: "Gencode gene annotation",
+            url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.primary_assembly.basic.annotation.gtf.gz",
           },
         ],
       };
