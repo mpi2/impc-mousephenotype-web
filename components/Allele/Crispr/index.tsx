@@ -1,12 +1,13 @@
-import React from "react";
+import { useEffect } from "react";
 import { faCopy, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, SortableTable } from "@/components";
 import { AlleleCrispr } from "@/models/allele/crispr";
+import igv from "igv/dist/igv.esm";
 
 const CopyButton = ({ sequence }) => {
   const [clicked, setClicked] = useState(false);
@@ -46,10 +47,35 @@ const Crispr = ({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`
+        `/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`,
       ),
     select: (data) => (data ?? [])[0] || undefined,
   });
+
+  useEffect(() => {
+    console.log(igv);
+    if (data) {
+      const igvContainer = document.querySelector("#igv-container");
+      const igvOptions = {
+        genome: "mm39",
+        locus: "Impg1",
+        flanking: 5000,
+        tracks: [
+          {
+            name: "IMPC CRISPR guides",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_guides_202408.bb",
+          },
+          {
+            name: "Molecular deletions identified in IMPC CRISPR alleles",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_fasta_202409.bb",
+          },
+        ],
+      };
+      igv.createBrowser(igvContainer, igvOptions);
+    }
+  }, [data]);
+
+  console.log(igv);
 
   if (isLoading) {
     return (
@@ -94,7 +120,6 @@ const Crispr = ({
     { field: "guideSource", label: "Guide source", width: 2 },
   ];
 
-  console.log("CRISPR: ", data);
   return !data ? (
     <Card id="crispr">
       <h2>Crispr</h2>
@@ -123,7 +148,7 @@ const Crispr = ({
                   <CopyButton sequence={sequence} />
                 </div>
               </div>
-            )
+            ),
           )}
         </Card>
       )}
@@ -210,12 +235,15 @@ const Crispr = ({
                 item.guides
                   .map(
                     (guide) =>
-                      `Sequence: ${guide.guideSequence}, PAM: ${guide.pam}, CHR: ${guide.chr}, Genome build: ${guide.genomeBuild}`
+                      `Sequence: ${guide.guideSequence}, PAM: ${guide.pam}, CHR: ${guide.chr}, Genome build: ${guide.genomeBuild}`,
                   )
                   .join(" | "),
             },
           ]}
         />
+      </Card>
+      <Card>
+        <div id="igv-container" />
       </Card>
     </>
   );
