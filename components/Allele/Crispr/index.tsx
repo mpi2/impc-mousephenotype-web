@@ -78,6 +78,8 @@ const Crispr = ({
           {
             name: "Gencode gene annotation",
             url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.primary_assembly.basic.annotation.gtf.gz",
+            indexed: false,
+            height: 250,
           },
         ],
       };
