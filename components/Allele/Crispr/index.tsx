@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { faCopy, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, Form } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, SortableTable } from "@/components";
 import { AlleleCrispr } from "@/models/allele/crispr";
+import styles from "./styles.module.scss";
 
 const CopyButton = ({ sequence }) => {
   const [clicked, setClicked] = useState(false);
@@ -42,6 +43,7 @@ const Crispr = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
+  const genomeBrowserRef = useRef(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
@@ -60,11 +62,14 @@ const Crispr = ({
       const igvOptions = {
         locus: geneSymbol,
         flanking: 5000,
+        loadDefaultGenomes: false,
         reference: {
           id: "mm39",
           name: "Mouse (GRCm39/mm39)",
           fastaURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa",
           indexURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa.fai",
+          chromSizesURL:
+            "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.chrom.sizes",
         },
         tracks: [
           {
@@ -76,14 +81,17 @@ const Crispr = ({
             url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_fasta_202409.bb",
           },
           {
-            name: "Gencode gene annotation",
-            url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.primary_assembly.basic.annotation.gtf.gz",
+            name: "Refseq Curated",
+            format: "refgene",
+            url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
             indexed: false,
-            height: 250,
+            height: 150,
           },
         ],
       };
-      igv.createBrowser(igvContainer, igvOptions);
+      const browser = await igv.createBrowser(igvContainer, igvOptions);
+      browser.search(data.mgiGeneAccessionId);
+      genomeBrowserRef.current = browser;
       setIsBrowserSetup(true);
     }
 
@@ -91,6 +99,37 @@ const Crispr = ({
       setupIGVBrowser();
     }
   }, [data, isBrowserSetup]);
+
+  const resetView = () => {
+    if (genomeBrowserRef.current) {
+      genomeBrowserRef.current.search(data.mgiGeneAccessionId);
+    }
+  };
+
+  const toggleGencodeTrack = (selection: boolean) => {
+    if (genomeBrowserRef.current) {
+      if (selection) {
+        genomeBrowserRef.current.loadTrack({
+          name: "Gencode",
+          url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
+          indexed: false,
+          height: 150,
+          format: "gff3",
+          searchable: true,
+          searchableFields: [
+            "name",
+            "transcript_id",
+            "gene_id",
+            "gene_name",
+            "id",
+            "mgi_id",
+          ],
+        });
+      } else {
+        genomeBrowserRef.current.removeTrackByName("Gencode");
+      }
+    }
+  };
 
   if (isLoading) {
     return (
@@ -256,6 +295,34 @@ const Crispr = ({
       </Card>
       <Card>
         <h2 className="mb-4 mt-0">Genome browser</h2>
+        <div className={styles.controlsContainer}>
+          <div>
+            <Form.Label className="d-inline-block me-3 mb-0">
+              Gene annotation tracks:
+            </Form.Label>
+            <Form.Check
+              className="mb-0"
+              inline
+              disabled
+              checked
+              label="Refseq"
+              type="checkbox"
+            />
+            <Form.Check
+              className="mb-0"
+              inline
+              label="Gencode"
+              name="group1"
+              onChange={(e) => toggleGencodeTrack(e.target.checked)}
+            />
+          </div>
+          <button
+            className="btn impc-secondary-button small"
+            onClick={() => resetView()}
+          >
+            Reset view
+          </button>
+        </div>
         <div id="igv-container" />
       </Card>
     </>
