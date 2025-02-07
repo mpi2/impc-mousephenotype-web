@@ -24,6 +24,7 @@ import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
 import { useDebounce } from "usehooks-ts";
 import Footnotes from "../Footnotes";
+import { Alert } from "react-bootstrap";
 
 type FilterOptions = {
   procedures: Array<string>;
@@ -237,6 +238,16 @@ const AllData = (props: Props) => {
       setQuery(queryFromURL);
     }
   }, [queryFromURL, query]);
+
+  if (isError && !data) {
+    return (
+      <Alert variant="primary" className="mt-3">
+        <span>
+          No phenotype data available for <i>{gene.geneSymbol}</i>.
+        </span>
+      </Alert>
+    );
+  }
 
   return (
     <SmartTable<GeneStatisticalResult>
