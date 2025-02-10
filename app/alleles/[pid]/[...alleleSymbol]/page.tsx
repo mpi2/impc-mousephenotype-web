@@ -8,7 +8,7 @@ async function getAlleleSummary(
   mgiGeneAccessionId: string,
   alleleSymbol: Array<string>,
 ) {
-  const parsedAllele = alleleSymbol.join("/");
+  const parsedAllele = decodeURIComponent(alleleSymbol.join("/"));
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null" || !alleleSymbol) {
     notFound();
   }
@@ -27,18 +27,27 @@ type PageParams = {
     pid: string;
     alleleSymbol: Array<string>;
   }>;
+  searchParams: { alleleSymbol: string };
 };
 
-export default async function Page({ params }: PageParams) {
+export default async function Page({ params, searchParams }: PageParams) {
   const mgiGeneAccessionId = (await params).pid;
-  const alleleSymbol = (await params).alleleSymbol;
+  const alleleSymbolFromParams = (await params).alleleSymbol;
+  const alleleSymbolFromSearchParams = searchParams.alleleSymbol;
+  const alleleSymbol = !!alleleSymbolFromSearchParams
+    ? [alleleSymbolFromSearchParams]
+    : alleleSymbolFromParams;
   const alleleData = await getAlleleSummary(mgiGeneAccessionId, alleleSymbol);
-  return <AllelePage alleleData={alleleData} />;
+  return <AllelePage alleleData={alleleData} alleleSymbol={alleleSymbol} />;
 }
 
-export async function generateMetadata({ params }: PageParams) {
+export async function generateMetadata({ params, searchParams }: PageParams) {
   const mgiGeneAccessionId = (await params).pid;
-  const alleleSymbol = (await params).alleleSymbol;
+  const alleleSymbolFromParams = (await params).alleleSymbol;
+  const alleleSymbolFromSearchParams = searchParams.alleleSymbol;
+  const alleleSymbol = !!alleleSymbolFromSearchParams
+    ? [alleleSymbolFromSearchParams]
+    : alleleSymbolFromParams;
   const alleleData = await getAlleleSummary(mgiGeneAccessionId, alleleSymbol);
   const { alleleName, geneSymbol } = alleleData;
   const title = `${alleleName} allele of ${geneSymbol} mouse gene | IMPC`;
