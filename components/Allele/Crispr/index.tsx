@@ -81,6 +81,10 @@ const Crispr = ({
             url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_fasta_202409.bb",
           },
           {
+            name: "IKMC alleles",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
+          },
+          {
             name: "Refseq Curated",
             format: "refgene",
             url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
