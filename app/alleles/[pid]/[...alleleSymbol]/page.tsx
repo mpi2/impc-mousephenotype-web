@@ -8,7 +8,7 @@ async function getAlleleSummary(
   mgiGeneAccessionId: string,
   alleleSymbol: Array<string>,
 ) {
-  const parsedAllele = alleleSymbol.join("/");
+  const parsedAllele = decodeURIComponent(alleleSymbol.join("/"));
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null" || !alleleSymbol) {
     notFound();
   }
