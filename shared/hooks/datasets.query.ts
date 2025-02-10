@@ -7,9 +7,13 @@ export const generateDatasetsEndpointUrl = (
   mgiGeneAccessionId: string,
   params: ChartPageParamsObj,
 ) => {
-  return params.mpTermId
+  let endpointUrl = !!params.mpTermId
     ? `/api/v1/genes/${mgiGeneAccessionId}/${params.mpTermId}/dataset/`
     : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${params.alleleAccessionId}&zygosity=${params.zygosity}&parameterStableId=${params.parameterStableId}&pipelineStableId=${params.pipelineStableId}&procedureStableId=${params.procedureStableId}&phenotypingCentre=${params.phenotypingCentre}&metadataGroup=${params.metadataGroup}`;
+  if (!!params.mpTermId && !!params.metadataGroup) {
+    endpointUrl += `&metadataGroup=${params.metadataGroup}`;
+  }
+  return endpointUrl;
 };
 
 export const sortAndDeduplicateDatasets = (input: Array<Dataset>) => {
