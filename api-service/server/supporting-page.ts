@@ -14,7 +14,7 @@ export async function fetchInitialDatasets(
   let endpointURL = !!params.mpTermId
     ? `${internalServiceDomain}/datasets?mgiGeneAccessionId=${mgiGeneAccessionId}&significantPhenotypeId=${params.mpTermId}`
     : `${internalServiceDomain}/datasets/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${params.alleleAccessionId}&zygosity=${params.zygosity}&parameterStableId=${params.parameterStableId}&pipelineStableId=${params.pipelineStableId}&procedureStableId=${params.procedureStableId}&phenotypingCentre=${params.phenotypingCentre}`;
-  if (!!params.mpTermId && !!params.metadataGroup) {
+  if (!params.mpTermId && !!params.metadataGroup) {
     endpointURL += `&metadataGroup=${params.metadataGroup}`;
   }
   try {
