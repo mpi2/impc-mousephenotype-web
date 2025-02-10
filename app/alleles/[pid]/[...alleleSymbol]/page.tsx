@@ -38,7 +38,15 @@ export default async function Page({ params, searchParams }: PageParams) {
     ? [alleleSymbolFromSearchParams]
     : alleleSymbolFromParams;
   const alleleData = await getAlleleSummary(mgiGeneAccessionId, alleleSymbol);
-  return <AllelePage alleleData={alleleData} alleleSymbol={alleleSymbol} />;
+  const parsedAndDecodedAlleleSymbol = decodeURIComponent(
+    alleleSymbol.join("/"),
+  );
+  return (
+    <AllelePage
+      alleleData={alleleData}
+      alleleSymbol={parsedAndDecodedAlleleSymbol}
+    />
+  );
 }
 
 export async function generateMetadata({ params, searchParams }: PageParams) {
