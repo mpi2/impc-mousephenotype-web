@@ -51,8 +51,8 @@ const Order = ({
       "ES Cell": "esCell",
       "targeting vector": "targetingVector",
     };
-    const encodedAllele = allele;
-    return `/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}#${anchorObjs[product]}`;
+    const encodedAllele = encodeURIComponent(allele);
+    return `/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
   };
 
   const orderData = orderDataFromServer || filtered;
