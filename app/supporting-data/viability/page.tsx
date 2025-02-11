@@ -23,7 +23,7 @@ export async function generateMetadata({
     notFound();
   }
   const { geneSymbol } = geneSummary;
-  const title = `Viability chart for ${geneSymbol} | International Mouse Phenotyping Consortium`;
+  const title = `Viability chart for | International Mouse Phenotyping Consortium`;
   return {
     title: title,
   };
