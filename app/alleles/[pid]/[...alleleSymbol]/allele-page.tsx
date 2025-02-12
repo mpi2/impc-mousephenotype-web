@@ -65,12 +65,9 @@ const ProductItem = ({
   </div>
 );
 
-const AllelePage = ({ alleleData: alleleFromServer }) => {
+const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
   const params = useParams<{ pid: string; alleleSymbol: Array<string> }>();
   const pid = decodeURIComponent(params.pid);
-  const alleleSymbolParsed = params.alleleSymbol;
-
-  const alleleSymbol = (alleleSymbolParsed as Array<string>).join("/");
 
   const { data: allele } = useQuery<AlleleSummary>({
     queryKey: ["genes", pid, "alleles", alleleSymbol, "order"],

@@ -66,7 +66,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     metadataGroup,
   } = props.value;
 
-  let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}&metadataGroup=${metadataGroup}`;
+  let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =
@@ -79,6 +79,17 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     } else {
       url = `/supporting-data/histopath/${mgiGeneAccessionId}`;
     }
+  }
+  // if linking to any "special" chart page (ABR, PPI or IPGTT), it shouldn't specify metadataGroup
+  // to be able to get all the related parameters
+  if (
+    !(
+      procedureStableId.includes("IMPC_ABR") ||
+      procedureStableId.includes("IMPC_ACS_003") ||
+      procedureStableId.includes("IMPC_IPG_001")
+    )
+  ) {
+    url += `&metadataGroup=${metadataGroup}`;
   }
   return (
     <Link href={url} title={`view supporting data for ${parameterName}`}>

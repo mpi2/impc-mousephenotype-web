@@ -37,8 +37,8 @@ const Unidimensional = ({
       const countKey = `${sex}${sampleGroupKey}Count`;
       return {
         label: `${capitalize(sex)} ${getZygosityLabel(zygosity, sampleGroup)}`,
-        mean: datasetSummary.summaryStatistics?.[meanKey].toFixed(3) || 0,
-        stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
+        mean: datasetSummary.summaryStatistics?.[meanKey]?.toFixed(3) || 0,
+        stddev: datasetSummary.summaryStatistics?.[stddevKey]?.toFixed(3) || 0,
         count: datasetSummary.summaryStatistics?.[countKey] || 0,
       };
     });
@@ -48,27 +48,27 @@ const Unidimensional = ({
     datasetSummary.parameterName,
     datasetSummary.datasetId,
     datasetSummary.zygosity,
-    isVisible
+    isVisible,
   );
 
   const summaryStatistics = useMemo(
     () => updateSummaryStatistics(data.chartSeries),
-    [data]
+    [data],
   );
 
   const combinedPValue =
     formatPValue(
-      datasetSummary["statisticalMethod"]["attributes"]["genotypeEffectPValue"]
+      datasetSummary["statisticalMethod"]["attributes"]["genotypeEffectPValue"],
     ) || "N/A";
 
   const femalePValue =
     formatPValue(
-      datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"]
+      datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"],
     ) || "N/A";
 
   const malePValue =
     formatPValue(
-      datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"]
+      datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"],
     ) || "N/A";
 
   return (
