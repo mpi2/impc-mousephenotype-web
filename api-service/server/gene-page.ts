@@ -1,4 +1,5 @@
 import {
+  GeneDisease,
   GeneExpression,
   GeneHistopathology,
   GeneImage,
@@ -101,6 +102,22 @@ export async function fetchGeneHistopathologyData(
           `/api/v1/genes/${mgiGeneAccessionId}/gene_histopathology`,
         )
       : fetchURL<Array<GeneHistopathology>>(endpointURL));
+  } catch (error) {
+    return [];
+  }
+}
+
+export async function fetchGeneDiseaseData(
+  mgiGeneAccessionId: string,
+  associationCurated: boolean,
+): Promise<Array<GeneDisease>> {
+  const endpointURL = `http://impc-diseases-service.${KUBERNETES_NAMESPACE}:8080/v1/disease/max_phenodigm_score?mgiGeneAccessionId=${mgiGeneAccessionId}&associationCurated=${associationCurated}`;
+  try {
+    return await (WEBSITE_ENV === "local"
+      ? fetchAPIFromServer<Array<GeneDisease>>(
+          `/api/v1/genes/${mgiGeneAccessionId}/disease/max_phenodigm_score?associationCurated=${associationCurated}`,
+        )
+      : fetchURL<Array<GeneDisease>>(endpointURL));
   } catch (error) {
     return [];
   }
