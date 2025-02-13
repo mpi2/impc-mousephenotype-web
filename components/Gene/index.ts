@@ -6,3 +6,4 @@ export { default as Publications } from "./Publications";
 export { default as Histopathology } from "./Histopathology";
 export { default as Expressions } from "./Expressions";
 export { default as Order } from "./Order";
+export { default as HumanDiseases } from "./HumanDiseases";
