@@ -1,13 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useMemo } from "react";
 import { faCopy, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert, Form } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { Card, DownloadData, SortableTable } from "@/components";
+import { Card, DownloadData, GenomeBrowser, SortableTable } from "@/components";
 import { AlleleCrispr } from "@/models/allele/crispr";
-import styles from "./styles.module.scss";
 
 const CopyButton = ({ sequence }) => {
   const [clicked, setClicked] = useState(false);
@@ -43,8 +42,6 @@ const Crispr = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
-  const genomeBrowserRef = useRef(null);
-  const [isBrowserSetup, setIsBrowserSetup] = useState(false);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
     queryFn: () =>
@@ -54,86 +51,10 @@ const Crispr = ({
     select: (data) => (data ?? [])[0] || undefined,
   });
 
-  useEffect(() => {
-    async function setupIGVBrowser() {
-      const geneSymbol = data.alleleSymbol.split("<")[0];
-      const igv = (await import("igv/dist/igv.esm")).default;
-      const igvContainer = document.querySelector("#igv-container");
-      const igvOptions = {
-        locus: geneSymbol,
-        flanking: 5000,
-        loadDefaultGenomes: false,
-        reference: {
-          id: "mm39",
-          name: "Mouse (GRCm39/mm39)",
-          fastaURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa",
-          indexURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa.fai",
-          chromSizesURL:
-            "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.chrom.sizes",
-        },
-        tracks: [
-          {
-            name: "IMPC CRISPR guides",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_guides_202408.bb",
-          },
-          {
-            name: "Molecular deletions identified in IMPC CRISPR alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_fasta_202409.bb",
-          },
-          {
-            name: "IKMC alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
-          },
-          {
-            name: "Refseq Curated",
-            format: "refgene",
-            url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
-            indexed: false,
-            height: 150,
-          },
-        ],
-      };
-      const browser = await igv.createBrowser(igvContainer, igvOptions);
-      browser.search(data.mgiGeneAccessionId);
-      genomeBrowserRef.current = browser;
-      setIsBrowserSetup(true);
-    }
-
-    if (data && !isBrowserSetup && !!window) {
-      setupIGVBrowser();
-    }
-  }, [data, isBrowserSetup]);
-
-  const resetView = () => {
-    if (genomeBrowserRef.current) {
-      genomeBrowserRef.current.search(data.mgiGeneAccessionId);
-    }
-  };
-
-  const toggleGencodeTrack = (selection: boolean) => {
-    if (genomeBrowserRef.current) {
-      if (selection) {
-        genomeBrowserRef.current.loadTrack({
-          name: "Gencode",
-          url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
-          indexed: false,
-          height: 150,
-          format: "gff3",
-          searchable: true,
-          searchableFields: [
-            "name",
-            "transcript_id",
-            "gene_id",
-            "gene_name",
-            "id",
-            "mgi_id",
-          ],
-        });
-      } else {
-        genomeBrowserRef.current.removeTrackByName("Gencode");
-      }
-    }
-  };
+  const geneSymbol = useMemo(
+    () => data?.alleleSymbol.split("<")[0] ?? "",
+    [data],
+  );
 
   if (isLoading) {
     return (
@@ -297,38 +218,13 @@ const Crispr = ({
           ]}
         />
       </Card>
-      <Card>
-        <h2 className="mb-4 mt-0">Genome browser</h2>
-        <div className={styles.controlsContainer}>
-          <div>
-            <Form.Label className="d-inline-block me-3 mb-0">
-              Gene annotation tracks:
-            </Form.Label>
-            <Form.Check
-              className="mb-0"
-              inline
-              disabled
-              checked
-              label="Refseq"
-              type="checkbox"
-            />
-            <Form.Check
-              className="mb-0"
-              inline
-              label="Gencode"
-              name="group1"
-              onChange={(e) => toggleGencodeTrack(e.target.checked)}
-            />
-          </div>
-          <button
-            className="btn impc-secondary-button small"
-            onClick={() => resetView()}
-          >
-            Reset view
-          </button>
-        </div>
-        <div id="igv-container" />
-      </Card>
+      {!!geneSymbol && (
+        <GenomeBrowser
+          key={`${geneSymbol}-${mgiGeneAccessionId}`}
+          geneSymbol={geneSymbol}
+          mgiGeneAccessionId={mgiGeneAccessionId}
+        />
+      )}
     </>
   );
 };
