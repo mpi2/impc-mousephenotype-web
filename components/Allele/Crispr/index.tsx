@@ -35,13 +35,17 @@ const CopyButton = ({ sequence }) => {
   );
 };
 
-const Crispr = ({
-  mgiGeneAccessionId,
-  alleleName,
-}: {
+type CrisprProps = {
+  geneSymbol: string;
   mgiGeneAccessionId: string;
   alleleName: string;
-}) => {
+};
+
+const Crispr = ({
+  geneSymbol,
+  mgiGeneAccessionId,
+  alleleName,
+}: CrisprProps) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
     queryFn: () =>
@@ -50,11 +54,6 @@ const Crispr = ({
       ),
     select: (data) => (data ?? [])[0] || undefined,
   });
-
-  const geneSymbol = useMemo(
-    () => data?.alleleSymbol.split("<")[0] ?? "",
-    [data],
-  );
 
   if (isLoading) {
     return (
@@ -218,13 +217,10 @@ const Crispr = ({
           ]}
         />
       </Card>
-      {!!geneSymbol && (
-        <GenomeBrowser
-          key={`${geneSymbol}-${mgiGeneAccessionId}`}
-          geneSymbol={geneSymbol}
-          mgiGeneAccessionId={mgiGeneAccessionId}
-        />
-      )}
+      <GenomeBrowser
+        geneSymbol={geneSymbol}
+        mgiGeneAccessionId={mgiGeneAccessionId}
+      />
     </>
   );
 };
