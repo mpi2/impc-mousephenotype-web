@@ -10,11 +10,17 @@ type GenomeBrowserProps = {
   mgiGeneAccessionId: string;
 };
 
+type BrowserProps = {
+  search: (value: string) => void;
+  loadTrack: (config: any) => void;
+  removeTrackByName: (trackName: string) => void;
+};
+
 const GenomeBrowser = ({
   geneSymbol,
   mgiGeneAccessionId,
 }: GenomeBrowserProps) => {
-  const genomeBrowserRef = useRef(null);
+  let genomeBrowserRef = useRef<BrowserProps>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
   useLayoutEffect(() => {
     let shouldCreateBrowser = true;
@@ -36,11 +42,11 @@ const GenomeBrowser = ({
         tracks: [
           {
             name: "IMPC CRISPR guides",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_guides_202408.bb",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/guide_bb_file_14_02_2025.bb",
           },
           {
             name: "Molecular deletions identified in IMPC CRISPR alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/impc_crispr_allele_fasta_202409.bb",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/aligned_fa_bigBed_14_02_2025.bb",
           },
           {
             name: "IKMC alleles",
