@@ -51,13 +51,14 @@ const GenomeBrowser = ({
           {
             name: "IKMC alleles",
             url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
+            height: 130,
           },
           {
             name: "Refseq Curated",
             format: "refgene",
             url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
             indexed: false,
-            height: 150,
+            height: 220,
           },
         ],
       };
@@ -88,7 +89,7 @@ const GenomeBrowser = ({
           name: "Gencode",
           url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
           indexed: false,
-          height: 150,
+          height: 200,
           format: "gff3",
           searchable: true,
           searchableFields: [
@@ -99,6 +100,7 @@ const GenomeBrowser = ({
             "id",
             "mgi_id",
           ],
+          nameField: "gene_name",
         });
       } else {
         genomeBrowserRef.current.removeTrackByName("Gencode");
