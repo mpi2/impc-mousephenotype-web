@@ -305,7 +305,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
     queryKey: ["genes", gene.mgiGeneAccessionId, "disease", true],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/max_phenodigm_score?associationCurated=true`,
+        `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/json?associationCurated=true`,
       ),
     enabled: !!gene.mgiGeneAccessionId,
     initialData,
@@ -319,7 +319,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
     queryKey: ["genes", gene.mgiGeneAccessionId, "disease", false],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/max_phenodigm_score?associationCurated=false`,
+        `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/json?associationCurated=false`,
       ),
     enabled: !!gene.mgiGeneAccessionId,
     placeholderData: [],
@@ -361,8 +361,9 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
     [predictedDiseases],
   );
 
-  const selectedData =
-    tab === "associated" ? associatedDiseases : predictedDiseases;
+  const selectedData = (
+    tab === "associated" ? associatedDiseases : predictedDiseases
+  ).filter((d) => d.isMaxPhenodigmScore);
 
   return (
     <Card id="human-diseases">
