@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { orderBy } from "lodash";
-import {
+import React, {
   forwardRef,
   useContext,
   useEffect,
@@ -404,77 +404,83 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
           }
         ></Tab>
       </Tabs>
-      <Pagination
-        data={visibleData}
-        additionalBottomControls={
-          <DownloadData<GeneDisease>
-            data={fullData}
-            fileName={`${gene.geneSymbol}-associated-diseases`}
-            fields={[
-              { key: "diseaseTerm", label: "Disease" },
-              { key: "phenodigmScore", label: "Phenodigm Score" },
-              {
-                key: "diseaseMatchedPhenotypes",
-                label: "Matching phenotypes",
-              },
-              {
-                key: "diseaseId",
-                label: "Source",
-                getValueFn: (item) =>
-                  `https://omim.org/entry/${item.diseaseId.replace(
-                    "OMIM:",
-                    "",
-                  )}`,
-              },
-              {
-                key: "associationCurated",
-                label: "Gene association",
-                getValueFn: (item) =>
-                  item.associationCurated ? "Curated" : "Predicted",
-              },
-              { key: "modelDescription", label: "Model description" },
-              {
-                key: "modelGeneticBackground",
-                label: "Model genetic background",
-              },
-              {
-                key: "modelMatchedPhenotypes",
-                label: "Model matched phenotypes",
-              },
-            ]}
-          />
-        }
-      >
-        {(pageData) => (
-          <SortableTable
-            doSort={setSort}
-            defaultSort={defaultSort}
-            headers={tableColumns}
-          >
-            {pageData.map((d) => (
-              <Row
-                key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`}
-                rowData={d}
-                data={fullData.filter(
-                  (diseaseModel) => d.diseaseId == diseaseModel.diseaseId,
+      {!!visibleData.length ? (
+        <Pagination
+          data={visibleData}
+          additionalBottomControls={
+            <DownloadData<GeneDisease>
+              data={fullData}
+              fileName={`${gene.geneSymbol}-associated-diseases`}
+              fields={[
+                { key: "diseaseTerm", label: "Disease" },
+                { key: "phenodigmScore", label: "Phenodigm Score" },
+                {
+                  key: "diseaseMatchedPhenotypes",
+                  label: "Matching phenotypes",
+                },
+                {
+                  key: "diseaseId",
+                  label: "Source",
+                  getValueFn: (item) =>
+                    `https://omim.org/entry/${item.diseaseId.replace(
+                      "OMIM:",
+                      "",
+                    )}`,
+                },
+                {
+                  key: "associationCurated",
+                  label: "Gene association",
+                  getValueFn: (item) =>
+                    item.associationCurated ? "Curated" : "Predicted",
+                },
+                { key: "modelDescription", label: "Model description" },
+                {
+                  key: "modelGeneticBackground",
+                  label: "Model genetic background",
+                },
+                {
+                  key: "modelMatchedPhenotypes",
+                  label: "Model matched phenotypes",
+                },
+              ]}
+            />
+          }
+        >
+          {(pageData) => (
+            <SortableTable
+              doSort={setSort}
+              defaultSort={defaultSort}
+              headers={tableColumns}
+            >
+              {pageData.map((d) => (
+                <Row
+                  key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`}
+                  rowData={d}
+                  data={fullData.filter(
+                    (diseaseModel) => d.diseaseId == diseaseModel.diseaseId,
+                  )}
+                  isLoading={predictedLoading}
+                />
+              ))}
+              {pageData.length === 0 &&
+                predictedLoading &&
+                tab === "predicted" && (
+                  <tr>
+                    {tableColumns.map((_, index) => (
+                      <td key={index}>
+                        <Skeleton />
+                      </td>
+                    ))}
+                  </tr>
                 )}
-                isLoading={predictedLoading}
-              />
-            ))}
-            {pageData.length === 0 &&
-              predictedLoading &&
-              tab === "predicted" && (
-                <tr>
-                  {tableColumns.map((_, index) => (
-                    <td key={index}>
-                      <Skeleton />
-                    </td>
-                  ))}
-                </tr>
-              )}
-          </SortableTable>
-        )}
-      </Pagination>
+            </SortableTable>
+          )}
+        </Pagination>
+      ) : (
+        <Alert className="mt-3" variant="primary">
+          No data available for this section.
+        </Alert>
+      )}
     </Card>
   );
 };
