@@ -14,7 +14,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { Alert, Overlay, Tab, Tabs, Tooltip } from "react-bootstrap";
+import { Alert, Overlay, Spinner, Tab, Tabs, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
@@ -31,6 +31,7 @@ import { isIframeLoaded } from "@/utils";
 import { SortType } from "@/models";
 import Link from "next/link";
 import { GeneContext } from "@/contexts";
+import Skeleton from "react-loading-skeleton";
 
 type ScaleProps = {
   children: number;
@@ -57,7 +58,7 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
 });
 
 const PhenoGridEl = ({ rowDiseasePhenotypes, data }) => {
-  const iframeRef = useRef(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeHeight, setiFrameHeight] = useState(400);
 
   const processPhenotypes = (phenotypeString) =>
@@ -180,13 +181,13 @@ const PhenoGridEl = ({ rowDiseasePhenotypes, data }) => {
   );
 };
 
-const Row = ({
-  rowData,
-  data,
-}: {
+type RowProps = {
   rowData: GeneDisease;
   data: Array<GeneDisease>;
-}) => {
+  isLoading: boolean;
+};
+
+const Row = ({ rowData, data, isLoading }: RowProps) => {
   const [open, setOpen] = useState(false);
   const [tooltipShow, setTooltipShow] = useState(false);
   const tooltipRef = useRef(null);
@@ -237,11 +238,14 @@ const Row = ({
             .map((x) => x.replace(" ", "**").split("**")[1])
             .join(", ")}
         </td>
-        <td onClick={() => setOpen(!open)}>
-          <FontAwesomeIcon
-            className="link"
-            icon={open ? faChevronUp : faChevronDown}
-          />
+        <td>
+          {isLoading ? (
+            <Spinner animation="border" size="sm" />
+          ) : (
+            <button className="btn link" onClick={() => setOpen(!open)}>
+              <FontAwesomeIcon icon={open ? faChevronUp : faChevronDown} />
+            </button>
+          )}
         </td>
       </tr>
       {open && (
@@ -254,37 +258,81 @@ const Row = ({
   );
 };
 
-const HumanDiseases = () => {
+type HumanDiseasesProps = {
+  initialData: Array<GeneDisease>;
+};
+
+const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
   const gene = useContext(GeneContext);
-  const [sorted, setSorted] = useState<Array<GeneDisease>>([]);
-  const { isLoading, isError, data } = useQuery({
-    queryKey: ["genes", gene.mgiGeneAccessionId, "disease"],
-    queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/disease`),
-    enabled: !!gene.mgiGeneAccessionId,
-    select: (data) => data as Array<GeneDisease>,
-  });
-  const [tab, setTab] = useState("associated");
   const defaultSort: SortType = useMemo(() => ["phenodigmScore", "desc"], []);
+  const [sort, setSort] = useState<SortType>(defaultSort);
+  const tableColumns = useMemo(
+    () => [
+      { width: 5, label: "Disease", field: "diseaseTerm" },
+      { width: 1.5, label: "Source", field: "diseaseId" },
+      {
+        width: 2.5,
+        label: "Similarity of phenotypes",
+        field: "phenodigmScore",
+        extraContent: (
+          <>
+            <Link
+              href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+              className="btn"
+              aria-label="Human diseases documentation"
+              style={{ paddingTop: 0, paddingBottom: 0 }}
+            >
+              <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
+            </Link>
+          </>
+        ),
+      },
+      {
+        width: 3,
+        label: "Matching phenotypes",
+        field: "diseaseMatchedPhenotypes",
+      },
+      { width: 1, label: "Expand", disabled: true },
+    ],
+    [],
+  );
 
-  useEffect(() => {
-    if (data) {
-      setSorted(orderBy(data, "diseaseTerm", "asc"));
-    }
-  }, [data]);
+  const {
+    isLoading: associatedLoading,
+    isError: associatedIsError,
+    data: associatedDiseases,
+  } = useQuery<Array<GeneDisease>>({
+    queryKey: ["genes", gene.mgiGeneAccessionId, "disease", true],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/json?associationCurated=true`,
+      ),
+    enabled: !!gene.mgiGeneAccessionId,
+    initialData,
+  });
 
-  if (isLoading) {
-    return (
-      <Card id="human-diseases">
-        <SectionHeader
-          containerId="#human-diseases"
-          title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-        />
-        <p className="grey">Loading...</p>
-      </Card>
-    );
-  }
+  const {
+    isFetching: predictedLoading,
+    isError: predictedIsError,
+    data: predictedDiseases,
+  } = useQuery<Array<GeneDisease>>({
+    queryKey: ["genes", gene.mgiGeneAccessionId, "disease", false],
+    queryFn: () =>
+      fetchAPI(
+        `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/json?associationCurated=false`,
+      ),
+    enabled: !!gene.mgiGeneAccessionId,
+    placeholderData: [],
+  });
 
-  if (isError) {
+  const [tab, setTab] = useState("associated");
+
+  const fullData = useMemo(
+    () => associatedDiseases.concat(predictedDiseases ?? []),
+    [associatedDiseases, predictedDiseases],
+  );
+
+  if (associatedIsError && predictedIsError) {
     return (
       <Card id="human-diseases">
         <SectionHeader
@@ -296,157 +344,138 @@ const HumanDiseases = () => {
     );
   }
 
-  const associatedData = sorted
-    ? sorted.filter((x) => x.associationCurated === true)
-    : [];
-  const uniqueAssociatedDiseases = [
-    ...new Set(associatedData.map((x) => x.diseaseId)),
-  ];
+  const uniqueAssociatedDiseases = useMemo(
+    () => [...new Set(associatedDiseases?.map((x) => x.diseaseId))],
+    [associatedDiseases],
+  );
 
-  const predictedData = sorted
-    ? sorted.filter((x) => x.associationCurated !== true)
-    : [];
-  const uniquePredictedDiseases = [
-    ...new Set(predictedData.map((x) => x.diseaseId)),
-  ];
+  const uniquePredictedDiseases = useMemo(
+    () => [...new Set(predictedDiseases?.map((x) => x.diseaseId))],
+    [predictedDiseases],
+  );
 
-  const selectedData = (
-    tab === "associated" ? associatedData : predictedData
-  ).filter((d) => d.isMaxPhenodigmScore === true);
+  const visibleData = useMemo(() => {
+    const selectedData =
+      tab === "associated" ? associatedDiseases : predictedDiseases;
+    const filteredData = selectedData?.filter((d) => d.isMaxPhenodigmScore);
+    return orderBy(filteredData, sort[0], sort[1]);
+  }, [sort, associatedDiseases, predictedDiseases, tab]);
 
   return (
-    <>
-      <Card id="human-diseases">
-        <SectionHeader
-          containerId="#human-diseases"
-          title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-        />
-        <div className="mb-4">
-          <p>
-            The analysis uses data from IMPC, along with published data on other
-            mouse mutants, in comparison to human disease reports in OMIM,
-            Orphanet, and DECIPHER.
-          </p>
-          <p>
-            Phenotype comparisons summarize the similarity of mouse phenotypes
-            with human disease phenotypes.
-          </p>
-        </div>
-        <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
-          <Tab
-            eventKey="associated"
-            title={
-              <>
-                Human diseases associated with <i>{gene.geneSymbol}</i> (
-                {uniqueAssociatedDiseases.length})
-              </>
-            }
-          ></Tab>
-          <Tab
-            eventKey="predicted"
-            title={
-              <>
-                Human diseases predicted to be associated with{" "}
-                <i>{gene.geneSymbol}</i> ({uniquePredictedDiseases.length})
-              </>
-            }
-          ></Tab>
-        </Tabs>
-        {!selectedData || !selectedData.length ? (
-          <Alert className={styles.table} variant="primary">
-            No data available for this section.
-          </Alert>
-        ) : (
-          <Pagination
-            data={selectedData}
-            additionalBottomControls={
-              <DownloadData<GeneDisease>
-                data={sorted}
-                fileName={`${gene.geneSymbol}-associated-diseases`}
-                fields={[
-                  { key: "diseaseTerm", label: "Disease" },
-                  { key: "phenodigmScore", label: "Phenodigm Score" },
-                  {
-                    key: "diseaseMatchedPhenotypes",
-                    label: "Matching phenotypes",
-                  },
-                  {
-                    key: "diseaseId",
-                    label: "Source",
-                    getValueFn: (item) =>
-                      `https://omim.org/entry/${item.diseaseId.replace(
-                        "OMIM:",
-                        "",
-                      )}`,
-                  },
-                  {
-                    key: "associationCurated",
-                    label: "Gene association",
-                    getValueFn: (item) =>
-                      item.associationCurated ? "Curated" : "Predicted",
-                  },
-                  { key: "modelDescription", label: "Model description" },
-                  {
-                    key: "modelGeneticBackground",
-                    label: "Model genetic background",
-                  },
-                  {
-                    key: "modelMatchedPhenotypes",
-                    label: "Model matched phenotypes",
-                  },
-                ]}
-              />
-            }
+    <Card id="human-diseases">
+      <SectionHeader
+        containerId="#human-diseases"
+        title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
+      />
+      <div className="mb-4">
+        <p>
+          The analysis uses data from IMPC, along with published data on other
+          mouse mutants, in comparison to human disease reports in OMIM,
+          Orphanet, and DECIPHER.
+        </p>
+        <p>
+          Phenotype comparisons summarize the similarity of mouse phenotypes
+          with human disease phenotypes.
+        </p>
+      </div>
+      <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e as string)}>
+        <Tab
+          eventKey="associated"
+          title={
+            <>
+              Human diseases associated with <i>{gene.geneSymbol}</i> (
+              {uniqueAssociatedDiseases.length})
+            </>
+          }
+        ></Tab>
+        <Tab
+          eventKey="predicted"
+          title={
+            <>
+              Human diseases predicted to be associated with{" "}
+              <i>{gene.geneSymbol}</i> (
+              {predictedLoading ? (
+                <Spinner animation="border" size="sm" />
+              ) : (
+                uniquePredictedDiseases.length
+              )}
+              )
+            </>
+          }
+        ></Tab>
+      </Tabs>
+      <Pagination
+        data={visibleData}
+        additionalBottomControls={
+          <DownloadData<GeneDisease>
+            data={fullData}
+            fileName={`${gene.geneSymbol}-associated-diseases`}
+            fields={[
+              { key: "diseaseTerm", label: "Disease" },
+              { key: "phenodigmScore", label: "Phenodigm Score" },
+              {
+                key: "diseaseMatchedPhenotypes",
+                label: "Matching phenotypes",
+              },
+              {
+                key: "diseaseId",
+                label: "Source",
+                getValueFn: (item) =>
+                  `https://omim.org/entry/${item.diseaseId.replace(
+                    "OMIM:",
+                    "",
+                  )}`,
+              },
+              {
+                key: "associationCurated",
+                label: "Gene association",
+                getValueFn: (item) =>
+                  item.associationCurated ? "Curated" : "Predicted",
+              },
+              { key: "modelDescription", label: "Model description" },
+              {
+                key: "modelGeneticBackground",
+                label: "Model genetic background",
+              },
+              {
+                key: "modelMatchedPhenotypes",
+                label: "Model matched phenotypes",
+              },
+            ]}
+          />
+        }
+      >
+        {(pageData) => (
+          <SortableTable
+            doSort={setSort}
+            defaultSort={defaultSort}
+            headers={tableColumns}
           >
-            {(pageData) => (
-              <SortableTable
-                doSort={(sort) => {
-                  setSorted(orderBy(data, sort[0], sort[1]));
-                }}
-                defaultSort={defaultSort}
-                headers={[
-                  { width: 5, label: "Disease", field: "diseaseTerm" },
-                  { width: 1.5, label: "Source", field: "diseaseId" },
-                  {
-                    width: 2.5,
-                    label: "Similarity of phenotypes",
-                    field: "phenodigmScore",
-                    extraContent: (
-                      <>
-                        <Link
-                          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
-                          className="btn"
-                          aria-label="Human diseases documentation"
-                          style={{ paddingTop: 0, paddingBottom: 0 }}
-                        >
-                          <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
-                        </Link>
-                      </>
-                    ),
-                  },
-                  {
-                    width: 3,
-                    label: "Matching phenotypes",
-                    field: "diseaseMatchedPhenotypes",
-                  },
-                  { width: 1, label: "Expand", disabled: true },
-                ]}
-              >
-                {pageData.map((d) => (
-                  <Row
-                    key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`}
-                    rowData={d}
-                    data={data.filter(
-                      (diseaseModel) => d.diseaseId == diseaseModel.diseaseId,
-                    )}
-                  />
-                ))}
-              </SortableTable>
-            )}
-          </Pagination>
+            {pageData.map((d) => (
+              <Row
+                key={`${d.diseaseId}-${d.mgiGeneAccessionId}-${d.phenodigmScore}`}
+                rowData={d}
+                data={fullData.filter(
+                  (diseaseModel) => d.diseaseId == diseaseModel.diseaseId,
+                )}
+                isLoading={predictedLoading}
+              />
+            ))}
+            {pageData.length === 0 &&
+              predictedLoading &&
+              tab === "predicted" && (
+                <tr>
+                  {tableColumns.map((_, index) => (
+                    <td key={index}>
+                      <Skeleton />
+                    </td>
+                  ))}
+                </tr>
+              )}
+          </SortableTable>
         )}
-      </Card>
-    </>
+      </Pagination>
+    </Card>
   );
 };
 

@@ -11,9 +11,9 @@ import {
   Expressions,
   Order,
   Phenotypes,
+  HumanDiseases,
 } from "@/components/Gene";
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import {
   AllelesStudiedContext,
   GeneContext,
@@ -21,6 +21,7 @@ import {
 } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
 import {
+  GeneDisease,
   GeneExpression,
   GeneHistopathology,
   GeneImage,
@@ -32,10 +33,6 @@ import { useParams } from "next/navigation";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
-const HumanDiseases = dynamic(() => import("@/components/Gene/HumanDiseases"), {
-  ssr: false,
-});
-
 type GenePageProps = {
   gene: GeneSummary;
   significantPhenotypes: Array<GenePhenotypeHits>;
@@ -43,6 +40,7 @@ type GenePageProps = {
   expressionData: Array<GeneExpression>;
   imageData: Array<GeneImage>;
   histopathologyData: Array<GeneHistopathology>;
+  humanDiseasesData: Array<GeneDisease>;
 };
 
 const GenePage = (props: GenePageProps) => {
@@ -53,6 +51,7 @@ const GenePage = (props: GenePageProps) => {
     expressionData: expressionDataFromServer,
     imageData: imageDataFromServer,
     histopathologyData: histopathologyDataFromServer,
+    humanDiseasesData: associatedDiseasesDataFromServer,
   } = props;
   const params = useParams<{ pid: string }>();
   const [numOfAlleles, setNumOfAlleles] = useState<number | undefined>(
@@ -116,7 +115,7 @@ const GenePage = (props: GenePageProps) => {
               <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
               <Expressions initialData={expressionDataFromServer} />
               <Images initialData={imageDataFromServer} />
-              <HumanDiseases />
+              <HumanDiseases initialData={associatedDiseasesDataFromServer} />
               <Histopathology initialData={histopathologyDataFromServer} />
               <Publications />
               <ExternalLinks />
