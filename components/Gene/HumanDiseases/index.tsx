@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { orderBy } from "lodash";
-import React, {
+import {
   forwardRef,
   useContext,
   useEffect,
@@ -58,7 +58,7 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
 });
 
 const PhenoGridEl = ({ rowDiseasePhenotypes, data }) => {
-  const iframeRef = useRef(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeHeight, setiFrameHeight] = useState(400);
 
   const processPhenotypes = (phenotypeString) =>
@@ -263,9 +263,9 @@ type HumanDiseasesProps = {
 };
 
 const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
-  console.log(initialData);
   const gene = useContext(GeneContext);
-  const [sorted, setSorted] = useState<Array<GeneDisease>>([]);
+  const defaultSort: SortType = useMemo(() => ["phenodigmScore", "desc"], []);
+  const [sort, setSort] = useState<SortType>(defaultSort);
   const tableColumns = useMemo(
     () => [
       { width: 5, label: "Disease", field: "diseaseTerm" },
@@ -326,13 +326,6 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
   });
 
   const [tab, setTab] = useState("associated");
-  const defaultSort: SortType = useMemo(() => ["phenodigmScore", "desc"], []);
-
-  /*useEffect(() => {
-    if (data) {
-      setSorted(orderBy(data, "diseaseTerm", "asc"));
-    }
-  }, [data]);*/
 
   const fullData = useMemo(
     () => associatedDiseases.concat(predictedDiseases ?? []),
@@ -361,9 +354,12 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
     [predictedDiseases],
   );
 
-  const selectedData = (
-    tab === "associated" ? associatedDiseases : predictedDiseases
-  ).filter((d) => d.isMaxPhenodigmScore);
+  const visibleData = useMemo(() => {
+    const selectedData =
+      tab === "associated" ? associatedDiseases : predictedDiseases;
+    const filteredData = selectedData?.filter((d) => d.isMaxPhenodigmScore);
+    return orderBy(filteredData, sort[0], sort[1]);
+  }, [sort, associatedDiseases, predictedDiseases, tab]);
 
   return (
     <Card id="human-diseases">
@@ -382,7 +378,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
           with human disease phenotypes.
         </p>
       </div>
-      <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e)}>
+      <Tabs defaultActiveKey="associated" onSelect={(e) => setTab(e as string)}>
         <Tab
           eventKey="associated"
           title={
@@ -409,10 +405,10 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
         ></Tab>
       </Tabs>
       <Pagination
-        data={selectedData}
+        data={visibleData}
         additionalBottomControls={
           <DownloadData<GeneDisease>
-            data={sorted}
+            data={fullData}
             fileName={`${gene.geneSymbol}-associated-diseases`}
             fields={[
               { key: "diseaseTerm", label: "Disease" },
@@ -451,9 +447,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
       >
         {(pageData) => (
           <SortableTable
-            /*doSort={(sort) => {
-              setSorted(orderBy(data, sort[0], sort[1]));
-            }}*/
+            doSort={setSort}
             defaultSort={defaultSort}
             headers={tableColumns}
           >
