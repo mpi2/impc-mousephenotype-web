@@ -23,7 +23,7 @@ export async function generateMetadata({
     notFound();
   }
   const { geneSymbol } = geneSummary;
-  const title = `Body weight curve chart for ${geneSymbol} | International Mouse Phenotyping Consortium`;
+  const title = `${geneSymbol} body weight curve chart | International Mouse Phenotyping Consortium`;
   return {
     title: title,
   };

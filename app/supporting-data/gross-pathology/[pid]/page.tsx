@@ -25,7 +25,7 @@ export async function generateMetadata({
     notFound();
   }
   const { geneSymbol } = geneSummary;
-  const title = `Gross pathology data for ${geneSymbol} | International Mouse Phenotyping Consortium`;
+  const title = `${geneSymbol} gross pathology data | International Mouse Phenotyping Consortium`;
   return {
     title: title,
   };
