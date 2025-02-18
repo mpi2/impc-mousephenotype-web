@@ -57,28 +57,40 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
   );
 });
 
-const PhenoGridEl = ({ rowDiseasePhenotypes, data }) => {
+type PhenoGridElProps = {
+  rowDiseasePhenotypes: string | Array<string>;
+  data: Array<GeneDisease>;
+};
+
+const PhenoGridEl = ({ rowDiseasePhenotypes, data }: PhenoGridElProps) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeHeight, setiFrameHeight] = useState(400);
 
-  const processPhenotypes = (phenotypeString) =>
-    phenotypeString?.split(",").map((x) => {
-      const processed = x.replace(" ", "**").split("**");
-      return {
-        id: processed[0],
-        term: processed[1],
-      };
-    }) ?? [];
+  const processPhenotypes = (phenotypeString: string | Array<string>) => {
+    const data =
+      typeof phenotypeString === "string"
+        ? phenotypeString.split(",")
+        : phenotypeString;
+    return (
+      data?.map((x) => {
+        const processed = x.replace(" ", "**").split("**");
+        return {
+          id: processed[0],
+          term: processed[1],
+        };
+      }) ?? []
+    );
+  };
 
   // Process individual disease phenotypes and mouse phenotypes
-  const diseasePhenotypes = processPhenotypes(rowDiseasePhenotypes.join());
+  const diseasePhenotypes = processPhenotypes(rowDiseasePhenotypes);
 
   // Process mouse phenotypes for each object in data
   // Filter out results with a pd score of 0
   const objectSets = data
     .filter(({ phenodigmScore }) => phenodigmScore > 0)
     .map(({ modelPhenotypes, modelDescription, phenodigmScore }) => {
-      const mousePhenotypes = processPhenotypes(modelPhenotypes.join());
+      const mousePhenotypes = processPhenotypes(modelPhenotypes);
       const id = modelDescription;
       const label = `${phenodigmScore.toFixed(2)}-${id}`;
       const phenotypes = mousePhenotypes.map((item) => item.id);
