@@ -91,6 +91,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
     isIPGTTChart,
     isPPIChart,
     hasFlowCytometryImages,
+    isMiniSpecProcedure,
   } = useChartFlags(datasetSummaries, isError);
 
   useEffect(() => {
@@ -225,6 +226,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
               displayPValueColumns={!isTimeSeries}
               dataIsLoading={fetchingInProcess}
               {...(isABRChart && { initialSortByProp: "parameterStableId" })}
+              isMiniSpecProcedure={isMiniSpecProcedure}
             />
           )}
           {isPPIChart && (
@@ -232,7 +234,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
               <button
                 className="btn impc-secondary-button"
                 onClick={() => {
-                  document.querySelector("#chart").scrollIntoView();
+                  document.querySelector("#chart")?.scrollIntoView();
                 }}
               >
                 View chart
