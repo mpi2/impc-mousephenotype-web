@@ -32,8 +32,8 @@ import {
   PublicationDataAlert,
   Search,
 } from "@/components";
-import { Metadata } from "next";
 import { Suspense } from "react";
+import displayTooltipLabelMultiline from "@/shared/chart-js-plugins/boxplot-tooltip-label-multiline";
 
 ChartJS.register(
   LinearScale,
@@ -360,6 +360,11 @@ const SexualDimorphismLandingPage = () => {
                           padding: 0,
                         },
                       },
+                      tooltip: {
+                        callbacks: {
+                          label: displayTooltipLabelMultiline,
+                        },
+                      },
                     },
                   }}
                 />
@@ -405,6 +410,11 @@ const SexualDimorphismLandingPage = () => {
                         labels: {
                           usePointStyle: false,
                           padding: 0,
+                        },
+                      },
+                      tooltip: {
+                        callbacks: {
+                          label: displayTooltipLabelMultiline,
                         },
                       },
                     },
@@ -454,6 +464,11 @@ const SexualDimorphismLandingPage = () => {
                         labels: {
                           usePointStyle: false,
                           padding: 0,
+                        },
+                      },
+                      tooltip: {
+                        callbacks: {
+                          label: displayTooltipLabelMultiline,
                         },
                       },
                     },
