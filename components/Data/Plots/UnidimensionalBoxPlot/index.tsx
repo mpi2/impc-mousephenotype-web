@@ -15,6 +15,7 @@ import {
 import { Chart } from "react-chartjs-2";
 import { FC } from "react";
 import { bgColors, borderColors } from "@/components/Data/Plots";
+import displayTooltipLabelMultiline from "@/shared/chart-js-plugins/boxplot-tooltip-label-multiline";
 
 interface UnidimensionalSeries {
   sex: "male" | "female";
@@ -31,7 +32,7 @@ ChartJS.register(
   Tooltip,
   BoxPlotController,
   BoxAndWiskers,
-  CategoryScale
+  CategoryScale,
 );
 
 const shapes = { male: "triangle", female: "circle" };
@@ -44,8 +45,8 @@ const getBoxPlotDataset = (series, zygosity) => {
       zygosity === "homozygote"
         ? "HOM"
         : zygosity === "hemizygote"
-        ? "HEM"
-        : "HET";
+          ? "HEM"
+          : "HET";
     const labelGroup = sampleGroup == "experimental" ? labelZyg : "WT";
     return `${labelSex} ${labelGroup}`;
   });
@@ -117,6 +118,11 @@ const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps> = ({
             labels: {
               usePointStyle: true,
               padding: 0,
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: displayTooltipLabelMultiline,
             },
           },
         },
