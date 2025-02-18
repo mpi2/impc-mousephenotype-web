@@ -46,7 +46,7 @@ export async function generateMetadata({
   );
   const parameterName = datasets?.[0]?.parameterName;
   const geneSymbol = datasets?.[0]?.geneSymbol;
-  const title = `chart for | International Mouse Phenotyping Consortium`;
+  const title = `${geneSymbol} chart page | International Mouse Phenotyping Consortium`;
   const description = `View ${parameterName} chart page for mouse gene ${geneSymbol}. Experimental data about ${parameterName} is all freely available for download.`;
   return {
     title: title,

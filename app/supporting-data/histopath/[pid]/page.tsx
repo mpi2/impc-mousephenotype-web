@@ -37,7 +37,7 @@ export async function generateMetadata({
     notFound();
   }
   const { geneSymbol } = geneSummary;
-  const title = `Histopath information for ${geneSymbol} | International Mouse Phenotyping Consortium`;
+  const title = `${geneSymbol} histopath information  | International Mouse Phenotyping Consortium`;
   return {
     title: title,
   };

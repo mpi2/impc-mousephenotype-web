@@ -59,7 +59,7 @@ export async function generateMetadata({
     notFound();
   }
   const { geneSymbol } = geneSummary;
-  const title = `Image Comparator | International Mouse Phenotyping Consortium`;
+  const title = `${geneSymbol} image comparator | International Mouse Phenotyping Consortium`;
   return {
     title: title,
   };
