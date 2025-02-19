@@ -57,6 +57,7 @@ build_main_image:
 
 jest_unit_tests:
   stage: test
+  needs: []
   image: $CI_REGISTRY/mouse-informatics/node:lts-bookworm
   cache:
     key:
