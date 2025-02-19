@@ -1067,11 +1067,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r2:-tabpane-significantPhenotypes"
+            aria-controls="react-aria-:r0:-tabpane-significantPhenotypes"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="significantPhenotypes"
-            id="react-aria-:r2:-tab-significantPhenotypes"
+            id="react-aria-:r0:-tab-significantPhenotypes"
             role="tab"
             type="button"
           >
@@ -1083,11 +1083,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r2:-tabpane-allData"
+            aria-controls="react-aria-:r0:-tabpane-allData"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="allData"
-            id="react-aria-:r2:-tab-allData"
+            id="react-aria-:r0:-tab-allData"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1100,11 +1100,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r2:-tabpane-measurementsChart"
+            aria-controls="react-aria-:r0:-tabpane-measurementsChart"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="measurementsChart"
-            id="react-aria-:r2:-tab-measurementsChart"
+            id="react-aria-:r0:-tab-measurementsChart"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1117,560 +1117,25 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r2:-tab-significantPhenotypes"
+          aria-labelledby="react-aria-:r0:-tab-significantPhenotypes"
           class="fade tab-pane active show"
-          id="react-aria-:r2:-tabpane-significantPhenotypes"
+          id="react-aria-:r0:-tabpane-significantPhenotypes"
           role="tabpanel"
         >
-          <div
-            class="mt-3"
+          <p
+            class="grey"
+            style="padding: 1rem;"
           >
             <div
-              class="buttonsWrapper top withControls"
-              data-testid="top-controls-wrapper"
-            >
-              <div
-                class="additionalWrapper"
-              >
-                <div
-                  data-test-id="filterbox-queryFilter"
-                >
-                  <input
-                    aria-label="Filter by parameters"
-                    class="bg-white form-control"
-                    id="queryFilter"
-                    placeholder="Search"
-                    style="width: 150px;"
-                    type="text"
-                    value=""
-                  />
-                </div>
-                <div
-                  data-test-id="filterbox-Zygosity"
-                >
-                  <label
-                    class="grey"
-                    for="zygosityFilterSP"
-                    style="margin-right: 0.5rem;"
-                  >
-                    Zygosity
-                    :
-                  </label>
-                  <input
-                    class="bg-white form-control"
-                    id="zygosityFilterSP"
-                    placeholder="Search"
-                    style="width: 100px; text-transform: capitalize;"
-                    type="text"
-                    value=""
-                  />
-                </div>
-                <div
-                  data-test-id="filterbox-Allele"
-                >
-                  <label
-                    class="grey"
-                    for="alleleFilter"
-                    style="margin-right: 0.5rem;"
-                  >
-                    Allele
-                    :
-                  </label>
-                  <input
-                    class="bg-white form-control"
-                    id="alleleFilter"
-                    placeholder="Search"
-                    style="display: inline-block; width: 200px;"
-                    type="text"
-                    value=""
-                  />
-                </div>
-                <div
-                  data-test-id="filterbox-Phy. System"
-                >
-                  <label
-                    class="grey"
-                    for="systemFilter"
-                    style="margin-right: 0.5rem;"
-                  >
-                    Phy. System
-                    :
-                  </label>
-                  <input
-                    class="bg-white form-control"
-                    id="systemFilter"
-                    placeholder="Search"
-                    style="display: inline-block; width: 200px;"
-                    type="text"
-                    value=""
-                  />
-                </div>
-                <div
-                  data-test-id="filterbox-Life Stage"
-                >
-                  <label
-                    class="grey"
-                    for="lifeStageFilter-sph"
-                    style="margin-right: 0.5rem;"
-                  >
-                    Life Stage
-                    :
-                  </label>
-                  <input
-                    class="bg-white form-control"
-                    id="lifeStageFilter-sph"
-                    placeholder="Search"
-                    style="display: inline-block; width: 100px;"
-                    type="text"
-                    value=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class="tableWrapper"
-            >
-              <table
-                class="table striped table table-bordered"
-              >
-                <thead>
-                  <tr>
-                    <th
-                      rowspan="2"
-                      width="18.333333333333336%"
-                    >
-                      <button
-                        class="inlineButton headerButton"
-                        style="font-weight: bold;"
-                      >
-                        Phenotype
-                         
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-caret-up sortIcon"
-                          data-icon="caret-up"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          viewBox="0 0 320 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </button>
-                    </th>
-                    <th
-                      rowspan="2"
-                      width="8.333333333333332%"
-                    >
-                      <button
-                        class="inlineButton headerButton"
-                        style="font-weight: inherit;"
-                      >
-                        Supporting data
-                         
-                        <span
-                          class="defaultIcons"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-up first"
-                            data-icon="caret-up"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-down second"
-                            data-icon="caret-down"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </th>
-                    <th
-                      rowspan="2"
-                      width="6.666666666666667%"
-                    >
-                      <button
-                        class="inlineButton headerButton"
-                        style="font-weight: inherit;"
-                      >
-                        System
-                         
-                        <span
-                          class="defaultIcons"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-up first"
-                            data-icon="caret-up"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-down second"
-                            data-icon="caret-down"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </th>
-                    <th
-                      rowspan="2"
-                      width="8.333333333333332%"
-                    >
-                      <button
-                        class="inlineButton headerButton"
-                        style="font-weight: inherit;"
-                      >
-                        Allele
-                         
-                        <span
-                          class="defaultIcons"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-up first"
-                            data-icon="caret-up"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-down second"
-                            data-icon="caret-down"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </th>
-                    <th
-                      rowspan="2"
-                      width="8.333333333333332%"
-                    >
-                      <button
-                        class="inlineButton headerButton"
-                        style="font-weight: inherit;"
-                      >
-                        Zygosity
-                         
-                        <span
-                          class="defaultIcons"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-up first"
-                            data-icon="caret-up"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-down second"
-                            data-icon="caret-down"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </th>
-                    <th
-                      rowspan="2"
-                      width="4.166666666666666%"
-                    >
-                      <button
-                        class="inlineButton headerButton"
-                        style="font-weight: inherit;"
-                      >
-                        Life stage
-                         
-                        <span
-                          class="defaultIcons"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-up first"
-                            data-icon="caret-up"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-down second"
-                            data-icon="caret-down"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </th>
-                    <th
-                      rowspan="2"
-                      width="4.166666666666666%"
-                    >
-                      <button
-                        class="inlineButton headerButton"
-                        style="font-weight: inherit;"
-                      >
-                        Significant sexes
-                         
-                        <span
-                          class="defaultIcons"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-up first"
-                            data-icon="caret-up"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-down second"
-                            data-icon="caret-down"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </th>
-                    <th
-                      rowspan="2"
-                      width="5.833333333333333%"
-                    >
-                      <button
-                        class="inlineButton headerButton"
-                        style="font-weight: inherit;"
-                      >
-                        Significant P-value
-                         
-                        <span
-                          class="defaultIcons"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-up first"
-                            data-icon="caret-up"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                          <svg
-                            aria-hidden="true"
-                            class="svg-inline--fa fa-caret-down second"
-                            data-icon="caret-down"
-                            data-prefix="fas"
-                            focusable="false"
-                            role="img"
-                            viewBox="0 0 320 512"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                              fill="currentColor"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </th>
-                  </tr>
-                  <tr />
-                </thead>
-                <tbody>
-                  <tr>
-                    <td
-                      colspan="8"
-                    >
-                      <b>
-                        No data available
-                      </b>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div
-              class="buttonsWrapper withControls"
-            >
-              <div
-                class="additionalWrapper bottomControls"
-              >
-                <div
-                  style="font-size: 85%; flex: 1 0 100%;"
-                >
-                  <span
-                    style="background-color: rgb(255, 255, 255);"
-                  >
-                    * Does not have a P-value assigned because it was manually marked as significant.
-                  </span>
-                </div>
-                <div
-                  class="grey"
-                  style="display: flex; gap: 0.5rem; align-items: center;"
-                >
-                  Download data as:
-                   
-                  <button
-                    class="btn impc-secondary-button small"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="svg-inline--fa fa-download fa-sm "
-                      data-icon="download"
-                      data-prefix="fas"
-                      focusable="false"
-                      role="img"
-                      viewBox="0 0 512 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                     TSV
-                  </button>
-                   
-                  <button
-                    class="btn impc-secondary-button small"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="svg-inline--fa fa-download fa-sm "
-                      data-icon="download"
-                      data-prefix="fas"
-                      focusable="false"
-                      role="img"
-                      viewBox="0 0 512 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                     XLS
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+              class="spinner-border spinner-border-sm"
+            />
+              Loading...
+          </p>
         </div>
         <div
-          aria-labelledby="react-aria-:r2:-tab-allData"
+          aria-labelledby="react-aria-:r0:-tab-allData"
           class="fade tab-pane"
-          id="react-aria-:r2:-tabpane-allData"
+          id="react-aria-:r0:-tabpane-allData"
           role="tabpanel"
         >
           <div
@@ -2346,9 +1811,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:r2:-tab-measurementsChart"
+          aria-labelledby="react-aria-:r0:-tab-measurementsChart"
           class="fade tab-pane"
-          id="react-aria-:r2:-tabpane-measurementsChart"
+          id="react-aria-:r0:-tabpane-measurementsChart"
           role="tabpanel"
         >
           <div
@@ -2398,11 +1863,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r3:-tabpane-adultExpressions"
+            aria-controls="react-aria-:r1:-tabpane-adultExpressions"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="adultExpressions"
-            id="react-aria-:r3:-tab-adultExpressions"
+            id="react-aria-:r1:-tab-adultExpressions"
             role="tab"
             type="button"
           >
@@ -2414,11 +1879,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r3:-tabpane-embryoExpressions"
+            aria-controls="react-aria-:r1:-tabpane-embryoExpressions"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="embryoExpressions"
-            id="react-aria-:r3:-tab-embryoExpressions"
+            id="react-aria-:r1:-tab-embryoExpressions"
             role="tab"
             tabindex="-1"
             type="button"
@@ -2431,15 +1896,15 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r3:-tab-adultExpressions"
+          aria-labelledby="react-aria-:r1:-tab-adultExpressions"
           class="fade tab-pane active show"
-          id="react-aria-:r3:-tabpane-adultExpressions"
+          id="react-aria-:r1:-tabpane-adultExpressions"
           role="tabpanel"
         />
         <div
-          aria-labelledby="react-aria-:r3:-tab-embryoExpressions"
+          aria-labelledby="react-aria-:r1:-tab-embryoExpressions"
           class="fade tab-pane"
-          id="react-aria-:r3:-tabpane-embryoExpressions"
+          id="react-aria-:r1:-tabpane-embryoExpressions"
           role="tabpanel"
         />
       </div>
@@ -2488,24 +1953,114 @@ exports[`Gene page renders correctly 1`] = `
           </svg>
         </a>
       </div>
-      <p
-        class="grey"
+      <div
+        class="fade alert alert-primary show"
+        role="alert"
       >
-        Loading...
-      </p>
+        There are no images available for 
+        Ascc2
+        .
+      </div>
     </div>
     <div
       class="card"
       id="human-diseases"
     >
-      <h2>
-        Human diseases
-      </h2>
       <div
-        class="fade alert alert-danger show"
+        class="titleWrapper"
+      >
+        <h2>
+          Human diseases caused by 
+          <i>
+            Ascc2
+          </i>
+           mutations
+        </h2>
+      </div>
+      <div
+        class="mb-4"
+      >
+        <p>
+          The analysis uses data from IMPC, along with published data on other mouse mutants, in comparison to human disease reports in OMIM, Orphanet, and DECIPHER.
+        </p>
+        <p>
+          Phenotype comparisons summarize the similarity of mouse phenotypes with human disease phenotypes.
+        </p>
+      </div>
+      <ul
+        class="nav nav-tabs"
+        role="tablist"
+      >
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <button
+            aria-controls="react-aria-:r2:-tabpane-associated"
+            aria-selected="true"
+            class="nav-link active"
+            data-rr-ui-event-key="associated"
+            id="react-aria-:r2:-tab-associated"
+            role="tab"
+            type="button"
+          >
+            Human diseases associated with 
+            <i>
+              Ascc2
+            </i>
+             (
+            0
+            )
+          </button>
+        </li>
+        <li
+          class="nav-item"
+          role="presentation"
+        >
+          <button
+            aria-controls="react-aria-:r2:-tabpane-predicted"
+            aria-selected="false"
+            class="nav-link"
+            data-rr-ui-event-key="predicted"
+            id="react-aria-:r2:-tab-predicted"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Human diseases predicted to be associated with
+             
+            <i>
+              Ascc2
+            </i>
+             (
+            <div
+              class="spinner-border spinner-border-sm"
+            />
+            )
+          </button>
+        </li>
+      </ul>
+      <div
+        class="tab-content"
+      >
+        <div
+          aria-labelledby="react-aria-:r2:-tab-associated"
+          class="fade tab-pane active show"
+          id="react-aria-:r2:-tabpane-associated"
+          role="tabpanel"
+        />
+        <div
+          aria-labelledby="react-aria-:r2:-tab-predicted"
+          class="fade tab-pane"
+          id="react-aria-:r2:-tabpane-predicted"
+          role="tabpanel"
+        />
+      </div>
+      <div
+        class="fade mt-3 alert alert-primary show"
         role="alert"
       >
-        Something went wrong. Please try later.
+        No data available for this section.
       </div>
     </div>
     <div
@@ -2521,7 +2076,7 @@ exports[`Gene page renders correctly 1`] = `
         <a
           aria-label="Histopathology documentation"
           class="btn"
-          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
+          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/"
         >
           <svg
             aria-hidden="true"
@@ -2540,14 +2095,16 @@ exports[`Gene page renders correctly 1`] = `
           </svg>
         </a>
       </div>
-      <h2>
-        Histopathology
-      </h2>
-      <p
-        class="grey"
+      <div
+        class="fade alert alert-primary show"
+        role="alert"
       >
-        Loading...
-      </p>
+        There is no histopathology data found for 
+        <i>
+          Ascc2
+        </i>
+        .
+      </div>
     </div>
     <div
       class="card"
@@ -2618,7 +2175,7 @@ exports[`Gene page renders correctly 1`] = `
         <a
           aria-label="Order Mouse and ES Cells documentation"
           class="btn"
-          href="https://www.mousephenotype.org/help/mouse-production/ordering-products/"
+          href="https://dev.mousephenotype.org/help/mouse-production/ordering-products/"
         >
           <svg
             aria-hidden="true"
@@ -2637,19 +2194,11 @@ exports[`Gene page renders correctly 1`] = `
           </svg>
         </a>
       </div>
-      <div
-        class="mb-4"
+      <p
+        class="grey"
       >
-        <p>
-          All available products are supplied via our member's centres or partnerships. When ordering a product from the IMPC you will be redirected to one of their websites or prompted to start an email.
-        </p>
-      </div>
-      <div
-        class="fade table alert alert-yellow show"
-        role="alert"
-      >
-        No product found for this gene.
-      </div>
+        Loading...
+      </p>
     </div>
     <script
       type="application/ld+json"
