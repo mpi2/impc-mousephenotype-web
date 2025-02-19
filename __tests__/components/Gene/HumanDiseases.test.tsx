@@ -1,23 +1,39 @@
-import { screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import GeneHumanDiseases from "@/components/Gene/HumanDiseases";
 import { renderWithClient, API_URL } from "../../utils";
 import { server } from "../../../mocks/server";
 import { rest } from "msw";
 import userEvent from "@testing-library/user-event";
 import { GeneContext } from "@/contexts";
-import OtogData from "../../../mocks/data/genes/MGI:1202064/disease.json";
+import initialDataAkt2 from "../../../mocks/data/genes/MGI:104874/disease_associationCurated_true.json";
+import humanDiseaseslDataAkt2 from "../../../mocks/data/genes/MGI:104874/disease_associationCurated_false.json";
 
 describe("Gene human diseases component", () => {
   it("should display information", async () => {
+    server.use(
+      rest.get(
+        `${API_URL}/api/v1/genes/MGI:104874/disease/json`,
+        (req, res, ctx) => {
+          const url = new URL(req.url);
+          const associationCurated =
+            url.searchParams.get("associationCurated") === "true";
+          return res(
+            ctx.json(
+              associationCurated ? initialDataAkt2 : humanDiseaseslDataAkt2,
+            ),
+          );
+        },
+      ),
+    );
     renderWithClient(
       <GeneContext.Provider
-        value={{ geneSymbol: "Otog", mgiGeneAccessionId: "MGI:1202064" }}
+        value={{ geneSymbol: "Akt2", mgiGeneAccessionId: "MGI:104874" }}
       >
-        <GeneHumanDiseases />
+        <GeneHumanDiseases initialData={initialDataAkt2} />
       </GeneContext.Provider>,
     );
     expect(await screen.findByRole("heading")).toHaveTextContent(
-      "Human diseases caused by Otog mutations",
+      "Human diseases caused by Akt2 mutations",
     );
     const assocDiseasesTab = await screen.findByRole("tab", {
       name: /Human diseases associated/,
@@ -32,18 +48,25 @@ describe("Gene human diseases component", () => {
   it("should be able to view content from the 2 tabs", async () => {
     server.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:1202064/disease`,
+        `${API_URL}/api/v1/genes/MGI:104874/disease/json`,
         (req, res, ctx) => {
-          return res(ctx.status(200), ctx.json(OtogData));
+          const url = new URL(req.url);
+          const associationCurated =
+            url.searchParams.get("associationCurated") === "true";
+          return res(
+            ctx.json(
+              associationCurated ? initialDataAkt2 : humanDiseaseslDataAkt2,
+            ),
+          );
         },
       ),
     );
     const user = userEvent.setup();
     renderWithClient(
       <GeneContext.Provider
-        value={{ geneSymbol: "Otog", mgiGeneAccessionId: "MGI:1202064" }}
+        value={{ geneSymbol: "Akt2", mgiGeneAccessionId: "MGI:104874" }}
       >
-        <GeneHumanDiseases />
+        <GeneHumanDiseases initialData={initialDataAkt2} />
       </GeneContext.Provider>,
     );
     expect(await screen.findByRole("table")).toBeInTheDocument();
@@ -54,14 +77,15 @@ describe("Gene human diseases component", () => {
       name: /Human diseases predicted/,
     });
     expect(assocDiseasesTab).toHaveClass("active");
-    await user.click(predictedDiseasesTab);
+    await act(async () => await user.click(predictedDiseasesTab));
+
     expect(predictedDiseasesTab).toHaveClass("active");
   });
 
   it("should show an error message if the request fails", async () => {
     server.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:1922546/disease`,
+        `${API_URL}/api/v1/genes/MGI:104874/disease/json`,
         (req, res, ctx) => {
           return res(ctx.status(500));
         },
@@ -69,9 +93,9 @@ describe("Gene human diseases component", () => {
     );
     renderWithClient(
       <GeneContext.Provider
-        value={{ geneSymbol: "Cep43", mgiGeneAccessionId: "MGI:1922546" }}
+        value={{ geneSymbol: "Akt2", mgiGeneAccessionId: "MGI:104874" }}
       >
-        <GeneHumanDiseases />
+        <GeneHumanDiseases initialData={[]} />
       </GeneContext.Provider>,
     );
     expect(await screen.findByRole("alert")).toBeInTheDocument();
