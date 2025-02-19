@@ -19,9 +19,13 @@ export async function fetchPhenotypeGenotypeHits(
   phenotypeId: string,
 ): Promise<Array<PhenotypeGenotypes>> {
   const endpointURL = `http://impc-phenotype-hits-service.${KUBERNETES_NAMESPACE}:8080/v1/phenotypehits?anyPhenotypeId=${phenotypeId}`;
-  return await (WEBSITE_ENV === "local"
-    ? fetchAPIFromServer<Array<PhenotypeGenotypes>>(
-        `/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`,
-      )
-    : fetchURL<Array<PhenotypeGenotypes>>(endpointURL));
+  try {
+    return await (WEBSITE_ENV === "local"
+      ? fetchAPIFromServer<Array<PhenotypeGenotypes>>(
+          `/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`,
+        )
+      : fetchURL<Array<PhenotypeGenotypes>>(endpointURL));
+  } catch (error) {
+    return [];
+  }
 }
