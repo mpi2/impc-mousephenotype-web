@@ -1067,11 +1067,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r0:-tabpane-significantPhenotypes"
+            aria-controls="react-aria-:r2:-tabpane-significantPhenotypes"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="significantPhenotypes"
-            id="react-aria-:r0:-tab-significantPhenotypes"
+            id="react-aria-:r2:-tab-significantPhenotypes"
             role="tab"
             type="button"
           >
@@ -1083,11 +1083,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r0:-tabpane-allData"
+            aria-controls="react-aria-:r2:-tabpane-allData"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="allData"
-            id="react-aria-:r0:-tab-allData"
+            id="react-aria-:r2:-tab-allData"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1100,11 +1100,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r0:-tabpane-measurementsChart"
+            aria-controls="react-aria-:r2:-tabpane-measurementsChart"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="measurementsChart"
-            id="react-aria-:r0:-tab-measurementsChart"
+            id="react-aria-:r2:-tab-measurementsChart"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1117,9 +1117,9 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r0:-tab-significantPhenotypes"
+          aria-labelledby="react-aria-:r2:-tab-significantPhenotypes"
           class="fade tab-pane active show"
-          id="react-aria-:r0:-tabpane-significantPhenotypes"
+          id="react-aria-:r2:-tabpane-significantPhenotypes"
           role="tabpanel"
         >
           <div
@@ -1668,9 +1668,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:r0:-tab-allData"
+          aria-labelledby="react-aria-:r2:-tab-allData"
           class="fade tab-pane"
-          id="react-aria-:r0:-tabpane-allData"
+          id="react-aria-:r2:-tabpane-allData"
           role="tabpanel"
         >
           <div
@@ -2346,9 +2346,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:r0:-tab-measurementsChart"
+          aria-labelledby="react-aria-:r2:-tab-measurementsChart"
           class="fade tab-pane"
-          id="react-aria-:r0:-tabpane-measurementsChart"
+          id="react-aria-:r2:-tabpane-measurementsChart"
           role="tabpanel"
         >
           <div
@@ -2398,11 +2398,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r1:-tabpane-adultExpressions"
+            aria-controls="react-aria-:r3:-tabpane-adultExpressions"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="adultExpressions"
-            id="react-aria-:r1:-tab-adultExpressions"
+            id="react-aria-:r3:-tab-adultExpressions"
             role="tab"
             type="button"
           >
@@ -2414,11 +2414,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r1:-tabpane-embryoExpressions"
+            aria-controls="react-aria-:r3:-tabpane-embryoExpressions"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="embryoExpressions"
-            id="react-aria-:r1:-tab-embryoExpressions"
+            id="react-aria-:r3:-tab-embryoExpressions"
             role="tab"
             tabindex="-1"
             type="button"
@@ -2431,15 +2431,15 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r1:-tab-adultExpressions"
+          aria-labelledby="react-aria-:r3:-tab-adultExpressions"
           class="fade tab-pane active show"
-          id="react-aria-:r1:-tabpane-adultExpressions"
+          id="react-aria-:r3:-tabpane-adultExpressions"
           role="tabpanel"
         />
         <div
-          aria-labelledby="react-aria-:r1:-tab-embryoExpressions"
+          aria-labelledby="react-aria-:r3:-tab-embryoExpressions"
           class="fade tab-pane"
-          id="react-aria-:r1:-tabpane-embryoExpressions"
+          id="react-aria-:r3:-tabpane-embryoExpressions"
           role="tabpanel"
         />
       </div>
@@ -2493,6 +2493,20 @@ exports[`Gene page renders correctly 1`] = `
       >
         Loading...
       </p>
+    </div>
+    <div
+      class="card"
+      id="human-diseases"
+    >
+      <h2>
+        Human diseases
+      </h2>
+      <div
+        class="fade alert alert-danger show"
+        role="alert"
+      >
+        Something went wrong. Please try later.
+      </div>
     </div>
     <div
       class="card"
