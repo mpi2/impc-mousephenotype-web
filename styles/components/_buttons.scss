@@ -24,11 +24,11 @@
     @include x-small-button-styles;
   }
 }
-
+$primaryBgc: #008484;
 .impc-primary-button {
   @include button-common-styles;
-  background-color: #00B0B0;
-  color: #212529;
+  background-color: $primaryBgc;
+  color: #FFF !important;
 
   &.small {
     @include small-button-styles;
@@ -37,13 +37,13 @@
     @include x-small-button-styles;
   }
   &:hover {
-    background-color: #00A8A8;
+    background-color: darken($primaryBgc, 5%);
   }
   &:active {
-    background-color: #129E9E;
+    background-color: darken($primaryBgc, 10%);
   }
   &:focus, &:focus-visible {
-    background-color: #129E9E;
+    background-color: darken($primaryBgc, 10%);
     outline: 2px solid #2491FF;
   }
 }
