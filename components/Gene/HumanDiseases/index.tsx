@@ -373,6 +373,10 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
     return orderBy(filteredData, sort[0], sort[1]);
   }, [sort, associatedDiseases, predictedDiseases, tab]);
 
+  const shouldDisplayLoading =
+    (tab === "associated" && associatedLoading) ||
+    (tab === "predicted" && predictedLoading);
+
   return (
     <Card id="human-diseases">
       <SectionHeader
@@ -475,15 +479,14 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
                 />
               ))}
               {pageData.length === 0 &&
-                predictedLoading &&
-                tab === "predicted" && (
+                shouldDisplayLoading(
                   <tr>
                     {tableColumns.map((_, index) => (
                       <td key={index}>
                         <Skeleton />
                       </td>
                     ))}
-                  </tr>
+                  </tr>,
                 )}
             </SortableTable>
           )}
