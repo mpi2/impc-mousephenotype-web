@@ -310,7 +310,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
   );
 
   const {
-    isLoading: associatedLoading,
+    isFetching: associatedLoading,
     isError: associatedIsError,
     data: associatedDiseases,
   } = useQuery<Array<GeneDisease>>({
@@ -320,7 +320,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
         `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/json?associationCurated=true`,
       ),
     enabled: !!gene.mgiGeneAccessionId,
-    initialData,
+    placeholderData: [],
   });
 
   const {
@@ -373,6 +373,10 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
     return orderBy(filteredData, sort[0], sort[1]);
   }, [sort, associatedDiseases, predictedDiseases, tab]);
 
+  const shouldDisplayLoading =
+    (tab === "associated" && associatedLoading) ||
+    (tab === "predicted" && predictedLoading);
+
   return (
     <Card id="human-diseases">
       <SectionHeader
@@ -396,7 +400,12 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
           title={
             <>
               Human diseases associated with <i>{gene.geneSymbol}</i> (
-              {uniqueAssociatedDiseases.length})
+              {associatedLoading ? (
+                <Spinner animation="border" size="sm" />
+              ) : (
+                uniqueAssociatedDiseases.length
+              )}
+              )
             </>
           }
         ></Tab>
@@ -416,7 +425,11 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
           }
         ></Tab>
       </Tabs>
-      {!!visibleData.length ? (
+      {!visibleData.length && !shouldDisplayLoading ? (
+        <Alert className="mt-3" variant="primary">
+          No data available for this section.
+        </Alert>
+      ) : (
         <Pagination
           data={visibleData}
           additionalBottomControls={
@@ -474,24 +487,18 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
                   isLoading={predictedLoading}
                 />
               ))}
-              {pageData.length === 0 &&
-                predictedLoading &&
-                tab === "predicted" && (
-                  <tr>
-                    {tableColumns.map((_, index) => (
-                      <td key={index}>
-                        <Skeleton />
-                      </td>
-                    ))}
-                  </tr>
-                )}
+              {pageData.length === 0 && shouldDisplayLoading && (
+                <tr>
+                  {tableColumns.map((_, index) => (
+                    <td key={index}>
+                      <Skeleton />
+                    </td>
+                  ))}
+                </tr>
+              )}
             </SortableTable>
           )}
         </Pagination>
-      ) : (
-        <Alert className="mt-3" variant="primary">
-          No data available for this section.
-        </Alert>
       )}
     </Card>
   );
