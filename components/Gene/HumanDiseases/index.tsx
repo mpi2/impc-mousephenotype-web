@@ -320,7 +320,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
         `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/json?associationCurated=true`,
       ),
     enabled: !!gene.mgiGeneAccessionId,
-    initialData,
+    placeholderData: [],
   });
 
   const {
