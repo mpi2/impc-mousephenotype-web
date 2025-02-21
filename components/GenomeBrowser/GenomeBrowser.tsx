@@ -16,6 +16,33 @@ type BrowserProps = {
   removeTrackByName: (trackName: string) => void;
 };
 
+const optionalTracks = {
+  Gencode: {
+    name: "Gencode",
+    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
+    indexed: false,
+    height: 200,
+    format: "gff3",
+    searchable: true,
+    searchableFields: [
+      "name",
+      "transcript_id",
+      "gene_id",
+      "gene_name",
+      "id",
+      "mgi_id",
+    ],
+    nameField: "gene_name",
+  },
+  "UniProt SwissProt/TrEMBL Protein Annotations": {
+    name: "UniProt SwissProt/TrEMBL Protein Annotations",
+    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
+    indexed: false,
+    nameField: "GeneName",
+    height: 100,
+  },
+};
+
 const GenomeBrowser = ({
   geneSymbol,
   mgiGeneAccessionId,
@@ -82,28 +109,15 @@ const GenomeBrowser = ({
       genomeBrowserRef.current.search(mgiGeneAccessionId);
     }
   };
-  const toggleGencodeTrack = (selection: boolean) => {
+  const toggleOptionalTrack = (
+    name: keyof typeof optionalTracks,
+    selection: boolean,
+  ) => {
     if (genomeBrowserRef.current) {
       if (selection) {
-        genomeBrowserRef.current.loadTrack({
-          name: "Gencode",
-          url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
-          indexed: false,
-          height: 200,
-          format: "gff3",
-          searchable: true,
-          searchableFields: [
-            "name",
-            "transcript_id",
-            "gene_id",
-            "gene_name",
-            "id",
-            "mgi_id",
-          ],
-          nameField: "gene_name",
-        });
+        genomeBrowserRef.current.loadTrack(optionalTracks[name]);
       } else {
-        genomeBrowserRef.current.removeTrackByName("Gencode");
+        genomeBrowserRef.current.removeTrackByName(name);
       }
     }
   };
@@ -129,7 +143,24 @@ const GenomeBrowser = ({
             inline
             label="Gencode"
             name="group1"
-            onChange={(e) => toggleGencodeTrack(e.target.checked)}
+            onChange={(e) => toggleOptionalTrack("Gencode", e.target.checked)}
+          />
+        </div>
+        <div>
+          <Form.Label className="d-inline-block me-3 mb-0">
+            Additional tracks:
+          </Form.Label>
+          <Form.Check
+            className="mb-0"
+            inline
+            label="UniProt SwissProt/TrEMBL Protein Annotations"
+            name="group1"
+            onChange={(e) =>
+              toggleOptionalTrack(
+                "UniProt SwissProt/TrEMBL Protein Annotations",
+                e.target.checked,
+              )
+            }
           />
         </div>
         <button
@@ -139,6 +170,7 @@ const GenomeBrowser = ({
           Reset view
         </button>
       </div>
+
       <div id="igv-container" />
     </Card>
   );
