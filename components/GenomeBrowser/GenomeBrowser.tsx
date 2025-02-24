@@ -17,7 +17,7 @@ type BrowserProps = {
 };
 
 const optionalTracks = {
-  Gencode: {
+  GENCODE: {
     name: "Gencode",
     url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
     indexed: false,
@@ -69,11 +69,11 @@ const GenomeBrowser = ({
         tracks: [
           {
             name: "IMPC CRISPR guides",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/guide_bb_file_14_02_2025.bb",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/guide_bb_21_02_2025.bb",
           },
           {
             name: "Molecular deletions identified in IMPC CRISPR alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/aligned_fa_bigBed_14_02_2025.bb",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/aligned_fa_bb_21_02_2025.bb",
           },
           {
             name: "IKMC alleles",
@@ -141,9 +141,9 @@ const GenomeBrowser = ({
           <Form.Check
             className="mb-0"
             inline
-            label="Gencode"
+            label="GENCODE"
             name="group1"
-            onChange={(e) => toggleOptionalTrack("Gencode", e.target.checked)}
+            onChange={(e) => toggleOptionalTrack("GENCODE", e.target.checked)}
           />
         </div>
         <div>
