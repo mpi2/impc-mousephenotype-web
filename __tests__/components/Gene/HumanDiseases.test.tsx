@@ -100,7 +100,7 @@ describe("Gene human diseases component", () => {
     );
     expect(await screen.findByRole("alert")).toBeInTheDocument();
     expect(screen.getByRole("alert")).toHaveTextContent(
-      "No data available for this section",
+      "Something went wrong. Please try later.",
     );
   });
 });
