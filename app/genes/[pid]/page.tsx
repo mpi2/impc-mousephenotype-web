@@ -27,10 +27,6 @@ async function getGeneSummary(mgiGeneAccessionId: string) {
   const imageData = await fetchGeneImageData(mgiGeneAccessionId);
   const histopathologyData =
     await fetchGeneHistopathologyData(mgiGeneAccessionId);
-  /*const humanDiseasesData = await fetchGeneDiseaseData(
-    mgiGeneAccessionId,
-    true,
-  );*/
 
   return {
     gene: geneData,
