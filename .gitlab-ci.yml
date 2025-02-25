@@ -19,7 +19,7 @@ build_main_image:
     - name: $CI_REGISTRY/mouse-informatics/dind:latest
       alias: docker
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "dev" && $CI_PIPELINE_SOURCE != "schedule"'
+    - if: '$CI_COMMIT_REF_NAME == "develop" && $CI_PIPELINE_SOURCE != "schedule"'
       when: on_success
     - if: '$CI_COMMIT_REF_NAME == "main" && $CI_PIPELINE_SOURCE != "schedule"'
       when: on_success
