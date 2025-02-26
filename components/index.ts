@@ -31,3 +31,4 @@ export {
   DataPointsTrendChart,
   ReleaseNotesPage,
 } from "./ReleasePage";
+export { default as GenomeBrowser } from "./GenomeBrowser/GenomeBrowser";
