@@ -22,11 +22,16 @@ type ChartSeries = {
   sex: "male" | "female";
 };
 
+type UnidimensionalProps = GeneralChartProps & {
+  isMiniSpecProcedure: boolean;
+};
+
 const Unidimensional = ({
   datasetSummary,
   isVisible,
+  isMiniSpecProcedure,
   children,
-}: GeneralChartProps) => {
+}: UnidimensionalProps) => {
   const statisticalMethodName = datasetSummary.statisticalMethod.name ?? "";
   const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
     const zygosity = datasetSummary.zygosity;
@@ -106,6 +111,7 @@ const Unidimensional = ({
                     zygosity={datasetSummary["zygosity"]}
                     parameterName={datasetSummary["parameterName"]}
                     unit={datasetSummary["unit"]["x"]}
+                    isMiniSpecProcedure={isMiniSpecProcedure}
                   />
                 </div>
               </Col>

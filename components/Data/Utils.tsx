@@ -16,14 +16,14 @@ export const getZygosityLabel = (zygosity: string, sampleGroup: string) => {
     zygosity === "hemizygote"
       ? "HEM"
       : zygosity === "homozygote"
-      ? "HOM"
-      : "HET";
+        ? "HOM"
+        : "HET";
   return sampleGroup == "control" ? "WT" : labelZyg;
 };
 export const getChartType = (
   datasetSummary: Dataset,
   isVisible: boolean = true,
-  extraChildren: ReactNode = <></>
+  extraChildren: ReactNode = <></>,
 ) => {
   let chartType = datasetSummary?.dataType;
   if (chartType == "line" || chartType == "embryo") {
@@ -31,12 +31,12 @@ export const getChartType = (
       datasetSummary.procedureGroup == "IMPC_VIA"
         ? "viability"
         : datasetSummary.procedureGroup == "IMPC_FER"
-        ? "fertility"
-        : ["IMPC_EVL", "IMPC_EVM", "IMPC_EVP", "IMPC_EVO"].includes(
-            datasetSummary.procedureGroup
-          )
-        ? "embryo_viability"
-        : chartType;
+          ? "fertility"
+          : ["IMPC_EVL", "IMPC_EVM", "IMPC_EVP", "IMPC_EVO"].includes(
+                datasetSummary.procedureGroup,
+              )
+            ? "embryo_viability"
+            : chartType;
   }
 
   if (
@@ -46,11 +46,17 @@ export const getChartType = (
     chartType = "bodyweight";
   }
 
-  let Chart = null;
+  let Chart: ReactNode = null;
   switch (chartType) {
     case "unidimensional":
       Chart = (
-        <Unidimensional datasetSummary={datasetSummary} isVisible={isVisible}>
+        <Unidimensional
+          datasetSummary={datasetSummary}
+          isVisible={isVisible}
+          isMiniSpecProcedure={datasetSummary?.procedureStableId?.startsWith(
+            "HMGULA_MIN",
+          )}
+        >
           {extraChildren}
         </Unidimensional>
       );

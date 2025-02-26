@@ -238,6 +238,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
               displayPValueColumns={shouldDisplayPValueStatement}
               dataIsLoading={fetchingInProcess}
               {...(isABRChart && { initialSortByProp: "parameterStableId" })}
+              isMiniSpecProcedure={isMiniSpecProcedure}
             />
           )}
           {isPPIChart && (
@@ -245,7 +246,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
               <button
                 className="btn impc-secondary-button"
                 onClick={() => {
-                  document.querySelector("#chart").scrollIntoView();
+                  document.querySelector("#chart")?.scrollIntoView();
                 }}
               >
                 View chart
