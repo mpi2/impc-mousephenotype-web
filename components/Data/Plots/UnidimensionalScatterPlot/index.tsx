@@ -8,10 +8,11 @@ import {
   Tooltip,
   TimeScale,
   ScatterController,
-  LineController, LegendItem,
+  LineController,
+  LegendItem,
 } from "chart.js";
 import "chartjs-adapter-moment";
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { Chart } from "react-chartjs-2";
 import {
   bgColors,
@@ -32,7 +33,7 @@ ChartJS.register(
   Tooltip,
   CategoryScale,
   ScatterController,
-  LineController
+  LineController,
 );
 
 interface IUnidimensionalScatterPlotProps {
@@ -41,6 +42,7 @@ interface IUnidimensionalScatterPlotProps {
   zygosity: "homozygote" | "heterozygote" | "hemizygote";
   parameterName: string;
   unit: string;
+  isMiniSpecProcedure: boolean;
 }
 
 const getScatterDataset = (series: UnidimensionalSeries, zygosity) => {
@@ -84,7 +86,86 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
   zygosity,
   parameterName,
   unit,
+  isMiniSpecProcedure,
 }) => {
+  const options = useMemo(
+    () => ({
+      maintainAspectRatio: true,
+      aspectRatio: 2,
+      plugins: {
+        tooltip: {
+          usePointStyle: true,
+          callbacks: {
+            label: ({ dataset, parsed, raw }) => {
+              const label = `${dataset.label}: ${parsed.y} ${unit} (${raw.x.format("MMMM YYYY")})`;
+              const content = [label];
+              if (isMiniSpecProcedure && !!raw.specimenId) {
+                content.push(`Specimen ID: ${raw.specimenId}`);
+              }
+              return content;
+            },
+          },
+        },
+        legend: {
+          position: "bottom",
+          labels: {
+            usePointStyle: true,
+            padding: 20,
+            sort: (a: LegendItem, b: LegendItem) => {
+              if (
+                (a.text.includes("Female") && b.text.includes("Female")) ||
+                (a.text.includes("Male") && b.text.includes("Male"))
+              ) {
+                return b.text.localeCompare(a.text);
+              } else {
+                return a.text.localeCompare(b.text);
+              }
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          type: "time",
+          display: true,
+          offset: true,
+          time: {
+            unit: "month",
+            tooltipFormat: "DD MMM YYYY",
+          },
+          title: {
+            text: `Date of experiment`,
+            display: true,
+            align: "center",
+            padding: 5,
+          },
+        },
+        y: {
+          type: "linear",
+          display: true,
+          position: "left",
+          title: {
+            text: `${parameterName} ${
+              unit && unit.trim() !== "" ? "(" + unit + ")" : ""
+            }`,
+            display: true,
+            align: "center",
+            padding: 5,
+          },
+        },
+        y1: {
+          type: "linear",
+          display: false,
+          position: "right",
+          max: 1.1,
+          grid: {
+            drawOnChartArea: false,
+          },
+        },
+      },
+    }),
+    [isMiniSpecProcedure],
+  );
   return (
     <Chart
       type="scatter"
@@ -94,77 +175,7 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
           ...lineSeries.map(getSWindowDataset),
         ],
       }}
-      options={{
-        maintainAspectRatio: true,
-        aspectRatio: 2,
-        plugins: {
-          tooltip: {
-            usePointStyle: true,
-            callbacks: {
-              label: ({ dataset, parsed, raw }) =>
-                `${dataset.label}: ${parsed.y} ${unit} (${raw.x.format(
-                  "MMMM YYYY"
-                )})`,
-            },
-          },
-          legend: {
-            position: "bottom",
-            labels: {
-              usePointStyle: true,
-              padding: 20,
-              sort: (a: LegendItem, b: LegendItem) => {
-                if (
-                  a.text.includes("Female") && b.text.includes("Female") ||
-                  a.text.includes("Male") && b.text.includes("Male")
-                ) {
-                  return b.text.localeCompare(a.text);
-                } else {
-                  return a.text.localeCompare(b.text);
-                }
-              }
-            },
-          },
-        },
-        scales: {
-          x: {
-            type: "time",
-            display: true,
-            offset: true,
-            time: {
-              unit: "month",
-              tooltipFormat: "DD MMM YYYY",
-            },
-            title: {
-              text: `Date of experiment`,
-              display: true,
-              align: "center",
-              padding: 5,
-            },
-          },
-          y: {
-            type: "linear",
-            display: true,
-            position: "left",
-            title: {
-              text: `${parameterName} ${
-                unit && unit.trim() !== "" ? "(" + unit + ")" : ""
-              }`,
-              display: true,
-              align: "center",
-              padding: 5,
-            },
-          },
-          y1: {
-            type: "linear",
-            display: false,
-            position: "right",
-            max: 1.1,
-            grid: {
-              drawOnChartArea: false,
-            },
-          },
-        },
-      }}
+      options={options}
     />
   );
 };

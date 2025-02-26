@@ -1,15 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
-import { orderBy, has } from "lodash";
+import { orderBy, has, camelCase, trim } from "lodash";
 import { formatPValue, getIcon, getSexLabel } from "@/utils";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { OverlayTrigger, Tooltip, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset, SortType, TableHeader } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
 import { motion, AnimatePresence } from "framer-motion";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 
 type LastColumnProps = {
   isViabilityChart: boolean;
@@ -60,12 +62,15 @@ type Props = {
   displayPValueColumns?: boolean;
   onSelectParam?: (newValue: string) => void;
   dataIsLoading: boolean;
+  isMiniSpecProcedure?: boolean;
 };
 
 type SortOptions = {
   prop: string | ((any) => void);
   order: "asc" | "desc";
 };
+
+type MiniSpecMetadata = Record<string, string>;
 
 const DataComparison = (props: Props) => {
   const {
@@ -77,6 +82,7 @@ const DataComparison = (props: Props) => {
     displayPValueColumns = true,
     onSelectParam = (_) => {},
     dataIsLoading,
+    isMiniSpecProcedure = false,
   } = props;
 
   const groups = groupData(data);
@@ -91,6 +97,13 @@ const DataComparison = (props: Props) => {
       : ["pValue_not_considered", "asc"];
   }, [isViabilityChart]);
   const sorted = orderBy(processed, sortOptions.prop, sortOptions.order);
+  const [metadataValues, setMetadataValues] = useState<{
+    data: Array<MiniSpecMetadata>;
+    labels: Array<string>;
+  }>({
+    data: [],
+    labels: [],
+  });
   if (!data) {
     return null;
   }
@@ -145,16 +158,45 @@ const DataComparison = (props: Props) => {
     { width: 1, label: "Significant sex", field: "sex" },
     { width: 1, label: "Life Stage", field: "lifeStageName" },
     { width: 1, label: "Colony Id", field: "colonyId" },
+    isMiniSpecProcedure
+      ? {
+          width: 1,
+          label: "Metadata",
+          field: "metadataValues",
+        }
+      : null,
   ]
+    .filter(Boolean)
     .concat(displayPValueColumns ? lastColumnHeader : [])
     .filter((h) =>
-      displayPValueColumns ? h : !h.label.includes("Significant")
+      displayPValueColumns ? h : !h.label.includes("Significant"),
     );
 
   const numOfHeaders = tableHeaders.reduce(
     (acc, header) => acc + (header.children ? header.children.length : 1),
-    0
+    0,
   );
+
+  const displayModalTable = (metadataValues: Array<string>) => {
+    const labels = metadataValues[0].split("|").map((keyAndValue) => {
+      const [key] = keyAndValue.split("=");
+      return trim(key);
+    });
+
+    const data: Array<MiniSpecMetadata> = metadataValues.map(
+      (stringifiedValue) => {
+        const exploded = stringifiedValue.split("|");
+        const result: MiniSpecMetadata = {};
+        exploded.forEach((keyAndValue) => {
+          const [key, value] = keyAndValue.split("=");
+          result[camelCase(key)] = trim(value);
+        });
+        return result;
+      },
+    );
+    setMetadataValues({ data, labels });
+  };
+
   useEffect(() => {
     if (
       !!sorted[0]?.key &&
@@ -210,7 +252,7 @@ const DataComparison = (props: Props) => {
                               has(d, `pValue_${sex}`) &&
                               d[`pValue_${sex}`] !== null &&
                               d[`pValue_${sex}`] !== undefined &&
-                              d[`pValue_${sex}`] < 0.0001
+                              d[`pValue_${sex}`] < 0.0001,
                           )
                           .map((significantSex, index) => (
                             <OverlayTrigger
@@ -233,6 +275,17 @@ const DataComparison = (props: Props) => {
                     )}
                     <td>{d.lifeStageName}</td>
                     <td>{d.colonyId}</td>
+                    {isMiniSpecProcedure && (
+                      <td>
+                        <a
+                          className="link primary"
+                          onClick={() => displayModalTable(d.metadataValues)}
+                        >
+                          View&nbsp;
+                          <FontAwesomeIcon icon={faEye} />
+                        </a>
+                      </td>
+                    )}
                     {displayPValueColumns && (
                       <LastColumn
                         dataset={d}
@@ -260,6 +313,29 @@ const DataComparison = (props: Props) => {
           </AnimatePresence>
         )}
       </Pagination>
+      <Modal
+        size="xl"
+        show={!!metadataValues.data.length}
+        onHide={() => setMetadataValues({ data: [], labels: [] })}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Mini spec procedure metadata</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {!!metadataValues.data.length && (
+            <SmartTable
+              columns={metadataValues.labels.map((label) => ({
+                width: 1,
+                label,
+                field: camelCase(label),
+                cmp: <PlainTextCell />,
+              }))}
+              data={metadataValues.data}
+              defaultSort={[metadataValues.labels[0], "asc"]}
+            />
+          )}
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
