@@ -280,7 +280,7 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
                 href="#order"
                 className="btn impc-primary-button"
               >
-                {numOfAlleles} Allele products available
+                View allele products available
               </a>
             </Col>
           </Row>

@@ -1,4 +1,3 @@
 export { GeneContext } from "./gene";
-export { PhenotypeContext } from './phenotype';
-export { NumAllelesContext } from './num-alleles';
-export { AllelesStudiedContext } from './alleles-studied';
+export { PhenotypeContext } from "./phenotype";
+export { AllelesStudiedContext } from "./alleles-studied";
