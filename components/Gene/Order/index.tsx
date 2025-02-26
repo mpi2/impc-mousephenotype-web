@@ -5,7 +5,7 @@ import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
 import styles from "./styles.module.scss";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { GeneContext, NumAllelesContext } from "@/contexts";
+import { GeneContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 import {
   AlleleSymbol,
@@ -35,7 +35,6 @@ const Order = ({
     orderBy(orderDataFromServer, "alleleSymbol", "asc"),
   );
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
-  const { setNumOfAlleles } = useContext(NumAllelesContext);
   const {
     isFetching,
     isError,
@@ -62,12 +61,6 @@ const Order = ({
       setSorted(orderBy(orderData, "alleleSymbol", "asc"));
     }
   }, [orderData]);
-
-  useEffect(() => {
-    if (sorted?.length) {
-      setNumOfAlleles(sorted.length);
-    }
-  }, [sorted]);
 
   useEffect(() => {
     if (allelesStudied.length > 0) {

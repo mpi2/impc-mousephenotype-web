@@ -5,11 +5,7 @@ import { fetchAPI } from "@/api-service";
 import Search from "@/components/Search";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeft,
-  faArrowLeftLong,
-  faDownload,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Button, Container } from "react-bootstrap";
 import { Card } from "@/components";
 import Skeleton from "react-loading-skeleton";
@@ -23,7 +19,6 @@ import { SortType, TableCellProps } from "@/models";
 import _ from "lodash";
 import { useMemo } from "react";
 import { useParams } from "next/navigation";
-import { Metadata } from "next";
 import styles from "../../images/[parameterStableId]/styles.module.scss";
 import { GeneImageCollection } from "@/models/gene";
 
@@ -40,10 +35,14 @@ type Image = {
 
 const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
   return (
-    <Button href={_.get(props.value, props.field) as string}>
-      <FontAwesomeIcon className="white" icon={faDownload} />
+    <Button
+      href={_.get(props.value, props.field) as string}
+      className="impc-secondary-button"
+      variant=""
+    >
+      <FontAwesomeIcon icon={faDownload} />
       &nbsp;
-      <span className="white">Download</span>
+      <span>Download</span>
     </Button>
   );
 };
