@@ -132,7 +132,7 @@ const Associations = ({ initialData }: AssociationsProps) => {
     return orderBy(data, field, order);
   };
 
-  if (isError) {
+  if (isError || !initialData?.length) {
     return (
       <>
         <h2>

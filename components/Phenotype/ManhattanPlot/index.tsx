@@ -18,6 +18,7 @@ import Form from "react-bootstrap/Form";
 import { PhenotypeStatsResults } from "@/models/phenotype";
 import { formatPValue } from "@/utils";
 import Link from "next/link";
+import { Alert } from "react-bootstrap";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -294,7 +295,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
     [geneFilter, point, ticks],
   );
 
-  const { data } = useQuery({
+  const { data, isFetching, isError } = useQuery({
     queryKey: ["phenotype", phenotypeId, "mh-plot-data"],
     queryFn: () => fetchMHPlotDataFromS3(phenotypeId),
     enabled: !!phenotypeId,
@@ -402,6 +403,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
         listOfAccessions: [...mgiAccessionIds],
       };
     },
+    retry: 1,
   });
 
   const matchesAnotherGene = useMemo(() => {
@@ -442,6 +444,16 @@ const ManhattanPlot = ({ phenotypeId }) => {
       }
     }
   }, [geneFilter, data, clickTooltip, point]);
+
+  if (isError) {
+    return (
+      <div>
+        <Alert variant="primary">
+          Associations data not available for this phenotype
+        </Alert>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.mainWrapper}>
@@ -504,21 +516,23 @@ const ManhattanPlot = ({ phenotypeId }) => {
           Associations appearing in the region of 1x10<sup>-30</sup> are
           manually annotated as significant.
         </i>
-        {!!data ? (
-          <div className={styles.chartWrapper}>
-            <Scatter
-              ref={chartRef}
-              options={options as any}
-              data={data.chartData as any}
-            />
-          </div>
-        ) : (
+        {isFetching ? (
           <div
             className="mt-4"
             style={{ display: "flex", justifyContent: "center" }}
           >
             <LoadingProgressBar />
           </div>
+        ) : (
+          (!!data ?? (
+            <div className={styles.chartWrapper}>
+              <Scatter
+                ref={chartRef}
+                options={options as any}
+                data={data.chartData as any}
+              />
+            </div>
+          ))
         )}
       </div>
       <div className={styles.resultsSection}>
