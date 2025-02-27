@@ -38,10 +38,8 @@ const CollectionItem = ({
     </span>
   );
 
-type SummaryProps = {
-  numOfAlleles: number | undefined;
-};
-const Summary = ({ numOfAlleles }: SummaryProps) => {
+type SummaryProps = {};
+const Summary = ({}: SummaryProps) => {
   const gene = useContext(GeneContext);
   const SYNONYMS_COUNT = 2;
 
@@ -279,8 +277,9 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
                 role="button"
                 href="#order"
                 className="btn impc-primary-button"
+                style={{ fontWeight: 500, fontSize: "120%" }}
               >
-                View allele products available
+                View allele products
               </a>
             </Col>
           </Row>
