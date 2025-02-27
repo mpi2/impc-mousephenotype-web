@@ -277,8 +277,9 @@ const Summary = ({}: SummaryProps) => {
                 role="button"
                 href="#order"
                 className="btn impc-primary-button"
+                style={{ fontWeight: 500, fontSize: "120%" }}
               >
-                View allele products available
+                View allele products
               </a>
             </Col>
           </Row>
