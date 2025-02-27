@@ -38,10 +38,8 @@ const CollectionItem = ({
     </span>
   );
 
-type SummaryProps = {
-  numOfAlleles: number | undefined;
-};
-const Summary = ({ numOfAlleles }: SummaryProps) => {
+type SummaryProps = {};
+const Summary = ({}: SummaryProps) => {
   const gene = useContext(GeneContext);
   const SYNONYMS_COUNT = 2;
 
