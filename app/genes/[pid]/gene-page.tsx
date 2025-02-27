@@ -50,9 +50,6 @@ const GenePage = (props: GenePageProps) => {
     humanDiseasesData: associatedDiseasesDataFromServer,
   } = props;
   const params = useParams<{ pid: string }>();
-  const [numOfAlleles, setNumOfAlleles] = useState<number | undefined>(
-    undefined,
-  );
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
   const [allelesStudiedLoading, setAllelesStudiedLoading] =
     useState<boolean>(true);
@@ -105,7 +102,7 @@ const GenePage = (props: GenePageProps) => {
         <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
           <Search />
           <Container className="page">
-            <Summary numOfAlleles={numOfAlleles} />
+            <Summary />
             <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
             <Expressions initialData={expressionDataFromServer} />
             <Images initialData={imageDataFromServer} />
