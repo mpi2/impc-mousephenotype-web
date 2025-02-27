@@ -70,6 +70,8 @@ jest_unit_tests:
   rules:
     - if: '$CI_COMMIT_REF_NAME == "main" && $CI_PIPELINE_SOURCE != "schedule"'
       when: on_success
+    - if: '$CI_COMMIT_REF_NAME == "develop" && $CI_PIPELINE_SOURCE != "schedule"'
+      when: on_success
   script:
     - yarn install --inmutable
     - yarn test --watchAll=false --ci
