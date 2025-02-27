@@ -140,7 +140,7 @@ const Order = ({
                   },
                   {
                     width: 2,
-                    label: "Products",
+                    label: "Order products",
                     field: "alleleDescription",
                   },
                 ]}
