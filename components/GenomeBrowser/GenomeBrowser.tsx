@@ -18,7 +18,7 @@ type BrowserProps = {
 
 const optionalTracks = {
   GENCODE: {
-    name: "Gencode",
+    name: "GENCODE",
     url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
     indexed: false,
     height: 200,
@@ -33,6 +33,7 @@ const optionalTracks = {
       "mgi_id",
     ],
     nameField: "gene_name",
+    order: 0,
   },
   "UniProt SwissProt/TrEMBL Protein Annotations": {
     name: "UniProt SwissProt/TrEMBL Protein Annotations",
@@ -45,6 +46,7 @@ const optionalTracks = {
     name: "IKMC alleles",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
     height: 130,
+    order: 20,
   },
 };
 
@@ -73,19 +75,23 @@ const GenomeBrowser = ({
         },
         tracks: [
           {
-            name: "IMPC CRISPR guides",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/guide_bb_21_02_2025.bb",
-          },
-          {
-            name: "Molecular deletions identified in IMPC CRISPR alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/aligned_fa_bb_21_02_2025.bb",
-          },
-          {
             name: "Refseq Curated",
             format: "refgene",
             url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
             indexed: false,
             height: 220,
+            order: 0,
+            removable: false,
+          },
+          {
+            name: "IMPC CRISPR guides",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/guide_bb_21_02_2025.bb",
+            order: 10,
+          },
+          {
+            name: "Molecular deletions identified in IMPC CRISPR alleles",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/aligned_fa_bb_21_02_2025.bb",
+            order: 11,
           },
         ],
       };
