@@ -41,6 +41,11 @@ const optionalTracks = {
     nameField: "GeneName",
     height: 100,
   },
+  "IKMC alleles": {
+    name: "IKMC alleles",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
+    height: 130,
+  },
 };
 
 const GenomeBrowser = ({
@@ -74,11 +79,6 @@ const GenomeBrowser = ({
           {
             name: "Molecular deletions identified in IMPC CRISPR alleles",
             url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/aligned_fa_bb_21_02_2025.bb",
-          },
-          {
-            name: "IKMC alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
-            height: 130,
           },
           {
             name: "Refseq Curated",
@@ -150,6 +150,14 @@ const GenomeBrowser = ({
           <Form.Label className="d-inline-block me-3 mb-0">
             Additional tracks:
           </Form.Label>
+          <Form.Check
+            className="mb-0"
+            inline
+            label="IKMC alleles"
+            onChange={(e) =>
+              toggleOptionalTrack("IKMC alleles", e.target.checked)
+            }
+          />
           <Form.Check
             className="mb-0"
             inline
