@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import { Card } from "@/components";
 import { useLayoutEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
+import { kebabCase } from "lodash";
 
 type GenomeBrowserProps = {
   geneSymbol: string;
@@ -114,11 +115,14 @@ const GenomeBrowser = ({
 }: GenomeBrowserProps) => {
   let genomeBrowserRef = useRef<BrowserProps>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
+
   useLayoutEffect(() => {
     let shouldCreateBrowser = true;
     async function setupIGVBrowser() {
       const igv = (await import("igv/dist/igv.esm")).default;
-      const igvContainer = document.querySelector("#igv-container");
+      const igvContainer = document.querySelector(
+        `#igv-container-${kebabCase(section)}`,
+      );
       let tracks: Array<any>;
       switch (section) {
         case "CRISPR":
@@ -237,7 +241,7 @@ const GenomeBrowser = ({
         </button>
       </div>
 
-      <div id="igv-container" />
+      <div id={`igv-container-${kebabCase(section)}`} />
     </Card>
   );
 };
