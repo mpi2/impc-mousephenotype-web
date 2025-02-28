@@ -8,6 +8,7 @@ import styles from "./styles.module.scss";
 type GenomeBrowserProps = {
   geneSymbol: string;
   mgiGeneAccessionId: string;
+  section: "CRISPR" | "ES Cell" | "Targeting Vector";
 };
 
 type BrowserProps = {
@@ -53,6 +54,7 @@ const optionalTracks = {
 const GenomeBrowser = ({
   geneSymbol,
   mgiGeneAccessionId,
+  section,
 }: GenomeBrowserProps) => {
   let genomeBrowserRef = useRef<BrowserProps>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);

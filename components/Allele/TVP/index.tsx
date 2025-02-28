@@ -220,6 +220,7 @@ const TargetingVector = ({
       <GenomeBrowser
         geneSymbol={geneSymbol}
         mgiGeneAccessionId={mgiGeneAccessionId}
+        section="Targeting Vector"
       />
     </>
   );
