@@ -25,12 +25,16 @@ type Props = {
   selectOptions: Array<{ value: string; label: string }>;
   data: Array<any>;
   secondaryViabilityData: Array<any>;
+  viewAllGenes: boolean;
+  onDataFilterChange: (value: boolean) => void;
 };
 
 const EmbryoDataAvailabilityGrid = ({
   selectOptions,
   data,
   secondaryViabilityData,
+  viewAllGenes,
+  onDataFilterChange,
 }: Props) => {
   const [query, setQuery] = useState<string>(undefined);
   const [activePage, setActivePage] = useState(0);
@@ -163,7 +167,7 @@ const EmbryoDataAvailabilityGrid = ({
             aria-label="window of lethality filter"
           />
         </div>
-        <div className="col-6">
+        <div className="col-3">
           <InputGroup>
             <InputGroup.Text id="gene-filter">
               Filter by gene symbol
@@ -175,6 +179,17 @@ const EmbryoDataAvailabilityGrid = ({
               onChange={(e) => setQuery(e.target.value)}
             />
           </InputGroup>
+        </div>
+        <div className="col-3">
+          <Form.Group>
+            <Form.Check
+              style={{ display: "flex", alignItems: "center", gap: "0.5em" }}
+              id="gene-control"
+              label="Only display genes with data"
+              checked={viewAllGenes}
+              onChange={(e) => onDataFilterChange(e.target.checked)}
+            />
+          </Form.Group>
         </div>
       </div>
       <div
