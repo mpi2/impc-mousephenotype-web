@@ -188,6 +188,7 @@ const ESCell = ({
       <GenomeBrowser
         geneSymbol={geneSymbol}
         mgiGeneAccessionId={mgiGeneAccessionId}
+        section="ES Cell"
       />
     </>
   );

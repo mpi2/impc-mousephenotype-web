@@ -199,6 +199,7 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
         )}
         {doesTargetingVectorProductsExist && (
           <TargetingVector
+            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />

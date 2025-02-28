@@ -4,10 +4,12 @@ import { Form } from "react-bootstrap";
 import { Card } from "@/components";
 import { useLayoutEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
+import { kebabCase } from "lodash";
 
 type GenomeBrowserProps = {
   geneSymbol: string;
   mgiGeneAccessionId: string;
+  section: "CRISPR" | "ES Cell" | "Targeting Vector";
 };
 
 type BrowserProps = {
@@ -15,6 +17,62 @@ type BrowserProps = {
   loadTrack: (config: any) => void;
   removeTrackByName: (trackName: string) => void;
 };
+
+const CRISPR_TRACKS = [
+  {
+    name: "Refseq Curated",
+    format: "refgene",
+    url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
+    indexed: false,
+    height: 220,
+    order: 0,
+    removable: false,
+  },
+  {
+    name: "IMPC CRISPR guides",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
+    order: 10,
+  },
+  {
+    name: "Molecular deletions identified in IMPC CRISPR alleles",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
+    order: 11,
+  },
+];
+const ESCELL_TRACKS = [
+  {
+    name: "Refseq Curated",
+    format: "refgene",
+    url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
+    indexed: false,
+    height: 220,
+    order: 0,
+    removable: false,
+  },
+  {
+    name: "ES Cell based Mouse Alleles",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
+  },
+  {
+    name: "ES Cell Products",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
+  },
+];
+const TARGETING_VECTOR_TRACKS = [
+  {
+    name: "Refseq Curated",
+    format: "refgene",
+    url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
+    indexed: false,
+    height: 220,
+    order: 0,
+    removable: false,
+  },
+  {
+    name: "Targeting Vector Products",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
+  },
+];
 
 const optionalTracks = {
   GENCODE: {
@@ -53,14 +111,32 @@ const optionalTracks = {
 const GenomeBrowser = ({
   geneSymbol,
   mgiGeneAccessionId,
+  section,
 }: GenomeBrowserProps) => {
   let genomeBrowserRef = useRef<BrowserProps>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
+
   useLayoutEffect(() => {
     let shouldCreateBrowser = true;
     async function setupIGVBrowser() {
       const igv = (await import("igv/dist/igv.esm")).default;
-      const igvContainer = document.querySelector("#igv-container");
+      const igvContainer = document.querySelector(
+        `#igv-container-${kebabCase(section)}`,
+      );
+      let tracks: Array<any>;
+      switch (section) {
+        case "CRISPR":
+          tracks = [...CRISPR_TRACKS];
+          break;
+        case "ES Cell":
+          tracks = [...ESCELL_TRACKS];
+          break;
+        case "Targeting Vector":
+          tracks = [...TARGETING_VECTOR_TRACKS];
+          break;
+        default:
+          tracks = [];
+      }
       const igvOptions = {
         locus: geneSymbol,
         flanking: 5000,
@@ -73,39 +149,7 @@ const GenomeBrowser = ({
           chromSizesURL:
             "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.chrom.sizes",
         },
-        tracks: [
-          {
-            name: "Refseq Curated",
-            format: "refgene",
-            url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
-            indexed: false,
-            height: 220,
-            order: 0,
-            removable: false,
-          },
-          {
-            name: "Targeting Vector Products",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
-          },
-          {
-            name: "ES Cell based Mouse Alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
-          },
-          {
-            name: "ES Cell Products",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
-          },
-          {
-            name: "IMPC CRISPR guides",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/guide_bb_21_02_2025.bb",
-            order: 10,
-          },
-          {
-            name: "Molecular deletions identified in IMPC CRISPR alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/aligned_fa_bb_21_02_2025.bb",
-            order: 11,
-          },
-        ],
+        tracks,
       };
       if (shouldCreateBrowser) {
         const browser = await igv.createBrowser(igvContainer, igvOptions);
@@ -197,7 +241,7 @@ const GenomeBrowser = ({
         </button>
       </div>
 
-      <div id="igv-container" />
+      <div id={`igv-container-${kebabCase(section)}`} />
     </Card>
   );
 };

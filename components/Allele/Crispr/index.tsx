@@ -220,6 +220,7 @@ const Crispr = ({
       <GenomeBrowser
         geneSymbol={geneSymbol}
         mgiGeneAccessionId={mgiGeneAccessionId}
+        section="CRISPR"
       />
     </>
   );
