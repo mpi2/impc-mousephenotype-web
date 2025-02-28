@@ -45,6 +45,11 @@ export const usePhenotypeResultsQuery = (
         `/api/search/v1/search?prefix=${query}&type=PHENOTYPE`,
       ),
     select: processPhenotypeResults,
-    initialData: initialData,
+    initialData: () => {
+      if (initialData.numResults !== -1) {
+        return initialData;
+      }
+      return undefined;
+    },
   });
 };
