@@ -63,6 +63,7 @@ const getInternalLink = (name: string, link: string) => {
 
 const getURLJSONMenu = () => {
   switch (location.hostname) {
+    case "mousephenotype.org":
     case "www.mousephenotype.org":
     case "nginx.mousephenotype-prod.org":
       return "https://www.mousephenotype.org/jsonmenu/";
@@ -70,7 +71,7 @@ const getURLJSONMenu = () => {
     case "nginx.mousephenotype-dev.org":
       return "https://dev.mousephenotype.org/jsonmenu/";
     default:
-      return "https://dev.mousephenotype.org/jsonmenu/";
+      return "https://www.mousephenotype.org/jsonmenu/";
   }
 };
 
