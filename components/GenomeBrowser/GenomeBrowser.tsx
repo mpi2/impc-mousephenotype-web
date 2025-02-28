@@ -84,6 +84,18 @@ const GenomeBrowser = ({
             removable: false,
           },
           {
+            name: "Targeting Vector Products",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
+          },
+          {
+            name: "ES Cell based Mouse Alleles",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
+          },
+          {
+            name: "ES Cell Products",
+            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
+          },
+          {
             name: "IMPC CRISPR guides",
             url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/guide_bb_21_02_2025.bb",
             order: 10,
