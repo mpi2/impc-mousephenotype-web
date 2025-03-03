@@ -102,7 +102,7 @@ const GenePage = (props: GenePageProps) => {
         <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
           <Search />
           <Container className="page">
-            <Summary />
+            <Summary numOfAlleles={orderDataFromServer?.length ?? 0} />
             <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
             <Expressions initialData={expressionDataFromServer} />
             <Images initialData={imageDataFromServer} />
