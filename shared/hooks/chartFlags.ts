@@ -45,6 +45,10 @@ export const useChartFlags = (datasets: Array<Dataset>, isError: boolean) => {
     ? datasets.some((d) => d?.procedureStableId?.startsWith("HMGULA_MIN"))
     : false;
 
+  const noStatisticsPerformed = !isError
+    ? datasets.every((d) => d.status === "NotProcessed")
+    : false;
+
   return {
     isABRChart,
     isViabilityChart,
@@ -53,5 +57,6 @@ export const useChartFlags = (datasets: Array<Dataset>, isError: boolean) => {
     isPPIChart,
     hasFlowCytometryImages,
     isMiniSpecProcedure,
+    noStatisticsPerformed,
   };
 };
