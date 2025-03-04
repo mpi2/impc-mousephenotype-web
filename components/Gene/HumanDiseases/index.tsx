@@ -344,18 +344,6 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
     [associatedDiseases, predictedDiseases],
   );
 
-  if (associatedIsError && predictedIsError) {
-    return (
-      <Card id="human-diseases">
-        <SectionHeader
-          containerId="#human-diseases"
-          title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
-        />
-        <Alert variant="primary">No data available for this section</Alert>
-      </Card>
-    );
-  }
-
   const uniqueAssociatedDiseases = useMemo(
     () => [...new Set(associatedDiseases?.map((x) => x.diseaseId))],
     [associatedDiseases],
@@ -372,6 +360,18 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
     const filteredData = selectedData?.filter((d) => d.isMaxPhenodigmScore);
     return orderBy(filteredData, sort[0], sort[1]);
   }, [sort, associatedDiseases, predictedDiseases, tab]);
+
+  if (associatedIsError && predictedIsError) {
+    return (
+      <Card id="human-diseases">
+        <SectionHeader
+          containerId="#human-diseases"
+          title={`Human diseases caused by <i>${gene.geneSymbol}</i> mutations`}
+        />
+        <Alert variant="primary">No data available for this section</Alert>
+      </Card>
+    );
+  }
 
   const shouldDisplayLoading =
     (tab === "associated" && associatedLoading) ||
