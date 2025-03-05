@@ -29,8 +29,6 @@ export default async function Page({
 }) {
   const type = searchParams.type ?? "";
   const term = searchParams.term ?? "";
-  const results = !!term
-    ? await fetchSearchResults(type, term)
-    : { results: [], numResults: -1 };
+  const results = { numResults: -1, results: [] };
   return <SearchPage type={type} term={term} data={results} />;
 }

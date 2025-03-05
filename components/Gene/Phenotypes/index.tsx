@@ -101,10 +101,7 @@ const Phenotypes = ({ sigPhenotypesFromServer }: PhenotypesProps) => {
     isPhenotypeFetching,
     error: sigPhenotypeError,
     fetchStatus: sigPhenotypeFetchStatus,
-  } = useSignificantPhenotypesQuery(
-    gene.mgiGeneAccessionId,
-    !!gene && sigPhenotypesFromServer?.length === 0,
-  );
+  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, !!gene);
 
   const sigPhenotypes = sigPhenotypesFromServer || phenotypeData;
 

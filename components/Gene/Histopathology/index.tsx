@@ -35,7 +35,6 @@ const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
       fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/gene_histopathology`),
     enabled: !!gene.mgiGeneAccessionId,
     select: (data) => data as Array<GeneHistopathology>,
-    initialData,
   });
 
   useEffect(() => {
