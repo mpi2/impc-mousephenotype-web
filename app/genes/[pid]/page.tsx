@@ -24,27 +24,15 @@ async function getGeneSummary(mgiGeneAccessionId: string) {
   if (!geneData) {
     notFound();
   }
-  const results = await Promise.allSettled([
-    fetchGenePhenotypeHits(mgiGeneAccessionId),
-    fetchGeneOrderData(mgiGeneAccessionId),
-    fetchGeneExpressionData(mgiGeneAccessionId),
-    fetchGeneImageData(mgiGeneAccessionId),
-    fetchGeneHistopathologyData(mgiGeneAccessionId),
-  ]);
-  const sigGeneData = processResponse(results[0]);
-  const orderGeneData = processResponse(results[1]);
-  const expressionData = processResponse(results[2]);
-  const imageData = processResponse(results[3]);
-  const histopathologyData = processResponse(results[4]);
 
   return {
     gene: geneData,
-    significantPhenotypes: sigGeneData,
-    orderData: orderGeneData,
-    expressionData,
-    imageData,
-    histopathologyData,
-    humanDiseasesData: [],
+    significantPhenotypes: null,
+    orderData: null,
+    expressionData: null,
+    imageData: null,
+    histopathologyData: null,
+    humanDiseasesData: null,
   };
 }
 
