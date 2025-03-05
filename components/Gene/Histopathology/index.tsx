@@ -35,7 +35,6 @@ const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
       fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/gene_histopathology`),
     enabled: !!gene.mgiGeneAccessionId,
     select: (data) => data as Array<GeneHistopathology>,
-    initialData,
   });
 
   useEffect(() => {
@@ -52,7 +51,6 @@ const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
           title="Histopathology"
           href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
         />
-        <h2>Histopathology</h2>
         <p className="grey">Loading...</p>
       </Card>
     );

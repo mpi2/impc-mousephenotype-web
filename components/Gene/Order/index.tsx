@@ -39,10 +39,7 @@ const Order = ({
     isFetching,
     isError,
     data: filtered,
-  } = useGeneOrderQuery(
-    gene.mgiGeneAccessionId,
-    !!gene.mgiGeneAccessionId && orderDataFromServer?.length === 0,
-  );
+  } = useGeneOrderQuery(gene.mgiGeneAccessionId, !!gene.mgiGeneAccessionId);
 
   const getProductURL = (allele: string, product: string) => {
     const anchorObjs = {

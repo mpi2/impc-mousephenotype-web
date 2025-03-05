@@ -59,6 +59,5 @@ export const usePhenotypeGeneAssociationsQuery = (
     select: (data: Array<PhenotypeGenotypes>) =>
       processGenotypeHitsByPhenotype(data, sortOptions),
     placeholderData: [],
-    initialData,
   });
 };
