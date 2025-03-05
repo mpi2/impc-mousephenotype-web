@@ -524,15 +524,17 @@ const ManhattanPlot = ({ phenotypeId }) => {
             <LoadingProgressBar />
           </div>
         ) : (
-          (!!data ?? (
+          !!data && (
             <div className={styles.chartWrapper}>
               <Scatter
+                id="manhattan-plot"
                 ref={chartRef}
+                aria-label="Manhattan Plot"
                 options={options as any}
                 data={data.chartData as any}
               />
             </div>
-          ))
+          )
         )}
       </div>
       <div className={styles.resultsSection}>
