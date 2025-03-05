@@ -51,7 +51,6 @@ const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
           title="Histopathology"
           href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
         />
-        <h2>Histopathology</h2>
         <p className="grey">Loading...</p>
       </Card>
     );
