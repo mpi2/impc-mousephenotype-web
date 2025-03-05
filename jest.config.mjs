@@ -10,7 +10,7 @@ const config = {
   collectCoverage: true,
   collectCoverageFrom: [
     "./components/**/*.{ts,tsx}",
-    "./pages/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
     "./shared/hooks/*.ts",
     "!**/*.d.ts",
     "!**/node_modules/**",
@@ -21,7 +21,7 @@ const config = {
   setupFiles: ["<rootDir>/jest.polyfills.js", "jest-canvas-mock"],
   moduleNameMapper: {
     "^@/components/(.*)$": "<rootDir>/components/$1",
-    "^@/pages/(.*)$": "<rootDir>/pages/$1",
+    "^@/app/(.*)$": "<rootDir>/app/$1",
     "^@/utils/(.*)$": "<rootDir>/utils/$1",
     "^d3-(.+)$": "<rootDir>/node_modules/d3-$1/dist/d3-$1.js",
     "^d3$": "<rootDir>/node_modules/d3/dist/d3.min.js",
