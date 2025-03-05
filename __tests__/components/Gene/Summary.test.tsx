@@ -146,4 +146,20 @@ describe("Gene summary component", () => {
       "hematopoietic system phenotype",
     );
   });
+
+  it("should change CTA button text if numOfAlleles is 0", async () => {
+    renderWithClient(
+      <GeneContext.Provider value={gene}>
+        <Summary numOfAlleles={0} />
+      </GeneContext.Provider>,
+    );
+    expect(await screen.findByRole("button")).toHaveTextContent(
+      "No allele products available",
+    );
+    expect(screen.getByRole("button")).toHaveClass(
+      "btn",
+      "btn-grey",
+      "impc-base-button",
+    );
+  });
 });
