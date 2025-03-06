@@ -93,7 +93,7 @@ const GenomeBrowser = ({
   hasEsCellData,
   hasTargetingVectorData,
 }: GenomeBrowserProps) => {
-  let genomeBrowserRef = useRef<BrowserProps>(null);
+  let genomeBrowserRef = useRef<BrowserProps | null>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
   const [selectedTracks, setSelectedTracks] = useState<SelectedTracks>({
     crisprGuides: false,
