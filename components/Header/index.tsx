@@ -335,7 +335,7 @@ const Header = () => {
                               subMenuItem.children
                                 .sort((a, b) => a.sort - b.sort)
                                 .map((subMenuItemChild) => (
-                                  <p>
+                                  <p key={subMenuItemChild.link}>
                                     <Link href={subMenuItemChild.link}>
                                       {subMenuItemChild.name}
                                     </Link>
