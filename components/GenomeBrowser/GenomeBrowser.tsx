@@ -1,10 +1,10 @@
 "use client";
 
-import { Form } from "react-bootstrap";
+import { Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import { Card } from "@/components";
 import { useLayoutEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
-import { kebabCase } from "lodash";
+import classNames from "classnames";
 
 type GenomeBrowserProps = {
   geneSymbol: string;
@@ -20,62 +20,38 @@ type BrowserProps = {
   removeTrackByName: (trackName: string) => void;
 };
 
-const CRISPR_TRACKS = [
-  {
-    name: "Refseq Curated",
-    format: "refgene",
-    url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
-    indexed: false,
-    height: 220,
-    order: 0,
-    removable: false,
-  },
-  {
+type SelectedTracks = {
+  crisprGuides: boolean;
+  crisprDeletions: boolean;
+  esCellAlleles: boolean;
+  esCellProducts: boolean;
+  targetingVectors: boolean;
+};
+
+const PRODUCTS_TRACKS = {
+  crisprGuides: {
     name: "IMPC CRISPR guides",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
     order: 10,
   },
-  {
+  crisprDeletions: {
     name: "Molecular deletions identified in IMPC CRISPR alleles",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
     order: 11,
   },
-];
-const ESCELL_TRACKS = [
-  {
-    name: "Refseq Curated",
-    format: "refgene",
-    url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
-    indexed: false,
-    height: 220,
-    order: 0,
-    removable: false,
-  },
-  {
+  esCellAlleles: {
     name: "ES Cell based Mouse Alleles",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
   },
-  {
+  esCellProducts: {
     name: "ES Cell Products",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
   },
-];
-const TARGETING_VECTOR_TRACKS = [
-  {
-    name: "Refseq Curated",
-    format: "refgene",
-    url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
-    indexed: false,
-    height: 220,
-    order: 0,
-    removable: false,
-  },
-  {
+  targetingVectors: {
     name: "Targeting Vector Products",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
   },
-];
-
+};
 const optionalTracks = {
   GENCODE: {
     name: "GENCODE",
@@ -119,21 +95,50 @@ const GenomeBrowser = ({
 }: GenomeBrowserProps) => {
   let genomeBrowserRef = useRef<BrowserProps>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
+  const [selectedTracks, setSelectedTracks] = useState<SelectedTracks>({
+    crisprGuides: false,
+    crisprDeletions: false,
+    esCellAlleles: false,
+    esCellProducts: false,
+    targetingVectors: false,
+  });
 
   useLayoutEffect(() => {
     let shouldCreateBrowser = true;
     async function setupIGVBrowser() {
       const igv = (await import("igv/dist/igv.esm")).default;
       const igvContainer = document.querySelector("#igv-container");
-      let tracks: Array<any> = [];
+      const selectedTracks: Record<string, boolean> = {};
+      let tracks: Array<any> = [
+        {
+          name: "Refseq Curated",
+          format: "refgene",
+          url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
+          indexed: false,
+          height: 220,
+          order: 0,
+          removable: false,
+        },
+      ];
       if (hasCRISPRData) {
-        tracks.concat(...CRISPR_TRACKS);
+        tracks.push(
+          PRODUCTS_TRACKS.crisprGuides,
+          PRODUCTS_TRACKS.crisprDeletions,
+        );
+        selectedTracks.crisprGuides = true;
+        selectedTracks.crisprDeletions = true;
       }
       if (hasEsCellData) {
-        tracks.concat(...ESCELL_TRACKS);
+        tracks.push(
+          PRODUCTS_TRACKS.esCellAlleles,
+          PRODUCTS_TRACKS.esCellProducts,
+        );
+        selectedTracks.esCellAlleles = true;
+        selectedTracks.esCellProducts = true;
       }
       if (hasTargetingVectorData) {
-        tracks.concat(...TARGETING_VECTOR_TRACKS);
+        tracks.push(PRODUCTS_TRACKS.targetingVectors);
+        selectedTracks.targetingVectors = true;
       }
       const igvOptions = {
         locus: geneSymbol,
@@ -154,6 +159,10 @@ const GenomeBrowser = ({
         browser.search(mgiGeneAccessionId);
         genomeBrowserRef.current = browser;
         setIsBrowserSetup(true);
+        setSelectedTracks((prevState) => ({
+          ...prevState,
+          ...selectedTracks,
+        }));
       }
     }
     if (!!mgiGeneAccessionId && !!geneSymbol && !isBrowserSetup && !!window) {
@@ -162,6 +171,7 @@ const GenomeBrowser = ({
     return () => {
       shouldCreateBrowser = false;
     };
+    // IMPORTANT: no dependencies to ensure effect only runs once (IGV browser creation)
   }, []);
 
   const resetView = () => {
@@ -182,62 +192,153 @@ const GenomeBrowser = ({
     }
   };
 
+  const toggleProductTrack = (name: keyof SelectedTracks, value: boolean) => {
+    if (genomeBrowserRef.current) {
+      if (value) {
+        genomeBrowserRef.current.loadTrack(PRODUCTS_TRACKS[name]);
+      } else {
+        genomeBrowserRef.current.removeTrackByName(PRODUCTS_TRACKS[name].name);
+      }
+      setSelectedTracks((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
+  };
+
   return (
     <Card>
-      <h2 className="mb-4 mt-0">Genome browser</h2>
-      <div className={styles.controlsContainer}>
-        <div>
-          <Form.Label className="d-inline-block me-3 mb-0">
-            Gene annotation tracks:
-          </Form.Label>
-          <Form.Check
-            className="mb-0"
-            inline
-            disabled
-            checked
-            label="Refseq"
-            type="checkbox"
-          />
-          <Form.Check
-            className="mb-0"
-            inline
-            label="GENCODE"
-            name="group1"
-            onChange={(e) => toggleOptionalTrack("GENCODE", e.target.checked)}
-          />
-        </div>
-        <div>
-          <Form.Label className="d-inline-block me-3 mb-0">
-            Additional tracks:
-          </Form.Label>
-          <Form.Check
-            className="mb-0"
-            inline
-            label="IKMC alleles"
-            onChange={(e) =>
-              toggleOptionalTrack("IKMC alleles", e.target.checked)
-            }
-          />
-          <Form.Check
-            className="mb-0"
-            inline
-            label="UniProt SwissProt/TrEMBL Protein Annotations"
-            name="group1"
-            onChange={(e) =>
-              toggleOptionalTrack(
-                "UniProt SwissProt/TrEMBL Protein Annotations",
-                e.target.checked,
-              )
-            }
-          />
-        </div>
-        <button
-          className="btn impc-secondary-button small"
-          onClick={() => resetView()}
-        >
-          Reset view
-        </button>
-      </div>
+      <Container style={{ padding: 0 }}>
+        <Row>
+          <Col>
+            <h2 className="mb-3 mt-0">Genome browser</h2>
+          </Col>
+          <Col className={styles.resetBtnContainer}>
+            <button
+              className="btn impc-secondary-button small"
+              onClick={() => resetView()}
+            >
+              Reset view
+            </button>
+          </Col>
+        </Row>
+        <Row style={{ position: "relative" }}>
+          <Col>
+            <div className={styles.controlsContainer}>
+              <div>
+                <Form.Label className="d-inline-block fst-italic me-3 mb-0">
+                  Annotation tracks:
+                </Form.Label>
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  disabled
+                  checked
+                  label="Refseq"
+                  type="checkbox"
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="GENCODE"
+                  name="group1"
+                  onChange={(e) =>
+                    toggleOptionalTrack("GENCODE", e.target.checked)
+                  }
+                />
+              </div>
+            </div>
+            <hr />
+            <div className={styles.controlsContainer}>
+              <div>
+                <Form.Label className="d-inline-block fst-italic me-3 mb-0">
+                  Product tracks:
+                </Form.Label>
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="CRISPR Guides"
+                  checked={selectedTracks.crisprGuides}
+                  onChange={(e) =>
+                    toggleProductTrack("crisprGuides", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="CRISPR Deletions"
+                  checked={selectedTracks.crisprDeletions}
+                  onChange={(e) =>
+                    toggleProductTrack("crisprDeletions", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="ES Cells Products"
+                  checked={selectedTracks.esCellProducts}
+                  onChange={(e) =>
+                    toggleProductTrack("esCellProducts", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="ES Cells Alleles"
+                  checked={selectedTracks.esCellAlleles}
+                  onChange={(e) =>
+                    toggleProductTrack("esCellAlleles", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="Targeting vectors"
+                  checked={selectedTracks.targetingVectors}
+                  onChange={(e) =>
+                    toggleProductTrack("targetingVectors", e.target.checked)
+                  }
+                />
+              </div>
+            </div>
+            <hr />
+            <div className={styles.controlsContainer}>
+              <div>
+                <Form.Label className="d-inline-block me-3 mb-0 fst-italic">
+                  Additional tracks:
+                </Form.Label>
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="IKMC alleles"
+                  onChange={(e) =>
+                    toggleOptionalTrack("IKMC alleles", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="UniProt SwissProt/TrEMBL Protein Annotations"
+                  name="group1"
+                  onChange={(e) =>
+                    toggleOptionalTrack(
+                      "UniProt SwissProt/TrEMBL Protein Annotations",
+                      e.target.checked,
+                    )
+                  }
+                />
+              </div>
+            </div>
+          </Col>
+          <div
+            className={classNames(styles.overlay, {
+              [styles.active]: !isBrowserSetup,
+            })}
+          >
+            <Spinner variant="primary" />
+          </div>
+        </Row>
+      </Container>
 
       <div id="igv-container" />
     </Card>
