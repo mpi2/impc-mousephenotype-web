@@ -217,11 +217,6 @@ const Crispr = ({
           ]}
         />
       </Card>
-      <GenomeBrowser
-        geneSymbol={geneSymbol}
-        mgiGeneAccessionId={mgiGeneAccessionId}
-        section="CRISPR"
-      />
     </>
   );
 };

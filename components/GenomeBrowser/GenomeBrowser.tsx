@@ -9,7 +9,9 @@ import { kebabCase } from "lodash";
 type GenomeBrowserProps = {
   geneSymbol: string;
   mgiGeneAccessionId: string;
-  section: "CRISPR" | "ES Cell" | "Targeting Vector";
+  hasCRISPRData: boolean;
+  hasEsCellData: boolean;
+  hasTargetingVectorData: boolean;
 };
 
 type BrowserProps = {
@@ -111,7 +113,9 @@ const optionalTracks = {
 const GenomeBrowser = ({
   geneSymbol,
   mgiGeneAccessionId,
-  section,
+  hasCRISPRData,
+  hasEsCellData,
+  hasTargetingVectorData,
 }: GenomeBrowserProps) => {
   let genomeBrowserRef = useRef<BrowserProps>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
@@ -120,22 +124,16 @@ const GenomeBrowser = ({
     let shouldCreateBrowser = true;
     async function setupIGVBrowser() {
       const igv = (await import("igv/dist/igv.esm")).default;
-      const igvContainer = document.querySelector(
-        `#igv-container-${kebabCase(section)}`,
-      );
-      let tracks: Array<any>;
-      switch (section) {
-        case "CRISPR":
-          tracks = [...CRISPR_TRACKS];
-          break;
-        case "ES Cell":
-          tracks = [...ESCELL_TRACKS];
-          break;
-        case "Targeting Vector":
-          tracks = [...TARGETING_VECTOR_TRACKS];
-          break;
-        default:
-          tracks = [];
+      const igvContainer = document.querySelector("#igv-container");
+      let tracks: Array<any> = [];
+      if (hasCRISPRData) {
+        tracks.concat(...CRISPR_TRACKS);
+      }
+      if (hasEsCellData) {
+        tracks.concat(...ESCELL_TRACKS);
+      }
+      if (hasTargetingVectorData) {
+        tracks.concat(...TARGETING_VECTOR_TRACKS);
       }
       const igvOptions = {
         locus: geneSymbol,
@@ -241,7 +239,7 @@ const GenomeBrowser = ({
         </button>
       </div>
 
-      <div id={`igv-container-${kebabCase(section)}`} />
+      <div id="igv-container" />
     </Card>
   );
 };
