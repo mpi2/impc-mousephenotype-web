@@ -167,8 +167,8 @@ const Crispr = ({
           {data.guides.map((guide) => {
             return (
               <tr key={guide.guideSequence}>
-                {tableHeaders.map(({ field }) => (
-                  <td>{guide[field]}</td>
+                {tableHeaders.map(({ field }, index) => (
+                  <td key={index}>{guide[field]}</td>
                 ))}
               </tr>
             );

@@ -141,9 +141,9 @@ const TargetingVector = ({
                 { width: 1.5, label: "Order", disabled: true },
               ]}
             >
-              {pageData.map((p) => {
+              {pageData.map((p, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <Link
                         href={`/designs/${p.designLink.split(":")[2]}`}
@@ -197,8 +197,9 @@ const TargetingVector = ({
                       )}
                     </td>
                     <td>
-                      {p.orders.map(({ orderLink, orderName }) => (
+                      {p.orders.map(({ orderLink, orderName }, index) => (
                         <a
+                          key={index}
                           href={orderLink}
                           target="_blank"
                           className="link primary"

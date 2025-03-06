@@ -134,9 +134,9 @@ const ESCell = ({
                 { width: 2, label: "Order / Contact", disabled: true },
               ]}
             >
-              {pageData.map((p) => {
+              {pageData.map((p, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <strong>{p.name}</strong>
                     </td>
@@ -144,8 +144,9 @@ const ESCell = ({
                     <td>{p.parentEsCellLine}</td>
                     <td>{p.ikmcProjectId}</td>
                     <td>
-                      {p.qcData.map(() => (
+                      {p.qcData.map((_, index) => (
                         <a
+                          key={index}
                           href="#"
                           target="_blank"
                           className="link"
@@ -165,8 +166,9 @@ const ESCell = ({
                     </td>
                     <td>{p.associatedProductVectorName}</td>
                     <td>
-                      {p.orders.map(({ orderLink, orderName }) => (
+                      {p.orders.map(({ orderLink, orderName }, index) => (
                         <a
+                          key={index}
                           href={orderLink}
                           target="_blank"
                           className="link primary"
