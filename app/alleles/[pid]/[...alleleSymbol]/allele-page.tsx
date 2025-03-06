@@ -191,7 +191,6 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
         )}
         {doesEsCellProductsExist && (
           <ESCell
-            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
             setQcData={setQcData}
@@ -199,7 +198,6 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
         )}
         {doesTargetingVectorProductsExist && (
           <TargetingVector
-            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />
@@ -213,7 +211,6 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
 
         {doesCrisprProductsExist && (
           <Crispr
-            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />

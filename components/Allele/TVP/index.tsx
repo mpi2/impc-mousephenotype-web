@@ -10,23 +10,15 @@ import _ from "lodash";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import {
-  Card,
-  DownloadData,
-  GenomeBrowser,
-  Pagination,
-  SortableTable,
-} from "@/components";
+import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlleleTvp } from "@/models/allele/tvp";
 
 const TargetingVector = ({
   mgiGeneAccessionId,
   alleleName,
-  geneSymbol,
 }: {
   mgiGeneAccessionId: string;
   alleleName: string;
-  geneSymbol: string;
 }) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "tvp", alleleName],

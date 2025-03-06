@@ -8,27 +8,15 @@ import { formatESCellName, toSentenceCase } from "@/utils";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import {
-  Card,
-  DownloadData,
-  GenomeBrowser,
-  Pagination,
-  SortableTable,
-} from "@/components";
+import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlleleEsCell } from "@/models/allele/es-cell";
 
 type EsCellProps = {
-  geneSymbol: string;
   mgiGeneAccessionId: string;
   alleleName: string;
   setQcData: (any) => void;
 };
-const ESCell = ({
-  geneSymbol,
-  mgiGeneAccessionId,
-  alleleName,
-  setQcData,
-}: EsCellProps) => {
+const ESCell = ({ mgiGeneAccessionId, alleleName, setQcData }: EsCellProps) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "es_cell", alleleName],
     queryFn: () =>
