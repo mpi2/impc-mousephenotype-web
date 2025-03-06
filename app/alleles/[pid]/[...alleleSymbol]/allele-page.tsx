@@ -170,7 +170,7 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
           <p className="mb-4 grey">{alleleDescription}</p>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {productTypes.map((productType) => (
-              <ProductItem {...productType} />
+              <ProductItem key={productType.name} {...productType} />
             ))}
           </div>
         </Card>
