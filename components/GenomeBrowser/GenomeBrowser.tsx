@@ -152,6 +152,10 @@ const GenomeBrowser = ({
           chromSizesURL:
             "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.chrom.sizes",
         },
+        search: {
+          url: "https://www.gentar.org/orthology-api/api/ortholog/get-coordinates/search?geneQuery=$FEATURE$",
+          resultsField: "results",
+        },
         tracks,
       };
       if (shouldCreateBrowser) {
