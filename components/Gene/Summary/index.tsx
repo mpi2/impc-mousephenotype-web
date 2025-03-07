@@ -10,7 +10,9 @@ import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { useContext } from "react";
-import { GeneContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
+import Skeleton from "react-loading-skeleton";
+import classNames from "classnames";
 
 const CollectionItem = ({
   name,
@@ -43,6 +45,7 @@ type SummaryProps = {
 };
 const Summary = ({ numOfAlleles }: SummaryProps) => {
   const gene = useContext(GeneContext);
+  const { numAllelesAvailable } = useContext(AllelesStudiedContext);
   const SYNONYMS_COUNT = 2;
 
   const joined = [
@@ -275,27 +278,39 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
           </Row>
           <Row>
             <Col lg={6}>
-              {numOfAlleles > 0 ? (
-                <a
-                  role="button"
-                  href="#order"
-                  className="btn impc-primary-button"
-                  style={{ fontWeight: 500, fontSize: "120%" }}
-                >
-                  View allele products
-                </a>
-              ) : (
-                <a
-                  className="btn btn-grey impc-base-button"
-                  style={{
-                    cursor: "initial",
-                    fontWeight: 500,
-                    fontSize: "120%",
-                  }}
-                >
-                  No allele products available
-                </a>
-              )}
+              <div className={styles.overlayContainer}>
+                {numAllelesAvailable === 0 ? (
+                  <a
+                    className={classNames(
+                      "btn",
+                      "btn-grey",
+                      "impc-base-button",
+                      styles.disabledAllelesBtn,
+                    )}
+                  >
+                    No allele products available
+                  </a>
+                ) : (
+                  <a
+                    role="button"
+                    href="#order"
+                    className={classNames(
+                      "btn",
+                      "impc-primary-button",
+                      styles.allelesAvailablesBtn,
+                    )}
+                  >
+                    View allele products
+                  </a>
+                )}
+                <Skeleton
+                  className={styles.skeleton}
+                  containerClassName={classNames(styles.skeletonOverlay, {
+                    [styles.active]: numAllelesAvailable === -1,
+                  })}
+                  height={50}
+                />
+              </div>
             </Col>
           </Row>
         </Col>
