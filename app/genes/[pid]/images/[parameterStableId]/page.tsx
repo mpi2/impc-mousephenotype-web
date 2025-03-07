@@ -33,15 +33,9 @@ export default async function Page({ params }: { params: PageParams }) {
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     notFound();
   }
-  const { controlImages, mutantImages } = await getImages(
-    mgiGeneAccessionId,
-    parameterStableId,
-  );
+
   return (
-    <ImageViewerPage
-      controlImagesFromServer={controlImages}
-      mutantImagesFromServer={mutantImages}
-    />
+    <ImageViewerPage controlImagesFromServer={[]} mutantImagesFromServer={[]} />
   );
 }
 

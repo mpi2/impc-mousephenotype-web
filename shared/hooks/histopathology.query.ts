@@ -145,6 +145,5 @@ export const useHistopathologyQuery = (
         images: groupBy(images, (image) => image.tissue),
       };
     },
-    initialData,
   });
 };
