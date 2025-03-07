@@ -177,6 +177,7 @@ $pillSize: 1.8rem;
     max-width: none;
   }
 }
+
 .btnOrder {
   --bs-btn-border-width: 1px;
   --bs-btn-border-color: #102A5C;
@@ -185,4 +186,40 @@ $pillSize: 1.8rem;
   color: #102A5C;
   font-weight: 500;
   padding: 0.5rem 2rem;
+}
+
+@mixin call-to-action-styles {
+  font-weight: 500;
+  font-size: 120%;
+}
+
+.allelesAvailablesBtn {
+  @include call-to-action-styles;
+}
+.disabledAllelesBtn {
+  @include call-to-action-styles;
+  cursor: initial;
+}
+.overlayContainer {
+  position: relative;
+  max-width: fit-content;
+}
+.skeletonOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  font-size: 0;
+  transition: opacity 400ms;
+  &.active {
+    opacity: 1;
+    z-index: 2;
+  }
+  .skeleton {
+    --base-color: rgba(235, 235, 235, 0.5);
+    --highlight-color: rgba(245, 245, 245, 0.5);
+  }
 }
