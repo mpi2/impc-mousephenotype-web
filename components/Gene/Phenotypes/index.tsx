@@ -52,10 +52,10 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
 
   if (isFetching) {
     return (
-      <p className="grey" style={{ padding: "1rem" }}>
+      <div className="grey" style={{ padding: "1rem" }}>
         <Spinner animation="border" size="sm" />
         &nbsp; Loading...
-      </p>
+      </div>
     );
   }
   if (isError && !data?.length && errorMessage) {
@@ -101,10 +101,7 @@ const Phenotypes = ({ sigPhenotypesFromServer }: PhenotypesProps) => {
     isPhenotypeFetching,
     error: sigPhenotypeError,
     fetchStatus: sigPhenotypeFetchStatus,
-  } = useSignificantPhenotypesQuery(
-    gene.mgiGeneAccessionId,
-    !!gene && sigPhenotypesFromServer?.length === 0,
-  );
+  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, !!gene);
 
   const sigPhenotypes = sigPhenotypesFromServer || phenotypeData;
 

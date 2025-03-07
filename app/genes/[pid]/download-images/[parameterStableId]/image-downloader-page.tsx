@@ -82,7 +82,6 @@ const DownloadImagesPage = ({
         })),
       };
     },
-    initialData: mutantImagesFromServer,
   });
 
   const { data: controlImages, isLoading: isControlImagesLoading } = useQuery({
@@ -107,7 +106,6 @@ const DownloadImagesPage = ({
         })),
       };
     },
-    initialData: controlImagesFromServer,
   });
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 

@@ -30,14 +30,10 @@ async function getImages(
 export default async function Page({ params }: { params: PageParams }) {
   const mgiGeneAccessionId = (await params).pid;
   const parameterStableId = (await params).parameterStableId;
-  const { controlImages, mutantImages } = await getImages(
-    mgiGeneAccessionId,
-    parameterStableId,
-  );
   return (
     <ImageDownloaderPage
-      controlImagesFromServer={controlImages}
-      mutantImagesFromServer={mutantImages}
+      controlImagesFromServer={[]}
+      mutantImagesFromServer={[]}
     />
   );
 }

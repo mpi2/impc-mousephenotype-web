@@ -32,6 +32,5 @@ export const useGeneExpressionQuery = (
     },
     enabled: routerIsReady,
     placeholderData: [],
-    initialData,
   });
 };

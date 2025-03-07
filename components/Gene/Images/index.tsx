@@ -96,7 +96,6 @@ const Images = ({ initialData }: ImagesProps) => {
     queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/images`),
     enabled: !!gene.mgiGeneAccessionId,
     select: (data) => data as Array<GeneImage>,
-    initialData,
   });
 
   if (isLoading) {

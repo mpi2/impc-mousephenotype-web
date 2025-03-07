@@ -291,7 +291,7 @@ const ImagesCompare = ({
         `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`,
       ),
     enabled: !!parameterStableId && !!pid,
-    initialData: mutantImagesFromServer,
+    placeholderData: [],
   });
 
   const { data: controlImagesRaw } = useQuery<Array<GeneImageCollection>>({
@@ -301,7 +301,7 @@ const ImagesCompare = ({
         `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`,
       ),
     enabled: !!parameterStableId,
-    initialData: controlImagesFromServer,
+    placeholderData: [],
   });
 
   const [selectedSex, setSelectedSex] = useState("both");
