@@ -13,6 +13,13 @@ import { useContext } from "react";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 import classNames from "classnames";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+
+const spring = {
+  type: "spring",
+  damping: 20,
+  stiffness: 300,
+};
 
 const CollectionItem = ({
   name,
@@ -279,30 +286,46 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
           <Row>
             <Col lg={6}>
               <div className={styles.overlayContainer}>
-                {numAllelesAvailable === 0 ? (
-                  <a
-                    className={classNames(
-                      "btn",
-                      "btn-grey",
-                      "impc-base-button",
-                      styles.disabledAllelesBtn,
+                <AnimatePresence initial={false}>
+                  <LayoutGroup>
+                    {numAllelesAvailable === 0 ? (
+                      <motion.a
+                        key="disabledBtn"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        layout
+                        transition={spring}
+                        className={classNames(
+                          "btn",
+                          "btn-grey",
+                          "impc-base-button",
+                          styles.disabledAllelesBtn,
+                        )}
+                      >
+                        No allele products available
+                      </motion.a>
+                    ) : (
+                      <motion.a
+                        key="allelesBtn"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        layout
+                        transition={spring}
+                        role="button"
+                        href="#order"
+                        className={classNames(
+                          "btn",
+                          "impc-primary-button",
+                          styles.allelesAvailablesBtn,
+                        )}
+                      >
+                        View allele products
+                      </motion.a>
                     )}
-                  >
-                    No allele products available
-                  </a>
-                ) : (
-                  <a
-                    role="button"
-                    href="#order"
-                    className={classNames(
-                      "btn",
-                      "impc-primary-button",
-                      styles.allelesAvailablesBtn,
-                    )}
-                  >
-                    View allele products
-                  </a>
-                )}
+                  </LayoutGroup>
+                </AnimatePresence>
                 <Skeleton
                   className={styles.skeleton}
                   containerClassName={classNames(styles.skeletonOverlay, {
