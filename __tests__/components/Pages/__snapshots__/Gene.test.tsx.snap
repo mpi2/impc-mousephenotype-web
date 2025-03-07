@@ -968,11 +968,10 @@ exports[`Gene page renders correctly 1`] = `
               class="col-lg-6"
             >
               <a
-                class="btn impc-primary-button"
-                href="#order"
-                role="button"
+                class="btn btn-grey impc-base-button"
+                style="cursor: initial; font-weight: 500; font-size: 120%;"
               >
-                 Allele products available
+                No allele products available
               </a>
             </div>
           </div>
@@ -1122,7 +1121,7 @@ exports[`Gene page renders correctly 1`] = `
           id="react-aria-:r0:-tabpane-significantPhenotypes"
           role="tabpanel"
         >
-          <p
+          <div
             class="grey"
             style="padding: 1rem;"
           >
@@ -1130,7 +1129,7 @@ exports[`Gene page renders correctly 1`] = `
               class="spinner-border spinner-border-sm"
             />
               Loading...
-          </p>
+          </div>
         </div>
         <div
           aria-labelledby="react-aria-:r0:-tab-allData"
@@ -1953,14 +1952,11 @@ exports[`Gene page renders correctly 1`] = `
           </svg>
         </a>
       </div>
-      <div
-        class="fade alert alert-primary show"
-        role="alert"
+      <p
+        class="grey"
       >
-        There are no images available for 
-        Ascc2
-        .
-      </div>
+        Loading...
+      </p>
     </div>
     <div
       class="card"
@@ -2413,7 +2409,7 @@ exports[`Gene page renders correctly 1`] = `
         <a
           aria-label="Histopathology documentation"
           class="btn"
-          href="https://www.mousephenotype.org/help/data-visualization/gene-pages/"
+          href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
         >
           <svg
             aria-hidden="true"
@@ -2432,16 +2428,11 @@ exports[`Gene page renders correctly 1`] = `
           </svg>
         </a>
       </div>
-      <div
-        class="fade alert alert-primary show"
-        role="alert"
+      <p
+        class="grey"
       >
-        There is no histopathology data found for 
-        <i>
-          Ascc2
-        </i>
-        .
-      </div>
+        Loading...
+      </p>
     </div>
     <div
       class="card"
