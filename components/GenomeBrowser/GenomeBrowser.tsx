@@ -152,39 +152,11 @@ const GenomeBrowser = ({
           chromSizesURL:
             "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.chrom.sizes",
         },
-        tracks: [
-          {
-            name: "Refseq Curated",
-            format: "refgene",
-            url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
-            indexed: false,
-            height: 220,
-            order: 0,
-            removable: false,
-          },
-          {
-            name: "Targeting Vector Products",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
-          },
-          {
-            name: "ES Cell based Mouse Alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
-          },
-          {
-            name: "ES Cell Products",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
-          },
-          {
-            name: "IMPC CRISPR guides",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/guide_bb_21_02_2025.bb",
-            order: 10,
-          },
-          {
-            name: "Molecular deletions identified in IMPC CRISPR alleles",
-            url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/aligned_fa_bb_21_02_2025.bb",
-            order: 11,
-          },
-        ],
+        search: {
+          url: "https://www.gentar.org/orthology-api/api/ortholog/get-coordinates/search?geneQuery=$FEATURE$",
+          resultsField: "results",
+        },
+        tracks,
       };
       if (shouldCreateBrowser) {
         const browser = await igv.createBrowser(igvContainer, igvOptions);
