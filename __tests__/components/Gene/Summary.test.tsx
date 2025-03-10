@@ -4,7 +4,7 @@ import { renderWithClient } from "../../utils";
 import { GeneSummary } from "@/models/gene";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import userEvent from "@testing-library/user-event";
-import { GeneContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
 
 let gene: GeneSummary = {
   geneName: "calcium and integrin binding family member 2",
@@ -148,10 +148,20 @@ describe("Gene summary component", () => {
   });
 
   it("should change CTA button text if numOfAlleles is 0", async () => {
+    const allelesStudiedContextValue = {
+      allelesStudied: jest.fn(),
+      setAlleles: jest.fn(),
+      allelesStudiedLoading: jest.fn(),
+      setAllelesStudiedLoading: jest.fn(),
+      setNumAllelesAvailable: jest.fn(),
+      numAllelesAvailable: 0,
+    };
     renderWithClient(
-      <GeneContext.Provider value={gene}>
-        <Summary numOfAlleles={0} />
-      </GeneContext.Provider>,
+      <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
+        <GeneContext.Provider value={gene}>
+          <Summary numOfAlleles={0} />
+        </GeneContext.Provider>
+      </AllelesStudiedContext.Provider>,
     );
     expect(await screen.findByRole("button")).toHaveTextContent(
       "No allele products available",

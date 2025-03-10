@@ -972,6 +972,7 @@ exports[`Gene page renders correctly 1`] = `
               >
                 <a
                   class="btn btn-grey impc-base-button disabledAllelesBtn"
+                  role="button"
                   style="opacity: 0;"
                 >
                   No allele products available
