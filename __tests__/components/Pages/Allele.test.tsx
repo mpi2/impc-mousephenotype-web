@@ -34,7 +34,10 @@ jest.mock("next/navigation", () => ({
   })),
 }));
 
-jest.mock("igv/dist/igv.esm");
+jest.mock("@/components/GenomeBrowser/GenomeBrowser", () => {
+  const GenomeBrowserMock = () => <div>Genome Browser mock</div>;
+  return GenomeBrowserMock;
+});
 
 describe("AllelePage", () => {
   it("renders properly", () => {
@@ -62,8 +65,9 @@ describe("AllelePage", () => {
         },
       ),
     );
-    renderWithClient(
+    const { container } = renderWithClient(
       <AllelePage alleleSymbol="tm1a(KOMP)Wtsi" alleleData={alleleData} />,
     );
+    expect(container).toMatchSnapshot();
   });
 });
