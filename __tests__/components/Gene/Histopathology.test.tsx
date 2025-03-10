@@ -15,6 +15,14 @@ const gene = {
 
 describe("Gene histopathology component", () => {
   it("should display information", async () => {
+    server.use(
+      rest.get(
+        `${API_URL}/api/v1/genes/MGI:2143539/gene_histopathology`,
+        (req, res, ctx) => {
+          return res(ctx.json(gls2Data));
+        },
+      ),
+    );
     renderWithClient(
       <GeneContext.Provider value={gene as GeneSummary}>
         <GeneHistopathology initialData={gls2Data} />
@@ -23,7 +31,7 @@ describe("Gene histopathology component", () => {
     expect(await screen.findByRole("heading")).toHaveTextContent(
       "Histopathology",
     );
-    expect(await screen.getByRole("table")).toBeInTheDocument();
+    expect(await screen.findByRole("table")).toBeInTheDocument();
   });
 
   it("should show alert with link to histopathology page if there are not significant hits", async () => {
