@@ -117,7 +117,7 @@ describe("Gene summary component", () => {
       </GeneContext.Provider>,
     );
     expect(await screen.findByRole("button")).toHaveTextContent(
-      "5 Allele products available",
+      "View allele products",
     );
     expect(await screen.findByRole("button")).toHaveAttribute("href", "#order");
   });
