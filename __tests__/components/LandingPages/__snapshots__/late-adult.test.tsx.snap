@@ -1,0 +1,424 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Late Adult landing page renders correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+    style="line-height: 2;"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <nav
+          aria-label="breadcrumb"
+        >
+          <ol
+            class="breadcrumb"
+          >
+            <li
+              aria-current="page"
+              class="breadcrumb-item active"
+            >
+              Home
+            </li>
+            <li
+              aria-current="page"
+              class="breadcrumb-item active"
+            >
+              IMPC data collections
+            </li>
+            <li
+              aria-current="page"
+              class="breadcrumb-item active"
+            >
+              Late Adult Data
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <h1
+        class="mb-4 mt-2"
+      >
+        <strong>
+          Late adult data
+        </strong>
+      </h1>
+      <div
+        class="container"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col-12"
+          >
+            <p>
+              In a global effort to understand gene function, the IMPC is collecting phenotype data of knockout mice at the
+               
+              <strong>
+                embryo, early adult and late adult life stages
+              </strong>
+              . Selected mouse lines enter the
+               
+              <strong>
+                ageing pipeline
+              </strong>
+              , in which specimens are aged to see gene knockout effects later in life.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-4 row"
+        >
+          <div
+            class="col"
+          >
+            <p>
+              Phenotype data is collected following standardized phenotyping pipelines, as described in 
+              <a
+                class="link primary"
+                href="https://www.mousephenotype.org/impress"
+              >
+                IMPReSS
+              </a>
+              , which determines what procedures are performed, how and when. The 
+              <a
+                class="link primary"
+                href="https://www.mousephenotype.org/understand/the-data/"
+              >
+                Late Adult pipeline
+              </a>
+              is based on the Early Adult pipeline, with exclusion of some procedures. For example, hearing based tests can be excluded due to deafness in the baseline. The testing for the Late Adult pipeline starts at 
+              <strong>
+                52 weeks or later
+              </strong>
+              . An “early adult” specimen is less than 16 weeks of age, a “middle aged adult” comprises mice between 16 and 48 weeks of age, and a “late adult” is more than 48 weeks of age. A description of all pipelines can be found here.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-4 row"
+        >
+          <div
+            class="col"
+          >
+            <p>
+              The diagram below shows
+               
+              <strong>
+                all mouse lines for which the IMPC has collected ageing data up to now
+              </strong>
+              . You can scroll down or use the box on the right-hand side to look for a gene of interest. Clicking on the procedure name changes the diagram view to show the underlying parameters, and you can return to the default view by clicking on the header. Clicking on a cell opens up the
+               
+              <strong>
+                “All data table” in the Gene page
+              </strong>
+              , filtered for the selected late adult procedure or parameter, in order to view the underlying data and the statistical tests that were applied.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-4 row"
+        >
+          <div
+            class="col"
+          >
+            <p>
+              IMPC uses most recently 
+              <strong>
+                approved gene symbols
+              </strong>
+              . The search box above supports gene synonyms, MGI identifiers, and human gene symbols. Please use it to find most recent mouse gene symbols.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-4"
+        >
+          <h3>
+            IMPC Late adult heat map
+          </h3>
+          <div
+            class="row"
+          >
+            <div
+              class="col-4"
+            >
+              <div
+                class="input-group"
+              >
+                <span
+                  class="input-group-text"
+                  id="gene-filter"
+                >
+                  Filter by gene symbol
+                </span>
+                <input
+                  aria-describedby="gene-filter"
+                  class="form-control"
+                  id="gene-control"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="col-5 offset-3"
+            >
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <span
+                  style="background-color: rgb(236, 236, 236); border: 1px solid black; width: 20px; height: 20px; display: inline-block;"
+                />
+                 no Late Adult (LA) data
+              </div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <span
+                  style="background-color: rgb(124, 203, 215); border: 1px solid black; width: 20px; height: 20px; display: inline-block;"
+                />
+                 no significant difference between LA controls and LA knockouts
+              </div>
+              <div
+                style="display: flex; align-items: center;"
+              >
+                <span
+                  style="background-color: rgb(241, 154, 87); border: 1px solid black; width: 20px; height: 20px; display: inline-block;"
+                />
+                 significant difference between LA controls and LA knockouts
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100%; height: 100%;"
+          >
+            <svg
+              height="270"
+              width="0"
+            >
+              <svg
+                style="overflow: visible;"
+                x="0"
+                y="0"
+              >
+                <text
+                  class=""
+                  style="text-anchor: middle; font-size: 1.3em; font-weight: 700;"
+                  text-anchor="start"
+                  transform=""
+                  x="0"
+                  y="20"
+                >
+                  <tspan
+                    dy="0em"
+                    x="0"
+                  >
+                    Genes vs Procedures
+                  </tspan>
+                </text>
+              </svg>
+              <g
+                class="visx-group"
+                transform="translate(50, 100)"
+              >
+                <svg
+                  style="overflow: visible;"
+                  x="0"
+                  y="0"
+                >
+                  <text
+                    style="text-anchor: middle;"
+                    text-anchor="start"
+                    transform=""
+                    x="0"
+                    y="120"
+                  >
+                    <tspan
+                      dy="0em"
+                      x="0"
+                    >
+                      No genes match the inserted text
+                    </tspan>
+                  </text>
+                </svg>
+              </g>
+            </svg>
+          </div>
+          <div
+            class="row"
+          >
+            <div
+              class="col"
+              style="display: flex; align-items: center;"
+            >
+              <div>
+                Rows per page: 
+                <select
+                  aria-label="genes per page selector"
+                >
+                  <option
+                    value="10"
+                  >
+                    10
+                  </option>
+                  <option
+                    value="25"
+                  >
+                    25
+                  </option>
+                  <option
+                    value="50"
+                  >
+                    50
+                  </option>
+                  <option
+                    value="100"
+                  >
+                    100
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div
+              class="col"
+            >
+              <nav
+                aria-label="Page navigation example"
+                style="display: flex; justify-content: end;"
+              >
+                <ul
+                  class="pagination justify-content-center paginationNav"
+                >
+                  <button
+                    aria-label="Previous"
+                    class="pagNavBtn nav-btn"
+                    disabled=""
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-prev-page-icon"
+                      class="svg-inline--fa fa-arrow-left "
+                      data-icon="arrow-left"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-prev-page-icon"
+                      >
+                        previous page button
+                      </title>
+                      <path
+                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    aria-label="Next"
+                    class="pagNavBtn nav-btn"
+                    disabled=""
+                  >
+                    <svg
+                      aria-labelledby="svg-inline--fa-title-next-page-icon"
+                      class="svg-inline--fa fa-arrow-right "
+                      data-icon="arrow-right"
+                      data-prefix="fas"
+                      role="img"
+                      viewBox="0 0 448 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <title
+                        id="svg-inline--fa-title-next-page-icon"
+                      >
+                        next page button
+                      </title>
+                      <path
+                        d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
