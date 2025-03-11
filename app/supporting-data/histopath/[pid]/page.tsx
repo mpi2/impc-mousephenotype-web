@@ -17,9 +17,12 @@ export default async function Page({ params }: { params: PageParams }) {
   if (!geneSummary) {
     notFound();
   }
-  const histopathData = await fetchHistopathChartData(mgiGeneAccessionId);
+
   return (
-    <HistopathChartPage gene={geneSummary} histopathologyData={histopathData} />
+    <HistopathChartPage
+      gene={geneSummary}
+      histopathologyData={{ id: "", mgiGeneAccessionId: "", datasets: [] }}
+    />
   );
 }
 

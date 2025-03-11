@@ -39,7 +39,6 @@ export const useDatasetsQuery = (
     enabled,
     select: sortAndDeduplicateDatasets,
     placeholderData: [],
-    initialData: initialDatasets,
   });
   return {
     ...rest,
