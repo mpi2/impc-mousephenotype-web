@@ -1,0 +1,422 @@
+[
+  {
+    "id": "6717810c41fa6ba5df5d405e",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "classificationTag": null,
+    "colonyId": "Monterotondo-HEPD0550_7_C03-1-1",
+    "dataType": "time_series",
+    "geneSymbol": "Cep43",
+    "geneticBackground": "involves: C57BL/6NTac",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal energy homeostasis",
+        "id": "MP:0005450"
+      },
+      {
+        "name": "abnormal energy expenditure",
+        "id": "MP:0001764"
+      },
+      {
+        "name": "abnormal homeostasis",
+        "id": "MP:0005448"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "593a2d0df1def577e4a39c6de7075687",
+    "metadataValues": [
+      "Acclimation to respirometry cages = No|Duration of test = 21|Equipment ID = 1200|Equipment manufacturer = TSE Systems GmbH|Equipment model = PhenoMaster/Labmaster CaloSys, (Dri)+Fed, Act.X,Y 32Mice|Experimenter ID = 114|Room temperature max = 24.4|Room temperature min = 23.6|Time of dark cycle end = 2015-01-20T05:00:00+0000|Time of dark cycle start = 2015-01-19T17:00:00+0000",
+      "Acclimation to respirometry cages = No|Duration of test = 21|Equipment ID = 1200|Equipment manufacturer = TSE Systems GmbH|Equipment model = PhenoMaster/Labmaster CaloSys, (Dri)+Fed, Act.X,Y 32Mice|Experimenter ID = 114|Room temperature max = 24.4|Room temperature min = 23.6|Time of dark cycle end = 2015-01-21T05:00:00+0000|Time of dark cycle start = 2015-01-20T17:00:00+0000"
+    ],
+    "mgiGeneAccessionId": "MGI:1922546",
+    "parameterName": "Heat production (metabolic rate)",
+    "parameterStableId": "IMPC_CAL_005_001",
+    "parameterStableKey": 41597,
+    "phenotypeSex": null,
+    "phenotypingCentre": "HMGU",
+    "pipelineName": "German Mouse Clinic",
+    "pipelineStableId": "HMGU_001",
+    "pipelineStableKey": 14,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal energy expenditure",
+        "id": "MP:0005450"
+      },
+      {
+        "name": "decreased energy expenditure",
+        "id": "MP:0004890"
+      },
+      {
+        "name": "increased energy expenditure",
+        "id": "MP:0004889"
+      }
+    ],
+    "procedureGroup": "IMPC_CAL",
+    "procedureName": "Indirect Calorimetry",
+    "procedureStableId": "IMPC_CAL_003",
+    "procedureStableKey": 855,
+    "productionCentre": "HMGU",
+    "projectName": "Helmholtz GMC",
+    "reportedEffectSize": null,
+    "reportedPValue": null,
+    "unit": {
+      "x": "Time in hours relative to lights out",
+      "y": "kJ/h/animal"
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": null,
+    "zygosity": "heterozygote",
+    "significant": false,
+    "significantPhenotype": null,
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": null,
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "04170d1f0c2aeb927449078c656352a2",
+    "status": "NotProcessed",
+    "strainAccessionId": "MGI:2164831",
+    "strainName": "C57BL/6NTac",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 71098,
+      "femaleControlMean": 1.73760364806324,
+      "femaleControlSd": 0.340457681228341,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": 1.67833928571429,
+      "femaleMutantSd": 0.3242695302226,
+      "maleControlCount": 76606,
+      "maleControlMean": 1.81188196684333,
+      "maleControlSd": 0.364675066182813,
+      "maleMutantCount": 8,
+      "maleMutantMean": 1.69928869047619,
+      "maleMutantSd": 0.31957585525796
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "homeostasis/metabolism phenotype",
+        "id": "MP:0005376"
+      }
+    ]
+  },
+  {
+    "id": "6717840b6f5639caee86a704",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "classificationTag": null,
+    "colonyId": "Monterotondo-HEPD0550_7_C03-1-1",
+    "dataType": "time_series",
+    "geneSymbol": "Cep43",
+    "geneticBackground": "involves: C57BL/6NTac",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal energy homeostasis",
+        "id": "MP:0005450"
+      },
+      {
+        "name": "abnormal energy expenditure",
+        "id": "MP:0001764"
+      },
+      {
+        "name": "abnormal homeostasis",
+        "id": "MP:0005448"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "593a2d0df1def577e4a39c6de7075687",
+    "metadataValues": [
+      "Acclimation to respirometry cages = No|Duration of test = 21|Equipment ID = 1200|Equipment manufacturer = TSE Systems GmbH|Equipment model = PhenoMaster/Labmaster CaloSys, (Dri)+Fed, Act.X,Y 32Mice|Experimenter ID = 114|Room temperature max = 24.4|Room temperature min = 23.6|Time of dark cycle end = 2015-01-20T05:00:00+0000|Time of dark cycle start = 2015-01-19T17:00:00+0000",
+      "Acclimation to respirometry cages = No|Duration of test = 21|Equipment ID = 1200|Equipment manufacturer = TSE Systems GmbH|Equipment model = PhenoMaster/Labmaster CaloSys, (Dri)+Fed, Act.X,Y 32Mice|Experimenter ID = 114|Room temperature max = 24.4|Room temperature min = 23.6|Time of dark cycle end = 2015-01-21T05:00:00+0000|Time of dark cycle start = 2015-01-20T17:00:00+0000"
+    ],
+    "mgiGeneAccessionId": "MGI:1922546",
+    "parameterName": "Heat production (metabolic rate)",
+    "parameterStableId": "IMPC_CAL_005_001",
+    "parameterStableKey": 41597,
+    "phenotypeSex": null,
+    "phenotypingCentre": "HMGU",
+    "pipelineName": "German Mouse Clinic",
+    "pipelineStableId": "HMGU_001",
+    "pipelineStableKey": 14,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal energy expenditure",
+        "id": "MP:0005450"
+      },
+      {
+        "name": "decreased energy expenditure",
+        "id": "MP:0004890"
+      },
+      {
+        "name": "increased energy expenditure",
+        "id": "MP:0004889"
+      }
+    ],
+    "procedureGroup": "IMPC_CAL",
+    "procedureName": "Indirect Calorimetry",
+    "procedureStableId": "IMPC_CAL_003",
+    "procedureStableKey": 855,
+    "productionCentre": "HMGU",
+    "projectName": "Helmholtz GMC",
+    "reportedEffectSize": null,
+    "reportedPValue": null,
+    "unit": {
+      "x": "Time in hours relative to lights out",
+      "y": "kJ/h/animal"
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": null,
+    "zygosity": "heterozygote",
+    "significant": false,
+    "significantPhenotype": null,
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": null,
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "04170d1f0c2aeb927449078c656352a2",
+    "status": "NotProcessed",
+    "strainAccessionId": "MGI:2164831",
+    "strainName": "C57BL/6NTac",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 71098,
+      "femaleControlMean": 1.73760364806324,
+      "femaleControlSd": 0.340457681228341,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": 1.67833928571429,
+      "femaleMutantSd": 0.3242695302226,
+      "maleControlCount": 76606,
+      "maleControlMean": 1.81188196684333,
+      "maleControlSd": 0.364675066182813,
+      "maleMutantCount": 8,
+      "maleMutantMean": 1.69928869047619,
+      "maleMutantSd": 0.31957585525796
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "homeostasis/metabolism phenotype",
+        "id": "MP:0005376"
+      }
+    ]
+  },
+  {
+    "id": "67178ec4ce88c555f8e01b74",
+    "alleleAccessionId": "MGI:5548654",
+    "alleleName": "targeted mutation 1b, Helmholtz Zentrum Muenchen GmbH",
+    "alleleSymbol": "Cep43<tm1b(EUCOMM)Hmgu>",
+    "classificationTag": null,
+    "colonyId": "Monterotondo-HEPD0550_7_C03-1-1",
+    "dataType": "time_series",
+    "geneSymbol": "Cep43",
+    "geneticBackground": "involves: C57BL/6NTac",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal energy homeostasis",
+        "id": "MP:0005450"
+      },
+      {
+        "name": "abnormal energy expenditure",
+        "id": "MP:0001764"
+      },
+      {
+        "name": "abnormal homeostasis",
+        "id": "MP:0005448"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "593a2d0df1def577e4a39c6de7075687",
+    "metadataValues": [
+      "Acclimation to respirometry cages = No|Duration of test = 21|Equipment ID = 1200|Equipment manufacturer = TSE Systems GmbH|Equipment model = PhenoMaster/Labmaster CaloSys, (Dri)+Fed, Act.X,Y 32Mice|Experimenter ID = 114|Room temperature max = 24.4|Room temperature min = 23.6|Time of dark cycle end = 2015-01-20T05:00:00+0000|Time of dark cycle start = 2015-01-19T17:00:00+0000",
+      "Acclimation to respirometry cages = No|Duration of test = 21|Equipment ID = 1200|Equipment manufacturer = TSE Systems GmbH|Equipment model = PhenoMaster/Labmaster CaloSys, (Dri)+Fed, Act.X,Y 32Mice|Experimenter ID = 114|Room temperature max = 24.4|Room temperature min = 23.6|Time of dark cycle end = 2015-01-21T05:00:00+0000|Time of dark cycle start = 2015-01-20T17:00:00+0000"
+    ],
+    "mgiGeneAccessionId": "MGI:1922546",
+    "parameterName": "Heat production (metabolic rate)",
+    "parameterStableId": "IMPC_CAL_005_001",
+    "parameterStableKey": 41597,
+    "phenotypeSex": null,
+    "phenotypingCentre": "HMGU",
+    "pipelineName": "German Mouse Clinic",
+    "pipelineStableId": "HMGU_001",
+    "pipelineStableKey": 14,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal energy expenditure",
+        "id": "MP:0005450"
+      },
+      {
+        "name": "decreased energy expenditure",
+        "id": "MP:0004890"
+      },
+      {
+        "name": "increased energy expenditure",
+        "id": "MP:0004889"
+      }
+    ],
+    "procedureGroup": "IMPC_CAL",
+    "procedureName": "Indirect Calorimetry",
+    "procedureStableId": "IMPC_CAL_003",
+    "procedureStableKey": 855,
+    "productionCentre": "HMGU",
+    "projectName": "Helmholtz GMC",
+    "reportedEffectSize": null,
+    "reportedPValue": null,
+    "unit": {
+      "x": "Time in hours relative to lights out",
+      "y": "kJ/h/animal"
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": null,
+    "zygosity": "heterozygote",
+    "significant": false,
+    "significantPhenotype": null,
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": null,
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "04170d1f0c2aeb927449078c656352a2",
+    "status": "NotProcessed",
+    "strainAccessionId": "MGI:2164831",
+    "strainName": "C57BL/6NTac",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 71098,
+      "femaleControlMean": 1.73760364806324,
+      "femaleControlSd": 0.340457681228341,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": 1.67833928571429,
+      "femaleMutantSd": 0.3242695302226,
+      "maleControlCount": 76606,
+      "maleControlMean": 1.81188196684333,
+      "maleControlSd": 0.364675066182813,
+      "maleMutantCount": 8,
+      "maleMutantMean": 1.69928869047619,
+      "maleMutantSd": 0.31957585525796
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "homeostasis/metabolism phenotype",
+        "id": "MP:0005376"
+      }
+    ]
+  }
+]
