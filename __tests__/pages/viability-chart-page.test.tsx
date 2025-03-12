@@ -22,6 +22,26 @@ jest.mock("next/navigation", () => {
   };
 });
 
+jest.mock("framer-motion", () => {
+  const FakeTransition = jest
+    .fn()
+    .mockImplementation(({ children }) => children);
+  const FakeAnimatePresence = jest
+    .fn()
+    .mockImplementation(({ children }) => (
+      <FakeTransition>{children}</FakeTransition>
+    ));
+  const motion = {
+    tr: jest.fn().mockImplementation(({ children }) => <tr>{children}</tr>),
+  };
+  return {
+    __esModule: true,
+    motion,
+    AnimatePresence: FakeAnimatePresence,
+    default: jest.fn(),
+  };
+});
+
 describe("Bodyweight chart page", () => {
   it("renders correctly", async () => {
     server.use(
