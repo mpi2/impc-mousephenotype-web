@@ -1,9 +1,9 @@
-import BodyWeightChartPage from "@/app/supporting-data/bodyweight/bodyweight-chart-page";
+import ViabilityChartPage from "@/app/supporting-data/viability/viability-chart-page";
 import { screen, waitFor } from "@testing-library/react";
 import { API_URL, renderWithClient } from "../utils";
 import { server } from "../../mocks/server";
 import { rest } from "msw";
-import bodyWeightData from "../../mocks/data/tests/myo6-bodyweight-data.json";
+import viabilityData from "../../mocks/data/tests/myo6-viability-data.json";
 
 jest.mock("next/navigation", () => {
   const routerMock = {
@@ -31,12 +31,12 @@ describe("Bodyweight chart page", () => {
           const mgiGeneAccessionId =
             req.url.searchParams.get("mgiGeneAccessionId");
           if (mgiGeneAccessionId === "MGI:104785") {
-            return res(ctx.json(bodyWeightData));
+            return res(ctx.json(viabilityData));
           }
         },
       ),
     );
-    const { container } = renderWithClient(<BodyWeightChartPage />);
+    const { container } = renderWithClient(<ViabilityChartPage />);
     await waitFor(async () => {
       const rows = await screen.findAllByRole("row");
       return expect(rows.length).toEqual(3);
