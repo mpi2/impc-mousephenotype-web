@@ -459,7 +459,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
           </thead>
           <tbody>
             <tr
-              style="opacity: 0; max-height: 0px; transform: translate3d(0px, 4.070987924642395px, 0px) ; transform-origin: 50% 50% 0;"
+              style="opacity: 0; max-height: 0px; transform: translate3d(0px, 2.755702596914489px, 0px) ; transform-origin: 50% 50% 0;"
             >
               <td>
                 <span

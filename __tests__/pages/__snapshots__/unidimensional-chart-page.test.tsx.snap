@@ -431,7 +431,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
           <tbody>
             <tr
               class="highlighted-row"
-              style="opacity: 0; max-height: 0px; transform: none; transform-origin: 50% 50% 0;"
+              style="opacity: 0.016105781252554154; max-height: 0px; transform: translate3d(0px, -0.18750534313921463px, 0px) ; transform-origin: 50% 50% 0;"
             >
               <td>
                 Body length

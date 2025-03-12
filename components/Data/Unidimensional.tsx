@@ -146,6 +146,7 @@ const Unidimensional = ({
           <Card>
             <h2>Summary statistics of all data in the dataset</h2>
             <SortableTable
+              data-testid="summary-statistics-table"
               headers={[
                 { width: 5, label: "", disabled: true },
                 { width: 2, label: "Mean", disabled: true },
