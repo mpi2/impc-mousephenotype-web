@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Bodyweight chart page renders correctly 1`] = `
+exports[`Viability chart page renders correctly 1`] = `
 <div>
   <div
     class="banner"
@@ -106,9 +106,9 @@ exports[`Bodyweight chart page renders correctly 1`] = `
              
             <i>
               <span
-                style="font-style: normal;"
+                style=""
               >
-                gene page
+                Myo6
               </span>
             </i>
           </a>
@@ -122,27 +122,23 @@ exports[`Bodyweight chart page renders correctly 1`] = `
         >
           Viability data for 
           <i>
-            <span
-              aria-busy="true"
-              aria-live="polite"
-            >
-              <span
-                class="react-loading-skeleton"
-                style="width: 50px;"
-              >
-                ‌
-              </span>
-            </span>
+            Myo6
           </i>
            gene
         </strong>
       </h1>
-      <span>
+      <div
+        class="mb-0"
+      >
         <div
-          class="spinner-border spinner-border-sm"
-        />
-          Loading data
-      </span>
+          style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;"
+        >
+          <span>
+            5
+             parameter / zygosity / metadata group combinations tested.
+          </span>
+        </div>
+      </div>
       <div
         class="tableWrapper"
       >
@@ -460,95 +456,142 @@ exports[`Bodyweight chart page renders correctly 1`] = `
           <tbody>
             <tr>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                <strong>
+                  Viable
+                </strong>
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                homozygote
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                TCP
+              </td>
+              <td />
+              <td>
+                Early adult
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                <strong>
+                  Viable
+                </strong>
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                homozygote
+              </td>
+              <td>
+                TCP
+              </td>
+              <td />
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                <strong>
+                  Viable
+                </strong>
+              </td>
+              <td>
+                hemizygote
+              </td>
+              <td>
+                TCP
+              </td>
+              <td />
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                <strong>
+                  Viable
+                </strong>
+              </td>
+              <td>
+                heterozygote
+              </td>
+              <td>
+                TCP
+              </td>
+              <td />
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                <strong>
+                  Viable
+                </strong>
+              </td>
+              <td>
+                homozygote
+              </td>
+              <td>
+                TCP
+              </td>
+              <td />
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
               </td>
             </tr>
           </tbody>
@@ -565,7 +608,428 @@ exports[`Bodyweight chart page renders correctly 1`] = `
   >
     <div
       class="container"
-    />
+    >
+      <div
+        class="card"
+      >
+        <div>
+          <div
+            class="mb-4"
+            style="display: flex; align-items: center; gap: 2rem;"
+          >
+            <h1
+              style="margin: 0px;"
+            >
+              <strong>
+                <i>
+                  Myo6
+                </i>
+                 
+                Homozygous males viability
+                 data
+              </strong>
+            </h1>
+            <span
+              style="color: rgb(121, 118, 118); text-transform: uppercase; font-weight: 500; line-height: 1.2;"
+            >
+              Homozygous males viability
+            </span>
+          </div>
+          <div
+            class="fade alert alert-primary show"
+            role="alert"
+          >
+            <p>
+              Please note:
+            </p>
+            <ul>
+              <li>
+                data for different colonies will be presented separately (e.g. different alleles; same allele but different background strain; same allele but in different phenotyping centers)
+              </li>
+              <li>
+                phenotype calls are made when a statistically significant abnormal phenotype is detected (that is, preweaning lethality or absence of expected number of homozygote pups based on Mendelian ratios)
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="details"
+        >
+          <div
+            class="label"
+          >
+            Experiments performed
+          </div>
+          <div
+            class="content"
+          >
+            <p>
+              A 
+              Viability Primary Screen
+               phenotypic assay was performed on a mutant strain carrying the 
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+               allele. The charts below show the proportion of wild type, heterozygous, and homozygous offspring.
+            </p>
+          </div>
+          <div
+            class="label"
+          >
+            Associated phenotype
+          </div>
+          <div
+            class="content"
+          >
+            <strong>
+              No significant association
+            </strong>
+          </div>
+          <div
+            class="label"
+          >
+            Zygosity
+          </div>
+          <div
+            class="content"
+          >
+            <span>
+              homozygote
+            </span>
+          </div>
+          <div
+            class="label"
+          >
+            Testing protocol
+          </div>
+          <div
+            class="content"
+          >
+            <a
+              class="link primary"
+              href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1267&pipeID=9"
+            >
+              Viability Primary Screen
+            </a>
+          </div>
+          <div
+            class="label"
+          >
+            Measured value
+          </div>
+          <div
+            class="content"
+          >
+            Homozygous males viability
+          </div>
+          <div
+            class="label"
+          >
+            Testing environment
+          </div>
+          <div
+            class="content"
+          >
+            <span
+              class="primary link"
+            >
+              Lab conditions and equipment
+            </span>
+          </div>
+          <div
+            class="label"
+          >
+            Life stage
+          </div>
+          <div
+            class="content"
+          >
+            <span>
+              Early adult
+            </span>
+          </div>
+          <div
+            class="label"
+          >
+            Background Strain
+          </div>
+          <div
+            class="content"
+          >
+            <span>
+              involves: C57BL/6NCrl
+            </span>
+          </div>
+          <div
+            class="label"
+          >
+            Phenotyping center
+          </div>
+          <div
+            class="content"
+          >
+            <span>
+              TCP
+            </span>
+          </div>
+          <div
+            class="label"
+          />
+          <div
+            class="content"
+          >
+            <p
+              class="small"
+            >
+              * The high throughput nature of the IMPC means that large control sample sizes may accumulate over a long period of time. See the animal welfare guidelines for more information.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col-lg-4"
+        >
+          <div
+            class="card"
+          >
+            <h2
+              class="primary"
+            >
+              Total counts (male and female)
+            </h2>
+            <div
+              class="chartWrapper"
+            >
+              <canvas
+                height="0"
+                role="img"
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-4"
+        >
+          <div
+            class="card"
+          >
+            <h2
+              class="primary"
+            >
+              Male counts
+            </h2>
+            <div
+              class="chartWrapper"
+            >
+              <canvas
+                height="0"
+                role="img"
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-4"
+        >
+          <div
+            class="card"
+          >
+            <h2
+              class="primary"
+            >
+              Female counts
+            </h2>
+            <div
+              class="chartWrapper"
+            >
+              <canvas
+                height="0"
+                role="img"
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <div
+            class="card"
+          >
+            <div
+              class="tableWrapper"
+            >
+              <table
+                class="table striped table table-bordered"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      rowspan="2"
+                      width="50%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Sex
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowspan="2"
+                      width="8.333333333333332%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        WT
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowspan="2"
+                      width="8.333333333333332%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Het
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowspan="2"
+                      width="8.333333333333332%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Hom
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowspan="2"
+                      width="8.333333333333332%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Hemi
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowspan="2"
+                      width="8.333333333333332%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Total
+                         
+                      </button>
+                    </th>
+                  </tr>
+                  <tr />
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Male and female
+                    </td>
+                    <td />
+                    <td />
+                    <td>
+                       
+                    </td>
+                    <td />
+                    <td />
+                  </tr>
+                  <tr>
+                    <td>
+                      Male
+                    </td>
+                    <td />
+                    <td />
+                    <td />
+                    <td />
+                    <td />
+                  </tr>
+                  <tr>
+                    <td>
+                      Female
+                    </td>
+                    <td />
+                    <td />
+                    <td />
+                    <td>
+                      N/A
+                    </td>
+                    <td />
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <div
+            class="card"
+          >
+            <h2>
+              Statistical analysis API access
+            </h2>
+            <p>
+              <a
+                class="link"
+                href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:104785%22&fq=phenotyping_center:(%22TCP%22)&fq=allele_accession_id:%22MGI:6257724%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_VIA_063_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
+                target="_blank"
+              >
+                Genotype phentoype association
+                 (
+                XML
+                ) 
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-up-right-from-square fa-xs "
+                  data-icon="up-right-from-square"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

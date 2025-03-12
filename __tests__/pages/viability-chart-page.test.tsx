@@ -5,6 +5,14 @@ import { server } from "../../mocks/server";
 import { rest } from "msw";
 import viabilityData from "../../mocks/data/tests/myo6-viability-data.json";
 
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }));
+
 jest.mock("next/navigation", () => {
   const routerMock = {
     back: jest.fn(),
@@ -42,17 +50,13 @@ jest.mock("framer-motion", () => {
   };
 });
 
-describe("Bodyweight chart page", () => {
+describe("Viability chart page", () => {
   it("renders correctly", async () => {
     server.use(
       rest.get(
-        `${API_URL}/api/v1/bodyweight/byMgiGeneAccId`,
+        `${API_URL}/api/v1/genes/MGI:104785/dataset/viability`,
         (req, res, ctx) => {
-          const mgiGeneAccessionId =
-            req.url.searchParams.get("mgiGeneAccessionId");
-          if (mgiGeneAccessionId === "MGI:104785") {
-            return res(ctx.json(viabilityData));
-          }
+          return res(ctx.json(viabilityData));
         },
       ),
     );
@@ -61,6 +65,11 @@ describe("Bodyweight chart page", () => {
       const rows = await screen.findAllByRole("row");
       return expect(rows.length).toEqual(3);
     });
+    await waitFor(() =>
+      expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
+        "Viability data for Myo6 gene",
+      ),
+    );
     expect(container).toMatchSnapshot();
   });
 });

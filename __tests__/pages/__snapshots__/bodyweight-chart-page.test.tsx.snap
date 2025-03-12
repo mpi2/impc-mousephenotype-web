@@ -106,9 +106,9 @@ exports[`Bodyweight chart page renders correctly 1`] = `
              
             <i>
               <span
-                style="font-style: normal;"
+                style=""
               >
-                gene page
+                Myo6
               </span>
             </i>
           </a>
@@ -123,12 +123,6 @@ exports[`Bodyweight chart page renders correctly 1`] = `
           Body weight curve
         </strong>
       </h1>
-      <span>
-        <div
-          class="spinner-border spinner-border-sm"
-        />
-          Loading data
-      </span>
       <div
         class="tableWrapper"
       >
@@ -354,69 +348,46 @@ exports[`Bodyweight chart page renders correctly 1`] = `
           <tbody>
             <tr>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                HMGU
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                <i>
+                  Myo6
+                  <sup>
+                    Tlc
+                  </sup>
+                </i>
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                heterozygote
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                Early adult
               </td>
               <td>
-                <span
-                  aria-busy="true"
-                  aria-live="polite"
-                >
-                  <span
-                    class="react-loading-skeleton"
-                  >
-                    ‌
-                  </span>
-                  <br />
-                </span>
+                ABE1
+              </td>
+            </tr>
+            <tr>
+              <td>
+                TCP
+              </td>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                homozygote
+              </td>
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
               </td>
             </tr>
           </tbody>
@@ -434,7 +405,664 @@ exports[`Bodyweight chart page renders correctly 1`] = `
     <div
       class="container"
     >
-      <div />
+      <div>
+        <div
+          class="card"
+        >
+          <div>
+            <div
+              class="mb-4"
+              style="display: flex; align-items: center; gap: 2rem;"
+            >
+              <h1
+                style="margin: 0px;"
+              >
+                <strong>
+                  <i>
+                    Myo6
+                  </i>
+                   data charts
+                </strong>
+              </h1>
+              <span
+                style="color: rgb(121, 118, 118); text-transform: uppercase; font-weight: 500; line-height: 1.2;"
+              >
+                Body weight curve
+              </span>
+            </div>
+          </div>
+          <div
+            class="details"
+          >
+            <div
+              class="label"
+            >
+              Experiments performed
+            </div>
+            <div
+              class="content"
+            >
+              <p>
+                A 
+                <strong>
+                  Body Weight
+                </strong>
+                 phenotypic assay was performed on 
+                592
+                 mice. The charts show the results of measuring
+                 
+                <strong>
+                  Body weight curve
+                </strong>
+                 in
+                 
+                39
+                 
+                female, 
+                41
+                 
+                male mutants compared to
+                 
+                254
+                 
+                female,
+                 
+                258
+                 male controls. The mutants are for the
+                 
+                <i>
+                  Myo6
+                  <sup>
+                    Tlc
+                  </sup>
+                </i>
+                 
+                allele.
+              </p>
+            </div>
+            <div
+              class="label"
+            >
+              Zygosity
+            </div>
+            <div
+              class="content"
+            >
+              <span>
+                heterozygote
+              </span>
+            </div>
+            <div
+              class="label"
+            >
+              Testing protocol
+            </div>
+            <div
+              class="content"
+            >
+              <a
+                class="link primary"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=623&pipeID=7"
+              >
+                Body Weight
+              </a>
+            </div>
+            <div
+              class="label"
+            >
+              Measured value
+            </div>
+            <div
+              class="content"
+            >
+              Body weight curve
+            </div>
+            <div
+              class="label"
+            >
+              Testing environment
+            </div>
+            <div
+              class="content"
+            >
+              <span
+                class="primary link"
+              >
+                Lab conditions and equipment
+              </span>
+            </div>
+            <div
+              class="label"
+            >
+              Life stage
+            </div>
+            <div
+              class="content"
+            >
+              <span>
+                Early adult
+              </span>
+            </div>
+            <div
+              class="label"
+            >
+              Background Strain
+            </div>
+            <div
+              class="content"
+            >
+              <span>
+                involves: C3HeB/FeJ
+              </span>
+            </div>
+            <div
+              class="label"
+            >
+              Phenotyping center
+            </div>
+            <div
+              class="content"
+            >
+              <span>
+                HMGU
+              </span>
+            </div>
+            <div
+              class="label"
+            />
+            <div
+              class="content"
+            >
+              <p
+                class="small"
+              >
+                * The high throughput nature of the IMPC means that large control sample sizes may accumulate over a long period of time. See the animal welfare guidelines for more information.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col-lg-12"
+          >
+            <div
+              class="card"
+            >
+              <div
+                style="position: relative; height: 400px;"
+              >
+                <div
+                  style="display: flex; justify-content: flex-end;"
+                >
+                  <div
+                    class="form-check form-switch"
+                  >
+                    <input
+                      checked=""
+                      class="form-check-input"
+                      id="custom-switch"
+                      type="checkbox"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="custom-switch"
+                      title=""
+                    >
+                      View data within mutants data range
+                    </label>
+                  </div>
+                </div>
+                <canvas
+                  data-testid="body-weight-canvas"
+                  height="0"
+                  role="img"
+                  style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                  width="0"
+                />
+              </div>
+            </div>
+            <div
+              class="card"
+            >
+              <table
+                class="table table-striped"
+              >
+                <thead>
+                  <tr>
+                    <th>
+                      Week
+                    </th>
+                    <th>
+                      Female Het. (count)
+                    </th>
+                    <th>
+                      Female WT (count)
+                    </th>
+                    <th>
+                      Male Het. (count)
+                    </th>
+                    <th>
+                      Male WT (count)
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      1
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      2
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      3
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      4
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      5
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      6
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      7
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      8
+                    </td>
+                    <td>
+                      29.300000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      9
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      27.093000 (14)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      10
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      23.300000 (27)
+                    </td>
+                    <td>
+                      27.093000 (15)
+                    </td>
+                    <td>
+                      28.499000 (71)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      11
+                    </td>
+                    <td>
+                      26.240000 (15)
+                    </td>
+                    <td>
+                      24.841000 (63)
+                    </td>
+                    <td>
+                      29.264000 (11)
+                    </td>
+                    <td>
+                      31.683000 (18)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      12
+                    </td>
+                    <td>
+                      27.669000 (13)
+                    </td>
+                    <td>
+                      32.228000 (25)
+                    </td>
+                    <td>
+                      31.380000 (5)
+                    </td>
+                    <td>
+                      31.980000 (25)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      13
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      24.440000 (10)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      33.000000 (10)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      14
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      27.344000 (9)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      29.750000 (10)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      15
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      27.880000 (15)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      34.800000 (18)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      16
+                    </td>
+                    <td>
+                      29.800000 (5)
+                    </td>
+                    <td>
+                      29.833000 (6)
+                    </td>
+                    <td>
+                      31.000000 (5)
+                    </td>
+                    <td>
+                      36.725000 (12)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      17
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      30.608000 (13)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      37.300000 (1)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      18
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      40.000000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      35.380000 (5)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      19
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      30.967000 (3)
+                    </td>
+                    <td>
+                      33.914000 (7)
+                    </td>
+                    <td>
+                      39.125000 (12)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      20
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      33.430000 (10)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      35.933000 (3)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      21
+                    </td>
+                    <td>
+                      32.567000 (6)
+                    </td>
+                    <td>
+                      37.000000 (6)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      40.404000 (7)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      22
+                    </td>
+                    <td>
+                      35.700000 (1)
+                    </td>
+                    <td>
+                      37.700000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      39.752000 (4)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      23
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      40.430000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      41.700000 (3)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      24
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      35.833000 (6)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      38.675000 (4)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

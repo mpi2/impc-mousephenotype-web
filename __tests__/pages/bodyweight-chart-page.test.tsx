@@ -4,6 +4,16 @@ import { API_URL, renderWithClient } from "../utils";
 import { server } from "../../mocks/server";
 import { rest } from "msw";
 import bodyWeightData from "../../mocks/data/tests/myo6-bodyweight-data.json";
+import datasetData1 from "../../mocks/data/tests/datasets/c837b482854713419a2b4563862f394e.json";
+import datasetData2 from "../../mocks/data/tests/datasets/70a966ba779881114975a76f03898a3d.json";
+
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }));
 
 jest.mock("next/navigation", () => {
   const routerMock = {
@@ -48,11 +58,26 @@ describe("Bodyweight chart page", () => {
       rest.get(
         `${API_URL}/api/v1/bodyweight/byMgiGeneAccId`,
         (req, res, ctx) => {
-          const mgiGeneAccessionId =
-            req.url.searchParams.get("mgiGeneAccessionId");
+          const mgiGeneAccessionId = req.url.searchParams.get("mgiGeneAccId");
           if (mgiGeneAccessionId === "MGI:104785") {
             return res(ctx.json(bodyWeightData));
           }
+        },
+      ),
+    );
+    server.use(
+      rest.get(
+        `${API_URL}/api/v1/genes/c837b482854713419a2b4563862f394e/dataset`,
+        (req, res, ctx) => {
+          return res(ctx.json(datasetData1));
+        },
+      ),
+    );
+    server.use(
+      rest.get(
+        `${API_URL}/api/v1/genes/70a966ba779881114975a76f03898a3d/dataset`,
+        (req, res, ctx) => {
+          return res(ctx.json(datasetData2));
         },
       ),
     );
@@ -61,6 +86,11 @@ describe("Bodyweight chart page", () => {
       const rows = await screen.findAllByRole("row");
       return expect(rows.length).toEqual(3);
     });
+    await waitFor(async () =>
+      expect(
+        await screen.findByTestId("body-weight-canvas"),
+      ).toBeInTheDocument(),
+    );
     expect(container).toMatchSnapshot();
   });
 });
