@@ -4,8 +4,8 @@ import "@testing-library/jest-dom";
 import { API_URL, renderWithClient } from "../utils";
 import { server } from "../../mocks/server";
 import { rest } from "msw";
-import chartData from "../../mocks/data/tests/myo6-decreased-body-length.json";
-import datasetData from "../../mocks/data/tests/datasets/a26ddff88929f0ed34fa45b1d313c7ae.json";
+import chartData from "../../mocks/data/tests/myo6-abnomal-startle-reflex.json";
+import datasetData from "../../mocks/data/tests/datasets/5e7bcb3efa98f7fcaa282f9a3e4c4a59.json";
 
 window.ResizeObserver =
   window.ResizeObserver ||
@@ -26,7 +26,7 @@ jest.mock("next/navigation", () => {
       () =>
         new URLSearchParams({
           mgiGeneAccessionId: "MGI:104785",
-          mpTermId: "MP:0001258",
+          mpTermId: "MP:0001486",
         }),
     ),
     usePathname: jest.fn(),
@@ -54,12 +54,12 @@ jest.mock("framer-motion", () => {
   };
 });
 
-describe("Unidimensional Chart page", () => {
+describe("Categorical Chart page", () => {
   it("renders correctly", async () => {
     window.URL.createObjectURL = jest.fn();
     server.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:104785/MP:0001258/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:104785/MP:0001486/dataset/`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },
@@ -67,7 +67,7 @@ describe("Unidimensional Chart page", () => {
     );
     server.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/a26ddff88929f0ed34fa45b1d313c7ae.json",
+        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/5e7bcb3efa98f7fcaa282f9a3e4c4a59.json",
         (req, res, ctx) => {
           return res(ctx.json(datasetData));
         },
@@ -78,7 +78,7 @@ describe("Unidimensional Chart page", () => {
     );
     await waitFor(() =>
       expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
-        "decreased body length",
+        "abnormal startle reflex",
       ),
     );
     expect(container).toMatchSnapshot();

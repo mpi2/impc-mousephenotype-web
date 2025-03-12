@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Unidimensional Chart page renders correctly 1`] = `
+exports[`Categorical Chart page renders correctly 1`] = `
 <div>
   <div
     class="banner"
@@ -126,7 +126,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
         <strong
           class="text-capitalize"
         >
-          decreased body length
+          abnormal startle reflex
         </strong>
       </h1>
       <div
@@ -431,7 +431,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
           <tbody>
             <tr>
               <td>
-                Body length
+                Startle response
               </td>
               <td>
                 TCP
@@ -491,7 +491,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
               <span
                 style="color: rgb(121, 118, 118); text-transform: uppercase; font-weight: 500; line-height: 1.2;"
               >
-                Body length
+                Startle response
               </span>
             </div>
             <span
@@ -501,10 +501,10 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
               Combination tested with the lowest p-value of
                
               <strong>
-                2.42
+                3.13
                 x10
                 <sup>
-                  -12
+                  -27
                 </sup>
               </strong>
             </span>
@@ -523,14 +523,14 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
               <p>
                 A 
                 <strong>
-                  Body Composition (DEXA lean/fat)
+                  Combined SHIRPA and Dysmorphology
                 </strong>
                  phenotypic assay was performed on 
-                989
+                1604
                  mice. The charts show the results of measuring
                  
                 <strong>
-                  Body length
+                  Startle response
                 </strong>
                  in
                  
@@ -541,11 +541,11 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                  
                 male mutants compared to
                  
-                491
+                814
                  
                 female,
                  
-                482
+                774
                  male controls. The mutants are for the
                  
                 <i>
@@ -567,12 +567,12 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
               class="content"
             >
               <a
-                href="/phenotypes/MP:0001258"
+                href="/phenotypes/MP:0001486"
               >
                 <span
                   class="link primary"
                 >
-                  decreased body length
+                  abnormal startle reflex
                 </span>
               </a>
             </div>
@@ -598,9 +598,9 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
             >
               <a
                 class="link primary"
-                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=550&pipeID=9"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=799&pipeID=9"
               >
-                Body Composition (DEXA lean/fat)
+                Combined SHIRPA and Dysmorphology
               </a>
             </div>
             <div
@@ -611,7 +611,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
             <div
               class="content"
             >
-              Body length
+              Startle response
             </div>
             <div
               class="label"
@@ -681,60 +681,21 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
           class="row"
         >
           <div
-            class="col-lg-12"
+            class="col-lg-8"
           >
             <div
               class="card"
             >
-              <div
-                class="row"
-              >
-                <div
-                  class="col-lg-4"
-                >
-                  <div
-                    class="text-center"
-                  >
-                    Body length
-                     / Box plot
-                  </div>
-                  <div>
-                     
-                    <canvas
-                      height="0"
-                      role="img"
-                      style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-                      width="0"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="col-lg-8"
-                >
-                  <div
-                    class="text-center"
-                  >
-                    Body length
-                     / Scatter plot
-                  </div>
-                  <div>
-                    <canvas
-                      height="0"
-                      role="img"
-                      style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-                      width="0"
-                    />
-                  </div>
-                </div>
-              </div>
+              <canvas
+                height="0"
+                role="img"
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
+              />
             </div>
           </div>
-        </div>
-        <div
-          class="row"
-        >
           <div
-            class="col-lg-6"
+            class="col-lg-4"
           >
             <div
               class="card"
@@ -750,42 +711,43 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   class="mb-0"
                 >
                   <strong>
-                    Genotype P value
+                    Combined Male and Female P value
                   </strong>
                 </p>
                 <p>
-                  2.42
+                  3.13
                   x10
                   <sup>
-                    -12
+                    -27
                   </sup>
                 </p>
                 <p
                   class="mb-0"
                 >
                   <strong>
-                    Genotype*Female P value
+                    Males only
                   </strong>
                 </p>
                 <p>
-                  2.42
+                  2.32
                   x10
                   <sup>
-                    -12
+                    -16
                   </sup>
                 </p>
                 <p
                   class="mb-0"
                 >
                   <strong>
-                    Genotype*Male P value
+                    Females only
                   </strong>
                 </p>
                 <p>
-                  7.62
+                   
+                  1.81
                   x10
                   <sup>
-                    -1
+                    -11
                   </sup>
                 </p>
                 <p
@@ -796,19 +758,19 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   </strong>
                 </p>
                 <p>
-                  Overally significant [level =  1e-04 , pvalue =  2.41584530158434e-12 ]; and with phenotype threshold value 1e-04 - females only
+                  With phenotype threshold value 1e-04 - significant in males, females and in combined dataset
                 </p>
               </div>
             </div>
           </div>
           <div
-            class="col-lg-6"
+            class="col-lg-12"
           >
             <div
               class="card"
             >
               <h2>
-                Summary statistics of all data in the dataset
+                Counts by sample type
               </h2>
               <div
                 class="tableWrapper"
@@ -820,17 +782,13 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                     <tr>
                       <th
                         rowspan="2"
-                        width="41.66666666666667%"
-                      />
-                      <th
-                        rowspan="2"
-                        width="16.666666666666664%"
+                        width="33.33333333333333%"
                       >
                         <button
                           class="inlineButton headerButton disabled"
                           style="font-weight: inherit;"
                         >
-                          Mean
+                          Sample type / Category
                            
                         </button>
                       </th>
@@ -842,19 +800,43 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                           class="inlineButton headerButton disabled"
                           style="font-weight: inherit;"
                         >
-                          Stddev
+                          Female WT
                            
                         </button>
                       </th>
                       <th
                         rowspan="2"
-                        width="25%"
+                        width="16.666666666666664%"
                       >
                         <button
                           class="inlineButton headerButton disabled"
                           style="font-weight: inherit;"
                         >
-                          # Samples
+                          Female HOM
+                           
+                        </button>
+                      </th>
+                      <th
+                        rowspan="2"
+                        width="16.666666666666664%"
+                      >
+                        <button
+                          class="inlineButton headerButton disabled"
+                          style="font-weight: inherit;"
+                        >
+                          Male WT
+                           
+                        </button>
+                      </th>
+                      <th
+                        rowspan="2"
+                        width="16.666666666666664%"
+                      >
+                        <button
+                          class="inlineButton headerButton disabled"
+                          style="font-weight: inherit;"
+                        >
+                          Male HOM
                            
                         </button>
                       </th>
@@ -864,58 +846,53 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   <tbody>
                     <tr>
                       <td>
-                        Female WT
+                        Present
                       </td>
                       <td>
-                        9.235
+                        814
                       </td>
                       <td>
-                        0.204
+                        3
                       </td>
                       <td>
-                        491
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Female HOM
+                        774
                       </td>
                       <td>
-                        8.488
-                      </td>
-                      <td>
-                        0.083
-                      </td>
-                      <td>
-                        8
+                        1
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        Male WT
+                        None
                       </td>
                       <td>
-                        9.598
+                        0
                       </td>
                       <td>
-                        0.241
+                        5
                       </td>
                       <td>
-                        482
+                        0
+                      </td>
+                      <td>
+                        3
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        Male HOM
+                        No data
                       </td>
                       <td>
-                        9.012
+                        0
                       </td>
                       <td>
-                        0.210
+                        0
                       </td>
                       <td>
-                        8
+                        0
+                      </td>
+                      <td>
+                        4
                       </td>
                     </tr>
                   </tbody>
@@ -932,193 +909,9 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
               <h2>
                 Statistical method
               </h2>
-              <div
-                class="tableWrapper"
-              >
-                <table
-                  class="table striped table table-bordered"
-                >
-                  <thead>
-                    <tr>
-                      <th
-                        rowspan="2"
-                        width="66.66666666666666%"
-                      >
-                        <button
-                          class="inlineButton headerButton disabled"
-                          style="font-weight: inherit;"
-                        >
-                          Model attribute
-                           
-                        </button>
-                      </th>
-                      <th
-                        rowspan="2"
-                        width="33.33333333333333%"
-                      >
-                        <button
-                          class="inlineButton headerButton disabled"
-                          style="font-weight: inherit;"
-                        >
-                          Value
-                           
-                        </button>
-                      </th>
-                    </tr>
-                    <tr />
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        Batch effect significant 
-                      </td>
-                      <td>
-                        true
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Variance significant 
-                      </td>
-                      <td>
-                        true
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Genotype*Sex interaction effect p value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Genotype parameter estimate 
-                      </td>
-                      <td>
-                        -0.081
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Genotype standard error estimate 
-                      </td>
-                      <td>
-                        0.057
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Genotype Effect P Value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Parameter Estimate 
-                      </td>
-                      <td>
-                        -0.081
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Standard Error Estimate 
-                      </td>
-                      <td>
-                        0.018
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Effect P Value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Intercept Estimate 
-                      </td>
-                      <td>
-                        7.392
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Intercept Estimate Standard Error 
-                      </td>
-                      <td>
-                        0.061
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Male KO P Value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Female KO P Value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        WT Residuals Normality Tests 
-                      </td>
-                      <td>
-                        3.06
-                        x10
-                        <sup>
-                          -4
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        KO Residuals Normality Tests 
-                      </td>
-                      <td>
-                        3.64
-                        x10
-                        <sup>
-                          -1
-                        </sup>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <p>
+                Fisher Exact Test framework
+              </p>
             </div>
           </div>
           <div
@@ -1128,97 +921,12 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
               class="card"
             >
               <h2>
-                Windowing parameters
-              </h2>
-              <a
-                class="link"
-                href="https://www.mousephenotype.org/help/data-visualization/chart-pages/"
-              >
-                 
-                View documentation about soft windowing
-                 
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-chevron-right "
-                  data-icon="chevron-right"
-                  data-prefix="fas"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 320 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </a>
-              <div
-                class="tableWrapper"
-              >
-                <table
-                  class="table striped table table-bordered"
-                >
-                  <thead>
-                    <tr>
-                      <th
-                        rowspan="2"
-                        width="66.66666666666666%"
-                      >
-                        <button
-                          class="inlineButton headerButton disabled"
-                          style="font-weight: inherit;"
-                        >
-                          Parameter
-                           
-                        </button>
-                      </th>
-                      <th
-                        rowspan="2"
-                        width="33.33333333333333%"
-                      >
-                        <button
-                          class="inlineButton headerButton disabled"
-                          style="font-weight: inherit;"
-                        >
-                          Value
-                           
-                        </button>
-                      </th>
-                    </tr>
-                    <tr />
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        Sharpness (k) 
-                      </td>
-                      <td>
-                        8.324
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Bandwidth (l)
-                      </td>
-                      <td>
-                        572
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div
-              class="card"
-            >
-              <h2>
                 Statistical analysis API access
               </h2>
               <p>
                 <a
                   class="link"
-                  href="https://www.ebi.ac.uk/mi/impc/solr/statistical-result/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:104785%22&fq=phenotyping_center:(%22TCP%22)&fq=metadata_group:432b27f2e7bb33b809931bd0154d977d&fq=allele_accession_id:%22MGI:6257724%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_DXA_006_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
+                  href="https://www.ebi.ac.uk/mi/impc/solr/statistical-result/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:104785%22&fq=phenotyping_center:(%22TCP%22)&fq=metadata_group:65ed200ce0a6c1448296a1366bd42457&fq=allele_accession_id:%22MGI:6257724%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_CSD_036_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
                   target="_blank"
                 >
                   Statistical result
@@ -1245,7 +953,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
               <p>
                 <a
                   class="link"
-                  href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:104785%22&fq=phenotyping_center:(%22TCP%22)&fq=allele_accession_id:%22MGI:6257724%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_DXA_006_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
+                  href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:104785%22&fq=phenotyping_center:(%22TCP%22)&fq=allele_accession_id:%22MGI:6257724%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_CSD_036_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
                   target="_blank"
                 >
                   Genotype phentoype association
@@ -1296,60 +1004,66 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 </a>
               </p>
             </div>
+          </div>
+          <div
+            class="col"
+          >
             <div
               class="card"
             >
               <h2>
                 Experimental data download
               </h2>
-              <div
-                class="grey"
-                style="display: flex; gap: 0.5rem; align-items: center;"
-              >
-                Download data as:
-                 
-                <button
-                  class="btn impc-secondary-button small"
+              <p>
+                <div
+                  class="grey"
+                  style="display: flex; gap: 0.5rem; align-items: center;"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm "
-                    data-icon="download"
-                    data-prefix="fas"
-                    focusable="false"
-                    role="img"
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
+                  Download data as:
+                   
+                  <button
+                    class="btn impc-secondary-button small"
                   >
-                    <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                   TSV
-                </button>
-                 
-                <button
-                  class="btn impc-secondary-button small"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm "
-                    data-icon="download"
-                    data-prefix="fas"
-                    focusable="false"
-                    role="img"
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-download fa-sm "
+                      data-icon="download"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     TSV
+                  </button>
+                   
+                  <button
+                    class="btn impc-secondary-button small"
                   >
-                    <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                   XLS
-                </button>
-              </div>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-download fa-sm "
+                      data-icon="download"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                     XLS
+                  </button>
+                </div>
+              </p>
             </div>
           </div>
         </div>
