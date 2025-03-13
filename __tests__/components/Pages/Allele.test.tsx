@@ -6,6 +6,9 @@ import { rest } from "msw";
 import dbn1Tm1aEsCellData from "../../../mocks/data/tests/dbn1-tm1a-es-cell.json";
 import dbn1Tm1aMiceData from "../../../mocks/data/tests/dbn1-tm1a-mice.json";
 import dbn1Tm1aTvpData from "../../../mocks/data/tests/dbn1-tm1a-tvp.json";
+import dbn1Em1MiceData from "../../../mocks/data/tests/dbn1-em1-mice-data.json";
+import dbn1Em1CrisprData from "../../../mocks/data/tests/dbn1-em1-crispr-data.json";
+import { screen } from "@testing-library/react";
 
 const alleleData = {
   alleleDescription:
@@ -38,11 +41,11 @@ jest.mock("@/components/GenomeBrowser/GenomeBrowser", () => {
   return GenomeBrowserMock;
 });
 
-describe("AllelePage", () => {
-  it("renders properly", () => {
+describe("Allele page", () => {
+  it("renders properly", async () => {
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${alleleData.mgiGeneAccessionId}/${alleleData.alleleName}`,
+        `${API_URL}/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/MGI:1931838/tm1a(KOMP)Wtsi`,
         (req, res, ctx) => {
           return res(ctx.json(dbn1Tm1aEsCellData));
         },
@@ -50,7 +53,7 @@ describe("AllelePage", () => {
     );
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/alleles/mice/get_by_mgi_and_allele_name/${alleleData.mgiGeneAccessionId}/${alleleData.alleleName}`,
+        `${API_URL}/api/v1/alleles/mice/get_by_mgi_and_allele_name/MGI:1931838/tm1a(KOMP)Wtsi`,
         (req, res, ctx) => {
           return res(ctx.json(dbn1Tm1aMiceData));
         },
@@ -58,15 +61,53 @@ describe("AllelePage", () => {
     );
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${alleleData.mgiGeneAccessionId}/${alleleData.alleleName}`,
+        `${API_URL}/api/v1/alleles/tvp/get_by_mgi_and_allele_name/MGI:1931838/tm1a(KOMP)Wtsi`,
         (req, res, ctx) => {
           return res(ctx.json(dbn1Tm1aTvpData));
         },
       ),
     );
+    testServer.printHandlers();
     const { container } = renderWithClient(
       <AllelePage alleleSymbol="tm1a(KOMP)Wtsi" alleleData={alleleData} />,
     );
+    expect(await screen.findByTestId("es-cell-section")).toBeInTheDocument();
+    expect(await screen.findByTestId("mice-section")).toBeInTheDocument();
+    expect(await screen.findByTestId("tvp-section")).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+  it("renders properly CRISPR section", async () => {
+    testServer.use(
+      rest.get(
+        `${API_URL}/api/v1/alleles/mice/get_by_mgi_and_allele_name/MGI:1931838/em1(IMPC)Bay`,
+        (req, res, ctx) => {
+          return res(ctx.json(dbn1Em1MiceData));
+        },
+      ),
+      rest.get(
+        `${API_URL}/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/MGI:1931838/em1(IMPC)Bay`,
+        (req, res, ctx) => {
+          return res(ctx.json(dbn1Em1CrisprData));
+        },
+      ),
+    );
+    const { container } = renderWithClient(
+      <AllelePage
+        alleleSymbol="em1(IMPC)Bay"
+        alleleData={{
+          ...alleleData,
+          alleleName: "em1(IMPC)Bay",
+          alleleDescription: "Exon Deletion",
+          doesCrisprProductsExist: true,
+          doesEsCellProductsExist: false,
+          doesIntermediateVectorProductsExist: false,
+          doesMiceProductsExist: true,
+          doesTargetingVectorProductsExist: false,
+        }}
+      />,
+    );
+    expect(await screen.findByTestId("mice-section")).toBeInTheDocument();
+    expect(await screen.findByTestId("crispr-section")).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 });

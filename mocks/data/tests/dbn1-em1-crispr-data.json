@@ -1,0 +1,92 @@
+[
+  {
+    "mutationId": "MIN:000000000661",
+    "mgiAlleleId": "MGI:6257430",
+    "alleleSuperscript": "em1(IMPC)Bay",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleSymbol": "Dbn1<em1(IMPC)Bay>",
+    "planIdentifier": "PIN:0000001845",
+    "attempt": {
+      "miDate": "2015-02-04",
+      "miExternalRef": "Dbn1 Cas9",
+      "mutagenesisExternalRef": "MF-375",
+      "totalEmbryosInjected": 50,
+      "totalEmbryosSurvived": 42,
+      "embryoTwoCell": null,
+      "comment": null,
+      "embryoTransferDay": "Same Day",
+      "totalTransferred": 42,
+      "strainName": "C57BL/6N",
+      "mgiStrainAccessionId": "MGI:2159965"
+    },
+    "outcomeIdentifier": "TPO:000000000661",
+    "colonyName": "DPEAB",
+    "guides": [
+      {
+        "sequence": "GAGGTGTGATCCCCGAGAAATGG",
+        "guideSequence": "GAGGTGTGATCCCCGAGAAA",
+        "pam": "TGG",
+        "chr": "13",
+        "start": 55630835,
+        "stop": 55630857,
+        "strand": "-",
+        "genomeBuild": "GRCm39",
+        "grnaConcentration": 5,
+        "truncatedGuide": false,
+        "reversed": true,
+        "sangerService": false,
+        "guideFormat": null,
+        "guideSource": null
+      },
+      {
+        "sequence": "CAGGTCCAACACCTATCTTGTGG",
+        "guideSequence": "CAGGTCCAACACCTATCTTG",
+        "pam": "TGG",
+        "chr": "13",
+        "start": 55629036,
+        "stop": 55629058,
+        "strand": "-",
+        "genomeBuild": "GRCm39",
+        "grnaConcentration": 5,
+        "truncatedGuide": false,
+        "reversed": true,
+        "sangerService": false,
+        "guideFormat": null,
+        "guideSource": null
+      }
+    ],
+    "nucleases": [
+      {
+        "nucleaseType": "Cas9",
+        "nucleaseClass": "mRNA"
+      }
+    ],
+    "genotypePrimers": [
+      {
+        "sequence": "CACTGGGCGCAAAATTCTTCT",
+        "name": "Geno_Phldb2_F1"
+      }
+    ],
+    "assay": {
+      "numFounderPups": 6,
+      "numFounderSelectedForBreeding": 1,
+      "founderNumAssays": 6,
+      "numDeletionG0Mutants": 3,
+      "numG0WhereMutationDetected": 3,
+      "numHdrG0Mutants": null,
+      "numHdrG0MutantsAllDonorsInserted": null,
+      "numHdrG0MutantsSubsetDonorsInserted": null,
+      "numHrG0Mutants": null,
+      "numNhejG0Mutants": null,
+      "assayType": "PCR"
+    },
+    "fasta": [
+      {
+        "index": 1,
+        "sequence": ">Dbn1 Cas9_Dbn1_13790\nGCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTGTACCTTGCTGGGCACTAGCACCTGGAAAGACACGAGAGGTGTGATCCCCGAGTTGTGGGTTCCTGGTGTTTGTGTGAAAAACAAACAGACAAATAACAGCAGCAGCAACAACAAAACATTTTTTTTCGACGTTTTTCTCCAAATTGGAAAAGAAAATCCACCTTGACTCAGACCCTCGCTGACCTGGCTCCTCCACTGCTTCCGCCTTGAGACCTGGGGTCCTTGGGGTGTATTAGTCTTGGGCTCTGCATTTG\n",
+        "sequenceType": "complete",
+        "sequenceCategory": "outcome sequence"
+      }
+    ]
+  }
+]
