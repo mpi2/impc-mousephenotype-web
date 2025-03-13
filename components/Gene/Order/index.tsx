@@ -5,7 +5,7 @@ import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
 import styles from "./styles.module.scss";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { GeneContext, NumAllelesContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 import {
   AlleleSymbol,
@@ -31,14 +31,15 @@ const Order = ({
   orderDataFromServer,
 }: OrderProps) => {
   const gene = useContext(GeneContext);
+  const { setNumAllelesAvailable } = useContext(AllelesStudiedContext);
   const [sorted, setSorted] = useState<any[]>(
     orderBy(orderDataFromServer, "alleleSymbol", "asc"),
   );
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
-  const { setNumOfAlleles } = useContext(NumAllelesContext);
   const {
     isFetching,
     isError,
+    error,
     data: filtered,
   } = useGeneOrderQuery(gene.mgiGeneAccessionId, !!gene.mgiGeneAccessionId);
 
@@ -57,14 +58,15 @@ const Order = ({
   useEffect(() => {
     if (orderData) {
       setSorted(orderBy(orderData, "alleleSymbol", "asc"));
+      setNumAllelesAvailable(orderData.length);
     }
   }, [orderData]);
 
   useEffect(() => {
-    if (sorted?.length) {
-      setNumOfAlleles(sorted.length);
+    if (isError && error) {
+      setNumAllelesAvailable(0);
     }
-  }, [sorted]);
+  }, [isError, error]);
 
   useEffect(() => {
     if (allelesStudied.length > 0) {

@@ -14,11 +14,7 @@ import {
   HumanDiseases,
 } from "@/components/Gene";
 import { useEffect, useState } from "react";
-import {
-  AllelesStudiedContext,
-  GeneContext,
-  NumAllelesContext,
-} from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
 import {
   GeneDisease,
@@ -54,18 +50,18 @@ const GenePage = (props: GenePageProps) => {
     humanDiseasesData: associatedDiseasesDataFromServer,
   } = props;
   const params = useParams<{ pid: string }>();
-  const [numOfAlleles, setNumOfAlleles] = useState<number | undefined>(
-    undefined,
-  );
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
+  const [numAllelesAvailable, setNumAllelesAvailable] = useState(-1);
   const [allelesStudiedLoading, setAllelesStudiedLoading] =
     useState<boolean>(true);
-  const numAllelesContextValue = { numOfAlleles, setNumOfAlleles };
+
   const allelesStudiedContextValue = {
     allelesStudied,
     setAlleles,
     allelesStudiedLoading,
     setAllelesStudiedLoading,
+    numAllelesAvailable,
+    setNumAllelesAvailable,
   };
 
   const { data: gene } = useGeneSummaryQuery(
@@ -107,30 +103,28 @@ const GenePage = (props: GenePageProps) => {
   return (
     <>
       <GeneContext.Provider value={geneData}>
-        <NumAllelesContext.Provider value={numAllelesContextValue}>
-          <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
-            <Search />
-            <Container className="page">
-              <Summary numOfAlleles={numOfAlleles} />
-              <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
-              <Expressions initialData={expressionDataFromServer} />
-              <Images initialData={imageDataFromServer} />
-              <HumanDiseases initialData={associatedDiseasesDataFromServer} />
-              <Histopathology initialData={histopathologyDataFromServer} />
-              <Publications />
-              <ExternalLinks />
-              <Order
-                allelesStudied={allelesStudied}
-                allelesStudiedLoading={allelesStudiedLoading}
-                orderDataFromServer={orderDataFromServer}
-              />
-              <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-              />
-            </Container>
-          </AllelesStudiedContext.Provider>
-        </NumAllelesContext.Provider>
+        <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
+          <Search />
+          <Container className="page">
+            <Summary numOfAlleles={orderDataFromServer?.length ?? 0} />
+            <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
+            <Expressions initialData={expressionDataFromServer} />
+            <Images initialData={imageDataFromServer} />
+            <HumanDiseases initialData={associatedDiseasesDataFromServer} />
+            <Histopathology initialData={histopathologyDataFromServer} />
+            <Publications />
+            <ExternalLinks />
+            <Order
+              allelesStudied={allelesStudied}
+              allelesStudiedLoading={allelesStudiedLoading}
+              orderDataFromServer={orderDataFromServer}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+          </Container>
+        </AllelesStudiedContext.Provider>
       </GeneContext.Provider>
     </>
   );

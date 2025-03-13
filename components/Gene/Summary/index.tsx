@@ -10,7 +10,16 @@ import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { useContext } from "react";
-import { GeneContext } from "@/contexts";
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
+import Skeleton from "react-loading-skeleton";
+import classNames from "classnames";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+
+const spring = {
+  type: "spring",
+  damping: 20,
+  stiffness: 300,
+};
 
 const CollectionItem = ({
   name,
@@ -39,10 +48,11 @@ const CollectionItem = ({
   );
 
 type SummaryProps = {
-  numOfAlleles: number | undefined;
+  numOfAlleles: number;
 };
 const Summary = ({ numOfAlleles }: SummaryProps) => {
   const gene = useContext(GeneContext);
+  const { numAllelesAvailable } = useContext(AllelesStudiedContext);
   const SYNONYMS_COUNT = 2;
 
   const joined = [
@@ -275,13 +285,55 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
           </Row>
           <Row>
             <Col lg={6}>
-              <a
-                role="button"
-                href="#order"
-                className="btn impc-primary-button"
-              >
-                {numOfAlleles} Allele products available
-              </a>
+              <div className={styles.overlayContainer}>
+                <AnimatePresence initial={false}>
+                  <LayoutGroup>
+                    {numAllelesAvailable === 0 ? (
+                      <motion.a
+                        key="disabledBtn"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        layout
+                        transition={spring}
+                        className={classNames(
+                          "btn",
+                          "btn-grey",
+                          "impc-base-button",
+                          styles.disabledAllelesBtn,
+                        )}
+                      >
+                        No allele products available
+                      </motion.a>
+                    ) : (
+                      <motion.a
+                        key="allelesBtn"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        layout
+                        transition={spring}
+                        role="button"
+                        href="#order"
+                        className={classNames(
+                          "btn",
+                          "impc-primary-button",
+                          styles.allelesAvailablesBtn,
+                        )}
+                      >
+                        View allele products
+                      </motion.a>
+                    )}
+                  </LayoutGroup>
+                </AnimatePresence>
+                <Skeleton
+                  className={styles.skeleton}
+                  containerClassName={classNames(styles.skeletonOverlay, {
+                    [styles.active]: numAllelesAvailable === -1,
+                  })}
+                  height={50}
+                />
+              </div>
             </Col>
           </Row>
         </Col>
