@@ -67,7 +67,6 @@ describe("Allele page", () => {
         },
       ),
     );
-    testServer.printHandlers();
     const { container } = renderWithClient(
       <AllelePage alleleSymbol="tm1a(KOMP)Wtsi" alleleData={alleleData} />,
     );
