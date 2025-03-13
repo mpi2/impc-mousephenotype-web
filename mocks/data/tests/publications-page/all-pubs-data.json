@@ -1,0 +1,649 @@
+{
+  "content": [
+    {
+      "title": "Norovirus co-opts NINJ1 for selective protein secretion.",
+      "authorString": "Song J, Zhang L, Moon S, Fang A, Wang G, Gheshm N, Loeb SA, Cao P, Wallace JR, Alfajaro MM, Strine MS, Beatty WL, Jamieson AM, Orchard RC, Robinson BA, Nice TJ, Wilen CB, Orvedahl A, Reese TA, Lee S.",
+      "consortiumPaper": false,
+      "doi": "10.1126/sciadv.adu7985",
+      "publicationDate": "2025-02-28T00:00:00.000+00:00",
+      "journalTitle": "Science advances",
+      "pmId": "40020060",
+      "abstractText": "Plasma membrane rupture by Ninjurin-1 (NINJ1) executes programmed cell death, releasing large cellular damage-associated molecular patterns (DAMPs). However, the regulation and selectivity of NINJ1-mediated DAMP release remain unexplored. Here, we uncover that murine norovirus (MNoV) strategically co-opts NINJ1 to selectively release the intracellular viral protein NS1, while NINJ1-mediated plasma membrane rupture simultaneously bulk-releases various cellular DAMPs. Host caspase-3 cleaves the precursor NS1/2, leading to NS1 secretion via an unconventional pathway. An unbiased CRISPR screen identifies NINJ1 as an essential factor for NS1 secretion. During infection, NINJ1 is recruited to the viral replication site, where it oligomerizes and forms speckled bodies, directly interacting with NS1. Subsequent mutagenesis studies identify critical amino acid residues of NS1 necessary for its interaction with NINJ1 and selective secretion. Genetic ablation or pharmaceutical inhibition of caspase-3 inhibits oral MNoV infection in mice. This study underscores the co-option of NINJ1 for controlled release of an intracellular viral protein.",
+      "meshHeadingList": [
+        "Animals",
+        "Humans",
+        "Mice",
+        "Norovirus",
+        "Caliciviridae Infections",
+        "Cell Adhesion Molecules, Neuronal",
+        "Viral Nonstructural Proteins",
+        "Virus Replication",
+        "Protein Binding",
+        "Caspase 3",
+        "Host-Pathogen Interactions"
+      ],
+      "grantsList": [
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "K08 AI144033",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI130055",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "U19 AI142784",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NIGMS NIH HHS",
+          "grantId": "P20 GM109035",
+          "orderIn": 0,
+          "acronym": "GM"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI130020",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NHLBI NIH HHS",
+          "grantId": "R01 HL126887",
+          "orderIn": 0,
+          "acronym": "HL"
+        },
+        {
+          "agency": "NIGMS NIH HHS",
+          "grantId": "R35 GM142684",
+          "orderIn": 0,
+          "acronym": "GM"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI148467",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "K08 AI128043",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NIGMS NIH HHS",
+          "grantId": "P20 GM121344",
+          "orderIn": 0,
+          "acronym": "GM"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI183155",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R21 AI173821",
+          "orderIn": 0,
+          "acronym": "AI"
+        }
+      ],
+      "alleles": []
+    },
+    {
+      "title": "Autistic behavior is a common outcome of biallelic disruption of PDZD8 in humans and mice.",
+      "authorString": "Pantiru AD, Van de Sompele S, Ligneul C, Chatelain C, Barrea C, Lerch JP, Filippi BM, Alkan S, De Baere E, Johnston J, Clapcote SJ.",
+      "consortiumPaper": false,
+      "doi": "10.1186/s13229-025-00650-8",
+      "publicationDate": "2025-02-27T00:00:00.000+00:00",
+      "journalTitle": "Molecular autism",
+      "pmId": "40016860",
+      "abstractText": "<h4>Background</h4>Intellectual developmental disorder with autism and dysmorphic facies (IDDADF) is a rare syndromic intellectual disability (ID) caused by homozygous disruption of PDZD8 (PDZ domain-containing protein 8), an integral endoplasmic reticulum (ER) protein. All four previously identified IDDADF cases exhibit autistic behavior, with autism spectrum disorder (ASD) diagnosed in three cases. To determine whether autistic behavior is a common outcome of PDZD8 disruption, we studied a third family with biallelic mutation of PDZD8 (family C) and further characterized PDZD8-deficient (Pdzd8<sup>tm1b</sup>) mice that exhibit stereotyped motor behavior relevant to ASD.<h4>Methods</h4>Homozygosity mapping, whole-exome sequencing, and cosegregation analysis were used to identify the PDZD8 variant responsible for IDDADF, including diagnoses of ASD, in consanguineous family C. To assess the in vivo effect of PDZD8 disruption on social responses and related phenotypes, behavioral, structural magnetic resonance imaging, and microscopy analyses were conducted on the Pdzd8<sup>tm1b</sup> mouse line. Metabolic activity was profiled using sealed metabolic cages.<h4>Results</h4>The discovery of a third family with IDDADF caused by biallelic disruption of PDZD8 permitted identification of a core clinical phenotype consisting of developmental delay, ID, autism, and facial dysmorphism. In addition to impairments in social recognition and social odor discrimination, Pdzd8<sup>tm1b</sup> mice exhibit increases in locomotor activity (dark phase only) and metabolic rate (both lights-on and dark phases), and decreased plasma triglyceride in males. In the brain, Pdzd8<sup>tm1b</sup> mice exhibit increased levels of accessory olfactory bulb volume, primary olfactory cortex volume, dendritic spine density, and ER stress- and mitochondrial fusion-related transcripts, as well as decreased levels of cerebellar nuclei volume and adult neurogenesis.<h4>Limitations</h4>The total number of known cases of PDZD8-related IDDADF remains low. Some mouse experiments in the study did not use balanced numbers of males and females. The assessment of ER stress and mitochondrial fusion markers did not extend beyond mRNA levels.<h4>Conclusions</h4>Our finding that the Pdzd8<sup>tm1b</sup> mouse model and all six known cases of IDDADF exhibit autistic behavior, with ASD diagnosed in five cases, identifies this trait as a common outcome of biallelic disruption of PDZD8 in humans and mice. Other abnormalities exhibited by Pdzd8<sup>tm1b</sup> mice suggest that the range of comorbidities associated with PDZD8 deficiency may be wider than presently recognized.",
+      "meshHeadingList": [
+        "Animals",
+        "Humans",
+        "Mice",
+        "DNA-Binding Proteins",
+        "Membrane Proteins",
+        "Pedigree",
+        "Behavior, Animal",
+        "Social Behavior",
+        "Autistic Disorder",
+        "Phenotype",
+        "Mutation",
+        "Alleles",
+        "Adult",
+        "Child",
+        "Child, Preschool",
+        "Female",
+        "Male",
+        "Intellectual Disability",
+        "Autism Spectrum Disorder"
+      ],
+      "grantsList": [
+        {
+          "agency": "Biotechnology and Biological Sciences Research Council",
+          "grantId": "BB/R019401/1",
+          "orderIn": 0,
+          "acronym": "BB_"
+        },
+        {
+          "agency": "Medical Research Council",
+          "grantId": "MR/R014736/1",
+          "orderIn": 0,
+          "acronym": "MRC_"
+        }
+      ],
+      "alleles": [
+        {
+          "mgiAlleleAccessionId": "MGI:5708255",
+          "mgiGeneAccessionId": "MGI:2677270",
+          "geneSymbol": "Pdzd8",
+          "alleleSymbol": "Pdzd8<tm1b(EUCOMM)Wtsi>"
+        }
+      ]
+    },
+    {
+      "title": "CD301b&lt;sup&gt;+&lt;/sup&gt; dendritic cell-derived IL-2 dictates CD4&lt;sup&gt;+&lt;/sup&gt; T helper cell differentiation.",
+      "authorString": "Tatsumi N, El-Fenej J, Davila-Pagan A, Kumamoto Y.",
+      "consortiumPaper": false,
+      "doi": "10.1038/s41467-025-55916-9",
+      "publicationDate": "2025-02-26T00:00:00.000+00:00",
+      "journalTitle": "Nature communications",
+      "pmId": "40011469",
+      "abstractText": "T helper (Th) cell differentiation is fundamental to functional adaptive immunity. Different subsets of dendritic cells (DC) preferentially induce different types of Th cells, but the DC-derived mechanism for Th type 2 (Th2) differentiation is not fully understood. Here, we show that in mice, CD301b<sup>+</sup> DCs, a major Th2-inducing DC subset, drive Th2 differentiation through cognate interaction by rapidly inducing IL-2 receptor signalling in CD4<sup>+</sup> T cells. Mechanistically, CD40 engagement prompts IL-2 production selectively from CD301b<sup>+</sup> DCs to maximize CD25 expression in CD4<sup>+</sup> T cells, which instructs the Th2 fate decision, while simultaneously skewing CD4<sup>+</sup> T cells away from the T follicular helper fate. Moreover, CD301b<sup>+</sup> DCs utilize their own CD25 to facilitate directed action of IL-2 toward cognate CD4<sup>+</sup> T cells, as genetic deletion of CD25 in CD301b<sup>+</sup> DCs results in reduced IL-2-mediated signalling in antigen-specific CD4<sup>+</sup> T cells and hence their Th2 differentiation. These results highlight the critical role of DC-intrinsic CD40-IL-2 axis in Th cell fate decision.",
+      "meshHeadingList": [
+        "Dendritic Cells",
+        "CD4-Positive T-Lymphocytes",
+        "Th2 Cells",
+        "Animals",
+        "Mice, Inbred C57BL",
+        "Mice, Knockout",
+        "Mice",
+        "Lectins, C-Type",
+        "Interleukin-2",
+        "Signal Transduction",
+        "Cell Differentiation",
+        "Interleukin-2 Receptor alpha Subunit",
+        "CD40 Antigens"
+      ],
+      "grantsList": [
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Institute of Allergy and Infectious Diseases (NIAID)",
+          "grantId": "R01AI132576",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Cancer Institute (NCI)",
+          "grantId": "R21CA259541",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI132576",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NCI NIH HHS",
+          "grantId": "R21 CA259541",
+          "orderIn": 0,
+          "acronym": "CA"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI165622",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Institute of Allergy and Infectious Diseases (NIAID)",
+          "grantId": "R01AI165622",
+          "orderIn": 0,
+          "acronym": null
+        }
+      ],
+      "alleles": [
+        {
+          "mgiAlleleAccessionId": "",
+          "mgiGeneAccessionId": "",
+          "geneSymbol": "",
+          "alleleSymbol": "Il2ra<tm1c(EUCOMM)Wtsi>"
+        }
+      ]
+    },
+    {
+      "title": "WNK1-dependent water influx is required for CD4&lt;sup&gt;+&lt;/sup&gt; T cell activation and T cell-dependent antibody responses.",
+      "authorString": "O'May JB, Vanes L, de Boer LL, Lewis DA, Hartweger H, Kunzelmann S, Hayward D, Llorian M, Köchl R, Tybulewicz VLJ.",
+      "consortiumPaper": false,
+      "doi": "10.1038/s41467-025-56778-x",
+      "publicationDate": "2025-02-21T00:00:00.000+00:00",
+      "journalTitle": "Nature communications",
+      "pmId": "39984435",
+      "abstractText": "Signaling from the T cell antigen receptor (TCR) on CD4<sup>+</sup> T cells plays a critical role in adaptive immune responses by inducing T cell activation, proliferation, and differentiation. Here we demonstrate that WNK1, a kinase implicated in osmoregulation in the kidney, is required in T cells to support T-dependent antibody responses. We show that the canonical WNK1-OXSR1-STK39 kinase signaling pathway is required for TCR signaling in CD4<sup>+</sup> T cells, their subsequent entry into the cell cycle, and suppression of the ATR-mediated G2/M cell cycle checkpoint. We show that the WNK1 pathway regulates ion influx leading to water influx, potentially through AQP3, and that water influx is required for TCR-induced signaling and cell cycle entry. Thus, TCR signaling via WNK1, OXSR1, STK39 and AQP3 leads to water entry that is essential for CD4<sup>+</sup> T cell proliferation and hence T cell-dependent antibody responses.",
+      "meshHeadingList": [
+        "CD4-Positive T-Lymphocytes",
+        "Animals",
+        "Mice, Inbred C57BL",
+        "Mice, Knockout",
+        "Humans",
+        "Mice",
+        "Water",
+        "Receptors, Antigen, T-Cell",
+        "Lymphocyte Activation",
+        "Signal Transduction",
+        "Cell Proliferation",
+        "Antibody Formation",
+        "Aquaporin 3",
+        "WNK Lysine-Deficient Protein Kinase 1",
+        "Protein Serine-Threonine Kinases"
+      ],
+      "grantsList": [
+        {
+          "agency": "Wellcome Trust",
+          "grantId": "CC2080",
+          "orderIn": 0,
+          "acronym": "WT_"
+        },
+        {
+          "agency": "Biotechnology and Biological Sciences Research Council",
+          "grantId": "BB/V0088757/1",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "Wellcome Trust",
+          "grantId": null,
+          "orderIn": 0,
+          "acronym": "WT_"
+        },
+        {
+          "agency": "Versus Arthritis",
+          "grantId": "CC2080",
+          "orderIn": 0,
+          "acronym": "ARC_"
+        },
+        {
+          "agency": "Imperial College London",
+          "grantId": "President's PhD Scholarship",
+          "orderIn": 0,
+          "acronym": null
+        }
+      ],
+      "alleles": [
+        {
+          "mgiAlleleAccessionId": "MGI:4840639",
+          "mgiGeneAccessionId": "MGI:1333777",
+          "geneSymbol": "Aqp3",
+          "alleleSymbol": "Aqp3<tm2a(EUCOMM)Wtsi>"
+        }
+      ]
+    },
+    {
+      "title": "The histone demethylase dLsd1 regulates organ size by silencing transposable elements.",
+      "authorString": "Selmi I, Texier M, Aguirrenbegoa M, Merce C, Fraisse-Lepourry L, Mugat B, Mohamed M, Chambeyron S, Cribbs D, Di Stefano L.",
+      "consortiumPaper": false,
+      "doi": "10.1038/s42003-025-07724-6",
+      "publicationDate": "2025-02-20T00:00:00.000+00:00",
+      "journalTitle": "Communications biology",
+      "pmId": "39979483",
+      "abstractText": "The specific role of chromatin modifying factors in the timely execution of transcriptional changes in gene expression to regulate organ size remains largely unknown. Here, we report that in Drosophila melanogaster depletion of the histone demethylase dLsd1 results in the reduction of wing size. dLsd1 depletion affects cell proliferation and causes an increase in DNA damage and cell death. Mechanistically, we have identified Transposable Elements (TEs) as critical dLsd1 targets for organ size determination. We found that upon dLsd1 loss many TE families are upregulated, and new TE insertions appear. By blocking this new TE activity, we could rescue the wing size phenotype. Collectively, our results reveal that the histone demethylase dLsd1 and maintenance of TE homeostasis are required to ensure proper wing size.",
+      "meshHeadingList": [
+        "Animals",
+        "Drosophila melanogaster",
+        "Oxidoreductases, N-Demethylating",
+        "Drosophila Proteins",
+        "DNA Transposable Elements",
+        "Organ Size",
+        "Cell Proliferation",
+        "Gene Silencing",
+        "Histone Demethylases",
+        "Wings, Animal"
+      ],
+      "grantsList": [
+        {
+          "agency": "Agence Nationale de la Recherche (French National Research Agency)",
+          "grantId": "ANR-20-CE12-0015-01",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "Agence Nationale de la Recherche (French National Research Agency)",
+          "grantId": "ANR 2012-CHEX-0002-01",
+          "orderIn": 0,
+          "acronym": null
+        }
+      ],
+      "alleles": []
+    },
+    {
+      "title": "K27-linked RORγt ubiquitination by Nedd4 potentiates Th17-mediated autoimmunity.",
+      "authorString": "Zeng Q, Guo H, Tang N, Renavikar PS, Karandikar NJ, Lovett-Racke AE, Racke MK, Yan C, Tang R, Sinha S, Ghosh K, Ryal JP, Ouyang S, Chen M, Amari F, Vincenzo C, Pope RM, Li Y, Yang H, Langdon WY, Zhang J.",
+      "consortiumPaper": false,
+      "doi": "10.1186/s12929-025-01120-2",
+      "publicationDate": "2025-02-19T00:00:00.000+00:00",
+      "journalTitle": "Journal of biomedical science",
+      "pmId": "39972304",
+      "abstractText": "<h4>Background</h4>The HECT E3 ubiquitin ligase Nedd4 has been shown to positively regulate T cell responses, but its role in T helper (Th) cell differentiation and autoimmunity is unknown. Th17 cells are believed to play a pivotal role in the development and pathogenesis of autoimmune diseases. Nevertheless, the regulation of RORγt activation during Th17 cell differentiation by TCR signaling is yet to be elucidated. These uncharted aspects inspire us to explore the potential role of Nedd4 in Th17-mediated autoimmunity.<h4>Methods</h4>We evaluated the impact of Nedd4 deficiency on mouse T cell development and differentiation using flow cytometry and siRNA transfection, and subsequently validated these findings in T cells from patients with multiple sclerosis (MS). Furthermore, we investigated the influence of Nedd4 deficiency on Th17-mediated autoimmunity through experimental autoimmune encephalomyelitis (EAE), a mouse model of MS. Subsequently, we elucidated the molecular mechanism underlying the interaction between Nedd4 and RORgt through immunoprecipitation, mass spectrometry analysis, and lentiviral transduction. Additionally, we identified Nedd4 as an E3 ubiquitin ligase for RORγt. Moreover, we characterized the tyrosine residue sites and polyubiquitination patterns involved in RORγt ubiquitination.<h4>Results</h4>In this study, we report that loss of Nedd4 in T cells specifically impairs pathogenic and non-pathogenic Th17 responses, and Th17-mediated EAE development. At the molecular level, Nedd4 binds to the PPLY motif within the ligand binding domain of RORγt, and targets RORγt at K112 for K27-linked polyubiquitination, thus augmenting its activity.<h4>Conclusion</h4>Nedd4 is a crucial E3 ubiquitin ligase for RORγt in the regulating Th17 cell development and offers potential therapeutic benefits for treating Th17-mediated autoimmune diseases.",
+      "meshHeadingList": [
+        "Animals",
+        "Humans",
+        "Mice",
+        "Multiple Sclerosis",
+        "Encephalomyelitis, Autoimmune, Experimental",
+        "Autoimmunity",
+        "Female",
+        "Ubiquitination",
+        "Nuclear Receptor Subfamily 1, Group F, Member 3",
+        "Th17 Cells",
+        "Nedd4 Ubiquitin Protein Ligases"
+      ],
+      "grantsList": [
+        {
+          "agency": "National Natural Science Foundation of China",
+          "grantId": "81801203",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "NCI NIH HHS",
+          "grantId": "P30 CA016058",
+          "orderIn": 0,
+          "acronym": "CA"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI121196",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "Natural Science Foundation of Hunan Province",
+          "grantId": "2023JJ30868",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI090901",
+          "orderIn": 0,
+          "acronym": "AI"
+        },
+        {
+          "agency": "NIAID NIH HHS",
+          "grantId": "R01 AI123253",
+          "orderIn": 0,
+          "acronym": "AI"
+        }
+      ],
+      "alleles": [
+        {
+          "mgiAlleleAccessionId": "",
+          "mgiGeneAccessionId": "",
+          "geneSymbol": "",
+          "alleleSymbol": "Nedd4l<tm1a(KOMP)Wtsi/H>"
+        }
+      ]
+    },
+    {
+      "title": "Dendritic cell phagosomes recruit GRASP55 for export of antigen-loaded MHC molecules.",
+      "authorString": "Cebrian I, Dinamarca S, Pena Rodríguez MJ, Priego E, Brouwers N, Barends M, Brunnberg J, Tampé R, Blanchard N, Sancho D, Malhotra V.",
+      "consortiumPaper": false,
+      "doi": "10.1016/j.celrep.2025.115333",
+      "publicationDate": "2025-02-15T00:00:00.000+00:00",
+      "journalTitle": "Cell reports",
+      "pmId": "39955774",
+      "abstractText": "Dendritic cells (DCs) present exogenous antigens via major histocompatibility complex class I (MHC-I) and MHC class II (MHC-II) molecules, activating CD8<sup>+</sup> and CD4<sup>+</sup> T cells. A critical but poorly understood step in this process is the trafficking of peptide-loaded MHC molecules from the endocytic system to the cell surface. In this study, we demonstrate that the Golgi reassembly-stacking protein of 55 kDa (GRASP55), which has been shown to have no role in stacking, is essential for antigen presentation. Using soluble, bead-coated, and bacterial-bound antigens, we found significantly impaired exogenous antigen presentation in GRASP55-deficient bone-marrow-derived DCs (BMDCs). Notably, GRASP55 was recruited to late phagosomes, and our data suggest that it is crucial for sorting MHC-I and MHC-II molecules, facilitating their trafficking to the plasma membrane. Our findings highlight the vital role of GRASP55 in the intracellular transport of MHC molecules bound to their respective peptides during exogenous antigen presentation.",
+      "meshHeadingList": [
+        "Dendritic Cells",
+        "Cell Membrane",
+        "Phagosomes",
+        "Animals",
+        "Mice, Inbred C57BL",
+        "Humans",
+        "Mice",
+        "Membrane Proteins",
+        "Antigens",
+        "Histocompatibility Antigens Class I",
+        "Histocompatibility Antigens Class II",
+        "Antigen Presentation",
+        "Protein Transport",
+        "Golgi Matrix Proteins"
+      ],
+      "grantsList": [
+        {
+          "agency": "European Research Council",
+          "grantId": "951146",
+          "orderIn": 0,
+          "acronym": null
+        }
+      ],
+      "alleles": [
+        {
+          "mgiAlleleAccessionId": "MGI:5014574",
+          "mgiGeneAccessionId": "MGI:1921748",
+          "geneSymbol": "Gorasp1",
+          "alleleSymbol": "Gorasp1<tm1a(KOMP)Wtsi>"
+        }
+      ]
+    },
+    {
+      "title": "RNA-seq analysis reveals transcriptome changes in livers from &lt;i&gt;Efcab4b&lt;/i&gt; knockout mice.",
+      "authorString": "Cheng CW, Pedicini L, Alcala CM, Deligianni F, Smith J, Murray RD, Todd HJ, Forde N, McKeown L.",
+      "consortiumPaper": false,
+      "doi": "10.1016/j.bbrep.2025.101944",
+      "publicationDate": "2025-02-15T00:00:00.000+00:00",
+      "journalTitle": "Biochemistry and biophysics reports",
+      "pmId": "40034259",
+      "abstractText": "<i>EFCAB4B</i> is an evolutionarily conserved protein that encodes for the Rab GTPase Rab46, and the CRAC channel modulator, CRACR2A. Previous genome wide association studies have demonstrated the association of <i>EFCAB4B</i> variants in the progression of non-alcoholic fatty liver disease (NAFLD). In this study we show that mice with global depletion of <i>Efcab4b</i> <sup><i>-/-</i></sup> have significantly larger livers than their wild-type (WT) counterparts. We performed RNA-sequencing (RNA-seq) analysis of liver tissues to investigate differential global gene expression among <i>Efcab4b</i> <sup><i>-/-</i></sup> and WT mice. Of the 69 differentially expressed genes (DEGs), analyses of biological processes found significant enrichment in liver and bile development, with 6 genes (<i>Pck1, Aacs, Onecut1, E2f8, Xbp1,</i> and <i>Hes1</i>) involved in both processes. Specific consideration of possible roles of DEGs or their products in NAFLD progression to (NASH) and hepatocarcinoma (HCC), demonstrated DEGs in the livers of <i>Efcab4b</i> <sup><i>-/-</i></sup> mice had roles in molecular pathways including lipid metabolism, inflammation, ER stress and fibrosis. The results in this study provide additional insights into molecular mechanisms responsible for increasing susceptibility of liver injuries associated with <i>EFCAB4B</i>.",
+      "meshHeadingList": [],
+      "grantsList": [],
+      "alleles": [
+        {
+          "mgiAlleleAccessionId": "MGI:4881289",
+          "mgiGeneAccessionId": "MGI:2685919",
+          "geneSymbol": "Cracr2a",
+          "alleleSymbol": "Cracr2a<tm1(KOMP)Vlcg>"
+        }
+      ]
+    },
+    {
+      "title": "Expression of foetal gene Pontin is essential in protecting heart against pathological remodelling and cardiomyopathy.",
+      "authorString": "Lestari B, Nugroho AB, Bui TA, Nguyen B, Stafford N, Prehar S, Zi M, Potter R, Triastuti E, Baudoin FM, D'Souza A, Wang X, Cartwright EJ, Oceandy D.",
+      "consortiumPaper": false,
+      "doi": "10.1038/s41467-025-56531-4",
+      "publicationDate": "2025-02-14T00:00:00.000+00:00",
+      "journalTitle": "Nature communications",
+      "pmId": "39952912",
+      "abstractText": "Cardiac remodelling is a key process in the development of heart failure. Reactivation of foetal cardiac genes is often associated with cardiac remodelling. Here we study the role of Pontin (Ruvbl1), which is highly expressed in embryonic hearts, in mediating adverse remodelling in adult mouse hearts. We observe that Pontin deficiency in cardiomyocytes leads to induced apoptosis, increased hypertrophy and fibrosis, whereas Pontin overexpression improves survival, increases proliferation and reduces the hypertrophic response. Moreover, RNAseq analysis show that genes involved in cell cycle regulation, cell proliferation and cell survival/apoptosis are differentially expressed in Pontin knockout. Specifically, we detect changes in the expression of Hippo pathway components in the Pontin knockout mice. Using a cellular model we show that Pontin induces YAP activity, YAP nuclear translocation, and transcriptional activity. Our findings identify Pontin as a modulator of adverse cardiac remodelling, possibly via regulation of the Hippo pathway. This study may lead to the development of a new approach to control cardiac remodelling by targeting Pontin.",
+      "meshHeadingList": [
+        "Myocytes, Cardiac",
+        "Animals",
+        "Mice, Inbred C57BL",
+        "Mice, Knockout",
+        "Humans",
+        "Mice",
+        "Cardiomegaly",
+        "Cardiomyopathies",
+        "Signal Transduction",
+        "Apoptosis",
+        "Cell Proliferation",
+        "Ventricular Remodeling",
+        "Female",
+        "Male",
+        "Hippo Signaling Pathway",
+        "YAP-Signaling Proteins",
+        "Protein Serine-Threonine Kinases"
+      ],
+      "grantsList": [
+        {
+          "agency": "British Heart Foundation",
+          "grantId": "RG/F/21/110055",
+          "orderIn": 0,
+          "acronym": null
+        }
+      ],
+      "alleles": [
+        {
+          "mgiAlleleAccessionId": "MGI:5294191",
+          "mgiGeneAccessionId": "MGI:1342299",
+          "geneSymbol": "Ruvbl2",
+          "alleleSymbol": "Ruvbl2<tm1a(EUCOMM)Hmgu>"
+        }
+      ]
+    },
+    {
+      "title": "Single-cell analysis identifies Ifi27l2a as a gene regulator of microglial inflammation in the context of aging and stroke in mice.",
+      "authorString": "Kim GS, Harmon E, Gutierrez MC, Kim S, Vance L, Burrous H, Stephenson JM, Chauhan A, Banerjee A, Wise Z, Doan A, Ahn J, Wu T, Bautista-Garrido J, Lee J, Tan C, Jung JE, McCullough LD, Wythe JD, Marrelli SP.",
+      "consortiumPaper": false,
+      "doi": "10.1038/s41467-025-56847-1",
+      "publicationDate": "2025-02-14T00:00:00.000+00:00",
+      "journalTitle": "Nature communications",
+      "pmId": "39953063",
+      "abstractText": "Inflammation is a significant driver of ischemic stroke pathology in the brain. To identify potential regulators of inflammation, we performed single-cell RNA sequencing (scRNA-seq) of young and aged mouse brains following stroke and found that interferon alpha-inducible protein 27 like 2 A (Ifi27l2a) was significantly up-regulated, particularly in microglia of aged brain. Ifi27l2a is induced by interferons for viral host defense and has been linked with pro-inflammatory cellular mechanisms. However, its potential role in neurodegeneration is unknown. Using a combination of cell culture, experimental stroke models in mice, and human autopsy brain samples, we demonstrated that induction of Ifi27l2a occurs in microglia in response to aging, ischemic stroke, and pro-inflammatory molecules. We further showed that induction of Ifi27l2a in microglia was sufficient to stimulate mitochondrial ROS production and promote a pro-inflammatory phenotype. Lastly, using an ischemic stroke model, we demonstrated that hemizygous deletion of Ifi27l2a (Ifi27l2a<sup>+/-</sup> mice) reduced gliosis (microgliosis and astrogliosis), acute and chronic brain injury, and motor function deficits. Together, these findings identify Ifi27l2a as a critical neuroinflammatory mediator in ischemic stroke and provide support for the therapeutic strategy of disrupting Ifi27l2a to attenuate inflammation in the post-stroke brain.",
+      "meshHeadingList": [
+        "Brain",
+        "Microglia",
+        "Mitochondria",
+        "Animals",
+        "Mice, Inbred C57BL",
+        "Mice, Knockout",
+        "Humans",
+        "Mice",
+        "Disease Models, Animal",
+        "Gliosis",
+        "Inflammation",
+        "Reactive Oxygen Species",
+        "Membrane Proteins",
+        "Aging",
+        "Male",
+        "Stroke",
+        "Single-Cell Analysis",
+        "Ischemic Stroke"
+      ],
+      "grantsList": [
+        {
+          "agency": "NINDS NIH HHS",
+          "grantId": "R01 NS133324",
+          "orderIn": 0,
+          "acronym": "NS"
+        },
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Institute on Aging (U.S. National Institute on Aging)",
+          "grantId": "R21AG072488",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "NIA NIH HHS",
+          "grantId": "R56 AG084130",
+          "orderIn": 0,
+          "acronym": "AG"
+        },
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Institute of Neurological Disorders and Stroke (NINDS)",
+          "grantId": "R01NS133324",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "NIA NIH HHS",
+          "grantId": "R01 AG081942",
+          "orderIn": 0,
+          "acronym": "AG"
+        },
+        {
+          "agency": "NHLBI NIH HHS",
+          "grantId": "R01 HL159159",
+          "orderIn": 0,
+          "acronym": "HL"
+        },
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Institute on Aging (U.S. National Institute on Aging)",
+          "grantId": "R56NS120709",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Institute on Aging (U.S. National Institute on Aging)",
+          "grantId": "R56AG084130",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "NIA NIH HHS",
+          "grantId": "R21 AG072488",
+          "orderIn": 0,
+          "acronym": "AG"
+        },
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Institute on Aging (U.S. National Institute on Aging)",
+          "grantId": "R01AG081942",
+          "orderIn": 0,
+          "acronym": null
+        },
+        {
+          "agency": "NINDS NIH HHS",
+          "grantId": "R56 NS120709",
+          "orderIn": 0,
+          "acronym": "NS"
+        },
+        {
+          "agency": "NIH HHS",
+          "grantId": "S10 OD030336",
+          "orderIn": 0,
+          "acronym": "OD"
+        },
+        {
+          "agency": "U.S. Department of Health & Human Services | NIH | National Heart, Lung, and Blood Institute (NHLBI)",
+          "grantId": "R01HL159159",
+          "orderIn": 0,
+          "acronym": null
+        }
+      ],
+      "alleles": [
+        {
+          "mgiAlleleAccessionId": "MGI:3808494",
+          "mgiGeneAccessionId": "MGI:1924183",
+          "geneSymbol": "Ifi27l2a",
+          "alleleSymbol": "Ifi27l2a<tm1(KOMP)Vlcg>"
+        }
+      ]
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10,
+    "sort": {
+      "sorted": false,
+      "empty": true,
+      "unsorted": true
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": false,
+  "totalElements": 8060,
+  "totalPages": 806,
+  "first": true,
+  "size": 10,
+  "number": 0,
+  "sort": {
+    "sorted": false,
+    "empty": true,
+    "unsorted": true
+  },
+  "numberOfElements": 10,
+  "empty": false
+}
