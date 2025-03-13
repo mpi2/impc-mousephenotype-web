@@ -60,9 +60,9 @@ describe("Gene histopathology component", () => {
   it("should show an error message if the request fails", async () => {
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:2143539/histopathology`,
+        `${API_URL}/api/v1/genes/MGI:2143539/gene_histopathology`,
         (req, res, ctx) => {
-          return res(ctx.status(500));
+          return res(ctx.status(404));
         },
       ),
     );
