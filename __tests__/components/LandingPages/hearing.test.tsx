@@ -1,6 +1,6 @@
 import { render, waitFor } from "@testing-library/react";
 import HearingLandingPage from "@/app/hearing/hearing-page";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import { API_URL, createTestQueryClient } from "../../utils";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -22,7 +22,7 @@ window.ResizeObserver =
 describe("Hearing landing page", () => {
   it("renders correctly", async () => {
     const client = createTestQueryClient();
-    server.use(
+    testServer.use(
       rest.get(`${API_URL}/api/v1/publications`, (req, res, ctx) => {
         return res(
           ctx.status(200),

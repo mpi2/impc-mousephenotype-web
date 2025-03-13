@@ -1,6 +1,6 @@
 import ImagesCompare from "@/app/genes/[pid]/images/[parameterStableId]/image-viewer-page";
 import { API_URL, renderWithClient } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import dbn1MutantImages from "../../../mocks/data/tests/dbn1-xray-mutant-images-data.json";
 import dbn1ControlImages from "../../../mocks/data/tests/dbn1-xray-control-images-data.json";
@@ -31,7 +31,7 @@ describe("Image comparator page", () => {
       pid: "MGI:1931838",
       parameterStableId: "IMPC_XRY_048_001",
     }));
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_mgi_and_stable_id`,
         (req, res, ctx) => {
@@ -46,7 +46,7 @@ describe("Image comparator page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_stable_id_and_sample_id`,
         (req, res, ctx) => {
@@ -137,7 +137,7 @@ describe("Image comparator page", () => {
     useSearchParams.mockImplementation(
       () => new URLSearchParams({ anatomyTerm: "adrenal gland" }),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_mgi_and_stable_id`,
         (req, res, ctx) => {
@@ -152,7 +152,7 @@ describe("Image comparator page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_stable_id_and_sample_id`,
         (req, res, ctx) => {

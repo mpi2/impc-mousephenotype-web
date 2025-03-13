@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import PhenotypePage from "@/app/phenotypes/[id]/phenotype-page";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { createTestQueryClient } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import phenotypeData from "../../../mocks/data/phenotypes/MP:0012361/summary.json";
 import phenotypeStatsData from "../../../mocks/data/phenotypes/MP:0012361/phenotype-stats-results.json";
@@ -22,7 +22,7 @@ jest.mock("next/navigation", () => ({
 }));
 
 describe("Phenotype page", () => {
-  server.use(
+  testServer.use(
     rest.get(
       `https://impc-datasets.s3.eu-west-2.amazonaws.com/phenotype-stats-results/dr22.1/MP:0012361.json`,
       (req, res, ctx) => {

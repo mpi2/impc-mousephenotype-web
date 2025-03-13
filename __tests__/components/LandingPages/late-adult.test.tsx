@@ -1,7 +1,5 @@
-import { within, screen, waitFor } from "@testing-library/react";
 import LateAdultLandingPage from "@/app/late-adult-data/late-adult-page";
 import { renderWithClient } from "../../utils";
-import userEvent from "@testing-library/user-event";
 
 window.ResizeObserver =
   window.ResizeObserver ||

@@ -6,7 +6,7 @@ import ascc2SummaryData from "../../../mocks/data/genes/MGI:1922702/summary.json
 import userEvent from "@testing-library/user-event";
 import mockRouter from "next-router-mock";
 import { useSearchParams } from "next/navigation";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 
 jest.mock("next/navigation", () => {
@@ -28,7 +28,7 @@ jest.mock("next/navigation", () => {
 
 describe("Histopath page", () => {
   it("provides generic functionality of a normal table", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:1922702/histopathology`,
         (req, res, ctx) => {
@@ -63,7 +63,7 @@ describe("Histopath page", () => {
   });
 
   it("should filter by anatomy term if is specified in a query param", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:1922702/histopathology`,
         (req, res, ctx) => {
@@ -98,7 +98,7 @@ describe("Histopath page", () => {
   });
 
   it("should display a modal to view tissue details", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:1922702/histopathology`,
         (req, res, ctx) => {

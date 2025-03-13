@@ -1,8 +1,7 @@
 import AllelePage from "@/app/alleles/[pid]/[...alleleSymbol]/allele-page";
-import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { API_URL, renderWithClient } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import dbn1Tm1aEsCellData from "../../../mocks/data/tests/dbn1-tm1a-es-cell.json";
 import dbn1Tm1aMiceData from "../../../mocks/data/tests/dbn1-tm1a-mice.json";
@@ -41,7 +40,7 @@ jest.mock("@/components/GenomeBrowser/GenomeBrowser", () => {
 
 describe("AllelePage", () => {
   it("renders properly", () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${alleleData.mgiGeneAccessionId}/${alleleData.alleleName}`,
         (req, res, ctx) => {
@@ -49,7 +48,7 @@ describe("AllelePage", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/alleles/mice/get_by_mgi_and_allele_name/${alleleData.mgiGeneAccessionId}/${alleleData.alleleName}`,
         (req, res, ctx) => {
@@ -57,7 +56,7 @@ describe("AllelePage", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${alleleData.mgiGeneAccessionId}/${alleleData.alleleName}`,
         (req, res, ctx) => {

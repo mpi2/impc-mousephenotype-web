@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import GenePage from "@/app/genes/[pid]/gene-page";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { API_URL, createTestQueryClient } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 
 window.ResizeObserver =
@@ -22,7 +22,7 @@ jest.mock("next/navigation", () => ({
 
 describe("Gene page", () => {
   it("renders correctly", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:1922702/disease/json`,
         (req, res, ctx) => {
