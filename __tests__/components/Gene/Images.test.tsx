@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import GeneImages from "@/components/Gene/Images";
 import { renderWithClient, API_URL } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import { GeneContext } from "@/contexts";
 
@@ -19,7 +19,7 @@ describe("Gene images component", () => {
   });
 
   it("should show an error message if the request fails", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:1860086/images`,
         (req, res, ctx) => {

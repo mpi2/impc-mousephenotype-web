@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import GeneExpressions from "@/components/Gene/Expressions";
 import { renderWithClient, API_URL } from "../../utils";
 import userEvent from "@testing-library/user-event";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import React from "react";
 import { GeneContext } from "@/contexts";
@@ -52,7 +52,7 @@ describe("Gene expressions component", () => {
   });
 
   it("should show an error message if the request fails", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:95516/expression`,
         (req, res, ctx) => {

@@ -2,7 +2,7 @@ import SupportingDataPage from "@/app/supporting-data/supporting-data-page";
 import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { API_URL, renderWithClient } from "../utils";
-import { server } from "../../mocks/server";
+import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import chartData from "../../mocks/data/tests/myo6-abnomal-startle-reflex.json";
 import datasetData from "../../mocks/data/tests/datasets/5e7bcb3efa98f7fcaa282f9a3e4c4a59.json";
@@ -57,7 +57,7 @@ jest.mock("framer-motion", () => {
 describe("Categorical Chart page", () => {
   it("renders correctly", async () => {
     window.URL.createObjectURL = jest.fn();
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:104785/MP:0001486/dataset/`,
         (req, res, ctx) => {
@@ -65,7 +65,7 @@ describe("Categorical Chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/5e7bcb3efa98f7fcaa282f9a3e4c4a59.json",
         (req, res, ctx) => {

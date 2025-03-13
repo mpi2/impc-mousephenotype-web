@@ -2,7 +2,7 @@ import DesignPage from "@/app/designs/[id]/designs-page";
 import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { API_URL, renderWithClient } from "../utils";
-import { server } from "../../mocks/server";
+import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import designData from "../../mocks/data/tests/designs-page-payload.json";
 import { useRouter } from "next/navigation";
@@ -32,7 +32,7 @@ describe("Design page", () => {
     const router = useRouter();
     const spy = jest.spyOn(router, "back");
     const user = userEvent.setup();
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/alleles/htgt/designId:40489`,
         (req, res, ctx) => {
@@ -52,7 +52,7 @@ describe("Design page", () => {
     const router = useRouter();
     const spy = jest.spyOn(router, "back");
     const user = userEvent.setup();
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/alleles/htgt/designId:40489`,
         (req, res, ctx) => {

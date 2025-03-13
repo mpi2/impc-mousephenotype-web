@@ -1,7 +1,7 @@
 import BodyWeightChartPage from "@/app/supporting-data/bodyweight/bodyweight-chart-page";
 import { screen, waitFor } from "@testing-library/react";
 import { API_URL, renderWithClient } from "../utils";
-import { server } from "../../mocks/server";
+import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import bodyWeightData from "../../mocks/data/tests/myo6-bodyweight-data.json";
 import datasetData1 from "../../mocks/data/tests/datasets/c837b482854713419a2b4563862f394e.json";
@@ -54,7 +54,7 @@ jest.mock("framer-motion", () => {
 
 describe("Bodyweight chart page", () => {
   it("renders correctly", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/bodyweight/byMgiGeneAccId`,
         (req, res, ctx) => {
@@ -65,7 +65,7 @@ describe("Bodyweight chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/c837b482854713419a2b4563862f394e/dataset`,
         (req, res, ctx) => {
@@ -73,7 +73,7 @@ describe("Bodyweight chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/70a966ba779881114975a76f03898a3d/dataset`,
         (req, res, ctx) => {

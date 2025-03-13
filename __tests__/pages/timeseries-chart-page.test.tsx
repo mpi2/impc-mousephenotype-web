@@ -2,7 +2,7 @@ import SupportingDataPage from "@/app/supporting-data/supporting-data-page";
 import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { API_URL, renderWithClient } from "../utils";
-import { server } from "../../mocks/server";
+import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import chartData from "../../mocks/data/tests/cep43-indirect-calorimetry-data.json";
 import datasetData from "../../mocks/data/tests/datasets/04170d1f0c2aeb927449078c656352a2.json";
@@ -63,7 +63,7 @@ jest.mock("framer-motion", () => {
 describe("Timeseries Chart page", () => {
   it("renders correctly", async () => {
     window.URL.createObjectURL = jest.fn();
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/dataset/find_by_multiple_parameter`,
         (req, res, ctx) => {
@@ -80,7 +80,7 @@ describe("Timeseries Chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/04170d1f0c2aeb927449078c656352a2.json",
         (req, res, ctx) => {

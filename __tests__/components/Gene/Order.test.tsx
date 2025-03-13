@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import GeneOrder from "@/components/Gene/Order";
 import { renderWithClient, API_URL } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import Crlf3Data from "../../../mocks/data/genes/MGI:1860086/order.json";
 import { GeneContext } from "@/contexts";
@@ -60,7 +60,7 @@ describe("Gene order component", () => {
   });
 
   it("should only display mouse, es cell and targeting vector products", async () => {
-    server.use(
+    testServer.use(
       rest.get(`${API_URL}/api/v1/genes/MGI:1860086/order`, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(Crlf3Data));
       }),
@@ -85,7 +85,7 @@ describe("Gene order component", () => {
   });
 
   it("should show an error message if the request fails", async () => {
-    server.use(
+    testServer.use(
       rest.get(`${API_URL}/api/v1/genes/MGI:1860086/order`, (req, res, ctx) => {
         return res(ctx.status(500));
       }),

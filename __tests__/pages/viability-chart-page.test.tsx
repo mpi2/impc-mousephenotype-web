@@ -1,7 +1,7 @@
 import ViabilityChartPage from "@/app/supporting-data/viability/viability-chart-page";
 import { screen, waitFor } from "@testing-library/react";
 import { API_URL, renderWithClient } from "../utils";
-import { server } from "../../mocks/server";
+import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import viabilityData from "../../mocks/data/tests/myo6-viability-data.json";
 
@@ -52,7 +52,7 @@ jest.mock("framer-motion", () => {
 
 describe("Viability chart page", () => {
   it("renders correctly", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:104785/dataset/viability`,
         (req, res, ctx) => {

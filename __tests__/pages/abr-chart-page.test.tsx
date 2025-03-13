@@ -2,7 +2,7 @@ import SupportingDataPage from "@/app/supporting-data/supporting-data-page";
 import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { API_URL, renderWithClient } from "../utils";
-import { server } from "../../mocks/server";
+import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import chartData from "../../mocks/data/tests/cib2-abr-chart-data.json";
 import ABR002Data from "../../mocks/data/tests/cib2-IMPC_ABR_002_001-datasets.json";
@@ -62,7 +62,7 @@ jest.mock("framer-motion", () => {
 describe("ABR Chart page", () => {
   it("renders correctly", async () => {
     window.URL.createObjectURL = jest.fn();
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:1929293/MP:0004738/dataset/`,
         (req, res, ctx) => {
@@ -70,7 +70,7 @@ describe("ABR Chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/dataset/find_by_multiple_parameter`,
         (req, res, ctx) => {
@@ -90,7 +90,7 @@ describe("ABR Chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/5682218200528351d763e190dbb492bc.json",
         (req, res, ctx) => {
@@ -98,7 +98,7 @@ describe("ABR Chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/3f1010ee50e0cd27cc2da4a7f3f7ec42.json",
         (req, res, ctx) => {
@@ -106,7 +106,7 @@ describe("ABR Chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/73fcc7c348c83f166e9feceff9736854.json",
         (req, res, ctx) => {
@@ -114,7 +114,7 @@ describe("ABR Chart page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/fc0ea562c56ef142a9c6302af51c885c.json",
         (req, res, ctx) => {

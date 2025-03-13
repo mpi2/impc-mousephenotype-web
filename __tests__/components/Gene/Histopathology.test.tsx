@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import GeneHistopathology from "@/components/Gene/Histopathology";
 import { renderWithClient, API_URL } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import { GeneSummary } from "@/models/gene";
 import { GeneContext } from "@/contexts";
@@ -15,7 +15,7 @@ const gene = {
 
 describe("Gene histopathology component", () => {
   it("should display information", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:2143539/gene_histopathology`,
         (req, res, ctx) => {
@@ -35,7 +35,7 @@ describe("Gene histopathology component", () => {
   });
 
   it("should show alert with link to histopathology page if there are not significant hits", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:2143539/gene_histopathology`,
         (req, res, ctx) => {
@@ -58,7 +58,7 @@ describe("Gene histopathology component", () => {
   });
 
   it("should show an error message if the request fails", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:2143539/histopathology`,
         (req, res, ctx) => {

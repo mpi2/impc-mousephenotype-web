@@ -2,7 +2,7 @@ import ImageDownloaderPage from "@/app/genes/[pid]/download-images/[parameterSta
 import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { API_URL, renderWithClient } from "../utils";
-import { server } from "../../mocks/server";
+import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import cib2MutantImages from "../../mocks/data/tests/cib2-abr-mutant-images-data.json";
 import cib2ControlImages from "../../mocks/data/tests/cib2-abr-control-images-data.json";
@@ -25,7 +25,7 @@ jest.mock("next/navigation", () => {
 
 describe("Image Downloader Page", () => {
   it("renders without crashing", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_mgi_and_stable_id`,
         (req, res, ctx) => {
@@ -40,7 +40,7 @@ describe("Image Downloader Page", () => {
         },
       ),
     );
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_stable_id_and_sample_id`,
         (req, res, ctx) => {
