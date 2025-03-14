@@ -223,7 +223,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
                   {[...Array(maxAge)].map((week, i) => (
                     <tr key={i}>
                       <td>{i + 1}</td>
-                      {getValuesForRow(i).map((value) => (
+                      {getValuesForRow(i + 1).map((value) => (
                         <td>{value}</td>
                       ))}
                     </tr>
