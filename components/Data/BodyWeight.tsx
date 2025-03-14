@@ -228,7 +228,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
       />
       <Row>
         <Col lg={12}>
-          <Card>
+          <Card style={{ position: "sticky", top: 0, zIndex: 1 }}>
             <div style={{ position: "relative", height: "400px" }}>
               {!!data && (
                 <>
