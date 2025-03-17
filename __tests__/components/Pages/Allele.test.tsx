@@ -45,24 +45,20 @@ describe("Allele page", () => {
   it("renders properly", async () => {
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/MGI:1931838/tm1a(KOMP)Wtsi`,
-        (req, res, ctx) => {
+        `${API_URL}/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/MGI:1931838/tm1a\\(KOMP\\)Wtsi`,
+        (_, res, ctx) => {
           return res(ctx.json(dbn1Tm1aEsCellData));
         },
       ),
-    );
-    testServer.use(
       rest.get(
-        `${API_URL}/api/v1/alleles/mice/get_by_mgi_and_allele_name/MGI:1931838/tm1a(KOMP)Wtsi`,
-        (req, res, ctx) => {
+        `${API_URL}/api/v1/alleles/mice/get_by_mgi_and_allele_name/MGI:1931838/tm1a\\(KOMP\\)Wtsi`,
+        (_, res, ctx) => {
           return res(ctx.json(dbn1Tm1aMiceData));
         },
       ),
-    );
-    testServer.use(
       rest.get(
-        `${API_URL}/api/v1/alleles/tvp/get_by_mgi_and_allele_name/MGI:1931838/tm1a(KOMP)Wtsi`,
-        (req, res, ctx) => {
+        `${API_URL}/api/v1/alleles/tvp/get_by_mgi_and_allele_name/MGI:1931838/tm1a\\(KOMP\\)Wtsi`,
+        (_, res, ctx) => {
           return res(ctx.json(dbn1Tm1aTvpData));
         },
       ),
@@ -73,18 +69,19 @@ describe("Allele page", () => {
     expect(await screen.findByTestId("es-cell-section")).toBeInTheDocument();
     expect(await screen.findByTestId("mice-section")).toBeInTheDocument();
     expect(await screen.findByTestId("tvp-section")).toBeInTheDocument();
+    expect(screen.queryByTestId("crispr-section")).toBeNull();
     expect(container).toMatchSnapshot();
   });
   it("renders properly CRISPR section", async () => {
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/alleles/mice/get_by_mgi_and_allele_name/MGI:1931838/em1(IMPC)Bay`,
+        `${API_URL}/api/v1/alleles/mice/get_by_mgi_and_allele_name/MGI:1931838/em1\\(IMPC\\)Bay`,
         (req, res, ctx) => {
           return res(ctx.json(dbn1Em1MiceData));
         },
       ),
       rest.get(
-        `${API_URL}/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/MGI:1931838/em1(IMPC)Bay`,
+        `${API_URL}/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/MGI:1931838/em1\\(IMPC\\)Bay`,
         (req, res, ctx) => {
           return res(ctx.json(dbn1Em1CrisprData));
         },
@@ -107,6 +104,8 @@ describe("Allele page", () => {
     );
     expect(await screen.findByTestId("mice-section")).toBeInTheDocument();
     expect(await screen.findByTestId("crispr-section")).toBeInTheDocument();
+    expect(screen.queryByTestId("es-cell-section")).toBeNull();
+    expect(screen.queryByTestId("tvp-section")).toBeNull();
     expect(container).toMatchSnapshot();
   });
 });
