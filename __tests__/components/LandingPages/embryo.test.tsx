@@ -20,6 +20,11 @@ window.ResizeObserver =
     unobserve: jest.fn(),
   }));
 
+jest.mock("@/components/PublicationsList", () => {
+  const PublicationsListMock = () => <div>PublicationsList mock</div>;
+  return PublicationsListMock;
+});
+
 describe("Embryo landing page", () => {
   it("renders correctly", async () => {
     testServer.use(
@@ -39,7 +44,7 @@ describe("Embryo landing page", () => {
     const { container } = renderWithClient(<EmbryoLandingPage />);
     await waitFor(async () => {
       const tables = await screen.findAllByRole("table");
-      return expect(tables.length).toEqual(3);
+      return expect(tables.length).toEqual(2);
     });
     await waitFor(() => expect(container).toMatchSnapshot());
   });
