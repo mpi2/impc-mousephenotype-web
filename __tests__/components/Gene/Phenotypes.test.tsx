@@ -28,6 +28,15 @@ jest.mock("next/navigation", () => {
   };
 });
 
+jest.mock("@upsetjs/react", () => {
+  const { extractCombinations } = jest.requireActual("@upsetjs/react");
+  return {
+    __esModule: true,
+    extractCombinations,
+    UpSetJS: jest.fn().mockImplementation(() => <div>UpSetJS plot</div>),
+  };
+});
+
 const gene = { mgiGeneAccessionId: "MGI:104785", geneSymbol: "Myo6" };
 const FILTER_DATA_ENDPOINT = `${API_URL}/api/v1/genes/MGI:104785/dataset/get_filter_data`;
 const ALL_DATA_ENDPOINT = `${API_URL}/api/v1/genes/statistical-result/filtered/page`;
