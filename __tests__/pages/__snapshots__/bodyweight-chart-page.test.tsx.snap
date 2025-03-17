@@ -589,6 +589,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
           >
             <div
               class="card"
+              style="position: sticky; top: 0px; z-index: 1;"
             >
               <div
                 style="position: relative; height: 400px;"
@@ -756,7 +757,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                       7
                     </td>
                     <td>
-                      -
+                      29.300000 (1)
                     </td>
                     <td>
                       -
@@ -773,23 +774,6 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                       8
                     </td>
                     <td>
-                      29.300000 (1)
-                    </td>
-                    <td>
-                      -
-                    </td>
-                    <td>
-                      -
-                    </td>
-                    <td>
-                      -
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      9
-                    </td>
-                    <td>
                       -
                     </td>
                     <td>
@@ -804,7 +788,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      10
+                      9
                     </td>
                     <td>
                       -
@@ -821,7 +805,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      11
+                      10
                     </td>
                     <td>
                       26.240000 (15)
@@ -838,7 +822,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      12
+                      11
                     </td>
                     <td>
                       27.669000 (13)
@@ -855,7 +839,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      13
+                      12
                     </td>
                     <td>
                       -
@@ -872,7 +856,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      14
+                      13
                     </td>
                     <td>
                       -
@@ -889,7 +873,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      15
+                      14
                     </td>
                     <td>
                       -
@@ -906,7 +890,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      16
+                      15
                     </td>
                     <td>
                       29.800000 (5)
@@ -923,7 +907,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      17
+                      16
                     </td>
                     <td>
                       -
@@ -940,7 +924,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      18
+                      17
                     </td>
                     <td>
                       -
@@ -957,7 +941,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      19
+                      18
                     </td>
                     <td>
                       -
@@ -974,7 +958,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      20
+                      19
                     </td>
                     <td>
                       -
@@ -991,7 +975,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      21
+                      20
                     </td>
                     <td>
                       32.567000 (6)
@@ -1008,7 +992,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      22
+                      21
                     </td>
                     <td>
                       35.700000 (1)
@@ -1025,7 +1009,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      23
+                      22
                     </td>
                     <td>
                       -
@@ -1042,7 +1026,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      24
+                      23
                     </td>
                     <td>
                       -
@@ -1055,6 +1039,23 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                     </td>
                     <td>
                       38.675000 (4)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      24
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      38.300000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
                     </td>
                   </tr>
                 </tbody>

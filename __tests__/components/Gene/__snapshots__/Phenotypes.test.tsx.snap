@@ -4469,7 +4469,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
             style="position: relative; display: flex; padding-top: 1rem;"
           >
             <svg
-              class="root-upset-22rqc69r"
+              class="root-upset-ck36quom"
               data-theme="light"
               height="400"
               viewBox="0 0 1200 400"
@@ -4478,21 +4478,21 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               <style>
                 
   
-  .root-upset-22rqc69r {
+  .root-upset-ck36quom {
     font-family: sans-serif;
   }
   
   
-  .titleTextStyle-upset-22rqc69r {
+  .titleTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 24px;
   }
-  .descTextStyle-upset-22rqc69r {
+  .descTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 16px;
   }
 
-  .legendTextStyle-upset-22rqc69r {
+  .legendTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 10px;
     text-anchor: middle;
@@ -4501,44 +4501,44 @@ exports[`Gene phenotypes component renders correctly 1`] = `
   }
   
 
-  .axisTextStyle-upset-22rqc69r {
+  .axisTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 10px;
     text-anchor: middle;
   }
-  .barTextStyle-upset-22rqc69r {
+  .barTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 10px;
   }
-  .cBarTextStyle-upset-22rqc69r {
+  .cBarTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 10px;
     text-anchor: middle;
   }
-  .sBarTextStyle-upset-22rqc69r {
+  .sBarTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 10px;
     text-anchor: end;
     dominant-baseline: central;
   }
-  .hoverBarTextStyle-upset-22rqc69r {
+  .hoverBarTextStyle-upset-ck36quom {
     font-size: 10px;
     fill: #cccccc;
     display: none;
     text-anchor: middle;
   }
-  .setTextStyle-upset-22rqc69r {
+  .setTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 16px;
     text-anchor: end;
     dominant-baseline: central;
   }
-  .cChartTextStyle-upset-22rqc69r {
+  .cChartTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 16px;
     text-anchor: middle;
   }
-  .sChartTextStyle-upset-22rqc69r {
+  .sChartTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 16px;
     text-anchor: middle;
@@ -4546,79 +4546,79 @@ exports[`Gene phenotypes component renders correctly 1`] = `
   }
 
   
-  .fillPrimary-upset-22rqc69r { fill: #000000; fill-opacity: 1; }
-  .fillOverflow1-upset-22rqc69r { fill-opacity: 0.7; }
-  .fillOverflow2-upset-22rqc69r { fill-opacity: 0.4; }
+  .fillPrimary-upset-ck36quom { fill: #000000; fill-opacity: 1; }
+  .fillOverflow1-upset-ck36quom { fill-opacity: 0.7; }
+  .fillOverflow2-upset-ck36quom { fill-opacity: 0.4; }
   
   
-  .fillSelection-upset-22rqc69r { fill: #ffa500; }
-  .fillTransparent-upset-22rqc69r { fill: transparent; }
+  .fillSelection-upset-ck36quom { fill: #ffa500; }
+  .fillTransparent-upset-ck36quom { fill: transparent; }
 
-  .selectionHint-upset-22rqc69r {
+  .selectionHint-upset-ck36quom {
     fill: transparent;
     pointer-events: none;
     stroke: #ffa500;
   }
-  .clickAble-upset-22rqc69r {
+  .clickAble-upset-ck36quom {
     cursor: pointer;
   }
 
-  .startText-upset-22rqc69r {
+  .startText-upset-ck36quom {
     text-anchor: start;
   }
-  .endText-upset-22rqc69r {
+  .endText-upset-ck36quom {
     text-anchor: end;
   }
-  .pnone-upset-22rqc69r {
+  .pnone-upset-ck36quom {
     pointer-events: none;
   }
-  .fillNotMember-upset-22rqc69r { fill: #d3d3d3; }
-  .fillAlternating-upset-22rqc69r { fill: rgba(0,0,0,0.05); }
+  .fillNotMember-upset-ck36quom { fill: #d3d3d3; }
+  .fillAlternating-upset-ck36quom { fill: rgba(0,0,0,0.05); }
 
-  .axisLine-upset-22rqc69r {
+  .axisLine-upset-ck36quom {
     fill: none;
     stroke: #000000;
   }
-  .hoverBar-upset-22rqc69r {
+  .hoverBar-upset-ck36quom {
     fill: transparent;
   }
 
-  .interactive-upset-22rqc69r:hover &gt; .hoverBar-upset-22rqc69r {
+  .interactive-upset-ck36quom:hover &gt; .hoverBar-upset-ck36quom {
     stroke: #cccccc;
   }
-  .interactive-upset-22rqc69r:hover &gt; .hoverBarTextStyle-upset-22rqc69r {
+  .interactive-upset-ck36quom:hover &gt; .hoverBarTextStyle-upset-ck36quom {
     display: unset;
   }
 
   
-  .exportTextStyle-upset-22rqc69r {
+  .exportTextStyle-upset-ck36quom {
     fill: #000000;
     font-size: 10px;
   }
-  .exportButtons-upset-22rqc69r {
+  .exportButtons-upset-ck36quom {
     text-anchor: middle;
   }
-  .exportButton-upset-22rqc69r {
+  .exportButton-upset-ck36quom {
     cursor: pointer;
     opacity: 0.5;
   }
-  .exportButton-upset-22rqc69r:hover {
+  .exportButton-upset-ck36quom:hover {
     opacity: 1;
   }
-  .exportButton-upset-22rqc69r &gt; rect {
+  .exportButton-upset-ck36quom &gt; rect {
     fill: none;
     stroke: #000000;
   }
   
 
-  .upsetLine-upset-a2hn5sco9a {
+  .upsetLine-upset-uf53chw0e {
     stroke-width: 9.551839464882942;
     stroke: #000000;
     stroke-opacity: 1;
   }
   
 
-  .upsetSelectionLine-upset-a2hn5sco9a {
+  .upsetSelectionLine-upset-uf53chw0e {
     stroke-width: 10.507023411371238;
     stroke: #ffa500;
     pointer-events: none;
@@ -4629,7 +4629,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               </style>
               <defs>
                 <clippath
-                  id="clip-upset-bkbq4p6ee"
+                  id="clip-upset-ap9ham2zc"
                 >
                   <rect
                     height="136"
@@ -4640,11 +4640,11 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                 </clippath>
               </defs>
               <g
-                class="exportButtons-upset-22rqc69r"
+                class="exportButtons-upset-ck36quom"
                 transform="translate(1198,397)"
               >
                 <g
-                  class="exportButton-upset-22rqc69r"
+                  class="exportButton-upset-ck36quom"
                   data-type="svg"
                   transform="translate(-26, 0)"
                 >
@@ -4659,14 +4659,14 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     y="-9"
                   />
                   <text
-                    class="exportTextStyle-upset-22rqc69r"
+                    class="exportTextStyle-upset-ck36quom"
                     x="13"
                   >
                     SVG
                   </text>
                 </g>
                 <g
-                  class="exportButton-upset-22rqc69r"
+                  class="exportButton-upset-ck36quom"
                   data-type="png"
                   transform="translate(-54, 0)"
                 >
@@ -4681,14 +4681,14 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     y="-9"
                   />
                   <text
-                    class="exportTextStyle-upset-22rqc69r"
+                    class="exportTextStyle-upset-ck36quom"
                     x="13"
                   >
                     PNG
                   </text>
                 </g>
                 <g
-                  class="exportButton-upset-22rqc69r"
+                  class="exportButton-upset-ck36quom"
                   data-type="vega"
                   transform="translate(-90, 0)"
                 >
@@ -4703,14 +4703,14 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     y="-9"
                   />
                   <text
-                    class="exportTextStyle-upset-22rqc69r"
+                    class="exportTextStyle-upset-ck36quom"
                     x="17"
                   >
                     VEGA
                   </text>
                 </g>
                 <g
-                  class="exportButton-upset-22rqc69r"
+                  class="exportButton-upset-ck36quom"
                   data-type="dump"
                   transform="translate(-126, 0)"
                 >
@@ -4725,14 +4725,14 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     y="-9"
                   />
                   <text
-                    class="exportTextStyle-upset-22rqc69r"
+                    class="exportTextStyle-upset-ck36quom"
                     x="17"
                   >
                     DUMP
                   </text>
                 </g>
                 <g
-                  class="exportButton-upset-22rqc69r"
+                  class="exportButton-upset-ck36quom"
                   data-type="share"
                   transform="translate(-170, 0)"
                 >
@@ -4747,7 +4747,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     y="-9"
                   />
                   <text
-                    class="exportTextStyle-upset-22rqc69r"
+                    class="exportTextStyle-upset-ck36quom"
                     x="21"
                   >
                     SHARE
@@ -4759,7 +4759,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                 transform="translate(20,20)"
               >
                 <rect
-                  class="fillTransparent-upset-22rqc69r"
+                  class="fillTransparent-upset-ck36quom"
                   height="204"
                   width="232"
                 />
@@ -4773,14 +4773,14 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         transform="translate(0, 204.5)"
                       >
                         <text
-                          class="axisTextStyle-upset-22rqc69r endText-upset-22rqc69r"
+                          class="axisTextStyle-upset-ck36quom endText-upset-ck36quom"
                           dy="0.32em"
                           x="-9"
                         >
                           0
                         </text>
                         <line
-                          class="axisLine-upset-22rqc69r"
+                          class="axisLine-upset-ck36quom"
                           x2="-6"
                         />
                       </g>
@@ -4788,31 +4788,31 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         transform="translate(0, 12.5)"
                       >
                         <text
-                          class="axisTextStyle-upset-22rqc69r endText-upset-22rqc69r"
+                          class="axisTextStyle-upset-ck36quom endText-upset-ck36quom"
                           dy="0.32em"
                           x="-9"
                         >
                           1
                         </text>
                         <line
-                          class="axisLine-upset-22rqc69r"
+                          class="axisLine-upset-ck36quom"
                           x2="-6"
                         />
                       </g>
                       <path
-                        class="axisLine-upset-22rqc69r"
+                        class="axisLine-upset-ck36quom"
                         d="M-6,12H0.5V204H-6"
                       />
                     </g>
                     <line
-                      class="axisLine-upset-22rqc69r"
+                      class="axisLine-upset-ck36quom"
                       x1="0"
                       x2="928"
                       y1="205"
                       y2="205"
                     />
                     <text
-                      class="cChartTextStyle-upset-22rqc69r"
+                      class="cChartTextStyle-upset-ck36quom"
                       transform="translate(-20, 102)rotate(-90)"
                     >
                       Number of Phenotypes
@@ -4820,14 +4820,14 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                   </g>
                 </g>
                 <g
-                  class="clickAble-upset-22rqc69r"
+                  class="clickAble-upset-ck36quom"
                 >
                   <g
                     data-upset="sets"
                     transform="translate(0,204)"
                   >
                     <g
-                      class="interactive-upset-22rqc69r"
+                      class="interactive-upset-ck36quom"
                       data-cardinality="1"
                       transform="translate(0, 76.8695652173913)"
                     >
@@ -4837,14 +4837,14 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         1
                       </title>
                       <rect
-                        class="hoverBar-upset-22rqc69r"
+                        class="hoverBar-upset-ck36quom"
                         height="45.484949832775925"
                         width="1160"
                         x="0"
                       />
                       <text
-                        class="setTextStyle-upset-22rqc69r"
-                        clip-path="url(#clip-upset-bkbq4p6ee)"
+                        class="setTextStyle-upset-ck36quom"
+                        clip-path="url(#clip-upset-ap9ham2zc)"
                         x="230"
                         y="22.742474916387962"
                       >
@@ -4852,7 +4852,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                       </text>
                     </g>
                     <g
-                      class="interactive-upset-22rqc69r"
+                      class="interactive-upset-ck36quom"
                       data-cardinality="1"
                       transform="translate(0, 17.739130434782595)"
                     >
@@ -4862,20 +4862,20 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         1
                       </title>
                       <rect
-                        class="hoverBar-upset-22rqc69r"
+                        class="hoverBar-upset-ck36quom"
                         height="45.484949832775925"
                         width="1160"
                         x="0"
                       />
                       <rect
-                        class="fillAlternating-upset-22rqc69r"
+                        class="fillAlternating-upset-ck36quom"
                         height="45.484949832775925"
                         width="1160"
                         x="0"
                       />
                       <text
-                        class="setTextStyle-upset-22rqc69r"
-                        clip-path="url(#clip-upset-bkbq4p6ee)"
+                        class="setTextStyle-upset-ck36quom"
+                        clip-path="url(#clip-upset-ap9ham2zc)"
                         x="230"
                         y="22.742474916387962"
                       >
@@ -4888,7 +4888,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     transform="translate(232,0)"
                   >
                     <g
-                      class="interactive-upset-22rqc69r"
+                      class="interactive-upset-ck36quom"
                       data-cardinality="1"
                       transform="translate(84.36363636363626, 0)"
                     >
@@ -4898,34 +4898,34 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         1
                       </title>
                       <rect
-                        class="hoverBar-upset-22rqc69r"
+                        class="hoverBar-upset-ck36quom"
                         height="340"
                         width="216.31701631701634"
                         y="0"
                       />
                       <rect
-                        class="fillPrimary-upset-22rqc69r"
+                        class="fillPrimary-upset-ck36quom"
                         height="192"
                         width="216.31701631701634"
                         x="0"
                         y="12"
                       />
                       <text
-                        class="cBarTextStyle-upset-22rqc69r"
+                        class="cBarTextStyle-upset-ck36quom"
                         x="108.15850815850817"
                         y="10"
                       >
                         1
                       </text>
                       <text
-                        class="hoverBarTextStyle-upset-22rqc69r"
+                        class="hoverBarTextStyle-upset-ck36quom"
                         x="108.15850815850817"
                         y="-2"
                       >
                         Myo6&lt;Tlc&gt;
                       </text>
                       <circle
-                        class="fillNotMember-upset-22rqc69r"
+                        class="fillNotMember-upset-ck36quom"
                         cx="108.15850815850817"
                         cy="303.61204013377926"
                         r="15.919732441471572"
@@ -4935,7 +4935,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         </title>
                       </circle>
                       <circle
-                        class="fillPrimary-upset-22rqc69r"
+                        class="fillPrimary-upset-ck36quom"
                         cx="108.15850815850817"
                         cy="244.48160535117054"
                         r="15.919732441471572"
@@ -4946,7 +4946,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                       </circle>
                     </g>
                     <g
-                      class="interactive-upset-22rqc69r"
+                      class="interactive-upset-ck36quom"
                       data-cardinality="1"
                       transform="translate(365.5757575757575, 0)"
                     >
@@ -4956,34 +4956,34 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         1
                       </title>
                       <rect
-                        class="hoverBar-upset-22rqc69r"
+                        class="hoverBar-upset-ck36quom"
                         height="340"
                         width="216.31701631701634"
                         y="0"
                       />
                       <rect
-                        class="fillPrimary-upset-22rqc69r"
+                        class="fillPrimary-upset-ck36quom"
                         height="192"
                         width="216.31701631701634"
                         x="0"
                         y="12"
                       />
                       <text
-                        class="cBarTextStyle-upset-22rqc69r"
+                        class="cBarTextStyle-upset-ck36quom"
                         x="108.15850815850817"
                         y="10"
                       >
                         1
                       </text>
                       <text
-                        class="hoverBarTextStyle-upset-22rqc69r"
+                        class="hoverBarTextStyle-upset-ck36quom"
                         x="108.15850815850817"
                         y="-2"
                       >
                         Myo6&lt;em1(IMPC)Tcp&gt;
                       </text>
                       <circle
-                        class="fillNotMember-upset-22rqc69r"
+                        class="fillNotMember-upset-ck36quom"
                         cx="108.15850815850817"
                         cy="244.48160535117054"
                         r="15.919732441471572"
@@ -4993,7 +4993,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         </title>
                       </circle>
                       <circle
-                        class="fillPrimary-upset-22rqc69r"
+                        class="fillPrimary-upset-ck36quom"
                         cx="108.15850815850817"
                         cy="303.61204013377926"
                         r="15.919732441471572"
@@ -5004,7 +5004,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                       </circle>
                     </g>
                     <g
-                      class="interactive-upset-22rqc69r"
+                      class="interactive-upset-ck36quom"
                       data-cardinality="1"
                       transform="translate(646.7878787878788, 0)"
                     >
@@ -5014,41 +5014,41 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         1
                       </title>
                       <rect
-                        class="hoverBar-upset-22rqc69r"
+                        class="hoverBar-upset-ck36quom"
                         height="340"
                         width="216.31701631701634"
                         y="0"
                       />
                       <rect
-                        class="fillPrimary-upset-22rqc69r"
+                        class="fillPrimary-upset-ck36quom"
                         height="192"
                         width="216.31701631701634"
                         x="0"
                         y="12"
                       />
                       <text
-                        class="cBarTextStyle-upset-22rqc69r"
+                        class="cBarTextStyle-upset-ck36quom"
                         x="108.15850815850817"
                         y="10"
                       >
                         1
                       </text>
                       <text
-                        class="hoverBarTextStyle-upset-22rqc69r"
+                        class="hoverBarTextStyle-upset-ck36quom"
                         x="108.15850815850817"
                         y="-2"
                       >
                         (Myo6&lt;em1(IMPC)Tcp&gt; ∩ Myo6&lt;Tlc&gt;)
                       </text>
                       <line
-                        class="upsetLine-upset-a2hn5sco9a"
+                        class="upsetLine-upset-uf53chw0e"
                         x1="108.15850815850817"
                         x2="108.15850815850817"
                         y1="288.6923076923077"
                         y2="259.4013377926421"
                       />
                       <circle
-                        class="fillPrimary-upset-22rqc69r"
+                        class="fillPrimary-upset-ck36quom"
                         cx="108.15850815850817"
                         cy="303.61204013377926"
                         r="15.919732441471572"
@@ -5058,7 +5058,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                         </title>
                       </circle>
                       <circle
-                        class="fillPrimary-upset-22rqc69r"
+                        class="fillPrimary-upset-ck36quom"
                         cx="108.15850815850817"
                         cy="244.48160535117054"
                         r="15.919732441471572"
@@ -5071,28 +5071,28 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                   </g>
                 </g>
                 <g
-                  class="pnone-upset-22rqc69r"
+                  class="pnone-upset-ck36quom"
                 >
                   <g
                     data-upset="cs-s"
                     transform="translate(232,0)"
                   >
                     <rect
-                      class="fillSelection-upset-22rqc69r pnone-upset-22rqc69r"
+                      class="fillSelection-upset-ck36quom pnone-upset-ck36quom"
                       height="0"
                       width="216.31701631701634"
                       x="84.36363636363626"
                       y="204"
                     />
                     <rect
-                      class="fillSelection-upset-22rqc69r pnone-upset-22rqc69r"
+                      class="fillSelection-upset-ck36quom pnone-upset-ck36quom"
                       height="0"
                       width="216.31701631701634"
                       x="365.5757575757575"
                       y="204"
                     />
                     <rect
-                      class="fillSelection-upset-22rqc69r pnone-upset-22rqc69r"
+                      class="fillSelection-upset-ck36quom pnone-upset-ck36quom"
                       height="0"
                       width="216.31701631701634"
                       x="646.7878787878788"
@@ -5104,14 +5104,14 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     transform="translate(0,204)"
                   >
                     <rect
-                      class="fillSelection-upset-22rqc69r  pnone-upset-22rqc69r"
+                      class="fillSelection-upset-ck36quom  pnone-upset-ck36quom"
                       height="45.484949832775925"
                       width="0"
                       x="0"
                       y="76.8695652173913"
                     />
                     <rect
-                      class="fillSelection-upset-22rqc69r  pnone-upset-22rqc69r"
+                      class="fillSelection-upset-ck36quom  pnone-upset-ck36quom"
                       height="45.484949832775925"
                       width="0"
                       x="0"
