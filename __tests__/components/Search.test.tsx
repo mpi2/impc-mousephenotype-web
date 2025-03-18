@@ -3,7 +3,6 @@ import Search from "@/components/Search";
 import userEvent from "@testing-library/user-event";
 import mockRouter from "next-router-mock";
 import { AppRouterContextProviderMock } from "../utils";
-import { useSearchParams } from "next/navigation";
 
 jest.mock("next/navigation", () => {
   const originalModule = jest.requireActual("next/navigation");

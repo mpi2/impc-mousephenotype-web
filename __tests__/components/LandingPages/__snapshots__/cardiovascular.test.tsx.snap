@@ -2090,6 +2090,9 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
             Cardiovascular system IKMC/IMPC related publications
           </strong>
         </h1>
+        <div>
+          PublicationsList mock
+        </div>
       </div>
     </div>
   </div>

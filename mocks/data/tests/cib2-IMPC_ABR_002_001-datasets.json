@@ -1,0 +1,440 @@
+[
+  {
+    "id": "6717804fd8b946640b8110bd",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "classificationTag": "Not significant",
+    "colonyId": "H-CIB2-D04-TM1B",
+    "dataType": "unidimensional",
+    "geneSymbol": "Cib2",
+    "geneticBackground": "involves: C57BL/6NTac",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal hearing electrophysiology",
+        "id": "MP:0001963"
+      },
+      {
+        "name": "abnormal hearing physiology",
+        "id": "MP:0003878"
+      },
+      {
+        "name": "abnormal ear physiology",
+        "id": "MP:0004738"
+      },
+      {
+        "name": "abnormal auditory brainstem response",
+        "id": "MP:0006335"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "8668651762291b63e041f247425f67db",
+    "metadataValues": [
+      "Anesthetic administration route = Intraperitoneal|Anesthetic agent 1 = Ketamine|Anesthetic agent 1 dosage = 0.1|Anesthetic agent 2 = Xylazine|Anesthetic agent 2 dosage = 0.01|Equipment ID = New ABR|Equipment manufacturer = Intelligent Hearing Systems|Equipment model = Smart EP|Experimenter ID = 1804|Number averages = 542|Range of stimulus levels used - 12kHz = 0-85|Range of stimulus levels used - 18kHz = 0-85|Range of stimulus levels used - 24kHz = 0-85|Range of stimulus levels used - 30kHz = 0-85|Range of stimulus levels used - 6kHz = 0-85|Range of stimulus levels used - Click = 0-85|Recording Environment = Sound proof booth|Repetition Rate = 42.6|Software = SmartEP|Stimulus level step size = 5|Time of injection = null|Tone Pip Duration = 7|Tone Pip rise/fall = 1"
+    ],
+    "mgiGeneAccessionId": "MGI:1929293",
+    "parameterName": "Click-evoked ABR threshold",
+    "parameterStableId": "IMPC_ABR_002_001",
+    "parameterStableKey": 29271,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "MRC Harwell",
+    "pipelineName": "Harwell",
+    "pipelineStableId": "HRWL_001",
+    "pipelineStableKey": 8,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal auditory brainstem response",
+        "id": "MP:0004738"
+      },
+      {
+        "name": "increased or absent threshold for auditory brainstem response",
+        "id": "MP:0011967"
+      },
+      {
+        "name": "decreased threshold for auditory brainstem response",
+        "id": "MP:0011968"
+      }
+    ],
+    "procedureGroup": "IMPC_ABR",
+    "procedureName": "Auditory Brain Stem Response",
+    "procedureStableId": "IMPC_ABR_002",
+    "procedureStableKey": 666,
+    "productionCentre": "MRC Harwell",
+    "projectName": "MRC",
+    "reportedEffectSize": 0.907894736842105,
+    "reportedPValue": 0.00179194567575215,
+    "unit": {
+      "x": "dB SPL",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": null,
+    "zygosity": "homozygote",
+    "significant": false,
+    "significantPhenotype": null,
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Reference Range Plus Test framework; quantile = 0.95 (Tails probability = 0.025)",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "3b41a386c9a534842de1b3ae57a1b2f6",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2164831",
+    "strainName": "C57BL/6NTac",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 231,
+      "femaleControlMean": 37.2727272727273,
+      "femaleControlSd": 6.66979504991759,
+      "femaleMutantCount": 1,
+      "femaleMutantMean": 100.0,
+      "femaleMutantSd": 0.0,
+      "maleControlCount": 228,
+      "maleControlMean": 36.0964912280702,
+      "maleControlSd": 5.75792011250149,
+      "maleMutantCount": 2,
+      "maleMutantMean": 100.0,
+      "maleMutantSd": 0.0
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "hearing/vestibular/ear phenotype",
+        "id": "MP:0005377"
+      }
+    ]
+  },
+  {
+    "id": "67178ce93f6b592b31f74c98",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "classificationTag": "Not significant",
+    "colonyId": "H-CIB2-D04-TM1B",
+    "dataType": "unidimensional",
+    "geneSymbol": "Cib2",
+    "geneticBackground": "involves: C57BL/6NTac",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal hearing electrophysiology",
+        "id": "MP:0001963"
+      },
+      {
+        "name": "abnormal hearing physiology",
+        "id": "MP:0003878"
+      },
+      {
+        "name": "abnormal ear physiology",
+        "id": "MP:0004738"
+      },
+      {
+        "name": "abnormal auditory brainstem response",
+        "id": "MP:0006335"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "8668651762291b63e041f247425f67db",
+    "metadataValues": [
+      "Anesthetic administration route = Intraperitoneal|Anesthetic agent 1 = Ketamine|Anesthetic agent 1 dosage = 0.1|Anesthetic agent 2 = Xylazine|Anesthetic agent 2 dosage = 0.01|Equipment ID = New ABR|Equipment manufacturer = Intelligent Hearing Systems|Equipment model = Smart EP|Experimenter ID = 1804|Number averages = 542|Range of stimulus levels used - 12kHz = 0-85|Range of stimulus levels used - 18kHz = 0-85|Range of stimulus levels used - 24kHz = 0-85|Range of stimulus levels used - 30kHz = 0-85|Range of stimulus levels used - 6kHz = 0-85|Range of stimulus levels used - Click = 0-85|Recording Environment = Sound proof booth|Repetition Rate = 42.6|Software = SmartEP|Stimulus level step size = 5|Time of injection = null|Tone Pip Duration = 7|Tone Pip rise/fall = 1"
+    ],
+    "mgiGeneAccessionId": "MGI:1929293",
+    "parameterName": "Click-evoked ABR threshold",
+    "parameterStableId": "IMPC_ABR_002_001",
+    "parameterStableKey": 29271,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "MRC Harwell",
+    "pipelineName": "Harwell",
+    "pipelineStableId": "HRWL_001",
+    "pipelineStableKey": 8,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal auditory brainstem response",
+        "id": "MP:0004738"
+      },
+      {
+        "name": "increased or absent threshold for auditory brainstem response",
+        "id": "MP:0011967"
+      },
+      {
+        "name": "decreased threshold for auditory brainstem response",
+        "id": "MP:0011968"
+      }
+    ],
+    "procedureGroup": "IMPC_ABR",
+    "procedureName": "Auditory Brain Stem Response",
+    "procedureStableId": "IMPC_ABR_002",
+    "procedureStableKey": 666,
+    "productionCentre": "MRC Harwell",
+    "projectName": "MRC",
+    "reportedEffectSize": 0.907894736842105,
+    "reportedPValue": 0.00179194567575215,
+    "unit": {
+      "x": "dB SPL",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": null,
+    "zygosity": "homozygote",
+    "significant": false,
+    "significantPhenotype": null,
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Reference Range Plus Test framework; quantile = 0.95 (Tails probability = 0.025)",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "3b41a386c9a534842de1b3ae57a1b2f6",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2164831",
+    "strainName": "C57BL/6NTac",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 231,
+      "femaleControlMean": 37.2727272727273,
+      "femaleControlSd": 6.66979504991759,
+      "femaleMutantCount": 1,
+      "femaleMutantMean": 100.0,
+      "femaleMutantSd": 0.0,
+      "maleControlCount": 228,
+      "maleControlMean": 36.0964912280702,
+      "maleControlSd": 5.75792011250149,
+      "maleMutantCount": 2,
+      "maleMutantMean": 100.0,
+      "maleMutantSd": 0.0
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "hearing/vestibular/ear phenotype",
+        "id": "MP:0005377"
+      }
+    ]
+  },
+  {
+    "id": "6717921269ea7559e008b477",
+    "alleleAccessionId": "MGI:5548707",
+    "alleleName": "targeted mutation 1b, Wellcome Trust Sanger Institute",
+    "alleleSymbol": "Cib2<tm1b(EUCOMM)Wtsi>",
+    "classificationTag": "Not significant",
+    "colonyId": "H-CIB2-D04-TM1B",
+    "dataType": "unidimensional",
+    "geneSymbol": "Cib2",
+    "geneticBackground": "involves: C57BL/6NTac",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal hearing electrophysiology",
+        "id": "MP:0001963"
+      },
+      {
+        "name": "abnormal hearing physiology",
+        "id": "MP:0003878"
+      },
+      {
+        "name": "abnormal ear physiology",
+        "id": "MP:0004738"
+      },
+      {
+        "name": "abnormal auditory brainstem response",
+        "id": "MP:0006335"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "8668651762291b63e041f247425f67db",
+    "metadataValues": [
+      "Anesthetic administration route = Intraperitoneal|Anesthetic agent 1 = Ketamine|Anesthetic agent 1 dosage = 0.1|Anesthetic agent 2 = Xylazine|Anesthetic agent 2 dosage = 0.01|Equipment ID = New ABR|Equipment manufacturer = Intelligent Hearing Systems|Equipment model = Smart EP|Experimenter ID = 1804|Number averages = 542|Range of stimulus levels used - 12kHz = 0-85|Range of stimulus levels used - 18kHz = 0-85|Range of stimulus levels used - 24kHz = 0-85|Range of stimulus levels used - 30kHz = 0-85|Range of stimulus levels used - 6kHz = 0-85|Range of stimulus levels used - Click = 0-85|Recording Environment = Sound proof booth|Repetition Rate = 42.6|Software = SmartEP|Stimulus level step size = 5|Time of injection = null|Tone Pip Duration = 7|Tone Pip rise/fall = 1"
+    ],
+    "mgiGeneAccessionId": "MGI:1929293",
+    "parameterName": "Click-evoked ABR threshold",
+    "parameterStableId": "IMPC_ABR_002_001",
+    "parameterStableKey": 29271,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "MRC Harwell",
+    "pipelineName": "Harwell",
+    "pipelineStableId": "HRWL_001",
+    "pipelineStableKey": 8,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal auditory brainstem response",
+        "id": "MP:0004738"
+      },
+      {
+        "name": "increased or absent threshold for auditory brainstem response",
+        "id": "MP:0011967"
+      },
+      {
+        "name": "decreased threshold for auditory brainstem response",
+        "id": "MP:0011968"
+      }
+    ],
+    "procedureGroup": "IMPC_ABR",
+    "procedureName": "Auditory Brain Stem Response",
+    "procedureStableId": "IMPC_ABR_002",
+    "procedureStableKey": 666,
+    "productionCentre": "MRC Harwell",
+    "projectName": "MRC",
+    "reportedEffectSize": 0.907894736842105,
+    "reportedPValue": 0.00179194567575215,
+    "unit": {
+      "x": "dB SPL",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": null,
+    "zygosity": "homozygote",
+    "significant": false,
+    "significantPhenotype": null,
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Reference Range Plus Test framework; quantile = 0.95 (Tails probability = 0.025)",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "3b41a386c9a534842de1b3ae57a1b2f6",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2164831",
+    "strainName": "C57BL/6NTac",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 231,
+      "femaleControlMean": 37.2727272727273,
+      "femaleControlSd": 6.66979504991759,
+      "femaleMutantCount": 1,
+      "femaleMutantMean": 100.0,
+      "femaleMutantSd": 0.0,
+      "maleControlCount": 228,
+      "maleControlMean": 36.0964912280702,
+      "maleControlSd": 5.75792011250149,
+      "maleMutantCount": 2,
+      "maleMutantMean": 100.0,
+      "maleMutantSd": 0.0
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "hearing/vestibular/ear phenotype",
+        "id": "MP:0005377"
+      }
+    ]
+  }
+]

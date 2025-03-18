@@ -1948,6 +1948,9 @@ exports[`Metabolism landing page renders correctly 1`] = `
             Homeostasis/metabolism IKMC/IMPC related publications
           </strong>
         </h1>
+        <div>
+          PublicationsList mock
+        </div>
       </div>
     </div>
   </div>

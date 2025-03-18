@@ -1,13 +1,18 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import GeneOrder from "@/components/Gene/Order";
 import { renderWithClient, API_URL } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import Crlf3Data from "../../../mocks/data/genes/MGI:1860086/order.json";
 import { GeneContext } from "@/contexts";
 
 describe("Gene order component", () => {
   it("should display information", async () => {
+    testServer.use(
+      rest.get(`${API_URL}/api/v1/genes/MGI:1860086/order`, (_, res, ctx) => {
+        return res(ctx.json(Crlf3Data));
+      }),
+    );
     renderWithClient(
       <GeneContext.Provider
         value={{ geneSymbol: "Crlf3", mgiGeneAccessionId: "MGI:1860086" }}
@@ -22,11 +27,18 @@ describe("Gene order component", () => {
     expect(screen.getByRole("heading")).toHaveTextContent(
       "Order Mouse and ES Cells",
     );
-    expect(await screen.findByRole("table")).toBeInTheDocument();
+    await waitFor(async () => {
+      expect(await screen.findByRole("table")).toBeInTheDocument();
+    });
     expect(screen.getAllByRole("row")).toHaveLength(10);
   });
 
   it("should display the correct information for the alleles provided", async () => {
+    testServer.use(
+      rest.get(`${API_URL}/api/v1/genes/MGI:1860086/order`, (_, res, ctx) => {
+        return res(ctx.json(Crlf3Data));
+      }),
+    );
     renderWithClient(
       <GeneContext.Provider
         value={{ geneSymbol: "Crlf3", mgiGeneAccessionId: "MGI:1860086" }}
@@ -60,7 +72,7 @@ describe("Gene order component", () => {
   });
 
   it("should only display mouse, es cell and targeting vector products", async () => {
-    server.use(
+    testServer.use(
       rest.get(`${API_URL}/api/v1/genes/MGI:1860086/order`, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(Crlf3Data));
       }),
@@ -85,9 +97,9 @@ describe("Gene order component", () => {
   });
 
   it("should show an error message if the request fails", async () => {
-    server.use(
+    testServer.use(
       rest.get(`${API_URL}/api/v1/genes/MGI:1860086/order`, (req, res, ctx) => {
-        return res(ctx.status(500));
+        return res(ctx.status(404));
       }),
     );
     renderWithClient(

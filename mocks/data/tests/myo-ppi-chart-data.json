@@ -1,0 +1,2477 @@
+[
+  {
+    "id": "67177a1e0a0b1480612b75c0",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  4.35014064481549e-58 ]; and with phenotype threshold value 1e-04 - different size as males greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI4",
+    "parameterStableId": "IMPC_ACS_036_001",
+    "parameterStableKey": 35723,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -6.4178044008343,
+    "reportedPValue": 4.35014064481549E-58,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1471,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.25096308106134,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1233
+    },
+    "statisticalMethod": {
+      "name": "Linear Model Using Generalized Least Squares framework, GLS, including Weight",
+      "attributes": {
+        "femaleEffectSize": -6.66810380079494,
+        "femaleKoEffectPValue": 4.35014064481549E-58,
+        "femaleKoEffectStderrEstimate": 5.11227491396945,
+        "femaleKoParameterEstimate": -86.6013810228468,
+        "femalePercentageChange": -493.951281713868,
+        "maleKoEffectPValue": 1.15238587776651E-72,
+        "maleKoEffectStderrEstimate": 5.25696012810646,
+        "maleKoParameterEstimate": -101.331345389888,
+        "malePercentageChange": -599.202284500909,
+        "genotypeEffectPValue": 4.35014064481549E-58,
+        "genotypeEffectStderrEstimate": 5.11227491396945,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 7.17228582387245E-33,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 2.6668009817387E-4,
+        "interactionEffectPValue": 0.0394354888289543,
+        "interactionSignificant": true,
+        "interceptEstimate": 91.3286449076296,
+        "interceptEstimateStderrEstimate": 5.04789518273393,
+        "maleEffectSize": -6.2692714507867,
+        "sexEffectPValue": 0.00237316644718556,
+        "sexEffectParameterEstimate": 4.86411593621889,
+        "sexEffectStderrEstimate": 1.59724587007895,
+        "batchSignificant": false,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "64d496cef51d3d02be1cd6332ed69389",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 77.8322541036793,
+      "femaleControlSd": 16.5737815278861,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -4.53925599785418,
+      "femaleMutantSd": 28.172814078461,
+      "maleControlCount": 771,
+      "maleControlMean": 79.0560821928172,
+      "maleControlSd": 15.663169852676,
+      "maleMutantCount": 8,
+      "maleMutantMean": -16.132471604031,
+      "maleMutantSd": 85.5045098199208
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67177ad3fb875988f9518e75",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  2.83451096721242e-47 ]; and with phenotype threshold value 1e-04 - different size as females greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI2",
+    "parameterStableId": "IMPC_ACS_034_001",
+    "parameterStableKey": 35721,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -3.44231157068275,
+    "reportedPValue": 2.83451096721242E-47,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1691,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 0.678778639688872,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1403
+    },
+    "statisticalMethod": {
+      "name": "Linear Model Using Generalized Least Squares framework, GLS, not including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.94824166358283,
+        "femaleKoEffectPValue": 7.03326555225158E-47,
+        "femaleKoEffectStderrEstimate": 11.1375410439306,
+        "femaleKoParameterEstimate": -166.193893838248,
+        "femalePercentageChange": -497.917511326631,
+        "maleKoEffectPValue": 1.14547768282585E-6,
+        "maleKoEffectStderrEstimate": 11.4165321937048,
+        "maleKoParameterEstimate": -55.7820872489182,
+        "malePercentageChange": -167.12161833702,
+        "genotypeEffectPValue": 2.83451096721242E-47,
+        "genotypeEffectStderrEstimate": 10.9804272846645,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.83472528362361E-34,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 1.78340439878687E-4,
+        "interactionEffectPValue": 1.14177128429429E-12,
+        "interactionSignificant": true,
+        "interceptEstimate": 56.7904477712059,
+        "interceptEstimateStderrEstimate": 1.15498482943003,
+        "maleEffectSize": -1.85711191617966,
+        "sexEffectPValue": 0.821433905917269,
+        "sexEffectParameterEstimate": 0.374563534346144,
+        "sexEffectStderrEstimate": 1.65924842504511,
+        "batchSignificant": false,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "fb6573b35b0a77cba03c0ce9121aa017",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 54.7149449029472,
+      "femaleControlSd": 25.8273713713653,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -107.823629741685,
+      "femaleMutantSd": 232.891510455744,
+      "maleControlCount": 771,
+      "maleControlMean": 54.3946997569364,
+      "maleControlSd": 30.9145465007609,
+      "maleMutantCount": 8,
+      "maleMutantMean": 4.02571476289801,
+      "maleMutantSd": 64.3341059975071
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67177b032452fbd001ddafdf",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally insignificant [level =  1e-04 , pvalue =  0.000409064488856359 ]; but with phenotype threshold value 1e-04 - different size as males greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI1",
+    "parameterStableId": "IMPC_ACS_033_001",
+    "parameterStableKey": 35720,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -1.9715074840761,
+    "reportedPValue": 4.09064488856359E-4,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "male",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1614,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.04133291282715,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1327
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, not including Weight",
+      "attributes": {
+        "femaleEffectSize": -1.32491638922631,
+        "femaleKoEffectPValue": 2.53732635685647E-4,
+        "femaleKoEffectStderrEstimate": 13.9205643598984,
+        "femaleKoParameterEstimate": -51.0966938282016,
+        "femalePercentageChange": -165.125670717824,
+        "maleKoEffectPValue": 2.19740879591362E-11,
+        "maleKoEffectStderrEstimate": 14.2164786048469,
+        "maleKoParameterEstimate": -96.1504673347816,
+        "malePercentageChange": -279.397060673882,
+        "genotypeEffectPValue": 4.09064488856359E-4,
+        "genotypeEffectStderrEstimate": 13.7344672868181,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.7931885206703E-33,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.436245002898165,
+        "interactionEffectPValue": 0.0193020597638167,
+        "interactionSignificant": true,
+        "interceptEstimate": 25.6828852488375,
+        "interceptEstimateStderrEstimate": 1.48798287163804,
+        "maleEffectSize": -2.8277247142071,
+        "sexEffectPValue": 0.190606707111291,
+        "sexEffectParameterEstimate": 2.64409143743338,
+        "sexEffectStderrEstimate": 2.01900373192336,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "1c9c88cff10b0482e65de209f7d3e0c6",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 23.5217858167848,
+      "femaleControlSd": 39.3396779570268,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -22.6297176299241,
+      "femaleMutantSd": 75.6951246457222,
+      "maleControlCount": 771,
+      "maleControlMean": 24.443824347338,
+      "maleControlSd": 38.8829367028893,
+      "maleMutantCount": 8,
+      "maleMutantMean": -63.362833825947,
+      "maleMutantSd": 65.7306639298222
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67177b085fc909006212f39b",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - both sexes equally",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI3",
+    "parameterStableId": "IMPC_ACS_035_001",
+    "parameterStableKey": 35722,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -4.39097621123682,
+    "reportedPValue": 0.0,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1800,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 2.76959149030538,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1446
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.96180517862037,
+        "femaleKoEffectPValue": 2.16313478419712E-31,
+        "femaleKoEffectStderrEstimate": 6.86133332060447,
+        "femaleKoParameterEstimate": -82.3470126064008,
+        "femalePercentageChange": -435.582319910502,
+        "maleKoEffectPValue": 1.26387758568879E-23,
+        "maleKoEffectStderrEstimate": 6.90480351443689,
+        "maleKoParameterEstimate": -70.690119543466,
+        "malePercentageChange": -368.788232099111,
+        "genotypeEffectPValue": 0.0,
+        "genotypeEffectStderrEstimate": 5.32276009031101,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.6828585448526E-32,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.923519514434328,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": 94.7489512854642,
+        "interceptEstimateStderrEstimate": 5.84081563770963,
+        "maleEffectSize": -3.96345501357981,
+        "sexEffectPValue": 3.54658846009048E-5,
+        "sexEffectParameterEstimate": 7.54197624574654,
+        "sexEffectStderrEstimate": 1.81686095418303,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "25de380279fe66e5cc7b132c9a6c05bb",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 71.47690510661,
+      "femaleControlSd": 17.5959673240941,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -3.38132928054342,
+      "femaleMutantSd": 46.1817899184863,
+      "maleControlCount": 771,
+      "maleControlMean": 72.5368403901208,
+      "maleControlSd": 17.8087558483916,
+      "maleMutantCount": 8,
+      "maleMutantMean": 9.58707763153437,
+      "maleMutantSd": 43.405622218398
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "6717804ad9df893c2c96d1cb",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally insignificant [level =  1e-04 , pvalue =  0.000409064488856359 ]; but with phenotype threshold value 1e-04 - different size as males greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI1",
+    "parameterStableId": "IMPC_ACS_033_001",
+    "parameterStableKey": 35720,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -1.9715074840761,
+    "reportedPValue": 4.09064488856359E-4,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "male",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1614,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.04133291282715,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1327
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, not including Weight",
+      "attributes": {
+        "femaleEffectSize": -1.32491638922631,
+        "femaleKoEffectPValue": 2.53732635685647E-4,
+        "femaleKoEffectStderrEstimate": 13.9205643598984,
+        "femaleKoParameterEstimate": -51.0966938282016,
+        "femalePercentageChange": -165.125670717824,
+        "maleKoEffectPValue": 2.19740879591362E-11,
+        "maleKoEffectStderrEstimate": 14.2164786048469,
+        "maleKoParameterEstimate": -96.1504673347816,
+        "malePercentageChange": -279.397060673882,
+        "genotypeEffectPValue": 4.09064488856359E-4,
+        "genotypeEffectStderrEstimate": 13.7344672868181,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.7931885206703E-33,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.436245002898165,
+        "interactionEffectPValue": 0.0193020597638167,
+        "interactionSignificant": true,
+        "interceptEstimate": 25.6828852488375,
+        "interceptEstimateStderrEstimate": 1.48798287163804,
+        "maleEffectSize": -2.8277247142071,
+        "sexEffectPValue": 0.190606707111291,
+        "sexEffectParameterEstimate": 2.64409143743338,
+        "sexEffectStderrEstimate": 2.01900373192336,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "1c9c88cff10b0482e65de209f7d3e0c6",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 23.5217858167848,
+      "femaleControlSd": 39.3396779570268,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -22.6297176299241,
+      "femaleMutantSd": 75.6951246457222,
+      "maleControlCount": 771,
+      "maleControlMean": 24.443824347338,
+      "maleControlSd": 38.8829367028893,
+      "maleMutantCount": 8,
+      "maleMutantMean": -63.362833825947,
+      "maleMutantSd": 65.7306639298222
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67178172bdac85d7fbd9d8aa",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally insignificant [level =  1e-04 , pvalue =  0.000409064488856359 ]; but with phenotype threshold value 1e-04 - different size as males greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI1",
+    "parameterStableId": "IMPC_ACS_033_001",
+    "parameterStableKey": 35720,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -1.9715074840761,
+    "reportedPValue": 4.09064488856359E-4,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "male",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1614,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.04133291282715,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1327
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, not including Weight",
+      "attributes": {
+        "femaleEffectSize": -1.32491638922631,
+        "femaleKoEffectPValue": 2.53732635685647E-4,
+        "femaleKoEffectStderrEstimate": 13.9205643598984,
+        "femaleKoParameterEstimate": -51.0966938282016,
+        "femalePercentageChange": -165.125670717824,
+        "maleKoEffectPValue": 2.19740879591362E-11,
+        "maleKoEffectStderrEstimate": 14.2164786048469,
+        "maleKoParameterEstimate": -96.1504673347816,
+        "malePercentageChange": -279.397060673882,
+        "genotypeEffectPValue": 4.09064488856359E-4,
+        "genotypeEffectStderrEstimate": 13.7344672868181,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.7931885206703E-33,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.436245002898165,
+        "interactionEffectPValue": 0.0193020597638167,
+        "interactionSignificant": true,
+        "interceptEstimate": 25.6828852488375,
+        "interceptEstimateStderrEstimate": 1.48798287163804,
+        "maleEffectSize": -2.8277247142071,
+        "sexEffectPValue": 0.190606707111291,
+        "sexEffectParameterEstimate": 2.64409143743338,
+        "sexEffectStderrEstimate": 2.01900373192336,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "1c9c88cff10b0482e65de209f7d3e0c6",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 23.5217858167848,
+      "femaleControlSd": 39.3396779570268,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -22.6297176299241,
+      "femaleMutantSd": 75.6951246457222,
+      "maleControlCount": 771,
+      "maleControlMean": 24.443824347338,
+      "maleControlSd": 38.8829367028893,
+      "maleMutantCount": 8,
+      "maleMutantMean": -63.362833825947,
+      "maleMutantSd": 65.7306639298222
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67178316890f4f482b9a3f36",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  0 ]; and with phenotype threshold value 1e-04 - different size as females greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - Global",
+    "parameterStableId": "IMPC_ACS_037_001",
+    "parameterStableKey": 35724,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -4.37925018902486,
+    "reportedPValue": 0.0,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1614,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.04133291282715,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1327
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.61067052573367,
+        "femaleKoEffectPValue": 2.82255099072036E-33,
+        "femaleKoEffectStderrEstimate": 7.74929165898583,
+        "femaleKoParameterEstimate": -96.3412011261138,
+        "femalePercentageChange": -446.431105250494,
+        "maleKoEffectPValue": 5.68690964797544E-24,
+        "maleKoEffectStderrEstimate": 7.8890756794968,
+        "maleKoParameterEstimate": -81.5797315804035,
+        "malePercentageChange": -413.945234205534,
+        "genotypeEffectPValue": 0.0,
+        "genotypeEffectStderrEstimate": 7.74929165898583,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.0034352054054E-29,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.00176302703911801,
+        "interactionEffectPValue": 0.148517889456731,
+        "interactionSignificant": true,
+        "interceptEstimate": 75.618238944739,
+        "interceptEstimateStderrEstimate": 7.05288806149102,
+        "maleEffectSize": -4.41930539028988,
+        "sexEffectPValue": 0.00350226160690026,
+        "sexEffectParameterEstimate": 6.47159101496013,
+        "sexEffectStderrEstimate": 2.21157951889675,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "9875b568ba425f24dbefb073118423c7",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 56.8864724825053,
+      "femaleControlSd": 20.6694403209052,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -34.5934831625017,
+      "femaleMutantSd": 90.984572079012,
+      "maleControlCount": 771,
+      "maleControlMean": 57.6078616718031,
+      "maleControlSd": 21.8444431840134,
+      "maleMutantCount": 8,
+      "maleMutantMean": -16.4706282588864,
+      "maleMutantSd": 42.0441385653727
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "671786334425f1a84b30b0c4",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - both sexes equally",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI3",
+    "parameterStableId": "IMPC_ACS_035_001",
+    "parameterStableKey": 35722,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -4.39097621123682,
+    "reportedPValue": 0.0,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1800,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 2.76959149030538,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1446
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.96180517862037,
+        "femaleKoEffectPValue": 2.16313478419712E-31,
+        "femaleKoEffectStderrEstimate": 6.86133332060447,
+        "femaleKoParameterEstimate": -82.3470126064008,
+        "femalePercentageChange": -435.582319910502,
+        "maleKoEffectPValue": 1.26387758568879E-23,
+        "maleKoEffectStderrEstimate": 6.90480351443689,
+        "maleKoParameterEstimate": -70.690119543466,
+        "malePercentageChange": -368.788232099111,
+        "genotypeEffectPValue": 0.0,
+        "genotypeEffectStderrEstimate": 5.32276009031101,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.6828585448526E-32,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.923519514434328,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": 94.7489512854642,
+        "interceptEstimateStderrEstimate": 5.84081563770963,
+        "maleEffectSize": -3.96345501357981,
+        "sexEffectPValue": 3.54658846009048E-5,
+        "sexEffectParameterEstimate": 7.54197624574654,
+        "sexEffectStderrEstimate": 1.81686095418303,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "25de380279fe66e5cc7b132c9a6c05bb",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 71.47690510661,
+      "femaleControlSd": 17.5959673240941,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -3.38132928054342,
+      "femaleMutantSd": 46.1817899184863,
+      "maleControlCount": 771,
+      "maleControlMean": 72.5368403901208,
+      "maleControlSd": 17.8087558483916,
+      "maleMutantCount": 8,
+      "maleMutantMean": 9.58707763153437,
+      "maleMutantSd": 43.405622218398
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "671786b336ae4c1fb55e8b22",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  4.35014064481549e-58 ]; and with phenotype threshold value 1e-04 - different size as males greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI4",
+    "parameterStableId": "IMPC_ACS_036_001",
+    "parameterStableKey": 35723,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -6.4178044008343,
+    "reportedPValue": 4.35014064481549E-58,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1471,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.25096308106134,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1233
+    },
+    "statisticalMethod": {
+      "name": "Linear Model Using Generalized Least Squares framework, GLS, including Weight",
+      "attributes": {
+        "femaleEffectSize": -6.66810380079494,
+        "femaleKoEffectPValue": 4.35014064481549E-58,
+        "femaleKoEffectStderrEstimate": 5.11227491396945,
+        "femaleKoParameterEstimate": -86.6013810228468,
+        "femalePercentageChange": -493.951281713868,
+        "maleKoEffectPValue": 1.15238587776651E-72,
+        "maleKoEffectStderrEstimate": 5.25696012810646,
+        "maleKoParameterEstimate": -101.331345389888,
+        "malePercentageChange": -599.202284500909,
+        "genotypeEffectPValue": 4.35014064481549E-58,
+        "genotypeEffectStderrEstimate": 5.11227491396945,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 7.17228582387245E-33,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 2.6668009817387E-4,
+        "interactionEffectPValue": 0.0394354888289543,
+        "interactionSignificant": true,
+        "interceptEstimate": 91.3286449076296,
+        "interceptEstimateStderrEstimate": 5.04789518273393,
+        "maleEffectSize": -6.2692714507867,
+        "sexEffectPValue": 0.00237316644718556,
+        "sexEffectParameterEstimate": 4.86411593621889,
+        "sexEffectStderrEstimate": 1.59724587007895,
+        "batchSignificant": false,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "64d496cef51d3d02be1cd6332ed69389",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 77.8322541036793,
+      "femaleControlSd": 16.5737815278861,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -4.53925599785418,
+      "femaleMutantSd": 28.172814078461,
+      "maleControlCount": 771,
+      "maleControlMean": 79.0560821928172,
+      "maleControlSd": 15.663169852676,
+      "maleMutantCount": 8,
+      "maleMutantMean": -16.132471604031,
+      "maleMutantSd": 85.5045098199208
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "6717877bf34fde7697c61112",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  0 ]; and with phenotype threshold value 1e-04 - different size as females greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - Global",
+    "parameterStableId": "IMPC_ACS_037_001",
+    "parameterStableKey": 35724,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -4.37925018902486,
+    "reportedPValue": 0.0,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1614,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.04133291282715,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1327
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.61067052573367,
+        "femaleKoEffectPValue": 2.82255099072036E-33,
+        "femaleKoEffectStderrEstimate": 7.74929165898583,
+        "femaleKoParameterEstimate": -96.3412011261138,
+        "femalePercentageChange": -446.431105250494,
+        "maleKoEffectPValue": 5.68690964797544E-24,
+        "maleKoEffectStderrEstimate": 7.8890756794968,
+        "maleKoParameterEstimate": -81.5797315804035,
+        "malePercentageChange": -413.945234205534,
+        "genotypeEffectPValue": 0.0,
+        "genotypeEffectStderrEstimate": 7.74929165898583,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.0034352054054E-29,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.00176302703911801,
+        "interactionEffectPValue": 0.148517889456731,
+        "interactionSignificant": true,
+        "interceptEstimate": 75.618238944739,
+        "interceptEstimateStderrEstimate": 7.05288806149102,
+        "maleEffectSize": -4.41930539028988,
+        "sexEffectPValue": 0.00350226160690026,
+        "sexEffectParameterEstimate": 6.47159101496013,
+        "sexEffectStderrEstimate": 2.21157951889675,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "9875b568ba425f24dbefb073118423c7",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 56.8864724825053,
+      "femaleControlSd": 20.6694403209052,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -34.5934831625017,
+      "femaleMutantSd": 90.984572079012,
+      "maleControlCount": 771,
+      "maleControlMean": 57.6078616718031,
+      "maleControlSd": 21.8444431840134,
+      "maleMutantCount": 8,
+      "maleMutantMean": -16.4706282588864,
+      "maleMutantSd": 42.0441385653727
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67178d6eefeba832498f1722",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - both sexes equally",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI3",
+    "parameterStableId": "IMPC_ACS_035_001",
+    "parameterStableKey": 35722,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -4.39097621123682,
+    "reportedPValue": 0.0,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1800,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 2.76959149030538,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1446
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.96180517862037,
+        "femaleKoEffectPValue": 2.16313478419712E-31,
+        "femaleKoEffectStderrEstimate": 6.86133332060447,
+        "femaleKoParameterEstimate": -82.3470126064008,
+        "femalePercentageChange": -435.582319910502,
+        "maleKoEffectPValue": 1.26387758568879E-23,
+        "maleKoEffectStderrEstimate": 6.90480351443689,
+        "maleKoParameterEstimate": -70.690119543466,
+        "malePercentageChange": -368.788232099111,
+        "genotypeEffectPValue": 0.0,
+        "genotypeEffectStderrEstimate": 5.32276009031101,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.6828585448526E-32,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.923519514434328,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": 94.7489512854642,
+        "interceptEstimateStderrEstimate": 5.84081563770963,
+        "maleEffectSize": -3.96345501357981,
+        "sexEffectPValue": 3.54658846009048E-5,
+        "sexEffectParameterEstimate": 7.54197624574654,
+        "sexEffectStderrEstimate": 1.81686095418303,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "25de380279fe66e5cc7b132c9a6c05bb",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 71.47690510661,
+      "femaleControlSd": 17.5959673240941,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -3.38132928054342,
+      "femaleMutantSd": 46.1817899184863,
+      "maleControlCount": 771,
+      "maleControlMean": 72.5368403901208,
+      "maleControlSd": 17.8087558483916,
+      "maleMutantCount": 8,
+      "maleMutantMean": 9.58707763153437,
+      "maleMutantSd": 43.405622218398
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67178e4bd32777208f1ccaa3",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  2.83451096721242e-47 ]; and with phenotype threshold value 1e-04 - different size as females greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI2",
+    "parameterStableId": "IMPC_ACS_034_001",
+    "parameterStableKey": 35721,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -3.44231157068275,
+    "reportedPValue": 2.83451096721242E-47,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1691,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 0.678778639688872,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1403
+    },
+    "statisticalMethod": {
+      "name": "Linear Model Using Generalized Least Squares framework, GLS, not including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.94824166358283,
+        "femaleKoEffectPValue": 7.03326555225158E-47,
+        "femaleKoEffectStderrEstimate": 11.1375410439306,
+        "femaleKoParameterEstimate": -166.193893838248,
+        "femalePercentageChange": -497.917511326631,
+        "maleKoEffectPValue": 1.14547768282585E-6,
+        "maleKoEffectStderrEstimate": 11.4165321937048,
+        "maleKoParameterEstimate": -55.7820872489182,
+        "malePercentageChange": -167.12161833702,
+        "genotypeEffectPValue": 2.83451096721242E-47,
+        "genotypeEffectStderrEstimate": 10.9804272846645,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.83472528362361E-34,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 1.78340439878687E-4,
+        "interactionEffectPValue": 1.14177128429429E-12,
+        "interactionSignificant": true,
+        "interceptEstimate": 56.7904477712059,
+        "interceptEstimateStderrEstimate": 1.15498482943003,
+        "maleEffectSize": -1.85711191617966,
+        "sexEffectPValue": 0.821433905917269,
+        "sexEffectParameterEstimate": 0.374563534346144,
+        "sexEffectStderrEstimate": 1.65924842504511,
+        "batchSignificant": false,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "fb6573b35b0a77cba03c0ce9121aa017",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 54.7149449029472,
+      "femaleControlSd": 25.8273713713653,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -107.823629741685,
+      "femaleMutantSd": 232.891510455744,
+      "maleControlCount": 771,
+      "maleControlMean": 54.3946997569364,
+      "maleControlSd": 30.9145465007609,
+      "maleMutantCount": 8,
+      "maleMutantMean": 4.02571476289801,
+      "maleMutantSd": 64.3341059975071
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67178f58f2ab42c56893a295",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  2.83451096721242e-47 ]; and with phenotype threshold value 1e-04 - different size as females greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI2",
+    "parameterStableId": "IMPC_ACS_034_001",
+    "parameterStableKey": 35721,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -3.44231157068275,
+    "reportedPValue": 2.83451096721242E-47,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1691,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 0.678778639688872,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1403
+    },
+    "statisticalMethod": {
+      "name": "Linear Model Using Generalized Least Squares framework, GLS, not including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.94824166358283,
+        "femaleKoEffectPValue": 7.03326555225158E-47,
+        "femaleKoEffectStderrEstimate": 11.1375410439306,
+        "femaleKoParameterEstimate": -166.193893838248,
+        "femalePercentageChange": -497.917511326631,
+        "maleKoEffectPValue": 1.14547768282585E-6,
+        "maleKoEffectStderrEstimate": 11.4165321937048,
+        "maleKoParameterEstimate": -55.7820872489182,
+        "malePercentageChange": -167.12161833702,
+        "genotypeEffectPValue": 2.83451096721242E-47,
+        "genotypeEffectStderrEstimate": 10.9804272846645,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.83472528362361E-34,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 1.78340439878687E-4,
+        "interactionEffectPValue": 1.14177128429429E-12,
+        "interactionSignificant": true,
+        "interceptEstimate": 56.7904477712059,
+        "interceptEstimateStderrEstimate": 1.15498482943003,
+        "maleEffectSize": -1.85711191617966,
+        "sexEffectPValue": 0.821433905917269,
+        "sexEffectParameterEstimate": 0.374563534346144,
+        "sexEffectStderrEstimate": 1.65924842504511,
+        "batchSignificant": false,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "fb6573b35b0a77cba03c0ce9121aa017",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 54.7149449029472,
+      "femaleControlSd": 25.8273713713653,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -107.823629741685,
+      "femaleMutantSd": 232.891510455744,
+      "maleControlCount": 771,
+      "maleControlMean": 54.3946997569364,
+      "maleControlSd": 30.9145465007609,
+      "maleMutantCount": 8,
+      "maleMutantMean": 4.02571476289801,
+      "maleMutantSd": 64.3341059975071
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "67178f8c826ee7f18ca1c50b",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  0 ]; and with phenotype threshold value 1e-04 - different size as females greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - Global",
+    "parameterStableId": "IMPC_ACS_037_001",
+    "parameterStableKey": 35724,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -4.37925018902486,
+    "reportedPValue": 0.0,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1614,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.04133291282715,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1327
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.61067052573367,
+        "femaleKoEffectPValue": 2.82255099072036E-33,
+        "femaleKoEffectStderrEstimate": 7.74929165898583,
+        "femaleKoParameterEstimate": -96.3412011261138,
+        "femalePercentageChange": -446.431105250494,
+        "maleKoEffectPValue": 5.68690964797544E-24,
+        "maleKoEffectStderrEstimate": 7.8890756794968,
+        "maleKoParameterEstimate": -81.5797315804035,
+        "malePercentageChange": -413.945234205534,
+        "genotypeEffectPValue": 0.0,
+        "genotypeEffectStderrEstimate": 7.74929165898583,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.0034352054054E-29,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.00176302703911801,
+        "interactionEffectPValue": 0.148517889456731,
+        "interactionSignificant": true,
+        "interceptEstimate": 75.618238944739,
+        "interceptEstimateStderrEstimate": 7.05288806149102,
+        "maleEffectSize": -4.41930539028988,
+        "sexEffectPValue": 0.00350226160690026,
+        "sexEffectParameterEstimate": 6.47159101496013,
+        "sexEffectStderrEstimate": 2.21157951889675,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "9875b568ba425f24dbefb073118423c7",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 56.8864724825053,
+      "femaleControlSd": 20.6694403209052,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -34.5934831625017,
+      "femaleMutantSd": 90.984572079012,
+      "maleControlCount": 771,
+      "maleControlMean": 57.6078616718031,
+      "maleControlSd": 21.8444431840134,
+      "maleMutantCount": 8,
+      "maleMutantMean": -16.4706282588864,
+      "maleMutantSd": 42.0441385653727
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  },
+  {
+    "id": "671792081b680915926ce991",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  4.35014064481549e-58 ]; and with phenotype threshold value 1e-04 - different size as males greater",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal nervous system physiology",
+        "id": "MP:0003633"
+      },
+      {
+        "name": "abnormal synaptic physiology",
+        "id": "MP:0021009"
+      },
+      {
+        "name": "abnormal CNS synaptic transmission",
+        "id": "MP:0002206"
+      },
+      {
+        "name": "abnormal synaptic transmission",
+        "id": "MP:0003635"
+      },
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+    "metadataValues": [
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 2|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 5|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 1|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 3|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 4|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 8|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 6|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random",
+      "Acoustic startle response measure = Max peak|Background noise = 65|Equipment ID = 7|Equipment manufacturer = San Diego Instruments|Equipment model = SR-LAB Startle Response System|Experimenter ID = 100105|In-chamber adapt time = 300|Inter PP-S stimulus interval = 80|Inter-trial interval = random 20-30|Mouse chamber dimension = 3.8 x 7|Number of trials = 6|Pre-pulse stimulus 1 = 70|Pre-pulse stimulus 2 = 75|Pre-pulse stimulus 3 = 80|Pre-pulse stimulus 4 = 85|Software version = SR LAB software|Sound generator manufacturer = San Diego Instruments|Sound generator model = SR-LAB Startle Response System|Sound-proof box dimension = 32.2 x 34.5 x 46.3|Startle stimulus = 110|Stimulus order = Pseudo-random"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "% Pre-pulse inhibition - PPI4",
+    "parameterStableId": "IMPC_ACS_036_001",
+    "parameterStableKey": 35723,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "abnormal prepulse inhibition",
+        "id": "MP:0003088"
+      },
+      {
+        "name": "decreased prepulse inhibition",
+        "id": "MP:0009142"
+      },
+      {
+        "name": "increased prepulse inhibition",
+        "id": "MP:0009141"
+      }
+    ],
+    "procedureGroup": "IMPC_ACS",
+    "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+    "procedureStableId": "IMPC_ACS_003",
+    "procedureStableKey": 742,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -6.4178044008343,
+    "reportedPValue": 4.35014064481549E-58,
+    "unit": {
+      "x": "%",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased prepulse inhibition",
+      "id": "MP:0009142"
+    },
+    "softWindowing": {
+      "bandwidth": 1471,
+      "doeNote": "no note available",
+      "minObsRequired": 280,
+      "numberOfDoe": 4,
+      "peaks": [
+        17855,
+        17899,
+        17960,
+        18051
+      ],
+      "shape": 1.25096308106134,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 1233
+    },
+    "statisticalMethod": {
+      "name": "Linear Model Using Generalized Least Squares framework, GLS, including Weight",
+      "attributes": {
+        "femaleEffectSize": -6.66810380079494,
+        "femaleKoEffectPValue": 4.35014064481549E-58,
+        "femaleKoEffectStderrEstimate": 5.11227491396945,
+        "femaleKoParameterEstimate": -86.6013810228468,
+        "femalePercentageChange": -493.951281713868,
+        "maleKoEffectPValue": 1.15238587776651E-72,
+        "maleKoEffectStderrEstimate": 5.25696012810646,
+        "maleKoParameterEstimate": -101.331345389888,
+        "malePercentageChange": -599.202284500909,
+        "genotypeEffectPValue": 4.35014064481549E-58,
+        "genotypeEffectStderrEstimate": 5.11227491396945,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 7.17228582387245E-33,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 2.6668009817387E-4,
+        "interactionEffectPValue": 0.0394354888289543,
+        "interactionSignificant": true,
+        "interceptEstimate": 91.3286449076296,
+        "interceptEstimateStderrEstimate": 5.04789518273393,
+        "maleEffectSize": -6.2692714507867,
+        "sexEffectPValue": 0.00237316644718556,
+        "sexEffectParameterEstimate": 4.86411593621889,
+        "sexEffectStderrEstimate": 1.59724587007895,
+        "batchSignificant": false,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "64d496cef51d3d02be1cd6332ed69389",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 813,
+      "femaleControlMean": 77.8322541036793,
+      "femaleControlSd": 16.5737815278861,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": -4.53925599785418,
+      "femaleMutantSd": 28.172814078461,
+      "maleControlCount": 771,
+      "maleControlMean": 79.0560821928172,
+      "maleControlSd": 15.663169852676,
+      "maleMutantCount": 8,
+      "maleMutantMean": -16.132471604031,
+      "maleMutantSd": 85.5045098199208
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "nervous system phenotype",
+        "id": "MP:0003631"
+      }
+    ]
+  }
+]

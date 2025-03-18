@@ -56,7 +56,7 @@ const TargetingVector = ({
   }
 
   return (
-    <Card id="targetingVector">
+    <Card id="targetingVector" data-testid="tvp-section">
       <h2>Targeting vectors</h2>
       {!data && data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>

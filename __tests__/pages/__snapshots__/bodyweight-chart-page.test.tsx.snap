@@ -1,0 +1,1070 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bodyweight chart page renders correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <span
+          class="subheadingSection primary"
+        >
+          <a
+            class="mb-3 link"
+            href="/genes/MGI:104785"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to
+             
+            <i>
+              <span
+                style=""
+              >
+                Myo6
+              </span>
+            </i>
+          </a>
+        </span>
+      </div>
+      <h1
+        class="mt-2 mb-4"
+      >
+        <strong
+          class="text-capitalize"
+        >
+          Body weight curve
+        </strong>
+      </h1>
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped data-comparison-table table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  Phenotyping Centre
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Allele
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Zygosity
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Life Stage
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Colony Id
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                HMGU
+              </td>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    Tlc
+                  </sup>
+                </i>
+              </td>
+              <td>
+                heterozygote
+              </td>
+              <td>
+                Early adult
+              </td>
+              <td>
+                ABE1
+              </td>
+            </tr>
+            <tr>
+              <td>
+                TCP
+              </td>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                homozygote
+              </td>
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        style="display: flex; justify-content: center;"
+      />
+    </div>
+  </div>
+  <div
+    class="bg-grey pt-2"
+    style="position: sticky; top: 0px; z-index: 100;"
+  >
+    <div
+      class="container"
+    >
+      <div>
+        <div
+          class="card"
+        >
+          <div>
+            <div
+              class="mb-4"
+              style="display: flex; align-items: center; gap: 2rem;"
+            >
+              <h1
+                style="margin: 0px;"
+              >
+                <strong>
+                  <i>
+                    Myo6
+                  </i>
+                   data charts
+                </strong>
+              </h1>
+              <span
+                style="color: rgb(121, 118, 118); text-transform: uppercase; font-weight: 500; line-height: 1.2;"
+              >
+                Body weight curve
+              </span>
+            </div>
+          </div>
+          <div
+            class="details"
+          >
+            <div
+              class="label"
+            >
+              Experiments performed
+            </div>
+            <div
+              class="content"
+            >
+              <p>
+                A 
+                <strong>
+                  Body Weight
+                </strong>
+                 phenotypic assay was performed on 
+                592
+                 mice. The charts show the results of measuring
+                 
+                <strong>
+                  Body weight curve
+                </strong>
+                 in
+                 
+                39
+                 
+                female, 
+                41
+                 
+                male mutants compared to
+                 
+                254
+                 
+                female,
+                 
+                258
+                 male controls. The mutants are for the
+                 
+                <i>
+                  Myo6
+                  <sup>
+                    Tlc
+                  </sup>
+                </i>
+                 
+                allele.
+              </p>
+            </div>
+            <div
+              class="label"
+            >
+              Zygosity
+            </div>
+            <div
+              class="content"
+            >
+              <span>
+                heterozygote
+              </span>
+            </div>
+            <div
+              class="label"
+            >
+              Testing protocol
+            </div>
+            <div
+              class="content"
+            >
+              <a
+                class="link primary"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=623&pipeID=7"
+              >
+                Body Weight
+              </a>
+            </div>
+            <div
+              class="label"
+            >
+              Measured value
+            </div>
+            <div
+              class="content"
+            >
+              Body weight curve
+            </div>
+            <div
+              class="label"
+            >
+              Testing environment
+            </div>
+            <div
+              class="content"
+            >
+              <span
+                class="primary link"
+              >
+                Lab conditions and equipment
+              </span>
+            </div>
+            <div
+              class="label"
+            >
+              Life stage
+            </div>
+            <div
+              class="content"
+            >
+              <span>
+                Early adult
+              </span>
+            </div>
+            <div
+              class="label"
+            >
+              Background Strain
+            </div>
+            <div
+              class="content"
+            >
+              <span>
+                involves: C3HeB/FeJ
+              </span>
+            </div>
+            <div
+              class="label"
+            >
+              Phenotyping center
+            </div>
+            <div
+              class="content"
+            >
+              <span>
+                HMGU
+              </span>
+            </div>
+            <div
+              class="label"
+            />
+            <div
+              class="content"
+            >
+              <p
+                class="small"
+              >
+                * The high throughput nature of the IMPC means that large control sample sizes may accumulate over a long period of time. See the animal welfare guidelines for more information.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col-lg-12"
+          >
+            <div
+              class="card"
+              style="position: sticky; top: 0px; z-index: 1;"
+            >
+              <div
+                style="position: relative; height: 400px;"
+              >
+                <div
+                  style="display: flex; justify-content: flex-end;"
+                >
+                  <div
+                    class="form-check form-switch"
+                  >
+                    <input
+                      checked=""
+                      class="form-check-input"
+                      id="custom-switch"
+                      type="checkbox"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="custom-switch"
+                      title=""
+                    >
+                      View data within mutants data range
+                    </label>
+                  </div>
+                </div>
+                <canvas
+                  data-testid="body-weight-canvas"
+                  height="0"
+                  role="img"
+                  style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                  width="0"
+                />
+              </div>
+            </div>
+            <div
+              class="card"
+            >
+              <table
+                class="table table-striped"
+              >
+                <thead>
+                  <tr>
+                    <th>
+                      Week
+                    </th>
+                    <th>
+                      Female Het. (count)
+                    </th>
+                    <th>
+                      Female WT (count)
+                    </th>
+                    <th>
+                      Male Het. (count)
+                    </th>
+                    <th>
+                      Male WT (count)
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      1
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      2
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      3
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      4
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      5
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      6
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      7
+                    </td>
+                    <td>
+                      29.300000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      8
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      27.093000 (14)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      9
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      23.300000 (27)
+                    </td>
+                    <td>
+                      27.093000 (15)
+                    </td>
+                    <td>
+                      28.499000 (71)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      10
+                    </td>
+                    <td>
+                      26.240000 (15)
+                    </td>
+                    <td>
+                      24.841000 (63)
+                    </td>
+                    <td>
+                      29.264000 (11)
+                    </td>
+                    <td>
+                      31.683000 (18)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      11
+                    </td>
+                    <td>
+                      27.669000 (13)
+                    </td>
+                    <td>
+                      32.228000 (25)
+                    </td>
+                    <td>
+                      31.380000 (5)
+                    </td>
+                    <td>
+                      31.980000 (25)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      12
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      24.440000 (10)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      33.000000 (10)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      13
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      27.344000 (9)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      29.750000 (10)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      14
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      27.880000 (15)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      34.800000 (18)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      15
+                    </td>
+                    <td>
+                      29.800000 (5)
+                    </td>
+                    <td>
+                      29.833000 (6)
+                    </td>
+                    <td>
+                      31.000000 (5)
+                    </td>
+                    <td>
+                      36.725000 (12)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      16
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      30.608000 (13)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      37.300000 (1)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      17
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      40.000000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      35.380000 (5)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      18
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      30.967000 (3)
+                    </td>
+                    <td>
+                      33.914000 (7)
+                    </td>
+                    <td>
+                      39.125000 (12)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      19
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      33.430000 (10)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      35.933000 (3)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      20
+                    </td>
+                    <td>
+                      32.567000 (6)
+                    </td>
+                    <td>
+                      37.000000 (6)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      40.404000 (7)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      21
+                    </td>
+                    <td>
+                      35.700000 (1)
+                    </td>
+                    <td>
+                      37.700000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      39.752000 (4)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      22
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      40.430000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      41.700000 (3)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      23
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      35.833000 (6)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      38.675000 (4)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      24
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      38.300000 (1)
+                    </td>
+                    <td>
+                      -
+                    </td>
+                    <td>
+                      -
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -143,7 +143,6 @@ const BodyWeightChart = ({ datasetSummary }) => {
       { length: maxAge },
       (_, index) => minAge + index,
     );
-    console.log(weekLabels);
     const datasets = getOrderedColumns().map((key) => {
       const dataSetColor = key.includes("WT")
         ? wildtypeChartColors.halfOpacity
