@@ -81,15 +81,17 @@ const EmbryoDataAvailabilityGrid = ({
     const newSelectedGenes = selectedWOL
       .flatMap((wol) => dataIndex[wol])
       .map((d) => d.mgiGeneAccessionId);
-    return processedData
-      .filter((gene) =>
-        !!newSelectedGenes.length
-          ? newSelectedGenes.includes(gene.mgiGeneAccessionId)
-          : true,
-      )
-      .filter((gene) =>
-        !!query ? gene.id.toLowerCase().includes(query.toLowerCase()) : true,
-      );
+    const selectedData = !!newSelectedGenes.length
+      ? newSelectedGenes
+          .map((geneId) =>
+            processedData.find((d) => d.mgiGeneAccessionId === geneId),
+          )
+          .filter(Boolean)
+      : processedData;
+    const filtered = selectedData.filter((gene) =>
+      !!query ? gene.id.toLowerCase().includes(query.toLowerCase()) : true,
+    );
+    return filtered;
   }, [processedData, query, selectedWOL, dataIndex]);
 
   const {
