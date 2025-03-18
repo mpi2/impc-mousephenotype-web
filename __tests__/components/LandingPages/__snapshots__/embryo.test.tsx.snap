@@ -285,6 +285,40 @@ exports[`Embryo landing page renders correctly 1`] = `
                 </thead>
                 <tbody>
                   <tr>
+                    <td>
+                      Viable
+                    </td>
+                    <td>
+                      5643
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        class="link primary"
+                        href="/phenotypes/MP:0011100"
+                      >
+                        Lethal
+                      </a>
+                    </td>
+                    <td>
+                      1972
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a
+                        class="link primary"
+                        href="/phenotypes/MP:0011110"
+                      >
+                        Subviable
+                      </a>
+                    </td>
+                    <td>
+                      693
+                    </td>
+                  </tr>
+                  <tr>
                     <td
                       colspan="2"
                     >
@@ -332,7 +366,14 @@ exports[`Embryo landing page renders correctly 1`] = `
           >
             <div
               class="chartWrapper"
-            />
+            >
+              <canvas
+                height="0"
+                role="img"
+                style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+                width="0"
+              />
+            </div>
           </div>
           <div
             class="col-md-5"
@@ -373,6 +414,78 @@ exports[`Embryo landing page renders correctly 1`] = `
                   <tr />
                 </thead>
                 <tbody>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Early lethal
+                      </button>
+                    </td>
+                    <td>
+                      490
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        No data
+                      </button>
+                    </td>
+                    <td>
+                      481
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Late lethal
+                      </button>
+                    </td>
+                    <td>
+                      399
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Not determined
+                      </button>
+                    </td>
+                    <td>
+                      210
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Intermediate lethal
+                      </button>
+                    </td>
+                    <td>
+                      149
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Conflicting
+                      </button>
+                    </td>
+                    <td>
+                      4
+                    </td>
+                  </tr>
                   <tr>
                     <td
                       colspan="2"
@@ -519,14 +632,119 @@ exports[`Embryo landing page renders correctly 1`] = `
               </div>
             </div>
             <div
-              style="height: 250px; margin-right: 0px; margin-left: 0px; background-color: white; margin-top: 0px; text-align: center;"
+              style="height: 600px; margin-right: 0px; margin-left: 0px; background-color: white; margin-top: 0px; text-align: center;"
             >
-              <h2
-                class="mt-5"
-              >
-                No genes match the filters selected
-              </h2>
+              <div
+                style="width: 100%; height: 100%;"
+              />
             </div>
+            <nav
+              aria-label="Page navigation example"
+            >
+              <ul
+                class="pagination justify-content-center paginationNav"
+              >
+                <button
+                  aria-label="Previous"
+                  class="pagNavBtn nav-btn"
+                  disabled=""
+                >
+                  <svg
+                    aria-labelledby="svg-inline--fa-title-prev-page-icon"
+                    class="svg-inline--fa fa-arrow-left "
+                    data-icon="arrow-left"
+                    data-prefix="fas"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title
+                      id="svg-inline--fa-title-prev-page-icon"
+                    >
+                      previous page button
+                    </title>
+                    <path
+                      d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+                <li
+                  class="page-item"
+                >
+                  <button
+                    class="pagNavBtn active"
+                  >
+                    1
+                  </button>
+                </li>
+                <li
+                  class="page-item"
+                >
+                  <button
+                    class="pagNavBtn"
+                  >
+                    2
+                  </button>
+                </li>
+                <li
+                  class="page-item"
+                >
+                  <button
+                    class="pagNavBtn"
+                  >
+                    3
+                  </button>
+                </li>
+                <li
+                  class="page-item disabled"
+                >
+                  <span
+                    class="page-link"
+                  >
+                    ...
+                  </span>
+                </li>
+                <li
+                  class="page-item"
+                >
+                  <button
+                    aria-label="Previous"
+                    class="pagNavBtn last-page"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      30
+                    </span>
+                  </button>
+                </li>
+                <button
+                  aria-label="Next"
+                  class="pagNavBtn nav-btn"
+                >
+                  <svg
+                    aria-labelledby="svg-inline--fa-title-next-page-icon"
+                    class="svg-inline--fa fa-arrow-right "
+                    data-icon="arrow-right"
+                    data-prefix="fas"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title
+                      id="svg-inline--fa-title-next-page-icon"
+                    >
+                      next page button
+                    </title>
+                    <path
+                      d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
@@ -606,6 +824,9 @@ exports[`Embryo landing page renders correctly 1`] = `
             IKMC/IMPC related publications
           </strong>
         </h1>
+        <div>
+          PublicationsList mock
+        </div>
       </div>
     </div>
   </div>

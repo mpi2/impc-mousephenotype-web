@@ -13,12 +13,8 @@ import {
 import { Bar } from "react-chartjs-2";
 import data from "../../mocks/data/landing-pages/conservation.json";
 import { chartColors } from "@/utils/chart";
-import {
-  Card,
-  NonSSRPublicationsList,
-  PublicationDataAlert,
-  Search,
-} from "@/components";
+import { Card, PublicationDataAlert, Search } from "@/components";
+import PublicationsList from "@/components/PublicationsList";
 import { Suspense } from "react";
 
 ChartJS.register(
@@ -491,7 +487,7 @@ const ConservationLandingPage = () => {
           <h1>
             <strong>Conservation IKMC/IMPC related publications</strong>
           </h1>
-          <NonSSRPublicationsList prefixQuery="development embryo disease" />
+          <PublicationsList prefixQuery="development embryo disease" />
         </Card>
       </Container>
     </>

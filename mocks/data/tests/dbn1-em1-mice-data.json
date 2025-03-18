@@ -1,0 +1,51 @@
+[
+  {
+    "productId": "PIN:0000001845",
+    "geneSymbol": "Dbn1",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleType": "Exon Deletion",
+    "alleleName": "em1(IMPC)Bay",
+    "alleleDescription": "Exon Deletion",
+    "alleleCategory": "Exon Deletion",
+    "name": "DPEAB",
+    "productionCentre": "BCM",
+    "status": "Genotype Confirmed",
+    "statusDate": "2020-10-10T12:05:10.340900Z",
+    "associatedProductEsCellName": "",
+    "associatedProductColonyName": "",
+    "associatedProductVectorName": "",
+    "designIdData": false,
+    "designLink": "",
+    "cassette": "",
+    "backgroundColonyStrain": "C57BL/6N",
+    "deleterStrain": "",
+    "testStrain": "",
+    "qcData": [
+      {
+        "productionQc": {
+          "mutantSpecificSrPcr": "pass"
+        }
+      }
+    ],
+    "typeOfMicroinjection": "Crispr",
+    "contactNames": "BCM",
+    "orders": [
+      {
+        "orderName": "MMRRC",
+        "orderLink": "https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?search_query=Dbn1"
+      }
+    ],
+    "alleleDesignProject": "IMPC",
+    "type": "mouse",
+    "productionCompleted": true,
+    "contactLinks": "mailto:kompgroup@bcm.edu?Subject=Mouse Line for Dbn1",
+    "otherLinks": {
+      "genbankFile": "",
+      "alleleImage": "",
+      "alleleSimpleImage": "",
+      "vectorGenbankFile": "",
+      "vectorAlleleImage": ""
+    },
+    "tissueDistribution": []
+  }
+]

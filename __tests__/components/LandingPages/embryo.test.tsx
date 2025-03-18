@@ -1,9 +1,10 @@
-import { render, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import EmbryoLandingPage from "@/app/embryo/embryo-page";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
-import { API_URL, createTestQueryClient } from "../../utils";
-import { QueryClientProvider } from "@tanstack/react-query";
+import { renderWithClient } from "../../utils";
+import embryoData from "../../../mocks/data/tests/landing-pages/embryo.json";
+import pubsData from "../../../mocks/data/tests/publications-page/all-pubs-data.json";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -19,31 +20,32 @@ window.ResizeObserver =
     unobserve: jest.fn(),
   }));
 
+jest.mock("@/components/PublicationsList", () => {
+  const PublicationsListMock = () => <div>PublicationsList mock</div>;
+  return PublicationsListMock;
+});
+
 describe("Embryo landing page", () => {
   it("renders correctly", async () => {
-    const client = createTestQueryClient();
-    server.use(
-      rest.get(`${API_URL}/api/v1/publications`, (req, res, ctx) => {
-        return res(
-          ctx.status(200),
-          ctx.json({
-            content: [],
-            first: true,
-            last: false,
-            number: 0,
-            numberOfElements: 0,
-            size: 10,
-            totalElements: 0,
-            totalPages: 0,
-          }),
-        );
-      }),
+    testServer.use(
+      rest.get(
+        "https://impc-datasets.s3.eu-west-2.amazonaws.com/landing-page-data/dr22.1/embryo_landing.json",
+        (_, res, ctx) => {
+          return res(ctx.json(embryoData));
+        },
+      ),
+      rest.get(
+        "https://www.ebi.ac.uk/mi/impc/publication-service/data/api/v1/publications",
+        (_, res, ctx) => {
+          return res(ctx.json(pubsData));
+        },
+      ),
     );
-    const { container } = render(
-      <QueryClientProvider client={client}>
-        <EmbryoLandingPage />
-      </QueryClientProvider>,
-    );
+    const { container } = renderWithClient(<EmbryoLandingPage />);
+    await waitFor(async () => {
+      const tables = await screen.findAllByRole("table");
+      return expect(tables.length).toEqual(2);
+    });
     await waitFor(() => expect(container).toMatchSnapshot());
   });
 });

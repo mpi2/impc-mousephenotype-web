@@ -25,7 +25,8 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import classNames from "classnames";
-import { AlleleSymbol, GenomeBrowser } from "@/components";
+import { AlleleSymbol } from "@/components";
+import GenomeBrowser from "@/components/GenomeBrowser/GenomeBrowser";
 import { AlleleSummary } from "@/models";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
