@@ -7,11 +7,14 @@ import {
   fetchGeneExpressionData,
   fetchGeneImageData,
   fetchGeneHistopathologyData,
-  fetchGeneDiseaseData,
 } from "@/api-service";
 import GenePage from "./gene-page";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+
+const processResponse = <T,>(response: PromiseSettledResult<T>) => {
+  return response.status === "fulfilled" ? response.value : [];
+};
 
 async function getGeneSummary(mgiGeneAccessionId: string) {
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
@@ -21,21 +24,15 @@ async function getGeneSummary(mgiGeneAccessionId: string) {
   if (!geneData) {
     notFound();
   }
-  const sigGeneData = await fetchGenePhenotypeHits(mgiGeneAccessionId);
-  const orderGeneData = await fetchGeneOrderData(mgiGeneAccessionId);
-  const expressionData = await fetchGeneExpressionData(mgiGeneAccessionId);
-  const imageData = await fetchGeneImageData(mgiGeneAccessionId);
-  const histopathologyData =
-    await fetchGeneHistopathologyData(mgiGeneAccessionId);
 
   return {
     gene: geneData,
-    significantPhenotypes: sigGeneData,
-    orderData: orderGeneData,
-    expressionData,
-    imageData,
-    histopathologyData,
-    humanDiseasesData: [],
+    significantPhenotypes: null,
+    orderData: null,
+    expressionData: null,
+    imageData: null,
+    histopathologyData: null,
+    humanDiseasesData: null,
   };
 }
 

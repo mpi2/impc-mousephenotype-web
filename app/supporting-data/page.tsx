@@ -24,11 +24,8 @@ export default async function Page({
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     notFound();
   }
-  const initialDatasets = await getInitialDatasets(
-    mgiGeneAccessionId,
-    searchParams as ChartPageParamsObj,
-  );
-  return <GeneralChartPage initialDatasets={initialDatasets} />;
+
+  return <GeneralChartPage initialDatasets={[]} />;
 }
 
 export async function generateMetadata({

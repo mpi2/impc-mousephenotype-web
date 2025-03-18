@@ -1,7 +1,7 @@
 import { act, screen } from "@testing-library/react";
 import GeneHumanDiseases from "@/components/Gene/HumanDiseases";
 import { renderWithClient, API_URL } from "../../utils";
-import { server } from "../../../mocks/server";
+import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import userEvent from "@testing-library/user-event";
 import { GeneContext } from "@/contexts";
@@ -10,7 +10,7 @@ import humanDiseaseslDataAkt2 from "../../../mocks/data/genes/MGI:104874/disease
 
 describe("Gene human diseases component", () => {
   it("should display information", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:104874/disease/json`,
         (req, res, ctx) => {
@@ -46,7 +46,7 @@ describe("Gene human diseases component", () => {
   });
 
   it("should be able to view content from the 2 tabs", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:104874/disease/json`,
         (req, res, ctx) => {
@@ -83,7 +83,7 @@ describe("Gene human diseases component", () => {
   });
 
   it("should show an error message if the request fails", async () => {
-    server.use(
+    testServer.use(
       rest.get(
         `${API_URL}/api/v1/genes/MGI:104874/disease/json`,
         (req, res, ctx) => {
@@ -100,7 +100,7 @@ describe("Gene human diseases component", () => {
     );
     expect(await screen.findByRole("alert")).toBeInTheDocument();
     expect(screen.getByRole("alert")).toHaveTextContent(
-      "Something went wrong. Please try later.",
+      "No data available for this section",
     );
   });
 });

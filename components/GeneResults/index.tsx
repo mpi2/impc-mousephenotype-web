@@ -159,7 +159,12 @@ const GeneResults = ({ initialData, query }: GeneResultProps) => {
     queryKey: ["search", "genes", query],
     queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}`),
     select: (data: GeneSearchResponse) => data.results,
-    initialData: initialData,
+    initialData: () => {
+      if (initialData.numResults !== -1) {
+        return initialData;
+      }
+      return undefined;
+    },
   });
 
   return (

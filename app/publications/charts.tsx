@@ -46,12 +46,12 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Colors
+  Colors,
 );
 
 const PublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"),
-  { ssr: false }
+  { ssr: false },
 );
 
 export function PublicationsIncreaseChart({ data: yearlyIncrementData }) {
@@ -107,10 +107,10 @@ export function PublicationsByYearChart({
   yearlyIncrementData,
 }) {
   const [quarterChartView, setQuarterChartView] = useState<"year" | "quarter">(
-    "year"
+    "year",
   );
   const [pubByQuarterData, setPubByQuarterData] =
-    useState<ChartData<"bar">>(null);
+    useState<ChartData<"bar"> | null>(null);
 
   const options = {
     responsive: true,
@@ -142,7 +142,7 @@ export function PublicationsByYearChart({
         const yearInfo = publicationsByQuarter[elementClicked.index];
         const newData = {
           labels: yearInfo.byQuarter.map(
-            (quarter) => `${yearInfo.pubYear} Q${quarter.quarter}`
+            (quarter) => `${yearInfo.pubYear} Q${quarter.quarter}`,
           ),
           datasets: [
             {
@@ -156,7 +156,7 @@ export function PublicationsByYearChart({
         setQuarterChartView("year");
         setPubByQuarterData({
           labels: publicationsByQuarter.map((pubCount) =>
-            pubCount.pubYear.toString()
+            pubCount.pubYear.toString(),
           ),
           datasets: [
             {
@@ -171,7 +171,7 @@ export function PublicationsByYearChart({
   const data = useMemo(() => {
     return {
       labels: publicationsByQuarter.map((pubCount) =>
-        pubCount.pubYear.toString()
+        pubCount.pubYear.toString(),
       ),
       datasets: [
         {
@@ -179,10 +179,10 @@ export function PublicationsByYearChart({
         },
       ],
     };
-  }, [publicationsByQuarter]);
+  }, [publicationsByQuarter, yearlyIncrementData]);
 
   useEffect(() => {
-    if (data && pubByQuarterData === null) {
+    if (data.labels.length && pubByQuarterData === null) {
       setPubByQuarterData(data);
     }
   }, [data]);
@@ -268,7 +268,7 @@ type GrantSectionProps = {
 
 export function GrantSection({ data }: GrantSectionProps) {
   const [grantAgencyView, setGrantAgencyView] = useState<"chart" | "table">(
-    "chart"
+    "chart",
   );
   const [selectedAgency, setSelectedAgency] = useState("");
   const [showModal, setShowModal] = useState(false);

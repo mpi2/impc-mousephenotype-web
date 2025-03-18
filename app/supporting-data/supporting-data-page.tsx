@@ -25,6 +25,7 @@ import { getChartType } from "@/components/Data/Utils";
 import { chartLoadingIndicatorChannel } from "@/eventChannels";
 import { useDebounce } from "usehooks-ts";
 import { ChartPageParams } from "@/models/chart";
+import classnames from "classnames";
 
 const generateParamsObject = (
   searchParams: ReadonlyURLSearchParams,
@@ -92,6 +93,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
     isPPIChart,
     hasFlowCytometryImages,
     isMiniSpecProcedure,
+    noStatisticsPerformed,
   } = useChartFlags(datasetSummaries, isError);
 
   useEffect(() => {
@@ -153,6 +155,11 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
   );
 
   const fetchingInProcess = (isFetching || debouncedSpChartLoading) && !isError;
+  const shouldDisplayPValueStatement =
+    !isTimeSeries &&
+    !fetchingInProcess &&
+    smallestPValue !== 1 &&
+    !noStatisticsPerformed;
   return (
     <>
       <Search />
@@ -183,19 +190,24 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
             </Alert>
           )}
           {!isError && (
-            <h1 className="mb-4 mt-2">
+            <h1
+              className={classnames("mt-2", {
+                "mb-4": shouldDisplayPValueStatement,
+                "mb-0": !shouldDisplayPValueStatement,
+              })}
+            >
               <strong className="text-capitalize">
                 {getPageTitle(allSummaries, isError)}
               </strong>
             </h1>
           )}
           {fetchingInProcess && (
-            <div className="mb-4">
+            <div className="mb-2 mt-4">
               <Spinner animation="border" size="sm" />
               &nbsp; Loading data
             </div>
           )}
-          {!isTimeSeries && !fetchingInProcess && smallestPValue !== 1 && (
+          {shouldDisplayPValueStatement && (
             <div className="mb-4">
               <div
                 style={{
@@ -222,8 +234,8 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
               isViabilityChart={isViabilityChart}
               selectedKey={selectedKey}
               onSelectParam={setSelectedKey}
-              displayPValueThreshold={!isTimeSeries}
-              displayPValueColumns={!isTimeSeries}
+              displayPValueThreshold={shouldDisplayPValueStatement}
+              displayPValueColumns={shouldDisplayPValueStatement}
               dataIsLoading={fetchingInProcess}
               {...(isABRChart && { initialSortByProp: "parameterStableId" })}
               isMiniSpecProcedure={isMiniSpecProcedure}

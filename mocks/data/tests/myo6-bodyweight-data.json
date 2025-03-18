@@ -1,0 +1,1350 @@
+[
+  {
+    "datasetId": "c837b482854713419a2b4563862f394e",
+    "procedureStableId": "IMPC_BWT_001",
+    "parameterStableId": "IMPC_BWT_001",
+    "mgiGeneAccessionId": "MGI:104785",
+    "dataPoints": [
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "16",
+        "mean": 30.607692307692307,
+        "std": 3.4340116332703206,
+        "count": 13
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "9",
+        "mean": 27.09333333333333,
+        "std": 1.5894593270609192,
+        "count": 15
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "21",
+        "mean": 37.7,
+        "std": null,
+        "count": 1
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "16",
+        "mean": 37.3,
+        "std": null,
+        "count": 1
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "12",
+        "mean": 33.0,
+        "std": 2.070426687102603,
+        "count": 10
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "21",
+        "mean": 33.64333333333333,
+        "std": 2.291991855715606,
+        "count": 6
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "13",
+        "mean": 29.75,
+        "std": 2.4190218408825217,
+        "count": 10
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "19",
+        "mean": 35.93333333333333,
+        "std": 1.6623276853055615,
+        "count": 3
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "18",
+        "mean": 30.96666666666667,
+        "std": 2.600640946638605,
+        "count": 3
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "14",
+        "mean": 34.8,
+        "std": 2.5167673009356304,
+        "count": 18
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "9",
+        "mean": 28.498591549295778,
+        "std": 3.013848652837975,
+        "count": 71
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "22",
+        "mean": 41.699999999999996,
+        "std": 3.477067730142741,
+        "count": 3
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "12",
+        "mean": 24.44,
+        "std": 1.4653023957910896,
+        "count": 10
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "15",
+        "mean": 29.833333333333332,
+        "std": 3.268434895583308,
+        "count": 6
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "19",
+        "mean": 33.43,
+        "std": 4.875801928344141,
+        "count": 10
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "15",
+        "mean": 31.0,
+        "std": 1.0464224768228167,
+        "count": 5
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "16",
+        "mean": 40.9,
+        "std": 1.979898987322331,
+        "count": 2
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "12",
+        "mean": 37.16666666666667,
+        "std": 0.05773502691896237,
+        "count": 3
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "13",
+        "mean": 27.344444444444445,
+        "std": 2.9133790995642457,
+        "count": 9
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "11",
+        "mean": 32.228,
+        "std": 2.8557719330039903,
+        "count": 25
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "21",
+        "mean": 39.7525,
+        "std": 2.2916860605239964,
+        "count": 4
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "21",
+        "mean": 35.7,
+        "std": null,
+        "count": 1
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "23",
+        "mean": 35.833333333333336,
+        "std": 3.7436167895053942,
+        "count": 6
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "19",
+        "mean": 34.900000000000006,
+        "std": 1.8384776310850246,
+        "count": 2
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "20",
+        "mean": 32.56666666666666,
+        "std": 2.6583202716502496,
+        "count": 6
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "11",
+        "mean": 31.98,
+        "std": 3.578523904256242,
+        "count": 25
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "11",
+        "mean": 26.42222222222222,
+        "std": 3.346563488040704,
+        "count": 27
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "18",
+        "mean": 33.91428571428571,
+        "std": 3.1114994088748547,
+        "count": 7
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "14",
+        "mean": 27.880000000000003,
+        "std": 3.844885285303433,
+        "count": 15
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "17",
+        "mean": 35.38,
+        "std": 1.497330958739582,
+        "count": 5
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "22",
+        "mean": 40.43,
+        "std": null,
+        "count": 1
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "7",
+        "mean": 29.3,
+        "std": null,
+        "count": 1
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "20",
+        "mean": 40.40428571428571,
+        "std": 3.4621951473155343,
+        "count": 7
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "23",
+        "mean": 38.675,
+        "std": 2.317146233336744,
+        "count": 4
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "17",
+        "mean": 40.0,
+        "std": null,
+        "count": 1
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "11",
+        "mean": 31.380000000000003,
+        "std": 2.814604767991414,
+        "count": 5
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "8",
+        "mean": 27.092857142857145,
+        "std": 1.2676230243523243,
+        "count": 14
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "9",
+        "mean": 23.3,
+        "std": 1.7382573059068276,
+        "count": 27
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "15",
+        "mean": 36.725,
+        "std": 2.43539244550778,
+        "count": 12
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "10",
+        "mean": 29.263636363636362,
+        "std": 1.366215742313583,
+        "count": 11
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "15",
+        "mean": 33.70869565217391,
+        "std": 3.118407671097873,
+        "count": 23
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "17",
+        "mean": 33.56,
+        "std": 5.575780961742788,
+        "count": 10
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "11",
+        "mean": 27.669230769230772,
+        "std": 3.6130284193421938,
+        "count": 13
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "10",
+        "mean": 24.84126984126984,
+        "std": 2.4042727369733248,
+        "count": 63
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "18",
+        "mean": 39.12499999999999,
+        "std": 2.761134483570772,
+        "count": 12
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "20",
+        "mean": 37.0,
+        "std": 3.1189741903388692,
+        "count": 6
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "10",
+        "mean": 39.1,
+        "std": 0.0,
+        "count": 2
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "10",
+        "mean": 31.68333333333333,
+        "std": 2.227171775514197,
+        "count": 18
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "18",
+        "mean": 38.03333333333334,
+        "std": 2.936551265231604,
+        "count": 3
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "15",
+        "mean": 29.8,
+        "std": 5.535792626173779,
+        "count": 5
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "20",
+        "mean": 37.75600000000001,
+        "std": 6.164631375840734,
+        "count": 5
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "18",
+        "mean": 31.5,
+        "std": 3.4693462837202684,
+        "count": 12
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "10",
+        "mean": 26.239999999999995,
+        "std": 2.921790057970822,
+        "count": 15
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "heterozygote",
+        "ageInWeeks": "24",
+        "mean": 38.3,
+        "std": null,
+        "count": 1
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "19",
+        "mean": 40.2,
+        "std": 1.6462077633154377,
+        "count": 3
+      }
+    ]
+  },
+  {
+    "datasetId": "70a966ba779881114975a76f03898a3d",
+    "procedureStableId": "IMPC_BWT_001",
+    "parameterStableId": "IMPC_BWT_001",
+    "mgiGeneAccessionId": "MGI:104785",
+    "dataPoints": [
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "24",
+        "mean": 34.231525423728804,
+        "std": 3.4150977234259927,
+        "count": 59
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "13",
+        "mean": 22.268,
+        "std": 1.972782299190662,
+        "count": 5
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "3",
+        "mean": 13.371518987341771,
+        "std": 1.6926458304324912,
+        "count": 158
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "36",
+        "mean": 38.276346153846156,
+        "std": 5.402817721227363,
+        "count": 52
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "48",
+        "mean": 40.9553125,
+        "std": 6.493730467386564,
+        "count": 32
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "13",
+        "mean": 22.953337792642152,
+        "std": 1.7752373079699073,
+        "count": 1495
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "54",
+        "mean": 36.6156,
+        "std": 7.165445607041807,
+        "count": 100
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "19",
+        "mean": 32.50255813953488,
+        "std": 2.4058317314619995,
+        "count": 86
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "31",
+        "mean": 36.30694444444444,
+        "std": 4.410141525910507,
+        "count": 72
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "47",
+        "mean": 41.898,
+        "std": 5.947032288753631,
+        "count": 70
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "32",
+        "mean": 30.00581818181818,
+        "std": 5.47069014906444,
+        "count": 55
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "13",
+        "mean": 28.93465379494007,
+        "std": 2.1548834535035666,
+        "count": 1502
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "57",
+        "mean": 36.48136363636364,
+        "std": 7.121579709477492,
+        "count": 176
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "53",
+        "mean": 42.90414893617023,
+        "std": 6.174608151700144,
+        "count": 94
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "16",
+        "mean": 24.900000000000002,
+        "std": 0.9380831519646865,
+        "count": 10
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "20",
+        "mean": 32.91291666666666,
+        "std": 2.9756272060699316,
+        "count": 48
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "8",
+        "mean": 19.922967189728954,
+        "std": 1.5096040295603368,
+        "count": 701
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "14",
+        "mean": 19.785714285714285,
+        "std": 0.6024355330062886,
+        "count": 7
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "26",
+        "mean": 28.819444444444454,
+        "std": 4.549479056982512,
+        "count": 216
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "59",
+        "mean": 42.55176470588236,
+        "std": 6.244189904465207,
+        "count": 85
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "55",
+        "mean": 37.56605633802818,
+        "std": 7.421803890545166,
+        "count": 142
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "48",
+        "mean": 35.79055555555555,
+        "std": 7.298850624601902,
+        "count": 54
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "55",
+        "mean": 42.67324074074076,
+        "std": 6.14408078167781,
+        "count": 108
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "13",
+        "mean": 19.023333333333333,
+        "std": 0.680906258844295,
+        "count": 3
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "40",
+        "mean": 32.647200000000005,
+        "std": 5.723146715446896,
+        "count": 50
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "4",
+        "mean": 18.291215277777777,
+        "std": 2.361042727611735,
+        "count": 1152
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "39",
+        "mean": 34.60973684210527,
+        "std": 6.365638375671724,
+        "count": 76
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "27",
+        "mean": 34.42114942528737,
+        "std": 3.2844738438448293,
+        "count": 87
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "16",
+        "mean": 29.780995575221237,
+        "std": 2.310149203017374,
+        "count": 1356
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "35",
+        "mean": 32.87684210526315,
+        "std": 5.87760636325737,
+        "count": 76
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "9",
+        "mean": 19.8975,
+        "std": 1.2426095812557418,
+        "count": 8
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "51",
+        "mean": 42.21176470588234,
+        "std": 5.983682594983167,
+        "count": 34
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "23",
+        "mean": 33.8368918918919,
+        "std": 2.9788712239662942,
+        "count": 74
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "4",
+        "mean": 15.605311699402224,
+        "std": 1.5707887836244698,
+        "count": 1171
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "6",
+        "mean": 23.019889889889903,
+        "std": 1.795929010263964,
+        "count": 999
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "54",
+        "mean": 42.99868686868686,
+        "std": 6.4305012415265725,
+        "count": 99
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "26",
+        "mean": 35.26069999999998,
+        "std": 3.7882407990726747,
+        "count": 200
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "5",
+        "mean": 17.14513,
+        "std": 1.3264824683495966,
+        "count": 1000
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "28",
+        "mean": 35.33531914893617,
+        "std": 3.8817885003110466,
+        "count": 47
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "59",
+        "mean": 35.19496402877699,
+        "std": 7.131521411565991,
+        "count": 139
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "58",
+        "mean": 41.144303030303035,
+        "std": 6.1678693621532155,
+        "count": 165
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "9",
+        "mean": 20.55906584992344,
+        "std": 1.4111551767408035,
+        "count": 1959
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "52",
+        "mean": 42.53101382488479,
+        "std": 6.46060604346698,
+        "count": 217
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "9",
+        "mean": 16.9325,
+        "std": 0.5612167902996902,
+        "count": 8
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "56",
+        "mean": 35.99403973509935,
+        "std": 7.295835540800698,
+        "count": 151
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "29",
+        "mean": 35.8,
+        "std": 2.944486372867091,
+        "count": 5
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "32",
+        "mean": 36.134038461538466,
+        "std": 4.521545918011646,
+        "count": 52
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "58",
+        "mean": 36.48136054421769,
+        "std": 6.891498995879879,
+        "count": 147
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "27",
+        "mean": 29.365874999999996,
+        "std": 4.775394660275988,
+        "count": 80
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "10",
+        "mean": 27.00444444444446,
+        "std": 2.102108329582511,
+        "count": 1395
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "11",
+        "mean": 21.74880854560394,
+        "std": 1.6606103161284338,
+        "count": 1217
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "7",
+        "mean": 24.521561181434585,
+        "std": 1.8439594265864474,
+        "count": 948
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "25",
+        "mean": 28.83,
+        "std": 3.9596969581017176,
+        "count": 8
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "40",
+        "mean": 40.45142857142857,
+        "std": 6.0917263248380396,
+        "count": 42
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "14",
+        "mean": 29.498713450292396,
+        "std": 2.286375183047136,
+        "count": 1539
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "56",
+        "mean": 41.92725190839695,
+        "std": 6.525083560141071,
+        "count": 131
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "36",
+        "mean": 31.090392156862748,
+        "std": 5.22565783831445,
+        "count": 51
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "12",
+        "mean": 22.169518716577528,
+        "std": 1.7058717349951347,
+        "count": 935
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "20",
+        "mean": 25.961363636363636,
+        "std": 2.6806278255498377,
+        "count": 44
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "52",
+        "mean": 36.83662745098039,
+        "std": 7.387699582181609,
+        "count": 255
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "15",
+        "mean": 22.633333333333336,
+        "std": 0.6088240030309788,
+        "count": 6
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "57",
+        "mean": 42.45785714285713,
+        "std": 6.105978637099328,
+        "count": 154
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "12",
+        "mean": 28.257294797687884,
+        "std": 2.076170093403654,
+        "count": 865
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "15",
+        "mean": 23.620885984023243,
+        "std": 1.9273936188895777,
+        "count": 1377
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "3",
+        "mean": 14.5221164021164,
+        "std": 2.180326143667836,
+        "count": 189
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "44",
+        "mean": 40.30550000000001,
+        "std": 6.634413756876781,
+        "count": 40
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "8",
+        "mean": 25.49434079601989,
+        "std": 1.924211002811241,
+        "count": 804
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "6",
+        "mean": 18.21018480492813,
+        "std": 1.2690492053689633,
+        "count": 974
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "44",
+        "mean": 35.11592592592592,
+        "std": 6.538140211740013,
+        "count": 54
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "23",
+        "mean": 28.500434782608696,
+        "std": 4.281892254456243,
+        "count": 69
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "51",
+        "mean": 39.15333333333333,
+        "std": 7.236767392893776,
+        "count": 30
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "43",
+        "mean": 40.10723076923078,
+        "std": 5.870885662448083,
+        "count": 65
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "24",
+        "mean": 27.558909090909086,
+        "std": 3.743959912300855,
+        "count": 55
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "15",
+        "mean": 29.783070312499994,
+        "std": 2.377297207387673,
+        "count": 1280
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "10",
+        "mean": 21.307374024130574,
+        "std": 1.585873200978079,
+        "count": 1409
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "31",
+        "mean": 31.669589041095886,
+        "std": 5.1774989775083915,
+        "count": 73
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "7",
+        "mean": 19.12273366834171,
+        "std": 1.3086064609499488,
+        "count": 995
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "5",
+        "mean": 21.215428870292865,
+        "std": 1.8266115237810174,
+        "count": 956
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "53",
+        "mean": 36.46128205128207,
+        "std": 7.576583997179268,
+        "count": 117
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "16",
+        "mean": 23.63577840112202,
+        "std": 1.924679565214483,
+        "count": 1426
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "14",
+        "mean": 23.323868974042036,
+        "std": 1.8540746183216517,
+        "count": 1618
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "15",
+        "mean": 19.626666666666665,
+        "std": 0.7715611878954682,
+        "count": 6
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "43",
+        "mean": 34.70246575342465,
+        "std": 6.669515595608189,
+        "count": 73
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "28",
+        "mean": 28.590392156862755,
+        "std": 4.248265039182144,
+        "count": 51
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "11",
+        "mean": 27.68964462809919,
+        "std": 2.1243526230724368,
+        "count": 1210
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "25",
+        "mean": 34.50823529411765,
+        "std": 2.7203213609048777,
+        "count": 34
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "35",
+        "mean": 37.76203389830508,
+        "std": 4.7889232033001905,
+        "count": 59
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "male",
+        "zygosity": "homozygote",
+        "ageInWeeks": "14",
+        "mean": 23.606,
+        "std": 1.62477075306026,
+        "count": 5
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "47",
+        "mean": 36.397536231884054,
+        "std": 6.839652211186726,
+        "count": 69
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "female",
+        "zygosity": "wildtype",
+        "ageInWeeks": "19",
+        "mean": 26.15142857142857,
+        "std": 3.3413169930613136,
+        "count": 77
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "9",
+        "mean": 26.2661320754717,
+        "std": 1.9202278605429486,
+        "count": 1802
+      },
+      {
+        "sampleGroup": "control",
+        "sex": "male",
+        "zygosity": "wildtype",
+        "ageInWeeks": "39",
+        "mean": 38.302647058823524,
+        "std": 5.078233509308709,
+        "count": 68
+      },
+      {
+        "sampleGroup": "experimental",
+        "sex": "female",
+        "zygosity": "homozygote",
+        "ageInWeeks": "16",
+        "mean": 19.78,
+        "std": 0.7814516406449393,
+        "count": 10
+      }
+    ]
+  }
+]

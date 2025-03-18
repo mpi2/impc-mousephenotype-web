@@ -20,13 +20,7 @@ import SortableTable from "@/components/SortableTable";
 import { capitalize } from "lodash";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
-import dynamic from "next/dynamic";
-import { PublicationListProps } from "@/components";
-
-const PublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"),
-  { ssr: false },
-);
+import PublicationsList from "@/components/PublicationsList";
 
 type SelectedLine = {
   windowOfLethality: string;

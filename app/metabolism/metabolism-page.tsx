@@ -18,8 +18,8 @@ import {
   Search,
   Card,
   PleiotropyChart,
-  NonSSRPublicationsList,
 } from "@/components";
+import PublicationsList from "@/components/PublicationsList";
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
 import { SortType } from "@/models";
@@ -476,7 +476,7 @@ const MetabolismLandingPage = () => {
                 Homeostasis/metabolism IKMC/IMPC related publications
               </strong>
             </h1>
-            <NonSSRPublicationsList prefixQuery="metabolism" />
+            <PublicationsList prefixQuery="metabolism" />
           </Container>
         </Card>
       </Container>

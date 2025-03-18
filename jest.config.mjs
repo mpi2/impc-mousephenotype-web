@@ -1,16 +1,29 @@
 import nextJest from "next/jest.js";
+import tsconfig from "./tsconfig.json" with { type: "json" };
+import { pathsToModuleNameMapper } from "ts-jest";
 
 const createJestConfig = nextJest({
   dir: "./",
 });
 
+const moduleNameMapper = pathsToModuleNameMapper(
+  tsconfig.compilerOptions.paths,
+  {
+    prefix: "<rootDir>/",
+  },
+);
+moduleNameMapper["^d3-(.+)$"] = "<rootDir>/node_modules/d3-$1/dist/d3-$1.js";
+moduleNameMapper["^d3$"] = "<rootDir>/node_modules/d3/dist/d3.min.js";
+
 /** @type {import('jest').Config} */
 const config = {
+  roots: ["<rootDir>"],
+  modulePaths: ["<rootDir>"],
   testEnvironment: "jest-environment-jsdom",
   collectCoverage: true,
   collectCoverageFrom: [
     "./components/**/*.{ts,tsx}",
-    "./pages/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
     "./shared/hooks/*.ts",
     "!**/*.d.ts",
     "!**/node_modules/**",
@@ -19,13 +32,7 @@ const config = {
   testPathIgnorePatterns: ["__tests__/utils.tsx"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   setupFiles: ["<rootDir>/jest.polyfills.js", "jest-canvas-mock"],
-  moduleNameMapper: {
-    "^@/components/(.*)$": "<rootDir>/components/$1",
-    "^@/pages/(.*)$": "<rootDir>/pages/$1",
-    "^@/utils/(.*)$": "<rootDir>/utils/$1",
-    "^d3-(.+)$": "<rootDir>/node_modules/d3-$1/dist/d3-$1.js",
-    "^d3$": "<rootDir>/node_modules/d3/dist/d3.min.js",
-  },
+  moduleNameMapper: moduleNameMapper,
   transformIgnorePatterns: ["/node_modules/(?!(react-markdown|devlop))/"],
 };
 

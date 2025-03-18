@@ -1,11 +1,10 @@
-import { useMemo } from "react";
 import { faCopy, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { Card, DownloadData, GenomeBrowser, SortableTable } from "@/components";
+import { Card, DownloadData, SortableTable } from "@/components";
 import { AlleleCrispr } from "@/models/allele/crispr";
 
 const CopyButton = ({ sequence }) => {
@@ -36,16 +35,11 @@ const CopyButton = ({ sequence }) => {
 };
 
 type CrisprProps = {
-  geneSymbol: string;
   mgiGeneAccessionId: string;
   alleleName: string;
 };
 
-const Crispr = ({
-  geneSymbol,
-  mgiGeneAccessionId,
-  alleleName,
-}: CrisprProps) => {
+const Crispr = ({ mgiGeneAccessionId, alleleName }: CrisprProps) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
     queryFn: () =>
@@ -131,7 +125,7 @@ const Crispr = ({
           )}
         </Card>
       )}
-      <Card>
+      <Card data-testid="crispr-section">
         <h2>Crispr details</h2>
         <p>
           <a
@@ -167,8 +161,8 @@ const Crispr = ({
           {data.guides.map((guide) => {
             return (
               <tr key={guide.guideSequence}>
-                {tableHeaders.map(({ field }) => (
-                  <td>{guide[field]}</td>
+                {tableHeaders.map(({ field }, index) => (
+                  <td key={index}>{guide[field]}</td>
                 ))}
               </tr>
             );
@@ -217,10 +211,6 @@ const Crispr = ({
           ]}
         />
       </Card>
-      <GenomeBrowser
-        geneSymbol={geneSymbol}
-        mgiGeneAccessionId={mgiGeneAccessionId}
-      />
     </>
   );
 };

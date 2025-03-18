@@ -26,6 +26,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
+import GenomeBrowser from "@/components/GenomeBrowser/GenomeBrowser";
 import { AlleleSummary } from "@/models";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
@@ -170,7 +171,7 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
           <p className="mb-4 grey">{alleleDescription}</p>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {productTypes.map((productType) => (
-              <ProductItem {...productType} />
+              <ProductItem key={productType.name} {...productType} />
             ))}
           </div>
         </Card>
@@ -191,7 +192,6 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
         )}
         {doesEsCellProductsExist && (
           <ESCell
-            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
             setQcData={setQcData}
@@ -212,11 +212,17 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
 
         {doesCrisprProductsExist && (
           <Crispr
-            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />
         )}
+        <GenomeBrowser
+          geneSymbol={alleleData.geneSymbol}
+          mgiGeneAccessionId={mgiGeneAccessionId}
+          hasCRISPRData={doesCrisprProductsExist}
+          hasEsCellData={doesEsCellProductsExist}
+          hasTargetingVectorData={doesTargetingVectorProductsExist}
+        />
         <Card>
           <Link
             href={`/genes/${pid}/#order`}

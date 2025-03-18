@@ -1,0 +1,491 @@
+[
+  {
+    "id": "6717829b23cfbf9aaceadcae",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  2.41584530158434e-12 ]; and with phenotype threshold value 1e-04 - females only",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal postnatal growth/weight/body size",
+        "id": "MP:0002089"
+      },
+      {
+        "name": "abnormal body length",
+        "id": "MP:0001256"
+      },
+      {
+        "name": "abnormal body size",
+        "id": "MP:0003956"
+      },
+      {
+        "name": "decreased body size",
+        "id": "MP:0001265"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "432b27f2e7bb33b809931bd0154d977d",
+    "metadataValues": [
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-04-23|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-04-01|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-07-02|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-01-28|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-03-13|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-01-30|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2018-12-17|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Body length",
+    "parameterStableId": "IMPC_DXA_006_001",
+    "parameterStableKey": 19055,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "decreased body length",
+        "id": "MP:0001258"
+      },
+      {
+        "name": "abnormal body length",
+        "id": "MP:0001256"
+      },
+      {
+        "name": "increased body length",
+        "id": "MP:0001257"
+      }
+    ],
+    "procedureGroup": "IMPC_DXA",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureStableKey": 550,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -2.22799766473097,
+    "reportedPValue": 2.41584530158434E-12,
+    "unit": {
+      "x": "cm",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "female",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased body length",
+      "id": "MP:0001258"
+    },
+    "softWindowing": {
+      "bandwidth": 572,
+      "doeNote": "no note available",
+      "minObsRequired": 490,
+      "numberOfDoe": 7,
+      "peaks": [
+        17882,
+        17924,
+        17926,
+        17968,
+        17987,
+        18009,
+        18079
+      ],
+      "shape": 8.32424976078166,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 606
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.79532605301481,
+        "femaleKoEffectPValue": 2.41591845879853E-12,
+        "femaleKoEffectStderrEstimate": 0.056823076909263,
+        "femaleKoParameterEstimate": -0.410060861921525,
+        "femalePercentageChange": -184.341799275706,
+        "maleKoEffectPValue": 0.761970184544568,
+        "maleKoEffectStderrEstimate": 0.0575687174943135,
+        "maleKoParameterEstimate": -0.0174482750101645,
+        "malePercentageChange": -90.1373302439581,
+        "genotypeEffectPValue": 2.41584530158434E-12,
+        "genotypeEffectStderrEstimate": 0.0568230769092766,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.06000153463911E-4,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.364255097777202,
+        "interactionEffectPValue": 9.74943115128468E-8,
+        "interactionSignificant": true,
+        "interceptEstimate": 7.39207712955785,
+        "interceptEstimateStderrEstimate": 0.061243667853462,
+        "maleEffectSize": -3.79301581939833,
+        "sexEffectPValue": 7.69191688976267E-6,
+        "sexEffectParameterEstimate": -0.0812444134761958,
+        "sexEffectStderrEstimate": 0.0179404130396348,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "a26ddff88929f0ed34fa45b1d313c7ae",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 491,
+      "femaleControlMean": 9.23543788187373,
+      "femaleControlSd": 0.204457374707393,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": 8.4875,
+      "femaleMutantSd": 0.0834522960396277,
+      "maleControlCount": 482,
+      "maleControlMean": 9.59751037344398,
+      "maleControlSd": 0.241258879806558,
+      "maleMutantCount": 8,
+      "maleMutantMean": 9.0125,
+      "maleMutantSd": 0.210017006114131
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "growth/size/body region phenotype",
+        "id": "MP:0005378"
+      }
+    ]
+  },
+  {
+    "id": "67178a09430f327cc1a436af",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  2.41584530158434e-12 ]; and with phenotype threshold value 1e-04 - females only",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal postnatal growth/weight/body size",
+        "id": "MP:0002089"
+      },
+      {
+        "name": "abnormal body length",
+        "id": "MP:0001256"
+      },
+      {
+        "name": "abnormal body size",
+        "id": "MP:0003956"
+      },
+      {
+        "name": "decreased body size",
+        "id": "MP:0001265"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "432b27f2e7bb33b809931bd0154d977d",
+    "metadataValues": [
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-04-23|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-04-01|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-07-02|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-01-28|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-03-13|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-01-30|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2018-12-17|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Body length",
+    "parameterStableId": "IMPC_DXA_006_001",
+    "parameterStableKey": 19055,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "decreased body length",
+        "id": "MP:0001258"
+      },
+      {
+        "name": "abnormal body length",
+        "id": "MP:0001256"
+      },
+      {
+        "name": "increased body length",
+        "id": "MP:0001257"
+      }
+    ],
+    "procedureGroup": "IMPC_DXA",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureStableKey": 550,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -2.22799766473097,
+    "reportedPValue": 2.41584530158434E-12,
+    "unit": {
+      "x": "cm",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "female",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased body length",
+      "id": "MP:0001258"
+    },
+    "softWindowing": {
+      "bandwidth": 572,
+      "doeNote": "no note available",
+      "minObsRequired": 490,
+      "numberOfDoe": 7,
+      "peaks": [
+        17882,
+        17924,
+        17926,
+        17968,
+        17987,
+        18009,
+        18079
+      ],
+      "shape": 8.32424976078166,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 606
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.79532605301481,
+        "femaleKoEffectPValue": 2.41591845879853E-12,
+        "femaleKoEffectStderrEstimate": 0.056823076909263,
+        "femaleKoParameterEstimate": -0.410060861921525,
+        "femalePercentageChange": -184.341799275706,
+        "maleKoEffectPValue": 0.761970184544568,
+        "maleKoEffectStderrEstimate": 0.0575687174943135,
+        "maleKoParameterEstimate": -0.0174482750101645,
+        "malePercentageChange": -90.1373302439581,
+        "genotypeEffectPValue": 2.41584530158434E-12,
+        "genotypeEffectStderrEstimate": 0.0568230769092766,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.06000153463911E-4,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.364255097777202,
+        "interactionEffectPValue": 9.74943115128468E-8,
+        "interactionSignificant": true,
+        "interceptEstimate": 7.39207712955785,
+        "interceptEstimateStderrEstimate": 0.061243667853462,
+        "maleEffectSize": -3.79301581939833,
+        "sexEffectPValue": 7.69191688976267E-6,
+        "sexEffectParameterEstimate": -0.0812444134761958,
+        "sexEffectStderrEstimate": 0.0179404130396348,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "a26ddff88929f0ed34fa45b1d313c7ae",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 491,
+      "femaleControlMean": 9.23543788187373,
+      "femaleControlSd": 0.204457374707393,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": 8.4875,
+      "femaleMutantSd": 0.0834522960396277,
+      "maleControlCount": 482,
+      "maleControlMean": 9.59751037344398,
+      "maleControlSd": 0.241258879806558,
+      "maleMutantCount": 8,
+      "maleMutantMean": 9.0125,
+      "maleMutantSd": 0.210017006114131
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "growth/size/body region phenotype",
+        "id": "MP:0005378"
+      }
+    ]
+  },
+  {
+    "id": "67178d01d16805a9df8d6351",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "Overally significant [level =  1e-04 , pvalue =  2.41584530158434e-12 ]; and with phenotype threshold value 1e-04 - females only",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "unidimensional",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal postnatal growth/weight/body size",
+        "id": "MP:0002089"
+      },
+      {
+        "name": "abnormal body length",
+        "id": "MP:0001256"
+      },
+      {
+        "name": "abnormal body size",
+        "id": "MP:0003956"
+      },
+      {
+        "name": "decreased body size",
+        "id": "MP:0001265"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "432b27f2e7bb33b809931bd0154d977d",
+    "metadataValues": [
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-04-23|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-04-01|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-07-02|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-01-28|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-03-13|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2019-01-30|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized",
+      "Anesthesia = Ketamine+Xylazine|Date equipment last calibrated = 2018-12-17|Equipment ID = Faxitron UltraFocus DXA|Equipment manufacturer = Faxitron Bioptics LLC|Equipment model = UltraFocus DXA Xray tube #2|Experimenter ID = 100105|Mouse Status = Anesthetized"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Body length",
+    "parameterStableId": "IMPC_DXA_006_001",
+    "parameterStableKey": 19055,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "decreased body length",
+        "id": "MP:0001258"
+      },
+      {
+        "name": "abnormal body length",
+        "id": "MP:0001256"
+      },
+      {
+        "name": "increased body length",
+        "id": "MP:0001257"
+      }
+    ],
+    "procedureGroup": "IMPC_DXA",
+    "procedureName": "Body Composition (DEXA lean/fat)",
+    "procedureStableId": "IMPC_DXA_001",
+    "procedureStableKey": 550,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": -2.22799766473097,
+    "reportedPValue": 2.41584530158434E-12,
+    "unit": {
+      "x": "cm",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "female",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "decreased body length",
+      "id": "MP:0001258"
+    },
+    "softWindowing": {
+      "bandwidth": 572,
+      "doeNote": "no note available",
+      "minObsRequired": 490,
+      "numberOfDoe": 7,
+      "peaks": [
+        17882,
+        17924,
+        17926,
+        17968,
+        17987,
+        18009,
+        18079
+      ],
+      "shape": 8.32424976078166,
+      "threshold": 1.49011611938477E-7,
+      "totalObsOrWeight": 606
+    },
+    "statisticalMethod": {
+      "name": "Linear Mixed Model framework, LME, including Weight",
+      "attributes": {
+        "femaleEffectSize": -4.79532605301481,
+        "femaleKoEffectPValue": 2.41591845879853E-12,
+        "femaleKoEffectStderrEstimate": 0.056823076909263,
+        "femaleKoParameterEstimate": -0.410060861921525,
+        "femalePercentageChange": -184.341799275706,
+        "maleKoEffectPValue": 0.761970184544568,
+        "maleKoEffectStderrEstimate": 0.0575687174943135,
+        "maleKoParameterEstimate": -0.0174482750101645,
+        "malePercentageChange": -90.1373302439581,
+        "genotypeEffectPValue": 2.41584530158434E-12,
+        "genotypeEffectStderrEstimate": 0.0568230769092766,
+        "group1Genotype": "control",
+        "group1ResidualsNormalityTest": 3.06000153463911E-4,
+        "group2Genotype": "experimental",
+        "group2ResidualsNormalityTest": 0.364255097777202,
+        "interactionEffectPValue": 9.74943115128468E-8,
+        "interactionSignificant": true,
+        "interceptEstimate": 7.39207712955785,
+        "interceptEstimateStderrEstimate": 0.061243667853462,
+        "maleEffectSize": -3.79301581939833,
+        "sexEffectPValue": 7.69191688976267E-6,
+        "sexEffectParameterEstimate": -0.0812444134761958,
+        "sexEffectStderrEstimate": 0.0179404130396348,
+        "batchSignificant": true,
+        "varianceSignificant": true
+      }
+    },
+    "datasetId": "a26ddff88929f0ed34fa45b1d313c7ae",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 491,
+      "femaleControlMean": 9.23543788187373,
+      "femaleControlSd": 0.204457374707393,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": 8.4875,
+      "femaleMutantSd": 0.0834522960396277,
+      "maleControlCount": 482,
+      "maleControlMean": 9.59751037344398,
+      "maleControlSd": 0.241258879806558,
+      "maleMutantCount": 8,
+      "maleMutantMean": 9.0125,
+      "maleMutantSd": 0.210017006114131
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "growth/size/body region phenotype",
+        "id": "MP:0005378"
+      }
+    ]
+  }
+]

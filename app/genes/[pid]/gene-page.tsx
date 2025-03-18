@@ -51,13 +51,17 @@ const GenePage = (props: GenePageProps) => {
   } = props;
   const params = useParams<{ pid: string }>();
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
+  const [numAllelesAvailable, setNumAllelesAvailable] = useState(-1);
   const [allelesStudiedLoading, setAllelesStudiedLoading] =
     useState<boolean>(true);
+
   const allelesStudiedContextValue = {
     allelesStudied,
     setAlleles,
     allelesStudiedLoading,
     setAllelesStudiedLoading,
+    numAllelesAvailable,
+    setNumAllelesAvailable,
   };
 
   const { data: gene } = useGeneSummaryQuery(
@@ -102,7 +106,7 @@ const GenePage = (props: GenePageProps) => {
         <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
           <Search />
           <Container className="page">
-            <Summary />
+            <Summary numOfAlleles={orderDataFromServer?.length ?? 0} />
             <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
             <Expressions initialData={expressionDataFromServer} />
             <Images initialData={imageDataFromServer} />

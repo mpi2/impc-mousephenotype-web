@@ -1,0 +1,1166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PPI Chart page renders correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <span
+          class="subheadingSection primary"
+        >
+          <a
+            class="mb-3 link"
+            href="/genes/MGI:104785"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to
+             
+            <i>
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 50px;"
+                >
+                  ‌
+                </span>
+              </span>
+            </i>
+          </a>
+        </span>
+      </div>
+      <h1
+        class="mt-2 mb-0"
+      >
+        <strong
+          class="text-capitalize"
+        >
+          decreased prepulse inhibition
+        </strong>
+      </h1>
+      <div
+        class="mb-2 mt-4"
+      >
+        <div
+          class="spinner-border spinner-border-sm"
+        />
+          Loading data
+      </div>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped data-comparison-table table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="25%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Parameter
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Phenotyping Centre
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Allele
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Zygosity
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Life Stage
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Colony Id
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                % Pre-pulse inhibition - PPI3
+              </td>
+              <td>
+                TCP
+              </td>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                homozygote
+              </td>
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+            <tr>
+              <td>
+                % Pre-pulse inhibition - Global
+              </td>
+              <td>
+                TCP
+              </td>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                homozygote
+              </td>
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+            <tr>
+              <td>
+                % Pre-pulse inhibition - PPI4
+              </td>
+              <td>
+                TCP
+              </td>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                homozygote
+              </td>
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+            <tr>
+              <td>
+                % Pre-pulse inhibition - PPI2
+              </td>
+              <td>
+                TCP
+              </td>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                homozygote
+              </td>
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+            <tr>
+              <td>
+                % Pre-pulse inhibition - PPI1
+              </td>
+              <td>
+                TCP
+              </td>
+              <td>
+                <i>
+                  Myo6
+                  <sup>
+                    em1(IMPC)Tcp
+                  </sup>
+                </i>
+              </td>
+              <td>
+                homozygote
+              </td>
+              <td>
+                Early adult
+              </td>
+              <td>
+                TCPR0947_ADUP
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper "
+      />
+      <div
+        style="display: flex; justify-content: flex-end;"
+      >
+        <button
+          class="btn impc-secondary-button"
+        >
+          View chart
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="bg-grey pt-2"
+    style="position: sticky; top: 0px; z-index: 100;"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="card"
+      >
+        <div>
+          <div
+            class="mb-4"
+            style="display: flex; align-items: center; gap: 2rem;"
+          >
+            <h1
+              style="margin: 0px;"
+            >
+              <strong>
+                <i>
+                  Myo6
+                </i>
+                 data charts
+              </strong>
+            </h1>
+            <span
+              style="color: rgb(121, 118, 118); text-transform: uppercase; font-weight: 500; line-height: 1.2;"
+            >
+              % Pre-pulse inhibition - PPI3
+            </span>
+          </div>
+          <span
+            class="mb-4"
+            style="display: inline-block; font-size: 1.2rem;"
+          >
+            Combination tested with the lowest p-value of
+             
+            <strong>
+              2.16
+              x10
+              <sup>
+                -31
+              </sup>
+            </strong>
+          </span>
+        </div>
+        <div
+          class="details"
+        >
+          <div
+            class="label"
+          >
+            Experiments performed
+          </div>
+          <div
+            class="content"
+          >
+            <p>
+              A 
+              <strong>
+                Acoustic Startle and Pre-pulse Inhibition (PPI)
+              </strong>
+               phenotypic assay was performed on 
+              1600
+               mice. The charts show the results of measuring
+               
+              <strong>
+                % Pre-pulse inhibition - PPI3
+              </strong>
+               in
+               
+              8
+               
+              female, 
+              8
+               
+              male mutants compared to
+               
+              813
+               
+              female,
+               
+              771
+               male controls. The mutants are for the
+               
+              <i>
+                Myo6
+                <sup>
+                  em1(IMPC)Tcp
+                </sup>
+              </i>
+               
+              allele.
+            </p>
+          </div>
+          <div
+            class="label"
+          >
+            Associated phenotype
+          </div>
+          <div
+            class="content"
+          >
+            <a
+              href="/phenotypes/MP:0009142"
+            >
+              <span
+                class="link primary"
+              >
+                decreased prepulse inhibition
+              </span>
+            </a>
+          </div>
+          <div
+            class="label"
+          >
+            Zygosity
+          </div>
+          <div
+            class="content"
+          >
+            <span>
+              homozygote
+            </span>
+          </div>
+          <div
+            class="label"
+          >
+            Testing protocol
+          </div>
+          <div
+            class="content"
+          >
+            <a
+              class="link primary"
+              href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=742&pipeID=9"
+            >
+              Acoustic Startle and Pre-pulse Inhibition (PPI)
+            </a>
+          </div>
+          <div
+            class="label"
+          >
+            Measured value
+          </div>
+          <div
+            class="content"
+          >
+            % Pre-pulse inhibition - PPI3
+          </div>
+          <div
+            class="label"
+          >
+            Testing environment
+          </div>
+          <div
+            class="content"
+          >
+            <span
+              class="primary link"
+            >
+              Lab conditions and equipment
+            </span>
+          </div>
+          <div
+            class="label"
+          >
+            Life stage
+          </div>
+          <div
+            class="content"
+          >
+            <span>
+              Early adult
+            </span>
+          </div>
+          <div
+            class="label"
+          >
+            Background Strain
+          </div>
+          <div
+            class="content"
+          >
+            <span>
+              involves: C57BL/6NCrl
+            </span>
+          </div>
+          <div
+            class="label"
+          >
+            Phenotyping center
+          </div>
+          <div
+            class="content"
+          >
+            <span>
+              TCP
+            </span>
+          </div>
+          <div
+            class="label"
+          />
+          <div
+            class="content"
+          >
+            <p
+              class="small"
+            >
+              * The high throughput nature of the IMPC means that large control sample sizes may accumulate over a long period of time. See the animal welfare guidelines for more information.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="card"
+      >
+        <h2>
+          Statistical information
+        </h2>
+        <div
+          class="row"
+        >
+          <div
+            class="col-lg-6"
+          >
+            <div
+              class="tableWrapper"
+            >
+              <table
+                class="table striped table table-bordered"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      rowspan="2"
+                      width="41.66666666666667%"
+                    />
+                    <th
+                      rowspan="2"
+                      width="16.666666666666664%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Mean
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowspan="2"
+                      width="16.666666666666664%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Stddev
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowspan="2"
+                      width="25%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        # Samples
+                         
+                      </button>
+                    </th>
+                  </tr>
+                  <tr />
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Female Control
+                    </td>
+                    <td>
+                      71.477
+                    </td>
+                    <td>
+                      17.596
+                    </td>
+                    <td>
+                      813
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Male Control
+                    </td>
+                    <td>
+                      72.537
+                    </td>
+                    <td>
+                      17.809
+                    </td>
+                    <td>
+                      771
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Female Homozygote
+                    </td>
+                    <td>
+                      -3.381
+                    </td>
+                    <td>
+                      46.182
+                    </td>
+                    <td>
+                      8
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Male Homozygote
+                    </td>
+                    <td>
+                      9.587
+                    </td>
+                    <td>
+                      43.406
+                    </td>
+                    <td>
+                      8
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div
+            class="col-lg-6"
+          >
+            <div
+              class="tableWrapper"
+            >
+              <table
+                class="table striped table table-bordered"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      rowspan="2"
+                      width="66.66666666666666%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Model attribute
+                         
+                      </button>
+                    </th>
+                    <th
+                      rowspan="2"
+                      width="33.33333333333333%"
+                    >
+                      <button
+                        class="inlineButton headerButton disabled"
+                        style="font-weight: inherit;"
+                      >
+                        Value
+                         
+                      </button>
+                    </th>
+                  </tr>
+                  <tr />
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Batch effect significant 
+                    </td>
+                    <td>
+                      true
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Variance significant 
+                    </td>
+                    <td>
+                      true
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Genotype*Sex interaction effect p value 
+                    </td>
+                    <td>
+                      0
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Genotype parameter estimate 
+                    </td>
+                    <td>
+                      7.542
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Genotype standard error estimate 
+                    </td>
+                    <td>
+                      5.323
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Genotype Effect P Value 
+                    </td>
+                    <td>
+                      0
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Sex Parameter Estimate 
+                    </td>
+                    <td>
+                      7.542
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Sex Standard Error Estimate 
+                    </td>
+                    <td>
+                      1.817
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Sex Effect P Value 
+                    </td>
+                    <td>
+                      0
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Intercept Estimate 
+                    </td>
+                    <td>
+                      94.749
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Intercept Estimate Standard Error 
+                    </td>
+                    <td>
+                      5.841
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Sex Male KO P Value 
+                    </td>
+                    <td>
+                      0
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Sex Female KO P Value 
+                    </td>
+                    <td>
+                      0
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      WT Residuals Normality Tests 
+                    </td>
+                    <td>
+                      3.68
+                      x10
+                      <sup>
+                        -32
+                      </sup>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      KO Residuals Normality Tests 
+                    </td>
+                    <td>
+                      9.24
+                      x10
+                      <sup>
+                        -1
+                      </sup>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="card"
+      >
+        <div>
+          <div
+            style="display: flex; justify-content: flex-end;"
+          >
+            <div
+              class="form-check form-switch"
+            >
+              <input
+                class="form-check-input"
+                id="custom-switch"
+                type="checkbox"
+              />
+              <label
+                class="form-check-label"
+                for="custom-switch"
+                title=""
+              >
+                Show scattered points
+              </label>
+            </div>
+          </div>
+          <div
+            id="chart"
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="150"
+              role="img"
+              width="300"
+            />
+          </div>
+          <div>
+            <div>
+              <div
+                style="display: inline-block;"
+              >
+                Top
+                <hr
+                  style="border-top: 3px dotted #000; height: 3px; width: 30px; display: inline-block; margin: 0px 0px 0px 0.5rem; opacity: 1;"
+                />
+                 line: 75th percentile
+              </div>
+              <br />
+              <div
+                style="display: inline-block;"
+              >
+                Middle
+                <hr
+                  style="border-top: 3px dashed #000; height: 3px; width: 30px; display: inline-block; margin: 0px 0px 0px 0.5rem; opacity: 1;"
+                />
+                 line: 50th percentile
+              </div>
+              <br />
+              <div
+                style="display: inline-block;"
+              >
+                Bottom
+                <hr
+                  style="border-top: 3px dotted #000; height: 3px; width: 30px; display: inline-block; margin: 0px 0px 0px 0.5rem; opacity: 1;"
+                />
+                 line: 25th percentile
+              </div>
+              <br />
+              <div
+                style="display: inline-flex; align-items: center; gap: 0.3rem;"
+              >
+                <div
+                  style="display: inline-block; background-color: rgb(204, 204, 204); width: 12px; height: 12px; border-radius: 50%;"
+                />
+                : mean value
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

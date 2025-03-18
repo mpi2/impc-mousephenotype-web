@@ -78,14 +78,16 @@ exports[`Chart summary component renders correctly 1`] = `
           female,
            
           1884
-           male controls. The mutants are for the 
+           male controls. The mutants are for the
+           
           <i>
             Otog
             <sup>
               em1(IMPC)J
             </sup>
           </i>
-           allele.
+           
+          allele.
         </p>
       </div>
       <div

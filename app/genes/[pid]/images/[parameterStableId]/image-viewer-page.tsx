@@ -61,11 +61,13 @@ const getZygosityColor = (zygosity: string) => {
 };
 
 const FilterBadge = ({
+  name,
   children,
   onClick,
   icon,
   isSelected,
 }: {
+  name: string;
   children: ReactNode;
   onClick: () => void;
   icon?: any;
@@ -76,6 +78,7 @@ const FilterBadge = ({
     pill
     bg="badge-secondary"
     onClick={onClick}
+    data-testid={`${isSelected ? "active-" : ""}${name}-filter`}
   >
     {children}&nbsp;
     {!!icon ? <FontAwesomeIcon icon={icon} /> : null}
@@ -216,6 +219,7 @@ const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
           />
           <TransformComponent>
             <img
+              data-testid={`selected-image-${name}`}
               key={image?.jpegUrl}
               src={addTrailingSlash(image?.jpegUrl)}
               style={{ width: "100%", display: "block" }}
@@ -234,6 +238,7 @@ const Column = ({ images, selected, onSelection, showAssocParam }) => {
       {images?.map((image, i) => (
         <Col key={image.observationId} md={4} lg={3} className="mb-2">
           <div
+            data-testid="single-image"
             className={classNames(styles.singleImage, {
               [styles.active]: selected === i,
             })}
@@ -291,7 +296,7 @@ const ImagesCompare = ({
         `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`,
       ),
     enabled: !!parameterStableId && !!pid,
-    initialData: mutantImagesFromServer,
+    placeholderData: [],
   });
 
   const { data: controlImagesRaw } = useQuery<Array<GeneImageCollection>>({
@@ -301,7 +306,7 @@ const ImagesCompare = ({
         `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`,
       ),
     enabled: !!parameterStableId,
-    initialData: controlImagesFromServer,
+    placeholderData: [],
   });
 
   const [selectedSex, setSelectedSex] = useState("both");
@@ -592,6 +597,7 @@ const ImagesCompare = ({
                     controlStyle={{ display: "inline-block", width: 145 }}
                     allOptionEnabled={false}
                     displayEvenWithOnlyOneOption
+                    prioritaseControlId
                   />
                 </div>
                 <Col xs={12}>
@@ -633,6 +639,7 @@ const ImagesCompare = ({
                     controlStyle={{ display: "inline-block", width: 145 }}
                     allOptionEnabled={false}
                     displayEvenWithOnlyOneOption
+                    prioritaseControlId
                   />
                 </div>
                 <Col xs={12}>
@@ -711,6 +718,7 @@ const ImagesCompare = ({
                     <div className={styles.filter}>
                       <strong>Sex:</strong>
                       <FilterBadge
+                        name="both-sexes"
                         isSelected={selectedSex === "both"}
                         icon={faMarsAndVenus}
                         onClick={() => setSelectedSex("both")}
@@ -718,6 +726,7 @@ const ImagesCompare = ({
                         All
                       </FilterBadge>
                       <FilterBadge
+                        name="female"
                         isSelected={selectedSex === "female"}
                         icon={faVenus}
                         onClick={() => setSelectedSex("female")}
@@ -725,6 +734,7 @@ const ImagesCompare = ({
                         Female
                       </FilterBadge>
                       <FilterBadge
+                        name="male"
                         isSelected={selectedSex === "male"}
                         icon={faMars}
                         onClick={() => setSelectedSex("male")}
@@ -736,6 +746,7 @@ const ImagesCompare = ({
                       <div className={styles.filter}>
                         <b>Anatomy: </b>
                         <FilterBadge
+                          name="anatomy"
                           isSelected
                           icon={faXmark}
                           onClick={removeAnatomyTerm}
@@ -751,24 +762,28 @@ const ImagesCompare = ({
                     <div className={styles.filter}>
                       <strong>Mutant zygosity:</strong>
                       <FilterBadge
+                        name="both-zygs"
                         isSelected={selectedZyg === "both"}
                         onClick={() => setSelectedZyg("both")}
                       >
                         All
                       </FilterBadge>
                       <FilterBadge
+                        name="heterozygote"
                         isSelected={selectedZyg === "heterozygote"}
                         onClick={() => setSelectedZyg("heterozygote")}
                       >
                         Heterozygote
                       </FilterBadge>
                       <FilterBadge
+                        name="homozygote"
                         isSelected={selectedZyg === "homozygote"}
                         onClick={() => setSelectedZyg("homozygote")}
                       >
                         Homozygote
                       </FilterBadge>
                       <FilterBadge
+                        name="hemizygote"
                         isSelected={selectedZyg === "hemizygote"}
                         onClick={() => setSelectedZyg("hemizygote")}
                       >

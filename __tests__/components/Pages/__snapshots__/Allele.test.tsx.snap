@@ -1,0 +1,2854 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Allele page renders properly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <span
+          class="subheadingSection primary"
+        >
+          <a
+            class="mb-3"
+            href="/genes/MGI:1931838"
+            style="text-transform: none; font-weight: normal; letter-spacing: normal; font-size: 1.15rem;"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to 
+            <i>
+              Dbn1
+            </i>
+          </a>
+        </span>
+      </div>
+      <p
+        class="subheading mt-2"
+      >
+        ALLELE
+      </p>
+      <h1
+        class="mb-2 mt-2"
+      >
+        <i>
+          Dbn1
+          <sup>
+            tm1a(KOMP)Wtsi
+          </sup>
+        </i>
+      </h1>
+      <p
+        class="mb-4 grey"
+      >
+        KO first allele (reporter-tagged insertion with conditional potential)
+      </p>
+      <div
+        style="display: flex; flex-wrap: wrap;"
+      >
+        <div
+          class="dataCollection"
+        >
+          Mice
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn impc-primary-button"
+              href="#mice"
+              style="min-width: 120px; cursor: pointer;"
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Order
+              </span>
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollection"
+        >
+          Targeted ES cells
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn impc-primary-button"
+              href="#esCell"
+              style="min-width: 120px; cursor: pointer;"
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Order
+              </span>
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollection"
+        >
+          Targeting vectors
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn impc-primary-button"
+              href="#targetingVector"
+              style="min-width: 120px; cursor: pointer;"
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Order
+              </span>
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollectionInactive"
+        >
+          Intermediate vectors
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn btn-grey impc-base-button"
+              href="#intermediateVector"
+              style="min-width: 120px; cursor: initial;"
+            >
+              Not available
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Allele Map
+      </h2>
+      <p
+        class="mb-0"
+      >
+        <a
+          class="primary link"
+          href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file"
+          target="_blank"
+        >
+          Genbank
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-up-right-from-square "
+            data-icon="up-right-from-square"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style="margin-left: 5px;"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+         
+        <span
+          class="grey ms-2 me-2"
+        >
+          |
+        </span>
+        <a
+          class="primary link"
+          href="https://www.ensembl.org/Mus_musculus/Location/View?g=ENSMUSG00000034675"
+          target="_blank"
+        >
+          Ensembl
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-up-right-from-square "
+            data-icon="up-right-from-square"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style="margin-left: 5px;"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+      </p>
+      <div>
+        <img
+          src="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png"
+          style="display: block; max-width: 100%;"
+        />
+      </div>
+    </div>
+    <div
+      class="card"
+      data-testid="mice-section"
+      id="mice"
+    >
+      <h2>
+        Mice
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="25%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Colony Name
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Genetic Background
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Production Centre
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  QC Data
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  ES Cell/Parent Mouse Colony
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Order / Contact
+                   
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>
+                  MCKS
+                </strong>
+              </td>
+              <td>
+                C57BL/6NTac
+              </td>
+              <td>
+                WTSI
+              </td>
+              <td>
+                <a
+                  class="link"
+                  href="#"
+                  target="_blank"
+                >
+                  View
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-window-maximize fa-xs grey"
+                    data-icon="window-maximize"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M.3 89.5C.1 91.6 0 93.8 0 96V224 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64V224 96c0-35.3-28.7-64-64-64H64c-2.2 0-4.4 .1-6.5 .3c-9.2 .9-17.8 3.8-25.5 8.2C21.8 46.5 13.4 55.1 7.7 65.5c-3.9 7.3-6.5 15.4-7.4 24zM48 224H464l0 192c0 8.8-7.2 16-16 16L64 432c-8.8 0-16-7.2-16-16l0-192z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                EPD0211_3_A05
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.infrafrontier.eu/emma/strain-search/?category=genesalleles&keyword=Dbn1"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  EMMA
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper withControls"
+      >
+        <div
+          class="additionalWrapper bottomControls"
+        >
+          <div
+            class="grey"
+            style="display: flex; gap: 0.5rem; align-items: center;"
+          >
+            Download data as:
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               TSV
+            </button>
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               XLS
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      data-testid="es-cell-section"
+      id="esCell"
+    >
+      <h2>
+        ES Cells
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  ES Cell Clone
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  ES Cell strain
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Parental Cell Line
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  IKMC Project
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  QC Data
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Targeting Vector
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Order / Contact
+                   
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>
+                  EPD0211_3_A07
+                </strong>
+              </td>
+              <td>
+                C57BL/6N
+                <sup />
+              </td>
+              <td>
+                JM8.N4
+              </td>
+              <td>
+                40214
+              </td>
+              <td />
+              <td>
+                PRPGS00070_C_D05
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  EPD0211_3_A05
+                </strong>
+              </td>
+              <td>
+                C57BL/6N
+                <sup />
+              </td>
+              <td>
+                JM8.N4
+              </td>
+              <td>
+                40214
+              </td>
+              <td />
+              <td>
+                PRPGS00070_C_D05
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  EPD0211_3_F05
+                </strong>
+              </td>
+              <td>
+                C57BL/6N
+                <sup />
+              </td>
+              <td>
+                JM8.N4
+              </td>
+              <td>
+                40214
+              </td>
+              <td />
+              <td>
+                PRPGS00070_C_D05
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  EPD0211_3_C08
+                </strong>
+              </td>
+              <td>
+                C57BL/6N
+                <sup />
+              </td>
+              <td>
+                JM8.N4
+              </td>
+              <td>
+                40214
+              </td>
+              <td>
+                <a
+                  class="link"
+                  href="#"
+                  target="_blank"
+                >
+                  View 
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-window-maximize fa-xs grey"
+                    data-icon="window-maximize"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M.3 89.5C.1 91.6 0 93.8 0 96V224 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64V224 96c0-35.3-28.7-64-64-64H64c-2.2 0-4.4 .1-6.5 .3c-9.2 .9-17.8 3.8-25.5 8.2C21.8 46.5 13.4 55.1 7.7 65.5c-3.9 7.3-6.5 15.4-7.4 24zM48 224H464l0 192c0 8.8-7.2 16-16 16L64 432c-8.8 0-16-7.2-16-16l0-192z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                PRPGS00070_C_D05
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  EPD0211_3_D07
+                </strong>
+              </td>
+              <td>
+                C57BL/6N
+                <sup />
+              </td>
+              <td>
+                JM8.N4
+              </td>
+              <td>
+                40214
+              </td>
+              <td />
+              <td>
+                PRPGS00070_C_D05
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  EPD0211_3_G05
+                </strong>
+              </td>
+              <td>
+                C57BL/6N
+                <sup />
+              </td>
+              <td>
+                JM8.N4
+              </td>
+              <td>
+                40214
+              </td>
+              <td />
+              <td>
+                PRPGS00070_C_D05
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper withControls"
+      >
+        <div
+          class="additionalWrapper bottomControls"
+        >
+          <div
+            class="grey"
+            style="display: flex; gap: 0.5rem; align-items: center;"
+          >
+            Download data as:
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               TSV
+            </button>
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               XLS
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      data-testid="tvp-section"
+      id="targetingVector"
+    >
+      <h2>
+        Targeting vectors
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Design Oligos
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Targeting Vector
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Cassette
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Backbone
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="12.5%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  IKMC Project
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="12.5%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Genbank File
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="12.5%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Vector Map
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="12.5%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Order
+                   
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  class="primary link"
+                  href="/designs/49236"
+                >
+                  View design oligo
+                   
+                </a>
+                <strong />
+              </td>
+              <td>
+                PG00070_W_1_D05
+              </td>
+              <td>
+                L1L2_Bact_P
+              </td>
+              <td>
+                L3L4_pD223_DTA_T_spec
+              </td>
+              <td>
+                40214
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file"
+                  style="text-transform: capitalize;"
+                  target="_blank"
+                >
+                  Genbank file
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    data-icon="up-right-from-square"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+                  style="text-transform: capitalize;"
+                  target="_blank"
+                >
+                  Vector map
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    data-icon="up-right-from-square"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  class="primary link"
+                  href="/designs/49236"
+                >
+                  View design oligo
+                   
+                </a>
+                <strong />
+              </td>
+              <td>
+                PRPGS00070_C_D05
+              </td>
+              <td>
+                L1L2_Bact_P
+              </td>
+              <td>
+                L3L4_pD223_DTA_T_spec
+              </td>
+              <td>
+                40214
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file"
+                  style="text-transform: capitalize;"
+                  target="_blank"
+                >
+                  Genbank file
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    data-icon="up-right-from-square"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+                  style="text-transform: capitalize;"
+                  target="_blank"
+                >
+                  Vector map
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    data-icon="up-right-from-square"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  class="primary link"
+                  href="/designs/49236"
+                >
+                  View design oligo
+                   
+                </a>
+                <strong />
+              </td>
+              <td>
+                PRPGS00070_B_D05
+              </td>
+              <td>
+                L1L2_Bact_P
+              </td>
+              <td>
+                L3L4_pD223_DTA_spec
+              </td>
+              <td>
+                40213
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11510/targeting-vector-genbank-file"
+                  style="text-transform: capitalize;"
+                  target="_blank"
+                >
+                  Genbank file
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    data-icon="up-right-from-square"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11510/vector.png"
+                  style="text-transform: capitalize;"
+                  target="_blank"
+                >
+                  Vector map
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    data-icon="up-right-from-square"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  KOMP
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper withControls"
+      >
+        <div
+          class="additionalWrapper bottomControls"
+        >
+          <div
+            class="grey"
+            style="display: flex; gap: 0.5rem; align-items: center;"
+          >
+            Download data as:
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               TSV
+            </button>
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               XLS
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      Genome Browser mock
+    </div>
+    <div
+      class="card"
+    >
+      <a
+        class="primary link"
+        href="/genes/MGI:1931838#order"
+      >
+        See all alleles for the gene
+         
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-arrow-right-long "
+          data-icon="arrow-right-long"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@type":"Dataset","@context":"http://schema.org","name":"Mouse allele Dbn1&lt;tm1a(KOMP)Wtsi&gt;","description":"Discover mouse allele tm1a(KOMP)Wtsi of Dbn1 gene, view all available products and tissues with their detailed information.","creator":[{"@type":"Organization","name":"International Mouse Phenotyping Consortium"}],"citation":"https://doi.org/10.1093/nar/gkac972","isAccessibleForFree":true,"url":"https://dev.mousephenotype.org/data/alleles/MGI:1931838/tm1a(KOMP)Wtsi","license":"https://creativecommons.org/licenses/by/4.0/"}
+  </script>
+</div>
+`;
+
+exports[`Allele page renders properly CRISPR section 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <span
+          class="subheadingSection primary"
+        >
+          <a
+            class="mb-3"
+            href="/genes/MGI:1931838"
+            style="text-transform: none; font-weight: normal; letter-spacing: normal; font-size: 1.15rem;"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to 
+            <i>
+              Dbn1
+            </i>
+          </a>
+        </span>
+      </div>
+      <p
+        class="subheading mt-2"
+      >
+        ALLELE
+      </p>
+      <h1
+        class="mb-2 mt-2"
+      >
+        <i>
+          Dbn1
+          <sup>
+            em1(IMPC)Bay
+          </sup>
+        </i>
+      </h1>
+      <p
+        class="mb-4 grey"
+      >
+        Exon Deletion
+      </p>
+      <div
+        style="display: flex; flex-wrap: wrap;"
+      >
+        <div
+          class="dataCollection"
+        >
+          Mice
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn impc-primary-button"
+              href="#mice"
+              style="min-width: 120px; cursor: pointer;"
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-cart-shopping "
+                  data-icon="cart-shopping"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Order
+              </span>
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollectionInactive"
+        >
+          Targeted ES cells
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn btn-grey impc-base-button"
+              href="#esCell"
+              style="min-width: 120px; cursor: initial;"
+            >
+              Not available
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollectionInactive"
+        >
+          Targeting vectors
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn btn-grey impc-base-button"
+              href="#targetingVector"
+              style="min-width: 120px; cursor: initial;"
+            >
+              Not available
+            </a>
+          </p>
+        </div>
+        <div
+          class="dataCollectionInactive"
+        >
+          Intermediate vectors
+          <p
+            class="mt-2"
+          >
+            <a
+              class="btn btn-grey impc-base-button"
+              href="#intermediateVector"
+              style="min-width: 120px; cursor: initial;"
+            >
+              Not available
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      data-testid="mice-section"
+      id="mice"
+    >
+      <h2>
+        Mice
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="25%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Colony Name
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Genetic Background
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Production Centre
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  QC Data
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Order / Contact
+                   
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>
+                  DPEAB
+                </strong>
+              </td>
+              <td>
+                C57BL/6N
+              </td>
+              <td>
+                BCM
+              </td>
+              <td>
+                <a
+                  class="link"
+                  href="#"
+                  target="_blank"
+                >
+                  View
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-window-maximize fa-xs grey"
+                    data-icon="window-maximize"
+                    data-prefix="far"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M.3 89.5C.1 91.6 0 93.8 0 96V224 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64V224 96c0-35.3-28.7-64-64-64H64c-2.2 0-4.4 .1-6.5 .3c-9.2 .9-17.8 3.8-25.5 8.2C21.8 46.5 13.4 55.1 7.7 65.5c-3.9 7.3-6.5 15.4-7.4 24zM48 224H464l0 192c0 8.8-7.2 16-16 16L64 432c-8.8 0-16-7.2-16-16l0-192z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </td>
+              <td>
+                <a
+                  class="link primary"
+                  href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?search_query=Dbn1"
+                  target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-cart-shopping "
+                    data-icon="cart-shopping"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 576 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  MMRRC
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper withControls"
+      >
+        <div
+          class="additionalWrapper bottomControls"
+        >
+          <div
+            class="grey"
+            style="display: flex; gap: 0.5rem; align-items: center;"
+          >
+            Download data as:
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               TSV
+            </button>
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               XLS
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      id="crispr"
+    >
+      <h2>
+        Sequence
+      </h2>
+      <div
+        class="bg-grey-light false"
+        style="padding: 1rem; position: relative;"
+      >
+        &gt;Dbn1 Cas9_Dbn1_13790
+GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTGTACCTTGCTGGGCACTAGCACCTGGAAAGACACGAGAGGTGTGATCCCCGAGTTGTGGGTTCCTGGTGTTTGTGTGAAAAACAAACAGACAAATAACAGCAGCAGCAACAACAAAACATTTTTTTTCGACGTTTTTCTCCAAATTGGAAAAGAAAATCCACCTTGACTCAGACCCTCGCTGACCTGGCTCCTCCACTGCTTCCGCCTTGAGACCTGGGGTCCTTGGGGTGTATTAGTCTTGGGCTCTGCATTTG
+
+        <p
+          class="grey mt-2 mb-0 small"
+        >
+          Type: 
+          complete
+          <span
+            class="ms-3 me-3 "
+          >
+            |
+          </span>
+          Category:
+           
+          outcome sequence
+        </p>
+        <div
+          style="position: absolute; bottom: 16px; right: 16px;"
+        >
+          <button
+            class="btn impc-secondary-button small"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-copy "
+              data-icon="copy"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M208 0H332.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z"
+                fill="currentColor"
+              />
+            </svg>
+             
+            Copy
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+      data-testid="crispr-section"
+    >
+      <h2>
+        Crispr details
+      </h2>
+      <p>
+        <a
+          class="link primary"
+          href="https://www.informatics.jax.org/allele/MGI:6257430"
+          target="_blank"
+        >
+          MGI:1931838
+           
+          <span
+            class="grey"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-up-right-from-square fa-xs "
+              data-icon="arrow-up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+        </a>
+      </p>
+      <h3
+        class="mb-0 mt-1"
+      >
+        Nucleases
+      </h3>
+      <div
+        class="mt-3"
+      >
+        <div>
+          <span
+            class="grey"
+          >
+            Type
+            : 
+          </span>
+          <strong>
+            Cas9
+          </strong>
+        </div>
+        <div>
+          <span
+            class="grey"
+          >
+            Class
+            : 
+          </span>
+          <strong>
+            mRNA
+          </strong>
+        </div>
+      </div>
+      <h3
+        class="mb-0 mt-4"
+      >
+        Genotype primers
+      </h3>
+      <div
+        class="mt-3"
+      >
+        <div>
+          <span
+            class="grey"
+          >
+            Name
+            : 
+          </span>
+          <strong>
+            Geno_Phldb2_F1
+          </strong>
+        </div>
+        <div>
+          <span
+            class="grey"
+          >
+            Sequence
+            : 
+          </span>
+          <strong>
+            CACTGGGCGCAAAATTCTTCT
+          </strong>
+        </div>
+      </div>
+      <h3
+        class="mb-0 mt-4"
+      >
+        Guides
+      </h3>
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  Guide sequence
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  PAM
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  CHR
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Start
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Stop
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Strand
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Genome build
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  GRNA concentration
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Truncated guide
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Reversed
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Sanger service
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Guide format
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Guide source
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                GAGGTGTGATCCCCGAGAAA
+              </td>
+              <td>
+                TGG
+              </td>
+              <td>
+                13
+              </td>
+              <td>
+                55630835
+              </td>
+              <td>
+                55630857
+              </td>
+              <td>
+                -
+              </td>
+              <td>
+                GRCm39
+              </td>
+              <td>
+                5
+              </td>
+              <td />
+              <td />
+              <td />
+              <td />
+              <td />
+            </tr>
+            <tr>
+              <td>
+                CAGGTCCAACACCTATCTTG
+              </td>
+              <td>
+                TGG
+              </td>
+              <td>
+                13
+              </td>
+              <td>
+                55629036
+              </td>
+              <td>
+                55629058
+              </td>
+              <td>
+                -
+              </td>
+              <td>
+                GRCm39
+              </td>
+              <td>
+                5
+              </td>
+              <td />
+              <td />
+              <td />
+              <td />
+              <td />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="grey"
+        style="display: flex; gap: 0.5rem; align-items: center;"
+      >
+        Download data as:
+         
+        <button
+          class="btn impc-secondary-button small"
+        >
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-download fa-sm "
+            data-icon="download"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+              fill="currentColor"
+            />
+          </svg>
+           TSV
+        </button>
+         
+        <button
+          class="btn impc-secondary-button small"
+        >
+          <svg
+            aria-hidden="true"
+            class="svg-inline--fa fa-download fa-sm "
+            data-icon="download"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+              fill="currentColor"
+            />
+          </svg>
+           XLS
+        </button>
+      </div>
+    </div>
+    <div>
+      Genome Browser mock
+    </div>
+    <div
+      class="card"
+    >
+      <a
+        class="primary link"
+        href="/genes/MGI:1931838#order"
+      >
+        See all alleles for the gene
+         
+        <svg
+          aria-hidden="true"
+          class="svg-inline--fa fa-arrow-right-long "
+          data-icon="arrow-right-long"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@type":"Dataset","@context":"http://schema.org","name":"Mouse allele Dbn1&lt;em1(IMPC)Bay&gt;","description":"Discover mouse allele em1(IMPC)Bay of Dbn1 gene, view all available products and tissues with their detailed information.","creator":[{"@type":"Organization","name":"International Mouse Phenotyping Consortium"}],"citation":"https://doi.org/10.1093/nar/gkac972","isAccessibleForFree":true,"url":"https://dev.mousephenotype.org/data/alleles/MGI:1931838/em1(IMPC)Bay","license":"https://creativecommons.org/licenses/by/4.0/"}
+  </script>
+</div>
+`;
