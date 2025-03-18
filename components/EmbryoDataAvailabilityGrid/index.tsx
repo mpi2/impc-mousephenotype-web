@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from "react-select";
 import PaginationControls from "../PaginationControls";
 import { Form, InputGroup } from "react-bootstrap";
+import { usePagination } from "@/hooks";
 
 type EmbryoData = {
   id: string;
@@ -37,98 +38,78 @@ const EmbryoDataAvailabilityGrid = ({
   onDataFilterChange,
 }: Props) => {
   const [query, setQuery] = useState<string>(undefined);
-  const [activePage, setActivePage] = useState(0);
-  const [totalPages, setTotalPages] = useState(
-    data ? Math.ceil(data.length / 25) : 0,
-  );
-  const [chartData, setChartData] = useState<Array<EmbryoData>>([]);
+  const [selectedWOL, setSelectedWOL] = useState<Array<string>>([]);
 
-  useEffect(() => {
-    setTotalPages(data ? Math.ceil(data.length / 25) : 0);
-    setChartData(
-      data
-        .filter((gene) =>
-          !!query
-            ? gene.geneSymbol.toLowerCase().includes(query.toLowerCase())
-            : true,
-        )
-        .slice(activePage * 25, activePage * 25 + 25)
-        .map((d) => ({
-          id: d.geneSymbol,
-          mgiGeneAccessionId: d.mgiGeneAccessionId,
-          data: [
-            "OPT E9.5",
-            "MicroCT E14.5-E15.5",
-            "MicroCT E18.5",
-            "Mager Lab Pre E9.5",
-            "Vignettes",
-          ].map((p) => ({
-            x: p,
-            y: d.procedureNames.includes(p)
-              ? d.hasAutomatedAnalysis
-                ? 2
-                : 1
-              : p === "Mager Lab Pre E9.5" && d.isUmassGene
-                ? 1
-                : p === "Vignettes" && d.hasVignettes
-                  ? 1
-                  : 0,
-          })),
-        })),
-    );
-  }, [data, activePage, query]);
-
-  const geneIndex = chartData?.reduce(
-    (acc, d) => ({ [d.id]: d.mgiGeneAccessionId, ...acc }),
-    {},
+  const dataIndex = useMemo(
+    () =>
+      secondaryViabilityData?.reduce(
+        (acc, d) => ({
+          [d.windowOfLethality]: d.genes,
+          ...acc,
+        }),
+        {},
+      ),
+    [secondaryViabilityData],
   );
 
-  const dataIndex = secondaryViabilityData?.reduce(
-    (acc, d) => ({
-      [d.windowOfLethality]: d.genes,
-      ...acc,
-    }),
-    {},
+  const processedData = useMemo(() => {
+    return data.map((d) => ({
+      id: d.geneSymbol,
+      mgiGeneAccessionId: d.mgiGeneAccessionId,
+      data: [
+        "OPT E9.5",
+        "MicroCT E14.5-E15.5",
+        "MicroCT E18.5",
+        "Mager Lab Pre E9.5",
+        "Vignettes",
+      ].map((p) => ({
+        x: p,
+        y: d.procedureNames.includes(p)
+          ? d.hasAutomatedAnalysis
+            ? 2
+            : 1
+          : p === "Mager Lab Pre E9.5" && d.isUmassGene
+            ? 1
+            : p === "Vignettes" && d.hasVignettes
+              ? 1
+              : 0,
+      })),
+    }));
+  }, [data]);
+
+  const filteredData = useMemo(() => {
+    const newSelectedGenes = selectedWOL
+      .flatMap((wol) => dataIndex[wol])
+      .map((d) => d.mgiGeneAccessionId);
+    return processedData
+      .filter((gene) =>
+        !!newSelectedGenes.length
+          ? newSelectedGenes.includes(gene.mgiGeneAccessionId)
+          : true,
+      )
+      .filter((gene) =>
+        !!query ? gene.id.toLowerCase().includes(query.toLowerCase()) : true,
+      );
+  }, [processedData, query, selectedWOL, dataIndex]);
+
+  const {
+    paginatedData: chartData,
+    activePage,
+    setActivePage,
+    totalPages,
+  } = usePagination(filteredData, 25);
+
+  const geneIndex = useMemo(
+    () =>
+      chartData?.reduce(
+        (acc, d) => ({ [d.id]: d.mgiGeneAccessionId, ...acc }),
+        {},
+      ),
+    [chartData],
   );
 
   const onChangeWOL = (selected) => {
-    const newSelectedGenes = selected
-      .flatMap((s) => dataIndex[s.value])
-      .map((d) => d.mgiGeneAccessionId);
-    const newData =
-      selected.length && data
-        ? data.filter((g) => newSelectedGenes.includes(g.mgiGeneAccessionId))
-        : data;
-    setActivePage(0);
-    setTotalPages(Math.ceil(newData.length / 25));
-    setChartData(
-      newData
-        .filter((gene) =>
-          !!query
-            ? gene.geneSymbol.toLowerCase().includes(query.toLowerCase())
-            : true,
-        )
-        .slice(0, 25)
-        .map((d) => ({
-          id: d.geneSymbol,
-          mgiGeneAccessionId: d.mgiGeneAccessionId,
-          data: [
-            "OPT E9.5",
-            "MicroCT E14.5-E15.5",
-            "MicroCT E18.5",
-            "UMASS Pre E9.5",
-          ].map((p) => ({
-            x: p,
-            y: d.procedureNames.includes(p)
-              ? d.hasAutomatedAnalysis
-                ? 2
-                : 1
-              : p === "UMASS Pre E9.5" && d.isUmassGene
-                ? 1
-                : 0,
-          })),
-        })),
-    );
+    setSelectedWOL(selected.map((s) => s.value));
   };
 
   const onClickTick = (cell: any) => {
@@ -155,7 +136,7 @@ const EmbryoDataAvailabilityGrid = ({
 
   return (
     <>
-      <div className="row m-2 ">
+      <div className="row m-2">
         <div className="col-6">
           <Select
             options={selectOptions}
@@ -191,6 +172,9 @@ const EmbryoDataAvailabilityGrid = ({
             />
           </Form.Group>
         </div>
+      </div>
+      <div className="row">
+        <span>Viewing {filteredData.length} results</span>
       </div>
       <div
         style={{
