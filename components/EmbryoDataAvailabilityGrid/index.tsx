@@ -80,6 +80,7 @@ const EmbryoDataAvailabilityGrid = ({
   const filteredData = useMemo(() => {
     const newSelectedGenes = selectedWOL
       .flatMap((wol) => dataIndex[wol])
+      .sort((a, b) => a.geneSymbol.localeCompare(b.geneSymbol))
       .map((d) => d.mgiGeneAccessionId);
     const selectedData = !!newSelectedGenes.length
       ? newSelectedGenes
@@ -88,10 +89,9 @@ const EmbryoDataAvailabilityGrid = ({
           )
           .filter(Boolean)
       : processedData;
-    const filtered = selectedData.filter((gene) =>
-      !!query ? gene.id.toLowerCase().includes(query.toLowerCase()) : true,
+    return selectedData.filter((gene) =>
+      !!query ? gene?.id.toLowerCase().includes(query.toLowerCase()) : true,
     );
-    return filtered;
   }, [processedData, query, selectedWOL, dataIndex]);
 
   const {
