@@ -202,6 +202,7 @@ const LateAdultHeatmap = (props: Props) => {
       width={width}
       height={heatmapHeight + 100}
       onMouseLeave={() => setSelectedCell(undefined)}
+      data-testid="late-adult-heatmap"
     >
       <Text
         className={classNames({ "axis-link": !!selectedParam })}

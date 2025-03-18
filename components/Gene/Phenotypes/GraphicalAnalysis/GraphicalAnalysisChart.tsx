@@ -129,7 +129,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
     const xMax = useMemo(
       () =>
         data.reduce((acc, x) => (x.chartValue > acc ? x.chartValue : acc), 0),
-      [data]
+      [data],
     );
     const brushMaxWidth = 0.1 * width;
     const yAxisWidth = 0.15 * width;
@@ -166,7 +166,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
           range: [0, brushMaxWidth],
           domain: [0, xMax + 5],
         }),
-      [width, xMax]
+      [width, xMax],
     );
 
     const yScale = useMemo(
@@ -175,7 +175,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
           range: [40, yMax],
           domain: extent(filteredData, (d) => d.arrPos),
         }),
-      [height, filteredData, category]
+      [height, filteredData, category],
     );
 
     const brushYScale = useMemo(
@@ -184,7 +184,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
           range: [0, brushHeight],
           domain: [0, max(data, (d) => d.arrPos) || 0],
         }),
-      [height, data]
+      [height, data],
     );
 
     const initialBrushPosition = useMemo(
@@ -192,7 +192,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
         start: { y: 0 },
         end: { y: brushHeight },
       }),
-      [brushYScale, data, yMax]
+      [brushYScale, data, yMax],
     );
 
     const handleMouseMove = useCallback(
@@ -205,7 +205,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
           tooltipData: { statResult: data },
         });
       },
-      [xScale, yScale, showTooltip]
+      [xScale, yScale, showTooltip],
     );
 
     const handleMouseLeave = useCallback(() => {
@@ -218,7 +218,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
       if (!domain) return;
       const { y0, y1 } = domain;
       const newFilteredData = data.filter(
-        (d) => d.arrPos > y0 && d.arrPos < y1
+        (d) => d.arrPos > y0 && d.arrPos < y1,
       );
       setFilteredData(newFilteredData);
     };
@@ -227,7 +227,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
 
     const chartData = groupBy(
       filteredData,
-      isByProcedure ? "procedureName" : "topLevelPhenotypeList[0]"
+      isByProcedure ? "procedureName" : "topLevelPhenotypeList[0]",
     );
 
     if (!data || height === 0) {
@@ -284,14 +284,14 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
                       handleMouseMove(
                         xScale(x.chartValue),
                         yScale(x.arrPos),
-                        x
+                        x,
                       ),
                     onMouseLeave: handleMouseLeave,
                     onTouchMove: () =>
                       handleMouseMove(
                         xScale(x.chartValue),
                         yScale(x.arrPos),
-                        x
+                        x,
                       ),
                     onTouchEnd: handleMouseLeave,
                   };
@@ -393,7 +393,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
         )}
       </div>
     );
-  }
+  },
 );
 
 export default GraphicalAnalysisChart;

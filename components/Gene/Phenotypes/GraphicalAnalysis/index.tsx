@@ -47,7 +47,7 @@ const getSignificants = (data: Array<GeneStatisticalResult>) => {
 const processData = (
   data: Array<GeneStatisticalResult>,
   { type }: Cat,
-  significantOnly: boolean
+  significantOnly: boolean,
 ) => {
   const { BODY_SYSTEMS, PROCEDURES } = cats;
   const significants = getSignificants(data);
@@ -58,7 +58,7 @@ const processData = (
       fieldsToSort = ["topLevelPhenotypeList", "parameterName"];
       if (significantOnly) {
         const bodySystems = Array.from(
-          new Set(significants.map((x) => x.topLevelPhenotypeList[0]))
+          new Set(significants.map((x) => x.topLevelPhenotypeList[0])),
         );
         results = data.filter((x) => {
           return x.topLevelPhenotypeList.some((y) => bodySystems.includes(y));
@@ -69,7 +69,7 @@ const processData = (
       fieldsToSort = ["procedureName", "parameterName"];
       if (significantOnly) {
         const procedures = Array.from(
-          new Set(significants.map((x) => x.procedureName))
+          new Set(significants.map((x) => x.procedureName)),
         );
         results = data.filter((x) => {
           return procedures.includes(x.procedureName);
@@ -99,7 +99,7 @@ const GraphicalAnalysis = (props: Props) => {
   const { geneData, isGeneFetching, isGeneError } =
     useGeneAllStatisticalResData(
       mgiGeneAccessionId,
-      routerIsReady && chartIsVisible
+      routerIsReady && chartIsVisible,
     );
 
   useEffect(() => setAllelesStudiedLoading(isGeneFetching), [isGeneFetching]);
@@ -131,12 +131,12 @@ const GraphicalAnalysis = (props: Props) => {
           pValue: Number(x.pValue) || 0,
           topLevelPhenotypeList: x.topLevelPhenotypes.map((y) => y.name),
         })),
-    [filteredData]
+    [filteredData],
   );
 
   const processed = useMemo(
     () => processData(dataWithPValue, cat, significantOnly),
-    [dataWithPValue, cat, significantOnly]
+    [dataWithPValue, cat, significantOnly],
   );
 
   const isByProcedure = cat.type === cats.PROCEDURES;
@@ -145,12 +145,12 @@ const GraphicalAnalysis = (props: Props) => {
       isByProcedure
         ? uniq(processed.map((x) => x.procedureName))
         : uniq(processed.map((x) => x.topLevelPhenotypeList[0])),
-    [processed, isByProcedure]
+    [processed, isByProcedure],
   );
 
   const procedureColorMap = useMemo(
     () => getProcedureColorMap(uniq(filteredData.map((x) => x.procedureName))),
-    [processed, isByProcedure]
+    [processed, isByProcedure],
   );
 
   const handleToggle = () => {
@@ -167,7 +167,7 @@ const GraphicalAnalysis = (props: Props) => {
   }, [cat]);
 
   const hasDataRelatedToPWG = geneData.some(
-    (item) => item.projectName === "PWG"
+    (item) => item.projectName === "PWG",
   );
 
   if (geneData.length === 0 && isGeneError) {
@@ -205,8 +205,8 @@ const GraphicalAnalysis = (props: Props) => {
               setCat({ type: el.target.value as CatType });
             }}
           >
-            {options.map(({ label, category }) => (
-              <option key={category} value={category}>
+            {options.map(({ label, category }, index) => (
+              <option key={category} value={category} key={index}>
                 {label}
               </option>
             ))}

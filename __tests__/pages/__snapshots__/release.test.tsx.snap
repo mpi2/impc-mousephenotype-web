@@ -1,0 +1,2221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Release Notes page renders correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+    style="max-width: 1240px;"
+  >
+    <div
+      class="card"
+    >
+      <p
+        class="small caps mb-2 primary"
+        style="letter-spacing: 0.1rem;"
+      >
+        RELEASE NOTES
+      </p>
+      <h1
+        class="h1 mb-2"
+      >
+        IMPC Data Release 
+        22.1
+         Notes
+      </h1>
+      <p
+        class="grey mb-3"
+      >
+        11 December 2024
+      </p>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col-lg-6"
+        >
+          <h3
+            class="mb-0 mt-3 mb-2"
+          >
+            Summary
+          </h3>
+          <div
+            style="display: grid; grid-template-columns: 1fr 1fr;"
+          >
+            <span
+              class="grey"
+            >
+              Number of phenotyped genes
+              : 
+            </span>
+            <strong>
+              9,073
+            </strong>
+          </div>
+          <div
+            style="display: grid; grid-template-columns: 1fr 1fr;"
+          >
+            <span
+              class="grey"
+            >
+              Number of phenotyped mutant lines
+              : 
+            </span>
+            <strong>
+              9,774
+            </strong>
+          </div>
+          <div
+            style="display: grid; grid-template-columns: 1fr 1fr;"
+          >
+            <span
+              class="grey"
+            >
+              Number of phenotype calls
+              : 
+            </span>
+            <strong>
+              111,485
+            </strong>
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <h3
+            class="mb-0 mt-3 mb-2"
+          >
+            Data access
+          </h3>
+          <div
+            class="mb-1"
+          >
+            <a
+              class="link orange-dark "
+              href="https://www.mousephenotype.org/help/non-programmatic-data-access"
+            >
+              FTP interface 
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-arrow-up-right-from-square fa-sm grey"
+                data-icon="arrow-up-right-from-square"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a
+              class="link orange-dark"
+              href="https://www.mousephenotype.org/help/programmatic-data-access"
+            >
+              RESTful interfaces 
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-arrow-up-right-from-square fa-sm grey"
+                data-icon="arrow-up-right-from-square"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span
+          class="grey"
+        >
+          Statistical package
+          : 
+        </span>
+        <strong>
+          OpenStats (1.18.0)
+        </strong>
+      </div>
+      <div>
+        <span
+          class="grey"
+        >
+          Genome Assembly
+          : 
+        </span>
+        <strong>
+          Mus musculus (GRCm38)
+        </strong>
+      </div>
+      <h3
+        class="mb-0 mt-5 mb-2"
+      >
+        Highlights
+      </h3>
+      <p>
+        <strong>
+          Release notes
+        </strong>
+      </p>
+      
+
+      <p>
+        Represents a minor data release.
+      </p>
+      
+
+      <p>
+        This release:
+      </p>
+      
+
+      <ul>
+        
+
+        <li>
+          Removes a number of duplicated images.
+        </li>
+        
+
+        <li>
+          In all other respects the release is identical to DR22.0.
+        </li>
+        
+
+      </ul>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Total number of lines and specimens in DR 
+        22.1
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  Phenotyping Center
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Mutant Lines
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Baseline Mice
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Mutant Mice
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span>
+                  BCM
+                </span>
+              </td>
+              <td>
+                <span>
+                  1,215
+                </span>
+              </td>
+              <td>
+                <span>
+                  9,694
+                </span>
+              </td>
+              <td>
+                <span>
+                  36,076
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  CCP-IMG
+                </span>
+              </td>
+              <td>
+                <span>
+                  383
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,954
+                </span>
+              </td>
+              <td>
+                <span>
+                  7,077
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  HMGU
+                </span>
+              </td>
+              <td>
+                <span>
+                  538
+                </span>
+              </td>
+              <td>
+                <span>
+                  7,617
+                </span>
+              </td>
+              <td>
+                <span>
+                  10,739
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  ICS
+                </span>
+              </td>
+              <td>
+                <span>
+                  239
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,619
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,882
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  JAX
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,128
+                </span>
+              </td>
+              <td>
+                <span>
+                  15,851
+                </span>
+              </td>
+              <td>
+                <span>
+                  59,734
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  KMPC
+                </span>
+              </td>
+              <td>
+                <span>
+                  103
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,127
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,906
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  MARC
+                </span>
+              </td>
+              <td>
+                <span>
+                  233
+                </span>
+              </td>
+              <td>
+                <span>
+                  1,858
+                </span>
+              </td>
+              <td>
+                <span>
+                  3,588
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  MRC Harwell
+                </span>
+              </td>
+              <td>
+                <span>
+                  846
+                </span>
+              </td>
+              <td>
+                <span>
+                  7,523
+                </span>
+              </td>
+              <td>
+                <span>
+                  20,700
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  RBRC
+                </span>
+              </td>
+              <td>
+                <span>
+                  116
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,314
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,687
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  TCP
+                </span>
+              </td>
+              <td>
+                <span>
+                  778
+                </span>
+              </td>
+              <td>
+                <span>
+                  9,539
+                </span>
+              </td>
+              <td>
+                <span>
+                  31,647
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  UC Davis
+                </span>
+              </td>
+              <td>
+                <span>
+                  1,575
+                </span>
+              </td>
+              <td>
+                <span>
+                  9,597
+                </span>
+              </td>
+              <td>
+                <span>
+                  39,873
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  WTSI
+                </span>
+              </td>
+              <td>
+                <span>
+                  1,621
+                </span>
+              </td>
+              <td>
+                <span>
+                  5,364
+                </span>
+              </td>
+              <td>
+                <span>
+                  18,660
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper "
+      />
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Experimental data and quality checks
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Data Type
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  QC Passed Data Points
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-down sortIcon"
+                    data-icon="caret-down"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span>
+                  time series *
+                </span>
+              </td>
+              <td>
+                <span>
+                  28,688,694
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  categorical 
+                </span>
+              </td>
+              <td>
+                <span>
+                  27,569,636
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  unidimensional 
+                </span>
+              </td>
+              <td>
+                <span>
+                  24,085,684
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  ontological *
+                </span>
+              </td>
+              <td>
+                <span>
+                  2,025,264
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  image record *
+                </span>
+              </td>
+              <td>
+                <span>
+                  834,196
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  text *
+                </span>
+              </td>
+              <td>
+                <span>
+                  643,552
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper "
+      />
+      <span
+        class="small"
+      >
+        * Excluded from statistical analysis.
+      </span>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Distribution of phenotype annotations
+      </h2>
+      <div
+        style="position: relative; height: 600px;"
+      >
+        <canvas
+          height="0"
+          role="img"
+          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+          width="0"
+        />
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Production status
+      </h2>
+      <h3>
+        Overall
+      </h3>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col-lg-6"
+        >
+          <h4>
+            ES Cell Null Lines
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <h4>
+            ES Cell Conditional Lines
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col-lg-6"
+        >
+          <h4>
+            Crispr Null Lines
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <h4>
+            Crispr Conditional Lines
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col"
+        >
+          <h4>
+            Phenotyping
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+      <h3>
+        By Center
+      </h3>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col-lg-6"
+        >
+          <h4>
+            ES Cell Null Lines
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <h4>
+            ES Cell Conditional Lines
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col-lg-6"
+        >
+          <h4>
+            Crispr Null Lines
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <h4>
+            Crispr Conditional Lines
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="mb-4 row"
+      >
+        <div
+          class="col"
+        >
+          <h4>
+            Phenotyping
+          </h4>
+          <div
+            style="position: relative; height: 400px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+      <p>
+        More charts and status information are available from our mouse tracking service 
+        <a
+          class="link orange-dark"
+        >
+          GenTaR
+        </a>
+        .
+      </p>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Phenotype associations
+      </h2>
+      <div
+        style="position: relative; height: 600px;"
+      >
+        <canvas
+          height="0"
+          role="img"
+          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+          width="0"
+        />
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Trends
+      </h2>
+      <div
+        style="display: flex; align-items: center; flex-direction: column;"
+      >
+        <b>
+          Genes/Mutant Lines/MP Calls
+        </b>
+        <span
+          class="small grey"
+        >
+          By Data Release
+        </span>
+      </div>
+      <div
+        style="position: relative; height: 400px;"
+      >
+        <canvas
+          height="0"
+          role="img"
+          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+          width="0"
+        />
+      </div>
+      <div
+        class="mt-4"
+        style="display: flex; align-items: center; flex-direction: column;"
+      >
+        <b>
+          Data Points by Data Release
+        </b>
+      </div>
+      <div
+        style="position: relative; height: 400px;"
+      >
+        <canvas
+          height="0"
+          role="img"
+          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+          width="0"
+        />
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Previous releases
+      </h2>
+      <ul>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="/release/22.0"
+            target="_blank"
+          >
+            Release 
+            22.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-21.1.pdf"
+            target="_blank"
+          >
+            Release 
+            21.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-21.0.pdf"
+            target="_blank"
+          >
+            Release 
+            21.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-20.1.pdf"
+            target="_blank"
+          >
+            Release 
+            20.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-20.0.pdf"
+            target="_blank"
+          >
+            Release 
+            20.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-19.1.pdf"
+            target="_blank"
+          >
+            Release 
+            19.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-19.0.pdf"
+            target="_blank"
+          >
+            Release 
+            19.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-18.0.pdf"
+            target="_blank"
+          >
+            Release 
+            18.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-17.0.pdf"
+            target="_blank"
+          >
+            Release 
+            17.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-16.0.pdf"
+            target="_blank"
+          >
+            Release 
+            16.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-15.1.pdf"
+            target="_blank"
+          >
+            Release 
+            15.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-15.0.pdf"
+            target="_blank"
+          >
+            Release 
+            15.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-14.0.pdf"
+            target="_blank"
+          >
+            Release 
+            14.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-13.0.pdf"
+            target="_blank"
+          >
+            Release 
+            13.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-12.0.pdf"
+            target="_blank"
+          >
+            Release 
+            12.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-11.0.pdf"
+            target="_blank"
+          >
+            Release 
+            11.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-10.1.pdf"
+            target="_blank"
+          >
+            Release 
+            10.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-10.0.pdf"
+            target="_blank"
+          >
+            Release 
+            10.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-9.2.pdf"
+            target="_blank"
+          >
+            Release 
+            9.2
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-9.1.pdf"
+            target="_blank"
+          >
+            Release 
+            9.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-8.0.pdf"
+            target="_blank"
+          >
+            Release 
+            8.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-7.0.pdf"
+            target="_blank"
+          >
+            Release 
+            7.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-6.1.pdf"
+            target="_blank"
+          >
+            Release 
+            6.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-6.0.pdf"
+            target="_blank"
+          >
+            Release 
+            6.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-5.0.pdf"
+            target="_blank"
+          >
+            Release 
+            5.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-4.3.pdf"
+            target="_blank"
+          >
+            Release 
+            4.3
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-4.2.pdf"
+            target="_blank"
+          >
+            Release 
+            4.2
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-4.0.pdf"
+            target="_blank"
+          >
+            Release 
+            4.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-3.4.pdf"
+            target="_blank"
+          >
+            Release 
+            3.4
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-3.3.pdf"
+            target="_blank"
+          >
+            Release 
+            3.3
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-3.2.pdf"
+            target="_blank"
+          >
+            Release 
+            3.2
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-3.1.pdf"
+            target="_blank"
+          >
+            Release 
+            3.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-3.0.pdf"
+            target="_blank"
+          >
+            Release 
+            3.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-2.0.pdf"
+            target="_blank"
+          >
+            Release 
+            2.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-1.1.pdf"
+            target="_blank"
+          >
+            Release 
+            1.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-1.0.pdf"
+            target="_blank"
+          >
+            Release 
+            1.0
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

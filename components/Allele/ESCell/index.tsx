@@ -56,7 +56,7 @@ const ESCell = ({
   }
 
   return (
-    <Card id="esCell">
+    <Card id="esCell" data-testid="es-cell-section">
       <h2>ES Cells</h2>
       {!data && data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>

@@ -19,6 +19,7 @@ import {
   PaginationControls,
 } from "@/components";
 import Link from "next/link";
+import { kebabCase } from "lodash";
 
 const geneMap = new Map();
 
@@ -121,6 +122,7 @@ const HistopathLandingPage = () => {
       const allele = gene.allelesWithTissue[0].match(/\<(.+)\>/)[1];
       return (
         <a
+          title="fixed tissue link"
           className="link primary"
           href={`/data/alleles/${mgiID}/${allele}#mice`}
         >
@@ -368,7 +370,10 @@ const HistopathLandingPage = () => {
               >
                 <thead>
                   <tr>
-                    <th onClick={sortByGeneSymbol}>
+                    <th
+                      onClick={sortByGeneSymbol}
+                      data-testid="gene-symbol-sort"
+                    >
                       <div
                         className={styles.header}
                         style={{ marginRight: "5px" }}
@@ -395,7 +400,11 @@ const HistopathLandingPage = () => {
                       />
                     </th>
                     {histopathData.columns.map((header, index) => (
-                      <th key={header} onClick={() => sortByHeader(index)}>
+                      <th
+                        key={header}
+                        onClick={() => sortByHeader(index)}
+                        data-testid={`${kebabCase(header)}-header`}
+                      >
                         <div
                           className={classNames(styles.header, styles.top, {
                             [styles.eyeOpticNerveCol]:
@@ -440,8 +449,8 @@ const HistopathLandingPage = () => {
                 </tfoot>
                 <tbody>
                   {paginatedData.map((gene) => (
-                    <tr key={gene.id}>
-                      <td className={styles.geneCell}>
+                    <tr key={gene.id} data-testid="result-rows">
+                      <td className={styles.geneCell} data-testid="gene-symbol">
                         <i
                           dangerouslySetInnerHTML={{
                             __html: rewriteWithQuery(gene.id),

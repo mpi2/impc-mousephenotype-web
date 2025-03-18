@@ -225,11 +225,1888 @@ exports[`Phenotype page renders correctly 1`] = `
          
         decreased large unstained cell number
       </h2>
+      <p>
+        Total number of significant genotype-phenotype associations: 
+        15
+      </p>
       <div
-        class="fade alert alert-primary show"
-        role="alert"
+        class="buttonsWrapper top withControls"
+        data-testid="top-controls-wrapper"
       >
-        No data available for this section
+        <div
+          class="additionalWrapper"
+        >
+          <input
+            aria-label="Filter by parameters"
+            class="bg-white form-control"
+            id="parameterFilter"
+            placeholder="Search "
+            style="display: inline-block; width: 200px; margin-right: 2rem;"
+            type="text"
+          />
+        </div>
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-top"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="top-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="top-page-1"
+          >
+            <button
+              class="pagNavBtn active"
+              data-testid="top-page-1-btn"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="top-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="top-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
+      </div>
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  Gene / allele
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="10.833333333333334%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Phenotype
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Supporting data
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Zygosity
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="5.833333333333333%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Sex
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Life stage
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="12.5%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Parameter
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="12.5%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Phenotyping Center
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Most significant P-value
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:88121"
+                    >
+                      <i>
+                        Avp
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Avp
+                      <sup>
+                        tm1b(EUCOMM)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:88121&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  heterozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  MRC
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    7.96
+                    x10
+                    <sup>
+                      -6
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1330302"
+                    >
+                      <i>
+                        Dyrk1b
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Dyrk1b
+                      <sup>
+                        tm1b(EUCOMM)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1330302&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  heterozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) differential count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                ICS
+                <br />
+                <span
+                  class="small"
+                >
+                  Phenomin
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    7.55
+                    x10
+                    <sup>
+                      -7
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1330301"
+                    >
+                      <i>
+                        Dyrk2
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Dyrk2
+                      <sup>
+                        em1(IMPC)Ics
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1330301&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  heterozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) differential count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                ICS
+                <br />
+                <span
+                  class="small"
+                >
+                  Phenomin
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    1.31
+                    x10
+                    <sup>
+                      -6
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1926146"
+                    >
+                      <i>
+                        Ecrg4
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Ecrg4
+                      <sup>
+                        tm1b(EUCOMM)Hmgu
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1926146&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                ICS
+                <br />
+                <span
+                  class="small"
+                >
+                  Phenomin
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    9.63
+                    x10
+                    <sup>
+                      -5
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:3583900"
+                    >
+                      <i>
+                        Elmod1
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Elmod1
+                      <sup>
+                        tm1b(EUCOMM)Hmgu
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:3583900&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  BaSH
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    5.93
+                    x10
+                    <sup>
+                      -5
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:95479"
+                    >
+                      <i>
+                        Fabp1
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Fabp1
+                      <sup>
+                        tm1b(EUCOMM)Hmgu
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:95479&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  BaSH
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    2.43
+                    x10
+                    <sup>
+                      -6
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1342542"
+                    >
+                      <i>
+                        Ikzf3
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Ikzf3
+                      <sup>
+                        tm1(KOMP)Vlcg
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1342542&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                RBRC
+                <br />
+                <span
+                  class="small"
+                >
+                  RBRC
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    3.32
+                    x10
+                    <sup>
+                      -5
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1298377"
+                    >
+                      <i>
+                        Itgae
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Itgae
+                      <sup>
+                        tm1b(EUCOMM)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1298377&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  MRC
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    3.3
+                    x10
+                    <sup>
+                      -6
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:2442188"
+                    >
+                      <i>
+                        Pdpr
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Pdpr
+                      <sup>
+                        tm1b(EUCOMM)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:2442188&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                ICS
+                <br />
+                <span
+                  class="small"
+                >
+                  Phenomin
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    1.69
+                    x10
+                    <sup>
+                      -7
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:108022"
+                    >
+                      <i>
+                        Pkn1
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Pkn1
+                      <sup>
+                        tm1b(KOMP)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:108022&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  MRC
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    2.52
+                    x10
+                    <sup>
+                      -7
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper withControls"
+      >
+        <div
+          class="additionalWrapper bottomControls"
+        >
+          <div
+            class="grey"
+            style="display: flex; gap: 0.5rem; align-items: center;"
+          >
+            Download data as:
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               TSV
+            </button>
+             
+            <button
+              class="btn impc-secondary-button small"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-download fa-sm "
+                data-icon="download"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  fill="currentColor"
+                />
+              </svg>
+               XLS
+            </button>
+          </div>
+        </div>
+        <div
+          class="bottomPaginationControls"
+        >
+          <div
+            style="display: flex; align-items: center;"
+          >
+            Rows per page: 
+            <select
+              aria-label="rows per page selector"
+            >
+              <option
+                value="10"
+              >
+                10
+              </option>
+              <option
+                value="20"
+              >
+                20
+              </option>
+              <option
+                value="30"
+              >
+                30
+              </option>
+              <option
+                value="50"
+              >
+                50
+              </option>
+              <option
+                value="100"
+              >
+                100
+              </option>
+            </select>
+          </div>
+        </div>
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-bottom"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="bottom-page-1"
+          >
+            <button
+              class="pagNavBtn active"
+              data-testid="bottom-page-1-btn"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
       </div>
     </div>
     <div

@@ -1,0 +1,548 @@
+[
+  {
+    "id": "671781ec29b4d8a76f9a2dc6",
+    "alleleAccessionId": "MGI:5548659",
+    "alleleName": "targeted mutation 1.1, Velocigene",
+    "alleleSymbol": "1700003F12Rik<tm1.1(KOMP)Vlcg>",
+    "classificationTag": null,
+    "colonyId": "UCD-10243A-E8-2-1",
+    "dataType": "line",
+    "geneSymbol": "1700003F12Rik",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal survival",
+        "id": "MP:0010769"
+      },
+      {
+        "name": "preweaning lethality",
+        "id": "MP:0010770"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+    "metadataValues": [
+      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous|ProductionCenter = UC Davis"
+    ],
+    "mgiGeneAccessionId": "MGI:1922730",
+    "parameterName": "Homozygous females viability",
+    "parameterStableId": "IMPC_VIA_064_001",
+    "parameterStableKey": 72010,
+    "phenotypeSex": [
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "preweaning lethality, complete penetrance",
+        "id": "MP:0011100"
+      },
+      {
+        "name": "preweaning lethality, incomplete penetrance",
+        "id": "MP:0011110"
+      }
+    ],
+    "procedureGroup": "IMPC_VIA",
+    "procedureName": "Viability Primary Screen",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureStableKey": 1267,
+    "productionCentre": null,
+    "projectName": "DTCC",
+    "reportedEffectSize": 1.0,
+    "reportedPValue": null,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "female",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "preweaning lethality, incomplete penetrance",
+      "id": "MP:0011110"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Supplied as data",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "32dbf8977406a2692e22be3b17f4ff8b",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": null,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": null,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": null,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": null,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "mortality/aging",
+        "id": "MP:0010768"
+      }
+    ]
+  },
+  {
+    "id": "67178be7e94939ad6b3995ad",
+    "alleleAccessionId": "MGI:5548659",
+    "alleleName": "targeted mutation 1.1, Velocigene",
+    "alleleSymbol": "1700003F12Rik<tm1.1(KOMP)Vlcg>",
+    "classificationTag": null,
+    "colonyId": "UCD-10243A-E8-2-1",
+    "dataType": "line",
+    "geneSymbol": "1700003F12Rik",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal survival",
+        "id": "MP:0010769"
+      },
+      {
+        "name": "preweaning lethality",
+        "id": "MP:0010770"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+    "metadataValues": [
+      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous|ProductionCenter = UC Davis"
+    ],
+    "mgiGeneAccessionId": "MGI:1922730",
+    "parameterName": "Homozygous animals viability",
+    "parameterStableId": "IMPC_VIA_067_001",
+    "parameterStableKey": 72013,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "preweaning lethality, complete penetrance",
+        "id": "MP:0011100"
+      },
+      {
+        "name": "preweaning lethality, incomplete penetrance",
+        "id": "MP:0011110"
+      }
+    ],
+    "procedureGroup": "IMPC_VIA",
+    "procedureName": "Viability Primary Screen",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureStableKey": 1267,
+    "productionCentre": null,
+    "projectName": "DTCC",
+    "reportedEffectSize": 1.0,
+    "reportedPValue": null,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "preweaning lethality, incomplete penetrance",
+      "id": "MP:0011110"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Supplied as data",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "5e0629cf0c49797d9f2f6527086ab9f1",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": null,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": null,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": null,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": null,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "mortality/aging",
+        "id": "MP:0010768"
+      }
+    ]
+  },
+  {
+    "id": "67178c7a43df4059a619cc99",
+    "alleleAccessionId": "MGI:5548659",
+    "alleleName": "targeted mutation 1.1, Velocigene",
+    "alleleSymbol": "1700003F12Rik<tm1.1(KOMP)Vlcg>",
+    "classificationTag": null,
+    "colonyId": "UCD-10243A-E8-2-1",
+    "dataType": "line",
+    "geneSymbol": "1700003F12Rik",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal survival",
+        "id": "MP:0010769"
+      },
+      {
+        "name": "preweaning lethality",
+        "id": "MP:0010770"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+    "metadataValues": [
+      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous|ProductionCenter = UC Davis"
+    ],
+    "mgiGeneAccessionId": "MGI:1922730",
+    "parameterName": "Homozygous animals viability",
+    "parameterStableId": "IMPC_VIA_067_001",
+    "parameterStableKey": 72013,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "preweaning lethality, complete penetrance",
+        "id": "MP:0011100"
+      },
+      {
+        "name": "preweaning lethality, incomplete penetrance",
+        "id": "MP:0011110"
+      }
+    ],
+    "procedureGroup": "IMPC_VIA",
+    "procedureName": "Viability Primary Screen",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureStableKey": 1267,
+    "productionCentre": null,
+    "projectName": "DTCC",
+    "reportedEffectSize": 1.0,
+    "reportedPValue": null,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "preweaning lethality, incomplete penetrance",
+      "id": "MP:0011110"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Supplied as data",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "5e0629cf0c49797d9f2f6527086ab9f1",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": null,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": null,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": null,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": null,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "mortality/aging",
+        "id": "MP:0010768"
+      }
+    ]
+  },
+  {
+    "id": "67178fce9764552ef6228f28",
+    "alleleAccessionId": "MGI:5548659",
+    "alleleName": "targeted mutation 1.1, Velocigene",
+    "alleleSymbol": "1700003F12Rik<tm1.1(KOMP)Vlcg>",
+    "classificationTag": null,
+    "colonyId": "UCD-10243A-E8-2-1",
+    "dataType": "line",
+    "geneSymbol": "1700003F12Rik",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal survival",
+        "id": "MP:0010769"
+      },
+      {
+        "name": "preweaning lethality",
+        "id": "MP:0010770"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+    "metadataValues": [
+      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous|ProductionCenter = UC Davis"
+    ],
+    "mgiGeneAccessionId": "MGI:1922730",
+    "parameterName": "Homozygous females viability",
+    "parameterStableId": "IMPC_VIA_064_001",
+    "parameterStableKey": 72010,
+    "phenotypeSex": [
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "preweaning lethality, complete penetrance",
+        "id": "MP:0011100"
+      },
+      {
+        "name": "preweaning lethality, incomplete penetrance",
+        "id": "MP:0011110"
+      }
+    ],
+    "procedureGroup": "IMPC_VIA",
+    "procedureName": "Viability Primary Screen",
+    "procedureStableId": "IMPC_VIA_002",
+    "procedureStableKey": 1267,
+    "productionCentre": null,
+    "projectName": "DTCC",
+    "reportedEffectSize": 1.0,
+    "reportedPValue": null,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "female",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "preweaning lethality, incomplete penetrance",
+      "id": "MP:0011110"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Supplied as data",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "32dbf8977406a2692e22be3b17f4ff8b",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": null,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": null,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": null,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": null,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "mortality/aging",
+        "id": "MP:0010768"
+      }
+    ]
+  }
+]

@@ -1,25 +1,31 @@
 import { useEffect, useRef } from "react";
-import { Chart as ChartJS, ChartData, ChartDataset, ChartType, DefaultDataPoint } from 'chart.js';
+import {
+  Chart as ChartJS,
+  ChartData,
+  ChartDataset,
+  ChartType,
+  DefaultDataPoint,
+} from "chart.js";
 
 type BodyWeightLinePlotProps<
   TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
-  TLabel = unknown
+  TLabel = unknown,
 > = {
   data: ChartData<TType, TData, TLabel>;
   options?: Record<string, any>;
-  height?: number,
-  width?: number,
+  height?: number;
+  width?: number;
 };
 
 export function setDatasets<
   TType extends ChartType = ChartType,
   TData = DefaultDataPoint<TType>,
-  TLabel = unknown
+  TLabel = unknown,
 >(
   currentData: ChartData<TType, TData, TLabel>,
   nextDatasets: ChartDataset<TType, TData>[],
-  datasetIdKey = 'label'
+  datasetIdKey = "label",
 ) {
   const addedDatasets: ChartDataset<TType, TData>[] = [];
 
@@ -28,7 +34,7 @@ export function setDatasets<
       // given the new set, find it's current match
       const currentDataset = currentData.datasets.find(
         (dataset: Record<string, unknown>) =>
-          dataset[datasetIdKey] === nextDataset[datasetIdKey]
+          dataset[datasetIdKey] === nextDataset[datasetIdKey],
       );
 
       // There is no original to update, so simply add new one
@@ -45,25 +51,19 @@ export function setDatasets<
       Object.assign(currentDataset, nextDataset);
 
       return currentDataset;
-    }
+    },
   );
 }
 
-
 function BodyWeightLinePlot(props: BodyWeightLinePlotProps, ref) {
-  const {
-    data,
-    options,
-    width = 300,
-    height = 150,
-  } = props;
+  const { data, options, width = 300, height = 150 } = props;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<ChartJS | null>();
 
   const renderChart = () => {
     if (!canvasRef.current) return;
     chartRef.current = new ChartJS(canvasRef.current, {
-      type: 'lineWithErrorBars',
+      type: "lineWithErrorBars",
       data,
       options: options && { ...options },
     });
@@ -77,7 +77,7 @@ function BodyWeightLinePlot(props: BodyWeightLinePlotProps, ref) {
 
   useEffect(() => {
     if (chartRef.current && options) {
-      Object.assign(chartRef.current.options, options)
+      Object.assign(chartRef.current.options, options);
     }
   }, [options]);
 
@@ -85,7 +85,7 @@ function BodyWeightLinePlot(props: BodyWeightLinePlotProps, ref) {
     if (chartRef.current && data.datasets) {
       setDatasets(chartRef.current.config.data, data.datasets);
     }
-  }, [ data.datasets]);
+  }, [data.datasets]);
 
   useEffect(() => {
     if (chartRef.current) {
@@ -105,13 +105,13 @@ function BodyWeightLinePlot(props: BodyWeightLinePlotProps, ref) {
 
   return (
     <canvas
+      data-testid="body-weight-canvas"
       ref={canvasRef}
-      role='img'
+      role="img"
       height={height}
       width={width}
-    >
-    </canvas>
+    ></canvas>
   );
-};
+}
 
 export default BodyWeightLinePlot;

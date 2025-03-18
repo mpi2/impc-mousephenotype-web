@@ -1,0 +1,2010 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image Downloader Page renders without crashing 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <span
+          class="subheadingSection primary"
+        >
+          <a
+            class="mb-3"
+            href="/genes/MGI:1929293#images"
+            style="text-transform: none; font-weight: normal; letter-spacing: normal; font-size: 1.15rem;"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to
+             
+            <i>
+              Cib2
+            </i>
+          </a>
+        </span>
+      </div>
+      <h1
+        class="mb-4 mt-2"
+        style="display: flex; gap: 1rem;"
+      >
+        <strong>
+          Auditory Brain Stem Response
+        </strong>
+         
+        / 
+        Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+      </h1>
+      <h2>
+        Mutant Files
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  Allele Symbol
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Age
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Sex
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Zygosity
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Sample group
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Procedure
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Parameter
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              />
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span>
+                  <i>
+                    Cib2
+                    <sup>
+                      tm1b(EUCOMM)Wtsi
+                    </sup>
+                  </i>
+                </span>
+              </td>
+              <td>
+                <span>
+                  13
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  experimental
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/c6caec2ba39d0077b80d05afcb90581215fa2db62a82a534116681a909276bec"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  <i>
+                    Cib2
+                    <sup>
+                      tm1b(EUCOMM)Wtsi
+                    </sup>
+                  </i>
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  experimental
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/00fd0ba740c8057b4c484f47ce8b6d29d2757e76caaa34558185ab96d32c8e42"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  <i>
+                    Cib2
+                    <sup>
+                      tm1b(EUCOMM)Wtsi
+                    </sup>
+                  </i>
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  experimental
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/680a32a40b8e82063da2cbed658018a8795b2285fefb32730aca7c21a16b7b24"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper "
+      />
+      <h2
+        class="mt-2"
+      >
+        Control Files
+      </h2>
+      <div
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      >
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-top"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="top-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="top-page-1"
+          >
+            <button
+              class="pagNavBtn active"
+              data-testid="top-page-1-btn"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="top-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-3"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="top-page-3-btn"
+            >
+              3
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-4"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="top-page-4-btn"
+            >
+              4
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-5"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="top-page-5-btn"
+            >
+              5
+            </button>
+          </li>
+          <li
+            class="page-item disabled"
+          >
+            <span
+              class="page-link"
+            >
+              ...
+            </span>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-last-page"
+          >
+            <button
+              aria-label="Previous"
+              class="pagNavBtn last-page"
+              data-testid="top-last-page-btn"
+            >
+              <span
+                aria-hidden="true"
+              >
+                40
+              </span>
+            </button>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="top-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
+      </div>
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Zygosity
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Age
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Sex
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Procedure
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Parameter
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              />
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/5f3c2980f4a63dbf8d7627c8ac25c648927e4937f63d133f1bed6ebafb919caa"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/bdd6d19cfd7667a8d46ec678abcc6135ee5f87269292a55fab80ea493294f988"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  13
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/fdcf0d31f114f223482700ffdc0c0541898ead8336e225d8fff09d6c7b6e4300"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/146a3b9788d523467997635caad9f82323a6a1209544377447eb0248c624ed63"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/856f03b2e039ac51302a086519ef06d8753a1b3ad10fdfa7a82f3b0b6da0402b"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/5dd252130cbfa6b45d4eda0def44a26084281bb4844c90daf49d0f8690c6eb5a"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/a0bdd2169b13cb559b419172000384b6a90b7b88604ad307f0f5771848b1f3b6"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/12bdcfb5bcfe1168a987556f0796aaf0d607731f7e7a72120f07052e38e97bed"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/1ac8648aaedde9f503d2f2a6bc0c4097b46d44a451a3cbc85367129e7bd2618f"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span>
+                  14
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Auditory Brain Stem Response
+                </span>
+              </td>
+              <td>
+                <span>
+                  Click-evoked + 6 to 30kHz tone waveforms (pdf format)
+                </span>
+              </td>
+              <td>
+                <a
+                  class="impc-secondary-button btn"
+                  href="https://api.mousephenotype.org/tracker/media/getfile/3ef8345336b538239f7b1d94ea2692f35a9247d1c1bfae5eb53230d4cbae5352"
+                  role="button"
+                  tabindex="0"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-download "
+                    data-icon="download"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                   
+                  <span>
+                    Download
+                  </span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="buttonsWrapper "
+      >
+        <div
+          class="bottomPaginationControls"
+        >
+          <div
+            style="display: flex; align-items: center;"
+          >
+            Rows per page: 
+            <select
+              aria-label="rows per page selector"
+            >
+              <option
+                value="10"
+              >
+                10
+              </option>
+              <option
+                value="20"
+              >
+                20
+              </option>
+              <option
+                value="30"
+              >
+                30
+              </option>
+              <option
+                value="50"
+              >
+                50
+              </option>
+              <option
+                value="100"
+              >
+                100
+              </option>
+            </select>
+          </div>
+        </div>
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-bottom"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="bottom-page-1"
+          >
+            <button
+              class="pagNavBtn active"
+              data-testid="bottom-page-1-btn"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-3"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-3-btn"
+            >
+              3
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-4"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-4-btn"
+            >
+              4
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-5"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-5-btn"
+            >
+              5
+            </button>
+          </li>
+          <li
+            class="page-item disabled"
+          >
+            <span
+              class="page-link"
+            >
+              ...
+            </span>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-last-page"
+          >
+            <button
+              aria-label="Previous"
+              class="pagNavBtn last-page"
+              data-testid="bottom-last-page-btn"
+            >
+              <span
+                aria-hidden="true"
+              >
+                40
+              </span>
+            </button>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
