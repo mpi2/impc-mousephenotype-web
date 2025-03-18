@@ -22,7 +22,7 @@ exports[`Embryo landing page renders correctly 1`] = `
           </a>
           <a
             class="tab"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -134,21 +134,24 @@ exports[`Embryo landing page renders correctly 1`] = `
             class="col-md-8 col-12"
           >
             <p>
-              Up to one third of homozygous knockout lines are lethal, which means no homozygous mice or less than expected are observed past the weaning stage (IMPC 
+              Up to one third of homozygous knockout lines are lethal, which means no homozygous mice or less than expected are observed past the weaning stage (IMPC
+               
               <a
                 class="link primary"
                 href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
               >
                 Viability Primary Screen procedure
               </a>
-              ). Early death may occur during embryonic development or soon after birth, during the pre-weaning stage. For this reason, the IMPC established a 
+              ). Early death may occur during embryonic development or soon after birth, during the pre-weaning stage. For this reason, the IMPC established a
+               
               <a
                 class="link primary"
                 href="https://beta.mousephenotype.org/impress"
               >
                 systematic embryonic phenotyping pipeline
               </a>
-               to morphologically evaluate mutant embryos to ascertain the primary perturbations that cause early death and thus gain insight into gene function.
+               
+              to morphologically evaluate mutant embryos to ascertain the primary perturbations that cause early death and thus gain insight into gene function.
             </p>
           </div>
         </div>
@@ -215,7 +218,8 @@ exports[`Embryo landing page renders correctly 1`] = `
           >
             IMPC_VIA_001
           </a>
-           and 
+           and
+           
           <a
             class="link primary"
             href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1188&pipeID=7#Parameters"
@@ -248,7 +252,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               class="tableWrapper"
             >
               <table
-                class="table striped undefined table table-bordered"
+                class="table striped table-sortable-centered table table-bordered"
               >
                 <thead>
                   <tr>
@@ -258,7 +262,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                     >
                       <button
                         class="inlineButton headerButton disabled"
-                        style="font-weight: normal;"
+                        style="font-weight: inherit;"
                       >
                         Category
                          
@@ -270,7 +274,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                     >
                       <button
                         class="inlineButton headerButton disabled"
-                        style="font-weight: normal;"
+                        style="font-weight: inherit;"
                       >
                         Lines
                          
@@ -285,23 +289,33 @@ exports[`Embryo landing page renders correctly 1`] = `
                       Viable
                     </td>
                     <td>
-                      4897
+                      5643
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      Lethal
+                      <a
+                        class="link primary"
+                        href="/phenotypes/MP:0011100"
+                      >
+                        Lethal
+                      </a>
                     </td>
                     <td>
-                      1859
+                      1972
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      Subviable
+                      <a
+                        class="link primary"
+                        href="/phenotypes/MP:0011110"
+                      >
+                        Subviable
+                      </a>
                     </td>
                     <td>
-                      886
+                      693
                     </td>
                   </tr>
                   <tr>
@@ -325,14 +339,16 @@ exports[`Embryo landing page renders correctly 1`] = `
           class="row"
         >
           <p>
-            Lethal strains are further phenotyped in the 
+            Lethal strains are further phenotyped in the
+             
             <a
               class="link primary"
               href="https://beta.mousephenotype.org/impress"
             >
               embryonic phenotyping pipeline
             </a>
-            . For embryonic lethal and subviable strains, heterozygotes are phenotyped in the IMPC 
+            . For embryonic lethal and subviable strains, heterozygotes are phenotyped in the IMPC
+             
             <a
               class="link primary"
               href="https://beta.mousephenotype.org/impress"
@@ -366,7 +382,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               class="tableWrapper"
             >
               <table
-                class="table striped undefined table table-bordered"
+                class="table striped table-sortable-centered table table-bordered"
               >
                 <thead>
                   <tr>
@@ -376,7 +392,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                     >
                       <button
                         class="inlineButton headerButton disabled"
-                        style="font-weight: normal;"
+                        style="font-weight: inherit;"
                       >
                         Category
                          
@@ -388,7 +404,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                     >
                       <button
                         class="inlineButton headerButton disabled"
-                        style="font-weight: normal;"
+                        style="font-weight: inherit;"
                       >
                         Lines
                          
@@ -398,6 +414,78 @@ exports[`Embryo landing page renders correctly 1`] = `
                   <tr />
                 </thead>
                 <tbody>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Early lethal
+                      </button>
+                    </td>
+                    <td>
+                      490
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        No data
+                      </button>
+                    </td>
+                    <td>
+                      481
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Late lethal
+                      </button>
+                    </td>
+                    <td>
+                      399
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Not determined
+                      </button>
+                    </td>
+                    <td>
+                      210
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Intermediate lethal
+                      </button>
+                    </td>
+                    <td>
+                      149
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button
+                        class="btn link primary"
+                      >
+                        Conflicting
+                      </button>
+                    </td>
+                    <td>
+                      4
+                    </td>
+                  </tr>
                   <tr>
                     <td
                       colspan="2"
@@ -419,6 +507,7 @@ exports[`Embryo landing page renders correctly 1`] = `
     </div>
     <div
       class="card"
+      id="embryo-data-grid"
     >
       <div
         class="container"
@@ -461,7 +550,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                     class="select__control css-13cymwt-control"
                   >
                     <div
-                      class="select__value-container select__value-container--is-multi css-1fdsijx-ValueContainer"
+                      class="select__value-container select__value-container--is-multi css-16674sh-Component"
                     >
                       <div
                         class="select__placeholder css-1jqq78o-placeholder"
@@ -470,7 +559,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                         Select window of lethality
                       </div>
                       <div
-                        class="select__input-container css-qbdosj-Input"
+                        class="select__input-container css-d9r47t-Component"
                         data-value=""
                       >
                         <input
@@ -495,7 +584,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                       </div>
                     </div>
                     <div
-                      class="select__indicators css-1hb7zxy-IndicatorsContainer"
+                      class="select__indicators css-ny0e4k-Component"
                     >
                       <span
                         class="select__indicator-separator css-1u9des2-indicatorSeparator"
@@ -608,24 +697,6 @@ exports[`Embryo landing page renders correctly 1`] = `
                   </button>
                 </li>
                 <li
-                  class="page-item"
-                >
-                  <button
-                    class="pagNavBtn"
-                  >
-                    4
-                  </button>
-                </li>
-                <li
-                  class="page-item"
-                >
-                  <button
-                    class="pagNavBtn"
-                  >
-                    5
-                  </button>
-                </li>
-                <li
                   class="page-item disabled"
                 >
                   <span
@@ -644,7 +715,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                     <span
                       aria-hidden="true"
                     >
-                      34
+                      30
                     </span>
                   </button>
                 </li>
@@ -711,7 +782,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               <li>
                 <a
                   class="link primary"
-                  href="https://beta.mousephenotype.org/data/embryo/vignettes"
+                  href="embryo/vignettes"
                 >
                   Embryo Vignettes
                 </a>
@@ -727,7 +798,8 @@ exports[`Embryo landing page renders correctly 1`] = `
                  All our results. Reports need to be filtered by a dedicated column, Life Stage (E9.5, E12.5, E15.5 and E18.5). Please check the README file or see documentation here.
               </li>
               <li>
-                Using the REST API (see documentation 
+                Using the REST API (see documentation
+                 
                 <a
                   class="link primary"
                   href="https://www.mousephenotype.org/help/programmatic-data-access/"
@@ -752,6 +824,9 @@ exports[`Embryo landing page renders correctly 1`] = `
             IKMC/IMPC related publications
           </strong>
         </h1>
+        <div>
+          PublicationsList mock
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type EnabledFlags = {
@@ -29,14 +29,14 @@ const listOfFlags: Array<Flag> = [
 ];
 
 export const useQueryFlags = () => {
-  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [flags, setFlags] = useState<EnabledFlags>({
     isNNumbersFootnoteAvailable: false,
     isPleiotropyChartAvailable: false,
   });
   useEffect(() => {
-    const params = router.query;
+    const params = Object.fromEntries(searchParams.entries());
     for (const [key, value] of Object.entries(params)) {
       const flag = listOfFlags.find((flag) => flag.queryParamName === key);
       if (flag) {
@@ -50,6 +50,6 @@ export const useQueryFlags = () => {
         });
       }
     }
-  }, [router.query]);
+  }, [searchParams]);
   return flags;
 };

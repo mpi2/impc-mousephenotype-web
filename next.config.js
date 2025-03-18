@@ -11,6 +11,11 @@ module.exports = {
         permanent: true,
         basePath: false,
       },
+      {
+        source: "/",
+        destination: "/search",
+        permanent: true,
+      },
     ];
   },
   // webpack: (config) => {
@@ -39,4 +44,7 @@ module.exports = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  cacheHandler: require.resolve(
+    "next/dist/server/lib/incremental-cache/file-system-cache.js",
+  ),
 };

@@ -11,20 +11,17 @@ import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlleleEsCell } from "@/models/allele/es-cell";
 
-const ESCell = ({
-  mgiGeneAccessionId,
-  alleleName,
-  setQcData,
-}: {
+type EsCellProps = {
   mgiGeneAccessionId: string;
   alleleName: string;
   setQcData: (any) => void;
-}) => {
+};
+const ESCell = ({ mgiGeneAccessionId, alleleName, setQcData }: EsCellProps) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "es_cell", alleleName],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
+        `/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
       ),
     placeholderData: [],
   });
@@ -56,7 +53,7 @@ const ESCell = ({
   }
 
   return (
-    <Card id="esCell">
+    <Card id="esCell" data-testid="es-cell-section">
       <h2>ES Cells</h2>
       {!data && data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>
@@ -84,7 +81,7 @@ const ESCell = ({
                             (key) =>
                               `${toSentenceCase(key)}: ${
                                 item.qcData[0]?.userQc[key]
-                              }`
+                              }`,
                           )
                           .join(", ")
                       : "No data",
@@ -125,9 +122,9 @@ const ESCell = ({
                 { width: 2, label: "Order / Contact", disabled: true },
               ]}
             >
-              {pageData.map((p) => {
+              {pageData.map((p, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <strong>{p.name}</strong>
                     </td>
@@ -135,8 +132,9 @@ const ESCell = ({
                     <td>{p.parentEsCellLine}</td>
                     <td>{p.ikmcProjectId}</td>
                     <td>
-                      {p.qcData.map(() => (
+                      {p.qcData.map((_, index) => (
                         <a
+                          key={index}
                           href="#"
                           target="_blank"
                           className="link"
@@ -156,8 +154,9 @@ const ESCell = ({
                     </td>
                     <td>{p.associatedProductVectorName}</td>
                     <td>
-                      {p.orders.map(({ orderLink, orderName }) => (
+                      {p.orders.map(({ orderLink, orderName }, index) => (
                         <a
+                          key={index}
                           href={orderLink}
                           target="_blank"
                           className="link primary"

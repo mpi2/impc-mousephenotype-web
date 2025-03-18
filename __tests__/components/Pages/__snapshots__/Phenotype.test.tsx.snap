@@ -22,7 +22,7 @@ exports[`Phenotype page renders correctly 1`] = `
           </a>
           <a
             class="tab__active"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -78,49 +78,156 @@ exports[`Phenotype page renders correctly 1`] = `
       class="card"
     >
       <div
+        class="row"
+      >
+        <div
+          class="nameContainer col-lg-6"
+        >
+          <h1
+            style="margin: 0px;"
+          >
+            <strong>
+              decreased large unstained cell number
+            </strong>
+          </h1>
+        </div>
+        <div
+          class="col-lg-6"
+        >
+          <div
+            class="stats"
+          >
+            <div
+              data-testid="significant-genes"
+            >
+              <p
+                class="secondary h2 mb-0"
+              >
+                15
+              </p>
+              <span
+                class="grey"
+              >
+                significant genes
+              </span>
+            </div>
+            <div
+              data-testid="tested-genes-percentage"
+            >
+              <p
+                class="secondary h2 mb-0"
+              >
+                1.54
+                %
+              </p>
+              <span
+                class="grey"
+              >
+                of tested genes
+              </span>
+            </div>
+            <div
+              data-testid="total-genes-tested"
+            >
+              <p
+                class="h2 mb-0"
+              >
+                976
+              </p>
+              <span
+                class="grey"
+              >
+                tested genes
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
         class="subheadingCont"
       >
         <div
           class="subheading"
         >
-          <span
-            class="subheadingSection"
-          >
+          <span>
             Phenotype
           </span>
-          <span
+          <a
+            class="primary"
+            href="http://www.informatics.jax.org/vocab/mp_ontology/MP:0012361"
+            target="_blank"
+            title="visit MGI site to view details for gene decreased large unstained cell number"
+          >
+            MP:0012361
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style="margin-left: 0.3rem;"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+          <a
             class="subheadingSection"
-          />
+            href="#"
+          >
+            Synonyms: 
+            decreased LUC number
+          </a>
         </div>
       </div>
-      <br />
-      <p
-        class="grey"
+      <div
+        class="summaryContent"
       >
-        Loading...
-      </p>
+        <div>
+          <h3
+            class="mb-2"
+          >
+            Description
+          </h3>
+          <p
+            class="grey"
+          >
+            decreased number of larger than normal cells which are unstained using routine blood count methodologies; large unstained cells (LUC) are larger than normal lymphocytes, and may be atypical lymphocytes, myeloperoxidase deficient cells or peroxidase negative blasts
+          </p>
+        </div>
+        <div
+          class="purchaseBanner phenotype-page"
+          style="padding-right: 0px;"
+        >
+          <span>
+            Significant gene-phenotype associations
+          </span>
+          <a
+            class="purchaseButton"
+            href="#associations-table"
+          >
+            View data
+          </a>
+        </div>
+      </div>
     </div>
     <div
       class="card"
       id="associations-table"
     >
       <h2>
-        IMPC Gene variants with 
-        <span
-          aria-busy="true"
-          aria-live="polite"
-        >
-          <span
-            class="react-loading-skeleton"
-            style="width: 150px;"
-          >
-            ‌
-          </span>
-        </span>
+        IMPC Gene variants with
+         
+        decreased large unstained cell number
       </h2>
       <p>
         Total number of significant genotype-phenotype associations: 
-        0
+        15
       </p>
       <div
         class="buttonsWrapper top withControls"
@@ -138,12 +245,88 @@ exports[`Phenotype page renders correctly 1`] = `
             type="text"
           />
         </div>
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-top"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="top-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="top-page-1"
+          >
+            <button
+              class="pagNavBtn active"
+              data-testid="top-page-1-btn"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="top-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="top-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="top-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
       </div>
       <div
         class="tableWrapper"
       >
         <table
-          class="table striped undefined table table-bordered"
+          class="table striped table table-bordered"
         >
           <thead>
             <tr>
@@ -180,7 +363,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Phenotype
                    
@@ -225,45 +408,11 @@ exports[`Phenotype page renders correctly 1`] = `
                 width="8.333333333333332%"
               >
                 <button
-                  class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
                 >
                   Supporting data
                    
-                  <span
-                    class="defaultIcons"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="svg-inline--fa fa-caret-up first"
-                      data-icon="caret-up"
-                      data-prefix="fas"
-                      focusable="false"
-                      role="img"
-                      viewBox="0 0 320 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    <svg
-                      aria-hidden="true"
-                      class="svg-inline--fa fa-caret-down second"
-                      data-icon="caret-down"
-                      data-prefix="fas"
-                      focusable="false"
-                      role="img"
-                      viewBox="0 0 320 512"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </span>
                 </button>
               </th>
               <th
@@ -272,7 +421,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Zygosity
                    
@@ -318,7 +467,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Sex
                    
@@ -364,7 +513,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Life stage
                    
@@ -410,7 +559,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Parameter
                    
@@ -456,7 +605,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Phenotyping Center
                    
@@ -502,7 +651,7 @@ exports[`Phenotype page renders correctly 1`] = `
               >
                 <button
                   class="inlineButton headerButton"
-                  style="font-weight: normal;"
+                  style="font-weight: inherit;"
                 >
                   Most significant P-value
                    
@@ -547,12 +696,1243 @@ exports[`Phenotype page renders correctly 1`] = `
           </thead>
           <tbody>
             <tr>
-              <td
-                colspan="9"
-              >
-                <b>
-                  No data available
-                </b>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:88121"
+                    >
+                      <i>
+                        Avp
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Avp
+                      <sup>
+                        tm1b(EUCOMM)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:88121&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  heterozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  MRC
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    7.96
+                    x10
+                    <sup>
+                      -6
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1330302"
+                    >
+                      <i>
+                        Dyrk1b
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Dyrk1b
+                      <sup>
+                        tm1b(EUCOMM)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1330302&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  heterozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) differential count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                ICS
+                <br />
+                <span
+                  class="small"
+                >
+                  Phenomin
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    7.55
+                    x10
+                    <sup>
+                      -7
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1330301"
+                    >
+                      <i>
+                        Dyrk2
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Dyrk2
+                      <sup>
+                        em1(IMPC)Ics
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1330301&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  heterozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) differential count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                ICS
+                <br />
+                <span
+                  class="small"
+                >
+                  Phenomin
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    1.31
+                    x10
+                    <sup>
+                      -6
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1926146"
+                    >
+                      <i>
+                        Ecrg4
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Ecrg4
+                      <sup>
+                        tm1b(EUCOMM)Hmgu
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1926146&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                ICS
+                <br />
+                <span
+                  class="small"
+                >
+                  Phenomin
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    9.63
+                    x10
+                    <sup>
+                      -5
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:3583900"
+                    >
+                      <i>
+                        Elmod1
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Elmod1
+                      <sup>
+                        tm1b(EUCOMM)Hmgu
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:3583900&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  BaSH
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    5.93
+                    x10
+                    <sup>
+                      -5
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:95479"
+                    >
+                      <i>
+                        Fabp1
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Fabp1
+                      <sup>
+                        tm1b(EUCOMM)Hmgu
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:95479&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  BaSH
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    2.43
+                    x10
+                    <sup>
+                      -6
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1342542"
+                    >
+                      <i>
+                        Ikzf3
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Ikzf3
+                      <sup>
+                        tm1(KOMP)Vlcg
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1342542&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                RBRC
+                <br />
+                <span
+                  class="small"
+                >
+                  RBRC
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    3.32
+                    x10
+                    <sup>
+                      -5
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:1298377"
+                    >
+                      <i>
+                        Itgae
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Itgae
+                      <sup>
+                        tm1b(EUCOMM)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:1298377&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  MRC
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    3.3
+                    x10
+                    <sup>
+                      -6
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:2442188"
+                    >
+                      <i>
+                        Pdpr
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Pdpr
+                      <sup>
+                        tm1b(EUCOMM)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:2442188&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                ICS
+                <br />
+                <span
+                  class="small"
+                >
+                  Phenomin
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    1.69
+                    x10
+                    <sup>
+                      -7
+                    </sup>
+                     
+                  </span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="line-height: 1.5;"
+                >
+                  <small>
+                    <a
+                      class="link"
+                      href="/genes/MGI:108022"
+                    >
+                      <i>
+                        Pkn1
+                      </i>
+                    </a>
+                  </small>
+                  <br />
+                  <strong>
+                    <i>
+                      Pkn1
+                      <sup>
+                        tm1b(KOMP)Wtsi
+                      </sup>
+                    </i>
+                  </strong>
+                </span>
+              </td>
+              <td>
+                <span>
+                  decreased large unstained cell number
+                </span>
+              </td>
+              <td>
+                <a
+                  href="/supporting-data?mgiGeneAccessionId=MGI:108022&mpTermId=MP:0012361"
+                >
+                  <span
+                    class="link primary small float-right"
+                  >
+                    Supporting data
+                  </span>
+                </a>
+              </td>
+              <td>
+                <span
+                  style="text-transform: capitalize;"
+                >
+                  homozygote
+                </span>
+              </td>
+              <td>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                  data-testid="sex-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
+                <span>
+                  Early adult
+                </span>
+              </td>
+              <td>
+                Large Unstained Cell (LUC) count
+                <br />
+                <span
+                  class="small"
+                >
+                  Hematology
+                </span>
+              </td>
+              <td>
+                MRC Harwell
+                <br />
+                <span
+                  class="small"
+                >
+                  MRC
+                </span>
+              </td>
+              <td>
+                <span
+                  class="bold"
+                  style="display: flex; justify-content: space-between; flex-wrap: wrap;"
+                >
+                  <span
+                    data-testid="p-value"
+                  >
+                    2.52
+                    x10
+                    <sup>
+                      -7
+                    </sup>
+                     
+                  </span>
+                </span>
               </td>
             </tr>
           </tbody>
@@ -568,7 +1948,8 @@ exports[`Phenotype page renders correctly 1`] = `
             class="grey"
             style="display: flex; gap: 0.5rem; align-items: center;"
           >
-            Download data as: 
+            Download data as:
+             
             <button
               class="btn impc-secondary-button small"
             >
@@ -612,6 +1993,120 @@ exports[`Phenotype page renders correctly 1`] = `
             </button>
           </div>
         </div>
+        <div
+          class="bottomPaginationControls"
+        >
+          <div
+            style="display: flex; align-items: center;"
+          >
+            Rows per page: 
+            <select
+              aria-label="rows per page selector"
+            >
+              <option
+                value="10"
+              >
+                10
+              </option>
+              <option
+                value="20"
+              >
+                20
+              </option>
+              <option
+                value="30"
+              >
+                30
+              </option>
+              <option
+                value="50"
+              >
+                50
+              </option>
+              <option
+                value="100"
+              >
+                100
+              </option>
+            </select>
+          </div>
+        </div>
+        <ul
+          class="pagination justify-content-center paginationNav"
+          data-testid="nav-buttons-bottom"
+        >
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-prev-page"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+            data-testid="bottom-page-1"
+          >
+            <button
+              class="pagNavBtn active"
+              data-testid="bottom-page-1-btn"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+            data-testid="bottom-page-2"
+          >
+            <button
+              class="pagNavBtn"
+              data-testid="bottom-page-2-btn"
+            >
+              2
+            </button>
+          </li>
+          <button
+            class="pagNavBtn nav-btn"
+            data-testid="bottom-next-page"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
       </div>
     </div>
     <div
@@ -619,6 +2114,7 @@ exports[`Phenotype page renders correctly 1`] = `
     >
       <h2>
         Most significant associations for 
+        decreased large unstained cell number
       </h2>
       <div
         class="mainWrapper"
@@ -685,47 +2181,17 @@ exports[`Phenotype page renders correctly 1`] = `
              are manually annotated as significant.
           </i>
           <div
-            class="mt-4"
-            style="display: flex; justify-content: center;"
+            class="chartWrapper"
+            style=""
           >
-            <div
-              data-test-id="CircularProgressbarWithChildren"
-            >
-              <div
-                style="position: relative; width: 100%; height: 100%;"
-              >
-                <svg
-                  class="CircularProgressbar rotating"
-                  data-test-id="CircularProgressbar"
-                  viewBox="0 0 100 100"
-                >
-                  <path
-                    class="CircularProgressbar-trail"
-                    d="
-      M 50,50
-      m 0,-44
-      a 44,44 0 1 1 0,88
-      a 44,44 0 1 1 0,-88
-    "
-                    fill-opacity="0"
-                    stroke-width="12"
-                    style="stroke: #fff; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 0px;"
-                  />
-                  <path
-                    class="CircularProgressbar-path"
-                    d="
-      M 50,50
-      m 0,-44
-      a 44,44 0 1 1 0,88
-      a 44,44 0 1 1 0,-88
-    "
-                    fill-opacity="0"
-                    stroke-width="12"
-                    style="stroke: #ccc; transition: stroke-dashoffset 2s ease 0s; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 55.29203070318034px;"
-                  />
-                </svg>
-              </div>
-            </div>
+            <canvas
+              aria-label="Manhattan Plot"
+              height="0"
+              id="manhattan-plot"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
           </div>
         </div>
         <div
@@ -751,7 +2217,20 @@ exports[`Phenotype page renders correctly 1`] = `
       <p>
         Procedure
       </p>
+      <p>
+        <a
+          class="secondary"
+          href="https://www.mousephenotype.org/impress/search?searchterm=Hematology"
+        >
+          Hematology
+        </a>
+      </p>
     </div>
   </div>
+  <script
+    type="application/ld+json"
+  >
+    {"@type":"Dataset","@context":"http://schema.org","name":"decreased large unstained cell number mouse phenotype","description":"Discover decreased large unstained cell number significant genes, associations, procedures and more. Data for phenotype decreased large unstained cell number is all freely available for download.","creator":[{"@type":"Organization","name":"International Mouse Phenotyping Consortium"}],"citation":"https://doi.org/10.1093/nar/gkac972","isAccessibleForFree":true,"url":"https://dev.mousephenotype.org/data/phenotypes/MP:0012361","license":"https://creativecommons.org/licenses/by/4.0/"}
+  </script>
 </div>
 `;

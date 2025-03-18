@@ -22,3 +22,13 @@ export { default as PieChart } from "./PieChart";
 export { default as PleiotropyChart } from "./PleiotropyChart";
 export { default as EmbryoDataAvailabilityGrid } from "./EmbryoDataAvailabilityGrid";
 export { default as Check } from "./Check";
+export { default as ABRChart } from "./ABRChart";
+export { default as PhenotypeResults } from "./PhenotypeResults";
+export { default as GeneResults } from "./GeneResults";
+export { default as AlleleResults } from "./AlleleResults";
+export {
+  CallsTrendChart,
+  DataPointsTrendChart,
+  ReleaseNotesPage,
+} from "./ReleasePage";
+export { default as GenomeBrowser } from "./GenomeBrowser/GenomeBrowser";

@@ -9,37 +9,46 @@ const parametersListPPI = [
 
 export const useChartFlags = (datasets: Array<Dataset>, isError: boolean) => {
   const isABRChart = !isError
-    ? !!datasets.some(
+    ? datasets.some(
         (dataset) =>
           dataset.dataType === "unidimensional" &&
-          dataset.procedureGroup === "IMPC_ABR"
+          dataset.procedureGroup === "IMPC_ABR",
       )
     : false;
   const isViabilityChart = !isError
-    ? !!datasets.some((dataset) => dataset.procedureGroup === "IMPC_VIA")
+    ? datasets.some((dataset) => dataset.procedureGroup === "IMPC_VIA")
     : false;
   const isTimeSeries = !isError
-    ? !!datasets.some((dataset) => dataset.dataType === "time_series")
+    ? datasets.some((dataset) => dataset.dataType === "time_series")
     : false;
 
   const isIPGTTChart = !isError
-    ? !!datasets.some((dataset) => dataset.procedureStableId === "IMPC_IPG_001")
+    ? datasets.some((dataset) => dataset.procedureStableId === "IMPC_IPG_001")
     : false;
 
   const isPPIChart = !isError
-    ? !!datasets.some((dataset) =>
-        parametersListPPI.includes(dataset.parameterStableId)
+    ? datasets.some((dataset) =>
+        parametersListPPI.includes(dataset.parameterStableId),
       )
     : false;
 
   const hasFlowCytometryImages = !isError
-    ? !!datasets.some(
+    ? datasets.some(
         (dataset) =>
           dataset.procedureStableId.startsWith("MGP_BMI") ||
           dataset.procedureStableId.startsWith("MGP_MLN") ||
-          dataset.procedureStableId.startsWith("MGP_IMM")
+          dataset.procedureStableId.startsWith("MGP_IMM"),
       )
     : false;
+
+  const isMiniSpecProcedure = !isError
+    ? datasets.some((d) => d?.procedureStableId?.startsWith("HMGULA_MIN"))
+    : false;
+
+  const noStatisticsPerformed = !isError
+    ? datasets.every((d) => d.status === "NotProcessed")
+    : false;
+
   return {
     isABRChart,
     isViabilityChart,
@@ -47,5 +56,7 @@ export const useChartFlags = (datasets: Array<Dataset>, isError: boolean) => {
     isIPGTTChart,
     isPPIChart,
     hasFlowCytometryImages,
+    isMiniSpecProcedure,
+    noStatisticsPerformed,
   };
 };

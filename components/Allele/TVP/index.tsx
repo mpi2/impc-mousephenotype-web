@@ -24,7 +24,7 @@ const TargetingVector = ({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "tvp", alleleName],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
+        `/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
       ),
     placeholderData: [],
   });
@@ -56,7 +56,7 @@ const TargetingVector = ({
   }
 
   return (
-    <Card id="targetingVector">
+    <Card id="targetingVector" data-testid="tvp-section">
       <h2>Targeting vectors</h2>
       {!data && data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>
@@ -133,9 +133,9 @@ const TargetingVector = ({
                 { width: 1.5, label: "Order", disabled: true },
               ]}
             >
-              {pageData.map((p) => {
+              {pageData.map((p, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <Link
                         href={`/designs/${p.designLink.split(":")[2]}`}
@@ -189,8 +189,9 @@ const TargetingVector = ({
                       )}
                     </td>
                     <td>
-                      {p.orders.map(({ orderLink, orderName }) => (
+                      {p.orders.map(({ orderLink, orderName }, index) => (
                         <a
+                          key={index}
                           href={orderLink}
                           target="_blank"
                           className="link primary"

@@ -1,8 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/router";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
-import SortableTable from "../../SortableTable";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "@/utils";
@@ -14,13 +10,20 @@ import { Publication } from "../../PublicationsList/types";
 import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { DownloadData, SectionHeader } from "@/components";
+import {
+  Card,
+  DownloadData,
+  Pagination,
+  SectionHeader,
+  SortableTable,
+} from "@/components";
 import { SortType } from "@/models";
+import { GeneContext } from "@/contexts";
 
 const ALLELES_COUNT = 2;
 const AllelesCell = ({ pub }: { pub: Publication }) => {
   const alleles = pub.alleles.map((allele) =>
-    formatAlleleSymbol(allele.alleleSymbol)
+    formatAlleleSymbol(allele.alleleSymbol),
   );
   return (
     <>
@@ -39,16 +42,18 @@ const AllelesCell = ({ pub }: { pub: Publication }) => {
   );
 };
 
-const Publications = ({ gene }: { gene: any }) => {
-  const router = useRouter();
+const Publications = () => {
+  const gene = useContext(GeneContext);
   const [page, setPage] = useState(0);
   let totalItems = 0;
-  const [sorted, setSorted] = useState<any[]>(null);
+  const [sorted, setSorted] = useState<any[]>([]);
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["genes", router.query.pid, "publication", page],
+    queryKey: ["genes", gene.mgiGeneAccessionId, "publication", page],
     queryFn: () =>
-      fetchAPI(`/api/v1/genes/${router.query.pid}/publication?page=${page}`),
-    enabled: router.isReady,
+      fetchAPI(
+        `/api/v1/genes/${gene.mgiGeneAccessionId}/publication?page=${page}`,
+      ),
+    enabled: !!gene.mgiGeneAccessionId,
     select: (response) => {
       totalItems = response.totalElements;
       return response.content as Array<Publication>;
@@ -215,5 +220,5 @@ const Publications = ({ gene }: { gene: any }) => {
 export default sectionWithErrorBoundary(
   Publications,
   "IMPC related publications",
-  "publications"
+  "publications",
 );

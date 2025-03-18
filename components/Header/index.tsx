@@ -1,3 +1,4 @@
+"use client";
 import { Fragment, useState } from "react";
 import headerCss from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
@@ -62,6 +63,7 @@ const getInternalLink = (name: string, link: string) => {
 
 const getURLJSONMenu = () => {
   switch (location.hostname) {
+    case "mousephenotype.org":
     case "www.mousephenotype.org":
     case "nginx.mousephenotype-prod.org":
       return "https://www.mousephenotype.org/jsonmenu/";
@@ -69,7 +71,7 @@ const getURLJSONMenu = () => {
     case "nginx.mousephenotype-dev.org":
       return "https://dev.mousephenotype.org/jsonmenu/";
     default:
-      return "https://dev.mousephenotype.org/jsonmenu/";
+      return "https://www.mousephenotype.org/jsonmenu/";
   }
 };
 
@@ -180,7 +182,7 @@ const Header = () => {
         </div>
         {menuItems
           ?.filter(
-            (menuItem) => menuItem.children && menuItem.children.length > 0
+            (menuItem) => menuItem.children && menuItem.children.length > 0,
           )
           ?.map((menuItem, i) => {
             const itemId = `${menuItem.classes?.split("-")[0]}-menu`;
@@ -206,7 +208,7 @@ const Header = () => {
                         </div>
                       ) : null}
                       {menuItem.children?.some(
-                        (item) => item.children && item.children?.length > 0
+                        (item) => item.children && item.children?.length > 0,
                       ) ? (
                         <>
                           {menuItem.children
@@ -333,7 +335,7 @@ const Header = () => {
                               subMenuItem.children
                                 .sort((a, b) => a.sort - b.sort)
                                 .map((subMenuItemChild) => (
-                                  <p>
+                                  <p key={subMenuItemChild.link}>
                                     <Link href={subMenuItemChild.link}>
                                       {subMenuItemChild.name}
                                     </Link>

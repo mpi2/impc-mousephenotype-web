@@ -22,7 +22,7 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
           </a>
           <a
             class="tab"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -125,9 +125,7 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
           Attention
         </div>
         <p>
-          This publication page originally used the Data Release 4.2 
-          <br />
-          The number of mice and strains has not changed since then but the vignettes are displaying data from the latest Data Release.
+          This publication page originally used the Data Release 4.2
         </p>
         <hr />
         <a
@@ -151,7 +149,8 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
             </p>
             <ul>
               <li>
-                Press releases: 
+                Press releases:
+                 
                 <a
                   class="primary link"
                   href="http://www.bbc.co.uk/programmes/b08vwn6w"
@@ -417,7 +416,8 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
                   fill="currentColor"
                 />
               </svg>
-               in 
+               in
+               
               <svg
                 aria-hidden="true"
                 class="svg-inline--fa fa-mars "
@@ -433,7 +433,8 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
                   fill="currentColor"
                 />
               </svg>
-              , no effect in 
+              , no effect in
+               
               <svg
                 aria-hidden="true"
                 class="svg-inline--fa fa-venus "
@@ -503,7 +504,8 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
                   fill="currentColor"
                 />
               </svg>
-               in 
+               in
+               
               <svg
                 aria-hidden="true"
                 class="svg-inline--fa fa-mars "
@@ -519,7 +521,8 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
                   fill="currentColor"
                 />
               </svg>
-              , no effect in 
+              , no effect in
+               
               <svg
                 aria-hidden="true"
                 class="svg-inline--fa fa-venus "
@@ -589,7 +592,8 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
                   fill="currentColor"
                 />
               </svg>
-               in 
+               in
+               
               <svg
                 aria-hidden="true"
                 class="svg-inline--fa fa-mars "
@@ -621,7 +625,8 @@ exports[`Sexual dimorphism landing page renders correctly 1`] = `
                   fill="currentColor"
                 />
               </svg>
-                in 
+               in
+               
               <svg
                 aria-hidden="true"
                 class="svg-inline--fa fa-venus "

@@ -10,7 +10,6 @@ import { Scatter } from "react-chartjs-2";
 import { chartColors } from "@/utils/chart";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMHPlotDataFromS3 } from "@/api-service";
-import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isEqual } from "lodash";
 import styles from "./styles.module.scss";
@@ -19,6 +18,7 @@ import Form from "react-bootstrap/Form";
 import { PhenotypeStatsResults } from "@/models/phenotype";
 import { formatPValue } from "@/utils";
 import Link from "next/link";
+import { Alert } from "react-bootstrap";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -34,6 +34,21 @@ type ChromosomeDataPoint = {
   pos?: number;
 };
 
+type ChartChromosome = {
+  x: number;
+  y: number;
+  geneSymbol: string;
+  pValue: number;
+  mgiGeneAccessionId: string;
+  chromosome: string;
+  significant: boolean;
+};
+
+type TooltipData = {
+  chromosome: string;
+  genes: Array<ChartChromosome>;
+};
+
 type Point = { x: number; y: number; geneList: string };
 
 const clone = (obj) => JSON.parse(JSON.stringify(obj));
@@ -47,16 +62,15 @@ const transformPValue = (value: number, significant: boolean) => {
 };
 const ManhattanPlot = ({ phenotypeId }) => {
   let ghostPoint: Point = { x: -1, y: -1, geneList: "" };
-  const router = useRouter();
   const chartRef = useRef(null);
-  const [clickTooltip, setClickTooltip] = useState({
+  const [clickTooltip, setClickTooltip] = useState<TooltipData>({
     chromosome: "",
     genes: [],
   });
   const [point, setPoint] = useState<Point>({ x: -1, y: -1, geneList: "" });
   const [geneFilter, setGeneFilter] = useState("");
 
-  const ticks = [];
+  const ticks: Array<{ value: number; label: string }> = [];
   let originalTicks = [];
   const validChromosomes = [
     "1",
@@ -105,7 +119,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
       return filterValues.some(
         (value) =>
           rawDataPoint.geneSymbol?.toLowerCase() === value.toLowerCase() ||
-          rawDataPoint?.mgiGeneAccessionId === value
+          rawDataPoint?.mgiGeneAccessionId === value,
       );
     }
     return (
@@ -134,7 +148,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
   const getThresholdXPos = (
     chr: string,
-    datapoints: Array<ChromosomeDataPoint>
+    datapoints: Array<ChromosomeDataPoint>,
   ): number => {
     switch (chr) {
       case "1":
@@ -167,7 +181,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
             if (ticks.length) {
               axis.ticks.forEach((tick) => {
                 let label = originalTicks.find(
-                  (t) => t.value === tick.value
+                  (t) => t.value === tick.value,
                 ).label;
                 if (label === "20") {
                   label = "X";
@@ -278,13 +292,13 @@ const ManhattanPlot = ({ phenotypeId }) => {
         }
       },
     }),
-    [geneFilter, point, ticks]
+    [geneFilter, point, ticks],
   );
 
-  const { data } = useQuery({
+  const { data, isFetching, isError } = useQuery({
     queryKey: ["phenotype", phenotypeId, "mh-plot-data"],
     queryFn: () => fetchMHPlotDataFromS3(phenotypeId),
-    enabled: router.isReady,
+    enabled: !!phenotypeId,
     select: (response: PhenotypeStatsResults) => {
       const data = response.results;
       const genes = new Set<string>();
@@ -304,7 +318,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
           const choromosomeGeneMap = groupedByChr[chromosome];
           if (choromosomeGeneMap.has(point.mgiGeneAccessionId)) {
             const existingPoint = choromosomeGeneMap.get(
-              point.mgiGeneAccessionId
+              point.mgiGeneAccessionId,
             );
             // check if current point has a different value than null, comparison it's going to be always true with null
             if (
@@ -365,7 +379,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
               mgiGeneAccessionId,
               chromosome: chr,
               significant,
-            })
+            }),
           ),
           backgroundColor: chartColors[i],
           parsing: false,
@@ -389,6 +403,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
         listOfAccessions: [...mgiAccessionIds],
       };
     },
+    retry: 1,
   });
 
   const matchesAnotherGene = useMemo(() => {
@@ -399,7 +414,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
       const filterValues = geneFilter.split(",").map((value) => value.trim());
       return (
         data?.listOfGenes?.some((geneSymbol) =>
-          filterValues.includes(geneSymbol)
+          filterValues.includes(geneSymbol),
         ) || data?.listOfAccessions?.some((id) => filterValues.includes(id))
       );
     }
@@ -411,9 +426,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
 
   useEffect(() => {
     if (!!geneFilter) {
-      const allData = data.chartData.datasets.flatMap(
-        (dataset) => dataset.data
-      );
+      const allData =
+        data?.chartData.datasets.flatMap((dataset) => dataset.data) ?? [];
       const filteredGenes = allData.filter(associationMatchesFilter) || [];
       if (filteredGenes.length) {
         const newTooltipData = {
@@ -430,6 +444,16 @@ const ManhattanPlot = ({ phenotypeId }) => {
       }
     }
   }, [geneFilter, data, clickTooltip, point]);
+
+  if (isError) {
+    return (
+      <div>
+        <Alert variant="primary">
+          Associations data not available for this phenotype
+        </Alert>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.mainWrapper}>
@@ -492,21 +516,25 @@ const ManhattanPlot = ({ phenotypeId }) => {
           Associations appearing in the region of 1x10<sup>-30</sup> are
           manually annotated as significant.
         </i>
-        {!!data ? (
-          <div className={styles.chartWrapper}>
-            <Scatter
-              ref={chartRef}
-              options={options as any}
-              data={data.chartData as any}
-            />
-          </div>
-        ) : (
+        {isFetching ? (
           <div
             className="mt-4"
             style={{ display: "flex", justifyContent: "center" }}
           >
             <LoadingProgressBar />
           </div>
+        ) : (
+          !!data && (
+            <div className={styles.chartWrapper}>
+              <Scatter
+                id="manhattan-plot"
+                ref={chartRef}
+                aria-label="Manhattan Plot"
+                options={options as any}
+                data={data.chartData as any}
+              />
+            </div>
+          )
         )}
       </div>
       <div className={styles.resultsSection}>

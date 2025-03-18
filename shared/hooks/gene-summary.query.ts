@@ -5,16 +5,13 @@ import { GeneSummary } from "@/models/gene";
 export const useGeneSummaryQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
-  geneFromServer?: GeneSummary | null
+  geneFromServer?: GeneSummary | null,
 ) => {
-  const queryOptions = {
+  return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "summary"],
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/summary`),
     enabled: routerIsReady && !!mgiGeneAccessionId,
     select: (data) => data as GeneSummary,
-  };
-  if (!!geneFromServer) {
-    queryOptions["initialData"] = geneFromServer;
-  }
-  return useQuery(queryOptions);
+    initialData: geneFromServer,
+  });
 };

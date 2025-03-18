@@ -1,0 +1,914 @@
+[
+  {
+    "id": "67177bed88458cbbe17fd9f0",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - significant in males, females and in combined dataset",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "categorical",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal sensory capabilities/reflexes/nociception",
+        "id": "MP:0002067"
+      },
+      {
+        "name": "abnormal reflex",
+        "id": "MP:0001961"
+      },
+      {
+        "name": "abnormal involuntary movement",
+        "id": "MP:0003492"
+      },
+      {
+        "name": "abnormal behavior",
+        "id": "MP:0004924"
+      },
+      {
+        "name": "abnormal motor capabilities/coordination/movement",
+        "id": "MP:0002066"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "65ed200ce0a6c1448296a1366bd42457",
+    "metadataValues": [
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 5|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 3|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100",
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Startle response",
+    "parameterStableId": "IMPC_CSD_036_001",
+    "parameterStableKey": 38387,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "absent startle reflex",
+        "id": "MP:0006359"
+      },
+      {
+        "name": "abnormal startle reflex",
+        "id": "MP:0001486"
+      }
+    ],
+    "procedureGroup": "IMPC_CSD",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureStableKey": 799,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": 0.75,
+    "reportedPValue": 3.13233942910675E-27,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "abnormal startle reflex",
+      "id": "MP:0001486"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Fisher Exact Test framework",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": 1.81260527936633E-11,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": 2.31615883735048E-16,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "5e7bcb3efa98f7fcaa282f9a3e4c4a59",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 814,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": 774,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": 8,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "behavior/neurological phenotype",
+        "id": "MP:0005386"
+      }
+    ]
+  },
+  {
+    "id": "67178819d036462c91bf0cdc",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - significant in males, females and in combined dataset",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "categorical",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal sensory capabilities/reflexes/nociception",
+        "id": "MP:0002067"
+      },
+      {
+        "name": "abnormal reflex",
+        "id": "MP:0001961"
+      },
+      {
+        "name": "abnormal involuntary movement",
+        "id": "MP:0003492"
+      },
+      {
+        "name": "abnormal behavior",
+        "id": "MP:0004924"
+      },
+      {
+        "name": "abnormal motor capabilities/coordination/movement",
+        "id": "MP:0002066"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "65ed200ce0a6c1448296a1366bd42457",
+    "metadataValues": [
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 5|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 3|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100",
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Startle response",
+    "parameterStableId": "IMPC_CSD_036_001",
+    "parameterStableKey": 38387,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "absent startle reflex",
+        "id": "MP:0006359"
+      },
+      {
+        "name": "abnormal startle reflex",
+        "id": "MP:0001486"
+      }
+    ],
+    "procedureGroup": "IMPC_CSD",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureStableKey": 799,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": 0.75,
+    "reportedPValue": 3.13233942910675E-27,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "abnormal startle reflex",
+      "id": "MP:0001486"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Fisher Exact Test framework",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": 1.81260527936633E-11,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": 2.31615883735048E-16,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "5e7bcb3efa98f7fcaa282f9a3e4c4a59",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 814,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": 774,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": 8,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "behavior/neurological phenotype",
+        "id": "MP:0005386"
+      }
+    ]
+  },
+  {
+    "id": "6717886c4559790069841e5b",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - significant in males, females and in combined dataset",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "categorical",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal sensory capabilities/reflexes/nociception",
+        "id": "MP:0002067"
+      },
+      {
+        "name": "abnormal reflex",
+        "id": "MP:0001961"
+      },
+      {
+        "name": "abnormal involuntary movement",
+        "id": "MP:0003492"
+      },
+      {
+        "name": "abnormal behavior",
+        "id": "MP:0004924"
+      },
+      {
+        "name": "abnormal motor capabilities/coordination/movement",
+        "id": "MP:0002066"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "65ed200ce0a6c1448296a1366bd42457",
+    "metadataValues": [
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 5|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 3|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100",
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Startle response",
+    "parameterStableId": "IMPC_CSD_036_001",
+    "parameterStableKey": 38387,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "absent startle reflex",
+        "id": "MP:0006359"
+      },
+      {
+        "name": "abnormal startle reflex",
+        "id": "MP:0001486"
+      }
+    ],
+    "procedureGroup": "IMPC_CSD",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureStableKey": 799,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": 0.75,
+    "reportedPValue": 3.13233942910675E-27,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "abnormal startle reflex",
+      "id": "MP:0001486"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Fisher Exact Test framework",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": 1.81260527936633E-11,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": 2.31615883735048E-16,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "5e7bcb3efa98f7fcaa282f9a3e4c4a59",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 814,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": 774,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": 8,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "behavior/neurological phenotype",
+        "id": "MP:0005386"
+      }
+    ]
+  },
+  {
+    "id": "67178d1b4545a1523371edd6",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - significant in males, females and in combined dataset",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "categorical",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal sensory capabilities/reflexes/nociception",
+        "id": "MP:0002067"
+      },
+      {
+        "name": "abnormal reflex",
+        "id": "MP:0001961"
+      },
+      {
+        "name": "abnormal involuntary movement",
+        "id": "MP:0003492"
+      },
+      {
+        "name": "abnormal behavior",
+        "id": "MP:0004924"
+      },
+      {
+        "name": "abnormal motor capabilities/coordination/movement",
+        "id": "MP:0002066"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "65ed200ce0a6c1448296a1366bd42457",
+    "metadataValues": [
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 5|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 3|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100",
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Startle response",
+    "parameterStableId": "IMPC_CSD_036_001",
+    "parameterStableKey": 38387,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "absent startle reflex",
+        "id": "MP:0006359"
+      },
+      {
+        "name": "abnormal startle reflex",
+        "id": "MP:0001486"
+      }
+    ],
+    "procedureGroup": "IMPC_CSD",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureStableKey": 799,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": 0.75,
+    "reportedPValue": 3.13233942910675E-27,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "abnormal startle reflex",
+      "id": "MP:0001486"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Fisher Exact Test framework",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": 1.81260527936633E-11,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": 2.31615883735048E-16,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "5e7bcb3efa98f7fcaa282f9a3e4c4a59",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 814,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": 774,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": 8,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "behavior/neurological phenotype",
+        "id": "MP:0005386"
+      }
+    ]
+  },
+  {
+    "id": "671790159dde2318b68de71b",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - significant in males, females and in combined dataset",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "categorical",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal sensory capabilities/reflexes/nociception",
+        "id": "MP:0002067"
+      },
+      {
+        "name": "abnormal reflex",
+        "id": "MP:0001961"
+      },
+      {
+        "name": "abnormal involuntary movement",
+        "id": "MP:0003492"
+      },
+      {
+        "name": "abnormal behavior",
+        "id": "MP:0004924"
+      },
+      {
+        "name": "abnormal motor capabilities/coordination/movement",
+        "id": "MP:0002066"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "65ed200ce0a6c1448296a1366bd42457",
+    "metadataValues": [
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 5|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 3|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100",
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Startle response",
+    "parameterStableId": "IMPC_CSD_036_001",
+    "parameterStableKey": 38387,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "absent startle reflex",
+        "id": "MP:0006359"
+      },
+      {
+        "name": "abnormal startle reflex",
+        "id": "MP:0001486"
+      }
+    ],
+    "procedureGroup": "IMPC_CSD",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureStableKey": 799,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": 0.75,
+    "reportedPValue": 3.13233942910675E-27,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "abnormal startle reflex",
+      "id": "MP:0001486"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Fisher Exact Test framework",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": 1.81260527936633E-11,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": 2.31615883735048E-16,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "5e7bcb3efa98f7fcaa282f9a3e4c4a59",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 814,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": 774,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": 8,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "behavior/neurological phenotype",
+        "id": "MP:0005386"
+      }
+    ]
+  },
+  {
+    "id": "6717911792fc2563df093d4a",
+    "alleleAccessionId": "MGI:6257724",
+    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+    "classificationTag": "With phenotype threshold value 1e-04 - significant in males, females and in combined dataset",
+    "colonyId": "TCPR0947_ADUP",
+    "dataType": "categorical",
+    "geneSymbol": "Myo6",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "name": "abnormal sensory capabilities/reflexes/nociception",
+        "id": "MP:0002067"
+      },
+      {
+        "name": "abnormal reflex",
+        "id": "MP:0001961"
+      },
+      {
+        "name": "abnormal involuntary movement",
+        "id": "MP:0003492"
+      },
+      {
+        "name": "abnormal behavior",
+        "id": "MP:0004924"
+      },
+      {
+        "name": "abnormal motor capabilities/coordination/movement",
+        "id": "MP:0002066"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "65ed200ce0a6c1448296a1366bd42457",
+    "metadataValues": [
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 5|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 3|Size of squares in arena = 100",
+      "Experimenter ID = 73086|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100",
+      "Experimenter ID = 100105|Location of test = Open bench|Number of animals in cage = 4|Size of squares in arena = 100"
+    ],
+    "mgiGeneAccessionId": "MGI:104785",
+    "parameterName": "Startle response",
+    "parameterStableId": "IMPC_CSD_036_001",
+    "parameterStableKey": 38387,
+    "phenotypeSex": [
+      "male",
+      "female"
+    ],
+    "phenotypingCentre": "TCP",
+    "pipelineName": "TCP Pipeline",
+    "pipelineStableId": "TCP_001",
+    "pipelineStableKey": 9,
+    "potentialPhenotypes": [
+      {
+        "name": "absent startle reflex",
+        "id": "MP:0006359"
+      },
+      {
+        "name": "abnormal startle reflex",
+        "id": "MP:0001486"
+      }
+    ],
+    "procedureGroup": "IMPC_CSD",
+    "procedureName": "Combined SHIRPA and Dysmorphology",
+    "procedureStableId": "IMPC_CSD_003",
+    "procedureStableKey": 799,
+    "productionCentre": "TCP",
+    "projectName": "DTCC",
+    "reportedEffectSize": 0.75,
+    "reportedPValue": 3.13233942910675E-27,
+    "unit": {
+      "x": " ",
+      "y": null
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": "not_considered",
+    "zygosity": "homozygote",
+    "significant": true,
+    "significantPhenotype": {
+      "name": "abnormal startle reflex",
+      "id": "MP:0001486"
+    },
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": "Fisher Exact Test framework",
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": 1.81260527936633E-11,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": 2.31615883735048E-16,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null
+      }
+    },
+    "datasetId": "5e7bcb3efa98f7fcaa282f9a3e4c4a59",
+    "status": "Successful",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 814,
+      "femaleControlMean": null,
+      "femaleControlSd": null,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": null,
+      "femaleMutantSd": null,
+      "maleControlCount": 774,
+      "maleControlMean": null,
+      "maleControlSd": null,
+      "maleMutantCount": 8,
+      "maleMutantMean": null,
+      "maleMutantSd": null
+    },
+    "topLevelPhenotypes": [
+      {
+        "name": "behavior/neurological phenotype",
+        "id": "MP:0005386"
+      }
+    ]
+  }
+]

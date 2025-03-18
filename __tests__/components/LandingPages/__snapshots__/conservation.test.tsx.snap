@@ -22,7 +22,7 @@ exports[`Conservation landing page renders correctly 1`] = `
           </a>
           <a
             class="tab"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -280,7 +280,8 @@ exports[`Conservation landing page renders correctly 1`] = `
           )
         </li>
         <li>
-          We collected IMPC phenotype annotations (also MGI) to characterize genes potentially linked to disease or to regions putatively under positive selection in selected endangered species (for data, see  
+          We collected IMPC phenotype annotations (also MGI) to characterize genes potentially linked to disease or to regions putatively under positive selection in selected endangered species (for data, see 
+           
           <a
             class="link primary"
             href="https://link.springer.com/article/10.1007/s10592-018-1072-9#SupplementaryMaterial"
@@ -300,7 +301,8 @@ exports[`Conservation landing page renders correctly 1`] = `
         </strong>
       </h1>
       <p>
-        IMPC significant phenotypes for selected mammal species, based on orthologue inferences (source: 
+        IMPC significant phenotypes for selected mammal species, based on orthologue inferences (source:
+         
         <a
           class="link primary"
           href="http://bit.ly/conservationarticle"
@@ -380,6 +382,9 @@ exports[`Conservation landing page renders correctly 1`] = `
           Conservation IKMC/IMPC related publications
         </strong>
       </h1>
+      <div>
+        PublicationsList mock
+      </div>
     </div>
   </div>
 </div>

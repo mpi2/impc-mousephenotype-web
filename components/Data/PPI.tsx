@@ -11,7 +11,7 @@ import {
   Tooltip,
   Legend,
   Colors,
-} from 'chart.js';
+} from "chart.js";
 import { Chart } from "react-chartjs-2";
 import { ViolinController, Violin } from "@sgratzl/chartjs-chart-boxplot";
 import { Card } from "@/components";
@@ -24,7 +24,7 @@ import SortableTable from "@/components/SortableTable";
 import StatisticalMethodTable from "@/components/Data/StatisticalMethodTable";
 import { generateSummaryStatistics } from "@/utils/chart";
 import { chartLoadingIndicatorChannel } from "@/eventChannels";
-
+import displayTooltipLabelMultiline from "@/shared/chart-js-plugins/boxplot-tooltip-label-multiline";
 
 ChartJS.register(
   CategoryScale,
@@ -39,7 +39,6 @@ ChartJS.register(
   Colors,
 );
 
-
 const parameterList = [
   "IMPC_ACS_033_001", // % PP1
   "IMPC_ACS_034_001", // % PP2
@@ -49,10 +48,10 @@ const parameterList = [
 ];
 
 const labels = {
-  "IMPC_ACS_033_001": "% PP1",
-  "IMPC_ACS_034_001": "% PP2",
-  "IMPC_ACS_035_001": "% PP3",
-  "IMPC_ACS_036_001": "% PP4"
+  IMPC_ACS_033_001: "% PP1",
+  IMPC_ACS_034_001: "% PP2",
+  IMPC_ACS_035_001: "% PP3",
+  IMPC_ACS_036_001: "% PP4",
 };
 
 type PPIProps = {
@@ -65,62 +64,67 @@ const PPI = (props: PPIProps) => {
   const { datasetSummaries, activeDataset, onNewSummariesFetched } = props;
   const [viewScatterPoints, setViewScatterPoints] = useState(false);
 
-  const {datasets, datasetsAreLoading } = useRelatedParametersQuery(
+  const { datasets, datasetsAreLoading } = useRelatedParametersQuery(
     datasetSummaries,
     parameterList,
-    onNewSummariesFetched
+    onNewSummariesFetched,
   );
 
-  const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery('PPI', datasets);
+  const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery(
+    "PPI",
+    datasets,
+  );
 
   useEffect(() => {
-    chartLoadingIndicatorChannel.emit('toggleIndicator', (!hasLoadedAllData || datasetsAreLoading));
+    chartLoadingIndicatorChannel.emit(
+      "toggleIndicator",
+      !hasLoadedAllData || datasetsAreLoading,
+    );
   }, [hasLoadedAllData, datasetsAreLoading]);
 
   const parseData = (series: Array<any>, sex: string, sampleGroup: string) => {
-    const data = series?.find(serie => serie.sampleGroup === sampleGroup && serie.specimenSex === sex);
-    return data?.observations.map(d => +d.dataPoint).sort() || [];
-  }
+    const data = series?.find(
+      (serie) => serie.sampleGroup === sampleGroup && serie.specimenSex === sex,
+    );
+    return data?.observations.map((d) => +d.dataPoint).sort() || [];
+  };
 
   const chartDatasets = useMemo(() => {
     return parameterList
-      .filter(param => param !== 'IMPC_ACS_037_001')
-      .map(param => datasets.find(d => d.parameterStableId === param))
+      .filter((param) => param !== "IMPC_ACS_037_001")
+      .map((param) => datasets.find((d) => d.parameterStableId === param))
       .filter(Boolean)
-      .map(dataset => {
-        const matchingRes = results.find(r => r.datasetId === dataset.datasetId);
+      .map((dataset) => {
+        const matchingRes = results.find(
+          (r) => r.datasetId === dataset.datasetId,
+        );
         return {
           ...matchingRes,
-          label: labels[dataset.parameterStableId]
-        }
+          label: labels[dataset.parameterStableId],
+        };
       })
       .filter(Boolean)
-      .map(result => {
+      .map((result) => {
         return {
           type: "violin" as const,
           label: result.label,
           data: [
-            parseData(result.series, 'male', 'experimental'),
-            parseData(result.series, 'male', 'control'),
-            parseData(result.series, 'female', 'experimental'),
-            parseData(result.series, 'female', 'control'),
+            parseData(result.series, "male", "experimental"),
+            parseData(result.series, "male", "control"),
+            parseData(result.series, "female", "experimental"),
+            parseData(result.series, "female", "control"),
           ],
           itemRadius: viewScatterPoints ? 2 : 0,
           padding: 100,
           outlierRadius: 5,
-        }
+        };
       });
   }, [datasets, results, viewScatterPoints]);
 
   const chartLabels = useMemo(() => {
     const zygosity = datasets?.[0]?.zygosity;
     const zygLabel = zygosity === "heterozygote" ? "Het" : "Hom";
-    return [
-      `Male ${zygLabel}`,
-      `Male WT`,
-      `Female ${zygLabel}`,
-      `Female WT`,
-    ]
+    return [`Male ${zygLabel}`, `Male WT`, `Female ${zygLabel}`, `Female WT`];
   }, [datasets]);
 
   const chartOptions = {
@@ -128,6 +132,11 @@ const PPI = (props: PPIProps) => {
     maintainAspectRatio: false,
     plugins: {
       legend: { display: true },
+      tooltip: {
+        callbacks: {
+          label: displayTooltipLabelMultiline,
+        },
+      },
     },
   };
 
@@ -136,8 +145,12 @@ const PPI = (props: PPIProps) => {
     datasets: chartDatasets,
   };
 
-  const activeDatasetResult = results.find(r => r.datasetId === activeDataset.datasetId);
-  const activeDatasetStatistics = !!activeDatasetResult ? generateSummaryStatistics(activeDataset, activeDatasetResult.series) : [];
+  const activeDatasetResult = results.find(
+    (r) => r.datasetId === activeDataset.datasetId,
+  );
+  const activeDatasetStatistics = !!activeDatasetResult
+    ? generateSummaryStatistics(activeDataset, activeDatasetResult.series)
+    : [];
 
   return (
     <>
@@ -165,7 +178,10 @@ const PPI = (props: PPIProps) => {
             </SortableTable>
           </Col>
           <Col lg={6}>
-            <StatisticalMethodTable datasetSummary={activeDataset} onlyDisplayTable />
+            <StatisticalMethodTable
+              datasetSummary={activeDataset}
+              onlyDisplayTable
+            />
           </Col>
         </Row>
       </Card>
@@ -173,18 +189,18 @@ const PPI = (props: PPIProps) => {
         <div>
           {hasLoadedAllData ? (
             <>
-              <div style={{display: "flex", justifyContent: "flex-end"}}>
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Form.Check // prettier-ignore
                   type="switch"
                   id="custom-switch"
                   label="Show scattered points"
                   onChange={() =>
-                    setViewScatterPoints(prevState => !prevState)
+                    setViewScatterPoints((prevState) => !prevState)
                   }
                   checked={viewScatterPoints}
                 />
               </div>
-              <div id="chart" style={{position: "relative", height: "400px"}}>
+              <div id="chart" style={{ position: "relative", height: "400px" }}>
                 <Chart
                   type="violin"
                   data={chartData}
@@ -194,7 +210,7 @@ const PPI = (props: PPIProps) => {
               </div>
               <div>
                 <div>
-                  <div style={{display: "inline-block"}}>
+                  <div style={{ display: "inline-block" }}>
                     Top
                     <hr
                       style={{
@@ -202,15 +218,15 @@ const PPI = (props: PPIProps) => {
                         borderTop: "3px dotted #000",
                         height: "3px",
                         width: "30px",
-                        display: 'inline-block',
-                        margin: '0 0 0 0.5rem',
-                        opacity: 1
+                        display: "inline-block",
+                        margin: "0 0 0 0.5rem",
+                        opacity: 1,
                       }}
                     />
                     &nbsp;line: 75th percentile
                   </div>
-                  <br/>
-                  <div style={{display: "inline-block"}}>
+                  <br />
+                  <div style={{ display: "inline-block" }}>
                     Middle
                     <hr
                       style={{
@@ -218,15 +234,15 @@ const PPI = (props: PPIProps) => {
                         borderTop: "3px dashed #000",
                         height: "3px",
                         width: "30px",
-                        display: 'inline-block',
-                        margin: '0 0 0 0.5rem',
-                        opacity: 1
+                        display: "inline-block",
+                        margin: "0 0 0 0.5rem",
+                        opacity: 1,
                       }}
                     />
                     &nbsp;line: 50th percentile
                   </div>
-                  <br/>
-                  <div style={{display: "inline-block"}}>
+                  <br />
+                  <div style={{ display: "inline-block" }}>
                     Bottom
                     <hr
                       style={{
@@ -234,37 +250,51 @@ const PPI = (props: PPIProps) => {
                         borderTop: "3px dotted #000",
                         height: "3px",
                         width: "30px",
-                        display: 'inline-block',
-                        margin: '0 0 0 0.5rem',
-                        opacity: 1
+                        display: "inline-block",
+                        margin: "0 0 0 0.5rem",
+                        opacity: 1,
                       }}
                     />
                     &nbsp;line: 25th percentile
                   </div>
-                  <br/>
-                  <div style={{display: 'inline-flex', alignItems: 'center', gap: '0.3rem',}}>
-                    <div style={{
-                      display: 'inline-block',
-                      backgroundColor: '#CCC',
-                      width: '12px',
-                      height: '12px',
-                      borderRadius: '50%'
-                    }}/>
+                  <br />
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.3rem",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "inline-block",
+                        backgroundColor: "#CCC",
+                        width: "12px",
+                        height: "12px",
+                        borderRadius: "50%",
+                      }}
+                    />
                     : mean value
                   </div>
                 </div>
               </div>
             </>
           ) : (
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
-              <LoadingProgressBar/>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+              }}
+            >
+              <LoadingProgressBar />
             </div>
           )}
         </div>
       </Card>
     </>
   );
-
 };
 
 export default PPI;

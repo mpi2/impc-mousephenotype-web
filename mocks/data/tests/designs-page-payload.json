@@ -1,0 +1,62 @@
+[
+  {
+    "designId": 40489,
+    "assembly": "GRCm38",
+    "featureType": "D3",
+    "chr": "9",
+    "oligoStart": 80226525,
+    "oligoStop": 80226574,
+    "strand": 1,
+    "oligoSequence": "TTTTTGGGTATATTTCTATATATCTGTTTAATTTCACTCTCACACTGTGC"
+  },
+  {
+    "designId": 40489,
+    "assembly": "GRCm38",
+    "featureType": "D5",
+    "chr": "9",
+    "oligoStart": 80226416,
+    "oligoStop": 80226465,
+    "strand": 1,
+    "oligoSequence": "GCACTTAATAAATCTACAGAATGAGAAGTCCGAGAACCAGTTAACCGACT"
+  },
+  {
+    "designId": 40489,
+    "assembly": "GRCm38",
+    "featureType": "G3",
+    "chr": "9",
+    "oligoStart": 80231030,
+    "oligoStop": 80231079,
+    "strand": 1,
+    "oligoSequence": "TGGGATCTTTTGTTTTCCCATATGAATTTTAATAGTTTTTTCTACCTATG"
+  },
+  {
+    "designId": 40489,
+    "assembly": "GRCm38",
+    "featureType": "G5",
+    "chr": "9",
+    "oligoStart": 80221059,
+    "oligoStop": 80221108,
+    "strand": 1,
+    "oligoSequence": "GGACAGCAAAAAAGATGTGGAAGATAACTGTAAGTATTAAGTTCAAAGTT"
+  },
+  {
+    "designId": 40489,
+    "assembly": "GRCm38",
+    "featureType": "U3",
+    "chr": "9",
+    "oligoStart": 80225775,
+    "oligoStop": 80225824,
+    "strand": 1,
+    "oligoSequence": "TTTTATCTGTAAGCTTCTGGATTCACATCTCACTTTGTTGGATCATAACC"
+  },
+  {
+    "designId": 40489,
+    "assembly": "GRCm38",
+    "featureType": "U5",
+    "chr": "9",
+    "oligoStart": 80225712,
+    "oligoStop": 80225761,
+    "strand": 1,
+    "oligoSequence": "ATTGTGAGAACTTCCCAAATGATCTGCGGTTCCCTTGCCATTCTAAAACC"
+  }
+]

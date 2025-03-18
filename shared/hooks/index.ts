@@ -1,5 +1,5 @@
 export { useBodyWeightQuery } from "./bodyweight.query";
-export { useGeneAssociationsQuery } from "./gene-associations.query";
+export { usePhenotypeGeneAssociationsQuery } from "./phenotype-gene-associations.query";
 export {
   useSignificantPhenotypesQuery,
   processGenePhenotypeHitsResponse,
@@ -26,3 +26,4 @@ export {
   processGeneOrderResponse,
 } from "./gene-order.query";
 export { useChartFlags } from "./chartFlags";
+export { usePhenotypeResultsQuery } from "./phenotype-results.query";

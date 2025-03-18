@@ -2,7 +2,7 @@ import * as Gene from "./gene";
 import * as Phenotype from "./phenotype";
 import * as Allele from "./allele";
 import type { PhenotypeRef } from "./phenotype-ref";
-import { MetabolismGeneData } from "@/pages/metabolism";
+import { MetabolismGeneData } from "@/app/metabolism/metabolism-page";
 import { HistopathologyResponse, Histopathology } from "./histopathology";
 import { GrossPathology, GrossPathologyDataset } from "./gross-pathology";
 import { Dataset } from "./dataset";
@@ -32,6 +32,7 @@ export type {
 } from "./LandingPages";
 export type { AlleleSummary } from "./allele";
 export type { Release };
+export type { PublicationAggregationDataResponse } from "./publications";
 
 type Model =
   | PhenotypeRef

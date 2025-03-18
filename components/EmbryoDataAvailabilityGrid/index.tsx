@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
@@ -34,7 +35,7 @@ const EmbryoDataAvailabilityGrid = ({
   const [query, setQuery] = useState<string>(undefined);
   const [activePage, setActivePage] = useState(0);
   const [totalPages, setTotalPages] = useState(
-    data ? Math.ceil(data.length / 25) : 0
+    data ? Math.ceil(data.length / 25) : 0,
   );
   const [chartData, setChartData] = useState<Array<EmbryoData>>([]);
 
@@ -45,7 +46,7 @@ const EmbryoDataAvailabilityGrid = ({
         .filter((gene) =>
           !!query
             ? gene.geneSymbol.toLowerCase().includes(query.toLowerCase())
-            : true
+            : true,
         )
         .slice(activePage * 25, activePage * 25 + 25)
         .map((d) => ({
@@ -64,18 +65,18 @@ const EmbryoDataAvailabilityGrid = ({
                 ? 2
                 : 1
               : p === "Mager Lab Pre E9.5" && d.isUmassGene
-              ? 1
-              : p === "Vignettes" && d.hasVignettes
-              ? 1
-              : 0,
+                ? 1
+                : p === "Vignettes" && d.hasVignettes
+                  ? 1
+                  : 0,
           })),
-        }))
+        })),
     );
   }, [data, activePage, query]);
 
   const geneIndex = chartData?.reduce(
     (acc, d) => ({ [d.id]: d.mgiGeneAccessionId, ...acc }),
-    {}
+    {},
   );
 
   const dataIndex = secondaryViabilityData?.reduce(
@@ -83,7 +84,7 @@ const EmbryoDataAvailabilityGrid = ({
       [d.windowOfLethality]: d.genes,
       ...acc,
     }),
-    {}
+    {},
   );
 
   const onChangeWOL = (selected) => {
@@ -101,7 +102,7 @@ const EmbryoDataAvailabilityGrid = ({
         .filter((gene) =>
           !!query
             ? gene.geneSymbol.toLowerCase().includes(query.toLowerCase())
-            : true
+            : true,
         )
         .slice(0, 25)
         .map((d) => ({
@@ -119,10 +120,10 @@ const EmbryoDataAvailabilityGrid = ({
                 ? 2
                 : 1
               : p === "UMASS Pre E9.5" && d.isUmassGene
-              ? 1
-              : 0,
+                ? 1
+                : 0,
           })),
-        }))
+        })),
     );
   };
 
@@ -224,7 +225,7 @@ const EmbryoDataAvailabilityGrid = ({
                         data[tick.tickIndex].mgiAccessionId
                       }`,
                       "_blank",
-                      "noreferrer"
+                      "noreferrer",
                     )
                   }
                 />

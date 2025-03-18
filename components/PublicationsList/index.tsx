@@ -1,3 +1,4 @@
+"use client";
 import {
   Col,
   Container,
@@ -104,14 +105,14 @@ const PublicationsList = (props: PublicationListProps) => {
   };
   const isFieldVisible = (
     pub: Publication,
-    type: "abstract" | "mesh-terms" | "alleles"
+    type: "abstract" | "mesh-terms" | "alleles",
   ) => {
     const { map } = getMapByType(type);
     return !(!map.has(pub.pmId) || map.get(pub.pmId) === "not-visible");
   };
   const toggleVisibility = (
     pub: Publication,
-    type: "abstract" | "mesh-terms" | "alleles"
+    type: "abstract" | "mesh-terms" | "alleles",
   ) => {
     const { map, setFn } = getMapByType(type);
     if (!map.has(pub.pmId) || map.get(pub.pmId) === "not-visible") {
@@ -140,7 +141,7 @@ const PublicationsList = (props: PublicationListProps) => {
   const [totalItems, setTotalItems] = useState(0);
   const [debounceQuery, setDebouncedQuery] = useDebounceValue<string>(
     query,
-    500
+    500,
   );
   const {
     data: publications,
@@ -265,22 +266,29 @@ const PublicationsList = (props: PublicationListProps) => {
                     <p>
                       <b>{pub.authorString}</b>
                     </p>
-                    <button
-                      className="btn impc-secondary-button xs-small mt-2 mb-2"
-                      onClick={() => toggleVisibility(pub, "abstract")}
-                    >
-                      <strong>
-                        {isFieldVisible(pub, "abstract") ? "Hide" : "Show"}{" "}
-                        abstract
-                      </strong>
-                    </button>
-                    <p
-                      className={`abstract mb-2 ${
-                        isFieldVisible(pub, "abstract") ? "" : "visually-hidden"
-                      }`}
-                    >
-                      {pub.abstractText}
-                    </p>
+
+                    {!!pub.abstractText && (
+                      <>
+                        <button
+                          className="btn impc-secondary-button xs-small mt-2 mb-2"
+                          onClick={() => toggleVisibility(pub, "abstract")}
+                        >
+                          <strong>
+                            {isFieldVisible(pub, "abstract") ? "Hide" : "Show"}{" "}
+                            abstract
+                          </strong>
+                        </button>
+                        <p
+                          className={`abstract mb-2 ${
+                            isFieldVisible(pub, "abstract")
+                              ? ""
+                              : "visually-hidden"
+                          }`}
+                        >
+                          {pub.abstractText}
+                        </p>
+                      </>
+                    )}
                     <p>
                       PMID:&nbsp;
                       <a
@@ -381,5 +389,5 @@ export default PublicationsList;
 
 export const NonSSRPublicationsList = dynamic<PublicationListProps>(
   () => import("@/components/PublicationsList"),
-  { ssr: false }
+  { ssr: false },
 );

@@ -1,4 +1,3 @@
-export { default as AlleleMetadata } from "./Metadata";
 export { default as AlleleMap } from "./AlleleMap";
 export { default as Crispr } from "./Crispr";
 export { default as ESCell } from "./ESCell";

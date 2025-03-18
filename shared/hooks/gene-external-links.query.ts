@@ -16,7 +16,7 @@ type ExternalLinks = {
 
 export const useGeneExternalLinksQuery = (
   mgiGeneAccessionId: string,
-  routerIsReady: boolean
+  routerIsReady: boolean,
 ) => {
   const { data: providers } = useQuery({
     queryKey: ["external-links-providers"],
@@ -42,12 +42,12 @@ export const useGeneExternalLinksQuery = (
         .map(([providerName, links]) => ({
           providerName,
           providerDescription: Object.values(providers).find((desc: string) =>
-            desc.includes(providerName)
+            desc.includes(providerName),
           ),
           links,
         }))
         .sort((p1, p2) =>
-          p1.providerName.localeCompare(p2.providerName)
+          p1.providerName.localeCompare(p2.providerName),
         ) as Array<ExternalLinks>;
     },
     placeholderData: [],

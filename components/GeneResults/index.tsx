@@ -1,3 +1,4 @@
+"use client";
 import styles from "./styles.module.scss";
 import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
 import {
@@ -8,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { useQuery } from "@tanstack/react-query";
@@ -28,7 +29,7 @@ const GeneResult = ({
   query,
 }: {
   gene: GeneSearchResponseItem;
-  query: string;
+  query: string | undefined;
 }) => {
   const {
     entityProperties: {
@@ -75,7 +76,7 @@ const GeneResult = ({
               <i>
                 {surroundWithMarkEl(
                   (synonymsArray || []).slice(0, 10).join(", "),
-                  query
+                  query,
                 ) || "None"}
               </i>
             </p>
@@ -90,13 +91,13 @@ const GeneResult = ({
               <i>
                 {surroundWithMarkEl(
                   (humanSynonymsArray || []).slice(0, 10).join(", "),
-                  query
+                  query,
                 ) || "None"}
               </i>
             </p>
           )}
 
-          <p className="small grey mt-3">
+          <div className="small grey mt-3">
             {phenotypingDataAvailable ? (
               <p>
                 <AvailabilityIcon hasData={!!phenotypeStatus} />
@@ -125,7 +126,7 @@ const GeneResult = ({
                 data not yet available
               </span>
             )}
-          </p>
+          </div>
         </Col>
         <Col sm={4} className={styles.shortcuts}>
           <h5 className="grey text-uppercase">
@@ -148,12 +149,22 @@ const GeneResult = ({
   );
 };
 
-const GeneResults = ({ query }: { query?: string }) => {
+type GeneResultProps = {
+  initialData: GeneSearchResponse;
+  query?: string;
+};
+
+const GeneResults = ({ initialData, query }: GeneResultProps) => {
   const { data, isLoading } = useQuery({
     queryKey: ["search", "genes", query],
-    queryFn: () =>
-      fetchAPI(`/api/search/v1/search${query ? `?prefix=${query}` : ""}`),
+    queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}`),
     select: (data: GeneSearchResponse) => data.results,
+    initialData: () => {
+      if (initialData.numResults !== -1) {
+        return initialData;
+      }
+      return undefined;
+    },
   });
 
   return (

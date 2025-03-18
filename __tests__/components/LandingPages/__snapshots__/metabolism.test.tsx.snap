@@ -22,7 +22,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           </a>
           <a
             class="tab"
-            href="/search?type=phenotype"
+            href="/search?type=pheno"
           >
             Phenotypes
           </a>
@@ -178,7 +178,8 @@ exports[`Metabolism landing page renders correctly 1`] = `
         >
           IMPReSS
         </a>
-         (International Mouse Phenotyping Resource of Standardised Screens). Tests addressing the metabolic function are conducted on young adult mice at 11-16 weeks of age.
+         
+        (International Mouse Phenotyping Resource of Standardised Screens). Tests addressing the metabolic function are conducted on young adult mice at 11-16 weeks of age.
       </p>
       <h2>
         Procedures that can lead to relevant phenotype associations
@@ -1790,7 +1791,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
           >
             <img
               alt="Illustration of the action of MORE cassettes in regulatory networks"
-              src="https://www.mousephenotype.org/data/documentation/img/more-cassette.png"
+              src="/data/images/more-cassette.png"
               width="100%"
             />
           </div>
@@ -1822,7 +1823,8 @@ exports[`Metabolism landing page renders correctly 1`] = `
         Methods
       </h2>
       <p>
-        Genes with phenotypes associated to the following 
+        Genes with phenotypes associated to the following
+         
         <b>
           seven metabolic parameters
         </b>
@@ -1884,14 +1886,55 @@ exports[`Metabolism landing page renders correctly 1`] = `
         Phenotypes distribution
       </h2>
       <div
-        style="position: relative; height: 300px;"
+        style="position: relative; height: 500px;"
       >
-        <canvas
-          height="0"
-          role="img"
-          style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
-          width="0"
-        />
+        <div
+          style="display: flex; justify-content: center; align-items: center; height: 100%;"
+        >
+          <div
+            class="mt-4"
+            style="display: flex; justify-content: center;"
+          >
+            <div
+              data-test-id="CircularProgressbarWithChildren"
+            >
+              <div
+                style="position: relative; width: 100%; height: 100%;"
+              >
+                <svg
+                  class="CircularProgressbar rotating"
+                  data-test-id="CircularProgressbar"
+                  viewBox="0 0 100 100"
+                >
+                  <path
+                    class="CircularProgressbar-trail"
+                    d="
+      M 50,50
+      m 0,-44
+      a 44,44 0 1 1 0,88
+      a 44,44 0 1 1 0,-88
+    "
+                    fill-opacity="0"
+                    stroke-width="12"
+                    style="stroke: #fff; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 0px;"
+                  />
+                  <path
+                    class="CircularProgressbar-path"
+                    d="
+      M 50,50
+      m 0,-44
+      a 44,44 0 1 1 0,88
+      a 44,44 0 1 1 0,-88
+    "
+                    fill-opacity="0"
+                    stroke-width="12"
+                    style="stroke: #ccc; transition: stroke-dashoffset 2s ease 0s; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 55.29203070318034px;"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -1905,6 +1948,9 @@ exports[`Metabolism landing page renders correctly 1`] = `
             Homeostasis/metabolism IKMC/IMPC related publications
           </strong>
         </h1>
+        <div>
+          PublicationsList mock
+        </div>
       </div>
     </div>
   </div>

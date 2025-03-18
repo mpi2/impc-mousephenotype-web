@@ -1,20 +1,17 @@
-import { useRouter } from "next/router";
 import { Alert, Col, Row } from "react-bootstrap";
-import Card from "../../components/Card";
 import SortableTable from "../SortableTable";
 import { formatAlleleSymbol } from "@/utils";
 import PieChart from "../PieChart";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import ChartSummary from "@/components/Data/ChartSummary/ChartSummary";
+import ChartSummary from "./ChartSummary/ChartSummary";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { GeneralChartProps } from "@/models";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { fetchDatasetFromS3 } from "@/api-service";
+import { Card } from "@/components";
 
 const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
-  const router = useRouter();
-
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
 
   const embryoViavilityParametersMap = {
@@ -157,19 +154,19 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
     {
       label: "Total Embryos WTs",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap?.wildtype.total
+        (d) => d.parameterStableId == viabilityParameterMap?.wildtype.total,
       )?.dataPoint,
     },
     {
       label: "Total Embryos Homozygotes",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap?.homozygote.total
+        (d) => d.parameterStableId == viabilityParameterMap?.homozygote.total,
       )?.dataPoint,
     },
     {
       label: "Total Embryos Heterozygotes",
       value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap?.heterozygote.total
+        (d) => d.parameterStableId == viabilityParameterMap?.heterozygote.total,
       )?.dataPoint,
     },
   ].filter((d) => d.value != 0);
@@ -239,7 +236,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.wildtype.total
+                        viabilityParameterMap?.wildtype.total,
                     )?.dataPoint
                   }
                 </td>
@@ -248,7 +245,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.heterozygote.total
+                        viabilityParameterMap?.heterozygote.total,
                     )?.dataPoint
                   }
                 </td>
@@ -258,7 +255,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.homozygote.total
+                        viabilityParameterMap?.homozygote.total,
                     )?.dataPoint
                   }
                 </td>
@@ -267,7 +264,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap?.na.total
+                        d.parameterStableId == viabilityParameterMap?.na.total,
                     )?.dataPoint
                   }
                 </td>
@@ -279,7 +276,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.wildtype.dead
+                        viabilityParameterMap?.wildtype.dead,
                     )?.dataPoint
                   }
                 </td>
@@ -288,7 +285,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.heterozygote.dead
+                        viabilityParameterMap?.heterozygote.dead,
                     )?.dataPoint
                   }
                 </td>
@@ -297,7 +294,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.homozygote.dead
+                        viabilityParameterMap?.homozygote.dead,
                     )?.dataPoint
                   }
                 </td>
@@ -305,7 +302,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap?.na.dead
+                        d.parameterStableId == viabilityParameterMap?.na.dead,
                     )?.dataPoint
                   }
                 </td>
@@ -317,7 +314,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.wildtype.defect
+                        viabilityParameterMap?.wildtype.defect,
                     )?.dataPoint
                   }
                 </td>
@@ -326,7 +323,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.heterozygote.defect
+                        viabilityParameterMap?.heterozygote.defect,
                     )?.dataPoint
                   }
                 </td>
@@ -335,7 +332,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                     data.series.find(
                       (d) =>
                         d.parameterStableId ==
-                        viabilityParameterMap?.homozygote.defect
+                        viabilityParameterMap?.homozygote.defect,
                     )?.dataPoint
                   }
                 </td>
@@ -343,7 +340,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                   {
                     data.series.find(
                       (d) =>
-                        d.parameterStableId == viabilityParameterMap?.na.defect
+                        d.parameterStableId == viabilityParameterMap?.na.defect,
                     )?.dataPoint
                   }
                 </td>
@@ -356,7 +353,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                   data.series.find(
                     (d) =>
                       d.parameterStableId ==
-                      viabilityParameterMap?.reabsorptions
+                      viabilityParameterMap?.reabsorptions,
                   )?.dataPoint
                 }
               </p>
@@ -364,7 +361,7 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
                 Average litter size:{" "}
                 {data.series.find(
                   (d) =>
-                    d.parameterStableId == viabilityParameterMap?.litterSize
+                    d.parameterStableId == viabilityParameterMap?.litterSize,
                 )?.dataPoint || "Not supplied"}
               </p>
             </div>

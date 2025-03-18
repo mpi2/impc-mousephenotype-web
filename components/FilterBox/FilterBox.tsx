@@ -1,13 +1,15 @@
 import { Form } from "react-bootstrap";
 import { CSSProperties } from "react";
 
-type LabelProps = | {
-  hideLabel?: true,
-  label?: never
-} | {
-  hideLabel?: false;
-  label: string;
-};
+type LabelProps =
+  | {
+      hideLabel?: true;
+      label?: never;
+    }
+  | {
+      hideLabel?: false;
+      label: string;
+    };
 type CommonProps = {
   controlId: string;
   onChange: (value: string) => void;
@@ -20,6 +22,7 @@ type CommonProps = {
   allOptionEnabled?: boolean;
   displayEvenWithOnlyOneOption?: boolean;
   emitValueLowercase?: boolean;
+  prioritaseControlId?: boolean;
 };
 
 type Props = CommonProps & LabelProps;
@@ -32,16 +35,17 @@ const FilterBox = (props: Props) => {
     onChange,
     labelStyle = { marginRight: "0.5rem" },
     controlStyle = { display: "inline-block", width: 200 },
-    controlClassName = 'bg-white',
+    controlClassName = "bg-white",
     hideLabel = false,
     value,
     allOptionEnabled = true,
     displayEvenWithOnlyOneOption = false,
     emitValueLowercase = true,
+    prioritaseControlId = false,
   } = props;
   const optionalControlProps: Record<string, string> = {};
   if (hideLabel) {
-    optionalControlProps['aria-label'] = ariaLabel;
+    optionalControlProps["aria-label"] = ariaLabel;
   }
 
   if (!displayEvenWithOnlyOneOption && options?.length === 1) {
@@ -49,7 +53,9 @@ const FilterBox = (props: Props) => {
   }
 
   return (
-    <div data-test-id={`filterbox-${label || controlId}`}>
+    <div
+      data-testid={`filterbox-${prioritaseControlId ? controlId : label || controlId}`}
+    >
       {!hideLabel && (
         <label htmlFor={controlId} className="grey" style={labelStyle}>
           {label}:
@@ -63,19 +69,18 @@ const FilterBox = (props: Props) => {
           className={controlClassName}
           value={value}
           disabled={displayEvenWithOnlyOneOption && options?.length === 1}
-          onChange={el =>
+          onChange={(el) =>
             onChange(el.target.value === "all" ? undefined : el.target.value)
           }
+          data-testid={`control-${prioritaseControlId ? controlId : label || controlId}`}
           {...optionalControlProps}
         >
-          {allOptionEnabled && (
-            <option value={"all"}>All</option>
-          )}
-          {
-            options
-              .sort()
-              .map((p) => <option value={p} key={p}>{p}</option>)
-          }
+          {allOptionEnabled && <option value={"all"}>All</option>}
+          {options.sort().map((p) => (
+            <option value={p} key={p}>
+              {p}
+            </option>
+          ))}
         </Form.Select>
       ) : (
         <Form.Control
@@ -86,14 +91,17 @@ const FilterBox = (props: Props) => {
           value={value}
           id={controlId}
           className={controlClassName}
-          onChange={el =>
-            onChange((emitValueLowercase ? el.target.value.toLowerCase() : el.target.value) || undefined)
+          onChange={(el) =>
+            onChange(
+              (emitValueLowercase
+                ? el.target.value.toLowerCase()
+                : el.target.value) || undefined,
+            )
           }
           {...optionalControlProps}
-        >
-        </Form.Control>
+        ></Form.Control>
       )}
     </div>
-  )
+  );
 };
 export default FilterBox;

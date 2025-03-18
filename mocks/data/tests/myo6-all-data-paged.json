@@ -1,0 +1,670 @@
+{
+  "content": [
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "6de37a8253054beba38b0ad163b5bf1f",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_OFD_001",
+      "procedureName": "Open Field",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 7,
+      "procedureMinMales": 7,
+      "parameterStableId": "IMPC_OFD_019_001",
+      "parameterName": "Number of center entries",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "c70f32f2e2351a2ebd5ff4858191947b",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male",
+        "female"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": 8,
+      "femaleMutantCount": 8,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "12.0677939616793",
+      "significant": true,
+      "displayPhenotype": {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      },
+      "statisticalMethod": "Linear Mixed Model framework, LME, not including Weight",
+      "status": "Successful",
+      "significantPhenotype": {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      },
+      "intermediatePhenotypes": [
+        {
+          "id": "MP:0004924",
+          "name": "abnormal behavior"
+        },
+        {
+          "id": "MP:0003491",
+          "name": "abnormal voluntary movement"
+        },
+        {
+          "id": "MP:0002066",
+          "name": "abnormal motor capabilities/coordination/movement"
+        }
+      ],
+      "topLevelPhenotypes": [
+        {
+          "id": "MP:0005386",
+          "name": "behavior/neurological phenotype"
+        }
+      ],
+      "potentialPhenotypes": [
+        {
+          "id": "MP:0001399",
+          "name": "hyperactivity"
+        }
+      ],
+      "dataType": "unidimensional"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "0c6b47f8c6808874319773fd12c7b828",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_OFD_001",
+      "procedureName": "Open Field",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 7,
+      "procedureMinMales": 7,
+      "parameterStableId": "IMPC_OFD_009_001",
+      "parameterName": "Whole arena average speed",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "c70f32f2e2351a2ebd5ff4858191947b",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male",
+        "female"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": 8,
+      "femaleMutantCount": 8,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "14.2692016872182",
+      "significant": true,
+      "displayPhenotype": {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      },
+      "statisticalMethod": "Linear Mixed Model framework, LME, including Weight",
+      "status": "Successful",
+      "significantPhenotype": {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      },
+      "intermediatePhenotypes": [
+        {
+          "id": "MP:0004924",
+          "name": "abnormal behavior"
+        },
+        {
+          "id": "MP:0003491",
+          "name": "abnormal voluntary movement"
+        },
+        {
+          "id": "MP:0002066",
+          "name": "abnormal motor capabilities/coordination/movement"
+        }
+      ],
+      "topLevelPhenotypes": [
+        {
+          "id": "MP:0005386",
+          "name": "behavior/neurological phenotype"
+        }
+      ],
+      "potentialPhenotypes": [
+        {
+          "id": "MP:0001399",
+          "name": "hyperactivity"
+        }
+      ],
+      "dataType": "unidimensional"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "95020adfc4074c535a6d4e7140430b33",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_PAT_002",
+      "procedureName": "Gross Pathology and Tissue Collection",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 2,
+      "procedureMinMales": 2,
+      "parameterStableId": "IMPC_PAT_063_001",
+      "parameterName": "Sternum",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": null,
+      "femaleMutantCount": null,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "1.0",
+      "significant": true,
+      "displayPhenotype": null,
+      "statisticalMethod": "Supplied as data",
+      "status": "Successful",
+      "significantPhenotype": {
+        "id": "MP:0000157",
+        "name": "abnormal sternum morphology"
+      },
+      "intermediatePhenotypes": [
+        {
+          "id": "MP:0004508",
+          "name": "abnormal pectoral girdle bone morphology"
+        },
+        {
+          "id": "MP:0004624",
+          "name": "abnormal thoracic cage morphology"
+        },
+        {
+          "id": "MP:0005508",
+          "name": "abnormal skeleton morphology"
+        },
+        {
+          "id": "MP:0009250",
+          "name": "abnormal appendicular skeleton morphology"
+        },
+        {
+          "id": "MP:0002114",
+          "name": "abnormal axial skeleton morphology"
+        }
+      ],
+      "topLevelPhenotypes": [
+        {
+          "id": "MP:0005390",
+          "name": "skeleton phenotype"
+        }
+      ],
+      "potentialPhenotypes": [
+        {
+          "id": "MP:0000157",
+          "name": "abnormal sternum morphology"
+        }
+      ],
+      "dataType": "adult-gross-path"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "8d7d2ee08269d11face6e90c023a5e66",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_PAT_002",
+      "procedureName": "Gross Pathology and Tissue Collection",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 2,
+      "procedureMinMales": 2,
+      "parameterStableId": "IMPC_PAT_023_002",
+      "parameterName": "Urinary bladder",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": null,
+      "femaleMutantCount": null,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "1.0",
+      "significant": true,
+      "displayPhenotype": null,
+      "statisticalMethod": "Supplied as data",
+      "status": "Successful",
+      "significantPhenotype": {
+        "id": "MP:0011874",
+        "name": "enlarged urinary bladder"
+      },
+      "intermediatePhenotypes": [
+        {
+          "id": "MP:0031094",
+          "name": "organomegaly"
+        },
+        {
+          "id": "MP:0000538",
+          "name": "abnormal urinary bladder morphology"
+        },
+        {
+          "id": "MP:0000516",
+          "name": "abnormal renal/urinary system morphology"
+        }
+      ],
+      "topLevelPhenotypes": [
+        {
+          "id": "MP:0005367",
+          "name": "renal/urinary system phenotype"
+        },
+        {
+          "id": "MP:0005378",
+          "name": "growth/size/body region phenotype"
+        }
+      ],
+      "potentialPhenotypes": [
+        {
+          "id": "MP:0011874",
+          "name": "enlarged urinary bladder"
+        }
+      ],
+      "dataType": "adult-gross-path"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "67d140adf99f1ccb83d4cc0906e7f4e3",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_HIS_003",
+      "procedureName": "Histopathology",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 2,
+      "procedureMinMales": 2,
+      "parameterStableId": "IMPC_HIS_001_002",
+      "parameterName": "Brain - MPATH pathological entity term",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "female"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": null,
+      "femaleMutantCount": null,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "1.0",
+      "significant": true,
+      "displayPhenotype": null,
+      "statisticalMethod": "Supplied as data",
+      "status": "Successful",
+      "significantPhenotype": null,
+      "intermediatePhenotypes": [
+        {
+          "id": "MPATH:1",
+          "name": "cell and tissue damage"
+        },
+        {
+          "id": "MPATH:603",
+          "name": "pathological anatomical entity"
+        },
+        {
+          "id": "MPATH:33",
+          "name": "intracellular and extracellular accumulation"
+        },
+        {
+          "id": "MPATH:1000",
+          "name": "pathological phenotype observation"
+        },
+        {
+          "id": "MPATH:0",
+          "name": "pathological entity"
+        }
+      ],
+      "topLevelPhenotypes": [],
+      "potentialPhenotypes": [],
+      "dataType": "histopathology"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "edf5b890c0086ac61a9452260f12a693",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_HIS_003",
+      "procedureName": "Histopathology",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 2,
+      "procedureMinMales": 2,
+      "parameterStableId": "IMPC_HIS_001_002",
+      "parameterName": "Brain - MPATH pathological entity term",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": null,
+      "femaleMutantCount": null,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "1.0",
+      "significant": true,
+      "displayPhenotype": null,
+      "statisticalMethod": "Supplied as data",
+      "status": "Successful",
+      "significantPhenotype": null,
+      "intermediatePhenotypes": [
+        {
+          "id": "MPATH:1",
+          "name": "cell and tissue damage"
+        },
+        {
+          "id": "MPATH:603",
+          "name": "pathological anatomical entity"
+        },
+        {
+          "id": "MPATH:33",
+          "name": "intracellular and extracellular accumulation"
+        },
+        {
+          "id": "MPATH:1000",
+          "name": "pathological phenotype observation"
+        },
+        {
+          "id": "MPATH:0",
+          "name": "pathological entity"
+        }
+      ],
+      "topLevelPhenotypes": [],
+      "potentialPhenotypes": [],
+      "dataType": "histopathology"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "25de380279fe66e5cc7b132c9a6c05bb",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_ACS_003",
+      "procedureName": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 7,
+      "procedureMinMales": 7,
+      "parameterStableId": "IMPC_ACS_035_001",
+      "parameterName": "% Pre-pulse inhibition - PPI3",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "75e2d4826b8098ec5a07e8e5ddc05d47",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male",
+        "female"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": 8,
+      "femaleMutantCount": 8,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "-4.39097621123682",
+      "significant": true,
+      "displayPhenotype": {
+        "id": "MP:0003088",
+        "name": "abnormal prepulse inhibition"
+      },
+      "statisticalMethod": "Linear Mixed Model framework, LME, including Weight",
+      "status": "Successful",
+      "significantPhenotype": {
+        "id": "MP:0009142",
+        "name": "decreased prepulse inhibition"
+      },
+      "intermediatePhenotypes": [
+        {
+          "id": "MP:0003633",
+          "name": "abnormal nervous system physiology"
+        },
+        {
+          "id": "MP:0021009",
+          "name": "abnormal synaptic physiology"
+        },
+        {
+          "id": "MP:0002206",
+          "name": "abnormal CNS synaptic transmission"
+        },
+        {
+          "id": "MP:0003635",
+          "name": "abnormal synaptic transmission"
+        },
+        {
+          "id": "MP:0003088",
+          "name": "abnormal prepulse inhibition"
+        }
+      ],
+      "topLevelPhenotypes": [
+        {
+          "id": "MP:0003631",
+          "name": "nervous system phenotype"
+        }
+      ],
+      "potentialPhenotypes": [
+        {
+          "id": "MP:0009142",
+          "name": "decreased prepulse inhibition"
+        }
+      ],
+      "dataType": "unidimensional"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "fba860767a4b379fb5ff89f7c921e14e",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_HIS_003",
+      "procedureName": "Histopathology",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 2,
+      "procedureMinMales": 2,
+      "parameterStableId": "IMPC_HIS_141_002",
+      "parameterName": "Testis - MPATH pathological process term",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": null,
+      "femaleMutantCount": null,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "1.0",
+      "significant": true,
+      "displayPhenotype": null,
+      "statisticalMethod": "Supplied as data",
+      "status": "Successful",
+      "significantPhenotype": null,
+      "intermediatePhenotypes": [
+        {
+          "id": "MPATH:596",
+          "name": "pathological process"
+        },
+        {
+          "id": "MPATH:1000",
+          "name": "pathological phenotype observation"
+        },
+        {
+          "id": "MPATH:604",
+          "name": "defective growth and differentiation process"
+        },
+        {
+          "id": "MPATH:0",
+          "name": "pathological entity"
+        }
+      ],
+      "topLevelPhenotypes": [],
+      "potentialPhenotypes": [],
+      "dataType": "histopathology"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "ed0fafa53392d371b668c1cc45e6970a",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_OFD_001",
+      "procedureName": "Open Field",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 7,
+      "procedureMinMales": 7,
+      "parameterStableId": "IMPC_OFD_017_001",
+      "parameterName": "Center average speed",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "c70f32f2e2351a2ebd5ff4858191947b",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male",
+        "female"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": 8,
+      "femaleMutantCount": 8,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "7.59325436153087",
+      "significant": true,
+      "displayPhenotype": {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      },
+      "statisticalMethod": "Linear Mixed Model framework, LME, including Weight",
+      "status": "Successful",
+      "significantPhenotype": {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      },
+      "intermediatePhenotypes": [
+        {
+          "id": "MP:0004924",
+          "name": "abnormal behavior"
+        },
+        {
+          "id": "MP:0003491",
+          "name": "abnormal voluntary movement"
+        },
+        {
+          "id": "MP:0002066",
+          "name": "abnormal motor capabilities/coordination/movement"
+        }
+      ],
+      "topLevelPhenotypes": [
+        {
+          "id": "MP:0005386",
+          "name": "behavior/neurological phenotype"
+        }
+      ],
+      "potentialPhenotypes": [
+        {
+          "id": "MP:0001399",
+          "name": "hyperactivity"
+        }
+      ],
+      "dataType": "unidimensional"
+    },
+    {
+      "mgiGeneAccessionId": "MGI:104785",
+      "statisticalResultId": "40e9a862f62bbcc7c9d42bce5ab2a3ac",
+      "pipelineStableId": "TCP_001",
+      "procedureStableId": "IMPC_OFD_001",
+      "procedureName": "Open Field",
+      "procedureMinAnimals": null,
+      "procedureMinFemales": 7,
+      "procedureMinMales": 7,
+      "parameterStableId": "IMPC_OFD_020_001",
+      "parameterName": "Distance travelled - total",
+      "alleleAccessionId": "MGI:6257724",
+      "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
+      "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
+      "metadataGroup": "c70f32f2e2351a2ebd5ff4858191947b",
+      "zygosity": "homozygote",
+      "phenotypingCentre": "TCP",
+      "phenotypeSexes": [
+        "male",
+        "female"
+      ],
+      "projectName": "DTCC",
+      "maleMutantCount": 8,
+      "femaleMutantCount": 8,
+      "lifeStageName": "Early adult",
+      "pValue": "0.0",
+      "effectSize": "9.94652924055337",
+      "significant": true,
+      "displayPhenotype": {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      },
+      "statisticalMethod": "Linear Mixed Model framework, LME, not including Weight",
+      "status": "Successful",
+      "significantPhenotype": {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      },
+      "intermediatePhenotypes": [
+        {
+          "id": "MP:0004924",
+          "name": "abnormal behavior"
+        },
+        {
+          "id": "MP:0003491",
+          "name": "abnormal voluntary movement"
+        },
+        {
+          "id": "MP:0002066",
+          "name": "abnormal motor capabilities/coordination/movement"
+        }
+      ],
+      "topLevelPhenotypes": [
+        {
+          "id": "MP:0005386",
+          "name": "behavior/neurological phenotype"
+        }
+      ],
+      "potentialPhenotypes": [
+        {
+          "id": "MP:0001399",
+          "name": "hyperactivity"
+        }
+      ],
+      "dataType": "unidimensional"
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10,
+    "sort": {
+      "unsorted": true,
+      "sorted": false,
+      "empty": true
+    },
+    "offset": 0,
+    "unpaged": false,
+    "paged": true
+  },
+  "totalPages": 100,
+  "totalElements": 994,
+  "last": false,
+  "numberOfElements": 10,
+  "first": true,
+  "size": 10,
+  "number": 0,
+  "sort": {
+    "unsorted": true,
+    "sorted": false,
+    "empty": true
+  },
+  "empty": false
+}

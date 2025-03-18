@@ -357,9 +357,9 @@ exports[`Footer component renders correctly 1`] = `
                 <span
                   id="data-no"
                 >
-                  20.1
+                  22.1
                 </span>
-                 Data
+                 Data
               </small>
             </a>
           </h6>

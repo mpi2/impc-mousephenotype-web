@@ -1,3 +1,4 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
 import styles from "./styles.module.scss";
@@ -40,7 +41,7 @@ const SortableTable = ({
           field: headers[0].field,
           sortFn: headers[0].sortFn,
           order: "asc",
-        }
+        },
   );
 
   const hasNested = headers.some(({ children }) => children && children.length);

@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react';
-import Summary from '@/components/Gene/Summary';
+import { screen, act } from "@testing-library/react";
+import Summary from "@/components/Gene/Summary";
 import { renderWithClient } from "../../utils";
 import { GeneSummary } from "@/models/gene";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import userEvent from "@testing-library/user-event";
-
-jest.mock('next/router', () => jest.requireActual('next-router-mock'));
+import { AllelesStudiedContext, GeneContext } from "@/contexts";
 
 let gene: GeneSummary = {
   geneName: "calcium and integrin binding family member 2",
@@ -26,7 +25,7 @@ let gene: GeneSummary = {
     "limbs/digits/tail phenotype",
     "vision/eye phenotype",
     "skeleton phenotype",
-    "mortality/aging"
+    "mortality/aging",
   ],
   significantTopLevelPhenotypes: [
     "homeostasis/metabolism phenotype",
@@ -34,7 +33,7 @@ let gene: GeneSummary = {
     "hearing/vestibular/ear phenotype",
     "nervous system phenotype",
     "hematopoietic system phenotype",
-    "behavior/neurological phenotype"
+    "behavior/neurological phenotype",
   ],
   hasLacZData: true,
   hasImagingData: true,
@@ -43,61 +42,134 @@ let gene: GeneSummary = {
   hasEmbryoImagingData: false,
   hasHistopathologyData: false,
   alleleNames: [],
-  assignmentStatus: '',
+  assignmentStatus: "",
   associatedDiseasesCount: 0,
   humanGeneSymbols: [],
   humanSymbolSynonyms: [],
-  id: 'GENE-0001',
+  id: "GENE-0001",
 };
 
-describe('Gene summary component', () => {
+describe("Gene summary component", () => {
   afterEach(() => {
     // restore the spy created with spyOn
     jest.restoreAllMocks();
   });
-  it('displays physiological systems correctly', async () => {
-    renderWithClient(<Summary gene={gene} error={''} loading={false} numOfAlleles={5} />);
-    expect(screen.getByTestId('totalCount')).toHaveTextContent('19 / 24 physiological systems tested');
-    expect(screen.getByTestId('significantSystemIcons').children).toHaveLength(6);
-    expect(screen.getByTestId('significantCount')).toHaveTextContent('6')
-    expect(screen.getByTestId('notSignificantSystemIcons').children).toHaveLength(13);
-    expect(screen.getByTestId('nonSignificantCount')).toHaveTextContent('13')
-    expect(screen.getByTestId('notTestedSystemIcons').children).toHaveLength(5);
-    expect(screen.getByTestId('nonTestedCount')).toHaveTextContent('5')
-  });
-
-  it('displays data collection status correctly',() => {
-    renderWithClient(<Summary gene={gene} error={''} loading={false} numOfAlleles={5} />);
-    expect(screen.getByTestId('LacZ expression')).not.toHaveClass('dataCollectionInactive');
-    expect(screen.getByTestId('Histopathology')).toHaveClass('dataCollectionInactive');
-    expect(screen.getByTestId('Images')).not.toHaveClass('dataCollectionInactive');
-    expect(screen.getByTestId('Body weight measurements')).not.toHaveClass('dataCollectionInactive');
-    expect(screen.getByTestId('Viability data')).not.toHaveClass('dataCollectionInactive');
-    expect(screen.getByTestId('Embryo imaging data')).toHaveClass('dataCollectionInactive');
-  });
-
-  it('should have synonyms tooltip if have 3 or more', () => {
+  it("displays physiological systems correctly", async () => {
     renderWithClient(
-      <Summary gene={{...gene, synonyms: ['1', '2', '3', '4']}} error={''} loading={false} numOfAlleles={5} />
+      <GeneContext.Provider value={gene}>
+        <Summary numOfAlleles={5} />
+      </GeneContext.Provider>,
     );
-    expect(screen.getByTestId('synonyms')).toBeDefined();
+    expect(screen.getByTestId("totalCount")).toHaveTextContent(
+      "19 / 24 physiological systems tested",
+    );
+    expect(screen.getByTestId("significantSystemIcons").children).toHaveLength(
+      6,
+    );
+    expect(screen.getByTestId("significantCount")).toHaveTextContent("6");
+    expect(
+      screen.getByTestId("notSignificantSystemIcons").children,
+    ).toHaveLength(13);
+    expect(screen.getByTestId("nonSignificantCount")).toHaveTextContent("13");
+    expect(screen.getByTestId("notTestedSystemIcons").children).toHaveLength(5);
+    expect(screen.getByTestId("nonTestedCount")).toHaveTextContent("5");
   });
 
-  it('should display the number of alleles inside the button',async () => {
-    renderWithClient(<Summary gene={gene} error={''} loading={false} numOfAlleles={5} />);
-    expect(await screen.findByRole('button')).toHaveTextContent('5 Allele products available');
-    expect(await screen.findByRole('button')).toHaveAttribute('href', '#order')
+  it("displays data collection status correctly", () => {
+    renderWithClient(
+      <GeneContext.Provider value={gene}>
+        <Summary numOfAlleles={5} />
+      </GeneContext.Provider>,
+    );
+    expect(screen.getByTestId("LacZ expression")).not.toHaveClass(
+      "dataCollectionInactive",
+    );
+    expect(screen.getByTestId("Histopathology")).toHaveClass(
+      "dataCollectionInactive",
+    );
+    expect(screen.getByTestId("Images")).not.toHaveClass(
+      "dataCollectionInactive",
+    );
+    expect(screen.getByTestId("Body weight measurements")).not.toHaveClass(
+      "dataCollectionInactive",
+    );
+    expect(screen.getByTestId("Viability data")).not.toHaveClass(
+      "dataCollectionInactive",
+    );
+    expect(screen.getByTestId("Embryo imaging data")).toHaveClass(
+      "dataCollectionInactive",
+    );
   });
 
-  it('should display the number of alleles inside the button',async () => {
-    const spy = jest.spyOn(summarySystemSelectionChannel, 'emit');
+  it("should have synonyms tooltip if have 3 or more", () => {
+    renderWithClient(
+      <GeneContext.Provider value={{ ...gene, synonyms: ["1", "2", "3", "4"] }}>
+        <Summary numOfAlleles={5} />
+      </GeneContext.Provider>,
+    );
+    expect(screen.getByTestId("synonyms")).toBeDefined();
+  });
+
+  it("should display the number of alleles inside the button", async () => {
+    renderWithClient(
+      <GeneContext.Provider value={gene}>
+        <Summary numOfAlleles={5} />
+      </GeneContext.Provider>,
+    );
+    expect(await screen.findByRole("button")).toHaveTextContent(
+      "View allele products",
+    );
+    expect(await screen.findByRole("button")).toHaveAttribute("href", "#order");
+  });
+
+  it("should display the number of alleles inside the button", async () => {
+    const spy = jest.spyOn(summarySystemSelectionChannel, "emit");
     const user = userEvent.setup();
-    renderWithClient(<Summary gene={gene} error={''} loading={false} numOfAlleles={5} />);
-    await user.click(await screen.findByText(/Nervous system/i));
+    renderWithClient(
+      <GeneContext.Provider value={gene}>
+        <Summary numOfAlleles={5} />
+      </GeneContext.Provider>,
+    );
+    await act(async () => {
+      await user.click(await screen.findByText(/Nervous system/i));
+    });
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith('onSystemSelection', 'nervous system phenotype');
-    await user.click(await screen.findByText(/Hematopoietic system/i));
-    expect(spy).toHaveBeenCalledWith('onSystemSelection', 'hematopoietic system phenotype');
+    expect(spy).toHaveBeenCalledWith(
+      "onSystemSelection",
+      "nervous system phenotype",
+    );
+    await act(async () => {
+      await user.click(await screen.findByText(/Hematopoietic system/i));
+    });
+    expect(spy).toHaveBeenCalledWith(
+      "onSystemSelection",
+      "hematopoietic system phenotype",
+    );
   });
 
+  it("should change CTA button text if numOfAlleles is 0", async () => {
+    const allelesStudiedContextValue = {
+      allelesStudied: jest.fn(),
+      setAlleles: jest.fn(),
+      allelesStudiedLoading: jest.fn(),
+      setAllelesStudiedLoading: jest.fn(),
+      setNumAllelesAvailable: jest.fn(),
+      numAllelesAvailable: 0,
+    };
+    renderWithClient(
+      <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
+        <GeneContext.Provider value={gene}>
+          <Summary numOfAlleles={0} />
+        </GeneContext.Provider>
+      </AllelesStudiedContext.Provider>,
+    );
+    expect(await screen.findByRole("button")).toHaveTextContent(
+      "No allele products available",
+    );
+    expect(screen.getByRole("button")).toHaveClass(
+      "btn",
+      "btn-grey",
+      "impc-base-button",
+    );
+  });
 });

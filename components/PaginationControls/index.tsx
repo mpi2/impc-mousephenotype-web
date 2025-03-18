@@ -1,3 +1,4 @@
+"use client";
 import { CSSProperties, useEffect, useState } from "react";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +11,7 @@ type Props = {
   showEntriesInfo?: boolean;
   pageSize?: number;
   containerStyles?: CSSProperties;
-}
+};
 const PaginationControls = (props: Props) => {
   const {
     currentPage,
@@ -18,7 +19,7 @@ const PaginationControls = (props: Props) => {
     onPageChange,
     showEntriesInfo = false,
     pageSize = 25,
-    containerStyles= {},
+    containerStyles = {},
   } = props;
   const [pageRange, setPageRange] = useState([1, 2, 3]);
   const handlePageChange = (page: number) => {
@@ -42,17 +43,17 @@ const PaginationControls = (props: Props) => {
     setPageRange(
       Array.from(
         { length: rangeEnd - rangeStart + 1 },
-        (_, i) => rangeStart + i
-      )
+        (_, i) => rangeStart + i,
+      ),
     );
   };
 
   const canGoBack = currentPage >= 1;
-  const canGoForward = (currentPage + 1) < totalPages;
+  const canGoForward = currentPage + 1 < totalPages;
 
   const mergedContainerStyles = Object.assign(
     containerStyles,
-    showEntriesInfo ? { display: 'flex', justifyContent: 'space-between'} : {}
+    showEntriesInfo ? { display: "flex", justifyContent: "space-between" } : {},
   );
 
   useEffect(() => {
@@ -63,7 +64,8 @@ const PaginationControls = (props: Props) => {
     <nav aria-label="Page navigation example" style={mergedContainerStyles}>
       {!!showEntriesInfo && (
         <span>
-          Showing {(currentPage * pageSize) + 1} to {pageSize * (currentPage + 1)} of {(totalPages * pageSize).toLocaleString()} entries
+          Showing {currentPage * pageSize + 1} to {pageSize * (currentPage + 1)}{" "}
+          of {(totalPages * pageSize).toLocaleString()} entries
         </span>
       )}
       <ul className="pagination justify-content-center paginationNav">
@@ -73,13 +75,19 @@ const PaginationControls = (props: Props) => {
           className="pagNavBtn nav-btn"
           aria-label="Previous"
         >
-          <FontAwesomeIcon icon={faArrowLeft} title="previous page button" titleId="prev-page-icon"/>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            title="previous page button"
+            titleId="prev-page-icon"
+          />
         </button>
         {pageRange[0] > 1 && (
           <>
             <li className="page-item first-page">
               <button
-                className={classNames("pagNavBtn", { active: currentPage === 0 })}
+                className={classNames("pagNavBtn", {
+                  active: currentPage === 0,
+                })}
                 aria-label="Previous"
                 onClick={() => handlePageChange(0)}
               >
@@ -96,7 +104,9 @@ const PaginationControls = (props: Props) => {
         {pageRange.map((pageNumber) => (
           <li key={pageNumber} className="page-item">
             <button
-              className={classNames("pagNavBtn", { active: currentPage === (pageNumber - 1) })}
+              className={classNames("pagNavBtn", {
+                active: currentPage === pageNumber - 1,
+              })}
               onClick={() => handlePageChange(pageNumber - 1)}
             >
               {pageNumber}
@@ -127,7 +137,11 @@ const PaginationControls = (props: Props) => {
           aria-label="Next"
           onClick={() => handlePageChange(currentPage + 1)}
         >
-          <FontAwesomeIcon icon={faArrowRight} title="next page button" titleId="next-page-icon" />
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            title="next page button"
+            titleId="next-page-icon"
+          />
         </button>
       </ul>
     </nav>

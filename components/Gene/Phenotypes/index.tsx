@@ -1,21 +1,27 @@
 import { Alert, Spinner, Tab, Tabs } from "react-bootstrap";
-import Card from "../../Card";
 import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import { GenePhenotypeHits, GeneSummary } from "@/models/gene";
+import { useSearchParams } from "next/navigation";
+import { GenePhenotypeHits } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
-import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
+import {
+  PropsWithChildren,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import {
   orderPhenotypedSelectionChannel,
   summarySystemSelectionChannel,
 } from "@/eventChannels";
 import { uniq } from "lodash";
 import { Variant } from "react-bootstrap/types";
-import { SectionHeader } from "@/components";
+import { Card, SectionHeader } from "@/components";
 import { ErrorBoundary } from "react-error-boundary";
+import { GeneContext } from "@/contexts";
 
 const GraphicalAnalysis = dynamic(() => import("./GraphicalAnalysis"), {
   ssr: false,
@@ -23,7 +29,7 @@ const GraphicalAnalysis = dynamic(() => import("./GraphicalAnalysis"), {
 
 const AllelePhenotypeDiagram = dynamic(
   () => import("./AllelePhenotypeDiagram"),
-  { ssr: false }
+  { ssr: false },
 );
 
 type TabContentProps = {
@@ -46,10 +52,10 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
 
   if (isFetching) {
     return (
-      <p className="grey" style={{ padding: "1rem" }}>
+      <div className="grey" style={{ padding: "1rem" }}>
         <Spinner animation="border" size="sm" />
         &nbsp; Loading...
-      </p>
+      </div>
     );
   }
   if (isError && !data?.length && errorMessage) {
@@ -63,22 +69,30 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
 };
 
 type PhenotypesProps = {
-  gene: GeneSummary;
   sigPhenotypesFromServer: Array<GenePhenotypeHits>;
 };
 
-const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
-  const router = useRouter();
-  const [tabKey, setTabKey] = useState("significantPhenotypes");
+type DataFilters = {
+  procedureName: string | undefined;
+  topLevelPhenotypeName: string | undefined;
+  lifeStageName: string | undefined;
+  zygosity: string | undefined;
+  alleleSymbol: string | undefined;
+};
+
+const Phenotypes = ({ sigPhenotypesFromServer }: PhenotypesProps) => {
+  const gene = useContext(GeneContext);
+  const searchParams = useSearchParams();
+  const [tabKey, setTabKey] = useState<string>("significantPhenotypes");
   const [allDataCount, setAllDataCount] = useState<number>(0);
-  const [allDataFilters, setAllDataFilters] = useState({
+  const [allDataFilters, setAllDataFilters] = useState<DataFilters>({
     procedureName: undefined,
     topLevelPhenotypeName: undefined,
     lifeStageName: undefined,
     zygosity: undefined,
     alleleSymbol: undefined,
   });
-  const [allDataQuery, setAllDataQuery] = useState<string>(undefined);
+  const [allDataQuery, setAllDataQuery] = useState<string>("");
 
   const {
     phenotypeData,
@@ -87,10 +101,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
     isPhenotypeFetching,
     error: sigPhenotypeError,
     fetchStatus: sigPhenotypeFetchStatus,
-  } = useSignificantPhenotypesQuery(
-    gene.mgiGeneAccessionId,
-    router.isReady && sigPhenotypesFromServer?.length === 0
-  );
+  } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, !!gene);
 
   const sigPhenotypes = sigPhenotypesFromServer || phenotypeData;
 
@@ -100,7 +111,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
       (_) => {
         if (tabKey !== "significantPhenotypes")
           setTabKey("significantPhenotypes");
-      }
+      },
     );
     return () => {
       unsubscribeOnSystemSelection();
@@ -112,7 +123,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
       "onAlleleSelected",
       () => {
         if (tabKey !== "allData") setTabKey("allData");
-      }
+      },
     );
     return () => {
       unsubscribeOnAlleleSelection();
@@ -120,21 +131,24 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
   }, [tabKey]);
 
   useEffect(() => {
-    if (router.query.dataLifeStage && router.query.dataSearch) {
+    const dataLifeStage = searchParams.get("dataLifeStage");
+    const dataSearch = searchParams.get("dataSearch");
+    const dataQuery = searchParams.get("dataQuery");
+    if (!!dataLifeStage && !!dataSearch) {
       setTabKey("allData");
       setAllDataFilters((prevState) => ({
         ...prevState,
-        lifeStageName: router.query.dataLifeStage,
-        procedureName: router.query.dataSearch,
+        lifeStageName: dataLifeStage,
+        procedureName: dataSearch,
       }));
-      if (router.query.dataQuery) {
-        setAllDataQuery(router.query.dataQuery as string);
+      if (dataQuery) {
+        setAllDataQuery(dataQuery as string);
       }
     }
-  }, [router]);
+  }, [searchParams]);
 
   const hasDataRelatedToPWG = sigPhenotypes?.some(
-    (item) => item.projectName === "PWG"
+    (item) => item.projectName === "PWG",
   );
 
   const hasOneAlleleOrMore =
@@ -147,7 +161,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
         title="Phenotypes"
         href="https://www.mousephenotype.org/help/data-visualization/gene-pages/significant-phenotypes-measurement-charts-and-all-data-tables/"
       />
-      <Tabs activeKey={tabKey} onSelect={(key) => setTabKey(key)}>
+      <Tabs activeKey={tabKey} onSelect={(key) => setTabKey(key as string)}>
         <Tab
           eventKey="significantPhenotypes"
           title={`Significant Phenotypes (${sigPhenotypes?.length || 0})`}
@@ -193,7 +207,7 @@ const Phenotypes = ({ gene, sigPhenotypesFromServer }: PhenotypesProps) => {
             >
               <GraphicalAnalysis
                 mgiGeneAccessionId={gene.mgiGeneAccessionId}
-                routerIsReady={router.isReady}
+                routerIsReady={true}
                 chartIsVisible={tabKey === "measurementsChart"}
               />
             </ErrorBoundary>
