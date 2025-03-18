@@ -8,12 +8,12 @@ import Link from "next/link";
 import {
   Card,
   ChordDiagram,
-  NonSSRPublicationsList,
   PieChart,
   PleiotropyChart,
   Search,
   SortableTable,
 } from "@/components";
+import PublicationsList from "@/components/PublicationsList";
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
 
@@ -293,7 +293,7 @@ const CardiovascularLandingPage = () => {
                 Cardiovascular system IKMC/IMPC related publications
               </strong>
             </h1>
-            <NonSSRPublicationsList prefixQuery="cardio cardia heart" />
+            <PublicationsList prefixQuery="cardio cardia heart" />
           </Container>
         </Card>
       </Container>

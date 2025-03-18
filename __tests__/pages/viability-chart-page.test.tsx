@@ -4,6 +4,7 @@ import { API_URL, renderWithClient } from "../utils";
 import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import viabilityData from "../../mocks/data/tests/myo6-viability-data.json";
+import datasetData from "../../mocks/data/tests/datasets/9deeb0258d5159af7911eebdc0ba2ed3.json";
 
 window.ResizeObserver =
   window.ResizeObserver ||
@@ -57,6 +58,12 @@ describe("Viability chart page", () => {
         `${API_URL}/api/v1/genes/MGI:104785/dataset/viability`,
         (req, res, ctx) => {
           return res(ctx.json(viabilityData));
+        },
+      ),
+      rest.get(
+        `https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/9deeb0258d5159af7911eebdc0ba2ed3.json`,
+        (req, res, ctx) => {
+          return res(ctx.json(datasetData));
         },
       ),
     );

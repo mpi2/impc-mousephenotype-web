@@ -7,11 +7,20 @@ import { rest } from "msw";
 import React from "react";
 import { GeneContext } from "@/contexts";
 import { GeneSummary } from "@/models/gene";
+import fgf2ExpressionData from "../../../mocks/data/tests/fgf2-expressions-data.json";
 
 const gene = { mgiGeneAccessionId: "MGI:95516", geneSymbol: "Fgf2" };
 
 describe("Gene expressions component", () => {
   it("should display information", async () => {
+    testServer.use(
+      rest.get(
+        `${API_URL}/api/v1/genes/MGI:95516/expression`,
+        (_, res, ctx) => {
+          return res(ctx.json(fgf2ExpressionData));
+        },
+      ),
+    );
     renderWithClient(
       <GeneContext.Provider value={gene as GeneSummary}>
         <GeneExpressions initialData={[]} />
@@ -33,6 +42,14 @@ describe("Gene expressions component", () => {
   });
 
   it("should be able to view content from the 2 tabs", async () => {
+    testServer.use(
+      rest.get(
+        `${API_URL}/api/v1/genes/MGI:95516/expression`,
+        (_, res, ctx) => {
+          return res(ctx.json(fgf2ExpressionData));
+        },
+      ),
+    );
     const user = userEvent.setup();
     renderWithClient(
       <GeneContext.Provider value={gene as GeneSummary}>

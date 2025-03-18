@@ -955,35 +955,58 @@ exports[`Viability chart page renders correctly 1`] = `
                     <td>
                       Male and female
                     </td>
-                    <td />
-                    <td />
+                    <td>
+                      38
+                    </td>
+                    <td>
+                      95
+                    </td>
                     <td>
                        
+                      43
                     </td>
                     <td />
-                    <td />
+                    <td>
+                      176
+                    </td>
                   </tr>
                   <tr>
                     <td>
                       Male
                     </td>
+                    <td>
+                      22
+                    </td>
+                    <td>
+                      37
+                    </td>
+                    <td>
+                      25
+                    </td>
                     <td />
-                    <td />
-                    <td />
-                    <td />
-                    <td />
+                    <td>
+                      105
+                    </td>
                   </tr>
                   <tr>
                     <td>
                       Female
                     </td>
-                    <td />
-                    <td />
-                    <td />
+                    <td>
+                      16
+                    </td>
+                    <td>
+                      37
+                    </td>
+                    <td>
+                      18
+                    </td>
                     <td>
                       N/A
                     </td>
-                    <td />
+                    <td>
+                      71
+                    </td>
                   </tr>
                 </tbody>
               </table>

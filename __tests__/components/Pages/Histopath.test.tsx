@@ -30,6 +30,12 @@ describe("Histopath page", () => {
   it("provides generic functionality of a normal table", async () => {
     testServer.use(
       rest.get(
+        `${API_URL}/api/v1/genes/MGI:1922702/summary`,
+        (req, res, ctx) => {
+          return res(ctx.json(ascc2SummaryData));
+        },
+      ),
+      rest.get(
         `${API_URL}/api/v1/genes/MGI:1922702/histopathology`,
         (req, res, ctx) => {
           return res(ctx.json(ascc2Data));
@@ -65,6 +71,12 @@ describe("Histopath page", () => {
   it("should filter by anatomy term if is specified in a query param", async () => {
     testServer.use(
       rest.get(
+        `${API_URL}/api/v1/genes/MGI:1922702/summary`,
+        (req, res, ctx) => {
+          return res(ctx.json(ascc2SummaryData));
+        },
+      ),
+      rest.get(
         `${API_URL}/api/v1/genes/MGI:1922702/histopathology`,
         (req, res, ctx) => {
           return res(ctx.json(ascc2Data));
@@ -99,6 +111,12 @@ describe("Histopath page", () => {
 
   it("should display a modal to view tissue details", async () => {
     testServer.use(
+      rest.get(
+        `${API_URL}/api/v1/genes/MGI:1922702/summary`,
+        (req, res, ctx) => {
+          return res(ctx.json(ascc2SummaryData));
+        },
+      ),
       rest.get(
         `${API_URL}/api/v1/genes/MGI:1922702/histopathology`,
         (req, res, ctx) => {

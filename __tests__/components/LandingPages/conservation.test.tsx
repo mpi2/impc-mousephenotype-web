@@ -1,9 +1,9 @@
-import { render, waitFor } from "@testing-library/react";
+import { waitFor } from "@testing-library/react";
 import ConservationLandingPage from "@/app/conservation/conservation-page";
 import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
-import { API_URL, createTestQueryClient } from "../../utils";
-import { QueryClientProvider } from "@tanstack/react-query";
+import { API_URL, renderWithClient } from "../../utils";
+import pleiotropyData from "../../../mocks/data/tests/landing-pages/phenotype-pleiotropy.json";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -19,9 +19,13 @@ window.ResizeObserver =
     unobserve: jest.fn(),
   }));
 
+jest.mock("@/components/PublicationsList", () => {
+  const PublicationsListMock = () => <div>PublicationsList mock</div>;
+  return PublicationsListMock;
+});
+
 describe("Conservation landing page", () => {
   it("renders correctly", async () => {
-    const client = createTestQueryClient();
     testServer.use(
       rest.get(`${API_URL}/api/v1/publications`, (req, res, ctx) => {
         return res(
@@ -38,12 +42,14 @@ describe("Conservation landing page", () => {
           }),
         );
       }),
+      rest.get(
+        `https://impc-datasets.s3.eu-west-2.amazonaws.com/landing-page-data/dr22.1/phenotype_pleiotropy.json`,
+        (req, res, ctx) => {
+          return res(ctx.json(pleiotropyData));
+        },
+      ),
     );
-    const { container } = render(
-      <QueryClientProvider client={client}>
-        <ConservationLandingPage />
-      </QueryClientProvider>,
-    );
+    const { container } = renderWithClient(<ConservationLandingPage />);
     await waitFor(() => expect(container).toMatchSnapshot());
   });
 });
