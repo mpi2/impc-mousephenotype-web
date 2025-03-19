@@ -7,6 +7,7 @@ import PaginationControls from "../PaginationControls";
 import { Form, InputGroup } from "react-bootstrap";
 import { usePagination } from "@/hooks";
 import styles from "./styles.module.scss";
+import classnames from "classnames";
 
 type EmbryoData = {
   id: string;
@@ -118,6 +119,7 @@ const EmbryoDataAvailabilityGrid = ({
   const onClickTick = (cell: any) => {
     const geneAcc = geneIndex[cell.serieId];
     const dataType = cell.data.x;
+    console.log({ geneAcc, dataType });
     // dont do anything if cell is empty
     if (cell.value === 0) {
       return;
@@ -155,7 +157,7 @@ const EmbryoDataAvailabilityGrid = ({
             aria-label="window of lethality filter"
           />
         </div>
-        <div className="">
+        <div>
           <InputGroup>
             <InputGroup.Text id="gene-filter">
               Filter by gene symbol
@@ -168,7 +170,7 @@ const EmbryoDataAvailabilityGrid = ({
             />
           </InputGroup>
         </div>
-        <div className="">
+        <div>
           <Form.Group>
             <Form.Check
               style={{ display: "flex", alignItems: "center", gap: "0.5em" }}
@@ -180,7 +182,27 @@ const EmbryoDataAvailabilityGrid = ({
           </Form.Group>
         </div>
       </div>
-
+      <div className={styles.labelsContainer}>
+        <div className={styles.colorLabelContainer}>
+          <span className={classnames(styles.baseLabel, styles.noData)}></span>
+          &nbsp;No data
+        </div>
+        <div className={styles.colorLabelContainer}>
+          <span
+            className={classnames(styles.baseLabel, styles.imagesAvailable)}
+          ></span>
+          &nbsp;Images available
+        </div>
+        <div className={styles.colorLabelContainer}>
+          <span
+            className={classnames(
+              styles.baseLabel,
+              styles.volumetricAnalysisAvailable,
+            )}
+          ></span>
+          &nbsp;Images and automated volumetric analysis available
+        </div>
+      </div>
       <div
         style={{
           height: `${
@@ -246,24 +268,6 @@ const EmbryoDataAvailabilityGrid = ({
             borderWidth={0.25}
             borderColor="#000"
             enableLabels={false}
-            legends={[
-              {
-                anchor: "right",
-                translateX: 50,
-                translateY: 0,
-                length: 200,
-                thickness: 10,
-                direction: "column",
-                tickPosition: "after",
-                tickSize: 3,
-                tickSpacing: 4,
-                tickOverlap: false,
-                tickFormat: ">-.0s",
-                title: "Value →",
-                titleAlign: "middle",
-                titleOffset: 4,
-              },
-            ]}
             annotations={[]}
             onClick={onClickTick}
             theme={{
