@@ -223,15 +223,16 @@ const EmbryoDataAvailabilityGrid = ({
               renderTick: (tick: any) => (
                 <ClickableAxisTick
                   tick={tick}
-                  onClick={() =>
+                  onClick={() => {
+                    const selectedGene = chartData[tick.tickIndex];
                     window.open(
                       `https://mousephenotype.org/data/genes/${
-                        data[tick.tickIndex].mgiAccessionId
+                        selectedGene?.mgiGeneAccessionId
                       }`,
                       "_blank",
                       "noreferrer",
-                    )
-                  }
+                    );
+                  }}
                 />
               ),
             }}
