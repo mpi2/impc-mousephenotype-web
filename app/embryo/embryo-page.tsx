@@ -378,7 +378,6 @@ const EmbryoLandingPage = () => {
             </h1>
             <Row>
               <Col>
-                <p>Filter by Window of Lethality</p>
                 {data && (
                   <EmbryoDataAvailabilityGrid
                     selectOptions={heatMapSelectOptions ?? []}

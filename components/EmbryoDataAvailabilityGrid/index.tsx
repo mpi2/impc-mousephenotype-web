@@ -138,8 +138,12 @@ const EmbryoDataAvailabilityGrid = ({
 
   return (
     <>
-      <div className="row m-2">
-        <div className="col-6">
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <span>Filter by Window of Lethality</span>
+        <span>Viewing {filteredData.length} results</span>
+      </div>
+      <div className="m-2" style={{ display: "flex", flexDirection: "column" }}>
+        <div className="">
           <Select
             options={selectOptions}
             isMulti
@@ -150,7 +154,7 @@ const EmbryoDataAvailabilityGrid = ({
             aria-label="window of lethality filter"
           />
         </div>
-        <div className="col-3">
+        <div className="">
           <InputGroup>
             <InputGroup.Text id="gene-filter">
               Filter by gene symbol
@@ -163,7 +167,7 @@ const EmbryoDataAvailabilityGrid = ({
             />
           </InputGroup>
         </div>
-        <div className="col-3">
+        <div className="">
           <Form.Group>
             <Form.Check
               style={{ display: "flex", alignItems: "center", gap: "0.5em" }}
@@ -175,9 +179,7 @@ const EmbryoDataAvailabilityGrid = ({
           </Form.Group>
         </div>
       </div>
-      <div className="row">
-        <span>Viewing {filteredData.length} results</span>
-      </div>
+
       <div
         style={{
           height: `${
