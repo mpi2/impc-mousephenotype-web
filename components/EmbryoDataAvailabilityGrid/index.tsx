@@ -248,9 +248,9 @@ const EmbryoDataAvailabilityGrid = ({
                   onClick={() => {
                     const selectedGene = chartData[tick.tickIndex];
                     window.open(
-                      `https://mousephenotype.org/data/genes/${
+                      `/data/genes/${
                         selectedGene?.mgiGeneAccessionId
-                      }`,
+                      }?dataQuery=viability`,
                       "_blank",
                       "noreferrer",
                     );
