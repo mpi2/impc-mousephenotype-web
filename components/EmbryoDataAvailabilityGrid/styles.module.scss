@@ -1,0 +1,15 @@
+
+.textContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.controlsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.selectorContainer {
+  flex-grow: 0.5;
+}

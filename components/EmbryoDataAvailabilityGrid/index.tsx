@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from "react-select";
 import PaginationControls from "../PaginationControls";
 import { Form, InputGroup } from "react-bootstrap";
 import { usePagination } from "@/hooks";
+import styles from "./styles.module.scss";
 
 type EmbryoData = {
   id: string;
@@ -138,12 +139,12 @@ const EmbryoDataAvailabilityGrid = ({
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div className={styles.textContainer}>
         <span>Filter by Window of Lethality</span>
         <span>Viewing {filteredData.length} results</span>
       </div>
-      <div className="m-2" style={{ display: "flex", flexDirection: "column" }}>
-        <div className="">
+      <div className={styles.controlsContainer}>
+        <div className={styles.selectorContainer}>
           <Select
             options={selectOptions}
             isMulti
@@ -172,7 +173,7 @@ const EmbryoDataAvailabilityGrid = ({
             <Form.Check
               style={{ display: "flex", alignItems: "center", gap: "0.5em" }}
               id="gene-control"
-              label="Only display genes with data"
+              label="Only display genes with image data"
               checked={viewAllGenes}
               onChange={(e) => onDataFilterChange(e.target.checked)}
             />

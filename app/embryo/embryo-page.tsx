@@ -374,7 +374,7 @@ const EmbryoLandingPage = () => {
         <Card id="embryo-data-grid">
           <Container>
             <h1>
-              <strong>Embryo Data Availability Grid</strong>
+              <strong>Embryo Imaging Data Availability Grid</strong>
             </h1>
             <Row>
               <Col>
