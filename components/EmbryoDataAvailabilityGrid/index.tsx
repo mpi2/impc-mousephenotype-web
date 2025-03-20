@@ -167,12 +167,9 @@ const EmbryoDataAvailabilityGrid = ({
 
   return (
     <>
-      <div className={styles.textContainer}>
-        <span>Filter by Window of Lethality</span>
-        <span>Viewing {filteredData.length} results</span>
-      </div>
       <div className={styles.controlsContainer}>
         <div className={styles.selectorContainer}>
+          <label>Filter by Window of Lethality</label>
           <Select
             options={selectOptions}
             isMulti
@@ -184,19 +181,23 @@ const EmbryoDataAvailabilityGrid = ({
           />
         </div>
         <div>
-          <InputGroup>
-            <InputGroup.Text id="gene-filter">
+          <Form.Group>
+            <Form.Label id="gene-filter" style={{ marginBottom: 0 }}>
               Filter by gene symbol
-            </InputGroup.Text>
+            </Form.Label>
             <Form.Control
+              className="bg-white"
               id="gene-control"
               aria-describedby="gene-filter"
+              placeholder="Pparg..."
+              style={{ minHeight: 47 }}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-          </InputGroup>
+          </Form.Group>
         </div>
         <div>
+          <span>Viewing {filteredData.length} results</span>
           <Form.Group>
             <Form.Check
               style={{ display: "flex", alignItems: "center", gap: "0.5em" }}
