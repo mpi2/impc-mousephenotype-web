@@ -8,6 +8,7 @@ import { Form, InputGroup } from "react-bootstrap";
 import { usePagination } from "@/hooks";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
+import { capitalize } from "lodash";
 
 type EmbryoData = {
   id: string;
@@ -42,7 +43,10 @@ const EmbryoDataAvailabilityGrid = ({
   const [query, setQuery] = useState<string>(undefined);
   const [selectedWOL, setSelectedWOL] = useState<Array<string>>([]);
 
-  const dataIndex = useMemo(
+  const dataIndex: Record<
+    string,
+    Array<{ geneSymbol: string; mgiGeneAccessionId: string }>
+  > = useMemo(
     () =>
       secondaryViabilityData?.reduce(
         (acc, d) => ({
@@ -55,15 +59,32 @@ const EmbryoDataAvailabilityGrid = ({
   );
 
   const processedData = useMemo(() => {
+    function getWOLSByGene(mgiGeneAccessionId: string) {
+      return Object.entries(dataIndex).reduce((res, [wol, genesByWol]) => {
+        if (
+          genesByWol
+            .map((g) => g.mgiGeneAccessionId)
+            .includes(mgiGeneAccessionId)
+        ) {
+          if (!!res) {
+            return `${res}, ${capitalize(wol)}`;
+          }
+          return capitalize(wol);
+        }
+        return res;
+      }, "");
+    }
     return data.map((d) => ({
       id: d.geneSymbol,
       mgiGeneAccessionId: d.mgiGeneAccessionId,
       data: [
         "OPT E9.5",
+        "MicroCT E9.5",
         "MicroCT E14.5-E15.5",
         "MicroCT E18.5",
         "Mager Lab Pre E9.5",
         "Vignettes",
+        "Window(s) of Lethality ¹",
       ].map((p) => ({
         x: p,
         y: d.procedureNames.includes(p)
@@ -74,10 +95,11 @@ const EmbryoDataAvailabilityGrid = ({
             ? 1
             : p === "Vignettes" && d.hasVignettes
               ? 1
-              : 0,
+              : p === "Window(s) of Lethality ¹" &&
+                getWOLSByGene(d.mgiGeneAccessionId),
       })),
     }));
-  }, [data]);
+  }, [data, dataIndex]);
 
   const filteredData = useMemo(() => {
     const newSelectedGenes = selectedWOL
@@ -119,14 +141,18 @@ const EmbryoDataAvailabilityGrid = ({
   const onClickTick = (cell: any) => {
     const geneAcc = geneIndex[cell.serieId];
     const dataType = cell.data.x;
-    console.log({ geneAcc, dataType });
     // dont do anything if cell is empty
     if (cell.value === 0) {
       return;
     }
     let url = "";
     if (
-      ["OPT E9.5", "MicroCT E14.5-E15.5", "MicroCT E18.5"].includes(dataType)
+      [
+        "OPT E9.5",
+        "MicroCT E9.5",
+        "MicroCT E14.5-E15.5",
+        "MicroCT E18.5",
+      ].includes(dataType)
     ) {
       url = `//www.mousephenotype.org/embryoviewer/?mgi=${geneAcc}`;
     } else if (dataType === "Vignettes") {
@@ -202,6 +228,12 @@ const EmbryoDataAvailabilityGrid = ({
           ></span>
           &nbsp;Images and automated volumetric analysis available
         </div>
+        <div className={styles.colorLabelContainer}>
+          <span
+            className={classnames(styles.baseLabel, styles.associationWithWOL)}
+          ></span>
+          &nbsp;Lethality window association
+        </div>
       </div>
       <div
         style={{
@@ -220,6 +252,12 @@ const EmbryoDataAvailabilityGrid = ({
             data={chartData}
             margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
             valueFormat={(v: any) => {
+              if (v === "") {
+                return "No associated lethality window";
+              }
+              if (!!v.length) {
+                return v;
+              }
               const options = [
                 "No data",
                 "Images Available",
@@ -260,8 +298,12 @@ const EmbryoDataAvailabilityGrid = ({
             }}
             axisRight={null}
             colors={(cell: any) => {
+              const value = cell.value || 0;
+              if (value === "" || !!value.length) {
+                return "#E1BE6A";
+              }
               const options = ["#ECECEC", "#17a2b8", "#ed7b25"];
-              return options[cell.value || 0];
+              return options[value];
             }}
             labelTextColor="black"
             emptyColor="#ccc"
@@ -291,6 +333,12 @@ const EmbryoDataAvailabilityGrid = ({
           onPageChange={setActivePage}
         />
       )}
+      <div style={{ fontSize: "85%", flex: "1 0 100%" }}>
+        <span>
+          ¹ A gene can belong to multiple lethality windows because has been
+          studied in multiple centers or multiple alleles have been studied.
+        </span>
+      </div>
     </>
   );
 };
