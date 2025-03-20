@@ -2,10 +2,11 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCircleQuestion,
   faExternalLink,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { Suspense, useMemo } from "react";
+import { Suspense, useMemo, ReactNode, PropsWithChildren } from "react";
 import Markdown from "react-markdown";
 import { NumberCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import {
@@ -34,6 +35,8 @@ import {
 } from "@/models/release";
 import { CallsTrendChart, DataPointsTrendChart } from "@/components";
 import { SortType } from "@/models";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 const listOfPastReleases = [
   "22.0",
@@ -84,24 +87,41 @@ ChartJS.register(
   Colors,
 );
 
+const ValueWrapper = (
+  props: PropsWithChildren<{ additionalValue: boolean }>,
+) => {
+  return props.additionalValue ? (
+    <div>{props.children}</div>
+  ) : (
+    <>{props.children}</>
+  );
+};
+
 const valuePair = (
   key: string,
   value: string | number,
   enableJustify: boolean = false,
-) => (
-  <div
-    style={
-      enableJustify ? { display: "grid", gridTemplateColumns: "1fr 1fr" } : {}
-    }
-  >
-    <span className="grey">{key}: </span>
-    {typeof value === "number" ? (
-      <strong>{value.toLocaleString()}</strong>
-    ) : (
-      <strong>{value}</strong>
-    )}
-  </div>
-);
+  additionalValueEl?: ReactNode,
+) => {
+  return (
+    <div
+      className={classNames({
+        [styles.valuePairJustified]: enableJustify,
+        [styles.withAdditionalElement]: !!additionalValueEl,
+      })}
+    >
+      <span className="grey">{key}: </span>
+      <ValueWrapper additionalValue={!!additionalValueEl}>
+        {typeof value === "number" ? (
+          <strong>{value.toLocaleString()}</strong>
+        ) : (
+          <strong>{value}</strong>
+        )}
+        {additionalValueEl}
+      </ValueWrapper>
+    </div>
+  );
+};
 
 type Props = {
   releaseMetadata: ReleaseMetadata;
@@ -629,6 +649,14 @@ const ReleaseNotesPage = (props: Props) => {
                 "Number of phenotyped mutant lines",
                 summaryCounts[dataReleaseVersion].phenotypedLines,
                 true,
+                <Link
+                  href="https://dev.mousephenotype.org/help/mouse-production/faqs/what-is-a-phenotyped-line/"
+                  className="btn"
+                  aria-label="What is a line?"
+                  target="_blank"
+                >
+                  <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
+                </Link>,
               )}
               {valuePair(
                 "Number of phenotype calls",
