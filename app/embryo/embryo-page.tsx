@@ -1,6 +1,6 @@
 "use client";
 import { useEmbryoLandingQuery } from "@/hooks";
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useMemo, useState, useEffect } from "react";
 import { SortType } from "@/models";
 import Link from "next/link";
 import Search from "@/components/Search";
@@ -31,6 +31,8 @@ const EmbryoLandingPage = () => {
   const { data } = useEmbryoLandingQuery();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [listGenes, setListGenes] = useState<SelectedLine>(null);
+  const [displayGenesWithData, setDisplayGenesWithData] =
+    useState<boolean>(true);
   const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
 
   data?.primaryViabilityTable?.sort((a, b) =>
@@ -80,6 +82,37 @@ const EmbryoLandingPage = () => {
     setModalVisible(false);
     setListGenes(null);
   };
+
+  const fullAvailabilityGrid = useMemo(() => {
+    if (
+      data?.secondaryViabilityData?.length &&
+      data?.embryoDataAvailabilityGrid?.length
+    ) {
+      return displayGenesWithData
+        ? data.embryoDataAvailabilityGrid
+        : data.secondaryViabilityData
+            .flatMap((genesByWOL) =>
+              genesByWOL.genes.map((gene) => {
+                const availabilityData = data.embryoDataAvailabilityGrid.find(
+                  (data) => data.mgiGeneAccessionId === gene.mgiGeneAccessionId,
+                );
+                return !!availabilityData
+                  ? availabilityData
+                  : {
+                      ...gene,
+                      analysisViewUrl: "",
+                      embryoViewerUrl: "",
+                      hasAutomatedAnalysis: false,
+                      hasVignettes: false,
+                      isUmassGene: false,
+                      procedureNames: [],
+                    };
+              }),
+            )
+            .sort((a, b) => a.geneSymbol.localeCompare(b.geneSymbol));
+    }
+    return [];
+  }, [data, displayGenesWithData]);
 
   return (
     <>
@@ -341,16 +374,17 @@ const EmbryoLandingPage = () => {
         <Card id="embryo-data-grid">
           <Container>
             <h1>
-              <strong>Embryo Data Availability Grid</strong>
+              <strong>Embryo Imaging Data Availability Grid</strong>
             </h1>
             <Row>
               <Col>
-                <p>Filter by Window of Lethality</p>
                 {data && (
                   <EmbryoDataAvailabilityGrid
-                    selectOptions={heatMapSelectOptions || []}
-                    data={data.embryoDataAvailabilityGrid || []}
-                    secondaryViabilityData={data.secondaryViabilityData || []}
+                    selectOptions={heatMapSelectOptions ?? []}
+                    data={fullAvailabilityGrid ?? []}
+                    secondaryViabilityData={data.secondaryViabilityData ?? []}
+                    viewAllGenes={displayGenesWithData}
+                    onDataFilterChange={setDisplayGenesWithData}
                   />
                 )}
               </Col>
