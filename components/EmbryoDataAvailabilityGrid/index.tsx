@@ -1,10 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
 import Select from "react-select";
 import PaginationControls from "../PaginationControls";
 import { Form, InputGroup } from "react-bootstrap";
+import { usePagination } from "@/hooks";
+import styles from "./styles.module.scss";
+import classnames from "classnames";
+import { capitalize } from "lodash";
 
 type EmbryoData = {
   id: string;
@@ -25,106 +29,113 @@ type Props = {
   selectOptions: Array<{ value: string; label: string }>;
   data: Array<any>;
   secondaryViabilityData: Array<any>;
+  viewAllGenes: boolean;
+  onDataFilterChange: (value: boolean) => void;
 };
 
 const EmbryoDataAvailabilityGrid = ({
   selectOptions,
   data,
   secondaryViabilityData,
+  viewAllGenes,
+  onDataFilterChange,
 }: Props) => {
   const [query, setQuery] = useState<string>(undefined);
-  const [activePage, setActivePage] = useState(0);
-  const [totalPages, setTotalPages] = useState(
-    data ? Math.ceil(data.length / 25) : 0,
-  );
-  const [chartData, setChartData] = useState<Array<EmbryoData>>([]);
+  const [selectedWOL, setSelectedWOL] = useState<Array<string>>([]);
 
-  useEffect(() => {
-    setTotalPages(data ? Math.ceil(data.length / 25) : 0);
-    setChartData(
-      data
-        .filter((gene) =>
-          !!query
-            ? gene.geneSymbol.toLowerCase().includes(query.toLowerCase())
-            : true,
-        )
-        .slice(activePage * 25, activePage * 25 + 25)
-        .map((d) => ({
-          id: d.geneSymbol,
-          mgiGeneAccessionId: d.mgiGeneAccessionId,
-          data: [
-            "OPT E9.5",
-            "MicroCT E14.5-E15.5",
-            "MicroCT E18.5",
-            "Mager Lab Pre E9.5",
-            "Vignettes",
-          ].map((p) => ({
-            x: p,
-            y: d.procedureNames.includes(p)
-              ? d.hasAutomatedAnalysis
-                ? 2
-                : 1
-              : p === "Mager Lab Pre E9.5" && d.isUmassGene
-                ? 1
-                : p === "Vignettes" && d.hasVignettes
-                  ? 1
-                  : 0,
-          })),
-        })),
+  const dataIndex: Record<
+    string,
+    Array<{ geneSymbol: string; mgiGeneAccessionId: string }>
+  > = useMemo(
+    () =>
+      secondaryViabilityData?.reduce(
+        (acc, d) => ({
+          [d.windowOfLethality]: d.genes,
+          ...acc,
+        }),
+        {},
+      ),
+    [secondaryViabilityData],
+  );
+
+  const processedData = useMemo(() => {
+    function getWOLSByGene(mgiGeneAccessionId: string) {
+      return Object.entries(dataIndex).reduce((res, [wol, genesByWol]) => {
+        if (
+          genesByWol
+            .map((g) => g.mgiGeneAccessionId)
+            .includes(mgiGeneAccessionId)
+        ) {
+          if (!!res) {
+            return `${res}, ${capitalize(wol)}`;
+          }
+          return capitalize(wol);
+        }
+        return res;
+      }, "");
+    }
+    return data.map((d) => ({
+      id: d.geneSymbol,
+      mgiGeneAccessionId: d.mgiGeneAccessionId,
+      data: [
+        "OPT E9.5",
+        "MicroCT E9.5",
+        "MicroCT E14.5-E15.5",
+        "MicroCT E18.5",
+        "Mager Lab Pre E9.5",
+        "Vignettes",
+        "Window(s) of Lethality ¹",
+      ].map((p) => ({
+        x: p,
+        y: d.procedureNames.includes(p)
+          ? d.hasAutomatedAnalysis
+            ? 2
+            : 1
+          : p === "Mager Lab Pre E9.5" && d.isUmassGene
+            ? 1
+            : p === "Vignettes" && d.hasVignettes
+              ? 1
+              : p === "Window(s) of Lethality ¹" &&
+                getWOLSByGene(d.mgiGeneAccessionId),
+      })),
+    }));
+  }, [data, dataIndex]);
+
+  const filteredData = useMemo(() => {
+    const newSelectedGenes = selectedWOL
+      .flatMap((wol) => dataIndex[wol])
+      .sort((a, b) => a.geneSymbol.localeCompare(b.geneSymbol))
+      .map((d) => d.mgiGeneAccessionId);
+    const selectedData = !!newSelectedGenes.length
+      ? newSelectedGenes
+          .map((geneId) =>
+            processedData.find((d) => d.mgiGeneAccessionId === geneId),
+          )
+          .filter(Boolean)
+      : processedData;
+    return selectedData.filter((gene) =>
+      !!query ? gene?.id.toLowerCase().includes(query.toLowerCase()) : true,
     );
-  }, [data, activePage, query]);
+  }, [processedData, query, selectedWOL, dataIndex]);
 
-  const geneIndex = chartData?.reduce(
-    (acc, d) => ({ [d.id]: d.mgiGeneAccessionId, ...acc }),
-    {},
-  );
+  const {
+    paginatedData: chartData,
+    activePage,
+    setActivePage,
+    totalPages,
+  } = usePagination(filteredData, 25);
 
-  const dataIndex = secondaryViabilityData?.reduce(
-    (acc, d) => ({
-      [d.windowOfLethality]: d.genes,
-      ...acc,
-    }),
-    {},
+  const geneIndex = useMemo(
+    () =>
+      chartData?.reduce(
+        (acc, d) => ({ [d.id]: d.mgiGeneAccessionId, ...acc }),
+        {},
+      ),
+    [chartData],
   );
 
   const onChangeWOL = (selected) => {
-    const newSelectedGenes = selected
-      .flatMap((s) => dataIndex[s.value])
-      .map((d) => d.mgiGeneAccessionId);
-    const newData =
-      selected.length && data
-        ? data.filter((g) => newSelectedGenes.includes(g.mgiGeneAccessionId))
-        : data;
-    setActivePage(0);
-    setTotalPages(Math.ceil(newData.length / 25));
-    setChartData(
-      newData
-        .filter((gene) =>
-          !!query
-            ? gene.geneSymbol.toLowerCase().includes(query.toLowerCase())
-            : true,
-        )
-        .slice(0, 25)
-        .map((d) => ({
-          id: d.geneSymbol,
-          mgiGeneAccessionId: d.mgiGeneAccessionId,
-          data: [
-            "OPT E9.5",
-            "MicroCT E14.5-E15.5",
-            "MicroCT E18.5",
-            "UMASS Pre E9.5",
-          ].map((p) => ({
-            x: p,
-            y: d.procedureNames.includes(p)
-              ? d.hasAutomatedAnalysis
-                ? 2
-                : 1
-              : p === "UMASS Pre E9.5" && d.isUmassGene
-                ? 1
-                : 0,
-          })),
-        })),
-    );
+    setSelectedWOL(selected.map((s) => s.value));
   };
 
   const onClickTick = (cell: any) => {
@@ -136,7 +147,12 @@ const EmbryoDataAvailabilityGrid = ({
     }
     let url = "";
     if (
-      ["OPT E9.5", "MicroCT E14.5-E15.5", "MicroCT E18.5"].includes(dataType)
+      [
+        "OPT E9.5",
+        "MicroCT E9.5",
+        "MicroCT E14.5-E15.5",
+        "MicroCT E18.5",
+      ].includes(dataType)
     ) {
       url = `//www.mousephenotype.org/embryoviewer/?mgi=${geneAcc}`;
     } else if (dataType === "Vignettes") {
@@ -151,8 +167,9 @@ const EmbryoDataAvailabilityGrid = ({
 
   return (
     <>
-      <div className="row m-2 ">
-        <div className="col-6">
+      <div className={styles.controlsContainer}>
+        <div className={styles.selectorContainer}>
+          <label>Filter by Window of Lethality</label>
           <Select
             options={selectOptions}
             isMulti
@@ -163,18 +180,60 @@ const EmbryoDataAvailabilityGrid = ({
             aria-label="window of lethality filter"
           />
         </div>
-        <div className="col-6">
-          <InputGroup>
-            <InputGroup.Text id="gene-filter">
+        <div>
+          <Form.Group>
+            <Form.Label id="gene-filter" style={{ marginBottom: 0 }}>
               Filter by gene symbol
-            </InputGroup.Text>
+            </Form.Label>
             <Form.Control
+              className="bg-white"
               id="gene-control"
               aria-describedby="gene-filter"
+              placeholder="Pparg..."
+              style={{ minHeight: 47 }}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-          </InputGroup>
+          </Form.Group>
+        </div>
+        <div>
+          <span>Viewing {filteredData.length} results</span>
+          <Form.Group>
+            <Form.Check
+              style={{ display: "flex", alignItems: "center", gap: "0.5em" }}
+              id="gene-control"
+              label="Only display genes with image data"
+              checked={viewAllGenes}
+              onChange={(e) => onDataFilterChange(e.target.checked)}
+            />
+          </Form.Group>
+        </div>
+      </div>
+      <div className={styles.labelsContainer}>
+        <div className={styles.colorLabelContainer}>
+          <span className={classnames(styles.baseLabel, styles.noData)}></span>
+          &nbsp;No data
+        </div>
+        <div className={styles.colorLabelContainer}>
+          <span
+            className={classnames(styles.baseLabel, styles.imagesAvailable)}
+          ></span>
+          &nbsp;Images available
+        </div>
+        <div className={styles.colorLabelContainer}>
+          <span
+            className={classnames(
+              styles.baseLabel,
+              styles.volumetricAnalysisAvailable,
+            )}
+          ></span>
+          &nbsp;Images and automated volumetric analysis available
+        </div>
+        <div className={styles.colorLabelContainer}>
+          <span
+            className={classnames(styles.baseLabel, styles.associationWithWOL)}
+          ></span>
+          &nbsp;Lethality window association
         </div>
       </div>
       <div
@@ -194,6 +253,12 @@ const EmbryoDataAvailabilityGrid = ({
             data={chartData}
             margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
             valueFormat={(v: any) => {
+              if (v === "") {
+                return "No associated lethality window";
+              }
+              if (!!v.length) {
+                return v;
+              }
               const options = [
                 "No data",
                 "Images Available",
@@ -219,46 +284,33 @@ const EmbryoDataAvailabilityGrid = ({
               renderTick: (tick: any) => (
                 <ClickableAxisTick
                   tick={tick}
-                  onClick={() =>
+                  onClick={() => {
+                    const selectedGene = chartData[tick.tickIndex];
                     window.open(
-                      `https://mousephenotype.org/data/genes/${
-                        data[tick.tickIndex].mgiAccessionId
-                      }`,
+                      `/data/genes/${
+                        selectedGene?.mgiGeneAccessionId
+                      }?dataQuery=viability`,
                       "_blank",
                       "noreferrer",
-                    )
-                  }
+                    );
+                  }}
                 />
               ),
             }}
             axisRight={null}
             colors={(cell: any) => {
+              const value = cell.value || 0;
+              if (value === "" || !!value.length) {
+                return "#E1BE6A";
+              }
               const options = ["#ECECEC", "#17a2b8", "#ed7b25"];
-              return options[cell.value || 0];
+              return options[value];
             }}
             labelTextColor="black"
             emptyColor="#ccc"
             borderWidth={0.25}
             borderColor="#000"
             enableLabels={false}
-            legends={[
-              {
-                anchor: "right",
-                translateX: 50,
-                translateY: 0,
-                length: 200,
-                thickness: 10,
-                direction: "column",
-                tickPosition: "after",
-                tickSize: 3,
-                tickSpacing: 4,
-                tickOverlap: false,
-                tickFormat: ">-.0s",
-                title: "Value →",
-                titleAlign: "middle",
-                titleOffset: 4,
-              },
-            ]}
             annotations={[]}
             onClick={onClickTick}
             theme={{
@@ -282,6 +334,12 @@ const EmbryoDataAvailabilityGrid = ({
           onPageChange={setActivePage}
         />
       )}
+      <div style={{ fontSize: "85%", flex: "1 0 100%" }}>
+        <span>
+          ¹ A gene can belong to multiple lethality windows because has been
+          studied in multiple centers or multiple alleles have been studied.
+        </span>
+      </div>
     </>
   );
 };

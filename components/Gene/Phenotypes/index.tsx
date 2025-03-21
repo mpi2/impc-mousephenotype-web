@@ -144,6 +144,10 @@ const Phenotypes = ({ sigPhenotypesFromServer }: PhenotypesProps) => {
       if (dataQuery) {
         setAllDataQuery(dataQuery as string);
       }
+    } else if (!!dataQuery) {
+      setTabKey("allData");
+      setAllDataQuery(dataQuery as string);
+      document.getElementById("data")?.scrollIntoView();
     }
   }, [searchParams]);
 
