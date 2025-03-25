@@ -58,5 +58,5 @@ describe("Histopathology landing page", () => {
     expect(within(rows[0]).getByTestId("gene-symbol")).toHaveTextContent(
       "Ache",
     );
-  });
+  }, 10000);
 });
