@@ -89,14 +89,18 @@ describe("Embryo viability chart", () => {
       <SupportingDataPage initialDatasets={[]} />,
     );
     await waitFor(() =>
+      expect(screen.getAllByRole("link")[3]).toHaveTextContent(
+        "Go Back to 1700003F12Rik",
+      ),
+    );
+    await waitFor(() =>
       expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
         "preweaning lethality, incomplete penetrance",
       ),
     );
     const dataComparisonTable = screen.getAllByRole("table")[0];
     const rowToSelect = within(dataComparisonTable).getAllByRole("row")[3];
-    expect(rowToSelect).not.toHaveClass("highlighted-row");
-    await user.click(rowToSelect);
+    expect(rowToSelect).toHaveClass("highlighted-row");
     expect(screen.getAllByRole("table").length).toBe(2);
     expect(container).toMatchSnapshot();
   });
