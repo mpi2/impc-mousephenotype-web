@@ -35,31 +35,13 @@ describe("Image comparator page", () => {
       rest.get(
         `${API_URL}/api/v1/images/find_by_mgi_and_stable_id`,
         (req, res, ctx) => {
-          const paramStableId = req.url.searchParams.get("parameterStableId");
-          const mgiGeneAccessionId = req.url.searchParams.get("pid");
-          if (
-            paramStableId === "IMPC_XRY_048_001" &&
-            mgiGeneAccessionId === "MGI:1931838"
-          ) {
-            return res(ctx.json(dbn1MutantImages));
-          }
+          return res(ctx.json(dbn1MutantImages));
         },
       ),
-    );
-    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_stable_id_and_sample_id`,
         (req, res, ctx) => {
-          const paramStableId = req.url.searchParams.get("parameterStableId");
-          const biologicalSampleGroup = req.url.searchParams.get(
-            "biologicalSampleGroup",
-          );
-          if (
-            paramStableId === "IMPC_XRY_048_001" &&
-            biologicalSampleGroup === "control"
-          ) {
-            return res(ctx.json(dbn1ControlImages));
-          }
+          return res(ctx.json(dbn1ControlImages));
         },
       ),
     );
@@ -141,31 +123,13 @@ describe("Image comparator page", () => {
       rest.get(
         `${API_URL}/api/v1/images/find_by_mgi_and_stable_id`,
         (req, res, ctx) => {
-          const paramStableId = req.url.searchParams.get("parameterStableId");
-          const mgiGeneAccessionId = req.url.searchParams.get("pid");
-          if (
-            paramStableId === "IMPC_ALZ_075_001" &&
-            mgiGeneAccessionId === "MGI:1931838"
-          ) {
-            return res(ctx.json(dbn1LaczMutantImages));
-          }
+          return res(ctx.json(dbn1LaczMutantImages));
         },
       ),
-    );
-    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_stable_id_and_sample_id`,
         (req, res, ctx) => {
-          const paramStableId = req.url.searchParams.get("parameterStableId");
-          const biologicalSampleGroup = req.url.searchParams.get(
-            "biologicalSampleGroup",
-          );
-          if (
-            paramStableId === "IMPC_ALZ_075_001" &&
-            biologicalSampleGroup === "control"
-          ) {
-            return res(ctx.json(dbn1LaczControlImages));
-          }
+          return res(ctx.json(dbn1LaczControlImages));
         },
       ),
     );
