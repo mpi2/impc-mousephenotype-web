@@ -20,20 +20,20 @@ const filterChartSeries = (zygosity: string, seriesArray: Array<any>) => {
     return seriesArray.filter((c) => c.sex === "male");
   }
   const validExperimentalSeries = seriesArray.filter(
-    (c) => c.sampleGroup === "experimental" && c.value > 0
+    (c) => c.sampleGroup === "experimental" && c.value > 0,
   );
   const validExperimentalSeriesSexes = validExperimentalSeries.map(
-    (c) => c.sex
+    (c) => c.sex,
   );
   const controlSeries = seriesArray.filter(
     (c) =>
       c.sampleGroup === "control" &&
-      validExperimentalSeriesSexes.includes(c.sex)
+      validExperimentalSeriesSexes.includes(c.sex),
   );
   return sortBy(
     [...controlSeries, ...validExperimentalSeries],
     "sex",
-    "sampleGroup"
+    "sampleGroup",
   );
 };
 
@@ -89,7 +89,7 @@ const Categorical = ({
               value: (count / total) * 100,
             });
           });
-        })
+        }),
       );
       allData = sortBy(allData, ["sex", "sampleGroup"]);
       return {
@@ -103,15 +103,19 @@ const Categorical = ({
     placeholderData: { series: [] },
   });
 
-  const reportedPValue =
-    formatPValue(datasetSummary["reportedPValue"]) || "N/A";
+  const combinedPValue =
+    formatPValue(
+      datasetSummary["statisticalMethod"]["attributes"][
+        "genotypeEffectPValue"
+      ] ?? datasetSummary.reportedPValue,
+    ) || "N/A";
   const maleKoEffectPValue =
     formatPValue(
-      datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"]
+      datasetSummary["statisticalMethod"]["attributes"]["maleKoEffectPValue"],
     ) || "N/A";
   const femaleKoEffectPValue =
     formatPValue(
-      datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"]
+      datasetSummary["statisticalMethod"]["attributes"]["femaleKoEffectPValue"],
     ) || "N/A";
 
   return (
@@ -134,7 +138,7 @@ const Categorical = ({
               <p className="mb-0">
                 <strong>Combined Male and Female P value</strong>
               </p>
-              <p>{reportedPValue}</p>
+              <p>{combinedPValue}</p>
               <p className="mb-0">
                 <strong>Males only</strong>
               </p>
@@ -162,12 +166,12 @@ const Categorical = ({
                     ({ sex, sampleGroup }) =>
                       `${capitalize(sex)} ${getZygosityLabel(
                         datasetSummary.zygosity,
-                        sampleGroup
-                      )}`
+                        sampleGroup,
+                      )}`,
                   )
                   .map((c) => {
                     return { width: 2, label: c, disabled: true };
-                  })
+                  }),
               )}
             >
               {data.categories.map((category, index) => {
@@ -179,7 +183,7 @@ const Categorical = ({
                         <td key={`${sampleGroup}_${sex}_${category}`}>
                           {categoriesData[category] || 0}
                         </td>
-                      )
+                      ),
                     )}
                   </tr>
                 );
