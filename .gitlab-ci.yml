@@ -74,4 +74,4 @@ jest_unit_tests:
       when: on_success
   script:
     - yarn install --inmutable
-    - yarn test --watchAll=false --ci
+    - yarn run test:ci

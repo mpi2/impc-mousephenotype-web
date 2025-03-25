@@ -105,16 +105,8 @@ exports[`Embryo viability chart renders correctly 1`] = `
               Go Back to
              
             <i>
-              <span
-                aria-busy="true"
-                aria-live="polite"
-              >
-                <span
-                  class="react-loading-skeleton"
-                  style="width: 50px;"
-                >
-                  ‌
-                </span>
+              <span>
+                1700003F12Rik
               </span>
             </i>
           </a>
@@ -129,14 +121,6 @@ exports[`Embryo viability chart renders correctly 1`] = `
           preweaning lethality, incomplete penetrance
         </strong>
       </h1>
-      <div
-        class="mb-2 mt-4"
-      >
-        <div
-          class="spinner-border spinner-border-sm"
-        />
-          Loading data
-      </div>
       <div
         class="buttonsWrapper top "
         data-testid="top-controls-wrapper"
@@ -537,14 +521,14 @@ exports[`Embryo viability chart renders correctly 1`] = `
               <p>
                 A 
                 Viability Primary Screen
-                 phenotypic assay was performed on a mutant strain carrying the 
+                 phenotypic assay was performed on a mutant strain carrying the 
                 <i>
                   1700003F12Rik
                   <sup>
                     tm1.1(KOMP)Vlcg
                   </sup>
                 </i>
-                 allele. The charts below show the proportion of wild type, heterozygous, and homozygous offspring.
+                 allele. The charts below show the proportion of wild type, heterozygous, and homozygous offspring.
               </p>
             </div>
             <div
@@ -802,13 +786,13 @@ exports[`Embryo viability chart renders correctly 1`] = `
                       </th>
                       <th
                         rowspan="2"
-                        width="8.333333333333332%"
+                        width="10%"
                       >
                         <button
                           class="inlineButton headerButton disabled"
                           style="font-weight: inherit;"
                         >
-                          Hemi
+                          Hemi ¹
                            
                         </button>
                       </th>

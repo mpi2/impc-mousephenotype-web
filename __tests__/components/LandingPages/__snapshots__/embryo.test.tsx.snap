@@ -514,7 +514,7 @@ exports[`Embryo landing page renders correctly 1`] = `
       >
         <h1>
           <strong>
-            Embryo Data Availability Grid
+            Embryo Imaging Data Availability Grid
           </strong>
         </h1>
         <div
@@ -523,15 +523,15 @@ exports[`Embryo landing page renders correctly 1`] = `
           <div
             class="col"
           >
-            <p>
-              Filter by Window of Lethality
-            </p>
             <div
-              class="row m-2 "
+              class="controlsContainer"
             >
               <div
-                class="col-6"
+                class="selectorContainer"
               >
+                <label>
+                  Filter by Window of Lethality
+                </label>
                 <div
                   class="basic-multi-select css-b62m3t-container"
                 >
@@ -610,25 +610,87 @@ exports[`Embryo landing page renders correctly 1`] = `
                   </div>
                 </div>
               </div>
-              <div
-                class="col-6"
-              >
-                <div
-                  class="input-group"
-                >
-                  <span
-                    class="input-group-text"
+              <div>
+                <div>
+                  <label
+                    class="form-label"
                     id="gene-filter"
+                    style="margin-bottom: 0px;"
                   >
                     Filter by gene symbol
-                  </span>
+                  </label>
                   <input
                     aria-describedby="gene-filter"
-                    class="form-control"
+                    class="bg-white form-control"
                     id="gene-control"
+                    placeholder="Pparg..."
+                    style="min-height: 47px;"
                     value=""
                   />
                 </div>
+              </div>
+              <div>
+                <span>
+                  Viewing 
+                  730
+                   results
+                </span>
+                <div>
+                  <div
+                    class="form-check"
+                    style="display: flex; align-items: center; gap: 0.5em;"
+                  >
+                    <input
+                      checked=""
+                      class="form-check-input"
+                      id="gene-control"
+                      type="checkbox"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="gene-control"
+                      title=""
+                    >
+                      Only display genes with image data
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="labelsContainer"
+            >
+              <div
+                class="colorLabelContainer"
+              >
+                <span
+                  class="baseLabel noData"
+                />
+                 No data
+              </div>
+              <div
+                class="colorLabelContainer"
+              >
+                <span
+                  class="baseLabel imagesAvailable"
+                />
+                 Images available
+              </div>
+              <div
+                class="colorLabelContainer"
+              >
+                <span
+                  class="baseLabel volumetricAnalysisAvailable"
+                />
+                 Images and automated volumetric analysis available
+              </div>
+              <div
+                class="colorLabelContainer"
+              >
+                <span
+                  class="baseLabel associationWithWOL"
+                />
+                 Lethality window association
               </div>
             </div>
             <div
@@ -745,6 +807,13 @@ exports[`Embryo landing page renders correctly 1`] = `
                 </button>
               </ul>
             </nav>
+            <div
+              style="font-size: 85%; flex: 1 0 100%;"
+            >
+              <span>
+                ¹ A gene can belong to multiple lethality windows because has been studied in multiple centers or multiple alleles have been studied.
+              </span>
+            </div>
           </div>
         </div>
       </div>
