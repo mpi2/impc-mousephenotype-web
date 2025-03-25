@@ -1491,9 +1491,6 @@ exports[`Allele page renders properly 1`] = `
         </div>
       </div>
     </div>
-    <div>
-      Genome Browser mock
-    </div>
     <div
       class="card"
     >
@@ -2814,9 +2811,6 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
            XLS
         </button>
       </div>
-    </div>
-    <div>
-      Genome Browser mock
     </div>
     <div
       class="card"
