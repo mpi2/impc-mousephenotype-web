@@ -6,9 +6,9 @@ import {
   LoadingProgressBar,
   Search,
   PaginationControls,
-  ChordDiagram,
   PieChart,
 } from "@/components";
+import ChordDiagram from "@/components/ChordDiagram";
 import data from "../../../mocks/data/landing-pages/idg.json";
 import {
   useMemo,
@@ -31,7 +31,6 @@ import {
 import Link from "next/link";
 import classNames from "classnames";
 import styles from "./styles.module.scss";
-import NonSSR from "@/hoc/nonSSR";
 import { usePagination } from "@/hooks";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -179,7 +178,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
   };
 
   return (
-    <NonSSR>
+    <>
       <div className={styles.controls}>
         <div>
           Show
@@ -264,7 +263,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
         showEntriesInfo
         pageSize={pageSize}
       />
-    </NonSSR>
+    </>
   );
 };
 
