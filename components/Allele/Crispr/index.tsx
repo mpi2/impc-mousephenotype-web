@@ -127,7 +127,7 @@ const Crispr = ({
           )}
         </Card>
       )}
-      <Card>
+      <Card data-testid="crispr-section">
         <h2>Crispr details</h2>
         <p>
           <a

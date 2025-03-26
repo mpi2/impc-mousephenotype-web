@@ -60,7 +60,7 @@ const Mice = ({
     "tissueEnquiryLink"
   );
   return (
-    <Card id="mice">
+    <Card id="mice" data-testid="mice-section">
       <h2>Mice</h2>
       {!data && data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>

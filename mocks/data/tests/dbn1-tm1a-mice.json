@@ -1,0 +1,64 @@
+[
+  {
+    "productId": "PIN:0000032760",
+    "alleleId": 11509.0,
+    "geneSymbol": "Dbn1",
+    "mgiGeneAccessionId": "MGI:1931838",
+    "alleleType": "a",
+    "alleleName": "tm1a(KOMP)Wtsi",
+    "alleleDescription": "KO first allele (reporter-tagged insertion with conditional potential)",
+    "alleleCategory": "Knockout First",
+    "alleleHasIssue": false,
+    "name": "MCKS",
+    "productionCentre": "WTSI",
+    "status": "Genotype Confirmed",
+    "statusDate": "2021-08-07T18:48:01.412279Z",
+    "associatedProductEsCellName": "EPD0211_3_A05",
+    "associatedProductColonyName": "",
+    "associatedProductVectorName": "PRPGS00070_C_D05",
+    "ikmcProjectId": "40214",
+    "designId": 49236.0,
+    "designIdData": true,
+    "designLink": "https://nginx.mousephenotype-dev.org/api/v1/alleles/htgt/designId:49236",
+    "cassette": "L1L2_Bact_P",
+    "backgroundColonyStrain": "C57BL/6NTac",
+    "deleterStrain": "",
+    "testStrain": "C57BL/6NTac",
+    "qcData": [
+      {
+        "productionQc": {
+          "tvBackboneAssay": "pass",
+          "fivePrimeCassetteIntegrity": "pass",
+          "neoCountQpcr": "pass",
+          "loaQpcr": "pass",
+          "laczSrPcr": "pass",
+          "mutantSpecificSrPcr": "pass",
+          "loxpConfirmation": "pass",
+          "fivePrimeLrPcr": "fail",
+          "homozygousLoaSrPcr": "pass",
+          "threePrimeLrPcr": "pass"
+        }
+      }
+    ],
+    "typeOfMicroinjection": "ES Cell",
+    "contactNames": "WTSI",
+    "orders": [
+      {
+        "orderName": "EMMA",
+        "orderLink": "https://www.infrafrontier.eu/emma/strain-search/?category=genesalleles&keyword=Dbn1"
+      }
+    ],
+    "alleleDesignProject": "IMPC",
+    "type": "mouse",
+    "productionCompleted": true,
+    "contactLinks": "mailto:mouseinterest@sanger.ac.uk?Subject=Mouse Line for Dbn1",
+    "otherLinks": {
+      "genbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file",
+      "alleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/allele.png",
+      "alleleSimpleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png",
+      "vectorGenbankFile": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file",
+      "vectorAlleleImage": "https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+    },
+    "tissueDistribution": []
+  }
+]

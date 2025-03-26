@@ -5,6 +5,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watchAll",
+    "test:ci": "jest --ci",
     "local": "NEXT_PUBLIC_PROXY_ENABLED=TRUE concurrently \"lcp --proxyUrl $(grep NEXT_PUBLIC_API_ROOT .env.development | cut -d '=' -f2)\" \"lcp --proxyUrl http://wp-p1m2-0c:5000/  --port 8020 \" \"next dev\""
   },
   "dependencies": {
@@ -60,6 +61,7 @@
     "remark-breaks": "^4.0.0",
     "sass": "^1.49.0",
     "slick-carousel": "^1.8.1",
+    "ts-jest": "^29.2.6",
     "usehooks-ts": "2.15.0",
     "xlsx": "^0.18.5"
   },

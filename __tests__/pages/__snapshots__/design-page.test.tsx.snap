@@ -1,0 +1,376 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Design page renders data correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <span
+          class="subheadingSection primary"
+        >
+          <button
+            style="border: 0px; background: none; padding: 0px;"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to 
+            <span
+              style="font-style: normal;"
+            >
+              Allele page
+            </span>
+          </button>
+        </span>
+      </div>
+      <h1
+        class="mb-4 mt-2"
+      >
+        <strong>
+          Design Oligos - High Throughput Gene Targeting
+        </strong>
+        <span>
+           | Design Id: 
+          40489
+        </span>
+      </h1>
+      <img
+        alt=""
+        class="img-fluid"
+        src="/data/images/target_design_trimmed.png"
+      />
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Oligos
+      </h2>
+      <div
+        class="tableWrapper"
+      >
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Type
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Start
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Stop
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="41.66666666666667%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Sequence
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Assembly
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  CHR
+                   
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton disabled"
+                  style="font-weight: inherit;"
+                >
+                  Strand
+                   
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                D3
+              </td>
+              <td>
+                80226525
+              </td>
+              <td>
+                80226574
+              </td>
+              <td>
+                TTTTTGGGTATATTTCTATATATCTGTTTAATTTCACTCTCACACTGTGC
+              </td>
+              <td>
+                GRCm38
+              </td>
+              <td>
+                9
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td>
+                D5
+              </td>
+              <td>
+                80226416
+              </td>
+              <td>
+                80226465
+              </td>
+              <td>
+                GCACTTAATAAATCTACAGAATGAGAAGTCCGAGAACCAGTTAACCGACT
+              </td>
+              <td>
+                GRCm38
+              </td>
+              <td>
+                9
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td>
+                G3
+              </td>
+              <td>
+                80231030
+              </td>
+              <td>
+                80231079
+              </td>
+              <td>
+                TGGGATCTTTTGTTTTCCCATATGAATTTTAATAGTTTTTTCTACCTATG
+              </td>
+              <td>
+                GRCm38
+              </td>
+              <td>
+                9
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td>
+                G5
+              </td>
+              <td>
+                80221059
+              </td>
+              <td>
+                80221108
+              </td>
+              <td>
+                GGACAGCAAAAAAGATGTGGAAGATAACTGTAAGTATTAAGTTCAAAGTT
+              </td>
+              <td>
+                GRCm38
+              </td>
+              <td>
+                9
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td>
+                U3
+              </td>
+              <td>
+                80225775
+              </td>
+              <td>
+                80225824
+              </td>
+              <td>
+                TTTTATCTGTAAGCTTCTGGATTCACATCTCACTTTGTTGGATCATAACC
+              </td>
+              <td>
+                GRCm38
+              </td>
+              <td>
+                9
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td>
+                U5
+              </td>
+              <td>
+                80225712
+              </td>
+              <td>
+                80225761
+              </td>
+              <td>
+                ATTGTGAGAACTTCCCAAATGATCTGCGGTTCCCTTGCCATTCTAAAACC
+              </td>
+              <td>
+                GRCm38
+              </td>
+              <td>
+                9
+              </td>
+              <td>
+                1
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;

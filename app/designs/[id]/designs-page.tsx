@@ -48,7 +48,9 @@ const Oligo = () => {
             <h1 className="mb-4 mt-2">
               <strong>Design Oligos - High Throughput Gene Targeting</strong>
             </h1>
-            <p className="grey">Loading...</p>
+            <p className="grey" data-testid="loading-text">
+              Loading...
+            </p>
           </Card>
         </Container>
       </>
@@ -70,6 +72,7 @@ const Oligo = () => {
                   color: "inherit",
                 }}
                 onClick={() => {
+                  console.log("BACK");
                   router.back();
                 }}
               >

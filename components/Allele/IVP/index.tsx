@@ -20,7 +20,7 @@ const IntermediateVector = ({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "ivp", alleleName],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/alleles/ivp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
+        `/api/v1/alleles/ivp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
       ),
     placeholderData: [],
   });
@@ -52,7 +52,7 @@ const IntermediateVector = ({
   }
 
   return (
-    <Card id="intermediateVector">
+    <Card id="intermediateVector" data-testid="ivp-section">
       <h2>Intermediate vectors</h2>
       {!data && data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>

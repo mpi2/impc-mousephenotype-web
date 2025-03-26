@@ -296,6 +296,7 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
                         exit={{ opacity: 0 }}
                         layout
                         transition={spring}
+                        role="button"
                         className={classNames(
                           "btn",
                           "btn-grey",

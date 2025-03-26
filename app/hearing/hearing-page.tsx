@@ -7,7 +7,6 @@ import Link from "next/link";
 import {
   AlleleSymbol,
   Card,
-  NonSSRPublicationsList,
   PublicationDataAlert,
   PleiotropyChart,
   Search,
@@ -17,7 +16,7 @@ import { ParentSize } from "@visx/responsive";
 import { usePleiotropyQuery } from "@/hooks";
 import { SortType } from "@/models";
 import { Suspense, useMemo } from "react";
-import { Metadata } from "next";
+import PublicationsList from "@/components/PublicationsList";
 
 type GeneHearingData = {
   geneSymbol: string;
@@ -340,7 +339,7 @@ const HearingLandingPage = () => {
             <h1>
               <strong>IKMC/IMPC related publications</strong>
             </h1>
-            <NonSSRPublicationsList prefixQuery="hearing" />
+            <PublicationsList prefixQuery="hearing" />
           </Container>
         </Card>
       </Container>

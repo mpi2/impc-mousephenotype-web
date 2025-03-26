@@ -1,0 +1,2205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IDG Page renders correctly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading"
+      >
+        <nav
+          aria-label="breadcrumb"
+        >
+          <ol
+            class="breadcrumb"
+          >
+            <li
+              aria-current="page"
+              class="breadcrumb-item active"
+            >
+              Home
+            </li>
+            <li
+              aria-current="page"
+              class="breadcrumb-item active"
+            >
+              IMPC data collections
+            </li>
+            <li
+              aria-current="page"
+              class="breadcrumb-item active"
+            >
+              IDG
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <h1
+        class="mb-4 mt-2"
+      >
+        <strong>
+          Illuminating the Druggable Genome (IDG)
+        </strong>
+      </h1>
+      <div
+        class="container"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col-9"
+          >
+            <p>
+              <a
+                class="primary link"
+                href="https://commonfund.nih.gov/idg/index"
+              >
+                IDG
+              </a>
+              is an NIH Common Fund project focused on collecting, integrating and making available biological data on 278 human genes from three key druggable protein families that have been identified as potential therapeutic targets: non-olfactory G-protein coupled receptors (GPCRs), ion channels, and protein kinases. The
+               
+              <a
+                class="primary link"
+                href="https://www.mousephenotype.org/about-impc/"
+              >
+                IMPC consortium
+              </a>
+               
+              is creating knockout mouse strains for the IDG project to better understand the function of these proteins.
+            </p>
+          </div>
+          <div
+            class="col-3"
+          >
+            <img
+              class=""
+              src="/data/images/landing-pages/idgLogo.png"
+              style="max-width: 100%;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="mb-4 col-12"
+        >
+          <h2>
+            IMPC data representation for IDG genes
+          </h2>
+          <p>
+            IDG human genes are mapped to mouse orthologs using 
+            <a
+              class="primary link"
+              href="https://www.genenames.org/tools/hcop/"
+            >
+              HCOP
+            </a>
+            . The
+             
+            <a
+              class="primary link"
+              href="//www.mousephenotype.org/about-impc/"
+            >
+              IMPC consortium
+            </a>
+             is using different 
+            <a
+              class="primary link"
+              href="https://mousephenotype.org/help/#howdoesimpcwork"
+            >
+              complementary targeting strategies
+            </a>
+             to produce Knockout strains. Mice are produced and submitted to standardised phenotyping pipelines. Currently 63.7 % of mouse IDG gene have data representation in IMPC, the bar charts and heatmap below capture the IMPC data representation at different levels. The percentage might increase as we get more data and this page will reflect the change.
+          </p>
+        </div>
+        <div
+          class="col-6"
+        >
+          <div
+            style="position: relative; height: 300px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+        <div
+          class="col-6"
+        >
+          <div
+            style="position: relative; height: 300px;"
+          >
+            <canvas
+              height="0"
+              role="img"
+              style="display: block; box-sizing: border-box; height: 0px; width: 0px;"
+              width="0"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h3>
+        IMPC IDG data Heat Map
+      </h3>
+      <p>
+        The heat map indicates the detailed IDG gene data representation in IMPC, from product availability to phenotypes. Phenotypes are grouped by biological systems.
+      </p>
+      <table
+        class="mb-4"
+      >
+        <tbody>
+          <tr>
+            <td>
+              <div
+                class="significant"
+              >
+                 
+              </div>
+              <div
+                class="table_legend_key"
+              >
+                Significant
+              </div>
+            </td>
+            <td>
+              <div
+                class="notSignificant"
+              >
+                 
+              </div>
+              <div
+                class="table_legend_key"
+              >
+                Not Significant
+              </div>
+            </td>
+            <td>
+              <div
+                class="noData"
+              >
+                 
+              </div>
+              <div
+                class="table_legend_key"
+              >
+                No data
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        class="controls"
+      >
+        <div>
+          Show
+          <select
+            class="form-select"
+            name="pageSize"
+          >
+            <option
+              value="10"
+            >
+              10
+            </option>
+            <option
+              value="25"
+            >
+              25
+            </option>
+            <option
+              value="50"
+            >
+              50
+            </option>
+            <option
+              value="100"
+            >
+              100
+            </option>
+          </select>
+          entries
+        </div>
+        <div>
+          Search:
+          <input
+            class="form-control"
+            title="heatmap search box"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <table
+        class="table table-bordered heatmap"
+      >
+        <thead>
+          <tr>
+            <th>
+              Gene
+            </th>
+            <th>
+              Family
+            </th>
+            <th>
+              Availability
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0001186"
+                >
+                  pigmentation phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0002873"
+                >
+                  normal phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0003631"
+                >
+                  nervous system phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005367"
+                >
+                  renal/urinary system phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005369"
+                >
+                  muscle phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005370"
+                >
+                  liver/biliary system phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005371"
+                >
+                  limbs/digits/tail phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005375"
+                >
+                  adipose tissue phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005376"
+                >
+                  homeostasis/metabolism phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005377"
+                >
+                  hearing/vestibular/ear phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005378"
+                >
+                  growth/size/body region phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005379"
+                >
+                  endocrine/exocrine gland phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005380"
+                >
+                  embryo phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005381"
+                >
+                  digestive/alimentary phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005382"
+                >
+                  craniofacial phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005384"
+                >
+                  cellular phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005385"
+                >
+                  cardiovascular system phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005386"
+                >
+                  behavior/neurological phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005387"
+                >
+                  immune system phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005388"
+                >
+                  respiratory system phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005389"
+                >
+                  reproductive system phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005390"
+                >
+                  skeleton phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005391"
+                >
+                  vision/eye phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0005397"
+                >
+                  hematopoietic system phenotype
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0010768"
+                >
+                  mortality/aging
+                </a>
+              </span>
+            </th>
+            <th>
+              <span
+                class="verticalHeader"
+              >
+                <a
+                  class="primary link"
+                  href="/phenotypes/MP:0010771"
+                >
+                  integument phenotype
+                </a>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:1919363"
+              style="padding: 0px;"
+            >
+              Adck1
+            </a>
+            <br />
+            ADCK1
+          </td>
+          <td>
+            Kinase
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:1919363#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:1919363#data"
+              style="padding: 0px;"
+            >
+              Phenotype data
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:1889336"
+              style="padding: 0px;"
+            >
+              Adck2
+            </a>
+            <br />
+            ADCK2
+          </td>
+          <td>
+            Kinase
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:1889336#order"
+              style="padding: 0px;"
+            >
+              ES Cells
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:1889336#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:1889336#data"
+              style="padding: 0px;"
+            >
+              Phenotype data
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:2679274"
+              style="padding: 0px;"
+            >
+              Adck5
+            </a>
+            <br />
+            ADCK5
+          </td>
+          <td>
+            Kinase
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:2679274#order"
+              style="padding: 0px;"
+            >
+              ES Cells
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:2679274#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:2679274#data"
+              style="padding: 0px;"
+            >
+              Phenotype data
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:1277167"
+              style="padding: 0px;"
+            >
+              Adgra1
+            </a>
+            <br />
+            ADGRA1
+          </td>
+          <td>
+            GPCR
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:1277167#order"
+              style="padding: 0px;"
+            >
+              ES Cells
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:1277167#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:1277167#data"
+              style="padding: 0px;"
+            >
+              Phenotype data
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:1925810"
+              style="padding: 0px;"
+            >
+              Adgra2
+            </a>
+            <br />
+            ADGRA2
+          </td>
+          <td>
+            GPCR
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:1925810#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:1917943"
+              style="padding: 0px;"
+            >
+              Adgra3
+            </a>
+            <br />
+            ADGRA3
+          </td>
+          <td>
+            GPCR
+          </td>
+          <td>
+            -
+          </td>
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:1933736"
+              style="padding: 0px;"
+            >
+              Adgrb1
+            </a>
+            <br />
+            ADGRB1
+          </td>
+          <td>
+            GPCR
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:1933736#order"
+              style="padding: 0px;"
+            >
+              ES Cells
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:1933736#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:2451244"
+              style="padding: 0px;"
+            >
+              Adgrb2
+            </a>
+            <br />
+            ADGRB2
+          </td>
+          <td>
+            GPCR
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:2451244#order"
+              style="padding: 0px;"
+            >
+              ES Cells
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:2451244#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:2451244#data"
+              style="padding: 0px;"
+            >
+              Phenotype data
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:2441837"
+              style="padding: 0px;"
+            >
+              Adgrb3
+            </a>
+            <br />
+            ADGRB3
+          </td>
+          <td>
+            GPCR
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:2441837#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:2441837#data"
+              style="padding: 0px;"
+            >
+              Phenotype data
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+        </tr>
+        <tr>
+          <td
+            class="geneCell"
+          >
+            <a
+              class="primary link"
+              href="/genes/MGI:3041203"
+              style="padding: 0px;"
+            >
+              Adgrd1
+            </a>
+            <br />
+            ADGRD1
+          </td>
+          <td>
+            GPCR
+          </td>
+          <td>
+            <a
+              class="link primary"
+              href="/genes/MGI:3041203#order"
+              style="padding: 0px;"
+            >
+              ES Cells
+            </a>
+            <br />
+            <a
+              class="link primary"
+              href="/genes/MGI:3041203#order"
+              style="padding: 0px;"
+            >
+              Mice
+            </a>
+            <br />
+          </td>
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell noData"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell significant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+          <td
+            class="dataCell notSignificant"
+          />
+        </tr>
+      </table>
+      <nav
+        aria-label="Page navigation example"
+        style="display: flex; justify-content: space-between;"
+      >
+        <span>
+          Showing 
+          1
+           to 
+          10
+           
+          of 
+          280
+           entries
+        </span>
+        <ul
+          class="pagination justify-content-center paginationNav"
+        >
+          <button
+            aria-label="Previous"
+            class="pagNavBtn nav-btn"
+            disabled=""
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-prev-page-icon"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-prev-page-icon"
+              >
+                previous page button
+              </title>
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <li
+            class="page-item"
+          >
+            <button
+              class="pagNavBtn active"
+            >
+              1
+            </button>
+          </li>
+          <li
+            class="page-item"
+          >
+            <button
+              class="pagNavBtn"
+            >
+              2
+            </button>
+          </li>
+          <li
+            class="page-item"
+          >
+            <button
+              class="pagNavBtn"
+            >
+              3
+            </button>
+          </li>
+          <li
+            class="page-item"
+          >
+            <button
+              class="pagNavBtn"
+            >
+              4
+            </button>
+          </li>
+          <li
+            class="page-item"
+          >
+            <button
+              class="pagNavBtn"
+            >
+              5
+            </button>
+          </li>
+          <li
+            class="page-item disabled"
+          >
+            <span
+              class="page-link"
+            >
+              ...
+            </span>
+          </li>
+          <li
+            class="page-item"
+          >
+            <button
+              aria-label="Previous"
+              class="pagNavBtn last-page"
+            >
+              <span
+                aria-hidden="true"
+              >
+                28
+              </span>
+            </button>
+          </li>
+          <button
+            aria-label="Next"
+            class="pagNavBtn nav-btn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-next-page-icon"
+              class="svg-inline--fa fa-arrow-right "
+              data-icon="arrow-right"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-next-page-icon"
+              >
+                next page button
+              </title>
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </ul>
+      </nav>
+    </div>
+    <div
+      class="card"
+    >
+      <h2>
+        Phenotype Associations
+      </h2>
+      <p>
+        The following chord diagrams represent the various biological systems phenotype associations for IDG genes categorized both in all and in each family group. The line thickness is correlated with the strength of the association. Clicking on chosen phenotype(s) on the diagram allow to select common genes. Corresponding gene lists can be downloaded using the download icon.
+      </p>
+    </div>
+    <div
+      class="card"
+    >
+      <h3>
+        All families
+      </h3>
+      <p>
+        <b>
+          132
+        </b>
+         genes have phenotypes in more than one biological system. The chord diagram below shows the pleiotropy between these genes.
+        <br />
+        <a
+          class="link primary"
+          download="genes_phenotype_associations.csv"
+          href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true"
+        >
+          Get the genes and associated phenotypes.
+        </a>
+      </p>
+      <div>
+        ChordDiagram mock
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h3>
+        Ion channels
+      </h3>
+      <table
+        class="table table-striped table-bordered"
+        style="max-width: 30%;"
+      >
+        <tbody>
+          <tr>
+            <td>
+              <b>
+                IMPC/IDG genes
+              </b>
+            </td>
+            <td>
+              57
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                ES Cells produced
+              </b>
+            </td>
+            <td>
+              45
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                Mice produced
+              </b>
+            </td>
+            <td>
+              48
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                Phenotypes
+              </b>
+            </td>
+            <td>
+              40
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button
+        class="btn impc-primary-button mb-3"
+      >
+        View all 
+        57
+         IMPC/IDG Ion Channel genes
+      </button>
+      <p>
+        <b>
+          32
+        </b>
+         genes have phenotypes in more than one biological system. The chord diagram below shows the pleiotropy between these genes.
+        <br />
+        <a
+          class="link primary"
+          download="genes_phenotype_associations.csv"
+          href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
+        >
+          Get the genes and associated phenotypes.
+        </a>
+      </p>
+      <div>
+        ChordDiagram mock
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h3>
+        GPCRs
+      </h3>
+      <table
+        class="table table-striped table-bordered"
+        style="max-width: 30%;"
+      >
+        <tbody>
+          <tr>
+            <td>
+              <b>
+                IMPC/IDG genes
+              </b>
+            </td>
+            <td>
+              97
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                ES Cells produced
+              </b>
+            </td>
+            <td>
+              58
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                Mice produced
+              </b>
+            </td>
+            <td>
+              61
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                Phenotypes
+              </b>
+            </td>
+            <td>
+              48
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button
+        class="btn impc-primary-button mb-3"
+      >
+        View all 
+        97
+         IMPC/IDG GPCR genes
+      </button>
+      <p>
+        <b>
+          38
+        </b>
+         genes have phenotypes in more than one biological system. The chord diagram below shows the pleiotropy between these genes.
+        <br />
+        <a
+          class="link primary"
+          download="genes_phenotype_associations.csv"
+          href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
+        >
+          Get the genes and associated phenotypes.
+        </a>
+      </p>
+      <div>
+        ChordDiagram mock
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <h3>
+        Kinases
+      </h3>
+      <table
+        class="table table-striped table-bordered"
+        style="max-width: 30%;"
+      >
+        <tbody>
+          <tr>
+            <td>
+              <b>
+                IMPC/IDG genes
+              </b>
+            </td>
+            <td>
+              121
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                ES Cells produced
+              </b>
+            </td>
+            <td>
+              97
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                Mice produced
+              </b>
+            </td>
+            <td>
+              78
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>
+                Phenotypes
+              </b>
+            </td>
+            <td>
+              68
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button
+        class="btn impc-primary-button mb-3"
+      >
+        View all 
+        121
+         IMPC/IDG Kinase genes
+      </button>
+      <p>
+        <b>
+          66
+        </b>
+         genes have phenotypes in more than one biological system. The chord diagram below shows the pleiotropy between these genes.
+        <br />
+        <a
+          class="link primary"
+          download="genes_phenotype_associations.csv"
+          href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
+        >
+          Get the genes and associated phenotypes.
+        </a>
+      </p>
+      <div>
+        ChordDiagram mock
+      </div>
+    </div>
+  </div>
+</div>
+`;

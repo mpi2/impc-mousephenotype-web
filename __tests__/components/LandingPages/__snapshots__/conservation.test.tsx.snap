@@ -382,6 +382,9 @@ exports[`Conservation landing page renders correctly 1`] = `
           Conservation IKMC/IMPC related publications
         </strong>
       </h1>
+      <div>
+        PublicationsList mock
+      </div>
     </div>
   </div>
 </div>

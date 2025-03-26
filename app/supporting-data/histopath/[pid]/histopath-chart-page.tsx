@@ -48,6 +48,7 @@ const DescriptionCell = <T extends Histopathology>(
     : props.value?.description;
   return (
     <span
+      role={truncated ? "link" : "generic"}
       onClick={props.onClick.bind(this, props?.value)}
       style={
         truncated
