@@ -79,7 +79,9 @@ const Header = () => {
   const { data: menuItems } = useQuery({
     queryKey: ["menu"],
     queryFn: async () => {
-      const response = await fetch(getURLJSONMenu());
+      const params = new URLSearchParams();
+      params.append("timestamp", (+new Date()).toString(10));
+      const response = await fetch(`${getURLJSONMenu()}?${params}`);
       return await response.json();
     },
     placeholderData: [],
