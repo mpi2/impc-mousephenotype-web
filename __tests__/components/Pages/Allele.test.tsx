@@ -8,7 +8,7 @@ import dbn1Tm1aMiceData from "../../../mocks/data/tests/dbn1-tm1a-mice.json";
 import dbn1Tm1aTvpData from "../../../mocks/data/tests/dbn1-tm1a-tvp.json";
 import dbn1Em1MiceData from "../../../mocks/data/tests/dbn1-em1-mice-data.json";
 import dbn1Em1CrisprData from "../../../mocks/data/tests/dbn1-em1-crispr-data.json";
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 
 const alleleData = {
   alleleDescription:
@@ -97,6 +97,10 @@ describe("Allele page", () => {
         }}
       />,
     );
+    await waitFor(async () => {
+      const tables = await screen.findAllByRole("table");
+      return expect(tables.length).toEqual(2);
+    });
     expect(await screen.findByTestId("mice-section")).toBeInTheDocument();
     expect(await screen.findByTestId("crispr-section")).toBeInTheDocument();
     expect(screen.queryByTestId("es-cell-section")).toBeNull();
