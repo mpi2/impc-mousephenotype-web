@@ -29,31 +29,13 @@ describe("Image Downloader Page", () => {
       rest.get(
         `${API_URL}/api/v1/images/find_by_mgi_and_stable_id`,
         (req, res, ctx) => {
-          const paramStableId = req.url.searchParams.get("parameterStableId");
-          const mgiGeneAccessionId = req.url.searchParams.get("pid");
-          if (
-            paramStableId === "IMPC_ABR_014_001" &&
-            mgiGeneAccessionId === "MGI:1929293"
-          ) {
-            return res(ctx.json(cib2MutantImages));
-          }
+          return res(ctx.json(cib2MutantImages));
         },
       ),
-    );
-    testServer.use(
       rest.get(
         `${API_URL}/api/v1/images/find_by_stable_id_and_sample_id`,
         (req, res, ctx) => {
-          const paramStableId = req.url.searchParams.get("parameterStableId");
-          const biologicalSampleGroup = req.url.searchParams.get(
-            "biologicalSampleGroup",
-          );
-          if (
-            paramStableId === "IMPC_ABR_014_001" &&
-            biologicalSampleGroup === "control"
-          ) {
-            return res(ctx.json(cib2ControlImages));
-          }
+          return res(ctx.json(cib2ControlImages));
         },
       ),
     );
