@@ -3,7 +3,7 @@ import { testServer } from "../../mocks/server";
 import idgData from "../../mocks/data/tests/landing-pages/idg.json";
 import { rest } from "msw";
 import { renderWithClient } from "../utils";
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 
 jest.mock("next/navigation", () => {
   const routerMock = {
@@ -16,6 +16,11 @@ jest.mock("next/navigation", () => {
     usePathname: jest.fn(),
     useParams: jest.fn().mockImplementation(() => ({})),
   };
+});
+
+jest.mock("@/components/ChordDiagram", () => {
+  const ChordDiagramMock = () => <div>ChordDiagram mock</div>;
+  return ChordDiagramMock;
 });
 
 describe("IDG Page", () => {
