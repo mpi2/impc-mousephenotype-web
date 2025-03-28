@@ -159,7 +159,6 @@ const EssentialGenesPage = () => {
     const cellEssentialData = generateCellEssentialData(figureData);
     const mouseData = generateMouseData(figureData);
     const svgEl = document.getElementById("svg-figure");
-    console.log(cellEssentialData, mouseData);
     if (svgEl && !hasDrawn) {
       setHasDrawn(true);
       const width = svgEl.clientWidth;
