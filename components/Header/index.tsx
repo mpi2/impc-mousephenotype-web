@@ -56,6 +56,8 @@ const getInternalLink = (name: string, link: string) => {
       return "/late-adult-data";
     case "Latest Data Release":
       return "/release";
+    case "Essential genes":
+      return "/essential-genes";
     default:
       return link;
   }
