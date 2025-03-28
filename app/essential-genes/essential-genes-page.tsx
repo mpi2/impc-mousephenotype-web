@@ -2,12 +2,12 @@
 
 import { Card, Search } from "@/components";
 import { Suspense, useEffect, useState } from "react";
-import { Breadcrumb, Container } from "react-bootstrap";
+import { Alert, Breadcrumb, Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import * as d3 from "d3";
+import Link from "next/link";
 
-const cellIconPath =
-  "M461.002,136.27c-4.371-21.861-13.701-53.804-33.32-81.832c-21.237-30.337-48.936-48.14-82.326-52.909    c-45.224-6.46-117.104,7.331-161.221,45.619c-23.259,20.187-35.543,44.916-35.524,71.509    c0.074,105.192,0.074,105.192-20.431,128.315c-10.002,11.278-25.117,28.322-46.42,61.798    c-63.154,99.241-32.39,154.252-8.433,178.21C82.003,495.655,98.339,512,149.352,512c11.359,0,24.447-0.811,39.543-2.699    c0.363-0.045,0.725-0.11,1.08-0.196c125.837-30.375,210.331-90.764,251.137-179.486    C476.623,252.413,468.817,175.341,461.002,136.27z M185.926,489.983c-72.942,9.012-90.391-8.423-98.786-16.818    c-34.222-34.222-30.278-88.882,11.103-153.909c20.467-32.164,34.389-47.863,44.553-59.325    c25.429-28.675,25.427-30.785,25.35-141.29c-0.014-21.053,9.673-40.144,28.794-56.74c32.517-28.222,84.882-42.376,125.365-42.376    c7.197,0,14.02,0.446,20.288,1.343c23.338,3.334,79.731,21.626,99.254,119.231C492.724,394.5,259.588,472.1,185.926,489.983z";
+const DR_VERSION = process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION;
 
 type FigureData = {
   name: string;
@@ -295,6 +295,17 @@ const EssentialGenesPage = () => {
               </li>
             </ul>
           </span>
+          <Alert variant="landing-page">
+            <Alert.Heading>Attention</Alert.Heading>
+            <p>
+              The information used to generate this chart belongs to DR
+              {DR_VERSION}
+            </p>
+            <hr />
+            <Link className="link primary" href="#">
+              Link to FTP
+            </Link>
+          </Alert>
           <div className={styles.figure}>
             <svg id="svg-figure" width="100%" height="500px" />
           </div>
