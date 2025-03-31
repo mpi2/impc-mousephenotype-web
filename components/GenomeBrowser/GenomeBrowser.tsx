@@ -26,11 +26,12 @@ type SelectedTracks = {
   esCellAlleles: boolean;
   esCellProducts: boolean;
   targetingVectors: boolean;
+  crisprDeletionCoords: boolean;
 };
 
 const PRODUCTS_TRACKS = {
   crisprGuides: {
-    name: "IMPC CRISPR guides",
+    name: "Aligned FASTA from CRISPR alleles",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
     order: 10,
   },
@@ -39,12 +40,17 @@ const PRODUCTS_TRACKS = {
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
     order: 11,
   },
+  crisprDeletionCoords: {
+    name: "CRISPR deletion coordinates",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
+    order: 9,
+  },
   esCellAlleles: {
-    name: "ES Cell based Mouse Alleles",
+    name: "ES Cell Allele",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
   },
   esCellProducts: {
-    name: "ES Cell Products",
+    name: "Mouse lines carrying a ES Cell allele",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
   },
   targetingVectors: {
@@ -78,12 +84,6 @@ const optionalTracks = {
     nameField: "GeneName",
     height: 100,
   },
-  "IKMC alleles": {
-    name: "IKMC alleles",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
-    height: 130,
-    order: 20,
-  },
 };
 
 const GenomeBrowser = ({
@@ -98,6 +98,7 @@ const GenomeBrowser = ({
   const [selectedTracks, setSelectedTracks] = useState<SelectedTracks>({
     crisprGuides: false,
     crisprDeletions: false,
+    crisprDeletionCoords: false,
     esCellAlleles: false,
     esCellProducts: false,
     targetingVectors: false,
@@ -120,22 +121,18 @@ const GenomeBrowser = ({
           removable: false,
         },
       ];
-      if (hasCRISPRData) {
-        tracks.push(
-          PRODUCTS_TRACKS.crisprGuides,
-          PRODUCTS_TRACKS.crisprDeletions,
-        );
-        selectedTracks.crisprGuides = true;
-        selectedTracks.crisprDeletions = true;
-      }
-      if (hasEsCellData) {
-        tracks.push(
-          PRODUCTS_TRACKS.esCellAlleles,
-          PRODUCTS_TRACKS.esCellProducts,
-        );
-        selectedTracks.esCellAlleles = true;
-        selectedTracks.esCellProducts = true;
-      }
+      selectedTracks.esCellAlleles = true;
+      selectedTracks.esCellProducts = true;
+      selectedTracks.crisprGuides = true;
+      selectedTracks.crisprDeletions = true;
+      selectedTracks.crisprDeletionCoords = true;
+      tracks.push(
+        PRODUCTS_TRACKS.crisprGuides,
+        PRODUCTS_TRACKS.crisprDeletions,
+        PRODUCTS_TRACKS.crisprDeletionCoords,
+        PRODUCTS_TRACKS.esCellAlleles,
+        PRODUCTS_TRACKS.esCellProducts,
+      );
       if (hasTargetingVectorData) {
         tracks.push(PRODUCTS_TRACKS.targetingVectors);
         selectedTracks.targetingVectors = true;
@@ -231,7 +228,7 @@ const GenomeBrowser = ({
             <div className={styles.controlsContainer}>
               <div>
                 <Form.Label className="d-inline-block fst-italic me-3 mb-0">
-                  Annotation tracks:
+                  Annotations:
                 </Form.Label>
                 <Form.Check
                   className="mb-0"
@@ -245,9 +242,19 @@ const GenomeBrowser = ({
                   className="mb-0"
                   inline
                   label="GENCODE"
-                  name="group1"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODE", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="UniProt SwissProt/TrEMBL Protein Annotations"
+                  onChange={(e) =>
+                    toggleOptionalTrack(
+                      "UniProt SwissProt/TrEMBL Protein Annotations",
+                      e.target.checked,
+                    )
                   }
                 />
               </div>
@@ -256,7 +263,7 @@ const GenomeBrowser = ({
             <div className={styles.controlsContainer}>
               <div>
                 <Form.Label className="d-inline-block fst-italic me-3 mb-0">
-                  Product tracks:
+                  Mouse products:
                 </Form.Label>
                 <Form.Check
                   className="mb-0"
@@ -270,7 +277,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR Deletions"
+                  label="CRISPR FASTA"
                   checked={selectedTracks.crisprDeletions}
                   onChange={(e) =>
                     toggleProductTrack("crisprDeletions", e.target.checked)
@@ -279,16 +286,33 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="ES Cells Products"
-                  checked={selectedTracks.esCellProducts}
+                  label="CRISPR deletion coordinates"
+                  checked={selectedTracks.crisprDeletionCoords}
                   onChange={(e) =>
-                    toggleProductTrack("esCellProducts", e.target.checked)
+                    toggleProductTrack("crisprDeletionCoords", e.target.checked)
                   }
                 />
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="ES Cells Alleles"
+                  label="ES Cells Mice"
+                  checked={selectedTracks.esCellProducts}
+                  onChange={(e) =>
+                    toggleProductTrack("esCellProducts", e.target.checked)
+                  }
+                />
+              </div>
+            </div>
+            <hr />
+            <div className={styles.controlsContainer}>
+              <div>
+                <Form.Label className="d-inline-block me-3 mb-0 fst-italic">
+                  ES Cell products:
+                </Form.Label>
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="ES Cells"
                   checked={selectedTracks.esCellAlleles}
                   onChange={(e) =>
                     toggleProductTrack("esCellAlleles", e.target.checked)
@@ -301,34 +325,6 @@ const GenomeBrowser = ({
                   checked={selectedTracks.targetingVectors}
                   onChange={(e) =>
                     toggleProductTrack("targetingVectors", e.target.checked)
-                  }
-                />
-              </div>
-            </div>
-            <hr />
-            <div className={styles.controlsContainer}>
-              <div>
-                <Form.Label className="d-inline-block me-3 mb-0 fst-italic">
-                  Additional tracks:
-                </Form.Label>
-                <Form.Check
-                  className="mb-0"
-                  inline
-                  label="IKMC alleles"
-                  onChange={(e) =>
-                    toggleOptionalTrack("IKMC alleles", e.target.checked)
-                  }
-                />
-                <Form.Check
-                  className="mb-0"
-                  inline
-                  label="UniProt SwissProt/TrEMBL Protein Annotations"
-                  name="group1"
-                  onChange={(e) =>
-                    toggleOptionalTrack(
-                      "UniProt SwissProt/TrEMBL Protein Annotations",
-                      e.target.checked,
-                    )
                   }
                 />
               </div>
