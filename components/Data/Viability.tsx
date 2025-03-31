@@ -378,10 +378,11 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
             {datasetSummary?.procedureStableId === "IMPC_VIA_001" && (
               <div style={{ fontSize: "85%", flex: "1 0 100%" }}>
                 <span>
-                  ¹ This Viability Outcome procedure (IMPC_VIA_001) does not
-                  take into account hemizygous animals. This is addressed in the
-                  second version (IMPC_VIA_002). Hemizygous animals numbers can
-                  be derived from the total.
+                  ¹ This Viability procedure (IMPC_VIA_001) does not allow
+                  reporting of hemizyous males specifically. This is addressed
+                  in the second version (IMPC_VIA_002). Hemizygous males are
+                  either reported as homozygous males or the numbers can be
+                  derived from the total.
                 </span>
               </div>
             )}
