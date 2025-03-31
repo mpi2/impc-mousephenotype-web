@@ -521,14 +521,14 @@ exports[`Embryo viability chart renders correctly 1`] = `
               <p>
                 A 
                 Viability Primary Screen
-                 phenotypic assay was performed on a mutant strain carrying the 
+                 phenotypic assay was performed on a mutant strain carrying the 
                 <i>
                   1700003F12Rik
                   <sup>
                     tm1.1(KOMP)Vlcg
                   </sup>
                 </i>
-                 allele. The charts below show the proportion of wild type, heterozygous, and homozygous offspring.
+                 allele. The charts below show the proportion of wild type, heterozygous, and homozygous offspring.
               </p>
             </div>
             <div
@@ -786,13 +786,13 @@ exports[`Embryo viability chart renders correctly 1`] = `
                       </th>
                       <th
                         rowspan="2"
-                        width="8.333333333333332%"
+                        width="10%"
                       >
                         <button
                           class="inlineButton headerButton disabled"
                           style="font-weight: inherit;"
                         >
-                          Hemi
+                          Hemi ¹
                            
                         </button>
                       </th>
