@@ -30,32 +30,35 @@ type SelectedTracks = {
 };
 
 const PRODUCTS_TRACKS = {
+  crisprDeletionCoords: {
+    name: "CRISPR deletion coordinates",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
+    order: 3,
+  },
   crisprGuides: {
     name: "Aligned FASTA from CRISPR alleles",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
-    order: 10,
+    order: 4,
   },
   crisprDeletions: {
     name: "Molecular deletions identified in IMPC CRISPR alleles",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
-    order: 11,
-  },
-  crisprDeletionCoords: {
-    name: "CRISPR deletion coordinates",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
-    order: 9,
+    order: 5,
   },
   esCellAlleles: {
     name: "ES Cell Allele",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
+    order: 8,
   },
   esCellProducts: {
     name: "Mouse lines carrying a ES Cell allele",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
+    order: 7,
   },
   targetingVectors: {
     name: "Targeting Vector Products",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
+    order: 9,
   },
 };
 const optionalTracks = {
@@ -63,7 +66,6 @@ const optionalTracks = {
     name: "GENCODE",
     url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
     indexed: false,
-    height: 200,
     format: "gff3",
     searchable: true,
     searchableFields: [
@@ -82,7 +84,7 @@ const optionalTracks = {
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
     indexed: false,
     nameField: "GeneName",
-    height: 100,
+    order: 0,
   },
 };
 
@@ -109,6 +111,7 @@ const GenomeBrowser = ({
     async function setupIGVBrowser() {
       const igv = (await import("igv/dist/igv.esm")).default;
       const igvContainer = document.querySelector("#igv-container");
+      const currentHash = window.location.hash;
       const selectedTracks: Record<string, boolean> = {};
       let tracks: Array<any> = [
         {
@@ -116,7 +119,6 @@ const GenomeBrowser = ({
           format: "refgene",
           url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
           indexed: false,
-          height: 220,
           order: 0,
           removable: false,
         },
@@ -133,7 +135,7 @@ const GenomeBrowser = ({
         PRODUCTS_TRACKS.esCellAlleles,
         PRODUCTS_TRACKS.esCellProducts,
       );
-      if (hasTargetingVectorData) {
+      if (currentHash === "#targetingVector") {
         tracks.push(PRODUCTS_TRACKS.targetingVectors);
         selectedTracks.targetingVectors = true;
       }
