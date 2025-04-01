@@ -84,7 +84,7 @@ const generateMouseData = (data) => {
       bgc: "#ac0009",
     }),
     aggregateToObj(incomPenetranceData, {
-      label: "Mouse Lethal\n(Incomplete Penetrance)",
+      label: "Mouse Lethal\n(Incomplete\nPenetrance)",
       value: 0,
       name: "mlcp",
       bgc: "#d65e60",
@@ -113,7 +113,7 @@ const drawBars = (
 ) => {
   chartRef
     .append("g")
-    .attr("class", "fusil-groups")
+    .attr("class", "groups")
     .attr("transform", `translate(200, ${height})`)
     .selectAll("rect")
     .data(data)
@@ -133,20 +133,20 @@ const drawLabels = (
 ) => {
   chartRef
     .append("g")
-    .attr("class", "fusil-labels")
+    .attr("class", "labels")
     .attr("transform", `translate(200, ${height})`)
     .selectAll("text")
     .data(data)
     .join("text")
     .attr("x", (_, i) => getXPos(data, i, xScale))
-    .attr("y", 135)
+    .attr("y", 125)
     .attr("class", styles.label)
     .text(null)
     .selectAll("tspan")
     .data((d, i) => d.label.split("\n").map((text) => ({ text, i })))
     .enter()
     .append("tspan")
-    .attr("dy", (d, i) => `${i * 1.1}em`)
+    .attr("dy", "1.1em")
     .attr("x", (d) => getXPos(data, d.i, xScale))
     .text((d) => d.text);
 };
@@ -178,7 +178,7 @@ const EssentialGenesPage = () => {
         .join("text")
         .attr("class", styles.label)
         .attr("x", (_, i) => getXPos(figureData, i, xScale) + 10)
-        .attr("y", 18)
+        .attr("y", 16)
         .text((d) => {
           const percentage = ((d.value / total) * 100).toFixed(0);
           return `${percentage}% (${d.value})`;
@@ -193,7 +193,12 @@ const EssentialGenesPage = () => {
       drawLabels(chart, mouseData, 300, xScale);
 
       // All other labels and icons
-      chart.append("text").attr("x", 150).attr("y", 85).text("FUSIL");
+      chart
+        .append("text")
+        .attr("x", 150)
+        .attr("y", 85)
+        .attr("class", "fw-bold")
+        .text("FUSIL");
       chart
         .append("svg:image")
         .attr("xlink:href", "images/cell.svg")
