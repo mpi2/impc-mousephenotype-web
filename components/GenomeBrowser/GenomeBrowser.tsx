@@ -152,6 +152,7 @@ const GenomeBrowser = ({
         search: {
           url: "https://www.gentar.org/orthology-api/api/ortholog/get-coordinates/search?geneQuery=$FEATURE$",
           resultsField: "results",
+          endField: "stop",
         },
         tracks,
       };
