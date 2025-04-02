@@ -47,10 +47,23 @@ import {
 import Select from "react-select";
 import { SortType } from "@/models";
 import moment from "moment";
+import { Metadata } from "next";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 const BATCH_QUERY_DOWNLOAD_ROOT =
   process.env.NEXT_PUBLIC_BATCH_QUERY_DOWNLOAD_ROOT || "";
+
+type GoTerm = {
+  aspect: string;
+  assigned_by: string;
+  db_names: string;
+  db_type: string;
+  evidence_code: string;
+  go_id: string;
+  go_name: string;
+  go_term_specificity: number;
+  references: string;
+};
 
 type BatchQueryItem = {
   geneId: string;
@@ -67,6 +80,7 @@ type BatchQueryItem = {
     notSignificantPhenotypes: Array<string>;
     notSignificantSystems: Array<string>;
   }>;
+  goTerms: Array<GoTerm>;
 };
 
 type SortOptions = {
@@ -115,8 +129,12 @@ type DataRowProps = {
 };
 
 const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
-  const [open, setOpen] = useState(false);
+  const [openAlleleView, setOpenAlleleView] = useState(false);
+  const [openGOView, setOpenGoView] = useState(false);
   const { mouseGeneSymbol, geneId, humanGeneIds, humanGeneSymbols } = geneData;
+  const sortGoTerms = (terms: Array<GoTerm>) => {
+    return terms.sort((a, b) => b.go_term_specificity - a.go_term_specificity);
+  };
   return (
     <>
       <tr>
@@ -133,19 +151,100 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
         <td>
           <Button
             className="impc-secondary-button small"
-            onClick={() => setOpen(!open)}
+            onClick={() => {
+              setOpenGoView(!openGOView);
+              setOpenAlleleView(false);
+            }}
           >
-            {open ? "Close" : `${geneData.alleles.length} allele(s)`}
+            {openGOView ? "Close" : `${geneData.goTerms.length} term(s)`}
             &nbsp;
             <FontAwesomeIcon
               className="link"
-              icon={open ? faChevronUp : faChevronDown}
+              icon={openGOView ? faChevronUp : faChevronDown}
+            />
+          </Button>
+        </td>
+        <td>
+          <Button
+            className="impc-secondary-button small"
+            onClick={() => {
+              setOpenAlleleView(!openAlleleView);
+              setOpenGoView(false);
+            }}
+          >
+            {openAlleleView ? "Close" : `${geneData.alleles.length} allele(s)`}
+            &nbsp;
+            <FontAwesomeIcon
+              className="link"
+              icon={openAlleleView ? faChevronUp : faChevronDown}
             />
           </Button>
         </td>
       </tr>
-      {open && (
+      {openGOView && (
         <tr>
+          <td></td>
+          <td colSpan={6} style={{ padding: 0 }}>
+            <SortableTable
+              withMargin={false}
+              headers={[
+                {
+                  width: 1,
+                  label: "GO ID",
+                  field: "go_id",
+                  disabled: true,
+                },
+                {
+                  width: 1,
+                  label: "GO term",
+                  field: "go_name",
+                  disabled: true,
+                },
+                {
+                  width: 1,
+                  label: "Aspect",
+                  field: "aspect",
+                  disabled: true,
+                },
+                {
+                  width: 1,
+                  label: "Evidence code",
+                  field: "evidence_code",
+                  disabled: true,
+                },
+                {
+                  width: 2,
+                  label: "Number of ancestors in ontology",
+                  field: "go_term_specificity",
+                  disabled: true,
+                },
+              ]}
+            >
+              {sortGoTerms(geneData.goTerms).map((goTerm, i) => {
+                return (
+                  <tr key={goTerm.go_id}>
+                    <td>
+                      <a
+                        className="link primary"
+                        href={`https://amigo.geneontology.org/amigo/term/${goTerm.go_id}`}
+                        target="_blank"
+                      >
+                        {goTerm.go_id}
+                      </a>
+                    </td>
+                    <td>{goTerm.go_name}</td>
+                    <td>{goTerm.aspect}</td>
+                    <td>{goTerm.evidence_code}</td>
+                    <td>{goTerm.go_term_specificity}</td>
+                  </tr>
+                );
+              })}
+            </SortableTable>
+          </td>
+        </tr>
+      )}
+      {openAlleleView && (
+        <tr key={"phenotype-terms-" + geneId}>
           <td></td>
           <td colSpan={6} style={{ padding: 0 }}>
             <SortableTable
@@ -315,7 +414,7 @@ const BatchQueryPage = () => {
         ...gene,
         alleles: gene.alleles.toSorted(
           (a1, a2) =>
-            a2.significantPhenotypes.length - a1.significantPhenotypes.length
+            a2.significantPhenotypes.length - a1.significantPhenotypes.length,
         ),
       }));
     },
@@ -344,15 +443,15 @@ const BatchQueryPage = () => {
     let intermediateRes = selectedSystems.length
       ? results.filter((gene) =>
           selectedSystems.every((system) =>
-            gene.allSignificantSystems.includes(system)
-          )
+            gene.allSignificantSystems.includes(system),
+          ),
         )
       : results;
     intermediateRes = selectedPhenotypes.length
       ? intermediateRes.filter((gene) =>
           selectedPhenotypes.every((phenotype) =>
-            gene.allSignificantPhenotypes.includes(phenotype)
-          )
+            gene.allSignificantPhenotypes.includes(phenotype),
+          ),
         )
       : intermediateRes;
     return intermediateRes;
@@ -413,7 +512,7 @@ const BatchQueryPage = () => {
       return filteredData.sort((a, b) =>
         order === "asc"
           ? a[prop].length - b[prop].length
-          : b[prop].length - a[prop].length
+          : b[prop].length - a[prop].length,
       );
     }
     return orderBy(filteredData, sortOptions.prop, sortOptions.order);
@@ -514,6 +613,7 @@ const BatchQueryPage = () => {
           )}
           {!!filteredData ? (
             <>
+              <span>Displaying a total of {sortedData.length} results</span>
               <Row>
                 <Col>
                   <div>
@@ -578,13 +678,13 @@ const BatchQueryPage = () => {
                           },
                           {
                             width: 1,
-                            label: "Human gene symbol",
-                            field: "humanGeneSymbols",
+                            label: "Human gene id",
+                            field: "humanGeneIds",
                           },
                           {
                             width: 1,
-                            label: "Human gene id",
-                            field: "humanGeneIds",
+                            label: "Human gene symbol",
+                            field: "humanGeneSymbols",
                           },
                           {
                             width: 1,
@@ -598,6 +698,11 @@ const BatchQueryPage = () => {
                           },
                           {
                             width: 1,
+                            label: "View Gene Ontology terms",
+                            disabled: true,
+                          },
+                          {
+                            width: 1,
                             label: "View allele info",
                             disabled: true,
                           },
@@ -605,6 +710,7 @@ const BatchQueryPage = () => {
                       >
                         {pageData.map((geneData) => (
                           <DataRow
+                            key={geneData.geneId}
                             geneData={geneData}
                             onPhenotypeLinkClick={setSelectedAlleleData}
                           />
