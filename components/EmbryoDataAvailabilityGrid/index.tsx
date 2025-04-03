@@ -2,19 +2,13 @@
 import { useMemo, useState } from "react";
 import { AxisTick } from "@nivo/axes";
 import { ResponsiveHeatMap } from "@nivo/heatmap";
-import Select from "react-select";
 import PaginationControls from "../PaginationControls";
-import { Form, InputGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { usePagination } from "@/hooks";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
 import { capitalize } from "lodash";
 
-type EmbryoData = {
-  id: string;
-  mgiGeneAccessionId: string;
-  data: Array<{ x: string; y: number }>;
-};
 const ClickableAxisTick = ({
   tick,
   onClick,
@@ -41,7 +35,7 @@ const EmbryoDataAvailabilityGrid = ({
   onDataFilterChange,
 }: Props) => {
   const [query, setQuery] = useState<string>(undefined);
-  const [selectedWOL, setSelectedWOL] = useState<Array<string>>([]);
+  const [selectedWOL, setSelectedWOL] = useState<string>("");
 
   const dataIndex: Record<
     string,
@@ -59,21 +53,6 @@ const EmbryoDataAvailabilityGrid = ({
   );
 
   const processedData = useMemo(() => {
-    function getWOLSByGene(mgiGeneAccessionId: string) {
-      return Object.entries(dataIndex).reduce((res, [wol, genesByWol]) => {
-        if (
-          genesByWol
-            .map((g) => g.mgiGeneAccessionId)
-            .includes(mgiGeneAccessionId)
-        ) {
-          if (!!res) {
-            return `${res}, ${capitalize(wol)}`;
-          }
-          return capitalize(wol);
-        }
-        return res;
-      }, "");
-    }
     return data.map((d) => ({
       id: d.geneSymbol,
       mgiGeneAccessionId: d.mgiGeneAccessionId,
@@ -84,7 +63,6 @@ const EmbryoDataAvailabilityGrid = ({
         "MicroCT E18.5",
         "Mager Lab Pre E9.5",
         "Vignettes",
-        "Window(s) of Lethality ¹",
       ].map((p) => ({
         x: p,
         y: d.procedureNames.includes(p)
@@ -95,17 +73,17 @@ const EmbryoDataAvailabilityGrid = ({
             ? 1
             : p === "Vignettes" && d.hasVignettes
               ? 1
-              : p === "Window(s) of Lethality ¹" &&
-                getWOLSByGene(d.mgiGeneAccessionId),
+              : 0,
       })),
     }));
   }, [data, dataIndex]);
 
   const filteredData = useMemo(() => {
-    const newSelectedGenes = selectedWOL
-      .flatMap((wol) => dataIndex[wol])
-      .sort((a, b) => a.geneSymbol.localeCompare(b.geneSymbol))
-      .map((d) => d.mgiGeneAccessionId);
+    const newSelectedGenes = !!selectedWOL
+      ? dataIndex[selectedWOL]
+          .sort((a, b) => a.geneSymbol.localeCompare(b.geneSymbol))
+          .map((d) => d.mgiGeneAccessionId)
+      : [];
     const selectedData = !!newSelectedGenes.length
       ? newSelectedGenes
           .map((geneId) =>
@@ -134,8 +112,12 @@ const EmbryoDataAvailabilityGrid = ({
     [chartData],
   );
 
-  const onChangeWOL = (selected) => {
-    setSelectedWOL(selected.map((s) => s.value));
+  const onChangeWOL = (value) => {
+    if (value) {
+      setSelectedWOL(value);
+    } else {
+      setSelectedWOL("");
+    }
   };
 
   const onClickTick = (cell: any) => {
@@ -170,15 +152,17 @@ const EmbryoDataAvailabilityGrid = ({
       <div className={styles.controlsContainer}>
         <div className={styles.selectorContainer}>
           <label>Filter by Window of Lethality</label>
-          <Select
-            options={selectOptions}
-            isMulti
-            className="basic-multi-select"
-            classNamePrefix="select"
-            placeholder="Select window of lethality"
-            onChange={onChangeWOL}
+          <Form.Select
             aria-label="window of lethality filter"
-          />
+            onChange={(e) => onChangeWOL(e.target.value)}
+          >
+            <option selected value="">
+              No window selected
+            </option>
+            {selectOptions.map((opt) => (
+              <option value={opt.value}>{capitalize(opt.label)}</option>
+            ))}
+          </Form.Select>
         </div>
         <div>
           <Form.Group>
@@ -229,12 +213,6 @@ const EmbryoDataAvailabilityGrid = ({
           ></span>
           &nbsp;Images and automated volumetric analysis available
         </div>
-        <div className={styles.colorLabelContainer}>
-          <span
-            className={classnames(styles.baseLabel, styles.associationWithWOL)}
-          ></span>
-          &nbsp;Lethality window association
-        </div>
       </div>
       <div
         style={{
@@ -253,12 +231,6 @@ const EmbryoDataAvailabilityGrid = ({
             data={chartData}
             margin={{ top: 100, right: 80, bottom: 20, left: 120 }}
             valueFormat={(v: any) => {
-              if (v === "") {
-                return "No associated lethality window";
-              }
-              if (!!v.length) {
-                return v;
-              }
               const options = [
                 "No data",
                 "Images Available",
@@ -300,9 +272,6 @@ const EmbryoDataAvailabilityGrid = ({
             axisRight={null}
             colors={(cell: any) => {
               const value = cell.value || 0;
-              if (value === "" || !!value.length) {
-                return "#E1BE6A";
-              }
               const options = ["#ECECEC", "#17a2b8", "#ed7b25"];
               return options[value];
             }}
@@ -334,12 +303,6 @@ const EmbryoDataAvailabilityGrid = ({
           onPageChange={setActivePage}
         />
       )}
-      <div style={{ fontSize: "85%", flex: "1 0 100%" }}>
-        <span>
-          ¹ A gene can belong to multiple lethality windows because has been
-          studied in multiple centers or multiple alleles have been studied.
-        </span>
-      </div>
     </>
   );
 };
