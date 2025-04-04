@@ -6,7 +6,7 @@ import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchAPI, fetchURL } from "@/api-service";
 import { GeneImage } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { SectionHeader } from "@/components";
@@ -98,6 +98,17 @@ const Images = ({ initialData }: ImagesProps) => {
     select: (data) => data as Array<GeneImage>,
   });
 
+  const { data: legacyImages } = useQuery({
+    queryKey: ["genes", gene.mgiGeneAccessionId, "legacy-images"],
+    queryFn: () =>
+      fetchURL(
+        `/data/api/legacy-images/get-params-by-mgi?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`,
+      ),
+    enabled: !!gene.mgiGeneAccessionId,
+  });
+
+  console.log(legacyImages);
+
   if (isLoading) {
     return (
       <Card id="images">
@@ -159,6 +170,39 @@ const Images = ({ initialData }: ImagesProps) => {
           ))}
         </Row>
       </div>
+      {Object.keys(legacyImages ?? {}).length > 0 && (
+        <div>
+          <h3>Sanger image collection</h3>
+          <Row>
+            {Object.entries(legacyImages ?? {}).map(
+              ([parameter, numImages]) => (
+                <Col md={4} lg={3}>
+                  <Link
+                    href={`/genes/${gene.mgiGeneAccessionId}/sanger-collection/${parameter}`}
+                  >
+                    <div className={styles.card}>
+                      <div
+                        className={styles.cardImage}
+                        data-testid="legacy-image"
+                      >
+                        <div className={styles.cardImageOverlay}>
+                          <span>
+                            {numImages} images{" "}
+                            <FontAwesomeIcon icon={faChevronRight} />
+                          </span>
+                        </div>
+                      </div>
+                      <div className={styles.cardText}>
+                        <h4>{parameter}</h4>
+                      </div>
+                    </div>
+                  </Link>
+                </Col>
+              ),
+            )}
+          </Row>
+        </div>
+      )}
     </Card>
   );
 };
