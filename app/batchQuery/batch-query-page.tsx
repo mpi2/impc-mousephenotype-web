@@ -29,7 +29,7 @@ import {
   useState,
 } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { orderBy } from "lodash";
+import { orderBy, capitalize } from "lodash";
 import Link from "next/link";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { formatAlleleSymbol } from "@/utils";
@@ -332,6 +332,12 @@ export const metadata: Metadata = {
     "IMPC dataset batch query | International Mouse Phenotyping Consortium",
 };
 
+type SelectOptions = Array<{
+  value: string;
+  label: string;
+  numHits: number;
+}>;
+
 const BatchQueryPage = () => {
   const [geneIds, setGeneIds] = useState<string>(undefined);
   const [file, setFile] = useState<File>(null);
@@ -457,51 +463,53 @@ const BatchQueryPage = () => {
     return intermediateRes;
   }, [results, selectedSystems, selectedPhenotypes]);
 
-  const { systemSelectOptions, phenotypeSelectOptions } = useMemo(() => {
-    if (filteredData?.length) {
-      const phenotypeResultsMap = new Map<string, number>();
-      const systemsMap = new Map<string, number>();
-      filteredData
-        .flatMap((r) => r.allSignificantPhenotypes)
-        .forEach((phenotype) => {
-          if (phenotypeResultsMap.has(phenotype)) {
-            const newVal = phenotypeResultsMap.get(phenotype) + 1;
-            phenotypeResultsMap.set(phenotype, newVal);
-          } else {
-            phenotypeResultsMap.set(phenotype, 1);
-          }
-        });
-      filteredData
-        .flatMap((r) => r.allSignificantSystems)
-        .forEach((system) => {
-          if (systemsMap.has(system)) {
-            const newVal = systemsMap.get(system) + 1;
-            systemsMap.set(system, newVal);
-          } else {
-            systemsMap.set(system, 1);
-          }
-        });
-      const phenotypeSelectOptions = [];
-      const systemSelectOptions = [];
-      for (const [phenotype, numHits] of phenotypeResultsMap) {
-        phenotypeSelectOptions.push({
-          value: phenotype,
-          label: phenotype,
-          numHits,
-        });
+  const { systemSelectOptions, phenotypeSelectOptions, allSignificantSystems } =
+    useMemo(() => {
+      if (filteredData?.length) {
+        const phenotypeResultsMap = new Map<string, number>();
+        const systemsMap = new Map<string, number>();
+        filteredData
+          .flatMap((r) => r.allSignificantPhenotypes)
+          .forEach((phenotype) => {
+            if (phenotypeResultsMap.has(phenotype)) {
+              const newVal = phenotypeResultsMap.get(phenotype) + 1;
+              phenotypeResultsMap.set(phenotype, newVal);
+            } else {
+              phenotypeResultsMap.set(phenotype, 1);
+            }
+          });
+        filteredData
+          .flatMap((r) => r.allSignificantSystems)
+          .forEach((system) => {
+            if (systemsMap.has(system)) {
+              const newVal = systemsMap.get(system) + 1;
+              systemsMap.set(system, newVal);
+            } else {
+              systemsMap.set(system, 1);
+            }
+          });
+        const phenotypeSelectOptions: SelectOptions = [];
+        const systemSelectOptions: SelectOptions = [];
+        for (const [phenotype, numHits] of phenotypeResultsMap) {
+          phenotypeSelectOptions.push({
+            value: phenotype,
+            label: phenotype,
+            numHits,
+          });
+        }
+        for (const [system, numHits] of systemsMap) {
+          systemSelectOptions.push({ value: system, label: system, numHits });
+        }
+        phenotypeSelectOptions.sort((op1, op2) => op2.numHits - op1.numHits);
+        systemSelectOptions.sort((op1, op2) => op2.numHits - op1.numHits);
+        return {
+          phenotypeSelectOptions,
+          systemSelectOptions,
+          allSignificantSystems: systemSelectOptions,
+        };
       }
-      for (const [system, numHits] of systemsMap) {
-        systemSelectOptions.push({ value: system, label: system, numHits });
-      }
-      phenotypeSelectOptions.sort((op1, op2) => op2.numHits - op1.numHits);
-      systemSelectOptions.sort((op1, op2) => op2.numHits - op1.numHits);
-      return {
-        phenotypeSelectOptions,
-        systemSelectOptions,
-      };
-    }
-    return { phenotypeSelectOptions: [], systemSelectOptions: [] };
-  }, [filteredData]);
+      return { phenotypeSelectOptions: [], systemSelectOptions: [] };
+    }, [filteredData]);
 
   const sortedData = useMemo(() => {
     if (
@@ -509,7 +517,7 @@ const BatchQueryPage = () => {
       sortOptions.prop === "allSignificantSystems"
     ) {
       const { prop, order } = sortOptions;
-      return filteredData.sort((a, b) =>
+      return filteredData?.sort((a, b) =>
         order === "asc"
           ? a[prop].length - b[prop].length
           : b[prop].length - a[prop].length,
@@ -613,144 +621,196 @@ const BatchQueryPage = () => {
           )}
           {!!filteredData ? (
             <>
-              <span>Displaying a total of {sortedData.length} results</span>
-              <Row>
-                <Col>
-                  <div>
-                    <span className="small grey">
-                      Filter genes by physiological system&nbsp;
-                    </span>
-                    <Select
-                      isMulti
-                      options={systemSelectOptions}
-                      formatOptionLabel={formatOptionLabel}
-                      onChange={updateSelectedSystems}
-                    />
-                  </div>
-                </Col>
-                <Col>
-                  <div>
-                    <span className="small grey">
-                      Filter genes by significant phenotype&nbsp;
-                    </span>
-                    <Select
-                      isMulti
-                      options={phenotypeSelectOptions}
-                      formatOptionLabel={formatPhenotypeLabel}
-                      onChange={updateSelectedPhenotypes}
-                    />
-                  </div>
-                </Col>
-              </Row>
-              {!!sortedData.length ? (
-                <>
-                  <Pagination
-                    data={sortedData}
-                    topControlsWrapperCSS={{ marginTop: "1rem" }}
-                    additionalTopControls={
-                      (!!selectedSystems.length ||
-                        !!selectedPhenotypes.length) && (
-                        <div>
-                          <b className="small grey">
-                            Showing {sortedData?.length || 0} result(s) of&nbsp;
-                            {results?.length || 0}
-                          </b>
-                        </div>
-                      )
-                    }
-                  >
-                    {(pageData) => (
-                      <SortableTable
-                        defaultSort={defaultSort}
-                        doSort={(sort) =>
-                          setSortOptions({ prop: sort[0], order: sort[1] })
+              <Tabs defaultActiveKey="geneResults">
+                <Tab
+                  eventKey="geneResults"
+                  title="Full details"
+                  className="mt-2"
+                >
+                  <span>
+                    <b>Displaying a total of {sortedData.length} genes</b>
+                  </span>
+                  <Row>
+                    <Col>
+                      <div>
+                        <span className="small grey">
+                          Filter genes by physiological system&nbsp;
+                        </span>
+                        <Select
+                          isMulti
+                          options={systemSelectOptions}
+                          formatOptionLabel={formatOptionLabel}
+                          onChange={updateSelectedSystems}
+                        />
+                      </div>
+                    </Col>
+                    <Col>
+                      <div>
+                        <span className="small grey">
+                          Filter genes by significant phenotype&nbsp;
+                        </span>
+                        <Select
+                          isMulti
+                          options={phenotypeSelectOptions}
+                          formatOptionLabel={formatPhenotypeLabel}
+                          onChange={updateSelectedPhenotypes}
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+                  {!!sortedData.length ? (
+                    <>
+                      <Pagination
+                        data={sortedData}
+                        topControlsWrapperCSS={{ marginTop: "1rem" }}
+                        additionalTopControls={
+                          (!!selectedSystems.length ||
+                            !!selectedPhenotypes.length) && (
+                            <div>
+                              <b className="small grey">
+                                Showing {sortedData?.length || 0} result(s)
+                                of&nbsp;
+                                {results?.length || 0}
+                              </b>
+                            </div>
+                          )
                         }
-                        headers={[
-                          {
-                            width: 1,
-                            label: "MGI accession id",
-                            field: "geneId",
-                          },
-                          {
-                            width: 1,
-                            label: "Marker symbol",
-                            field: "mouseGeneSymbol",
-                          },
-                          {
-                            width: 1,
-                            label: "Human gene id",
-                            field: "humanGeneIds",
-                          },
-                          {
-                            width: 1,
-                            label: "Human gene symbol",
-                            field: "humanGeneSymbols",
-                          },
-                          {
-                            width: 1,
-                            label: "# of significant phenotypes",
-                            field: "allSignificantPhenotypes",
-                          },
-                          {
-                            width: 1,
-                            label: "# of systems impacted",
-                            field: "allSignificantSystems",
-                          },
-                          {
-                            width: 1,
-                            label: "View Gene Ontology terms",
-                            disabled: true,
-                          },
-                          {
-                            width: 1,
-                            label: "View allele info",
-                            disabled: true,
-                          },
-                        ]}
                       >
-                        {pageData.map((geneData) => (
-                          <DataRow
-                            key={geneData.geneId}
-                            geneData={geneData}
-                            onPhenotypeLinkClick={setSelectedAlleleData}
-                          />
-                        ))}
-                      </SortableTable>
-                    )}
-                  </Pagination>
-                  <div>
-                    <div
-                      className="grey"
-                      style={{
-                        display: "flex",
-                        gap: "0.5rem",
-                        alignItems: "center",
-                      }}
-                    >
-                      {downloadButtons.map((button) => (
-                        <button
-                          key={button.key}
-                          className="btn impc-secondary-button small"
-                          onClick={button.toogleFlag}
-                          disabled={button.isBusy}
+                        {(pageData) => (
+                          <SortableTable
+                            defaultSort={defaultSort}
+                            doSort={(sort) =>
+                              setSortOptions({ prop: sort[0], order: sort[1] })
+                            }
+                            headers={[
+                              {
+                                width: 1,
+                                label: "MGI accession id",
+                                field: "geneId",
+                              },
+                              {
+                                width: 1,
+                                label: "Marker symbol",
+                                field: "mouseGeneSymbol",
+                              },
+                              {
+                                width: 1,
+                                label: "Human gene id",
+                                field: "humanGeneIds",
+                              },
+                              {
+                                width: 1,
+                                label: "Human gene symbol",
+                                field: "humanGeneSymbols",
+                              },
+                              {
+                                width: 1,
+                                label: "# of significant phenotypes",
+                                field: "allSignificantPhenotypes",
+                              },
+                              {
+                                width: 1,
+                                label: "# of systems impacted",
+                                field: "allSignificantSystems",
+                              },
+                              {
+                                width: 1,
+                                label: "View Gene Ontology terms",
+                                disabled: true,
+                              },
+                              {
+                                width: 1,
+                                label: "View allele info",
+                                disabled: true,
+                              },
+                            ]}
+                          >
+                            {pageData.map((geneData) => (
+                              <DataRow
+                                key={geneData.geneId}
+                                geneData={geneData}
+                                onPhenotypeLinkClick={setSelectedAlleleData}
+                              />
+                            ))}
+                          </SortableTable>
+                        )}
+                      </Pagination>
+                      <div>
+                        <div
+                          className="grey"
+                          style={{
+                            display: "flex",
+                            gap: "0.5rem",
+                            alignItems: "center",
+                          }}
                         >
-                          {button.isBusy ? (
-                            <Spinner animation="border" size="sm" />
-                          ) : (
-                            <>
-                              <FontAwesomeIcon icon={faDownload} size="sm" />
-                              &nbsp;
-                              {button.key}
-                            </>
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <h3 className="mt-3">No genes match the filters selected</h3>
-              )}
+                          {downloadButtons.map((button) => (
+                            <button
+                              key={button.key}
+                              className="btn impc-secondary-button small"
+                              onClick={button.toogleFlag}
+                              disabled={button.isBusy}
+                            >
+                              {button.isBusy ? (
+                                <Spinner animation="border" size="sm" />
+                              ) : (
+                                <>
+                                  <FontAwesomeIcon
+                                    icon={faDownload}
+                                    size="sm"
+                                  />
+                                  &nbsp;
+                                  {button.key}
+                                </>
+                              )}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <h3 className="mt-3">
+                      No genes match the filters selected
+                    </h3>
+                  )}
+                </Tab>
+                <Tab eventKey="summary" title="Summary" className="mt-2">
+                  <Row>
+                    <Col>
+                      <Pagination
+                        data={allSignificantSystems}
+                        buttonsPlacement="bottom"
+                        additionalTopControls={
+                          <h3>Impacted physiological systems</h3>
+                        }
+                      >
+                        {(pageData) => (
+                          <SortableTable
+                            headers={[
+                              { width: 1, label: "System", field: "value" },
+                              {
+                                width: 1,
+                                label: "# of genes associated",
+                                field: "numHits",
+                              },
+                            ]}
+                          >
+                            {pageData.map((phenotype) => (
+                              <tr>
+                                <td>{phenotype.label}</td>
+                                <td>{phenotype.numHits}</td>
+                              </tr>
+                            ))}
+                          </SortableTable>
+                        )}
+                      </Pagination>
+                    </Col>
+                    <Col>
+                      <h3>Gene ontology summary</h3>
+                    </Col>
+                  </Row>
+                </Tab>
+              </Tabs>
             </>
           ) : geneIdArray?.length >= 1000 || fileIDCount >= 1000 ? (
             <>
