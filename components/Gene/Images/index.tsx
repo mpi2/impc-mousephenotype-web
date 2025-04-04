@@ -178,7 +178,7 @@ const Images = ({ initialData }: ImagesProps) => {
               ([parameter, numImages]) => (
                 <Col md={4} lg={3}>
                   <Link
-                    href={`/genes/${gene.mgiGeneAccessionId}/sanger-collection/${parameter}`}
+                    href={`/genes/${gene.mgiGeneAccessionId}/sanger-collection-images/${parameter}`}
                   >
                     <div className={styles.card}>
                       <div
