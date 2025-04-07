@@ -22,7 +22,7 @@ const Summary = ({ phenotype }: Props) => {
     if (!phenotype) return null;
     if (getNoTotalGenes() === 0) return 0;
     return Number(
-      (phenotype.significantGenes / getNoTotalGenes()) * 100
+      (phenotype.significantGenes / getNoTotalGenes()) * 100,
     ).toFixed(2);
   };
 
