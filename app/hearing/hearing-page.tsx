@@ -194,7 +194,7 @@ const HearingLandingPage = () => {
           <ul>
             <li>
               Control wildtype mice from each phenotypic centre included,
-              matched for gender, age, phenotypic pipeline and metadata (e.g.
+              matched for sex, age, phenotypic pipeline and metadata (e.g.
               instrument)
             </li>
             <li>
