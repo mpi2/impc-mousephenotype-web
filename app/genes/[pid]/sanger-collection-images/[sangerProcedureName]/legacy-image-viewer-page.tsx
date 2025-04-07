@@ -9,8 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { ReactNode, useMemo, useState } from "react";
+import { Badge, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import Search from "@/components/Search";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
@@ -40,6 +40,31 @@ const getZygosityColor = (zygosity: string) => {
       return "#FFF";
   }
 };
+
+const FilterBadge = ({
+  name,
+  children,
+  onClick,
+  icon,
+  isSelected,
+}: {
+  name: string;
+  children: ReactNode;
+  onClick: () => void;
+  icon?: any;
+  isSelected: boolean;
+}) => (
+  <Badge
+    className={classNames(styles.badge, { active: isSelected })}
+    pill
+    bg="badge-secondary"
+    onClick={onClick}
+    data-testid={`${isSelected ? "active-" : ""}${name}-filter`}
+  >
+    {children}&nbsp;
+    {!!icon ? <FontAwesomeIcon icon={icon} /> : null}
+  </Badge>
+);
 
 const ImageInformation = ({
   image,
@@ -235,6 +260,9 @@ const LegacyImageViewer = ({
 }: LegacyImageViewerProps) => {
   const [selectedMutantImage, setSelectedMutantImage] = useState(0);
   const [selectedWildtypeImage, setSelectedWildtypeImage] = useState(0);
+  const [selectedFilters, setSelectedFilters] = useState<
+    Record<string, string | null>
+  >({});
   const { data: legacyImages } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "legacy-images", procedureName],
     queryFn: () =>
@@ -244,13 +272,70 @@ const LegacyImageViewer = ({
     enabled: !!mgiGeneAccessionId && !!procedureName,
   });
 
-  console.log(legacyImages);
-  const { mutantImages, wildtypeImages } = useMemo(() => {
+  const { mutantImages, wildtypeImages, allImages } = useMemo(() => {
+    const mtImages = legacyImages?.mutantImages ?? [];
+    const wtImages = legacyImages?.wildtypeImages ?? [];
     return {
-      mutantImages: legacyImages?.mutantImages ?? [],
-      wildtypeImages: legacyImages?.wildtypeImages ?? [],
+      mutantImages: mtImages,
+      wildtypeImages: wtImages,
+      allImages: [].concat(mtImages, wtImages),
     };
   }, [legacyImages]);
+
+  const { filteredMutantImages, filteredWildtypeImages } = useMemo(() => {
+    function imageMatchesFilter(image) {
+      return Object.entries(selectedFilters).reduce((result, [key, value]) => {
+        return (
+          result &&
+          (image.annotations.find((a) => a.name === key).value === value ||
+            value === "all")
+        );
+      }, true);
+    }
+    return {
+      filteredMutantImages: mutantImages.filter(imageMatchesFilter),
+      filteredWildtypeImages: wildtypeImages.filter(imageMatchesFilter),
+    };
+  }, [mutantImages, wildtypeImages, selectedFilters]);
+
+  const filterOptions = useMemo(() => {
+    if (allImages?.length > 0) {
+      const results = new Map<string, Set<string>>();
+      allImages.forEach((image) => {
+        image.annotations.forEach((annotation) => {
+          if (results.has(annotation.name)) {
+            const set = results.get(annotation.name);
+            set.add(annotation.value);
+            results.set(annotation.name, set);
+          } else {
+            const set = new Set<string>();
+            set.add(annotation.value);
+            results.set(annotation.name, set);
+          }
+        });
+      });
+      const resultObj: Record<string, Array<string>> = {};
+      for (const [param, set] of results.entries()) {
+        resultObj[param] = [...set];
+      }
+      return resultObj;
+    }
+    return [];
+  }, [allImages]);
+
+  const filterIsApplied = (option: string, value: string) => {
+    if (value === "all" && !selectedFilters[option]) {
+      return true;
+    }
+    return selectedFilters[option] === value;
+  };
+
+  const onFilterSelection = (option: string, value: string) => {
+    setSelectedFilters((prevState) => ({
+      ...prevState,
+      [option]: value,
+    }));
+  };
 
   return (
     <>
@@ -290,7 +375,7 @@ const LegacyImageViewer = ({
               <Col sm={6}>
                 <div className={styles.headerContainer}>
                   <h3 style={{ marginBottom: 0 }}>
-                    Wildtype images ({wildtypeImages?.length})
+                    Wildtype images ({filteredWildtypeImages?.length})
                   </h3>
                 </div>
                 <Col xs={12}>
@@ -303,14 +388,16 @@ const LegacyImageViewer = ({
                   >
                     <ImageViewer
                       name="mutant"
-                      image={wildtypeImages?.[selectedWildtypeImage]}
-                      hasAvailableImages={wildtypeImages?.length !== 0 || false}
+                      image={filteredWildtypeImages?.[selectedWildtypeImage]}
+                      hasAvailableImages={
+                        filteredWildtypeImages?.length !== 0 || false
+                      }
                     />
                   </div>
                   <div className={styles.imageInfo}>
-                    {!!wildtypeImages?.[selectedWildtypeImage] && (
+                    {!!filteredWildtypeImages?.[selectedWildtypeImage] && (
                       <ImageInformation
-                        image={wildtypeImages[selectedWildtypeImage]}
+                        image={filteredWildtypeImages[selectedWildtypeImage]}
                         inViewer
                       />
                     )}
@@ -320,7 +407,7 @@ const LegacyImageViewer = ({
               <Col sm={6}>
                 <div className={styles.headerContainer}>
                   <h3 style={{ marginBottom: 0 }}>
-                    Mutant images ({mutantImages?.length})
+                    Mutant images ({filteredMutantImages?.length})
                   </h3>
                 </div>
                 <Col xs={12}>
@@ -333,14 +420,16 @@ const LegacyImageViewer = ({
                   >
                     <ImageViewer
                       name="mutant"
-                      image={mutantImages?.[selectedMutantImage]}
-                      hasAvailableImages={mutantImages?.length !== 0 || false}
+                      image={filteredMutantImages?.[selectedMutantImage]}
+                      hasAvailableImages={
+                        filteredMutantImages?.length !== 0 || false
+                      }
                     />
                   </div>
                   <div className={styles.imageInfo}>
-                    {!!mutantImages?.[selectedMutantImage] && (
+                    {!!filteredMutantImages?.[selectedMutantImage] && (
                       <ImageInformation
-                        image={mutantImages[selectedMutantImage]}
+                        image={filteredMutantImages[selectedMutantImage]}
                         inViewer
                       />
                     )}
@@ -390,19 +479,48 @@ const LegacyImageViewer = ({
                   </span>
                 </div>
               </Col>
+              <Col xs={12}>
+                <div className={styles.filtersWrapper}>
+                  {Object.entries(filterOptions).map(
+                    ([option, values], index) => (
+                      <div className={styles.column} key={index}>
+                        <div className={styles.filter}>
+                          <strong>{option}: </strong>
+                          <FilterBadge
+                            name={`${option}-all-selector`}
+                            isSelected={filterIsApplied(option, "all")}
+                            onClick={() => onFilterSelection(option, "all")}
+                          >
+                            All
+                          </FilterBadge>
+                          {values.map((val) => (
+                            <FilterBadge
+                              name={`${option}-${val}-selector`}
+                              isSelected={filterIsApplied(option, val)}
+                              onClick={() => onFilterSelection(option, val)}
+                            >
+                              {val}
+                            </FilterBadge>
+                          ))}
+                        </div>
+                      </div>
+                    ),
+                  )}
+                </div>
+              </Col>
             </Row>
             <Row>
               <Col sm={6}>
                 <Column
                   selected={selectedWildtypeImage}
-                  images={wildtypeImages}
+                  images={filteredWildtypeImages}
                   onSelection={setSelectedWildtypeImage}
                 />
               </Col>
               <Col sm={6}>
                 <Column
                   selected={selectedMutantImage}
-                  images={mutantImages}
+                  images={filteredMutantImages}
                   onSelection={setSelectedMutantImage}
                 />
               </Col>
