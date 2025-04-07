@@ -5,6 +5,9 @@ import { Card } from "@/components";
 import { useLayoutEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 type GenomeBrowserProps = {
   geneSymbol: string;
@@ -219,7 +222,19 @@ const GenomeBrowser = ({
       <Container style={{ padding: 0 }}>
         <Row>
           <Col>
-            <h2 className="mb-3 mt-0">Genome browser</h2>
+            <div
+              className="mb-3 mt-0"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <h2 style={{ margin: 0 }}>Genome browser</h2>
+              <Link
+                href="https://dev.mousephenotype.org/help/data-visualization/allele-pages/genome-browser/"
+                className="btn"
+                aria-label="Genome browser documentation"
+              >
+                <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
+              </Link>
+            </div>
           </Col>
           <Col className={styles.resetBtnContainer}>
             <button
