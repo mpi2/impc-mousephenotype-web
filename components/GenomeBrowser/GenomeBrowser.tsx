@@ -31,22 +31,22 @@ type SelectedTracks = {
 
 const PRODUCTS_TRACKS = {
   crisprDeletionCoords: {
-    name: "CRISPR deletion coordinates",
+    name: "CRISPR alleles deletion coordinates",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
     order: 3,
   },
-  crisprGuides: {
+  crisprDeletions: {
     name: "Aligned FASTA from CRISPR alleles",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
     order: 4,
   },
-  crisprDeletions: {
-    name: "Molecular deletions identified in IMPC CRISPR alleles",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
+  crisprGuides: {
+    name: "CRISPR allele guides",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
     order: 5,
   },
   esCellAlleles: {
-    name: "ES Cell Allele",
+    name: "ES Cell alleles available to order",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
     order: 8,
   },
@@ -85,6 +85,10 @@ const optionalTracks = {
     indexed: false,
     nameField: "GeneName",
     order: 0,
+  },
+  "IKMC alleles": {
+    name: "IKMC alleles",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
   },
 };
 
@@ -258,6 +262,14 @@ const GenomeBrowser = ({
                       "UniProt SwissProt/TrEMBL Protein Annotations",
                       e.target.checked,
                     )
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="IKMC alleles"
+                  onChange={(e) =>
+                    toggleOptionalTrack("IKMC alleles", e.target.checked)
                   }
                 />
               </div>
