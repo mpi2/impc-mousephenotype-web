@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import Search from "@/components/Search";
@@ -21,7 +21,7 @@ import Skeleton from "react-loading-skeleton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { AlleleSymbol, ZoomButtons } from "@/components";
-import { GeneImageCollection, GeneSummary } from "@/models/gene";
+import { GeneSummary } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
 
@@ -36,7 +36,6 @@ const getZygosityColor = (zygosity: string) => {
       return "#DDCC77";
     case "HEMI":
       return "#CC6677";
-
     default:
       return "#FFF";
   }
@@ -193,7 +192,7 @@ const Column = ({ images, selected, onSelection }) => {
   return (
     <Row className={styles.images}>
       {images?.map((image, i) => (
-        <Col key={image.observationId} md={3} lg={2} className="mb-2">
+        <Col key={image.observationId} md={4} lg={3} className="mb-2">
           <div
             data-testid="single-image"
             className={classNames(styles.singleImage, {
@@ -234,18 +233,24 @@ const LegacyImageViewer = ({
   mgiGeneAccessionId,
   procedureName,
 }: LegacyImageViewerProps) => {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const { data: legacyImages } = useQuery<Array<GeneImageCollection>>({
+  const [selectedMutantImage, setSelectedMutantImage] = useState(0);
+  const [selectedWildtypeImage, setSelectedWildtypeImage] = useState(0);
+  const { data: legacyImages } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "legacy-images", procedureName],
     queryFn: () =>
       fetchURL(
         `/data/api/legacy-images/get-images-by-param-and-mgi?mgiGeneAccessionId=${mgiGeneAccessionId}&procedureName=${procedureName}`,
       ),
     enabled: !!mgiGeneAccessionId && !!procedureName,
-    placeholderData: [],
   });
 
   console.log(legacyImages);
+  const { mutantImages, wildtypeImages } = useMemo(() => {
+    return {
+      mutantImages: legacyImages?.mutantImages ?? [],
+      wildtypeImages: legacyImages?.wildtypeImages ?? [],
+    };
+  }, [legacyImages]);
 
   return (
     <>
@@ -282,10 +287,10 @@ const LegacyImageViewer = ({
           </h1>
           <div>
             <Row>
-              <Col sm={{ span: 6, offset: 3 }}>
+              <Col sm={6}>
                 <div className={styles.headerContainer}>
                   <h3 style={{ marginBottom: 0 }}>
-                    Images ({legacyImages?.length})
+                    Wildtype images ({wildtypeImages?.length})
                   </h3>
                 </div>
                 <Col xs={12}>
@@ -298,14 +303,44 @@ const LegacyImageViewer = ({
                   >
                     <ImageViewer
                       name="mutant"
-                      image={legacyImages?.[selectedImage]}
-                      hasAvailableImages={legacyImages?.length !== 0 || false}
+                      image={wildtypeImages?.[selectedWildtypeImage]}
+                      hasAvailableImages={wildtypeImages?.length !== 0 || false}
                     />
                   </div>
                   <div className={styles.imageInfo}>
-                    {!!legacyImages?.[selectedImage] && (
+                    {!!wildtypeImages?.[selectedWildtypeImage] && (
                       <ImageInformation
-                        image={legacyImages[selectedImage]}
+                        image={wildtypeImages[selectedWildtypeImage]}
+                        inViewer
+                      />
+                    )}
+                  </div>
+                </Col>
+              </Col>
+              <Col sm={6}>
+                <div className={styles.headerContainer}>
+                  <h3 style={{ marginBottom: 0 }}>
+                    Mutant images ({mutantImages?.length})
+                  </h3>
+                </div>
+                <Col xs={12}>
+                  <div
+                    className={classNames(
+                      "ratio",
+                      "ratio-16x9",
+                      styles.imageContainer,
+                    )}
+                  >
+                    <ImageViewer
+                      name="mutant"
+                      image={mutantImages?.[selectedMutantImage]}
+                      hasAvailableImages={mutantImages?.length !== 0 || false}
+                    />
+                  </div>
+                  <div className={styles.imageInfo}>
+                    {!!mutantImages?.[selectedMutantImage] && (
+                      <ImageInformation
+                        image={mutantImages[selectedMutantImage]}
                         inViewer
                       />
                     )}
@@ -357,11 +392,18 @@ const LegacyImageViewer = ({
               </Col>
             </Row>
             <Row>
-              <Col sm={12}>
+              <Col sm={6}>
                 <Column
-                  selected={selectedImage}
-                  images={legacyImages}
-                  onSelection={setSelectedImage}
+                  selected={selectedWildtypeImage}
+                  images={wildtypeImages}
+                  onSelection={setSelectedWildtypeImage}
+                />
+              </Col>
+              <Col sm={6}>
+                <Column
+                  selected={selectedMutantImage}
+                  images={mutantImages}
+                  onSelection={setSelectedMutantImage}
                 />
               </Col>
             </Row>

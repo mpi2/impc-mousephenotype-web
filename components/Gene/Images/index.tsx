@@ -107,8 +107,6 @@ const Images = ({ initialData }: ImagesProps) => {
     enabled: !!gene.mgiGeneAccessionId,
   });
 
-  console.log(legacyImages);
-
   if (isLoading) {
     return (
       <Card id="images">
