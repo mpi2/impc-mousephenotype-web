@@ -17,5 +17,9 @@ export async function GET(request: Request) {
     largeThumbnailFilePath: `${imageURL}${image.largeThumbnailFilePath.substring(7)}`,
     smallThumbnailFilePath: `${imageURL}${image.smallThumbnailFilePath.substring(7)}`,
   }));
-  return Response.json(processedImages);
+
+  return Response.json({
+    mutantImages: processedImages.filter((image) => image.genotype !== "WT"),
+    wildtypeImages: processedImages.filter((image) => image.genotype === "WT"),
+  });
 }
