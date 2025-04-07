@@ -1858,7 +1858,7 @@ exports[`Metabolism landing page renders correctly 1`] = `
       </p>
       <ul>
         <li>
-          Control wildtype mice from each phenotypic center included, matched for gender, age, phenotypic pipeline and metadata (e.g. instrument).
+          Control wildtype mice from each phenotypic center included, matched for sex, age, phenotypic pipeline and metadata (e.g. instrument).
         </li>
         <li>
           Males and females analyzed separately to account for sexual dimorphism.
