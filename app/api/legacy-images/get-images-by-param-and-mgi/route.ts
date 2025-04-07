@@ -16,6 +16,10 @@ export async function GET(request: Request) {
     fullResolutionFilePath: `${imageURL}${image.fullResolutionFilePath.substring(7)}`,
     largeThumbnailFilePath: `${imageURL}${image.largeThumbnailFilePath.substring(7)}`,
     smallThumbnailFilePath: `${imageURL}${image.smallThumbnailFilePath.substring(7)}`,
+    annotations: image.tagName.map((attribute, index) => ({
+      name: attribute,
+      value: image.tagValue[index],
+    })),
   }));
 
   return Response.json({
