@@ -60,3 +60,17 @@ export type GeneLegacyImageCollection = {
   parameterName: string;
   count: number;
 };
+
+export type GeneLegacyImage = {
+  fullResolutionFilePath: string;
+  smallThumbnailFilePath: string;
+  genotype: string;
+  gender: string;
+  ageInWeeks: string;
+  annotations: Array<{ name: string; value: string }>;
+};
+
+export type LegacyImageEndpointResponse = {
+  mutantImages: Array<GeneLegacyImage>;
+  wildtypeImages: Array<GeneLegacyImage>;
+};

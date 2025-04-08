@@ -11,6 +11,8 @@ export type {
   GeneImageCollection,
   Image,
   GeneLegacyImageCollection,
+  GeneLegacyImage,
+  LegacyImageEndpointResponse,
 } from "./images";
 export type { GeneDisease } from "./disease";
 export type { GeneHistopathology } from "./histopathology";

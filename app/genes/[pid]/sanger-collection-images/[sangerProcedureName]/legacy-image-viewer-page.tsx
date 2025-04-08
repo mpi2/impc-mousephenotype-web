@@ -24,6 +24,7 @@ import { AlleleSymbol, ZoomButtons } from "@/components";
 import { GeneSummary } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
+import { LegacyImageEndpointResponse } from "@/models/gene/images";
 
 const SkeletonText = ({ width = "300px" }) => (
   <Skeleton style={{ display: "block", width }} inline />
@@ -91,7 +92,7 @@ const ImageInformation = ({
       </div>
       <div className={styles.indicatorsContainer}>
         {inViewer ? (
-          <span>{image.zygosity}</span>
+          <span>{image.genotype}</span>
         ) : (
           <div className={`${styles.common} ${styles.zygosityIndicator}`}>
             <FontAwesomeIcon
@@ -101,47 +102,8 @@ const ImageInformation = ({
           </div>
         )}
       </div>
-      {!!image.alleleSymbol && (
-        <AlleleSymbol symbol={image.alleleSymbol} withLabel={false} />
-      )}
-      {showAssocParam && image.associatedParameters?.length && (
-        <>
-          <hr className="break" style={{ margin: 0 }}></hr>
-          <div className={classNames(styles.associatedParams, styles.small)}>
-            {image.associatedParameters.map((param, index) => (
-              <div key={`${param.stableId}-${index}`}>
-                {param.name} <br /> <b>{param.value}</b>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-      {inViewer && image.associatedParameters?.length && (
-        <>
-          <div className="break"></div>
-          <div className={styles.associatedParams}>
-            <span>Associated parameters</span>
-            {image.associatedParameters.map((param, index) => (
-              <div key={`${param.stableId}-${index}`}>
-                {param.name} - <b>{param.value}</b>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-      {inViewer && !!image.imageLink && (
-        <>
-          <div style={{ flexBasis: "100%", height: 0 }} />
-          <Link className="link primary" href={image.imageLink} target="_blank">
-            View high resolution image
-            <FontAwesomeIcon
-              icon={faExternalLinkAlt}
-              className="grey"
-              size="xs"
-              style={{ marginLeft: "0.3rem" }}
-            />
-          </Link>
-        </>
+      {!!image.genotypeString && (
+        <AlleleSymbol symbol={image.genotypeString} withLabel={false} />
       )}
     </div>
   );
@@ -217,7 +179,7 @@ const Column = ({ images, selected, onSelection }) => {
   return (
     <Row className={styles.images}>
       {images?.map((image, i) => (
-        <Col key={image.observationId} md={4} lg={3} className="mb-2">
+        <Col key={i} md={4} lg={3} className="mb-2">
           <div
             data-testid="single-image"
             className={classNames(styles.singleImage, {
@@ -263,7 +225,7 @@ const LegacyImageViewer = ({
   const [selectedFilters, setSelectedFilters] = useState<
     Record<string, string | null>
   >({});
-  const { data: legacyImages } = useQuery({
+  const { data: legacyImages } = useQuery<LegacyImageEndpointResponse>({
     queryKey: ["genes", mgiGeneAccessionId, "legacy-images", procedureName],
     queryFn: () =>
       fetchURL(
@@ -278,7 +240,7 @@ const LegacyImageViewer = ({
     return {
       mutantImages: mtImages,
       wildtypeImages: wtImages,
-      allImages: [].concat(mtImages, wtImages),
+      allImages: mtImages.concat(wtImages),
     };
   }, [legacyImages]);
 

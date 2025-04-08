@@ -12,7 +12,9 @@ export async function GET(request: Request) {
   const response = await fetch(url);
   const data = await response.json();
   const processedImages = data.response.docs.map((image) => ({
-    ...image,
+    genotype: image.genotype,
+    gender: image.gender,
+    ageInWeeks: image.ageInWeeks,
     fullResolutionFilePath: `${imageURL}${image.fullResolutionFilePath.substring(7)}`,
     largeThumbnailFilePath: `${imageURL}${image.largeThumbnailFilePath.substring(7)}`,
     smallThumbnailFilePath: `${imageURL}${image.smallThumbnailFilePath.substring(7)}`,
