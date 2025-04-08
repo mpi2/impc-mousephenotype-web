@@ -5,6 +5,9 @@ import { Card } from "@/components";
 import { useLayoutEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 type GenomeBrowserProps = {
   geneSymbol: string;
@@ -30,32 +33,35 @@ type SelectedTracks = {
 };
 
 const PRODUCTS_TRACKS = {
-  crisprGuides: {
-    name: "Aligned FASTA from CRISPR alleles",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
-    order: 10,
+  crisprDeletionCoords: {
+    name: "CRISPR allele deletion coordinates",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
+    order: 3,
   },
   crisprDeletions: {
-    name: "Molecular deletions identified in IMPC CRISPR alleles",
+    name: "Aligned FASTA from CRISPR alleles",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
-    order: 11,
+    order: 4,
   },
-  crisprDeletionCoords: {
-    name: "CRISPR deletion coordinates",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
-    order: 9,
+  crisprGuides: {
+    name: "CRISPR allele guides",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
+    order: 5,
   },
   esCellAlleles: {
-    name: "ES Cell Allele",
+    name: "ES Cell alleles available to order",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
+    order: 8,
   },
   esCellProducts: {
     name: "Mouse lines carrying a ES Cell allele",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
+    order: 7,
   },
   targetingVectors: {
     name: "Targeting Vector Products",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
+    order: 9,
   },
 };
 const optionalTracks = {
@@ -63,7 +69,6 @@ const optionalTracks = {
     name: "GENCODE",
     url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
     indexed: false,
-    height: 200,
     format: "gff3",
     searchable: true,
     searchableFields: [
@@ -82,7 +87,11 @@ const optionalTracks = {
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
     indexed: false,
     nameField: "GeneName",
-    height: 100,
+    order: 0,
+  },
+  "IKMC alleles": {
+    name: "IKMC alleles",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
   },
 };
 
@@ -109,6 +118,7 @@ const GenomeBrowser = ({
     async function setupIGVBrowser() {
       const igv = (await import("igv/dist/igv.esm")).default;
       const igvContainer = document.querySelector("#igv-container");
+      const currentHash = window.location.hash;
       const selectedTracks: Record<string, boolean> = {};
       let tracks: Array<any> = [
         {
@@ -116,7 +126,6 @@ const GenomeBrowser = ({
           format: "refgene",
           url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
           indexed: false,
-          height: 220,
           order: 0,
           removable: false,
         },
@@ -133,7 +142,7 @@ const GenomeBrowser = ({
         PRODUCTS_TRACKS.esCellAlleles,
         PRODUCTS_TRACKS.esCellProducts,
       );
-      if (hasTargetingVectorData) {
+      if (currentHash === "#targetingVector") {
         tracks.push(PRODUCTS_TRACKS.targetingVectors);
         selectedTracks.targetingVectors = true;
       }
@@ -213,7 +222,19 @@ const GenomeBrowser = ({
       <Container style={{ padding: 0 }}>
         <Row>
           <Col>
-            <h2 className="mb-3 mt-0">Genome browser</h2>
+            <div
+              className="mb-3 mt-0"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <h2 style={{ margin: 0 }}>Genome browser</h2>
+              <Link
+                href="https://dev.mousephenotype.org/help/data-visualization/allele-pages/genome-browser/"
+                className="btn"
+                aria-label="Genome browser documentation"
+              >
+                <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
+              </Link>
+            </div>
           </Col>
           <Col className={styles.resetBtnContainer}>
             <button
@@ -256,6 +277,14 @@ const GenomeBrowser = ({
                       "UniProt SwissProt/TrEMBL Protein Annotations",
                       e.target.checked,
                     )
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="IKMC alleles"
+                  onChange={(e) =>
+                    toggleOptionalTrack("IKMC alleles", e.target.checked)
                   }
                 />
               </div>
