@@ -28,8 +28,7 @@ import {
   useReducer,
   useState,
 } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { orderBy, capitalize } from "lodash";
+import { orderBy } from "lodash";
 import Link from "next/link";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { formatAlleleSymbol } from "@/utils";
@@ -45,52 +44,17 @@ import {
   faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
-import { SortType } from "@/models";
+import { BatchQueryItem, GoTerm, SelectedAlleleData, SortType } from "@/models";
 import moment from "moment";
 import { Metadata } from "next";
+import { useBatchQuery } from "@/hooks";
 
-const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 const BATCH_QUERY_DOWNLOAD_ROOT =
   process.env.NEXT_PUBLIC_BATCH_QUERY_DOWNLOAD_ROOT || "";
-
-type GoTerm = {
-  aspect: string;
-  assigned_by: string;
-  db_names: string;
-  db_type: string;
-  evidence_code: string;
-  go_id: string;
-  go_name: string;
-  go_term_specificity: number;
-  references: string;
-};
-
-type BatchQueryItem = {
-  geneId: string;
-  mouseGeneSymbol: string;
-  humanGeneIds: string | Array<string>;
-  humanGeneSymbols: string | Array<string>;
-  allSignificantSystems: Array<string>;
-  allSignificantPhenotypes: Array<string>;
-  alleles: Array<{
-    allele: string;
-    significantPhenotypes: Array<string>;
-    significantLifeStages: Array<string>;
-    significantSystems: Array<string>;
-    notSignificantPhenotypes: Array<string>;
-    notSignificantSystems: Array<string>;
-  }>;
-  goTerms: Array<GoTerm>;
-};
 
 type SortOptions = {
   prop: string | ((any) => void);
   order: "asc" | "desc";
-};
-
-type SelectedAlleleData = {
-  alelleSymbol: string;
-  phenotypes: Array<string>;
 };
 
 const formatOptionLabel = ({ value, label, numHits }, { context }) => {
@@ -339,9 +303,9 @@ type SelectOptions = Array<{
 }>;
 
 const BatchQueryPage = () => {
-  const [geneIds, setGeneIds] = useState<string>(undefined);
-  const [file, setFile] = useState<File>(null);
-  const [fileIDCount, setFileIDCount] = useState<number>(null);
+  const [geneIds, setGeneIds] = useState<string | undefined>(undefined);
+  const [file, setFile] = useState<File | null>(null);
+  const [fileIDCount, setFileIDCount] = useState<number | null>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [selectedSystems, setSelectedSystems] = useState([]);
@@ -352,21 +316,21 @@ const BatchQueryPage = () => {
   });
   const [tab, setTab] = useState("paste-your-list");
   const [selectedAlleleData, setSelectedAlleleData] =
-    useState<SelectedAlleleData>(null);
+    useState<SelectedAlleleData | null>(null);
   const defaultSort: SortType = useMemo(() => ["mouseGeneSymbol", "asc"], []);
   const downloadButtonIsBusy =
     state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
 
   const handleClose = () => setSelectedAlleleData(null);
 
-  const geneIdArray = useMemo(() => {
+  const geneIdArray: Array<string> = useMemo(() => {
     const regex = /(MGI:\d+),?/g;
     return [...(geneIds?.matchAll(regex) || [])].map((res) => res[1]);
   }, [geneIds]);
 
   useEffect(() => {
     // case 1: user updated input (list or file)
-    if ((!!geneIds || !!file) && formSubmitted === true) {
+    if ((!!geneIds || !!file) && formSubmitted) {
       setFormSubmitted(false);
     }
   }, [geneIds, formSubmitted, file]);
@@ -382,49 +346,13 @@ const BatchQueryPage = () => {
     }
   }, [file, fileIDCount]);
 
-  const getBody = () => {
-    let body;
-    if (tab === "upload-your-list") {
-      const data = new FormData();
-      data.append("file", file);
-      body = data;
-    } else {
-      body = JSON.stringify({ mgi_ids: geneIdArray });
-    }
-    return body;
-  };
-
-  const { data: results, isFetching } = useQuery<Array<BatchQueryItem>>({
-    queryKey: ["batch-query", geneIdArray, file, tab],
-    queryFn: () => {
-      const headers = new Headers();
-      headers.append("Accept", "application/json");
-      if (tab === "paste-your-list") {
-        headers.append("Content-Type", "application/json");
-      }
-      const body = getBody();
-
-      return fetch(BATCH_QUERY_API_ROOT, {
-        method: "POST",
-        body,
-        headers,
-      }).then((res) => res.json());
-    },
-    enabled:
-      (geneIdArray.length > 0 || !!file) &&
-      !!formSubmitted &&
-      !downloadButtonIsBusy,
-    select: (response: any) => {
-      const { results, notFoundIds } = response;
-      return results.map((gene) => ({
-        ...gene,
-        alleles: gene.alleles.toSorted(
-          (a1, a2) =>
-            a2.significantPhenotypes.length - a1.significantPhenotypes.length,
-        ),
-      }));
-    },
-  });
+  const { data: results, isFetching } = useBatchQuery(
+    tab,
+    geneIdArray,
+    file,
+    formSubmitted,
+    downloadButtonIsBusy,
+  );
 
   const downloadButtons = useMemo(
     () => [
@@ -527,7 +455,14 @@ const BatchQueryPage = () => {
   }, [filteredData, sortOptions]);
 
   const fetchFilteredDataset = async (payload: toogleFlagPayload) => {
-    const body = getBody();
+    let body;
+    if (tab === "upload-your-list") {
+      const data = new FormData();
+      data.append("file", file);
+      body = data;
+    } else {
+      body = JSON.stringify({ mgi_ids: geneIdArray });
+    }
     dispatch({ type: "toggle", payload });
     const response = await fetch(BATCH_QUERY_DOWNLOAD_ROOT, {
       method: "POST",
