@@ -34,7 +34,7 @@ type SelectedTracks = {
 
 const PRODUCTS_TRACKS = {
   crisprDeletionCoords: {
-    name: "CRISPR alleles deletion coordinates",
+    name: "CRISPR allele deletion coordinates",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
     order: 3,
   },
