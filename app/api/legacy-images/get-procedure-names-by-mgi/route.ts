@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   const facetData: Array<any> =
     data.facet_counts.facet_fields.sangerProcedureName;
   let isDone = false;
-  const results: Record<string, number> = {};
+  const results: Array<{ parameterName: string; count: number }> = [];
   do {
     const paramName: string = facetData.shift();
     const count: number = facetData.shift();
@@ -23,7 +23,10 @@ export async function GET(request: Request) {
       isDone = true;
       break;
     }
-    results[paramName] = count;
+    results.push({
+      parameterName: paramName,
+      count,
+    });
   } while (!isDone);
   return Response.json(results);
 }

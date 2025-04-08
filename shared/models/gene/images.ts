@@ -55,3 +55,8 @@ export type AssociatedParameter = {
   name: string;
   value: string;
 };
+
+export type GeneLegacyImageCollection = {
+  parameterName: string;
+  count: number;
+};
