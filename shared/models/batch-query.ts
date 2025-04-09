@@ -32,3 +32,15 @@ export type SelectedAlleleData = {
   alelleSymbol: string;
   phenotypes: Array<string>;
 };
+
+export type DownloadButtonsState = {
+  isBusyJSON: boolean;
+  isBusyXLSX: boolean;
+  isBusyTSV: boolean;
+};
+
+export type SelectOptions = Array<{
+  value: string;
+  label: string;
+  numHits: number;
+}>;
