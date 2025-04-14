@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import PhenotypePage from "@/app/phenotypes/[id]/phenotype-page";
-import { API_URL, renderWithClient } from "../../utils";
+import { API_URL, renderWithClient, TEST_MH_PLOT_ENDPOINT } from "../../utils";
 import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import phenotypeData from "../../../mocks/data/phenotypes/MP:0012361/summary.json";
@@ -29,12 +29,9 @@ describe("Phenotype page", () => {
         return res(ctx.json(phenotypeGenotypeHitsData));
       },
     ),
-    rest.get(
-      `https://impc-datasets.s3.eu-west-2.amazonaws.com/phenotype-stats-results/dr22.1/MP:0012361.json`,
-      (req, res, ctx) => {
-        return res(ctx.json(phenotypeStatsData));
-      },
-    ),
+    rest.get(`${TEST_MH_PLOT_ENDPOINT}/MP:0012361.json`, (req, res, ctx) => {
+      return res(ctx.json(phenotypeStatsData));
+    }),
   );
 
   it("renders correctly", async () => {

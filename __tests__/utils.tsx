@@ -11,6 +11,15 @@ export type AppRouterContextProviderMockProps = {
   children: React.ReactNode;
 };
 
+export const TEST_DATASETS_ENDPOINT =
+  process.env.NEXT_PUBLIC_STATS_DATASETS_URL;
+
+export const TEST_LANDING_PAGE_ENDPOINT =
+  process.env.NEXT_PUBLIC_LANDING_PAGE_DATA_URL;
+
+export const TEST_MH_PLOT_ENDPOINT =
+  process.env.NEXT_PUBLIC_LANDING_PAGE_DATA_URL;
+
 export const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
 
 export const createTestQueryClient = () =>

@@ -1,5 +1,5 @@
 import LateAdultLandingPage from "@/app/late-adult-data/late-adult-page";
-import { renderWithClient } from "../../utils";
+import { renderWithClient, TEST_LANDING_PAGE_ENDPOINT } from "../../utils";
 import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 import lateAdultData from "../../../mocks/data/tests/landing-pages/late-adult.json";
@@ -23,7 +23,7 @@ describe("Late Adult landing page", () => {
   it("renders correctly", async () => {
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/landing-page-data/dr22.1/late_adult_landing/procedure_level_data.json",
+        `${TEST_LANDING_PAGE_ENDPOINT}/late_adult_landing/procedure_level_data.json`,
         (_, res, ctx) => {
           return res(ctx.json(lateAdultData));
         },
