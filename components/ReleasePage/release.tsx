@@ -650,7 +650,7 @@ const ReleaseNotesPage = (props: Props) => {
                 summaryCounts[dataReleaseVersion].phenotypedLines,
                 true,
                 <Link
-                  href="https://dev.mousephenotype.org/help/mouse-production/faqs/what-is-a-phenotyped-line/"
+                  href="https://www.mousephenotype.org/help/mouse-production/faqs/what-is-a-phenotyped-line/"
                   className="btn"
                   aria-label="What is a line?"
                   target="_blank"
