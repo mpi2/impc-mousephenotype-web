@@ -1,7 +1,11 @@
 import CardiovascularLandingPage from "@/app/cardiovascular/cardiovascular-page";
 import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
-import { API_URL, renderWithClient } from "../../utils";
+import {
+  API_URL,
+  renderWithClient,
+  TEST_LANDING_PAGE_ENDPOINT,
+} from "../../utils";
 import { waitFor } from "@testing-library/react";
 import pleiotropyData from "../../../mocks/data/tests/landing-pages/phenotype-pleiotropy.json";
 
@@ -43,7 +47,7 @@ describe("Cardiovascular landing page", () => {
         );
       }),
       rest.get(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/landing-page-data/dr22.1/phenotype_pleiotropy.json`,
+        `${TEST_LANDING_PAGE_ENDPOINT}/phenotype_pleiotropy.json`,
         (req, res, ctx) => {
           return res(ctx.json(pleiotropyData));
         },
