@@ -1,7 +1,7 @@
 import SupportingDataPage from "@/app/supporting-data/supporting-data-page";
 import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { API_URL, renderWithClient } from "../utils";
+import { API_URL, renderWithClient, TEST_DATASETS_ENDPOINT } from "../utils";
 import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import chartData from "../../mocks/data/tests/myo6-abnomal-startle-reflex.json";
@@ -67,7 +67,7 @@ describe("Categorical Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/5e7bcb3efa98f7fcaa282f9a3e4c4a59.json",
+        `${TEST_DATASETS_ENDPOINT}/5e7bcb3efa98f7fcaa282f9a3e4c4a59.json`,
         (req, res, ctx) => {
           return res(ctx.json(datasetData));
         },

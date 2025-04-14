@@ -1,6 +1,6 @@
 import ViabilityChartPage from "@/app/supporting-data/viability/viability-chart-page";
 import { screen, waitFor } from "@testing-library/react";
-import { API_URL, renderWithClient } from "../utils";
+import { API_URL, renderWithClient, TEST_DATASETS_ENDPOINT } from "../utils";
 import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import viabilityData from "../../mocks/data/tests/myo6-viability-data.json";
@@ -61,7 +61,7 @@ describe("Viability chart page", () => {
         },
       ),
       rest.get(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/9deeb0258d5159af7911eebdc0ba2ed3.json`,
+        `${TEST_DATASETS_ENDPOINT}/9deeb0258d5159af7911eebdc0ba2ed3.json`,
         (req, res, ctx) => {
           return res(ctx.json(datasetData));
         },
@@ -69,14 +69,18 @@ describe("Viability chart page", () => {
     );
     const { container } = renderWithClient(<ViabilityChartPage />);
     await waitFor(async () => {
-      const rows = await screen.findAllByRole("row");
-      return expect(rows.length).toEqual(3);
+      const rows = await screen.findAllByRole("table");
+      return expect(rows.length).toEqual(2);
     });
     await waitFor(() =>
       expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
         "Viability data for Myo6 gene",
       ),
     );
+    await waitFor(async () => {
+      const rows = await screen.findAllByRole("row");
+      return expect(rows.length).toEqual(12);
+    });
     expect(container).toMatchSnapshot();
   });
 });
