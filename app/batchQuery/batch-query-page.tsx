@@ -180,7 +180,11 @@ const BatchQueryPage = () => {
     return orderBy(filteredData, sortOptions.prop, sortOptions.order);
   }, [filteredData, sortOptions]);
 
-  const fetchFilteredDataset = async (payload: toogleFlagPayload) => {
+  const fetchFilteredDataset = async (
+    payload: toogleFlagPayload,
+    pathURL: string,
+    zippedFile: boolean,
+  ) => {
     let body;
     if (tab === "upload-your-list") {
       const data = new FormData();
@@ -190,15 +194,42 @@ const BatchQueryPage = () => {
       body = JSON.stringify({ mgi_ids: geneIdArray });
     }
     dispatch({ type: "toggle", payload });
-    const response = await fetch(BATCH_QUERY_DOWNLOAD_ROOT, {
+    const url = `${BATCH_QUERY_DOWNLOAD_ROOT}${pathURL}?`;
+    let acceptHeader = "application/json";
+    switch (payload) {
+      case "TSV":
+        acceptHeader = "text/tab-separated-values";
+        break;
+      case "XLSX":
+        acceptHeader = "application/vnd.ms-excel";
+        break;
+      case "JSON":
+      case "SummaryJSON":
+      default:
+        break;
+    }
+    const response = await fetch(url, {
       method: "POST",
       body,
+      headers: {
+        Accept: acceptHeader,
+      },
     });
     const fileData = await response.blob();
-    const url = window.URL.createObjectURL(fileData);
+    const objUrl = window.URL.createObjectURL(fileData);
     const a = document.createElement("a");
-    a.href = url;
-    a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.zip`;
+    a.href = objUrl;
+    if (zippedFile) {
+      a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.zip`;
+    } else {
+      const extension =
+        payload === "JSON" || payload === "SummaryJSON"
+          ? "json"
+          : payload === "TSV"
+            ? "tsv"
+            : "xlsx";
+      a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.${extension}`;
+    }
     document.body.appendChild(a);
     a.click();
     a.remove();

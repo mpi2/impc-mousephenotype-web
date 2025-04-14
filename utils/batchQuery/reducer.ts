@@ -1,25 +1,21 @@
-type State = {
-  isBusyJSON: boolean;
-  isBusyXLSX: boolean;
-  isBusyTSV: boolean;
-};
-export type toogleFlagPayload = "application/JSON" | "XLSX" | "TSV";
+import { DownloadButtonsState } from "@/models";
+
+export type toogleFlagPayload = "JSON" | "XLSX" | "TSV" | "SummaryJSON";
 type toogleFlag = { type: "toggle"; payload: toogleFlagPayload };
 
 type Actions = toogleFlag;
 
-export const initialState: State = {
+export const initialState: DownloadButtonsState = {
   isBusyJSON: false,
   isBusyXLSX: false,
   isBusyTSV: false,
+  isBusySummaryJSON: false,
 };
 
-export function reducer(state: State, action: Actions) {
+export function reducer(state: DownloadButtonsState, action: Actions) {
   switch (action.type) {
     case "toggle":
-      const payload =
-        action.payload === "application/JSON" ? "JSON" : action.payload;
-      const key: keyof State = `isBusy${payload}`;
+      const key: keyof DownloadButtonsState = `isBusy${action.payload}`;
       return {
         ...state,
         [key]: !state[key],

@@ -262,7 +262,11 @@ type BatchQueryResultsProps = PropsWithChildren<{
   actualResults: number;
   isDataAvailable: boolean;
   downloadButtonsState: DownloadButtonsState;
-  fetchFilteredDataset: (payload: any) => Promise<void>;
+  fetchFilteredDataset: (
+    payload: any,
+    pathUrl: string,
+    zippedFile: boolean,
+  ) => Promise<void>;
   selectOptions: {
     systemSelectOptions: SelectOptions;
     phenotypeSelectOptions: SelectOptions;
@@ -297,9 +301,22 @@ export const BatchQueryResults = ({
 
   const downloadButtons = [
     {
-      key: "JSON",
+      key: "Summary data JSON",
       isBusy: state.isBusyJSON,
-      toogleFlag: () => fetchFilteredDataset("application/JSON"),
+      toogleFlag: () =>
+        fetchFilteredDataset("JSON", "download-preprocessed-data", false),
+    },
+    {
+      key: "Summary data TSV",
+      isBusy: state.isBusyTSV,
+      toogleFlag: () =>
+        fetchFilteredDataset("TSV", "download-preprocessed-data", false),
+    },
+    {
+      key: "Full results JSON",
+      isBusy: state.isBusyJSON,
+      toogleFlag: () =>
+        fetchFilteredDataset("JSON", "download-full-results", true),
     },
   ];
 
@@ -347,15 +364,16 @@ export const BatchQueryResults = ({
                     topControlsWrapperCSS={{ marginTop: "1rem" }}
                     additionalTopControls={
                       <>
-                        (!!selectedSystems.length ||
-                        !!selectedPhenotypes.length) && (
-                        <div>
-                          <b className="small grey">
-                            Showing {sortedData?.length || 0} result(s) of&nbsp;
-                            {actualResults}
-                          </b>
-                        </div>
-                        )
+                        {(!!selectedSystems.length ||
+                          !!selectedPhenotypes.length) && (
+                          <div>
+                            <b className="small grey">
+                              Showing {sortedData?.length || 0} result(s)
+                              of&nbsp;
+                              {actualResults}
+                            </b>
+                          </div>
+                        )}
                       </>
                     }
                   >
@@ -505,7 +523,9 @@ export const BatchQueryResults = ({
           >
             <button
               className="btn impc-primary-button mb-3"
-              onClick={() => fetchFilteredDataset("application/JSON")}
+              onClick={() =>
+                fetchFilteredDataset("JSON", "download-full-results", true)
+              }
             >
               {state.isBusyJSON ? (
                 <Spinner animation="border" size="sm" />

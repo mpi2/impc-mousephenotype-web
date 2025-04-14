@@ -37,6 +37,7 @@ export type DownloadButtonsState = {
   isBusyJSON: boolean;
   isBusyXLSX: boolean;
   isBusyTSV: boolean;
+  isBusySummaryJSON: boolean;
 };
 
 export type SelectOptions = Array<{
