@@ -94,8 +94,13 @@ const Mice = ({
                   fields={[
                     { key: "name", label: "Colony Name" },
                     {
-                      key: "backgroundColonyStrain",
+                      key: "displayStrainName",
                       label: "Genetic Background",
+                      getValueFn: (item) => {
+                        return (
+                          item.displayStrainName || item.backgroundColonyStrain
+                        );
+                      },
                     },
                     { key: "productionCentre", label: "Production Centre" },
                     {
@@ -162,7 +167,7 @@ const Mice = ({
                       <td>
                         <strong>{p.name}</strong>
                       </td>
-                      <td>{p.backgroundColonyStrain}</td>
+                      <td>{p.displayStrainName || p.backgroundColonyStrain}</td>
                       <td>{p.productionCentre}</td>
 
                       <td>
