@@ -2,7 +2,7 @@ import { screen, waitFor } from "@testing-library/react";
 import EmbryoLandingPage from "@/app/embryo/embryo-page";
 import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
-import { renderWithClient } from "../../utils";
+import { renderWithClient, TEST_LANDING_PAGE_ENDPOINT } from "../../utils";
 import embryoData from "../../../mocks/data/tests/landing-pages/embryo.json";
 import pubsData from "../../../mocks/data/tests/publications-page/all-pubs-data.json";
 
@@ -29,7 +29,7 @@ describe("Embryo landing page", () => {
   it("renders correctly", async () => {
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/landing-page-data/dr22.1/embryo_landing.json",
+        `${TEST_LANDING_PAGE_ENDPOINT}/embryo_landing.json`,
         (_, res, ctx) => {
           return res(ctx.json(embryoData));
         },

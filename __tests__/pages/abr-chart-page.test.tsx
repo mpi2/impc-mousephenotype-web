@@ -1,7 +1,7 @@
 import SupportingDataPage from "@/app/supporting-data/supporting-data-page";
 import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { API_URL, renderWithClient } from "../utils";
+import { API_URL, renderWithClient, TEST_DATASETS_ENDPOINT } from "../utils";
 import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import chartData from "../../mocks/data/tests/cib2-abr-chart-data.json";
@@ -92,7 +92,7 @@ describe("ABR Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/5682218200528351d763e190dbb492bc.json",
+        `${TEST_DATASETS_ENDPOINT}/5682218200528351d763e190dbb492bc.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset1Data));
         },
@@ -100,7 +100,7 @@ describe("ABR Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/3f1010ee50e0cd27cc2da4a7f3f7ec42.json",
+        `${TEST_DATASETS_ENDPOINT}/3f1010ee50e0cd27cc2da4a7f3f7ec42.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset2Data));
         },
@@ -108,7 +108,7 @@ describe("ABR Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/73fcc7c348c83f166e9feceff9736854.json",
+        `${TEST_DATASETS_ENDPOINT}/73fcc7c348c83f166e9feceff9736854.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset3Data));
         },
@@ -116,7 +116,7 @@ describe("ABR Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/fc0ea562c56ef142a9c6302af51c885c.json",
+        `${TEST_DATASETS_ENDPOINT}/fc0ea562c56ef142a9c6302af51c885c.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset4Data));
         },
