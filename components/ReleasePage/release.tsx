@@ -36,7 +36,6 @@ import { CallsTrendChart, DataPointsTrendChart } from "@/components";
 import { SortType } from "@/models";
 
 const listOfPastReleases = [
-  "22.1",
   "22.0",
   "21.1",
   "21.0",
@@ -82,13 +81,13 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Colors
+  Colors,
 );
 
 const valuePair = (
   key: string,
   value: string | number,
-  enableJustify: boolean = false
+  enableJustify: boolean = false,
 ) => (
   <div
     style={
@@ -142,11 +141,11 @@ const ReleaseNotesPage = (props: Props) => {
 
   const linesTableDefaultSort: SortType = useMemo(
     () => ["phenotypingCentre", "asc"],
-    []
+    [],
   );
   const experimentalDataDefaultSort: SortType = useMemo(
     () => ["count", "desc"],
-    []
+    [],
   );
 
   const unescapeReleaseNotes = (value: string) => {
@@ -169,7 +168,7 @@ const ReleaseNotesPage = (props: Props) => {
   };
   const getProductionStatusByType = (
     statusArray,
-    type: string
+    type: string,
   ): Array<StatusCount> => {
     const counts = statusArray
       .find((s) => s.statusType === type)
@@ -177,15 +176,15 @@ const ReleaseNotesPage = (props: Props) => {
         (count) =>
           count.status !== null &&
           !count.status.includes("Aborted") &&
-          !count.status.includes("Abandoned")
+          !count.status.includes("Abandoned"),
       );
     const mouseAlleleModificationCount =
       counts.find(
-        (c) => c.status === "Mouse Allele Modification Genotype Confirmed"
+        (c) => c.status === "Mouse Allele Modification Genotype Confirmed",
       )?.count || 0;
     return counts
       .filter(
-        (c) => c.status !== "Mouse Allele Modification Genotype Confirmed"
+        (c) => c.status !== "Mouse Allele Modification Genotype Confirmed",
       )
       .map((s) => {
         return {
@@ -202,7 +201,7 @@ const ReleaseNotesPage = (props: Props) => {
 
   const getProcedureCount = (
     type: "Early adult" | "Late adult" | "Embryo",
-    procedure
+    procedure,
   ): number => {
     const embryoLifeStages = ["Embryo", "E18.5", "E9.5", "E15.5", "E12.5"];
     switch (type) {
@@ -234,13 +233,13 @@ const ReleaseNotesPage = (props: Props) => {
           const p2EmbryoStage = Number.parseInt(p2IsEmbryoProd[1], 10);
           return p1EmbryoStage - p2EmbryoStage;
         }
-      }
+      },
     );
   };
 
   const generateProdByCenterData = (
     data: Array<ProdStatusByCenter>,
-    type: string
+    type: string,
   ) => {
     const dataByType = getProductionStatusByType(data, type);
     const statuses =
@@ -248,7 +247,7 @@ const ReleaseNotesPage = (props: Props) => {
     const labels: Array<string> = uniq(
       dataByType
         .sort((a, b) => labelsByPhenotypeStatus(statuses, a, b))
-        .map((s) => s.status)
+        .map((s) => s.status),
     );
     const datasets = Object.values(groupBy(dataByType, "center")).map(
       (centerData) => {
@@ -260,7 +259,7 @@ const ReleaseNotesPage = (props: Props) => {
               .getOrElse(0);
           }),
         };
-      }
+      },
     );
     return {
       labels,
@@ -295,7 +294,7 @@ const ReleaseNotesPage = (props: Props) => {
   const labelsByPhenotypeStatus = (
     orderArray: Array<string>,
     a: { status: string; count: number },
-    b: { status: string; count: number }
+    b: { status: string; count: number },
   ) => {
     return orderArray.indexOf(a.status.toLocaleLowerCase()) >
       orderArray.indexOf(b.status.toLocaleLowerCase())
@@ -305,33 +304,33 @@ const ReleaseNotesPage = (props: Props) => {
   const phenotypeAssociationsData = useMemo(
     () => ({
       labels: releaseMetadata.phenotypeAnnotations.map(
-        (phenotype) => phenotype.topLevelPhenotype
+        (phenotype) => phenotype.topLevelPhenotype,
       ),
       datasets: [
         {
           label: "Homozygote",
           data: releaseMetadata.phenotypeAnnotations.map(
-            findZygosityCount.bind(null, "homozygote")
+            findZygosityCount.bind(null, "homozygote"),
           ),
           backgroundColor: "rgb(119, 119, 119)",
         },
         {
           label: "Heterozygote",
           data: releaseMetadata.phenotypeAnnotations.map(
-            findZygosityCount.bind(null, "heterozygote")
+            findZygosityCount.bind(null, "heterozygote"),
           ),
           backgroundColor: "rgb(9, 120, 161)",
         },
         {
           label: "Hemizygote",
           data: releaseMetadata.phenotypeAnnotations.map(
-            findZygosityCount.bind(null, "hemizygote")
+            findZygosityCount.bind(null, "hemizygote"),
           ),
           backgroundColor: "rgb(239, 123, 11)",
         },
       ],
     }),
-    [releaseMetadata.phenotypeAnnotations]
+    [releaseMetadata.phenotypeAnnotations],
   );
 
   const overallProdStatusOptions = {
@@ -366,7 +365,7 @@ const ReleaseNotesPage = (props: Props) => {
     () => ({
       labels: getProductionStatusByType(
         releaseMetadata.productionStatusOverall,
-        "productionESCellNull"
+        "productionESCellNull",
       )
         .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
         .map((c) => c.status),
@@ -375,7 +374,7 @@ const ReleaseNotesPage = (props: Props) => {
           label: "",
           data: getProductionStatusByType(
             releaseMetadata.productionStatusOverall,
-            "productionESCellNull"
+            "productionESCellNull",
           )
             .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
             .map((c) => c.count),
@@ -383,14 +382,14 @@ const ReleaseNotesPage = (props: Props) => {
         },
       ],
     }),
-    [releaseMetadata.productionStatusOverall]
+    [releaseMetadata.productionStatusOverall],
   );
 
   const esCellConditionalOverallProductionStatusChart = useMemo(
     () => ({
       labels: getProductionStatusByType(
         releaseMetadata.productionStatusOverall,
-        "productionESCellConditional"
+        "productionESCellConditional",
       )
         .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
         .map((c) => c.status),
@@ -399,7 +398,7 @@ const ReleaseNotesPage = (props: Props) => {
           label: "",
           data: getProductionStatusByType(
             releaseMetadata.productionStatusOverall,
-            "productionESCellConditional"
+            "productionESCellConditional",
           )
             .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
             .map((c) => c.count),
@@ -407,14 +406,14 @@ const ReleaseNotesPage = (props: Props) => {
         },
       ],
     }),
-    [releaseMetadata.productionStatusOverall]
+    [releaseMetadata.productionStatusOverall],
   );
 
   const crisprNullOverallProductionStatusChart = useMemo(
     () => ({
       labels: getProductionStatusByType(
         releaseMetadata.productionStatusOverall,
-        "productionCrisprNull"
+        "productionCrisprNull",
       )
         .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
         .map((c) => c.status),
@@ -423,7 +422,7 @@ const ReleaseNotesPage = (props: Props) => {
           label: "",
           data: getProductionStatusByType(
             releaseMetadata.productionStatusOverall,
-            "productionCrisprNull"
+            "productionCrisprNull",
           )
             .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
             .map((c) => c.count),
@@ -431,14 +430,14 @@ const ReleaseNotesPage = (props: Props) => {
         },
       ],
     }),
-    [releaseMetadata.productionStatusOverall]
+    [releaseMetadata.productionStatusOverall],
   );
 
   const crisprConditionalOverallProductionStatusChart = useMemo(
     () => ({
       labels: getProductionStatusByType(
         releaseMetadata.productionStatusOverall,
-        "productionCrisprConditional"
+        "productionCrisprConditional",
       )
         .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
         .map((c) => c.status),
@@ -447,7 +446,7 @@ const ReleaseNotesPage = (props: Props) => {
           label: "",
           data: getProductionStatusByType(
             releaseMetadata.productionStatusOverall,
-            "productionCrisprConditional"
+            "productionCrisprConditional",
           )
             .sort((a, b) => labelsByPhenotypeStatus(genotypingStatuses, a, b))
             .map((c) => c.count),
@@ -455,14 +454,14 @@ const ReleaseNotesPage = (props: Props) => {
         },
       ],
     }),
-    [releaseMetadata.productionStatusOverall]
+    [releaseMetadata.productionStatusOverall],
   );
 
   const phenotypingStatusChartData = useMemo(
     () => ({
       labels: getProductionStatusByType(
         releaseMetadata.productionStatusOverall,
-        "phenotyping"
+        "phenotyping",
       )
         .sort((a, b) => labelsByPhenotypeStatus(phenotypingStatuses, a, b))
         .map((c) => c.status),
@@ -471,7 +470,7 @@ const ReleaseNotesPage = (props: Props) => {
           label: "",
           data: getProductionStatusByType(
             releaseMetadata.productionStatusOverall,
-            "phenotyping"
+            "phenotyping",
           )
             .sort((a, b) => labelsByPhenotypeStatus(phenotypingStatuses, a, b))
             .map((c) => c.count),
@@ -479,52 +478,52 @@ const ReleaseNotesPage = (props: Props) => {
         },
       ],
     }),
-    [releaseMetadata.productionStatusOverall]
+    [releaseMetadata.productionStatusOverall],
   );
 
   const esCellNullByCenterChartData = useMemo(
     () =>
       generateProdByCenterData(
         releaseMetadata.productionStatusByCenter,
-        "productionESCellNull"
+        "productionESCellNull",
       ),
-    [releaseMetadata.productionStatusByCenter]
+    [releaseMetadata.productionStatusByCenter],
   );
 
   const esCellConditionalByCenterChartData = useMemo(
     () =>
       generateProdByCenterData(
         releaseMetadata.productionStatusByCenter,
-        "productionESCellConditional"
+        "productionESCellConditional",
       ),
-    [releaseMetadata.productionStatusByCenter]
+    [releaseMetadata.productionStatusByCenter],
   );
 
   const crisprNullByCenterChartData = useMemo(
     () =>
       generateProdByCenterData(
         releaseMetadata.productionStatusByCenter,
-        "productionCrisprNull"
+        "productionCrisprNull",
       ),
-    [releaseMetadata.productionStatusByCenter]
+    [releaseMetadata.productionStatusByCenter],
   );
 
   const crisprConditionalByCenterChartData = useMemo(
     () =>
       generateProdByCenterData(
         releaseMetadata.productionStatusByCenter,
-        "productionCrisprConditional"
+        "productionCrisprConditional",
       ),
-    [releaseMetadata.productionStatusByCenter]
+    [releaseMetadata.productionStatusByCenter],
   );
 
   const phenotypingProdByCenterChartData = useMemo(
     () =>
       generateProdByCenterData(
         releaseMetadata.productionStatusByCenter,
-        "phenotyping"
+        "phenotyping",
       ),
-    [releaseMetadata.productionStatusByCenter]
+    [releaseMetadata.productionStatusByCenter],
   );
 
   const phenotypeCallsByProdOpts = {
@@ -551,33 +550,33 @@ const ReleaseNotesPage = (props: Props) => {
   const phenotypeCallsByProdData = useMemo(
     () => ({
       labels: getSortedProcedures().map(
-        (phenotype) => phenotype["procedure_name"]
+        (phenotype) => phenotype["procedure_name"],
       ),
       datasets: [
         {
           label: "Early Adult",
           data: getSortedProcedures().map(
-            getProcedureCount.bind(null, "Early adult")
+            getProcedureCount.bind(null, "Early adult"),
           ),
           backgroundColor: "rgb(119, 119, 119)",
         },
         {
           label: "Late Adult",
           data: getSortedProcedures().map(
-            getProcedureCount.bind(null, "Late adult")
+            getProcedureCount.bind(null, "Late adult"),
           ),
           backgroundColor: "rgb(9, 120, 161)",
         },
         {
           label: "Embryo",
           data: getSortedProcedures().map(
-            getProcedureCount.bind(null, "Embryo")
+            getProcedureCount.bind(null, "Embryo"),
           ),
           backgroundColor: "rgb(239, 123, 11)",
         },
       ],
     }),
-    [releaseMetadata.phenotypeAssociationsByProcedure]
+    [releaseMetadata.phenotypeAssociationsByProcedure],
   );
 
   const excludedDatatypes = [
@@ -595,7 +594,7 @@ const ReleaseNotesPage = (props: Props) => {
           excludedDatatypes.includes(dataType) ? "*" : ""
         }`,
       })),
-    [releaseMetadata]
+    [releaseMetadata],
   );
 
   return (
@@ -624,17 +623,17 @@ const ReleaseNotesPage = (props: Props) => {
               {valuePair(
                 "Number of phenotyped genes",
                 summaryCounts[dataReleaseVersion].phenotypedGenes,
-                true
+                true,
               )}
               {valuePair(
                 "Number of phenotyped mutant lines",
                 summaryCounts[dataReleaseVersion].phenotypedLines,
-                true
+                true,
               )}
               {valuePair(
                 "Number of phenotype calls",
                 summaryCounts[dataReleaseVersion].phentoypeCalls,
-                true
+                true,
               )}
             </Col>
             <Col lg={6}>
@@ -670,11 +669,11 @@ const ReleaseNotesPage = (props: Props) => {
 
           {valuePair(
             "Statistical package",
-            `${releaseMetadata.statisticalAnalysisPackage.name} (${releaseMetadata.statisticalAnalysisPackage.version})`
+            `${releaseMetadata.statisticalAnalysisPackage.name} (${releaseMetadata.statisticalAnalysisPackage.version})`,
           )}
           {valuePair(
             "Genome Assembly",
-            `${releaseMetadata.genomeAssembly.species} (${releaseMetadata.genomeAssembly.version})`
+            `${releaseMetadata.genomeAssembly.species} (${releaseMetadata.genomeAssembly.version})`,
           )}
 
           <h3 className="mb-0 mt-5 mb-2">Highlights</h3>
