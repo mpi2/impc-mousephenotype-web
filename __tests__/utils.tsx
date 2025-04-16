@@ -17,8 +17,7 @@ export const TEST_DATASETS_ENDPOINT =
 export const TEST_LANDING_PAGE_ENDPOINT =
   process.env.NEXT_PUBLIC_LANDING_PAGE_DATA_URL;
 
-export const TEST_MH_PLOT_ENDPOINT =
-  process.env.NEXT_PUBLIC_LANDING_PAGE_DATA_URL;
+export const TEST_MH_PLOT_ENDPOINT = process.env.NEXT_PUBLIC_MH_PLOT_DATA_URL;
 
 export const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
 
