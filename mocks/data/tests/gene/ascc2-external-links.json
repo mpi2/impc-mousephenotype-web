@@ -1,0 +1,30 @@
+[
+  {
+    "mgiGeneAccessionId": "MGI:1922702",
+    "href": "https://www.uniprot.org/uniprotkb/Q91WR3",
+    "label": "Q91WR3",
+    "providerName": "UniProt",
+    "description": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1922702",
+    "href": "https://www.uniprot.org/uniprotkb/Q3UG63",
+    "label": "Q3UG63",
+    "providerName": "UniProt",
+    "description": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1922702",
+    "href": "https://www.uniprot.org/uniprotkb/Q9CVZ2",
+    "label": "Q9CVZ2",
+    "providerName": "UniProt",
+    "description": null
+  },
+  {
+    "mgiGeneAccessionId": "MGI:1922702",
+    "href": "https://www.ebi.ac.uk/gwas/genes/ASCC2",
+    "label": "ASCC2",
+    "providerName": "GWAS Catalog",
+    "description": null
+  }
+]
