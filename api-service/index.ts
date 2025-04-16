@@ -83,9 +83,13 @@ export async function fetchMHPlotDataFromS3(mpId: string) {
   return await response.json();
 }
 
-export async function fetchLandingPageData(landingPageId: string) {
+export async function fetchLandingPageData(
+  landingPageId: string,
+  fetchOpts = {},
+) {
   const response = await fetch(
     `${LANDING_PAGE_DATA_URL}/${landingPageId}.json`,
+    fetchOpts,
   );
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);
