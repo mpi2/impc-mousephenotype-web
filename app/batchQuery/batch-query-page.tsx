@@ -197,6 +197,7 @@ const BatchQueryPage = () => {
     const url = `${BATCH_QUERY_DOWNLOAD_ROOT}${pathURL}?`;
     let acceptHeader = "application/json";
     switch (payload) {
+      case "SummaryTSV":
       case "TSV":
         acceptHeader = "text/tab-separated-values";
         break;
@@ -225,7 +226,7 @@ const BatchQueryPage = () => {
       const extension =
         payload === "JSON" || payload === "SummaryJSON"
           ? "json"
-          : payload === "TSV"
+          : payload === "TSV" || payload === "SummaryTSV"
             ? "tsv"
             : "xlsx";
       a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.${extension}`;

@@ -302,13 +302,13 @@ export const BatchQueryResults = ({
   const downloadButtons = [
     {
       key: "Summary data JSON",
-      isBusy: state.isBusyJSON,
+      isBusy: state.isBusySummaryJSON,
       toogleFlag: () =>
         fetchFilteredDataset("JSON", "download-preprocessed-data", false),
     },
     {
       key: "Summary data TSV",
-      isBusy: state.isBusyTSV,
+      isBusy: state.isBusySummaryTSV,
       toogleFlag: () =>
         fetchFilteredDataset("TSV", "download-preprocessed-data", false),
     },
@@ -521,19 +521,24 @@ export const BatchQueryResults = ({
               alignSelf: "flex-start",
             }}
           >
-            <button
-              className="btn impc-primary-button mb-3"
-              onClick={() =>
-                fetchFilteredDataset("JSON", "download-full-results", true)
-              }
-            >
-              {state.isBusyJSON ? (
-                <Spinner animation="border" size="sm" />
-              ) : (
-                <FontAwesomeIcon icon={faDownload} size="sm" />
-              )}
-              &nbsp; Download filtered dataset JSON
-            </button>
+            {downloadButtons.map((button) => (
+              <button
+                key={button.key}
+                className="btn impc-secondary-button small"
+                onClick={button.toogleFlag}
+                disabled={button.isBusy}
+              >
+                {button.isBusy ? (
+                  <Spinner animation="border" size="sm" />
+                ) : (
+                  <>
+                    <FontAwesomeIcon icon={faDownload} size="sm" />
+                    &nbsp;
+                    {button.key}
+                  </>
+                )}
+              </button>
+            ))}
             <button className="btn impc-primary-button mb-3">
               <FontAwesomeIcon icon={faDownload} size="sm" />
               &nbsp; Download entire dataset (3.39GB) TSV
