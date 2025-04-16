@@ -14,13 +14,22 @@ const ExternalLinks = () => {
   const {
     data: providers,
     error,
-    isError,
+    isFetching,
   } = useGeneExternalLinksQuery(
     gene.mgiGeneAccessionId,
     !!gene.mgiGeneAccessionId,
   );
 
-  if (error || providers?.length === 0) {
+  if (isFetching) {
+    return (
+      <Card id="external-links">
+        <h2>External links</h2>
+        <p className="grey">Loading...</p>
+      </Card>
+    );
+  }
+
+  if (error && providers?.length === 0) {
     return (
       <Card id="external-links">
         <h2>External links</h2>
