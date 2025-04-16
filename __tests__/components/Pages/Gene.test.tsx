@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import GenePage from "@/app/genes/[pid]/gene-page";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { API_URL, createTestQueryClient } from "../../utils";
@@ -6,14 +6,15 @@ import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
 
 import ascc2StatsRes from "../../../mocks/data/tests/gene/ascc2-stats-result-page.json";
-import ascc2DatasetFilterRes from "../../../mocks/data/tests/gene/ascc2-stats-result-page.json";
+import ascc2DatasetFilterRes from "../../../mocks/data/tests/gene/ascc2-dataset-filter.json";
 import ascc2PhenHits from "../../../mocks/data/tests/gene/ascc2-phenotype-hits.json";
-import ascc2Expression from "../../../mocks/data/tests/gene/ascc2-phenotype-hits.json";
+import ascc2Expression from "../../../mocks/data/tests/gene/ascc2-expression.json";
 import ascc2Images from "../../../mocks/data/tests/gene/ascc2-images.json";
 import ascc2Histopathology from "../../../mocks/data/tests/gene/ascc2-gene-histopathology.json";
 import ascc2Publications from "../../../mocks/data/tests/gene/ascc2-publications.json";
 import ascc2Order from "../../../mocks/data/tests/gene/ascc2-order.json";
 import externalLinksProviders from "../../../mocks/data/tests/gene/ascc2-external-links-providers.json";
+import ascc22ExternalLinks from "../../../mocks/data/tests/gene/ascc2-external-links.json";
 
 type RequestMock = {
   url: string;
@@ -61,6 +62,10 @@ const mockRequestMapper: Array<RequestMock> = [
     url: `${API_URL}/api/v1/genes/MGI:1922702/disease/json`,
     resFn: (_, res, ctx) => res(ctx.json([])),
   },
+  {
+    url: `${API_URL}/api/v1/genes/MGI:1922702/gene_external_links`,
+    resFn: (_, res, ctx) => res(ctx.json(ascc22ExternalLinks)),
+  },
 ];
 
 window.ResizeObserver =
@@ -97,6 +102,10 @@ describe("Gene page", () => {
         />
       </QueryClientProvider>,
     );
+    await waitFor(async () => {
+      const rows = await screen.findAllByRole("table");
+      return expect(rows.length).toEqual(5);
+    });
     expect(container).toMatchSnapshot();
   });
 });
