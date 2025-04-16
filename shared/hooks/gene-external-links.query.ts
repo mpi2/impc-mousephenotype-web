@@ -18,7 +18,7 @@ export const useGeneExternalLinksQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
 ) => {
-  const { data: providers } = useQuery({
+  const { data: providers, isFetching: providersIsFetching } = useQuery({
     queryKey: ["external-links-providers"],
     queryFn: () => fetchAPI(`/api/v1/genes/gene_external_links/providers`),
     select: (providerList) =>
@@ -31,7 +31,7 @@ export const useGeneExternalLinksQuery = (
 
   const hasLoadedProvidersData =
     !!providers && Object.keys(providers).length > 0;
-  return useQuery({
+  const linksQuery = useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "external-links"],
     queryFn: () =>
       fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/gene_external_links`),
@@ -52,4 +52,8 @@ export const useGeneExternalLinksQuery = (
     },
     placeholderData: [],
   });
+  return {
+    ...linksQuery,
+    isFetching: providersIsFetching || linksQuery.isFetching,
+  };
 };
