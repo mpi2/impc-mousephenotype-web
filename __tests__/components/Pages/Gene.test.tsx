@@ -83,6 +83,30 @@ jest.mock("next/navigation", () => ({
   useParams: jest.fn().mockImplementation(() => ({ pid: "MGI:1922702" })),
 }));
 
+jest.mock("framer-motion", () => {
+  const FakeTransition = jest
+    .fn()
+    .mockImplementation(({ children }) => children);
+  const FakeAnimatePresence = jest
+    .fn()
+    .mockImplementation(({ children }) => (
+      <FakeTransition>{children}</FakeTransition>
+    ));
+  const LayoutGroup = jest
+    .fn()
+    .mockImplementation(({ children }) => <>{children}</>);
+  const motion = {
+    a: jest.fn().mockImplementation(({ children }) => <a>{children}</a>),
+  };
+  return {
+    __esModule: true,
+    motion,
+    AnimatePresence: FakeAnimatePresence,
+    default: jest.fn(),
+    LayoutGroup,
+  };
+});
+
 describe("Gene page", () => {
   it("renders correctly", async () => {
     testServer.use(
