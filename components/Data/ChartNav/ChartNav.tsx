@@ -16,7 +16,10 @@ const ChartNav = (props: ChartNavProps) => {
 
   return (
     <div className={styles.subheading}>
-      <span className={`${styles.subheadingSection} primary`}>
+      <span
+        className={`${styles.subheadingSection} primary`}
+        data-testid="back-to-gene-page-link"
+      >
         <Link
           href={`/genes/${mgiGeneAccessionId}`}
           className={classNames("mb-3", styles.link)}
