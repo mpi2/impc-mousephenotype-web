@@ -76,6 +76,14 @@ describe("Unidimensional Chart page", () => {
     const { container } = renderWithClient(
       <SupportingDataPage initialDatasets={[]} />,
     );
+    await waitFor(
+      async () => {
+        expect(
+          screen.queryByTestId("back-to-gene-page-link"),
+        ).toHaveTextContent("Go Back to Myo6");
+      },
+      { interval: 500, timeout: 5000 },
+    );
     await waitFor(() =>
       expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
         "decreased body length",
@@ -85,6 +93,7 @@ describe("Unidimensional Chart page", () => {
       const rows = await screen.findAllByRole("row");
       return expect(rows.length).toEqual(30);
     });
+    await new Promise(process.nextTick);
     expect(container).toMatchSnapshot();
   });
 });
