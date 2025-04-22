@@ -269,10 +269,10 @@ const ReleaseNotesPage = (props: Props) => {
         .sort((a, b) => labelsByPhenotypeStatus(statuses, a, b))
         .map((s) => s.status),
     );
-    const datasets = Object.values(groupBy(dataByType, "center")).map(
+    const datasets = Object.values(groupBy(dataByType, "centre")).map(
       (centerData) => {
         return {
-          label: centerData[0].center,
+          label: centerData[0].centre,
           data: labels.map((label) => {
             return maybe(centerData.find((d) => d.status === label))
               .map((status) => status.count)
