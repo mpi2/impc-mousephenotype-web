@@ -614,7 +614,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                       for="gene-control"
                       title=""
                     >
-                      Only display genes with image data
+                      Limit view to genes with embryo images
                     </label>
                   </div>
                 </div>
