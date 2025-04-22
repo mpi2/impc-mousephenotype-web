@@ -186,7 +186,7 @@ const EmbryoDataAvailabilityGrid = ({
             <Form.Check
               style={{ display: "flex", alignItems: "center", gap: "0.5em" }}
               id="gene-control"
-              label="Only display genes with image data"
+              label="Limit view to genes with embryo images"
               checked={viewAllGenes}
               onChange={(e) => onDataFilterChange(e.target.checked)}
             />
