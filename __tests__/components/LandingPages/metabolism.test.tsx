@@ -2,8 +2,11 @@ import { waitFor } from "@testing-library/react";
 import MetabolismLandingPage from "@/app/metabolism/metabolism-page";
 import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
-import { API_URL, renderWithClient } from "../../utils";
-import { QueryClientProvider } from "@tanstack/react-query";
+import {
+  API_URL,
+  renderWithClient,
+  TEST_LANDING_PAGE_ENDPOINT,
+} from "../../utils";
 import pleiotropyData from "../../../mocks/data/tests/landing-pages/phenotype-pleiotropy.json";
 
 jest.mock("next/navigation", () => ({
@@ -44,7 +47,7 @@ describe("Metabolism landing page", () => {
         );
       }),
       rest.get(
-        `https://impc-datasets.s3.eu-west-2.amazonaws.com/landing-page-data/dr22.1/phenotype_pleiotropy.json`,
+        `${TEST_LANDING_PAGE_ENDPOINT}/phenotype_pleiotropy.json`,
         (req, res, ctx) => {
           return res(ctx.json(pleiotropyData));
         },

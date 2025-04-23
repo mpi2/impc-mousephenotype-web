@@ -1,7 +1,7 @@
 import SupportingDataPage from "@/app/supporting-data/supporting-data-page";
 import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { API_URL, renderWithClient } from "../utils";
+import { API_URL, renderWithClient, TEST_DATASETS_ENDPOINT } from "../utils";
 import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import chartData from "../../mocks/data/tests/myo6-decreased-body-length.json";
@@ -67,7 +67,7 @@ describe("Unidimensional Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/a26ddff88929f0ed34fa45b1d313c7ae.json",
+        `${TEST_DATASETS_ENDPOINT}/a26ddff88929f0ed34fa45b1d313c7ae.json`,
         (req, res, ctx) => {
           return res(ctx.json(datasetData));
         },
@@ -76,11 +76,24 @@ describe("Unidimensional Chart page", () => {
     const { container } = renderWithClient(
       <SupportingDataPage initialDatasets={[]} />,
     );
+    await waitFor(
+      async () => {
+        expect(
+          screen.queryByTestId("back-to-gene-page-link"),
+        ).toHaveTextContent("Go Back to Myo6");
+      },
+      { interval: 500, timeout: 5000 },
+    );
     await waitFor(() =>
       expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
         "decreased body length",
       ),
     );
+    await waitFor(async () => {
+      const rows = await screen.findAllByRole("row");
+      return expect(rows.length).toEqual(30);
+    });
+    await new Promise(process.nextTick);
     expect(container).toMatchSnapshot();
   });
 });

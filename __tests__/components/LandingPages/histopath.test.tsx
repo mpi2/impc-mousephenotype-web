@@ -1,6 +1,6 @@
 import { within, screen, waitFor } from "@testing-library/react";
 import HistopathLandingPage from "@/app/histopath/histopath-page";
-import { renderWithClient } from "../../utils";
+import { renderWithClient, TEST_LANDING_PAGE_ENDPOINT } from "../../utils";
 import userEvent from "@testing-library/user-event";
 import { testServer } from "../../../mocks/server";
 import { rest } from "msw";
@@ -15,7 +15,7 @@ jest.mock("next/navigation", () => ({
 describe("Histopathology landing page", () => {
   testServer.use(
     rest.get(
-      `https://impc-datasets.s3.eu-west-2.amazonaws.com/landing-page-data/dr22.1/histopathology_landing.json`,
+      `${TEST_LANDING_PAGE_ENDPOINT}/histopathology_landing.json`,
       (req, res, ctx) => {
         return res(ctx.json(histopathologyData));
       },

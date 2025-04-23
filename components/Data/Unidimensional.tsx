@@ -58,7 +58,9 @@ const Unidimensional = ({
 
   const combinedPValue =
     formatPValue(
-      datasetSummary["statisticalMethod"]["attributes"]["genotypeEffectPValue"],
+      datasetSummary["statisticalMethod"]["attributes"][
+        "genotypeEffectPValue"
+      ] ?? datasetSummary.reportedPValue,
     ) || "N/A";
 
   const femalePValue =

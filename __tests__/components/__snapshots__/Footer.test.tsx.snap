@@ -357,7 +357,7 @@ exports[`Footer component renders correctly 1`] = `
                 <span
                   id="data-no"
                 >
-                  22.1
+                  23.0
                 </span>
                  Data
               </small>
