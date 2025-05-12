@@ -148,7 +148,7 @@ const EmbryoLandingPage = () => {
                   past the weaning stage (IMPC{" "}
                   <a
                     className="link primary"
-                    href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
+                    href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
                   >
                     Viability Primary Screen procedure
                   </a>
@@ -157,7 +157,7 @@ const EmbryoLandingPage = () => {
                   the IMPC established a{" "}
                   <a
                     className="link primary"
-                    href="https://beta.mousephenotype.org/impress"
+                    href="https://www.mousephenotype.org/impress"
                   >
                     systematic embryonic phenotyping pipeline
                   </a>{" "}
@@ -216,14 +216,14 @@ const EmbryoLandingPage = () => {
               Primary Screen &nbsp;
               <a
                 className="link primary"
-                href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
               >
                 IMPC_VIA_001
               </a>
               &nbsp;and{" "}
               <a
                 className="link primary"
-                href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1188&pipeID=7#Parameters"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1188&pipeID=7#Parameters"
               >
                 IMPC_VIA_002
               </a>
@@ -293,7 +293,7 @@ const EmbryoLandingPage = () => {
                 Lethal strains are further phenotyped in the{" "}
                 <a
                   className="link primary"
-                  href="https://beta.mousephenotype.org/impress"
+                  href="https://www.mousephenotype.org/impress"
                 >
                   embryonic phenotyping pipeline
                 </a>
@@ -301,7 +301,7 @@ const EmbryoLandingPage = () => {
                 phenotyped in the IMPC{" "}
                 <a
                   className="link primary"
-                  href="https://beta.mousephenotype.org/impress"
+                  href="https://www.mousephenotype.org/impress"
                 >
                   adult phenotyping pipeline
                 </a>
@@ -403,7 +403,7 @@ const EmbryoLandingPage = () => {
                   <li>
                     <a
                       className="link primary"
-                      href="https://beta.mousephenotype.org/data/embryo_imaging"
+                      href="https://www.mousephenotype.org/data/embryo_imaging"
                     >
                       Embryo Images: interactive heatmap
                     </a>
