@@ -151,13 +151,14 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
             <div className={styles.label}>&nbsp;</div>
             <div className="content">
               For more information on how bodyweight is used in this analysis,
-              please read&nbsp;
+              please read the&nbsp;
               <Link
                 className="link primary"
                 href="http://www.mousephenotype.org/help/data-analysis/statistical-analysis#linear-mixed-model"
               >
-                this help page
+                Statistical analysis
               </Link>
+              &nbsp;help page
             </div>
           </>
         )}
