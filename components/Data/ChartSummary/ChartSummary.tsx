@@ -150,7 +150,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
           <>
             <div className={styles.label}>&nbsp;</div>
             <div className="content">
-              For more information on how bodyweight is used in this analysis,
+              For more information on how bodyweight is used in the analysis,
               please read the&nbsp;
               <Link
                 className="link primary"
