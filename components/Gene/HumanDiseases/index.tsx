@@ -211,19 +211,35 @@ const Row = ({ rowData, data, isLoading }: RowProps) => {
           <strong className={styles.link}>{rowData.diseaseTerm}</strong>
         </td>
         <td>
-          <a
-            href={`http://omim.org/entry/${rowData.diseaseId.split(":")[1]}`}
-            target="_blank"
-            className="link primary"
-            title={`view ${rowData.diseaseTerm} details in OMIM website`}
-          >
-            {rowData.diseaseId}{" "}
-            <FontAwesomeIcon
-              className="grey"
-              size="xs"
-              icon={faExternalLinkAlt}
-            />
-          </a>
+          {rowData.diseaseId.includes("ORPHA") ? (
+            <a
+              href={`https://www.orpha.net/en/disease/detail/${rowData.diseaseId.split(":")[1]}`}
+              target="_blank"
+              className="link primary"
+              title={`view ${rowData.diseaseTerm} details in Orphanet website`}
+            >
+              {rowData.diseaseId}{" "}
+              <FontAwesomeIcon
+                className="grey"
+                size="xs"
+                icon={faExternalLinkAlt}
+              />
+            </a>
+          ) : (
+            <a
+              href={`https://omim.org/entry/${rowData.diseaseId.split(":")[1]}`}
+              target="_blank"
+              className="link primary"
+              title={`view ${rowData.diseaseTerm} details in OMIM website`}
+            >
+              {rowData.diseaseId}{" "}
+              <FontAwesomeIcon
+                className="grey"
+                size="xs"
+                icon={faExternalLinkAlt}
+              />
+            </a>
+          )}
         </td>
         <td>
           <Scale ref={tooltipRef} toggleFocus={setTooltipShow}>
