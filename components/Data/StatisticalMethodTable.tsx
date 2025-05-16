@@ -87,8 +87,8 @@ const StatisticalMethodTable = ({
           <td>{attributes["varianceSignificant"] ? "true" : "false"}</td>
         </tr>
         <tr>
-          <td>Genotype*Sex interaction effect p value </td>
-          <td>{getFormattedPValue("sexEffectPValue")}</td>
+          <td>Genotype*Sex interaction effect P-Value</td>
+          <td>{getFormattedPValue("interactionEffectPValue") ?? "N/A"}</td>
         </tr>
         <tr>
           <td>Genotype parameter estimate </td>
