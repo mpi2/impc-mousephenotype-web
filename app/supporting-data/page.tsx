@@ -41,6 +41,9 @@ export async function generateMetadata({
     mgiGeneAccessionId,
     searchParams as ChartPageParamsObj,
   );
+  if (datasets.length === 0) {
+    notFound();
+  }
   const parameterName = datasets?.[0]?.parameterName;
   const geneSymbol = datasets?.[0]?.geneSymbol;
   const title = `${geneSymbol} chart page | International Mouse Phenotyping Consortium`;
