@@ -17,7 +17,7 @@ const StatisticalMethodTable = ({
 }: Props) => {
   const WrapperCmp = onlyDisplayTable ? Fragment : Card;
   const {
-    statisticalMethod: { attributes },
+    statisticalMethod: { attributes, name },
   } = datasetSummary;
 
   if (datasetSummary.resourceName === "3i") {
@@ -72,6 +72,7 @@ const StatisticalMethodTable = ({
   return (
     <WrapperCmp>
       {!onlyDisplayTable && <h2>Statistical method</h2>}
+      <span>{name}</span>
       <SortableTable
         headers={[
           { width: 8, label: "Model attribute", disabled: true },
