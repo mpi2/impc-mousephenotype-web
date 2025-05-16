@@ -72,7 +72,7 @@ const StatisticalMethodTable = ({
   return (
     <WrapperCmp>
       {!onlyDisplayTable && <h2>Statistical method</h2>}
-      <span>{name}</span>
+      <span>Name: {name}</span>
       <SortableTable
         headers={[
           { width: 8, label: "Model attribute", disabled: true },
