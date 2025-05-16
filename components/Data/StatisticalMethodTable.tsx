@@ -17,7 +17,7 @@ const StatisticalMethodTable = ({
 }: Props) => {
   const WrapperCmp = onlyDisplayTable ? Fragment : Card;
   const {
-    statisticalMethod: { attributes },
+    statisticalMethod: { attributes, name },
   } = datasetSummary;
 
   if (datasetSummary.resourceName === "3i") {
@@ -63,7 +63,7 @@ const StatisticalMethodTable = ({
 
   const getFormattedPValue = (key: keyof typeof attributes) => {
     const zeroPValueDataTypes = ["unidimensional", "categorical"];
-    const pValue = formatPValue(attributes.genotypeEffectPValue);
+    const pValue = formatPValue(attributes[key]);
     return zeroPValueDataTypes.includes(datasetSummary.dataType)
       ? pValue
       : pValue || "N/A";
@@ -72,6 +72,7 @@ const StatisticalMethodTable = ({
   return (
     <WrapperCmp>
       {!onlyDisplayTable && <h2>Statistical method</h2>}
+      <span>Name: {name}</span>
       <SortableTable
         headers={[
           { width: 8, label: "Model attribute", disabled: true },
@@ -79,19 +80,19 @@ const StatisticalMethodTable = ({
         ]}
       >
         <tr>
-          <td>Batch effect significant </td>
-          <td>{attributes["batchSignificant"] ? "true" : "false"}</td>
+          <td>Batch effect significant</td>
+          <td>{attributes["batchSignificant"] ? "True" : "False"}</td>
         </tr>
         <tr>
-          <td>Variance significant </td>
-          <td>{attributes["varianceSignificant"] ? "true" : "false"}</td>
+          <td>Variance significant</td>
+          <td>{attributes["varianceSignificant"] ? "True" : "False"}</td>
         </tr>
         <tr>
-          <td>Genotype*Sex interaction effect p value </td>
-          <td>{getFormattedPValue("sexEffectPValue")}</td>
+          <td>Genotype*Sex interaction effect P-Value</td>
+          <td>{getFormattedPValue("interactionEffectPValue") ?? "N/A"}</td>
         </tr>
         <tr>
-          <td>Genotype parameter estimate </td>
+          <td>Genotype parameter estimate</td>
           <td>
             {attributes["sexEffectParameterEstimate"]
               ? attributes["sexEffectParameterEstimate"].toFixed(3)
@@ -99,7 +100,7 @@ const StatisticalMethodTable = ({
           </td>
         </tr>
         <tr>
-          <td>Genotype standard error estimate </td>
+          <td>Genotype standard error estimate</td>
           <td>
             {attributes["genotypeEffectStderrEstimate"]
               ? attributes["genotypeEffectStderrEstimate"].toFixed(3)
@@ -107,11 +108,11 @@ const StatisticalMethodTable = ({
           </td>
         </tr>
         <tr>
-          <td>Genotype Effect P Value </td>
+          <td>Genotype Effect P-Value</td>
           <td>{getFormattedPValue("genotypeEffectPValue")}</td>
         </tr>
         <tr>
-          <td>Sex Parameter Estimate </td>
+          <td>Sex Parameter Estimate</td>
           <td>
             {attributes["sexEffectParameterEstimate"]
               ? attributes["sexEffectParameterEstimate"].toFixed(3)
@@ -119,7 +120,7 @@ const StatisticalMethodTable = ({
           </td>
         </tr>
         <tr>
-          <td>Sex Standard Error Estimate </td>
+          <td>Sex Standard Error Estimate</td>
           <td>
             {attributes["sexEffectStderrEstimate"]
               ? attributes["sexEffectStderrEstimate"].toFixed(3)
@@ -127,11 +128,11 @@ const StatisticalMethodTable = ({
           </td>
         </tr>
         <tr>
-          <td>Sex Effect P Value </td>
-          <td>{getFormattedPValue("sexEffectPValue")}</td>
+          <td>Sex Effect P-Value</td>
+          <td>{getFormattedPValue("sexEffectPValue") ?? "N/A"}</td>
         </tr>
         <tr>
-          <td>Intercept Estimate </td>
+          <td>Intercept Estimate</td>
           <td>
             {attributes["interceptEstimate"]
               ? attributes["interceptEstimate"].toFixed(3)
@@ -139,7 +140,7 @@ const StatisticalMethodTable = ({
           </td>
         </tr>
         <tr>
-          <td>Intercept Estimate Standard Error </td>
+          <td>Intercept Estimate Standard Error</td>
           <td>
             {attributes["interceptEstimateStderrEstimate"]
               ? attributes["interceptEstimateStderrEstimate"].toFixed(3)
@@ -147,15 +148,15 @@ const StatisticalMethodTable = ({
           </td>
         </tr>
         <tr>
-          <td>Sex Male KO P Value </td>
+          <td>Sex Male KO P-Value</td>
           <td>{getFormattedPValue("maleKoEffectPValue")}</td>
         </tr>
         <tr>
-          <td>Sex Female KO P Value </td>
+          <td>Sex Female KO P-Value</td>
           <td>{getFormattedPValue("femaleKoEffectPValue")}</td>
         </tr>
         <tr>
-          <td>WT Residuals Normality Tests </td>
+          <td>WT Residuals Normality Tests</td>
           <td>
             {attributes["group1ResidualsNormalityTest"]
               ? formatPValue(attributes["group1ResidualsNormalityTest"])
@@ -163,7 +164,7 @@ const StatisticalMethodTable = ({
           </td>
         </tr>
         <tr>
-          <td>KO Residuals Normality Tests </td>
+          <td>KO Residuals Normality Tests</td>
           <td>
             {attributes["group2ResidualsNormalityTest"]
               ? formatPValue(attributes["group2ResidualsNormalityTest"])
