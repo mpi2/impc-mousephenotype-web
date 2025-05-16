@@ -5,7 +5,8 @@ import { Dataset } from "@/models";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import React, { Fragment, useMemo } from "react";
+import { Fragment } from "react";
+import styles from "./styles.module.scss";
 
 type Props = {
   datasetSummary: Dataset;
@@ -74,6 +75,7 @@ const StatisticalMethodTable = ({
       {!onlyDisplayTable && <h2>Statistical method</h2>}
       <span>Name: {name}</span>
       <SortableTable
+        className={styles.table}
         headers={[
           { width: 8, label: "Model attribute", disabled: true },
           { width: 4, label: "Value", disabled: true },
