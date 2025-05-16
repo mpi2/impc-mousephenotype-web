@@ -63,7 +63,7 @@ const StatisticalMethodTable = ({
 
   const getFormattedPValue = (key: keyof typeof attributes) => {
     const zeroPValueDataTypes = ["unidimensional", "categorical"];
-    const pValue = formatPValue(attributes.genotypeEffectPValue);
+    const pValue = formatPValue(attributes[key]);
     return zeroPValueDataTypes.includes(datasetSummary.dataType)
       ? pValue
       : pValue || "N/A";
