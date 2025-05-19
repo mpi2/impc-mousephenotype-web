@@ -12,14 +12,11 @@ const PPIParameters = [
 ];
 
 export const processGenePhenotypeHitsResponse = (
-  data: Array<GenePhenotypeHits>
+  data: Array<GenePhenotypeHits>,
 ) => {
   const group: Record<string, GenePhenotypeHits> = {};
   const significantData = data.filter(
-    (phenotypeHit) =>
-      (phenotypeHit.pValue < 0.0001 ||
-        phenotypeHit.assertionType === "manual") &&
-      !!phenotypeHit.phenotype.id
+    (phenotypeHit) => !!phenotypeHit.phenotype.id,
   );
   significantData.forEach((item) => {
     const {
@@ -65,13 +62,13 @@ export const processGenePhenotypeHitsResponse = (
     }
   });
   return Object.values(group).filter(
-    (phenotype) => !phenotype.procedureStableId.includes("HIS")
+    (phenotype) => !phenotype.procedureStableId.includes("HIS"),
   );
 };
 
 export const useSignificantPhenotypesQuery = (
   mgiGeneAccessionId: string,
-  routerIsReady: boolean
+  routerIsReady: boolean,
 ) => {
   const { data, isLoading, isError, isFetching, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "phenotype-hits"],
