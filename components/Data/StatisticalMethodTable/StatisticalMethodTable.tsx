@@ -80,7 +80,7 @@ const StatisticalMethodTable = ({
     <WrapperCmp>
       {!onlyDisplayTable && <h2>Statistical method</h2>}
       <span>
-        <b>{name}</b>
+        <b>{name === "MM" ? "Mixed Model" : name}</b>
       </span>
       {!statisticalDataIsEmpty && (
         <SortableTable
