@@ -5,7 +5,7 @@ import { Dataset } from "@/models";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 import styles from "./styles.module.scss";
 
 type Props = {
@@ -70,110 +70,120 @@ const StatisticalMethodTable = ({
       : pValue || "N/A";
   };
 
+  const statisticalDataIsEmpty = useMemo(() => {
+    return Object.keys(datasetSummary.statisticalMethod.attributes)
+      .map((key) => datasetSummary.statisticalMethod.attributes[key])
+      .every((attribute) => !!attribute === false);
+  }, [datasetSummary]);
+
   return (
     <WrapperCmp>
       {!onlyDisplayTable && <h2>Statistical method</h2>}
-      <span>Name: {name}</span>
-      <SortableTable
-        className={styles.table}
-        headers={[
-          { width: 8, label: "Model attribute", disabled: true },
-          { width: 4, label: "Value", disabled: true },
-        ]}
-      >
-        <tr>
-          <td>Batch effect significant</td>
-          <td>{attributes["batchSignificant"] ? "True" : "False"}</td>
-        </tr>
-        <tr>
-          <td>Variance significant</td>
-          <td>{attributes["varianceSignificant"] ? "True" : "False"}</td>
-        </tr>
-        <tr>
-          <td>Genotype*Sex interaction effect P-Value</td>
-          <td>{getFormattedPValue("interactionEffectPValue") ?? "N/A"}</td>
-        </tr>
-        <tr>
-          <td>Genotype parameter estimate</td>
-          <td>
-            {attributes["sexEffectParameterEstimate"]
-              ? attributes["sexEffectParameterEstimate"].toFixed(3)
-              : "N/A"}
-          </td>
-        </tr>
-        <tr>
-          <td>Genotype standard error estimate</td>
-          <td>
-            {attributes["genotypeEffectStderrEstimate"]
-              ? attributes["genotypeEffectStderrEstimate"].toFixed(3)
-              : "N/A"}
-          </td>
-        </tr>
-        <tr>
-          <td>Genotype Effect P-Value</td>
-          <td>{getFormattedPValue("genotypeEffectPValue")}</td>
-        </tr>
-        <tr>
-          <td>Sex Parameter Estimate</td>
-          <td>
-            {attributes["sexEffectParameterEstimate"]
-              ? attributes["sexEffectParameterEstimate"].toFixed(3)
-              : "N/A"}
-          </td>
-        </tr>
-        <tr>
-          <td>Sex Standard Error Estimate</td>
-          <td>
-            {attributes["sexEffectStderrEstimate"]
-              ? attributes["sexEffectStderrEstimate"].toFixed(3)
-              : "N/A"}
-          </td>
-        </tr>
-        <tr>
-          <td>Sex Effect P-Value</td>
-          <td>{getFormattedPValue("sexEffectPValue") ?? "N/A"}</td>
-        </tr>
-        <tr>
-          <td>Intercept Estimate</td>
-          <td>
-            {attributes["interceptEstimate"]
-              ? attributes["interceptEstimate"].toFixed(3)
-              : "N/A"}
-          </td>
-        </tr>
-        <tr>
-          <td>Intercept Estimate Standard Error</td>
-          <td>
-            {attributes["interceptEstimateStderrEstimate"]
-              ? attributes["interceptEstimateStderrEstimate"].toFixed(3)
-              : "N/A"}
-          </td>
-        </tr>
-        <tr>
-          <td>Sex Male KO P-Value</td>
-          <td>{getFormattedPValue("maleKoEffectPValue")}</td>
-        </tr>
-        <tr>
-          <td>Sex Female KO P-Value</td>
-          <td>{getFormattedPValue("femaleKoEffectPValue")}</td>
-        </tr>
-        <tr>
-          <td>WT Residuals Normality Tests</td>
-          <td>
-            {attributes["group1ResidualsNormalityTest"]
-              ? formatPValue(attributes["group1ResidualsNormalityTest"])
-              : "N/A"}
-          </td>
-        </tr>
-        <tr>
-          <td>KO Residuals Normality Tests</td>
-          <td>
-            {attributes["group2ResidualsNormalityTest"]
-              ? formatPValue(attributes["group2ResidualsNormalityTest"])
-              : "N/A"}
-          </td>
-        </tr>
-      </SortableTable>
+      <span>
+        <b>{name === "MM" ? "Mixed Model" : name}</b>
+      </span>
+      {!statisticalDataIsEmpty && (
+        <SortableTable
+          className={styles.table}
+          headers={[
+            { width: 8, label: "Model attribute", disabled: true },
+            { width: 4, label: "Value", disabled: true },
+          ]}
+        >
+          <tr>
+            <td>Batch effect significant</td>
+            <td>{attributes["batchSignificant"] ? "True" : "False"}</td>
+          </tr>
+          <tr>
+            <td>Variance significant</td>
+            <td>{attributes["varianceSignificant"] ? "True" : "False"}</td>
+          </tr>
+          <tr>
+            <td>Genotype*Sex interaction effect P-Value</td>
+            <td>{getFormattedPValue("interactionEffectPValue") ?? "N/A"}</td>
+          </tr>
+          <tr>
+            <td>Genotype parameter estimate</td>
+            <td>
+              {attributes["sexEffectParameterEstimate"]
+                ? attributes["sexEffectParameterEstimate"].toFixed(3)
+                : "N/A"}
+            </td>
+          </tr>
+          <tr>
+            <td>Genotype standard error estimate</td>
+            <td>
+              {attributes["genotypeEffectStderrEstimate"]
+                ? attributes["genotypeEffectStderrEstimate"].toFixed(3)
+                : "N/A"}
+            </td>
+          </tr>
+          <tr>
+            <td>Genotype Effect P-Value</td>
+            <td>{getFormattedPValue("genotypeEffectPValue")}</td>
+          </tr>
+          <tr>
+            <td>Sex Parameter Estimate</td>
+            <td>
+              {attributes["sexEffectParameterEstimate"]
+                ? attributes["sexEffectParameterEstimate"].toFixed(3)
+                : "N/A"}
+            </td>
+          </tr>
+          <tr>
+            <td>Sex Standard Error Estimate</td>
+            <td>
+              {attributes["sexEffectStderrEstimate"]
+                ? attributes["sexEffectStderrEstimate"].toFixed(3)
+                : "N/A"}
+            </td>
+          </tr>
+          <tr>
+            <td>Sex Effect P-Value</td>
+            <td>{getFormattedPValue("sexEffectPValue") ?? "N/A"}</td>
+          </tr>
+          <tr>
+            <td>Intercept Estimate</td>
+            <td>
+              {attributes["interceptEstimate"]
+                ? attributes["interceptEstimate"].toFixed(3)
+                : "N/A"}
+            </td>
+          </tr>
+          <tr>
+            <td>Intercept Estimate Standard Error</td>
+            <td>
+              {attributes["interceptEstimateStderrEstimate"]
+                ? attributes["interceptEstimateStderrEstimate"].toFixed(3)
+                : "N/A"}
+            </td>
+          </tr>
+          <tr>
+            <td>Sex Male KO P-Value</td>
+            <td>{getFormattedPValue("maleKoEffectPValue")}</td>
+          </tr>
+          <tr>
+            <td>Sex Female KO P-Value</td>
+            <td>{getFormattedPValue("femaleKoEffectPValue")}</td>
+          </tr>
+          <tr>
+            <td>WT Residuals Normality Tests</td>
+            <td>
+              {attributes["group1ResidualsNormalityTest"]
+                ? formatPValue(attributes["group1ResidualsNormalityTest"])
+                : "N/A"}
+            </td>
+          </tr>
+          <tr>
+            <td>KO Residuals Normality Tests</td>
+            <td>
+              {attributes["group2ResidualsNormalityTest"]
+                ? formatPValue(attributes["group2ResidualsNormalityTest"])
+                : "N/A"}
+            </td>
+          </tr>
+        </SortableTable>
+      )}
     </WrapperCmp>
   );
 };
