@@ -228,7 +228,7 @@ const GenomeBrowser = ({
             >
               <h2 style={{ margin: 0 }}>Genome browser</h2>
               <Link
-                href="https://dev.mousephenotype.org/help/data-visualization/allele-pages/genome-browser/"
+                href="https://dev.mousephenotype.org/help/data-visualization/genome-browser/"
                 className="btn"
                 aria-label="Genome browser documentation"
               >
