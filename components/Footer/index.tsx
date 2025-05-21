@@ -17,7 +17,7 @@ export const DR_VERSION = process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
 const Footer = () => {
   return (
     <div className={`bg-black text-white ${footerCss.footer}`}>
-      <Container>
+      <Container style={{ maxWidth: 1240 }}>
         <Row>
           <div className="col-12 col-md-6 footer-text mb-3">
             <p>
@@ -27,8 +27,6 @@ const Footer = () => {
                 className="me-2"
               />{" "}
               <FontAwesomeIcon icon={faCreativeCommonsBy} size="2x" />
-              {/* <i className="fab fa-creative-commons fa-2x mr-2"></i>{' '}
-                <i className="fab fa-creative-commons-by fa-2x"></i> */}
             </p>
             <p>
               Content on this site is licensed under a<br />
@@ -50,10 +48,6 @@ const Footer = () => {
           <div className="col-12 col-md-3 footer-nav">
             <div className="menu-main-nav-container">
               <ul id="menu-main-nav-1" className="menu">
-                <li id="" className="menu-item ">
-                  <a href="/data/summary">My Genes</a>
-                </li>
-
                 <li id="about-impc" className="menu-item about-impc">
                   <a href="https://www.mousephenotype.org/about-impc/">
                     About the IMPC
@@ -90,11 +84,24 @@ const Footer = () => {
           <div className="col-12 col-md-3 footer-nav">
             <div className="menu-top-nav-container">
               <ul id="menu-top-nav-1" className="menu">
+                <li className="impc-badge menu-item menu-item-type-post_type menu-item-object-page">
+                  <a
+                    style={{ borderLeft: "3px solid #ed7b25", paddingLeft: 7 }}
+                    href="https://www.mousephenotype.org/help/faqs/how-do-i-cite-the-impc/"
+                  >
+                    Cite IMPC
+                  </a>
+                </li>
                 <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-13">
                   <a href="//www.mousephenotype.org/help/">Help</a>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-14">
                   <a href="http://cloud.mousephenotype.org">IMPC Cloud</a>
+                </li>
+                <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-14">
+                  <a href="https://www.mousephenotype.org/about-impc/become-an-impc-member/">
+                    Join the IMPC
+                  </a>
                 </li>
                 <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-15">
                   <a href="//www.mousephenotype.org/contact-us/">Contact us</a>
@@ -118,42 +125,12 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://twitter.com/impc"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="sr-only">IMPC Twitter</span>
-                  <FontAwesomeIcon icon={faTwitter} size="2x" />
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <span className="sr-only">IMPC YouTube</span>
                   <FontAwesomeIcon icon={faYoutube} size="2x" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/InternationalMousePhenotypingConsortium"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="sr-only">IMPC Facebook</span>
-                  <FontAwesomeIcon icon={faFacebookSquare} size="2x" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.reddit.com/user/MousePhenotyping"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="sr-only">IMPC Reddit</span>
-                  <FontAwesomeIcon icon={faReddit} size="2x" />
                 </a>
               </li>
             </ul>
