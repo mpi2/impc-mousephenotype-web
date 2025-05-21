@@ -107,22 +107,16 @@ exports[`PPI Chart page renders correctly 1`] = `
              
             <i>
               <span
-                aria-busy="true"
-                aria-live="polite"
+                style=""
               >
-                <span
-                  class="react-loading-skeleton"
-                  style="width: 50px;"
-                >
-                  ‌
-                </span>
+                Myo6
               </span>
             </i>
           </a>
         </span>
       </div>
       <h1
-        class="mt-2 mb-0"
+        class="mt-2 mb-4"
       >
         <strong
           class="text-capitalize"
@@ -131,12 +125,34 @@ exports[`PPI Chart page renders correctly 1`] = `
         </strong>
       </h1>
       <div
-        class="mb-2 mt-4"
+        class="mb-4"
       >
         <div
-          class="spinner-border spinner-border-sm"
-        />
-          Loading data
+          style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;"
+        >
+          <span>
+            5
+             parameter / zygosity / metadata group combinations tested, with the lowest p-value of 
+            <strong>
+              2.11
+              x10
+              <sup>
+                -72
+              </sup>
+            </strong>
+          </span>
+        </div>
+      </div>
+      <div
+        style="color: rgb(121, 118, 118); font-size: 95%;"
+      >
+        <span>
+          P-Values equal or lower to 10
+          <sup>
+            -4
+          </sup>
+           (P &lt; 0.0001) are marked as significant.
+        </span>
       </div>
       <div
         class="buttonsWrapper top "
@@ -342,6 +358,52 @@ exports[`PPI Chart page renders correctly 1`] = `
                   class="inlineButton headerButton"
                   style="font-weight: inherit;"
                 >
+                  Significant sex
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
                   Life Stage
                    
                   <span
@@ -426,8 +488,175 @@ exports[`PPI Chart page renders correctly 1`] = `
                   </span>
                 </button>
               </th>
+              <th
+                colspan="3"
+                scope="colGroup"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  P-Value
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
             </tr>
-            <tr />
+            <tr>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Male
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Female
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  Combined
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+            </tr>
           </thead>
           <tbody>
             <tr>
@@ -449,10 +678,92 @@ exports[`PPI Chart page renders correctly 1`] = `
                 homozygote
               </td>
               <td>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
                 Early adult
               </td>
               <td>
                 TCPR0947_ADUP
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                8.16
+                x10
+                <sup>
+                  -22
+                </sup>
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                1.05
+                x10
+                <sup>
+                  -28
+                </sup>
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                0
               </td>
             </tr>
             <tr>
@@ -474,10 +785,92 @@ exports[`PPI Chart page renders correctly 1`] = `
                 homozygote
               </td>
               <td>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
                 Early adult
               </td>
               <td>
                 TCPR0947_ADUP
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                6.75
+                x10
+                <sup>
+                  -24
+                </sup>
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                3.21
+                x10
+                <sup>
+                  -33
+                </sup>
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                0
               </td>
             </tr>
             <tr>
@@ -499,10 +892,96 @@ exports[`PPI Chart page renders correctly 1`] = `
                 homozygote
               </td>
               <td>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
                 Early adult
               </td>
               <td>
                 TCPR0947_ADUP
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                2.11
+                x10
+                <sup>
+                  -72
+                </sup>
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                8.06
+                x10
+                <sup>
+                  -58
+                </sup>
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                8.06
+                x10
+                <sup>
+                  -58
+                </sup>
               </td>
             </tr>
             <tr>
@@ -524,10 +1003,96 @@ exports[`PPI Chart page renders correctly 1`] = `
                 homozygote
               </td>
               <td>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-venus fa-lg "
+                    data-icon="venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
+                    data-icon="mars-and-venus"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
                 Early adult
               </td>
               <td>
                 TCPR0947_ADUP
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                2.97
+                x10
+                <sup>
+                  -7
+                </sup>
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                1.6
+                x10
+                <sup>
+                  -49
+                </sup>
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                5.76
+                x10
+                <sup>
+                  -50
+                </sup>
               </td>
             </tr>
             <tr>
@@ -549,10 +1114,58 @@ exports[`PPI Chart page renders correctly 1`] = `
                 homozygote
               </td>
               <td>
+                <span
+                  class="me-2"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-mars fa-lg "
+                    data-icon="mars"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 448 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+              </td>
+              <td>
                 Early adult
               </td>
               <td>
                 TCPR0947_ADUP
+              </td>
+              <td
+                class="bold orange-dark-x bg-orange-light-x"
+              >
+                2.14
+                x10
+                <sup>
+                  -11
+                </sup>
+              </td>
+              <td
+                class="bold"
+              >
+                2.53
+                x10
+                <sup>
+                  -4
+                </sup>
+              </td>
+              <td
+                class="bold"
+              >
+                4.05
+                x10
+                <sup>
+                  -4
+                </sup>
               </td>
             </tr>
           </tbody>
@@ -610,10 +1223,10 @@ exports[`PPI Chart page renders correctly 1`] = `
             Combination tested with the lowest p-value of
              
             <strong>
-              2.16
+              1.05
               x10
               <sup>
-                -31
+                -28
               </sup>
             </strong>
           </span>
@@ -635,7 +1248,7 @@ exports[`PPI Chart page renders correctly 1`] = `
                 Acoustic Startle and Pre-pulse Inhibition (PPI)
               </strong>
                phenotypic assay was performed on 
-              1600
+              1655
                mice. The charts show the results of measuring
                
               <strong>
@@ -650,11 +1263,11 @@ exports[`PPI Chart page renders correctly 1`] = `
                
               male mutants compared to
                
-              813
+              841
                
               female,
                
-              771
+              798
                male controls. The mutants are for the
                
               <i>
@@ -855,13 +1468,13 @@ exports[`PPI Chart page renders correctly 1`] = `
                       Female Control
                     </td>
                     <td>
-                      71.477
+                      71.196
                     </td>
                     <td>
-                      17.596
+                      17.831
                     </td>
                     <td>
-                      813
+                      841
                     </td>
                   </tr>
                   <tr>
@@ -869,13 +1482,13 @@ exports[`PPI Chart page renders correctly 1`] = `
                       Male Control
                     </td>
                     <td>
-                      72.537
+                      72.011
                     </td>
                     <td>
-                      17.809
+                      18.370
                     </td>
                     <td>
-                      771
+                      798
                     </td>
                   </tr>
                   <tr>
@@ -913,11 +1526,16 @@ exports[`PPI Chart page renders correctly 1`] = `
           <div
             class="col-lg-6"
           >
+            <span>
+              <b>
+                Linear Mixed Model framework, LME, including Weight
+              </b>
+            </span>
             <div
               class="tableWrapper"
             >
               <table
-                class="table striped table table-bordered"
+                class="table striped table table table-bordered"
               >
                 <thead>
                   <tr>
@@ -951,23 +1569,47 @@ exports[`PPI Chart page renders correctly 1`] = `
                 <tbody>
                   <tr>
                     <td>
-                      Batch effect significant 
+                      Batch effect significant
                     </td>
                     <td>
-                      true
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Variance significant 
-                    </td>
-                    <td>
-                      true
+                      True
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      Genotype*Sex interaction effect p value 
+                      Variance significant
+                    </td>
+                    <td>
+                      True
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Genotype*Sex interaction effect P-Value
+                    </td>
+                    <td>
+                      N/A
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Genotype parameter estimate
+                    </td>
+                    <td>
+                      7.848
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Genotype standard error estimate
+                    </td>
+                    <td>
+                      5.698
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Genotype Effect P-Value
                     </td>
                     <td>
                       0
@@ -975,90 +1617,78 @@ exports[`PPI Chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      Genotype parameter estimate 
+                      Sex Parameter Estimate
                     </td>
                     <td>
-                      7.542
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Genotype standard error estimate 
-                    </td>
-                    <td>
-                      5.323
+                      7.848
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      Genotype Effect P Value 
+                      Sex Standard Error Estimate
                     </td>
                     <td>
-                      0
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sex Parameter Estimate 
-                    </td>
-                    <td>
-                      7.542
+                      1.804
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      Sex Standard Error Estimate 
+                      Sex Effect P-Value
                     </td>
                     <td>
-                      1.817
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sex Effect P Value 
-                    </td>
-                    <td>
-                      0
+                      1.47
+                      x10
+                      <sup>
+                        -5
+                      </sup>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      Intercept Estimate 
+                      Intercept Estimate
                     </td>
                     <td>
-                      94.749
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Intercept Estimate Standard Error 
-                    </td>
-                    <td>
-                      5.841
+                      95.437
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      Sex Male KO P Value 
+                      Intercept Estimate Standard Error
                     </td>
                     <td>
-                      0
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sex Female KO P Value 
-                    </td>
-                    <td>
-                      0
+                      5.837
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      WT Residuals Normality Tests 
+                      Sex Male KO P-Value
                     </td>
                     <td>
-                      3.68
+                      8.16
+                      x10
+                      <sup>
+                        -22
+                      </sup>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Sex Female KO P-Value
+                    </td>
+                    <td>
+                      1.05
+                      x10
+                      <sup>
+                        -28
+                      </sup>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      WT Residuals Normality Tests
+                    </td>
+                    <td>
+                      6.39
                       x10
                       <sup>
                         -32
@@ -1067,10 +1697,10 @@ exports[`PPI Chart page renders correctly 1`] = `
                   </tr>
                   <tr>
                     <td>
-                      KO Residuals Normality Tests 
+                      KO Residuals Normality Tests
                     </td>
                     <td>
-                      9.24
+                      9.23
                       x10
                       <sup>
                         -1

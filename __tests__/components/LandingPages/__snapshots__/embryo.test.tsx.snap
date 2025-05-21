@@ -138,7 +138,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                
               <a
                 class="link primary"
-                href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
               >
                 Viability Primary Screen procedure
               </a>
@@ -146,7 +146,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                
               <a
                 class="link primary"
-                href="https://beta.mousephenotype.org/impress"
+                href="https://www.mousephenotype.org/impress"
               >
                 systematic embryonic phenotyping pipeline
               </a>
@@ -214,7 +214,7 @@ exports[`Embryo landing page renders correctly 1`] = `
           The IMPC assesses each gene knockout line for viability (Viability Primary Screen  
           <a
             class="link primary"
-            href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
+            href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
           >
             IMPC_VIA_001
           </a>
@@ -222,7 +222,7 @@ exports[`Embryo landing page renders correctly 1`] = `
            
           <a
             class="link primary"
-            href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1188&pipeID=7#Parameters"
+            href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1188&pipeID=7#Parameters"
           >
             IMPC_VIA_002
           </a>
@@ -343,7 +343,7 @@ exports[`Embryo landing page renders correctly 1`] = `
              
             <a
               class="link primary"
-              href="https://beta.mousephenotype.org/impress"
+              href="https://www.mousephenotype.org/impress"
             >
               embryonic phenotyping pipeline
             </a>
@@ -351,7 +351,7 @@ exports[`Embryo landing page renders correctly 1`] = `
              
             <a
               class="link primary"
-              href="https://beta.mousephenotype.org/impress"
+              href="https://www.mousephenotype.org/impress"
             >
               adult phenotyping pipeline
             </a>
@@ -790,7 +790,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               <li>
                 <a
                   class="link primary"
-                  href="https://beta.mousephenotype.org/data/embryo_imaging"
+                  href="https://www.mousephenotype.org/data/embryo_imaging"
                 >
                   Embryo Images: interactive heatmap
                 </a>
