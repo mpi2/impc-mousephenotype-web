@@ -130,6 +130,11 @@ describe("ABR Chart page", () => {
         "abnormal auditory brainstem response",
       ),
     );
+    await waitFor(async () => {
+      expect(screen.getByTestId("back-to-gene-page-link")).toHaveTextContent(
+        "Go Back to Cib2",
+      );
+    });
     expect(container).toMatchSnapshot();
   });
 });
