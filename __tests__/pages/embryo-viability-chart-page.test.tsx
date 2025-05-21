@@ -28,7 +28,7 @@ jest.mock("next/navigation", () => {
       () =>
         new URLSearchParams({
           mgiGeneAccessionId: "MGI:1922730",
-          mpTermId: "MP:0011100",
+          mpTermId: "MP:0011110",
         }),
     ),
     usePathname: jest.fn(),
@@ -71,7 +71,7 @@ describe("Embryo viability chart", () => {
         },
       ),
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:1922730/MP:0011100/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:1922730/MP:0011110/dataset`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },

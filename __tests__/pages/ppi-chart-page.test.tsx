@@ -63,7 +63,7 @@ describe("PPI Chart page", () => {
     window.URL.createObjectURL = jest.fn();
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:104785/MP:0009142/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:104785/MP:0009142/dataset`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },
