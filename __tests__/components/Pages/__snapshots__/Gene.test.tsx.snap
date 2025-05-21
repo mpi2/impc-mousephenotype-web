@@ -1560,7 +1560,7 @@ exports[`Gene page renders correctly 1`] = `
                         class="inlineButton headerButton"
                         style="font-weight: inherit;"
                       >
-                        Significant P-value
+                        Significant P-Value
                          
                         <span
                           class="defaultIcons"
@@ -1626,7 +1626,7 @@ exports[`Gene page renders correctly 1`] = `
                   <span
                     style="background-color: rgb(255, 255, 255);"
                   >
-                    * Does not have a P-value assigned because it was manually marked as significant.
+                    * Does not have a P-Value assigned because it was manually marked as significant.
                   </span>
                 </div>
                 <div
@@ -2637,7 +2637,7 @@ exports[`Gene page renders correctly 1`] = `
                         class="inlineButton headerButton"
                         style="font-weight: bold;"
                       >
-                        P value
+                        P-Value
                          
                         <svg
                           aria-hidden="true"
@@ -4151,7 +4151,7 @@ exports[`Gene page renders correctly 1`] = `
                     class="dashedLine"
                   />
                   <small>
-                    Significant P-value threshold (P &lt; 0.0001)
+                    Significant P-Value threshold (P &lt; 0.0001)
                   </small>
                 </span>
               </div>
