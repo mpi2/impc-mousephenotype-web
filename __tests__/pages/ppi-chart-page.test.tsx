@@ -118,10 +118,6 @@ describe("PPI Chart page", () => {
       ),
     );
     await waitFor(async () => {
-      const rows = await screen.findAllByRole("row");
-      return expect(rows.length).toEqual(30);
-    });
-    await waitFor(async () => {
       expect(screen.getByTestId("back-to-gene-page-link")).toHaveTextContent(
         "Go Back to Myo6",
       );

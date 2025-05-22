@@ -261,7 +261,7 @@ exports[`Allele page renders properly 1`] = `
       >
         <a
           class="primary link"
-          href="https://ftp.ebi.ac.uk/pub/databases/impc/other/imits/images_and_genbank_files/8a/11509/escell-clone-genbank-file"
+          href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/escell-clone-genbank-file"
           target="_blank"
         >
           Genbank
@@ -314,8 +314,7 @@ exports[`Allele page renders properly 1`] = `
       </p>
       <div>
         <img
-          alt=""
-          src="https://ftp.ebi.ac.uk/pub/databases/impc/other/imits/images_and_genbank_files/8a/11509/simple.png"
+          src="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/simple.png"
           style="display: block; max-width: 100%;"
         />
       </div>
