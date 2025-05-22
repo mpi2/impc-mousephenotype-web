@@ -16,9 +16,10 @@ export const generateDatasetsEndpointUrl = (
   if (
     !!params.mpTermId &&
     !!params.alleleAccessionId &&
-    !!params.lifeStageName
+    !!params.lifeStageName &&
+    !!params.zygosity
   ) {
-    endpointUrl += `?alleleAccessionId=${params.alleleAccessionId}&lifeStageName=${params.lifeStageName}`;
+    endpointUrl += `?alleleAccessionId=${params.alleleAccessionId}&lifeStageName=${params.lifeStageName}&zygosity=${params.zygosity}`;
   }
   return endpointUrl;
 };
