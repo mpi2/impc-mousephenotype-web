@@ -12,6 +12,157 @@ type Props = {
   datasetSummary: Dataset;
   onlyDisplayTable?: boolean;
 };
+
+type StatisticalMethodField = {
+  key: keyof Dataset["statisticalMethod"]["attributes"];
+  type: "number" | "boolean" | "pValue";
+  label: string;
+};
+
+const generalData: Array<StatisticalMethodField> = [
+  {
+    key: "batchSignificant",
+    type: "boolean",
+    label: "Batch effect significant",
+  },
+  {
+    key: "varianceSignificant",
+    type: "boolean",
+    label: "Variance significant",
+  },
+  {
+    key: "interactionEffectPValue",
+    type: "pValue",
+    label: "Genotype*Sex interaction effect P-Value",
+  },
+  {
+    key: "sexEffectParameterEstimate",
+    type: "number",
+    label: "Genotype parameter estimate",
+  },
+  {
+    key: "genotypeEffectStderrEstimate",
+    type: "number",
+    label: "Genotype standard error estimate",
+  },
+  {
+    key: "genotypeEffectPValue",
+    type: "pValue",
+    label: "Genotype Effect P-Value",
+  },
+  {
+    key: "sexEffectParameterEstimate",
+    type: "number",
+    label: "Sex Parameter Estimate",
+  },
+  {
+    key: "sexEffectStderrEstimate",
+    type: "number",
+    label: "Sex Standard Error Estimate",
+  },
+  { key: "sexEffectPValue", type: "pValue", label: "Sex Effect P-Value" },
+  { key: "interceptEstimate", type: "number", label: "Intercept Estimate" },
+  {
+    key: "interceptEstimateStderrEstimate",
+    type: "number",
+    label: "Intercept Estimate Standard Error",
+  },
+  { key: "maleKoEffectPValue", type: "pValue", label: "Sex Male KO P-Value" },
+  {
+    key: "femaleKoEffectPValue",
+    type: "pValue",
+    label: "Sex Female KO P-Value",
+  },
+  {
+    key: "group1ResidualsNormalityTest",
+    type: "pValue",
+    label: "WT Residuals Normality Tests",
+  },
+  {
+    key: "group2ResidualsNormalityTest",
+    type: "pValue",
+    label: "KO Residuals Normality Tests",
+  },
+];
+
+const linearMixedModelData: Array<StatisticalMethodField> = generalData.concat([
+  { key: "weightEffectPValue", type: "pValue", label: "Weight Effect P-Value" },
+  {
+    key: "weightEffectParameterEstimate",
+    type: "number",
+    label: "Weight Effect Parameter Estimate",
+  },
+  {
+    key: "weightEffectStderrEstimate",
+    type: "number",
+    label: "Weight Effect Standard Error Estimate",
+  },
+]);
+
+const referenceRangeModelData: Array<StatisticalMethodField> =
+  generalData.concat([
+    {
+      key: "femaleEffectSizeLowNormalVsHigh",
+      type: "number",
+      label: "Female Effect Size Low Normal VS High",
+    },
+    {
+      key: "femaleEffectSizeLowVsNormalHigh",
+      type: "number",
+      label: "Female Effect Size Low VS Normal High",
+    },
+    {
+      key: "femalePValueLowNormalVsHigh",
+      type: "pValue",
+      label: "Female P-Value Low Normal VS High",
+    },
+    {
+      key: "femalePValueLowVsNormalHigh",
+      type: "pValue",
+      label: "Female P-Value Low VS Normal High",
+    },
+    {
+      key: "maleEffectSizeLowNormalVsHigh",
+      type: "number",
+      label: "Male Effect Size Low Normal VS High",
+    },
+    {
+      key: "maleEffectSizeLowVsNormalHigh",
+      type: "number",
+      label: "Male Effect Size Low VS Normal High",
+    },
+    {
+      key: "malePValueLowNormalVsHigh",
+      type: "pValue",
+      label: "Male P-Value Low Normal VS High",
+    },
+    {
+      key: "malePValueLowVsNormalHigh",
+      type: "pValue",
+      label: "Male P-Value Low VS Normal High",
+    },
+    {
+      key: "genotypeEffectSizeLowNormalVsHigh",
+      type: "number",
+      label: "Genotype Effect Size Low Normal VS High",
+    },
+    {
+      key: "genotypeEffectSizeLowVsNormalHigh",
+      type: "number",
+      label: "Genotype Effect Size Low VS Normal High",
+    },
+    {
+      key: "genotypePValueLowNormalVsHigh",
+      type: "pValue",
+      label: "Genotype P-Value Low Normal VS High",
+    },
+    {
+      key: "genotypePValueLowVsNormalHigh",
+      type: "pValue",
+      label: "Genotype P-Value Low VS Normal High",
+    },
+  ]);
+
 const StatisticalMethodTable = ({
   datasetSummary,
   onlyDisplayTable = false,
@@ -20,6 +171,29 @@ const StatisticalMethodTable = ({
   const {
     statisticalMethod: { attributes, name },
   } = datasetSummary;
+
+  const statisticalMethodFields = useMemo(() => {
+    let fields: StatisticalMethodField[];
+    switch (name) {
+      case "Linear Mixed Model framework, LME, including Weight":
+      case "Linear Mixed Model framework, LME, not including Weight":
+        fields = linearMixedModelData;
+        break;
+      case "Reference Range Plus Test framework; quantile = 0.95 (Tails probability = 0.025)":
+        fields = referenceRangeModelData;
+        break;
+      default:
+        fields = generalData;
+        break;
+    }
+    return fields.toSorted((f1, f2) => f1.label.localeCompare(f2.label));
+  }, [name]);
+
+  const statisticalDataIsEmpty = useMemo(() => {
+    return statisticalMethodFields
+      .map((field) => attributes[field.key])
+      .every((attribute) => !!attribute === false);
+  }, [datasetSummary]);
 
   if (datasetSummary.resourceName === "3i") {
     return (
@@ -62,19 +236,28 @@ const StatisticalMethodTable = ({
     );
   }
 
+  const fieldHasValue = (field: StatisticalMethodField) => {
+    return !!attributes[field.key];
+  };
+
   const getFormattedPValue = (key: keyof typeof attributes) => {
     const zeroPValueDataTypes = ["unidimensional", "categorical"];
-    const pValue = formatPValue(attributes[key]);
+    const pValue = formatPValue(attributes[key] as number);
     return zeroPValueDataTypes.includes(datasetSummary.dataType)
       ? pValue
       : pValue || "N/A";
   };
 
-  const statisticalDataIsEmpty = useMemo(() => {
-    return Object.keys(datasetSummary.statisticalMethod.attributes)
-      .map((key) => datasetSummary.statisticalMethod.attributes[key])
-      .every((attribute) => !!attribute === false);
-  }, [datasetSummary]);
+  const getFormattedValue = (field: StatisticalMethodField) => {
+    switch (field.type) {
+      case "boolean":
+        return attributes[field.key] ? "True" : "False";
+      case "number":
+        return (attributes[field.key] as number).toFixed(3);
+      case "pValue":
+        return getFormattedPValue(field.key);
+    }
+  };
 
   return (
     <WrapperCmp>
@@ -90,98 +273,15 @@ const StatisticalMethodTable = ({
             { width: 4, label: "Value", disabled: true },
           ]}
         >
-          <tr>
-            <td>Batch effect significant</td>
-            <td>{attributes["batchSignificant"] ? "True" : "False"}</td>
-          </tr>
-          <tr>
-            <td>Variance significant</td>
-            <td>{attributes["varianceSignificant"] ? "True" : "False"}</td>
-          </tr>
-          <tr>
-            <td>Genotype*Sex interaction effect P-Value</td>
-            <td>{getFormattedPValue("interactionEffectPValue") ?? "N/A"}</td>
-          </tr>
-          <tr>
-            <td>Genotype parameter estimate</td>
-            <td>
-              {attributes["sexEffectParameterEstimate"]
-                ? attributes["sexEffectParameterEstimate"].toFixed(3)
-                : "N/A"}
-            </td>
-          </tr>
-          <tr>
-            <td>Genotype standard error estimate</td>
-            <td>
-              {attributes["genotypeEffectStderrEstimate"]
-                ? attributes["genotypeEffectStderrEstimate"].toFixed(3)
-                : "N/A"}
-            </td>
-          </tr>
-          <tr>
-            <td>Genotype Effect P-Value</td>
-            <td>{getFormattedPValue("genotypeEffectPValue")}</td>
-          </tr>
-          <tr>
-            <td>Sex Parameter Estimate</td>
-            <td>
-              {attributes["sexEffectParameterEstimate"]
-                ? attributes["sexEffectParameterEstimate"].toFixed(3)
-                : "N/A"}
-            </td>
-          </tr>
-          <tr>
-            <td>Sex Standard Error Estimate</td>
-            <td>
-              {attributes["sexEffectStderrEstimate"]
-                ? attributes["sexEffectStderrEstimate"].toFixed(3)
-                : "N/A"}
-            </td>
-          </tr>
-          <tr>
-            <td>Sex Effect P-Value</td>
-            <td>{getFormattedPValue("sexEffectPValue") ?? "N/A"}</td>
-          </tr>
-          <tr>
-            <td>Intercept Estimate</td>
-            <td>
-              {attributes["interceptEstimate"]
-                ? attributes["interceptEstimate"].toFixed(3)
-                : "N/A"}
-            </td>
-          </tr>
-          <tr>
-            <td>Intercept Estimate Standard Error</td>
-            <td>
-              {attributes["interceptEstimateStderrEstimate"]
-                ? attributes["interceptEstimateStderrEstimate"].toFixed(3)
-                : "N/A"}
-            </td>
-          </tr>
-          <tr>
-            <td>Sex Male KO P-Value</td>
-            <td>{getFormattedPValue("maleKoEffectPValue")}</td>
-          </tr>
-          <tr>
-            <td>Sex Female KO P-Value</td>
-            <td>{getFormattedPValue("femaleKoEffectPValue")}</td>
-          </tr>
-          <tr>
-            <td>WT Residuals Normality Tests</td>
-            <td>
-              {attributes["group1ResidualsNormalityTest"]
-                ? formatPValue(attributes["group1ResidualsNormalityTest"])
-                : "N/A"}
-            </td>
-          </tr>
-          <tr>
-            <td>KO Residuals Normality Tests</td>
-            <td>
-              {attributes["group2ResidualsNormalityTest"]
-                ? formatPValue(attributes["group2ResidualsNormalityTest"])
-                : "N/A"}
-            </td>
-          </tr>
+          {statisticalMethodFields.map(
+            (field) =>
+              fieldHasValue(field) && (
+                <tr>
+                  <td>{field.label}</td>
+                  <td>{getFormattedValue(field)}</td>
+                </tr>
+              ),
+          )}
         </SortableTable>
       )}
     </WrapperCmp>
