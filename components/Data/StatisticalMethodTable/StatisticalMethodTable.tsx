@@ -173,20 +173,15 @@ const StatisticalMethodTable = ({
   } = datasetSummary;
 
   const statisticalMethodFields = useMemo(() => {
-    let fields: StatisticalMethodField[];
     switch (name) {
       case "Linear Mixed Model framework, LME, including Weight":
       case "Linear Mixed Model framework, LME, not including Weight":
-        fields = linearMixedModelData;
-        break;
+        return linearMixedModelData;
       case "Reference Range Plus Test framework; quantile = 0.95 (Tails probability = 0.025)":
-        fields = referenceRangeModelData;
-        break;
+        return referenceRangeModelData;
       default:
-        fields = generalData;
-        break;
+        return generalData;
     }
-    return fields.toSorted((f1, f2) => f1.label.localeCompare(f2.label));
   }, [name]);
 
   const statisticalDataIsEmpty = useMemo(() => {
