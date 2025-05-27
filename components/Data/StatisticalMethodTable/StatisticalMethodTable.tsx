@@ -231,10 +231,6 @@ const StatisticalMethodTable = ({
     );
   }
 
-  const fieldHasValue = (field: StatisticalMethodField) => {
-    return !!attributes[field.key];
-  };
-
   const getFormattedPValue = (key: keyof typeof attributes) => {
     const zeroPValueDataTypes = ["unidimensional", "categorical"];
     const pValue = formatPValue(attributes[key] as number);
@@ -248,7 +244,7 @@ const StatisticalMethodTable = ({
       case "boolean":
         return attributes[field.key] ? "True" : "False";
       case "number":
-        return (attributes[field.key] as number).toFixed(3);
+        return (attributes[field.key] as number)?.toFixed(3);
       case "pValue":
         return getFormattedPValue(field.key);
     }
@@ -268,15 +264,12 @@ const StatisticalMethodTable = ({
             { width: 4, label: "Value", disabled: true },
           ]}
         >
-          {statisticalMethodFields.map(
-            (field) =>
-              fieldHasValue(field) && (
-                <tr>
-                  <td>{field.label}</td>
-                  <td>{getFormattedValue(field)}</td>
-                </tr>
-              ),
-          )}
+          {statisticalMethodFields.map((field) => (
+            <tr>
+              <td>{field.label}</td>
+              <td>{getFormattedValue(field) ?? "N/A"}</td>
+            </tr>
+          ))}
         </SortableTable>
       )}
     </WrapperCmp>
