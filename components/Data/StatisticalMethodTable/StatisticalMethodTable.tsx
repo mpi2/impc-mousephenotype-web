@@ -99,69 +99,68 @@ const linearMixedModelData: Array<StatisticalMethodField> = generalData.concat([
   },
 ]);
 
-const referenceRangeModelData: Array<StatisticalMethodField> =
-  generalData.concat([
-    {
-      key: "femaleEffectSizeLowNormalVsHigh",
-      type: "number",
-      label: "Female Effect Size Low Normal VS High",
-    },
-    {
-      key: "femaleEffectSizeLowVsNormalHigh",
-      type: "number",
-      label: "Female Effect Size Low VS Normal High",
-    },
-    {
-      key: "femalePValueLowNormalVsHigh",
-      type: "pValue",
-      label: "Female P-Value Low Normal VS High",
-    },
-    {
-      key: "femalePValueLowVsNormalHigh",
-      type: "pValue",
-      label: "Female P-Value Low VS Normal High",
-    },
-    {
-      key: "maleEffectSizeLowNormalVsHigh",
-      type: "number",
-      label: "Male Effect Size Low Normal VS High",
-    },
-    {
-      key: "maleEffectSizeLowVsNormalHigh",
-      type: "number",
-      label: "Male Effect Size Low VS Normal High",
-    },
-    {
-      key: "malePValueLowNormalVsHigh",
-      type: "pValue",
-      label: "Male P-Value Low Normal VS High",
-    },
-    {
-      key: "malePValueLowVsNormalHigh",
-      type: "pValue",
-      label: "Male P-Value Low VS Normal High",
-    },
-    {
-      key: "genotypeEffectSizeLowNormalVsHigh",
-      type: "number",
-      label: "Genotype Effect Size Low Normal VS High",
-    },
-    {
-      key: "genotypeEffectSizeLowVsNormalHigh",
-      type: "number",
-      label: "Genotype Effect Size Low VS Normal High",
-    },
-    {
-      key: "genotypePValueLowNormalVsHigh",
-      type: "pValue",
-      label: "Genotype P-Value Low Normal VS High",
-    },
-    {
-      key: "genotypePValueLowVsNormalHigh",
-      type: "pValue",
-      label: "Genotype P-Value Low VS Normal High",
-    },
-  ]);
+const referenceRangeModelData: Array<StatisticalMethodField> = [
+  {
+    key: "femaleEffectSizeLowNormalVsHigh",
+    type: "number",
+    label: "Female Effect Size Low Normal VS High",
+  },
+  {
+    key: "femaleEffectSizeLowVsNormalHigh",
+    type: "number",
+    label: "Female Effect Size Low VS Normal High",
+  },
+  {
+    key: "femalePValueLowNormalVsHigh",
+    type: "pValue",
+    label: "Female P-Value Low Normal VS High",
+  },
+  {
+    key: "femalePValueLowVsNormalHigh",
+    type: "pValue",
+    label: "Female P-Value Low VS Normal High",
+  },
+  {
+    key: "maleEffectSizeLowNormalVsHigh",
+    type: "number",
+    label: "Male Effect Size Low Normal VS High",
+  },
+  {
+    key: "maleEffectSizeLowVsNormalHigh",
+    type: "number",
+    label: "Male Effect Size Low VS Normal High",
+  },
+  {
+    key: "malePValueLowNormalVsHigh",
+    type: "pValue",
+    label: "Male P-Value Low Normal VS High",
+  },
+  {
+    key: "malePValueLowVsNormalHigh",
+    type: "pValue",
+    label: "Male P-Value Low VS Normal High",
+  },
+  {
+    key: "genotypeEffectSizeLowNormalVsHigh",
+    type: "number",
+    label: "Genotype Effect Size Low Normal VS High",
+  },
+  {
+    key: "genotypeEffectSizeLowVsNormalHigh",
+    type: "number",
+    label: "Genotype Effect Size Low VS Normal High",
+  },
+  {
+    key: "genotypePValueLowNormalVsHigh",
+    type: "pValue",
+    label: "Genotype P-Value Low Normal VS High",
+  },
+  {
+    key: "genotypePValueLowVsNormalHigh",
+    type: "pValue",
+    label: "Genotype P-Value Low VS Normal High",
+  },
+];
 
 const StatisticalMethodTable = ({
   datasetSummary,
