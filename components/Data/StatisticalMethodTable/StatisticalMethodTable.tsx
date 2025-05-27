@@ -173,20 +173,15 @@ const StatisticalMethodTable = ({
   } = datasetSummary;
 
   const statisticalMethodFields = useMemo(() => {
-    let fields: StatisticalMethodField[];
     switch (name) {
       case "Linear Mixed Model framework, LME, including Weight":
       case "Linear Mixed Model framework, LME, not including Weight":
-        fields = linearMixedModelData;
-        break;
+        return linearMixedModelData;
       case "Reference Range Plus Test framework; quantile = 0.95 (Tails probability = 0.025)":
-        fields = referenceRangeModelData;
-        break;
+        return referenceRangeModelData;
       default:
-        fields = generalData;
-        break;
+        return generalData;
     }
-    return fields.toSorted((f1, f2) => f1.label.localeCompare(f2.label));
   }, [name]);
 
   const statisticalDataIsEmpty = useMemo(() => {
@@ -236,10 +231,6 @@ const StatisticalMethodTable = ({
     );
   }
 
-  const fieldHasValue = (field: StatisticalMethodField) => {
-    return !!attributes[field.key];
-  };
-
   const getFormattedPValue = (key: keyof typeof attributes) => {
     const zeroPValueDataTypes = ["unidimensional", "categorical"];
     const pValue = formatPValue(attributes[key] as number);
@@ -253,7 +244,7 @@ const StatisticalMethodTable = ({
       case "boolean":
         return attributes[field.key] ? "True" : "False";
       case "number":
-        return (attributes[field.key] as number).toFixed(3);
+        return (attributes[field.key] as number)?.toFixed(3);
       case "pValue":
         return getFormattedPValue(field.key);
     }
@@ -273,15 +264,12 @@ const StatisticalMethodTable = ({
             { width: 4, label: "Value", disabled: true },
           ]}
         >
-          {statisticalMethodFields.map(
-            (field) =>
-              fieldHasValue(field) && (
-                <tr>
-                  <td>{field.label}</td>
-                  <td>{getFormattedValue(field)}</td>
-                </tr>
-              ),
-          )}
+          {statisticalMethodFields.map((field) => (
+            <tr>
+              <td>{field.label}</td>
+              <td>{getFormattedValue(field) ?? "N/A"}</td>
+            </tr>
+          ))}
         </SortableTable>
       )}
     </WrapperCmp>
