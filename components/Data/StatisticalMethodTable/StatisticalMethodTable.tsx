@@ -4,8 +4,11 @@ import Card from "@/components/Card";
 import { Dataset } from "@/models";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { Fragment, useMemo } from "react";
+import {
+  faCircleQuestion,
+  faExternalLinkAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import React, { Fragment, useMemo } from "react";
 import styles from "./styles.module.scss";
 
 type Props = {
@@ -251,7 +254,18 @@ const StatisticalMethodTable = ({
 
   return (
     <WrapperCmp>
-      {!onlyDisplayTable && <h2>Statistical method</h2>}
+      {!onlyDisplayTable && (
+        <div className={styles.titleWrapper}>
+          <h2>Statistical method</h2>
+          <Link
+            href="https://dev.mousephenotype.org/help/data-analysis/statistical-analysis/"
+            className="btn"
+            aria-label={`Statistical analysis documentation`}
+          >
+            <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
+          </Link>
+        </div>
+      )}
       <span>
         <b>{name === "MM" ? "Mixed Model" : name}</b>
       </span>
