@@ -258,7 +258,7 @@ const StatisticalMethodTable = ({
         <div className={styles.titleWrapper}>
           <h2>Statistical method</h2>
           <Link
-            href="https://dev.mousephenotype.org/help/data-analysis/statistical-analysis/"
+            href="https://www.mousephenotype.org/help/data-analysis/statistical-analysis/"
             className="btn"
             aria-label={`Statistical analysis documentation`}
           >
