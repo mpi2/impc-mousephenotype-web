@@ -128,6 +128,7 @@ const GenomeBrowser = ({
           indexed: false,
           order: 0,
           removable: false,
+          autoHeight: true,
         },
       ];
       selectedTracks.esCellAlleles = true;
