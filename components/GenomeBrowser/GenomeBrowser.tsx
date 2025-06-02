@@ -50,12 +50,12 @@ const PRODUCTS_TRACKS = {
   },
   esCellAlleles: {
     name: "ES Cell alleles available to order",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
     order: 8,
   },
   esCellProducts: {
     name: "Mouse lines carrying a ES Cell allele",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
     order: 7,
   },
   targetingVectors: {
