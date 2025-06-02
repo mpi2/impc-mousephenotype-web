@@ -401,10 +401,7 @@ const EmbryoLandingPage = () => {
                 <p>Embryo phenotye data can be accessed in multiple ways:</p>
                 <ul>
                   <li>
-                    <a
-                      className="link primary"
-                      href="https://www.mousephenotype.org/data/embryo_imaging"
-                    >
+                    <a className="link primary" href="#embryo-data-grid">
                       Embryo Images: interactive heatmap
                     </a>
                     &nbsp;A compilation of all our Embryo Images, organised by
@@ -423,7 +420,7 @@ const EmbryoLandingPage = () => {
                   <li>
                     <a
                       className="link primary"
-                      href="ftp://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/"
+                      href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/"
                     >
                       From the FTP site, latest release
                     </a>
