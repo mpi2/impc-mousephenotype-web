@@ -351,7 +351,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
   const [tab, setTab] = useState("associated");
 
   const fullData = useMemo(
-    () => associatedDiseases?.concat(predictedDiseases ?? []) ?? [],
+    () => (associatedDiseases ?? []).concat(predictedDiseases ?? []) ?? [],
     [associatedDiseases, predictedDiseases],
   );
 
