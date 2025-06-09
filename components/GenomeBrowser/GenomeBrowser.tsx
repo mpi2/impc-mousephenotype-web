@@ -66,8 +66,8 @@ const PRODUCTS_TRACKS = {
 };
 const optionalTracks = {
   GENCODE: {
-    name: "GENCODE",
-    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
+    name: "GENCODE M37",
+    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.basic.annotation.gff3.gz",
     indexed: false,
     format: "gff3",
     searchable: true,
@@ -264,7 +264,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="GENCODE"
+                  label="GENCODE M37"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODE", e.target.checked)
                   }
