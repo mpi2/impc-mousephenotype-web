@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation";
 import { fetchGeneSummary } from "@/api-service";
 import GenomeBrowserPage from "./genome-browser-page";
+import { Metadata } from "next";
+
+const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 type PageParams = Promise<{
   pid: string;
@@ -22,4 +25,35 @@ export default async function Page({ params }: { params: PageParams }) {
   const geneId = decodeURIComponent((await params).pid);
   const data = await getGeneSummary(geneId);
   return <GenomeBrowserPage mgiGeneAccessionId={geneId} geneSummary={data} />;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: PageParams;
+}): Promise<Metadata> {
+  const mgiGeneAccessionId = decodeURIComponent((await params).pid);
+  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
+    notFound();
+  }
+  const geneSummary = await fetchGeneSummary(mgiGeneAccessionId);
+  if (!geneSummary) {
+    notFound();
+  }
+  const { geneSymbol, geneName } = geneSummary;
+  const title = `${geneSymbol} | ${geneName} genome browser | IMPC`;
+  const description = `View all the mouse gene ${geneSymbol} gene information available.`;
+  const genePageURL = `${WEBSITE_URL}/data/genes/${mgiGeneAccessionId}/genome-browser`;
+  return {
+    title: title,
+    description: description,
+    keywords: [geneSymbol, geneName, "mouse", "gene", "genome", "browser"],
+    alternates: { canonical: genePageURL },
+    openGraph: {
+      title: title,
+      url: genePageURL,
+      description: description,
+      type: "website",
+    },
+  };
 }
