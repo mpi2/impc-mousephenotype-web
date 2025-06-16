@@ -2,7 +2,7 @@
 
 import { Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import { Card } from "@/components";
-import { useLayoutEffect, useRef, useState } from "react";
+import { Fragment, useLayoutEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,9 +12,7 @@ import Link from "next/link";
 type GenomeBrowserProps = {
   geneSymbol: string;
   mgiGeneAccessionId: string;
-  hasCRISPRData: boolean;
-  hasEsCellData: boolean;
-  hasTargetingVectorData: boolean;
+  noContainer?: boolean;
 };
 
 type BrowserProps = {
@@ -98,9 +96,7 @@ const optionalTracks = {
 const GenomeBrowser = ({
   geneSymbol,
   mgiGeneAccessionId,
-  hasCRISPRData,
-  hasEsCellData,
-  hasTargetingVectorData,
+  noContainer = false,
 }: GenomeBrowserProps) => {
   let genomeBrowserRef = useRef<BrowserProps | null>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
@@ -218,8 +214,12 @@ const GenomeBrowser = ({
     }
   };
 
+  const ContainerCmp = useMemo(() => {
+    return noContainer ? Fragment : Container;
+  }, [noContainer]);
+
   return (
-    <Card>
+    <ContainerCmp>
       <Container style={{ padding: 0 }}>
         <Row>
           <Col>
@@ -372,7 +372,7 @@ const GenomeBrowser = ({
       </Container>
 
       <div id="igv-container" />
-    </Card>
+    </ContainerCmp>
   );
 };
 

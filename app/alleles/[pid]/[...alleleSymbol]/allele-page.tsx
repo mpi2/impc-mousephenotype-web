@@ -219,9 +219,6 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
         <GenomeBrowser
           geneSymbol={alleleData.geneSymbol}
           mgiGeneAccessionId={mgiGeneAccessionId}
-          hasCRISPRData={doesCrisprProductsExist}
-          hasEsCellData={doesEsCellProductsExist}
-          hasTargetingVectorData={doesTargetingVectorProductsExist}
         />
         <Card>
           <Link
