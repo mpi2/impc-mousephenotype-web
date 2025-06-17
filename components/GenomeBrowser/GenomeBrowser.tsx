@@ -215,7 +215,7 @@ const GenomeBrowser = ({
   };
 
   const ContainerCmp = useMemo(() => {
-    return noContainer ? Fragment : Container;
+    return noContainer ? Fragment : Card;
   }, [noContainer]);
 
   return (
