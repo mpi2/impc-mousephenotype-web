@@ -70,8 +70,8 @@ const PRODUCTS_TRACKS = {
 };
 const optionalTracks = {
   GENCODE: {
-    name: "GENCODE M37 Primary",
-    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.primary_assembly.basic.annotation.gff3.gz",
+    name: "Basic gene annotation (CHR)",
+    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.basic.annotation.gff3.gz",
     indexed: false,
     format: "gff3",
     searchable: true,
