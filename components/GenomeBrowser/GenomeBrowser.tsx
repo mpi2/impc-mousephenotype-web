@@ -35,37 +35,43 @@ const PRODUCTS_TRACKS = {
     name: "CRISPR allele deletion coordinates",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
     order: 3,
+    autoHeight: true,
   },
   crisprDeletions: {
     name: "Aligned FASTA from CRISPR alleles",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
     order: 4,
+    autoHeight: true,
   },
   crisprGuides: {
     name: "CRISPR allele guides",
     url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
     order: 5,
+    autoHeight: true,
   },
   esCellAlleles: {
     name: "ES Cell alleles available to order",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
     order: 8,
+    autoHeight: true,
   },
   esCellProducts: {
     name: "Mouse lines carrying a ES Cell allele",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
     order: 7,
+    autoHeight: true,
   },
   targetingVectors: {
     name: "Targeting Vector Products",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
     order: 9,
+    autoHeight: true,
   },
 };
 const optionalTracks = {
   GENCODE: {
-    name: "GENCODE M37",
-    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.basic.annotation.gff3.gz",
+    name: "GENCODE M37 Primary",
+    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.primary_assembly.basic.annotation.gff3.gz",
     indexed: false,
     format: "gff3",
     searchable: true,
@@ -79,6 +85,7 @@ const optionalTracks = {
     ],
     nameField: "gene_name",
     order: 0,
+    autoHeight: true,
   },
   "UniProt SwissProt/TrEMBL Protein Annotations": {
     name: "UniProt SwissProt/TrEMBL Protein Annotations",
@@ -86,10 +93,12 @@ const optionalTracks = {
     indexed: false,
     nameField: "GeneName",
     order: 0,
+    autoHeight: true,
   },
   "IKMC alleles": {
     name: "IKMC alleles",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
+    autoHeight: true,
   },
 };
 
@@ -264,7 +273,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="GENCODE M37"
+                  label="GENCODE M37 Primary"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODE", e.target.checked)
                   }
