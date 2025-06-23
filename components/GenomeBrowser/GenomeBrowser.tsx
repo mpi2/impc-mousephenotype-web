@@ -88,13 +88,6 @@ const optionalTracks = {
     autoHeight: true,
     type: "annotation",
   },
-  GENCODEUpdates: {
-    name: "GENCODE TrackHub Updates",
-    type: "annotation",
-    url: "http://ftp.ebi.ac.uk/pub/databases/gencode/update_trackhub/data/mm39.bb",
-    format: "bigbed",
-    order: 0,
-  },
   GENCODEUCSCURL: {
     name: "GENCODE UCSC URL",
     type: "annotation",
@@ -102,6 +95,7 @@ const optionalTracks = {
     format: "bigbed",
     nameField: "GeneName",
     order: 0,
+    autoHeight: true,
   },
   "UniProt SwissProt Protein Annotations": {
     name: "UniProt SwissProt Protein Annotations",
@@ -330,14 +324,6 @@ const GenomeBrowser = ({
                   label="IKMC alleles"
                   onChange={(e) =>
                     toggleOptionalTrack("IKMC alleles", e.target.checked)
-                  }
-                />
-                <Form.Check
-                  className="mb-0"
-                  inline
-                  label="GENCODE trackhub updates"
-                  onChange={(e) =>
-                    toggleOptionalTrack("GENCODEUpdates", e.target.checked)
                   }
                 />
                 <Form.Check
