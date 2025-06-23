@@ -90,6 +90,21 @@ const optionalTracks = {
   },
   "UniProt SwissProt/TrEMBL Protein Annotations": {
     name: "UniProt SwissProt/TrEMBL Protein Annotations",
+  GENCODEUpdates: {
+    name: "GENCODE TrackHub Updates",
+    type: "annotation",
+    url: "http://ftp.ebi.ac.uk/pub/databases/gencode/update_trackhub/data/mm39.bb",
+    format: "bigbed",
+    order: 0,
+  },
+  GENCODEUCSCURL: {
+    name: "GENCODE UCSC URL",
+    type: "annotation",
+    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
+    format: "bigbed",
+    nameField: "GeneName",
+    order: 0,
+  },
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
     indexed: false,
     nameField: "GeneName",
@@ -296,6 +311,22 @@ const GenomeBrowser = ({
                   label="IKMC alleles"
                   onChange={(e) =>
                     toggleOptionalTrack("IKMC alleles", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="GENCODE trackhub updates"
+                  onChange={(e) =>
+                    toggleOptionalTrack("GENCODEUpdates", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="GENCODE UCSC URL"
+                  onChange={(e) =>
+                    toggleOptionalTrack("GENCODEUCSCURL", e.target.checked)
                   }
                 />
               </div>
