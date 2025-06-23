@@ -88,8 +88,6 @@ const optionalTracks = {
     autoHeight: true,
     type: "annotation",
   },
-  "UniProt SwissProt/TrEMBL Protein Annotations": {
-    name: "UniProt SwissProt/TrEMBL Protein Annotations",
   GENCODEUpdates: {
     name: "GENCODE TrackHub Updates",
     type: "annotation",
@@ -105,7 +103,17 @@ const optionalTracks = {
     nameField: "GeneName",
     order: 0,
   },
+  "UniProt SwissProt Protein Annotations": {
+    name: "UniProt SwissProt Protein Annotations",
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
+    indexed: false,
+    nameField: "GeneName",
+    order: 0,
+    autoHeight: true,
+  },
+  "UniProt TrEMBL Protein Annotations": {
+    name: "UniProt TrEMBL Protein Annotations",
+    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliTrembl.bb",
     indexed: false,
     nameField: "GeneName",
     order: 0,
@@ -220,7 +228,7 @@ const GenomeBrowser = ({
       if (selection) {
         genomeBrowserRef.current.loadTrack(optionalTracks[name]);
       } else {
-        genomeBrowserRef.current.removeTrackByName(name);
+        genomeBrowserRef.current.removeTrackByName(optionalTracks[name].name);
       }
     }
   };
@@ -297,10 +305,21 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="UniProt SwissProt/TrEMBL Protein Annotations"
+                  label="UniProt SwissProt Protein Annotations"
                   onChange={(e) =>
                     toggleOptionalTrack(
-                      "UniProt SwissProt/TrEMBL Protein Annotations",
+                      "UniProt SwissProt Protein Annotations",
+                      e.target.checked,
+                    )
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="UniProt TrEMBL Protein Annotations"
+                  onChange={(e) =>
+                    toggleOptionalTrack(
+                      "UniProt TrEMBL Protein Annotations",
                       e.target.checked,
                     )
                   }
