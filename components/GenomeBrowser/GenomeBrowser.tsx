@@ -70,7 +70,7 @@ const PRODUCTS_TRACKS = {
 };
 const optionalTracks = {
   GENCODE: {
-    name: "Basic gene annotation (CHR)",
+    name: "GENCODE M37 Basic Gene annotation (CHR)",
     url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.basic.annotation.gff3.gz",
     indexed: false,
     format: "gff3",
@@ -86,10 +86,34 @@ const optionalTracks = {
     nameField: "gene_name",
     order: 0,
     autoHeight: true,
+    type: "annotation",
   },
-  "UniProt SwissProt/TrEMBL Protein Annotations": {
-    name: "UniProt SwissProt/TrEMBL Protein Annotations",
+  GENCODEUpdates: {
+    name: "GENCODE TrackHub Updates",
+    type: "annotation",
+    url: "http://ftp.ebi.ac.uk/pub/databases/gencode/update_trackhub/data/mm39.bb",
+    format: "bigbed",
+    order: 0,
+  },
+  GENCODEUCSCURL: {
+    name: "GENCODE UCSC URL",
+    type: "annotation",
+    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
+    format: "bigbed",
+    nameField: "GeneName",
+    order: 0,
+  },
+  "UniProt SwissProt Protein Annotations": {
+    name: "UniProt SwissProt Protein Annotations",
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
+    indexed: false,
+    nameField: "GeneName",
+    order: 0,
+    autoHeight: true,
+  },
+  "UniProt TrEMBL Protein Annotations": {
+    name: "UniProt TrEMBL Protein Annotations",
+    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliTrembl.bb",
     indexed: false,
     nameField: "GeneName",
     order: 0,
@@ -204,7 +228,7 @@ const GenomeBrowser = ({
       if (selection) {
         genomeBrowserRef.current.loadTrack(optionalTracks[name]);
       } else {
-        genomeBrowserRef.current.removeTrackByName(name);
+        genomeBrowserRef.current.removeTrackByName(optionalTracks[name].name);
       }
     }
   };
@@ -273,7 +297,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="GENCODE M37 Primary"
+                  label="GENCODE M37 Basic Gene annotation (CHR)"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODE", e.target.checked)
                   }
@@ -281,10 +305,21 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="UniProt SwissProt/TrEMBL Protein Annotations"
+                  label="UniProt SwissProt Protein Annotations"
                   onChange={(e) =>
                     toggleOptionalTrack(
-                      "UniProt SwissProt/TrEMBL Protein Annotations",
+                      "UniProt SwissProt Protein Annotations",
+                      e.target.checked,
+                    )
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="UniProt TrEMBL Protein Annotations"
+                  onChange={(e) =>
+                    toggleOptionalTrack(
+                      "UniProt TrEMBL Protein Annotations",
                       e.target.checked,
                     )
                   }
@@ -295,6 +330,22 @@ const GenomeBrowser = ({
                   label="IKMC alleles"
                   onChange={(e) =>
                     toggleOptionalTrack("IKMC alleles", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="GENCODE trackhub updates"
+                  onChange={(e) =>
+                    toggleOptionalTrack("GENCODEUpdates", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="GENCODE UCSC URL"
+                  onChange={(e) =>
+                    toggleOptionalTrack("GENCODEUCSCURL", e.target.checked)
                   }
                 />
               </div>
