@@ -1705,6 +1705,30 @@ exports[`PPI Chart page renders correctly 1`] = `
                       </sup>
                     </td>
                   </tr>
+                  <tr>
+                    <td>
+                      Weight Effect P-Value
+                    </td>
+                    <td>
+                      N/A
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Weight Effect Parameter Estimate
+                    </td>
+                    <td>
+                      N/A
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Weight Effect Standard Error Estimate
+                    </td>
+                    <td>
+                      N/A
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
