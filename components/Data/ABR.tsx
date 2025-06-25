@@ -33,7 +33,7 @@ ChartJS.register(
   Legend,
   BarElement,
   LineController,
-  BarController
+  BarController,
 );
 
 const clone = (obj) => JSON.parse(JSON.stringify(obj));
@@ -56,31 +56,37 @@ type ABRProps = {
 const ABR = (props: ABRProps) => {
   const { datasetSummaries, onNewSummariesFetched, activeDataset } = props;
 
-  const {datasets, datasetsAreLoading} = useRelatedParametersQuery(
+  const { datasets, datasetsAreLoading } = useRelatedParametersQuery(
     datasetSummaries,
     parameterList,
-    onNewSummariesFetched
+    onNewSummariesFetched,
   );
 
   const zygosity = datasetSummaries?.[0]?.zygosity;
 
-  const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery('PPI', datasetSummaries);
+  const { results, hasLoadedAllData } = useMultipleS3DatasetsQuery(
+    "ABR",
+    datasets,
+  );
 
   useEffect(() => {
-    chartLoadingIndicatorChannel.emit('toggleIndicator', (!hasLoadedAllData || datasetsAreLoading));
+    chartLoadingIndicatorChannel.emit(
+      "toggleIndicator",
+      !hasLoadedAllData || datasetsAreLoading,
+    );
   }, [hasLoadedAllData, datasetsAreLoading]);
 
   const produceDownloadData = (type: "data" | "fields") => {
     const loadingData = results.map((d) => d.isLoading).every(Boolean);
     const downloads = loadingData
       ? []
-      : datasetSummaries.map((d, i) => getDownloadData(d, results[i].data));
+      : datasets.map((d, i) => getDownloadData(d, results[i]));
     if (type === "data") {
       return downloads.flatMap((d) => d.data);
     } else {
       return downloads[0]?.fields || [];
     }
-  }
+  };
 
   const getChartLabels = () => {
     return [
@@ -95,11 +101,11 @@ const ABR = (props: ABRProps) => {
   };
   const getStatsData = (
     sex: "fem" | "male",
-    zygLabel: "Het" | "Hom" | "WT"
+    zygLabel: "Het" | "Hom" | "WT",
   ) => {
     const data = clone(datasets);
     data.sort((d1, d2) =>
-      d1.parameterStableId.localeCompare(d2.parameterStableId)
+      d1.parameterStableId.localeCompare(d2.parameterStableId),
     );
     const sexKey = sex === "fem" ? "female" : "male";
     const zygKey = zygLabel === "WT" ? "Control" : "Mutant";
