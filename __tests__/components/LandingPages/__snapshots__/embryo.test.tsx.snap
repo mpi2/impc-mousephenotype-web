@@ -790,7 +790,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               <li>
                 <a
                   class="link primary"
-                  href="https://www.mousephenotype.org/data/embryo_imaging"
+                  href="#embryo-data-grid"
                 >
                   Embryo Images: interactive heatmap
                 </a>
@@ -808,7 +808,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               <li>
                 <a
                   class="link primary"
-                  href="ftp://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/"
+                  href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/"
                 >
                   From the FTP site, latest release
                 </a>

@@ -130,6 +130,12 @@ exports[`Gene page renders correctly 1`] = `
               />
             </svg>
           </a>
+          <a
+            class="link primary"
+            href="/genes/MGI:1922702/genome-browser"
+          >
+            Genome Browser
+          </a>
         </div>
       </div>
       <div>
@@ -2764,7 +2770,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -2878,7 +2884,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3049,7 +3055,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3141,7 +3147,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3255,7 +3261,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3369,7 +3375,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3483,7 +3489,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3597,7 +3603,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3711,7 +3717,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
