@@ -2764,7 +2764,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -2878,7 +2878,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3049,7 +3049,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3141,7 +3141,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3255,7 +3255,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3369,7 +3369,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3483,7 +3483,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3597,7 +3597,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *
@@ -3711,7 +3711,7 @@ exports[`Gene page renders correctly 1`] = `
                         <span
                           data-testid="p-value"
                         >
-                          0
+                          N/A
                            
                           <sup>
                             *

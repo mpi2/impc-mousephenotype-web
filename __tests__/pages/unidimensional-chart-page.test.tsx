@@ -91,7 +91,7 @@ describe("Unidimensional Chart page", () => {
     );
     await waitFor(async () => {
       const rows = await screen.findAllByRole("row");
-      return expect(rows.length).toEqual(30);
+      return expect(rows.length).toEqual(33);
     });
     await new Promise(process.nextTick);
     expect(container).toMatchSnapshot();
