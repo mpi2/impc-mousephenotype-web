@@ -202,7 +202,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0000266"
+                        class="link primary"
+                        href="/phenotypes/MP:0000266"
                       >
                         abnormal heart morphology
                       </a>
@@ -218,7 +219,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0000274"
+                        class="link primary"
+                        href="/phenotypes/MP:0000274"
                       >
                         enlarged heart
                       </a>
@@ -234,7 +236,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0002833"
+                        class="link primary"
+                        href="/phenotypes/MP:0002833"
                       >
                         increased heart weight
                       </a>
@@ -250,7 +253,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0010097"
+                        class="link primary"
+                        href="/phenotypes/MP:0010097"
                       >
                         abnormal retina blood vessel morphology
                       </a>
@@ -266,7 +270,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0002792"
+                        class="link primary"
+                        href="/phenotypes/MP:0002792"
                       >
                         abnormal retina vasculature morphology
                       </a>
@@ -282,7 +287,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0010506"
+                        class="link primary"
+                        href="/phenotypes/MP:0010506"
                       >
                         prolonged RR interval
                       </a>
@@ -298,7 +304,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0005333"
+                        class="link primary"
+                        href="/phenotypes/MP:0005333"
                       >
                         decreased heart rate
                       </a>
@@ -314,7 +321,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0001914"
+                        class="link primary"
+                        href="/phenotypes/MP:0001914"
                       >
                         hemorrhage
                       </a>
@@ -330,7 +338,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0002188"
+                        class="link primary"
+                        href="/phenotypes/MP:0002188"
                       >
                         small heart
                       </a>
@@ -346,7 +355,8 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                   <tr>
                     <td>
                       <a
-                        href="http://www.mousephenotype.org/data/phenotypes/MP:0002834"
+                        class="link primary"
+                        href="/phenotypes/MP:0002834"
                       >
                         decreased heart weight
                       </a>
