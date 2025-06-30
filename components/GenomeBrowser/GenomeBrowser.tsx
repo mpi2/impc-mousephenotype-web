@@ -70,10 +70,9 @@ const PRODUCTS_TRACKS = {
 };
 const optionalTracks = {
   GENCODE: {
-    name: "GENCODE M37 Basic Gene annotation (CHR)",
-    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.basic.annotation.gff3.gz",
+    name: "GENCODE M37 Basic Gene annotation",
+    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
     indexed: false,
-    format: "gff3",
     searchable: true,
     searchableFields: [
       "name",
@@ -87,15 +86,6 @@ const optionalTracks = {
     order: 0,
     autoHeight: true,
     type: "annotation",
-  },
-  GENCODEUCSCURL: {
-    name: "GENCODE UCSC URL",
-    type: "annotation",
-    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
-    format: "bigbed",
-    nameField: "GeneName",
-    order: 0,
-    autoHeight: true,
   },
   "UniProt SwissProt Protein Annotations": {
     name: "UniProt SwissProt Protein Annotations",
@@ -291,7 +281,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="GENCODE M37 Basic Gene annotation (CHR)"
+                  label="GENCODE M37 Basic Gene annotation"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODE", e.target.checked)
                   }
@@ -324,14 +314,6 @@ const GenomeBrowser = ({
                   label="IKMC alleles"
                   onChange={(e) =>
                     toggleOptionalTrack("IKMC alleles", e.target.checked)
-                  }
-                />
-                <Form.Check
-                  className="mb-0"
-                  inline
-                  label="GENCODE UCSC URL"
-                  onChange={(e) =>
-                    toggleOptionalTrack("GENCODEUCSCURL", e.target.checked)
                   }
                 />
               </div>
