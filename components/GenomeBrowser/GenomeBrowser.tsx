@@ -1,12 +1,30 @@
 "use client";
 
-import { Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Form,
+  Row,
+  Spinner,
+  FormCheck,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import { Card } from "@/components";
-import { Fragment, useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, {
+  Fragment,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleQuestion,
+  faCircleInfo,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 type GenomeBrowserProps = {
@@ -69,10 +87,29 @@ const PRODUCTS_TRACKS = {
   },
 };
 const optionalTracks = {
-  GENCODE: {
-    name: "GENCODE M37 Basic Gene annotation",
+  GENCODEFull: {
+    name: "GENCODE M37 full gene annotation",
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
     indexed: false,
+    searchable: true,
+    searchableFields: [
+      "name",
+      "transcript_id",
+      "gene_id",
+      "gene_name",
+      "id",
+      "mgi_id",
+    ],
+    nameField: "gene_name",
+    order: 0,
+    autoHeight: true,
+    type: "annotation",
+  },
+  GENCODEBasic: {
+    name: "GENCODE M37 basic gene annotation (CHR)",
+    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.basic.annotation.gff3.gz",
+    indexed: false,
+    format: "gff3",
     searchable: true,
     searchableFields: [
       "name",
@@ -268,7 +305,7 @@ const GenomeBrowser = ({
             <div className={styles.controlsContainer}>
               <div>
                 <Form.Label className="d-inline-block fst-italic me-3 mb-0">
-                  Annotations:
+                  Gene annotations:
                 </Form.Label>
                 <Form.Check
                   className="mb-0"
@@ -281,11 +318,46 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="GENCODE M37 Basic Gene annotation"
+                  label="GENCODE M37 full gene annotation"
                   onChange={(e) =>
-                    toggleOptionalTrack("GENCODE", e.target.checked)
+                    toggleOptionalTrack("GENCODEFull", e.target.checked)
                   }
                 />
+                <FormCheck className="mb-0" inline>
+                  <FormCheck.Input
+                    id="gencode-basic"
+                    type="checkbox"
+                    onChange={(e) =>
+                      toggleOptionalTrack("GENCODEBasic", e.target.checked)
+                    }
+                  />
+                  <FormCheck.Label htmlFor="gencode-basic">
+                    GENCODE M37 basic gene annotation (CHR)
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={
+                        <Tooltip>
+                          Activating this track takes some time and will froze
+                          the browser for some seconds.
+                        </Tooltip>
+                      }
+                    >
+                      <FontAwesomeIcon
+                        style={{ marginLeft: "0.5rem" }}
+                        icon={faCircleInfo}
+                        size="xl"
+                      />
+                    </OverlayTrigger>
+                  </FormCheck.Label>
+                </FormCheck>
+              </div>
+            </div>
+            <hr />
+            <div className={styles.controlsContainer}>
+              <div>
+                <Form.Label className="d-inline-block fst-italic me-3 mb-0">
+                  Protein annotations:
+                </Form.Label>
                 <Form.Check
                   className="mb-0"
                   inline
