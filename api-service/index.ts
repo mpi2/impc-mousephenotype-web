@@ -14,6 +14,8 @@ export const DATA_RELEASE_VERSION =
   process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
 export const PUBLICATIONS_ENDPOINT_URL =
   process.env.NEXT_PUBLIC_PUBLICATIONS_ENDPOINT_URL || "";
+export const GENOME_BROWSER_DATA_URL =
+  process.env.NEXT_PUBLIC_GENOME_BROWSER_DATA_URL || "";
 
 const WEBSITE_ENV = process.env.WEBSITE_ENV || "production";
 
