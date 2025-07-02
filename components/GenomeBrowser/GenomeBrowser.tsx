@@ -33,19 +33,19 @@ type SelectedTracks = {
 const PRODUCTS_TRACKS = {
   crisprDeletionCoords: {
     name: "CRISPR allele deletion coordinates",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-23.0/genome-browser/deletion_coordinates.bb",
     order: 3,
     autoHeight: true,
   },
   crisprDeletions: {
     name: "Aligned FASTA from CRISPR alleles",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-23.0/genome-browser/aligned_fa_bigBed.bb",
     order: 4,
     autoHeight: true,
   },
   crisprGuides: {
     name: "CRISPR allele guides",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
+    url: "https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-23.0/genome-browser/guide_bb_file.bb",
     order: 5,
     autoHeight: true,
   },
