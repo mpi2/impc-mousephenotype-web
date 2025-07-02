@@ -380,14 +380,6 @@ const GenomeBrowser = ({
                     )
                   }
                 />
-                <Form.Check
-                  className="mb-0"
-                  inline
-                  label="IKMC alleles"
-                  onChange={(e) =>
-                    toggleOptionalTrack("IKMC alleles", e.target.checked)
-                  }
-                />
               </div>
             </div>
             <hr />
@@ -447,6 +439,14 @@ const GenomeBrowser = ({
                   checked={selectedTracks.esCellAlleles}
                   onChange={(e) =>
                     toggleProductTrack("esCellAlleles", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  label="IKMC alleles"
+                  onChange={(e) =>
+                    toggleOptionalTrack("IKMC alleles", e.target.checked)
                   }
                 />
                 <Form.Check
