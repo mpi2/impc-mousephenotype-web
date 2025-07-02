@@ -418,7 +418,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="ES Cells targeted"
+                  label="ES Cell targeted"
                   checked={selectedTracks.esCellProducts}
                   onChange={(e) =>
                     toggleProductTrack("esCellProducts", e.target.checked)
