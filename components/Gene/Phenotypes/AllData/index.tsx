@@ -366,7 +366,7 @@ const AllData = (props: Props) => {
               },
               {
                 key: "pValue",
-                label: "Most significant P-value",
+                label: "Most significant P-Value",
                 getValueFn: (item) => item?.pValue?.toString() || "N/A",
               },
             ]}
@@ -453,7 +453,7 @@ const AllData = (props: Props) => {
         },
         {
           width: 1,
-          label: "P value",
+          label: "P-Value",
           field: "pValue",
           cmp: <SignificantPValueCell onRefHover={onRefHover} />,
         },

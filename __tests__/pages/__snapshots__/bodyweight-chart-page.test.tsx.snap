@@ -82,6 +82,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
       >
         <span
           class="subheadingSection primary"
+          data-testid="back-to-gene-page-link"
         >
           <a
             class="mb-3 link"

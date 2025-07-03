@@ -82,6 +82,7 @@ exports[`Embryo viability chart renders correctly 1`] = `
       >
         <span
           class="subheadingSection primary"
+          data-testid="back-to-gene-page-link"
         >
           <a
             class="mb-3 link"
@@ -521,14 +522,14 @@ exports[`Embryo viability chart renders correctly 1`] = `
               <p>
                 A 
                 Viability Primary Screen
-                 phenotypic assay was performed on a mutant strain carrying the 
+                 phenotypic assay was performed on a mutant strain carrying the 
                 <i>
                   1700003F12Rik
                   <sup>
                     tm1.1(KOMP)Vlcg
                   </sup>
                 </i>
-                 allele. The charts below show the proportion of wild type, heterozygous, and homozygous offspring.
+                 allele. The charts below show the proportion of wild type, heterozygous, and homozygous offspring.
               </p>
             </div>
             <div
@@ -786,13 +787,13 @@ exports[`Embryo viability chart renders correctly 1`] = `
                       </th>
                       <th
                         rowspan="2"
-                        width="8.333333333333332%"
+                        width="10%"
                       >
                         <button
                           class="inlineButton headerButton disabled"
                           style="font-weight: inherit;"
                         >
-                          Hemi
+                          Hemi ¹
                            
                         </button>
                       </th>
@@ -889,7 +890,7 @@ exports[`Embryo viability chart renders correctly 1`] = `
                   href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:1922730%22&fq=phenotyping_center:(%22TCP%22)&fq=allele_accession_id:%22MGI:5548659%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_VIA_067_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
                   target="_blank"
                 >
-                  Genotype phentoype association
+                  Genotype phenotype association
                    (
                   XML
                   ) 

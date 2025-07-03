@@ -108,7 +108,7 @@ exports[`Release Notes page renders correctly 1`] = `
             Summary
           </h3>
           <div
-            style="display: grid; grid-template-columns: 1fr 1fr;"
+            class="valuePairJustified"
           >
             <span
               class="grey"
@@ -121,7 +121,7 @@ exports[`Release Notes page renders correctly 1`] = `
             </strong>
           </div>
           <div
-            style="display: grid; grid-template-columns: 1fr 1fr;"
+            class="valuePairJustified withAdditionalElement"
           >
             <span
               class="grey"
@@ -129,12 +129,36 @@ exports[`Release Notes page renders correctly 1`] = `
               Number of phenotyped mutant lines
               : 
             </span>
-            <strong>
-              9,774
-            </strong>
+            <div>
+              <strong>
+                9,774
+              </strong>
+              <a
+                aria-label="What is a line?"
+                class="btn"
+                href="https://www.mousephenotype.org/help/mouse-production/faqs/what-is-a-phenotyped-line/"
+                target="_blank"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-circle-question fa-xl "
+                  data-icon="circle-question"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
           <div
-            style="display: grid; grid-template-columns: 1fr 1fr;"
+            class="valuePairJustified"
           >
             <span
               class="grey"
@@ -205,7 +229,9 @@ exports[`Release Notes page renders correctly 1`] = `
           </div>
         </div>
       </div>
-      <div>
+      <div
+        class=""
+      >
         <span
           class="grey"
         >
@@ -216,7 +242,9 @@ exports[`Release Notes page renders correctly 1`] = `
           OpenStats (1.18.0)
         </strong>
       </div>
-      <div>
+      <div
+        class=""
+      >
         <span
           class="grey"
         >
@@ -1206,6 +1234,34 @@ exports[`Release Notes page renders correctly 1`] = `
         Previous releases
       </h2>
       <ul>
+        <li
+          style="margin-bottom: 1rem;"
+        >
+          <a
+            class="link primary"
+            href="/release/22.1"
+            target="_blank"
+          >
+            Release 
+            22.1
+             notes 
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              data-icon="up-right-from-square"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        </li>
         <li
           style="margin-bottom: 1rem;"
         >

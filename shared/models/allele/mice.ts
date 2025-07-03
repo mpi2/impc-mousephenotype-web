@@ -61,4 +61,5 @@ export type AlelleMice = {
   contactLinks: string;
   otherLinks: OtherLinks;
   tissueDistribution: Array<any>;
+  displayStrainName?: string;
 };

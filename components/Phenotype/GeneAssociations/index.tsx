@@ -184,7 +184,7 @@ const Associations = ({ initialData }: AssociationsProps) => {
               { key: "phenotypingCentre", label: "Phenotyping center" },
               {
                 key: "pValue",
-                label: "Most significant P-value",
+                label: "Most significant P-Value",
                 getValueFn: (item) => item.pValue?.toString(10) || "1",
               },
             ]}
@@ -241,7 +241,7 @@ const Associations = ({ initialData }: AssociationsProps) => {
           },
           {
             width: 1,
-            label: "Most significant P-value",
+            label: "Most significant P-Value",
             field: "pValue",
             cmp: <SignificantPValueCell />,
           },

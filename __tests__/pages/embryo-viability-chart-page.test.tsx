@@ -1,7 +1,7 @@
 import SupportingDataPage from "@/app/supporting-data/supporting-data-page";
 import { screen, waitFor, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { API_URL, renderWithClient } from "../utils";
+import { API_URL, renderWithClient, TEST_DATASETS_ENDPOINT } from "../utils";
 import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import chartData from "../../mocks/data/tests/1700Rik-preweaning-lethality-data.json";
@@ -28,7 +28,7 @@ jest.mock("next/navigation", () => {
       () =>
         new URLSearchParams({
           mgiGeneAccessionId: "MGI:1922730",
-          mpTermId: "MP:0011100",
+          mpTermId: "MP:0011110",
         }),
     ),
     usePathname: jest.fn(),
@@ -65,13 +65,13 @@ describe("Embryo viability chart", () => {
     const user = userEvent.setup();
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/32dbf8977406a2692e22be3b17f4ff8b.json",
+        `${TEST_DATASETS_ENDPOINT}/32dbf8977406a2692e22be3b17f4ff8b.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset1Data));
         },
       ),
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:1922730/MP:0011100/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:1922730/MP:0011110/dataset`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },
@@ -79,7 +79,7 @@ describe("Embryo viability chart", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/5e0629cf0c49797d9f2f6527086ab9f1.json",
+        `${TEST_DATASETS_ENDPOINT}/5e0629cf0c49797d9f2f6527086ab9f1.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset2Data));
         },

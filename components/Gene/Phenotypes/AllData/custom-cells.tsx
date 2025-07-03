@@ -68,10 +68,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
 
   let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
-  if (isAssociatedToPWG) {
-    url =
-      "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
-  }
+
   if (procedureName.includes("Histopathology")) {
     if (parameterName.includes("-")) {
       const tissue = parameterName.split("-")[0]?.trim().toLowerCase();
@@ -91,6 +88,10 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
   ) {
     url += `&metadataGroup=${metadataGroup}`;
   }
+  if (isAssociatedToPWG) {
+    url =
+      "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
+  }
   return (
     <Link href={url} title={`view supporting data for ${parameterName}`}>
       <span className="link primary small float-right">Supporting data</span>
@@ -109,9 +110,14 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
   const pValue = useMemo(() => {
     const zeroPValueDataTypes = ["unidimensional", "categorical"];
     const pValue = formatPValue(get(props.value, props.field) as number);
+    if (get(props.value, "status") === "NotProcessed") {
+      return "N/A";
+    }
     return zeroPValueDataTypes.includes(props.value.dataType)
       ? pValue
-      : pValue || "N/A";
+      : !!pValue
+        ? pValue
+        : "N/A";
   }, [props.value]);
 
   // TODO: update condition after assertionType is added

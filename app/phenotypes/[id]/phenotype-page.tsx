@@ -51,7 +51,13 @@ const Phenotype = (props: PhenotypePageProps) => {
 
   const phenotypeData = useMemo(() => {
     const selectedData = phenotypeFromServer || phenotype;
-    return sortAndUniqPhenotypeProcedures(selectedData);
+    return {
+      ...sortAndUniqPhenotypeProcedures(selectedData),
+      phenotypeDefinition: selectedData.phenotypeDefinition.replaceAll(
+        "gender",
+        "sex",
+      ),
+    };
   }, [phenotypeFromServer, phenotype]);
 
   const { phenotypeName } = phenotypeData;

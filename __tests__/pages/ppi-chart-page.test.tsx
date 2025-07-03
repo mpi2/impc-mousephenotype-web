@@ -1,7 +1,7 @@
 import SupportingDataPage from "@/app/supporting-data/supporting-data-page";
 import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { API_URL, renderWithClient } from "../utils";
+import { API_URL, renderWithClient, TEST_DATASETS_ENDPOINT } from "../utils";
 import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import chartData from "../../mocks/data/tests/myo-ppi-chart-data.json";
@@ -63,7 +63,7 @@ describe("PPI Chart page", () => {
     window.URL.createObjectURL = jest.fn();
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:104785/MP:0009142/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:104785/MP:0009142/dataset`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },
@@ -71,7 +71,7 @@ describe("PPI Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/25de380279fe66e5cc7b132c9a6c05bb.json",
+        `${TEST_DATASETS_ENDPOINT}/25de380279fe66e5cc7b132c9a6c05bb.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset1Data));
         },
@@ -79,7 +79,7 @@ describe("PPI Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/9875b568ba425f24dbefb073118423c7.json",
+        `${TEST_DATASETS_ENDPOINT}/9875b568ba425f24dbefb073118423c7.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset2Data));
         },
@@ -87,7 +87,7 @@ describe("PPI Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/64d496cef51d3d02be1cd6332ed69389.json",
+        `${TEST_DATASETS_ENDPOINT}/64d496cef51d3d02be1cd6332ed69389.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset3Data));
         },
@@ -95,7 +95,7 @@ describe("PPI Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/fb6573b35b0a77cba03c0ce9121aa017.json",
+        `${TEST_DATASETS_ENDPOINT}/fb6573b35b0a77cba03c0ce9121aa017.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset4Data));
         },
@@ -103,7 +103,7 @@ describe("PPI Chart page", () => {
     );
     testServer.use(
       rest.get(
-        "https://impc-datasets.s3.eu-west-2.amazonaws.com/statistical-datasets/dr22.1/1c9c88cff10b0482e65de209f7d3e0c6.json",
+        `${TEST_DATASETS_ENDPOINT}/1c9c88cff10b0482e65de209f7d3e0c6.json`,
         (req, res, ctx) => {
           return res(ctx.json(dataset5Data));
         },
@@ -117,6 +117,15 @@ describe("PPI Chart page", () => {
         "decreased prepulse inhibition",
       ),
     );
+    await waitFor(async () => {
+      const rows = await screen.findAllByRole("row");
+      return expect(rows.length).toEqual(33);
+    });
+    await waitFor(async () => {
+      expect(screen.getByTestId("back-to-gene-page-link")).toHaveTextContent(
+        "Go Back to Myo6",
+      );
+    });
     expect(container).toMatchSnapshot();
   });
 });

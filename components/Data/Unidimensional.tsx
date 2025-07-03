@@ -9,7 +9,7 @@ import { formatPValue, getDownloadData } from "@/utils";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
 import { capitalize } from "lodash";
-import StatisticalMethodTable from "./StatisticalMethodTable";
+import { StatisticalMethodTable } from "@/components/Data";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
 import { getZygosityLabel } from "@/components/Data/Utils";
@@ -27,6 +27,7 @@ const Unidimensional = ({
   isVisible,
   children,
 }: GeneralChartProps) => {
+  const statisticalMethodName = datasetSummary.statisticalMethod.name;
   const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
     const zygosity = datasetSummary.zygosity;
     return chartSeries.map((serie) => {
@@ -58,7 +59,9 @@ const Unidimensional = ({
 
   const combinedPValue =
     formatPValue(
-      datasetSummary["statisticalMethod"]["attributes"]["genotypeEffectPValue"],
+      datasetSummary["statisticalMethod"]["attributes"][
+        "genotypeEffectPValue"
+      ] ?? datasetSummary.reportedPValue,
     ) || "N/A";
 
   const femalePValue =
@@ -118,15 +121,15 @@ const Unidimensional = ({
 
             <Alert variant="green">
               <p className="mb-0">
-                <strong>Genotype P value</strong>
+                <strong>Genotype P-Value</strong>
               </p>
               <p>{combinedPValue}</p>
               <p className="mb-0">
-                <strong>Genotype*Female P value</strong>
+                <strong>Genotype*Female P-Value</strong>
               </p>
               <p>{femalePValue}</p>
               <p className="mb-0">
-                <strong>Genotype*Male P value</strong>
+                <strong>Genotype*Male P-Value</strong>
               </p>
               <p>{malePValue}</p>
               <p className="mb-0">
@@ -135,6 +138,7 @@ const Unidimensional = ({
               <p>{datasetSummary["classificationTag"]}</p>
             </Alert>
           </Card>
+          <StatisticalMethodTable datasetSummary={datasetSummary} />
         </Col>
         <Col lg={6}>
           <Card>
@@ -158,41 +162,40 @@ const Unidimensional = ({
               ))}
             </SortableTable>
           </Card>
-        </Col>
-        <Col lg={6}>
-          <StatisticalMethodTable datasetSummary={datasetSummary} />
-        </Col>
-        <Col lg={6}>
-          <Card>
-            <h2>Windowing parameters</h2>
-            <a
-              className="link"
-              href="https://www.mousephenotype.org/help/data-visualization/chart-pages/"
-            >
-              {" "}
-              View documentation about soft windowing{" "}
-              <FontAwesomeIcon icon={faChevronRight} />
-            </a>
-            <SortableTable
-              headers={[
-                { width: 8, label: "Parameter", disabled: true },
-                { width: 4, label: "Value", disabled: true },
-              ]}
-            >
-              <tr>
-                <td>Sharpness (k) </td>
-                <td>
-                  {datasetSummary["softWindowing"]["shape"]
-                    ? datasetSummary["softWindowing"]["shape"].toFixed(3)
-                    : "N/A"}
-                </td>
-              </tr>
-              <tr>
-                <td>Bandwidth (l)</td>
-                <td>{datasetSummary["softWindowing"]["bandwidth"]}</td>
-              </tr>
-            </SortableTable>
-          </Card>
+          {!statisticalMethodName.includes(
+            "Reference Range Plus Test framework",
+          ) && (
+            <Card>
+              <h2>Windowing parameters</h2>
+              <a
+                className="link"
+                href="https://www.mousephenotype.org/help/data-visualization/chart-pages/"
+              >
+                {" "}
+                View documentation about soft windowing{" "}
+                <FontAwesomeIcon icon={faChevronRight} />
+              </a>
+              <SortableTable
+                headers={[
+                  { width: 8, label: "Parameter", disabled: true },
+                  { width: 4, label: "Value", disabled: true },
+                ]}
+              >
+                <tr>
+                  <td>Sharpness (k) </td>
+                  <td>
+                    {datasetSummary["softWindowing"]["shape"]
+                      ? datasetSummary["softWindowing"]["shape"].toFixed(3)
+                      : "N/A"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Bandwidth (l)</td>
+                  <td>{datasetSummary["softWindowing"]["bandwidth"]}</td>
+                </tr>
+              </SortableTable>
+            </Card>
+          )}
           <Card>
             <h2>Statistical analysis API access</h2>
             <p>
