@@ -51,25 +51,25 @@ const PRODUCTS_TRACKS = {
     autoHeight: true,
   },
   crisprGuides: {
-    name: "CRISPR allele guides",
+    name: "CRISPR guides",
     url: `${GENOME_BROWSER_DATA_URL}/guide_bb_file.bb`,
     order: 5,
     autoHeight: true,
   },
   esCellAlleles: {
-    name: "ES Cell alleles available to order",
+    name: "ES Cells",
     url: `${GENOME_BROWSER_DATA_URL}/ikmc_ucsc_impc_es_cell_alleles.bb`,
     order: 8,
     autoHeight: true,
   },
   esCellProducts: {
-    name: "Mouse lines carrying a ES Cell allele",
+    name: "ES Cell Mice",
     url: `${GENOME_BROWSER_DATA_URL}/ikmc_ucsc_impc_mouse_alleles.bb`,
     order: 7,
     autoHeight: true,
   },
   targetingVectors: {
-    name: "Targeting Vector Products",
+    name: "Targeting vectors",
     url: `${GENOME_BROWSER_DATA_URL}/ikmc_ucsc_impc_targeting_vectors.bb`,
     order: 9,
     autoHeight: true,
@@ -77,7 +77,7 @@ const PRODUCTS_TRACKS = {
 };
 const optionalTracks = {
   GENCODEFull: {
-    name: "GENCODE M37 full gene annotation",
+    name: "GENCODE M37 (complete)",
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
     indexed: false,
     searchable: true,
@@ -95,7 +95,7 @@ const optionalTracks = {
     type: "annotation",
   },
   GENCODEBasic: {
-    name: "GENCODE M37 basic gene annotation",
+    name: "GENCODE M37 basic annotations",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/gencodeVM37.basic.bb",
     indexed: false,
     searchable: true,
@@ -121,7 +121,7 @@ const optionalTracks = {
     autoHeight: true,
   },
   "UniProt TrEMBL Protein Annotations": {
-    name: "UniProt TrEMBL Protein Annotations",
+    name: "TrEMBL Protein Annotations",
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliTrembl.bb",
     indexed: false,
     nameField: "GeneName",
@@ -306,7 +306,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="GENCODE M37 full gene annotation"
+                  label="GENCODE M37 (complete)"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODEFull", e.target.checked)
                   }
@@ -320,7 +320,7 @@ const GenomeBrowser = ({
                     }
                   />
                   <FormCheck.Label htmlFor="gencode-basic">
-                    GENCODE M37 basic gene annotation
+                    GENCODE M37 basic annotations
                   </FormCheck.Label>
                 </FormCheck>
               </div>
@@ -345,7 +345,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="UniProt TrEMBL Protein Annotations"
+                  label="TrEMBL Protein Annotations"
                   onChange={(e) =>
                     toggleOptionalTrack(
                       "UniProt TrEMBL Protein Annotations",
@@ -364,7 +364,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR Guides"
+                  label="CRISPR guides"
                   checked={selectedTracks.crisprGuides}
                   onChange={(e) =>
                     toggleProductTrack("crisprGuides", e.target.checked)
@@ -391,7 +391,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="ES Cell targeted"
+                  label="ES Cell Mice"
                   checked={selectedTracks.esCellProducts}
                   onChange={(e) =>
                     toggleProductTrack("esCellProducts", e.target.checked)
