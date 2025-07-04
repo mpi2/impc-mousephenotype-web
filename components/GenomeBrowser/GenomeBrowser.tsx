@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Col,
-  Container,
-  Form,
-  Row,
-  Spinner,
-  FormCheck,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
+import { Col, Container, Form, Row, Spinner, FormCheck } from "react-bootstrap";
 import { Card } from "@/components";
 import React, {
   Fragment,
@@ -21,10 +12,7 @@ import React, {
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleQuestion,
-  faCircleInfo,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { GENOME_BROWSER_DATA_URL } from "@/api-service";
 
@@ -42,7 +30,7 @@ type BrowserProps = {
 
 type SelectedTracks = {
   crisprGuides: boolean;
-  crisprDeletions: boolean;
+  crisprFASTA: boolean;
   esCellAlleles: boolean;
   esCellProducts: boolean;
   targetingVectors: boolean;
@@ -51,12 +39,12 @@ type SelectedTracks = {
 
 const PRODUCTS_TRACKS = {
   crisprDeletionCoords: {
-    name: "CRISPR allele deletion coordinates",
+    name: "CRISPR deletions",
     url: `${GENOME_BROWSER_DATA_URL}/deletion_coordinates.bb`,
     order: 3,
     autoHeight: true,
   },
-  crisprDeletions: {
+  crisprFASTA: {
     name: "Aligned FASTA from CRISPR alleles",
     url: `${GENOME_BROWSER_DATA_URL}/aligned_fa_bigBed.bb`,
     order: 4,
@@ -107,10 +95,9 @@ const optionalTracks = {
     type: "annotation",
   },
   GENCODEBasic: {
-    name: "GENCODE M37 basic gene annotation (CHR)",
-    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M37/gencode.vM37.basic.annotation.gff3.gz",
+    name: "GENCODE M37 basic gene annotation",
+    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/gencodeVM37.basic.bb",
     indexed: false,
-    format: "gff3",
     searchable: true,
     searchableFields: [
       "name",
@@ -157,7 +144,7 @@ const GenomeBrowser = ({
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
   const [selectedTracks, setSelectedTracks] = useState<SelectedTracks>({
     crisprGuides: false,
-    crisprDeletions: false,
+    crisprFASTA: false,
     crisprDeletionCoords: false,
     esCellAlleles: false,
     esCellProducts: false,
@@ -185,11 +172,11 @@ const GenomeBrowser = ({
       selectedTracks.esCellAlleles = true;
       selectedTracks.esCellProducts = true;
       selectedTracks.crisprGuides = true;
-      selectedTracks.crisprDeletions = true;
+      selectedTracks.crisprFASTA = true;
       selectedTracks.crisprDeletionCoords = true;
       tracks.push(
         PRODUCTS_TRACKS.crisprGuides,
-        PRODUCTS_TRACKS.crisprDeletions,
+        PRODUCTS_TRACKS.crisprFASTA,
         PRODUCTS_TRACKS.crisprDeletionCoords,
         PRODUCTS_TRACKS.esCellAlleles,
         PRODUCTS_TRACKS.esCellProducts,
@@ -333,22 +320,7 @@ const GenomeBrowser = ({
                     }
                   />
                   <FormCheck.Label htmlFor="gencode-basic">
-                    GENCODE M37 basic gene annotation (CHR)
-                    <OverlayTrigger
-                      placement="top"
-                      overlay={
-                        <Tooltip>
-                          Activating this track takes some time and will froze
-                          the browser for some seconds.
-                        </Tooltip>
-                      }
-                    >
-                      <FontAwesomeIcon
-                        style={{ marginLeft: "0.5rem" }}
-                        icon={faCircleInfo}
-                        size="xl"
-                      />
-                    </OverlayTrigger>
+                    GENCODE M37 basic gene annotation
                   </FormCheck.Label>
                 </FormCheck>
               </div>
@@ -401,16 +373,16 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR FASTA"
-                  checked={selectedTracks.crisprDeletions}
+                  label="CRISPR Aligned FASTA"
+                  checked={selectedTracks.crisprFASTA}
                   onChange={(e) =>
-                    toggleProductTrack("crisprDeletions", e.target.checked)
+                    toggleProductTrack("crisprFASTA", e.target.checked)
                   }
                 />
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR deletion coordinates"
+                  label="CRISPR deletions"
                   checked={selectedTracks.crisprDeletionCoords}
                   onChange={(e) =>
                     toggleProductTrack("crisprDeletionCoords", e.target.checked)
