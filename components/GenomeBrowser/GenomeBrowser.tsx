@@ -42,7 +42,7 @@ type BrowserProps = {
 
 type SelectedTracks = {
   crisprGuides: boolean;
-  crisprDeletions: boolean;
+  crisprFASTA: boolean;
   esCellAlleles: boolean;
   esCellProducts: boolean;
   targetingVectors: boolean;
@@ -56,7 +56,7 @@ const PRODUCTS_TRACKS = {
     order: 3,
     autoHeight: true,
   },
-  crisprDeletions: {
+  crisprFASTA: {
     name: "Aligned FASTA from CRISPR alleles",
     url: `${GENOME_BROWSER_DATA_URL}/aligned_fa_bigBed.bb`,
     order: 4,
@@ -157,7 +157,7 @@ const GenomeBrowser = ({
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
   const [selectedTracks, setSelectedTracks] = useState<SelectedTracks>({
     crisprGuides: false,
-    crisprDeletions: false,
+    crisprFASTA: false,
     crisprDeletionCoords: false,
     esCellAlleles: false,
     esCellProducts: false,
@@ -185,11 +185,11 @@ const GenomeBrowser = ({
       selectedTracks.esCellAlleles = true;
       selectedTracks.esCellProducts = true;
       selectedTracks.crisprGuides = true;
-      selectedTracks.crisprDeletions = true;
+      selectedTracks.crisprFASTA = true;
       selectedTracks.crisprDeletionCoords = true;
       tracks.push(
         PRODUCTS_TRACKS.crisprGuides,
-        PRODUCTS_TRACKS.crisprDeletions,
+        PRODUCTS_TRACKS.crisprFASTA,
         PRODUCTS_TRACKS.crisprDeletionCoords,
         PRODUCTS_TRACKS.esCellAlleles,
         PRODUCTS_TRACKS.esCellProducts,
@@ -401,10 +401,10 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR FASTA"
-                  checked={selectedTracks.crisprDeletions}
+                  label="CRISPR Aligned FASTA"
+                  checked={selectedTracks.crisprFASTA}
                   onChange={(e) =>
-                    toggleProductTrack("crisprDeletions", e.target.checked)
+                    toggleProductTrack("crisprFASTA", e.target.checked)
                   }
                 />
                 <Form.Check
