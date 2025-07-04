@@ -77,7 +77,7 @@ const PRODUCTS_TRACKS = {
 };
 const optionalTracks = {
   GENCODEFull: {
-    name: "GENCODE M37 full gene annotation",
+    name: "GENCODE M37 full annotation",
     url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
     indexed: false,
     searchable: true,
@@ -95,7 +95,7 @@ const optionalTracks = {
     type: "annotation",
   },
   GENCODEBasic: {
-    name: "GENCODE M37 basic gene annotation",
+    name: "GENCODE M37 basic annotation",
     url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/gencodeVM37.basic.bb",
     indexed: false,
     searchable: true,
@@ -306,7 +306,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="GENCODE M37 full gene annotation"
+                  label="GENCODE M37 full annotation"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODEFull", e.target.checked)
                   }
@@ -320,7 +320,7 @@ const GenomeBrowser = ({
                     }
                   />
                   <FormCheck.Label htmlFor="gencode-basic">
-                    GENCODE M37 basic gene annotation
+                    GENCODE M37 basic annotation
                   </FormCheck.Label>
                 </FormCheck>
               </div>
