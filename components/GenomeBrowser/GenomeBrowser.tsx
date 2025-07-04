@@ -51,7 +51,7 @@ type SelectedTracks = {
 
 const PRODUCTS_TRACKS = {
   crisprDeletionCoords: {
-    name: "CRISPR allele deletion coordinates",
+    name: "CRISPR deletions",
     url: `${GENOME_BROWSER_DATA_URL}/deletion_coordinates.bb`,
     order: 3,
     autoHeight: true,
@@ -410,7 +410,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR deletion coordinates"
+                  label="CRISPR deletions"
                   checked={selectedTracks.crisprDeletionCoords}
                   onChange={(e) =>
                     toggleProductTrack("crisprDeletionCoords", e.target.checked)
