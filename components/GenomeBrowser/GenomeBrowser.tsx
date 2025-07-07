@@ -306,7 +306,8 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="GENCODE M37 full gene annotation"
+                  id="gencode-complete"
+                  label="GENCODE M37 (complete)"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODEFull", e.target.checked)
                   }
@@ -334,6 +335,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
+                  id="swissprot-annotations"
                   label="UniProt SwissProt Protein Annotations"
                   onChange={(e) =>
                     toggleOptionalTrack(
@@ -345,7 +347,8 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="UniProt TrEMBL Protein Annotations"
+                  id="trembl-annotations"
+                  label="TrEMBL Protein Annotations"
                   onChange={(e) =>
                     toggleOptionalTrack(
                       "UniProt TrEMBL Protein Annotations",
@@ -364,7 +367,8 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR Guides"
+                  label="CRISPR guides"
+                  id="crispr-guides"
                   checked={selectedTracks.crisprGuides}
                   onChange={(e) =>
                     toggleProductTrack("crisprGuides", e.target.checked)
@@ -374,6 +378,7 @@ const GenomeBrowser = ({
                   className="mb-0"
                   inline
                   label="CRISPR Aligned FASTA"
+                  id="crispr-aligned-FASTA"
                   checked={selectedTracks.crisprFASTA}
                   onChange={(e) =>
                     toggleProductTrack("crisprFASTA", e.target.checked)
@@ -383,6 +388,7 @@ const GenomeBrowser = ({
                   className="mb-0"
                   inline
                   label="CRISPR deletions"
+                  id="crispr-deletions"
                   checked={selectedTracks.crisprDeletionCoords}
                   onChange={(e) =>
                     toggleProductTrack("crisprDeletionCoords", e.target.checked)
@@ -391,7 +397,8 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="ES Cell targeted"
+                  label="ES Cell Mice"
+                  id="es-cell-mice"
                   checked={selectedTracks.esCellProducts}
                   onChange={(e) =>
                     toggleProductTrack("esCellProducts", e.target.checked)
@@ -409,6 +416,7 @@ const GenomeBrowser = ({
                   className="mb-0"
                   inline
                   label="ES Cells"
+                  id="es-cells"
                   checked={selectedTracks.esCellAlleles}
                   onChange={(e) =>
                     toggleProductTrack("esCellAlleles", e.target.checked)
@@ -417,6 +425,7 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
+                  id="ikmc-alleles"
                   label="IKMC alleles"
                   onChange={(e) =>
                     toggleOptionalTrack("IKMC alleles", e.target.checked)
@@ -426,6 +435,7 @@ const GenomeBrowser = ({
                   className="mb-0"
                   inline
                   label="Targeting vectors"
+                  id="targeting-vectors"
                   checked={selectedTracks.targetingVectors}
                   onChange={(e) =>
                     toggleProductTrack("targetingVectors", e.target.checked)
