@@ -39,13 +39,13 @@ type SelectedTracks = {
 
 const PRODUCTS_TRACKS = {
   crisprDeletionCoords: {
-    name: "CRISPR deletions",
+    name: "CRISPR deletion coordinates",
     url: `${GENOME_BROWSER_DATA_URL}/deletion_coordinates.bb`,
     order: 3,
     autoHeight: true,
   },
   crisprFASTA: {
-    name: "Aligned FASTA from CRISPR alleles",
+    name: "CRISPR FASTA",
     url: `${GENOME_BROWSER_DATA_URL}/aligned_fa_bigBed.bb`,
     order: 4,
     autoHeight: true,
