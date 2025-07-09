@@ -42,12 +42,22 @@ export async function generateMetadata({
   }
   const { geneSymbol, geneName } = geneSummary;
   const title = `${geneSymbol} | ${geneName} genome browser | IMPC`;
-  const description = `View all the mouse gene ${geneSymbol} gene information available.`;
+  const description = `View genomic data of CRISPR and ES Cell alleles available in a Genome Browser for ${geneSymbol} gene.`;
   const genePageURL = `${WEBSITE_URL}/data/genes/${mgiGeneAccessionId}/genome-browser`;
   return {
     title: title,
     description: description,
-    keywords: [geneSymbol, geneName, "mouse", "gene", "genome", "browser"],
+    keywords: [
+      geneSymbol,
+      geneName,
+      "mouse",
+      "gene",
+      "genome",
+      "browser",
+      "CRISPR",
+      "FASTA",
+      "ES Cell",
+    ],
     alternates: { canonical: genePageURL },
     openGraph: {
       title: title,
