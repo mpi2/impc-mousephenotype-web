@@ -160,7 +160,7 @@ const GenomeBrowser = ({
       const selectedTracks: Record<string, boolean> = {};
       let tracks: Array<any> = [
         {
-          name: "Refseq Curated",
+          name: "RefSeq Curated",
           format: "refgene",
           url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
           indexed: false,
@@ -300,7 +300,7 @@ const GenomeBrowser = ({
                   inline
                   disabled
                   checked
-                  label="Refseq"
+                  label="RefSeq"
                   type="checkbox"
                 />
                 <Form.Check
