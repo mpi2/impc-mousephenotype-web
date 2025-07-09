@@ -103,6 +103,12 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
               style={{ marginLeft: "0.3rem" }}
             />
           </a>
+          <Link
+            className="link primary"
+            href={`/genes/${gene.mgiGeneAccessionId}/genome-browser`}
+          >
+            Genome Browser
+          </Link>
           {gene?.synonyms?.length > 0 && (
             <span>
               Synonyms: {displaySynonyms()}

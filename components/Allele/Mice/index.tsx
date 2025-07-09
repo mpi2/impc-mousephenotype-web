@@ -26,7 +26,7 @@ const Mice = ({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "mice", alleleName],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
+        `/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
       ),
     placeholderData: [],
   });
@@ -57,7 +57,7 @@ const Mice = ({
 
   const fixedTissuesLinks: Array<any> = _.uniqBy(
     data.flatMap((item) => item.tissueDistribution),
-    "tissueEnquiryLink"
+    "tissueEnquiryLink",
   );
   return (
     <Card id="mice" data-testid="mice-section">
@@ -113,7 +113,7 @@ const Mice = ({
                                 (key) =>
                                   `${toSentenceCase(key)}: ${
                                     item.qcData[0]?.productionQc[key]
-                                  }`
+                                  }`,
                               )
                               .join(", ")
                           : "No data",
@@ -161,9 +161,9 @@ const Mice = ({
                   { width: 2, label: "Order / Contact", disabled: true },
                 ]}
               >
-                {pageData.map((p) => {
+                {pageData.map((p, index) => {
                   return (
-                    <tr>
+                    <tr key={index}>
                       <td>
                         <strong>{p.name}</strong>
                       </td>
@@ -199,8 +199,9 @@ const Mice = ({
                         </>
                       )}
                       <td>
-                        {p.orders.map(({ orderLink, orderName }) => (
+                        {p.orders.map(({ orderLink, orderName }, index) => (
                           <a
+                            key={index}
                             href={orderLink}
                             target="_blank"
                             className="link primary"

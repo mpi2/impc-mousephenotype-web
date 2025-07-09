@@ -1,8 +1,7 @@
-import React from "react";
 import { faCopy, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, SortableTable } from "@/components";
@@ -35,18 +34,17 @@ const CopyButton = ({ sequence }) => {
   );
 };
 
-const Crispr = ({
-  mgiGeneAccessionId,
-  alleleName,
-}: {
+type CrisprProps = {
   mgiGeneAccessionId: string;
   alleleName: string;
-}) => {
+};
+
+const Crispr = ({ mgiGeneAccessionId, alleleName }: CrisprProps) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
     queryFn: () =>
       fetchAPI(
-        `/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`
+        `/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`,
       ),
     select: (data) => (data ?? [])[0] || undefined,
   });
@@ -94,7 +92,6 @@ const Crispr = ({
     { field: "guideSource", label: "Guide source", width: 2 },
   ];
 
-  console.log("CRISPR: ", data);
   return !data ? (
     <Card id="crispr">
       <h2>Crispr</h2>
@@ -112,6 +109,7 @@ const Crispr = ({
               <div
                 className={`bg-grey-light ${index > 0 && "mt-3"}`}
                 style={{ padding: "1rem", position: "relative" }}
+                key={index}
               >
                 {sequence}
                 <p className="grey mt-2 mb-0 small">
@@ -123,7 +121,7 @@ const Crispr = ({
                   <CopyButton sequence={sequence} />
                 </div>
               </div>
-            )
+            ),
           )}
         </Card>
       )}
@@ -143,32 +141,28 @@ const Crispr = ({
         </p>
 
         <h3 className="mb-0 mt-1">Nucleases</h3>
-        {data.nucleases?.map(({ nucleaseType, nucleaseClass }) => (
-          <>
-            <div className="mt-3">
-              {valuePair("Type", nucleaseType)}
-              {valuePair("Class", nucleaseClass)}
-            </div>
-          </>
+        {data.nucleases?.map(({ nucleaseType, nucleaseClass }, index) => (
+          <div className="mt-3" key={index}>
+            {valuePair("Type", nucleaseType)}
+            {valuePair("Class", nucleaseClass)}
+          </div>
         ))}
 
         <h3 className="mb-0 mt-4">Genotype primers</h3>
-        {data.genotypePrimers?.map(({ name, sequence }) => (
-          <>
-            <div className="mt-3">
-              {valuePair("Name", name)}
-              {valuePair("Sequence", sequence)}
-            </div>
-          </>
+        {data.genotypePrimers?.map(({ name, sequence }, index) => (
+          <div className="mt-3" key={index}>
+            {valuePair("Name", name)}
+            {valuePair("Sequence", sequence)}
+          </div>
         ))}
 
         <h3 className="mb-0 mt-4">Guides</h3>
         <SortableTable doSort={() => {}} headers={tableHeaders}>
           {data.guides.map((guide) => {
             return (
-              <tr>
-                {tableHeaders.map(({ field }) => (
-                  <td>{guide[field]}</td>
+              <tr key={guide.guideSequence}>
+                {tableHeaders.map(({ field }, index) => (
+                  <td key={index}>{guide[field]}</td>
                 ))}
               </tr>
             );
@@ -210,7 +204,7 @@ const Crispr = ({
                 item.guides
                   .map(
                     (guide) =>
-                      `Sequence: ${guide.guideSequence}, PAM: ${guide.pam}, CHR: ${guide.chr}, Genome build: ${guide.genomeBuild}`
+                      `Sequence: ${guide.guideSequence}, PAM: ${guide.pam}, CHR: ${guide.chr}, Genome build: ${guide.genomeBuild}`,
                   )
                   .join(" | "),
             },

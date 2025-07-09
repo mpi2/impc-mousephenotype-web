@@ -25,7 +25,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import classNames from "classnames";
-import { AlleleSymbol } from "@/components";
+import { AlleleSymbol, GenomeBrowser } from "@/components";
 import { AlleleSummary } from "@/models";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
@@ -170,7 +170,7 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
           <p className="mb-4 grey">{alleleDescription}</p>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {productTypes.map((productType) => (
-              <ProductItem {...productType} />
+              <ProductItem key={productType.name} {...productType} />
             ))}
           </div>
         </Card>
@@ -215,6 +215,10 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
             alleleName={alleleSymbol as string}
           />
         )}
+        <GenomeBrowser
+          geneSymbol={alleleData.geneSymbol}
+          mgiGeneAccessionId={mgiGeneAccessionId}
+        />
         <Card>
           <Link
             href={`/genes/${pid}/#order`}
