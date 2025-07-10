@@ -131,6 +131,12 @@ exports[`Gene page renders correctly 1`] = `
               />
             </svg>
           </a>
+          <a
+            class="link primary"
+            href="/genes/MGI:1922702/genome-browser"
+          >
+            Genome Browser
+          </a>
           <span>
             Synonyms: 
             1700011I11Rik, ASC1p100
