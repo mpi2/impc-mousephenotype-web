@@ -401,7 +401,7 @@ exports[`Header component renders correctly 1`] = `
                   </p>
                   <p>
                     <a
-                      href="/essential-genes"
+                      href="https://www.mousephenotype.org/understand/data-collections/essential-genes-portal/"
                     >
                       Essential genes
                     </a>
@@ -906,7 +906,7 @@ exports[`Header component renders correctly 1`] = `
               </p>
               <p>
                 <a
-                  href="/essential-genes"
+                  href="https://www.mousephenotype.org/understand/data-collections/essential-genes-portal/"
                 >
                   Essential genes
                 </a>
