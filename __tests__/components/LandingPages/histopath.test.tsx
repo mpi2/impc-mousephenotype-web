@@ -28,6 +28,10 @@ describe("Histopathology landing page", () => {
     expect(
       await screen.findByText("55", { selector: "span" }),
     ).toBeInTheDocument();
+    await waitFor(async () => {
+      let rows = await screen.findAllByTestId("result-rows");
+      expect(rows).toHaveLength(25);
+    });
     expect(container).toMatchSnapshot();
     await user.type(screen.getByTitle("gene search box"), "Rpl12");
     await waitFor(async () => {
