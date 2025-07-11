@@ -1,0 +1,283 @@
+[
+  {
+    "id": 30311,
+    "name": "About the IMPC",
+    "classes": "about-impc",
+    "link": "https:\/\/www.mousephenotype.org\/about-impc\/",
+    "children": [
+      {
+        "name": "Institutional Members",
+        "link": "https:\/\/www.mousephenotype.org\/about-impc\/consortium-members\/",
+        "sort": 1,
+        "children": []
+      },
+      {
+        "name": "Collaborations",
+        "link": "https:\/\/www.mousephenotype.org\/about-impc\/collaborations\/",
+        "sort": 2,
+        "children": []
+      },
+      {
+        "name": "Funding",
+        "link": "https:\/\/www.mousephenotype.org\/about-impc\/funding\/",
+        "sort": 3,
+        "children": []
+      },
+      {
+        "name": "Animal Welfare",
+        "link": "https:\/\/www.mousephenotype.org\/about-impc\/animal-welfare\/",
+        "sort": 4,
+        "children": []
+      },
+      {
+        "name": "About KOMP",
+        "link": "https:\/\/www.mousephenotype.org\/about-impc\/about-komp\/",
+        "sort": 5,
+        "children": []
+      },
+      {
+        "name": "Corporate Associates",
+        "link": "https:\/\/www.mousephenotype.org\/about-impc\/corporate-associates\/",
+        "sort": 2,
+        "children": []
+      },
+      {
+        "name": "Awards of Excellence",
+        "link": "https:\/\/www.mousephenotype.org\/about-impc\/impc-award-of-excellence\/",
+        "sort": 6,
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": 30323,
+    "name": "Data",
+    "classes": "data",
+    "link": "https:\/\/www.mousephenotype.org\/understand\/",
+    "children": [
+      {
+        "name": "IMPC Data Collections",
+        "link": "https:\/\/www.mousephenotype.org\/understand\/data-collections\/",
+        "sort": 2,
+        "children": [
+          {
+            "name": "Embryo Development",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/data-collections\/embryo-development\/",
+            "sort": 3
+          },
+          {
+            "name": "Cardiovascular",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/data-collections\/cardiovascular\/",
+            "sort": 4
+          },
+          {
+            "name": "Late Adult Data",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/data-collections\/late-adult-data\/",
+            "sort": 0
+          },
+          {
+            "name": "Histopathology",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/data-collections\/histopathology\/",
+            "sort": 1
+          },
+          {
+            "name": "Essential genes",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/data-collections\/essential-genes-portal\/",
+            "sort": 2
+          }
+        ]
+      },
+      {
+        "name": "Accessing the Data",
+        "link": "https:\/\/www.mousephenotype.org\/understand\/accessing-the-data\/",
+        "sort": 3,
+        "children": [
+          {
+            "name": "Latest Data Release",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/accessing-the-data\/latest-data-release\/",
+            "sort": 0
+          },
+          {
+            "name": "Access via API",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/accessing-the-data\/access-via-api\/",
+            "sort": 1
+          },
+          {
+            "name": "Access via FTP",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/accessing-the-data\/access-via-ftp\/",
+            "sort": 2
+          },
+          {
+            "name": "Batch query",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/accessing-the-data\/batch-query\/",
+            "sort": 3
+          }
+        ]
+      },
+      {
+        "name": "Advanced Tools",
+        "link": "https:\/\/www.mousephenotype.org\/understand\/advanced-tools\/",
+        "sort": 3,
+        "children": [
+          {
+            "name": "IMPReSS",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/advanced-tools\/impress\/",
+            "sort": 3
+          },
+          {
+            "name": "OpenStats",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/advanced-tools\/openstats\/",
+            "sort": 2
+          },
+          {
+            "name": "GenTaR",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/advanced-tools\/imits\/",
+            "sort": 1
+          },
+          {
+            "name": "PhenoDCC Tools",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/advanced-tools\/phenodcc-homepage\/",
+            "sort": 0
+          },
+          {
+            "name": "Embryo Viewer",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/advanced-tools\/embryo-viewer\/",
+            "sort": 4
+          },
+          {
+            "name": "Disease Models",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/advanced-tools\/diseasemodels\/",
+            "sort": -2
+          },
+          {
+            "name": "Software",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/advanced-tools\/software\/",
+            "sort": 5
+          }
+        ]
+      },
+      {
+        "name": "Getting Started with IMPC Data",
+        "link": "https:\/\/www.mousephenotype.org\/understand\/start-using-the-impc\/",
+        "sort": 0,
+        "children": [
+          {
+            "name": "Allele design",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/start-using-the-impc\/allele-design\/",
+            "sort": 4
+          },
+          {
+            "name": "Citing IMPC Data",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/start-using-the-impc\/citing-the-impc\/",
+            "sort": 2
+          },
+          {
+            "name": "How to Use Gene Pages",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/start-using-the-impc\/how-to-use-gene-pages\/",
+            "sort": 1
+          },
+          {
+            "name": "IMPC Data Generation",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/start-using-the-impc\/impc-data-generation\/",
+            "sort": 0
+          }
+        ]
+      },
+      {
+        "name": "Training & Workshops",
+        "link": "https:\/\/www.mousephenotype.org\/understand\/training-workshops\/",
+        "sort": -1,
+        "children": [
+          {
+            "name": "Training",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/training-workshops\/training\/",
+            "sort": 0
+          },
+          {
+            "name": "Workshops",
+            "link": "https:\/\/www.mousephenotype.org\/understand\/training-workshops\/workshops\/",
+            "sort": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 30312,
+    "name": "Human Diseases",
+    "classes": "human-diseases",
+    "link": "https:\/\/www.mousephenotype.org\/human-diseases\/",
+    "children": []
+  },
+  {
+    "id": 30325,
+    "name": "Publications",
+    "classes": "publications",
+    "link": "https:\/\/www.mousephenotype.org\/publications\/",
+    "children": [
+      {
+        "name": "Papers Using IMPC Resources",
+        "link": "https:\/\/www.mousephenotype.org\/publications\/papers-using-impc-resources\/",
+        "sort": 2,
+        "children": []
+      },
+      {
+        "name": "Latest IMPC Papers",
+        "link": "https:\/\/www.mousephenotype.org\/publications\/latest-impc-papers\/",
+        "sort": 0,
+        "children": []
+      },
+      {
+        "name": "Data Supporting IMPC Papers",
+        "link": "https:\/\/www.mousephenotype.org\/publications\/data-supporting-impc-papers\/",
+        "sort": 1,
+        "children": [
+          {
+            "name": "Essential Genes - Translating to Other Species",
+            "link": "https:\/\/www.mousephenotype.org\/publications\/data-supporting-impc-papers\/essential-genes-linking-to-disease\/",
+            "sort": 2
+          },
+          {
+            "name": "Essential Genes - Linking to Disease",
+            "link": "https:\/\/www.mousephenotype.org\/publications\/data-supporting-impc-papers\/essential-genes-linking-to-disease-2\/",
+            "sort": 1
+          },
+          {
+            "name": "Genetic Basis for Metabolic Diseases",
+            "link": "https:\/\/www.mousephenotype.org\/publications\/data-supporting-impc-papers\/metabolism\/",
+            "sort": 5
+          },
+          {
+            "name": "Genes Critical for Hearing Identified",
+            "link": "https:\/\/www.mousephenotype.org\/publications\/data-supporting-impc-papers\/hearing\/",
+            "sort": 4
+          },
+          {
+            "name": "Sexual Dimorphism",
+            "link": "https:\/\/www.mousephenotype.org\/publications\/data-supporting-impc-papers\/sexual-dimorphism\/",
+            "sort": 3
+          },
+          {
+            "name": "Pain Sensitivity Associated Genes",
+            "link": "https:\/\/www.mousephenotype.org\/publications\/data-supporting-impc-papers\/pain\/",
+            "sort": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 30313,
+    "name": "News",
+    "classes": "news",
+    "link": "https:\/\/www.mousephenotype.org\/news\/",
+    "children": []
+  },
+  {
+    "id": 30320,
+    "name": "Blog",
+    "classes": "blog",
+    "link": "https:\/\/www.mousephenotype.org\/blog\/",
+    "children": []
+  }
+]
