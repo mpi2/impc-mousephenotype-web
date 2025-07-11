@@ -36,6 +36,19 @@ jest.mock("next/navigation", () => ({
   })),
 }));
 
+jest.mock("igv/dist/igv.esm", () => {
+  return {
+    __esModule: true,
+    default: {
+      createBrowser: jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          search: jest.fn(),
+        }),
+      ),
+    },
+  };
+});
+
 describe("Allele page", () => {
   it("renders properly", async () => {
     testServer.use(
