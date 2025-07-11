@@ -36,11 +36,6 @@ jest.mock("next/navigation", () => ({
   })),
 }));
 
-jest.mock("@/components/GenomeBrowser/GenomeBrowser", () => {
-  const GenomeBrowserMock = () => <div>Genome Browser mock</div>;
-  return GenomeBrowserMock;
-});
-
 describe("Allele page", () => {
   it("renders properly", async () => {
     testServer.use(
