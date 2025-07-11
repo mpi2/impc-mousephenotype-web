@@ -1793,7 +1793,7 @@ exports[`Allele page renders properly 1`] = `
             </div>
           </div>
           <div
-            class="overlay active"
+            class="overlay"
           >
             <div
               class="spinner-border text-primary"
@@ -3428,7 +3428,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
             </div>
           </div>
           <div
-            class="overlay active"
+            class="overlay"
           >
             <div
               class="spinner-border text-primary"
