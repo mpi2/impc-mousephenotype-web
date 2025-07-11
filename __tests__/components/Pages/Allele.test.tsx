@@ -36,9 +36,17 @@ jest.mock("next/navigation", () => ({
   })),
 }));
 
-jest.mock("@/components/GenomeBrowser/GenomeBrowser", () => {
-  const GenomeBrowserMock = () => <div>Genome Browser mock</div>;
-  return GenomeBrowserMock;
+jest.mock("igv/dist/igv.esm", () => {
+  return {
+    __esModule: true,
+    default: {
+      createBrowser: jest.fn().mockImplementation(() =>
+        Promise.resolve({
+          search: jest.fn(),
+        }),
+      ),
+    },
+  };
 });
 
 describe("Allele page", () => {
