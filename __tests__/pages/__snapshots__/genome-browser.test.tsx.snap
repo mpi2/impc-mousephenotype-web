@@ -135,7 +135,7 @@ exports[`Genome Browser page renders properly 1`] = `
               <a
                 aria-label="Genome browser documentation"
                 class="btn"
-                href="https://www.mousephenotype.org/help/data-visualization/genome-browser/"
+                href="https://dev.mousephenotype.org/help/data-visualization/genome-browser/"
               >
                 <svg
                   aria-hidden="true"
