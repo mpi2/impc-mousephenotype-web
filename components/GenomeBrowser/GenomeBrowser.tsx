@@ -144,6 +144,13 @@ const optionalTracks = {
   },
 };
 
+const updateTrackWithTimestamp = (track: any, timestamp: string) => {
+  return {
+    ...track,
+    url: `${track.url}?t=${timestamp}`,
+  };
+};
+
 const GenomeBrowser = ({
   geneSymbol,
   mgiGeneAccessionId,
@@ -167,6 +174,7 @@ const GenomeBrowser = ({
       const igvContainer = document.querySelector("#igv-container");
       const currentHash = window.location.hash;
       const selectedTracks: Record<string, boolean> = {};
+      const timestamp = (+new Date()).toString(10);
       let tracks: Array<any> = [
         {
           name: "RefSeq Curated",
@@ -184,11 +192,14 @@ const GenomeBrowser = ({
       selectedTracks.crisprFASTA = true;
       selectedTracks.crisprDeletionCoords = true;
       tracks.push(
-        PRODUCTS_TRACKS.crisprGuides,
-        PRODUCTS_TRACKS.crisprFASTA,
-        PRODUCTS_TRACKS.crisprDeletionCoords,
-        PRODUCTS_TRACKS.esCellAlleles,
-        PRODUCTS_TRACKS.esCellProducts,
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.crisprGuides, timestamp),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.crisprFASTA, timestamp),
+        updateTrackWithTimestamp(
+          PRODUCTS_TRACKS.crisprDeletionCoords,
+          timestamp,
+        ),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.esCellAlleles, timestamp),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.esCellProducts, timestamp),
       );
       if (currentHash === "#targetingVector") {
         tracks.push(PRODUCTS_TRACKS.targetingVectors);
@@ -243,7 +254,10 @@ const GenomeBrowser = ({
   ) => {
     if (genomeBrowserRef.current) {
       if (selection) {
-        genomeBrowserRef.current.loadTrack(optionalTracks[name]);
+        const timestamp = (+new Date()).toString(10);
+        genomeBrowserRef.current.loadTrack(
+          updateTrackWithTimestamp(optionalTracks[name], timestamp),
+        );
       } else {
         genomeBrowserRef.current.removeTrackByName(optionalTracks[name].name);
       }
@@ -253,7 +267,10 @@ const GenomeBrowser = ({
   const toggleProductTrack = (name: keyof SelectedTracks, value: boolean) => {
     if (genomeBrowserRef.current) {
       if (value) {
-        genomeBrowserRef.current.loadTrack(PRODUCTS_TRACKS[name]);
+        const timestamp = (+new Date()).toString(10);
+        genomeBrowserRef.current.loadTrack(
+          updateTrackWithTimestamp(PRODUCTS_TRACKS[name], timestamp),
+        );
       } else {
         genomeBrowserRef.current.removeTrackByName(PRODUCTS_TRACKS[name].name);
       }
