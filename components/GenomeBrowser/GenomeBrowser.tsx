@@ -78,7 +78,7 @@ const PRODUCTS_TRACKS = {
 const optionalTracks = {
   GENCODEFull: {
     name: "GENCODE M37 (complete)",
-    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/gencodeVM37.bb`,
     indexed: false,
     searchable: true,
     searchableFields: [
@@ -96,7 +96,7 @@ const optionalTracks = {
   },
   GENCODEBasic: {
     name: "GENCODE M37 basic annotations",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/gencodeVM37.basic.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/gencodeVM37.basic.bb`,
     indexed: false,
     searchable: true,
     searchableFields: [
@@ -114,7 +114,7 @@ const optionalTracks = {
   },
   "UniProt SwissProt Protein Annotations": {
     name: "UniProt SwissProt Protein Annotations",
-    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/unipAliSwissprot.bb`,
     indexed: false,
     nameField: "GeneName",
     order: 0,
@@ -122,7 +122,7 @@ const optionalTracks = {
   },
   "UniProt TrEMBL Protein Annotations": {
     name: "TrEMBL Protein Annotations",
-    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliTrembl.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/unipAliTrembl.bb`,
     indexed: false,
     nameField: "GeneName",
     order: 0,
@@ -162,7 +162,7 @@ const GenomeBrowser = ({
         {
           name: "RefSeq Curated",
           format: "refgene",
-          url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
+          url: `${GENOME_BROWSER_DATA_URL}/ncbiRefSeqCurated.txt.gz`,
           indexed: false,
           order: 0,
           removable: false,
@@ -193,9 +193,8 @@ const GenomeBrowser = ({
           id: "mm39",
           name: "Mouse (GRCm39/mm39)",
           fastaURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa",
-          indexURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa.fai",
-          chromSizesURL:
-            "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.chrom.sizes",
+          indexURL: `${GENOME_BROWSER_DATA_URL}/mm39.fa.fai`,
+          chromSizesURL: `${GENOME_BROWSER_DATA_URL}/mm39.chrom.sizes`,
         },
         search: {
           url: "https://www.gentar.org/orthology-api/api/ortholog/get-coordinates/search?geneQuery=$FEATURE$",
