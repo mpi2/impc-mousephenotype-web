@@ -306,10 +306,12 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  disabled
-                  checked
                   label="RefSeq"
+                  defaultChecked
                   type="checkbox"
+                  onChange={(e) =>
+                    toggleOptionalTrack("RefSeq", e.target.checked)
+                  }
                 />
                 <Form.Check
                   className="mb-0"
