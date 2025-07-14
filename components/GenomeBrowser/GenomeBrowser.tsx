@@ -112,6 +112,15 @@ const optionalTracks = {
     autoHeight: true,
     type: "annotation",
   },
+  RefSeq: {
+    name: "RefSeq Curated",
+    format: "refgene",
+    url: `${GENOME_BROWSER_DATA_URL}/ncbiRefSeqCurated.txt.gz`,
+    indexed: false,
+    order: 0,
+    removable: false,
+    autoHeight: true,
+  },
   "UniProt SwissProt Protein Annotations": {
     name: "UniProt SwissProt Protein Annotations",
     url: `${GENOME_BROWSER_DATA_URL}/unipAliSwissprot.bb`,
