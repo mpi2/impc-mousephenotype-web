@@ -37,7 +37,7 @@ const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
   return (
     <Button
       href={_.get(props.value, props.field) as string}
-      className="impc-secondary-button"
+      className="impc-secondary-button download-data"
       variant=""
     >
       <FontAwesomeIcon icon={faDownload} />
