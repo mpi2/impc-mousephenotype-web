@@ -168,7 +168,7 @@ const CardiovascularLandingPage = () => {
                     </td>
                     <td>
                       <a
-                        className="link primary"
+                        className="link primary download-data"
                         href="https://www.mousephenotype.org/data/phenotypes/export/MP:0005385?fileType=tsv&fileName=IMPC_Cardiovascular%20System"
                       >
                         Download

@@ -101,7 +101,7 @@ const DownloadDataComponent = <T,>({
       {children ? children : `Download data as:`}
       &nbsp;
       <button
-        className="btn impc-secondary-button small"
+        className="btn impc-secondary-button small download-data"
         onClick={generateTsvFile}
         disabled={isBusyTSV}
       >
@@ -115,7 +115,7 @@ const DownloadDataComponent = <T,>({
       </button>
       &nbsp;
       <button
-        className="btn impc-secondary-button small"
+        className="btn impc-secondary-button small download-data"
         onClick={generateXlsxFile}
         disabled={isBusyTSV}
       >
