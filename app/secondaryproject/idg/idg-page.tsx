@@ -523,7 +523,7 @@ const IDGPage = () => {
             the pleiotropy between these genes.
             <br />
             <a
-              className="link primary"
+              className="link primary download-data"
               href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true"
               download="genes_phenotype_associations.csv"
             >
@@ -557,7 +557,7 @@ const IDGPage = () => {
             the pleiotropy between these genes.
             <br />
             <a
-              className="link primary"
+              className="link primary download-data"
               href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
               download="genes_phenotype_associations.csv"
             >
@@ -586,7 +586,7 @@ const IDGPage = () => {
             pleiotropy between these genes.
             <br />
             <a
-              className="link primary"
+              className="link primary download-data"
               href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
               download="genes_phenotype_associations.csv"
             >
@@ -619,7 +619,7 @@ const IDGPage = () => {
             pleiotropy between these genes.
             <br />
             <a
-              className="link primary"
+              className="link primary download-data"
               href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
               download="genes_phenotype_associations.csv"
             >
