@@ -32,10 +32,8 @@ const Order = ({
 }: OrderProps) => {
   const gene = useContext(GeneContext);
   const { setNumAllelesAvailable } = useContext(AllelesStudiedContext);
-  const [sorted, setSorted] = useState<any[]>(
-    orderBy(orderDataFromServer, "alleleSymbol", "asc"),
-  );
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
+  const [currentSort, setCurrentSort] = useState<SortType>(defaultSort);
   const {
     isFetching,
     isError,
@@ -53,31 +51,26 @@ const Order = ({
     return `/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
   };
 
-  const orderData = orderDataFromServer || filtered;
+  const sorted = useMemo(() => {
+    return orderBy(filtered, currentSort[0], currentSort[1]).map(
+      (geneOrder) => ({
+        ...geneOrder,
+        phenotyped: allelesStudied.includes(geneOrder.alleleSymbol),
+      }),
+    );
+  }, [filtered, currentSort, allelesStudied]);
 
   useEffect(() => {
-    if (orderData) {
-      setSorted(orderBy(orderData, "alleleSymbol", "asc"));
-      setNumAllelesAvailable(orderData.length);
+    if (filtered) {
+      setNumAllelesAvailable(filtered.length);
     }
-  }, [orderData]);
+  }, [filtered]);
 
   useEffect(() => {
     if (isError && error) {
       setNumAllelesAvailable(0);
     }
   }, [isError, error]);
-
-  useEffect(() => {
-    if (allelesStudied.length > 0) {
-      setSorted(
-        sorted?.map((geneOrder) => ({
-          ...geneOrder,
-          phenotyped: allelesStudied.includes(geneOrder.alleleSymbol),
-        })),
-      );
-    }
-  }, [allelesStudied]);
 
   if (isFetching) {
     return (
@@ -128,9 +121,7 @@ const Order = ({
           {(pageData) => (
             <>
               <SortableTable
-                doSort={(sort) => {
-                  setSorted(orderBy(sorted, sort[0], sort[1]));
-                }}
+                doSort={setCurrentSort}
                 defaultSort={defaultSort}
                 headers={[
                   { width: 3, label: "MGI Allele", field: "alleleSymbol" },
