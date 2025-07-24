@@ -1074,7 +1074,7 @@ exports[`Gene page renders correctly 1`] = `
                 class="overlayContainer"
               >
                 <a>
-                  No allele products available
+                  View allele products
                 </a>
                 <span
                   aria-busy="true"
@@ -1739,7 +1739,7 @@ exports[`Gene page renders correctly 1`] = `
                   Download data as:
                    
                   <button
-                    class="btn impc-secondary-button small"
+                    class="btn impc-secondary-button small download-data"
                   >
                     <svg
                       aria-hidden="true"
@@ -1760,7 +1760,7 @@ exports[`Gene page renders correctly 1`] = `
                   </button>
                    
                   <button
-                    class="btn impc-secondary-button small"
+                    class="btn impc-secondary-button small download-data"
                   >
                     <svg
                       aria-hidden="true"
@@ -3960,7 +3960,7 @@ exports[`Gene page renders correctly 1`] = `
                   Download data as:
                    
                   <button
-                    class="btn impc-secondary-button small"
+                    class="btn impc-secondary-button small download-data"
                   >
                     <svg
                       aria-hidden="true"
@@ -3981,7 +3981,7 @@ exports[`Gene page renders correctly 1`] = `
                   </button>
                    
                   <button
-                    class="btn impc-secondary-button small"
+                    class="btn impc-secondary-button small download-data"
                   >
                     <svg
                       aria-hidden="true"
@@ -5133,7 +5133,7 @@ exports[`Gene page renders correctly 1`] = `
              data as:
              
             <button
-              class="btn impc-secondary-button small"
+              class="btn impc-secondary-button small download-data"
             >
               <svg
                 aria-hidden="true"
@@ -5154,7 +5154,7 @@ exports[`Gene page renders correctly 1`] = `
             </button>
              
             <button
-              class="btn impc-secondary-button small"
+              class="btn impc-secondary-button small download-data"
             >
               <svg
                 aria-hidden="true"
@@ -6701,7 +6701,7 @@ exports[`Gene page renders correctly 1`] = `
             Download data as:
              
             <button
-              class="btn impc-secondary-button small"
+              class="btn impc-secondary-button small download-data"
             >
               <svg
                 aria-hidden="true"
@@ -6722,7 +6722,7 @@ exports[`Gene page renders correctly 1`] = `
             </button>
              
             <button
-              class="btn impc-secondary-button small"
+              class="btn impc-secondary-button small download-data"
             >
               <svg
                 aria-hidden="true"
@@ -6969,11 +6969,346 @@ exports[`Gene page renders correctly 1`] = `
         </p>
       </div>
       <div
-        class="fade table alert alert-yellow show"
-        role="alert"
+        class="buttonsWrapper top "
+        data-testid="top-controls-wrapper"
+      />
+      <div
+        class="tableWrapper"
       >
-        No product found for this gene.
+        <table
+          class="table striped table table-bordered"
+        >
+          <thead>
+            <tr>
+              <th
+                rowspan="2"
+                width="25%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: bold;"
+                >
+                  MGI Allele
+                   
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-caret-up sortIcon"
+                    data-icon="caret-up"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 320 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="33.33333333333333%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Allele Type
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="8.333333333333332%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Phenotyped
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+              <th
+                rowspan="2"
+                width="16.666666666666664%"
+              >
+                <button
+                  class="inlineButton headerButton"
+                  style="font-weight: inherit;"
+                >
+                  Order products
+                   
+                  <span
+                    class="defaultIcons"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-up first"
+                      data-icon="caret-up"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="svg-inline--fa fa-caret-down second"
+                      data-icon="caret-down"
+                      data-prefix="fas"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 320 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </th>
+            </tr>
+            <tr />
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong
+                  class="link"
+                >
+                  <i>
+                    Ascc2
+                    <sup>
+                      tm1(KOMP)Vlcg
+                    </sup>
+                  </i>
+                </strong>
+              </td>
+              <td>
+                Reporter-tagged deletion allele (with selection cassette)
+              </td>
+              <td>
+                No
+              </td>
+              <td
+                class="text-capitalize"
+              >
+                <a
+                  class="primary link"
+                  href="/alleles/MGI:1922702/tm1(KOMP)Vlcg?alleleSymbol=tm1(KOMP)Vlcg#esCell"
+                  title="view ES Cell details for gene Ascc2, allele tm1(KOMP)Vlcg "
+                >
+                  ES Cell
+                </a>
+                <br />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong
+                  class="link"
+                >
+                  <i>
+                    Ascc2
+                    <sup>
+                      tm1a(EUCOMM)Wtsi
+                    </sup>
+                  </i>
+                </strong>
+              </td>
+              <td>
+                KO first allele (reporter-tagged insertion with conditional potential)
+              </td>
+              <td>
+                <a
+                  class="primary link"
+                  href="#data"
+                >
+                  Yes
+                </a>
+              </td>
+              <td
+                class="text-capitalize"
+              >
+                <a
+                  class="primary link"
+                  href="/alleles/MGI:1922702/tm1a(EUCOMM)Wtsi?alleleSymbol=tm1a(EUCOMM)Wtsi#targetingVector"
+                  title="view targeting vector details for gene Ascc2, allele tm1a(EUCOMM)Wtsi "
+                >
+                  targeting vector
+                </a>
+                <br />
+                <a
+                  class="primary link"
+                  href="/alleles/MGI:1922702/tm1a(EUCOMM)Wtsi?alleleSymbol=tm1a(EUCOMM)Wtsi#esCell"
+                  title="view ES Cell details for gene Ascc2, allele tm1a(EUCOMM)Wtsi "
+                >
+                  ES Cell
+                </a>
+                <br />
+                <a
+                  class="primary link"
+                  href="/alleles/MGI:1922702/tm1a(EUCOMM)Wtsi?alleleSymbol=tm1a(EUCOMM)Wtsi#mice"
+                  title="view mouse details for gene Ascc2, allele tm1a(EUCOMM)Wtsi "
+                >
+                  mouse
+                </a>
+                <br />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong
+                  class="link"
+                >
+                  <i>
+                    Ascc2
+                    <sup>
+                      tm1b(EUCOMM)Wtsi
+                    </sup>
+                  </i>
+                </strong>
+              </td>
+              <td>
+                Reporter-tagged deletion allele (with selection cassette)
+              </td>
+              <td>
+                <a
+                  class="primary link"
+                  href="#data"
+                >
+                  Yes
+                </a>
+              </td>
+              <td
+                class="text-capitalize"
+              >
+                <a
+                  class="primary link"
+                  href="/alleles/MGI:1922702/tm1b(EUCOMM)Wtsi?alleleSymbol=tm1b(EUCOMM)Wtsi#mice"
+                  title="view mouse details for gene Ascc2, allele tm1b(EUCOMM)Wtsi "
+                >
+                  mouse
+                </a>
+                <br />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong
+                  class="link"
+                >
+                  <i>
+                    Ascc2
+                    <sup>
+                      tm1e(EUCOMM)Wtsi
+                    </sup>
+                  </i>
+                </strong>
+              </td>
+              <td>
+                Targeted, non-conditional allele
+              </td>
+              <td>
+                No
+              </td>
+              <td
+                class="text-capitalize"
+              >
+                <a
+                  class="primary link"
+                  href="/alleles/MGI:1922702/tm1e(EUCOMM)Wtsi?alleleSymbol=tm1e(EUCOMM)Wtsi#esCell"
+                  title="view ES Cell details for gene Ascc2, allele tm1e(EUCOMM)Wtsi "
+                >
+                  ES Cell
+                </a>
+                <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+      <div
+        class="buttonsWrapper "
+      />
     </div>
     <script
       type="application/ld+json"
