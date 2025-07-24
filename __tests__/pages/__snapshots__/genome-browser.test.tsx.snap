@@ -187,7 +187,6 @@ exports[`Genome Browser page renders properly 1`] = `
                   <input
                     checked=""
                     class="form-check-input"
-                    disabled=""
                     type="checkbox"
                   />
                   <label
