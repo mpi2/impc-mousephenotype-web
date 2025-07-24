@@ -508,7 +508,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/c6caec2ba39d0077b80d05afcb90581215fa2db62a82a534116681a909276bec"
                   role="button"
                   tabindex="0"
@@ -595,7 +595,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/00fd0ba740c8057b4c484f47ce8b6d29d2757e76caaa34558185ab96d32c8e42"
                   role="button"
                   tabindex="0"
@@ -682,7 +682,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/680a32a40b8e82063da2cbed658018a8795b2285fefb32730aca7c21a16b7b24"
                   role="button"
                   tabindex="0"
@@ -1150,7 +1150,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/5f3c2980f4a63dbf8d7627c8ac25c648927e4937f63d133f1bed6ebafb919caa"
                   role="button"
                   tabindex="0"
@@ -1222,7 +1222,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/bdd6d19cfd7667a8d46ec678abcc6135ee5f87269292a55fab80ea493294f988"
                   role="button"
                   tabindex="0"
@@ -1294,7 +1294,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/fdcf0d31f114f223482700ffdc0c0541898ead8336e225d8fff09d6c7b6e4300"
                   role="button"
                   tabindex="0"
@@ -1366,7 +1366,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/146a3b9788d523467997635caad9f82323a6a1209544377447eb0248c624ed63"
                   role="button"
                   tabindex="0"
@@ -1438,7 +1438,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/856f03b2e039ac51302a086519ef06d8753a1b3ad10fdfa7a82f3b0b6da0402b"
                   role="button"
                   tabindex="0"
@@ -1510,7 +1510,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/5dd252130cbfa6b45d4eda0def44a26084281bb4844c90daf49d0f8690c6eb5a"
                   role="button"
                   tabindex="0"
@@ -1582,7 +1582,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/a0bdd2169b13cb559b419172000384b6a90b7b88604ad307f0f5771848b1f3b6"
                   role="button"
                   tabindex="0"
@@ -1654,7 +1654,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/12bdcfb5bcfe1168a987556f0796aaf0d607731f7e7a72120f07052e38e97bed"
                   role="button"
                   tabindex="0"
@@ -1726,7 +1726,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/1ac8648aaedde9f503d2f2a6bc0c4097b46d44a451a3cbc85367129e7bd2618f"
                   role="button"
                   tabindex="0"
@@ -1798,7 +1798,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
               <td>
                 <a
-                  class="impc-secondary-button btn"
+                  class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/3ef8345336b538239f7b1d94ea2692f35a9247d1c1bfae5eb53230d4cbae5352"
                   role="button"
                   tabindex="0"

@@ -211,7 +211,7 @@ describe("Gene page", () => {
     await act(async () => await new Promise(process.nextTick));
     await waitFor(async () => {
       const rows = await screen.findAllByRole("table");
-      return expect(rows.length).toEqual(5);
+      return expect(rows.length).toEqual(6);
     });
     expect(container).toMatchSnapshot();
   });

@@ -379,7 +379,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
                     </td>
                     <td>
                       <a
-                        class="link primary"
+                        class="link primary download-data"
                         href="https://www.mousephenotype.org/data/phenotypes/export/MP:0005385?fileType=tsv&fileName=IMPC_Cardiovascular%20System"
                       >
                         Download
