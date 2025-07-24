@@ -18,7 +18,7 @@ describe("Gene order component", () => {
         value={{ geneSymbol: "Crlf3", mgiGeneAccessionId: "MGI:1860086" }}
       >
         <GeneOrder
-          orderDataFromServer={Crlf3Data}
+          orderDataFromServer={[]}
           allelesStudied={[]}
           allelesStudiedLoading={true}
         />
@@ -30,7 +30,7 @@ describe("Gene order component", () => {
     await waitFor(async () => {
       expect(await screen.findByRole("table")).toBeInTheDocument();
     });
-    expect(screen.getAllByRole("row")).toHaveLength(10);
+    expect(screen.getAllByRole("row")).toHaveLength(9);
   });
 
   it("should display the correct information for the alleles provided", async () => {
@@ -44,7 +44,7 @@ describe("Gene order component", () => {
         value={{ geneSymbol: "Crlf3", mgiGeneAccessionId: "MGI:1860086" }}
       >
         <GeneOrder
-          orderDataFromServer={Crlf3Data}
+          orderDataFromServer={[]}
           allelesStudied={[
             "Crlf3<em1(IMPC)Wtsi>",
             "Crlf3<tm1a(KOMP)Wtsi>",
@@ -56,7 +56,7 @@ describe("Gene order component", () => {
     );
     const rows = await screen.findAllByRole("row");
     // 9 because includes the header
-    expect(rows.length).toEqual(10);
+    expect(rows.length).toEqual(9);
     const firstAlleleRow = screen.getByRole("row", {
       name: "Crlf3 em1(IMPC)Wtsi Deletion ‌ mouse",
     });

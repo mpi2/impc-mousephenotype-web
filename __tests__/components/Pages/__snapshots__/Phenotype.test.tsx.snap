@@ -1951,7 +1951,7 @@ exports[`Phenotype page renders correctly 1`] = `
             Download data as:
              
             <button
-              class="btn impc-secondary-button small"
+              class="btn impc-secondary-button small download-data"
             >
               <svg
                 aria-hidden="true"
@@ -1972,7 +1972,7 @@ exports[`Phenotype page renders correctly 1`] = `
             </button>
              
             <button
-              class="btn impc-secondary-button small"
+              class="btn impc-secondary-button small download-data"
             >
               <svg
                 aria-hidden="true"
