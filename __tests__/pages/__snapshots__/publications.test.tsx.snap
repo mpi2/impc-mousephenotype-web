@@ -1764,7 +1764,7 @@ exports[`Publications page renders correctly 1`] = `
                   Table view
                 </button>
                 <a
-                  class="btn impc-secondary-button small"
+                  class="btn impc-secondary-button small download-data"
                   style="margin-left: auto;"
                 >
                   Download list of agencies 
