@@ -369,25 +369,6 @@ const Header = () => {
           </div>
         </Collapse>
       </div>
-      <div className="alert alert-info mb-0" style={{ padding: "1.2rem" }}>
-        <h4 style={{ fontSize: "1.5rem" }}>
-          Last Chance! IMPC survey closing in August!
-        </h4>
-        <p>
-          The IMPC is at a funding crossroads and seeking community input.&nbsp;
-          Help shape the future of the IMPC by taking part in&nbsp;
-          <strong>
-            <a
-              className="link primary"
-              href="https://docs.google.com/forms/d/e/1FAIpQLScit_HcyJc-VJJs4NrNhVL1dJTwLmEJTOhs3FclUQUBXuv2RA/viewform?pli=1"
-              style={{ textDecoration: "none" }}
-            >
-              our short survey
-            </a>
-          </strong>
-          .
-        </p>
-      </div>
     </>
   );
 };
