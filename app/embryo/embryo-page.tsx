@@ -21,16 +21,22 @@ import { capitalize } from "lodash";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import PublicationsList from "@/components/PublicationsList";
+import { DownloadData } from "@/components";
+
+type SelectedLineGene = {
+  mgiGeneAccessionId: string;
+  geneSymbol: string;
+};
 
 type SelectedLine = {
   windowOfLethality: string;
-  genes: Array<{ mgiGeneAccessionId: string; geneSymbol: string }>;
+  genes: Array<SelectedLineGene>;
 };
 
 const EmbryoLandingPage = () => {
   const { data } = useEmbryoLandingQuery();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [listGenes, setListGenes] = useState<SelectedLine>(null);
+  const [listGenes, setListGenes] = useState<SelectedLine | null>(null);
   const [displayGenesWithData, setDisplayGenesWithData] =
     useState<boolean>(true);
   const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
@@ -478,6 +484,22 @@ const EmbryoLandingPage = () => {
               ]}
               paginationButtonsPlacement="bottom"
               displayPageControls={false}
+              additionalBottomControls={
+                <>
+                  <DownloadData<SelectedLineGene>
+                    data={() =>
+                      listGenes?.genes.sort((a, b) =>
+                        a.geneSymbol.localeCompare(b.geneSymbol),
+                      )!
+                    }
+                    fileName={`${listGenes?.windowOfLethality}-category-gene-list`}
+                    fields={[
+                      { key: "geneSymbol", label: "Gene symbol" },
+                      { key: "mgiGeneAccessionId", label: "MGI Accession ID" },
+                    ]}
+                  />
+                </>
+              }
             />
           </Modal.Body>
           <Modal.Footer>
