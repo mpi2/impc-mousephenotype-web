@@ -25,6 +25,13 @@ jest.mock("@/components/PublicationsList", () => {
   return PublicationsListMock;
 });
 
+jest.mock("@nivo/heatmap", () => {
+  const ResponsiveHeatmapMock = () => <div>ResponsiveHeatmap mock</div>;
+  return {
+    ResponsiveHeatMap: ResponsiveHeatmapMock,
+  };
+});
+
 describe("Embryo landing page", () => {
   it("renders correctly", async () => {
     testServer.use(
