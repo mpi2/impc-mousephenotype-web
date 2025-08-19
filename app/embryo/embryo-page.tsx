@@ -484,6 +484,22 @@ const EmbryoLandingPage = () => {
               ]}
               paginationButtonsPlacement="bottom"
               displayPageControls={false}
+              additionalBottomControls={
+                <>
+                  <DownloadData<SelectedLineGene>
+                    data={() =>
+                      listGenes?.genes.sort((a, b) =>
+                        a.geneSymbol.localeCompare(b.geneSymbol),
+                      )!
+                    }
+                    fileName={`${listGenes?.windowOfLethality}-category-gene-list`}
+                    fields={[
+                      { key: "geneSymbol", label: "Gene symbol" },
+                      { key: "mgiGeneAccessionId", label: "MGI Accession ID" },
+                    ]}
+                  />
+                </>
+              }
             />
           </Modal.Body>
           <Modal.Footer>
