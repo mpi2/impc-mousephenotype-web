@@ -366,7 +366,7 @@ const EmbryoLandingPage = () => {
                     <td colSpan={2}>
                       <a
                         className="link primary"
-                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv"
+                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr23.0.tsv"
                       >
                         Download
                       </a>
