@@ -183,6 +183,7 @@ const Associations = ({ initialData }: AssociationsProps) => {
       <SmartTable<PhenotypeGenotypes>
         data={filteredData}
         defaultSort={defaultSort}
+        customSortFunction={sortAssociations}
         customFiltering
         showLoadingIndicator={isFetching}
         additionalTopControls={
