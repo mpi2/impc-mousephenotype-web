@@ -226,7 +226,7 @@ exports[`Phenotype page renders correctly 1`] = `
         decreased large unstained cell number
       </h2>
       <p>
-        Total number of significant genotype-phenotype associations: 
+        Number of significant genotype-phenotype associations: 
         15
       </p>
       <div
@@ -236,14 +236,53 @@ exports[`Phenotype page renders correctly 1`] = `
         <div
           class="additionalWrapper"
         >
-          <input
-            aria-label="Filter by parameters"
-            class="bg-white form-control"
-            id="parameterFilter"
-            placeholder="Search "
-            style="display: inline-block; width: 200px; margin-right: 2rem;"
-            type="text"
-          />
+          <div
+            data-testid="filterbox-queryFilterAD"
+          >
+            <input
+              aria-label="Filter by parameters"
+              class="bg-white form-control"
+              id="queryFilterAD"
+              placeholder="Search"
+              style="width: 150px;"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            data-testid="filterbox-Zygosity"
+          >
+            <label
+              class="grey"
+              for="zygosityFilterAD"
+              style="margin-right: 0.5rem;"
+            >
+              Zygosity
+              :
+            </label>
+            <select
+              class="bg-white form-select"
+              data-testid="control-Zygosity"
+              id="zygosityFilterAD"
+              style="width: 100px; text-transform: capitalize;"
+            >
+              <option
+                value="all"
+              >
+                All
+              </option>
+              <option
+                value="heterozygote"
+              >
+                heterozygote
+              </option>
+              <option
+                value="homozygote"
+              >
+                homozygote
+              </option>
+            </select>
+          </div>
         </div>
         <ul
           class="pagination justify-content-center paginationNav"
