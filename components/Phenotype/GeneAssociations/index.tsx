@@ -113,19 +113,30 @@ const Associations = ({ initialData }: AssociationsProps) => {
     };
   }, [data]);
 
-  const filterPhenotype = (
-    {
-      phenotypeName,
-      phenotypeId,
-      alleleSymbol,
-      mgiGeneAccessionId,
-    }: PhenotypeGenotypes,
-    query: string,
-  ) =>
-    !query ||
-    `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`
-      .toLowerCase()
-      .includes(query);
+  const filteredData = useMemo(() => {
+    if (!data) {
+      return [];
+    }
+    return data.filter(
+      ({
+        phenotypeName,
+        phenotypeId,
+        alleleSymbol,
+        mgiGeneAccessionId,
+        zygosity,
+        lifeStageName,
+      }: PhenotypeGenotypes) => {
+        return (
+          (!query ||
+            `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId} `
+              .toLowerCase()
+              .includes(query.toLowerCase())) &&
+          (!selectedZygosity || selectedZygosity === zygosity) &&
+          (!selectedLifeStageName || selectedLifeStageName === lifeStageName)
+        );
+      },
+    );
+  }, [data, query, selectedZygosity, selectedLifeStageName]);
 
   const sortAssociations = (
     data: Array<PhenotypeGenotypes>,
@@ -166,12 +177,11 @@ const Associations = ({ initialData }: AssociationsProps) => {
         {phenotype?.phenotypeName || <Skeleton inline width={150} />}
       </h2>
       <p>
-        Total number of significant genotype-phenotype associations:&nbsp;
-        {data?.length}
+        Number of significant genotype-phenotype associations:&nbsp;
+        {filteredData?.length}
       </p>
       <SmartTable<PhenotypeGenotypes>
-        data={data}
-        filterFn={filterPhenotype}
+        data={filteredData}
         defaultSort={defaultSort}
         customFiltering
         showLoadingIndicator={isFetching}
