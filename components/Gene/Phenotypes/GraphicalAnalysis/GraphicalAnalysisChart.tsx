@@ -229,6 +229,10 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
       isByProcedure ? "procedureName" : "topLevelPhenotypeList[0]",
     );
 
+    const chartKey = useMemo(() => {
+      return `${category.type}-${significantOnly}`;
+    }, [category, significantOnly]);
+
     if (!data || height === 0) {
       return null;
     }
@@ -354,6 +358,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
               orientation={["diagonal"]}
             />
             <Brush
+              key={chartKey}
               xScale={brushXScale}
               yScale={brushYScale}
               width={brushMaxWidth}
