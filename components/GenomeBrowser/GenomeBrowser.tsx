@@ -1,20 +1,25 @@
 "use client";
 
-import { Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Form, Row, Spinner, FormCheck } from "react-bootstrap";
 import { Card } from "@/components";
-import { useLayoutEffect, useRef, useState } from "react";
+import React, {
+  Fragment,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { GENOME_BROWSER_DATA_URL } from "@/api-service";
 
 type GenomeBrowserProps = {
   geneSymbol: string;
   mgiGeneAccessionId: string;
-  hasCRISPRData: boolean;
-  hasEsCellData: boolean;
-  hasTargetingVectorData: boolean;
+  noContainer?: boolean;
 };
 
 type BrowserProps = {
@@ -25,7 +30,7 @@ type BrowserProps = {
 
 type SelectedTracks = {
   crisprGuides: boolean;
-  crisprDeletions: boolean;
+  crisprFASTA: boolean;
   esCellAlleles: boolean;
   esCellProducts: boolean;
   targetingVectors: boolean;
@@ -34,42 +39,47 @@ type SelectedTracks = {
 
 const PRODUCTS_TRACKS = {
   crisprDeletionCoords: {
-    name: "CRISPR allele deletion coordinates",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/deletion_coordinates.bb",
+    name: "CRISPR deletion coordinates",
+    url: `${GENOME_BROWSER_DATA_URL}/deletion_coordinates.bb`,
     order: 3,
+    autoHeight: true,
   },
-  crisprDeletions: {
-    name: "Aligned FASTA from CRISPR alleles",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/aligned_fa_bigBed.bb",
+  crisprFASTA: {
+    name: "CRISPR FASTA",
+    url: `${GENOME_BROWSER_DATA_URL}/aligned_fa_bigBed.bb`,
     order: 4,
+    autoHeight: true,
   },
   crisprGuides: {
-    name: "CRISPR allele guides",
-    url: "https://ftp.ebi.ac.uk/pub/databases/impc/other/genome-browser/guide_bb_file.bb",
+    name: "CRISPR guides",
+    url: `${GENOME_BROWSER_DATA_URL}/guide_bb_file.bb`,
     order: 5,
+    autoHeight: true,
   },
   esCellAlleles: {
-    name: "ES Cell alleles available to order",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_mouse_alleles.bb",
+    name: "ES Cells",
+    url: `${GENOME_BROWSER_DATA_URL}/ikmc_ucsc_impc_es_cell_alleles.bb`,
     order: 8,
+    autoHeight: true,
   },
   esCellProducts: {
-    name: "Mouse lines carrying a ES Cell allele",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_es_cell_alleles.bb",
+    name: "ES Cell Mice",
+    url: `${GENOME_BROWSER_DATA_URL}/ikmc_ucsc_impc_mouse_alleles.bb`,
     order: 7,
+    autoHeight: true,
   },
   targetingVectors: {
-    name: "Targeting Vector Products",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_impc_targeting_vectors.bb",
+    name: "Targeting vectors",
+    url: `${GENOME_BROWSER_DATA_URL}/ikmc_ucsc_impc_targeting_vectors.bb`,
     order: 9,
+    autoHeight: true,
   },
 };
 const optionalTracks = {
-  GENCODE: {
-    name: "GENCODE",
-    url: "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M36/gencode.vM36.basic.annotation.gff3.gz",
+  GENCODEFull: {
+    name: "GENCODE M37 (complete)",
+    url: `${GENOME_BROWSER_DATA_URL}/gencodeVM37.bb`,
     indexed: false,
-    format: "gff3",
     searchable: true,
     searchableFields: [
       "name",
@@ -81,32 +91,76 @@ const optionalTracks = {
     ],
     nameField: "gene_name",
     order: 0,
+    autoHeight: true,
+    type: "annotation",
   },
-  "UniProt SwissProt/TrEMBL Protein Annotations": {
-    name: "UniProt SwissProt/TrEMBL Protein Annotations",
-    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
+  GENCODEBasic: {
+    name: "GENCODE M37 basic annotations",
+    url: `${GENOME_BROWSER_DATA_URL}/gencodeVM37.basic.bb`,
+    indexed: false,
+    searchable: true,
+    searchableFields: [
+      "name",
+      "transcript_id",
+      "gene_id",
+      "gene_name",
+      "id",
+      "mgi_id",
+    ],
+    nameField: "gene_name",
+    order: 0,
+    autoHeight: true,
+    type: "annotation",
+  },
+  RefSeq: {
+    name: "RefSeq Curated",
+    format: "refgene",
+    url: `${GENOME_BROWSER_DATA_URL}/ncbiRefSeqCurated.txt.gz`,
+    indexed: false,
+    order: 0,
+    removable: false,
+    autoHeight: true,
+  },
+  "UniProt SwissProt Protein Annotations": {
+    name: "UniProt SwissProt Protein Annotations",
+    url: `${GENOME_BROWSER_DATA_URL}/unipAliSwissprot.bb`,
     indexed: false,
     nameField: "GeneName",
     order: 0,
+    autoHeight: true,
+  },
+  "UniProt TrEMBL Protein Annotations": {
+    name: "TrEMBL Protein Annotations",
+    url: `${GENOME_BROWSER_DATA_URL}/unipAliTrembl.bb`,
+    indexed: false,
+    nameField: "GeneName",
+    order: 0,
+    autoHeight: true,
   },
   "IKMC alleles": {
     name: "IKMC alleles",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/ikmc_ucsc_alleles.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/ikmc_ucsc_alleles.bb`,
+    autoHeight: true,
   },
+};
+
+const updateTrackWithTimestamp = (track: any, timestamp: string) => {
+  return {
+    ...track,
+    url: `${track.url}?t=${timestamp}`,
+  };
 };
 
 const GenomeBrowser = ({
   geneSymbol,
   mgiGeneAccessionId,
-  hasCRISPRData,
-  hasEsCellData,
-  hasTargetingVectorData,
+  noContainer = false,
 }: GenomeBrowserProps) => {
   let genomeBrowserRef = useRef<BrowserProps | null>(null);
   const [isBrowserSetup, setIsBrowserSetup] = useState(false);
   const [selectedTracks, setSelectedTracks] = useState<SelectedTracks>({
     crisprGuides: false,
-    crisprDeletions: false,
+    crisprFASTA: false,
     crisprDeletionCoords: false,
     esCellAlleles: false,
     esCellProducts: false,
@@ -120,27 +174,32 @@ const GenomeBrowser = ({
       const igvContainer = document.querySelector("#igv-container");
       const currentHash = window.location.hash;
       const selectedTracks: Record<string, boolean> = {};
+      const timestamp = (+new Date()).toString(10);
       let tracks: Array<any> = [
         {
-          name: "Refseq Curated",
+          name: "RefSeq Curated",
           format: "refgene",
-          url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
+          url: `${GENOME_BROWSER_DATA_URL}/ncbiRefSeqCurated.txt.gz`,
           indexed: false,
           order: 0,
           removable: false,
+          autoHeight: true,
         },
       ];
       selectedTracks.esCellAlleles = true;
       selectedTracks.esCellProducts = true;
       selectedTracks.crisprGuides = true;
-      selectedTracks.crisprDeletions = true;
+      selectedTracks.crisprFASTA = true;
       selectedTracks.crisprDeletionCoords = true;
       tracks.push(
-        PRODUCTS_TRACKS.crisprGuides,
-        PRODUCTS_TRACKS.crisprDeletions,
-        PRODUCTS_TRACKS.crisprDeletionCoords,
-        PRODUCTS_TRACKS.esCellAlleles,
-        PRODUCTS_TRACKS.esCellProducts,
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.crisprGuides, timestamp),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.crisprFASTA, timestamp),
+        updateTrackWithTimestamp(
+          PRODUCTS_TRACKS.crisprDeletionCoords,
+          timestamp,
+        ),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.esCellAlleles, timestamp),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.esCellProducts, timestamp),
       );
       if (currentHash === "#targetingVector") {
         tracks.push(PRODUCTS_TRACKS.targetingVectors);
@@ -154,9 +213,8 @@ const GenomeBrowser = ({
           id: "mm39",
           name: "Mouse (GRCm39/mm39)",
           fastaURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa",
-          indexURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa.fai",
-          chromSizesURL:
-            "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.chrom.sizes",
+          indexURL: `${GENOME_BROWSER_DATA_URL}/mm39.fa.fai`,
+          chromSizesURL: `${GENOME_BROWSER_DATA_URL}/mm39.chrom.sizes`,
         },
         search: {
           url: "https://www.gentar.org/orthology-api/api/ortholog/get-coordinates/search?geneQuery=$FEATURE$",
@@ -196,9 +254,12 @@ const GenomeBrowser = ({
   ) => {
     if (genomeBrowserRef.current) {
       if (selection) {
-        genomeBrowserRef.current.loadTrack(optionalTracks[name]);
+        const timestamp = (+new Date()).toString(10);
+        genomeBrowserRef.current.loadTrack(
+          updateTrackWithTimestamp(optionalTracks[name], timestamp),
+        );
       } else {
-        genomeBrowserRef.current.removeTrackByName(name);
+        genomeBrowserRef.current.removeTrackByName(optionalTracks[name].name);
       }
     }
   };
@@ -206,7 +267,10 @@ const GenomeBrowser = ({
   const toggleProductTrack = (name: keyof SelectedTracks, value: boolean) => {
     if (genomeBrowserRef.current) {
       if (value) {
-        genomeBrowserRef.current.loadTrack(PRODUCTS_TRACKS[name]);
+        const timestamp = (+new Date()).toString(10);
+        genomeBrowserRef.current.loadTrack(
+          updateTrackWithTimestamp(PRODUCTS_TRACKS[name], timestamp),
+        );
       } else {
         genomeBrowserRef.current.removeTrackByName(PRODUCTS_TRACKS[name].name);
       }
@@ -217,8 +281,12 @@ const GenomeBrowser = ({
     }
   };
 
+  const ContainerCmp = useMemo(() => {
+    return noContainer ? Fragment : Card;
+  }, [noContainer]);
+
   return (
-    <Card>
+    <ContainerCmp>
       <Container style={{ padding: 0 }}>
         <Row>
           <Col>
@@ -228,7 +296,7 @@ const GenomeBrowser = ({
             >
               <h2 style={{ margin: 0 }}>Genome browser</h2>
               <Link
-                href="https://dev.mousephenotype.org/help/data-visualization/allele-pages/genome-browser/"
+                href="https://dev.mousephenotype.org/help/data-visualization/genome-browser/"
                 className="btn"
                 aria-label="Genome browser documentation"
               >
@@ -250,31 +318,55 @@ const GenomeBrowser = ({
             <div className={styles.controlsContainer}>
               <div>
                 <Form.Label className="d-inline-block fst-italic me-3 mb-0">
-                  Annotations:
+                  Gene annotations:
                 </Form.Label>
                 <Form.Check
                   className="mb-0"
                   inline
-                  disabled
-                  checked
-                  label="Refseq"
+                  label="RefSeq"
+                  defaultChecked
                   type="checkbox"
-                />
-                <Form.Check
-                  className="mb-0"
-                  inline
-                  label="GENCODE"
                   onChange={(e) =>
-                    toggleOptionalTrack("GENCODE", e.target.checked)
+                    toggleOptionalTrack("RefSeq", e.target.checked)
                   }
                 />
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="UniProt SwissProt/TrEMBL Protein Annotations"
+                  id="gencode-complete"
+                  label="GENCODE M37 (complete)"
+                  onChange={(e) =>
+                    toggleOptionalTrack("GENCODEFull", e.target.checked)
+                  }
+                />
+                <FormCheck className="mb-0" inline>
+                  <FormCheck.Input
+                    id="gencode-basic"
+                    type="checkbox"
+                    onChange={(e) =>
+                      toggleOptionalTrack("GENCODEBasic", e.target.checked)
+                    }
+                  />
+                  <FormCheck.Label htmlFor="gencode-basic">
+                    GENCODE M37 basic annotations
+                  </FormCheck.Label>
+                </FormCheck>
+              </div>
+            </div>
+            <hr />
+            <div className={styles.controlsContainer}>
+              <div>
+                <Form.Label className="d-inline-block fst-italic me-3 mb-0">
+                  Protein annotations:
+                </Form.Label>
+                <Form.Check
+                  className="mb-0"
+                  inline
+                  id="swissprot-annotations"
+                  label="UniProt SwissProt Protein Annotations"
                   onChange={(e) =>
                     toggleOptionalTrack(
-                      "UniProt SwissProt/TrEMBL Protein Annotations",
+                      "UniProt SwissProt Protein Annotations",
                       e.target.checked,
                     )
                   }
@@ -282,9 +374,13 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="IKMC alleles"
+                  id="trembl-annotations"
+                  label="TrEMBL Protein Annotations"
                   onChange={(e) =>
-                    toggleOptionalTrack("IKMC alleles", e.target.checked)
+                    toggleOptionalTrack(
+                      "UniProt TrEMBL Protein Annotations",
+                      e.target.checked,
+                    )
                   }
                 />
               </div>
@@ -298,7 +394,8 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR Guides"
+                  label="CRISPR guides"
+                  id="crispr-guides"
                   checked={selectedTracks.crisprGuides}
                   onChange={(e) =>
                     toggleProductTrack("crisprGuides", e.target.checked)
@@ -307,16 +404,18 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR FASTA"
-                  checked={selectedTracks.crisprDeletions}
+                  label="CRISPR Aligned FASTA"
+                  id="crispr-aligned-FASTA"
+                  checked={selectedTracks.crisprFASTA}
                   onChange={(e) =>
-                    toggleProductTrack("crisprDeletions", e.target.checked)
+                    toggleProductTrack("crisprFASTA", e.target.checked)
                   }
                 />
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="CRISPR deletion coordinates"
+                  label="CRISPR deletions"
+                  id="crispr-deletions"
                   checked={selectedTracks.crisprDeletionCoords}
                   onChange={(e) =>
                     toggleProductTrack("crisprDeletionCoords", e.target.checked)
@@ -325,7 +424,8 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  label="ES Cells Mice"
+                  label="ES Cell Mice"
+                  id="es-cell-mice"
                   checked={selectedTracks.esCellProducts}
                   onChange={(e) =>
                     toggleProductTrack("esCellProducts", e.target.checked)
@@ -343,6 +443,7 @@ const GenomeBrowser = ({
                   className="mb-0"
                   inline
                   label="ES Cells"
+                  id="es-cells"
                   checked={selectedTracks.esCellAlleles}
                   onChange={(e) =>
                     toggleProductTrack("esCellAlleles", e.target.checked)
@@ -351,7 +452,17 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
+                  id="ikmc-alleles"
+                  label="IKMC alleles"
+                  onChange={(e) =>
+                    toggleOptionalTrack("IKMC alleles", e.target.checked)
+                  }
+                />
+                <Form.Check
+                  className="mb-0"
+                  inline
                   label="Targeting vectors"
+                  id="targeting-vectors"
                   checked={selectedTracks.targetingVectors}
                   onChange={(e) =>
                     toggleProductTrack("targetingVectors", e.target.checked)
@@ -371,7 +482,7 @@ const GenomeBrowser = ({
       </Container>
 
       <div id="igv-container" />
-    </Card>
+    </ContainerCmp>
   );
 };
 

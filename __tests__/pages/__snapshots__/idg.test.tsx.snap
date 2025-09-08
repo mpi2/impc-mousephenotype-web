@@ -1955,7 +1955,7 @@ exports[`IDG Page renders correctly 1`] = `
          genes have phenotypes in more than one biological system. The chord diagram below shows the pleiotropy between these genes.
         <br />
         <a
-          class="link primary"
+          class="link primary download-data"
           download="genes_phenotype_associations.csv"
           href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true"
         >
@@ -2033,7 +2033,7 @@ exports[`IDG Page renders correctly 1`] = `
          genes have phenotypes in more than one biological system. The chord diagram below shows the pleiotropy between these genes.
         <br />
         <a
-          class="link primary"
+          class="link primary download-data"
           download="genes_phenotype_associations.csv"
           href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
         >
@@ -2111,7 +2111,7 @@ exports[`IDG Page renders correctly 1`] = `
          genes have phenotypes in more than one biological system. The chord diagram below shows the pleiotropy between these genes.
         <br />
         <a
-          class="link primary"
+          class="link primary download-data"
           download="genes_phenotype_associations.csv"
           href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
         >
@@ -2189,7 +2189,7 @@ exports[`IDG Page renders correctly 1`] = `
          genes have phenotypes in more than one biological system. The chord diagram below shows the pleiotropy between these genes.
         <br />
         <a
-          class="link primary"
+          class="link primary download-data"
           download="genes_phenotype_associations.csv"
           href="https://www.mousephenotype.org/data/chordDiagram.csv?&idg=true&idgClass=IonChannel"
         >

@@ -11,7 +11,7 @@ export type DataQualityCheck = {
 };
 
 export type StatusCount = {
-  center: string;
+  centre: string;
   count: number;
   status: string;
   originalStatus: string;

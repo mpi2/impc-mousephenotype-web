@@ -21,16 +21,22 @@ import { capitalize } from "lodash";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import PublicationsList from "@/components/PublicationsList";
+import { DownloadData } from "@/components";
+
+type SelectedLineGene = {
+  mgiGeneAccessionId: string;
+  geneSymbol: string;
+};
 
 type SelectedLine = {
   windowOfLethality: string;
-  genes: Array<{ mgiGeneAccessionId: string; geneSymbol: string }>;
+  genes: Array<SelectedLineGene>;
 };
 
 const EmbryoLandingPage = () => {
   const { data } = useEmbryoLandingQuery();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [listGenes, setListGenes] = useState<SelectedLine>(null);
+  const [listGenes, setListGenes] = useState<SelectedLine | null>(null);
   const [displayGenesWithData, setDisplayGenesWithData] =
     useState<boolean>(true);
   const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
@@ -148,7 +154,7 @@ const EmbryoLandingPage = () => {
                   past the weaning stage (IMPC{" "}
                   <a
                     className="link primary"
-                    href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
+                    href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
                   >
                     Viability Primary Screen procedure
                   </a>
@@ -157,7 +163,7 @@ const EmbryoLandingPage = () => {
                   the IMPC established a{" "}
                   <a
                     className="link primary"
-                    href="https://beta.mousephenotype.org/impress"
+                    href="https://www.mousephenotype.org/impress"
                   >
                     systematic embryonic phenotyping pipeline
                   </a>{" "}
@@ -216,14 +222,14 @@ const EmbryoLandingPage = () => {
               Primary Screen &nbsp;
               <a
                 className="link primary"
-                href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=703&pipeID=7"
               >
                 IMPC_VIA_001
               </a>
               &nbsp;and{" "}
               <a
                 className="link primary"
-                href="https://beta.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1188&pipeID=7#Parameters"
+                href="https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=1188&pipeID=7#Parameters"
               >
                 IMPC_VIA_002
               </a>
@@ -293,7 +299,7 @@ const EmbryoLandingPage = () => {
                 Lethal strains are further phenotyped in the{" "}
                 <a
                   className="link primary"
-                  href="https://beta.mousephenotype.org/impress"
+                  href="https://www.mousephenotype.org/impress"
                 >
                   embryonic phenotyping pipeline
                 </a>
@@ -301,7 +307,7 @@ const EmbryoLandingPage = () => {
                 phenotyped in the IMPC{" "}
                 <a
                   className="link primary"
-                  href="https://beta.mousephenotype.org/impress"
+                  href="https://www.mousephenotype.org/impress"
                 >
                   adult phenotyping pipeline
                 </a>
@@ -360,7 +366,7 @@ const EmbryoLandingPage = () => {
                     <td colSpan={2}>
                       <a
                         className="link primary"
-                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv"
+                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr23.0.tsv"
                       >
                         Download
                       </a>
@@ -401,10 +407,7 @@ const EmbryoLandingPage = () => {
                 <p>Embryo phenotye data can be accessed in multiple ways:</p>
                 <ul>
                   <li>
-                    <a
-                      className="link primary"
-                      href="https://beta.mousephenotype.org/data/embryo_imaging"
-                    >
+                    <a className="link primary" href="#embryo-data-grid">
                       Embryo Images: interactive heatmap
                     </a>
                     &nbsp;A compilation of all our Embryo Images, organised by
@@ -423,7 +426,7 @@ const EmbryoLandingPage = () => {
                   <li>
                     <a
                       className="link primary"
-                      href="ftp://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/"
+                      href="https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/latest/results/"
                     >
                       From the FTP site, latest release
                     </a>
@@ -481,6 +484,22 @@ const EmbryoLandingPage = () => {
               ]}
               paginationButtonsPlacement="bottom"
               displayPageControls={false}
+              additionalBottomControls={
+                <>
+                  <DownloadData<SelectedLineGene>
+                    data={() =>
+                      listGenes?.genes.sort((a, b) =>
+                        a.geneSymbol.localeCompare(b.geneSymbol),
+                      )!
+                    }
+                    fileName={`${listGenes?.windowOfLethality}-category-gene-list`}
+                    fields={[
+                      { key: "geneSymbol", label: "Gene symbol" },
+                      { key: "mgiGeneAccessionId", label: "MGI Accession ID" },
+                    ]}
+                  />
+                </>
+              }
             />
           </Modal.Body>
           <Modal.Footer>

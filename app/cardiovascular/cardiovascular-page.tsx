@@ -138,14 +138,12 @@ const CardiovascularLandingPage = () => {
                     phenotypeData.map((row) => (
                       <tr key={row.id}>
                         <td>
-                          <a
-                            href={
-                              "http://www.mousephenotype.org/data/phenotypes/" +
-                              row.id
-                            }
+                          <Link
+                            className="link primary"
+                            href={`/phenotypes/${row.id}`}
                           >
                             {row.name}
-                          </a>
+                          </Link>
                         </td>
                         <td>
                           <a
@@ -170,7 +168,7 @@ const CardiovascularLandingPage = () => {
                     </td>
                     <td>
                       <a
-                        className="link primary"
+                        className="link primary download-data"
                         href="https://www.mousephenotype.org/data/phenotypes/export/MP:0005385?fileType=tsv&fileName=IMPC_Cardiovascular%20System"
                       >
                         Download

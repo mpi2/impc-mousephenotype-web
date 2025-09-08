@@ -34,7 +34,7 @@ const EmbryoDataAvailabilityGrid = ({
   viewAllGenes,
   onDataFilterChange,
 }: Props) => {
-  const [query, setQuery] = useState<string>(undefined);
+  const [query, setQuery] = useState<string | undefined>(undefined);
   const [selectedWOL, setSelectedWOL] = useState<string>("");
 
   const dataIndex: Record<

@@ -1,0 +1,428 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Genome Browser page renders properly 1`] = `
+<div>
+  <div
+    class="banner"
+  >
+    <div
+      class="pb-4 pt-5 container container"
+    >
+      <div
+        class="col-12 col-md-8 ps-4 pe-4"
+      >
+        <div
+          class="tabs"
+        >
+          <a
+            class="tab__active"
+            href="/search"
+          >
+            Genes
+          </a>
+          <a
+            class="tab"
+            href="/search?type=pheno"
+          >
+            Phenotypes
+          </a>
+          <a
+            class="tab"
+            href="https://dev.mousephenotype.org/?s="
+          >
+            Help, news, blog
+          </a>
+        </div>
+        <div
+          class="inputCont"
+        >
+          <input
+            class="input"
+            placeholder="Search for a gene..."
+            title="main search box"
+            type="text"
+            value=""
+          />
+          <button
+            aria-describedby="svg-inline--fa-title-search-icon"
+            class="searchBtn"
+          >
+            <svg
+              aria-labelledby="svg-inline--fa-title-search-icon"
+              class="svg-inline--fa fa-magnifying-glass "
+              data-icon="magnifying-glass"
+              data-prefix="fas"
+              role="img"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title
+                id="svg-inline--fa-title-search-icon"
+              >
+                Search button
+              </title>
+              <path
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="page container"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="subheading mb-3"
+      >
+        <span
+          class="subheadingSection primary"
+          data-testid="back-to-gene-page-link"
+        >
+          <a
+            class="mb-3 link"
+            href="/genes/MGI:1922702"
+          >
+            <svg
+              aria-hidden="true"
+              class="svg-inline--fa fa-arrow-left "
+              data-icon="arrow-left"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+                fill="currentColor"
+              />
+            </svg>
+              Go Back to
+             
+            <i>
+              <span>
+                Ascc2
+              </span>
+            </i>
+          </a>
+        </span>
+      </div>
+      <div
+        class="container"
+        style="padding: 0px;"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <div
+              class="mb-3 mt-0"
+              style="display: flex; align-items: center;"
+            >
+              <h2
+                style="margin: 0px;"
+              >
+                Genome browser
+              </h2>
+              <a
+                aria-label="Genome browser documentation"
+                class="btn"
+                href="https://dev.mousephenotype.org/help/data-visualization/genome-browser/"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-circle-question fa-xl "
+                  data-icon="circle-question"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div
+            class="resetBtnContainer col"
+          >
+            <button
+              class="btn impc-secondary-button small"
+            >
+              Reset view
+            </button>
+          </div>
+        </div>
+        <div
+          class="row"
+          style="position: relative;"
+        >
+          <div
+            class="col"
+          >
+            <div
+              class="controlsContainer"
+            >
+              <div>
+                <label
+                  class="d-inline-block fst-italic me-3 mb-0 form-label"
+                >
+                  Gene annotations:
+                </label>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    checked=""
+                    class="form-check-input"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    title=""
+                  >
+                    RefSeq
+                  </label>
+                </div>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="gencode-complete"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="gencode-complete"
+                    title=""
+                  >
+                    GENCODE M37 (complete)
+                  </label>
+                </div>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="gencode-basic"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="gencode-basic"
+                  >
+                    GENCODE M37 basic annotations
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div
+              class="controlsContainer"
+            >
+              <div>
+                <label
+                  class="d-inline-block fst-italic me-3 mb-0 form-label"
+                >
+                  Protein annotations:
+                </label>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="swissprot-annotations"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="swissprot-annotations"
+                    title=""
+                  >
+                    UniProt SwissProt Protein Annotations
+                  </label>
+                </div>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="trembl-annotations"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="trembl-annotations"
+                    title=""
+                  >
+                    TrEMBL Protein Annotations
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div
+              class="controlsContainer"
+            >
+              <div>
+                <label
+                  class="d-inline-block fst-italic me-3 mb-0 form-label"
+                >
+                  Mouse products:
+                </label>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="crispr-guides"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="crispr-guides"
+                    title=""
+                  >
+                    CRISPR guides
+                  </label>
+                </div>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="crispr-aligned-FASTA"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="crispr-aligned-FASTA"
+                    title=""
+                  >
+                    CRISPR Aligned FASTA
+                  </label>
+                </div>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="crispr-deletions"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="crispr-deletions"
+                    title=""
+                  >
+                    CRISPR deletions
+                  </label>
+                </div>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="es-cell-mice"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="es-cell-mice"
+                    title=""
+                  >
+                    ES Cell Mice
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div
+              class="controlsContainer"
+            >
+              <div>
+                <label
+                  class="d-inline-block me-3 mb-0 fst-italic form-label"
+                >
+                  ES Cell products:
+                </label>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="es-cells"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="es-cells"
+                    title=""
+                  >
+                    ES Cells
+                  </label>
+                </div>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="ikmc-alleles"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="ikmc-alleles"
+                    title=""
+                  >
+                    IKMC alleles
+                  </label>
+                </div>
+                <div
+                  class="mb-0 form-check form-check-inline"
+                >
+                  <input
+                    class="form-check-input"
+                    id="targeting-vectors"
+                    type="checkbox"
+                  />
+                  <label
+                    class="form-check-label"
+                    for="targeting-vectors"
+                    title=""
+                  >
+                    Targeting vectors
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="overlay active"
+          >
+            <div
+              class="spinner-border text-primary"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        id="igv-container"
+      />
+    </div>
+  </div>
+</div>
+`;

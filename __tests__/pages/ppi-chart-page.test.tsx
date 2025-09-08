@@ -63,7 +63,7 @@ describe("PPI Chart page", () => {
     window.URL.createObjectURL = jest.fn();
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:104785/MP:0009142/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:104785/MP:0009142/dataset`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },
@@ -119,7 +119,12 @@ describe("PPI Chart page", () => {
     );
     await waitFor(async () => {
       const rows = await screen.findAllByRole("row");
-      return expect(rows.length).toEqual(30);
+      return expect(rows.length).toEqual(33);
+    });
+    await waitFor(async () => {
+      expect(screen.getByTestId("back-to-gene-page-link")).toHaveTextContent(
+        "Go Back to Myo6",
+      );
     });
     expect(container).toMatchSnapshot();
   });

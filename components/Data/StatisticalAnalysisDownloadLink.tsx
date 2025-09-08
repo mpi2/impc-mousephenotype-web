@@ -24,7 +24,7 @@ const StatisticalAnalysisDownloadLink = ({
       break;
     case "genotype-phenotype":
       url = `https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22${datasetSummary.mgiGeneAccessionId}%22&fq=phenotyping_center:(%22${datasetSummary.phenotypingCentre}%22)&fq=allele_accession_id:%22${datasetSummary.alleleAccessionId}%22&fq=pipeline_stable_id:${datasetSummary.pipelineStableId}&fq=parameter_stable_id:${datasetSummary.parameterStableId}&fq=zygosity:${datasetSummary.zygosity}&fq=strain_accession_id:%22${datasetSummary.strainAccessionId}%22`;
-      label = "Genotype phentoype association";
+      label = "Genotype phenotype association";
       break;
     case "phenstat-data":
       url = data

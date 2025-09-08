@@ -1,0 +1,1160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders correctly 1`] = `
+<div>
+  <div
+    class="header"
+  >
+    <div
+      class="header__nav-top d-none d-lg-block"
+    >
+      <div
+        class="container text-right"
+        style="max-width: 1240px;"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            <div
+              class="menu-top-nav-container"
+            >
+              <ul
+                class="menu"
+                id="menu-top-nav"
+              >
+                <li
+                  class="menu-item"
+                >
+                  <a
+                    href="https://www.mousephenotype.org/help/faqs/how-do-i-cite-the-impc/"
+                  >
+                    Cite IMPC
+                  </a>
+                </li>
+                <li
+                  class="menu-item"
+                >
+                  <a
+                    href="//www.mousephenotype.org/help/"
+                  >
+                    Help
+                  </a>
+                </li>
+                <li
+                  class="menu-item"
+                >
+                  <a
+                    href="https://cloud.mousephenotype.org"
+                  >
+                    IMPC Cloud
+                  </a>
+                </li>
+                <li
+                  class="menu-item"
+                >
+                  <a
+                    href="https://www.mousephenotype.org/about-impc/become-an-impc-member/"
+                  >
+                    Join the IMPC
+                  </a>
+                </li>
+                <li
+                  class="menu-item"
+                >
+                  <a
+                    href="//www.mousephenotype.org/contact-us/"
+                  >
+                    Contact us
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="header__nav"
+      >
+        <div
+          class="container"
+          style="max-width: 1240px;"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col-6 col-md-3"
+              style="display: flex; align-items: center;"
+            >
+              <a
+                aria-label="Link to IMPC homepage"
+                class="header__logo-link active"
+                href="/"
+              >
+                <img
+                  alt="International Mouse Phenotyping Consortium Office Logo"
+                  class="header__logo"
+                  height="105"
+                  src="/data/logo.svg"
+                  width="355"
+                />
+              </a>
+            </div>
+            <div
+              class="col-6 col-md-9 text-right"
+            >
+              <div
+                class="d-none d-lg-block"
+              >
+                <div
+                  class="menu-main-nav-container"
+                >
+                  <ul
+                    class="menu"
+                    id="menu-main-nav"
+                  >
+                    <li
+                      class="about-impc menu-item menu-item-type-post_type menu-item-object-page menu-item-30311 "
+                      id="menu-item-30311"
+                    >
+                      <a
+                        href="https://www.mousephenotype.org/about-impc/"
+                      >
+                        About the IMPC
+                      </a>
+                    </li>
+                    <li
+                      class="data menu-item menu-item-type-post_type menu-item-object-page menu-item-30323 current-menu-item"
+                      id="menu-item-30323"
+                    >
+                      <a
+                        href="https://www.mousephenotype.org/understand/"
+                      >
+                        Data
+                      </a>
+                    </li>
+                    <li
+                      class="human-diseases menu-item menu-item-type-post_type menu-item-object-page menu-item-30312 "
+                      id="menu-item-30312"
+                    >
+                      <a
+                        href="https://www.mousephenotype.org/human-diseases/"
+                      >
+                        Human Diseases
+                      </a>
+                    </li>
+                    <li
+                      class="publications menu-item menu-item-type-post_type menu-item-object-page menu-item-30325 "
+                      id="menu-item-30325"
+                    >
+                      <a
+                        href="https://www.mousephenotype.org/publications/"
+                      >
+                        Publications
+                      </a>
+                    </li>
+                    <li
+                      class="news menu-item menu-item-type-post_type menu-item-object-page menu-item-30313 "
+                      id="menu-item-30313"
+                    >
+                      <a
+                        href="https://www.mousephenotype.org/news/"
+                      >
+                        News
+                      </a>
+                    </li>
+                    <li
+                      class="blog menu-item menu-item-type-post_type menu-item-object-page menu-item-30320 "
+                      id="menu-item-30320"
+                    >
+                      <a
+                        href="https://www.mousephenotype.org/blog/"
+                      >
+                        Blog
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <button
+                aria-controls="navbarToggleExternalContent"
+                aria-label="Toggle navigation"
+                class="navbar-toggler d-inline d-lg-none collapsed"
+                type="button"
+              >
+                <span
+                  class="icon-bar top-bar"
+                />
+                <span
+                  class="icon-bar middle-bar"
+                />
+                <span
+                  class="icon-bar bottom-bar"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="about-menu sub-menu d-none d-lg-block collapse"
+        id="about-menu"
+      >
+        <div
+          class="about-menu__inside sub-menu__inside"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="row justify-content-end"
+            >
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/"
+                >
+                  About the IMPC
+                </a>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/consortium-members/"
+                >
+                  Institutional Members
+                </a>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/collaborations/"
+                >
+                  Collaborations
+                </a>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/corporate-associates/"
+                >
+                  Corporate Associates
+                </a>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/funding/"
+                >
+                  Funding
+                </a>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/animal-welfare/"
+                >
+                  Animal Welfare
+                </a>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/about-komp/"
+                >
+                  About KOMP
+                </a>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/impc-award-of-excellence/"
+                >
+                  Awards of Excellence
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="about-menu__drop"
+        />
+      </div>
+      <div
+        class="data-menu sub-menu d-none d-lg-block collapse"
+        id="data-menu"
+      >
+        <div
+          class="data-menu__inside sub-menu__inside"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="row justify-content-end"
+            >
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/understand/training-workshops/"
+                >
+                  Training & Workshops
+                </a>
+                <div
+                  class="sub-pages"
+                >
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/training-workshops/training/"
+                    >
+                      Training
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/training-workshops/workshops/"
+                    >
+                      Workshops
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/understand/start-using-the-impc/"
+                >
+                  Getting Started with IMPC Data
+                </a>
+                <div
+                  class="sub-pages"
+                >
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/"
+                    >
+                      IMPC Data Generation
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/start-using-the-impc/how-to-use-gene-pages/"
+                    >
+                      How to Use Gene Pages
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/start-using-the-impc/citing-the-impc/"
+                    >
+                      Citing IMPC Data
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/"
+                    >
+                      Allele design
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/understand/data-collections/"
+                >
+                  IMPC Data Collections
+                </a>
+                <div
+                  class="sub-pages"
+                >
+                  <p>
+                    <a
+                      href="/late-adult-data"
+                    >
+                      Late Adult Data
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/histopath"
+                    >
+                      Histopathology
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/essential-genes"
+                    >
+                      Essential genes
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/embryo"
+                    >
+                      Embryo Development
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/cardiovascular"
+                    >
+                      Cardiovascular
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/understand/accessing-the-data/"
+                >
+                  Accessing the Data
+                </a>
+                <div
+                  class="sub-pages"
+                >
+                  <p>
+                    <a
+                      href="/release"
+                    >
+                      Latest Data Release
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-api/"
+                    >
+                      Access via API
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-ftp/"
+                    >
+                      Access via FTP
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/batchQuery"
+                    >
+                      Batch query
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/understand/advanced-tools/"
+                >
+                  Advanced Tools
+                </a>
+                <div
+                  class="sub-pages"
+                >
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/advanced-tools/diseasemodels/"
+                    >
+                      Disease Models
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/advanced-tools/phenodcc-homepage/"
+                    >
+                      PhenoDCC Tools
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/advanced-tools/imits/"
+                    >
+                      GenTaR
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/advanced-tools/openstats/"
+                    >
+                      OpenStats
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/advanced-tools/impress/"
+                    >
+                      IMPReSS
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/advanced-tools/embryo-viewer/"
+                    >
+                      Embryo Viewer
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/understand/advanced-tools/software/"
+                    >
+                      Software
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="data-menu__drop"
+        />
+      </div>
+      <div
+        class="publications-menu sub-menu d-none d-lg-block collapse"
+        id="publications-menu"
+      >
+        <div
+          class="publications-menu__inside sub-menu__inside"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="row justify-content-end"
+            >
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/publications/latest-impc-papers/"
+                >
+                  Latest IMPC Papers
+                </a>
+                <div
+                  class="sub-pages"
+                />
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/"
+                >
+                  Data Supporting IMPC Papers
+                </a>
+                <div
+                  class="sub-pages"
+                >
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
+                    >
+                      Pain Sensitivity Associated Genes
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/essential-genes-linking-to-disease-2/"
+                    >
+                      Essential Genes - Linking to Disease
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/conservation"
+                    >
+                      Essential Genes - Translating to Other Species
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/sexual-dimorphism"
+                    >
+                      Sexual Dimorphism
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/hearing"
+                    >
+                      Genes Critical for Hearing Identified
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      href="/metabolism"
+                    >
+                      Genetic Basis for Metabolic Diseases
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="col col-auto text-left"
+              >
+                <a
+                  href="/publications"
+                >
+                  Papers Using IMPC Resources
+                </a>
+                <div
+                  class="sub-pages"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="publications-menu__drop"
+        />
+      </div>
+    </div>
+    <div
+      class="mobile-nav collapse"
+      id="navbarToggleExternalContent"
+    >
+      <button
+        aria-controls="navbarToggleExternalContent"
+        aria-label="Toggle navigation"
+        class="navbar-toggler"
+        type="button"
+      >
+        <span
+          class="icon-bar top-bar"
+        />
+        <span
+          class="icon-bar middle-bar"
+        />
+        <span
+          class="icon-bar bottom-bar"
+        />
+      </button>
+      <div
+        class="mobile-nav__search mb-3"
+      >
+        <form
+          action="/"
+        >
+          <div
+            class="row"
+          >
+            <div
+              class="col col-10 text-left"
+            >
+              <input
+                class="form-control"
+                id="s"
+                name="s"
+                placeholder="Search documentation and news"
+                type="search"
+              />
+            </div>
+            <div
+              class="col col-2 text-right"
+            >
+              <button
+                aria-describedby="svg-inline--fa-title-search-icon"
+                type="submit"
+              >
+                <svg
+                  aria-labelledby="svg-inline--fa-title-search-icon"
+                  class="svg-inline--fa fa-magnifying-glass "
+                  data-icon="magnifying-glass"
+                  data-prefix="fas"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title
+                    id="svg-inline--fa-title-search-icon"
+                  >
+                    Search button
+                  </title>
+                  <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col-12"
+        >
+          <h3
+            class="mt-2"
+          >
+            <a
+              class=""
+              href="/data/summary"
+            >
+              My Genes
+            </a>
+          </h3>
+          <h3
+            class="mt-2"
+          >
+            <a
+              class="about-impc"
+              href="https://www.mousephenotype.org/about-impc/"
+            >
+              About the IMPC
+            </a>
+          </h3>
+          <div
+            class="mobile-nav__sub-pages"
+          >
+            <p>
+              <a
+                href="https://www.mousephenotype.org/about-impc/consortium-members/"
+              >
+                Institutional Members
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+            <p>
+              <a
+                href="https://www.mousephenotype.org/about-impc/collaborations/"
+              >
+                Collaborations
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+            <p>
+              <a
+                href="https://www.mousephenotype.org/about-impc/corporate-associates/"
+              >
+                Corporate Associates
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+            <p>
+              <a
+                href="https://www.mousephenotype.org/about-impc/funding/"
+              >
+                Funding
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+            <p>
+              <a
+                href="https://www.mousephenotype.org/about-impc/animal-welfare/"
+              >
+                Animal Welfare
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+            <p>
+              <a
+                href="https://www.mousephenotype.org/about-impc/about-komp/"
+              >
+                About KOMP
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+            <p>
+              <a
+                href="https://www.mousephenotype.org/about-impc/impc-award-of-excellence/"
+              >
+                Awards of Excellence
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+          </div>
+          <h3
+            class="mt-2"
+          >
+            <a
+              class="data"
+              href="https://www.mousephenotype.org/understand/"
+            >
+              Data
+            </a>
+          </h3>
+          <div
+            class="mobile-nav__sub-pages"
+          >
+            <p>
+              <a
+                href="https://www.mousephenotype.org/understand/training-workshops/"
+              >
+                Training & Workshops
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            >
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/training-workshops/training/"
+                >
+                  Training
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/training-workshops/workshops/"
+                >
+                  Workshops
+                </a>
+              </p>
+            </div>
+            <p>
+              <a
+                href="https://www.mousephenotype.org/understand/start-using-the-impc/"
+              >
+                Getting Started with IMPC Data
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            >
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/"
+                >
+                  IMPC Data Generation
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/start-using-the-impc/how-to-use-gene-pages/"
+                >
+                  How to Use Gene Pages
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/start-using-the-impc/citing-the-impc/"
+                >
+                  Citing IMPC Data
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/"
+                >
+                  Allele design
+                </a>
+              </p>
+            </div>
+            <p>
+              <a
+                href="https://www.mousephenotype.org/understand/data-collections/"
+              >
+                IMPC Data Collections
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            >
+              <p>
+                <a
+                  href="/late-adult-data"
+                >
+                  Late Adult Data
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/histopath"
+                >
+                  Histopathology
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/essential-genes"
+                >
+                  Essential genes
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/embryo"
+                >
+                  Embryo Development
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/cardiovascular"
+                >
+                  Cardiovascular
+                </a>
+              </p>
+            </div>
+            <p>
+              <a
+                href="https://www.mousephenotype.org/understand/accessing-the-data/"
+              >
+                Accessing the Data
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            >
+              <p>
+                <a
+                  href="/release"
+                >
+                  Latest Data Release
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-api/"
+                >
+                  Access via API
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-ftp/"
+                >
+                  Access via FTP
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/batchQuery"
+                >
+                  Batch query
+                </a>
+              </p>
+            </div>
+            <p>
+              <a
+                href="https://www.mousephenotype.org/understand/advanced-tools/"
+              >
+                Advanced Tools
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            >
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/advanced-tools/diseasemodels/"
+                >
+                  Disease Models
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/advanced-tools/phenodcc-homepage/"
+                >
+                  PhenoDCC Tools
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/advanced-tools/imits/"
+                >
+                  GenTaR
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/advanced-tools/openstats/"
+                >
+                  OpenStats
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/advanced-tools/impress/"
+                >
+                  IMPReSS
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/advanced-tools/embryo-viewer/"
+                >
+                  Embryo Viewer
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/understand/advanced-tools/software/"
+                >
+                  Software
+                </a>
+              </p>
+            </div>
+          </div>
+          <h3
+            class="mt-2"
+          >
+            <a
+              class="human-diseases"
+              href="https://www.mousephenotype.org/human-diseases/"
+            >
+              Human Diseases
+            </a>
+          </h3>
+          <div
+            class="mobile-nav__sub-pages"
+          />
+          <h3
+            class="mt-2"
+          >
+            <a
+              class="publications"
+              href="https://www.mousephenotype.org/publications/"
+            >
+              Publications
+            </a>
+          </h3>
+          <div
+            class="mobile-nav__sub-pages"
+          >
+            <p>
+              <a
+                href="https://www.mousephenotype.org/publications/latest-impc-papers/"
+              >
+                Latest IMPC Papers
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+            <p>
+              <a
+                href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/"
+              >
+                Data Supporting IMPC Papers
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            >
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
+                >
+                  Pain Sensitivity Associated Genes
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/essential-genes-linking-to-disease-2/"
+                >
+                  Essential Genes - Linking to Disease
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/conservation"
+                >
+                  Essential Genes - Translating to Other Species
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/sexual-dimorphism"
+                >
+                  Sexual Dimorphism
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/hearing"
+                >
+                  Genes Critical for Hearing Identified
+                </a>
+              </p>
+              <p>
+                <a
+                  href="/metabolism"
+                >
+                  Genetic Basis for Metabolic Diseases
+                </a>
+              </p>
+            </div>
+            <p>
+              <a
+                href="/publications"
+              >
+                Papers Using IMPC Resources
+              </a>
+            </p>
+            <div
+              class="sub-pages"
+            />
+          </div>
+          <h3
+            class="mt-2"
+          >
+            <a
+              class="news"
+              href="https://www.mousephenotype.org/news/"
+            >
+              News
+            </a>
+          </h3>
+          <div
+            class="mobile-nav__sub-pages"
+          />
+          <h3
+            class="mt-2"
+          >
+            <a
+              class="blog"
+              href="https://www.mousephenotype.org/blog/"
+            >
+              Blog
+            </a>
+          </h3>
+          <div
+            class="mobile-nav__sub-pages"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

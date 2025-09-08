@@ -14,6 +14,8 @@ export const DATA_RELEASE_VERSION =
   process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
 export const PUBLICATIONS_ENDPOINT_URL =
   process.env.NEXT_PUBLIC_PUBLICATIONS_ENDPOINT_URL || "";
+export const GENOME_BROWSER_DATA_URL =
+  process.env.NEXT_PUBLIC_GENOME_BROWSER_DATA_URL || "";
 
 const WEBSITE_ENV = process.env.WEBSITE_ENV || "production";
 
@@ -83,9 +85,13 @@ export async function fetchMHPlotDataFromS3(mpId: string) {
   return await response.json();
 }
 
-export async function fetchLandingPageData(landingPageId: string) {
+export async function fetchLandingPageData(
+  landingPageId: string,
+  fetchOpts = {},
+) {
   const response = await fetch(
     `${LANDING_PAGE_DATA_URL}/${landingPageId}.json`,
+    fetchOpts,
   );
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);

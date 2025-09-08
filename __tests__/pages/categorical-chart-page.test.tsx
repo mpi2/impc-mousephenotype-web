@@ -59,7 +59,7 @@ describe("Categorical Chart page", () => {
     window.URL.createObjectURL = jest.fn();
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:104785/MP:0001486/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:104785/MP:0001486/dataset`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },

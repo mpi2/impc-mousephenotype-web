@@ -161,9 +161,10 @@
     }
   }
   :global(.header__nav) {
+    height: 79px;
+    line-height: 79px;
     li {
       display: inline-block;
-      padding: 1.5625rem 0;
       margin-left: 1.5625rem;
       a {
         color: inherit;
@@ -208,7 +209,7 @@
     &:global(.active) {
       height: auto;
       max-height: 500px;
-      z-index: 1;
+      z-index: 10;
     }
     :global(.sub-menu__inside) {
       padding: 2.1875rem 0;

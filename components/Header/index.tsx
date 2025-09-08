@@ -94,16 +94,26 @@ const Header = () => {
   return (
     <div className={headerCss.header}>
       <div className="header__nav-top d-none d-lg-block">
-        <div className="container text-right">
+        <div style={{ maxWidth: 1240 }} className="container text-right">
           <div className="row">
             <div className="col">
               <div className="menu-top-nav-container">
                 <ul id="menu-top-nav" className="menu">
                   <li className="menu-item">
+                    <a href="https://www.mousephenotype.org/help/faqs/how-do-i-cite-the-impc/">
+                      Cite IMPC
+                    </a>
+                  </li>
+                  <li className="menu-item">
                     <a href="//www.mousephenotype.org/help/">Help</a>
                   </li>
                   <li className="menu-item">
                     <a href="https://cloud.mousephenotype.org">IMPC Cloud</a>
+                  </li>
+                  <li className="menu-item">
+                    <a href="https://www.mousephenotype.org/about-impc/become-an-impc-member/">
+                      Join the IMPC
+                    </a>
                   </li>
                   <li className="menu-item">
                     <a href="//www.mousephenotype.org/contact-us/">
@@ -118,7 +128,7 @@ const Header = () => {
       </div>
       <div>
         <div className="header__nav">
-          <div className="container">
+          <div style={{ maxWidth: 1240 }} className="container">
             <div className="row">
               <div
                 className="col-6 col-md-3"

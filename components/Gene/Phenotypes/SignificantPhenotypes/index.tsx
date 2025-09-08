@@ -38,7 +38,7 @@ const SignificantPhenotypes = ({
       (payload) => {
         setSelectedSystem(payload);
         document.querySelector("#data")?.scrollIntoView();
-      }
+      },
     );
     return () => {
       unsubscribeOnSystemSelection();
@@ -46,10 +46,10 @@ const SignificantPhenotypes = ({
   }, []);
 
   const alleles = uniq(
-    phenotypeData.map((phenotype) => phenotype.alleleSymbol)
+    phenotypeData.map((phenotype) => phenotype.alleleSymbol),
   );
   const systems = uniq(
-    phenotypeData.flatMap((p) => p.topLevelPhenotypes?.map((tl) => tl.name))
+    phenotypeData.flatMap((p) => p.topLevelPhenotypes?.map((tl) => tl.name)),
   );
   const lifeStages = uniq(phenotypeData.map((p) => p.lifeStageName));
   const zygosities = uniq(phenotypeData.map((p) => p.zygosity));
@@ -67,16 +67,16 @@ const SignificantPhenotypes = ({
         `${phenotypeName} ${phenotypeId}`.toLowerCase().includes(query)) &&
       (!selectedSystem ||
         (topLevelPhenotypes ?? []).some(
-          ({ name }) => name === selectedSystem
+          ({ name }) => name === selectedSystem,
         )) &&
       (!selectedLifeStage || lifeStageName === selectedLifeStage) &&
-      (!selectedZygosity || zygosity === selectedZygosity)
+      (!selectedZygosity || zygosity === selectedZygosity),
   );
 
   const sortPhenotypes = (
     data: Array<GenePhenotypeHits>,
     field: keyof GenePhenotypeHits,
-    order: "asc" | "desc"
+    order: "asc" | "desc",
   ) => {
     if (field === "pValue") {
       return data.sort((p1, p2) => {
@@ -166,7 +166,7 @@ const SignificantPhenotypes = ({
                 { key: "phenotypingCentre", label: "Phenotyping center" },
                 {
                   key: "pValue",
-                  label: "Most significant P-value",
+                  label: "Most significant P-Value",
                   getValueFn: (item) => item?.pValue?.toString(10) || "-",
                 },
               ]}
@@ -218,7 +218,7 @@ const SignificantPhenotypes = ({
           },
           {
             width: 0.7,
-            label: "Significant P-value",
+            label: "Significant P-Value",
             field: "pValue",
             cmp: <SignificantPValueCell onRefHover={onRefHover} />,
           },

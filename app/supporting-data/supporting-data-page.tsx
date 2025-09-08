@@ -38,6 +38,7 @@ const generateParamsObject = (
     "pipelineStableId",
     "procedureStableId",
     "phenotypingCentre",
+    "lifeStageName",
   ];
   const result = {};
   params.forEach((param) => (result[param] = searchParams.get(param)));

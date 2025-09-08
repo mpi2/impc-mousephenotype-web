@@ -7,6 +7,7 @@ exports[`Footer component renders correctly 1`] = `
   >
     <div
       class="container"
+      style="max-width: 1240px;"
     >
       <div
         class="row"
@@ -81,16 +82,6 @@ exports[`Footer component renders correctly 1`] = `
               id="menu-main-nav-1"
             >
               <li
-                class="menu-item "
-                id=""
-              >
-                <a
-                  href="/data/summary"
-                >
-                  My Genes
-                </a>
-              </li>
-              <li
                 class="menu-item about-impc"
                 id="about-impc"
               >
@@ -164,6 +155,16 @@ exports[`Footer component renders correctly 1`] = `
               id="menu-top-nav-1"
             >
               <li
+                class="impc-badge menu-item menu-item-type-post_type menu-item-object-page"
+              >
+                <a
+                  href="https://www.mousephenotype.org/help/faqs/how-do-i-cite-the-impc/"
+                  style="border-left: 3px solid #ed7b25; padding-left: 7px;"
+                >
+                  Cite IMPC
+                </a>
+              </li>
+              <li
                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13"
               >
                 <a
@@ -179,6 +180,15 @@ exports[`Footer component renders correctly 1`] = `
                   href="http://cloud.mousephenotype.org"
                 >
                   IMPC Cloud
+                </a>
+              </li>
+              <li
+                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"
+              >
+                <a
+                  href="https://www.mousephenotype.org/about-impc/become-an-impc-member/"
+                >
+                  Join the IMPC
                 </a>
               </li>
               <li
@@ -233,34 +243,6 @@ exports[`Footer component renders correctly 1`] = `
             </li>
             <li>
               <a
-                href="https://twitter.com/impc"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <span
-                  class="sr-only"
-                >
-                  IMPC Twitter
-                </span>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-twitter fa-2x "
-                  data-icon="twitter"
-                  data-prefix="fab"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
                 href="https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww"
                 rel="noreferrer"
                 target="_blank"
@@ -282,62 +264,6 @@ exports[`Footer component renders correctly 1`] = `
                 >
                   <path
                     d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.facebook.com/InternationalMousePhenotypingConsortium"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <span
-                  class="sr-only"
-                >
-                  IMPC Facebook
-                </span>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-square-facebook fa-2x "
-                  data-icon="square-facebook"
-                  data-prefix="fab"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.reddit.com/user/MousePhenotyping"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <span
-                  class="sr-only"
-                >
-                  IMPC Reddit
-                </span>
-                <svg
-                  aria-hidden="true"
-                  class="svg-inline--fa fa-reddit fa-2x "
-                  data-icon="reddit"
-                  data-prefix="fab"
-                  focusable="false"
-                  role="img"
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"
                     fill="currentColor"
                   />
                 </svg>

@@ -29,6 +29,7 @@ build_main_image:
     - mkdir -p "$MOUNT_POINT"
     - echo "${CI_REGISTRY_PASSWORD}" | docker login -u "${CI_REGISTRY_USER}" --password-stdin  ${CI_REGISTRY}
   script:
+    - sed -i "s|FROM node|FROM '$LOCAL_GITLAB_NODE_IMAGE'|g" Dockerfile
     - |
       if [[ "${REQUIRES_REBUILD_IMAGE}" == "true" ]]; then
           echo "Building latest image"
@@ -60,7 +61,7 @@ build_main_image:
 jest_unit_tests:
   stage: test
   needs: []
-  image: $CI_REGISTRY/mouse-informatics/node:lts-bookworm
+  image: node:lts-bookworm
   cache:
     key:
       files:

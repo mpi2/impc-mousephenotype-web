@@ -72,7 +72,6 @@ const Oligo = () => {
                   color: "inherit",
                 }}
                 onClick={() => {
-                  console.log("BACK");
                   router.back();
                 }}
               >

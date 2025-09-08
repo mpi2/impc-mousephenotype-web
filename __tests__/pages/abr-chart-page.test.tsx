@@ -11,6 +11,8 @@ import dataset1Data from "../../mocks/data/tests/datasets/5682218200528351d763e1
 import dataset2Data from "../../mocks/data/tests/datasets/3f1010ee50e0cd27cc2da4a7f3f7ec42.json";
 import dataset3Data from "../../mocks/data/tests/datasets/73fcc7c348c83f166e9feceff9736854.json";
 import dataset4Data from "../../mocks/data/tests/datasets/fc0ea562c56ef142a9c6302af51c885c.json";
+import dataset5Data from "../../mocks/data/tests/datasets/3b41a386c9a534842de1b3ae57a1b2f6.json";
+import dataset6Data from "../../mocks/data/tests/datasets/4bf270e94dee210fa3a5a57da8035b59.json";
 
 window.ResizeObserver =
   window.ResizeObserver ||
@@ -64,7 +66,7 @@ describe("ABR Chart page", () => {
     window.URL.createObjectURL = jest.fn();
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:1929293/MP:0004738/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:1929293/MP:0004738/dataset`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },
@@ -122,6 +124,22 @@ describe("ABR Chart page", () => {
         },
       ),
     );
+    testServer.use(
+      rest.get(
+        `${TEST_DATASETS_ENDPOINT}/3b41a386c9a534842de1b3ae57a1b2f6.json`,
+        (req, res, ctx) => {
+          return res(ctx.json(dataset5Data));
+        },
+      ),
+    );
+    testServer.use(
+      rest.get(
+        `${TEST_DATASETS_ENDPOINT}/4bf270e94dee210fa3a5a57da8035b59.json`,
+        (req, res, ctx) => {
+          return res(ctx.json(dataset6Data));
+        },
+      ),
+    );
     const { container } = renderWithClient(
       <SupportingDataPage initialDatasets={[]} />,
     );
@@ -130,6 +148,11 @@ describe("ABR Chart page", () => {
         "abnormal auditory brainstem response",
       ),
     );
+    await waitFor(async () => {
+      expect(screen.getByTestId("back-to-gene-page-link")).toHaveTextContent(
+        "Go Back to Cib2",
+      );
+    });
     expect(container).toMatchSnapshot();
   });
 });

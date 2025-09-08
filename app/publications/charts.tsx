@@ -317,7 +317,7 @@ export function GrantSection({ data }: GrantSectionProps) {
           Table view
         </button>
         <a
-          className="btn impc-secondary-button small"
+          className="btn impc-secondary-button small download-data"
           onClick={onDownloadBtnClick}
           style={{ marginLeft: "auto" }}
         >

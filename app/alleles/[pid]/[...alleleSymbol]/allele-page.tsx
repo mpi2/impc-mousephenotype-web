@@ -139,6 +139,8 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
     },
   ];
 
+  const isVelocigeneAllele = alleleSymbol.endsWith("Vlcg");
+
   return (
     <>
       <Search />
@@ -175,7 +177,7 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
             ))}
           </div>
         </Card>
-        {doesEsCellProductsExist && (
+        {doesEsCellProductsExist && !isVelocigeneAllele && (
           <AlleleMap
             mgiGeneAccessionId={mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
@@ -219,9 +221,6 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
         <GenomeBrowser
           geneSymbol={alleleData.geneSymbol}
           mgiGeneAccessionId={mgiGeneAccessionId}
-          hasCRISPRData={doesCrisprProductsExist}
-          hasEsCellData={doesEsCellProductsExist}
-          hasTargetingVectorData={doesTargetingVectorProductsExist}
         />
         <Card>
           <Link

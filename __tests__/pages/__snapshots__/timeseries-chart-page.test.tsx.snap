@@ -82,6 +82,7 @@ exports[`Timeseries Chart page renders correctly 1`] = `
       >
         <span
           class="subheadingSection primary"
+          data-testid="back-to-gene-page-link"
         >
           <a
             class="mb-3 link"
@@ -9640,7 +9641,7 @@ exports[`Timeseries Chart page renders correctly 1`] = `
                 Download data as:
                  
                 <button
-                  class="btn impc-secondary-button small"
+                  class="btn impc-secondary-button small download-data"
                 >
                   <svg
                     aria-hidden="true"
@@ -9661,7 +9662,7 @@ exports[`Timeseries Chart page renders correctly 1`] = `
                 </button>
                  
                 <button
-                  class="btn impc-secondary-button small"
+                  class="btn impc-secondary-button small download-data"
                 >
                   <svg
                     aria-hidden="true"

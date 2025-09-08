@@ -9,14 +9,18 @@ type ChartNavProps = {
   mgiGeneAccessionId: string;
   geneSymbol: string | undefined;
   isFetching: boolean;
+  className?: string;
 };
 
 const ChartNav = (props: ChartNavProps) => {
-  const { mgiGeneAccessionId, geneSymbol, isFetching } = props;
+  const { mgiGeneAccessionId, geneSymbol, isFetching, className } = props;
 
   return (
-    <div className={styles.subheading}>
-      <span className={`${styles.subheadingSection} primary`}>
+    <div className={classNames(styles.subheading, className)}>
+      <span
+        className={`${styles.subheadingSection} primary`}
+        data-testid="back-to-gene-page-link"
+      >
         <Link
           href={`/genes/${mgiGeneAccessionId}`}
           className={classNames("mb-3", styles.link)}

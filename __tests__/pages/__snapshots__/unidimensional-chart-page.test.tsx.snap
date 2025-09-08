@@ -82,6 +82,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
       >
         <span
           class="subheadingSection primary"
+          data-testid="back-to-gene-page-link"
         >
           <a
             class="mb-3 link"
@@ -144,7 +145,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
         style="color: rgb(121, 118, 118); font-size: 95%;"
       >
         <span>
-          P-values equal or lower to 10
+          P-Values equal or lower to 10
           <sup>
             -4
           </sup>
@@ -494,7 +495,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   class="inlineButton headerButton"
                   style="font-weight: inherit;"
                 >
-                  P Value
+                  P-Value
                    
                   <span
                     class="defaultIcons"
@@ -1044,7 +1045,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   class="mb-0"
                 >
                   <strong>
-                    Genotype P value
+                    Genotype P-Value
                   </strong>
                 </p>
                 <p>
@@ -1058,7 +1059,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   class="mb-0"
                 >
                   <strong>
-                    Genotype*Female P value
+                    Genotype*Female P-Value
                   </strong>
                 </p>
                 <p>
@@ -1072,7 +1073,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   class="mb-0"
                 >
                   <strong>
-                    Genotype*Male P value
+                    Genotype*Male P-Value
                   </strong>
                 </p>
                 <p>
@@ -1092,6 +1093,254 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 <p>
                   Overally significant [level =  1e-04 , pvalue =  2.41584530158434e-12 ]; and with phenotype threshold value 1e-04 - females only
                 </p>
+              </div>
+            </div>
+            <div
+              class="card"
+            >
+              <div
+                class="titleWrapper"
+              >
+                <h2>
+                  Statistical method
+                </h2>
+                <a
+                  aria-label="Statistical analysis documentation"
+                  class="btn"
+                  href="https://dev.mousephenotype.org/help/data-analysis/statistical-analysis/"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-circle-question fa-xl "
+                    data-icon="circle-question"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <span>
+                <b>
+                  Linear Mixed Model framework, LME, including Weight
+                </b>
+              </span>
+              <div
+                class="tableWrapper"
+              >
+                <table
+                  class="table striped table table table-bordered"
+                >
+                  <thead>
+                    <tr>
+                      <th
+                        rowspan="2"
+                        width="66.66666666666666%"
+                      >
+                        <button
+                          class="inlineButton headerButton disabled"
+                          style="font-weight: inherit;"
+                        >
+                          Model attribute
+                           
+                        </button>
+                      </th>
+                      <th
+                        rowspan="2"
+                        width="33.33333333333333%"
+                      >
+                        <button
+                          class="inlineButton headerButton disabled"
+                          style="font-weight: inherit;"
+                        >
+                          Value
+                           
+                        </button>
+                      </th>
+                    </tr>
+                    <tr />
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        Batch effect significant
+                      </td>
+                      <td>
+                        True
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Variance significant
+                      </td>
+                      <td>
+                        True
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Genotype*Sex interaction effect P-Value
+                      </td>
+                      <td>
+                        9.75
+                        x10
+                        <sup>
+                          -8
+                        </sup>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Genotype parameter estimate
+                      </td>
+                      <td>
+                        -0.081
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Genotype standard error estimate
+                      </td>
+                      <td>
+                        0.057
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Genotype Effect P-Value
+                      </td>
+                      <td>
+                        2.42
+                        x10
+                        <sup>
+                          -12
+                        </sup>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Sex Parameter Estimate
+                      </td>
+                      <td>
+                        -0.081
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Sex Standard Error Estimate
+                      </td>
+                      <td>
+                        0.018
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Sex Effect P-Value
+                      </td>
+                      <td>
+                        7.69
+                        x10
+                        <sup>
+                          -6
+                        </sup>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Intercept Estimate
+                      </td>
+                      <td>
+                        7.392
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Intercept Estimate Standard Error
+                      </td>
+                      <td>
+                        0.061
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Sex Male KO P-Value
+                      </td>
+                      <td>
+                        7.62
+                        x10
+                        <sup>
+                          -1
+                        </sup>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Sex Female KO P-Value
+                      </td>
+                      <td>
+                        2.42
+                        x10
+                        <sup>
+                          -12
+                        </sup>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        WT Residuals Normality Tests
+                      </td>
+                      <td>
+                        3.06
+                        x10
+                        <sup>
+                          -4
+                        </sup>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        KO Residuals Normality Tests
+                      </td>
+                      <td>
+                        3.64
+                        x10
+                        <sup>
+                          -1
+                        </sup>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Weight Effect P-Value
+                      </td>
+                      <td>
+                        N/A
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Weight Effect Parameter Estimate
+                      </td>
+                      <td>
+                        N/A
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Weight Effect Standard Error Estimate
+                      </td>
+                      <td>
+                        N/A
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -1216,208 +1465,6 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 </table>
               </div>
             </div>
-          </div>
-          <div
-            class="col-lg-6"
-          >
-            <div
-              class="card"
-            >
-              <h2>
-                Statistical method
-              </h2>
-              <div
-                class="tableWrapper"
-              >
-                <table
-                  class="table striped table table-bordered"
-                >
-                  <thead>
-                    <tr>
-                      <th
-                        rowspan="2"
-                        width="66.66666666666666%"
-                      >
-                        <button
-                          class="inlineButton headerButton disabled"
-                          style="font-weight: inherit;"
-                        >
-                          Model attribute
-                           
-                        </button>
-                      </th>
-                      <th
-                        rowspan="2"
-                        width="33.33333333333333%"
-                      >
-                        <button
-                          class="inlineButton headerButton disabled"
-                          style="font-weight: inherit;"
-                        >
-                          Value
-                           
-                        </button>
-                      </th>
-                    </tr>
-                    <tr />
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        Batch effect significant 
-                      </td>
-                      <td>
-                        true
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Variance significant 
-                      </td>
-                      <td>
-                        true
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Genotype*Sex interaction effect p value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Genotype parameter estimate 
-                      </td>
-                      <td>
-                        -0.081
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Genotype standard error estimate 
-                      </td>
-                      <td>
-                        0.057
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Genotype Effect P Value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Parameter Estimate 
-                      </td>
-                      <td>
-                        -0.081
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Standard Error Estimate 
-                      </td>
-                      <td>
-                        0.018
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Effect P Value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Intercept Estimate 
-                      </td>
-                      <td>
-                        7.392
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Intercept Estimate Standard Error 
-                      </td>
-                      <td>
-                        0.061
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Male KO P Value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Sex Female KO P Value 
-                      </td>
-                      <td>
-                        2.42
-                        x10
-                        <sup>
-                          -12
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        WT Residuals Normality Tests 
-                      </td>
-                      <td>
-                        3.06
-                        x10
-                        <sup>
-                          -4
-                        </sup>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        KO Residuals Normality Tests 
-                      </td>
-                      <td>
-                        3.64
-                        x10
-                        <sup>
-                          -1
-                        </sup>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-lg-6"
-          >
             <div
               class="card"
             >
@@ -1542,7 +1589,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:104785%22&fq=phenotyping_center:(%22TCP%22)&fq=allele_accession_id:%22MGI:6257724%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_DXA_006_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
                   target="_blank"
                 >
-                  Genotype phentoype association
+                  Genotype phenotype association
                    (
                   XML
                   ) 
@@ -1603,7 +1650,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 Download data as:
                  
                 <button
-                  class="btn impc-secondary-button small"
+                  class="btn impc-secondary-button small download-data"
                 >
                   <svg
                     aria-hidden="true"
@@ -1624,7 +1671,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 </button>
                  
                 <button
-                  class="btn impc-secondary-button small"
+                  class="btn impc-secondary-button small download-data"
                 >
                   <svg
                     aria-hidden="true"

@@ -59,7 +59,7 @@ describe("Unidimensional Chart page", () => {
     window.URL.createObjectURL = jest.fn();
     testServer.use(
       rest.get(
-        `${API_URL}/api/v1/genes/MGI:104785/MP:0001258/dataset/`,
+        `${API_URL}/api/v1/genes/MGI:104785/MP:0001258/dataset`,
         (req, res, ctx) => {
           return res(ctx.json(chartData));
         },
@@ -76,6 +76,14 @@ describe("Unidimensional Chart page", () => {
     const { container } = renderWithClient(
       <SupportingDataPage initialDatasets={[]} />,
     );
+    await waitFor(
+      async () => {
+        expect(
+          screen.queryByTestId("back-to-gene-page-link"),
+        ).toHaveTextContent("Go Back to Myo6");
+      },
+      { interval: 500, timeout: 5000 },
+    );
     await waitFor(() =>
       expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
         "decreased body length",
@@ -83,8 +91,9 @@ describe("Unidimensional Chart page", () => {
     );
     await waitFor(async () => {
       const rows = await screen.findAllByRole("row");
-      return expect(rows.length).toEqual(30);
+      return expect(rows.length).toEqual(33);
     });
+    await new Promise(process.nextTick);
     expect(container).toMatchSnapshot();
   });
 });
