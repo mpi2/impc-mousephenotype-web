@@ -260,7 +260,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
             strokeWidth={2}
             strokeDasharray="5 4"
           />
-          {Object.entries(chartData).map(([item, points]) => {
+          {Object.entries(chartData).map(([item, points], index) => {
             const chartLabel = isByProcedure
               ? procedureColorMap[item]
               : systemColorMap[item];
@@ -276,10 +276,9 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
                 ? chartLabel.color
                 : chroma(chartLabel.color).alpha(0.1);
             return (
-              <Group fill={fillColor}>
+              <Group fill={fillColor} key={index}>
                 {points.map((x, i) => {
                   const sharedProps = {
-                    key: i,
                     onMouseMove: () =>
                       handleMouseMove(
                         xScale(x.chartValue),
@@ -299,6 +298,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
                   if (x.pValue === 0 && x.significant) {
                     return (
                       <GlyphTriangle
+                        key={i}
                         left={xScale(x.chartValue)}
                         top={yScale(x.arrPos)}
                         size={110}
@@ -315,6 +315,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
                   }
                   return (
                     <GlyphIcon
+                      key={i}
                       left={xScale(x.chartValue)}
                       top={yScale(x.arrPos)}
                       size={80}
