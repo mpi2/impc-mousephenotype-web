@@ -8,6 +8,13 @@ export type GoTerm = {
   go_name: string;
   go_term_specificity: number;
   references: string;
+  direct_ancestors: Array<[string, string]>;
+};
+
+export type SlimGoTerm = {
+  id: string;
+  name: string;
+  aspect: string;
 };
 
 export type BatchQueryItem = {

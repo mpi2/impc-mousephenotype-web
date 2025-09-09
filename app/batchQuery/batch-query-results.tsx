@@ -1,4 +1,13 @@
-import { Alert, Button, Col, Row, Spinner, Tab, Tabs } from "react-bootstrap";
+import {
+  Alert,
+  Button,
+  Col,
+  Row,
+  Spinner,
+  Tab,
+  Tabs,
+  ListGroup,
+} from "react-bootstrap";
 import Select from "react-select";
 import { AlleleSymbol, Pagination, SortableTable } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,11 +23,14 @@ import {
   SelectedAlleleData,
   SelectOptions,
   SortType,
+  SlimGoTerm,
 } from "@/models";
 import { PropsWithChildren, useMemo, useState } from "react";
 import Link from "next/link";
 import { formatAlleleSymbol } from "@/utils";
 import { BodySystem } from "@/components/BodySystemIcon";
+import { uniqBy, groupBy } from "lodash";
+import styles from "./batch-query-results.module.scss";
 
 const formatOptionLabel = ({ value, label, numHits }, { context }) => {
   return (
@@ -59,12 +71,31 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
   const [openAlleleView, setOpenAlleleView] = useState(false);
   const [openGOView, setOpenGoView] = useState(false);
   const { mouseGeneSymbol, geneId, humanGeneIds, humanGeneSymbols } = geneData;
-  const sortGoTerms = (terms: Array<GoTerm>) => {
-    return terms.sort((a, b) => b.go_term_specificity - a.go_term_specificity);
-  };
+  const { slimTerms, slimTermsNumber } = useMemo(() => {
+    const allTerms = uniqBy(
+      geneData.goTerms.flatMap((term) => {
+        if (term.direct_ancestors.length === 0) {
+          return [{ id: term.go_id, name: term.go_name, aspect: term.aspect }];
+        }
+        return term.direct_ancestors.map((ant) => {
+          const [id, name] = ant;
+          return { id, name, aspect: term.aspect };
+        });
+      }),
+      "id",
+    );
+    return {
+      slimTerms: groupBy(allTerms, "aspect"),
+      slimTermsNumber: allTerms.length,
+    };
+  }, [geneData]);
+
+  const sortTerms = (terms: Array<SlimGoTerm>) =>
+    terms.toSorted((a, b) => a.name.localeCompare(b.name));
+
   return (
     <>
-      <tr>
+      <tr key={geneData.geneId}>
         <td>
           <Link className="link primary" href={`/genes/${geneData.geneId}`}>
             {geneId}
@@ -83,7 +114,7 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
               setOpenAlleleView(false);
             }}
           >
-            {openGOView ? "Close" : `${geneData.goTerms.length} term(s)`}
+            {openGOView ? "Close" : `${slimTermsNumber} term(s)`}
             &nbsp;
             <FontAwesomeIcon
               className="link"
@@ -112,61 +143,62 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
         <tr>
           <td></td>
           <td colSpan={6} style={{ padding: 0 }}>
-            <SortableTable
-              withMargin={false}
-              headers={[
-                {
-                  width: 1,
-                  label: "GO ID",
-                  field: "go_id",
-                  disabled: true,
-                },
-                {
-                  width: 1,
-                  label: "GO term",
-                  field: "go_name",
-                  disabled: true,
-                },
-                {
-                  width: 1,
-                  label: "Aspect",
-                  field: "aspect",
-                  disabled: true,
-                },
-                {
-                  width: 1,
-                  label: "Evidence code",
-                  field: "evidence_code",
-                  disabled: true,
-                },
-                {
-                  width: 2,
-                  label: "Number of ancestors in ontology",
-                  field: "go_term_specificity",
-                  disabled: true,
-                },
-              ]}
-            >
-              {sortGoTerms(geneData.goTerms).map((goTerm, i) => {
-                return (
-                  <tr key={goTerm.go_id}>
-                    <td>
+            <div className={styles.goSummaryWrapper}>
+              <div>
+                <span className={styles.title}>
+                  <b>Molecular Function</b>
+                </span>
+                <ListGroup className={styles.list}>
+                  {sortTerms(slimTerms["MF"]).map((term) => (
+                    <ListGroup.Item>
                       <a
                         className="link primary"
-                        href={`https://amigo.geneontology.org/amigo/term/${goTerm.go_id}`}
+                        href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
                         target="_blank"
                       >
-                        {goTerm.go_id}
+                        {term.name}
                       </a>
-                    </td>
-                    <td>{goTerm.go_name}</td>
-                    <td>{goTerm.aspect}</td>
-                    <td>{goTerm.evidence_code}</td>
-                    <td>{goTerm.go_term_specificity}</td>
-                  </tr>
-                );
-              })}
-            </SortableTable>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
+              <div>
+                <span className={styles.title}>
+                  <b>Biological Process</b>
+                </span>
+                <ListGroup className={styles.list}>
+                  {sortTerms(slimTerms["BP"]).map((term) => (
+                    <ListGroup.Item>
+                      <a
+                        className="link primary"
+                        href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
+                        target="_blank"
+                      >
+                        {term.name}
+                      </a>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
+              <div>
+                <span className={styles.title}>
+                  <b>Cellular Component</b>
+                </span>
+                <ListGroup className={styles.list}>
+                  {sortTerms(slimTerms["CC"]).map((term) => (
+                    <ListGroup.Item>
+                      <a
+                        className="link primary"
+                        href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
+                        target="_blank"
+                      >
+                        {term.name}
+                      </a>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
+            </div>
           </td>
         </tr>
       )}

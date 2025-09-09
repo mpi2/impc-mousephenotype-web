@@ -39,6 +39,7 @@ export type {
   SelectedAlleleData,
   DownloadButtonsState,
   SelectOptions,
+  SlimGoTerm,
 } from "./batch-query";
 
 type Model =
