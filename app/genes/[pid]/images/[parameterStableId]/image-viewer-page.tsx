@@ -111,13 +111,16 @@ const ImageInformation = ({
         <FontAwesomeIcon icon={getIcon(image.sex)} />
       </div>
       <div className={styles.indicatorsContainer}>
-        {inViewer ? (
-          <span>{image.zygosity}</span>
-        ) : (
+        {inViewer && !isControlColumn && <span>{image.zygosity}</span>}
+        {!inViewer && (
           <div className={`${styles.common} ${styles.zygosityIndicator}`}>
             <FontAwesomeIcon
               icon={faCircle}
-              style={{ color: getZygosityColor(image.zygosity) }}
+              style={{
+                color: isControlColumn
+                  ? "#FFF"
+                  : getZygosityColor(image.zygosity),
+              }}
             />
           </div>
         )}
