@@ -89,10 +89,12 @@ const ImageInformation = ({
   image,
   inViewer = false,
   showAssocParam = false,
+  isControlColumn = false,
 }: {
   image: Image;
   inViewer?: boolean;
   showAssocParam?: boolean;
+  isControlColumn?: boolean;
 }) => {
   return (
     <div
@@ -232,7 +234,21 @@ const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
   );
 };
 
-const Column = ({ images, selected, onSelection, showAssocParam }) => {
+type ColumnProps = {
+  images: Array<Image>;
+  selected: number;
+  onSelection: (i: number) => void;
+  showAssocParam?: boolean;
+  type: "control" | "mutant";
+};
+
+const Column = ({
+  images,
+  selected,
+  onSelection,
+  showAssocParam,
+  type,
+}: ColumnProps) => {
   return (
     <Row className={styles.images}>
       {images?.map((image, i) => (
@@ -251,7 +267,11 @@ const Column = ({ images, selected, onSelection, showAssocParam }) => {
               width="100%"
               wrapperProps={{ style: { width: "100%" } }}
             />
-            <ImageInformation image={image} showAssocParam={showAssocParam} />
+            <ImageInformation
+              image={image}
+              showAssocParam={showAssocParam}
+              isControlColumn={type === "control"}
+            />
           </div>
         </Col>
       ))}
@@ -619,6 +639,7 @@ const ImagesCompare = ({
                       <ImageInformation
                         image={controlImages[selectedWTImage]}
                         inViewer
+                        isControlColumn
                       />
                     )}
                   </div>
@@ -810,6 +831,7 @@ const ImagesCompare = ({
             <Row>
               <Col sm={6}>
                 <Column
+                  type="control"
                   selected={selectedWTImage}
                   images={controlImages}
                   showAssocParam={showAssocParam}
@@ -818,6 +840,7 @@ const ImagesCompare = ({
               </Col>
               <Col sm={6}>
                 <Column
+                  type="mutant"
                   selected={selectedMutantImage}
                   images={filteredMutantImages}
                   showAssocParam={showAssocParam}
