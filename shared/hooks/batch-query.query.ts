@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { BatchQueryItem } from "@/models";
+import { groupBy, uniqBy } from "lodash";
 
 const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
 
@@ -41,13 +42,33 @@ export const useBatchQuery = (
       !downloadButtonIsBusy,
     select: (response: any) => {
       const { results, notFoundIds } = response;
-      return results.map((gene) => ({
-        ...gene,
-        alleles: gene.alleles.toSorted(
-          (a1, a2) =>
-            a2.significantPhenotypes.length - a1.significantPhenotypes.length,
-        ),
-      }));
+      return results.map((gene) => {
+        const allTerms = uniqBy(
+          gene.goTerms.flatMap((term) => {
+            if (term.direct_ancestors.length === 0) {
+              return [
+                { id: term.go_id, name: term.go_name, aspect: term.aspect },
+              ];
+            }
+            return term.direct_ancestors.map((ant) => {
+              const [id, name] = ant;
+              return { id, name, aspect: term.aspect };
+            });
+          }),
+          "id",
+        );
+        return {
+          ...gene,
+          alleles: gene.alleles.toSorted(
+            (a1, a2) =>
+              a2.significantPhenotypes.length - a1.significantPhenotypes.length,
+          ),
+          slimGoTerms: {
+            terms: groupBy(allTerms, "aspect"),
+            numberOfTerms: allTerms.length,
+          },
+        };
+      });
     },
   });
 };

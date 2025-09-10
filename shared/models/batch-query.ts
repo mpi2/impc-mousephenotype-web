@@ -33,6 +33,10 @@ export type BatchQueryItem = {
     notSignificantSystems: Array<string>;
   }>;
   goTerms: Array<GoTerm>;
+  slimGoTerms: {
+    numberOfTerms: number;
+    terms: Record<string, Array<SlimGoTerm>>;
+  };
 };
 
 export type SelectedAlleleData = {

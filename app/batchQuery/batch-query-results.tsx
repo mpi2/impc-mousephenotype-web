@@ -71,24 +71,6 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
   const [openAlleleView, setOpenAlleleView] = useState(false);
   const [openGOView, setOpenGoView] = useState(false);
   const { mouseGeneSymbol, geneId, humanGeneIds, humanGeneSymbols } = geneData;
-  const { slimTerms, slimTermsNumber } = useMemo(() => {
-    const allTerms = uniqBy(
-      geneData.goTerms.flatMap((term) => {
-        if (term.direct_ancestors.length === 0) {
-          return [{ id: term.go_id, name: term.go_name, aspect: term.aspect }];
-        }
-        return term.direct_ancestors.map((ant) => {
-          const [id, name] = ant;
-          return { id, name, aspect: term.aspect };
-        });
-      }),
-      "id",
-    );
-    return {
-      slimTerms: groupBy(allTerms, "aspect"),
-      slimTermsNumber: allTerms.length,
-    };
-  }, [geneData]);
 
   const sortTerms = (terms: Array<SlimGoTerm>) =>
     terms.toSorted((a, b) => a.name.localeCompare(b.name));
@@ -114,7 +96,9 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
               setOpenAlleleView(false);
             }}
           >
-            {openGOView ? "Close" : `${slimTermsNumber} term(s)`}
+            {openGOView
+              ? "Close"
+              : `${geneData.slimGoTerms.numberOfTerms} term(s)`}
             &nbsp;
             <FontAwesomeIcon
               className="link"
@@ -142,14 +126,14 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
       {openGOView && (
         <tr>
           <td></td>
-          <td colSpan={6} style={{ padding: 0 }}>
+          <td colSpan={7} style={{ padding: 0 }}>
             <div className={styles.goSummaryWrapper}>
               <div>
-                <span className={styles.title}>
+                <span>
                   <b>Molecular Function</b>
                 </span>
                 <ListGroup className={styles.list}>
-                  {sortTerms(slimTerms["MF"]).map((term) => (
+                  {sortTerms(geneData.slimGoTerms.terms["MF"]).map((term) => (
                     <ListGroup.Item>
                       <a
                         className="link primary"
@@ -163,11 +147,11 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                 </ListGroup>
               </div>
               <div>
-                <span className={styles.title}>
+                <span>
                   <b>Biological Process</b>
                 </span>
                 <ListGroup className={styles.list}>
-                  {sortTerms(slimTerms["BP"]).map((term) => (
+                  {sortTerms(geneData.slimGoTerms.terms["BP"]).map((term) => (
                     <ListGroup.Item>
                       <a
                         className="link primary"
@@ -181,11 +165,11 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                 </ListGroup>
               </div>
               <div>
-                <span className={styles.title}>
+                <span>
                   <b>Cellular Component</b>
                 </span>
                 <ListGroup className={styles.list}>
-                  {sortTerms(slimTerms["CC"]).map((term) => (
+                  {sortTerms(geneData.slimGoTerms.terms["CC"]).map((term) => (
                     <ListGroup.Item>
                       <a
                         className="link primary"
@@ -205,7 +189,7 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
       {openAlleleView && (
         <tr key={"phenotype-terms-" + geneId}>
           <td></td>
-          <td colSpan={6} style={{ padding: 0 }}>
+          <td colSpan={7} style={{ padding: 0 }}>
             <SortableTable
               withMargin={false}
               headers={[

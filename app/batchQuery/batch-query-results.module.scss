@@ -3,9 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   padding: 1rem;
-  .title {
-    text-align: center;
-  }
+  text-align: center;
   .list {
     max-height: 410px;
     overflow-y: auto;
