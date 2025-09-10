@@ -339,11 +339,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   </div>
                   <div
                     class="indicatorsContainer"
-                  >
-                    <span>
-                      wildtype
-                    </span>
-                  </div>
+                  />
                 </div>
               </div>
             </div>
