@@ -22,11 +22,12 @@ const fetchSearchResults = async (type: string, term: string) => {
   }
 };
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
+export default async function Page(
+  props: {
+    searchParams: Promise<SearchParams>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const type = searchParams.type ?? "";
   const term = searchParams.term ?? "";
   const results = { numResults: -1, results: [] };
