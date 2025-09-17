@@ -1,5 +1,5 @@
 import DOMPurify from "isomorphic-dompurify";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 export const surroundWithMarkEl = (text: string, query: string | undefined) => {
   if (!query) {
     return text;
@@ -11,7 +11,7 @@ export const surroundWithMarkEl = (text: string, query: string | undefined) => {
           text.slice(matchingSubsIndex, matchingSubsIndex + query.length),
         )
       : "";
-  return ReactHtmlParser(
+  return parse(
     text.replaceAll(
       originalTextMatchedQuery,
       `<mark style="padding: 0;">${originalTextMatchedQuery}</mark>`,
