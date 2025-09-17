@@ -34,7 +34,7 @@ jest.mock("next/navigation", () => {
   };
 });
 
-jest.mock("framer-motion", () => {
+jest.mock("motion/react", () => {
   const FakeTransition = jest
     .fn()
     .mockImplementation(({ children }) => children);

@@ -168,7 +168,7 @@ jest.mock("next/navigation", () => ({
   useParams: jest.fn().mockImplementation(() => ({ pid: "MGI:1922702" })),
 }));
 
-jest.mock("framer-motion", () => {
+jest.mock("motion/react", () => {
   const FakeTransition = jest
     .fn()
     .mockImplementation(({ children }) => children);

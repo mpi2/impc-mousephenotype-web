@@ -9,7 +9,7 @@ import { Dataset, SortType, TableHeader } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
 

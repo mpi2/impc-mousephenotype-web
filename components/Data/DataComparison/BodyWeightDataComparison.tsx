@@ -6,7 +6,7 @@ import { groupData, processData, getBackgroundColorForRow } from "./utils";
 import { Button } from "react-bootstrap";
 import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 type Props = {
   data: Array<Dataset>;
@@ -39,7 +39,7 @@ const BodyWeightDataComparison = (props: Props) => {
 
   const visibleData: Array<DatasetExtra> = useMemo(
     () => sorted.slice(0, visibleRows),
-    [sorted, visibleRows]
+    [sorted, visibleRows],
   );
 
   const tableHeaders = [
