@@ -8,6 +8,10 @@ variables:
   CI_REGISTRY_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH
   DOCKER_TLS_CERTDIR: ""
 
+include:
+  - component: gitlab.com/components/sast/sast@main
+  - component: gitlab.com/components/secret-detection/secret-detection@main
+
 
 stages:
   - build
