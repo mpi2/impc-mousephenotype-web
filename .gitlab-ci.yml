@@ -9,8 +9,7 @@ variables:
   DOCKER_TLS_CERTDIR: ""
 
 include:
-  - component: gitlab.com/components/sast/sast@main
-  - component: gitlab.com/components/secret-detection/secret-detection@main
+  - template: Jobs/SAST.gitlab-ci.yml
 
 
 stages:
