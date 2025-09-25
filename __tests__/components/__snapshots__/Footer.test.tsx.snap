@@ -177,7 +177,7 @@ exports[`Footer component renders correctly 1`] = `
                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"
               >
                 <a
-                  href="http://cloud.mousephenotype.org"
+                  href="https://cloud.mousephenotype.org"
                 >
                   IMPC Cloud
                 </a>
