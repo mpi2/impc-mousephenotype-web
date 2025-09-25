@@ -96,7 +96,7 @@ const Footer = () => {
                   <a href="//www.mousephenotype.org/help/">Help</a>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-14">
-                  <a href="http://cloud.mousephenotype.org">IMPC Cloud</a>
+                  <a href="https://cloud.mousephenotype.org">IMPC Cloud</a>
                 </li>
                 <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-14">
                   <a href="https://www.mousephenotype.org/about-impc/become-an-impc-member/">
