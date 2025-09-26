@@ -1,35 +1,6 @@
 const isProd = process.env.NODE_ENV === "production";
 module.exports = {
   basePath: "/data",
-  //uncomment the following line when deploying with vercel
-  // swcMinify: false,
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/data",
-        permanent: true,
-        basePath: false,
-      },
-      {
-        source: "/",
-        destination: "/search",
-        permanent: true,
-      },
-    ];
-  },
-  // webpack: (config) => {
-  //   config.plugins.push(
-  //     new webpack.ProvidePlugin({
-  //       $: "jquery",
-  //       jQuery: "jquery",
-  //     })
-  //   );
-  //   return config;
-  // },
-  // experimental: {
-  //   outputStandalone: true,
-  // },
   output: "standalone",
 
   typescript: {
