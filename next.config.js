@@ -26,10 +26,6 @@ module.exports = {
             key: "Content-Security-Policy",
             value: cspHeader.replace(/\n/g, ""),
           },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), payment=(), geolocation=()",
-          },
         ],
       },
     ];
