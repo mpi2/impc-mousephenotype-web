@@ -48,4 +48,5 @@ module.exports = {
   cacheHandler: require.resolve(
     "next/dist/server/lib/incremental-cache/file-system-cache.js",
   ),
+  poweredByHeader: false,
 };
