@@ -1,6 +1,5 @@
 import Footer from "../Footer";
 import Header from "../Header";
-import Newsletter from "../Newsletter";
 
 const Layout = ({ children }) => {
   return (
@@ -48,8 +47,7 @@ const Layout = ({ children }) => {
           </div>
         </div>
       </noscript>
-      <main>{children}</main>
-      <Newsletter />
+      <main style={{ paddingBottom: "2.5rem" }}>{children}</main>
       <Footer />
     </div>
   );
