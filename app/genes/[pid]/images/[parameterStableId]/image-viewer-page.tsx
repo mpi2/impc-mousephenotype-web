@@ -42,6 +42,8 @@ type Filters = {
   selectedCenter: string;
 };
 
+const FTP_BIOSTUDIES_URL = "https://ftp.ebi.ac.uk/pub/databases/biostudies";
+
 const addTrailingSlash = (url) => (!url?.endsWith("/") ? url + "/" : url);
 const SkeletonText = ({ width = "300px" }) => (
   <Skeleton style={{ display: "block", width }} inline />
@@ -175,9 +177,15 @@ type ImageViewerProps = {
   image: Image;
   name: string;
   hasAvailableImages: boolean;
+  isXRYParam: boolean;
 };
 
-const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
+const ImageViewer = ({
+  image,
+  name,
+  hasAvailableImages,
+  isXRYParam,
+}: ImageViewerProps) => {
   if (!image && hasAvailableImages) {
     return (
       <Skeleton
@@ -211,6 +219,9 @@ const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
       </div>
     );
   }
+  const imageUrl = isXRYParam
+    ? `${FTP_BIOSTUDIES_URL}${image.ftpUrlPrefix}_full.jpg`
+    : addTrailingSlash(image?.jpegUrl);
   return (
     <TransformWrapper>
       {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
@@ -226,7 +237,7 @@ const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
             <img
               data-testid={`selected-image-${name}`}
               key={image?.jpegUrl}
-              src={addTrailingSlash(image?.jpegUrl)}
+              src={imageUrl}
               style={{ width: "100%", display: "block" }}
               alt=""
             />
@@ -243,6 +254,7 @@ type ColumnProps = {
   onSelection: (i: number) => void;
   showAssocParam?: boolean;
   type: "control" | "mutant";
+  isXRYParam: boolean;
 };
 
 const Column = ({
@@ -251,7 +263,14 @@ const Column = ({
   onSelection,
   showAssocParam,
   type,
+  isXRYParam,
 }: ColumnProps) => {
+  const getThumbnailUrl = (image: Image) => {
+    if (isXRYParam) {
+      return `${FTP_BIOSTUDIES_URL}${image.ftpUrlPrefix}_thumbnail.jpg`;
+    }
+    return addTrailingSlash(image.thumbnailUrl);
+  };
   return (
     <Row className={styles.images}>
       {images?.map((image, i) => (
@@ -264,7 +283,7 @@ const Column = ({
             onClick={() => onSelection(i)}
           >
             <LazyLoadImage
-              src={addTrailingSlash(image.thumbnailUrl)}
+              src={getThumbnailUrl(image)}
               effect="blur"
               alt={""}
               width="100%"
@@ -320,6 +339,17 @@ const ImagesCompare = ({
       ),
     enabled: !!parameterStableId && !!pid,
     placeholderData: [],
+    select: (data) => {
+      return data.map((imagesPerCenter) => {
+        return {
+          ...imagesPerCenter,
+          images: imagesPerCenter.images.map((image) => ({
+            ...image,
+            ftpUrlPrefix: `/S-BIAD/244/S-BIAD2244/Files/${imagesPerCenter.phenotypingCentre}/${imagesPerCenter.pipelineStableId}/${imagesPerCenter.procedureStableId}/${imagesPerCenter.parameterStableId}/${imagesPerCenter.biologicalSampleGroup}/${image.observationId}`,
+          })),
+        };
+      });
+    },
   });
 
   const { data: controlImagesRaw } = useQuery<Array<GeneImageCollection>>({
@@ -330,6 +360,17 @@ const ImagesCompare = ({
       ),
     enabled: !!parameterStableId,
     placeholderData: [],
+    select: (data) => {
+      return data.map((imagesPerCenter) => {
+        return {
+          ...imagesPerCenter,
+          images: imagesPerCenter.images.map((image) => ({
+            ...image,
+            ftpUrlPrefix: `/S-BIAD/244/S-BIAD2244/Files/${imagesPerCenter.phenotypingCentre}/${imagesPerCenter.pipelineStableId}/${imagesPerCenter.procedureStableId}/${imagesPerCenter.parameterStableId}/${imagesPerCenter.biologicalSampleGroup}/${image.observationId}`,
+          })),
+        };
+      });
+    },
   });
 
   const [selectedSex, setSelectedSex] = useState("both");
@@ -339,12 +380,18 @@ const ImagesCompare = ({
   const [selectedControlCenter, setSelectedControlCenter] =
     useState<string>("IMPC");
   const [selectedAllele, setSelectedAllele] = useState<string>("all");
-  const [metadataGroup, setMetadataGroup] = useState<string>(null);
-  const [strainAccessionId, setStrainAccessionId] = useState<string>(null);
-  const [procedureStableId, setProcedureStableId] = useState<string>(null);
+  const [metadataGroup, setMetadataGroup] = useState<string | null>(null);
+  const [strainAccessionId, setStrainAccessionId] = useState<string | null>(
+    null,
+  );
+  const [procedureStableId, setProcedureStableId] = useState<string | null>(
+    null,
+  );
 
   const showAssocParam =
     parameterStableId.includes("ALZ") || parameterStableId.includes("PAT");
+
+  const isXRYParam = parameterStableId.includes("XRY");
 
   const findCenterByMatchingAnatomyFilter = (
     collections: Array<GeneImageCollection>,
@@ -573,6 +620,8 @@ const ImagesCompare = ({
     router.replace(`${pathName}${searchParamsTemp}`, undefined);
   };
 
+  console.log({ controlImages, filteredMutantImages });
+
   return (
     <>
       <Search />
@@ -635,6 +684,7 @@ const ImagesCompare = ({
                       name="WT"
                       image={controlImages?.[selectedWTImage]}
                       hasAvailableImages={controlImages?.length !== 0 || false}
+                      isXRYParam={isXRYParam}
                     />
                   </div>
                   <div className={styles.imageInfo}>
@@ -680,6 +730,7 @@ const ImagesCompare = ({
                       hasAvailableImages={
                         filteredMutantImages?.length !== 0 || false
                       }
+                      isXRYParam={isXRYParam}
                     />
                   </div>
                   <div className={styles.imageInfo}>
@@ -839,6 +890,7 @@ const ImagesCompare = ({
                   images={controlImages}
                   showAssocParam={showAssocParam}
                   onSelection={(imageIndex) => setSelectedWTImage(imageIndex)}
+                  isXRYParam={isXRYParam}
                 />
               </Col>
               <Col sm={6}>
@@ -850,6 +902,7 @@ const ImagesCompare = ({
                   onSelection={(imageIndex) =>
                     setSelectedMutantImage(imageIndex)
                   }
+                  isXRYParam={isXRYParam}
                 />
               </Col>
             </Row>
