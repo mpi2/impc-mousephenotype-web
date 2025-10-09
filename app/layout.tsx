@@ -5,7 +5,6 @@ import Layout from "../components/Layout";
 import Providers from "./providers";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { Roboto } from "next/font/google";
-import { headers } from "next/headers";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-circular-progressbar/dist/styles.css";
@@ -20,15 +19,10 @@ const roboto = Roboto({
   variable: "--font-impc",
 });
 
-export default async function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  const nonce = (await headers()).get("x-nonce") as string;
-
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={roboto.className}>
+      <head />
       <body>
         <Script>
           {` // Google Tag Manager
@@ -52,7 +46,6 @@ export default async function RootLayout({
           src="https://web.cmp.usercentrics.eu/ui/loader.js"
           data-settings-id="y7WXZ02Q6JSq6Q"
           async
-          nonce={nonce}
         />
         <Providers>
           <Layout>{children}</Layout>
