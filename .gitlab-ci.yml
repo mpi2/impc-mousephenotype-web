@@ -7,6 +7,7 @@ variables:
   CI_REGISTRY: dockerhub.ebi.ac.uk
   CI_REGISTRY_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH
   DOCKER_TLS_CERTDIR: ""
+  GITLAB_ADVANCED_SAST_ENABLED: 'true'
 
 include:
   - template: Security/SAST.gitlab-ci.yml
