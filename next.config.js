@@ -1,10 +1,12 @@
 const isProd = process.env.NODE_ENV === "production";
 
 const cspHeader = `
-    default-src 'self' mousephenotype.org *.mousephenotype.org *.usercentrics.eu *.amazonaws.com *.gentar.org *.ebi.ac.uk *.google.com *.doubleclick.net *.google-analytics.com ${!isProd ? "localhost:8010" : ""};
+    default-src 'none';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.usercentrics.eu;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: *.usercentrics.eu *.ebi.ac.uk *.amazonaws.com;
+    connect-src 'self' *.mousephenotype.org *.usercentrics.eu *.google.com *.ebi.ac.uk *.google-analytics.com *.amazonaws.com *.gentar.org ${!isProd ? "localhost:8010" : ""};
+    img-src 'self' blob: data: *.usercentrics.eu *.ebi.ac.uk *.amazonaws.com *.google.co.uk;
+    frame-src *.usercentrics.eu;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
