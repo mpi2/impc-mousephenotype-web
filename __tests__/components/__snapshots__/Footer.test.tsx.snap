@@ -18,7 +18,7 @@ exports[`Footer component renders correctly 1`] = `
           <p>
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-creative-commons fa-2x me-2"
+              class="svg-inline--fa fa-creative-commons me-2 fa-2x"
               data-icon="creative-commons"
               data-prefix="fab"
               focusable="false"
@@ -34,7 +34,7 @@ exports[`Footer component renders correctly 1`] = `
              
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-creative-commons-by fa-2x "
+              class="svg-inline--fa fa-creative-commons-by fa-2x"
               data-icon="creative-commons-by"
               data-prefix="fab"
               focusable="false"
@@ -177,7 +177,7 @@ exports[`Footer component renders correctly 1`] = `
                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"
               >
                 <a
-                  href="http://cloud.mousephenotype.org"
+                  href="https://cloud.mousephenotype.org"
                 >
                   IMPC Cloud
                 </a>
@@ -226,7 +226,7 @@ exports[`Footer component renders correctly 1`] = `
                 </span>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-linkedin fa-2x "
+                  class="svg-inline--fa fa-linkedin fa-2x"
                   data-icon="linkedin"
                   data-prefix="fab"
                   focusable="false"
@@ -254,7 +254,7 @@ exports[`Footer component renders correctly 1`] = `
                 </span>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-youtube fa-2x "
+                  class="svg-inline--fa fa-youtube fa-2x"
                   data-icon="youtube"
                   data-prefix="fab"
                   focusable="false"

@@ -49,7 +49,7 @@ exports[`Publications page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass "
+              class="svg-inline--fa fa-magnifying-glass"
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -93,11 +93,11 @@ exports[`Publications page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r0:-tabpane-all-publications"
+            aria-controls="react-aria-:r2:-tabpane-all-publications"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="all-publications"
-            id="react-aria-:r0:-tab-all-publications"
+            id="react-aria-:r2:-tab-all-publications"
             role="tab"
             type="button"
           >
@@ -109,11 +109,11 @@ exports[`Publications page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r0:-tabpane-publications-stats"
+            aria-controls="react-aria-:r2:-tabpane-publications-stats"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="publications-stats"
-            id="react-aria-:r0:-tab-publications-stats"
+            id="react-aria-:r2:-tab-publications-stats"
             role="tab"
             tabindex="-1"
             type="button"
@@ -126,11 +126,11 @@ exports[`Publications page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r0:-tabpane-consortium-publications"
+            aria-controls="react-aria-:r2:-tabpane-consortium-publications"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="consortium-publications"
-            id="react-aria-:r0:-tab-consortium-publications"
+            id="react-aria-:r2:-tab-consortium-publications"
             role="tab"
             tabindex="-1"
             type="button"
@@ -143,9 +143,9 @@ exports[`Publications page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r0:-tab-all-publications"
+          aria-labelledby="react-aria-:r2:-tab-all-publications"
           class="fade tab-pane active show"
-          id="react-aria-:r0:-tabpane-all-publications"
+          id="react-aria-:r2:-tabpane-all-publications"
           role="tabpanel"
         >
           <div
@@ -207,7 +207,7 @@ exports[`Publications page renders correctly 1`] = `
                       TSV
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-download "
+                        class="svg-inline--fa fa-download"
                         data-icon="download"
                         data-prefix="fas"
                         focusable="false"
@@ -229,7 +229,7 @@ exports[`Publications page renders correctly 1`] = `
                       XLS
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-download "
+                        class="svg-inline--fa fa-download"
                         data-icon="download"
                         data-prefix="fas"
                         focusable="false"
@@ -256,7 +256,7 @@ exports[`Publications page renders correctly 1`] = `
                   >
                     <svg
                       aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                      class="svg-inline--fa fa-arrow-left "
+                      class="svg-inline--fa fa-arrow-left"
                       data-icon="arrow-left"
                       data-prefix="fas"
                       role="img"
@@ -307,7 +307,7 @@ exports[`Publications page renders correctly 1`] = `
                   >
                     <svg
                       aria-labelledby="svg-inline--fa-title-next-page-icon"
-                      class="svg-inline--fa fa-arrow-right "
+                      class="svg-inline--fa fa-arrow-right"
                       data-icon="arrow-right"
                       data-prefix="fas"
                       role="img"
@@ -348,7 +348,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -401,7 +401,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -453,7 +453,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -506,7 +506,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -575,7 +575,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -628,7 +628,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -697,7 +697,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -750,7 +750,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -819,7 +819,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -872,7 +872,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -924,7 +924,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -977,7 +977,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1046,7 +1046,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1099,7 +1099,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1168,7 +1168,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1221,7 +1221,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1274,7 +1274,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1327,7 +1327,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1396,7 +1396,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1449,7 +1449,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -1555,7 +1555,7 @@ exports[`Publications page renders correctly 1`] = `
                   >
                     <svg
                       aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                      class="svg-inline--fa fa-arrow-left "
+                      class="svg-inline--fa fa-arrow-left"
                       data-icon="arrow-left"
                       data-prefix="fas"
                       role="img"
@@ -1606,7 +1606,7 @@ exports[`Publications page renders correctly 1`] = `
                   >
                     <svg
                       aria-labelledby="svg-inline--fa-title-next-page-icon"
-                      class="svg-inline--fa fa-arrow-right "
+                      class="svg-inline--fa fa-arrow-right"
                       data-icon="arrow-right"
                       data-prefix="fas"
                       role="img"
@@ -1630,9 +1630,9 @@ exports[`Publications page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:r0:-tab-publications-stats"
+          aria-labelledby="react-aria-:r2:-tab-publications-stats"
           class="fade tab-pane"
-          id="react-aria-:r0:-tabpane-publications-stats"
+          id="react-aria-:r2:-tabpane-publications-stats"
           role="tabpanel"
         >
           <div
@@ -1728,7 +1728,7 @@ exports[`Publications page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-chart-bar "
+                    class="svg-inline--fa fa-chart-bar"
                     data-icon="chart-bar"
                     data-prefix="fas"
                     focusable="false"
@@ -1748,7 +1748,7 @@ exports[`Publications page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-table "
+                    class="svg-inline--fa fa-table"
                     data-icon="table"
                     data-prefix="fas"
                     focusable="false"
@@ -1770,7 +1770,7 @@ exports[`Publications page renders correctly 1`] = `
                   Download list of agencies 
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download "
+                    class="svg-inline--fa fa-download"
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"
@@ -1803,9 +1803,9 @@ exports[`Publications page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:r0:-tab-consortium-publications"
+          aria-labelledby="react-aria-:r2:-tab-consortium-publications"
           class="fade tab-pane"
-          id="react-aria-:r0:-tabpane-consortium-publications"
+          id="react-aria-:r2:-tabpane-consortium-publications"
           role="tabpanel"
         >
           <div
@@ -1867,7 +1867,7 @@ exports[`Publications page renders correctly 1`] = `
                       TSV
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-download "
+                        class="svg-inline--fa fa-download"
                         data-icon="download"
                         data-prefix="fas"
                         focusable="false"
@@ -1889,7 +1889,7 @@ exports[`Publications page renders correctly 1`] = `
                       XLS
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-download "
+                        class="svg-inline--fa fa-download"
                         data-icon="download"
                         data-prefix="fas"
                         focusable="false"
@@ -1916,7 +1916,7 @@ exports[`Publications page renders correctly 1`] = `
                   >
                     <svg
                       aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                      class="svg-inline--fa fa-arrow-left "
+                      class="svg-inline--fa fa-arrow-left"
                       data-icon="arrow-left"
                       data-prefix="fas"
                       role="img"
@@ -1967,7 +1967,7 @@ exports[`Publications page renders correctly 1`] = `
                   >
                     <svg
                       aria-labelledby="svg-inline--fa-title-next-page-icon"
-                      class="svg-inline--fa fa-arrow-right "
+                      class="svg-inline--fa fa-arrow-right"
                       data-icon="arrow-right"
                       data-prefix="fas"
                       role="img"
@@ -2008,7 +2008,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2061,7 +2061,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2108,7 +2108,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2161,7 +2161,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2213,7 +2213,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2252,7 +2252,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2288,7 +2288,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2341,7 +2341,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2393,7 +2393,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2446,7 +2446,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2487,7 +2487,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2540,7 +2540,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2581,7 +2581,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2634,7 +2634,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2675,7 +2675,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2728,7 +2728,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2780,7 +2780,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2833,7 +2833,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2885,7 +2885,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -2938,7 +2938,7 @@ exports[`Publications page renders correctly 1`] = `
                          
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                          class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                           data-icon="up-right-from-square"
                           data-prefix="fas"
                           focusable="false"
@@ -3027,7 +3027,7 @@ exports[`Publications page renders correctly 1`] = `
                   >
                     <svg
                       aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                      class="svg-inline--fa fa-arrow-left "
+                      class="svg-inline--fa fa-arrow-left"
                       data-icon="arrow-left"
                       data-prefix="fas"
                       role="img"
@@ -3078,7 +3078,7 @@ exports[`Publications page renders correctly 1`] = `
                   >
                     <svg
                       aria-labelledby="svg-inline--fa-title-next-page-icon"
-                      class="svg-inline--fa fa-arrow-right "
+                      class="svg-inline--fa fa-arrow-right"
                       data-icon="arrow-right"
                       data-prefix="fas"
                       role="img"
