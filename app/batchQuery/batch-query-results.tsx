@@ -88,7 +88,7 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
         <td>{humanGeneSymbols?.toString() || "data not available"}</td>
         <td>{geneData.allSignificantPhenotypes.length}</td>
         <td>{geneData.allSignificantSystems.length}</td>
-        <td>
+        {/*<td>
           <Button
             className="impc-secondary-button small"
             onClick={() => {
@@ -105,7 +105,7 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
               icon={openGOView ? faChevronUp : faChevronDown}
             />
           </Button>
-        </td>
+        </td>*/}
         <td>
           <Button
             className="impc-secondary-button small"
@@ -328,12 +328,6 @@ export const BatchQueryResults = ({
       toogleFlag: () =>
         fetchFilteredDataset("TSV", "download-preprocessed-data", false),
     },
-    {
-      key: "Full results JSON",
-      isBusy: state.isBusyJSON,
-      toogleFlag: () =>
-        fetchFilteredDataset("JSON", "download-full-results", true),
-    },
   ];
 
   return (
@@ -428,11 +422,11 @@ export const BatchQueryResults = ({
                           label: "# of systems impacted",
                           field: "allSignificantSystems",
                         },
-                        {
-                          width: 1,
-                          label: "View Gene Ontology terms",
-                          disabled: true,
-                        },
+                        // {
+                        //   width: 1,
+                        //   label: "View Gene Ontology terms",
+                        //   disabled: true,
+                        // },
                         {
                           width: 1,
                           label: "View allele info",

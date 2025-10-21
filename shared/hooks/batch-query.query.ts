@@ -41,10 +41,9 @@ export const useBatchQuery = (
       formSubmitted &&
       !downloadButtonIsBusy,
     select: (response: any) => {
-      const { results, notFoundIds } = response;
-      return results.map((gene) => {
+      return response.map((gene) => {
         const allTerms = uniqBy(
-          gene.goTerms.flatMap((term) => {
+          gene?.goTerms?.flatMap((term) => {
             if (term.direct_ancestors.length === 0) {
               return [
                 { id: term.go_id, name: term.go_name, aspect: term.aspect },
