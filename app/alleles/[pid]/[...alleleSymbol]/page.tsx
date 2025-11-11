@@ -32,8 +32,9 @@ type PageParams = {
 
 export default async function Page(props: PageParams) {
   const searchParams = await props.searchParams;
-  const mgiGeneAccessionId = (await params).pid;
-  const alleleSymbolFromParams = (await params).alleleSymbol;
+  const params = await props.params;
+  const mgiGeneAccessionId = params.pid;
+  const alleleSymbolFromParams = params.alleleSymbol;
   const alleleSymbolFromSearchParams = searchParams.alleleSymbol;
   const alleleSymbol = !!alleleSymbolFromSearchParams
     ? [alleleSymbolFromSearchParams]
@@ -47,8 +48,9 @@ export default async function Page(props: PageParams) {
 
 export async function generateMetadata(props: PageParams) {
   const searchParams = await props.searchParams;
-  const mgiGeneAccessionId = (await params).pid;
-  const alleleSymbolFromParams = (await params).alleleSymbol;
+  const params = await props.params;
+  const mgiGeneAccessionId = params.pid;
+  const alleleSymbolFromParams = params.alleleSymbol;
   const alleleSymbolFromSearchParams = searchParams.alleleSymbol;
   const alleleSymbol = !!alleleSymbolFromSearchParams
     ? [alleleSymbolFromSearchParams]
