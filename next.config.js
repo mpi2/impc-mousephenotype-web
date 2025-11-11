@@ -6,7 +6,7 @@ const cspHeader = `
     style-src 'self' 'unsafe-inline';
     connect-src 'self' *.mousephenotype.org *.usercentrics.eu *.google.com *.ebi.ac.uk *.google-analytics.com *.amazonaws.com *.gentar.org ${!isProd ? "localhost:8010" : ""};
     img-src 'self' blob: data: *.usercentrics.eu *.ebi.ac.uk *.amazonaws.com *.google.co.uk;
-    frame-src *.usercentrics.eu;
+    frame-src *.usercentrics.eu monarchinitiative.org;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
