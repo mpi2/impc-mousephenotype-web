@@ -49,7 +49,7 @@ exports[`Allele page renders properly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass "
+              class="svg-inline--fa fa-magnifying-glass"
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -90,7 +90,7 @@ exports[`Allele page renders properly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-arrow-left "
+              class="svg-inline--fa fa-arrow-left"
               data-icon="arrow-left"
               data-prefix="fas"
               focusable="false"
@@ -148,7 +148,7 @@ exports[`Allele page renders properly 1`] = `
               <span>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-cart-shopping "
+                  class="svg-inline--fa fa-cart-shopping"
                   data-icon="cart-shopping"
                   data-prefix="fas"
                   focusable="false"
@@ -181,7 +181,7 @@ exports[`Allele page renders properly 1`] = `
               <span>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-cart-shopping "
+                  class="svg-inline--fa fa-cart-shopping"
                   data-icon="cart-shopping"
                   data-prefix="fas"
                   focusable="false"
@@ -214,7 +214,7 @@ exports[`Allele page renders properly 1`] = `
               <span>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-cart-shopping "
+                  class="svg-inline--fa fa-cart-shopping"
                   data-icon="cart-shopping"
                   data-prefix="fas"
                   focusable="false"
@@ -267,7 +267,7 @@ exports[`Allele page renders properly 1`] = `
           Genbank
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-up-right-from-square "
+            class="svg-inline--fa fa-up-right-from-square"
             data-icon="up-right-from-square"
             data-prefix="fas"
             focusable="false"
@@ -296,7 +296,7 @@ exports[`Allele page renders properly 1`] = `
           Ensembl
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-up-right-from-square "
+            class="svg-inline--fa fa-up-right-from-square"
             data-icon="up-right-from-square"
             data-prefix="fas"
             focusable="false"
@@ -438,7 +438,7 @@ exports[`Allele page renders properly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-window-maximize fa-xs grey"
+                    class="svg-inline--fa fa-window-maximize grey fa-xs"
                     data-icon="window-maximize"
                     data-prefix="far"
                     focusable="false"
@@ -464,7 +464,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -502,7 +502,7 @@ exports[`Allele page renders properly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm"
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -523,7 +523,7 @@ exports[`Allele page renders properly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm"
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -678,7 +678,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -724,7 +724,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -770,7 +770,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -813,7 +813,7 @@ exports[`Allele page renders properly 1`] = `
                   View 
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-window-maximize fa-xs grey"
+                    class="svg-inline--fa fa-window-maximize grey fa-xs"
                     data-icon="window-maximize"
                     data-prefix="far"
                     focusable="false"
@@ -839,7 +839,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -885,7 +885,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -931,7 +931,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -969,7 +969,7 @@ exports[`Allele page renders properly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm"
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -990,7 +990,7 @@ exports[`Allele page renders properly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm"
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -1163,7 +1163,7 @@ exports[`Allele page renders properly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1189,7 +1189,7 @@ exports[`Allele page renders properly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1212,7 +1212,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -1264,7 +1264,7 @@ exports[`Allele page renders properly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1290,7 +1290,7 @@ exports[`Allele page renders properly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1313,7 +1313,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -1365,7 +1365,7 @@ exports[`Allele page renders properly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1391,7 +1391,7 @@ exports[`Allele page renders properly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+                    class="svg-inline--fa fa-up-right-from-square grey fa-xs"
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1414,7 +1414,7 @@ exports[`Allele page renders properly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -1452,7 +1452,7 @@ exports[`Allele page renders properly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm"
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -1473,7 +1473,7 @@ exports[`Allele page renders properly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm"
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -1521,7 +1521,7 @@ exports[`Allele page renders properly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-circle-question fa-xl "
+                  class="svg-inline--fa fa-circle-question fa-xl"
                   data-icon="circle-question"
                   data-prefix="fas"
                   focusable="false"
@@ -1816,7 +1816,7 @@ exports[`Allele page renders properly 1`] = `
          
         <svg
           aria-hidden="true"
-          class="svg-inline--fa fa-arrow-right-long "
+          class="svg-inline--fa fa-arrow-right-long"
           data-icon="arrow-right-long"
           data-prefix="fas"
           focusable="false"
@@ -1889,7 +1889,7 @@ exports[`Allele page renders properly CRISPR section 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass "
+              class="svg-inline--fa fa-magnifying-glass"
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -1930,7 +1930,7 @@ exports[`Allele page renders properly CRISPR section 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-arrow-left "
+              class="svg-inline--fa fa-arrow-left"
               data-icon="arrow-left"
               data-prefix="fas"
               focusable="false"
@@ -1988,7 +1988,7 @@ exports[`Allele page renders properly CRISPR section 1`] = `
               <span>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-cart-shopping "
+                  class="svg-inline--fa fa-cart-shopping"
                   data-icon="cart-shopping"
                   data-prefix="fas"
                   focusable="false"
@@ -2162,7 +2162,7 @@ exports[`Allele page renders properly CRISPR section 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-window-maximize fa-xs grey"
+                    class="svg-inline--fa fa-window-maximize grey fa-xs"
                     data-icon="window-maximize"
                     data-prefix="far"
                     focusable="false"
@@ -2185,7 +2185,7 @@ exports[`Allele page renders properly CRISPR section 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-cart-shopping "
+                    class="svg-inline--fa fa-cart-shopping"
                     data-icon="cart-shopping"
                     data-prefix="fas"
                     focusable="false"
@@ -2223,7 +2223,7 @@ exports[`Allele page renders properly CRISPR section 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm"
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -2244,7 +2244,7 @@ exports[`Allele page renders properly CRISPR section 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm "
+                class="svg-inline--fa fa-download fa-sm"
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -2299,7 +2299,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-copy "
+              class="svg-inline--fa fa-copy"
               data-icon="copy"
               data-prefix="fas"
               focusable="false"
@@ -2338,7 +2338,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-arrow-up-right-from-square fa-xs "
+              class="svg-inline--fa fa-arrow-up-right-from-square fa-xs"
               data-icon="arrow-up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -3088,7 +3088,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-download fa-sm "
+            class="svg-inline--fa fa-download fa-sm"
             data-icon="download"
             data-prefix="fas"
             focusable="false"
@@ -3109,7 +3109,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-download fa-sm "
+            class="svg-inline--fa fa-download fa-sm"
             data-icon="download"
             data-prefix="fas"
             focusable="false"
@@ -3155,7 +3155,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
               >
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-circle-question fa-xl "
+                  class="svg-inline--fa fa-circle-question fa-xl"
                   data-icon="circle-question"
                   data-prefix="fas"
                   focusable="false"
@@ -3450,7 +3450,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
          
         <svg
           aria-hidden="true"
-          class="svg-inline--fa fa-arrow-right-long "
+          class="svg-inline--fa fa-arrow-right-long"
           data-icon="arrow-right-long"
           data-prefix="fas"
           focusable="false"

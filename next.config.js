@@ -1,35 +1,37 @@
 const isProd = process.env.NODE_ENV === "production";
+
+const cspHeader = `
+    default-src 'none';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.usercentrics.eu;
+    style-src 'self' 'unsafe-inline';
+    connect-src 'self' *.mousephenotype.org *.usercentrics.eu *.google.com *.ebi.ac.uk *.google-analytics.com *.amazonaws.com *.gentar.org ${!isProd ? "localhost:8010" : ""};
+    img-src 'self' blob: data: *.usercentrics.eu *.ebi.ac.uk *.amazonaws.com *.google.co.uk;
+    frame-src *.usercentrics.eu;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`;
+
 module.exports = {
   basePath: "/data",
   //uncomment the following line when deploying with vercel
   // swcMinify: false,
-  async redirects() {
+  async headers() {
     return [
       {
-        source: "/",
-        destination: "/data",
-        permanent: true,
-        basePath: false,
-      },
-      {
-        source: "/",
-        destination: "/search",
-        permanent: true,
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: cspHeader.replace(/\n/g, ""),
+          },
+        ],
       },
     ];
   },
-  // webpack: (config) => {
-  //   config.plugins.push(
-  //     new webpack.ProvidePlugin({
-  //       $: "jquery",
-  //       jQuery: "jquery",
-  //     })
-  //   );
-  //   return config;
-  // },
-  // experimental: {
-  //   outputStandalone: true,
-  // },
   output: "standalone",
 
   typescript: {
@@ -48,4 +50,5 @@ module.exports = {
   cacheHandler: require.resolve(
     "next/dist/server/lib/incremental-cache/file-system-cache.js",
   ),
+  poweredByHeader: false,
 };

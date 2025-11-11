@@ -52,8 +52,8 @@ const ExternalLinks = () => {
                   <b>{provider.providerName}</b>
                 </div>
                 <div className={styles.links}>
-                  {provider.links.map((link) => (
-                    <div className="single-link">
+                  {provider.links.map((link, index) => (
+                    <div className="single-link" key={index}>
                       <a
                         key={link.href}
                         className="primary link"

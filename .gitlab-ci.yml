@@ -7,7 +7,14 @@ variables:
   CI_REGISTRY: dockerhub.ebi.ac.uk
   CI_REGISTRY_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH
   DOCKER_TLS_CERTDIR: ""
+  GITLAB_ADVANCED_SAST_ENABLED: 'true'
 
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Jobs/Secret-Detection.gitlab-ci.yml
+
+sast:
+  stage: test
 
 stages:
   - build
@@ -29,7 +36,7 @@ build_main_image:
     - mkdir -p "$MOUNT_POINT"
     - echo "${CI_REGISTRY_PASSWORD}" | docker login -u "${CI_REGISTRY_USER}" --password-stdin  ${CI_REGISTRY}
   script:
-    - sed -i "s|FROM node|FROM '$LOCAL_GITLAB_NODE_IMAGE'|g" Dockerfile
+    - sed -i "s|FROM alpine|FROM '$LOCAL_GITLAB_ALPINE_IMAGE'|g" Dockerfile
     - |
       if [[ "${REQUIRES_REBUILD_IMAGE}" == "true" ]]; then
           echo "Building latest image"
@@ -76,3 +83,46 @@ jest_unit_tests:
   script:
     - yarn install --inmutable
     - yarn run test:ci
+
+trivy_container_scanning:
+  stage: test
+  image:
+    name: $CI_REGISTRY/mouse-informatics/trivy:latest
+    entrypoint: [""]
+
+  variables:
+    GIT_STRATEGY: none
+    TRIVY_USERNAME: "$CI_REGISTRY_USER"
+    TRIVY_PASSWORD: "$CI_REGISTRY_PASSWORD"
+    TRIVY_AUTH_URL: "$CI_REGISTRY"
+    TRIVY_NO_PROGRESS: "true"
+    TRIVY_CACHE_DIR: ".trivycache/"
+
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main" || $CI_COMMIT_REF_NAME == "develop"'
+      when: on_success
+      allow_failure: true
+
+  script:
+    - trivy --version
+    # cache cleanup is needed when scanning images with the same tags, it does not remove the database
+    - time trivy  clean --scan-cache
+    # update vulnerabilities db
+    - time trivy image --download-db-only
+    # Builds report and puts it in the default workdir $CI_PROJECT_DIR, so `artifacts:` can take it from there
+    - time trivy image --exit-code 0 --format template --template "@/contrib/gitlab.tpl"
+      --output "$CI_PROJECT_DIR/gl-container-scanning-report.json" "${CI_REGISTRY_IMAGE}":"${CI_COMMIT_SHA:0:12}"
+    # Prints full report
+    - time trivy image --exit-code 0 --severity HIGH "${CI_REGISTRY_IMAGE}":"${CI_COMMIT_SHA:0:12}"
+    # Fail on critical vulnerabilities
+    - time trivy image --exit-code 1 --severity CRITICAL "${CI_REGISTRY_IMAGE}":"${CI_COMMIT_SHA:0:12}"
+
+
+  cache:
+    paths:
+      - .trivycache/
+
+  artifacts:
+    when: always
+    reports:
+      container_scanning: gl-container-scanning-report.json
