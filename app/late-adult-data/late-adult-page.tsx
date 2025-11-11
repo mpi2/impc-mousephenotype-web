@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
+import { ParentSize } from "@visx/responsive";
 import {
   LateAdultHeatmap,
   Search,
@@ -24,7 +24,6 @@ import {
 } from "@/models";
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { usePagination } from "@/hooks";
-import { Metadata } from "next";
 
 type AllGeneList = Array<LateAdultRowResponse>;
 
