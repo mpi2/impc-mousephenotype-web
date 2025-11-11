@@ -17,7 +17,7 @@ import {
 } from "./shared";
 import GraphicalAnalysisChart from "./GraphicalAnalysisChart";
 import LoadingProgressBar from "@/components/LoadingProgressBar";
-import ParentSize from "@visx/responsive/lib/components/ParentSize";
+import { ParentSize } from "@visx/responsive";
 import classNames from "classnames";
 import BodySystemIcon from "@/components/BodySystemIcon";
 import { formatBodySystems } from "@/utils";
