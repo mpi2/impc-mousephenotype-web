@@ -284,8 +284,8 @@ const StatisticalMethodTable = ({
             { width: 4, label: "Value", disabled: true },
           ]}
         >
-          {statisticalMethodFields.map((field) => (
-            <tr>
+          {statisticalMethodFields.map((field, index) => (
+            <tr key={index}>
               <td>{field.label}</td>
               <td>{getFormattedValue(field) ?? "N/A"}</td>
             </tr>

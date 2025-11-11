@@ -15,7 +15,7 @@ import {
   LineWithErrorBarsController,
   PointWithErrorBar,
 } from "chartjs-chart-error-bars";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { BodyWeightLinePlot } from "./Plots/BodyWeightLinePlot";
 
@@ -262,8 +262,8 @@ const BodyWeightChart = ({ datasetSummary }) => {
                   {[...Array(maxAge)].map((week, i) => (
                     <tr key={i}>
                       <td>{i + 1}</td>
-                      {getValuesForRow(i + 1).map((value) => (
-                        <td>{value}</td>
+                      {getValuesForRow(i + 1).map((value, internalI) => (
+                        <td key={internalI}>{value}</td>
                       ))}
                     </tr>
                   ))}

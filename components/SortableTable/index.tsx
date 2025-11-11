@@ -147,8 +147,8 @@ const SortableTable = ({
             {hasNested &&
               headers.map(({ children: childHeaders }) => {
                 if (childHeaders && childHeaders.length) {
-                  return childHeaders.map((childHeader) => (
-                    <SortableTh {...childHeader} />
+                  return childHeaders.map((childHeader, index) => (
+                    <SortableTh key={index} {...childHeader} />
                   ));
                 }
               })}
