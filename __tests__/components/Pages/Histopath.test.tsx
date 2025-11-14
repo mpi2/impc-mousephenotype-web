@@ -106,7 +106,7 @@ describe("Histopath page", () => {
     });
     expect(screen.getByTestId("anatomy-badge")).toBeInTheDocument();
     await user.click(screen.getByTestId("anatomy-badge"));
-    expect(replaceSpy).toBeCalled();
+    expect(replaceSpy).toHaveBeenCalled();
   });
 
   it("should display a modal to view tissue details", async () => {
