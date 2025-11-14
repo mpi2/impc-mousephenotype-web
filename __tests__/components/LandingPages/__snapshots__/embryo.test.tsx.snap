@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Embryo landing page renders correctly 1`] = `
 <div>
@@ -588,7 +588,6 @@ exports[`Embryo landing page renders correctly 1`] = `
                     id="gene-control"
                     placeholder="Pparg..."
                     style="min-height: 47px;"
-                    value=""
                   />
                 </div>
               </div>

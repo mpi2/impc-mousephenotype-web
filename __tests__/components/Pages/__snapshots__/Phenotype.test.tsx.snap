@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Phenotype page renders correctly 1`] = `
 <div>
@@ -171,7 +171,7 @@ exports[`Phenotype page renders correctly 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
                 fill="currentColor"
               />
             </svg>
@@ -390,7 +390,7 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
                     />
                   </svg>
@@ -420,7 +420,7 @@ exports[`Phenotype page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -478,7 +478,7 @@ exports[`Phenotype page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -524,7 +524,7 @@ exports[`Phenotype page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -570,7 +570,7 @@ exports[`Phenotype page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -616,7 +616,7 @@ exports[`Phenotype page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -662,7 +662,7 @@ exports[`Phenotype page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -708,7 +708,7 @@ exports[`Phenotype page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -735,7 +735,9 @@ exports[`Phenotype page renders correctly 1`] = `
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -760,12 +762,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:88121&mpTermId=MP:0012361"
                 >
@@ -776,14 +782,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -799,18 +809,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) count
                 <br />
                 <span
@@ -819,7 +833,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 MRC Harwell
                 <br />
                 <span
@@ -828,7 +844,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   MRC
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -847,7 +865,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -872,12 +892,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:1330302&mpTermId=MP:0012361"
                 >
@@ -888,14 +912,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -911,7 +939,7 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
@@ -931,7 +959,7 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
@@ -951,18 +979,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0L472 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59 146.6-136 158.2l0 25.8 24 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-24 0 0 32c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-32-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l24 0 0-25.8C155 370.6 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48s0 0 0 0s0 0 0 0s0 0 0 0zM352 224a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) differential count
                 <br />
                 <span
@@ -971,7 +1003,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 ICS
                 <br />
                 <span
@@ -980,7 +1014,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Phenomin
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -999,7 +1035,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -1024,12 +1062,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:1330301&mpTermId=MP:0012361"
                 >
@@ -1040,14 +1082,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1063,7 +1109,7 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1083,18 +1129,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) differential count
                 <br />
                 <span
@@ -1103,7 +1153,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 ICS
                 <br />
                 <span
@@ -1112,7 +1164,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Phenomin
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -1131,7 +1185,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -1156,12 +1212,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:1926146&mpTermId=MP:0012361"
                 >
@@ -1172,14 +1232,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1195,18 +1259,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0L472 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59 146.6-136 158.2l0 25.8 24 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-24 0 0 32c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-32-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l24 0 0-25.8C155 370.6 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48s0 0 0 0s0 0 0 0s0 0 0 0zM352 224a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) count
                 <br />
                 <span
@@ -1215,7 +1283,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 ICS
                 <br />
                 <span
@@ -1224,7 +1294,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Phenomin
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -1243,7 +1315,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -1268,12 +1342,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:3583900&mpTermId=MP:0012361"
                 >
@@ -1284,14 +1362,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1307,18 +1389,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0L472 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59 146.6-136 158.2l0 25.8 24 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-24 0 0 32c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-32-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l24 0 0-25.8C155 370.6 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48s0 0 0 0s0 0 0 0s0 0 0 0zM352 224a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) count
                 <br />
                 <span
@@ -1327,7 +1413,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 MRC Harwell
                 <br />
                 <span
@@ -1336,7 +1424,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   BaSH
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -1355,7 +1445,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -1380,12 +1472,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:95479&mpTermId=MP:0012361"
                 >
@@ -1396,14 +1492,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1419,18 +1519,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) count
                 <br />
                 <span
@@ -1439,7 +1543,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 MRC Harwell
                 <br />
                 <span
@@ -1448,7 +1554,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   BaSH
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -1467,7 +1575,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -1492,12 +1602,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:1342542&mpTermId=MP:0012361"
                 >
@@ -1508,14 +1622,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1531,18 +1649,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) count
                 <br />
                 <span
@@ -1551,7 +1673,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 RBRC
                 <br />
                 <span
@@ -1560,7 +1684,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   RBRC
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -1579,7 +1705,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -1604,12 +1732,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:1298377&mpTermId=MP:0012361"
                 >
@@ -1620,14 +1752,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1643,18 +1779,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) count
                 <br />
                 <span
@@ -1663,7 +1803,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 MRC Harwell
                 <br />
                 <span
@@ -1672,7 +1814,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   MRC
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -1691,7 +1835,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -1716,12 +1862,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:2442188&mpTermId=MP:0012361"
                 >
@@ -1732,14 +1882,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1755,7 +1909,7 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1775,7 +1929,7 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1795,18 +1949,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0H472c13.3 0 24 10.7 24 24V136c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59.1 146.7-136.1 158.2c0 .6 .1 1.2 .1 1.8v.4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .4 .3 .4 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3 .3h24c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v.2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .2 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 .1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0l-24 0-24 0v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V486 486v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V485 485v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V484v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V483v-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1V481v-.1-.1-.1-.1-.1-.1-.1-.1V480v-.1-.1-.1-.1-.1-.1-.1V479v-.1-.1-.1-.1-.1-.1-.1V478v-.1-.1-.1-.1-.1-.1V477v-.1-.1-.1-.1-.1-.1V476v-.1-.1-.1-.1-.1-.1V475v-.1-.2-.2-.2-.2-.2V474v-.2-.2-.2-.2-.2V473v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V470v-.2-.2-.2-.2-.2V469v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V467v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V463v-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2-.2V459v-.2-.2-.2-.2-.2-.2-.2-.2V457v-.2-.2-.2-.2V456H208c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3V403v-.3-.3V402v-.3-.3V401v-.3-.3V400v-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.3-.4-.3-.4-.4-.4-.4V393v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V388v-.4-.4-.4-.4-.4-.4-.4-.4-.4-.4V384c0-.6 0-1.2 .1-1.8C155.1 370.7 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48l0 0h0v0zM256 488h24c0 13.3-10.7 24-24 24s-24-10.7-24-24h24zm96-264a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
+                      d="M337.8 14.8C341.5 5.8 350.3 0 360 0L472 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-39-39-24.7 24.7C407 163.3 416 192.6 416 224c0 80.2-59 146.6-136 158.2l0 25.8 24 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-24 0 0 32c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-32-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l24 0 0-25.8C155 370.6 96 304.2 96 224c0-88.4 71.6-160 160-160c39.6 0 75.9 14.4 103.8 38.2L382.1 80 343 41c-6.9-6.9-8.9-17.2-5.2-26.2zM448 48s0 0 0 0s0 0 0 0s0 0 0 0zM352 224a96 96 0 1 0 -192 0 96 96 0 1 0 192 0z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) count
                 <br />
                 <span
@@ -1815,7 +1973,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 ICS
                 <br />
                 <span
@@ -1824,7 +1984,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Phenomin
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -1843,7 +2005,9 @@ exports[`Phenotype page renders correctly 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="line-height: 1.5;"
                 >
@@ -1868,12 +2032,16 @@ exports[`Phenotype page renders correctly 1`] = `
                   </strong>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   decreased large unstained cell number
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   href="/supporting-data?mgiGeneAccessionId=MGI:108022&mpTermId=MP:0012361"
                 >
@@ -1884,14 +2052,18 @@ exports[`Phenotype page renders correctly 1`] = `
                   </span>
                 </a>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="text-transform: capitalize;"
                 >
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1907,7 +2079,7 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1927,18 +2099,22 @@ exports[`Phenotype page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Early adult
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 Large Unstained Cell (LUC) count
                 <br />
                 <span
@@ -1947,7 +2123,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   Hematology
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 MRC Harwell
                 <br />
                 <span
@@ -1956,7 +2134,9 @@ exports[`Phenotype page renders correctly 1`] = `
                   MRC
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="bold"
                   style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -2003,7 +2183,7 @@ exports[`Phenotype page renders correctly 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                   fill="currentColor"
                 />
               </svg>
@@ -2024,7 +2204,7 @@ exports[`Phenotype page renders correctly 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                   fill="currentColor"
                 />
               </svg>
@@ -2186,7 +2366,7 @@ exports[`Phenotype page renders correctly 1`] = `
                 style="display: inline-block;"
               >
                 <hr
-                  style="border-top: 3px dashed #000; height: 3px; width: 50px; display: inline-block; margin: 0px 0px 0px 0.5rem; opacity: 1;"
+                  style="border-top: 3px dashed rgb(0, 0, 0); height: 3px; width: 50px; display: inline-block; margin: 0px 0px 0px 0.5rem; opacity: 1;"
                 />
                   Significant P-Value threshold (P &lt; 0.0001)
               </div>

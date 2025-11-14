@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Cardiovascular landing page renders correctly 1`] = `
 <div>
@@ -1800,46 +1800,105 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
             style="display: flex; justify-content: center; align-items: center; height: 100%;"
           >
             <div
-              class="mt-4"
-              style="display: flex; justify-content: center;"
+              style="position: relative;"
             >
-              <div
-                data-test-id="CircularProgressbarWithChildren"
+              <svg
+                height="0"
+                role="figure"
+                width="0"
               >
-                <div
-                  style="position: relative; width: 100%; height: 100%;"
+                <g
+                  class="visx-group"
+                  transform="translate(70, 50)"
                 >
-                  <svg
-                    class="CircularProgressbar rotating"
-                    data-test-id="CircularProgressbar"
-                    viewBox="0 0 100 100"
+                  <g
+                    class="visx-group visx-axis visx-axis-left"
+                    transform="translate(0, 0)"
                   >
-                    <path
-                      class="CircularProgressbar-trail"
-                      d="
-      M 50,50
-      m 0,-44
-      a 44,44 0 1 1 0,88
-      a 44,44 0 1 1 0,-88
-    "
-                      fill-opacity="0"
-                      stroke-width="12"
-                      style="stroke: #fff; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 0px;"
+                    <line
+                      class="visx-line visx-axis-line"
+                      fill="transparent"
+                      shape-rendering="crispEdges"
+                      stroke="#222"
+                      stroke-width="1"
+                      x1="0"
+                      x2="0"
+                      y1="-99.5"
+                      y2="0.5"
                     />
-                    <path
-                      class="CircularProgressbar-path"
-                      d="
-      M 50,50
-      m 0,-44
-      a 44,44 0 1 1 0,88
-      a 44,44 0 1 1 0,-88
-    "
-                      fill-opacity="0"
-                      stroke-width="12"
-                      style="stroke: #ccc; transition: stroke-dashoffset 2s ease 0s; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 55.29203070318034px;"
-                    />
+                  </g>
+                  <svg
+                    style="overflow: visible;"
+                    x="-50"
+                    y="0"
+                  >
+                    <text
+                      style="font-size: 12px;"
+                      text-anchor="middle"
+                      transform="rotate(-90, 0, -50)"
+                      x="0"
+                      y="-50"
+                    >
+                      <tspan
+                        dy="0em"
+                        x="0"
+                      >
+                        Number of phenotype associations
+                      </tspan>
+                    </text>
                   </svg>
-                </div>
+                  <g
+                    class="visx-group visx-axis visx-axis-bottom"
+                    transform="translate(0, -100)"
+                  >
+                    <line
+                      class="visx-line visx-axis-line"
+                      fill="transparent"
+                      shape-rendering="crispEdges"
+                      stroke="#222"
+                      stroke-width="1"
+                      x1="0.5"
+                      x2="-79.5"
+                      y1="0"
+                      y2="0"
+                    />
+                  </g>
+                  <svg
+                    style="overflow: visible;"
+                    x="0"
+                    y="30"
+                  >
+                    <text
+                      style="font-size: 12px;"
+                      text-anchor="middle"
+                      transform=""
+                      x="-40"
+                      y="-100"
+                    >
+                      <tspan
+                        dy="0.71em"
+                        x="-40"
+                      >
+                        Number of associations to other phenotypes
+                      </tspan>
+                    </text>
+                  </svg>
+                </g>
+              </svg>
+              <div
+                class="visx-tooltip"
+                style="top: 0px; left: 0px; position: absolute; background-color: white; color: rgb(102, 102, 102); padding: 0.3rem 0.5rem; border-radius: 3px; font-size: 14px; box-shadow: 0 1px 2px rgba(33,33,33,0.2); line-height: 1em; pointer-events: none; display: flex; flex-direction: column; opacity: 0; transition: all 0.1s ease-out; transform: translate(10px, 10px);"
+              >
+                <b>
+                  <i />
+                </b>
+                <span>
+                  Other phenotype calls: 
+                </span>
+                <span>
+                  Cardiovascular System
+                   phenotype calls: 
+                </span>
               </div>
             </div>
           </div>
@@ -1857,6 +1916,234 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
             height="960"
             width="960"
           >
+            <g
+              transform="translate(480, 480)"
+            >
+              <g
+                class="groups"
+              >
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M0,-280A280,280,0,1,1,-100.824,261.218L-90.021,233.23A250,250,0,1,0,0,-250Z"
+                    style="fill: rgb(239, 123, 11); stroke: rgb(167, 86, 8);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(-90) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      x="8"
+                    >
+                      cardiovascular system 
+                    </text>
+                  </g>
+                  <g
+                    class="group-tick"
+                    transform="rotate(29.77687287655212) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                  </g>
+                </g>
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M-113.753,255.852A280,280,0,0,1,-245.132,135.315L-218.868,120.817A250,250,0,0,0,-101.565,228.439Z"
+                    style="fill: rgb(9, 120, 161); stroke: rgb(6, 84, 113);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(113.97015853538508) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      style="text-anchor: end;"
+                      transform="rotate(180) translate(-16)"
+                      x="8"
+                    >
+                      vision/eye 
+                    </text>
+                  </g>
+                </g>
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M-251.589,122.894A280,280,0,0,1,-120.996,-252.507L-108.032,-225.453A250,250,0,0,0,-224.633,109.727Z"
+                    style="fill: rgb(119, 119, 119); stroke: rgb(83, 83, 83);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(153.96577810277037) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      style="text-anchor: end;"
+                      transform="rotate(180) translate(-16)"
+                      x="8"
+                    >
+                      growth/size/body region 
+                    </text>
+                  </g>
+                </g>
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M-108.225,-258.239A280,280,0,0,1,-59.731,-273.555L-53.331,-244.245A250,250,0,0,0,-96.629,-230.571Z"
+                    style="fill: rgb(238, 238, 180); stroke: rgb(167, 167, 126);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(247.26210610022133) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      style="text-anchor: end;"
+                      transform="rotate(180) translate(-16)"
+                      x="8"
+                    >
+                      embryo 
+                    </text>
+                  </g>
+                </g>
+                <g
+                  class="group"
+                >
+                  <path
+                    d="M-45.984,-276.198A280,280,0,0,1,-13.994,-279.65L-12.495,-249.688A250,250,0,0,0,-41.058,-246.606Z"
+                    style="fill: rgb(36, 139, 75); stroke: rgb(25, 97, 53);"
+                  />
+                  <g
+                    class="group-tick"
+                    transform="rotate(260.54748301613546) translate(280,0)"
+                  >
+                    <line
+                      x2="6"
+                    />
+                    <text
+                      dy=".35em"
+                      style="text-anchor: end;"
+                      transform="rotate(180) translate(-16)"
+                      x="8"
+                    >
+                      muscle  
+                    </text>
+                  </g>
+                </g>
+              </g>
+              <g
+                class="ribbons"
+              >
+                <path
+                  class="chord"
+                  d="M249.15258796243248,-20.566669920586342A250,250,0,0,1,101.88546487524586,228.29663170348144Q0,0,249.15258796243248,-20.566669920586342Z"
+                  style="fill: rgb(239, 123, 11); stroke: rgb(167, 86, 8); visibility: visible;"
+                >
+                  <title>
+                    590 genes present cardiovascular system phenotype and cardiovascular system phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M101.88546487524586,228.29663170348144A250,250,0,0,1,-35.00796743863533,247.53674922284864Q0,0,-101.56519609879454,228.4392937771727A250,250,0,0,1,-207.43091208715217,139.54360146811518Q0,0,101.88546487524586,228.29663170348144Z"
+                  style="fill: rgb(9, 120, 161); stroke: rgb(6, 84, 113); visibility: visible;"
+                >
+                  <title>
+                    268 genes present cardiovascular system phenotype and vision/eye phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M1.5308084989341916e-14,-250A250,250,0,0,1,249.15258796243248,-20.566669920586342Q0,0,-224.63301339437388,109.72697614243748A250,250,0,0,1,-127.8348524597166,-214.8447125172097Q0,0,1.5308084989341916e-14,-250Z"
+                  style="fill: rgb(119, 119, 119); stroke: rgb(83, 83, 83); visibility: visible;"
+                >
+                  <title>
+                    712 genes present cardiovascular system phenotype and growth/size/body region phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-35.00796743863533,247.53674922284864A250,250,0,0,1,-67.71484047052876,240.65473271899484Q0,0,-96.62902498903938,-230.57066493738444A250,250,0,0,1,-65.0088979059252,-241.3997580633771Q0,0,-35.00796743863533,247.53674922284864Z"
+                  style="fill: rgb(238, 238, 180); stroke: rgb(167, 167, 126); visibility: visible;"
+                >
+                  <title>
+                    64 genes present cardiovascular system phenotype and embryo phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-67.71484047052876,240.65473271899484A250,250,0,0,1,-90.02105991897336,233.2299482722247Q0,0,-41.05754497700515,-246.60551088826298A250,250,0,0,1,-17.71140255033971,-249.37182322728407Q0,0,-67.71484047052876,240.65473271899484Z"
+                  style="fill: rgb(36, 139, 75); stroke: rgb(25, 97, 53); visibility: visible;"
+                >
+                  <title>
+                    45 genes present cardiovascular system phenotype and muscle phenotype , 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-207.43091208715217,139.54360146811518A250,250,0,0,1,-214.70546838198868,128.06858259101202Q0,0,-127.8348524597166,-214.8447125172097A250,250,0,0,1,-115.97436054662552,-221.47222782055837Q0,0,-207.43091208715217,139.54360146811518Z"
+                  style="fill: rgb(119, 119, 119); stroke: rgb(83, 83, 83); visibility: hidden;"
+                >
+                  <title>
+                    26 genes present vision/eye phenotype and growth/size/body region phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-214.70546838198868,128.06858259101202A250,250,0,0,1,-217.85030673959034,122.64274888254263Q0,0,-65.0088979059252,-241.3997580633771A250,250,0,0,1,-58.933322162171926,-242.954447456575Q0,0,-214.70546838198868,128.06858259101202Z"
+                  style="fill: rgb(238, 238, 180); stroke: rgb(167, 167, 126); visibility: hidden;"
+                >
+                  <title>
+                    12 genes present vision/eye phenotype and embryo phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-217.85030673959034,122.64274888254263A250,250,0,0,1,-218.86821750675432,120.8168173948316Q0,0,-14.582219368869549,-249.5743554099222A250,250,0,0,1,-12.494792317669805,-249.68756509874154Q0,0,-217.85030673959034,122.64274888254263Z"
+                  style="fill: rgb(36, 139, 75); stroke: rgb(25, 97, 53); visibility: hidden;"
+                >
+                  <title>
+                    4 genes present vision/eye phenotype and muscle phenotype , 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-115.97436054662552,-221.47222782055837A250,250,0,0,1,-110.85128092958959,-224.0803282670507Q0,0,-58.933322162171926,-242.954447456575A250,250,0,0,1,-53.3313723087285,-244.24529622424214Q0,0,-115.97436054662552,-221.47222782055837Z"
+                  style="fill: rgb(238, 238, 180); stroke: rgb(167, 167, 126); visibility: hidden;"
+                >
+                  <title>
+                    11 genes present growth/size/body region phenotype and embryo phenotype, 
+                  </title>
+                </path>
+                <path
+                  class="chord"
+                  d="M-110.85128092958959,-224.0803282670507A250,250,0,0,1,-108.03199416127315,-225.45307324926546Q0,0,-17.71140255033971,-249.37182322728407A250,250,0,0,1,-14.582219368869549,-249.5743554099222Q0,0,-110.85128092958959,-224.0803282670507Z"
+                  style="fill: rgb(36, 139, 75); stroke: rgb(25, 97, 53); visibility: hidden;"
+                >
+                  <title>
+                    6 genes present growth/size/body region phenotype and muscle phenotype , 
+                  </title>
+                </path>
+              </g>
+            </g>
             <g
               transform="translate(480, 480)"
             >

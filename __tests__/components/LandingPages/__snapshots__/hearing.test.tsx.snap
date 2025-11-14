@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Hearing landing page renders correctly 1`] = `
 <div>
@@ -807,7 +807,7 @@ exports[`Hearing landing page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
                     />
                   </svg>
@@ -837,7 +837,7 @@ exports[`Hearing landing page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -883,7 +883,7 @@ exports[`Hearing landing page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -929,7 +929,7 @@ exports[`Hearing landing page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -956,240 +956,320 @@ exports[`Hearing landing page renders correctly 1`] = `
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   A730017C20Rik
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Severe
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Aak1
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   High
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Acsl4
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   High
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Acvr2a
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Mild
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Adgrb1
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Mild
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Adgrv1
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Known
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Severe
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Ahsg
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   High
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Ankrd11
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Het
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Mild
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Ap3m2
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Mild
                 </span>
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-style: italic;"
                 >
                   Ap3s1
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Hom
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Novel
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Mild
                 </span>
@@ -1603,46 +1683,105 @@ exports[`Hearing landing page renders correctly 1`] = `
           style="display: flex; justify-content: center; align-items: center; height: 100%;"
         >
           <div
-            class="mt-4"
-            style="display: flex; justify-content: center;"
+            style="position: relative;"
           >
-            <div
-              data-test-id="CircularProgressbarWithChildren"
+            <svg
+              height="0"
+              role="figure"
+              width="0"
             >
-              <div
-                style="position: relative; width: 100%; height: 100%;"
+              <g
+                class="visx-group"
+                transform="translate(70, 50)"
               >
-                <svg
-                  class="CircularProgressbar rotating"
-                  data-test-id="CircularProgressbar"
-                  viewBox="0 0 100 100"
+                <g
+                  class="visx-group visx-axis visx-axis-left"
+                  transform="translate(0, 0)"
                 >
-                  <path
-                    class="CircularProgressbar-trail"
-                    d="
-      M 50,50
-      m 0,-44
-      a 44,44 0 1 1 0,88
-      a 44,44 0 1 1 0,-88
-    "
-                    fill-opacity="0"
-                    stroke-width="12"
-                    style="stroke: #fff; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 0px;"
+                  <line
+                    class="visx-line visx-axis-line"
+                    fill="transparent"
+                    shape-rendering="crispEdges"
+                    stroke="#222"
+                    stroke-width="1"
+                    x1="0"
+                    x2="0"
+                    y1="-99.5"
+                    y2="0.5"
                   />
-                  <path
-                    class="CircularProgressbar-path"
-                    d="
-      M 50,50
-      m 0,-44
-      a 44,44 0 1 1 0,88
-      a 44,44 0 1 1 0,-88
-    "
-                    fill-opacity="0"
-                    stroke-width="12"
-                    style="stroke: #ccc; transition: stroke-dashoffset 2s ease 0s; stroke-dasharray: 276.46015351590177px 276.46015351590177px; stroke-dashoffset: 55.29203070318034px;"
-                  />
+                </g>
+                <svg
+                  style="overflow: visible;"
+                  x="-50"
+                  y="0"
+                >
+                  <text
+                    style="font-size: 12px;"
+                    text-anchor="middle"
+                    transform="rotate(-90, 0, -50)"
+                    x="0"
+                    y="-50"
+                  >
+                    <tspan
+                      dy="0em"
+                      x="0"
+                    >
+                      Number of phenotype associations
+                    </tspan>
+                  </text>
                 </svg>
-              </div>
+                <g
+                  class="visx-group visx-axis visx-axis-bottom"
+                  transform="translate(0, -100)"
+                >
+                  <line
+                    class="visx-line visx-axis-line"
+                    fill="transparent"
+                    shape-rendering="crispEdges"
+                    stroke="#222"
+                    stroke-width="1"
+                    x1="0.5"
+                    x2="-79.5"
+                    y1="0"
+                    y2="0"
+                  />
+                </g>
+                <svg
+                  style="overflow: visible;"
+                  x="0"
+                  y="30"
+                >
+                  <text
+                    style="font-size: 12px;"
+                    text-anchor="middle"
+                    transform=""
+                    x="-40"
+                    y="-100"
+                  >
+                    <tspan
+                      dy="0.71em"
+                      x="-40"
+                    >
+                      Number of associations to other phenotypes
+                    </tspan>
+                  </text>
+                </svg>
+              </g>
+            </svg>
+            <div
+              class="visx-tooltip"
+              style="top: 0px; left: 0px; position: absolute; background-color: white; color: rgb(102, 102, 102); padding: 0.3rem 0.5rem; border-radius: 3px; font-size: 14px; box-shadow: 0 1px 2px rgba(33,33,33,0.2); line-height: 1em; pointer-events: none; display: flex; flex-direction: column; opacity: 0; transition: all 0.1s ease-out; transform: translate(10px, 10px);"
+            >
+              <b>
+                <i />
+              </b>
+              <span>
+                Other phenotype calls: 
+              </span>
+              <span>
+                Hearing
+                 phenotype calls: 
+              </span>
             </div>
           </div>
         </div>
