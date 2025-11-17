@@ -33,6 +33,14 @@ export type {
 export type { AlleleSummary } from "./allele";
 export type { Release };
 export type { PublicationAggregationDataResponse } from "./publications";
+export type {
+  GoTerm,
+  BatchQueryItem,
+  SelectedAlleleData,
+  DownloadButtonsState,
+  SelectOptions,
+  SlimGoTerm,
+} from "./batch-query";
 
 type Model =
   | PhenotypeRef
