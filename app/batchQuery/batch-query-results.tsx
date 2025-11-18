@@ -316,17 +316,17 @@ export const BatchQueryResults = ({
   const defaultSort: SortType = useMemo(() => ["mouseGeneSymbol", "asc"], []);
 
   const downloadButtons = [
-    // {
-    //   key: "Summary data JSON",
-    //   isBusy: state.isBusySummaryJSON,
-    //   toogleFlag: () => fetchFilteredDataset("JSON", "", false),
-    // },
-    // {
-    //   key: "Summary data TSV",
-    //   isBusy: state.isBusySummaryTSV,
-    //   toogleFlag: () =>
-    //     fetchFilteredDataset("TSV", "download-preprocessed-data", false),
-    // },
+    {
+      key: "Summary data JSON",
+      isBusy: state.isBusySummaryJSON,
+      toogleFlag: () => fetchFilteredDataset("JSON", "", false),
+    },
+    {
+      key: "Summary data TSV",
+      isBusy: state.isBusySummaryTSV,
+      toogleFlag: () =>
+        fetchFilteredDataset("TSV", "download-preprocessed-data", false),
+    },
   ];
 
   return (
