@@ -1,13 +1,4 @@
-import {
-  Alert,
-  Button,
-  Col,
-  Row,
-  Spinner,
-  Tab,
-  Tabs,
-  ListGroup,
-} from "react-bootstrap";
+import { Alert, Button, Col, Row, Spinner, ListGroup } from "react-bootstrap";
 import Select from "react-select";
 import { AlleleSymbol, Pagination, SortableTable } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,6 +22,7 @@ import { formatAlleleSymbol } from "@/utils";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { uniqBy, groupBy } from "lodash";
 import styles from "./batch-query-results.module.scss";
+import classnames from "classnames";
 
 const formatOptionLabel = ({ value, label, numHits }, { context }) => {
   return (
@@ -319,7 +311,8 @@ export const BatchQueryResults = ({
     {
       key: "Summary data JSON",
       isBusy: state.isBusySummaryJSON,
-      toogleFlag: () => fetchFilteredDataset("JSON", "", false),
+      toogleFlag: () =>
+        fetchFilteredDataset("JSON", "download-preprocessed-data", false),
     },
     {
       key: "Summary data TSV",
@@ -444,14 +437,7 @@ export const BatchQueryResults = ({
                   )}
                 </Pagination>
                 <div>
-                  <div
-                    className="grey"
-                    style={{
-                      display: "flex",
-                      gap: "0.5rem",
-                      alignItems: "center",
-                    }}
-                  >
+                  <div className={classnames("grey", styles.buttonsContainer)}>
                     {downloadButtons.map((button) => (
                       <button
                         key={button.key}
@@ -484,13 +470,7 @@ export const BatchQueryResults = ({
             Because your list has more than 1,000 IDs, results won't be
             displayed. You can download the filtered data or the entire dataset.
           </Alert>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignSelf: "flex-start",
-            }}
-          >
+          <div className={styles.buttonsContainer}>
             {downloadButtons.map((button) => (
               <button
                 key={button.key}
@@ -509,14 +489,6 @@ export const BatchQueryResults = ({
                 )}
               </button>
             ))}
-            <button className="btn impc-primary-button mb-3">
-              <FontAwesomeIcon icon={faDownload} size="sm" />
-              &nbsp; Download entire dataset (3.39GB) TSV
-            </button>
-            <button className="btn impc-primary-button mb-3">
-              <FontAwesomeIcon icon={faDownload} size="sm" />
-              &nbsp; Download entire dataset (6.47GB) JSON
-            </button>
           </div>
         </>
       ) : !isFetching ? (
