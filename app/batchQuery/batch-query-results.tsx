@@ -319,7 +319,8 @@ export const BatchQueryResults = ({
     {
       key: "Summary data JSON",
       isBusy: state.isBusySummaryJSON,
-      toogleFlag: () => fetchFilteredDataset("JSON", "", false),
+      toogleFlag: () =>
+        fetchFilteredDataset("JSON", "download-preprocessed-data", false),
     },
     {
       key: "Summary data TSV",
