@@ -194,7 +194,7 @@ const BatchQueryPage = () => {
       body = JSON.stringify({ mgi_ids: geneIdArray });
     }
     dispatch({ type: "toggle", payload });
-    const url = `${BATCH_QUERY_DOWNLOAD_ROOT}${pathURL}?`;
+    const url = `${BATCH_QUERY_DOWNLOAD_ROOT}${pathURL}`;
     let acceptHeader = "application/json";
     switch (payload) {
       case "SummaryTSV":
