@@ -72,25 +72,12 @@ export const groupData = (data) => {
 export const processData = (groups: Array<Dataset>): Array<DatasetExtra> => {
   return (
     (groups ? Object.values(groups) : []).map((d: any, index) => {
-      const getLethality = () => {
-        if (!d.significant) {
-          return "Viable";
-        }
-        if (d.significant && d.significantPhenotype?.id === "MP:0011100") {
-          return "Lethal";
-        }
-        if (d.significant && d.significantPhenotype?.id === "MP:0011110") {
-          return "Subviable";
-        }
-        return "-";
-      };
       return {
         ...d,
         datasetNum: index + 1,
         topLevelPhenotype: d.topLevelPhenotypes?.[0]?.name,
         phenotype: d.significantPhenotype?.name,
         id: d.significantPhenotype?.id,
-        viability: getLethality(),
       };
     }) || []
   );
@@ -99,7 +86,7 @@ export const processData = (groups: Array<Dataset>): Array<DatasetExtra> => {
 export const getBackgroundColorForRow = (
   groupedDataset,
   index: number,
-  selectedKey: string
+  selectedKey: string,
 ): string => {
   const isFirstRender = selectedKey === "" && index === 0;
   const datasetMatchesKey = groupedDataset.key === selectedKey;
