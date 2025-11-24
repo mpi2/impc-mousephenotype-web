@@ -22,6 +22,7 @@ const ViabilityChartPage = () => {
     mgiGeneAccessionId as string,
     !!mgiGeneAccessionId,
   );
+
   const activeDataset = !!selectedKey
     ? getDatasetByKey(viabilityData, selectedKey)
     : viabilityData?.[0];
@@ -80,6 +81,7 @@ const ViabilityChartPage = () => {
             data={viabilityData}
             selectedKey={selectedKey}
             onSelectParam={setSelectedKey}
+            dataIsLoading={isViabilityLoading}
           />
         </Card>
       </Container>
