@@ -369,6 +369,11 @@ const AllData = (props: Props) => {
                 label: "Most significant P-Value",
                 getValueFn: (item) => item?.pValue?.toString() || "N/A",
               },
+              {
+                key: "effectSize",
+                label: "Effect Size",
+                getValueFn: (item) => item?.effectSize?.toString() || "N/A",
+              },
             ]}
           />
         </>
