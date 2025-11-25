@@ -17,7 +17,7 @@ function getViabilityStatement(value: string) {
     case "Hemizygous - Lethal":
       return "Lethal";
     default:
-      return "N/A";
+      return "Call not made";
   }
 }
 

@@ -10,7 +10,6 @@ import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   data: Array<Dataset>;
@@ -51,8 +50,8 @@ const ViabilityDataComparison = (props: Props) => {
   const tableHeaders = [
     { width: 1, label: "Allele", field: "alleleSymbol" },
     { width: 1, label: "Viability", field: "viabilityStatement" },
-    { width: 2, label: "Category", field: "parameterName" },
     { width: 1, label: "Zygosity", field: "zygosity" },
+    { width: 2, label: "Assesment", field: "parameterName" },
     { width: 1, label: "Phenotyping Centre", field: "phenotypingCentre" },
     { width: 0.5, label: "Significant sex", field: "sex" },
     { width: 1, label: "Life Stage", field: "lifeStageName" },
@@ -92,25 +91,14 @@ const ViabilityDataComparison = (props: Props) => {
                   <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
                 </td>
                 <td>
-                  <strong>{d.viabilityStatement}</strong>
-                  {d.viabilityStatement === "N/A" && (
-                    <>
-                      &nbsp;
-                      <OverlayTrigger
-                        placement="top"
-                        overlay={
-                          <Tooltip>
-                            Insufficient animal numbers to make a call
-                          </Tooltip>
-                        }
-                      >
-                        <FontAwesomeIcon icon={faCircleInfo} size="lg" />
-                      </OverlayTrigger>
-                    </>
+                  {d.viabilityStatement === "Call not made" ? (
+                    <>{d.viabilityStatement}</>
+                  ) : (
+                    <strong>{d.viabilityStatement}</strong>
                   )}
                 </td>
-                <td>{d.parameterName}</td>
                 <td>{d.zygosity}</td>
+                <td>{d.parameterName}</td>
                 <td>{d.phenotypingCentre}</td>
                 <td>
                   {d.sex === "not_considered" ? (
