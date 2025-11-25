@@ -169,6 +169,11 @@ const SignificantPhenotypes = ({
                   label: "Most significant P-Value",
                   getValueFn: (item) => item?.pValue?.toString(10) || "-",
                 },
+                {
+                  key: "effectSize",
+                  label: "Effect Size",
+                  getValueFn: (item) => item?.pValue?.toString() || "-",
+                },
               ]}
             />
           </>
