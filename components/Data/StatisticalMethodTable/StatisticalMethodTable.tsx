@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Fragment, useMemo } from "react";
 import styles from "./styles.module.scss";
+import { GeneStatisticalResult } from "@/models/gene";
+import { DownloadData } from "@/components";
 
 type Props = {
   datasetSummary: Dataset;
@@ -259,6 +261,22 @@ const StatisticalMethodTable = ({
     }
   };
 
+  const getDownloadData = () => {
+    return [
+      statisticalMethodFields.reduce((acc, field) => {
+        acc[field.key] = attributes[field.key] ?? "N/A";
+        return acc;
+      }, {}),
+    ];
+  };
+
+  const getDownloadFields = () => {
+    return statisticalMethodFields.map(({ key, label }) => ({
+      key,
+      label,
+    }));
+  };
+
   return (
     <WrapperCmp>
       {!onlyDisplayTable && (
@@ -277,20 +295,27 @@ const StatisticalMethodTable = ({
         <b>{name === "MM" ? "Mixed Model" : name}</b>
       </span>
       {!statisticalDataIsEmpty && (
-        <SortableTable
-          className={styles.table}
-          headers={[
-            { width: 8, label: "Model attribute", disabled: true },
-            { width: 4, label: "Value", disabled: true },
-          ]}
-        >
-          {statisticalMethodFields.map((field) => (
-            <tr>
-              <td>{field.label}</td>
-              <td>{getFormattedValue(field) ?? "N/A"}</td>
-            </tr>
-          ))}
-        </SortableTable>
+        <>
+          <SortableTable
+            className={styles.table}
+            headers={[
+              { width: 8, label: "Model attribute", disabled: true },
+              { width: 4, label: "Value", disabled: true },
+            ]}
+          >
+            {statisticalMethodFields.map((field) => (
+              <tr>
+                <td>{field.label}</td>
+                <td>{getFormattedValue(field) ?? "N/A"}</td>
+              </tr>
+            ))}
+          </SortableTable>
+          <DownloadData
+            data={getDownloadData()}
+            fileName="statistical-method-data"
+            fields={getDownloadFields()}
+          />
+        </>
       )}
     </WrapperCmp>
   );
