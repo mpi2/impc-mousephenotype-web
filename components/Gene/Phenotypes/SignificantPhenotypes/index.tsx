@@ -172,7 +172,7 @@ const SignificantPhenotypes = ({
                 {
                   key: "effectSize",
                   label: "Effect Size",
-                  getValueFn: (item) => item?.pValue?.toString() || "-",
+                  getValueFn: (item) => item?.effectSize?.toString() || "-",
                 },
               ]}
             />
