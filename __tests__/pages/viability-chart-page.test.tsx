@@ -72,7 +72,7 @@ describe("Viability chart page", () => {
           return res(ctx.json(datasetData));
         },
       ),
-      rest.get(`${SOLR_ENDPOINT}/experiment/select`, (req, res, ctx) => {
+      rest.get(`${SOLR_ENDPOINT}experiment/select`, (req, res, ctx) => {
         return res(ctx.json(solrData));
       }),
     );

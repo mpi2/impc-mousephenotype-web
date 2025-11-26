@@ -15,7 +15,7 @@ describe("useViabilityQuery hook", () => {
           return res(ctx.status(200), ctx.json(viabilityData));
         },
       ),
-      rest.get(`${SOLR_ENDPOINT}/experiment/select`, (req, res, ctx) => {
+      rest.get(`${SOLR_ENDPOINT}experiment/select`, (req, res, ctx) => {
         return res(ctx.json(solrData));
       }),
     );
