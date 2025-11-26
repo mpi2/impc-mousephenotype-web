@@ -1333,7 +1333,7 @@ describe("Viability data comparison component", () => {
     // 6 because includes the header ones
     expect(rows.length).toEqual(7);
     const headers = await screen.findAllByRole("columnheader");
-    expect(headers.length).toEqual(7);
+    expect(headers.length).toEqual(8);
   });
 
   it("automatically selects the first row if not provided from props", async () => {

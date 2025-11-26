@@ -78,8 +78,8 @@ describe("Viability chart page", () => {
     );
     const { container } = renderWithClient(<ViabilityChartPage />);
     await waitFor(async () => {
-      const rows = await screen.findAllByRole("table");
-      return expect(rows.length).toEqual(2);
+      const tables = await screen.findAllByRole("table");
+      return expect(tables.length).toEqual(2);
     });
     await waitFor(() =>
       expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
