@@ -3,7 +3,7 @@ import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import { API_URL, createQueryWrapper, SOLR_ENDPOINT } from "../utils";
 import viabilityData from "../../mocks/data/tests/cib2-viability.json";
-import solrData from "../../mocks/data/tests/myo6-viability-experiment-solr-data.json";
+import solrData from "../../mocks/data/tests/viability/myo6-experiment-solr-VIA-063.json";
 import { useViabilityQuery } from "@/hooks";
 
 describe("useViabilityQuery hook", () => {

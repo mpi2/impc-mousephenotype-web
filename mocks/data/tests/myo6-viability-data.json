@@ -26,7 +26,7 @@
       "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous"
     ],
     "mgiGeneAccessionId": "MGI:104785",
-    "parameterName": "Homozygous males viability HELLO",
+    "parameterName": "Homozygous males viability",
     "parameterStableId": "IMPC_VIA_063_001",
     "parameterStableKey": 72009,
     "phenotypeSex": null,

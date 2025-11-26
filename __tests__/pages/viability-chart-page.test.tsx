@@ -10,7 +10,11 @@ import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import viabilityData from "../../mocks/data/tests/myo6-viability-data.json";
 import datasetData from "../../mocks/data/tests/datasets/9deeb0258d5159af7911eebdc0ba2ed3.json";
-import solrData from "../../mocks/data/tests/myo6-viability-experiment-solr-data.json";
+import via063Data from "../../mocks/data/tests/viability/myo6-experiment-solr-VIA-063.json";
+import via064Data from "../../mocks/data/tests/viability/myo6-experiment-solr-VIA-064.json";
+import via065Data from "../../mocks/data/tests/viability/myo6-experiment-solr-VIA-065.json";
+import via066Data from "../../mocks/data/tests/viability/myo6-experiment-solr-VIA-066.json";
+import via067Data from "../../mocks/data/tests/viability/myo6-experiment-solr-VIA-067.json";
 
 window.ResizeObserver =
   window.ResizeObserver ||
@@ -73,7 +77,22 @@ describe("Viability chart page", () => {
         },
       ),
       rest.get(`${SOLR_ENDPOINT}experiment/select`, (req, res, ctx) => {
-        return res(ctx.json(solrData));
+        const q = req.url.searchParams.get("q")!;
+        if (q.includes("IMPC_VIA_063_001")) {
+          return res(ctx.json(via063Data));
+        }
+        if (q.includes("IMPC_VIA_064_001")) {
+          return res(ctx.json(via064Data));
+        }
+        if (q.includes("IMPC_VIA_065_001")) {
+          return res(ctx.json(via065Data));
+        }
+        if (q.includes("IMPC_VIA_066_001")) {
+          return res(ctx.json(via066Data));
+        }
+        if (q.includes("IMPC_VIA_067_001")) {
+          return res(ctx.json(via067Data));
+        }
       }),
     );
     const { container } = renderWithClient(<ViabilityChartPage />);

@@ -3,7 +3,7 @@
     "status":0,
     "QTime":1,
     "params":{
-      "q":"gene_symbol: \"Myo6\" AND procedure_stable_id: \"IMPC_VIA_002\" AND parameter_stable_id: \"IMPC_VIA_063_001\""}},
+      "q":"gene_symbol: \"Myo6\" AND procedure_stable_id: \"IMPC_VIA_002\" AND parameter_stable_id: \"IMPC_VIA_066_001\""}},
   "response":{"numFound":1,"start":0,"docs":[
     {
       "allele_accession_id":"MGI:6257724",
@@ -24,10 +24,10 @@
         "Gene category = Autosomal",
         "Male parents genotype = Heterozygous"],
       "metadata_group":"d41d8cd98f00b204e9800998ecf8427e",
-      "observation_id":"9b0a0d75ec20dfc9403b260ef2a940d3",
+      "observation_id":"a56a8575e18d37901890e9fceb0d0154",
       "observation_type":"text",
-      "parameter_name":"Homozygous males viability",
-      "parameter_stable_id":"IMPC_VIA_063_001",
+      "parameter_name":"Heterozygous animals viability",
+      "parameter_stable_id":"IMPC_VIA_066_001",
       "phenotyping_center":"TCP",
       "pipeline_name":"TCP Pipeline",
       "pipeline_stable_id":"TCP_001",
@@ -35,11 +35,11 @@
       "procedure_name":"Viability Primary Screen",
       "procedure_stable_id":"IMPC_VIA_002",
       "project_name":"DTCC",
-      "sex":"male",
+      "sex":"both",
       "strain_accession_id":"MGI:2683688",
       "strain_name":"C57BL/6NCrl",
-      "text_value":"Homozygous - Viable",
-      "zygosity":"homozygote",
-      "id":"cbee8d08-92ac-49a5-b1be-b27049fc8528",
-      "_version_":1828880387405774880}]
+      "text_value":"Heterozygous - Viable",
+      "zygosity":"heterozygote",
+      "id":"3f7d2408-01a2-4624-887d-959283c0cae4",
+      "_version_":1828880057059246120}]
   }}
