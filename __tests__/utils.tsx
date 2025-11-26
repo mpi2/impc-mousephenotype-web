@@ -21,6 +21,8 @@ export const TEST_MH_PLOT_ENDPOINT = process.env.NEXT_PUBLIC_MH_PLOT_DATA_URL;
 
 export const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
 
+export const SOLR_ENDPOINT = process.env.NEXT_PUBLIC_SOLR_URL || "";
+
 export const createTestQueryClient = () =>
   new QueryClient({
     defaultOptions: {
