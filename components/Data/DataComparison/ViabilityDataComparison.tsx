@@ -51,7 +51,7 @@ const ViabilityDataComparison = (props: Props) => {
     { width: 1, label: "Allele", field: "alleleSymbol" },
     { width: 1, label: "Viability", field: "viabilityStatement" },
     { width: 1, label: "Zygosity", field: "zygosity" },
-    { width: 2, label: "Assesment", field: "parameterName" },
+    { width: 2, label: "Assay", field: "parameterName" },
     { width: 1, label: "Phenotyping Centre", field: "phenotypingCentre" },
     { width: 0.5, label: "Significant sex", field: "sex" },
     { width: 1, label: "Life Stage", field: "lifeStageName" },
