@@ -16,6 +16,7 @@ export const PUBLICATIONS_ENDPOINT_URL =
   process.env.NEXT_PUBLIC_PUBLICATIONS_ENDPOINT_URL || "";
 export const GENOME_BROWSER_DATA_URL =
   process.env.NEXT_PUBLIC_GENOME_BROWSER_DATA_URL || "";
+export const SOLR_ENDPOINT_URL = process.env.NEXT_PUBLIC_SOLR_ENDPOINT || "";
 
 const WEBSITE_ENV = process.env.WEBSITE_ENV || "production";
 
@@ -114,5 +115,10 @@ export async function fetchReleaseNotesData(releaseTag: string) {
 
 export async function fetchPublicationEndpoint(query: string) {
   const endpointURL = PUBLICATIONS_ENDPOINT_URL + query;
+  return await fetchURL(endpointURL);
+}
+
+export async function fetchDataFromSOLR(query: string) {
+  const endpointURL = SOLR_ENDPOINT_URL + query;
   return await fetchURL(endpointURL);
 }
