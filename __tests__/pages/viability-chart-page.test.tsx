@@ -1,10 +1,16 @@
 import ViabilityChartPage from "@/app/supporting-data/viability/viability-chart-page";
 import { screen, waitFor } from "@testing-library/react";
-import { API_URL, renderWithClient, TEST_DATASETS_ENDPOINT } from "../utils";
+import {
+  API_URL,
+  renderWithClient,
+  TEST_DATASETS_ENDPOINT,
+  SOLR_ENDPOINT,
+} from "../utils";
 import { testServer } from "../../mocks/server";
 import { rest } from "msw";
 import viabilityData from "../../mocks/data/tests/myo6-viability-data.json";
 import datasetData from "../../mocks/data/tests/datasets/9deeb0258d5159af7911eebdc0ba2ed3.json";
+import solrData from "../../mocks/data/tests/myo6-viability-experiment-solr-data.json";
 
 window.ResizeObserver =
   window.ResizeObserver ||
@@ -66,6 +72,9 @@ describe("Viability chart page", () => {
           return res(ctx.json(datasetData));
         },
       ),
+      rest.get(`${SOLR_ENDPOINT}/experiment/select`, (req, res, ctx) => {
+        return res(ctx.json(solrData));
+      }),
     );
     const { container } = renderWithClient(<ViabilityChartPage />);
     await waitFor(async () => {
