@@ -1,6 +1,6 @@
 [
   {
-    "id": "671779fae852561cc5489759",
+    "id": "682df38c4b9e7bbd3b2dc27f",
     "alleleAccessionId": "MGI:6257724",
     "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
     "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
@@ -11,12 +11,12 @@
     "geneticBackground": "involves: C57BL/6NCrl",
     "intermediatePhenotypes": [
       {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
+        "id": "MP:0010769",
+        "name": "abnormal survival"
       },
       {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
       }
     ],
     "lifeStageAcc": "IMPCLS:0005",
@@ -36,12 +36,12 @@
     "pipelineStableKey": 9,
     "potentialPhenotypes": [
       {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
+        "id": "MP:0011100",
+        "name": "preweaning lethality, complete penetrance"
       },
       {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
+        "id": "MP:0011110",
+        "name": "preweaning lethality, incomplete penetrance"
       }
     ],
     "procedureGroup": "IMPC_VIA",
@@ -99,7 +99,22 @@
         "sexEffectParameterEstimate": null,
         "sexEffectStderrEstimate": null,
         "batchSignificant": null,
-        "varianceSignificant": null
+        "varianceSignificant": null,
+        "femaleEffectSizeLowNormalVsHigh": null,
+        "femaleEffectSizeLowVsNormalHigh": null,
+        "femalePValueLowNormalVsHigh": null,
+        "femalePValueLowVsNormalHigh": null,
+        "maleEffectSizeLowNormalVsHigh": null,
+        "maleEffectSizeLowVsNormalHigh": null,
+        "malePValueLowNormalVsHigh": null,
+        "malePValueLowVsNormalHigh": null,
+        "genotypeEffectSizeLowNormalVsHigh": null,
+        "genotypeEffectSizeLowVsNormalHigh": null,
+        "genotypePValueLowNormalVsHigh": null,
+        "genotypePValueLowVsNormalHigh": null,
+        "weightEffectPValue": null,
+        "weightEffectParameterEstimate": null,
+        "weightEffectStderrEstimate": null
       }
     },
     "datasetId": "9deeb0258d5159af7911eebdc0ba2ed3",
@@ -125,13 +140,13 @@
     },
     "topLevelPhenotypes": [
       {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
+        "id": "MP:0010768",
+        "name": "mortality/aging"
       }
     ]
   },
   {
-    "id": "671783453f2f3421308704ac",
+    "id": "682df51fcb03735533d56e68",
     "alleleAccessionId": "MGI:6257724",
     "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
     "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
@@ -142,143 +157,12 @@
     "geneticBackground": "involves: C57BL/6NCrl",
     "intermediatePhenotypes": [
       {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
+        "id": "MP:0010769",
+        "name": "abnormal survival"
       },
       {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
-      }
-    ],
-    "lifeStageAcc": "IMPCLS:0005",
-    "lifeStageName": "Early adult",
-    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
-    "metadataValues": [
-      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous"
-    ],
-    "mgiGeneAccessionId": "MGI:104785",
-    "parameterName": "Homozygous males viability",
-    "parameterStableId": "IMPC_VIA_063_001",
-    "parameterStableKey": 72009,
-    "phenotypeSex": null,
-    "phenotypingCentre": "TCP",
-    "pipelineName": "TCP Pipeline",
-    "pipelineStableId": "TCP_001",
-    "pipelineStableKey": 9,
-    "potentialPhenotypes": [
-      {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
-      },
-      {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
-      }
-    ],
-    "procedureGroup": "IMPC_VIA",
-    "procedureName": "Viability Primary Screen",
-    "procedureStableId": "IMPC_VIA_002",
-    "procedureStableKey": 1267,
-    "productionCentre": null,
-    "projectName": "DTCC",
-    "reportedEffectSize": 0.0,
-    "reportedPValue": 1.0,
-    "unit": {
-      "x": " ",
-      "y": null
-    },
-    "resourceFullName": "IMPC",
-    "resourceName": "IMPC",
-    "sex": null,
-    "zygosity": "homozygote",
-    "significant": false,
-    "significantPhenotype": null,
-    "softWindowing": {
-      "bandwidth": null,
-      "doeNote": null,
-      "minObsRequired": null,
-      "numberOfDoe": null,
-      "peaks": null,
-      "shape": null,
-      "threshold": null,
-      "totalObsOrWeight": null
-    },
-    "statisticalMethod": {
-      "name": "Supplied as data",
-      "attributes": {
-        "femaleEffectSize": null,
-        "femaleKoEffectPValue": null,
-        "femaleKoEffectStderrEstimate": null,
-        "femaleKoParameterEstimate": null,
-        "femalePercentageChange": null,
-        "maleKoEffectPValue": null,
-        "maleKoEffectStderrEstimate": null,
-        "maleKoParameterEstimate": null,
-        "malePercentageChange": null,
-        "genotypeEffectPValue": null,
-        "genotypeEffectStderrEstimate": null,
-        "group1Genotype": null,
-        "group1ResidualsNormalityTest": null,
-        "group2Genotype": null,
-        "group2ResidualsNormalityTest": null,
-        "interactionEffectPValue": null,
-        "interactionSignificant": null,
-        "interceptEstimate": null,
-        "interceptEstimateStderrEstimate": null,
-        "maleEffectSize": null,
-        "sexEffectPValue": null,
-        "sexEffectParameterEstimate": null,
-        "sexEffectStderrEstimate": null,
-        "batchSignificant": null,
-        "varianceSignificant": null
-      }
-    },
-    "datasetId": "9deeb0258d5159af7911eebdc0ba2ed3",
-    "status": "Successful",
-    "strainAccessionId": "MGI:2683688",
-    "strainName": "C57BL/6NCrl",
-    "summaryStatistics": {
-      "bothMutantCount": null,
-      "bothMutantMean": null,
-      "bothMutantSd": null,
-      "femaleControlCount": null,
-      "femaleControlMean": null,
-      "femaleControlSd": null,
-      "femaleMutantCount": null,
-      "femaleMutantMean": null,
-      "femaleMutantSd": null,
-      "maleControlCount": null,
-      "maleControlMean": null,
-      "maleControlSd": null,
-      "maleMutantCount": null,
-      "maleMutantMean": null,
-      "maleMutantSd": null
-    },
-    "topLevelPhenotypes": [
-      {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
-      }
-    ]
-  },
-  {
-    "id": "6717874637e17434eb208f40",
-    "alleleAccessionId": "MGI:6257724",
-    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
-    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
-    "classificationTag": null,
-    "colonyId": "TCPR0947_ADUP",
-    "dataType": "line",
-    "geneSymbol": "Myo6",
-    "geneticBackground": "involves: C57BL/6NCrl",
-    "intermediatePhenotypes": [
-      {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
-      },
-      {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
       }
     ],
     "lifeStageAcc": "IMPCLS:0005",
@@ -298,12 +182,12 @@
     "pipelineStableKey": 9,
     "potentialPhenotypes": [
       {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
+        "id": "MP:0011100",
+        "name": "preweaning lethality, complete penetrance"
       },
       {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
+        "id": "MP:0011110",
+        "name": "preweaning lethality, incomplete penetrance"
       }
     ],
     "procedureGroup": "IMPC_VIA",
@@ -361,7 +245,22 @@
         "sexEffectParameterEstimate": null,
         "sexEffectStderrEstimate": null,
         "batchSignificant": null,
-        "varianceSignificant": null
+        "varianceSignificant": null,
+        "femaleEffectSizeLowNormalVsHigh": null,
+        "femaleEffectSizeLowVsNormalHigh": null,
+        "femalePValueLowNormalVsHigh": null,
+        "femalePValueLowVsNormalHigh": null,
+        "maleEffectSizeLowNormalVsHigh": null,
+        "maleEffectSizeLowVsNormalHigh": null,
+        "malePValueLowNormalVsHigh": null,
+        "malePValueLowVsNormalHigh": null,
+        "genotypeEffectSizeLowNormalVsHigh": null,
+        "genotypeEffectSizeLowVsNormalHigh": null,
+        "genotypePValueLowNormalVsHigh": null,
+        "genotypePValueLowVsNormalHigh": null,
+        "weightEffectPValue": null,
+        "weightEffectParameterEstimate": null,
+        "weightEffectStderrEstimate": null
       }
     },
     "datasetId": "fd6e651093686b2e79b5e22148875bb0",
@@ -387,13 +286,13 @@
     },
     "topLevelPhenotypes": [
       {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
+        "id": "MP:0010768",
+        "name": "mortality/aging"
       }
     ]
   },
   {
-    "id": "67178c1c388fb3c4efb7a086",
+    "id": "682df4b29f1b1a92fe1c063c",
     "alleleAccessionId": "MGI:6257724",
     "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
     "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
@@ -404,143 +303,12 @@
     "geneticBackground": "involves: C57BL/6NCrl",
     "intermediatePhenotypes": [
       {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
+        "id": "MP:0010769",
+        "name": "abnormal survival"
       },
       {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
-      }
-    ],
-    "lifeStageAcc": "IMPCLS:0005",
-    "lifeStageName": "Early adult",
-    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
-    "metadataValues": [
-      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous"
-    ],
-    "mgiGeneAccessionId": "MGI:104785",
-    "parameterName": "Homozygous females viability",
-    "parameterStableId": "IMPC_VIA_064_001",
-    "parameterStableKey": 72010,
-    "phenotypeSex": null,
-    "phenotypingCentre": "TCP",
-    "pipelineName": "TCP Pipeline",
-    "pipelineStableId": "TCP_001",
-    "pipelineStableKey": 9,
-    "potentialPhenotypes": [
-      {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
-      },
-      {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
-      }
-    ],
-    "procedureGroup": "IMPC_VIA",
-    "procedureName": "Viability Primary Screen",
-    "procedureStableId": "IMPC_VIA_002",
-    "procedureStableKey": 1267,
-    "productionCentre": null,
-    "projectName": "DTCC",
-    "reportedEffectSize": 0.0,
-    "reportedPValue": 1.0,
-    "unit": {
-      "x": " ",
-      "y": null
-    },
-    "resourceFullName": "IMPC",
-    "resourceName": "IMPC",
-    "sex": null,
-    "zygosity": "homozygote",
-    "significant": false,
-    "significantPhenotype": null,
-    "softWindowing": {
-      "bandwidth": null,
-      "doeNote": null,
-      "minObsRequired": null,
-      "numberOfDoe": null,
-      "peaks": null,
-      "shape": null,
-      "threshold": null,
-      "totalObsOrWeight": null
-    },
-    "statisticalMethod": {
-      "name": "Supplied as data",
-      "attributes": {
-        "femaleEffectSize": null,
-        "femaleKoEffectPValue": null,
-        "femaleKoEffectStderrEstimate": null,
-        "femaleKoParameterEstimate": null,
-        "femalePercentageChange": null,
-        "maleKoEffectPValue": null,
-        "maleKoEffectStderrEstimate": null,
-        "maleKoParameterEstimate": null,
-        "malePercentageChange": null,
-        "genotypeEffectPValue": null,
-        "genotypeEffectStderrEstimate": null,
-        "group1Genotype": null,
-        "group1ResidualsNormalityTest": null,
-        "group2Genotype": null,
-        "group2ResidualsNormalityTest": null,
-        "interactionEffectPValue": null,
-        "interactionSignificant": null,
-        "interceptEstimate": null,
-        "interceptEstimateStderrEstimate": null,
-        "maleEffectSize": null,
-        "sexEffectPValue": null,
-        "sexEffectParameterEstimate": null,
-        "sexEffectStderrEstimate": null,
-        "batchSignificant": null,
-        "varianceSignificant": null
-      }
-    },
-    "datasetId": "fd6e651093686b2e79b5e22148875bb0",
-    "status": "Successful",
-    "strainAccessionId": "MGI:2683688",
-    "strainName": "C57BL/6NCrl",
-    "summaryStatistics": {
-      "bothMutantCount": null,
-      "bothMutantMean": null,
-      "bothMutantSd": null,
-      "femaleControlCount": null,
-      "femaleControlMean": null,
-      "femaleControlSd": null,
-      "femaleMutantCount": null,
-      "femaleMutantMean": null,
-      "femaleMutantSd": null,
-      "maleControlCount": null,
-      "maleControlMean": null,
-      "maleControlSd": null,
-      "maleMutantCount": null,
-      "maleMutantMean": null,
-      "maleMutantSd": null
-    },
-    "topLevelPhenotypes": [
-      {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
-      }
-    ]
-  },
-  {
-    "id": "67178048d9df893c2c96b4bc",
-    "alleleAccessionId": "MGI:6257724",
-    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
-    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
-    "classificationTag": null,
-    "colonyId": "TCPR0947_ADUP",
-    "dataType": "line",
-    "geneSymbol": "Myo6",
-    "geneticBackground": "involves: C57BL/6NCrl",
-    "intermediatePhenotypes": [
-      {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
-      },
-      {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
       }
     ],
     "lifeStageAcc": "IMPCLS:0005",
@@ -560,12 +328,12 @@
     "pipelineStableKey": 9,
     "potentialPhenotypes": [
       {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
+        "id": "MP:0011100",
+        "name": "preweaning lethality, complete penetrance"
       },
       {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
+        "id": "MP:0011110",
+        "name": "preweaning lethality, incomplete penetrance"
       }
     ],
     "procedureGroup": "IMPC_VIA",
@@ -623,7 +391,22 @@
         "sexEffectParameterEstimate": null,
         "sexEffectStderrEstimate": null,
         "batchSignificant": null,
-        "varianceSignificant": null
+        "varianceSignificant": null,
+        "femaleEffectSizeLowNormalVsHigh": null,
+        "femaleEffectSizeLowVsNormalHigh": null,
+        "femalePValueLowNormalVsHigh": null,
+        "femalePValueLowVsNormalHigh": null,
+        "maleEffectSizeLowNormalVsHigh": null,
+        "maleEffectSizeLowVsNormalHigh": null,
+        "malePValueLowNormalVsHigh": null,
+        "malePValueLowVsNormalHigh": null,
+        "genotypeEffectSizeLowNormalVsHigh": null,
+        "genotypeEffectSizeLowVsNormalHigh": null,
+        "genotypePValueLowNormalVsHigh": null,
+        "genotypePValueLowVsNormalHigh": null,
+        "weightEffectPValue": null,
+        "weightEffectParameterEstimate": null,
+        "weightEffectStderrEstimate": null
       }
     },
     "datasetId": "cbb509063ddc1245da18db2beffea24c",
@@ -649,13 +432,13 @@
     },
     "topLevelPhenotypes": [
       {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
+        "id": "MP:0010768",
+        "name": "mortality/aging"
       }
     ]
   },
   {
-    "id": "6717816ebdac85d7fbd99611",
+    "id": "682df0e8ebe6e4c4fbfdadad",
     "alleleAccessionId": "MGI:6257724",
     "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
     "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
@@ -666,143 +449,12 @@
     "geneticBackground": "involves: C57BL/6NCrl",
     "intermediatePhenotypes": [
       {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
+        "id": "MP:0010769",
+        "name": "abnormal survival"
       },
       {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
-      }
-    ],
-    "lifeStageAcc": "IMPCLS:0005",
-    "lifeStageName": "Early adult",
-    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
-    "metadataValues": [
-      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous"
-    ],
-    "mgiGeneAccessionId": "MGI:104785",
-    "parameterName": "Hemizygous males viability",
-    "parameterStableId": "IMPC_VIA_065_001",
-    "parameterStableKey": 72011,
-    "phenotypeSex": null,
-    "phenotypingCentre": "TCP",
-    "pipelineName": "TCP Pipeline",
-    "pipelineStableId": "TCP_001",
-    "pipelineStableKey": 9,
-    "potentialPhenotypes": [
-      {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
-      },
-      {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
-      }
-    ],
-    "procedureGroup": "IMPC_VIA",
-    "procedureName": "Viability Primary Screen",
-    "procedureStableId": "IMPC_VIA_002",
-    "procedureStableKey": 1267,
-    "productionCentre": null,
-    "projectName": "DTCC",
-    "reportedEffectSize": 0.0,
-    "reportedPValue": 1.0,
-    "unit": {
-      "x": " ",
-      "y": null
-    },
-    "resourceFullName": "IMPC",
-    "resourceName": "IMPC",
-    "sex": null,
-    "zygosity": "hemizygote",
-    "significant": false,
-    "significantPhenotype": null,
-    "softWindowing": {
-      "bandwidth": null,
-      "doeNote": null,
-      "minObsRequired": null,
-      "numberOfDoe": null,
-      "peaks": null,
-      "shape": null,
-      "threshold": null,
-      "totalObsOrWeight": null
-    },
-    "statisticalMethod": {
-      "name": "Supplied as data",
-      "attributes": {
-        "femaleEffectSize": null,
-        "femaleKoEffectPValue": null,
-        "femaleKoEffectStderrEstimate": null,
-        "femaleKoParameterEstimate": null,
-        "femalePercentageChange": null,
-        "maleKoEffectPValue": null,
-        "maleKoEffectStderrEstimate": null,
-        "maleKoParameterEstimate": null,
-        "malePercentageChange": null,
-        "genotypeEffectPValue": null,
-        "genotypeEffectStderrEstimate": null,
-        "group1Genotype": null,
-        "group1ResidualsNormalityTest": null,
-        "group2Genotype": null,
-        "group2ResidualsNormalityTest": null,
-        "interactionEffectPValue": null,
-        "interactionSignificant": null,
-        "interceptEstimate": null,
-        "interceptEstimateStderrEstimate": null,
-        "maleEffectSize": null,
-        "sexEffectPValue": null,
-        "sexEffectParameterEstimate": null,
-        "sexEffectStderrEstimate": null,
-        "batchSignificant": null,
-        "varianceSignificant": null
-      }
-    },
-    "datasetId": "cbb509063ddc1245da18db2beffea24c",
-    "status": "Successful",
-    "strainAccessionId": "MGI:2683688",
-    "strainName": "C57BL/6NCrl",
-    "summaryStatistics": {
-      "bothMutantCount": null,
-      "bothMutantMean": null,
-      "bothMutantSd": null,
-      "femaleControlCount": null,
-      "femaleControlMean": null,
-      "femaleControlSd": null,
-      "femaleMutantCount": null,
-      "femaleMutantMean": null,
-      "femaleMutantSd": null,
-      "maleControlCount": null,
-      "maleControlMean": null,
-      "maleControlSd": null,
-      "maleMutantCount": null,
-      "maleMutantMean": null,
-      "maleMutantSd": null
-    },
-    "topLevelPhenotypes": [
-      {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
-      }
-    ]
-  },
-  {
-    "id": "67177dfb2cc69fe586760765",
-    "alleleAccessionId": "MGI:6257724",
-    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
-    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
-    "classificationTag": null,
-    "colonyId": "TCPR0947_ADUP",
-    "dataType": "line",
-    "geneSymbol": "Myo6",
-    "geneticBackground": "involves: C57BL/6NCrl",
-    "intermediatePhenotypes": [
-      {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
-      },
-      {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
       }
     ],
     "lifeStageAcc": "IMPCLS:0005",
@@ -822,12 +474,12 @@
     "pipelineStableKey": 9,
     "potentialPhenotypes": [
       {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
+        "id": "MP:0011100",
+        "name": "preweaning lethality, complete penetrance"
       },
       {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
+        "id": "MP:0011110",
+        "name": "preweaning lethality, incomplete penetrance"
       }
     ],
     "procedureGroup": "IMPC_VIA",
@@ -885,7 +537,22 @@
         "sexEffectParameterEstimate": null,
         "sexEffectStderrEstimate": null,
         "batchSignificant": null,
-        "varianceSignificant": null
+        "varianceSignificant": null,
+        "femaleEffectSizeLowNormalVsHigh": null,
+        "femaleEffectSizeLowVsNormalHigh": null,
+        "femalePValueLowNormalVsHigh": null,
+        "femalePValueLowVsNormalHigh": null,
+        "maleEffectSizeLowNormalVsHigh": null,
+        "maleEffectSizeLowVsNormalHigh": null,
+        "malePValueLowNormalVsHigh": null,
+        "malePValueLowVsNormalHigh": null,
+        "genotypeEffectSizeLowNormalVsHigh": null,
+        "genotypeEffectSizeLowVsNormalHigh": null,
+        "genotypePValueLowNormalVsHigh": null,
+        "genotypePValueLowVsNormalHigh": null,
+        "weightEffectPValue": null,
+        "weightEffectParameterEstimate": null,
+        "weightEffectStderrEstimate": null
       }
     },
     "datasetId": "67aee48868f22b725f96992756d811d4",
@@ -911,13 +578,13 @@
     },
     "topLevelPhenotypes": [
       {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
+        "id": "MP:0010768",
+        "name": "mortality/aging"
       }
     ]
   },
   {
-    "id": "671784f7dc89ef3fd32d8832",
+    "id": "682df185e71dd21f59f5d7bd",
     "alleleAccessionId": "MGI:6257724",
     "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
     "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
@@ -928,143 +595,12 @@
     "geneticBackground": "involves: C57BL/6NCrl",
     "intermediatePhenotypes": [
       {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
+        "id": "MP:0010769",
+        "name": "abnormal survival"
       },
       {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
-      }
-    ],
-    "lifeStageAcc": "IMPCLS:0005",
-    "lifeStageName": "Early adult",
-    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
-    "metadataValues": [
-      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous"
-    ],
-    "mgiGeneAccessionId": "MGI:104785",
-    "parameterName": "Heterozygous animals viability",
-    "parameterStableId": "IMPC_VIA_066_001",
-    "parameterStableKey": 72012,
-    "phenotypeSex": null,
-    "phenotypingCentre": "TCP",
-    "pipelineName": "TCP Pipeline",
-    "pipelineStableId": "TCP_001",
-    "pipelineStableKey": 9,
-    "potentialPhenotypes": [
-      {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
-      },
-      {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
-      }
-    ],
-    "procedureGroup": "IMPC_VIA",
-    "procedureName": "Viability Primary Screen",
-    "procedureStableId": "IMPC_VIA_002",
-    "procedureStableKey": 1267,
-    "productionCentre": null,
-    "projectName": "DTCC",
-    "reportedEffectSize": 0.0,
-    "reportedPValue": 1.0,
-    "unit": {
-      "x": " ",
-      "y": null
-    },
-    "resourceFullName": "IMPC",
-    "resourceName": "IMPC",
-    "sex": null,
-    "zygosity": "heterozygote",
-    "significant": false,
-    "significantPhenotype": null,
-    "softWindowing": {
-      "bandwidth": null,
-      "doeNote": null,
-      "minObsRequired": null,
-      "numberOfDoe": null,
-      "peaks": null,
-      "shape": null,
-      "threshold": null,
-      "totalObsOrWeight": null
-    },
-    "statisticalMethod": {
-      "name": "Supplied as data",
-      "attributes": {
-        "femaleEffectSize": null,
-        "femaleKoEffectPValue": null,
-        "femaleKoEffectStderrEstimate": null,
-        "femaleKoParameterEstimate": null,
-        "femalePercentageChange": null,
-        "maleKoEffectPValue": null,
-        "maleKoEffectStderrEstimate": null,
-        "maleKoParameterEstimate": null,
-        "malePercentageChange": null,
-        "genotypeEffectPValue": null,
-        "genotypeEffectStderrEstimate": null,
-        "group1Genotype": null,
-        "group1ResidualsNormalityTest": null,
-        "group2Genotype": null,
-        "group2ResidualsNormalityTest": null,
-        "interactionEffectPValue": null,
-        "interactionSignificant": null,
-        "interceptEstimate": null,
-        "interceptEstimateStderrEstimate": null,
-        "maleEffectSize": null,
-        "sexEffectPValue": null,
-        "sexEffectParameterEstimate": null,
-        "sexEffectStderrEstimate": null,
-        "batchSignificant": null,
-        "varianceSignificant": null
-      }
-    },
-    "datasetId": "67aee48868f22b725f96992756d811d4",
-    "status": "Successful",
-    "strainAccessionId": "MGI:2683688",
-    "strainName": "C57BL/6NCrl",
-    "summaryStatistics": {
-      "bothMutantCount": null,
-      "bothMutantMean": null,
-      "bothMutantSd": null,
-      "femaleControlCount": null,
-      "femaleControlMean": null,
-      "femaleControlSd": null,
-      "femaleMutantCount": null,
-      "femaleMutantMean": null,
-      "femaleMutantSd": null,
-      "maleControlCount": null,
-      "maleControlMean": null,
-      "maleControlSd": null,
-      "maleMutantCount": null,
-      "maleMutantMean": null,
-      "maleMutantSd": null
-    },
-    "topLevelPhenotypes": [
-      {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
-      }
-    ]
-  },
-  {
-    "id": "67177c3f91596fe85f3cce7e",
-    "alleleAccessionId": "MGI:6257724",
-    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
-    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
-    "classificationTag": null,
-    "colonyId": "TCPR0947_ADUP",
-    "dataType": "line",
-    "geneSymbol": "Myo6",
-    "geneticBackground": "involves: C57BL/6NCrl",
-    "intermediatePhenotypes": [
-      {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
-      },
-      {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
+        "id": "MP:0010770",
+        "name": "preweaning lethality"
       }
     ],
     "lifeStageAcc": "IMPCLS:0005",
@@ -1084,12 +620,12 @@
     "pipelineStableKey": 9,
     "potentialPhenotypes": [
       {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
+        "id": "MP:0011100",
+        "name": "preweaning lethality, complete penetrance"
       },
       {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
+        "id": "MP:0011110",
+        "name": "preweaning lethality, incomplete penetrance"
       }
     ],
     "procedureGroup": "IMPC_VIA",
@@ -1147,7 +683,22 @@
         "sexEffectParameterEstimate": null,
         "sexEffectStderrEstimate": null,
         "batchSignificant": null,
-        "varianceSignificant": null
+        "varianceSignificant": null,
+        "femaleEffectSizeLowNormalVsHigh": null,
+        "femaleEffectSizeLowVsNormalHigh": null,
+        "femalePValueLowNormalVsHigh": null,
+        "femalePValueLowVsNormalHigh": null,
+        "maleEffectSizeLowNormalVsHigh": null,
+        "maleEffectSizeLowVsNormalHigh": null,
+        "malePValueLowNormalVsHigh": null,
+        "malePValueLowVsNormalHigh": null,
+        "genotypeEffectSizeLowNormalVsHigh": null,
+        "genotypeEffectSizeLowVsNormalHigh": null,
+        "genotypePValueLowNormalVsHigh": null,
+        "genotypePValueLowVsNormalHigh": null,
+        "weightEffectPValue": null,
+        "weightEffectParameterEstimate": null,
+        "weightEffectStderrEstimate": null
       }
     },
     "datasetId": "ee920c8e2902888187069935c64c2395",
@@ -1173,139 +724,8 @@
     },
     "topLevelPhenotypes": [
       {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
-      }
-    ]
-  },
-  {
-    "id": "67177dbdfc54360b31f916f1",
-    "alleleAccessionId": "MGI:6257724",
-    "alleleName": "endonuclease-mediated mutation 1, The Centre for Phenogenomics",
-    "alleleSymbol": "Myo6<em1(IMPC)Tcp>",
-    "classificationTag": null,
-    "colonyId": "TCPR0947_ADUP",
-    "dataType": "line",
-    "geneSymbol": "Myo6",
-    "geneticBackground": "involves: C57BL/6NCrl",
-    "intermediatePhenotypes": [
-      {
-        "name": "abnormal survival",
-        "id": "MP:0010769"
-      },
-      {
-        "name": "preweaning lethality",
-        "id": "MP:0010770"
-      }
-    ],
-    "lifeStageAcc": "IMPCLS:0005",
-    "lifeStageName": "Early adult",
-    "metadataGroup": "d41d8cd98f00b204e9800998ecf8427e",
-    "metadataValues": [
-      "Age of pups at genotype = 2|Female parents genotype = Heterozygous|Gene category = Autosomal|Male parents genotype = Heterozygous"
-    ],
-    "mgiGeneAccessionId": "MGI:104785",
-    "parameterName": "Homozygous animals viability",
-    "parameterStableId": "IMPC_VIA_067_001",
-    "parameterStableKey": 72013,
-    "phenotypeSex": null,
-    "phenotypingCentre": "TCP",
-    "pipelineName": "TCP Pipeline",
-    "pipelineStableId": "TCP_001",
-    "pipelineStableKey": 9,
-    "potentialPhenotypes": [
-      {
-        "name": "preweaning lethality, complete penetrance",
-        "id": "MP:0011100"
-      },
-      {
-        "name": "preweaning lethality, incomplete penetrance",
-        "id": "MP:0011110"
-      }
-    ],
-    "procedureGroup": "IMPC_VIA",
-    "procedureName": "Viability Primary Screen",
-    "procedureStableId": "IMPC_VIA_002",
-    "procedureStableKey": 1267,
-    "productionCentre": null,
-    "projectName": "DTCC",
-    "reportedEffectSize": 0.0,
-    "reportedPValue": 1.0,
-    "unit": {
-      "x": " ",
-      "y": null
-    },
-    "resourceFullName": "IMPC",
-    "resourceName": "IMPC",
-    "sex": null,
-    "zygosity": "homozygote",
-    "significant": false,
-    "significantPhenotype": null,
-    "softWindowing": {
-      "bandwidth": null,
-      "doeNote": null,
-      "minObsRequired": null,
-      "numberOfDoe": null,
-      "peaks": null,
-      "shape": null,
-      "threshold": null,
-      "totalObsOrWeight": null
-    },
-    "statisticalMethod": {
-      "name": "Supplied as data",
-      "attributes": {
-        "femaleEffectSize": null,
-        "femaleKoEffectPValue": null,
-        "femaleKoEffectStderrEstimate": null,
-        "femaleKoParameterEstimate": null,
-        "femalePercentageChange": null,
-        "maleKoEffectPValue": null,
-        "maleKoEffectStderrEstimate": null,
-        "maleKoParameterEstimate": null,
-        "malePercentageChange": null,
-        "genotypeEffectPValue": null,
-        "genotypeEffectStderrEstimate": null,
-        "group1Genotype": null,
-        "group1ResidualsNormalityTest": null,
-        "group2Genotype": null,
-        "group2ResidualsNormalityTest": null,
-        "interactionEffectPValue": null,
-        "interactionSignificant": null,
-        "interceptEstimate": null,
-        "interceptEstimateStderrEstimate": null,
-        "maleEffectSize": null,
-        "sexEffectPValue": null,
-        "sexEffectParameterEstimate": null,
-        "sexEffectStderrEstimate": null,
-        "batchSignificant": null,
-        "varianceSignificant": null
-      }
-    },
-    "datasetId": "ee920c8e2902888187069935c64c2395",
-    "status": "Successful",
-    "strainAccessionId": "MGI:2683688",
-    "strainName": "C57BL/6NCrl",
-    "summaryStatistics": {
-      "bothMutantCount": null,
-      "bothMutantMean": null,
-      "bothMutantSd": null,
-      "femaleControlCount": null,
-      "femaleControlMean": null,
-      "femaleControlSd": null,
-      "femaleMutantCount": null,
-      "femaleMutantMean": null,
-      "femaleMutantSd": null,
-      "maleControlCount": null,
-      "maleControlMean": null,
-      "maleControlSd": null,
-      "maleMutantCount": null,
-      "maleMutantMean": null,
-      "maleMutantSd": null
-    },
-    "topLevelPhenotypes": [
-      {
-        "name": "mortality/aging",
-        "id": "MP:0010768"
+        "id": "MP:0010768",
+        "name": "mortality/aging"
       }
     ]
   }
