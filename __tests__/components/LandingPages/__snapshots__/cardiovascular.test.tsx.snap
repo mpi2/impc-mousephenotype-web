@@ -49,7 +49,7 @@ exports[`Cardiovascular landing page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"

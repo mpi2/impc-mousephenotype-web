@@ -49,7 +49,7 @@ exports[`ABR Chart page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -90,7 +90,7 @@ exports[`ABR Chart page renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-arrow-left"
+              class="svg-inline--fa fa-arrow-left "
               data-icon="arrow-left"
               data-prefix="fas"
               focusable="false"
@@ -681,7 +681,7 @@ exports[`ABR Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-mars-and-venus fa-lg"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
                     data-icon="mars-and-venus"
                     data-prefix="fas"
                     focusable="false"
@@ -754,7 +754,7 @@ exports[`ABR Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-mars-and-venus fa-lg"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
                     data-icon="mars-and-venus"
                     data-prefix="fas"
                     focusable="false"
@@ -827,7 +827,7 @@ exports[`ABR Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-mars-and-venus fa-lg"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
                     data-icon="mars-and-venus"
                     data-prefix="fas"
                     focusable="false"
@@ -900,7 +900,7 @@ exports[`ABR Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-mars-and-venus fa-lg"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
                     data-icon="mars-and-venus"
                     data-prefix="fas"
                     focusable="false"
@@ -1330,7 +1330,7 @@ exports[`ABR Chart page renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-download fa-sm"
+                  class="svg-inline--fa fa-download fa-sm "
                   data-icon="download"
                   data-prefix="fas"
                   focusable="false"
@@ -1351,7 +1351,7 @@ exports[`ABR Chart page renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-download fa-sm"
+                  class="svg-inline--fa fa-download fa-sm "
                   data-icon="download"
                   data-prefix="fas"
                   focusable="false"

@@ -49,7 +49,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -90,7 +90,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-arrow-left"
+              class="svg-inline--fa fa-arrow-left "
               data-icon="arrow-left"
               data-prefix="fas"
               focusable="false"
@@ -681,7 +681,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-venus fa-lg"
+                    class="svg-inline--fa fa-venus fa-lg "
                     data-icon="venus"
                     data-prefix="fas"
                     focusable="false"
@@ -700,7 +700,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-mars-and-venus fa-lg"
+                    class="svg-inline--fa fa-mars-and-venus fa-lg "
                     data-icon="mars-and-venus"
                     data-prefix="fas"
                     focusable="false"
@@ -1111,7 +1111,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-circle-question fa-xl"
+                    class="svg-inline--fa fa-circle-question fa-xl "
                     data-icon="circle-question"
                     data-prefix="fas"
                     focusable="false"
@@ -1353,7 +1353,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm"
+                    class="svg-inline--fa fa-download fa-sm "
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"
@@ -1374,7 +1374,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm"
+                    class="svg-inline--fa fa-download fa-sm "
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"
@@ -1528,7 +1528,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                  
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-chevron-right"
+                  class="svg-inline--fa fa-chevron-right "
                   data-icon="chevron-right"
                   data-prefix="fas"
                   focusable="false"
@@ -1616,7 +1616,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   ) 
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs "
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1643,7 +1643,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   ) 
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs "
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1669,7 +1669,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                   ) 
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square fa-xs"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs "
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -1702,7 +1702,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm"
+                    class="svg-inline--fa fa-download fa-sm "
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"
@@ -1723,7 +1723,7 @@ exports[`Unidimensional Chart page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm"
+                    class="svg-inline--fa fa-download fa-sm "
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"

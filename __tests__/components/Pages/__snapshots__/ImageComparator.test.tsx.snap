@@ -49,7 +49,7 @@ exports[`Image comparator page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -90,7 +90,7 @@ exports[`Image comparator page renders correctly 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-arrow-left"
+              class="svg-inline--fa fa-arrow-left "
               data-icon="arrow-left"
               data-prefix="fas"
               focusable="false"
@@ -228,7 +228,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     <button>
                       <svg
                         aria-labelledby="svg-inline--fa-title-zoom-in-icon"
-                        class="svg-inline--fa fa-magnifying-glass-plus"
+                        class="svg-inline--fa fa-magnifying-glass-plus "
                         data-icon="magnifying-glass-plus"
                         data-prefix="fas"
                         role="img"
@@ -249,7 +249,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     <button>
                       <svg
                         aria-labelledby="svg-inline--fa-title-zoom-out-icon"
-                        class="svg-inline--fa fa-magnifying-glass-minus"
+                        class="svg-inline--fa fa-magnifying-glass-minus "
                         data-icon="magnifying-glass-minus"
                         data-prefix="fas"
                         role="img"
@@ -270,7 +270,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     <button>
                       <svg
                         aria-labelledby="svg-inline--fa-title-reset-zoom-icon"
-                        class="svg-inline--fa fa-arrows-rotate"
+                        class="svg-inline--fa fa-arrows-rotate "
                         data-icon="arrows-rotate"
                         data-prefix="fas"
                         role="img"
@@ -323,7 +323,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-mars"
+                      class="svg-inline--fa fa-mars "
                       data-icon="mars"
                       data-prefix="fas"
                       focusable="false"
@@ -437,7 +437,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     <button>
                       <svg
                         aria-labelledby="svg-inline--fa-title-zoom-in-icon"
-                        class="svg-inline--fa fa-magnifying-glass-plus"
+                        class="svg-inline--fa fa-magnifying-glass-plus "
                         data-icon="magnifying-glass-plus"
                         data-prefix="fas"
                         role="img"
@@ -458,7 +458,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     <button>
                       <svg
                         aria-labelledby="svg-inline--fa-title-zoom-out-icon"
-                        class="svg-inline--fa fa-magnifying-glass-minus"
+                        class="svg-inline--fa fa-magnifying-glass-minus "
                         data-icon="magnifying-glass-minus"
                         data-prefix="fas"
                         role="img"
@@ -479,7 +479,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     <button>
                       <svg
                         aria-labelledby="svg-inline--fa-title-reset-zoom-icon"
-                        class="svg-inline--fa fa-arrows-rotate"
+                        class="svg-inline--fa fa-arrows-rotate "
                         data-icon="arrows-rotate"
                         data-prefix="fas"
                         role="img"
@@ -532,7 +532,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-mars"
+                      class="svg-inline--fa fa-mars "
                       data-icon="mars"
                       data-prefix="fas"
                       focusable="false"
@@ -584,7 +584,7 @@ exports[`Image comparator page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-circle"
+                    class="svg-inline--fa fa-circle "
                     data-icon="circle"
                     data-prefix="fas"
                     focusable="false"
@@ -609,7 +609,7 @@ exports[`Image comparator page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-circle"
+                    class="svg-inline--fa fa-circle "
                     data-icon="circle"
                     data-prefix="fas"
                     focusable="false"
@@ -634,7 +634,7 @@ exports[`Image comparator page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-circle"
+                    class="svg-inline--fa fa-circle "
                     data-icon="circle"
                     data-prefix="fas"
                     focusable="false"
@@ -659,7 +659,7 @@ exports[`Image comparator page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-circle"
+                    class="svg-inline--fa fa-circle "
                     data-icon="circle"
                     data-prefix="fas"
                     focusable="false"
@@ -702,7 +702,7 @@ exports[`Image comparator page renders correctly 1`] = `
                      
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-mars-and-venus"
+                      class="svg-inline--fa fa-mars-and-venus "
                       data-icon="mars-and-venus"
                       data-prefix="fas"
                       focusable="false"
@@ -724,7 +724,7 @@ exports[`Image comparator page renders correctly 1`] = `
                      
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-venus"
+                      class="svg-inline--fa fa-venus "
                       data-icon="venus"
                       data-prefix="fas"
                       focusable="false"
@@ -746,7 +746,7 @@ exports[`Image comparator page renders correctly 1`] = `
                      
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-mars"
+                      class="svg-inline--fa fa-mars "
                       data-icon="mars"
                       data-prefix="fas"
                       focusable="false"
@@ -882,7 +882,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -904,7 +904,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -954,7 +954,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -976,7 +976,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1026,7 +1026,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1048,7 +1048,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1098,7 +1098,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1120,7 +1120,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1170,7 +1170,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1192,7 +1192,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1242,7 +1242,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1264,7 +1264,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1314,7 +1314,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1336,7 +1336,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1386,7 +1386,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1408,7 +1408,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1458,7 +1458,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -1480,7 +1480,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1530,7 +1530,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -1552,7 +1552,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1602,7 +1602,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -1624,7 +1624,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1674,7 +1674,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1696,7 +1696,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1746,7 +1746,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1768,7 +1768,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1818,7 +1818,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1840,7 +1840,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1890,7 +1890,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -1912,7 +1912,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -1962,7 +1962,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -1984,7 +1984,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2034,7 +2034,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -2056,7 +2056,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2106,7 +2106,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -2128,7 +2128,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2178,7 +2178,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -2200,7 +2200,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2250,7 +2250,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -2272,7 +2272,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2322,7 +2322,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -2344,7 +2344,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2394,7 +2394,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -2416,7 +2416,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2466,7 +2466,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -2488,7 +2488,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2538,7 +2538,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -2560,7 +2560,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2610,7 +2610,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -2632,7 +2632,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2682,7 +2682,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -2704,7 +2704,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2754,7 +2754,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -2776,7 +2776,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2826,7 +2826,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -2848,7 +2848,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2898,7 +2898,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -2920,7 +2920,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -2970,7 +2970,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -2992,7 +2992,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3042,7 +3042,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -3064,7 +3064,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3114,7 +3114,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -3136,7 +3136,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3186,7 +3186,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -3208,7 +3208,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3258,7 +3258,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -3280,7 +3280,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3330,7 +3330,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -3352,7 +3352,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3402,7 +3402,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -3424,7 +3424,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3474,7 +3474,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -3496,7 +3496,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3546,7 +3546,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -3568,7 +3568,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3618,7 +3618,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -3640,7 +3640,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3690,7 +3690,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -3712,7 +3712,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3762,7 +3762,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -3784,7 +3784,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3834,7 +3834,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -3856,7 +3856,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3906,7 +3906,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -3928,7 +3928,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -3978,7 +3978,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -4000,7 +4000,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4050,7 +4050,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -4072,7 +4072,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4122,7 +4122,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -4144,7 +4144,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4194,7 +4194,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -4216,7 +4216,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4266,7 +4266,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -4288,7 +4288,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4338,7 +4338,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -4360,7 +4360,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4410,7 +4410,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -4432,7 +4432,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4490,7 +4490,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -4512,7 +4512,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4568,7 +4568,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -4590,7 +4590,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4646,7 +4646,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -4668,7 +4668,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4724,7 +4724,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -4746,7 +4746,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4802,7 +4802,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -4824,7 +4824,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4880,7 +4880,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -4902,7 +4902,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -4958,7 +4958,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -4980,7 +4980,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -5036,7 +5036,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -5058,7 +5058,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -5114,7 +5114,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
+                        class="svg-inline--fa fa-venus "
                         data-icon="venus"
                         data-prefix="fas"
                         focusable="false"
@@ -5136,7 +5136,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -5192,7 +5192,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -5214,7 +5214,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"
@@ -5270,7 +5270,7 @@ exports[`Image comparator page renders correctly 1`] = `
                     >
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
+                        class="svg-inline--fa fa-mars "
                         data-icon="mars"
                         data-prefix="fas"
                         focusable="false"
@@ -5292,7 +5292,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
+                          class="svg-inline--fa fa-circle "
                           data-icon="circle"
                           data-prefix="fas"
                           focusable="false"

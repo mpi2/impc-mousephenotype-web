@@ -49,7 +49,7 @@ exports[`Gene page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass"
+              class="svg-inline--fa fa-magnifying-glass "
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -116,7 +116,7 @@ exports[`Gene page renders correctly 1`] = `
             MGI:1922702
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
+              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -149,7 +149,7 @@ exports[`Gene page renders correctly 1`] = `
                
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-square-caret-down"
+                class="svg-inline--fa fa-square-caret-down "
                 data-icon="square-caret-down"
                 data-prefix="far"
                 focusable="false"
@@ -355,7 +355,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-skull-crossbones primary fa-2x"
+                    class="svg-inline--fa fa-skull-crossbones fa-2x primary"
                     data-icon="skull-crossbones"
                     data-prefix="fas"
                     focusable="false"
@@ -529,7 +529,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-dumbbell currentColor fa-2x"
+                    class="svg-inline--fa fa-dumbbell fa-2x currentColor"
                     data-icon="dumbbell"
                     data-prefix="fas"
                     focusable="false"
@@ -737,7 +737,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-lungs currentColor fa-2x"
+                    class="svg-inline--fa fa-lungs fa-2x currentColor"
                     data-icon="lungs"
                     data-prefix="fas"
                     focusable="false"
@@ -899,7 +899,7 @@ exports[`Gene page renders correctly 1`] = `
                 <span>
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-check"
+                    class="svg-inline--fa fa-check "
                     data-icon="check"
                     data-prefix="fas"
                     focusable="false"
@@ -926,7 +926,7 @@ exports[`Gene page renders correctly 1`] = `
                 <span>
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-check"
+                    class="svg-inline--fa fa-check "
                     data-icon="check"
                     data-prefix="fas"
                     focusable="false"
@@ -953,7 +953,7 @@ exports[`Gene page renders correctly 1`] = `
                 <span>
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-check"
+                    class="svg-inline--fa fa-check "
                     data-icon="check"
                     data-prefix="fas"
                     focusable="false"
@@ -991,7 +991,7 @@ exports[`Gene page renders correctly 1`] = `
                 <span>
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-check"
+                    class="svg-inline--fa fa-check "
                     data-icon="check"
                     data-prefix="fas"
                     focusable="false"
@@ -1018,7 +1018,7 @@ exports[`Gene page renders correctly 1`] = `
                 <span>
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-check"
+                    class="svg-inline--fa fa-check "
                     data-icon="check"
                     data-prefix="fas"
                     focusable="false"
@@ -1045,7 +1045,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-xmark"
+                    class="svg-inline--fa fa-xmark "
                     data-icon="xmark"
                     data-prefix="fas"
                     focusable="false"
@@ -1159,7 +1159,7 @@ exports[`Gene page renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-circle-question fa-xl"
+            class="svg-inline--fa fa-circle-question fa-xl "
             data-icon="circle-question"
             data-prefix="fas"
             focusable="false"
@@ -1183,11 +1183,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:rq:-tabpane-significantPhenotypes"
+            aria-controls="react-aria-:r0:-tabpane-significantPhenotypes"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="significantPhenotypes"
-            id="react-aria-:rq:-tab-significantPhenotypes"
+            id="react-aria-:r0:-tab-significantPhenotypes"
             role="tab"
             type="button"
           >
@@ -1199,11 +1199,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:rq:-tabpane-allData"
+            aria-controls="react-aria-:r0:-tabpane-allData"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="allData"
-            id="react-aria-:rq:-tab-allData"
+            id="react-aria-:r0:-tab-allData"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1216,11 +1216,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:rq:-tabpane-measurementsChart"
+            aria-controls="react-aria-:r0:-tabpane-measurementsChart"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="measurementsChart"
-            id="react-aria-:rq:-tab-measurementsChart"
+            id="react-aria-:r0:-tab-measurementsChart"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1233,9 +1233,9 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:rq:-tab-significantPhenotypes"
+          aria-labelledby="react-aria-:r0:-tab-significantPhenotypes"
           class="fade tab-pane active show"
-          id="react-aria-:rq:-tabpane-significantPhenotypes"
+          id="react-aria-:r0:-tabpane-significantPhenotypes"
           role="tabpanel"
         >
           <div
@@ -1743,7 +1743,7 @@ exports[`Gene page renders correctly 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-download fa-sm"
+                      class="svg-inline--fa fa-download fa-sm "
                       data-icon="download"
                       data-prefix="fas"
                       focusable="false"
@@ -1764,7 +1764,7 @@ exports[`Gene page renders correctly 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-download fa-sm"
+                      class="svg-inline--fa fa-download fa-sm "
                       data-icon="download"
                       data-prefix="fas"
                       focusable="false"
@@ -1785,9 +1785,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:rq:-tab-allData"
+          aria-labelledby="react-aria-:r0:-tab-allData"
           class="fade tab-pane"
-          id="react-aria-:rq:-tabpane-allData"
+          id="react-aria-:r0:-tabpane-allData"
           role="tabpanel"
         >
           <div
@@ -2220,7 +2220,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                    class="svg-inline--fa fa-arrow-left"
+                    class="svg-inline--fa fa-arrow-left "
                     data-icon="arrow-left"
                     data-prefix="fas"
                     role="img"
@@ -2324,7 +2324,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-labelledby="svg-inline--fa-title-next-page-icon"
-                    class="svg-inline--fa fa-arrow-right"
+                    class="svg-inline--fa fa-arrow-right "
                     data-icon="arrow-right"
                     data-prefix="fas"
                     role="img"
@@ -2802,7 +2802,7 @@ exports[`Gene page renders correctly 1`] = `
                           >
                             <svg
                               aria-hidden="true"
-                              class="svg-inline--fa fa-skull-crossbones currentColor fa-2x"
+                              class="svg-inline--fa fa-skull-crossbones fa-2x currentColor"
                               data-icon="skull-crossbones"
                               data-prefix="fas"
                               focusable="false"
@@ -2916,7 +2916,7 @@ exports[`Gene page renders correctly 1`] = `
                           >
                             <svg
                               aria-hidden="true"
-                              class="svg-inline--fa fa-skull-crossbones currentColor fa-2x"
+                              class="svg-inline--fa fa-skull-crossbones fa-2x currentColor"
                               data-icon="skull-crossbones"
                               data-prefix="fas"
                               focusable="false"
@@ -3293,7 +3293,7 @@ exports[`Gene page renders correctly 1`] = `
                           >
                             <svg
                               aria-hidden="true"
-                              class="svg-inline--fa fa-skull-crossbones currentColor fa-2x"
+                              class="svg-inline--fa fa-skull-crossbones fa-2x currentColor"
                               data-icon="skull-crossbones"
                               data-prefix="fas"
                               focusable="false"
@@ -3407,7 +3407,7 @@ exports[`Gene page renders correctly 1`] = `
                           >
                             <svg
                               aria-hidden="true"
-                              class="svg-inline--fa fa-skull-crossbones currentColor fa-2x"
+                              class="svg-inline--fa fa-skull-crossbones fa-2x currentColor"
                               data-icon="skull-crossbones"
                               data-prefix="fas"
                               focusable="false"
@@ -3521,7 +3521,7 @@ exports[`Gene page renders correctly 1`] = `
                           >
                             <svg
                               aria-hidden="true"
-                              class="svg-inline--fa fa-skull-crossbones currentColor fa-2x"
+                              class="svg-inline--fa fa-skull-crossbones fa-2x currentColor"
                               data-icon="skull-crossbones"
                               data-prefix="fas"
                               focusable="false"
@@ -3635,7 +3635,7 @@ exports[`Gene page renders correctly 1`] = `
                           >
                             <svg
                               aria-hidden="true"
-                              class="svg-inline--fa fa-skull-crossbones currentColor fa-2x"
+                              class="svg-inline--fa fa-skull-crossbones fa-2x currentColor"
                               data-icon="skull-crossbones"
                               data-prefix="fas"
                               focusable="false"
@@ -3749,7 +3749,7 @@ exports[`Gene page renders correctly 1`] = `
                           >
                             <svg
                               aria-hidden="true"
-                              class="svg-inline--fa fa-skull-crossbones currentColor fa-2x"
+                              class="svg-inline--fa fa-skull-crossbones fa-2x currentColor"
                               data-icon="skull-crossbones"
                               data-prefix="fas"
                               focusable="false"
@@ -3964,7 +3964,7 @@ exports[`Gene page renders correctly 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-download fa-sm"
+                      class="svg-inline--fa fa-download fa-sm "
                       data-icon="download"
                       data-prefix="fas"
                       focusable="false"
@@ -3985,7 +3985,7 @@ exports[`Gene page renders correctly 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-download fa-sm"
+                      class="svg-inline--fa fa-download fa-sm "
                       data-icon="download"
                       data-prefix="fas"
                       focusable="false"
@@ -4051,7 +4051,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                    class="svg-inline--fa fa-arrow-left"
+                    class="svg-inline--fa fa-arrow-left "
                     data-icon="arrow-left"
                     data-prefix="fas"
                     role="img"
@@ -4155,7 +4155,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-labelledby="svg-inline--fa-title-next-page-icon"
-                    class="svg-inline--fa fa-arrow-right"
+                    class="svg-inline--fa fa-arrow-right "
                     data-icon="arrow-right"
                     data-prefix="fas"
                     role="img"
@@ -4178,9 +4178,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:rq:-tab-measurementsChart"
+          aria-labelledby="react-aria-:r0:-tab-measurementsChart"
           class="fade tab-pane"
-          id="react-aria-:rq:-tabpane-measurementsChart"
+          id="react-aria-:r0:-tabpane-measurementsChart"
           role="tabpanel"
         >
           <div
@@ -4325,7 +4325,7 @@ exports[`Gene page renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-circle-question fa-xl"
+            class="svg-inline--fa fa-circle-question fa-xl "
             data-icon="circle-question"
             data-prefix="fas"
             focusable="false"
@@ -4349,11 +4349,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r23:-tabpane-adultExpressions"
+            aria-controls="react-aria-:r1:-tabpane-adultExpressions"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="adultExpressions"
-            id="react-aria-:r23:-tab-adultExpressions"
+            id="react-aria-:r1:-tab-adultExpressions"
             role="tab"
             type="button"
           >
@@ -4365,11 +4365,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r23:-tabpane-embryoExpressions"
+            aria-controls="react-aria-:r1:-tabpane-embryoExpressions"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="embryoExpressions"
-            id="react-aria-:r23:-tab-embryoExpressions"
+            id="react-aria-:r1:-tab-embryoExpressions"
             role="tab"
             tabindex="-1"
             type="button"
@@ -4382,15 +4382,15 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r23:-tab-adultExpressions"
+          aria-labelledby="react-aria-:r1:-tab-adultExpressions"
           class="fade tab-pane active show"
-          id="react-aria-:r23:-tabpane-adultExpressions"
+          id="react-aria-:r1:-tabpane-adultExpressions"
           role="tabpanel"
         />
         <div
-          aria-labelledby="react-aria-:r23:-tab-embryoExpressions"
+          aria-labelledby="react-aria-:r1:-tab-embryoExpressions"
           class="fade tab-pane"
-          id="react-aria-:r23:-tabpane-embryoExpressions"
+          id="react-aria-:r1:-tabpane-embryoExpressions"
           role="tabpanel"
         />
       </div>
@@ -4409,7 +4409,7 @@ exports[`Gene page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-prev-page-icon"
-              class="svg-inline--fa fa-arrow-left"
+              class="svg-inline--fa fa-arrow-left "
               data-icon="arrow-left"
               data-prefix="fas"
               role="img"
@@ -4488,7 +4488,7 @@ exports[`Gene page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-next-page-icon"
-              class="svg-inline--fa fa-arrow-right"
+              class="svg-inline--fa fa-arrow-right "
               data-icon="arrow-right"
               data-prefix="fas"
               role="img"
@@ -4751,7 +4751,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-image"
+                    class="svg-inline--fa fa-image "
                     data-icon="image"
                     data-prefix="fas"
                     focusable="false"
@@ -4796,7 +4796,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-image"
+                    class="svg-inline--fa fa-image "
                     data-icon="image"
                     data-prefix="fas"
                     focusable="false"
@@ -4864,7 +4864,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-image"
+                    class="svg-inline--fa fa-image "
                     data-icon="image"
                     data-prefix="fas"
                     focusable="false"
@@ -4909,7 +4909,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-image"
+                    class="svg-inline--fa fa-image "
                     data-icon="image"
                     data-prefix="fas"
                     focusable="false"
@@ -4977,7 +4977,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-image"
+                    class="svg-inline--fa fa-image "
                     data-icon="image"
                     data-prefix="fas"
                     focusable="false"
@@ -5045,7 +5045,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-image"
+                    class="svg-inline--fa fa-image "
                     data-icon="image"
                     data-prefix="fas"
                     focusable="false"
@@ -5090,7 +5090,7 @@ exports[`Gene page renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-image"
+                    class="svg-inline--fa fa-image "
                     data-icon="image"
                     data-prefix="fas"
                     focusable="false"
@@ -5137,7 +5137,7 @@ exports[`Gene page renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm"
+                class="svg-inline--fa fa-download fa-sm "
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -5158,7 +5158,7 @@ exports[`Gene page renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm"
+                class="svg-inline--fa fa-download fa-sm "
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -5224,7 +5224,7 @@ exports[`Gene page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-prev-page-icon"
-              class="svg-inline--fa fa-arrow-left"
+              class="svg-inline--fa fa-arrow-left "
               data-icon="arrow-left"
               data-prefix="fas"
               role="img"
@@ -5303,7 +5303,7 @@ exports[`Gene page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-next-page-icon"
-              class="svg-inline--fa fa-arrow-right"
+              class="svg-inline--fa fa-arrow-right "
               data-icon="arrow-right"
               data-prefix="fas"
               role="img"
@@ -5341,7 +5341,7 @@ exports[`Gene page renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-circle-question fa-xl"
+            class="svg-inline--fa fa-circle-question fa-xl "
             data-icon="circle-question"
             data-prefix="fas"
             focusable="false"
@@ -5382,7 +5382,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5433,7 +5433,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5484,7 +5484,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5535,7 +5535,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5586,7 +5586,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5637,7 +5637,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5688,7 +5688,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5739,7 +5739,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5790,7 +5790,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5841,7 +5841,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5892,7 +5892,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -5943,7 +5943,7 @@ exports[`Gene page renders correctly 1`] = `
                        images 
                       <svg
                         aria-hidden="true"
-                        class="svg-inline--fa fa-chevron-right"
+                        class="svg-inline--fa fa-chevron-right "
                         data-icon="chevron-right"
                         data-prefix="fas"
                         focusable="false"
@@ -6009,11 +6009,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r26:-tabpane-associated"
+            aria-controls="react-aria-:r2:-tabpane-associated"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="associated"
-            id="react-aria-:r26:-tab-associated"
+            id="react-aria-:r2:-tab-associated"
             role="tab"
             type="button"
           >
@@ -6031,11 +6031,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r26:-tabpane-predicted"
+            aria-controls="react-aria-:r2:-tabpane-predicted"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="predicted"
-            id="react-aria-:r26:-tab-predicted"
+            id="react-aria-:r2:-tab-predicted"
             role="tab"
             tabindex="-1"
             type="button"
@@ -6055,15 +6055,15 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r26:-tab-associated"
+          aria-labelledby="react-aria-:r2:-tab-associated"
           class="fade tab-pane active show"
-          id="react-aria-:r26:-tabpane-associated"
+          id="react-aria-:r2:-tabpane-associated"
           role="tabpanel"
         />
         <div
-          aria-labelledby="react-aria-:r26:-tab-predicted"
+          aria-labelledby="react-aria-:r2:-tab-predicted"
           class="fade tab-pane"
-          id="react-aria-:r26:-tabpane-predicted"
+          id="react-aria-:r2:-tabpane-predicted"
           role="tabpanel"
         />
       </div>
@@ -6091,7 +6091,7 @@ exports[`Gene page renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-circle-question fa-xl"
+            class="svg-inline--fa fa-circle-question fa-xl "
             data-icon="circle-question"
             data-prefix="fas"
             focusable="false"
@@ -6367,7 +6367,7 @@ exports[`Gene page renders correctly 1`] = `
               <td>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-mars"
+                  class="svg-inline--fa fa-mars "
                   data-icon="mars"
                   data-prefix="fas"
                   focusable="false"
@@ -6411,7 +6411,7 @@ exports[`Gene page renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-circle-question fa-xl"
+            class="svg-inline--fa fa-circle-question fa-xl "
             data-icon="circle-question"
             data-prefix="fas"
             focusable="false"
@@ -6628,7 +6628,7 @@ exports[`Gene page renders correctly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square grey fa-xs"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -6669,7 +6669,7 @@ exports[`Gene page renders correctly 1`] = `
                    
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-up-right-from-square grey fa-xs"
+                    class="svg-inline--fa fa-up-right-from-square fa-xs grey"
                     data-icon="up-right-from-square"
                     data-prefix="fas"
                     focusable="false"
@@ -6705,7 +6705,7 @@ exports[`Gene page renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm"
+                class="svg-inline--fa fa-download fa-sm "
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -6726,7 +6726,7 @@ exports[`Gene page renders correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-download fa-sm"
+                class="svg-inline--fa fa-download fa-sm "
                 data-icon="download"
                 data-prefix="fas"
                 focusable="false"
@@ -6786,7 +6786,7 @@ exports[`Gene page renders correctly 1`] = `
                     </i>
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-up-right-from-square grey fa-xs"
+                      class="svg-inline--fa fa-up-right-from-square fa-xs grey"
                       data-icon="up-right-from-square"
                       data-prefix="fas"
                       focusable="false"
@@ -6838,7 +6838,7 @@ exports[`Gene page renders correctly 1`] = `
                     </i>
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-up-right-from-square grey fa-xs"
+                      class="svg-inline--fa fa-up-right-from-square fa-xs grey"
                       data-icon="up-right-from-square"
                       data-prefix="fas"
                       focusable="false"
@@ -6871,7 +6871,7 @@ exports[`Gene page renders correctly 1`] = `
                     </i>
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-up-right-from-square grey fa-xs"
+                      class="svg-inline--fa fa-up-right-from-square fa-xs grey"
                       data-icon="up-right-from-square"
                       data-prefix="fas"
                       focusable="false"
@@ -6904,7 +6904,7 @@ exports[`Gene page renders correctly 1`] = `
                     </i>
                     <svg
                       aria-hidden="true"
-                      class="svg-inline--fa fa-up-right-from-square grey fa-xs"
+                      class="svg-inline--fa fa-up-right-from-square fa-xs grey"
                       data-icon="up-right-from-square"
                       data-prefix="fas"
                       focusable="false"
@@ -6946,7 +6946,7 @@ exports[`Gene page renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="svg-inline--fa fa-circle-question fa-xl"
+            class="svg-inline--fa fa-circle-question fa-xl "
             data-icon="circle-question"
             data-prefix="fas"
             focusable="false"
