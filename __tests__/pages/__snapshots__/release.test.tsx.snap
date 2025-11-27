@@ -49,7 +49,7 @@ exports[`Release Notes page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass "
+              class="svg-inline--fa fa-magnifying-glass"
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -141,7 +141,7 @@ exports[`Release Notes page renders correctly 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-circle-question fa-xl "
+                  class="svg-inline--fa fa-circle-question fa-xl"
                   data-icon="circle-question"
                   data-prefix="fas"
                   focusable="false"
@@ -189,7 +189,7 @@ exports[`Release Notes page renders correctly 1`] = `
               FTP interface 
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-arrow-up-right-from-square fa-sm grey"
+                class="svg-inline--fa fa-arrow-up-right-from-square grey fa-sm"
                 data-icon="arrow-up-right-from-square"
                 data-prefix="fas"
                 focusable="false"
@@ -212,7 +212,7 @@ exports[`Release Notes page renders correctly 1`] = `
               RESTful interfaces 
               <svg
                 aria-hidden="true"
-                class="svg-inline--fa fa-arrow-up-right-from-square fa-sm grey"
+                class="svg-inline--fa fa-arrow-up-right-from-square grey fa-sm"
                 data-icon="arrow-up-right-from-square"
                 data-prefix="fas"
                 focusable="false"
@@ -1247,7 +1247,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1275,7 +1275,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1303,7 +1303,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1331,7 +1331,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1359,7 +1359,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1387,7 +1387,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1415,7 +1415,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1443,7 +1443,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1471,7 +1471,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1499,7 +1499,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1527,7 +1527,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1555,7 +1555,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1583,7 +1583,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1611,7 +1611,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1639,7 +1639,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1667,7 +1667,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1695,7 +1695,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1723,7 +1723,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1751,7 +1751,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1779,7 +1779,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1807,7 +1807,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1835,7 +1835,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1863,7 +1863,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1891,7 +1891,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1919,7 +1919,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1947,7 +1947,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -1975,7 +1975,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2003,7 +2003,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2031,7 +2031,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2059,7 +2059,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2087,7 +2087,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2115,7 +2115,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2143,7 +2143,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2171,7 +2171,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2199,7 +2199,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2227,7 +2227,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
@@ -2255,7 +2255,7 @@ exports[`Release Notes page renders correctly 1`] = `
              notes 
             <svg
               aria-hidden="true"
-              class="svg-inline--fa fa-up-right-from-square fa-xs grey"
+              class="svg-inline--fa fa-up-right-from-square grey fa-xs"
               data-icon="up-right-from-square"
               data-prefix="fas"
               focusable="false"
