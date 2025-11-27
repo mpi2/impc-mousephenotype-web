@@ -20,7 +20,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="svg-inline--fa fa-circle-question fa-xl "
+          class="svg-inline--fa fa-circle-question fa-xl"
           data-icon="circle-question"
           data-prefix="fas"
           focusable="false"
@@ -44,11 +44,11 @@ exports[`Gene phenotypes component renders correctly 1`] = `
         role="presentation"
       >
         <button
-          aria-controls="react-aria-:r0:-tabpane-significantPhenotypes"
+          aria-controls="react-aria-:r2:-tabpane-significantPhenotypes"
           aria-selected="true"
           class="nav-link active"
           data-rr-ui-event-key="significantPhenotypes"
-          id="react-aria-:r0:-tab-significantPhenotypes"
+          id="react-aria-:r2:-tab-significantPhenotypes"
           role="tab"
           type="button"
         >
@@ -60,11 +60,11 @@ exports[`Gene phenotypes component renders correctly 1`] = `
         role="presentation"
       >
         <button
-          aria-controls="react-aria-:r0:-tabpane-allData"
+          aria-controls="react-aria-:r2:-tabpane-allData"
           aria-selected="false"
           class="nav-link"
           data-rr-ui-event-key="allData"
-          id="react-aria-:r0:-tab-allData"
+          id="react-aria-:r2:-tab-allData"
           role="tab"
           tabindex="-1"
           type="button"
@@ -77,11 +77,11 @@ exports[`Gene phenotypes component renders correctly 1`] = `
         role="presentation"
       >
         <button
-          aria-controls="react-aria-:r0:-tabpane-measurementsChart"
+          aria-controls="react-aria-:r2:-tabpane-measurementsChart"
           aria-selected="false"
           class="nav-link"
           data-rr-ui-event-key="measurementsChart"
-          id="react-aria-:r0:-tab-measurementsChart"
+          id="react-aria-:r2:-tab-measurementsChart"
           role="tab"
           tabindex="-1"
           type="button"
@@ -94,11 +94,11 @@ exports[`Gene phenotypes component renders correctly 1`] = `
         role="presentation"
       >
         <button
-          aria-controls="react-aria-:r0:-tabpane-allelesByPhenotype"
+          aria-controls="react-aria-:r2:-tabpane-allelesByPhenotype"
           aria-selected="false"
           class="nav-link"
           data-rr-ui-event-key="allelesByPhenotype"
-          id="react-aria-:r0:-tab-allelesByPhenotype"
+          id="react-aria-:r2:-tab-allelesByPhenotype"
           role="tab"
           tabindex="-1"
           type="button"
@@ -111,9 +111,9 @@ exports[`Gene phenotypes component renders correctly 1`] = `
       class="tab-content"
     >
       <div
-        aria-labelledby="react-aria-:r0:-tab-significantPhenotypes"
+        aria-labelledby="react-aria-:r2:-tab-significantPhenotypes"
         class="fade tab-pane active show"
-        id="react-aria-:r0:-tabpane-significantPhenotypes"
+        id="react-aria-:r2:-tabpane-significantPhenotypes"
         role="tabpanel"
       >
         <div
@@ -309,7 +309,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               >
                 <svg
                   aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                  class="svg-inline--fa fa-arrow-left "
+                  class="svg-inline--fa fa-arrow-left"
                   data-icon="arrow-left"
                   data-prefix="fas"
                   role="img"
@@ -413,7 +413,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               >
                 <svg
                   aria-labelledby="svg-inline--fa-title-next-page-icon"
-                  class="svg-inline--fa fa-arrow-right "
+                  class="svg-inline--fa fa-arrow-right"
                   data-icon="arrow-right"
                   data-prefix="fas"
                   role="img"
@@ -1683,7 +1683,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm "
+                    class="svg-inline--fa fa-download fa-sm"
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"
@@ -1704,7 +1704,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm "
+                    class="svg-inline--fa fa-download fa-sm"
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"
@@ -1770,7 +1770,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               >
                 <svg
                   aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                  class="svg-inline--fa fa-arrow-left "
+                  class="svg-inline--fa fa-arrow-left"
                   data-icon="arrow-left"
                   data-prefix="fas"
                   role="img"
@@ -1874,7 +1874,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               >
                 <svg
                   aria-labelledby="svg-inline--fa-title-next-page-icon"
-                  class="svg-inline--fa fa-arrow-right "
+                  class="svg-inline--fa fa-arrow-right"
                   data-icon="arrow-right"
                   data-prefix="fas"
                   role="img"
@@ -1897,9 +1897,9 @@ exports[`Gene phenotypes component renders correctly 1`] = `
         </div>
       </div>
       <div
-        aria-labelledby="react-aria-:r0:-tab-allData"
+        aria-labelledby="react-aria-:r2:-tab-allData"
         class="fade tab-pane"
-        id="react-aria-:r0:-tabpane-allData"
+        id="react-aria-:r2:-tabpane-allData"
         role="tabpanel"
       >
         <div
@@ -2428,7 +2428,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               >
                 <svg
                   aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                  class="svg-inline--fa fa-arrow-left "
+                  class="svg-inline--fa fa-arrow-left"
                   data-icon="arrow-left"
                   data-prefix="fas"
                   role="img"
@@ -2479,7 +2479,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               >
                 <svg
                   aria-labelledby="svg-inline--fa-title-next-page-icon"
-                  class="svg-inline--fa fa-arrow-right "
+                  class="svg-inline--fa fa-arrow-right"
                   data-icon="arrow-right"
                   data-prefix="fas"
                   role="img"
@@ -4017,7 +4017,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm "
+                    class="svg-inline--fa fa-download fa-sm"
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"
@@ -4038,7 +4038,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class="svg-inline--fa fa-download fa-sm "
+                    class="svg-inline--fa fa-download fa-sm"
                     data-icon="download"
                     data-prefix="fas"
                     focusable="false"
@@ -4104,7 +4104,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               >
                 <svg
                   aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                  class="svg-inline--fa fa-arrow-left "
+                  class="svg-inline--fa fa-arrow-left"
                   data-icon="arrow-left"
                   data-prefix="fas"
                   role="img"
@@ -4155,7 +4155,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
               >
                 <svg
                   aria-labelledby="svg-inline--fa-title-next-page-icon"
-                  class="svg-inline--fa fa-arrow-right "
+                  class="svg-inline--fa fa-arrow-right"
                   data-icon="arrow-right"
                   data-prefix="fas"
                   role="img"
@@ -4178,9 +4178,9 @@ exports[`Gene phenotypes component renders correctly 1`] = `
         </div>
       </div>
       <div
-        aria-labelledby="react-aria-:r0:-tab-measurementsChart"
+        aria-labelledby="react-aria-:r2:-tab-measurementsChart"
         class="fade tab-pane"
-        id="react-aria-:r0:-tabpane-measurementsChart"
+        id="react-aria-:r2:-tabpane-measurementsChart"
         role="tabpanel"
       >
         <div
@@ -4307,9 +4307,9 @@ exports[`Gene phenotypes component renders correctly 1`] = `
         </div>
       </div>
       <div
-        aria-labelledby="react-aria-:r0:-tab-allelesByPhenotype"
+        aria-labelledby="react-aria-:r2:-tab-allelesByPhenotype"
         class="fade tab-pane"
-        id="react-aria-:r0:-tabpane-allelesByPhenotype"
+        id="react-aria-:r2:-tabpane-allelesByPhenotype"
         role="tabpanel"
       >
         <div>

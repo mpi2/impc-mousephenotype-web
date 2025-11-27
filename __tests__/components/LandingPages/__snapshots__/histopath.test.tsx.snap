@@ -49,7 +49,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
           >
             <svg
               aria-labelledby="svg-inline--fa-title-search-icon"
-              class="svg-inline--fa fa-magnifying-glass "
+              class="svg-inline--fa fa-magnifying-glass"
               data-icon="magnifying-glass"
               data-prefix="fas"
               role="img"
@@ -248,7 +248,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -270,7 +270,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -294,7 +294,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -318,7 +318,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -342,7 +342,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -366,7 +366,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -390,7 +390,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -414,7 +414,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -438,7 +438,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -462,7 +462,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -486,7 +486,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -510,7 +510,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -534,7 +534,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -558,7 +558,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -582,7 +582,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -606,7 +606,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -630,7 +630,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -654,7 +654,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -678,7 +678,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -702,7 +702,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -726,7 +726,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -750,7 +750,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -774,7 +774,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -798,7 +798,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -822,7 +822,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -846,7 +846,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -870,7 +870,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -894,7 +894,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -918,7 +918,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -942,7 +942,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -966,7 +966,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -990,7 +990,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1014,7 +1014,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1038,7 +1038,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1062,7 +1062,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1086,7 +1086,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1110,7 +1110,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1134,7 +1134,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1158,7 +1158,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1182,7 +1182,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1206,7 +1206,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1230,7 +1230,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1254,7 +1254,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1278,7 +1278,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1302,7 +1302,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1326,7 +1326,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1350,7 +1350,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1374,7 +1374,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1398,7 +1398,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1422,7 +1422,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1446,7 +1446,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1470,7 +1470,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -1494,7 +1494,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
                 </div>
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-sort "
+                  class="svg-inline--fa fa-sort"
                   data-icon="sort"
                   data-prefix="fas"
                   focusable="false"
@@ -7518,7 +7518,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
             >
               <svg
                 aria-labelledby="svg-inline--fa-title-prev-page-icon"
-                class="svg-inline--fa fa-arrow-left "
+                class="svg-inline--fa fa-arrow-left"
                 data-icon="arrow-left"
                 data-prefix="fas"
                 role="img"
@@ -7610,7 +7610,7 @@ exports[`Histopathology landing page renders correctly 1`] = `
             >
               <svg
                 aria-labelledby="svg-inline--fa-title-next-page-icon"
-                class="svg-inline--fa fa-arrow-right "
+                class="svg-inline--fa fa-arrow-right"
                 data-icon="arrow-right"
                 data-prefix="fas"
                 role="img"
