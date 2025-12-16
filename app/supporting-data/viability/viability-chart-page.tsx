@@ -18,7 +18,7 @@ const ViabilityChartPage = () => {
   const params = useSearchParams();
   const mgiGeneAccessionId: string = params.get("mgiGeneAccessionId");
 
-  const { viabilityData, isViabilityLoading } = useViabilityQuery(
+  const { viabilityData, isViabilityLoading, isError } = useViabilityQuery(
     mgiGeneAccessionId as string,
     !!mgiGeneAccessionId,
   );
@@ -54,35 +54,14 @@ const ViabilityChartPage = () => {
               &nbsp;gene
             </strong>
           </h1>
-          {!isViabilityLoading ? (
-            <div className="mb-0">
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: "1rem",
-                }}
-              >
-                <span>
-                  {viabilityData && viabilityData.length} parameter / zygosity /
-                  metadata group combinations tested.
-                </span>
-              </div>
-            </div>
-          ) : (
-            <span>
-              <Spinner animation="border" size="sm" />
-              &nbsp; Loading data
-            </span>
+          {isError === false && (
+            <ViabilityDataComparison
+              data={viabilityData}
+              selectedKey={selectedKey}
+              onSelectParam={setSelectedKey}
+              dataIsLoading={isViabilityLoading}
+            />
           )}
-          <ViabilityDataComparison
-            data={viabilityData}
-            selectedKey={selectedKey}
-            onSelectParam={setSelectedKey}
-            dataIsLoading={isViabilityLoading}
-          />
         </Card>
       </Container>
       <div
