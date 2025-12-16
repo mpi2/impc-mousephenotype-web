@@ -8,13 +8,15 @@ import { Dataset, DatasetExtra, SortType } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
-import { motion, AnimatePresence } from "motion/react";
+import "react-loading-skeleton/dist/skeleton.css";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {
   data: Array<Dataset>;
   initialSortByProp?: string;
   selectedKey?: string;
   onSelectParam?: (newValue: string) => void;
+  dataIsLoading: boolean;
 };
 
 type SortOptions = {
@@ -27,6 +29,7 @@ const ViabilityDataComparison = (props: Props) => {
     initialSortByProp,
     selectedKey,
     onSelectParam = (_) => {},
+    dataIsLoading,
   } = props;
 
   const groups = groupData(data);
@@ -45,11 +48,12 @@ const ViabilityDataComparison = (props: Props) => {
   );
 
   const tableHeaders = [
-    { width: 2, label: "Allele", field: "alleleSymbol" },
-    { width: 2, label: "Viability", field: "viability" },
+    { width: 1, label: "Allele", field: "alleleSymbol" },
+    { width: 1, label: "Viability", field: "viabilityStatement" },
     { width: 1, label: "Zygosity", field: "zygosity" },
+    { width: 2, label: "Assay", field: "parameterName" },
     { width: 1, label: "Phenotyping Centre", field: "phenotypingCentre" },
-    { width: 1, label: "Significant sex", field: "sex" },
+    { width: 0.5, label: "Significant sex", field: "sex" },
     { width: 1, label: "Life Stage", field: "lifeStageName" },
     { width: 1, label: "Colony Id", field: "colonyId" },
   ];
@@ -87,9 +91,14 @@ const ViabilityDataComparison = (props: Props) => {
                   <AlleleSymbol symbol={d.alleleSymbol} withLabel={false} />
                 </td>
                 <td>
-                  <strong>{d.viability}</strong>
+                  {d.viabilityStatement === "Call not made" ? (
+                    <>{d.viabilityStatement}</>
+                  ) : (
+                    <strong>{d.viabilityStatement}</strong>
+                  )}
                 </td>
                 <td>{d.zygosity}</td>
+                <td>{d.parameterName}</td>
                 <td>{d.phenotypingCentre}</td>
                 <td>
                   {d.sex === "not_considered" ? (
@@ -130,7 +139,7 @@ const ViabilityDataComparison = (props: Props) => {
               </motion.tr>
             );
           })}
-          {visibleData.length === 0 && (
+          {visibleData.length === 0 && dataIsLoading && (
             <motion.tr
               layout
               initial={{ y: 10, opacity: 0, maxHeight: 0 }}

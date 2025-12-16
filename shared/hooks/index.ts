@@ -27,3 +27,4 @@ export {
 } from "./gene-order.query";
 export { useChartFlags } from "./chartFlags";
 export { usePhenotypeResultsQuery } from "./phenotype-results.query";
+export { useBatchQuery } from "./batch-query.query";

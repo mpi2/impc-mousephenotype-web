@@ -89,13 +89,13 @@ describe("Embryo viability chart", () => {
       <SupportingDataPage initialDatasets={[]} />,
     );
     await waitFor(() =>
-      expect(screen.getAllByRole("link")[3]).toHaveTextContent(
-        "Go Back to 1700003F12Rik",
+      expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
+        "preweaning lethality, incomplete penetrance",
       ),
     );
     await waitFor(() =>
-      expect(screen.getAllByRole("heading", { level: 1 })[0]).toHaveTextContent(
-        "preweaning lethality, incomplete penetrance",
+      expect(screen.getAllByRole("link")[3]).toHaveTextContent(
+        "Go Back to 1700003F12Rik",
       ),
     );
     const dataComparisonTable = screen.getAllByRole("table")[0];

@@ -34,6 +34,17 @@ type FilterOptions = {
   alleles: Array<string>;
 };
 
+type FilterEndpointResponse = {
+  alleleSymbol: Array<string>;
+  lifeStageName: Array<string>;
+  parameterName: Array<string>;
+  parameterStableId: Array<string>;
+  procedureName: Array<string>;
+  procedureStableId: Array<string>;
+  topLevelPhenotypes: Array<string>;
+  zygosity: Array<string>;
+};
+
 type SelectedValues = {
   procedureName: string | undefined;
   topLevelPhenotypeName: string | undefined;
@@ -157,7 +168,7 @@ const AllData = (props: Props) => {
     enabled: props.tableIsVisible,
   });
 
-  const { data: filterData } = useQuery({
+  const { data: filterData } = useQuery<FilterEndpointResponse>({
     queryKey: ["filterData", gene.mgiGeneAccessionId],
     queryFn: () =>
       fetchAPI(
@@ -182,7 +193,7 @@ const AllData = (props: Props) => {
       params["searchQuery"] = query;
     }
 
-    return fetchAPI(buildURL(url, params));
+    return fetchAPI<Array<GeneStatisticalResult>>(buildURL(url, params));
   };
 
   const onRefHover = (ref: "*" | "**" | "+", active: boolean) => {
@@ -372,6 +383,11 @@ const AllData = (props: Props) => {
                 key: "pValue",
                 label: "Most significant P-Value",
                 getValueFn: (item) => item?.pValue?.toString() || "N/A",
+              },
+              {
+                key: "effectSize",
+                label: "Effect Size",
+                getValueFn: (item) => item?.effectSize?.toString() || "N/A",
               },
             ]}
           />

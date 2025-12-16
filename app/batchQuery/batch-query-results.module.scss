@@ -1,0 +1,17 @@
+.goSummaryWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  text-align: center;
+  .list {
+    max-height: 410px;
+    overflow-y: auto;
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

@@ -127,4 +127,5 @@ export type DatasetExtra = Dataset & {
   phenotype: string;
   id: string;
   viability: string;
+  viabilityStatement: string;
 };

@@ -15,6 +15,24 @@ const hasNextJsMiddlewareHeader = (headers: Headers) => {
 
 export function middleware(request: NextRequest) {
   const LOGGING_ENABLED = process.env.LOGGING_ENABLED === "true";
+  const isProd = process.env.NODE_ENV === "production";
+  const upgradeInsecureRequests =
+    (process.env.UPGRADE_INSECURE_REQUESTS ?? "true") === "true";
+  const cspHeader = `
+    default-src 'none';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.usercentrics.eu;
+    style-src 'self' 'unsafe-inline';
+    connect-src 'self' *.mousephenotype.org *.usercentrics.eu *.google.com *.ebi.ac.uk *.google-analytics.com *.amazonaws.com *.gentar.org ${!isProd ? "localhost:8010 localhost:5000" : ""};
+    img-src 'self' blob: data: *.usercentrics.eu *.ebi.ac.uk *.amazonaws.com *.google.co.uk;
+    frame-src *.usercentrics.eu;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    ${upgradeInsecureRequests ? "upgrade-insecure-requests;" : ""}
+`;
+
   if (LOGGING_ENABLED) {
     const path = request.nextUrl.pathname;
     const headers = request.headers;
@@ -30,7 +48,9 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  return NextResponse.next();
+  const response = NextResponse.next();
+  response.headers.set("Content-Security-Policy", cspHeader.replace(/\n/g, ""));
+  return response;
 }
 
 export const config = {

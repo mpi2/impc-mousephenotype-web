@@ -28,6 +28,7 @@ import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
 import GenomeBrowser from "@/components/GenomeBrowser/GenomeBrowser";
 import { AlleleSummary } from "@/models";
+import DOMPurify from "isomorphic-dompurify";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
@@ -100,10 +101,10 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
 
   useEffect(() => {
     if (alleleData) {
-      const hash = window.location.hash;
+      const hash = DOMPurify.sanitize(window.location.hash);
       if (hash.length > 0) {
         setTimeout(() => {
-          document.querySelector(window.location.hash)?.scrollIntoView();
+          document.querySelector(hash)?.scrollIntoView();
         }, 100);
       }
     }

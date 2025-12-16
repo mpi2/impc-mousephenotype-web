@@ -1,14 +1,8 @@
 "use client";
 
 import Search from "@/components/Search";
-import { Container, Form, Spinner, Tabs, Tab, Alert } from "react-bootstrap";
-import {
-  AlleleSymbol,
-  Card,
-  LoadingProgressBar,
-  Pagination,
-  SortableTable,
-} from "@/components";
+import { Container, Form, Tabs, Tab, Alert, Modal } from "react-bootstrap";
+import { AlleleSymbol, Card, LoadingProgressBar } from "@/components";
 import {
   ChangeEvent,
   Suspense,
@@ -17,185 +11,24 @@ import {
   useReducer,
   useState,
 } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { groupBy, orderBy, uniq } from "lodash";
-import { maybe } from "acd-utils";
-import Link from "next/link";
-import { BodySystem } from "@/components/BodySystemIcon";
-import { allBodySystems, formatAlleleSymbol } from "@/utils";
+import { orderBy } from "lodash";
 import {
   initialState,
   reducer,
   toogleFlagPayload,
 } from "@/utils/batchQuery/reducer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronDown,
-  faChevronUp,
-  faDownload,
-} from "@fortawesome/free-solid-svg-icons";
-import Select from "react-select";
-import { SortType } from "@/models";
+import { SelectedAlleleData, SelectOptions } from "@/models";
+import moment from "moment";
 import { Metadata } from "next";
+import { useBatchQuery } from "@/hooks";
+import { BatchQueryResults } from "./batch-query-results";
 
-const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
-
-type Phenotype = {
-  id: string;
-  name: string;
-};
-
-type BatchQueryItem = {
-  alleleAccessionId: string;
-  alleleName: string;
-  alleleSymbol: string;
-  dataType: string;
-  displayPhenotype: Phenotype | null;
-  effectSize: null | string;
-  femaleMutantCount: number | null;
-  hgncGeneAccessionId: string;
-  humanGeneSymbol: string;
-  humanPhenotypes: any[];
-  id: string;
-  intermediatePhenotypes: Phenotype[] | null;
-  lifeStageName: string;
-  maleMutantCount: number | null;
-  metadataGroup: string;
-  mgiGeneAccessionId: string;
-  pValue: null | string;
-  parameterName: string;
-  parameterStableId: string;
-  phenotypeSexes: string[] | null;
-  phenotypingCentre: string;
-  pipelineStableId: string;
-  potentialPhenotypes: Phenotype[] | null;
-  procedureMinAnimals: number | null;
-  procedureMinFemales: number | null;
-  procedureMinMales: number | null;
-  procedureName: string;
-  procedureStableId: string;
-  projectName: string;
-  significant: boolean;
-  significantPhenotype: Phenotype | null;
-  statisticalMethod: null | string;
-  statisticalResultId: string;
-  status: string;
-  topLevelPhenotypes: Phenotype[] | null;
-  zygosity: string;
-};
+const BATCH_QUERY_DOWNLOAD_ROOT =
+  process.env.NEXT_PUBLIC_BATCH_QUERY_DOWNLOAD_ROOT || "";
 
 type SortOptions = {
   prop: string | ((any) => void);
   order: "asc" | "desc";
-};
-
-const allOptions = allBodySystems.map((system) => ({
-  value: system,
-  label: system,
-}));
-
-const formatOptionLabel = ({ value, label }, { context }) => {
-  return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <BodySystem
-        name={value}
-        color="grey"
-        noSpacing
-        noMargin={context === "value"}
-      />
-      {context === "menu" && <span>{label}</span>}
-    </div>
-  );
-};
-
-const DataRow = ({ geneData }) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <tr>
-        <td>
-          <Link className="link primary" href={`/genes/${geneData.geneId}`}>
-            {geneData.geneId}
-          </Link>
-        </td>
-        <td>{geneData.geneSymbol}</td>
-        <td>{geneData.humanSymbols.join(",") || "info not available"}</td>
-        <td>{geneData.humanGeneIds.join(",") || "info not available"}</td>
-        <td>{geneData.allPhenotypes.length}</td>
-        <td>{geneData.allSigSystems.length}</td>
-        <td>
-          <button className="btn" onClick={() => setOpen(!open)}>
-            {open ? "Close" : "View"}&nbsp;
-            <FontAwesomeIcon
-              className="link"
-              icon={open ? faChevronUp : faChevronDown}
-            />
-          </button>
-        </td>
-      </tr>
-      {open && (
-        <tr>
-          <td></td>
-          <td colSpan={6} style={{ padding: 0 }}>
-            <SortableTable
-              withMargin={false}
-              headers={[
-                {
-                  width: 1,
-                  label: "Allele symbol",
-                  field: "allele",
-                  disabled: true,
-                },
-                {
-                  width: 2,
-                  label: "Significant systems",
-                  field: "significantSystems",
-                  disabled: true,
-                },
-                {
-                  width: 1,
-                  label: "# of significant phenotypes",
-                  field: "significantPhenotypes",
-                  disabled: true,
-                },
-              ]}
-            >
-              {geneData.alleles.map((alleleData) => {
-                return (
-                  <tr>
-                    <td>
-                      <Link
-                        className="link primary"
-                        href={`alleles/${geneData.geneId}/${
-                          formatAlleleSymbol(alleleData.allele)[1]
-                        }`}
-                      >
-                        <AlleleSymbol
-                          symbol={alleleData.allele}
-                          withLabel={false}
-                        />
-                      </Link>
-                    </td>
-                    <td>
-                      {alleleData.significantSystems.map((system, index) => (
-                        <BodySystem
-                          key={index}
-                          name={system}
-                          color="system-icon in-table"
-                          noSpacing
-                        />
-                      ))}
-                    </td>
-                    <td>{alleleData.significantPhenotypes.length}</td>
-                  </tr>
-                );
-              })}
-            </SortableTable>
-          </td>
-        </tr>
-      )}
-    </>
-  );
 };
 
 export const metadata: Metadata = {
@@ -204,33 +37,154 @@ export const metadata: Metadata = {
 };
 
 const BatchQueryPage = () => {
-  const [geneIds, setGeneIds] = useState<string>(undefined);
-  const [file, setFile] = useState(null);
+  const [geneIds, setGeneIds] = useState<string | undefined>(undefined);
+  const [file, setFile] = useState<File | null>(null);
+  const [fileIDCount, setFileIDCount] = useState<number | null>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [selectedSystems, setSelectedSystems] = useState([]);
+  const [selectedPhenotypes, setSelectedPhenotypes] = useState([]);
   const [sortOptions, setSortOptions] = useState<SortOptions>({
-    prop: "geneSymbol",
+    prop: "mouseGeneSymbol",
     order: "asc" as const,
   });
   const [tab, setTab] = useState("paste-your-list");
-  const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
+  const [selectedAlleleData, setSelectedAlleleData] =
+    useState<SelectedAlleleData | null>(null);
+
   const downloadButtonIsBusy =
     state.isBusyJSON || state.isBusyTSV || state.isBusyXLSX;
 
-  const geneIdArray = useMemo(() => {
+  const handleClose = () => setSelectedAlleleData(null);
+
+  const geneIdArray: Array<string> = useMemo(() => {
     const regex = /(MGI:\d+),?/g;
     return [...(geneIds?.matchAll(regex) || [])].map((res) => res[1]);
   }, [geneIds]);
 
   useEffect(() => {
     // case 1: user updated input (list or file)
-    if ((!!geneIds || !!file) && formSubmitted === true) {
+    if ((!!geneIds || !!file) && formSubmitted) {
       setFormSubmitted(false);
     }
   }, [geneIds, formSubmitted, file]);
 
-  const getBody = () => {
+  useEffect(() => {
+    if (file) {
+      file.text().then((fileContents) => {
+        const ids = fileContents.split("\n");
+        if (ids.length !== fileIDCount) {
+          setFileIDCount(ids.length);
+        }
+      });
+    }
+  }, [file, fileIDCount]);
+
+  const { data: results, isFetching } = useBatchQuery(
+    tab,
+    geneIdArray,
+    file,
+    formSubmitted,
+    downloadButtonIsBusy,
+  );
+
+  const updateSelectedSystems = (selectedOptions) => {
+    setSelectedSystems(selectedOptions.map((opt) => opt.value));
+  };
+
+  const updateSelectedPhenotypes = (selectedOptions) => {
+    setSelectedPhenotypes(selectedOptions.map((opt) => opt.value));
+  };
+
+  const filteredData = useMemo(() => {
+    let intermediateRes = selectedSystems.length
+      ? results.filter((gene) =>
+          selectedSystems.every((system) =>
+            gene.allSignificantSystems.includes(system),
+          ),
+        )
+      : results;
+    intermediateRes = selectedPhenotypes.length
+      ? intermediateRes.filter((gene) =>
+          selectedPhenotypes.every((phenotype) =>
+            gene.allSignificantPhenotypes.includes(phenotype),
+          ),
+        )
+      : intermediateRes;
+    return intermediateRes;
+  }, [results, selectedSystems, selectedPhenotypes]);
+
+  const selectOptions = useMemo(() => {
+    if (filteredData?.length) {
+      const phenotypeResultsMap = new Map<string, number>();
+      const systemsMap = new Map<string, number>();
+      filteredData
+        .flatMap((r) => r.allSignificantPhenotypes)
+        .forEach((phenotype) => {
+          if (phenotypeResultsMap.has(phenotype)) {
+            const newVal = phenotypeResultsMap.get(phenotype) + 1;
+            phenotypeResultsMap.set(phenotype, newVal);
+          } else {
+            phenotypeResultsMap.set(phenotype, 1);
+          }
+        });
+      filteredData
+        .flatMap((r) => r.allSignificantSystems)
+        .forEach((system) => {
+          if (systemsMap.has(system)) {
+            const newVal = systemsMap.get(system) + 1;
+            systemsMap.set(system, newVal);
+          } else {
+            systemsMap.set(system, 1);
+          }
+        });
+      const phenotypeSelectOptions: SelectOptions = [];
+      const systemSelectOptions: SelectOptions = [];
+      for (const [phenotype, numHits] of phenotypeResultsMap) {
+        phenotypeSelectOptions.push({
+          value: phenotype,
+          label: phenotype,
+          numHits,
+        });
+      }
+      for (const [system, numHits] of systemsMap) {
+        systemSelectOptions.push({ value: system, label: system, numHits });
+      }
+      phenotypeSelectOptions.sort((op1, op2) => op2.numHits - op1.numHits);
+      systemSelectOptions.sort((op1, op2) => op2.numHits - op1.numHits);
+      return {
+        phenotypeSelectOptions,
+        systemSelectOptions,
+        allSignificantSystems: systemSelectOptions,
+      };
+    }
+    return {
+      phenotypeSelectOptions: [] as SelectOptions,
+      systemSelectOptions: [] as SelectOptions,
+      allSignificantSystems: [] as SelectOptions,
+    };
+  }, [filteredData]);
+
+  const sortedData = useMemo(() => {
+    if (
+      sortOptions.prop === "allSignificantPhenotypes" ||
+      sortOptions.prop === "allSignificantSystems"
+    ) {
+      const { prop, order } = sortOptions;
+      return filteredData?.sort((a, b) =>
+        order === "asc"
+          ? a[prop].length - b[prop].length
+          : b[prop].length - a[prop].length,
+      );
+    }
+    return orderBy(filteredData, sortOptions.prop, sortOptions.order);
+  }, [filteredData, sortOptions]);
+
+  const fetchFilteredDataset = async (
+    payload: toogleFlagPayload,
+    pathURL: string,
+    zippedFile: boolean,
+  ) => {
     let body;
     if (tab === "upload-your-list") {
       const data = new FormData();
@@ -239,161 +193,49 @@ const BatchQueryPage = () => {
     } else {
       body = JSON.stringify({ mgi_ids: geneIdArray });
     }
-    return body;
-  };
-
-  const { data: results, isFetching } = useQuery({
-    queryKey: ["batch-query", geneIdArray, file, tab],
-    queryFn: () => {
-      const headers = new Headers();
-      headers.append("Accept", "application/json");
-      if (tab === "paste-your-list") {
-        headers.append("Content-Type", "application/json");
-      }
-      const body = getBody();
-
-      return fetch(BATCH_QUERY_API_ROOT, {
-        method: "POST",
-        body,
-        headers,
-      }).then((res) => res.json());
-    },
-    enabled:
-      (geneIdArray.length > 0 || !!file) &&
-      !!formSubmitted &&
-      !downloadButtonIsBusy,
-    select: (data: Array<BatchQueryItem>) => {
-      const results = {};
-      const resultsByGene = groupBy(data, "id");
-      for (const [geneId, geneData] of Object.entries(resultsByGene)) {
-        const geneSymbol = geneData[0]?.alleleSymbol.split("<")[0];
-        const resultsByAllele = groupBy(geneData, "alleleSymbol");
-        const sigSystemsSet = new Set<string>();
-        const sigPhenotypesSet = new Set<string>();
-        const lifeStagesSet = new Set<string>();
-        results[geneSymbol] = {
-          humanSymbols: uniq(geneData.map((d) => d.humanGeneSymbol)),
-          humanGeneIds: uniq(geneData.map((d) => d.hgncGeneAccessionId)),
-          geneId,
-          allSigSystems: [],
-          allPhenotypes: [],
-          allSigLifeStages: [],
-          alleles: [],
-        };
-        for (const [allele, alleleData] of Object.entries(resultsByAllele)) {
-          const significantData = alleleData.filter(
-            (d) => d.significant === true,
-          );
-          const restOfData = alleleData.filter((d) => d.significant === false);
-          const getSigPhenotypeNames = (data: Array<BatchQueryItem>) => {
-            return data
-              .map((d) =>
-                maybe(d.significantPhenotype)
-                  .map((p) => p.name)
-                  .getOrElse(undefined),
-              )
-              .filter(Boolean);
-          };
-          const getTopLevelPhenotypeNames = (data: Array<BatchQueryItem>) => {
-            return data
-              .flatMap((d) =>
-                maybe(d.topLevelPhenotypes)
-                  .map((systems) => systems.map((s) => s.name))
-                  .getOrElse(undefined),
-              )
-              .filter(Boolean);
-          };
-          const alleleSigPhenotypes = uniq(
-            getSigPhenotypeNames(significantData),
-          );
-          const alleleSigSystems = uniq(
-            getTopLevelPhenotypeNames(significantData),
-          );
-          const alleleSigLifeStages = uniq(
-            significantData.map((d) => d.lifeStageName),
-          );
-
-          alleleSigPhenotypes.forEach((p) => sigPhenotypesSet.add(p));
-          alleleSigSystems.forEach((s) => sigSystemsSet.add(s));
-          alleleSigLifeStages.forEach((l) => lifeStagesSet.add(l));
-
-          results[geneSymbol].alleles.push({
-            significantPhenotypes: alleleSigPhenotypes,
-            otherPhenotypes: uniq(getSigPhenotypeNames(restOfData)),
-            significantLifeStages: alleleSigLifeStages,
-            significantSystems: alleleSigSystems,
-            otherSystems: uniq(getTopLevelPhenotypeNames(restOfData)),
-            allele,
-          });
-        }
-        results[geneSymbol].allSigSystems = [...sigSystemsSet];
-        results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
-        results[geneSymbol].allPhenotypes = [...sigPhenotypesSet];
-        results[geneSymbol].alleles.sort(
-          (a1, a2) =>
-            a2.significantPhenotypes.length - a1.significantPhenotypes.length,
-        );
-      }
-      return Object.entries(results).map(([geneSymbol, geneData]) => {
-        return {
-          geneSymbol,
-          ...(geneData as any),
-        };
-      });
-    },
-  });
-
-  const fetchAndDownloadData = async (payload: toogleFlagPayload) => {
-    if (geneIdArray?.length > 0 || !!file) {
-      const headers = new Headers();
-      headers.append("Accept", payload.toLowerCase());
-      if (tab === "paste-your-list") {
-        headers.append("Content-Type", "application/json");
-      }
-      dispatch({ type: "toggle", payload });
-      const body = getBody();
-      const resp = await fetch(BATCH_QUERY_API_ROOT, {
-        method: "POST",
-        body,
-        headers,
-      });
-      const blob = await resp.blob();
-      const objUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.setAttribute("href", objUrl);
-      link.setAttribute("download", "batch-query-data-" + payload);
-      link.click();
-      URL.revokeObjectURL(objUrl);
-      dispatch({ type: "toggle", payload });
+    dispatch({ type: "toggle", payload });
+    const url = `${BATCH_QUERY_DOWNLOAD_ROOT}${pathURL}`;
+    let acceptHeader = "application/json";
+    switch (payload) {
+      case "SummaryTSV":
+      case "TSV":
+        acceptHeader = "text/tab-separated-values";
+        break;
+      case "XLSX":
+        acceptHeader = "application/vnd.ms-excel";
+        break;
+      case "JSON":
+      case "SummaryJSON":
+      default:
+        break;
     }
-  };
-
-  const downloadButtons = useMemo(
-    () => [
-      {
-        key: "JSON",
-        isBusy: state.isBusyJSON,
-        toogleFlag: () => fetchAndDownloadData("application/JSON"),
+    const response = await fetch(url, {
+      method: "POST",
+      body,
+      headers: {
+        Accept: acceptHeader,
       },
-    ],
-    [state, geneIds, file, tab],
-  );
-
-  const updateSelectedSystems = (selectedOptions) => {
-    setSelectedSystems(selectedOptions.map((opt) => opt.value));
+    });
+    const fileData = await response.blob();
+    const objUrl = window.URL.createObjectURL(fileData);
+    const a = document.createElement("a");
+    a.href = objUrl;
+    if (zippedFile) {
+      a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.zip`;
+    } else {
+      const extension =
+        payload === "JSON" || payload === "SummaryJSON"
+          ? "json"
+          : payload === "TSV" || payload === "SummaryTSV"
+            ? "tsv"
+            : "xlsx";
+      a.download = `batch-query-${moment(new Date()).format("YYYY-MM-DD")}.${extension}`;
+    }
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    dispatch({ type: "toggle", payload });
   };
-
-  const filteredData = useMemo(() => {
-    return selectedSystems.length
-      ? results.filter((gene) =>
-          selectedSystems.every((system) =>
-            gene.allSigSystems.includes(system),
-          ),
-        )
-      : results;
-  }, [selectedSystems, results]);
-
-  const sortedData = orderBy(filteredData, sortOptions.prop, sortOptions.order);
 
   return (
     <>
@@ -446,19 +288,14 @@ const BatchQueryPage = () => {
             {formSubmitted && (geneIdArray?.length === 0 || file === null) && (
               <Alert variant="warning">Please enter a list of ID's</Alert>
             )}
-            {geneIdArray?.length >= 1000 && (
-              <Alert variant="warning">
-                If your list exceeds 1,000 Ids, please save them in a text file
-                and upload it.
-              </Alert>
-            )}
             <button
               onClick={() => setFormSubmitted(true)}
               className="btn impc-primary-button"
               disabled={
                 isFetching ||
                 downloadButtonIsBusy ||
-                geneIdArray?.length >= 1000
+                geneIdArray?.length >= 1000 ||
+                fileIDCount >= 1000
               }
             >
               Submit
@@ -475,122 +312,52 @@ const BatchQueryPage = () => {
               <LoadingProgressBar />
             </div>
           )}
-          {!!filteredData ? (
-            <>
-              <div>
-                <span className="small grey">
-                  Filter genes by physiological system&nbsp;
-                </span>
-                <Select
-                  isMulti
-                  options={allOptions}
-                  formatOptionLabel={formatOptionLabel}
-                  onChange={updateSelectedSystems}
-                />
-              </div>
-              {!!sortedData.length ? (
-                <>
-                  {!!selectedSystems.length && (
-                    <div className="mt-3">
-                      <b className="small grey">
-                        Showing {sortedData?.length || 0} result(s) of&nbsp;
-                        {results?.length || 0}
-                      </b>
-                    </div>
-                  )}
-                  <Pagination
-                    data={sortedData}
-                    topControlsWrapperCSS={{ marginTop: "1rem" }}
-                  >
-                    {(pageData) => (
-                      <SortableTable
-                        defaultSort={defaultSort}
-                        doSort={(sort) =>
-                          setSortOptions({ prop: sort[0], order: sort[1] })
-                        }
-                        headers={[
-                          {
-                            width: 1,
-                            label: "MGI accession id",
-                            field: "geneId",
-                          },
-                          {
-                            width: 1,
-                            label: "Marker symbol",
-                            field: "geneSymbol",
-                          },
-                          {
-                            width: 1,
-                            label: "Human gene symbol",
-                            field: "humanSymbols",
-                          },
-                          {
-                            width: 1,
-                            label: "Human gene id",
-                            field: "humanGeneIds",
-                          },
-                          {
-                            width: 1,
-                            label: "# of significant phenotypes",
-                            field: "allPhenotypes",
-                          },
-                          {
-                            width: 1,
-                            label: "# of systems impacted",
-                            field: "allSigSystems",
-                          },
-                          {
-                            width: 1,
-                            label: "View allele info",
-                            disabled: true,
-                          },
-                        ]}
-                      >
-                        {pageData.map((geneData) => (
-                          <DataRow geneData={geneData} />
-                        ))}
-                      </SortableTable>
-                    )}
-                  </Pagination>
-                  <div>
-                    <div
-                      className="grey"
-                      style={{
-                        display: "flex",
-                        gap: "0.5rem",
-                        alignItems: "center",
-                      }}
-                    >
-                      {downloadButtons.map((button) => (
-                        <button
-                          key={button.key}
-                          className="btn impc-secondary-button small"
-                          onClick={button.toogleFlag}
-                          disabled={button.isBusy}
-                        >
-                          {button.isBusy ? (
-                            <Spinner animation="border" size="sm" />
-                          ) : (
-                            <>
-                              <FontAwesomeIcon icon={faDownload} size="sm" />
-                              {button.key}
-                            </>
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <h3 className="mt-3">No genes match the filters selected</h3>
-              )}
-            </>
-          ) : !isFetching ? (
-            <i className="grey">
-              Data will appear here after clicking the submit button.
-            </i>
-          ) : null}
+          <BatchQueryResults
+            sortedData={sortedData ?? []}
+            hasMoreThan1000Ids={
+              geneIdArray?.length >= 1000 || fileIDCount >= 1000
+            }
+            isFetching={isFetching}
+            numberTotalGenes={sortedData?.length ?? 0}
+            isDataAvailable={!!filteredData}
+            downloadButtonsState={state}
+            selectOptions={selectOptions}
+            actualResults={results?.length ?? 0}
+            selectedSystems={selectedSystems}
+            selectedPhenotypes={selectedPhenotypes}
+            updateSelectedSystems={updateSelectedSystems}
+            fetchFilteredDataset={fetchFilteredDataset}
+            updateSelectedPhenotypes={updateSelectedPhenotypes}
+            setSortOptions={setSortOptions}
+            setSelectedAlleleData={setSelectedAlleleData}
+          />
         </Card>
+        <Modal size="lg" show={!!selectedAlleleData} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>
+              Phenotypes for&nbsp;
+              <AlleleSymbol
+                symbol={selectedAlleleData?.alelleSymbol}
+                withLabel={false}
+              />
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ul>
+              {selectedAlleleData?.phenotypes.map((phenotype) => (
+                <li>{phenotype}</li>
+              ))}
+            </ul>
+          </Modal.Body>
+          <Modal.Footer>
+            <button
+              className="btn impc-secondary-button small"
+              onClick={handleClose}
+            >
+              Close
+            </button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </>
   );
