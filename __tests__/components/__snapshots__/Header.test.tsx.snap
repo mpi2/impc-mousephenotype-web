@@ -1156,28 +1156,5 @@ exports[`Header component renders correctly 1`] = `
       </div>
     </div>
   </div>
-  <div
-    class="alert alert-info mb-0"
-    style="padding: 1.2rem;"
-  >
-    <h4
-      style="font-size: 1.5rem;"
-    >
-      IMPC Survey - Please provide your input!
-    </h4>
-    <p>
-      The IMPC is at a funding crossroads and seeking community input.  Help shape the future of the IMPC by taking part in 
-      <strong>
-        <a
-          class="link primary"
-          href="https://docs.google.com/forms/d/e/1FAIpQLScit_HcyJc-VJJs4NrNhVL1dJTwLmEJTOhs3FclUQUBXuv2RA/viewform?pli=1"
-          style="text-decoration: none;"
-        >
-          our short survey
-        </a>
-      </strong>
-      .
-    </p>
-  </div>
 </div>
 `;
