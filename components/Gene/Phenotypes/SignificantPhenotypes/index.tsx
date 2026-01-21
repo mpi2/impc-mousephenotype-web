@@ -15,6 +15,9 @@ import { summarySystemSelectionChannel } from "@/eventChannels";
 import { SupportingDataCell } from "./custom-cells";
 import Footnotes from "../Footnotes";
 import { SortType } from "@/models";
+import styles from "./styles.module.scss";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const SignificantPhenotypes = ({
   phenotypeData = [],
@@ -152,6 +155,22 @@ const SignificantPhenotypes = ({
               hoveringRef={hoveringRef}
               hasDataRelatedToPWG={hasDataRelatedToPWG}
             />
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>No fix data banner</Tooltip>}
+            >
+              <div className={styles.noFixContainer}>
+                There are more datasets related to this gene that didn't meet
+                IMPC quality controls, please visit&nbsp;
+                <a
+                  href="https://ftp.ebi.ac.uk/pub/databases/impc/"
+                  className="link primary"
+                >
+                  this page
+                </a>
+                &nbsp;for more information.
+              </div>
+            </OverlayTrigger>
             <DownloadData<GenePhenotypeHits>
               data={phenotypeData}
               fileName={`${gene.geneSymbol}-significant-phenotypes`}
