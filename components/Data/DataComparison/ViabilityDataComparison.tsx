@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import SortableTable from "../../SortableTable";
 import { orderBy } from "lodash";
 import { getIcon, getSexLabel } from "@/utils";
-import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Button, OverlayTrigger, Spinner, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset, DatasetExtra, SortType } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
@@ -31,7 +31,6 @@ const ViabilityDataComparison = (props: Props) => {
     onSelectParam = (_) => {},
     dataIsLoading,
   } = props;
-
   const groups = groupData(data);
   const processed = processData(groups);
   const [visibleRows, setVisibleRows] = useState(10);
@@ -70,6 +69,29 @@ const ViabilityDataComparison = (props: Props) => {
 
   return (
     <>
+      {!dataIsLoading ? (
+        <div className="mb-0">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}
+          >
+            <span>
+              {processed && processed.length} parameter / zygosity / metadata
+              group combinations tested.
+            </span>
+          </div>
+        </div>
+      ) : (
+        <span>
+          <Spinner animation="border" size="sm" />
+          &nbsp; Loading data
+        </span>
+      )}
       <AnimatePresence>
         <SortableTable
           className="data-comparison-table"

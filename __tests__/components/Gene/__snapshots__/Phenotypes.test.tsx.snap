@@ -1832,6 +1832,17 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                 </span>
               </div>
               <div
+                class="noFixContainer"
+              >
+                There are more datasets related to this gene that failed IMPC quality controls, they are available in 
+                <a
+                  class="link primary"
+                  href="https://ftp.ebi.ac.uk/pub/databases/impc/"
+                >
+                  the FTP site
+                </a>
+              </div>
+              <div
                 class="grey"
                 style="display: flex; gap: 0.5rem; align-items: center;"
               >

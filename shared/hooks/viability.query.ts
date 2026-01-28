@@ -21,6 +21,28 @@ function getViabilityStatement(value: string) {
   }
 }
 
+function deduplicateData(data: Array<any>) {
+  const groupedData = data.reduce((acc, d) => {
+    const {
+      alleleAccessionId,
+      parameterStableId,
+      zygosity,
+      phenotypingCentre,
+      colonyId,
+    } = d;
+
+    const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
+    if (!acc[key]) {
+      acc[key] = {
+        ...d,
+        key,
+      };
+    }
+    return acc;
+  }, {});
+  return Object.values(groupedData) as Array<Dataset>;
+}
+
 export const useViabilityQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
@@ -28,12 +50,13 @@ export const useViabilityQuery = (
   const { data, isLoading, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "all", "viability"],
     queryFn: async () => {
-      const datasets: Array<Dataset> = await fetchAPI(
+      let datasets: Array<Dataset> = await fetchAPI(
         `/api/v1/genes/${mgiGeneAccessionId}/dataset/viability`,
       );
+      datasets = deduplicateData(datasets);
       const summariesRequest = await Promise.allSettled(
         datasets.map((dataset) => {
-          const query = `experiment/select?q=gene_symbol: "${dataset.geneSymbol}" AND procedure_stable_id: "${dataset.procedureStableId}" AND parameter_stable_id: "${dataset.parameterStableId}"`;
+          const query = `experiment/select?q=gene_symbol: "${dataset.geneSymbol}" AND procedure_stable_id: "${dataset.procedureStableId}" AND parameter_stable_id: "${dataset.parameterStableId}" AND allele_symbol: "${dataset.alleleSymbol}" AND colony_id: "${dataset.colonyId}" AND zygosity: "${dataset.zygosity}" AND phenotyping_center: "${dataset.phenotypingCentre}"`;
           return fetchDataFromSOLR(query);
         }),
       );
@@ -58,28 +81,8 @@ export const useViabilityQuery = (
               viabilityStatement: getViabilityStatement(experimentalData[key]),
             };
           }
-        });
-    },
-    select: (data) => {
-      const groupedData = data.reduce((acc, d) => {
-        const {
-          alleleAccessionId,
-          parameterStableId,
-          zygosity,
-          phenotypingCentre,
-          colonyId,
-        } = d;
-
-        const key = `${alleleAccessionId}-${parameterStableId}-${zygosity}-${phenotypingCentre}-${colonyId}`;
-        if (!acc[key]) {
-          acc[key] = {
-            ...d,
-            key,
-          };
-        }
-        return acc;
-      }, {});
-      return Object.values(groupedData) as Array<Dataset>;
+        })
+        .filter(Boolean);
     },
     enabled: routerIsReady,
   });

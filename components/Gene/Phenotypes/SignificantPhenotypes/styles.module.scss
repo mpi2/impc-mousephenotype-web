@@ -1,21 +1,8 @@
 @import "../../../../styles/vars.scss";
-.table {
-  margin-top: $xs;
-  td {
-    vertical-align: middle;
-    line-height: 2rem;
-  }
-}
 
-.link {
-  cursor: pointer;
-  &:hover {
-    color: $orange-dark;
-  }
-}
-
-.pValueCell {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.noFixContainer {
+  border: 1px solid;
+  font-size: 85%;
+  border-radius: 5px;
+  padding: 3px 6px;
 }
