@@ -659,10 +659,7 @@ const ImagesCompare = ({
                       name="WT"
                       image={controlImages?.[selectedWTImage]}
                       hasAvailableImages={
-                        wildtypeImagesLoading
-                          ? true
-                          : controlImages?.length !== 0 &&
-                            controlImagesRaw?.length !== 0
+                        !wildtypeImagesLoading && controlImages?.length === 0
                       }
                       isAltParameter={isALTParameter}
                       isLoading={wildtypeImagesLoading}
