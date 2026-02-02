@@ -631,7 +631,7 @@ const ImagesCompare = ({
               <Col sm={6}>
                 <div className={styles.headerContainer}>
                   <h3 style={{ marginBottom: 0 }}>
-                    WT Images&nbsp;
+                    WT Images{" "}
                     {!!controlImages?.length ? `(${controlImages.length})` : ""}
                   </h3>
                   <FilterBox
@@ -679,7 +679,7 @@ const ImagesCompare = ({
               <Col sm={6}>
                 <div className={styles.headerContainer}>
                   <h3 style={{ marginBottom: 0 }}>
-                    Mutant Images&nbsp;
+                    Mutant Images{" "}
                     {!!filteredMutantImages?.length
                       ? `(${filteredMutantImages.length})`
                       : ""}
