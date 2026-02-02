@@ -139,9 +139,9 @@ exports[`Image comparator page renders correctly 1`] = `
               <h3
                 style="margin-bottom: 0px;"
               >
-                WT Images (
-                50
-                )
+                WT Images
+                 
+                (50)
               </h3>
               <div
                 data-testid="filterbox-controlCenterFilter"
@@ -353,9 +353,9 @@ exports[`Image comparator page renders correctly 1`] = `
               <h3
                 style="margin-bottom: 0px;"
               >
-                Mutant Images (
-                11
-                )
+                Mutant Images
+                 
+                (11)
               </h3>
               <div
                 data-testid="filterbox-mutantCenterFilter"
