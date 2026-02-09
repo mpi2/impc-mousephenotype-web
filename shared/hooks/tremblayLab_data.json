@@ -1,0 +1,177 @@
+[
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Tedc2",
+    "mgiGeneAccessionId":"MGI:1919266",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/tedc2\/",
+    "description":"The Tremblay lab website describes WT gene expression of Tedc2 in embryos at E7.5-10.5 and placentas at E8.5-9.5, gross embryonic phenotypes of the Tedc2 KO between E7.5-10.5, and the placental phenotype at E9.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization of embryos between E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Pgm1",
+    "mgiGeneAccessionId":"MGI:97565",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/pgm1\/",
+    "description":"The Tremblay lab website describes WT gene expression of Pgm1 in embryos at E7.5-10.5 and placentas between E8.5-10.5, gross embryonic phenotypes of the Pgm1 KO between E8.5-10.5, and the placental phenotype at E9.5-10.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E9.5 and placentas at E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Got2",
+    "mgiGeneAccessionId":"MGI:95792",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/got2\/",
+    "description":"The Tremblay lab website describes WT gene expression of Got2 in embryos at E7.5-10.5 and placentas between E8.5-10.5, gross embryonic phenotypes of the Got2 KO between E8.5-10.5, and the placental phenotype at E9.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5"
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Ppox",
+    "mgiGeneAccessionId":"MGI:104968",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/ppox\/",
+    "description":"The Tremblay lab website describes WT gene expression of Ppox in embryos and placentas between E8.5-10.5, gross embryonic phenotypes of the Ppox KO between E8.5-9.5, and the placental phenotype between E9.5-10.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos at E9.5 and placentas from E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Arpc1a",
+    "mgiGeneAccessionId":"MGI:1928896",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/arpc1a\/",
+    "description":"The Tremblay lab website describes WT gene expression of Arpc1a in embryos and placentas between E8.5-10.5, gross embryonic phenotypes of the Arpc1a KO between E8.5-10.5, and the placental phenotype at E9.5-10.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos and placentas between E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Bltp2",
+    "mgiGeneAccessionId":"MGI:1919753",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/bltp2\/",
+    "description":"The Tremblay lab website describes WT gene expression of Bltp2 in embryos and placentas between E8.5-10.5, gross embryonic phenotypes of the Bltp2 KO between E9.5-11.5, and the placental phenotype at E9.5-10.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos and placentas between E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Exoc3l4",
+    "mgiGeneAccessionId":"MGI:1921363",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/exoc3l4\/",
+    "description":"The Tremblay lab website describes WT gene expression of Exoc3l4 in embryos and placentas between E8.5-10.5, gross embryonic phenotypes of the Exoc3l4 KO between E9.5-11.5, and the placental phenotype at E9.5-11.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos at E10.5 and placentas between E9.5-11.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Alg3",
+    "mgiGeneAccessionId":"MGI:1098592",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/alg3\/",
+    "description":"The Tremblay lab website describes WT gene expression of Alg3 in embryos and placentas between E8.5-10.5, gross embryonic phenotypes of the Alg3 KO between E8.5-11.5, and the placental phenotype at E9.5-11.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E9.5-10.5 and placentas between E9.5-11.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Kctd5",
+    "mgiGeneAccessionId":"MGI:1916509",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/kctd5\/",
+    "description":"The Tremblay lab website describes WT gene expression of Kctd5 in embryos at E9.5-10.5 and placentas at E9.5, gross embryonic phenotypes of the Kctd5 KO between E8.5-9.5, and the placental phenotype at E9.5-10.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Usb1",
+    "mgiGeneAccessionId":"MGI:2142454",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/usb1\/",
+    "description":"The Tremblay lab website describes WT gene expression of Usb1 in embryos and placentas between E8.5-10.5, gross embryonic phenotypes of the Usb1 KO between E8.5-10.5, and the placental phenotype at E9.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Ehbp1",
+    "mgiGeneAccessionId":"MGI:2667252",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/ehbp1\/",
+    "description":"The Tremblay lab website describes the gross embryonic phenotypes of the Ehbp1 KOs between E8.5-9.5, and the placental phenotype at E9.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Mab21l2",
+    "mgiGeneAccessionId":"MGI:1346022",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/mab21l2\/",
+    "description":"The Tremblay lab website describes the expression of Mab21l2 in WT embryos between E8.5-10.5 and placentas between E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Rprd2",
+    "mgiGeneAccessionId":"MGI:1922387",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/rprd2\/",
+    "description":"The Tremblay lab website describes WT gene expression of Rprd2 in embryos at E8.5-9.5 and placentas from E8.5-10.5, gross embryonic phenotypes of the Rprd2 KO between E8.5-9.5, and the placental phenotype at E9.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5"
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Zmym2",
+    "mgiGeneAccessionId":"MGI:1923257",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/zmym2\/",
+    "description":"The Tremblay lab website describes WT gene expression of Zmym2 in embryos at E8.5-9.5 and placentas from E9.5-10.5, gross embryonic phenotypes of the Zmym2 KO between E8.5-9.5, and the placental phenotype at E9.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Urm1",
+    "mgiGeneAccessionId":"MGI:1915455",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/urm1\/",
+    "description":"The Tremblay lab website describes WT gene expression of Urm1 in embryos at E8.5-9.5 and placentas from E8.5-10.5, gross embryonic phenotypes of the Urm1 KO between E8.5-10.5, and the placental phenotype at E9.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-10.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Chp1",
+    "mgiGeneAccessionId":"MGI:1927185",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/chp1\/",
+    "description":"The Tremblay lab website describes WT gene expression of Chp1 in embryos and placentas from E8.5-10.5, gross embryonic phenotypes of the Chp1 KO between E7.5-9.5, and the placental phenotype at E9.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Traf7",
+    "mgiGeneAccessionId":"MGI:3042141",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/traf7\/",
+    "description":"The Tremblay lab website describes WT gene expression of Traf7 in embryos and placentas between E8.5-10.5, gross embryonic phenotypes of the Traf7 KO between E8.5-10.5, and the placental phenotype at E9.5-10.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E9.5-10.5 and placentas at E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Tm9sf2",
+    "mgiGeneAccessionId":"MGI:1915309",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/tm9sf2\/",
+    "description":"The Tremblay lab website describes the expression of Tm9sf2 in WT embryos between E8.5-10.5 and placentas between E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Tgds",
+    "mgiGeneAccessionId":"MGI:1923605",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/tgds\/",
+    "description":"The Tremblay lab website describes WT gene expression of Tgds in embryos from E8.5-9.5 and placentas from E8.5-10.5, gross embryonic phenotypes of the Tgds KO between E8.5-10.5, and the placental phenotype at E9.5-10.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Spty2d1",
+    "mgiGeneAccessionId":"MGI:2142062",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/spty2d1\/",
+    "description":"The Tremblay lab website describes WT gene expression of Spty2d1 in E9.5 embryos and placentas between E9.5-10.5, gross embryonic phenotypes of the Spty2d1 KO between E9.5-11.5, and the placental phenotype at E10.5-12.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos at E10.5 and placentas at E10.5-12.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Atp1b1",
+    "mgiGeneAccessionId":"MGI:88108",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/atp1b1\/",
+    "description":"The Tremblay lab website describes WT gene expression of Atp1b1 in embryos and placentas between E8.5-10.5, gross embryonic phenotypes of the Atp1b1 KO between E7.5-10.5, and the placental phenotype at E9.5. The KO phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Stt3b",
+    "mgiGeneAccessionId":"MGI:1915542",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/stt3b\/",
+    "description":"The Tremblay lab website describes WT gene expression of Stt3b in embryos from E8.5-9.5 and placentas from E8.5-10.5, gross embryonic phenotypes of the Stt3b KO between E8.5-10.5, and the placental phenotype at E9.5-10.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos at E9.5 and placentas at E9.5-10.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Gcn1",
+    "mgiGeneAccessionId":"MGI:2444248",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/gnc1\/",
+    "description":"The Tremblay lab website describes WT gene expression of Gcn1 in embryos from E8.5-9.5 and placentas from E9.5-10.5, gross embryonic phenotypes of the Gcn1 KO between E7.5-9.5, and the placental phenotypes at E9.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos between E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Gmeb2",
+    "mgiGeneAccessionId":"MGI:2652836",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/gmeb2\/",
+    "description":"The Tremblay lab website describes WT gene expression of Gmeb2 in embryos from E8.5-9.5 and placentas from E9.5-10.5, gross embryonic phenotypes of the Gmeb2 KO between E8.5-10.5, and the placental phenotype at E9.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos at E8.5-9.5 and placentas at E9.5."
+  },
+  {
+    "providerName":"Tremblay Lab E8.5 - E10.5",
+    "label":"Slc30a9",
+    "mgiGeneAccessionId":"MGI:1923690",
+    "href":"https:\/\/websites.umass.edu\/kdtkomp\/slc30a9\/",
+    "description":"The Tremblay lab website describes WT gene expression of Slc30a9 in embryos from E8.5-9.5 and placentas from E9.5-10.5, gross embryonic phenotypes of the Slc30a9 KO between E7.5-9.5, and the placental phenotypes at E8.5-9.5. The phenotyping data is supported by histological images and immunofluorescence or in situ hybridization marker analysis of embryos at E8.5 and placentas at E8.5-9.5."
+  }
+]

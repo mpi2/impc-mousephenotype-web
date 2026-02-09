@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import _ from "lodash";
+import { groupBy, uniqBy } from "lodash";
+import tremblayLabData from "./tremblayLab_data.json";
 
 type ExternalLinks = {
   providerName: string;
@@ -14,18 +15,34 @@ type ExternalLinks = {
   }>;
 };
 
+type ProviderListResponse = {
+  providerName: string;
+  providerDescription: string;
+};
+
+type ExternalLinkResponse = {
+  providerName: string;
+  href: string;
+  label: string;
+  mgiGeneAccessionId: string;
+  description?: string;
+};
+
 export const useGeneExternalLinksQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
 ) => {
   const { data: providers, isFetching: providersIsFetching } = useQuery({
     queryKey: ["external-links-providers"],
-    queryFn: () => fetchAPI(`/api/v1/genes/gene_external_links/providers`),
+    queryFn: () =>
+      fetchAPI<Array<ProviderListResponse>>(
+        `/api/v1/genes/gene_external_links/providers`,
+      ),
     select: (providerList) =>
       providerList.reduce((acc, provider) => {
         acc[provider.providerName] = provider.providerDescription;
         return acc;
-      }, {}),
+      }, {}) as Record<string, string>,
     placeholderData: [],
   });
 
@@ -36,12 +53,19 @@ export const useGeneExternalLinksQuery = (
     queryFn: () =>
       fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/gene_external_links`),
     enabled: routerIsReady && hasLoadedProvidersData,
-    select: (linkList) => {
-      const linksByProvider = _.groupBy(linkList, (link) => link.providerName);
+    select: (linkList: Array<ExternalLinkResponse>) => {
+      // Temporal: Remove after database is updated
+      let tempData = linkList.concat(
+        tremblayLabData.filter(
+          (link) => link.mgiGeneAccessionId === mgiGeneAccessionId,
+        ),
+      );
+      tempData = uniqBy(tempData, "providerName");
+      const linksByProvider = groupBy(tempData, (link) => link.providerName);
       return Object.entries(linksByProvider)
         .map(([providerName, links]) => ({
           providerName,
-          providerDescription: Object.values(providers).find((desc: string) =>
+          providerDescription: Object.values(providers!).find((desc: string) =>
             desc.includes(providerName),
           ),
           links,
