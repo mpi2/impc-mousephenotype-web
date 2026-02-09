@@ -6766,9 +6766,13 @@ exports[`Gene page renders correctly 1`] = `
       <div
         class="container"
       >
-        <div>
+        <div
+          aria-label="External links table"
+          role="table"
+        >
           <div
             class="mb-4"
+            role="row"
           >
             <div
               class="provider"
@@ -6821,6 +6825,7 @@ exports[`Gene page renders correctly 1`] = `
           </div>
           <div
             class="mb-4"
+            role="row"
           >
             <div
               class="provider"

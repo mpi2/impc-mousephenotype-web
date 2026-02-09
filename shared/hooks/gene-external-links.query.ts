@@ -60,7 +60,6 @@ export const useGeneExternalLinksQuery = (
           (link) => link.mgiGeneAccessionId === mgiGeneAccessionId,
         ),
       );
-      tempData = uniqBy(tempData, "providerName");
       const linksByProvider = groupBy(tempData, (link) => link.providerName);
       return Object.entries(linksByProvider)
         .map(([providerName, links]) => ({

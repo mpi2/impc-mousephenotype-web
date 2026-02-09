@@ -44,9 +44,9 @@ const ExternalLinks = () => {
     <Card id="external-links">
       <h2>External links</h2>
       <Container>
-        <div>
+        <div aria-label="External links table" role="table">
           {providers?.map((provider, index) => (
-            <div key={index} className="mb-4">
+            <div role="row" key={index} className="mb-4">
               <div className={styles.provider}>
                 <div className={styles.providerName}>
                   <b>{provider.providerName}</b>
