@@ -62,7 +62,7 @@ const EmbryoDataAvailabilityGrid = ({
         "MicroCT E14.5-E15.5",
         "MicroCT E18.5",
         "Mager Lab Pre E9.5",
-        "Tremblay Lab E8.5 - E10.5",
+        "Tremblay Lab E7.5-E10.5",
         "Vignettes",
       ].map((p) => ({
         x: p,
