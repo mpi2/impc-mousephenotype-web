@@ -1,6 +1,6 @@
 "use client";
 import { useEmbryoLandingQuery } from "@/hooks";
-import { Suspense, useMemo, useState, useEffect } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { SortType } from "@/models";
 import Link from "next/link";
 import Search from "@/components/Search";
@@ -22,6 +22,7 @@ import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid"
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import PublicationsList from "@/components/PublicationsList";
 import { DownloadData } from "@/components";
+import tremblayLabData from "./tremblayLab_embryo_heatmap_data.json";
 
 type SelectedLineGene = {
   mgiGeneAccessionId: string;
@@ -90,16 +91,21 @@ const EmbryoLandingPage = () => {
   };
 
   const fullAvailabilityGrid = useMemo(() => {
+    const getFullDataset = (initialData: Array<any>) => {
+      return initialData.concat(tremblayLabData);
+    };
     if (
       data?.secondaryViabilityData?.length &&
       data?.embryoDataAvailabilityGrid?.length
     ) {
       return displayGenesWithData
-        ? data.embryoDataAvailabilityGrid
+        ? getFullDataset(data.embryoDataAvailabilityGrid)
         : data.secondaryViabilityData
             .flatMap((genesByWOL) =>
               genesByWOL.genes.map((gene) => {
-                const availabilityData = data.embryoDataAvailabilityGrid.find(
+                const availabilityData = getFullDataset(
+                  data.embryoDataAvailabilityGrid,
+                ).find(
                   (data) => data.mgiGeneAccessionId === gene.mgiGeneAccessionId,
                 );
                 return !!availabilityData
