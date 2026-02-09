@@ -62,10 +62,11 @@ const EmbryoDataAvailabilityGrid = ({
         "MicroCT E14.5-E15.5",
         "MicroCT E18.5",
         "Mager Lab Pre E9.5",
+        "Tremblay Lab E8.5 - E10.5",
         "Vignettes",
       ].map((p) => ({
         x: p,
-        y: d.procedureNames.includes(p)
+        y: d.procedureNames?.includes(p)
           ? d.hasAutomatedAnalysis
             ? 2
             : 1
@@ -141,8 +142,10 @@ const EmbryoDataAvailabilityGrid = ({
       url = `/data/embryo/vignettes?gene=${cell.serieId}`;
     } else if (dataType === "LacZ") {
       url = `//www.mousephenotype.org/data/imageComparator?parameter_stable_id=IMPC_ELZ_064_001&acc=${geneAcc}`;
-    } else {
+    } else if (dataType === "Mager Lab Pre E9.5") {
       url = `//blogs.umass.edu/jmager/${cell.serieId}`;
+    } else if (dataType === "Tremblay Lab E8.5 - E10.5") {
+      url = `//websites.umass.edu/kdtkomp/${cell.serieId}`;
     }
     window.open(url, "_blank", "noreferrer");
   };
