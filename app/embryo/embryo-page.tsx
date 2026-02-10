@@ -22,7 +22,6 @@ import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid"
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import PublicationsList from "@/components/PublicationsList";
 import { DownloadData } from "@/components";
-import tremblayLabData from "./tremblayLab_embryo_heatmap_data.json";
 
 type SelectedLineGene = {
   mgiGeneAccessionId: string;
@@ -91,21 +90,16 @@ const EmbryoLandingPage = () => {
   };
 
   const fullAvailabilityGrid = useMemo(() => {
-    const getFullDataset = (initialData: Array<any>) => {
-      return initialData.concat(tremblayLabData);
-    };
     if (
       data?.secondaryViabilityData?.length &&
       data?.embryoDataAvailabilityGrid?.length
     ) {
       return displayGenesWithData
-        ? getFullDataset(data.embryoDataAvailabilityGrid)
+        ? data.embryoDataAvailabilityGrid
         : data.secondaryViabilityData
             .flatMap((genesByWOL) =>
               genesByWOL.genes.map((gene) => {
-                const availabilityData = getFullDataset(
-                  data.embryoDataAvailabilityGrid,
-                ).find(
+                data.embryoDataAvailabilityGrid.find(
                   (data) => data.mgiGeneAccessionId === gene.mgiGeneAccessionId,
                 );
                 return !!availabilityData
