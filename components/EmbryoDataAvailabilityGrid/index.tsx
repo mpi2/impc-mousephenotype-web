@@ -144,7 +144,7 @@ const EmbryoDataAvailabilityGrid = ({
       url = `//www.mousephenotype.org/data/imageComparator?parameter_stable_id=IMPC_ELZ_064_001&acc=${geneAcc}`;
     } else if (dataType === "Mager Lab Pre E9.5") {
       url = `//blogs.umass.edu/jmager/${cell.serieId}`;
-    } else if (dataType === "Tremblay Lab E8.5 - E10.5") {
+    } else if (dataType === "Tremblay Lab E7.5-E10.5") {
       url = `//websites.umass.edu/kdtkomp/${cell.serieId}`;
     }
     window.open(url, "_blank", "noreferrer");
