@@ -4,7 +4,6 @@ export function useFetchInterceptor() {
   const onChange = (val: boolean) => {
     // @ts-ignore
     (window["__APP_IS_READY"] as any) = !val;
-    console.log("app is ready", !val);
   };
 
   setUpFetchInterceptor(onChange);
