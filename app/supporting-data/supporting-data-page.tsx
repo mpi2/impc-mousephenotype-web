@@ -192,6 +192,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
           )}
           {!isError && (
             <h1
+              id="chart-name-page"
               className={classnames("mt-2", {
                 "mb-4": shouldDisplayPValueStatement,
                 "mb-0": !shouldDisplayPValueStatement,
