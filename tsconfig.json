@@ -26,6 +26,9 @@
       "@/api-service": [
         "api-service/index.ts"
       ],
+      "@/api-service/*": [
+        "api-service/*"
+      ],
       "@/components": [
         "components/index.ts"
       ],

@@ -1,11 +1,12 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import headerCss from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { Collapse } from "react-bootstrap";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { useFetchInterceptor } from "@/hooks/useFetchInterceptor";
 
 export interface MenuItem {
   name: string;
@@ -90,6 +91,10 @@ const Header = () => {
   });
   const [activeMenuId, setActiveMenu] = useState(-1);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const { appIsReady } = useFetchInterceptor();
+  }, []);
 
   return (
     <div className={headerCss.header}>
