@@ -24,7 +24,7 @@ export function middleware(request: NextRequest) {
     style-src 'self' 'unsafe-inline';
     connect-src 'self' *.mousephenotype.org *.usercentrics.eu *.google.com *.ebi.ac.uk *.google-analytics.com *.amazonaws.com *.gentar.org stats.g.doubleclick.net ${!isProd ? "localhost:8010 localhost:5000" : ""};
     img-src 'self' blob: data: *.usercentrics.eu *.ebi.ac.uk *.amazonaws.com *.google.co.uk;
-    frame-src *.usercentrics.eu monarchinitiative.org;
+    frame-src *.usercentrics.eu monarchinitiative.org ${!isProd ? "localhost:5173" : ""};
     font-src 'self';
     object-src 'none';
     base-uri 'self';
