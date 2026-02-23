@@ -1,4 +1,4 @@
-import { screen, waitFor, act } from "@testing-library/react";
+import { screen, waitFor, act, within } from "@testing-library/react";
 import GenePage from "@/app/genes/[pid]/gene-page";
 import { API_URL, renderWithClient } from "../../utils";
 import { testServer } from "../../../mocks/server";
@@ -211,7 +211,13 @@ describe("Gene page", () => {
     await act(async () => await new Promise(process.nextTick));
     await waitFor(async () => {
       const rows = await screen.findAllByRole("table");
-      return expect(rows.length).toEqual(6);
+      return expect(rows.length).toEqual(7);
+    });
+    const externalLinksTable = screen.getByRole("table", {
+      name: "External links table",
+    });
+    await waitFor(async () => {
+      expect(within(externalLinksTable).getAllByRole("row")).toHaveLength(2);
     });
     expect(container).toMatchSnapshot();
   });

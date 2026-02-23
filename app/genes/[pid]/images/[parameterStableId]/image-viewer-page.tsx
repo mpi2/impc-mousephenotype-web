@@ -175,10 +175,18 @@ type ImageViewerProps = {
   image: Image;
   name: string;
   hasAvailableImages: boolean;
+  isAltParameter: boolean;
+  isLoading: boolean;
 };
 
-const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
-  if (!image && hasAvailableImages) {
+const ImageViewer = ({
+  image,
+  name,
+  hasAvailableImages,
+  isAltParameter,
+  isLoading,
+}: ImageViewerProps) => {
+  if (isLoading) {
     return (
       <Skeleton
         containerClassName="flex-1"
@@ -206,7 +214,11 @@ const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
           <b>No image available</b>
         </span>
         <small>
-          <i>Please select another center from the top</i>
+          {isAltParameter ? (
+            <i>For alternative parameters, there are no images for wildtypes</i>
+          ) : (
+            <i>Please select another center from the top</i>
+          )}
         </small>
       </div>
     );
@@ -223,13 +235,17 @@ const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
             tooltipsPosition="left"
           />
           <TransformComponent>
-            <img
-              data-testid={`selected-image-${name}`}
-              key={image?.jpegUrl}
-              src={addTrailingSlash(image?.jpegUrl)}
-              style={{ width: "100%", display: "block" }}
-              alt=""
-            />
+            {!!image?.jpegUrl ? (
+              <img
+                data-testid={`selected-image-${name}`}
+                key={image?.jpegUrl}
+                src={addTrailingSlash(image?.jpegUrl)}
+                style={{ width: "100%", display: "block" }}
+                alt=""
+              />
+            ) : (
+              <Skeleton />
+            )}
           </TransformComponent>
         </div>
       )}
@@ -312,7 +328,9 @@ const ImagesCompare = ({
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
   const anatomyTerm = searchParams.get("anatomyTerm");
-  const { data: mutantImages } = useQuery<Array<GeneImageCollection>>({
+  const { data: mutantImages, isFetching: mutantImagesLoading } = useQuery<
+    Array<GeneImageCollection>
+  >({
     queryKey: ["genes", pid, "images", parameterStableId],
     queryFn: () =>
       fetchAPI(
@@ -322,15 +340,20 @@ const ImagesCompare = ({
     placeholderData: [],
   });
 
-  const { data: controlImagesRaw } = useQuery<Array<GeneImageCollection>>({
-    queryKey: ["genes", pid, "images", parameterStableId, "control"],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`,
-      ),
-    enabled: !!parameterStableId,
-    placeholderData: [],
-  });
+  const isALTParameter = useMemo(() => {
+    return parameterStableId.startsWith("ALT");
+  }, [parameterStableId]);
+
+  const { data: controlImagesRaw, isFetching: wildtypeImagesLoading } =
+    useQuery<Array<GeneImageCollection>>({
+      queryKey: ["genes", pid, "images", parameterStableId, "control"],
+      queryFn: () =>
+        fetchAPI(
+          `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`,
+        ),
+      enabled: !!parameterStableId,
+      placeholderData: [],
+    });
 
   const [selectedSex, setSelectedSex] = useState("both");
   const [selectedZyg, setSelectedZyg] = useState("both");
@@ -608,7 +631,8 @@ const ImagesCompare = ({
               <Col sm={6}>
                 <div className={styles.headerContainer}>
                   <h3 style={{ marginBottom: 0 }}>
-                    WT Images ({controlImages?.length})
+                    WT Images{" "}
+                    {!!controlImages?.length ? `(${controlImages.length})` : ""}
                   </h3>
                   <FilterBox
                     controlId="controlCenterFilter"
@@ -634,7 +658,11 @@ const ImagesCompare = ({
                     <ImageViewer
                       name="WT"
                       image={controlImages?.[selectedWTImage]}
-                      hasAvailableImages={controlImages?.length !== 0 || false}
+                      hasAvailableImages={
+                        !wildtypeImagesLoading && controlImages?.length === 0
+                      }
+                      isAltParameter={isALTParameter}
+                      isLoading={wildtypeImagesLoading}
                     />
                   </div>
                   <div className={styles.imageInfo}>
@@ -651,7 +679,10 @@ const ImagesCompare = ({
               <Col sm={6}>
                 <div className={styles.headerContainer}>
                   <h3 style={{ marginBottom: 0 }}>
-                    Mutant Images ({filteredMutantImages?.length})
+                    Mutant Images{" "}
+                    {!!filteredMutantImages?.length
+                      ? `(${filteredMutantImages.length})`
+                      : ""}
                   </h3>
                   <FilterBox
                     controlId="mutantCenterFilter"
@@ -680,6 +711,8 @@ const ImagesCompare = ({
                       hasAvailableImages={
                         filteredMutantImages?.length !== 0 || false
                       }
+                      isAltParameter={isALTParameter}
+                      isLoading={mutantImagesLoading}
                     />
                   </div>
                   <div className={styles.imageInfo}>

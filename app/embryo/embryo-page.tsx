@@ -1,6 +1,6 @@
 "use client";
 import { useEmbryoLandingQuery } from "@/hooks";
-import { Suspense, useMemo, useState, useEffect } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { SortType } from "@/models";
 import Link from "next/link";
 import Search from "@/components/Search";
@@ -99,7 +99,7 @@ const EmbryoLandingPage = () => {
         : data.secondaryViabilityData
             .flatMap((genesByWOL) =>
               genesByWOL.genes.map((gene) => {
-                const availabilityData = data.embryoDataAvailabilityGrid.find(
+                data.embryoDataAvailabilityGrid.find(
                   (data) => data.mgiGeneAccessionId === gene.mgiGeneAccessionId,
                 );
                 return !!availabilityData

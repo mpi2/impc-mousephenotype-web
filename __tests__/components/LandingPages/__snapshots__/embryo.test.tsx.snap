@@ -594,7 +594,7 @@ exports[`Embryo landing page renders correctly 1`] = `
               <div>
                 <span>
                   Viewing 
-                  730
+                  755
                    results
                 </span>
                 <div>
@@ -731,7 +731,7 @@ exports[`Embryo landing page renders correctly 1`] = `
                     <span
                       aria-hidden="true"
                     >
-                      30
+                      31
                     </span>
                   </button>
                 </li>

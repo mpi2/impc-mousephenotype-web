@@ -147,6 +147,7 @@ const PublicationsList = (props: PublicationListProps) => {
     data: publications,
     isError,
     isFetching,
+    error,
   } = useQuery({
     queryKey: [
       "publications",
@@ -187,29 +188,34 @@ const PublicationsList = (props: PublicationListProps) => {
     setDebouncedQuery(query);
     setPage(0);
   }, [query]);
+
+  useEffect(() => {
+    if (!error) return;
+    if (error === "No content") {
+      setPage(0);
+      setTotalItems(0);
+    }
+  }, [error]);
+
   const updatePage = (value: number) => {
     setPage(value);
   };
   const updatePageSize = (value: number) => {
     setPageSize(value);
   };
-
   return (
     <Container>
-      <Row>
+      <Row style={{ marginBottom: "1rem" }}>
         <Col xs={6}>
-          <p>
-            Showing {Math.min(pageSize, totalItems) * page + 1} to{" "}
-            {Math.min(pageSize, totalItems) * (page + 1)} of{" "}
-            {totalItems.toLocaleString()} entries
-          </p>
+          {totalItems > 0 && (
+            <p>
+              Showing {Math.min(pageSize, totalItems) * page + 1} to{" "}
+              {Math.min(pageSize, totalItems) * (page + 1)} of{" "}
+              {totalItems.toLocaleString()} entries
+            </p>
+          )}
         </Col>
       </Row>
-      {!!isError && (
-        <Alert variant="primary">
-          No publications found that use IMPC mice or data for the filters
-        </Alert>
-      )}
       <Pagination
         data={publications}
         totalItems={totalItems}
@@ -381,6 +387,11 @@ const PublicationsList = (props: PublicationListProps) => {
           </Table>
         )}
       </Pagination>
+      {!!isError && (
+        <Alert variant="primary">
+          No publications found that use IMPC mice or data for the filters
+        </Alert>
+      )}
     </Container>
   );
 };
