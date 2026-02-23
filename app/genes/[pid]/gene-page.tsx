@@ -26,6 +26,7 @@ import {
   GeneSummary,
 } from "@/models/gene";
 import { useParams } from "next/navigation";
+import DOMPurify from "isomorphic-dompurify";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
@@ -74,10 +75,10 @@ const GenePage = (props: GenePageProps) => {
 
   useEffect(() => {
     if (gene) {
-      const hash = window.location.hash;
+      const hash = DOMPurify.sanitize(window.location.hash);
       if (hash.length > 0) {
         setTimeout(() => {
-          document.querySelector(window.location.hash)?.scrollIntoView();
+          document.querySelector(hash)?.scrollIntoView();
         }, 500);
       }
     }
