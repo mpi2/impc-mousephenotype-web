@@ -1,0 +1,178 @@
+[
+  {
+    "id": "682df40d1f8dd0d0d6ecb76f",
+    "alleleAccessionId": "MGI:6277044",
+    "alleleName": "endonuclease-mediated mutation 1, Mouse Biology Program, UC Davis",
+    "alleleSymbol": "Tbx20<em1(IMPC)Mbp>",
+    "classificationTag": null,
+    "colonyId": "CR10372",
+    "dataType": "time_series",
+    "geneSymbol": "Tbx20",
+    "geneticBackground": "involves: C57BL/6NCrl",
+    "intermediatePhenotypes": [
+      {
+        "id": "MP:0001392",
+        "name": "abnormal motor capabilities/coordination/movement"
+      },
+      {
+        "id": "MP:0003491",
+        "name": "abnormal behavior"
+      },
+      {
+        "id": "MP:0004924",
+        "name": "abnormal voluntary movement"
+      },
+      {
+        "id": "MP:0002066",
+        "name": "hypoactivity"
+      },
+      {
+        "id": "MP:0031392",
+        "name": "abnormal locomotor behavior"
+      }
+    ],
+    "lifeStageAcc": "IMPCLS:0005",
+    "lifeStageName": "Early adult",
+    "metadataGroup": "a41f1a21bc519c78a116277740720f96",
+    "metadataValues": [
+      "Arena ID = 7|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T12:30:35-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 2|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T14:23:10-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 3|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T14:23:19-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 1|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T14:23:26-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 5|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T12:59:58-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 4|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2020-07-06T12:10:58-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 8|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T12:30:42-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 4|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T14:23:04-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 3|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2020-07-06T12:10:53-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 4|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T13:00:17-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 3|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T13:00:07-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 8|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2020-07-06T11:13:42-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 7|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2020-07-06T11:13:33-07:00|Type of analysis = Wide beam break",
+      "Arena ID = 6|Arena Material = Clear Plastic / Plexiglass|Arena Size = 44.5x44.5|Central zone surface area = 40|Color of arena = Transparent|Disinfectant = 10% Nolvasan Solution|Distance from light source: if direct illumination = 62|Equipment ID = 107|Equipment manufacturer = Columbus Instruments|Equipment model = Opto-Varimex 4|Experimenter ID = 0|Height of the wall = 20|Light intensity in the centre of the arena = 150-200|Number of animals per cage = 1|Periphery zone = 8|Software Version = Opto-Varimex AutoTrack 5.x|Start Time = 2019-06-03T13:00:25-07:00|Type of analysis = Wide beam break"
+    ],
+    "mgiGeneAccessionId": "MGI:1888496",
+    "parameterName": "Center resting time series",
+    "parameterStableId": "IMPC_OFD_045_001",
+    "parameterStableKey": 16680,
+    "phenotypeSex": null,
+    "phenotypingCentre": "UC Davis",
+    "pipelineName": "UCD Pipeline",
+    "pipelineStableId": "UCD_001",
+    "pipelineStableKey": 13,
+    "potentialPhenotypes": [
+      {
+        "id": "MP:0003313",
+        "name": "abnormal locomotor activation"
+      },
+      {
+        "id": "MP:0001402",
+        "name": "decreased locomotor activity"
+      },
+      {
+        "id": "MP:0001399",
+        "name": "hyperactivity"
+      }
+    ],
+    "procedureGroup": "IMPC_OFD",
+    "procedureName": "Open Field",
+    "procedureStableId": "IMPC_OFD_001",
+    "procedureStableKey": 500,
+    "productionCentre": "UC Davis",
+    "projectName": "DTCC",
+    "reportedEffectSize": null,
+    "reportedPValue": null,
+    "unit": {
+      "x": "minutes",
+      "y": "s"
+    },
+    "resourceFullName": "IMPC",
+    "resourceName": "IMPC",
+    "sex": null,
+    "zygosity": "heterozygote",
+    "significant": false,
+    "significantPhenotype": null,
+    "softWindowing": {
+      "bandwidth": null,
+      "doeNote": null,
+      "minObsRequired": null,
+      "numberOfDoe": null,
+      "peaks": null,
+      "shape": null,
+      "threshold": null,
+      "totalObsOrWeight": null
+    },
+    "statisticalMethod": {
+      "name": null,
+      "attributes": {
+        "femaleEffectSize": null,
+        "femaleKoEffectPValue": null,
+        "femaleKoEffectStderrEstimate": null,
+        "femaleKoParameterEstimate": null,
+        "femalePercentageChange": null,
+        "maleKoEffectPValue": null,
+        "maleKoEffectStderrEstimate": null,
+        "maleKoParameterEstimate": null,
+        "malePercentageChange": null,
+        "genotypeEffectPValue": null,
+        "genotypeEffectStderrEstimate": null,
+        "group1Genotype": null,
+        "group1ResidualsNormalityTest": null,
+        "group2Genotype": null,
+        "group2ResidualsNormalityTest": null,
+        "interactionEffectPValue": null,
+        "interactionSignificant": null,
+        "interceptEstimate": null,
+        "interceptEstimateStderrEstimate": null,
+        "maleEffectSize": null,
+        "sexEffectPValue": null,
+        "sexEffectParameterEstimate": null,
+        "sexEffectStderrEstimate": null,
+        "batchSignificant": null,
+        "varianceSignificant": null,
+        "femaleEffectSizeLowNormalVsHigh": null,
+        "femaleEffectSizeLowVsNormalHigh": null,
+        "femalePValueLowNormalVsHigh": null,
+        "femalePValueLowVsNormalHigh": null,
+        "maleEffectSizeLowNormalVsHigh": null,
+        "maleEffectSizeLowVsNormalHigh": null,
+        "malePValueLowNormalVsHigh": null,
+        "malePValueLowVsNormalHigh": null,
+        "genotypeEffectSizeLowNormalVsHigh": null,
+        "genotypeEffectSizeLowVsNormalHigh": null,
+        "genotypePValueLowNormalVsHigh": null,
+        "genotypePValueLowVsNormalHigh": null,
+        "weightEffectPValue": null,
+        "weightEffectParameterEstimate": null,
+        "weightEffectStderrEstimate": null
+      }
+    },
+    "datasetId": "0bb683babb4780836d0bee3c0afe1034",
+    "status": "NotProcessed",
+    "strainAccessionId": "MGI:2683688",
+    "strainName": "C57BL/6NCrl",
+    "summaryStatistics": {
+      "bothMutantCount": null,
+      "bothMutantMean": null,
+      "bothMutantSd": null,
+      "femaleControlCount": 5568,
+      "femaleControlMean": 0.285003591954023,
+      "femaleControlSd": 1.45698134751761,
+      "femaleMutantCount": 8,
+      "femaleMutantMean": 0.34375,
+      "femaleMutantSd": 1.27277636583154,
+      "maleControlCount": 5592,
+      "maleControlMean": 0.797639484978541,
+      "maleControlSd": 5.47542515255033,
+      "maleMutantCount": 6,
+      "maleMutantMean": 0.0333333333333333,
+      "maleMutantSd": 0.0761386987626881
+    },
+    "topLevelPhenotypes": [
+      {
+        "id": "MP:0005386",
+        "name": "behavior/neurological phenotype"
+      }
+    ],
+    "category": null
+  }
+]
