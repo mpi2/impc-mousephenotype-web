@@ -2,7 +2,7 @@ import { useQueryFlags } from "@/hooks";
 
 type Props = {
   table: "all-data" | "sig-phenotypes";
-  hoveringRef: "*" | "**" | "+" | null;
+  hoveringRef: "*" | "**" | "+" | undefined;
   hasDataRelatedToPWG: boolean;
 };
 

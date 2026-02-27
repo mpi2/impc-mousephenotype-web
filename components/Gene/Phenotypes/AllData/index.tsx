@@ -109,7 +109,9 @@ const AllData = (props: Props) => {
   const [selectedValues, setSelectedValues] = useState<SelectedValues>(
     initialSelectedValues,
   );
-  const [hoveringRef, setHoveringRef] = useState<"*" | "**" | "+" | null>(null);
+  const [hoveringRef, setHoveringRef] = useState<"*" | "**" | "+" | undefined>(
+    undefined,
+  );
 
   const updateSelectedValue = (
     key: keyof SelectedValues,
@@ -197,7 +199,7 @@ const AllData = (props: Props) => {
   };
 
   const onRefHover = (ref: "*" | "**" | "+", active: boolean) => {
-    const value = active ? ref : null;
+    const value = active ? ref : undefined;
     setHoveringRef(value);
   };
 

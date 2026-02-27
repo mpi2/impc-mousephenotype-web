@@ -22,11 +22,16 @@ import classNames from "classnames";
 import BodySystemIcon from "@/components/BodySystemIcon";
 import { formatBodySystems } from "@/utils";
 import { sortBy, uniq } from "lodash";
+import { GraphicalAnalysisDataItem } from "./types";
 
 type Props = {
   mgiGeneAccessionId: string;
   routerIsReady: boolean;
   chartIsVisible: boolean;
+};
+
+type ExtendedGeneStatisticalResult = GeneStatisticalResult & {
+  pValue: number;
 };
 
 const transformPValue = (value: number, significant: boolean) => {
@@ -38,30 +43,30 @@ const transformPValue = (value: number, significant: boolean) => {
   }
   return -Math.log10(value);
 };
-const getSignificants = (data: Array<GeneStatisticalResult>) => {
+const getSignificants = (data: Array<ExtendedGeneStatisticalResult>) => {
   return data.filter((item) => {
     const pValueThreshold = item.projectName === "PWG" ? 3 : 4;
     return -Math.log10(Number(item.pValue)) >= pValueThreshold;
   });
 };
 const processData = (
-  data: Array<GeneStatisticalResult>,
+  data: Array<ExtendedGeneStatisticalResult>,
   { type }: Cat,
   significantOnly: boolean,
-) => {
+): Array<GraphicalAnalysisDataItem> => {
   const { BODY_SYSTEMS, PROCEDURES } = cats;
   const significants = getSignificants(data);
-  let results: Array<GeneStatisticalResult> = data;
+  let results = data;
   let fieldsToSort: Array<string>;
   switch (type) {
     case BODY_SYSTEMS:
       fieldsToSort = ["topLevelPhenotypeList", "parameterName"];
       if (significantOnly) {
         const bodySystems = Array.from(
-          new Set(significants.map((x) => x.topLevelPhenotypeList[0])),
+          new Set(significants.map((x) => x.topLevelPhenotypeList?.[0] ?? "")),
         );
         results = data.filter((x) => {
-          return x.topLevelPhenotypeList.some((y) => bodySystems.includes(y));
+          return x.topLevelPhenotypeList?.some((y) => bodySystems.includes(y));
         });
       }
       break;
@@ -91,7 +96,7 @@ const GraphicalAnalysis = (props: Props) => {
   const { mgiGeneAccessionId, routerIsReady, chartIsVisible } = props;
   const gene = useContext(GeneContext);
   const { setAllelesStudiedLoading } = useContext(AllelesStudiedContext);
-  const [cat, setCat] = useState<Cat | null>({
+  const [cat, setCat] = useState<Cat>({
     type: cats.BODY_SYSTEMS,
   });
   const [significantOnly, setSignificantOnly] = useState<boolean>(false);
@@ -126,11 +131,12 @@ const GraphicalAnalysis = (props: Props) => {
     () =>
       filteredData
         .filter((x) => x.topLevelPhenotypes?.length)
-        .map((x, index) => ({
+        .map((x) => ({
           ...x,
           pValue: Number(x.pValue) || 0,
-          topLevelPhenotypeList: x.topLevelPhenotypes.map((y) => y.name),
-        })),
+          topLevelPhenotypeList:
+            x.topLevelPhenotypes?.map((y) => y.name ?? "") ?? [],
+        })) as Array<ExtendedGeneStatisticalResult>,
     [filteredData],
   );
 
@@ -144,7 +150,7 @@ const GraphicalAnalysis = (props: Props) => {
     () =>
       isByProcedure
         ? uniq(processed.map((x) => x.procedureName))
-        : uniq(processed.map((x) => x.topLevelPhenotypeList[0])),
+        : uniq(processed.map((x) => x.topLevelPhenotypeList?.[0] ?? "")),
     [processed, isByProcedure],
   );
 
@@ -197,7 +203,6 @@ const GraphicalAnalysis = (props: Props) => {
           <Form.Select
             style={{ display: "inline-block", width: 280, marginRight: "2rem" }}
             aria-label="Group by"
-            // value={cat.type}
             defaultValue={cat.type}
             id="groupBy"
             className="bg-white"
@@ -205,8 +210,8 @@ const GraphicalAnalysis = (props: Props) => {
               setCat({ type: el.target.value as CatType });
             }}
           >
-            {options.map(({ label, category }, index) => (
-              <option key={category} value={category} key={index}>
+            {options.map(({ label, category }) => (
+              <option key={category} value={category}>
                 {label}
               </option>
             ))}
@@ -230,7 +235,7 @@ const GraphicalAnalysis = (props: Props) => {
       ) : (
         <div>
           <div className={classNames(styles.labels, styles.icons)}>
-            {yAxisLabels.filter(Boolean).map((item, index) => {
+            {yAxisLabels.filter(Boolean).map((item) => {
               const chartLabel = isByProcedure
                 ? procedureColorMap[item]
                 : systemColorMap[item];

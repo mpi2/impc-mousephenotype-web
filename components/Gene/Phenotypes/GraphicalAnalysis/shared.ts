@@ -26,7 +26,7 @@ export const options = [
 
 export type Cat = { type: CatType; meta?: any };
 
-type ChartLabel = { color: string, shape: string };
+type ChartLabel = { color: string; shape: string };
 export type ChartLabels = Record<string, ChartLabel>;
 export const colorArray = [
   "#FF6633",
@@ -87,14 +87,14 @@ export const getProcedureColorMap = (labels: Array<string>): ChartLabels => {
     const firstProd = tempLabels.shift();
     const secondProd = tempLabels.shift();
     if (firstProd) {
-      result[firstProd] = { color, shape: 'circle' };
+      result[firstProd] = { color, shape: "circle" };
     }
     if (secondProd) {
-      result[secondProd] = { color, shape: 'diamond' };
+      result[secondProd] = { color, shape: "diamond" };
     }
   });
   return result;
-}
+};
 allBodySystems.forEach((system, index) => {
-  systemColorMap[system] = { color: colorArray[index], shape: undefined };
+  systemColorMap[system] = { color: colorArray[index], shape: "" };
 });

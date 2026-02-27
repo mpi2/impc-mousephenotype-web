@@ -27,12 +27,22 @@ const SignificantPhenotypes = ({
   hasDataRelatedToPWG: boolean;
 }) => {
   const gene = useContext(GeneContext);
-  const [query, setQuery] = useState(undefined);
-  const [selectedAllele, setSelectedAllele] = useState<string>(undefined);
-  const [selectedSystem, setSelectedSystem] = useState<string>(undefined);
-  const [selectedLifeStage, setSelectedLifeStage] = useState<string>(undefined);
-  const [selectedZygosity, setSelectedZygosity] = useState<string>(undefined);
-  const [hoveringRef, setHoveringRef] = useState<"*" | "**">(undefined);
+  const [query, setQuery] = useState<string | undefined>(undefined);
+  const [selectedAllele, setSelectedAllele] = useState<string | undefined>(
+    undefined,
+  );
+  const [selectedSystem, setSelectedSystem] = useState<string | undefined>(
+    undefined,
+  );
+  const [selectedLifeStage, setSelectedLifeStage] = useState<
+    string | undefined
+  >(undefined);
+  const [selectedZygosity, setSelectedZygosity] = useState<string | undefined>(
+    undefined,
+  );
+  const [hoveringRef, setHoveringRef] = useState<"*" | "**" | undefined>(
+    undefined,
+  );
   const defaultSort: SortType = useMemo(() => ["phenotypeName", "asc"], []);
 
   useEffect(() => {
@@ -52,7 +62,9 @@ const SignificantPhenotypes = ({
     phenotypeData.map((phenotype) => phenotype.alleleSymbol),
   );
   const systems = uniq(
-    phenotypeData.flatMap((p) => p.topLevelPhenotypes?.map((tl) => tl.name)),
+    phenotypeData.flatMap(
+      (p) => p.topLevelPhenotypes?.map((tl) => tl.name ?? "") ?? [],
+    ),
   );
   const lifeStages = uniq(phenotypeData.map((p) => p.lifeStageName));
   const zygosities = uniq(phenotypeData.map((p) => p.zygosity));
@@ -95,7 +107,7 @@ const SignificantPhenotypes = ({
   };
 
   const onRefHover = (ref: "*" | "**", active: boolean) => {
-    const value = active ? ref : null;
+    const value = active ? ref : undefined;
     setHoveringRef(value);
   };
 

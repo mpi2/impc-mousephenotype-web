@@ -2,7 +2,7 @@ import { GenePhenotypeHits } from "@/models/gene";
 import { Alert, Form } from "react-bootstrap";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { GeneContext } from "@/contexts";
-import { UpSetJS, extractCombinations } from "@upsetjs/react";
+import { UpSetJS, extractCombinations, ISetLike } from "@upsetjs/react";
 import styles from "./styles.module.scss";
 import { ISetCombinations } from "@upsetjs/model";
 import { sortBy, uniq } from "lodash";
@@ -16,14 +16,16 @@ type Allele = {
 };
 
 type Filters = {
-  selectedZyg: string;
-  selectedLifeSt: string;
-  selectedSex: string;
+  selectedZyg: string | undefined;
+  selectedLifeSt: string | undefined;
+  selectedSex: string | undefined;
 };
+
+type Selection = ISetLike<any> | null;
 
 const dataMatchesFilters = (
   phenotype: GenePhenotypeHits,
-  filters: Filters
+  filters: Filters,
 ): boolean => {
   const { selectedZyg, selectedLifeSt, selectedSex } = filters;
   return (
@@ -35,7 +37,7 @@ const dataMatchesFilters = (
 };
 const getAlleleDataObject = (
   phenotypeData: Array<GenePhenotypeHits>,
-  filters: Filters
+  filters: Filters,
 ) => {
   const result: Record<string, Allele> = {};
   phenotypeData?.forEach((phenotype) => {
@@ -47,12 +49,16 @@ const getAlleleDataObject = (
           topLevelPhenotypes: new Set(),
         };
       }
-      result[phenotype.alleleSymbol].significantPhenotypes.add(
-        phenotype.phenotypeName
-      );
-      result[phenotype.alleleSymbol].topLevelPhenotypes.add(
-        phenotype.topLevelPhenotypeName
-      );
+      if (phenotype.phenotypeName) {
+        result[phenotype.alleleSymbol].significantPhenotypes.add(
+          phenotype.phenotypeName,
+        );
+      }
+      if (phenotype.topLevelPhenotypeName) {
+        result[phenotype.alleleSymbol].topLevelPhenotypes.add(
+          phenotype.topLevelPhenotypeName,
+        );
+      }
       result[phenotype.alleleSymbol].zygosities.add(phenotype.zygosity);
     }
   });
@@ -61,7 +67,7 @@ const getAlleleDataObject = (
 const generateSets = (
   alleleData: Record<string, Allele>,
   field: keyof Allele,
-  selectedAlleles: Array<string>
+  selectedAlleles: Array<string>,
 ) => {
   const allelesByValues: Record<string, { name: string; sets: Array<string> }> =
     {};
@@ -92,28 +98,34 @@ const AllelePhenotypeDiagram = ({
 }) => {
   const gene = useContext(GeneContext);
   const [field, setField] = useState<keyof Allele>("significantPhenotypes");
-  const [selection, setSelection] = useState(null);
-  const [clickSelection, setClickSelection] = useState(null);
+  const [selection, setSelection] = useState<Selection | undefined>(undefined);
+  const [clickSelection, setClickSelection] = useState<Selection | undefined>(
+    undefined,
+  );
   const [isOpen, setIsOpen] = useState(false);
   const { ref } = useIntersectionObserver({
     threshold: 0.7,
     // if user scrolls away from component and drawer is open, close it
     onChange: (isIntersecting, entry) => {
-      if (isIntersecting === false && isOpen) {
+      if (!isIntersecting && isOpen) {
         setIsOpen(false);
       }
     },
   });
-  const [selectedAlleles, setSelectedAlleles] = useState([]);
+  const [selectedAlleles, setSelectedAlleles] = useState<Array<string>>([]);
   const [availableZyg, setAvailableZyg] = useState<Array<string>>([]);
   const [availableLifeSt, setAvailableLifeSt] = useState<Array<string>>([]);
   const [availableSexes, setAvailableSexes] = useState<Array<string>>([]);
-  const [selectedZyg, setSelectedZyg] = useState<string>(undefined);
-  const [selectedLifeSt, setSelectedLifeSt] = useState<string>(undefined);
-  const [selectedSex, setSelectedSexes] = useState<string>(undefined);
+  const [selectedZyg, setSelectedZyg] = useState<string | undefined>(undefined);
+  const [selectedLifeSt, setSelectedLifeSt] = useState<string | undefined>(
+    undefined,
+  );
+  const [selectedSex, setSelectedSexes] = useState<string | undefined>(
+    undefined,
+  );
   const updateSelectedField = (field: keyof Allele) => {
-    setClickSelection(null);
-    setSelection(null);
+    setClickSelection(undefined);
+    setSelection(undefined);
     setField(field);
   };
 
@@ -143,14 +155,14 @@ const AllelePhenotypeDiagram = ({
     if (phenotypeData?.length) {
       const zygosities = uniq(phenotypeData.map((p) => p.zygosity));
       const lifeStages = sortBy(
-        uniq(phenotypeData.map((p) => p.lifeStageName))
+        uniq(phenotypeData.map((p) => p.lifeStageName)),
       );
       const sexes = sortBy(
         uniq(
           phenotypeData.map((p) =>
-            p.sex === "not_considered" ? "combined" : p.sex
-          )
-        )
+            p.sex === "not_considered" ? "combined" : p.sex,
+          ),
+        ),
       );
       setAvailableZyg(zygosities);
       setAvailableLifeSt(lifeStages);
@@ -252,8 +264,8 @@ const AllelePhenotypeDiagram = ({
           width={1200}
           height={400}
           selection={selection}
-          onHover={setSelection}
-          onClick={setClickSelection}
+          onHover={(selection) => setSelection(selection)}
+          onClick={(selection) => setClickSelection(selection)}
           widthRatios={[0, 0.2]}
           setLabelAlignment="right"
           combinationName="Number of Phenotypes"

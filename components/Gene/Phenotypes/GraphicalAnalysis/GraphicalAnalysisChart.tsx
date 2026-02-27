@@ -20,6 +20,7 @@ import { groupBy } from "lodash";
 import chroma from "chroma-js";
 import { GeneStatisticalResult } from "@/models/gene";
 import { LinearGradient } from "@visx/gradient";
+import { GraphicalAnalysisDataItem } from "@/components/Gene/Phenotypes/GraphicalAnalysis/types";
 
 const BrushHandle = ({ y, width, isBrushActive }: BrushHandleRenderProps) => {
   if (!isBrushActive) {
@@ -84,7 +85,7 @@ const TooltipContent = ({ statResult }: { statResult: any }) => {
 };
 
 type Props = {
-  data: Array<GeneStatisticalResult>;
+  data: Array<GraphicalAnalysisDataItem>;
   width: number;
   height: number;
   isByProcedure: boolean;
@@ -150,7 +151,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
 
     const xScale = useMemo(() => {
       // use whole data collection - avoid threshold line position changes
-      const [minDomain, maxDomain] = extent(data, (d) => d.chartValue);
+      const [minDomain = 0, maxDomain = 15] = extent(data, (d) => d.chartValue);
       // add 25% padding for space between most significant data and brush control
       const domain = [minDomain, maxDomain * 1.15];
       return scaleLinear<number>({
@@ -168,14 +169,16 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
       [width, xMax],
     );
 
-    const yScale = useMemo(
-      () =>
-        scaleLinear<number>({
-          range: [40, yMax],
-          domain: extent(filteredData, (d) => d.arrPos),
-        }),
-      [height, filteredData, category],
-    );
+    const yScale = useMemo(() => {
+      const [minDomain = 0, maxDomain = 100] = extent(
+        filteredData,
+        (d) => d.arrPos,
+      );
+      return scaleLinear<number>({
+        range: [40, yMax],
+        domain: [minDomain, maxDomain],
+      });
+    }, [height, filteredData, category]);
 
     const brushYScale = useMemo(
       () =>
@@ -273,7 +276,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
                 : GlyphDiamond;
             const isMatchingTooltip = isByProcedure
               ? tooltipData?.statResult.procedureName === item
-              : tooltipData?.statResult.topLevelPhenotypeList.includes(item);
+              : tooltipData?.statResult.topLevelPhenotypeList?.includes(item);
             const fillColor =
               !tooltipData || isMatchingTooltip
                 ? chartLabel.color
