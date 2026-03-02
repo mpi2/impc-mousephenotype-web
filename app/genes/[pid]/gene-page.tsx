@@ -16,15 +16,7 @@ import {
 import { useEffect, useState } from "react";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
-import {
-  GeneDisease,
-  GeneExpression,
-  GeneHistopathology,
-  GeneImage,
-  GeneOrder,
-  GenePhenotypeHits,
-  GeneSummary,
-} from "@/models/gene";
+import { GeneSummary } from "@/models/gene";
 import { useParams } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify";
 
@@ -32,24 +24,10 @@ const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 type GenePageProps = {
   gene: GeneSummary;
-  significantPhenotypes: Array<GenePhenotypeHits>;
-  orderData: Array<GeneOrder>;
-  expressionData: Array<GeneExpression>;
-  imageData: Array<GeneImage>;
-  histopathologyData: Array<GeneHistopathology>;
-  humanDiseasesData: Array<GeneDisease>;
 };
 
 const GenePage = (props: GenePageProps) => {
-  const {
-    gene: geneFromServer,
-    significantPhenotypes: sigPhenotypesFromServer,
-    orderData: orderDataFromServer,
-    expressionData: expressionDataFromServer,
-    imageData: imageDataFromServer,
-    histopathologyData: histopathologyDataFromServer,
-    humanDiseasesData: associatedDiseasesDataFromServer,
-  } = props;
+  const { gene: geneFromServer } = props;
   const params = useParams<{ pid: string }>();
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
   const [numAllelesAvailable, setNumAllelesAvailable] = useState(-1);
@@ -107,18 +85,17 @@ const GenePage = (props: GenePageProps) => {
         <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
           <Search />
           <Container className="page">
-            <Summary numOfAlleles={orderDataFromServer?.length ?? 0} />
-            <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
-            <Expressions initialData={expressionDataFromServer} />
-            <Images initialData={imageDataFromServer} />
-            <HumanDiseases initialData={associatedDiseasesDataFromServer} />
-            <Histopathology initialData={histopathologyDataFromServer} />
+            <Summary />
+            <Phenotypes />
+            <Expressions />
+            <Images />
+            <HumanDiseases />
+            <Histopathology />
             <Publications />
             <ExternalLinks />
             <Order
               allelesStudied={allelesStudied}
               allelesStudiedLoading={allelesStudiedLoading}
-              orderDataFromServer={orderDataFromServer}
             />
             <script
               type="application/ld+json"

@@ -13,7 +13,6 @@ export const useGeneExpressionQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
   sortOptions: string,
-  initialData: Array<GeneExpression>,
 ) => {
   return useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "expression"],
@@ -28,7 +27,11 @@ export const useGeneExpressionQuery = (
         wtExpressionRate: getExpressionRate(d.controlCounts),
       }));
       const [field, order] = sortOptions.split(";");
-      return orderBy(processed, field, order as "asc" | "desc");
+      return orderBy(
+        processed,
+        field,
+        order as "asc" | "desc",
+      ) as Array<GeneExpression>;
     },
     enabled: routerIsReady,
     placeholderData: [],

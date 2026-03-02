@@ -8,20 +8,15 @@ import { ExpressionCell, ImagesCell } from "./custom-cells";
 import { Card, DownloadData, SectionHeader } from "@/components";
 import { SortType } from "@/models";
 
-type ExpressionProps = {
-  initialData: Array<GeneExpression>;
-};
-
-const Expressions = ({ initialData }: ExpressionProps) => {
+const Expressions = () => {
   const gene = useContext(GeneContext);
-  const [tab, setTab] = useState("adultExpressions");
-  const [sortOptions, setSortOptions] = useState<string>("");
+  const [tab, setTab] = useState<string | null>("adultExpressions");
+  const [sortOptions] = useState<string>("");
   const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
-  const { isLoading, isError, data, error } = useGeneExpressionQuery(
+  const { isLoading, data, error } = useGeneExpressionQuery(
     gene.mgiGeneAccessionId,
     !!gene.mgiGeneAccessionId,
     sortOptions,
-    initialData,
   );
 
   const adultData = data?.filter((x) => x.lacZLifestage === "adult") ?? [];
@@ -139,7 +134,7 @@ const Expressions = ({ initialData }: ExpressionProps) => {
                   key: "mutantCounts",
                   label: "Mutant Expression Rate",
                   getValueFn: (item) => {
-                    const expressionRate = item.expressionRate;
+                    const expressionRate = item.expressionRate ?? 0;
                     const totalCounts =
                       item.mutantCounts.expression +
                       item.mutantCounts.noExpression;
@@ -152,7 +147,7 @@ const Expressions = ({ initialData }: ExpressionProps) => {
                   key: "controlCounts",
                   label: "Background staining in controls (WT)",
                   getValueFn: (item) => {
-                    const expressionRate = item.wtExpressionRate;
+                    const expressionRate = item.wtExpressionRate ?? 0;
                     const totalCounts =
                       item.controlCounts.expression +
                       item.controlCounts.noExpression;

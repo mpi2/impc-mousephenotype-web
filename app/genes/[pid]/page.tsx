@@ -27,12 +27,6 @@ async function getGeneSummary(mgiGeneAccessionId: string) {
 
   return {
     gene: geneData,
-    significantPhenotypes: null,
-    orderData: null,
-    expressionData: null,
-    imageData: null,
-    histopathologyData: null,
-    humanDiseasesData: null,
   };
 }
 

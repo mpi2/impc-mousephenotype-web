@@ -47,10 +47,7 @@ const CollectionItem = ({
     </span>
   );
 
-type SummaryProps = {
-  numOfAlleles: number;
-};
-const Summary = ({ numOfAlleles }: SummaryProps) => {
+const Summary = () => {
   const gene = useContext(GeneContext);
   const { numAllelesAvailable } = useContext(AllelesStudiedContext);
   const SYNONYMS_COUNT = 2;
@@ -66,7 +63,7 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
   const displaySynonymsInTooltip = () => {
     return gene.synonyms
       .slice(SYNONYMS_COUNT, gene.synonyms.length)
-      .map((s, i) => <li key={s}>{s}</li>);
+      .map((s) => <li key={s}>{s}</li>);
   };
 
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);

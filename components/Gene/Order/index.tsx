@@ -22,14 +22,9 @@ import { SortType } from "@/models";
 type OrderProps = {
   allelesStudied: Array<string>;
   allelesStudiedLoading: boolean;
-  orderDataFromServer: Array<GeneOrder>;
 };
 
-const Order = ({
-  allelesStudied,
-  allelesStudiedLoading,
-  orderDataFromServer,
-}: OrderProps) => {
+const Order = ({ allelesStudied, allelesStudiedLoading }: OrderProps) => {
   const gene = useContext(GeneContext);
   const { setNumAllelesAvailable } = useContext(AllelesStudiedContext);
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
@@ -47,8 +42,7 @@ const Order = ({
       "ES Cell": "esCell",
       "targeting vector": "targetingVector",
     };
-    const encodedAllele = allele;
-    return `/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
+    return `/alleles/${gene.mgiGeneAccessionId}/${allele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
   };
 
   const sorted = useMemo(() => {

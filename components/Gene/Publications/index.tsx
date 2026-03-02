@@ -42,11 +42,16 @@ const AllelesCell = ({ pub }: { pub: Publication }) => {
   );
 };
 
+type PublicationResponse = {
+  content: Array<Publication>;
+  totalElements: number;
+};
+
 const Publications = () => {
   const gene = useContext(GeneContext);
-  const [page, setPage] = useState(0);
+  const [page] = useState(0);
   let totalItems = 0;
-  const [sorted, setSorted] = useState<any[]>([]);
+  const [sorted, setSorted] = useState<Array<Publication>>([]);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", gene.mgiGeneAccessionId, "publication", page],
     queryFn: () =>
@@ -54,7 +59,7 @@ const Publications = () => {
         `/api/v1/genes/${gene.mgiGeneAccessionId}/publication?page=${page}`,
       ),
     enabled: !!gene.mgiGeneAccessionId,
-    select: (response) => {
+    select: (response: PublicationResponse) => {
       totalItems = response.totalElements;
       return response.content as Array<Publication>;
     },

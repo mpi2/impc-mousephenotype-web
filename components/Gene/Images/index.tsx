@@ -20,7 +20,6 @@ interface ImageProps {
   parameterStableId: string;
   image: string;
   length: number;
-  fileType: string;
   isSpecialFormat: boolean;
 }
 
@@ -42,7 +41,6 @@ const Image = ({
   parameterStableId,
   image,
   length,
-  fileType,
   isSpecialFormat,
 }: ImageProps) => {
   const urlSegment = isSpecialFormat ? "download-images" : "images";
@@ -85,11 +83,7 @@ const Image = ({
   );
 };
 
-type ImagesProps = {
-  initialData: Array<GeneImage>;
-};
-
-const Images = ({ initialData }: ImagesProps) => {
+const Images = () => {
   const gene = useContext(GeneContext);
   const { isLoading, isError, data } = useQuery<Array<GeneImage>>({
     queryKey: ["genes", gene.mgiGeneAccessionId, "images"],
@@ -152,7 +146,6 @@ const Images = ({ initialData }: ImagesProps) => {
                 parameterStableId={group[0].parameterStableId}
                 image={group[0].thumbnailUrl}
                 length={group[0].count}
-                fileType={group[0].fileType}
                 isSpecialFormat={group[0].isSpecialFormat}
               />
             </Col>

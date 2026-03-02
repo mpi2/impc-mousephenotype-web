@@ -150,7 +150,7 @@ const PhenoGridEl = ({ rowDiseasePhenotypes, data }: PhenoGridElProps) => {
     }
 
     const handleMessage = (event: MessageEvent) => {
-      const { width, height } = event.data;
+      const { width } = event.data;
       if (!iframe) return;
 
       // Set the iframe to fill its container
@@ -281,11 +281,7 @@ const Row = ({ rowData, data, isLoading }: RowProps) => {
   );
 };
 
-type HumanDiseasesProps = {
-  initialData: Array<GeneDisease>;
-};
-
-const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
+const HumanDiseases = () => {
   const gene = useContext(GeneContext);
   const defaultSort: SortType = useMemo(() => ["phenodigmScore", "desc"], []);
   const [sort, setSort] = useState<SortType>(defaultSort);
