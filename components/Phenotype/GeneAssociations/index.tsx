@@ -43,14 +43,15 @@ const PhenotypingCentreCell = <T extends PhenotypeGenotypes>(
 const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(
   props: TableCellProps<T>,
 ) => {
-  const fullAllele = get(props.value, props.field) as string;
+  const field = props.field!;
+  const fullAllele = get(props.value, field) as string;
   const allele = formatAlleleSymbol(fullAllele);
   return (
     <span style={{ lineHeight: 1.5 }}>
       <small>
         <Link
           className="link"
-          href={`/genes/${props.value.mgiGeneAccessionId}`}
+          href={`/genes/${props?.value?.mgiGeneAccessionId}`}
         >
           <i>{allele[0]}</i>
         </Link>
@@ -82,22 +83,17 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
   );
 };
 
-type AssociationsProps = {
-  initialData: Array<PhenotypeGenotypes>;
-};
-
-const Associations = ({ initialData }: AssociationsProps) => {
+const Associations = () => {
   const phenotype = useContext(PhenotypeContext);
   const [query, setQuery] = useState("");
   const [selectedZygosity, setSelectedZygosity] = useState("");
   const [selectedLifeStageName, setSelectedLifeStageName] = useState("");
-  const [sortOptions, setSortOptions] = useState<string>("");
+  const [sortOptions] = useState<string>("");
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const { data, isFetching, isError } = usePhenotypeGeneAssociationsQuery(
     phenotype?.phenotypeId,
     !!phenotype,
     sortOptions,
-    initialData,
   );
 
   const { availableZygosities, availableLifestages } = useMemo(() => {
@@ -220,34 +216,38 @@ const Associations = ({ initialData }: AssociationsProps) => {
           </>
         }
         additionalBottomControls={
-          <DownloadData<PhenotypeGenotypes>
-            data={data}
-            fileName={`${phenotype?.phenotypeName}-associations`}
-            fields={[
-              {
-                key: "alleleSymbol",
-                label: "Gene",
-                getValueFn: (item) => item?.alleleSymbol.split("<")[0],
-              },
-              {
-                key: "alleleSymbol",
-                label: "Allele",
-                getValueFn: (item) =>
-                  item?.alleleSymbol.split("<")[1].slice(0, -1),
-              },
-              { key: "phenotypeName", label: "Phenotype" },
-              { key: "zygosity", label: "Zygosity" },
-              { key: "sex", label: "Sex" },
-              { key: "lifeStageName", label: "Life stage" },
-              { key: "parameterName", label: "Parameter" },
-              { key: "phenotypingCentre", label: "Phenotyping center" },
-              {
-                key: "pValue",
-                label: "Most significant P-Value",
-                getValueFn: (item) => item.pValue?.toString(10) || "1",
-              },
-            ]}
-          />
+          <>
+            {!!data && (
+              <DownloadData<PhenotypeGenotypes>
+                data={data}
+                fileName={`${phenotype?.phenotypeName}-associations`}
+                fields={[
+                  {
+                    key: "alleleSymbol",
+                    label: "Gene",
+                    getValueFn: (item) => item?.alleleSymbol.split("<")[0],
+                  },
+                  {
+                    key: "alleleSymbol",
+                    label: "Allele",
+                    getValueFn: (item) =>
+                      item?.alleleSymbol.split("<")[1].slice(0, -1),
+                  },
+                  { key: "phenotypeName", label: "Phenotype" },
+                  { key: "zygosity", label: "Zygosity" },
+                  { key: "sex", label: "Sex" },
+                  { key: "lifeStageName", label: "Life stage" },
+                  { key: "parameterName", label: "Parameter" },
+                  { key: "phenotypingCentre", label: "Phenotyping center" },
+                  {
+                    key: "pValue",
+                    label: "Most significant P-Value",
+                    getValueFn: (item) => item.pValue?.toString(10) || "1",
+                  },
+                ]}
+              />
+            )}
+          </>
         }
         columns={[
           {

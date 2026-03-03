@@ -27,13 +27,7 @@ type PageParams = Promise<{
 export default async function Page({ params }: { params: PageParams }) {
   const phenotypeId = decodeURIComponent((await params).id);
   const phenotypeData = await getPhenotypeSummary(phenotypeId);
-  return (
-    <PhenotypePage
-      phenotypeId={phenotypeId}
-      phenotype={phenotypeData}
-      phenotypeHits={[]}
-    />
-  );
+  return <PhenotypePage phenotypeId={phenotypeId} phenotype={phenotypeData} />;
 }
 
 export async function generateMetadata({

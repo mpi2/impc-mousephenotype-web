@@ -14,7 +14,7 @@ const Summary = ({ phenotype }: Props) => {
   const SYNONYMS_COUNT = 2;
 
   const getNoTotalGenes = () => {
-    if (!phenotype) return null;
+    if (!phenotype) return 0;
     return phenotype.significantGenes + phenotype.notSignificantGenes;
   };
 

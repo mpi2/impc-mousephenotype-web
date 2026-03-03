@@ -20,7 +20,6 @@ const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 type PhenotypePageProps = {
   phenotypeId: string;
   phenotype: PhenotypeSummary;
-  phenotypeHits: Array<PhenotypeGenotypes>;
 };
 
 const sortAndUniqPhenotypeProcedures = (
@@ -33,17 +32,9 @@ const sortAndUniqPhenotypeProcedures = (
 });
 
 const Phenotype = (props: PhenotypePageProps) => {
-  const {
-    phenotype: phenotypeFromServer,
-    phenotypeHits: phenotypeHitsFromServer,
-    phenotypeId,
-  } = props;
+  const { phenotype: phenotypeFromServer, phenotypeId } = props;
 
-  const {
-    data: phenotype,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: phenotype } = useQuery({
     queryKey: ["phenotype", phenotypeId, "summary"],
     queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
     enabled: !!phenotypeId && !phenotypeFromServer,
@@ -85,7 +76,7 @@ const Phenotype = (props: PhenotypePageProps) => {
         <Container className="page">
           <Summary {...{ phenotype: phenotypeData }} />
           <Card id="associations-table">
-            <PhenotypeGeneAssociations initialData={phenotypeHitsFromServer} />
+            <PhenotypeGeneAssociations />
           </Card>
           <Card>
             <h2>

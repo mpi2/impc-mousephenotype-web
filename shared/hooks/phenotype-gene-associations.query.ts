@@ -9,7 +9,7 @@ export const processGenotypeHitsByPhenotype = (
 ) => {
   const groups: Record<string, PhenotypeGenotypes> = data.reduce((acc, d) => {
     const {
-      phenotype: { id, name },
+      phenotype: { id },
       alleleAccessionId,
       zygosity,
       sex,
@@ -47,7 +47,6 @@ export const usePhenotypeGeneAssociationsQuery = (
   phenotypeId: string,
   routerIsReady: boolean,
   sortOptions: string,
-  initialData: Array<PhenotypeGenotypes>,
 ) => {
   return useQuery({
     queryKey: ["phenotype", phenotypeId, "genotype-hits"],
