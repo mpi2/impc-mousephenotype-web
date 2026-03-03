@@ -78,7 +78,7 @@ const PRODUCTS_TRACKS = {
 const optionalTracks = {
   GENCODEFull: {
     name: "GENCODE M38 (complete)",
-    url: `${GENOME_BROWSER_DATA_URL}/gencode.VM38.bb`,
+    url: `${GENOME_BROWSER_DATA_URL}/gencode.vM38.bb`,
     indexed: false,
     searchable: true,
     searchableFields: [
@@ -96,7 +96,7 @@ const optionalTracks = {
   },
   GENCODEBasic: {
     name: "GENCODE M38 basic annotations",
-    url: `${GENOME_BROWSER_DATA_URL}/gencode.VM38.basic.bb`,
+    url: `${GENOME_BROWSER_DATA_URL}/gencode.vM38.basic.bb`,
     indexed: false,
     searchable: true,
     searchableFields: [
