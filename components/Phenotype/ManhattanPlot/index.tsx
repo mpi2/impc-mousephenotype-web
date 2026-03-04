@@ -19,47 +19,16 @@ import { PhenotypeStatsResults } from "@/models/phenotype";
 import { formatPValue } from "@/utils";
 import Link from "next/link";
 import { Alert } from "react-bootstrap";
+import {
+  validChromosomes,
+  clone,
+  getChromosome,
+  transformPValue,
+} from "./utils";
+import { Point, TooltipData, ChromosomeDataPoint, Ticks } from "./types";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
-type ChromosomeDataPoint = {
-  chrName: string;
-  markerSymbol: string;
-  mgiGeneAccessionId: string;
-  reportedPValue: number;
-  seqRegionStart: number;
-  seqRegionEnd: number;
-  significant: boolean;
-  // fields created by FE
-  pos?: number;
-};
-
-type ChartChromosome = {
-  x: number;
-  y: number;
-  geneSymbol: string;
-  pValue: number;
-  mgiGeneAccessionId: string;
-  chromosome: string;
-  significant: boolean;
-};
-
-type TooltipData = {
-  chromosome: string;
-  genes: Array<ChartChromosome>;
-};
-
-type Point = { x: number; y: number; geneList: string };
-
-const clone = (obj) => JSON.parse(JSON.stringify(obj));
-
-const transformPValue = (value: number, significant: boolean) => {
-  if (value === 0 && significant) {
-    // put a high value to show they are really significant
-    return 30;
-  }
-  return -Math.log10(value);
-};
 const ManhattanPlot = ({ phenotypeId }) => {
   let ghostPoint: Point = { x: -1, y: -1, geneList: "" };
   const chartRef = useRef(null);
@@ -70,39 +39,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
   const [point, setPoint] = useState<Point>({ x: -1, y: -1, geneList: "" });
   const [geneFilter, setGeneFilter] = useState("");
 
-  const ticks: Array<{ value: number; label: string }> = [];
-  let originalTicks = [];
-  const validChromosomes = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "X",
-  ];
-
-  const getChromosome = (tooltip) => {
-    if (tooltip.chromosome === "20") {
-      return "X";
-    } else if (tooltip.chromosome === "21") {
-      return "Y";
-    }
-    return tooltip.chromosome;
-  };
+  const ticks: Ticks = [];
+  let originalTicks: Ticks = [];
 
   const getTooltipContent = (gene) => {
     if (gene.significant && gene.pValue === 0) {
@@ -179,7 +117,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
           },
           afterTickToLabelConversion: (axis) => {
             if (ticks.length) {
-              axis.ticks.forEach((tick) => {
+              axis.ticks.forEach((tick: any) => {
                 let label = originalTicks.find(
                   (t) => t.value === tick.value,
                 ).label;
@@ -319,7 +257,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
           if (choromosomeGeneMap.has(point.mgiGeneAccessionId)) {
             const existingPoint = choromosomeGeneMap.get(
               point.mgiGeneAccessionId,
-            );
+            )!;
             // check if current point has a different value than null, comparison it's going to be always true with null
             if (
               point.reportedPValue !== null &&
