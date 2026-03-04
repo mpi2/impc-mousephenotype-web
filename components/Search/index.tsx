@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { debounce } from "lodash";
+import { useDebounceValue } from "usehooks-ts";
 
 export type Tab = {
   name: string;
@@ -29,6 +30,7 @@ const Search = ({
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const [query, setQuery] = useState<string>(searchParams.get("term") || "");
+  const [debouncedQuery, setValue] = useDebounceValue<string>(query, 500);
 
   const handleInput = (val: string) => {
     if (onChange) onChange(val);
@@ -80,15 +82,16 @@ const Search = ({
 
   useEffect(() => {
     if (updateURL) {
-      if (searchParams.get("query") !== query) {
+      const queryFromURL = searchParams.get("term");
+      if (queryFromURL !== debouncedQuery) {
         const updatedSearchParams = new URLSearchParams(
           searchParams.toString(),
         );
-        updatedSearchParams.set("term", query);
+        updatedSearchParams.set("term", debouncedQuery);
         router.push(`${pathname}?${updatedSearchParams.toString()}`);
       }
     }
-  }, [query]);
+  }, [debouncedQuery, pathname]);
 
   return (
     <div className={`${styles.banner}`}>
