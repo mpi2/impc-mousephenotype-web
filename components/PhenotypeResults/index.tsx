@@ -19,7 +19,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useRouter } from "next/navigation";
 import Card from "../Card";
-
 import Pagination from "../Pagination";
 import {
   PhenotypeSearchItem,
@@ -30,11 +29,38 @@ import { ReactNode, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
 import { allBodySystems } from "@/utils";
 import { usePhenotypeResultsQuery } from "@/hooks";
+import Skeleton from "react-loading-skeleton";
+import classnames from "classnames";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
   query: string | undefined;
 };
+
+const SearchSkeleton = () =>
+  [...Array(5).keys()].map((i) => (
+    <>
+      <Row>
+        <Col key={i} className={classnames(styles.result, styles.skeleton)}>
+          <h4 className="mb-2">
+            <Skeleton />
+          </h4>
+          <p className="grey small">
+            <Skeleton />
+          </p>
+          <p className="grey small">
+            <Skeleton />
+          </p>
+        </Col>
+        <Col className={classnames(styles.result, styles.skeleton)}>
+          <p className="grey small">
+            <Skeleton />
+          </p>
+        </Col>
+      </Row>
+      <hr className="mt-0 mb-0" />
+    </>
+  ));
 
 const FilterBadge = ({
   children,
@@ -144,7 +170,7 @@ const PhenotypeResults = ({ initialData, query }: PhenotypeResultsProps) => {
     setSortGenes(value);
   };
 
-  const { data, isLoading } = usePhenotypeResultsQuery(query, initialData);
+  const { data, isFetching } = usePhenotypeResultsQuery(query, initialData);
 
   const filteredData = useMemo(() => {
     return !!selectedSystem
@@ -186,7 +212,7 @@ const PhenotypeResults = ({ initialData, query }: PhenotypeResultsProps) => {
         <h1 style={{ marginBottom: 0 }}>
           <strong>Phenotype search results</strong>
         </h1>
-        {!!query && !isLoading && (
+        {!!query && !isFetching && (
           <p className="grey">
             <small>
               Found {data?.length || 0} entries{" "}
@@ -198,11 +224,14 @@ const PhenotypeResults = ({ initialData, query }: PhenotypeResultsProps) => {
             </small>
           </p>
         )}
-        {isLoading ? (
-          <div className="grey mt-3 mb-3">
-            Loading&nbsp;
-            <Spinner animation="border" size="sm" />
-          </div>
+        {isFetching ? (
+          <>
+            <div className="grey mt-3 mb-3">
+              Loading&nbsp;
+              <Spinner animation="border" size="sm" />
+            </div>
+            {SearchSkeleton()}
+          </>
         ) : (
           <>
             <div style={{ paddingTop: "1rem" }}>
