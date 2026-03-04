@@ -7,7 +7,6 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Card from "../Card";
@@ -16,13 +15,39 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { GeneSearchResponse, GeneSearchResponseItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
+import Skeleton from "react-loading-skeleton";
+import classnames from "classnames";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
-    className={!!props.hasData ? "secondary" : "grey"}
-    icon={!!props.hasData ? faCheck : faTimes}
+    className={props.hasData ? "secondary" : "grey"}
+    icon={props.hasData ? faCheck : faTimes}
   />
 );
+
+const SearchSkeleton = () =>
+  [...Array(5).keys()].map((i) => (
+    <>
+      <div key={i} className={classnames(styles.result, styles.skeleton)}>
+        <h4 className="mb-2">
+          <Skeleton />
+        </h4>
+        <p className="grey small">
+          <Skeleton />
+        </p>
+        <p className="grey small mt-2">
+          <Skeleton />
+        </p>
+        <p className="grey small">
+          <Skeleton />
+        </p>
+        <div className="grey small mt-3">
+          <Skeleton />
+        </div>
+      </div>
+      <hr className="mt-0 mb-0" />
+    </>
+  ));
 
 const GeneResult = ({
   gene,
@@ -155,7 +180,7 @@ type GeneResultProps = {
 };
 
 const GeneResults = ({ initialData, query }: GeneResultProps) => {
-  const { data, isLoading } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: ["search", "genes", query],
     queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}`),
     select: (data: GeneSearchResponse) => data.results,
@@ -166,7 +191,6 @@ const GeneResults = ({ initialData, query }: GeneResultProps) => {
       return undefined;
     },
   });
-
   return (
     <>
       <Container style={{ maxWidth: 1240 }}>
@@ -178,7 +202,7 @@ const GeneResults = ({ initialData, query }: GeneResultProps) => {
           <h1 style={{ marginBottom: 0 }}>
             <strong>Gene search results</strong>
           </h1>
-          {!!query && !isLoading && (
+          {!!query && !isFetching && (
             <p className="grey mb-0">
               <small>
                 Found {data?.length || 0} entries{" "}
@@ -190,11 +214,14 @@ const GeneResults = ({ initialData, query }: GeneResultProps) => {
               </small>
             </p>
           )}
-          {isLoading ? (
-            <div className="grey mt-3 mb-3">
-              Loading&nbsp;
-              <Spinner animation="border" size="sm" />
-            </div>
+          {isFetching ? (
+            <>
+              <div className="grey mt-3 mb-3">
+                Loading&nbsp;
+                <Spinner animation="border" size="sm" />
+              </div>
+              {SearchSkeleton()}
+            </>
           ) : (
             <Pagination data={data}>
               {(pageData) => {
