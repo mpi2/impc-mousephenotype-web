@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Metadata } from "next";
 import BodyWeightChartPage from "./bodyweight-chart-page";
 import { notFound } from "next/navigation";
@@ -9,11 +11,9 @@ export default async function Page() {
   return <BodyWeightChartPage />;
 }
 
-export async function generateMetadata(
-  props: {
-    searchParams: Promise<SearchParams>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  searchParams: Promise<SearchParams>;
+}): Promise<Metadata> {
   const searchParams = await props.searchParams;
   const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {

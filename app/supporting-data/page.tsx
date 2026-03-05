@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import GeneralChartPage from "./supporting-data-page";
 import { sortAndDeduplicateDatasets } from "@/hooks/datasets.query";
 import { fetchInitialDatasets } from "@/api-service";
@@ -15,11 +16,9 @@ async function getInitialDatasets(
   return sortAndDeduplicateDatasets(data);
 }
 
-export default async function Page(
-  props: {
-    searchParams: Promise<SearchParams>;
-  }
-) {
+export default async function Page(props: {
+  searchParams: Promise<SearchParams>;
+}) {
   const searchParams = await props.searchParams;
   const mgiGeneAccessionId = searchParams.mgiGeneAccessionId;
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
@@ -29,11 +28,9 @@ export default async function Page(
   return <GeneralChartPage initialDatasets={[]} />;
 }
 
-export async function generateMetadata(
-  props: {
-    searchParams: Promise<SearchParams>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  searchParams: Promise<SearchParams>;
+}): Promise<Metadata> {
   const searchParams = await props.searchParams;
   const mgiGeneAccessionId = searchParams.mgiGeneAccessionId;
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
