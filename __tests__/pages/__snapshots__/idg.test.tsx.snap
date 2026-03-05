@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`IDG Page renders correctly 1`] = `
 <div>
@@ -652,7 +652,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:1919363"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adck1
             </a>
@@ -666,7 +666,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1919363#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -674,7 +674,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1919363#data"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Phenotype data
             </a>
@@ -766,7 +766,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:1889336"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adck2
             </a>
@@ -780,7 +780,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1889336#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               ES Cells
             </a>
@@ -788,7 +788,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1889336#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -796,7 +796,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1889336#data"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Phenotype data
             </a>
@@ -888,7 +888,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:2679274"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adck5
             </a>
@@ -902,7 +902,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:2679274#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               ES Cells
             </a>
@@ -910,7 +910,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:2679274#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -918,7 +918,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:2679274#data"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Phenotype data
             </a>
@@ -1010,7 +1010,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:1277167"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adgra1
             </a>
@@ -1024,7 +1024,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1277167#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               ES Cells
             </a>
@@ -1032,7 +1032,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1277167#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -1040,7 +1040,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1277167#data"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Phenotype data
             </a>
@@ -1132,7 +1132,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:1925810"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adgra2
             </a>
@@ -1146,7 +1146,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1925810#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -1238,7 +1238,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:1917943"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adgra3
             </a>
@@ -1337,7 +1337,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:1933736"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adgrb1
             </a>
@@ -1351,7 +1351,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1933736#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               ES Cells
             </a>
@@ -1359,7 +1359,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:1933736#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -1451,7 +1451,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:2451244"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adgrb2
             </a>
@@ -1465,7 +1465,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:2451244#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               ES Cells
             </a>
@@ -1473,7 +1473,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:2451244#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -1481,7 +1481,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:2451244#data"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Phenotype data
             </a>
@@ -1573,7 +1573,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:2441837"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adgrb3
             </a>
@@ -1587,7 +1587,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:2441837#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -1595,7 +1595,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:2441837#data"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Phenotype data
             </a>
@@ -1687,7 +1687,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="primary link"
               href="/genes/MGI:3041203"
-              style="padding: 0px;"
+              style="background-color: initial; padding: 0px;"
             >
               Adgrd1
             </a>
@@ -1701,7 +1701,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:3041203#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               ES Cells
             </a>
@@ -1709,7 +1709,7 @@ exports[`IDG Page renders correctly 1`] = `
             <a
               class="link primary"
               href="/genes/MGI:3041203#order"
-              style="padding: 0px;"
+              style="padding: 0px; background-color: initial;"
             >
               Mice
             </a>
@@ -2021,6 +2021,7 @@ exports[`IDG Page renders correctly 1`] = `
       </table>
       <button
         class="btn impc-primary-button mb-3"
+        style="width: fit-content;"
       >
         View all 
         57
@@ -2099,6 +2100,7 @@ exports[`IDG Page renders correctly 1`] = `
       </table>
       <button
         class="btn impc-primary-button mb-3"
+        style="width: fit-content;"
       >
         View all 
         97
@@ -2177,6 +2179,7 @@ exports[`IDG Page renders correctly 1`] = `
       </table>
       <button
         class="btn impc-primary-button mb-3"
+        style="width: fit-content;"
       >
         View all 
         121

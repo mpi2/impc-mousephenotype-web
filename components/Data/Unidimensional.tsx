@@ -158,8 +158,8 @@ const Unidimensional = ({
                 { width: 3, label: "# Samples", disabled: true },
               ]}
             >
-              {summaryStatistics.map((stats) => (
-                <tr>
+              {summaryStatistics.map((stats, index) => (
+                <tr key={index}>
                   <td>{stats.label}</td>
                   <td>{stats.mean}</td>
                   <td>{stats.stddev}</td>

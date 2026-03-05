@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Late Adult landing page renders correctly 1`] = `
 <div>
@@ -229,7 +229,6 @@ exports[`Late Adult landing page renders correctly 1`] = `
                   aria-describedby="gene-filter"
                   class="form-control"
                   id="gene-control"
-                  value=""
                 />
               </div>
             </div>

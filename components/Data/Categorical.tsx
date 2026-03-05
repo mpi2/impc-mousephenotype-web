@@ -259,13 +259,11 @@ const Categorical = ({
         <Col>
           <Card>
             <h2>Experimental data download</h2>
-            <p>
-              {data && data.originalData && (
-                <DownloadData
-                  {...getDownloadData(datasetSummary, data.originalData)}
-                />
-              )}
-            </p>
+            {data && data.originalData && (
+              <DownloadData
+                {...getDownloadData(datasetSummary, data.originalData)}
+              />
+            )}
           </Card>
         </Col>
       </Row>
