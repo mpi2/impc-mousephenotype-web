@@ -77,8 +77,8 @@ const PRODUCTS_TRACKS = {
 };
 const optionalTracks = {
   GENCODEFull: {
-    name: "GENCODE M37 (complete)",
-    url: `${GENOME_BROWSER_DATA_URL}/gencodeVM37.bb`,
+    name: "GENCODE M38 (complete)",
+    url: `${GENOME_BROWSER_DATA_URL}/gencode.vM38.bb`,
     indexed: false,
     searchable: true,
     searchableFields: [
@@ -95,8 +95,8 @@ const optionalTracks = {
     type: "annotation",
   },
   GENCODEBasic: {
-    name: "GENCODE M37 basic annotations",
-    url: `${GENOME_BROWSER_DATA_URL}/gencodeVM37.basic.bb`,
+    name: "GENCODE M38 basic annotations",
+    url: `${GENOME_BROWSER_DATA_URL}/gencode.vM38.basic.bb`,
     indexed: false,
     searchable: true,
     searchableFields: [
@@ -334,7 +334,7 @@ const GenomeBrowser = ({
                   className="mb-0"
                   inline
                   id="gencode-complete"
-                  label="GENCODE M37 (complete)"
+                  label="GENCODE M38 (complete)"
                   onChange={(e) =>
                     toggleOptionalTrack("GENCODEFull", e.target.checked)
                   }
@@ -348,7 +348,7 @@ const GenomeBrowser = ({
                     }
                   />
                   <FormCheck.Label htmlFor="gencode-basic">
-                    GENCODE M37 basic annotations
+                    GENCODE M38 basic annotations
                   </FormCheck.Label>
                 </FormCheck>
               </div>

@@ -1591,7 +1591,7 @@ exports[`Allele page renders properly 1`] = `
                     for="gencode-complete"
                     title=""
                   >
-                    GENCODE M37 (complete)
+                    GENCODE M38 (complete)
                   </label>
                 </div>
                 <div
@@ -1606,7 +1606,7 @@ exports[`Allele page renders properly 1`] = `
                     class="form-check-label"
                     for="gencode-basic"
                   >
-                    GENCODE M37 basic annotations
+                    GENCODE M38 basic annotations
                   </label>
                 </div>
               </div>
@@ -3225,7 +3225,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
                     for="gencode-complete"
                     title=""
                   >
-                    GENCODE M37 (complete)
+                    GENCODE M38 (complete)
                   </label>
                 </div>
                 <div
@@ -3240,7 +3240,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
                     class="form-check-label"
                     for="gencode-basic"
                   >
-                    GENCODE M37 basic annotations
+                    GENCODE M38 basic annotations
                   </label>
                 </div>
               </div>
