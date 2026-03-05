@@ -13,7 +13,7 @@ const hasNextJsMiddlewareHeader = (headers: Headers) => {
   );
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const LOGGING_ENABLED = process.env.LOGGING_ENABLED === "true";
   if (LOGGING_ENABLED) {
     const path = request.nextUrl.pathname;

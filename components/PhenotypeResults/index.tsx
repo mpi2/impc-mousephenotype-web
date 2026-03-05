@@ -25,7 +25,7 @@ import {
   PhenotypeSearchResponse,
 } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
-import { ReactNode, useMemo, useState } from "react";
+import { Fragment, ReactNode, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
 import { allBodySystems } from "@/utils";
 import { usePhenotypeResultsQuery } from "@/hooks";
@@ -39,9 +39,9 @@ type Props = {
 
 const SearchSkeleton = () =>
   [...Array(5).keys()].map((i) => (
-    <>
+    <Fragment key={i}>
       <Row>
-        <Col key={i} className={classnames(styles.result, styles.skeleton)}>
+        <Col className={classnames(styles.result, styles.skeleton)}>
           <h4 className="mb-2">
             <Skeleton />
           </h4>
@@ -59,7 +59,7 @@ const SearchSkeleton = () =>
         </Col>
       </Row>
       <hr className="mt-0 mb-0" />
-    </>
+    </Fragment>
   ));
 
 const FilterBadge = ({

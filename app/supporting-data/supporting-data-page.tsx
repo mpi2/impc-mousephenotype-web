@@ -23,7 +23,7 @@ import { Dataset } from "@/models";
 import Skeleton from "react-loading-skeleton";
 import { getChartType } from "@/components/Data/Utils";
 import { chartLoadingIndicatorChannel } from "@/eventChannels";
-import { useDebounce } from "usehooks-ts";
+import { useDebounceValue } from "usehooks-ts";
 import { ChartPageParams } from "@/models/chart";
 import classnames from "classnames";
 
@@ -57,9 +57,8 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
   const [overridingSummaries, setOverridingSummaries] = useState<
     Array<Dataset>
   >([]);
-  const [specialChartLoading, setSpecialChartLoading] = useState(true);
-  const debouncedSpChartLoading = useDebounce<boolean>(
-    specialChartLoading,
+  const [debouncedSpChartLoading, setSpecialChartLoading] = useDebounceValue(
+    true,
     500,
   );
   const searchParams = useSearchParams();
@@ -120,7 +119,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
   );
 
   useEffect(() => {
-    if (!isPPIChart && specialChartLoading) {
+    if (!isPPIChart && debouncedSpChartLoading) {
       setSpecialChartLoading(false);
     }
   }, [isPPIChart]);

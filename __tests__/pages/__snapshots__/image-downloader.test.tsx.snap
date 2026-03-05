@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Image Downloader Page renders without crashing 1`] = `
 <div>
@@ -158,7 +158,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
                     />
                   </svg>
@@ -188,7 +188,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -234,7 +234,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -280,7 +280,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -326,7 +326,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -372,7 +372,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -418,7 +418,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -449,7 +449,9 @@ exports[`Image Downloader Page renders without crashing 1`] = `
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   <i>
                     Cib2
@@ -459,12 +461,16 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                   </i>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   13
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -480,33 +486,43 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   experimental
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/c6caec2ba39d0077b80d05afcb90581215fa2db62a82a534116681a909276bec"
@@ -524,7 +540,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -536,7 +552,9 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   <i>
                     Cib2
@@ -546,12 +564,16 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                   </i>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -567,33 +589,43 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   experimental
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/00fd0ba740c8057b4c484f47ce8b6d29d2757e76caaa34558185ab96d32c8e42"
@@ -611,7 +643,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -623,7 +655,9 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   <i>
                     Cib2
@@ -633,12 +667,16 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                   </i>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -654,33 +692,43 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   experimental
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/680a32a40b8e82063da2cbed658018a8795b2285fefb32730aca7c21a16b7b24"
@@ -698,7 +746,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -891,7 +939,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -937,7 +985,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -983,7 +1031,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -1029,7 +1077,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -1075,7 +1123,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -1106,17 +1154,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1132,23 +1186,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/5f3c2980f4a63dbf8d7627c8ac25c648927e4937f63d133f1bed6ebafb919caa"
@@ -1166,7 +1226,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1178,17 +1238,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1204,23 +1270,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/bdd6d19cfd7667a8d46ec678abcc6135ee5f87269292a55fab80ea493294f988"
@@ -1238,7 +1310,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1250,17 +1322,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   13
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1276,23 +1354,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/fdcf0d31f114f223482700ffdc0c0541898ead8336e225d8fff09d6c7b6e4300"
@@ -1310,7 +1394,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1322,17 +1406,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1348,23 +1438,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/146a3b9788d523467997635caad9f82323a6a1209544377447eb0248c624ed63"
@@ -1382,7 +1478,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1394,17 +1490,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1420,23 +1522,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/856f03b2e039ac51302a086519ef06d8753a1b3ad10fdfa7a82f3b0b6da0402b"
@@ -1454,7 +1562,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1466,17 +1574,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1492,23 +1606,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/5dd252130cbfa6b45d4eda0def44a26084281bb4844c90daf49d0f8690c6eb5a"
@@ -1526,7 +1646,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1538,17 +1658,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1564,23 +1690,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/a0bdd2169b13cb559b419172000384b6a90b7b88604ad307f0f5771848b1f3b6"
@@ -1598,7 +1730,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1610,17 +1742,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1636,23 +1774,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/12bdcfb5bcfe1168a987556f0796aaf0d607731f7e7a72120f07052e38e97bed"
@@ -1670,7 +1814,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1682,17 +1826,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1708,23 +1858,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                      d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/1ac8648aaedde9f503d2f2a6bc0c4097b46d44a451a3cbc85367129e7bd2618f"
@@ -1742,7 +1898,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>
@@ -1754,17 +1910,23 @@ exports[`Image Downloader Page renders without crashing 1`] = `
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   homozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   14
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   class="me-2"
                   data-testid="sex-icon"
@@ -1780,23 +1942,29 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1V384H128c-17.7 0-32 14.3-32 32s14.3 32 32 32h32v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448h32c17.7 0 32-14.3 32-32s-14.3-32-32-32H224V349.1z"
+                      d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
                       fill="currentColor"
                     />
                   </svg>
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Auditory Brain Stem Response
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   Click-evoked + 6 to 30kHz tone waveforms (pdf format)
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="impc-secondary-button download-data btn"
                   href="https://api.mousephenotype.org/tracker/media/getfile/3ef8345336b538239f7b1d94ea2692f35a9247d1c1bfae5eb53230d4cbae5352"
@@ -1814,7 +1982,7 @@ exports[`Image Downloader Page renders without crashing 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                       fill="currentColor"
                     />
                   </svg>

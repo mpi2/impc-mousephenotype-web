@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useScroll } from "@/hooks";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
