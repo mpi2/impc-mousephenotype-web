@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Metadata } from "next";
 import ViabilityChartPage from "./viability-chart-page";
 import { notFound } from "next/navigation";
@@ -9,11 +11,10 @@ export default async function Page() {
   return <ViabilityChartPage />;
 }
 
-export async function generateMetadata({
-  searchParams,
-}: {
-  searchParams: SearchParams;
+export async function generateMetadata(props: {
+  searchParams: Promise<SearchParams>;
 }): Promise<Metadata> {
+  const searchParams = await props.searchParams;
   const mgiGeneAccessionId = searchParams.mgiGeneAccessionId as string;
   if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
     notFound();

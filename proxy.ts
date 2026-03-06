@@ -13,7 +13,7 @@ const hasNextJsMiddlewareHeader = (headers: Headers) => {
   );
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const LOGGING_ENABLED = process.env.LOGGING_ENABLED === "true";
   const isProd = process.env.NODE_ENV === "production";
   const upgradeInsecureRequests =

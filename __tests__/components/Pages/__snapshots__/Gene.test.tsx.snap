@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Gene page renders correctly 1`] = `
 <div>
@@ -126,7 +126,7 @@ exports[`Gene page renders correctly 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
                 fill="currentColor"
               />
             </svg>
@@ -364,7 +364,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
+                      d="M368 128c0 44.4-25.4 83.5-64 106.4l0 21.6c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-21.6c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
                       fill="currentColor"
                     />
                   </svg>
@@ -446,7 +446,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -472,7 +472,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -495,7 +495,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -534,12 +534,12 @@ exports[`Gene page renders correctly 1`] = `
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style="color: currentColor;"
+                    style="color: currentcolor;"
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M96 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32V224v64V448c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32V384H64c-17.7 0-32-14.3-32-32V288c-17.7 0-32-14.3-32-32s14.3-32 32-32V160c0-17.7 14.3-32 32-32H96V64zm448 0v64h32c17.7 0 32 14.3 32 32v64c17.7 0 32 14.3 32 32s-14.3 32-32 32v64c0 17.7-14.3 32-32 32H544v64c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32V288 224 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32zM416 224v64H224V224H416z"
+                      d="M96 64c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32l0 160 0 64 0 160c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-64-32 0c-17.7 0-32-14.3-32-32l0-64c-17.7 0-32-14.3-32-32s14.3-32 32-32l0-64c0-17.7 14.3-32 32-32l32 0 0-64zm448 0l0 64 32 0c17.7 0 32 14.3 32 32l0 64c17.7 0 32 14.3 32 32s-14.3 32-32 32l0 64c0 17.7-14.3 32-32 32l-32 0 0 64c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-160 0-64 0-160c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32zM416 224l0 64-192 0 0-64 192 0z"
                       fill="currentColor"
                     />
                   </svg>
@@ -551,7 +551,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -577,7 +577,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -595,7 +595,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -635,7 +635,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -661,7 +661,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -679,7 +679,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -697,7 +697,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -742,12 +742,12 @@ exports[`Gene page renders correctly 1`] = `
                     data-prefix="fas"
                     focusable="false"
                     role="img"
-                    style="color: currentColor;"
+                    style="color: currentcolor;"
                     viewBox="0 0 640 512"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M320 0c17.7 0 32 14.3 32 32V164.1c0 16.4 8.4 31.7 22.2 40.5l9.8 6.2V165.3C384 127 415 96 453.3 96c21.7 0 42.8 10.2 55.8 28.8c15.4 22.1 44.3 65.4 71 116.9c26.5 50.9 52.4 112.5 59.6 170.3c.2 1.3 .2 2.6 .2 4v7c0 49.1-39.8 89-89 89c-7.3 0-14.5-.9-21.6-2.7l-72.7-18.2C414 480.5 384 442.1 384 398V325l90.5 57.6c7.5 4.7 17.3 2.5 22.1-4.9s2.5-17.3-4.9-22.1L384 287.1v-.4l-44.1-28.1c-7.3-4.6-13.9-10.1-19.9-16.1c-5.9 6-12.6 11.5-19.9 16.1L256 286.7 161.2 347l-13.5 8.6c0 0 0 0-.1 0c-7.4 4.8-9.6 14.6-4.8 22.1c4.7 7.5 14.6 9.7 22.1 4.9l91.1-58V398c0 44.1-30 82.5-72.7 93.1l-72.7 18.2c-7.1 1.8-14.3 2.7-21.6 2.7c-49.1 0-89-39.8-89-89v-7c0-1.3 .1-2.7 .2-4c7.2-57.9 33.1-119.4 59.6-170.3c26.8-51.5 55.6-94.8 71-116.9c13-18.6 34-28.8 55.8-28.8C225 96 256 127 256 165.3v45.5l9.8-6.2c13.8-8.8 22.2-24.1 22.2-40.5V32c0-17.7 14.3-32 32-32z"
+                      d="M320 0c17.7 0 32 14.3 32 32l0 132.1c0 16.4 8.4 31.7 22.2 40.5l9.8 6.2 0-45.5C384 127 415 96 453.3 96c21.7 0 42.8 10.2 55.8 28.8c15.4 22.1 44.3 65.4 71 116.9c26.5 50.9 52.4 112.5 59.6 170.3c.2 1.3 .2 2.6 .2 4l0 7c0 49.1-39.8 89-89 89c-7.3 0-14.5-.9-21.6-2.7l-72.7-18.2C414 480.5 384 442.1 384 398l0-73 90.5 57.6c7.5 4.7 17.3 2.5 22.1-4.9s2.5-17.3-4.9-22.1L384 287.1l0-.4-44.1-28.1c-7.3-4.6-13.9-10.1-19.9-16.1c-5.9 6-12.6 11.5-19.9 16.1L256 286.7 161.2 347l-13.5 8.6c0 0 0 0-.1 0c-7.4 4.8-9.6 14.6-4.8 22.1c4.7 7.5 14.6 9.7 22.1 4.9l91.1-58 0 73.4c0 44.1-30 82.5-72.7 93.1l-72.7 18.2c-7.1 1.8-14.3 2.7-21.6 2.7c-49.1 0-89-39.8-89-89l0-7c0-1.3 .1-2.7 .2-4c7.2-57.9 33.1-119.4 59.6-170.3c26.8-51.5 55.6-94.8 71-116.9c13-18.6 34-28.8 55.8-28.8C225 96 256 127 256 165.3l0 45.5 9.8-6.2c13.8-8.8 22.2-24.1 22.2-40.5L288 32c0-17.7 14.3-32 32-32z"
                       fill="currentColor"
                     />
                   </svg>
@@ -759,7 +759,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -778,7 +778,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -817,7 +817,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -835,7 +835,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -858,7 +858,7 @@ exports[`Gene page renders correctly 1`] = `
                   <svg
                     class="currentColor"
                     height="2rem"
-                    style="color: currentColor; fill: currentColor;"
+                    style="color: currentcolor; fill: currentColor;"
                     version="1.1"
                     viewBox="0 0 100 100"
                     width="2rem"
@@ -1041,7 +1041,7 @@ exports[`Gene page renders correctly 1`] = `
                 data-testid="Embryo imaging data"
               >
                 <span
-                  style="border-color: #8e8e8e;"
+                  style="border-color: rgb(142, 142, 142);"
                 >
                   <svg
                     aria-hidden="true"
@@ -1168,7 +1168,7 @@ exports[`Gene page renders correctly 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
               fill="currentColor"
             />
           </svg>
@@ -1183,11 +1183,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:rq:-tabpane-significantPhenotypes"
+            aria-controls="react-aria-«rq»-tabpane-significantPhenotypes"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="significantPhenotypes"
-            id="react-aria-:rq:-tab-significantPhenotypes"
+            id="react-aria-«rq»-tab-significantPhenotypes"
             role="tab"
             type="button"
           >
@@ -1199,11 +1199,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:rq:-tabpane-allData"
+            aria-controls="react-aria-«rq»-tabpane-allData"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="allData"
-            id="react-aria-:rq:-tab-allData"
+            id="react-aria-«rq»-tab-allData"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1216,11 +1216,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:rq:-tabpane-measurementsChart"
+            aria-controls="react-aria-«rq»-tabpane-measurementsChart"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="measurementsChart"
-            id="react-aria-:rq:-tab-measurementsChart"
+            id="react-aria-«rq»-tab-measurementsChart"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1233,9 +1233,9 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:rq:-tab-significantPhenotypes"
+          aria-labelledby="react-aria-«rq»-tab-significantPhenotypes"
           class="fade tab-pane active show"
-          id="react-aria-:rq:-tabpane-significantPhenotypes"
+          id="react-aria-«rq»-tabpane-significantPhenotypes"
           role="tabpanel"
         >
           <div
@@ -1259,7 +1259,6 @@ exports[`Gene page renders correctly 1`] = `
                     placeholder="Search"
                     style="width: 150px;"
                     type="text"
-                    value=""
                   />
                 </div>
                 <div
@@ -1279,7 +1278,6 @@ exports[`Gene page renders correctly 1`] = `
                     placeholder="Search"
                     style="width: 100px; text-transform: capitalize;"
                     type="text"
-                    value=""
                   />
                 </div>
                 <div
@@ -1299,7 +1297,6 @@ exports[`Gene page renders correctly 1`] = `
                     placeholder="Search"
                     style="display: inline-block; width: 200px;"
                     type="text"
-                    value=""
                   />
                 </div>
                 <div
@@ -1319,7 +1316,6 @@ exports[`Gene page renders correctly 1`] = `
                     placeholder="Search"
                     style="display: inline-block; width: 200px;"
                     type="text"
-                    value=""
                   />
                 </div>
                 <div
@@ -1339,7 +1335,6 @@ exports[`Gene page renders correctly 1`] = `
                     placeholder="Search"
                     style="display: inline-block; width: 100px;"
                     type="text"
-                    value=""
                   />
                 </div>
               </div>
@@ -1373,7 +1368,7 @@ exports[`Gene page renders correctly 1`] = `
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                            d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                             fill="currentColor"
                           />
                         </svg>
@@ -1403,7 +1398,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -1449,7 +1444,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -1495,7 +1490,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -1541,7 +1536,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -1587,7 +1582,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -1633,7 +1628,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -1679,7 +1674,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -1763,7 +1758,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                         fill="currentColor"
                       />
                     </svg>
@@ -1784,7 +1779,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                         fill="currentColor"
                       />
                     </svg>
@@ -1796,9 +1791,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:rq:-tab-allData"
+          aria-labelledby="react-aria-«rq»-tab-allData"
           class="fade tab-pane"
-          id="react-aria-:rq:-tabpane-allData"
+          id="react-aria-«rq»-tabpane-allData"
           role="tabpanel"
         >
           <div
@@ -2387,7 +2382,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -2445,7 +2440,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -2491,7 +2486,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -2537,7 +2532,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -2583,7 +2578,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -2629,7 +2624,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -2675,7 +2670,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -2721,7 +2716,7 @@ exports[`Gene page renders correctly 1`] = `
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
-                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                              d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                               fill="currentColor"
                             />
                           </svg>
@@ -2764,7 +2759,7 @@ exports[`Gene page renders correctly 1`] = `
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                            d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                             fill="currentColor"
                           />
                         </svg>
@@ -2775,7 +2770,9 @@ exports[`Gene page renders correctly 1`] = `
                 </thead>
                 <tbody>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -2790,7 +2787,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5008937&zygosity=homozygote&parameterStableId=IMPC_VIA_064_001&pipelineStableId=BCM_001&procedureStableId=IMPC_VIA_002&phenotypingCentre=BCM&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Homozygous females viability"
@@ -2802,7 +2801,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -2818,12 +2819,12 @@ exports[`Gene page renders correctly 1`] = `
                               data-prefix="fas"
                               focusable="false"
                               role="img"
-                              style="color: currentColor;"
+                              style="color: currentcolor;"
                               viewBox="0 0 448 512"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
+                                d="M368 128c0 44.4-25.4 83.5-64 106.4l0 21.6c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-21.6c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -2831,7 +2832,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -2841,36 +2844,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         homozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -2889,7 +2904,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -2904,7 +2921,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5548657&zygosity=homozygote&parameterStableId=IMPC_VIA_064_001&pipelineStableId=BCM_001&procedureStableId=IMPC_VIA_002&phenotypingCentre=BCM&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Homozygous females viability"
@@ -2916,7 +2935,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -2932,12 +2953,12 @@ exports[`Gene page renders correctly 1`] = `
                               data-prefix="fas"
                               focusable="false"
                               role="img"
-                              style="color: currentColor;"
+                              style="color: currentcolor;"
                               viewBox="0 0 448 512"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
+                                d="M368 128c0 44.4-25.4 83.5-64 106.4l0 21.6c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-21.6c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -2945,7 +2966,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -2955,36 +2978,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         homozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3003,7 +3038,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -3018,7 +3055,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5008937&zygosity=heterozygote&parameterStableId=IMPC_PAT_016_002&pipelineStableId=BCM_001&procedureStableId=IMPC_PAT_002&phenotypingCentre=BCM&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Spleen"
@@ -3030,7 +3069,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -3042,7 +3083,7 @@ exports[`Gene page renders correctly 1`] = `
                             <svg
                               class="currentColor"
                               height="2rem"
-                              style="color: currentColor; fill: currentColor;"
+                              style="color: currentcolor; fill: currentColor;"
                               version="1.1"
                               viewBox="0 0 100 100"
                               width="2rem"
@@ -3065,7 +3106,7 @@ exports[`Gene page renders correctly 1`] = `
                             <svg
                               class="currentColor"
                               height="2rem"
-                              style="color: currentColor; fill: currentColor;"
+                              style="color: currentcolor; fill: currentColor;"
                               version="1.1"
                               viewBox="0 0 100 100"
                               width="2rem"
@@ -3097,7 +3138,7 @@ exports[`Gene page renders correctly 1`] = `
                             <svg
                               class="currentColor"
                               height="2rem"
-                              style="color: currentColor; fill: currentColor;"
+                              style="color: currentcolor; fill: currentColor;"
                               version="1.1"
                               viewBox="0 0 100 100"
                               width="2rem"
@@ -3116,7 +3157,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -3126,36 +3169,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         heterozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3174,7 +3229,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -3189,7 +3246,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data/histopath/MGI:1922702?anatomy=heart&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Heart - MPATH pathological process term"
@@ -3201,14 +3260,18 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
                         <span />
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -3218,36 +3281,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         heterozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3266,7 +3341,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -3281,7 +3358,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5548657&zygosity=homozygote&parameterStableId=IMPC_VIA_063_001&pipelineStableId=BCM_001&procedureStableId=IMPC_VIA_002&phenotypingCentre=BCM&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Homozygous males viability"
@@ -3293,7 +3372,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -3309,12 +3390,12 @@ exports[`Gene page renders correctly 1`] = `
                               data-prefix="fas"
                               focusable="false"
                               role="img"
-                              style="color: currentColor;"
+                              style="color: currentcolor;"
                               viewBox="0 0 448 512"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
+                                d="M368 128c0 44.4-25.4 83.5-64 106.4l0 21.6c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-21.6c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -3322,7 +3403,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -3332,36 +3415,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         homozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3380,7 +3475,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -3395,7 +3492,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5008937&zygosity=homozygote&parameterStableId=IMPC_VIA_067_001&pipelineStableId=BCM_001&procedureStableId=IMPC_VIA_002&phenotypingCentre=BCM&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Homozygous animals viability"
@@ -3407,7 +3506,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -3423,12 +3524,12 @@ exports[`Gene page renders correctly 1`] = `
                               data-prefix="fas"
                               focusable="false"
                               role="img"
-                              style="color: currentColor;"
+                              style="color: currentcolor;"
                               viewBox="0 0 448 512"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
+                                d="M368 128c0 44.4-25.4 83.5-64 106.4l0 21.6c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-21.6c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -3436,7 +3537,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -3446,36 +3549,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         homozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3494,7 +3609,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -3509,7 +3626,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5008937&zygosity=homozygote&parameterStableId=IMPC_VIA_063_001&pipelineStableId=BCM_001&procedureStableId=IMPC_VIA_002&phenotypingCentre=BCM&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Homozygous males viability"
@@ -3521,7 +3640,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -3537,12 +3658,12 @@ exports[`Gene page renders correctly 1`] = `
                               data-prefix="fas"
                               focusable="false"
                               role="img"
-                              style="color: currentColor;"
+                              style="color: currentcolor;"
                               viewBox="0 0 448 512"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
+                                d="M368 128c0 44.4-25.4 83.5-64 106.4l0 21.6c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-21.6c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -3550,7 +3671,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -3560,36 +3683,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         homozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3608,7 +3743,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -3623,7 +3760,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5548657&zygosity=homozygote&parameterStableId=IMPC_EVL_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVL_001&phenotypingCentre=BCM&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Outcome"
@@ -3635,7 +3774,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -3651,12 +3792,12 @@ exports[`Gene page renders correctly 1`] = `
                               data-prefix="fas"
                               focusable="false"
                               role="img"
-                              style="color: currentColor;"
+                              style="color: currentcolor;"
                               viewBox="0 0 448 512"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
+                                d="M368 128c0 44.4-25.4 83.5-64 106.4l0 21.6c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-21.6c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -3664,7 +3805,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -3674,36 +3817,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         homozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         E9.5
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3722,7 +3877,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -3737,7 +3894,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5548657&zygosity=homozygote&parameterStableId=IMPC_VIA_067_001&pipelineStableId=BCM_001&procedureStableId=IMPC_VIA_002&phenotypingCentre=BCM&metadataGroup=d41d8cd98f00b204e9800998ecf8427e"
                         title="view supporting data for Homozygous animals viability"
@@ -3749,7 +3908,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -3765,12 +3926,12 @@ exports[`Gene page renders correctly 1`] = `
                               data-prefix="fas"
                               focusable="false"
                               role="img"
-                              style="color: currentColor;"
+                              style="color: currentcolor;"
                               viewBox="0 0 448 512"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                d="M368 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H176c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
+                                d="M368 128c0 44.4-25.4 83.5-64 106.4l0 21.6c0 17.7-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32l0-21.6c-38.6-23-64-62.1-64-106.4C80 57.3 144.5 0 224 0s144 57.3 144 128zM168 176a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM3.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L224 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L295.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L224 419.8 46.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L152.4 384 17.7 316.6C1.9 308.7-4.5 289.5 3.4 273.7z"
                                 fill="currentColor"
                               />
                             </svg>
@@ -3778,7 +3939,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -3788,36 +3951,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         homozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         N/A
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         Yes
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3836,7 +4011,9 @@ exports[`Gene page renders correctly 1`] = `
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="procedureName"
                       >
@@ -3851,7 +4028,9 @@ exports[`Gene page renders correctly 1`] = `
                         </strong>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <a
                         href="/supporting-data?mgiGeneAccessionId=MGI:1922702&alleleAccessionId=MGI:5008937&zygosity=heterozygote&parameterStableId=IMPC_CBC_004_001&pipelineStableId=BCM_001&procedureStableId=IMPC_CBC_003&phenotypingCentre=BCM&metadataGroup=28d8ab8f137e53e144a799a47811bb43"
                         title="view supporting data for Urea (Blood Urea Nitrogen - BUN)"
@@ -3863,7 +4042,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </a>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem;"
                       >
@@ -3875,7 +4056,7 @@ exports[`Gene page renders correctly 1`] = `
                             <svg
                               class="currentColor"
                               height="2rem"
-                              style="color: currentColor; fill: currentColor;"
+                              style="color: currentcolor; fill: currentColor;"
                               version="1.1"
                               viewBox="0 0 100 100"
                               width="2rem"
@@ -3889,7 +4070,9 @@ exports[`Gene page renders correctly 1`] = `
                         </span>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         <i>
                           Ascc2
@@ -3899,36 +4082,48 @@ exports[`Gene page renders correctly 1`] = `
                         </i>
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         style="text-transform: capitalize;"
                       >
                         heterozygote
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         Early adult
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         BCM
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span>
                         3m/5f
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         data-testid="options-cell"
                       >
                         No
                       </span>
                     </td>
-                    <td>
+                    <td
+                      style="border-color: var(--bs-table-border-color);"
+                    >
                       <span
                         class="bold"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap;"
@@ -3984,7 +4179,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                         fill="currentColor"
                       />
                     </svg>
@@ -4005,7 +4200,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                        d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                         fill="currentColor"
                       />
                     </svg>
@@ -4189,9 +4384,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-:rq:-tab-measurementsChart"
+          aria-labelledby="react-aria-«rq»-tab-measurementsChart"
           class="fade tab-pane"
-          id="react-aria-:rq:-tabpane-measurementsChart"
+          id="react-aria-«rq»-tabpane-measurementsChart"
           role="tabpanel"
         >
           <div
@@ -4243,7 +4438,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M384 80c8.8 0 16 7.2 16 16V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V96c0-8.8 7.2-16 16-16H384zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"
+                      d="M384 80c8.8 0 16 7.2 16 16l0 320c0 8.8-7.2 16-16 16L64 432c-8.8 0-16-7.2-16-16L48 96c0-8.8 7.2-16 16-16l320 0zM64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32z"
                       fill="currentColor"
                     />
                   </svg>
@@ -4345,7 +4540,7 @@ exports[`Gene page renders correctly 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
               fill="currentColor"
             />
           </svg>
@@ -4360,11 +4555,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r23:-tabpane-adultExpressions"
+            aria-controls="react-aria-«r23»-tabpane-adultExpressions"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="adultExpressions"
-            id="react-aria-:r23:-tab-adultExpressions"
+            id="react-aria-«r23»-tab-adultExpressions"
             role="tab"
             type="button"
           >
@@ -4376,11 +4571,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r23:-tabpane-embryoExpressions"
+            aria-controls="react-aria-«r23»-tabpane-embryoExpressions"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="embryoExpressions"
-            id="react-aria-:r23:-tab-embryoExpressions"
+            id="react-aria-«r23»-tab-embryoExpressions"
             role="tab"
             tabindex="-1"
             type="button"
@@ -4393,15 +4588,15 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r23:-tab-adultExpressions"
+          aria-labelledby="react-aria-«r23»-tab-adultExpressions"
           class="fade tab-pane active show"
-          id="react-aria-:r23:-tabpane-adultExpressions"
+          id="react-aria-«r23»-tabpane-adultExpressions"
           role="tabpanel"
         />
         <div
-          aria-labelledby="react-aria-:r23:-tab-embryoExpressions"
+          aria-labelledby="react-aria-«r23»-tab-embryoExpressions"
           class="fade tab-pane"
-          id="react-aria-:r23:-tabpane-embryoExpressions"
+          id="react-aria-«r23»-tabpane-embryoExpressions"
           role="tabpanel"
         />
       </div>
@@ -4548,7 +4743,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
                     />
                   </svg>
@@ -4578,7 +4773,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -4624,7 +4819,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -4670,7 +4865,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -4716,7 +4911,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -4743,19 +4938,25 @@ exports[`Gene page renders correctly 1`] = `
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   adrenal gland
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="primary small"
                   href="/genes/MGI:1922702/images/IMPC_ALZ_076_001?anatomyTerm=adrenal gland"
@@ -4772,7 +4973,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                      d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6l96 0 32 0 208 0c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
                       fill="currentColor"
                     />
                   </svg>
@@ -4780,27 +4981,37 @@ exports[`Gene page renders correctly 1`] = `
                 </a>
                 <br />
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 100% (2/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0.7% (4/570)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   aorta
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="primary small"
                   href="/genes/MGI:1922702/images/IMPC_ALZ_076_001?anatomyTerm=aorta"
@@ -4817,7 +5028,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                      d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6l96 0 32 0 208 0c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
                       fill="currentColor"
                     />
                   </svg>
@@ -4825,50 +5036,70 @@ exports[`Gene page renders correctly 1`] = `
                 </a>
                 <br />
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 100% (2/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0.19% (1/533)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   bone
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 n/a
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0% (0/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0% (0/394)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   brain
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="primary small"
                   href="/genes/MGI:1922702/images/IMPC_ALZ_076_001?anatomyTerm=brain"
@@ -4885,7 +5116,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                      d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6l96 0 32 0 208 0c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
                       fill="currentColor"
                     />
                   </svg>
@@ -4893,27 +5124,37 @@ exports[`Gene page renders correctly 1`] = `
                 </a>
                 <br />
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 100% (2/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0.86% (5/579)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   brainstem
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="primary small"
                   href="/genes/MGI:1922702/images/IMPC_ALZ_076_001?anatomyTerm=brainstem"
@@ -4930,7 +5171,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                      d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6l96 0 32 0 208 0c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
                       fill="currentColor"
                     />
                   </svg>
@@ -4938,50 +5179,70 @@ exports[`Gene page renders correctly 1`] = `
                 </a>
                 <br />
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 100% (2/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0.41% (2/490)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   brown adipose tissue
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 n/a
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0% (0/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0% (0/588)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   cartilage tissue
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="primary small"
                   href="/genes/MGI:1922702/images/IMPC_ALZ_076_001?anatomyTerm=cartilage tissue"
@@ -4998,7 +5259,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                      d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6l96 0 32 0 208 0c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
                       fill="currentColor"
                     />
                   </svg>
@@ -5006,50 +5267,70 @@ exports[`Gene page renders correctly 1`] = `
                 </a>
                 <br />
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 100% (2/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0.22% (1/454)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   cecum
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 n/a
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0% (0/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 7.75% (22/284)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   cerebellum
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="primary small"
                   href="/genes/MGI:1922702/images/IMPC_ALZ_076_001?anatomyTerm=cerebellum"
@@ -5066,7 +5347,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                      d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6l96 0 32 0 208 0c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
                       fill="currentColor"
                     />
                   </svg>
@@ -5074,27 +5355,37 @@ exports[`Gene page renders correctly 1`] = `
                 </a>
                 <br />
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 n/a
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0.56% (3/532)
               </td>
             </tr>
             <tr>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span
                   style="font-weight: bold;"
                 >
                   cerebral cortex
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <span>
                   heterozygote
                 </span>
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 <a
                   class="primary small"
                   href="/genes/MGI:1922702/images/IMPC_ALZ_076_001?anatomyTerm=cerebral cortex"
@@ -5111,7 +5402,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+                      d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6l96 0 32 0 208 0c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
                       fill="currentColor"
                     />
                   </svg>
@@ -5119,10 +5410,14 @@ exports[`Gene page renders correctly 1`] = `
                 </a>
                 <br />
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 100% (2/2)
               </td>
-              <td>
+              <td
+                style="border-color: var(--bs-table-border-color);"
+              >
                 0.41% (2/491)
               </td>
             </tr>
@@ -5157,7 +5452,7 @@ exports[`Gene page renders correctly 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                   fill="currentColor"
                 />
               </svg>
@@ -5178,7 +5473,7 @@ exports[`Gene page renders correctly 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                   fill="currentColor"
                 />
               </svg>
@@ -5361,7 +5656,7 @@ exports[`Gene page renders correctly 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
               fill="currentColor"
             />
           </svg>
@@ -5383,7 +5678,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/211606);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/211606");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5434,7 +5729,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/208519);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/208519");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5485,7 +5780,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1370508);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1370508");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5536,7 +5831,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1384227);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1384227");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5587,7 +5882,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1396354);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1396354");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5638,7 +5933,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1409719);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1409719");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5689,7 +5984,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1282757);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1282757");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5740,7 +6035,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/217800);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/217800");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5791,7 +6086,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/221920);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/221920");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5842,7 +6137,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/219756);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/219756");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5893,7 +6188,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/213518);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/213518");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -5944,7 +6239,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="cardImage"
                   data-testid="image"
-                  style="background-image: url(//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/215554);"
+                  style="background-image: url("//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/215554");"
                 >
                   <div
                     class="cardImageOverlay"
@@ -6020,11 +6315,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r26:-tabpane-associated"
+            aria-controls="react-aria-«r26»-tabpane-associated"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="associated"
-            id="react-aria-:r26:-tab-associated"
+            id="react-aria-«r26»-tab-associated"
             role="tab"
             type="button"
           >
@@ -6042,11 +6337,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-:r26:-tabpane-predicted"
+            aria-controls="react-aria-«r26»-tabpane-predicted"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="predicted"
-            id="react-aria-:r26:-tab-predicted"
+            id="react-aria-«r26»-tab-predicted"
             role="tab"
             tabindex="-1"
             type="button"
@@ -6066,15 +6361,15 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-:r26:-tab-associated"
+          aria-labelledby="react-aria-«r26»-tab-associated"
           class="fade tab-pane active show"
-          id="react-aria-:r26:-tabpane-associated"
+          id="react-aria-«r26»-tabpane-associated"
           role="tabpanel"
         />
         <div
-          aria-labelledby="react-aria-:r26:-tab-predicted"
+          aria-labelledby="react-aria-«r26»-tab-predicted"
           class="fade tab-pane"
-          id="react-aria-:r26:-tabpane-predicted"
+          id="react-aria-«r26»-tabpane-predicted"
           role="tabpanel"
         />
       </div>
@@ -6111,7 +6406,7 @@ exports[`Gene page renders correctly 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
               fill="currentColor"
             />
           </svg>
@@ -6162,7 +6457,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
                     />
                   </svg>
@@ -6192,7 +6487,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6238,7 +6533,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6284,7 +6579,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6330,7 +6625,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6387,7 +6682,7 @@ exports[`Gene page renders correctly 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8H424c13.3 0 24 10.7 24 24V168c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80l0 0h0v0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                    d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
                     fill="currentColor"
                   />
                 </svg>
@@ -6431,7 +6726,7 @@ exports[`Gene page renders correctly 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
               fill="currentColor"
             />
           </svg>
@@ -6478,7 +6773,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
                     />
                   </svg>
@@ -6508,7 +6803,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6554,7 +6849,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6600,7 +6895,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6648,7 +6943,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
                       fill="currentColor"
                     />
                   </svg>
@@ -6689,7 +6984,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                      d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
                       fill="currentColor"
                     />
                   </svg>
@@ -6725,7 +7020,7 @@ exports[`Gene page renders correctly 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                   fill="currentColor"
                 />
               </svg>
@@ -6746,7 +7041,7 @@ exports[`Gene page renders correctly 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
+                  d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"
                   fill="currentColor"
                 />
               </svg>
@@ -6811,7 +7106,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                        d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6864,7 +7159,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                        d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6897,7 +7192,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                        d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6930,7 +7225,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"
+                        d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
                         fill="currentColor"
                       />
                     </svg>
@@ -6971,7 +7266,7 @@ exports[`Gene page renders correctly 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
               fill="currentColor"
             />
           </svg>
@@ -7017,7 +7312,7 @@ exports[`Gene page renders correctly 1`] = `
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                      d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                       fill="currentColor"
                     />
                   </svg>
@@ -7047,7 +7342,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -7093,7 +7388,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>
@@ -7139,7 +7434,7 @@ exports[`Gene page renders correctly 1`] = `
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
+                        d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l256 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"
                         fill="currentColor"
                       />
                     </svg>

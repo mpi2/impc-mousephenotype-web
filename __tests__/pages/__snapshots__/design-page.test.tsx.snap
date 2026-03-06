@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Design page renders data correctly 1`] = `
 <div>
@@ -84,7 +84,7 @@ exports[`Design page renders data correctly 1`] = `
           class="subheadingSection primary"
         >
           <button
-            style="border: 0px; background: none; padding: 0px;"
+            style="border: 0px; background: none; padding: 0px; color: inherit;"
           >
             <svg
               aria-hidden="true"
