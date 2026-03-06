@@ -93,11 +93,11 @@ exports[`Publications page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-«r2»-tabpane-all-publications"
+            aria-controls="react-aria-_r_2_-tabpane-all-publications"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="all-publications"
-            id="react-aria-«r2»-tab-all-publications"
+            id="react-aria-_r_2_-tab-all-publications"
             role="tab"
             type="button"
           >
@@ -109,11 +109,11 @@ exports[`Publications page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-«r2»-tabpane-publications-stats"
+            aria-controls="react-aria-_r_2_-tabpane-publications-stats"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="publications-stats"
-            id="react-aria-«r2»-tab-publications-stats"
+            id="react-aria-_r_2_-tab-publications-stats"
             role="tab"
             tabindex="-1"
             type="button"
@@ -126,11 +126,11 @@ exports[`Publications page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-«r2»-tabpane-consortium-publications"
+            aria-controls="react-aria-_r_2_-tabpane-consortium-publications"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="consortium-publications"
-            id="react-aria-«r2»-tab-consortium-publications"
+            id="react-aria-_r_2_-tab-consortium-publications"
             role="tab"
             tabindex="-1"
             type="button"
@@ -143,9 +143,9 @@ exports[`Publications page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-«r2»-tab-all-publications"
+          aria-labelledby="react-aria-_r_2_-tab-all-publications"
           class="fade tab-pane active show"
-          id="react-aria-«r2»-tabpane-all-publications"
+          id="react-aria-_r_2_-tabpane-all-publications"
           role="tabpanel"
         >
           <div
@@ -1631,9 +1631,9 @@ exports[`Publications page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-«r2»-tab-publications-stats"
+          aria-labelledby="react-aria-_r_2_-tab-publications-stats"
           class="fade tab-pane"
-          id="react-aria-«r2»-tabpane-publications-stats"
+          id="react-aria-_r_2_-tabpane-publications-stats"
           role="tabpanel"
         >
           <div
@@ -1804,9 +1804,9 @@ exports[`Publications page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-«r2»-tab-consortium-publications"
+          aria-labelledby="react-aria-_r_2_-tab-consortium-publications"
           class="fade tab-pane"
-          id="react-aria-«r2»-tabpane-consortium-publications"
+          id="react-aria-_r_2_-tabpane-consortium-publications"
           role="tabpanel"
         >
           <div
