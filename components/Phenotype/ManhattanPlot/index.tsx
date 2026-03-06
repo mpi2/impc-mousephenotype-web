@@ -101,7 +101,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
   const options = useMemo(
     () => ({
       responsive: true,
-      animation: false,
+      animation: false as any,
       maintainAspectRatio: false,
       scales: {
         x: {
@@ -116,11 +116,12 @@ const ManhattanPlot = ({ phenotypeId }) => {
             }
           },
           afterTickToLabelConversion: (axis) => {
+            console.log({ ticks: axis.ticks });
             if (ticks.length) {
               axis.ticks.forEach((tick: any) => {
-                let label = originalTicks.find(
-                  (t) => t.value === tick.value,
-                ).label;
+                let label =
+                  originalTicks.find((t) => t.value === tick.value)?.label ??
+                  "";
                 if (label === "20") {
                   label = "X";
                 } else if (label === "21") {
@@ -141,7 +142,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
         legend: { display: false },
         tooltip: {
           enabled: false,
-          mode: "point",
+          mode: "point" as const,
           external: (context) => {},
         },
       },
@@ -261,12 +262,19 @@ const ManhattanPlot = ({ phenotypeId }) => {
             // check if current point has a different value than null, comparison it's going to be always true with null
             if (
               point.reportedPValue !== null &&
+              existingPoint.reportedPValue !== null &&
               point.reportedPValue < existingPoint.reportedPValue
             ) {
-              choromosomeGeneMap.set(existingPoint.mgiGeneAccessionId, point);
+              choromosomeGeneMap.set(existingPoint.mgiGeneAccessionId, {
+                ...point,
+                pos: 0,
+              });
             }
           } else {
-            choromosomeGeneMap.set(point.mgiGeneAccessionId, point);
+            choromosomeGeneMap.set(point.mgiGeneAccessionId, {
+              ...point,
+              pos: 0,
+            });
           }
         }
       });
@@ -320,7 +328,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
             }),
           ),
           backgroundColor: chartColors[i],
-          parsing: false,
+          parsing: false as const,
         })),
       };
       result.datasets.push({
@@ -468,8 +476,8 @@ const ManhattanPlot = ({ phenotypeId }) => {
                 id="manhattan-plot"
                 ref={chartRef}
                 aria-label="Manhattan Plot"
-                options={options as any}
-                data={data.chartData as any}
+                options={options}
+                data={data.chartData}
               />
             </div>
           )

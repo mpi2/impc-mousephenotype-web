@@ -1,3 +1,5 @@
+import { TooltipData } from "@/components/Phenotype/ManhattanPlot/types";
+
 export const validChromosomes = [
   "1",
   "2",
@@ -23,12 +25,15 @@ export const validChromosomes = [
 
 export const clone = (obj) => JSON.parse(JSON.stringify(obj));
 
-export const getChromosome = (tooltip) => {
-  const chromosome = tooltip.split(":")[0];
+export const getChromosome = (tooltip: TooltipData) => {
+  const chromosome = tooltip.chromosome;
   return validChromosomes.includes(chromosome) ? chromosome : null;
 };
 
-export const transformPValue = (value: number, significant: boolean) => {
+export const transformPValue = (value: number | null, significant: boolean) => {
+  if (value === null) {
+    return significant ? 30 : 0;
+  }
   if (value === 0 && significant) {
     // put a high value to show they are really significant
     return 30;

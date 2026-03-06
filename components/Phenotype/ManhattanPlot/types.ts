@@ -2,19 +2,19 @@ export type ChromosomeDataPoint = {
   chrName: string;
   markerSymbol: string;
   mgiGeneAccessionId: string;
-  reportedPValue: number;
+  reportedPValue: number | null;
   seqRegionStart: number;
   seqRegionEnd: number;
   significant: boolean;
   // fields created by FE
-  pos?: number;
+  pos: number;
 };
 
 export type ChartChromosome = {
   x: number;
   y: number;
   geneSymbol: string;
-  pValue: number;
+  pValue: number | null;
   mgiGeneAccessionId: string;
   chromosome: string;
   significant: boolean;
