@@ -50,7 +50,11 @@ jest.mock("motion/react", () => {
       <FakeTransition>{children}</FakeTransition>
     ));
   const motion = {
-    tr: jest.fn().mockImplementation(({ children }) => <tr>{children}</tr>),
+    tr: jest
+      .fn()
+      .mockImplementation(({ children, className }) => (
+        <tr className={className}>{children}</tr>
+      )),
   };
   return {
     __esModule: true,
@@ -96,6 +100,17 @@ describe("Timeseries Chart page", () => {
         "Indirect Calorimetry",
       ),
     );
+    await waitFor(
+      async () => {
+        const rows = await screen.findAllByRole("table");
+        return expect(rows.length).toEqual(2);
+      },
+      { timeout: 20000 },
+    );
+    await waitFor(async () => {
+      const rows = await screen.findAllByRole("row");
+      return expect(rows.length).toEqual(676);
+    });
     expect(container).toMatchSnapshot();
-  });
+  }, 25000);
 });
