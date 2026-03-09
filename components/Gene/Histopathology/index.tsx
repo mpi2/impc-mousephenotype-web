@@ -139,7 +139,6 @@ const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
                       href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
-                      legacyBehavior
                     >
                       <strong className="link">{`${p.parameterName} ${p.mpathTermName}`}</strong>
                     </Link>
