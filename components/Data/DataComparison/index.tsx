@@ -9,7 +9,7 @@ import { Dataset, SortType, TableHeader } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
 import { AlleleSymbol } from "@/components";
 import Skeleton from "react-loading-skeleton";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 type LastColumnProps = {
   isViabilityChart: boolean;
@@ -148,12 +148,12 @@ const DataComparison = (props: Props) => {
   ]
     .concat(displayPValueColumns ? lastColumnHeader : [])
     .filter((h) =>
-      displayPValueColumns ? h : !h.label.includes("Significant")
+      displayPValueColumns ? h : !h.label.includes("Significant"),
     );
 
   const numOfHeaders = tableHeaders.reduce(
     (acc, header) => acc + (header.children ? header.children.length : 1),
-    0
+    0,
   );
   useEffect(() => {
     if (
@@ -210,7 +210,7 @@ const DataComparison = (props: Props) => {
                               has(d, `pValue_${sex}`) &&
                               d[`pValue_${sex}`] !== null &&
                               d[`pValue_${sex}`] !== undefined &&
-                              d[`pValue_${sex}`] < 0.0001
+                              d[`pValue_${sex}`] < 0.0001,
                           )
                           .map((significantSex, index) => (
                             <OverlayTrigger
