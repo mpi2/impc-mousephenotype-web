@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Footer component renders correctly 1`] = `
 <div>
@@ -159,7 +159,7 @@ exports[`Footer component renders correctly 1`] = `
               >
                 <a
                   href="https://www.mousephenotype.org/help/faqs/how-do-i-cite-the-impc/"
-                  style="border-left: 3px solid #ed7b25; padding-left: 7px;"
+                  style="border-left: 3px solid rgb(237, 123, 37); padding-left: 7px;"
                 >
                   Cite IMPC
                 </a>

@@ -13,7 +13,7 @@ import { useContext } from "react";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 import classNames from "classnames";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "motion/react";
 
 const spring = {
   type: "spring",

@@ -17,6 +17,7 @@ import { GeneSearchResponse, GeneSearchResponseItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
 import Skeleton from "react-loading-skeleton";
 import classnames from "classnames";
+import { Fragment } from "react";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -27,8 +28,8 @@ const AvailabilityIcon = (props: { hasData: boolean }) => (
 
 const SearchSkeleton = () =>
   [...Array(5).keys()].map((i) => (
-    <>
-      <div key={i} className={classnames(styles.result, styles.skeleton)}>
+    <Fragment key={i}>
+      <div className={classnames(styles.result, styles.skeleton)}>
         <h4 className="mb-2">
           <Skeleton />
         </h4>
@@ -46,7 +47,7 @@ const SearchSkeleton = () =>
         </div>
       </div>
       <hr className="mt-0 mb-0" />
-    </>
+    </Fragment>
   ));
 
 const GeneResult = ({

@@ -22,7 +22,7 @@ import { fetchAPI } from "@/api-service";
 import { PaginatedResponse, SortType } from "@/models";
 import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
-import { useDebounce } from "usehooks-ts";
+import { useDebounceValue } from "usehooks-ts";
 import Footnotes from "../Footnotes";
 import { Alert } from "react-bootstrap";
 
@@ -98,7 +98,7 @@ const AllData = (props: Props) => {
   const defaultSort: SortType = useMemo(() => ["pValue", "asc"], []);
   const [totalItems, setTotalItems] = useState<number>(0);
   const [query, setQuery] = useState(queryFromURL);
-  const debouncedQuery = useDebounce(query, 500);
+  const [debouncedQuery, setDbQuery] = useDebounceValue(query, 500);
   const [filterOptions, setFilterOptions] =
     useState<FilterOptions>(defaultFilterOptions);
 
@@ -249,6 +249,10 @@ const AllData = (props: Props) => {
       setQuery(queryFromURL);
     }
   }, [queryFromURL, query]);
+
+  useEffect(() => {
+    setDbQuery(query);
+  }, [query]);
 
   if (isError && !data) {
     return (

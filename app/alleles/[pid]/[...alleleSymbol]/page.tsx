@@ -27,12 +27,14 @@ type PageParams = {
     pid: string;
     alleleSymbol: Array<string>;
   }>;
-  searchParams: { alleleSymbol: string };
+  searchParams: Promise<{ alleleSymbol: string }>;
 };
 
-export default async function Page({ params, searchParams }: PageParams) {
-  const mgiGeneAccessionId = (await params).pid;
-  const alleleSymbolFromParams = (await params).alleleSymbol;
+export default async function Page(props: PageParams) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
+  const mgiGeneAccessionId = params.pid;
+  const alleleSymbolFromParams = params.alleleSymbol;
   const alleleSymbolFromSearchParams = searchParams.alleleSymbol;
   const alleleSymbol = !!alleleSymbolFromSearchParams
     ? [alleleSymbolFromSearchParams]
@@ -44,9 +46,11 @@ export default async function Page({ params, searchParams }: PageParams) {
   );
 }
 
-export async function generateMetadata({ params, searchParams }: PageParams) {
-  const mgiGeneAccessionId = (await params).pid;
-  const alleleSymbolFromParams = (await params).alleleSymbol;
+export async function generateMetadata(props: PageParams) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
+  const mgiGeneAccessionId = params.pid;
+  const alleleSymbolFromParams = params.alleleSymbol;
   const alleleSymbolFromSearchParams = searchParams.alleleSymbol;
   const alleleSymbol = !!alleleSymbolFromSearchParams
     ? [alleleSymbolFromSearchParams]
