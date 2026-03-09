@@ -100,6 +100,17 @@ describe("Timeseries Chart page", () => {
         "Indirect Calorimetry",
       ),
     );
+    await waitFor(
+      async () => {
+        const rows = await screen.findAllByRole("table");
+        return expect(rows.length).toEqual(2);
+      },
+      { timeout: 20000 },
+    );
+    await waitFor(async () => {
+      const rows = await screen.findAllByRole("row");
+      return expect(rows.length).toEqual(676);
+    });
     expect(container).toMatchSnapshot();
-  });
+  }, 25000);
 });
