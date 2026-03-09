@@ -6,6 +6,7 @@
     "start": "next start",
     "test": "jest --watchAll",
     "test:ci": "jest --ci",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "local": "NEXT_PUBLIC_PROXY_ENABLED=TRUE concurrently \"lcp --proxyUrl $(grep NEXT_PUBLIC_API_ROOT .env.development | cut -d '=' -f2)\" \"lcp --proxyUrl http://wp-p1m2-0c:5000/  --port 8020 \" \"next dev --turbopack\""
   },
   "dependencies": {
@@ -35,7 +36,7 @@
     "chroma-js": "^2.4.2",
     "classnames": "^2.5.1",
     "d3": "^7.8.5",
-    "eslint-config-next": "15.5.3",
+    "eslint-config-next": "16.1.6",
     "file-saver": "^2.0.5",
     "html-react-parser": "^5.2.6",
     "igv": "^3.1.3",
