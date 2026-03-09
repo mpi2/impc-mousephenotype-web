@@ -50,7 +50,11 @@ jest.mock("motion/react", () => {
       <FakeTransition>{children}</FakeTransition>
     ));
   const motion = {
-    tr: jest.fn().mockImplementation(({ children }) => <tr>{children}</tr>),
+    tr: jest
+      .fn()
+      .mockImplementation(({ children, className }) => (
+        <tr className={className}>{children}</tr>
+      )),
   };
   return {
     __esModule: true,
