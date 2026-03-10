@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={roboto.className}>
       <head />
       <body>
-        <Script>
+        <Script id="google-tag-manager">
           {` // Google Tag Manager
               (function(w, d, s, l, i) {
                   w[l] = w[l] || [];

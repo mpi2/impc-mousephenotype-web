@@ -106,11 +106,23 @@ export function PublicationsByYearChart({
   data: publicationsByQuarter,
   yearlyIncrementData,
 }) {
+  const data = useMemo(() => {
+    return {
+      labels: publicationsByQuarter.map((pubCount) =>
+        pubCount.pubYear.toString(),
+      ),
+      datasets: [
+        {
+          data: yearlyIncrementData.map((pubCount) => pubCount.count),
+        },
+      ],
+    };
+  }, [publicationsByQuarter, yearlyIncrementData]);
   const [quarterChartView, setQuarterChartView] = useState<"year" | "quarter">(
     "year",
   );
   const [pubByQuarterData, setPubByQuarterData] =
-    useState<ChartData<"bar"> | null>(null);
+    useState<ChartData<"bar">>(data);
 
   const options = {
     responsive: true,
@@ -167,25 +179,6 @@ export function PublicationsByYearChart({
       }
     },
   };
-
-  const data = useMemo(() => {
-    return {
-      labels: publicationsByQuarter.map((pubCount) =>
-        pubCount.pubYear.toString(),
-      ),
-      datasets: [
-        {
-          data: yearlyIncrementData.map((pubCount) => pubCount.count),
-        },
-      ],
-    };
-  }, [publicationsByQuarter, yearlyIncrementData]);
-
-  useEffect(() => {
-    if (data.labels.length && pubByQuarterData === null) {
-      setPubByQuarterData(data);
-    }
-  }, [data]);
 
   if (!!pubByQuarterData) {
     return (

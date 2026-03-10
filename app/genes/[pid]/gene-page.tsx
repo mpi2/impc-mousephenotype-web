@@ -60,7 +60,7 @@ const GenePage = (props: GenePageProps) => {
         }, 500);
       }
     }
-  }, [geneData]);
+  }, [gene]);
 
   const jsonLd = {
     "@type": "Dataset",

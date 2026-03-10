@@ -15,8 +15,9 @@ import {
   useRef,
   useState,
   useImperativeHandle,
-  forwardRef,
   Suspense,
+  RefObject,
+  Fragment,
 } from "react";
 import { Bar } from "react-chartjs-2";
 import {
@@ -60,7 +61,8 @@ type AccordionTableHandle = {
 };
 type AccordionTableProps = {
   type: string;
-  geneList: Array<Gene>;
+  geneList: Array<Gene> | undefined;
+  ref: RefObject<AccordionTableHandle | null>;
 };
 
 type Gene = {
@@ -77,7 +79,7 @@ type Gene = {
 
 const getLinksToGenePage = (gene: Gene) => {
   const url = `/genes/${gene.mgi_accession_id}`;
-  const products = [];
+  const products: Array<string> = [];
   if (gene.es_cell_production_status === "ES Cells Produced") {
     products.push("ES Cells");
   }
@@ -90,10 +92,10 @@ const getLinksToGenePage = (gene: Gene) => {
   if (products.length === 0) {
     return "-";
   }
-  return products.map((value) => {
+  return products.map((value, index) => {
     const href = value === "Phenotype data" ? url + "#data" : url + "#order";
     return (
-      <>
+      <Fragment key={index}>
         <Link
           className="link primary"
           style={{ padding: 0, backgroundColor: "initial" }}
@@ -102,7 +104,7 @@ const getLinksToGenePage = (gene: Gene) => {
           {value}
         </Link>
         <br />
-      </>
+      </Fragment>
     );
   });
 };
@@ -141,17 +143,17 @@ const FamilyDataTable = (props: FamilyDataTableProps) => {
   );
 };
 
-const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
+const HeatMap = ({ geneList }: { geneList: Array<Gene> | undefined }) => {
   const [query, setQuery] = useState("");
   const filteredData = useMemo(
     () =>
-      geneList.filter(
+      geneList?.filter(
         ({ mgi_accession_id, idg_family, marker_symbol }) =>
           !query ||
           `${mgi_accession_id} ${idg_family} ${marker_symbol}`
             .toLowerCase()
             .includes(query.toLowerCase()),
-      ),
+      ) ?? [],
     [query, geneList],
   );
 
@@ -226,35 +228,40 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
             ))}
           </tr>
         </thead>
-        {paginatedData.map((gene) => (
-          <tr>
-            <td className={styles.geneCell}>
-              <Link
-                href={`/genes/${gene.mgi_accession_id}`}
-                className="primary link"
-                style={{ backgroundColor: "initial", padding: 0 }}
-              >
-                {gene.marker_symbol}
-              </Link>
-              <br />
-              {gene.human_gene_symbol || "-"}
-            </td>
-            <td>{gene.idg_family}</td>
-            <td>{getLinksToGenePage(gene)}</td>
-            {data.heatmapTopLevelPhenotypes.map((phenotype) => (
-              <td className={getCellStyle(phenotype.name, gene)}></td>
-            ))}
-          </tr>
-        ))}
-        {paginatedData.length === 0 && !!query && (
-          <tr>
-            <td colSpan={29}>
-              <h4 style={{ backgroundColor: "initial" }}>
-                No matching records found
-              </h4>
-            </td>
-          </tr>
-        )}
+        <tbody>
+          {paginatedData.map((gene, index) => (
+            <tr key={index}>
+              <td className={styles.geneCell}>
+                <Link
+                  href={`/genes/${gene.mgi_accession_id}`}
+                  className="primary link"
+                  style={{ backgroundColor: "initial", padding: 0 }}
+                >
+                  {gene.marker_symbol}
+                </Link>
+                <br />
+                {gene.human_gene_symbol || "-"}
+              </td>
+              <td>{gene.idg_family}</td>
+              <td>{getLinksToGenePage(gene)}</td>
+              {data.heatmapTopLevelPhenotypes.map((phenotype, index) => (
+                <td
+                  key={index}
+                  className={getCellStyle(phenotype.name, gene)}
+                ></td>
+              ))}
+            </tr>
+          ))}
+          {paginatedData.length === 0 && !!query && (
+            <tr>
+              <td colSpan={29}>
+                <h4 style={{ backgroundColor: "initial" }}>
+                  No matching records found
+                </h4>
+              </td>
+            </tr>
+          )}
+        </tbody>
       </table>
       <PaginationControls
         currentPage={activePage}
@@ -267,57 +274,54 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
   );
 };
 
-const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>(
-  ({ type, geneList }, ref) => {
-    const [visibility, setVisibility] = useState(false);
-    const filteredList: Array<Gene> = geneList.filter(
-      (gene) => gene.idg_family === type,
-    );
+const AccordionTable = ({ type, geneList, ref }: AccordionTableProps) => {
+  const [visibility, setVisibility] = useState(false);
+  const filteredList: Array<Gene> =
+    geneList?.filter((gene) => gene.idg_family === type) ?? [];
 
-    useImperativeHandle(ref, () => ({
-      toggleVisibility() {
-        setVisibility((prevState) => !prevState);
-      },
-    }));
+  useImperativeHandle(ref, () => ({
+    toggleVisibility() {
+      setVisibility((prevState) => !prevState);
+    },
+  }));
 
-    return visibility ? (
-      <Table bordered striped>
-        <thead>
-          <tr>
-            <th>Mouse Genes</th>
-            <th>Human Genes</th>
-            <th>Data available</th>
+  return visibility ? (
+    <Table bordered striped>
+      <thead>
+        <tr>
+          <th>Mouse Genes</th>
+          <th>Human Genes</th>
+          <th>Data available</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredList.map((gene) => (
+          <tr key={gene.mgi_accession_id}>
+            <td>
+              <Link
+                className="link primary"
+                href={`/genes/${gene.mgi_accession_id}`}
+              >
+                {gene.marker_symbol}
+              </Link>
+              &nbsp;({gene.mgi_accession_id})
+            </td>
+            <td>
+              <a
+                className="link primary"
+                href={`https://pharos.nih.gov/targets?q=${gene.human_gene_symbol}`}
+              >
+                {gene.human_gene_symbol}&nbsp;
+                <FontAwesomeIcon icon={faExternalLinkAlt}></FontAwesomeIcon>
+              </a>
+            </td>
+            <td>{getLinksToGenePage(gene)}</td>
           </tr>
-        </thead>
-        <tbody>
-          {filteredList.map((gene) => (
-            <tr key={gene.mgi_accession_id}>
-              <td>
-                <Link
-                  className="link primary"
-                  href={`/genes/${gene.mgi_accession_id}`}
-                >
-                  {gene.marker_symbol}
-                </Link>
-                &nbsp;({gene.mgi_accession_id})
-              </td>
-              <td>
-                <a
-                  className="link primary"
-                  href={`https://pharos.nih.gov/targets?q=${gene.human_gene_symbol}`}
-                >
-                  {gene.human_gene_symbol}&nbsp;
-                  <FontAwesomeIcon icon={faExternalLinkAlt}></FontAwesomeIcon>
-                </a>
-              </td>
-              <td>{getLinksToGenePage(gene)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    ) : null;
-  },
-);
+        ))}
+      </tbody>
+    </Table>
+  ) : null;
+};
 
 const IDGPage = () => {
   const { data: geneList, isFetching } = useQuery<Array<Gene>>({
@@ -331,7 +335,10 @@ const IDGPage = () => {
   const ionChannelsTableRef = useRef<AccordionTableHandle>(null);
   const gpcrTableRef = useRef<AccordionTableHandle>(null);
   const kinasesTableRef = useRef<AccordionTableHandle>(null);
-  const geneProductionStatusData = data.geneProductionStatusData || [];
+  const geneProductionStatusData = useMemo(
+    () => data.geneProductionStatusData || [],
+    [],
+  );
 
   const idgGenesProductionStatusOptions = {
     maintainAspectRatio: true,
