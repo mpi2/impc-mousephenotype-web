@@ -60,14 +60,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
   const [selectedFile, setSelectedFile] = useState<undefined | string>(
     undefined,
   );
-  const [navigatedToGene, setNavigatedToGene] = useState<boolean>(false);
+  const navigatedToGeneRef = useRef(false);
 
   useEffect(() => {
-    if (!!gene && slickRef.current && !navigatedToGene) {
+    if (gene && slickRef.current && !navigatedToGeneRef.current) {
       slickRef.current.slickGoTo(genePositions[gene]);
-      setNavigatedToGene(true);
+      navigatedToGeneRef.current = true;
     }
-  }, [slickRef, gene]);
+  }, [gene]);
 
   return (
     <>
@@ -590,7 +590,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                       preweaning lethality with no homozygous pups observed.
                       Micro-CT analysis at E15.5 revealed Eyatm1b/tm1b mutant
                       embryos had bi-lateral smaller cochlear volumes as well as
-                      a smaller thyroid gland, Meckel's cartilage, trachea
+                      a smaller thyroid gland, Meckel&#39;s cartilage, trachea
                       (opening), cricoid cartilage, and arytenoid cartilage.
                     </p>
                     <p>Phenotype data links</p>
