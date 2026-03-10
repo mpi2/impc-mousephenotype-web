@@ -46,9 +46,11 @@ export function renderWithClient(ui: React.ReactElement) {
 }
 export const createQueryWrapper = () => {
   const client = createTestQueryClient();
-  return ({ children }) => (
-    <QueryClientProvider client={client}>{children}</QueryClientProvider>
-  );
+  return function QueryWrapper({ children }) {
+    return (
+      <QueryClientProvider client={client}>{children}</QueryClientProvider>
+    );
+  };
 };
 
 export const AppRouterContextProviderMock = ({
