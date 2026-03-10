@@ -10,7 +10,6 @@ import {
 import {
   BatchQueryItem,
   DownloadButtonsState,
-  GoTerm,
   SelectedAlleleData,
   SelectOptions,
   SortType,
@@ -20,7 +19,6 @@ import { PropsWithChildren, useMemo, useState } from "react";
 import Link from "next/link";
 import { formatAlleleSymbol } from "@/utils";
 import { BodySystem } from "@/components/BodySystemIcon";
-import { uniqBy, groupBy } from "lodash";
 import styles from "./batch-query-results.module.scss";
 import classnames from "classnames";
 
@@ -125,17 +123,19 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                   <b>Molecular Function</b>
                 </span>
                 <ListGroup className={styles.list}>
-                  {sortTerms(geneData.slimGoTerms.terms["MF"]).map((term) => (
-                    <ListGroup.Item>
-                      <a
-                        className="link primary"
-                        href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
-                        target="_blank"
-                      >
-                        {term.name}
-                      </a>
-                    </ListGroup.Item>
-                  ))}
+                  {sortTerms(geneData.slimGoTerms.terms["MF"]).map(
+                    (term, index) => (
+                      <ListGroup.Item key={index}>
+                        <a
+                          className="link primary"
+                          href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
+                          target="_blank"
+                        >
+                          {term.name}
+                        </a>
+                      </ListGroup.Item>
+                    ),
+                  )}
                 </ListGroup>
               </div>
               <div>
@@ -143,17 +143,19 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                   <b>Biological Process</b>
                 </span>
                 <ListGroup className={styles.list}>
-                  {sortTerms(geneData.slimGoTerms.terms["BP"]).map((term) => (
-                    <ListGroup.Item>
-                      <a
-                        className="link primary"
-                        href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
-                        target="_blank"
-                      >
-                        {term.name}
-                      </a>
-                    </ListGroup.Item>
-                  ))}
+                  {sortTerms(geneData.slimGoTerms.terms["BP"]).map(
+                    (term, index) => (
+                      <ListGroup.Item key={index}>
+                        <a
+                          className="link primary"
+                          href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
+                          target="_blank"
+                        >
+                          {term.name}
+                        </a>
+                      </ListGroup.Item>
+                    ),
+                  )}
                 </ListGroup>
               </div>
               <div>
@@ -161,17 +163,19 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                   <b>Cellular Component</b>
                 </span>
                 <ListGroup className={styles.list}>
-                  {sortTerms(geneData.slimGoTerms.terms["CC"]).map((term) => (
-                    <ListGroup.Item>
-                      <a
-                        className="link primary"
-                        href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
-                        target="_blank"
-                      >
-                        {term.name}
-                      </a>
-                    </ListGroup.Item>
-                  ))}
+                  {sortTerms(geneData.slimGoTerms.terms["CC"]).map(
+                    (term, index) => (
+                      <ListGroup.Item key={index}>
+                        <a
+                          className="link primary"
+                          href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
+                          target="_blank"
+                        >
+                          {term.name}
+                        </a>
+                      </ListGroup.Item>
+                    ),
+                  )}
                 </ListGroup>
               </div>
             </div>
@@ -205,9 +209,9 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                 },
               ]}
             >
-              {geneData.alleles.map((alleleData) => {
+              {geneData.alleles.map((alleleData, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <Link
                         className="link primary"
@@ -467,7 +471,7 @@ export const BatchQueryResults = ({
       ) : hasMoreThan1000Ids ? (
         <>
           <Alert variant="warning">
-            Because your list has more than 1,000 IDs, results won't be
+            Because your list has more than 1,000 IDs, results won&#39;t be
             displayed. You can download the filtered data or the entire dataset.
           </Alert>
           <div className={styles.buttonsContainer}>
