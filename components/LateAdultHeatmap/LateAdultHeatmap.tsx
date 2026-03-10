@@ -1,12 +1,5 @@
 "use client";
-import {
-  CSSProperties,
-  memo,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import { scaleQuantize, scaleBand } from "@visx/scale";
 import { LateAdultDataParsed, LateAdultRowResponse } from "@/models";
 import { Group } from "@visx/group";
@@ -34,13 +27,13 @@ type HeatMapProps = {
   yScale: ScaleBand<number>;
   colorScale: ScaleQuantize<string, never>;
   binWidth: number;
-  allGenesList: Array<LateAdultRowResponse>;
-  setSelectedCell: (data: CellData) => void;
+  allGenesList: Array<Omit<LateAdultRowResponse, "significance">>;
+  setSelectedCell: (data: CellData | undefined) => void;
   numOfCols: number;
   onClickCell: (mgiGeneAccessionId: string, columnName: string) => void;
 };
 
-const HeatMap = memo((props: HeatMapProps) => {
+const HeatMap = memo(function Heatmap(props: HeatMapProps) {
   const {
     data,
     xScale,
@@ -67,7 +60,7 @@ const HeatMap = memo((props: HeatMapProps) => {
             <rect
               key={`heatmap-rect-${bin.row}-${bin.column}`}
               className={classNames("visx-heatmap-rect", {
-                hasData: bin.count > 0,
+                hasData: !!bin.count && bin.count > 0,
               })}
               width={xScale.bandwidth()}
               height={yScale.bandwidth()}
@@ -109,9 +102,9 @@ const HeatMap = memo((props: HeatMapProps) => {
 type Props = {
   width: number;
   data: LateAdultDataParsed;
-  genesList: Array<LateAdultRowResponse>;
-  selectedParam: string;
-  onParamSelected: (param: string) => void;
+  genesList: Array<Omit<LateAdultRowResponse, "significance">>;
+  selectedParam: string | undefined;
+  onParamSelected: (param: string | undefined) => void;
   isFetchingParamData: boolean;
 };
 
@@ -129,17 +122,11 @@ const LateAdultHeatmap = (props: Props) => {
   const numOfCols = data.columns.length;
   const binWidth = width / numOfCols;
   const maxWidth = width - 50;
-  const [heatmapHeight, setHeatmapHeight] = useState<number>(undefined);
-  const [selectedCell, setSelectedCell] = useState<CellData>(undefined);
+  const [selectedCell, setSelectedCell] = useState<CellData | undefined>(
+    undefined,
+  );
 
-  useEffect(() => {
-    if (genesList) {
-      const maxHeigth = genesList.length * binHeight + 170;
-      if (heatmapHeight !== maxHeigth) {
-        setHeatmapHeight(maxHeigth);
-      }
-    }
-  }, [genesList.length, heatmapHeight]);
+  const heatmapHeight = genesList.length * binHeight + 170;
 
   const xScale = useMemo(
     () =>
@@ -149,7 +136,7 @@ const LateAdultHeatmap = (props: Props) => {
         round: true,
         paddingInner: scalePadding,
       }),
-    [data, maxWidth, isFetchingParamData],
+    [data, maxWidth],
   );
 
   const yScale = useMemo(
@@ -159,7 +146,7 @@ const LateAdultHeatmap = (props: Props) => {
         range: [100, heatmapHeight],
         paddingInner: scalePadding,
       }),
-    [genesList, heatmapHeight, isFetchingParamData],
+    [genesList, heatmapHeight],
   );
 
   const colorScale = useMemo(
@@ -171,9 +158,9 @@ const LateAdultHeatmap = (props: Props) => {
     [],
   );
 
-  const isSelectedGene = (geneSymbol: string) =>
+  const isSelectedGene = (geneSymbol: string | undefined) =>
     !!selectedCell && selectedCell.geneSymbol === geneSymbol;
-  const isSelectedParam = (parameterName: string) =>
+  const isSelectedParam = (parameterName: string | undefined) =>
     !!selectedCell && selectedCell.procedureName === parameterName;
 
   const hasData = useMemo(
@@ -264,7 +251,7 @@ const LateAdultHeatmap = (props: Props) => {
               height={yScale.bandwidth()}
               width={clamp(
                 selectedCell.x -
-                  xScale(0) -
+                  (xScale(0) || 0) -
                   xScale.padding() * xScale.bandwidth(),
                 0,
                 maxWidth,
@@ -291,7 +278,7 @@ const LateAdultHeatmap = (props: Props) => {
               y={selectedCell.y}
               height={yScale.bandwidth()}
               width={clamp(
-                xScale(numOfCols - 1) -
+                (xScale(numOfCols - 1) || 0) -
                   selectedCell.x -
                   xScale.padding() * xScale.bandwidth(),
                 0,
@@ -307,16 +294,13 @@ const LateAdultHeatmap = (props: Props) => {
           top={190}
           left={48}
           tickFormat={(value) => data.columns[value as number]}
-          tickValues={data.columns.map((col, index) => index)}
+          tickValues={data.columns.map((_, index) => index)}
           tickComponent={({ formattedValue, ...rest }) => {
             const matchesParam = isSelectedParam(formattedValue);
-            const style: CSSProperties = matchesParam
-              ? { fontWeight: "bold" }
-              : { fontWeight: "normal" };
             return (
               <text
                 className={classNames({ "axis-link": !selectedParam })}
-                style={style}
+                style={{ fontWeight: matchesParam ? "bold" : "normal" }}
                 {...rest}
                 transform={`rotate(-50, ${rest.x}, 0)`}
                 textAnchor="start"
@@ -343,11 +327,11 @@ const LateAdultHeatmap = (props: Props) => {
           }
           tickComponent={({ formattedValue, ...rest }) => {
             const matchesGene = isSelectedGene(formattedValue);
-            const style: CSSProperties = matchesGene
+            const style = matchesGene
               ? { fontWeight: "bold", fontSize: "12px", fontStyle: "italic" }
               : { fontWeight: "normal", fontSize: "10px", fontStyle: "italic" };
             return (
-              <Text style={style} {...rest}>
+              <Text style={{ ...style }} {...rest}>
                 {formattedValue}
               </Text>
             );

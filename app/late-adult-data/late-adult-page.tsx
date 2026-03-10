@@ -25,7 +25,7 @@ import {
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { usePagination } from "@/hooks";
 
-type AllGeneList = Array<LateAdultRowResponse>;
+type AllGeneList = Array<Omit<LateAdultRowResponse, "significance">>;
 
 const dataMap = {
   "Acoustic Startle and Pre-pulse Inhibition (PPI)":
@@ -87,26 +87,10 @@ const transformData = (
 };
 
 const LateAdultDataPage = () => {
-  const [selectedParam, setSelectedParam] = useState<string>(undefined);
-  const [genes, setGenes] = useState<AllGeneList>([]);
-  const [geneQuery, setGeneQuery] = useState<string>(undefined);
-
-  const genesFiltered = useMemo(() => {
-    return !!geneQuery
-      ? genes.filter((g) =>
-          g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()),
-        )
-      : genes;
-  }, [genes, geneQuery]);
-
-  const {
-    paginatedData: paginatedGenes,
-    activePage,
-    totalPages,
-    pageSize,
-    setActivePage,
-    setPageSize,
-  } = usePagination(genesFiltered, 25);
+  const [selectedParam, setSelectedParam] = useState<string | undefined>(
+    undefined,
+  );
+  const [geneQuery, setGeneQuery] = useState<string | undefined>(undefined);
 
   const { data: allProd } = useQuery({
     queryKey: ["late-adult-heatmap", "all-procedures"],
@@ -130,16 +114,32 @@ const LateAdultDataPage = () => {
     placeholderData: () => ({ columns: [], rows: [], numOfRows: 0 }),
   });
 
-  useEffect(() => {
-    if (!!allProd.rows.length && genes.length !== allProd.rows.length) {
-      setGenes(allProd.rows.map(({ significance, ...rest }) => rest));
-    }
-  }, [allProd.rows.length]);
+  const genes: AllGeneList = useMemo(
+    () => allProd?.rows?.map(({ significance, ...rest }) => rest) ?? [],
+    [allProd],
+  );
+
+  const genesFiltered = useMemo(() => {
+    return !!geneQuery
+      ? genes.filter((g) =>
+          g.markerSymbol.toLowerCase().includes(geneQuery.toLowerCase()),
+        )
+      : genes;
+  }, [genes, geneQuery]);
+
+  const {
+    paginatedData: paginatedGenes,
+    activePage,
+    totalPages,
+    pageSize,
+    setActivePage,
+    setPageSize,
+  } = usePagination(genesFiltered, 25);
 
   const { data: prodData, isFetching: isFetchingParamData } = useQuery({
-    queryKey: ["late-adult-heatmap", dataMap[selectedParam]],
+    queryKey: ["late-adult-heatmap", dataMap[selectedParam!]],
     queryFn: () =>
-      fetchLandingPageData(`late_adult_landing/${dataMap[selectedParam]}`),
+      fetchLandingPageData(`late_adult_landing/${dataMap[selectedParam!]}`),
     enabled: !!selectedParam && !!genes,
     select: (data: LateAdultDataResponse) => {
       const columns = data.columns;
@@ -166,7 +166,7 @@ const LateAdultDataPage = () => {
 
   const paginatedData = useMemo(() => {
     const selectedData = !!selectedParam ? prodData : allProd;
-    const slicedData = selectedData.data.map((colData) => {
+    const slicedData = selectedData?.data.map((colData) => {
       return {
         ...colData,
         bins: colData.bins.slice(
@@ -176,7 +176,7 @@ const LateAdultDataPage = () => {
       };
     });
     return {
-      columns: selectedData.columns,
+      columns: selectedData?.columns,
       data: slicedData,
     } as LateAdultDataParsed;
   }, [selectedParam, prodData, allProd, activePage, pageSize]);
