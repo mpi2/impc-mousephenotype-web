@@ -88,6 +88,10 @@ const BatchQueryPage = () => {
     downloadButtonIsBusy,
   );
 
+  const fileHas1000Ids = () => {
+    return fileIDCount !== null && fileIDCount >= 1000;
+  };
+
   const updateSelectedSystems = (selectedOptions) => {
     setSelectedSystems(selectedOptions.map((opt) => opt.value));
   };
@@ -98,14 +102,14 @@ const BatchQueryPage = () => {
 
   const filteredData = useMemo(() => {
     let intermediateRes = selectedSystems.length
-      ? results.filter((gene) =>
+      ? results?.filter((gene) =>
           selectedSystems.every((system) =>
             gene.allSignificantSystems.includes(system),
           ),
         )
       : results;
     intermediateRes = selectedPhenotypes.length
-      ? intermediateRes.filter((gene) =>
+      ? intermediateRes?.filter((gene) =>
           selectedPhenotypes.every((phenotype) =>
             gene.allSignificantPhenotypes.includes(phenotype),
           ),
@@ -122,7 +126,7 @@ const BatchQueryPage = () => {
         .flatMap((r) => r.allSignificantPhenotypes)
         .forEach((phenotype) => {
           if (phenotypeResultsMap.has(phenotype)) {
-            const newVal = phenotypeResultsMap.get(phenotype) + 1;
+            const newVal = phenotypeResultsMap.get(phenotype)! + 1;
             phenotypeResultsMap.set(phenotype, newVal);
           } else {
             phenotypeResultsMap.set(phenotype, 1);
@@ -132,7 +136,7 @@ const BatchQueryPage = () => {
         .flatMap((r) => r.allSignificantSystems)
         .forEach((system) => {
           if (systemsMap.has(system)) {
-            const newVal = systemsMap.get(system) + 1;
+            const newVal = systemsMap.get(system)! + 1;
             systemsMap.set(system, newVal);
           } else {
             systemsMap.set(system, 1);
@@ -186,7 +190,7 @@ const BatchQueryPage = () => {
     zippedFile: boolean,
   ) => {
     let body;
-    if (tab === "upload-your-list") {
+    if (tab === "upload-your-list" && file !== null) {
       const data = new FormData();
       data.append("file", file);
       body = data;
@@ -247,12 +251,12 @@ const BatchQueryPage = () => {
           <h1 className="mb-4 mt-2">
             <strong>IMPC Dataset Batch Query</strong>
           </h1>
-          <Tabs className="mt-4" onSelect={(e) => setTab(e)}>
+          <Tabs className="mt-4" onSelect={(e) => setTab(e as string)}>
             <Tab eventKey="paste-your-list" title="Paste your list">
               <Form className="mt-3">
                 <Form.Group>
                   <Form.Label>
-                    <strong>List of ID's</strong>
+                    <strong>List of ID&#39;s</strong>
                   </Form.Label>
                   <br />
                   <Form.Text className="text-muted">
@@ -276,9 +280,11 @@ const BatchQueryPage = () => {
                   <Form.Control
                     type="file"
                     accept="text/plain"
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setFile(e.currentTarget.files[0])
-                    }
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      if (e.currentTarget.files) {
+                        setFile(e.currentTarget.files[0]);
+                      }
+                    }}
                   />
                 </Form.Group>
               </Form>
@@ -286,7 +292,7 @@ const BatchQueryPage = () => {
           </Tabs>
           <div className="mt-4">
             {formSubmitted && (geneIdArray?.length === 0 || file === null) && (
-              <Alert variant="warning">Please enter a list of ID's</Alert>
+              <Alert variant="warning">Please enter a list of ID&#39;s</Alert>
             )}
             <button
               onClick={() => setFormSubmitted(true)}
@@ -295,7 +301,7 @@ const BatchQueryPage = () => {
                 isFetching ||
                 downloadButtonIsBusy ||
                 geneIdArray?.length >= 1000 ||
-                fileIDCount >= 1000
+                fileHas1000Ids()
               }
             >
               Submit
@@ -314,9 +320,7 @@ const BatchQueryPage = () => {
           )}
           <BatchQueryResults
             sortedData={sortedData ?? []}
-            hasMoreThan1000Ids={
-              geneIdArray?.length >= 1000 || fileIDCount >= 1000
-            }
+            hasMoreThan1000Ids={geneIdArray?.length >= 1000 || fileHas1000Ids()}
             isFetching={isFetching}
             numberTotalGenes={sortedData?.length ?? 0}
             isDataAvailable={!!filteredData}
@@ -333,30 +337,34 @@ const BatchQueryPage = () => {
           />
         </Card>
         <Modal size="lg" show={!!selectedAlleleData} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>
-              Phenotypes for&nbsp;
-              <AlleleSymbol
-                symbol={selectedAlleleData?.alelleSymbol}
-                withLabel={false}
-              />
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <ul>
-              {selectedAlleleData?.phenotypes.map((phenotype) => (
-                <li>{phenotype}</li>
-              ))}
-            </ul>
-          </Modal.Body>
-          <Modal.Footer>
-            <button
-              className="btn impc-secondary-button small"
-              onClick={handleClose}
-            >
-              Close
-            </button>
-          </Modal.Footer>
+          {selectedAlleleData && (
+            <>
+              <Modal.Header closeButton>
+                <Modal.Title>
+                  Phenotypes for&nbsp;
+                  <AlleleSymbol
+                    symbol={selectedAlleleData.alelleSymbol}
+                    withLabel={false}
+                  />
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <ul>
+                  {selectedAlleleData.phenotypes.map((phenotype, index) => (
+                    <li key={index}>{phenotype}</li>
+                  ))}
+                </ul>
+              </Modal.Body>
+              <Modal.Footer>
+                <button
+                  className="btn impc-secondary-button small"
+                  onClick={handleClose}
+                >
+                  Close
+                </button>
+              </Modal.Footer>
+            </>
+          )}
         </Modal>
       </Container>
     </>

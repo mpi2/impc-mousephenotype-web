@@ -120,7 +120,7 @@ export const useBatchQuery = (
         headers.append("Content-Type", "application/json");
       }
 
-      let body;
+      let body: FormData | string;
       if (tab === "upload-your-list") {
         const data = new FormData();
         // @ts-ignore
