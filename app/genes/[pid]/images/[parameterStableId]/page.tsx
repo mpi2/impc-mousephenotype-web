@@ -12,31 +12,18 @@ type PageParams = Promise<{
   parameterStableId: string;
 }>;
 
-async function getImages(
-  mgiGeneAccessionId: string,
-  parameterStableId: string,
-) {
-  const controlImages = await fetchControlImages(parameterStableId);
-  const mutantImages = await fetchMutantImages(
-    mgiGeneAccessionId,
-    parameterStableId,
-  );
-  return {
-    controlImages,
-    mutantImages,
-  };
-}
-
 export default async function Page({ params }: { params: PageParams }) {
   const mgiGeneAccessionId = (await params).pid;
   const parameterStableId = (await params).parameterStableId;
-  if (!mgiGeneAccessionId || mgiGeneAccessionId === "null") {
+  if (
+    !mgiGeneAccessionId ||
+    mgiGeneAccessionId === "null" ||
+    !parameterStableId
+  ) {
     notFound();
   }
 
-  return (
-    <ImageViewerPage controlImagesFromServer={[]} mutantImagesFromServer={[]} />
-  );
+  return <ImageViewerPage />;
 }
 
 export async function generateMetadata({

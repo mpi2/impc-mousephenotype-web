@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState, useCallback } from "react";
 import { Badge, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
 import Search from "@/components/Search";
@@ -309,25 +309,20 @@ export const metadata: Metadata = {
   title: "Image Comparator | International Mouse Phenotyping Consortium",
 };
 
-type ImagesCompareProps = {
-  mutantImagesFromServer: Array<GeneImageCollection>;
-  controlImagesFromServer: Array<GeneImageCollection>;
-};
-
-const ImagesCompare = ({
-  mutantImagesFromServer,
-  controlImagesFromServer,
-}: ImagesCompareProps) => {
+const ImagesCompare = () => {
   const router = useRouter();
   const params = useParams<{ pid: string; parameterStableId: string }>();
   const searchParams = useSearchParams();
   const pathName = usePathname();
-  const [selectedWTImage, setSelectedWTImage] = useState(0);
-  const [selectedMutantImage, setSelectedMutantImage] = useState(0);
-  const [appliedAnatomyTerm, setAppliedAnatomyTerm] = useState(null);
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
   const anatomyTerm = searchParams.get("anatomyTerm");
+
+  const [selectedWTImage, setSelectedWTImage] = useState(0);
+  const [selectedMutantImage, setSelectedMutantImage] = useState(0);
+  const [appliedAnatomyTerm, setAppliedAnatomyTerm] = useState<string | null>(
+    anatomyTerm,
+  );
   const { data: mutantImages, isFetching: mutantImagesLoading } = useQuery<
     Array<GeneImageCollection>
   >({
@@ -362,26 +357,116 @@ const ImagesCompare = ({
   const [selectedControlCenter, setSelectedControlCenter] =
     useState<string>("IMPC");
   const [selectedAllele, setSelectedAllele] = useState<string>("all");
-  const [metadataGroup, setMetadataGroup] = useState<string>(null);
-  const [strainAccessionId, setStrainAccessionId] = useState<string>(null);
-  const [procedureStableId, setProcedureStableId] = useState<string>(null);
+  const [metadataGroup, setMetadataGroup] = useState<string | null>(null);
+  const [strainAccessionId, setStrainAccessionId] = useState<string | null>(
+    null,
+  );
+  const [procedureStableId, setProcedureStableId] = useState<string | null>(
+    null,
+  );
 
   const showAssocParam =
     parameterStableId.includes("ALZ") || parameterStableId.includes("PAT");
 
-  const findCenterByMatchingAnatomyFilter = (
-    collections: Array<GeneImageCollection>,
-  ) => {
-    const firstCenter = collections[0];
-    return collections.reduce((center, imagesByCenter) => {
-      return filterControlImages(imagesByCenter.images).length !== 0
-        ? imagesByCenter
-        : center;
-    }, firstCenter);
-  };
+  const filterControlImages = useCallback(
+    (images: Array<Image>) => {
+      return images
+        ?.filter((i) => (selectedSex !== "both" ? i.sex === selectedSex : true))
+        ?.filter((i) =>
+          appliedAnatomyTerm !== null
+            ? !!i.associatedParameters?.find(
+                (p) => p.name.toLowerCase() === appliedAnatomyTerm,
+              )
+            : true,
+        )
+        ?.slice(0, 50);
+    },
+    [selectedSex, appliedAnatomyTerm],
+  );
+  const filterMutantImages = useCallback(
+    (images: Array<Image>) => {
+      return images
+        ?.filter((i) => (selectedSex !== "both" ? i.sex === selectedSex : true))
+        ?.filter((i) =>
+          selectedZyg !== "both" ? i.zygosity === selectedZyg : true,
+        )
+        ?.filter((i) =>
+          selectedAllele !== "all" ? i.alleleSymbol === selectedAllele : true,
+        )
+        ?.filter((i) =>
+          appliedAnatomyTerm !== null
+            ? !!i.associatedParameters?.find(
+                (p) => p.name.toLowerCase() === appliedAnatomyTerm,
+              )
+            : true,
+        );
+    },
+    [selectedSex, selectedZyg, selectedAllele, appliedAnatomyTerm],
+  );
+  const filterImagesByCenter = useCallback(
+    (images: Array<GeneImageCollection>, filters: Filters) => {
+      const { selectedCenter } = filters;
+      const hasImagesForParameter = !!images.find(
+        (c) => c.phenotypingCentre === selectedCenter,
+      );
+      if (hasImagesForParameter) {
+        return (
+          images
+            .filter(
+              (collection) => collection.phenotypingCentre === selectedCenter,
+            )
+            .filter(
+              (collection) =>
+                metadataGroup === null ||
+                collection.metadataGroup === metadataGroup,
+            )
+            .filter(
+              (collection) =>
+                strainAccessionId === null ||
+                appliedAnatomyTerm !== null ||
+                collection.strainAccessionId === strainAccessionId,
+            )
+            .filter(
+              (collection) =>
+                procedureStableId === null ||
+                collection.procedureStableId === procedureStableId,
+            )
+            .flatMap((collection) => collection.images)
+            .map((image) => ({
+              ...image,
+              experimentDate: moment(image.dateOfExperiment),
+            }))
+            .sort(
+              (a, b) => b.experimentDate.valueOf() - a.experimentDate.valueOf(),
+            ) || []
+        );
+      } else if (images?.length > 0) {
+        return images[0].images
+          .map((image) => ({
+            ...image,
+            experimentDate: moment(image.dateOfExperiment),
+          }))
+          .sort(
+            (a, b) => b.experimentDate.valueOf() - a.experimentDate.valueOf(),
+          );
+      }
+    },
+    [appliedAnatomyTerm, metadataGroup, strainAccessionId, procedureStableId],
+  );
+  const findCenterByMatchingAnatomyFilter = useCallback(
+    (collections: Array<GeneImageCollection>) => {
+      const firstCenter = collections[0];
+      return collections.reduce((center, imagesByCenter) => {
+        return filterControlImages(imagesByCenter.images).length !== 0
+          ? imagesByCenter
+          : center;
+      }, firstCenter);
+    },
+    [filterControlImages],
+  );
 
   useEffect(() => {
-    if (mutantImages.length > 0) {
+    if (mutantImages?.length > 0) {
       const selectedCenter = !appliedAnatomyTerm
         ? mutantImages[0]
         : findCenterByMatchingAnatomyFilter(mutantImages);
@@ -393,12 +478,12 @@ const ImagesCompare = ({
         setSelectedMutantCenter(selectedCenterName);
       }
     }
-    if (mutantImages.length > 0 && controlImagesRaw.length > 0) {
+    if (mutantImages?.length > 0 && controlImagesRaw?.length > 0) {
       if (!appliedAnatomyTerm) {
         const center = mutantImages[0].phenotypingCentre;
         if (
           center !== selectedControlCenter &&
-          controlImagesRaw.some((c) => c.phenotypingCentre === center)
+          controlImagesRaw?.some((c) => c.phenotypingCentre === center)
         ) {
           setSelectedControlCenter(center);
         }
@@ -411,96 +496,17 @@ const ImagesCompare = ({
         }
       }
     }
-  }, [mutantImages.length, controlImagesRaw.length, appliedAnatomyTerm]);
-
-  useEffect(() => {
-    if (anatomyTerm && anatomyTerm !== appliedAnatomyTerm) {
-      setAppliedAnatomyTerm(anatomyTerm);
-    }
-  }, [anatomyTerm]);
-
-  const filterControlImages = (images: Array<Image>) => {
-    return images
-      ?.filter((i) => (selectedSex !== "both" ? i.sex === selectedSex : true))
-      ?.filter((i) =>
-        appliedAnatomyTerm !== null
-          ? !!i.associatedParameters?.find(
-              (p) => p.name.toLowerCase() === appliedAnatomyTerm,
-            )
-          : true,
-      )
-      ?.slice(0, 50);
-  };
-  const filterMutantImages = (images: Array<Image>) => {
-    return images
-      ?.filter((i) => (selectedSex !== "both" ? i.sex === selectedSex : true))
-      ?.filter((i) =>
-        selectedZyg !== "both" ? i.zygosity === selectedZyg : true,
-      )
-      ?.filter((i) =>
-        selectedAllele !== "all" ? i.alleleSymbol === selectedAllele : true,
-      )
-      ?.filter((i) =>
-        appliedAnatomyTerm !== null
-          ? !!i.associatedParameters?.find(
-              (p) => p.name.toLowerCase() === appliedAnatomyTerm,
-            )
-          : true,
-      );
-  };
-  const filterImagesByCenter = (
-    images: Array<GeneImageCollection>,
-    filters: Filters,
-  ) => {
-    const { selectedCenter } = filters;
-    const hasImagesForParameter = !!images.find(
-      (c) => c.phenotypingCentre === selectedCenter,
-    );
-    if (hasImagesForParameter) {
-      return (
-        images
-          .filter(
-            (collection) => collection.phenotypingCentre === selectedCenter,
-          )
-          .filter(
-            (collection) =>
-              metadataGroup === null ||
-              collection.metadataGroup === metadataGroup,
-          )
-          .filter(
-            (collection) =>
-              strainAccessionId === null ||
-              appliedAnatomyTerm !== null ||
-              collection.strainAccessionId === strainAccessionId,
-          )
-          .filter(
-            (collection) =>
-              procedureStableId === null ||
-              collection.procedureStableId === procedureStableId,
-          )
-          .flatMap((collection) => collection.images)
-          .map((image) => ({
-            ...image,
-            experimentDate: moment(image.dateOfExperiment),
-          }))
-          .sort(
-            (a, b) => b.experimentDate.valueOf() - a.experimentDate.valueOf(),
-          ) || []
-      );
-    } else if (images?.length > 0) {
-      return images[0].images
-        .map((image) => ({
-          ...image,
-          experimentDate: moment(image.dateOfExperiment),
-        }))
-        .sort(
-          (a, b) => b.experimentDate.valueOf() - a.experimentDate.valueOf(),
-        );
-    }
-  };
+  }, [
+    mutantImages,
+    controlImagesRaw,
+    appliedAnatomyTerm,
+    selectedControlCenter,
+    selectedMutantCenter,
+    findCenterByMatchingAnatomyFilter,
+  ]);
 
   const { procedureName, parameterName, geneSymbol } = useMemo(() => {
-    if (mutantImages.length) {
+    if (mutantImages?.length) {
       return mutantImages[0];
     }
     return {
@@ -508,21 +514,21 @@ const ImagesCompare = ({
       parameterName: null,
       geneSymbol: null,
     };
-  }, [mutantImages.length]);
+  }, [mutantImages]);
 
   const selectedControlImages = useMemo(
     () =>
       filterImagesByCenter(controlImagesRaw, {
         selectedCenter: selectedControlCenter,
       }),
-    [controlImagesRaw, selectedControlCenter, metadataGroup, strainAccessionId],
+    [controlImagesRaw, selectedControlCenter, filterImagesByCenter],
   );
   const selectedMutantImages = useMemo(
     () =>
       filterImagesByCenter(mutantImages, {
         selectedCenter: selectedMutantCenter,
       }),
-    [mutantImages, selectedMutantCenter],
+    [mutantImages, selectedMutantCenter, filterImagesByCenter],
   );
 
   const allMutantCenters = useMemo(() => {
@@ -544,7 +550,13 @@ const ImagesCompare = ({
       );
     const centers = filteredCollections?.map((c) => c.phenotypingCentre);
     return uniq(centers) || ([] as Array<string>);
-  }, [mutantImages, appliedAnatomyTerm]);
+  }, [
+    mutantImages,
+    appliedAnatomyTerm,
+    metadataGroup,
+    strainAccessionId,
+    procedureStableId,
+  ]);
 
   const allControlCenters = useMemo(() => {
     const filteredCollections = controlImagesRaw
@@ -565,7 +577,13 @@ const ImagesCompare = ({
       );
     const centers = filteredCollections?.map((c) => c.phenotypingCentre);
     return uniq(centers) || ([] as Array<string>);
-  }, [controlImagesRaw, appliedAnatomyTerm]);
+  }, [
+    controlImagesRaw,
+    appliedAnatomyTerm,
+    metadataGroup,
+    strainAccessionId,
+    procedureStableId,
+  ]);
 
   const alleles: Array<string> = useMemo(
     () =>
@@ -576,7 +594,7 @@ const ImagesCompare = ({
 
   const controlImages = useMemo(
     () => filterControlImages(selectedControlImages),
-    [selectedControlImages, selectedSex, appliedAnatomyTerm],
+    [selectedControlImages, filterControlImages],
   );
   const filteredMutantImages = useMemo(
     () => filterMutantImages(selectedMutantImages),
@@ -586,6 +604,7 @@ const ImagesCompare = ({
       selectedZyg,
       selectedAllele,
       appliedAnatomyTerm,
+      filterMutantImages,
     ],
   );
 
