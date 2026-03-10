@@ -10,11 +10,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useRouter, useParams } from "next/navigation";
 
+type DesignData = {
+  assembly: string;
+  designId: number;
+  chr: string;
+  oligoStart: number;
+  oligoStop: number;
+  oligoSequence: string;
+  strand: number;
+  featureType: string;
+};
+
 const Oligo = () => {
   const router = useRouter();
   const params = useParams();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<Array<DesignData>>({
     queryKey: ["alleles", "htgt", params.id],
     queryFn: () => fetchAPI(`/api/v1/alleles/htgt/designId:${params.id}`),
     enabled: !!params.id,
@@ -100,17 +111,20 @@ const Oligo = () => {
               { label: "Strand", width: 1, disabled: true },
             ]}
           >
-            {data.map(
-              ({
-                assembly,
-                chr,
-                strand,
-                oligoStart,
-                oligoStop,
-                featureType,
-                oligoSequence,
-              }) => (
-                <tr>
+            {data?.map(
+              (
+                {
+                  assembly,
+                  chr,
+                  strand,
+                  oligoStart,
+                  oligoStop,
+                  featureType,
+                  oligoSequence,
+                },
+                index,
+              ) => (
+                <tr key={index}>
                   <td>{featureType}</td>
                   <td>{oligoStart}</td>
                   <td>{oligoStop}</td>
