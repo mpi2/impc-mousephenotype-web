@@ -78,11 +78,13 @@ const EmbryoLandingPage = () => {
   };
 
   const openModalListGenes = (wol: string) => {
-    const selectedList = data.secondaryViabilityData.find(
+    const selectedList = data?.secondaryViabilityData.find(
       (row) => row.windowOfLethality === wol,
     );
-    setModalVisible(true);
-    setListGenes(selectedList);
+    if (selectedList) {
+      setListGenes(selectedList);
+      setModalVisible(true);
+    }
   };
   const handleClose = () => {
     setModalVisible(false);
@@ -99,7 +101,7 @@ const EmbryoLandingPage = () => {
         : data.secondaryViabilityData
             .flatMap((genesByWOL) =>
               genesByWOL.genes.map((gene) => {
-                data.embryoDataAvailabilityGrid.find(
+                const availabilityData = data.embryoDataAvailabilityGrid.find(
                   (data) => data.mgiGeneAccessionId === gene.mgiGeneAccessionId,
                 );
                 return !!availabilityData
@@ -275,8 +277,8 @@ const EmbryoLandingPage = () => {
                   ]}
                 >
                   {data &&
-                    data?.primaryViabilityTable?.map((row) => (
-                      <tr>
+                    data?.primaryViabilityTable?.map((row, index) => (
+                      <tr key={index}>
                         <td>{getPrimaryViabilityText(row.outcome)}</td>
                         <td>{row.genes.length}</td>
                       </tr>
@@ -317,7 +319,7 @@ const EmbryoLandingPage = () => {
             <Row>
               <Col md={7}>
                 <div className={styles.chartWrapper}>
-                  {data.secondaryViabilityData && (
+                  {data?.secondaryViabilityData && (
                     <PieChart
                       title="Secondary Viability / Windows of Lethality"
                       data={data.secondaryViabilityData.map((d) => ({
@@ -347,8 +349,8 @@ const EmbryoLandingPage = () => {
                   ]}
                 >
                   {data &&
-                    data?.secondaryViabilityData?.map((row) => (
-                      <tr>
+                    data?.secondaryViabilityData?.map((row, index) => (
+                      <tr key={index}>
                         <td>
                           <button
                             className="btn link primary"
@@ -414,7 +416,7 @@ const EmbryoLandingPage = () => {
                     gene and life stage, with access to the Interactive Embryo
                     Viewer, where you can compare mutants and wild types side by
                     side and rotate 2D and 3D images; we also provide access to
-                    our external partners' embryo images.
+                    our external partners&#39; embryo images.
                   </li>
                   <li>
                     <Link className="link primary" href="embryo/vignettes">
