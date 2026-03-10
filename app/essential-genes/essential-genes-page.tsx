@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, Search } from "@/components";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Alert, Breadcrumb, Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import * as d3 from "d3";
@@ -152,15 +152,15 @@ const drawLabels = (
 };
 
 const EssentialGenesPage = () => {
-  const [hasDrawn, setHasDrawn] = useState(false);
+  const hasDrawnRef = useRef(false);
 
   useEffect(() => {
-    const total = figureData.reduce((acc, bucket) => acc + bucket.value, 0);
-    const cellEssentialData = generateCellEssentialData(figureData);
-    const mouseData = generateMouseData(figureData);
     const svgEl = document.getElementById("svg-figure");
-    if (svgEl && !hasDrawn) {
-      setHasDrawn(true);
+    if (svgEl && !hasDrawnRef.current) {
+      hasDrawnRef.current = true;
+      const total = figureData.reduce((acc, bucket) => acc + bucket.value, 0);
+      const cellEssentialData = generateCellEssentialData(figureData);
+      const mouseData = generateMouseData(figureData);
       const width = svgEl.clientWidth;
       const xScale = d3.scaleLinear([0, total * 1.25], [10, width - 10]);
       const chart = d3.select(svgEl);
@@ -215,7 +215,7 @@ const EssentialGenesPage = () => {
         .attr("width", 50)
         .attr("height", 50);
     }
-  }, [hasDrawn]);
+  }, []);
   return (
     <>
       <Suspense>
