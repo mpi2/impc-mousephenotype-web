@@ -133,6 +133,7 @@ exports[`Timeseries Chart page renders correctly 1`] = `
       </h1>
       <div
         class="mb-2 mt-4"
+        id="chart-page-loader"
       >
         <div
           class="spinner-border spinner-border-sm"
