@@ -203,7 +203,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
             </h1>
           )}
           {fetchingInProcess && (
-            <div id="chart-page-loader" className="mb-2 mt-4">
+            <div data-testid="chart-page-loader" className="mb-2 mt-4">
               <Spinner animation="border" size="sm" />
               &nbsp; Loading data
             </div>
