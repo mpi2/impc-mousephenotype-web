@@ -42,7 +42,7 @@ const DescriptionCell = <T extends Histopathology>(
   props: TableCellProps<T> & { maxChars?: number; onClick: (data: T) => void },
 ) => {
   const maxChars = props.maxChars || 50;
-  const truncated = props.value?.description.length > maxChars;
+  const truncated = props.value!.description.length > maxChars;
   const description = truncated
     ? props.value?.description.substring(0, maxChars) + "..."
     : props.value?.description;
@@ -75,9 +75,14 @@ const HistopathChartPage = ({
   const pathName = usePathname();
   const searchParams = useSearchParams();
   const mgiGeneAccessionId = decodeURIComponent(params.pid);
-  const [selectedAnatomy, setSelectedAnatomy] = useState<string>(null);
+  const anatomyParam = searchParams.get("anatomy");
+  const [selectedAnatomy, setSelectedAnatomy] = useState<string | null>(
+    anatomyParam,
+  );
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
-  const [selectedTissue, setSelectedTissue] = useState<Histopathology>(null);
+  const [selectedTissue, setSelectedTissue] = useState<Histopathology | null>(
+    null,
+  );
   const { data: gene } = useGeneSummaryQuery(
     mgiGeneAccessionId,
     !!mgiGeneAccessionId,
@@ -88,13 +93,8 @@ const HistopathChartPage = ({
     !!mgiGeneAccessionId && !!gene,
     histopathologyData,
   );
-  const anatomyParam = searchParams.get("anatomy");
 
   const defaultSort: SortType = useMemo(() => ["tissue", "asc"], []);
-
-  useEffect(() => {
-    setSelectedAnatomy(anatomyParam as string);
-  }, [anatomyParam]);
 
   const displayDescriptionModal = (item: Histopathology) => {
     setSelectedTissue(item);

@@ -598,14 +598,7 @@ const ImagesCompare = () => {
   );
   const filteredMutantImages = useMemo(
     () => filterMutantImages(selectedMutantImages),
-    [
-      selectedMutantImages,
-      selectedSex,
-      selectedZyg,
-      selectedAllele,
-      appliedAnatomyTerm,
-      filterMutantImages,
-    ],
+    [selectedMutantImages, filterMutantImages],
   );
 
   const removeAnatomyTerm = () => {

@@ -417,6 +417,7 @@ const IDGPage = () => {
                 <Image
                   style={{ maxWidth: "100%" }}
                   src="/data/images/landing-pages/idgLogo.png"
+                  alt=""
                 />
               </Col>
             </Row>

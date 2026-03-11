@@ -105,7 +105,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
     return () => {
       unsubscribeToggleIndicator();
     };
-  }, []);
+  }, [setSpecialChartLoading]);
 
   const parameterStableId: string =
     searchParams.get("parameterStableId") || datasetSummaries?.length
@@ -122,7 +122,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
     if (!isPPIChart && debouncedSpChartLoading) {
       setSpecialChartLoading(false);
     }
-  }, [isPPIChart]);
+  }, [isPPIChart, setSpecialChartLoading, debouncedSpChartLoading]);
 
   const allSummaries = !!overridingSummaries.length
     ? overridingSummaries?.concat(additionalSummaries)

@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import { useMemo } from "react";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import _ from "lodash";
+import { orderBy } from "lodash";
 import { formatESCellName, toSentenceCase } from "@/utils";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
@@ -17,7 +16,7 @@ type EsCellProps = {
   setQcData: (any) => void;
 };
 const ESCell = ({ mgiGeneAccessionId, alleleName, setQcData }: EsCellProps) => {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery<Array<AlleleEsCell>>({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "es_cell", alleleName],
     queryFn: () =>
       fetchAPI(
@@ -25,12 +24,7 @@ const ESCell = ({ mgiGeneAccessionId, alleleName, setQcData }: EsCellProps) => {
       ),
     placeholderData: [],
   });
-  const [sorted, setSorted] = useState<any[]>([]);
-  useEffect(() => {
-    if (data) {
-      setSorted(_.orderBy(data, "productId", "asc"));
-    }
-  }, [data]);
+  const sorted = useMemo(() => orderBy(data, "productId", "asc"), [data]);
 
   if (isLoading) {
     return (
@@ -55,7 +49,7 @@ const ESCell = ({ mgiGeneAccessionId, alleleName, setQcData }: EsCellProps) => {
   return (
     <Card id="esCell" data-testid="es-cell-section">
       <h2>ES Cells</h2>
-      {!data && data.length == 0 ? (
+      {!data || data?.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>
           No ES cell products found for this allele.
         </Alert>
