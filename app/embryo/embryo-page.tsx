@@ -99,7 +99,7 @@ const EmbryoLandingPage = () => {
         : data.secondaryViabilityData
             .flatMap((genesByWOL) =>
               genesByWOL.genes.map((gene) => {
-                data.embryoDataAvailabilityGrid.find(
+                const availabilityData = data.embryoDataAvailabilityGrid.find(
                   (data) => data.mgiGeneAccessionId === gene.mgiGeneAccessionId,
                 );
                 return !!availabilityData
