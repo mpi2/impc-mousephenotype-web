@@ -162,8 +162,10 @@ const EmbryoDataAvailabilityGrid = ({
             <option selected value="">
               No window selected
             </option>
-            {selectOptions.map((opt) => (
-              <option value={opt.value}>{capitalize(opt.label)}</option>
+            {selectOptions.map((opt, index) => (
+              <option key={index} value={opt.value}>
+                {capitalize(opt.label)}
+              </option>
             ))}
           </Form.Select>
         </div>

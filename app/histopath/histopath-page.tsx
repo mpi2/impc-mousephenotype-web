@@ -52,7 +52,9 @@ type HeatmapData = {
 
 const HistopathLandingPage = () => {
   const [query, setQuery] = useState("");
-  const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number>(null);
+  const [selectedHeaderIndex, setSelectedHeaderIndex] = useState<number | null>(
+    null,
+  );
   const [sortingByFixedTissue, setSortingByFixedTissue] = useState(false);
   const [sortingByGeneSymbol, setSortingByGeneSymbol] = useState(false);
   const [sort, setSort] = useState<"asc" | "desc" | "none">("none");
@@ -111,15 +113,17 @@ const HistopathLandingPage = () => {
   const openAllelePages = (gene: HeatmapData) => {
     const mgiID = gene.mgiAccession;
     gene.allelesWithTissue.forEach((allele) => {
-      const alleleSymbol = allele.match(/\<(.+)\>/)[1];
-      window.open(`/alleles/${mgiID}/${alleleSymbol}#mice`);
+      const alleleSymbol = allele?.match(/<(.+)>/)?.[1];
+      if (alleleSymbol) {
+        window.open(`/alleles/${mgiID}/${alleleSymbol}#mice`);
+      }
     });
   };
 
   const displayFixedTissueColumn = (gene: HeatmapData) => {
     if (gene.hasTissue && gene.allelesWithTissue.length === 1) {
       const mgiID = gene.mgiAccession;
-      const allele = gene.allelesWithTissue[0].match(/\<(.+)\>/)[1];
+      const allele = gene.allelesWithTissue[0].match(/<(.+)>/)?.[1];
       return (
         <a
           title="fixed tissue link"
@@ -196,11 +200,11 @@ const HistopathLandingPage = () => {
   const sortedAndFilteredData = useMemo(() => {
     let results: Array<HeatmapData>;
     if (query) {
-      results = histopathData.originalData.filter((gene) =>
-        gene.id.includes(query),
-      );
+      results =
+        histopathData?.originalData.filter((gene) => gene.id.includes(query)) ??
+        [];
     } else {
-      results = [...histopathData.originalData];
+      results = [...(histopathData?.originalData ?? [])];
     }
 
     if (sort === "none") {
@@ -399,7 +403,7 @@ const HistopathLandingPage = () => {
                         sort={sort}
                       />
                     </th>
-                    {histopathData.columns.map((header, index) => (
+                    {histopathData?.columns.map((header, index) => (
                       <th
                         key={header}
                         onClick={() => sortByHeader(index)}
@@ -436,7 +440,7 @@ const HistopathLandingPage = () => {
                         Fixed tissue available *
                       </div>
                     </th>
-                    {histopathData.columns.map((header, index) => (
+                    {histopathData?.columns.map((header, index) => (
                       <th key={header} onClick={() => sortByHeader(index)}>
                         <div
                           className={classNames(styles.header, styles.bottom)}

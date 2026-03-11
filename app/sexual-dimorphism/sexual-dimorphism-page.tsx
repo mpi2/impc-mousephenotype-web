@@ -119,7 +119,7 @@ const SexualDimorphismLandingPage = () => {
                       className="primary link"
                       href="http://www.bbc.co.uk/programmes/b08vwn6w"
                     >
-                      BBC Radio 4 - "inside Science"
+                      BBC Radio 4 - &#34;inside Science&#34;
                     </a>
                     &nbsp;|&nbsp;
                     <a
