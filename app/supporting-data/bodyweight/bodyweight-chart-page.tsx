@@ -44,7 +44,7 @@ const BodyWeightChartPage = () => {
             </Alert>
           )}
           {isFetching && (
-            <span>
+            <span data-testid="chart-page-loader">
               <Spinner animation="border" size="sm" />
               &nbsp; Loading data
             </span>

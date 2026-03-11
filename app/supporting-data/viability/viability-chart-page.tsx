@@ -18,7 +18,7 @@ const ViabilityChartPage = () => {
   const params = useSearchParams();
   const mgiGeneAccessionId: string = params.get("mgiGeneAccessionId");
 
-  const { viabilityData, isViabilityLoading, isError } = useViabilityQuery(
+  const { viabilityData, isFetching, isError } = useViabilityQuery(
     mgiGeneAccessionId as string,
     !!mgiGeneAccessionId,
   );
@@ -35,9 +35,9 @@ const ViabilityChartPage = () => {
           <ChartNav
             mgiGeneAccessionId={mgiGeneAccessionId}
             geneSymbol={activeDataset?.geneSymbol}
-            isFetching={isViabilityLoading}
+            isFetching={isFetching}
           />
-          {!viabilityData && !isViabilityLoading && (
+          {!viabilityData && !isFetching && (
             <Alert variant="primary" className="mb-4 mt-2">
               <Alert.Heading>No data available</Alert.Heading>
               <p>We could not find the data to display this page.</p>
@@ -59,7 +59,7 @@ const ViabilityChartPage = () => {
               data={viabilityData}
               selectedKey={selectedKey}
               onSelectParam={setSelectedKey}
-              dataIsLoading={isViabilityLoading}
+              dataIsLoading={isFetching}
             />
           )}
         </Card>
