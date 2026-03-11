@@ -87,7 +87,7 @@ const ViabilityDataComparison = (props: Props) => {
           </div>
         </div>
       ) : (
-        <span>
+        <span id="chart-page-loader">
           <Spinner animation="border" size="sm" />
           &nbsp; Loading data
         </span>

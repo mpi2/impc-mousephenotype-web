@@ -54,12 +54,6 @@ const ViabilityChartPage = () => {
               &nbsp;gene
             </strong>
           </h1>
-          {isFetching && (
-            <span id="chart-page-loader">
-              <Spinner animation="border" size="sm" />
-              &nbsp; Loading data
-            </span>
-          )}
           {isError === false && (
             <ViabilityDataComparison
               data={viabilityData}
