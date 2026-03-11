@@ -1,6 +1,6 @@
 "use client";
 
-import { AlleleSymbol, Search } from "@/components";
+import { AlleleSymbol, DownloadData, Search } from "@/components";
 import styles from "../../styles.module.scss";
 import {
   Accordion,
@@ -33,7 +33,7 @@ import {
   useRouter,
   useSearchParams,
 } from "next/navigation";
-import _ from "lodash";
+import { isEmpty } from "lodash";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import { GeneSummary } from "@/models/gene";
@@ -288,8 +288,25 @@ const HistopathChartPage = ({
                 cmp: <PlainTextCell />,
               },
             ]}
+            additionalBottomControls={
+              <DownloadData<Histopathology>
+                data={() => filteredData!}
+                fields={[
+                  { key: "tissue", label: "Tissue" },
+                  { key: "zygosity", label: "Zygosity" },
+                  { key: "specimenNumber", label: "Specimen number" },
+                  { key: "description", label: "Description" },
+                  { key: "mPathTerm", label: "MPath Term" },
+                  { key: "severityScore", label: "Severity Score" },
+                  { key: "significanceScore", label: "Significance Score" },
+                  { key: "descriptorPATO", label: "PATO Descriptor" },
+                  { key: "freeText", label: "Additional comments" },
+                ]}
+                fileName={`${gene?.geneSymbol}-histopathology-${selectedAnatomy ? selectedAnatomy : ""}-data`}
+              />
+            }
           />
-          {!_.isEmpty(data?.images) ? (
+          {!isEmpty(data?.images) ? (
             <>
               <h2>Histopathology images</h2>
               <Row>
