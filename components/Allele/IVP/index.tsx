@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { useMemo } from "react";
 import { Alert } from "react-bootstrap";
 import Card from "../../Card";
 import Pagination from "../../Pagination";
-import _ from "lodash";
+import { orderBy } from "lodash";
 import SortableTable from "../../SortableTable";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
@@ -16,7 +15,7 @@ const IntermediateVector = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery<Array<any>>({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "ivp", alleleName],
     queryFn: () =>
       fetchAPI(
@@ -24,12 +23,7 @@ const IntermediateVector = ({
       ),
     placeholderData: [],
   });
-  const [sorted, setSorted] = useState<any[]>([]);
-  useEffect(() => {
-    if (data) {
-      setSorted(_.orderBy(data, "productId", "asc"));
-    }
-  }, [data]);
+  const sorted = useMemo(() => orderBy(data, "productId", "asc"), [data]);
 
   if (isLoading) {
     return (
@@ -54,7 +48,7 @@ const IntermediateVector = ({
   return (
     <Card id="intermediateVector" data-testid="ivp-section">
       <h2>Intermediate vectors</h2>
-      {!data && data.length == 0 ? (
+      {!data || data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>
           No intermediate vector products found for this allele.
         </Alert>
@@ -75,9 +69,9 @@ const IntermediateVector = ({
                 { width: 2, label: "Completed", disabled: true },
               ]}
             >
-              {pageData.map((p) => {
+              {pageData.map((p, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <Link
                         href={`/designs/${p.designLink.split(":")[2]}`}

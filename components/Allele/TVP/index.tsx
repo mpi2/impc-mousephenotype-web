@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import { useMemo } from "react";
 import {
   faCartShopping,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import _ from "lodash";
+import { orderBy } from "lodash";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
@@ -23,17 +22,12 @@ const TargetingVector = ({
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "tvp", alleleName],
     queryFn: () =>
-      fetchAPI(
+      fetchAPI<Array<AlleleTvp>>(
         `/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
       ),
     placeholderData: [],
   });
-  const [sorted, setSorted] = useState<any[]>([]);
-  useEffect(() => {
-    if (data) {
-      setSorted(_.orderBy(data, "productId", "asc"));
-    }
-  }, [data]);
+  const sorted = useMemo(() => orderBy(data, "productId", "asc"), [data]);
 
   if (isLoading) {
     return (
@@ -58,7 +52,7 @@ const TargetingVector = ({
   return (
     <Card id="targetingVector" data-testid="tvp-section">
       <h2>Targeting vectors</h2>
-      {!data && data.length == 0 ? (
+      {!data || data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>
           No targeting vector products found for this allele.
         </Alert>
@@ -142,9 +136,8 @@ const TargetingVector = ({
                         scroll={false}
                         className="primary link"
                       >
-                        {p.designOligos ?? "View design oligo"}{" "}
+                        View design oligo
                       </Link>
-                      <strong>{p.designOligos}</strong>
                     </td>
                     <td>{p.name}</td>
                     <td>{p.cassette}</td>

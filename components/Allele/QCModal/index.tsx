@@ -1,7 +1,6 @@
-import React from "react";
 import { Modal } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import { toSentenceCase } from "../../../utils";
+import { toSentenceCase } from "@/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,7 +8,7 @@ const QCModal = ({
   qcData,
   onClose,
 }: {
-  qcData: Object;
+  qcData: Record<string, string>;
   onClose: () => void;
 }) => {
   if (!qcData || Object.keys(qcData).length == 0) {
@@ -41,8 +40,8 @@ const QCModal = ({
                     </strong>
                   </td>
                 </tr>
-                {valuePairs.map(([key, val]) => (
-                  <tr>
+                {valuePairs.map(([key, val], index) => (
+                  <tr key={index}>
                     <td>{toSentenceCase(key)}:</td>
                     <td style={{ textAlign: "right" }}>
                       <span className={val === "pass" ? "blue-dark" : ""}>

@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import { useMemo } from "react";
 import { faCartShopping, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import _ from "lodash";
+import { orderBy, uniqBy } from "lodash";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
@@ -25,17 +24,20 @@ const Mice = ({
   const { data, isLoading, isError } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "mice", alleleName],
     queryFn: () =>
-      fetchAPI(
+      fetchAPI<Array<AlelleMice>>(
         `/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
       ),
     placeholderData: [],
   });
-  const [sorted, setSorted] = useState<any[]>([]);
-  useEffect(() => {
-    if (data) {
-      setSorted(_.orderBy(data, "productId", "asc"));
-    }
-  }, [data]);
+  const sorted = useMemo(() => orderBy(data, "productId", "asc"), [data]);
+  const fixedTissuesLinks: Array<any> = useMemo(
+    () =>
+      uniqBy<string>(
+        data?.flatMap((item) => item.tissueDistribution) ?? [],
+        "tissueEnquiryLink",
+      ),
+    [data],
+  );
 
   if (isLoading) {
     return (
@@ -55,14 +57,10 @@ const Mice = ({
     );
   }
 
-  const fixedTissuesLinks: Array<any> = _.uniqBy(
-    data.flatMap((item) => item.tissueDistribution),
-    "tissueEnquiryLink",
-  );
   return (
     <Card id="mice" data-testid="mice-section">
       <h2>Mice</h2>
-      {!data && data.length == 0 ? (
+      {!data || data.length == 0 ? (
         <Alert variant="primary" style={{ marginTop: "1em" }}>
           No mice products found for this allele.
         </Alert>
@@ -74,8 +72,9 @@ const Mice = ({
               <>
                 {fixedTissuesLinks.length > 0 && (
                   <div>
-                    {fixedTissuesLinks.map((tissue) => (
+                    {fixedTissuesLinks.map((tissue, index) => (
                       <a
+                        key={index}
                         className="btn impc-secondary-button"
                         style={{ marginRight: "0.5rem" }}
                         href={tissue.tissueEnquiryLink}
