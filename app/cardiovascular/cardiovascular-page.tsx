@@ -19,6 +19,7 @@ import { ParentSize } from "@visx/responsive";
 import { fetchLandingPageData } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
+import data from "../../mocks/data/landing-pages/cardiovascular.json";
 
 type CardiovascularLandingPageData = {
   pieChart: {
@@ -195,7 +196,7 @@ const CardiovascularLandingPage = () => {
                       <LoadingProgressBar />
                     </div>
                   )}
-                  {data && (
+                  {pieChartData && (
                     <PieChart
                       title=""
                       data={pieChartData}
