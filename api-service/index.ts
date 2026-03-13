@@ -86,10 +86,10 @@ export async function fetchMHPlotDataFromS3(mpId: string) {
   return await response.json();
 }
 
-export async function fetchLandingPageData(
+export async function fetchLandingPageData<T = any>(
   landingPageId: string,
   fetchOpts = {},
-) {
+): Promise<T> {
   const response = await fetch(
     `${LANDING_PAGE_DATA_URL}/${landingPageId}.json`,
     fetchOpts,
