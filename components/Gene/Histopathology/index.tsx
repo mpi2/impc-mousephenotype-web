@@ -1,9 +1,9 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
-import _ from "lodash";
+import { orderBy } from "lodash";
 import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
 import { GeneHistopathology } from "@/models/gene";
@@ -20,7 +20,7 @@ import { SortType } from "@/models";
 
 const Histopathology = () => {
   const gene = useContext(GeneContext);
-  const [sorted, setSorted] = useState<any[]>([]);
+  const [sortType, setSortType] = useState<SortType>(["parameterName", "asc"]);
   const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
 
   const { isLoading, isError, data } = useQuery<Array<GeneHistopathology>>({
@@ -32,11 +32,10 @@ const Histopathology = () => {
     enabled: !!gene.mgiGeneAccessionId,
   });
 
-  useEffect(() => {
-    if (data) {
-      setSorted(_.orderBy(data, "parameterName", "asc"));
-    }
-  }, [data]);
+  const sorted = useMemo(
+    () => orderBy(data, sortType[0], sortType[1]),
+    [data, sortType],
+  );
 
   if (isLoading) {
     return (
@@ -60,7 +59,7 @@ const Histopathology = () => {
           href="https://dev.mousephenotype.org/help/data-visualization/gene-pages/"
         />
         <Alert variant="primary">
-          This gene doesn't have any significant Histopathology hits.&nbsp;
+          This gene doesn&#39;t have any significant Histopathology hits.&nbsp;
           <Link
             className="primary link"
             href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
@@ -110,9 +109,7 @@ const Histopathology = () => {
       <Pagination data={sorted}>
         {(pageData) => (
           <SortableTable
-            doSort={(sort) => {
-              setSorted(_.orderBy(data, sort[0], sort[1]));
-            }}
+            doSort={setSortType}
             defaultSort={defaultSort}
             headers={[
               { width: 4, label: "Phenotype", field: "parameterName" },
@@ -134,7 +131,6 @@ const Histopathology = () => {
                       href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
-                      legacyBehavior
                     >
                       <strong className="link">{`${p.parameterName} ${p.mpathTermName}`}</strong>
                     </Link>

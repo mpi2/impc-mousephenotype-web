@@ -31,7 +31,11 @@ const getScatterSeries = (
   sampleGroup: "control" | "experimental",
 ) => {
   if (!dataSeries) {
-    return null;
+    return {
+      sex,
+      sampleGroup,
+      data: [],
+    };
   }
   const data =
     dataSeries

@@ -41,7 +41,7 @@ interface IUnidimensionalScatterPlotProps {
   lineSeries: Array<Array<UnidimensionalSeries>>;
   zygosity: "homozygote" | "heterozygote" | "hemizygote";
   parameterName: string;
-  unit: string;
+  unit: string | null;
   isMiniSpecProcedure: boolean;
 }
 
@@ -107,7 +107,7 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
           },
         },
         legend: {
-          position: "bottom",
+          position: "bottom" as const,
           labels: {
             usePointStyle: true,
             padding: 20,
@@ -126,37 +126,37 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
       },
       scales: {
         x: {
-          type: "time",
+          type: "time" as const,
           display: true,
           offset: true,
           time: {
-            unit: "month",
+            unit: "month" as const,
             tooltipFormat: "DD MMM YYYY",
           },
           title: {
             text: `Date of experiment`,
             display: true,
-            align: "center",
+            align: "center" as const,
             padding: 5,
           },
         },
         y: {
-          type: "linear",
+          type: "linear" as const,
           display: true,
-          position: "left",
+          position: "left" as const,
           title: {
             text: `${parameterName} ${
               unit && unit.trim() !== "" ? "(" + unit + ")" : ""
             }`,
             display: true,
-            align: "center",
+            align: "center" as const,
             padding: 5,
           },
         },
         y1: {
-          type: "linear",
+          type: "linear" as const,
           display: false,
-          position: "right",
+          position: "right" as const,
           max: 1.1,
           grid: {
             drawOnChartArea: false,
@@ -164,7 +164,7 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
         },
       },
     }),
-    [isMiniSpecProcedure],
+    [isMiniSpecProcedure, parameterName, unit],
   );
   return (
     <Chart

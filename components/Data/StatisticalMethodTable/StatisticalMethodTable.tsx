@@ -199,7 +199,7 @@ const StatisticalMethodTable = ({
     return statisticalMethodFields
       .map((field) => attributes[field.key])
       .every((attribute) => !!attribute === false);
-  }, [datasetSummary]);
+  }, [attributes, statisticalMethodFields]);
 
   if (datasetSummary.resourceName === "3i") {
     return (
@@ -261,12 +261,17 @@ const StatisticalMethodTable = ({
     }
   };
 
-  const getDownloadData = () => {
+  const getDownloadData = (): Array<
+    Record<keyof Dataset["statisticalMethod"]["attributes"], string>
+  > => {
     return [
-      statisticalMethodFields.reduce((acc, field) => {
-        acc[field.key] = attributes[field.key] ?? "N/A";
-        return acc;
-      }, {}),
+      statisticalMethodFields.reduce(
+        (acc, field) => {
+          acc[field.key as string] = attributes[field.key] ?? "N/A";
+          return acc;
+        },
+        {} as Record<keyof Dataset["statisticalMethod"]["attributes"], string>,
+      ),
     ];
   };
 

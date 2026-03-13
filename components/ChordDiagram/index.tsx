@@ -25,7 +25,7 @@ const ChordDiagram = ({
   height = 960,
   topTerms = [],
 }: Props) => {
-  const ref = useRef();
+  const ref = useRef<SVGSVGElement>(null);
   const outerRadius = Math.min(width, height) * 0.5 - 200;
   const innerRadius = outerRadius - 30;
 
@@ -155,7 +155,7 @@ const ChordDiagram = ({
           ", "
         );
       });
-  }, [data, labels]);
+  }, [data, labels, height, width, topTerms, innerRadius, outerRadius]);
 
   return (
     <div className={styles.wrapper}>

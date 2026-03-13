@@ -6,14 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { orderBy } from "lodash";
-import React, {
-  forwardRef,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { Ref, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Alert, Overlay, Spinner, Tab, Tabs, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
@@ -36,11 +29,11 @@ import Skeleton from "react-loading-skeleton";
 type ScaleProps = {
   children: number;
   toggleFocus: (newValue: boolean) => void;
+  ref: Ref<HTMLDivElement>;
 };
-type Ref = HTMLDivElement;
 
-const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
-  const { children = 5, toggleFocus } = props;
+const Scale = (props: ScaleProps) => {
+  const { children = 5, toggleFocus, ref } = props;
   return (
     <div
       ref={ref}
@@ -55,7 +48,7 @@ const Scale = forwardRef<Ref, ScaleProps>((props: ScaleProps, ref) => {
         ))}
     </div>
   );
-});
+};
 
 type PhenoGridElProps = {
   rowDiseasePhenotypes: string | Array<string>;
@@ -87,21 +80,25 @@ const PhenoGridEl = ({ rowDiseasePhenotypes, data }: PhenoGridElProps) => {
 
   // Process mouse phenotypes for each object in data
   // Filter out results with a pd score of 0
-  const objectSets = data
-    .filter(({ phenodigmScore }) => phenodigmScore > 0)
-    .map(({ modelPhenotypes, modelDescription, phenodigmScore }) => {
-      const mousePhenotypes = processPhenotypes(modelPhenotypes);
-      const id = modelDescription;
-      const label = `${phenodigmScore.toFixed(2)}-${id}`;
-      const phenotypes = mousePhenotypes.map((item) => item.id);
+  const objectSets = useMemo(
+    () =>
+      data
+        .filter(({ phenodigmScore }) => phenodigmScore > 0)
+        .map(({ modelPhenotypes, modelDescription, phenodigmScore }) => {
+          const mousePhenotypes = processPhenotypes(modelPhenotypes);
+          const id = modelDescription;
+          const label = `${phenodigmScore.toFixed(2)}-${id}`;
+          const phenotypes = mousePhenotypes.map((item) => item.id);
 
-      // Create the object where the data will be stored
-      return {
-        id: id,
-        label: label,
-        phenotypes: phenotypes,
-      };
-    });
+          // Create the object where the data will be stored
+          return {
+            id: id,
+            label: label,
+            phenotypes: phenotypes,
+          };
+        }),
+    [data],
+  );
 
   // Adjust iframeHeight based on the number of disease phenotypes (y-axis)
 
@@ -122,15 +119,13 @@ const PhenoGridEl = ({ rowDiseasePhenotypes, data }: PhenoGridElProps) => {
     ) {
       setiFrameHeight(400);
     }
-  }, [diseasePhenotypes.length]);
+  }, [diseasePhenotypes.length, iframeHeight]);
 
   useEffect(() => {
     const iframe = iframeRef.current;
     if (iframe) {
       isIframeLoaded(iframe)
         .then(() => {
-          console.log("Iframe loaded successfully");
-
           setTimeout(() => {
             const subjects = diseasePhenotypes.map((item) => item.id);
             iframe.contentWindow?.postMessage(
@@ -140,8 +135,6 @@ const PhenoGridEl = ({ rowDiseasePhenotypes, data }: PhenoGridElProps) => {
               },
               "https://monarchinitiative.org",
             );
-
-            console.log("Message sent with a dealy of 0.5s");
           }, 500);
         })
         .catch((error) => {
@@ -152,22 +145,19 @@ const PhenoGridEl = ({ rowDiseasePhenotypes, data }: PhenoGridElProps) => {
     const handleMessage = (event: MessageEvent) => {
       const { width } = event.data;
       if (!iframe) return;
-
       // Set the iframe to fill its container
       iframe.style.width = "100%";
       iframe.style.height = "1000px";
 
-      // // But never bigger than its contents
+      // But never bigger than its contents
       iframe.style.maxWidth = `${width}px`;
       iframe.style.maxHeight = `${iframeHeight}px`;
     };
-
     window.addEventListener("message", handleMessage);
-
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, [diseasePhenotypes]);
+  }, [diseasePhenotypes, iframeHeight, objectSets]);
 
   return (
     <tr>

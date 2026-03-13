@@ -58,13 +58,13 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: OrderProps) => {
     if (filtered) {
       setNumAllelesAvailable(filtered.length);
     }
-  }, [filtered]);
+  }, [filtered, setNumAllelesAvailable]);
 
   useEffect(() => {
     if (isError && error) {
       setNumAllelesAvailable(0);
     }
-  }, [isError, error]);
+  }, [isError, error, setNumAllelesAvailable]);
 
   if (isFetching) {
     return (
@@ -101,7 +101,7 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: OrderProps) => {
       />
       <div className="mb-4">
         <p>
-          All available products are supplied via our member's centres or
+          All available products are supplied via our member&#39;s centres or
           partnerships. When ordering a product from the IMPC you will be
           redirected to one of their websites or prompted to start an email.
         </p>

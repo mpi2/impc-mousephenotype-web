@@ -74,7 +74,7 @@ interface IUnidimensionalBoxPlotProps {
   zygosity: "homozygote" | "heterozygote" | "hemizygote";
   chartAdditionalOptions?: Record<string, any>;
   parameterName: string;
-  unit: string;
+  unit: string | null;
 }
 
 const UnidimensionalBoxPlot: FC<IUnidimensionalBoxPlotProps> = ({

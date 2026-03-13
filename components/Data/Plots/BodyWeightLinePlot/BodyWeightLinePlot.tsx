@@ -55,10 +55,10 @@ export function setDatasets<
   );
 }
 
-function BodyWeightLinePlot(props: BodyWeightLinePlotProps, ref) {
+const BodyWeightLinePlot = (props: BodyWeightLinePlotProps) => {
   const { data, options, width = 300, height = 150 } = props;
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const chartRef = useRef<ChartJS | null>();
+  const chartRef = useRef<ChartJS | null>(null);
 
   const renderChart = () => {
     if (!canvasRef.current) return;
@@ -112,6 +112,6 @@ function BodyWeightLinePlot(props: BodyWeightLinePlotProps, ref) {
       width={width}
     ></canvas>
   );
-}
+};
 
 export default BodyWeightLinePlot;

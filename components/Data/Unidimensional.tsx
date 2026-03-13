@@ -14,7 +14,7 @@ import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
 import { getZygosityLabel } from "@/components/Data/Utils";
 import { useUnidimensionalDataQuery } from "@/hooks";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 type ChartSeries = {
   data: Array<any>;
@@ -33,24 +33,28 @@ const Unidimensional = ({
   children,
 }: UnidimensionalProps) => {
   const statisticalMethodName = datasetSummary.statisticalMethod.name ?? "";
-  const updateSummaryStatistics = (chartSeries: Array<ChartSeries>) => {
-    const zygosity = datasetSummary.zygosity;
-    return chartSeries.map((serie) => {
-      const { sampleGroup, sex } = serie;
-      const sampleGroupKey = sampleGroup === "control" ? "Control" : "Mutant";
-      const meanKey = `${sex}${sampleGroupKey}Mean`;
-      const stddevKey = `${sex}${sampleGroupKey}Sd`;
-      const countKey = `${sex}${sampleGroupKey}Count`;
-      return {
-        label: `${capitalize(sex)} ${getZygosityLabel(zygosity, sampleGroup)}`,
-        mean: datasetSummary.summaryStatistics?.[meanKey]?.toFixed(3) || 0,
-        stddev: datasetSummary.summaryStatistics?.[stddevKey]?.toFixed(3) || 0,
-        count: datasetSummary.summaryStatistics?.[countKey] || 0,
-      };
-    });
-  };
+  const updateSummaryStatistics = useCallback(
+    (chartSeries: Array<ChartSeries>) => {
+      const zygosity = datasetSummary.zygosity;
+      return chartSeries.map((serie) => {
+        const { sampleGroup, sex } = serie;
+        const sampleGroupKey = sampleGroup === "control" ? "Control" : "Mutant";
+        const meanKey = `${sex}${sampleGroupKey}Mean`;
+        const stddevKey = `${sex}${sampleGroupKey}Sd`;
+        const countKey = `${sex}${sampleGroupKey}Count`;
+        return {
+          label: `${capitalize(sex)} ${getZygosityLabel(zygosity, sampleGroup)}`,
+          mean: datasetSummary.summaryStatistics?.[meanKey]?.toFixed(3) || 0,
+          stddev:
+            datasetSummary.summaryStatistics?.[stddevKey]?.toFixed(3) || 0,
+          count: datasetSummary.summaryStatistics?.[countKey] || 0,
+        };
+      });
+    },
+    [datasetSummary],
+  );
 
-  const { data, isLoading, error, isError } = useUnidimensionalDataQuery(
+  const { data } = useUnidimensionalDataQuery(
     datasetSummary.parameterName,
     datasetSummary.datasetId,
     datasetSummary.zygosity,
@@ -59,7 +63,7 @@ const Unidimensional = ({
 
   const summaryStatistics = useMemo(
     () => updateSummaryStatistics(data.chartSeries),
-    [data],
+    [updateSummaryStatistics, data?.chartSeries],
   );
 
   const combinedPValue =

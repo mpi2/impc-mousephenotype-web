@@ -110,10 +110,9 @@ const TimeSeries = ({
   isVisible,
   children,
 }: GeneralChartProps) => {
-  const [viewSMA, setViewSMA] = useState(false);
-  useEffect(() => {
-    setViewSMA(datasetSummary.procedureStableId.includes("CAL"));
-  }, []);
+  const [viewSMA, setViewSMA] = useState(
+    datasetSummary.procedureStableId.includes("CAL"),
+  );
 
   const getLineSeries = (dataSeries, sex, sampleGroup, zygosity) => {
     if (!dataSeries) {

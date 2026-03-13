@@ -15,7 +15,7 @@ import {
   LineWithErrorBarsController,
   PointWithErrorBar,
 } from "chartjs-chart-error-bars";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { BodyWeightLinePlot } from "./Plots/BodyWeightLinePlot";
 
@@ -77,26 +77,29 @@ const BodyWeightChart = ({ datasetSummary }) => {
     return result;
   }, [datasetSummary]);
 
-  const getOrderedColumns = () => {
+  const getOrderedColumns = useCallback(() => {
     return Object.keys(data).sort();
-  };
+  }, [data]);
 
-  const getMaxAge = (absoluteAge: boolean): number => {
-    if (data) {
-      return Object.keys(data)
-        .filter((key) =>
-          viewOnlyRangeForMutant && !absoluteAge ? !key.includes("WT") : true,
-        )
-        .map((key) => data[key])
-        .reduce((age, datasetValues) => {
-          const maxAgeByDataset = datasetValues.at(-1).ageInWeeks;
-          return maxAgeByDataset > age ? maxAgeByDataset : age;
-        }, 0);
-    }
-    return 0;
-  };
+  const getMaxAge = useCallback(
+    (absoluteAge: boolean): number => {
+      if (data) {
+        return Object.keys(data)
+          .filter((key) =>
+            viewOnlyRangeForMutant && !absoluteAge ? !key.includes("WT") : true,
+          )
+          .map((key) => data[key])
+          .reduce((age, datasetValues) => {
+            const maxAgeByDataset = datasetValues.at(-1).ageInWeeks;
+            return maxAgeByDataset > age ? maxAgeByDataset : age;
+          }, 0);
+      }
+      return 0;
+    },
+    [data, viewOnlyRangeForMutant],
+  );
 
-  const getMinAge = (): number => {
+  const getMinAge = useCallback((): number => {
     if (data) {
       return Object.keys(data)
         .filter((key) => (viewOnlyRangeForMutant ? !key.includes("WT") : true))
@@ -107,7 +110,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
         }, Number.MAX_SAFE_INTEGER);
     }
     return 0;
-  };
+  }, [data, viewOnlyRangeForMutant]);
 
   const getValuesForRow = (week: number) => {
     return getOrderedColumns()
@@ -136,7 +139,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
     });
   };
 
-  const processData = () => {
+  const processData = useCallback(() => {
     const maxAge = getMaxAge(false);
     const minAge = getMinAge();
     const weekLabels = Array.from(
@@ -162,7 +165,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
       datasets,
       labels: weekLabels,
     };
-  };
+  }, [data, getMaxAge, getMinAge, getOrderedColumns]);
 
   const chartOptions = useMemo(
     () => ({
@@ -213,10 +216,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
   );
 
   const maxAge = getMaxAge(true);
-  const chartData = useMemo(
-    () => processData(),
-    [data, viewOnlyRangeForMutant],
-  );
+  const chartData = useMemo(() => processData(), [processData]);
 
   return (
     <>

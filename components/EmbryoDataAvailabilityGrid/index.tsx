@@ -19,9 +19,20 @@ const ClickableAxisTick = ({
   return <AxisTick {...tick} onClick={onClick} />;
 };
 
+type DataItem = {
+  id: string;
+  geneSymbol: string;
+  mgiGeneAccessionId: string;
+  procedureNames?: Array<string>;
+  hasAutomatedAnalysis: boolean;
+  hasVignettes: boolean;
+  isUmassGene: boolean;
+  windowOfLethality: string;
+};
+
 type Props = {
   selectOptions: Array<{ value: string; label: string }>;
-  data: Array<any>;
+  data: Array<DataItem>;
   secondaryViabilityData: Array<any>;
   viewAllGenes: boolean;
   onDataFilterChange: (value: boolean) => void;
@@ -77,7 +88,7 @@ const EmbryoDataAvailabilityGrid = ({
               : 0,
       })),
     }));
-  }, [data, dataIndex]);
+  }, [data]);
 
   const filteredData = useMemo(() => {
     const newSelectedGenes = !!selectedWOL
@@ -93,7 +104,9 @@ const EmbryoDataAvailabilityGrid = ({
           .filter(Boolean)
       : processedData;
     return selectedData.filter((gene) =>
-      !!query ? gene?.id.toLowerCase().includes(query.toLowerCase()) : true,
+      !!query
+        ? (gene?.id?.toLowerCase().includes(query.toLowerCase()) ?? false)
+        : true,
     );
   }, [processedData, query, selectedWOL, dataIndex]);
 

@@ -64,7 +64,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       ? viabilityTwoParametersMap
       : viabilityOneParametersMap;
 
-  const { data, isLoading, error, isError } = useQuery({
+  const { data, isError } = useQuery({
     queryKey: [
       "dataset",
       datasetSummary.parameterName,
@@ -79,7 +79,7 @@ const Viability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
       <Card>
         <Alert>
           This phenotype call was made by our Phenotyiping Center experts,
-          currently we don't have any supporting data for this call.
+          currently we don&#39;t have any supporting data for this call.
         </Alert>
       </Card>
     );

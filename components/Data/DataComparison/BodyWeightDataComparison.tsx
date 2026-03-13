@@ -58,7 +58,7 @@ const BodyWeightDataComparison = (props: Props) => {
     ) {
       onSelectParam(sorted[0].key);
     }
-  }, [sorted.length]);
+  }, [sorted, selectedKey, onSelectParam]);
 
   return (
     <>
@@ -78,8 +78,8 @@ const BodyWeightDataComparison = (props: Props) => {
             return (
               <motion.tr
                 key={d.key}
-                className={getBackgroundColorForRow(d, i, selectedKey)}
-                onClick={() => onSelectParam(d.key)}
+                className={getBackgroundColorForRow(d, i, selectedKey || "")}
+                onClick={() => onSelectParam(d.key ?? "")}
                 layout
                 initial={{ y: 10, opacity: 0, maxHeight: 0 }}
                 animate={{ y: 0, opacity: 1 }}
