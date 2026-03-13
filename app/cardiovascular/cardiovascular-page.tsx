@@ -1,13 +1,13 @@
 "use client";
 
 import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import data from "../../mocks/data/landing-pages/cardiovascular.json";
 import styles from "./styles.module.scss";
-import { Fragment, Suspense, useState } from "react";
+import { Fragment, Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   Card,
   ChordDiagram,
+  LoadingProgressBar,
   PieChart,
   PleiotropyChart,
   Search,
@@ -16,6 +16,33 @@ import {
 import PublicationsList from "@/components/PublicationsList";
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
+import { fetchLandingPageData } from "@/api-service";
+import { useQuery } from "@tanstack/react-query";
+import Skeleton from "react-loading-skeleton";
+
+type CardiovascularLandingPageData = {
+  pieChart: {
+    maleOnly: number;
+    femaleOnly: number;
+    both: number;
+    total: number;
+  };
+  table: Array<{
+    mp_term_id: string;
+    mp_term_name: string;
+    count: number;
+  }>;
+  phenotypeDistribution: Array<{
+    marker_accession_id: string;
+    marker_symbol: string;
+    cardiovascularPhenotypeCount: number;
+    otherPhenotypeCount: number;
+  }>;
+  chordDiagram: {
+    keys: Array<string>;
+    matrix: Array<Array<number>>;
+  };
+};
 
 const ProcedureWithVersions = ({ procedure }) => {
   return (
@@ -41,26 +68,83 @@ const ProcedureWithVersions = ({ procedure }) => {
 
 const CardiovascularLandingPage = () => {
   const [tableExtended, setTableExtended] = useState(false);
-  const phenotypeData = !tableExtended
-    ? data.phenotypes.slice(0, 10)
-    : data.phenotypes;
-  const chordLabels = [
-    { name: "cardiovascular system phenotype", count: 1622 },
-    { name: "vision/eye phenotype", count: 268 },
-    { name: "growth/size/body region phenotype", count: 712 },
-    { name: "embryo phenotype", count: 64 },
-    { name: "muscle phenotype ", count: 45 },
-  ];
-  const chordData = [
-    [590, 268, 712, 64, 45],
-    [268, 0, 26, 12, 4],
-    [712, 26, 0, 11, 6],
-    [64, 12, 11, 0, 0],
-    [45, 4, 6, 0, 0],
-  ];
+  const { data: landingPageData, isFetching: isFetchingLandingPageData } =
+    useQuery({
+      queryKey: ["landing-page", "embryo", "wol"],
+      queryFn: () =>
+        fetchLandingPageData<CardiovascularLandingPageData>(
+          "cardiovascular_landing",
+        ),
+      placeholderData: {
+        pieChart: {
+          maleOnly: 0,
+          femaleOnly: 0,
+          both: 0,
+          total: 0,
+        },
+        table: [],
+        phenotypeDistribution: [],
+        chordDiagram: {
+          keys: [],
+          matrix: [],
+        },
+      },
+      select: (data) => {
+        return {
+          ...data,
+          table: data.table.toSorted((a, b) => b.count - a.count),
+        };
+      },
+    });
   const { data: pleiotropyData, isLoading } = usePleiotropyQuery(
     "cardiovascular system",
   );
+
+  const pieChartData = useMemo(() => {
+    const getLabel = (key: string) => {
+      switch (key) {
+        case "maleOnly":
+          return "Male only";
+        case "femaleOnly":
+          return "Female only";
+        case "both":
+          return "Both sexes";
+        default:
+          return "";
+      }
+    };
+    let sum = 0;
+    if (!landingPageData) return [];
+    const chartData = Object.keys(landingPageData.pieChart)
+      .filter((k) => k !== "total")
+      .map((key) => {
+        sum += landingPageData.pieChart[key];
+        return {
+          value: landingPageData.pieChart[key],
+          label: getLabel(key),
+        };
+      });
+    chartData.push({
+      value: landingPageData.pieChart["total"] - sum,
+      label: "Phenotype not present",
+    });
+    return chartData;
+  }, [landingPageData]);
+
+  const phenotypeData = useMemo(() => {
+    if (!landingPageData) return [];
+    return tableExtended
+      ? landingPageData.table
+      : landingPageData.table.slice(0, 10);
+  }, [landingPageData, tableExtended]);
+
+  const chordDiagramLabels = useMemo(() => {
+    if (!landingPageData) return [];
+    return landingPageData.chordDiagram.keys.map((key) => ({
+      name: key,
+      count: 0,
+    }));
+  }, [landingPageData]);
 
   return (
     <>
@@ -103,10 +187,18 @@ const CardiovascularLandingPage = () => {
             <Row>
               <Col md={7}>
                 <div className={styles.chartWrapper}>
+                  {isFetchingLandingPageData && (
+                    <div
+                      className="mt-4"
+                      style={{ display: "flex", justifyContent: "center" }}
+                    >
+                      <LoadingProgressBar />
+                    </div>
+                  )}
                   {data && (
                     <PieChart
                       title=""
-                      data={data.genesTested}
+                      data={pieChartData}
                       chartColors={[
                         "rgba(239, 123, 11,1.0)",
                         "rgba(9, 120, 161,1.0)",
@@ -136,45 +228,58 @@ const CardiovascularLandingPage = () => {
                 >
                   {phenotypeData &&
                     phenotypeData.map((row) => (
-                      <tr key={row.id}>
+                      <tr key={row.mp_term_id}>
                         <td>
                           <Link
                             className="link primary"
-                            href={`/phenotypes/${row.id}`}
+                            href={`/phenotypes/${row.mp_term_id}`}
                           >
-                            {row.name}
+                            {row.mp_term_name}
                           </Link>
                         </td>
                         <td>
                           <a
                             href={
                               "http://www.mousephenotype.org/data/phenotypes/export/" +
-                              row.id
+                              row.mp_term_id
                             }
                           >
-                            {row.noOfGenes}
+                            {row.count}
                           </a>
                         </td>
                       </tr>
                     ))}
-                  <tr>
-                    <td>
-                      <a
-                        className="btn"
-                        onClick={() => setTableExtended(!tableExtended)}
-                      >
-                        {tableExtended ? "Show less" : "Show more"}
-                      </a>
-                    </td>
-                    <td>
-                      <a
-                        className="link primary download-data"
-                        href="https://www.mousephenotype.org/data/phenotypes/export/MP:0005385?fileType=tsv&fileName=IMPC_Cardiovascular%20System"
-                      >
-                        Download
-                      </a>
-                    </td>
-                  </tr>
+                  {isFetchingLandingPageData &&
+                    Array.from({ length: 10 }, (_, i) => (
+                      <tr key={i}>
+                        <td>
+                          <Skeleton width="100%" />
+                        </td>
+                        <td>
+                          <Skeleton width="100%" />
+                        </td>
+                      </tr>
+                    ))}
+                  {!isFetchingLandingPageData && (
+                    <tr>
+                      <td>
+                        <a
+                          className="btn"
+                          onClick={() => setTableExtended(!tableExtended)}
+                        >
+                          {tableExtended ? "Show less" : "Show more"}
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          className="link primary download-data"
+                          href="https://www.mousephenotype.org/data/phenotypes/export/MP:0005385?fileType=tsv&fileName=IMPC_Cardiovascular%20System"
+                        >
+                          Download
+                        </a>
+                      </td>
+                    </tr>
+                  )}
                 </SortableTable>
               </Col>
             </Row>
@@ -277,11 +382,20 @@ const CardiovascularLandingPage = () => {
               common genes. Corresponding gene lists can be downloaded using the
               download icon.
             </p>
-            <ChordDiagram
-              labels={chordLabels}
-              data={chordData}
-              topTerms={["cardiovascular system phenotype"]}
-            />
+            {isFetchingLandingPageData ? (
+              <div
+                className="mt-4"
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <LoadingProgressBar />
+              </div>
+            ) : (
+              <ChordDiagram
+                labels={chordDiagramLabels}
+                data={landingPageData?.chordDiagram.matrix}
+                topTerms={["cardiovascular system phenotype"]}
+              />
+            )}
           </Container>
         </Card>
         <Card>
