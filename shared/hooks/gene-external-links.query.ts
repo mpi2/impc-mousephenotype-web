@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { groupBy, uniqBy } from "lodash";
-import tremblayLabData from "./tremblayLab_data.json";
+import { groupBy } from "lodash";
 
 type ExternalLinks = {
   providerName: string;
@@ -54,13 +53,7 @@ export const useGeneExternalLinksQuery = (
       fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/gene_external_links`),
     enabled: routerIsReady && hasLoadedProvidersData,
     select: (linkList: Array<ExternalLinkResponse>) => {
-      // Temporal: Remove after database is updated
-      let tempData = linkList.concat(
-        tremblayLabData.filter(
-          (link) => link.mgiGeneAccessionId === mgiGeneAccessionId,
-        ),
-      );
-      const linksByProvider = groupBy(tempData, (link) => link.providerName);
+      const linksByProvider = groupBy(linkList, (link) => link.providerName);
       return Object.entries(linksByProvider)
         .map(([providerName, links]) => ({
           providerName,
