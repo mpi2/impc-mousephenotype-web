@@ -707,7 +707,20 @@ const ReleaseNotesPage = (props: Props) => {
           )}
 
           <h3 className="mb-0 mt-5 mb-2">Highlights</h3>
-          <Markdown remarkPlugins={[remarkBreaks]}>
+          <Markdown
+            remarkPlugins={[remarkBreaks]}
+            components={{
+              a: (props) => (
+                <Link
+                  className="link primary"
+                  href={props.href!}
+                  target="_blank"
+                >
+                  {props.children}
+                </Link>
+              ),
+            }}
+          >
             {unescapeReleaseNotes(releaseMetadata.dataReleaseNotes)}
           </Markdown>
         </Card>
