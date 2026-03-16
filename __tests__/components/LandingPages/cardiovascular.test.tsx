@@ -6,8 +6,13 @@ import {
   renderWithClient,
   TEST_LANDING_PAGE_ENDPOINT,
 } from "../../utils";
-import { waitFor } from "@testing-library/react";
+import {
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import pleiotropyData from "../../../mocks/data/tests/landing-pages/phenotype-pleiotropy.json";
+import cardiovascularData from "../../../mocks/data/tests/landing-pages/cardiovascular_landing.json";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -52,8 +57,17 @@ describe("Cardiovascular landing page", () => {
           return res(ctx.json(pleiotropyData));
         },
       ),
+      rest.get(
+        `${TEST_LANDING_PAGE_ENDPOINT}/cardiovascular_landing.json`,
+        (req, res, ctx) => {
+          return res(ctx.json(cardiovascularData));
+        },
+      ),
     );
     const { container } = renderWithClient(<CardiovascularLandingPage />);
+    await waitForElementToBeRemoved(() =>
+      screen.queryAllByTestId("chartLoader"),
+    );
     await waitFor(() => expect(container).toMatchSnapshot());
   });
 });
