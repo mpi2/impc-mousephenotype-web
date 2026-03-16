@@ -39,6 +39,7 @@ import styles from "./styles.module.scss";
 import classNames from "classnames";
 
 const listOfPastReleases = [
+  "23.0",
   "22.1",
   "22.0",
   "21.1",
