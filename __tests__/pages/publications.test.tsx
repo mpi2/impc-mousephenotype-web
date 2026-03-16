@@ -5,7 +5,11 @@ import { rest } from "msw";
 import aggregationData from "../../mocks/data/tests/publications-page/aggregation-data.json";
 import allPubsData from "../../mocks/data/tests/publications-page/all-pubs-data.json";
 import consortiumPubsData from "../../mocks/data/tests/publications-page/consortium-pubs-data.json";
-import { waitFor, screen } from "@testing-library/react";
+import {
+  waitFor,
+  screen,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 
 const AGGREGATION_ENDPOINT =
   "https://www.ebi.ac.uk/mi/impc/publication-service/data/api/v1/publications/aggregation";
@@ -48,6 +52,9 @@ describe("Publications page", () => {
     await waitFor(() => {
       expect(screen.getAllByRole("table").length).toBe(2);
     });
+    await waitForElementToBeRemoved(() =>
+      screen.queryAllByTestId("chartLoader"),
+    );
     expect(container).toMatchSnapshot();
   });
 });

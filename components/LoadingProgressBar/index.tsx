@@ -20,20 +20,22 @@ const LoadingProgressBar = () => {
   }, [percentage]);
 
   return (
-    <CircularProgressbarWithChildren
-      className={styles.rotating}
-      value={percentage}
-      styles={{
-        path: {
-          stroke: "#ccc",
-          transition: "stroke-dashoffset 2s ease 0s",
-        },
-        trail: {
-          stroke: "#fff",
-        },
-      }}
-      strokeWidth={12}
-    />
+    <div data-testid="chartLoader">
+      <CircularProgressbarWithChildren
+        className={styles.rotating}
+        value={percentage}
+        styles={{
+          path: {
+            stroke: "#ccc",
+            transition: "stroke-dashoffset 2s ease 0s",
+          },
+          trail: {
+            stroke: "#fff",
+          },
+        }}
+        strokeWidth={12}
+      />
+    </div>
   );
 };
 
