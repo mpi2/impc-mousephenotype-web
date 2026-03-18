@@ -47,6 +47,7 @@ export type Image = {
   experimentDate: Moment;
   biologicalSampleGroup: string;
   imageLink: string | null;
+  ftpUrlPrefix?: string;
 };
 
 export type AssociatedParameter = {
