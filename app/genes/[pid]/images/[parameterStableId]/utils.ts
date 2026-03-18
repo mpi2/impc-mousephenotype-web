@@ -3,8 +3,8 @@ import { GeneImageCollection, Image } from "@/models/gene";
 const bioStudiesIdParameterMap = {
   HIS: "S-BIAD3040",
   CSD: "S-BIAD3043",
-  ECG: "S-BIAD3009",
-  SLW: "S-BIAD3012",
+  //ECG: "S-BIAD3009",
+  //SLW: "S-BIAD3012",
   ALZ: "S-BIAD2986",
   EYE: "S-BIAD2786",
   PAT: "S-BIAD3041",
