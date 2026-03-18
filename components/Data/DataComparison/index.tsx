@@ -7,7 +7,7 @@ import { OverlayTrigger, Tooltip, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset, SortType, TableHeader } from "@/models";
 import { getBackgroundColorForRow, groupData, processData } from "./utils";
-import { AlleleSymbol } from "@/components";
+import { AlleleSymbol, DownloadData } from "@/components";
 import Skeleton from "react-loading-skeleton";
 import { motion, AnimatePresence } from "motion/react";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -63,6 +63,7 @@ type Props = {
   onSelectParam?: (newValue: string) => void;
   dataIsLoading: boolean;
   isMiniSpecProcedure?: boolean;
+  geneSymbol?: string;
 };
 
 type SortOptions = {
@@ -83,6 +84,7 @@ const DataComparison = (props: Props) => {
     onSelectParam = (_) => {},
     dataIsLoading,
     isMiniSpecProcedure = false,
+    geneSymbol,
   } = props;
 
   const groups = groupData(data);
@@ -332,6 +334,18 @@ const DataComparison = (props: Props) => {
               }))}
               data={metadataValues.data}
               defaultSort={[metadataValues.labels[0], "asc"]}
+              additionalBottomControls={
+                <>
+                  <DownloadData<MiniSpecMetadata>
+                    data={() => metadataValues.data}
+                    fields={metadataValues.labels.map((label) => ({
+                      key: camelCase(label),
+                      label,
+                    }))}
+                    fileName={`${geneSymbol}-minispec-procedure-data.json`}
+                  />
+                </>
+              }
             />
           )}
         </Modal.Body>

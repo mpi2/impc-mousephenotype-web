@@ -240,6 +240,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
               dataIsLoading={fetchingInProcess}
               {...(isABRChart && { initialSortByProp: "parameterStableId" })}
               isMiniSpecProcedure={isMiniSpecProcedure}
+              geneSymbol={allSummaries?.[0]?.geneSymbol}
             />
           )}
           {isPPIChart && (
