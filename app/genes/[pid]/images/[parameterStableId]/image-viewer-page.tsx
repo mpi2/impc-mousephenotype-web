@@ -36,8 +36,13 @@ import {
   useParams,
   useRouter,
 } from "next/navigation";
-import { Metadata } from "next";
+import {
+  buildFTPPrefix,
+  getFTPURL,
+  hasImagesOnBioStudies,
+} from "@/app/genes/[pid]/images/[parameterStableId]/utils";
 
+const FTP_BIOSTUDIES_URL = "https://ftp.ebi.ac.uk/pub/databases/biostudies";
 type Filters = {
   selectedCenter: string;
 };
@@ -172,19 +177,23 @@ const ImageInformation = ({
 };
 
 type ImageViewerProps = {
+  parameterStableId: string;
   image: Image;
   name: string;
   hasAvailableImages: boolean;
   isAltParameter: boolean;
   isLoading: boolean;
+  isOnBiostudies: boolean;
 };
 
 const ImageViewer = ({
+  parameterStableId,
   image,
   name,
   hasAvailableImages,
   isAltParameter,
   isLoading,
+  isOnBiostudies,
 }: ImageViewerProps) => {
   if (isLoading) {
     return (
@@ -223,6 +232,9 @@ const ImageViewer = ({
       </div>
     );
   }
+  const imageUrl = isOnBiostudies
+    ? getFTPURL(image?.ftpUrlPrefix, parameterStableId, "full")
+    : addTrailingSlash(image?.jpegUrl);
   return (
     <TransformWrapper>
       {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
@@ -239,7 +251,7 @@ const ImageViewer = ({
               <img
                 data-testid={`selected-image-${name}`}
                 key={image?.jpegUrl}
-                src={addTrailingSlash(image?.jpegUrl)}
+                src={imageUrl}
                 style={{ width: "100%", display: "block" }}
                 alt=""
               />
@@ -254,20 +266,29 @@ const ImageViewer = ({
 };
 
 type ColumnProps = {
+  parameterStableId: string;
   images: Array<Image>;
   selected: number;
   onSelection: (i: number) => void;
   showAssocParam?: boolean;
   type: "control" | "mutant";
+  isOnBiostudies: boolean;
 };
 
 const Column = ({
+  parameterStableId,
   images,
   selected,
   onSelection,
   showAssocParam,
   type,
+  isOnBiostudies,
 }: ColumnProps) => {
+  const getThumbnailUrl = (image: Image) => {
+    return isOnBiostudies
+      ? getFTPURL(image.ftpUrlPrefix, parameterStableId, "thumbnail")
+      : addTrailingSlash(image.thumbnailUrl);
+  };
   return (
     <Row className={styles.images}>
       {images?.map((image, i) => (
@@ -280,7 +301,7 @@ const Column = ({
             onClick={() => onSelection(i)}
           >
             <LazyLoadImage
-              src={addTrailingSlash(image.thumbnailUrl)}
+              src={getThumbnailUrl(image)}
               effect="blur"
               alt={""}
               width="100%"
@@ -305,19 +326,7 @@ const Column = ({
   );
 };
 
-export const metadata: Metadata = {
-  title: "Image Comparator | International Mouse Phenotyping Consortium",
-};
-
-type ImagesCompareProps = {
-  mutantImagesFromServer: Array<GeneImageCollection>;
-  controlImagesFromServer: Array<GeneImageCollection>;
-};
-
-const ImagesCompare = ({
-  mutantImagesFromServer,
-  controlImagesFromServer,
-}: ImagesCompareProps) => {
+const ImagesCompare = () => {
   const router = useRouter();
   const params = useParams<{ pid: string; parameterStableId: string }>();
   const searchParams = useSearchParams();
@@ -328,16 +337,29 @@ const ImagesCompare = ({
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
   const anatomyTerm = searchParams.get("anatomyTerm");
-  const { data: mutantImages, isFetching: mutantImagesLoading } = useQuery<
-    Array<GeneImageCollection>
-  >({
+  const { data: mutantImages, isFetching: mutantImagesLoading } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],
     queryFn: () =>
-      fetchAPI(
+      fetchAPI<Array<GeneImageCollection>>(
         `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`,
       ),
     enabled: !!parameterStableId && !!pid,
     placeholderData: [],
+    select: (data) => {
+      return data.map((imagesPerCenter) => {
+        return {
+          ...imagesPerCenter,
+          images: imagesPerCenter.images.map((image) => ({
+            ...image,
+            ftpUrlPrefix: buildFTPPrefix(
+              parameterStableId,
+              imagesPerCenter,
+              image,
+            ),
+          })),
+        };
+      });
+    },
   });
 
   const isALTParameter = useMemo(() => {
@@ -353,6 +375,21 @@ const ImagesCompare = ({
         ),
       enabled: !!parameterStableId,
       placeholderData: [],
+      select: (data) => {
+        return data.map((imagesPerCenter) => {
+          return {
+            ...imagesPerCenter,
+            images: imagesPerCenter.images.map((image) => ({
+              ...image,
+              ftpUrlPrefix: buildFTPPrefix(
+                parameterStableId,
+                imagesPerCenter,
+                image,
+              ),
+            })),
+          };
+        });
+      },
     });
 
   const [selectedSex, setSelectedSex] = useState("both");
@@ -368,6 +405,8 @@ const ImagesCompare = ({
 
   const showAssocParam =
     parameterStableId.includes("ALZ") || parameterStableId.includes("PAT");
+
+  const hasImagesOnBiostudies = hasImagesOnBioStudies(parameterStableId);
 
   const findCenterByMatchingAnatomyFilter = (
     collections: Array<GeneImageCollection>,
@@ -657,12 +696,14 @@ const ImagesCompare = ({
                   >
                     <ImageViewer
                       name="WT"
+                      parameterStableId={parameterStableId}
                       image={controlImages?.[selectedWTImage]}
                       hasAvailableImages={
                         !wildtypeImagesLoading && controlImages?.length === 0
                       }
                       isAltParameter={isALTParameter}
                       isLoading={wildtypeImagesLoading}
+                      isOnBiostudies={hasImagesOnBiostudies}
                     />
                   </div>
                   <div className={styles.imageInfo}>
@@ -707,12 +748,14 @@ const ImagesCompare = ({
                   >
                     <ImageViewer
                       name="mutant"
+                      parameterStableId={parameterStableId}
                       image={filteredMutantImages?.[selectedMutantImage]}
                       hasAvailableImages={
                         filteredMutantImages?.length !== 0 || false
                       }
                       isAltParameter={isALTParameter}
                       isLoading={mutantImagesLoading}
+                      isOnBiostudies={hasImagesOnBiostudies}
                     />
                   </div>
                   <div className={styles.imageInfo}>
@@ -868,21 +911,25 @@ const ImagesCompare = ({
               <Col sm={6}>
                 <Column
                   type="control"
+                  parameterStableId={parameterStableId}
                   selected={selectedWTImage}
                   images={controlImages}
                   showAssocParam={showAssocParam}
                   onSelection={(imageIndex) => setSelectedWTImage(imageIndex)}
+                  isOnBiostudies={hasImagesOnBiostudies}
                 />
               </Col>
               <Col sm={6}>
                 <Column
                   type="mutant"
+                  parameterStableId={parameterStableId}
                   selected={selectedMutantImage}
                   images={filteredMutantImages}
                   showAssocParam={showAssocParam}
                   onSelection={(imageIndex) =>
                     setSelectedMutantImage(imageIndex)
                   }
+                  isOnBiostudies={hasImagesOnBiostudies}
                 />
               </Col>
             </Row>
