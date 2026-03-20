@@ -77,7 +77,7 @@ describe("Image comparator page", () => {
     });
     expect(await screen.findByTestId("selected-image-mutant")).toHaveAttribute(
       "src",
-      "//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/1069405/",
+      "https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/dbf19930c09802e1b83194df001a0032_full.jpg",
     );
     expect(
       screen.getByTestId("active-heterozygote-filter"),
@@ -104,7 +104,7 @@ describe("Image comparator page", () => {
     await user.click(allThumbnails[1]);
     expect(await screen.findByTestId("selected-image-WT")).toHaveAttribute(
       "src",
-      "//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/1438446/",
+      "https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/a5564c34d770a783377a8e0139c70130_full.jpg",
     );
   });
 

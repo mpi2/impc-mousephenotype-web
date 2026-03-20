@@ -299,7 +299,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       <img
                         alt=""
                         data-testid="selected-image-WT"
-                        src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/1438464/"
+                        src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/d2fb2ddbe4376398a650325a6b023d88_full.jpg"
                         style="width: 100%; display: block;"
                       />
                     </div>
@@ -508,7 +508,7 @@ exports[`Image comparator page renders correctly 1`] = `
                       <img
                         alt=""
                         data-testid="selected-image-mutant"
-                        src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/1069405/"
+                        src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/dbf19930c09802e1b83194df001a0032_full.jpg"
                         style="width: 100%; display: block;"
                       />
                     </div>
@@ -864,7 +864,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438464/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/d2fb2ddbe4376398a650325a6b023d88_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -936,7 +936,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438446/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/a5564c34d770a783377a8e0139c70130_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1008,7 +1008,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438477/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/e1b9e9e877d8ec8ebf429ad3b308c0b5_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1080,7 +1080,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1471861/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/9ce3e6b558376db21c0417ad12c55561_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1152,7 +1152,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438326/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/455e28d1dbb15d8bc1b0c28a5ab3ca4e_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1224,7 +1224,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366824/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/74aabb28598793f1b5c0f9e33b465a72_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1296,7 +1296,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1426695/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/0dffb3c06fe960d64373af6b4fee30b4_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1368,7 +1368,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438423/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/c9539b61a391001d9abf27a50545a3ec_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1440,7 +1440,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438488/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/79877355aa6d65bde168a0bc7010c836_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1512,7 +1512,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366181/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/8669130d9917febe04ecca10272ff083_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1584,7 +1584,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438463/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/381922ca2a90461f705a2876bab07aee_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1656,7 +1656,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1471842/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/199c813a11d1ac2cdbb81218d2bf08f5_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1728,7 +1728,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1471830/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/baf864257d92b0f2b52114a5dd41ee3e_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1800,7 +1800,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438470/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/cc950027df5104e218f13df66e535e3d_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -1872,1303 +1872,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438405/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366736/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438526/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1365825/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438395/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438443/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366165/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438471/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366251/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1365850/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366436/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438506/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366735/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366143/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366262/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366836/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366637/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1365969/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      13
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366084/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/f866d113ecb5b0b8052c954a19b14855_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -3240,295 +1944,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366131/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366874/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366018/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366505/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1438390/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/5d5b233b4ae51d386f9dd2374238e87d_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -3600,79 +2016,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366633/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366528/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/c71fb65cce6c17449577306d1675bd5a_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -3744,7 +2088,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366555/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/658eb5f2336c462e5109f9be4ed40699_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -3816,7 +2160,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366313/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/194eeb95eb4731df8150fa2f192e6dbd_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -3825,79 +2169,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <span>
                       Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366264/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
+                      13
                        weeks 
                       <br />
                     </span>
@@ -3960,151 +2232,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366335/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-venus"
-                        data-icon="venus"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 384 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366709/"
-                      width="100%"
-                    />
-                  </span>
-                  <div
-                    class="additionalInfo"
-                  >
-                    <span>
-                      Age: 
-                      14
-                       weeks 
-                      <br />
-                    </span>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        class="svg-inline--fa fa-mars"
-                        data-icon="mars"
-                        data-prefix="fas"
-                        focusable="false"
-                        role="img"
-                        viewBox="0 0 448 512"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="indicatorsContainer"
-                    >
-                      <div
-                        class="common zygosityIndicator"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          class="svg-inline--fa fa-circle"
-                          data-icon="circle"
-                          data-prefix="fas"
-                          focusable="false"
-                          role="img"
-                          style="color: rgb(255, 255, 255);"
-                          viewBox="0 0 512 512"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mb-2 col-lg-3 col-md-4"
-              >
-                <div
-                  class="singleImage"
-                  data-testid="single-image"
-                >
-                  <span
-                    class=" lazy-load-image-background blur"
-                    style="width: 100%;"
-                  >
-                    <img
-                      alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1365970/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/45520a04253ea7c29bb51a30027661c6_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4176,7 +2304,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366868/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/11a036178669920b830100bdb8491f99_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4248,7 +2376,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366578/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/fecab884a656ca4ff3768aa3a2b2e697_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4257,7 +2385,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <span>
                       Age: 
-                      14
+                      13
                        weeks 
                       <br />
                     </span>
@@ -4320,7 +2448,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366166/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/230c146af964ed6af742abbc2eecfb33_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4392,7 +2520,1879 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1366398/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/0be720205b5f7e12c9aeb4ddd0f9ebfb_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/9fbd8f3604be1149a3c5f06e930df9b4_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/2f162fe7077111aea4383b94ad22a882_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/1ed0e8a3620a50bbca02e7a3c5fbcdf5_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/355e397a49b5112bb8c17b33e43a5085_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/f866020a083ac1485c43ef515958ea2f_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/bbcfe1e60f12139e9a10a4fa588e8219_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/7ef3275edcc7e3ac89280df5b7d587c0_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/6b28841d81da2a4f5682c5f865e91e86_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/15009ea2ac03ed004b16fd398beafac2_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/aca27ea0e1773caf582b02c994ca9209_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/576f8d060787bdd36387ca9650007030_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/fef97db4aa76d06c12231b666ab9553c_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/528bca56a40f8d27b96f810d29531f9c_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/1b6aef87299de04d5f89abecead3be44_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/90d2f5655f47e1b2540daa57ad8047a6_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/14337b659cbd69e999e3730c307bfcc8_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/f7e59e0b7a1854f89fed6ba5e7ae1136_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/681a896e24bcb2f9b90308cf5bcaae2b_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/983e37e45925cf3cd99269441b3002a3_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/8d081b3c5eede1e3937947025983ae0c_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/777e75ad620a2e4bed3d128735cecfb9_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/12149b57dddf55b6da59760a08a325d2_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/5b5eb64a8b210c22af5b28134525bf33_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      13
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/0adc0fd360638a7532cf446adf3b22ac_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-mars"
+                        data-icon="mars"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 448 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M289.8 46.8c3.7-9 12.5-14.8 22.2-14.8l112 0c13.3 0 24 10.7 24 24l0 112c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-33.4-33.4L321 204.2c19.5 28.4 31 62.7 31 99.8c0 97.2-78.8 176-176 176S0 401.2 0 304s78.8-176 176-176c37 0 71.4 11.4 99.8 31l52.6-52.6L295 73c-6.9-6.9-8.9-17.2-5.2-26.2zM400 80s0 0 0 0s0 0 0 0s0 0 0 0zM176 416a112 112 0 1 0 0-224 112 112 0 1 0 0 224z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/98b908b72f53e8dd4b1373287fdd3f59_thumbnail.jpg"
+                      width="100%"
+                    />
+                  </span>
+                  <div
+                    class="additionalInfo"
+                  >
+                    <span>
+                      Age: 
+                      14
+                       weeks 
+                      <br />
+                    </span>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="svg-inline--fa fa-venus"
+                        data-icon="venus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        viewBox="0 0 384 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M80 176a112 112 0 1 1 224 0A112 112 0 1 1 80 176zM224 349.1c81.9-15 144-86.8 144-173.1C368 78.8 289.2 0 192 0S16 78.8 16 176c0 86.3 62.1 158.1 144 173.1l0 34.9-32 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l32 0 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32 32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0 0-34.9z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                    <div
+                      class="indicatorsContainer"
+                    >
+                      <div
+                        class="common zygosityIndicator"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="svg-inline--fa fa-circle"
+                          data-icon="circle"
+                          data-prefix="fas"
+                          focusable="false"
+                          role="img"
+                          style="color: rgb(255, 255, 255);"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mb-2 col-lg-3 col-md-4"
+              >
+                <div
+                  class="singleImage"
+                  data-testid="single-image"
+                >
+                  <span
+                    class=" lazy-load-image-background blur"
+                    style="width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/control/5146162b7a310c4c78d59766a7c68215_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4472,7 +4472,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1069405/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/dbf19930c09802e1b83194df001a0032_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4550,7 +4550,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1151578/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/398a88842bac8bd1e547f9e366a1319d_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4628,7 +4628,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1154810/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/dd627c8d541f1fcc18c503da0ae3b8aa_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4706,7 +4706,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1152063/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/a73f8c5b75747d17488d557fdafe514f_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4784,7 +4784,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1153410/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/06d5f40f76fb835445e39fc175585770_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4862,7 +4862,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1154213/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/19bb144e07288cd65419830af2e68620_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -4940,7 +4940,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1154698/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/d7faa37e2814c3c43a7f0e3fb8e15501_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -5018,7 +5018,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1154829/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/a1bfec6a46dfeb8cd4ac01a86b219774_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -5096,7 +5096,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1153105/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/4a9b927cb8ceadd7da2cf6c97a210651_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -5174,7 +5174,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1151105/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/89b9d0bac79181f70d460eb4a75ca6f6_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
@@ -5252,7 +5252,7 @@ exports[`Image comparator page renders correctly 1`] = `
                   >
                     <img
                       alt=""
-                      src="//www.ebi.ac.uk/mi/media/omero/webgateway/render_birds_eye_view/1152939/"
+                      src="https://ftp.ebi.ac.uk/biostudies/fire/S-BIAD/244/S-BIAD2244/Files/UC Davis/UCD_001/IMPC_XRY_001/IMPC_XRY_048_001/experimental/6a8e859200921b9a1ef205f9abf0c2b9_thumbnail.jpg"
                       width="100%"
                     />
                   </span>
