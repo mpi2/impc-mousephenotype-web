@@ -222,7 +222,13 @@ const Row = ({ rowData, data, isLoading }: RowProps) => {
       title = `view ${rowData.diseaseTerm} details in DECIPHER website`;
     }
     return (
-      <a href={href} target="_blank" className="link primary" title={title}>
+      <a
+        href={href}
+        target="_blank"
+        className="link primary"
+        title={title}
+        rel="noopener noreferrer"
+      >
         {diseaseId}{" "}
         <FontAwesomeIcon className="grey" size="xs" icon={faExternalLinkAlt} />
       </a>

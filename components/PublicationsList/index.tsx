@@ -54,6 +54,7 @@ const PublicationsList = (props: PublicationListProps) => {
             target="_blank"
             href={`https://doi.org/${pub.doi}`}
             dangerouslySetInnerHTML={{ __html: pub.title }}
+            rel="noopener noreferrer"
           />
           &nbsp;
           <FontAwesomeIcon
@@ -301,6 +302,7 @@ const PublicationsList = (props: PublicationListProps) => {
                         className="primary link"
                         target="_blank"
                         href={`https://pubmed.ncbi.nlm.nih.gov/${pub.pmId}`}
+                        rel="noopener noreferrer"
                       >
                         {pub.pmId}
                       </a>

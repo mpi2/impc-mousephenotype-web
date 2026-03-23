@@ -52,6 +52,7 @@ const AlleleMap = ({
               href={updatedGenbankFile}
               target="_blank"
               className="primary link"
+              rel="noopener noreferrer"
             >
               Genbank
               <FontAwesomeIcon
@@ -65,7 +66,12 @@ const AlleleMap = ({
         )}
 
         {emsembleUrl && (
-          <a href={emsembleUrl} target="_blank" className="primary link">
+          <a
+            href={emsembleUrl}
+            target="_blank"
+            className="primary link"
+            rel="noopener noreferrer"
+          >
             Ensembl
             <FontAwesomeIcon
               icon={faExternalLinkAlt}
