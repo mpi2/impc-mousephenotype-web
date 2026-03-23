@@ -331,6 +331,7 @@ const HistopathChartPage = ({
                               <a
                                 href={`//www.ebi.ac.uk/mi/media/omero/webgateway/render_image/${image.omeroId}`}
                                 target="_blank"
+                                rel="noopener noreferrer"
                               >
                                 <img
                                   style={{
@@ -351,6 +352,7 @@ const HistopathChartPage = ({
                                   className="primary link"
                                   target="_blank"
                                   href={`https://ontobee.org/ontology/MA?iri=http://purl.obolibrary.org/obo/${image.maId?.replaceAll(":", "_")}`}
+                                  rel="noopener noreferrer"
                                 >
                                   {image.maTerm}
                                 </a>

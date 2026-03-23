@@ -131,6 +131,7 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                         className="link primary"
                         href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {term.name}
                       </a>
@@ -149,6 +150,7 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                         className="link primary"
                         href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {term.name}
                       </a>
@@ -167,6 +169,7 @@ const DataRow = ({ geneData, onPhenotypeLinkClick }: DataRowProps) => {
                         className="link primary"
                         href={`https://amigo.geneontology.org/amigo/term/${term.id}`}
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {term.name}
                       </a>

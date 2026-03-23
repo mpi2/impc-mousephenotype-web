@@ -41,6 +41,7 @@ const Footnotes = (props: Props) => {
               className="primary link"
               href="https://dev.mousephenotype.org/help/data-analysis/faqs/how-many-specimens-go-through-the-statistical-analysis/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               N-numbers documentation page
             </a>
