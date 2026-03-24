@@ -29,6 +29,7 @@ import _ from "lodash";
 import Link from "next/link";
 import { AlleleSymbol } from "@/components";
 import dynamic from "next/dynamic";
+import parse from "html-react-parser";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -53,9 +54,9 @@ const PublicationsList = (props: PublicationListProps) => {
             className="primary link"
             target="_blank"
             href={`https://doi.org/${pub.doi}`}
-            dangerouslySetInnerHTML={{ __html: pub.title }}
             rel="noopener noreferrer"
           />
+          {parse(pub.title)}
           &nbsp;
           <FontAwesomeIcon
             icon={faExternalLinkAlt}
@@ -65,12 +66,7 @@ const PublicationsList = (props: PublicationListProps) => {
         </p>
       );
     }
-    return (
-      <p
-        style={{ fontWeight: "bold" }}
-        dangerouslySetInnerHTML={{ __html: pub.title }}
-      />
-    );
+    return <p style={{ fontWeight: "bold" }}>{parse(pub.title)}</p>;
   };
 
   const displayPubDate = (pub: Publication) => {

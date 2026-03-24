@@ -20,6 +20,7 @@ import {
 } from "@/components";
 import Link from "next/link";
 import { kebabCase } from "lodash";
+import parse from "html-react-parser";
 
 const geneMap = new Map();
 
@@ -451,11 +452,7 @@ const HistopathLandingPage = () => {
                   {paginatedData.map((gene) => (
                     <tr key={gene.id} data-testid="result-rows">
                       <td className={styles.geneCell} data-testid="gene-symbol">
-                        <i
-                          dangerouslySetInnerHTML={{
-                            __html: rewriteWithQuery(gene.id),
-                          }}
-                        ></i>
+                        <i>{parse(rewriteWithQuery(gene.id))}</i>
                       </td>
                       <td>{displayFixedTissueColumn(gene)}</td>
                       {gene &&
