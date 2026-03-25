@@ -157,6 +157,7 @@ const TargetingVector = ({
                           target="_blank"
                           className="link primary"
                           style={{ textTransform: "capitalize" }}
+                          rel="noopener noreferrer"
                         >
                           Genbank file{" "}
                           <FontAwesomeIcon
@@ -176,6 +177,7 @@ const TargetingVector = ({
                           target="_blank"
                           className="link primary"
                           style={{ textTransform: "capitalize" }}
+                          rel="noopener noreferrer"
                         >
                           Vector map{" "}
                           <FontAwesomeIcon
@@ -195,6 +197,7 @@ const TargetingVector = ({
                           href={orderLink}
                           target="_blank"
                           className="link primary"
+                          rel="noopener noreferrer"
                         >
                           <FontAwesomeIcon icon={faCartShopping} /> {orderName}
                         </a>

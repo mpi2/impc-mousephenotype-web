@@ -156,7 +156,12 @@ const ImageInformation = ({
       {inViewer && !!image.imageLink && (
         <>
           <div style={{ flexBasis: "100%", height: 0 }} />
-          <Link className="link primary" href={image.imageLink} target="_blank">
+          <Link
+            className="link primary"
+            href={image.imageLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             View high resolution image
             <FontAwesomeIcon
               icon={faExternalLinkAlt}

@@ -204,6 +204,7 @@ const StatisticalMethodTable = ({
             className="link primary"
             href="https://www.immunophenotype.org/threei/#/methods/statistical-design"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Statistical design
           </Link>
@@ -227,6 +228,7 @@ const StatisticalMethodTable = ({
             className="link primary"
             href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Pain sensitivity publication
           </Link>

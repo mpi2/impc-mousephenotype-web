@@ -93,6 +93,7 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
             className="primary"
             href={`http://www.informatics.jax.org/marker/${gene.mgiGeneAccessionId}`}
             target="_blank"
+            rel="noopener noreferrer"
             title={`visit MGI site to view details for gene ${gene.geneSymbol}`}
           >
             {gene.mgiGeneAccessionId}
