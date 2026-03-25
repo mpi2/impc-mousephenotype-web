@@ -36,7 +36,7 @@ const StatisticalAnalysisDownloadLink = ({
   }
 
   return (
-    <a target="_blank" className="link" href={url}>
+    <a target="_blank" className="link" href={url} rel="noopener noreferrer">
       {label} ({format}) <FontAwesomeIcon size="xs" icon={faExternalLinkAlt} />
     </a>
   );

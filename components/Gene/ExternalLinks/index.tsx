@@ -60,6 +60,7 @@ const ExternalLinks = () => {
                         href={link.href}
                         target="_blank"
                         title={`visit ${provider.providerName} website for more details of ${link.label}`}
+                        rel="noopener noreferrer"
                       >
                         <i>{link.label}</i>
                         <FontAwesomeIcon
