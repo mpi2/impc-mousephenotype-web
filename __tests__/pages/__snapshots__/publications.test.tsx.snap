@@ -395,6 +395,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1126/sciadv.adu7985"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Norovirus co-opts NINJ1 for selective protein secretion.
@@ -448,6 +449,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/40020060"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           40020060
@@ -500,6 +502,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1186/s13229-025-00650-8"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Autistic behavior is a common outcome of biallelic disruption of PDZD8 in humans and mice.
@@ -553,6 +556,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/40016860"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           40016860
@@ -622,6 +626,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1038/s41467-025-55916-9"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           CD301b&lt;sup&gt;+&lt;/sup&gt; dendritic cell-derived IL-2 dictates CD4&lt;sup&gt;+&lt;/sup&gt; T helper cell differentiation.
@@ -675,6 +680,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/40011469"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           40011469
@@ -744,6 +750,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1038/s41467-025-56778-x"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           WNK1-dependent water influx is required for CD4&lt;sup&gt;+&lt;/sup&gt; T cell activation and T cell-dependent antibody responses.
@@ -797,6 +804,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39984435"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39984435
@@ -866,6 +874,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1038/s42003-025-07724-6"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           The histone demethylase dLsd1 regulates organ size by silencing transposable elements.
@@ -919,6 +928,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39979483"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39979483
@@ -971,6 +981,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1186/s12929-025-01120-2"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           K27-linked RORγt ubiquitination by Nedd4 potentiates Th17-mediated autoimmunity.
@@ -1024,6 +1035,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39972304"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39972304
@@ -1093,6 +1105,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1016/j.celrep.2025.115333"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Dendritic cell phagosomes recruit GRASP55 for export of antigen-loaded MHC molecules.
@@ -1146,6 +1159,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39955774"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39955774
@@ -1215,6 +1229,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1016/j.bbrep.2025.101944"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           RNA-seq analysis reveals transcriptome changes in livers from &lt;i&gt;Efcab4b&lt;/i&gt; knockout mice.
@@ -1268,6 +1283,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/40034259"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           40034259
@@ -1321,6 +1337,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1038/s41467-025-56531-4"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Expression of foetal gene Pontin is essential in protecting heart against pathological remodelling and cardiomyopathy.
@@ -1374,6 +1391,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39952912"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39952912
@@ -1443,6 +1461,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1038/s41467-025-56847-1"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Single-cell analysis identifies Ifi27l2a as a gene regulator of microglial inflammation in the context of aging and stroke in mice.
@@ -1496,6 +1515,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39953063"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39953063
@@ -2125,6 +2145,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1002/cpz1.70109"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Engineering Base Changes and Epitope-Tagged Alleles in Mice Using Cas9 RNA-Guided Nuclease.
@@ -2178,6 +2199,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39999224"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39999224
@@ -2225,6 +2247,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1186/s12864-025-11222-8"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Systematic ocular phenotyping of 8,707 knockout mouse lines identifies genes associated with abnormal corneal phenotypes.
@@ -2278,6 +2301,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39833678"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39833678
@@ -2330,6 +2354,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1007/s00335-025-10104-4"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           IMPC impact on preclinical mouse models.
@@ -2369,6 +2394,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39820486"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39820486
@@ -2405,6 +2431,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1038/s41598-024-72418-8"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Impact of essential genes on the success of genome editing experiments generating 3313 new genetically engineered mouse lines.
@@ -2458,6 +2485,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39349521"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39349521
@@ -2510,6 +2538,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1007/s00335-024-10070-3"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           The mutant mouse resource and research center (MMRRC) consortium: the US-based public mouse repository system.
@@ -2563,6 +2592,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39304538"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39304538
@@ -2604,6 +2634,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1007/s00335-024-10068-x"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Commentary: The International Mouse Phenotyping Consortium: high-throughput in vivo functional annotation of the mammalian genome.
@@ -2657,6 +2688,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39254744"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39254744
@@ -2698,6 +2730,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1007/s00335-024-10066-z"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           A graph theoretical approach to experimental prioritization in genome-scale investigations.
@@ -2751,6 +2784,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/39191873"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           39191873
@@ -2792,6 +2826,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1242/dmm.050604"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Computational identification of disease models through cross-species phenotype comparison.
@@ -2845,6 +2880,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/38881316"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           38881316
@@ -2897,6 +2933,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1016/j.gim.2024.101141"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           Lethal phenotypes in Mendelian disorders.
@@ -2950,6 +2987,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/38629401"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           38629401
@@ -3002,6 +3040,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://doi.org/10.1002/dvg.23589"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           An oocyte-specific Cas9-expressing mouse for germline CRISPR/Cas9-mediated genome editing.
@@ -3055,6 +3094,7 @@ exports[`Publications page renders correctly 1`] = `
                         <a
                           class="primary link"
                           href="https://pubmed.ncbi.nlm.nih.gov/38523431"
+                          rel="noopener noreferrer"
                           target="_blank"
                         >
                           38523431

@@ -830,6 +830,7 @@ exports[`Categorical Chart page renders correctly 1`] = `
                 <a
                   class="link"
                   href="https://www.ebi.ac.uk/mi/impc/solr/statistical-result/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:104785%22&fq=phenotyping_center:(%22TCP%22)&fq=metadata_group:65ed200ce0a6c1448296a1366bd42457&fq=allele_accession_id:%22MGI:6257724%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_CSD_036_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   Statistical result
@@ -857,6 +858,7 @@ exports[`Categorical Chart page renders correctly 1`] = `
                 <a
                   class="link"
                   href="https://www.ebi.ac.uk/mi/impc/solr/genotype-phenotype/select?q=*:*&rows=2147483647&sort=p_value+asc&wt=xml&fq=marker_accession_id:%22MGI:104785%22&fq=phenotyping_center:(%22TCP%22)&fq=allele_accession_id:%22MGI:6257724%22&fq=pipeline_stable_id:TCP_001&fq=parameter_stable_id:IMPC_CSD_036_001&fq=zygosity:homozygote&fq=strain_accession_id:%22MGI:2683688%22"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   Genotype phenotype association
@@ -883,6 +885,7 @@ exports[`Categorical Chart page renders correctly 1`] = `
               <p>
                 <a
                   class="link"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   PhenStat ready data
