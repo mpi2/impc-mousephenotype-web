@@ -54,3 +54,15 @@ export function proxy(request: NextRequest) {
   response.headers.set("Content-Security-Policy", cspHeader.replace(/\n/g, ""));
   return response;
 }
+
+export const config = {
+  matcher: [
+    {
+      source: "/((?!api|_next/static|_next/image|favicon.ico).*)",
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
+  ],
+};
