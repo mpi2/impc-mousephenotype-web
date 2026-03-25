@@ -49,6 +49,8 @@ export function proxy(request: NextRequest) {
   }
 
   const response = NextResponse.next();
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  response.headers.set("X-Frame-Options", "SAMEORIGIN");
   response.headers.set("Content-Security-Policy", cspHeader.replace(/\n/g, ""));
   return response;
 }
