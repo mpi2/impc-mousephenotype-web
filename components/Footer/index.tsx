@@ -117,7 +117,7 @@ const Footer = () => {
                 <a
                   href="https://www.linkedin.com/company/impc--international-mouse-phenotyping-consortium/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   <span className="sr-only">IMPC LinkedIn</span>
                   <FontAwesomeIcon icon={faLinkedin} size="2x" />
@@ -127,7 +127,7 @@ const Footer = () => {
                 <a
                   href="https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   <span className="sr-only">IMPC YouTube</span>
                   <FontAwesomeIcon icon={faYoutube} size="2x" />

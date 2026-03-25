@@ -132,6 +132,7 @@ const Crispr = ({ mgiGeneAccessionId, alleleName }: CrisprProps) => {
             href={`https://www.informatics.jax.org/allele/${data.mgiAlleleId}`}
             target="_blank"
             className="link primary"
+            rel="noopener noreferrer"
           >
             {data.mgiGeneAccessionId}&nbsp;
             <span className="grey">

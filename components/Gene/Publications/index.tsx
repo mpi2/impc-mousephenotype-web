@@ -168,6 +168,7 @@ const Publications = () => {
                           className="link"
                           target="_blank"
                           href={`https://www.doi.org/${p.doi}`}
+                          rel="noopener noreferrer"
                         >
                           <strong>{p.title}</strong>&nbsp;
                           <FontAwesomeIcon
@@ -192,6 +193,7 @@ const Publications = () => {
                         target="_blank"
                         className="link primary"
                         title={`view more publication details in PubMed`}
+                        rel="noopener noreferrer"
                       >
                         {p.pmId}&nbsp;
                         <FontAwesomeIcon
