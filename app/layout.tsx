@@ -47,6 +47,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           data-settings-id="y7WXZ02Q6JSq6Q"
           async
         />
+        <link
+          rel="stylesheet"
+          href="https://docbot-64c680.gitdocs.ebi.ac.uk/dist/Chatbot-Modal.css"
+        />
+        <script
+          src="https://docbot-64c680.gitdocs.ebi.ac.uk/Chatbot-Modal.web.js"
+          type="module"
+        ></script>
         <Providers>
           <Layout>{children}</Layout>
         </Providers>

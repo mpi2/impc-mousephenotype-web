@@ -175,6 +175,11 @@ const Footer = () => {
           </div>
         </Row>
       </Container>
+      <docbot-modal
+        selectedteam="impc"
+        backendurl="https://wwwdev.ebi.ac.uk/docbot/api"
+        enableselector="false"
+      ></docbot-modal>
     </div>
   );
 };
