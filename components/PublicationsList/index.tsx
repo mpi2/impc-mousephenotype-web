@@ -55,8 +55,9 @@ const PublicationsList = (props: PublicationListProps) => {
             target="_blank"
             href={`https://doi.org/${pub.doi}`}
             rel="noopener noreferrer"
-          />
-          {parse(pub.title)}
+          >
+            {parse(pub.title)}
+          </a>
           &nbsp;
           <FontAwesomeIcon
             icon={faExternalLinkAlt}
