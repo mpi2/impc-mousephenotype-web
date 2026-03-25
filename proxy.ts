@@ -20,12 +20,12 @@ export function proxy(request: NextRequest) {
     (process.env.UPGRADE_INSECURE_REQUESTS ?? "true") === "true";
   const cspHeader = `
     default-src 'none';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.usercentrics.eu;
-    style-src 'self' 'unsafe-inline';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.ebi.ac.uk *.googletagmanager.com *.usercentrics.eu;
+    style-src 'self' 'unsafe-inline' *.ebi.ac.uk;
     connect-src 'self' *.mousephenotype.org *.usercentrics.eu *.google.com *.ebi.ac.uk *.google-analytics.com impc-datasets.s3.eu-west-2.amazonaws.com *.gentar.org stats.g.doubleclick.net *.ucsc.edu ${!isProd ? "localhost:8010 localhost:5000" : ""};
     img-src 'self' blob: data: *.mousephenotype.org *.usercentrics.eu *.ebi.ac.uk *.amazonaws.com *.google.co.uk;
     frame-src *.usercentrics.eu monarchinitiative.org ${!isProd ? "localhost:5173" : ""};
-    font-src 'self';
+    font-src 'self' *.ebi.ac.uk cdn.jsdelivr.net;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
