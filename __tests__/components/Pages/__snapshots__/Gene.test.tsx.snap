@@ -110,6 +110,7 @@ exports[`Gene page renders correctly 1`] = `
           <a
             class="primary"
             href="http://www.informatics.jax.org/marker/MGI:1922702"
+            rel="noopener noreferrer"
             target="_blank"
             title="visit MGI site to view details for gene Ascc2"
           >
@@ -6926,6 +6927,7 @@ exports[`Gene page renders correctly 1`] = `
                 <a
                   class="link"
                   href="https://www.doi.org/10.1161/circulationaha.121.055857"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <strong>
@@ -6968,6 +6970,7 @@ exports[`Gene page renders correctly 1`] = `
                 <a
                   class="link primary"
                   href="https://pubmed.ncbi.nlm.nih.gov/35377742"
+                  rel="noopener noreferrer"
                   target="_blank"
                   title="view more publication details in PubMed"
                 >
@@ -7088,6 +7091,7 @@ exports[`Gene page renders correctly 1`] = `
                   <a
                     class="primary link"
                     href="https://www.ebi.ac.uk/gwas/genes/ASCC2"
+                    rel="noopener noreferrer"
                     target="_blank"
                     title="visit GWAS Catalog website for more details of ASCC2"
                   >
@@ -7141,6 +7145,7 @@ exports[`Gene page renders correctly 1`] = `
                   <a
                     class="primary link"
                     href="https://www.uniprot.org/uniprotkb/Q91WR3"
+                    rel="noopener noreferrer"
                     target="_blank"
                     title="visit UniProt website for more details of Q91WR3"
                   >
@@ -7174,6 +7179,7 @@ exports[`Gene page renders correctly 1`] = `
                   <a
                     class="primary link"
                     href="https://www.uniprot.org/uniprotkb/Q3UG63"
+                    rel="noopener noreferrer"
                     target="_blank"
                     title="visit UniProt website for more details of Q3UG63"
                   >
@@ -7207,6 +7213,7 @@ exports[`Gene page renders correctly 1`] = `
                   <a
                     class="primary link"
                     href="https://www.uniprot.org/uniprotkb/Q9CVZ2"
+                    rel="noopener noreferrer"
                     target="_blank"
                     title="visit UniProt website for more details of Q9CVZ2"
                   >

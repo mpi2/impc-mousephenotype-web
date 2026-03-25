@@ -262,6 +262,7 @@ exports[`Allele page renders properly 1`] = `
         <a
           class="primary link"
           href="https://ftp.ebi.ac.uk/pub/databases/impc/other/imits/images_and_genbank_files/8a/11509/escell-clone-genbank-file"
+          rel="noopener noreferrer"
           target="_blank"
         >
           Genbank
@@ -291,6 +292,7 @@ exports[`Allele page renders properly 1`] = `
         <a
           class="primary link"
           href="https://www.ensembl.org/Mus_musculus/Location/View?g=ENSMUSG00000034675"
+          rel="noopener noreferrer"
           target="_blank"
         >
           Ensembl
@@ -1156,6 +1158,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file"
+                  rel="noopener noreferrer"
                   style="text-transform: capitalize;"
                   target="_blank"
                 >
@@ -1182,6 +1185,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+                  rel="noopener noreferrer"
                   style="text-transform: capitalize;"
                   target="_blank"
                 >
@@ -1208,6 +1212,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <svg
@@ -1257,6 +1262,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/targeting-vector-genbank-file"
+                  rel="noopener noreferrer"
                   style="text-transform: capitalize;"
                   target="_blank"
                 >
@@ -1283,6 +1289,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11509/vector.png"
+                  rel="noopener noreferrer"
                   style="text-transform: capitalize;"
                   target="_blank"
                 >
@@ -1309,6 +1316,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <svg
@@ -1358,6 +1366,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11510/targeting-vector-genbank-file"
+                  rel="noopener noreferrer"
                   style="text-transform: capitalize;"
                   target="_blank"
                 >
@@ -1384,6 +1393,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://escell-data.s3.eu-west-2.amazonaws.com/targ_rep_allele/11510/vector.png"
+                  rel="noopener noreferrer"
                   style="text-transform: capitalize;"
                   target="_blank"
                 >
@@ -1410,6 +1420,7 @@ exports[`Allele page renders properly 1`] = `
                 <a
                   class="link primary"
                   href="https://www.mmrrc.org/catalog/StrainCatalogSearchForm.php?SourceCollection=KOMP&search_query=MGI:1931838"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <svg
@@ -2329,6 +2340,7 @@ GCTAGGGAAGGGGCCTAGTAGGGTGGTCCAGCTCAGTGCTATTCTTGGAGCTGTGAGATTTCCTTAAGCAAAGCTTCCTG
         <a
           class="link primary"
           href="https://www.informatics.jax.org/allele/MGI:6257430"
+          rel="noopener noreferrer"
           target="_blank"
         >
           MGI:1931838

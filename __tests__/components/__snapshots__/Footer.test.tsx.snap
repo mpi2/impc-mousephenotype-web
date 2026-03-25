@@ -216,7 +216,7 @@ exports[`Footer component renders correctly 1`] = `
             <li>
               <a
                 href="https://www.linkedin.com/company/impc--international-mouse-phenotyping-consortium/"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <span
@@ -244,7 +244,7 @@ exports[`Footer component renders correctly 1`] = `
             <li>
               <a
                 href="https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <span
