@@ -185,7 +185,7 @@ ul.pagination .page-item.disabled .page-link {
 
 .back-to-top {
   position: fixed;
-  bottom: 5.5rem;
+  bottom: 7.5rem;
   right: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -195,4 +195,37 @@ ul.pagination .page-item.disabled .page-link {
 
 .list-links-404 li {
   padding-bottom: 1rem;
+}
+
+.docbot-modal {
+  --vf-chatbot-modal-bottom-margin: 8px;
+  .vf-chatbot-fab {
+    width: 64px;
+    height: 64px;
+    background: #00B0B0;
+    &:hover {
+      background: #00B0B0;
+    }
+  }
+  .vf-chatbot-selector__title img {
+    display: none;
+  }
+  .vf-chatbot-modal-container, .vf-chatbot-modal {
+    border-bottom-right-radius: 8px;
+  }
+  .vf-chatbot-modal-container {
+    @media screen and (min-width: 600px) {
+      max-width: 450px;
+    }
+  }
+  .vf-chatbot-modal__content .vf-chatbot-welcome__logo-image {
+    display: none;
+  }
+  .vf-chatbot-modal .vf-chatbot-welcome__content {
+    min-height: 15vh;
+    min-height: 15dvh;
+  }
+  .vf-chatbot-modal .vf-chatbot-modal__footnote {
+    padding: 1em 1.5em;
+  }
 }
