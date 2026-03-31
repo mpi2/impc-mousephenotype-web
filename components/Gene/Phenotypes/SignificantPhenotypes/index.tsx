@@ -160,8 +160,8 @@ const SignificantPhenotypes = ({
               overlay={<Tooltip>No fix data banner</Tooltip>}
             >
               <div className={styles.noFixContainer}>
-                There are more datasets related to this gene that failed IMPC
-                quality controls, they are available in&nbsp;
+                Note: There are more datasets related to this gene that failed
+                IMPC quality controls, they are available in&nbsp;
                 <a
                   href="https://ftp.ebi.ac.uk/pub/databases/impc/"
                   className="link primary"
