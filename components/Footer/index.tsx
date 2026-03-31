@@ -177,7 +177,7 @@ const Footer = () => {
       </Container>
       <docbot-modal
         selectedteam="impc"
-        backendurl="https://wwwdev.ebi.ac.uk/docbot/api"
+        backendurl="https://wwwint.ebi.ac.uk/docbot/api"
         enableselector="false"
       ></docbot-modal>
     </div>
