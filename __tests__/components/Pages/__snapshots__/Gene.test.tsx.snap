@@ -435,6 +435,21 @@ exports[`Gene page renders correctly 1`] = `
                 </span>
                  
                 No significant impact
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-circle-info ml-1 fa-xs"
+                  data-icon="circle-info"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                    fill="currentColor"
+                  />
+                </svg>
               </h3>
               <div
                 class="bodySystems"
@@ -1184,11 +1199,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-_r_q_-tabpane-significantPhenotypes"
+            aria-controls="react-aria-_r_s_-tabpane-significantPhenotypes"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="significantPhenotypes"
-            id="react-aria-_r_q_-tab-significantPhenotypes"
+            id="react-aria-_r_s_-tab-significantPhenotypes"
             role="tab"
             type="button"
           >
@@ -1200,11 +1215,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-_r_q_-tabpane-allData"
+            aria-controls="react-aria-_r_s_-tabpane-allData"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="allData"
-            id="react-aria-_r_q_-tab-allData"
+            id="react-aria-_r_s_-tab-allData"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1217,11 +1232,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-_r_q_-tabpane-measurementsChart"
+            aria-controls="react-aria-_r_s_-tabpane-measurementsChart"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="measurementsChart"
-            id="react-aria-_r_q_-tab-measurementsChart"
+            id="react-aria-_r_s_-tab-measurementsChart"
             role="tab"
             tabindex="-1"
             type="button"
@@ -1234,9 +1249,9 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-_r_q_-tab-significantPhenotypes"
+          aria-labelledby="react-aria-_r_s_-tab-significantPhenotypes"
           class="fade tab-pane active show"
-          id="react-aria-_r_q_-tabpane-significantPhenotypes"
+          id="react-aria-_r_s_-tabpane-significantPhenotypes"
           role="tabpanel"
         >
           <div
@@ -1731,7 +1746,7 @@ exports[`Gene page renders correctly 1`] = `
                 <div
                   class="noFixContainer"
                 >
-                  There are more datasets related to this gene that failed IMPC quality controls, they are available in 
+                  Note: There are more datasets related to this gene that failed IMPC quality controls, they are available in 
                   <a
                     class="link primary"
                     href="https://ftp.ebi.ac.uk/pub/databases/impc/"
@@ -1792,9 +1807,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-_r_q_-tab-allData"
+          aria-labelledby="react-aria-_r_s_-tab-allData"
           class="fade tab-pane"
-          id="react-aria-_r_q_-tabpane-allData"
+          id="react-aria-_r_s_-tabpane-allData"
           role="tabpanel"
         >
           <div
@@ -4385,9 +4400,9 @@ exports[`Gene page renders correctly 1`] = `
           </div>
         </div>
         <div
-          aria-labelledby="react-aria-_r_q_-tab-measurementsChart"
+          aria-labelledby="react-aria-_r_s_-tab-measurementsChart"
           class="fade tab-pane"
-          id="react-aria-_r_q_-tabpane-measurementsChart"
+          id="react-aria-_r_s_-tabpane-measurementsChart"
           role="tabpanel"
         >
           <div
@@ -4556,11 +4571,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-_r_23_-tabpane-adultExpressions"
+            aria-controls="react-aria-_r_25_-tabpane-adultExpressions"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="adultExpressions"
-            id="react-aria-_r_23_-tab-adultExpressions"
+            id="react-aria-_r_25_-tab-adultExpressions"
             role="tab"
             type="button"
           >
@@ -4572,11 +4587,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-_r_23_-tabpane-embryoExpressions"
+            aria-controls="react-aria-_r_25_-tabpane-embryoExpressions"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="embryoExpressions"
-            id="react-aria-_r_23_-tab-embryoExpressions"
+            id="react-aria-_r_25_-tab-embryoExpressions"
             role="tab"
             tabindex="-1"
             type="button"
@@ -4589,15 +4604,15 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-_r_23_-tab-adultExpressions"
+          aria-labelledby="react-aria-_r_25_-tab-adultExpressions"
           class="fade tab-pane active show"
-          id="react-aria-_r_23_-tabpane-adultExpressions"
+          id="react-aria-_r_25_-tabpane-adultExpressions"
           role="tabpanel"
         />
         <div
-          aria-labelledby="react-aria-_r_23_-tab-embryoExpressions"
+          aria-labelledby="react-aria-_r_25_-tab-embryoExpressions"
           class="fade tab-pane"
-          id="react-aria-_r_23_-tabpane-embryoExpressions"
+          id="react-aria-_r_25_-tabpane-embryoExpressions"
           role="tabpanel"
         />
       </div>
@@ -6316,11 +6331,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-_r_26_-tabpane-associated"
+            aria-controls="react-aria-_r_28_-tabpane-associated"
             aria-selected="true"
             class="nav-link active"
             data-rr-ui-event-key="associated"
-            id="react-aria-_r_26_-tab-associated"
+            id="react-aria-_r_28_-tab-associated"
             role="tab"
             type="button"
           >
@@ -6338,11 +6353,11 @@ exports[`Gene page renders correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-controls="react-aria-_r_26_-tabpane-predicted"
+            aria-controls="react-aria-_r_28_-tabpane-predicted"
             aria-selected="false"
             class="nav-link"
             data-rr-ui-event-key="predicted"
-            id="react-aria-_r_26_-tab-predicted"
+            id="react-aria-_r_28_-tab-predicted"
             role="tab"
             tabindex="-1"
             type="button"
@@ -6362,23 +6377,27 @@ exports[`Gene page renders correctly 1`] = `
         class="tab-content"
       >
         <div
-          aria-labelledby="react-aria-_r_26_-tab-associated"
+          aria-labelledby="react-aria-_r_28_-tab-associated"
           class="fade tab-pane active show"
-          id="react-aria-_r_26_-tabpane-associated"
+          id="react-aria-_r_28_-tabpane-associated"
           role="tabpanel"
         />
         <div
-          aria-labelledby="react-aria-_r_26_-tab-predicted"
+          aria-labelledby="react-aria-_r_28_-tab-predicted"
           class="fade tab-pane"
-          id="react-aria-_r_26_-tabpane-predicted"
+          id="react-aria-_r_28_-tabpane-predicted"
           role="tabpanel"
         />
       </div>
       <div
-        class="fade mt-3 alert alert-primary show"
-        role="alert"
+        class="mt-3"
       >
-        No data available for this section.
+        <div
+          class="fade mt-3 alert alert-primary show"
+          role="alert"
+        >
+          No data available for this section.
+        </div>
       </div>
     </div>
     <div
