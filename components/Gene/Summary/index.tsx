@@ -7,7 +7,12 @@ import { summarySystemSelectionChannel } from "@/eventChannels";
 import { allBodySystems } from "@/utils";
 import { Card, Check, ScrollToTopButton } from "@/components";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircle,
+  faCircleInfo,
+  faCircleQuestion,
+  faExternalLinkAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { useContext } from "react";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
@@ -194,6 +199,27 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
                     {nonSignificantCount}
                   </span>{" "}
                   No significant impact
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 150, hide: 400 }}
+                    overlay={(props) => {
+                      return (
+                        <Tooltip id="non-significant-tooltip" {...props}>
+                          <p>
+                            Using IMPC standards and testing protocols, this
+                            gene does not have any significant phenotype
+                            detected that affects any body systems listed below.
+                          </p>
+                        </Tooltip>
+                      );
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faCircleInfo}
+                      size="xs"
+                      className="ml-1"
+                    />
+                  </OverlayTrigger>
                 </h3>
                 <div
                   className={styles.bodySystems}
