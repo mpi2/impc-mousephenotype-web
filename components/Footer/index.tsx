@@ -1,9 +1,7 @@
+"use client";
 import {
   faCreativeCommons,
   faCreativeCommonsBy,
-  faFacebookSquare,
-  faReddit,
-  faTwitter,
   faYoutube,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
@@ -13,6 +11,8 @@ import footerCss from "./styles.module.scss";
 import Link from "next/link";
 
 export const DR_VERSION = process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
+export const DOCBOT_BACKEND_URL =
+  process.env.NEXT_PUBLIC_DOCBOT_BACKEND_URL || "";
 
 const Footer = () => {
   return (
@@ -177,7 +177,7 @@ const Footer = () => {
       </Container>
       <docbot-modal
         selectedteam="impc"
-        backendurl="https://wwwint.ebi.ac.uk/docbot/api"
+        backendurl={DOCBOT_BACKEND_URL}
         enableselector="false"
       ></docbot-modal>
     </div>

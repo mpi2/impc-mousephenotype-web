@@ -332,7 +332,7 @@ exports[`Footer component renders correctly 1`] = `
       </div>
     </div>
     <docbot-modal
-      backendurl="https://wwwint.ebi.ac.uk/docbot/api"
+      backendurl="https://wwwdev.ebi.ac.uk/docbot/api"
       enableselector="false"
       selectedteam="impc"
     />
