@@ -30,6 +30,18 @@ ChartJS.register(
   LineWithErrorBarsController,
   PointWithErrorBar,
 );
+
+type ChartDatapoint = {
+  y: number;
+  x: number;
+  yMin: number;
+  yMax: number;
+  ageInWeeks: number;
+  count: number;
+  sd: number;
+  monthNum?: number;
+};
+
 const clone = (obj) => JSON.parse(JSON.stringify(obj));
 
 const getPointStyle = (key: string) => {
@@ -40,11 +52,86 @@ const getPointStyle = (key: string) => {
   }
 };
 
+const aggregateDatasets = (data: Record<string, Array<ChartDatapoint>>) => {
+  const result: Record<string, Array<ChartDatapoint>> = {};
+  for (const key of Object.keys(data)) {
+    const dataset = data[key];
+    const weekMap = new Map<number, Array<ChartDatapoint>>();
+    for (const point of dataset) {
+      if (!weekMap.has(point.ageInWeeks)) {
+        weekMap.set(point.ageInWeeks, []);
+      }
+      weekMap.get(point.ageInWeeks)!.push(point);
+    }
+    result[key] = Array.from(weekMap.values()).map((entry) => {
+      const totalCount = entry.reduce((sum, e) => sum + e.count, 0);
+      const y = entry.reduce((sum, e) => sum + e.y, 0);
+      const yMin = Math.min(...entry.map((e) => e.yMin));
+      const yMax = Math.max(...entry.map((e) => e.yMax));
+      const variance =
+        entry.reduce((sum, e) => sum + e.count * e.sd ** 2, 0) / totalCount;
+      const sd = Math.sqrt(variance);
+      return {
+        y,
+        yMin,
+        yMax,
+        sd,
+        x: entry[0].ageInWeeks,
+        ageInWeeks: entry[0].ageInWeeks,
+        count: totalCount,
+      };
+    });
+  }
+  return result;
+};
+
+const groupLastWeeksIntoMonths = (
+  data: Record<string, Array<ChartDatapoint>>,
+) => {
+  const updatedResult: Record<string, Array<ChartDatapoint>> = {};
+  for (const key of Object.keys(data)) {
+    const dataset = data[key];
+    const weeklyDatasetPos = dataset.findLastIndex(
+      (point) => point.ageInWeeks === 17,
+    );
+    updatedResult[key] = [...dataset.slice(0, weeklyDatasetPos)];
+    const maxWeek = Math.max(...dataset.map((w) => w.ageInWeeks));
+    for (let currentWeek = 17; currentWeek <= maxWeek; currentWeek += 4) {
+      const chunk = dataset.filter(
+        (point) =>
+          point.ageInWeeks >= currentWeek && point.ageInWeeks < currentWeek + 4,
+      );
+      if (chunk.length === 0) {
+        continue;
+      }
+      const totalCount = chunk.reduce((sum, point) => sum + point.count, 0);
+      const y = chunk.reduce((sum, point) => sum + point.y, 0) / chunk.length;
+      const yMin = Math.min(...chunk.map((point) => point.yMin));
+      const yMax = Math.max(...chunk.map((point) => point.yMax));
+      const variance =
+        chunk.reduce((sum, point) => sum + point.count * point.sd ** 2, 0) /
+        totalCount;
+      const sd = Math.sqrt(variance);
+      updatedResult[key].push({
+        y,
+        yMin,
+        yMax,
+        sd,
+        x: currentWeek,
+        ageInWeeks: currentWeek,
+        count: totalCount,
+        monthNum: Math.floor(currentWeek / 4) + 1,
+      });
+    }
+  }
+  return updatedResult;
+};
+
 const BodyWeightChart = ({ datasetSummary }) => {
   const [viewOnlyRangeForMutant, setViewOnlyRangeForMutant] = useState(true);
 
   const data = useMemo(() => {
-    const result = {};
+    const result: Record<string, Array<ChartDatapoint>> = {};
     const datasetClone = clone(datasetSummary);
     datasetClone.chartData?.forEach((point) => {
       let label = point.sex === "male" ? "Male" : "Female";
@@ -66,6 +153,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
           yMax: parseFloat((point.mean + point.std).toPrecision(5)),
           ageInWeeks: ageInWeeks,
           count: point.count,
+          sd: point.std || 0,
         });
       }
     });
@@ -74,7 +162,8 @@ const BodyWeightChart = ({ datasetSummary }) => {
         (p1, p2) => p1.ageInWeeks - p2.ageInWeeks,
       );
     });
-    return result;
+    //  const aggregatedDatasets = aggregateDatasets(result);
+    return groupLastWeeksIntoMonths(result);
   }, [datasetSummary]);
 
   const getOrderedColumns = () => {
