@@ -217,7 +217,7 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
                     <FontAwesomeIcon
                       icon={faCircleInfo}
                       size="xs"
-                      className="ml-1"
+                      className="p-1"
                     />
                   </OverlayTrigger>
                 </h3>

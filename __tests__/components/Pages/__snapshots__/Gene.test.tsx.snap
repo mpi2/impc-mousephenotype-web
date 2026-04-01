@@ -437,7 +437,7 @@ exports[`Gene page renders correctly 1`] = `
                 No significant impact
                 <svg
                   aria-hidden="true"
-                  class="svg-inline--fa fa-circle-info ml-1 fa-xs"
+                  class="svg-inline--fa fa-circle-info p-1 fa-xs"
                   data-icon="circle-info"
                   data-prefix="fas"
                   focusable="false"
