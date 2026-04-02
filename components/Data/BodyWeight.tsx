@@ -129,6 +129,7 @@ const groupLastWeeksIntoMonths = (
 
 const BodyWeightChart = ({ datasetSummary }) => {
   const [viewOnlyRangeForMutant, setViewOnlyRangeForMutant] = useState(true);
+  const [averageLateAdultData, setAverageLateAdultData] = useState(false);
 
   const data = useMemo(() => {
     const result: Record<string, Array<ChartDatapoint>> = {};
@@ -163,8 +164,12 @@ const BodyWeightChart = ({ datasetSummary }) => {
       );
     });
     //  const aggregatedDatasets = aggregateDatasets(result);
-    return groupLastWeeksIntoMonths(result);
-  }, [datasetSummary]);
+    if (averageLateAdultData) {
+      return groupLastWeeksIntoMonths(result);
+    } else {
+      return result;
+    }
+  }, [datasetSummary, averageLateAdultData]);
 
   const getOrderedColumns = () => {
     return Object.keys(data).sort();
@@ -341,15 +346,27 @@ const BodyWeightChart = ({ datasetSummary }) => {
               {!!data && (
                 <>
                   <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <Form.Check // prettier-ignore
-                      type="switch"
-                      id="custom-switch"
-                      label="View data within mutants data range"
-                      onChange={() =>
-                        setViewOnlyRangeForMutant(!viewOnlyRangeForMutant)
-                      }
-                      checked={viewOnlyRangeForMutant}
-                    />
+                    <div>
+                      <Form.Check
+                        type="switch"
+                        id="mutant-data-range"
+                        label="View data within mutants data range"
+                        onChange={() =>
+                          setViewOnlyRangeForMutant(!viewOnlyRangeForMutant)
+                        }
+                        checked={viewOnlyRangeForMutant}
+                      />
+                      <hr />
+                      <Form.Check
+                        type="switch"
+                        id="average-adult-data"
+                        label="Display adult data as monthly average"
+                        onChange={() =>
+                          setAverageLateAdultData((prevState) => !prevState)
+                        }
+                        checked={averageLateAdultData}
+                      />
+                    </div>
                   </div>
                   <BodyWeightLinePlot options={chartOptions} data={chartData} />
                 </>
