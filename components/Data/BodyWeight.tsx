@@ -253,6 +253,26 @@ const BodyWeightChart = ({ datasetSummary }) => {
     };
   };
 
+  const maxYMax = useMemo(() => {
+    return (
+      Math.max(
+        ...Object.values(data).flatMap((values) =>
+          values.map((val) => val.yMax),
+        ),
+      ) + 5
+    );
+  }, [data]);
+
+  const minYMin = useMemo(() => {
+    return (
+      Math.min(
+        ...Object.values(data).flatMap((values) =>
+          values.map((val) => val.yMin),
+        ),
+      ) - 5
+    );
+  }, [data]);
+
   const chartOptions = useMemo(
     () => ({
       responsive: true,
@@ -264,8 +284,8 @@ const BodyWeightChart = ({ datasetSummary }) => {
       },
       scales: {
         y: {
-          min: 0,
-          max: 50,
+          min: minYMin,
+          max: maxYMax,
           title: {
             display: true,
             text: "Mass (g)",
@@ -298,7 +318,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
         },
       },
     }),
-    [],
+    [maxYMax, minYMin],
   );
 
   const maxAge = getMaxAge(true);
