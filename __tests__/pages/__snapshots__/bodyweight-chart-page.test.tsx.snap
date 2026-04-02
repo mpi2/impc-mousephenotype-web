@@ -598,22 +598,41 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                 <div
                   style="display: flex; justify-content: flex-end;"
                 >
-                  <div
-                    class="form-check form-switch"
-                  >
-                    <input
-                      checked=""
-                      class="form-check-input"
-                      id="custom-switch"
-                      type="checkbox"
-                    />
-                    <label
-                      class="form-check-label"
-                      for="custom-switch"
-                      title=""
+                  <div>
+                    <div
+                      class="form-check form-switch"
                     >
-                      View data within mutants data range
-                    </label>
+                      <input
+                        checked=""
+                        class="form-check-input"
+                        id="mutant-data-range"
+                        type="checkbox"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="mutant-data-range"
+                        title=""
+                      >
+                        View data within mutants data range
+                      </label>
+                    </div>
+                    <hr />
+                    <div
+                      class="form-check form-switch"
+                    >
+                      <input
+                        class="form-check-input"
+                        id="average-adult-data"
+                        type="checkbox"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="average-adult-data"
+                        title=""
+                      >
+                        Display adult data as monthly average
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <canvas
