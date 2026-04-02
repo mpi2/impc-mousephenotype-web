@@ -621,6 +621,7 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                       class="form-check form-switch"
                     >
                       <input
+                        checked=""
                         class="form-check-input"
                         id="average-adult-data"
                         type="checkbox"
@@ -947,13 +948,13 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                       17
                     </td>
                     <td>
-                      -
+                      32.567000 (6)
                     </td>
                     <td>
-                      40.000000 (1)
+                      35.079000 (39)
                     </td>
                     <td>
-                      -
+                      33.914000 (7)
                     </td>
                     <td>
                       35.380000 (5)
@@ -967,13 +968,13 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                       -
                     </td>
                     <td>
-                      30.967000 (3)
+                      -
                     </td>
                     <td>
-                      33.914000 (7)
+                      -
                     </td>
                     <td>
-                      39.125000 (12)
+                      -
                     </td>
                   </tr>
                   <tr>
@@ -984,13 +985,13 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                       -
                     </td>
                     <td>
-                      33.430000 (10)
+                      -
                     </td>
                     <td>
                       -
                     </td>
                     <td>
-                      35.933000 (3)
+                      -
                     </td>
                   </tr>
                   <tr>
@@ -1001,13 +1002,13 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                       32.567000 (6)
                     </td>
                     <td>
-                      37.000000 (6)
+                      -
                     </td>
                     <td>
                       -
                     </td>
                     <td>
-                      40.404000 (7)
+                      -
                     </td>
                   </tr>
                   <tr>
@@ -1018,64 +1019,13 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                       35.700000 (1)
                     </td>
                     <td>
-                      37.700000 (1)
+                      37.181200 (15)
                     </td>
                     <td>
                       -
                     </td>
                     <td>
-                      39.752000 (4)
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      22
-                    </td>
-                    <td>
-                      -
-                    </td>
-                    <td>
-                      40.430000 (1)
-                    </td>
-                    <td>
-                      -
-                    </td>
-                    <td>
-                      41.700000 (3)
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      23
-                    </td>
-                    <td>
-                      -
-                    </td>
-                    <td>
-                      35.833000 (6)
-                    </td>
-                    <td>
-                      -
-                    </td>
-                    <td>
-                      38.675000 (4)
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      24
-                    </td>
-                    <td>
-                      -
-                    </td>
-                    <td>
-                      38.300000 (1)
-                    </td>
-                    <td>
-                      -
-                    </td>
-                    <td>
-                      -
+                      40.042333 (11)
                     </td>
                   </tr>
                 </tbody>
