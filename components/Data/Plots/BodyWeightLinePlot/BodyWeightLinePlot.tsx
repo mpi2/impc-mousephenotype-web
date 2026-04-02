@@ -6,6 +6,7 @@ import {
   ChartType,
   DefaultDataPoint,
 } from "chart.js";
+import { verticalLinePlugin } from "@/shared/chart-js-plugins/vertical-line";
 
 type BodyWeightLinePlotProps<
   TType extends ChartType = ChartType,
@@ -66,6 +67,7 @@ function BodyWeightLinePlot(props: BodyWeightLinePlotProps, ref) {
       type: "lineWithErrorBars",
       data,
       options: options && { ...options },
+      plugins: [verticalLinePlugin],
     });
   };
   const destroyChart = () => {

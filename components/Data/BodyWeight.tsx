@@ -129,7 +129,7 @@ const groupLastWeeksIntoMonths = (
 
 const BodyWeightChart = ({ datasetSummary }) => {
   const [viewOnlyRangeForMutant, setViewOnlyRangeForMutant] = useState(true);
-  const [averageLateAdultData, setAverageLateAdultData] = useState(false);
+  const [averageLateAdultData, setAverageLateAdultData] = useState(true);
 
   const data = useMemo(() => {
     const result: Record<string, Array<ChartDatapoint>> = {};
@@ -258,7 +258,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
     };
   };
 
-  const maxYMax = useMemo(() => {
+  const globalYMax = useMemo(() => {
     return (
       Math.max(
         ...Object.values(data).flatMap((values) =>
@@ -268,7 +268,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
     );
   }, [data]);
 
-  const minYMin = useMemo(() => {
+  const globalYMin = useMemo(() => {
     return (
       Math.min(
         ...Object.values(data).flatMap((values) =>
@@ -289,8 +289,8 @@ const BodyWeightChart = ({ datasetSummary }) => {
       },
       scales: {
         y: {
-          min: minYMin,
-          max: maxYMax,
+          suggestedMin: globalYMin,
+          suggestedMax: globalYMax,
           title: {
             display: true,
             text: "Mass (g)",
@@ -321,9 +321,13 @@ const BodyWeightChart = ({ datasetSummary }) => {
               `${ctx.dataset.label} (count: ${ctx.raw.count}) Mass: ${ctx.raw.y}g SD: ${ctx.raw.yMin}-${ctx.raw.yMax}`,
           },
         },
+        verticalLinePlugin: {
+          value: 13,
+          color: "rgba(0,0,0,0.2)",
+        },
       },
     }),
-    [maxYMax, minYMin],
+    [globalYMax, globalYMin],
   );
 
   const maxAge = getMaxAge(true);
@@ -332,6 +336,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
     [data, viewOnlyRangeForMutant],
   );
 
+  console.log({ chartData });
   return (
     <>
       <ChartSummary
