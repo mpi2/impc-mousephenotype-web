@@ -8,7 +8,6 @@ export const verticalLinePlugin = {
     } = chart;
 
     const opts = chart.options.plugins.verticalLinePlugin;
-    console.log(opts);
     const value = opts?.value;
     const color = opts?.color ?? "red";
 
