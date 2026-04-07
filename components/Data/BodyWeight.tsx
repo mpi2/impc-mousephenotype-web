@@ -163,7 +163,7 @@ const BodyWeightChart = ({ datasetSummary }) => {
         (p1, p2) => p1.ageInWeeks - p2.ageInWeeks,
       );
     });
-    //  const aggregatedDatasets = aggregateDatasets(result);
+    // const aggregatedDatasets = aggregateDatasets(result);
     if (averageLateAdultData) {
       return groupLastWeeksIntoMonths(result);
     } else {
@@ -335,8 +335,6 @@ const BodyWeightChart = ({ datasetSummary }) => {
     () => processData(),
     [data, viewOnlyRangeForMutant],
   );
-
-  console.log({ chartData });
   return (
     <>
       <ChartSummary
@@ -347,36 +345,48 @@ const BodyWeightChart = ({ datasetSummary }) => {
       <Row>
         <Col lg={12}>
           <Card style={{ position: "sticky", top: 0, zIndex: 1 }}>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <div>
+                <Form.Check
+                  type="switch"
+                  id="mutant-data-range"
+                  label="View data within mutants data range"
+                  onChange={() =>
+                    setViewOnlyRangeForMutant(!viewOnlyRangeForMutant)
+                  }
+                  checked={viewOnlyRangeForMutant}
+                />
+                <hr />
+                <Form.Check
+                  type="switch"
+                  id="average-adult-data"
+                  label="Display adult data as monthly average"
+                  onChange={() =>
+                    setAverageLateAdultData((prevState) => !prevState)
+                  }
+                  checked={averageLateAdultData}
+                />
+              </div>
+            </div>
             <div style={{ position: "relative", height: "400px" }}>
               {!!data && (
-                <>
-                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <div>
-                      <Form.Check
-                        type="switch"
-                        id="mutant-data-range"
-                        label="View data within mutants data range"
-                        onChange={() =>
-                          setViewOnlyRangeForMutant(!viewOnlyRangeForMutant)
-                        }
-                        checked={viewOnlyRangeForMutant}
-                      />
-                      <hr />
-                      <Form.Check
-                        type="switch"
-                        id="average-adult-data"
-                        label="Display adult data as monthly average"
-                        onChange={() =>
-                          setAverageLateAdultData((prevState) => !prevState)
-                        }
-                        checked={averageLateAdultData}
-                      />
-                    </div>
-                  </div>
-                  <BodyWeightLinePlot options={chartOptions} data={chartData} />
-                </>
+                <BodyWeightLinePlot options={chartOptions} data={chartData} />
               )}
             </div>
+            <span style={{ fontSize: "85%" }}>
+              <i>
+                Dashed line represents last mandatory measurement (week 16th)
+                according to protocol in&nbsp;
+                <a
+                  className="link primary"
+                  href="https://www.mousephenotype.org/impress/ProcedureInfo?procID=135#Notes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  IMPReSS
+                </a>
+              </i>
+            </span>
           </Card>
           <Card>
             {!!data && (

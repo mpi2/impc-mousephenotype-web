@@ -593,49 +593,49 @@ exports[`Bodyweight chart page renders correctly 1`] = `
               style="position: sticky; top: 0px; z-index: 1;"
             >
               <div
-                style="position: relative; height: 400px;"
+                style="display: flex; justify-content: flex-end;"
               >
-                <div
-                  style="display: flex; justify-content: flex-end;"
-                >
-                  <div>
-                    <div
-                      class="form-check form-switch"
+                <div>
+                  <div
+                    class="form-check form-switch"
+                  >
+                    <input
+                      checked=""
+                      class="form-check-input"
+                      id="mutant-data-range"
+                      type="checkbox"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="mutant-data-range"
+                      title=""
                     >
-                      <input
-                        checked=""
-                        class="form-check-input"
-                        id="mutant-data-range"
-                        type="checkbox"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="mutant-data-range"
-                        title=""
-                      >
-                        View data within mutants data range
-                      </label>
-                    </div>
-                    <hr />
-                    <div
-                      class="form-check form-switch"
+                      View data within mutants data range
+                    </label>
+                  </div>
+                  <hr />
+                  <div
+                    class="form-check form-switch"
+                  >
+                    <input
+                      checked=""
+                      class="form-check-input"
+                      id="average-adult-data"
+                      type="checkbox"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="average-adult-data"
+                      title=""
                     >
-                      <input
-                        checked=""
-                        class="form-check-input"
-                        id="average-adult-data"
-                        type="checkbox"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="average-adult-data"
-                        title=""
-                      >
-                        Display adult data as monthly average
-                      </label>
-                    </div>
+                      Display adult data as monthly average
+                    </label>
                   </div>
                 </div>
+              </div>
+              <div
+                style="position: relative; height: 400px;"
+              >
                 <canvas
                   data-testid="body-weight-canvas"
                   height="0"
@@ -644,6 +644,21 @@ exports[`Bodyweight chart page renders correctly 1`] = `
                   width="0"
                 />
               </div>
+              <span
+                style="font-size: 85%;"
+              >
+                <i>
+                  Dashed line represents last mandatory measurement (week 16th) according to protocol in 
+                  <a
+                    class="link primary"
+                    href="https://www.mousephenotype.org/impress/ProcedureInfo?procID=135#Notes"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    IMPReSS
+                  </a>
+                </i>
+              </span>
             </div>
             <div
               class="card"
