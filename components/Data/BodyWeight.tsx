@@ -203,6 +203,26 @@ const BodyWeightChart = ({ datasetSummary }) => {
     return 0;
   };
 
+  const rowHasValues = (week: number) => {
+    const values = getOrderedColumns()
+      .map((key) => data[key])
+      .map((dataset) => {
+        const value = dataset.find((point) => point.ageInWeeks === week);
+        return value === undefined
+          ? "-"
+          : `${value.y.toFixed(6)} (${value.count})`;
+      });
+    const isValidValue = (value: string) => value !== "-";
+    return averageLateAdultData
+      ? values.every(isValidValue)
+      : values.some(isValidValue);
+  };
+  const getLabelForWeek = (week: number) => {
+    if (week <= 16 || !averageLateAdultData) {
+      return week;
+    }
+    return `Month #${Math.floor(week / 4)}`;
+  };
   const getValuesForRow = (week: number) => {
     return getOrderedColumns()
       .map((key) => data[key])
@@ -400,14 +420,17 @@ const BodyWeightChart = ({ datasetSummary }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {[...Array(maxAge)].map((week, i) => (
-                    <tr key={i}>
-                      <td>{i + 1}</td>
-                      {getValuesForRow(i + 1).map((value, internalI) => (
-                        <td key={internalI}>{value}</td>
-                      ))}
-                    </tr>
-                  ))}
+                  {[...Array(maxAge)].map(
+                    (_, i) =>
+                      rowHasValues(i + 1) && (
+                        <tr key={i}>
+                          <td>{getLabelForWeek(i + 1)}</td>
+                          {getValuesForRow(i + 1).map((value, internalI) => (
+                            <td key={internalI}>{value}</td>
+                          ))}
+                        </tr>
+                      ),
+                  )}
                 </tbody>
               </Table>
             )}
