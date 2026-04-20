@@ -26,6 +26,8 @@ import { chartLoadingIndicatorChannel } from "@/eventChannels";
 import { useDebounceValue } from "usehooks-ts";
 import { ChartPageParams } from "@/models/chart";
 import classnames from "classnames";
+import { useQuery } from "@tanstack/react-query";
+import { fetchAPI } from "@/api-service";
 
 const generateParamsObject = (
   searchParams: ReadonlyURLSearchParams,
@@ -63,6 +65,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
   );
   const searchParams = useSearchParams();
   const mgiGeneAccessionId: string = searchParams.get("mgiGeneAccessionId");
+  const datasetId: string = searchParams.get("datasetId") || "";
 
   const getPageTitle = (summaries: Array<Dataset>, isError: boolean) => {
     if ((!summaries || summaries.length === 0) && !isError) {
@@ -84,6 +87,18 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
     !!mgiGeneAccessionId && initialDatasets?.length === 0,
     initialDatasets,
   );
+
+  const { data: extraSummaries } = useQuery({
+    queryKey: ["genes", mgiGeneAccessionId, "extra-summaries"],
+    queryFn: () =>
+      fetchAPI<Array<Dataset>>(`/api/v1/genes/${datasetId}/dataset`),
+    enabled:
+      !!mgiGeneAccessionId &&
+      datasetId &&
+      !isFetching &&
+      !datasetSummaries?.length,
+    placeholderData: [],
+  });
 
   const {
     isABRChart,
@@ -125,8 +140,8 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
   }, [isPPIChart]);
 
   const allSummaries = !!overridingSummaries.length
-    ? overridingSummaries?.concat(additionalSummaries)
-    : datasetSummaries?.concat(additionalSummaries);
+    ? overridingSummaries?.concat(additionalSummaries, extraSummaries)
+    : datasetSummaries?.concat(additionalSummaries, extraSummaries);
   const activeDataset = !!selectedKey
     ? getDatasetByKey(allSummaries, selectedKey)
     : allSummaries?.[0];
