@@ -43,7 +43,17 @@ export const useDatasetsQuery = (
   const apiUrl = generateDatasetsEndpointUrl(mgiGeneAccessionId, params);
   const { data, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, params.mpTermId, apiUrl, "dataset"],
-    queryFn: () => fetchAPI(apiUrl),
+    queryFn: async () => {
+      try {
+        const data = await fetchAPI<Array<Dataset>>(apiUrl);
+        if (data.length === 0) {
+          return [];
+        }
+        return data;
+      } catch (error) {
+        return [];
+      }
+    },
     enabled,
     select: sortAndDeduplicateDatasets,
     placeholderData: [],
