@@ -15,10 +15,12 @@ const bioStudiesIdParameterMap = {
   EEI: "S-BIAD3142", // Ear Epidermis Immunophenotyping
   DSS: "S-BIAD3147", // DSS Histology
   ANA: "S-BIAD3148", // Anti-nuclear Antibody Assay
+  ERG_003: "S-BIAD3149", // Electroretinography 3
   GEP: "S-BIAD3151", // Gross Morphology Embryo E18.5
   GEO: "S-BIAD3152", // Gross Morphology Embryo E14.5-E15.5
   GEL: "S-BIAD3155", // Gross Morphology Embryo E9.5
-  EGR: "S-BIAD3212", // Electroretinography
+  ERG_002: "S-BIAD3157", // Electroretinography 2
+  ERG_001: "S-BIAD3212", // Electroretinography
   GEM: "S-BIAD3213", // Gross Morphology Embryo E12.5
   GPP: "S-BIAD3214", // Gross Morphology Placenta E18.5
   GPO: "S-BIAD3215", // Gross Morphology Placenta E14.5-E15.5
