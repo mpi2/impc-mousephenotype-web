@@ -1,4 +1,9 @@
-import { screen, waitFor } from "@testing-library/react";
+import {
+  queryByTestId,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import GenePhenotypes from "@/components/Gene/Phenotypes/index";
 import { renderWithClient, API_URL } from "../../utils";
 import { testServer } from "../../../mocks/server";
@@ -59,6 +64,9 @@ describe("Gene phenotypes component", () => {
       <GeneContext.Provider value={gene as GeneSummary}>
         <GenePhenotypes sigPhenotypesFromServer={phenHitsData} />
       </GeneContext.Provider>,
+    );
+    await waitForElementToBeRemoved(() =>
+      screen.queryByTestId("phenotype-loading-indicator"),
     );
     await waitFor(() => {
       expect(screen.getAllByRole("table").length).toBe(2);

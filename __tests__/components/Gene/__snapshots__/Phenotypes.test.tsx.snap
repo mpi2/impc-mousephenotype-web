@@ -805,7 +805,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=1ad049da916022ee326602022c2245ed"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -906,7 +906,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=2d076437276a69210f30390863ff1955"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -1007,7 +1007,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=95020adfc4074c535a6d4e7140430b33"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -1107,7 +1107,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=03f265c8a9cf2f33a0066c631e67db67"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -1231,7 +1231,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=NOT-RELEASED-d747ce2419&lifeStageName=Early adult&zygosity=heterozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=NOT-RELEASED-d747ce2419&lifeStageName=Early adult&zygosity=heterozygote&datasetId=8e8e7a10f94addce3fa05068d96543ee"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -1332,7 +1332,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=b0e2c91e1f3c169c2ebe295126961fa4"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -1441,7 +1441,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=0c6b47f8c6808874319773fd12c7b828"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -1542,7 +1542,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=25de380279fe66e5cc7b132c9a6c05bb"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -1643,7 +1643,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=9875b568ba425f24dbefb073118423c7"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span
@@ -1744,7 +1744,7 @@ exports[`Gene phenotypes component renders correctly 1`] = `
                     style="border-color: var(--bs-table-border-color);"
                   >
                     <a
-                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote"
+                      href="/supporting-data?mgiGeneAccessionId=MGI:104785&mpTermId=undefined&alleleAccessionId=MGI:6257724&lifeStageName=Early adult&zygosity=homozygote&datasetId=fba860767a4b379fb5ff89f7c921e14e"
                       title="view undefined supporting datasets for undefined phenotype"
                     >
                       <span

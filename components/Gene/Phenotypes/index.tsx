@@ -52,7 +52,11 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
 
   if (isFetching) {
     return (
-      <div className="grey" style={{ padding: "1rem" }}>
+      <div
+        className="grey"
+        style={{ padding: "1rem" }}
+        data-testid="phenotype-loading-indicator"
+      >
         <Spinner animation="border" size="sm" />
         &nbsp; Loading...
       </div>

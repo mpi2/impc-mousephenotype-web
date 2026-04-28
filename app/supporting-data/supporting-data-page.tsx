@@ -94,7 +94,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
       fetchAPI<Array<Dataset>>(`/api/v1/genes/${datasetId}/dataset`),
     enabled:
       !!mgiGeneAccessionId &&
-      datasetId &&
+      !!datasetId &&
       !isFetching &&
       !datasetSummaries?.length,
     placeholderData: [],
