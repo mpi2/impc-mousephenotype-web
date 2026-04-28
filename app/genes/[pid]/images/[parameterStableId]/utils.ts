@@ -35,17 +35,17 @@ const bioStudiesIdParameterMap = {
 
 const bioStudiesKeys = Object.keys(bioStudiesIdParameterMap);
 
-export const hasImagesOnBioStudies = (parameterStableId: string) => {
-  return bioStudiesKeys.some((key) => parameterStableId.includes(key));
+export const hasImagesOnBioStudies = (procedureStableId: string) => {
+  return bioStudiesKeys.some((key) => procedureStableId.includes(key));
 };
 
 export const buildFTPPrefix = (
-  parameterStableId: string,
+  procedureStableId: string,
   col: GeneImageCollection,
   image: Image,
 ) => {
   const selectedKey = bioStudiesKeys.find((key) =>
-    parameterStableId.includes(key),
+    procedureStableId.includes(key),
   );
   if (!selectedKey) {
     return "";
