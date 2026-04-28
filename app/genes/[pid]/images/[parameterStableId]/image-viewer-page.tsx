@@ -357,7 +357,7 @@ const ImagesCompare = () => {
           images: imagesPerCenter.images.map((image) => ({
             ...image,
             ftpUrlPrefix: buildFTPPrefix(
-              parameterStableId,
+              imagesPerCenter.procedureStableId,
               imagesPerCenter,
               image,
             ),
@@ -387,7 +387,7 @@ const ImagesCompare = () => {
             images: imagesPerCenter.images.map((image) => ({
               ...image,
               ftpUrlPrefix: buildFTPPrefix(
-                parameterStableId,
+                imagesPerCenter.procedureStableId,
                 imagesPerCenter,
                 image,
               ),
@@ -411,7 +411,7 @@ const ImagesCompare = () => {
   const showAssocParam =
     parameterStableId.includes("ALZ") || parameterStableId.includes("PAT");
 
-  const hasImagesOnBiostudies = hasImagesOnBioStudies(parameterStableId);
+  const hasImagesOnBiostudies = hasImagesOnBioStudies(procedureStableId ?? "");
 
   const findCenterByMatchingAnatomyFilter = (
     collections: Array<GeneImageCollection>,
