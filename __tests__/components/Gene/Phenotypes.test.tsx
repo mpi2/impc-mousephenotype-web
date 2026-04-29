@@ -1,5 +1,4 @@
 import {
-  queryByTestId,
   screen,
   waitFor,
   waitForElementToBeRemoved,

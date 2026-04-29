@@ -215,7 +215,7 @@ ul.pagination .page-item.disabled .page-link {
   }
   .vf-chatbot-modal-container {
     @media screen and (min-width: 600px) {
-      max-width: 450px;
+      max-width: 450px !important;
     }
   }
   .vf-chatbot-modal__content .vf-chatbot-welcome__logo-image {
